@@ -629,6 +629,88 @@ const personaSkillList = {
             }
         ]
     },
+
+
+    //핵열 속성 스킬
+    "프레이": {
+        description: "1명의 적에게 공격력 114.8%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 16% 증가한다.",
+        type: "공격",
+        target: "단일",
+        icon : "핵열",
+        effects: [
+            {
+                type: "대미지",
+                element: "핵열",
+                power: 114.8,
+                scale: "공격력"
+            },
+            {
+                type: "technical",
+                condition: "원소이상",
+                damageIncrease: 16
+            }
+        ]
+    },
+    "프레이라": {
+        description: "1명의 적에게 공격력 124.2%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 18% 증가한다.",
+        type: "공격",
+        target: "단일",
+        icon : "핵열",
+        effects: [
+            {
+                type: "대미지",
+                element: "핵열",
+                power: 124.2,
+                scale: "공격력"
+            },
+            {
+                type: "technical",
+                condition: "원소이상",
+                damageIncrease: 18
+            }
+        ]
+    },
+    "마하프레이라": {
+        description: "모든 적에게 공격력 61.8%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 18% 증가한다.",
+        type: "공격",
+        target: "전체",
+        icon : "핵열광역",
+        effects: [
+            {
+                type: "대미지",
+                element: "핵열",
+                power: 61.8,
+                scale: "공격력"
+            },
+            {
+                type: "technical",
+                condition: "원소이상",
+                damageIncrease: 18
+            }
+        ]
+    },
+    "코즈믹 플레어": {
+        description: "모든 적에게 공격력 71.1%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 22% 증가한다.",
+        type: "공격",
+        target: "전체",
+        icon : "핵열광역",
+        effects: [
+            {
+                type: "대미지",
+                element: "핵열",
+                power: 71.1,
+                scale: "공격력"
+            },
+            {
+                type: "technical",
+                condition: "원소이상",
+                damageIncrease: 22
+            }
+        ]
+    },
+    
+    // 축복 속성 스킬
+
     "코우가": {
         description: "1명의 적에게 공격력 123.2%의 축복 속성 대미지를 주고, 자신은 축복 효과 1~2개를 획득한다.",
         type: "공격",

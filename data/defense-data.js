@@ -262,10 +262,11 @@ const defenseCalcData = [
         type: "스킬1",
         target: "광역",
         skillIcon: "../img/skill-element/버프.png",
-        skillName: "소리없는 침습",
-        options: ["LV10","LV13","LV13+심상5","LV13(의식5)","LV13(의식5)+심상5"],
+        skillName: "소리없는 침습 (약점)",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식5)","LV13(의식5)+심상5"],
         values: {
             "LV10": 60.8,
+            "LV10+심상5": 65.7,
             "LV13": 75.4,
             "LV13+심상5": 80.3,
             "LV13(의식5)": 87.5,
@@ -273,6 +274,28 @@ const defenseCalcData = [
         },
         defaultOption: "LV13(의식5)+심상5",
         value: 93.1,
+        duration: "2턴",
+        note: ""
+    },
+    {
+        id: 14-2,
+        charName: "",
+        charImage: "",
+        type: "스킬1",
+        target: "광역",
+        skillIcon: "../img/skill-element/버프.png",
+        skillName: "소리없는 침습",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식5)","LV13(의식5)+심상5"],
+        values: {
+            "LV10": 30.4,
+            "LV10+심상5": 32.8,
+            "LV13": 37.7,
+            "LV13+심상5": 40.1,
+            "LV13(의식5)": 43.7,
+            "LV13(의식5)+심상5": 46.6
+        },
+        defaultOption: "LV13(의식5)+심상5",
+        value: 46.6,
         duration: "2턴",
         note: ""
     },
@@ -362,16 +385,17 @@ const defenseCalcData = [
         note: "의식6 → 3턴으로 증가"
     },
     {
-        id: 19,
+        id: 19-1,
         charName: "",
         charImage: "",
         type: "스킬1",
         target: "광역",
         skillIcon: "../img/skill-element/화염광역.png",
-        skillName: "뜨거운 악수",
-        options: ["LV10","LV13","LV13+심상5"],
+        skillName: "뜨거운 악수 (화염)",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
         values: {
             "LV10": 52.8,
+            "LV10+심상5": 55.6,
             "LV13": 56.2,
             "LV13+심상5": 58.7
         },
@@ -381,6 +405,27 @@ const defenseCalcData = [
         note: "의식6 → 3턴으로 증가"
     },
     {
+        id: 19-2,
+        charName: "",
+        charImage: "",
+        type: "스킬1",
+        target: "광역",
+        skillIcon: "../img/skill-element/화염광역.png",
+        skillName: "뜨거운 악수",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+        values: {
+            "LV10": 26.4,
+            "LV10+심상5": 29.2,
+            "LV13": 27.9,
+            "LV13+심상5": 30.7
+        },
+        defaultOption: "LV13+심상5",
+        value: 30.7,
+        duration: "2턴",
+        note: "의식6 → 3턴으로 증가"
+    },
+
+    {
         id: 20,
         charName: "",
         charImage: "",
@@ -388,9 +433,10 @@ const defenseCalcData = [
         target: "단일",
         skillIcon: "../img/skill-element/화염.png",
         skillName: "악당에 대한 경고",
-        options: ["LV10","LV13","LV13+심상5"],
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
         values: {
             "LV10": 68.3,
+            "LV10+심상5": 73.9,
             "LV13": 72.5,
             "LV13+심상5": 78.0
         },

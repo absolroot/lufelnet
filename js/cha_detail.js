@@ -297,6 +297,32 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMindItems();
         const currentPage = document.querySelector('.current-page');
         currentPage.textContent = characterData[characterName].name;
+
+        // role과 tag 정보 채우기
+        const roleElement = document.querySelector('.chracter-role');
+        const tagElement = document.querySelector('.chracter-tag');
+
+        // role 정보 채우기
+        if (character.role) {
+            roleElement.textContent = character.role;
+        }
+
+        // tag 정보 채우기
+        if (character.tag) {
+            // 기존 내용 초기화
+            tagElement.innerHTML = '';
+            
+            // 콤마로 분리하여 각각의 태그를 생성
+            const tags = character.tag.split(',').map(tag => tag.trim());
+            tags.forEach(tag => {
+                if (tag) {  // 빈 문자열이 아닌 경우에만 추가
+                    const tagDiv = document.createElement('div');
+                    tagDiv.className = 'tag-item';
+                    tagDiv.textContent = tag;
+                    tagElement.appendChild(tagDiv);
+                }
+            });
+        }
     }
 
     // 의식 탭 기능

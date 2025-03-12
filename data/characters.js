@@ -46,9 +46,13 @@ const characterList = {
 
 const characterData = {
     "원더": {
+       "role": "",
+       "tag":"",
         "color": "#000000",
     },
     "아케치": {
+       "role": "",
+       "tag":"",
         "color": "#4d1e42",
         "main_revelation": ["자유"],
         "sub_revelation": ["실망"],
@@ -87,6 +91,8 @@ const characterData = {
     },
 
     "미오": {
+        "role": "광역 디버퍼",
+        "tag": "방어력 감소, 받는 대미지 증가,빙결 속성 TECHNICAL, 실드, 스킬마스터, 동결",
         "color": "#4287f5",
         "main_revelation": ["신념"],
         "sub_revelation": ["헛수고"],
@@ -124,6 +130,8 @@ const characterData = {
         "mind_skill2": "3/HL!"
     },
     "레오": {
+       "role": "단일 버퍼",
+       "tag":"공격력, 크리티컬효과, 실드",
         "color": "#01dfd7",
         "main_revelation": ["신뢰", "신뢰", "창조"],
         "sub_revelation": ["풍요", "힘", "화해"],
@@ -161,6 +169,8 @@ const characterData = {
         "mind_skill2": "2/3!"
     },
     "렌": {
+       "role": "주원 광역 딜러",
+       "tag":"추가 턴, 주원",
         "color": "#212529",
         "main_revelation": ["여정", "여정"],
         "sub_revelation": ["방해", "주권"],
@@ -198,6 +208,8 @@ const characterData = {
         "mind_skill2": "2/3!"
     },
     "루우나": {
+       "role": "단일/화염 디버퍼",
+       "tag":"추가효과 단일,화염 광역,받는 대미지 증가, 방어력 감소, 화상",
         "color": "#ff69b4",
         "main_revelation": ["자유", "여정"],
         "sub_revelation": ["좌절", "주권"],
@@ -235,6 +247,8 @@ const characterData = {
         "mind_skill2": "1/2!"
     },
     "루페르": {
+       "role": "힐러",
+       "tag":"",
         "color": "#4b0082",
         "main_revelation": ["수락"],
         "sub_revelation": ["사랑"],
@@ -272,6 +286,8 @@ const characterData = {
         "mind_skill2": "-"
     },
     "류지": {
+       "role": "물리 단일 딜러",
+       "tag":"차지",
         "color": "#ffff00",
         "main_revelation": ["전념"],
         "sub_revelation": ["용맹"],
@@ -309,6 +325,8 @@ const characterData = {
         "mind_skill2": "2/3!"
     },
     "리코": {
+       "role": "ONE MORE/총공격 서포터",
+       "tag":"방어력 감소, 받는 대미지 증가, 대미지보너스, 해명의 힘",
         "color": "#dc143c",
         "main_revelation": ["결심"],
         "sub_revelation": ["직책"],
@@ -346,6 +364,8 @@ const characterData = {
         "mind_skill2": "3!"
     },
     "리코·매화": {
+       "role": "단일/광역 버퍼",
+       "tag":"크리티컬효과, 크리티컬확률, 공격력, 대미지보너스, 풍습, SP 회복",
         "color": "#c32233",
         "main_revelation": ["창조", "여정"],
         "sub_revelation": ["우려", "주권"],
@@ -383,6 +403,8 @@ const characterData = {
         "mind_skill2": "2/3!"
     },
     "마사키": {
+       "role": "단일/광역 실드",
+       "tag":"실드, 방어력, 대미지보너스, 공격받을 확률, 효과 저항, 동결",
         "color": "#3cf2ff",
         "main_revelation": ["신념", "신뢰"],
         "sub_revelation": ["평화", "풍요"],
@@ -419,7 +441,10 @@ const characterData = {
         "mind_skill1": "1/2",
         "mind_skill2": "3/HL"
     },
-    "마코토": {"color": "#000080",
+    "마코토": {
+        "role": "핵열 단일 딜러",
+        "tag":"원소 이상, TECHNICAL, 추가 턴",
+        "color": "#000080",
         "main_revelation": ["깨달음"],
         "sub_revelation": ["진리"],
         "element": "핵열",
@@ -456,6 +481,8 @@ const characterData = {
         "mind_skill2": "1/3!"
     },
     "미나미": {
+       "role": "광역 힐러",
+       "tag":"축복, 디버프 제거, 최대 생명 증가, 대미지보너스, 지속 회복, 관통, 부활",
         "color": "#f7cd80",
         "main_revelation": ["신뢰", "여정"],
         "sub_revelation": ["풍요", "주권"],
@@ -492,7 +519,10 @@ const characterData = {
         "mind_skill1": "2/HL×",
         "mind_skill2": "1/3×"
     },
-    "미유": {"color": "#78cccc",
+    "미유": {
+        "role": "실드/방어력 서포터",
+        "tag":"실드, 방어력, 대미지보너스, 공격력",
+        "color": "#78cccc",
         "main_revelation": ["신념", "진정성"],
         "sub_revelation": ["평화", "직책"],
         "element": "보조",
@@ -529,7 +559,10 @@ const characterData = {
         "mind_skill1": "1/2",
         "mind_skill2": "3"
     },
-    "모르가나": {"color": "#111111",
+    "모르가나": {
+        "role": "광역 힐러",
+        "tag":"풍습, 크리티컬, 원소 이상 제거, 추가 효과",
+        "color": "#111111",
         "main_revelation": ["전념"],
         "sub_revelation": ["사랑"],
         "element": "질풍",
@@ -565,7 +598,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "모토하": {"color": "#1e90ff",
+    "모토하": {
+        "role": "전격 서브 딜러",
+        "tag":"전격 대미지보너스, 감전",
+        "color": "#1e90ff",
         "main_revelation": ["신뢰"],
         "sub_revelation": ["변환"],
         "element": "전격",
@@ -601,7 +637,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "모토하·여름": {"color": "#1498fd",
+    "모토하·여름": {
+        "role": "축복 광역 딜러",
+        "tag":"최대 생명",
+        "color": "#1498fd",
         "main_revelation": ["결심"],
         "sub_revelation": ["미덕"],
         "element": "축복",
@@ -637,7 +676,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3!"
     },
-    "몽타뉴": {"color": "#483d8b",
+    "몽타뉴": {
+        "role": "빙결 단일 딜러",
+        "tag":"동결, 추가 효과",
+        "color": "#483d8b",
         "main_revelation": ["전념", "성장"],
         "sub_revelation": ["화려", "화려"],
         "element": "빙결",
@@ -673,7 +715,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "몽타뉴·백조": {"color": "#483d8b",
+    "몽타뉴·백조": {
+        "role": "질풍/빙결 단일 딜러",
+        "tag":"폼 체인지, 추가 효과, 풍습, 동결",
+        "color": "#483d8b",
         "main_revelation": ["전념", "자유"],
         "sub_revelation": ["화려", "개선"],
         "element": "질풍빙결",
@@ -709,7 +754,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3!"
     },
-    "세이지": {"color": "#008080",
+    "세이지": {
+        "role": "질풍 단일 딜러",
+        "tag":"풍습",
+        "color": "#008080",
         "main_revelation": ["조화"],
         "sub_revelation": ["승리"],
         "element": "질풍",
@@ -745,7 +793,10 @@ const characterData = {
         "mind_skill1": "1/2",
         "mind_skill2": "3/HL!"
     },
-    "슌": {"color": "#4169e1",
+    "슌": {
+        "role": "빙결 탱커",
+        "tag":"방어력 감소, 최대 생명 증가, 생명 회복, 공격받을 확률 증가, 총기, 동결",
+        "color": "#4169e1",
         "main_revelation": ["여정"],
         "sub_revelation": ["주권"],
         "element": "빙결",
@@ -781,7 +832,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "아야카": {"color": "#f3e966",
+    "아야카": {
+        "role": "HIGHLIGHT 버퍼",
+        "tag":"HIGHLIGHT, 공격력, 대미지보너스, 크리티컬확률, 생명 회복",
+        "color": "#f3e966",
         "main_revelation": ["창조", "여정", "신뢰"],
         "sub_revelation": ["화해", "주권", "풍요"],
         "element": "전격",
@@ -817,7 +871,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3!"
     },
-    "안": {"color": "#ff0000",
+    "안": {
+        "role": "화염 광역 딜러",
+        "tag":"공격력 감소, 화상, TECHNICAL",
+        "color": "#ff0000",
         "main_revelation": ["수락"],
         "sub_revelation": ["분쟁"],
         "element": "화염",
@@ -853,7 +910,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3!"
     },
-    "야오링": {"color": "#ff4500",
+    "야오링": {
+        "role": "광역 디버퍼",
+        "tag":"방어력 감소, 받는 대미지 증가, 망각, 주원",
+        "color": "#ff4500",
         "main_revelation": ["여정", "여정"],
         "sub_revelation": ["주권", "풍요"],
         "element": "주원",
@@ -889,7 +949,10 @@ const characterData = {
         "mind_skill1": "1/HL",
         "mind_skill2": "2/3"
     },
-    "야오링·사자무": {"color": "#ff4500",
+    "야오링·사자무": {
+        "role": "화염 광역 딜러",
+        "tag":"변신, 화염 속성 TECHNICAL, 화상",
+        "color": "#ff4500",
         "main_revelation": ["수락"],
         "sub_revelation": ["분쟁"],
         "element": "화염",
@@ -925,7 +988,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3!"
     },
-    "유스케": {"color": "#00bfff",
+    "유스케": {
+        "role": "빙결 광역 딜러",
+        "tag":"반격, 추가 효과, 방어력, 관통",
+        "color": "#00bfff",
         "main_revelation": ["전념"],
         "sub_revelation": ["화려"],
         "element": "빙결",
@@ -961,7 +1027,10 @@ const characterData = {
         "mind_skill1": "1/HL",
         "mind_skill2": "2/3!"
     },
-    "유우미": {"color": "#9370db",
+    "유우미": {
+        "role": "속성 대미지보너스 서포터",
+        "tag":"공격력, 대미지보너스, 크리티컬확률",
+        "color": "#9370db",
         "main_revelation": ["진정성", "신뢰"],
         "sub_revelation": ["직책", "힘"],
         "element": "보조",
@@ -997,7 +1066,10 @@ const characterData = {
         "mind_skill1": "1/2!",
         "mind_skill2": "3!"
     },
-    "유이 YUI": {"color": "#8cd1cb",
+    "유이 YUI": {
+        "role": "전격 단일 딜러",
+        "tag":"추가 효과, 감전, 크리티컬확률",
+        "color": "#8cd1cb",
         "main_revelation": ["성장"],
         "sub_revelation": ["변환"],
         "element": "전격",
@@ -1033,7 +1105,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3/추격!"
     },
-    "유키미": {"color": "#642efe",
+    "유키미": {
+        "role": "단일 실드",
+        "tag":"축복, 대미지보너스, 방어력, 방어력 탈취",
+        "color": "#642efe",
         "main_revelation": ["신뢰", "창조"],
         "sub_revelation": ["풍요", "화해"],
         "element": "축복",
@@ -1069,7 +1144,10 @@ const characterData = {
         "mind_skill1": "1/3",
         "mind_skill2": "2/HL"
     },
-    "치즈코": {"color": "#2680a7",
+    "치즈코": {
+        "role": "단일 디버퍼",
+        "tag":"원소 이상, 방어력 감소, 받는 대미지 증가",
+        "color": "#2680a7",
         "main_revelation": ["여정", "여정", "조화"],
         "sub_revelation": ["주권", "풍요", "진리"],
         "element": "핵열",
@@ -1105,7 +1183,10 @@ const characterData = {
         "mind_skill1": "1/HL",
         "mind_skill2": "2/3!"
     },
-    "카스미": {"color": "#9932cc",
+    "카스미": {
+        "role": "축복 단일 딜러",
+        "tag":"HIGHLIGHT, 변신, 예열",
+        "color": "#9932cc",
         "main_revelation": ["지혜", "여정"],
         "sub_revelation": ["미덕", "주권"],
         "element": "축복",
@@ -1141,7 +1222,10 @@ const characterData = {
         "mind_skill1": "1/2!",
         "mind_skill2": "3/HL!"
     },
-    "카요": {"color": "#8b008b",
+    "카요": {
+        "role": "공격력/효과 명중 서포터",
+        "tag":"공격력, 효과 명중, 대미지보너스, 원소 이상, SP 회복",
+        "color": "#8b008b",
         "main_revelation": ["진정성"],
         "sub_revelation": ["직책"],
         "element": "보조",
@@ -1178,7 +1262,10 @@ const characterData = {
         "mind_skill1": "2/3",
         "mind_skill2": "1"
     },
-    "키라": {"color": "#ff69b4",
+    "키라": {
+        "role": "물리 단일 딜러",
+        "tag":"변신, 지속 대미지, 관통",
+        "color": "#ff69b4",
         "main_revelation": ["지혜"],
         "sub_revelation": ["억압"],
         "element": "물리",
@@ -1214,7 +1301,10 @@ const characterData = {
         "mind_skill1": "1/HL!",
         "mind_skill2": "2/3!"
     },
-    "키요시": {"color": "#2e8b57",
+    "키요시": {
+        "role": "화염 서브딜러",
+        "tag":"화상, 받는 대미지 증가, 화염 속성 TECHNICAL, TECHNICAL",
+        "color": "#2e8b57",
         "main_revelation": ["여정", "여정"],
         "sub_revelation": ["주권", "풍요"],
         "element": "화염",
@@ -1250,7 +1340,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "토모코": {"color": "#cc5995",
+    "토모코": {
+        "role": "단일 버퍼",
+        "tag":"공격력, 효과 명중, 수면, 받는 대미지 증가",
+        "color": "#cc5995",
         "main_revelation": ["신뢰", "신뢰", "창조"],
         "sub_revelation": ["풍요", "힘", "화해"],
         "element": "염동",
@@ -1286,7 +1379,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "토모코·여름": {"color": "#cc5995",
+    "토모코·여름": {
+        "role": "광역 힐러/디버퍼",
+        "tag":"공격력, 효과 명중, 받는 대미지 증가, 최대 생명 증가, 방어력 감소",
+        "color": "#cc5995",
         "main_revelation": ["조화", "신뢰", "진정성"],
         "sub_revelation": ["승리", "풍요", "환희"],
         "element": "염동",
@@ -1322,7 +1418,10 @@ const characterData = {
         "mind_skill1": "1/2",
         "mind_skill2": "3/HL"
     },
-    "토시야": {"color": "#4682b4",
+    "토시야": {
+        "role": "주원 단일 딜러",
+        "tag":"주원, 지속 대미지",
+        "color": "#4682b4",
         "main_revelation": ["지혜"],
         "sub_revelation": ["억압"],
         "element": "주원",
@@ -1358,7 +1457,10 @@ const characterData = {
         "mind_skill1": "-",
         "mind_skill2": "-"
     },
-    "하루": {"color": "#800080",
+    "하루": {
+        "role": "염동 광역 딜러",
+        "tag":"총격, 예열",
+        "color": "#800080",
         "main_revelation": ["지혜"],
         "sub_revelation": ["환희"],
         "element": "염동",
@@ -1394,7 +1496,10 @@ const characterData = {
         "mind_skill1": "3/HL!",
         "mind_skill2": "1/2"
     },
-    "하루나": {"color": "#ff1493",
+    "하루나": {
+        "role": "광역 버퍼",
+        "tag":"공격력, 대미지보너스",
+        "color": "#ff1493",
         "main_revelation": ["창조", "신뢰"],
         "sub_revelation": ["화해", "풍요"],
         "element": "염동",
@@ -1430,7 +1535,10 @@ const characterData = {
         "mind_skill1": "1/HL",
         "mind_skill2": "2/3"
     },
-    "후타바": {"color": "#32cd32",
+    "후타바": {
+        "role": "약점 강화 서포터",
+        "tag":"약점 변경, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬확률, 실드 부여",
+        "color": "#32cd32",
         "main_revelation": ["결심", "진정성"],
         "sub_revelation": ["직책", "직책"],
         "element": "보조",

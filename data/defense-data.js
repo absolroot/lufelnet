@@ -278,7 +278,7 @@ const defenseCalcData = [
         note: ""
     },
     {
-        id: 14-2,
+        id: "14-2",
         charName: "",
         charImage: "",
         type: "스킬1",
@@ -385,7 +385,7 @@ const defenseCalcData = [
         note: "의식6 → 3턴으로 증가"
     },
     {
-        id: 19-1,
+        id: "19-1",
         charName: "",
         charImage: "",
         type: "스킬1",
@@ -405,7 +405,7 @@ const defenseCalcData = [
         note: "의식6 → 3턴으로 증가"
     },
     {
-        id: 19-2,
+        id: "19-2",
         charName: "",
         charImage: "",
         type: "스킬1",

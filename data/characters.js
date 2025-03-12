@@ -600,7 +600,7 @@ const characterData = {
     },
     "모토하": {
         "role": "전격 서브 딜러",
-        "tag":"전격 대미지보너스, 감전",
+        "tag":"전격 대미지보너스, 감전, TECHNICAL",
         "color": "#1e90ff",
         "main_revelation": ["신뢰"],
         "sub_revelation": ["변환"],
@@ -912,7 +912,7 @@ const characterData = {
     },
     "야오링": {
         "role": "광역 디버퍼",
-        "tag":"방어력 감소, 받는 대미지 증가, 망각, 주원",
+        "tag":"방어력 감소, 받는 대미지 증가, 망각",
         "color": "#ff4500",
         "main_revelation": ["여정", "여정"],
         "sub_revelation": ["주권", "풍요"],
@@ -951,7 +951,7 @@ const characterData = {
     },
     "야오링·사자무": {
         "role": "화염 광역 딜러",
-        "tag":"변신, 화염 속성 TECHNICAL, 화상",
+        "tag":"변신, 화염 속성 TECHNICAL, 화상, 지속 대미지",
         "color": "#ff4500",
         "main_revelation": ["수락"],
         "sub_revelation": ["분쟁"],
@@ -1107,7 +1107,7 @@ const characterData = {
     },
     "유키미": {
         "role": "단일 실드",
-        "tag":"축복, 대미지보너스, 방어력, 방어력 탈취",
+        "tag":"축복, 실드, 대미지보너스, 방어력, 방어력 탈취",
         "color": "#642efe",
         "main_revelation": ["신뢰", "창조"],
         "sub_revelation": ["풍요", "화해"],
@@ -1303,7 +1303,7 @@ const characterData = {
     },
     "키요시": {
         "role": "화염 서브딜러",
-        "tag":"화상, 받는 대미지 증가, 화염 속성 TECHNICAL, TECHNICAL",
+        "tag":"화상, 받는 대미지 증가, 화염 속성 TECHNICAL, TECHNICAL, 지속 대미지",
         "color": "#2e8b57",
         "main_revelation": ["여정", "여정"],
         "sub_revelation": ["주권", "풍요"],
@@ -1381,7 +1381,7 @@ const characterData = {
     },
     "토모코·여름": {
         "role": "광역 힐러/디버퍼",
-        "tag":"공격력, 효과 명중, 받는 대미지 증가, 최대 생명 증가, 방어력 감소",
+        "tag":"공격력, 효과 명중, 받는 대미지 증가, 최대 생명 증가, 방어력 감소, 추가 효과",
         "color": "#cc5995",
         "main_revelation": ["조화", "신뢰", "진정성"],
         "sub_revelation": ["승리", "풍요", "환희"],
@@ -1537,7 +1537,7 @@ const characterData = {
     },
     "후타바": {
         "role": "약점 강화 서포터",
-        "tag":"약점 변경, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬확률, 실드 부여",
+        "tag":"약점 변경, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬확률, 실드",
         "color": "#32cd32",
         "main_revelation": ["결심", "진정성"],
         "sub_revelation": ["직책", "직책"],

@@ -1,3 +1,5 @@
+<link rel="canonical" href="https://www.lufel.net/tactic/tactic_preview.js" />
+
 class TacticPreview {
     constructor() {
         this.previewContainer = document.createElement('div');

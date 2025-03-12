@@ -7,6 +7,7 @@ Allow: /revelations/
 Allow: /tactic/
 Allow: /defense-calc/
 Allow: /tier/
+Disallow: /*?v=*
 
 # 사이트맵 위치
 Sitemap: https://www.lufel.net/sitemap.xml

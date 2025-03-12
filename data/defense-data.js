@@ -479,6 +479,24 @@ const defenseCalcData = [
         note: ""
     },
     {
+        id: "rico1",
+        charName: "리코",
+        charImage: "리코.webp",
+        type: "스킬1",
+        target: "광역",
+        skillIcon: "../img/skill-element/버프광역.png",
+        skillName: "노을 그림자술",
+        options: ["LV12","LV12+심상5"],
+        values: {
+            "LV12": 42.6,
+            "LV12+심상5": 45.5
+        },
+        defaultOption: "LV12+심상5",
+        value: 45.5,
+        duration: "2턴",
+        note: ""
+    },
+    {
         id: 23,
         charName: "야오링",
         charImage: "야오링.webp",

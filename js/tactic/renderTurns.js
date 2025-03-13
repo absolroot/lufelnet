@@ -1,6 +1,7 @@
       /* ========== 전체 렌더링 ========== */
       function renderTurns() {
         const turnsContainer = document.getElementById("turns");
+        const isLocked = turnsContainer.classList.contains('turns-locked');
         turnsContainer.innerHTML = "";
         
         // 화면 너비에 따라 턴 순서 결정
@@ -77,59 +78,63 @@
         });
         
         // (A) 턴 자체의 드래그앤드롭 (턴 순서 변경)
-        Sortable.create(turnsContainer, {
-          animation: 150,
-          handle: ".turn-header",
-          onEnd: function() {
-            // 현재 화면 순서에 맞춰 turns 배열 재정렬
-            const newTurnArr = [];
-            const turnDivs = turnsContainer.querySelectorAll(".turn-container");
-            turnDivs.forEach(div => {
-              const idx = parseInt(div.getAttribute("data-turn-index"), 10);
-              newTurnArr.push(turns[idx]);
+        if (!isLocked) {  // 잠금 상태가 아닐 때만 Sortable 활성화
+            Sortable.create(turnsContainer, {
+                animation: 150,
+                handle: ".turn-header",
+                onEnd: function() {
+                    // 현재 화면 순서에 맞춰 turns 배열 재정렬
+                    const newTurnArr = [];
+                    const turnDivs = turnsContainer.querySelectorAll(".turn-container");
+                    turnDivs.forEach(div => {
+                      const idx = parseInt(div.getAttribute("data-turn-index"), 10);
+                      newTurnArr.push(turns[idx]);
+                    });
+                    // 새 순서에 맞춰 턴 번호 재할당
+                    newTurnArr.forEach((turn, i) => {
+                      turn.turn = i + 1;
+                    });
+                    turns = newTurnArr;
+                    renderTurns();
+                }
             });
-            // 새 순서에 맞춰 턴 번호 재할당
-            newTurnArr.forEach((turn, i) => {
-              turn.turn = i + 1;
-            });
-            turns = newTurnArr;
-            renderTurns();
-          }
-        });
+        }
         
         // (B) 각 턴 내부 액션 리스트의 드래그앤드롭
         const actionLists = document.querySelectorAll(".actions");
         actionLists.forEach(list => {
-          Sortable.create(list, {
-            animation: 150,
-            group: 'actions',
-            onEnd: function(evt) {
-              const fromTurnIndex = parseInt(evt.from.closest('.turn-container').dataset.turnIndex);
-              const toTurnIndex = parseInt(evt.to.closest('.turn-container').dataset.turnIndex);
-              
-              // 드래그된 액션의 원본 데이터 저장
-              const movedAction = {...turns[fromTurnIndex].actions[parseInt(evt.item.dataset.actionIndex)]};
-              
-              // 새로운 순서로 액션 배열 재구성
-              const fromActions = Array.from(evt.from.children).map(item => {
-                const index = parseInt(item.dataset.actionIndex);
-                return index === parseInt(evt.item.dataset.actionIndex) ? movedAction : turns[fromTurnIndex].actions[index];
-              });
-              
-              const toActions = fromTurnIndex === toTurnIndex ? fromActions : 
-                Array.from(evt.to.children).map(item => {
-                  const index = parseInt(item.dataset.actionIndex);
-                  return item === evt.item ? movedAction : turns[toTurnIndex].actions[index];
+            if (!isLocked) {  // 잠금 상태가 아닐 때만 Sortable 활성화
+                Sortable.create(list, {
+                    animation: 150,
+                    group: 'actions',
+                    onEnd: function(evt) {
+                        const fromTurnIndex = parseInt(evt.from.closest('.turn-container').dataset.turnIndex);
+                        const toTurnIndex = parseInt(evt.to.closest('.turn-container').dataset.turnIndex);
+                        
+                        // 드래그된 액션의 원본 데이터 저장
+                        const movedAction = {...turns[fromTurnIndex].actions[parseInt(evt.item.dataset.actionIndex)]};
+                        
+                        // 새로운 순서로 액션 배열 재구성
+                        const fromActions = Array.from(evt.from.children).map(item => {
+                          const index = parseInt(item.dataset.actionIndex);
+                          return index === parseInt(evt.item.dataset.actionIndex) ? movedAction : turns[fromTurnIndex].actions[index];
+                        });
+                        
+                        const toActions = fromTurnIndex === toTurnIndex ? fromActions : 
+                          Array.from(evt.to.children).map(item => {
+                            const index = parseInt(item.dataset.actionIndex);
+                            return item === evt.item ? movedAction : turns[toTurnIndex].actions[index];
+                          });
+                        
+                        turns[fromTurnIndex].actions = fromActions;
+                        if(fromTurnIndex !== toTurnIndex) {
+                          turns[toTurnIndex].actions = toActions;
+                        }
+                        
+                        renderTurns();
+                    }
                 });
-              
-              turns[fromTurnIndex].actions = fromActions;
-              if(fromTurnIndex !== toTurnIndex) {
-                turns[toTurnIndex].actions = toActions;
-              }
-              
-              renderTurns();
             }
-          });
         });
       }
       

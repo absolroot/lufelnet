@@ -386,7 +386,7 @@
 
         <!-- 턴 영역 (6턴) -->
         <div class="mobile-buttons">
-          <button class="mobile-lock-btn" onclick="toggleTurnsLock()">턴 잠금</button>
+          <button class="mobile-lock-btn" onclick="toggleTurnsLock()">순서 이동 잠금</button>
           <button class="toggle-ui-btn" onclick="toggleUI()">UI 숨김</button>
         </div>
         <div id="turns">
@@ -727,6 +727,8 @@
         
         // 잠금 상태 저장
         localStorage.setItem('turnsLocked', turnsContainer.classList.contains('turns-locked'));
+
+        renderTurns();
       }
 
       // 페이지 로드 시 이전 잠금 상태 복원

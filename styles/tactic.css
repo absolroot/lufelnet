@@ -1013,18 +1013,14 @@ body {
       align-items: center;
     }
     
-    /* 잠금 상태일 때 턴 컨테이너 드래그 방지 */
-    .turns-locked .turn-container {
-      pointer-events: none;
-    }
     
-    .turns-locked .turn-header {
-      cursor: default;
-    }
-    
+    /* 잠금 상태일 때 드래그 커서 비활성화 */
+    .turns-locked .turn-header,
     .turns-locked .action-item {
       cursor: default;
     }
+
+
   }
 
   .persona-skill-input.unique-skill {

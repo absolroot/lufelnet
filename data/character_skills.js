@@ -1296,7 +1296,7 @@ const characterSkillsData = {
         }
 },
     "키라": {
-        "name": "키타지토 키라",
+        "name": "키타자토 키라",
         "skill1": {
             "name": "절단 기법/죄악의 게임",
             "element": "물리",

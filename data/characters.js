@@ -1275,7 +1275,7 @@ const characterData = {
         "position": "반항",
         "release_order": 10,
         "persona": "하르피이아",
-        "name": "키타지토 키라",
+        "name": "키타자토 키라",
         "codename": "MESSA",
         "sub_revel2": ["공격력"],
         "sub_revel3": ["공격력"],

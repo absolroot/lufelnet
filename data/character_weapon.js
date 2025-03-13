@@ -607,7 +607,7 @@ const WeaponData = {
         }
     },
     "키라": {
-        "name": "키타지토 키라",
+        "name": "키타자토 키라",
         "weapon4-1":{
             "name": "그레이 인피니티",
             "health": 1966,

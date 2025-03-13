@@ -904,8 +904,8 @@ const personaData = {
             priority: 2
         },
         uniqueSkill: {
-            name: "메디아라한",
-            effect: "모든 동료가 공격력 19.0%+575의 생명을 회복한다.",
+            name: "디아라마",
+            effect: "동료 1명이 공격력 35.6%+1077의 생명을 회복한다.",
             priority: 1,
             icon: "치료광역"
         },

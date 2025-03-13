@@ -1,3 +1,7 @@
+.main-wrapper{
+    box-sizing: border-box;
+}
+
 .navigation-path {
     margin-bottom: 4px;
     font-weight: 500;
@@ -501,6 +505,7 @@
     justify-content: center;
     gap: 1rem;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .pagination button {
@@ -672,8 +677,13 @@ small {
     }
     
     .post-comment {
-        font-size: 12px;
-        padding: 6px 10px;
+        box-sizing: border-box;
+        font-size: 11px;
+        padding: 6px 0px;
         margin-top: 6px;
+        max-width: 230px;
+        /* 텍스트 줄바꿈 */
+        word-break: break-all;
     }
+
 }

@@ -107,7 +107,27 @@
                 Sortable.create(list, {
                     animation: 150,
                     group: 'actions',
+                    // 입력 필드는 드래그 시작점에서 제외
+                    filter: '.action-memo-display, .action-memo',
+                    // 필터링된 요소에서는 드래그 시작 방지
+                    preventOnFilter: true,
+                    // 스크롤 관련 설정 추가
+                    scrollSensitivity: 80,
+                    scrollSpeed: 10,
+                    // 드래그 시작 시 스크롤 위치 저장
+                    onStart: function() {
+                        window.sortableScrollY = window.scrollY;
+                    },
+                    // 드래그 종료 시 저장된 스크롤 위치로 복원
                     onEnd: function(evt) {
+                        // 스크롤 위치 복원 (약간의 지연 추가)
+                        setTimeout(() => {
+                            if (window.sortableScrollY !== undefined) {
+                                window.scrollTo(0, window.sortableScrollY);
+                                window.sortableScrollY = undefined;
+                            }
+                        }, 10);
+                        
                         const fromTurnIndex = parseInt(evt.from.closest('.turn-container').dataset.turnIndex);
                         const toTurnIndex = parseInt(evt.to.closest('.turn-container').dataset.turnIndex);
                         

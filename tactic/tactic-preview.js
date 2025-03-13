@@ -1,4 +1,3 @@
-
 class TacticPreview {
     constructor() {
         this.previewContainer = document.createElement('div');
@@ -39,9 +38,11 @@ class TacticPreview {
                 });
 
             orderedParty.forEach(member => {
+                // 원더인 경우 건너뛰기
+                if (member.name === "원더") return;
+                
                 const container = document.createElement('div');
-
-                if (characterData[member.name] && member.name !== "원더") {
+                if (characterData[member.name]) {
                     container.className = 'character-container';
 
                     const charImg = document.createElement('img');
@@ -50,17 +51,6 @@ class TacticPreview {
                     charImg.alt = member.name;
                     charImg.title = member.name;
                     container.appendChild(charImg);
-
-                    // 원더의 경우 무기 이미지 추가
-                    /*
-                    if (member.name === "원더" && tacticData.weapon) {
-                        const weaponImg = document.createElement('img');
-                        weaponImg.className = 'weapon-img';
-                        weaponImg.src = `../img/wonder-weapon/${tacticData.weapon}.webp`;
-                        weaponImg.alt = tacticData.weapon;
-                        weaponImg.title = tacticData.weapon;
-                        container.appendChild(weaponImg);
-                    }*/
                 }
 
                 // 순서 이미지

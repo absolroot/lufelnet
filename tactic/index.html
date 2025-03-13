@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover, height=device-height">
   <meta name="google-adsense-account" content="ca-pub-5862324369257695">
 
   <!-- SEO 메타태그 -->
@@ -679,6 +679,47 @@
             }
           });
         });
+
+        const inputFields = document.querySelectorAll('input[type="text"], textarea');
+        let lastScrollPosition = 0;
+
+        inputFields.forEach(field => {
+            // focus 이벤트만 사용
+            field.addEventListener('focus', function() {
+                // 기본 동작을 방해하지 않고 자연스러운 키보드 표시 허용
+                setTimeout(() => {
+                    const fieldRect = this.getBoundingClientRect();
+                    const offset = fieldRect.top - 150;
+                    
+                    window.scrollTo({
+                        top: window.scrollY + offset,
+                        behavior: 'auto'
+                    });
+                }, 300);
+            });
+        });
+
+        // 페이지 로드 시 키보드 감지 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            // viewport 메타 태그 업데이트
+            const meta = document.querySelector('meta[name="viewport"]');
+            if (meta) {
+                meta.setAttribute('content', 
+                    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+                );
+            }
+        });
+
+          // 스크롤 끝에 도달했을 때 처리
+        window.addEventListener('scroll', function() {
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            // 스크롤이 거의 끝에 도달했을 때 약간의 여백 추가
+            document.body.style.paddingBottom = '100px';
+          } else {
+            document.body.style.paddingBottom = '';
+          }
+        });
+
       });
 
 

@@ -1,3 +1,7 @@
+html {
+  overscroll-behavior-y: none;
+}
+
 body {
     /* background: url("../img/ui/insidebg.jpg") no-repeat center center;*/
     background-size: cover;
@@ -6,6 +10,8 @@ body {
     padding: 0px;
     line-height: 1.5;
     overflow-x: hidden; /* 가로 스크롤 방지 */
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: auto;
   }
 
   .container {
@@ -951,6 +957,11 @@ body {
 
   /* 모바일 화면에서만 버튼 표시 */
   @media screen and (max-width: 1440px) {
+    body {
+        width: 100%;
+        min-height: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
 
     /* 모바일 버튼 컨테이너 */
     .mobile-buttons {
@@ -1013,7 +1024,7 @@ body {
       align-items: center;
     }
     
-    
+
     /* 잠금 상태일 때 드래그 커서 비활성화 */
     .turns-locked .turn-header,
     .turns-locked .action-item {
@@ -1081,6 +1092,44 @@ body {
   
   @media screen and (max-width: 1440px) {
 
+
+    /* 액션 아이템 내의 메모 입력 필드 특별 처리 */
+    .action-memo {
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: rgba(0, 0, 0, 0.15) !important;
+      position: relative;
+      z-index: 10 !important; /* 높은 z-index 값 */
+      -webkit-user-select: text;
+      user-select: text;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+      touch-action: manipulation;
+      cursor: text !important;
+      -webkit-user-modify: read-write;
+      -moz-user-modify: read-write;
+      user-modify: read-write;
+      pointer-events: auto !important;
+    }
+    
+    /* 액션 아이템 내의 메모 입력 필드가 포커스를 받았을 때 */
+    .action-memo:focus {
+      outline: 2px solid rgba(76, 154, 255, 0.5) !important;
+      box-shadow: 0 0 0 2px rgba(76, 154, 255, 0.2) !important;
+      background-color: rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    /* 액션 아이템 자체의 드래그 기능 비활성화 */
+    .action-item {
+      cursor: default !important;
+    }
+    
+    /* 메모 입력 필드를 포함하는 액션 아이템에 대한 특별 처리 */
+    .action-item:has(.action-memo:focus) {
+      cursor: default !important;
+      pointer-events: auto !important;
+      background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+    
     #top-container {
       width: 100% !important;
       display: flex;
@@ -1376,6 +1425,12 @@ body {
       padding: 8px 8px 0px 8px;
       align-items: center;
     }
+
+    /* 액션 아이템 내부의 입력 필드가 포커스를 유지하도록 설정 */
+    .action-item input[type="text"] {
+      pointer-events: auto !important;
+      touch-action: auto !important;
+    }
   }
 
   /* 드롭다운 옵션 스타일 수정 */
@@ -1406,5 +1461,113 @@ body {
     .wonder-weapon-input ~ .clear-input,
     .wonder-persona-input ~ .clear-input {
         display: none !important;
+    }
+  }
+
+  /* 메모 표시 영역 스타일 - 기존 action-memo와 유사하게 */
+  .memo-wrapper {
+    flex: 1;
+    position: relative;
+  }
+
+  .action-memo-display {
+    width: 160px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: text;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .action-memo-display.placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .action-memo-display:hover {
+    border-color: #ffffff;
+  }
+
+  /* hide UI 모드에서 placeholder 텍스트 숨기기 */
+  .hide-ui .action-memo-display.placeholder {
+    color: transparent;
+  }
+
+  /* 모달 스타일 - 기존 테마와 일치하도록 */
+  .memo-edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 300px;
+    background-color: #3d3030;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modal-memo-input {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .modal-memo-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .modal-memo-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 154, 255, 0.2);
+  }
+
+  .modal-confirm-btn {
+    padding: 8px 16px;
+    background-color: #b42f1d;
+    color: white;
+    border: none;
+    border-radius: 36px;
+    cursor: pointer;
+    font-size: 13px;
+    align-self: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .modal-confirm-btn:hover {
+    background-color: #7e1822;
+  }
+
+  /* 모바일 최적화 */
+  @media screen and (max-width: 1440px) {
+    .action-memo-display {
+      width: 100%;
+      font-size: 12px !important;
+      padding: 10px !important;
+    }
+    
+    .memo-edit-modal {
+      width: 90%;
+    }
+    
+    .modal-memo-input {
+      font-size: 16px;
+      padding: 12px;
+    }
+    
+    .modal-confirm-btn {
+      padding: 6px 12px;
+      font-size: 14px;
     }
   }

@@ -102,16 +102,76 @@
           li.appendChild(skillSelect);
         }
         
-        // (3) 메모 입력 필드 추가
-        const memoInput = document.createElement("input");
-        memoInput.type = "text";
-        memoInput.className = "action-memo";
-        memoInput.placeholder = "세부사항";
-        memoInput.value = action.memo || "";
-        memoInput.addEventListener("input", e => {
-          action.memo = e.target.value;
+        // (3) 메모 입력 필드 추가 - 모달 방식으로 변경
+        const memoWrapper = document.createElement("div");
+        memoWrapper.className = "memo-wrapper";
+        
+        // 실제 데이터를 저장할 hidden input
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.value = action.memo || "";
+        hiddenInput.className = "hidden-memo-input";
+        
+        // 표시용 div (클릭 가능)
+        const memoDisplay = document.createElement("div");
+        memoDisplay.className = "action-memo-display";
+        memoDisplay.textContent = action.memo || "세부사항";
+        if (!action.memo) {
+          memoDisplay.classList.add("placeholder");
+        }
+        
+        // 클릭 시 별도의 입력 모달 표시
+        memoDisplay.addEventListener("click", function(e) {
+          e.stopPropagation();
+          
+          // 기존 모달 제거
+          const existingModal = document.querySelector(".memo-edit-modal");
+          if (existingModal) {
+            document.body.removeChild(existingModal);
+          }
+          
+          // 모달 생성
+          const modal = document.createElement("div");
+          modal.className = "memo-edit-modal";
+          
+          // 모달 내부 입력 필드
+          const modalInput = document.createElement("input");
+          modalInput.type = "text";
+          modalInput.className = "modal-memo-input";
+          modalInput.value = hiddenInput.value;
+          modalInput.placeholder = "세부사항 입력";
+          
+          // 확인 버튼
+          const confirmBtn = document.createElement("button");
+          confirmBtn.className = "modal-confirm-btn";
+          confirmBtn.textContent = "확인";
+          
+          // 확인 버튼 클릭 시 값 저장 및 모달 닫기
+          confirmBtn.addEventListener("click", function() {
+            const newValue = modalInput.value;
+            hiddenInput.value = newValue;
+            action.memo = newValue;
+            memoDisplay.textContent = newValue || "세부사항";
+            memoDisplay.classList.toggle("placeholder", !newValue);
+            document.body.removeChild(modal);
+          });
+          
+          // 모달에 요소 추가
+          modal.appendChild(modalInput);
+          modal.appendChild(confirmBtn);
+          
+          // 모달을 body에 추가
+          document.body.appendChild(modal);
+          
+          // 입력 필드에 포커스
+          setTimeout(() => {
+            modalInput.focus();
+          }, 50);
         });
-        li.appendChild(memoInput);
+        
+        memoWrapper.appendChild(hiddenInput);
+        memoWrapper.appendChild(memoDisplay);
+        li.appendChild(memoWrapper);
         
         // 복제 버튼 추가
         const cloneBtn = document.createElement("button");

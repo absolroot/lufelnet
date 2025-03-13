@@ -1,7 +1,45 @@
 const characterSkillsData = {
     "원더": {
         "name": "원더"
-},
+    },
+    "아케치": {
+        "name": "아케치 고로",
+        "skill1": {
+            "name": "",
+            "element": "축복광역",
+            "type":"광역피해",
+            "sp": 20,
+        },
+        "skill2": {
+            "name": "",
+            "element": "주원광역",
+            "type":"광역피해",
+            "sp": 20,
+        },
+        "skill3": {
+            "name": "",
+            "element": "만능광역",
+            "type":"광역피해",
+            "sp": 20,
+        },
+        "skill_highlight": {
+            "element": "만능광역",
+            "type":"광역피해",
+            "description": ""
+        },
+        "passive1": {
+            "name": "",
+            "element": "패시브",
+            "description": ""
+        },
+        "passive2": {
+            "name": "",
+            "element": "패시브",
+            "description": ""
+        }    
+    },
+
+
     "미오": {
         "name": "나츠카와 미오",
         "skill1": {

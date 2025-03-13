@@ -5,7 +5,7 @@ const characterList = {
         "렌", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마코토", "미나미", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "슌",
-        "세이지", "안", "아야카", "야오링", "야오링·사자무",
+        "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
         "원더", "유스케", "유이 YUI", "유키미", "카스미",
         "키라", "키요시", "토모코", "토모코·여름", "토시야",
         "하루", "하루나", "치즈코"
@@ -65,12 +65,12 @@ const characterData = {
         "persona": "로빈후드",
         "name": "아케치 고로",
         "codename": "CROW",
-        "sub_revel2": ["미출시"],
-        "sub_revel3": ["미출시"],
-        "sub_revel4": ["미출시"],
-        "sub_option1": ["미출시"],
-        "sub_option2": ["미출시"],
-        "sub_option3": ["미출시"],
+        "sub_revel2": ["미확인"],
+        "sub_revel3": ["미확인"],
+        "sub_revel4": ["미확인"],
+        "sub_option1": ["미확인"],
+        "sub_option2": ["미확인"],
+        "sub_option3": ["미확인"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -80,14 +80,14 @@ const characterData = {
             "LV13+5": false
         },
         "battle_plus_stats": "nan",
-        "skill1_lv": "미출시",
-        "skill2_lv": "미출시",
-        "skill3_lv": "미출시",
-        "skill4_lv": "미출시",
-        "mind_stats1": "미출시",
-        "mind_stats2": "미출시",
-        "mind_skill1": "미출시",
-        "mind_skill2": "미출시"
+        "skill1_lv": "미확인",
+        "skill2_lv": "미확인",
+        "skill3_lv": "미확인",
+        "skill4_lv": "미확인",
+        "mind_stats1": "미확인",
+        "mind_stats2": "미확인",
+        "mind_skill1": "미확인",
+        "mind_skill2": "미확인"
     },
 
     "미오": {

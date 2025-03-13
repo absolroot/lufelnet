@@ -18,6 +18,25 @@ const WeaponData = {
             "description": ""
         }
     },
+    "아케치": {
+        "name": "아케치 고로",
+        "weapon4-1":{
+            "name": "",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "",
+            "description": ""
+        },
+        "weapon5-1":{
+            "name": "",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "",
+            "description": ""
+        }
+    },
 
     "미오": {
         "name": "나츠카와 미오",

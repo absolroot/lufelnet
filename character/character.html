@@ -390,6 +390,15 @@
 
             const character = characterData[characterName];
             const ritual = ritualData[characterName];
+            // 아케치와 미오 데이터 비교
+console.log("아케치 데이터 키:", Object.keys(ritualData["아케치"]));
+console.log("미오 데이터 키:", Object.keys(ritualData["미오"]));
+
+// 아케치 데이터 직접 접근 시도
+console.log("아케치 name:", ritualData["아케치"].name);
+console.log("아케치 r0:", ritualData["아케치"].r0);
+console.log("아케치 r0_detail:", ritualData["아케치"].r0_detail);
+// ... existing code ...
 
             // 이미지 설정
             document.querySelector('.thief-image').src = `../img/character-detail/${characterName}.webp`;

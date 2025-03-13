@@ -907,7 +907,7 @@ const personaData = {
             name: "디아라마",
             effect: "동료 1명이 공격력 35.6%+1077의 생명을 회복한다.",
             priority: 1,
-            icon: "치료광역"
+            icon: "치료"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 생명을 회복한다.",

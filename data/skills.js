@@ -2482,7 +2482,7 @@ const personaSkillList = {
         effects: [
             {
                 type: "패시브",
-                stat: "크리티컬효과",
+                stat: "크리티컬 효과",
                 value: 7
             }
         ]
@@ -2495,7 +2495,7 @@ const personaSkillList = {
         effects: [
             {
                 type: "패시브",
-                stat: "크리티컬효과",
+                stat: "크리티컬 효과",
                 value: 10
             }
         ]
@@ -2508,7 +2508,7 @@ const personaSkillList = {
         effects: [
             {
                 type: "패시브",
-                stat: "크리티컬효과",
+                stat: "크리티컬 효과",
                 value: 13
             }
         ]
@@ -2521,7 +2521,7 @@ const personaSkillList = {
         effects: [
             {
                 type: "패시브",
-                stat: "크리티컬효과",
+                stat: "크리티컬 효과",
                 value: 16.2
             }
         ]

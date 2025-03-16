@@ -29,12 +29,12 @@ const WeaponData = {
             "description": ""
         },
         "weapon5-1":{
-            "name": "",
+            "name": "신의 심판",
             "health": 0,
             "attack": 0,
             "defense": 0,
             "skill_name": "",
-            "description": ""
+            "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다.\n자신이 『정확』 상태 또는 『혼돈』 상태를 획득하면 턴 동안 아군 전체 동료의 공격력이 증가한다. 『탐정 동료』가 페르소나 스킬/HIGHLIGHT/추가 효과를 시전하면 일정 턴 동안 아케치 고로의 크리티컬 효과가 증가한다."
         }
     },
 

@@ -13,14 +13,30 @@ turnContainers.forEach(container => {
     const charSelect = actionItem.querySelector('.action-character');
     const personaSelect = actionItem.querySelector('.wonder-persona-select');
     const skillSelect = actionItem.querySelector('.action-skill');
+    
+    // 메모 입력 필드 가져오기 (커스텀 드롭다운 대응)
     const memoInput = actionItem.querySelector('.action-memo');
+    const memoDisplay = actionItem.querySelector('.action-memo-display');
+    
+    // 메모 텍스트 가져오기
+    let memoText = '';
+    if (memoInput) {
+        memoText = memoInput.value || '';
+    } else if (memoDisplay) {
+        memoText = memoDisplay.textContent || '';
+    }
+    
+    // '세부사항' 텍스트인 경우 빈 문자열로 설정
+    if (memoText === '세부사항') {
+        memoText = '';
+    }
     
     actions.push({
         m: actionItem.classList.contains('auto-action') ? 0 : 1, // type -> m
         c: charSelect ? charSelect.value : '', // character -> c
         w: personaSelect ? personaSelect.value : '', // wonderPersona -> w
         a: skillSelect ? skillSelect.value : '', // action -> a
-        mm: memoInput ? memoInput.value : '' // memo -> mm
+        mm: memoText // memo -> mm ('세부사항'이 아닌 경우만)
     });
     });
     

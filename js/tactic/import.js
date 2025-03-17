@@ -184,6 +184,28 @@ input.onchange = function(e) {
         updatePartyImages();
         renderTurns();
         
+        // 액션 메모 값 설정 (renderTurns 이후에 실행)
+        setTimeout(() => {
+            turns.forEach((turn, turnIndex) => {
+                const turnContainer = document.querySelector(`.turn-container[data-turn-index="${turnIndex}"]`);
+                if (!turnContainer) return;
+                
+                const actionItems = turnContainer.querySelectorAll('.action-item');
+                turn.actions.forEach((action, actionIndex) => {
+                    if (actionIndex >= actionItems.length) return;
+                    
+                    const actionItem = actionItems[actionIndex];
+                    const memoInput = actionItem.querySelector('.action-memo');
+                    const memoDisplay = actionItem.querySelector('.action-memo-display');
+                    
+                    if (action.memo && (memoInput || memoDisplay)) {
+                        if (memoInput) memoInput.value = action.memo;
+                        if (memoDisplay) memoDisplay.textContent = action.memo;
+                    }
+                });
+            });
+        }, 500);
+        
         // URL 파라미터 제거하여 이후 자동 업데이트 활성화
         window.history.replaceState({}, document.title, getBaseUrl());
         

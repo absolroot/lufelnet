@@ -710,7 +710,7 @@
             }
         });
 
-          // 스크롤 끝에 도달했을 때 처리
+        // 스크롤 끝에 도달했을 때 처리
         window.addEventListener('scroll', function() {
           if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
             // 스크롤이 거의 끝에 도달했을 때 약간의 여백 추가
@@ -719,6 +719,24 @@
             document.body.style.paddingBottom = '';
           }
         });
+
+        // 화면 크기에 따라 캡처 버튼 표시 여부 설정
+        function updateCaptureButtonVisibility() {
+          const captureBtn = document.querySelector('.capture-btn');
+          if (captureBtn) {
+            if (window.innerWidth <= 1440) {
+              captureBtn.style.display = 'none';
+            } else {
+              captureBtn.style.display = '';
+            }
+          }
+        }
+        
+        // 초기 로드 시 실행
+        updateCaptureButtonVisibility();
+        
+        // 화면 크기가 변경될 때마다 실행
+        window.addEventListener('resize', updateCaptureButtonVisibility);
 
       });
 

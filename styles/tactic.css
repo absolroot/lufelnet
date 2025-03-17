@@ -1572,11 +1572,4 @@ body {
     }
   }
 
-
-  @media screen and (max-width: 1440px) {
-    .capture-btn {
-      display: none;
-    }
-  }
-  
   

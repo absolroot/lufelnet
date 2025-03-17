@@ -72,8 +72,8 @@
       <script src="../js/simulator.js?v=${APP_VERSION}"><\/script>
     `);
   </script>
-  <!-- html2canvas 라이브러리 추가 -->
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <!-- html-to-image 라이브러리 추가 -->
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -784,30 +784,115 @@
         }
       });
 
-      // 캡처 기능 (개발 중)
+      
+      // html-to-image 라이브러리를 사용한 캡처 함수 (margin 조정)
       async function captureAndShare() {
         try {
-          // UI 요소 숨기기
+          // 로딩 표시
+          const loadingEl = document.createElement('div');
+          loadingEl.style.position = 'fixed';
+          loadingEl.style.top = '50%';
+          loadingEl.style.left = '50%';
+          loadingEl.style.transform = 'translate(-50%, -50%)';
+          loadingEl.style.background = 'rgba(0,0,0,0.7)';
+          loadingEl.style.color = 'white';
+          loadingEl.style.padding = '15px 20px';
+          loadingEl.style.borderRadius = '5px';
+          loadingEl.style.zIndex = '9999';
+          loadingEl.textContent = '캡처 준비 중...';
+          document.body.appendChild(loadingEl);
+          
+          // UI 숨기기 (원래 상태 저장)
           const container = document.querySelector('.container');
+          const originalUIState = container.classList.contains('hide-ui');
           container.classList.add('hide-ui');
           
-          // 스크린샷 생성
-          const canvas = await html2canvas(document.querySelector('.container'), {
-            backgroundColor: null,
-            scale: 2, // 해상도 2배 증가
-            logging: false,
-            useCORS: true
+          // 캡처할 요소
+          const mainWrapper = document.querySelector('.main-wrapper');
+          
+          // 원래 스타일 저장
+          const originalStyles = {
+            left: mainWrapper.style.left,
+            right: mainWrapper.style.right,
+            marginLeft: mainWrapper.style.marginLeft,
+            marginRight: mainWrapper.style.marginRight,
+            paddingLeft: mainWrapper.style.paddingLeft,
+            paddingRight: mainWrapper.style.paddingRight,
+            containerMarginLeft: mainWrapper.style.marginLeft,
+            containerMarginRight: mainWrapper.style.marginRight,
+            containerPaddingLeft: mainWrapper.style.paddingLeft,
+            containerPaddingRight: mainWrapper.style.paddingRight
+          };
+          
+          // 캡처를 위해 스타일 설정
+          mainWrapper.style.left = '0';
+          mainWrapper.style.right = 'auto';
+          mainWrapper.style.marginLeft = '0';
+          mainWrapper.style.marginRight = '0';
+          mainWrapper.style.paddingLeft = '0';
+          mainWrapper.style.paddingRight = '0';
+          container.style.marginLeft = '0';
+          container.style.marginRight = '0';
+          container.style.paddingLeft = '0';
+          container.style.paddingRight = '0';
+
+          // 캡처에서 제외할 요소 숨기기
+          const mobileButtons = document.querySelector('.mobile-buttons');
+          const topButtons = document.querySelector('.top-buttons');
+          
+          const originalMobileButtonsDisplay = mobileButtons ? mobileButtons.style.display : null;
+          const originalTopButtonsDisplay = topButtons ? topButtons.style.display : null;
+          
+          if (mobileButtons) mobileButtons.style.display = 'none';
+          if (topButtons) topButtons.style.display = 'none';
+          
+          // 잠시 대기 (UI 변경 적용 시간)
+          await new Promise(resolve => setTimeout(resolve, 300));
+          
+          loadingEl.textContent = '캡처 중...';
+          
+          // 현재 main-wrapper의 크기 가져오기
+          const rect = mainWrapper.getBoundingClientRect();
+          
+          // html-to-image 라이브러리를 사용하여 캡처
+          const dataUrl = await htmlToImage.toPng(mainWrapper, {
+            quality: 1.0,
+            backgroundColor: '#1a1a1a',
+            pixelRatio: window.devicePixelRatio,
+            width: rect.width + 200,  // 현재 main-wrapper의 너비 사용
+            height: rect.height, // 현재 main-wrapper의 높이 사용
+            skipFonts: false,
+            fontEmbedCSS: true,
+            imagePlaceholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
           });
           
-          // UI 요소 복원
-          container.classList.remove('hide-ui');
+          // 원래 스타일로 복원
+          mainWrapper.style.left = originalStyles.left;
+          mainWrapper.style.right = originalStyles.right;
+          mainWrapper.style.marginLeft = originalStyles.marginLeft;
+          mainWrapper.style.marginRight = originalStyles.marginRight;
+          mainWrapper.style.paddingLeft = originalStyles.paddingLeft;
+          mainWrapper.style.paddingRight = originalStyles.paddingRight;
+          container.style.marginLeft = originalStyles.containerMarginLeft;
+          container.style.marginRight = originalStyles.containerMarginRight;
+          container.style.paddingLeft = originalStyles.containerPaddingLeft;
+          container.style.paddingRight = originalStyles.containerPaddingRight;
           
-          // 캔버스를 이미지로 변환
-          const image = canvas.toDataURL('image/png');
+          // 숨긴 요소 복원
+          if (mobileButtons) mobileButtons.style.display = originalMobileButtonsDisplay || '';
+          if (topButtons) topButtons.style.display = originalTopButtonsDisplay || '';
           
-          // 이미지 공유 (모바일 기기)
+          // UI 상태 복원
+          if (!originalUIState) {
+            container.classList.remove('hide-ui');
+          }
+          
+          loadingEl.textContent = '이미지 생성 완료!';
+          
+          // 공유 또는 다운로드
           if (navigator.share) {
-            const blob = await (await fetch(image)).blob();
+            loadingEl.textContent = '공유 준비 중...';
+            const blob = await (await fetch(dataUrl)).blob();
             const file = new File([blob], 'p5x-tactic.png', { type: 'image/png' });
             
             await navigator.share({
@@ -816,15 +901,34 @@
               text: '페르소나5X 택틱 메이커로 생성된 이미지입니다.'
             });
           } else {
-            // PC에서는 다운로드 링크 생성
             const link = document.createElement('a');
             link.download = 'p5x-tactic.png';
-            link.href = image;
+            link.href = dataUrl;
             link.click();
           }
+          
+          // 로딩 표시 제거
+          document.body.removeChild(loadingEl);
+          
         } catch (error) {
-          console.error('캡처 중 오류 발생:', error);
-          alert('캡처 중 오류가 발생했습니다.');
+          console.error('캡처 오류:', error);
+          alert('캡처 중 오류가 발생했습니다: ' + error.message);
+          
+          // 오류 발생 시 UI 상태 복원
+          const container = document.querySelector('.container');
+          if (container.classList.contains('hide-ui')) {
+            container.classList.remove('hide-ui');
+          }
+          
+          // 로딩 표시 제거
+          try {
+            const loadingEl = document.querySelector('div[style*="position: fixed"]');
+            if (loadingEl && loadingEl.parentNode) {
+              loadingEl.parentNode.removeChild(loadingEl);
+            }
+          } catch (e) {
+            console.error('로딩 표시 제거 오류:', e);
+          }
         }
       }
     </script>

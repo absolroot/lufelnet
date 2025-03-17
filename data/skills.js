@@ -1714,7 +1714,7 @@ const personaSkillList = {
         description: "모든 적의 속성 증가 효과 1개를 제거한다.",
         type: "지원",
         target: "전체",
-        icon : "보조광역",
+        icon : "버프광역",
         effects: [
             {
                 type: "버프해제",
@@ -1728,7 +1728,7 @@ const personaSkillList = {
         description: "모든 동료의 속성 감소 효과를 1개 제거한다.",
         type: "지원",
         target: "전체",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "디버프해제",
@@ -1742,7 +1742,7 @@ const personaSkillList = {
         description: "동료 1명의 공격력이 15.5% 증가하고, 자신의 공격력 500포인트마다 1.3% 추가 증가한다. 상한은 10.4%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "단일",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "버프",
@@ -1759,7 +1759,7 @@ const personaSkillList = {
         description: "모든 동료의 공격력이 10.9% 증가하고, 자신의 공격력 500포인트마다 0.9% 추가 증가한다. 상한은 7.2%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "전체",
-        icon : "보조광역",
+        icon : "버프광역",
         effects: [
             {
                 type: "버프",
@@ -1776,7 +1776,7 @@ const personaSkillList = {
         description: "동료 1명의 방어력이 23.3% 증가하고, 자신의 방어력 500마다 3.9% 추가 증가한다. 상한은 15.6%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "단일",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "버프",
@@ -1793,7 +1793,7 @@ const personaSkillList = {
         description: "모든 동료의 방어력이 16.3% 증가하고, 자신의 방어력 500마다 2.7% 추가 증가한다. 상한은 10.8%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "전체",
-        icon : "보조광역",
+        icon : "버프광역",
         effects: [
             {
                 type: "버프",
@@ -1810,7 +1810,7 @@ const personaSkillList = {
         description: "동료 1명의 효과 명중, 효과 저항이 9.3% 증가하고, 자신의 효과 명중 25%마다 1.6% 추가 증가한다. 상한은 6.4%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "단일",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "버프",
@@ -1827,7 +1827,7 @@ const personaSkillList = {
         description: "모든 동료의 효과 명중, 효과 저항이 6.5% 증가하고, 자신의 효과 명중 25%마다 1.1% 추가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "전체",
-        icon : "보조광역",
+        icon : "버프광역",
         effects: [
             {
                 type: "버프",
@@ -1844,7 +1844,7 @@ const personaSkillList = {
         description: "동료 1명의 크리티컬 확률이 9.3% 증가하고, 자신의 크리티컬 확률 10%마다 1.6% 추가 증가한다. 상한은 6.4%이며, 효과는 3턴 동안 지속된다.",
         type: "지원",
         target: "단일",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "버프",
@@ -1861,7 +1861,7 @@ const personaSkillList = {
         description: "자신의 다음 마법 속성 대미지가 52.1% 증가하며 1턴 동안 지속된다.",
         type: "지원",
         target: "자신",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "버프",
@@ -1876,7 +1876,7 @@ const personaSkillList = {
         description: "자신의 다음 물리 속성 대미지가 52.1% 증가하며 1턴 동안 지속된다.",
         type: "지원",
         target: "자신",
-        icon : "보조",
+        icon : "버프",
         effects: [
             {
                 type: "버프",

@@ -9,6 +9,7 @@
         // input을 컨테이너로 감싸기
         const inputContainer = document.createElement("div");
         inputContainer.className = "input-container";
+        inputContainer.style.position = "relative";
         
         // 기존 input을 새 컨테이너로 이동
         weaponInput.parentNode.insertBefore(inputContainer, weaponInput);
@@ -23,6 +24,95 @@
           weaponInput.focus();
         });
         inputContainer.appendChild(clearBtn);
+        
+        // 커스텀 드롭다운 생성
+        const customDropdown = document.createElement("div");
+        customDropdown.className = "custom-dropdown";
+        inputContainer.appendChild(customDropdown);
+        
+        // datalist 속성 제거 (커스텀 드롭다운 사용)
+        weaponInput.removeAttribute("list");
+        
+        // 드롭다운 항목 생성 함수
+        const createWeaponDropdownItems = (filter = "") => {
+          customDropdown.innerHTML = "";
+          
+          // 무기 목록 필터링 (필터가 있을 경우만 필터링)
+          let filteredWeapons = wonderWeapons;
+          if (filter) {
+            filteredWeapons = wonderWeapons.filter(weapon => 
+              weapon.toLowerCase().includes(filter.toLowerCase())
+            );
+          }
+          
+          // 드롭다운 항목 추가
+          filteredWeapons.forEach(weapon => {
+            const item = document.createElement("div");
+            item.className = "dropdown-item";
+            
+            // 무기 아이콘 추가
+            const iconImg = document.createElement("img");
+            iconImg.className = "weapon-icon";
+            iconImg.src = `../img/wonder-weapon/${weapon}.webp`;
+            iconImg.alt = "";
+            iconImg.onerror = function() {
+              // 이미지 로드 실패 시 아이콘 제거
+              this.style.display = 'none';
+            };
+            item.appendChild(iconImg);
+            
+            // 무기 이름 추가
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = weapon;
+            item.appendChild(nameSpan);
+            
+            item.addEventListener("click", () => {
+              weaponInput.value = weapon;
+              customDropdown.classList.remove("active");
+              
+              // change 이벤트 발생
+              const event = new Event("change", { bubbles: true });
+              weaponInput.dispatchEvent(event);
+            });
+            customDropdown.appendChild(item);
+          });
+        };
+        
+        // 드롭다운 관련 이벤트 처리
+        weaponInput.addEventListener("focus", function() {
+          createWeaponDropdownItems(this.value);
+          customDropdown.classList.add("active");
+          
+          // 현재 스크롤 위치 저장
+          window.lastScrollY = window.scrollY;
+        });
+        
+        weaponInput.addEventListener("blur", function() {
+          // 약간의 지연 후 드롭다운 닫기 (항목 클릭 이벤트가 발생할 시간 확보)
+          setTimeout(() => {
+            customDropdown.classList.remove("active");
+          }, 200);
+        });
+        
+        weaponInput.addEventListener("input", function() {
+          createWeaponDropdownItems(this.value);
+          customDropdown.classList.add("active");
+        });
+        
+        // 드롭다운 화살표 클릭 처리
+        weaponInput.addEventListener("mousedown", function(e) {
+          // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
+          if (e.offsetX > this.offsetWidth - 20) {
+            e.preventDefault();
+            
+            if (customDropdown.classList.contains("active")) {
+              customDropdown.classList.remove("active");
+            } else {
+              createWeaponDropdownItems(this.value);
+              customDropdown.classList.add("active");
+            }
+          }
+        });
 
         const inputs = wonderConfigDiv.querySelectorAll(".wonder-persona-input");
         
@@ -171,54 +261,297 @@
           });
         });
 
-        // 무기 입력 필드 이벤트 리스너 수정
-        weaponInput.addEventListener("change", (e) => {
-          updatePartyImages();
-        });
+        // 드롭다운 높이 제한을 위한 스타일 추가
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            /* 커스텀 드롭다운 스타일 */
+            .custom-dropdown {
+                display: none;
+                position: absolute;
+                max-height: 300px; /* 약 20개 항목 표시 가능한 높이 */
+                overflow-y: auto;
+                background: #3d3030;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 3px;
+                z-index: 1000;
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                left: 0;
+                top: 100%;
+            }
+            
+            .custom-dropdown.active {
+                display: block;
+            }
+            
+            .dropdown-item {
+                padding: 8px 12px;
+                cursor: pointer;
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .dropdown-item:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .skill-icon {
+                width: 16px;
+                height: 16px;
+                object-fit: contain;
+            }
 
-        weaponInput.addEventListener("input", (e) => {
-          updatePartyImages();
-        });
+            .persona-icon {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+            }
+            
+            .weapon-icon {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+            }
+        `;
+        document.head.appendChild(styleElement);
 
         // 페르소나 스킬 datalist 생성
         const skillsDatalist = document.createElement("datalist");
         skillsDatalist.id = "persona-skills-list";
         
-        // 스킬 옵션 추가
-        Object.values(personaData).forEach(persona => {
-            // 고유 스킬 추가
-            if (persona.uniqueSkill) {
-                const option = document.createElement("option");
-                option.value = persona.uniqueSkill.name;
-                skillsDatalist.appendChild(option);
-            }
-            // HIGHLIGHT 추가
-            if (persona.highlight) {
-                const option = document.createElement("option");
-                option.value = "HIGHLIGHT";
-                skillsDatalist.appendChild(option);
-            }
+        // personaSkillList에서 모든 스킬 수집
+        const skillsWithIcons = [];
+
+        // personaSkillList의 모든 스킬 추가
+        Object.entries(personaSkillList).forEach(([skillName, skillData]) => {
+            skillsWithIcons.push({
+                name: skillName,
+                icon: skillData.icon || "" // 아이콘 정보가 없을 경우 빈 문자열
+            });
         });
-        
-        document.body.appendChild(skillsDatalist);
+
 
         // 페르소나 스킬 입력 필드 설정
         const skillInputs = wonderConfigDiv.querySelectorAll(".persona-skill-input");
         skillInputs.forEach((input) => {
+            // datalist 속성 제거 (커스텀 드롭다운 사용)
+            input.removeAttribute("list");
+            
             const inputContainer = document.createElement("div");
             inputContainer.className = "input-container";
+            inputContainer.style.position = "relative";
             
             input.parentNode.insertBefore(inputContainer, input);
             inputContainer.appendChild(input);
-
+            
+            // 커스텀 드롭다운 생성
+            const customDropdown = document.createElement("div");
+            customDropdown.className = "custom-dropdown";
+            inputContainer.appendChild(customDropdown);
+            
+            // 드롭다운 항목 생성 함수
+            const createDropdownItems = (filter = "") => {
+                customDropdown.innerHTML = "";
+                
+                // 스킬 목록 필터링 (필터가 있을 경우만 필터링)
+                let filteredSkills = skillsWithIcons;
+                if (filter) {
+                    filteredSkills = skillsWithIcons.filter(skill => 
+                        skill.name.toLowerCase().includes(filter.toLowerCase())
+                    );
+                }
+                
+                // 드롭다운 항목 추가 (모든 스킬 표시)
+                filteredSkills.forEach(skill => {
+                    const item = document.createElement("div");
+                    item.className = "dropdown-item";
+                    
+                    // 아이콘이 있으면 이미지 추가
+                    if (skill.icon) {
+                        const iconImg = document.createElement("img");
+                        iconImg.className = "skill-icon";
+                        iconImg.src = `../img/skill-element/${skill.icon}.png`;
+                        iconImg.alt = "";
+                        iconImg.onerror = function() {
+                            // 이미지 로드 실패 시 아이콘 제거
+                            this.style.display = 'none';
+                        };
+                        item.appendChild(iconImg);
+                    }
+                    
+                    // 스킬 이름 추가
+                    const nameSpan = document.createElement("span");
+                    nameSpan.textContent = skill.name;
+                    item.appendChild(nameSpan);
+                    
+                    item.addEventListener("click", () => {
+                        input.value = skill.name;
+                        customDropdown.classList.remove("active");
+                        
+                        // change 이벤트 발생
+                        const event = new Event("change", { bubbles: true });
+                        input.dispatchEvent(event);
+                    });
+                    customDropdown.appendChild(item);
+                });
+            };
+            
+            // 드롭다운 관련 이벤트 처리
+            input.addEventListener("focus", function() {
+                createDropdownItems(this.value);
+                customDropdown.classList.add("active");
+                
+                // 현재 스크롤 위치 저장
+                window.lastScrollY = window.scrollY;
+            });
+            
+            input.addEventListener("blur", function() {
+                // 약간의 지연 후 드롭다운 닫기 (항목 클릭 이벤트가 발생할 시간 확보)
+                setTimeout(() => {
+                    customDropdown.classList.remove("active");
+                }, 200);
+            });
+            
+            input.addEventListener("input", function() {
+                createDropdownItems(this.value);
+                customDropdown.classList.add("active");
+            });
+            
+            // 드롭다운 화살표 클릭 처리
+            input.addEventListener("mousedown", function(e) {
+                // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
+                if (e.offsetX > this.offsetWidth - 20) {
+                    e.preventDefault();
+                    
+                    if (customDropdown.classList.contains("active")) {
+                        customDropdown.classList.remove("active");
+                    } else {
+                        createDropdownItems(this.value);
+                        customDropdown.classList.add("active");
+                    }
+                }
+            });
+            
             // 입력 이벤트 리스너
             input.addEventListener("change", () => {
+                // 현재 스크롤 위치 저장
+                const scrollY = window.scrollY;
+                
                 debouncedUpdate();
                 updateActionMemos();
+                
+                // 스크롤 위치 복원
+                setTimeout(() => {
+                    window.scrollTo(0, scrollY);
+                }, 10);
             });
+            
             input.addEventListener("input", () => {
+                // 현재 스크롤 위치 저장
+                const scrollY = window.scrollY;
+                
                 debouncedUpdate();
                 updateActionMemos();
+                
+                // 스크롤 위치 복원
+                setTimeout(() => {
+                    window.scrollTo(0, scrollY);
+                }, 10);
+            });
+        });
+
+        // 페르소나 입력 필드에도 동일한 커스텀 드롭다운 적용
+        inputs.forEach((input, idx) => {
+            // datalist 속성 제거 (커스텀 드롭다운 사용)
+            input.removeAttribute("list");
+            
+            // 커스텀 드롭다운 생성
+            const customDropdown = document.createElement("div");
+            customDropdown.className = "custom-dropdown";
+            input.parentNode.appendChild(customDropdown);
+            
+            // 드롭다운 항목 생성 함수
+            const createDropdownItems = (filter = "") => {
+                customDropdown.innerHTML = "";
+                
+                // 페르소나 목록 필터링
+                let filteredPersonas = Object.keys(personaData);
+                if (filter) {
+                    filteredPersonas = filteredPersonas.filter(persona => 
+                        persona.toLowerCase().includes(filter.toLowerCase())
+                    );
+                }
+                
+                // 드롭다운 항목 추가
+                filteredPersonas.forEach(persona => {
+                    const item = document.createElement("div");
+                    item.className = "dropdown-item";
+                    
+                    // 페르소나 아이콘 추가
+                    const iconImg = document.createElement("img");
+                    iconImg.className = "persona-icon";
+                    iconImg.src = `../img/persona/${persona}.webp`;
+                    iconImg.alt = "";
+                    iconImg.onerror = function() {
+                        // 이미지 로드 실패 시 아이콘 제거
+                        this.style.display = 'none';
+                    };
+                    item.appendChild(iconImg);
+                    
+                    // 페르소나 이름 추가
+                    const nameSpan = document.createElement("span");
+                    nameSpan.textContent = persona;
+                    item.appendChild(nameSpan);
+                    
+                    item.addEventListener("click", () => {
+                        input.value = persona;
+                        customDropdown.classList.remove("active");
+                        
+                        // change 이벤트 발생
+                        const event = new Event("change", { bubbles: true });
+                        input.dispatchEvent(event);
+                    });
+                    customDropdown.appendChild(item);
+                });
+            };
+            
+            // 드롭다운 관련 이벤트 처리
+            input.addEventListener("focus", function() {
+                createDropdownItems(this.value);
+                customDropdown.classList.add("active");
+                
+                // 현재 스크롤 위치 저장
+                window.lastScrollY = window.scrollY;
+            });
+            
+            input.addEventListener("blur", function() {
+                // 약간의 지연 후 드롭다운 닫기 (항목 클릭 이벤트가 발생할 시간 확보)
+                setTimeout(() => {
+                    customDropdown.classList.remove("active");
+                }, 200);
+            });
+            
+            input.addEventListener("input", function() {
+                createDropdownItems(this.value);
+                customDropdown.classList.add("active");
+            });
+            
+            // 드롭다운 화살표 클릭 처리
+            input.addEventListener("mousedown", function(e) {
+                // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
+                if (e.offsetX > this.offsetWidth - 20) {
+                    e.preventDefault();
+                    
+                    if (customDropdown.classList.contains("active")) {
+                        customDropdown.classList.remove("active");
+                    } else {
+                        createDropdownItems(this.value);
+                        customDropdown.classList.add("active");
+                    }
+                }
             });
         });
       }
@@ -246,6 +579,7 @@
             }
           });
         });
-        renderTurns();
+        //renderTurns();
       }
+      
       

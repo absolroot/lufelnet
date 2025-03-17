@@ -366,7 +366,7 @@ body {
   }
 
   .wonder-persona-input {
-    width: 218px !important;
+    width: 240px !important;
   }
 
   .skill-inputs {
@@ -402,7 +402,7 @@ body {
 
 
   .wonder-weapon-input {
-    width: 218px;
+    width: 240px;
     padding: 8px;
     border-radius: 3px;
     font-size: 14px;    

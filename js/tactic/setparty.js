@@ -2,6 +2,55 @@
   function setupPartySelection() {
     const partyDivs = document.querySelectorAll(".party-member");
     
+    // 드롭다운 스타일이 아직 추가되지 않았다면 추가
+    if (!document.querySelector('style[data-custom-dropdown]')) {
+      const styleElement = document.createElement('style');
+      styleElement.setAttribute('data-custom-dropdown', 'true');
+      styleElement.textContent = `
+        /* 커스텀 드롭다운 스타일 */
+        .custom-dropdown {
+            display: none;
+            position: absolute;
+            max-height: 300px; /* 약 20개 항목 표시 가능한 높이 */
+            overflow-y: auto;
+            background: #3d3030;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            left: 0;
+            top: 100%;
+        }
+        
+        .custom-dropdown.active {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .character-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+      `;
+      document.head.appendChild(styleElement);
+    }
+    
     partyDivs.forEach(div => {
       const index = parseInt(div.getAttribute("data-index"), 10);
       const nameSelect = div.querySelector(".party-name");
@@ -70,25 +119,17 @@
         // input container 생성
         const inputContainer = document.createElement("div");
         inputContainer.className = "input-container";
+        inputContainer.style.position = "relative";
         
         // input 요소 생성
         const input = document.createElement("input");
-        input.setAttribute("list", `characters-${index}`);
         input.className = "party-name-input";
         input.value = partyMembers[index].name;
         input.placeholder = "선택 또는 입력";
         
-        // datalist 생성
-        const datalist = document.createElement("datalist");
-        datalist.id = `characters-${index}`;
-        
-        // 캐릭터 옵션 추가
-        const characterOptions = index === 4 ? characterList.supportParty : characterList.mainParty;
-        characterOptions.forEach(char => {
-          const option = document.createElement("option");
-          option.value = char;
-          datalist.appendChild(option);
-        });
+        // 커스텀 드롭다운 생성
+        const customDropdown = document.createElement("div");
+        customDropdown.className = "custom-dropdown";
         
         // clear 버튼 생성
         const clearBtn = document.createElement("button");
@@ -115,10 +156,94 @@
         // 요소들을 컨테이너에 추가
         inputContainer.appendChild(input);
         inputContainer.appendChild(clearBtn);
+        inputContainer.appendChild(customDropdown);
         
         // select를 새로운 input container로 교체
         nameSelect.parentNode.replaceChild(inputContainer, nameSelect);
-        div.appendChild(datalist);
+        
+        // 드롭다운 항목 생성 함수
+        const createDropdownItems = (filter = "") => {
+          customDropdown.innerHTML = "";
+          
+          // 캐릭터 옵션 추가
+          const characterOptions = index === 4 ? characterList.supportParty : characterList.mainParty;
+          
+          // 캐릭터 목록 필터링 (필터가 있을 경우만 필터링)
+          let filteredCharacters = characterOptions;
+          if (filter) {
+            filteredCharacters = characterOptions.filter(char => 
+              char.toLowerCase().includes(filter.toLowerCase())
+            );
+          }
+          
+          // 드롭다운 항목 추가
+          filteredCharacters.forEach(char => {
+            const item = document.createElement("div");
+            item.className = "dropdown-item";
+            
+            // 캐릭터 아이콘 추가
+            const iconImg = document.createElement("img");
+            iconImg.className = "character-icon";
+            iconImg.src = `../img/character-half/${char}.webp`;
+            iconImg.alt = "";
+            iconImg.onerror = function() {
+              // 이미지 로드 실패 시 아이콘 제거
+              this.style.display = 'none';
+            };
+            item.appendChild(iconImg);
+            
+            // 캐릭터 이름 추가
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = char;
+            item.appendChild(nameSpan);
+            
+            item.addEventListener("click", () => {
+              input.value = char;
+              customDropdown.classList.remove("active");
+              
+              // change 이벤트 발생
+              const event = new Event("change", { bubbles: true });
+              input.dispatchEvent(event);
+            });
+            customDropdown.appendChild(item);
+          });
+        };
+        
+        // 드롭다운 관련 이벤트 처리
+        input.addEventListener("focus", function() {
+          createDropdownItems(this.value);
+          customDropdown.classList.add("active");
+          
+          // 현재 스크롤 위치 저장
+          window.lastScrollY = window.scrollY;
+        });
+        
+        input.addEventListener("blur", function() {
+          // 약간의 지연 후 드롭다운 닫기 (항목 클릭 이벤트가 발생할 시간 확보)
+          setTimeout(() => {
+            customDropdown.classList.remove("active");
+          }, 200);
+        });
+        
+        input.addEventListener("input", function() {
+          createDropdownItems(this.value);
+          customDropdown.classList.add("active");
+        });
+        
+        // 드롭다운 화살표 클릭 처리
+        input.addEventListener("mousedown", function(e) {
+          // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
+          if (e.offsetX > this.offsetWidth - 20) {
+            e.preventDefault();
+            
+            if (customDropdown.classList.contains("active")) {
+              customDropdown.classList.remove("active");
+            } else {
+              createDropdownItems(this.value);
+              customDropdown.classList.add("active");
+            }
+          }
+        });
         
         // input 이벤트 리스너 수정
         input.addEventListener("change", (e) => {
@@ -397,6 +522,5 @@
         updatePartyImages();
       });
     });
-
   }
   

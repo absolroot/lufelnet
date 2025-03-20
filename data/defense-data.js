@@ -300,6 +300,19 @@ const defenseCalcData = [
         note: ""
     },
     {
+        id: 15,
+        charName: "",
+        charImage: "",
+        type: "계시",
+        target: "단일",
+        skillIcon: "../img/revelation/결심.webp",
+        skillName: "직책 + 결심",
+        options: [],
+        value: 10.0,
+        duration: "2턴",
+        note: ""
+    },
+    {
         id: "akechi",
         charName: "아케치",
         charImage: "아케치.webp",
@@ -318,19 +331,6 @@ const defenseCalcData = [
         value: 29.5,
         duration: "2턴/4턴",
         note: "의식1 이상 4턴"
-    },
-    {
-        id: 15,
-        charName: "",
-        charImage: "",
-        type: "계시",
-        target: "단일",
-        skillIcon: "../img/revelation/결심.webp",
-        skillName: "직책 + 결심",
-        options: [],
-        value: 10.0,
-        duration: "2턴",
-        note: ""
     },
     {
         id: "tomoko1",

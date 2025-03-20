@@ -54,11 +54,11 @@ const characterData = {
        "role": "만능 광역 딜러 (서브)",
        "tag":"대미지 축적, 대미지보너스, 방어력 감소, 공격력, 크리티컬 효과, 축복",
         "color": "#c7312c",
-        "main_revelation": ["자유"],
-        "sub_revelation": ["실망"],
+        "main_revelation": ["자유", "여정", "신뢰"],
+        "sub_revelation": ["실망", "풍요", "힘"],
         "element": "만능",
-        "element_weakness": "",
-        "element_resistance": "",
+        "element_weakness": "주원",
+        "element_resistance": "축복",
         "rarity": 5,
         "position": "지배",
         "release_order": 21,
@@ -84,10 +84,10 @@ const characterData = {
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
-        "mind_stats1": "미확인",
-        "mind_stats2": "미확인",
-        "mind_skill1": "미확인",
-        "mind_skill2": "미확인"
+        "mind_stats1": "대미지보너스 16%",
+        "mind_stats2": "크리티컬 확률 12%",
+        "mind_skill1": "1/2!",
+        "mind_skill2": "3/HL!"
     },
 
     "미오": {

@@ -89,23 +89,23 @@ class Navigation {
                     <img src="{{ site.baseurl }}/assets/img/logo/lufel.webp" alt="logo" />
                     <img src="{{ site.baseurl }}/assets/img/logo/lufelnet.png" alt="logo-text" />
                 </div>
-                <a href="/${currentLang}/?v=${APP_VERSION}" class="nav-link" data-nav="home">
+                <a href="{{ site.baseurl }}/${currentLang}/?v=${APP_VERSION}" class="nav-link" data-nav="home">
                     <img src="{{ site.baseurl }}/assets/img/nav/home.png" alt="home" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.home}">${texts.home}</span>
                 </a>
-                <a href="/${currentLang}/character?v=${APP_VERSION}" class="nav-link" data-nav="character">
+                <a href="{{ site.baseurl }}/${currentLang}/character?v=${APP_VERSION}" class="nav-link" data-nav="character">
                     <img src="{{ site.baseurl }}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.character}">${texts.character}</span>
                 </a>
-                <a href="/${currentLang}/persona?v=${APP_VERSION}" class="nav-link" data-nav="persona">
+                <a href="{{ site.baseurl }}/${currentLang}/persona?v=${APP_VERSION}" class="nav-link" data-nav="persona">
                     <img src="{{ site.baseurl }}/assets/img/nav/persona.png" alt="persona" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.persona}">${texts.persona}</span>
                 </a>
-                <a href="/${currentLang}/revelations?v=${APP_VERSION}" class="nav-link" data-nav="revelations">
+                <a href="{{ site.baseurl }}/${currentLang}/revelations?v=${APP_VERSION}" class="nav-link" data-nav="revelations">
                     <img src="{{ site.baseurl }}/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
                 </a>
-                <a href="/${currentLang}/defense-calc?v=${APP_VERSION}" class="nav-link" data-nav="defense-calc">
+                <a href="{{ site.baseurl }}/${currentLang}/defense-calc?v=${APP_VERSION}" class="nav-link" data-nav="defense-calc">
                     <img src="{{ site.baseurl }}/assets/img/nav/defense-calc.png" alt="defense-calc" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.defenseCalc}">${texts.defenseCalc}</span>
                 </a>
@@ -115,10 +115,10 @@ class Navigation {
                         <span data-text="${texts.tactic}">${texts.tactic}</span>
                     </div>
                     <div class="submenu">
-                        <a href="/${currentLang}/tactic?v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
+                        <a href="{{ site.baseurl }}/${currentLang}/tactic?v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
                             <span data-text="${texts.tacticMaker}">◈　${texts.tacticMaker}</span>
                         </a>
-                        <a href="/${currentLang}/tactic/tactic-share.html?v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-share">
+                        <a href="{{ site.baseurl }}/${currentLang}/tactic/tactic-share.html?v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-share">
                             <span data-text="${texts.tacticForge}">◈　${texts.tacticForge}</span>
                         </a>
                     </div>
@@ -129,7 +129,7 @@ class Navigation {
                         <span data-text="${texts.tier}">${texts.tier}</span>
                     </div>
                     <div class="submenu">
-                        <a href="/${currentLang}/tier?v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-maker">
+                        <a href="{{ site.baseurl }}/${currentLang}/tier?v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-maker">
                             <span data-text="${texts.tierMaker}">◈　${texts.tierMaker}</span>
                         </a>
                     </div>

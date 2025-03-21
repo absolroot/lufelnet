@@ -13,8 +13,8 @@ class Navigation {
         logoContainer.className = 'mobile-logo-container';
         logoContainer.onclick = () => location.href = `/${currentLang}/?v=${APP_VERSION}`;
         logoContainer.innerHTML = `
-            <img src="/assets/img/logo/lufel.webp" alt="logo" />
-            <img src="/assets/img/logo/lufelnet.png" alt="logo-text" />
+            <img src="{{ site.baseurl }}/assets/img/logo/lufel.webp" alt="logo" />
+            <img src="{{ site.baseurl }}/assets/img/logo/lufelnet.png" alt="logo-text" />
         `;
         mobileHeader.appendChild(logoContainer);
 
@@ -86,32 +86,32 @@ class Navigation {
         const navTemplate = `
             <nav class="main-nav">
                 <div class="logo-container" onclick="location.href='/${currentLang}/?v=${APP_VERSION}'">
-                    <img src="/assets/img/logo/lufel.webp" alt="logo" />
-                    <img src="/assets/img/logo/lufelnet.png" alt="logo-text" />
+                    <img src="{{ site.baseurl }}/assets/img/logo/lufel.webp" alt="logo" />
+                    <img src="{{ site.baseurl }}/assets/img/logo/lufelnet.png" alt="logo-text" />
                 </div>
                 <a href="/${currentLang}/?v=${APP_VERSION}" class="nav-link" data-nav="home">
-                    <img src="/assets/img/nav/home.png" alt="home" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="{{ site.baseurl }}/assets/img/nav/home.png" alt="home" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.home}">${texts.home}</span>
                 </a>
                 <a href="/${currentLang}/character?v=${APP_VERSION}" class="nav-link" data-nav="character">
-                    <img src="/assets/img/nav/guaidao.png" alt="guaidao" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="{{ site.baseurl }}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.character}">${texts.character}</span>
                 </a>
                 <a href="/${currentLang}/persona?v=${APP_VERSION}" class="nav-link" data-nav="persona">
-                    <img src="/assets/img/nav/persona.png" alt="persona" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="{{ site.baseurl }}/assets/img/nav/persona.png" alt="persona" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.persona}">${texts.persona}</span>
                 </a>
                 <a href="/${currentLang}/revelations?v=${APP_VERSION}" class="nav-link" data-nav="revelations">
-                    <img src="/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="{{ site.baseurl }}/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
                 </a>
                 <a href="/${currentLang}/defense-calc?v=${APP_VERSION}" class="nav-link" data-nav="defense-calc">
-                    <img src="/assets/img/nav/defense-calc.png" alt="defense-calc" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="{{ site.baseurl }}/assets/img/nav/defense-calc.png" alt="defense-calc" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.defenseCalc}">${texts.defenseCalc}</span>
                 </a>
                 <div class="nav-item has-submenu" data-nav="tactic">
                     <div class="nav-main-item">
-                        <img src="/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="{{ site.baseurl }}/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
                         <span data-text="${texts.tactic}">${texts.tactic}</span>
                     </div>
                     <div class="submenu">
@@ -125,7 +125,7 @@ class Navigation {
                 </div>
                 <div class="nav-item has-submenu" data-nav="tier">
                     <div class="nav-main-item">
-                        <img src="/assets/img/nav/tier.png" alt="tier" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="{{ site.baseurl }}/assets/img/nav/tier.png" alt="tier" style="width: 32px; height: 32px; object-fit: contain;" />
                         <span data-text="${texts.tier}">${texts.tier}</span>
                     </div>
                     <div class="submenu">
@@ -139,24 +139,24 @@ class Navigation {
                 <div class="language-selector-container">
                     <div class="custom-select">
                         <div class="selected-option" onclick="Navigation.toggleLanguageDropdown()">
-                            <img src="/assets/img/flags/${currentLang}.png" alt="${currentLang}" class="flag-icon">
+                            <img src="{{ site.baseurl }}/assets/img/flags/${currentLang}.png" alt="${currentLang}" class="flag-icon">
                             <span>${currentLang === 'kr' ? '한국어' : currentLang === 'en' ? 'English' : currentLang === 'jp' ? '日本語' : '中文'}</span>
                         </div>
                         <div class="options-container">
                             <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" onclick="Navigation.selectLanguage('kr')">
-                                <img src="/assets/img/flags/kr.png" alt="kr" class="flag-icon">
+                                <img src="{{ site.baseurl }}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
                                 <span>한국어</span>
                             </div>
                             <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" onclick="Navigation.selectLanguage('en')">
-                                <img src="/assets/img/flags/en.png" alt="en" class="flag-icon">
+                                <img src="{{ site.baseurl }}/assets/img/flags/en.png" alt="en" class="flag-icon">
                                 <span>English</span>
                             </div>
                             <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" onclick="Navigation.selectLanguage('jp')">
-                                <img src="/assets/img/flags/jp.png" alt="jp" class="flag-icon">
+                                <img src="{{ site.baseurl }}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                                 <span>日本語</span>
                             </div>
                             <div class="option ${currentLang === 'cn' ? 'selected' : ''}" data-value="cn" onclick="Navigation.selectLanguage('cn')">
-                                <img src="/assets/img/flags/cn.png" alt="cn" class="flag-icon">
+                                <img src="{{ site.baseurl }}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
                                 <span>中文</span>
                             </div>
                         </div>

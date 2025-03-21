@@ -23,8 +23,8 @@
       if (characterData[member.name]) {
         const charImg = document.createElement("img");
         charImg.className = "character-img";
-        // /assets/img/characters-half/ 에서 {캐릭터이름}.webp 파일을 찾아서 src에 넣음.
-        const imagePath = `/assets/img/character-half/${member.name}.webp`;
+        // {{ site.baseurl }}/assets/img/characters-half/ 에서 {캐릭터이름}.webp 파일을 찾아서 src에 넣음.
+        const imagePath = `{{ site.baseurl }}/assets/img/character-half/${member.name}.webp`;
         charImg.src = imagePath;
         charImg.alt = member.name;
         charImg.title = member.name;
@@ -37,7 +37,7 @@
           if (selectedWeapon && wonderWeapons.includes(selectedWeapon)) {
             const weaponImg = document.createElement("img");
             weaponImg.className = "weapon-img";
-            weaponImg.src = `/assets/img/wonder-weapon/${selectedWeapon}.webp`;
+            weaponImg.src = `{{ site.baseurl }}/assets/img/wonder-weapon/${selectedWeapon}.webp`;
             weaponImg.alt = selectedWeapon;
             weaponImg.title = selectedWeapon;
             container.appendChild(weaponImg);
@@ -56,7 +56,7 @@
       if (["1", "2", "3", "4"].includes(member.order)) {
         const orderImg = document.createElement("img");
         orderImg.className = "order-img";
-        orderImg.src = `/assets/img/ui/num0${member.order}.png`;
+        orderImg.src = `{{ site.baseurl }}/assets/img/ui/num0${member.order}.png`;
         orderImg.alt = `순서 ${member.order}`;
         container.appendChild(orderImg);
       }
@@ -66,7 +66,7 @@
       if (ritualLevel >= 1 && ritualLevel <= 6) {
         const ritualImg = document.createElement("img");
         ritualImg.className = "ritual-img";
-        ritualImg.src = `/assets/img/ritual/num${ritualLevel}.png`;
+        ritualImg.src = `{{ site.baseurl }}/assets/img/ritual/num${ritualLevel}.png`;
         ritualImg.alt = `의식 ${ritualLevel}`;
         container.appendChild(ritualImg);
       }
@@ -83,13 +83,13 @@
 
           const mainRevImg = document.createElement("img");
           mainRevImg.className = "revelation-img main-rev";
-          mainRevImg.src = `/assets/img/revelation/${mainRev}.webp`;
+          mainRevImg.src = `{{ site.baseurl }}/assets/img/revelation/${mainRev}.webp`;
           mainRevImg.alt = mainRev;
           revelationsContainer.appendChild(mainRevImg);
 
           const subRevImg = document.createElement("img");
           subRevImg.className = "revelation-img sub-rev";
-          subRevImg.src = `/assets/img/revelation/${subRev}.webp`;
+          subRevImg.src = `{{ site.baseurl }}/assets/img/revelation/${subRev}.webp`;
           subRevImg.alt = subRev;
           revelationsContainer.appendChild(subRevImg);
 
@@ -115,7 +115,7 @@
 
           const personaImg = document.createElement("img");
           personaImg.className = "persona-img";
-          personaImg.src = `/assets/img/tactic-persona/${persona}.webp`;
+          personaImg.src = `{{ site.baseurl }}/assets/img/tactic-persona/${persona}.webp`;
           personaImg.alt = persona;
           
           // 커스텀 툴팁 div 생성

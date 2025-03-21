@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    /* background: url("/assets/img/ui/insidebg.jpg") no-repeat center center;*/
+    /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-repeat center center;*/
     background-size: cover;
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
@@ -606,7 +606,7 @@ body {
     border: none;
     cursor: pointer;
     font-size: 13px;
-    /*background: url("/assets/img/ui/newstab.png") no-repeat center center;
+    /*background: url("{{ site.baseurl }}/assets/img/ui/newstab.png") no-repeat center center;
     background-size: cover;
     width: 135px;*/
     background: #552429;
@@ -616,7 +616,7 @@ body {
   }
 
   .export-import-btn:hover {
-    /*background: url("/assets/img/ui/newstabon.png") no-repeat center center;
+    /*background: url("{{ site.baseurl }}/assets/img/ui/newstabon.png") no-repeat center center;
     background-size: cover;*/
     background: #7e1822;
   }
@@ -844,7 +844,7 @@ body {
     border-radius: 3px;
     cursor: pointer;
     font-size: 13px;
-    background: url("/assets/img/ui/newstab.png") no-repeat center center;
+    background: url("{{ site.baseurl }}/assets/img/ui/newstab.png") no-repeat center center;
     background-size: cover;
     width: 135px;
     height: auto;

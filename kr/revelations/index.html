@@ -28,15 +28,15 @@ language: kr
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="type" value="main">
-                        <img src="/assets/img/revelation/icon-주.png" alt="주 성위">
+                        <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주 성위">
                     </label>
                     <label>
                         <input type="checkbox" name="type" value="sub">
                         <div class="sub-icons">
-                            <img src="/assets/img/revelation/icon-일.png" alt="일월성진">
-                            <img src="/assets/img/revelation/icon-월.png" alt="일월성진">
-                            <img src="/assets/img/revelation/icon-성.png" alt="일월성진">
-                            <img src="/assets/img/revelation/icon-진.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="일월성진">
                         </div>
                     </label>
                 </div>
@@ -48,57 +48,57 @@ language: kr
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="element" value="물리">
-                        <img src="/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="총격">
-                        <img src="/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="화염">
-                        <img src="/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="빙결">
-                        <img src="/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="전격">
-                        <img src="/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="질풍">
-                        <img src="/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="염동">
-                        <img src="/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="핵열">
-                        <img src="/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="축복">
-                        <img src="/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="주원">
-                        <img src="/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="만능">
-                        <img src="/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
                         <span></span>
                     </label>
                 </div>
@@ -195,13 +195,13 @@ language: kr
             
             // Revelation image
             const img = document.createElement('img');
-            img.src = `/assets/img/revelation/${revelation.name}.webp`;
+            img.src = `{{ site.baseurl }}/assets/img/revelation/${revelation.name}.webp`;
             img.alt = revelation.name;
             img.className = 'revelation-img';
 
             // Name image
             const nameImg = document.createElement('img');
-            nameImg.src = `/assets/img/revelation/${revelation.name}.png`;
+            nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${revelation.name}.png`;
             nameImg.alt = revelation.name;
             nameImg.className = 'name-img';
             
@@ -231,7 +231,7 @@ language: kr
             if (revelation.type === 'main') {
                 // For main revelations
                 const mainIcon = document.createElement('img');
-                mainIcon.src = '/assets/img/revelation/icon-주.png';
+                mainIcon.src = '{{ site.baseurl }}/assets/img/revelation/icon-주.png';
                 mainIcon.alt = '주';
                 mainIcon.className = 'type-icon';
                 iconContainer.appendChild(mainIcon);
@@ -239,7 +239,7 @@ language: kr
                 // For sub revelations
                 ['일', '월', '성', '진'].forEach(type => {
                     const icon = document.createElement('img');
-                    icon.src = `/assets/img/revelation/icon-${type}.png`;
+                    icon.src = `{{ site.baseurl }}/assets/img/revelation/icon-${type}.png`;
                     icon.alt = type;
                     icon.className = 'type-icon';
                     iconContainer.appendChild(icon);

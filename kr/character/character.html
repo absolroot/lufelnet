@@ -44,12 +44,12 @@ language: kr
 
                 <div class="info-row">
                     <div class="elements-container">
-                        <img src="/assets/img/character-detail/elements.png" alt="elements" class="elements-sprite">
+                        <img src="{{ site.baseurl }}/assets/img/character-detail/elements.png" alt="elements" class="elements-sprite">
                         <div class="resistance-overlay">
-                            <img src="/assets/img/character-detail/elements-resi.png" alt="resistance" class="resistance-icon">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-resi.png" alt="resistance" class="resistance-icon">
                         </div>
                         <div class="weakness-overlay">
-                            <img src="/assets/img/character-detail/elements-weak.png" alt="weakness" class="weakness-icon">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-weak.png" alt="weakness" class="weakness-icon">
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ language: kr
                     <div class="revelation-set">
                         <div class="main-revelation">
                             <span class="label">주
-                                <img src="/assets/img/revelation/icon-주.png" alt="주" class="option-icon">
+                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
@@ -106,25 +106,25 @@ language: kr
                     <div class="main-options">
                         <div class="option-row">
                             <span class="label">
-                                일 <img src="/assets/img/revelation/icon-일.png" alt="일" class="option-icon">
+                                일 <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" class="option-icon">
                             </span>
                             <span class="value">생명</span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                월 <img src="/assets/img/revelation/icon-월.png" alt="월" class="option-icon">
+                                월 <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                성 <img src="/assets/img/revelation/icon-성.png" alt="성" class="option-icon">
+                                성 <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                진 <img src="/assets/img/revelation/icon-진.png" alt="진" class="option-icon">
+                                진 <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
@@ -254,49 +254,49 @@ language: kr
         <div class="ritual-grid">
             <div class="ritual-item" data-ritual="0">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual0.png" alt="의식 0" class="ritual-image active">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual0.png" alt="의식 0" class="ritual-image active">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="1">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual1.png" alt="의식 1" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual1.png" alt="의식 1" class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="2">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual2.png" alt="의식 2" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual2.png" alt="의식 2" class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="3">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual3.png" alt="의식 3" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual3.png" alt="의식 3" class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="4">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual4.png" alt="의식 4" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual4.png" alt="의식 4" class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="5">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual5.png" alt="의식 5" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual5.png" alt="의식 5" class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="6">
                 <div class="ritual-header-content">
-                    <img src="/assets/img/character-detail/ritual6.png" alt="의식 6" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual6.png" alt="의식 6" class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
@@ -344,8 +344,8 @@ language: kr
         const ritual = ritualData[characterName];
 
         // 이미지 설정
-        document.querySelector('.thief-image').src = `/assets/img/character-detail/${characterName}.webp`;
-        document.querySelector('.persona-image').src = `/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
+        document.querySelector('.thief-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
+        document.querySelector('.persona-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
         
         // 기본 정보 설정
         document.querySelector('.character-name').textContent = character.name;
@@ -359,14 +359,14 @@ language: kr
         // 속성 아이콘 설정
         if (character.element) {
             const elementIcons = document.querySelector('.element-icons');
-            elementIcons.innerHTML = `<img src="/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
+            elementIcons.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
         }
         
         // 직업 아이콘 및 이름 설정
         if (character.position) {
             const positionIcon = document.querySelector('.position-icon');
             const positionName = document.querySelector('.position-name');
-            positionIcon.innerHTML = `<img src="/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
+            positionIcon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
             //positionName.textContent = character.position;
         }
         
@@ -376,7 +376,7 @@ language: kr
             character.resistances.forEach(res => {
                 const icon = document.createElement('div');
                 icon.className = `resistance-icon ${res.type}`;
-                icon.innerHTML = `<img src="/assets/img/character-cards/속성_${res.element}.png" alt="${res.element}">`;
+                icon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${res.element}.png" alt="${res.element}">`;
                 resistanceIcons.appendChild(icon);
             });
         }
@@ -428,7 +428,7 @@ language: kr
                 const skillCard = document.createElement('div');
                 skillCard.className = 'skill-card';
                 skillCard.innerHTML = `
-                    <img src="/assets/img/skills/${skill.icon}.png" alt="${skill.name}">
+                    <img src="{{ site.baseurl }}/assets/img/skills/${skill.icon}.png" alt="${skill.name}">
                     <div class="skill-info">
                         <h3>${skill.name}</h3>
                         <p>${skill.description}</p>
@@ -498,7 +498,7 @@ language: kr
             ];
 
             for (const weapon of weaponTypes) {
-                const imagePath = `/assets/img/character-weapon/${characterName}-${weapon.suffix}.png`;
+                const imagePath = `{{ site.baseurl }}/assets/img/character-weapon/${characterName}-${weapon.suffix}.png`;
                 
                 // 무기 데이터 가져오기
                 const weaponData = characterWeapons[weapon.key];
@@ -517,7 +517,7 @@ language: kr
                 // 이미지 로드 실패시 기본 이미지로 대체
                 /*
                 weaponImage.onerror = () => {
-                    weaponImage.src = '/assets/img/character-weapon/default.png';
+                    weaponImage.src = '{{ site.baseurl }}/assets/img/character-weapon/default.png';
                 };*/
 
                 // 무기 정보 컨테이너
@@ -537,9 +537,9 @@ language: kr
                 const weaponStats = document.createElement('div');
                 weaponStats.className = 'weapon-stats';
                 weaponStats.innerHTML = `
-                    <img src="/assets/img/character-detail/weapon-health.png" alt="생명"><p>생명 ${weaponData.health || 0}</p>
-                    <img src="/assets/img/character-detail/weapon-attack.png" alt="공격력"><p>공격력 ${weaponData.attack || 0}</p>
-                    <img src="/assets/img/character-detail/weapon-defense.png" alt="방어력"><p>방어력 ${weaponData.defense || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="생명"><p>생명 ${weaponData.health || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="공격력"><p>공격력 ${weaponData.attack || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="방어력"><p>방어력 ${weaponData.defense || 0}</p>
                 `;
 
                 // 별 표시
@@ -547,7 +547,7 @@ language: kr
                 weaponStars.className = 'weapon-stars';
                 for (let i = 0; i < weapon.stars; i++) {
                     const star = document.createElement('img');
-                    star.src = `/assets/img/character-detail/star${weapon.stars}.png`;
+                    star.src = `{{ site.baseurl }}/assets/img/character-detail/star${weapon.stars}.png`;
                     star.alt = '★';
                     weaponStars.appendChild(star);
                 }

@@ -47,7 +47,7 @@ class TacticPreview {
 
                     const charImg = document.createElement('img');
                     charImg.className = 'character-img';
-                    charImg.src = `/assets/img/character-half/${member.name}.webp`;
+                    charImg.src = `{{ site.baseurl }}/assets/img/character-half/${member.name}.webp`;
                     charImg.alt = member.name;
                     charImg.title = member.name;
                     container.appendChild(charImg);
@@ -58,7 +58,7 @@ class TacticPreview {
                 if (["1", "2", "3", "4"].includes(member.order)) {
                     const orderImg = document.createElement('img');
                     orderImg.className = 'order-img';
-                    orderImg.src = `/assets/img/ui/num0${member.order}.png`;
+                    orderImg.src = `{{ site.baseurl }}/assets/img/ui/num0${member.order}.png`;
                     orderImg.alt = `순서 ${member.order}`;
                     container.appendChild(orderImg);
                 }*/
@@ -68,7 +68,7 @@ class TacticPreview {
                 if (ritualLevel >= 1 && ritualLevel <= 6) {
                     const ritualImg = document.createElement('img');
                     ritualImg.className = 'ritual-img';
-                    ritualImg.src = `/assets/img/ritual/num${ritualLevel}.png`;
+                    ritualImg.src = `{{ site.baseurl }}/assets/img/ritual/num${ritualLevel}.png`;
                     ritualImg.alt = `의식 ${ritualLevel}`;
                     container.appendChild(ritualImg);
                 }
@@ -81,13 +81,13 @@ class TacticPreview {
 
                     const mainRevImg = document.createElement('img');
                     mainRevImg.className = 'revelation-img main-rev';
-                    mainRevImg.src = `/assets/img/tactic-revelation/${member.mainRev}.webp`;
+                    mainRevImg.src = `{{ site.baseurl }}/assets/img/tactic-revelation/${member.mainRev}.webp`;
                     mainRevImg.alt = member.mainRev;
                     revelationsContainer.appendChild(mainRevImg);
 
                     const subRevImg = document.createElement('img');
                     subRevImg.className = 'revelation-img sub-rev';
-                    subRevImg.src = `/assets/img/tactic-revelation/${member.subRev}.webp`;
+                    subRevImg.src = `{{ site.baseurl }}/assets/img/tactic-revelation/${member.subRev}.webp`;
                     subRevImg.alt = member.subRev;
                     revelationsContainer.appendChild(subRevImg);
 
@@ -112,7 +112,7 @@ class TacticPreview {
 
                         const personaImg = document.createElement('img');
                         personaImg.className = 'persona-img';
-                        personaImg.src = `/assets/img/tactic-persona/${persona}.webp`;
+                        personaImg.src = `{{ site.baseurl }}/assets/img/tactic-persona/${persona}.webp`;
                         personaImg.alt = persona;
                         personaImg.title = `${persona}\n본능: ${personaData[persona]?.instinct?.name || ""}\n\n${personaData[persona]?.instinct?.effects?.join("\n") || ""}`;
                         

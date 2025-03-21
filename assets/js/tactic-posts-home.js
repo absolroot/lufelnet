@@ -234,7 +234,7 @@ renderPosts(posts) {
                         class="like-button ${post.isLiked ? 'liked' : ''}"
                         ${post.isLiked ? 'disabled' : ''}
                     >
-                        <img src="/assets/img/tactic-share/like.png" alt="좋아요" />
+                        <img src="{{ site.baseurl }}/assets/img/tactic-share/like.png" alt="좋아요" />
                     </button>
                     <div class="likes-count-wrapper">
                         <span class="likes-count">${post.likes}</span>
@@ -464,7 +464,7 @@ addNewPostToUI(postData) {
                         onclick="tacticShare.handleLike('${postData.id}')"
                         class="like-button"
                     >
-                        <img src="/assets/img/tactic-share/like.png" alt="좋아요" />
+                        <img src="{{ site.baseurl }}/assets/img/tactic-share/like.png" alt="좋아요" />
                     </button>
                     <div class="likes-count-wrapper">
                         <span class="likes-count">0</span>

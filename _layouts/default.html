@@ -71,7 +71,7 @@
 
     {% if page.custom_data %}
       {% for data_file in page.custom_data %}
-        document.write(`<script src="/data/{{ page.language }}/{{ data_file }}?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="{{ site.baseurl }}/data/{{ page.language }}/{{ data_file }}?v=${APP_VERSION}"><\/script>`);
       {% endfor %}
     {% endif %}
   </script>

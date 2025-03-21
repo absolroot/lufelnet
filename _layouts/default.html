@@ -47,6 +47,8 @@
 
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
+    const BASE_URL = '{{ site.baseurl }}';
+
     document.write(`
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=${APP_VERSION}">
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=${APP_VERSION}">

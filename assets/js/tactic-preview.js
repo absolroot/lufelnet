@@ -47,82 +47,27 @@ class TacticPreview {
 
                     const charImg = document.createElement('img');
                     charImg.className = 'character-img';
-                    charImg.src = `{{ site.baseurl }}/assets/img/character-half/${member.name}.webp`;
+                    charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
                     charImg.alt = member.name;
                     charImg.title = member.name;
                     container.appendChild(charImg);
                 }
-
-                // 순서 이미지
-                /*
-                if (["1", "2", "3", "4"].includes(member.order)) {
-                    const orderImg = document.createElement('img');
-                    orderImg.className = 'order-img';
-                    orderImg.src = `{{ site.baseurl }}/assets/img/ui/num0${member.order}.png`;
-                    orderImg.alt = `순서 ${member.order}`;
-                    container.appendChild(orderImg);
-                }*/
 
                 // 의식 이미지
                 const ritualLevel = parseInt(member.ritual);
                 if (ritualLevel >= 1 && ritualLevel <= 6) {
                     const ritualImg = document.createElement('img');
                     ritualImg.className = 'ritual-img';
-                    ritualImg.src = `{{ site.baseurl }}/assets/img/ritual/num${ritualLevel}.png`;
+                    ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
                     ritualImg.alt = `의식 ${ritualLevel}`;
                     container.appendChild(ritualImg);
                 }
 
-                // 계시 이미지
-                /*
-                if (member.mainRev && member.subRev) {
-                    const revelationsContainer = document.createElement('div');
-                    revelationsContainer.className = 'revelations-container';
-
-                    const mainRevImg = document.createElement('img');
-                    mainRevImg.className = 'revelation-img main-rev';
-                    mainRevImg.src = `{{ site.baseurl }}/assets/img/tactic-revelation/${member.mainRev}.webp`;
-                    mainRevImg.alt = member.mainRev;
-                    revelationsContainer.appendChild(mainRevImg);
-
-                    const subRevImg = document.createElement('img');
-                    subRevImg.className = 'revelation-img sub-rev';
-                    subRevImg.src = `{{ site.baseurl }}/assets/img/tactic-revelation/${member.subRev}.webp`;
-                    subRevImg.alt = member.subRev;
-                    revelationsContainer.appendChild(subRevImg);
-
-                    container.appendChild(revelationsContainer);
-                }*/
 
                 partyImagesDiv.appendChild(container);
             });
 
             partyImagesContainer.appendChild(partyImagesDiv);
-
-            // 원더 페르소나 이미지 추가
-            /*
-            if (tacticData.w.some(persona => persona !== "")) {
-                const personaImagesDiv = document.createElement('div');
-                personaImagesDiv.className = 'persona-images';
-
-                tacticData.w.forEach(persona => {
-                    if (persona) {
-                        const container = document.createElement('div');
-                        container.className = 'persona-container';
-
-                        const personaImg = document.createElement('img');
-                        personaImg.className = 'persona-img';
-                        personaImg.src = `{{ site.baseurl }}/assets/img/tactic-persona/${persona}.webp`;
-                        personaImg.alt = persona;
-                        personaImg.title = `${persona}\n본능: ${personaData[persona]?.instinct?.name || ""}\n\n${personaData[persona]?.instinct?.effects?.join("\n") || ""}`;
-                        
-                        container.appendChild(personaImg);
-                        personaImagesDiv.appendChild(container);
-                    }
-                });
-
-                partyImagesContainer.appendChild(personaImagesDiv);
-            }*/
 
             previewDiv.appendChild(partyImagesContainer);
             return previewDiv;

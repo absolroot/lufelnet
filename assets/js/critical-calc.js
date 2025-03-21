@@ -26,7 +26,7 @@ class criticalCalc {
         const checkCell = document.createElement('td');
         checkCell.className = 'check-column';
         const checkbox = document.createElement('img');
-        checkbox.src = '{{ site.baseurl }}/assets/img/ui/check-off.png';
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-off.png`;
         checkbox.onclick = () => this.toggleCheck(checkbox, data);
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
@@ -36,7 +36,7 @@ class criticalCalc {
         charImgCell.className = 'char-img-column';
         if (data.charImage) {
             const charImg = document.createElement('img');
-            charImg.src = `{{ site.baseurl }}/assets/img/character-half/${data.charImage}`;
+            charImg.src = `${BASE_URL}/assets/img/character-half/${data.charImage}`;
             charImgCell.appendChild(charImg);
         }
         row.appendChild(charImgCell);
@@ -133,7 +133,7 @@ class criticalCalc {
 
     toggleCheck(checkbox, data) {
         const isChecked = checkbox.src.includes('check-on');
-        checkbox.src = `{{ site.baseurl }}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
         
         const row = checkbox.closest('tr');
         

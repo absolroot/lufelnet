@@ -34,10 +34,9 @@ class DefenseCalc {
         const checkCell = document.createElement('td');
         checkCell.className = 'check-column';
         const checkbox = document.createElement('img');
-        // 초기 선택된 항목은 체크 표시
         checkbox.src = this.selectedItems.has(data.id) 
-            ? '{{ site.baseurl }}/assets/img/ui/check-on.png' 
-            : '{{ site.baseurl }}/assets/img/ui/check-off.png';
+            ? `${BASE_URL}/assets/img/ui/check-on.png` 
+            : `${BASE_URL}/assets/img/ui/check-off.png`;
         checkbox.onclick = () => this.toggleCheck(checkbox, data);
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
@@ -47,7 +46,7 @@ class DefenseCalc {
         charImgCell.className = 'char-img-column';
         if (data.charImage) {
             const charImg = document.createElement('img');
-            charImg.src = `{{ site.baseurl }}/assets/img/character-half/${data.charImage}`;
+            charImg.src = `${BASE_URL}/assets/img/character-half/${data.charImage}`;
             charImgCell.appendChild(charImg);
         }
         row.appendChild(charImgCell);
@@ -148,7 +147,7 @@ class DefenseCalc {
 
     toggleCheck(checkbox, data) {
         const isChecked = checkbox.src.includes('check-on');
-        checkbox.src = `{{ site.baseurl }}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
         
         // 행 요소 찾기
         const row = checkbox.closest('tr');

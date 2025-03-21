@@ -313,6 +313,26 @@ const defenseCalcData = [
         note: ""
     },
     {
+        id: "akechi",
+        charName: "아케치",
+        charImage: "아케치.webp",
+        type: "스킬2",
+        target: "광역",
+        skillIcon: "/assets/img/skill-element/주원광역.png",
+        skillName: "기울어진 사냥터",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+        values: {
+            "LV10": 25.4,
+            "LV10+심상5": 28.0,
+            "LV13": 26.9,
+            "LV13+심상5": 29.5
+        },
+        defaultOption: "LV13+심상5",
+        value: 29.5,
+        duration: "2턴/4턴",
+        note: "의식1 이상 4턴"
+    },
+    {
         id: "tomoko1",
         charName: "토모코·여름",
         charImage: "토모코·여름.webp",

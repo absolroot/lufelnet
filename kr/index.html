@@ -1,0 +1,294 @@
+---
+layout: default
+custom_css: [home, tactic-posts]
+custom_js: [tactic-posts-home, tactic-preview, /tactic/share]
+custom_data: [/characters/characters.js, /revelations/revelations.js]
+permalink: /kr/
+language: kr
+---
+
+    <div class="main-wrapper">
+        <!-- Header (logo, etc.) -->
+        <div class="header-container">
+            <h1>P5X 루페르넷</h1> <span class="beta-text">beta</span>
+            <button class="music-control" id="musicControl">
+                <img src="/assets/img/ui/music-off.png" alt="음악 재생" id="musicIcon">
+            </button>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="menu-cards">
+                <div class="menu-card" onclick="location.href='./character/?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>괴도 <img src="/assets/img/home/icon1.png" alt="괴도 아이콘" class="title-icon"></h2>
+                            <p class="desktop-description">보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요</p>
+                            <p class="mobile-description">괴도별 육성 전략을 만나보세요</p>
+                            <button onclick="location.href='./character/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
+                        </div>
+                        <img src="/assets/img/home/1.webp" alt="괴도 일러스트" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="location.href='./persona/?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>페르소나 <img src="/assets/img/home/icon2.png" alt="페르소나 아이콘" class="title-icon"></h2>
+                            <p class="desktop-description">핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지</p>
+                            <p class="mobile-description">핵심 페르소나 추천과 스킬 세팅까지</p>
+                            <button onclick="location.href='./persona/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
+                        </div>
+                        <img src="/assets/img/home/2.webp" alt="페르소나 일러스트" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="menu-card" onclick="location.href='./revelations/?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>계시 <img src="/assets/img/home/icon3.png" alt="계시 아이콘" class="title-icon"></h2>
+                            <p class="desktop-description">계시 정보들을 한 눈에!<br>속성별, 일월성진별 원하는 대로 매칭</p>
+                            <p class="mobile-description">계시 정보들을 한 눈에!</p>
+                            <button onclick="location.href='./revelations/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
+                        </div>
+                        <img src="/assets/img/home/3.webp" alt="계시 일러스트" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="menu-card" onclick="location.href='./tactic/tactic-share.html?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>택틱 <img src="/assets/img/home/icon4.png" alt="택틱 아이콘" class="title-icon"></h2>
+                            <p class="desktop-description">본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요</p>
+                            <p class="mobile-description">본인만의 택틱을 만들고 공유하세요</p>
+                            <button onclick="location.href='./tactic/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
+                        </div>
+                        <img src="/assets/img/home/4.webp" alt="택틱 일러스트" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            <div class="update-notice">
+                
+            </div>
+        </div>
+        <div class="separator-line"></div>
+        <div class="middle-container">
+            <div class="popular-content">
+                <h2>인기 괴도</h2>
+                <div class="character-cards">
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="/assets/img/tier/아야카.webp" alt="아야카" onclick="location.href='./character/character.html?name=아야카&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>사카이 아야카</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="/assets/img/tier/후타바.webp" alt="후타바" onclick="location.href='./character/character.html?name=후타바&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>사쿠라 후타바</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="/assets/img/tier/리코·매화.webp" alt="리코·매화" onclick="location.href='./character/character.html?name=리코·매화&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>타네무라 리코·매화</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="/assets/img/tier/미오.webp" alt="미오" onclick="location.href='./character/character.html?name=미오&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>나츠카와 미오</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="/assets/img/tier/야오링·사자무.webp" alt="야오링·사자무" onclick="location.href='./character/character.html?name=야오링·사자무&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>리 야오링·사자무</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="/assets/img/tier/카스미.webp" alt="카스미" onclick="location.href='./character/character.html?name=카스미&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>요시자와 카스미</p></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="recent-update-content">
+                <h2>최신 업데이트</h2>
+                <div id="recent-update-list"></div>
+                <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;">더보기</button>
+            </div>
+        </div>
+        <div class="guides-container">
+            <h2>가이드</h2>
+            <div class="guide-cards">
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <img src="/assets/img/home/guide1.png" alt="가이드 이미지">
+                        <h3>도시 생활</h3>
+                    </div>
+                    <div class="guide-card-content">
+                        <div class="article" onclick="window.open('https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM', '_blank')">∘ 협력자 선물 & 선택지</div>
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=158597', '_blank')">∘ 협력자 우선순위 추천</div>
+                        <div class="article" onclick="window.open('https://arca.live/b/persona5x/112002828', '_blank')">∘ 이치가야 낚시</div>
+                        <div class="article" onclick="window.open('https://arca.live/b/persona5x/110240842', '_blank')">∘ 요리 레시피 획득</div>
+                    </div>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <img src="/assets/img/home/guide2.png" alt="가이드 이미지">
+                        <h3>육성 및 재화</h3>
+                    </div>
+                    <div class="guide-card-content">
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=170601', '_blank')">∘ 계시에 대하여</div>
+                        <div class="article" onclick="window.open('https://arca.live/b/persona5x/115843217', '_blank')">∘ 주 성위 계시 입수처</div>
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=175353', '_blank')">∘ 교환상점 구매목록</div>
+                        <div class="article" onclick="window.open('https://docs.google.com/spreadsheets/d/1PotwjpI7fPORdSZ3PfSnbIffbLkvxVXZRpFzGfsuY1w', '_blank')">∘ 패키지 과금효율 계산</div>
+                    </div>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <img src="/assets/img/home/guide3.png" alt="가이드 이미지">
+                        <h3>전투 및 팰리스</h3>
+                    </div>
+                    <div class="guide-card-content">
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=163337', '_blank')">∘ 대미지 계산식</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1xF4m1N7bZ', '_blank')">∘ 팰리스 1장 100% 탐색도</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1zD421n7jJ', '_blank')">∘ 팰리스 2장 100% 탐색도</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1kr421T7Wp', '_blank')">∘ 팰리스 3장 100% 탐색도</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1duUSYfEdY', '_blank')">∘ 팰리스 4장 100% 탐색도</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="posts-container">
+            <div class="posts-header">
+                <h2><a href="./tactic/tactic-share.html">택틱 대장간 NEW</a></h2>
+                <a href="./tactic/tactic-share.html" class="show-more-posts-btn">더보기 ＋</a>
+            </div>
+            <div class="posts-list" id="postsList"></div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-text">
+                <p>※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.</p>
+                <p>✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" style="color: rgb(255, 255, 255, 0.5); text-decoration: underline;" target="_blank">제보 및 요청</a></p>
+                <p></p>
+            </div>
+            
+            <!-- 반응형 일반 -->
+                <!--
+            <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5862324369257695"
+                    data-ad-slot="1387076195"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+            <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>-->
+        </div>
+    </div>
+    
+</div>
+
+<!-- iframe -->
+<iframe id="music-player" src="/music.html" style="display: none;"></iframe>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('home');
+        VersionChecker.check();
+        window.tacticShare = new TacticShare({ postsPerPage: 2});
+
+        const musicPlayer = document.getElementById('music-player');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        // Music control button click event
+        musicControl.addEventListener('click', () => {
+            if (!isPlaying) {
+                musicPlayer.contentWindow.postMessage('play', '*');
+                musicIcon.src = '/assets/img/ui/music-on.png';
+                musicIcon.alt = '음악 중지';
+            } else {
+                musicPlayer.contentWindow.postMessage('pause', '*');
+                musicIcon.src = 'data/img/ui/music-off.png';
+                musicIcon.alt = '음악 재생';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Receive music state
+        window.addEventListener('message', (event) => {
+            if (event.data === 'playing' || event.data === 'paused') {
+                sessionStorage.setItem('musicState', event.data);
+                isPlaying = event.data === 'playing';
+                musicIcon.src = isPlaying ? '/assets/img/ui/music-on.png' : '/assets/img/ui/music-off.png';
+                musicIcon.alt = isPlaying ? '음악 중지' : '음악 재생';
+            }
+        });
+
+        // Save current state before page unload
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('musicState', isPlaying ? 'playing' : 'paused');
+        });
+    });
+
+    // Load update history
+    let allUpdates = []; // Store all updates
+    const INITIAL_SHOW = 5; // Number of updates to show initially
+    const LOAD_MORE_COUNT = 10; // Number of updates to load when "more" button is clicked
+    let currentlyShown = 0;
+
+    async function loadUpdates() {
+        try {
+            const response = await fetch(`/data/kr/updates.csv?v=${APP_VERSION}`);
+            const data = await response.text();
+            
+            // Parse CSV
+            allUpdates = data.split('\n')
+                .slice(1) // Remove header
+                .filter(line => line.trim()) // Remove empty lines
+                .map(line => {
+                    const [date, version, content] = line.split(',');
+                    // Remove '20' prefix from date
+                    const formattedDate = date.replace(/^20/, '');
+                    return { date: formattedDate, version, content: content.replace('|', ', ') };
+                });
+
+            // Show initial updates
+            showMoreUpdates(INITIAL_SHOW);
+            
+            // Set visibility of "more" button
+            const showMoreBtn = document.getElementById('show-more-updates-btn');
+            if (allUpdates.length > INITIAL_SHOW) {
+                showMoreBtn.style.display = 'block';
+                showMoreBtn.addEventListener('click', () => showMoreUpdates(LOAD_MORE_COUNT));
+            }
+        } catch (error) {
+            console.error('Failed to load update history:', error);
+        }
+    }
+
+    // Function to display additional updates
+    function showMoreUpdates(count) {
+        const updateList = document.getElementById('recent-update-list');
+        const showMoreBtn = document.getElementById('show-more-updates-btn');
+        
+        // Additional updates to display
+        const newUpdates = allUpdates.slice(currentlyShown, currentlyShown + count);
+        
+        newUpdates.forEach(update => {
+            const updateElement = document.createElement('div');
+            updateElement.className = 'recent-update-content-text';
+            updateElement.innerHTML = `
+                <div class="date">${update.date}</div>
+                <div class="version">${update.version}</div>
+                <div class="content"><p>${update.content}</p></div>
+            `;
+            updateList.appendChild(updateElement);
+        });
+
+        currentlyShown += newUpdates.length;
+
+        // If all updates have been shown, hide the "more" button
+        if (currentlyShown >= allUpdates.length) {
+            showMoreBtn.style.display = 'none';
+        }
+    }
+
+    // Load update history on page load
+    document.addEventListener('DOMContentLoaded', loadUpdates);
+</script>

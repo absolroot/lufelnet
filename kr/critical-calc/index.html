@@ -1,0 +1,91 @@
+---
+layout: default
+custom_css: [critical-calc]
+custom_js: [tooltip, critical-calc]
+custom_data: [tooltip.js, calc/boss.js, calc/critical-data.js]
+permalink: /kr/critical-calc/
+language: kr
+---
+
+<!-- 메인 컨텐츠 -->
+<div class="main-wrapper">
+    <!-- 네비게이션 경로 -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">크리티컬 계산</span>
+    </div>
+    <div class="header-container">
+        <h1>크리티컬 확률 계산기</h1>
+    </div>
+    
+    <!-- 상단 카드 컨테이너 -->
+    <div class="top-cards">
+        <!-- 크리티컬 확률 합계 카드 -->
+        <div class="stat-card card-style">
+            <h2>크리티컬 확률 합계</h2>
+            <div class="total-value">0%</div>
+            <div class="total-value-description">
+                <div></div>
+            </div>
+        </div>
+
+
+
+        <div class="boss-card card-style">
+            <h2>-</h2>
+            <div class="boss-select-container">
+                <select id="bossSelect">
+                    <option value="">-</option>
+                </select>
+                <div class="boss-stats">
+                    <div>· : <span id="basecritical">-</span></div>
+                    <div>· : <span id="criticalCoef">-</span></div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="damage-card card-style">
+            <h2>-</h2>
+            <div class="damage-increase"></div>
+            <div class="damage-formula">
+                <div class="formula-row">· : <span id="noDefReduce">-</span></div>
+                <div class="formula-row">· : <span id="withDefReduce">-</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 데이터 테이블 -->
+    <div class="critical-table-container card-style">
+        <table class="critical-table">
+            <thead>
+                <tr>
+                    <th class="check-column">선택</th>
+                    <th class="char-img-column">괴도</th>
+                    <th class="char-name-column"></th>
+                    <th class="type-column">분류</th>
+                    <th class="target-column">목표</th>
+                    <th class="skill-icon-column"></th>
+                    <th class="skill-name-column">이름</th>
+                    <th class="option-column">옵션</th>
+                    <th class="value-column">수치</th>
+                    <th class="duration-column">지속시간</th>
+                    <th class="note-column">비고</th>
+                </tr>
+            </thead>
+            <tbody id="criticalTableBody">
+                <!-- JavaScript로 동적 생성됨 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // 페이지 로드 시 네비게이션 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('critical-calc', 1); // 현재 페이지에 맞는 active 상태 설정
+        VersionChecker.check();
+
+    });
+</script>

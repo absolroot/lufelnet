@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-5862324369257695">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
+  crossorigin="anonymous"></script>
+  
+  <!-- SEO 메타태그 -->
+  <meta name="description" content="">
+  <meta name="keywords" content="페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략">
+  <meta name="author" content="루트">
+  
+  <!-- Open Graph 메타태그 -->
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/kr/tactic/">
+  <meta property="og:image" content="http://localhost:4000/assets/img/home/seo.png">
+  
+  <title></title>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
+
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-57DTGQ5TR7"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-57DTGQ5TR7');</script>
+ 
+  
+  <!-- 버전 관리 스크립트 -->
+  <script>
+    document.write('<script src="/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+  </script>
+  
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="LufelNet" />
+  <link rel="manifest" href="/assets/img/favicon/site.webmanifest" />
+
+  <script>
+    // APP_VERSION을 사용하여 리소스 버전 관리
+    document.write(`
+      <link rel="stylesheet" href="/assets/css/default/common.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/assets/css/default/nav.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/assets/css/default/version-update.css?v=${APP_VERSION}">
+      <script src="/assets/js/nav.js?v=${APP_VERSION}"><\/script>
+      <script src="/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
+    `);
+    
+    
+      
+        document.write(`<link rel="stylesheet" href="/assets/css/tactic.css?v=${APP_VERSION}">`);
+      
+    
+    
+    
+      
+        document.write(`<script src="/assets/js/tooltip.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/share.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/import.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/export.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/setparty.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/setwonder.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/partyimg.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/createAction.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/renderTurns.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/updateAuto.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/tactic/findPattern.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/assets/js/simulator.js?v=${APP_VERSION}"><\/script>`);
+      
+    
+
+    
+      
+        document.write(`<script src="/data/kr/tooltip.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/data/kr/tactic/rituals.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/data/kr/characters/characters.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/data/kr/revelations/revelations.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/data/kr/wonder/weapons.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/data/kr/wonder/persona.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/data/kr/wonder/skills.js?v=${APP_VERSION}"><\/script>`);
+      
+    
+  </script>
+</head>
+<body>
+  <!-- 네비게이션 컨테이너 -->
+  <div class="container">
+    <div id="nav-container"></div>
+    
+    <!-- 메인 콘텐츠 -->
+      <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+
+    <div class="main-wrapper">
+      <!-- navigation path -->
+      <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">택틱 / 택틱 메이커</span>
+    </div>
+    <div class="header-container">
+      <div class="logo-container-tactic"> <!-- link to current page -->
+        <!--
+        <a href="../index.html">
+          <img src="../img/logo/P5Xlogo.png" alt="Persona5X Logo" />
+        </a>-->
+        <div class="title-input-container">
+          <input type="text" 
+                 class="title-input" 
+                 value="페르소나5X 택틱 메이커" 
+                 style="color: white;">
+        </div>
+      </div>
+      <div class="top-buttons">
+        <button class="export-import-btn" onclick="exportData()">내보내기</button>
+        <button class="export-import-btn" onclick="importData()">가져오기</button>
+        <button class="export-import-btn" onclick="handleShare()">공유하기</button>
+        <button class="export-import-btn capture-btn" onclick="captureAndShare()">화면 캡처</button>
+        <button class="export-import-btn toggle-ui-btn" onclick="toggleUI()"></button>
+      </div>
+    </div>
+    
+    <!-- tab button (under header-container) development-->
+    <!--
+    <div class="tab-container">
+      <button class="tab-button active" data-tab="tactic">택틱 설정</button>
+      <button class="tab-button" data-tab="simulator">시뮬레이터</button>
+    </div>
+    -->
+    <!-- tab content area -->
+    <div class="tab-content">
+      <!-- tactic setting tab -->
+      <div id="tactic" class="tab-pane active">
+        <!-- top container: (1) wonder setting, (2) party selection -->
+        <div id="top-container">
+          <!-- wonder setting card -->
+          <div class="card wonder-setting" id="wonder-config">
+            <h2>원더 설정</h2>
+            <div class="weapon-container">
+              <label>무기
+                <input type="text" class="wonder-weapon-input" list="weapon-list" placeholder="선택 또는 입력" />
+              </label>
+              <datalist id="weapon-list">
+                <!-- JavaScript will fill this -->
+              </datalist>
+            </div>
+            <div class="persona-container">
+              <label>페르소나1
+                <input type="text" class="wonder-persona-input" data-persona-index="0" />
+              </label>
+              <div class="skill-inputs">
+                <input type="text" class="persona-skill-input" data-persona-index="0" data-skill-slot="0" list="persona-skills-list" placeholder="고유스킬" />
+                <input type="text" class="persona-skill-input" data-persona-index="0" data-skill-slot="1" list="persona-skills-list" placeholder="스킬 2" />
+                <input type="text" class="persona-skill-input" data-persona-index="0" data-skill-slot="2" list="persona-skills-list" placeholder="스킬 3" />
+              </div>
+            </div>
+            <div class="persona-container">
+              <label>페르소나2
+                <input type="text" class="wonder-persona-input" data-persona-index="1" />
+              </label>
+              <div class="skill-inputs">
+                <input type="text" class="persona-skill-input" data-persona-index="1" data-skill-slot="0" list="persona-skills-list" placeholder="고유스킬" />
+                <input type="text" class="persona-skill-input" data-persona-index="1" data-skill-slot="1" list="persona-skills-list" placeholder="스킬 2" />
+                <input type="text" class="persona-skill-input" data-persona-index="1" data-skill-slot="2" list="persona-skills-list" placeholder="스킬 3" />
+              </div>
+            </div>
+            <div class="persona-container">
+              <label>페르소나3
+                <input type="text" class="wonder-persona-input" data-persona-index="2" />
+              </label>
+              <div class="skill-inputs">
+                <input type="text" class="persona-skill-input" data-persona-index="2" data-skill-slot="0" list="persona-skills-list" placeholder="고유스킬" />
+                <input type="text" class="persona-skill-input" data-persona-index="2" data-skill-slot="1" list="persona-skills-list" placeholder="스킬 2" />
+                <input type="text" class="persona-skill-input" data-persona-index="2" data-skill-slot="2" list="persona-skills-list" placeholder="스킬 3" />
+              </div>
+            </div>
+          </div>
+          
+          <!-- party selection card -->
+          <div class="card" id="party-selection">
+            <h2>괴도단</h2>
+            <div class="party-member" data-index="0">
+              <div class="input-group">
+                <label>괴도 1</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식:</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서:</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주 계시:</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진:</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="1">
+              <div class="input-group">
+                <label>괴도 2</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식:</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서:</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주 계시:</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진:</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="2">
+              <div class="input-group">
+                <label>괴도 3</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식:</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서:</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주 계시:</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진:</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="3">
+              <div class="input-group">
+                <label>괴도 4</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식:</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서:</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주 계시:</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진:</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="4">
+              <div class="input-group">
+                <label>해명 -</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                  <!-- supportParty 목록은 JavaScript에서 동적으로 채워짐 -->
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식:</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서:</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="-" selected>-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주 계시:</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진:</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- container for party images -->
+        <div class = "middle-contianer">
+          <div class="party-images-container">
+            <div class="party-images"></div>
+          </div>
+          <div class="madeby">.</div>
+        </div>
+
+        <!-- turn area (6 turns) -->
+        <div class="mobile-buttons">
+          <button class="mobile-lock-btn" onclick="toggleTurnsLock()">순서 이동 잠금</button>
+          <button class="toggle-ui-btn" onclick="toggleUI()">UI 숨김</button>
+        </div>
+        <div id="turns">
+          <!-- existing turn content -->
+        </div>
+      </div>
+
+      <!-- simulator tab -->
+      <div id="simulator" class="tab-pane">
+        <div class="simulator-container">
+          <!-- turn list -->
+          <div class="turn-list">
+            <!-- turn action list is dynamically generated by JS -->
+          </div>
+          <!-- status effect area -->
+          <div class="status-container">
+            <div class="buff-container">
+              <h3>아군 버프</h3>
+              <div class="buff-list">
+                <!-- buff list is dynamically generated by JS -->
+              </div>
+            </div>
+            <div class="debuff-container">
+              <h3>적 디버프</h3>
+              <div class="debuff-list">
+                <!-- debuff list is dynamically generated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- SortableJS (drag and drop library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script>
+      /* ========== Global data ========== */
+      // Wonder persona 3 slots
+      let wonderPersonas = ["","",""];
+      
+      // Party member info (5 members)
+      let partyMembers = [
+        { index: 0, name: "원더", order: "1", ritual: "" },
+        { index: 1, name: "", order: "2", ritual: "" },
+        { index: 2, name: "", order: "3", ritual: "" },
+        { index: 3, name: "", order: "4", ritual: "" },
+        { index: 4, name: "", order: "-", ritual: "" }
+      ];
+      
+      // Turn data (6 turns). Each turn contains an actions array (auto+manual actions).
+      let turns = [];
+      for (let i = 0; i < 6; i++) {
+        turns.push({
+          turn: i + 1,
+          actions: [
+            /* Example: { type: 'auto', character: 'Wonder', action: '', wonderPersona: '' } */
+          ]
+        });
+      }
+
+
+      
+      // DOM is loaded, initialize initial settings
+      document.addEventListener("DOMContentLoaded", () => {
+
+        // Initialize navigation
+        Navigation.load('tactic');
+        VersionChecker.check();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const sharedData = urlParams.get('data');
+        
+        if (sharedData) {
+          const decodedData = processSharedData(sharedData);
+          
+          // If shared data, set UI to hidden state by default
+          document.querySelector('.container').classList.add('hide-ui');
+          const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+          const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+          if (desktopToggleBtn) desktopToggleBtn.classList.add('active');
+          if (mobileToggleBtn) mobileToggleBtn.classList.add('active');
+
+
+          console.log(decodedData);
+
+          if (decodedData) {
+            // Add title setting
+            document.querySelector('.title-input').value = decodedData.title;
+            
+            // Set Wonder persona data
+            wonderPersonas = decodedData.w;
+            
+            // Set Wonder persona data
+            const wonderInputs = document.querySelectorAll(".wonder-persona-input");
+            wonderInputs.forEach((input, idx) => {
+              input.value = wonderPersonas[idx] || "";
+            });
+
+            // Set Wonder weapon
+            document.querySelector(".wonder-weapon-input").value = decodedData.weapon;
+
+            // Set persona skills
+            const skillInputs = document.querySelectorAll(".persona-skill-input");
+            let normalSkillIndex = 0;  // Normal skill index
+
+            skillInputs.forEach((input, index) => {
+                // Unique skill slot
+                if (index % 3 === 0) {
+                    const personaIndex = Math.floor(index / 3);
+                    const selectedPersona = decodedData.w[personaIndex];
+                    if (selectedPersona && personaData[selectedPersona]) {
+                        input.value = personaData[selectedPersona].uniqueSkill.name;
+                        input.disabled = true;
+                        input.classList.add('unique-skill');
+                    }
+                } 
+                // Normal skill slot
+                else {
+                    if (decodedData.personaSkills[normalSkillIndex]) {
+                        input.value = decodedData.personaSkills[normalSkillIndex];
+                    }
+                    normalSkillIndex++;
+                }
+            });
+            
+            // Restore partyMembers data
+            decodedData.p.forEach((p, idx) => {
+              partyMembers[idx].name = p.name;
+              partyMembers[idx].order = p.order;
+              partyMembers[idx].ritual = p.ritual;
+              
+              // Update party member name input field
+              const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+              if (partyDiv) {
+                const nameInput = partyDiv.querySelector(".party-name-input");
+                const orderSelect = partyDiv.querySelector(".party-order");
+                const ritualSelect = partyDiv.querySelector(".party-ritual");
+                const mainRevSelect = partyDiv.querySelector(".main-revelation");
+                const subRevSelect = partyDiv.querySelector(".sub-revelation");
+                
+                if (nameInput) nameInput.value = p.name || "";
+                if (orderSelect) orderSelect.value = p.order || "";
+                if (ritualSelect) ritualSelect.value = p.ritual || "0";
+                
+                // Set revelation
+                if (mainRevSelect && p.mainRev) {
+                  mainRevSelect.value = p.mainRev;
+                  // When main revelation is selected, activate sub revelation
+                  if (p.mainRev && revelationData.main[p.mainRev]) {
+                    subRevSelect.disabled = false;
+                    // Set sub revelation options
+                    subRevSelect.innerHTML = '<option value="">-</option>';
+                    revelationData.main[p.mainRev].forEach(subRev => {
+                      const opt = document.createElement("option");
+                      opt.value = subRev;
+                      opt.textContent = subRev;
+                      subRevSelect.appendChild(opt);
+                    });
+                    // Set sub revelation value
+                    if (p.subRev) {
+                      subRevSelect.value = p.subRev;
+                    }
+                  }
+                }
+                
+                // If Wonder, disable ritual and revelation
+                if (p.n === "원더") {
+                  if (ritualSelect) {
+                    ritualSelect.disabled = true;
+                    ritualSelect.value = "0";
+                  }
+                  if (mainRevSelect) mainRevSelect.disabled = true;
+                  if (subRevSelect) subRevSelect.disabled = true;
+                }
+              }
+            });
+            
+            // Restore turn data
+            turns = decodedData.t;
+            
+            // Default UI settings
+            setupWonderConfig();
+            setupPartySelection();
+
+            // Reset revelation values
+            decodedData.p.forEach((p, idx) => {
+              const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+              if (partyDiv && p.mainRev) {
+                const mainRevSelect = partyDiv.querySelector(".main-revelation");
+                const subRevSelect = partyDiv.querySelector(".sub-revelation");
+                
+                if (mainRevSelect) {
+                  mainRevSelect.value = p.mainRev;
+                  
+                  if (revelationData.main[p.mainRev]) {
+                    subRevSelect.disabled = false;
+                    subRevSelect.innerHTML = '<option value="">-</option>';
+                    revelationData.main[p.mainRev].forEach(subRev => {
+                      const opt = document.createElement("option");
+                      opt.value = subRev;
+                      opt.textContent = subRev;
+                      subRevSelect.appendChild(opt);
+                    });
+                    
+                    if (p.subRev) {
+                      subRevSelect.value = p.subRev;
+                    }
+                  }
+                }
+              }
+            });
+
+            updatePartyImages();
+            
+            // Render turns (before updating auto actions)
+            renderTurns();
+            
+            // Restore action data for each turn
+            turns.forEach((turn, turnIndex) => {
+              const turnContainer = document.querySelector(`.turn-container[data-turn-index="${turnIndex}"]`);
+              if (!turnContainer) return;
+
+              const actionsList = turnContainer.querySelector('.actions');
+              if (!actionsList) return;
+
+              turn.actions.forEach((action, actionIndex) => {
+                const actionItem = actionsList.children[actionIndex]; 
+                if (!actionItem) return;
+
+                // Select character
+                const charSelect = actionItem.querySelector('.action-character');
+                if (charSelect) {
+                  charSelect.value = action.character;
+                }
+
+                // Select Wonder persona or skill
+                if (action.character === "원더") {
+                  const personaSelect = actionItem.querySelector('.wonder-persona-select');
+                  if (personaSelect) {
+                    personaSelect.value = action.wonderPersona;
+                  }
+                } else {
+                  const skillSelect = actionItem.querySelector('.action-skill');
+                  if (skillSelect) {
+                    skillSelect.value = action.action;
+                  }
+                }
+
+                // Input memo
+                const memoInput = actionItem.querySelector('.action-memo');
+                if (memoInput) {
+                  memoInput.value = action.memo || "";
+                }
+              });
+            });
+            
+            // Update auto actions last
+            updateAutoActions();
+            
+          } 
+        } else {
+          setupWonderConfig();
+          setupPartySelection();
+          updateAutoActions();
+          updatePartyImages();
+          renderTurns();
+        }
+
+        // Add skill list to datalist
+        const skillsList = document.getElementById('persona-skills-list');
+        
+        // Add all skills from personaSkillList to datalist
+        Object.keys(personaSkillList).forEach(skillName => {
+          const option = document.createElement('option');
+          option.value = skillName;
+          skillsList.appendChild(option);
+        });
+
+        // Select searchable dropdown elements
+        const searchableInputs = document.querySelectorAll('input[list]');
+        
+        searchableInputs.forEach(input => {
+          // Handle dropdown arrow click with mousedown event
+          input.addEventListener('mousedown', function(e) {
+            // Detect dropdown arrow click (right 20px area of input field)
+            if (e.offsetX > this.offsetWidth - 20) {
+              // Clear value and keep focus
+              this.value = '';
+            }
+          });
+        });
+
+        const inputFields = document.querySelectorAll('input[type="text"], textarea');
+        let lastScrollPosition = 0;
+
+        inputFields.forEach(field => {
+            // Use only focus event
+            field.addEventListener('focus', function() {
+                // Allow natural keyboard display without interfering with default behavior
+                setTimeout(() => {
+                    const fieldRect = this.getBoundingClientRect();
+                    const offset = fieldRect.top - 150;
+                    
+                    window.scrollTo({
+                        top: window.scrollY + offset,
+                        behavior: 'auto'
+                    });
+                }, 300);
+            });
+        });
+
+        // Initialize keyboard detection on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update viewport meta tag
+            const meta = document.querySelector('meta[name="viewport"]');
+            if (meta) {
+                meta.setAttribute('content', 
+                    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+                );
+            }
+        });
+
+        // Handle scroll end
+        window.addEventListener('scroll', function() {
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            // Add a small margin when almost at the end of the scroll
+            document.body.style.paddingBottom = '100px';
+          } else {
+            document.body.style.paddingBottom = '';
+          }
+        });
+
+        // 화면 크기에 따라 캡처 버튼 표시 여부 설정
+        function updateCaptureButtonVisibility() {
+          const captureBtn = document.querySelector('.capture-btn');
+          if (captureBtn) {
+            if (window.innerWidth <= 1440) {
+              captureBtn.style.display = 'none';
+            } else {
+              captureBtn.style.display = '';
+            }
+          }
+        }
+        
+        // 초기 로드 시 실행
+        updateCaptureButtonVisibility();
+        
+        // 화면 크기가 변경될 때마다 실행
+        window.addEventListener('resize', updateCaptureButtonVisibility);
+
+      });
+
+
+      // Basic URL function
+      function getBaseUrl() {
+        // Return the base URL of the current page (excluding query parameters)
+        return window.location.href.split('?')[0];
+      }
+
+
+      // UI toggle
+      function toggleUI() {
+        const container = document.querySelector('.container');
+        const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+        const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+        
+        container.classList.toggle('hide-ui');
+        
+        // Handle both desktop and mobile buttons
+        if (desktopToggleBtn) desktopToggleBtn.classList.toggle('active');
+        if (mobileToggleBtn) mobileToggleBtn.classList.toggle('active');
+        
+        // Save toggle state
+        localStorage.setItem('uiHidden', container.classList.contains('hide-ui'));
+      }
+
+      // Restore previous state on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const uiHidden = localStorage.getItem('uiHidden') === 'true';
+        const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+        const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+        
+        if (uiHidden) {
+          document.querySelector('.container').classList.add('hide-ui');
+          if (desktopToggleBtn) desktopToggleBtn.classList.add('active');
+          if (mobileToggleBtn) mobileToggleBtn.classList.add('active');
+        }
+      });
+
+      function toggleTurnsLock() {
+        const lockBtn = document.querySelector('.mobile-lock-btn');
+        const turnsContainer = document.getElementById('turns');
+        
+        lockBtn.classList.toggle('active');
+        turnsContainer.classList.toggle('turns-locked');
+        
+        // Save lock state
+        localStorage.setItem('turnsLocked', turnsContainer.classList.contains('turns-locked'));
+
+        renderTurns();
+      }
+
+      // Restore previous lock state on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const turnsLocked = localStorage.getItem('turnsLocked') === 'true';
+        if (turnsLocked) {
+          const lockBtn = document.querySelector('.mobile-lock-btn');
+          const turnsContainer = document.getElementById('turns');
+          
+          lockBtn.classList.add('active');
+          turnsContainer.classList.add('turns-locked');
+        }
+      });
+
+      // html-to-image 라이브러리를 사용한 캡처 함수 (margin 조정)
+      async function captureAndShare() {
+        try {
+          // 로딩 표시
+          const loadingEl = document.createElement('div');
+          loadingEl.style.position = 'fixed';
+          loadingEl.style.top = '50%';
+          loadingEl.style.left = '50%';
+          loadingEl.style.transform = 'translate(-50%, -50%)';
+          loadingEl.style.background = 'rgba(0,0,0,0.7)';
+          loadingEl.style.color = 'white';
+          loadingEl.style.padding = '15px 20px';
+          loadingEl.style.borderRadius = '5px';
+          loadingEl.style.zIndex = '9999';
+          loadingEl.textContent = '캡처 준비 중...';
+          document.body.appendChild(loadingEl);
+          
+          // UI 숨기기 (원래 상태 저장)
+          const container = document.querySelector('.container');
+          const originalUIState = container.classList.contains('hide-ui');
+          container.classList.add('hide-ui');
+          
+          // 캡처할 요소
+          const mainWrapper = document.querySelector('.main-wrapper');
+          
+          // 원래 스타일 저장
+          const originalStyles = {
+            left: mainWrapper.style.left,
+            right: mainWrapper.style.right,
+            marginLeft: mainWrapper.style.marginLeft,
+            marginRight: mainWrapper.style.marginRight,
+            paddingLeft: mainWrapper.style.paddingLeft,
+            paddingRight: mainWrapper.style.paddingRight,
+            containerMarginLeft: mainWrapper.style.marginLeft,
+            containerMarginRight: mainWrapper.style.marginRight,
+            containerPaddingLeft: mainWrapper.style.paddingLeft,
+            containerPaddingRight: mainWrapper.style.paddingRight
+          };
+          
+          // 캡처를 위해 스타일 설정
+          mainWrapper.style.left = '0';
+          mainWrapper.style.right = 'auto';
+          mainWrapper.style.marginLeft = '0';
+          mainWrapper.style.marginRight = '0';
+          mainWrapper.style.paddingLeft = '0';
+          mainWrapper.style.paddingRight = '0';
+          container.style.marginLeft = '0';
+          container.style.marginRight = '0';
+          container.style.paddingLeft = '0';
+          container.style.paddingRight = '0';
+
+          // 캡처에서 제외할 요소 숨기기
+          const mobileButtons = document.querySelector('.mobile-buttons');
+          const topButtons = document.querySelector('.top-buttons');
+          
+          const originalMobileButtonsDisplay = mobileButtons ? mobileButtons.style.display : null;
+          const originalTopButtonsDisplay = topButtons ? topButtons.style.display : null;
+          
+          if (mobileButtons) mobileButtons.style.display = 'none';
+          if (topButtons) topButtons.style.display = 'none';
+          
+          // 잠시 대기 (UI 변경 적용 시간)
+          await new Promise(resolve => setTimeout(resolve, 300));
+          
+          loadingEl.textContent = '캡처 중...';
+          
+          // 현재 main-wrapper의 크기 가져오기
+          const rect = mainWrapper.getBoundingClientRect();
+          
+          // html-to-image 라이브러리를 사용하여 캡처
+          const dataUrl = await htmlToImage.toPng(mainWrapper, {
+            quality: 1.0,
+            backgroundColor: '#1a1a1a',
+            pixelRatio: window.devicePixelRatio,
+            width: rect.width + 240,  // 현재 main-wrapper의 너비 사용
+            height: rect.height, // 현재 main-wrapper의 높이 사용
+            skipFonts: false,
+            fontEmbedCSS: true,
+            imagePlaceholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
+          });
+          
+          // 원래 스타일로 복원
+          mainWrapper.style.left = originalStyles.left;
+          mainWrapper.style.right = originalStyles.right;
+          mainWrapper.style.marginLeft = originalStyles.marginLeft;
+          mainWrapper.style.marginRight = originalStyles.marginRight;
+          mainWrapper.style.paddingLeft = originalStyles.paddingLeft;
+          mainWrapper.style.paddingRight = originalStyles.paddingRight;
+          container.style.marginLeft = originalStyles.containerMarginLeft;
+          container.style.marginRight = originalStyles.containerMarginRight;
+          container.style.paddingLeft = originalStyles.containerPaddingLeft;
+          container.style.paddingRight = originalStyles.containerPaddingRight;
+          
+          // 숨긴 요소 복원
+          if (mobileButtons) mobileButtons.style.display = originalMobileButtonsDisplay || '';
+          if (topButtons) topButtons.style.display = originalTopButtonsDisplay || '';
+          
+          // UI 상태 복원
+          if (!originalUIState) {
+            container.classList.remove('hide-ui');
+          }
+          
+          loadingEl.textContent = '이미지 생성 완료!';
+          
+          // 공유 또는 다운로드
+          if (navigator.share) {
+            loadingEl.textContent = '공유 준비 중...';
+            const blob = await (await fetch(dataUrl)).blob();
+            const file = new File([blob], 'p5x-tactic.png', { type: 'image/png' });
+            
+            await navigator.share({
+              files: [file],
+              title: '페르소나5X 택틱',
+              text: '페르소나5X 택틱 메이커로 생성된 이미지입니다.'
+            });
+          } else {
+            const link = document.createElement('a');
+            link.download = 'p5x-tactic.png';
+            link.href = dataUrl;
+            link.click();
+          }
+          
+          // 로딩 표시 제거
+          document.body.removeChild(loadingEl);
+          
+        } catch (error) {
+          console.error('캡처 오류:', error);
+          alert('캡처 중 오류가 발생했습니다: ' + error.message);
+          
+          // 오류 발생 시 UI 상태 복원
+          const container = document.querySelector('.container');
+          if (container.classList.contains('hide-ui')) {
+            container.classList.remove('hide-ui');
+          }
+          
+          // 로딩 표시 제거
+          try {
+            const loadingEl = document.querySelector('div[style*="position: fixed"]');
+            if (loadingEl && loadingEl.parentNode) {
+              loadingEl.parentNode.removeChild(loadingEl);
+            }
+          } catch (e) {
+            console.error('로딩 표시 제거 오류:', e);
+          }
+        }
+      }
+    </script>
+
+  <!-- datalist --> 
+  <datalist id="persona-skills-list">
+    <!-- JavaScript will fill this -->
+  </datalist>
+
+    
+    <!-- 푸터 
+    <footer>
+      <p>&copy; 2025 </p>
+    </footer>-->
+    <button id="top-button" class="floating-top-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L4 12L5.4 13.4L11 7.8V20H13V7.8L18.6 13.4L20 12L12 4Z" fill="rgba(255, 255, 255, 0.6)"/>
+      </svg>
+    </button>
+  </div>
+</body>
+</html>

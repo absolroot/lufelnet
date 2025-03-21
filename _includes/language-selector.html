@@ -1,0 +1,24 @@
+<div class="language-selector">
+    <select id="language-select" onchange="changeLanguage()">
+      <option value="kr" {% if page.language == 'kr' %}selected{% endif %}>한국어</option>
+      <option value="en" {% if page.language == 'en' %}selected{% endif %}>English</option>
+      <option value="ja" {% if page.language == 'ja' %}selected{% endif %}>日本語</option>
+    </select>
+  </div>
+  
+  <script>
+    function changeLanguage() {
+      var select = document.getElementById('language-select');
+      var language = select.options[select.selectedIndex].value;
+      var currentPath = window.location.pathname;
+      var pathParts = currentPath.split('/');
+      
+      // 현재 언어 부분을 새 언어로 교체
+      if (pathParts.length > 1) {
+        pathParts[1] = language;
+        window.location.href = pathParts.join('/');
+      } else {
+        window.location.href = '/' + language + '/';
+      }
+    }
+  </script>

@@ -1,0 +1,60 @@
+---
+layout: default
+custom_css: [tiers]
+custom_js: []
+custom_data: [characters/characters.js]
+permalink: /kr/tier/
+language: kr
+---
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+/>
+
+<script type="module" src="tiers.js?v=${APP_VERSION}"></script>
+
+ <!-- Main content -->
+<div class="main-wrapper">
+    <!-- Navigation path -->
+    <div class="navigation-path">
+        <a href="../index.html">홈</a>
+        <span class="separator">/</span>
+        <span class="current-page">티어 메이커</span>
+    </div>
+    <div class="header-container">
+        <h1>티어 메이커 (beta)</h1>
+    </div>
+    <div class="add-tier-button-container">
+        <button id="add-tier-button" class="add-tier-btn">
+            <i class="bi bi-plus-circle"></i> 새 티어 추가
+        </button>
+    </div>
+    <div
+    class="tiers-container"
+    data-placeholder="Click on the title to add a new tier."
+    ></div>
+
+    <div class="cards container">
+    </div>
+
+    <dialog class="settings-modal">
+    <section>
+        <div class="colors"></div>
+
+        <textarea class="tier-label" placeholder="Tier label"></textarea>
+
+        <button id="delete">Delete Row</button>
+        <button id="clear">Clear Row</button>
+        <button id="prepend">Add a Row Above</button>
+        <button id="append">Add a Row Below</button>
+    </section>
+    </dialog>
+</div>
+
+<script>
+    // Initialize navigation on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('tier-maker'); // Set active state for current page
+    });
+</script>

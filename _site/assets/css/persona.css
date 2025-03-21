@@ -1,0 +1,877 @@
+.main-content {
+    background-color: transparent;
+    width: 100%;
+}
+
+.separator-line {
+    padding : 0 20px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.1) 10%,
+        rgba(255, 255, 255, 0.1) 90%,
+        transparent
+    );
+    margin: 0px 0 24px 0;
+    box-sizing: border-box;
+}
+
+.persona-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh 32px;
+    justify-content: left;
+    padding: 20px;
+}
+
+.card {
+    position: relative;
+    width: 120px;
+    /* 카드의 가로:세로 비율을 고정 */
+    aspect-ratio: 1/1.67;
+    cursor: pointer;
+    transition: all 0.1s;
+    overflow: hidden;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.persona-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* object-fit을 contain으로 변경하고 이미지가 카드 영역을 벗어나지 않도록 설정 */
+    object-fit: cover;
+    transform: translateX(1%) translateY(5%);
+    z-index: 2;
+}
+
+
+.cover-star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.element-icon {
+    width: 11% !important;
+    height: auto !important;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* 특정 속성 아이콘들은 더 크게 표시 */
+.element-icon img[src*="속성_축복.png"],
+.element-icon img[src*="속성_빙결.png"],
+.element-icon img[src*="속성_질풍빙결.png"] {
+    width: 12% !important;
+}
+
+.position-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+.position-icon {
+    width: 60% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%);
+}
+
+/* 호버 시 카드 이미지 색이 빛나는 효과*/
+.card:hover {
+    filter: brightness(1.1);
+    z-index: 1;
+} 
+
+/* 필터 섹션 스타일 */
+.filter-section {
+    /* background-color: #1a1919;*/
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.filter-header {
+    display: none;
+    /*display: flex;
+    align-items: center;
+    padding: 0px 12px 10px 12px;*/
+}
+
+.filter-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.filter-toggle-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.filter-reset-btn {
+    margin-right: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.filter-reset-btn img {
+    height: 28px;
+    object-fit: contain;
+}
+/*
+.filter-content {
+    padding: 4px 20px 12px 24px;
+    background-color: #242424;
+    border-radius: 8px;
+}*/
+
+.filter-content {
+    padding: 0px 20px 0px 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 4px;
+    gap : 4px;
+}
+
+.filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.filter-group h3 {
+    width: 60px;
+    color: rgb(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 400;
+    outline: none;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.filter-options label {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 32px;
+    padding: 0px 6px 0px 6px;
+    transition: all 0s;  /* background-color만이 아닌 모든 속성에 transition 적용 */
+    background-color: rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+.filter-options label:hover {
+    filter: brightness(1.1);
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+/* 체크박스가 체크되었을 때 라벨 스타일 변경 */
+.filter-options input[type="checkbox"]:checked + img,
+.filter-options input[type="checkbox"]:checked + .star-container {
+    filter: brightness(1.2);
+}
+
+.filter-options input[type="checkbox"]:checked ~ label,
+.filter-options label:has(input[type="checkbox"]:checked) {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgb(211, 188, 142, 0.8);
+    height: 30px;
+    padding: 0px 5px 0px 5px;
+}
+
+.filter-options img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.filter-options img[src*="직업_지배.png"],
+.filter-options img[src*="직업_반항.png"],
+.filter-options img[src*="직업_우월.png"],
+.filter-options img[src*="직업_굴복.png"],
+.filter-options img[src*="직업_방위.png"],
+.filter-options img[src*="직업_해명.png"],
+.filter-options img[src*="persona-grade8.webp"] {
+    width: 22px;
+    height: 22px;
+}
+
+.filter-options input[type="checkbox"] {
+    display: none;
+    width: 16px;
+    height: 16px;
+}
+
+.filter-text {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.sub-text {
+    margin-left: 2px;
+    font-size: 12px;
+    opacity: 0.4;
+}
+
+.star-container {
+    display: flex;
+    gap: 2px;
+    padding: 0px 8px 0px 8px;
+}
+
+.star-container img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+
+@media (max-width: 1440px) {
+    .main-wrapper {
+        padding-top: 60px;
+    }
+    .filter-header{
+        display: none;
+    }
+    .filter-header, .filter-section {
+        /* background-color: #1a1919;*/
+        padding-top : 0;
+        margin-top : 0;
+        overflow: hidden;
+    }
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filter-group h3 {
+        margin-bottom: 4px;
+    }
+    .filter-content {
+        margin-bottom: 10px;
+    }
+    .card {
+        max-width: 120px;
+        width: 40vw;
+    }
+    .persona-cards {
+        justify-content: space-between;
+        padding: 10px;
+        gap: 2vh 2vw;
+    }
+
+    .filter-toggle-btn img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+body {
+    caret-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    overflow-y: overlay; /* 모던 브라우저에서 콘텐츠 위에 스크롤바 표시 */
+}
+
+/* 입력이 필요한 요소들은 예외 처리 */
+input, textarea {
+    caret-color: auto;
+    user-select: auto;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+}
+
+/* 크로스 브라우징을 위한 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* 특정 카드 이미지 특수 효과 */
+
+.persona-img[src*="시바.webp"] {
+    transform: translateX(10%) translateY(15%) scale(1.1);
+}
+
+.persona-img[src*="스라오샤.webp"] {
+    transform: translateX(5%) translateY(2%) scale(1.3);
+}
+
+.persona-img[src*="비슈누.webp"] {
+    transform: translateX(15%) translateY(12%) scale(1.5);
+}
+
+.persona-img[src*="도미니온.webp"] {
+    transform: translateX(-5%) translateY(5%) scale(1.3);
+}
+
+.persona-img[src*="디오니소스.webp"] {
+    transform: translateX(9%) translateY(5%) scale(0.95);
+}
+
+.persona-img[src*="야노식.webp"] {
+    transform: translateX(9%) translateY(10%) scale(1.1);
+}
+
+.persona-img[src*="광목천.webp"] {
+    transform: translateX(10%) translateY(15%) scale(1.1);
+}
+
+.persona-img[src*="아메노우즈메.webp"] {
+    transform: translateX(-9%) translateY(9%) scale(1.00);
+}
+
+.persona-img[src*="서큐버스.webp"] {
+    transform: translateX(10%) translateY(5%) scale(1.5);
+}
+
+.persona-img[src*="체르노보그.webp"] {
+    transform: translateX(2%) translateY(3%) scale(1.0);
+}
+
+.persona-img[src*="오오쿠니누시.webp"] {
+    transform: translateX(10%) translateY(15%) scale(1.1);
+}
+
+.persona-img[src*="노른.webp"] {  
+    transform: translateX(5%) translateY(5%) scale(1.2);
+}
+
+.persona-img[src*="앨리스.webp"] {  
+    transform: translateX(-5%) translateY(10%) scale(0.95);
+}
+
+.persona-img[src*="년수.webp"] {  
+    transform: translateX(0%) translateY(0%) scale(0.95);
+}
+
+.persona-img[src*="비사문천.webp"] {  
+    transform: translateX(2%) translateY(15%) scale(1.5);
+}
+
+.persona-img[src*="유룽.webp"] {  
+    transform: translateX(0%) translateY(0%) scale(0.8);
+}
+
+.persona-img[src*="바포멧.webp"] {  
+    transform: translateX(10%) translateY(0%) scale(1.2);
+}
+
+.persona-img[src*="요시츠네.webp"] {  
+    transform: translateX(10%) translateY(8%) scale(1.1);
+}
+
+.persona-img[src*="지국천.webp"] {  
+    transform: translateX(2%) translateY(2%) scale(0.95);
+}
+
+.persona-img[src*="미트라스.webp"] {  
+    transform: translateX(0%) translateY(0%) scale(0.85);
+}
+
+.persona-img[src*="티타니아.webp"] {  
+    transform: translateX(2%) translateY(2%) scale(1.2);
+}
+
+.persona-img[src*="파르바티.webp"] {  
+    transform: translateX(10%) translateY(12%) scale(0.95);
+}
+
+.persona-img[src*="지크프리트.webp"] {  
+    transform: translateX(7%) translateY(0%) scale(0.95);
+}
+
+.persona-img[src*="킹프로스트.webp"] {  
+    transform: translateX(0%) translateY(-5%) scale(0.95);
+}
+
+.persona-img[src*="릴리스.webp"] {  
+    transform: translateX(-12%) translateY(10%) scale(1.1);
+}
+
+.persona-img[src*="아누비스.webp"] {  
+    transform: translateX(-5%) translateY(5%) scale(1.1);
+}
+
+.persona-img[src*="파즈스.webp"] {  
+    transform: translateX(-5%) translateY(-10%) scale(1);
+}
+
+.persona-img[src*="야마타노오로치.webp"] {  
+    transform: translateX(5%) translateY(5%) scale(1.05);
+}
+
+.persona-img[src*="벨페고르.webp"] {  
+    transform: translateX(5%) translateY(5%) scale(1.05);
+}
+
+.persona-img[src*="수르트.webp"] {  
+    transform: translateX(8%) translateY(15%) scale(1.05);
+}
+
+.persona-detail-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 20px;
+    margin-bottom: 32px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+}
+
+.persona-card-section {
+    flex: 0 0 auto;
+    width: 120px;
+}
+
+.persona-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.persona-header-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.persona-header-info h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.persona-instinct-info ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+/* 나머지 섹션들의 기본 스타일 */
+.persona-instinct-info,
+.persona-unique-skill-info,
+.persona-highlight-info,
+.persona-recommended-skills,
+.persona-comment {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.persona-info-section h3 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: rgb(255, 255, 255, 0.9);
+}
+
+.persona-unique-skill-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.persona-highlight-info h3 {
+    height: 24px;
+}
+
+.skill-type-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.persona-grade-img {
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+}
+
+.persona-info-section p {
+    white-space: pre-line;
+    margin: 0;
+    font-size: 13px;
+    color: rgb(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+.skill-highlight-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.persona-unique-skill-info,
+.persona-highlight-info {
+    padding: 15px;
+    border-radius: 8px;
+}
+
+
+/* priority에 따른 테두리 스타일 */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.persona-instinct-info[data-priority="3"],
+.persona-unique-skill-info[data-priority="3"],
+.persona-highlight-info[data-priority="3"] {
+    position: relative;
+    background: #2E201D;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.persona-instinct-info[data-priority="3"]::before,
+.persona-unique-skill-info[data-priority="3"]::before,
+.persona-highlight-info[data-priority="3"]::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 9px;
+    z-index: -1;
+    margin: -1px;
+    background: linear-gradient(
+        45deg,
+        #4169e1,
+        #c4ffff,
+        #e4c2d3,
+        #4169e1,
+        #c4ffff
+    );
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+}
+
+.persona-instinct-info[data-priority="2"],
+.persona-unique-skill-info[data-priority="2"],
+.persona-highlight-info[data-priority="2"] {
+    /*border: 1.5px solid rgba(136, 118, 20, 0.5);*/
+    border: 1.5px solid rgba(212, 201, 189, 0.3);
+}
+
+.persona-instinct-info[data-priority="1"],
+.persona-unique-skill-info[data-priority="1"],
+.persona-highlight-info[data-priority="1"] {
+    border: 1.5px solid rgba(212, 201, 189, 0.3);
+}
+
+/* Priority에 따른 스킬 이름 색상 */
+.persona-recommended-skills li[data-priority="3"] .skill-name {
+    color: #ffc4c4;  
+}
+
+.persona-recommended-skills li[data-priority="2"] .skill-name {
+    color: rgb(255, 255, 255, 0.8);  
+}
+
+.persona-recommended-skills li[data-priority="1"] .skill-name {
+    color: rgb(255, 255, 255, 0.6);  
+}
+
+.persona-recommended-skills li[data-priority="0"] .skill-name {
+    color: rgb(255, 255, 255, 0.4);  /* 화이트 */
+}
+
+/*
+.persona-instinct-info[data-priority="0"],
+.persona-unique-skill-info[data-priority="0"],
+.persona-highlight-info[data-priority="0"] {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}*/
+
+
+.persona-recommended-skills ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+.persona-recommended-skills li {
+    margin: 8px 0;
+}
+
+.skill-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.skill-name {
+    min-width: 90px;
+    font-size: 12px;
+}
+
+.skill-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+}
+
+
+/*
+.persona-comment {
+    background-color : transparent;
+    padding: 0 4px;
+    margin-top: -4px;
+}*/
+
+.comment-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.comment-icon {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgb(255, 255, 255, 0.6);
+}
+
+.persona-comment p {
+    margin: 0;
+    flex: 1;
+    font-size: 12px;
+    color: rgb(255, 255, 255, 0.6);
+}
+
+
+
+
+
+.search-section {
+    padding: 0 20px;
+    margin-bottom: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-container {
+    position: relative;
+    align-items: center;
+    max-width: 260px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-45%);
+    pointer-events: none;
+}
+
+#personaSearch {
+    width: 100%;
+    padding: 10px 16px 10px 44px;  /* 왼쪽 패딩을 늘려서 아이콘 공간 확보 */
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    border : none; 
+    border-radius: 32px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+
+}
+
+#personaSearch:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 기존 검색창 스타일 유지 */
+
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-top: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 스크롤바 스타일링 */
+.search-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-dropdown::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.search-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+
+
+/* 모바일 화면 레이아웃 조정 */
+@media (max-width: 768px) {
+
+    .navigation-path, .header-container, .filter-content, .persona-cards{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .header-container h1{
+        margin-bottom: 0px;
+    }
+    .persona-detail-container {
+        padding: 20px 10px 10px 10px;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        gap : 1vh;
+    }
+    .search-section {
+        padding: 0px;
+        width: 100%;
+    }
+    .persona-card-section {
+        padding: 0;
+        margin: 0;
+        width: 100%; 
+        display: flex;
+        justify-content: center;
+    }
+    .card {
+        margin: 0 auto;        
+    }
+
+    .persona-header-info {
+        margin-left : 2px;
+        gap : 4px;
+    }
+
+    
+    .skill-highlight-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .persona-info-section {
+        gap: 10px;
+    }
+
+    /* skill-info 아이템들 상단 정렬*/
+    .skill-info {
+        align-items: flex-start;
+    }
+    
+    /* 긴 단어도 잘리면 줄바꿈 */
+    .skill-description {
+        width: 100%;
+        word-break: break-all;
+    }
+    .skill-name {
+        min-width: 60px;
+    }
+}

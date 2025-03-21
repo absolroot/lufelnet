@@ -1,0 +1,90 @@
+/* 업데이트 알림 */
+
+.update-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: slide-in 0.3s ease-out;
+}
+
+.update-content {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-content h3 {
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+
+.update-content p {
+    margin: 0 0 15px 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.update-content button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #4169e1;
+    color: white;
+}
+
+.update-content button:last-child {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 모바일 화면 대응 */
+@media (max-width: 768px) {
+    .update-notification {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .update-content {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .update-content-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .update-content button {
+        width: calc(50% - 5px);  /* 버튼 사이 간격 고려 */
+        margin: 0;
+    }
+
+    @keyframes slide-in {
+        from {
+            transform: translate(-50%, -30%);
+            opacity: 0;
+        }
+        to {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+    }
+}
+

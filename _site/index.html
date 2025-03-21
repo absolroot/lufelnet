@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-5862324369257695">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
+  crossorigin="anonymous"></script>
+  
+  <!-- SEO 메타태그 -->
+  <meta name="description" content="">
+  <meta name="keywords" content="페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략">
+  <meta name="author" content="루트">
+  
+  <!-- Open Graph 메타태그 -->
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/">
+  <meta property="og:image" content="http://localhost:4000/assets/img/home/seo.png">
+  
+  <title></title>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
+
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-57DTGQ5TR7"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-57DTGQ5TR7');</script>
+ 
+  
+  <!-- 버전 관리 스크립트 -->
+  <script>
+    document.write('<script src="/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+  </script>
+  
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="LufelNet" />
+  <link rel="manifest" href="/assets/img/favicon/site.webmanifest" />
+
+  <script>
+    // APP_VERSION을 사용하여 리소스 버전 관리
+    document.write(`
+      <link rel="stylesheet" href="/assets/css/default/common.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/assets/css/default/nav.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/assets/css/default/version-update.css?v=${APP_VERSION}">
+      <script src="/assets/js/nav.js?v=${APP_VERSION}"><\/script>
+      <script src="/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
+    `);
+    
+    
+    
+    
+
+    
+  </script>
+</head>
+<body>
+  <!-- 네비게이션 컨테이너 -->
+  <div class="container">
+    <div id="nav-container"></div>
+    
+    <!-- 메인 콘텐츠 -->
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>페르소나5 더 팬텀 X - 루페르넷</title>
+    <script>
+        function getBrowserLanguage() {
+            var lang = navigator.language || navigator.userLanguage;
+            lang = lang.toLowerCase().split('-')[0];
+            var supportedLangs = ['kr', 'en', 'jp', 'cn'];
+            return supportedLangs.includes(lang) ? lang : 'kr';
+        }
+        
+        var userLang = getBrowserLanguage();
+        var path = window.location.pathname;
+        
+        // 경로에서 첫 번째 세그먼트 추출
+        var segments = path.split('/').filter(Boolean);
+        var firstSegment = segments[0] || '';
+        
+        // 지원하는 섹션들
+        var sections = ['character', 'persona', 'revelations', 'tactic'];
+        
+        if (sections.includes(firstSegment)) {
+            window.location.replace('/' + userLang + '/' + firstSegment + '/');
+        } else if (path === '/' || path === '') {
+            window.location.replace('/' + userLang + '/');
+        }
+    </script>
+</head>
+<body>
+    redirecting...
+</body>
+</html> 
+    
+    <!-- 푸터 
+    <footer>
+      <p>&copy; 2025 </p>
+    </footer>-->
+    <button id="top-button" class="floating-top-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L4 12L5.4 13.4L11 7.8V20H13V7.8L18.6 13.4L20 12L12 4Z" fill="rgba(255, 255, 255, 0.6)"/>
+      </svg>
+    </button>
+  </div>
+</body>
+</html>

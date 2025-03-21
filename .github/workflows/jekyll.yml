@@ -42,7 +42,8 @@ jobs:
       run: |
         gem install bundler
         bundle config set --local path 'vendor/bundle'
-        bundle install --jobs 4 --retry 3
+        bundle config set --local deployment 'true'
+        bundle install --jobs 4 --retry 3 --without development
     
     - name: Build site
       run: bundle exec jekyll build

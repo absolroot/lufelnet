@@ -5,18 +5,18 @@
 </head>
 <body>
     <audio id="background-audio">
-        <source src="/assets/music/Gone with the Storm.mp3" type="audio/mpeg">
+        <source src="{{ site.baseurl }}/assets/music/Gone with the Storm.mp3" type="audio/mpeg">
     </audio>
     <script>
         const audio = document.getElementById('background-audio');
         const playlist = [
-            '/assets/music/P5X - Gone with the Storm.mp3',
-            '/assets/music/P5 - Life Will Change.mp3',
-            '/assets/music/P3R - It\'s Going Down Now.mp3',
-            '/assets/music/P5 - Rivers in the Desert.mp3',
-            '/assets/music/P3 - Memories of You.mp3',
-            '/assets/music/P5S - Daredevil.mp3',
-            '/assets/music/P5R - Take Over.mp3'
+            '{{ site.baseurl }}/assets/music/P5X - Gone with the Storm.mp3',
+            '{{ site.baseurl }}/assets/music/P5 - Life Will Change.mp3',
+            '{{ site.baseurl }}/assets/music/P3R - It\'s Going Down Now.mp3',
+            '{{ site.baseurl }}/assets/music/P5 - Rivers in the Desert.mp3',
+            '{{ site.baseurl }}/assets/music/P3 - Memories of You.mp3',
+            '{{ site.baseurl }}/assets/music/P5S - Daredevil.mp3',
+            '{{ site.baseurl }}/assets/music/P5R - Take Over.mp3'
         ];
         let currentTrack = 0;
         

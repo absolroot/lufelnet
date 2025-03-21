@@ -17,7 +17,7 @@
   <meta property="og:description" content="{{ site.data.i18n[page.language].site.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:image" content="{{ site.url }}/assets/img/home/seo.png">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
   
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}</title>
   
@@ -34,36 +34,36 @@
   
   <!-- 버전 관리 스크립트 -->
   <script>
-    document.write('<script src="/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
   </script>
   
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
-  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/img/favicon/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="LufelNet" />
-  <link rel="manifest" href="/assets/img/favicon/site.webmanifest" />
+  <link rel="manifest" href="{{ site.baseurl }}/assets/img/favicon/site.webmanifest" />
 
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
     document.write(`
-      <link rel="stylesheet" href="/assets/css/default/common.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/nav.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/version-update.css?v=${APP_VERSION}">
-      <script src="/assets/js/nav.js?v=${APP_VERSION}"><\/script>
-      <script src="/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/version-update.css?v=${APP_VERSION}">
+      <script src="{{ site.baseurl }}/assets/js/nav.js?v=${APP_VERSION}"><\/script>
+      <script src="{{ site.baseurl }}/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
     `);
     
     {% if page.custom_css %}
       {% for css_file in page.custom_css %}
-        document.write(`<link rel="stylesheet" href="/assets/css/{{ css_file }}.css?v=${APP_VERSION}">`);
+        document.write(`<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ css_file }}.css?v=${APP_VERSION}">`);
       {% endfor %}
     {% endif %}
     
     {% if page.custom_js %}
       {% for js_file in page.custom_js %}
-        document.write(`<script src="/assets/js/{{ js_file }}.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="{{ site.baseurl }}/assets/js/{{ js_file }}.js?v=${APP_VERSION}"><\/script>`);
       {% endfor %}
     {% endif %}
 

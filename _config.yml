@@ -1,6 +1,7 @@
 title: 페르소나5 더 팬텀 X - 루페르넷
 description: 페르소나5 더 팬텀 X 공략 사이트 루페르넷 - 괴도, 페르소나, 계시, 택틱 등 다양한 게임 정보와 전략을 제공합니다.
-url: https://absolroot.github.io/lufelnet_test
+url: https://absolroot.github.io
+baseurl: /lufelnet
 author: 루트
 
 # build settings
@@ -46,7 +47,6 @@ default_lang: "kr"
 exclude_from_localization: ["assets", "img", "css", "js", "music", "index.html"]
 parallel_localization: false
 
-baseurl: ""
 permalink: /:language/:path/
 
 # URL processing related settings

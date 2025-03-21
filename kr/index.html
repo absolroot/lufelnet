@@ -183,7 +183,7 @@ language: kr
 </div>
 
 <!-- iframe -->
-<iframe id="music-player" src="/music.html" style="display: none;"></iframe>
+<iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -204,7 +204,7 @@ language: kr
                 musicIcon.alt = '음악 중지';
             } else {
                 musicPlayer.contentWindow.postMessage('pause', '*');
-                musicIcon.src = 'data/img/ui/music-off.png';
+                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-off.png';
                 musicIcon.alt = '음악 재생';
             }
             isPlaying = !isPlaying;
@@ -234,7 +234,7 @@ language: kr
 
     async function loadUpdates() {
         try {
-            const response = await fetch(`/data/kr/updates.csv?v=${APP_VERSION}`);
+            const response = await fetch(`{{ site.baseurl }}/data/kr/updates.csv?v=${APP_VERSION}`);
             const data = await response.text();
             
             // Parse CSV

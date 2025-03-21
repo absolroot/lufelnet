@@ -143,7 +143,7 @@ const loadCharacterImages = () => {
   
   allCharacters.forEach(character => {
     const img = document.createElement('img');
-    img.src = `{{ site.baseurl }}/assets/img/character-half/${character}.webp`;
+    img.src = `${BASE_URL}/assets/img/character-half/${character}.webp`;
     img.alt = character;
     img.draggable = true;
     cardsContainer.appendChild(img);

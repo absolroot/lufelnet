@@ -644,7 +644,7 @@ class TacticShare {
     // 비속어 목록 로드 함수 추가
     async loadBadWords() {
         try {
-            const response = await fetch('/data/fword_list.txt');
+            const response = await fetch('https://lufel.net/data/fword_list.txt');
             const text = await response.text();
             this.badWords = text.split('\n').filter(word => word.trim()); // 빈 줄 제거
         } catch (error) {

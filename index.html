@@ -10,7 +10,8 @@ permalink: /
         function getBrowserLanguage() {
             var lang = navigator.language || navigator.userLanguage;
             lang = lang.toLowerCase().split('-')[0];
-            var supportedLangs = ['kr', 'en', 'jp', 'cn'];
+            //var supportedLangs = ['kr', 'en', 'jp', 'cn'];
+            var supportedLangs = ['kr'];
             return supportedLangs.includes(lang) ? lang : 'kr';
         }
         

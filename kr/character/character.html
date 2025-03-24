@@ -612,7 +612,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const currentLang = this.getCurrentLanguage();
 
         // SEO 메타데이터 동적 업데이트
-        const baseUrl = 'https://www.lufel.net'; // 실제 도메인으로 변경 필요
+        const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
         
         // 타이틀 업데이트
         document.title = `${character.name} - 페르소나5 더 팬텀 X 루페르넷`;
@@ -628,7 +628,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         document.querySelector('meta[property="og:url"]').setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
 
         // canonical URL 설정
-        const canonicalUrl = `https://www.lufel.net/${currentLang}/character/character.html?name=${characterName}`;
+        const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
         document.getElementById('canonical-link').setAttribute('href', canonicalUrl);
     });
 </script>

@@ -1,5 +1,5 @@
 ---
-permalink: /
+permalink: /:path/
 ---
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,10 @@ permalink: /
         // 지원하는 섹션들
         var sections = ['character', 'persona', 'revelations', 'tactic'];
         
-        if (sections.includes(firstSegment)) {
+        // 이미 언어 경로가 포함되어 있는지 확인
+        var hasLangPath = segments.length > 1 && segments[0] === userLang;
+        
+        if (sections.includes(firstSegment) && !hasLangPath) {
             window.location.replace(baseUrl + '/' + userLang + '/' + firstSegment + '/' + queryString);
         } else if (path === '/' || path === '') {
             window.location.replace(baseUrl + '/' + userLang + '/');

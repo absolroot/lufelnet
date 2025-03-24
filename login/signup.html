@@ -1,0 +1,172 @@
+---
+layout: default
+title: 회원가입
+permalink: /login/signup.html
+---
+
+{% include supabase-config.html %}
+
+<div class="auth-container">
+  <div class="auth-box">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+      <input type="email" id="signupEmail" placeholder="이메일" required>
+      <input type="password" id="signupPassword" placeholder="비밀번호" required>
+      <input type="password" id="confirmPassword" placeholder="비밀번호 확인" required>
+      <button type="submit">회원가입</button>
+    </form>
+    <div class="auth-links">
+      <a href="/login/index.html">이미 계정이 있으신가요? 로그인</a>
+    </div>
+    <div class="social-login">
+      <button id="googleSignup" class="google-btn">
+        <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
+        Google로 회원가입
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+.auth-box {
+  background: rgb(110, 12, 12);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-box h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #111;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.8rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.auth-links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.auth-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.social-login {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.google-btn {
+  background: white;
+  color: #333;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.google-btn:hover {
+  background: #f8f9fa;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+</style>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (password !== confirmPassword) {
+    alert('비밀번호가 일치하지 않습니다.');
+    return;
+  }
+
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: window.location.origin
+      }
+    });
+
+    if (error) throw error;
+    
+    alert('회원가입 성공! 이메일을 확인해주세요.');
+    window.location.href = '/login/index.html';
+  } catch (error) {
+    alert('회원가입 실패: ' + error.message);
+  }
+});
+
+// 구글 회원가입 처리
+document.getElementById('googleSignup').addEventListener('click', async () => {
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: 'https://rfzxpdcaauglcsansqop.supabase.co/auth/v1/callback'
+      }
+    });
+
+    if (error) throw error;
+  } catch (error) {
+    alert('구글 회원가입 실패: ' + error.message);
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  Navigation.load('');
+  VersionChecker.check();
+});
+</script> 

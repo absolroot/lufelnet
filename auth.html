@@ -1,0 +1,116 @@
+---
+layout: default
+title: 로그인/회원가입
+---
+
+{% include supabase-config.html %}
+
+<div class="auth-container">
+  <div class="auth-box">
+    <h2>로그인</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="이메일" required>
+      <input type="password" id="loginPassword" placeholder="비밀번호" required>
+      <button type="submit">로그인</button>
+    </form>
+  </div>
+
+  <div class="auth-box">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+      <input type="email" id="signupEmail" placeholder="이메일" required>
+      <input type="password" id="signupPassword" placeholder="비밀번호" required>
+      <button type="submit">회원가입</button>
+    </form>
+  </div>
+</div>
+
+<style>
+.auth-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.auth-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+.auth-box h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.5rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+</style>
+
+<script>
+// 로그인 처리
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) throw error;
+    
+    alert('로그인 성공!');
+    window.location.href = '/'; // 메인 페이지로 리다이렉트
+  } catch (error) {
+    alert('로그인 실패: ' + error.message);
+  }
+});
+
+// 회원가입 처리
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password
+    });
+
+    if (error) throw error;
+    
+    alert('회원가입 성공! 이메일을 확인해주세요.');
+  } catch (error) {
+    alert('회원가입 실패: ' + error.message);
+  }
+});
+</script> 

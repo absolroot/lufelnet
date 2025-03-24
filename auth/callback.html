@@ -1,0 +1,91 @@
+---
+layout: default
+title: 인증 처리 중
+---
+
+{% include supabase-config.html %}
+
+<div class="auth-container">
+  <div class="auth-box">
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <h2>인증 처리 중...</h2>
+      <p>잠시만 기다려주세요.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+.auth-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0,123,255,0.3);
+  border-radius: 50%;
+  border-top-color: #007bff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.auth-box h2 {
+  margin: 1rem 0;
+  color: #333;
+}
+
+.auth-box p {
+  color: #666;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // 현재 세션 확인
+    const { data: { session }, error } = await supabase.auth.getSession();
+    
+    if (error) throw error;
+    
+    if (session) {
+      // 세션 정보를 로컬 스토리지에 저장
+      localStorage.setItem('user', JSON.stringify(session.user));
+      
+      // 메인 페이지로 리다이렉트
+      window.location.href = '/';
+    } else {
+      // 로그인 페이지로 리다이렉트
+      window.location.href = '/login';
+    }
+  } catch (error) {
+    console.error('인증 에러:', error);
+    alert('인증 처리 중 문제가 발생했습니다.');
+    window.location.href = '/login';
+  }
+});
+</script> 

@@ -270,6 +270,12 @@ class TacticShare {
     updatePaginationButtons(hasNextPage, hasPrevPage) {
         const prevButton = document.getElementById('prevPage');
         const nextButton = document.getElementById('nextPage');
+        const currentPageSpan = document.getElementById('currentPage'); // 페이지 번호 요소 추가
+        
+        // 현재 페이지 번호 업데이트
+        if (currentPageSpan) {
+            currentPageSpan.textContent = this.currentPage;
+        }
         
         if (prevButton) {
             prevButton.disabled = !hasPrevPage;

@@ -11,7 +11,6 @@ class Navigation {
         // 로고 컨테이너 추가
         const logoContainer = document.createElement('div');
         logoContainer.className = 'mobile-logo-container';
-        logoContainer.onclick = () => location.href = `/${currentLang}/?v=${APP_VERSION}`;
         logoContainer.innerHTML = `
             <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
             <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
@@ -85,7 +84,7 @@ class Navigation {
 
         const navTemplate = `
             <nav class="main-nav">
-                <div class="logo-container" onclick="location.href='/${currentLang}/?v=${APP_VERSION}'">
+                <div class="logo-container">
                     <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
                     <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
                 </div>
@@ -138,24 +137,24 @@ class Navigation {
                 <!-- language selector -->
                 <div class="language-selector-container">
                     <div class="custom-select">
-                        <div class="selected-option" onclick="Navigation.toggleLanguageDropdown()">
+                        <div class="selected-option">
                             <img src="${BASE_URL}/assets/img/flags/${currentLang}.png" alt="${currentLang}" class="flag-icon">
                             <span>${currentLang === 'kr' ? '한국어' : currentLang === 'en' ? 'English' : currentLang === 'jp' ? '日本語' : '中文'}</span>
                         </div>
                         <div class="options-container">
-                            <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" onclick="Navigation.selectLanguage('kr')">
+                            <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
                                 <span>한국어</span>
                             </div>
-                            <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" onclick="Navigation.selectLanguage('en')">
+                            <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/en.png" alt="en" class="flag-icon">
                                 <span>English</span>
                             </div>
-                            <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" onclick="Navigation.selectLanguage('jp')">
+                            <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                                 <span>日本語</span>
                             </div>
-                            <div class="option ${currentLang === 'cn' ? 'selected' : ''}" data-value="cn" onclick="Navigation.selectLanguage('cn')">
+                            <div class="option ${currentLang === 'cn' ? 'selected' : ''}" data-value="cn" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
                                 <span>中文</span>
                             </div>
@@ -166,6 +165,52 @@ class Navigation {
         `;
 
         document.querySelector('#nav-container').innerHTML = navTemplate;
+        
+        // 먼저 sword animation 초기화
+        this.initSwordAnimation();
+        
+        // 그 다음 이벤트 리스너 등록
+        if (!document.querySelector('.logo-container').hasAttribute('data-event-bound')) {
+            // 로고 클릭 이벤트 처리
+            document.querySelector('.logo-container').addEventListener('click', () => {
+                window.location.href = `${BASE_URL}/${currentLang}/?v=${APP_VERSION}`;
+            });
+            document.querySelector('.logo-container').setAttribute('data-event-bound', 'true');
+        }
+
+        if (!document.querySelector('.mobile-logo-container').hasAttribute('data-event-bound')) {
+            // 모바일 로고 클릭 이벤트 처리
+            document.querySelector('.mobile-logo-container').addEventListener('click', () => {
+                window.location.href = `${BASE_URL}/${currentLang}/?v=${APP_VERSION}`;
+            });
+            document.querySelector('.mobile-logo-container').setAttribute('data-event-bound', 'true');
+        }
+
+        if (!document.querySelector('.selected-option').hasAttribute('data-event-bound')) {
+            // 언어 드롭다운 토글 이벤트 처리
+            document.querySelector('.selected-option').addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const optionsContainer = document.querySelector('.options-container');
+                optionsContainer.classList.toggle('active');
+            });
+            document.querySelector('.selected-option').setAttribute('data-event-bound', 'true');
+        }
+
+        // 언어 선택 옵션 이벤트 처리
+        document.querySelectorAll('.language-selector-container .option').forEach(option => {
+            if (!option.hasAttribute('data-event-bound')) {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
+                    const lang = this.getAttribute('data-value');
+                    Navigation.selectLanguage(lang, e);
+                });
+                option.setAttribute('data-event-bound', 'true');
+            }
+        });
         
         if (activePage) {
             const activeItem = document.querySelector(`[data-nav="${activePage}"]`);
@@ -254,16 +299,24 @@ class Navigation {
                 submenu.classList.toggle('active');
             });
         });
-        
-        this.initSwordAnimation();
-        
     }
     
     // 현재 언어 감지 함수
     static getCurrentLanguage() {
         // URL에서 언어 감지
-        const pathSegments = window.location.pathname.split('/');
-        if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
+        const currentPath = window.location.pathname;
+        const baseUrl = BASE_URL;
+        
+        // baseUrl을 제거한 실제 경로 얻기
+        const pathWithoutBase = currentPath.replace(baseUrl, '');
+        const pathSegments = pathWithoutBase.split('/').filter(Boolean);
+
+        console.log('pathSegments:', pathSegments);
+        
+        // 첫 번째 세그먼트가 언어 코드인지 확인
+        if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
+            return pathSegments[0];
+        } else if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
             return pathSegments[1];
         }
         
@@ -273,7 +326,7 @@ class Navigation {
             return savedLang;
         }
         
-        // IP 기반 언어 감지 (실제로는 브라우저 언어 사용)
+        // 브라우저 언어 감지
         const browserLang = navigator.language.toLowerCase();
         
         if (browserLang.startsWith('kr')) return 'kr';
@@ -285,57 +338,56 @@ class Navigation {
         return 'kr';
     }
     
-    // 언어 변경 함수
-    static changeLanguage() {
-        const select = document.getElementById('language-select');
-        const newLang = select.options[select.selectedIndex].value;
-        
-        // 선호 언어 저장
-        localStorage.setItem('preferredLanguage', newLang);
-        
-        // 현재 URL 가져오기
-        const currentPath = window.location.pathname;
-        const pathSegments = currentPath.split('/');
-        
-        // 언어 부분 변경
-        if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
-            pathSegments[1] = newLang;
-        } else {
-            pathSegments.splice(1, 0, newLang);
-        }
-        
-        // 새 URL 생성 및 이동
-        const newPath = pathSegments.join('/');
-        const queryString = window.location.search;
-        window.location.href = newPath + queryString;
+    // sleep 함수 추가
+    static sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
     
-    // 언어 드롭다운 토글 함수 추가
-    static toggleLanguageDropdown() {
-        const optionsContainer = document.querySelector('.options-container');
-        optionsContainer.classList.toggle('active');
-    }
+    // 언어 선택 함수
+    static async selectLanguage(lang, event) {
+        // 이벤트 전파 중단
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+        }
 
-    // 언어 선택 함수 수정
-    static selectLanguage(lang) {
+        // 드롭다운 닫기
+        const optionsContainer = document.querySelector('.options-container');
+        if (optionsContainer) {
+            optionsContainer.classList.remove('active');
+        }
+        
         // 선호 언어 저장
         localStorage.setItem('preferredLanguage', lang);
         
         // 현재 URL 가져오기
         const currentPath = window.location.pathname;
-        const pathSegments = currentPath.split('/');
+        const baseUrl = BASE_URL;
         
-        // 언어 부분 변경
-        if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
+        // baseUrl을 제거한 실제 경로 얻기
+        const pathWithoutBase = currentPath.replace(baseUrl, '');
+        
+        const pathSegments = pathWithoutBase.split('/').filter(Boolean);
+        
+        // 첫 번째 세그먼트가 언어 코드인지 확인
+        if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
+            pathSegments[0] = lang;
+        } else if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
             pathSegments[1] = lang;
         } else {
-            pathSegments.splice(1, 0, lang);
+            pathSegments.unshift(lang);
         }
         
-        // 새 URL 생성 및 이동
-        const newPath = pathSegments.join('/');
+        // 새 URL 생성
+        const newPath = baseUrl + '/' + pathSegments.join('/');
+        
         const queryString = window.location.search;
-        window.location.href = newPath + queryString;
+        const finalUrl = newPath + queryString;
+        
+        
+        // 페이지 이동 
+        window.location.href = finalUrl;
     }
     
     static initSwordAnimation() {
@@ -361,9 +413,34 @@ class Navigation {
 
         // nav-link - sword animation
         document.querySelectorAll('.nav-link').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (!this.classList.contains('active')) {
+            // 언어 선택 옵션이 아닌 경우에만 이벤트 처리
+            if (!item.closest('.language-selector-container')) {
+                item.addEventListener('click', function(e) {
+                    if (!this.classList.contains('active')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        const href = this.getAttribute('href');
+                        
+                        if (isPc()) {
+                            createSwordAnimation(this, href);
+                        } else {
+                            window.location.href = href;
+                        }
+                    }
+                });
+            }
+        });
+
+        // 서브메뉴 아이템에 대한 이벤트 처리
+        document.querySelectorAll('.nav-sub-item').forEach(item => {
+            // 언어 선택 옵션이 아닌 경우에만 이벤트 처리
+            if (!item.closest('.language-selector-container')) {
+                item.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
                     const href = this.getAttribute('href');
                     
                     if (isPc()) {
@@ -371,24 +448,8 @@ class Navigation {
                     } else {
                         window.location.href = href;
                     }
-                }
-            });
-        });
-
-        // 서브메뉴 아이템에 대한 이벤트 처리
-        document.querySelectorAll('.nav-sub-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const href = this.getAttribute('href');
-                
-                if (isPc()) {
-                    createSwordAnimation(this, href);
-                } else {
-                    window.location.href = href;
-                }
-            });
+                });
+            }
         });
     }
 }

@@ -184,7 +184,7 @@
             // 캐릭터 아이콘 추가
             const iconImg = document.createElement("img");
             iconImg.className = "character-icon";
-            iconImg.src = `/assets/img/character-half/${char}.webp`;
+            iconImg.src = `${BASE_URL}/assets/img/character-half/${char}.webp`;
             iconImg.alt = "";
             iconImg.onerror = function() {
               // 이미지 로드 실패 시 아이콘 제거

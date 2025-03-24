@@ -40,7 +40,6 @@ defaults:
     values:
       layout: "default"
       redirect_from: /tactic
-
 # multilingual settings
 languages: ["kr", "en", "jp", "cn"]
 default_lang: "kr"

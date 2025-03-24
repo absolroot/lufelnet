@@ -53,7 +53,7 @@
             // 무기 아이콘 추가
             const iconImg = document.createElement("img");
             iconImg.className = "weapon-icon";
-            iconImg.src = `/assets/img/wonder-weapon/${weapon}.webp`;
+            iconImg.src = `${BASE_URL}/assets/img/wonder-weapon/${weapon}.webp`;
             iconImg.alt = "";
             iconImg.onerror = function() {
               // 이미지 로드 실패 시 아이콘 제거
@@ -373,7 +373,7 @@
                     if (skill.icon) {
                         const iconImg = document.createElement("img");
                         iconImg.className = "skill-icon";
-                        iconImg.src = `/assets/img/skill-element/${skill.icon}.png`;
+                        iconImg.src = `${BASE_URL}/assets/img/skill-element/${skill.icon}.png`;
                         iconImg.alt = "";
                         iconImg.onerror = function() {
                             // 이미지 로드 실패 시 아이콘 제거
@@ -493,7 +493,7 @@
                     // 페르소나 아이콘 추가
                     const iconImg = document.createElement("img");
                     iconImg.className = "persona-icon";
-                    iconImg.src = `/assets/img/persona/${persona}.webp`;
+                    iconImg.src = `${BASE_URL}/assets/img/persona/${persona}.webp`;
                     iconImg.alt = "";
                     iconImg.onerror = function() {
                         // 이미지 로드 실패 시 아이콘 제거

@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // 마크 이미지
                 const markImg = document.createElement('img');
-                markImg.src = '/assets/img/character-detail/mark.png';
+                markImg.src = `${BASE_URL}/assets/img/character-detail/mark.png`;
                 markImg.alt = '추천';
                 markImg.style.width = '16px';
                 markImg.style.height = '16px';
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // 마크 이미지
                 const markImg = document.createElement('img');
-                markImg.src = '/assets/img/character-detail/mark.png';
+                markImg.src = `${BASE_URL}/assets/img/character-detail/mark.png`;
                 markImg.alt = '추천';
                 markImg.style.width = '16px';
                 markImg.style.height = '16px';
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 별 이미지 추가
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('img');
-                star.src = `/assets/img/character-detail/${starType}`;
+                star.src = `${BASE_URL}/assets/img/character-detail/${starType}`;
                 star.alt = '★';
                 star.style.width = '20px';
                 star.style.height = '20px';
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
             itemWithCount.className = 'item-with-count';
             
             const itemImg = document.createElement('img');
-            itemImg.src = '/assets/img/character-detail/item-goldenrose.png';
+            itemImg.src = `${BASE_URL}/assets/img/character-detail/item-goldenrose.png`;
             itemImg.alt = '욕망의 나무';
             
             const itemCount = document.createElement('span');
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.className = 'item-with-count';
         
         const img = document.createElement('img');
-        img.src = `/assets/img/character-detail/${imageName}`;
+        img.src = `${BASE_URL}/assets/img/character-detail/${imageName}`;
         img.alt = '아이템';
         
         const countSpan = document.createElement('span');
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
             text.textContent = revelation;
             
             const icon = document.createElement('img');
-            icon.src = `/assets/img/character-detail/revel/${revelation}.webp`;
+            icon.src = `${BASE_URL}/assets/img/character-detail/revel/${revelation}.webp`;
             icon.alt = revelation;
             icon.className = 'revelation-icon';
             
@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const skillCard = document.createElement('div');
             skillCard.className = 'skill-card';
             
-            const iconPath = skill.element ? `/assets/img/skill-element/${skill.element}.png` : '';
+            const iconPath = skill.element ? `${BASE_URL}/assets/img/skill-element/${skill.element}.png` : '';
             
             let costText = '';
             const costParts = [];

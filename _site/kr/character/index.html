@@ -7,19 +7,25 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
   crossorigin="anonymous"></script>
   
-  <!-- SEO 메타태그 -->
-  <meta name="description" content="">
+  <!-- 기본 메타 태그 -->
+  <meta name="description" content="페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.">
   <meta name="keywords" content="페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략">
-  <meta name="author" content="루트">
+  <meta name="author" content="루페르넷">
   
-  <!-- Open Graph 메타태그 -->
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
+  <!-- Open Graph 메타 태그 -->
+  <meta property="og:title" content="괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷">
+  <meta property="og:description" content="페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://localhost:4000/kr/character/">
-  <meta property="og:image" content="http://localhost:4000/assets/img/home/seo.png">
+  <meta property="og:image" content="http://localhost:4000/lufelnet_test/assets/img/home/seo.png">
+  <meta property="og:site_name" content="페르소나5 더 팬텀 X - 루페르넷">
+  <meta property="og:locale" content="ko_KR">
   
-  <title></title>
+  <!-- Twitter 카드 메타 태그 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷">
+  <meta name="twitter:description" content="페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.">
+  <meta name="twitter:image" content="http://localhost:4000/lufelnet_test/assets/img/home/seo.png">
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -34,40 +40,49 @@
   
   <!-- 버전 관리 스크립트 -->
   <script>
-    document.write('<script src="/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+    document.write('<script src="/lufelnet_test/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
   </script>
   
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
-  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="/lufelnet_test/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="/lufelnet_test/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/lufelnet_test/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/lufelnet_test/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/lufelnet_test/assets/img/favicon/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="LufelNet" />
-  <link rel="manifest" href="/assets/img/favicon/site.webmanifest" />
+  <link rel="manifest" href="/lufelnet_test/assets/img/favicon/site.webmanifest" />
+  
+  <title>괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷</title>
+  
 
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
+    const BASE_URL = '/lufelnet_test';
+    
+    // 기본 CSS 및 JS 파일 로드
     document.write(`
-      <link rel="stylesheet" href="/assets/css/default/common.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/nav.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/version-update.css?v=${APP_VERSION}">
-      <script src="/assets/js/nav.js?v=${APP_VERSION}"><\/script>
-      <script src="/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/common.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/nav.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/version-update.css?v=${APP_VERSION}">
+      <script src="/lufelnet_test/assets/js/nav.js?v=${APP_VERSION}"><\/script>
+      <script src="/lufelnet_test/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
     `);
     
+    // 페이지별 CSS 파일 로드
     
       
-        document.write(`<link rel="stylesheet" href="/assets/css/character.css?v=${APP_VERSION}">`);
+        document.write(`<link rel="stylesheet" href="/lufelnet_test/assets/css/character.css?v=${APP_VERSION}">`);
       
     
     
+    // 페이지별 JS 파일 로드
     
       
     
-
+    
+    // 페이지별 데이터 파일 로드
     
       
-        document.write(`<script src="/data/kr//characters/characters.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr//characters/characters.js?v=${APP_VERSION}"><\/script>`);
       
     
   </script>
@@ -81,7 +96,7 @@
     <div class="main-wrapper">
 
     <div class="navigation-path">
-        <script>document.write(`<a href="/kr/?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a href="/lufelnet_test/kr/?v=${APP_VERSION}">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page">괴도</span>
     </div>
@@ -92,11 +107,11 @@
     <div class="filter-section">
         <div class="filter-header">
             <button class="filter-toggle-btn">
-                <img src="/assets/img/character-cards/filter.png" alt="필터" />
+                <img src="/lufelnet_test/assets/img/character-cards/filter.png" alt="필터" />
                 <span></span>
             </button>
             <button class="filter-reset-btn" style="display: none;">
-                <img src="/assets/img/character-cards/reset.png" alt="초기화" />
+                <img src="/lufelnet_test/assets/img/character-cards/reset.png" alt="초기화" />
             </button>
         </div>
         
@@ -107,57 +122,57 @@
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="element" value="물리">
-                        <img src="/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_물리.png" alt="물리">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="총격">
-                        <img src="/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_총격.png" alt="총격">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="화염">
-                        <img src="/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_화염.png" alt="화염">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="빙결">
-                        <img src="/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_빙결.png" alt="빙결">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="전격">
-                        <img src="/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_전격.png" alt="전격">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="질풍">
-                        <img src="/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_질풍.png" alt="질풍">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="염동">
-                        <img src="/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_염동.png" alt="염동">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="핵열">
-                        <img src="/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_핵열.png" alt="핵열">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="축복">
-                        <img src="/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_축복.png" alt="축복">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="주원">
-                        <img src="/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_주원.png" alt="주원">
                         <span></span>
                     </label>
                     <label>
                         <input type="checkbox" name="element" value="만능">
-                        <img src="/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <img src="/lufelnet_test/assets/img/character-cards/속성_만능.png" alt="만능">
                         <span></span>
                     </label>
                 </div>
@@ -169,31 +184,31 @@
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="position" value="지배">
-                        <img src="/assets/img/character-cards/직업_지배.png" alt="지배">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_지배.png" alt="지배">
                     </label>
                     <label>
                         <input type="checkbox" name="position" value="반항">
-                        <img src="/assets/img/character-cards/직업_반항.png" alt="반항">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_반항.png" alt="반항">
                     </label>
                     <label>
                         <input type="checkbox" name="position" value="우월">
-                        <img src="/assets/img/character-cards/직업_우월.png" alt="우월">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_우월.png" alt="우월">
                     </label>
                     <label>
                         <input type="checkbox" name="position" value="굴복">
-                        <img src="/assets/img/character-cards/직업_굴복.png" alt="굴복">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_굴복.png" alt="굴복">
                     </label>
                     <label>
                         <input type="checkbox" name="position" value="방위">
-                        <img src="/assets/img/character-cards/직업_방위.png" alt="방위">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_방위.png" alt="방위">
                     </label>
                     <label>
                         <input type="checkbox" name="position" value="구원">
-                        <img src="/assets/img/character-cards/직업_구원.png" alt="구원">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_구원.png" alt="구원">
                     </label>
                     <label>
                         <input type="checkbox" name="position" value="해명">
-                        <img src="/assets/img/character-cards/직업_해명.png" alt="해명">
+                        <img src="/lufelnet_test/assets/img/character-cards/직업_해명.png" alt="해명">
                     </label>
                 </div>
             </div>
@@ -205,20 +220,20 @@
                     <label>
                         <input type="checkbox" name="rarity" value="5" hidden>
                         <div class="star-container">
-                            <img src="/assets/img/character-detail/star5.png" alt="★">
-                            <img src="/assets/img/character-detail/star5.png" alt="★">
-                            <img src="/assets/img/character-detail/star5.png" alt="★">
-                            <img src="/assets/img/character-detail/star5.png" alt="★">
-                            <img src="/assets/img/character-detail/star5.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star5.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star5.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star5.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star5.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star5.png" alt="★">
                         </div>
                     </label>
                     <label>
                         <input type="checkbox" name="rarity" value="4" hidden>
                         <div class="star-container">
-                            <img src="/assets/img/character-detail/star4.png" alt="★">
-                            <img src="/assets/img/character-detail/star4.png" alt="★">
-                            <img src="/assets/img/character-detail/star4.png" alt="★">
-                            <img src="/assets/img/character-detail/star4.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star4.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star4.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star4.png" alt="★">
+                            <img src="/lufelnet_test/assets/img/character-detail/star4.png" alt="★">
                         </div>
                     </label>
                 </div>
@@ -301,27 +316,27 @@
             
             // Position icon
             const positionIcon = document.createElement('img');
-            positionIcon.src = `/assets/img/character-cards/직업_${characterData[characterName].position}.png`;
+            positionIcon.src = `/lufelnet_test/assets/img/character-cards/직업_${characterData[characterName].position}.png`;
             positionIcon.alt = characterData[characterName].position;
             positionIcon.className = 'position-icon';
             
             // Character image
             const img = document.createElement('img');
-            img.src = `/assets/img/character-cards/${characterName}.webp`;
+            img.src = `/lufelnet_test/assets/img/character-cards/${characterName}.webp`;
             img.alt = characterName;
             img.className = 'character-img';
             img.loading = 'lazy';  // Add lazy loading attribute
             
             // Element icon
             const elementIcon = document.createElement('img');
-            elementIcon.src = `/assets/img/character-cards/속성_${characterData[characterName].element}.png`;
+            elementIcon.src = `/lufelnet_test/assets/img/character-cards/속성_${characterData[characterName].element}.png`;
             elementIcon.alt = characterData[characterName].element;
             elementIcon.className = 'element-icon';
             
             /*
             // Name image
             const nameImg = document.createElement('img');
-            nameImg.src = `/assets/img/character-cards/코드_${characterName}.png`;
+            nameImg.src = `/lufelnet_test/assets/img/character-cards/코드_${characterName}.png`;
             nameImg.alt = characterName;
             nameImg.className = 'name-img';
             img.loading = 'lazy';  // Add lazy loading attribute*/
@@ -516,7 +531,7 @@
     
     <!-- 푸터 
     <footer>
-      <p>&copy; 2025 </p>
+      <p>&copy; 2025 페르소나5 더 팬텀 X - 루페르넷</p>
     </footer>-->
     <button id="top-button" class="floating-top-btn">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

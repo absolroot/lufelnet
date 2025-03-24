@@ -238,7 +238,7 @@ class TacticShare {
                             class="like-button ${post.isLiked ? 'liked' : ''}"
                             ${post.isLiked ? 'disabled' : ''}
                         >
-                            <img src="/assets/img/tactic-share/like.png" alt="좋아요" />
+                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요" />
                         </button>
                         <div class="likes-count-wrapper">
                             <span class="likes-count">${post.likes}</span>
@@ -564,7 +564,7 @@ class TacticShare {
                             onclick="tacticShare.handleLike('${postData.id}')"
                             class="like-button"
                         >
-                            <img src="/assets/img/tactic-share/like.png" alt="좋아요" />
+                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요" />
                         </button>
                         <div class="likes-count-wrapper">
                             <span class="likes-count">0</span>
@@ -752,7 +752,7 @@ class TacticShare {
         container.innerHTML = rankings.map((rank, index) => `
             <div class="ranking-item" data-rank="${index + 1}">
                 <div class="ranking-position">
-                    <img src="/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}위" class="rank-icon">
+                    <img src="${BASE_URL}/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}위" class="rank-icon">
                 </div>
                 <div class="ranking-info">
                     <div class="ranking-author">${escapeHtml(rank.author)}</div>

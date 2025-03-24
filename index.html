@@ -16,8 +16,10 @@ permalink: /
         
         var userLang = getBrowserLanguage();
         var path = window.location.pathname;
+        var baseUrl = '{{ site.baseurl }}';
         
-        // 경로에서 첫 번째 세그먼트 추출
+        // 경로에서 baseUrl을 제거하고 세그먼트 추출
+        path = path.replace(baseUrl, '');
         var segments = path.split('/').filter(Boolean);
         var firstSegment = segments[0] || '';
         
@@ -25,9 +27,9 @@ permalink: /
         var sections = ['character', 'persona', 'revelations', 'tactic'];
         
         if (sections.includes(firstSegment)) {
-            window.location.replace('/' + userLang + '/' + firstSegment + '/');
+            window.location.replace(baseUrl + '/' + userLang + '/' + firstSegment + '/');
         } else if (path === '/' || path === '') {
-            window.location.replace('/' + userLang + '/');
+            window.location.replace(baseUrl + '/' + userLang + '/');
         }
     </script>
 </head>

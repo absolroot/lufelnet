@@ -7,19 +7,25 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
   crossorigin="anonymous"></script>
   
-  <!-- SEO 메타태그 -->
-  <meta name="description" content="">
+  <!-- 기본 메타 태그 -->
+  <meta name="description" content="페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.">
   <meta name="keywords" content="페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략">
-  <meta name="author" content="루트">
+  <meta name="author" content="루페르넷">
   
-  <!-- Open Graph 메타태그 -->
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
+  <!-- Open Graph 메타 태그 -->
+  <meta property="og:title" content="택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷">
+  <meta property="og:description" content="페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://localhost:4000/kr/tactic/tactic-share.html">
-  <meta property="og:image" content="http://localhost:4000/assets/img/home/seo.png">
+  <meta property="og:image" content="http://localhost:4000/lufelnet_test/assets/img/home/seo.png">
+  <meta property="og:site_name" content="페르소나5 더 팬텀 X - 루페르넷">
+  <meta property="og:locale" content="ko_KR">
   
-  <title></title>
+  <!-- Twitter 카드 메타 태그 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷">
+  <meta name="twitter:description" content="페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.">
+  <meta name="twitter:image" content="http://localhost:4000/lufelnet_test/assets/img/home/seo.png">
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -34,62 +40,71 @@
   
   <!-- 버전 관리 스크립트 -->
   <script>
-    document.write('<script src="/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+    document.write('<script src="/lufelnet_test/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
   </script>
   
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
-  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="/lufelnet_test/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="/lufelnet_test/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/lufelnet_test/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/lufelnet_test/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/lufelnet_test/assets/img/favicon/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="LufelNet" />
-  <link rel="manifest" href="/assets/img/favicon/site.webmanifest" />
+  <link rel="manifest" href="/lufelnet_test/assets/img/favicon/site.webmanifest" />
+  
+  <title>택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷</title>
+  
 
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
+    const BASE_URL = '/lufelnet_test';
+    
+    // 기본 CSS 및 JS 파일 로드
     document.write(`
-      <link rel="stylesheet" href="/assets/css/default/common.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/nav.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/version-update.css?v=${APP_VERSION}">
-      <script src="/assets/js/nav.js?v=${APP_VERSION}"><\/script>
-      <script src="/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/common.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/nav.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/version-update.css?v=${APP_VERSION}">
+      <script src="/lufelnet_test/assets/js/nav.js?v=${APP_VERSION}"><\/script>
+      <script src="/lufelnet_test/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
     `);
     
+    // 페이지별 CSS 파일 로드
     
       
-        document.write(`<link rel="stylesheet" href="/assets/css/tactic.css?v=${APP_VERSION}">`);
+        document.write(`<link rel="stylesheet" href="/lufelnet_test/assets/css/tactic.css?v=${APP_VERSION}">`);
       
-        document.write(`<link rel="stylesheet" href="/assets/css/tactic-share.css?v=${APP_VERSION}">`);
+        document.write(`<link rel="stylesheet" href="/lufelnet_test/assets/css/tactic-share.css?v=${APP_VERSION}">`);
+      
+    
+    
+    // 페이지별 JS 파일 로드
+    
+      
+        document.write(`<script src="/lufelnet_test/assets/js/tooltip.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/lufelnet_test/assets/js/tactic/share.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/lufelnet_test/assets/js/tactic-preview.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/lufelnet_test/assets/js/tactic-share.js?v=${APP_VERSION}"><\/script>`);
       
     
     
+    // 페이지별 데이터 파일 로드
     
       
-        document.write(`<script src="/assets/js/tooltip.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr/tooltip.js?v=${APP_VERSION}"><\/script>`);
       
-        document.write(`<script src="/assets/js/tactic/share.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr/characters/characters.js?v=${APP_VERSION}"><\/script>`);
       
-        document.write(`<script src="/assets/js/tactic-preview.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr/revelations/revelations.js?v=${APP_VERSION}"><\/script>`);
       
-        document.write(`<script src="/assets/js/tactic-share.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr/tactic/pattern.js?v=${APP_VERSION}"><\/script>`);
       
-    
-
-    
+        document.write(`<script src="/lufelnet_test/data/kr/wonder/weapons.js?v=${APP_VERSION}"><\/script>`);
       
-        document.write(`<script src="/data/kr/tooltip.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr/wonder/persona.js?v=${APP_VERSION}"><\/script>`);
       
-        document.write(`<script src="/data/kr/characters/characters.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/data/kr/revelations/revelations.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/data/kr/tactic/pattern.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/data/kr/wonder/weapons.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/data/kr/wonder/persona.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/data/kr/wonder/skills.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/kr/wonder/skills.js?v=${APP_VERSION}"><\/script>`);
       
     
   </script>
@@ -144,7 +159,7 @@
 
         <div class="ranking-container">
             <div class="ranking-header">
-                <img src="/assets/img/tactic-share/rank.png" alt="랭킹" class="ranking-title-icon">
+                <img src="/lufelnet_test/assets/img/tactic-share/rank.png" alt="랭킹" class="ranking-title-icon">
                 <div class="ranking-tabs">
                     <button class="ranking-tab active" data-period="weekly">주간</button>
                     <button class="ranking-tab" data-period="monthly">월간</button>
@@ -195,7 +210,7 @@
     
     <!-- 푸터 
     <footer>
-      <p>&copy; 2025 </p>
+      <p>&copy; 2025 페르소나5 더 팬텀 X - 루페르넷</p>
     </footer>-->
     <button id="top-button" class="floating-top-btn">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

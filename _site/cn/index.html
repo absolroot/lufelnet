@@ -7,19 +7,25 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
   crossorigin="anonymous"></script>
   
-  <!-- SEO 메타태그 -->
+  <!-- 기본 메타 태그 -->
   <meta name="description" content="">
-  <meta name="keywords" content="페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략">
-  <meta name="author" content="루트">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
   
-  <!-- Open Graph 메타태그 -->
+  <!-- Open Graph 메타 태그 -->
   <meta property="og:title" content="">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://localhost:4000/cn/">
-  <meta property="og:image" content="http://localhost:4000/assets/img/home/seo.png">
+  <meta property="og:image" content="http://localhost:4000/lufelnet_test/assets/img/home/seo.png">
+  <meta property="og:site_name" content="">
+  <meta property="og:locale" content="ko_KR">
   
-  <title></title>
+  <!-- Twitter 카드 메타 태그 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="http://localhost:4000/lufelnet_test/assets/img/home/seo.png">
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -34,50 +40,59 @@
   
   <!-- 버전 관리 스크립트 -->
   <script>
-    document.write('<script src="/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+    document.write('<script src="/lufelnet_test/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
   </script>
   
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
-  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="/lufelnet_test/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="/lufelnet_test/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/lufelnet_test/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/lufelnet_test/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/lufelnet_test/assets/img/favicon/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="LufelNet" />
-  <link rel="manifest" href="/assets/img/favicon/site.webmanifest" />
+  <link rel="manifest" href="/lufelnet_test/assets/img/favicon/site.webmanifest" />
+  
+  <title></title>
+  
 
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
+    const BASE_URL = '/lufelnet_test';
+    
+    // 기본 CSS 및 JS 파일 로드
     document.write(`
-      <link rel="stylesheet" href="/assets/css/default/common.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/nav.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="/assets/css/default/version-update.css?v=${APP_VERSION}">
-      <script src="/assets/js/nav.js?v=${APP_VERSION}"><\/script>
-      <script src="/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/common.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/nav.css?v=${APP_VERSION}">
+      <link rel="stylesheet" href="/lufelnet_test/assets/css/default/version-update.css?v=${APP_VERSION}">
+      <script src="/lufelnet_test/assets/js/nav.js?v=${APP_VERSION}"><\/script>
+      <script src="/lufelnet_test/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
     `);
     
+    // 페이지별 CSS 파일 로드
     
       
-        document.write(`<link rel="stylesheet" href="/assets/css/home.css?v=${APP_VERSION}">`);
+        document.write(`<link rel="stylesheet" href="/lufelnet_test/assets/css/home.css?v=${APP_VERSION}">`);
       
-        document.write(`<link rel="stylesheet" href="/assets/css/tactic-posts.css?v=${APP_VERSION}">`);
+        document.write(`<link rel="stylesheet" href="/lufelnet_test/assets/css/tactic-posts.css?v=${APP_VERSION}">`);
+      
+    
+    
+    // 페이지별 JS 파일 로드
+    
+      
+        document.write(`<script src="/lufelnet_test/assets/js/tactic-posts-home.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/lufelnet_test/assets/js/tactic-preview.js?v=${APP_VERSION}"><\/script>`);
+      
+        document.write(`<script src="/lufelnet_test/assets/js//tactic/share.js?v=${APP_VERSION}"><\/script>`);
       
     
     
+    // 페이지별 데이터 파일 로드
     
       
-        document.write(`<script src="/assets/js/tactic-posts-home.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/cn//characters/characters.js?v=${APP_VERSION}"><\/script>`);
       
-        document.write(`<script src="/assets/js/tactic-preview.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/assets/js//tactic/share.js?v=${APP_VERSION}"><\/script>`);
-      
-    
-
-    
-      
-        document.write(`<script src="/data/cn//characters/characters.js?v=${APP_VERSION}"><\/script>`);
-      
-        document.write(`<script src="/data/cn//revelations/revelations.js?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="/lufelnet_test/data/cn//revelations/revelations.js?v=${APP_VERSION}"><\/script>`);
       
     
   </script>
@@ -93,7 +108,7 @@
         <div class="header-container">
             <h1>P5X 루페르넷</h1> <span class="beta-text">beta</span>
             <button class="music-control" id="musicControl">
-                <img src="/assets/img/ui/music-off.png" alt="음악 재생" id="musicIcon">
+                <img src="/lufelnet_test/assets/img/ui/music-off.png" alt="음악 재생" id="musicIcon">
             </button>
         </div>
 
@@ -103,48 +118,48 @@
                 <div class="menu-card" onclick="location.href='./character/?v=' + APP_VERSION">
                     <div class="card-content">
                         <div class="text-section">
-                            <h2>괴도 <img src="/assets/img/home/icon1.png" alt="괴도 아이콘" class="title-icon"></h2>
+                            <h2>괴도 <img src="/lufelnet_test/assets/img/home/icon1.png" alt="괴도 아이콘" class="title-icon"></h2>
                             <p class="desktop-description">보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요</p>
                             <p class="mobile-description">괴도별 육성 전략을 만나보세요</p>
                             <button onclick="location.href='./character/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
                         </div>
-                        <img src="/assets/img/home/1.webp" alt="괴도 일러스트" class="card-illustration" loading="lazy">
+                        <img src="/lufelnet_test/assets/img/home/1.webp" alt="괴도 일러스트" class="card-illustration" loading="lazy">
                     </div>
                 </div>
                 
                 <div class="menu-card" onclick="location.href='./persona/?v=' + APP_VERSION">
                     <div class="card-content">
                         <div class="text-section">
-                            <h2>페르소나 <img src="/assets/img/home/icon2.png" alt="페르소나 아이콘" class="title-icon"></h2>
+                            <h2>페르소나 <img src="/lufelnet_test/assets/img/home/icon2.png" alt="페르소나 아이콘" class="title-icon"></h2>
                             <p class="desktop-description">핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지</p>
                             <p class="mobile-description">핵심 페르소나 추천과 스킬 세팅까지</p>
                             <button onclick="location.href='./persona/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
                         </div>
-                        <img src="/assets/img/home/2.webp" alt="페르소나 일러스트" class="card-illustration" loading="lazy">
+                        <img src="/lufelnet_test/assets/img/home/2.webp" alt="페르소나 일러스트" class="card-illustration" loading="lazy">
                     </div>
                 </div>
 
                 <div class="menu-card" onclick="location.href='./revelations/?v=' + APP_VERSION">
                     <div class="card-content">
                         <div class="text-section">
-                            <h2>계시 <img src="/assets/img/home/icon3.png" alt="계시 아이콘" class="title-icon"></h2>
+                            <h2>계시 <img src="/lufelnet_test/assets/img/home/icon3.png" alt="계시 아이콘" class="title-icon"></h2>
                             <p class="desktop-description">계시 정보들을 한 눈에!<br>속성별, 일월성진별 원하는 대로 매칭</p>
                             <p class="mobile-description">계시 정보들을 한 눈에!</p>
                             <button onclick="location.href='./revelations/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
                         </div>
-                        <img src="/assets/img/home/3.webp" alt="계시 일러스트" class="card-illustration" loading="lazy">
+                        <img src="/lufelnet_test/assets/img/home/3.webp" alt="계시 일러스트" class="card-illustration" loading="lazy">
                     </div>
                 </div>
 
                 <div class="menu-card" onclick="location.href='./tactic/tactic-share.html?v=' + APP_VERSION">
                     <div class="card-content">
                         <div class="text-section">
-                            <h2>택틱 <img src="/assets/img/home/icon4.png" alt="택틱 아이콘" class="title-icon"></h2>
+                            <h2>택틱 <img src="/lufelnet_test/assets/img/home/icon4.png" alt="택틱 아이콘" class="title-icon"></h2>
                             <p class="desktop-description">본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요</p>
                             <p class="mobile-description">본인만의 택틱을 만들고 공유하세요</p>
                             <button onclick="location.href='./tactic/?v=' + APP_VERSION" class="view-more">바로가기 →</button>
                         </div>
-                        <img src="/assets/img/home/4.webp" alt="택틱 일러스트" class="card-illustration" loading="lazy">
+                        <img src="/lufelnet_test/assets/img/home/4.webp" alt="택틱 일러스트" class="card-illustration" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -158,27 +173,27 @@
                 <h2>인기 괴도</h2>
                 <div class="character-cards">
                     <div class="character-card">
-                        <div class="character-card-img"><img src="/assets/img/tier/아야카.webp" alt="아야카" onclick="location.href='./character/character.html?name=아야카&v=' + APP_VERSION"></div>
+                        <div class="character-card-img"><img src="/lufelnet_test/assets/img/tier/아야카.webp" alt="아야카" onclick="location.href='./character/character.html?name=아야카&v=' + APP_VERSION"></div>
                         <div class="character-card-text"><p>사카이 아야카</p></div>
                     </div>
                     <div class="character-card">
-                        <div class="character-card-img"><img src="/assets/img/tier/후타바.webp" alt="후타바" onclick="location.href='./character/character.html?name=후타바&v=' + APP_VERSION"></div>
+                        <div class="character-card-img"><img src="/lufelnet_test/assets/img/tier/후타바.webp" alt="후타바" onclick="location.href='./character/character.html?name=후타바&v=' + APP_VERSION"></div>
                         <div class="character-card-text"><p>사쿠라 후타바</p></div>
                     </div>
                     <div class="character-card">
-                        <div class="character-card-img"><img src="/assets/img/tier/리코·매화.webp" alt="리코·매화" onclick="location.href='./character/character.html?name=리코·매화&v=' + APP_VERSION"></div>
+                        <div class="character-card-img"><img src="/lufelnet_test/assets/img/tier/리코·매화.webp" alt="리코·매화" onclick="location.href='./character/character.html?name=리코·매화&v=' + APP_VERSION"></div>
                         <div class="character-card-text"><p>타네무라 리코·매화</p></div>
                     </div>
                     <div class="character-card">
-                        <div class="character-card-img"><img src="/assets/img/tier/미오.webp" alt="미오" onclick="location.href='./character/character.html?name=미오&v=' + APP_VERSION"></div>
+                        <div class="character-card-img"><img src="/lufelnet_test/assets/img/tier/미오.webp" alt="미오" onclick="location.href='./character/character.html?name=미오&v=' + APP_VERSION"></div>
                         <div class="character-card-text"><p>나츠카와 미오</p></div>
                     </div>
                     <div class="character-card">
-                        <div class="character-card-img"><img src="/assets/img/tier/야오링·사자무.webp" alt="야오링·사자무" onclick="location.href='./character/character.html?name=야오링·사자무&v=' + APP_VERSION"></div>
+                        <div class="character-card-img"><img src="/lufelnet_test/assets/img/tier/야오링·사자무.webp" alt="야오링·사자무" onclick="location.href='./character/character.html?name=야오링·사자무&v=' + APP_VERSION"></div>
                         <div class="character-card-text"><p>리 야오링·사자무</p></div>
                     </div>
                     <div class="character-card">
-                        <div class="character-card-img"><img src="/assets/img/tier/카스미.webp" alt="카스미" onclick="location.href='./character/character.html?name=카스미&v=' + APP_VERSION"></div>
+                        <div class="character-card-img"><img src="/lufelnet_test/assets/img/tier/카스미.webp" alt="카스미" onclick="location.href='./character/character.html?name=카스미&v=' + APP_VERSION"></div>
                         <div class="character-card-text"><p>요시자와 카스미</p></div>
                     </div>
 
@@ -196,7 +211,7 @@
             <div class="guide-cards">
                 <div class="guide-card">
                     <div class="guide-card-header">
-                        <img src="/assets/img/home/guide1.png" alt="가이드 이미지">
+                        <img src="/lufelnet_test/assets/img/home/guide1.png" alt="가이드 이미지">
                         <h3>도시 생활</h3>
                     </div>
                     <div class="guide-card-content">
@@ -208,7 +223,7 @@
                 </div>
                 <div class="guide-card">
                     <div class="guide-card-header">
-                        <img src="/assets/img/home/guide2.png" alt="가이드 이미지">
+                        <img src="/lufelnet_test/assets/img/home/guide2.png" alt="가이드 이미지">
                         <h3>육성 및 재화</h3>
                     </div>
                     <div class="guide-card-content">
@@ -220,7 +235,7 @@
                 </div>
                 <div class="guide-card">
                     <div class="guide-card-header">
-                        <img src="/assets/img/home/guide3.png" alt="가이드 이미지">
+                        <img src="/lufelnet_test/assets/img/home/guide3.png" alt="가이드 이미지">
                         <h3>전투 및 팰리스</h3>
                     </div>
                     <div class="guide-card-content">
@@ -282,7 +297,7 @@
         musicControl.addEventListener('click', () => {
             if (!isPlaying) {
                 musicPlayer.contentWindow.postMessage('play', '*');
-                musicIcon.src = '/assets/img/ui/music-on.png';
+                musicIcon.src = '/lufelnet_test/assets/img/ui/music-on.png';
                 musicIcon.alt = '음악 중지';
             } else {
                 musicPlayer.contentWindow.postMessage('pause', '*');
@@ -297,7 +312,7 @@
             if (event.data === 'playing' || event.data === 'paused') {
                 sessionStorage.setItem('musicState', event.data);
                 isPlaying = event.data === 'playing';
-                musicIcon.src = isPlaying ? '/assets/img/ui/music-on.png' : '/assets/img/ui/music-off.png';
+                musicIcon.src = isPlaying ? '/lufelnet_test/assets/img/ui/music-on.png' : '/lufelnet_test/assets/img/ui/music-off.png';
                 musicIcon.alt = isPlaying ? '음악 중지' : '음악 재생';
             }
         });

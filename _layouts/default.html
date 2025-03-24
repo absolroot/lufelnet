@@ -7,19 +7,25 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
   crossorigin="anonymous"></script>
   
-  <!-- SEO 메타태그 -->
+  <!-- 기본 메타 태그 -->
   <meta name="description" content="{{ site.data.i18n[page.language].site.description }}">
-  <meta name="keywords" content="페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략">
-  <meta name="author" content="{{ site.author }}">
+  <meta name="keywords" content="{{ site.data.i18n[page.language].site.keywords }}">
+  <meta name="author" content="{{ site.data.i18n[page.language].site.author }}">
   
-  <!-- Open Graph 메타태그 -->
+  <!-- Open Graph 메타 태그 -->
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}">
   <meta property="og:description" content="{{ site.data.i18n[page.language].site.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
+  <meta property="og:site_name" content="{{ site.data.i18n[page.language].site.title }}">
+  <meta property="og:locale" content="ko_KR">
   
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}</title>
+  <!-- Twitter 카드 메타 태그 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ site.data.i18n[page.language].site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -44,11 +50,15 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/img/favicon/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="LufelNet" />
   <link rel="manifest" href="{{ site.baseurl }}/assets/img/favicon/site.webmanifest" />
+  
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}</title>
+  
 
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
     const BASE_URL = '{{ site.baseurl }}';
-
+    
+    // 기본 CSS 및 JS 파일 로드
     document.write(`
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=${APP_VERSION}">
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=${APP_VERSION}">
@@ -57,18 +67,21 @@
       <script src="{{ site.baseurl }}/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
     `);
     
+    // 페이지별 CSS 파일 로드
     {% if page.custom_css %}
       {% for css_file in page.custom_css %}
         document.write(`<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ css_file }}.css?v=${APP_VERSION}">`);
       {% endfor %}
     {% endif %}
     
+    // 페이지별 JS 파일 로드
     {% if page.custom_js %}
       {% for js_file in page.custom_js %}
         document.write(`<script src="{{ site.baseurl }}/assets/js/{{ js_file }}.js?v=${APP_VERSION}"><\/script>`);
       {% endfor %}
     {% endif %}
-
+    
+    // 페이지별 데이터 파일 로드
     {% if page.custom_data %}
       {% for data_file in page.custom_data %}
         document.write(`<script src="{{ site.baseurl }}/data/{{ page.language }}/{{ data_file }}?v=${APP_VERSION}"><\/script>`);

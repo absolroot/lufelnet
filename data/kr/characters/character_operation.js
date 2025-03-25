@@ -155,7 +155,7 @@ const operationData = {
     },
     "몽타뉴·백조": {
         basic: [
-            { label: "의식 0", value: "3 › 1 › 1 › 3 › 1 › 1" },
+            { label: "의식 0", value: "3 › 1 › 3 › 1 › 3 › 1" },
             { label: "의식 6", value: "3 › 1 › 1 › 3 › 1 › 1" }
         ],
         note: [
@@ -287,7 +287,7 @@ const operationData = {
     },
     "토모코": {
         basic: [
-            { label: "의식 6", value: "2 › 3 › 2 › 3 › 2 › 3" }
+            { label: "의식 6", value: "2 › 3 › 2 › 1 › 2 › 3" }
         ],
         note: [
             "-"

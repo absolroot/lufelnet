@@ -255,7 +255,7 @@ const operationData = {
             { label: "의식 6", value: "2 › 3 › 변신 + HL + HL + 3 › 2 › 3 › 변신 + HL + HL + 3" }
         ],
         note: [
-            "-"
+            "· 2스킬 + 1스킬 3회 스택 예열 이후 HL 사용"
         ]
     },
     "카요": {

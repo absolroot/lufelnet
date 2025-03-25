@@ -3,7 +3,9 @@
     width: 100%;
 }
 
-
+.main-wrapper{
+    box-sizing: border-box;
+}
 
 /* top section */
 
@@ -281,8 +283,10 @@ h2{
 .option-row,
 .stat-level,
 .skill-level,
+.operation-level,
 .stat-row,
 .skill-row,
+.operation-row,
 .main-revelation,
 .sub-revelation {
     display: grid;
@@ -300,7 +304,9 @@ h2{
 .stat-level > span:first-child,
 .skill-level > span:first-child,
 .stat-row > span:first-child,
-.skill-row > span:first-child {
+.skill-row > span:first-child,
+.operation-row > span:first-child,
+.operation-label {
     color: #aaa;
     font-size: 0.95em;
 }
@@ -378,7 +384,7 @@ h2{
 }
 
 
-.battle-plus-stats {
+.battle-plus-stats, .operation-note {
     color: #aaa;
     font-size: 14px;
     line-height: 1.6;
@@ -446,6 +452,52 @@ h2{
     gap: 16px;
 }
 
+/* operation card */
+
+.skill-sequence {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-step {
+    font-size: 12px;
+    min-width: 40px;
+    text-align: left;
+    padding: 4px 4px;
+    color: #FFFFFFE6;
+}
+
+.skill-arrow {
+    font-size : 12px;
+    color: rgb(255, 255, 255, 0.3);
+}
+
+.operation-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.operation-label {
+    min-width: 80px;
+}
+
+.operation-value {
+    flex: 1;
+    margin-left: 16px;
+}
+
+/* 줄바꿈이 있을 경우 앞에 띄어쓰기 추가 */
+.operation-note {
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+
+
 /* first 4 skills (skill1, skill2, skill3, highlight) background color */
 
 .skill-card:nth-child(-n+4) {  
@@ -490,12 +542,6 @@ h2{
     color: rgba(255, 255, 255, 0.6);
     white-space: pre-line;
 }
-
-
-
-
-
-
 
 /* weapon section */
 
@@ -636,7 +682,7 @@ h2{
 }
 
 /* skill&mind section */
-.skill-mind-settings {
+.skill-mind-settings, .operation-settings {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2vw;
@@ -853,7 +899,7 @@ h2{
 .enhancement-stages {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .enhancement-btn, .skill-level-btn {
@@ -921,7 +967,8 @@ h2{
     }
 
     .stats-requirements,
-    .skill-mind-settings {
+    .skill-mind-settings, 
+    .operation-settings {
         grid-template-columns: 1fr;
     }
 
@@ -940,6 +987,11 @@ h2{
     
     .revelation-settings > .setting-section:last-child {
         grid-row: 3;
+    }
+
+    .operation-row {
+        align-items: flex-start;
+        margin-bottom: 20px;
     }
 
     .character-header {
@@ -1001,10 +1053,22 @@ h2{
         width: 80px;
         height: 80px;
         object-fit: contain;
+        margin-bottom: 10px;
     }
 
     .weapon-item{
         gap: 1em;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .weapon-stats p{
+        margin: 0 6px 0 2px;
+    }
+
+    .weapon-stats {
+        margin-bottom: 16px;
     }
     
 }
@@ -1030,5 +1094,74 @@ h2{
         width: 90%;
         max-width: 400px;
     }
+}
+
+.operation-card {
+    display: none;
+}
+
+.operation-content {
+    padding: 0px;
+    color: rgb(255, 255, 255, 0.8);
+}
+
+.operation-content h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    /* margin-bottom: 1rem;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;*/
+    padding-top: 1rem;
+    padding-bottom: 0px;
+}
+
+.operation-content ul {
+    list-style-type: none;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.operation-content li{
+    font-size: 13px;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.operation-content p {
+    font-size: 13px;
+    position: relative;
+    line-height: 1.6;
+    margin-top : 0;
+}
+
+.operation-levels :last-child{
+    margin-bottom: 0px;
+}
+
+.markdown-body h1 {
+    font-size: 18px;
+    margin-bottom: 0.5em;
+}
+
+.markdown-body h2 {
+    font-size: 16px;
+    margin-bottom: 0.5em;
+}
+
+.markdown-body h3 {
+    font-size: 14px;
+    margin-bottom: 0.5em;
+    color: #d3bc8e;
+}
+
+.markdown-body ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.markdown-body li {
+    margin-bottom: 0.5em;
 }
 

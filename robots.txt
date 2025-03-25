@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /kr/*
+
+# 대표 URL 지정
+Sitemap: https://lufel.net/sitemap.xml 

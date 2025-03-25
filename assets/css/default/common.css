@@ -549,6 +549,13 @@ input[type="checkbox"]:hover {
     }
 }
 
+/* apple 기기에서 괄호 간격 조정 */
+@supports (-webkit-touch-callout: none) {
+    .bracket-left, .bracket-right {
+        letter-spacing: normal;
+    }
+}
+
 
 
 body {

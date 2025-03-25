@@ -7,6 +7,30 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
   crossorigin="anonymous"></script>
   
+  <!-- canonical URL -->
+  {% assign current_url = page.url | replace:'index.html','' | replace:'.html','' %}
+  {% assign query_string = page.url | split:'?' | last %}
+  {% assign canonical_params = '' %}
+
+  {% if query_string contains 'data=' or query_string contains 'name=' %}
+    {% assign params = query_string | split:'&' %}
+    {% for param in params %}
+      {% if param contains 'data=' or param contains 'name=' %}
+        {% if canonical_params == '' %}
+          {% assign canonical_params = '?' | append: param %}
+        {% else %}
+          {% assign canonical_params = canonical_params | append: '&' | append: param %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if page.language %}
+    <link rel="canonical" href="{{ site.url }}{{ current_url }}{{ canonical_params }}" />
+  {% else %}
+    <link rel="canonical" href="{{ site.url }}/kr{{ current_url }}{{ canonical_params }}" />
+  {% endif %}
+  
   <!-- 기본 메타 태그 -->
   <meta name="description" content="{{ site.data.i18n[page.language].site.description }}">
   <meta name="keywords" content="{{ site.data.i18n[page.language].site.keywords }}">
@@ -16,7 +40,7 @@
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}">
   <meta property="og:description" content="{{ site.data.i18n[page.language].site.description }}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:url" content="{{ site.url }}{{ current_url }}{{ canonical_params }}">
   <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
   <meta property="og:site_name" content="{{ site.data.i18n[page.language].site.title }}">
   <meta property="og:locale" content="ko_KR">

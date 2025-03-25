@@ -292,6 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
         fillSettingsInfo(character);
+        fillSkillsInfo(characterName);
+        fillOperationInfo(characterName);  // 운영 정보 추가
         // 아이템 개수 업데이트 함수 호출
         updateSkillLevelItems();
         updateMindItems();
@@ -515,6 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return container;
     }
 
+    // 스킬 정보 채우기
     function fillSkillsInfo(characterName) {
         const skillsGrid = document.querySelector('.skills-grid');
         const character = characterSkillsData[characterName];
@@ -556,7 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
             button.onclick = () => updateSkillDescriptions(button.dataset.level, characterName);
             buttonContainer.appendChild(button);
         });
-
 
         skillsGrid.parentElement.insertBefore(buttonContainer, skillsGrid);
         
@@ -676,8 +678,153 @@ document.addEventListener('DOMContentLoaded', () => {
         addTooltips();
     }
 
+    // 운영 정보 채우기
+    function fillOperationInfo(characterName) {
+        const operationSettings = document.querySelector('.operation-settings');
+        if (!operationSettings || !operationData[characterName]) return;
+
+        const basicSection = operationSettings.querySelector('.setting-section:first-child');
+        const noteSection = operationSettings.querySelector('.setting-section:last-child');
+        const basicContent = operationSettings.querySelector('.operation-levels');
+        const noteContent = operationSettings.querySelector('.operation-notes');
+
+        // basic 배열이 비어있거나 모든 항목이 빈 값인 경우
+        const hasBasicContent = operationData[characterName].basic.some(item => 
+            item.label && item.value && item.label.trim() !== '' && item.value.trim() !== ''
+        );
+        
+        // note 배열이 비어있거나 모든 항목이 빈 값인 경우
+        const hasNoteContent = operationData[characterName].note.some(note => 
+            note && note.trim() !== ''
+        );
+
+        // basic 섹션 처리
+        if (hasBasicContent) {
+            basicContent.innerHTML = operationData[characterName].basic
+                .filter(item => item.label && item.value && item.label.trim() !== '' && item.value.trim() !== '')
+                .map(item => {
+                    const skills = item.value.split(' › ');
+                    const skillSteps = skills.map(skill => 
+                        `<div class="skill-step">${skill}</div>`
+                    ).join('<div class="skill-arrow">›</div>');
+
+                    return `
+                        <div class="operation-row">
+                            <div class="operation-label">${item.label}</div>
+                            <div class="operation-value">
+                                <div class="skill-sequence">
+                                    ${skillSteps}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+        } else {
+            basicContent.innerHTML = ''; // 내용만 비우기
+        }
+
+        // note 섹션 처리
+        if (hasNoteContent) {
+            noteContent.innerHTML = operationData[characterName].note
+                .filter(note => note && note.trim() !== '')
+                .map(note => `<div class="operation-note">${note}</div>`)
+                .join('');
+        } else {
+            noteContent.innerHTML = ''; // 내용만 비우기
+        }
+
+        // 두 섹션 중 하나라도 내용이 있으면 operation-settings 전체를 표시
+        if (hasBasicContent || hasNoteContent) {
+            // 스킬 시퀀스의 줄바꿈 여부 체크
+            const skillSequences = operationSettings.querySelectorAll('.skill-sequence');
+            let needsSingleColumn = false;
+
+            // 각 스킬 시퀀스의 줄바꿈 여부 확인
+            skillSequences.forEach(sequence => {
+                // 임시로 flex-wrap: nowrap을 적용하여 한 줄에 표시되는지 확인
+                const originalStyle = sequence.style.cssText;
+                sequence.style.flexWrap = 'nowrap';
+                
+                // 실제 내용의 너비 계산 (자식 요소들의 너비 + 간격)
+                const contentWidth = Array.from(sequence.children).reduce((width, child, index) => {
+                    const childWidth = child.offsetWidth;
+                    const gap = index < sequence.children.length - 1 ? 8 : 0; // gap이 8px로 설정되어 있음
+                    return width + childWidth + gap;
+                }, 0);
+                
+                // 컨테이너의 실제 너비 (operation-value의 너비)
+                const containerWidth = sequence.parentElement.offsetWidth;
+                
+                // 원래 스타일로 복원
+                sequence.style.cssText = originalStyle;
+                
+                // 내용이 컨테이너보다 넓으면 줄바꿈이 필요한 것으로 판단
+                if (contentWidth > containerWidth) {
+                    needsSingleColumn = true;
+                }
+            });
+
+            // 모바일 환경이거나 줄바꿈이 발생한 경우 1열로 변경
+            if (window.innerWidth <= 768) {
+                operationSettings.style.gridTemplateColumns = '1fr';
+                operationSettings.style.display = 'flex';
+                operationSettings.style.flexDirection = 'column';
+                operationSettings.style.gap = '20px';
+            } else if (needsSingleColumn) {
+                operationSettings.style.gridTemplateColumns = '1fr';
+                operationSettings.style.display = 'flex';
+                operationSettings.style.flexDirection = 'column';
+                operationSettings.style.gap = '20px';
+                // 모든 skill-step 요소에 min-width 적용
+                operationSettings.querySelectorAll('.skill-step').forEach(step => {
+                    step.style.minWidth = '100px';
+                });
+            }  else {
+                operationSettings.style.display = 'grid';
+                operationSettings.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                operationSettings.style.gap = '2vw';
+                operationSettings.style.alignItems = 'stretch';
+            }
+        } else {
+            operationSettings.style.display = 'none';
+        }
+    }
+
     if (characterName) {
+        fillSettingsInfo(character);
         fillSkillsInfo(characterName);
+        fillOperationInfo(characterName);  // 운영 정보 추가
+        // 아이템 개수 업데이트 함수 호출
+        updateSkillLevelItems();
+        updateMindItems();
+        const currentPage = document.querySelector('.current-page');
+        currentPage.textContent = characterData[characterName].name;
+
+        // role과 tag 정보 채우기
+        const roleElement = document.querySelector('.chracter-role');
+        const tagElement = document.querySelector('.chracter-tag');
+
+        // role 정보 채우기
+        if (character.role) {
+            roleElement.textContent = character.role;
+        }
+
+        // tag 정보 채우기
+        if (character.tag) {
+            // 기존 내용 초기화
+            tagElement.innerHTML = '';
+            
+            // 콤마로 분리하여 각각의 태그를 생성
+            const tags = character.tag.split(',').map(tag => tag.trim());
+            tags.forEach(tag => {
+                if (tag) {  // 빈 문자열이 아닌 경우에만 추가
+                    const tagDiv = document.createElement('div');
+                    tagDiv.className = 'tag-item';
+                    tagDiv.textContent = tag;
+                    tagElement.appendChild(tagDiv);
+                }
+            });
+        }
     }
 
 

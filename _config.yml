@@ -1,58 +1,73 @@
 title: 페르소나5 더 팬텀 X - 루페르넷
 description: 페르소나5 더 팬텀 X 공략 사이트 루페르넷 - 괴도, 페르소나, 계시, 택틱 등 다양한 게임 정보와 전략을 제공합니다.
-url: https://lufel.net
+url: "https://lufel.net"
 baseurl: ""
 author: 루트
 
+# Collections
+collections:
+  characters_test:
+    output: true
+    permalink: /test/character/:name/
+
 # build settings
 markdown: kramdown
-permalink: pretty
+permalink: /:language/:path/
+
+# 플러그인 설정
+safe: true
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-redirect-from
 
-# redirect settings
+# defaults 설정
 defaults:
+  # 기본 설정
   - scope:
       path: ""
     values:
       layout: "default"
       language: kr
+
+  # 테스트 캐릭터 페이지 설정
+  - scope:
+      path: ""
+      type: "characters_test"
+    values:
+      layout: "character_test"
+      sitemap: false
+      language: kr
+
+  # 리다이렉트 설정
   - scope:
       path: "*/character"
     values:
-      layout: "default"
       redirect_from: /character
   - scope:
       path: "*/persona"
     values:
-      layout: "default"
       redirect_from: /persona
   - scope:
       path: "*/revelations"
     values:
-      layout: "default"
       redirect_from: /revelations
   - scope:
       path: "*/tactic"
     values:
-      layout: "default"
       redirect_from: /tactic
+
 # multilingual settings
 languages: ["kr", "en", "jp", "cn"]
 default_lang: "kr"
 exclude_from_localization: ["assets", "img", "css", "js", "music", "index.html"]
 parallel_localization: false
 
-permalink: /:language/:path/
-
 # URL processing related settings
 keep_files: [assets]
 static_files: ["assets"]
 include: ["assets"]
-
 
 # exclude files/folders
 exclude:
@@ -63,3 +78,4 @@ exclude:
   - .gitignore
   - README.md
   - run.py
+

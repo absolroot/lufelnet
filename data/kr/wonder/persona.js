@@ -1166,5 +1166,36 @@ const personaData = {
             {name : "마도의 재능", priority: 0 },
             {name : "빙결 강화", priority: 0}
         ]
+    },
+    "야타가라스": {
+        grade: "6",
+        star: "3",
+        position: "지배",
+        element: "화염",
+        instinct: {
+            name: "태양의 분노 III",
+            effects: [
+                "공격력이 17.5% 증가한다.",
+                "자신에게 디버프 효과가 없을 시 공격력이 30% 증가하고, 주는 화염 속성 대미지가 16.5% 증가한다."
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "마하라기다인",
+            effect: "모든 적에게 공격력 60.8%의 화염 속성 대미지를 주고, 33.8%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
+            priority: 0,
+            icon: "화염광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 180.0%의 화염 속성 대미지를 준다.",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "공격 강화", priority: 0 },
+            {name : "어드바이스", priority: 0 },
+            {name : "정교한 타격", priority: 0 },
+            {name : "마도의 재능", priority: 0 },
+            {name : "화염 강화", priority: 0}
+        ]
     }
 };

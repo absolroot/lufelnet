@@ -18,6 +18,25 @@ const WeaponData = {
             "description": ""
         }
     },
+    "마유미": {
+        "name": "하시모토 마유미",
+        "weapon4-1":{
+            "name": "-",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "-",
+            "description": "-"
+        },
+        "weapon5-1":{
+            "name": "승리선언",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "-",
+            "description": "속도가 15.0/15.0/20.0/20.0/25.0/25.0/30.0 증가한다. 자신의 속도가 100.0을 초과하는 경우 초과한 속도 10.0당 공격력이 증가한다 (마유미의 시속 스택에 비례하며 상한선이 존재)"
+        }
+    },
     "아케치": {
         "name": "아케치 고로",
         "weapon4-1":{

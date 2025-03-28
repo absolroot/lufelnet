@@ -329,7 +329,28 @@ class TacticShare {
             'http://lufel.net/tactic/?data=',
             'https://lufel.net/tactic/?data=',
             'https://www.lufel.net/tactic/?data=',
-            'http://www.lufel.net/tactic/?data='
+            'http://www.lufel.net/tactic/?data=',
+            'http://lufel.net/kr/tactic/?data=',
+            'https://lufel.net/kr/tactic/?data=',
+            'https://www.lufel.net/kr/tactic/?data=',
+            'http://www.lufel.net/kr/tactic/?data=',
+            'http://lufel.net/en/tactic/?data=',
+            'https://lufel.net/en/tactic/?data=',
+            'https://www.lufel.net/en/tactic/?data=',
+            'http://www.lufel.net/en/tactic/?data=',
+            'http://lufel.net/jp/tactic/?data=',
+            'https://lufel.net/jp/tactic/?data=',
+            'https://www.lufel.net/jp/tactic/?data=',
+            'http://www.lufel.net/jp/tactic/?data=',
+            'http://lufel.net/cn/tactic/?data=',
+            'https://lufel.net/cn/tactic/?data=',
+            'https://www.lufel.net/cn/tactic/?data=',
+            'http://www.lufel.net/cn/tactic/?data=',
+            'http://lufel.net/tw/tactic/?data=',
+            'https://lufel.net/tw/tactic/?data=',
+            'https://www.lufel.net/tw/tactic/?data=',
+            'http://www.lufel.net/tw/tactic/?data=',
+            
         ];
 
         if (!validPrefixes.some(prefix => url.startsWith(prefix))) {

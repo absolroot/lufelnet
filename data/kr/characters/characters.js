@@ -84,7 +84,7 @@ const characterData = {
         "skill2_lv": "",
         "skill3_lv": "",
         "skill4_lv": "",
-        "mind_stats1": "",
+        "mind_stats1": "속도 10!",
         "mind_stats2": "",
         "mind_skill1": "",
         "mind_skill2": ""
@@ -124,7 +124,7 @@ const characterData = {
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
         "mind_stats1": "대미지보너스 16%",
-        "mind_stats2": "크리티컬 확률 12%",
+        "mind_stats2": "크리티컬 확률 12%!",
         "mind_skill1": "1/2!",
         "mind_skill2": "3/HL!"
     },

@@ -1,0 +1,548 @@
+---
+layout: default
+custom_css: [persona]
+custom_js: [tooltip]
+custom_data: [wonder/persona.js, tooltip.js, wonder/skills.js]
+permalink: /en/persona/
+language: en
+title : Main Persona - Persona 5 The Phantom X Lufenet
+description: Main Persona information for Persona 5 The Phantom X
+---
+
+
+<div class="main-wrapper">
+
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}">Home</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">Persona</span>
+    </div>
+    <div class="header-container">
+        <h1>Main Persona</h1>
+    </div>
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-header">
+            <button class="filter-toggle-btn">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="Filter" />
+                <span></span>
+            </button>
+            <button class="filter-reset-btn" style="display: none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="Reset" />
+            </button>
+        </div>
+        
+        <div class="filter-content" style="display: none;">
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3>Element</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="Physical">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_물리.png" alt="Physical">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Gun">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_총격.png" alt="Gun">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Fire">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_화염.png" alt="Fire">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Ice">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_빙결.png" alt="Ice">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Electric">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_전격.png" alt="Electric">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Wind">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_질풍.png" alt="Wind">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Psychic">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_염동.png" alt="Psychic">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Nuclear">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_핵열.png" alt="Nuclear">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Bless">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_축복.png" alt="Bless">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Curse">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_주원.png" alt="Curse">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="Almighty">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_만능.png" alt="Almighty">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Position filter -->
+            <div class="filter-group">
+                <h3>Position</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="position" value="Dominance">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_지배.png" alt="Dominance">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="Rebellion">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_반항.png" alt="Rebellion">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="Superiority">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_우월.png" alt="Superiority">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="Submission">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_굴복.png" alt="Submission">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="Defense">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_방위.png" alt="Defense">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="Salvation">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_구원.png" alt="Salvation">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Rarity filter -->
+            <div class="filter-group">
+                <h3>Rarity</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="3" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Grade filter -->
+            <div class="filter-group">
+                <h3>Grade</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="grade" value="1">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade1.webp" alt="Grade 1">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="2">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade2.webp" alt="Grade 2">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="3">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade3.webp" alt="Grade 3">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="4">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade4.webp" alt="Grade 4">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="5">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade5.webp" alt="Grade 5">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="6">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade6.webp" alt="Grade 6">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="7">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade7.webp" alt="Grade 7">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="8">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade8.webp" alt="Grade 8">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Search section below filter section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                </svg>
+            </div>
+            <input type="text" id="personaSearch" placeholder="Search Persona..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+    </div>
+
+    <!-- Persona card container -->
+    <div class="persona-cards" id="personaCards">
+        <!-- Dynamically generated by JavaScript -->
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('persona');
+        VersionChecker.check();
+
+        const cardsContainer = document.getElementById('personaCards');
+        
+
+        const sortedPersonas = Object.keys(personaData)
+        
+        sortedPersonas.forEach(personaName => {
+            const detailContainer = document.createElement('div');
+            detailContainer.className = 'persona-detail-container';
+            // Add data attributes for filtering
+            detailContainer.dataset.element = personaData[personaName].element;
+            detailContainer.dataset.position = personaData[personaName].position;
+            detailContainer.dataset.rarity = personaData[personaName].star;
+            detailContainer.dataset.name = personaName;  // Add data-name attribute for search
+            detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
+            
+            // Left card image section
+            const cardSection = document.createElement('div');
+            cardSection.className = 'persona-card-section';
+            
+            // Insert existing card creation code here
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.element = personaData[personaName].element;
+            card.dataset.position = personaData[personaName].position;
+            card.dataset.rarity = personaData[personaName].star;
+            
+            // Add card background
+            const cardBg = document.createElement('img');
+            cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaData[personaName].element}.webp`;
+            cardBg.alt = "card background";
+            cardBg.className = 'card-background';
+            cardBg.loading = 'lazy';
+            
+            // Persona image
+            const img = document.createElement('img');
+            img.src = `{{ site.baseurl }}/assets/img/persona/${personaName}.webp`;
+            img.alt = personaName;
+            img.className = 'persona-img';
+            img.loading = 'lazy';  // Add lazy loading attribute
+            
+            // Add rarity cover
+            const coverStar = document.createElement('img');
+            coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaData[personaName].star}.webp`;
+            coverStar.alt = "rarity cover";
+            coverStar.className = 'cover-star';
+            coverStar.loading = 'lazy';
+            
+            // Add remaining elements
+            const positionContainer = document.createElement('div');
+            positionContainer.className = 'position-container';
+            
+            const positionIcon = document.createElement('img');
+            positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaData[personaName].position}.png`;
+            positionIcon.alt = personaData[personaName].position;
+            positionIcon.className = 'position-icon';
+            
+            const elementIcon = document.createElement('img');
+            elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].element}.png`;
+            elementIcon.alt = personaData[personaName].element;
+            elementIcon.className = 'element-icon';
+
+            
+            positionContainer.appendChild(positionIcon);
+            
+            // Final assembly
+            card.appendChild(cardBg);
+            card.appendChild(img);
+            card.appendChild(coverStar);
+            card.appendChild(positionContainer);
+            card.appendChild(elementIcon);
+            
+            cardSection.appendChild(card);
+            
+            // Right info section
+            const infoSection = document.createElement('div');
+            infoSection.className = 'persona-info-section';
+            
+            // Name and grade
+            const headerInfo = document.createElement('div');
+            headerInfo.className = 'persona-header-info';
+            headerInfo.innerHTML = `
+                <h2>${personaName}</h2>
+                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
+            `;
+            
+            // Instinct
+            const instinctInfo = document.createElement('div');
+            instinctInfo.className = 'persona-instinct-info';
+            instinctInfo.dataset.priority = personaData[personaName].instinct.priority;
+            instinctInfo.innerHTML = `
+                <h3>${personaData[personaName].instinct.name}</h3>
+                <p>${personaData[personaName].instinct.effects.join('\n')}</p>
+            `;
+            
+            // Container for unique skill and highlight
+            const skillContainer = document.createElement('div');
+            skillContainer.className = 'skill-highlight-container';
+
+            // Unique skill
+            const uniqueSkillInfo = document.createElement('div');
+            uniqueSkillInfo.className = 'persona-unique-skill-info';
+            uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
+            uniqueSkillInfo.innerHTML = `
+                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].uniqueSkill.icon}.png" alt="Skill Element" class="skill-type-icon"> ${personaData[personaName].uniqueSkill.name}</h3>
+                <p>${personaData[personaName].uniqueSkill.effect}</p>
+            `;
+            
+            // Highlight
+            const highlightInfo = document.createElement('div');
+            highlightInfo.className = 'persona-highlight-info';
+            highlightInfo.dataset.priority = personaData[personaName].highlight.priority;
+            highlightInfo.innerHTML = `
+                <h3>HIGHLIGHT</h3>
+                <p>${personaData[personaName].highlight.effect}</p>
+            `;
+
+            // Add to container
+            skillContainer.appendChild(uniqueSkillInfo);
+            skillContainer.appendChild(highlightInfo);
+            
+            // Add elements to info section
+            infoSection.appendChild(headerInfo);
+            infoSection.appendChild(instinctInfo);
+            infoSection.appendChild(skillContainer);  // Add container instead of individual elements
+
+            // Recommended skill list
+            if (personaData[personaName].recommendSkill && personaData[personaName].recommendSkill.length > 0 && personaData[personaName].recommendSkill[0].name) {
+                const recommendedSkills = document.createElement('div');
+                recommendedSkills.className = 'persona-recommended-skills';
+                recommendedSkills.innerHTML = `
+                    <h3>Recommended Skills</h3>
+                    <ul>
+                        ${personaData[personaName].recommendSkill.map(skill => {
+                            const skillInfo = personaSkillList[skill.name];
+                            if (!skillInfo) return ''; // Skip if skill info not found
+                            return `
+                                <li data-priority="${skill.priority}">
+                                    <div class="skill-info">
+                                        <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
+                                        <span class="skill-name">${skill.name}</span>
+                                        <span class="skill-description">${skillInfo.description}</span>
+                                    </div>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                `;
+                infoSection.appendChild(recommendedSkills);
+            }
+            
+            // Comment
+            if (personaData[personaName].comment && personaData[personaName].comment.trim() !== '') {
+                const comment = document.createElement('div');
+                comment.className = 'persona-comment';
+                comment.innerHTML = `
+                    <div class="comment-container">
+                        <span class="comment-icon">💬</span>
+                        <p>${personaData[personaName].comment}</p>
+                    </div>
+                `;
+                infoSection.appendChild(comment);
+            }
+            
+            // Add sections to container
+            detailContainer.appendChild(cardSection);
+            detailContainer.appendChild(infoSection);
+            
+            cardsContainer.appendChild(detailContainer);
+
+            // Initialize tooltips
+            addTooltips();
+        });
+
+        // ----------------------------------------------------
+        // Filter implementation
+
+        const filterToggleBtn = document.querySelector('.filter-toggle-btn');
+        const filterContent = document.querySelector('.filter-content');
+        const filterResetBtn = document.querySelector('.filter-reset-btn');
+        const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+        filterContent.style.display = 'block';
+
+        // Filter toggle
+        filterToggleBtn.addEventListener('click', () => {
+            filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Detect checkbox changes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                // Check if any filters are selected
+                const hasChecked = Array.from(checkboxes).some(cb => cb.checked);
+                //filterResetBtn.style.display = hasChecked ? 'block' : 'none';
+                
+                // Apply filters
+                applyFilters();
+            });
+        });
+        
+        // Reset button
+        
+        filterResetBtn.addEventListener('click', () => {
+            checkboxes.forEach(cb => cb.checked = false);
+            filterResetBtn.style.display = 'none';
+            applyFilters();
+        });
+        
+        filterToggleBtn.style.display = 'none';
+        filterResetBtn.style.display = 'none';
+
+        // Filter application function
+        function applyFilters() {
+            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
+            const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
+            const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
+            const selectedGrades = Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value);
+            
+            const containers = document.querySelectorAll('.persona-detail-container');
+            containers.forEach(container => {
+                const element = container.dataset.element;
+                const position = container.dataset.position;
+                const rarity = parseInt(container.dataset.rarity);
+                const grade = container.dataset.grade;
+                    
+                const elementMatch = selectedElements.length === 0 || selectedElements.includes(element);
+                const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
+                const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
+                const gradeMatch = selectedGrades.length === 0 || selectedGrades.includes(grade);
+                
+                container.style.display = elementMatch && positionMatch && rarityMatch && gradeMatch ? 'flex' : 'none';
+            });
+        }
+
+        // Search functionality implementation
+        const searchInput = document.getElementById('personaSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const containers = document.querySelectorAll('.persona-detail-container');
+        const personaNames = Object.keys(personaData);
+
+        searchInput.addEventListener('input', (e) => {
+            const searchValue = e.target.value.toLowerCase();
+            dropdown.innerHTML = '';
+            
+            // Dropdown autocomplete handling
+            if (searchValue.length > 0) {
+                const matches = personaNames.filter(name => 
+                    name.toLowerCase().includes(searchValue)
+                );
+
+                if (matches.length > 0) {
+                    dropdown.style.display = 'block';
+                    matches.forEach(name => {
+                        const div = document.createElement('div');
+                        div.className = 'dropdown-item';
+                        div.textContent = name;
+                        div.addEventListener('click', () => {
+                            searchInput.value = name;  // Set search input value to selected name
+                            dropdown.style.display = 'none';
+                            filterBySearch(name.toLowerCase());  // Execute search filtering
+                        });
+                        dropdown.appendChild(div);
+                    });
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            } else {
+                dropdown.style.display = 'none';
+            }
+
+            // Filter by search term
+            filterBySearch(searchValue);
+        });
+
+        // Search filtering function
+        function filterBySearch(searchValue) {
+            containers.forEach(container => {
+                const personaName = container.dataset.name.toLowerCase();
+                container.style.display = searchValue === '' || personaName.includes(searchValue) ? 'flex' : 'none';
+            });
+        }
+
+        // Close dropdown when clicking outside search
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // When keyboard appears
+        searchInput.addEventListener('focus', () => {
+            document.body.classList.add('keyboard-open');
+        });
+
+        // When keyboard disappears
+        searchInput.addEventListener('blur', () => {
+            document.body.classList.remove('keyboard-open');
+        });
+
+        // Prevent viewport size changes on iOS
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1';
+            }
+        }
+
+    });
+    
+</script>

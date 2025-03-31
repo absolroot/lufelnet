@@ -1,0 +1,294 @@
+---
+layout: default
+custom_css: [home, tactic-posts]
+custom_js: [tactic-posts-home, tactic-preview, /tactic/share]
+custom_data: [/characters/characters.js, /revelations/revelations.js]
+permalink: /en/
+language: en
+---
+
+    <div class="main-wrapper">
+        <!-- Header (logo, etc.) -->
+        <div class="header-container">
+            <h1>P5X Lufel.net</h1> <span class="beta-text">beta</span>
+            <button class="music-control" id="musicControl">
+                <img src="{{ site.baseurl }}/assets/img/ui/music-off.png" alt="Play Music" id="musicIcon">
+            </button>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="menu-cards">
+                <div class="menu-card" onclick="location.href='./character/?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>Phantom Thief <img src="{{ site.baseurl }}/assets/img/home/icon1.png" alt="Phantom Thief Icon" class="title-icon"></h2>
+                            <p class="desktop-description">Discover strategies for developing each Phantom Thief for higher scores and easier clears.</p>
+                            <p class="mobile-description">Discover strategies for developing each Phantom Thief.</p>
+                            <button onclick="location.href='./character/?v=' + APP_VERSION" class="view-more">Go to →</button>
+                        </div>
+                        <img src="{{ site.baseurl }}/assets/img/home/1.webp" alt="Phantom Thief Illustration" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+                
+                <div class="menu-card" onclick="location.href='./persona/?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>Persona <img src="{{ site.baseurl }}/assets/img/home/icon2.png" alt="Persona Icon" class="title-icon"></h2>
+                            <p class="desktop-description">Recommended core Personas and suitable skill settings for each.</p>
+                            <p class="mobile-description">Recommended core Personas and skill settings.</p>
+                            <button onclick="location.href='./persona/?v=' + APP_VERSION" class="view-more">Go to →</button>
+                        </div>
+                        <img src="{{ site.baseurl }}/assets/img/home/2.webp" alt="Persona Illustration" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="menu-card" onclick="location.href='./revelations/?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>Revelations <img src="{{ site.baseurl }}/assets/img/home/icon3.png" alt="Revelations Icon" class="title-icon"></h2>
+                            <p class="desktop-description">View all revelation information at a glance! Match by attribute or celestial body as desired.</p>
+                            <p class="mobile-description">View all revelation information at a glance!</p>
+                            <button onclick="location.href='./revelations/?v=' + APP_VERSION" class="view-more">Go to →</button>
+                        </div>
+                        <img src="{{ site.baseurl }}/assets/img/home/3.webp" alt="Revelations Illustration" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="menu-card" onclick="location.href='./tactic/tactic-share.html?v=' + APP_VERSION">
+                    <div class="card-content">
+                        <div class="text-section">
+                            <h2>Tactics <img src="{{ site.baseurl }}/assets/img/home/icon4.png" alt="Tactics Icon" class="title-icon"></h2>
+                            <p class="desktop-description">Create and share your own tactics, and achieve high scores in the sea and nightmares.</p>
+                            <p class="mobile-description">Create and share your own tactics.</p>
+                            <button onclick="location.href='./tactic/?v=' + APP_VERSION" class="view-more">Go to →</button>
+                        </div>
+                        <img src="{{ site.baseurl }}/assets/img/home/4.webp" alt="Tactics Illustration" class="card-illustration" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            <div class="update-notice">
+                
+            </div>
+        </div>
+        <div class="separator-line"></div>
+        <div class="middle-container">
+            <div class="popular-content">
+                <h2>Popular Phantom Thieves</h2>
+                <div class="character-cards">
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="{{ site.baseurl }}/assets/img/tier/아케치.webp" alt="Akechi" onclick="location.href='./character/character.html?name=아케치&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>Akechi Goro</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="{{ site.baseurl }}/assets/img/tier/후타바.webp" alt="Futaba" onclick="location.href='./character/character.html?name=후타바&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>Sakura Futaba</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="{{ site.baseurl }}/assets/img/tier/리코·매화.webp" alt="Riko·Ume" onclick="location.href='./character/character.html?name=리코·매화&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>Riko·Ume</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="{{ site.baseurl }}/assets/img/tier/미오.webp" alt="Mio" onclick="location.href='./character/character.html?name=미오&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>Natsukawa Mio</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="{{ site.baseurl }}/assets/img/tier/야오링·사자무.webp" alt="Yaoling·Shazamu" onclick="location.href='./character/character.html?name=야오링·사자무&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>Yaoling·Shazamu</p></div>
+                    </div>
+                    <div class="character-card">
+                        <div class="character-card-img"><img src="{{ site.baseurl }}/assets/img/tier/카스미.webp" alt="Kasumi" onclick="location.href='./character/character.html?name=카스미&v=' + APP_VERSION"></div>
+                        <div class="character-card-text"><p>Yoshizawa Kasumi</p></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="recent-update-content">
+                <h2>Latest Updates</h2>
+                <div id="recent-update-list"></div>
+                <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;">Show More</button>
+            </div>
+        </div>
+        <div class="guides-container">
+            <h2>Guides</h2>
+            <div class="guide-cards">
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <img src="{{ site.baseurl }}/assets/img/home/guide1.png" alt="Guide Image">
+                        <h3>City Life</h3>
+                    </div>
+                    <div class="guide-card-content">
+                        <div class="article" onclick="window.open('https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM', '_blank')">∘ Gifts & Choices for Collaborators</div>
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=158597', '_blank')">∘ Recommended Priority for Collaborators</div>
+                        <div class="article" onclick="window.open('https://arca.live/b/persona5x/112002828', '_blank')">∘ Ichigaya Fishing</div>
+                        <div class="article" onclick="window.open('https://arca.live/b/persona5x/110240842', '_blank')">∘ Cooking Recipe Acquisition</div>
+                    </div>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <img src="{{ site.baseurl }}/assets/img/home/guide2.png" alt="Guide Image">
+                        <h3>Development & Resources</h3>
+                    </div>
+                    <div class="guide-card-content">
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=170601', '_blank')">∘ About Revelations</div>
+                        <div class="article" onclick="window.open('https://arca.live/b/persona5x/115843217', '_blank')">∘ Main Celestial Revelation Sources</div>
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=175353', '_blank')">∘ Exchange Shop Purchase List</div>
+                        <div class="article" onclick="window.open('https://docs.google.com/spreadsheets/d/1PotwjpI7fPORdSZ3PfSnbIffbLkvxVXZRpFzGfsuY1w', '_blank')">∘ Package Payment Efficiency Calculation</div>
+                    </div>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <img src="{{ site.baseurl }}/assets/img/home/guide3.png" alt="Guide Image">
+                        <h3>Combat & Palaces</h3>
+                    </div>
+                    <div class="guide-card-content">
+                        <div class="article" onclick="window.open('https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=163337', '_blank')">∘ Damage Calculation Formula</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1xF4m1N7bZ', '_blank')">∘ Palace Chapter 1 100% Exploration</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1zD421n7jJ', '_blank')">∘ Palace Chapter 2 100% Exploration</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1kr421T7Wp', '_blank')">∘ Palace Chapter 3 100% Exploration</div>
+                        <div class="article" onclick="window.open('https://www.bilibili.com/video/BV1duUSYfEdY', '_blank')">∘ Palace Chapter 4 100% Exploration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="posts-container">
+            <div class="posts-header">
+                <h2><a href="./tactic/tactic-share.html">Tactic Forge NEW</a></h2>
+                <a href="./tactic/tactic-share.html" class="show-more-posts-btn">Show More ＋</a>
+            </div>
+            <div class="posts-list" id="postsList"></div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-text">
+                <p>※ Lufenet is an unofficial Persona 5X information site created by an individual. The trademarks and copyrights of the game's content and materials belong to SEGA·ATLUS·Perfect World Games.</p>
+                <p>✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@root　<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" style="color: rgb(255, 255, 255, 0.5); text-decoration: underline;" target="_blank">Report and Request</a></p>
+                <p></p>
+            </div>
+            
+            <!-- Responsive Ad -->
+                <!--
+            <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5862324369257695"
+                    data-ad-slot="1387076195"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+            <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>-->
+        </div>
+    </div>
+    
+</div>
+
+<!-- iframe -->
+<iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('home');
+        VersionChecker.check();
+        window.tacticShare = new TacticShare({ postsPerPage: 2});
+
+        const musicPlayer = document.getElementById('music-player');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        // Music control button click event
+        musicControl.addEventListener('click', () => {
+            if (!isPlaying) {
+                musicPlayer.contentWindow.postMessage('play', '*');
+                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-on.png';
+                musicIcon.alt = 'Pause Music';
+            } else {
+                musicPlayer.contentWindow.postMessage('pause', '*');
+                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-off.png';
+                musicIcon.alt = 'Play Music';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Receive music state
+        window.addEventListener('message', (event) => {
+            if (event.data === 'playing' || event.data === 'paused') {
+                sessionStorage.setItem('musicState', event.data);
+                isPlaying = event.data === 'playing';
+                musicIcon.src = isPlaying ? '{{ site.baseurl }}/assets/img/ui/music-on.png' : '{{ site.baseurl }}/assets/img/ui/music-off.png';
+                musicIcon.alt = isPlaying ? 'Pause Music' : 'Play Music';
+            }
+        });
+
+        // Save current state before page unload
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('musicState', isPlaying ? 'playing' : 'paused');
+        });
+    });
+
+    // Load update history
+    let allUpdates = []; // Store all updates
+    const INITIAL_SHOW = 5; // Number of updates to show initially
+    const LOAD_MORE_COUNT = 10; // Number of updates to load when "more" button is clicked
+    let currentlyShown = 0;
+
+    async function loadUpdates() {
+        try {
+            const response = await fetch(`{{ site.baseurl }}/data/en/updates.csv?v=${APP_VERSION}`);
+            const data = await response.text();
+            
+            // Parse CSV
+            allUpdates = data.split('\n')
+                .slice(1) // Remove header
+                .filter(line => line.trim()) // Remove empty lines
+                .map(line => {
+                    const [date, version, content] = line.split(',');
+                    // Remove '20' prefix from date
+                    const formattedDate = date.replace(/^20/, '');
+                    return { date: formattedDate, version, content: content.replace('|', ', ') };
+                });
+
+            // Show initial updates
+            showMoreUpdates(INITIAL_SHOW);
+            
+            // Set visibility of "more" button
+            const showMoreBtn = document.getElementById('show-more-updates-btn');
+            if (allUpdates.length > INITIAL_SHOW) {
+                showMoreBtn.style.display = 'block';
+                showMoreBtn.addEventListener('click', () => showMoreUpdates(LOAD_MORE_COUNT));
+            }
+        } catch (error) {
+            console.error('Failed to load update history:', error);
+        }
+    }
+
+    // Function to display additional updates
+    function showMoreUpdates(count) {
+        const updateList = document.getElementById('recent-update-list');
+        const showMoreBtn = document.getElementById('show-more-updates-btn');
+        
+        // Additional updates to display
+        const newUpdates = allUpdates.slice(currentlyShown, currentlyShown + count);
+        
+        newUpdates.forEach(update => {
+            const updateElement = document.createElement('div');
+            updateElement.className = 'recent-update-content-text';
+            updateElement.innerHTML = `
+                <div class="date">${update.date}</div>
+                <div class="version">${update.version}</div>
+                <div class="content"><p>${update.content}</p></div>
+            `;
+            updateList.appendChild(updateElement);
+        });
+
+        currentlyShown += newUpdates.length;
+
+        // If all updates have been shown, hide the "more" button
+        if (currentlyShown >= allUpdates.length) {
+            showMoreBtn.style.display = 'none';
+        }
+    }
+
+    // Load update history on page load
+    document.addEventListener('DOMContentLoaded', loadUpdates);
+</script>

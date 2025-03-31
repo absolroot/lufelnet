@@ -46,7 +46,7 @@ class Navigation {
                 character: 'Characters',
                 persona: 'Persona',
                 revelations: 'Revelations',
-                defenseCalc: 'Defense Calculator',
+                defenseCalc: 'Defense Calc',
                 tactic: 'Tactics',
                 tacticMaker: 'Tactics Maker',
                 tacticForge: 'Tactics Forge',
@@ -146,11 +146,12 @@ class Navigation {
                                 <img src="${BASE_URL}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
                                 <span>한국어</span>
                             </div>
-                            <!--
+                            
                             <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/en.png" alt="en" class="flag-icon">
-                                <span>English</span>
+                                <span>English (Beta)</span>
                             </div>
+                            <!--
                             <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                                 <span>日本語</span>

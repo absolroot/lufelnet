@@ -72,7 +72,7 @@ const characterData = {
         "sub_option2": [""],
         "sub_option3": [""],
         "minimum_stats": {
-            "LV10": "속도 176",
+            "LV10": "속도 176 (전용무기 180)",
             "LV10+5": "속도 194",
             "LV12": false,
             "LV12+5": false,

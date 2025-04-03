@@ -81,7 +81,7 @@ const characterData = {
         },
         "battle_plus_stats": "· 마이팰리스 1",
         "skill1_lv": "MAX!",
-        "skill2_lv": "8",
+        "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
         "mind_stats1": "속도 10!",

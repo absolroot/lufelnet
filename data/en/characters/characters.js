@@ -72,22 +72,22 @@ const characterData = {
         "sub_option2": [""],
         "sub_option3": [""],
         "minimum_stats": {
-            "LV10": "속도 -",
-            "LV10+5": "속도 -",
+            "LV10": "속도 176",
+            "LV10+5": "속도 194",
             "LV12": false,
             "LV12+5": false,
             "LV13": "속도 -",
             "LV13+5": "속도 -"
         },
         "battle_plus_stats": "· 마이팰리스 1",
-        "skill1_lv": "",
-        "skill2_lv": "",
-        "skill3_lv": "",
-        "skill4_lv": "",
+        "skill1_lv": "MAX!",
+        "skill2_lv": "8",
+        "skill3_lv": "MAX!",
+        "skill4_lv": "MAX",
         "mind_stats1": "속도 10!",
-        "mind_stats2": "",
-        "mind_skill1": "",
-        "mind_skill2": ""
+        "mind_stats2": "크리티컬 확률 12%!",
+        "mind_skill1": "1/2",
+        "mind_skill2": "3/HL!"
     },
     "아케치": {
        "role": "만능 광역 딜러 (서브)",

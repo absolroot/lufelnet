@@ -6,6 +6,7 @@ const operationData = {
     "마유미": {
         basic: [
             { label: "의식 0", value: "1 › 2 + 3 › 1 › 3 › 2 + 1 › 3" },
+            { label: "의식 0 v2", value: "1 › 2 + 3 › 1 › 3 › 1 › 2 + 3" },
             { label: "의식 1", value: "1 › 2 + 3 › 1 › 2 + 3 › 1 › 2 + 3" }
         ],
         note: [

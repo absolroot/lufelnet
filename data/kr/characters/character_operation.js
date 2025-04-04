@@ -4,8 +4,13 @@ const operationData = {
         note: []
     },
     "마유미": {
-        basic: [],
-        note: []
+        basic: [
+            { label: "의식 0", value: "1 › 2 + 3 › 1 › 3 › 2 + 1 › 3" },
+            { label: "의식 1", value: "1 › 2 + 3 › 1 › 2 + 3 › 1 › 2 + 3" }
+        ],
+        note: [
+            "· 조커가 6턴 전부 추가턴 획득 가능한 경우 의식0도 의식 1 사이클"
+        ]
     },
     "아케치": {
         basic: [

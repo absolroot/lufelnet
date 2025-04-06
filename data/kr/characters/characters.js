@@ -51,8 +51,8 @@ const characterData = {
         "color": "#000000",
     },
     "마유미": {
-        "role": "",
-        "tag": "",
+        "role": "추가턴 관통 버퍼",
+        "tag": "추가턴, 관통, 다운, 대미지보너스, 공격력",
         "color": "#324ea8",
         "main_revelation": ["창조","신뢰","신뢰"],
         "sub_revelation": ["화해","풍요","힘"],

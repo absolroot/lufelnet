@@ -181,22 +181,17 @@ class DefenseCalc {
         const isChecked = checkbox.src.includes('check-on');
         checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
         
-        // 행 요소 찾기
         const row = checkbox.closest('tr');
         
         if (isChecked) {
-            if (this.selectedItems.has(data.id)) {
-                this.selectedItems.delete(data.id);
-                row.classList.remove('selected');
-            }
+            this.selectedItems.delete(data.id);
+            row.classList.remove('selected');
         } else {
             this.selectedItems.add(data.id);
             row.classList.add('selected');
         }
         
-        if (!isChecked) {
-            this.updateTotal();
-        }
+        this.updateTotal();
     }
 
     togglePenetrateCheck(checkbox, data) {
@@ -303,7 +298,7 @@ class DefenseCalc {
         
         // 관통 효과 적용
         const penetrateTotal = parseFloat(this.penetrateValue.textContent);
-        const modifiedDefenseCoef = defenseCoef * (100 - penetrateTotal) / 100;
+        const modifiedDefenseCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
         
         // 최종 방어 계수 표시
         this.finalDefenseCoefSpan.textContent = `${modifiedDefenseCoef.toFixed(1)}%`;

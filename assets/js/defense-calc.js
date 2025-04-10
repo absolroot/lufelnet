@@ -1,11 +1,19 @@
 class DefenseCalc {
     constructor() {
         this.tableBody = document.getElementById('defenseTableBody');
+        this.penetrateTableBody = document.getElementById('penetrateTableBody');
         this.totalValue = document.querySelector('.total-value');
-        this.selectedItems = new Set([1, 3, 4]); // 초기 선택 항목 설정
+        this.penetrateValue = document.querySelector('.penetrate-value');
+        this.finalDefenseCoefSpan = document.getElementById('finalDefenseCoef');
+        this.revelationPenetrateInput = document.getElementById('revelationPenetrate');
+        this.explanationPowerInput = document.getElementById('explanationPower');
+        this.selectedItems = new Set(); // 초기 선택 항목 설정
+        this.selectedPenetrateItems = new Set(); // 관통 선택 항목
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
         this.initializeTable(); // 그 다음 테이블 초기화
+        this.initializePenetrateTable(); // 관통 테이블 초기화
         this.initializeMobileHeader();
+        this.initializePenetrateInputs();
     }
 
     initializeTable() {
@@ -17,12 +25,26 @@ class DefenseCalc {
         this.updateTotal();
     }
 
-    createTableRow(data) {
+    initializePenetrateTable() {
+        penetrateData.forEach(data => {
+            const row = this.createTableRow(data, true);
+            this.penetrateTableBody.appendChild(row);
+        });
+        this.updatePenetrateTotal();
+    }
+
+    createTableRow(data, isPenetrate = false) {
         const row = document.createElement('tr');
         
         // 초기 선택된 항목에 대해 selected 클래스 추가
-        if (this.selectedItems.has(data.id)) {
-            row.classList.add('selected');
+        if (isPenetrate) {
+            if (this.selectedPenetrateItems.has(data.id)) {
+                row.classList.add('selected');
+            }
+        } else {
+            if (this.selectedItems.has(data.id)) {
+                row.classList.add('selected');
+            }
         }
         
         // 괴도 이름이 비어있는 경우 클래스 추가
@@ -34,10 +56,16 @@ class DefenseCalc {
         const checkCell = document.createElement('td');
         checkCell.className = 'check-column';
         const checkbox = document.createElement('img');
-        checkbox.src = this.selectedItems.has(data.id) 
-            ? `${BASE_URL}/assets/img/ui/check-on.png` 
-            : `${BASE_URL}/assets/img/ui/check-off.png`;
-        checkbox.onclick = () => this.toggleCheck(checkbox, data);
+        checkbox.src = isPenetrate 
+            ? (this.selectedPenetrateItems.has(data.id) ? `${BASE_URL}/assets/img/ui/check-on.png` : `${BASE_URL}/assets/img/ui/check-off.png`)
+            : (this.selectedItems.has(data.id) ? `${BASE_URL}/assets/img/ui/check-on.png` : `${BASE_URL}/assets/img/ui/check-off.png`);
+        checkbox.onclick = () => {
+            if (isPenetrate) {
+                this.togglePenetrateCheck(checkbox, data);
+            } else {
+                this.toggleCheck(checkbox, data);
+            }
+        };
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
         
@@ -115,8 +143,12 @@ class DefenseCalc {
                 if (data.values && data.values[selectedOption]) {
                     data.value = data.values[selectedOption];
                     valueCell.textContent = `${data.value}%`;
-                    if (this.selectedItems.has(data.id)) {
-                        this.updateTotal();
+                    if (isPenetrate) {
+                        this.updatePenetrateTotal();
+                    } else {
+                        if (this.selectedItems.has(data.id)) {
+                            this.updateTotal();
+                        }
                     }
                 }
             };
@@ -153,14 +185,36 @@ class DefenseCalc {
         const row = checkbox.closest('tr');
         
         if (isChecked) {
-            this.selectedItems.delete(data.id);
-            row.classList.remove('selected');
+            if (this.selectedItems.has(data.id)) {
+                this.selectedItems.delete(data.id);
+                row.classList.remove('selected');
+            }
         } else {
             this.selectedItems.add(data.id);
             row.classList.add('selected');
         }
         
-        this.updateTotal();
+        if (!isChecked) {
+            this.updateTotal();
+        }
+    }
+
+    togglePenetrateCheck(checkbox, data) {
+        const isChecked = checkbox.src.includes('check-on');
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
+        
+        const row = checkbox.closest('tr');
+        
+        if (isChecked) {
+            this.selectedPenetrateItems.delete(data.id);
+            row.classList.remove('selected');
+        } else {
+            this.selectedPenetrateItems.add(data.id);
+            row.classList.add('selected');
+        }
+        
+        this.updatePenetrateTotal();
+        this.updateDamageCalculation();
     }
 
     updateTotal() {
@@ -169,6 +223,26 @@ class DefenseCalc {
             .reduce((sum, item) => sum + item.value, 0);
             
         this.totalValue.textContent = `${total.toFixed(1)}%`;
+        this.updateDamageCalculation();
+    }
+
+    updatePenetrateTotal() {
+        // 테이블에서 선택된 항목들의 합계
+        const tableTotal = Array.from(this.selectedPenetrateItems)
+            .map(id => penetrateData.find(d => d.id === id))
+            .reduce((sum, item) => sum + item.value, 0);
+        
+        // 입력 필드의 값 (숫자가 아닌 경우 0으로 처리)
+        const revelationValue = parseFloat(this.revelationPenetrateInput.value) || 0;
+        const explanationValue = parseFloat(this.explanationPowerInput.value) || 0;
+        
+        // 전체 합계 계산
+        const total = tableTotal + revelationValue + explanationValue;
+        
+        // 합계 표시
+        this.penetrateValue.textContent = `${total.toFixed(1)}%`;
+        
+        // 대미지 계산 업데이트
         this.updateDamageCalculation();
     }
 
@@ -219,18 +293,26 @@ class DefenseCalc {
             this.damageIncreaseDiv.textContent = '-';
             this.noDefReduceSpan.textContent = '-';
             this.withDefReduceSpan.textContent = '-';
+            this.finalDefenseCoefSpan.textContent = '-';
             return;
         }
 
         const baseDefense = parseFloat(boss.baseDefense);
         const defenseCoef = parseFloat(boss.defenseCoef);
-        const defenseReduce = Math.min(parseFloat(this.totalValue.textContent), defenseCoef); // 방어 계수를 초과하지 않도록 제한
+        const defenseReduce = Math.min(parseFloat(this.totalValue.textContent), defenseCoef);
+        
+        // 관통 효과 적용
+        const penetrateTotal = parseFloat(this.penetrateValue.textContent);
+        const modifiedDefenseCoef = defenseCoef * (100 - penetrateTotal) / 100;
+        
+        // 최종 방어 계수 표시
+        this.finalDefenseCoefSpan.textContent = `${modifiedDefenseCoef.toFixed(1)}%`;
         
         // 방어력 감소 미적용
         const noReduceDamage = 1-this.calculateDamage(baseDefense, defenseCoef);
         
         // 방어력 감소 적용 (최소값은 0으로 제한)
-        const finalDefenseCoef = Math.max(0, defenseCoef - defenseReduce);
+        const finalDefenseCoef = Math.max(0, modifiedDefenseCoef - defenseReduce);
         const withReduceDamage = 1-this.calculateDamage(baseDefense, finalDefenseCoef);
         
         // 최종 대미지 증가율
@@ -256,6 +338,7 @@ class DefenseCalc {
         this.damageIncreaseDiv.textContent = '-';
         this.noDefReduceSpan.textContent = '-';
         this.withDefReduceSpan.textContent = '-';
+        this.finalDefenseCoefSpan.textContent = '-';
     }
 
     initializeMobileHeader() {
@@ -332,6 +415,12 @@ class DefenseCalc {
                 delete cell.dataset.isInherited;
             });
         }
+    }
+
+    initializePenetrateInputs() {
+        // 입력 필드 이벤트 리스너 추가
+        this.revelationPenetrateInput.addEventListener('input', () => this.updatePenetrateTotal());
+        this.explanationPowerInput.addEventListener('input', () => this.updatePenetrateTotal());
     }
 
 }

@@ -59,7 +59,6 @@ const penetrateData = [
         duration: "-",
         note: "성가 스택 * 1%"
     },
-
     {
         id: "mayumi1",
         charName: "마유미",
@@ -99,6 +98,25 @@ const penetrateData = [
         value: 11.4,
         duration: "1턴",
         note: "스킬3 추가턴 메인 목표"
+    },
+    {
+        id: "mayumi0",
+        charName: "",
+        charImage: "",
+        type: "의식0",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "급속 상승",
+        options: ["1레벨","2레벨","3레벨"],
+        values: {
+            "1레벨": 5.0,
+            "2레벨": 10.0,
+            "3레벨": 15.0
+        },
+        defaultOption: "3레벨",
+        value: 15.0,
+        duration: "-",
+        note: ""
     },
     {
         id: "mayumi3",

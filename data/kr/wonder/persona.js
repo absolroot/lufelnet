@@ -1197,5 +1197,62 @@ const personaData = {
             {name : "마도의 재능", priority: 0 },
             {name : "화염 강화", priority: 0}
         ]
+    },
+    "기리메칼라": {
+        grade: "5",
+        star: "3",
+        position: "방위",
+        element: "물리",
+        instinct: {
+            name: "코끼리의 응시 II",
+            effects: [
+                "효과저항이 17.4% 증가한다.",
+                "모든 동료가 디버프 효과를 가진 적에게 받는 대미지가 20% 감소한다."
+            ],
+            priority: 0
+        },
+        uniqueSkill: {
+            name: "마하타쿤다",
+            effect: "3턴 동안 모든 적의 공격력이 18.1% 감소한다.",
+            priority: 0,
+            icon: "디버프광역"
+        },
+        highlight: {
+            effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
+            priority: 0
+        },
+        recommendSkill : [
+        ]
+    },
+    "쿠 훌린": {
+        grade: "7",
+        star: "5",
+        position: "반항",
+        element: "물리",
+        instinct: {
+            name: "포효하는 맹견 III",
+            effects: [
+                "크리티컬 확률이 17.5% 중가한다.",
+                "크리티컬 시 적에게 「치명덫」을 추가하고, 다음 고유 스킬 공격으로 표식을 폭발시켜 스킬 대미지가 공격력의 87%만큼 추가 증가한다. 표식 폭발 시 낮은 확률로 즉사 효과가 발동된다."
+            ],
+            priority: 0
+        },
+        uniqueSkill: {
+            name: "가시창",
+            effect: "공격력 174.0%의 물리 대미지를 1단계 주며, 공격을 받은 적에게 디버프가 1중첩 있을 때마다 해당 스킬 크리티컬 확률이 4% 증가한다. 크리티컬 버프는 최대 20%까지 획득한다.",
+            priority: 0,
+            icon: "물리"
+        },
+        highlight: {
+            effect: "1명의 적에게 공격력 360.0%의 물리 대미지를 준다.",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "공격 강화", priority: 0 },
+            {name : "어드바이스", priority: 0 },
+            {name : "정교한 타격", priority: 0 },
+            {name : "마도의 재능", priority: 0 },
+            {name : "물리 강화", priority: 0 },
+        ]
     }
 };

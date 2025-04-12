@@ -1,0 +1,106 @@
+---
+layout: default
+custom_css: [pay-calc]
+custom_js: [pay-calc]
+custom_data: [calc/pay-data.js]
+permalink: /kr/pay-calc/
+language: kr
+title : 과금 계산기 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X 과금 계산기
+---
+
+<!-- main contents -->
+<div class="main-wrapper">
+    <!-- navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">과금 계산</span>
+    </div>
+    <div class="header-container">
+        <h1>과금 계산기</h1>
+    </div>
+    
+    <!-- top cards -->
+    <div class="top-cards">
+        <!-- 총 구매 가격 -->
+        <div class="total-card card-style">
+            <h2>총 구매 가격</h2>
+            <div class="total-value" id="totalPrice">0원</div>
+            <div class="total-description">할인 적용 후 금액</div>
+        </div>
+
+        <!-- 엠버 1개당 가격 -->
+        <div class="total-card card-style">
+            <h2>엠버 1개당</h2>
+            <div class="total-value" id="pricePerAmber">0원</div>
+            <div class="total-description">모든 재화 포함</div>
+        </div>
+
+        <!-- 엠버 1개당 가격 (미래의 운명 제외) -->
+        <div class="total-card card-style">
+            <h2>엠버 1개당</h2>
+            <div class="total-value" id="pricePerAmberExcludeFuture">0원</div>
+            <div class="total-description">미래의 운명 제외</div>
+        </div>
+        
+        <!-- 총 재화 -->
+        <div class="total-card card-style">
+            <h2>총 획득 재화</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">
+                    <span id="totalCrystal">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버">
+                    <span id="totalAmber">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명">
+                    <span id="totalDestiny">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인">
+                    <span id="totalDestinyCoins">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명">
+                    <span id="totalFutureDestiny">0개</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 패키지 테이블 -->
+    <div class="package-table-container card-style">
+        <table class="package-table">
+            <thead>
+                <tr>
+                    <th class="check-column">선택</th>
+                    <th class="img-column">이미지</th>
+                    <th>패키지명</th>
+                    <th>가격</th>
+                    <th><img src="/assets/img/pay/이계 수정.png" alt="이계 수정" class="resource-icon"></th>
+                    <th><img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버" class="resource-icon"></th>
+                    <th><img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="resource-icon"></th>
+                    <th><img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="resource-icon"></th>
+                    <th><img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="resource-icon"></th>
+                    <th>수량</th>
+                    <th>할인</th>
+                </tr>
+            </thead>
+            <tbody id="packageTableBody">
+                <!-- JavaScript로 생성됨 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('pay-calc');
+        VersionChecker.check();
+    });
+</script>
+

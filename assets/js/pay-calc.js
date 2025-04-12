@@ -1,0 +1,160 @@
+class PayCalculator {
+    constructor() {
+        this.initializeTable();
+        this.bindEvents();
+        this.updateTotals();
+    }
+
+    initializeTable() {
+        const tbody = document.getElementById('packageTableBody');
+        PAY_DATA.packages.forEach((pkg, index) => {
+            const tr = document.createElement('tr');
+            
+            // 모바일용 재화 HTML 생성
+            const resourcesHtml = [
+                { value: pkg.crystal, icon: '이계 수정' },
+                { value: pkg.amber, icon: '이계 엠버' },
+                { value: pkg.destiny, icon: '정해진 운명' },
+                { value: pkg.destinyCoins, icon: '정해진 코인' },
+                { value: pkg.destiny_future, icon: '미래의 운명' }
+            ].filter(r => r.value)
+             .map(r => `<span class="resource-mobile-item">
+                         <img src="/assets/img/pay/${r.icon}.png" alt="${r.icon}" class="resource-mobile-icon">
+                         ${r.value}
+                       </span>`)
+             .join(' ');
+
+            tr.innerHTML = `
+                <td class="check-column">
+                    <img src="/assets/img/ui/check-off.png" class="checkbox-img" data-index="${index}">
+                </td>
+                <td class="img-column">
+                    <img src="/assets/img/pay/${pkg.name}.png" alt="${pkg.name}" class="package-img">
+                </td>
+                <td class="name-column">${pkg.name}</td>
+                <td class="price-value mobile-price">${this.formatPrice(pkg.price)}원</td>
+                <td class="value-column resource-value">${pkg.crystal || '-'}</td>
+                <td class="value-column resource-value">${pkg.amber || '-'}</td>
+                <td class="value-column resource-value">${pkg.destiny || '-'}</td>
+                <td class="value-column resource-value">${pkg.destinyCoins || '-'}</td>
+                <td class="value-column resource-value">${pkg.destiny_future || '-'}</td>
+                <td class="count-column">
+                    ${(pkg.maxCount || 1) > 1 ? 
+                        `<select class="count-select" data-index="${index}">
+                            ${this.generateCountOptions(pkg.maxCount)}
+                        </select>` : 
+                        '-'
+                    }
+                </td>
+                <td class="discount-column">
+                    <select class="discount-select" data-index="${index}">
+                        ${this.generateDiscountOptions()}
+                    </select>
+                </td>
+                <td class="resources-mobile">${resourcesHtml}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    generateCountOptions(maxCount) {
+        let options = '';
+        for (let i = 1; i <= maxCount; i++) {
+            options += `<option value="${i}">${i}개</option>`;
+        }
+        return options;
+    }
+
+    generateDiscountOptions() {
+        return PAY_DATA.discountOptions.map(option => 
+            `<option value="${option.value}" data-type="${option.type}">${option.label}</option>`
+        ).join('');
+    }
+
+    formatPrice(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    calculateDiscount(price, discountOption) {
+        const value = parseInt(discountOption.value);
+        const type = discountOption.dataset.type;
+        
+        if (type === 'fixed') {
+            return Math.max(0, price - value);
+        } else if (type === 'percent') {
+            return Math.round(price * (100 - value) / 100);
+        }
+        return price;
+    }
+
+    updateTotals() {
+        let totalPrice = 0;
+        let totalCrystal = 0;
+        let totalAmber = 0;
+        let totalDestiny = 0;
+        let totalDestinyCoins = 0;
+        let totalFutureDestiny = 0;
+
+        document.querySelectorAll('.checkbox-img').forEach((checkbox, index) => {
+            const isChecked = checkbox.src.includes('check-on.png');
+            const tr = checkbox.closest('tr');
+            
+            if (isChecked) {
+                const pkg = PAY_DATA.packages[index];
+                const countSelect = document.querySelector(`.count-select[data-index="${index}"]`);
+                const count = countSelect ? parseInt(countSelect.value) : 1;
+                const discountOption = document.querySelector(`.discount-select[data-index="${index}"]`).selectedOptions[0];
+                
+                const price = this.calculateDiscount(pkg.price, discountOption);
+                totalPrice += price * count;
+                
+                if (pkg.crystal) totalCrystal += pkg.crystal * count;
+                if (pkg.amber) totalAmber += pkg.amber * count;
+                if (pkg.destiny) totalDestiny += pkg.destiny * count;
+                if (pkg.destinyCoins) totalDestinyCoins += pkg.destinyCoins * count;
+                if (pkg.destiny_future) totalFutureDestiny += pkg.destiny_future * count;
+            }
+            
+            tr.classList.toggle('selected', isChecked);
+        });
+
+        // 총 엠버 환산 값 계산
+        const totalAmberValue = totalCrystal + totalAmber + (totalDestiny * 150) + (totalDestinyCoins * 100) + (totalFutureDestiny * 150);
+        const totalAmberValueExcludeFuture = totalCrystal + totalAmber + (totalDestiny * 150) + (totalDestinyCoins * 100);
+
+        // 엠버 1개당 가격 계산
+        const pricePerAmber = totalAmberValue > 0 ? totalPrice / totalAmberValue : 0;
+        const pricePerAmberExcludeFuture = totalAmberValueExcludeFuture > 0 ? totalPrice / totalAmberValueExcludeFuture : 0;
+
+        document.getElementById('totalPrice').textContent = this.formatPrice(totalPrice) + '원';
+        document.getElementById('totalCrystal').textContent = this.formatPrice(totalCrystal) + '개';
+        document.getElementById('totalAmber').textContent = this.formatPrice(totalAmber) + '개';
+        document.getElementById('totalDestiny').textContent = totalDestiny + '개';
+        document.getElementById('totalDestinyCoins').textContent = totalDestinyCoins + '개';
+        document.getElementById('totalFutureDestiny').textContent = totalFutureDestiny + '개';
+        
+        // 엠버 1개당 가격 표시
+        document.getElementById('pricePerAmber').textContent = this.formatPrice(Math.round(pricePerAmber * 100) / 100) + '원';
+        document.getElementById('pricePerAmberExcludeFuture').textContent = this.formatPrice(Math.round(pricePerAmberExcludeFuture * 100) / 100) + '원';
+    }
+
+    bindEvents() {
+        document.querySelectorAll('.checkbox-img').forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                const isChecked = checkbox.src.includes('check-on.png');
+                checkbox.src = `/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
+                const tr = checkbox.closest('tr');
+                tr.classList.toggle('selected', !isChecked);
+                this.updateTotals();
+            });
+        });
+
+        document.querySelectorAll('.count-select, .discount-select').forEach(element => {
+            element.addEventListener('change', () => this.updateTotals());
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new PayCalculator();
+}); 

@@ -1,0 +1,481 @@
+.main-wrapper {
+    box-sizing: border-box;
+}
+
+.navigation-path {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.navigation-path a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+}
+
+.navigation-path .separator {
+    margin: 0 8px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.navigation-path .current-page {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.header-container {
+    margin-bottom: 30px;
+}
+
+.header-container h1 {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+/* 카드 스타일 */
+.card-style {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* 상단 카드 컨테이너 */
+.top-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 0px 20px 0px 20px;
+}
+
+.total-card:last-child {
+    grid-column: span 1;
+}
+
+.total-card {
+    padding: 10px 20px 10px 20px;
+    text-align: left;
+    background-color: #3d3030;
+    border-radius: 10px;
+}
+
+.top-cards h2 {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+}
+
+.total-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #dd8484;
+    margin: 10px 0px 15px 0px;
+}
+
+.total-description {
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* 패키지 테이블 */
+.package-table-container {
+    overflow-x: auto;
+    margin: 0 20px;
+    padding: 20px 20px 30px 20px;
+    border-radius: 10px;
+    background-color: #3d3030;
+}
+
+.package-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.package-table th,
+.package-table td {
+    font-size: 13px;
+    padding: 10px;
+    color: rgb(255, 255, 255, 0.4);
+    height: 30px;
+}
+
+.package-table tr {
+    min-height: 30px;
+}
+
+/* 체크박스 스타일 */
+.check-column {
+    width: 30px;
+}
+
+img[src*="check-off.png"] {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+img[src*="check-on.png"] {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: contain !important;
+    transform: translateX(-1px) translateY(-0.5px);
+    cursor: pointer;
+}
+
+/* 이미지 스타일 */
+.img-column {
+    width: 80px;
+}
+
+.package-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* 드롭다운 스타일 */
+.count-select,
+.discount-select {
+    font-size: 12px;
+    background-color: rgb(0, 0, 0, 0.1);
+    color: rgb(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    min-width: fit-content;
+    padding: 8px 4px !important;
+}
+
+/* 옵션 스타일링 */
+select option {
+    background-color: #3d3030;
+    color: rgb(255, 255, 255, 0.8);
+}
+
+/* 선택된 옵션 스타일링 */
+select option:checked {
+    background-color: #4d3e3e;
+}
+
+/* 호버 상태 스타일링 */
+select option:hover {
+    background-color: #4d3e3e;
+}
+
+/* Firefox에서 옵션 배경색 강제 적용 */
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 rgb(255, 255, 255, 0.8);
+}
+
+/* 테이블 헤더 스타일 */
+.package-table th {
+    padding: 10px 8px 15px 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 800;
+}
+
+/* 재화 값 중앙 정렬 */
+.resource-value {
+    text-align: center !important;
+}
+
+/* 가격 텍스트 스타일 */
+.price-value {
+    color: rgb(255, 255, 255, 0.4);
+}
+
+/* 테이블 행 구분선 */
+.package-table tr:not(:first-child) td {
+    border-top: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.package-table tr:first-child td {
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+}
+
+.package-table tr:last-child td {
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+/* 선택된 행의 스타일 */
+.package-table tr.selected td {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.package-table tr.selected .value-column {
+    color: #dd8484 !important;
+}
+
+.package-table tr.selected .price-value {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: bold;
+}
+
+/* 기타 재화 그룹 스타일 */
+.total-value-group {
+    font-size: 18px;
+    color: #dd8484;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.total-value-group div {
+    margin: 5px 0;
+}
+
+/* 리소스 그리드 스타일 */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 15px 0px 15px 0px;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #dd8484;
+    font-size: 16px;
+}
+
+.resource-item img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* 테이블 헤더 아이콘 */
+.resource-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 테이블 열 너비 조정 */
+.package-table th:nth-child(3),
+.package-table td:nth-child(3) {
+    width: 150px;
+    max-width: 150px;
+}
+
+.package-table th:nth-child(5),
+.package-table td:nth-child(5),
+.package-table th:nth-child(6),
+.package-table td:nth-child(6),
+.package-table th:nth-child(7),
+.package-table td:nth-child(7),
+.package-table th:nth-child(8),
+.package-table td:nth-child(8),
+.package-table th:nth-child(9),
+.package-table td:nth-child(9)
+{
+    width: 80px;
+    max-width: 80px;
+}
+
+.package-table th:nth-child(10),
+.package-table td:nth-child(10) {
+    width: 60px;
+    min-width: 60px;
+    white-space: nowrap;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.package-table th:nth-child(11),
+.package-table td:nth-child(11) {
+    width: 1%;
+    white-space: nowrap;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/* 모바일 재화 표시 스타일 */
+.resources-mobile {
+    display: none;
+}
+
+.resource-mobile-item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 12px;
+    color: #dd8484;
+}
+
+.resource-mobile-item:last-child {
+    margin-right: 0;
+}
+
+.resource-mobile-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+/* 모바일 가격 스타일 */
+.mobile-price {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .navigation-path, .header-container, .top-cards {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .top-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .total-card:last-child {
+        grid-column: span 2;
+    }
+
+    .package-table-container {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+    }
+
+    .package-table {
+        display: block;
+        padding-top: 8px;
+    }
+
+    .package-table thead {
+        display: none;
+    }
+
+    .package-table tbody {
+        display: block;
+    }
+
+    .package-table tr {
+        display: grid;
+        grid-template-areas:
+            "check img name name"
+            "price price price price"
+            "resources resources resources resources"
+            "count discount discount discount";
+        grid-template-columns: auto 80px 1fr 1fr;
+        gap: 8px;
+        padding: 12px;
+        margin: 0 0 8px 0px;
+        background: rgba(221, 132, 132, 0.1);
+        border-radius: 8px;
+    }
+
+    .package-table td {
+        padding: 0px;
+        border: none !important;
+    }
+
+    .check-column { grid-area: check; }
+    .img-column { grid-area: img; }
+    td:nth-child(3) { grid-area: name; }
+    td:nth-child(4) { 
+        grid-area: price;
+        text-align: right;
+        padding-right: 8px;
+    }
+    td:nth-child(10) { grid-area: count; }
+    td:nth-child(11) { grid-area: discount; }
+    td:nth-child(12) { grid-area: resources; }
+
+    .package-img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .total-value-group {
+        font-size: 16px;
+    }
+
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .resource-item {
+        font-size: 14px;
+    }
+
+    .resource-item img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* 체크박스 이미지 크기 */
+    img[src*="check-off.png"],
+    img[src*="check-on.png"] {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* 선택된 행 스타일 */
+    .package-table tr.selected {
+        background: rgba(221, 132, 132, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .resource-value {
+        text-align: left !important;
+    }
+
+    .package-table td:nth-child(10),
+    .package-table td:nth-child(11) {
+        width: auto;
+        white-space: normal;
+    }
+
+    .count-select,
+    .discount-select {
+        width: 100%;
+    }
+
+    .resources-mobile {
+        display: block;
+        grid-area: resources;
+        padding: 8px 0;
+    }
+
+    /* 데스크톱 전용 재화 열 숨기기 */
+    td:nth-child(5),
+    td:nth-child(6),
+    td:nth-child(7),
+    td:nth-child(8),
+    td:nth-child(9) {
+        display: none;
+    }
+
+    .name-column {
+        font-size: 14px;
+        padding-top: 2px !important;
+    }
+
+    .mobile-price {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        margin-bottom: 4px;
+    }
+
+    .package-table tr.selected .mobile-price {
+        border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+    }
+} 

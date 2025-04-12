@@ -478,4 +478,28 @@ select:-moz-focusring {
     .package-table tr.selected .mobile-price {
         border-bottom-color: rgba(255, 255, 255, 0.2) !important;
     }
+
+    /* 데스크톱 전용 재화 열 숨기기 */
+    .resource-with-icon {
+        display: none;
+    }
+} 
+
+/* 테이블 내 자원 표시 스타일 */
+.resource-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.resource-table-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+/* 선택된 행의 스타일 */
+.package-table tr.selected .resource-with-icon {
+    color: #dd8484;
 } 

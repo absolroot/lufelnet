@@ -24,6 +24,15 @@ class PayCalculator {
                        </span>`)
              .join(' ');
 
+            // 재화 값과 아이콘 HTML 생성 함수
+            const getResourceHtml = (value, icon) => {
+                if (!value || value === '-') return '-';
+                return `<div class="resource-with-icon">
+                    <img src="/assets/img/pay/${icon}.png" alt="${icon}" class="resource-table-icon">
+                    <span>${value}</span>
+                </div>`;
+            };
+
             tr.innerHTML = `
                 <td class="check-column">
                     <img src="/assets/img/ui/check-off.png" class="checkbox-img" data-index="${index}">
@@ -33,11 +42,11 @@ class PayCalculator {
                 </td>
                 <td class="name-column">${pkg.name}</td>
                 <td class="price-value mobile-price">${this.formatPrice(pkg.price)}원</td>
-                <td class="value-column resource-value">${pkg.crystal || '-'}</td>
-                <td class="value-column resource-value">${pkg.amber || '-'}</td>
-                <td class="value-column resource-value">${pkg.destiny || '-'}</td>
-                <td class="value-column resource-value">${pkg.destinyCoins || '-'}</td>
-                <td class="value-column resource-value">${pkg.destiny_future || '-'}</td>
+                <td class="value-column resource-value">${getResourceHtml(pkg.crystal, '이계 수정')}</td>
+                <td class="value-column resource-value">${getResourceHtml(pkg.amber, '이계 엠버')}</td>
+                <td class="value-column resource-value">${getResourceHtml(pkg.destiny, '정해진 운명')}</td>
+                <td class="value-column resource-value">${getResourceHtml(pkg.destinyCoins, '정해진 코인')}</td>
+                <td class="value-column resource-value">${getResourceHtml(pkg.destiny_future, '미래의 운명')}</td>
                 <td class="count-column">
                     ${(pkg.maxCount || 1) > 1 ? 
                         `<select class="count-select" data-index="${index}">

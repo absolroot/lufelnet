@@ -10,6 +10,36 @@ class PayCalculator {
         PAY_DATA.packages.forEach((pkg, index) => {
             const tr = document.createElement('tr');
             
+            // 엠버 효율 계산
+            const calculateEfficiency = (pkg) => {
+                const amberValue = (pkg.crystal || 0) + (pkg.amber || 0) + 
+                                 (pkg.destiny || 0) * 150 + 
+                                 (pkg.destinyCoins || 0) * 100 + 
+                                 (pkg.destiny_future || 0) * 150;
+                const amberValueExcludeFuture = (pkg.crystal || 0) + (pkg.amber || 0) + 
+                                              (pkg.destiny || 0) * 150 + 
+                                              (pkg.destinyCoins || 0) * 100;
+                
+                if (amberValue === 0) return { withFuture: 0, withoutFuture: 0 };
+                
+                const pricePerAmber = pkg.price / amberValue;
+                const pricePerAmberExcludeFuture = amberValueExcludeFuture > 0 ? 
+                    pkg.price / amberValueExcludeFuture : 0;
+                
+                return {
+                    withFuture: Math.round(pricePerAmber * 100) / 100,
+                    withoutFuture: Math.round(pricePerAmberExcludeFuture * 100) / 100
+                };
+            };
+
+            const efficiency = calculateEfficiency(pkg);
+            const efficiencyText = efficiency.withFuture === 0 ? '' : 
+                efficiency.withFuture === efficiency.withoutFuture ?
+                    `<div class="efficiency-pc">(${this.formatPrice(efficiency.withFuture)}원)</div>
+                     <div class="efficiency-mobile">(${this.formatPrice(efficiency.withFuture)}원)</div>` :
+                    `<div class="efficiency-pc">(${this.formatPrice(efficiency.withFuture)}원/${this.formatPrice(efficiency.withoutFuture)}원)</div>
+                     <div class="efficiency-mobile">(${this.formatPrice(efficiency.withFuture)}원/${this.formatPrice(efficiency.withoutFuture)}원)</div>`;
+
             // 모바일용 재화 HTML 생성
             const resourcesHtml = [
                 { value: pkg.crystal, icon: '이계 수정' },
@@ -41,7 +71,10 @@ class PayCalculator {
                     <img src="/assets/img/pay/${pkg.name}.png" alt="${pkg.name}" class="package-img">
                 </td>
                 <td class="name-column">${pkg.name}</td>
-                <td class="price-value mobile-price">${this.formatPrice(pkg.price)}원</td>
+                <td class="price-value mobile-price">
+                    <div class="price-main">${this.formatPrice(pkg.price)}원</div>
+                    ${efficiencyText}
+                </td>
                 <td class="value-column resource-value">${getResourceHtml(pkg.crystal, '이계 수정')}</td>
                 <td class="value-column resource-value">${getResourceHtml(pkg.amber, '이계 엠버')}</td>
                 <td class="value-column resource-value">${getResourceHtml(pkg.destiny, '정해진 운명')}</td>

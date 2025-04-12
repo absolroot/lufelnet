@@ -93,7 +93,7 @@ const PAY_DATA = {
             destiny: 20,
             destinyCoins: 20,
             price: 62000,
-            maxCount: 2
+            maxCount: 1
         },
         {
             name: "일일 소원 복주머니",

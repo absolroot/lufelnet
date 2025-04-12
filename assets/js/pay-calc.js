@@ -3,6 +3,7 @@ class PayCalculator {
         this.initializeTable();
         this.bindEvents();
         this.updateTotals();
+        this.initializeCheckboxes();
     }
 
     initializeTable() {
@@ -137,7 +138,7 @@ class PayCalculator {
         let totalDestinyCoins = 0;
         let totalFutureDestiny = 0;
 
-        document.querySelectorAll('.checkbox-img').forEach((checkbox, index) => {
+        document.querySelectorAll('.checkbox-img[data-index]').forEach((checkbox, index) => {
             const isChecked = checkbox.src.includes('check-on.png');
             const tr = checkbox.closest('tr');
             
@@ -160,15 +161,59 @@ class PayCalculator {
             tr.classList.toggle('selected', isChecked);
         });
 
+        // 정해진 운명 ALL 변환
+        if (document.getElementById('destinyAllCheckbox').checked) {
+            const totalValue = totalCrystal + totalAmber;
+            const convertedDestiny = Math.floor(totalValue / 150);
+            const remainder = totalValue % 150;
+            
+            totalDestiny += convertedDestiny;
+            if (remainder > 0) {
+                if (totalCrystal >= remainder) {
+                    totalCrystal = remainder;
+                    totalAmber = 0;
+                } else {
+                    totalAmber = remainder - totalCrystal;
+                }
+            } else {
+                totalCrystal = 0;
+                totalAmber = 0;
+            }
+        }
+
+        // 정해진 코인 ALL 변환
+        if (document.getElementById('coinsAllCheckbox').checked) {
+            const totalValue = totalCrystal + totalAmber;
+            const convertedCoins = Math.floor(totalValue / 100);
+            const remainder = totalValue % 100;
+            
+            totalDestinyCoins += convertedCoins;
+            if (remainder > 0) {
+                if (totalCrystal >= remainder) {
+                    totalCrystal = remainder;
+                    totalAmber = 0;
+                } else {
+                    totalAmber = remainder - totalCrystal;
+                }
+            } else {
+                totalCrystal = 0;
+                totalAmber = 0;
+            }
+        }
+
+        // 페이백 적용
+        const finalPrice = document.getElementById('paybackCheckbox').checked ? 
+            Math.round(totalPrice * 0.7) : totalPrice;
+
         // 총 엠버 환산 값 계산
         const totalAmberValue = totalCrystal + totalAmber + (totalDestiny * 150) + (totalDestinyCoins * 100) + (totalFutureDestiny * 150);
         const totalAmberValueExcludeFuture = totalCrystal + totalAmber + (totalDestiny * 150) + (totalDestinyCoins * 100);
 
         // 엠버 1개당 가격 계산
-        const pricePerAmber = totalAmberValue > 0 ? totalPrice / totalAmberValue : 0;
-        const pricePerAmberExcludeFuture = totalAmberValueExcludeFuture > 0 ? totalPrice / totalAmberValueExcludeFuture : 0;
+        const pricePerAmber = totalAmberValue > 0 ? finalPrice / totalAmberValue : 0;
+        const pricePerAmberExcludeFuture = totalAmberValueExcludeFuture > 0 ? finalPrice / totalAmberValueExcludeFuture : 0;
 
-        document.getElementById('totalPrice').textContent = this.formatPrice(totalPrice) + '원';
+        document.getElementById('totalPrice').textContent = this.formatPrice(finalPrice) + '원';
         document.getElementById('totalCrystal').textContent = this.formatPrice(totalCrystal) + '개';
         document.getElementById('totalAmber').textContent = this.formatPrice(totalAmber) + '개';
         document.getElementById('totalDestiny').textContent = totalDestiny + '개';
@@ -193,6 +238,35 @@ class PayCalculator {
 
         document.querySelectorAll('.count-select, .discount-select').forEach(element => {
             element.addEventListener('change', () => this.updateTotals());
+        });
+    }
+
+    initializeCheckboxes() {
+        // 페이백 체크박스 이벤트
+        const paybackCheckbox = document.getElementById('paybackCheckbox');
+        const paybackCheckImg = document.getElementById('paybackCheckImg');
+        
+        paybackCheckbox.addEventListener('change', () => {
+            paybackCheckImg.src = `/assets/img/ui/check-${paybackCheckbox.checked ? 'on' : 'off'}.png`;
+            this.updateTotals();
+        });
+
+        // 정해진 운명 ALL 체크박스 이벤트
+        const destinyAllCheckbox = document.getElementById('destinyAllCheckbox');
+        const destinyAllCheckImg = document.getElementById('destinyAllCheckImg');
+        
+        destinyAllCheckbox.addEventListener('change', () => {
+            destinyAllCheckImg.src = `/assets/img/ui/check-${destinyAllCheckbox.checked ? 'on' : 'off'}.png`;
+            this.updateTotals();
+        });
+
+        // 정해진 코인 ALL 체크박스 이벤트
+        const coinsAllCheckbox = document.getElementById('coinsAllCheckbox');
+        const coinsAllCheckImg = document.getElementById('coinsAllCheckImg');
+        
+        coinsAllCheckbox.addEventListener('change', () => {
+            coinsAllCheckImg.src = `/assets/img/ui/check-${coinsAllCheckbox.checked ? 'on' : 'off'}.png`;
+            this.updateTotals();
         });
     }
 }

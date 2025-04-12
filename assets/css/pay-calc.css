@@ -1,5 +1,3 @@
-
-
 .navigation-path {
     margin-bottom: 20px;
     font-size: 14px;
@@ -18,16 +16,6 @@
 .navigation-path .current-page {
     color: rgba(255, 255, 255, 0.8);
     font-weight: bold;
-}
-
-.header-container {
-    margin-bottom: 30px;
-}
-
-.header-container h1 {
-    font-size: 24px;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
 }
 
 /* 카드 스타일 */
@@ -77,6 +65,15 @@
     margin-top: 14px;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.description-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
 }
 
 /* 패키지 테이블 */
@@ -120,10 +117,10 @@ img[src*="check-off.png"] {
 }
 
 img[src*="check-on.png"] {
-    width: 25px !important;
-    height: 25px !important;
+    width: 24px !important;
+    height: 24px !important;
     object-fit: contain !important;
-    transform: translateX(-1px) translateY(-0.5px);
+    transform: translateX(1px) translateY(-0.5px);
     cursor: pointer;
 }
 
@@ -553,4 +550,82 @@ select:-moz-focusring {
 .package-table tr.selected .efficiency-pc,
 .package-table tr.selected .efficiency-mobile {
     color: rgba(255, 255, 255, 0.6);
+}
+
+/* 카드 헤더 스타일 */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card-header h2 {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+}
+
+/* 체크박스 컨테이너 스타일 */
+.payback-checkbox,
+.convert-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.payback-checkbox input[type="checkbox"],
+.convert-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-img {
+    width: 20px;
+    height: 20px;
+    min-width: 24px;
+    min-height: 24px;
+    object-fit: none;
+    opacity: 0.6;
+    padding: 2.5px;
+    box-sizing: border-box;
+}
+
+img[src*="check-on.png"].checkbox-img {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
+
+.convert-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+/* ALL 변환 컨트롤 스타일 */
+.all-convert-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.convert-checkbox {
+    padding: 2px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .all-convert-controls {
+        width: 100%;
+        justify-content: flex-end;
+    }
 } 

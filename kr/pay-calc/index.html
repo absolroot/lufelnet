@@ -25,7 +25,14 @@ description: 페르소나5 더 팬텀 X 과금 계산기
     <div class="top-cards">
         <!-- 총 구매 가격 -->
         <div class="total-card card-style">
-            <h2>총 구매 가격</h2>
+            <div class="card-header">
+                <h2>총 금액</h2>
+                <label class="payback-checkbox">
+                    <input type="checkbox" id="paybackCheckbox">
+                    <img src="/assets/img/ui/check-off.png" class="checkbox-img" id="paybackCheckImg">
+                    <span>페이백 30%</span>
+                </label>
+            </div>
             <div class="total-value" id="totalPrice">0원</div>
             <div class="total-description">할인 적용 후 금액</div>
         </div>
@@ -41,12 +48,31 @@ description: 페르소나5 더 팬텀 X 과금 계산기
         <div class="total-card card-style">
             <h2>엠버 1개당</h2>
             <div class="total-value" id="pricePerAmberExcludeFuture">0원</div>
-            <div class="total-description">미래의 운명 제외</div>
+            <div class="total-description">
+                <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="description-icon">
+                미래의 운명 제외
+            </div>
         </div>
         
         <!-- 총 재화 -->
         <div class="total-card card-style">
-            <h2>총 획득 재화</h2>
+            <div class="card-header">
+                <h2>총 획득 재화</h2>
+                <div class="all-convert-controls">
+                    <label class="convert-checkbox">
+                        <img src="/assets/img/ui/check-off.png" class="checkbox-img" id="destinyAllCheckImg">
+                        <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="convert-icon">
+                        <span>ALL</span>
+                        <input type="checkbox" id="destinyAllCheckbox">
+                    </label>
+                    <label class="convert-checkbox">
+                        <img src="/assets/img/ui/check-off.png" class="checkbox-img" id="coinsAllCheckImg">
+                        <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="convert-icon">
+                        <span>ALL</span>
+                        <input type="checkbox" id="coinsAllCheckbox">
+                    </label>
+                </div>
+            </div>
             <div class="resources-grid">
                 <div class="resource-item">
                     <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">

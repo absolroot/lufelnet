@@ -486,6 +486,18 @@ input, textarea {
     transform: translateX(8%) translateY(15%) scale(1.05);
 }
 
+.persona-img[src*="쿠 훌린.webp"] {  
+    transform: translateX(5%) translateY(5%);
+}
+
+.persona-img[src*="기리메칼라.webp"] {  
+    transform: translateX(0%) translateY(-5%);
+}
+
+.persona-img[src*="야타가라스.webp"] {  
+    transform: translateX(5%) translateY(15%);
+}
+
 .persona-detail-container {
     width: 100%;
     display: flex;

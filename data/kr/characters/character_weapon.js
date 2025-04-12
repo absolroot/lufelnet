@@ -18,6 +18,45 @@ const WeaponData = {
             "description": ""
         }
     },
+    "이케나미": {
+        "name": "이케나미 쇼키",
+        "weapon4-1":{
+            "name": "4성 무기",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "4성 무기 스킬",
+            "description": "업데이트 예정"
+        },
+        "weapon5-1":{
+            "name": "5성 무기",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "5성 무기 스킬",
+            "description": "업데이트 예정"
+        }
+    },
+    "마나카": {
+        "name": "나가오 마나카",
+        "weapon4-1":{
+            "name": "4성 무기",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "4성 무기 스킬",
+            "description": "업데이트 예정"
+        },
+        "weapon5-1":{
+            "name": "5성 무기",
+            "health": 0, 
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "5성 무기 스킬",
+            "description": "업데이트 예정"
+        }
+    },
+    
     "마유미": {
         "name": "하시모토 마유미",
         "weapon4-1":{

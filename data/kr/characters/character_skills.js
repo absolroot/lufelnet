@@ -2,6 +2,88 @@ const characterSkillsData = {
     "원더": {
         "name": "원더"
     },
+    "이케나미": {
+        "name": "이케나미 쇼키",
+        "skill1": {
+            "name": "-",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 0,
+            "cool": 0,
+            "description": "-"
+        },
+        "skill2": {
+            "name": "-",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 0,
+            "cool": 0,
+            "description": "-"
+        },
+        "skill3": {
+            "name": "-",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 0,
+            "cool": 0,
+            "description": "-"
+        },
+        "skill_highlight": {
+            "name": "-",
+            "element": "버프광역",
+            "type": "버프",
+            "description": "-"
+        },
+        "passive1": {
+            "name": "-",
+            "element": "패시브",
+            "description": "-"
+        },
+        "passive2": {
+            "name": "-",
+            "element": "패시브",
+            "description": "-"
+        }
+    },
+    "마나카": {
+        "name": "나가오 마나카",
+        "skill1": {
+            "name": "-",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 0,
+            "description": "-"
+        },
+        "skill2": {
+            "name": "치유 빛의 노래",
+            "element": "치료광역",
+            "type": "치료",
+            "cool": 0,
+            "description": "-"
+        },
+        "skill3": {
+            "name": "-",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 0,
+            "description": "-"
+        },
+        "skill_highlight": {
+            "name": "속성 증가",
+            "element": "패시브",
+            "description": "해명 괴도 각 속성의 20%만큼 출전 중인 모든 동료의 상응한 속성 수치가 증가한다."
+        },
+        "passive1": {
+            "name": "-",
+            "element": "패시브",
+            "description": "-"
+        },
+        "passive2": {
+            "name": "-",
+            "element": "패시브",
+            "description": "-"
+        }
+    },
     "마유미": {
         "name": "하시모토 마유미",
         "skill1": {

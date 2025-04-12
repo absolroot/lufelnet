@@ -42,38 +42,38 @@ const PAY_DATA = {
             name: "캐릭터 패키지",
             destiny: 10,
             price: 13000,
-            maxCount: 1
+            maxCount: 2
         },
         {
             name: "캐릭터 패키지 2",
             destiny: 25,
             price: 33000,
-            maxCount: 1
+            maxCount: 2
         },
         {
             name: "캐릭터 패키지 3",
             destiny: 30,
             destiny_future: 3,
             price: 62000,
-            maxCount: 2
+            maxCount: 4
         },
         {
             name: "캐릭터 보급",
             destinyCoins: 10,
             price: 9200,
-            maxCount: 1
+            maxCount: 2
         },
         {
             name: "캐릭터 보급 2",
             destinyCoins: 25,
             price: 22000,
-            maxCount: 1
+            maxCount: 2
         },
         {
             name: "캐릭터 보급 3",
             destinyCoins: 30,
             price: 42000,
-            maxCount: 1
+            maxCount: 2
         },
         {
             name: "7일보급 캐릭터",

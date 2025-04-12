@@ -1,13 +1,13 @@
 /* 상단 카드 컨테이너 */
 .top-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-bottom: 20px;
     padding: 0px 20px 0px 20px;
 }
 
-.stat-card, .boss-card, .damage-card {
+.stat-card {
     padding: 10px 20px 10px 20px;
     text-align: left;
     background-color: #3d3030;
@@ -17,15 +17,8 @@
 .top-cards h2 {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
-    padding : 10px 0px 10px 0px;
-    margin : 0px;
-}
-
-
-.total-critical {
-    margin-bottom: 20px;
-    text-align: left;
-    padding : 0 20px;
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
 }
 
 .total-value {
@@ -39,7 +32,6 @@
     font-size: 12px;
     color: rgba(255, 255, 255, 0.5);
 }
-
 
 .boss-select-container select {
     font-size: 13px;
@@ -73,17 +65,6 @@
     color: #dd8484;
 }
 
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .top-cards {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
-
-
 .critical-table-container {
     overflow-x: auto;
     margin : 0 20px;
@@ -103,12 +84,33 @@
     font-size: 13px;
     padding: 10px;
     color: rgb(255, 255, 255, 0.4);
-    height: 30px;  /* 셀 높이도 지정 */
+    height: 30px;
 }
 
-.critical-table tr {
-    min-height: 30px;
+.critical-table thead th {
+    padding: 10px 8px 15px 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 800;
 }
+
+/* 괴도 이름이 비어있는 행의 스타일 */
+.critical-table tr:not(:first-child) td {
+    border-top: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.critical-table tr.empty-char td {
+    border-top: none;
+}
+
+/* 첫 번째 행은 항상 테두리 표시 */
+.critical-table tr:first-child td {
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+} 
+
+.critical-table tr:last-child td {
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+} 
 
 .skill-name-column {
     color: rgb(247, 243, 243) !important;
@@ -122,7 +124,6 @@
 .check-column {
     width: 30px;
 }
-
 
 .char-img-column img {
     height: 36px;
@@ -144,21 +145,6 @@
     object-fit: contain !important;
 }
 
-
-img[src*="check-off.png"] {
-    width: 20px !important;
-    height: 20px !important;
-    object-fit: contain !important;
-    opacity: 0.6;
-    cursor: pointer;
-}
-img[src*="check-on.png"] {
-    width: 25px !important;
-    height: 25px !important;
-    object-fit: contain !important;
-    transform: translateX(-1px) translateY(-0.5px);
-    cursor: pointer;
-}
 
 .option-column select {
     font-size: 12px;
@@ -212,25 +198,9 @@ select:-moz-focusring {
     border-top: 1px solid rgb(255, 255, 255, 0.5);
 } 
 
-
 .critical-table tr:last-child td {
     border-bottom: 1px solid  rgb(255, 255, 255, 0.2);
 } 
-
-/* 테이블 헤더 스타일 */
-.critical-table th {
-    padding: 10px 8px 15px 8px;  /* 상 우 하 좌 패딩 */
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);  /* 헤더 아래 구분선 추가 */
-    color: rgba(255, 255, 255, 0.6);  /* 헤더 텍스트 색상 */
-    font-weight: 800;  /* 폰트 두께 */
-}
-
-/* 테이블 셀 스타일 */
-.critical-table td {
-    vertical-align: middle;
-    padding: 8px;
-} 
-
 
 /* 광역 또는 단일/광역인 경우 색상 변경 */
 .target-column[data-target="광역"] {
@@ -257,48 +227,211 @@ select:-moz-focusring {
     color: rgba(221, 132, 132) !important;
 } 
 
+/* 크리티컬 입력 컨테이너 스타일 */
+.critical-input-container {
+    padding: 10px 0px 20px 0px;
+    flex-wrap: wrap;
+    display: flex;
+    column-gap: 40px;
+}
+
+.critical-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.critical-input-group label {
+    width: 100px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+.critical-input-group input {
+    width: 100px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #dd8484;
+    font-size: 14px;
+    text-align: right;
+}
+
+.critical-input-group input:focus {
+    outline: none;
+    border-color: #dd8484;
+}
+
+.critical-input-group span {
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+/* 탭 스타일 */
+.table-tabs {
+    margin: 0 20px;
+    padding: 20px;
+    background-color: #3d3030;
+    border-radius: 10px;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 20px;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tab-button.active {
+    color: #dd8484;
+    font-weight: bold;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #dd8484;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
 
 
-/* 모바일 대응을 위한 테이블 스타일 수정 */
+.skill-name-column {
+    color: rgb(247, 243, 243) !important;
+}
+
+.value-column {
+    color: #dd8484 !important;
+    font-weight: bold;
+}
+
+.check-column {
+    width: 30px;
+}
+
+.char-img-column img {
+    height: 36px;
+    border-radius: 25px;
+    object-fit: contain;
+}
+
+.skill-icon-column img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.skill-icon {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+    object-fit: contain !important;
+}
+
+/* 체크박스 이미지 */
+img[src*="check-off.png"] {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+img[src*="check-on.png"] {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: contain !important;
+    transform: translateX(-1px) translateY(-0.5px);
+    cursor: pointer;
+}
+
+
+.skill-icon-column {
+    align-items: center;
+    justify-content: center;
+}
+
+img[src*="item-mind_stat2.png"] {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+    padding: 4px;
+}
+
+
+/* 광역 또는 단일/광역인 경우 색상 변경 */
+.target-column[data-target="광역"] {
+    color: rgb(221, 132, 132, 0.5);  /* 붉은 계열 색상 */
+} 
+.target-column[data-target="단일"] {
+    color: rgba(208, 221, 132, 0.5);  /* 붉은 계열 색상 */
+} 
+
+.target-column[data-target="자신"] {
+    min-width: 40px;
+} 
+
+/* 모바일 대응 */
 @media (max-width: 768px) {
-    .navigation-path, .header-container, .filter-content, .top-cards{
+    .main-wrapper {
+        box-sizing: border-box;
+    }
+    
+    .navigation-path, .header-container, .top-cards {
         padding-left: 0px;
         padding-right: 0px;
     }
 
-    .critical-table-container {
+    .top-cards {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    .table-tabs {
+        margin: 0;
         background-color: transparent;
         padding: 0;
-        margin: 0;
     }
 
-    .critical-table, #criticalTableBody{
-        background-color: none;
+    .tab-buttons {
+        padding: 0;
+        margin-bottom: 10px;
     }
 
-    /* 모바일 헤더 스타일 */
-    .mobile-table-header {
-        display: none;
-        grid-template-columns: auto auto auto auto;
-        gap: 8px;
-        padding: 12px;
-        background: #3d3030;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.6);
+    .tab-button {
+        padding: 10px 15px;
+        font-size: 13px;
     }
 
-    .mobile-header-group {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .mobile-header-group span {
-        white-space: nowrap;
+    .tab-content {
+        padding: 0;
     }
 
     .critical-table {
@@ -317,10 +450,10 @@ select:-moz-focusring {
     .critical-table tr {
         display: grid;
         grid-template-areas:
-            "check char-img char-name char-name"
-            "skill-icon skill-name skill-name value"
-            "none target option duration"
-            "none note note note";
+        "check char-img char-name char-name"
+        "skill-icon skill-name skill-name value"
+        "none target option duration"
+        "none note note note";
         grid-template-columns: 60px 60px 1fr auto;
         gap: 8px;
         padding: 12px;
@@ -330,7 +463,7 @@ select:-moz-focusring {
     }
 
     .critical-table td {
-        padding: 0px;
+        padding: 0;
         border: none !important;
     }
 
@@ -406,28 +539,30 @@ select:-moz-focusring {
         width: 24px;
     }
 
+    /* 모바일 정보 숨김 (JS에서 추가한 부분) */
+    .critical-table td.mobile-info {
+        display: none;
+    }
+
+    .option-column select {
+        width: 100%;
+    }
+
     /* 선택된 행 스타일 */
     .critical-table tr.selected {
         background: rgba(221, 132, 132, 0.2);
-        border : 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-    /* 빈 캐릭터 행 스타일 */
-    .critical-table tr.empty-char {
-        padding-top: 8px;
-    }
-
-    /* 옵션 선택 스타일 */
-    .option-column select {
-        width: 100%;
-        padding: 4px !important;
-    }
-
-    /* note-column에 텍스트가 없으면 display: none; */
-    .note-column:empty {
+    /* 모바일 헤더 숨김 */
+    .mobile-table-header {
         display: none;
     }
-    
+
+    /* type 컬럼 숨김 */
+    .critical-table td.type-column {
+        display: none;
+    }
 
     /* 체크박스 이미지 크기 */
     img[src*="check-off.png"],
@@ -435,8 +570,24 @@ select:-moz-focusring {
         width: 20px !important;
         height: 20px !important;
     }
+
+    .critical-table td.skill-name-column {
+        font-size: 13px;
+    }
+
+    .critical-table td.value-column {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .critical-table td.option-column,
+    .critical-table td.duration-column,
+    .critical-table td.note-column {
+        font-size: 12px;
+    }
 }
 
+/* 모바일 비고 아이콘 */
 @media screen and (max-width: 768px) {
     .note-column:not(:empty)::before {
         content: "💬 ";

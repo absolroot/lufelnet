@@ -9,6 +9,7 @@ title : 과금 계산기 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X 과금 계산기
 ---
 
+
 <!-- main contents -->
 <div class="main-wrapper">
     <!-- navigation path -->
@@ -99,34 +100,89 @@ description: 페르소나5 더 팬텀 X 과금 계산기
     </div>
 
     <!-- 패키지 테이블 -->
-    <div class="package-table-container card-style">
-        <table class="package-table">
-            <thead>
-                <tr>
-                    <th class="check-column">선택</th>
-                    <th class="img-column">이미지</th>
-                    <th>패키지명</th>
-                    <th>가격</th>
-                    <th><img src="/assets/img/pay/이계 수정.png" alt="이계 수정" class="resource-icon"></th>
-                    <th><img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버" class="resource-icon"></th>
-                    <th><img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="resource-icon"></th>
-                    <th><img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="resource-icon"></th>
-                    <th><img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="resource-icon"></th>
-                    <th>수량</th>
-                    <th>할인</th>
-                </tr>
-            </thead>
-            <tbody id="packageTableBody">
-                <!-- JavaScript로 생성됨 -->
-            </tbody>
-        </table>
+    <div class="table-tabs card-style">
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="package">패키지</button>
+            <button class="tab-button" data-tab="crystal">이계 수정</button>
+        </div>
+        
+        <div id="package-tab" class="tab-content active">
+            <div class="table-responsive">
+                <table class="package-table" id="package-table">
+                    <thead>
+                        <tr>
+                            <th class="check-column">선택</th>
+                            <th class="img-column">이미지</th>
+                            <th>패키지명</th>
+                            <th>가격</th>
+                            <th><img src="/assets/img/pay/이계 수정.png" alt="이계 수정" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="resource-icon"></th>
+                            <th>수량</th>
+                            <th>할인</th>
+                        </tr>
+                    </thead>
+                    <tbody id="packageTableBody">
+                        <!-- JavaScript로 생성됨 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="crystal-tab" class="tab-content">
+            <div class="table-responsive">
+                <table class="package-table" id="crystal-table">
+                    <thead>
+                        <tr>
+                            <th class="check-column">선택</th>
+                            <th class="img-column">이미지</th>
+                            <th>패키지명</th>
+                            <th>가격</th>
+                            <th><img src="/assets/img/pay/이계 수정.png" alt="이계 수정" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="resource-icon"></th>
+                            <th>수량</th>
+                            <th>할인</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crystalTableBody">
+                        <!-- JavaScript로 생성됨 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('pay-calc');
         VersionChecker.check();
+
+        // 탭 전환 기능
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // 모든 탭 버튼에서 active 클래스 제거
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 모든 탭 콘텐츠에서 active 클래스 제거
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 클릭된 버튼과 해당 콘텐츠에 active 클래스 추가
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
     });
 </script>
 

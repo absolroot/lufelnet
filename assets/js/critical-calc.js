@@ -1,18 +1,73 @@
-class criticalCalc {
+class CriticalCalc {
     constructor() {
-        this.tableBody = document.getElementById('criticalTableBody');
+        console.log('CriticalCalc constructor');
+        this.buffTableBody = document.getElementById('buffTableBody');
+        this.selfTableBody = document.getElementById('selfTableBody');
         this.totalValue = document.querySelector('.total-value');
-        this.selectedItems = new Set(); // 초기 선택 항목 비움
-        this.initializeTable();
+        this.selectedItems = new Set();
+        
+        this.initializeInputs();
+        this.initializeTabs();
+        this.initializeTables();
         this.initializeMobileHeader();
+
+        // 화면 크기 변경 시 테이블 다시 그리기
+        window.addEventListener('resize', () => {
+            console.log('resize event');
+            this.buffTableBody.innerHTML = '';
+            this.selfTableBody.innerHTML = '';
+            this.initializeTables();
+            this.updateMobileCharNames();
+        });
     }
 
-    initializeTable() {
-        criticalCalcData.forEach(data => {
-            const row = this.createTableRow(data);
-            this.tableBody.appendChild(row);
+    initializeInputs() {
+        this.revelationInput = document.getElementById('revelationCritical');
+        this.explanationInput = document.getElementById('explanationPower');
+        
+        if (this.revelationInput && this.explanationInput) {
+            this.revelationInput.addEventListener('input', () => this.updateTotal());
+            this.explanationInput.addEventListener('input', () => this.updateTotal());
+        } else {
+            console.error('입력 필드를 찾을 수 없습니다.');
+        }
+    }
+
+    initializeTabs() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
         });
+    }
+
+    initializeTables() {
+        console.log('initializeTables');
+        // 데이터를 버프와 자신으로 분리
+        const buffData = criticalCalcData.filter(data => data.target !== '자신');
+        const selfData = criticalCalcData.filter(data => data.target === '자신');
+
+        // 각각의 테이블에 데이터 추가
+        buffData.forEach(data => {
+            const row = this.createTableRow(data);
+            this.buffTableBody.appendChild(row);
+        });
+
+        selfData.forEach(data => {
+            const row = this.createTableRow(data);
+            this.selfTableBody.appendChild(row);
+        });
+
         this.updateTotal();
+        this.updateMobileCharNames();
     }
 
     createTableRow(data) {
@@ -87,6 +142,8 @@ class criticalCalc {
         optionCell.className = 'option-column';
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
+            select.className = 'option-select';
+            select.setAttribute('data-id', data.id);
             data.options.forEach(option => {
                 const optionElement = document.createElement('option');
                 optionElement.value = option;
@@ -127,6 +184,24 @@ class criticalCalc {
         noteCell.className = 'note-column';
         noteCell.textContent = data.note;
         row.appendChild(noteCell);
+
+        // 모바일용 추가 정보
+        if (window.innerWidth <= 768) {
+            const mobileInfo = document.createElement('td');
+            mobileInfo.className = 'mobile-info';
+            mobileInfo.innerHTML = `
+                <div class="mobile-skill-info">
+                    <span class="mobile-skill-name">${data.skillName}</span>
+                    <span class="mobile-skill-value">${data.value}%</span>
+                </div>
+                <div class="mobile-details">
+                    ${data.target ? `<span class="mobile-target">${data.target}</span>` : ''}
+                    ${data.duration ? `<span class="mobile-duration">${data.duration}</span>` : ''}
+                    ${data.note ? `<span class="mobile-note">${data.note}</span>` : ''}
+                </div>
+            `;
+            row.appendChild(mobileInfo);
+        }
         
         return row;
     }
@@ -149,10 +224,44 @@ class criticalCalc {
     }
 
     updateTotal() {
-        const total = Array.from(this.selectedItems)
+        // 선택된 항목들의 값 계산 (버프 테이블)
+        const buffTotal = Array.from(this.selectedItems)
             .map(id => criticalCalcData.find(d => d.id === id))
-            .reduce((sum, item) => sum + item.value, 0);
-            
+            .filter(item => item && item.target !== '자신')
+            .reduce((sum, item) => {
+                if (item.options && item.options.length > 0) {
+                    const select = document.querySelector(`select[data-id="${item.id}"]`);
+                    if (select && item.values) {
+                        const selectedOption = select.value;
+                        return sum + (item.values[selectedOption] || item.value);
+                    }
+                }
+                return sum + item.value;
+            }, 0);
+
+        // 선택된 항목들의 값 계산 (자신 테이블)
+        const selfTotal = Array.from(this.selectedItems)
+            .map(id => criticalCalcData.find(d => d.id === id))
+            .filter(item => item && item.target === '자신')
+            .reduce((sum, item) => {
+                if (item.options && item.options.length > 0) {
+                    const select = document.querySelector(`select[data-id="${item.id}"]`);
+                    if (select && item.values) {
+                        const selectedOption = select.value;
+                        return sum + (item.values[selectedOption] || item.value);
+                    }
+                }
+                return sum + item.value;
+            }, 0);
+        
+        // 계시 합계와 해명의 힘 값 가져오기
+        const revelationValue = parseFloat(this.revelationInput.value) || 0;
+        const explanationValue = parseFloat(this.explanationInput.value) || 0;
+        
+        // 총합 계산
+        const total = buffTotal + selfTotal + revelationValue + explanationValue;
+        
+        // 결과 표시
         this.totalValue.textContent = `${total.toFixed(1)}%`;
     }
 
@@ -206,34 +315,56 @@ class criticalCalc {
     }
 
     updateMobileCharNames() {
+        console.log('updateMobileCharNames called');
         if (window.innerWidth <= 768) {
-            const rows = this.tableBody.querySelectorAll('tr');
-            let lastValidCharName = '';
-
-            rows.forEach(row => {
-                const charNameCell = row.querySelector('.char-name-column');
-                if (charNameCell) {
-                    if (charNameCell.textContent.trim()) {
-                        lastValidCharName = charNameCell.textContent;
-                        charNameCell.dataset.originalName = lastValidCharName;
-                    } else if (lastValidCharName) {
-                        charNameCell.textContent = lastValidCharName;
-                        charNameCell.dataset.isInherited = 'true';
-                    }
+            console.log('mobile width detected:', window.innerWidth);
+            // 버프 테이블 처리
+            const processTable = (tableBody) => {
+                if (!tableBody) {
+                    console.log('tableBody is null');
+                    return;
                 }
-            });
+                const rows = tableBody.querySelectorAll('tr');
+                console.log('processing rows:', rows.length);
+                let lastValidCharName = '';
+
+                rows.forEach(row => {
+                    const charNameCell = row.querySelector('.char-name-column');
+                    if (charNameCell) {
+                        const currentName = charNameCell.textContent.trim();
+                        if (currentName) {
+                            lastValidCharName = currentName;
+                            charNameCell.dataset.originalName = lastValidCharName;
+                            console.log('found valid name:', lastValidCharName);
+                        } else if (lastValidCharName) {
+                            charNameCell.textContent = lastValidCharName;
+                            charNameCell.dataset.isInherited = 'true';
+                            console.log('inherited name:', lastValidCharName);
+                        }
+                    }
+                });
+            };
+
+            // 버프 테이블과 자신 테이블 모두 처리
+            processTable(this.buffTableBody);
+            processTable(this.selfTableBody);
         } else {
+            console.log('desktop width detected:', window.innerWidth);
             // 모바일 모드가 아닐 때는 원래 이름으로 복원
-            const inheritedCells = this.tableBody.querySelectorAll('.char-name-column[data-is-inherited="true"]');
-            inheritedCells.forEach(cell => {
-                cell.textContent = '';
-                delete cell.dataset.isInherited;
-            });
+            const restoreTable = (tableBody) => {
+                if (!tableBody) {
+                    console.log('tableBody is null');
+                    return;
+                }
+                const inheritedCells = tableBody.querySelectorAll('.char-name-column[data-is-inherited="true"]');
+                inheritedCells.forEach(cell => {
+                    cell.textContent = '';
+                    delete cell.dataset.isInherited;
+                });
+            };
+
+            restoreTable(this.buffTableBody);
+            restoreTable(this.selfTableBody);
         }
     }
-}
-
-// 초기화
-document.addEventListener('DOMContentLoaded', () => {
-    new criticalCalc();
-}); 
+} 

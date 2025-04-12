@@ -629,3 +629,189 @@ img[src*="check-on.png"].checkbox-img {
         justify-content: flex-end;
     }
 } 
+
+/* 탭 스타일 */
+.table-tabs {
+    margin: 0 20px;
+    padding: 0;
+    background-color: #3d3030;
+    border-radius: 10px;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 20px;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tab-button.active {
+    color: #dd8484;
+    font-weight: bold;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #dd8484;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 테이블 스타일 */
+.table-responsive {
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.defense-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.defense-table th,
+.defense-table td {
+    font-size: 13px;
+    padding: 10px;
+    color: rgb(255, 255, 255, 0.4);
+    height: 30px;
+}
+
+.defense-table tr {
+    min-height: 30px;
+}
+
+.defense-table th {
+    padding: 10px 8px 15px 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 800;
+}
+
+.defense-table td {
+    vertical-align: middle;
+    padding: 8px;
+    border-top: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.defense-table tr:first-child td {
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+}
+
+.defense-table tr:last-child td {
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.check-column {
+    width: 30px;
+}
+
+.img-column img {
+    height: 36px;
+    border-radius: 25px;
+    object-fit: contain;
+}
+
+.resource-icon {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+    object-fit: contain !important;
+}
+
+img[src*="check-off.png"] {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+img[src*="check-on.png"] {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+    transform: translateX(1px) translateY(-0.5px);
+    cursor: pointer;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .table-tabs {
+        margin: 0;
+        background-color: transparent;
+    }
+
+    .tab-buttons {
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .tab-button {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+
+    .tab-content {
+        padding: 0;
+    }
+
+    .defense-table {
+        display: block;
+        padding-top: 8px;
+    }
+
+    .defense-table thead {
+        display: none;
+    }
+
+    .defense-table tbody {
+        display: block;
+    }
+
+    .defense-table tr {
+        display: grid;
+        grid-template-areas:
+            "check img name name"
+            "price price amount discount";
+        grid-template-columns: 60px 60px 1fr auto;
+        gap: 8px;
+        padding: 12px;
+        margin: 0 0 8px 0px;
+        background: rgba(221, 132, 132, 0.1);
+        border-radius: 8px;
+    }
+
+    .defense-table td {
+        padding: 0px;
+        border: none !important;
+    }
+} 

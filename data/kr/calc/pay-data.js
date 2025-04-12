@@ -1,6 +1,32 @@
 const PAY_DATA = {
     packages: [
         {
+            name: "1주년 패키지 1",
+            crystal: 300,
+            amber: 3000,
+            price: 3000,
+            maxCount: 1
+        },
+        {
+            name: "1주년 패키지 2",
+            destiny: 15,
+            destiny_future: 15,
+            price: 19000,
+            maxCount: 1
+        },
+        {
+            name: "1주년 패키지 3",
+            destinyCoins: 20,
+            price: 13000,
+            maxCount: 1
+        },
+        {
+            name: "1주년 패키지 4",
+            amber: 2680,
+            price: 51000,
+            maxCount: 1
+        },
+        {
             name: "마루치무의 VIP 패키지",
             crystal: 300,
             amber: 3000,
@@ -133,7 +159,9 @@ const PAY_DATA = {
             amber: 3280,
             price: 62000,
             maxCount: 3
-        },
+        }
+    ],
+    crystalPackages: [
         {
             name: "이계 수정 60",
             crystal: 60,
@@ -169,6 +197,42 @@ const PAY_DATA = {
             crystal: 8080,
             price: 119000,
             maxCount: 99
+        },
+        {
+            name: "이계 수정 60 (초회)",
+            crystal: 120,
+            price: 1200,
+            maxCount: 1
+        },
+        {
+            name: "이계 수정 300 (초회)",
+            crystal: 600,
+            price: 6000,
+            maxCount: 1
+        },
+        {
+            name: "이계 수정 980 (초회)",
+            crystal: 1960,
+            price: 19000,
+            maxCount: 1
+        },
+        {
+            name: "이계 수정 1980 (초회)",
+            crystal: 3960,
+            price: 38000,
+            maxCount: 1
+        },
+        {
+            name: "이계 수정 3280 (초회)",
+            crystal: 6560,
+            price: 62000,
+            maxCount: 1
+        },
+        {
+            name: "이계 수정 6480 (초회)",
+            crystal: 12960,
+            price: 119000,
+            maxCount: 1
         }
     ],
     discountOptions: [

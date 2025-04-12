@@ -387,6 +387,7 @@ class DefenseCalc {
 
     updateMobileCharNames() {
         if (window.innerWidth <= 768) {
+            console.log('updateMobileCharNames');
             const rows = this.tableBody.querySelectorAll('tr');
             let lastValidCharName = '';
 

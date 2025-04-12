@@ -1,5 +1,18 @@
 const criticalCalcData = [
     {
+        id: "myPalace",
+        charName: "-",
+        charImage: "",
+        type: "마이팰리스",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/etc/MyPalace-level-10.webp`,
+        skillName: "마이팰리스",
+        options: [],
+        value: 1.0,
+        duration: "-",
+        note: ""
+    },
+    {
         id: "elec",
         charName: "-",
         charImage: "",
@@ -50,6 +63,19 @@ const criticalCalcData = [
         value: 12.0,
         duration: "-",
         note: "만능 속성 한정"
+    },
+    {
+        id: "희망",
+        charName: "-",
+        charImage: "",
+        type: "계시",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/revelation/희망.webp`,
+        skillName: "희망-고집",
+        options: [],
+        value: 6.0,
+        duration: "3턴",
+        note: "스킬로 대미지 8회 중첩 시 효력 발생"
     },
     {
         id: "wonder1",
@@ -229,4 +255,667 @@ const criticalCalcData = [
         duration: "2턴",
         note: ""
     },
+    {
+        id: "mayumi1",
+        charName: "마유미",
+        charImage: "마유미.webp",
+        type: "의식6",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+        skillName: "질주에 대한 갈망",
+        options: [],
+        values: {
+        },
+        value: 20.0,
+        duration: "-",
+        note: "고급 강화 효과『소용돌이 억압』"
+    },
+    {
+        id: "mayumi2",
+        charName: "",
+        charImage: "",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "akechi1",
+        charName: "아케치",
+        charImage: "아케치.webp",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "혐의 조사",
+        options: [],
+        values: {
+        },
+        value: 16.0,
+        duration: "-",
+        note: "『정확』 상태와 『혼돈』 상태가 공존 시"
+    },
+    {
+        id: "akechi2",
+        charName: "",
+        charImage: "",
+        type: "의식6",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+        skillName: "일단락",
+        options: [],
+        values: {
+        },
+        value: 20.0,
+        duration: "-",
+        note: "아군 괴도 크리티컬 확률 합산 50% 이상"
+    },
+    {
+        id: "akechi3",
+        charName: "",
+        charImage: "",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    
+    {
+        id: "yaoling-sajamu1",
+        charName: "야오링·사자무",
+        charImage: "야오링·사자무.webp",
+        type: "의식2",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual2.png`,
+        skillName: "등불 속 기쁨",
+        options: ["화상 1명","화상 2명","화상 3명"],
+        values: {
+            "화상 1명": 10.0,
+            "화상 2명": 13.0,
+            "화상 3명": 16.0
+        },
+        defaultOption: "화상 3명",
+        value: 16.0,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "yaoling-sajamu2",
+        charName: "",
+        charImage: "",
+        type: "스킬1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/화염광역.png`,
+        skillName: "새해의 축복",
+        options: [],
+        values: {
+        },
+        value: 10.0,
+        duration: "2턴",
+        note: "의식6 이상 지속시간 영구"
+    },
+    {
+        id: "yaoling-sajamu3",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/야오링·사자무-5-01.png`,
+        skillName: "따뜻한 봄별",
+        options: ["개조0","개조1&2","개조3&4","개조5&6"],
+        values: {
+            "개조0": 16.0,
+            "개조1&2": 21.0,
+            "개조3&4": 26.0,
+            "개조5&6": 31.0
+        },
+        defaultOption: "개조5&6",
+        value: 31.0,
+        duration: "-",
+        note: "『철꽃의 춤』 상태"
+    },
+    {
+        id: "kasmi3",
+        charName: "카스미",
+        charImage: "카스미.webp",
+        type: "HIGHLIGHT",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+        skillName: "HIGHLIGHT",
+        options: [],
+        values: {
+        },
+        value: 10.0,
+        duration: "-",
+        note: "『스위프트 스텝』 보유 시 하이라이트 한정"
+    },
+    {
+        id: "kasmi1",
+        charName: "",
+        charImage: "",
+        type: "의식0",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "12시의 종소리",
+        options: ["1중첩","2중첩","3중첩","4중첩"],
+        values: {
+            "1중첩": 3.0,
+            "2중첩": 6.0,
+            "3중첩": 9.0,
+            "4중첩": 12.0
+        },
+        defaultOption: "4중첩",
+        value: 12.0,
+        duration: "-",
+        note: "『춤사위』"
+    },
+    {
+        id: "kasmi2",
+        charName: "",
+        charImage: "",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "찢어진 치마와 그녀의 그림자",
+        options: [],
+        values: {
+        },
+        value: 15.0,
+        duration: "3턴",
+        note: "『함께 추는 춤』스킬 2 사용 시"
+    },
+    {
+        id: "kasmi3",
+        charName: "",
+        charImage: "",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "mongtanew-baekso",
+        charName: "몽타뉴·백조",
+        charImage: "몽타뉴·백조.webp",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/몽타뉴·백조-5-01.png`,
+        skillName: "백조의 꿈",
+        options: ["개조0","개조1&2","개조3&4","개조5&6"],
+        values: {
+            "개조0": 16.2,
+            "개조1&2": 21.0,
+            "개조3&4": 25.8,
+            "개조5&6": 30.6
+        },
+        defaultOption: "개조5&6",
+        value: 30.6,
+        duration: "2턴",
+        note: "결정 3중첩 획득 기준"
+    },
+    {
+        id: "mongtanew-baekso2",
+        charName: "",
+        charImage: "",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+
+    {
+        id: "haru3",
+        charName: "하루",
+        charImage: "하루.webp",
+        type: "스킬3",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/염동광역.png`,
+        skillName: "아이언 버스트",
+        options: ["10레벨","10레벨+5심상","13레벨","13레벨+5심상"],
+        values: {
+            "10레벨": 19.5,
+            "10레벨+5심상": 19.5,
+            "13레벨": 20.7,
+            "13레벨+5심상": 20.7
+        },
+        defaultOption: "13레벨+5심상",
+        value: 20.7,
+        duration: "-",
+        note: "『조준점』을 보유한 적 공격 시, 스킬3 한정"
+    },
+    {
+        id: "haru4",
+        charName: "",
+        charImage: "",
+        type: "HIGHLIGHT",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/염동광역.png`,
+        skillName: "HIGHLIGHT",
+        options: ["10레벨","10레벨+5심상","13레벨","13레벨+5심상"],
+        values: {
+            "10레벨": 14.6,
+            "10레벨+5심상": 14.6,
+            "13레벨": 15.5,
+            "13레벨+5심상": 15.5
+        },
+        defaultOption: "13레벨+5심상",
+        value: 15.5,
+        duration: "-",
+        note: "『오버클럭 개조』획득, 총격 한정"
+    },
+    {
+        id: "haru1",
+        charName: "",
+        charImage: "",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "부서진 치마",
+        options: ["조준점 1개","조준점 2개","조준점 3개"],
+        values: {
+            "조준점 1개": 6.0,
+            "조준점 2개": 12.0,
+            "조준점 3개": 18.0
+        },
+        defaultOption: "조준점 3개",
+        value: 18.0,   
+        duration: "-",
+        note: "『조준점』 1개 당 6%"
+    },
+    {
+        id: "haru2",
+        charName: "",
+        charImage: "",
+        type: "의식6",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+        skillName: "악몽의 랩소디",
+        options: [],
+        values: {
+        },
+        value: 20.0,
+        duration: "-",
+        note: "『개조』 2개 이상 중첩, 『확산 개조』및 『조준점』보유"
+    },
+    {
+        id: "motoha2",
+        charName: "모토하·여름",
+        charImage: "모토하·여름.webp",
+        type: "스킬3",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/축복광역.png`,
+        skillName: "파도 추격자",
+        options: ["10레벨","10레벨+5심상","13레벨","13레벨+5심상"],
+        values: {
+            "10레벨": 9.8,
+            "10레벨+5심상": 9.8,
+            "13레벨": 10.4,
+            "13레벨+5심상": 10.4
+        },
+        defaultOption: "13레벨+5심상",
+        value: 10.4,
+        duration: "-",
+        note: "『한여름』 상태"
+    },
+    {
+        id: "motoha1",
+        charName: "",
+        charImage: "",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "발끝에 닿는 파도",
+        options: [],
+        values: {
+        },
+        value: 10.0,
+        duration: "-",
+        note: "『한여름』 상태"
+    },
+    {
+        id: "tomoko1",
+        charName: "토모코·여름",
+        charImage: "토모코·여름.webp",
+        type: "의식6",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+        skillName: "사랑의 마음이 이어지길",
+        options: [],
+        values: {
+        },
+        value: 35.0,
+        duration: "-",
+        note: "『찬란한 불꽃놀이』 효과 한정"
+    },
+    {
+        id: "makoto2",
+        charName: "마코토",
+        charImage: "마코토.webp",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화", 
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "yuske1",
+        charName: "유스케",
+        charImage: "유스케.webp",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "YUI2",
+        charName: "YUI",
+        charImage: "유이 YUI.webp",
+        type: "패시브",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+        skillName: "반짝",
+        options: [],
+        values: {
+        },
+        value: 12.0,
+        duration: "-",
+        note: "『놀이 친구』가 있을 때"
+    },
+    {
+        id: "YUI1",
+        charName: "",
+        charImage: "",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "★ 파종하는 날 ★",
+        options: ["감전 없음", "적 감전"],
+        values: {
+            "감전 없음": 20.0,
+            "적 감전": 30.0
+        },
+        defaultOption: "적 감전",
+        value: 30.0,
+        duration: "-",
+        note: "『추격』한정"
+    },
+    {
+        id: "YUI3",
+        charName: "",
+        charImage: "",
+        type: "4성무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/유이 YUI-4-01.png`,
+        skillName: "미래의 계시",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0&1": 7.3,
+            "개조2&3": 9.5,
+            "개조4&5": 11.7,
+            "개조6": 13.9
+        },
+        defaultOption: "개조6",
+        value: 13.9,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "YUI4",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/유이 YUI-5-01.png`,
+        skillName: "버츄얼 디스럽터",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0&1": 18.1,
+            "개조2&3": 23.5,
+            "개조4&5": 29.0,
+            "개조6": 34.5
+        },
+        defaultOption: "개조6",
+        value: 34.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "jocker1",
+        charName: "렌",
+        charImage: "렌.webp",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "morgana1",
+        charName: "모르가나",
+        charImage: "모르가나.webp",
+        type: "스킬3",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/물리.png`,
+        skillName: "럭키 펀치",
+        options: [],
+        values: {
+        },
+        value: 30.0,
+        duration: "-",
+        note: "스킬3 한정"
+    },
+    {
+        id: "morgana2",
+        charName: "",
+        charImage: "",
+        type: "패시브",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+        skillName: "자신",
+        options: [],
+        values: {
+        },
+        value: 30.0,
+        duration: "-",
+        note: "『직감』치료 효과 한정"
+    },
+    {
+        id: "morgana3",
+        charName: "",
+        charImage: "",
+        type: "4성무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/모르가나-4-01.png`,
+        skillName: "사냥꾼의 주걱",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0&1": 5.9,
+            "개조2&3": 7.6,
+            "개조4&5": 9.3,
+            "개조6": 11.0
+        },
+        defaultOption: "개조6",
+        value: 11.0,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "morgana4",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/모르가나-5-01.png`,
+        skillName: "골든 스포일",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0&1": 18.0,
+            "개조2&3": 23.4,
+            "개조4&5": 28.8,
+            "개조6": 34.2
+        },
+        defaultOption: "개조6",
+        value: 34.2,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "ann1",
+        charName: "안",
+        charImage: "안.webp",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "ryuji2",
+        charName: "류지",
+        charImage: "류지.webp",
+        type: "스킬1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/물리.png`,
+        skillName: "폭발 충돌",
+        options: [],
+        values: {
+        },
+        value: 30.0,
+        duration: "-",
+        note: "『리바운드』가 없는 경우 스킬 1 한정"
+    },
+    {
+        id: "ryuji1",
+        charName: "",
+        charImage: "",
+        type: "의식0",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "오장폭발권",
+        options: [],
+        values: {
+        },
+        value: 30.0,
+        duration: "-",
+        note: "『리바운드』상태"
+    },
+
+    {
+        id: "ryuji3",
+        charName: "",
+        charImage: "",
+        type: "4성무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/류지-4-01.png`,
+        skillName: "가이아 프레셔",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0&1": 7.3,
+            "개조2&3": 9.5,
+            "개조4&5": 11.7,
+            "개조6": 13.9
+        },
+        defaultOption: "개조6",
+        value: 13.9,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "seige2",
+        charName: "세이지",
+        charImage: "세이지.webp",
+        type: "스킬3",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/질풍.png`,
+        skillName: "무영의 찌르기",
+        options: [],
+        values: {
+        },
+        value: 20.0,
+        duration: "-",
+        note: "『격려』 3중첩 이상 보유, 스킬3 한정"
+    },
+    {
+        id: "seige1",
+        charName: "",
+        charImage: "",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "검의 반격",
+        options: ["1중첩","2중첩","3중첩","4중첩","5중첩"],
+        values: {
+            "1중첩": 4.0,
+            "2중첩": 8.0,
+            "3중첩": 12.0,
+            "4중첩": 16.0,
+            "5중첩": 20.0
+        },
+        defaultOption: "5중첩",
+        value: 20.0,
+        duration: "-",
+        note: "『격려』 1중첩 당 4%"
+    },
+
+    {
+        id: "seige3",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/세이지-5-01.png`,
+        skillName: "계몽의 별",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0&1": 30.0,
+            "개조2&3": 35.5,
+            "개조4&5": 41.0,
+            "개조6": 46.5
+        },
+        defaultOption: "개조6",
+        value: 46.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "seige4",
+        charName: "",
+        charImage: "",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    }
 ]; 

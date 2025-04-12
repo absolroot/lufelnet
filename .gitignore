@@ -37,6 +37,13 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
+# etc
+**/속성/
+**/직업/
+**/코드/
+**/png/
+**/name_kr/
+
 # OS
 .DS_Store
 Thumbs.db 

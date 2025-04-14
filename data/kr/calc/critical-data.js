@@ -156,6 +156,19 @@ const criticalCalcData = [
         note: "3중첩 / 목표가 염동 대미지를 받을 때"
     },
     {
+        id: "manaka1",
+        charName: "마나카",
+        charImage: "마나카.webp",
+        type: "의식1",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "시작의 멜로디",
+        options: [],
+        value: 12.0,
+        duration: "2턴",
+        note: "『시공의 윤회』사용 시"
+    },
+    {
         id: "rico-flower",
         charName: "리코·매화",
         charImage: "리코·매화.webp",

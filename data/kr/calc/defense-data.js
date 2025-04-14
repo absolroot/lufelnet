@@ -32,7 +32,7 @@ const penetrateData = [
         type: "스킬3",
         target: "광역",
         skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
-        skillName: "시간을 달리는 노래",
+        skillName: "시공의 윤회",
         options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(16스택)","LV13+심상5(16스택)"],
         values: {
             "LV10": 14.4,
@@ -54,7 +54,7 @@ const penetrateData = [
         type: "패시브",
         target: "광역",
         skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
-        skillName: "초심",
+        skillName: "결심",
         value: 12.0,
         duration: "-",
         note: "성가 스택 * 1%"

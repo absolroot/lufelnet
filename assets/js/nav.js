@@ -31,51 +31,63 @@ class Navigation {
         const i18n = {
             kr: {
                 home: '홈',
-                character: '괴도',
+                character: '캐릭터',
                 persona: '페르소나',
                 revelations: '계시',
-                defenseCalc: '방어력 계산',
                 tactic: '택틱',
                 tacticMaker: '택틱 메이커',
                 tacticForge: '택틱 대장간',
                 tier: '티어 (beta)',
-                tierMaker: '티어 메이커'
+                tierMaker: '티어 메이커',
+                calculator: '계산기',
+                payCalc: '과금 계산기',
+                defenseCalc: '방어력 계산기',
+                criticalCalc: '크리티컬 계산기'
             },
             en: {
                 home: 'Home',
-                character: 'Characters',
+                character: 'Character',
                 persona: 'Persona',
                 revelations: 'Revelations',
-                defenseCalc: 'Defense Calc',
                 tactic: 'Tactics',
-                tacticMaker: 'Tactics Maker',
+                tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
                 tier: 'Tier (beta)',
-                tierMaker: 'Tier Maker'
+                tierMaker: 'Tier Maker',
+                calculator: 'Calculator',
+                payCalc: 'Payment Calculator',
+                defenseCalc: 'Defense Calculator',
+                criticalCalc: 'Critical Calculator'
             },
             jp: {
                 home: 'ホーム',
-                character: '怪盗',
+                character: 'キャラクター',
                 persona: 'ペルソナ',
-                revelations: '啓示',
-                defenseCalc: '防御力計算',
+                revelations: '覚醒',
                 tactic: '戦術',
                 tacticMaker: '戦術メーカー',
                 tacticForge: '戦術鍛冶場',
                 tier: 'ティア (beta)',
-                tierMaker: 'ティアメーカー'
+                tierMaker: 'ティアメーカー',
+                calculator: '計算機',
+                payCalc: '課金計算機',
+                defenseCalc: '防御力計算機',
+                criticalCalc: 'クリティカル計算機'
             },
             cn: {
                 home: '首页',
-                character: '怪盗',
-                persona: '人格面具',
-                revelations: '启示',
-                defenseCalc: '防御力计算',
+                character: '角色',
+                persona: '面具',
+                revelations: '觉醒',
                 tactic: '战术',
                 tacticMaker: '战术制作',
                 tacticForge: '战术锻造',
                 tier: '梯队 (beta)',
-                tierMaker: '梯队制作'
+                tierMaker: '梯队制作',
+                calculator: '计算器',
+                payCalc: '充值计算器',
+                defenseCalc: '防御力计算器',
+                criticalCalc: '暴击计算器'
             }
         };
 
@@ -104,10 +116,23 @@ class Navigation {
                     <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
                 </a>
-                <a href="${BASE_URL}/${currentLang}/defense-calc?v=${APP_VERSION}" class="nav-link" data-nav="defense-calc">
-                    <img src="${BASE_URL}/assets/img/nav/defense-calc.png" alt="defense-calc" style="width: 32px; height: 32px; object-fit: contain;" />
-                    <span data-text="${texts.defenseCalc}">${texts.defenseCalc}</span>
-                </a>
+                <div class="nav-item has-submenu" data-nav="calculator">
+                    <div class="nav-main-item">
+                        <img src="${BASE_URL}/assets/img/nav/calculator.png" alt="calculator" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <span data-text="${texts.calculator}">${texts.calculator}</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="${BASE_URL}/${currentLang}/pay-calc?v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
+                            <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
+                        </a>
+                        <a href="${BASE_URL}/${currentLang}/defense-calc?v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
+                            <span data-text="${texts.defenseCalc}">◈　${texts.defenseCalc}</span>
+                        </a>
+                        <a href="${BASE_URL}/${currentLang}/critical-calc?v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
+                            <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>
+                        </a>
+                    </div>
+                </div>
                 <div class="nav-item has-submenu" data-nav="tactic">
                     <div class="nav-main-item">
                         <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
@@ -243,6 +268,26 @@ class Navigation {
                     } else if (activePage === 'tactic-share') {
                         activeSubItem = document.querySelector('[data-nav="tactic-share"]');
                     }
+                    
+                    if (activeSubItem) {
+                        // 다른 서브메뉴 아이템의 active 클래스 제거
+                        document.querySelectorAll('.nav-sub-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        // 현재 서브메뉴 아이템 활성화
+                        activeSubItem.classList.add('active');
+                    }
+                }
+            }
+
+            // 계산기 관련 페이지인 경우 추가 처리
+            if (activePage === 'pay-calc' || activePage === 'defense-calc' || activePage === 'critical-calc') {
+                const calculatorMenu = document.querySelector('[data-nav="calculator"]');
+                if (calculatorMenu) {
+                    calculatorMenu.classList.add('active');
+                    
+                    // 현재 활성화된 서브메뉴 아이템 찾기
+                    let activeSubItem = document.querySelector(`[data-nav="${activePage}"]`);
                     
                     if (activeSubItem) {
                         // 다른 서브메뉴 아이템의 active 클래스 제거

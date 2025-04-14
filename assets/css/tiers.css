@@ -1,4 +1,3 @@
-
 :root {
   --bg-color: #27272a;
   --tier-bg-color: #404040;
@@ -257,4 +256,211 @@ button {
 
 .add-tier-btn i {
   font-size: 1.1rem;
+}
+
+/* Filter section styles */
+.filter-section {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.filter-header {
+  display: none;
+}
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.filter-toggle-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.filter-reset-btn {
+  margin-right: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.filter-reset-btn img {
+  height: 28px;
+  object-fit: contain;
+}
+
+.filter-content {
+  padding: 0px 20px 0px 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.filter-group:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group h3 {
+  width: 60px;
+  color: rgb(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 400;
+  outline: none;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.filter-options label {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 32px;
+  padding: 0px 6px 0px 6px;
+  transition: all 0s;
+  background-color: rgba(0, 0, 0, 0.6);
+  outline: none;
+}
+
+.filter-options label:hover {
+  filter: brightness(1.1);
+  background-color: rgb(255, 255, 255, 0.4);
+}
+
+/* 체크박스가 체크되었을 때 라벨 스타일 변경 */
+.filter-options input[type="checkbox"]:checked + img,
+.filter-options input[type="checkbox"]:checked + .star-container {
+  filter: brightness(1.2);
+}
+
+.filter-options input[type="checkbox"]:checked ~ label,
+.filter-options label:has(input[type="checkbox"]:checked) {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgb(211, 188, 142, 0.8);
+  height: 30px;
+  padding: 0px 5px 0px 5px;
+}
+
+.filter-options img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.filter-options img[src*="직업_지배.png"],
+.filter-options img[src*="직업_반항.png"],
+.filter-options img[src*="직업_우월.png"],
+.filter-options img[src*="직업_굴복.png"],
+.filter-options img[src*="직업_방위.png"],
+.filter-options img[src*="직업_해명.png"] {
+  width: 22px;
+  height: 22px;
+}
+
+.filter-options input[type="checkbox"] {
+  display: none;
+  width: 16px;
+  height: 16px;
+}
+
+.filter-text {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.sub-text {
+  margin-left: 2px;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.star-container {
+  display: flex;
+  gap: 2px;
+  padding: 0px 8px 0px 8px;
+}
+
+.star-container img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.tag-options span {
+  font-size: 11px;
+  font-weight: 400;
+  padding: 0px 6px 0px 6px;
+  color: rgb(255, 255, 255, 0.9);
+}
+
+@media (max-width: 1440px) {
+  .filter-header {
+    display: none;
+  }
+  .filter-header, .filter-section {
+    padding-top: 0;
+    margin-top: 0;
+    overflow: hidden;
+  }
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .filter-group h3 {
+    margin-bottom: 4px;
+  }
+  .filter-content {
+    margin-bottom: 10px;
+  }
+}
+
+.separator-line {
+  padding: 0 20px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.1) 90%,
+    transparent
+  );
+  margin: 0px 0 24px 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .navigation-path, .header-container, .filter-content {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .header-container h1 {
+    margin-bottom: 0px;
+  }
+  .separator-line {
+    margin-bottom: 24px;
+  }
 }

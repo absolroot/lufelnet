@@ -272,7 +272,6 @@ select:-moz-focusring {
 /* 탭 스타일 */
 .table-tabs {
     margin: 0 20px;
-    padding: 20px;
     background-color: #3d3030;
     border-radius: 10px;
 }
@@ -315,6 +314,7 @@ select:-moz-focusring {
 
 .tab-content {
     display: none;
+    padding: 20px;
 }
 
 .tab-content.active {

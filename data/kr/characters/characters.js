@@ -52,7 +52,7 @@ const characterData = {
     },
     "이케나미": {
         "role": "",
-        "tag": "",
+        "tag": "스킬마스터",
         "color": "#000000",
         "main_revelation": ["-"],
         "sub_revelation": ["-"],
@@ -398,7 +398,7 @@ const characterData = {
     },
     "류지": {
        "role": "물리 단일 딜러",
-       "tag":"차지",
+       "tag":"차지, 관통",
         "color": "#ffff00",
         "main_revelation": ["전념"],
         "sub_revelation": ["용맹"],
@@ -515,7 +515,7 @@ const characterData = {
     },
     "마사키": {
        "role": "단일/광역 실드",
-       "tag":"실드, 방어력, 대미지보너스, 공격받을 확률, 효과 저항, 동결",
+       "tag":"실드, 방어력, 대미지보너스, 공격받을 확률, 효과 저항, 동결, 관통",
         "color": "#3cf2ff",
         "main_revelation": ["신념", "신뢰"],
         "sub_revelation": ["평화", "풍요"],
@@ -554,7 +554,7 @@ const characterData = {
     },
     "마코토": {
         "role": "핵열 단일 딜러",
-        "tag":"원소 이상, TECHNICAL, 추가 턴",
+        "tag":"원소 이상, TECHNICAL, 추가 턴, 관통",
         "color": "#000080",
         "main_revelation": ["깨달음"],
         "sub_revelation": ["진리"],
@@ -828,7 +828,7 @@ const characterData = {
     },
     "몽타뉴·백조": {
         "role": "질풍/빙결 단일 딜러",
-        "tag":"폼 체인지, 추가 효과, 풍습, 동결",
+        "tag":"폼 체인지, 추가 효과, 풍습, 동결, 관통",
         "color": "#483d8b",
         "main_revelation": ["전념", "자유"],
         "sub_revelation": ["화려", "개선"],
@@ -1257,7 +1257,7 @@ const characterData = {
     },
     "치즈코": {
         "role": "단일 디버퍼",
-        "tag":"원소 이상, 방어력 감소, 받는 대미지 증가",
+        "tag":"원소 이상, 방어력 감소, 받는 대미지 증가, 관통",
         "color": "#2680a7",
         "main_revelation": ["여정", "여정", "조화"],
         "sub_revelation": ["주권", "풍요", "진리"],
@@ -1570,7 +1570,7 @@ const characterData = {
     },
     "하루": {
         "role": "염동 광역 딜러",
-        "tag":"총격, 예열",
+        "tag":"총격, 예열, 관통",
         "color": "#800080",
         "main_revelation": ["지혜"],
         "sub_revelation": ["환희"],

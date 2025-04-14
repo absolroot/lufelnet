@@ -10,7 +10,7 @@ language: kr
     <div class="main-wrapper">
         <!-- Header (logo, etc.) -->
         <div class="header-container">
-            <h1>P5X 루페르넷</h1> <span class="beta-text">beta</span>
+            <h1>P5X 루페르넷</h1> <span class="beta-text"></span>
             <button class="music-control" id="musicControl">
                 <img src="{{ site.baseurl }}/assets/img/ui/music-off.png" alt="음악 재생" id="musicIcon">
             </button>
@@ -227,7 +227,7 @@ language: kr
 
     // Load update history
     let allUpdates = []; // Store all updates
-    const INITIAL_SHOW = 5; // Number of updates to show initially
+    const MAX_TOTAL_LINES = 6; // 전체 표시할 최대 줄 수
     const LOAD_MORE_COUNT = 10; // Number of updates to load when "more" button is clicked
     let currentlyShown = 0;
 
@@ -248,43 +248,82 @@ language: kr
                 });
 
             // Show initial updates
-            showMoreUpdates(INITIAL_SHOW);
+            showMoreUpdates();
             
             // Set visibility of "more" button
             const showMoreBtn = document.getElementById('show-more-updates-btn');
-            if (allUpdates.length > INITIAL_SHOW) {
-                showMoreBtn.style.display = 'block';
-                showMoreBtn.addEventListener('click', () => showMoreUpdates(LOAD_MORE_COUNT));
-            }
+            showMoreBtn.style.display = 'block';
+            showMoreBtn.addEventListener('click', () => {
+                showMoreBtn.style.display = 'none';
+                showAllUpdates();
+            });
         } catch (error) {
             console.error('Failed to load update history:', error);
         }
     }
 
-    // Function to display additional updates
-    function showMoreUpdates(count) {
+    // 모든 업데이트를 표시하는 함수
+    function showAllUpdates() {
         const updateList = document.getElementById('recent-update-list');
-        const showMoreBtn = document.getElementById('show-more-updates-btn');
+        updateList.innerHTML = ''; // 기존 내용 초기화
         
-        // Additional updates to display
-        const newUpdates = allUpdates.slice(currentlyShown, currentlyShown + count);
-        
-        newUpdates.forEach(update => {
+        allUpdates.forEach(update => {
             const updateElement = document.createElement('div');
             updateElement.className = 'recent-update-content-text';
+            
+            const contentLines = update.content.split('\\n').join('<br>');
+            
             updateElement.innerHTML = `
                 <div class="date">${update.date}</div>
                 <div class="version">${update.version}</div>
-                <div class="content"><p>${update.content}</p></div>
+                <div class="content"><p>${contentLines}</p></div>
             `;
             updateList.appendChild(updateElement);
         });
+    }
 
-        currentlyShown += newUpdates.length;
-
-        // If all updates have been shown, hide the "more" button
-        if (currentlyShown >= allUpdates.length) {
-            showMoreBtn.style.display = 'none';
+    // 초기 5줄만 표시하는 함수
+    function showMoreUpdates() {
+        const updateList = document.getElementById('recent-update-list');
+        let totalLines = 0;
+        let updatesShown = 0;
+        
+        for (const update of allUpdates) {
+            const lines = update.content.split('\\n');
+            
+            if (totalLines + lines.length > MAX_TOTAL_LINES) {
+                // 남은 줄 수 계산
+                const remainingLines = MAX_TOTAL_LINES - totalLines;
+                if (remainingLines > 0) {
+                    const updateElement = document.createElement('div');
+                    updateElement.className = 'recent-update-content-text';
+                    
+                    const visibleContent = lines.slice(0, remainingLines).join('<br>');
+                    
+                    updateElement.innerHTML = `
+                        <div class="date">${update.date}</div>
+                        <div class="version">${update.version}</div>
+                        <div class="content"><p>${visibleContent} ...</p></div>
+                    `;
+                    updateList.appendChild(updateElement);
+                }
+                break;
+            }
+            
+            const updateElement = document.createElement('div');
+            updateElement.className = 'recent-update-content-text';
+            
+            updateElement.innerHTML = `
+                <div class="date">${update.date}</div>
+                <div class="version">${update.version}</div>
+                <div class="content"><p>${lines.join('<br>')}</p></div>
+            `;
+            updateList.appendChild(updateElement);
+            
+            totalLines += lines.length;
+            updatesShown++;
+            
+            if (totalLines >= MAX_TOTAL_LINES) break;
         }
     }
 

@@ -142,10 +142,16 @@ const loadCharacterImages = () => {
   const allCharacters = [...characterList.mainParty, ...characterList.supportParty];
   
   allCharacters.forEach(character => {
+    if (character === "원더") return; // 원더 제외
+    
     const img = document.createElement('img');
     img.src = `${BASE_URL}/assets/img/character-half/${character}.webp`;
     img.alt = character;
     img.draggable = true;
+    img.dataset.element = characterData[character].element;
+    img.dataset.position = characterData[character].position;
+    img.dataset.rarity = characterData[character].rarity;
+    img.dataset.tags = characterData[character].tag;
     cardsContainer.appendChild(img);
   });
 };
@@ -169,10 +175,95 @@ const initDraggables = () => {
   });
 };
 
+// 필터 기능 구현
+const applyFilters = () => {
+  const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
+  const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
+  const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
+  const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map(cb => cb.value);
+  
+  const images = cardsContainer.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.parentElement !== cardsContainer) return; // 이미 티어에 배치된 이미지는 건너뜀
+    
+    const element = img.dataset.element;
+    const position = img.dataset.position;
+    const rarity = parseInt(img.dataset.rarity);
+    const tags = img.dataset.tags;
+    
+    // 속성 필터링 (질풍빙결 특수 처리)
+    const elementMatch = selectedElements.length === 0 || 
+      selectedElements.includes(element) || 
+      (element === "질풍빙결" && (selectedElements.includes("질풍") || selectedElements.includes("빙결")));
+    
+    const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
+    const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
+    
+    // 태그 필터링
+    const tagMatch = selectedTags.length === 0 || selectedTags.every(tag => {
+      switch(tag) {
+        case 'TECHNICAL':
+          return tags.includes('TECHNICAL') || tags.includes('스킬마스터');
+        case '추가효과':
+          return tags.includes('추가 효과') || tags.includes('추가효과');
+        case '지속대미지':
+          return tags.includes('지속 대미지') || tags.includes('화상') || tags.includes('주원');
+        case '화상':
+          return tags.includes('화상') || (tags.includes('원소 이상') && !tags.includes('원소 이상 제거'));
+        case '풍습':
+          return tags.includes('풍습') || (tags.includes('원소 이상') && !tags.includes('원소 이상 제거'));
+        case '감전':
+          return tags.includes('감전') || (tags.includes('원소 이상') && !tags.includes('원소 이상 제거'));
+        case '동결':
+          return tags.includes('동결') || (tags.includes('원소 이상') && !tags.includes('원소 이상 제거'));
+        case '실드':
+          return tags.includes('실드');
+        case '효과명중':
+          return tags.includes('효과 명중');
+        case '방어력감소':
+          return tags.includes('방어력 감소');
+        case '관통':
+          return tags.includes('관통');
+        default:
+          return false;
+      }
+    });
+    
+    img.style.display = elementMatch && positionMatch && rarityMatch && tagMatch ? 'block' : 'none';
+  });
+};
+
+// 필터 이벤트 리스너 설정
+const initFilters = () => {
+  const filterToggleBtn = document.querySelector('.filter-toggle-btn');
+  const filterContent = document.querySelector('.filter-content');
+  const filterResetBtn = document.querySelector('.filter-reset-btn');
+  const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+  
+  filterContent.style.display = 'block';
+  filterToggleBtn.style.display = 'none';
+  filterResetBtn.style.display = 'none';
+  
+  // 체크박스 변경 감지
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      applyFilters();
+    });
+  });
+  
+  // 필터 초기화 버튼
+  filterResetBtn.addEventListener('click', () => {
+    checkboxes.forEach(cb => cb.checked = false);
+    filterResetBtn.style.display = 'none';
+    applyFilters();
+  });
+};
+
 loadCharacterImages();
 initDraggables();
 initDefaultTierList();
 initColorOptions();
+initFilters();
 
 //* event listeners
 

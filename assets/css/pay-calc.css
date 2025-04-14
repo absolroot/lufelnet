@@ -1,22 +1,4 @@
-.navigation-path {
-    margin-bottom: 20px;
-    font-size: 14px;
-}
 
-.navigation-path a {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-}
-
-.navigation-path .separator {
-    margin: 0 8px;
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.navigation-path .current-page {
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: bold;
-}
 
 /* 카드 스타일 */
 .card-style {
@@ -24,7 +6,6 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 20px;
-    margin-bottom: 20px;
 }
 
 /* 상단 카드 컨테이너 */

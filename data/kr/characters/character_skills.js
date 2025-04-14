@@ -48,25 +48,25 @@ const characterSkillsData = {
     "마나카": {
         "name": "나가오 마나카",
         "skill1": {
-            "name": "-",
+            "name": "천공의 노래",
             "element": "버프광역",
             "type": "버프",
-            "cool": 0,
-            "description": "-"
+            "cool": 4,
+            "description": "일정 턴 동안 모든 동료의 주는 대미지가 증가하고, 자신은 『성가』를 4중첩 획득한다."
         },
         "skill2": {
             "name": "치유 빛의 노래",
             "element": "치료광역",
             "type": "치료",
-            "cool": 0,
-            "description": "-"
+            "cool": 8,
+            "description": "모든 동료의 체력을 일정량 회복시키고, 디버프 1종을 제거한다. 『성가』 보유 시, 『성가』 1중첩을 소모하여 해당 스킬 사용 후의 준비 시간을 1회 감소한다(최대 4회 감소), 해당 스킬 사용 시, 회복량이 증가한다.\n패시브: 나가오 마나카가 일정 『성가』를 획득 시, 자동으로 치유 효과가 발동된다."
         },
         "skill3": {
-            "name": "-",
+            "name": "시공의 윤회",
             "element": "버프광역",
             "type": "버프",
-            "cool": 0,
-            "description": "-"
+            "cool": 4,
+            "description": "모든 동료의 공격력이 증가한다. 모든 『성가』를 소모하며, 소모한 『성가』에 따라 일정 턴 동안 추가로 모든 동료의 공격력 및 관통이 증가한다."
         },
         "skill_highlight": {
             "name": "속성 증가",
@@ -74,14 +74,14 @@ const characterSkillsData = {
             "description": "해명 괴도 각 속성의 20%만큼 출전 중인 모든 동료의 상응한 속성 수치가 증가한다."
         },
         "passive1": {
-            "name": "-",
+            "name": "날갯짓",
             "element": "패시브",
-            "description": "-"
+            "description": "『천계의 선율』 상태의 아군 공격력이 37.5% 증가한다."
         },
         "passive2": {
-            "name": "-",
+            "name": "결심",
             "element": "패시브",
-            "description": "-"
+            "description": "누적 획득한 『성가』중첩 1개당 모든 동료의 관통이 1% 증가한다(최대 12% 증가)."
         }
     },
     "마유미": {

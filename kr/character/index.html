@@ -164,6 +164,7 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                     <label><input type="checkbox" name="tag" value="추가효과"><span>추가 효과</span></label>
                     <label><input type="checkbox" name="tag" value="지속대미지"><span>지속 대미지</span></label>
                     <label><input type="checkbox" name="tag" value="방어력감소"><span>방어력 감소</span></label>
+                    <label><input type="checkbox" name="tag" value="관통"><span>관통</span></label>
                     <label><input type="checkbox" name="tag" value="효과명중"><span>효과 명중</span></label>
                     <label><input type="checkbox" name="tag" value="실드"><span>실드</span></label>
                     <label><input type="checkbox" name="tag" value="화상"><span>화상</span></label>
@@ -177,6 +178,19 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
 
     <!-- Separator line -->
     <div class="separator-line"></div>
+
+    <!-- Search section below filter section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                </svg>
+            </div>
+            <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+    </div>
 
     <!-- Character card container -->
     <div class="character-cards" id="characterCards">
@@ -361,6 +375,8 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                             return characterTags.includes('효과 명중');
                         case '방어력감소':
                             return characterTags.includes('방어력 감소');
+                        case '관통':
+                            return characterTags.includes('관통');
                         default:
                             return false;
                     }
@@ -441,6 +457,108 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
         // Run on initial load and resize
         window.addEventListener('load', adjustLastRow);
         window.addEventListener('resize', adjustLastRow);
+
+        // Search functionality implementation
+        const searchInput = document.getElementById('characterSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const cards = document.querySelectorAll('.card');
+        const characterNames = sortedCharacters;
+
+        // 별칭 매핑 추가
+        const nicknameMap = {
+            '유이' : 'YUI',
+            '라면' : '카노 슌',
+            '욧샤' : '사카모토 류지',
+            '수모코' : '노게 토모코·여름',
+            '수토하' : '아라이 모토하·여름',
+            '왕왕루': '도겐자카 루우나',
+            '얼탱': '아시야 마사키',
+            '조커': '아마미야 렌',
+            '의사' : '키타자토 키라',
+            '그새끼': '아케치 고로',
+            '화오링' : '리 야오링·사자무',
+            '불오링' : '리 야오링·사자무',
+            '5리코' : '타네무라 리코·매화',
+            '풍리코' : '타네무라 리코·매화',
+            '풍타뉴' : '코토네 몽타뉴·백조',
+            '백타뉴' : '코토네 몽타뉴·백조',
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const searchValue = e.target.value.toLowerCase();
+            dropdown.innerHTML = '';
+            
+            // Dropdown autocomplete handling
+            if (searchValue.length > 0) {
+                // 별칭 매칭 확인
+                const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                    nickname.toLowerCase().includes(searchValue)
+                );
+
+                const matches = characterNames.filter(name => {
+                    const characterName = characterData[name].name;
+                    return name.toLowerCase().includes(searchValue) ||
+                           characterName.toLowerCase().includes(searchValue) ||
+                           // 별칭 매칭 추가
+                           (nicknameMatch && characterName === nicknameMatch[1]);
+                });
+
+                if (matches.length > 0) {
+                    dropdown.style.display = 'block';
+                    matches.forEach(name => {
+                        const div = document.createElement('div');
+                        div.className = 'dropdown-item';
+                        div.textContent = characterData[name].name;
+                        div.addEventListener('click', () => {
+                            searchInput.value = characterData[name].name;
+                            dropdown.style.display = 'none';
+                            filterBySearch(name.toLowerCase());
+                        });
+                        dropdown.appendChild(div);
+                    });
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            } else {
+                dropdown.style.display = 'none';
+                filterBySearch('');
+            }
+
+            // Filter by search term
+            filterBySearch(searchValue);
+        });
+
+        // Search filtering function
+        function filterBySearch(searchValue) {
+            cards.forEach(card => {
+                const nameText = card.querySelector('.name-text');
+                if (!nameText) return;
+                
+                const displayName = nameText.textContent;
+                const displayNameLower = displayName.toLowerCase();
+                
+                // Find the character key with the matching display name
+                const characterKey = Object.keys(characterData).find(key => 
+                    characterData[key].name === displayName
+                );
+
+                // 별칭 매칭 확인
+                const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                    nickname.toLowerCase().includes(searchValue) && realName === displayName
+                );
+                
+                const shouldShow = searchValue === '' || 
+                    characterKey?.toLowerCase().includes(searchValue) || 
+                    displayNameLower.includes(searchValue) ||
+                    // 별칭 매칭 추가
+                    nicknameMatch !== undefined;
+                
+                card.style.display = shouldShow ? 'block' : 'none';
+            });
+            
+            // 검색 후 마지막 줄 정렬 조정
+            adjustLastRow();
+        }
     });
     
 </script>

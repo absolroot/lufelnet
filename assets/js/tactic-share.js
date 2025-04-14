@@ -26,13 +26,13 @@ const db = firebase.firestore();
 class TacticShare {
     constructor(options = {}) {
         this.currentPage = 1;
-        this.postsPerPage = options.postsPerPage || 5;
+        this.postsPerPage = options.postsPerPage || 10;
         this.lastDoc = null;
         this.firstDoc = null;
         this.userIP = '';
         this.likeDebounceMap = new Map(); // 좋아요 디바운스 맵
         this.likeCooldown = 10000; // 좋아요 쿨다운 10초
-        this.dailyPostLimit = 5;
+        this.dailyPostLimit = 10;
         this.POSTS_PER_CHUNK = 1000; // 청크당 게시물 수를 1000개로 증가
         this.currentView = 'all'; // 현재 보기 모드
         this.searchKeyword = ''; // 검색어

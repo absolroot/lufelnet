@@ -223,6 +223,52 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             <input type="text" id="personaSearch" placeholder="페르소나 검색..." autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
+        <div class="search-count">
+            <span id="filteredCount">전체 0개</span>
+        </div>
+    </div>
+
+    <!-- Explain Container -->
+    <div class="explain-container">
+        <div class="explain-box">
+            <div class="explain-section">
+                <h4>본능 · 고유 스킬 · HIGHLIGHT</h4>
+                <div class="priority-examples">
+                    <div class="priority-label">중요순위 :</div>
+                    <div class="priority-item">
+                        <div class="priority-box high"></div>
+                        <span>상</span>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-box medium"></div>
+                        <span>중</span>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-box low"></div>
+                        <span>하</span>
+                    </div>
+                </div>
+            </div>
+            <div class="explain-section">
+                <h4>추천 스킬</h4>
+                <div class="priority-examples">
+                    <div class="priority-label">우선순위 :</div>
+                    <div class="priority-item">
+                        <div class="priority-text high">높음</div>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-text medium">일반</div>
+                        
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-text low">낮음</div>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-text extra-low">매우 낮음</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Persona card container -->
@@ -239,6 +285,8 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
 
         const cardsContainer = document.getElementById('personaCards');
         
+        // Update initial count
+        document.getElementById('filteredCount').textContent = `전체 ${Object.keys(personaData).length}개`;
 
         const sortedPersonas = Object.keys(personaData)
         
@@ -455,19 +503,29 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             const selectedGrades = Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value);
             
             const containers = document.querySelectorAll('.persona-detail-container');
+            let visibleCount = 0;
+            
             containers.forEach(container => {
                 const element = container.dataset.element;
                 const position = container.dataset.position;
                 const rarity = parseInt(container.dataset.rarity);
                 const grade = container.dataset.grade;
+                const personaName = container.dataset.name;
                     
                 const elementMatch = selectedElements.length === 0 || selectedElements.includes(element);
                 const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
                 const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
-                const gradeMatch = selectedGrades.length === 0 || selectedGrades.includes(grade);
+                const gradeMatch = selectedGrades.length === 0 || 
+                    selectedGrades.includes(grade) || 
+                    (personaName === '야노식' && selectedGrades.includes('1'));
                 
-                container.style.display = elementMatch && positionMatch && rarityMatch && gradeMatch ? 'flex' : 'none';
+                const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
+                container.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) visibleCount++;
             });
+            
+            // Update count display
+            document.getElementById('filteredCount').textContent = `전체 ${visibleCount}개`;
         }
 
         // Search functionality implementation
@@ -512,10 +570,18 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
 
         // Search filtering function
         function filterBySearch(searchValue) {
+            const containers = document.querySelectorAll('.persona-detail-container');
+            let visibleCount = 0;
+            
             containers.forEach(container => {
                 const personaName = container.dataset.name.toLowerCase();
-                container.style.display = searchValue === '' || personaName.includes(searchValue) ? 'flex' : 'none';
+                const isVisible = searchValue === '' || personaName.includes(searchValue);
+                container.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) visibleCount++;
             });
+            
+            // Update count display
+            document.getElementById('filteredCount').textContent = `전체 ${visibleCount}개`;
         }
 
         // Close dropdown when clicking outside search
@@ -546,3 +612,67 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
     });
     
 </script>
+
+<style>
+.explain-container {
+    margin: 20px 0 0 0;
+    padding: 0 20px;
+}
+
+.explain-box {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .explain-container {
+        padding: 0;
+    }
+    .explain-box {
+        gap: 24px;
+    }
+}
+
+.explain-section h4 {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-examples {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.priority-item span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+</style>

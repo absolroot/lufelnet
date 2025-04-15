@@ -149,6 +149,7 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             <input type="text" id="revelationSearch" placeholder="계시 검색..." autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
+        <div class="search-count"></div>
     </div>
 
     <!-- Revelation card container -->
@@ -164,6 +165,7 @@ description: 페르소나5 더 팬텀 X의 계시 정보
         VersionChecker.check();
 
         const cardsContainer = document.getElementById('revelationCards');
+        const searchCount = document.querySelector('.search-count');
         
         // Separate main revelations and sub revelations
         const mainRevelations = Object.keys(revelationData.main);
@@ -174,6 +176,9 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             ...subRevelations.map(name => ({ name, type: 'sub' })),
             ...mainRevelations.map(name => ({ name, type: 'main' }))
         ];
+        
+        // 초기 검색 결과 수 표시
+        searchCount.textContent = `전체 ${allRevelations.length}개`;
         
         // Create card for each revelation
         allRevelations.forEach((revelation, index) => {
@@ -297,6 +302,7 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             const selectedEffects = Array.from(document.querySelectorAll('input[name="effect"]:checked')).map(cb => cb.value);
             
             const cards = document.querySelectorAll('.card');
+            let visibleCount = 0;
             
             // List of filtered sub revelations
             let filteredSubRevelations = Object.keys(revelationData.sub_effects).filter(name => {
@@ -329,12 +335,16 @@ description: 페르소나5 더 팬텀 X의 계시 정보
                     card.style.display = 'flex';
                     card.style.visibility = 'visible';
                     card.style.opacity = '1';
+                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                     card.style.visibility = 'hidden';
                     card.style.opacity = '0';
                 }
             });
+            
+            // Update search count
+            searchCount.textContent = `전체 ${visibleCount}개`;
         }
 
         // Search functionality implementation
@@ -380,6 +390,8 @@ description: 페르소나5 더 팬텀 X의 계시 정보
 
         // Search filtering function
         function filterBySearch(searchValue) {
+            let visibleCount = 0;
+            
             cards.forEach(card => {
                 const name = card.dataset.name;
                 const shouldShow = searchValue === '' || name.toLowerCase().includes(searchValue);
@@ -388,12 +400,16 @@ description: 페르소나5 더 팬텀 X의 계시 정보
                     card.style.display = 'flex';
                     card.style.visibility = 'visible';
                     card.style.opacity = '1';
+                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                     card.style.visibility = 'hidden';
                     card.style.opacity = '0';
                 }
             });
+            
+            // Update search count
+            searchCount.textContent = `전체 ${visibleCount}개`;
         }
 
         let activeCard = null; // Track currently active card

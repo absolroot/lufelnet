@@ -190,6 +190,7 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
+        <div class="search-count"></div>
     </div>
 
     <!-- Character card container -->
@@ -209,6 +210,7 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
         VersionChecker.check();
 
         const cardsContainer = document.getElementById('characterCards');
+        const searchCount = document.querySelector('.search-count');
         
         // Combine mainParty and supportParty
         let allCharacters = [
@@ -228,6 +230,9 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                 return characterData[b].rarity - characterData[a].rarity;
             });
         
+        // 초기 검색 결과 수 표시
+        searchCount.textContent = `전체 ${sortedCharacters.length}명`;
+        
         // Create card for each character
         sortedCharacters.forEach(characterName => {
             const card = document.createElement('div');
@@ -236,10 +241,11 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             card.dataset.position = characterData[characterName].position;
             card.dataset.rarity = characterData[characterName].rarity;
             
-            // Add click event
-            card.addEventListener('click', () => {
-                window.location.href = `character.html?name=${encodeURIComponent(characterName)}&v=${APP_VERSION}`;
-            });
+            // Create link wrapper
+            const link = document.createElement('a');
+            link.href = `character.html?name=${encodeURIComponent(characterName)}&v=${APP_VERSION}`;
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
             
             // Position icon container
             const positionContainer = document.createElement('div');
@@ -273,25 +279,17 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             elementIcon.alt = characterData[characterName].element;
             elementIcon.className = 'element-icon';
             
-            /*
-            // Name image
-            const nameImg = document.createElement('img');
-            nameImg.src = `{{ site.baseurl }}/assets/img/character-cards/코드_${characterName}.png`;
-            nameImg.alt = characterName;
-            nameImg.className = 'name-img';
-            img.loading = 'lazy';  // Add lazy loading attribute*/
-
             // Add name
             const nameText = document.createElement('span');
             nameText.textContent = characterData[characterName].name;
             nameText.className = 'name-text';
             
             positionContainer.appendChild(positionIcon);
-            card.appendChild(positionContainer);
-            card.appendChild(img);
-            card.appendChild(elementIcon);
-            //card.appendChild(nameImg);
-            card.appendChild(nameText);
+            link.appendChild(positionContainer);
+            link.appendChild(img);
+            link.appendChild(elementIcon);
+            link.appendChild(nameText);
+            card.appendChild(link);
             cardsContainer.appendChild(card);
         });
 
@@ -340,6 +338,8 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map(cb => cb.value);
             
             const cards = document.querySelectorAll('.card');
+            let visibleCount = 0;
+            
             cards.forEach(card => {
                 // Changed method to find characterName
                 const displayName = card.querySelector('.name-text').textContent;
@@ -391,76 +391,13 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                     }
                 });
                 
-                card.style.display = elementMatch && positionMatch && rarityMatch && tagMatch ? 'block' : 'none';
+                const shouldShow = elementMatch && positionMatch && rarityMatch && tagMatch;
+                card.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) visibleCount++;
             });
-        }
-
-        // Card hover effect
-        /*
-        const cards = document.querySelectorAll('.card');
-        
-        cards.forEach(card => {
-            const isOdd = Array.from(cards).indexOf(card) % 2 === 0;
-            const originalTransform = isOdd ? 
-                'rotate(-2deg) translateY(-10px)' : 
-                'rotate(-2deg) translateY(10px)';
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const rotateY = (-1/5 * x + 20) * 0.5;
-                const rotateX = (4/30 * y - 20) * 0.5;
-
-                card.style.transform = `${originalTransform} perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                card.style.setProperty('--overlay-position', `${x/5 + y/5}%`);
-                card.style.setProperty('--overlay-opacity', x/200);
-            });
-
-            card.addEventListener('mouseout', () => {
-                card.style.transform = originalTransform;
-                card.style.setProperty('--overlay-opacity', '0');
-            });
-        });
-        */
-        
-        // Add dummy cards to last row 
-        function adjustLastRow() {
-            const cardsContainer = document.querySelector('.character-cards');
-            const cards = cardsContainer.querySelectorAll('.card');
-            const width = window.innerWidth;
-
-            // Remove existing dummy elements
-            const dummies = cardsContainer.querySelectorAll('.dummy-card');
-            dummies.forEach(dummy => dummy.remove());
-
-            function addDummyCards(columnsCount) {
-                const totalCards = cards.length;
-                const remainder = totalCards % columnsCount;
-                
-                if (remainder > 0) {
-                    const dummyCount = columnsCount - remainder;
-                    
-                    for (let i = 0; i < dummyCount; i++) {
-                        const dummy = document.createElement('div');
-                        dummy.className = 'card dummy-card';
-                        dummy.style.visibility = 'hidden';
-                        dummy.style.width = `calc((100% - 8vw) / ${columnsCount})`;
-                        dummy.style.margin = '0';
-                        cardsContainer.appendChild(dummy);
-                    }
-                }
-            }
-
-            if (width > 1159) {
-                addDummyCards(6);  // 6-column layout
-            } else if (width >= 960 && width <= 1159) {
-                addDummyCards(5);  // 5-column layout
-            } else if (width >= 745 && width <= 959) {
-                addDummyCards(4);  // 4-column layout
-            } else if (width >= 563 && width <= 745) {
-                addDummyCards(3);  // 3-column layout
-            }
+            
+            // Update search count
+            searchCount.textContent = `전체 ${visibleCount}명`;
         }
 
         // Run on initial load and resize
@@ -539,6 +476,8 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
 
         // Search filtering function
         function filterBySearch(searchValue) {
+            let visibleCount = 0;
+            
             cards.forEach(card => {
                 const nameText = card.querySelector('.name-text');
                 if (!nameText) return;
@@ -563,7 +502,11 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                     nicknameMatch !== undefined;
                 
                 card.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) visibleCount++;
             });
+            
+            // Update search count
+            searchCount.textContent = `전체 ${visibleCount}명`;
             
             // 검색 후 마지막 줄 정렬 조정
             adjustLastRow();

@@ -86,7 +86,7 @@ const personaData = {
         uniqueSkill: {
             name: "레볼루션",
             effect: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 추가로 1.1%가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
-            priority: 0,
+            priority: 2,
             icon: "버프광역"
         },
         highlight: {
@@ -155,7 +155,7 @@ const personaData = {
         uniqueSkill: {
             name: "조화의 균열",
             effect: "모든 적에게 공격력 104.0%의 주원 속성 대미지를 주고, 2턴 동안 모든 적의 방어력을 10.0% 감소시키며, 받는 지속 대미지가 20.0% 증가한다.",
-            priority: 1,
+            priority: 0,
             icon: "주원광역"
         },
         highlight: {
@@ -215,7 +215,7 @@ const personaData = {
         uniqueSkill: {
             name: "레볼루션",
             effect: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 추가로 1.1%가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
-            priority: 0,
+            priority: 2,
             icon: "버프광역"
         },
         highlight: {
@@ -600,12 +600,12 @@ const personaData = {
             effects: [
                 "공격력이 29.1% 증가한다.\n전투 시작 시 『불씨』를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 『불씨』 1중첩을 획득한다. 만약 화상일 경우 『불씨』를 추가로 1중첩 획득하며 3턴 동안 지속된다 (10회 중첩 가능).\n매회 스킬은 『불씨』를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시『불씨』가 4중첩 이상이면 모든 『불씨』를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다."
             ],
-            priority: 0
+            priority: 2
         },
         uniqueSkill: {
             name: "정화의 불",
             effect: "3턴 동안 모든 아군 캐릭터의 공격력이 8.0% 증가하고, 자신의 공격력 500마다 0.5% 추가 증가한다(최대 4%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-            priority: 0,
+            priority: 3,
             icon: "버프광역"
         },
         highlight: {
@@ -617,7 +617,7 @@ const personaData = {
             {name : "명중 강화", priority: 3 },
             {name : "우중충한 하늘", priority: 3},
         ],
-        comment : ""
+        comment : "화상이 필수적인 캐릭터(ex. 미오)에게 사용하는 형태로 채용된다."
     },
     "라미아": {
         grade: "3",
@@ -1196,7 +1196,8 @@ const personaData = {
             {name : "정교한 타격", priority: 0 },
             {name : "마도의 재능", priority: 0 },
             {name : "화염 강화", priority: 0}
-        ]
+        ],
+        comment : "원더를 통한 화염 대미지를 부여할 때 채용한다."
     },
     "기리메칼라": {
         grade: "5",
@@ -1209,7 +1210,7 @@ const personaData = {
                 "효과저항이 17.4% 증가한다.",
                 "모든 동료가 디버프 효과를 가진 적에게 받는 대미지가 20% 감소한다."
             ],
-            priority: 0
+            priority: 2
         },
         uniqueSkill: {
             name: "마하타쿤다",
@@ -1222,7 +1223,8 @@ const personaData = {
             priority: 0
         },
         recommendSkill : [
-        ]
+        ],
+        comment : "받는 대미지 감소 효과가 필요할 때 채용한다."
     },
     "쿠 훌린": {
         grade: "7",

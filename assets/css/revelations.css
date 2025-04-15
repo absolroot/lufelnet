@@ -318,10 +318,14 @@
 
 /* Search section styles */
 .search-section {
+    position: relative;
     padding: 0 20px;
     margin-bottom: 4px;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .search-container {
@@ -329,6 +333,12 @@
     align-items: center;
     max-width: 260px;
     box-sizing: border-box;
+}
+
+.search-count {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .search-icon {
@@ -400,4 +410,12 @@
 
 .search-dropdown::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.4);
+}
+
+/* 모바일 화면 레이아웃 조정 */
+@media (max-width: 768px) {
+    .search-section {
+        padding: 0px;
+        width: 100%;
+    }
 }

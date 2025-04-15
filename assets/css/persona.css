@@ -612,7 +612,8 @@ input, textarea {
 
 .persona-instinct-info[data-priority="3"],
 .persona-unique-skill-info[data-priority="3"],
-.persona-highlight-info[data-priority="3"] {
+.persona-highlight-info[data-priority="3"],
+.priority-box.high {
     position: relative;
     background: #2E201D;
     border: 1px solid transparent;
@@ -621,7 +622,8 @@ input, textarea {
 
 .persona-instinct-info[data-priority="3"]::before,
 .persona-unique-skill-info[data-priority="3"]::before,
-.persona-highlight-info[data-priority="3"]::before {
+.persona-highlight-info[data-priority="3"]::before,
+.priority-box.high::before {
     content: "";
     position: absolute;
     top: -1px;
@@ -645,31 +647,37 @@ input, textarea {
 
 .persona-instinct-info[data-priority="2"],
 .persona-unique-skill-info[data-priority="2"],
-.persona-highlight-info[data-priority="2"] {
+.persona-highlight-info[data-priority="2"],
+.priority-box.medium {
     /*border: 1.5px solid rgba(136, 118, 20, 0.5);*/
     border: 1.5px solid rgba(212, 201, 189, 0.3);
 }
 
 .persona-instinct-info[data-priority="1"],
 .persona-unique-skill-info[data-priority="1"],
-.persona-highlight-info[data-priority="1"] {
+.persona-highlight-info[data-priority="1"],
+.priority-box.medium {
     border: 1.5px solid rgba(212, 201, 189, 0.3);
 }
 
 /* Priority에 따른 스킬 이름 색상 */
-.persona-recommended-skills li[data-priority="3"] .skill-name {
-    color: #ffc4c4;  
+.persona-recommended-skills li[data-priority="3"] .skill-name,
+.priority-text.high {
+    color: #e99292;  
 }
 
-.persona-recommended-skills li[data-priority="2"] .skill-name {
+.persona-recommended-skills li[data-priority="2"] .skill-name,
+.priority-text.medium {
+    color: rgba(114, 165, 224, 0.8);  
+}
+
+.persona-recommended-skills li[data-priority="1"] .skill-name,
+.priority-text.low {
     color: rgb(255, 255, 255, 0.8);  
 }
 
-.persona-recommended-skills li[data-priority="1"] .skill-name {
-    color: rgb(255, 255, 255, 0.6);  
-}
-
-.persona-recommended-skills li[data-priority="0"] .skill-name {
+.persona-recommended-skills li[data-priority="0"] .skill-name,
+.priority-text.extra-low {
     color: rgb(255, 255, 255, 0.4);  /* 화이트 */
 }
 
@@ -744,10 +752,14 @@ input, textarea {
 
 
 .search-section {
+    position: relative;
     padding: 0 20px;
     margin-bottom: 4px;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .search-container {
@@ -755,6 +767,12 @@ input, textarea {
     align-items: center;
     max-width: 260px;
     box-sizing: border-box;
+}
+
+.search-count {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .search-icon {

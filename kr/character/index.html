@@ -253,10 +253,19 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             
             // Character image
             const img = document.createElement('img');
-            img.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
+            img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
             img.alt = characterName;
             img.className = 'character-img';
-            img.loading = 'lazy';  // Add lazy loading attribute
+            
+            // 실제 이미지 로드
+            const realImage = new Image();
+            realImage.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
+            realImage.alt = characterName;
+            realImage.className = 'character-img';
+            realImage.onload = () => {
+                img.src = realImage.src;
+                img.classList.add('loaded');
+            };
             
             // Element icon
             const elementIcon = document.createElement('img');

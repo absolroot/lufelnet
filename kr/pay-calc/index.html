@@ -101,9 +101,23 @@ description: 페르소나5 더 팬텀 X 과금 계산기
 
     <!-- 패키지 테이블 -->
     <div class="table-tabs card-style">
-        <div class="tab-buttons">
-            <button class="tab-button active" data-tab="package">패키지</button>
-            <button class="tab-button" data-tab="crystal">이계 수정</button>
+        <div class="tab-header">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="package">패키지</button>
+                <button class="tab-button" data-tab="crystal">이계 수정</button>
+            </div>
+            <div class="filter-dropdown">
+                <button class="filter-button">
+                    <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 5.25C16.2029 5.25 16.3972 5.33222 16.5384 5.47789L20.5384 9.60289C20.8268 9.90025 20.8195 10.3751 20.5221 10.6634C20.2247 10.9518 19.7499 10.9445 19.4616 10.6471L16.75 7.8508L16.75 18C16.75 18.4142 16.4142 18.75 16 18.75C15.5858 18.75 15.25 18.4142 15.25 18L15.25 7.8508L12.5384 10.6471C12.2501 10.9445 11.7753 10.9518 11.4779 10.6634C11.1805 10.3751 11.1732 9.90025 11.4616 9.60289L15.4616 5.47789C15.6028 5.33222 15.7971 5.25 16 5.25ZM8 5.25C8.41421 5.25 8.75 5.58579 8.75 6L8.75 16.1492L11.4616 13.3529C11.7499 13.0555 12.2247 13.0482 12.5221 13.3366C12.8195 13.6249 12.8268 14.0997 12.5384 14.3971L8.53843 18.5221C8.39717 18.6678 8.20291 18.75 8 18.75C7.79709 18.75 7.60283 18.6678 7.46158 18.5221L3.46158 14.3971C3.17322 14.0997 3.18053 13.6249 3.47789 13.3366C3.77526 13.0482 4.25007 13.0555 4.53843 13.3529L7.25 16.1492L7.25 6C7.25 5.58579 7.58579 5.25 8 5.25Z" fill="currentColor"/>
+                    </svg>
+                    <span class="current-sort">기본</span>
+                </button>
+                <div class="dropdown-content">
+                    <div class="dropdown-item" data-sort="price">가격 순</div>
+                    <div class="dropdown-item" data-sort="efficiency">엠버 효율 순</div>
+                </div>
+            </div>
         </div>
         
         <div id="package-tab" class="tab-content active">
@@ -158,11 +172,95 @@ description: 페르소나5 더 팬텀 X 과금 계산기
     </div>
 </div>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('pay-calc');
         VersionChecker.check();
+
+        // 드롭다운 토글 기능 추가
+        const filterButton = document.querySelector('.filter-button');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        filterButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+        });
+
+        // 문서 어디든 클릭하면 드롭다운 닫기
+        document.addEventListener('click', () => {
+            dropdownContent.classList.remove('show');
+        });
+
+        // 드롭다운 내부 클릭은 이벤트 전파 중단
+        dropdownContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // 정렬 기능 구현
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        let currentSort = {
+            type: 'default',
+            direction: 'asc'
+        };
+
+        // 초기 정렬 상태 설정
+        const currentSortText = document.querySelector('.current-sort');
+        currentSortText.textContent = '기본';
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sortType = item.dataset.sort;
+                const tableBody = document.querySelector('.active .package-table tbody');
+                const rows = Array.from(tableBody.querySelectorAll('tr'));
+                const currentSortText = document.querySelector('.current-sort');
+
+                // 정렬 방향 결정
+                if (currentSort.type === sortType) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.type = sortType;
+                    currentSort.direction = 'asc';
+                }
+
+                // 정렬 실행
+                rows.sort((a, b) => {
+                    let aValue, bValue;
+
+                    if (sortType === 'price') {
+                        // price-main 클래스에서 가격 가져오기
+                        aValue = parseInt(a.querySelector('.price-main').textContent.replace(/[^0-9]/g, ''));
+                        bValue = parseInt(b.querySelector('.price-main').textContent.replace(/[^0-9]/g, ''));
+                    } else if (sortType === 'efficiency') {
+                        // efficiency-pc 또는 efficiency-mobile 클래스에서 엠버 효율 가져오기
+                        const aEfficiency = a.querySelector('.efficiency-pc, .efficiency-mobile').textContent;
+                        const bEfficiency = b.querySelector('.efficiency-pc, .efficiency-mobile').textContent;
+                        aValue = parseFloat(aEfficiency.replace(/[^0-9.]/g, ''));
+                        bValue = parseFloat(bEfficiency.replace(/[^0-9.]/g, ''));
+                    } else {
+                        // 기본 정렬 (release_order 기준)
+                        aValue = parseInt(a.dataset.releaseOrder || 0);
+                        bValue = parseInt(b.dataset.releaseOrder || 0);
+                    }
+
+                    // NaN 값 처리 (엠버 효율이 없는 경우)
+                    if (isNaN(aValue)) aValue = Infinity;
+                    if (isNaN(bValue)) bValue = Infinity;
+
+                    return currentSort.direction === 'asc' ? aValue - bValue : bValue - aValue;
+                });
+
+                // 정렬된 행을 테이블에 다시 추가
+                rows.forEach(row => tableBody.appendChild(row));
+
+                // 현재 정렬 상태 업데이트
+                dropdownItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                currentSortText.textContent = item.textContent;
+
+                // 드롭다운 닫기
+                dropdownContent.classList.remove('show');
+            });
+        });
 
         // 탭 전환 기능
         document.querySelectorAll('.tab-button').forEach(button => {

@@ -133,7 +133,7 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             <!-- Rarity filter -->
             <div class="filter-group">
                 <h3>희귀도</h3>
-                <div class="filter-options">
+                <div class="filter-options tag-options">
                     <label>
                         <input type="checkbox" name="rarity" value="5" hidden>
                         <div class="star-container">
@@ -153,6 +153,8 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                             <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
                         </div>
                     </label>
+                    <label><input type="checkbox" name="tag" value="한정"><img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
+                    <label><input type="checkbox" name="tag" value="통상"><img src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
                 </div>
             </div>
 
@@ -386,6 +388,10 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                             return characterTags.includes('방어력 감소');
                         case '관통':
                             return characterTags.includes('관통');
+                        case '한정':
+                            return characterData[characterKey]?.limit === true;
+                        case '통상':
+                            return characterData[characterKey]?.limit === false;
                         default:
                             return false;
                     }

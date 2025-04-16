@@ -1,5 +1,3 @@
-
-
 /* 카드 스타일 */
 .card-style {
     background: #fff;
@@ -612,6 +610,66 @@ img[src*="check-on.png"].checkbox-img {
 } 
 
 /* 탭 스타일 */
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin-right: 10px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: rgb(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.filter-button img {
+    width: 16px;
+    height: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    padding: 8px;
+    min-width: 120px;
+    z-index: 1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 .table-tabs {
     margin: 0 20px;
     padding: 0;
@@ -621,7 +679,6 @@ img[src*="check-on.png"].checkbox-img {
 
 .tab-buttons {
     display: flex;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0 20px;
 }
 

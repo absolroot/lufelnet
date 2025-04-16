@@ -29,7 +29,7 @@ const WeaponData = {
             "description": "업데이트 예정"
         },
         "weapon5-1":{
-            "name": "5성 무기",
+            "name": "백야의 성흔",
             "health": 0,
             "attack": 0,
             "defense": 0,

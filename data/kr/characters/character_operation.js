@@ -9,7 +9,7 @@ const operationData = {
     },
     "마나카": {
         basic: [
-            { label: "의식 0", value: "1 › 3 › 1 › 3 › 1 › 3" },
+            { label: "의식 0", value: "· › 1 › 3 › 1 › 3 › 1" },
             { label: "의식 1", value: "3 › 1 › 3 › 1 › 3 › 1" }
         ],
         note: []
@@ -64,8 +64,8 @@ const operationData = {
         basic: [
             { label: "의식 0(단일)", value: "2 › 3 › 2 › 3 › 2 › 3" },
             { label: "의식 0(다중)", value: "1 › 3 › 1 › 3 › 1 › 3" },
-            { label: "의식 6(단일)", value: "3 › 2 › 3 › 2 › 3 › 2" },
-            { label: "의식 6(다중)", value: "3 › 1 › 3 › 1 › 3 › 1" }
+            { label: "의식 6(단일)", value: "3 › 2 › 1 › 3 › 2 › 1" },
+            { label: "의식 6(다중)", value: "3 › 1 › 2 › 3 › 1 › 2" }
         ],
         note: [
             "-"

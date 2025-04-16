@@ -242,7 +242,7 @@ const characterData = {
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
         "mind_stats1": "대미지보너스 16%",
-        "mind_stats2": "공격력 20%",
+        "mind_stats2": "효과명중 24%!",
         "mind_skill1": "1/2!",
         "mind_skill2": "3/HL!"
     },
@@ -1631,12 +1631,12 @@ const characterData = {
         "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
         "sub_option3": ["공격력", "대미지보너스"],
         "minimum_stats": {
-            "LV10": "효과명중 140% / 210%",
-            "LV10+5": "효과명중 140% / 210%",
+            "LV10": "효과명중 150%",
+            "LV10+5": "효과명중 150%",
             "LV12": false,
             "LV12+5": false,
-            "LV13": "효과명중 140% / 210%",
-            "LV13+5": "효과명중 140% / 210%"
+            "LV13": "효과명중 150%",
+            "LV13+5": "효과명중 150%"
         },
         "battle_plus_stats": "· 마이팰리스 2.3%",
         "skill1_lv": "MAX!",

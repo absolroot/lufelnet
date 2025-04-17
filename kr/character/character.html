@@ -635,19 +635,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 타이틀 업데이트
         document.title = `${character.name} - 페르소나5 더 팬텀 X 루페르넷`;
         
-        // 메타 설명 업데이트
+        // 메타 태그 업데이트 (태그가 존재하는 경우에만)
         const description = `${character.name}(${character.codename}) - 페르소나5 더 팬텀 X 루페르넷 : 추천 세팅, 스킬, 의식, 전용무기 정보`;
-        document.querySelector('meta[name="description"]').setAttribute('content', description);
         
-        // Open Graph 태그 업데이트
-        document.querySelector('meta[property="og:title"]').setAttribute('content', `${character.name} - 페르소나5 더 팬텀 X 루페르넷`);
-        document.querySelector('meta[property="og:description"]').setAttribute('content', description);
-        document.querySelector('meta[property="og:image"]').setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
-        document.querySelector('meta[property="og:url"]').setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const canonicalLink = document.getElementById('canonical-link');
 
-        // canonical URL 설정
-        const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
-        document.getElementById('canonical-link').setAttribute('href', canonicalUrl);
+        if (metaDescription) metaDescription.setAttribute('content', description);
+        if (ogTitle) ogTitle.setAttribute('content', `${character.name} - 페르소나5 더 팬텀 X 루페르넷`);
+        if (ogDescription) ogDescription.setAttribute('content', description);
+        if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
+        if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
+        if (canonicalLink) {
+            const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
+            canonicalLink.setAttribute('href', canonicalUrl);
+        }
     });
 </script>
 

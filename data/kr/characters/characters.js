@@ -53,8 +53,8 @@ const characterData = {
     },
     "이케나미": {
         "limit": false,
-        "role": "",
-        "tag": "스킬마스터",
+        "role": "범용 서포터",
+        "tag": "스킬마스터, 원소 이상, 지속 대미지, 효과 명중, 축복, 관통, 대미지 보너스, 공격력",
         "color": "#000000",
         "main_revelation": ["신뢰","창조"],
         "sub_revelation": ["풍요","화해"],

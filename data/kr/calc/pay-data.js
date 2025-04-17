@@ -58,7 +58,7 @@ const PAY_DATA = {
         },
         {
             name: "얼티밋 패스",
-            amber: 1900,
+            amber: 1800,
             destiny: 3,
             destinyCoins: 3,
             price: 25000,

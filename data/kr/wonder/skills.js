@@ -1857,6 +1857,43 @@ const personaSkillList = {
             }
         ]
     },
+    "레볼루션": {
+        description: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 1.1% 추가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
+        type: "지원",
+        target: "전체",
+        icon : "버프광역",
+        effects: [
+            {
+                type: "버프",
+                stat: "크리티컬",
+                baseValue: 6.5,
+                scaleValue: 1.1,
+                scalePer: 10,
+                maxValue: 4.4,
+                duration: 3
+            }
+        ]
+    },
+    "무한 알고리즘": {
+        description: "2턴 동안 모든 아군 캐릭터의 공격력이 30.0% 증가하고, 메인 목표의 대미지가 추가로 20.0% 증가한다.",
+        type: "지원",
+        target: "전체",
+        icon : "버프광역",
+        effects: [
+            {
+                type: "버프",
+                stat: "공격력",
+                value: 30.0,
+                duration: 2
+            },
+            {
+                type: "버프",
+                stat: "대미지",
+                value: 20.0,
+                duration: 2
+            }
+        ]
+    },
     "컨센트레이트": {
         description: "자신의 다음 마법 속성 대미지가 52.1% 증가하며 1턴 동안 지속된다.",
         type: "지원",

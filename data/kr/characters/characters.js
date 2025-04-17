@@ -115,7 +115,7 @@ const characterData = {
             "LV13": "공격력 5980",
             "LV13+5": "공격력 6440"
         },
-        "battle_plus_stats": "· 마이팰리스 50",
+        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
@@ -155,7 +155,7 @@ const characterData = {
             "LV13": "속도 189",
             "LV13+5": "속도 207"
         },
-        "battle_plus_stats": "· 마이팰리스 1",
+        "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -236,7 +236,7 @@ const characterData = {
             "LV13": "효과명중 182%",
             "LV13+5": "효과명중 200%"
         },
-        "battle_plus_stats": "· 마이팰리스 2.3% / 헛수고 : 2턴 동안 30% 효과명중 증가",
+        "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 헛수고 : 2턴 동안 30% 효과명중 증가",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -276,7 +276,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점 ",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -356,7 +356,7 @@ const characterData = {
             "LV13": "효과명중 182%",
             "LV13+5": "효과명중 199%"
         },
-        "battle_plus_stats": "· 전용무기 : 전투 중 효과명중 증가 / 마이팰리스 2.3%",
+        "battle_plus_stats": "· 전용무기 : 전투 중 효과명중 증가 / 마이팰리스 2.3% / 마이팰리스 평점 ",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -476,7 +476,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 마이팰리스 1",
+        "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
@@ -556,7 +556,7 @@ const characterData = {
             "LV13": "방어력 6475",
             "LV13+5": "방어력 7100"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 40 / 패시브 24%",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 마이팰리스 평점  / 패시브 24% ",
         "skill1_lv": "8",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX",
@@ -636,7 +636,7 @@ const characterData = {
             "LV13": "생명 15000",
             "LV13+5": "생명 15000"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 220",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "8",
@@ -797,7 +797,7 @@ const characterData = {
             "LV13": "생명 16000",
             "LV13+5": "생명 16000"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 220 / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 찬란 1800",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점  / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 찬란 1800",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -957,7 +957,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 220 / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 찬란 1800",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점  / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 찬란 1800",
         "skill1_lv": "8",
         "skill2_lv": "MAX!",
         "skill3_lv": "8",
@@ -997,7 +997,7 @@ const characterData = {
             "LV13": "공격력 4317",
             "LV13+5": "공격력 4733"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65  / 마이팰리스 평점 ",
         "skill1_lv": "MAX",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -1077,7 +1077,7 @@ const characterData = {
             "LV13": "속도 180",
             "LV13+5": "속도 200"
         },
-        "battle_plus_stats": "· 마이팰리스 1 / 전용무기 : 스킬을 사용해 적 공격시 2턴 속도 15 증가",
+        "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점 / 전용무기 : 스킬을 사용해 적 공격시 2턴 속도 15 증가",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1197,7 +1197,7 @@ const characterData = {
             "LV13": "공격력 6500",
             "LV13+5": "공격력 7000"
         },
-        "battle_plus_stats": "· 마이팰리스 50",
+        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
@@ -1277,7 +1277,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false,
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 40 / 전용무기 : 3스 사용 시 적 방어력 탈취",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 마이팰리스 평점 / 전용무기 : 3스 사용 시 적 방어력 탈취",
         "skill1_lv": "8",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -1317,7 +1317,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 마이팰리스 2.3% / 의식3 : 동료가 원소이상 부여 시 2턴 10% 증가 (3중첩)",
+        "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 의식3 : 동료가 원소이상 부여 시 2턴 10% 증가 (3중첩)",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1398,7 +1398,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 마이팰리스 50",
+        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1518,7 +1518,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점",
         "skill1_lv": "8",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX",
@@ -1638,7 +1638,7 @@ const characterData = {
             "LV13": "효과명중 150%",
             "LV13+5": "효과명중 150%"
         },
-        "battle_plus_stats": "· 마이팰리스 2.3%",
+        "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1678,7 +1678,7 @@ const characterData = {
             "LV13": "공격력 5180",
             "LV13+5": "공격력 5680"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 의식1 : 동료가 대미지 부여시 20% 증가 (3중첩) / 전용무기 : 동심 소모 시 공격력 증가",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점 / 의식1 : 동료가 대미지 부여시 20% 증가 (3중첩) / 전용무기 : 동심 소모 시 공격력 증가",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1718,7 +1718,7 @@ const characterData = {
             "LV13": "공격력 5980",
             "LV13+5": "공격력 6440"
         },
-        "battle_plus_stats": "· 마이팰리스 50",
+        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",

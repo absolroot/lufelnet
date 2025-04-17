@@ -94,6 +94,7 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
+             {name : "무한 알고리즘", priority: 3},
              {name : "리벨리온", priority: 3},
              {name : "타루카쟈", priority: 3},
              {name : "라쿠카쟈", priority: 2},
@@ -102,7 +103,7 @@ const personaData = {
              {name : "대미지 면역", priority: 0},
              {name : "방어 강화", priority: 0},
         ],
-        comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다."
+        comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 무한 알고리즘은 과금 이벤트를 통해 배포된 스킬 카드."
     },
     "도미니온": {
         grade: "7",

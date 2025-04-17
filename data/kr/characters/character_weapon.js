@@ -21,7 +21,7 @@ const WeaponData = {
     "이케나미": {
         "name": "이케나미 쇼키",
         "weapon4-1":{
-            "name": "맹세의 성검검",
+            "name": "맹세의 성검",
             "health": 1823,
             "attack": 539,
             "defense": 349,

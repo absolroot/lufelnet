@@ -132,6 +132,26 @@ const penetrateData = [
         note: "스킬3 추가턴 메인 목표"
     },
     {
+        id: "ikenami0",
+        charName: "이케나미",
+        charImage: "이케나미.webp",
+        type: "스킬3",
+        target: "단일",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+        skillName: "별들의 공연",
+        options: ["LV10","LV10+심상5","LV12","LV12+심상5"],
+        values: {
+            "LV10": 12.0,
+            "LV10+심상5": 13.2,
+            "LV12": 12.5,
+            "LV12+심상5": 13.7
+        },
+        defaultOption: "LV12+심상5",
+        value: 13.7,
+        duration: "2턴",
+        note: "즉흥 교감(풍습) 상태 시"
+    },
+    {
         id: "minmami1",
         charName: "미나미",
         charImage: "미나미.webp",

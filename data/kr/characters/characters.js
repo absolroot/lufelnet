@@ -193,7 +193,7 @@ const characterData = {
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
         "sub_option2": ["공격력", "대미지보너스"],
-        "sub_option3": ["-"],
+        "sub_option3": ["관통"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -313,7 +313,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -433,7 +433,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -593,7 +593,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -754,7 +754,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스","관통"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -794,7 +794,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["생명", "크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": "생명 16000",
@@ -835,7 +835,7 @@ const characterData = {
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
         "sub_option2": ["공격력", "대미지보너스"],
-        "sub_option3": [],
+        "sub_option3": ["관통"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -874,7 +874,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -914,7 +914,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -1034,7 +1034,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -1115,7 +1115,7 @@ const characterData = {
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과"],
         "sub_option2": ["크리티컬 확률"],
-        "sub_option3": ["공격력", "대미지보너스"],
+        "sub_option3": ["공격력", "대미지보너스", "관통"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -1234,7 +1234,7 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
+        "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
         "minimum_stats": {
             "LV10": false,
@@ -1354,8 +1354,8 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
-        "sub_option3": [],
+        "sub_option2": ["크리티컬 확률"],
+        "sub_option3": ["공격력", "대미지보너스", "관통"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -1435,8 +1435,8 @@ const characterData = {
         "sub_revel3": ["공격력"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["관통"],
-        "sub_option2": ["공격력", "대미지보너스"],
-        "sub_option3": ["효과명중"],
+        "sub_option2": ["공격력", "대미지보너스", "크리티컬 확률"],
+        "sub_option3": ["크리티컬 효과", "효과명중"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -1636,7 +1636,7 @@ const characterData = {
         "sub_revel4": ["공격력"],
         "sub_option1": ["효과명중"],
         "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option3": ["공격력", "대미지보너스"],
+        "sub_option3": ["공격력", "대미지보너스", "관통"],
         "minimum_stats": {
             "LV10": "효과명중 150%",
             "LV10+5": "효과명중 150%",

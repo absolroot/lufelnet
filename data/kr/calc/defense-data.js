@@ -6,7 +6,7 @@ const penetrateData = [
         type: "계시",
         target: "광역",
         skillIcon: `${BASE_URL}/assets/img/revelation/희망.webp`,
-        skillName: "진정성 + 희망",
+        skillName: "직책 + 희망",
         options: [],
         value: 5.0,
         duration: "1턴",

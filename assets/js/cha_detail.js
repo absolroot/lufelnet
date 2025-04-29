@@ -291,6 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
+        
+        // 페르소나3 캐릭터일 때 person3r.css 적용
+        if (character.persona3) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `${BASE_URL}/assets/css/persona3r.css`;
+            document.head.appendChild(link);
+        }
+
         fillSettingsInfo(character);
         fillSkillsInfo(characterName);
         fillOperationInfo(characterName);  // 운영 정보 추가
@@ -563,7 +572,12 @@ document.addEventListener('DOMContentLoaded', () => {
         skillsGrid.parentElement.insertBefore(buttonContainer, skillsGrid);
         
         // 스킬 순서 정의
-        const skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
+        let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
+        
+        // 페르소나3 캐릭터인 경우 추가 스킬 포함
+        if (characterInfo.persona3) {
+            skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
+        }
         
         skillsGrid.innerHTML = ''; // 기존 내용 초기화
         
@@ -828,5 +842,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
- 
 });

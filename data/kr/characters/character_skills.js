@@ -34,6 +34,18 @@ const characterSkillsData = {
             "type": "",
             "description": ""
         },
+        "skill_highlight2": {
+            "name": "테우르기아",
+            "element": "버프",
+            "type": "버프",
+            "description": ""
+        },
+        "skill_support": {
+            "name": "지원 기술",
+            "element": "패시브",
+            "type": "버프",
+            "description": ""
+        },
         "passive1": {
             "name": "업데이트 예정",
             "element": "패시브",

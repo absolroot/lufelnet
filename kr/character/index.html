@@ -285,6 +285,7 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             const nameText = document.createElement('span');
             nameText.textContent = characterData[characterName].name;
             nameText.className = 'name-text';
+            nameText.dataset.persona3 = characterData[characterName].persona3;
             
             positionContainer.appendChild(positionIcon);
             link.appendChild(positionContainer);

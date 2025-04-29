@@ -620,6 +620,12 @@ h2{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+.card-style[data-persona3="true"] {
+    background: #13354e;
+}
+
+
 /* setting card style */
 .settings-grid {
     display: flex;

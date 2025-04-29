@@ -151,6 +151,13 @@
     transition: background 0.5s;  /* 부드러운 전환 효과 */
 }
 
+
+/* 페르소나3 호버 시 스타일 */
+.card:hover .name-text[data-persona3="true"] {
+    background: linear-gradient(to bottom, #0e4570, #0d4e76);
+    transition: background 0.5s;
+}
+
 .name-img {
     position: absolute;
     bottom: 30px !important; 

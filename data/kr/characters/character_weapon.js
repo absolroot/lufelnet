@@ -18,6 +18,25 @@ const WeaponData = {
             "description": ""
         }
     },
+    "유키 마코토": {
+        "name": "유키 마코토",
+        "weapon4-1":{
+            "name": "4성 무기",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "업데이트 예정",
+            "description": "업데이트 예정"
+        },
+        "weapon5-1":{
+            "name": "5성 무기",
+            "health": 0,
+            "attack": 0,
+            "defense": 0,
+            "skill_name": "업데이트 예정",
+            "description": "업데이트 예정"
+        }
+    },
     "이케나미": {
         "name": "이케나미 쇼키",
         "weapon4-1":{

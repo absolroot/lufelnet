@@ -3,6 +3,10 @@ const operationData = {
         basic: [],
         note: []
     },
+    "유키 마코토": {
+        basic: [],
+        note: []
+    },
     "이케나미": {
         basic: [
             { label: "의식 0", value: "1 › 3 › 1 › 3 › 1 › 3" },

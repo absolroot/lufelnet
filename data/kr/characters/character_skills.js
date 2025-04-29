@@ -2,6 +2,50 @@ const characterSkillsData = {
     "원더": {
         "name": "원더"
     },
+    "유키 마코토": {
+        "name": "유키 마코토",
+        "skill1": {
+            "name": "업데이트 예정",
+            "element": "화염",
+            "type": "단일피해",
+            "sp": 0,
+            "cool": 0,
+            "description": ""
+        },
+        "skill2": {
+            "name": "업데이트 예정",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 0,
+            "cool": 0,
+            "description": ""
+        },
+        "skill3": {
+            "name": "업데이트 예정",
+            "element": "화염광역",
+            "type": "광역피해",
+            "sp": 0,
+            "cool": 0,
+            "description": ""
+        },
+        "skill_highlight": {
+            "name": "테우르기아",
+            "element": "화염",
+            "type": "",
+            "description": ""
+        },
+        "passive1": {
+            "name": "업데이트 예정",
+            "element": "패시브",
+            "description": ""
+        },
+        "passive2": {
+            "name": "업데이트 예정",
+            "element": "패시브",
+            "description": ""
+        }
+    },
+
     "이케나미": {
         "name": "이케나미 쇼키",
         "skill1": {

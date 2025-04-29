@@ -158,6 +158,23 @@
     transition: background 0.5s;
 }
 
+
+/* 페르소나4 호버 시 스타일 */
+.card:hover .name-text[data-persona4="true"] {
+    background: linear-gradient(to bottom, #cba233, #bf992f);
+    transition: background 0.5s;
+}
+
+
+/* 페르소나5 호버 시 스타일 */
+.card:hover .name-text[data-persona5="true"] {
+    background: linear-gradient(to bottom, #a41010, #951d1d);
+    transition: background 0.5s;
+}
+
+
+
+
 .name-img {
     position: absolute;
     bottom: 30px !important; 

@@ -621,11 +621,6 @@ h2{
 }
 
 
-.card-style[data-persona3="true"] {
-    background: #13354e;
-}
-
-
 /* setting card style */
 .settings-grid {
     display: flex;

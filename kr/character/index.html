@@ -132,7 +132,7 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             
             <!-- Rarity filter -->
             <div class="filter-group">
-                <h3>희귀도</h3>
+                <h3>유형</h3>
                 <div class="filter-options tag-options">
                     <label>
                         <input type="checkbox" name="rarity" value="5" hidden>
@@ -155,6 +155,8 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                     </label>
                     <label><input type="checkbox" name="tag" value="한정"><img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
                     <label><input type="checkbox" name="tag" value="통상"><img src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
+                    <label><input type="checkbox" name="tag" value="페르소나3"><span>P3</span></label>
+                    <label><input type="checkbox" name="tag" value="페르소나5"><span>P5</span></label>
                 </div>
             </div>
 
@@ -292,6 +294,8 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
             nameText.textContent = characterData[characterName].name;
             nameText.className = 'name-text';
             nameText.dataset.persona3 = characterData[characterName].persona3;
+            nameText.dataset.persona4 = characterData[characterName].persona4;
+            nameText.dataset.persona5 = characterData[characterName].persona5;
             
             positionContainer.appendChild(positionIcon);
             link.appendChild(positionContainer);
@@ -399,6 +403,10 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
                             return characterData[characterKey]?.limit === true;
                         case '통상':
                             return characterData[characterKey]?.limit === false;
+                        case '페르소나3':
+                            return characterData[characterKey]?.persona3 === true;
+                        case '페르소나5':
+                            return characterData[characterKey]?.persona5 === true;
                         default:
                             return false;
                     }

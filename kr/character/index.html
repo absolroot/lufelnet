@@ -211,6 +211,12 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
         Navigation.load('character'); // nav active
         VersionChecker.check();
 
+        // characterData 로드 확인
+        if (typeof characterData === 'undefined') {
+            console.error('characterData is not loaded');
+            return;
+        }
+
         const cardsContainer = document.getElementById('characterCards');
         const searchCount = document.querySelector('.search-count');
         
@@ -410,6 +416,45 @@ description: 페르소나5 더 팬텀 X의 괴도별 육성 가이드
         // Run on initial load and resize
         window.addEventListener('load', adjustLastRow);
         window.addEventListener('resize', adjustLastRow);
+
+        // 마지막 줄 카드 정렬 조정 함수
+        function adjustLastRow() {
+            const cardsContainer = document.querySelector('.character-cards');
+            const cards = cardsContainer.querySelectorAll('.card');
+            const width = window.innerWidth;
+
+            // Remove existing dummy elements
+            const dummies = cardsContainer.querySelectorAll('.dummy-card');
+            dummies.forEach(dummy => dummy.remove());
+
+            function addDummyCards(columnsCount) {
+                const totalCards = cards.length;
+                const remainder = totalCards % columnsCount;
+                
+                if (remainder > 0) {
+                    const dummyCount = columnsCount - remainder;
+                    
+                    for (let i = 0; i < dummyCount; i++) {
+                        const dummy = document.createElement('div');
+                        dummy.className = 'card dummy-card';
+                        dummy.style.visibility = 'hidden';
+                        dummy.style.width = `calc((100% - 8vw) / ${columnsCount})`;
+                        dummy.style.margin = '0';
+                        cardsContainer.appendChild(dummy);
+                    }
+                }
+            }
+
+            if (width > 1159) {
+                addDummyCards(6);  // 6-column layout
+            } else if (width >= 960 && width <= 1159) {
+                addDummyCards(5);  // 5-column layout
+            } else if (width >= 745 && width <= 959) {
+                addDummyCards(4);  // 4-column layout
+            } else if (width >= 563 && width <= 745) {
+                addDummyCards(3);  // 3-column layout
+            }
+        }
 
         // Search functionality implementation
         const searchInput = document.getElementById('characterSearch');

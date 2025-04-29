@@ -5,7 +5,7 @@ const characterSkillsData = {
     "유키 마코토": {
         "name": "유키 마코토",
         "skill1": {
-            "name": "업데이트 예정",
+            "name": "선율의 불꽃",
             "element": "화염",
             "type": "단일피해",
             "sp": 0,
@@ -13,7 +13,7 @@ const characterSkillsData = {
             "description": ""
         },
         "skill2": {
-            "name": "업데이트 예정",
+            "name": "월하의 전투곡",
             "element": "버프광역",
             "type": "버프",
             "sp": 0,
@@ -21,7 +21,7 @@ const characterSkillsData = {
             "description": ""
         },
         "skill3": {
-            "name": "업데이트 예정",
+            "name": "홍련화·호염포식",
             "element": "화염광역",
             "type": "광역피해",
             "sp": 0,
@@ -29,13 +29,13 @@ const characterSkillsData = {
             "description": ""
         },
         "skill_highlight": {
-            "name": "테우르기아",
+            "name": "테우르기아 - 알더",
             "element": "화염",
             "type": "",
             "description": ""
         },
         "skill_highlight2": {
-            "name": "테우르기아",
+            "name": "테우르기아 - 카덴차",
             "element": "버프",
             "type": "버프",
             "description": ""
@@ -47,12 +47,12 @@ const characterSkillsData = {
             "description": ""
         },
         "passive1": {
-            "name": "업데이트 예정",
+            "name": "인도",
             "element": "패시브",
             "description": ""
         },
         "passive2": {
-            "name": "업데이트 예정",
+            "name": "신뢰",
             "element": "패시브",
             "description": ""
         }

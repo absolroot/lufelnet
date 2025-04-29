@@ -292,12 +292,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
         
-        // 페르소나3 캐릭터일 때 person3r.css 적용
+        // 페르소나3 캐릭터일 때 person3r.css 적용, 코드네임 제거
         if (character.persona3) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = `${BASE_URL}/assets/css/persona3r.css`;
             document.head.appendChild(link);
+            document.querySelector('.code-name').style.display = 'none';
+            document.querySelector('.sees').style.display = 'block';
         }
 
         fillSettingsInfo(character);

@@ -7,10 +7,36 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .container {
+        background: linear-gradient(to bottom, rgba(45, 53, 83, 0.3), rgba(25, 26, 29, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111;
+        background-size: 100% 100%, 30px 30px, 30px 30px;
+        background-attachment: scroll, scroll, scroll;
+        background-position: 0 0, 0 0, 0 0;
+    }
+}
+
 .card-style {
     background: #30323d;
 }
 
 .main-nav {
     background-color: #2e3142;
+}
+
+.mobile-header {
+    background-color: #2e3142;
+}
+
+.options-container {
+    background-color: #2e3142;
+}
+
+.selected-option, .nav-sub-item {
+    background-color: rgb(0,0,0,0.1);
+}
+
+.selected-option:hover {
+    background-color:  rgb(0,0,0,0.1);
+    border-color: rgba(255, 255, 255, 0.4);
 }

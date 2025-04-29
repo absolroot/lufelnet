@@ -1,6 +1,6 @@
 @media screen and (min-width: 769px) {
     .container {
-        background: linear-gradient(to bottom, rgba(41, 37, 37, 0.3), rgba(29, 26, 25, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), radial-gradient(circle at 25% 20%, rgba(50, 100, 255, 0.13), transparent 30%), radial-gradient(circle at 80% 30%, rgba(50, 100, 255, 0.13), transparent 50%), radial-gradient(circle at 30% 80%, rgba(50, 100, 255, 0.13), transparent 40%), radial-gradient(circle at 70% 70%, rgba(50, 100, 255, 0.13), transparent 30%), radial-gradient(circle at 50% 50%, rgba(50, 100, 255, 0.13), transparent 40%), #111;
+        background: linear-gradient(to bottom, rgb(90, 173, 237,0.3), rgb(5, 21, 166, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), radial-gradient(circle at 25% 20%, rgba(47, 168, 255, 0.13), transparent 30%), radial-gradient(circle at 80% 30%, rgba(47, 168, 255, 0.13), transparent 50%), radial-gradient(circle at 30% 80%, rgba(47, 168, 255, 0.13), transparent 40%), radial-gradient(circle at 70% 70%, rgba(47, 168, 255, 0.13), transparent 30%), radial-gradient(circle at 50% 50%, rgba(47, 168, 255, 0.13), transparent 40%), #111;
         background-size: 100% 100vh, 30px 30px, 30px 30px, 100% 100vh, 100% 100vh, 100% 100vh, 100% 100vh, 100% 100vh;
         background-attachment: fixed, scroll, scroll, fixed, fixed, fixed, fixed;
         background-position: 0 0, 0 0, 0 0, left top, right top, left bottom, right bottom;
@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 768px) {
     .container {
-        background: linear-gradient(to bottom, rgba(45, 53, 83, 0.3), rgba(25, 26, 29, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111;
+        background: linear-gradient(to bottom, rgb(90, 173, 237,0.3), rgb(5, 21, 166, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111;
         background-size: 100% 100%, 30px 30px, 30px 30px;
         background-attachment: scroll, scroll, scroll;
         background-position: 0 0, 0 0, 0 0;
@@ -17,11 +17,15 @@
 }
 
 .card-style {
-    background: #30323d;
+    background: #393f4b;
 }
 
 .main-nav {
     background-color: #2e3142;
+}
+
+.nav-link.active span{
+    color: #8ad9e0;
 }
 
 .mobile-header {

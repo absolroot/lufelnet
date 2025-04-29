@@ -210,6 +210,7 @@ const characterData = {
     },
     "아케치": {
         "limit": true,
+        "persona5": true,
         "role": "만능 광역 딜러 (서브)",
         "tag":"대미지 축적, 대미지보너스, 방어력 감소, 공격력, 크리티컬 효과, 축복",
         "color": "#c7312c",
@@ -331,6 +332,7 @@ const characterData = {
     },
     "렌": {
         "limit": true,
+        "persona5": true,
         "role": "주원 광역 딜러",
         "tag":"추가 턴, 주원",
         "color": "#212529",
@@ -451,6 +453,7 @@ const characterData = {
     },
     "류지": {
         "limit": false,
+        "persona5": true,
         "role": "물리 단일 딜러",
         "tag":"차지, 관통",
         "color": "#ffff00",
@@ -611,6 +614,7 @@ const characterData = {
     },
     "마코토": {
         "limit": true,
+        "persona5": true,
         "role": "핵열 단일 딜러",
         "tag":"원소 이상, TECHNICAL, 추가 턴, 관통",
         "color": "#000080",
@@ -732,6 +736,7 @@ const characterData = {
     },
     "모르가나": {
         "limit": false,
+        "persona5": true,
         "role": "광역 힐러",
         "tag":"풍습, 크리티컬, 원소 이상 제거, 추가 효과",
         "color": "#111111",
@@ -1052,6 +1057,7 @@ const characterData = {
     },
     "안": {
         "limit": false,
+        "persona5": true,
         "role": "화염 광역 딜러",
         "tag":"공격력 감소, 화상, TECHNICAL",
         "color": "#ff0000",
@@ -1172,6 +1178,7 @@ const characterData = {
     },
     "유스케": {
         "limit": true,
+        "persona5": true,
         "role": "빙결 광역 딜러",
         "tag":"반격, 추가 효과, 방어력, 관통",
         "color": "#00bfff",
@@ -1372,6 +1379,7 @@ const characterData = {
     },
     "카스미": {
         "limit": true,
+        "persona5": true,
         "role": "축복 단일 딜러",
         "tag":"HIGHLIGHT, 변신, 예열",
         "color": "#9932cc",
@@ -1653,6 +1661,7 @@ const characterData = {
     },
     "하루": {
         "limit": true,
+        "persona5": true,
         "role": "염동 광역 딜러",
         "tag":"총격, 예열, 관통",
         "color": "#800080",
@@ -1733,6 +1742,7 @@ const characterData = {
     },
     "후타바": {
         "limit": true,
+        "persona5": true,
         "role": "약점 강화 서포터",
         "tag":"약점 변경, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬 확률, 실드",
         "color": "#32cd32",

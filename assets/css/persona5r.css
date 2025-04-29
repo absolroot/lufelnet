@@ -1,0 +1,51 @@
+
+
+@media screen and (min-width: 769px) {
+    .container {
+        background: linear-gradient(to bottom, rgba(113, 0, 0, 0.3), rgba(34, 0, 0, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), radial-gradient(circle at 25% 20%, rgba(255, 80, 42, 0.13), transparent 30%), radial-gradient(circle at 80% 30%, rgba(255, 80, 42, 0.13), transparent 50%), radial-gradient(circle at 30% 80%, rgba(255, 80, 42, 0.13), transparent 40%), radial-gradient(circle at 70% 70%, rgba(255, 80, 42, 0.13), transparent 30%), radial-gradient(circle at 50% 50%, rgba(255, 80, 42, 0.13), transparent 40%), #111;
+        background-size: 100% 100vh, 30px 30px, 30px 30px, 100% 100vh, 100% 100vh, 100% 100vh, 100% 100vh, 100% 100vh;
+        background-attachment: fixed, scroll, scroll, fixed, fixed, fixed, fixed;
+        background-position: 0 0, 0 0, 0 0, left top, right top, left bottom, right bottom;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        background: linear-gradient(to bottom, rgba(113, 0, 0, 0.3), rgba(34, 0, 0, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111;
+        background-size: 100% 100%, 30px 30px, 30px 30px;
+        background-attachment: scroll, scroll, scroll;
+        background-position: 0 0, 0 0, 0 0;
+    }
+}
+
+
+.card-style {
+    background: #512f2f;
+}
+
+.main-nav {
+    background-color: #7d3636;
+}
+
+
+.nav-link.active span{
+    color: #fffabb;
+}
+
+.mobile-header {
+    background-color: #422e2e;
+}
+
+.options-container {
+    background-color: #422e2e;
+}
+
+.selected-option, .nav-sub-item {
+    background-color: rgb(0,0,0,0.1);
+}
+
+.selected-option:hover {
+    background-color:  rgb(0,0,0,0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+    

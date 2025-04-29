@@ -302,6 +302,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.sees').style.display = 'block';
         }
 
+        // 페르소나5 콜라보 캐릭터일 때 persona5r.css 적용
+        if (character.persona5) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `${BASE_URL}/assets/css/persona5r.css`;
+            document.head.appendChild(link);
+        }
+
         fillSettingsInfo(character);
         fillSkillsInfo(characterName);
         fillOperationInfo(characterName);  // 운영 정보 추가

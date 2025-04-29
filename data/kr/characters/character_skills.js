@@ -8,7 +8,7 @@ const characterSkillsData = {
             "name": "선율의 불꽃",
             "element": "화염",
             "type": "단일피해",
-            "sp": 0,
+            "sp": 20,
             "cool": 0,
             "description": ""
         },
@@ -16,15 +16,15 @@ const characterSkillsData = {
             "name": "월하의 전투곡",
             "element": "버프광역",
             "type": "버프",
-            "sp": 0,
+            "sp": 20,
             "cool": 0,
             "description": ""
         },
         "skill3": {
             "name": "홍련화·호염포식",
-            "element": "화염광역",
-            "type": "광역피해",
-            "sp": 0,
+            "element": "화염",
+            "type": "단일피해",
+            "sp": 24,
             "cool": 0,
             "description": ""
         },

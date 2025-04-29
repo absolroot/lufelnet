@@ -61,7 +61,7 @@ const characterData = {
         "main_revelation": ["희망"],
         "sub_revelation": ["고집"],
         "element": "화염",
-        "element_weakness": "",
+        "element_weakness": "주원",
         "element_resistance": "화염",
         "rarity": 5,
         "position": "반항",
@@ -81,10 +81,10 @@ const characterData = {
         "skill2_lv": "",
         "skill3_lv": "",
         "skill4_lv": "",
-        "mind_stats1": "",
-        "mind_stats2": "",
-        "mind_skill1": "",
-        "mind_skill2": "",
+        "mind_stats1": "대미지 보너스 16%",
+        "mind_stats2": "관통 7.5%",
+        "mind_skill1": "1/2",
+        "mind_skill2": "3/HL",
     },
 
     "이케나미": {

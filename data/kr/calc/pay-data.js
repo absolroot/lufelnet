@@ -34,6 +34,21 @@ const PAY_DATA = {
             maxCount: 1
         },
         {
+            name: "주간 보급 패키지1",
+            destiny: 10,
+            destinyCoins: 5,
+            price: 12000,
+            maxCount: 3
+        },
+        {
+            name: "주간 보급 패키지2",
+            destiny: 10,
+            destinyCoins: 10,
+            destiny_future: 10,
+            price: 51000,
+            maxCount: 3
+        },
+        {
             name: "월간 전술 보급",
             amber: 600,
             destinyCoins: 20,
@@ -68,38 +83,38 @@ const PAY_DATA = {
             name: "캐릭터 패키지",
             destiny: 10,
             price: 13000,
-            maxCount: 2
+            maxCount: 3
         },
         {
             name: "캐릭터 패키지 2",
             destiny: 25,
             price: 33000,
-            maxCount: 2
+            maxCount: 3
         },
         {
             name: "캐릭터 패키지 3",
             destiny: 30,
             destiny_future: 3,
             price: 62000,
-            maxCount: 4
+            maxCount: 6
         },
         {
             name: "캐릭터 보급",
             destinyCoins: 10,
             price: 9200,
-            maxCount: 2
+            maxCount: 3
         },
         {
             name: "캐릭터 보급 2",
             destinyCoins: 25,
             price: 22000,
-            maxCount: 2
+            maxCount: 3
         },
         {
             name: "캐릭터 보급 3",
             destinyCoins: 30,
             price: 42000,
-            maxCount: 2
+            maxCount: 3
         },
         {
             name: "7일보급 캐릭터",

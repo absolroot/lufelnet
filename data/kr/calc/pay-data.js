@@ -42,7 +42,7 @@ const PAY_DATA = {
         },
         {
             name: "주간 보급 패키지2",
-            destiny: 10,
+            destiny: 20,
             destinyCoins: 10,
             destiny_future: 10,
             price: 51000,

@@ -33,17 +33,17 @@ const penetrateData = [
         target: "광역",
         skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
         skillName: "시공의 윤회",
-        options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(16스택)","LV13+심상5(16스택)"],
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(14스택)","LV13+심상5(14스택)"],
         values: {
             "LV10": 14.4,
             "LV10+심상5": 15.6,
             "LV13": 15.6,
             "LV13+심상5": 16.8,
-            "LV13(16스택)": 20.8,
-            "LV13+심상5(16스택)": 22.4
+            "LV13(14스택)": 18.2,
+            "LV13+심상5(14스택)": 19.4
         },
-        defaultOption: "LV13+심상5(16스택)",
-        value: 22.4,
+        defaultOption: "LV13+심상5(14스택)",
+        value: 19.4,
         duration: "2턴",
         note: ""
     },

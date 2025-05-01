@@ -85,12 +85,32 @@ class BuffCalculator {
                         </div>
                     </div>
                 `;
+
+                // 아케치의 경우 단일/광역 선택 라디오박스 추가
+                if (character === '아케치') {
+                    groupCheckbox += `
+                        <div class="skill-type-select">
+                            <span>메인 딜러 스킬 타입</span>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="skill-type-${character}" value="aoe" checked>
+                                    <span>광역</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="skill-type-${character}" value="single">
+                                    <span>단일</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                }
             }
             if (character === '리코·매화') {
                 groupCheckbox += `
                     <div class="crit-input-container">
-                        <span>전투 중 크리티컬 효과 (만개)</span>
+                        <span>전투 중 크리티컬 효과(만개)</span>
                         <input type="number" class="crit-input" data-character="${character}" value="448" min="388" step="1">
+                        <span>%</span>
                     </div>
                 `;
             }
@@ -446,7 +466,14 @@ class BuffCalculator {
             }
         });
 
-        // 의식/개조 체크박스 이벤트 리스너
+        // 아케치 스킬 타입 선택 이벤트 리스너
+        document.addEventListener('change', (e) => {
+            if (e.target.name && e.target.name.startsWith('skill-type-아케치')) {
+                this.updateAkechiSkill3IndependentMultiplier();
+            }
+        });
+
+        // 의식/개조 체크박스 이벤트 리스너 수정
         document.addEventListener('change', (e) => {
             if (e.target.classList.contains('ritual-mod-checkbox')) {
                 const character = e.target.name.split('-')[1];
@@ -474,6 +501,12 @@ class BuffCalculator {
                             rows.forEach(row => row.classList.remove('selected'));
                         }
                     });
+
+                    // 아케치 스킬3의 독립 배수 업데이트
+                    if (character === '아케치') {
+                        this.updateAkechiSkill3IndependentMultiplier();
+                    }
+
                     this.updateBuffValues();
                     return;
                 }
@@ -497,6 +530,11 @@ class BuffCalculator {
                         });
                     }
                 });
+
+                // 아케치 스킬3의 독립 배수 업데이트
+                if (character === '아케치') {
+                    this.updateAkechiSkill3IndependentMultiplier();
+                }
 
                 this.updateBuffValues();
             }
@@ -918,6 +956,55 @@ class BuffCalculator {
                 element.style.opacity = value === 0 ? '0.1' : '1';
             }
         });
+    }
+
+    // 아케치 스킬3의 독립 배수 업데이트 함수 추가
+    updateAkechiSkill3IndependentMultiplier() {
+        const skill3Buff = BUFF_DATA['아케치'].find(buff => buff.id === '아케치 스킬3');
+        if (!skill3Buff) return;
+
+        const isSingle = document.querySelector('input[name="skill-type-아케치"][value="single"]')?.checked;
+        const ritual6Checked = document.querySelector('input[name="ritual-아케치"][value="6"]')?.checked;
+
+        // 모든 옵션에 대해 독립 배수 업데이트
+        Object.keys(skill3Buff.options).forEach(optionKey => {
+            const option = skill3Buff.options[optionKey];
+            Object.keys(option).forEach(targetKey => {
+                const effects = option[targetKey];
+                const independentEffect = effects['독립 배수'];
+                if (independentEffect) {
+                    // 기본값 저장 (아직 저장되지 않은 경우)
+                    if (!effects._originalIndependent) {
+                        effects._originalIndependent = independentEffect;
+                    }
+
+                    // 독립 배수 계산
+                    let newValue = effects._originalIndependent;
+                    if (isSingle) {
+                        newValue *= 0.4;
+                    }
+                    if (ritual6Checked) {
+                        newValue *= 1.5;
+                    }
+
+                    effects['독립 배수'] = Math.round(newValue * 10) / 10; // 소수점 1자리까지 반올림
+                }
+            });
+        });
+
+        // 테이블의 값 즉시 업데이트
+        const rows = document.querySelectorAll(`tr[data-buff-id="아케치 스킬3"][data-character="아케치"]`);
+        rows.forEach(row => {
+            const optionSelect = row.querySelector('.buff-option');
+            if (optionSelect) {
+                this.updateEffectValues(row, '아케치 스킬3');
+            }
+        });
+
+        // 선택된 버프라면 전체 값 업데이트
+        if (this.selectedBuffs.has('아케치 스킬3')) {
+            this.updateBuffValues();
+        }
     }
 }
 

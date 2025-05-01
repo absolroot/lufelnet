@@ -2,9 +2,291 @@
 const BUFF_DATA = {
     '원더': [
         {
+            id: '무한 알고리즘',
+            type: '스킬',
+            skillName: '무한 알고리즘',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 30 },
+                    ],
+                    duration: '2턴'
+                },
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 20 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+        },
+        {
+            id: '리벨리온',
+            type: '스킬',
+            skillName: '리벨리온',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '크리티컬 확률', value: 15.7 },
+                    ],
+                    duration: '1턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '레볼루션',
+            type: '스킬',
+            skillName: '레볼루션',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 확률', value: 10.9 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '타루카쟈',
+            type: '스킬',
+            skillName: '타루카쟈',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력 %', value: 25.9 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '마하타루카쟈',
+            type: '스킬',
+            skillName: '마하타루카쟈',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 18.1 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            
+        },
+        {
+            id: '라쿤다',
+            type: '스킬',
+            skillName: '라쿤다',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/디버프.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 38.8 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '음률의 침입',
+            type: '스킬',
+            skillName: '음률의 침입',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/디버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 32.0 },
+                        { type: '대미지 보너스', value: 10.0 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '마하라쿤다',
+            type: '스킬',
+            skillName: '마하라쿤다',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/디버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 27.1 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '디오니소스1',
+            type: '본능',
+            skillName: '디오니소스 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/디오니소스.webp`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '크리티컬 효과', value: 30 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+        },
+        {
+            id: '광목천1',
+            type: '본능',
+            skillName: '광목천 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/광목천.webp`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력 %', value: 14 },
+                        { type: '크리티컬 확률', value: 6 }
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: '전투 시작 시'
+        },
+        {
+            id: '황룡1',
+            type: '본능',
+            skillName: '황룡 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/황룡.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 15 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: '사상의 힘 4중첩'
+        },
+        {
+            id: '비슈누1',
+            type: '본능',
+            skillName: '비슈누 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/비슈누.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 48 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: '풍습 부여 시'
+        },
+        {
+            id: '비슈누2',
+            type: '스킬',
+            skillName: '비슈누 - 적을 멸하는 바람',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/비슈누.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 27 },
+                    ],
+                    duration: '2턴',
+                    condition: '질풍'
+                }
+            ],
+            options: {
+            },
+            note: '풍습 상태인 경우'
+        },
+        {
+            id: "유룽1",
+            type: '본능',
+            skillName: '유룽 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/유룽.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 29 },
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+                '감전' : {
+                    '아군 전체': { '크리티컬 효과': 29 }
+                },
+                '일반' : {
+                    '아군 전체': { '크리티컬 효과': 18 }
+                }
+            },
+            note: ''
+        },
+        {
+            id: '아메노우즈메1',
+            type: '본능',
+            skillName: '아메노우즈메 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/아메노우즈메.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 확률', value: 10.9 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: '감전 부여 시'
+        },
+        {
             id: '도미니온1',
             type: '본능',
-            skillName: '천사의 호령 III',
+            skillName: '도미니온 - 본능',
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/도미니온.webp`,
             targets: [
                 {
@@ -43,26 +325,13 @@ const BUFF_DATA = {
                 }
             ],
             options: {
-                /*
-                '1레벨': {
-                    '메인 목표': { '공격력 %': 20, '공격력 상수': 300 },
-                    '아군 전체': { '공격력 %': 10, '공격력 상수': 150 }
-                },
-                '2레벨': {
-                    '메인 목표': { '공격력 %': 25, '공격력 상수': 375 },
-                    '아군 전체': { '공격력 %': 12.5, '공격력 상수': 187.5 }
-                },
-                '3레벨': {
-                    '메인 목표': { '공격력 %': 30, '공격력 상수': 450 },
-                    '아군 전체': { '공격력 %': 15, '공격력 상수': 225 }
-                }*/
             },
             note: ''
         },
         {
             id: '스라오샤1',
             type: '본능',
-            skillName: '죄악의 경청자 III',
+            skillName: '스라오샤 - 본능',
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/스라오샤.webp`,
             targets: [
                 {

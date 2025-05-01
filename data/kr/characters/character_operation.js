@@ -4,8 +4,12 @@ const operationData = {
         note: []
     },
     "유키 마코토": {
-        basic: [],
-        note: []
+        basic: [
+            { label: "의식 0", value: "1 › 3 › 1 › 3 › 1 › 3" },
+        ],
+        note: [
+            "· 2돌 이상인 경우 2스킬 레벨 MAX",
+        ]
     },
     "이케나미": {
         basic: [

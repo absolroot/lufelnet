@@ -300,6 +300,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.head.appendChild(link);
             document.querySelector('.code-name').style.display = 'none';
             document.querySelector('.sees').style.display = 'block';
+
+            document.querySelector('[data-text="highlight"]').textContent = '테우르기아';
+        }
+        else {
+            document.querySelector('[data-text="highlight"]').textContent = '하이라이트';
         }
 
         // 페르소나5 콜라보 캐릭터일 때 persona5r.css 적용

@@ -55,7 +55,7 @@ class BuffCalculator {
 
             // 캐릭터별 그룹 선택 체크박스 추가
             let groupCheckbox = '';
-            if (character === '리코·매화' || character === '아케치' || character === '마나카' || character === '마유미') {
+            if (character != '원더') {
                 const ritualData = RITUAL_DATA[character]?.rituals || {};
                 const modData = RITUAL_DATA[character]?.modifications || {};
                 
@@ -136,6 +136,7 @@ class BuffCalculator {
                                 <th class="value-column">대미지 보너스</th>
                                 <th class="value-column">방어력 감소</th>
                                 <th class="value-column">관통</th>
+                                <th class="value-column">스킬 마스터</th>
                                 <th class="value-column">독립 배수</th>
                                 <th class="duration-column">지속시간</th>
                                 <th class="note-column">비고</th>
@@ -258,7 +259,7 @@ class BuffCalculator {
         // 효과 값 열들
         const effectColumns = [
             '공격력 %', '공격력 상수', '크리티컬 확률', '크리티컬 효과',
-            '대미지 보너스', '방어력 감소', '관통',
+            '대미지 보너스', '방어력 감소', '관통', '스킬 마스터',
             '독립 배수'
         ];
 
@@ -266,8 +267,7 @@ class BuffCalculator {
             const cell = document.createElement('td');
             cell.className = 'effect-value';
             cell.dataset.effect = effect;
-            cell.textContent = '0';
-            if (effect === '공격력 상수') {
+            if (effect === '공격력 상수' || effect === '스킬 마스터') {
                 cell.textContent = '0';
             } else {
                 cell.textContent = '0%';
@@ -306,7 +306,11 @@ class BuffCalculator {
                 const cell = row.querySelector(`[data-effect="${effect.type}"]`);
                 if (cell) {
                     const value = effect.value || 0;
-                    cell.textContent = effect.type === '공격력 상수' ? value : `${value}%`;
+                    if (effect.type === '공격력 상수' || effect.type === '스킬 마스터') {
+                        cell.textContent = value;
+                    } else {
+                        cell.textContent = `${value}%`;
+                    }
                     cell.style.opacity = value === 0 ? '0.1' : '1';
                 }
             });
@@ -750,6 +754,7 @@ class BuffCalculator {
             '대미지 보너스': 0,
             '방어력 감소': 0,
             '관통': 0,
+            '스킬 마스터': 0,
             '독립 배수': 1  // 초기값을 1로 설정
         };
 
@@ -861,6 +866,7 @@ class BuffCalculator {
             '대미지 보너스': 0,
             '방어력 감소': 0,
             '관통': 0,
+            '스킬 마스터': 0,
             '독립 배수': 0
         };
 
@@ -940,6 +946,7 @@ class BuffCalculator {
             '대미지 보너스': 'DamageBonus',
             '방어력 감소': 'DefenseReduce',
             '관통': 'Penetrate',
+            '스킬 마스터': 'SkillMaster',
             '독립 배수': 'IndependentMultiplier'
         };
 
@@ -949,9 +956,12 @@ class BuffCalculator {
         Object.entries(currentValues).forEach(([effect, value]) => {
             const element = document.getElementById(`${prefix}${idMapping[effect]}`);
             if (element) {
-                const displayValue = effect === '공격력 상수' ? 
-                    value.toFixed(0) : 
-                    value.toFixed(1) + '%';
+                let displayValue;
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    displayValue = value.toFixed(0);
+                } else {
+                    displayValue = value.toFixed(1) + '%';
+                }
                 element.textContent = displayValue;
                 element.style.opacity = value === 0 ? '0.1' : '1';
             }

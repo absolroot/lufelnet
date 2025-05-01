@@ -42,7 +42,7 @@ description: 페르소나5 더 팬텀 X 방어력 감소 계산기
             <h2>관통 합계</h2>
             <div class="penetrate-value">0%</div>
             <div class="penetrate-value-description">
-                <div class="final-defense-coef">최종 방어 계수: <span id="finalDefenseCoef">-</span></div>
+                <div class="final-defense-coef">관통 적용 방어 계수: <span id="finalDefenseCoef">-</span></div>
                 <div>※ 방어 계수 = 보스 방어 계수 × (100-관통)%</div>
             </div>
         </div>
@@ -51,14 +51,15 @@ description: 페르소나5 더 팬텀 X 방어력 감소 계산기
         <div class="stat-card card-style">
             <h2>방어력 감소 합계</h2>
             <div class="total-value">0%</div>
-            <div class="total-value-description">
-                <div>대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력+1400) × 방어 계수]</div>
+            <div class="defense-reduce-value-description">
+                <div class="final-defense-coef2">최종 방어 계수: <span id="finalDefenseCoef2">-</span></div>
+                <div>※ 방어 계수 = 관통 적용 방어 계수 - 방어력 감소</div>
             </div>
         </div>
         
         <!-- final damage increase card -->
         <div class="damage-card card-style">
-            <h2>최종 대미지 증가</h2>
+            <h2>최종 대미지 증가 <span class="tooltip-icon" data-tooltip="대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력+1400) × 방어 계수]">?</span></h2>
             <div class="damage-increase"></div>
             <div class="damage-formula">
                 <div class="formula-row">· 기본 최종 대미지 배수: <span id="noDefReduce">-</span></div>

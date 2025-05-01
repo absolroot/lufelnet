@@ -34,7 +34,7 @@
     color: #dd8484;
 }
 
-.total-value-description, .penetrate-value-description {
+.total-value-description, .penetrate-value-description, .defense-reduce-value-description {
     margin-top: 14px;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.5);
@@ -62,13 +62,13 @@
 
 .damage-formula,.boss-stats{
     margin-top: 10px;
-    font-size: 14px !important;
+    font-size: 12px !important;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .damage-increase {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     color: #dd8484;
 }
@@ -457,6 +457,11 @@ select:-moz-focusring {
     color: #5384d8;
 }
 
+.final-defense-coef2 {
+    font-size: 12px;
+    color: #dd8484;
+}
+
 .penetrate-table-container .value-column, .penetrate-value{
     color: #5384d8 !important;
 }
@@ -600,6 +605,48 @@ select:-moz-focusring {
         width: 80px;
         font-size: 13px;
     }
+}
+
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #666;
+    color: white;
+    font-size: 12px;
+    margin-left: 8px;
+    cursor: help;
+    position: relative;
+}
+
+.tooltip-icon:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+.tooltip-icon:hover::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% - 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
 }
 
 

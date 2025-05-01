@@ -289,6 +289,7 @@ class DefenseCalc {
             this.noDefReduceSpan.textContent = '-';
             this.withDefReduceSpan.textContent = '-';
             this.finalDefenseCoefSpan.textContent = '-';
+            document.getElementById('finalDefenseCoef2').textContent = '-';
             return;
         }
 
@@ -302,6 +303,10 @@ class DefenseCalc {
         
         // 최종 방어 계수 표시
         this.finalDefenseCoefSpan.textContent = `${modifiedDefenseCoef.toFixed(1)}%`;
+        
+        // 방어력 감소 적용 방어 계수 계산 및 표시
+        const finalDefenseCoef2 = Math.max(0, modifiedDefenseCoef - defenseReduce);
+        document.getElementById('finalDefenseCoef2').textContent = `${finalDefenseCoef2.toFixed(1)}%`;
         
         // 방어력 감소 미적용
         const noReduceDamage = 1-this.calculateDamage(baseDefense, defenseCoef);
@@ -334,6 +339,7 @@ class DefenseCalc {
         this.noDefReduceSpan.textContent = '-';
         this.withDefReduceSpan.textContent = '-';
         this.finalDefenseCoefSpan.textContent = '-';
+        document.getElementById('finalDefenseCoef2').textContent = '-';
     }
 
     initializeMobileHeader() {

@@ -1,0 +1,140 @@
+---
+layout: default
+custom_css: [buff-calc]
+custom_js: [tooltip, buff-calc]
+custom_data: [tooltip.js, calc/buff-data.js]
+permalink: /kr/buff-calc/
+language: kr
+title : 버프 계산기 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X 버프 계산기
+---
+
+<head>
+    <link rel="stylesheet" href="../../assets/css/lock.css">
+    <script src="../../assets/js/lock.js"></script>
+    <script src="../../assets/js/calc/buff-data.js"></script>
+    <script src="../../assets/js/buff-calc.js"></script>
+</head>
+
+<!-- main contents -->
+<div class="main-wrapper">
+    <!-- navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">버프 계산</span>
+    </div>
+    <div class="header-container">
+        <h1>버프 계산기</h1>
+    </div>
+    
+    <!-- top card container -->
+    <div class="top-cards">
+        <div class="card-style target-section">
+            <h3>메인 목표</h3>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-label">공격력 %</div>
+                    <div class="stat-value" id="mainAttackPercent">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">공격력 상수</div>
+                    <div class="stat-value" id="mainAttackFlat">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 확률</div>
+                    <div class="stat-value" id="mainCritRate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 효과</div>
+                    <div class="stat-value" id="mainCritDamage">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">대미지 보너스</div>
+                    <div class="stat-value" id="mainDamageBonus">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">방어력 감소</div>
+                    <div class="stat-value" id="mainDefenseReduce">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">관통</div>
+                    <div class="stat-value" id="mainPenetrate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">독립 배수</div>
+                    <div class="stat-value" id="mainIndependentMultiplier">0%</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-style target-section">
+            <h3>아군 전체</h3>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-label">공격력 %</div>
+                    <div class="stat-value" id="allyAttackPercent">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">공격력 상수</div>
+                    <div class="stat-value" id="allyAttackFlat">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 확률</div>
+                    <div class="stat-value" id="allyCritRate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 효과</div>
+                    <div class="stat-value" id="allyCritDamage">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">대미지 보너스</div>
+                    <div class="stat-value" id="allyDamageBonus">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">방어력 감소</div>
+                    <div class="stat-value" id="allyDefenseReduce">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">관통</div>
+                    <div class="stat-value" id="allyPenetrate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">독립 배수</div>
+                    <div class="stat-value" id="allyIndependentMultiplier">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table tabs -->
+    <div class="table-tabs card-style">
+        <div class="tab-buttons">
+            <!-- 탭 버튼은 JavaScript에서 동적으로 생성됩니다 -->
+        </div>
+        <!-- 탭 컨텐츠는 JavaScript에서 동적으로 생성됩니다 -->
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('buff-calc');
+        VersionChecker.check();
+        
+        // 탭 전환 기능 추가
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 모든 탭 버튼과 컨텐츠에서 active 클래스 제거
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // 클릭한 탭 버튼과 해당 컨텐츠에 active 클래스 추가
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    });
+</script> 

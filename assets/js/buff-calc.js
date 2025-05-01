@@ -55,32 +55,48 @@ class BuffCalculator {
 
             // 캐릭터별 그룹 선택 체크박스 추가
             let groupCheckbox = '';
-            if (character === '리코·매화') {
+            if (character === '리코·매화' || character === '아케치' || character === '마나카' || character === '마유미') {
+                const ritualData = RITUAL_DATA[character]?.rituals || {};
+                const modData = RITUAL_DATA[character]?.modifications || {};
+                
                 groupCheckbox = `
-                    <div class="select-group-container">
-                        <input type="checkbox" class="select-group-checkbox" data-character="${character}" data-group="main">
-                        <span>66</span>
+                    <div class="ritual-mod-container">
+                        <div class="ritual-select">
+                            <span>의식</span>
+                            <div class="radio-group">
+                                ${[0, 1, 2, 3, 4, 5, 6].map(num => `
+                                    <label>
+                                        <input type="checkbox" class="ritual-mod-checkbox" name="ritual-${character}" value="${num}" ${ritualData[num] ? '' : 'disabled'}>
+                                        <span>${num}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="mod-select">
+                            <span>개조</span>
+                            <div class="radio-group">
+                                ${[0, 1, 2, 3, 4, 5, 6].map(num => `
+                                    <label>
+                                        <input type="checkbox" class="ritual-mod-checkbox" name="mod-${character}" value="${num}" ${modData[num] ? '' : 'disabled'}>
+                                        <span>${num}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
                     </div>
+                `;
+            }
+            if (character === '리코·매화') {
+                groupCheckbox += `
                     <div class="crit-input-container">
                         <span>전투 중 크리티컬 효과 (만개)</span>
                         <input type="number" class="crit-input" data-character="${character}" value="448" min="388" step="1">
                     </div>
                 `;
-            } else if (character === '아케치') {
-                groupCheckbox = `
-                    <div class="select-group-container">
-                        <input type="checkbox" class="select-group-checkbox" data-character="${character}" data-group="main">
-                        <span>66</span>
-                    </div>
-                `;
             }
 
             content.innerHTML = `
-                <div class="tab-header">
-                    <div class="select-all-container">
-                        <input type="checkbox" class="select-all-checkbox" data-character="${character}">
-                        <span>전체 선택</span>
-                    </div>
+                <div class="tab-header" ${character === '원더' ? 'style="display: none;"' : ''}>
                     ${groupCheckbox}
                 </div>
                 <div class="buff-table-container">
@@ -308,38 +324,6 @@ class BuffCalculator {
                 if (e.target.checked) {
                     this.selectedBuffs.add(buffId);
                     rows.forEach(row => row.classList.add('selected'));
-
-                    // 해당 버프의 조건들을 자동으로 체크
-                    const buff = BUFF_DATA[character].find(b => b.id === buffId);
-                    if (buff && buff.targets) {
-                        const conditions = new Set();
-                        buff.targets.forEach(target => {
-                            if (target.condition) {
-                                conditions.add(target.condition);
-                            }
-                        });
-
-                        // 전체 체크박스가 체크되어 있지 않은 경우에만 조건 체크박스 체크
-                        const totalCheckbox = document.querySelector('.condition-check[data-condition="전체"]');
-                        if (!totalCheckbox.checked) {
-                            conditions.forEach(condition => {
-                                const checkbox = document.querySelector(`.condition-check[data-condition="${condition}"]`);
-                                if (checkbox) {
-                                    checkbox.checked = true;
-                                }
-                            });
-
-                            // 모든 개별 체크박스가 체크되었는지 확인
-                            const allChecked = Array.from(document.querySelectorAll('.condition-check'))
-                                .filter(cb => cb.dataset.condition !== '전체')
-                                .every(cb => cb.checked);
-
-                            // 모든 개별 체크박스가 체크되었다면 전체 체크박스도 체크
-                            if (allChecked) {
-                                totalCheckbox.checked = true;
-                            }
-                        }
-                    }
                 } else {
                     this.selectedBuffs.delete(buffId);
                     rows.forEach(row => row.classList.remove('selected'));
@@ -360,14 +344,13 @@ class BuffCalculator {
             }
         });
 
-        // 전체 선택 체크박스 이벤트 리스너
+        // 전체 선택 체크박스 이벤트
         document.addEventListener('change', (e) => {
             if (e.target.classList.contains('select-all-checkbox')) {
                 const character = e.target.dataset.character;
                 const isChecked = e.target.checked;
                 const checkboxes = document.querySelectorAll(`tr[data-character="${character}"] .buff-checkbox`);
                 
-                // 체크박스 상태 변경 및 버프 선택 처리
                 checkboxes.forEach(checkbox => {
                     checkbox.checked = isChecked;
                     const buffId = checkbox.dataset.buffId;
@@ -376,113 +359,9 @@ class BuffCalculator {
                     if (isChecked) {
                         this.selectedBuffs.add(buffId);
                         rows.forEach(row => row.classList.add('selected'));
-
-                        // 해당 버프의 조건들을 자동으로 체크
-                        const buff = BUFF_DATA[character].find(b => b.id === buffId);
-                        if (buff && buff.targets) {
-                            const conditions = new Set();
-                            buff.targets.forEach(target => {
-                                if (target.condition) {
-                                    conditions.add(target.condition);
-                                }
-                            });
-
-                            // 전체 체크박스가 체크되어 있지 않은 경우에만 조건 체크박스 체크
-                            const totalCheckbox = document.querySelector('.condition-check[data-condition="전체"]');
-                            if (!totalCheckbox.checked) {
-                                conditions.forEach(condition => {
-                                    const checkbox = document.querySelector(`.condition-check[data-condition="${condition}"]`);
-                                    if (checkbox) {
-                                        checkbox.checked = true;
-                                    }
-                                });
-
-                                // 모든 개별 체크박스가 체크되었는지 확인
-                                const allChecked = Array.from(document.querySelectorAll('.condition-check'))
-                                    .filter(cb => cb.dataset.condition !== '전체')
-                                    .every(cb => cb.checked);
-
-                                // 모든 개별 체크박스가 체크되었다면 전체 체크박스도 체크
-                                if (allChecked) {
-                                    totalCheckbox.checked = true;
-                                }
-                            }
-                        }
                     } else {
                         this.selectedBuffs.delete(buffId);
                         rows.forEach(row => row.classList.remove('selected'));
-                    }
-                });
-                
-                this.updateBuffValues();
-            }
-        });
-
-        // 그룹 선택 체크박스 이벤트 리스너
-        document.addEventListener('change', (e) => {
-            if (e.target.classList.contains('select-group-checkbox')) {
-                const character = e.target.dataset.character;
-                const isChecked = e.target.checked;
-                
-                // 캐릭터별로 선택할 버프 ID 목록 정의
-                const groupBuffIds = {
-                    '리코·매화': {
-                        'main': ['리코·매화 스킬1-2', '리코·매화 스킬2', '리코·매화 스킬3-2', '리코·매화 하이라이트 (의식4)', '리코·매화 만개', '리코·매화 의식1', '리코·매화 의식2 (의식6)', '리코·매화 의식4', '리코·매화 전무']
-                    },
-                    '아케치': {
-                        'main': ['아케치 스킬1', '아케치 스킬2', '아케치 스킬3', '아케치 의식1 (의식6)', '아케치 의식2 (의식6)', '아케치 전용무기']
-                    }
-                };
-
-                const group = e.target.dataset.group;
-                const buffIds = groupBuffIds[character]?.[group] || [];
-
-                // 체크박스 상태 변경 및 버프 선택 처리
-                buffIds.forEach(buffId => {
-                    const checkbox = document.querySelector(`.buff-checkbox[data-buff-id="${buffId}"][data-character="${character}"]`);
-                    if (checkbox) {
-                        checkbox.checked = isChecked;
-                        const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
-                        
-                        if (isChecked) {
-                            this.selectedBuffs.add(buffId);
-                            rows.forEach(row => row.classList.add('selected'));
-
-                            // 해당 버프의 조건들을 자동으로 체크
-                            const buff = BUFF_DATA[character].find(b => b.id === buffId);
-                            if (buff && buff.targets) {
-                                const conditions = new Set();
-                                buff.targets.forEach(target => {
-                                    if (target.condition) {
-                                        conditions.add(target.condition);
-                                    }
-                                });
-
-                                // 전체 체크박스가 체크되어 있지 않은 경우에만 조건 체크박스 체크
-                                const totalCheckbox = document.querySelector('.condition-check[data-condition="전체"]');
-                                if (!totalCheckbox.checked) {
-                                    conditions.forEach(condition => {
-                                        const checkbox = document.querySelector(`.condition-check[data-condition="${condition}"]`);
-                                        if (checkbox) {
-                                            checkbox.checked = true;
-                                        }
-                                    });
-
-                                    // 모든 개별 체크박스가 체크되었는지 확인
-                                    const allChecked = Array.from(document.querySelectorAll('.condition-check'))
-                                        .filter(cb => cb.dataset.condition !== '전체')
-                                        .every(cb => cb.checked);
-
-                                    // 모든 개별 체크박스가 체크되었다면 전체 체크박스도 체크
-                                    if (allChecked) {
-                                        totalCheckbox.checked = true;
-                                    }
-                                }
-                            }
-                        } else {
-                            this.selectedBuffs.delete(buffId);
-                            rows.forEach(row => row.classList.remove('selected'));
-                        }
                     }
                 });
                 
@@ -564,6 +443,62 @@ class BuffCalculator {
                         this.updateBuffValues();
                     }
                 }
+            }
+        });
+
+        // 의식/개조 체크박스 이벤트 리스너
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('ritual-mod-checkbox')) {
+                const character = e.target.name.split('-')[1];
+                const type = e.target.name.startsWith('ritual-') ? 'ritual' : 'mod';
+                const level = parseInt(e.target.value);
+
+                // 같은 그룹의 다른 체크박스들 해제
+                const otherCheckboxes = document.querySelectorAll(`.ritual-mod-checkbox[name="${e.target.name}"]`);
+                otherCheckboxes.forEach(checkbox => {
+                    if (checkbox !== e.target) {
+                        checkbox.checked = false;
+                    }
+                });
+
+                // 체크 해제된 경우
+                if (!e.target.checked) {
+                    // 이전에 선택된 버프들 해제
+                    const prevBuffs = RITUAL_DATA[character][type === 'ritual' ? 'rituals' : 'modifications'][level];
+                    Object.entries(prevBuffs).forEach(([buffId, value]) => {
+                        const checkbox = document.querySelector(`.buff-checkbox[data-buff-id="${buffId}"][data-character="${character}"]`);
+                        if (checkbox) {
+                            checkbox.checked = false;
+                            this.selectedBuffs.delete(buffId);
+                            const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
+                            rows.forEach(row => row.classList.remove('selected'));
+                        }
+                    });
+                    this.updateBuffValues();
+                    return;
+                }
+
+                // 새로운 버프들 선택
+                const newBuffs = RITUAL_DATA[character][type === 'ritual' ? 'rituals' : 'modifications'][level];
+                Object.entries(newBuffs).forEach(([buffId, value]) => {
+                    const checkbox = document.querySelector(`.buff-checkbox[data-buff-id="${buffId}"][data-character="${character}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        this.selectedBuffs.add(buffId);
+                        const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
+                        rows.forEach(row => {
+                            row.classList.add('selected');
+                            // 옵션 업데이트
+                            const optionSelect = row.querySelector('.buff-option');
+                            if (optionSelect) {
+                                optionSelect.value = value;
+                                this.updateEffectValues(row, buffId);
+                            }
+                        });
+                    }
+                });
+
+                this.updateBuffValues();
             }
         });
     }

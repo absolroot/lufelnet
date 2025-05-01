@@ -210,7 +210,7 @@ input[type="checkbox"]:hover {
 }
 
 .type-column {
-    width: 60px;
+    width: 64px;
 }
 
 .target-column {
@@ -339,12 +339,11 @@ input[type="checkbox"]:hover {
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 20px;
-    padding: 0 4px 20px 4px;
+    gap: 32px;
+    padding: 0 4px 24px 4px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.select-all-container,
 .select-group-container {
     display: flex;
     align-items: center;
@@ -353,7 +352,6 @@ input[type="checkbox"]:hover {
     font-size: 14px;
 }
 
-.select-all-container input[type="checkbox"],
 .select-group-container input[type="checkbox"] {
     margin: 0;
 }
@@ -436,4 +434,125 @@ input[type="checkbox"]:hover {
 
 .condition-checkbox input[type="checkbox"]:hover {
     opacity: 0.8;
+}
+
+.ritual-mod-container {
+    display: flex;
+    gap: 32px;
+    margin-left: 0px;
+}
+
+.ritual-select, .mod-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ritual-select span, .mod-select span {
+    font-weight: bold;
+    color: #aaa;
+}
+
+.radio-group {
+    display: flex;
+    gap: 5px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    opacity: 1;
+}
+
+.radio-group label:hover {
+    background-color: rgba(209, 82, 82, 0.1);
+}
+
+.radio-group input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.radio-group span {
+    font-size: 14px;
+    color: #999;
+}
+
+.radio-group input[type="radio"]:checked + span {
+    color: #d15252;
+    font-weight: bold;
+}
+
+.radio-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    background-image : none;
+}
+
+.radio-group input[type="checkbox"]:checked {
+    border-color: #d15252;
+    background-color: transparent;
+    background-image : none;
+}
+
+.radio-group input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #d15252;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.radio-group input[type="checkbox"]:hover {
+    border-color: #d15252;
+}
+
+.radio-group input[type="checkbox"]:checked + span {
+    color: #d15252;
+    font-weight: bold;
+}
+
+.ritual-mod-checkbox:disabled + span {
+    opacity: 0.5;
+    color: #666;
+}
+
+.ritual-mod-checkbox:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.radio-group label:has(input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.radio-group label:not(:has(input:disabled)) {
+    opacity: 1;
+}
+
+.radio-group label:not(:has(input:disabled)):hover {
+    background-color: rgba(209, 82, 82, 0.1);
 } 

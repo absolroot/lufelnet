@@ -367,6 +367,369 @@ const BUFF_DATA = {
             },
             note: ''
         },
+        {
+            id: '체르노보그1',
+            type: '본능',
+            skillName: '체르노보그 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/체르노보그.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 10 }
+                    ],
+                    duration: '2턴'
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 24 }
+                    ],
+                    duration: '2턴',
+                    condition: '물리'
+                }
+            ],
+            options: {
+            },
+            note: '고유스킬 사용 시'
+        },
+        {
+            id: '앨리스1',
+            type: '본능',
+            skillName: '앨리스 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/앨리스.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 18 }
+                    ],
+                    duration: '2턴',
+                    condition: '주원'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '앨리스2',
+            type: '스킬',
+            skillName: '앨리스 - 죽어줄래?',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/앨리스.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 27.5 }
+                    ],
+                    duration: '2턴',
+                    condition: '주원'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '년수1',
+            type: '본능',
+            skillName: '년수 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/년수.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 12 }
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: '화염 대미지'
+        },
+        {
+            id: '년수2',
+            type: '스킬',
+            skillName: '년수 - 조화의 균열',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/년수.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 10.0 }
+                    ],
+                    duration: '2턴'
+                }
+            ]
+        },
+        {
+            id: '야노식1',
+            type: '본능',
+            skillName: '야노식 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/야노식.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 20 },
+                        { type: '방어력 감소', value: 41.6 }
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '토르',
+            type: '본능',
+            skillName: '토르 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/토르.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 12 },
+                        { type: '크리티컬 효과', value: 20 },
+                    ],
+                    duration: '2턴',
+                    condition: '전격'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '트론1',
+            type: '본능',
+            skillName: '트론 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/트론.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 10 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '트론2',
+            type: '스킬',
+            skillName: '트론 - 정화의 불',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/트론.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 12 },
+                    ],
+                    duration: '3턴'
+                }
+            ]
+        },
+        {
+            id: '시바1',
+            type: '본능',
+            skillName: '시바 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/시바.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 45 },
+                    ],
+                    duration: '1턴'
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리판털 확률', value: 18 },
+                    ],
+                    duration: '1턴',
+                    condition: '염동'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '비사문천1',
+            type: '본능',
+            skillName: '비사문천 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/비사문천.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 50 }
+                    ],
+                    duration: '1턴',
+                    condition: '핵열'
+                }
+            ],
+            options: {
+            },
+            note: '원소 이상 당 10%'
+        },
+        {
+            id: '노른1',
+            type: '본능',
+            skillName: '노른 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/노른.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 31.5 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: '풍습 부여 시'
+        },
+        {
+            id : '바포멧1',
+            type: '본능',
+            skillName: '바포멧 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/바포멧.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 29 },
+                    ],
+                    duration: '1턴',
+                    condition: '화염'
+                }
+            ],
+            options: {
+            },
+            note: '공격 시'
+        },
+        {
+            id: '야마타노오로치1',
+            type: '본능',
+            skillName: '야마타노오로치 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/야마타노오로치.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 25 },
+                    ],
+                    duration: '3턴',
+                    condition: 'TECHNICAL'
+                }
+            ],
+            options: {
+            },
+            note: '고유스킬 사용 시'
+        },
+        {
+            id: '나르키소스1',
+            type: '본능',
+            skillName: '나르키소스 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/나르키소스.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 22.4 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: '풍습 부여 시'
+        },
+        {
+            id: '라미아1',
+            type: '본능',
+            skillName: '라미아 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/라미아.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 10 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: '화상 부여 시'
+        },
+        {
+            id: '쿠시나다히메1',
+            type: '본능',
+            skillName: '쿠시나다히메 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/쿠시나다히메.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 25.5 },
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: '버프 별 8.5%'
+        },
+        {
+            id: '지국천1',
+            type: '본능',
+            skillName: '지국천 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/지국천.webp`,
+            targets: [
+                {
+                    target: '메인 목표표',
+                    effects: [
+                        { type: '공격력 %', value: 15.5 },
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+                '체력 60% 이상': {
+                    '메인 목표': { '공격력 %': 15.5 }
+                },
+                '체력 60% 미만': {
+                    '메인 목표': { '공격력 %': 20.2 }
+                }
+            },
+            note: '스킬, HL 포함'
+        },
+        {
+            id: '서큐버스1',
+            type: '본능',
+            skillName: '서큐버스 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/서큐버스.webp`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '크리티컬 확률', value: 11.7 },
+                    ],
+                    duration: '1턴'
+                }
+            ]
+        }
     ],
     // 마나카
     '마나카': [

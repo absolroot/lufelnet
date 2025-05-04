@@ -628,8 +628,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // highlight 스킬의 경우 name이 없을 경우 "HIGHLIGHT"로 이름 표시
             let skillName = type === 'skill_highlight' && !skill.name ? 'HIGHLIGHT' : (skill.name || '');
             
-            // 초기 설명에도 숫자 패턴에 skill-level-values 클래스 적용
+            // 각 스킬의 고유한 description 사용
             let description = skill.description || '';
+            
+            // 초기 설명에도 숫자 패턴에 skill-level-values 클래스 적용
             description = description.replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
                 const values = match.split('/');
                 return values.map(value => {
@@ -667,10 +669,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const character = characterSkillsData[characterName];
         if (!character) return;
+
+        // characterData에서 캐릭터 정보 가져오기
+        const characterInfo = characterData[characterName];
+        if (!characterInfo) return;
+        
+        // 스킬 타입 정의
+        let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
+        
+        // 페르소나3 캐릭터인 경우 추가 스킬 포함
+        if (characterInfo.persona3) {
+            skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
+        }
         
         // 모든 스킬 설명 업데이트
         document.querySelectorAll('.skill-description').forEach((descElement, index) => {
-            const skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
             const skill = character[skillTypes[index]];
             
             if (skill && skill.description) {

@@ -43,7 +43,7 @@ const penetrateData = [
             "LV13+심상5(14스택)": 19.6
         },
         defaultOption: "LV13+심상5(14스택)",
-        value: 19.4,
+        value: 19.6,
         duration: "2턴",
         note: ""
     },

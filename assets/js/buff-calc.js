@@ -21,6 +21,10 @@ class BuffCalculator {
         
         // 총합 값 초기화
         this.updateTotalValues();
+        
+        // 캐릭터 탭 체크 표시 초기화
+        this.updateCharacterTabCheckmarks();
+        this.updateDealerCharacterTabCheckmarks();
     }
 
     initTabs() {
@@ -960,6 +964,9 @@ class BuffCalculator {
                     rows.forEach(row => row.classList.remove('selected'));
                 }
                 this.updateBuffValues();
+                
+                // 캐릭터 탭 버튼 체크 표시 업데이트
+                this.updateCharacterTabCheckmarks();
             }
         });
 
@@ -1124,6 +1131,9 @@ class BuffCalculator {
                     }
 
                     this.updateBuffValues();
+                    
+                    // 캐릭터 탭 체크 표시 업데이트
+                    this.updateCharacterTabCheckmarks();
                     return;
                 }
 
@@ -1165,6 +1175,9 @@ class BuffCalculator {
                 }
 
                 this.updateBuffValues();
+                
+                // 캐릭터 탭 체크 표시 업데이트
+                this.updateCharacterTabCheckmarks();
             }
         });
 
@@ -1239,6 +1252,9 @@ class BuffCalculator {
                 });
 
                 this.updateDealerBuffValues();
+                
+                // 딜러 캐릭터 탭 체크 표시 업데이트
+                this.updateDealerCharacterTabCheckmarks();
             }
         });
 
@@ -1257,6 +1273,9 @@ class BuffCalculator {
                     rows.forEach(row => row.classList.remove('selected'));
                 }
                 this.updateDealerBuffValues();
+                
+                // 딜러 캐릭터 탭 체크 표시 업데이트
+                this.updateDealerCharacterTabCheckmarks();
             }
         });
 
@@ -2429,6 +2448,60 @@ class BuffCalculator {
                 this.updateDealerBuffValueDisplay(dealerValues, 'selected');
                 this.updateDealerAllyBuffValueDisplay(dealerValues, 'selected');
             });
+        });
+    }
+
+    // 새로운 메서드 추가 - 버퍼 탭 캐릭터 체크 표시 업데이트
+    updateCharacterTabCheckmarks() {
+        // 각 캐릭터별로 선택된 버프가 있는지 확인
+        Object.keys(BUFF_DATA).forEach(character => {
+            const hasSelectedBuffs = BUFF_DATA[character].some(buff => this.selectedBuffs.has(buff.id));
+            
+            // 해당 캐릭터 탭 버튼 찾기
+            const tabButton = document.querySelector(`.table-tabs .tab-buttons .tab-button[data-tab="${character}"]`);
+            if (tabButton) {
+                // 기존 체크 표시 제거
+                const existingCheckmark = tabButton.querySelector('.tab-checkmark');
+                if (existingCheckmark) {
+                    existingCheckmark.remove();
+                }
+                
+                // 선택된 버프가 있는 경우 체크 표시 추가
+                if (hasSelectedBuffs) {
+                    const checkmark = document.createElement('span');
+                    checkmark.className = 'tab-checkmark';
+                    checkmark.textContent = '✅';
+                    checkmark.style.marginLeft = '0px';
+                    tabButton.appendChild(checkmark);
+                }
+            }
+        });
+    }
+    
+    // 새로운 메서드 추가 - 딜러 탭 캐릭터 체크 표시 업데이트
+    updateDealerCharacterTabCheckmarks() {
+        // 각 캐릭터별로 선택된 버프가 있는지 확인
+        Object.keys(BUFF_DATA_DEALER).forEach(character => {
+            const hasSelectedBuffs = BUFF_DATA_DEALER[character].some(buff => this.selectedDealerBuffs.has(buff.id));
+            
+            // 해당 캐릭터 탭 버튼 찾기
+            const tabButton = document.querySelector(`.dealer-table-tabs .tab-buttons .tab-button[data-tab="${character}"]`);
+            if (tabButton) {
+                // 기존 체크 표시 제거
+                const existingCheckmark = tabButton.querySelector('.tab-checkmark');
+                if (existingCheckmark) {
+                    existingCheckmark.remove();
+                }
+                
+                // 선택된 버프가 있는 경우 체크 표시 추가
+                if (hasSelectedBuffs) {
+                    const checkmark = document.createElement('span');
+                    checkmark.className = 'tab-checkmark';
+                    checkmark.textContent = '✅';
+                    checkmark.style.marginLeft = '5px';
+                    tabButton.appendChild(checkmark);
+                }
+            }
         });
     }
 }

@@ -70,7 +70,7 @@ const characterData = {
         "name": "유키 마코토",
         "codename": "MAKOTO",
         "sub_revel2": ["공격력", "대미지 보너스"],
-        "sub_revel3": ["크리티컬 효과"],
+        "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
         "sub_option2": ["공격력", "대미지 보너스"],

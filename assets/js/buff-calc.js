@@ -2,13 +2,25 @@
 class BuffCalculator {
     constructor() {
         this.selectedBuffs = new Set();
+        this.selectedDealerBuffs = new Set();
         this.init();
     }
 
     init() {
         this.initTabs();
+        this.initDealerTabs();
         this.initTable();
+        this.initDealerTable();
         this.initEventListeners();
+        
+        // 초기 상태에서 딜러 조건 탭 즉시 숨김
+        const dealerConditionTabs = document.querySelector('.dealer-condition-tabs-container');
+        if (dealerConditionTabs) {
+            dealerConditionTabs.style.display = 'none';
+        }
+        
+        // 총합 값 초기화
+        this.updateTotalValues();
     }
 
     initTabs() {
@@ -151,6 +163,146 @@ class BuffCalculator {
         });
     }
 
+    initDealerTabs() {
+        const tabButtons = document.querySelector('.dealer-table-tabs .tab-buttons');
+        tabButtons.innerHTML = '';
+
+        // 캐릭터별 탭 버튼 추가
+        Object.keys(BUFF_DATA_DEALER).forEach(character => {
+            const button = document.createElement('button');
+            button.className = 'tab-button';
+            button.dataset.tab = character;
+
+            // 괴도 이미지 추가
+            const charImg = document.createElement('img');
+            charImg.src = `${BASE_URL}/assets/img/character-half/${character}.webp`;
+            charImg.alt = character;
+            charImg.className = 'tab-char-img';
+            button.appendChild(charImg);
+
+            // 캐릭터 이름 추가
+            const charName = document.createElement('span');
+            charName.textContent = character;
+            button.appendChild(charName);
+
+            if (character === Object.keys(BUFF_DATA_DEALER)[0]) {
+                button.classList.add('active');
+            }
+            tabButtons.appendChild(button);
+        });
+
+        // 탭 컨텐츠 컨테이너 초기화
+        const tabContents = document.querySelector('.dealer-table-tabs');
+        const existingContents = tabContents.querySelectorAll('.tab-content');
+        existingContents.forEach(content => content.remove());
+
+        // 캐릭터별 탭 컨텐츠 추가
+        Object.keys(BUFF_DATA_DEALER).forEach((character, index) => {
+            const content = document.createElement('div');
+            content.className = 'tab-content';
+            content.id = `dealer-${character}-tab`;
+            if (index === 0) {
+                content.classList.add('active');
+            }
+
+            // 캐릭터별 그룹 선택 체크박스 추가
+            let groupCheckbox = '';
+            if (character != '원더') {
+                const ritualData = RITUAL_DATA[character]?.rituals || {};
+                const modData = RITUAL_DATA[character]?.modifications || {};
+                
+                groupCheckbox = `
+                    <div class="ritual-mod-container">
+                        <div class="ritual-select">
+                            <span>의식</span>
+                            <div class="radio-group">
+                                ${[0, 1, 2, 3, 4, 5, 6].map(num => `
+                                    <label>
+                                        <input type="checkbox" class="ritual-mod-checkbox dealer-ritual-mod-checkbox" name="dealer-ritual-${character}" value="${num}" ${ritualData[num] ? '' : 'disabled'}>
+                                        <span>${num}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="mod-select">
+                            <span>개조</span>
+                            <div class="radio-group">
+                                ${[0, 1, 2, 3, 4, 5, 6].map(num => `
+                                    <label>
+                                        <input type="checkbox" class="ritual-mod-checkbox dealer-ritual-mod-checkbox" name="dealer-mod-${character}" value="${num}" ${modData[num] ? '' : 'disabled'}>
+                                        <span>${num}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // 아케치의 경우 단일/광역 선택 라디오박스 추가
+                if (character === '아케치') {
+                    groupCheckbox += `
+                        <div class="skill-type-select">
+                            <span>메인 딜러 스킬 타입</span>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="dealer-skill-type-${character}" value="aoe" checked>
+                                    <span>광역</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="dealer-skill-type-${character}" value="single">
+                                    <span>단일</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            if (character === '리코·매화') {
+                groupCheckbox += `
+                    <div class="crit-input-container">
+                        <span>전투 중 크리티컬 효과(만개)</span>
+                        <input type="number" class="crit-input dealer-crit-input" data-character="${character}" value="448" min="388" step="1">
+                        <span>%</span>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = `
+                <div class="tab-header" ${character === '원더' ? 'style="display: none;"' : ''}>
+                    ${groupCheckbox}
+                </div>
+                <div class="buff-table-container">
+                    <table class="buff-table">
+                        <thead>
+                            <tr>
+                                <th class="check-column">선택</th>
+                                <th class="skill-icon-column"></th>
+                                <th class="skill-name-column">이름</th>
+                                <th class="type-column">타입</th>
+                                <th class="option-column">옵션</th>
+                                <th class="target-column">대상</th>
+                                <th class="value-column">공격력 %</th>
+                                <th class="value-column">공격력 상수</th>
+                                <th class="value-column">크리티컬 확률</th>
+                                <th class="value-column">크리티컬 효과</th>
+                                <th class="value-column">대미지 보너스</th>
+                                <th class="value-column">방어력 감소</th>
+                                <th class="value-column">관통</th>
+                                <th class="value-column">스킬 마스터</th>
+                                <th class="value-column">독립 배수</th>
+                                <th class="duration-column">지속시간</th>
+                                <th class="note-column">비고</th>
+                                <th class="condition-column">한정 조건</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dealer-${character}TableBody"></tbody>
+                    </table>
+                </div>
+            `;
+            tabContents.appendChild(content);
+        });
+    }
+
     initTable() {
         // 캐릭터별 테이블 초기화
         Object.entries(BUFF_DATA).forEach(([character, buffs]) => {
@@ -174,6 +326,31 @@ class BuffCalculator {
 
         // 초기 버프 값 업데이트
         this.updateBuffValues();
+    }
+
+    initDealerTable() {
+        // 캐릭터별 테이블 초기화
+        Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+            const tableBody = document.getElementById(`dealer-${character}TableBody`);
+            if (tableBody) {
+                tableBody.innerHTML = '';
+                buffs.forEach(buff => {
+                    // targets가 있는 경우 각 대상별로 행을 생성
+                    if (buff.targets) {
+                        buff.targets.forEach((targetData, index) => {
+                            const row = this.createDealerBuffRow(buff, character, targetData, index === 0);
+                            tableBody.appendChild(row);
+                        });
+                    } else {
+                        const row = this.createDealerBuffRow(buff, character, null, true);
+                        tableBody.appendChild(row);
+                    }
+                });
+            }
+        });
+
+        // 초기 버프 값 업데이트
+        this.updateDealerBuffValues();
     }
 
     createBuffRow(buff, character, targetData = null, isFirstRow = true) {
@@ -267,12 +444,255 @@ class BuffCalculator {
             const cell = document.createElement('td');
             cell.className = 'effect-value';
             cell.dataset.effect = effect;
-            if (effect === '공격력 상수' || effect === '스킬 마스터') {
-                cell.textContent = '0';
+            
+            // 커스텀 버프인 경우 텍스트 입력 필드 추가
+            if (buff.isCustom && targetData) {
+                const effectData = targetData.effects.find(e => e.type === effect);
+                if (effectData) {
+                    const inputContainer = document.createElement('div');
+                    inputContainer.className = 'custom-input-container';
+                    
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.className = 'custom-buff-input';
+                    input.value = effectData.value;
+                    input.min = "0";
+                    input.step = effect === '공격력 상수' || effect === '스킬 마스터' ? "1" : "0.1";
+                    input.dataset.effect = effect;
+                    input.dataset.buffId = buff.id;
+                    input.dataset.character = character;
+                    
+                    // 입력 이벤트 리스너 추가
+                    input.addEventListener('input', (e) => {
+                        const value = parseFloat(e.target.value) || 0;
+                        effectData.value = value;
+                        
+                        // 체크박스가 선택된 경우 버프 값 업데이트
+                        const checkbox = document.querySelector(`.buff-checkbox[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                        if (checkbox && checkbox.checked) {
+                            this.updateBuffValues();
+                        }
+                    });
+                    
+                    inputContainer.appendChild(input);
+                    
+                    // 첫 번째 셀에 초기화 버튼 추가 코드 제거
+                    
+                    cell.appendChild(inputContainer);
+                    cell.style.opacity = '1';
+                }
             } else {
-                cell.textContent = '0%';
+                // 기존 로직
+                if (targetData && targetData.effects) {
+                    const effectData = targetData.effects.find(e => e.type === effect);
+                    if (effectData) {
+                        if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                            cell.textContent = effectData.value;
+                        } else {
+                            cell.textContent = effectData.value + '%';
+                        }
+                        cell.style.opacity = '1';
+                    } else {
+                        if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                            cell.textContent = '0';
+                        } else {
+                            cell.textContent = '0%';
+                        }
+                        cell.style.opacity = '0.1';
+                    }
+                } else {
+                    if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                        cell.textContent = '0';
+                    } else {
+                        cell.textContent = '0%';
+                    }
+                    cell.style.opacity = '0.1';
+                }
             }
-            cell.style.opacity = '0.1';
+            
+            row.appendChild(cell);
+        });
+
+        // 지속시간 열
+        const durationCell = document.createElement('td');
+        if (targetData) {
+            durationCell.textContent = targetData.duration || '';
+        }
+        row.appendChild(durationCell);
+
+        // 비고 열
+        const noteCell = document.createElement('td');
+        if (targetData && targetData.note) {
+            noteCell.textContent = targetData.note;
+        } else if (isFirstRow && buff.note) {
+            // 이전 버전과의 호환성을 위해 buff.note도 체크
+            noteCell.textContent = buff.note;
+        }
+        
+        // 커스텀 버프인 경우 비고 칸에 초기화 버튼 추가
+        if (buff.isCustom && isFirstRow) {
+            const resetButton = document.createElement('button');
+            resetButton.className = 'custom-buff-reset';
+            resetButton.textContent = '초기화';
+            resetButton.dataset.buffId = buff.id;
+            resetButton.dataset.character = character;
+            
+            resetButton.addEventListener('click', () => {
+                // 모든 커스텀 입력 필드 초기화
+                const inputs = document.querySelectorAll(`.custom-buff-input[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                inputs.forEach(input => {
+                    input.value = 0;
+                    // 해당 효과 데이터 업데이트
+                    const effectType = input.dataset.effect;
+                    const effectData = targetData.effects.find(e => e.type === effectType);
+                    if (effectData) {
+                        effectData.value = 0;
+                    }
+                });
+                
+                // 체크박스가 선택된 경우 버프 값 업데이트
+                const checkbox = document.querySelector(`.buff-checkbox[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                if (checkbox && checkbox.checked) {
+                    this.updateBuffValues();
+                }
+            });
+            
+            noteCell.appendChild(resetButton);
+        }
+        
+        row.appendChild(noteCell);
+
+        // 한정 조건 열
+        const conditionCell = document.createElement('td');
+        if (targetData && targetData.condition) {
+            conditionCell.textContent = targetData.condition;
+        }
+        row.appendChild(conditionCell);
+
+        return row;
+    }
+
+    createDealerBuffRow(buff, character, targetData = null, isFirstRow = true) {
+        const row = document.createElement('tr');
+        row.dataset.buffId = buff.id;
+        row.dataset.character = character;
+        if (targetData) {
+            row.dataset.target = targetData.target;
+        }
+
+        // 체크박스 열
+        const checkCell = document.createElement('td');
+        if (isFirstRow) {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'dealer-buff-checkbox';
+            checkbox.dataset.buffId = buff.id;
+            checkbox.dataset.character = character;
+            checkCell.appendChild(checkbox);
+        }
+        row.appendChild(checkCell);
+
+        // 스킬 아이콘 열
+        const iconCell = document.createElement('td');
+        if (isFirstRow) {
+            const icon = document.createElement('img');
+            icon.src = buff.skillIcon || '';
+            icon.alt = buff.skillName;
+            icon.className = 'skill-icon';
+            iconCell.appendChild(icon);
+        }
+        row.appendChild(iconCell);
+
+        // 스킬명 열
+        const nameCell = document.createElement('td');
+        if (isFirstRow) {
+            nameCell.textContent = buff.skillName;
+        }
+        row.appendChild(nameCell);
+
+        // 타입 열
+        const typeCell = document.createElement('td');
+        if (isFirstRow) {
+            typeCell.textContent = buff.type;
+        }
+        row.appendChild(typeCell);
+
+        // 옵션 열
+        const optionCell = document.createElement('td');
+        if (isFirstRow) {
+            if (buff.options && Object.keys(buff.options).length > 0) {
+                const select = document.createElement('select');
+                select.className = 'dealer-buff-option';
+                select.dataset.buffId = buff.id;
+                select.dataset.character = character;
+
+                Object.keys(buff.options).forEach(key => {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = key;
+                    select.appendChild(option);
+                });
+
+                optionCell.appendChild(select);
+                    } else {
+                optionCell.textContent = '-';
+            }
+        }
+        row.appendChild(optionCell);
+
+        // 대상 열
+        const targetCell = document.createElement('td');
+        if (targetData) {
+            targetCell.textContent = targetData.target;
+            if (targetData.target === '메인 목표') {
+                targetCell.style.color = '#d15252';
+            } else if (targetData.target === '아군 전체') {
+                targetCell.style.color = '#636be0';
+            } else if (targetData.target === '자신') {
+                targetCell.style.color = '#55ad3f';
+            }
+        }
+        row.appendChild(targetCell);
+
+        // 효과 값 열들
+        const effectColumns = [
+            '공격력 %', '공격력 상수', '크리티컬 확률', '크리티컬 효과',
+            '대미지 보너스', '방어력 감소', '관통', '스킬 마스터',
+            '독립 배수'
+        ];
+
+        effectColumns.forEach(effect => {
+            const cell = document.createElement('td');
+            cell.className = 'effect-value';
+            cell.dataset.effect = effect;
+            
+            // targetData가 있고 효과가 있으면 초기값 설정
+            if (targetData && targetData.effects) {
+                const effectData = targetData.effects.find(e => e.type === effect);
+                if (effectData) {
+                    if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                        cell.textContent = effectData.value;
+                    } else {
+                        cell.textContent = effectData.value + '%';
+                    }
+                    cell.style.opacity = '1';
+                } else {
+                    if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                        cell.textContent = '0';
+                    } else {
+                        cell.textContent = '0%';
+                    }
+                    cell.style.opacity = '0.1';
+                }
+            } else {
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    cell.textContent = '0';
+                } else {
+                    cell.textContent = '0%';
+                }
+                cell.style.opacity = '0.1';
+            }
+            
             row.appendChild(cell);
         });
 
@@ -300,26 +720,59 @@ class BuffCalculator {
         }
         row.appendChild(conditionCell);
 
-        // 초기 효과 값 설정
-        if (targetData) {
-            targetData.effects.forEach(effect => {
-                const cell = row.querySelector(`[data-effect="${effect.type}"]`);
-                if (cell) {
-                    const value = effect.value || 0;
-                    if (effect.type === '공격력 상수' || effect.type === '스킬 마스터') {
-                        cell.textContent = value;
-                    } else {
-                        cell.textContent = `${value}%`;
-                    }
-                    cell.style.opacity = value === 0 ? '0.1' : '1';
-                }
-            });
-        }
-
         return row;
     }
 
     initEventListeners() {
+        // 메인 탭 전환 이벤트
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('main-tab-button')) {
+                const tabType = e.target.dataset.tab;
+                
+                // 모든 메인 탭 버튼에서 active 클래스 제거
+                document.querySelectorAll('.main-tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 클릭한 메인 탭 버튼에 active 클래스 추가
+                e.target.classList.add('active');
+                
+                // 모든 메인 탭 컨텐츠에서 active 클래스 제거
+                document.querySelectorAll('.main-tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 해당 메인 탭 컨텐츠에 active 클래스 추가
+                document.getElementById(`${tabType}-tab-content`).classList.add('active');
+                
+                // 조건 탭 표시/숨김 처리
+                const buffConditionTabs = document.querySelector('.buff-condition-tabs-container');
+                const dealerConditionTabs = document.querySelector('.dealer-condition-tabs-container');
+                
+                if (tabType === 'buff') {
+                    // 버퍼 탭이 선택된 경우
+                    if (buffConditionTabs) buffConditionTabs.style.display = 'block';
+                    if (dealerConditionTabs) dealerConditionTabs.style.display = 'none';
+                    
+                    // 버퍼 탭의 첫 번째 캐릭터 선택
+                    const firstBufferTab = document.querySelector('.table-tabs .tab-buttons .tab-button');
+                    if (firstBufferTab) {
+                        firstBufferTab.click();
+                    }
+                } else if (tabType === 'dealer') {
+                    // 딜러 탭이 선택된 경우
+                    if (buffConditionTabs) buffConditionTabs.style.display = 'none';
+                    if (dealerConditionTabs) dealerConditionTabs.style.display = 'block';
+                    
+                    // 딜러 탭의 첫 번째 캐릭터 선택
+                    const firstDealerTab = document.querySelector('.dealer-table-tabs .tab-buttons .tab-button');
+                    if (firstDealerTab) {
+                        firstDealerTab.click();
+                    }
+                }
+            }
+        });
+
         // 탭 버튼 이벤트 리스너
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', () => {
@@ -340,6 +793,11 @@ class BuffCalculator {
 
         // 체크박스 이벤트 리스너
         document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('condition-check')) {
+                // buff-condition-check와 dealer-condition-check 처리는 해당 createConditionTabs 함수 내에서 처리됨
+                return;
+            }
+            
             if (e.target.classList.contains('buff-checkbox')) {
                 const buffId = e.target.dataset.buffId;
                 const character = e.target.dataset.character;
@@ -543,6 +1001,85 @@ class BuffCalculator {
                 this.updateBuffValues();
             }
         });
+
+        // 딜러 버프 체크박스 이벤트 리스너
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('dealer-buff-checkbox')) {
+                const buffId = e.target.dataset.buffId;
+                const character = e.target.dataset.character;
+                const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
+                
+                if (e.target.checked) {
+                    this.selectedDealerBuffs.add(buffId);
+                    rows.forEach(row => row.classList.add('selected'));
+                } else {
+                    this.selectedDealerBuffs.delete(buffId);
+                    rows.forEach(row => row.classList.remove('selected'));
+                }
+                this.updateDealerBuffValues();
+            }
+        });
+
+        // 딜러 버프 옵션 선택 이벤트 리스너
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('dealer-buff-option')) {
+                const buffId = e.target.dataset.buffId;
+                const character = e.target.dataset.character;
+                const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
+                rows.forEach(row => {
+                    this.updateDealerEffectValues(row, buffId);
+                });
+                this.updateDealerBuffValues();
+            }
+        });
+
+        // 딜러 탭 전환 이벤트
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.dealer-table-tabs .tab-buttons .tab-button')) {
+                const button = e.target.closest('.tab-button');
+                const tabName = button.dataset.tab;
+                
+                // 모든 탭 버튼에서 active 클래스 제거
+                document.querySelectorAll('.dealer-table-tabs .tab-buttons .tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 클릭한 탭 버튼에 active 클래스 추가
+                button.classList.add('active');
+                
+                // 모든 탭 컨텐츠에서 active 클래스 제거
+                document.querySelectorAll('.dealer-table-tabs .tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 해당 탭 컨텐츠에 active 클래스 추가
+                document.getElementById(`dealer-${tabName}-tab`).classList.add('active');
+            }
+        });
+
+        // 기존 탭 전환 이벤트
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.table-tabs .tab-buttons .tab-button')) {
+                const button = e.target.closest('.tab-button');
+                const tabName = button.dataset.tab;
+                
+                // 모든 탭 버튼에서 active 클래스 제거
+                document.querySelectorAll('.table-tabs .tab-buttons .tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 클릭한 탭 버튼에 active 클래스 추가
+                button.classList.add('active');
+                
+                // 모든 탭 컨텐츠에서 active 클래스 제거
+                document.querySelectorAll('.table-tabs .tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 해당 탭 컨텐츠에 active 클래스 추가
+                document.getElementById(`${tabName}-tab`).classList.add('active');
+            }
+        });
     }
 
     updateEffectValues(row, buffId) {
@@ -622,6 +1159,62 @@ class BuffCalculator {
         this.updateBuffValues();
     }
 
+    updateDealerEffectValues(row, buffId) {
+        const character = row.dataset.character;
+        const target = row.dataset.target;
+        const buffs = BUFF_DATA_DEALER[character] || [];
+        const buff = buffs.find(b => b.id === buffId);
+        
+        if (!buff || !buff.targets) return;
+        
+        // 해당 target과 일치하는 targetData 찾기
+        const targetData = buff.targets.find(t => t.target === target);
+        if (!targetData) return;
+        
+        // 옵션 선택 확인
+        let effectValues = {};
+        if (buff.options && Object.keys(buff.options).length > 0) {
+            const select = document.querySelector(`.dealer-buff-option[data-buff-id="${buffId}"][data-character="${character}"]`);
+            const selectedOption = select ? select.value : Object.keys(buff.options)[0];
+            
+            // 해당 옵션에서 대상과 일치하는 효과 값 찾기
+            const optionTargets = buff.options[selectedOption];
+            if (optionTargets && optionTargets[target]) {
+                effectValues = optionTargets[target];
+            }
+        } else {
+            // 옵션이 없는 경우 targetData의 effects 사용
+            if (targetData.effects) {
+                targetData.effects.forEach(effect => {
+                    effectValues[effect.type] = effect.value;
+                });
+            }
+        }
+        
+        // 효과 값을 화면에 표시
+        const effectCells = row.querySelectorAll('.effect-value');
+        effectCells.forEach(cell => {
+            const effectType = cell.dataset.effect;
+            const value = effectValues[effectType];
+            
+            if (value !== undefined) {
+                if (effectType === '공격력 상수' || effectType === '스킬 마스터') {
+                    cell.textContent = value;
+                } else {
+                    cell.textContent = value + '%';
+                }
+                cell.style.opacity = '1';
+            } else {
+                if (effectType === '공격력 상수' || effectType === '스킬 마스터') {
+                    cell.textContent = '0';
+                } else {
+                    cell.textContent = '0%';
+                }
+                cell.style.opacity = '0.1';
+            }
+        });
+    }
+
     updateBuffValues() {
         // 모든 한정 조건 수집
         const conditions = new Set(['전체', '공용']);
@@ -665,84 +1258,6 @@ class BuffCalculator {
         // UI 업데이트 - 메인 목표와 아군 전체 모두 업데이트
         this.updateBuffValueDisplay(initialValues, '전체', true);  // 메인 목표
         this.updateBuffValueDisplay(initialValues, '전체', false); // 아군 전체
-    }
-
-    createConditionTabs(conditions, isTotalChecked = true) {
-        const tableTabs = document.querySelector('.table-tabs');
-        
-        // 기존 탭 제거
-        const existingTabs = document.querySelector('.condition-tabs-container');
-        if (existingTabs) {
-            existingTabs.remove();
-        }
-
-        // 조건 탭 컨테이너 생성
-        const tabsContainer = document.createElement('div');
-        tabsContainer.className = 'condition-tabs-container';
-        
-        // 조건 탭 생성
-        const tabs = document.createElement('div');
-        tabs.className = 'condition-tabs';
-        tabs.innerHTML = `
-            <div class="condition-checkbox">
-                <input type="checkbox" class="condition-check" data-condition="전체" ${isTotalChecked ? 'checked' : ''}>
-                <span>전체</span>
-            </div>
-            ${conditions.filter(condition => condition !== '전체').map(condition => `
-                <div class="condition-checkbox">
-                    <input type="checkbox" class="condition-check" data-condition="${condition}" ${isTotalChecked ? 'checked' : ''}>
-                    <span>${condition}</span>
-                </div>
-            `).join('')}
-        `;
-        tabsContainer.appendChild(tabs);
-        
-        // 테이블 탭 앞에 삽입
-        tableTabs.parentNode.insertBefore(tabsContainer, tableTabs);
-
-        // 체크박스 이벤트 리스너
-        const checkboxes = tabs.querySelectorAll('.condition-check');
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', (e) => {
-                const condition = e.target.dataset.condition;
-                const isChecked = e.target.checked;
-
-                // 전체 체크박스 처리
-                if (condition === '전체') {
-                    // 모든 체크박스 상태를 전체 체크박스와 동일하게 설정
-                    checkboxes.forEach(cb => {
-                        cb.checked = isChecked;
-                    });
-                } else {
-                    // 전체 체크박스 해제
-                    const totalCheckbox = tabs.querySelector('.condition-check[data-condition="전체"]');
-                    if (totalCheckbox) {
-                        totalCheckbox.checked = false;
-                    }
-
-                    // 모든 개별 체크박스가 체크되었는지 확인
-                    const allChecked = Array.from(checkboxes)
-                        .filter(cb => cb.dataset.condition !== '전체')
-                        .every(cb => cb.checked);
-
-                    // 모든 개별 체크박스가 체크되었다면 전체 체크박스도 체크
-                    if (allChecked) {
-                        totalCheckbox.checked = true;
-                    }
-                }
-
-                // 선택된 조건들의 값 합산
-                const selectedConditions = Array.from(tabs.querySelectorAll('.condition-check:checked')).map(cb => cb.dataset.condition);
-                const combinedValues = {
-                    main: this.calculateCombinedValues(selectedConditions, true),
-                    ally: this.calculateCombinedValues(selectedConditions, false)
-                };
-
-                // UI 업데이트
-                this.updateBuffValueDisplay(combinedValues, '전체', true);  // 메인 목표
-                this.updateBuffValueDisplay(combinedValues, '전체', false); // 아군 전체
-            });
-        });
     }
 
     calculateCombinedValues(selectedConditions, isMain) {
@@ -966,6 +1481,9 @@ class BuffCalculator {
                 element.style.opacity = value === 0 ? '0.1' : '1';
             }
         });
+        
+        // 딜러 총합 값 업데이트
+        this.updateTotalValues();
     }
 
     // 아케치 스킬3의 독립 배수 업데이트 함수 추가
@@ -1016,9 +1534,659 @@ class BuffCalculator {
             this.updateBuffValues();
         }
     }
+
+    updateDealerBuffValues() {
+        const conditions = new Set(['전체', '공용']); // 기본 조건 추가
+        const allValues = {};
+
+        // 선택된 버프에서 조건 수집
+        this.selectedDealerBuffs.forEach(buffId => {
+            Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                const buff = buffs.find(b => b.id === buffId);
+                if (buff && buff.targets) {
+                    buff.targets.forEach(target => {
+                        if (target.condition) {
+                            conditions.add(target.condition);
+                        }
+                    });
+                }
+            });
+        });
+
+        // 각 조건에 대한 버프 값 계산
+        Array.from(conditions).forEach(condition => {
+            allValues[condition] = {
+                dealer: this.calculateDealerBuffValues(condition),
+                // 아군 전체에도 영향을 주는 딜러 버프 계산
+                ally: this.calculateDealerAllyBuffValues(condition)
+            };
+        });
+
+        // 현재 값 저장
+        this.currentDealerValues = allValues;
+
+        // 전체 체크박스 상태 확인
+        const isTotalChecked = document.querySelector('.dealer-condition-check[data-condition="전체"]')?.checked;
+
+        // 조건별 탭 생성 (딜러용 조건 탭 생성)
+        this.createDealerConditionTabs(Array.from(conditions), isTotalChecked);
+
+        // 초기값 설정 - 전체 선택된 상태로 시작
+        const initialValues = {
+            dealer: this.calculateDealerCombinedValues(['전체']),
+            ally: this.calculateDealerAllyCombinedValues(['전체'])
+        };
+
+        // UI 업데이트 - 딜러 값 업데이트
+        this.updateDealerBuffValueDisplay(initialValues, '전체');
+        // 아군 전체 카드에도 딜러 버프 값 업데이트
+        this.updateDealerAllyBuffValueDisplay(initialValues, '전체');
+    }
+
+    calculateDealerCombinedValues(selectedConditions) {
+        // 기본 버프 값 초기화
+        const values = {
+            '공격력 %': 0,
+            '공격력 상수': 0,
+            '크리티컬 확률': 0,
+            '크리티컬 효과': 0,
+            '대미지 보너스': 0,
+            '방어력 감소': 0,
+            '관통': 0,
+            '스킬 마스터': 0,
+            '독립 배수': 1
+        };
+
+        // 전체 조건이 선택된 경우
+        if (selectedConditions.includes('전체')) {
+            // 모든 버프의 효과 합산
+            this.selectedDealerBuffs.forEach(buffId => {
+                Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                    const buff = buffs.find(b => b.id === buffId);
+                    if (buff && buff.targets) {
+                        buff.targets.forEach(target => {
+                            // '자신' 또는 '아군 전체' 대상의 버프만 적용
+                            if (target.target === '자신' || target.target === '아군 전체') {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        if (effect.type === '독립 배수') {
+                                            values[effect.type] *= (1 + parseFloat(effect.value) / 100);
+                                        } else {
+                                            values[effect.type] += parseFloat(effect.value);
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        } else {
+            // 선택된 조건들에 대해서만 버프 값을 합산
+            this.selectedDealerBuffs.forEach(buffId => {
+                Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                    const buff = buffs.find(b => b.id === buffId);
+                    if (buff && buff.targets) {
+                        buff.targets.forEach(target => {
+                            // '자신' 또는 '아군 전체' 대상의 버프만 적용
+                            if (target.target === '자신' || target.target === '아군 전체') {
+                                // 공용 버프는 공용 조건이 선택된 경우에만 포함
+                                if (selectedConditions.includes('공용') && !target.condition) {
+                                    target.effects.forEach(effect => {
+                                        if (values.hasOwnProperty(effect.type)) {
+                                            if (effect.type === '독립 배수') {
+                                                values[effect.type] *= (1 + parseFloat(effect.value) / 100);
+                                            } else {
+                                                values[effect.type] += parseFloat(effect.value);
+                                            }
+                                        }
+                                    });
+                                }
+                                // 특정 조건의 버프는 해당 조건이 선택된 경우에만 포함
+                                else if (target.condition && selectedConditions.includes(target.condition)) {
+                                    target.effects.forEach(effect => {
+                                        if (values.hasOwnProperty(effect.type)) {
+                                            if (effect.type === '독립 배수') {
+                                                values[effect.type] *= (1 + parseFloat(effect.value) / 100);
+                                            } else {
+                                                values[effect.type] += parseFloat(effect.value);
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        // 독립 배수를 퍼센트로 변환
+        values['독립 배수'] = (values['독립 배수'] - 1) * 100;
+
+        return values;
+    }
+
+    calculateDealerBuffValues(condition) {
+        const values = {
+            '공격력 %': 0,
+            '공격력 상수': 0,
+            '크리티컬 확률': 0,
+            '크리티컬 효과': 0,
+            '대미지 보너스': 0,
+            '방어력 감소': 0,
+            '관통': 0,
+            '스킬 마스터': 0,
+            '독립 배수': 0
+        };
+
+        this.selectedDealerBuffs.forEach(buffId => {
+            Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                const buff = buffs.find(b => b.id === buffId);
+                if (buff && buff.targets) {
+                    buff.targets.forEach(target => {
+                        // '자신' 또는 '아군 전체' 대상의 버프만 적용
+                        if (target.target === '자신' || target.target === '아군 전체') {
+                            // 전체 탭인 경우 모든 버프 포함
+                            if (condition === '전체') {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        values[effect.type] += parseFloat(effect.value);
+                                    }
+                                });
+                            }
+                            // 공용 버프는 공용 탭에서만 포함
+                            else if (condition === '공용' && !target.condition) {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        values[effect.type] += parseFloat(effect.value);
+                                    }
+                                });
+                            }
+                            // 한정 조건이 있는 경우, 해당 조건의 버프만 포함
+                            else if (condition && target.condition === condition) {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        values[effect.type] += parseFloat(effect.value);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        return values;
+    }
+
+    calculateDealerAllyCombinedValues(selectedConditions) {
+        // 기본 버프 값 초기화
+        const values = {
+            '공격력 %': 0,
+            '공격력 상수': 0,
+            '크리티컬 확률': 0,
+            '크리티컬 효과': 0,
+            '대미지 보너스': 0,
+            '방어력 감소': 0,
+            '관통': 0,
+            '스킬 마스터': 0,
+            '독립 배수': 1
+        };
+
+        // 전체 조건이 선택된 경우
+        if (selectedConditions.includes('전체')) {
+            // 모든 버프의 효과 합산
+            this.selectedDealerBuffs.forEach(buffId => {
+                Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                    const buff = buffs.find(b => b.id === buffId);
+                    if (buff && buff.targets) {
+                        buff.targets.forEach(target => {
+                            // '아군 전체' 대상의 버프만 적용
+                            if (target.target === '아군 전체') {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        if (effect.type === '독립 배수') {
+                                            values[effect.type] *= (1 + parseFloat(effect.value) / 100);
+                                        } else {
+                                            values[effect.type] += parseFloat(effect.value);
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        } else {
+            // 선택된 조건들에 대해서만 버프 값을 합산
+            this.selectedDealerBuffs.forEach(buffId => {
+                Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                    const buff = buffs.find(b => b.id === buffId);
+                    if (buff && buff.targets) {
+                        buff.targets.forEach(target => {
+                            // '아군 전체' 대상의 버프만 적용
+                            if (target.target === '아군 전체') {
+                                // 공용 버프는 공용 조건이 선택된 경우에만 포함
+                                if (selectedConditions.includes('공용') && !target.condition) {
+                                    target.effects.forEach(effect => {
+                                        if (values.hasOwnProperty(effect.type)) {
+                                            if (effect.type === '독립 배수') {
+                                                values[effect.type] *= (1 + parseFloat(effect.value) / 100);
+                                            } else {
+                                                values[effect.type] += parseFloat(effect.value);
+                                            }
+                                        }
+                                    });
+                                }
+                                // 특정 조건의 버프는 해당 조건이 선택된 경우에만 포함
+                                else if (target.condition && selectedConditions.includes(target.condition)) {
+                                    target.effects.forEach(effect => {
+                                        if (values.hasOwnProperty(effect.type)) {
+                                            if (effect.type === '독립 배수') {
+                                                values[effect.type] *= (1 + parseFloat(effect.value) / 100);
+                                            } else {
+                                                values[effect.type] += parseFloat(effect.value);
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        // 독립 배수를 퍼센트로 변환
+        values['독립 배수'] = (values['독립 배수'] - 1) * 100;
+
+        return values;
+    }
+
+    calculateDealerAllyBuffValues(condition) {
+        const values = {
+            '공격력 %': 0,
+            '공격력 상수': 0,
+            '크리티컬 확률': 0,
+            '크리티컬 효과': 0,
+            '대미지 보너스': 0,
+            '방어력 감소': 0,
+            '관통': 0,
+            '스킬 마스터': 0,
+            '독립 배수': 0
+        };
+
+        this.selectedDealerBuffs.forEach(buffId => {
+            Object.entries(BUFF_DATA_DEALER).forEach(([character, buffs]) => {
+                const buff = buffs.find(b => b.id === buffId);
+                if (buff && buff.targets) {
+                    buff.targets.forEach(target => {
+                        // '아군 전체' 대상의 버프만 적용
+                        if (target.target === '아군 전체') {
+                            // 전체 탭인 경우 모든 버프 포함
+                            if (condition === '전체') {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        values[effect.type] += parseFloat(effect.value);
+                                    }
+                                });
+                            }
+                            // 공용 버프는 공용 탭에서만 포함
+                            else if (condition === '공용' && !target.condition) {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        values[effect.type] += parseFloat(effect.value);
+                                    }
+                                });
+                            }
+                            // 한정 조건이 있는 경우, 해당 조건의 버프만 포함
+                            else if (condition && target.condition === condition) {
+                                target.effects.forEach(effect => {
+                                    if (values.hasOwnProperty(effect.type)) {
+                                        values[effect.type] += parseFloat(effect.value);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        return values;
+    }
+
+    updateDealerBuffValueDisplay(values, selectedCondition = '전체') {
+        const idMapping = {
+            '공격력 %': 'AttackPercent',
+            '공격력 상수': 'AttackFlat',
+            '크리티컬 확률': 'CritRate',
+            '크리티컬 효과': 'CritDamage',
+            '대미지 보너스': 'DamageBonus',
+            '방어력 감소': 'DefenseReduce',
+            '관통': 'Penetrate',
+            '스킬 마스터': 'SkillMaster',
+            '독립 배수': 'IndependentMultiplier'
+        };
+
+        const prefix = 'dealer';
+        const currentValues = values[prefix];
+
+        Object.entries(currentValues).forEach(([effect, value]) => {
+            const element = document.getElementById(`${prefix}${idMapping[effect]}`);
+            if (element) {
+                let displayValue;
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    displayValue = value.toFixed(0);
+                } else {
+                    displayValue = value.toFixed(1) + '%';
+                }
+                element.textContent = displayValue;
+                element.style.opacity = value === 0 ? '0.1' : '1';
+            }
+        });
+        
+        // 딜러 총합 값 업데이트
+        this.updateTotalValues();
+    }
+
+    // 아군 전체에 영향을 주는 딜러 버프 표시 업데이트
+    updateDealerAllyBuffValueDisplay(values, selectedCondition = '전체') {
+        const idMapping = {
+            '공격력 %': 'AttackPercent',
+            '공격력 상수': 'AttackFlat',
+            '크리티컬 확률': 'CritRate',
+            '크리티컬 효과': 'CritDamage',
+            '대미지 보너스': 'DamageBonus',
+            '방어력 감소': 'DefenseReduce',
+            '관통': 'Penetrate',
+            '스킬 마스터': 'SkillMaster',
+            '독립 배수': 'IndependentMultiplier'
+        };
+
+        const allyValues = values['ally'];
+        
+        // 기존 버프 값 가져오기
+        const existingValues = {};
+        Object.keys(idMapping).forEach(effect => {
+            const element = document.getElementById(`ally${idMapping[effect]}`);
+            if (element) {
+                let value = element.textContent;
+                // 퍼센트 제거하고 숫자값으로 변환
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    existingValues[effect] = parseFloat(value) || 0;
+                } else {
+                    existingValues[effect] = parseFloat(value.replace('%', '')) || 0;
+                }
+            }
+        });
+
+        // 딜러 버프 값을 기존 버프 값에 합산하여 표시
+        Object.entries(allyValues).forEach(([effect, value]) => {
+            const element = document.getElementById(`ally${idMapping[effect]}`);
+            if (element) {
+                // 기존 버프 값과 딜러 버프 값을 합산
+                let combinedValue = 0;
+                
+                // 기존 버프 값이 있다면 합산
+                if (this.currentValues && this.currentValues['전체'] && this.currentValues['전체']['ally']) {
+                    const existingValue = this.currentValues['전체']['ally'][effect] || 0;
+                    combinedValue = existingValue + value;
+                } else {
+                    combinedValue = value;
+                }
+                
+                let displayValue;
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    displayValue = combinedValue.toFixed(0);
+                } else {
+                    displayValue = combinedValue.toFixed(1) + '%';
+                }
+                element.textContent = displayValue;
+                element.style.opacity = combinedValue === 0 ? '0.1' : '1';
+            }
+        });
+        
+        // 딜러 총합 값 업데이트
+        this.updateTotalValues();
+    }
+
+    // 딜러 총합 값을 계산하고 표시하는 함수
+    updateTotalValues() {
+        const idMapping = {
+            '공격력 %': 'AttackPercent',
+            '공격력 상수': 'AttackFlat',
+            '크리티컬 확률': 'CritRate',
+            '크리티컬 효과': 'CritDamage',
+            '대미지 보너스': 'DamageBonus',
+            '방어력 감소': 'DefenseReduce',
+            '관통': 'Penetrate',
+            '스킬 마스터': 'SkillMaster',
+            '독립 배수': 'IndependentMultiplier'
+        };
+        
+        // 메인 목표와 딜러의 값을 가져옴
+        const totalValues = {};
+        
+        Object.keys(idMapping).forEach(effect => {
+            const mainElement = document.getElementById(`main${idMapping[effect]}`);
+            const dealerElement = document.getElementById(`dealer${idMapping[effect]}`);
+            
+            if (mainElement && dealerElement) {
+                let mainValue, dealerValue;
+                
+                // 값 추출
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    mainValue = parseFloat(mainElement.textContent) || 0;
+                    dealerValue = parseFloat(dealerElement.textContent) || 0;
+                    totalValues[effect] = mainValue + dealerValue;
+                } else {
+                    mainValue = parseFloat(mainElement.textContent.replace('%', '')) || 0;
+                    dealerValue = parseFloat(dealerElement.textContent.replace('%', '')) || 0;
+                    
+                    // 독립 배수는 다르게 계산
+                    if (effect === '독립 배수') {
+                        totalValues[effect] = (1 + mainValue/100) * (1 + dealerValue/100) * 100 - 100;
+                    } else {
+                        totalValues[effect] = mainValue + dealerValue;
+                    }
+                }
+            }
+        });
+        
+        // 총합 값 표시
+        Object.entries(totalValues).forEach(([effect, value]) => {
+            const element = document.getElementById(`total${idMapping[effect]}`);
+            if (element) {
+                let displayValue;
+                if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                    displayValue = value.toFixed(0);
+                } else {
+                    displayValue = value.toFixed(1) + '%';
+                }
+                element.textContent = displayValue;
+                element.style.opacity = value === 0 ? '0.1' : '1';
+            }
+        });
+    }
+
+    createConditionTabs(conditions, isTotalChecked = true) {
+        const tableTabs = document.querySelector('.table-tabs');
+        
+        // 기존 탭 제거
+        const existingTabs = document.querySelector('.buff-condition-tabs-container');
+        if (existingTabs) {
+            existingTabs.remove();
+        }
+
+        // 조건 탭 컨테이너 생성
+        const tabsContainer = document.createElement('div');
+        tabsContainer.className = 'condition-tabs-container buff-condition-tabs-container';
+        
+        // 조건 탭 생성
+        const tabs = document.createElement('div');
+        tabs.className = 'condition-tabs';
+        
+        // '버프 조건' 라벨 추가
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'condition-label';
+        labelDiv.textContent = '버프 조건';
+        tabs.appendChild(labelDiv);
+        
+        tabs.innerHTML += `
+            <div class="condition-checkbox">
+                <input type="checkbox" class="condition-check buff-condition-check" data-condition="전체" ${isTotalChecked ? 'checked' : ''}>
+                <span>전체</span>
+            </div>
+            ${conditions.filter(condition => condition !== '전체').map(condition => `
+                <div class="condition-checkbox">
+                    <input type="checkbox" class="condition-check buff-condition-check" data-condition="${condition}" ${isTotalChecked ? 'checked' : ''}>
+                    <span>${condition}</span>
+                </div>
+            `).join('')}
+        `;
+        tabsContainer.appendChild(tabs);
+        
+        // 테이블 탭 앞에 삽입
+        tableTabs.parentNode.insertBefore(tabsContainer, tableTabs);
+
+        // 체크박스 이벤트 리스너
+        const checkboxes = tabs.querySelectorAll('.buff-condition-check');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const condition = e.target.dataset.condition;
+                const isChecked = e.target.checked;
+
+                // 전체 체크박스 처리
+                if (condition === '전체') {
+                    // 모든 체크박스 상태를 전체 체크박스와 동일하게 설정
+                    checkboxes.forEach(cb => {
+                        cb.checked = isChecked;
+                    });
+                } else {
+                    // 전체 체크박스 해제
+                    const totalCheckbox = tabs.querySelector('.buff-condition-check[data-condition="전체"]');
+                    if (totalCheckbox) {
+                        totalCheckbox.checked = false;
+                    }
+
+                    // 모든 개별 체크박스가 체크되었는지 확인
+                    const allChecked = Array.from(checkboxes)
+                        .filter(cb => cb.dataset.condition !== '전체')
+                        .every(cb => cb.checked);
+
+                    // 모든 개별 체크박스가 체크되었다면 전체 체크박스도 체크
+                    if (allChecked) {
+                        totalCheckbox.checked = true;
+                    }
+                }
+
+                // 선택된 조건들의 값 합산
+                const selectedConditions = Array.from(tabs.querySelectorAll('.buff-condition-check:checked')).map(cb => cb.dataset.condition);
+                
+                // 버프 값 업데이트
+                const buffValues = {
+                    main: this.calculateCombinedValues(selectedConditions, true),
+                    ally: this.calculateCombinedValues(selectedConditions, false)
+                };
+
+                // UI 업데이트
+                this.updateBuffValueDisplay(buffValues, 'selected', true);
+                this.updateBuffValueDisplay(buffValues, 'selected', false);
+            });
+        });
+    }
+
+    createDealerConditionTabs(conditions, isTotalChecked = true) {
+        const dealerTableTabs = document.querySelector('.dealer-table-tabs');
+        
+        // 기존 탭 제거
+        const existingTabs = document.querySelector('.dealer-condition-tabs-container');
+        if (existingTabs) {
+            existingTabs.remove();
+        }
+
+        // 조건 탭 컨테이너 생성
+        const tabsContainer = document.createElement('div');
+        tabsContainer.className = 'condition-tabs-container dealer-condition-tabs-container';
+        
+        // 조건 탭 생성
+        const tabs = document.createElement('div');
+        tabs.className = 'condition-tabs';
+        
+        // '딜러 조건' 라벨 추가
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'condition-label';
+        labelDiv.textContent = '딜러 조건';
+        tabs.appendChild(labelDiv);
+        
+        tabs.innerHTML += `
+            <div class="condition-checkbox">
+                <input type="checkbox" class="condition-check dealer-condition-check" data-condition="전체" ${isTotalChecked ? 'checked' : ''}>
+                <span>전체</span>
+            </div>
+            ${conditions.filter(condition => condition !== '전체').map(condition => `
+                <div class="condition-checkbox">
+                    <input type="checkbox" class="condition-check dealer-condition-check" data-condition="${condition}" ${isTotalChecked ? 'checked' : ''}>
+                    <span>${condition}</span>
+                </div>
+            `).join('')}
+        `;
+        tabsContainer.appendChild(tabs);
+        
+        // 테이블 탭 앞에 삽입
+        dealerTableTabs.parentNode.insertBefore(tabsContainer, dealerTableTabs);
+
+        // 체크박스 이벤트 리스너
+        const checkboxes = tabs.querySelectorAll('.dealer-condition-check');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const condition = e.target.dataset.condition;
+                const isChecked = e.target.checked;
+
+                // 전체 체크박스 처리
+                if (condition === '전체') {
+                    // 모든 체크박스 상태를 전체 체크박스와 동일하게 설정
+                    checkboxes.forEach(cb => {
+                        cb.checked = isChecked;
+                    });
+                } else {
+                    // 전체 체크박스 해제
+                    const totalCheckbox = tabs.querySelector('.dealer-condition-check[data-condition="전체"]');
+                    if (totalCheckbox) {
+                        totalCheckbox.checked = false;
+                    }
+
+                    // 모든 개별 체크박스가 체크되었는지 확인
+                    const allChecked = Array.from(checkboxes)
+                        .filter(cb => cb.dataset.condition !== '전체')
+                        .every(cb => cb.checked);
+
+                    // 모든 개별 체크박스가 체크되었다면 전체 체크박스도 체크
+                    if (allChecked) {
+                        totalCheckbox.checked = true;
+                    }
+                }
+
+                // 선택된 조건들의 값 합산
+                const selectedConditions = Array.from(tabs.querySelectorAll('.dealer-condition-check:checked')).map(cb => cb.dataset.condition);
+                
+                // 딜러 버프 값 업데이트
+                const dealerValues = {
+                    dealer: this.calculateDealerCombinedValues(selectedConditions),
+                    ally: this.calculateDealerAllyCombinedValues(selectedConditions)
+                };
+
+                // UI 업데이트
+                this.updateDealerBuffValueDisplay(dealerValues, 'selected');
+                this.updateDealerAllyBuffValueDisplay(dealerValues, 'selected');
+            });
+        });
+    }
 }
 
-// 페이지 로드 시 계산기 초기화
+// 페이지 로드 시 버프 계산기 인스턴스 생성
 document.addEventListener('DOMContentLoaded', () => {
-    new BuffCalculator();
+    const buffCalculator = new BuffCalculator();
 }); 

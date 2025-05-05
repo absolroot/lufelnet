@@ -698,7 +698,7 @@ const BUFF_DATA = {
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/지국천.webp`,
             targets: [
                 {
-                    target: '메인 목표표',
+                    target: '메인 목표',
                     effects: [
                         { type: '공격력 %', value: 15.5 },
                     ],
@@ -731,8 +731,244 @@ const BUFF_DATA = {
             ]
         }
     ],
+    //원더 무기
+    '원더 무기': [
+        {
+            id: '천상의 별',
+            type: '무기',
+            skillName: '천상의 별',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/천상의 별.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 22.0 }
+                    ]
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 12.0 }
+                    ],
+                    condition: '염동'
+                }
+            ]
+        },
+        {
+            id: '하이브 가드',
+            type: '무기',
+            skillName: '하이브 가드',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/하이브 가드.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 20.0 }
+                    ],
+                    duration: '3턴',
+                }
+            ],
+            options: {
+                '개조6': {
+                    '아군 전체': { '대미지 보너스': 20.0 }
+                },
+                '개조5': {
+                    '아군 전체': { '대미지 보너스': 18.3 }
+                },
+                '개조4': {
+                    '아군 전체': { '대미지 보너스': 16.7 }
+                },
+                '개조3': {
+                    '아군 전체': { '대미지 보너스': 15.0 }
+                },
+                '개조2': {
+                    '아군 전체': { '대미지 보너스': 13.3 }
+                },
+                '개조1': {
+                    '아군 전체': { '대미지 보너스': 11.7 }
+                },
+                '개조0': {
+                    '아군 전체': { '대미지 보너스': 10.0 }
+                }
+            },
+            note: ''
+        },
+        {
+            id: '작열의 연옥',
+            type: '무기',
+            skillName: '작열의 연옥',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/작열의 연옥.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 6.0 }
+                    ]
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 상수', value: 300.0 }
+                    ]
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 14.0 }
+                    ],
+                    condition: '화염'
+                }
+            ]
+        },
+        {
+            id: '플라스마 섬멸자',
+            type: '무기',
+            skillName: '플라스마 섬멸자',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/플라스마 섬멸자.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 6.0 }
+                    ],
+                    condition: '만능'
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 18.0 }
+                    ],
+                    note: '소나타 2개 이상'
+                }
+            ]
+        },
+        {
+            id: '메커니컬 심판자',
+            type: '무기',
+            skillName: '메커니컬 심판자',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/메커니컬 심판자.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 13.6 }
+                    ],
+                    note: '진입 페르소나 속성'
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 상수', value: 240.0 }
+                    ]
+                }
+            ]
+        },
+        {
+            id: '태고의 역장',
+            type: '무기',
+            skillName: '태고의 역장',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/태고의 역장.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 36.0 }
+                    ],
+                    note: '원소 이상 필요'
+                },
+                
+            ]
+        },
+        {
+            id : '크리스탈 트레저',
+            type: '무기',
+            skillName: '크리스탈 트레저',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/크리스탈 트레저.webp`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 16.0 }
+                    ],
+                    note: '축복 효과 부여',
+                    duration: '2턴'
+                },
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 16.0 }
+                    ],
+                    condition: '축복',
+                    duration: '2턴'
+                }
+            ]
+        },
+        {
+            id: '망자의 눈',
+            type: '무기',
+            skillName: '망자의 눈',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/망자의 눈.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 28.0 }
+                    ],
+                    condition: '물리',
+                    duration: '3턴'
+                }
+            ]
+        }
+    ],
     // 마나카
     '마나카': [
+        {
+            id: '해명의 힘',
+            type: '커스텀',
+            skillName: '해명의 힘',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 0 },
+                        { type: '공격력 상수', value: 0 },
+                        { type: '크리티컬 확률', value: 0 },
+                        { type: '크리티컬 효과', value: 0 },
+                        { type: '대미지 보너스', value: 0 },
+                        { type: '방어력 감소', value: 0 },
+                        { type: '관통', value: 0 },
+                        { type: '스킬 마스터', value: 0 },
+                        { type: '독립 배수', value: 0 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {},
+            isCustom: true,
+            note: ''
+        },
+        {
+            id: '마나카 계시',
+            type: '계시',
+            skillName: '희망 직책',
+            skillIcon: `${BASE_URL}/assets/img/revelation/희망.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 8.0 }
+                    ]
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '관통', value: 5.0 }
+                    ],
+                    duration: '1턴'
+                }
+            ]
+        },
         {
             id: '마나카 스킬1',
             type: '스킬1',
@@ -900,8 +1136,390 @@ const BUFF_DATA = {
             note: ''
         }
     ],
+    // 후타바
+    '후타바': [
+        {
+            id: '해명의 힘',
+            type: '커스텀',
+            skillName: '해명의 힘',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 0 },
+                        { type: '공격력 상수', value: 0 },
+                        { type: '크리티컬 확률', value: 0 },
+                        { type: '크리티컬 효과', value: 0 },
+                        { type: '대미지 보너스', value: 0 },
+                        { type: '방어력 감소', value: 0 },
+                        { type: '관통', value: 0 },
+                        { type: '스킬 마스터', value: 0 },
+                        { type: '독립 배수', value: 0 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {},
+            isCustom: true,
+            note: ''
+        },
+        {
+            id: '후타바 계시',
+            type: '계시',
+            skillName: '결심 직책',
+            skillIcon: `${BASE_URL}/assets/img/revelation/결심.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 8.0 },
+                        { type: '방어력 감소', value: 10.0 }
+                    ],
+                    duration: '2턴'
+                }
+            ]
+        },
+        {
+            id: '후타바 계시2',
+            type: '계시',
+            skillName: '진정성 직책',
+            skillIcon: `${BASE_URL}/assets/img/revelation/진정성.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 16.0 },
+                    ]
+                }
+            ],
+            options: {
+                '속성 4명': {
+                    '아군 전체': { '공격력 %': 16.0 }
+                },
+                '속성 3명': {
+                    '아군 전체': { '공격력 %': 14.0 }
+                },
+                '속성 2명': {
+                    '아군 전체': { '공격력 %': 12.0 }
+                },
+                '속성 1명': {
+                    '아군 전체': { '공격력 %': 10.0 }
+                }
+            },
+            note: ''
+        },
+        {
+            id: '후타바 스킬1-1',
+            type: '스킬1',
+            skillName: '소리없는 침습(약점)',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 93.1 }
+                    ],
+                    duration: '2턴',
+                    condition: '약점'
+                }
+            ],
+            options: {
+                'LV13(의식5)+심상5': {
+                    '아군 전체': { '방어력 감소': 93.1 }
+                },
+                'LV13(의식5)': {
+                    '아군 전체': { '방어력 감소': 87.5 }
+                },
+                'LV13+심상5': {
+                    '아군 전체': { '방어력 감소': 80.3 }
+                },
+                'LV13': {
+                    '아군 전체': { '방어력 감소': 75.4 }
+                },
+                'LV10+심상5': {
+                    '아군 전체': { '방어력 감소': 65.7 }
+                },
+                'LV10': {
+                    '아군 전체': { '방어력 감소': 60.8 }
+                }
+            },
+            note: '의식5 → 2스택'
+        },
+        {
+            id: '후타바 스킬1-2',
+            type: '스킬1',
+            skillName: '소리없는 침습',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 46.6 }
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+                'LV13(의식5)+심상5': {
+                    '아군 전체': { '방어력 감소': 46.6 }
+                },
+                'LV13(의식5)': {
+                    '아군 전체': { '방어력 감소': 43.7 }
+                },
+                'LV13+심상5': {
+                    '아군 전체': { '방어력 감소': 40.1 }
+                },
+                'LV13': {
+                    '아군 전체': { '방어력 감소': 37.7 }
+                },
+                'LV10+심상5': {
+                    '아군 전체': { '방어력 감소': 32.8 }
+                },
+                'LV10': {
+                    '아군 전체': { '방어력 감소': 30.4 }
+                }
+            },
+            note: ''
+        },
+        {
+            id: '후타바 스킬2',
+            type: '스킬2',
+            skillName: '데이터 해독',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 35.3 }
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+                'LV13(의식5)+심상5': {
+                    '아군 전체': { '대미지 보너스': 35.3 }
+                },
+                'LV13(의식5)': {
+                    '아군 전체': { '대미지 보너스': 33.3 }
+                },
+                'LV13+심상5': {
+                    '아군 전체': { '대미지 보너스': 30.5 }
+                },
+                'LV13': {
+                    '아군 전체': { '대미지 보너스': 28.7 }
+                },
+                'LV10+심상5': {
+                    '아군 전체': { '대미지 보너스': 25.2 }
+                },
+                'LV10': {
+                    '아군 전체': { '대미지 보너스': 23.5}
+                }
+            },
+            note: '단일'
+        },
+        {
+            id: '후타바 스킬3',
+            type: '스킬3',
+            skillName: '불사조의 이름으로',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력 상수', value: 1726.5 },
+                        { type: '독립 배수', value: 20.8 }
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+                'LV13+심상5 (약점)': {
+                    '메인 목표': { '공격력 상수': 1726.5, '독립 배수': 20.8 }
+                },
+                'LV13 (약점)': {
+                    '메인 목표': { '공격력 상수': 1599.7, '독립 배수': 20.8 }
+                },
+                'LV10+심상5 (약점)': {
+                    '메인 목표': { '공격력 상수': 1395.0, '독립 배수': 20.8 }
+                },
+                'LV10 (약점)': {
+                    '메인 목표': { '공격력 상수': 1268.2, '독립 배수': 20.8 }
+                },
+                'LV13+심상5 (일반)': {
+                    '메인 목표': { '공격력 상수': 1726.5, '독립 배수': 25.0 }
+                },
+                'LV13 (일반)': {
+                    '메인 목표': { '공격력 상수': 1599.7, '독립 배수': 25.0 }
+                },
+                'LV10+심상5 (일반)': {
+                    '메인 목표': { '공격력 상수': 1395.0, '독립 배수': 25.0 }
+                },
+                'LV10 (일반)': {
+                    '메인 목표': { '공격력 상수': 1268.2, '독립 배수': 25.0 }
+                },
+                'LV13+심상5 (내성)': {
+                    '메인 목표': { '공격력 상수': 1726.5, '독립 배수': 100 }
+                },
+                'LV13 (내성)': {
+                    '메인 목표': { '공격력 상수': 1599.7, '독립 배수': 100 }
+                },
+                'LV10+심상5 (내성)': {
+                    '메인 목표': { '공격력 상수': 1395.0, '독립 배수': 100 }
+                },
+                'LV10 (내성)': {
+                    '메인 목표': { '공격력 상수': 1268.2, '독립 배수': 100 }
+                }
+            },
+            note: ''
+        },
+        {
+            id: '후타바 의식0',
+            type: '의식0',
+            skillName: '정보 수집',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 20.0 }
+                    ],
+                    note: '해킹완료'
+                }
+            ]
+        },
+        {
+            id: '후타바 의식1',
+            type: '의식1',
+            skillName: '스캔 분석',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 확률', value: 12.0 }
+                    ],
+                    note: '해킹완료'
+                }
+            ]
+        },
+        {
+            id: '후타바 의식3',
+            type: '의식3',
+            skillName: '원격 지원',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual3.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 25.0 }
+                    ],
+                    note: '후타바 디버프'
+                }
+            ]
+        },
+        {
+            id: '후타바 의식6',
+            type: '의식6',
+            skillName: '바이러스 침입',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 25.0 },
+                        { type: '독립 배수', value: 6.9 }
+                    ],
+                    note: '약점 대미지 10%'
+                }
+            ],
+            options: {
+                '약점+3스': {
+                    '아군 전체': { '대미지 보너스': 25.0, '독립 배수': 6.9 }
+                },
+                '일반+3스': {
+                    '아군 전체': { '대미지 보너스': 25.0, '독립 배수': 8.0 }
+                }
+            }
+        },
+        {
+            id: '후타바 전용무기',
+            type: '전용무기',
+            skillName: 'HACK 전문가(만능 칩)',
+            skillIcon: `${BASE_URL}/assets/img/character-weapon/후타바-5-01.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력 %', value: 19.0 }
+                    ],
+                    condition: '약점'
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 29.0 }
+                    ],
+                    note: '후타바 디버프 2개'
+                }
+            ],
+            options: {
+                '개조5&6': {
+                    '메인 목표': { '공격력 %': 19.0},
+                    '아군 전체': { '크리티컬 효과': 29.0 }
+                },
+                '개조3&4': {
+                    '메인 목표': { '공격력 %': 16.0 },
+                    '아군 전체': { '크리티컬 효과': 24.4 }
+                },
+                '개조1&2': {
+                    '메인 목표': { '공격력 %': 13.0 },
+                    '아군 전체': { '크리티컬 효과': 19.8 }
+                },
+                '개조0': {
+                    '메인 목표': { '공격력 %': 10.0 },
+                    '아군 전체': { '크리티컬 효과': 15.2 }
+                }
+            }
+        }
+    ],
     // 이케나미
     '이케나미': [
+        {
+            id: '이케나미 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/신뢰.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 8.0 }
+                    ]
+                },
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 0}
+                    ]
+                }
+            ],
+            options: {
+                '신뢰 풍요': {
+                    '아군 전체': { '대미지 보너스': 8.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '신뢰 힘': {
+                    '아군 전체': { '공격력 %': 10.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '창조 화해': {
+                    '아군 전체': { '대미지 보너스': 0 },
+                    '메인 목표': { '대미지 보너스': 12.0 }
+                }
+            },
+            note: ''
+        },
         {
             id: '이케나미 스킬1',
             type: '스킬1',
@@ -1148,6 +1766,41 @@ const BUFF_DATA = {
 
     // 마유미
     '마유미': [
+        {
+            id: '마유미 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/신뢰.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 10.0 }
+                    ]
+                },
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 0}
+                    ]
+                }
+            ],
+            options: {
+                '신뢰 힘': {
+                    '아군 전체': { '공격력 %': 10.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '신뢰 풍요': {
+                    '아군 전체': { '대미지 보너스': 8.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '창조 화해': {
+                    '아군 전체': { '대미지 보너스': 0 },
+                    '메인 목표': { '대미지 보너스': 12.0 }
+                }
+            },
+            note: ''
+        },
         {
             id: '마유미 스킬1',
             type: '스킬1',
@@ -1435,6 +2088,35 @@ const BUFF_DATA = {
     // 아케치
     '아케치': [
         {
+            id: '아케치 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/여정.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 8.0 }
+                    ]
+                }
+            ],
+            options: {
+                '여정 풍요': {
+                    '아군 전체': { '대미지 보너스': 8.0 }
+                },
+                '신뢰 힘': {
+                    '아군 전체': { '공격력 %': 10.0 }
+                },
+                '자유 실망': {
+                    '아군 전체': { '대미지 보너스': 0.0 }
+                },
+                '여정 주권': {
+                    '아군 전체': { '방어력 감소': 23.0 }
+                }
+            },
+            note: ''
+        },
+        {
             id: '아케치 스킬1',
             type: '스킬1',
             skillName: '화려한 화살',
@@ -1631,6 +2313,20 @@ const BUFF_DATA = {
     ],
     // 미오
     '미오': [
+        {
+            id: '미오 계시',
+            type: '계시',
+            skillName: '신념 헛수고',
+            skillIcon: `${BASE_URL}/assets/img/revelation/신념.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 10.0 }
+                    ]
+                }
+            ]
+        },
         {
             id: '미오 스킬1',
             type: '스킬1',
@@ -1863,6 +2559,20 @@ const BUFF_DATA = {
     ],
     // 리코 매화
     '리코·매화': [
+        {
+            id: '리코·매화 계시',
+            type: '계시',
+            skillName: '창조 우려',
+            skillIcon: `${BASE_URL}/assets/img/revelation/창조.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 0.0 }
+                    ]
+                }
+            ]
+        },
         {
             id: '리코·매화 스킬1',
             type: '스킬1',
@@ -2280,6 +2990,29 @@ const BUFF_DATA = {
     //루우나
     '루우나': [
         {
+            id: '루우나 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/자유.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 8.0 }
+                    ]
+                }
+            ],
+            options: {
+                '자유 좌절': {
+                    '아군 전체': { '대미지 보너스': 8.0 },
+                },
+                '여정 주권': {
+                    '아군 전체': { '방어력 감소': 23 },
+                }
+            },
+            note: ''
+        },
+        {
             id: '루우나 스킬1',
             type: '스킬1',
             skillName: '뜨거운 악수',
@@ -2542,6 +3275,45 @@ const BUFF_DATA = {
 
     //아야카
     '아야카': [
+        {
+            id: '아야카 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/창조.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 0.0 }
+                    ]
+                },
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 12.0}
+                    ]
+                }
+            ],
+            options: {
+                '창조 화해': {
+                    '아군 전체': { '대미지 보너스': 0 },
+                    '메인 목표': { '대미지 보너스': 12.0 }
+                },
+                '신뢰 힘': {
+                    '아군 전체': { '공격력 %': 10.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '신뢰 풍요': {
+                    '아군 전체': { '대미지 보너스': 8.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '여정 주권': {
+                    '아군 전체': { '방어력 감소': 23.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                }
+            },
+            note: ''
+        },
         {
             id: '아야카 스킬2',
             type: '스킬2',

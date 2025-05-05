@@ -2,7 +2,7 @@
 layout: default
 custom_css: [buff-calc]
 custom_js: [tooltip, buff-calc]
-custom_data: [tooltip.js, calc/buff-data.js]
+custom_data: [tooltip.js, calc/buff-data.js, calc/buff-data-dealer.js]
 permalink: /kr/buff-calc/
 language: kr
 title : 버프 계산기 - 페르소나5 더 팬텀 X 루페르넷
@@ -11,9 +11,10 @@ description: 페르소나5 더 팬텀 X 버프 계산기
 
 <head>
     <link rel="stylesheet" href="../../assets/css/lock.css">
-    <script src="../../assets/js/lock.js"></script>
+    <!--<script src="../../assets/js/lock.js"></script>-->
     <script src="../../assets/js/calc/buff-data.js"></script>
     <script src="../../data/kr/calc/buff-data-ritual.js"></script>
+    <script src="../../data/kr/calc/buff-data-dealer.js"></script>
     <script src="../../assets/js/buff-calc.js"></script>
 </head>
 
@@ -115,10 +116,110 @@ description: 페르소나5 더 팬텀 X 버프 계산기
 
             </div>
         </div>
+        <div class="card-style target-section">
+            <h3>딜러 자체</h3>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-label">공격력 %</div>
+                    <div class="stat-value" id="dealerAttackPercent">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">공격력 상수</div>
+                    <div class="stat-value" id="dealerAttackFlat">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 확률</div>
+                    <div class="stat-value" id="dealerCritRate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 효과</div>
+                    <div class="stat-value" id="dealerCritDamage">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">대미지 보너스</div>
+                    <div class="stat-value" id="dealerDamageBonus">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">방어력 감소</div>
+                    <div class="stat-value" id="dealerDefenseReduce">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">관통</div>
+                    <div class="stat-value" id="dealerPenetrate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">스킬 마스터</div>
+                    <div class="stat-value" id="dealerSkillMaster">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">독립 배수</div>
+                    <div class="stat-value" id="dealerIndependentMultiplier">0%</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 새로운 딜러 총합 카드 추가 -->
+        <div class="card-style target-section dealer-total-section">
+            <h3>딜러 총합</h3>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-label">공격력 %</div>
+                    <div class="stat-value" id="totalAttackPercent">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">공격력 상수</div>
+                    <div class="stat-value" id="totalAttackFlat">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 확률</div>
+                    <div class="stat-value" id="totalCritRate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">크리티컬 효과</div>
+                    <div class="stat-value" id="totalCritDamage">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">대미지 보너스</div>
+                    <div class="stat-value" id="totalDamageBonus">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">방어력 감소</div>
+                    <div class="stat-value" id="totalDefenseReduce">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">관통</div>
+                    <div class="stat-value" id="totalPenetrate">0%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">스킬 마스터</div>
+                    <div class="stat-value" id="totalSkillMaster">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">독립 배수</div>
+                    <div class="stat-value" id="totalIndependentMultiplier">0%</div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- table tabs -->
-    <div class="table-tabs card-style">
+    <!-- main tabs -->
+    <div class="main-tabs card-style">
+        <div class="main-tab-buttons">
+            <button class="main-tab-button active" data-tab="buff">버퍼</button>
+            <button class="main-tab-button" data-tab="dealer">딜러</button>
+        </div>
+    </div>
+
+    <!-- buff table tabs -->
+    <div class="table-tabs card-style main-tab-content active" id="buff-tab-content">
+        <div class="tab-buttons">
+            <!-- 탭 버튼은 JavaScript에서 동적으로 생성됩니다 -->
+        </div>
+        <!-- 탭 컨텐츠는 JavaScript에서 동적으로 생성됩니다 -->
+    </div>
+    
+    <!-- dealer table tabs -->
+    <div class="dealer-table-tabs card-style main-tab-content" id="dealer-tab-content">
         <div class="tab-buttons">
             <!-- 탭 버튼은 JavaScript에서 동적으로 생성됩니다 -->
         </div>
@@ -131,7 +232,7 @@ description: 페르소나5 더 팬텀 X 버프 계산기
         Navigation.load('buff-calc');
         VersionChecker.check();
         
-        // 탭 전환 기능 추가
+        // 일반 탭 전환 기능
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
         

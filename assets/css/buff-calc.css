@@ -26,8 +26,9 @@
 .top-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .card-style {
@@ -40,19 +41,19 @@
 
 .target-section {
     flex: 1;
-    min-width: 250px;
-    max-width: 400px;
+    min-width: 230px;
+    max-width: none;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    padding: 12px;
+    padding: 10px 8px;
 }
 
 .target-section h3 {
     color: #fff;
-    margin: 0 0 10px 0;
-    font-size: 1.1em;
+    margin: 0 0 6px 0;
+    font-size: 1em;
     text-align: center;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -60,38 +61,87 @@
     color: #d15252;
 }
 
-.target-section:last-child h3 {
+.target-section:nth-child(2) h3 {
     color: #636be0;
+}
+
+.target-section:nth-child(3) h3 {
+    color: #349235;
+}
+
+.dealer-total-section h3 {
+    color: #6be063 !important;  /* 녹색으로 표시 */
 }
 
 .stat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 6px;
 }
 
 .stat-item {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 6px;
-    padding: 8px;
+    padding: 6px;
     text-align: center;
 }
 
 .stat-label {
-    font-size: 12px;
+    font-size: 11px;
     color: #ccc;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
+    white-space: nowrap;
 }
 
 .stat-value {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #ffd700;
 }
 
+/* 메인 탭 스타일 */
+.main-tabs {
+    margin-bottom: 20px;
+    background: none;
+    border-radius: 8px;
+    padding: 0px;
+    box-shadow: none;
+}
+
+.main-tab-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.main-tab-button {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border : 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-tab-button.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffd700;
+}
+
+.main-tab-content {
+    display: none;
+}
+
+.main-tab-content.active {
+    display: block;
+}
+
 /* 테이블 탭 스타일 */
-.table-tabs {
-    margin-top: 30px;
+.table-tabs,
+.dealer-table-tabs {
+    margin-top: 20px;
     background: #1a1a1a;
     border-radius: 8px;
     padding: 20px;
@@ -282,7 +332,11 @@ input[type="checkbox"]:hover {
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .top-cards {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    
+    .target-section {
+        max-width: 100%;
     }
     
     .tab-buttons {
@@ -396,17 +450,27 @@ input[type="checkbox"]:hover {
 }
 
 .condition-tabs-container {
-    margin: 20px 0;
-    padding: 0 0px;
+    margin-bottom: 15px;
+    background: #222;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.condition-label {
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffd700;
+    text-align: center;
+    padding-right: 8px;
 }
 
 .condition-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 8px;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 20px;
+    margin: 0;
 }
 
 .condition-checkbox {
@@ -651,4 +715,60 @@ input[type="checkbox"]:hover {
 .skill-type-select .radio-group span {
     font-size: 14px;
     color: #999;
+}
+
+/* 커스텀 버프 입력 필드 스타일 */
+.custom-buff-input {
+    width: 70px;
+    padding: 3px 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    color: #ffd700;
+    font-size: 12px;
+    text-align: right;
+    line-height: 1;
+    height: 22px;
+    box-sizing: border-box;
+}
+
+.custom-buff-input:focus {
+    outline: none;
+    border-color: #ffd700;
+}
+
+.custom-input-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.custom-buff-reset {
+    font-size: 11px;
+    padding: 3px 8px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.2s ease;
+}
+
+.custom-buff-reset:hover {
+    background-color: #555;
+    color: #ffd700;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.custom-buff-input::-webkit-outer-spin-button,
+.custom-buff-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.custom-buff-input[type=number] {
+    -moz-appearance: textfield;
 } 

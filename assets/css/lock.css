@@ -12,7 +12,7 @@
 }
 
 .lock-container {
-    background-color: #1a1a1a;
+    background-color: #3a3a3a !important;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;

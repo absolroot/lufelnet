@@ -771,4 +771,132 @@ input[type="checkbox"]:hover {
 /* Firefox */
 .custom-buff-input[type=number] {
     -moz-appearance: textfield;
+}
+
+/* 대미지 계산기 스타일 */
+.damage-calculator {
+    margin: 0px 0 20px 0;
+    padding: 15px 35px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.damage-calculator h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #ffd700;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+.damage-formula {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.formula-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 60%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100% - 16px;
+    padding: 6px 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.formula-result {
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.formula-result span {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1;
+    margin-right: 12px;
+}
+
+#damageResult {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+
+
+.formula-details {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+
+.formula-step {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+}
+
+.formula-step span:first-child {
+    font-size: 13px;
+    color: #ccc;
+    display: block;
+}
+
+.formula-step span:last-child {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+@media (max-width: 768px) {
+    .damage-formula {
+        flex-direction: column;
+    }
+    
+    .formula-inputs {
+        width: 100%;
+    }
+    
+    .formula-result {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    
+    .formula-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
 } 

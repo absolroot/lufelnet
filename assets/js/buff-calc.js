@@ -12,6 +12,7 @@ class BuffCalculator {
         this.initTable();
         this.initDealerTable();
         this.initEventListeners();
+        this.initDamageCalculator();
         
         // 초기 상태에서 딜러 조건 탭 즉시 숨김
         const dealerConditionTabs = document.querySelector('.dealer-condition-tabs-container');
@@ -2143,6 +2144,13 @@ class BuffCalculator {
             const element = document.getElementById(`${prefix}${idMapping[effect]}`);
             if (element) {
                 let displayValue;
+                // 딜러 자체 초기값 적용 - 크리티컬 확률 5%, 크리티컬 효과 150%
+                if (effect === '크리티컬 확률') {
+                    value += 5; // 기본 크리티컬 확률 5% 추가
+                } else if (effect === '크리티컬 효과') {
+                    value += 150; // 기본 크리티컬 효과 150% 추가
+                }
+                
                 if (effect === '공격력 상수' || effect === '스킬 마스터') {
                     displayValue = value.toFixed(0);
                 } else {
@@ -2275,6 +2283,9 @@ class BuffCalculator {
                 element.style.opacity = value === 0 ? '0.1' : '1';
             }
         });
+        
+        // 대미지 계산 업데이트
+        this.calculateDamage();
     }
 
     createConditionTabs(conditions, isTotalChecked = true) {
@@ -2476,6 +2487,9 @@ class BuffCalculator {
                 }
             }
         });
+
+        // 모든 값이 업데이트된 후 대미지 계산 업데이트
+        this.calculateDamage();
     }
     
     // 새로운 메서드 추가 - 딜러 탭 캐릭터 체크 표시 업데이트
@@ -2503,6 +2517,179 @@ class BuffCalculator {
                 }
             }
         });
+
+        // 모든 값이 업데이트된 후 대미지 계산 업데이트
+        this.calculateDamage();
+    }
+
+    // 대미지 계산기 초기화
+    initDamageCalculator() {
+        // 메인 탭 버튼 위에 대미지 계산기 추가
+        const mainTabs = document.querySelector('.main-tabs');
+        const damageCalculator = document.createElement('div');
+        damageCalculator.className = 'damage-calculator card-style';
+        
+        // 타이틀과 계산식 결과 영역
+        damageCalculator.innerHTML = `
+            <!--<h3>대미지 계산</h3>-->
+            <div class="damage-formula">
+                <div class="formula-inputs">
+                    <div class="input-group">
+                        <label>기본 공격력 (바닐라 공격력 + 무기 공격력)</label>
+                        <input type="number" id="baseAttack" value="2000" min="0" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label>스킬 계수(%)</label>
+                        <input type="number" id="skillRatio" value="100" min="0" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>적 기본 방어력</label>
+                        <input type="number" id="baseDefense" value="1280" min="0" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label>적 방어 계수(%)</label>
+                        <input type="number" id="defenseRatio" value="263.2" min="0" step="0.1">
+                    </div>
+                </div>
+                <div class="formula-result">
+                    <span>계산 결과 :</span>
+                    <div id="damageResult">0</div>
+                </div>
+            </div>
+            <div class="formula-details">
+                <div class="formula-step">
+                    <span>공격력:</span>
+                    <span id="attackResult">0</span>
+                </div>
+                <div class="formula-step">
+                    <span>크리티컬(안정 영역):</span>
+                    <span id="critResult">0</span>
+                </div>
+                <div class="formula-step">
+                    <span>대미지 보너스:</span>
+                    <span id="damageBonusResult">0%</span>
+                </div>
+                <div class="formula-step">
+                    <span>방어력 적용 배수:</span>
+                    <span id="defenseResult">0</span>
+                </div>
+                <div class="formula-step">
+                    <span>독립 배수:</span>
+                    <span id="independentResult">0</span>
+                </div>
+            </div>
+        `;
+        
+        // 메인 탭 앞에 삽입
+        mainTabs.parentNode.insertBefore(damageCalculator, mainTabs);
+        
+        // 입력 필드 이벤트 리스너 추가
+        const inputs = damageCalculator.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                this.calculateDamage();
+            });
+        });
+        
+        // 버프 카드 관련 요소들에 변경 감지 이벤트 추가
+        const observeElements = [
+            'totalAttackPercent', 'totalAttackFlat', 'totalCritRate', 'totalCritDamage',
+            'totalDamageBonus', 'totalDefenseReduce', 'totalPenetrate', 'totalIndependentMultiplier'
+        ];
+        
+        // MutationObserver 생성
+        const observer = new MutationObserver(() => {
+            this.calculateDamage();
+        });
+        
+        // 관찰할 옵션 설정
+        const config = { childList: true, subtree: true, characterData: true, characterDataOldValue: true };
+        
+        // 모든 관찰 대상 요소에 옵저버 연결
+        observeElements.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                observer.observe(element, config);
+            }
+        });
+        
+        // 초기 계산
+        this.calculateDamage();
+    }
+    
+    // 대미지 계산 함수
+    calculateDamage() {
+        // 입력값 가져오기
+        const baseAttack = parseFloat(document.getElementById('baseAttack')?.value) || 0;
+        const skillRatio = parseFloat(document.getElementById('skillRatio')?.value) || 0;
+        const baseDefense = parseFloat(document.getElementById('baseDefense')?.value) || 0;
+        const defenseRatio = parseFloat(document.getElementById('defenseRatio')?.value) || 0;
+        
+        // 버프 값 가져오기
+        const totalAttackPercentElem = document.getElementById('totalAttackPercent');
+        const totalAttackFlatElem = document.getElementById('totalAttackFlat');
+        const totalCritRateElem = document.getElementById('totalCritRate');
+        const totalCritDamageElem = document.getElementById('totalCritDamage');
+        const totalDamageBonusElem = document.getElementById('totalDamageBonus');
+        const totalDefenseReduceElem = document.getElementById('totalDefenseReduce');
+        const totalPenetrateElem = document.getElementById('totalPenetrate');
+        const totalIndependentMultiplierElem = document.getElementById('totalIndependentMultiplier');
+        
+        // '%' 문자 제거하고 파싱
+        const attackPercent = totalAttackPercentElem ? parseFloat(totalAttackPercentElem.textContent.replace('%', '')) || 0 : 0;
+        const attackFlat = totalAttackFlatElem ? parseFloat(totalAttackFlatElem.textContent) || 0 : 0;
+        const critRate = totalCritRateElem ? parseFloat(totalCritRateElem.textContent.replace('%', '')) || 0 : 0;
+        const critDamage = totalCritDamageElem ? parseFloat(totalCritDamageElem.textContent.replace('%', '')) || 0 : 0;
+        const damageBonus = totalDamageBonusElem ? parseFloat(totalDamageBonusElem.textContent.replace('%', '')) || 0 : 0;
+        const defenseReduce = totalDefenseReduceElem ? parseFloat(totalDefenseReduceElem.textContent.replace('%', '')) || 0 : 0;
+        const penetrate = totalPenetrateElem ? Math.min(parseFloat(totalPenetrateElem.textContent.replace('%', '')) || 0, 100) : 0;
+        const independentMultiplier = totalIndependentMultiplierElem ? parseFloat(totalIndependentMultiplierElem.textContent.replace('%', '')) || 0 : 0;
+        
+        // 1. 공격력 계산: (기본 공격력 * 공격력 %) + 공격력 상수
+        const attackValue = (baseAttack * (1 + attackPercent / 100)) + attackFlat;
+        
+        // 2. 크리티컬 계산
+        let effectiveCritRate = Math.min(critRate, 100);
+        let effectiveCritDamage = critDamage;
+        
+        // 리코·매화 의식6 체크 여부 확인
+        const ricoRitual6Checked = document.querySelector('input[name="ritual-리코·매화"][value="6"]')?.checked;
+        
+        // 의식6이 체크되어 있고 크리티컬 확률이 100%를 초과하는 경우
+        if (ricoRitual6Checked && critRate > 100) {
+            // 초과 크리티컬 확률을 2배로 곱해서 크리티컬 효과에 추가
+            const excessCritRate = critRate - 100;
+            effectiveCritDamage += excessCritRate * 2;
+        }
+        
+        // 크리티컬 배수 계산: (크리티컬 효과 - 100) * 크리티컬 확률 / 100 + 1
+        const critMultiplier = ((effectiveCritDamage - 100) * effectiveCritRate / 100) / 100 + 1;
+        
+        // 3. 방어 계수 적용
+        const defenseCoef = defenseRatio / 100;
+        const defensePenetration = Math.max(0, (defenseCoef * (100 - penetrate) / 100 - defenseReduce / 100));
+        const defenseMultiplier = 1 - (baseDefense * defensePenetration) / (baseDefense * defensePenetration + 1400);
+        
+        // 4. 독립 배수
+        const independentMultiplierValue = 1 + independentMultiplier / 100;
+        
+        // 5. 최종 대미지 계산
+        const finalDamage = attackValue * (skillRatio / 100) * critMultiplier * (1 + damageBonus / 100) * defenseMultiplier * independentMultiplierValue;
+        
+        // 결과 표시
+        const damageResultElem = document.getElementById('damageResult');
+        const attackResultElem = document.getElementById('attackResult');
+        const critResultElem = document.getElementById('critResult');
+        const damageBonusResultElem = document.getElementById('damageBonusResult');
+        const defenseResultElem = document.getElementById('defenseResult');
+        const independentResultElem = document.getElementById('independentResult');
+        
+        if (damageResultElem) damageResultElem.textContent = Math.round(finalDamage).toLocaleString();
+        if (attackResultElem) attackResultElem.textContent = Math.round(attackValue).toLocaleString();
+        if (critResultElem) critResultElem.textContent = (critMultiplier * 100).toFixed(2) + '%';
+        if (damageBonusResultElem) damageBonusResultElem.textContent = (damageBonus).toFixed(1) + '%';
+        if (defenseResultElem) defenseResultElem.textContent = (defenseMultiplier * 100).toFixed(2) + '%';
+        if (independentResultElem) independentResultElem.textContent = (independentMultiplierValue * 100).toFixed(2) + '%';
     }
 }
 

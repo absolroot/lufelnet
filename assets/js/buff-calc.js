@@ -340,6 +340,34 @@ class BuffCalculator {
                         buff.targets.forEach((targetData, index) => {
                             const row = this.createDealerBuffRow(buff, character, targetData, index === 0);
                             tableBody.appendChild(row);
+                            
+                            // 커스텀 버프이고 옵션이 있는 경우 첫 번째 옵션의 값을 적용
+                            if (buff.isCustom && buff.options && Object.keys(buff.options).length > 0 && index === 0) {
+                                const optionSelect = row.querySelector('.dealer-buff-option');
+                                if (optionSelect) {
+                                    const selectedOption = optionSelect.value;
+                                    // 선택된 옵션을 이전 옵션으로 저장 (나중에 옵션 변경 시 기준점으로 사용)
+                                    optionSelect.dataset.previousOption = selectedOption;
+                                    
+                                    const target = targetData.target || '자신';
+                                    
+                                    if (buff.options[selectedOption] && buff.options[selectedOption][target]) {
+                                        const optionEffects = buff.options[selectedOption][target];
+                                        Object.entries(optionEffects).forEach(([effectType, value]) => {
+                                            const input = row.querySelector(`.custom-buff-input[data-effect="${effectType}"]`);
+                                            if (input) {
+                                                input.value = value;
+                                                
+                                                // 효과 데이터에도 값 업데이트
+                                                const effectData = targetData.effects.find(e => e.type === effectType);
+                                                if (effectData) {
+                                                    effectData.value = value;
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
                         });
                     } else {
                         const row = this.createDealerBuffRow(buff, character, null, true);
@@ -493,12 +521,12 @@ class BuffCalculator {
                         }
                         cell.style.opacity = '1';
                     } else {
-                        if (effect === '공격력 상수' || effect === '스킬 마스터') {
-                            cell.textContent = '0';
-                        } else {
-                            cell.textContent = '0%';
-                        }
-                        cell.style.opacity = '0.1';
+            if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                cell.textContent = '0';
+            } else {
+                cell.textContent = '0%';
+            }
+            cell.style.opacity = '0.1';
                     }
                 } else {
                     if (effect === '공격력 상수' || effect === '스킬 마스터') {
@@ -633,8 +661,62 @@ class BuffCalculator {
                     select.appendChild(option);
                 });
 
+                // 커스텀 버프의 경우 옵션 변경 시 input 필드 값도 업데이트하는 이벤트 리스너 추가
+                if (buff.isCustom) {
+                    select.addEventListener('change', (e) => {
+                        const selectedOption = e.target.value;
+                        const previousOption = e.target.dataset.previousOption || selectedOption;
+                        const buffId = e.target.dataset.buffId;
+                        const character = e.target.dataset.character;
+                        
+                        // 현재 셀렉트된 타겟 가져오기
+                        const target = 'target' in targetData ? targetData.target : '자신';
+                        
+                        // 입력 필드와 이전/현재 옵션 효과 가져오기
+                        const inputs = document.querySelectorAll(`.custom-buff-input[data-buff-id="${buffId}"][data-character="${character}"]`);
+                        const previousOptionEffects = buff.options[previousOption] && buff.options[previousOption][target] ? buff.options[previousOption][target] : {};
+                        const newOptionEffects = buff.options[selectedOption] && buff.options[selectedOption][target] ? buff.options[selectedOption][target] : {};
+                        
+                        // 모든 효과 타입에 대해 처리
+                        inputs.forEach(input => {
+                            const effectType = input.dataset.effect;
+                            const currentValue = parseFloat(input.value) || 0;
+                            const previousOptionValue = previousOptionEffects[effectType] || 0;
+                            const newOptionValue = newOptionEffects[effectType] || 0;
+                            
+                            // 이전 옵션 값을 빼고, 새 옵션 값을 더함
+                            // 입력 값이 이전 옵션 값과 다른 경우는 사용자가 수동으로 값을 변경한 것으로 취급
+                            if (Math.abs(currentValue - previousOptionValue) < 0.001) {
+                                // 기존 값이 이전 옵션 값과 같다면 (사용자가 수정하지 않았다면) 새 옵션 값으로 바로 설정
+                                input.value = newOptionValue;
+                            } else {
+                                // 사용자가 수정한 값에서 차이를 적용
+                                input.value = Math.max(0, (currentValue - previousOptionValue + newOptionValue).toFixed(1));
+                            }
+                            
+                            // 효과 데이터에도 값 업데이트
+                            const effectData = targetData.effects.find(e => e.type === effectType);
+                            if (effectData) {
+                                effectData.value = parseFloat(input.value) || 0;
+                            }
+                        });
+                        
+                        // 현재 선택을 이전 선택으로 저장
+                        e.target.dataset.previousOption = selectedOption;
+                        
+                        // 체크박스가 선택된 경우 버프 값 업데이트
+                        const checkbox = document.querySelector(`.dealer-buff-checkbox[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                        if (checkbox && checkbox.checked) {
+                            this.updateDealerBuffValues();
+                        }
+                    });
+                    
+                    // 초기 옵션 값 저장
+                    select.dataset.previousOption = select.value;
+                }
+
                 optionCell.appendChild(select);
-                    } else {
+            } else {
                 optionCell.textContent = '-';
             }
         }
@@ -666,16 +748,58 @@ class BuffCalculator {
             cell.className = 'effect-value';
             cell.dataset.effect = effect;
             
-            // targetData가 있고 효과가 있으면 초기값 설정
-            if (targetData && targetData.effects) {
+            // 커스텀 버프인 경우 텍스트 입력 필드 추가
+            if (buff.isCustom && targetData) {
                 const effectData = targetData.effects.find(e => e.type === effect);
                 if (effectData) {
-                    if (effect === '공격력 상수' || effect === '스킬 마스터') {
-                        cell.textContent = effectData.value;
-                    } else {
-                        cell.textContent = effectData.value + '%';
-                    }
+                    const inputContainer = document.createElement('div');
+                    inputContainer.className = 'custom-input-container';
+                    
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.className = 'custom-buff-input';
+                    input.value = effectData.value;
+                    input.min = "0";
+                    input.step = effect === '공격력 상수' || effect === '스킬 마스터' ? "1" : "0.1";
+                    input.dataset.effect = effect;
+                    input.dataset.buffId = buff.id;
+                    input.dataset.character = character;
+                    
+                    // 입력 이벤트 리스너 추가
+                    input.addEventListener('input', (e) => {
+                        const value = parseFloat(e.target.value) || 0;
+                        effectData.value = value;
+                        
+                        // 체크박스가 선택된 경우 버프 값 업데이트
+                        const checkbox = document.querySelector(`.dealer-buff-checkbox[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                        if (checkbox && checkbox.checked) {
+                            this.updateDealerBuffValues();
+                        }
+                    });
+                    
+                    inputContainer.appendChild(input);
+                    cell.appendChild(inputContainer);
                     cell.style.opacity = '1';
+                }
+            } else {
+                // 기존 로직
+                if (targetData && targetData.effects) {
+                    const effectData = targetData.effects.find(e => e.type === effect);
+                    if (effectData) {
+                        if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                            cell.textContent = effectData.value;
+                        } else {
+                            cell.textContent = effectData.value + '%';
+                        }
+                        cell.style.opacity = '1';
+                    } else {
+                        if (effect === '공격력 상수' || effect === '스킬 마스터') {
+                            cell.textContent = '0';
+                        } else {
+                            cell.textContent = '0%';
+                        }
+                        cell.style.opacity = '0.1';
+                    }
                 } else {
                     if (effect === '공격력 상수' || effect === '스킬 마스터') {
                         cell.textContent = '0';
@@ -684,13 +808,6 @@ class BuffCalculator {
                     }
                     cell.style.opacity = '0.1';
                 }
-            } else {
-                if (effect === '공격력 상수' || effect === '스킬 마스터') {
-                    cell.textContent = '0';
-                } else {
-                    cell.textContent = '0%';
-                }
-                cell.style.opacity = '0.1';
             }
             
             row.appendChild(cell);
@@ -711,6 +828,38 @@ class BuffCalculator {
             // 이전 버전과의 호환성을 위해 buff.note도 체크
             noteCell.textContent = buff.note;
         }
+        
+        // 커스텀 버프인 경우 비고 칸에 초기화 버튼 추가
+        if (buff.isCustom && isFirstRow) {
+            const resetButton = document.createElement('button');
+            resetButton.className = 'custom-buff-reset';
+            resetButton.textContent = '초기화';
+            resetButton.dataset.buffId = buff.id;
+            resetButton.dataset.character = character;
+            
+            resetButton.addEventListener('click', () => {
+                // 모든 커스텀 입력 필드 초기화
+                const inputs = document.querySelectorAll(`.custom-buff-input[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                inputs.forEach(input => {
+                    input.value = 0;
+                    // 해당 효과 데이터 업데이트
+                    const effectType = input.dataset.effect;
+                    const effectData = targetData.effects.find(e => e.type === effectType);
+                    if (effectData) {
+                        effectData.value = 0;
+                    }
+                });
+                
+                // 체크박스가 선택된 경우 버프 값 업데이트
+                const checkbox = document.querySelector(`.dealer-buff-checkbox[data-buff-id="${buff.id}"][data-character="${character}"]`);
+                if (checkbox && checkbox.checked) {
+                    this.updateDealerBuffValues();
+                }
+            });
+            
+            noteCell.appendChild(resetButton);
+        }
+        
         row.appendChild(noteCell);
 
         // 한정 조건 열
@@ -938,6 +1087,11 @@ class BuffCalculator {
         // 의식/개조 체크박스 이벤트 리스너 수정
         document.addEventListener('change', (e) => {
             if (e.target.classList.contains('ritual-mod-checkbox')) {
+                // 딜러 탭의 의식/개조 체크박스는 별도 처리
+                if (e.target.classList.contains('dealer-ritual-mod-checkbox')) {
+                    return;
+                }
+                
                 const character = e.target.name.split('-')[1];
                 const type = e.target.name.startsWith('ritual-') ? 'ritual' : 'mod';
                 const level = parseInt(e.target.value);
@@ -986,8 +1140,20 @@ class BuffCalculator {
                             // 옵션 업데이트
                             const optionSelect = row.querySelector('.buff-option');
                             if (optionSelect) {
-                                optionSelect.value = value;
-                                this.updateEffectValues(row, buffId);
+                                // 이전 옵션 값 저장
+                                const prevValue = optionSelect.value;
+                                // 새 옵션 값 설정
+                                optionSelect.value = value || optionSelect.value;
+                                
+                                // 값이 변경되었다면 change 이벤트 발생
+                                if (prevValue !== optionSelect.value) {
+                                    // 변경 이벤트 발생시켜 옵션 변경 로직 실행
+                                    const changeEvent = new Event('change', { bubbles: true });
+                                    optionSelect.dispatchEvent(changeEvent);
+                                } else {
+                                    // 값이 변경되지 않았더라도 효과 값 업데이트
+                                    this.updateEffectValues(row, buffId);
+                                }
                             }
                         });
                     }
@@ -999,6 +1165,80 @@ class BuffCalculator {
                 }
 
                 this.updateBuffValues();
+            }
+        });
+
+        // 딜러 탭 의식/개조 체크박스 이벤트 리스너
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('dealer-ritual-mod-checkbox')) {
+                // dealer-ritual-아케치 또는 dealer-mod-아케치 같은 형식에서 이름 추출
+                const nameParts = e.target.name.split('-');
+                const character = nameParts[2]; // dealer-ritual-CHARACTER 또는 dealer-mod-CHARACTER
+                const type = nameParts[1] === 'ritual' ? 'ritual' : 'mod';
+                const level = parseInt(e.target.value);
+
+                // 같은 그룹의 다른 체크박스들 해제
+                const otherCheckboxes = document.querySelectorAll(`.dealer-ritual-mod-checkbox[name="${e.target.name}"]`);
+                otherCheckboxes.forEach(checkbox => {
+                    if (checkbox !== e.target) {
+                        checkbox.checked = false;
+                    }
+                });
+
+                // 체크 해제된 경우
+                if (!e.target.checked) {
+                    // 이전에 선택된 버프들 해제
+                    const prevBuffs = RITUAL_DATA[character][type === 'ritual' ? 'rituals' : 'modifications'][level];
+                    Object.entries(prevBuffs).forEach(([buffId, value]) => {
+                        const checkbox = document.querySelector(`.dealer-buff-checkbox[data-buff-id="${buffId}"][data-character="${character}"]`);
+                        if (checkbox) {
+                            checkbox.checked = false;
+                            this.selectedDealerBuffs.delete(buffId);
+                            const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
+                            rows.forEach(row => row.classList.remove('selected'));
+                        }
+                    });
+
+                    this.updateDealerBuffValues();
+                    return;
+                }
+
+                // 새로운 버프들 선택
+                const newBuffs = RITUAL_DATA[character][type === 'ritual' ? 'rituals' : 'modifications'][level];
+                Object.entries(newBuffs).forEach(([buffId, value]) => {
+                    // BUFF_DATA_DEALER에서 해당 캐릭터와 buffId에 매칭되는 버프가 있는지 확인
+                    if (BUFF_DATA_DEALER[character] && BUFF_DATA_DEALER[character].some(buff => buff.id === buffId)) {
+                        const checkbox = document.querySelector(`.dealer-buff-checkbox[data-buff-id="${buffId}"][data-character="${character}"]`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                            this.selectedDealerBuffs.add(buffId);
+                            const rows = document.querySelectorAll(`tr[data-buff-id="${buffId}"][data-character="${character}"]`);
+                            rows.forEach(row => {
+                                row.classList.add('selected');
+                                // 옵션 업데이트
+                                const optionSelect = row.querySelector('.dealer-buff-option');
+                                if (optionSelect) {
+                                    // 이전 옵션 값 저장
+                                    const prevValue = optionSelect.value;
+                                    // 새 옵션 값 설정
+                                    optionSelect.value = value || optionSelect.value;
+                                    
+                                    // 값이 변경되었다면 change 이벤트 발생
+                                    if (prevValue !== optionSelect.value) {
+                                        // 변경 이벤트 발생시켜 옵션 변경 로직 실행
+                                        const changeEvent = new Event('change', { bubbles: true });
+                                        optionSelect.dispatchEvent(changeEvent);
+                                    } else {
+                                        // 값이 변경되지 않았더라도 효과 값 업데이트
+                                        this.updateDealerEffectValues(row, buffId);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+
+                this.updateDealerBuffValues();
             }
         });
 
@@ -1171,6 +1411,13 @@ class BuffCalculator {
         const targetData = buff.targets.find(t => t.target === target);
         if (!targetData) return;
         
+        // 커스텀 버프인 경우 입력 필드는 수정하지 않음
+        if (buff.isCustom) {
+            return;
+        }
+        
+        // 이 아래 로직은 일반 버프에만 적용됨
+        
         // 옵션 선택 확인
         let effectValues = {};
         if (buff.options && Object.keys(buff.options).length > 0) {
@@ -1191,7 +1438,7 @@ class BuffCalculator {
             }
         }
         
-        // 효과 값을 화면에 표시
+        // 효과 값을 화면에 표시 (일반 버프만 처리)
         const effectCells = row.querySelectorAll('.effect-value');
         effectCells.forEach(cell => {
             const effectType = cell.dataset.effect;

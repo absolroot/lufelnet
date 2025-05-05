@@ -1,8 +1,8 @@
 ---
 layout: default
 custom_css: [buff-calc]
-custom_js: [tooltip, buff-calc]
-custom_data: [tooltip.js, calc/buff-data.js, calc/buff-data-dealer.js]
+custom_js: [tooltip]
+custom_data: [tooltip.js]
 permalink: /kr/buff-calc/
 language: kr
 title : 버프 계산기 - 페르소나5 더 팬텀 X 루페르넷
@@ -12,7 +12,7 @@ description: 페르소나5 더 팬텀 X 버프 계산기
 <head>
     <link rel="stylesheet" href="../../assets/css/lock.css">
     <!--<script src="../../assets/js/lock.js"></script>-->
-    <script src="../../assets/js/calc/buff-data.js"></script>
+    <script src="../../data/kr/calc/buff-data.js"></script>
     <script src="../../data/kr/calc/buff-data-ritual.js"></script>
     <script src="../../data/kr/calc/buff-data-dealer.js"></script>
     <script src="../../assets/js/buff-calc.js"></script>
@@ -231,22 +231,5 @@ description: 페르소나5 더 팬텀 X 버프 계산기
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('buff-calc');
         VersionChecker.check();
-        
-        // 일반 탭 전환 기능
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 모든 탭 버튼과 컨텐츠에서 active 클래스 제거
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // 클릭한 탭 버튼과 해당 컨텐츠에 active 클래스 추가
-                button.classList.add('active');
-                const tabId = button.getAttribute('data-tab') + '-tab';
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
     });
 </script> 

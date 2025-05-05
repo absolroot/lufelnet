@@ -260,7 +260,7 @@ input[type="checkbox"]:hover {
 }
 
 .type-column {
-    width: 70px;
+    min-width: 80px;
 }
 
 .target-column {

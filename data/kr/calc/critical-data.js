@@ -1,5 +1,18 @@
 const criticalCalcData = [
     {
+        id: "default",
+        charName: "-",
+        charImage: "",
+        type: "기본값",
+        target: "-",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+        skillName: "기본 크리티컬 확률",
+        options: [],
+        value: 5.0,
+        duration: "-",
+        note: ""
+    },
+    {
         id: "myPalace",
         charName: "-",
         charImage: "",
@@ -292,7 +305,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -335,7 +348,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -453,7 +466,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -486,7 +499,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -624,7 +637,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화", 
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -637,7 +650,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -723,7 +736,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -806,7 +819,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     },
@@ -927,7 +940,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
         skillName: "진급강화",
         options: [],
-        value: 7.5,
+        value: 12,
         duration: "-",
         note: ""
     }

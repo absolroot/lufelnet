@@ -66,8 +66,44 @@ class CriticalCalc {
             this.selfTableBody.appendChild(row);
         });
 
+        // default와 myPalace 항목을, 이미 내부적으로 선택된 것으로 표시합니다
+        this.selectDefaultItems();
+        
         this.updateTotal();
         this.updateMobileCharNames();
+    }
+
+    selectDefaultItems() {
+        // default와 myPalace 항목 자동 선택
+        criticalCalcData.forEach(data => {
+            if (data.id === "default" || data.id === "myPalace") {
+                this.selectedItems.add(data.id);
+                
+                // 테이블에서 해당 항목의 체크박스를 찾아 선택 상태로 변경
+                const rows = document.querySelectorAll(`tr`);
+                rows.forEach(row => {
+                    const checkbox = row.querySelector('td.check-column img');
+                    if (checkbox) {
+                        const itemData = this.getDataFromRow(row);
+                        if (itemData && (itemData.id === "default" || itemData.id === "myPalace")) {
+                            checkbox.src = `${BASE_URL}/assets/img/ui/check-on.png`;
+                            row.classList.add('selected');
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
+    // 행에서 데이터를 추출하는 헬퍼 메서드
+    getDataFromRow(row) {
+        if (!row) return null;
+        
+        const skillNameCell = row.querySelector('.skill-name-column');
+        if (!skillNameCell) return null;
+        
+        const skillName = skillNameCell.textContent.trim();
+        return criticalCalcData.find(data => data.skillName === skillName);
     }
 
     createTableRow(data) {
@@ -77,14 +113,29 @@ class CriticalCalc {
             row.classList.add('empty-char');
         }
         
+        // 데이터 ID를 행에 저장 (선택 처리를 위해)
+        if (data.id) {
+            row.dataset.id = data.id;
+        }
+        
         // 체크박스 열
         const checkCell = document.createElement('td');
         checkCell.className = 'check-column';
         const checkbox = document.createElement('img');
-        checkbox.src = `${BASE_URL}/assets/img/ui/check-off.png`;
+        
+        // default와 myPalace 항목은 처음부터 체크된 상태로 표시
+        const isDefaultSelected = data.id === "default" || data.id === "myPalace";
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-${isDefaultSelected ? 'on' : 'off'}.png`;
+        
         checkbox.onclick = () => this.toggleCheck(checkbox, data);
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
+        
+        // 기본 선택 항목에 selected 클래스 추가
+        if (isDefaultSelected) {
+            row.classList.add('selected');
+            this.selectedItems.add(data.id);
+        }
         
         // 캐릭터 이미지 열
         const charImgCell = document.createElement('td');

@@ -1,6 +1,6 @@
 body {
     font-family:  "Nanum Gothic", -apple-system, "Noto Sans KR",  Roboto;
-    background-color: #222020;
+    background-color: #1f1f1f;
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -19,6 +19,8 @@ body {
     opacity: 1;
     transition: opacity 0.3s ease;
 }
+
+
 
 /* PC 환경의 배경 스타일 */
 @media screen and (min-width: 769px) {
@@ -149,6 +151,31 @@ body {
 .navigation-path .current-page {
     color: rgba(255, 255, 255, 0.3);
 }
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto auto 0px auto !important;
+    padding-bottom: 20px;
+    padding-top : 20px;
+    background-color: transparent;
+    transform: translateX(120px);
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        transform: translateX(0px);
+    }
+}
+
+.footer-text {
+    margin-top: auto;
+    max-width: 1200px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
 
 /* 다크 테마 스타일 */
 :root {

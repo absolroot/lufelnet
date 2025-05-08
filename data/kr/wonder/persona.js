@@ -587,6 +587,37 @@ const personaData = {
             {name : "물리 강화", priority: 0 },
         ]
     },
+    "자오우곤겐":{
+        grade: "8",
+        star: "5",
+        position: "반항",
+        element: "화염",
+        instinct: {
+            name: "삼세 제도 III",
+            effects: [
+                "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 3턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 『불멸의 진리』를 획득한다.",
+                "『불멸의 진리』: 스 킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 12%, 대미지가 10% 증가한다."
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "분노한 진신",
+            effect: "1명의 적에게 공격력 48.0%의 화염 속성 대미지를 4회 준다. 적군에게 「외상」을 주며 3턴 동안 지속된다. 「외상」기간 동안 목표가 화염 속성 대미지를 1회 받을 때 마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
+            priority: 3,
+            icon: "화염"
+        },
+        highlight: {
+            effect: "1명의 적에게 공격력 360.0%의 화염 속성 대미지를 준다.",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "공격 강화", priority: 0 },
+            {name : "어드바이스", priority: 0 },
+            {name : "정교한 타격", priority: 0 },
+            {name : "마도의 재능", priority: 0 },
+            {name : "화염 강화", priority: 0 },
+        ]
+    },
     "앨리스": {
         grade: "8",
         star: "5",

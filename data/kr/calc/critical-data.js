@@ -282,6 +282,39 @@ const criticalCalcData = [
         note: ""
     },
     {
+        id: "yukimakoto1",
+        charName: "유키 마코토",
+        charImage: "유키 마코토.webp",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "우연한 인연",
+        options: [],
+        value: 16.0,
+        duration: "-",
+        note: "월상 4중첩"
+    },
+    {
+        id: "yukimakoto2",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/유키 마코토-5-01.png`,
+        skillName: "데오스사이포스",
+        options: ["개조0","개조1&2","개조3&4","개조5&6"],
+        values: {
+            "개조0": 16.3,
+            "개조1&2": 21.2,
+            "개조3&4": 26.1,
+            "개조5&6": 31.0
+        },
+        defaultOption: "개조5&6",
+        value: 31.0,
+        duration: "2턴",
+        note: "월상 3중첩"
+    },
+    {
         id: "mayumi1",
         charName: "마유미",
         charImage: "마유미.webp",

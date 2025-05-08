@@ -1,5 +1,6 @@
 const PAY_DATA = {
     packages: [
+        /*
         {
             name: "1주년 패키지 1",
             crystal: 300,
@@ -25,7 +26,7 @@ const PAY_DATA = {
             amber: 2680,
             price: 51000,
             maxCount: 1
-        },
+        },*/
         {
             name: "마루치무의 VIP 패키지",
             crystal: 300,

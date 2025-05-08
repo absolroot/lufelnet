@@ -1,5 +1,43 @@
 // 캐릭터별 의식 레벨에 따른 행동 패턴 정의
 const ritualPatterns = {
+    "유키 마코토": [
+        {
+        level: "0-6",  // 의식 범위
+        pattern: [
+            [{ type: "스킬1" }],
+            [{ type: "스킬3" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬3" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬3" }]
+        ]
+        }
+    ],
+    "마나카": [
+        {
+        level: "0",  
+        pattern: [
+            [],
+            [{ order: 0, type: "스킬1" }],
+            [{ order: 0, type: "스킬3" }],
+            [{ order: 0, type: "스킬1" }],
+            [{ order: 0, type: "스킬3" }],
+            [{ order: 0, type: "스킬1" }]
+        ]
+        },
+        {
+        level: "1-6",  
+        pattern: [
+            [{ order: 0, type: "스킬3" }],
+            [{ order: 0, type: "스킬1" }],
+            [{ order: 0, type: "스킬3" }],
+            [{ order: 0, type: "스킬1" }],
+            [{ order: 0, type: "스킬3" }],
+            [{ order: 0, type: "스킬1" }]
+        ]
+        }
+    ],
+    
     "아케치": [
         {
         level: "1-6",  // 의식 범위

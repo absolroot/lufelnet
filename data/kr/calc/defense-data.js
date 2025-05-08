@@ -192,6 +192,65 @@ const penetrateData = [
         note: "방사선 보유 적 원소 이상 3개 이상"
     },
     {
+        id: "yukimakoto1",
+        charName: "유키 마코토",
+        charImage: "유키 마코토.webp",
+        type: "스킬3",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/화염.png`,
+        skillName: "홍련·맹화의 탐식",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+        values: {
+            "LV10": 11.7,
+            "LV10+심상5": 12.9,
+            "LV13": 12.4,
+            "LV13+심상5": 13.6
+        },
+        defaultOption: "LV13+심상5",
+        value: 13.6,
+        duration: "-",
+        note: "월상 4중첩"
+    },
+    {
+        id: "yukimakoto2",
+        charName: "",
+        charImage: "",
+        type: "의식0",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "위대한 결단",
+        options: [],
+        value: 12.0,
+        duration: "-",
+        note: "월상 보유 시"
+    },
+    {
+        id: "yukimakoto3",
+        charName: "",
+        charImage: "",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "우연한 인연",
+        options: [],
+        value: 10.0,
+        duration: "2턴",
+        note: "스킬2"
+    },
+    {
+        id: "yukimakoto4",
+        charName: "",
+        charImage: "",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
         id: "kira1",
         charName: "키라",
         charImage: "키라.webp",

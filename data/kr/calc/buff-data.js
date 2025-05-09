@@ -187,6 +187,44 @@ const BUFF_DATA = {
             note: '전투 시작 시'
         },
         {
+            id: '자오우곤겐1',
+            type: '본능',
+            skillName: '자오우곤겐 - 본능',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/자오우곤겐.webp`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력 %', value: 12 },
+                        { type: '대미지 보너스', value: 10 }
+                    ],
+                    duration: '3턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '자오우곤겐2',
+            type: '스킬',
+            skillName: '자오우곤겐 - 분노한 진신',
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/자오우곤겐.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 24 }
+                    ],
+                    duration: '2턴',
+                    condition: ''
+                }
+            ],
+            options: {
+            },
+            note: '화염 대미지 8회'
+        },
+        {
             id: '황룡1',
             type: '본능',
             skillName: '황룡 - 본능',

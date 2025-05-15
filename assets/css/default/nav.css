@@ -506,10 +506,21 @@
     color: rgba(255, 255, 255, 0.7);
     font-size: 12px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .option:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.option.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.option.disabled:hover {
+    background-color: transparent;
 }
 
 .option.selected {

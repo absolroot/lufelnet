@@ -1,0 +1,220 @@
+/* About 페이지 스타일 */
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #fff;
+}
+
+.about-section {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(211, 188, 142, 0.3);
+}
+
+.about-section h2 {
+    color: #d3bc8e;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-size: 22px;
+    border-bottom: 1px solid rgba(211, 188, 142, 0.3);
+    padding-bottom: 8px;
+}
+
+.about-section p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+.discord-link, .email-link {
+    color: #d3bc8e;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.discord-link:hover, .email-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.donate-button {
+    background-color: #d3bc8e;
+    color: #422e2e;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 0px;
+}
+
+.donate-button:hover {
+    background-color: #b39c70;
+    transform: translateY(-2px);
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: #422e2e;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #d3bc8e;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    color: #fff;
+    position: relative;
+}
+
+.close-button {
+    color: #d3bc8e;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+.modal-content h2 {
+    color: #d3bc8e;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(211, 188, 142, 0.3);
+    padding-bottom: 10px;
+}
+
+.donation-message, .donation-message-en {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.donation-message-en {
+    font-style: italic;
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* about-section 내 영어 번역용 스타일 */
+.about-section .donation-message-en {
+    text-align: left;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.donation-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.bmc-container {
+    margin-bottom: 0px;
+}
+
+.kakao-pay-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.kakao-pay-button {
+    padding: 8px 16px;
+    background-color: #FFEB00;
+    color: #000000;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 60px;
+    width: 226px; /* 버튼 크기 맞추기 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+.kakao-pay-button:hover {
+    background-color: #F2DC00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.kakao-pay-button::before {
+    content: "";
+    display: inline-block;
+    background-image: url('../img/logo/kakaopay-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+    height: 32px;
+    margin-right: 8px;
+}
+
+/* 카카오페이 QR 모달 */
+.kakao-modal {
+    max-width: 400px;
+}
+
+.kakao-qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.kakao-qr {
+    max-width: 300px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* 반응형 스타일 */
+@media screen and (max-width: 768px) {
+    .about-content {
+        padding: 10px;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 20px;
+    }
+    
+    .donation-methods {
+        flex-direction: column;
+    }
+} 

@@ -1,0 +1,126 @@
+---
+layout: default
+custom_css: [about]
+custom_js: []
+custom_data: []
+permalink: /kr/about/
+language: kr
+---
+
+<div class="main-wrapper">
+    <div class="header-container">
+    </div>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>루페르넷 lufel.net</h2>
+            <p>
+                루페르넷은 '페르소나5 더 팬텀 X' 플레이어를 위해 개인이 만든 비공식 정보 사이트입니다.
+                <br>
+                보다 많은 사람들이 P5X를 즐겼으면 좋겠다는 마음가짐에서 시작했습니다.
+            </p>
+            <p class="donation-message-en">
+                Lufel.net is an unofficial information site created by an individual for Persona 5 The Phantom X players. 
+                <br>
+                It started with the hope that more people would enjoy P5X.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>문의 및 피드백</h2>
+            <p>
+                버그, 잘못된 데이터를 발견하거나 피드백이 있으실 경우 
+                <a href="https://discord.gg/x3fvdQtBVg" target="_blank" class="discord-link">디스코드</a> 또는 
+                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>로 문의주세요.
+            </p>
+            <p class="donation-message-en">
+                If you find bugs, incorrect data, or have feedback, please contact us via
+                <a href="https://discord.gg/x3fvdQtBVg" target="_blank" class="discord-link">Discord</a> or
+                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>.
+        </div>
+
+        <div class="about-section">
+            <button id="donateButton" class="donate-button">후원</button>
+        </div>
+    </div>
+</div>
+
+<!-- 후원 모달 -->
+<div id="donateModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p class="donation-message">
+            감사합니다. P5X를 분석하길 좋아하는 유저로서 지속적으로 업데이트하고 있습니다. 
+            <br>
+            응원해주신다면 사이트를 보다 발전시키는 좋은 원동력으로 삼겠습니다.
+            <br>
+            진심으로 감사드립니다.
+        </p>
+        <p class="donation-message-en">
+            Thank you. As a user who truly loves P5X, I am continuously managing lufel.net.<br>
+            Your donation will be a great driving force for improving the site. Thank you sincerely.
+        </p>
+        
+        <div class="donation-methods">
+            <div class="bmc-container">
+                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="absol" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+            </div>
+            
+            <div class="kakao-pay-container">
+                <button id="kakaoPayButton" class="kakao-pay-button">Kakaopay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 카카오페이 QR 모달 -->
+<div id="kakaoPayModal" class="modal">
+    <div class="modal-content kakao-modal">
+        <span class="close-button">&times;</span>
+        <div class="kakao-qr-container">
+            <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR" class="kakao-qr">
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('about');
+        
+        // 모달 관련 기능
+        const donateModal = document.getElementById('donateModal');
+        const donateBtn = document.getElementById('donateButton');
+        const donateCloseButton = document.querySelector('#donateModal .close-button');
+        
+        // 카카오페이 모달 관련 기능
+        const kakaoPayModal = document.getElementById('kakaoPayModal');
+        const kakaoPayBtn = document.getElementById('kakaoPayButton');
+        const kakaoCloseButton = document.querySelector('#kakaoPayModal .close-button');
+        
+        donateBtn.onclick = function() {
+            donateModal.style.display = 'block';
+        }
+        
+        donateCloseButton.onclick = function() {
+            donateModal.style.display = 'none';
+        }
+        
+        kakaoPayBtn.onclick = function() {
+            donateModal.style.display = 'none';
+            kakaoPayModal.style.display = 'block';
+        }
+        
+        kakaoCloseButton.onclick = function() {
+            kakaoPayModal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == donateModal) {
+                donateModal.style.display = 'none';
+            }
+            if (event.target == kakaoPayModal) {
+                kakaoPayModal.style.display = 'none';
+            }
+        }
+    });
+</script> 

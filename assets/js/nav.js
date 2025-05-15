@@ -42,7 +42,8 @@ class Navigation {
                 calculator: '계산기',
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
-                criticalCalc: '크리티컬 계산기'
+                criticalCalc: '크리티컬 계산기',
+                about: 'about'
             },
             en: {
                 home: 'Home',
@@ -57,7 +58,8 @@ class Navigation {
                 calculator: 'Calculator',
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Calculator',
-                criticalCalc: 'Critical Calculator'
+                criticalCalc: 'Critical Calculator',
+                about: 'About'
             },
             jp: {
                 home: 'ホーム',
@@ -72,7 +74,8 @@ class Navigation {
                 calculator: '計算機',
                 payCalc: '課金計算機',
                 defenseCalc: '防御力計算機',
-                criticalCalc: 'クリティカル計算機'
+                criticalCalc: 'クリティカル計算機',
+                about: '紹介'
             },
             cn: {
                 home: '首页',
@@ -87,7 +90,8 @@ class Navigation {
                 calculator: '计算器',
                 payCalc: '充值计算器',
                 defenseCalc: '防御力计算器',
-                criticalCalc: '暴击计算器'
+                criticalCalc: '暴击计算机',
+                about: '关于'
             }
         };
 
@@ -159,6 +163,11 @@ class Navigation {
                     </div>
                 </div>
                 
+                <a href="${BASE_URL}/${currentLang}/about?v=${APP_VERSION}" class="nav-link" data-nav="about">
+                    <img src="${BASE_URL}/assets/img/nav/about.png" alt="about" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <span data-text="${texts.about}">${texts.about}</span>
+                </a>
+                
                 <!-- language selector -->
                 <div class="language-selector-container">
                     <div class="custom-select">
@@ -172,9 +181,9 @@ class Navigation {
                                 <span>한국어</span>
                             </div>
                             
-                            <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
+                            <div class="option ${currentLang === 'en' ? 'selected' : ''} disabled" data-value="en" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/en.png" alt="en" class="flag-icon">
-                                <span>English (Beta)</span>
+                                <span>English (Not Yet)</span>
                             </div>
                             <!--
                             <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
@@ -182,7 +191,7 @@ class Navigation {
                                 <span>日本語</span>
                             </div>
                             -->
-                            <div class="option ${currentLang === 'cn' ? 'selected' : ''}" data-value="cn" role="button" tabindex="0" onclick="return false;">
+                            <div class="option ${currentLang === 'cn' ? 'selected' : ''} disabled" data-value="cn" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
                                 <span>中文 (Not Yet)</span>
                             </div>
@@ -232,6 +241,11 @@ class Navigation {
                     e.preventDefault();
                     e.stopPropagation();
                     e.stopImmediatePropagation();
+                    
+                    // 비활성화된 언어는 선택 불가능하게 처리
+                    if (this.classList.contains('disabled')) {
+                        return;
+                    }
                     
                     const lang = this.getAttribute('data-value');
                     Navigation.selectLanguage(lang, e);

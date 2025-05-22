@@ -350,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+    
 
     // 의식 탭 기능
     document.querySelectorAll('.ritual-tab').forEach(tab => {
@@ -408,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         skillHeader.appendChild(itemContainer);
     }
+
 
     // 심상 아이템 개수 표시
     function updateMindItems() {

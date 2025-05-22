@@ -3,6 +3,17 @@ const operationData = {
         basic: [],
         note: []
     },
+
+    "유카리": {
+        basic: [
+            { label: "의식 0", value: "1 › 3 + TH › 2 › 3 + TH › 2 › 3 + TH" },
+            { label: "의식 1", value: "3 + TH › 2 › 3 + TH › 2 › 3 + TH › 2" },
+            { label: "의식 6", value: "-" },
+        ],
+        note: [
+            "· 한국 서버 미출시로 해당 사이클은 언제든 수정 가능",
+        ]
+    },
     "유키 마코토": {
         basic: [
             { label: "의식 0", value: "1 › 3 › 1 › 3 › 1 › 3" },

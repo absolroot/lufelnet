@@ -54,8 +54,8 @@ const characterData = {
     "유카리": {
         "limit": true,
         "persona3": true,
-        "role": "",
-        "tag": "",
+        "role": "테우르기아 충전 버퍼",
+        "tag": "테우르기아 충전, 디버프 제거",
         "color": "#ed85ed",
         "main_revelation": ["창조","진정성"],
         "sub_revelation": ["화해","고집"],

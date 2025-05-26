@@ -353,7 +353,7 @@ const personaData = {
             {name : "명중 강화", priority: 3},
             {name : "질풍률 UP", priority: 3},
             {name : "우중충한 하늘", priority: 3},
-            {name : "마하갈다인", priority: 3},
+            {name : "마하갈라", priority: 3},
             {name : "갈다인", priority: 3},
             {name : "실드 강화", priority: 1},
         ],

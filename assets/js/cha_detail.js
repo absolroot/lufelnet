@@ -595,6 +595,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (characterInfo.persona3) {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
+
+        if (characterInfo.persona3 && characterInfo.name === "타케바 유카리") {
+            skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_support', 'passive1', 'passive2'];
+        }
+
+        console.log(skillTypes);
         
         skillsGrid.innerHTML = ''; // 기존 내용 초기화
         
@@ -630,6 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // highlight 스킬의 경우 name이 없을 경우 "HIGHLIGHT"로 이름 표시
             let skillName = type === 'skill_highlight' && !skill.name ? 'HIGHLIGHT' : (skill.name || '');
             
+            console.log(skill);
             // 각 스킬의 고유한 description 사용
             let description = skill.description || '';
             
@@ -682,6 +689,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
         if (characterInfo.persona3) {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
+        }
+
+        if (characterInfo.persona3 && characterInfo.name === "타케바 유카리") {
+            skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_support', 'passive1', 'passive2'];
         }
         
         // 모든 스킬 설명 업데이트

@@ -60,6 +60,19 @@ const penetrateData = [
         note: "성가 스택 * 1%"
     },
     {
+        id: "yukari1",
+        charName: "유카리",
+        charImage: "유카리.webp",
+        type: "의식1",
+        target: "단일",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "당겨진 활시위",
+        options: [],
+        value: 20.0,
+        duration: "2턴",
+        note: "스킬 메인 목표"
+    },
+    {
         id: "mayumi1",
         charName: "마유미",
         charImage: "마유미.webp",

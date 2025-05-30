@@ -85,6 +85,17 @@ const bossData = [
         comment: ""
     },
     {
+        id: 3,
+        isSea: true,
+        name: "케르베로스",
+        icon: "",
+        description: "",
+        resistances: {},
+        baseDefense: "1280",
+        defenseCoef: "363.2",
+        comment: ""
+    },
+    {
         id: 4,
         isSea: true,
         name: "릴리스",

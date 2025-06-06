@@ -37,6 +37,11 @@ language: kr
                 If you find bugs, incorrect data, or have feedback, please contact us via
                 <a href="https://discord.gg/x3fvdQtBVg" target="_blank" class="discord-link">Discord</a> or
                 <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <button id="exchangeCodeButton" class="donate-button">KR 교환코드 (v4.1.2)</button>
         </div>
 
         <div class="about-section">
@@ -87,9 +92,103 @@ language: kr
     </div>
 </div>
 
+<!-- 교환코드 모달 -->
+<div id="exchangeCodeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>KR 교환코드 (v4.1.2)</h3>
+        <p class="exchange-notice">
+            한국 서버 크리에이터 프로그램을 통해 제공되는 교환코드입니다. 비정기적으로 업데이트 될 수 있습니다.
+        </p>
+        <div class="exchange-codes" id="exchangeCodesContainer">
+            <!-- 코드들이 JavaScript로 동적 생성됩니다 -->
+        </div>
+    </div>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('about');
+        
+        // 교환코드 목록 (새로운 코드로 업데이트하려면 이 문자열만 수정하면 됩니다)
+        const exchangeCodes = `99920876UEKJKUTQ
+87287024UFZYDEEM
+87252642UAJHUOTR
+52645282UBYQGGXJ
+45639718UDIMJRZY
+78305784ULXOFJCV
+73339081UNHDIVDP
+87628157UHQSKDRR
+04517306UJNBAHTX
+56177493UKPWWTGS
+77257634UVMGBQZI
+18040343UWOUOKGL
+17060902USLEWGCX
+75181474UTTJTZCR
+43836238UPCYMWLR
+63510013UQSHCGDJ
+73669895UYBQOZCU
+27028200UZRMOOWB
+63776232VFAOXMMO
+89862845VGWDFYYB
+32267785VBGSMIDZ
+66123677VCVBCKVH
+83208298VLFWIDDH
+56228038VMUGDSNI
+12533852VHEUXZEJ
+56004268VIKETBQC
+23643550VJZJFJUS
+82584775VUIYOWWY
+05866038VVYHBTSP`;
+
+        // 교환코드 동적 생성 함수
+        function generateExchangeCodes() {
+            const container = document.getElementById('exchangeCodesContainer');
+            const codes = exchangeCodes.trim().split('\n').filter(code => code.trim() !== '');
+            
+            // 한 번에 모든 HTML을 생성하여 DOM 조작 최소화
+            const codeItemsHTML = codes.map(code => 
+                `<div class="code-item" data-code="${code.trim()}">${code.trim()}</div>`
+            ).join('');
+            
+            container.innerHTML = codeItemsHTML;
+        }
+
+        // 클립보드 복사 함수
+        function copyToClipboard(element, code) {
+            navigator.clipboard.writeText(code).then(() => {
+                // 복사 완료 피드백
+                const originalText = element.textContent;
+                
+                element.classList.add('copied');
+                element.textContent = '복사됨!';
+                
+                setTimeout(() => {
+                    element.classList.remove('copied');
+                    element.textContent = originalText;
+                }, 800);
+            }).catch(err => {
+                console.error('복사 실패:', err);
+                // 복사 실패 시 폴백
+                element.classList.add('copy-failed');
+                element.textContent = '복사 실패';
+                setTimeout(() => {
+                    element.classList.remove('copy-failed');
+                    element.textContent = code;
+                }, 800);
+            });
+        }
+
+        // 이벤트 위임을 사용한 클릭 이벤트 처리
+        function setupCodeClickHandler() {
+            const container = document.getElementById('exchangeCodesContainer');
+            container.addEventListener('click', function(e) {
+                if (e.target.classList.contains('code-item')) {
+                    const code = e.target.dataset.code;
+                    copyToClipboard(e.target, code);
+                }
+            });
+        }
         
         // 모달 관련 기능
         const donateModal = document.getElementById('donateModal');
@@ -100,6 +199,14 @@ language: kr
         const kakaoPayModal = document.getElementById('kakaoPayModal');
         const kakaoPayBtn = document.getElementById('kakaoPayButton');
         const kakaoCloseButton = document.querySelector('#kakaoPayModal .close-button');
+        
+        // 교환코드 모달 관련 기능
+        const exchangeCodeModal = document.getElementById('exchangeCodeModal');
+        const exchangeCodeBtn = document.getElementById('exchangeCodeButton');
+        const exchangeCloseButton = document.querySelector('#exchangeCodeModal .close-button');
+        
+        // 이벤트 핸들러 초기화 (한 번만 실행)
+        let isCodeHandlerSetup = false;
         
         donateBtn.onclick = function() {
             donateModal.style.display = 'block';
@@ -118,12 +225,31 @@ language: kr
             kakaoPayModal.style.display = 'none';
         }
         
+        exchangeCodeBtn.onclick = function() {
+            exchangeCodeModal.style.display = 'block';
+            // 모달이 열릴 때 코드 생성
+            generateExchangeCodes();
+            
+            // 이벤트 핸들러는 한 번만 설정
+            if (!isCodeHandlerSetup) {
+                setupCodeClickHandler();
+                isCodeHandlerSetup = true;
+            }
+        }
+        
+        exchangeCloseButton.onclick = function() {
+            exchangeCodeModal.style.display = 'none';
+        }
+        
         window.onclick = function(event) {
             if (event.target == donateModal) {
                 donateModal.style.display = 'none';
             }
             if (event.target == kakaoPayModal) {
                 kakaoPayModal.style.display = 'none';
+            }
+            if (event.target == exchangeCodeModal) {
+                exchangeCodeModal.style.display = 'none';
             }
         }
     });

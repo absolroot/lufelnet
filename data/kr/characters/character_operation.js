@@ -3,6 +3,10 @@ const operationData = {
         basic: [],
         note: []
     },
+    "사나다": {
+        basic: [],
+        note: []
+    },
 
     "유카리": {
         basic: [

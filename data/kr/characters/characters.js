@@ -60,7 +60,7 @@ const characterData = {
         "main_revelation": ["돌파", "결심"],
         "sub_revelation": ["변화", "신중"],
         "element": "전격",
-        "element_weakness": "",
+        "element_weakness": "빙결",
         "element_resistance": "전격",
         "rarity": 5,
         "position": "지배",

@@ -21,20 +21,20 @@ const WeaponData = {
     "사나다": {
         "name": "사나다 아키히코",
         "weapon4-1":{
-            "name": "",
+            "name": "업데이트 예정",
             "health": 0,
             "attack": 0,
             "defense": 0,
-            "skill_name": "",
-            "description": ""
+            "skill_name": "업데이트 예정",
+            "description": "-"
         },
         "weapon5-1":{
             "name": "",
             "health": 0,
             "attack": 0,
             "defense": 0,
-            "skill_name": "",
-            "description": ""
+            "skill_name": "업데이트 예정",
+            "description": "-"
         }
     },
     "유카리": {

@@ -1146,7 +1146,7 @@ const characterSkillsData = {
             "type":"버프",
             "sp": 25,
             "cool": 1,
-            "description": "동료 1명을 선택해 즉시 HIGHLIGHT 스킬을 시전한다. 동시에 이번 HIGHLIGHT의 대미지가 78.1%/86.1%/82.9%/90.9% 증가한다. 해당 스킬을 통해 사용한 HIGHLIGHT는 캐릭터 HIGHLIGHT 쿨타임에 계산되지 않는다."
+            "description": "동료 1명을 선택해 즉시 HIGHLIGHT 스킬을 시전한다. 동시에 이번 HIGHLIGHT의 대미지가 78.1%/86.1%/82.9%/90.9% 증가한다. 해당 스킬을 통해 사용한 HIGHLIGHT는 캐릭터 HIGHLIGHT 쿨타임에 계산되지 않는다. 목표가 S.E.E.S. 멤버인 경우, 다음 테우르기아의 최종 대미지 20.7% 증폭으로 변경된다."
         },
         "skill_highlight": {
             "element": "버프광역",
@@ -1156,12 +1156,12 @@ const characterSkillsData = {
         "passive1": {
             "name": "악센트",
             "element": "패시브",
-            "description": "아군 괴도가 HIGHLIGHT 사용 시, 1턴 동안 해당 괴도의 공격력이 즉시 24.0% 증가한다. 해당 괴도가 열성 관객이라면 효과가 1.5배로 증가한다."
+            "description": "아군 괴도가 HIGHLIGHT/테우르기아 사용 시, 1턴 동안 해당 괴도의 공격력이 즉시 24.0% 증가한다. 해당 괴도가 열성 관객이라면 효과가 1.5배로 증가한다."
         },
         "passive2": {
             "name": "스트로크",
             "element": "패시브",
-            "description": "아군 괴도가 HIGHLIGHT를 사용한 후, 사카이 아야카는 생명 비율이 가장 낮은 동료에게 즉시 사카이 공격력 15.0%+1350의 생명을 회복시킨다."
+            "description": "아군 괴도가 HIGHLIGHT/테우르기아를 사용한 후, 사카이 아야카는 생명 비율이 가장 낮은 동료에게 즉시 사카이 공격력 15.0%+1350의 생명을 회복시킨다."
         }
 },
     "안": {

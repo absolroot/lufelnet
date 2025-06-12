@@ -124,13 +124,13 @@ const characterData = {
             "LV13+5": "공격력 5084"
         },
         "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점",
-        "skill1_lv": "8",
+        "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX!",
         "mind_stats1": "SP 회복",
         "mind_stats2": "공격력",
-        "mind_skill1": "1/3",
+        "mind_skill1": "1/3!",
         "mind_skill2": "2/TH!",
     },
 

@@ -282,6 +282,41 @@ const criticalCalcData = [
         note: ""
     },
     {
+        id: "sanada1",
+        charName: "사나다",
+        charImage: "사나다.webp",
+        type: "의식1",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "복싱부 주장",
+        options: [],
+        values: {
+        },
+        value: 20.0,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "sanada2",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/사나다-5-01.png`,
+        skillName: "사바지오스",
+        options: ["개조0","개조1&2","개조3&4","개조5&6"],
+        values: {
+            "개조0": 16.4,
+            "개조1&2": 21.4,
+            "개조3&4": 26.4,
+            "개조5&6": 31.4
+        },
+        defaultOption: "개조5&6",
+        value: 31.4,
+        duration: "2턴",
+        note: "집념 2중첩"
+    },
+    {
         id: "yukimakoto1",
         charName: "유키 마코토",
         charImage: "유키 마코토.webp",

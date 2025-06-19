@@ -88,7 +88,7 @@ const characterData = {
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
-        "mind_stats2": "크리티컬 효과 24%",
+        "mind_stats2": "크리티컬 효과 24%!",
         "mind_skill1": "1/3!",
         "mind_skill2": "2/TH!",
     },

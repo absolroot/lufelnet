@@ -367,7 +367,25 @@ language: kr
 
     // 다국어 지원 함수
     async function updateLanguageContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        // URL 파라미터에서 직접 언어 확인 (우선순위)
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        
+        let currentLang = 'kr'; // 기본값
+        
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
+            currentLang = urlLang;
+        } else if (typeof LanguageRouter !== 'undefined') {
+            currentLang = LanguageRouter.getCurrentLanguage();
+        } else {
+            // localStorage에서 확인
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
+                currentLang = savedLang;
+            }
+        }
+        
+        console.log('🌐 현재 언어 설정:', currentLang);
         
         // 다국어 데이터 로드
         await loadI18nData();
@@ -553,7 +571,23 @@ language: kr
 
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        // URL 파라미터에서 직접 언어 확인 (우선순위)
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        
+        let currentLang = 'kr'; // 기본값
+        
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
+            currentLang = urlLang;
+        } else if (typeof LanguageRouter !== 'undefined') {
+            currentLang = LanguageRouter.getCurrentLanguage();
+        } else {
+            // localStorage에서 확인
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
+                currentLang = savedLang;
+            }
+        }
         
         const seoData = {
             'kr': {
@@ -585,30 +619,135 @@ language: kr
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // 첫 방문자 언어 감지 함수
+    async function checkAndDetectLanguage() {
+        const hasLanguagePreference = localStorage.getItem('preferredLanguage');
+        const hasLanguageDetected = localStorage.getItem('languageDetected');
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasUrlLang = urlParams.get('lang');
+        
+        // 첫 방문자이고 언어 설정이 없는 경우에만 감지
+        if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
+            console.log('👋 첫 방문자 감지, IP 기반 언어 설정 시작...');
+            
+            try {
+                const apis = [
+                    'https://ipapi.co/json/',
+                    'https://ipinfo.io/json'
+                ];
+                
+                let detectedLang = 'kr'; // 기본값
+                
+                for (const api of apis) {
+                    try {
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 3000);
+                        
+                        const response = await fetch(api, { signal: controller.signal });
+                        clearTimeout(timeoutId);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            const countryCode = data.country_code || data.country;
+                            
+                            console.log(`🌍 감지된 국가: ${countryCode}`);
+                            
+                            if (countryCode === 'KR') {
+                                detectedLang = 'kr';
+                                console.log('🇰🇷 한국 사용자 감지');
+                            } else if (countryCode === 'JP') {
+                                detectedLang = 'jp';
+                                console.log('🇯🇵 일본 사용자 감지');
+                            } else {
+                                detectedLang = 'en';
+                                console.log('🌎 해외 사용자 감지');
+                            }
+                            
+                            break; // 첫 번째 성공한 API로 결정
+                        }
+                    } catch (error) {
+                        console.log(`❌ ${api} 실패:`, error.message);
+                        continue;
+                    }
+                }
+                
+                // 언어 설정 저장
+                localStorage.setItem('preferredLanguage', detectedLang);
+                localStorage.setItem('languageDetected', 'true');
+                
+                console.log(`✅ 감지된 언어: ${detectedLang}`);
+                
+                // 한국어가 아닌 경우 리다이렉트
+                if (detectedLang !== 'kr') {
+                    console.log(`🔄 ${detectedLang} 언어로 리다이렉트...`);
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('lang', detectedLang);
+                    window.location.replace(newUrl.toString());
+                    return;
+                }
+                
+            } catch (error) {
+                console.log('❌ 언어 감지 실패:', error);
+                // 폴백: 브라우저 언어 확인
+                const browserLang = navigator.language.toLowerCase();
+                let fallbackLang = 'kr';
+                
+                if (browserLang.startsWith('ja')) {
+                    fallbackLang = 'jp';
+                } else if (browserLang.startsWith('en')) {
+                    fallbackLang = 'en';
+                }
+                
+                localStorage.setItem('preferredLanguage', fallbackLang);
+                localStorage.setItem('languageDetected', 'true');
+                
+                if (fallbackLang !== 'kr') {
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('lang', fallbackLang);
+                    window.location.replace(newUrl.toString());
+                }
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
         Navigation.load('home');
         VersionChecker.check();
+        
+        // 첫 방문자 언어 감지 (홈페이지에서만)
+        await checkAndDetectLanguage();
+        
+        // 언어 콘텐츠 업데이트 (우선 실행)
+        await updateLanguageContent();
         
         // SEO 설정 업데이트
         updateSEOContent();
         
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        // 언어 라우터 초기화
         if (typeof LanguageRouter !== 'undefined') {
             LanguageRouter.init().then(async () => {
+                // 언어 라우터 초기화 후 다시 한 번 업데이트
                 await updateLanguageContent();
-                // 언어 변경 후 SEO 다시 업데이트
                 updateSEOContent();
             });
-        } else {
-            // 언어 라우터가 없으면 바로 업데이트
-            updateLanguageContent();
         }
         
         // 한국어인 경우에만 택틱 관련 기능 로드
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
         if (currentLang === 'kr') {
             window.tacticShare = new TacticShare({ postsPerPage: 2});
         }
+    });
+
+    // 페이지 완전 로드 후 최종 언어 콘텐츠 업데이트
+    window.addEventListener('load', async () => {
+        // 약간의 지연 후 최종 업데이트 (모든 스크립트 로드 완료 후)
+        setTimeout(async () => {
+            await updateLanguageContent();
+            updateSEOContent();
+            console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
+        }, 100);
 
         const musicPlayer = document.getElementById('music-player');
         const musicControl = document.getElementById('musicControl');

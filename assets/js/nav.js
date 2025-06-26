@@ -121,7 +121,7 @@ class Navigation {
                 </a>
                 ` : ''}
                 ${currentMenus.includes('character') ? `
-                <a href="${BASE_URL}/character?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="character">
+                <a href="${BASE_URL}/character/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="character">
                     <img src="${BASE_URL}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.character}">${texts.character}</span>
                 </a>

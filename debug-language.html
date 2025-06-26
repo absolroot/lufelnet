@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언어 감지 디버깅</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 50px auto; 
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #0056b3; }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .status.info { background: #d1ecf1; color: #0c5460; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🌍 언어 감지 디버깅 도구</h1>
+    
+    <div class="debug-section">
+        <h2>현재 상태</h2>
+        <div id="current-status"></div>
+        <button onclick="updateStatus()">상태 새로고침</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>디버깅 도구</h2>
+        <button onclick="debugLanguage()">언어 설정 디버깅</button>
+        <button onclick="testIPDetection()">IP 감지 테스트</button>
+        <button onclick="resetLanguage()">언어 설정 초기화</button>
+        <button onclick="forceDetectLanguage()">강제 언어 감지</button>
+        <button onclick="manualLanguageDetection()">수동 언어 감지</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>로그</h2>
+        <div id="log-output"></div>
+        <button onclick="clearLog()">로그 지우기</button>
+    </div>
+
+    <script src="assets/js/language-router.js"></script>
+    <script>
+        // 로그 출력 함수
+        function addLog(message, type = 'info') {
+            const logDiv = document.getElementById('log-output');
+            const logEntry = document.createElement('div');
+            logEntry.className = `status ${type}`;
+            logEntry.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logDiv.appendChild(logEntry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        // 콘솔 로그를 페이지에도 표시
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog(args.join(' '));
+        };
+
+        const originalError = console.error;
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog(args.join(' '), 'error');
+        };
+
+        // 상태 업데이트
+        function updateStatus() {
+            const statusDiv = document.getElementById('current-status');
+            
+            if (typeof LanguageRouter === 'undefined') {
+                statusDiv.innerHTML = `<div class="status error">❌ LanguageRouter가 로드되지 않았습니다.</div>`;
+                return;
+            }
+            
+            try {
+                const debugInfo = LanguageRouter.getLanguageDebugInfo();
+                statusDiv.innerHTML = `<pre>${JSON.stringify(debugInfo, null, 2)}</pre>`;
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="status error">❌ 상태 조회 실패: ${error.message}</div>`;
+            }
+        }
+
+        // 디버깅 함수들
+        function debugLanguage() {
+            addLog('🔍 언어 디버깅 시작...');
+            
+            if (typeof LanguageRouter === 'undefined') {
+                addLog('❌ LanguageRouter가 로드되지 않았습니다.', 'error');
+                return;
+            }
+            
+            try {
+                const debugInfo = LanguageRouter.getLanguageDebugInfo();
+                console.table(debugInfo);
+                addLog('✅ 디버그 정보를 콘솔에 출력했습니다.', 'success');
+                updateStatus();
+            } catch (error) {
+                addLog(`❌ 디버깅 실패: ${error.message}`, 'error');
+            }
+        }
+
+        async function testIPDetection() {
+            addLog('🧪 IP 감지 API 테스트 시작...');
+            
+            const apis = [
+                'https://ipapi.co/json/',
+                'https://ipinfo.io/json',
+                'https://api.ipgeolocation.io/ipgeo?apiKey=demo'
+            ];
+            
+            for (const api of apis) {
+                try {
+                    addLog(`Testing ${api}...`);
+                    const response = await fetch(api);
+                    const data = await response.json();
+                    addLog(`✅ ${api} 성공`, 'success');
+                    
+                    // 데이터를 보기 좋게 표시
+                    const countryCode = data.country_code || data.country || data.countryCode;
+                    const country = data.country_name || data.country || data.country_name;
+                    const city = data.city || data.city;
+                    const ip = data.ip || data.query;
+                    
+                    addLog(`🌍 IP: ${ip}, 국가: ${country} (${countryCode}), 도시: ${city}`, 'info');
+                    console.log(`${api} 상세 데이터:`, data);
+                } catch (error) {
+                    addLog(`❌ ${api} 실패: ${error.message}`, 'error');
+                }
+            }
+        }
+
+        function resetLanguage() {
+            addLog('🔄 언어 설정 초기화...');
+            
+            if (typeof LanguageRouter === 'undefined') {
+                addLog('❌ LanguageRouter가 로드되지 않았습니다.', 'error');
+                // 직접 localStorage 초기화
+                localStorage.removeItem('preferredLanguage');
+                localStorage.removeItem('languageDetected');
+                localStorage.removeItem('detectedCountry');
+                localStorage.removeItem('detectionMethod');
+                addLog('✅ localStorage에서 직접 언어 설정을 초기화했습니다.', 'success');
+            } else {
+                try {
+                    LanguageRouter.resetLanguageSettings();
+                    addLog('✅ 언어 설정이 초기화되었습니다.', 'success');
+                } catch (error) {
+                    addLog(`❌ 초기화 실패: ${error.message}`, 'error');
+                }
+            }
+            
+            updateStatus();
+        }
+
+        async function forceDetectLanguage() {
+            addLog('🌍 강제 언어 감지 시작...');
+            try {
+                // LanguageRouter가 로드되었는지 확인
+                if (typeof LanguageRouter === 'undefined') {
+                    addLog('❌ LanguageRouter가 로드되지 않았습니다. 페이지를 새로고침해주세요.', 'error');
+                    return;
+                }
+                
+                const result = await LanguageRouter.detectLanguageByIP();
+                addLog(`✅ 감지된 언어: ${result}`, 'success');
+                updateStatus();
+            } catch (error) {
+                addLog(`❌ 언어 감지 실패: ${error.message}`, 'error');
+                console.error('Language detection error:', error);
+            }
+        }
+
+        function clearLog() {
+            document.getElementById('log-output').innerHTML = '';
+        }
+
+        // 수동 언어 감지 (LanguageRouter 없이)
+        async function manualLanguageDetection() {
+            addLog('🧪 수동 언어 감지 시작...');
+            
+            const apis = [
+                'https://ipapi.co/json/',
+                'https://ipinfo.io/json',
+                'https://api.ipgeolocation.io/ipgeo?apiKey=demo'
+            ];
+            
+            let detectedLang = 'en';
+            
+            for (const api of apis) {
+                try {
+                    addLog(`🌍 ${api} 시도 중...`);
+                    const response = await fetch(api);
+                    const data = await response.json();
+                    
+                    const countryCode = data.country_code || data.country || data.countryCode;
+                    const country = data.country_name || data.country || data.country_name;
+                    const city = data.city || data.city;
+                    const ip = data.ip || data.query;
+                    
+                    addLog(`✅ 감지됨 - IP: ${ip}, 국가: ${country} (${countryCode}), 도시: ${city}`, 'success');
+                    
+                    // 언어 결정 로직
+                    if (countryCode === 'KR') {
+                        detectedLang = 'kr';
+                        addLog('🇰🇷 한국 사용자로 감지 → 한국어 설정', 'success');
+                    } else if (countryCode === 'JP') {
+                        detectedLang = 'jp';
+                        addLog('🇯🇵 일본 사용자로 감지 → 일본어 설정', 'success');
+                    } else {
+                        detectedLang = 'en';
+                        addLog('🌎 해외 사용자로 감지 → 영어 설정', 'success');
+                    }
+                    
+                    // 첫 번째 성공한 API로 결정
+                    break;
+                    
+                } catch (error) {
+                    addLog(`❌ ${api} 실패: ${error.message}`, 'error');
+                    continue;
+                }
+            }
+            
+            addLog(`🎯 최종 감지 언어: ${detectedLang}`, 'success');
+            
+            // localStorage에 저장
+            localStorage.setItem('preferredLanguage', detectedLang);
+            localStorage.setItem('languageDetected', 'true');
+            
+            addLog('💾 언어 설정이 저장되었습니다. 페이지를 새로고침하세요.', 'success');
+            updateStatus();
+        }
+
+        // 페이지 로드 시 상태 업데이트
+        window.addEventListener('load', () => {
+            updateStatus();
+            addLog('🚀 디버깅 도구 준비 완료');
+        });
+    </script>
+</body>
+</html> 

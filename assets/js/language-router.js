@@ -1,11 +1,44 @@
 // 언어별 페이지 라우팅 관리
 class LanguageRouter {
-    static init() {
+    static async init() {
         // 즉시 리다이렉트 처리
         this.handleImmediateRedirect();
+        
+        // 첫 방문자의 경우 IP 기반 언어 감지
+        await this.initializeLanguageDetection();
+        
         this.handleLanguageRouting();
         this.setupLanguageRedirection();
         return Promise.resolve(); // Promise 반환
+    }
+
+    // 언어 감지 초기화
+    static async initializeLanguageDetection() {
+        // 첫 방문자이고 언어 설정이 없는 경우에만 IP 감지 실행
+        const hasLanguagePreference = localStorage.getItem('preferredLanguage');
+        const hasLanguageDetected = localStorage.getItem('languageDetected');
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasUrlLang = urlParams.get('lang');
+        
+        if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
+            console.log('👋 First-time visitor detected, initializing language detection...');
+            const detectedLang = await this.detectLanguageByIP();
+            
+            // 감지된 언어로 자동 리다이렉트
+            if (detectedLang) {
+                const newUrl = new URL(window.location);
+                newUrl.searchParams.set('lang', detectedLang);
+                console.log('🔄 Redirecting to detected language:', detectedLang);
+                window.location.replace(newUrl.toString());
+            }
+        } else if (hasLanguagePreference && !hasUrlLang) {
+            // 저장된 언어 설정이 있지만 URL에 lang 파라미터가 없는 경우 자동 적용
+            const savedLang = localStorage.getItem('preferredLanguage');
+            console.log('🔄 Applying saved language preference:', savedLang);
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('lang', savedLang);
+            window.location.replace(newUrl.toString());
+        }
     }
 
     // 즉시 리다이렉트 처리 (페이지 로드 전)
@@ -91,6 +124,103 @@ class LanguageRouter {
         if (browserLang.startsWith('en')) return 'en';
 
         return 'kr'; // 기본값
+    }
+
+    // IP 기반 언어 자동 감지
+    static async detectLanguageByIP() {
+        try {
+            console.log('🌍 Detecting user location for language setting...');
+            
+            // 여러 IP 지역 감지 API를 시도 (폴백 지원)
+            const apis = [
+                'https://ipapi.co/json/',
+                'https://ipinfo.io/json',
+                'https://api.ipgeolocation.io/ipgeo?apiKey=demo'
+            ];
+            
+            let locationData = null;
+            
+            for (const api of apis) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 3000);
+                    
+                    const response = await fetch(api, {
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (response.ok) {
+                        locationData = await response.json();
+                        break;
+                    }
+                } catch (apiError) {
+                    console.log(`Failed to fetch from ${api}:`, apiError.message);
+                    continue;
+                }
+            }
+            
+            if (!locationData) {
+                throw new Error('All IP geolocation APIs failed');
+            }
+            
+            // 다양한 API 응답 형식 처리
+            const countryCode = locationData.country_code || 
+                               locationData.country || 
+                               locationData.countryCode;
+            
+            console.log('🌍 Detected country:', countryCode);
+            
+            let detectedLang = 'en'; // 기본값을 영어로 변경
+            
+            // 국가 코드에 따른 언어 설정
+            if (countryCode === 'KR') {
+                detectedLang = 'kr';
+                console.log('🇰🇷 Korean user detected');
+            } else if (countryCode === 'JP') {
+                detectedLang = 'jp';
+                console.log('🇯🇵 Japanese user detected');
+            } else {
+                detectedLang = 'en';
+                console.log('🌎 International user detected, setting English');
+            }
+            
+            // 자동 감지된 언어를 로컬 스토리지에 저장
+            localStorage.setItem('preferredLanguage', detectedLang);
+            localStorage.setItem('languageDetected', 'true');
+            localStorage.setItem('detectedCountry', countryCode);
+            
+            console.log('✅ Auto-detected language saved:', detectedLang);
+            
+            return detectedLang;
+            
+        } catch (error) {
+            console.log('❌ Failed to detect language by IP:', error.message);
+            
+            // IP 감지 실패 시 브라우저 언어로 폴백
+            const browserLang = navigator.language.toLowerCase();
+            let fallbackLang = 'en'; // 기본값을 영어로 변경
+            
+            if (browserLang.startsWith('ko')) {
+                fallbackLang = 'kr';
+                console.log('🇰🇷 Fallback to Korean (browser language)');
+            } else if (browserLang.startsWith('ja')) {
+                fallbackLang = 'jp';
+                console.log('🇯🇵 Fallback to Japanese (browser language)');
+            } else {
+                fallbackLang = 'en';
+                console.log('🌎 Fallback to English (browser language)');
+            }
+            
+            localStorage.setItem('preferredLanguage', fallbackLang);
+            localStorage.setItem('languageDetected', 'true');
+            localStorage.setItem('detectionMethod', 'browser');
+            
+            console.log('✅ Fallback language saved:', fallbackLang);
+            
+            return fallbackLang;
+        }
     }
 
     // 언어별 라우팅 처리
@@ -265,6 +395,28 @@ class LanguageRouter {
             });
         }
     }
+
+    // 언어 설정 디버그 정보 (개발자 도구에서 확인 가능)
+    static getLanguageDebugInfo() {
+        return {
+            currentLanguage: this.getCurrentLanguage(),
+            preferredLanguage: localStorage.getItem('preferredLanguage'),
+            languageDetected: localStorage.getItem('languageDetected'),
+            detectedCountry: localStorage.getItem('detectedCountry'),
+            detectionMethod: localStorage.getItem('detectionMethod'),
+            browserLanguage: navigator.language,
+            urlLanguage: new URLSearchParams(window.location.search).get('lang')
+        };
+    }
+
+    // 언어 설정 초기화 (테스트용)
+    static resetLanguageSettings() {
+        localStorage.removeItem('preferredLanguage');
+        localStorage.removeItem('languageDetected');
+        localStorage.removeItem('detectedCountry');
+        localStorage.removeItem('detectionMethod');
+        console.log('🔄 Language settings reset. Reload the page to detect language again.');
+    }
 }
 
 // 스크립트 로드 시 즉시 실행
@@ -272,12 +424,77 @@ LanguageRouter.handleImmediateRedirect();
 
 // 페이지 로드 시 초기화
 if (typeof window !== 'undefined') {
+    // 즉시 초기화 시도
+    LanguageRouter.init();
+    
+    // DOMContentLoaded에서도 초기화 (이중 보장)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => LanguageRouter.init());
-    } else {
-        LanguageRouter.init();
     }
+    
+    // 페이지 완전 로드 후에도 한 번 더 확인
+    window.addEventListener('load', () => {
+        // 첫 방문자이고 언어 설정이 없는 경우 강제 감지
+        const hasLanguagePreference = localStorage.getItem('preferredLanguage');
+        const hasLanguageDetected = localStorage.getItem('languageDetected');
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasUrlLang = urlParams.get('lang');
+        
+        if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
+            console.log('🔄 Forcing language detection on page load...');
+            LanguageRouter.detectLanguageByIP().then(detectedLang => {
+                if (detectedLang && detectedLang !== 'kr') {
+                    console.log(`🌍 Detected language: ${detectedLang}, redirecting...`);
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('lang', detectedLang);
+                    window.location.replace(newUrl.toString());
+                }
+            });
+        }
+    });
 }
 
 // 전역 함수로 현재 언어 제공
-window.getCurrentLanguage = LanguageRouter.getCurrentLanguage.bind(LanguageRouter); 
+window.getCurrentLanguage = LanguageRouter.getCurrentLanguage.bind(LanguageRouter);
+
+// LanguageRouter를 전역에서 접근 가능하도록 설정
+window.LanguageRouter = LanguageRouter;
+
+// 쉬운 디버깅을 위한 전역 함수들
+window.debugLanguage = function() {
+    console.log('🔍 Language Debug Info:');
+    console.table(LanguageRouter.getLanguageDebugInfo());
+    
+    // IP 감지 테스트
+    console.log('🌍 Testing IP detection...');
+    LanguageRouter.detectLanguageByIP().then(lang => {
+        console.log('✅ IP Detection Result:', lang);
+    }).catch(err => {
+        console.log('❌ IP Detection Failed:', err);
+    });
+};
+
+window.resetLanguage = function() {
+    LanguageRouter.resetLanguageSettings();
+};
+
+window.testIPDetection = async function() {
+    console.log('🧪 Testing IP Detection APIs...');
+    
+    const apis = [
+        'https://ipapi.co/json/',
+        'https://ipinfo.io/json',
+        'https://api.ipgeolocation.io/ipgeo?apiKey=demo'
+    ];
+    
+    for (const api of apis) {
+        try {
+            console.log(`Testing ${api}...`);
+            const response = await fetch(api);
+            const data = await response.json();
+            console.log(`✅ ${api}:`, data);
+        } catch (error) {
+            console.log(`❌ ${api}:`, error.message);
+        }
+    }
+}; 

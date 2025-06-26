@@ -98,75 +98,100 @@ class Navigation {
         // 현재 언어의 텍스트 가져오기
         const texts = i18n[currentLang] || i18n.kr;
 
+        // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
+        const availableMenus = {
+            kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'about'],
+            en: ['character', 'about'],
+            jp: ['character', 'about'],
+            cn: ['character', 'about']
+        };
+
+        const currentMenus = availableMenus[currentLang] || availableMenus.kr;
+
         const navTemplate = `
             <nav class="main-nav">
                 <div class="logo-container">
                     <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
                     <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
                 </div>
-                <a href="${BASE_URL}/${currentLang}/?v=${APP_VERSION}" class="nav-link" data-nav="home">
+                ${currentMenus.includes('home') ? `
+                <a href="${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="home">
                     <img src="${BASE_URL}/assets/img/nav/home.png" alt="home" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.home}">${texts.home}</span>
                 </a>
-                <a href="${BASE_URL}/${currentLang}/character?v=${APP_VERSION}" class="nav-link" data-nav="character">
+                ` : ''}
+                ${currentMenus.includes('character') ? `
+                <a href="${BASE_URL}/character?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="character">
                     <img src="${BASE_URL}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.character}">${texts.character}</span>
                 </a>
-                <a href="${BASE_URL}/${currentLang}/persona?v=${APP_VERSION}" class="nav-link" data-nav="persona">
+                ` : ''}
+                ${currentMenus.includes('persona') ? `
+                <a href="${BASE_URL}/persona?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="persona">
                     <img src="${BASE_URL}/assets/img/nav/persona.png" alt="persona" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.persona}">${texts.persona}</span>
                 </a>
-                <a href="${BASE_URL}/${currentLang}/revelations?v=${APP_VERSION}" class="nav-link" data-nav="revelations">
+                ` : ''}
+                ${currentMenus.includes('revelations') ? `
+                <a href="${BASE_URL}/revelations?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="revelations">
                     <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
                 </a>
+                ` : ''}
+                ${currentMenus.includes('calculator') ? `
                 <div class="nav-item has-submenu" data-nav="calculator">
                     <div class="nav-main-item">
                         <img src="${BASE_URL}/assets/img/nav/calculator.png" alt="calculator" style="width: 32px; height: 32px; object-fit: contain;" />
                         <span data-text="${texts.calculator}">${texts.calculator}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/${currentLang}/pay-calc?v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
+                        <a href="${BASE_URL}/pay-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
                             <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
                         </a>
-                        <a href="${BASE_URL}/${currentLang}/defense-calc?v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
+                        <a href="${BASE_URL}/defense-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
                             <span data-text="${texts.defenseCalc}">◈　${texts.defenseCalc}</span>
                         </a>
-                        <a href="${BASE_URL}/${currentLang}/critical-calc?v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
+                        <a href="${BASE_URL}/critical-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
                             <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>
                         </a>
                     </div>
                 </div>
+                ` : ''}
+                ${currentMenus.includes('tactic') ? `
                 <div class="nav-item has-submenu" data-nav="tactic">
                     <div class="nav-main-item">
                         <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
                         <span data-text="${texts.tactic}">${texts.tactic}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/${currentLang}/tactic?v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
+                        <a href="${BASE_URL}/tactic?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
                             <span data-text="${texts.tacticMaker}">◈　${texts.tacticMaker}</span>
                         </a>
-                        <a href="${BASE_URL}/${currentLang}/tactic/tactic-share.html?v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-share">
+                        <a href="${BASE_URL}/tactic/tactic-share.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-share">
                             <span data-text="${texts.tacticForge}">◈　${texts.tacticForge}</span>
                         </a>
                     </div>
                 </div>
+                ` : ''}
+                ${currentMenus.includes('tier') ? `
                 <div class="nav-item has-submenu" data-nav="tier">
                     <div class="nav-main-item">
                         <img src="${BASE_URL}/assets/img/nav/tier.png" alt="tier" style="width: 32px; height: 32px; object-fit: contain;" />
                         <span data-text="${texts.tier}">${texts.tier}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/${currentLang}/tier?v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-maker">
+                        <a href="${BASE_URL}/tier?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-maker">
                             <span data-text="${texts.tierMaker}">◈　${texts.tierMaker}</span>
                         </a>
                     </div>
                 </div>
-                
-                <a href="${BASE_URL}/${currentLang}/about?v=${APP_VERSION}" class="nav-link" data-nav="about">
+                ` : ''}
+                ${currentMenus.includes('about') ? `
+                <a href="${BASE_URL}/about?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="about">
                     <img src="${BASE_URL}/assets/img/nav/about.png" alt="about" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.about}">${texts.about}</span>
                 </a>
+                ` : ''}
                 
                 <!-- language selector -->
                 <div class="language-selector-container">
@@ -181,20 +206,20 @@ class Navigation {
                                 <span>한국어</span>
                             </div>
                             
-                            <div class="option ${currentLang === 'en' ? 'selected' : ''} disabled" data-value="en" role="button" tabindex="0" onclick="return false;">
+                            <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/en.png" alt="en" class="flag-icon">
-                                <span>English (Not Yet)</span>
+                                <span>English(Beta)</span>
                             </div>
-                            <!--
                             <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
-                                <span>日本語</span>
+                                <span>日本語(Beta)</span>
                             </div>
-                            -->
+                            <!-- 
                             <div class="option ${currentLang === 'cn' ? 'selected' : ''} disabled" data-value="cn" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
                                 <span>中文 (Not Yet)</span>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -210,7 +235,7 @@ class Navigation {
         if (!document.querySelector('.logo-container').hasAttribute('data-event-bound')) {
             // 로고 클릭 이벤트 처리
             document.querySelector('.logo-container').addEventListener('click', () => {
-                window.location.href = `${BASE_URL}/${currentLang}/?v=${APP_VERSION}`;
+                window.location.href = `${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}`;
             });
             document.querySelector('.logo-container').setAttribute('data-event-bound', 'true');
         }
@@ -218,7 +243,7 @@ class Navigation {
         if (!document.querySelector('.mobile-logo-container').hasAttribute('data-event-bound')) {
             // 모바일 로고 클릭 이벤트 처리
             document.querySelector('.mobile-logo-container').addEventListener('click', () => {
-                window.location.href = `${BASE_URL}/${currentLang}/?v=${APP_VERSION}`;
+                window.location.href = `${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}`;
             });
             document.querySelector('.mobile-logo-container').setAttribute('data-event-bound', 'true');
         }
@@ -361,28 +386,27 @@ class Navigation {
                 submenu.classList.toggle('active');
             });
         });
+        
+        // Footer 번역 적용
+        this.updateFooterTranslation();
     }
     
     // 현재 언어 감지 함수
     static getCurrentLanguage() {
-        // URL에서 언어 감지
-        const currentPath = window.location.pathname;
-        const baseUrl = BASE_URL;
-        
-        // baseUrl을 제거한 실제 경로 얻기
-        const pathWithoutBase = currentPath.replace(baseUrl, '');
-        const pathSegments = pathWithoutBase.split('/').filter(Boolean);
+        // URL 파라미터에서 언어 확인
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
+            return urlLang;
+        }
 
-        console.log('pathSegments:', pathSegments);
-        
-        // 첫 번째 세그먼트가 언어 코드인지 확인
-        if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
-            return pathSegments[0];
-        } else if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
-            return pathSegments[1];
+        // URL 경로에서 언어 확인 (기존 /kr/, /en/ 방식 호환)
+        const pathLang = window.location.pathname.split('/')[1];
+        if (['kr', 'en', 'jp', 'cn'].includes(pathLang)) {
+            return pathLang;
         }
         
-        // 저장된 언어 설정 확인
+        // 로컬 스토리지에서 언어 확인
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
             return savedLang;
@@ -390,14 +414,12 @@ class Navigation {
         
         // 브라우저 언어 감지
         const browserLang = navigator.language.toLowerCase();
-        
-        if (browserLang.startsWith('kr')) return 'kr';
-        if (browserLang.startsWith('en')) return 'en';
+        if (browserLang.startsWith('ko')) return 'kr';
         if (browserLang.startsWith('ja')) return 'jp';
         if (browserLang.startsWith('zh')) return 'cn';
+        if (browserLang.startsWith('en')) return 'en';
         
-        // 기본값은 한국어
-        return 'kr';
+        return 'kr'; // 기본값
     }
     
     // sleep 함수 추가
@@ -423,33 +445,34 @@ class Navigation {
         // 선호 언어 저장
         localStorage.setItem('preferredLanguage', lang);
         
-        // 현재 URL 가져오기
+        // 현재 URL 구성
         const currentPath = window.location.pathname;
-        const baseUrl = BASE_URL;
+        const currentSearch = window.location.search;
         
-        // baseUrl을 제거한 실제 경로 얻기
-        const pathWithoutBase = currentPath.replace(baseUrl, '');
+        // URL 파라미터 구성
+        const params = new URLSearchParams(currentSearch);
+        params.set('lang', lang);
         
-        const pathSegments = pathWithoutBase.split('/').filter(Boolean);
+        // 경로 정리 (기존 언어 디렉토리 제거)
+        let cleanPath = currentPath;
+        const pathSegments = currentPath.split('/').filter(Boolean);
         
-        // 첫 번째 세그먼트가 언어 코드인지 확인
+        // 첫 번째 세그먼트가 언어 코드인 경우 제거
         if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
-            pathSegments[0] = lang;
-        } else if (pathSegments.length > 1 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[1])) {
-            pathSegments[1] = lang;
-        } else {
-            pathSegments.unshift(lang);
+            pathSegments.shift();
+            cleanPath = '/' + pathSegments.join('/');
+        }
+        
+        // 빈 경로면 루트로
+        if (cleanPath === '/' || cleanPath === '') {
+            cleanPath = '/';
         }
         
         // 새 URL 생성
-        const newPath = baseUrl + '/' + pathSegments.join('/');
-        
-        const queryString = window.location.search;
-        const finalUrl = newPath + queryString;
-        
+        const newUrl = cleanPath + '?' + params.toString();
         
         // 페이지 이동 
-        window.location.href = finalUrl;
+        window.location.href = newUrl;
     }
     
     static initSwordAnimation() {
@@ -513,5 +536,46 @@ class Navigation {
                 });
             }
         });
+    }
+    
+    // Footer 번역 함수
+    static updateFooterTranslation() {
+        const currentLang = Navigation.getCurrentLanguage();
+        
+        const footerTranslations = {
+            kr: {
+                disclaimer: "※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.",
+                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　",
+                reportLink: "제보 및 요청"
+            },
+            en: {
+                disclaimer: "※ LufelNet is an unofficial Persona 5X information site created by individuals. The trademarks and copyrights of game content and materials belong to SEGA·ATLUS·Perfect World Games.",
+                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　",
+                reportLink: "Report & Request"
+            },
+            jp: {
+                disclaimer: "※ ルフェルネットは個人が作成した非公式ペルソナ5X情報提供サイトで、ゲームのコンテンツと素材の商標と著作権はSEGA·ATLUS·Perfect World Gamesに帰属します。",
+                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　",
+                reportLink: "情報提供・リクエスト"
+            }
+        };
+        
+        const translation = footerTranslations[currentLang];
+        if (!translation) return;
+        
+        // Footer 요소들 업데이트
+        const disclaimerElement = document.getElementById('footer-disclaimer');
+        const contactElement = document.getElementById('footer-contact');
+        const reportLinkElement = document.getElementById('footer-report-link');
+        
+        if (disclaimerElement) {
+            disclaimerElement.textContent = translation.disclaimer;
+        }
+        if (contactElement) {
+            contactElement.textContent = translation.contact;
+        }
+        if (reportLinkElement) {
+            reportLinkElement.textContent = translation.reportLink;
+        }
     }
 }

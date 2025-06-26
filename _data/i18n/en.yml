@@ -1,0 +1,56 @@
+site:
+  title: "Persona 5: The Phantom X - LufelNet"
+  description: "Comprehensive guide for Persona 5: The Phantom X. Characters, Personas, skills, and strategy guides all in one place."
+  keywords: "Persona 5 The Phantom X, P5X, LufelNet, Phantom Thieves, Persona, Revelations, Tactics, Game Guide"
+  author: "LufelNet"
+  url: "https://lufel.net"
+  baseurl: ""
+
+# 다국어 공통
+language_notice: "🌍 English translation is in progress. Some content may still be in Korean."
+
+# 홈페이지
+site_title: "P5X Lufelnet"
+menu_character: "Characters"
+menu_persona: "Personas"
+menu_revelations: "Revelations"
+menu_tactic: "Tactics"
+menu_character_desc_desktop: "Meet character development strategies<br>for higher scores and easier clears"
+menu_character_desc_mobile: "Meet character development strategies"
+menu_persona_desc_desktop: "Core persona recommendations<br>and skill settings for each persona"
+menu_persona_desc_mobile: "Core persona recommendations and skill settings"
+menu_revelations_desc_desktop: "All revelation information at a glance!<br>Match by element and sun/moon/star as desired"
+menu_revelations_desc_mobile: "All revelation information at a glance!"
+menu_tactic_desc_desktop: "Create and share your own tactics,<br>achieve high scores in ocean and nightmare"
+menu_tactic_desc_mobile: "Create and share your own tactics"
+menu_goto: "Go to"
+popular_characters: "Popular Characters"
+recent_updates: "Recent Updates"
+guides: "Guides"
+guide_city: "City Life"
+guide_growth: "Growth & Resources"
+guide_battle: "Battle & Palace"
+tactic_workshop: "Tactic Workshop NEW"
+show_more: "Show More"
+
+# 네비게이션
+nav_home: "Home"
+
+# 캐릭터 페이지
+character_page_title: "Characters"
+character_filter_all: "All"
+character_filter_job: "Job"
+character_filter_element: "Element"
+character_search_placeholder: "Search characters..."
+character_breadcrumb: "Characters"
+character_title: "Character Guide"
+filter_element: "Element"
+filter_position: "Position"
+filter_type: "Type"
+filter_tag: "Tag"
+filtered_count: "Total"
+
+# Footer
+footer_disclaimer: "※ LufelNet is an unofficial Persona 5X information site created by individuals. The trademarks and copyrights of game content and materials belong to SEGA·ATLUS·Perfect World Games."
+footer_contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　"
+footer_report_link: "Report & Request" 

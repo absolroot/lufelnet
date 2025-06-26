@@ -1,49 +1,752 @@
 ---
-permalink: /:path/
+layout: default
+custom_css: [home, tactic-posts]
+custom_js: [tactic-posts-home, tactic-preview, /tactic/share, language-router]
+custom_data: [/characters/characters.js, /revelations/revelations.js]
+permalink: /
+language: kr
 ---
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>{{ site.title }}</title>
+
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>
+
+    <!-- Header (logo, etc.) -->
+    <div class="header-container">
+        <h1 id="site-title">P5X 루페르넷</h1> <span class="beta-text"></span>
+        <button class="music-control" id="musicControl">
+            <img src="{{ site.baseurl }}/assets/img/ui/music-off.png" alt="음악 재생" id="musicIcon">
+        </button>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="menu-cards">
+            <div class="menu-card">
+                <a href="./character/?v=' + APP_VERSION" class="card-content" style="text-decoration: none; color: inherit;">
+                    <div class="text-section">
+                        <h2 id="menu-character-title">괴도 <img src="{{ site.baseurl }}/assets/img/home/icon1.png" alt="괴도 아이콘" class="title-icon"></h2>
+                        <p class="desktop-description" id="menu-character-desc-desktop">보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요</p>
+                        <p class="mobile-description" id="menu-character-desc-mobile">괴도별 육성 전략을 만나보세요</p>
+                        <button class="view-more" id="menu-character-btn">바로가기 →</button>
+                    </div>
+                    <img src="{{ site.baseurl }}/assets/img/home/1.webp" alt="괴도 일러스트" class="card-illustration" loading="lazy">
+                </a>
+            </div>
+            
+            <div class="menu-card" id="menu-persona-card">
+                <a href="./persona/?v=' + APP_VERSION" class="card-content" style="text-decoration: none; color: inherit;">
+                    <div class="text-section">
+                        <h2 id="menu-persona-title">페르소나 <img src="{{ site.baseurl }}/assets/img/home/icon2.png" alt="페르소나 아이콘" class="title-icon"></h2>
+                        <p class="desktop-description" id="menu-persona-desc-desktop">핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지</p>
+                        <p class="mobile-description" id="menu-persona-desc-mobile">핵심 페르소나 추천과 스킬 세팅까지</p>
+                        <button class="view-more" id="menu-persona-btn">바로가기 →</button>
+                    </div>
+                    <img src="{{ site.baseurl }}/assets/img/home/2.webp" alt="페르소나 일러스트" class="card-illustration" loading="lazy">
+                </a>
+            </div>
+
+            <div class="menu-card" id="menu-revelations-card">
+                <a href="./revelations/?v=' + APP_VERSION" class="card-content" style="text-decoration: none; color: inherit;">
+                    <div class="text-section">
+                        <h2 id="menu-revelations-title">계시 <img src="{{ site.baseurl }}/assets/img/home/icon3.png" alt="계시 아이콘" class="title-icon"></h2>
+                        <p class="desktop-description" id="menu-revelations-desc-desktop">계시 정보들을 한 눈에!<br>속성별, 일월성진별 원하는 대로 매칭</p>
+                        <p class="mobile-description" id="menu-revelations-desc-mobile">계시 정보들을 한 눈에!</p>
+                        <button class="view-more" id="menu-revelations-btn">바로가기 →</button>
+                    </div>
+                    <img src="{{ site.baseurl }}/assets/img/home/3.webp" alt="계시 일러스트" class="card-illustration" loading="lazy">
+                </a>
+            </div>
+
+            <div class="menu-card" id="menu-tactic-card">
+                <a href="./tactic/tactic-share.html?v=' + APP_VERSION" class="card-content" style="text-decoration: none; color: inherit;">
+                    <div class="text-section">
+                        <h2 id="menu-tactic-title">택틱 <img src="{{ site.baseurl }}/assets/img/home/icon4.png" alt="택틱 아이콘" class="title-icon"></h2>
+                        <p class="desktop-description" id="menu-tactic-desc-desktop">본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요</p>
+                        <p class="mobile-description" id="menu-tactic-desc-mobile">본인만의 택틱을 만들고 공유하세요</p>
+                        <button class="view-more" id="menu-tactic-btn">바로가기 →</button>
+                    </div>
+                    <img src="{{ site.baseurl }}/assets/img/home/4.webp" alt="택틱 일러스트" class="card-illustration" loading="lazy">
+                </a>
+            </div>
+        </div>
+        <div class="update-notice">
+            
+        </div>
+    </div>
+    <div class="separator-line"></div>
+    <div class="middle-container">
+        <div class="popular-content">
+            <h2 id="popular-characters-title">인기 괴도</h2>
+            <div class="character-cards">
+                <div class="character-card">
+                    <div class="character-card-img"><a href="./character.html?name=사나다&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/사나다.webp" alt="사나다"></a></div>
+                    <div class="character-card-text"><p>사나다 아키히코</p></div>
+                </div>
+                <div class="character-card">
+                    <div class="character-card-img"><a href="./character.html?name=유카리&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/유카리.webp" alt="유카리"></a></div>
+                    <div class="character-card-text"><p>타케바 유카리</p></div>
+                </div>
+                <div class="character-card">
+                    <div class="character-card-img"><a href="./character.html?name=유키 마코토&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/유키 마코토.webp" alt="유키 마코토"></a></div>
+                    <div class="character-card-text"><p>유키 마코토</p></div>
+                </div>
+                <div class="character-card">
+                    <div class="character-card-img"><a href="./character.html?name=마나카&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/마나카.webp" alt="마나카"></a></div>
+                    <div class="character-card-text"><p>나가오 마나카</p></div>
+                </div>
+                <div class="character-card">
+                    <div class="character-card-img"><a href="./character.html?name=마유미&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/마유미.webp" alt="마유미"></a></div>
+                    <div class="character-card-text"><p>하시모토 마유미</p></div>
+                </div>
+                <div class="character-card">
+                    <div class="character-card-img"><a href="./character.html?name=야오링·사자무&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/야오링·사자무.webp" alt="야오링·사자무"></a></div>
+                    <div class="character-card-text"><p>야오링·사자무</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="recent-update-content">
+            <h2 id="recent-updates-title">최신 업데이트</h2>
+            <div id="recent-update-list"></div>
+            <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;" data-text-more="더보기">더보기</button>
+        </div>
+    </div>
+    <div class="guides-container">
+        <h2 id="guides-title">가이드</h2>
+        <div class="guide-cards">
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <img src="{{ site.baseurl }}/assets/img/home/guide1.png" alt="가이드 이미지">
+                    <h3 id="guide-city-title">도시 생활</h3>
+                </div>
+                <div class="guide-card-content">
+                    <div class="article"><a href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM" target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 선물 & 선택지</a></div>
+                    <div class="article"><a href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=158597" target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 우선순위 추천</a></div>
+                    <div class="article"><a href="https://arca.live/b/persona5x/112002828" target="_blank" style="text-decoration: none; color: inherit;">∘ 이치가야 낚시</a></div>
+                    <div class="article"><a href="https://arca.live/b/persona5x/110240842" target="_blank" style="text-decoration: none; color: inherit;">∘ 요리 레시피 획득</a></div>
+                </div>
+            </div>
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <img src="{{ site.baseurl }}/assets/img/home/guide2.png" alt="가이드 이미지">
+                    <h3 id="guide-growth-title">육성 및 재화</h3>
+                </div>
+                <div class="guide-card-content">
+                    <div class="article"><a href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=170601" target="_blank" style="text-decoration: none; color: inherit;">∘ 계시에 대하여</a></div>
+                    <div class="article"><a href="https://arca.live/b/persona5x/115843217" target="_blank" style="text-decoration: none; color: inherit;">∘ 주 성위 계시 입수처</a></div>
+                    <div class="article"><a href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=175353" target="_blank" style="text-decoration: none; color: inherit;">∘ 교환상점 구매목록</a></div>
+                    <div class="article"><a href="https://lufel.net/pay-calc" target="_blank" style="text-decoration: none; color: inherit;">∘ 패키지 과금효율 계산</a></div>
+                </div>
+            </div>
+            <div class="guide-card">
+                <div class="guide-card-header">
+                    <img src="{{ site.baseurl }}/assets/img/home/guide3.png" alt="가이드 이미지">
+                    <h3 id="guide-battle-title">전투 및 팰리스</h3>
+                </div>
+                <div class="guide-card-content">
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1xF4m1N7bZ" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 1장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1zD421n7jJ" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 2장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1kr421T7Wp" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 3장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1duUSYfEdY" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 4장 100% 탐색도</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="posts-container" id="posts-container">
+        <div class="posts-header">
+            <h2><a href="./tactic/tactic-share.html" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 대장간 NEW</a></h2>
+            <a href="./tactic/tactic-share.html" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
+        </div>
+        <div class="posts-list" id="postsList"></div>
+    </div>
+
+</div>
+
+<!-- iframe -->
+<iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe>
+
     <script>
-        function getBrowserLanguage() {
-            var lang = navigator.language || navigator.userLanguage;
-            lang = lang.toLowerCase().split('-')[0];
-            //var supportedLangs = ['kr', 'en', 'jp', 'cn'];
-            var supportedLangs = ['kr'];
-            return supportedLangs.includes(lang) ? lang : 'kr';
+    // 다국어 데이터 로드
+    window.i18nData = null;
+    
+    // 오버레이 추가 함수
+    function addComingSoonOverlay(cardId, text) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+        
+        // 이미 오버레이가 있으면 제거
+        const existingOverlay = card.querySelector('.coming-soon-overlay');
+        if (existingOverlay) {
+            existingOverlay.remove();
         }
         
-        function getQueryString() {
-            var search = window.location.search;
-            return search || '';
+        // 카드를 상대 위치로 설정
+        card.style.position = 'relative';
+        
+        // 오버레이 생성
+        const overlay = document.createElement('div');
+        overlay.className = 'coming-soon-overlay';
+        overlay.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 10;
+            border-radius: inherit;
+            cursor: not-allowed;
+        `;
+        overlay.textContent = text;
+        
+        // 링크 비활성화
+        const link = card.querySelector('a');
+        if (link) {
+            link.style.pointerEvents = 'none';
         }
         
-        var userLang = getBrowserLanguage();
-        var path = window.location.pathname;
-        var baseUrl = '{{ site.baseurl }}';
-        var queryString = getQueryString();
+        card.appendChild(overlay);
+    }
+    
+    // 오버레이 제거 함수
+    function removeComingSoonOverlay(cardId) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
         
-        // 경로에서 baseUrl을 제거하고 세그먼트 추출
-        path = path.replace(baseUrl, '');
-        var segments = path.split('/').filter(Boolean);
-        var firstSegment = segments[0] || '';
-        
-        // 지원하는 섹션들
-        var sections = ['character', 'persona', 'revelations', 'tactic'];
-        
-        // 이미 언어 경로가 포함되어 있는지 확인
-        var hasLangPath = segments.length > 1 && segments[0] === userLang;
-        
-        if (sections.includes(firstSegment) && !hasLangPath) {
-            window.location.replace(baseUrl + '/' + userLang + '/' + firstSegment + '/' + queryString);
-        } else if (path === '/' || path === '') {
-            window.location.replace(baseUrl + '/' + userLang + '/');
+        // 오버레이 제거
+        const overlay = card.querySelector('.coming-soon-overlay');
+        if (overlay) {
+            overlay.remove();
         }
+        
+        // 링크 활성화
+        const link = card.querySelector('a');
+        if (link) {
+            link.style.pointerEvents = 'auto';
+        }
+    }
+    
+    // 모든 링크에 언어 파라미터 추가 함수
+    function updateLinksWithLanguage(currentLang) {
+        // 메뉴 카드 링크들 업데이트
+        const menuLinks = [
+            { selector: '.menu-card a[href*="./character/"]', path: './character/' },
+            { selector: '.menu-card a[href*="./persona/"]', path: './persona/' },
+            { selector: '.menu-card a[href*="./revelations/"]', path: './revelations/' },
+            { selector: '.menu-card a[href*="./tactic/tactic-share.html"]', path: './tactic/tactic-share.html' }
+        ];
+        
+        menuLinks.forEach(linkInfo => {
+            const link = document.querySelector(linkInfo.selector);
+            if (link) {
+                const url = new URL(linkInfo.path + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+                link.href = url.pathname + url.search;
+            }
+        });
+        
+        // 인기 캐릭터 링크들 업데이트
+        const characterLinks = document.querySelectorAll('.character-card-img a[href*="./character/character.html"]');
+        characterLinks.forEach(link => {
+            const url = new URL(link.href);
+            url.searchParams.set('lang', currentLang);
+            link.href = url.pathname + url.search;
+        });
+        
+        // 택틱 대장간 링크들 업데이트
+        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactic-share.html"]');
+        tacticLinks.forEach(link => {
+            const url = new URL('./tactic/tactic-share.html' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+            link.href = url.pathname + url.search;
+        });
+        
+        // 과금효율 계산 링크 업데이트
+        const payCalcLink = document.querySelector('a[href*="https://lufel.net/pay-calc"]');
+        if (payCalcLink) {
+            payCalcLink.href = `https://lufel.net/pay-calc/?lang=${currentLang}&v=${APP_VERSION}`;
+        }
+    }
+    
+    async function loadI18nData() {
+        if (window.i18nData) return window.i18nData;
+        
+        try {
+            // 다국어 데이터를 직접 정의 (Jekyll에서 빌드 시 생성)
+            window.i18nData = {
+                kr: {
+                    language_notice: "",
+                    site_title: "P5X 루페르넷",
+                    menu_character: "괴도",
+                    menu_persona: "페르소나", 
+                    menu_revelations: "계시",
+                    menu_tactic: "택틱",
+                    menu_character_desc_desktop: "보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요",
+                    menu_character_desc_mobile: "괴도별 육성 전략을 만나보세요",
+                    menu_persona_desc_desktop: "핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지",
+                    menu_persona_desc_mobile: "핵심 페르소나 추천과 스킬 세팅까지",
+                    menu_revelations_desc_desktop: "계시 정보들을 한 눈에!<br>속성별, 일월성진별 원하는 대로 매칭",
+                    menu_revelations_desc_mobile: "계시 정보들을 한 눈에!",
+                    menu_tactic_desc_desktop: "본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요",
+                    menu_tactic_desc_mobile: "본인만의 택틱을 만들고 공유하세요",
+                    menu_goto: "바로가기",
+                    popular_characters: "인기 괴도",
+                    recent_updates: "최신 업데이트",
+                    guides: "가이드",
+                    guide_city: "도시 생활",
+                    guide_growth: "육성 및 재화",
+                    guide_battle: "전투 및 팰리스",
+                    tactic_workshop: "택틱 대장간 NEW",
+                    show_more: "더보기"
+                },
+                en: {
+                    language_notice: "{{ site.data.i18n.en.language_notice | default: '🌍 English translation is in progress. Some content may still be in Korean.' }}",
+                    site_title: "{{ site.data.i18n.en.site_title | default: 'P5X Lufelnet' }}",
+                    menu_character: "{{ site.data.i18n.en.menu_character | default: 'Characters' }}",
+                    menu_persona: "{{ site.data.i18n.en.menu_persona | default: 'Personas' }}",
+                    menu_revelations: "{{ site.data.i18n.en.menu_revelations | default: 'Revelations' }}",
+                    menu_tactic: "{{ site.data.i18n.en.menu_tactic | default: 'Tactics' }}",
+                    menu_character_desc_desktop: "{{ site.data.i18n.en.menu_character_desc_desktop | default: 'Meet character development strategies<br>for higher scores and easier clears' }}",
+                    menu_character_desc_mobile: "{{ site.data.i18n.en.menu_character_desc_mobile | default: 'Meet character development strategies' }}",
+                    menu_persona_desc_desktop: "{{ site.data.i18n.en.menu_persona_desc_desktop | default: 'Core persona recommendations<br>and skill settings for each persona' }}",
+                    menu_persona_desc_mobile: "{{ site.data.i18n.en.menu_persona_desc_mobile | default: 'Core persona recommendations and skill settings' }}",
+                    menu_revelations_desc_desktop: "{{ site.data.i18n.en.menu_revelations_desc_desktop | default: 'All revelation information at a glance!<br>Match by element and sun/moon/star as desired' }}",
+                    menu_revelations_desc_mobile: "{{ site.data.i18n.en.menu_revelations_desc_mobile | default: 'All revelation information at a glance!' }}",
+                    menu_tactic_desc_desktop: "{{ site.data.i18n.en.menu_tactic_desc_desktop | default: 'Create and share your own tactics,<br>achieve high scores in ocean and nightmare' }}",
+                    menu_tactic_desc_mobile: "{{ site.data.i18n.en.menu_tactic_desc_mobile | default: 'Create and share your own tactics' }}",
+                    menu_goto: "{{ site.data.i18n.en.menu_goto | default: 'Go to' }}",
+                    popular_characters: "{{ site.data.i18n.en.popular_characters | default: 'Popular Characters' }}",
+                    recent_updates: "{{ site.data.i18n.en.recent_updates | default: 'Recent Updates' }}",
+                    guides: "{{ site.data.i18n.en.guides | default: 'Guides' }}",
+                    guide_city: "{{ site.data.i18n.en.guide_city | default: 'City Life' }}",
+                    guide_growth: "{{ site.data.i18n.en.guide_growth | default: 'Growth & Resources' }}",
+                    guide_battle: "{{ site.data.i18n.en.guide_battle | default: 'Battle & Palace' }}",
+                    tactic_workshop: "{{ site.data.i18n.en.tactic_workshop | default: 'Tactic Workshop NEW' }}",
+                    show_more: "{{ site.data.i18n.en.show_more | default: 'Show More' }}"
+                },
+                jp: {
+                    language_notice: "{{ site.data.i18n.jp.language_notice | default: '🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。' }}",
+                    site_title: "{{ site.data.i18n.jp.site_title | default: 'P5X Lufelnet' }}",
+                    menu_character: "{{ site.data.i18n.jp.menu_character | default: '怪盗' }}",
+                    menu_persona: "{{ site.data.i18n.jp.menu_persona | default: 'ペルソナ' }}",
+                    menu_revelations: "{{ site.data.i18n.jp.menu_revelations | default: '啓示' }}",
+                    menu_tactic: "{{ site.data.i18n.jp.menu_tactic | default: 'タクティクス' }}",
+                    menu_character_desc_desktop: "{{ site.data.i18n.jp.menu_character_desc_desktop | default: 'より高いスコア、より簡単なクリアのための<br>怪盗別育成戦略をご紹介します' }}",
+                    menu_character_desc_mobile: "{{ site.data.i18n.jp.menu_character_desc_mobile | default: '怪盗別育成戦略をご紹介します' }}",
+                    menu_persona_desc_desktop: "{{ site.data.i18n.jp.menu_persona_desc_desktop | default: 'コアペルソナ推薦と共に<br>各ペルソナに合うスキル設定まで' }}",
+                    menu_persona_desc_mobile: "{{ site.data.i18n.jp.menu_persona_desc_mobile | default: 'コアペルソナ推薦とスキル設定まで' }}",
+                    menu_revelations_desc_desktop: "{{ site.data.i18n.jp.menu_revelations_desc_desktop | default: '啓示情報を一目で！<br>属性別、日月星辰別にお好みに合わせてマッチング' }}",
+                    menu_revelations_desc_mobile: "{{ site.data.i18n.jp.menu_revelations_desc_mobile | default: '啓示情報を一目で！' }}",
+                    menu_tactic_desc_desktop: "{{ site.data.i18n.jp.menu_tactic_desc_desktop | default: '自分だけのタクティクスを作成・共有し、<br>海と悪夢で高スコアを獲得しましょう' }}",
+                    menu_tactic_desc_mobile: "{{ site.data.i18n.jp.menu_tactic_desc_mobile | default: '自分だけのタクティクスを作成・共有しましょう' }}",
+                    menu_goto: "{{ site.data.i18n.jp.menu_goto | default: '移動' }}",
+                    popular_characters: "{{ site.data.i18n.jp.popular_characters | default: '人気怪盗' }}",
+                    recent_updates: "{{ site.data.i18n.jp.recent_updates | default: '最新アップデート' }}",
+                    guides: "{{ site.data.i18n.jp.guides | default: 'ガイド' }}",
+                    guide_city: "{{ site.data.i18n.jp.guide_city | default: '都市生活' }}",
+                    guide_growth: "{{ site.data.i18n.jp.guide_growth | default: '育成・資源' }}",
+                    guide_battle: "{{ site.data.i18n.jp.guide_battle | default: '戦闘・パレス' }}",
+                    tactic_workshop: "{{ site.data.i18n.jp.tactic_workshop | default: 'タクティクス工房 NEW' }}",
+                    show_more: "{{ site.data.i18n.jp.show_more | default: 'もっと見る' }}"
+                }
+            };
+            
+            return window.i18nData;
+        } catch (error) {
+            console.error('Failed to load i18n data:', error);
+            return null;
+        }
+    }
+
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        // 다국어 데이터 로드
+        await loadI18nData();
+        const i18n = window.i18nData;
+        
+        if (!i18n || !i18n[currentLang]) return;
+        
+        const data = i18n[currentLang];
+        
+        // 언어 안내 메시지
+        if (currentLang !== 'kr') {
+            const notice = document.getElementById('language-notice');
+            const noticeText = document.getElementById('language-notice-text');
+            if (notice && noticeText && data.language_notice) {
+                noticeText.textContent = data.language_notice;
+                notice.style.display = 'block';
+            }
+        }
+        
+        // 사이트 제목
+        const siteTitle = document.getElementById('site-title');
+        if (siteTitle && data.site_title) {
+            siteTitle.textContent = data.site_title;
+        }
+        
+        // 메뉴 카드 제목들
+        const menuTitles = {
+            'menu-character-title': data.menu_character,
+            'menu-persona-title': data.menu_persona,
+            'menu-revelations-title': data.menu_revelations,
+            'menu-tactic-title': data.menu_tactic
+        };
+        
+        Object.keys(menuTitles).forEach(id => {
+            const element = document.getElementById(id);
+            if (element && menuTitles[id]) {
+                const icon = element.querySelector('img');
+                element.textContent = menuTitles[id] + ' ';
+                if (icon) element.appendChild(icon);
+            }
+        });
+        
+        // 메뉴 설명들
+        const menuDescs = {
+            'menu-character-desc-desktop': data.menu_character_desc_desktop,
+            'menu-character-desc-mobile': data.menu_character_desc_mobile,
+            'menu-persona-desc-desktop': data.menu_persona_desc_desktop,
+            'menu-persona-desc-mobile': data.menu_persona_desc_mobile,
+            'menu-revelations-desc-desktop': data.menu_revelations_desc_desktop,
+            'menu-revelations-desc-mobile': data.menu_revelations_desc_mobile,
+            'menu-tactic-desc-desktop': data.menu_tactic_desc_desktop,
+            'menu-tactic-desc-mobile': data.menu_tactic_desc_mobile
+        };
+        
+        Object.keys(menuDescs).forEach(id => {
+            const element = document.getElementById(id);
+            if (element && menuDescs[id]) {
+                element.innerHTML = menuDescs[id];
+            }
+        });
+        
+        // 버튼 텍스트들
+        const buttons = {
+            'menu-character-btn': data.menu_goto,
+            'menu-persona-btn': data.menu_goto,
+            'menu-revelations-btn': data.menu_goto,
+            'menu-tactic-btn': data.menu_goto
+        };
+        
+        Object.keys(buttons).forEach(id => {
+            const element = document.getElementById(id);
+            if (element && buttons[id]) {
+                element.textContent = buttons[id] + ' →';
+            }
+        });
+        
+        // 섹션 제목들
+        const sectionTitles = {
+            'popular-characters-title': data.popular_characters,
+            'recent-updates-title': data.recent_updates,
+            'guides-title': data.guides
+        };
+        
+        Object.keys(sectionTitles).forEach(id => {
+            const element = document.getElementById(id);
+            if (element && sectionTitles[id]) {
+                element.textContent = sectionTitles[id];
+            }
+        });
+        
+        // 가이드 카드 제목들
+        const guideTitles = {
+            'guide-city-title': data.guide_city,
+            'guide-growth-title': data.guide_growth,
+            'guide-battle-title': data.guide_battle
+        };
+        
+        Object.keys(guideTitles).forEach(id => {
+            const element = document.getElementById(id);
+            if (element && guideTitles[id]) {
+                element.textContent = guideTitles[id];
+            }
+        });
+        
+        // 택틱 관련 텍스트
+        const tacticTitle = document.getElementById('tactic-workshop-title');
+        if (tacticTitle && data.tactic_workshop) {
+            tacticTitle.textContent = data.tactic_workshop;
+        }
+        
+        const showMoreBtn = document.getElementById('show-more-posts-btn');
+        if (showMoreBtn && data.show_more) {
+            showMoreBtn.textContent = data.show_more + ' ＋';
+        }
+        
+        // 더보기 버튼
+        const moreUpdatesBtn = document.getElementById('show-more-updates-btn');
+        if (moreUpdatesBtn && data.show_more) {
+            moreUpdatesBtn.textContent = data.show_more;
+            moreUpdatesBtn.setAttribute('data-text-more', data.show_more);
+        }
+        
+        // 모든 링크에 현재 언어 파라미터 추가
+        updateLinksWithLanguage(currentLang);
+        
+        // 언어별 메뉴 제한
+        if (currentLang === 'en' || currentLang === 'jp') {
+            // 택틱 메뉴 숨기기
+            const tacticCard = document.getElementById('menu-tactic-card');
+            if (tacticCard) {
+                tacticCard.style.display = 'none';
+            }
+            
+            // Personas와 Revelations 메뉴에 오버레이 추가
+            addComingSoonOverlay('menu-persona-card', currentLang === 'en' ? 'Coming Soon' : '準備中');
+            addComingSoonOverlay('menu-revelations-card', currentLang === 'en' ? 'Coming Soon' : '準備中');
+            
+            // 택틱 대장간 섹션 숨기기
+            const postsContainer = document.getElementById('posts-container');
+            if (postsContainer) {
+                postsContainer.style.display = 'none';
+            }
+            
+            // main-content 아래 모든 섹션 숨기기
+            const middleContainer = document.querySelector('.middle-container');
+            const guidesContainer = document.querySelector('.guides-container');
+            
+            if (middleContainer) {
+                middleContainer.style.display = 'none';
+            }
+            if (guidesContainer) {
+                guidesContainer.style.display = 'none';
+            }
+        } else {
+            // 한국어인 경우 모든 메뉴 활성화
+            const tacticCard = document.getElementById('menu-tactic-card');
+            if (tacticCard) {
+                tacticCard.style.display = 'block';
+            }
+            
+            // 오버레이 제거
+            removeComingSoonOverlay('menu-persona-card');
+            removeComingSoonOverlay('menu-revelations-card');
+            
+            // 택틱 대장간 섹션 표시
+            const postsContainer = document.getElementById('posts-container');
+            if (postsContainer) {
+                postsContainer.style.display = 'block';
+            }
+            
+            // main-content 아래 모든 섹션 표시
+            const middleContainer = document.querySelector('.middle-container');
+            const guidesContainer = document.querySelector('.guides-container');
+            
+            if (middleContainer) {
+                middleContainer.style.display = 'grid';
+            }
+            if (guidesContainer) {
+                guidesContainer.style.display = 'block';
+            }
+        }
+    }
+
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        const seoData = {
+            'kr': {
+                title: '페르소나5 더 팬텀 X - 루페르넷',
+                description: '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.'
+            },
+            'en': {
+                title: 'Persona 5: The Phantom X - LufelNet',
+                description: 'Comprehensive guide for Persona 5: The Phantom X. Characters, Personas, skills, and strategy guides all in one place.'
+            },
+            'jp': {
+                title: 'ペルソナ5 ザ・ファントム X - LufelNet',
+                description: 'ペルソナ5 ザ・ファントム Xの総合攻略サイト。キャラクター、ペルソナ、スキル、戦略ガイドを一箇所で確認できます。'
+            }
+        };
+        
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+        
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+        
+        // 메타 태그 업데이트
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        
+        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('home');
+        VersionChecker.check();
+        
+        // SEO 설정 업데이트
+        updateSEOContent();
+        
+        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        if (typeof LanguageRouter !== 'undefined') {
+            LanguageRouter.init().then(async () => {
+                await updateLanguageContent();
+                // 언어 변경 후 SEO 다시 업데이트
+                updateSEOContent();
+            });
+        } else {
+            // 언어 라우터가 없으면 바로 업데이트
+            updateLanguageContent();
+        }
+        
+        // 한국어인 경우에만 택틱 관련 기능 로드
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (currentLang === 'kr') {
+            window.tacticShare = new TacticShare({ postsPerPage: 2});
+        }
+
+        const musicPlayer = document.getElementById('music-player');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        // Music control button click event
+        musicControl.addEventListener('click', () => {
+            if (!isPlaying) {
+                musicPlayer.contentWindow.postMessage('play', '*');
+                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-on.png';
+                musicIcon.alt = '음악 중지';
+            } else {
+                musicPlayer.contentWindow.postMessage('pause', '*');
+                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-off.png';
+                musicIcon.alt = '음악 재생';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Receive music state
+        window.addEventListener('message', (event) => {
+            if (event.data === 'playing' || event.data === 'paused') {
+                sessionStorage.setItem('musicState', event.data);
+                isPlaying = event.data === 'playing';
+                musicIcon.src = isPlaying ? '{{ site.baseurl }}/assets/img/ui/music-on.png' : '{{ site.baseurl }}/assets/img/ui/music-off.png';
+                musicIcon.alt = isPlaying ? '음악 중지' : '음악 재생';
+            }
+        });
+
+        // Save current state before page unload
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('musicState', isPlaying ? 'playing' : 'paused');
+        });
+    });
+
+    // Load update history
+    let allUpdates = []; // Store all updates
+    const MAX_TOTAL_LINES = 6; // 전체 표시할 최대 줄 수
+    const LOAD_MORE_COUNT = 10; // Number of updates to load when "more" button is clicked
+    let currentlyShown = 0;
+
+    async function loadUpdates() {
+        try {
+            const response = await fetch(`{{ site.baseurl }}/data/kr/updates.csv?v=${APP_VERSION}`);
+            const data = await response.text();
+            
+            // Parse CSV
+            allUpdates = data.split('\n')
+                .slice(1) // Remove header
+                .filter(line => line.trim()) // Remove empty lines
+                .map(line => {
+                    const [date, version, content] = line.split(',');
+                    // Remove '20' prefix from date
+                    const formattedDate = date.replace(/^20/, '');
+                    return { date: formattedDate, version, content: content.replace('|', ', ') };
+                });
+
+            // Show initial updates
+            showMoreUpdates();
+            
+            // Set visibility of "more" button
+            const showMoreBtn = document.getElementById('show-more-updates-btn');
+            showMoreBtn.style.display = 'block';
+            showMoreBtn.addEventListener('click', () => {
+                showMoreBtn.style.display = 'none';
+                showAllUpdates();
+            });
+        } catch (error) {
+            console.error('Failed to load update history:', error);
+        }
+    }
+
+    // 모든 업데이트를 표시하는 함수
+    function showAllUpdates() {
+        const updateList = document.getElementById('recent-update-list');
+        updateList.innerHTML = ''; // 기존 내용 초기화
+        
+        allUpdates.forEach(update => {
+            const updateElement = document.createElement('div');
+            updateElement.className = 'recent-update-content-text';
+            
+            const contentLines = update.content.split('\\n').join('<br>');
+            
+            updateElement.innerHTML = `
+                <div class="date">${update.date}</div>
+                <div class="version">${update.version}</div>
+                <div class="content"><p>${contentLines}</p></div>
+            `;
+            updateList.appendChild(updateElement);
+        });
+    }
+
+    // 초기 5줄만 표시하는 함수
+    function showMoreUpdates() {
+        const updateList = document.getElementById('recent-update-list');
+        let totalLines = 0;
+        let updatesShown = 0;
+        
+        for (const update of allUpdates) {
+            const lines = update.content.split('\\n');
+            
+            if (totalLines + lines.length > MAX_TOTAL_LINES) {
+                // 남은 줄 수 계산
+                const remainingLines = MAX_TOTAL_LINES - totalLines;
+                if (remainingLines > 0) {
+                    const updateElement = document.createElement('div');
+                    updateElement.className = 'recent-update-content-text';
+                    
+                    const visibleContent = lines.slice(0, remainingLines).join('<br>');
+                    
+                    updateElement.innerHTML = `
+                        <div class="date">${update.date}</div>
+                        <div class="version">${update.version}</div>
+                        <div class="content"><p>${visibleContent} ...</p></div>
+                    `;
+                    updateList.appendChild(updateElement);
+                }
+                break;
+            }
+            
+            const updateElement = document.createElement('div');
+            updateElement.className = 'recent-update-content-text';
+            
+            updateElement.innerHTML = `
+                <div class="date">${update.date}</div>
+                <div class="version">${update.version}</div>
+                <div class="content"><p>${lines.join('<br>')}</p></div>
+            `;
+            updateList.appendChild(updateElement);
+            
+            totalLines += lines.length;
+            updatesShown++;
+            
+            if (totalLines >= MAX_TOTAL_LINES) break;
+        }
+    }
+
+    // Load update history on page load
+    document.addEventListener('DOMContentLoaded', loadUpdates);
     </script>
-</head>
-<body>
-    redirecting...
-</body>
-</html> 

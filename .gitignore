@@ -32,6 +32,7 @@ ENV/
 *.swo
 
 # Jekyll
+_includes/
 _site/
 .sass-cache/
 .jekyll-cache/

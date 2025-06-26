@@ -1,0 +1,1021 @@
+---
+layout: default
+custom_css: [character]
+custom_js: [translation-loader]
+
+redirect_from: 
+  - /kr/character/
+  - /kr/character/index.html
+---
+
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>
+    
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current">괴도</span>
+    </div>
+    <div class="header-container">
+        <h1 id="page-title">괴도 육성</h1>
+    </div>
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-header">
+            <button class="filter-toggle-btn">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
+                <span></span>
+            </button>
+            <button class="filter-reset-btn" style="display: none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
+            </button>
+        </div>
+        
+        <div class="filter-content" style="display: none;">
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3>속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Position filter -->
+            <div class="filter-group">
+                <h3>직업</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="position" value="지배">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="반항">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="우월">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="굴복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="방위">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="구원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="해명">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Rarity filter -->
+            <div class="filter-group">
+                <h3>유형</h3>
+                <div class="filter-options tag-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                        </div>
+                    </label>
+                    <label><input type="checkbox" name="tag" value="한정"><img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
+                    <label><input type="checkbox" name="tag" value="통상"><img src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
+                    <label><input type="checkbox" name="tag" value="페르소나3"><span>P3</span></label>
+                    <label><input type="checkbox" name="tag" value="페르소나5"><span>P5</span></label>
+                </div>
+            </div>
+
+            <!-- Tag filter -->
+            <div class="filter-group">
+                <h3>태그</h3>
+                <div class="filter-options tag-options">
+                    <label><input type="checkbox" name="tag" value="TECHNICAL"><span>TECHNICAL</span></label>
+                    <label><input type="checkbox" name="tag" value="추가효과"><span>추가 효과</span></label>
+                    <label><input type="checkbox" name="tag" value="지속대미지"><span>지속 대미지</span></label>
+                    <label><input type="checkbox" name="tag" value="방어력감소"><span>방어력 감소</span></label>
+                    <label><input type="checkbox" name="tag" value="관통"><span>관통</span></label>
+                    <label><input type="checkbox" name="tag" value="효과명중"><span>효과 명중</span></label>
+                    <label><input type="checkbox" name="tag" value="실드"><span>실드</span></label>
+                    <label><input type="checkbox" name="tag" value="화상"><span>화상</span></label>
+                    <label><input type="checkbox" name="tag" value="풍습"><span>풍습</span></label>
+                    <label><input type="checkbox" name="tag" value="감전"><span>감전</span></label>
+                    <label><input type="checkbox" name="tag" value="동결"><span>동결</span></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Search section below filter section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                </svg>
+            </div>
+            <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <div class="search-count"></div>
+    </div>
+
+    <!-- Character card container -->
+    <div class="character-cards" id="characterCards">
+        <!-- Dynamically generated by JavaScript -->
+    </div>
+</div>
+
+<script>
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        // Jekyll 다국어 데이터 사용
+        const i18nData = {
+            kr: {
+                language_notice: "",
+                nav_home: "홈",
+                nav_current: "괴도",
+                page_title: "괴도 육성",
+                filtered_count: "전체",
+                search_placeholder: "캐릭터 검색..."
+            },
+            en: {
+                language_notice: "{{ site.data.i18n.en.language_notice | default: '🌍 English translation is in progress. Some content may still be in Korean.' }}",
+                nav_home: "{{ site.data.i18n.en.nav_home | default: 'Home' }}",
+                nav_current: "{{ site.data.i18n.en.character_breadcrumb | default: 'Characters' }}",
+                page_title: "{{ site.data.i18n.en.character_page_title | default: 'Characters' }}",
+                filtered_count: "{{ site.data.i18n.en.filtered_count | default: 'Total' }}",
+                search_placeholder: "{{ site.data.i18n.en.character_search_placeholder | default: 'Search characters...' }}"
+            },
+            jp: {
+                language_notice: "{{ site.data.i18n.jp.language_notice | default: '🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。' }}",
+                nav_home: "{{ site.data.i18n.jp.nav_home | default: 'ホーム' }}",
+                nav_current: "{{ site.data.i18n.jp.character_breadcrumb | default: 'キャラクター' }}",
+                page_title: "{{ site.data.i18n.jp.character_page_title | default: 'キャラクター' }}",
+                filtered_count: "{{ site.data.i18n.jp.filtered_count | default: '全体' }}",
+                search_placeholder: "{{ site.data.i18n.jp.character_search_placeholder | default: 'キャラクター検索...' }}"
+            }
+        };
+        
+        const data = i18nData[currentLang];
+        if (!data) return;
+        
+        // 언어 안내 메시지
+        if (currentLang !== 'kr') {
+            const notice = document.getElementById('language-notice');
+            const noticeText = document.getElementById('language-notice-text');
+            if (notice && noticeText && data.language_notice) {
+                noticeText.textContent = data.language_notice;
+                notice.style.display = 'block';
+            }
+        }
+        
+        // 네비게이션 및 제목 업데이트
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        const searchInput = document.getElementById('characterSearch');
+        
+        if (navHome) navHome.textContent = data.nav_home;
+        if (navCurrent) navCurrent.textContent = data.nav_current;
+        if (pageTitle) pageTitle.textContent = data.page_title;
+        if (searchInput) searchInput.placeholder = data.search_placeholder;
+        
+        // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
+        window.i18nFilteredCount = data.filtered_count;
+        
+        // 필터 제목 번역
+        updateFilterTitles(currentLang);
+    }
+    
+    // 필터 제목 번역 함수
+    function updateFilterTitles(currentLang) {
+        const filterTitles = {
+            kr: {
+                element: "속성",
+                position: "직업", 
+                type: "유형",
+                tag: "태그",
+                count_unit: "명"
+            },
+            en: {
+                element: "Element",
+                position: "Position",
+                type: "Type", 
+                tag: "Tag",
+                count_unit: " "
+            },
+            jp: {
+                element: "属性",
+                position: "職業",
+                type: "タイプ",
+                tag: "タグ",
+                count_unit: "体"
+            }
+        };
+        
+        const titles = filterTitles[currentLang];
+        if (!titles) return;
+        
+        // 필터 그룹 제목들 업데이트
+        const filterGroups = document.querySelectorAll('.filter-group h3');
+        if (filterGroups.length >= 4) {
+            filterGroups[0].textContent = titles.element; // 속성
+            filterGroups[1].textContent = titles.position; // 직업
+            filterGroups[2].textContent = titles.type; // 유형
+            filterGroups[3].textContent = titles.tag; // 태그
+        }
+        
+        // 개수 단위 전역 변수 설정
+        window.i18nCountUnit = titles.count_unit;
+    }
+
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const currentLang = getCurrentLanguage();
+        
+        const seoData = {
+            'kr': {
+                title: '괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X의 괴도별 육성 가이드. 추천 세팅, 스킬, 의식, 전용무기 정보를 확인하세요.'
+            },
+            'en': {
+                title: 'Character Guide - Persona 5: The Phantom X LufelNet',
+                description: 'Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info.'
+            },
+            'jp': {
+                title: '怪盗育成ガイド - ペルソナ5 ザ・ファントム X LufelNet',
+                description: 'ペルソナ5 ザ・ファントム Xの怪盗別育成ガイド。おすすめ設定、スキル、意識、専用武器情報をご確認ください。'
+            }
+        };
+        
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+        
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+        
+        // 메타 태그 업데이트
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        
+        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+    }
+
+    // Initialize navigation on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+        Navigation.load('character'); // nav active
+        VersionChecker.check();
+        
+        // SEO 설정 업데이트
+        updateSEOContent();
+        
+        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        if (typeof LanguageRouter !== 'undefined') {
+            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
+            const hasLangParam = window.location.search.includes('lang=');
+            if (hasLangParam) {
+                // 언어 파라미터가 있으면 바로 콘텐츠 로드
+                updateLanguageContent().then(async () => {
+                    await initializePageContent();
+                });
+            } else {
+                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+                
+                updateLanguageContent().then(async () => {
+                    await initializePageContent();
+                });
+            }
+        } else {
+            updateLanguageContent();
+            await initializePageContent();
+        }
+    });
+
+    // 스크립트에서 데이터 추출하는 함수
+    function extractDataFromScript(scriptText) {
+        // characterData와 characterList를 추출하는 정규식
+        const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
+        const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
+        
+        if (!characterDataMatch || !characterListMatch) {
+            throw new Error('Failed to extract data from script');
+        }
+        
+        // JSON으로 파싱하기 위해 Function 생성자 사용
+        const characterData = new Function('return ' + characterDataMatch[1])();
+        const characterList = new Function('return ' + characterListMatch[1])();
+        
+        return { characterData, characterList };
+    }
+
+    // 언어별 캐릭터 데이터 로딩 및 병합
+    async function loadCharacterData() {
+        const currentLang = getCurrentLanguage();
+        
+        try {
+            // 1. 한국어 데이터 로딩 (기본 데이터)
+            const krResponse = await fetch(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+            if (!krResponse.ok) {
+                throw new Error('Failed to load KR character data');
+            }
+            
+            const krScriptText = await krResponse.text();
+            const { characterData: krCharacterData, characterList: krCharacterList } = extractDataFromScript(krScriptText);
+            
+            console.log('KR character count:', Object.keys(krCharacterData).length);
+            console.log('KR character list:', krCharacterList);
+            
+            // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
+            if (currentLang !== 'kr') {
+                const langResponse = await fetch(`/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`);
+                if (langResponse.ok) {
+                    const langScriptText = await langResponse.text();
+                    const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
+                    
+                    console.log(`${currentLang.toUpperCase()} character count:`, Object.keys(langCharacterData).length);
+                    console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
+                    
+                    // 3. 데이터 병합 (하이브리드 방식) - 언어별 캐릭터만 포함
+                    const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
+                    
+                    // 중요: 전역 변수를 완전히 교체
+                    window.characterData = mergedData; // 병합된 데이터만 사용
+                    window.characterList = langCharacterList; // 언어별 캐릭터 목록 사용
+                    
+                    console.log('Final characterData count:', Object.keys(window.characterData).length);
+                    console.log('Final characterData keys:', Object.keys(window.characterData));
+                    console.log('Final character list:', window.characterList);
+                    
+                } else {
+                    console.log('Language data not found, using KR data');
+                    // 언어별 데이터가 없으면 한국어 데이터 사용
+                    window.characterData = krCharacterData;
+                    window.characterList = krCharacterList;
+                }
+            } else {
+                console.log('Using KR data directly');
+                // 한국어인 경우 그대로 사용
+                window.characterData = krCharacterData;
+                window.characterList = krCharacterList;
+            }
+            
+            return true;
+            
+        } catch (error) {
+            console.error('Failed to load character data:', error);
+            return false;
+        }
+    }
+    
+    // 캐릭터 데이터 병합 함수 (하이브리드 방식)
+    function mergeCharacterData(krData, langData) {
+        const mergedData = {};
+        
+        console.log('Merging character data...');
+        console.log('KR data keys:', Object.keys(krData).length, 'characters');
+        console.log('Lang data keys:', Object.keys(langData).length, 'characters');
+        
+        // 언어별 데이터에 있는 캐릭터만 포함 (langData 기준으로 필터링)
+        for (const characterKey in langData) {
+            if (krData[characterKey]) {
+                console.log(`Merging character: ${characterKey}`);
+                // 한국어 데이터를 기본으로 복사
+                mergedData[characterKey] = { ...krData[characterKey] };
+                
+                // 언어별 데이터에서 특정 필드만 덮어쓰기
+                const langChar = langData[characterKey];
+                if (langChar.role !== undefined) mergedData[characterKey].role = langChar.role;
+                if (langChar.tag !== undefined) mergedData[characterKey].tag = langChar.tag;
+                if (langChar.persona !== undefined) mergedData[characterKey].persona = langChar.persona;
+                if (langChar.release_order !== undefined) mergedData[characterKey].release_order = langChar.release_order;
+            } else {
+                console.warn(`Character ${characterKey} not found in KR data`);
+            }
+        }
+        
+        console.log('Merged data keys:', Object.keys(mergedData).length, 'characters');
+        console.log('Final merged characters:', Object.keys(mergedData));
+        return mergedData;
+    }
+    
+    // P3 필터 표시 여부 확인
+    function shouldShowP3Filter() {
+        if (!characterData) return false;
+        
+        // 로딩된 캐릭터 중에 persona3=true인 캐릭터가 있는지 확인
+        return Object.values(characterData).some(char => char.persona3 === true);
+    }
+    
+    // P3 필터 표시/숨김 처리
+    function toggleP3Filter() {
+        const p3Filter = document.querySelector('label input[value="페르소나3"]');
+        if (p3Filter) {
+            const p3Label = p3Filter.closest('label');
+            if (shouldShowP3Filter()) {
+                p3Label.style.display = 'inline-block';
+            } else {
+                p3Label.style.display = 'none';
+            }
+        }
+    }
+
+    async function initializePageContent() {
+        // 캐릭터 데이터 로딩
+        const dataLoaded = await loadCharacterData();
+        if (!dataLoaded || typeof characterData === 'undefined') {
+            console.error('characterData is not loaded');
+            return;
+        }
+        
+        // P3 필터 표시 여부 처리
+        toggleP3Filter();
+
+        const cardsContainer = document.getElementById('characterCards');
+        const searchCount = document.querySelector('.search-count');
+        
+        // 기존 카드들 제거 (중복 방지)
+        cardsContainer.innerHTML = '';
+        
+        // Combine mainParty and supportParty from characterList (언어별 제한된 목록)
+        let allCharacters = [
+            ...characterList.mainParty,
+            ...characterList.supportParty
+        ];
+
+        // Exclude 'Wonder' from characters
+        allCharacters = allCharacters.filter(character => character !== "원더");
+        
+        console.log('Character list for current language:', allCharacters);
+        console.log('Available characters in characterData:', Object.keys(characterData));
+        
+        // characterList에 있는 캐릭터만 사용하고, characterData에도 존재하는지 확인
+        const availableCharacters = allCharacters.filter(characterName => {
+            const exists = characterData[characterName] !== undefined;
+            if (!exists) {
+                console.warn(`Character ${characterName} not found in characterData`);
+            }
+            return exists;
+        });
+        
+        console.log('Final available characters:', availableCharacters);
+        
+        // Sort by release_order (descending), then by rarity
+        const sortedCharacters = availableCharacters.sort((a, b) => {
+            const releaseOrderDiff = characterData[b].release_order - characterData[a].release_order;
+            if (releaseOrderDiff !== 0) return releaseOrderDiff;
+            return characterData[b].rarity - characterData[a].rarity;
+        });
+        
+        // 초기 검색 결과 수 표시
+        const countText = window.i18nFilteredCount || '전체';
+        const countUnit = window.i18nCountUnit || '명';
+        searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
+        
+        console.log('=== CARD CREATION DEBUG ===');
+        console.log('characterData keys at card creation:', Object.keys(characterData).length);
+        console.log('sortedCharacters length:', sortedCharacters.length);
+        console.log('sortedCharacters:', sortedCharacters);
+        console.log('characterData sample:', Object.keys(characterData).slice(0, 10));
+        
+        // Create card for each character
+        sortedCharacters.forEach(characterName => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.element = characterData[characterName].element;
+            card.dataset.position = characterData[characterName].position;
+            card.dataset.rarity = characterData[characterName].rarity;
+            card.dataset.persona5 = characterData[characterName].persona5 ? 'true' : 'false';
+            card.dataset.persona3 = characterData[characterName].persona3 ? 'true' : 'false';
+            card.dataset.limit = characterData[characterName].limit ? 'true' : 'false';
+            card.dataset.tags = characterData[characterName].tag;
+            
+            // Create link wrapper - 언어 파라미터 추가
+            const currentLang = getCurrentLanguage();
+            const link = document.createElement('a');
+                            link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+            
+            // Position icon container
+            const positionContainer = document.createElement('div');
+            positionContainer.className = 'position-container';
+            
+            // Position icon
+            const positionIcon = document.createElement('img');
+            positionIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${characterData[characterName].position}.png`;
+            positionIcon.alt = characterData[characterName].position;
+            positionIcon.className = 'position-icon';
+            
+            // Character image
+            const img = document.createElement('img');
+            img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
+            img.alt = characterName;
+            img.className = 'character-img';
+            
+            // 실제 이미지 로드
+            const realImage = new Image();
+            realImage.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
+            realImage.alt = characterName;
+            realImage.className = 'character-img';
+            realImage.onload = () => {
+                img.src = realImage.src;
+                img.classList.add('loaded');
+            };
+            
+            // Element icon
+            const elementIcon = document.createElement('img');
+            elementIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${characterData[characterName].element}.png`;
+            elementIcon.alt = characterData[characterName].element;
+            elementIcon.className = 'element-icon';
+            
+            // Add name
+            const nameText = document.createElement('span');
+            nameText.textContent = characterData[characterName].name;
+            nameText.className = 'name-text';
+            nameText.dataset.persona3 = characterData[characterName].persona3;
+            nameText.dataset.persona4 = characterData[characterName].persona4;
+            nameText.dataset.persona5 = characterData[characterName].persona5;
+            
+            positionContainer.appendChild(positionIcon);
+            link.appendChild(positionContainer);
+            link.appendChild(img);
+            link.appendChild(elementIcon);
+            link.appendChild(nameText);
+            card.appendChild(link);
+            cardsContainer.appendChild(card);
+        });
+
+        // 필터 및 검색 기능 초기화
+        initializeFiltersAndSearch(sortedCharacters);
+        
+        // 번역 적용 (데이터 로딩 후)
+        await applyTranslations();
+    } // initializePageContent 함수 종료
+    
+    // 필터 및 검색 기능 초기화
+    function initializeFiltersAndSearch(sortedCharacters) {
+        const currentLang = getCurrentLanguage();
+        
+        // 영어/일본어일 때 태그 필터 숨기기
+        if (currentLang === 'en' || currentLang === 'jp') {
+            const tagFilterGroup = document.querySelector('.filter-group:last-child');
+            if (tagFilterGroup) {
+                tagFilterGroup.style.display = 'none';
+            }
+        }
+
+        // 필터 변경 이벤트 리스너
+        const filterInputs = document.querySelectorAll('input[type="checkbox"]');
+        filterInputs.forEach(input => {
+            input.addEventListener('change', applyFilters);
+        });
+
+        const searchCount = document.querySelector('.search-count');
+        const filterToggleBtn = document.querySelector('.filter-toggle-btn');
+        const filterContent = document.querySelector('.filter-content');
+        const filterResetBtn = document.querySelector('.filter-reset-btn');
+        const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+        
+        if (filterContent) {
+            filterContent.style.display = 'block';
+        }
+
+        // Filter toggle
+        if (filterToggleBtn) {
+            filterToggleBtn.addEventListener('click', () => {
+                filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
+            });
+            filterToggleBtn.style.display = 'none';
+        }
+        
+        // Reset button
+        if (filterResetBtn) {
+            filterResetBtn.addEventListener('click', () => {
+                checkboxes.forEach(cb => cb.checked = false);
+                filterResetBtn.style.display = 'none';
+                applyFilters();
+            });
+            filterResetBtn.style.display = 'none';
+        }
+
+        // Filter application function
+        function applyFilters() {
+            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
+            const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
+            const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
+            const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map(cb => cb.value);
+            
+            let visibleCount = 0;
+            
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const element = card.dataset.element;
+                const position = card.dataset.position;
+                const rarity = parseInt(card.dataset.rarity);
+                const isPersona5 = card.dataset.persona5 === 'true';
+                const isPersona3 = card.dataset.persona3 === 'true';
+                const isLimited = card.dataset.limit === 'true';
+                const characterTags = card.dataset.tags || '';
+                
+                const elementMatch = selectedElements.length === 0 || 
+                    selectedElements.includes(element) || 
+                    (element === "질풍빙결" && (selectedElements.includes("질풍") || selectedElements.includes("빙결")));
+                    
+                const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
+                const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
+                
+                const tagMatch = selectedTags.every(tag => {
+                    switch(tag) {
+                        case '페르소나5':
+                            return isPersona5;
+                        case '페르소나3':
+                            return isPersona3;
+                        case '한정':
+                            return isLimited;
+                        case '통상':
+                            return !isLimited;
+                        case 'TECHNICAL':
+                            return characterTags.includes('TECHNICAL') || characterTags.includes('스킬마스터');
+                        case '추가효과':
+                            return characterTags.includes('추가 효과') || characterTags.includes('추가효과');
+                        case '지속대미지':
+                            return characterTags.includes('지속 대미지') || characterTags.includes('화상') || characterTags.includes('주원');
+                        case '화상':
+                            return characterTags.includes('화상') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
+                        case '풍습':
+                            return characterTags.includes('풍습') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
+                        case '감전':
+                            return characterTags.includes('감전') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
+                        case '동결':
+                            return characterTags.includes('동결') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
+                        case '실드':
+                            return characterTags.includes('실드');
+                        case '효과명중':
+                            return characterTags.includes('효과 명중');
+                        case '방어력감소':
+                            return characterTags.includes('방어력 감소');
+                        case '관통':
+                            return characterTags.includes('관통');
+                        default:
+                            return false;
+                    }
+                });
+                
+                const shouldShow = elementMatch && positionMatch && rarityMatch && (selectedTags.length === 0 || tagMatch);
+                card.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) visibleCount++;
+            });
+            
+            // Update search count
+            if (searchCount) {
+                const countText = window.i18nFilteredCount || '전체';
+                const countUnit = window.i18nCountUnit || '명';
+                searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+            }
+        }
+
+        // 검색 기능 구현
+        const searchInput = document.getElementById('characterSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const cards = document.querySelectorAll('.card');
+        const characterNames = sortedCharacters;
+
+        // 별칭 매핑
+        const nicknameMap = {
+            '유이' : 'YUI',
+            '라면' : '카노 슌',
+            '욧샤' : '사카모토 류지',
+            '수모코' : '노게 토모코·여름',
+            '수토하' : '아라이 모토하·여름',
+            '왕왕루': '도겐자카 루우나',
+            '얼탱': '아시야 마사키',
+            '조커': '아마미야 렌',
+            '의사' : '키타자토 키라',
+            '그새끼': '아케치 고로',
+            '화오링' : '리 야오링·사자무',
+            '불오링' : '리 야오링·사자무',
+            '5리코' : '타네무라 리코·매화',
+            '풍리코' : '타네무라 리코·매화',
+            '풍타뉴' : '코토네 몽타뉴·백조',
+            '백타뉴' : '코토네 몽타뉴·백조',
+            '3주' : '유키 마코토'
+        };
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const searchValue = e.target.value.toLowerCase();
+                if (dropdown) {
+                    dropdown.innerHTML = '';
+                    
+                    if (searchValue.length > 0) {
+                        const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                            nickname.toLowerCase().includes(searchValue)
+                        );
+
+                        const matches = characterNames.filter(name => {
+                            const characterName = characterData[name].name;
+                            return name.toLowerCase().includes(searchValue) ||
+                                   characterName.toLowerCase().includes(searchValue) ||
+                                   (nicknameMatch && characterName === nicknameMatch[1]);
+                        });
+
+                        if (matches.length > 0) {
+                            dropdown.style.display = 'block';
+                            matches.forEach(name => {
+                                const div = document.createElement('div');
+                                div.className = 'dropdown-item';
+                                div.textContent = characterData[name].name;
+                                div.addEventListener('click', () => {
+                                    searchInput.value = characterData[name].name;
+                                    dropdown.style.display = 'none';
+                                    filterBySearch(name.toLowerCase());
+                                });
+                                dropdown.appendChild(div);
+                            });
+                        } else {
+                            dropdown.style.display = 'none';
+                        }
+                    } else {
+                        dropdown.style.display = 'none';
+                        filterBySearch('');
+                    }
+                }
+
+                filterBySearch(searchValue);
+            });
+        }
+
+        // Search filtering function
+        function filterBySearch(searchValue) {
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const nameText = card.querySelector('.name-text');
+                if (!nameText) return;
+                
+                const displayName = nameText.textContent;
+                const displayNameLower = displayName.toLowerCase();
+                
+                const characterKey = Object.keys(characterData).find(key => 
+                    characterData[key].name === displayName
+                );
+
+                const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                    nickname.toLowerCase().includes(searchValue) && realName === displayName
+                );
+                
+                const shouldShow = searchValue === '' || 
+                    characterKey?.toLowerCase().includes(searchValue) || 
+                    displayNameLower.includes(searchValue) ||
+                    nicknameMatch !== undefined;
+                
+                card.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) visibleCount++;
+            });
+            
+            if (searchCount) {
+                const countText = window.i18nFilteredCount || '전체';
+                searchCount.textContent = `${countText} ${visibleCount}명`;
+            }
+        }
+    } // initializePageContent 함수 종료
+    
+    // 번역 시스템 적용
+    async function applyTranslations() {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr') return;
+        
+        try {
+            // 번역 데이터 로드
+            const translations = await TranslationLoader.loadTranslations('characters', currentLang);
+            if (!translations) {
+                console.warn('No translations found for', currentLang);
+                return;
+            }
+            
+            console.log('Applying translations for', currentLang, translations);
+            
+            // 카드 업데이트
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const nameElement = card.querySelector('.name-text');
+                if (!nameElement) return;
+                
+                const originalName = nameElement.textContent;
+                const characterKey = Object.keys(characterData).find(key => 
+                    characterData[key].name === originalName
+                );
+                
+                if (characterKey && characterData[characterKey]) {
+                    const char = characterData[characterKey];
+                    
+                    // 이름 번역 (name_en 또는 name_jp 사용)
+                    const translatedName = currentLang === 'en' ? char.name_en : char.name_jp;
+                    if (translatedName) {
+                        nameElement.textContent = translatedName;
+                    }
+                    
+                    // 속성 아이콘 alt 텍스트 번역
+                    const elementImg = card.querySelector('.element-icon');
+                    if (elementImg && translations.elements && translations.elements[char.element]) {
+                        elementImg.alt = translations.elements[char.element];
+                        elementImg.title = translations.elements[char.element];
+                    }
+                }
+            });
+            
+            // 필터 레이블 번역
+            updateFilterLabels(translations, currentLang);
+            
+            // 검색 플레이스홀더 번역
+            updateSearchPlaceholder(currentLang);
+            
+            // UI 텍스트 번역
+            updateUITexts(currentLang);
+            
+        } catch (error) {
+            console.warn('Translation application failed:', error);
+        }
+    }
+    
+    // 필터 레이블 번역
+    function updateFilterLabels(translations, lang) {
+        if (!translations) return;
+        
+        // 속성 필터 번역
+        if (translations.elements) {
+            const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label span');
+            elementLabels.forEach((span, index) => {
+                const elementKey = span.textContent;
+                if (translations.elements[elementKey]) {
+                    span.textContent = translations.elements[elementKey];
+                }
+            });
+        }
+        
+        // 직업 필터 번역 
+        if (translations.positions) {
+            const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
+            positionLabels.forEach(label => {
+                const img = label.querySelector('img');
+                if (img) {
+                    const positionKey = img.alt;
+                    if (translations.positions[positionKey]) {
+                        img.alt = translations.positions[positionKey];
+                        img.title = translations.positions[positionKey];
+                    }
+                }
+            });
+        }
+        
+        // 태그 필터 번역
+        if (translations.tags) {
+            const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
+            tagLabels.forEach(span => {
+                const tagKey = span.textContent;
+                if (translations.tags[tagKey]) {
+                    span.textContent = translations.tags[tagKey];
+                }
+            });
+        }
+    }
+    
+    // 검색 플레이스홀더 번역
+    function updateSearchPlaceholder(lang) {
+        const searchInput = document.getElementById('characterSearch');
+        if (!searchInput) return;
+        
+        const placeholders = {
+            'en': 'Search characters...',
+            'jp': 'キャラクター検索...'
+        };
+        
+        if (placeholders[lang]) {
+            searchInput.placeholder = placeholders[lang];
+        }
+    }
+    
+    // UI 텍스트 번역
+    function updateUITexts(lang) {
+        if (lang === 'kr') return;
+        
+        // 기존 i18n 시스템 활용
+        if (window.i18nData && window.i18nData[lang]) {
+            const i18n = window.i18nData[lang];
+            
+            // 페이지 제목
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle && i18n.character_title) {
+                pageTitle.textContent = i18n.character_title;
+            }
+            
+            // 브레드크럼
+            const navHome = document.getElementById('nav-home');
+            const navCurrent = document.getElementById('nav-current');
+            if (navHome && i18n.nav_home) navHome.textContent = i18n.nav_home;
+            if (navCurrent && i18n.nav_character) navCurrent.textContent = i18n.nav_character;
+            
+            // 필터 그룹 제목들
+            const filterGroups = document.querySelectorAll('.filter-group h3');
+            const filterTitles = [i18n.filter_element, i18n.filter_position, i18n.filter_type, i18n.filter_tag];
+            filterGroups.forEach((title, index) => {
+                if (filterTitles[index]) {
+                    title.textContent = filterTitles[index];
+                }
+            });
+        }
+    }
+    
+    // 페이지 로드 시 초기화 (번역은 initializePageContent 내에서 처리)
+    document.addEventListener('DOMContentLoaded', async () => {
+        await initializePageContent();
+    });
+    
+</script> 

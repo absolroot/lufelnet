@@ -276,7 +276,7 @@ h2{
     margin: 10px 0px 20px 0px;
     font-weight: 600;
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 200px 1fr;
     gap: 8px;
 }
 
@@ -392,6 +392,7 @@ h2{
     padding : 0;
     margin : 0;
     margin-top: -4px;
+    white-space: normal;
 }
 
 .battle-stat-section {
@@ -971,7 +972,10 @@ h2{
     .stats-requirements,
     .skill-mind-settings, 
     .operation-settings {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
     }
 
     .revelation-settings {

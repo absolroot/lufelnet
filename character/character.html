@@ -1,0 +1,1434 @@
+---
+layout: default
+custom_css: [cha_detail]
+custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min]
+custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, tooltip.js]
+permalink: /character.html
+language: kr
+title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
+---
+
+<div class="main-wrapper">
+
+    <!-- 상단 섹션: 이미지와 기본 정보 -->
+    <div class="character-header">
+        
+        <!-- 좌측: 캐릭터 정보 -->
+        <div class="character-info">
+            <!-- 네비게이션 경로 -->
+            <div class="navigation-path">
+                <script>
+                    // 현재 언어 확인
+                    function getCurrentLanguage() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const langParam = urlParams.get('lang');
+                        if (langParam) return langParam;
+                        
+                        const path = window.location.pathname;
+                        if (path.includes('/kr/')) return 'kr';
+                        if (path.includes('/en/')) return 'en';
+                        if (path.includes('/jp/')) return 'jp';
+                        return 'kr';
+                    }
+                    
+                    const currentLang = getCurrentLanguage();
+                    let homeText = '홈';
+                    let characterText = '괴도';
+                    
+                    if (currentLang === 'en') {
+                        homeText = 'Home';
+                        characterText = 'Characters';
+                    } else if (currentLang === 'jp') {
+                        homeText = 'ホーム';
+                        characterText = 'キャラクター';
+                    }
+                    
+                    document.write(`<a href="../?v=${APP_VERSION}">${homeText}</a>`);
+                </script>
+                <span class="separator">/</span>
+                <script>document.write(`<a href="./?v=${APP_VERSION}">${characterText}</a>`);</script>
+                <span class="separator">/</span>
+                <span class="current-page"></span>
+            </div>
+            <div class="name-section">
+                <div class="name-row">
+                    <h1 class="character-name">캐릭터 이름</h1>
+                    <div class="icon-group">
+                        <div class="element-icons"></div>
+                        <div class="position-icon"></div>
+                    </div>
+                </div>
+                <div class="name-row2">
+                    <div class="rarity-section"></div>
+                    <div class="chracter-role"></div>
+                </div>
+                <div class="sub-info">
+                    <p class="code-name">코드네임: </p>
+                    <p class="sees" style="font-weight: bold; display: none;">S.E.E.S</p>
+                    <p class="persona-name">페르소나: </p>
+                </div>
+            </div>
+            <div class="basic-info">
+
+                <div class="info-row">
+                    <div class="elements-container">
+                        <img src="{{ site.baseurl }}/assets/img/character-detail/elements.png" alt="elements" class="elements-sprite">
+                        <div class="resistance-overlay">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-resi.png" alt="resistance" class="resistance-icon">
+                        </div>
+                        <div class="weakness-overlay">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-weak.png" alt="weakness" class="weakness-icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="character-description">
+                    <div class="chracter-tag"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 우측: 캐릭터 이미지 -->
+        <div class="character-images">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="" alt="괴도 이미지" class="thief-image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="" alt="페르소나 이미지" class="persona-image">
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 세팅 섹션 -->
+    <div class="settings-card card-style">
+        <h2>추천 세팅</h2>
+        <div class="settings-content">
+
+            
+            <!-- 계시 섹션 -->
+            <div class="setting-group revelation-settings">
+                <div class="setting-section">
+                    <h3>계시</h3>
+                    <div class="revelation-set">
+                        <div class="main-revelation">
+                            <span class="label">주
+                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="sub-revelation">
+                            <span class="label">일월성진</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>주 옵션</h3>
+                    <div class="main-options">
+                        <div class="option-row">
+                            <span class="label">
+                                일 <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" class="option-icon">
+                            </span>
+                            <span class="value">생명</span>
+                        </div>
+                        <div class="option-row">
+                            <span class="label">
+                                월 <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="label">
+                                성 <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="label">
+                                진 <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>부 옵션</h3>
+                    <div class="sub-options">
+                        <div class="option-row">
+                            <span class="priority">1순위</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="priority">2순위</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="priority">3순위</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 스탯 요구사항 섹션 -->
+            <div class="setting-group stats-requirements">
+                <div class="setting-section">
+                    <h3>권장 육성 스탯</h3>
+                    <div class="stat-levels">
+                        <div class="stat-level">
+                            <span class="label">LV10</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV12</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV12+5</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV13</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV13+5</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>전투 진입 시 +</h3>
+                    <p class="battle-plus-stats"></p>
+                </div>
+            </div>
+
+
+            <!-- 스킬&심상 섹션 -->
+            <div class="setting-group skill-mind-settings">
+                <div class="setting-section">
+                    <h3>스킬</h3>
+                    <div class="skill-levels">
+                        <div class="skill-level">
+                            <span class="label">스킬 1</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="skill-level">
+                            <span class="label">스킬 2</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="skill-level">
+                            <span class="label">스킬 3</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="skill-level">
+                            <span class="label" data-text="highlight">하이라이트</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>심상 (LV 5)</h3>
+                    <div class="mind-settings">
+                        <div class="mind-stats">
+                            <div class="stat-row">
+                                <span class="label">진급강화 1</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="label">진급강화 2</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                        </div>
+                        <div class="mind-skills">
+                            <div class="skill-row">
+                                <span class="label">스킬깨달음 1</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="label">스킬깨달음 2</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 운영 섹션 -->
+            <div class="setting-group operation-settings">
+                <div class="setting-section">
+                    <h3>추천 운영</h3>
+                    <div class="operation-levels">
+                        <!-- 운영 내용이 여기에 동적으로 추가됨 -->
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>참고사항</h3>
+                    <div class="operation-notes">
+                        <!-- 참고 사항 내용이 여기에 동적으로 추가됨 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스킬 섹션 -->
+    <div class="skills-card card-style">
+        <h2>스킬</h2>
+        <div class="skills-grid">
+        </div>
+    </div>
+
+    <!-- 의식 섹션 -->
+    <div class="ritual-card card-style">
+        <div class="ritual-header">
+            <h2>의식</h2>
+        </div>
+        <div class="ritual-grid">
+            <div class="ritual-item" data-ritual="0">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual0.png" alt="의식 0" class="ritual-image active">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="1">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual1.png" alt="의식 1" class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="2">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual2.png" alt="의식 2" class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="3">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual3.png" alt="의식 3" class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="4">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual4.png" alt="의식 4" class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="5">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual5.png" alt="의식 5" class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="6">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual6.png" alt="의식 6" class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 무기 섹션 -->
+    <div class="weapons-card card-style">
+        <h2>전용 무기</h2>
+        <div class="weapon-enhancement-buttons">
+            <button class="enhancement-btn active" data-stage="mixed">5성 개조0 / 4성 개조6</button>
+            <button class="enhancement-btn" data-stage="all">전체</button>
+            <div class="enhancement-stages">
+                <button class="enhancement-btn" data-stage="0">0</button>
+                <button class="enhancement-btn" data-stage="1">1</button>
+                <button class="enhancement-btn" data-stage="2">2</button>
+                <button class="enhancement-btn" data-stage="3">3</button>
+                <button class="enhancement-btn" data-stage="4">4</button>
+                <button class="enhancement-btn" data-stage="5">5</button>
+                <button class="enhancement-btn" data-stage="6">6</button>
+            </div>
+        </div>
+        <div class="weapons-container">
+            <!-- 무기들이 여기에 동적으로 추가됨 -->
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        Navigation.load('character', 1);
+        VersionChecker.check();
+
+        // Get character name from URL
+            const urlParams = new URLSearchParams(window.location.search);
+    const characterName = urlParams.get('name');
+    const currentLang = getCurrentLanguage();
+    
+    // 언어별 데이터 파일 동적 로드
+    async function loadLanguageData() {
+        if (currentLang !== 'kr') {
+            const langPath = currentLang === 'en' ? 'en' : 'jp';
+            const basePath = '{{ site.baseurl }}/data/' + langPath + '/characters/';
+            
+            try {
+                // 스킬 데이터 로드
+                const skillScript = document.createElement('script');
+                skillScript.src = basePath + 'character_skills.js?v=' + APP_VERSION;
+                document.head.appendChild(skillScript);
+                
+                // 의식 데이터 로드
+                const ritualScript = document.createElement('script');
+                ritualScript.src = basePath + 'character_ritual.js?v=' + APP_VERSION;
+                document.head.appendChild(ritualScript);
+                
+                // 무기 데이터 로드
+                const weaponScript = document.createElement('script');
+                weaponScript.src = basePath + 'character_weapon.js?v=' + APP_VERSION;
+                document.head.appendChild(weaponScript);
+                
+                // 스크립트 로드 완료 대기
+                await new Promise(resolve => {
+                    let loadedCount = 0;
+                    [skillScript, ritualScript, weaponScript].forEach(script => {
+                        script.onload = () => {
+                            loadedCount++;
+                            if (loadedCount === 3) {
+                                // 로드된 데이터를 window 객체에 할당
+                                if (currentLang === 'en') {
+                                    // 영어 데이터 할당
+                                    if (typeof enCharacterSkillsData !== 'undefined') {
+                                        window.enCharacterSkillsData = enCharacterSkillsData;
+                                    }
+                                    if (typeof enCharacterRitualData !== 'undefined') {
+                                        window.enCharacterRitualData = enCharacterRitualData;
+                                    }
+                                    if (typeof enCharacterWeaponData !== 'undefined') {
+                                        window.enCharacterWeaponData = enCharacterWeaponData;
+                                    }
+                                } else if (currentLang === 'jp') {
+                                    // 일본어 데이터 할당
+                                    if (typeof jpCharacterSkillsData !== 'undefined') {
+                                        window.jpCharacterSkillsData = jpCharacterSkillsData;
+                                    }
+                                    if (typeof jpCharacterRitualData !== 'undefined') {
+                                        window.jpCharacterRitualData = jpCharacterRitualData;
+                                    }
+                                    if (typeof jpCharacterWeaponData !== 'undefined') {
+                                        window.jpCharacterWeaponData = jpCharacterWeaponData;
+                                    }
+                                }
+                                resolve();
+                            }
+                        };
+                    });
+                });
+                
+                console.log('언어별 데이터 파일 로드 완료:', langPath);
+                
+                // 언어별 데이터 로드 완료 후 스킬 정보 로드
+                setTimeout(() => {
+                    console.log('영어/일본어 - fillSkillsInfo 호출 준비');
+                    if (typeof fillSkillsInfo === 'function') {
+                        console.log('fillSkillsInfo 함수 존재 - 호출');
+                        fillSkillsInfo(characterName);
+                    } else {
+                        console.log('fillSkillsInfo 함수가 정의되지 않음');
+                    }
+                }, 100);
+            } catch (e) {
+                console.log('언어별 데이터 파일 로드 실패:', e);
+            }
+        }
+    }
+        
+        if (!characterName || !characterData[characterName]) {
+            console.error('Character not found');
+            return;
+        }
+        
+        // 언어별 데이터 로드 후 캐릭터 정보 설정
+        await loadLanguageData();
+        
+        // 한국어인 경우 바로 스킬 정보 로드
+        if (currentLang === 'kr') {
+            console.log('한국어 - fillSkillsInfo 호출 준비');
+            if (typeof fillSkillsInfo === 'function') {
+                console.log('fillSkillsInfo 함수 존재 - 호출');
+                fillSkillsInfo(characterName);
+            } else {
+                console.log('fillSkillsInfo 함수가 정의되지 않음');
+            }
+        }
+
+        const character = characterData[characterName];
+        const ritual = ritualData[characterName];
+        
+        // 언어별 데이터 로드 (영어/일본어가 있는 경우 우선 사용)
+        let localizedSkills = null;
+        let localizedRitual = null;
+        let localizedWeapon = null;
+        
+        if (currentLang !== 'kr') {
+            // 언어별 데이터 파일 동적 로드
+            try {
+                if (currentLang === 'en') {
+                    // 영어 데이터는 window 객체에서 직접 접근
+                    if (window.enCharacterSkillsData && window.enCharacterSkillsData[characterName]) {
+                        localizedSkills = window.enCharacterSkillsData[characterName];
+                    }
+                    if (window.enCharacterRitualData && window.enCharacterRitualData[characterName]) {
+                        localizedRitual = window.enCharacterRitualData[characterName];
+                    }
+                    if (window.enCharacterWeaponData && window.enCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.enCharacterWeaponData[characterName];
+                    }
+                } else if (currentLang === 'jp') {
+                    // 일본어 데이터는 window 객체에서 직접 접근
+                    if (window.jpCharacterSkillsData && window.jpCharacterSkillsData[characterName]) {
+                        localizedSkills = window.jpCharacterSkillsData[characterName];
+                    }
+                    if (window.jpCharacterRitualData && window.jpCharacterRitualData[characterName]) {
+                        localizedRitual = window.jpCharacterRitualData[characterName];
+                    }
+                    if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.jpCharacterWeaponData[characterName];
+                    }
+                }
+                
+                console.log('언어별 데이터 로드 결과:', {
+                    lang: currentLang,
+                    skills: !!localizedSkills,
+                    ritual: !!localizedRitual,
+                    weapon: !!localizedWeapon
+                });
+            } catch (e) {
+                console.log('언어별 데이터 로드 실패:', e);
+            }
+        }
+
+        // 이미지 설정
+        document.querySelector('.thief-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
+        document.querySelector('.persona-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
+        
+        // Set character name
+        const nameElement = document.querySelector('.character-name');
+        if (nameElement) {
+            if (currentLang === 'en' && character.name_en) {
+                nameElement.textContent = character.name_en;
+            } else if (currentLang === 'jp' && character.name_jp) {
+                nameElement.textContent = character.name_jp;
+            } else {
+                nameElement.textContent = characterName;
+            }
+        }
+        
+        // 코드네임 설정
+        const codeNameLabel = currentLang === 'kr' ? '코드네임 ' :
+                             currentLang === 'en' ? 'Code Name ' : 'コードネーム ';
+        document.querySelector('.code-name').innerHTML = `
+            <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
+        `;
+        
+        // 페르소나 설정
+        const personaLabel = currentLang === 'kr' ? '페르소나 ' :
+                            currentLang === 'en' ? 'Persona ' : 'ペルソナ ';
+        const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
+                            currentLang === 'jp' && character.persona_jp ? character.persona_jp :
+                            character.persona || '';
+        document.querySelector('.persona-name').innerHTML = `
+            <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
+        `;
+        
+        // 속성 아이콘 설정
+        if (character.element) {
+            const elementIcons = document.querySelector('.element-icons');
+            elementIcons.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
+        }
+        
+        // 직업 아이콘 및 이름 설정
+        if (character.position) {
+            const positionIcon = document.querySelector('.position-icon');
+            const positionName = document.querySelector('.position-name');
+            positionIcon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
+            //positionName.textContent = character.position;
+        }
+        
+        // 약점/내성 설정 (데이터가 있을 경우에만)
+        const resistanceIcons = document.querySelector('.resistance-icons');
+        if (character.resistances && Array.isArray(character.resistances)) {
+            character.resistances.forEach(res => {
+                const icon = document.createElement('div');
+                icon.className = `resistance-icon ${res.type}`;
+                icon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${res.element}.png" alt="${res.element}">`;
+                resistanceIcons.appendChild(icon);
+            });
+        }
+        
+        // 스탯 설정 (데이터가 있을 경우에만)
+        if (character.stats) {
+            const statGrid = document.querySelector('.stat-grid');
+            statGrid.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-label">공격력</span>
+                    <span class="stat-value">${character.stats.attack || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">방어력</span>
+                    <span class="stat-value">${character.stats.defense || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">생명력</span>
+                    <span class="stat-value">${character.stats.hp || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SP</span>
+                    <span class="stat-value">${character.stats.sp || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">속도</span>
+                    <span class="stat-value">${character.stats.speed || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">크리티컬 확률</span>
+                    <span class="stat-value">${character.stats.critRate || 0}%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">크리티컬 효과</span>
+                    <span class="stat-value">${character.stats.critDmg || 0}%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">효과 명중</span>
+                    <span class="stat-value">${character.stats.effectHit || 0}%</span>
+                </div>
+            `;
+        }
+        
+
+        // 스킬 설정은 cha_detail.js에서 자동 처리됨
+        
+
+        // 의식 정보 설정
+        const ritualItems = document.querySelectorAll('.ritual-item');
+
+        function updateAllRitualContent() {
+            // 언어별 의식 데이터 우선 사용
+            const ritualToUse = localizedRitual || ritual;
+            
+            ritualItems.forEach(item => {
+                const level = item.getAttribute('data-ritual');
+                const title = item.querySelector('.ritual-title');
+                const description = item.querySelector('.ritual-description');
+                
+                title.textContent = ritualToUse[`r${level}`] || '';
+                description.textContent = ritualToUse[`r${level}_detail`] || '';
+            });
+
+        }
+
+        // 초기 의식 내용 설정
+        updateAllRitualContent();
+        
+        // 전투 진입 시 요구 스탯 + 처리
+        const battlePlusStats = document.querySelector('.battle-plus-stats');
+        console.log('Character data:', character);
+        console.log('battle_plus_stats value:', character.battle_plus_stats);
+        console.log('battlePlusStats element:', battlePlusStats);
+        
+        if (character.battle_plus_stats && character.battle_plus_stats !== 'nan') {
+            console.log('Original battle_plus_stats:', character.battle_plus_stats);
+            
+            // <b> 태그의 수 확인
+            const bTagCount = (character.battle_plus_stats.match(/<b>/g) || []).length;
+            
+            if (bTagCount >= 2) {
+                // 2열 레이아웃으로 변경
+                battlePlusStats.style.display = 'grid';
+                battlePlusStats.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                battlePlusStats.style.gap = '20px';
+                
+                // <b> 태그로 분할하여 각 섹션을 div로 래핑
+                const sections = character.battle_plus_stats.split(/<b>/).filter(Boolean);
+                battlePlusStats.innerHTML = sections.map(section => {
+                    const processedSection = section.trim().replace(/\s*\/\s*/g, '<br>·');
+                    const finalSection = processedSection.replace(/<<br>·b><br>/, '</b>');
+                    return `<div class="battle-stat-section"><b>${finalSection}</div>`;
+                }).join('');
+            } else {
+                // 기존 방식대로 한 열로 표시
+                let rawContent = character.battle_plus_stats.trim();
+                console.log('Raw content:', rawContent);
+                
+                // / 기준으로 분할
+                let items = rawContent.split(/\s*\/\s*/);
+                console.log('Split items:', items);
+                
+                // 첫 번째 항목이 ·로 시작하지 않으면 추가
+                if (items[0] && !items[0].trim().startsWith('·')) {
+                    items[0] = '· ' + items[0].trim();
+                }
+                
+                // 나머지 항목들 앞에 ·를 추가 (이미 있으면 제거 후 추가)
+                for (let i = 1; i < items.length; i++) {
+                    items[i] = '· ' + items[i].trim().replace(/^·\s*/, '');
+                }
+                
+                                 // DOM 요소 직접 생성
+                 battlePlusStats.innerHTML = '';
+                 
+                 // 심상 번역 텍스트 정의
+                 const mindTexts = {
+                     'kr': '심상5',
+                     'en': 'Mind5',
+                     'jp': '心象5'
+                 };
+                 
+                 items.forEach((item, index) => {
+                     if (item.trim()) {
+                         const div = document.createElement('div');
+                         let processedItem = item.trim();
+                         // 심상 번역 처리
+                         processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
+                         processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
+                         div.textContent = processedItem;
+                         battlePlusStats.appendChild(div);
+                     }
+                 });
+                 
+                 console.log('Final items:', items);
+            }
+        } else {
+            console.log('battle_plus_stats is empty or nan');
+            battlePlusStats.textContent = '-';
+        }
+        
+        // 수치 패턴 변환 함수
+        function transformEnhancementValues(description, stage, weaponStars) {
+            if (stage === 'all') {
+                return description.replace(
+                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
+                    '<span class="enhancement-values">$1</span>/<span class="enhancement-values">$2</span>/<span class="enhancement-values">$3</span>/<span class="enhancement-values">$4</span>/<span class="enhancement-values">$5</span>/<span class="enhancement-values">$6</span>/<span class="enhancement-values">$7</span>'
+                );
+            } else if (stage === 'mixed') {
+                return description.replace(
+                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
+                    (match, s0, s1, s2, s3, s4, s5, s6) => {
+                        return `<span class="enhancement-values">${weaponStars === 5 ? s0 : s6}</span>`;
+                    }
+                );
+            } else {
+                const stageNum = parseInt(stage);
+                return description.replace(
+                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
+                    (match, s0, s1, s2, s3, s4, s5, s6) => {
+                        const values = [s0, s1, s2, s3, s4, s5, s6];
+                        return `<span class="enhancement-values">${values[stageNum]}</span>`;
+                    }
+                );
+            }
+        }
+
+        // 무기 설정 함수 수정
+        async function loadWeapons(characterName, stage = 'mixed') {
+            const weaponsContainer = document.querySelector('.weapons-container');
+            weaponsContainer.innerHTML = '';
+            
+            // 언어별 무기 데이터 우선 사용
+            const weaponDataToUse = localizedWeapon || WeaponData[characterName];
+            if (!weaponDataToUse) return;
+            
+            const characterWeapons = weaponDataToUse;
+            const weaponTypes = [
+                { key: 'weapon5-1', suffix: '5-01', stars: 5 },
+                { key: 'weapon4-1', suffix: '4-01', stars: 4 },
+                { key: 'weapon4-2', suffix: '4-02', stars: 4 }
+            ];
+
+            for (const weapon of weaponTypes) {
+                const imagePath = `{{ site.baseurl }}/assets/img/character-weapon/${characterName}-${weapon.suffix}.png`;
+                
+                // 무기 데이터 가져오기
+                const weaponData = characterWeapons[weapon.key];
+
+                // weaponData가 없으면 건너뛰기
+                if (!weaponData) continue;
+
+                const weaponItem = document.createElement('div');
+                weaponItem.className = 'weapon-item';
+                
+                // 무기 이미지
+                const weaponImage = document.createElement('img');
+                weaponImage.src = imagePath;
+                weaponImage.alt = weaponData.name || '무기 이미지';
+                weaponImage.className = 'weapon-image';
+                // 이미지 로드 실패시 기본 이미지로 대체
+                /*
+                weaponImage.onerror = () => {
+                    weaponImage.src = '{{ site.baseurl }}/assets/img/character-weapon/default.png';
+                };*/
+
+                // 무기 정보 컨테이너
+                const weaponInfo = document.createElement('div');
+                weaponInfo.className = 'weapon-info';
+
+                // 무기 헤더 (이름 + 별)
+                const weaponHeader = document.createElement('div');
+                weaponHeader.className = 'weapon-header';
+
+                // 무기 이름과 스탯
+                const weaponName = document.createElement('span');
+                weaponName.className = `weapon-name${weapon.stars === 5 ? ' five-star' : ''}`;
+                weaponName.textContent = weaponData.name || '무기 이름';
+
+                // 스탯 정보
+                const weaponStats = document.createElement('div');
+                weaponStats.className = 'weapon-stats';
+                weaponStats.innerHTML = `
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="생명"><p>생명 ${weaponData.health || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="공격력"><p>공격력 ${weaponData.attack || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="방어력"><p>방어력 ${weaponData.defense || 0}</p>
+                `;
+
+                // 별 표시
+                const weaponStars = document.createElement('div');
+                weaponStars.className = 'weapon-stars';
+                for (let i = 0; i < weapon.stars; i++) {
+                    const star = document.createElement('img');
+                    star.src = `{{ site.baseurl }}/assets/img/character-detail/star${weapon.stars}.png`;
+                    star.alt = '★';
+                    weaponStars.appendChild(star);
+                }
+
+                // 스킬 정보
+                const weaponSkill = document.createElement('div');
+                weaponSkill.className = 'weapon-skill';
+                if (weaponData.skill_name || weaponData.description) {
+                    let description = weaponData.description || '';
+                    description = transformEnhancementValues(description, stage, weapon.stars);
+                    description = description.replace(/(?<!\d)\.(?!\d)/g, '.\n');
+
+                    // 스킬명이 있으면 표시, 없으면 설명만 표시
+                    if (weaponData.skill_name) {
+                        weaponSkill.innerHTML = `
+                            <h4>${weaponData.skill_name}</h4>
+                            <p>${description}</p>
+                        `;
+                    } else if (description) {
+                        weaponSkill.innerHTML = `
+                            <p>${description}</p>
+                        `;
+                    }
+                }
+
+                weaponHeader.appendChild(weaponName);
+                weaponHeader.appendChild(weaponStars);
+
+                weaponInfo.appendChild(weaponHeader);
+                weaponInfo.appendChild(weaponStats);
+                weaponInfo.appendChild(weaponSkill);
+
+                weaponItem.appendChild(weaponImage);
+                weaponItem.appendChild(weaponInfo);
+
+                weaponsContainer.appendChild(weaponItem);
+                                
+            }
+            
+            // 무기 로드 후 스탯 텍스트 번역 적용
+            setTimeout(() => {
+                if (typeof translateStatTexts === 'function') {
+                    translateStatTexts();
+                }
+            }, 100);
+            
+            addTooltips();
+
+        }
+
+        // 캐릭터 로드 시 무기 정보도 함께 로드
+        if (characterName && characterData[characterName]) {
+            loadWeapons(characterName, 'mixed');
+        }
+                        
+        // 툴팁 추가
+        addTooltips();
+
+        // 버튼 이벤트 리스너 추가
+        const enhancementButtons = document.querySelectorAll('.enhancement-btn');
+        
+        enhancementButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 활성 버튼 스타일 변경
+                enhancementButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // 무기 다시 로드
+                const urlParams = new URLSearchParams(window.location.search);
+                const characterName = urlParams.get('name');
+                loadWeapons(characterName, button.dataset.stage);
+            });
+        });
+
+        
+
+        // SEO 메타데이터 동적 업데이트
+        const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
+        
+        // 언어별 캐릭터명 설정
+        let characterDisplayName = character.name;
+        if (currentLang === 'en' && character.name_en) {
+            characterDisplayName = character.name_en;
+        } else if (currentLang === 'jp' && character.name_jp) {
+            characterDisplayName = character.name_jp;
+        }
+        
+        // 언어별 사이트 정보
+        const siteInfo = {
+            'kr': {
+                siteName: '페르소나5 더 팬텀 X 루페르넷',
+                siteTitle: 'P5X 루페르넷',
+                description: '추천 세팅, 스킬, 의식, 전용무기 정보'
+            },
+            'en': {
+                siteName: 'Persona 5: The Phantom X - LufelNet',
+                siteTitle: 'P5X LufelNet',
+                description: 'Recommended setup, skills, awareness, exclusive weapon info'
+            },
+            'jp': {
+                siteName: 'ペルソナ5 ザ・ファントム X - LufelNet',
+                siteTitle: 'P5X LufelNet',
+                description: 'おすすめ設定、スキル、意識、専用武器情報'
+            }
+        };
+        
+        const currentSiteInfo = siteInfo[currentLang] || siteInfo['kr'];
+        
+        // 타이틀 업데이트
+        document.title = `${characterDisplayName} - ${currentSiteInfo.siteName}`;
+        
+        // 메타 태그 업데이트 (태그가 존재하는 경우에만)
+        const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
+        
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const canonicalLink = document.getElementById('canonical-link');
+
+        if (metaDescription) metaDescription.setAttribute('content', description);
+        if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
+        if (ogDescription) ogDescription.setAttribute('content', description);
+        if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
+        if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
+        if (canonicalLink) {
+            const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
+            canonicalLink.setAttribute('href', canonicalUrl);
+        }
+
+        // 번역 적용 (캐릭터 데이터 로드 후)
+        applyTranslations();
+        
+        // 번역 적용 후 레이아웃 재계산
+        setTimeout(() => {
+            if (typeof fillOperationInfo === 'function') {
+                fillOperationInfo(characterName);
+            }
+            
+            // 모바일에서는 무조건 1열로 설정
+            if (window.innerWidth <= 768) {
+                const operationSettings = document.querySelector('.operation-settings');
+                if (operationSettings) {
+                    operationSettings.style.gridTemplateColumns = '1fr';
+                    operationSettings.style.display = 'flex';
+                    operationSettings.style.flexDirection = 'column';
+                    operationSettings.style.gap = '20px';
+                }
+            }
+        }, 100);
+        
+        // 영어/일본어에서 주의 메시지 표시
+        if (currentLang === 'en' || currentLang === 'jp') {
+            const warningMessage = currentLang === 'en' ? 
+                'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mind, etc.)' :
+                '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、心象など）';
+            
+            const warningDiv = document.createElement('div');
+            warningDiv.className = 'warning-message';
+            warningDiv.style.cssText = 'background: rgba(17, 17, 17, 0.2); color: #6c757d; padding: 10px; margin: 15px 0; border-radius: 4px; font-size: 13px; opacity: 0.5;';
+            warningDiv.innerHTML = `<strong>${currentLang === 'en' ? 'Notice' : '注意'}</strong><br>${warningMessage}`;
+            
+            const settingsCard = document.querySelector('.settings-card');
+            if (settingsCard) {
+                settingsCard.insertBefore(warningDiv, settingsCard.firstChild.nextSibling);
+            }
+        }
+
+        // 외국어에서 특정 요소들 숨기기
+        if (currentLang !== 'kr') {
+            // tag와 role 숨기기 (올바른 클래스명 사용)
+            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
+            tagElements.forEach(el => {
+                if (el) el.style.display = 'none';
+            });
+        } else {
+            // 한국어일 때는 다시 보이게 하기
+            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
+            tagElements.forEach(el => {
+                if (el) el.style.display = '';
+            });
+        }
+    });
+
+    // 번역 함수 분리
+    function applyTranslations() {
+        const currentLang = getCurrentLanguage();
+        
+        // 추천 세팅 라벨 번역
+        const recommendLabel = currentLang === 'kr' ? '추천 세팅' :
+                             currentLang === 'en' ? 'Recommended Setup' : 'おすすめ設定';
+        const recommendEl = document.querySelector('.settings-card h2');
+        if (recommendEl) recommendEl.textContent = recommendLabel;
+
+        // 스킬 대제목 번역
+        const skillsMainLabel = currentLang === 'kr' ? '스킬' :
+                               currentLang === 'en' ? 'Skills' : 'スキル';
+        const skillsMainEl = document.querySelector('.skills-card h2');
+        if (skillsMainEl) skillsMainEl.textContent = skillsMainLabel;
+
+        // 의식 대제목 번역
+        const ritualMainLabel = currentLang === 'kr' ? '의식' :
+                               currentLang === 'en' ? 'Awareness' : '意識';
+        const ritualMainEl = document.querySelector('.ritual-card h2');
+        if (ritualMainEl) ritualMainEl.textContent = ritualMainLabel;
+
+        // 전용 무기 대제목 번역
+        const weaponMainLabel = currentLang === 'kr' ? '전용 무기' :
+                               currentLang === 'en' ? 'Exclusive Weapon' : '専用武器';
+        const weaponMainEl = document.querySelector('.weapons-card h2');
+        if (weaponMainEl) weaponMainEl.textContent = weaponMainLabel;
+
+        // 계시 라벨 번역 (일본어 수정)
+        const revelationLabel = currentLang === 'kr' ? '계시' :
+                              currentLang === 'en' ? 'Revelation' : '啓示';
+        const revelationEl = document.querySelector('.revelation-settings h3');
+        if (revelationEl) revelationEl.textContent = revelationLabel;
+
+        // 주 라벨 번역 (일본어 수정)
+        const mainLabel = currentLang === 'kr' ? '주' :
+                         currentLang === 'en' ? 'Space' : '宙';
+        const mainLabelEl = document.querySelector('.main-revelation .label');
+        if (mainLabelEl) {
+            const iconImg = mainLabelEl.querySelector('img');
+            mainLabelEl.innerHTML = `${mainLabel} `;
+            if (iconImg) mainLabelEl.appendChild(iconImg);
+        }
+
+        // 일월성진 라벨 번역 (일본어 수정)
+        const sunMoonStarEarthLabel = currentLang === 'kr' ? '일월성진' :
+                                     currentLang === 'en' ? 'S/M/S/P' : '日月星辰';
+        const sunMoonLabelEl = document.querySelector('.sub-revelation .label');
+        if (sunMoonLabelEl) sunMoonLabelEl.textContent = sunMoonStarEarthLabel;
+
+        // 일월성진 개별 라벨 번역
+        const sunMoonStarLabels = {
+            'kr': ['일', '월', '성', '진'],
+            'en': ['Sun', 'Moon', 'Star', 'Planet'],
+            'jp': ['日', '月', '星', '辰']
+        };
+        document.querySelectorAll('.main-options .option-row .label').forEach((el, index) => {
+            if (sunMoonStarLabels[currentLang] && sunMoonStarLabels[currentLang][index]) {
+                const iconImg = el.querySelector('img');
+                el.innerHTML = `${sunMoonStarLabels[currentLang][index]} `;
+                if (iconImg) el.appendChild(iconImg);
+            }
+        });
+
+        // 주 옵션 라벨 번역
+        const mainOptionLabel = currentLang === 'kr' ? '주 옵션' :
+                              currentLang === 'en' ? 'Main Options' : 'メインオプション';
+        const mainOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(2) h3');
+        if (mainOptionEl) mainOptionEl.textContent = mainOptionLabel;
+
+        // 부 옵션 라벨 번역
+        const subOptionLabel = currentLang === 'kr' ? '부 옵션' :
+                             currentLang === 'en' ? 'Sub Options' : 'サブオプション';
+        const subOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(3) h3');
+        if (subOptionEl) subOptionEl.textContent = subOptionLabel;
+
+        // 권장 육성 스탯 라벨 번역
+        const recommendedStatsLabel = currentLang === 'kr' ? '권장 육성 스탯' :
+                                    currentLang === 'en' ? 'Recommended Stats' : '推奨育成ステータス';
+        const recommendedStatsEl = document.querySelector('.stats-requirements h3:first-child');
+        if (recommendedStatsEl) recommendedStatsEl.textContent = recommendedStatsLabel;
+
+        // 전투 진입 시 라벨 번역
+        const battleEntryLabel = currentLang === 'kr' ? '전투 진입 시 +' :
+                               currentLang === 'en' ? 'Battle Entry +' : '戦闘開始時 +';
+        const battleEntryEl = document.querySelector('.stats-requirements .setting-section:last-child h3');
+        if (battleEntryEl) battleEntryEl.textContent = battleEntryLabel;
+
+
+
+        // 심상 관련 텍스트 번역
+        const mindTexts = {
+            'kr': '심상5',
+            'en': 'Mind5',
+            'jp': '心象5'
+        };
+        // 심상 텍스트 번역은 battle-plus-stats에서 제외 (이미 처리됨)
+        // document.querySelectorAll('.battle-plus-stats').forEach(el => {
+        //     if (el.textContent) {
+        //         let text = el.textContent;
+        //         text = text.replace(/심상5/g, mindTexts[currentLang] || '심상5');
+        //         text = text.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
+        //         el.textContent = text;
+        //     }
+        // });
+
+        // 스킬 레벨 버튼 번역
+        const skillLevelButtonLabels = {
+            'kr': ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'],
+            'en': ['All', 'LV10', 'LV10+Mind5', 'LV13', 'LV13+Mind5'],
+            'jp': ['全体', 'LV10', 'LV10+心象5', 'LV13', 'LV13+心象5']
+        };
+        document.querySelectorAll('.skill-level-btn').forEach((btn, index) => {
+            if (skillLevelButtonLabels[currentLang] && skillLevelButtonLabels[currentLang][index]) {
+                btn.textContent = skillLevelButtonLabels[currentLang][index];
+            }
+        });
+
+        // 무기 개조 버튼 번역
+        const enhancementButtonLabels = {
+            'kr': {
+                'mixed': '5성 개조0 / 4성 개조6',
+                'all': '전체',
+                '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6'
+            },
+            'en': {
+                'mixed': '5★ +0 / 4★ +6',
+                'all': 'All',
+                '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6'
+            },
+            'jp': {
+                'mixed': '5星 強化0 / 4星 強化6',
+                'all': '全体',
+                '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6'
+            }
+        };
+        document.querySelectorAll('.enhancement-btn').forEach(btn => {
+            const stage = btn.dataset.stage;
+            if (enhancementButtonLabels[currentLang] && enhancementButtonLabels[currentLang][stage]) {
+                btn.textContent = enhancementButtonLabels[currentLang][stage];
+            }
+        });
+
+        // 스킬 라벨 번역
+        const skillLabel = currentLang === 'kr' ? '스킬' :
+                          currentLang === 'en' ? 'Skills' : 'スキル';
+        const skillTitleEl = document.querySelector('.skill-mind-settings .setting-section:first-child h3');
+        if (skillTitleEl) skillTitleEl.textContent = skillLabel;
+
+        // 심상 라벨 번역
+        const mindLabel = currentLang === 'kr' ? '심상 (LV 5)' :
+                         currentLang === 'en' ? 'Mind (LV 5)' : '心象 (LV 5)';
+        const mindTitleEl = document.querySelector('.skill-mind-settings .setting-section:last-child h3');
+        if (mindTitleEl) mindTitleEl.textContent = mindLabel;
+
+        // 스킬 레벨 라벨 번역
+        const skillLevelLabels = {
+            'kr': ['스킬 1', '스킬 2', '스킬 3', '하이라이트'],
+            'en': ['Skill 1', 'Skill 2', 'Skill 3', 'Highlight'],
+            'jp': ['スキル 1', 'スキル 2', 'スキル 3', 'ハイライト']
+        };
+        document.querySelectorAll('.skill-levels .skill-level .label').forEach((el, index) => {
+            if (skillLevelLabels[currentLang] && skillLevelLabels[currentLang][index]) {
+                el.textContent = skillLevelLabels[currentLang][index];
+            }
+        });
+
+        // 진급강화/스킬깨달음 라벨 번역
+        const mindStatsLabels = {
+            'kr': ['진급강화 1', '진급강화 2', '스킬깨달음 1', '스킬깨달음 2'],
+            'en': ['Promotion 1', 'Promotion 2', 'Skill Awakening 1', 'Skill Awakening 2'],
+            'jp': ['進級強化 1', '進級強化 2', 'スキル覚醒 1', 'スキル覚醒 2']
+        };
+        document.querySelectorAll('.mind-stats .stat-row .label, .mind-skills .skill-row .label').forEach((el, index) => {
+            if (mindStatsLabels[currentLang] && mindStatsLabels[currentLang][index]) {
+                el.textContent = mindStatsLabels[currentLang][index];
+            }
+        });
+
+        // 추천 운영 라벨 번역
+        const operationLabel = currentLang === 'kr' ? '추천 운영' :
+                             currentLang === 'en' ? 'Recommended Operation' : '推奨運用';
+        const operationTitleEl = document.querySelector('.operation-settings .setting-section:first-child h3');
+        if (operationTitleEl) operationTitleEl.textContent = operationLabel;
+
+        // 참고사항 라벨 번역
+        const notesLabel = currentLang === 'kr' ? '참고사항' :
+                          currentLang === 'en' ? 'Notes' : '参考事項';
+        const notesTitleEl = document.querySelector('.operation-settings .setting-section:last-child h3');
+        if (notesTitleEl) notesTitleEl.textContent = notesLabel;
+
+        // 순위 라벨 번역
+        const priorityLabels = {
+            'kr': ['1순위', '2순위', '3순위'],
+            'en': ['1st Priority', '2nd Priority', '3rd Priority'],
+            'jp': ['第1優先', '第2優先', '第3優先']
+        };
+        document.querySelectorAll('.sub-options .option-row .priority').forEach((el, index) => {
+            if (priorityLabels[currentLang] && priorityLabels[currentLang][index]) {
+                el.textContent = priorityLabels[currentLang][index];
+            }
+        });
+
+        // 스탯 텍스트 번역 함수
+        function translateStatTexts() {
+            const statTranslations = {
+                'kr': {
+                    '생명': '생명',
+                    '생명력': '생명',
+                    '공격력': '공격력',
+                    '대미지 보너스': '대미지 보너스',
+                    '대미지보너스': '대미지 보너스',
+                    '크리티컬 확률': '크리티컬 확률',
+                    '크리티컬확률': '크리티컬 확률',
+                    '크리티컬 효과': '크리티컬 효과',
+                    '크리티컬효과': '크리티컬 효과',
+                    '관통': '관통',
+                    '방어력': '방어력',
+                    '효과 명중': '효과 명중',
+                    '효과명중': '효과 명중',
+                    '속도': '속도'
+                },
+                'en': {
+                    '생명': 'HP',
+                    '생명력': 'HP',
+                    '공격력': 'Attack',
+                    '대미지 보너스': 'Damage Bonus',
+                    '대미지보너스': 'Damage Bonus',
+                    '크리티컬 확률': 'Critical Rate',
+                    '크리티컬확률': 'Critical Rate',
+                    '크리티컬 효과': 'Critical Effect',
+                    '크리티컬효과': 'Critical Effect',
+                    '관통': 'Penetration',
+                    '방어력': 'Defense',
+                    '방어': 'Defense',
+                    '효과 명중': 'Effect Hit',
+                    '효과명중': 'Effect Hit',
+                    '속도': 'Speed'
+                },
+                'jp': {
+                    '생명': 'HP',
+                    '생명력': 'HP',
+                    '공격력': '攻撃力',
+                    '대미지 보너스': 'ダメージボーナス',
+                    '대미지보너스': 'ダメージボーナス',
+                    '크리티컬 확률': 'クリティカル確率',
+                    '크리티컬확률': 'クリティカル確률',
+                    '크리티컬 효과': 'クリティカル効果',
+                    '크리티컬효과': 'クリティカル効果',
+                    '관통': '貫通',
+                    '방어력': '防御力',
+                    '방어': '防御力',
+                    '효과 명중': '効果命中',
+                    '효과명중': '効果命중',
+                    '속도': '速度'
+                }
+            };
+
+            // 모든 텍스트 요소에서 스탯 텍스트 번역
+            const allTextElements = document.querySelectorAll('*');
+            allTextElements.forEach(el => {
+                // 자식 요소가 없는 텍스트 노드만 처리
+                if (el.children.length === 0 && el.textContent.trim()) {
+                    let text = el.textContent;
+                    let hasChanged = false;
+                    
+                    // 각 스탯 텍스트를 번역
+                    Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                        const translatedStat = statTranslations[currentLang][koreanStat];
+                        if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                            text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                            hasChanged = true;
+                        }
+                    });
+                    
+                    if (hasChanged) {
+                        el.textContent = text;
+                    }
+                }
+            });
+
+            // 특정 클래스의 요소들도 처리
+            document.querySelectorAll('.stat-label, .value, .option-row .value').forEach(el => {
+                if (el.textContent.trim()) {
+                    let text = el.textContent;
+                    let hasChanged = false;
+                    
+                    Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                        const translatedStat = statTranslations[currentLang][koreanStat];
+                        if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                            text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                            hasChanged = true;
+                        }
+                    });
+                    
+                    if (hasChanged) {
+                        el.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // 스탯 텍스트 번역 실행
+        if (typeof window.translateStatTexts === 'function') {
+            window.translateStatTexts();
+        } else {
+            translateStatTexts();
+        }
+    }
+
+    // MutationObserver를 사용해 동적 콘텐츠 변경 감지
+    const observer = new MutationObserver((mutations) => {
+        let shouldTranslate = false;
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                shouldTranslate = true;
+            }
+        });
+        
+        if (shouldTranslate && typeof window.translateStatTexts === 'function') {
+            setTimeout(() => {
+                window.translateStatTexts();
+            }, 100);
+        }
+    });
+
+    // 관찰 시작
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    // 전역 함수로 만들어서 다른 곳에서도 호출 가능하도록
+    window.translateStatTexts = function() {
+        const currentLang = getCurrentLanguage();
+        const statTranslations = {
+            'kr': {
+                '생명': '생명',
+                '생명력': '생명력',
+                '공격력': '공격력',
+                '대미지 보너스': '대미지 보너스',
+                '대미지보너스': '대미지 보너스',
+                '크리티컬 확률': '크리티컬 확률',
+                '크리티컬확률': '크리티컬 확률',
+                '크리티컬 효과': '크리티컬 효과',
+                '크리티컬효과': '크리티컬 효과',
+                '관통': '관통',
+                '방어력': '방어력',
+                '효과 명중': '효과 명중',
+                '효과명중': '효과 명중',
+                '속도': '속도',
+                '치료효과': '치료효과'
+            },
+            'en': {
+                '생명': 'HP',
+                '생명력': 'HP',
+                '공격력': 'Attack',
+                '대미지 보너스': 'Damage Bonus',
+                '대미지보너스': 'Damage Bonus',
+                '크리티컬 확률': 'Critical Rate',
+                '크리티컬확률': 'Critical Rate',
+                '크리티컬 효과': 'Critical Effect',
+                '크리티컬효과': 'Critical Effect',
+                '관통': 'Penetration',
+                '방어력': 'Defense',
+                '방어': 'Defense',
+                '효과 명중': 'Effect Hit',
+                '효과명중': 'Effect Hit',
+                '속도': 'Speed',
+                '치료효과': 'Healing Effect'
+            },
+            'jp': {
+                '생명': 'HP',
+                '생명력': 'HP',
+                '공격력': '攻撃力',
+                '대미지 보너스': 'ダメージボーナス',
+                '대미지보너스': 'ダメージボーナス',
+                '크리티컬 확률': 'クリティカル確률',
+                '크리티컬확률': 'クリティカル確률',
+                '크리티컬 효과': 'クリティカル効果',
+                '크리티컬효과': 'クリティカル効果',
+                '관통': '貫通',
+                '방어력': '防御力',
+                '방어': '防御力',
+                '효과 명중': '効果命中',
+                '효과명중': '効果命中',
+                '속도': '速度',
+                '치료효과': '治療効果'
+            }
+        };
+
+        // 모든 텍스트 요소에서 스탯 텍스트 번역
+        const allTextElements = document.querySelectorAll('*');
+        allTextElements.forEach(el => {
+            // 자식 요소가 없는 텍스트 노드만 처리
+            if (el.children.length === 0 && el.textContent.trim()) {
+                let text = el.textContent;
+                let hasChanged = false;
+                
+                // 각 스탯 텍스트를 번역
+                Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                    const translatedStat = statTranslations[currentLang][koreanStat];
+                    if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                        text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                        hasChanged = true;
+                    }
+                });
+                
+                if (hasChanged) {
+                    el.textContent = text;
+                }
+            }
+        });
+
+        // 특정 클래스의 요소들도 처리
+        document.querySelectorAll('.stat-label, .value, .option-row .value').forEach(el => {
+            if (el.textContent.trim()) {
+                let text = el.textContent;
+                let hasChanged = false;
+                
+                Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                    const translatedStat = statTranslations[currentLang][koreanStat];
+                    if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                        text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                        hasChanged = true;
+                    }
+                });
+                
+                if (hasChanged) {
+                    el.textContent = text;
+                }
+            }
+        });
+    };
+</script>
+
+

@@ -1,4 +1,3 @@
-// Character list data for English version (P5X characters only - excluding P3R characters)
 const characterList = {
     mainParty: [
         "렌", "루페르", "레오", "류지", "모르가나",
@@ -26,93 +25,80 @@ const characterData = {
     "렌": {
         "role": "",
         "tag": "",
-        "persona": "아르센",
-        "release_order": 0,
-        "name": "Ren Amamiya",
+        "persona": "アルセーヌ",
+        "release_order": 0
     },
     "루페르": {
         "role": "",
         "tag": "",
-        "persona": "로브로이",
-        "release_order": 0,
-        "name": "Lufel",
+        "persona": "ロブロイ",
+        "release_order": 0
     },
     "레오": {
         "role": "",
         "tag": "",
-        "persona": "에리테이아",
-        "release_order": 0,
-        "name": "Leo Kamiyama",
+        "persona": "エリテイア",
+        "release_order": 0
     },
     "류지": {
         "role": "",
         "tag": "",
-        "persona": "캡틴 키드",
-        "release_order": 0,
-        "name": "Ryuji Sakamoto",
+        "persona": "キャプテン・キッド",
+        "release_order": 0
     },
     "모르가나": {
         "role": "",
         "tag": "",
-        "persona": "조로",
-        "release_order": 0,
-        "name": "Morgana",
+        "persona": "ゾロ",
+        "release_order": 0
     },
     "모토하": {
         "role": "",
         "tag": "",
-        "persona": "아르빌다",
-        "release_order": 0,
-        "name": "Motoha Arai",
+        "persona": "アルビルダ",
+        "release_order": 0
     },
     "몽타뉴": {
         "role": "",
         "tag": "",
-        "persona": "테르프시코레",
-        "release_order": 0,
-        "name": "Kotone Montagne",
+        "persona": "テルプシコレー",
+        "release_order": 0
     },
     "슌": {
         "role": "",
         "tag": "",
-        "persona": "만돌란",
-        "release_order": 0,
-        "name": "Shun Kano",
+        "persona": "マンドラン",
+        "release_order": 0
     },
     "세이지": {
         "role": "",
         "tag": "",
-        "persona": "레우코테아",
-        "release_order": 0,
-        "name": "Seiji Shiratori",
+        "persona": "レウコテア",
+        "release_order": 0
     },
     "안": {
         "role": "",
         "tag": "",
-        "persona": "카르멘",
-        "release_order": 0,
-        "name": "Ann Takamaki",
+        "persona": "カルメン",
+        "release_order": 0
     },
     "야오링": {
         "role": "",
         "tag": "",
         "persona": "맹파",
-        "release_order": 0,
-        "name": "Yaoling Li",
+        "release_order": 0
     },
     "유키미": {
         "role": "",
         "tag": "",
         "persona": "스틱스",
-        "release_order": 0,
-        "name": "Yukimi Fujikawa",
+        "release_order": 0
     },
     "키요시": {
         "role": "",
         "tag": "",
         "persona": "프로심나",
-        "release_order": 0,
-        "name": "Kurotani Kiyoshi",
+        "release_order": 0
     },
     "토모코": {
         "role": "",
@@ -135,7 +121,7 @@ const characterData = {
     "미유": {
         "role": "",
         "tag": "",
-        "persona": "네메르테스",
+        "persona": "ネメルテス",
         "release_order": 0
     },
     "카요": {
@@ -144,5 +130,4 @@ const characterData = {
         "persona": "클레오도라",
         "release_order": 0
     }
-    // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
 }; 

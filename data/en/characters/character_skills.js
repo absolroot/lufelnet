@@ -1,1680 +1,801 @@
-const characterSkillsData = {
+const enCharacterSkillsData = {
     "원더": {
-        "name": "원더"
-    },
-    "마유미": {
-        "name": "하시모토 마유미",
-        "skill1": {
-            "name": "소용돌이 억압",
-            "element": "물리광역",
-            "type": "광역피해",
-            "hp": 8,
-            "cool": 0,
-            "description": "모든 적에게 공격력 134.2%/148.0%//의 물리 속성 대미지를 주고, 2턴 동안 모든 동료의 대미지가 8.8%/9.7%//(속도 10포인트마다 대미지가 추가로 2% 증가하며, 최대 대미지 추가 증가량은 35.1%/38.7%//) 증가한다.\n추가 턴 시전: 스킬 대미지가 50% 증가하고, 메인 목표에게 반드시 크리티컬을 준다."
-        },
-        "skill2": {
-            "name": "과부하 가속",
-            "element": "버프광역",
-            "type": "버프",
-            "sp": 22,
-            "cool": 0,
-            "description": "2턴 동안 모든 동료의 공격력이 8.8%/9.7%//(속도 10포인트마다 공격력이 추가로 2% 증가하고, 최대 공격력 추가 증가량은 35.1%/38.7%//) 증가하고, 방어력이 9.8%/10.9%//(속도 10포인트마다 방어력이 추가로 2.22% 증가하고, 최대 방어력 추가 증가량은 39.0%/43.0%//) 증가한다.\n추가 턴 시전: 2턴 동안 모든 동료가 1964/2114//포인트 대미지를 막을 수 있는 실드를 1중첩 획득한다."
-        },
-        "skill3": {
-            "name": "엔진 굉음",
-            "element": "버프광역",
-            "type": "버프",
-            "sp": 25,
-            "cool": 0,
-            "description": "2턴 동안 모든 동료의 관통이 1.0%/1.1%//(속도 10포인트마다 관통이 추가로 0.22% 증가하고, 최대 관통 추가 증가량은 3.9%/4.3%//) 증가하고, 공격력이 12.7%/14.0%//(속도 10포인트마다 공격력이 추가로 2.89% 증가하고, 최대 공격력 추가 증가량은 50.8%/56.0%//) 증가한다.\n추가 턴 시전: 1턴 동안 메인 목표 관통이 2.0%/2.2%//(속도 10포인트마다 관통이 추가로 0.44% 증가하고, 최대 관통 추가 증가량은 7.8%/8.6%//) 증가한다."
-        },
-        "skill_highlight": {
-            "element": "버프광역",
-            "type": "버프",
-            "description": "2턴 동안 모든 동료의 공격력이 5.9%/6.5%//(속도 10포인트마다 공격력이 추가로 1.33% 증가하고, 최대 공격력 추가 증가량은 23.4%/25.8%//) 증가하고, 대미지가 5.9%(속도 10포인트마다 대미지가 추가로 1.33% 증가하고, 최대 대미지 추가 증가량은 23.4%/25.8%//) 증가한다. 또한 메인 목표가 다음에 적에게 대미지를 줄 시, 적 메인 목표의 다운 수치가 추가로 1포인트 감소한다."
-        },
-        "passive1": {
-            "name": "선두",
-            "element": "패시브",
-            "description": "하시모토 마유미가 필드에 있으면 모든 동료의 추가 턴에 주는 대미지가 30.0% 증가한다."
-        },
-        "passive2": {
-            "name": "가압",
-            "element": "패시브",
-            "description": "하시모토 마유미가 필드에 있으면 모든 동료의 다운 상태인 목표에게 주는 대미지가 24.0% 증가한다. 하시모토가 목표를 녹다운시킨 경우, 해당 목표에게 공격력 48.0%의 물리 속성 대미지를 추가로 준다."
-        }
-    },
-    "아케치": {
-        "name": "아케치 고로",
-        "skill1": {
-            "name": "정의의 약속",
-            "element": "축복광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 86.8%/95.7%/92.1%/101.0%의 축복 속성 대미지를 주고, 모든 동료의 생명을 1561/1561/1657/1657포인트 회복하며, 모든 동료가 축복을 1중첩 획득한다. 자신이 『진실』을 획득하고 2턴 동안 『정확』 상태를 획득한다. 『정확』 상태에서는 모든 동료가 주는 대미지가 19.5%/21.5%/20.7%/22.7% 증가한다."
-        },
-        "skill2": {
-            "name": "기울어진 사냥터",
-            "element": "주원광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 108.5%/119.7%/115.1%/126.3%의 주원 속성 대미지를 준다. 자신이 『진실』을 획득하며, 2턴 동안 『혼돈』 상태를 획득한다. 『혼돈』 상태에서는 모든 적의 방어가 25.4%/28.0%/26.9%/29.5% 감소하고, 자신의 『혼돈의 화살』 발동 횟수가 1회 증가하며, 주는 대미지가 19.5%/21.5%/20.7%/22.7% 증가한다."
-        },
-        "skill3": {
-            "name": "황금 화살비·파멸",
-            "element": "만능광역",
-            "type":"광역피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "활성화 조건: 자신이 『진실』 보유\n모든 『정확한 화살』을 소모하여 모든 적에게 『정확한 화살』 기록 대미지 19.5%/21.5%/20.7%/22.7%의 만능 속성 고정 대미지를 준다. 이후 임의 적에게 『혼돈의 화살』을 4회 발사하고, 매회 공격력 72.1%/79.5%/76.6%/84.0%의 만능 속성 대미지를 준다. 해당 효과의 공격을 받지 않은 적을 우선 공격하며, 동일 목표에게 여러 회 명중 시 15%의 대미지만 준다."
-        },
-        "skill_highlight": {
-            "element": "만능",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 103.5%/114.1%/109.8%/120.4%의 축복 속성 대미지를 1회 주고, 공격력 103.5%/114.1%/109.8%/120.4%의 주원 속성 대미지를 1회 준다. 자신의 『혼돈의 화살』 발동 횟수가 2회 증가하며 4턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "법도",
-            "element": "패시브",
-            "description": "아케치 고로가 팀에 합류하면 원하는 속성의 욕망 소나타를 발동할 수 있다. 전투 시작 시 욕망 소나타 1종을 발동할 때마다 자신이 주는 대미지가 15.0% 증가한다."
-        },
-        "passive2": {
-            "name": "갈망",
-            "element": "패시브",
-            "description": "만능 대미지를 줄 때 목표가 방어 감소 효과 1%를 보유할 때마다 자신의 대미지가 0.5% 증가한다. (상한 120.0%)"
-        }    
-    },
-
-
-    "미오": {
-        "name": "나츠카와 미오",
-        "skill1": {
-            "name": "파도의 메아리",
-            "element": "빙결광역",
-            "type":"디버프", 
-            "sp": 20,
-            "cool": 0,
-            "description": "『불꽃 진압』을 1중첩 획득한다. 모든 적에게 공격력 97.6%/107.6%/103.6%/113.6%의 빙결 속성 대미지를 주고, 50%의 기본 확률로 적을 동결 상태에 빠뜨린다. 동시에 방어력을 7.8%/8.6%/8.3%/9.1% 감소시키며 (효과명중 5.47%마다 방어력이 추가로 1% 감소, 최대 31.2%/34.4%/33.2%/36.4% 추가 감소) 3턴 동안 지속된다. 화상 상태인 적이 있는 경우 화상 상태를 제거 하고 모든 적을 『타오르는 숨결』 상태에 빠뜨린다. (『타오르는 숨결』은 해당 효과 발동 불가)\n『타오르는 숨결』: 3턴 동안 지속되며 화상 상태로 간주한다. 모든 괴도가 해당 상태인 유닛을 공격할 때 스킬 마스터가 976/1076/1036/1136포인트 증가한다."
-        },
-        "skill2": {
-            "name": "파도의 결박",
-            "element": "빙결",      
-            "type":"제어",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 195.2%/215.2%/207.2%/227.2%의 빙결 속성 대미지를 주고 목표에게 빙결 속성 TECHNICAL을 준다. 『얼음 봉인』발동 시 얼음 봉인의 기본 확률이 43.9%/48.4%/46.6%/51.1%로 증가한다."
-        },      
-        "skill3": {
-            "name": "흐름의 폭발",
-            "element": "빙결광역",
-            "type":"디버프",
-            "sp": 20,
-            "cool": 0,
-            "description": "『불꽃 진압』 2중첩 달성 시 시전할 수 있다.\n『불꽃 진압』 2중첩을 소모해 모든 적에게 공격력 109.8%/121.1%/116.5%/127.8%의 빙결 속성 대미지를 주고 방어력을 7.3%/8.1%/7.7%/8.5% 감소시키며 (효과명중 5.83%마다 방어력이 추가로 1% 감소, 최대 29.3%/32.3%/31.1%/34.1% 추가 감소) 2턴 동안 지속된다. 또한 빙결 속성 TECHNICAL을 주고, 『얼음의 불길』발동 시 반드시 명중하는 동시에 얼음의 불길 효과가 『한빛』으로 레벨업된다.\n『한빛』: 받는 모든 대미지가 9.8%/10.8%/10.4%/11.4% 증가한다 (효과명중 4.38%마다 받는 모든 대미지가 추가로 1% 증가, 최대 39.0%/43.0%/41.4%/45.4% 추가 증가).\n\n『불꽃 진압』4중첩 달성 시 해당 스킬은 『폭발의 용오름』으로 레벨업된다.\n『폭발의 용오름』: 『불꽃 진압』 4중첩을 소모해 모든 적에게 공격력 131.8%/145.3%/139.9%/153.4%의 빙결 속성 대미지를 주고 방어력을 8.8%/9.7%/9.3%/10.2% 감소시키며 (효과명중 4.86%마다 방어력이 추가로 1% 감소, 최대 35.1%/38.7%/37.3%/40.9% 추가 감소) 2턴 동안 지속된다. 또한 빙결 속성 TECHNICAL을 주고, 『얼음의 불길』발동 시 반드시 명중하는 동시에 얼음의 불길 효과가 『한빛』으로 레벨업된다.\n『한빛』: 받는 모든 대미지가 11.7%/12.9%/12.4%/13.6% 증가한다 (효과명중 3.65%마다 받는 모든 대미지가 추가로 1% 증가, 최대 46.8%/51.6%/49.7%/54.5% 추가 증가)."
-        },
-        "skill_highlight": {
-            "element": "빙결광역",
-            "type":"디버프",
-            "description": "모든 적에게 공격력 39.0%/43.0%/41.4%/45.4%의 빙결 속성 대미지를 주고 2턴 동안 받는 대미지를 증가시킨다(효과 명중 5.83%마다 받는 대미지 1% 증가, 최대 29.3%/32.3%/31.1%/34.1%). 동시에 목표에게 빙결 속성 TECHNICAL을 주고, 『얼음 봉인』발동 시 얼음 봉인의 기본 확률이 28%로 증가하며, 얼음 봉인 상태인 적이 반는 대미지가 추가로 증가한다(효과명중 17.5%마다 받는 대미지가 추가로 1% 증가, 최대 9.8%/10.8%/10.4%/11.4%). 다시 모든 적에게 공격력 117.1%/129.1%/124.3%/136.3%의 빙결 속성 대미지를 준다."
-        },
-        "passive1": {
-            "name": "비호",
-            "element": "패시브",
-            "description": "나츠카와 미오가 TECHNICAL을 줄 때마다 모든 괴도가 1050포인트 대미지를 막을 수 있는 실드를 1중첩 획득하며 2턴 동안 지속된다."
-        },
-        "passive2": {
-            "name": "위협",
-            "element": "패시브",
-            "description": "나츠카와 미오가 필드에 있을 때 동결 상태에 빠진 적이 받는 대미지가 27.0% 증가한다."
-        }
-    },
-    
-
-    "레오": {
-        "name": "카미야마 레오",
-        "skill1": {
-            "name": "핵열의 환상",
-            "element": "핵열",
-            "type":"단일피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 170.8%/188.3%/177.8%/195.3%의 핵열 속성 대미지를 준다. 스킬 시전 시 모든 동료가 『활성』을 1중첩 보유하고 있을 때마다 해당 스킬의 대미지가 10% 증가한다."
-        },
-        "skill2": {
-            "name": "생명 추출",
-            "element": "치료",
-            "type":"버프",
-            "sp": 20,
-            "cool": 0,
-            "description": "동료 1명의 현재 생명의 30%를 80%의 비율로 실드로 전환하며, 추가로 카미야마 레오 공격력 31.6%/31.6%/32.9%/32.9%+900/1095/1035/1230의 실드를 부여한다. 실드는 2턴 동안 지속된다. 또한 『활성』1중첩을 획득한다."
-        },
-        "skill3": {
-            "name": "용맹 전환",
-            "element": "버프",
-            "type":"버프",
-            "sp": 24,
-            "cool": 0,
-            "description": "동료 1명의 공격력이 2턴 동안 19.5%/19.5%/20.3%/20.3% 증가한다. 효과가 지속되는 동안 목표가 보유하고 있는 『활성』 1중첩당 카미야마 레오 공격력의 20%만큼 공격력이 증가한다. 최대 1516.7/1672.1/1578.9/1734.3 공격력이 증가한다."
-        },
-        "skill_highlight": {
-            "element": "버프",
-            "type":"버프",
-            "description": "2턴 동안 동료 1명이 최대 중첩수의 『활성』을 획득한다. 목표의 생명이 60% 미만일 시 생명을 60%까지 회복시키며, 생명 회복 상한은 카미야마 레오 공격력의 200%이다. 또한 카미야마 공격력의 15%만큼 공격력이 증가한다. 최대 585.6/645.6/609.6/669.6포인트이며, 효과는 2턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "항쟁",
-            "element": "패시브",
-            "description": "『생명 추출』 스킬 지속시간이 끝난 후, 남은 실드값의 100.0%에 따라 생명을 회복한다."
-        },
-        "passive2": {
-            "name": "동행",
-            "element": "패시브",
-            "description": "동료가 『활성』효과 2중첩을 보유할 경우 크리티컬 효과가 추가로 45.0% 증가한다."
-        }
+        "name": "Wonder"
     },
     "렌": {
-        "name": "아마미야 렌",
+        "name": "Ren Amamiya",
         "skill1": {
-            "name": "두려움 없는 억압",
+            "name": "Trickster's Plunder",
             "element": "주원광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 19,
             "cool": 0,
-            "description": "모든 적에게 공격력 83.0%/91.5%/88.1%/96.6%의 주원 속성 대미지를 주고, 20%의 기본 확률로 주원 효과 1중첩을 획득한다. 또한 『반역의 의지』를 1개 획득한다."
+            "description": "Deal Curse damage to all foes equal to 83.0%/91.5%/88.1%/96.6% of Attack. 20% chance to inflict Curse. Also gain 1 Will of Rebellion stack."
         },
         "skill2": {
-            "name": "불길한 징조",
+            "name": "Phantom Omen",
             "element": "주원",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 19,
             "cool": 0,
-            "description": "1명의 적에게 공격력 97.6%/107.6%/103.6%/113.6%의 주원 속성 대미지를 준다. 해당 스킬 사용 시 필드에 적이 1명만 있는 경우, 조커는 『반역의 의지』2개를 회복한다."
+            "description": "Deal Curse damage to 1 foe equal to 97.7%/107.8%/103.8%/113.6% of Attack. When only 1 foe is present, gain 2 Will of Rebellion stacks."
         },
         "skill3": {
-            "name": "액운의 추격",
+            "name": "Arsène's Chains",
             "element": "주원광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 22,
             "cool": 0,
-            "description": "모든 적에게 공격력 74.2%/81.8%/78.7%/86.3%의 주원 속성 대미지를 준다. 추가 턴에서는 해당 스킬로 주는 대미지가 25% 증가한다. 목표가 임의의 디버프 효과를 가진 경우 해당 스킬로 주는 대미지가 25% 추가 증가한다."
+            "description": "Deal Curse damage to all foes equal to 74.2%/81.8%/78.8%/86.3% of Attack. When used on an Extra Action, increase damage by 25%. When attacking foes with debuffs, increase damage by 25% more."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "주원광역",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 134.4%/147.0%/205.0%/217.6%의 주원 속성 대미지를 주고, 『반역의 의지』1개를 획득한다."
+            "type": "광역피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Curse damage to all foes equal to 205.2%/226.2%/217.1%/238.6% of Attack, and gain 1 Will of Rebellion stack."
         },
         "passive1": {
-            "name": "복수",
+            "name": "Resistance",
             "element": "패시브",
-            "description": "『반역의 의지』 1개를 보유할 때마다 공격력이 18.0% 증가한다"
+            "description": "Increase Attack by 18.0% for each Will of Rebellion stack."
         },
         "passive2": {
-            "name": "탐식",
+            "name": "Adverse Resolve",
             "element": "패시브",
-            "description": "추가 턴에서 주는 대미지가 60.0% 증가한다."
-        }
-    },
-    "루우나": {
-        "name": "도겐자카 루우나",
-        "skill1": {
-            "name": "뜨거운 악수",
-            "element": "화염광역",
-            "type":"디버프",
-            "sp": 22,
-            "cool": 0,
-            "description": "모든 적에게 공격력 73.2%/80.7%/77.7%/85.2%의 화염 속성 대미지를 준다. 목표의 방어력이 감소하고(자신의 효과 명중의 15.4%만큼, 상한 26.4%/29.2%/27.9%/30.7%) 화염 속성 스킬을 받을 시 방어력이 추가로 26.4%/26.4%/28.0%/28.0% 감소하며 2턴 동안 지속된다. 또한 50%의 기본 확률로 목표를 화상 상태에 빠뜨린다. 자신이 『열렬한 환영』을 획득한다(방어력 감소 효과와 『악당에 대한 경고』는 중첩 불가)."
-        },
-        "skill2": {
-            "name": "악당에 대한 경고",
-            "element": "화염",
-            "type":"디버프",
-            "sp": 22,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 170.8%/188.3%/181.3%/198.8%의 화염 속성 대미지를 주고, 2턴 동안 목표의 방어력이 14.6%/14.6%/15.5%/15.5%+(자신의 효과 명중의 31.4%, 상한 53.7%/59.3%/56.9%/62.5%) 감소한다. 자신이 『집요한 추격』을 획득한다(방어력 감소 효과와 『뜨거운 악수』는 중첩 불가)."
-        },
-        "skill3": {
-            "name": "GOGO 멍멍!",
-            "element": "화염광역",
-            "type":"디버프",
-            "sp": 24,
-            "cool": 0,
-            "description": "자신이 『열렬한 환영』 또는 『집요한 추격』을 보유하고 있는지에 따라 해당 스킬은 각각 다른 효과가 발동되며, 동시에 하나의 효과만 발동할 수 있다.\n『열렬한 환영』: 모든 적에게 공격력 109.8%/109.8%/116.6%/116.6%의 화염 속성 대미지를 주고, 2턴 동안 목표가 받는 대미지가 증가하며(자신의 효과 명중의 24%만큼, 상한 41.0%/45.2%/43.5%/47.7%), 받는 화염 속성 대미지가 20.5%/22.7%/21.7%/23.9% 증가한다.\n『집요한 추격』: 1명의 적에게 공격력 219.6%/219.6%/233.1%/233.1%의 화염 속성 대미지를 주고, 2턴 동안 목표가 받는 대미지가 증가하며(자신의 효과 명중의 34.3%만큼, 상한 58.6%/64.7%/62.1%/68.2%), 받는 추가 효과 대미지가 29.3%/31.6%/31.8%/34.1% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "화염광역",
-            "type":"디버프",
-            "description": "모든 적에게 공격력 214.7%/236.7%/227.9%/249.9%의 화염 속성 대미지를 주고, 적 진영이 『대악당』 2중첩을 획득한다.\n『대악당』: 적 진영의 임의의 목표가 추격(추가 효과) 스킬 또는 화염 속성 스킬을 받으면 1중첩이 소모되며, 2턴 동안 받는 대미지가 증가한다(자신의 효과 명중의 22.9%만큼, 상한 39.0%/43.0%/41.4%/45.4%)."
-        },
-        "passive1": {
-            "name": "충실",
-            "element": "패시브",
-            "description": "전투 중 자신의 효과 명중 60.0%에 해당하는 공격력 보너스를 획득한다."
-        },
-        "passive2": {
-            "name": "열정",
-            "element": "패시브",
-            "description": "스킬을 사용해 적에게 디버프 효과를 추가한 후 자신의 공격력이 33.0% 증가한다. 동료가 화염 속성 대미지 또는 추가 효과 대미지를 줄 때 동일한 공격력 증가 효과를 획득하며 1턴 동안 지속된다."
-        }
-    },
-    "루페르": {
-        "name": "루페르",
-        "skill1": {
-            "name": "타오르는 불길",
-            "element": "화염",
-            "type":"단일피해",
-            "sp": 22,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 113.2%/124.7%/117.9%/129.4%의 화염 속성 대미지를 주고, 100%의 기본 확률로 적을 2턴 동안 화상 상태에 빠트리고 적이 받는 치료 효과가 30% 감소한다."
-        },
-        "skill2": {
-            "name": "희망의 빔",
-            "element": "치료",
-            "type":"단일치료",
-            "sp": 24,
-            "cool": 0,
-            "description": "동료 1명이 공격력 67.4%/67.4%/70.2%/70.2%+1920/2335/2209/2624의 생명을 회복한다. 목표의 생명이 50% 미만일 경우, 치료 효과가 11.0%/12.0%/19.0%/20.0% 증가한다."
-        },
-        "skill3": {
-            "name": "천사의 연민",
-            "element": "치료광역",
-            "type":"광역치료",
-            "sp": 31,
-            "cool": 0,
-            "description": "모든 동료가 공격력의 42.1%/42.1%/43.8%/43.8%+1191/1449/1378/1636의 생명을 회복하고, 메인 목표 동료에 대한 치료 효과가 16.0%/17.0%/24.0%/25.0% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "치료광역",
-            "type":"광역치료",
-            "description": "모든 동료가 공격력의 59.7%/59.7%/62.2%/62.2%+1700/2067/1956/2323의 생명을 회복하고, 1턴 동안 모든 동료의 공격력이 21.8%/23.1%/33.2%/34.5% 증가한다."
-        },
-        "passive1": {
-            "name": "광명",
-            "element": "패시브",
-            "description": "페르소나 스킬을 사용해 적 공격 시, 임의의 동료 3명이 『별의 불꽃』효과를 획득한다."
-        },
-        "passive2": {
-            "name": "희망",
-            "element": "패시브",
-            "description": "자신의 최대 생명이 치료 효과로 전환되며, 최대 12000의 생명으로 치료 효과를 42.0% 증가시킬 수 있다."
+            "description": "Increase damage on Extra Actions by 72.0%."
         }
     },
     "류지": {
-        "name": "사카모토 류지",
+        "name": "Ryuji Sakamoto",
         "skill1": {
-            "name": "폭발 충돌",
+            "name": "Pirate Tactics",
             "element": "물리",
-            "type":"단일피해",
+            "type": "단일피해",
             "hp": 8,
             "cool": 0,
-            "description": "1명의 적에게 공격력 64.7%/71.3%/68.7%/75.3%의 물리 속성 대미지를 3회 준다. 자신에게 『리바운드』효과가 없는 경우, 해당 스킬은 최대 생명의 20%를 추가로 소모해 해당 스킬의 대미지를 30%, 크리티컬 확률을 30% 증가시킨다."
+            "description": "Deal Physical damage to 1 foe equal to 64.7%/71.3%/68.7%/75.3% of Attack (3 times). When Ryuji doesn't have Rebound, spend 20% of max HP to increase damage dealt by 30% and increase critical rate by 30%."
         },
         "skill2": {
-            "name": "전격의 징계",
+            "name": "Thunderbolt",
             "element": "전격광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 26,
             "cool": 0,
-            "description": "모든 적에게 공격력 67.1%/73.8%/71.3%/78.0%의 전격 속성 대미지를 주고, 29.3%/29.3%/31.1%/31.1%의 기본 확률로 적을 감전 상태에 빠뜨린다. 자신에게 『리바운드』 효과가 있으면 확률이 58.6%/58.6%/62.2%/62.2%까지 증가한다."
+            "description": "Deal Electric damage to all foes equal to 67.1%/73.8%/71.3%/78.0% of Attack, with a 29.3%/29.3%/31.1%/31.1% chance to inflict Shock. When Ryuji has Rebound, increase chance to inflict Shock by 58.6%/58.6%/62.2%/62.2%."
         },
         "skill3": {
-            "name": "차지 일격",
+            "name": "God Hand Burst",
             "element": "물리",
-            "type":"단일피해",
+            "type": "단일피해",
             "hp": 20,
             "cool": 0,
-            "description": "1명의 적을 선택하여 차지하면 다음 턴에서 자동으로 목표에 공격력 323.8%/358.8%/362.6%/397.6%의 물리 속성 대미지를 준다. 자신에게 『리바운드』 효과가 있으면 해당 스킬은 반드시 크리티컬이 발동한다. 차지하는 동안 목표가 사망하면 랜덤으로 다른 적 1명을 선택한다. 류지가 행동 불가 상태인 경우, 행동 가능 상태가 된 이후에 실행한다."
+            "description": "Select 1 foe, and enter the Changing Gears state. On the next action, deal Physical damage to the target equal to 341.6%/376.6%/362.6%/397.6% of Attack. When Ryuji has Rebound, guarantee a critical hit. If the main target is defeated while in Changing Gears, randomly select another foe."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "물리",
-            "type":"단일피해",
-            "description": "1명의 적에게 공격력 405.0%/446.5%/429.9%/471.4%의 물리 대미지를 주며 다음 스킬의 대미지가 58.6%/62.2% 증가한다."
+            "type": "단일피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Physical damage to 1 foe equal to 405.0%/446.5%/429.9%/471.4% of Attack, and increase damage of next skill by 58.6%/58.6%/62.2%/62.2%."
         },
         "passive1": {
-            "name": "특공",
+            "name": "Adrenaline",
             "element": "패시브",
-            "description": "생명 백분율이 자신보다 낮지 않은 적을 공격할 때, 공격력이 45.0% 증가한다."
+            "description": "If the target's remaining HP is higher than Ryuji's, increase Attack by 45.0%."
         },
         "passive2": {
-            "name": "의리",
+            "name": "Rebellious Spirit",
             "element": "패시브",
-            "description": "『리바운드』효과 발동 후, 자신의 공격력 30.0%에 해당하는 생명을 회복한다."
-        }
-    },
-    "리코": {
-        "name": "타네무라 리코",
-        "skill1": {
-            "name": "노을 그림자술",
-            "element": "버프광역",
-            "type":"디버프",
-            "cool": 4,
-            "description": "모든 적의 방어력이 10.0%/10.0%/10.8%/10.8% 감소한다. 리코의 속도가 100포인트 이상일 때, 10포인트를 초과할 때마다 방어력이 추가로 4.9% 감소한다. 최대 29.4%/32.3%/31.8%/34.7% 감소하며, 2턴 동안 지속된다. 동시에 메인 목표의 『허점』이 노출된다."
-        },
-        "skill2": {
-            "name": "매화 환영의 술",
-            "element": "버프광역",
-            "type":"디버프",
-            "cool": 8,
-            "description": "2턴 동안 모든 적이 받는 대미지가 10.5%/11.6%/11.3%/12.4% 증가한다. 아군 괴도가 다운 수치를 감소시키거나 적을 다운시키면, 해당 스킬 시전 후 필요한 준비 시간이 행동 1회만큼 감소한다. 필요한 준비 시간이 행동 0회가 되면, 스킬을 자동으로 1회 시전한다."
-        },
-        "skill3": {
-            "name": "은은한 이슬비",
-            "element": "버프광역",
-            "type":"버프",
-            "cool": 8,
-            "unlock": "『정보』수량이 5중첩 이상",
-            "description": "발동 조건: 『정보』수량이 5중첩 이상\n모든 『정보』를 소모하여 모든 동료에게 『오만』을 부여하고 메인 목표의 생명을 12.7%/12.7%/13.7%/13.7% 회복시킨다.\n『오만』: 주는 대미지가 12.6%/13.8%/13.6%/14.8% 증가하고, 소모한 『정보』마다 추가 대미지 증가를 제공한다 (리코의 속도가 100포인트 이상일 때, 10포인트를 초과할 때마다 주는 대미지가 1.05% 증가, 최대 6.3%/6.9%/6.8%/7.4% 증가). 효과는 1턴 동안 지속된다."
-        },
-        "skill_highlight": {
-            "name": "속성 증가",
-            "element": "패시브",
-            "type":"패시브",
-            "description": "해명 괴도 각 속성의 15%만큼 출전 중인 모든 동료의 상응하는 속성 수치가 증가한다."
-        },
-        "passive1": {
-            "name": "나비의 꿈",
-            "element": "패시브",
-            "description": "전투 진입 시 리코의 속도가 100포인트 이상이면, 1포인트를 초과할 때마다 모든 괴도는 생명 6포인트, 공격력 2포인트, 방어력 2포인트를 획득하며, 최대로 생명 360포인트, 공격력 120포인트, 방어력 120포인트가 증가한다."
-        },
-        "passive2": {
-            "name": "학의 노래",
-            "element": "패시브",
-            "description": "모든 적이 받는 ONEMORE 및 총공격 대미지가 60.0% 증가한다."
-        }
-    },
-    "리코·매화": {
-        "name": "타네무라 리코·매화",
-        "skill1": {
-            "name": "휘날리는 매화꽃",
-            "element": "질풍",
-            "type":"단일피해",
-            "cool": 0,
-            "description": "1명의 적에게 공격력 183.0%/201.7%/194.3%/213.0%의 질풍 속성 대미지를 주고, 2턴 동안 100%의 기본 확률로 목표를 풍습 상태에 빠뜨린다. 또한 목표를 『낙화』 상태에 빠뜨려, 질풍 속성 대미지를 받을 경우 해당 대미지의 공격력이 타네무라 리코·매화 크리티컬 효과의 100%를 초과하는 부분의 18.3%(최대 388.0%/418.0%/418.0%/448.0% 크리티컬 효과)만큼 증가하며 2턴 동안 지속된다.\n타네무라 리코·매화가 SP 16포인트를 회복한다."
-        },
-        "skill2": {
-            "name": "우산 속 매화",
-            "element": "버프광역",
-            "type":"버프",
-            "cool": 0,
-            "description": "2턴 동안 모든 동료의 공격력이 타네무라 리코·매화 크리티컬 효과의 100%를 초과하는 부분의 12.8%(최대 388.0%/418.0%/418.0%/448.0% 크리티컬 효과)만큼 증가하고, SP 4포인트를 회복한다.\n기간 동안 임의의 동료가 페르소나 스킬/추가 효과/HIGHLIGHT 대미지를 줄 때 타네무라 리코·매화가 SP 12포인트를 회복하며 최대 1회 발동한다."
-        },
-        "skill3": {
-            "name": "매화의 잔향",
-            "element": "버프",
-            "type":"버프",
-            "sp": "50 - 200",
-            "cool": 0,
-            "description": "모든 SP를 소모하여 자신을 제외한 동료 1명의 크리티컬 확률을 16.0%/17.0%/17.0%/18.0% 증가시키며, SP를 2포인트 소모할 때마다 다음 효과의 1% 강도만큼 추가 발동되고 2턴 동안 지속된다 (해당 스킬은 타네무라 리코·매화의 388.0%/418.0%/418.0%/448.0% 크리티컬 효과 적용).\n\n· 소모 SP가 50포인트 이상일 시: 공격력 증가, 타네무라 리코·매화의 크리티컬 효과의 100%를 초과하는 부분에서 초과한 1%마다 공격력이 2.4포인트 증가한다.\n· 소모 SP가 100포인트 이상일 시: 크리티컬 효과 증가, 타네무라 리코·매화의 크리티컬 효과가 100%를 초과하는 부분의 12%만큼 증가한다.\n· 소모 SP가 150포인트 이상일 시: 크리티컬 효과 추가 증가, 타네무라 리코·매화의 크리티컬 효과가 100%를 초과하는 부분의 6%만큼 증가한다."
-        },
-        "skill_highlight": {
-            "element": "버프",
-            "type":"버프",
-            "description": "2턴 동안 자신을 제외한 동료 1명의 공격력이 증가하며(타네무라 리코·매화의 크리티컬 효과의 100%를 초과하는 부분에서, 초과한 1%마다 공격력 2.5포인트 증가, 최대 388.0%/418.0%/418.0%/448.0% 크리티컬 효과 적용), 크리티컬 효과는 24.4%/[제보]/[제보]/28.4% 증가한다.\n자신을 제외한 모든 동료의 SP를 20포인트 회복한다."
-        },
-        "passive1": {
-            "name": "만개",
-            "element": "패시브",
-            "description": "타네무라 리코·매화가 『매화의 잔향』을 사용한 후, 스킬 메인 목표가 2턴 동안 지속되는 『꽃망울』 상태를 획득한다.\n 스킬 대미지를 1회 줄 때마다 『개화』를 1중첩을 획득해 공격력이 30 증가하며 3턴 동안 지속된다(10회 중첩 가능).\n『개화』가 5중첩 도달 시, 공격력이 타네무라 리코·매화 크리티컬 효과의 100%를 초과하는 부분의 8.0%만큼 추가 증가한다.\n 『개화』가 10중첩 도달 시, 크리티컬 효과가 타네무라 리코·매화 크리티컬 효과의 100%를 초과하는 부분의 10.0%만큼 추가 증가한다."
-        },
-        "passive2": {
-            "name": "활기",
-            "element": "패시브",
-            "description": "전투 중 자신의 SP 회복에 따라 크리티컬 효과가 증가하며, 최대 450.0%의 SP를 회복해 84.0%의 크리티컬 효과가 증가한다."
-        }
-    },
-    "마사키": {
-        "name": "아시야 마사키",
-        "skill1": {
-            "name": "연민의 축복",
-            "element": "빙결",
-            "type":"단일피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "지정된 적 1명에게 방어력 149.2%/164.2%/158.4%/173.4%의 빙결 속성 대미지를 주고, 다른 적 유닛에게 방어력 44.8%/50.3%/47.6%/53.1%의 빙결 속성 대미지를 주며, 97.6%/97.6%/103.6%/103.6%의 기본 확률로 메인 목표를 동결 상태에 빠뜨린다. 동시에 아시야 마사키는 『용맹』을 2포인트 회복한다. 아시야 마사키는 『정의 선언』 상태일 경우, 2턴 동안 메인 목표가 받는 대미지가 추가 증가한다(아시야 마사키가 방어 600포인트를 보유할 때마다 메인 목표가 받는 대미지 1% 증가, 최대 9.8%/10.8%/10.4%/11.4% 증가). 하지만 『용맹』 회복량이 1포인트로 감소한다."
-        },
-        "skill2": {
-            "name": "명예 수호",
-            "element": "버프",
-            "type":"실드",
-            "sp": 26,
-            "cool": 0,
-            "description": "동료 1명이 방어력 22.8%/22.8%/24.2%/24.2%+650/790/799/939의 대미지를 막을 수 있는 『정직의 성인』을 1중첩 획득하고, 아시야 마사키 방어력의 20%(최대 1220/1345/1295/1420포인트)만큼 방어력이 증가한다. 효과는 2턴 동안 지속된다. 해당 효과를 획득할 때 해당 동료의 생명이 60%보다 높으면, 공격받을 확률이 50% 증가한다. 아시야 마사키의 다음 턴이 시작되면, 해당 동료가 다시 『정직의 성인』 1중첩을 획득한다. 아시야 마사키가 『정의 선언』 상태일 경우, 2턴 동안 발동하는 『정직의 성인』 실드량이 추가로 25% 증가한다."
-        },
-        "skill3": {
-            "name": "영혼의 기도",
-            "element": "버프광역",
-            "type":"실드",
-            "sp": 30,
-            "cool": 1,
-            "description": "즉시 모든 동료에게 방어력 12%+360의 대미지를 막을 수 있는 『정직의 성인』 1중첩과 방어력 49.2%/49.2%/52.2%/52.2%+1400/1705/1721/2026의 대미지를 막을 수 있는 『성결의 가호』 1중첩을 추가한다. 동시에 모든 동료가 다운 수치 1포인트와 주는 대미지 증가 효과(아시야 마사키가 방어력 300포인트를 보유할 때마다 주는 대미지 1% 증가, 19.5%/21.5%/20.7%/22.7% 증가)를 획득하며 2턴 동안 지속된다."
-        },
-        "skill_highlight": {
-            "element": "버프광역",
-            "type":"실드",
-            "description": "즉시 모든 동료에게 방어력 59.0%/59.0%/62.7%/62.7%+1681/2044/2066/2429의 대미지를 막을 수 있는 『성결의 가호』 1중첩을 추가한다. 동시에 모든 동료가 받는 대미지가 31.9%/35.1%/33.9%/37.1% 감소하며 2턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "희생",
-            "element": "패시브",
-            "description": "아시야 마사키의 실드 보호를 받는 동료의 방어력이 24.0% 증가한다."
-        },
-        "passive2": {
-            "name": "겸손",
-            "element": "패시브",
-            "description": "아시야 마사키의 실드 보호를 받는 동료의 효과 저항이 48.0% 증가한다."
-        }
-    },
-    "마코토": {
-        "name": "니지마 마코토",
-        "skill1": {
-            "name": "펄스 연타",
-            "element": "핵열광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "임의의 적에게 공격력 83.0%/91.5%/88.1%/96.6%의 핵열 속성 대미지를 5회 주고, 해당 스킬 공격을 받지 않은 적을 우선 공격한다. 여러번의 대미지가 하나의 목표에 명중한 경우 20%의 대미지만 줄 수 있다. 메인 목표가 원소 이상 상태일 경우, TECHNICAL을 주고, 목표에게 추가로 공격력 29.3%/29.3%/31.1%/31.1%의 핵열 속성 대미지를 준다. 100%의 기본 확률로 메인 목표를 『방사선』 상태에 빠뜨린다."
-        },
-        "skill2": {
-            "name": "핵열 공진",
-            "element": "치료",
-            "type":"단일치료",
-            "sp": 22,
-            "cool": 0,
-            "description": "동료 1명에게 니지마 마코토 공격력의 52.7%/52.7%/55.9%/55.9%+1500/1824/1844/2168만큼 생명을 회복시키고, 자신의 공격력이 48.8%/53.8%/51.8%/56.8% 증가한다. 다음 턴 종료 시까지 지속된다. 자신이 『강인』 효과를 2중첩을 획득하고, 적이 보유한 원소 이상 종류에 따라 상응한 수량의 『강인』 효과를 추가 획득한다."
-        },
-        "skill3": {
-            "name": "핵열 치명타",
-            "element": "핵열",
-            "type":"단일피해",
-            "sp": 21,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 210.6%/232.1%/223.6%/245.1%의 핵열 속성 대미지를 주며 목표가 원소 이상 상태일 경우 TECHNICAL을 주고, 공격력 39.0%/43.0%/41.4%/45.4%의 핵열 속성 대미지를 1단 추가로 준다. 자신이 『강인』 효과를 2중첩 획득한다.\n『철의 의지』 상태에서 해당 스킬은 『핵융합 과부하』로 레벨업한다.\n\n『핵융합 과부하』: 1명의 적에게 공격력 243.6%/268.5%/258.6%/283.5%의 핵열 속성 대미지를 주며 목표라 원소 이상 상태를 1종 보유할 때마다 TECHNICAL을 주고, 공격력 34.2%/37.7%/36.3%/39.8%의 핵열 속성 대미지를 추가로 1단 준다(최대 3단)."
-        },
-        "skill_highlight": {
-            "element": "핵열",
-            "type":"단일피해",
-            "description": "『열물질』 2중첩을 획득하고 즉시 다음의 효과가 적용된 후, 1명의 적에게 공격력 390.4%/430.4%/414.4%/454.4%의 핵열 속성 대미지를 준다. 현재 『열물질』을 소모해 1중첩 소모할 때마다 적에게 임의의 원소 이상을 1개 추가하며, 적이 원소 이상 2개를 보유할 때까지 지속된다. 남은 『열물질』을 모두 소모하며, 1중첩 소모할 때마다 이번 스킬의 대미지가 20% 증가한다."
-        },
-        "passive1": {
-            "name": "응집",
-            "element": "패시브",
-            "description": "필드에 한 종류의 원소 이상이 있을 때마다, 니지마 마코토의 공격력이 15.0% 증가한다."
-        },
-        "passive2": {
-            "name": "의지",
-            "element": "패시브",
-            "description": "전투 시작 시 대미지 감소율이 2.0%/4.0%/4.0%/6.0% 증가하며, 『철의 의지』 상태에 진입할 때마다 대미지 감소율이 6.0% 추가로 증가하고, 최대 18.0% 증가한다."
-        }
-    },
-    "미나미": {
-        "name": "미야시타 미나미",
-        "skill1": {
-            "name": "은방울꽃 계시",
-            "element": "축복",
-            "type":"단일피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 최대 생명 56.9%/62.7%/60.4%/66.2%의 축복 속성 대미지를 주고, 모든 동료가 축복 효과 1중첩을 획득한다. 동시에 자신은 『암리타』 효과 1중첩을 획득한다."
-        },
-        "skill2": {
-            "name": "치유의 축복",
-            "element": "치료",
-            "type":"제거",
-            "sp": 25,
-            "cool": 0,
-            "description": "즉시 지정 아군 유닛과 현재 생명이 가장 적은 괴도 1명의 생명을 미야시타 미나미의 최대 생명 17.4%/17.4%/18.5%/18.5%+1488/1810/1829/2151만큼 회복시키고, 디버프 상태 2종을 제거한다. 동시에 치료를 받은 괴도는 축복 효과를 1중첩 획득하며, 해당 괴도의 턴 시작 시 미야시타 미나미 최대 생명 13.9%/13.9%/14.8%/14.8%+1190/1446/1463/1719만큼의 생명을 회복시킨다. 효과는 2턴 동안 지속된다.\n자신이 『암리타』 효과를 1중첩 획득한다."
-        },
-        "skill3": {
-            "name": "봄의 은혜",
-            "element": "치료광역",
-            "type":"광역치료",
-            "sp": 32,
-            "cool": 0,
-            "description": "모든 암리타 중첩수를 소모해 지정한 아군 유닛의 생명을 미야시타 미나미의 최대 생명 15.8%/15.8%/16.8%/16.8%+1347/1665/1656/1974만큼 회복시키고, 같은 치료 효과로 현재 생명이 가장 적은 괴도를 2회 치료한다. 『암리타』 효과를 1중첩 소모할 때마다 1회 추가 치료한다. 동시에 『암리타』 효과를 1중첩 소모할 때마다 자신을 제외한 기타 괴도는 미야시타 미나미의 최대 생명 7.5%(최대 1057/1057/1226/1226)만큼의 최대 생명 증가 효과를 1중첩 획득하며 2턴 동안 지속된다."
-        },
-        "skill_highlight": {
-            "element": "치료광역",
-            "type":"광역치료",
-            "description": "즉시 전체 아군 괴도가 미야시타 미나미의 최대 생명 17.6%/17.6%/18.6%/18.6%+1500/1824/1844/2168의 생명을 회복하고 디버프 상태 1종을 제거하며, 목표는 미야시타 미나미의 최대 생명 16.5%(최대 2326/2326/2697/2697포인트)만큼의 최대 생명 증가 효과를 획득한다. 효과는 2턴 동안 지속된다. 동시에 목표 행동 후 미야시타 미나미의 최대 생명 6.5%/6.5%/6.9%/6.9%+556/676/683/803만큼의 생명을 회복하며 1턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "축복",
-            "element": "패시브",
-            "description": "치료를 받은 유닛은 자신의 축복 효과 중첩수에 따라 1턴 동안 대미지 증가를 획득하며, 증가값은(15.0%3.0%×축복 효과 중첩수, 최대 30.0%)이다."
-        },
-        "passive2": {
-            "name": "자비심",
-            "element": "패시브",
-            "description": "전투 진입 시 미나미의 최대 생명의 10.0%에 따라 모든 괴도의 최대 생명이 증가한다.(최대 1500포인트)"
-        }
-    },
-    "미유": {
-        "name": "사하라 미유",
-        "skill1": {
-            "name": "태평의 노래",
-            "element": "버프광역",
-            "type":"실드",
-            "cool": 8,
-            "description": "2턴 동안 모든 동료는 방어력 29.3%/29.3%/31.6%/31.6%+1110/1330/1437/1657의 실드를 획득한다. 또한 SP를 4포인트 회복하며, 실드가 깨지면 해명 괴도의 준비 시간에서 행동 1회가 감소한다."
-        },
-        "skill2": {
-            "name": "교차의 춤",
-            "element": "버프",
-            "type":"실드",
-            "cool": 8,
-            "description": "동료 1명이 방어력 67.2%/67.2%/72.6%/72.6%+2542/3042/3290/3790의 실드를 획득하고, 동료가 받는 약점 대미지가 20% 감소한다. 효과는 2턴 동안 지속된다. 스킬 목표는 즉시 다운 수치 2포인트와 『바다의 수호』 2중첩을 획득한다."
-        },
-        "skill3": {
-            "name": "여명의 거품",
-            "element": "버프광역",
-            "type":"버프",
-            "cool": 12,
-            "description": "모든 동료가 3턴 동안 방어력 33.2%/33.2%/35.9%/35.9%+1259/1409/1629/1779+목표의 『바다의 수호』 중첩수*(방어력 6.9%/6.9%/7.5%/7.5%+260/260/336/336)의 실드를 획득한다. 『바다의 수호』가 4중첩 이상이면, 매 중첩마다 동료가 주는 대미지가 3턴 동안 2.0%/2.0%/2.2%/2.2% 증가한다. 실드 지속 시간이 끝나거나 처치당하면 동료가 가진 대미지 증가 효과가 사라지고 『바다의 수호』 2중첩을 잃는다."
-        },
-        "skill_highlight": {
-            "name": "속성 증가",
-            "element": "패시브",
-            "type":"패시브",
-            "description": "해명 괴도 각 속성의 15%만큼 출전 중인 모든 동료의 상응하는 속성 수치가 증가한다."
-        },
-        "passive1": {
-            "name": "얽매임",
-            "element": "패시브",
-            "description": "미유가 제공하는 실드량이 (필드의 전체 『바다의 수호』 중첩수)*1.0%만큼 증가한다."
-        },
-        "passive2": {
-            "name": "동경",
-            "element": "패시브",
-            "description": "『바다의 수호』 중첩마다 추가 효과를 획득해 동료의 방어력이 3.6% 증가한다."
+            "description": "When Ryuji has Rebound and uses Pirate Tactics, Thunderbolt, or God Hand Burst, restore HP equal to 30.0% of his Attack."
         }
     },
     "모르가나": {
-        "name": "모르가나",
+        "name": "Morgana",
         "skill1": {
-            "name": "질풍 강습",
+            "name": "Missile Whirlwind",
             "element": "질풍",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 22,
             "cool": 0,
-            "description": "1명의 적에게 공격력 146.4%/161.4%/155.4%/170.4%의 질풍 속성 대미지를 주고, 100%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다. 풍습 효과를 추가하면 고정 확률로 『직감』을 획득한다(획득하는 고정 확률은 현재 크리티컬 확률과 동일)."
+            "description": "Deal Wind damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack. Inflict Windswept on target for 2 turns. Chance to gain 1 Chivalry stack (chance is equal to current critical rate)."
         },
         "skill2": {
-            "name": "치유술",
+            "name": "Healing Breeze",
             "element": "치료광역",
-            "type":"광역치료",
+            "type": "광역치료",
             "sp": 33,
             "cool": 0,
-            "description": "모든 동료가 공격력 37.6%/37.6%/39.9%/39.9%+1069/1300/1315/1546의 생명을 회복하고, 모든 동료의 원소 이상 상태 1개를 제거한다. 제거 성공 즉시 『직감』을 획득한다."
+            "description": "Restore party's HP by 37.6%/37.6%/39.9%/39.9% of Morgana's Attack + 1069/1300/1315/1546, and heal 1 elemental ailment. When healing an elemental ailment, gain 1 Chivalry stack."
         },
         "skill3": {
-            "name": "젠틀 펀치",
+            "name": "Gentle Fist",
             "element": "물리",
-            "type":"단일피해",
+            "type": "단일피해",
             "hp": 12,
             "cool": 0,
-            "description": "1명의 적에게 공격력 128.9%/142.1%/136.9%/150.1%의 물리 속성 대미지를 준다. 해당 스킬의 명중률이 20% 감소하고 크리티컬 확률이 30% 증가한다. 해당 스킬 크리티컬 발동 즉시 『직감』을 1개 획득한다."
+            "description": "Decrease this skill's accuracy by 20%, increase critical rate by 30%, and deal Physical damage to 1 foe equal to 128.9%/142.1%/136.9%/150.1% of Attack. On a critical hit, gain 1 Chivalry stack."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "질풍",
-            "type":"치료단일",
-            "description": "1명의 적에게 공격력 227.8%/251.1%/241.8%/265.1%의 질풍 속성 대미지를 주고, 동료 1명을 최대 생명의 20% 상태로 부활시킨다."
+            "type": "치료단일",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Wind damage to 1 foe equal to 227.8%/251.1%/241.8%/265.1% of Attack, and revive KO'd allies with 20% HP."
         },
         "passive1": {
-            "name": "자신",
+            "name": "Masked Gentleman",
             "element": "패시브",
-            "description": "『직감』의 치료 효과는 크리티컬이 적용될 수 있으며, 추가로 30.0%의 크리티컬 확률을 획득한다. 크리티컬 시 『직감』의 회복량은 공격력 24.0%+720.0만큼 추가로 증가한다."
+            "description": "When healing with Chivalry, increase critical rate by 30.0%. When inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720."
         },
         "passive2": {
-            "name": "속박",
+            "name": "Morgana's Method",
             "element": "패시브",
-            "description": "빛의 고리: 모든 동료의 SP 소모가 15.0% 감소한다."
+            "description": "Decrease party's healing skill SP cost by 15.0%."
+        }
+    },
+    "안": {
+        "name": "Ann Takamaki",
+        "skill1": {
+            "name": "Crimson Rose",
+            "element": "화염광역",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Fire damage to all foes equal to 94.8%/102.6%/100.6%/108.4% of Attack, and increase Ann's Attack by 20% for 2 turns. When Ann has La Vie en Rose, for 2 turns, decrease foes' Attack by 8% of Ann's Attack and increase her Attack by the same amount."
+        },
+        "skill2": {
+            "name": "Trifire",
+            "element": "화염",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Fire damage to 1 foe equal to 134.2%/147.9%/142.5%/156.2% of Attack, with 75% chance to inflict Burn. When Ann has La Vie en Rose, and the foe's HP is below 50%, deal 30% bonus damage."
+        },
+        "skill3": {
+            "name": "Falling Sun",
+            "element": "화염광역",
+            "type": "광역피해",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deal Fire damage to all foes equal to 96.3%/106.1%/102.3%/112.1% of Attack, with 30% chance to inflict Burn. When Ann has La Vie en Rose, deal 30% more damage."
+        },
+        "skill_highlight": {
+            "name": "Highlight",
+            "element": "화염광역",
+            "type": "광역피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Fire damage to all foes equal to 195.2%/215.2%/207.2%/227.2% of Attack. Increase damage of Ann's Fire skills by 78.1%/86.1%/82.9%/90.9% for 1 turn."
+        },
+        "passive1": {
+            "name": "Rising Tension",
+            "element": "패시브",
+            "description": "Activate a Fire technical when using a skill or Highlight. When Fireburn activates, increase that skill or Highlight's damage by 30.0%."
+        },
+        "passive2": {
+            "name": "Carrot and Stick",
+            "element": "패시브",
+            "description": "When La Vie en Rose ends, restore HP to the ally with the lowest remaining HP by 45.0% of Ann's Attack."
+        }
+    },
+    "야오링": {
+        "name": "Li Yaoling",
+        "skill1": {
+            "name": "Underworld Ferry",
+            "element": "주원광역",
+            "type": "디버프 중첩",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Curse damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack. Decrease foes' Defense by 3% for every 10 points of Yaoling's Speed for 2 turns (up to 49.7%/54.8%/53.5%/58.6%). Also gain 4 Memory stacks for each foe attacked."
+        },
+        "skill2": {
+            "name": "Flowers of Naihe",
+            "element": "주원",
+            "type": "제어",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deal Curse damage to 1 foe equal to 97.6%/107.6%/103.6%/113.6% of Attack. If foe has a debuff, increase damage by 20%. When spending Meng Po Soup, inflict Forget on target for 2 turns. If foe is inflicted with Forget or another spiritual ailment, increase their damage taken by 2% for every 10 points of Yaoling's Speed (up to 32.3%/32.3%/34.3%/34.3%) for 1 turn."
+        },
+        "skill3": {
+            "name": "Lion Dance of Oblivion",
+            "element": "주원광역",
+            "type": "디버프",
+            "sp": 24,
+            "cool": 0,
+            "description": "Deal Curse damage to all foes equal to 78.1%/86.1%/82.9%/90.9% of Attack, and inflict Red Spider Lily for 2 turns. When spending Meng Po Soup, the damage increase effect of Red Spider Lily is doubled. Red Spider Lily: Increase damage taken by foes by 3% for every 10 points of Yaoling's Speed (up to 48.5%/53.5%/52.3%/57.3%). Lasts for 2 turns, or until damage is taken 2 times."
+        },
+        "skill_highlight": {
+            "name": "Highlight",
+            "element": "주원광역",
+            "type": "디버프",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Curse damage to all foes equal to 146.4%/161.4%/155.4%/170.4% of Attack, and increase target's damage taken by 48.8%/53.8%/51.8%/56.8%. 30% chance to inflict Forget on foes for 2 turns."
+        },
+        "passive1": {
+            "name": "Kung Fu Mastery",
+            "element": "패시브",
+            "description": "Increase Attack by 1% for every 2 points of Yaoling's Speed (up to 90.0%)."
+        },
+        "passive2": {
+            "name": "Up to Chance",
+            "element": "패시브",
+            "description": "When attacking a foe with more than 50% HP, increase foe's Curse damage taken by 30.0%."
+        }
+    },
+    "하루나": {
+        "name": "Haruna Nishimori",
+        "skill1": {
+            "name": "Surprise Squad",
+            "element": "염동",
+            "type": "단일 피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Psychokinesis damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack, and grant Affection to party for 1 turn. Affection: When dealing damage with a skill, Haruna gains 1 Childish Heart stack."
+        },
+        "skill2": {
+            "name": "Ready for Adventure",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 22,
+            "cool": 0,
+            "description": "Increase party's healing received and shield received by 17.6%/19.4%/18.7%/20.5%, and Defense by 34.2%/37.7%/36.3%/39.8% for 2 turns. If Haruna does not have Childish Heart, gain 2 Childish Heart stacks."
+        },
+        "skill3": {
+            "name": "Courageous Campaign",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 24,
+            "cool": 0,
+            "description": "This skill requires Childish Heart. When used with Childish Heart, increase party's Attack by 10% for 2 turns. At 2 or more stacks of Childish Heart, also increase party's damage dealt by 1% for every 100 of Haruna's Attack, up to 48.8%/53.8%/51.8%/56.8%."
+        },
+        "skill_highlight": {
+            "name": "Highlight",
+            "element": "염동",
+            "type": "버프",
+            "sp": 0,
+            "cool": 0,
+            "description": "When Haruna gains Childish Heart, gain 1 Mystery stack for 2 turns (stacks up to 5 times). Deal Psychokinesis damage to 1 foe equal to 336.0%/373.5%/388.5%/426.0% of Attack and increase party's damage for 1 turn by 7.8%/8.6%/8.3%/9.1% for each stack of Mystery."
+        },
+        "passive1": {
+            "name": "Let's Hold Hands",
+            "element": "패시브",
+            "description": "Each time an ally with Affection deals damage, 40.0% chance to gain 1 Childish Heart stack."
+        },
+        "passive2": {
+            "name": "Safety in Numbers",
+            "element": "패시브",
+            "description": "When spending 3 or more Childish Heart stacks at once, further increase effects of Off to Treasure Hunt by 24.0%."
+        }
+    },
+    "루페르": {
+        "name": "Lufel",
+        "skill1": {
+            "name": "Owl Fire",
+            "element": "화염",
+            "type": "단일피해",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deal Fire damage to 1 foe equal to 113.2%/124.7%/117.9%/129.4% of Attack, inflict Burn for 2 turns, and decrease healing received by 30%."
+        },
+        "skill2": {
+            "name": "Owl Green",
+            "element": "치료",
+            "type": "단일치료",
+            "sp": 24,
+            "cool": 0,
+            "description": "Restore 1 ally's HP by 67.4%/67.4%/70.2%/70.2% of Lufel's Attack + 1920/2335/2209/2624. If target's HP is below 50%, increase healing effect by 11.0%/12.0%/19.0%/20.0%."
+        },
+        "skill3": {
+            "name": "Healing Satellite",
+            "element": "치료광역",
+            "type": "광역치료",
+            "sp": 31,
+            "cool": 0,
+            "description": "Restore party's HP by 42.1%/42.1%/43.8%/43.8% of Lufel's Attack + 1191/1449/1378/1636. Increase healing effect on the main target by 16.0%/17.0%/24.0%/25.0%."
+        },
+        "skill_highlight": {
+            "name": "Highlight",
+            "element": "치료광역",
+            "type": "광역치료",
+            "sp": 0,
+            "cool": 0,
+            "description": "Restore HP to party by 59.7%/59.7%/62.2%/62.2% of Lufel's Attack + 1700/2067/1956/2323. Increase party's Attack by 21.8%/23.1%/33.2%/34.5% for 1 turn."
+        },
+        "passive1": {
+            "name": "Forest Sage",
+            "element": "패시브",
+            "description": "After attacking with a skill, grant Starfire to up to 3 allies."
+        },
+        "passive2": {
+            "name": "Sparks of Support",
+            "element": "패시브",
+            "description": "Increase healing effect based on Lufel's max HP. The effect is maximized at 12000 HP, and healing effect will increase by 42.0%."
+        }
+    },
+    "레오": {
+        "name": "Leon Kamiyama",
+        "skill1": {
+            "name": "Atomic Smash",
+            "element": "핵열",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Nuclear damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack. For each stack of Power of Friendship the party has, increase damage by 10%."
+        },
+        "skill2": {
+            "name": "Justice Barrier",
+            "element": "치료",
+            "type": "버프",
+            "sp": 20,
+            "cool": 0,
+            "description": "Spend 30% of 1 other ally's remaining HP to grant them a shield equal to 80% of HP spent + 31.6%/31.6%/32.9%/32.9% of Kamiyama's Attack + 900/1095/1035/1230 for 2 turns. Also grant 1 Power of Friendship stack."
+        },
+        "skill3": {
+            "name": "Ultima Booster",
+            "element": "버프",
+            "type": "버프",
+            "sp": 24,
+            "cool": 0,
+            "description": "Increase 1 ally's Attack by 19.5%/19.5%/20.3%/20.3% for 2 turns. For each stack of Power of Friendship the target has, increase Attack by 20% of Kamiyama's Attack more (up to 1516.7/1672.1/1578.9/1734.3)."
+        },
+        "skill_highlight": {
+            "element": "버프",
+            "type": "버프",
+            "description": "Grant the maximum number of Power of Friendship stacks to 1 ally for 2 turns. If the target's HP is below 60%, restore HP up to 60% (up to 200% of Kamiyama's Attack). Also, increase Attack by 15% of Kamiyama's Attack (up to 585.6/645.6/609.6/669.6) for 2 turns."
+        },
+        "passive1": {
+            "name": "Energy Recharge",
+            "element": "패시브",
+            "description": "When Justice Barrier ends, restore HP equal to 100.0% of remaining shield."
+        },
+        "passive2": {
+            "name": "Full Power: Start!",
+            "element": "패시브",
+            "description": "Increase allies' critical damage by 45.0% when they have 2 Power of Friendship stacks."
         }
     },
     "모토하": {
-        "name": "아라이 모토하",
+        "name": "Motoha Arai",
         "skill1": {
-            "name": "천둥의 격노",
+            "name": "Wrathful Thunder",
             "element": "전격광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "4개의 천뢰를 발사하여 공격력 76.7%/84.5%/79.9%/87.7%의 전격 속성 대미지를 주고, 100%의 기본 확률로 스킬 메인 목표를 감전 상태에 빠뜨린다. 동일한 목표에게 후속 공격 시 대미지를 10%만 줄 수 있으며, 천뢰는 공격하지 않은 목표를 우선 선택한다."
+            "description": "Deal Electric damage to random foes equal to 76.7%/84.5%/79.9%/87.7% of Attack (4 hits), and inflict Shock on main target for 2 turns. Prioritizes targeting different foes, and repeated hits on same foe deal 10% decreased damage."
         },
         "skill2": {
-            "name": "초고속 전격",
+            "name": "Blitz Mine",
             "element": "전격",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 18,
             "cool": 0,
-            "description": "1명의 적에게 공격력 157.1%/173.2%/163.6%/179.7%의 전격 속성 대미지를 주고, 2턴 동안 모든 동료가 주는 전격 속성 대미지가 11.7%/11.7%/12.2%/12.2% 증가한다."
+            "description": "Deal Electric damage to 1 foe equal to 157.1%/173.2%/163.6%/179.7% of Attack. Increase party's Electric damage by 11.7%/11.7%/12.2%/12.2% for 2 turns."
         },
         "skill3": {
-            "name": "전기 상어",
+            "name": "Electroshark",
             "element": "전격광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 24,
             "cool": 0,
-            "description": "모든 적에게 공격력 79.3%/87.4%/82.5%/90.6%의 전격 속성 대미지를 준다. 필드에 감전 상태인 적이 있는 경우 TECHNICAL를 주고 모든 적에게 공격력 42.8%/47.2%/44.5%/48.9%의 전격 속성 대미지를 1회 추가로 준다."
+            "description": "Deal Electric damage to all foes equal to 79.3%/87.4%/82.5%/90.6% of Attack. If a foe is Shocked, activate a Technical and deal bonus Electric damage equal to 42.8%/47.2%/44.5%/48.9% of Attack."
         },
         "skill_highlight": {
             "element": "전격",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 162.4%/179.0%/169.1%/185.7%의 전격 속성 대미지를 주고, 100%의 고정 확률로 2턴 동안 스킬 메인 목표를 감전 상태에 빠뜨린다. 해당 적이 받는 전격 대미지가 10% 증가하며 2턴 동안 지속된다."
+            "type": "광역피해",
+            "description": "Deal Electric damage to all foes equal to 162.4%/179.0%/169.1%/185.7% of Attack, inflict Shock on the main target for 2 turns, and increase Electric damage taken by 10% for 2 turns."
         },
         "passive1": {
-            "name": "힘",
+            "name": "Extra Inning",
             "element": "패시브",
-            "description": "감전 효과 부여 시 66.0%의 고정 확률로 감전 효과를 1턴 연장한다."
+            "description": "When foes are Shocked, 66.0% chance to extend effect duration by 1 turn."
         },
         "passive2": {
-            "name": "수호",
+            "name": "Line Drive to Pitcher",
             "element": "패시브",
-            "description": "페르소나 스킬을 사용 후 2턴 동안 스킬 메인 목표가 받는 전격 속성 대미지가 20.0% 증가한다(2회 중첩 가능)."
-        }
-    },
-    "모토하·여름": {
-        "name": "아라이 모토하·여름",
-        "skill1": {
-            "name": "여름날 마법",
-            "element": "축복광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 87.8%/96.8%/93.2%/102.2%의 축복 속성 대미지를 준다. 자신이 『한여름』 상태일 경우, 자신의 최대 생명 10%의 HP를 소모하여 추가로 모든 적에게 공격력 29.3%/32.3%/31.1%/34.1%의 축복 속성 대미지를 1회 준다."
-        },
-        "skill2": {
-            "name": "여유로운 휴가",
-            "element": "축복",
-            "type":"단일피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 136.6%/150.6%/145.0%/159.0%의 축복 속성 대미지를 주고, 자신의 최대 생명 20%의 HP를 회복한다. 자신이 『한여름』 상태일 경우, 목표에게 추가로 공격력 34.2%/37.7%/36.3%/39.8%의 축복 속성 대미지를 1회 준다."
-        },
-        "skill3": {
-            "name": "파도 추격자",
-            "element": "축복광역",
-            "type":"광역피해",
-            "sp": 24,
-            "cool": 5,
-            "description": "자신이 즉시 『한여름』 상태를 획득하며 다음 턴 종료까지 지속된다. 자신의 최대 생명 15%의 HP를 소모해 모든 적에게 공격력 146.4%/161.4%/155.4%/170.4%의 축복 속성 대미지를 준다. 『한여름』 상태에서 자신의 크리티컬 확률이 9.8%/9.8%/10.4%/10.4% 증가하고, 대미지가 29.3%/29.3%/31.1%/31.1% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "축복광역",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 195.2%/215.2%/207.2%/227.2%의 축복 속성 대미지를 주고, 자신의 최대 생명 20%의 HP를 회복한다. 자신의 HP가 50% 이상일 경우, HIGHLIGHT 스킬 대미지가 25% 추가 증가한다."
-        },
-        "passive1": {
-            "name": "그늘",
-            "element": "패시브",
-            "description": "자신이 초과 치료를 받을 시, 2턴 동안 대미지가 30.0% 증가한다."
-        },
-        "passive2": {
-            "name": "무더위",
-            "element": "패시브",
-            "description": "전투 중 자신의 최대 생명이 8000 초과 시, 추가로 100포인트의 최대 생명이 있을 때마다 24포인트의 공격력 보너스를 획득하며 상한은 1920이다."
+            "description": "Increase Electric damage taken by main target of a skill by 20.0% for 2 turns. Stacks up to 2 times."
         }
     },
     "몽타뉴": {
-        "name": "코토네 몽타뉴",
+        "name": "Kotone Montagne",
         "skill1": {
-            "name": "피어나는 얼음",
+            "name": "Frost Lily",
             "element": "빙결광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "모든 적에게 공격력 87.1%/96.1%/90.6%/99.6%의 빙결 속성 대미지를 주고, 29.3%/29.3%/31.1%/31.1%의 기본 확률로 적을 동결 상태에 빠뜨린다."
+            "description": "Deal Ice damage to all foes equal to 87.1%/96.1%/90.6%/99.6% of Attack. 29.3%/29.3%/31.1%/31.1% chance to inflict Freeze."
         },
         "skill2": {
-            "name": "매서운 겨울",
+            "name": "Winter Storm",
             "element": "빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "1명의 적에게 공격력 160.4%/176.9%/166.9%/183.4%의 빙결 속성 대미지를 주고, 『얼음 결정』 4개를 획득한다."
+            "description": "Deal Ice damage to 1 foe equal to 160.4%/176.9%/166.9%/183.4% of Attack. Gain 4 Ice Crystal stacks."
         },
         "skill3": {
-            "name": "차가운 칼날",
+            "name": "Durandal of Ice",
             "element": "빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "1명의 적에게 공격력 179.7%/198.1%/187.1%/205.5%의 빙결 속성 대미지를 주고, 이때 『얼음 결정』 10개 또는 『서리 표식』 보유 시 해당 스킬에 추가 대미지가 증가한다. 적의 생명이 낮을수록 대미지 증가가 높아지고 최대 29.3%/29.3%/30.5%/30.5% 증가한다.\n패시브: 『칼끝의 댄서』가 추가 대미지 증가를 획득한다. 적의 생명이 낮을수록 대미지 증가가 높아지고 최대 29.3%/29.3%/30.5%/30.5% 증가한다."
+            "description": "Deal Ice damage to 1 foe equal to 179.7%/198.1%/187.1%/205.5% of Attack. When Kotone has Parhelion or 10+ Ice Crystal stacks, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%). When Blade Dancer is activated, increase follow-up damage dealt based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%)."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "빙결",
-            "type":"단일피해",
-            "description": "1명의 적에게 공격력 292.8%/322.8%/304.8%/334.8%의 빙결 속성 대미지를 준다. 적의 생명이 낮을수록 받는 대미지가 높아진다. 적의 생명이 20% 미만일 때 최고 30%의 대미지 보너스를 획득한다."
+            "type": "단일피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Ice damage to 1 foe equal to 292.8%/322.8%/304.8%/334.8% of Attack. Increase damage based on foe's missing HP. When foe's HP is below 20%, increase by a maximum of 30%."
         },
         "passive1": {
-            "name": "무아",
+            "name": "Frozen in Time",
             "element": "패시브",
-            "description": "『칼끝의 댄서』 발동 시 100.0%의 기본 확률로 적을 동결 상태에 빠뜨린다."
+            "description": "When damaging foes with Blade Dancer, 100.0% chance to inflict Freeze."
         },
         "passive2": {
-            "name": "무경",
+            "name": "State of Selflessness",
             "element": "패시브",
-            "description": "적 처치 시 『얼음 결정』 4개를 획득한다."
+            "description": "When Kotone defeats a foe, gain 4 Ice Crystal stacks."
         }
-},
-    "몽타뉴·백조": {
-        "name": "코토네 몽타뉴·백조",
-        "skill1": {
-            "name": "폭풍의 서곡/싸늘한 바람",
-            "element": "질풍빙결",
-            "type":"단일피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "『봄 형태』:1명의 적에게 공격력 65.9%/72.7%/69.9%/76.7%의 질풍 속성 대미지를 3회 주고, 30%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『봄의 결계』에 있을 경우, 추가로 2턴 동안 적을 『풍상』 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『풍상』 상태인 적 공격 시 크리티컬 효과가 29.3%/29.3%/31.1%/31.1% 증가한다.\n\n『겨울 형태』:1명의 적에게 공격력 122.2%/134.7%/129.7%/142.2%의 빙결 속성 대미지를 주고, 97.6%/97.6%/103.6%/103.6%의 기본 확률로 적을 동결 상태에 빠뜨린다. 적이 이미 동결 상태인 경우 2턴 동안 『동파』 상대에 빠뜨린다. 『동파』 상태의 적이 받는 빙결 속성 대미지가 13.7%/13.7%/14.5%/14.5% 증가한다."
-        },
-        "skill2": {
-            "name": "흩날리는 구름/눈 내리는 설원",
-            "element": "질풍빙결광역",
-            "type":"광역피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "『봄 형태』: 모든 적에게 공격력 31.3%/34.5%/33.3%/36.5%의 질풍 속성 대미지를 3회 준다. 코토네 몽타뉴・백조가 『봄의 결계』에 있을 경우 추가로 『아침 이슬 결정』을 1개 획득한다.\n\n『겨울 형태』: 모든 적에게 공격력 83.8%/92.4%/89.0%/97.6%의 빙결 속성 대미지를 주고, 48.8%/48.8%/51.8%/51.8%의 기본 확률로 동결 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『겨울의 결계』에 있을 경우, 해당 공격으로 주는 대미지가 20% 증가한다."
-        },
-        "skill3": {
-            "name": "다가오는 봄/겨울밤의 무곡",
-            "element": "질풍빙결",
-            "type":"단일피해",
-            "sp": 28,
-            "cool": 0,
-            "description": "『봄 형태』: 1턴 동안 지속되는 『봄의 결계』를 시전하고, 1명의 적에게 공격력 82.9%/91.5%/87.9%/96.5%의 질풍 속성 대미지를 3회 준다. 『봄의 결계』 지속 시간 동안 모든 괴도가 페르소나 스킬, HIGHLIGHT, 추가 효과로 질풍 속성 대미지를 줄 때, 메인 목표에게 코토네 몽타뉴・백조 공격력 20%의 질풍 속성 대미지를 추가로 주고, 코토네 몽타뉴・백조에게는 『아침 이슬 결정』 1개를 제공한다. 『봄의 결계』 종료 시, 모든 『아침 이슬 결정』을 소모하여 현재 턴의 메인 목표에게 공격력 (2+『아침 이슬 결정』 수량)*34.2%/37.7%/36.3%/39.8%의 질풍 속성 대미지를 준다. 해당 대미지는 추가 효과로 계산한다.\n\n『겨울 형태』: 1턴 동안 지속되는 『겨울밤의 결계』를 시전하고, 1명의 적에게 공격력 183.2%/201.9%/194.5%/213.2%의 빙결 속성 대미지를 준다. 『겨울밤의 결계』 지속 시간 동안 모든 괴도가 공격을 받은 후 모든 괴도는 1301/1301/1381/1381포인트 대미지를 막을 수 있는 『눈덩이 방패』를 획득한다. 해당 효과는 최대 2회 발동한다. 모든 괴도가 페르소나 스킬, HIGHLIGHT, 추가 효과를 사용해 빙결 속성 대미지를 줄 때, 코토네 몽타뉴・백조는 『겨울 서리 결정』을 1개 획득한다. 『겨울밤의 결계』 종료 시, 모든 『겨울 서리 결정』[겨울서리]을 소모해 현재 턴의 메인 목표에게 공격력 (2+『겨울 서리 결정』 수량)*27.9%/30.8%/29.6%/32.5%의 빙결 속성 대미지를 준다. 해당 대미지는 추가 효과로 계산한다."
-        },
-        "skill_highlight": {
-            "element": "질풍빙결",
-            "type":"단일피해",
-            "description": "『봄 형태』: 1명의 적에게 공격력 149.6%/165.0%/158.8%/174.2%의 질풍 속성 대미지를 3회 준다. 코토네 몽타뉴・백조가 『봄의 결계』에 있을 경우, 수량 제한을 돌파할 수 있는 『아침 이슬 결정』 1개를 추가로 획득한다. 그렇지 않을 경우 목표에게 질풍 속성 대미지를 1회 추가로 준다.\n\n『겨울 형태』: 1명의 적에게 공격력 380.6%/419.6%/404.0%/443.0%의 빙결 속성 대미지를 주고 68.3%/68.3%/72.5%/72.5%의 기본 확률로 적을 1턴 『얼음 봉인』 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『겨울밤의 결계』에 있을 경우, 『얼음 봉인』의 기본 확률이 29.3%/29.3%/31.1%/31.1% 증가한다. 그렇지 않을 경우, 해당 공격으로 주는 대미지가 20% 증가한다."
-        },
-        "passive1": {
-            "name": "소중함",
-            "element": "패시브",
-            "description": "팀에 다른 질풍 속성 괴도를 편성하면 코토네 몽타뉴・백조의 질풍 대미지가 133.0% 증가한다. 팀에 다른 빙결 속성 괴도를 편성하면 코토네 몽타뉴・백조의 질풍 대미지가 33.0% 증가한다."
-        },
-        "passive2": {
-            "name": "그리움",
-            "element": "패시브",
-            "description": "『봄 형태』에서는 괴도가 질풍 속성 공격을 1회 줄 때마다 2턴 동안 모든 괴도의 공격력이 8.1% 증가한다(5회 중첩 가능). 『겨울밤 형태』에서는 코토네 몽타뉴・백조가 실드를 획득할 때마다 2턴 동안 모든 괴도의 방어력이 9.0% 증가한다(4회 중첩 가능)."
-        }
-},
-    "세이지": {
-        "name": "시라토리 세이지",
-        "skill1": {
-            "name": "바람의 속삭임",
-            "element": "질풍",
-            "type":"단일피해",
-            "sp": 16,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 42.9%/47.3%/44.7%/49.1%의 질풍 속성 대미지를 4회 주고, 19.2%/19.2%/20.4%/20.4%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 효과는 2턴 동안 지속된다."
-        },
-        "skill2": {
-            "name": "우아한 풍파",
-            "element": "질풍광역",
-            "type":"광역피해",
-            "sp": 19,
-            "cool": 0,
-            "description": "모든 적에게 공격력 24.2%/26.6%/25.2%/27.6%의 질풍 속성 대미지를 3회 준다. 공격 시 적의 수량에 따라 (적의 수량*48.8%/48.8%/50.8%/50.8%)의 기본 확률로 『격려』 상태를 획득한다."
-        },
-        "skill3": {
-            "name": "무영의 찌르기",
-            "element": "질풍",
-            "type":"단일피해",
-            "sp": 18,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 53.2%/58.6%/55.4%/60.8%의 질풍 속성 대미지를 3회 주고, 『격려』 상태가 3중첩 이상이면 해당 스킬로 추가 대미지를 1회 주고 크리티컬 확률이 20% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "질풍",
-            "type":"단일피해",
-            "description": "1명의 적에게 공격력 58.6%/64.6%/61.0%/67.0%의 질풍 속성 대미지를 4회 입힌다. 해당 스킬을 사용할 때 자신이 『격려』 상태를 3중첩 이상 보유할 시 대미지 횟수가 1회 증가한다."
-        },
-        "passive1": {
-            "name": "초점",
-            "element": "패시브",
-            "description": "『무영의 찌르기』 스킬을 사용해 풍습 상태인 적에게 대미지를 주면 100.0%의 고정 확률로 추가 대미지를 1회 준다."
-        },
-        "passive2": {
-            "name": "침울",
-            "element": "패시브",
-            "description": "턴 종료 시 60.0%의 고정 확률로 『격려』 1중첩을 획득한다."
-        }
-},
+    },
     "슌": {
-        "name": "카노 슌",
+        "name": "Shun Kano",
         "skill1": {
-            "name": "흔들리는 빙산",
+            "name": "Icicle Hatchet",
             "element": "빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "1명의 적에게 최대 생명 55.6%/61.3%/57.9%/63.6%의 빙결 속성 대미지를 주고 70%의 기본 확률로 적을 동결 상태에 빠뜨린다."
+            "description": "Deal Ice damage to 1 foe equal to 55.6%/61.3%/57.9%/63.6% of Shun's max HP. 70% chance to inflict Freeze."
         },
         "skill2": {
-            "name": "선봉돌격",
+            "name": "Smash Hit",
             "element": "물리",
-            "type":"단일피해",
+            "type": "단일피해",
             "hp": 6,
             "cool": 0,
-            "description": "1명의 적에게 최대 생명 56.9%/62.8%/59.2%/65.1%의 물리 속성 대미지를 주고, 2턴 동안 목표 적의 방어력이 30.0%/30.0%/31.2%/31.2% 감소한다. 『황야의 구세주』 상태일 경우 방어력 감소가 59.9%/59.9%/62.4%/62.4%까지 증가한다."
+            "description": "Deal Physical damage to 1 foe equal to 56.9%/62.8%/59.2%/65.1% of Shun's max HP. Decrease Defense by 30.0%/30.0%/31.2%/31.2% for 2 turns. When Desperado is active, increase effect to 59.9%/59.9%/62.4%/62.4%."
         },
         "skill3": {
-            "name": "0도 치유",
+            "name": "Icy Defense",
             "element": "버프",
-            "type":"생존",
+            "type": "생존",
             "sp": 24,
             "cool": 1,
-            "description": "모든 동료의 최대 생명이 카노 슌 최대 생명의 15%(최대 14100/14100/15600/15600포인트)만큼 증가하고, 자신이 공격받을 확률이 대폭 증가한다. 효과는 2턴 동안 지속된다. 모든 동료의 생명이 카노 슌 최대 생명의 16.5%/18.2%/17.2%/18.9%만큼 회복된다.\n쿨타임: 1턴."
+            "description": "Increase party's max HP by 15% of Shun's max HP (up to 14100/14100/15600/15600) for 2 turns and greatly increase Shun's chance of being targeted by attacks. Also, restore party's HP by 16.5%/18.2%/17.2%/18.9% of Shun's max HP.\nCooldown: 1 turn."
         },
         "skill_highlight": {
             "element": "빙결",
-            "type":"생존",
-            "description": "모든 동료의 최대 생명이 카노 슌 최대 생명의 10.3%(최대 14100/14100/15600/15600포인트)만큼 증가한다. 모든 동료의 생명이 카노 슌 최대 생명의 10.1%/11.1%/10.5%/11.5%만큼 회복된다. 동시에 1명의 적에게 최대 생명 75.4%/83.2%/78.4%/86.2%의 빙결 속성 대미지를 준다."
+            "type": "생존",
+            "description": "Increase party's max HP by 10.3% of Shun's max HP (up to 14100/14100/15600/15600) and restore party's HP by 10.1%/11.1%/10.5%/11.5% of Shun's max HP. Deal Ice damage to 1 foe equal to 75.4%/83.2%/78.4%/86.2% of Shun's max HP."
         },
         "passive1": {
-            "name": "야만",
+            "name": "Daunting Firepower",
             "element": "패시브",
-            "description": "총기의 총알 개수가 18 증가한다. 총격 시 총알 1발당 10.0%의 고정 확률로 자신은 최대 생명 9%의 대미지를 주고, 적의 방어력이 35% 감소한다. 효과는 3턴 동안 지속된다. 총기 대미지는 동일 목표에게 약해진다."
+            "description": "Increase ammo for ranged attacks by 18. When attacking foes with ranged attacks, 10.0% chance to deal bonus damage equal to 9% of Shun's max HP, and decrease foe's Defense by 35% for 3 turns. Consecutive ranged attacks against the same foe will deal decreased damage."
         },
         "passive2": {
-            "name": "모략",
+            "name": "For Your Benefit",
             "element": "패시브",
-            "description": "『0도 치유』 스킬 시전 후 공격받을 때마다 30.0%의 고정 확률로 『황야의 구세주』 회복 효과를 발동하며 2턴 동안 지속된다."
+            "description": "When Shun is attacked while Icy Defense is active, 30.0% chance to activate Desperado's healing effect for 2 turns."
         }
-},
-    "아야카": {
-        "name": "사카이 아야카",
+    },
+    "세이지": {
+        "name": "Seiji Shiratori",
         "skill1": {
-            "name": "열정 소나타",
-            "element": "전격광역",
-            "type":"광역피해",
-            "sp": 20,
+            "name": "Blustering Épée",
+            "element": "질풍",
+            "type": "단일피해",
+            "sp": 16,
             "cool": 0,
-            "description": "모든 적에게 공격력 85.4%/94.1%/90.7%/99.4%의 전격 속성 대미지를 준다. 『열성 관객』이 있는 경우, 『열성 관객』이 스킬 메인 목표에게 추가로 『열성 관객』 공격력 83.3%/91.8%/88.4%/96.9%의 전격 속성 대미지를 1회 준다."
+            "description": "Deal Wind damage to 1 foe equal to 42.9%/47.3%/44.7%/49.1% of Attack (4 hits). 19.2%/19.2%/20.4%/20.4% chance to inflict Windswept for 2 turns."
         },
         "skill2": {
-            "name": "즉흥 독주",
-            "element": "버프",
-            "type":"버프",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 동료를 선택하여 『열성 관객』으로 만들면 『열성 관객』의 공격력이 사카이 아야카 공격력의 24%만큼 증가하며 3턴 동안 지속된다(최대 976/1076/1036/1136). 『열성 관객』은 동시에 1명만 보유할 수 있다."
-        },
-        "skill3": {
-            "name": "피날레: 음역 가동",
-            "element": "버프",
-            "type":"버프",
-            "sp": 25,
-            "cool": 1,
-            "description": "동료 1명을 선택해 즉시 HIGHLIGHT 스킬을 시전한다. 동시에 이번 HIGHLIGHT의 대미지가 78.1%/86.1%/82.9%/90.9% 증가한다. 해당 스킬을 통해 사용한 HIGHLIGHT는 캐릭터 HIGHLIGHT 쿨타임에 계산되지 않는다."
-        },
-        "skill_highlight": {
-            "element": "버프광역",
-            "type":"버프",
-            "description": "괴도 행동 4회 동안 모든 동료가 45.5%/50.1%/48.3%/52.9%의 대미지 보너스를 받는다. 기간 동안 아군 괴도는 행동 후 HIGHLIGHT 에너지를 10% 획득하며, 최대 40% 회복한다."
-        },
-        "passive1": {
-            "name": "악센트",
-            "element": "패시브",
-            "description": "아군 괴도가 HIGHLIGHT 사용 시, 1턴 동안 해당 괴도의 공격력이 즉시 24.0% 증가한다. 해당 괴도가 열성 관객이라면 효과가 1.5배로 증가한다."
-        },
-        "passive2": {
-            "name": "스트로크",
-            "element": "패시브",
-            "description": "아군 괴도가 HIGHLIGHT를 사용한 후, 사카이 아야카는 생명 비율이 가장 낮은 동료에게 즉시 사카이 공격력 15.0%+1350의 생명을 회복시킨다."
-        }
-},
-    "안": {
-        "name": "타카마키 안",
-        "skill1": {
-            "name": "만발한 꽃",
-            "element": "화염광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 94.8%/102.6%/100.6%/108.4%의 화염 속성 대미지를 주고, 2턴 동안 자신의 공격력이 20% 증가한다. 『몰두』 상태에서 2턴 동안 타카마키 안의 공격력을 기반으로 적의 공격력이 8% 감소하고, 자신의 공격력은 해당하는 만큼 추가로 증가한다."
-        },
-        "skill2": {
-            "name": "매화술",
-            "element": "화염",
-            "type":"단일피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 134.2%/147.9%/142.5%/156.2%의 화염 속성 대미지를 주고, 75%의 기본 확률로 적을 화상 상태에 빠뜨린다. 『몰두』 상태에서 적의 생명이 50% 미만일 경우, 추가로 30% 대미지를 준다."
-        },
-        "skill3": {
-            "name": "화염의 침식",
-            "element": "화염광역",
-            "type":"광역피해",
-            "sp": 22,
-            "cool": 0,
-            "description": "모든 적에게 공격력 96.3%/106.1%/102.3%/112.1%의 화염 속성 대미지를 주고, 30%의 기본 확률로 적을 화상 상태에 빠뜨린다. 『몰두』 상태의 대미지가 30% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "화염광역",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 195.2%/215.2%/207.2%/227.2%의 화염 속성 대미지를 주며, 1턴 동안 자신이 주는 화염 대미지가 78.1%/86.1%/82.9%/90.9% 증가한다."
-        },
-        "passive1": {
-            "name": "정열",
-            "element": "패시브",
-            "description": "화상 상태인 적에게 TECHNICAL를 주고, 주는 대미지가 30.0% 증가한다."
-        },
-        "passive2": {
-            "name": "위로",
-            "element": "패시브",
-            "description": "『몰두』 상태 종료 시 생명 백분율이 가장 낮은 동료가 공격력45.0%의 생명을 회복한다."
-        }
-},
-    "야오링": {
-        "name": "리 야오링",
-        "skill1": {
-            "name": "나룻배 사공",
-            "element": "주원광역",
-            "type":"디버프 중첩",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 73.2%/80.7%/77.7%/85.2%의 주원 속성 대미지를 준다. 2턴 동안 자신의 속도 10포인트마다 목표 적의 방어력이 3% 감소되며, 최대 49.7%/54.8%/53.5%/58.6% 감소된다. 해당 스킬이 적 1명을 명중할 때마다 자신은 『추억』 4포인트를 획득한다."
-        },
-        "skill2": {
-            "name": "피안의 덤불",
-            "element": "주원",
-            "type":"제어",
-            "sp": 22,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 97.6%/107.6%/103.6%/113.6%의 주원 속성 대미지를 준다. 적이 임의의 디버프 효과를 보유할 시 해당 스킬로 주는 대미지가 20% 증가한다. 『맹파탕』의 추가 효과로 메인 목표를 100%의 기본 확률로 2턴 동안 망각 상태에 빠뜨린다. 망각 상태를 추가했거나 목표가 정신 이상 상태일 경우, 목표가 받는 대미지가 증가한다. 자신에게 속도가 10포인트 있을 때마다 1턴 동안 적이 받는 대미지가 2% 증가한다(상한 32.3%/32.3%/34.3%/34.3%)."
-        },
-        "skill3": {
-            "name": "사자놀이",
-            "element": "주원광역",
-            "type":"디버프",
-            "sp": 24,
-            "cool": 0,
-            "description": "모든 적에게 공격력 78.1%/86.1%/82.9%/90.9%의 주원 속성 대미지를 주고, 『피안화』 효과를 부여하여 자신의 속도 10포인트마다 적이 받는 대미지가 3% 증가한다. 상한은 48.5%/53.5%/52.3%/57.3%이다. 해당 효과는 대미지를 2회 받거나 2턴이 지나면 제거된다. 『맹파탕』의 추가 효과는 『피안화』의 대미지 증가 효과를 2배로 만든다."
-        },
-        "skill_highlight": {
-            "element": "주원광역",
-            "type":"디버프",
-            "description": "모든 적에게 공격력 146.4%/161.4%/155.4%/170.4%의 주원 속성 대미지를 주고, 모든 적이 받는 대미지가 48.8%/53.8%/51.8%/56.8% 증가한다. 30%의 기본 확률로 모든 적을 2턴 동안 망각 상태에 빠뜨린다."
-        },
-        "passive1": {
-            "name": "웃음소리",
-            "element": "패시브",
-            "description": "속도 2포인트마다 자신의 공격력이 1% 증가한다. 이 방식으로 공격력이 최대 90.0% 증가한다."
-        },
-        "passive2": {
-            "name": "만발",
-            "element": "패시브",
-            "description": "필드에서 생명이 50% 이상인 적이 받는 주원 대미지가 30.0% 증가한다."
-        }
-},
-    "야오링·사자무": {
-        "name": "리 야오링·사자무",
-        "skill1": {
-            "name": "새해의 축복",
-            "element": "화염광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 120.4%/132.8%/127.8%/140.2%의 화염 속성 대미지를 주고, 2턴 동안 자신의 크리티컬 확률이 10% 증가한다. 『불꽃놀이 유성』이 강화되어, 1턴 동안 추가로 공격력 72.8%/80.2%/77.3%/84.7%의 화염 속성 대미지를 준다."
-        },
-        "skill2": {
-            "name": "폭죽의 노래",
-            "element": "화염광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 73.8%/81.4%/78.3%/85.9%의 화염 속성 대미지를 주고, 2턴 동안 75%의 기본 확률로 목표를 화상과 『세월의 불꽃』 상태에 빠뜨린다. 『불꽃놀이 유성』이 강화되어, 75%의 기본 확률로 1턴 동안 목표를 『세월의 불꽃』 상태에 빠뜨린다.\n『세월의 불꽃』: 매턴마다 리 야오링・사자무 공격력 63.4%/69.9%/67.3%/73.8%의 화염 속성 대미지를 받으며 2턴 동안 지속된다(4회 중첩 가능)."
-        },
-        "skill3": {
-            "name": "유성의 불꽃",
-            "element": "버프",
-            "type":"버프",
-            "sp": 24,
-            "cool": 1,
-            "description": "묘도에 불을 붙여 자신이 『철꽃의 춤』 상태에 진입하여, 주는 대미지가 34.3%/37.8%/36.4%/39.9% 증가하고, 기간 동안 근접 공격이 『불꽃놀이 유성』으로 강화된다. 효과는 1턴 동안 또는 『불꽃놀이 유성』을 시전할 때까지 지속된다.\n『불꽃놀이 유성』: 모든 적에게 공격력 127.4%/140.4%/135.2%/148.2%의 화염 속성 대미지와 화염 속성 TECHNICAL을 주며, 『폭발 연소』 발동 시 TECHNICAL 효과가 20%까지 증가하다.\n초기에 1턴의 쿨타임을 가지며, 해당 스킬 사용 한 턴에서 여전히 다른 스킬을 사용할 수 있다. 해당 스킬은 페르소나 스킬로 간주하지 않는다."
-        },
-        "skill_highlight": {
-            "element": "화염광역",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 205.9%/227.0%/218.6%/239.7%의 화염 속성 대미지를 준다. 자신의 공격력이 19.5%/21.5%/20.7%/22.7% 증가하고, 『불꽃놀이 유성』이 주는 대미지가 19.5%/21.5%/20.7%/22.7% 증가하며, 버프 효과는 2턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "길상",
-            "element": "패시브",
-            "description": "화상 상태인 적에게 주는 대미지가 36.0% 증가한다."
-        },
-        "passive2": {
-            "name": "원만",
-            "element": "패시브",
-            "description": "전투 시작 시 자신의 공격력이 30.0% 증가하며 2턴 동안 지속된다. 자신 또는 동료가 TECHNICAL을 줄 시 해당 효과의 지속 시간을 초기화하고 해당 스킬 효과를 45.0%까지 증가시킨다."
-        }
-},
-    "유스케": {
-        "name": "키타가와 유스케",
-        "skill1": {
-            "name": "한기의 습격",
-            "element": "빙결광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 72.1%/79.5%/76.6%/84.0%의 빙결 속성 대미지를 주고, 100%의 기본 확률로 메인 목표 적을 동결 상태에 빠뜨린다. 효과는 2턴 동안 지속된다."
-        },
-        "skill2": {
-            "name": "서리의 참격",
-            "element": "빙결광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "임의의 적에게 방어력 92.9%/102.5%/98.6%/108.2%의 빙결 속성 대미지를 5회 주고, 해당 스킬 공격을 받지 않는 적을 우선 공격한다. 자신이 실드 상태인 경우, 추가로 30%의 스킬 대미지를 준다. 동일 목표에게 여러 번 명중 시 대미지가 60% 감소하고, 최소 20%의 대미지를 줄 수 있다."
-        },
-        "skill3": {
-            "name": "은화의 잔심",
-            "element": "버프",
-            "type":"반격강화",
-            "sp": 24,
-            "cool": 1,
-            "description": "다음 1회 『유룡전포』 공격이 『용의 포효』로 강화된다. 공격 발동 확률이 100%로 상승하고, 스킬 배율이 유스케 방어력의 58.6%/64.6%/62.2%/68.2%만큼 상승하며, 광역 공격을 진행한다. 1턴 내에 『용의 포효』의 강화 반격이 발동하지 않은 경우 자동으로 발동한다. \n또한 2턴 동안 방어력 19.5%/19.5%/20.7%/20.7%+555/555/683/683의 실드를 획득한다. 자신의 약점을 일시적으로 기본 내성으로 변경하고 모든 정신 이상에 면역되며, 모든 적이 『조롱』 상태를 획득한다. 효과는 2턴 동안 지속된다."
-        },
-        "skill_highlight": {
-            "element": "빙결광역",
-            "type":"광역피해",
-            "description": "모든 적에게 방어력 178.1%/196.3%/189.1%/207.3%의 빙결 속성 대미지를 주고, 유룡전포의 발동 확률이 35% 증가한다. 효과는 3턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "창조",
-            "element": "패시브",
-            "description": "실드 획득 시 대미지가 7.5% 증가하며 2턴 동안 지속된다(6중첩 가능)."
-        },
-        "passive2": {
-            "name": "조각",
-            "element": "패시브",
-            "description": "스킬을 사용해 실드 제공 시 1턴 동안 자신의 관통이 20.0% 증가한다."
-        }
-},
-    "유우미": {
-        "name": "시이나 유우미",
-        "skill1": {
-            "name": "매혹적인 향기",
-            "element": "버프광역",
-            "type":"버프",
-            "cool": 6,
-            "description": "3턴 동안 모든 동료의 공격력이 시이나 유우미 공격력의 8%만큼 증가한다 (최대 5000/5500/6500/7000포인트까지 계산).\n스킬 시전 시, 시이나 유우미가 『칵테일』을 보유하면, 『칵테일』을 1잔 소모해 스킬 효과를 강화한다(품질이 높은 『칵테일』을 먼저 소모). 『믹스・DELUXE/믹스/러프』 소모 시 스킬 효과가 각각 120%,100%,50% 증가한다."
-        },
-        "skill2": {
-            "name": "다채로운 부재료",
-            "element": "버프",
-            "type":"버프",
-            "cool": 4,
-            "description": "2턴 동안 1명의 동료의 주는 대미지가 증가하고 (시이나 유우미의 공격력 250포인트마다 1%의 대미지 보너스 제공, 최대 공격력 5000/5500/6500/7000포인트까지 계산), 최대 생명이 13.0%/13.0%/14.6%/14.6% 증가한다.\n대미지를 줄 시 1턴 동안 해당 대미지 2%의 생명을 회복한다. 해당 스킬 시전 시 시이나 유우미가 『러프/믹스』를 1잔 소모해 『믹스・DELUXE』를 1잔 획득한다."
-        },
-        "skill3": {
-            "name": "향기로운 와인",
-            "element": "버프광역",
-            "type":"버프",
-            "cool": 8,
-            "unlock": "『칵테일』 보유 시 해제",
-            "description": "발동 조건: 『칵테일』 보유 시 해제\n모든 『칵테일』을 소모해 지정 동료의 적합성 속성을 특별 제조한다.\n『믹스・DELUXE/믹스/러프』를 1잔 소모할 때마다 120%,100%,50% 강도의 아래 효과 발동:\n모든 동료의 특별 조정 속성 대미지를 증가시키고(시이나 유우미의 공격력 250포인트마다 1%의 대미지 보너스 제공, 최대 공격력 5000/5500/6500/7000포인트까지 계산), 2턴 동안 지정 동료의 특별 조제 속성 대미지가 1.2배까지 증가한다."
-        },
-        "skill_highlight": {
-            "name": "속성 증가",
-            "element": "패시브",
-            "type":"패시브",
-            "description": "해명 괴도 각 속성의 20%만큼 출전 중인 모든 동료의 상응한 속성 수치가 증가한다."
-        },
-        "passive1": {
-            "name": "스터",
-            "element": "패시브",
-            "description": "팀에 괴도를 1명 편성할 때마다 모든 괴도의 상응한 속성 대미지가 4% 증가한다."
-        },
-        "passive2": {
-            "name": "쉐이크",
-            "element": "패시브",
-            "description": "전투 시작 시, 시이나 유우미가 팀 내 괴도의 속성에 따라 임의의 3개의 『풍미』를 획득한다."
-        }
-},
-    "유이 YUI": {
-        "name": "YUI",
-        "skill1": {
-            "name": "타닥 깜짝상자",
-            "element": "전격",
-            "type":"단일피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 185.4%/204.4%/196.8%/215.8%의 전격 속성 대미지를 준다. 적이 감전 상태가 아닌 경우 2턴 동안 68.3%/68.3%/72.5%/72.5%의 기본 확률로 감전 상태에 빠뜨린다. 적이 이미 감전 상태인 경우 대미지가 30% 증가한다."
-        },
-        "skill2": {
-            "name": "폭발 벽돌",
-            "element": "전격광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 59.6%/65.7%/63.3%/69.4%의 전격 속성 대미지를 주고, 스킬의 메인 목표에게 주는 대미지가 25% 증가한다."
-        },
-        "skill3": {
-            "name": "초희귀 보상",
-            "element": "버프",
-            "type":"버프",
-            "sp": 25,
-            "cool": 1,
-            "description": "자신의 공격력이 39.0%/43.0%/41.4%/45.4% 증가한다. 동료 1명을 YUI의 『놀이 친구』로 선택하며, 『놀이 친구』가 적에게 페르소나 스킬로 대미지를 주면 YUI가 바로 『추격』한다. 또한 YUI 다음 2회 추격은 공격력 132.9%/37.2%/141.1%/45.4%의 전격 속성 대미지를 주며 2턴 동안 지속된다. 동시에 『★프로젝트! 가동★』이 발동하는 고정 확률이 2턴 동안 10% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "버프",
-            "type":"버프",
-            "description": "YUI의 공격력이 34.2%/37.7%/36.3%/39.8% 증가하고, 『추격』으로 주는 대미지가 YUI 공격력의 24.4%/25.9%/25.9%/27.4%까지 증가한다. 효과는 2턴 동안 지속된다. 또한 임의의 동료가 스킬을 시전해 대미지를 주면 YUI의 『추격』이 발동하며 1턴 동안 지속된다."
-        },
-        "passive1": {
-            "name": "역동",
-            "element": "패시브",
-            "description": "YUI의 『추격』이 감전 상태인 적에게 주는 대미지가 36.0% 증가한다."
-        },
-        "passive2": {
-            "name": "반짝",
-            "element": "패시브",
-            "description": "『놀이 친구』가 있을 때, YUI와 놀이 친구의 크리티컬 확률이 12.0% 증가하고, 공격력이 12.0% 증가한다."
-        }
-},
-    "유키미": {
-        "name": "후지카와 유키미",
-        "skill1": {
-            "name": "대의자의 판결",
-            "element": "축복광역",
-            "type":"광역피해",
+            "name": "Graceful Gale",
+            "element": "질풍광역",
+            "type": "광역피해",
             "sp": 19,
             "cool": 0,
-            "description": "모든 적에게 방어력 89.8%/98.9%/91.6%/100.7%의 축복 속성 대미지를 주고, 자신이 축복 효과 1중첩을 획득한다. 또한 『맹세』 상태인 동료는 축복 효과 1중첩을 획득한다."
-        },
-        "skill2": {
-            "name": "올바른 명령",
-            "element": "버프",
-            "type":"실드",
-            "sp": 20,
-            "cool": 0,
-            "description": "동료 1명이 방어력 47.2%/47.2%/49.2%/49.2%+1344/1634/1547/1837의 실드를 획득하고 방어력이 증가한다(후지카와 유키미 방어력의 35%에 해당, 최대 1112/1226/1158/1272포인트 방어력 증가). 효과는 2턴 동안 지속된다. 동시에 받는 대미지 20% 감소 효과를 획득하며, 해당 효과는 대미지를 1회 받거나 2턴이 지난 후 제거된다. 또한 해당 동료는 축복 효과를 2중첩 획득하고, 동시에 동료와 『맹세』 효과가 발생한다. 효과는 2턴 동안 지속된다."
+            "description": "Deal Wind damage to all foes equal to 24.2%/26.6%/25.2%/27.6% of Attack (3 hits). Gain 1 Right to Strike stack with a chance equal to the number of foes present when using the skill × 48.8%/48.8%/50.8%/50.8%."
         },
         "skill3": {
-            "name": "절대 심판",
+            "name": "Saber Surge",
+            "element": "질풍",
+            "type": "단일피해",
+            "sp": 18,
+            "cool": 0,
+            "description": "Deal Wind damage to 1 foe equal to 53.2%/58.6%/55.4%/60.8% of Attack (3 hits). When Right to Strike is at 3 or more stacks, deal 1 additional hit and increase critical rate by 20%."
+        },
+        "skill_highlight": {
+            "name": "Highlight",
+            "element": "질풍",
+            "type": "단일피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Wind damage to 1 foe equal to 58.6%/64.6%/61.0%/67.0% of Attack (4 hits). When Right to Strike is at 3 or more stacks, increase hits by 1."
+        },
+        "passive1": {
+            "name": "Chivalrous Spirit",
+            "element": "패시브",
+            "description": "When attacking a Windswept foe with Saber Surge, 100.0% chance to deal 1 additional hit."
+        },
+        "passive2": {
+            "name": "Coup Droit",
+            "element": "패시브",
+            "description": "At the end of turn, 60.0% chance to gain 1 Right to Strike stack."
+        }
+    },
+    "유키미": {
+        "name": "Fujikawa Yukimi",
+        "skill1": {
+            "name": "Sword of Condemnation",
+            "element": "축복광역",
+            "type": "광역피해",
+            "sp": 19,
+            "cool": 0,
+            "description": "Deal Bless damage to all foes equal to 88.0%/97.1%/91.6%/100.7% of Yukimi's Defense. Grant 1 Blessing stack to Yukimi and allies with Oath."
+        },
+        "skill2": {
+            "name": "Sacral Glow",
+            "element": "버프",
+            "type": "실드",
+            "sp": 20,
+            "cool": 0,
+            "description": "Grant a shield to 1 other ally equal to 47.2%/47.2%/49.2%/49.2% of Yukimi's Defense + 1344/1635/1547/1838, and increase target's Defense by 35% of Yukimi's Defense (up to 1112/1226/1158/1272). Also, decrease target's damage taken by 20% once. Lasts for 2 turns. Grant 2 Blessing stacks, and grant target Oath for 2 turns."
+        },
+        "skill3": {
+            "name": "Absolute Judgment",
             "element": "축복",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 25,
             "cool": 0,
-            "description": "자신이 축복 효과를 획득하면 『에너지 충전』을 획득한다. 『에너지 충전』이 2중첩 이상일 경우 해당 스킬을 시전하면 모든 『에너지 충전』을 소모해 1명의 적에게 방어력 117.1%/129.1%/121.9%/133.9%의 축복 속성 대미지를 준다. 『에너지 충전』을 1중첩 소모할 때마다 1턴 동안 모든 동료의 대미지가 4.9%/5.4%/5.1%/5.6% 증가하고, 2턴 동안 모든 동료가 방어력 14.9%/16.5%/15.5%/17.1%의 실드를 획득한다.\n『맹세』 상태인 동료가 축복 효과를 획득할 경우 후지카와 유키미가 『에너지 충전』을 추가로 획득한다."
+            "description": "When Yukimi gains Blessing stacks, gain 1 Gavel stack. When this skill is used after Gavel reaches 2 stacks, spend all Gavel stacks to deal Bless damage to 1 foe equal to 117.1%/129.1%/121.9%/133.9% of Defense. For each Gavel stack spent, increase party's damage by 4.9%/5.4%/5.1%/5.6% for 1 turn, and grant a shield to party equal to 14.9%/16.5%/15.5%/17.1% of Yukimi's Defense for 2 turns.\nWhen an ally with Oath gains Blessing stacks, Yukimi gains 1 additional Gavel stack."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "축복",
-            "type":"단일피해",
-            "description": "1명의 적에게 방어력 284.1%/313.2%/295.8%/324.9%의 축복 속성 대미지를 주며, 모든 동료의 방어력이 후지카와 유키미의 방어력 20%만큼 증가한다(최대 657/725/684/752포인트 방어력 증가). 효과는 2턴 동안 증가한다."
+            "type": "단일피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Bless damage to 1 foe equal to 284.1%/313.2%/295.8%/324.9% of Yukimi's Defense. Also increase party's Defense by 20% of Yukimi's Defense (up to 657/725/684/752) for 2 turns."
         },
         "passive1": {
-            "name": "동정심",
+            "name": "Cross-Examination",
             "element": "패시브",
-            "description": "『맹세』 상태인 동료는 방어력에 따라 대미지 보너스를 획득한다. 방어력 1,500포인트마다 대미지 보너스 7%를 획득하며(방어력 포인트가 1,500 미만인 부분은 같은 비율의 대미지 보너스로 전환), 최대 7.0%/14.0%/14.0%/21.0% 대미지 보너스를 획득한다."
+            "description": "When an ally has Oath, increase their damage by 7% for every 1500 of Yukimi's Defense (up to 21.0%). (If Defense is less than 1500, increase damage by a percentage)."
         },
         "passive2": {
-            "name": "굳은 의지",
+            "name": "Urgent Matter",
             "element": "패시브",
-            "description": "턴 종료 시 임의 동료의 생명이 30% 미만이면 23.0%/46.0%/46.0%/69.0%의 실드를 획득하고 축복 효과를 1중첩 획득한다. 효과는 2턴 동안 지속된다. 각 전투에서 최대 1회 발동 가능하다."
+            "description": "At the end of turn, grant a shield equal to 69.0% of Yukimi's Defense to allies below 30% HP, and grant 1 Blessing stack. Blessing lasts 2 turns. This effect activates once per battle."
         }
-},
-    "치즈코": {
-        "name": "나가오 치즈코",
-        "skill1": {
-            "name": "시그널 폭탄",
-            "element": "핵열",
-            "type":"단일피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 170.8%/186.3%/177.8%/193.3%의 핵열 속성 대미지를 준다. 목표의 방어력이 자신의 효과 명중의 22.5%만큼 감소하며, 최대 37.3%/37.3%/38.8%/38.8%의 방어력을 감소시킨다. 또한 100%의 기본 확률로 적에게 적이 보유하고 있지 않은 임의의 원소 이상 상태를 부여한다."
-        },
-        "skill2": {
-            "name": "융단 폭격",
-            "element": "핵열광역",
-            "type":"광역피해",
-            "sp": 22,
-            "cool": 0,
-            "description": "모든 적에게 공격력 91.5%/100.5%/95.3%/104.3%의 핵열 속성 대미지를 준다. 40%의 기본 확률로 적에게 적이 보유하고 있지 않은 임의의 원소 이상 상태를 부여한다."
-        },
-        "skill3": {
-            "name": "대지 집중 폭격",
-            "element": "핵열",
-            "type":"단일피해",
-            "sp": 24,
-            "cool": 1,
-            "description": "1명의 적에게 공격력 195.2%/215.2%/203.2%/223.2%의 핵열 속성 대미지를 준다. 목표가 원소 이상을 1종 보유할 때마다 목표가 받는 대미지가 자신의 효과 명중의 11.3%만큼 증가하며 최대 18.7%/20.7%/19.5%/21.5% 증가한다. 효과는 2턴 동안 지속되며 3회 중첩 가능하다."
-        },
-        "skill_highlight": {
-            "element": "핵열",
-            "type":"단일피해",
-            "description": "1명의 적에게 공격력 324.5%/357.5%/337.8%/370.8%의 핵열 속성 대미지를 주고, 75%의 기본 확률로 적이 보유하고 있지 않은 임의의 원소 이상 상태 2종에 빠지게 한다."
-        },
-        "passive1": {
-            "name": "섬멸",
-            "element": "패시브",
-            "description": "『방사선』을 보유하고 있는 적이 받는 핵열 속성 대미지가 15.0% 증가한다."
-        },
-        "passive2": {
-            "name": "전술",
-            "element": "패시브",
-            "description": "전투 중 자신의 효과 명중 45.0%에 해당하는 공격력 보너스를 획득한다."
-        }
-},
-    "카스미": {
-        "name": "요시자와 카스미",
-        "skill1": {
-            "name": "어둠 속 빛",
-            "element": "축복",
-            "type":"단일피해",
-            "sp": 23,
-            "cool": 0,
-            "description": "액티브로 해당 스킬 사용 시 1명의 적에게 공격력 186.9%/206.0%/198.4%/217.5%의 축복 속성 대미지를 주고, 자신은 『춤사위』 『브레이브 스텝』을 획득한다(3회 중첩 가능). 댄스 파트너가 해당 스킬 사용 시 스킬 효과는 1명의 적에게 공격력 93.5%/103.0%/99.3%/108.8%의 축복 속성 대미지를 주고, 자신은 『춤사위』 『브레이브 스텝』을 획득한다(3회 중첩 가능)."
-        },
-        "skill2": {
-            "name": "함께 추는 춤",
-            "element": "버프",
-            "type":"버프",
-            "sp": 22,
-            "cool": 0,
-            "description": "1턴 동안 1명의 동료를 선택해 『댄스 파트너』로 삼는다. 자신과 『댄스 파트너』의 공격력이 3턴 동안 32.4%/35.7%/34.4%/37.7% 증가한다. 자신이 『춤사위』 『스위프트 스텝』을 획득한다(1회 중첩 가능). 『댄스 파트너』가 페르소나 스킬을 사용하면 자신이 즉시 임의 적 목표에게 『어둠 속 빛』을 1회 시전한다(『댄스 파트너』의 스킬 목표가 적일 경우, 스킬 메인 목표를 향해 『어둠 속성 빛』을 1회 시전함). 『댄스 파트너』는 동시에 1명만 존재할 수 있다."
-        },
-        "skill3": {
-            "name": "피어나는 마음",
-            "element": "축복",
-            "type":"단일피해",
-            "sp": 27,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 214.7%/236.7%/227.9%/249.9%의 축복 속성 대미지를 준다. 해당 스킬을 사용할 때 자신이 『가면무도회』 상태일 경우 스킬 대미지가 30% 증가하고 자신의 크리티컬 효과가 29.3%/29.3%/31.1%/31.1% 증가한다."
-        },
-        "skill_highlight": {
-            "element": "축복",
-            "type":"단일피해",
-            "unlock":"자신이 『가면무도회』 상태.",
-            "description": "발동 조건: 자신이 『가면무도회』 상태.\n1명의 적에게 공격력 243.8%/268.8%/258.8%/283.8%의 축복 속성 대미지를 준다. 자신이 『춤사위』 보유 시 상응하는 버프 효과를 획득한다.\n『브레이브 스텝』: 중첩마다 HIGHLIGHT 스킬 대미지가 10% 증가한다.\n『스위프트 스텝』: HIGHLIGHT의 크리티컬 확률이 10% 증가하고, 크리티컬 효과가 20% 증가한다."
-        },
-        "passive1": {
-            "name": "믿음",
-            "element": "패시브",
-            "description": "자신이 『춤사위』 1중첩마다 축복 속성 대미지가 10.0% 증가하고, 최대 30.0% 증가한다."
-        },
-        "passive2": {
-            "name": "결의",
-            "element": "패시브",
-            "description": "아군 동료가 HIGHLIGHT 효과를 발동하면 요시자와 카스미의 공격력이 2턴 동안 45.0% 증가한다."
-        }
-},
-    "카요": {
-        "name": "토미야마 카요",
-        "skill1": {
-            "name": "즐거운 파티",
-            "element": "버프광역",
-            "type":"버프광역",
-            "cool": 4,
-            "description": "준비 시간: 행동 4회\n모든 동료의 공격력이 자신의 공격력의 12%만큼 증가하고(최대 4500/4950/5400/5850포인트), 모든 동료의 효과 명중이 35.0%/38.5%/37.8%/41.3% 증가한다. 효과는 1턴 동안 지속된다. 『리듬』을 1개 획득한다."
-        },
-        "skill2": {
-            "name": "화려한 흔들림",
-            "element": "버프광역",
-            "type":"버프광역",
-            "cool": 8,
-            "description": "준비 시간: 행동 8회\n모든 동료가 22/27/26/31의 SP를 회복한다. 『리듬』을 3개 획득한다."
-        },
-        "skill3": {
-            "name": "화끈한 변주곡",
-            "element": "버프광역",
-            "type":"버프광역",
-            "cool": 8,
-            "description": "준비 시간: 8회 행동\n3턴 동안 모든 동료의 주는 대미지를 10.0%/11.0%/10.8%/11.8% 증가시키며, 토미야마 카요의 공격력 225마다 공격력을 1% 추가로 증가시킨다(공격력의 4500/4950/5400/5850포인트까지 계산). 원소 이상 상태인 적에게 대미지를 줄 때 대미지 보너스 효과가 1.5배 증가한다. 『리듬』을 2개 획득한다."
-        },
-        "skill_highlight": {
-            "name": "속성 증가",
-            "element": "패시브",
-            "type":"패시브",
-            "description": "해명 괴도 각 속성의 15%만큼 출전 중인 모든 동료의 상응하는 속성 수치가 증가한다."
-        },
-        "passive1": {
-            "name": "활력",
-            "element": "패시브",
-            "description": "4개의 『리듬』을 획득할 때마다 현재 생명이 가장 높은 적에게 1개의 원소 이상 효과를 임의로 부여한다."
-        },
-        "passive2": {
-            "name": "정열",
-            "element": "패시브",
-            "description": "임의의 동료가 스킬을 시전하여 원소 이상을 부여할 경우 해당 동료는 2턴 동안 15.0%의 대미지 보너스를 획득하고, 21.0%의 고정 확률로 자신이 『리듬』 1개를 획득한다."
-        }
-},
-    "키라": {
-        "name": "키타자토 키라",
-        "skill1": {
-            "name": "절단 기법/죄악의 게임",
-            "element": "물리",
-            "type":"단일피해",
-            "sp": 21,
-            "cool": 0,
-            "description": "『사냥꾼』 상태: 1명의 적에게 공격력 47.3%/52.2%/50.2%/55.1%의 물리 속성 대미지를 4회 주고, 『유혈』 1중첩을 추가한다.\n『집행관』 상태: 1명의 적에게 공격력 201.4%/222.1%/213.7%/234.4%의 물리 속성 대미지를 주고, 스킬 종료 후 적의 『유혈』 2중첩을 제거한다(『절개』 효과 발동 가능)."
-        },
-        "skill2": {
-            "name": "치명적 쾌감/커튼 콜",
-            "element": "물리",
-            "type":"단일피해",
-            "sp": 21,
-            "cool": 0,
-            "description": "『사냥꾼』 상태: 1명의 적에게 공격력 84.2%/92.8%/89.4%/98.0%의 물리 속성 대미지를 2회 주고, 『유혈』 대미지를 즉시 1회 결산 및 『유혈』 상태 지속시간을 초기화한다.\n『집행관』 상태: 1명의 적에게 공격력 201.3%/222.0%/213.7%/234.4%의 물리 속성 대미지를 준다. 목표에게 『유혈』 1중첩이 있을 때마다 해당 스킬 대미지와 『절개』 대미지가 2% 증가하고, 스킬 종료 후 해당 적의 모든 『유혈』를 제거한다(『절개』 효과 발동 가능)."
-        },
-        "skill3": {
-            "name": "밤의 장막",
-            "element": "버프",
-            "type":"전환",
-            "sp": 15,
-            "cool": 0,
-            "description": "임의 적의 『유혈』 중첩수≥7 시 해당 스킬이 해제된다.\n『집행관』 상태로 전환해 스킬 모드가 변경되며 다음 효과를 획득한다. 스킬 사용 시 목표에게 『유혈』 3중첩이 있을 때마다 키타자토 키라는 추가로 목표에 『절개』 1회를 입혀, 공격력 66.7%/73.5%/70.8%/77.6%의 물리 속성 대미지를 준다. 해당 스킬 사용 후 이번 턴에서는 다른 스킬을 사용할 수 있으며, 턴 종료 시 『사냥꾼』 상태로 자동 전환된다."
-        },
-        "skill_highlight": {
-            "element": "물리",
-            "type":"단일피해",
-            "description": "『사냥꾼』 상태로 전환해 즉시 1명의 적에게 『유혈』 5중첩을 추가한다. 다음 『집행관』 상태로 전환해 해당 적에게 공격력 328.5%/362.2%/348.7%/382.4%의 물리 속성 대미지를 준다(『절개』 효과 발동 가능)."
-        },
-        "passive1": {
-            "name": "감염",
-            "element": "패시브",
-            "description": "키타자토 키라 효과 명중 30%마다 『유혈』의 물리 속성 대미지가 키타자토 키라 공격력의 4%만큼 증가한다. 최대 90%의 효과 명중이 계산된다."
-        },
-        "passive2": {
-            "name": "부패",
-            "element": "패시브",
-            "description": "『사냥꾼』 상태일 때 효과 명중이 36% 증가한다.\n『집행관』 상태일 때 관통이 21% 증가한다."
-        }
-},
+    },
     "키요시": {
-        "name": "쿠로타니 키요시",
+        "name": "Kurotani Kiyoshi",
         "skill1": {
-            "name": "폭염",
+            "name": "Ring of Fire",
             "element": "화염",
-            "type":"화상",
+            "type": "화상",
             "sp": 20,
             "cool": 0,
-            "description": "1명의 적에게 최대 생명 26.2%/28.9%/27.2%/29.9%의 화염 속성 대미지를 주고 100%의 기본 확률로 적을 화상 상태에 빠뜨린다. 목표 적이 화상 상태인 경우 쿠로타니 키요시가 『헌제자』 상태 1중첩을 추가 획득하고 스킬 효과를 변경한다. 모든 적에게 절반의 대미지를 주고 100%의 기본 확률로 적을 화상 상태에 빠뜨린다."
+            "description": "Deal Fire damage to 1 foe equal to 26.2%/28.9%/27.2%/29.9% of Kurotani's max HP, and inflict Burn. If the target is Burning, gain 1 Chosen One stack, change target to all foes and decrease damage by half, with a chance to inflict Burn."
         },
         "skill2": {
-            "name":"촛불의 빛",
+            "name": "Crimson Summon",
             "element": "화염광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "모든 적에게 최대 생명 20.2%/22.3%/21.0%/23.1%의 화염 속성 대미지를 준다. 적이 화상 상태인 경우 쿠로타니 키요시가 『헌제자』 2중첩을 획득하고 화상 상태인 적을 『성화』 상태에 빠뜨리며, 해당 스킬이 화염 속성 TECHNICAL을 준다.\n『성화』: 턴 시작 시 쿠로타니 키요시 최대 생명 24.8%/27.3%/25.8%/28.3%의 화염 속성 대미지를 받으며 2턴 동안 지속된다."
+            "description": "Deal Fire damage to all foes equal to 20.2%/22.3%/21.0%/23.1% of Kurotani's max HP. When foes are Burning, gain 2 Chosen One stacks and inflict Sacred Flame on Burning foes, and this skill activates a Fire Technical.\nSacred Flame: At the start of turn, deal Fire damage equal to 24.8%/27.3%/25.8%/28.3% of Kurotani's max HP for 2 turns."
         },
         "skill3": {
-            "name": "화염의 정화",
+            "name": "Cleansing Flame",
             "element": "화염",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "1명의 적에게 최대 생명 58.6%/64.6%/61.0%/67.0%의 화염 속성 대미지를 주고 화염 속성 TECHNICAL을 준다. 적이 『성화』 상태인 경우 추가로 TECHNICAL을 주고, 해당 스킬의 대미지는 30% 증가한다."
+            "description": "Deal Fire damage to 1 foe equal to 58.6%/64.6%/61.0%/67.0% of Kurotani's max HP and activate Fire Technical. When target has Sacred Flame, activate an additional Technical and increase damage by 30%."
         },
         "skill_highlight": {
             "element": "화염광역",
-            "type":"광역피해",
-            "description": "모든 적이 받는 화염 대미지가 30.1%/33.2%/31.3%/34.4% 증가하고, 최대 생명 41.5%/45.7%/43.2%/47.4%의 화염 속성 대미지를 준다. 100%의 기본 확률로 모든 적을 화상 상태로 만들며 2턴 동안 지속된다."
+            "type": "광역피해",
+            "description": "Increase all foes' Fire damage taken by 30.1%/33.2%/31.3%/34.4%, and deal Fire damage equal to 41.5%/45.7%/43.2%/47.4% of Kurotani's max HP. Also, inflict Burn for 2 turns."
         },
         "passive1": {
-            "name": "은혜",
+            "name": "Uplifting Embers",
             "element": "패시브",
-            "description": "쿠로타니 키요시가 『헌제자』를 1중첩 보유할 때마다 『성화』 상태인 적이 받는 화염 속성 대미지와 원소 이상 대미지가 6.0% 증가한다."
+            "description": "Increase Fire damage and elemental ailment damage dealt to foes with Sacred Flame by 6.0%, based on the number of Chosen One stacks."
         },
         "passive2": {
-            "name": "신적",
+            "name": "Hot to the Touch",
             "element": "패시브",
-            "description": "자신의 최대 생명을 기반으로 자신이 주는 화염 속성 대미지가 증가한다. 최대 생명 300포인트마다 화염 속성 대미지가 1% 증가한다. 최대 9000포인트 최대 생명이 적용된다."
+            "description": "Increase Fire damage based on max HP. Increase by 1% for every 300 HP (up to 9000)."
         }
-},
+    },
     "토모코": {
-        "name": "노게 토모코",
+        "name": "Tomoko Noge",
         "skill1": {
-            "name": "염의 선율",
+            "name": "Psyche Melody",
             "element": "염동광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "모든 적에게 공격력 91.5%/100.9%/95.3%/104.7%의 염동 속성 대미지를 주고, 『푸른 잎』을 2개 획득한다."
+            "description": "Deal Psychokinesis damage to all foes equal to 91.5%/100.9%/95.3%/104.7% of Attack, and gain 2 Greenleaf stacks."
         },
         "skill2": {
-            "name": "풀피리 찬가",
+            "name": "Cheering You On",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 22,
             "cool": 0,
-            "description": "동료 1명이 『잎소리 단조』를 획득한다. 공격력이 30% 증가하며, 토모코 공격력의 30%만큼 추가로 증가한다(상한은 공격력 1171/1291/1219/1339포인트). 동시에 효과 명중도 15% 증가하며 효과는 2턴 동안 지속된다. 해당 스킬은 『푸른 잎』 2개를 소모한다."
+            "description": "Grant Cheer Song to 1 ally. Increase Attack by 30% + 30% of Tomoko's Attack (up to 1171/1291/1219/1339). Also increase ailment accuracy by 15% for 2 turns. This skill consumes 2 Greenleaf stacks."
         },
         "skill3": {
-            "name": "굿나잇 송",
+            "name": "Spirit's Lullaby",
             "element": "디버프",
-            "type":"제어",
+            "type": "제어",
             "sp": 24,
             "cool": 0,
-            "description": "78.1%/86.1%/81.3%/89.3%의 기본 확률로 1턴 동안 1명의 적을 수면 상태에 빠뜨린다. 명중 시 적이 받는 다음 대미지가 29.3%/32.3%/30.5%/33.5% 증가한다. 명중하지 않을 시 14.6%/16.1%/15.2%/16.7% 증가한다. 해당 스킬로 『푸른 잎』 2개를 소모한다."
+            "description": "78.1%/86.1%/81.3%/89.3% chance to inflict Sleep on 1 foe for 1 turn. On success, increase target's next damage taken by 29.3%/32.3%/30.5%/33.5%. On failure, increase by 14.6%/16.1%/15.2%/16.7%. This skill consumes 2 Greenleaf stacks."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "디버프",
-            "type":"제어",
-            "description": "1턴 동안 1명의 적을 100%의 기본 확률로 수면 상태에 빠뜨리고, 1턴 동안 다음에 받는 대미지를 32.8%/36.2%/34.1%/37.5% 증가시킨다."
+            "type": "제어",
+            "sp": 0,
+            "cool": 0,
+            "description": "100% chance to inflict Sleep on 1 foe for 1 turn, and increase next damage taken by 32.8%/36.2%/34.1%/37.5% for 1 turn."
         },
         "passive1": {
-            "name": "환상",
+            "name": "Esprit de Corps",
             "element": "패시브",
-            "description": "동료를 목표로 스킬 사용 시 2턴 동안 주는 대미지가 6.0% 증가한다."
+            "description": "After using a skill on an ally, increase target's damage by 6.0% for 2 turns."
         },
         "passive2": {
-            "name": "추적",
+            "name": "Insult to Injury",
             "element": "패시브",
-            "description": "모든 동료가 정신 이상 상태인 적에게 주는 대미지가 36.0% 증가한다."
+            "description": "Increase party's damage to foes with spiritual ailments by 36.0%."
         }
-},
-    "토모코·여름": {
-        "name": "노게 토모코·여름",
-        "skill1": {
-            "name": "여름 음료 한잔",
-            "element": "염동광역",
-            "type":"광역피해",
-            "sp": 23,
-            "cool": 0,
-            "description": "임의의 적에게 공격력 77.6%/85.5%/82.4%/90.3%의 염동 속성 대미지를 4회 준다. 해당 스킬의 공격을 받지 않은 적을 우선 공격하며, 대미지마다 『불꽃』을 1중첩 추가한다. 동일한 목표에 대한 후속 공격은 30%의 대미지만 준다.\n패시브: 『화려한 불꽃』이 주는 스킬 대미지 배율/치료량이 51.7%/51.7%/59.9%/59.9% 증가한다."
-        },
-        "skill2": {
-            "name": "맛있게 드세요",
-            "element": "치료",
-            "type":"치료",
-            "sp": 27,
-            "cool": 0,
-            "description": "동료 1명이 공격력 22.4%/22.4%/23.8%/23.8%+1438/1749/1767/2078의 생명을 회복하고, 공격력이 14.6%/14.6%/15.5%/15.5% 증가하며, 효과 명중이 58.6%/58.6%/62.2%/62.2% 증가한다. 해당 동료가 적에게 스킬 대미지를 줄 때마다 『불꽃』 1중첩을 추가하며 2턴 동안 지속된다. 기간 동안 『불꽃』 효과를 최대 5회 추가할 수 있다."
-        },
-        "skill3": {
-            "name": "한밤의 두근거림",
-            "element": "염동광역",
-            "type":"광역피해",
-            "sp": 25,
-            "cool": 0,
-            "description": "모든 적에게 공격력 61.0%/67.2%/64.8%/71.0%의 염동 속성 대미지를 주고, 적이 받는 대미지가 19.5%/19.5%/20.7%/20.7% 증가한다. 또한 적이 스킬 대미지를 받을 때마다 『불꽃』 1중첩이 추가되며 2턴 동안 지속된다. 노게 토모코·여름의 턴이 시작될 때 지속 턴 수가 1회 감소하며, 기간 동안 『불꽃』 효과를 최대 5회 추가할 수 있다(해당 대미지는 기존 스킬의 『불꽃』 추가 효과를 발동하지 못함)."
-        },
-        "skill_highlight": {
-            "element": "염동",
-            "type":"광역피해",
-            "description": "임의의 적에게 공격력 82.4%/90.9%/87.4%/95.9%의 염동 속성 대미지를 3회 준다. 해당 스킬의 공격을 받지 않은 적을 우선 공격하며, 대미지마다 『불꽃』 1중첩을 추가한다. 동일한 목표에 대한 후속 공격은 30%의 대미지만 준다."
-        },
-        "passive1": {
-            "name": "반짝반짝",
-            "element": "패시브",
-            "description": "전투 중 자신의 치료 효과에 따라 염동 대미지와 최대 생명이 증가한다. 최대 42.0%의 치료 효과로 염동 대미지가 70.0%, 최대 생명이 2100 증가한다."
-        },
-        "passive2": {
-            "name": "찬란",
-            "element": "패시브",
-            "description": "『맛있게 드세요』 발동 시 2턴 동안 스킬 메인 목표의 최대 생명이 1800 추가 증가한다."
-        }
-},
+    },
     "토시야": {
-        "name": "스미 토시야",
+        "name": "Sumi Toshiya",
         "skill1": {
-            "name": "애통한 비극",
+            "name": "Unexpected Tragedy",
             "element": "주원",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 22,
             "cool": 0,
-            "description": "1명의 적에게 공격력 58.6%/64.6%/61.0%/67.0%의 주원 대미지를 3회 주고, 이번 공격으로 『증오 시』 3개를 획득한다.\n이후에 『시』를 획득하면 25%의 고정 확률로 『증오 시』로 전환되며, 최대 2회 발동된다.\n『증오 시』 매 중첩마다 『운명의 십사행시』는 30%의 기본 확률로 주원 효과를 부여한다."
+            "description": "Deal Curse damage to 1 foe equal to 58.6%/64.6%/61.0%/67.0% of Attack (3 hits), and gain 3 Verse of Hate stacks.\nWhen next gaining Verse stacks, 25% chance to change to Verse of Hate stacks (max 2).\nWhen spending Verse of Hate stacks to deal damage with Sonnet of Fate, 30% chance to inflict Curse for each Verse of Hate spent."
         },
         "skill2": {
-            "name": "허황된 희극",
+            "name": "Absurd Comedy",
             "element": "주원광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "모든 적에게 공격력 35.7%/39.3%/37.2%/40.8%의 주원 대미지를 2회 주고, 이번 공격으로 『치유 시』 2개를 획득한다.\n이후에 『시』를 획득하면 25%의 고정 확률로 『치유 시』로 전환되며, 최대 2회 발동된다.\n『치유 시』 매 중첩마다 『운명의 십사행시』는 생명이 가장 적은 동료의 생명을 공격력 7.5%만큼 회복한다."
+            "description": "Deal Curse damage to all foes equal to 35.7%/39.3%/37.2%/40.8% of Attack (2 hits), and gain 2 Verse of Healing stacks.\nWhen next gaining Verse stacks, 25% chance to change to Verse of Healing stacks (max 2).\nWhen spending Verse of Healing stacks to deal damage with Sonnet of Fate, restore HP to the ally with the lowest remaining HP by 7.5% of Attack per Verse of Healing spent."
         },
         "skill3": {
-            "name": "낭만적인 정극",
+            "name": "Tragicomedy of Love",
             "element": "주원",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "1명의 적에게 공격력 41.5%/45.7%/43.2%/47.4%의 주원 대미지를 5회 주고, 이번 공격으로 『열정 시』 5개를 획득하게 한다.\n이후에 『시』 획득 시 25%의 고정 확률로 『열정 시』로 전환되며, 최대 2회 발동된다.\n『열정 시』마다 『운명의 십사행시』에 공격력 7%의 만능 대미지를 추가한다."
+            "description": "Deal Curse damage to 1 foe equal to 41.5%/45.7%/43.2%/47.4% of Attack (5 hits), and gain 5 Verse of Passion stacks.\nWhen next gaining Verse stacks, 25% chance to change to Verse of Passion stacks (max 2).\nWhen spending Verse of Passion stacks to deal damage with Sonnet of Fate, deal bonus Almighty damage equal to 7% of Attack per Verse of Passion spent."
         },
         "skill_highlight": {
+            "name": "Highlight",
             "element": "주원",
-            "type":"단일피해",
-            "description": "1명의 적에게 공격력 96.8%/106.7%/100.8%/110.7%의 주원 대미지를 3회 주며, 다음 2회의 『운명의 십사행시』는 추가로 공격력 50.6%/55.8%/52.6%/57.8%의 대미지를 준다."
+            "type": "단일피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deal Curse damage to 1 foe equal to 96.8%/106.7%/100.8%/110.7% of Attack (3 hits). The next 2 times Sonnet of Fate is activated, increase its damage by 50.6%/55.8%/52.6%/57.8%."
         },
         "passive1": {
-            "name": "조종",
+            "name": "The Other Prison",
             "element": "패시브",
-            "description": "『운명의 십사행시』로 주원 이상 상태에 걸린 적에게 주는 대미지가 50.0% 증가한다."
+            "description": "Increase damage of Sonnet of Fate on foes with Curse ailment by 50.0%."
         },
         "passive2": {
-            "name": "주언",
+            "name": "This Beautiful Woman",
             "element": "패시브",
-            "description": "『운명의 십사행시』에 특수 『시』가 1개 있을 때마다 이번 대미지가 10.0% 증가한다."
+            "description": "For each special Verse stack present, increase damage of Sonnet of Fate by 10.0%."
         }
-},
-    "하루": {
-        "name": "오쿠무라 하루",
+    },
+    "미유": {
+        "name": "Miyu Sahara",
         "skill1": {
-            "name": "집중 조준",
-            "element": "염동광역",
-            "type":"광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "모든 적에게 공격력 57.8%/63.8%/61.3%/67.3%의 염동 속성 대미지를 2단계 준다. /97.6%/의 기본 확률로 메인 목표에게 『조준점』을 추가하며, 동시에 53.7%/53.7%/57.0%/57.0%의 기본 확률로 다른 목표에게 『조준점』을 추가한다. 효과는 3턴 동안 지속된다. 자신은 『열에너지 개조』 획득해 총격으로 『조준점』을 보유한 적 공격 시 스킬 대미지가 29.3%/32.3%/31.1%/34.1% 증가하며, 총격 완료 후 『조준점』이 제거된다."
-        },
-        "skill2": {
-            "name": "화력 제압",
-            "element": "총격",
-            "type":"단일피해",
-            "hp": 12,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 151.6%/167.1%/160.9%/176.4%의 총격 속성 대미지를 주며, 『조준점』을 보유한 적 공격 시 관통이 19.5%/19.5%/20.7%/20.7% 증가한다. 자신은 『장갑제거 개조』를 획득해 총격 시 추가로 메인 목표에게 공격력 39.0%/43.0%/41.4%/45.4%의 염동 속성 대미지를 주며, 『열에너지 개조』의 스킬 대미지 증가 효과를 발동할 수 있다."
-        },
-        "skill3": {
-            "name": "아이언 버스트",
-            "element": "염동광역",
-            "type":"광역피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "모든 적에게 공격력 110.9%/122.3%/117.7%/129.1%의 염동 속성 대미지를 준다. 『조준점』을 보유한 적 공격 시 크리티컬 확률이 19.5%/19.5%/20.7%/20.7% 증가한다. 자신은 『확산 개조』를 획득해 총격 시 추가로 모든 적에게 공격력 29.3%/32.3%/31.1%/34.1%의 염동 속성 대미지를 주며, 『열에너지 개조』의 스킬 대미지 증가 효과를 발동할 수 있다."
-        },
-        "skill_highlight": {
-            "element": "염동광역",
-            "type":"광역피해",
-            "description": "모든 적에게 공격력 206.9%/228.1%/219.6%/240.8%의 염동 속성 대미지를 준다. 『개조』가 최대치가 아니며 『오버클럭 개조』가 없는 경우, 『오버클럭 개조』를 획득해 총격 시 크리티컬 확률이 14.6%/14.6%/15.5%/15.5% 증가한다. 아닌 경우 이번 공격 스킬 대미지가 14.6%/16.1%/15.5%/17.0% 증가한다."
-        },
-        "passive1": {
-            "name": "탄사",
-            "element": "패시브",
-            "description": "전투 중 1.45%의 효과 명중마다 1%의 공격력 보너스를 획득하며, 최대 165.0%의 공격력 보너스를 획득한다.\n70%의 효과 명중마다 추가로 20%의 크리티컬 효과 증가 1중첩을 획득하며, 최대 3중첩 획득한다."
-        },
-        "passive2": {
-            "name": "전략",
-            "element": "패시브",
-            "description": "개조를 1종 사용할 때마다 『총구 가열』을 1중첩 영구 획득한다. 『총구 가열』이 지정 중첩 수에 도달하면 자신이 속성 증가를 획득한다.\n1중첩: 효과 명중 18.0% 증가, 효과 저항 18.0% 증가\n2중첩: 공격력 18.0% 증가, 방어력 18.0% 증가\n3중첩: 크리티컬 효과 18.0% 증가"
-        }
-},
-    "하루나": {
-        "name": "니시모리 하루나",
-        "skill1": {
-            "name": "멍청한 조수",
-            "element": "염동",
-            "type":"단일 피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "1명의 적에게 공격력 146.4%/161.4%/155.4%/170.4%의 염동 속성 대미지를 주고, 모든 동료를 『총애』 상태에 빠뜨린다. 페르소나 스킬을 사용하여 대미지를 주면 니시모리가 『동심』 1중첩을 획득한다. 효과는 1턴 동안 지속된다."
-        },
-        "skill2": {
-            "name": "똑똑한 탐험가",
+            "name": "Little Mermaid's Song",
             "element": "버프광역",
-            "type":"버프",
-            "sp": 22,
-            "cool": 0,
-            "description": "모든 동료가 받는 치료 효과와 받는 실드 효과가 17.6%/19.4%/18.7%/20.5%, 방어력이 34.2%/37.7%/36.3%/39.8% 증가한다. 효과는 2턴 동안 지속된다. 해당 스킬 시전 시 『동심』 중첩이 0이면 스킬 종료 후 『동심』을 2중첩 획득한다."
-        },
-        "skill3": {
-            "name": "왕성한 동심",
-            "element": "버프광역",
-            "type":"버프",
-            "sp": 24,
-            "cool": 0,
-            "description": "『동심』 보유 시 스킬이 활성화되어 2턴 동안 모든 동료의 공격력이 10% 증가한다. 해당 스킬 사용 시 『동심』이 2중첩 이상일 경우, 2턴 동안 모든 동료가 주는 대미지가 증가한다(자신의 공격력 100포인트마다 1% 증가, 최대 48.8%/53.8%/51.8%/56.8%)."
-        },
-        "skill_highlight": {
-            "element": "염동",
-            "type":"버프",
-            "description": "니시모리가 『동심』 획득 시, 『계수』 1개를 획득하며 2턴 동안 지속된다(5회 중첩 가능).\nHIGHLIGHT 시전 시, 1명의 적에게 공격력 336.0%/373.5%/388.5%/426.0%의 염동 속성 대미지를 주고, 1턴 동안 모든 동료가 주는 대미지가 7.8%/8.6%/8.3%/9.1%*현재 『계수』 중첩수만큼 증가한다."
-        },
-        "passive1": {
-            "name": "의문 추적",
-            "element": "패시브",
-            "description": "『총애』 상태인 동료가 대미지를 1단계 줄 때마다 40.0%의 고정 확률로 니시모리가 『동심』을 1중첩 획득한다."
-        },
-        "passive2": {
-            "name": "탐구",
-            "element": "패시브",
-            "description": "『동심』을 3중첩 이상 소모한 경우, 『동심』으로 인한 공격력 증가 효과가 24.0% 증가한다."
-        }
-},
-    "후타바": {
-        "name": "사쿠라 후타바",
-        "skill1": {
-            "name": "소리 없는 침습",
-            "element": "버프광역",
-            "type":"디버프",
-            "cool": 4,
-            "description": "모든 적의 방어력이 6%+(사쿠라 후타바의 공격력 100포인트마다 방어력 추가 0.53% 감소, 최대 4600/5060/5980/6440포인트 공격력 계산)만큼 감소하며 2턴 동안 지속된다. 기간동안 적이 약점 대미지를 받을 때 해당 효과는 2배로 증가한다. 자신의 분석 진도가 100%에 도달하면 아군 전체에게 『해킹 완료』를 추가하며 2턴 동안 지속된다."
-        },
-        "skill2": {
-            "name": "데이터 해독",
-            "element": "버프",
-            "type":"디버프",
-            "cool": 4,
-            "description": "1명의 적이 받는 대미지가 6%+(사쿠라 후타바의 공격력 100포인트마다 목표가 받는 대미지 0.38% 추가 증가, 최대 4600/5060/5980/6440포인트 공격력 계산) 증가하며 2턴 동안 지속된다. 기간 동안 아군 동료가 페르소나 스킬/추가 효과/HIGHLIGHT를 발동해 목표에게 대미지를 주면, 사쿠라 후타바가 분석 진도를 15% 획득한다. 자신의 분석 진도가 100%에 도달하면 아군 전체에게 『해킹 완료』 상태를 추가하며 2턴 동안 지속된다."
-        },
-        "skill3": {
-            "name": "불사조의 이름으로",
-            "element": "버프",
-            "type":"버프",
+            "type": "실드",
             "cool": 8,
-            "unlock": "아군 캐릭터가 『해킹 완료』 보유.",
-            "description": "발동 조건: 아군 캐릭터가 『해킹 완료』 보유.\n아군 괴도 1명의 공격력이 270/297/302/329+(사쿠라 후타바의 공격력 100포인트마다 공격력 추가 21.7 증가, 최대 4600/5060/5980/6440포인트 공격력 계산) 증가하며 2턴 동안 지속된다. 전체 적에게 해당 괴도 적합성의 『교란 바이러스』를 추가하며 1턴 동안 지속된다.\n『교란 바이러스』: 목표의 적합성 속성을 변경한다. 무효, 반사, 흡수일 경우 내성으로, 내성일 경우 일반으로, 일반일 경우 약점으로 변경된다. 약점일 경우, 목표가 받는 약점 대미지를 25% 증가한다."
+            "description": "Grant a shield to party equal to 29.3%/29.3%/31.6%/31.6% of Miyu's Defense + 1110/1330/1437/1657 for 2 turns, and restore 4 SP. When an ally's shield is broken, decrease cooldown by 1 action."
+        },
+        "skill2": {
+            "name": "Poseidon's Blessing",
+            "element": "버프",
+            "type": "실드",
+            "cool": 8,
+            "description": "Grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 for 2 turns, and decrease weakness damage taken by 20%. Grant 2 Down Points and 2 Seashell stacks."
+        },
+        "skill3": {
+            "name": "Tide of Dreams",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 12,
+            "description": "Grant a shield to all allies equal to 33.2%/33.2%/35.9%/35.9% of Miyu's Defense + 1259/1409/1629/1779 + number of Seashell stacks on party × (6.9%/6.9%/7.5%/7.5% of Miyu's Defense + 260/260/336/336) for 3 turns. Also, if an ally has 4 or more Seashell stacks, increase damage by 2.0%/2.0%/2.2%/2.2% for each stack for 3 turns. The damage increase effect lasts for 3 turns or until shield is broken, and then lose 2 Seashell stacks."
         },
         "skill_highlight": {
-            "name": "속성 증가",
+            "name": "Attribute Boost",
             "element": "패시브",
-            "description": "해명 괴도 각 속성의 20%만큼 출전 중인 모든 동료의 상응한 속성 수치가 증가한다."
+            "type": "패시브",
+            "description": "Increase all allies' corresponding attribute stats by 15% of Phantom Thief's respective attributes."
         },
         "passive1": {
-            "name": "장난기",
+            "name": "Whispering Waves",
             "element": "패시브",
-            "description": "전투 시작 시 100%의 분석 진도를 획득한다."
+            "description": "Increase shield effect by number of party's Seashell stacks × 1.0%."
         },
         "passive2": {
-            "name": "뒷수습",
+            "name": "I'll Protect You!",
             "element": "패시브",
-            "description": "『해킹 완료』 상태에서 3턴 동안 모든 괴도는 사쿠라 후타바 공격력 30.0%의 실드를 획득한다."
+            "description": "Increase ally's Defense by 3.6% for each Seashell stack."
+        }
+    },
+    "카요": {
+        "name": "Tomiyama Kayo",
+        "skill1": {
+            "name": "Club Okyann",
+            "element": "버프광역",
+            "type": "버프광역",
+            "cool": 4,
+            "description": "Increase party's Attack by 12% of Tomiyama's Attack for 1 turn (up to 4500/4950/5400/5850 of Attack), increase ailment accuracy by 35.0%/38.5%/37.8%/41.3%, and gain 1 Beat stack."
+        },
+        "skill2": {
+            "name": "Intermission",
+            "element": "버프광역",
+            "type": "버프광역",
+            "cool": 8,
+            "description": "Restore party's SP by 22/27/26/31, and grant 3 Beat stacks."
+        },
+        "skill3": {
+            "name": "Retro Dance Number",
+            "element": "버프광역",
+            "type": "버프광역",
+            "cool": 8,
+            "description": "Increase party's damage by 10.0%/11.0%/10.8%/11.8% for 3 turns. Increase damage by 1% for every 225 of Tomiyama's Attack (up to 4500/4950/5400/5850 of Attack). Also increase damage dealt to foes with an elemental ailment by 1.5 times and gain 2 Beat stacks."
+        },
+        "skill_highlight": {
+            "name": "Attribute Boost",
+            "element": "패시브",
+            "type": "패시브",
+            "description": "Increase all allies' corresponding attribute stats by 15% of Phantom Thief's respective attributes."
+        },
+        "passive1": {
+            "name": "Toe-Tapping",
+            "element": "패시브",
+            "description": "For every 4 Beat stacks gained, inflict 1 random elemental ailment on the foe with the highest remaining HP."
+        },
+        "passive2": {
+            "name": "Outdated Slang",
+            "element": "패시브",
+            "description": "When an ally inflicts an elemental ailment on a foe, increase that ally's damage by 15.0% for 2 turns. Also, 21.0% chance to grant 1 Beat stack."
         }
     }
 };
+
+// window 객체에 할당
+window.enCharacterSkillsData = enCharacterSkillsData;
+
+// Export for use in other files
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = characterSkillsData;
+} 

@@ -1,0 +1,768 @@
+---
+layout: default
+custom_css: [persona]
+custom_js: [tooltip, language-router]
+custom_data: [wonder/persona.js, tooltip.js, wonder/skills.js]
+permalink: /persona/
+redirect_from: 
+  - /kr/persona/
+  - /kr/persona/index.html
+language: kr
+title : 주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
+---
+
+
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>
+
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current">페르소나</span>
+    </div>
+    <div class="header-container">
+        <h1 id="page-title">주요 페르소나</h1>
+    </div>
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-header">
+            <button class="filter-toggle-btn">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
+                <span></span>
+            </button>
+            <button class="filter-reset-btn" style="display: none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
+            </button>
+        </div>
+        
+        <div class="filter-content" style="display: none;">
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3>속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/persona/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Position filter -->
+            <div class="filter-group">
+                <h3>직업</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="position" value="지배">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_지배.png" alt="지배">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="반항">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_반항.png" alt="반항">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="우월">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_우월.png" alt="우월">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="굴복">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_굴복.png" alt="굴복">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="방위">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_방위.png" alt="방위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="구원">
+                        <img src="{{ site.baseurl }}/assets/img/persona/직업_구원.png" alt="구원">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Rarity filter -->
+            <div class="filter-group">
+                <h3>희귀도</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="3" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Grade filter -->
+            <div class="filter-group">
+                <h3>등급</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="grade" value="1">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade1.webp" alt="1등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="2">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade2.webp" alt="2등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="3">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade3.webp" alt="3등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="4">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade4.webp" alt="4등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="5">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade5.webp" alt="5등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="6">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade6.webp" alt="6등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="7">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade7.webp" alt="7등급">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="grade" value="8">
+                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade8.webp" alt="8등급">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Search section below filter section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                </svg>
+            </div>
+            <input type="text" id="personaSearch" placeholder="페르소나 검색..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <div class="search-count">
+            <span id="filteredCount">전체 0개</span>
+        </div>
+    </div>
+
+    <!-- Explain Container -->
+    <div class="explain-container">
+        <div class="explain-box">
+            <div class="explain-section">
+                <h4>본능 · 고유 스킬 · HIGHLIGHT</h4>
+                <div class="priority-examples">
+                    <div class="priority-label">중요도 :</div>
+                    <div class="priority-item">
+                        <div class="priority-box high"></div>
+                        <span>상</span>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-box medium"></div>
+                        <span>중</span>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-box low"></div>
+                        <span>하</span>
+                    </div>
+                </div>
+            </div>
+            <div class="explain-section">
+                <h4>추천 스킬</h4>
+                <div class="priority-examples">
+                    <div class="priority-label">우선순위 :</div>
+                    <div class="priority-item">
+                        <div class="priority-text high">높음</div>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-text medium">일반</div>
+                        
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-text low">낮음</div>
+                    </div>
+                    <div class="priority-item">
+                        <div class="priority-text extra-low">매우 낮음</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Persona card container -->
+    <div class="persona-cards" id="personaCards">
+        <!-- Dynamically generated by JavaScript -->
+    </div>
+</div>
+
+
+<script>
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        // 다국어 데이터 정의
+        const i18nData = {
+            kr: {
+                language_notice: "",
+                nav_home: "홈",
+                nav_current: "페르소나",
+                page_title: "주요 페르소나",
+                filtered_count: "전체"
+            },
+            en: {
+                language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
+                nav_home: "Home",
+                nav_current: "Personas",
+                page_title: "Main Personas",
+                filtered_count: "Total"
+            },
+            jp: {
+                language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
+                nav_home: "ホーム",
+                nav_current: "ペルソナ",
+                page_title: "主要ペルソナ",
+                filtered_count: "全体"
+            }
+        };
+        
+        const data = i18nData[currentLang];
+        if (!data) return;
+        
+        // 언어 안내 메시지
+        if (currentLang !== 'kr') {
+            const notice = document.getElementById('language-notice');
+            const noticeText = document.getElementById('language-notice-text');
+            if (notice && noticeText && data.language_notice) {
+                noticeText.textContent = data.language_notice;
+                notice.style.display = 'block';
+            }
+        }
+        
+        // 네비게이션 및 제목 업데이트
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        
+        if (navHome) navHome.textContent = data.nav_home;
+        if (navCurrent) navCurrent.textContent = data.nav_current;
+        if (pageTitle) pageTitle.textContent = data.page_title;
+        
+        // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
+        window.i18nFilteredCount = data.filtered_count;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('persona');
+        VersionChecker.check();
+
+        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        if (typeof LanguageRouter !== 'undefined') {
+            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
+            const hasLangParam = window.location.search.includes('lang=');
+            if (hasLangParam) {
+                // 언어 파라미터가 있으면 바로 콘텐츠 로드
+                updateLanguageContent().then(() => {
+                    initializePageContent();
+                });
+            } else {
+                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+                
+                updateLanguageContent().then(() => {
+                    initializePageContent();
+                });
+            }
+        } else {
+            updateLanguageContent();
+            initializePageContent();
+        }
+    });
+
+    function initializePageContent() {
+        const cardsContainer = document.getElementById('personaCards');
+        
+        // Update initial count
+        const countText = window.i18nFilteredCount || '전체';
+        document.getElementById('filteredCount').textContent = `${countText} ${Object.keys(personaData).length}개`;
+
+        const sortedPersonas = Object.keys(personaData)
+        
+        sortedPersonas.forEach(personaName => {
+            const detailContainer = document.createElement('div');
+            detailContainer.className = 'persona-detail-container';
+            // Add data attributes for filtering
+            detailContainer.dataset.element = personaData[personaName].element;
+            detailContainer.dataset.position = personaData[personaName].position;
+            detailContainer.dataset.rarity = personaData[personaName].star;
+            detailContainer.dataset.name = personaName;  // Add data-name attribute for search
+            detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
+            
+            // Left card image section
+            const cardSection = document.createElement('div');
+            cardSection.className = 'persona-card-section';
+            
+            // Insert existing card creation code here
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.element = personaData[personaName].element;
+            card.dataset.position = personaData[personaName].position;
+            card.dataset.rarity = personaData[personaName].star;
+            
+            // Add card background
+            const cardBg = document.createElement('img');
+            cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaData[personaName].element}.webp`;
+            cardBg.alt = "card background";
+            cardBg.className = 'card-background';
+            cardBg.loading = 'lazy';
+            
+            // Persona image
+            const img = document.createElement('img');
+            img.src = `{{ site.baseurl }}/assets/img/persona/${personaName}.webp`;
+            img.alt = personaName;
+            img.className = 'persona-img';
+            img.loading = 'lazy';  // Add lazy loading attribute
+            
+            // Add rarity cover
+            const coverStar = document.createElement('img');
+            coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaData[personaName].star}.webp`;
+            coverStar.alt = "rarity cover";
+            coverStar.className = 'cover-star';
+            coverStar.loading = 'lazy';
+            
+            // Add remaining elements
+            const positionContainer = document.createElement('div');
+            positionContainer.className = 'position-container';
+            
+            const positionIcon = document.createElement('img');
+            positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaData[personaName].position}.png`;
+            positionIcon.alt = personaData[personaName].position;
+            positionIcon.className = 'position-icon';
+            
+            const elementIcon = document.createElement('img');
+            elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].element}.png`;
+            elementIcon.alt = personaData[personaName].element;
+            elementIcon.className = 'element-icon';
+
+            
+            positionContainer.appendChild(positionIcon);
+            
+            // Final assembly
+            card.appendChild(cardBg);
+            card.appendChild(img);
+            card.appendChild(coverStar);
+            card.appendChild(positionContainer);
+            card.appendChild(elementIcon);
+            
+            cardSection.appendChild(card);
+            
+            // Right info section
+            const infoSection = document.createElement('div');
+            infoSection.className = 'persona-info-section';
+            
+            // Name and grade
+            const headerInfo = document.createElement('div');
+            headerInfo.className = 'persona-header-info';
+            headerInfo.innerHTML = `
+                <h2>${personaName}</h2>
+                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
+            `;
+            
+            // Instinct
+            const instinctInfo = document.createElement('div');
+            instinctInfo.className = 'persona-instinct-info';
+            instinctInfo.dataset.priority = personaData[personaName].instinct.priority;
+            instinctInfo.innerHTML = `
+                <h3>${personaData[personaName].instinct.name}</h3>
+                <p>${personaData[personaName].instinct.effects.join('\n')}</p>
+            `;
+            
+            // Container for unique skill and highlight
+            const skillContainer = document.createElement('div');
+            skillContainer.className = 'skill-highlight-container';
+
+            // Unique skill
+            const uniqueSkillInfo = document.createElement('div');
+            uniqueSkillInfo.className = 'persona-unique-skill-info';
+            uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
+            uniqueSkillInfo.innerHTML = `
+                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].uniqueSkill.icon}.png" alt="Skill Element" class="skill-type-icon"> ${personaData[personaName].uniqueSkill.name}</h3>
+                <p>${personaData[personaName].uniqueSkill.effect}</p>
+            `;
+            
+            // Highlight
+            const highlightInfo = document.createElement('div');
+            highlightInfo.className = 'persona-highlight-info';
+            highlightInfo.dataset.priority = personaData[personaName].highlight.priority;
+            highlightInfo.innerHTML = `
+                <h3>HIGHLIGHT</h3>
+                <p>${personaData[personaName].highlight.effect}</p>
+            `;
+
+            // Add to container
+            skillContainer.appendChild(uniqueSkillInfo);
+            skillContainer.appendChild(highlightInfo);
+            
+            // Add elements to info section
+            infoSection.appendChild(headerInfo);
+            infoSection.appendChild(instinctInfo);
+            infoSection.appendChild(skillContainer);  // Add container instead of individual elements
+
+            // Recommended skill list
+            if (personaData[personaName].recommendSkill && personaData[personaName].recommendSkill.length > 0 && personaData[personaName].recommendSkill[0].name) {
+                const recommendedSkills = document.createElement('div');
+                recommendedSkills.className = 'persona-recommended-skills';
+                recommendedSkills.innerHTML = `
+                    <h3>추천 스킬</h3>
+                    <ul>
+                        ${personaData[personaName].recommendSkill.map(skill => {
+                            const skillInfo = personaSkillList[skill.name];
+                            if (!skillInfo) return ''; // Skip if skill info not found
+                            return `
+                                <li data-priority="${skill.priority}">
+                                    <div class="skill-info">
+                                        <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
+                                        <span class="skill-name">${skill.name}</span>
+                                        <span class="skill-description">${skillInfo.description}</span>
+                                    </div>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                `;
+                infoSection.appendChild(recommendedSkills);
+            }
+            
+            // Comment
+            if (personaData[personaName].comment && personaData[personaName].comment.trim() !== '') {
+                const comment = document.createElement('div');
+                comment.className = 'persona-comment';
+                comment.innerHTML = `
+                    <div class="comment-container">
+                        <span class="comment-icon">💬</span>
+                        <p>${personaData[personaName].comment}</p>
+                    </div>
+                `;
+                infoSection.appendChild(comment);
+            }
+            
+            // Add sections to container
+            detailContainer.appendChild(cardSection);
+            detailContainer.appendChild(infoSection);
+            
+            cardsContainer.appendChild(detailContainer);
+
+            // Initialize tooltips
+            addTooltips();
+        });
+
+        // ----------------------------------------------------
+        // Filter implementation
+
+        const filterToggleBtn = document.querySelector('.filter-toggle-btn');
+        const filterContent = document.querySelector('.filter-content');
+        const filterResetBtn = document.querySelector('.filter-reset-btn');
+        const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+        filterContent.style.display = 'block';
+
+        // Filter toggle
+        filterToggleBtn.addEventListener('click', () => {
+            filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Detect checkbox changes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                // Check if any filters are selected
+                const hasChecked = Array.from(checkboxes).some(cb => cb.checked);
+                //filterResetBtn.style.display = hasChecked ? 'block' : 'none';
+                
+                // Apply filters
+                applyFilters();
+            });
+        });
+        
+        // Reset button
+        
+        filterResetBtn.addEventListener('click', () => {
+            checkboxes.forEach(cb => cb.checked = false);
+            filterResetBtn.style.display = 'none';
+            applyFilters();
+        });
+        
+        filterToggleBtn.style.display = 'none';
+        filterResetBtn.style.display = 'none';
+
+        // Filter application function
+        function applyFilters() {
+            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
+            const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
+            const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
+            const selectedGrades = Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value);
+            
+            const containers = document.querySelectorAll('.persona-detail-container');
+            let visibleCount = 0;
+            
+            containers.forEach(container => {
+                const element = container.dataset.element;
+                const position = container.dataset.position;
+                const rarity = parseInt(container.dataset.rarity);
+                const grade = container.dataset.grade;
+                const personaName = container.dataset.name;
+                    
+                const elementMatch = selectedElements.length === 0 || selectedElements.includes(element);
+                const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
+                const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
+                const gradeMatch = selectedGrades.length === 0 || 
+                    selectedGrades.includes(grade) || 
+                    (personaName === '야노식' && selectedGrades.includes('1'));
+                
+                const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
+                container.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) visibleCount++;
+            });
+            
+            // Update count display
+            const countText = window.i18nFilteredCount || '전체';
+            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}개`;
+        }
+
+        // Search functionality implementation
+        const searchInput = document.getElementById('personaSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const containers = document.querySelectorAll('.persona-detail-container');
+        const personaNames = Object.keys(personaData);
+
+        searchInput.addEventListener('input', (e) => {
+            const searchValue = e.target.value.toLowerCase();
+            dropdown.innerHTML = '';
+            
+            // Dropdown autocomplete handling
+            if (searchValue.length > 0) {
+                const matches = personaNames.filter(name => 
+                    name.toLowerCase().includes(searchValue)
+                );
+
+                if (matches.length > 0) {
+                    dropdown.style.display = 'block';
+                    matches.forEach(name => {
+                        const div = document.createElement('div');
+                        div.className = 'dropdown-item';
+                        div.textContent = name;
+                        div.addEventListener('click', () => {
+                            searchInput.value = name;  // Set search input value to selected name
+                            dropdown.style.display = 'none';
+                            filterBySearch(name.toLowerCase());  // Execute search filtering
+                        });
+                        dropdown.appendChild(div);
+                    });
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            } else {
+                dropdown.style.display = 'none';
+            }
+
+            // Filter by search term
+            filterBySearch(searchValue);
+        });
+
+        // Search filtering function
+        function filterBySearch(searchValue) {
+            const containers = document.querySelectorAll('.persona-detail-container');
+            let visibleCount = 0;
+            
+            containers.forEach(container => {
+                const personaName = container.dataset.name.toLowerCase();
+                const isVisible = searchValue === '' || personaName.includes(searchValue);
+                container.style.display = isVisible ? 'flex' : 'none';
+                if (isVisible) visibleCount++;
+            });
+            
+            // Update count display
+            const countText = window.i18nFilteredCount || '전체';
+            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}개`;
+        }
+
+        // Close dropdown when clicking outside search
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // When keyboard appears
+        searchInput.addEventListener('focus', () => {
+            document.body.classList.add('keyboard-open');
+        });
+
+        // When keyboard disappears
+        searchInput.addEventListener('blur', () => {
+            document.body.classList.remove('keyboard-open');
+        });
+
+        // Prevent viewport size changes on iOS
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1';
+            }
+        }
+    } // initializePageContent 함수 종료
+    
+</script>
+
+<style>
+.explain-container {
+    margin: 20px 0 0 0;
+    padding: 0 20px;
+}
+
+.explain-box {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .explain-container {
+        padding: 0;
+    }
+    .explain-box {
+        gap: 24px;
+    }
+}
+
+.explain-section h4 {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-examples {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.priority-item span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+</style>

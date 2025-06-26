@@ -1,0 +1,571 @@
+---
+layout: default
+custom_css: [revelations]
+custom_js: [tooltip, language-router]
+custom_data: [revelations/revelations.js, tooltip.js]
+permalink: /revelations/
+redirect_from: 
+  - /kr/revelations/
+  - /kr/revelations/index.html
+language: kr
+title : 계시 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X의 계시 정보
+---
+
+<!-- Main content -->
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>
+    
+    <!-- Navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current">계시</span>
+    </div>
+    <div class="header-container">
+        <h1 id="page-title">계시</h1>
+    </div>
+
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-content">
+            <!-- Revelation type filter -->
+            <div class="filter-group">
+                <h3>분류</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="type" value="main">
+                        <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주 성위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="type" value="sub">
+                        <div class="sub-icons">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="일월성진">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3>속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Type filter -->
+            <div class="filter-group">
+                <h3>타입</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="effect" value="버프">
+                        <p>버프</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="디버프">
+                        <p>디버프</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="추가 효과">
+                        <p>추가 효과</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="HL 25%">
+                        <p>HL 25%</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="치료">
+                        <p>치료</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Search section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                </svg>
+            </div>
+            <input type="text" id="revelationSearch" placeholder="계시 검색..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <div class="search-count"></div>
+    </div>
+
+    <!-- Revelation card container -->
+    <div class="revelation-cards" id="revelationCards">
+        <!-- Dynamically generated by JavaScript -->
+    </div>
+</div>
+
+<script>
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        // 다국어 데이터 정의
+        const i18nData = {
+            kr: {
+                language_notice: "",
+                nav_home: "홈",
+                nav_current: "계시",
+                page_title: "계시",
+                filtered_count: "전체"
+            },
+            en: {
+                language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
+                nav_home: "Home",
+                nav_current: "Revelations",
+                page_title: "Revelations",
+                filtered_count: "Total"
+            },
+            jp: {
+                language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
+                nav_home: "ホーム",
+                nav_current: "啓示",
+                page_title: "啓示",
+                filtered_count: "全体"
+            }
+        };
+        
+        const data = i18nData[currentLang];
+        if (!data) return;
+        
+        // 언어 안내 메시지
+        if (currentLang !== 'kr') {
+            const notice = document.getElementById('language-notice');
+            const noticeText = document.getElementById('language-notice-text');
+            if (notice && noticeText && data.language_notice) {
+                noticeText.textContent = data.language_notice;
+                notice.style.display = 'block';
+            }
+        }
+        
+        // 네비게이션 및 제목 업데이트
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        
+        if (navHome) navHome.textContent = data.nav_home;
+        if (navCurrent) navCurrent.textContent = data.nav_current;
+        if (pageTitle) pageTitle.textContent = data.page_title;
+        
+        // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
+        window.i18nFilteredCount = data.filtered_count;
+    }
+
+    // Initialize navigation on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('revelations', 1); // Set active state for current page
+        VersionChecker.check();
+
+        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        if (typeof LanguageRouter !== 'undefined') {
+            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
+            const hasLangParam = window.location.search.includes('lang=');
+            if (hasLangParam) {
+                // 언어 파라미터가 있으면 바로 콘텐츠 로드
+                updateLanguageContent().then(() => {
+                    initializePageContent();
+                });
+            } else {
+                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+                
+                updateLanguageContent().then(() => {
+                    initializePageContent();
+                });
+            }
+        } else {
+            updateLanguageContent();
+            initializePageContent();
+        }
+    });
+
+    function initializePageContent() {
+        const cardsContainer = document.getElementById('revelationCards');
+        const searchCount = document.querySelector('.search-count');
+        
+        // Separate main revelations and sub revelations
+        const mainRevelations = Object.keys(revelationData.main);
+        const subRevelations = Object.keys(revelationData.sub);
+        
+        // Create array of all revelations (sub revelations first, then main revelations)
+        const allRevelations = [
+            ...subRevelations.map(name => ({ name, type: 'sub' })),
+            ...mainRevelations.map(name => ({ name, type: 'main' }))
+        ];
+        
+        // 초기 검색 결과 수 표시
+        const countText = window.i18nFilteredCount || '전체';
+        searchCount.textContent = `${countText} ${allRevelations.length}개`;
+        
+        // Create card for each revelation
+        allRevelations.forEach((revelation, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.type = revelation.type;
+            card.dataset.name = revelation.name;
+            
+            // Image container
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'img-container';
+            
+            // Revelation image
+            const img = document.createElement('img');
+            img.src = `{{ site.baseurl }}/assets/img/revelation/${revelation.name}.webp`;
+            img.alt = revelation.name;
+            img.className = 'revelation-img';
+
+            // Name image
+            const nameImg = document.createElement('img');
+            nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${revelation.name}.png`;
+            nameImg.alt = revelation.name;
+            nameImg.className = 'name-img';
+            
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(nameImg);
+            
+            // Info container
+            const infoContainer = document.createElement('div');
+            infoContainer.className = 'info-container';
+            
+            // Type label
+            const typeLabel = document.createElement('div');
+            typeLabel.className = 'type-label';
+            
+            // Container for text and icons
+            const typeLabelContent = document.createElement('div');
+            typeLabelContent.className = 'type-label-content';
+            
+            // Add text
+            const typeText = document.createElement('span');
+            typeText.textContent = revelation.name;  // Changed to revelation name
+            
+            // Icon container
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'type-icons';
+            
+            if (revelation.type === 'main') {
+                // For main revelations
+                const mainIcon = document.createElement('img');
+                mainIcon.src = '{{ site.baseurl }}/assets/img/revelation/icon-주.png';
+                mainIcon.alt = '주';
+                mainIcon.className = 'type-icon';
+                iconContainer.appendChild(mainIcon);
+            } else {
+                // For sub revelations
+                ['일', '월', '성', '진'].forEach(type => {
+                    const icon = document.createElement('img');
+                    icon.src = `{{ site.baseurl }}/assets/img/revelation/icon-${type}.png`;
+                    icon.alt = type;
+                    icon.className = 'type-icon';
+                    iconContainer.appendChild(icon);
+                });
+            }
+            
+            typeLabelContent.appendChild(typeText);
+            typeLabelContent.appendChild(iconContainer);
+            typeLabel.appendChild(typeLabelContent);
+            
+            // Effect description
+            const effectsContainer = document.createElement('div');
+            effectsContainer.className = 'effects-container';
+            
+            if (revelation.type === 'sub') {
+                // For sub revelations, show 2-set and 4-set effects
+                const effects = revelationData.sub_effects[revelation.name];
+                effectsContainer.innerHTML = `
+                    <div class="effect-set">
+                        <div class="set-label">2세트</div>
+                        <div class="set-desc">${effects.set2}</div>
+                    </div>
+                    <div class="effect-set">
+                        <div class="set-label">4세트</div>
+                        <div class="set-desc">${effects.set4}</div>
+                    </div>
+                `;
+            } else {
+                // For main revelations, show set_effects
+                const mainEffects = revelationData.set_effects[revelation.name];
+                effectsContainer.innerHTML = Object.entries(mainEffects)
+                    .map(([subName, effect]) => `
+                        <div class="effect-set">
+                            <div class="set-label">${subName}</div>
+                            <div class="set-desc">${effect}</div>
+                        </div>
+                    `).join('');
+            }
+            
+            infoContainer.appendChild(typeLabel);
+            infoContainer.appendChild(effectsContainer);
+            
+            card.appendChild(imgContainer);
+            card.appendChild(infoContainer);
+            cardsContainer.appendChild(card);
+        });
+        
+        addTooltips();
+
+        // Add filtering functionality
+        const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                applyFilters();
+            });
+        });
+
+        function applyFilters() {
+            const selectedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
+            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
+            const selectedEffects = Array.from(document.querySelectorAll('input[name="effect"]:checked')).map(cb => cb.value);
+            
+            const cards = document.querySelectorAll('.card');
+            let visibleCount = 0;
+            
+            // List of filtered sub revelations
+            let filteredSubRevelations = Object.keys(revelationData.sub_effects).filter(name => {
+                const effects = revelationData.sub_effects[name];
+                const elementMatch = selectedElements.length === 0 || 
+                    selectedElements.some(element => effects.type.includes(element));
+                const effectMatch = selectedEffects.length === 0 || 
+                    selectedEffects.some(effect => effects.type.includes(effect));
+                return elementMatch && effectMatch;
+            });
+
+            // Find main revelations related to filtered sub revelations
+            let relatedMainRevelations = new Set();
+            Object.entries(revelationData.main).forEach(([mainName, subNames]) => {
+                if (subNames.some(subName => filteredSubRevelations.includes(subName))) {
+                    relatedMainRevelations.add(mainName);
+                }
+            });
+
+            cards.forEach(card => {
+                const type = card.dataset.type;
+                const name = card.dataset.name;
+                
+                const typeMatch = selectedTypes.length === 0 || selectedTypes.includes(type);
+                const nameMatch = type === 'sub' ? 
+                    filteredSubRevelations.includes(name) : 
+                    relatedMainRevelations.has(name);
+                
+                if (typeMatch && nameMatch) {
+                    card.style.display = 'flex';
+                    card.style.visibility = 'visible';
+                    card.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                    card.style.visibility = 'hidden';
+                    card.style.opacity = '0';
+                }
+            });
+            
+            // Update search count
+            const countText = window.i18nFilteredCount || '전체';
+            searchCount.textContent = `${countText} ${visibleCount}개`;
+        }
+
+        // Search functionality implementation
+        const searchInput = document.getElementById('revelationSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const cards = document.querySelectorAll('.card');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchValue = e.target.value.toLowerCase();
+            dropdown.innerHTML = '';
+            
+            // Dropdown autocomplete handling
+            if (searchValue.length > 0) {
+                const matches = allRevelations.filter(revelation => {
+                    const revelationName = revelation.name.toLowerCase();
+                    return revelationName.includes(searchValue);
+                });
+
+                if (matches.length > 0) {
+                    dropdown.style.display = 'block';
+                    matches.forEach(revelation => {
+                        const div = document.createElement('div');
+                        div.className = 'dropdown-item';
+                        div.textContent = revelation.name;
+                        div.addEventListener('click', () => {
+                            searchInput.value = revelation.name;
+                            dropdown.style.display = 'none';
+                            filterBySearch(revelation.name.toLowerCase());
+                        });
+                        dropdown.appendChild(div);
+                    });
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            } else {
+                dropdown.style.display = 'none';
+                filterBySearch('');
+            }
+
+            // Filter by search term
+            filterBySearch(searchValue);
+        });
+
+        // Search filtering function
+        function filterBySearch(searchValue) {
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                const shouldShow = searchValue === '' || name.toLowerCase().includes(searchValue);
+                
+                if (shouldShow) {
+                    card.style.display = 'flex';
+                    card.style.visibility = 'visible';
+                    card.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                    card.style.visibility = 'hidden';
+                    card.style.opacity = '0';
+                }
+            });
+            
+            // Update search count
+            const countText = window.i18nFilteredCount || '전체';
+            searchCount.textContent = `${countText} ${visibleCount}개`;
+        }
+
+        let activeCard = null; // Track currently active card
+
+        // Handle card click events
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                const clickedName = card.getAttribute('data-name');
+                const cardType = card.getAttribute('data-type');
+
+                if (activeCard === card) {
+                    // If clicking the same card again, remove filter
+                    deactivateFilter();
+                } else {
+                    // If clicking a different card, apply filter
+                    activateFilter(card, clickedName, cardType);
+                }
+            });
+        });
+
+        function activateFilter(card, name, type) {
+            if (activeCard) {
+                activeCard.classList.remove('active');
+            }
+
+            activeCard = card;
+            card.classList.add('active');
+
+            let relatedRevelations = [];
+            if (type === 'main') {
+                relatedRevelations = revelationData.main[name] || [];
+                relatedRevelations.push(name);
+            } else if (type === 'sub') {
+                relatedRevelations = revelationData.sub[name] || [];
+                relatedRevelations.push(name);
+            }
+
+            cards.forEach(c => {
+                const cardName = c.getAttribute('data-name');
+                const shouldShow = relatedRevelations.includes(cardName);
+
+                if (shouldShow) {
+                    c.style.display = 'flex';
+                    c.style.visibility = 'visible';
+                    c.style.opacity = '1';
+                } else {
+                    c.style.display = 'none';
+                    c.style.visibility = 'hidden';
+                    c.style.opacity = '0';
+                }
+            });
+        }
+
+        function deactivateFilter() {
+            // Remove active card style
+            if (activeCard) {
+                activeCard.classList.remove('active');
+                activeCard = null;
+            }
+
+            // Show all cards
+            applyFilters();
+        }
+    } // initializePageContent 함수 종료
+</script>
+

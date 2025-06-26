@@ -78,18 +78,18 @@
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}</title>
   
 
+
   <script>
     // APP_VERSION을 사용하여 리소스 버전 관리
     const BASE_URL = '{{ site.baseurl }}';
     
     // 기본 CSS 및 JS 파일 로드
-    document.write(`
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=${APP_VERSION}">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/version-update.css?v=${APP_VERSION}">
-      <script src="{{ site.baseurl }}/assets/js/nav.js?v=${APP_VERSION}"><\/script>
-      <script src="{{ site.baseurl }}/assets/js/top_button.js?v=${APP_VERSION}"><\/script>
-    `);
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=' + APP_VERSION + '">');
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=' + APP_VERSION + '">');
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/version-update.css?v=' + APP_VERSION + '">');
+    document.write('<script src="{{ site.baseurl }}/assets/js/language-router.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/nav.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/top_button.js?v=' + APP_VERSION + '"><\/script>');
     
     // 페이지별 CSS 파일 로드
     {% if page.custom_css %}
@@ -133,8 +133,8 @@
   </div>
   <div class="footer-container">
     <div class="footer-text">
-        <p>※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.</p>
-        <p>✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" style="color: rgb(255, 255, 255, 0.5); text-decoration: underline;" target="_blank">제보 및 요청</a></p>
+        <p id="footer-disclaimer">※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.</p>
+        <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　</span><a href="https://forms.gle/Z5SgtSNpSvnprJxAA" style="color: rgb(255, 255, 255, 0.5); text-decoration: underline;" target="_blank" id="footer-report-link">제보 및 요청</a></p>
         <p></p>
     </div>
     

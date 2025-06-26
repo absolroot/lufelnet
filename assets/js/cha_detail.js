@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // 현재 언어 가져오기 함수
+    function getCurrentLanguage() {
+        // 먼저 쿼리 파라미터 확인
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam === 'en') return 'en';
+        if (langParam === 'jp') return 'jp';
+        
+        // 쿼리 파라미터가 없으면 경로 확인
+        const path = window.location.pathname;
+        if (path.includes('/en/')) return 'en';
+        if (path.includes('/jp/')) return 'jp';
+        return 'kr';
+    }
 
     // 세팅 정보 채우기
     function fillSettingsInfo(character) {
@@ -8,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const levels = character.rarity === 4 
             ? ['LV12', 'LV12+5']  // 4성 캐릭터
             : ['LV10', 'LV10+5', 'LV13', 'LV13+5']; // 5성 캐릭터
+        
+
 
         const validStats = [
             '공격력', '방어력', '효과 명중', '효과명중', '생명', 
@@ -21,9 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (index < levels.length) {
                 level.style.display = '';  // 표시
                 level.querySelector('.label').textContent = levels[index];
-                // +5 → +5심상 
+
+                // +5 → +5심상 (언어별 번역)
                 if (levels[index].endsWith('+5')) {
-                    level.querySelector('.label').textContent = levels[index].slice(0, -1) + '심상 5';
+                    const currentLang = getCurrentLanguage();
+                    const mindTexts = {
+                        'kr': '심상 5',
+                        'en': 'Mind 5',
+                        'jp': '心象 5'
+                    };
+                    level.querySelector('.label').textContent = levels[index].slice(0, -1) + (mindTexts[currentLang] || '심상 5');
                 }
                 const valueElement = level.querySelector('.value');
                 const statValue = character.minimum_stats[levels[index]] || '-';
@@ -316,13 +339,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         fillSettingsInfo(character);
-        fillSkillsInfo(characterName);
         fillOperationInfo(characterName);  // 운영 정보 추가
         // 아이템 개수 업데이트 함수 호출
         updateSkillLevelItems();
         updateMindItems();
         const currentPage = document.querySelector('.current-page');
-        currentPage.textContent = characterData[characterName].name;
+        const currentLang = getCurrentLanguage();
+        let characterDisplayName = characterData[characterName].name;
+        
+        // 언어별 캐릭터명 설정
+        if (currentLang === 'en' && characterData[characterName].name_en) {
+            characterDisplayName = characterData[characterName].name_en;
+        } else if (currentLang === 'jp' && characterData[characterName].name_jp) {
+            characterDisplayName = characterData[characterName].name_jp;
+        }
+        
+        currentPage.textContent = characterDisplayName;
 
         // role과 tag 정보 채우기
         const roleElement = document.querySelector('.chracter-role');
@@ -543,10 +575,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return container;
     }
 
-    // 스킬 정보 채우기
-    function fillSkillsInfo(characterName) {
+    // 스킬 정보 채우기 (전역 함수로 설정)
+    window.fillSkillsInfo = function(characterName) {
+        console.log('fillSkillsInfo 호출됨:', characterName);
         const skillsGrid = document.querySelector('.skills-grid');
-        const character = characterSkillsData[characterName];
+        
+        // 현재 언어 확인
+        const currentLang = getCurrentLanguage();
+        console.log('현재 언어:', currentLang);
+        
+        // 언어별 데이터 사용
+        let character;
+        if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
+            character = window.enCharacterSkillsData[characterName];
+            console.log('영어 스킬 데이터 사용:', character);
+        } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
+            character = window.jpCharacterSkillsData[characterName];
+            console.log('일본어 스킬 데이터 사용:', character);
+        } else {
+            character = characterSkillsData[characterName];
+            console.log('한국어 스킬 데이터 사용:', character);
+        }
         
         if (!character) return;
         
@@ -573,16 +622,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!characterInfo) return;
 
         
-        const levels = characterInfo.rarity === 4 
-            ? ['전체', '10레벨', '10레벨+심상5', '12레벨', '12레벨+심상5']
-            : ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'];
+        // 언어별 레벨 텍스트
+        const levelTexts = {
+            kr: characterInfo.rarity === 4 
+                ? ['전체', '10레벨', '10레벨+심상5', '12레벨', '12레벨+심상5']
+                : ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'],
+            en: characterInfo.rarity === 4 
+                ? ['All', 'LV10', 'LV10+Mind5', 'LV12', 'LV12+Mind5']
+                : ['All', 'LV10', 'LV10+Mind5', 'LV13', 'LV13+Mind5'],
+            jp: characterInfo.rarity === 4 
+                ? ['全体', 'LV10', 'LV10+心象5', 'LV12', 'LV12+心象5']
+                : ['全体', 'LV10', 'LV10+心象5', 'LV13', 'LV13+心象5']
+        };
+        
+        const levels = levelTexts[currentLang] || levelTexts.kr;
         
         levels.forEach((level, index) => {
             const button = document.createElement('button');
             button.className = 'skill-level-btn' + (index === 0 ? ' active' : '');
             button.textContent = level;
             button.dataset.level = index - 1; // 전체는 -1, 나머지는 0,1,2
-            button.onclick = () => updateSkillDescriptions(button.dataset.level, characterName);
+            button.onclick = () => window.updateSkillDescriptions(button.dataset.level, characterName);
             buttonContainer.appendChild(button);
         });
 
@@ -666,17 +726,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // 툴팁 적용
-        updateSkillDescriptions('0', characterName);
+        window.updateSkillDescriptions('0', characterName);
         addTooltips();
-    }
+    };
 
-    function updateSkillDescriptions(levelIndex, characterName) {
+    window.updateSkillDescriptions = function(levelIndex, characterName) {
         // 버튼 상태 업데이트
         document.querySelectorAll('.skill-level-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.level === levelIndex.toString());
         });
         
-        const character = characterSkillsData[characterName];
+        // 현재 언어 확인
+        const currentLang = getCurrentLanguage();
+        
+        // 언어별 데이터 사용
+        let character;
+        if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
+            character = window.enCharacterSkillsData[characterName];
+        } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
+            character = window.jpCharacterSkillsData[characterName];
+        } else {
+            character = characterSkillsData[characterName];
+        }
+        
         if (!character) return;
 
         // characterData에서 캐릭터 정보 가져오기
@@ -731,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 툴팁 다시 적용
         addTooltips();
-    }
+    };
 
     // 운영 정보 채우기
     function fillOperationInfo(characterName) {
@@ -763,9 +835,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         `<div class="skill-step">${skill}</div>`
                     ).join('<div class="skill-arrow">›</div>');
 
+                    // 의식 텍스트 번역
+                    let translatedLabel = item.label;
+                    const currentLang = getCurrentLanguage();
+                    if (currentLang === 'en') {
+                        translatedLabel = translatedLabel.replace(/의식/g, 'Awareness');
+                    } else if (currentLang === 'jp') {
+                        translatedLabel = translatedLabel.replace(/의식/g, '意識');
+                    }
+
                     return `
                         <div class="operation-row">
-                            <div class="operation-label">${item.label}</div>
+                            <div class="operation-label">${translatedLabel}</div>
                             <div class="operation-value">
                                 <div class="skill-sequence">
                                     ${skillSteps}
@@ -845,42 +926,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (characterName) {
-        fillSettingsInfo(character);
-        fillSkillsInfo(characterName);
-        fillOperationInfo(characterName);  // 운영 정보 추가
-        // 아이템 개수 업데이트 함수 호출
-        updateSkillLevelItems();
-        updateMindItems();
-        const currentPage = document.querySelector('.current-page');
-        currentPage.textContent = characterData[characterName].name;
 
-        // role과 tag 정보 채우기
-        const roleElement = document.querySelector('.chracter-role');
-        const tagElement = document.querySelector('.chracter-tag');
-
-        // role 정보 채우기
-        if (character.role) {
-            roleElement.textContent = character.role;
-        }
-
-        // tag 정보 채우기
-        if (character.tag) {
-            // 기존 내용 초기화
-            tagElement.innerHTML = '';
-            
-            // 콤마로 분리하여 각각의 태그를 생성
-            const tags = character.tag.split(',').map(tag => tag.trim());
-            tags.forEach(tag => {
-                if (tag) {  // 빈 문자열이 아닌 경우에만 추가
-                    const tagDiv = document.createElement('div');
-                    tagDiv.className = 'tag-item';
-                    tagDiv.textContent = tag;
-                    tagElement.appendChild(tagDiv);
-                }
-            });
-        }
-    }
 
 
 });

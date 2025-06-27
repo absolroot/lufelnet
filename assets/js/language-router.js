@@ -448,14 +448,14 @@ if (typeof window !== 'undefined') {
                     const newUrl = new URL(window.location);
                     newUrl.searchParams.set('lang', detectedLang);
                     window.location.replace(newUrl.toString());
-                }
+    }
             });
         }
     });
 }
 
 // 전역 함수로 현재 언어 제공
-window.getCurrentLanguage = LanguageRouter.getCurrentLanguage.bind(LanguageRouter);
+window.getCurrentLanguage = LanguageRouter.getCurrentLanguage.bind(LanguageRouter); 
 
 // LanguageRouter를 전역에서 접근 가능하도록 설정
 window.LanguageRouter = LanguageRouter;

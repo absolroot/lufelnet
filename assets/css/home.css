@@ -423,12 +423,15 @@
 
 @media (max-width: 1200px) {
     .middle-container{
-        display: none;
+        display: none !important;
     }
 }
 
 /* 반응형 디자인 */
 @media (max-width: 670px) {
+    .main-wrapper{
+        width: calc(100% - 32px);
+    }
     .music-control {
         display: none;
     }
@@ -479,6 +482,16 @@
 
     .guide-cards{
         grid-template-columns: 1fr;
+    }
+    
+    /* 모바일에서 가이드 컨테이너 숨기기 */
+    .guides-container {
+        display: none;
+    }
+    
+    /* 모바일에서 택틱 대장간 섹션 숨기기 */
+    .posts-container {
+        display: none !important;
     }
 }
 

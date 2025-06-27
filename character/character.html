@@ -376,9 +376,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         VersionChecker.check();
 
         // Get character name from URL
-            const urlParams = new URLSearchParams(window.location.search);
-    const characterName = urlParams.get('name');
-    const currentLang = getCurrentLanguage();
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name');
+        const currentLang = getCurrentLanguage();
     
     // 언어별 데이터 파일 동적 로드
     async function loadLanguageData() {
@@ -824,10 +824,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
                     // 스킬명이 있으면 표시, 없으면 설명만 표시
                     if (weaponData.skill_name) {
-                        weaponSkill.innerHTML = `
-                            <h4>${weaponData.skill_name}</h4>
-                            <p>${description}</p>
-                        `;
+                    weaponSkill.innerHTML = `
+                        <h4>${weaponData.skill_name}</h4>
+                        <p>${description}</p>
+                    `;
                     } else if (description) {
                         weaponSkill.innerHTML = `
                             <p>${description}</p>

@@ -1327,6 +1327,95 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         subtree: true
     });
 
+    // 언어별 계시 데이터 로드
+    function loadRevelationDataByLanguage() {
+        const currentLang = getCurrentLanguage();
+        
+        return new Promise((resolve) => {
+            if (currentLang === 'en') {
+                // 영어 계시 데이터 로드
+                fetch(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
+                    .then(response => response.text())
+                    .then(scriptContent => {
+                        // revelationData를 enRevelationData로 변경해서 실행
+                        const modifiedScript = scriptContent.replace('const revelationData', 'window.enRevelationData');
+                        eval(modifiedScript);
+                        console.log('영어 계시 데이터 로드 완료:', window.enRevelationData);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('영어 계시 데이터 로드 실패:', error);
+                        resolve(); // 실패해도 계속 진행
+                    });
+            } else if (currentLang === 'jp') {
+                // 일본어 계시 데이터는 영어 데이터와 동일하게 사용
+                fetch(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
+                    .then(response => response.text())
+                    .then(scriptContent => {
+                        // revelationData를 jpRevelationData로 변경해서 실행
+                        const modifiedScript = scriptContent.replace('const revelationData', 'window.jpRevelationData');
+                        eval(modifiedScript);
+                        console.log('일본어 계시 데이터 로드 완료:', window.jpRevelationData);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('일본어 계시 데이터 로드 실패:', error);
+                        resolve(); // 실패해도 계속 진행
+                    });
+            } else {
+                resolve(); // 한국어는 바로 완료
+            }
+        });
+    }
+
+    // 계시 데이터 로드 완료 후 캐릭터 정보 다시 렌더링
+    function refreshRevelationDisplay() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name');
+        
+        if (characterName && characterData[characterName]) {
+            const character = characterData[characterName];
+            
+            // 계시 부분만 다시 렌더링
+            const mainRevelationValue = document.querySelector('.main-revelation .value');
+            const subRevelationValue = document.querySelector('.sub-revelation .value');
+
+            // 메인 계시 설정
+            if (character.main_revelation && Array.isArray(character.main_revelation)) {
+                mainRevelationValue.textContent = '';
+                mainRevelationValue.appendChild(window.createRevelationValue(character.main_revelation, true));
+            }
+
+            // 서브 계시 설정
+            if (character.sub_revelation && Array.isArray(character.sub_revelation)) {
+                subRevelationValue.textContent = '';
+                subRevelationValue.appendChild(window.createRevelationValue(character.sub_revelation, false));
+            }
+        }
+    }
+
+    // 페이지 로드 후 언어별 계시 데이터 로드
+    loadRevelationDataByLanguage().then(() => {
+        // 데이터 로드 완료 후 계시 표시 새로고침
+        setTimeout(refreshRevelationDisplay, 100);
+    });
+
+    // 디버깅을 위한 함수
+    window.checkRevelationData = function() {
+        console.log('현재 언어:', getCurrentLanguage());
+        console.log('한국어 데이터:', window.revelationData);
+        console.log('영어 데이터:', window.enRevelationData);
+        console.log('일본어 데이터:', window.jpRevelationData);
+    };
+
+    // 번역 테스트 함수
+    window.testTranslation = function() {
+        const testCases = ['주권', '풍요', '여정', '깨달음'];
+        testCases.forEach(korean => {
+            console.log(`번역 테스트: ${korean} → ${window.translateRevelationName ? window.translateRevelationName(korean, false) : 'translateRevelationName 함수 없음'}`);
+        });
+    };
+
     // 전역 함수로 만들어서 다른 곳에서도 호출 가능하도록
     window.translateStatTexts = function() {
         const currentLang = getCurrentLanguage();

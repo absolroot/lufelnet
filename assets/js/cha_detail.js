@@ -15,6 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'kr';
     }
 
+    // 현재 언어별 계시 이름 번역 함수
+    function translateRevelationName(koreanName, isMainRevelation = false) {
+        const currentLang = getCurrentLanguage();
+        
+        if (currentLang === 'en' && typeof window.enRevelationData !== 'undefined') {
+            if (isMainRevelation && window.enRevelationData.mainTranslated && window.enRevelationData.mainTranslated[koreanName]) {
+                return window.enRevelationData.mainTranslated[koreanName];
+            } else if (!isMainRevelation && window.enRevelationData.subTranslated && window.enRevelationData.subTranslated[koreanName]) {
+                return window.enRevelationData.subTranslated[koreanName];
+            }
+        } else if (currentLang === 'jp' && typeof window.jpRevelationData !== 'undefined') {
+            if (isMainRevelation && window.jpRevelationData.mainTranslated && window.jpRevelationData.mainTranslated[koreanName]) {
+                return window.jpRevelationData.mainTranslated[koreanName];
+            } else if (!isMainRevelation && window.jpRevelationData.subTranslated && window.jpRevelationData.subTranslated[koreanName]) {
+                return window.jpRevelationData.subTranslated[koreanName];
+            }
+        }
+        
+        return koreanName; // 번역이 없으면 원본 반환
+    }
+
     // 세팅 정보 채우기
     function fillSettingsInfo(character) {
         // 요구 스탯
@@ -522,45 +543,159 @@ document.addEventListener('DOMContentLoaded', () => {
             item.className = 'revelation-value-item tooltip-text';
             
             const text = document.createElement('span');
-            text.textContent = revelation;
+            // 번역된 이름으로 표시
+            text.textContent = translateRevelationName(revelation, isMainRevelation);
             
             const icon = document.createElement('img');
+            // 아이콘은 항상 한국어 이름(원본)으로 경로 설정
             icon.src = `${BASE_URL}/assets/img/character-detail/revel/${revelation}.webp`;
             icon.alt = revelation;
             icon.className = 'revelation-icon';
             
             if (!isMainRevelation) {
                 // 일월성진 효과 데이터
-                if (revelationData.sub_effects && revelationData.sub_effects[revelation]) {
-                    const subEffect = revelationData.sub_effects[revelation];
-                    const tooltipText = `[${revelation}]\n2세트: ${subEffect.set2}\n4세트: ${subEffect.set4}`;
+                const currentLang = getCurrentLanguage();
+                let effectData, set2Text, set4Text;
+                
+                // 언어별 효과 데이터 사용
+                // 현재 언어에 맞는 번역 데이터 가져오기
+                let translationData = null;
+                if (currentLang === 'en' && window.enRevelationData) {
+                    translationData = window.enRevelationData;
+                } else if (currentLang === 'jp' && window.jpRevelationData) {
+                    translationData = window.jpRevelationData;
+                }
+                
+                console.log('일월성진 효과 디버깅:', {
+                    revelation: revelation,
+                    currentLang: currentLang,
+                    hasTranslationData: !!translationData,
+                    translationDataKeys: translationData ? Object.keys(translationData.sub_effects || {}) : []
+                });
+                
+                if ((currentLang === 'en' || currentLang === 'jp') && translationData && translationData.sub_effects) {
+                    // 한국어 키를 영어 키로 변환
+                    const englishKey = translateRevelationName(revelation, false);
+                    console.log('영어 키 변환:', revelation, '→', englishKey);
+                    
+                    if (translationData.sub_effects[englishKey]) {
+                        effectData = translationData.sub_effects[englishKey];
+                        set2Text = effectData.set2;
+                        set4Text = effectData.set4;
+                        console.log('번역된 효과 데이터 사용:', effectData);
+                    } else {
+                        console.log('번역된 효과 데이터 없음:', englishKey);
+                        console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
+                    }
+                } else if (revelationData.sub_effects && revelationData.sub_effects[revelation]) {
+                    effectData = revelationData.sub_effects[revelation];
+                    set2Text = effectData.set2;
+                    set4Text = effectData.set4;
+                    console.log('한국어 효과 데이터 사용:', effectData);
+                }
+                
+                if (effectData) {
+                    const translatedTitle = translateRevelationName(revelation, false);
+                    
+                    // 언어별 세트 텍스트
+                    const setTexts = {
+                        kr: { set2: '2세트', set4: '4세트' },
+                        en: { set2: '2-Set', set4: '4-Set' },
+                        jp: { set2: '2セット', set4: '4セット' }
+                    };
+                    const setText = setTexts[currentLang] || setTexts.kr;
+                    
+                    const tooltipText = `[${translatedTitle}]\n${setText.set2}: ${set2Text}\n${setText.set4}: ${set4Text}`;
                     item.setAttribute('data-tooltip', tooltipText);
                 }
             } else {
                 // 주 성위 효과 데이터
-                if (revelationData.set_effects && revelationData.set_effects[revelation]) {
-                    const setEffects = revelationData.set_effects[revelation];
-                    
-                    // 현재 선택된 일월성진 계시들 가져오기 (수정된 부분)
+                const currentLang = getCurrentLanguage();
+                let setEffectsData;
+                
+                // 현재 언어에 맞는 번역 데이터 가져오기
+                let translationData = null;
+                if (currentLang === 'en' && window.enRevelationData) {
+                    translationData = window.enRevelationData;
+                } else if (currentLang === 'jp' && window.jpRevelationData) {
+                    translationData = window.jpRevelationData;
+                }
+                
+                // 언어별 세트 효과 데이터 사용
+                if ((currentLang === 'en' || currentLang === 'jp') && translationData && translationData.set_effects) {
+                    // 한국어 키를 영어 키로 변환
+                    const englishMainKey = translateRevelationName(revelation, true);
+                    if (translationData.set_effects[englishMainKey]) {
+                        setEffectsData = translationData.set_effects[englishMainKey];
+                    }
+                } else if (revelationData.set_effects && revelationData.set_effects[revelation]) {
+                    setEffectsData = revelationData.set_effects[revelation];
+                }
+                
+                if (setEffectsData) {
+                    // 현재 선택된 일월성진 계시들 가져오기
                     const subRevelationContainer = document.querySelector('.sub-revelation .revelation-values');
                     const currentSubRevs = Array.from(subRevelationContainer?.querySelectorAll('.revelation-value-item span') || [])
                         .map(el => el.textContent.trim())
                         .filter(text => text); // 빈 문자열 제거
 
                     console.log(currentSubRevs);
+                    
                     // 현재 선택된 일월성진에 대한 세트 효과만 필터링
-                    const tooltipText = Object.entries(setEffects)
-                        .filter(([subRev]) => currentSubRevs.includes(subRev))
-                        .map(([subRev, effect]) => `[${revelation} - ${subRev}]\n${effect}`)
-                        .join('\n\n');
+                    let tooltipText = '';
+                    
+                    if (currentSubRevs.length > 0) {
+                        // 표시된 번역 텍스트를 원본 키로 역매핑해서 매칭
+                        let subRevKeys;
+                        
+                        if ((currentLang === 'en' || currentLang === 'jp') && translationData) {
+                            // 번역 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
+                            subRevKeys = Object.keys(setEffectsData).filter(englishSubKey => {
+                                return currentSubRevs.includes(englishSubKey);
+                            });
+                        } else {
+                            // 한국어 데이터 사용 시: 표시된 한국어 이름을 한국어 키로 매칭
+                            subRevKeys = Object.keys(setEffectsData).filter(koreanSubKey => {
+                                const translatedSubName = translateRevelationName(koreanSubKey, false);
+                                return currentSubRevs.includes(translatedSubName);
+                            });
+                        }
+                        
+                        tooltipText = subRevKeys.map(subRevKey => {
+                            const effect = setEffectsData[subRevKey];
+                            const mainTitle = translateRevelationName(revelation, true);
+                            
+                            let subTitle;
+                            if ((currentLang === 'en' || currentLang === 'jp') && translationData) {
+                                // 영어 키를 그대로 사용
+                                subTitle = subRevKey;
+                            } else {
+                                // 한국어 키를 번역
+                                subTitle = translateRevelationName(subRevKey, false);
+                            }
+                            
+                            return `[${mainTitle} - ${subTitle}]\n${effect}`;
+                        }).join('\n\n');
+                    }
 
                     // 툴팁 텍스트가 비어있지 않은 경우에만 설정
                     if (tooltipText) {
                         item.setAttribute('data-tooltip', tooltipText);
                     } else {
                         // 선택된 일월성진이 없는 경우 모든 조합 효과 표시
-                        const allEffectsText = Object.entries(setEffects)
-                            .map(([subRev, effect]) => `[${revelation} - ${subRev}]\n${effect}`)
+                        const mainTitle = translateRevelationName(revelation, true);
+                        const allEffectsText = Object.entries(setEffectsData)
+                            .map(([subRevKey, effect]) => {
+                                let subTitle;
+                                if ((currentLang === 'en' || currentLang === 'jp') && translationData) {
+                                    // 영어 키를 그대로 사용
+                                    subTitle = subRevKey;
+                                } else {
+                                    // 한국어 키를 번역
+                                    subTitle = translateRevelationName(subRevKey, false);
+                                }
+                                return `[${mainTitle} - ${subTitle}]\n${effect}`;
+                            })
                             .join('\n\n');
                         item.setAttribute('data-tooltip', allEffectsText);
                     }
@@ -574,6 +709,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         return container;
     }
+
+    // 전역에서 접근 가능하도록 함수 노출
+    window.createRevelationValue = createRevelationValue;
+    window.translateRevelationName = translateRevelationName;
 
     // 스킬 정보 채우기 (전역 함수로 설정)
     window.fillSkillsInfo = function(characterName) {

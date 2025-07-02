@@ -261,17 +261,17 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
                 <div class="priority-examples">
                     <div class="priority-label">우선순위 :</div>
                     <div class="priority-item">
-                        <div class="priority-text high">높음</div>
+                        <div class="priority-text high" data-priority-text="high">높음</div>
                     </div>
                     <div class="priority-item">
-                        <div class="priority-text medium">일반</div>
+                        <div class="priority-text medium" data-priority-text="normal">일반</div>
                         
                     </div>
                     <div class="priority-item">
-                        <div class="priority-text low">낮음</div>
+                        <div class="priority-text low" data-priority-text="low">낮음</div>
                     </div>
                     <div class="priority-item">
-                        <div class="priority-text extra-low">매우 낮음</div>
+                        <div class="priority-text extra-low" data-priority-text="very-low">매우 낮음</div>
                     </div>
                 </div>
             </div>
@@ -297,21 +297,39 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
                 nav_home: "홈",
                 nav_current: "페르소나",
                 page_title: "주요 페르소나",
-                filtered_count: "전체"
+                filtered_count: "전체",
+                search_placeholder: "페르소나 검색...",
+                filter_element: "속성",
+                filter_position: "직업", 
+                filter_rarity: "희귀도",
+                filter_grade: "등급",
+                count_unit: "개"
             },
             en: {
                 language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
                 nav_home: "Home",
                 nav_current: "Personas",
                 page_title: "Main Personas",
-                filtered_count: "Total"
+                filtered_count: "Total",
+                search_placeholder: "Search personas...",
+                filter_element: "Element",
+                filter_position: "Position",
+                filter_rarity: "Rarity", 
+                filter_grade: "Grade",
+                count_unit: ""
             },
             jp: {
                 language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
                 nav_home: "ホーム",
                 nav_current: "ペルソナ",
                 page_title: "主要ペルソナ",
-                filtered_count: "全体"
+                filtered_count: "全体",
+                search_placeholder: "ペルソナ検索...",
+                filter_element: "属性",
+                filter_position: "職業",
+                filter_rarity: "レアリティ",
+                filter_grade: "グレード", 
+                count_unit: ""
             }
         };
         
@@ -332,13 +350,26 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
+        const searchInput = document.getElementById('personaSearch');
         
         if (navHome) navHome.textContent = data.nav_home;
         if (navCurrent) navCurrent.textContent = data.nav_current;
         if (pageTitle) pageTitle.textContent = data.page_title;
+        if (searchInput) searchInput.placeholder = data.search_placeholder;
+        
+        // 필터 라벨 번역
+        const filterLabels = document.querySelectorAll('.filter-group h3');
+        if (filterLabels[0]) filterLabels[0].textContent = data.filter_element;
+        if (filterLabels[1]) filterLabels[1].textContent = data.filter_position;
+        if (filterLabels[2]) filterLabels[2].textContent = data.filter_rarity;
+        if (filterLabels[3]) filterLabels[3].textContent = data.filter_grade;
         
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
         window.i18nFilteredCount = data.filtered_count;
+        window.i18nCountUnit = data.count_unit;
+
+        // 언어별 설명 박스 텍스트 업데이트
+        updateExplainBoxTexts(currentLang);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -373,9 +404,16 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
     function initializePageContent() {
         const cardsContainer = document.getElementById('personaCards');
         
+        // 현재 언어 확인
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        // 언어별 설명 박스 텍스트 업데이트
+        updateExplainBoxTexts(currentLang);
+        
         // Update initial count
         const countText = window.i18nFilteredCount || '전체';
-        document.getElementById('filteredCount').textContent = `${countText} ${Object.keys(personaData).length}개`;
+        const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+        document.getElementById('filteredCount').textContent = `${countText} ${Object.keys(personaData).length}${countUnit}`;
 
         const sortedPersonas = Object.keys(personaData)
         
@@ -451,11 +489,40 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             const infoSection = document.createElement('div');
             infoSection.className = 'persona-info-section';
             
+            // 언어별 데이터 가져오기
+            const persona = personaData[personaName];
+            let displayName = personaName;
+            let instinctName = persona.instinct.name;
+            let instinctEffects = persona.instinct.effects;
+            let uniqueSkillName = persona.uniqueSkill.name;
+            let uniqueSkillEffect = persona.uniqueSkill.effect;
+            let highlightEffect = persona.highlight.effect;
+            let comment = persona.comment;
+            
+            // 언어별 번역 적용
+            if (currentLang === 'en') {
+                displayName = persona.name_en || personaName;
+                instinctName = persona.instinct.name_en || persona.instinct.name;
+                instinctEffects = persona.instinct.effects_en || persona.instinct.effects;
+                uniqueSkillName = persona.uniqueSkill.name_en || persona.uniqueSkill.name;
+                uniqueSkillEffect = persona.uniqueSkill.effect_en || persona.uniqueSkill.effect;
+                highlightEffect = persona.highlight.effect_en || persona.highlight.effect;
+                comment = persona.comment_en || persona.comment;
+            } else if (currentLang === 'jp') {
+                displayName = persona.name_jp || personaName;
+                instinctName = persona.instinct.name_jp || persona.instinct.name;
+                instinctEffects = persona.instinct.effects_jp || persona.instinct.effects;
+                uniqueSkillName = persona.uniqueSkill.name_jp || persona.uniqueSkill.name;
+                uniqueSkillEffect = persona.uniqueSkill.effect_jp || persona.uniqueSkill.effect;
+                highlightEffect = persona.highlight.effect_jp || persona.highlight.effect;
+                comment = persona.comment_jp || persona.comment;
+            }
+            
             // Name and grade
             const headerInfo = document.createElement('div');
             headerInfo.className = 'persona-header-info';
             headerInfo.innerHTML = `
-                <h2>${personaName}</h2>
+                <h2>${displayName}</h2>
                 <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
             `;
             
@@ -463,9 +530,12 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             const instinctInfo = document.createElement('div');
             instinctInfo.className = 'persona-instinct-info';
             instinctInfo.dataset.priority = personaData[personaName].instinct.priority;
+            
+            // 배열인 경우 줄바꿈으로 연결, 문자열인 경우 그대로 사용
+            const effectsText = Array.isArray(instinctEffects) ? instinctEffects.join('\n') : instinctEffects;
             instinctInfo.innerHTML = `
-                <h3>${personaData[personaName].instinct.name}</h3>
-                <p>${personaData[personaName].instinct.effects.join('\n')}</p>
+                <h3>${instinctName}</h3>
+                <p>${effectsText}</p>
             `;
             
             // Container for unique skill and highlight
@@ -477,17 +547,24 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             uniqueSkillInfo.className = 'persona-unique-skill-info';
             uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
             uniqueSkillInfo.innerHTML = `
-                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].uniqueSkill.icon}.png" alt="Skill Element" class="skill-type-icon"> ${personaData[personaName].uniqueSkill.name}</h3>
-                <p>${personaData[personaName].uniqueSkill.effect}</p>
+                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].uniqueSkill.icon}.png" alt="Skill Element" class="skill-type-icon"> ${uniqueSkillName}</h3>
+                <p>${uniqueSkillEffect}</p>
             `;
             
-            // Highlight
+            // Highlight - 언어별 라벨 적용
+            const highlightLabels = {
+                'kr': 'HIGHLIGHT',
+                'en': 'HIGHLIGHT', 
+                'jp': 'ハイライト'
+            };
+            const highlightLabel = highlightLabels[currentLang] || 'HIGHLIGHT';
+            
             const highlightInfo = document.createElement('div');
             highlightInfo.className = 'persona-highlight-info';
             highlightInfo.dataset.priority = personaData[personaName].highlight.priority;
             highlightInfo.innerHTML = `
-                <h3>HIGHLIGHT</h3>
-                <p>${personaData[personaName].highlight.effect}</p>
+                <h3>${highlightLabel}</h3>
+                <p>${highlightEffect}</p>
             `;
 
             // Add to container
@@ -499,22 +576,34 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             infoSection.appendChild(instinctInfo);
             infoSection.appendChild(skillContainer);  // Add container instead of individual elements
 
-            // Recommended skill list
+            // Recommended skill list - 언어별 라벨 적용
             if (personaData[personaName].recommendSkill && personaData[personaName].recommendSkill.length > 0 && personaData[personaName].recommendSkill[0].name) {
+                const recommendedSkillLabels = {
+                    'kr': '추천 스킬',
+                    'en': 'Recommended Skills',
+                    'jp': '推奨スキル'
+                };
+                const recommendedSkillLabel = recommendedSkillLabels[currentLang] || '추천 스킬';
+                
                 const recommendedSkills = document.createElement('div');
                 recommendedSkills.className = 'persona-recommended-skills';
                 recommendedSkills.innerHTML = `
-                    <h3>추천 스킬</h3>
+                    <h3>${recommendedSkillLabel}</h3>
                     <ul>
                         ${personaData[personaName].recommendSkill.map(skill => {
                             const skillInfo = personaSkillList[skill.name];
                             if (!skillInfo) return ''; // Skip if skill info not found
+                            
+                            // 스킬 이름과 설명도 언어별로 번역 (현재는 한국어만 있으므로 그대로 사용)
+                            let skillName = skill.name;
+                            let skillDescription = skillInfo.description;
+                            
                             return `
                                 <li data-priority="${skill.priority}">
                                     <div class="skill-info">
                                         <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
-                                        <span class="skill-name">${skill.name}</span>
-                                        <span class="skill-description">${skillInfo.description}</span>
+                                        <span class="skill-name">${skillName}</span>
+                                        <span class="skill-description">${skillDescription}</span>
                                     </div>
                                 </li>
                             `;
@@ -525,16 +614,16 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             }
             
             // Comment
-            if (personaData[personaName].comment && personaData[personaName].comment.trim() !== '') {
-                const comment = document.createElement('div');
-                comment.className = 'persona-comment';
-                comment.innerHTML = `
+            if (comment && comment.trim() !== '') {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'persona-comment';
+                commentDiv.innerHTML = `
                     <div class="comment-container">
                         <span class="comment-icon">💬</span>
-                        <p>${personaData[personaName].comment}</p>
+                        <p>${comment}</p>
                     </div>
                 `;
-                infoSection.appendChild(comment);
+                infoSection.appendChild(commentDiv);
             }
             
             // Add sections to container
@@ -615,14 +704,31 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             
             // Update count display
             const countText = window.i18nFilteredCount || '전체';
-            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}개`;
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         // Search functionality implementation
         const searchInput = document.getElementById('personaSearch');
         const dropdown = document.getElementById('searchDropdown');
         const containers = document.querySelectorAll('.persona-detail-container');
-        const personaNames = Object.keys(personaData);
+        
+        // 언어별 페르소나 이름 매핑 생성
+        const personaNameMapping = {};
+        Object.keys(personaData).forEach(koreanName => {
+            const persona = personaData[koreanName];
+            personaNameMapping[koreanName.toLowerCase()] = koreanName;
+            
+            // 영어 이름 추가
+            if (persona.name_en) {
+                personaNameMapping[persona.name_en.toLowerCase()] = koreanName;
+            }
+            
+            // 일본어 이름 추가
+            if (persona.name_jp) {
+                personaNameMapping[persona.name_jp.toLowerCase()] = koreanName;
+            }
+        });
 
         searchInput.addEventListener('input', (e) => {
             const searchValue = e.target.value.toLowerCase();
@@ -630,20 +736,31 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             
             // Dropdown autocomplete handling
             if (searchValue.length > 0) {
-                const matches = personaNames.filter(name => 
-                    name.toLowerCase().includes(searchValue)
+                const matches = Object.keys(personaNameMapping).filter(name => 
+                    name.includes(searchValue)
                 );
 
                 if (matches.length > 0) {
                     dropdown.style.display = 'block';
-                    matches.forEach(name => {
+                    matches.forEach(matchedName => {
+                        const koreanName = personaNameMapping[matchedName];
+                        const persona = personaData[koreanName];
+                        
+                        // 현재 언어에 맞는 표시 이름 가져오기
+                        let displayName = koreanName;
+                        if (currentLang === 'en' && persona.name_en) {
+                            displayName = persona.name_en;
+                        } else if (currentLang === 'jp' && persona.name_jp) {
+                            displayName = persona.name_jp;
+                        }
+                        
                         const div = document.createElement('div');
                         div.className = 'dropdown-item';
-                        div.textContent = name;
+                        div.textContent = displayName;
                         div.addEventListener('click', () => {
-                            searchInput.value = name;  // Set search input value to selected name
+                            searchInput.value = displayName;
                             dropdown.style.display = 'none';
-                            filterBySearch(name.toLowerCase());  // Execute search filtering
+                            filterBySearch(matchedName.toLowerCase());
                         });
                         dropdown.appendChild(div);
                     });
@@ -664,15 +781,25 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
             let visibleCount = 0;
             
             containers.forEach(container => {
-                const personaName = container.dataset.name.toLowerCase();
-                const isVisible = searchValue === '' || personaName.includes(searchValue);
+                const koreanName = container.dataset.name;
+                const persona = personaData[koreanName];
+                
+                // 모든 언어 이름으로 검색 가능하도록
+                const searchableNames = [
+                    koreanName.toLowerCase(),
+                    persona.name_en ? persona.name_en.toLowerCase() : '',
+                    persona.name_jp ? persona.name_jp.toLowerCase() : ''
+                ].filter(name => name); // 빈 문자열 제거
+                
+                const isVisible = searchValue === '' || searchableNames.some(name => name.includes(searchValue));
                 container.style.display = isVisible ? 'flex' : 'none';
                 if (isVisible) visibleCount++;
             });
             
             // Update count display
             const countText = window.i18nFilteredCount || '전체';
-            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}개`;
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         // Close dropdown when clicking outside search
@@ -701,6 +828,88 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
         }
     } // initializePageContent 함수 종료
     
+    // 언어별 설명 박스 텍스트 업데이트 함수
+    function updateExplainBoxTexts(currentLang) {
+        const explainTexts = {
+            kr: {
+                instinct_title: "본능 · 고유 스킬 · HIGHLIGHT",
+                skills_title: "추천 스킬",
+                priority_label: "중요도 :",
+                priority_label2: "우선순위 :",
+                priority_high: "상",
+                priority_medium: "중", 
+                priority_low: "하",
+                priority_normal: "일반",
+                priority_very_low: "매우 낮음",
+                priority_highest: "높음"
+            },
+            en: {
+                instinct_title: "Core Passive · Unique Skill · HIGHLIGHT",
+                skills_title: "Recommended Skills", 
+                priority_label: "Importance :",
+                priority_label2: "Priority :",
+                priority_high: "High",
+                priority_medium: "Med",
+                priority_low: "Low", 
+                priority_normal: "Normal",
+                priority_very_low: "Very Low",
+                priority_highest: "High"
+            },
+            jp: {
+                instinct_title: "本能 · 固有スキル · ハイライト",
+                skills_title: "推奨スキル",
+                priority_label: "重要度 :",
+                priority_label2: "優先順位 :",
+                priority_high: "高",
+                priority_medium: "中",
+                priority_low: "低",
+                priority_normal: "一般", 
+                priority_very_low: "非常に低い",
+                priority_highest: "高い"
+            }
+        };
+        
+        const currentExplainTexts = explainTexts[currentLang] || explainTexts['kr'];
+        
+        // 설명 박스 텍스트 업데이트
+        const explainSections = document.querySelectorAll('.explain-section h4');
+        if (explainSections[0]) explainSections[0].textContent = currentExplainTexts.instinct_title;
+        if (explainSections[1]) explainSections[1].textContent = currentExplainTexts.skills_title;
+        
+        const priorityLabels = document.querySelectorAll('.priority-label');
+        if (priorityLabels[0]) priorityLabels[0].textContent = currentExplainTexts.priority_label;
+        if (priorityLabels[1]) priorityLabels[1].textContent = currentExplainTexts.priority_label2;
+        
+        // 우선순위 텍스트 업데이트
+        const priorityTexts = document.querySelectorAll('[data-priority-text]');
+        priorityTexts.forEach(element => {
+            const type = element.dataset.priorityText;
+            switch(type) {
+                case 'high':
+                    element.textContent = currentExplainTexts.priority_highest;
+                    break;
+                case 'normal':
+                    element.textContent = currentExplainTexts.priority_normal;
+                    break;
+                case 'low':
+                    element.textContent = currentExplainTexts.priority_low;
+                    break;
+                case 'very-low':
+                    element.textContent = currentExplainTexts.priority_very_low;
+                    break;
+            }
+        });
+        
+        // 기존 우선순위 아이템들 (설명 박스 첫 번째 섹션)
+        const priorityItems = document.querySelectorAll('.priority-item span');
+        if (priorityItems[0]) priorityItems[0].textContent = currentExplainTexts.priority_high;
+        if (priorityItems[1]) priorityItems[1].textContent = currentExplainTexts.priority_medium;
+        if (priorityItems[2]) priorityItems[2].textContent = currentExplainTexts.priority_low;
+        if (priorityItems[3]) priorityItems[3].textContent = currentExplainTexts.priority_highest;
+        if (priorityItems[4]) priorityItems[4].textContent = currentExplainTexts.priority_normal;
+        if (priorityItems[5]) priorityItems[5].textContent = currentExplainTexts.priority_low;
+        if (priorityItems[6]) priorityItems[6].textContent = currentExplainTexts.priority_very_low;
+    }
 </script>
 
 <style>

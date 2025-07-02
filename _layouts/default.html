@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ page.language | default: site.default_lang }}">
+<html lang="kr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta name="google-adsense-account" content="ca-pub-5862324369257695">
+  <meta name="google-adsense-account" content="ca-pub-5862324369257695">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
-  crossorigin="anonymous"></script> -->
+  crossorigin="anonymous"></script> 
+  
+  <!-- 지역별 메타태그 동적 생성 스크립트 -->
+  <script src="{{ site.baseurl }}/assets/js/geo-meta.js?v={{ site.time | date: '%s' }}" defer></script>
   
   <!-- canonical URL -->
   {% assign current_url = page.url | replace:'index.html','' | replace:'.html','' %}
@@ -25,30 +28,28 @@
     {% endfor %}
   {% endif %}
 
-  {% if page.language %}
-    <link rel="canonical" href="{{ site.url }}{{ current_url }}{{ canonical_params }}" />
-  {% else %}
-    <link rel="canonical" href="{{ site.url }}/kr{{ current_url }}{{ canonical_params }}" />
-  {% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ current_url }}{{ canonical_params }}" />
   
-  <!-- 기본 메타 태그 -->
-  <meta name="description" content="{{ site.data.i18n[page.language].site.description }}">
-  <meta name="keywords" content="{{ site.data.i18n[page.language].site.keywords }}">
-  <meta name="author" content="{{ site.data.i18n[page.language].site.author }}">
+
   
-  <!-- Open Graph 메타 태그 -->
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}">
-  <meta property="og:description" content="{{ site.data.i18n[page.language].site.description }}">
+  <!-- 기본 메타태그 (JavaScript로 동적 업데이트됨) -->
+  <meta name="description" content="페르소나 5X 공략 및 정보 사이트">
+  <meta name="keywords" content="P5X, 페르소나5X, 공략, 괴도, 페르소나, 계시">
+  <meta name="author" content="LufelNet">
+  
+  <!-- Open Graph 메타태그 (JavaScript로 동적 업데이트됨) -->
+  <meta property="og:title" content="P5X 루페르넷">
+  <meta property="og:description" content="페르소나 5X 공략 및 정보 사이트">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ current_url }}{{ canonical_params }}">
   <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
-  <meta property="og:site_name" content="{{ site.data.i18n[page.language].site.title }}">
+  <meta property="og:site_name" content="P5X 루페르넷">
   <meta property="og:locale" content="ko_KR">
   
-  <!-- Twitter 카드 메타 태그 -->
+  <!-- Twitter 카드 메타태그 (JavaScript로 동적 업데이트됨) -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}">
-  <meta name="twitter:description" content="{{ site.data.i18n[page.language].site.description }}">
+  <meta name="twitter:title" content="P5X 루페르넷">
+  <meta name="twitter:description" content="페르소나 5X 공략 및 정보 사이트">
   <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
   
   <!-- Firebase SDK -->
@@ -75,7 +76,7 @@
   <meta name="apple-mobile-web-app-title" content="LufelNet" />
   <link rel="manifest" href="{{ site.baseurl }}/assets/img/favicon/site.webmanifest" />
   
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.i18n[page.language].site.title }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }}{% else %}P5X 루페르넷{% endif %}</title>
   
 
 
@@ -105,10 +106,10 @@
       {% endfor %}
     {% endif %}
     
-    // 페이지별 데이터 파일 로드
+    // 페이지별 데이터 파일 로드 (기본 한국어, geo-meta.js에서 언어별 동적 로딩)
     {% if page.custom_data %}
       {% for data_file in page.custom_data %}
-        document.write(`<script src="{{ site.baseurl }}/data/{{ page.language }}/{{ data_file }}?v=${APP_VERSION}"><\/script>`);
+        document.write(`<script src="{{ site.baseurl }}/data/kr/{{ data_file }}?v=${APP_VERSION}"><\/script>`);
       {% endfor %}
     {% endif %}
   </script>
@@ -123,7 +124,7 @@
     
     <!-- 푸터 
     <footer>
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.data.i18n[page.language].site.title }}</p>
+      <p>&copy; {{ site.time | date: '%Y' }} P5X 루페르넷</p>
     </footer>-->
     <button id="top-button" class="floating-top-btn">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

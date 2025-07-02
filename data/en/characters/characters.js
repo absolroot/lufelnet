@@ -105,36 +105,31 @@ const characterData = {
         "role": "",
         "tag": "",
         "persona": "프로심나",
-        "release_order": 0,
-        "name": "Tomoko Noge"
+        "release_order": 0
     },
     "토시야": {
         "role": "",
         "tag": "",
         "persona": "고르귀라",
-        "release_order": 0,
-        "name": "Toshiya Sumi"
+        "release_order": 0
     },
     "하루나": {
         "role": "",
         "tag": "",
         "persona": "다에이라",
-        "release_order": 0,
-        "name": "Haruna Nishimori"
+        "release_order": 0
     },
     "미유": {
         "role": "",
         "tag": "",
         "persona": "네메르테스",
-        "release_order": 0,
-        "name": "Miyu Sahara"
+        "release_order": 0
     },
     "카요": {
         "role": "",
         "tag": "",
         "persona": "클레오도라",
-        "release_order": 0,
-        "name": "Kayo Tohyama"
+        "release_order": 0
     }
     // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
 }; 

@@ -558,17 +558,4 @@
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-top: none;
     }
-    
-    /* dropdown-up 클래스: 위쪽으로 열리는 드롭다운 */
-    .options-container.dropdown-up {
-        bottom: 100%;
-        top: auto;
-        border-radius: 4px 4px 0 0;
-    }
-    
-    .options-container.dropdown-up.active {
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-bottom: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-    }
 }

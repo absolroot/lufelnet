@@ -313,7 +313,7 @@ redirect_from:
 
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
-        const currentLang = getCurrentLanguage();
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         const seoData = {
             'kr': {
@@ -346,37 +346,7 @@ redirect_from:
     }
 
     // Initialize navigation on page load
-    document.addEventListener('DOMContentLoaded', async () => {
-        Navigation.load('character'); // nav active
-        VersionChecker.check();
-        
-        // SEO 설정 업데이트
-        updateSEOContent();
-        
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
-            const hasLangParam = window.location.search.includes('lang=');
-            if (hasLangParam) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                updateLanguageContent().then(async () => {
-                    await initializePageContent();
-                });
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
-                
-                updateLanguageContent().then(async () => {
-                    await initializePageContent();
-                });
-            }
-        } else {
-            updateLanguageContent();
-            await initializePageContent();
-        }
-    });
+    // 기존 DOMContentLoaded 리스너 제거됨 - 하단의 통합된 리스너 사용
 
     // 스크립트에서 데이터 추출하는 함수
     function extractDataFromScript(scriptText) {
@@ -397,7 +367,7 @@ redirect_from:
 
     // 언어별 캐릭터 데이터 로딩 및 병합
     async function loadCharacterData() {
-        const currentLang = getCurrentLanguage();
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         try {
             // 1. 한국어 데이터 로딩 (기본 데이터)
@@ -458,23 +428,86 @@ redirect_from:
     function mergeCharacterData(krData, langData) {
         const mergedData = {};
         
-        console.log('Merging character data...');
+        console.log('🚀🚀🚀 NEW MERGE FUNCTION IS RUNNING! 🚀🚀🚀');
+        console.log('=== MERGE CHARACTER DATA DEBUG ===');
         console.log('KR data keys:', Object.keys(krData).length, 'characters');
         console.log('Lang data keys:', Object.keys(langData).length, 'characters');
         
+        // 샘플 데이터 확인
+        const firstKrKey = Object.keys(krData)[0];
+        const firstLangKey = Object.keys(langData)[0];
+        
+        console.log(`Sample KR data (${firstKrKey}):`, {
+            element: krData[firstKrKey]?.element,
+            position: krData[firstKrKey]?.position,
+            rarity: krData[firstKrKey]?.rarity,
+            name: krData[firstKrKey]?.name,
+            name_en: krData[firstKrKey]?.name_en,
+            name_jp: krData[firstKrKey]?.name_jp,
+            role: krData[firstKrKey]?.role,
+            tag: krData[firstKrKey]?.tag
+        });
+        
+        console.log(`Sample Lang data (${firstLangKey}):`, {
+            element: langData[firstLangKey]?.element,
+            position: langData[firstLangKey]?.position,
+            rarity: langData[firstLangKey]?.rarity,
+            name: langData[firstLangKey]?.name,
+            role: langData[firstLangKey]?.role,
+            tag: langData[firstLangKey]?.tag
+        });
+        
         // 언어별 데이터에 있는 캐릭터만 포함 (langData 기준으로 필터링)
         for (const characterKey in langData) {
+            console.log('Merging character:', characterKey);
+            
             if (krData[characterKey]) {
-                console.log(`Merging character: ${characterKey}`);
-                // 한국어 데이터를 기본으로 복사
+                // 한국어 데이터를 기본으로 완전히 복사 (모든 속성 보존)
                 mergedData[characterKey] = { ...krData[characterKey] };
                 
-                // 언어별 데이터에서 특정 필드만 덮어쓰기
                 const langChar = langData[characterKey];
-                if (langChar.role !== undefined) mergedData[characterKey].role = langChar.role;
-                if (langChar.tag !== undefined) mergedData[characterKey].tag = langChar.tag;
-                if (langChar.persona !== undefined) mergedData[characterKey].persona = langChar.persona;
-                if (langChar.release_order !== undefined) mergedData[characterKey].release_order = langChar.release_order;
+                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                
+                // name 처리: 현재 언어에 따라 적절한 이름 사용
+                if (currentLang === 'en' && krData[characterKey].name_en) {
+                    mergedData[characterKey].name = krData[characterKey].name_en;
+                } else if (currentLang === 'jp' && krData[characterKey].name_jp) {
+                    mergedData[characterKey].name = krData[characterKey].name_jp;
+                } else if (langChar.name && langChar.name !== '') {
+                    // 언어별 데이터에 이름이 있고 빈 문자열이 아니면 사용
+                    mergedData[characterKey].name = langChar.name;
+                }
+                
+                // persona 처리: 현재 언어에 따라 적절한 페르소나 이름 사용
+                if (currentLang === 'en' && krData[characterKey].persona_en) {
+                    mergedData[characterKey].persona = krData[characterKey].persona_en;
+                } else if (currentLang === 'jp' && krData[characterKey].persona_jp) {
+                    mergedData[characterKey].persona = krData[characterKey].persona_jp;
+                } else if (langChar.persona && langChar.persona !== '') {
+                    mergedData[characterKey].persona = langChar.persona;
+                }
+                
+                // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
+                // 중요: element, position, rarity 등은 절대 덮어쓰지 않음 (한국어 데이터 유지)
+                if (langChar.role && langChar.role !== '') {
+                    mergedData[characterKey].role = langChar.role;
+                }
+                if (langChar.tag && langChar.tag !== '') {
+                    mergedData[characterKey].tag = langChar.tag;
+                }
+                if (langChar.release_order !== undefined && langChar.release_order !== 0) {
+                    mergedData[characterKey].release_order = langChar.release_order;
+                }
+                
+                // 중요한 속성들이 제대로 보존되었는지 확인
+                if (!mergedData[characterKey].element || !mergedData[characterKey].position || !mergedData[characterKey].rarity) {
+                    console.warn(`Missing critical data for ${characterKey}:`, {
+                        element: mergedData[characterKey].element,
+                        position: mergedData[characterKey].position,
+                        rarity: mergedData[characterKey].rarity
+                    });
+                }
+                
             } else {
                 console.warn(`Character ${characterKey} not found in KR data`);
             }
@@ -482,6 +515,13 @@ redirect_from:
         
         console.log('Merged data keys:', Object.keys(mergedData).length, 'characters');
         console.log('Final merged characters:', Object.keys(mergedData));
+        
+        // 첫 번째 병합된 캐릭터의 전체 데이터 확인
+        const firstMergedKey = Object.keys(mergedData)[0];
+        if (firstMergedKey) {
+            console.log('FULL MERGED DATA for', firstMergedKey, ':', mergedData[firstMergedKey]);
+        }
+        
         return mergedData;
     }
     
@@ -506,11 +546,25 @@ redirect_from:
         }
     }
 
+    // 중복 실행 방지를 위한 플래그
+    let isInitializing = false;
+    let isInitialized = false;
+
     async function initializePageContent() {
+        // 중복 실행 방지
+        if (isInitializing || isInitialized) {
+            console.log('initializePageContent already running or completed');
+            return;
+        }
+        
+        isInitializing = true;
+        console.log('=== STARTING PAGE INITIALIZATION ===');
+        
         // 캐릭터 데이터 로딩
         const dataLoaded = await loadCharacterData();
         if (!dataLoaded || typeof characterData === 'undefined') {
             console.error('characterData is not loaded');
+            isInitializing = false;
             return;
         }
         
@@ -558,28 +612,60 @@ redirect_from:
         const countUnit = window.i18nCountUnit || '명';
         searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
         
-        console.log('=== CARD CREATION DEBUG ===');
-        console.log('characterData keys at card creation:', Object.keys(characterData).length);
-        console.log('sortedCharacters length:', sortedCharacters.length);
-        console.log('sortedCharacters:', sortedCharacters);
-        console.log('characterData sample:', Object.keys(characterData).slice(0, 10));
+        console.log('=== STARTING CARD CREATION ===');
+        console.log('sortedCharacters array:', sortedCharacters);
+        console.log('characterData object keys:', Object.keys(characterData));
         
         // Create card for each character
-        sortedCharacters.forEach(characterName => {
+        sortedCharacters.forEach((characterName, index) => {
+            console.log(`[${index}] Creating card for: ${characterName}`);
+            
+            const charData = characterData[characterName];
+            if (!charData) {
+                console.error(`No data found for character: ${characterName}`);
+                return;
+            }
+            
+            // 전체 데이터 구조 확인 (첫 번째 캐릭터만)
+            if (index === 0) {
+                console.log(`FULL DATA for ${characterName}:`, charData);
+                console.log(`All keys in charData:`, Object.keys(charData));
+            }
+            
+            console.log(`${characterName} data:`, {
+                element: charData.element,
+                position: charData.position,
+                rarity: charData.rarity,
+                name: charData.name
+            });
+            
+            // 속성 값 디버그
+            const element = charData.element;
+            const position = charData.position;
+            const rarity = charData.rarity;
+            
+            if (!element || !position || !rarity) {
+                console.warn(`Missing attributes for ${characterName}:`, {
+                    element: element,
+                    position: position,
+                    rarity: rarity
+                });
+            }
+            
             const card = document.createElement('div');
             card.className = 'card';
-            card.dataset.element = characterData[characterName].element;
-            card.dataset.position = characterData[characterName].position;
-            card.dataset.rarity = characterData[characterName].rarity;
-            card.dataset.persona5 = characterData[characterName].persona5 ? 'true' : 'false';
-            card.dataset.persona3 = characterData[characterName].persona3 ? 'true' : 'false';
-            card.dataset.limit = characterData[characterName].limit ? 'true' : 'false';
-            card.dataset.tags = characterData[characterName].tag;
+            card.dataset.element = element || 'undefined';
+            card.dataset.position = position || 'undefined';
+            card.dataset.rarity = rarity || 'undefined';
+            card.dataset.persona5 = charData.persona5 ? 'true' : 'false';
+            card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
+            card.dataset.limit = charData.limit ? 'true' : 'false';
+            card.dataset.tags = charData.tag || '';
             
             // Create link wrapper - 언어 파라미터 추가
-            const currentLang = getCurrentLanguage();
+            const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
             const link = document.createElement('a');
-                            link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+            link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
             
@@ -589,8 +675,8 @@ redirect_from:
             
             // Position icon
             const positionIcon = document.createElement('img');
-            positionIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${characterData[characterName].position}.png`;
-            positionIcon.alt = characterData[characterName].position;
+            positionIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${position || 'undefined'}.png`;
+            positionIcon.alt = position || 'undefined';
             positionIcon.className = 'position-icon';
             
             // Character image
@@ -611,17 +697,17 @@ redirect_from:
             
             // Element icon
             const elementIcon = document.createElement('img');
-            elementIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${characterData[characterName].element}.png`;
-            elementIcon.alt = characterData[characterName].element;
+            elementIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${element || 'undefined'}.png`;
+            elementIcon.alt = element || 'undefined';
             elementIcon.className = 'element-icon';
             
             // Add name
             const nameText = document.createElement('span');
-            nameText.textContent = characterData[characterName].name;
+            nameText.textContent = charData.name;
             nameText.className = 'name-text';
-            nameText.dataset.persona3 = characterData[characterName].persona3;
-            nameText.dataset.persona4 = characterData[characterName].persona4;
-            nameText.dataset.persona5 = characterData[characterName].persona5;
+            nameText.dataset.persona3 = charData.persona3;
+            nameText.dataset.persona4 = charData.persona4;
+            nameText.dataset.persona5 = charData.persona5;
             
             positionContainer.appendChild(positionIcon);
             link.appendChild(positionContainer);
@@ -637,11 +723,16 @@ redirect_from:
         
         // 번역 적용 (데이터 로딩 후)
         await applyTranslations();
+        
+        // 초기화 완료
+        isInitializing = false;
+        isInitialized = true;
+        console.log('=== PAGE INITIALIZATION COMPLETED ===');
     } // initializePageContent 함수 종료
     
     // 필터 및 검색 기능 초기화
     function initializeFiltersAndSearch(sortedCharacters) {
-        const currentLang = getCurrentLanguage();
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         // 영어/일본어일 때 태그 필터 숨기기
         if (currentLang === 'en' || currentLang === 'jp') {
@@ -869,7 +960,7 @@ redirect_from:
     
     // 번역 시스템 적용
     async function applyTranslations() {
-        const currentLang = getCurrentLanguage();
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         if (currentLang === 'kr') return;
         
         try {
@@ -1013,9 +1104,51 @@ redirect_from:
         }
     }
     
-    // 페이지 로드 시 초기화 (번역은 initializePageContent 내에서 처리)
+    // 페이지 로드 시 초기화 (통합된 초기화 함수)
     document.addEventListener('DOMContentLoaded', async () => {
-        await initializePageContent();
+        console.log('DOMContentLoaded event fired');
+        
+        // 기본 초기화 작업
+        Navigation.load('character'); // nav active
+        VersionChecker.check();
+        
+        // SEO 설정 업데이트
+        updateSEOContent();
+        
+        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        if (typeof LanguageRouter !== 'undefined') {
+            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
+            const hasLangParam = window.location.search.includes('lang=');
+            if (hasLangParam) {
+                // 언어 파라미터가 있으면 바로 콘텐츠 로드
+                updateLanguageContent().then(async () => {
+                    await initializePageContent();
+                });
+            } else {
+                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+                
+                updateLanguageContent().then(async () => {
+                    await initializePageContent();
+                });
+            }
+        } else {
+            updateLanguageContent();
+            await initializePageContent();
+        }
+    });
+    
+    // 추가 안전장치: window.onload에서도 체크
+    window.addEventListener('load', async () => {
+        console.log('Window load event fired');
+        if (!isInitialized) {
+            console.log('Page not initialized yet, running initialization...');
+            await initializePageContent();
+        } else {
+            console.log('Page already initialized, skipping...');
+        }
     });
     
 </script> 

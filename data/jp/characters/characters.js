@@ -86,48 +86,56 @@ const characterData = {
         "role": "",
         "tag": "",
         "persona": "맹파",
-        "release_order": 0
+        "release_order": 0,
+        "name": "李 瑤鈴"
     },
     "유키미": {
         "role": "",
         "tag": "",
         "persona": "스틱스",
-        "release_order": 0
+        "release_order": 0,
+        "name": "藤川 雪美"
     },
     "키요시": {
         "role": "",
         "tag": "",
         "persona": "프로심나",
-        "release_order": 0
+        "release_order": 0,
+        "name": "黒谷 清志"
     },
     "토모코": {
         "role": "",
         "tag": "",
         "persona": "프로심나",
-        "release_order": 0
+        "release_order": 0,
+        "name": "野毛 智子"
     },
     "토시야": {
         "role": "",
         "tag": "",
         "persona": "고르귀라",
-        "release_order": 0
+        "release_order": 0,
+        "name": "角海 利也"
     },
     "하루나": {
         "role": "",
         "tag": "",
         "persona": "다에이라",
-        "release_order": 0
+        "release_order": 0,
+        "name": "西森 春菜"
     },
     "미유": {
         "role": "",
         "tag": "",
         "persona": "ネメルテス",
-        "release_order": 0
+        "release_order": 0,
+        "name": "佐原 美雪"
     },
     "카요": {
         "role": "",
         "tag": "",
         "persona": "클레오도라",
-        "release_order": 0
+        "release_order": 0,
+        "name": "遠山 香代"
     }
 }; 

@@ -101,8 +101,8 @@ class Navigation {
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
             kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'about'],
-            en: ['character', 'about'],
-            jp: ['character', 'about'],
+            en: ['character', 'persona', 'about'],
+            jp: ['character', 'persona', 'about'],
             cn: ['character', 'about']
         };
 

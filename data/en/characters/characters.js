@@ -27,122 +27,114 @@ const characterData = {
         "role": "",
         "tag": "",
         "persona": "아르센",
-        "release_order": 0,
-        "name": "Ren Amamiya",
+        "release_order": 0
     },
     "루페르": {
         "role": "",
         "tag": "",
         "persona": "로브로이",
-        "release_order": 0,
-        "name": "Lufel",
+        "release_order": 0
     },
     "레오": {
         "role": "",
         "tag": "",
         "persona": "에리테이아",
-        "release_order": 0,
-        "name": "Leo Kamiyama",
+        "release_order": 0
     },
     "류지": {
         "role": "",
         "tag": "",
         "persona": "캡틴 키드",
-        "release_order": 0,
-        "name": "Ryuji Sakamoto",
+        "release_order": 0
     },
     "모르가나": {
         "role": "",
         "tag": "",
         "persona": "조로",
-        "release_order": 0,
-        "name": "Morgana",
+        "release_order": 0
     },
     "모토하": {
         "role": "",
         "tag": "",
         "persona": "아르빌다",
-        "release_order": 0,
-        "name": "Motoha Arai",
+        "release_order": 0
     },
     "몽타뉴": {
         "role": "",
         "tag": "",
         "persona": "테르프시코레",
-        "release_order": 0,
-        "name": "Kotone Montagne",
+        "release_order": 0
     },
     "슌": {
         "role": "",
         "tag": "",
         "persona": "만돌란",
-        "release_order": 0,
-        "name": "Shun Kano",
+        "release_order": 0
     },
     "세이지": {
         "role": "",
         "tag": "",
         "persona": "레우코테아",
-        "release_order": 0,
-        "name": "Seiji Shiratori",
+        "release_order": 0
     },
     "안": {
         "role": "",
         "tag": "",
         "persona": "카르멘",
-        "release_order": 0,
-        "name": "Ann Takamaki",
+        "release_order": 0
     },
     "야오링": {
         "role": "",
         "tag": "",
         "persona": "맹파",
-        "release_order": 0,
-        "name": "Yaoling Li",
+        "release_order": 0
     },
     "유키미": {
         "role": "",
         "tag": "",
         "persona": "스틱스",
-        "release_order": 0,
-        "name": "Yukimi Fujikawa",
+        "release_order": 0
     },
     "키요시": {
         "role": "",
         "tag": "",
         "persona": "프로심나",
-        "release_order": 0,
-        "name": "Kurotani Kiyoshi",
+        "release_order": 0
     },
     "토모코": {
         "role": "",
         "tag": "",
         "persona": "프로심나",
-        "release_order": 0
+        "release_order": 0,
+        "name": "Tomoko Noge"
     },
     "토시야": {
         "role": "",
         "tag": "",
         "persona": "고르귀라",
-        "release_order": 0
+        "release_order": 0,
+        "name": "Toshiya Sumi"
     },
     "하루나": {
         "role": "",
         "tag": "",
         "persona": "다에이라",
-        "release_order": 0
+        "release_order": 0,
+        "name": "Haruna Nishimori"
     },
     "미유": {
         "role": "",
         "tag": "",
         "persona": "네메르테스",
-        "release_order": 0
+        "release_order": 0,
+        "name": "Miyu Sahara"
     },
     "카요": {
         "role": "",
         "tag": "",
         "persona": "클레오도라",
-        "release_order": 0
+        "release_order": 0,
+        "name": "Kayo Tohyama"
     }
     // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
 }; 

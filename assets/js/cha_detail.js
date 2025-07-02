@@ -764,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 언어별 레벨 텍스트
         const levelTexts = {
             kr: characterInfo.rarity === 4 
-                ? ['전체', '10레벨', '10레벨+심상5', '12레벨', '12레벨+심상5']
+            ? ['전체', '10레벨', '10레벨+심상5', '12레벨', '12레벨+심상5']
                 : ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'],
             en: characterInfo.rarity === 4 
                 ? ['All', 'LV10', 'LV10+Mind5', 'LV12', 'LV12+Mind5']

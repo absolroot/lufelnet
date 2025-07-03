@@ -4,8 +4,24 @@ custom_css: [home, tactic-posts]
 custom_js: [tactic-posts-home, tactic-preview, /tactic/share, language-router]
 custom_data: [/characters/characters.js, /revelations/revelations.js]
 permalink: /
+redirect_from: 
+  - /kr/
+  - /kr/index.html
 language: kr
+title: 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X 공략 사이트. 괴도 육성, 페르소나, 계시, 전술 시뮬레이터 등 다양한 정보를 제공합니다.
+alternate_urls:
+  en: /?lang=en
+  jp: /?lang=jp
 ---
+
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+{% endif %}
 
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->

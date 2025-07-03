@@ -10,8 +10,18 @@ redirect_from:
 language: kr
 title : 주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
+alternate_urls:
+  en: /persona/?lang=en
+  jp: /persona/?lang=jp
 ---
 
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/persona/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/persona/" />
+{% endif %}
 
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
@@ -372,9 +382,46 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
         updateExplainBoxTexts(currentLang);
     }
 
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        const seoData = {
+            'kr': {
+                title: '주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X의 주요 페르소나 정보. 본능, 고유 스킬, 추천 스킬 정보를 확인하세요.'
+            },
+            'en': {
+                title: 'Core Personas - Persona 5: The Phantom X LufelNet',
+                description: 'Core Persona information for Persona 5: The Phantom X. Check instinct, unique skills, and recommended skills.'
+            },
+            'jp': {
+                title: '主要ペルソナ - ペルソナ5 ザ・ファントム X LufelNet',
+                description: 'ペルソナ5 ザ・ファントム Xの主要ペルソナ情報。本能、固有スキル、推奨スキル情報をご確認ください。'
+            }
+        };
+        
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+        
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+        
+        // 메타 태그 업데이트
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        
+        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('persona');
         VersionChecker.check();
+
+        // SEO 설정 업데이트
+        updateSEOContent();
 
         // 언어 라우터 초기화 및 콘텐츠 업데이트
         if (typeof LanguageRouter !== 'undefined') {

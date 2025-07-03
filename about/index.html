@@ -8,7 +8,20 @@ redirect_from:
   - /kr/about/
   - /kr/about/index.html
 language: kr
+title: 사이트 소개 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X 루페르넷 사이트 소개 및 업데이트 내역을 확인하세요.
+alternate_urls:
+  en: /about/?lang=en
+  jp: /about/?lang=jp
 ---
+
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/about/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/about/" />
+{% endif %}
 
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->

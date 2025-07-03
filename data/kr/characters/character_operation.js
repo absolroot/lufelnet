@@ -3,6 +3,16 @@ const operationData = {
         basic: [],
         note: []
     },
+    "이치고": {
+        basic: [
+            { label: "의식 0", value: "" },
+            { label: "의식 1", value: "" },
+            { label: "의식 6", value: "1+1 › 2+2 › 3 › 3 › 3 › 3+3" },
+        ],
+        note: [
+            "· 아군 파티에 따라 크리티컬 확률 조정 필요"
+        ]
+    },
     "사나다": {
         basic: [
             { label: "의식 0", value: "1 › 2 › 3 › 1 › 2 › 3" },

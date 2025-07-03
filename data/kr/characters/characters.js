@@ -76,7 +76,7 @@ const characterData = {
         "sub_revel4": ["공격력"],
         "sub_option1": ["관통", "크리티컬 효과"],
         "sub_option2": ["공격력", "대미지 보너스"],
-        "sub_option3": [],
+        "sub_option3": ["크리티컬 확률"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,

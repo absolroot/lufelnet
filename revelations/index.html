@@ -1,8 +1,7 @@
 ---
 layout: default
 custom_css: [revelations]
-custom_js: [tooltip, language-router]
-custom_data: [revelations/revelations.js, tooltip.js]
+custom_js: []
 permalink: /revelations/
 redirect_from: 
   - /kr/revelations/
@@ -10,7 +9,18 @@ redirect_from:
 language: kr
 title : 계시 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X의 계시 정보
+alternate_urls:
+  en: /revelations/?lang=en
+  jp: /revelations/?lang=jp
 ---
+
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/revelations/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/revelations/" />
+{% endif %}
 
 <!-- Main content -->
 <div class="main-wrapper">
@@ -34,7 +44,7 @@ description: 페르소나5 더 팬텀 X의 계시 정보
         <div class="filter-content">
             <!-- Revelation type filter -->
             <div class="filter-group">
-                <h3>분류</h3>
+                <h3 id="filter-type-label">분류</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="type" value="main">
@@ -54,7 +64,7 @@ description: 페르소나5 더 팬텀 X의 계시 정보
 
             <!-- Element filter -->
             <div class="filter-group">
-                <h3>속성</h3>
+                <h3 id="filter-element-label">속성</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="element" value="물리">
@@ -116,27 +126,27 @@ description: 페르소나5 더 팬텀 X의 계시 정보
 
             <!-- Type filter -->
             <div class="filter-group">
-                <h3>타입</h3>
+                <h3 id="filter-effect-label">타입</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="effect" value="버프">
-                        <p>버프</p>
+                        <p id="effect-buff">버프</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="디버프">
-                        <p>디버프</p>
+                        <p id="effect-debuff">디버프</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="추가 효과">
-                        <p>추가 효과</p>
+                        <p id="effect-additional">추가 효과</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="HL 25%">
-                        <p>HL 25%</p>
+                        <p id="effect-hl">HL 25%</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="치료">
-                        <p>치료</p>
+                        <p id="effect-heal">치료</p>
                     </label>
                 </div>
             </div>
@@ -157,7 +167,9 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             <input type="text" id="revelationSearch" placeholder="계시 검색..." autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
-        <div class="search-count"></div>
+        <div class="search-count">
+            <span id="filteredCount">전체 0개</span>
+        </div>
     </div>
 
     <!-- Revelation card container -->
@@ -167,9 +179,58 @@ description: 페르소나5 더 팬텀 X의 계시 정보
 </div>
 
 <script>
+    // 전역 변수 초기화
+    if (window.revelationData) delete window.revelationData;
+    if (window.tooltipData) delete window.tooltipData;
+    
+    // 동적 데이터 로딩 함수
+    async function loadLanguageData(lang) {
+        return new Promise((resolve, reject) => {
+            const dataFiles = {
+                'kr': '/data/kr/revelations/revelations.js',
+                'en': '/data/en/revelations/revelations.js', 
+                'jp': '/data/jp/revelations/revelations.js'
+            };
+
+            const scriptSrc = dataFiles[lang] || dataFiles['kr'];
+            
+            // 기존 스크립트 제거 (중복 방지)
+            const existingTooltip = document.querySelector('script[src="/data/kr/tooltip.js"]');
+            if (existingTooltip) existingTooltip.remove();
+            
+            const existingData = document.querySelector(`script[src="${scriptSrc}"]`);
+            if (existingData) existingData.remove();
+            
+            // tooltip.js 로드
+            const tooltipScript = document.createElement('script');
+            tooltipScript.src = '/data/kr/tooltip.js';
+            tooltipScript.onload = () => {
+                // tooltip.js 로드 후 revelations 데이터 로드
+                const dataScript = document.createElement('script');
+                dataScript.src = scriptSrc;
+                dataScript.onload = () => {
+                    // 데이터 로드 후 addTooltips 함수 정의
+                    window.addTooltips = function() {
+                        const tooltips = document.querySelectorAll('[data-tooltip]');
+                        tooltips.forEach(element => {
+                            const tooltipText = element.getAttribute('data-tooltip');
+                            // 툴팁 로직 구현
+                            element.title = tooltipText;
+                        });
+                    };
+                    resolve();
+                };
+                dataScript.onerror = () => reject(new Error(`Failed to load ${scriptSrc}`));
+                document.head.appendChild(dataScript);
+            };
+            tooltipScript.onerror = () => reject(new Error('Failed to load tooltip.js'));
+            document.head.appendChild(tooltipScript);
+        });
+    }
+
     // 다국어 지원 함수
     async function updateLanguageContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         // 다국어 데이터 정의
         const i18nData = {
@@ -178,21 +239,57 @@ description: 페르소나5 더 팬텀 X의 계시 정보
                 nav_home: "홈",
                 nav_current: "계시",
                 page_title: "계시",
-                filtered_count: "전체"
+                filtered_count: "전체",
+                search_placeholder: "계시 검색...",
+                filter_type: "분류",
+                filter_element: "속성",
+                filter_effect: "타입",
+                effect_buff: "버프",
+                effect_debuff: "디버프",
+                effect_additional: "추가 효과",
+                effect_hl: "HL 25%",
+                effect_heal: "치료",
+                count_unit: "개",
+                set_effect_2: "2세트",
+                set_effect_4: "4세트"
             },
             en: {
-                language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
+                language_notice: "🌍 Some translations may be inaccurate.\nIt may contain content that hasn't been released yet.",
                 nav_home: "Home",
                 nav_current: "Revelations",
                 page_title: "Revelations",
-                filtered_count: "Total"
+                filtered_count: "Total",
+                search_placeholder: "Search revelations...",
+                filter_type: "Type",
+                filter_element: "Element",
+                filter_effect: "Effect",
+                effect_buff: "Buff",
+                effect_debuff: "Debuff",
+                effect_additional: "Additional",
+                effect_hl: "HL 25%",
+                effect_heal: "Heal",
+                count_unit: "",
+                set_effect_2: "2-Set",
+                set_effect_4: "4-Set"
             },
             jp: {
-                language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
+                language_notice: "🌍 一部の翻訳が不正確な場合があります。\nまだリリースされていないコンテンツが含まれている可能性があります。",
                 nav_home: "ホーム",
                 nav_current: "啓示",
                 page_title: "啓示",
-                filtered_count: "全体"
+                filtered_count: "全体",
+                search_placeholder: "啓示検索...",
+                filter_type: "分類",
+                filter_element: "属性",
+                filter_effect: "タイプ",
+                effect_buff: "バフ",
+                effect_debuff: "デバフ",
+                effect_additional: "意識奏功",
+                effect_hl: "HL 25%",
+                effect_heal: "回復",
+                count_unit: "",
+                set_effect_2: "2セット",
+                set_effect_4: "4セット"
             }
         };
         
@@ -213,48 +310,119 @@ description: 페르소나5 더 팬텀 X의 계시 정보
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
+        const searchInput = document.getElementById('revelationSearch');
         
         if (navHome) navHome.textContent = data.nav_home;
         if (navCurrent) navCurrent.textContent = data.nav_current;
         if (pageTitle) pageTitle.textContent = data.page_title;
+        if (searchInput) searchInput.placeholder = data.search_placeholder;
+        
+        // 필터 라벨 업데이트
+        const filterTypeLabel = document.getElementById('filter-type-label');
+        const filterElementLabel = document.getElementById('filter-element-label');
+        const filterEffectLabel = document.getElementById('filter-effect-label');
+        
+        if (filterTypeLabel) filterTypeLabel.textContent = data.filter_type;
+        if (filterElementLabel) filterElementLabel.textContent = data.filter_element;
+        if (filterEffectLabel) filterEffectLabel.textContent = data.filter_effect;
+        
+        // 효과 타입 라벨 업데이트
+        const effectBuff = document.getElementById('effect-buff');
+        const effectDebuff = document.getElementById('effect-debuff');
+        const effectAdditional = document.getElementById('effect-additional');
+        const effectHl = document.getElementById('effect-hl');
+        const effectHeal = document.getElementById('effect-heal');
+        
+        if (effectBuff) effectBuff.textContent = data.effect_buff;
+        if (effectDebuff) effectDebuff.textContent = data.effect_debuff;
+        if (effectAdditional) effectAdditional.textContent = data.effect_additional;
+        if (effectHl) effectHl.textContent = data.effect_hl;
+        if (effectHeal) effectHeal.textContent = data.effect_heal;
         
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
         window.i18nFilteredCount = data.filtered_count;
+        window.i18nCountUnit = data.count_unit;
+        window.i18nSetEffect2 = data.set_effect_2;
+        window.i18nSetEffect4 = data.set_effect_4;
+    }
+
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        const seoData = {
+            'kr': {
+                title: '계시 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.'
+            },
+            'en': {
+                title: 'Revelations - Persona 5: The Phantom X LufelNet',
+                description: 'Revelation information for Persona 5: The Phantom X. Check set effects and additional effects.'
+            },
+            'jp': {
+                title: '啓示 - ペルソナ5 ザ・ファントム X LufelNet',
+                description: 'ペルソナ5 ザ・ファントム Xの啓示情報。セット効果と追加効果をご確認ください。'
+            }
+        };
+        
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+        
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+        
+        // 메타 태그 업데이트
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        
+        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
 
     // Initialize navigation on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        Navigation.load('revelations', 1); // Set active state for current page
-        VersionChecker.check();
-
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
-            const hasLangParam = window.location.search.includes('lang=');
-            if (hasLangParam) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                updateLanguageContent().then(() => {
-                    initializePageContent();
-                });
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
-                
-                updateLanguageContent().then(() => {
-                    initializePageContent();
-                });
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            // 현재 언어 확인
+            const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+            
+            // 네비게이션 초기화
+            if (typeof Navigation !== 'undefined') {
+                Navigation.load('revelations', 1);
             }
-        } else {
-            updateLanguageContent();
+            
+            if (typeof VersionChecker !== 'undefined') {
+                VersionChecker.check();
+            }
+
+            // SEO 설정 업데이트
+            updateSEOContent();
+            
+            // 데이터 로드
+            await loadLanguageData(currentLang);
+            
+            // 언어 콘텐츠 업데이트
+            await updateLanguageContent();
+            
+            // 페이지 초기화
             initializePageContent();
+            
+        } catch (error) {
+            console.error('Failed to load language data:', error);
+            // 에러 메시지 표시
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+            document.querySelector('.main-wrapper').prepend(errorDiv);
         }
     });
 
     function initializePageContent() {
         const cardsContainer = document.getElementById('revelationCards');
         const searchCount = document.querySelector('.search-count');
+        
+        // 현재 언어 확인
+        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         // Separate main revelations and sub revelations
         const mainRevelations = Object.keys(revelationData.main);
@@ -268,7 +436,8 @@ description: 페르소나5 더 팬텀 X의 계시 정보
         
         // 초기 검색 결과 수 표시
         const countText = window.i18nFilteredCount || '전체';
-        searchCount.textContent = `${countText} ${allRevelations.length}개`;
+        const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+        searchCount.textContent = `${countText} ${allRevelations.length}${countUnit}`;
         
         // Create card for each revelation
         allRevelations.forEach((revelation, index) => {
@@ -277,19 +446,40 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             card.dataset.type = revelation.type;
             card.dataset.name = revelation.name;
             
+            // Get Korean name for image path (using reverse mapping)
+            let koreanName = revelation.name;
+            
+            // If not Korean, find Korean name from mapping
+            if (currentLang !== 'kr') {
+                if (revelationData.mapping_jp) {
+                    // Find Korean name from Japanese mapping
+                    const koreanKey = Object.keys(revelationData.mapping_jp).find(key => 
+                        revelationData.mapping_jp[key] === revelation.name
+                    );
+                    if (koreanKey) koreanName = koreanKey;
+                } else if (revelationData.mapping_en) {
+                    // Find Korean name from English mapping
+                    const koreanKey = Object.keys(revelationData.mapping_en).find(key => 
+                        revelationData.mapping_en[key] === revelation.name
+                    );
+                    if (koreanKey) koreanName = koreanKey;
+                }
+            }
+            // If Korean, koreanName is already correct (revelation.name)
+            
             // Image container
             const imgContainer = document.createElement('div');
             imgContainer.className = 'img-container';
             
-            // Revelation image
+            // Revelation image - use Korean name for file path
             const img = document.createElement('img');
-            img.src = `{{ site.baseurl }}/assets/img/revelation/${revelation.name}.webp`;
+            img.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.webp`;
             img.alt = revelation.name;
             img.className = 'revelation-img';
 
-            // Name image
+            // Name image - use Korean name for file path
             const nameImg = document.createElement('img');
-            nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${revelation.name}.png`;
+            nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.png`;
             nameImg.alt = revelation.name;
             nameImg.className = 'name-img';
             
@@ -345,13 +535,16 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             if (revelation.type === 'sub') {
                 // For sub revelations, show 2-set and 4-set effects
                 const effects = revelationData.sub_effects[revelation.name];
+                const setLabel2 = window.i18nSetEffect2 || '2세트';
+                const setLabel4 = window.i18nSetEffect4 || '4세트';
+                
                 effectsContainer.innerHTML = `
                     <div class="effect-set">
-                        <div class="set-label">2세트</div>
+                        <div class="set-label">${setLabel2}</div>
                         <div class="set-desc">${effects.set2}</div>
                     </div>
                     <div class="effect-set">
-                        <div class="set-label">4세트</div>
+                        <div class="set-label">${setLabel4}</div>
                         <div class="set-desc">${effects.set4}</div>
                     </div>
                 `;
@@ -395,14 +588,13 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             let visibleCount = 0;
             
             // List of filtered sub revelations
-            let filteredSubRevelations = Object.keys(revelationData.sub_effects).filter(name => {
-                const effects = revelationData.sub_effects[name];
+            let filteredSubRevelations = Object.entries(revelationData.sub_effects).filter(([name, effects]) => {
                 const elementMatch = selectedElements.length === 0 || 
                     selectedElements.some(element => effects.type.includes(element));
                 const effectMatch = selectedEffects.length === 0 || 
                     selectedEffects.some(effect => effects.type.includes(effect));
                 return elementMatch && effectMatch;
-            });
+            }).map(([name]) => name);
 
             // Find main revelations related to filtered sub revelations
             let relatedMainRevelations = new Set();
@@ -435,7 +627,8 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             
             // Update search count
             const countText = window.i18nFilteredCount || '전체';
-            searchCount.textContent = `${countText} ${visibleCount}개`;
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         // Search functionality implementation
@@ -501,7 +694,8 @@ description: 페르소나5 더 팬텀 X의 계시 정보
             
             // Update search count
             const countText = window.i18nFilteredCount || '전체';
-            searchCount.textContent = `${countText} ${visibleCount}개`;
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         let activeCard = null; // Track currently active card
@@ -533,13 +727,20 @@ description: 페르소나5 더 팬텀 X의 계시 정보
 
             let relatedRevelations = [];
             if (type === 'main') {
+                // For main revelations, get all connected sub revelations
                 relatedRevelations = revelationData.main[name] || [];
                 relatedRevelations.push(name);
             } else if (type === 'sub') {
-                relatedRevelations = revelationData.sub[name] || [];
+                // For sub revelations, find all main revelations that include this sub revelation
+                Object.entries(revelationData.main).forEach(([mainName, subNames]) => {
+                    if (subNames.includes(name)) {
+                        relatedRevelations.push(mainName);
+                    }
+                });
                 relatedRevelations.push(name);
             }
 
+            let visibleCount = 0;
             cards.forEach(c => {
                 const cardName = c.getAttribute('data-name');
                 const shouldShow = relatedRevelations.includes(cardName);
@@ -548,12 +749,18 @@ description: 페르소나5 더 팬텀 X의 계시 정보
                     c.style.display = 'flex';
                     c.style.visibility = 'visible';
                     c.style.opacity = '1';
+                    visibleCount++;
                 } else {
                     c.style.display = 'none';
                     c.style.visibility = 'hidden';
                     c.style.opacity = '0';
                 }
             });
+
+            // Update search count for related revelations
+            const countText = window.i18nFilteredCount || '전체';
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         function deactivateFilter() {

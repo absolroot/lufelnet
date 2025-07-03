@@ -106,7 +106,7 @@
 .effect-set {
     display: grid;
     min-width: 200px;
-    grid-template-columns: 45px 1fr;
+    grid-template-columns: 60px 1fr;
     background-color: rgba(0,0,0,0.2);
     border-radius: 8px;
     padding: 10px;

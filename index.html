@@ -537,9 +537,9 @@ alternate_urls:
             
             // Persona 메뉴 활성화 (오버레이 제거)
             removeComingSoonOverlay('menu-persona-card');
-            
+            removeComingSoonOverlay('menu-revelations-card');
             // Revelations 메뉴에만 오버레이 추가
-            addComingSoonOverlay('menu-revelations-card', currentLang === 'en' ? 'Coming Soon' : '準備中');
+            // addComingSoonOverlay('menu-revelations-card', currentLang === 'en' ? 'Coming Soon' : '準備中');
             
             // 택틱 대장간 섹션 숨기기
             const postsContainer = document.getElementById('posts-container');

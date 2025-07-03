@@ -1,22 +1,72 @@
+// Korean → English mapping
+const mapping_en = {
+    // Main revelations
+    "돌파": "Breakthrough",
+    "희망": "Hope",
+    "창조": "Creation",
+    "깨달음": "Awareness",
+    "여정": "Departure",
+    "성장": "Growth",
+    "지혜": "Wisdom",
+    "전념": "Meditation",
+    "신념": "Faith",
+    "신뢰": "Trust",
+    "조화": "Harmony",
+    "결심": "Resolve",
+    "수락": "Acceptance",
+    "자유": "Freedom",
+    "진정성": "Integrity",
+    
+    // Sub revelations
+    "슬픔": "Sorrow",
+    "변화": "Change",
+    "신중": "Prudence",
+    "고집": "Fixation",
+    "헛수고": "Futility",
+    "실망": "Despair",
+    "우려": "Worry",
+    "화해": "Reconciliation",
+    "진리": "Truth",
+    "주권": "Control",
+    "방해": "Ruin",
+    "풍요": "Prosperity",
+    "화려": "Opulence",
+    "변환": "Renewal",
+    "힘": "Power",
+    "억압": "Oppression",
+    "환희": "Pleasure",
+    "미덕": "Virtue",
+    "용맹": "Courage",
+    "사랑": "Love",
+    "평화": "Peace",
+    "승리": "Victory",
+    "직책": "Labor",
+    "분쟁": "Strife",
+    "개선": "Success",
+    "좌절": "Defeat"
+};
+
 // English revelation data
 const revelationData = {
-    // 한국어 -> 영어 번역 매핑
+    // Mapping for image paths (Korean -> English)
+    "mapping_en": mapping_en,
+    // Korean -> English translation mapping
     "mainTranslated": {
         "돌파": "Breakthrough",
-        "희망": "Hope", 
+        "희망": "Hope",
         "창조": "Creation",
-        "깨달음": "Enlightenment",
-        "여정": "Journey",
+        "깨달음": "Awareness",
+        "여정": "Departure",
         "성장": "Growth",
         "지혜": "Wisdom",
-        "전념": "Devotion",
+        "전념": "Meditation",
         "신념": "Faith",
         "신뢰": "Trust",
         "조화": "Harmony",
-        "결심": "Resolution",
+        "결심": "Resolve",
         "수락": "Acceptance",
         "자유": "Freedom",
-        "진정성": "Authenticity"
+        "진정성": "Integrity",
     },
     "subTranslated": {
         "슬픔": "Sorrow",
@@ -26,7 +76,7 @@ const revelationData = {
         "헛수고": "Futility",
         "실망": "Despair",
         "우려": "Worry",
-        "화해": "Reconcilation",
+        "화해": "Reconciliation",
         "진리": "Truth",
         "주권": "Control",
         "방해": "Ruin",
@@ -49,44 +99,44 @@ const revelationData = {
     "main": {
         "Breakthrough" : ["Sorrow","Change"],
         "Hope" : ["Labor","Fixation"],
-        "Creation": ["Worry","Reconcilation"],
-        "Enlightenment": ["Truth","Control","Ruin"],
-        "Journey": ["Control","Prosperity","Ruin"],
+        "Creation": ["Worry","Reconciliation"],
+        "Awareness": ["Truth","Control","Ruin"],
+        "Departure": ["Control","Prosperity","Ruin"],
         "Growth": ["Opulence","Renewal","Power"],
         "Wisdom": ["Oppression","Pleasure","Virtue"],
-        "Devotion": ["Opulence","Courage","Love"],
+        "Meditation": ["Opulence","Courage","Love"],
         "Faith": ["Peace","Love","Futility"],
         "Trust": ["Renewal","Power","Prosperity"],
         "Harmony": ["Victory","Power","Truth"],
-        "Resolution": ["Virtue","Labor","Prudence"],
+        "Resolve": ["Virtue","Labor","Prudence"],
         "Acceptance": ["Peace","Strife","Love"],
         "Freedom": ["Success","Defeat","Despair"],
-        "Authenticity": ["Pleasure","Labor","Fixation"]
+        "Integrity": ["Pleasure","Labor","Fixation"]
     },
     "sub": {
         "Sorrow": ["Breakthrough"],
         "Change": ["Breakthrough"],
-        "Prudence": ["Resolution"],
-        "Fixation": ["Authenticity","Hope"],
+        "Prudence": ["Resolve"],
+        "Fixation": ["Integrity","Hope"],
         "Futility": ["Faith"],
         "Despair": ["Freedom"],
         "Worry": ["Creation"],
-        "Reconcilation": ["Creation"],
-        "Truth": ["Enlightenment","Harmony"],
-        "Control": ["Enlightenment","Journey"],
-        "Ruin": ["Enlightenment","Journey"],
-        "Prosperity": ["Journey","Trust"],
-        "Opulence": ["Growth","Devotion"],
+        "Reconciliation": ["Creation"],
+        "Truth": ["Awareness","Harmony"],
+        "Control": ["Awareness","Departure"],
+        "Ruin": ["Awareness","Departure"],
+        "Prosperity": ["Departure","Trust"],
+        "Opulence": ["Growth","Meditation"],
         "Renewal": ["Growth","Trust"],
         "Power": ["Growth","Trust","Harmony"],
         "Oppression": ["Wisdom"],
-        "Pleasure": ["Wisdom","Authenticity"],
-        "Virtue": ["Wisdom","Resolution"],
-        "Courage": ["Devotion"],
-        "Love": ["Devotion","Faith","Acceptance"],
+        "Pleasure": ["Wisdom","Integrity"],
+        "Virtue": ["Wisdom","Resolve"],
+        "Courage": ["Meditation"],
+        "Love": ["Meditation","Faith","Acceptance"],
         "Peace": ["Faith","Acceptance"],
         "Victory": ["Harmony"],
-        "Labor": ["Resolution","Authenticity","Hope"],
+        "Labor": ["Resolve","Integrity","Hope"],
         "Strife": ["Acceptance"],
         "Success": ["Freedom"],
         "Defeat": ["Freedom"]
@@ -107,7 +157,7 @@ const revelationData = {
             "set4": "Increase own attack by 10% every 6 turns (Enemies and allies turn count for this effect), can be stacked 3 times.",
             "type": ["버프"]
         },
-        "Reconcilation": {
+        "Reconciliation": {
             "set2": "Increases Speed by 6.",
             "set4": "During combat your HP, ATK, DEF increase by 15%.",
             "type": ["버프"]
@@ -232,12 +282,12 @@ const revelationData = {
             "Labor": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
             "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%."
         },
-        "Journey": {
+        "Departure": {
             "Control": "Decrease main target's DEF by 23% for 2 turns after attacking them with a skill.",
             "Prosperity": "Increase all allies' DMG Dealt by 8% for 1 turn when attacking enemies.",
             "Ruin": "Increase ATK by 30% for 3 turns after defeating an enemy."
         },
-        "Enlightenment": {
+        "Awareness": {
             "Control": "Increase all allies' Fire DMG by 6% for 2 turns when you inflict Burn.",
             "Ruin": "Increase ATK by 9% after every hit of damage to enemy with debuffs for 1 turn, up to 3 stacks.",
             "Truth": "Increase DMG Dealt by 12% when attacking enemies inflicted with Elemental Ailments, up to 2 stacks."
@@ -250,7 +300,7 @@ const revelationData = {
         "Harmony": {
             "Truth": "Increase all allies' Nuke DMG by 5% for 2 turns when inflicting Elemental Ailments, each stack is counted independently.",
             "Power": "Increase DMG Bonus by 10% for all allies with the same element, can't be triggered again.",
-            "Victory": "Increase the target's DMG Taken by 12% for 2 turns when triggering the effect of the Revelation 's buff."
+            "Victory": "Increase the target's DMG Taken by 12% for 2 turns when triggering the effect of the Revelation's buff."
         },
         "Growth": {
             "Opulence": "Increase Ice DMG Bonus by 10% for 2 turns when triggering Follow Up, up to 3 stacks.",
@@ -258,15 +308,15 @@ const revelationData = {
             "Power": "Increase the cap of the ATK buff up to 5 stacks."
         },
         "Creation": {
-            "Reconcilation": "At the start of battle, increases the DMG Dealt of the ally with the lowest SPD by 12%, doesn't stack.",
+            "Reconciliation": "At the start of battle, increases the DMG Dealt of the ally with the lowest SPD by 12%, doesn't stack.",
             "Worry": "Increases CRIT DMG by 15%/ 30%/ 45% when you have 100%/ 150%/ 200% SP Recovery."
         },
-        "Authenticity": {
+        "Integrity": {
             "Labor": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 80% of your Healing Bonus.",
             "Fixation": "After using Theurgy, increase all Thieves' DMG Dealt by 10% for 3 turns."
         },
-        "Resolution": {
+        "Resolve": {
             "Virtue": "Increase DMG Bonus by 10%/20%/30% when you reached 6000/9000/12000 HP.",
             "Labor": "When equipped by Navigator Thieves: Decrease the main target's DEF by 10% for 2 turns when inflicting debuffs.",
             "Prudence": "At the start of battle, if your SPD is at the 3rd/4th slot, then additionally increase own ATK by 24%/30%."
@@ -286,7 +336,7 @@ const revelationData = {
             "Success": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
             "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%."
         },
-        "Devotion": {
+        "Meditation": {
             "Opulence": "Increase Follow Up CRIT DMG by 50%.",
             "Courage": "Increase Physical and Electric DMG by 12%. Increase the effect to 24% when there's only 1 enemy.",
             "Love": "Increase Healing Effect by 28% for 2 turns after landing a Crit."
@@ -299,50 +349,3 @@ const revelationData = {
     }
 };
 
-// 한국어 → 영어 매핑
-const mapping_en = {
-    // 메인 계시
-    "돌파": "Breakthrough",
-    "희망": "Hope",
-    "창조": "Creation",
-    "깨달음": "Enlightenment",
-    "여정": "Journey",
-    "성장": "Growth",
-    "지혜": "Wisdom",
-    "전념": "Devotion",
-    "신념": "Faith",
-    "신뢰": "Trust",
-    "조화": "Harmony",
-    "결심": "Resolution",
-    "수락": "Acceptance",
-    "자유": "Freedom",
-    "진정성": "Authenticity",
-    
-    // 서브 계시
-    "슬픔": "Sorrow",
-    "변화": "Change",
-    "신중": "Prudence",
-    "고집": "Fixation",
-    "헛수고": "Futility",
-    "실망": "Despair",
-    "우려": "Worry",
-    "화해": "Reconcilation",
-    "진리": "Truth",
-    "주권": "Control",
-    "방해": "Ruin",
-    "풍요": "Prosperity",
-    "화려": "Opulence",
-    "변환": "Renewal",
-    "힘": "Power",
-    "억압": "Oppression",
-    "환희": "Pleasure",
-    "미덕": "Virtue",
-    "용맹": "Courage",
-    "사랑": "Love",
-    "평화": "Peace",
-    "승리": "Victory",
-    "직책": "Labor",
-    "분쟁": "Strife",
-    "개선": "Success",
-    "좌절": "Defeat"
-}; 

@@ -306,10 +306,10 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
                 count_unit: "개"
             },
             en: {
-                language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
+                language_notice: "🌍 Some translations may be inaccurate.\nIt may contain content that hasn't been released yet.",
                 nav_home: "Home",
                 nav_current: "Personas",
-                page_title: "Main Personas",
+                page_title: "Core Personas",
                 filtered_count: "Total",
                 search_placeholder: "Search personas...",
                 filter_element: "Element",
@@ -319,7 +319,7 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
                 count_unit: ""
             },
             jp: {
-                language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
+                language_notice: "🌍 一部の翻訳が不正確な場合があります。\nまだリリースされていないコンテンツが含まれている可能性があります。",
                 nav_home: "ホーム",
                 nav_current: "ペルソナ",
                 page_title: "主要ペルソナ",
@@ -597,6 +597,15 @@ description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
                             // 스킬 이름과 설명도 언어별로 번역 (현재는 한국어만 있으므로 그대로 사용)
                             let skillName = skill.name;
                             let skillDescription = skillInfo.description;
+                            
+                            // 언어별 스킬 이름과 설명 적용
+                            if (currentLang === 'en') {
+                                skillName = skillInfo.name_en || skill.name;
+                                skillDescription = skillInfo.description_en || skillInfo.description;
+                            } else if (currentLang === 'jp') {
+                                skillName = skillInfo.name_jp || skill.name;
+                                skillDescription = skillInfo.description_jp || skillInfo.description;
+                            }
                             
                             return `
                                 <li data-priority="${skill.priority}">

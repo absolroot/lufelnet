@@ -1,4 +1,4 @@
-const APP_VERSION = '1.8.8';  // 현재 앱 버전
+const APP_VERSION = '1.9.1';  // 현재 앱 버전
 
 class VersionChecker {
     static check() {
@@ -69,15 +69,43 @@ class VersionChecker {
     }
 
     static showUpdateNotification(oldVersion, newVersion) {
+        // 현재 언어 확인
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        // 언어별 텍스트 정의
+        const i18nTexts = {
+            kr: {
+                title: "✨ 업데이트 안내",
+                message: `새로운 버전이 적용되었습니다. (v${oldVersion} → v${newVersion})`,
+                reload: "새로고침",
+                close: "닫기"
+            },
+            en: {
+                title: "✨ Update Notice",
+                message: `A new version has been applied. (v${oldVersion} → v${newVersion})`,
+                reload: "Refresh",
+                close: "Close"
+            },
+            jp: {
+                title: "✨ アップデート案内",
+                message: `新しいバージョンが適用されました。(v${oldVersion} → v${newVersion})`,
+                reload: "更新",
+                close: "閉じる"
+            }
+        };
+        
+        // 현재 언어에 맞는 텍스트 선택 (없으면 한국어)
+        const texts = i18nTexts[currentLang] || i18nTexts['kr'];
+        
         const notification = document.createElement('div');
         notification.className = 'update-notification';
         notification.innerHTML = `
             <div class="update-content">
-                <h3>✨ 업데이트 안내</h3>
-                <p>새로운 버전이 적용되었습니다. (v${oldVersion} → v${newVersion})</p>
+                <h3>${texts.title}</h3>
+                <p>${texts.message}</p>
                 <div class="update-content-buttons">
-                    <button id="update-reload-btn">새로고침</button>
-                    <button id="update-close-btn">닫기</button>
+                    <button id="update-reload-btn">${texts.reload}</button>
+                    <button id="update-close-btn">${texts.close}</button>
                 </div>
             </div>
         `;

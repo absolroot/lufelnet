@@ -545,18 +545,15 @@ class Navigation {
         const footerTranslations = {
             kr: {
                 disclaimer: "※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.",
-                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　",
-                reportLink: "제보 및 요청"
+                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　"
             },
             en: {
                 disclaimer: "※ LufelNet is an unofficial Persona 5X information site created by individuals. The trademarks and copyrights of game content and materials belong to SEGA·ATLUS·Perfect World Games.",
-                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　",
-                reportLink: "Report & Request"
+                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　"
             },
             jp: {
                 disclaimer: "※ ルフェルネットは個人が作成した非公式ペルソナ5X情報提供サイトで、ゲームのコンテンツと素材の商標と著作権はSEGA·ATLUS·Perfect World Gamesに帰属します。",
-                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　",
-                reportLink: "情報提供・リクエスト"
+                contact: "✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@Root　"
             }
         };
         
@@ -566,16 +563,12 @@ class Navigation {
         // Footer 요소들 업데이트
         const disclaimerElement = document.getElementById('footer-disclaimer');
         const contactElement = document.getElementById('footer-contact');
-        const reportLinkElement = document.getElementById('footer-report-link');
         
         if (disclaimerElement) {
             disclaimerElement.textContent = translation.disclaimer;
         }
         if (contactElement) {
             contactElement.textContent = translation.contact;
-        }
-        if (reportLinkElement) {
-            reportLinkElement.textContent = translation.reportLink;
         }
     }
 }

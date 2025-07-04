@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-5862324369257695">
   
-  
 <!-- 모바일에서는 자동 광고 스크립트 로드 안함 -->
 <script>
   if (window.innerWidth > 768) { // 데스크탑 전용
-    document.write('<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695" crossorigin="anonymous"><\/script>');
+    const adScript = document.createElement('script');
+    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+    adScript.async = true;
+    adScript.setAttribute("data-ad-client", "ca-pub-5862324369257695");
+    document.head.appendChild(adScript);
   }
 </script>
 

@@ -689,11 +689,9 @@ alternate_urls:
             cardsContainer.appendChild(detailContainer);
 
             // 10개의 카드마다 광고 삽입
-            if ((index + 1) % 10 === 0 && index < sortedPersonas.length - 1) {
+            if (index === 9) {
                 const adContainer = document.createElement('div');
                 adContainer.className = 'ad-container';
-                adContainer.style.width = '100%';
-                adContainer.style.margin = '20px 0';
 
                 // 광고 ins 태그만 동적으로 추가
                 const ins = document.createElement('ins');
@@ -712,7 +710,7 @@ alternate_urls:
                     if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
                         window.adsbygoogle.push({});
                     }
-                }, 0);
+                }, 200);
             }
 
             // Initialize tooltips

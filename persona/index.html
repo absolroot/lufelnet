@@ -341,6 +341,18 @@ alternate_urls:
 </div>
 
 
+<!-- 모바일에서는 자동 광고 스크립트 로드 안함 -->
+<script>
+    if (window.innerWidth > 768) { // 데스크탑 전용
+      const adScript = document.createElement('script');
+      adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      adScript.async = true;
+      adScript.setAttribute("data-ad-client", "ca-pub-5862324369257695");
+      document.head.appendChild(adScript);
+    }
+</script>
+
+
 <script>
     // 다국어 지원 함수
     async function updateLanguageContent() {

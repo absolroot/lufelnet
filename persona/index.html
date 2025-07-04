@@ -705,6 +705,8 @@ alternate_urls:
                 const adIns = document.createElement('ins');
                 adIns.className = 'adsbygoogle';
                 adIns.style.display = 'block';
+                adIns.style.width = '100%';
+                adIns.style.height = 'auto';
                 adIns.dataset.adFormat = 'fluid';
                 adIns.dataset.adLayoutKey = '-er+5f+66-dn+4y';
                 adIns.dataset.adClient = 'ca-pub-5862324369257695';
@@ -715,6 +717,7 @@ alternate_urls:
                 pushScript.textContent = `
                     try {
                         (adsbygoogle = window.adsbygoogle || []).push({
+                            google_ad_client: "ca-pub-5862324369257695",
                             enable_page_level_ads: true,
                             onerror: function() {
                                 console.log('AdSense 광고 로딩 실패');

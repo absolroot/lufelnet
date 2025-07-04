@@ -690,8 +690,6 @@ alternate_urls:
 
             // 10개의 카드마다 광고 삽입
             if (index === 9) {
-                const adContainer = document.createElement('div');
-                adContainer.className = 'ad-container';
 
                 // 광고 ins 태그만 동적으로 추가
                 const ins = document.createElement('ins');
@@ -703,7 +701,6 @@ alternate_urls:
                 ins.setAttribute('data-ad-slot', '6110222512');
 
                 adContainer.appendChild(ins);
-                cardsContainer.appendChild(adContainer);
 
                 // 광고 스크립트 실행 (adsbygoogle 배열이 준비된 후에)
                 setTimeout(() => {

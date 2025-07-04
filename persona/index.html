@@ -703,7 +703,14 @@ alternate_urls:
                          data-ad-client="ca-pub-5862324369257695"
                          data-ad-slot="6110222512"></ins>
                     <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
+                         (adsbygoogle = window.adsbygoogle || []).push({enable_page_level_ads: true,
+                            onerror: function() {
+                                console.log('AdSense 광고 로딩 실패');
+                            },
+                            onload: function() {
+                                console.log('AdSense 광고 로딩 성공');
+                            }
+                         });
                     <\/script>
                 `;
                 cardsContainer.appendChild(adContainer);

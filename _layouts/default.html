@@ -7,6 +7,79 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695"
   crossorigin="anonymous"></script> 
   
+  <!-- 광고 차단 감지 스타일 -->
+  <!--
+  <style>
+    #adblock-notice {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .adblock-notice-content {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .adblock-notice-content h2 {
+      margin: 0 0 20px 0;
+      color: #fff;
+      font-size: 1.5em;
+    }
+    
+    .adblock-notice-content p {
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .adblock-notice-content button {
+      background: #e60012;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    
+    .adblock-notice-content button:hover {
+      background: #ff1a1a;
+    }
+
+    .adblock-notice-content .refresh-notice {
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    body.adblock-detected {
+      overflow: hidden;
+    }
+
+    .container.blurred {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
+  -->
+  
   <!-- 지역별 메타태그 동적 생성 스크립트 -->
   <script src="{{ site.baseurl }}/assets/js/geo-meta.js?v={{ site.time | date: '%s' }}" defer></script>
   
@@ -115,6 +188,101 @@
   </script>
 </head>
 <body>
+  <!-- 광고 차단 알림 -->
+  <!--
+  <div id="adblock-notice">
+    <div class="adblock-notice-content">
+      <h2>광고 차단이 감지되었습니다</h2>
+      <p>루페르넷은 광고 수익으로 운영되는 무료 사이트입니다.<br>사이트를 이용하시려면 광고 차단을 해제해 주세요.</p>
+      <button onclick="reloadPage()">새로고침</button>
+      <p class="refresh-notice">광고 차단을 해제하신 후 새로고침을 눌러주세요.</p>
+    </div>
+  </div>
+  -->
+
+  <!-- 광고 차단 감지 스크립트 -->
+  <!--
+  <script>
+    function detectAdblock() {
+      let adBlockEnabled = false;
+      
+      // AdSense 스크립트 로드 실패 감지
+      const adScript = document.createElement('script');
+      adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695';
+      adScript.async = true;
+      adScript.onerror = function() {
+        console.log('AdBlock detected: Script load failed');
+        adBlockEnabled = true;
+        showBlockedNotice();
+      };
+      document.head.appendChild(adScript);
+
+      // 백업 감지 방법
+      window.setTimeout(function() {
+        // AdSense 객체 확인
+        if (typeof adsbygoogle === 'undefined') {
+          console.log('AdBlock detected: AdSense object undefined');
+          adBlockEnabled = true;
+        }
+
+        // 테스트 광고 요소 확인
+        const testAd = document.createElement('div');
+        testAd.innerHTML = '&nbsp;';
+        testAd.className = 'adsbygoogle';
+        document.body.appendChild(testAd);
+
+        if (testAd.offsetHeight === 0 || 
+            testAd.clientHeight === 0 || 
+            getComputedStyle(testAd).display === 'none' || 
+            getComputedStyle(testAd).visibility === 'hidden') {
+          console.log('AdBlock detected: Test ad element blocked');
+          adBlockEnabled = true;
+        }
+        
+        testAd.remove();
+
+        // 추가 감지: ERR_BLOCKED_BY_CLIENT 에러 확인
+        const testImg = new Image();
+        testImg.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+        testImg.onerror = function(err) {
+          if (err && err.target && err.target.error && err.target.error.message) {
+            if (err.target.error.message.includes('ERR_BLOCKED_BY_CLIENT')) {
+              console.log('AdBlock detected: ERR_BLOCKED_BY_CLIENT error');
+              adBlockEnabled = true;
+              showBlockedNotice();
+            }
+          }
+        };
+
+        if (adBlockEnabled) {
+          showBlockedNotice();
+        }
+      }, 500);
+    }
+
+    function showBlockedNotice() {
+      if (document.body.classList.contains('adblock-detected')) return;
+      
+      document.getElementById('adblock-notice').style.display = 'flex';
+      document.body.classList.add('adblock-detected');
+      document.querySelector('.container').classList.add('blurred');
+      
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Development environment detected, skipping adblock enforcement');
+        return;
+      }
+    }
+
+    function reloadPage() {
+      window.location.reload();
+    }
+
+    window.addEventListener('load', function() {
+      setTimeout(detectAdblock, 100);
+    });
+  </script>
+  -->
+
   <!-- 네비게이션 컨테이너 -->
   <div class="container">
     <div id="nav-container"></div>
@@ -134,8 +302,8 @@
   </div>
   <div class="footer-container">
     <div class="footer-text">
-        <p id="footer-disclaimer">※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.</p>
-        <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 discord : absolroot　@루트　</span></p>
+        <p id="footer-disclaimer">{{ site.data.i18n[page.lang].footer_disclaimer }}</p>
+        <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/x3fvdQtBVg" target="_blank" style="color: #fff; text-decoration: underline;">discord.gg/x3fvdQtBVg</a>　@{{ site.data.i18n[page.lang].footer_contact_name }}</span></p>
         <p></p>
     </div>
     

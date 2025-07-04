@@ -985,6 +985,7 @@ body {
       font-size: 12px;
       white-space: nowrap;  /* 텍스트 줄바꿈 방지 */
       height: 33px;
+      width: 100px;
     }
 
     /* 모바일 버튼 아이콘 */
@@ -997,7 +998,8 @@ body {
 
     /* toggle-ui 버튼 아이콘 */
     .mobile-buttons .toggle-ui-btn::before {
-      content: "🕶️";
+      font-size: 12px;
+      content: "🕶️ 편집 UI 숨김";
       background: none !important;  /* 배경 제거 */
       box-shadow: none !important;  /* 그림자 제거 */
       border: none !important;      /* 테두리 제거 */
@@ -1008,7 +1010,8 @@ body {
     }
 
     .mobile-buttons .toggle-ui-btn.active::before {
-      content: "🔍";
+      font-size: 12px;
+      content: "🔍 편집 UI 표시";
       background: none !important;  /* 배경 제거 */
       box-shadow: none !important;  /* 그림자 제거 */
       border: none !important;      /* 테두리 제거 */

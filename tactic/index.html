@@ -317,7 +317,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         <!-- turn area (6 turns) -->
         <div class="mobile-buttons">
           <button class="mobile-lock-btn" onclick="toggleTurnsLock()">순서 이동 잠금</button>
-          <button class="toggle-ui-btn" onclick="toggleUI()">UI 숨김</button>
+          <button class="toggle-ui-btn" onclick="toggleUI()"></button>
         </div>
         <div id="turns">
           <!-- existing turn content -->
@@ -387,11 +387,25 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         Navigation.load('tactic');
         VersionChecker.check();
 
+        function isMobile() {
+          return window.innerWidth < 1200;
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         const sharedData = urlParams.get('data');
         
         if (sharedData) {
           const decodedData = processSharedData(sharedData);
+
+          if (isMobile()) {
+            const lockBtn = document.querySelector('.mobile-lock-btn');
+            const turnsContainer = document.getElementById('turns');
+            if (lockBtn && turnsContainer) {
+              lockBtn.classList.add('active');
+              turnsContainer.classList.add('turns-locked');
+              localStorage.setItem('turnsLocked', true);
+            }
+          }
           
           // If shared data, set UI to hidden state by default
           document.querySelector('.container').classList.add('hide-ui');

@@ -740,18 +740,23 @@ alternate_urls:
 
             // 10개의 카드마다 광고 삽입
             
-            if ((index + 1) % 10 === 0 && index < sortedPersonas.length - 1) {
+            //if ((index + 1) % 10 === 0 && index < sortedPersonas.length - 1) 
+            if (index === 9)
+            {
                 const adContainer = document.createElement('div');
                 adContainer.className = 'ad-container';
-                adContainer.style.minHeight = '150px';
+                adContainer.style.minHeight = '240px';
                 adContainer.style.overflow = 'visible';
                 adContainer.style.width = '100%';
-                adContainer.style.margin = '20px 0';
+                adContainer.style.margin = '20px 0 10px 0';
+                adContainer.style.padding = '0px 20px';
+                adContainer.style.borderRadius = '10px';
 
                 // 광고 ins 태그만 동적으로 추가
                 const ins = document.createElement('ins');
                 ins.className = 'adsbygoogle';
                 ins.style.display = 'block';
+                ins.style.minHeight = '150px';
                 ins.setAttribute('data-ad-format', 'fluid');
                 ins.setAttribute('data-ad-layout-key', '-er+5f+66-dn+4y');
                 ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
@@ -762,10 +767,12 @@ alternate_urls:
 
                 // 광고 스크립트 실행 (adsbygoogle 배열이 준비된 후에)
                 setTimeout(() => {
-                    if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
-                        window.adsbygoogle.push({});
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (e) {
+                        console.error("AdSense push failed:", e);
                     }
-                }, 200);
+                }, 300);
             }
 
             // Initialize tooltips
@@ -1048,9 +1055,7 @@ alternate_urls:
     }
 </script>
 
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
 
 <style>
 .explain-container {

@@ -312,7 +312,6 @@ alternate_urls:
         }
     </style>
     <div class="ad-container" style="width: calc(100% - 40px); margin: 20px 0 10px 0; padding: 0px 20px; max-height: 240px; overflow: hidden; border-radius: 10px;">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695" crossorigin="anonymous"></script>
       <ins class="adsbygoogle"
            style="display:block; border-radius: 10px;"
            data-ad-format="fluid"
@@ -740,8 +739,8 @@ alternate_urls:
             cardsContainer.appendChild(detailContainer);
 
             // 10개의 카드마다 광고 삽입
-            /*
-            if (index === 9) {
+            
+            if ((index + 1) % 10 === 0 && index < sortedPersonas.length - 1) {
                 const adContainer = document.createElement('div');
                 adContainer.className = 'ad-container';
                 adContainer.style.minHeight = '150px';
@@ -767,7 +766,7 @@ alternate_urls:
                         window.adsbygoogle.push({});
                     }
                 }, 200);
-            }*/
+            }
 
             // Initialize tooltips
             addTooltips();

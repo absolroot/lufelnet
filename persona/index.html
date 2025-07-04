@@ -708,9 +708,11 @@ alternate_urls:
                 cardsContainer.appendChild(adContainer);
 
                 // 광고 스크립트 실행 (adsbygoogle 배열이 준비된 후에)
-                if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
-                    window.adsbygoogle.push({});
-                }
+                setTimeout(() => {
+                    if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
+                        window.adsbygoogle.push({});
+                    }
+                }, 0);
             }
 
             // Initialize tooltips

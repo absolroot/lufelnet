@@ -946,12 +946,6 @@ redirect_from:
             }
         }
 
-        // 검색 기능 구현
-        const searchInput = document.getElementById('characterSearch');
-        const dropdown = document.getElementById('searchDropdown');
-        const cards = document.querySelectorAll('.card');
-        const characterNames = sortedCharacters;
-
         // 별칭 매핑
         const nicknameMap = {
             '유이' : 'YUI',
@@ -973,6 +967,10 @@ redirect_from:
             '3주' : '유키 마코토'
         };
 
+        // 검색 기능 구현
+        const searchInput = document.getElementById('characterSearch');
+        const dropdown = document.getElementById('searchDropdown');
+
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 const searchValue = e.target.value.toLowerCase();
@@ -980,25 +978,43 @@ redirect_from:
                     dropdown.innerHTML = '';
                     
                     if (searchValue.length > 0) {
-                        const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
-                            nickname.toLowerCase().includes(searchValue)
-                        );
+                        // characterData가 로드되었는지 확인
+                        if (!window.characterData) {
+                            console.error('Character data not loaded yet');
+                            return;
+                        }
 
-                        const matches = characterNames.filter(name => {
-                            const characterName = characterData[name].name;
-                            return name.toLowerCase().includes(searchValue) ||
-                                   characterName.toLowerCase().includes(searchValue) ||
-                                   (nicknameMatch && characterName === nicknameMatch[1]);
+                        // sortedCharacters 배열에서 검색
+                        const matches = sortedCharacters.filter(characterName => {
+                            if (!window.characterData[characterName]) {
+                                console.warn(`No data found for character: ${characterName}`);
+                                return false;
+                            }
+
+                            const charData = window.characterData[characterName];
+                            const displayName = charData.name ? charData.name.toLowerCase() : '';
+                            const originalName = characterName.toLowerCase();
+                            
+                            // 별칭 매칭도 포함
+                            const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                                nickname.toLowerCase().includes(searchValue) && realName === charData.name
+                            );
+
+                            return displayName.includes(searchValue) || 
+                                   originalName.includes(searchValue) ||
+                                   nicknameMatch !== undefined;
                         });
 
                         if (matches.length > 0) {
                             dropdown.style.display = 'block';
                             matches.forEach(name => {
+                                if (!window.characterData[name]) return;
+                                
                                 const div = document.createElement('div');
                                 div.className = 'dropdown-item';
-                                div.textContent = characterData[name].name;
+                                div.textContent = window.characterData[name].name;
                                 div.addEventListener('click', () => {
-                                    searchInput.value = characterData[name].name;
+                                    searchInput.value = window.characterData[name].name;
                                     dropdown.style.display = 'none';
                                     filterBySearch(name.toLowerCase());
                                 });
@@ -1019,25 +1035,35 @@ redirect_from:
 
         // Search filtering function
         function filterBySearch(searchValue) {
+            if (!window.characterData) {
+                console.error('Character data not loaded yet');
+                return;
+            }
+
             let visibleCount = 0;
+            const cards = document.querySelectorAll('.card');
             
             cards.forEach(card => {
                 const nameText = card.querySelector('.name-text');
                 if (!nameText) return;
                 
                 const displayName = nameText.textContent;
+                if (!displayName) return;
+                
                 const displayNameLower = displayName.toLowerCase();
                 
-                const characterKey = Object.keys(characterData).find(key => 
-                    characterData[key].name === displayName
+                // characterData에서 해당 캐릭터 찾기
+                const characterKey = sortedCharacters.find(name => 
+                    window.characterData[name] && window.characterData[name].name === displayName
                 );
 
+                // 별칭 매칭 확인
                 const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
                     nickname.toLowerCase().includes(searchValue) && realName === displayName
                 );
                 
                 const shouldShow = searchValue === '' || 
-                    characterKey?.toLowerCase().includes(searchValue) || 
+                    (characterKey && characterKey.toLowerCase().includes(searchValue)) || 
                     displayNameLower.includes(searchValue) ||
                     nicknameMatch !== undefined;
                 
@@ -1045,9 +1071,11 @@ redirect_from:
                 if (shouldShow) visibleCount++;
             });
             
+            // 검색 결과 수 업데이트
             if (searchCount) {
                 const countText = window.i18nFilteredCount || '전체';
-                searchCount.textContent = `${countText} ${visibleCount}명`;
+                const countUnit = window.i18nCountUnit || '명';
+                searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
             }
         }
     } // initializePageContent 함수 종료

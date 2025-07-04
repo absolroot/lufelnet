@@ -265,7 +265,7 @@ alternate_urls:
                 filter_effect: "Effect",
                 effect_buff: "Buff",
                 effect_debuff: "Debuff",
-                effect_additional: "Additional",
+                effect_additional: "Follow-up",
                 effect_hl: "HL 25%",
                 effect_heal: "Heal",
                 count_unit: "",
@@ -484,7 +484,10 @@ alternate_urls:
             nameImg.className = 'name-img';
             
             imgContainer.appendChild(img);
-            imgContainer.appendChild(nameImg);
+            
+            if(currentLang == 'kr') {
+                imgContainer.appendChild(nameImg);
+            }
             
             // Info container
             const infoContainer = document.createElement('div');

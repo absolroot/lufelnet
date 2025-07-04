@@ -205,6 +205,37 @@ const penetrateData = [
         note: "방사선 보유 적 원소 이상 3개 이상"
     },
     {
+        id: "ichigo1",
+        charName: "이치고",
+        charImage: "이치고.webp",
+        type: "심상",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/item-mind_stat2.png`,
+        skillName: "진급강화",
+        options: [],
+        value: 7.5,
+        duration: "-",
+        note: ""
+    },
+    {
+        id: "sanada1",
+        charName: "사나다",
+        charImage: "사나다.webp",
+        type: "의식0",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "전투의 이유",
+        options: ["의식0","의식6"],
+        values: {
+            "의식0": 12.0,
+            "의식6": 16.0
+        },
+        defaultOption: "의식0",
+        value: 12.0,
+        duration: "-",
+        note: "투지 중첩 당 4%"
+    },
+    {
         id: "yukimakoto1",
         charName: "유키 마코토",
         charImage: "유키 마코토.webp",
@@ -433,6 +464,19 @@ const defenseCalcData = [
         note: ""
     },
     {
+        id: "wonder-weapon1",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/wonder-weapon/망령의 저주.webp`,
+        skillName: "망령의 저주",
+        options: [],
+        value: 25.0,
+        duration: "3턴",
+        note: ""
+    },
+    {
         id: 3,
         charName: "",
         charImage: "",
@@ -581,6 +625,24 @@ const defenseCalcData = [
         value: 25.0,
         duration: "1턴",
         note: "축복 속성 한정"
+    },
+    {
+        id: "ichigo2",
+        charName: "이치고",
+        charImage: "이치고.webp",
+        type: "의식1",
+        target: "단일",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+        skillName: "만약 망가진다면",
+        options: ["의식1","의식6"],
+        values: {
+            "의식1": 30.0,
+            "의식6": 45.0
+        },
+        defaultOption: "의식6",
+        value: 45.0,
+        duration: "",
+        note: "원념 중첩 당 3%"
     },
     {
         id: "mio1",

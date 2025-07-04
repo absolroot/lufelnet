@@ -529,23 +529,13 @@ alternate_urls:
         
         // 언어별 메뉴 제한
         if (currentLang === 'en' || currentLang === 'jp') {
-            // 택틱 메뉴 숨기기
-            const tacticCard = document.getElementById('menu-tactic-card');
-            if (tacticCard) {
-                tacticCard.style.display = 'none';
-            }
-            
             // Persona 메뉴 활성화 (오버레이 제거)
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
-            // Revelations 메뉴에만 오버레이 추가
-            // addComingSoonOverlay('menu-revelations-card', currentLang === 'en' ? 'Coming Soon' : '準備中');
             
-            // 택틱 대장간 섹션 숨기기
-            const postsContainer = document.getElementById('posts-container');
-            if (postsContainer) {
-                postsContainer.style.display = 'none';
-            }
+            // 택틱 메뉴에 오버레이 추가
+            const tacticOverlayText = currentLang === 'en' ? 'Coming Soon' : '準備中';
+            addComingSoonOverlay('menu-tactic-card', tacticOverlayText);
             
             // main-content 아래 모든 섹션 숨기기
             const middleContainer = document.querySelector('.middle-container');
@@ -557,6 +547,48 @@ alternate_urls:
             if (guidesContainer) {
                 guidesContainer.style.display = 'none';
             }
+            
+            // 택틱 대장간 섹션은 표시하되 오버레이 추가
+            const postsContainer = document.getElementById('posts-container');
+            if (postsContainer) {
+                postsContainer.style.display = 'block';
+                postsContainer.style.position = 'relative';
+                
+                // 기존 오버레이 제거
+                const existingOverlay = postsContainer.querySelector('.coming-soon-overlay');
+                if (existingOverlay) {
+                    existingOverlay.remove();
+                }
+                
+                // 새 오버레이 추가
+                const overlay = document.createElement('div');
+                overlay.className = 'coming-soon-overlay';
+                overlay.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    z-index: 10;
+                    border-radius: inherit;
+                    cursor: not-allowed;
+                `;
+                overlay.textContent = tacticOverlayText;
+                postsContainer.appendChild(overlay);
+                
+                // 링크 비활성화
+                const links = postsContainer.querySelectorAll('a');
+                links.forEach(link => {
+                    link.style.pointerEvents = 'none';
+                });
+            }
         } else {
             // 한국어인 경우 모든 메뉴 활성화
             const tacticCard = document.getElementById('menu-tactic-card');
@@ -567,11 +599,22 @@ alternate_urls:
             // 오버레이 제거
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
+            removeComingSoonOverlay('menu-tactic-card');
             
             // 택틱 대장간 섹션 표시
             const postsContainer = document.getElementById('posts-container');
             if (postsContainer) {
                 postsContainer.style.display = 'block';
+                // 오버레이 제거
+                const overlay = postsContainer.querySelector('.coming-soon-overlay');
+                if (overlay) {
+                    overlay.remove();
+                }
+                // 링크 활성화
+                const links = postsContainer.querySelectorAll('a');
+                links.forEach(link => {
+                    link.style.pointerEvents = 'auto';
+                });
             }
             
             // main-content 아래 모든 섹션 표시

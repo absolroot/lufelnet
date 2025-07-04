@@ -464,7 +464,7 @@ alternate_urls:
 
         const sortedPersonas = Object.keys(personaData)
         
-        sortedPersonas.forEach(personaName => {
+        sortedPersonas.forEach((personaName, index) => {
             const detailContainer = document.createElement('div');
             detailContainer.className = 'persona-detail-container';
             // Add data attributes for filtering
@@ -687,6 +687,27 @@ alternate_urls:
             detailContainer.appendChild(infoSection);
             
             cardsContainer.appendChild(detailContainer);
+
+            // 10개의 카드마다 광고 삽입
+            if ((index + 1) % 10 === 0 && index < sortedPersonas.length - 1) {
+                const adContainer = document.createElement('div');
+                adContainer.className = 'ad-container';
+                adContainer.style.width = '100%';
+                adContainer.style.margin = '20px 0';
+                adContainer.innerHTML = `
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695" crossorigin="anonymous"><\/script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-fb+5k+67-cb+t"
+                         data-ad-client="ca-pub-5862324369257695"
+                         data-ad-slot="6110222512"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    <\/script>
+                `;
+                cardsContainer.appendChild(adContainer);
+            }
 
             // Initialize tooltips
             addTooltips();

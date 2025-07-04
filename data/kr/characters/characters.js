@@ -86,12 +86,12 @@ const characterData = {
             "LV13+5": false
         },
         "battle_plus_stats": "",
-        "skill1_lv": "",
-        "skill2_lv": "",
-        "skill3_lv": "",
-        "skill4_lv": "",
-        "mind_stats1": "",
-        "mind_stats2": "",
+        "skill1_lv": "MAX!",
+        "skill2_lv": "MAX",
+        "skill3_lv": "MAX!",
+        "skill4_lv": "MAX!",
+        "mind_stats1": "대미지 보너스 16%",
+        "mind_stats2": "관통 7.5%!",
         "mind_skill1": "",
         "mind_skill2": ""
     },

@@ -695,47 +695,21 @@ alternate_urls:
                 adContainer.style.width = '100%';
                 adContainer.style.margin = '20px 0';
                 
-                // AdSense 스크립트 로드
-                const adScript = document.createElement('script');
-                adScript.async = true;
-                adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695';
-                adScript.crossOrigin = 'anonymous';
-                
-                // 광고 컨테이너
-                const adIns = document.createElement('ins');
-                adIns.className = 'adsbygoogle';
-                adIns.style.display = 'block';
-                adIns.style.width = '100%';
-                adIns.style.height = 'auto';
-                adIns.dataset.adFormat = 'fluid';
-                adIns.dataset.adLayoutKey = '-er+5f+66-dn+4y';
-                adIns.dataset.adClient = 'ca-pub-5862324369257695';
-                adIns.dataset.adSlot = '6110222512';
-                
-                // 광고 푸시 스크립트
-                const pushScript = document.createElement('script');
-                pushScript.textContent = `
-                    try {
-                        (adsbygoogle = window.adsbygoogle || []).push({
-                            google_ad_client: "ca-pub-5862324369257695",
-                            enable_page_level_ads: true,
-                            onerror: function() {
-                                console.log('AdSense 광고 로딩 실패');
-                            },
-                            onload: function() {
-                                console.log('AdSense 광고 로딩 성공');
-                            }
-                        });
-                    } catch(e) {
-                        console.error('AdSense 에러:', e);
-                    }
+                // 원본 AdSense 코드를 그대로 동적 생성
+                const adCode = `
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695" crossorigin="anonymous"><\/script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-er+5f+66-dn+4y"
+                         data-ad-client="ca-pub-5862324369257695"
+                         data-ad-slot="6110222512"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    <\/script>
                 `;
                 
-                // 요소들을 컨테이너에 추가
-                adContainer.appendChild(adScript);
-                adContainer.appendChild(adIns);
-                adContainer.appendChild(pushScript);
-                
+                adContainer.innerHTML = adCode;
                 cardsContainer.appendChild(adContainer);
             }
 

@@ -296,16 +296,21 @@ alternate_urls:
 
         @media (max-width: 768px) {
             .ad-container {
-                padding: 0px 0px;
+                padding: 0px 0px !important;
             }
 
             ins.adsbygoogle[data-side-rail-status="displayed"] {
                 display: none !important;
             }
 
+            .adsbygoogle {
+                padding-bottom: 0 !important;
+                background: transparent !important;
+            }
+
         }
     </style>
-    <div class="ad-container" style="width: calc(100% - 40px); margin: 20px 0 10px 0; padding: 0px 20px; overflow: visible; border-radius: 10px;">
+    <div class="ad-container" style="width: calc(100% - 40px); margin: 20px 0 10px 0; padding: 0px 20px; max-height: 150px; overflow: hidden; border-radius: 10px;">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-format="fluid"

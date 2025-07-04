@@ -694,23 +694,23 @@ alternate_urls:
                 adContainer.className = 'ad-container';
                 adContainer.style.width = '100%';
                 adContainer.style.margin = '20px 0';
-                
-                // 원본 AdSense 코드를 그대로 동적 생성
-                const adCode = `
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5862324369257695" crossorigin="anonymous"><\/script>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-format="fluid"
-                         data-ad-layout-key="-er+5f+66-dn+4y"
-                         data-ad-client="ca-pub-5862324369257695"
-                         data-ad-slot="6110222512"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    <\/script>
-                `;
-                
-                adContainer.innerHTML = adCode;
+
+                // 광고 ins 태그만 동적으로 추가
+                const ins = document.createElement('ins');
+                ins.className = 'adsbygoogle';
+                ins.style.display = 'block';
+                ins.setAttribute('data-ad-format', 'fluid');
+                ins.setAttribute('data-ad-layout-key', '-er+5f+66-dn+4y');
+                ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
+                ins.setAttribute('data-ad-slot', '6110222512');
+
+                adContainer.appendChild(ins);
                 cardsContainer.appendChild(adContainer);
+
+                // 광고 스크립트 실행 (adsbygoogle 배열이 준비된 후에)
+                if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
+                    window.adsbygoogle.push({});
+                }
             }
 
             // Initialize tooltips

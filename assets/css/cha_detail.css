@@ -337,7 +337,7 @@ h2{
 .revelation-values {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     grid-auto-flow: column;
     gap: 8px 8px;  
     justify-items: start;  

@@ -37,7 +37,7 @@ class Navigation {
                 tactic: '택틱',
                 tacticMaker: '택틱 메이커',
                 tacticForge: '택틱 대장간',
-                tier: '티어 (beta)',
+                tier: '티어',
                 tierMaker: '티어 메이커',
                 calculator: '계산기',
                 payCalc: '과금 계산기',
@@ -53,7 +53,7 @@ class Navigation {
                 tactic: 'Tactics',
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
-                tier: 'Tier (beta)',
+                tier: 'Tier',
                 tierMaker: 'Tier Maker',
                 calculator: 'Calculator',
                 payCalc: 'Payment Calculator',
@@ -69,7 +69,7 @@ class Navigation {
                 tactic: '戦術',
                 tacticMaker: '戦術メーカー',
                 tacticForge: '戦術鍛冶場',
-                tier: 'ティア (beta)',
+                tier: 'ティア',
                 tierMaker: 'ティアメーカー',
                 calculator: '計算機',
                 payCalc: '課金計算機',
@@ -101,8 +101,8 @@ class Navigation {
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
             kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'about'],
-            en: ['character', 'persona', 'revelations', 'about'],
-            jp: ['character', 'persona', 'revelations', 'about'],
+            en: ['character', 'persona', 'revelations', 'tier', 'about'],
+            jp: ['character', 'persona', 'revelations', 'tier', 'about'],
             cn: ['character', 'about']
         };
 

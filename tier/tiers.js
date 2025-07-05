@@ -139,19 +139,31 @@ const initDefaultTierList = () => {
 };
 
 const loadCharacterImages = () => {
-  const allCharacters = [...characterList.mainParty, ...characterList.supportParty];
+  // 데이터 로딩 확인
+  if (!window.characterData || !window.characterList) {
+    console.error('Character data not loaded yet');
+    return;
+  }
+  
+  const allCharacters = [...window.characterList.mainParty, ...window.characterList.supportParty];
   
   allCharacters.forEach(character => {
     if (character === "원더") return; // 원더 제외
+    
+    // 캐릭터 데이터 존재 확인
+    if (!window.characterData[character]) {
+      console.warn(`Character data not found for: ${character}`);
+      return;
+    }
     
     const img = document.createElement('img');
     img.src = `${BASE_URL}/assets/img/character-half/${character}.webp`;
     img.alt = character;
     img.draggable = true;
-    img.dataset.element = characterData[character].element;
-    img.dataset.position = characterData[character].position;
-    img.dataset.rarity = characterData[character].rarity;
-    img.dataset.tags = characterData[character].tag;
+    img.dataset.element = window.characterData[character].element;
+    img.dataset.position = window.characterData[character].position;
+    img.dataset.rarity = window.characterData[character].rarity;
+    img.dataset.tags = window.characterData[character].tag || '';
     cardsContainer.appendChild(img);
   });
 };
@@ -259,11 +271,39 @@ const initFilters = () => {
   });
 };
 
-loadCharacterImages();
-initDraggables();
-initDefaultTierList();
-initColorOptions();
-initFilters();
+// 티어 메이커 초기화 함수 (전역에서 접근 가능하도록)
+window.initTierMaker = () => {
+  console.log('Initializing tier maker...');
+  
+  // 이미 초기화된 경우 중복 실행 방지
+  if (document.querySelector('.tier')) {
+    console.log('Tier maker already initialized');
+    return;
+  }
+  
+  loadCharacterImages();
+  initDraggables();
+  initDefaultTierList();
+  initColorOptions();
+  initFilters();
+};
+
+// 페이지 로드 시 초기화 시도 (데이터가 없으면 대기)
+const tryInitialize = () => {
+  if (window.characterData && window.characterList) {
+    window.initTierMaker();
+  } else {
+    console.log('Character data not ready, waiting...');
+    setTimeout(tryInitialize, 100);
+  }
+};
+
+// 데이터가 준비되면 초기화 시작
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', tryInitialize);
+} else {
+  tryInitialize();
+}
 
 //* event listeners
 

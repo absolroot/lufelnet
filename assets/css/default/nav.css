@@ -572,3 +572,16 @@
 .discord-link:hover {
     color: inherit;
 }
+
+.privacy-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.privacy-link:visited {
+    color: inherit;
+}
+
+.privacy-link:hover {
+    color: inherit;
+}

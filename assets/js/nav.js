@@ -549,7 +549,8 @@ class Navigation {
             },
             en: {
                 disclaimer: "※ LufelNet is an unofficial Persona 5X information site created by individuals. The trademarks and copyrights of game content and materials belong to SEGA·ATLUS·Perfect World Games.",
-                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/x3fvdQtBVg" target="_blank" class="discord-link">Discord</a>　@Root　`
+                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/x3fvdQtBVg" target="_blank" class="discord-link">Discord</a>　@Root　<a href="https://lufel.net/privacy.html" class="privacy-link">Privacy Policy</a>
+`
             },
             jp: {
                 disclaimer: "※ ルフェルネットは個人が作成した非公式ペルソナ5X情報提供サイトで、ゲームのコンテンツと素材の商標と著作権はSEGA·ATLUS·Perfect World Gamesに帰属します。",

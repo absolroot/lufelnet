@@ -12,7 +12,6 @@ collections:
 
 # build settings
 markdown: kramdown
-permalink: /article/:year/:month/:day/:title/
 
 # 플러그인 설정
 safe: true

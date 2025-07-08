@@ -35,7 +35,7 @@
     background-size: 100% 100%;
     opacity: 0.5;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1; /* 배경 이미지를 더 아래 레이어로 이동 */
 }
 
 .logo-container {
@@ -378,6 +378,7 @@
         width: 100vw;
         right: -100vw;
         left: auto;
+        top: 0;  /* 명시적으로 top 위치 지정 */
         transition: 0.3s ease;
         z-index: 1000;
         padding-top: 60px;
@@ -387,23 +388,30 @@
         padding-left: 0;
         padding-right: 0;
         box-sizing: border-box;
-        height: 100vh; /* viewport height */
-        overflow-y: auto; /* vertical scroll */
+        height: 100vh;
+        overflow-y: auto;
     }
     
-    /* scrollbar visible , background image not cut */
+    /* 배경 이미지 처리 수정 */
     .main-nav::after {
         position: fixed;
         bottom: 0;
-        width: 100%;
+        left: auto;
+        right: -100vw; /* 메뉴와 같이 이동하도록 설정 */
+        width: 100vw;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     .main-nav.active {
         right: 0;
         visibility: visible;
         opacity: 1;
+    }
+
+    .main-nav.active::after {
+        right: 0; /* 메뉴가 활성화될 때 배경도 함께 이동 */
+        opacity: 0.5;
     }
     
     .nav-item {
@@ -417,9 +425,8 @@
         display: none;
     }
     
-    /* hamburger button position */
     .hamburger-btn {
-        right: 20px;  /* right */
+        right: 20px;
     }
 
     .logo-container {
@@ -448,6 +455,8 @@
     width: 100%;
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.3);
+    position: relative; /* 상대 위치 설정 */
+    z-index: 1; /* 언어 선택기를 배경보다 위로 */
 }
 
 /* custom language selector */

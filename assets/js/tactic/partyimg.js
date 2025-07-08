@@ -33,7 +33,7 @@
         if (member.name === "원더") {
           const weaponInput = document.querySelector(".wonder-weapon-input");
           const selectedWeapon = weaponInput.value;
-          if (selectedWeapon && wonderWeapons.includes(selectedWeapon)) {
+          if (selectedWeapon && getWonderWeaponOptions().includes(selectedWeapon)) {
             const weaponImg = document.createElement("img");
             weaponImg.className = "weapon-img";
             weaponImg.src = `${BASE_URL}/assets/img/wonder-weapon/${selectedWeapon}.webp`;
@@ -121,11 +121,61 @@
           const tooltip = document.createElement("div");
           tooltip.className = "persona-tooltip";
           
-          // 툴팁 내용 구성
+          // 현재 언어 감지 함수
+          function getCurrentLanguage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+              return urlLang;
+            }
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+              return savedLang;
+            }
+            return 'kr';
+          }
+
+          // 페르소나 이름 번역 함수
+          function getPersonaDisplayName(personaName) {
+            const currentLang = getCurrentLanguage();
+            if (currentLang === 'kr' || !personaData[personaName]) {
+              return personaName;
+            }
+            
+            const persona = personaData[personaName];
+            if (currentLang === 'en' && persona.name_en) {
+              return persona.name_en;
+            } else if (currentLang === 'jp' && persona.name_jp) {
+              return persona.name_jp;
+            }
+            return personaName;
+          }
+          
+          // 툴팁 내용 구성 (번역 적용)
+          const currentLang = getCurrentLanguage();
           const instinct = personaData[persona]?.instinct;
-          let tooltipText = `${persona}\n본능: ${instinct?.name || ""}\n`;
-          if (instinct?.effects) {
-            tooltipText += "\n" + instinct.effects.join("\n");
+          const displayPersonaName = getPersonaDisplayName(persona);
+          
+          let instinctName = instinct?.name || "";
+          let instinctEffects = instinct?.effects || [];
+          
+          // 본능 이름 번역
+          if (currentLang === 'en' && instinct?.name_en) {
+            instinctName = instinct.name_en;
+          } else if (currentLang === 'jp' && instinct?.name_jp) {
+            instinctName = instinct.name_jp;
+          }
+          
+          // 본능 효과 번역
+          if (currentLang === 'en' && instinct?.effects_en) {
+            instinctEffects = instinct.effects_en;
+          } else if (currentLang === 'jp' && instinct?.effects_jp) {
+            instinctEffects = instinct.effects_jp;
+          }
+          
+          let tooltipText = `${displayPersonaName}\n${instinctName}\n`;
+          if (instinctEffects.length > 0) {
+            tooltipText += "\n" + instinctEffects.join("\n");
           }
           tooltip.textContent = tooltipText;
 

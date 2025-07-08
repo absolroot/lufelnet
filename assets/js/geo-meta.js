@@ -73,31 +73,31 @@
     
     // 최종 언어 결정
     function getFinalLanguage() {
-        return new Promise(async (resolve) => {
-            // 1. URL 파라미터 우선 체크
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlLang = urlParams.get('lang');
-            if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
-                resolve(urlLang);
-                return;
+        // 1. URL 파라미터 우선 체크
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+            return urlLang;
+        }
+        
+        // 2. localStorage에 저장된 언어 설정 체크
+        const savedLang = localStorage.getItem('preferred_language');
+        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+            return savedLang;
+        }
+        
+        // 3. IP 기반 지역 감지
+        try {
+            const ipBasedLang = detectRegionByIP();
+            if (ipBasedLang) {
+                return ipBasedLang;
             }
-            
-            // 2. localStorage에 저장된 언어 설정 체크
-            const savedLang = localStorage.getItem('preferred_language');
-            if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
-                resolve(savedLang);
-                return;
-            }
-            
-            // 3. IP 기반 지역 감지
-            try {
-                const ipBasedLang = await detectRegionByIP();
-                resolve(ipBasedLang);
-            } catch (error) {
-                // 4. 기본값
-                resolve('kr');
-            }
-        });
+        } catch (error) {
+            console.error('IP 기반 언어 감지 실패:', error);
+        }
+        
+        // 4. 기본값
+        return 'kr';
     }
     
     // 메타태그 업데이트

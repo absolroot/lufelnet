@@ -36,7 +36,7 @@ const CHAR_TO_CODE = {
   "원더": "u", "유스케": "v", "유이 YUI": "w", "유키미": "x", "카스미": "y",
   "키라": "z", "키요시": "A", "토모코": "B", "토모코·여름": "C", "토시야": "D",
   "하루": "E", "하루나": "F", "치즈코": "G", "유카리": "N", "유키 마코토": "O", "쇼키": "P",
-  "마유미" : "Q", "아케치": "R", "미오" : "S",
+  "마유미" : "Q", "아케치": "R", "미오" : "S", "사나다": "T", "이치고": "U",
   // 서포트 파티
   "리코": "H", "미유": "I", "유우미": "J", "카요": "K", "후타바": "L","마나카": "M"
 };
@@ -96,7 +96,8 @@ const MAIN_REV_TO_CODE = {
   "수락": "k",
   "자유": "l",
   "진정성": "m",
-  "희망": "n"
+  "희망": "n",
+  "돌파": "o"
 };
 
 // 서브 계시 매핑 (알파벳 2글자)
@@ -124,7 +125,9 @@ const SUB_REV_TO_CODE = {
   "고집": "u",
   "신중": "v",
   "헛수고": "w",
-  "실망": "x"
+  "실망": "x",
+  "변화": "y",
+  "슬픔": "z"
 };
 
 const CODE_TO_MAIN_REV = Object.fromEntries(
@@ -257,7 +260,7 @@ function processSharedData(sharedData) {
     //console.log('After initial decompression:', compressed);
 
     const decompressed = {
-      title: compressed.h || "페르소나5X 택틱 메이커",
+      title: compressed.h || "P5X Tactic Maker",
       w: compressed.w?.map(p => CODE_TO_PERSONA[p] || p) || [],
       weapon: compressed.wp ? CODE_TO_WEAPON[compressed.wp] || compressed.wp : "",
       personaSkills: compressed.ps?.map(skill => 
@@ -322,8 +325,12 @@ function shareURL() {
       const mainRev = document.querySelector(`.party-member[data-index="${idx}"]`)?.querySelector(".main-revelation")?.value;
       const subRev = document.querySelector(`.party-member[data-index="${idx}"]`)?.querySelector(".sub-revelation")?.value;
       
+      // 디버깅 로그 추가 - 모든 계시 값 확인
+      console.log(`[DEBUG] Party Member ${idx} - mainRev: "${mainRev}", subRev: "${subRev}"`);
+      
       if (mainRev) obj.mr = MAIN_REV_TO_CODE[mainRev];
       if (subRev) obj.sr = SUB_REV_TO_CODE[subRev];
+      
       return obj;
     }),
     t: turns.map(turn => ({

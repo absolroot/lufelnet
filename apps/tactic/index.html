@@ -15,7 +15,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
     <div class="main-wrapper">
       <!-- navigation path -->
       <div class="navigation-path">
-        <script>document.write(`<a href="../?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page">택틱 / 택틱 메이커</span>
     </div>
@@ -378,10 +378,202 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         });
       }
 
+      // 현재 언어 감지 함수
+      function getCurrentLanguage() {
+        // URL 파라미터 체크
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+          return urlLang;
+        }
+        
+        // localStorage 체크
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+          return savedLang;
+        }
+        
+        // 기본값
+        return 'kr';
+      }
 
-      
+            // UI 번역 함수
+      function translateUI() {
+        const currentLang = getCurrentLanguage();
+        
+        if (currentLang === 'kr') return; // 한국어는 기본값이므로 번역 불필요
+        
+        // 번역 매핑
+        const translations = {
+          en: {
+            // 네비게이션
+            '홈': 'Home',
+            
+            // 헤더
+            '택틱 메이커': 'Tactic Maker',
+            '내보내기': 'Export',
+            '가져오기': 'Import', 
+            '공유하기': 'Share',
+            '화면 캡처': 'Capture',
+            '순서 이동 잠금': 'Lock Order',
+            
+            // 원더 설정
+            '원더 설정': 'Wonder Settings',
+            '무기': 'Weapon',
+            '선택 또는 입력': 'Select or Input',
+            '페르소나1': 'Persona 1',
+            '페르소나2': 'Persona 2', 
+            '페르소나3': 'Persona 3',
+            '고유스킬': 'Unique Skill',
+            '스킬 2': 'Skill 2',
+            '스킬 3': 'Skill 3',
+            
+            // 괴도단
+            '괴도단': 'Phantom Thieves',
+            '괴도 1': 'P1',
+            '괴도 2': 'P2',
+            '괴도 3': 'P3',
+            '괴도 4': 'P4',
+            '의식:': 'Awareness:',
+            '순서:': 'Order:',
+            '주 계시:': 'Uni.:',
+            '일월성진:': 'S/M/S/P:',
+            '해명 -': 'SP'
+          },
+          jp: {
+            // 네비게이션
+            '홈': 'ホーム',
+            
+            // 헤더
+            '택틱 메이커': 'タクティックメーカー',
+            '내보내기': 'エクスポート',
+            '가져오기': 'インポート',
+            '공유하기': 'シェア',
+            '화면 캡처': 'キャプチャ',
+            '순서 이동 잠금': '順序移動ロック',
+            
+            // 원더 설정
+            '원더 설정': 'ワンダー設定',
+            '무기': '武器',
+            '선택 또는 입력': '選択または入力',
+            '페르소나1': 'ペルソナ1',
+            '페르소나2': 'ペルソナ2',
+            '페르소나3': 'ペルソナ3',
+            '고유스킬': '固有スキル',
+            '스킬 2': 'スキル2',
+            '스킬 3': 'スキル3',
+            
+            // 괴도단
+            '괴도단': '怪盗団',
+            '괴도 1': '怪盗1',
+            '괴도 2': '怪盗2',
+            '괴도 3': '怪盗3',
+            '괴도 4': '怪盗4',
+            '의식:': '意識:',
+            '순서:': '順序:',
+            '주 계시:': '宙:',
+            '일월성진:': '日月星辰:',
+            '해명 -': '解明 -'
+          }
+        };
+        
+        const langTranslations = translations[currentLang];
+        if (!langTranslations) return;
+        
+        // 텍스트 번역
+        function translateText(element, originalText, translatedText) {
+          if (element && element.textContent.trim() === originalText) {
+            element.textContent = translatedText;
+          }
+        }
+        
+        // placeholder 번역
+        function translatePlaceholder(element, originalText, translatedText) {
+          if (element && element.placeholder === originalText) {
+            element.placeholder = translatedText;
+          }
+        }
+        
+        // label 내부 텍스트 번역 (childNodes 사용)
+        function translateLabelText(element, originalText, translatedText) {
+          if (element && element.tagName === 'LABEL') {
+            element.childNodes.forEach(node => {
+              if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === originalText) {
+                node.textContent = translatedText;
+              }
+            });
+          }
+        }
+        
+        // 각 요소별 번역 적용
+        Object.entries(langTranslations).forEach(([original, translated]) => {
+          // 일반 텍스트 요소들
+          const elements = document.querySelectorAll('*');
+          elements.forEach(element => {
+            if (element.children.length === 0) { // 텍스트만 있는 요소
+              translateText(element, original, translated);
+            }
+          });
+          
+          // label 요소들 (무기, 페르소나1, 페르소나2, 페르소나3 등)
+          const labelElements = document.querySelectorAll('label');
+          labelElements.forEach(element => {
+            translateLabelText(element, original, translated);
+          });
+          
+          // placeholder 속성
+          const inputElements = document.querySelectorAll('input[placeholder]');
+          inputElements.forEach(element => {
+            translatePlaceholder(element, original, translated);
+          });
+          
+          // value 속성 (버튼 등)
+          const buttonElements = document.querySelectorAll('button, input[type="button"]');
+          buttonElements.forEach(element => {
+            if (element.textContent.trim() === original) {
+              element.textContent = translated;
+            }
+          });
+        });
+        
+        // 동적으로 생성되는 홈 링크 번역 (지연 실행)
+        setTimeout(() => {
+          const homeLink = document.querySelector('.navigation-path a');
+          if (homeLink && homeLink.textContent.trim() === '홈') {
+            if (currentLang === 'en') {
+              homeLink.textContent = 'Home';
+            } else if (currentLang === 'jp') {
+              homeLink.textContent = 'ホーム';
+            }
+          }
+        }, 100);
+        
+        // 제목 번역
+        const titleInput = document.querySelector('.title-input');
+        if (titleInput && titleInput.value === '페르소나5X 택틱 메이커') {
+          if (currentLang === 'en') {
+            titleInput.value = 'P5X Tactic Maker';
+          } else if (currentLang === 'jp') {
+            titleInput.value = 'P5X タクティックメーカー';
+          }
+        }
+        
+        // 네비게이션 경로 번역
+        const currentPageSpan = document.querySelector('.current-page');
+        if (currentPageSpan) {
+          if (currentLang === 'en') {
+            currentPageSpan.textContent = 'Tactic / Tactic Maker';
+          } else if (currentLang === 'jp') {
+            currentPageSpan.textContent = 'タクティック / タクティックメーカー';
+          }
+        }
+      }
+
       // DOM is loaded, initialize initial settings
       document.addEventListener("DOMContentLoaded", () => {
+
+        // 번역 적용
+        translateUI();
 
         // Initialize navigation
         Navigation.load('tactic');
@@ -394,204 +586,340 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         const urlParams = new URLSearchParams(window.location.search);
         const sharedData = urlParams.get('data');
         
-        if (sharedData) {
-          const decodedData = processSharedData(sharedData);
-
-          if (isMobile()) {
-            const lockBtn = document.querySelector('.mobile-lock-btn');
-            const turnsContainer = document.getElementById('turns');
-            if (lockBtn && turnsContainer) {
-              lockBtn.classList.add('active');
-              turnsContainer.classList.add('turns-locked');
-              localStorage.setItem('turnsLocked', true);
+        // 번역 데이터를 먼저 로드하는 함수
+        async function loadTranslationData() {
+          const currentLang = getCurrentLanguage();
+          if (currentLang !== 'kr') {
+            // setparty.js의 setupTranslations 함수가 있으면 호출
+            if (typeof setupTranslations === 'function') {
+              await setupTranslations();
+              console.log(`[DEBUG] 번역 데이터 로드 완료 - currentLang: ${currentLang}`);
             }
           }
-          
-          // If shared data, set UI to hidden state by default
-          document.querySelector('.container').classList.add('hide-ui');
-          const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
-          const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
-          if (desktopToggleBtn) desktopToggleBtn.classList.add('active');
-          if (mobileToggleBtn) mobileToggleBtn.classList.add('active');
+        }
+        
+        if (sharedData) {
+          // 번역 데이터를 먼저 로드한 후 공유 데이터 처리
+          loadTranslationData().then(() => {
+            const decodedData = processSharedData(sharedData);
 
-
-          console.log(decodedData);
-
-          if (decodedData) {
-            // Add title setting
-            document.querySelector('.title-input').value = decodedData.title;
+            if (isMobile()) {
+              const lockBtn = document.querySelector('.mobile-lock-btn');
+              const turnsContainer = document.getElementById('turns');
+              if (lockBtn && turnsContainer) {
+                lockBtn.classList.add('active');
+                turnsContainer.classList.add('turns-locked');
+                localStorage.setItem('turnsLocked', true);
+              }
+            }
             
-            // Set Wonder persona data
-            wonderPersonas = decodedData.w;
-            
-            // Set Wonder persona data
-            const wonderInputs = document.querySelectorAll(".wonder-persona-input");
-            wonderInputs.forEach((input, idx) => {
-              input.value = wonderPersonas[idx] || "";
-            });
+            // If shared data, set UI to hidden state by default
+            document.querySelector('.container').classList.add('hide-ui');
+            const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+            const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+            if (desktopToggleBtn) desktopToggleBtn.classList.add('active');
+            if (mobileToggleBtn) mobileToggleBtn.classList.add('active');
 
-            // Set Wonder weapon
-            document.querySelector(".wonder-weapon-input").value = decodedData.weapon;
+            console.log(decodedData);
 
-            // Set persona skills
-            const skillInputs = document.querySelectorAll(".persona-skill-input");
-            let normalSkillIndex = 0;  // Normal skill index
+            if (decodedData) {
+              // Add title setting
+              document.querySelector('.title-input').value = decodedData.title;
+              
+              // Set Wonder persona data
+              wonderPersonas = decodedData.w;
+              
+              // Set Wonder persona data
+              const wonderInputs = document.querySelectorAll(".wonder-persona-input");
+              wonderInputs.forEach((input, idx) => {
+                input.value = wonderPersonas[idx] || "";
+              });
 
-            skillInputs.forEach((input, index) => {
-                // Unique skill slot
-                if (index % 3 === 0) {
+              // Set Wonder weapon
+              document.querySelector(".wonder-weapon-input").value = decodedData.weapon;
+
+              // Set persona skills
+              const skillInputs = document.querySelectorAll(".persona-skill-input");
+              let normalSkillIndex = 0;  // Normal skill index
+
+              skillInputs.forEach((input, index) => {
+                  // Unique skill slot
+                  if (index % 3 === 0) {
+                      const personaIndex = Math.floor(index / 3);
+                      const selectedPersona = decodedData.w[personaIndex];
+                      if (selectedPersona && personaData[selectedPersona]) {
+                          input.value = personaData[selectedPersona].uniqueSkill.name;
+                          input.disabled = true;
+                          input.classList.add('unique-skill');
+                      }
+                  } 
+                  // Normal skill slot
+                  else {
+                      if (decodedData.personaSkills[normalSkillIndex]) {
+                          input.value = decodedData.personaSkills[normalSkillIndex];
+                      }
+                      normalSkillIndex++;
+                  }
+              });
+              
+              // Restore partyMembers data
+              decodedData.p.forEach((p, idx) => {
+                partyMembers[idx].name = p.name;
+                partyMembers[idx].order = p.order;
+                partyMembers[idx].ritual = p.ritual;
+                
+                // Update party member name input field
+                const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+                if (partyDiv) {
+                  const nameInput = partyDiv.querySelector(".party-name-input");
+                  const orderSelect = partyDiv.querySelector(".party-order");
+                  const ritualSelect = partyDiv.querySelector(".party-ritual");
+                  const mainRevSelect = partyDiv.querySelector(".main-revelation");
+                  const subRevSelect = partyDiv.querySelector(".sub-revelation");
+                  
+                  if (nameInput) nameInput.value = p.name || "";
+                  if (orderSelect) orderSelect.value = p.order || "";
+                  if (ritualSelect) ritualSelect.value = p.ritual || "0";
+                  
+                  // Set revelation
+                  if (mainRevSelect && p.mainRev) {
+                    mainRevSelect.value = p.mainRev;
+                    // When main revelation is selected, activate sub revelation
+                    if (p.mainRev && revelationData.main[p.mainRev]) {
+                      subRevSelect.disabled = false;
+                      // Set sub revelation options
+                      subRevSelect.innerHTML = '<option value="">-</option>';
+                      revelationData.main[p.mainRev].forEach(subRev => {
+                        const opt = document.createElement("option");
+                        opt.value = subRev;
+                        opt.textContent = subRev;
+                        subRevSelect.appendChild(opt);
+                      });
+                      // Set sub revelation value
+                      if (p.subRev) {
+                        subRevSelect.value = p.subRev;
+                      }
+                    }
+                  }
+                  
+                  // If Wonder, disable ritual and revelation
+                  if (p.n === "원더") {
+                    if (ritualSelect) {
+                      ritualSelect.disabled = true;
+                      ritualSelect.value = "0";
+                    }
+                    if (mainRevSelect) mainRevSelect.disabled = true;
+                    if (subRevSelect) subRevSelect.disabled = true;
+                  }
+                }
+              });
+              
+              // Restore turn data
+              turns = decodedData.t;
+              
+              // Default UI settings
+              setupWonderConfig();
+              setupPartySelection();
+
+              // 번역 적용 (공유 데이터 로드 후)
+              const currentLang = getCurrentLanguage();
+              if (currentLang !== 'kr') {
+                // 원더 무기 번역 적용
+                const weaponInput = document.querySelector('.wonder-weapon-input');
+                if (weaponInput && weaponInput.value) {
+                  // 번역된 무기 이름으로 표시하되, 실제 값은 한국어 유지
+                  const weaponName = weaponInput.value;
+                  const inputContainer = weaponInput.closest('.input-container');
+                  if (inputContainer && matchWeapons[weaponName]) {
+                    const weapon = matchWeapons[weaponName];
+                    let displayName = weaponName;
+                    if (currentLang === 'en' && weapon.name_en) {
+                      displayName = weapon.name_en;
+                    } else if (currentLang === 'jp' && weapon.name_jp) {
+                      displayName = weapon.name_jp;
+                    }
+                    inputContainer.setAttribute('data-display-text', displayName);
+                    inputContainer.classList.add('show-translation');
+                  }
+                }
+
+                // 페르소나 고유 스킬 번역 적용
+                const skillInputs = document.querySelectorAll('.persona-skill-input');
+                skillInputs.forEach((input, index) => {
+                  if (index % 3 === 0 && input.value) { // 고유 스킬 슬롯
                     const personaIndex = Math.floor(index / 3);
                     const selectedPersona = decodedData.w[personaIndex];
                     if (selectedPersona && personaData[selectedPersona]) {
-                        input.value = personaData[selectedPersona].uniqueSkill.name;
-                        input.disabled = true;
-                        input.classList.add('unique-skill');
-                    }
-                } 
-                // Normal skill slot
-                else {
-                    if (decodedData.personaSkills[normalSkillIndex]) {
-                        input.value = decodedData.personaSkills[normalSkillIndex];
-                    }
-                    normalSkillIndex++;
-                }
-            });
-            
-            // Restore partyMembers data
-            decodedData.p.forEach((p, idx) => {
-              partyMembers[idx].name = p.name;
-              partyMembers[idx].order = p.order;
-              partyMembers[idx].ritual = p.ritual;
-              
-              // Update party member name input field
-              const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
-              if (partyDiv) {
-                const nameInput = partyDiv.querySelector(".party-name-input");
-                const orderSelect = partyDiv.querySelector(".party-order");
-                const ritualSelect = partyDiv.querySelector(".party-ritual");
-                const mainRevSelect = partyDiv.querySelector(".main-revelation");
-                const subRevSelect = partyDiv.querySelector(".sub-revelation");
-                
-                if (nameInput) nameInput.value = p.name || "";
-                if (orderSelect) orderSelect.value = p.order || "";
-                if (ritualSelect) ritualSelect.value = p.ritual || "0";
-                
-                // Set revelation
-                if (mainRevSelect && p.mainRev) {
-                  mainRevSelect.value = p.mainRev;
-                  // When main revelation is selected, activate sub revelation
-                  if (p.mainRev && revelationData.main[p.mainRev]) {
-                    subRevSelect.disabled = false;
-                    // Set sub revelation options
-                    subRevSelect.innerHTML = '<option value="">-</option>';
-                    revelationData.main[p.mainRev].forEach(subRev => {
-                      const opt = document.createElement("option");
-                      opt.value = subRev;
-                      opt.textContent = subRev;
-                      subRevSelect.appendChild(opt);
-                    });
-                    // Set sub revelation value
-                    if (p.subRev) {
-                      subRevSelect.value = p.subRev;
+                      const persona = personaData[selectedPersona];
+                      let displayName = input.value;
+                      if (currentLang === 'en' && persona.uniqueSkill.name_en) {
+                        displayName = persona.uniqueSkill.name_en;
+                      } else if (currentLang === 'jp' && persona.uniqueSkill.name_jp) {
+                        displayName = persona.uniqueSkill.name_jp;
+                      }
+                      const inputContainer = input.closest('.input-container');
+                      if (inputContainer) {
+                        inputContainer.setAttribute('data-display-text', displayName);
+                        inputContainer.classList.add('show-translation');
+                      }
                     }
                   }
-                }
-                
-                // If Wonder, disable ritual and revelation
-                if (p.n === "원더") {
-                  if (ritualSelect) {
-                    ritualSelect.disabled = true;
-                    ritualSelect.value = "0";
-                  }
-                  if (mainRevSelect) mainRevSelect.disabled = true;
-                  if (subRevSelect) subRevSelect.disabled = true;
-                }
-              }
-            });
-            
-            // Restore turn data
-            turns = decodedData.t;
-            
-            // Default UI settings
-            setupWonderConfig();
-            setupPartySelection();
+                });
 
-            // Reset revelation values
-            decodedData.p.forEach((p, idx) => {
-              const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
-              if (partyDiv && p.mainRev) {
-                const mainRevSelect = partyDiv.querySelector(".main-revelation");
-                const subRevSelect = partyDiv.querySelector(".sub-revelation");
-                
-                if (mainRevSelect) {
-                  mainRevSelect.value = p.mainRev;
+                // 파티원 캐릭터 이름 번역 적용
+                document.querySelectorAll('.party-name-input').forEach(input => {
+                  if (input.value) {
+                    const charName = input.value;
+                    const inputContainer = input.closest('.input-container');
+                    if (inputContainer && characterData[charName]) {
+                      const char = characterData[charName];
+                      let displayName = charName;
+                      if (currentLang === 'en' && char.name_en) {
+                        displayName = char.name_en;
+                      } else if (currentLang === 'jp' && char.name_jp) {
+                        displayName = char.name_jp;
+                      }
+                      inputContainer.setAttribute('data-display-text', displayName);
+                      inputContainer.classList.add('show-translation');
+                    }
+                  }
+                });
+              }
+
+              // Reset revelation values
+              decodedData.p.forEach((p, idx) => {
+                const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+                if (partyDiv && p.mainRev) {
+                  const mainRevSelect = partyDiv.querySelector(".main-revelation");
+                  const subRevSelect = partyDiv.querySelector(".sub-revelation");
                   
-                  if (revelationData.main[p.mainRev]) {
-                    subRevSelect.disabled = false;
-                    subRevSelect.innerHTML = '<option value="">-</option>';
-                    revelationData.main[p.mainRev].forEach(subRev => {
-                      const opt = document.createElement("option");
-                      opt.value = subRev;
-                      opt.textContent = subRev;
-                      subRevSelect.appendChild(opt);
-                    });
+                  if (mainRevSelect) {
+                    mainRevSelect.value = p.mainRev;
                     
-                    if (p.subRev) {
-                      subRevSelect.value = p.subRev;
+                    if (revelationData.main[p.mainRev]) {
+                      subRevSelect.disabled = false;
+                      subRevSelect.innerHTML = '<option value="">-</option>';
+                      revelationData.main[p.mainRev].forEach(subRev => {
+                        const opt = document.createElement("option");
+                        opt.value = subRev;
+                        opt.textContent = subRev;
+                        subRevSelect.appendChild(opt);
+                      });
+                      
+                      // 계시 옵션 생성 후 번역 적용
+                      if (currentLang !== 'kr') {
+                        for (const option of subRevSelect.options) {
+                          if (option.value) {
+                            // 번역 데이터가 있으면 번역 적용
+                            if (window.languageData && window.languageData[currentLang] && window.languageData[currentLang].revelationMapping) {
+                              option.textContent = window.languageData[currentLang].revelationMapping[option.value] || option.value;
+                            }
+                          }
+                        }
+                      }
+                      
+                      if (p.subRev) {
+                        subRevSelect.value = p.subRev;
+                      }
                     }
                   }
-                }
-              }
-            });
-
-            updatePartyImages();
-            
-            // Render turns (before updating auto actions)
-            renderTurns();
-            
-            // Restore action data for each turn
-            turns.forEach((turn, turnIndex) => {
-              const turnContainer = document.querySelector(`.turn-container[data-turn-index="${turnIndex}"]`);
-              if (!turnContainer) return;
-
-              const actionsList = turnContainer.querySelector('.actions');
-              if (!actionsList) return;
-
-              turn.actions.forEach((action, actionIndex) => {
-                const actionItem = actionsList.children[actionIndex]; 
-                if (!actionItem) return;
-
-                // Select character
-                const charSelect = actionItem.querySelector('.action-character');
-                if (charSelect) {
-                  charSelect.value = action.character;
-                }
-
-                // Select Wonder persona or skill
-                if (action.character === "원더") {
-                  const personaSelect = actionItem.querySelector('.wonder-persona-select');
-                  if (personaSelect) {
-                    personaSelect.value = action.wonderPersona;
-                  }
-                } else {
-                  const skillSelect = actionItem.querySelector('.action-skill');
-                  if (skillSelect) {
-                    skillSelect.value = action.action;
-                  }
-                }
-
-                // Input memo
-                const memoInput = actionItem.querySelector('.action-memo');
-                if (memoInput) {
-                  memoInput.value = action.memo || "";
                 }
               });
-            });
-            
-            // Update auto actions last
-            updateAutoActions();
-            
-          } 
+
+              // 계시 번역 적용 (공유 데이터 로드 후)
+              if (currentLang !== 'kr') {
+                // 계시 번역 함수
+                function getRevelationDisplayName(revName) {
+                  if (!window.languageData || !window.languageData[currentLang] || !window.languageData[currentLang].revelationMapping) {
+                    console.log(`[DEBUG] 계시 번역 데이터 없음 - currentLang: ${currentLang}, window.languageData:`, window.languageData);
+                    return revName;
+                  }
+                  const translated = window.languageData[currentLang].revelationMapping[revName] || revName;
+                  return translated;
+                }
+
+                
+                // 계시 번역 데이터가 없으면 강제로 로드 시도
+                if (!window.languageData || !window.languageData[currentLang] || !window.languageData[currentLang].revelationMapping) {
+                  console.log(`[DEBUG] 계시 번역 데이터 없음 - 강제 로드 시도`);
+                  
+                  // setparty.js의 setupTranslations 함수 호출
+                  if (typeof setupTranslations === 'function') {
+                    setupTranslations().then(() => {
+                      console.log(`[DEBUG] setupTranslations 완료 후 계시 번역 재시도`);
+                      // 번역 데이터 로드 후 다시 시도
+                      document.querySelectorAll('.main-revelation, .sub-revelation').forEach(select => {
+                        for (const option of select.options) {
+                          if (option.value) {
+                            option.textContent = getRevelationDisplayName(option.value);
+                          }
+                        }
+                      });
+                    });
+                  } else {
+                    console.log(`[DEBUG] setupTranslations 함수를 찾을 수 없음`);
+                  }
+                } else {
+                  // 모든 계시 선택기의 옵션 텍스트 번역
+                  document.querySelectorAll('.main-revelation, .sub-revelation').forEach(select => {
+                    for (const option of select.options) {
+                      if (option.value) {
+                        option.textContent = getRevelationDisplayName(option.value);
+                      }
+                    }
+                  });
+                }
+              }
+
+              updatePartyImages();
+              
+              // Render turns (before updating auto actions)
+              renderTurns();
+              
+              // Restore action data for each turn
+              turns.forEach((turn, turnIndex) => {
+                const turnContainer = document.querySelector(`.turn-container[data-turn-index="${turnIndex}"]`);
+                if (!turnContainer) return;
+
+                const actionsList = turnContainer.querySelector('.actions');
+                if (!actionsList) return;
+
+                turn.actions.forEach((action, actionIndex) => {
+                  const actionItem = actionsList.children[actionIndex]; 
+                  if (!actionItem) return;
+
+                  // Select character
+                  const charSelect = actionItem.querySelector('.action-character');
+                  if (charSelect) {
+                    charSelect.value = action.character;
+                  }
+
+                  // Select Wonder persona or skill
+                  if (action.character === "원더") {
+                    const personaSelect = actionItem.querySelector('.wonder-persona-select');
+                    if (personaSelect) {
+                      personaSelect.value = action.wonderPersona;
+                    }
+                  } else {
+                    const skillSelect = actionItem.querySelector('.action-skill');
+                    if (skillSelect) {
+                      skillSelect.value = action.action;
+                    }
+                  }
+
+                  // Input memo
+                  const memoInput = actionItem.querySelector('.action-memo');
+                  if (memoInput) {
+                    memoInput.value = action.memo || "";
+                  }
+                });
+              });
+              
+              // Update auto actions last
+              updateAutoActions();
+              
+            } 
+          });
         } else {
           setupWonderConfig();
           setupPartySelection();

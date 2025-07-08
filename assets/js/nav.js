@@ -43,6 +43,7 @@ class Navigation {
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
+                article: '가이드',
                 about: 'about'
             },
             en: {
@@ -59,6 +60,7 @@ class Navigation {
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Calculator',
                 criticalCalc: 'Critical Calculator',
+                article: 'Guides',
                 about: 'About'
             },
             jp: {
@@ -75,6 +77,7 @@ class Navigation {
                 payCalc: '課金計算機',
                 defenseCalc: '防御力計算機',
                 criticalCalc: 'クリティカル計算機',
+                article: 'ガイド',
                 about: '紹介'
             },
             cn: {
@@ -91,6 +94,7 @@ class Navigation {
                 payCalc: '充值计算器',
                 defenseCalc: '防御力计算器',
                 criticalCalc: '暴击计算机',
+                article: '指南',
                 about: '关于'
             }
         };
@@ -185,6 +189,12 @@ class Navigation {
                         </a>
                     </div>
                 </div>
+                ` : ''}
+                ${currentMenus.includes('article') ? `
+                <a href="${BASE_URL}/article/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="article">
+                    <img src="${BASE_URL}/assets/img/nav/about.png" alt="article" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <span data-text="${texts.article}">${texts.article}</span>
+                </a>
                 ` : ''}
                 ${currentMenus.includes('about') ? `
                 <a href="${BASE_URL}/about?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="about">

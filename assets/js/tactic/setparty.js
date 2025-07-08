@@ -1,4 +1,71 @@
   /* ========== 파티 선택 ========== */
+  function getCurrentLanguage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+      return urlLang;
+    }
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+      return savedLang;
+    }
+    return 'kr';
+  }
+
+  function getCharacterDisplayName(charName) {
+    const currentLang = getCurrentLanguage();
+    if (currentLang === 'kr' || !characterData[charName]) {
+      return charName;
+    }
+
+    const char = characterData[charName];
+    if (currentLang === 'en' && char.name_en) {
+      return char.name_en;
+    } else if (currentLang === 'jp' && char.name_jp) {
+      return char.name_jp;
+    }
+    return charName;
+  }
+
+  function getRevelationDisplayName(revName) {
+    const currentLang = getCurrentLanguage();
+    if (currentLang === 'kr' || !revName) {
+        return revName;
+    }
+    // 데이터 로딩 전일 수 있으므로 revelationData 자체는 확인하지 않음
+    
+    let mapping;
+    const langData = window.languageData ? window.languageData[currentLang] : null;
+
+    if (langData && langData.revelationMapping) {
+        mapping = langData.revelationMapping;
+    }
+
+    return mapping && mapping[revName] ? mapping[revName] : revName;
+  }
+
+  function translateSelectOptions(selectElement) {
+    const currentLang = getCurrentLanguage();
+    if (currentLang === 'kr') {
+        const options = selectElement.options;
+        for (let i = 0; i < options.length; i++) {
+            const option = options[i];
+            if (option.value) {
+                option.textContent = option.value;
+            }
+        }
+        return;
+    }
+    
+    const options = selectElement.options;
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        if (option.value) {
+            option.textContent = getRevelationDisplayName(option.value);
+        }
+    }
+  }
+
   function setupPartySelection() {
     const partyDivs = document.querySelectorAll(".party-member");
     
@@ -47,6 +114,41 @@
             object-fit: cover;
             border-radius: 50%;
         }
+
+        /* 번역된 텍스트 표시를 위한 스타일 */
+        .input-container {
+            position: relative;
+        }
+        
+        .input-container.show-translation input {
+            color: transparent !important;
+            text-shadow: none !important;
+        }
+        
+        .input-container.show-translation input:focus {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .input-container.show-translation::before {
+            content: attr(data-display-text);
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            pointer-events: none;
+            z-index: 1;
+            font-size: 12px;
+            font-family: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: calc(100% - 40px); /* clear 버튼 고려 */
+        }
+        
+        .input-container.show-translation:has(input:focus)::before {
+            display: none;
+        }
       `;
       document.head.appendChild(styleElement);
     }
@@ -76,20 +178,22 @@
         // 기존 옵션 초기화
         mainRevSelect.innerHTML = '<option value="">-</option>';
         
-        // 주 계시 옵션 추가
-        Object.keys(revelationData.main).forEach(rev => {
-          const opt = document.createElement("option");
-          opt.value = rev;
-          opt.textContent = rev;
-          mainRevSelect.appendChild(opt);
-        });
-
+        // 주 계시 옵션 추가 (한국어 기준)
+        if (typeof revelationData !== 'undefined' && revelationData.main) {
+            Object.keys(revelationData.main).forEach(rev => {
+                const opt = document.createElement("option");
+                opt.value = rev;
+                opt.textContent = getRevelationDisplayName(rev); // 생성 시 바로 번역
+                mainRevSelect.appendChild(opt);
+            });
+        }
+        
         // 주 계시 변경 이벤트
         mainRevSelect.addEventListener("change", (e) => {
           const selectedMain = e.target.value;
           
           // 일월성진 드롭다운 활성화/비활성화
-          if (selectedMain && revelationData.main[selectedMain]) {
+          if (selectedMain && revelationData && revelationData.main[selectedMain]) {
             subRevSelect.disabled = false;
             
             // 일월성진 옵션 설정
@@ -97,7 +201,7 @@
             revelationData.main[selectedMain].forEach(subRev => {
               const opt = document.createElement("option");
               opt.value = subRev;
-              opt.textContent = subRev;
+              opt.textContent = getRevelationDisplayName(subRev); // 생성 시 바로 번역
               subRevSelect.appendChild(opt);
             });
           } else {
@@ -125,7 +229,8 @@
         const input = document.createElement("input");
         input.className = "party-name-input";
         input.value = partyMembers[index].name;
-        input.placeholder = "선택 또는 입력";
+        input.placeholder = "";
+        input.setAttribute("autocomplete", "off");
         
         // 커스텀 드롭다운 생성
         const customDropdown = document.createElement("div");
@@ -165,15 +270,26 @@
         const createDropdownItems = (filter = "") => {
           customDropdown.innerHTML = "";
           
-          // 캐릭터 옵션 추가
-          const characterOptions = index === 4 ? characterList.supportParty : characterList.mainParty;
+          // 현재 언어에 맞는 캐릭터 목록 사용
+          const currentLang = getCurrentLanguage();
+          let characterOptions = [];
+          if (currentLang !== 'kr' && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
+              characterOptions = index === 4 
+                  ? window.languageData[currentLang].characterList.supportParty 
+                  : window.languageData[currentLang].characterList.mainParty;
+          } else if (typeof characterList !== 'undefined') { // Fallback to Korean list (window.characterList -> characterList)
+              characterOptions = index === 4 ? characterList.supportParty : characterList.mainParty;
+          }
           
           // 캐릭터 목록 필터링 (필터가 있을 경우만 필터링)
           let filteredCharacters = characterOptions;
           if (filter) {
-            filteredCharacters = characterOptions.filter(char => 
-              char.toLowerCase().includes(filter.toLowerCase())
-            );
+            const lowerCaseFilter = filter.toLowerCase();
+            filteredCharacters = characterOptions.filter(char => {
+              const displayName = getCharacterDisplayName(char);
+              return char.toLowerCase().includes(lowerCaseFilter) ||
+                     displayName.toLowerCase().includes(lowerCaseFilter);
+            });
           }
           
           // 드롭다운 항목 추가
@@ -192,14 +308,27 @@
             };
             item.appendChild(iconImg);
             
-            // 캐릭터 이름 추가
+            // 캐릭터 이름 추가 (번역된 이름으로 표시)
             const nameSpan = document.createElement("span");
-            nameSpan.textContent = char;
+            nameSpan.textContent = getCharacterDisplayName(char);
             item.appendChild(nameSpan);
             
             item.addEventListener("click", () => {
+              // 실제 값은 한국어로 설정
               input.value = char;
               customDropdown.classList.remove("active");
+
+              // 번역 표시 적용
+              if (getCurrentLanguage() !== 'kr') {
+                  const displayName = getCharacterDisplayName(char);
+                  inputContainer.setAttribute('data-display-text', displayName);
+                  inputContainer.classList.add('show-translation');
+              } else {
+                  inputContainer.classList.remove('show-translation');
+              }
+
+              // 포커스 즉시 해제하여 번역된 값이 보이도록 함
+              setTimeout(() => input.blur(), 0);
               
               // change 이벤트 발생
               const event = new Event("change", { bubbles: true });
@@ -211,7 +340,14 @@
         
         // 드롭다운 관련 이벤트 처리
         input.addEventListener("focus", function() {
-          createDropdownItems(this.value);
+          // 원래 값 저장 후 입력 필드 초기화 (편집 용이성)
+          this.setAttribute('data-original-value', this.value);
+          this.value = '';
+
+          // 번역 표시 제거
+          inputContainer.classList.remove('show-translation');
+          
+          createDropdownItems('');
           customDropdown.classList.add("active");
           
           // 현재 스크롤 위치 저장
@@ -222,6 +358,20 @@
           // 약간의 지연 후 드롭다운 닫기 (항목 클릭 이벤트가 발생할 시간 확보)
           setTimeout(() => {
             customDropdown.classList.remove("active");
+
+            // 새로운 값이 선택되지 않았으면 원래 값으로 복원
+            if (this.value.trim() === '') {
+                this.value = this.getAttribute('data-original-value') || '';
+            }
+            
+            // 값에 따른 번역 표시 적용
+            if (this.value && getCurrentLanguage() !== 'kr') {
+                const displayName = getCharacterDisplayName(this.value);
+                inputContainer.setAttribute('data-display-text', displayName);
+                inputContainer.classList.add('show-translation');
+            } else {
+                inputContainer.classList.remove('show-translation');
+            }
           }, 200);
         });
         
@@ -276,7 +426,7 @@
             mainRevSelect.disabled = false;
             
             // 캐릭터의 기본 계시 값 설정
-            if (characterData[selectedName]) {
+            if (characterData[selectedName] && typeof revelationData !== 'undefined') {
               const charData = characterData[selectedName];
               
               // 주 계시 설정
@@ -290,7 +440,7 @@
                   revelationData.main[charData.main_revelation[0]].forEach(subRev => {
                     const opt = document.createElement("option");
                     opt.value = subRev;
-                    opt.textContent = subRev;
+                    opt.textContent = getRevelationDisplayName(subRev); // 생성 시 바로 번역
                     subRevSelect.appendChild(opt);
                   });
                   
@@ -523,4 +673,125 @@
       });
     });
   }
+  
+  // Helper to fetch a JS object literal from a script file using regex
+  async function fetchObjectFromScript(src, objectName) {
+      try {
+          const text = await fetch(src).then(res => {
+              if (!res.ok) {
+                  if (res.status === 404) return null;
+                  throw new Error(`Failed to fetch script: ${res.statusText}`);
+              }
+              return res.text();
+          });
+
+          if (!text) return null;
+
+          // Regex to find "const objectName = { ... };"
+          const regex = new RegExp(`const ${objectName} = (\\{[\\s\\S]*?\\});`);
+          const match = text.match(regex);
+
+          if (match && match[1]) {
+              // Safely parse the matched object string
+              return new Function(`return ${match[1]}`)();
+          }
+          return null;
+      } catch (error) {
+          console.error(`Error loading object "${objectName}" from ${src}:`, error);
+          return null;
+      }
+  }
+
+  // 페이지 로드 시 필요한 데이터와 번역을 설정하는 함수
+  async function setupTranslations() {
+      const lang = getCurrentLanguage();
+
+      if (typeof characterData === 'undefined' || typeof revelationData === 'undefined') {
+          console.warn("Base Korean data not found. Retrying...");
+          setTimeout(setupTranslations, 200);
+          return;
+      }
+
+      if (lang !== 'kr') {
+          // 언어별 캐릭터 리스트 가져오기
+          const charList = await fetchObjectFromScript(`${BASE_URL}/data/${lang}/characters/characters.js`, 'characterList');
+          if (charList) {
+              if (!window.languageData) window.languageData = {};
+              window.languageData[lang] = { characterList: charList };
+          }
+
+          // 언어별 계시 매핑 가져오기
+          const mapping = await fetchObjectFromScript(`${BASE_URL}/data/${lang}/revelations/revelations.js`, `mapping_${lang}`);
+          if (mapping) {
+              if (!window.languageData[lang]) window.languageData[lang] = {};
+              window.languageData[lang].revelationMapping = mapping;
+          }
+      }
+
+      // 모든 데이터 준비 후 UI 번역 적용 및 UI 재생성
+      setupPartySelection();
+      initializePartyTranslations();
+  }
+
+  // 현재 언어 감지 함수
+  function initializePartyTranslations() {
+      const currentLang = getCurrentLanguage();
+      
+      // 한국어 모드일 경우, 번역 표시 제거 및 원본 값으로 복원
+      if (currentLang === 'kr') {
+        document.querySelectorAll('.input-container.show-translation').forEach(container => {
+            container.classList.remove('show-translation');
+        });
+        document.querySelectorAll('select.main-revelation, select.sub-revelation').forEach(select => {
+            // 옵션 텍스트를 다시 한국어로
+            for (const option of select.options) {
+                if (option.value) {
+                    option.textContent = option.value;
+                }
+            }
+        });
+        return;
+      }
+
+      document.querySelectorAll(".party-member").forEach(div => {
+          const index = parseInt(div.getAttribute("data-index"), 10);
+          
+          // 캐릭터 이름 번역
+          const nameInput = div.querySelector(".party-name-input");
+          if (nameInput && nameInput.value) {
+              const displayName = getCharacterDisplayName(nameInput.value);
+              const inputContainer = nameInput.closest('.input-container');
+              if (inputContainer) {
+                  inputContainer.setAttribute('data-display-text', displayName);
+                  inputContainer.classList.add('show-translation');
+              }
+          }
+
+          // 계시 번역
+          const mainRevSelect = div.querySelector(".main-revelation");
+          const subRevSelect = div.querySelector(".sub-revelation");
+          if (mainRevSelect) {
+            // 주 계시 옵션의 텍스트만 번역
+            for (const option of mainRevSelect.options) {
+                if(option.value) {
+                    option.textContent = getRevelationDisplayName(option.value);
+                }
+            }
+          }
+          if (subRevSelect) {
+            // 하위 계시 옵션의 텍스트만 번역
+            for (const option of subRevSelect.options) {
+                if(option.value) {
+                    option.textContent = getRevelationDisplayName(option.value);
+                }
+            }
+          }
+      });
+  }
+
+  // DOMContentLoaded 이후에 번역 초기화 함수를 호출
+  document.addEventListener('DOMContentLoaded', () => {
+      // 데이터 로드 및 번역 적용 시작
+      setupTranslations();
+  });
   

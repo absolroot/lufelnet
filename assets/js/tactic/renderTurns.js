@@ -38,7 +38,7 @@
             // 턴 헤더
             const header = document.createElement("div");
             header.className = "turn-header";
-            header.textContent = `${turn.turn}턴`;
+            header.textContent = `${turn.turn}Turn`;
             headerContainer.appendChild(header);
             
             // + 버튼

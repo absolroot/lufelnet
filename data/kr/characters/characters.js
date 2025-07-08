@@ -50,6 +50,8 @@ const characterData = {
         "role": "",
        "tag":"",
         "color": "#000000",
+        "name_en": "Wonder",
+        "name_jp": "主人公"
     },
     "이치고": {
         "limit": true,

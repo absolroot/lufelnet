@@ -13,6 +13,7 @@ collections:
 # build settings
 markdown: kramdown
 permalink: /article/:year/:month/:day/:title/
+future: true     # 미래 날짜 포스트 허용
 
 # 플러그인 설정
 safe: true

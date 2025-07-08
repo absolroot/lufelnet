@@ -12,6 +12,7 @@ collections:
 
 # build settings
 markdown: kramdown
+permalink: /article/:year/:month/:day/:title/
 
 # 플러그인 설정
 safe: true
@@ -81,7 +82,6 @@ include: ["assets"]
 
 # exclude files/folders
 exclude:
-  - assets/img/
   - .git
   - .gitignore
   - node_modules
@@ -92,7 +92,6 @@ exclude:
 
 # 빌드 성능 최적화
 exclude:
-  - assets/img/
   - .git
   - .gitignore
   - node_modules
@@ -103,9 +102,13 @@ exclude:
 
 # 감시 제외 설정
 keep_files:
-  - assets/img
-  - assets/js
-  - assets/css
+  - assets
+  - _site/assets
+
+# Assets 처리 설정
+include:
+  - assets
+  - _site/assets
 
 # 증분 빌드 활성화
 incremental: true

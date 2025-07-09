@@ -9,21 +9,24 @@
             description: '페르소나 5X 공략 및 정보 사이트 - 괴도, 페르소나, 계시, 택틱 정보 제공',
             keywords: 'P5X, 페르소나5X, 공략, 괴도, 페르소나, 계시, 택틱, 루페르넷',
             author: 'LufelNet',
-            locale: 'ko_KR'
+            locale: 'ko_KR',
+            image: '/assets/img/home/seo_kr.png'
         },
         en: {
             title: 'P5X Lufelnet - Persona 5X Guide',
             description: 'Persona 5X Strategy and Information Site - Phantom Thieves, Personas, Revelations, Tactics Guide',
             keywords: 'P5X, Persona5X, Guide, Phantom Thieves, Persona, Revelations, Tactics, Strategy',
             author: 'LufelNet',
-            locale: 'en_US'
+            locale: 'en_US',
+            image: '/assets/img/home/seo_en.png'
         },
         jp: {
             title: 'P5X Lufelnet - ペルソナ5X攻略',
             description: 'ペルソナ5X攻略・情報サイト - 怪盗、ペルソナ、啓示、タクティクス攻略',
             keywords: 'P5X, ペルソナ5X, 攻略, 怪盗, ペルソナ, 啓示, タクティクス, 戦略',
             author: 'LufelNet',
-            locale: 'ja_JP'
+            locale: 'ja_JP',
+            image: '/assets/img/home/seo_jp.png'
         }
     };
     
@@ -100,9 +103,29 @@
         return 'kr';
     }
     
+    // 이미지 존재 여부 확인 함수
+    function checkImageExists(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
+    
     // 메타태그 업데이트
-    function updateMetaTags(lang) {
+    async function updateMetaTags(lang) {
         const data = i18nMetaData[lang] || i18nMetaData.kr;
+        const baseUrl = window.location.origin;
+        let imageUrl = baseUrl + data.image;
+        
+        // 언어별 이미지가 존재하지 않으면 기본 이미지로 폴백
+        const imageExists = await checkImageExists(imageUrl);
+        if (!imageExists) {
+            console.warn(`Language-specific image not found: ${imageUrl}`);
+            imageUrl = baseUrl + '/assets/img/home/seo.png'; // 기본 이미지로 폴백
+            console.log(`Fallback to default image: ${imageUrl}`);
+        }
         
         // 기본 메타태그 업데이트
         updateOrCreateMeta('description', data.description);
@@ -114,10 +137,12 @@
         updateOrCreateMeta('og:description', data.description, 'property');
         updateOrCreateMeta('og:site_name', data.title, 'property');
         updateOrCreateMeta('og:locale', data.locale, 'property');
+        updateOrCreateMeta('og:image', imageUrl, 'property');
         
         // Twitter 카드 메타태그 업데이트
         updateOrCreateMeta('twitter:title', data.title, 'name');
         updateOrCreateMeta('twitter:description', data.description, 'name');
+        updateOrCreateMeta('twitter:image', imageUrl, 'name');
         
         // 페이지 타이틀 업데이트 (페이지별 타이틀이 없는 경우만)
         const currentTitle = document.title;
@@ -135,6 +160,7 @@
         localStorage.setItem('preferred_language', lang);
         
         console.log(`Meta tags updated for language: ${lang}`);
+        console.log(`Thumbnail image set to: ${imageUrl}`);
     }
     
     // 메타태그 생성/업데이트 헬퍼 함수
@@ -182,7 +208,7 @@
     async function init() {
         try {
             const finalLang = await getFinalLanguage();
-            updateMetaTags(finalLang);
+            await updateMetaTags(finalLang);
             loadLanguageData(finalLang);
             
             // 커스텀 이벤트 발생 (다른 스크립트에서 언어 변경을 감지할 수 있도록)
@@ -193,7 +219,7 @@
         } catch (error) {
             console.error('Language detection failed:', error);
             // 에러 발생시 기본값으로 설정
-            updateMetaTags('kr');
+            await updateMetaTags('kr');
             loadLanguageData('kr');
         }
     }
@@ -206,7 +232,7 @@
     }
     
     // 전역 함수로 노출 (다른 스크립트에서 사용할 수 있도록)
-    window.updateMetaTags = updateMetaTags;
+    window.updateMetaTags = updateMetaTags; // async function
     window.getFinalLanguage = getFinalLanguage;
     
 })(); 

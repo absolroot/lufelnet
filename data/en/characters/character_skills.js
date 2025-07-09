@@ -2,6 +2,95 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "미나미": {
+        "name": "Minami Miyashita",
+        "skill1": {
+            "name": "Nurse's Light",
+            "element": "축복",
+            "type":"단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Bless damage to 1 foe equal to 56.9%/62.7%/60.4%/66.2% of Minami's max HP, and grant 1 Blessing stack to party. Also gain 1 Diagnosis stack."
+        },
+        "skill2": {
+            "name": "Healing Grace",
+            "element": "치료",
+            "type":"제거",
+            "sp": 25,
+            "cool": 0,
+            "description": "Restore HP equal to 17.4%/17.4%/18.5%/18.5% of Minami's max HP + 1488/1810/1829/2151 to the ally with the lowest HP and 1 selected ally, and cure 2 debuffs.\nGrant 1 Blessing stack to allies healed, and grant Minami 1 Diagnosis stack.\nAt the start of each turn for 2 turns, restore HP of allies healed by this skill equal to 13.9%/13.9%/14.8%/14.8% of Minami's max HP + 1190/1446/1463/1719."
+        },
+        "skill3": {
+            "name": "Compassionate Cure",
+            "element": "치료광역",
+            "type":"광역치료",
+            "sp": 32,
+            "cool": 0,
+            "description": "Spend all Diagnosis stacks, and restore HP to selected ally equal to 15.8%/15.8%/16.8%/16.8% of Minami's max HP + 1347/1665/1656/1974.\nAlso restore HP of the ally with the lowest HP with this effect 2 times.\nFor each Diagnosis stack, activate this effect 1 more time.\nFor each Diagnosis stack spent, increase the max HP of allies (other than Minami) by 7.5% of Minami's max HP for 2 turns (up to 1057/1057/1226/1226)."
+        },
+        "skill_highlight": {
+            "element": "치료광역",
+            "type":"광역치료",
+            "description": "Restore party's HP by 17.6%/17.6%/18.6%/18.6% of Minami's max HP + 1500/1824/1844/2168, and cure 1 debuff.\nIncrease party's max HP by 16.5% of Minami's max HP (up to 2326/2326/2697/2697) for 2 turns. At the end of an action, restore HP equal to 6.5%/6.5%/6.9%/6.9% of Minami's max HP + 556/676/683/803 for 1 turn."
+        },
+        "passive1": {
+            "name": "Health Comes First",
+            "element": "패시브",
+            "description": "After Minami heals an ally, increase that ally's damage by 15.0% + (3.0% × target ally's Blessing stacks) for 1 turn (up to 30%)."
+        },
+        "passive2": {
+            "name": "Peace of Mind",
+            "element": "패시브",
+            "description": "At the start of battle, increase party's max HP by 10.0% of Minami's max HP (up to 1500)."
+        }
+    },
+
+    "유이 YUI": {
+        "name": "YUI",
+        "skill1": {
+            "name": "Electric Bomb",
+            "element": "전격",
+            "type":"단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Electric damage to 1 foe equal to 185.4%/204.4%/196.8%/215.8%of Attack. If the foe is not Shocked, there is a 68.3%/68.3%/72.5%/72.5% chance to inflict Shock for 2 turns. If the foe is already Shocked, increase damage by 30%."
+        },
+        "skill2": {
+            "name": "Meta Dynamite",
+            "element": "전격광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Electric damage to all foes equal to 59.6%/65.7%/63.3%/69.4% of Attack. Increase damage to the main target by 25%."
+        },
+        "skill3": {
+            "name": "Sparky Surprise",
+            "element": "버프",
+            "type":"버프",
+            "sp": 25,
+            "cool": 1,
+            "description": "Grant Player 2 to 1 ally for 2 turns, and increase Yui's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/137.2%/141.1%/145.4% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns."
+        },
+        "skill_highlight": {
+            "element": "버프",
+            "type":"버프",
+            "description": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and increase follow-up attack damage by 24.4%/25.9%/25.9%/27.4%  of Attack for 2 turns.\nActivate follow-up attacks after allies deal damage with skills for 2 turns."
+        },
+        "passive1": {
+            "name": "Virtual Landowner",
+            "element": "패시브",
+            "description": "Increase follow-up damage to Shocked foes by 36.0%."
+        },
+        "passive2": {
+            "name": "Let's Go Together",
+            "element": "패시브",
+            "description": "When an ally has Player 2, increase that ally and Yui's critical rate by 12.0% and Attack by 12.0%."
+        }
+    },
+
+    "미나미": {
+        "name": "",
+    },
     "렌": {
         "name": "Ren Amamiya",
         "skill1": {

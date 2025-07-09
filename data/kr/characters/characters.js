@@ -1237,7 +1237,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점  / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 찬란 1800",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점",
         "skill1_lv": "8",
         "skill2_lv": "MAX!",
         "skill3_lv": "8",
@@ -1370,7 +1370,7 @@ const characterData = {
             "LV13": "속도 180",
             "LV13+5": "속도 200"
         },
-        "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점 / 전용무기 : 스킬을 사용해 적 공격시 2턴 속도 15 증가",
+        "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점 / 전용무기",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -2034,7 +2034,7 @@ const characterData = {
             "LV13": "공격력 5180",
             "LV13+5": "공격력 5680"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점 / 의식1 : 동료가 대미지 부여시 20% 증가 (3중첩) / 전용무기 : 동심 소모 시 공격력 증가",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점 / 의식1 / 전용무기",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",

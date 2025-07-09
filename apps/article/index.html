@@ -7,13 +7,13 @@ custom_css: article
 
 <div class="main-wrapper">
     <div class="navigation-path">
-        <a href="/">홈</a>
+        <a href="/" data-kr="홈" data-en="Home" data-jp="ホーム">홈</a>
         <span class="separator">></span>
-        <span class="current-page">가이드</span>
+        <span class="current-page" data-kr="가이드" data-en="Articles" data-jp="記事">가이드</span>
     </div>
 
     <div class="header-container">
-        <h1 class="header-title">가이드</h1>
+        <h1 class="header-title" data-kr="가이드" data-en="Articles" data-jp="記事">가이드</h1>
     </div>
 
     <div class="main-content">
@@ -26,18 +26,19 @@ custom_css: article
                 </div>
                 {% endif %}
                 <div class="article-content">
-                    <h3 class="article-title">{{ post.title }}</h3>
+                    <h3 class="article-title" style="font-size: 1.5rem; margin-top: 0px; margin-bottom: 4px; line-height: 1;"
+                        data-kr="{{ post.title }}" 
+                        data-en="{% if post.translations.en.title %}{{ post.translations.en.title }}{% else %}{{ post.title }}{% endif %}" 
+                        data-jp="{% if post.translations.jp.title %}{{ post.translations.jp.title }}{% else %}{{ post.title }}{% endif %}">
+                        {{ post.title }}
+                    </h3>
                     <div class="article-meta">
                         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %m월 %d일" }}</time>
                         {% if post.author %}
                         <span class="author">by {{ post.author }}</span>
                         {% endif %}
                     </div>
-                    {% if post.excerpt %}
-                    <div class="article-excerpt">
-                        {{ post.excerpt }}
-                    </div>
-                    {% endif %}
+                    
                 </div>
             </article>
         </a>
@@ -46,9 +47,98 @@ custom_css: article
 </div>
 
 <script>
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
+        
+        const seoData = {
+            'kr': {
+                title: '가이드 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X 관련 가이드와 팁을 확인하세요. 대미지 계산, 캐릭터 육성 등 다양한 정보를 제공합니다.'
+            },
+            'en': {
+                title: 'Articles - Persona 5: The Phantom X LufelNet',
+                description: 'Check out guides and tips for Persona 5: The Phantom X. We provide various information including damage calculation, character development, and more.'
+            },
+            'jp': {
+                title: '記事 - ペルソナ5 ザ・ファントム X LufelNet',
+                description: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。ダメージ計算、キャラクター育成など様々な情報を提供します。'
+            }
+        };
+        
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+        
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+        
+        // 메타 태그 업데이트
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+            metaDescription = document.createElement('meta');
+            metaDescription.name = 'description';
+            document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', currentSEO.description);
+        
+        let ogTitle = document.querySelector('meta[property="og:title"]');
+        if (!ogTitle) {
+            ogTitle = document.createElement('meta');
+            ogTitle.setAttribute('property', 'og:title');
+            document.head.appendChild(ogTitle);
+        }
+        ogTitle.setAttribute('content', currentSEO.title);
+        
+        let ogDescription = document.querySelector('meta[property="og:description"]');
+        if (!ogDescription) {
+            ogDescription = document.createElement('meta');
+            ogDescription.setAttribute('property', 'og:description');
+            document.head.appendChild(ogDescription);
+        }
+        ogDescription.setAttribute('content', currentSEO.description);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('article');
         VersionChecker.check();
+        updateSEOContent();
+        
+        // 현재 언어 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
+        
+        // 모든 data-* 속성이 있는 요소들의 텍스트 업데이트
+        document.querySelectorAll('[data-kr]').forEach(el => {
+            const text = el.getAttribute(`data-${currentLang}`);
+            if (text) {
+                el.textContent = text;
+            }
+        });
+        
+        
+        // 날짜 형식 변경
+        document.querySelectorAll('time').forEach(dateElement => {
+            const date = new Date(dateElement.getAttribute('datetime'));
+            
+            switch(currentLang) {
+                case 'en':
+                    dateElement.textContent = date.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    break;
+                case 'jp':
+                    dateElement.textContent = date.toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    break;
+                default: // kr
+                    dateElement.textContent = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+            }
+        });
     });
 </script>
 
@@ -87,7 +177,7 @@ custom_css: article
 
 .article-title {
     margin-bottom: 0.5rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 
 .article-title a {
@@ -107,11 +197,6 @@ custom_css: article
     gap: 1rem;
 }
 
-.article-excerpt {
-    color: rgba(255, 255, 255, 0.7);
-    margin: 1rem 0;
-    line-height: 1.6;
-}
 
 .article-tags {
     margin-top: 0.5rem;

@@ -72,10 +72,10 @@ const characterTranslations = {
     // 스탯 옵션 번역
     stats: {
         "공격력": "ATK",
-        "대미지 보너스": "DMG Bonus",
+        "대미지 보너스": "DMG Bonus(ATK Mult)",
         "크리티컬 효과": "CRIT DMG",
         "크리티컬 확률": "CRIT Rate",
-        "관통": "Penetration",
+        "관통": "Pierce Rate",
         "효과 명중": "Effect Hit",
         "치료 효과": "Healing Effect",
         "속도": "Speed",
@@ -86,20 +86,11 @@ const characterTranslations = {
     // 심상 스킬 번역
     mindSkills: {
         "SP 회복": "SP Recovery",
-        "대미지 보너스": "DMG Bonus",
+        "대미지 보너스": "DMG Bonus(ATK Mult)",
         "크리티컬 효과": "CRIT DMG",
         "크리티컬 확률": "CRIT Rate",
         "공격력": "ATK",
         "속도": "Speed",
         "생명": "HP"
-    },
-    
-    // 캐릭터 설명 번역 (샘플)
-    descriptions: {
-        "렌": "The protagonist of Persona 5. A transfer student with the power of the Wild Card.",
-        "모르가나": "A mysterious cat-like creature who serves as a guide to the Phantom Thieves.",
-        "류지": "Ren's first friend at Shujin Academy and a founding member of the Phantom Thieves.",
-        "안": "A quarter-American girl who becomes the third member of the Phantom Thieves.",
-        "원더": "The protagonist of Persona 5: The Phantom X. A new Phantom Thief with great potential."
     }
 }; 

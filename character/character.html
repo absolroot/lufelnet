@@ -1242,8 +1242,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     '생명': 'HP',
                     '생명력': 'HP',
                     '공격력': 'Attack',
-                    '대미지 보너스': 'Damage Bonus',
-                    '대미지보너스': 'Damage Bonus',
+                    '대미지 보너스': 'Dmg Bonus(ATK Mult)',
+                    '대미지보너스': 'Dmg Bonus(ATK Mult)',
                     '크리티컬 확률': 'Crit Rate',
                     '크리티컬확률': 'Crit Rate',
                     '크리티컬 효과': 'Crit Mult',
@@ -1359,7 +1359,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 enRevelationData로 변경해서 실행
-                        const modifiedScript = scriptContent.replace('const revelationData', 'window.enRevelationData');
+                        const modifiedScript = scriptContent.replace('const enRevelationData', 'window.enRevelationData');
                         eval(modifiedScript);
                         console.log('영어 계시 데이터 로드 완료:', window.enRevelationData);
                         resolve();
@@ -1370,11 +1370,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     });
             } else if (currentLang === 'jp') {
                 // 일본어 계시 데이터는 영어 데이터와 동일하게 사용
-                fetch(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
+                fetch(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`)
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 jpRevelationData로 변경해서 실행
-                        const modifiedScript = scriptContent.replace('const revelationData', 'window.jpRevelationData');
+                        const modifiedScript = scriptContent.replace('const jpRevelationData', 'window.jpRevelationData');
                         eval(modifiedScript);
                         console.log('일본어 계시 데이터 로드 완료:', window.jpRevelationData);
                         resolve();
@@ -1462,19 +1462,35 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '생명': 'HP',
                 '생명력': 'HP',
                 '공격력': 'Attack',
-                '대미지 보너스': 'Damage Bonus',
-                '대미지보너스': 'Damage Bonus',
-                '크리티컬 확률': 'Critical Rate',
-                '크리티컬확률': 'Critical Rate',
-                '크리티컬 효과': 'Critical Effect',
-                '크리티컬효과': 'Critical Effect',
-                '관통': 'Penetration',
+                '대미지 보너스': 'Dmg Bonus(ATK Mult)',
+                '대미지보너스': 'Dmg Bonus(ATK Mult)',
+                '크리티컬 확률': 'Crit Rate',
+                '크리티컬확률': 'Crit Rate',
+                '크리티컬 효과': 'Crit Mult',
+                '크리티컬효과': 'Crit Mult',
+                '관통': 'Pierce Rate',
                 '방어력': 'Defense',
                 '방어': 'Defense',
                 '효과 명중': 'Effect Hit',
                 '효과명중': 'Effect Hit',
                 '속도': 'Speed',
-                '치료효과': 'Healing Effect'
+                '치료효과': 'Healing Effect',
+                '추격': 'Follow-up',
+                '효과 저항': 'Effect Resi',
+                '효과저항': 'Effect Resi',
+                'SP 회복' : 'SP Recovery',
+                'SP회복' : 'SP Recovery',
+                '해명의힘' : 'Navi Power',
+                '해명의 힘' : 'Navi Power',
+                '직책' : 'Labor',
+                '마이팰리스 평점' : 'My Palace Rating',
+                '마이팰리스' : 'My Palace',
+                '실드 효과' : 'Shield Effect',
+                '대미지감면' : 'Damage Reduction',
+                '총기' : 'Gun Shot',
+                '총격' : 'Gun Shot',
+                '의식' : 'Awareness',
+                '전용무기' : 'Exclusive Weapon'
             },
             'jp': {
                 '생명': 'HP',
@@ -1492,7 +1508,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '효과 명중': '効果命中',
                 '효과명중': '効果命中',
                 '속도': '速度',
-                '치료효과': '治療効果'
+                '치료효과': '治療効果',
+                '추격': '追撃',
+                '효과 저항': '効果耐性',
+                '효과저항': '効果耐性',
+                'SP 회복' : 'SP 回復',
+                'SP회복' : 'SP 回復',
+                '해명의힘' : '解明の力',
+                '해명의 힘' : '解明の力',
+                '직책' : '職責',
+                '마이팰리스 평점' : 'マイパレス評価',
+                '마이팰리스' : 'マイパレス',
+                '실드 효과' : 'シールド効果',
+                '대미지감면' : 'ダメージ減少',
+                '총기' : '銃撃',
+                '총격' : '銃撃',
+                '의식' : '意識',
+                '전용무기' : '専用武器'
             }
         };
 

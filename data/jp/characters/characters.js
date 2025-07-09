@@ -1,9 +1,9 @@
 const characterList = {
     mainParty: [
         "렌", "루페르", "레오", "류지", "모르가나",
-        "모토하", "몽타뉴", "슌",
+        "모토하", "몽타뉴", "미나미", "슌",
         "세이지", "안",  "야오링", 
-        "원더", "유키미",
+        "원더", "유키미", "유이 YUI",
         "키요시", "토모코","토시야",
         "하루나"
         // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
@@ -21,6 +21,18 @@ const characterData = {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "유이 YUI": {
+        "role": "",
+        "tag": "",
+        "persona": "",
+        "release_order": 1
+    },
+    "미나미": {
+        "role": "",
+        "tag": "",
+        "persona": "",
+        "release_order": 1
     },
     "렌": {
         "role": "",

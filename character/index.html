@@ -569,8 +569,12 @@ redirect_from:
                 if (langChar.tag && langChar.tag !== '') {
                     mergedData[characterKey].tag = langChar.tag;
                 }
-                if (langChar.release_order !== undefined && langChar.release_order !== 0) {
+                // release_order는 언어별 데이터에 있으면 무조건 사용 (0도 유효한 값)
+                if (langChar.release_order !== undefined) {
                     mergedData[characterKey].release_order = langChar.release_order;
+                    console.log(`Using Lang release_order for ${characterKey}: ${langChar.release_order}`);
+                } else {
+                    console.log(`Using KR release_order for ${characterKey}: ${mergedData[characterKey].release_order}`);
                 }
                 
                 // 중요한 속성들이 제대로 보존되었는지 확인
@@ -681,10 +685,26 @@ redirect_from:
         
         // Sort by release_order (descending), then by rarity
         const sortedCharacters = availableCharacters.sort((a, b) => {
-            const releaseOrderDiff = characterData[b].release_order - characterData[a].release_order;
+            const aReleaseOrder = characterData[a].release_order || 0;
+            const bReleaseOrder = characterData[b].release_order || 0;
+            const releaseOrderDiff = bReleaseOrder - aReleaseOrder;
+            
+            // 디버깅용 로그 (처음 5개만)
+            if (availableCharacters.indexOf(a) < 5 || availableCharacters.indexOf(b) < 5) {
+                console.log(`Sorting ${a}(${aReleaseOrder}) vs ${b}(${bReleaseOrder}): ${releaseOrderDiff}`);
+            }
+            
             if (releaseOrderDiff !== 0) return releaseOrderDiff;
             return characterData[b].rarity - characterData[a].rarity;
         });
+        
+        // 정렬 결과 디버깅 로그
+        console.log('=== SORTED CHARACTERS DEBUG ===');
+        sortedCharacters.slice(0, 10).forEach((charName, index) => {
+            const char = characterData[charName];
+            console.log(`${index + 1}. ${charName}: release_order=${char.release_order}, rarity=${char.rarity}`);
+        });
+        console.log('=== END SORTED CHARACTERS DEBUG ===');
         
         // 초기 검색 결과 수 표시
         const countText = window.i18nFilteredCount || '전체';
@@ -799,7 +819,12 @@ redirect_from:
             
             // Add name
             const nameText = document.createElement('span');
-            nameText.textContent = charData.name;
+            // 영어일 때 코드네임 사용, 없으면 일반 이름 사용
+            if (currentLang === 'en' && charData.codename) {
+                nameText.textContent = charData.codename;
+            } else {
+                nameText.textContent = charData.name;
+            }
             nameText.className = 'name-text';
             nameText.dataset.persona3 = charData.persona3;
             nameText.dataset.persona4 = charData.persona4;
@@ -996,6 +1021,7 @@ redirect_from:
                             const charData = window.characterData[characterName];
                             const displayName = charData.name ? charData.name.toLowerCase() : '';
                             const originalName = characterName.toLowerCase();
+                            const codeName = charData.codename ? charData.codename.toLowerCase() : '';
                             
                             // 별칭 매칭도 포함
                             const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
@@ -1004,6 +1030,7 @@ redirect_from:
 
                             return displayName.includes(searchValue) || 
                                    originalName.includes(searchValue) ||
+                                   codeName.includes(searchValue) ||
                                    nicknameMatch !== undefined;
                         });
 
@@ -1056,7 +1083,9 @@ redirect_from:
                 
                 // characterData에서 해당 캐릭터 찾기
                 const characterKey = sortedCharacters.find(name => 
-                    window.characterData[name] && window.characterData[name].name === displayName
+                    window.characterData[name] && 
+                    (window.characterData[name].name === displayName || 
+                     window.characterData[name].codename === displayName)
                 );
 
                 // 별칭 매칭 확인
@@ -1064,9 +1093,15 @@ redirect_from:
                     nickname.toLowerCase().includes(searchValue) && realName === displayName
                 );
                 
+                // 코드네임도 검색 대상에 포함
+                const charData = characterKey ? window.characterData[characterKey] : null;
+                const codeNameMatch = charData && charData.codename && 
+                    charData.codename.toLowerCase().includes(searchValue);
+                
                 const shouldShow = searchValue === '' || 
                     (characterKey && characterKey.toLowerCase().includes(searchValue)) || 
                     displayNameLower.includes(searchValue) ||
+                    codeNameMatch ||
                     nicknameMatch !== undefined;
                 
                 card.style.display = shouldShow ? 'block' : 'none';
@@ -1111,10 +1146,15 @@ redirect_from:
                 if (characterKey && characterData[characterKey]) {
                     const char = characterData[characterKey];
                     
-                    // 이름 번역 (name_en 또는 name_jp 사용)
-                    const translatedName = currentLang === 'en' ? char.name_en : char.name_jp;
-                    if (translatedName) {
-                        nameElement.textContent = translatedName;
+                    // 영어일 때 코드네임 우선, 없으면 번역된 이름 사용
+                    if (currentLang === 'en') {
+                        if (char.codename) {
+                            nameElement.textContent = char.codename;
+                        } else if (char.name_en) {
+                            nameElement.textContent = char.name_en;
+                        }
+                    } else if (currentLang === 'jp' && char.name_jp) {
+                        nameElement.textContent = char.name_jp;
                     }
                     
                     // 속성 아이콘 alt 텍스트 번역

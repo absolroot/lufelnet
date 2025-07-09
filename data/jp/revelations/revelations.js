@@ -47,7 +47,7 @@ const mapping_jp = {
 }; 
 
 // Japanese revelation data
-const revelationData = {
+const jpRevelationData = {
     // Mapping for image paths (Korean -> Japanese)
     "mapping_jp": mapping_jp,
     // Korean -> Japanese translation mapping
@@ -348,4 +348,3 @@ const revelationData = {
         }
     }
 };
-

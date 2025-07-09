@@ -5,7 +5,7 @@ date: 2025-07-09 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
 author: Root
-thumbnail: /assets/img/logo/circle.png
+thumbnail: /apps/article/asset/damage1.png
 translations:
   kr:
     title: "페르소나5X 대미지 계산식"
@@ -117,10 +117,15 @@ translations:
 
 레벨 80 기준 약 10.7%의 차이를 보인다.
 
+
 | 의식 0 | 의식 1 | 의식 2 | 의식 3 | 의식 4 | 의식 5 | 의식 6 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1180  | 1202  | 1222  | 1244  | 1265  | 1286  | 1307  |
 |+0% | +1.8% |+3.6% | +5.4% | +7.2% | +8.9% | +10.7%|
+
+해당 공격력 값은 조커에 대한 예시로 캐릭터마다 다르다.
+
+전반적으로 같은 포지션에 있는 캐릭터는 비슷한 수치를 지닌다.
 
 <br>
 
@@ -363,6 +368,94 @@ translations:
 
 모든 값이 계산되고 난 다음 0.95 ~ 1.05 사이의 값이 랜덤하게 곱해져서 대미지가 결정된다.
 
+---
+
+# 계산 예시
+
+
+```markdown
+ⓐ {(캐릭터 공격력 값 + 무기 공격력 값) × 공격력 % + 공격력 상수}
+
+× ⓑ {100% + 대미지 보너스 + 속성 대미지 보너스 + 적이 받는 대미지 증가}
+
+× ⓒ 1 - {적 방어 값 × [(100% + 추가 방어 계수) × (100% - 관통) - 방어력 감소] × (100% - 풍습 12%)} 
+÷ {적 방어 값 × [(100% + 추가 방어 계수) × (100% - 관통) - 방어력 감소] × (100% - 풍습 12%) + 1400}
+
+× ⓓ {크리티컬 효과 (크리티컬 발생 시) 또는 안정 영역}
+
+× ⓔ 스킬 계수 
+
+× ⓕ 약점 계수 (내성 50% / 일반 100% / 약점 120%)
+
+× ⓖ 최종 대미지 보너스 
+
+× ⓗ 기타 계수 
+
+× ⓘ 랜덤 범위 계수 (0.95~1.05)
+```
+
+<br>
+
+
+다음은 각각 합산된 값을 가정한 결과
+
+- ⓐ 캐릭터 공격력 값 : 1200
+
+- ⓐ 무기 공격력 값 : 600
+
+- ⓐ 공격력 % : 50%
+
+- ⓐ 공격력 상수 : 500
+
+- ⓑ 대미지 보너스 : 50%
+
+- ⓑ 주원 대미지 증가 : 20%
+
+- ⓑ 적이 받는 대미지 증가 : 20%
+
+- ⓒ 도미니온 방어력 : 400
+
+- ⓒ 도미니온 추가 방어 계수 : 158.3% 
+
+- ⓒ 관통 : 10%
+
+- ⓒ 방어력 감소 : 80%
+
+- ⓒ 풍습 상태이상 : YES 12%
+
+- ⓓ 크리티컬 확률 : 40%
+
+- ⓓ 크리티컬 효과 : 220%
+
+- ⓔ 스킬 계수 : 120%
+
+- ⓕ 약점 계수 : 120% (약점)
+
+- ⓖ 최종 대미지 보너스 : 40%
+
+
+```
+ⓐ {(1200+600) × 1.5 + 500}
+
+× ⓑ (100% + 50% + 20% + 20%)
+
+× ⓒ 1 - {400 × (258.3% * 0.9 - 80%) × 0.88} ÷ {400 × (258.3% * 0.9 - 80%) × 0.88 + 1400}
+
+× ⓓ (100% + 40% × (220%-100%))
+
+× ⓔ 120%
+
+× ⓕ 120%
+
+× ⓖ 140%
+
+× ⓘ 0.95~1.05
+
+= ⓐ3200 × ⓑ1.9 ×  ⓒ0.7228 × ⓓ1.48 × ⓔ1.2 × ⓕ1.2 × ⓖ1.4 × ⓘ0.95~1.05
+
+= 12456 ~ 13768
+```
+
 <br>
 
 </div>
@@ -392,7 +485,7 @@ A more detailed formula is as follows:
 ```markdown
 ⓐ {(Character Attack Value + Weapon Attack Value) × Attack % + Attack Constant}
 
-× ⓑ {100% + Damage Bonus + Elemental Damage Bonus + Increased Damage Taken by Enemy}
+× ⓑ {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
 
 × ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%)} 
 ÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%) + 1400}
@@ -473,6 +566,10 @@ At level 80, there's approximately a 10.7% difference.
 | 1180  | 1202  | 1222  | 1244  | 1265  | 1286  | 1307  |
 |+0% | +1.8% |+3.6% | +5.4% | +7.2% | +8.9% | +10.7%|
 
+The attack power values shown are examples for Joker and differ for each character.
+
+Generally, characters in the same position have similar values.
+
 <br>
 
 ### ⓐ-**2. Weapon Attack Value**
@@ -507,7 +604,7 @@ In the image below, 46 corresponds to this. It's added after all attack power ca
 
 # ⓑ Damage Bonus
 
-> {100% + Damage Bonus + Elemental Damage Bonus + Increased Damage Taken by Enemy}
+> {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
 
 <br>
 
@@ -714,6 +811,75 @@ In certain gimmicks or boss battles, there are forms where final damage increase
 
 After all values are calculated, a random value between 0.95 ~ 1.05 is multiplied to determine the final damage.
 
+---
+
+# Calculation Example
+
+```markdown
+ⓐ {(Character Attack Value + Weapon Attack Value) × Attack % + Attack Constant}
+
+× ⓑ {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
+
+× ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%)} 
+÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%) + 1400}
+
+× ⓓ {Critical Effect (when Critical occurs) or Stable Domain}
+
+× ⓔ Skill Coefficient 
+
+× ⓕ Weakness Coefficient (Resistance 50% / Normal 100% / Weakness 120%)
+
+× ⓖ Final Damage Bonus 
+
+× ⓗ Other Coefficients 
+
+× ⓘ Random Range Coefficient (0.95~1.05)
+```
+
+<br>
+
+The following are the results assuming each summed value:
+
+- ⓐ Character Attack Value: 1200
+- ⓐ Weapon Attack Value: 600
+- ⓐ Attack %: 50%
+- ⓐ Attack Constant: 500
+- ⓑ Damage Bonus (Attack Mult.): 50%
+- ⓑ Fire Damage Increase: 20%
+- ⓑ Increased Damage Taken by Enemy: 20%
+- ⓒ Dominion Defense: 400
+- ⓒ Dominion Additional Defense Coefficient: 158.3%
+- ⓒ Pierce: 10%
+- ⓒ Defense Reduction: 80%
+- ⓒ Winded Status: YES 12%
+- ⓓ Critical Rate: 40%
+- ⓓ Critical Effect: 220%
+- ⓔ Skill Coefficient: 120%
+- ⓕ Weakness Coefficient: 120% (Weakness)
+- ⓖ Final Damage Bonus: 40%
+
+```
+ⓐ {(1200+600) × 1.5 + 500}
+
+× ⓑ (100% + 50% + 20% + 20%)
+
+× ⓒ 1 - {400 × (258.3% * 0.9 - 80%) × 0.88} ÷ {400 × (258.3% * 0.9 - 80%) × 0.88 + 1400}
+
+× ⓓ (100% + 40% × (220%-100%))
+
+× ⓔ 120%
+
+× ⓕ 120%
+
+× ⓖ 140%
+
+× ⓘ 0.95~1.05
+
+= ⓐ3200 × ⓑ1.9 ×  ⓒ0.7228 × ⓓ1.48 × ⓔ1.2 × ⓕ1.2 × ⓖ1.4 × ⓘ0.95~1.05
+
+= 12456 ~ 13768
+```
+
 <br>
 
 </div>
@@ -824,6 +990,10 @@ After all values are calculated, a random value between 0.95 ~ 1.05 is multiplie
 | --- | --- | --- | --- | --- | --- | --- |
 | 1180  | 1202  | 1222  | 1244  | 1265  | 1286  | 1307  |
 |+0% | +1.8% |+3.6% | +5.4% | +7.2% | +8.9% | +10.7%|
+
+この攻撃力値はジョーカーの例で、キャラクターごとに異なります。
+
+全体的に同じポジションのキャラクターは似た数値を持ちます。
 
 <br>
 
@@ -1066,6 +1236,75 @@ After all values are calculated, a random value between 0.95 ~ 1.05 is multiplie
 # ⓘ ランダム範囲係数
 
 すべての値が計算された後、0.95 ~ 1.05の間の値がランダムに乗算されてダメージが決定されます。
+
+---
+
+# 計算例
+
+```markdown
+ⓐ {(キャラクター攻撃力値 + 武器攻撃力値) × 攻撃力% + 攻撃力定数}
+
+× ⓑ {100% + ダメージボーナス + 属性ダメージボーナス + 敵が受けるダメージ増加}
+
+× ⓒ 1 - {敵防御力値 × [(100% + 追加防御係数) × (100% - 貫通) - 防御力減少] × (100% - 疲労 12%)} 
+÷ {敵防御力値 × [(100% + 追加防御係数) × (100% - 貫通) - 防御力減少] × (100% - 疲労 12%) + 1400}
+
+× ⓓ {クリティカル効果 (クリティカル発生時) または安定領域}
+
+× ⓔ スキル係数 
+
+× ⓕ 弱点係数 (耐性 50% / 通常 100% / 弱点 120%)
+
+× ⓖ 最終ダメージボーナス 
+
+× ⓗ その他係数 
+
+× ⓘ ランダム範囲係数 (0.95~1.05)
+```
+
+<br>
+
+以下は各値を合算した仮定の結果：
+
+- ⓐ キャラクター攻撃力値: 1200
+- ⓐ 武器攻撃力値: 600
+- ⓐ 攻撃力%: 50%
+- ⓐ 攻撃力定数: 500
+- ⓑ ダメージボーナス: 50%
+- ⓑ 火炎ダメージ増加: 20%
+- ⓑ 敵が受けるダメージ増加: 20%
+- ⓒ ドミニオン防御力: 400
+- ⓒ ドミニオン追加防御係数: 158.3%
+- ⓒ 貫通: 10%
+- ⓒ 防御力減少: 80%
+- ⓒ 疲労状態異常: YES 12%
+- ⓓ クリティカル確率: 40%
+- ⓓ クリティカル効果: 220%
+- ⓔ スキル係数: 120%
+- ⓕ 弱点係数: 120% (弱点)
+- ⓖ 最終ダメージボーナス: 40%
+
+```
+ⓐ {(1200+600) × 1.5 + 500}
+
+× ⓑ (100% + 50% + 20% + 20%)
+
+× ⓒ 1 - {400 × (258.3% * 0.9 - 80%) × 0.88} ÷ {400 × (258.3% * 0.9 - 80%) × 0.88 + 1400}
+
+× ⓓ (100% + 40% × (220%-100%))
+
+× ⓔ 120%
+
+× ⓕ 120%
+
+× ⓖ 140%
+
+× ⓘ 0.95~1.05
+
+= ⓐ3200 × ⓑ1.9 ×  ⓒ0.7228 × ⓓ1.48 × ⓔ1.2 × ⓕ1.2 × ⓖ1.4 × ⓘ0.95~1.05
+
+= 12456 ~ 13768
+```
 
 <br>
 

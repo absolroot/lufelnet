@@ -47,7 +47,7 @@ const mapping_en = {
 };
 
 // English revelation data
-const revelationData = {
+const enRevelationData = {
     // Mapping for image paths (Korean -> English)
     "mapping_en": mapping_en,
     // Korean -> English translation mapping
@@ -348,4 +348,3 @@ const revelationData = {
         }
     }
 };
-

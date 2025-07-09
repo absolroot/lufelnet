@@ -31,7 +31,7 @@ alternate_urls:
     
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">계시</span>
     </div>
@@ -224,8 +224,8 @@ alternate_urls:
             const existingTooltip = document.querySelector('script[src="/data/kr/tooltip.js"]');
             if (existingTooltip) existingTooltip.remove();
             
-            const existingData = document.querySelector(`script[src="${scriptSrc}"]`);
-            if (existingData) existingData.remove();
+            // 모든 기존 revelation 스크립트 제거
+            document.querySelectorAll('script[src*="revelations.js"]').forEach(script => script.remove());
             
             // tooltip.js 로드
             const tooltipScript = document.createElement('script');
@@ -235,16 +235,31 @@ alternate_urls:
                 const dataScript = document.createElement('script');
                 dataScript.src = scriptSrc;
                 dataScript.onload = () => {
-                    // 데이터 로드 후 addTooltips 함수 정의
-                    window.addTooltips = function() {
-                        const tooltips = document.querySelectorAll('[data-tooltip]');
-                        tooltips.forEach(element => {
-                            const tooltipText = element.getAttribute('data-tooltip');
-                            // 툴팁 로직 구현
-                            element.title = tooltipText;
-                        });
-                    };
-                    resolve();
+                    // 언어별 전역 변수 설정
+                    setTimeout(() => {
+                        if (lang === 'en' && typeof enRevelationData !== 'undefined') {
+                            window.enRevelationData = enRevelationData;
+                            console.log('English revelation data loaded:', enRevelationData);
+                        } else if (lang === 'jp' && typeof jpRevelationData !== 'undefined') {
+                            window.jpRevelationData = jpRevelationData;
+                            console.log('Japanese revelation data loaded:', jpRevelationData);
+                        } else if (lang === 'kr' && typeof revelationData !== 'undefined') {
+                            console.log('Korean revelation data loaded:', revelationData);
+                        } else {
+                            console.warn('No revelation data found for language:', lang);
+                        }
+                        
+                        // 데이터 로드 후 addTooltips 함수 정의
+                        window.addTooltips = function() {
+                            const tooltips = document.querySelectorAll('[data-tooltip]');
+                            tooltips.forEach(element => {
+                                const tooltipText = element.getAttribute('data-tooltip');
+                                // 툴팁 로직 구현
+                                element.title = tooltipText;
+                            });
+                        };
+                        resolve();
+                    }, 100); // 100ms 지연으로 데이터 로딩 완료 보장
                 };
                 dataScript.onerror = () => reject(new Error(`Failed to load ${scriptSrc}`));
                 document.head.appendChild(dataScript);
@@ -443,6 +458,26 @@ alternate_urls:
         }
     });
 
+    // 현재 언어에 맞는 revelation 데이터 가져오기
+    function getCurrentRevelationData() {
+        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+        
+        let data = null;
+        switch (currentLang) {
+            case 'en':
+                data = window.enRevelationData || (typeof enRevelationData !== 'undefined' ? enRevelationData : null);
+                break;
+            case 'jp':
+                data = window.jpRevelationData || (typeof jpRevelationData !== 'undefined' ? jpRevelationData : null);
+                break;
+            default:
+                data = window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : null);
+        }
+        
+        // 데이터가 없으면 기본 revelationData 사용
+        return data || window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : {main: {}, sub: {}, sub_effects: {}, set_effects: {}});
+    }
+
     function initializePageContent() {
         const cardsContainer = document.getElementById('revelationCards');
         const searchCount = document.querySelector('.search-count');
@@ -450,9 +485,22 @@ alternate_urls:
         // 현재 언어 확인
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
         
+        // 현재 언어에 맞는 데이터 가져오기
+        const currentRevelationData = getCurrentRevelationData();
+        
+        // 데이터 유효성 검사
+        if (!currentRevelationData || !currentRevelationData.main || !currentRevelationData.sub) {
+            console.error('Revelation data not loaded properly:', currentRevelationData);
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = '계시 데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+            cardsContainer.appendChild(errorDiv);
+            return;
+        }
+        
         // Separate main revelations and sub revelations
-        const mainRevelations = Object.keys(revelationData.main);
-        const subRevelations = Object.keys(revelationData.sub);
+        const mainRevelations = Object.keys(currentRevelationData.main);
+        const subRevelations = Object.keys(currentRevelationData.sub);
         
         // Create array of all revelations (sub revelations first, then main revelations)
         const allRevelations = [
@@ -477,16 +525,16 @@ alternate_urls:
             
             // If not Korean, find Korean name from mapping
             if (currentLang !== 'kr') {
-                if (revelationData.mapping_jp) {
+                if (currentLang === 'jp' && currentRevelationData.mapping_jp) {
                     // Find Korean name from Japanese mapping
-                    const koreanKey = Object.keys(revelationData.mapping_jp).find(key => 
-                        revelationData.mapping_jp[key] === revelation.name
+                    const koreanKey = Object.keys(currentRevelationData.mapping_jp).find(key => 
+                        currentRevelationData.mapping_jp[key] === revelation.name
                     );
                     if (koreanKey) koreanName = koreanKey;
-                } else if (revelationData.mapping_en) {
+                } else if (currentLang === 'en' && currentRevelationData.mapping_en) {
                     // Find Korean name from English mapping
-                    const koreanKey = Object.keys(revelationData.mapping_en).find(key => 
-                        revelationData.mapping_en[key] === revelation.name
+                    const koreanKey = Object.keys(currentRevelationData.mapping_en).find(key => 
+                        currentRevelationData.mapping_en[key] === revelation.name
                     );
                     if (koreanKey) koreanName = koreanKey;
                 }
@@ -563,30 +611,34 @@ alternate_urls:
             
             if (revelation.type === 'sub') {
                 // For sub revelations, show 2-set and 4-set effects
-                const effects = revelationData.sub_effects[revelation.name];
-                const setLabel2 = window.i18nSetEffect2 || '2세트';
-                const setLabel4 = window.i18nSetEffect4 || '4세트';
-                
-                effectsContainer.innerHTML = `
-                    <div class="effect-set">
-                        <div class="set-label">${setLabel2}</div>
-                        <div class="set-desc">${effects.set2}</div>
-                    </div>
-                    <div class="effect-set">
-                        <div class="set-label">${setLabel4}</div>
-                        <div class="set-desc">${effects.set4}</div>
-                    </div>
-                `;
+                const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
+                if (effects) {
+                    const setLabel2 = window.i18nSetEffect2 || '2세트';
+                    const setLabel4 = window.i18nSetEffect4 || '4세트';
+                    
+                    effectsContainer.innerHTML = `
+                        <div class="effect-set">
+                            <div class="set-label">${setLabel2}</div>
+                            <div class="set-desc">${effects.set2 || ''}</div>
+                        </div>
+                        <div class="effect-set">
+                            <div class="set-label">${setLabel4}</div>
+                            <div class="set-desc">${effects.set4 || ''}</div>
+                        </div>
+                    `;
+                }
             } else {
                 // For main revelations, show set_effects
-                const mainEffects = revelationData.set_effects[revelation.name];
-                effectsContainer.innerHTML = Object.entries(mainEffects)
-                    .map(([subName, effect]) => `
-                        <div class="effect-set">
-                            <div class="set-label">${subName}</div>
-                            <div class="set-desc">${effect}</div>
-                        </div>
-                    `).join('');
+                const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
+                if (mainEffects) {
+                    effectsContainer.innerHTML = Object.entries(mainEffects)
+                        .map(([subName, effect]) => `
+                            <div class="effect-set">
+                                <div class="set-label">${subName}</div>
+                                <div class="set-desc">${effect}</div>
+                            </div>
+                        `).join('');
+                }
             }
             
             infoContainer.appendChild(typeLabel);
@@ -616,22 +668,30 @@ alternate_urls:
             const cards = document.querySelectorAll('.card');
             let visibleCount = 0;
             
+            // 현재 언어에 맞는 데이터 가져오기
+            const currentRevelationData = getCurrentRevelationData();
+            
             // List of filtered sub revelations
-            let filteredSubRevelations = Object.entries(revelationData.sub_effects).filter(([name, effects]) => {
-                const elementMatch = selectedElements.length === 0 || 
-                    selectedElements.some(element => effects.type.includes(element));
-                const effectMatch = selectedEffects.length === 0 || 
-                    selectedEffects.some(effect => effects.type.includes(effect));
-                return elementMatch && effectMatch;
-            }).map(([name]) => name);
+            let filteredSubRevelations = [];
+            if (currentRevelationData.sub_effects) {
+                filteredSubRevelations = Object.entries(currentRevelationData.sub_effects).filter(([name, effects]) => {
+                    const elementMatch = selectedElements.length === 0 || 
+                        (effects.type && selectedElements.some(element => effects.type.includes(element)));
+                    const effectMatch = selectedEffects.length === 0 || 
+                        (effects.type && selectedEffects.some(effect => effects.type.includes(effect)));
+                    return elementMatch && effectMatch;
+                }).map(([name]) => name);
+            }
 
             // Find main revelations related to filtered sub revelations
             let relatedMainRevelations = new Set();
-            Object.entries(revelationData.main).forEach(([mainName, subNames]) => {
-                if (subNames.some(subName => filteredSubRevelations.includes(subName))) {
-                    relatedMainRevelations.add(mainName);
-                }
-            });
+            if (currentRevelationData.main) {
+                Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
+                    if (Array.isArray(subNames) && subNames.some(subName => filteredSubRevelations.includes(subName))) {
+                        relatedMainRevelations.add(mainName);
+                    }
+                });
+            }
 
             cards.forEach(card => {
                 const type = card.dataset.type;
@@ -754,15 +814,18 @@ alternate_urls:
             activeCard = card;
             card.classList.add('active');
 
+            // 현재 언어에 맞는 데이터 가져오기
+            const currentRevelationData = getCurrentRevelationData();
+
             let relatedRevelations = [];
-            if (type === 'main') {
+            if (type === 'main' && currentRevelationData.main) {
                 // For main revelations, get all connected sub revelations
-                relatedRevelations = revelationData.main[name] || [];
+                relatedRevelations = currentRevelationData.main[name] || [];
                 relatedRevelations.push(name);
-            } else if (type === 'sub') {
+            } else if (type === 'sub' && currentRevelationData.main) {
                 // For sub revelations, find all main revelations that include this sub revelation
-                Object.entries(revelationData.main).forEach(([mainName, subNames]) => {
-                    if (subNames.includes(name)) {
+                Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
+                    if (Array.isArray(subNames) && subNames.includes(name)) {
                         relatedRevelations.push(mainName);
                     }
                 });

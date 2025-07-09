@@ -40,6 +40,60 @@ custom_css: article
 </div>
 
 <script>
+// 언어별 SEO 설정 함수
+function updateSEOContent() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lang') || 'kr';
+    
+    const pageTitle = document.querySelector('.article-title').textContent;
+    const baseTitle = 'LufelNet';
+    
+    const seoData = {
+        'kr': {
+            title: `${pageTitle} - ${baseTitle}`,
+            description: '페르소나5 더 팬텀 X 관련 가이드와 팁을 확인하세요.'
+        },
+        'en': {
+            title: `${pageTitle} - ${baseTitle}`,
+            description: 'Check out guides and tips for Persona 5: The Phantom X.'
+        },
+        'jp': {
+            title: `${pageTitle} - ${baseTitle}`,
+            description: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。'
+        }
+    };
+    
+    const currentSEO = seoData[currentLang] || seoData['kr'];
+    
+    // 타이틀 업데이트
+    document.title = currentSEO.title;
+    
+    // 메타 태그 업데이트
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.name = 'description';
+        document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', currentSEO.description);
+    
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+        ogTitle = document.createElement('meta');
+        ogTitle.setAttribute('property', 'og:title');
+        document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', currentSEO.title);
+    
+    let ogDescription = document.querySelector('meta[property="og:description"]');
+    if (!ogDescription) {
+        ogDescription = document.createElement('meta');
+        ogDescription.setAttribute('property', 'og:description');
+        document.head.appendChild(ogDescription);
+    }
+    ogDescription.setAttribute('content', currentSEO.description);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     Navigation.load('article');
     VersionChecker.check();
@@ -98,6 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
         default: // kr
             dateElement.textContent = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
     }
+    
+    // SEO 업데이트 (모든 언어별 콘텐츠 업데이트 후)
+    updateSEOContent();
 });
 </script>
 

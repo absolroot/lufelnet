@@ -544,7 +544,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const text = document.createElement('span');
             // 번역된 이름으로 표시
-            text.textContent = translateRevelationName(revelation, isMainRevelation);
+            let translatedName = translateRevelationName(revelation, isMainRevelation);
+            // 6글자 넘어가면 4글자까지만 보여주고 ".." 붙여서 6글자로 만들기
+            if (translatedName.length > 6) {
+                translatedName = translatedName.substring(0, 4) + '..';
+            }
+            text.textContent = translatedName;
             
             const icon = document.createElement('img');
             // 아이콘은 항상 한국어 이름(원본)으로 경로 설정
@@ -573,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     translationDataKeys: translationData ? Object.keys(translationData.sub_effects || {}) : []
                 });
                 
-                if ((currentLang === 'en' || currentLang === 'jp') && translationData && translationData.sub_effects) {
+                if (currentLang === 'en' && translationData && translationData.sub_effects) {
                     // 한국어 키를 영어 키로 변환
                     const englishKey = translateRevelationName(revelation, false);
                     console.log('영어 키 변환:', revelation, '→', englishKey);
@@ -582,9 +587,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         effectData = translationData.sub_effects[englishKey];
                         set2Text = effectData.set2;
                         set4Text = effectData.set4;
-                        console.log('번역된 효과 데이터 사용:', effectData);
+                        console.log('영어 효과 데이터 사용:', effectData);
                     } else {
-                        console.log('번역된 효과 데이터 없음:', englishKey);
+                        console.log('영어 효과 데이터 없음:', englishKey);
+                        console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
+                    }
+                } else if (currentLang === 'jp' && translationData && translationData.sub_effects) {
+                    // 한국어 키를 일본어 키로 변환
+                    const japaneseKey = translateRevelationName(revelation, false);
+                    console.log('일본어 키 변환:', revelation, '→', japaneseKey);
+                    
+                    if (translationData.sub_effects[japaneseKey]) {
+                        effectData = translationData.sub_effects[japaneseKey];
+                        set2Text = effectData.set2;
+                        set4Text = effectData.set4;
+                        console.log('일본어 효과 데이터 사용:', effectData);
+                    } else {
+                        console.log('일본어 효과 데이터 없음:', japaneseKey);
                         console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
                     }
                 } else if (revelationData.sub_effects && revelationData.sub_effects[revelation]) {
@@ -622,11 +641,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // 언어별 세트 효과 데이터 사용
-                if ((currentLang === 'en' || currentLang === 'jp') && translationData && translationData.set_effects) {
+                if (currentLang === 'en' && translationData && translationData.set_effects) {
                     // 한국어 키를 영어 키로 변환
                     const englishMainKey = translateRevelationName(revelation, true);
                     if (translationData.set_effects[englishMainKey]) {
                         setEffectsData = translationData.set_effects[englishMainKey];
+                    }
+                } else if (currentLang === 'jp' && translationData && translationData.set_effects) {
+                    // 한국어 키를 일본어 키로 변환
+                    const japaneseMainKey = translateRevelationName(revelation, true);
+                    if (translationData.set_effects[japaneseMainKey]) {
+                        setEffectsData = translationData.set_effects[japaneseMainKey];
                     }
                 } else if (revelationData.set_effects && revelationData.set_effects[revelation]) {
                     setEffectsData = revelationData.set_effects[revelation];
@@ -648,10 +673,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         // 표시된 번역 텍스트를 원본 키로 역매핑해서 매칭
                         let subRevKeys;
                         
-                        if ((currentLang === 'en' || currentLang === 'jp') && translationData) {
-                            // 번역 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
+                        if (currentLang === 'en' && translationData) {
+                            // 영어 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
                             subRevKeys = Object.keys(setEffectsData).filter(englishSubKey => {
                                 return currentSubRevs.includes(englishSubKey);
+                            });
+                        } else if (currentLang === 'jp' && translationData) {
+                            // 일본어 데이터 사용 시: 표시된 일본어 이름을 일본어 키로 직접 매칭
+                            subRevKeys = Object.keys(setEffectsData).filter(japaneseSubKey => {
+                                return currentSubRevs.includes(japaneseSubKey);
                             });
                         } else {
                             // 한국어 데이터 사용 시: 표시된 한국어 이름을 한국어 키로 매칭
@@ -666,8 +696,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             const mainTitle = translateRevelationName(revelation, true);
                             
                             let subTitle;
-                            if ((currentLang === 'en' || currentLang === 'jp') && translationData) {
+                            if (currentLang === 'en' && translationData) {
                                 // 영어 키를 그대로 사용
+                                subTitle = subRevKey;
+                            } else if (currentLang === 'jp' && translationData) {
+                                // 일본어 키를 그대로 사용
                                 subTitle = subRevKey;
                             } else {
                                 // 한국어 키를 번역
@@ -687,8 +720,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         const allEffectsText = Object.entries(setEffectsData)
                             .map(([subRevKey, effect]) => {
                                 let subTitle;
-                                if ((currentLang === 'en' || currentLang === 'jp') && translationData) {
+                                if (currentLang === 'en' && translationData) {
                                     // 영어 키를 그대로 사용
+                                    subTitle = subRevKey;
+                                } else if (currentLang === 'jp' && translationData) {
+                                    // 일본어 키를 그대로 사용
                                     subTitle = subRevKey;
                                 } else {
                                     // 한국어 키를 번역

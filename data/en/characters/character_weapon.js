@@ -2,6 +2,40 @@ const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "미나미": {
+        "name": "Minami Miyashita",
+        "weapon4-1":{
+            "name": "Hymn of Life",
+            "health": 2188,
+            "attack": 481,
+            "defense": 355,
+            "description": "Increase healing effect by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. Increase continuous healing effect by 28.5%/37.0%/37.0%/45.5%/45.5%/54.0%/54.0%. After using a healing skill, 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% chance to grant Blessing to the main target."
+        },
+        "weapon5-1":{
+            "name": "Angel Heart",
+            "health": 2735,
+            "attack": 601,
+            "defense": 444,
+            "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When Minami has Diagnosis, increase healing effect by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%. When spending Diagnosis, increase party's damage by 25.0%/33.0%/33.0%/41.0%/41.0%/49.0%/49.0% for 1 turn."
+        }
+    },
+    "유이 YUI": {
+        "name": "YUI",
+        "weapon4-1": {
+            "name": "Meta Directors",
+            "health": 1807,
+            "attack": 607,
+            "defense": 299,
+            "description": "Increase critical rate by 7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%. When performing a follow-up attack, increase Electric damage by 9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4% for 1 turn. Stacks up to 2 times."
+        },
+        "weapon5-1":{
+            "name": "Cyber Jammers",
+            "health": 2259,
+            "attack": 759,
+            "defense": 374,
+            "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/29.0%/29.0%/34.5%. Increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. When a follow-up attack is activated by an ally with Player 2, or by an ally dealing Electric damage with a skill, increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
+        }
+    },
     "렌": {
         "name": "Ren Amamiya",
         "weapon4-1": {

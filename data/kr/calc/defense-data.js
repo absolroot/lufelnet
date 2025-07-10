@@ -633,7 +633,7 @@ const defenseCalcData = [
         type: "의식1",
         target: "단일",
         skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
-        skillName: "만약 망가진다면",
+        skillName: "부서진다면",
         options: ["의식1","의식6"],
         values: {
             "의식1": 30.0,

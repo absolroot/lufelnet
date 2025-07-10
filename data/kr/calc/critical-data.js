@@ -282,6 +282,41 @@ const criticalCalcData = [
         note: ""
     },
     {
+        id: "ichigo1",
+        charName: "이치고",
+        charImage: "이치고.webp",
+        type: "의식0",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "중독된 사랑",
+        options: [],
+        values: {
+        },
+        value: 15.0,
+        duration: "",
+        note: "『집착』 2중첩"
+    },
+    {
+        id: "ichigo2",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "자신",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/이치고-5-01.png`,
+        skillName: "죽음의 인형극",
+        options: ["개조0","개조1&2","개조3&4","개조5&6"],
+        values: {
+            "개조0": 18.1,
+            "개조1&2": 23.5,
+            "개조3&4": 28.9,
+            "개조5&6": 34.3
+        },
+        defaultOption: "개조5&6",
+        value: 34.3,
+        duration: "",
+        note: ""
+    },
+    {
         id: "sanada1",
         charName: "사나다",
         charImage: "사나다.webp",

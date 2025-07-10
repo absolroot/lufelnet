@@ -94,8 +94,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지 보너스 16%",
         "mind_stats2": "관통 7.5%!",
-        "mind_skill1": "",
-        "mind_skill2": ""
+        "mind_skill1": "1/2",
+        "mind_skill2": "3/HL!"
     },
     "사나다": {
         "limit": true,

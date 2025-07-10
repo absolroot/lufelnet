@@ -1,16 +1,16 @@
 ---
 layout: article
-title: "페르소나5X 대미지 계산 공식"
-date: 2025-07-09 12:00:00 +0900
+title: "페르소나5X 대미지 계산 공식에 대해"
+date: 2025-07-10 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
 author: Root
-thumbnail: /apps/article/asset/damage1.png
+thumbnail: /apps/article/asset/damage.gif
 translations:
   kr:
     title: "페르소나5X 대미지 계산 공식에 대해"
   en:
-    title: "Abot Persona 5X Damage Calculation"
+    title: "About Persona 5X Damage Calculation"
   jp:
     title: "ペルソナ5X ダメージ計算"
 ---
@@ -18,7 +18,7 @@ translations:
 <div class="content-kr" markdown="1">
 페르소나5X는 정말 복합적인 요소의 곱셈을 통해 대미지가 결정된다.
 
-![damage.png](/apps/article/asset/damage1.png)
+![damage.gif](/apps/article/asset/damage.gif)
 
 이를 모두 이해한다면 기상천외한 딜을 뽑아내는 택틱을 만들 수 있고, 곧 순위 상승으로 이어지게 된다.
 
@@ -463,7 +463,7 @@ translations:
 <div class="content-en" markdown="1">
 Persona 5X determines damage through a complex multiplication of various factors.
 
-![damage.png](/apps/article/asset/damage1.png)
+![damage.gif](/apps/article/asset/damage.gif)
 
 Understanding all of these will allow you to create extraordinary damage-dealing tactics, leading to rank improvements.
 
@@ -887,7 +887,7 @@ The following are the results assuming each summed value:
 <div class="content-jp" markdown="1">
 ペルソナ5Xは、複雑な要素の乗算によってダメージが決定されます。
 
-![damage.png](/apps/article/asset/damage1.png)
+![damage.gif](/apps/article/asset/damage.gif)
 
 これらをすべて理解することで、驚異的なダメージを出すタクティクスを作成でき、ランクの上昇につながります。
 

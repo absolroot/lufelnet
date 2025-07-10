@@ -3,11 +3,16 @@ layout: default
 custom_css: article
 ---
 
+<script>
+    document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
+</script>
+  
+
 <div class="main-wrapper">
     <div class="navigation-path">
         <a href="/" data-kr="홈" data-en="Home" data-jp="ホーム">홈</a>
         <span class="separator">></span>
-        <a href="/article/" data-kr="아티클" data-en="Articles" data-jp="記事">아티클</a>
+        <a href="/article/" data-kr="가이드" data-en="Guide" data-jp="ガイド">가이드</a>
         <span class="separator">></span>
         <span class="current-page" data-kr="{{ page.translations.kr.title }}" data-en="{{ page.translations.en.title }}" data-jp="{{ page.translations.jp.title }}">{{ page.title }}</span>
     </div>

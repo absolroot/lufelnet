@@ -104,10 +104,10 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'about'],
-            en: ['character', 'persona', 'revelations', 'tier', 'about'],
-            jp: ['character', 'persona', 'revelations', 'tier', 'about'],
-            cn: ['character', 'about']
+            kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            en: ['character', 'persona', 'revelations', 'tier', 'article', 'about'],
+            jp: ['character', 'persona', 'revelations', 'tier', 'article', 'about'],
+            cn: ['character', 'article', 'about']
         };
 
         const currentMenus = availableMenus[currentLang] || availableMenus.kr;
@@ -192,7 +192,7 @@ class Navigation {
                 ` : ''}
                 ${currentMenus.includes('article') ? `
                 <a href="${BASE_URL}/article/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="article">
-                    <img src="${BASE_URL}/assets/img/nav/about.png" alt="article" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/article.png" alt="article" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.article}">${texts.article}</span>
                 </a>
                 ` : ''}

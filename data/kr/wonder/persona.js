@@ -768,6 +768,50 @@ const personaData = {
         comment_en: "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
         comment_jp: "先鋒でなくてもパーティに属しているだけで『神の耳』重複を獲得可能である。"
     },
+    "바스키" : {
+        name_en: "Vasuki",
+        name_jp: "ヴァスキ",
+        grade: "8",
+        star: "5",
+        position: "굴복",
+        element: "총격",
+        instinct: {
+            name: "하늘과 땅을 잇는 올가미 III",
+            name_en: "Serpent of the Sky and Earth III",
+            name_jp: "天と地を繋ぐヴァスキ III",
+            effects: [
+                "효과 명중이 34.9% 중가한다.",
+                "전투 시작 시 『응시』를 5중첩 획득한다. 아군 동료가 스킬로 디버프 효과 추가 시, 자신이 『응시』를 1중첩 획득한다(5회 중첩 가능, 동료 마다 턴당『응시』최대 1회 추가).",
+                "자신이 페르소나 스킬 시전 시, 『응시』를 5중첩 보유한 경우 『응시』를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 15% 증가하며, 『뱀독』을 1중첩 추가 획득한다."
+            ],
+            effects_en: [
+                "Increases EHR by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 15% and gain 1 stack of [Serpent's Bite]."
+            ],
+            effects_jp: [
+                "効果命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を15%増加させ、『ヴァスキの毒』を1重複獲得する。"
+            ],
+            priority: 2
+        },
+        uniqueSkill: {
+            name: "끝없는 속박",
+            name_en: "Endless Bind",
+            name_jp: "無限の縛り",
+            effect: "1명의 적의 받는 대미지가 16.0% 중가하고, 목표가『뱀독』을 1중첩 획득한다(2회 중첩 가능). 효과는 3턴 동안 지속된다. 『뱀독』: 턴마다 아군 중 공격력이 가장 높은 괴도 공격력 12.8%의 주원 속성 대미지를 받는다(최대로 원더 공격력의 300% 적용).",
+            effect_en: "Increases the enemy's dmg taken by 16.0% and gains 1 stack of [Serpent's Bite] (up to 2 stacks). Effect lasts for 3 turns. [Serpent's Bite]: Each turn, the highest ATK Wonder deals 12.8% ATK Psy dmg to the target (maximum 300% of Wonder ATK).",
+            effect_jp: "敵が受けるダメージが16.0%増加し、『ヴァスキの毒』を1重複獲得（最大2重複）。効果は3ターンの間持続する。『ヴァスキの毒』：各ターン、最も高いATKのウォンダーがターゲットに12.8% ATKの念動属性ダメージを与える（最大300%のウォンダーATK適用）。",
+            priority: 2,
+            icon: "총격"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 90.0%의 총격 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
+            effect_en: "Deals 90.0% ATK Gun dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
+            effect_jp: "全ての敵に90.0% ATKの銃撃属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+        ]
+    },
+
     "체르노보그": {
         name_en: "Chernobog",
         name_jp: "チェルノボーグ",
@@ -870,6 +914,51 @@ const personaData = {
             {name : "염동 강화", priority: 0 },
         ]
     },
+    "트럼페터": {
+        name_en: "Trumpeter",
+        name_jp: "トランペッター",
+        grade: "7",
+        star: "5",
+        position: "굴복",
+        element: "만능",
+        instinct: {
+            name: "붕괴의 나팔 III",
+            name_en: "Trumpet of Destruction III",
+            name_jp: "破壊のパフェ III",
+            effects: [
+                "효과 명중이 34.9% 중가한다.",
+                "자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 중가하고, 적이 받는 대미지가 6.5% 중가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
+            ],
+            effects_en: [
+                "Increases EHR by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your EHR by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
+            ],
+            effects_jp: [
+                "効果命中が34.9%増加する。ペルソナスキルで敵にデバフ効果を付与すると、敵のデバフ効果が15個以上の時、自身の効果命中が50%上昇し、敵が受けるダメージが6.5%上昇する。敵にデバフ効果を付与した後、2ターンの間敵全体の防御力が12%減少する。"
+            ],
+            priority: 2
+        },
+        uniqueSkill: {
+            name: "나락의 파동",
+            name_en: "Wave of Despair",
+            name_jp: "ナラロクの波",
+            effect: "12.7%의 기본 확률로 적 전체를 절망 상태에 빠뜨린다. 『절망』: 정신 이상으로 행동이 불가하다. 턴마다 일정한 SP가 차감되고 몇 턴 후 사망한다.",
+            effect_en: "12.7% of base chance to put all foes into [Despair] status. [Despair]: Unable to act. SP is deducted every turn and dies after a few turns.",
+            effect_jp: "12.7%の基礎確率で全ての敵を『絶望』状態にする。『絶望』：行動不能。SPは毎ターン減少し、数ターン後に死亡する。",
+            priority: 1,
+            icon: "디버프광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 45.0%의 만능 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
+            effect_en: "Deals 45.0% ATK Allmighty dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
+            effect_jp: "全ての敵に45.0% ATKの万能属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "명중 강화", priority: 3 },
+            {name : "우중충한 하늘", priority: 3 }
+        ]
+    },
+
     "오오쿠니누시": {
         name_en: "Okuninushi",
         name_jp: "オオクニヌシ",

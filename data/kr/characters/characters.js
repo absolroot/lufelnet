@@ -61,7 +61,7 @@ const characterData = {
         "main_revelation": ["돌파"],
         "sub_revelation": ["슬픔"],
         "element": "주원",
-        "element_weakness": "",
+        "element_weakness": "전격",
         "element_resistance": "주원",
         "rarity": 5,
         "position": "반항",

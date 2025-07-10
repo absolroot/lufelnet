@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "페르소나5X 대미지 계산"
+title: "페르소나5X 대미지 계산 공식"
 date: 2025-07-09 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
@@ -8,9 +8,9 @@ author: Root
 thumbnail: /apps/article/asset/damage1.png
 translations:
   kr:
-    title: "페르소나5X 대미지 계산식"
+    title: "페르소나5X 대미지 계산 공식에 대해"
   en:
-    title: "Persona 5X Damage Calculation"
+    title: "Abot Persona 5X Damage Calculation"
   jp:
     title: "ペルソナ5X ダメージ計算"
 ---

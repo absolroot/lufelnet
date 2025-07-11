@@ -1,0 +1,201 @@
+---
+layout: article
+title: "페르소나5X 계시 옵션에 대해"
+date: 2025-07-11 12:00:00 +0900
+categories: [Guide]
+tags: [guide]
+author: Root
+thumbnail: /apps/article/asset/damage4-1.png
+translations:
+  kr:
+    title: "페르소나5X 계시 옵션에 대해"
+  en:
+    title: "About Persona 5X Revelation Stats"
+  jp:
+    title: "ペルソナ5X 啓示のオプションについて"
+---
+
+<div class="content-kr" markdown="1">
+
+# 주 옵션 (Main Stats)
+
+각 계시 위치 별로 나올 수 있는 주 옵션이 고정돼 있다.
+
+| 위치 | 옵션 |
+| --- | --- |
+| 주 (Universe) | 공격력, 방어력 |
+| 일 (Sun) | 생명 |
+| 월 (Moon) | 공격력, 대미지 보너스, 생명, 방어력, 치료 효과 |
+| 성 (Star) | 크리티컬 확률, 크리티컬 효과, 생명, 공격력, 방어력, 효과 명중 |
+| 진 (Planet) | 공격력, 방어력, 생명, SP 회복, 속도 |
+
+일반적으로 메인 스탯의 최댓값이 높은 관계로, 메인 스탯을 챙긴 이후 부 옵션을 고려하는 편이 좋다.
+
+---
+
+# 부 옵션 (Sub Stats)
+
+각 계시는 생성될 때 3~4개의 부가 옵션을 가지고 나타난다.
+
+부가 옵션은 랜덤하게 결정되며, 수치 또한 랜덤하게 결정되나 각 스탯 별로 최소값과 최고값이 존재한다.
+
+대부분의 딜러는 
+
+- 크리티컬 확률
+- 크리티컬 효과
+- 관통
+- 대미지 보너스
+- 공격력 %
+- 공격력 상수
+
+해당 6개가 주요한 서브 스탯으로 취급된다. 
+
+아래는 각 계시별 나타날 수 있는 서브스탯 수치 값
+
+| 옵션 | 1st | 2nd | 3rd | 4th | 5th |
+| --- | --- | --- | --- | --- | --- | 
+| **크리티컬 확률** | 2% | 1.8% | 1.7% | 1.4% | 1.3% |
+| **크리티컬 효과** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **관통** | 2.1% | 1.9% | 1.7% | 1.4% | 1.3% |
+| **대미지 보너스** | 2.8% | 2.5% | 2.1% | 1.9% | 1.7% |
+| **공격력%** | 3.5% | 3.2% | 2.8% | 2.5% | 2.0% |
+| **공격력** | 46 | 41 | 37 | 32 | 27 |
+| **생명%** | 3.6% | 3.3% | 2.9% | 2.6% | 2.1% |
+| **생명** | 140 | 126 | 112 | 98 | 84 |
+| **방어력%** | 5.2% | 4.6% | 4.1% | 3.5% | 3.0% |
+| **방어력** | 46 | 41 | 37 | 32 | 27 |
+| **효과 명중** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **SP회복** | 10.0% | 9.0% | 7.9% | 7.0% | 5.9% |
+| **속도** | 2.2 | 2 | 1.8 | 1.5 | 1.3 |
+
+소숫점 값이 더 있으나 소숫점 1자리로 처리된 값에 따라 표기된다.
+
+---
+
+**계시 세트 옵션은 [여기](https://lufel.net/revelations)를 참고하세요.**
+
+<br>
+
+</div>
+
+<div class="content-en" markdown="1">
+
+# Main Stats
+
+Each revelation position has fixed main stats that can appear.
+
+| Position | Options |
+| --- | --- |
+| Universe | Attack, Defense |
+| Sun | HP |
+| Moon | Attack, Attack Mult., HP, Defense, Healing Effect |
+| Star | Crit Rate, Crit Mult., HP, Attack, Defense, Effect Hit |
+| Planet | Attack, Defense, HP, SP Recovery, Speed |
+
+Generally, since main stats have higher maximum values, it's better to prioritize main stats before considering sub stats.
+
+---
+
+# Sub Stats
+
+Each revelation appears with 3-4 additional sub stats when generated.
+
+Sub stats are randomly determined, and their values are also random, but each stat has minimum and maximum values.
+
+For most DPS characters, the following 6 stats are considered major sub stats:
+
+- Crit Rate
+- Crit Mult.
+- Pierce Rate
+- Attack Mult.
+- Attack %
+- Attack (Flat)
+
+Below are the sub stat values that can appear on each revelation:
+
+| Option | 1st | 2nd | 3rd | 4th | 5th |
+| --- | --- | --- | --- | --- | --- | 
+| **Crit Rate** | 2% | 1.8% | 1.7% | 1.4% | 1.3% |
+| **Crit Mult.** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **Pierce Rate** | 2.1% | 1.9% | 1.7% | 1.4% | 1.3% |
+| **Attack Mult.** | 2.8% | 2.5% | 2.1% | 1.9% | 1.7% |
+| **Attack %** | 3.5% | 3.2% | 2.8% | 2.5% | 2.0% |
+| **Attack** | 46 | 41 | 37 | 32 | 27 |
+| **HP %** | 3.6% | 3.3% | 2.9% | 2.6% | 2.1% |
+| **HP** | 140 | 126 | 112 | 98 | 84 |
+| **Defense %** | 5.2% | 4.6% | 4.1% | 3.5% | 3.0% |
+| **Defense** | 46 | 41 | 37 | 32 | 27 |
+| **Effect Hit** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **SP Recovery** | 10.0% | 9.0% | 7.9% | 7.0% | 5.9% |
+| **Speed** | 2.2 | 2 | 1.8 | 1.5 | 1.3 |
+
+There are more decimal values, but they are displayed according to values processed to 1 decimal place.
+
+---
+
+**For revelation set options, please refer [here](https://lufel.net/revelations).**
+
+<br>
+
+</div>
+
+<div class="content-jp" markdown="1">
+
+# メインステータス
+
+各啓示のポジション別に出現可能なメインオプションが固定されています。
+
+| ポジション | オプション |
+| --- | --- |
+| 主 (Universe) | 攻撃力、防御力 |
+| 日 (Sun) | 生命力 |
+| 月 (Moon) | 攻撃力、ダメージボーナス、生命力、防御力、治療効果 |
+| 星 (Star) | クリティカル確率、クリティカル効果、生命力、攻撃力、防御力、効果命中 |
+| 惑星 (Planet) | 攻撃力、防御力、生命力、SP回復、速度 |
+
+一般的にメインステータスの最大値が高いため、メインステータスを確保した後にサブオプションを考慮するのが良いでしょう。
+
+---
+
+# サブステータス
+
+各啓示は生成時に3～4個の追加オプションを持って現れます。
+
+追加オプションはランダムに決定され、数値もランダムに決定されますが、各ステータス別に最小値と最大値が存在します。
+
+ほとんどのディーラーにとって、以下の6つが主要なサブステータスとして扱われます：
+
+- クリティカル確率
+- クリティカル効果
+- 貫通
+- ダメージボーナス
+- 攻撃力 %
+- 攻撃力（固定値）
+
+以下は各啓示別に出現可能なサブステータス数値です：
+
+| オプション | 1st | 2nd | 3rd | 4th | 5th |
+| --- | --- | --- | --- | --- | --- | 
+| **クリティカル確率** | 2% | 1.8% | 1.7% | 1.4% | 1.3% |
+| **クリティカル効果** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **貫通** | 2.1% | 1.9% | 1.7% | 1.4% | 1.3% |
+| **ダメージボーナス** | 2.8% | 2.5% | 2.1% | 1.9% | 1.7% |
+| **攻撃力%** | 3.5% | 3.2% | 2.8% | 2.5% | 2.0% |
+| **攻撃力** | 46 | 41 | 37 | 32 | 27 |
+| **生命力%** | 3.6% | 3.3% | 2.9% | 2.6% | 2.1% |
+| **生命力** | 140 | 126 | 112 | 98 | 84 |
+| **防御力%** | 5.2% | 4.6% | 4.1% | 3.5% | 3.0% |
+| **防御力** | 46 | 41 | 37 | 32 | 27 |
+| **効果命中** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **SP回復** | 10.0% | 9.0% | 7.9% | 7.0% | 5.9% |
+| **速度** | 2.2 | 2 | 1.8 | 1.5 | 1.3 |
+
+小数点以下の値はより多く存在しますが、小数点1桁で処理された値に従って表記されています。
+
+---
+
+**啓示セットオプションについては、[こちら](https://lufel.net/revelations)を参照してください。**
+
+<br>
+
+</div>

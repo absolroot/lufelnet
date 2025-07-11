@@ -309,7 +309,36 @@ alternate_urls:
                 padding-bottom: 0 !important;
                 background: transparent !important;
             }
+        }
 
+        /* 성능 최적화 스타일 */
+        .persona-detail-container {
+            /* GPU 가속 활성화 */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: auto;
+            
+            /* 트랜지션 비활성화로 성능 향상 */
+            transition: none !important;
+        }
+        
+        .persona-img, .card-background, .cover-star {
+            /* 이미지 렌더링 최적화 */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        
+        /* 숨김 처리된 요소들의 레이아웃 최적화 */
+        .persona-detail-container[style*="position: absolute"] {
+            left: -9999px !important;
+            top: -9999px !important;
+            z-index: -1;
+        }
+        
+        /* 스크롤 성능 최적화 */
+        .persona-cards {
+            contain: layout style paint;
+            overflow-anchor: none;
         }
     </style>
     <!-- 
@@ -527,19 +556,21 @@ alternate_urls:
             card.dataset.position = personaData[personaName].position;
             card.dataset.rarity = personaData[personaName].star;
             
-            // Add card background
+            // Add card background with optimization
             const cardBg = document.createElement('img');
             cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaData[personaName].element}.webp`;
             cardBg.alt = "card background";
             cardBg.className = 'card-background';
             cardBg.loading = 'lazy';
+            cardBg.decoding = 'async';
             
-            // Persona image
+            // Persona image with optimized lazy loading
             const img = document.createElement('img');
             img.src = `{{ site.baseurl }}/assets/img/persona/${personaName}.webp`;
             img.alt = personaName;
             img.className = 'persona-img';
-            img.loading = 'lazy';  // Add lazy loading attribute
+            img.loading = 'lazy';
+            img.decoding = 'async';  // 비동기 디코딩으로 렌더링 성능 향상
             
             // Add rarity cover
             const coverStar = document.createElement('img');
@@ -781,62 +812,104 @@ alternate_urls:
             filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
         });
         
-        // Detect checkbox changes
+        // 필터 디바운싱을 위한 타이머
+        let filterDebounceTimer;
+        
+        // Detect checkbox changes with debouncing
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
-                // Check if any filters are selected
-                const hasChecked = Array.from(checkboxes).some(cb => cb.checked);
-                //filterResetBtn.style.display = hasChecked ? 'block' : 'none';
-                
-                // Apply filters
-                applyFilters();
+                // 디바운싱 적용
+                clearTimeout(filterDebounceTimer);
+                filterDebounceTimer = setTimeout(() => {
+                    // Check if any filters are selected
+                    const hasChecked = Array.from(checkboxes).some(cb => cb.checked);
+                    //filterResetBtn.style.display = hasChecked ? 'block' : 'none';
+                    
+                    // Apply filters
+                    applyFilters();
+                }, 50); // 50ms 디바운싱
             });
         });
         
         // Reset button
         
         filterResetBtn.addEventListener('click', () => {
-            checkboxes.forEach(cb => cb.checked = false);
-            filterResetBtn.style.display = 'none';
-            applyFilters();
+            // 배치로 체크박스 상태 변경
+            requestAnimationFrame(() => {
+                checkboxes.forEach(cb => cb.checked = false);
+                filterResetBtn.style.display = 'none';
+                
+                // 캐시 초기화
+                filterCache = {
+                    elements: new Set(),
+                    positions: new Set(), 
+                    rarities: new Set(),
+                    grades: new Set()
+                };
+                
+                applyFilters();
+            });
         });
         
         filterToggleBtn.style.display = 'none';
         filterResetBtn.style.display = 'none';
 
-        // Filter application function
+        // 필터 상태 캐싱을 위한 변수들
+        let filterCache = {
+            elements: new Set(),
+            positions: new Set(), 
+            rarities: new Set(),
+            grades: new Set()
+        };
+        
+        // 성능 최적화된 필터 적용 함수
         function applyFilters() {
-            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
-            const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
-            const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
-            const selectedGrades = Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value);
+            // 필터 상태를 Set으로 캐싱하여 빠른 조회
+            filterCache.elements = new Set(Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value));
+            filterCache.positions = new Set(Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value));
+            filterCache.rarities = new Set(Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value)));
+            filterCache.grades = new Set(Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value));
             
             const containers = document.querySelectorAll('.persona-detail-container');
             let visibleCount = 0;
             
-            containers.forEach(container => {
-                const element = container.dataset.element;
-                const position = container.dataset.position;
-                const rarity = parseInt(container.dataset.rarity);
-                const grade = container.dataset.grade;
-                const personaName = container.dataset.name;
+            // requestAnimationFrame으로 DOM 조작 배치 처리
+            requestAnimationFrame(() => {
+                containers.forEach(container => {
+                    const element = container.dataset.element;
+                    const position = container.dataset.position;
+                    const rarity = parseInt(container.dataset.rarity);
+                    const grade = container.dataset.grade;
+                    const personaName = container.dataset.name;
                     
-                const elementMatch = selectedElements.length === 0 || selectedElements.includes(element);
-                const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
-                const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
-                const gradeMatch = selectedGrades.length === 0 || 
-                    selectedGrades.includes(grade) || 
-                    (personaName === '야노식' && selectedGrades.includes('1'));
+                    // Set.has()로 빠른 조회 (O(1))
+                    const elementMatch = filterCache.elements.size === 0 || filterCache.elements.has(element);
+                    const positionMatch = filterCache.positions.size === 0 || filterCache.positions.has(position);
+                    const rarityMatch = filterCache.rarities.size === 0 || filterCache.rarities.has(rarity);
+                    const gradeMatch = filterCache.grades.size === 0 || 
+                        filterCache.grades.has(grade) || 
+                        (personaName === '야노식' && filterCache.grades.has('1'));
+                    
+                    const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
+                    
+                    // display 대신 position으로 성능 개선 (레이아웃 재계산 방지)
+                    if (isVisible) {
+                        container.style.position = 'relative';
+                        container.style.visibility = 'visible';
+                        container.style.height = 'auto';
+                        visibleCount++;
+                    } else {
+                        container.style.position = 'absolute';
+                        container.style.visibility = 'hidden';
+                        container.style.height = '0';
+                    }
+                });
                 
-                const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
-                container.style.display = isVisible ? 'flex' : 'none';
-                if (isVisible) visibleCount++;
+                // 카운트 업데이트
+                const countText = window.i18nFilteredCount || '전체';
+                const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+                document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
             });
-            
-            // Update count display
-            const countText = window.i18nFilteredCount || '전체';
-            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         // Search functionality implementation
@@ -861,18 +934,37 @@ alternate_urls:
             }
         });
 
+        // 디바운싱을 위한 타이머
+        let searchDebounceTimer;
+        
         searchInput.addEventListener('input', (e) => {
             const searchValue = e.target.value.toLowerCase();
+            
+            // 드롭다운 업데이트 (즉시)
+            updateDropdown(searchValue);
+            
+            // 검색 필터링 (디바운싱 적용)
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => {
+                filterBySearch(searchValue);
+            }, 100); // 100ms 디바운싱
+        });
+        
+        // 드롭다운 업데이트 함수 분리
+        function updateDropdown(searchValue) {
             dropdown.innerHTML = '';
             
-            // Dropdown autocomplete handling
             if (searchValue.length > 0) {
                 const matches = Object.keys(personaNameMapping).filter(name => 
                     name.includes(searchValue)
-                );
+                ).slice(0, 10); // 성능을 위해 최대 10개로 제한
 
                 if (matches.length > 0) {
                     dropdown.style.display = 'block';
+                    
+                    // DocumentFragment로 배치 DOM 추가
+                    const fragment = document.createDocumentFragment();
+                    
                     matches.forEach(matchedName => {
                         const koreanName = personaNameMapping[matchedName];
                         const persona = personaData[koreanName];
@@ -893,44 +985,101 @@ alternate_urls:
                             dropdown.style.display = 'none';
                             filterBySearch(matchedName.toLowerCase());
                         });
-                        dropdown.appendChild(div);
+                        fragment.appendChild(div);
                     });
+                    
+                    dropdown.appendChild(fragment);
                 } else {
                     dropdown.style.display = 'none';
                 }
             } else {
                 dropdown.style.display = 'none';
             }
+        }
 
-            // Filter by search term
-            filterBySearch(searchValue);
-        });
-
-        // Search filtering function
+        // 검색 결과 캐싱
+        let searchCache = new Map();
+        
+        // 성능 최적화된 검색 필터링 함수
         function filterBySearch(searchValue) {
+            // 캐시에서 결과 확인
+            if (searchCache.has(searchValue)) {
+                applySearchResults(searchCache.get(searchValue));
+                return;
+            }
+            
+            const containers = document.querySelectorAll('.persona-detail-container');
+            let visibleCount = 0;
+            const results = [];
+            
+            // requestAnimationFrame으로 배치 처리
+            requestAnimationFrame(() => {
+                containers.forEach(container => {
+                    const koreanName = container.dataset.name;
+                    const persona = personaData[koreanName];
+                    
+                    // 모든 언어 이름으로 검색 가능하도록
+                    const searchableNames = [
+                        koreanName.toLowerCase(),
+                        persona.name_en ? persona.name_en.toLowerCase() : '',
+                        persona.name_jp ? persona.name_jp.toLowerCase() : ''
+                    ].filter(name => name); // 빈 문자열 제거
+                    
+                    const isVisible = searchValue === '' || searchableNames.some(name => name.includes(searchValue));
+                    
+                    // display 대신 position으로 성능 개선
+                    if (isVisible) {
+                        container.style.position = 'relative';
+                        container.style.visibility = 'visible';
+                        container.style.height = 'auto';
+                        visibleCount++;
+                    } else {
+                        container.style.position = 'absolute';
+                        container.style.visibility = 'hidden';
+                        container.style.height = '0';
+                    }
+                    
+                    results.push(isVisible);
+                });
+                
+                // 결과 캐싱 (최대 50개까지만)
+                if (searchCache.size < 50) {
+                    searchCache.set(searchValue, results);
+                }
+                
+                // 카운트 업데이트
+                const countText = window.i18nFilteredCount || '전체';
+                const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+                document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
+            });
+        }
+        
+        // 캐시된 검색 결과 적용 함수
+        function applySearchResults(results) {
             const containers = document.querySelectorAll('.persona-detail-container');
             let visibleCount = 0;
             
-            containers.forEach(container => {
-                const koreanName = container.dataset.name;
-                const persona = personaData[koreanName];
+            requestAnimationFrame(() => {
+                containers.forEach((container, index) => {
+                    const isVisible = results[index];
+                    
+                    if (isVisible) {
+                        container.style.position = 'relative';
+                        container.style.visibility = 'visible';
+                        container.style.height = 'auto';
+                        visibleCount++;
+                    } else {
+                        container.style.position = 'absolute';
+                        container.style.visibility = 'hidden';
+                        container.style.height = '0';
+                    }
+                });
                 
-                // 모든 언어 이름으로 검색 가능하도록
-                const searchableNames = [
-                    koreanName.toLowerCase(),
-                    persona.name_en ? persona.name_en.toLowerCase() : '',
-                    persona.name_jp ? persona.name_jp.toLowerCase() : ''
-                ].filter(name => name); // 빈 문자열 제거
-                
-                const isVisible = searchValue === '' || searchableNames.some(name => name.includes(searchValue));
-                container.style.display = isVisible ? 'flex' : 'none';
-                if (isVisible) visibleCount++;
+                // 카운트 업데이트
+                const countText = window.i18nFilteredCount || '전체';
+                const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+                document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
             });
-            
-            // Update count display
-            const countText = window.i18nFilteredCount || '전체';
-            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-            document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
         }
 
         // Close dropdown when clicking outside search

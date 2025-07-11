@@ -1,9 +1,27 @@
+/* PC 환경의 배경 스타일 - 성능 최적화 */
 @media screen and (min-width: 769px) {
     .container {
-        background: linear-gradient(to bottom, rgb(90, 173, 237,0.3), rgb(5, 21, 166, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), radial-gradient(circle at 25% 20%, rgba(47, 168, 255, 0.13), transparent 30%), radial-gradient(circle at 80% 30%, rgba(47, 168, 255, 0.13), transparent 50%), radial-gradient(circle at 30% 80%, rgba(47, 168, 255, 0.13), transparent 40%), radial-gradient(circle at 70% 70%, rgba(47, 168, 255, 0.13), transparent 30%), radial-gradient(circle at 50% 50%, rgba(47, 168, 255, 0.13), transparent 40%), #111;
-        background-size: 100% 100vh, 30px 30px, 30px 30px, 100% 100vh, 100% 100vh, 100% 100vh, 100% 100vh, 100% 100vh;
-        background-attachment: fixed, scroll, scroll, fixed, fixed, fixed, fixed;
-        background-position: 0 0, 0 0, 0 0, left top, right top, left bottom, right bottom;
+        background: 
+            linear-gradient(to bottom, rgb(90, 173, 237, 0.3), rgb(5, 21, 166, 0.3)),
+            linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
+            linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
+            radial-gradient(circle at 50% 50%, rgba(47, 168, 255, 0.08), transparent 60%),
+            #111;
+        background-size: 
+            100% 100%,
+            30px 30px,
+            30px 30px,
+            100% 100%;
+        background-attachment: 
+            scroll,
+            scroll,
+            scroll,
+            scroll;
+        background-position: 
+            0 0,
+            0 0,
+            0 0,
+            center center;
     }
 }
 

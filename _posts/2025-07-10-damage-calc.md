@@ -145,7 +145,9 @@ translations:
 
 각종 버프, 계시, 무기 등에서 %로 올라가는 공격력을 말한다. 
 
-아래 사진에서는 5%가 이에 해당한다.
+아래 사진에서는 2.8%가 이에 해당한다.
+
+![damage.png](/apps/article/asset/damage4-1.png)
 
 <br>
 
@@ -588,7 +590,9 @@ Even if you enhance weapons through duplication, the base attack power doesn't i
 
 This refers to attack power that increases by % from various buffs, revelations, weapons, etc.
 
-In the image below, 5% corresponds to this.
+In the image below, 2.8% corresponds to this.
+
+![damage.png](/apps/article/asset/damage4-1.png)
 
 <br>
 
@@ -1013,7 +1017,9 @@ The following are the results assuming each summed value:
 
 各種バフ、啓示、武器などから%で上昇する攻撃力を指します。
 
-下の画像では5%がこれに該当します。
+下の画像では2.8%がこれに該当します。
+
+![damage.png](/apps/article/asset/damage4-1.png)
 
 <br>
 

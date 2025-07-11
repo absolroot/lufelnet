@@ -800,7 +800,7 @@ const personaData = {
             effect_en: "Increases the enemy's dmg taken by 16.0% and gains 1 stack of [Serpent's Bite] (up to 2 stacks). Effect lasts for 3 turns. [Serpent's Bite]: Each turn, the highest ATK Wonder deals 12.8% ATK Psy dmg to the target (maximum 300% of Wonder ATK).",
             effect_jp: "敵が受けるダメージが16.0%増加し、『ヴァスキの毒』を1重複獲得（最大2重複）。効果は3ターンの間持続する。『ヴァスキの毒』：各ターン、最も高いATKのウォンダーがターゲットに12.8% ATKの念動属性ダメージを与える（最大300%のウォンダーATK適用）。",
             priority: 2,
-            icon: "총격"
+            icon: "디버프"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 총격 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",

@@ -343,6 +343,7 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
+
 @media (max-width: 768px) {
   .article {
     padding: 15px;

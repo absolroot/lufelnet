@@ -21,9 +21,9 @@ img_all:
   money: '<img src="/apps/article/asset/growth_material/item-1.png">'
 
 img_lv:
-  m1: '<img src="/apps/article/asset/growth_material/item-302401.png" >'
-  m2: '<img src="/apps/article/asset/growth_material/item-302402.png" >'
-  m3: '<img src="/apps/article/asset/growth_material/item-302403.png" >'
+  m1: '<img src="/apps/article/asset/growth_material/item-302201.png" >'
+  m2: '<img src="/apps/article/asset/growth_material/item-302202.png" >'
+  m3: '<img src="/apps/article/asset/growth_material/item-302203.png" >'
   exp: '<img src="/apps/article/asset/growth_material/item-302103.png" >'
 
 img_wp:

@@ -22,7 +22,7 @@
 
         const char = characterData[charName];
         if (currentLang === 'en' && char.name_en) {
-          return char.name_en;
+          return char.codename;
         } else if (currentLang === 'jp' && char.name_jp) {
           return char.name_jp;
         }

@@ -1473,7 +1473,9 @@ const personaSkillList = {
     },
     "럭키 펀치": {
         name_jp: "ラッキーパンチ",
+        name_en: "Lucky Punch",
         description: "1명의 적에게 공격력 108.3%의 물리 속성 대미지를 주고, 크리티컬 확률이 20% 증가하며 명중률은 20% 감소한다.",
+        description_en: "Deals 108.3% ATK Physical dmg to 1 foe with 20% increased CRIT and 20% decreased Hit Rate.",
         description_jp: "敵単体に攻撃力108.3%の物理属性ダメージを与える。クリティカル率が20%上昇し、命中率が20%低下する。",
         type: "공격",
         target: "단일",

@@ -49,7 +49,7 @@ const characterData = {
         "limit": true,
         "role": "",
        "tag":"",
-        "color": "#000000",
+        "color": "#a80707",
         "name_en": "Wonder",
         "name_jp": "主人公"
     },
@@ -1517,7 +1517,7 @@ const characterData = {
         "limit": true,
         "role": "전격 단일 딜러",
         "tag":"추가 효과, 감전, 크리티컬 확률",
-        "color": "#8cd1cb",
+        "color": "#60f7de",
         "main_revelation": ["성장"],
         "sub_revelation": ["변환"],
         "element": "전격",

@@ -809,6 +809,7 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
+            {name : "라쿤다", priority: 3}
         ]
     },
 

@@ -56,7 +56,7 @@ input.onchange = function(e) {
             character: action.c,
             wonderPersona: action.w,
             action: action.a,
-            memo: action.mm
+            memo: action.mm || ""
         }))
         }));
         

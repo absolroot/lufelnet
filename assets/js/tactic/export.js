@@ -13,7 +13,7 @@ turnContainers.forEach(container => {
     const charSelect = actionItem.querySelector('.action-character');
     const personaSelect = actionItem.querySelector('.wonder-persona-select');
     const skillSelect = actionItem.querySelector('.action-skill');
-    const memoInput = actionItem.querySelector('.action-memo');
+    const memoInput = actionItem.querySelector('.hidden-memo-input'); // 숨겨진 메모 입력 필드에서 값을 가져옴
     
     actions.push({
         m: actionItem.classList.contains('auto-action') ? 0 : 1, // type -> m

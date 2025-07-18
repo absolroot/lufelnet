@@ -105,8 +105,8 @@ class Navigation {
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
             kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            en: ['character', 'persona', 'revelations', 'tier', 'article', 'about'],
-            jp: ['character', 'persona', 'revelations', 'tier', 'article', 'about'],
+            en: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic-maker', 'about'],
+            jp: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic-maker', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -176,6 +176,12 @@ class Navigation {
                         </a>
                     </div>
                 </div>
+                ` : ''}
+                ${currentMenus.includes('tactic-maker') ? `
+                <a href="${BASE_URL}/tactic?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="tactic-maker">
+                    <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <span data-text="${texts.tacticMaker}">${texts.tacticMaker}</span>
+                </a>
                 ` : ''}
                 ${currentMenus.includes('tier') ? `
                 <div class="nav-item has-submenu" data-nav="tier">

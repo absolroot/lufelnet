@@ -1065,13 +1065,30 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
       // Restore previous lock state on page load
       document.addEventListener('DOMContentLoaded', () => {
         const turnsLocked = localStorage.getItem('turnsLocked') === 'true';
-        if (turnsLocked) {
-          const lockBtn = document.querySelector('.mobile-lock-btn');
-          const turnsContainer = document.getElementById('turns');
-          
-          lockBtn.classList.add('active');
-          turnsContainer.classList.add('turns-locked');
+        const lockBtn = document.querySelector('.mobile-lock-btn');
+        const turnsContainer = document.getElementById('turns');
+        
+        // PC 환경(1200px 이상)에서는 잠금 해제
+        if (window.innerWidth >= 1200) {
+          if (turnsLocked) {
+            localStorage.setItem('turnsLocked', false);
+          }
+          if (lockBtn) lockBtn.classList.remove('active');
+          if (turnsContainer) turnsContainer.classList.remove('turns-locked');
+        } else if (turnsLocked) {
+          // 모바일에서는 이전 잠금 상태 유지
+          if (lockBtn) lockBtn.classList.add('active');
+          if (turnsContainer) turnsContainer.classList.add('turns-locked');
         }
+
+        // 화면 크기 변경 시에도 적용
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 1200) {
+            if (lockBtn) lockBtn.classList.remove('active');
+            if (turnsContainer) turnsContainer.classList.remove('turns-locked');
+            localStorage.setItem('turnsLocked', false);
+          }
+        });
       });
 
       // html-to-image 라이브러리를 사용한 캡처 함수 (margin 조정)
@@ -1088,13 +1105,18 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           loadingEl.style.padding = '15px 20px';
           loadingEl.style.borderRadius = '5px';
           loadingEl.style.zIndex = '9999';
-          loadingEl.textContent = '캡처 준비 중...';
+          loadingEl.textContent = 'Capturing...';
           document.body.appendChild(loadingEl);
           
           // UI 숨기기 (원래 상태 저장)
           const container = document.querySelector('.container');
           const originalUIState = container.classList.contains('hide-ui');
           container.classList.add('hide-ui');
+          
+          // navigation-path 수정을 위한 원래 내용 저장
+          const navigationPath = document.querySelector('.navigation-path');
+          const originalNavigationContent = navigationPath.innerHTML;
+          navigationPath.innerHTML = 'lufel.net';
           
           // 캡처할 요소
           const mainWrapper = document.querySelector('.main-wrapper');
@@ -1138,7 +1160,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           // 잠시 대기 (UI 변경 적용 시간)
           await new Promise(resolve => setTimeout(resolve, 300));
           
-          loadingEl.textContent = '캡처 중...';
+          loadingEl.textContent = 'Capturing...';
           
           // 현재 main-wrapper의 크기 가져오기
           const rect = mainWrapper.getBoundingClientRect();
@@ -1154,6 +1176,9 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             fontEmbedCSS: true,
             imagePlaceholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
           });
+          
+          // navigation-path 원래 내용으로 복원
+          navigationPath.innerHTML = originalNavigationContent;
           
           // 원래 스타일로 복원
           mainWrapper.style.left = originalStyles.left;
@@ -1176,11 +1201,11 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             container.classList.remove('hide-ui');
           }
           
-          loadingEl.textContent = '이미지 생성 완료!';
+          loadingEl.textContent = 'Image generated!';
           
           // 공유 또는 다운로드
           if (navigator.share) {
-            loadingEl.textContent = '공유 준비 중...';
+            loadingEl.textContent = 'Preparing to share...';
             const blob = await (await fetch(dataUrl)).blob();
             const file = new File([blob], 'p5x-tactic.png', { type: 'image/png' });
             
@@ -1191,7 +1216,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             });
           } else {
             const link = document.createElement('a');
-            link.download = 'p5x-tactic.png';
+            link.download = 'p5x-tactic-lufelnet.png';
             link.href = dataUrl;
             link.click();
           }
@@ -1200,8 +1225,14 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           document.body.removeChild(loadingEl);
           
         } catch (error) {
-          console.error('캡처 오류:', error);
-          alert('캡처 중 오류가 발생했습니다: ' + error.message);
+          console.error('Capture error:', error);
+          alert('Capture error: ' + error.message);
+          
+          // navigation-path 원래 내용으로 복원 (오류 발생 시에도)
+          const navigationPath = document.querySelector('.navigation-path');
+          if (navigationPath) {
+            navigationPath.innerHTML = originalNavigationContent;
+          }
           
           // 오류 발생 시 UI 상태 복원
           const container = document.querySelector('.container');

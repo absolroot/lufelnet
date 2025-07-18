@@ -77,7 +77,7 @@ alternate_urls:
             </div>
 
             <div class="menu-card" id="menu-tactic-card">
-                <a href="./tactic/tactic-share.html?v=' + APP_VERSION" class="card-content" style="text-decoration: none; color: inherit;">
+                <a href="./tactic/" class="card-content" style="text-decoration: none; color: inherit;">
                     <div class="text-section">
                         <h2 id="menu-tactic-title">택틱 <img src="{{ site.baseurl }}/assets/img/home/icon4.png" alt="택틱 아이콘" class="title-icon"></h2>
                         <p class="desktop-description" id="menu-tactic-desc-desktop">본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요</p>
@@ -258,7 +258,7 @@ alternate_urls:
             { selector: '.menu-card a[href*="./character/"]', path: './character/' },
             { selector: '.menu-card a[href*="./persona/"]', path: './persona/' },
             { selector: '.menu-card a[href*="./revelations/"]', path: './revelations/' },
-            { selector: '.menu-card a[href*="./tactic/tactic-share.html"]', path: './tactic/tactic-share.html' }
+            { selector: '.menu-card a[href*="./tactic"]', path: currentLang === 'kr' ? './tactic/tactic-share.html' : './tactic/' }
         ];
         
         menuLinks.forEach(linkInfo => {
@@ -532,10 +532,11 @@ alternate_urls:
             // Persona 메뉴 활성화 (오버레이 제거)
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
+            removeComingSoonOverlay('menu-tactic-card');
             
-            // 택틱 메뉴에 오버레이 추가
-            const tacticOverlayText = currentLang === 'en' ? 'Coming Soon' : '準備中';
-            addComingSoonOverlay('menu-tactic-card', tacticOverlayText);
+            // 오버레이 추가 예시
+            // const tacticOverlayText = currentLang === 'en' ? 'Coming Soon' : '準備中';
+            // addComingSoonOverlay('menu-tactic-card', tacticOverlayText);
             
             // main-content 아래 모든 섹션 숨기기
             const middleContainer = document.querySelector('.middle-container');
@@ -580,7 +581,7 @@ alternate_urls:
                     border-radius: inherit;
                     cursor: not-allowed;
                 `;
-                overlay.textContent = tacticOverlayText;
+                overlay.textContent = currentLang === 'en' ? 'Coming Soon' : '準備中';
                 postsContainer.appendChild(overlay);
                 
                 // 링크 비활성화

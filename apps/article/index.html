@@ -44,6 +44,73 @@ custom_css: article
         </a>
         {% endfor %}
     </div>
+
+    <!-- 외부 가이드 섹션 -->
+    <div class="external-guides" style="margin: 40px 20px 20px 20px; background: #3d3030; border-radius: 12px; padding: 20px;">
+        <h2 class="external-guides-title" 
+            data-kr="외부 링크" 
+            data-en="External Links" 
+            data-jp="外部リンク"
+            style="font-size: 1.25rem; margin: 0 0 20px 0; color: #cdcdcd;">
+            외부 링크
+        </h2>
+        
+        <div class="external-guides-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <!-- 협력자 시트 / Synergy Sheet -->
+            <a href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="external-guide-card"
+                data-kr-url="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM"
+                data-en-url="https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs"
+                data-jp-url="https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs"
+                style="display: block; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: rgba(0, 0, 0, 0.2);">
+                <div class="external-guide-content">
+                    <h3 class="external-guide-title" 
+                        data-kr="협력자 시트↗" 
+                        data-en="Persona5:The Phantom X Synergy↗" 
+                        data-jp="ペルソナ5:ザ・ファントム X シナジー↗"
+                        style="font-size: 1.3rem; margin: 0 0 10px 0; color: #bababa;">
+                        협력자 시트↗
+                    </h3>
+                    <p class="external-guide-description" 
+                        data-kr="협력자들의 호감도와 선물 정보를 확인하세요." 
+                        data-en="Check synergy partner affinity and gift information." 
+                        data-jp="シナジーパートナーの好感度とギフト情報を確認できます。"
+                        style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.4;">
+                        협력자들의 호감도와 선물 정보를 확인하세요.
+                    </p>
+                </div>
+            </a>
+
+            <!-- 실시간 코드 / Redeem Code -->
+            <a href="https://iant.kr/code/?region=kr" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="external-guide-card"
+                data-kr-url="https://iant.kr/code/?region=kr"
+                data-en-url="https://iant.kr/code/?region=en"
+                data-jp-url="https://iant.kr/code/?region=jp"
+                style="display: block; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: rgba(0, 0, 0, 0.2);">
+                <div class="external-guide-content">
+                    <h3 class="external-guide-title" 
+                        data-kr="실시간 코드↗" 
+                        data-en="Redeem Code↗" 
+                        data-jp="交換コード↗"
+                        style="font-size: 1.3rem; margin: 0 0 10px 0; color: #bababa;">
+                        실시간 코드↗
+                    </h3>
+                    <p class="external-guide-description" 
+                        data-kr="최신 교환 코드를 확인하세요." 
+                        data-en="Check the latest redeem codes." 
+                        data-jp="最新の交換コードを確認できます。"
+                        style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.4;">
+                        최신 교환 코드를 확인하세요.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -98,10 +165,25 @@ custom_css: article
         ogDescription.setAttribute('content', currentSEO.description);
     }
 
+    // 외부 가이드 링크 업데이트 함수
+    function updateExternalGuideLinks() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
+        
+        // 외부 가이드 카드들의 링크 업데이트
+        document.querySelectorAll('.external-guide-card').forEach(card => {
+            const newUrl = card.getAttribute(`data-${currentLang}-url`);
+            if (newUrl) {
+                card.href = newUrl;
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('article');
         VersionChecker.check();
         updateSEOContent();
+        updateExternalGuideLinks();
         
         // 현재 언어 가져오기
         const urlParams = new URLSearchParams(window.location.search);
@@ -114,7 +196,6 @@ custom_css: article
                 el.textContent = text;
             }
         });
-        
         
         // 날짜 형식 변경
         document.querySelectorAll('time').forEach(dateElement => {
@@ -142,4 +223,19 @@ custom_css: article
     });
 </script>
 
- 
+<style>
+    @media (max-width: 768px) {
+        .external-guides {
+            margin: 20px 0 20px 0 !important;
+            padding: 10px !important;
+        }
+
+        .external-guides-title {
+            margin: 10px 10px 10px 10px !important;
+        }
+
+        .external-guide-title {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>

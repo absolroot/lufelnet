@@ -27,6 +27,17 @@
         charImg.src = imagePath;
         charImg.alt = member.name;
         charImg.title = member.name;
+        
+        // 원더가 아닌 경우에만 클릭 이벤트 추가
+        if (member.name !== "원더") {
+          container.style.cursor = "pointer";
+          container.addEventListener("click", () => {
+            const currentLang = getCurrentLanguage();
+            const characterUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(member.name)}&lang=${currentLang}&v=${APP_VERSION}`;
+            window.open(characterUrl, '_blank');
+          });
+        }
+        
         container.appendChild(charImg);
 
         // 원더일 경우 무기 이미지 추가

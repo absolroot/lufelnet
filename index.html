@@ -23,6 +23,27 @@ alternate_urls:
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
 {% endif %}
 
+<style>
+    .header-container .language-selector-container {
+        max-width: 120px;
+        margin: 0 0 4px 4px;
+        padding: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;  /* 추가 */
+    }
+
+    .header-container .language-selector-container .options-container {
+        top: 100%;  /* 상단에서 100% 위치에 배치 (아래로) */
+        bottom: auto;  /* 기존 bottom 속성 제거 */
+        margin-top: 5px;  /* 선택기와의 간격 */
+    }
+
+</style>
+
+
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
     <div id="language-notice" class="language-notice" style="display: none;">
@@ -32,9 +53,29 @@ alternate_urls:
     <!-- Header (logo, etc.) -->
     <div class="header-container">
         <h1 id="site-title">P5X 루페르넷</h1> <span class="beta-text"></span>
-        <button class="music-control" id="musicControl">
-            <img src="{{ site.baseurl }}/assets/img/ui/music-off.png" alt="음악 재생" id="musicIcon">
-        </button>
+        <div class="language-selector-container">
+            <div class="custom-select">
+                <div class="selected-option">
+                    <img src="{{ site.baseurl }}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
+                    <span>한국어</span>
+                </div>
+                <div class="options-container">
+                    <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" role="button" tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
+                        <span>한국어</span>
+                    </div>
+                    
+                    <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/en.png" alt="en" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                    <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
+                        <span>日本語</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Main content -->
@@ -785,6 +826,46 @@ alternate_urls:
         // SEO 설정 업데이트
         updateSEOContent();
         
+        // 헤더의 언어 선택기 초기화
+        const currentLang = getCurrentLanguage();
+        const headerSelectedOption = document.querySelector('.header-container .selected-option');
+        if (headerSelectedOption) {
+            // 현재 언어로 선택된 옵션 업데이트
+            const flagImg = headerSelectedOption.querySelector('.flag-icon');
+            const langText = headerSelectedOption.querySelector('span');
+            if (flagImg) flagImg.src = `${BASE_URL}/assets/img/flags/${currentLang}.png`;
+            if (langText) {
+                langText.textContent = currentLang === 'kr' ? '한국어' : 
+                                     currentLang === 'en' ? 'English' : 
+                                     currentLang === 'jp' ? '日本語' : '中文';
+            }
+            
+            // 클릭 이벤트 추가
+            headerSelectedOption.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const optionsContainer = headerSelectedOption.nextElementSibling;
+                if (optionsContainer) {
+                    optionsContainer.classList.toggle('active');
+                }
+            });
+        }
+        
+        // 헤더의 언어 옵션 이벤트 처리
+        document.querySelectorAll('.header-container .option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (this.classList.contains('disabled')) {
+                    return;
+                }
+                
+                const lang = this.getAttribute('data-value');
+                Navigation.selectLanguage(lang, e);
+            });
+        });
+        
         // 언어 라우터 초기화
         if (typeof LanguageRouter !== 'undefined') {
             LanguageRouter.init().then(async () => {
@@ -796,10 +877,21 @@ alternate_urls:
         
         // 한국어인 경우에만 택틱 관련 기능 로드
         const urlParams = new URLSearchParams(window.location.search);
-        const currentLang = urlParams.get('lang') || 'kr';
-        if (currentLang === 'kr') {
+        const currentLangFromUrl = urlParams.get('lang') || 'kr';
+        if (currentLangFromUrl === 'kr') {
             window.tacticShare = new TacticShare({ postsPerPage: 2});
         }
+        
+        // 클릭 이벤트 감지하여 언어 선택기 닫기
+        document.addEventListener('click', (e) => {
+            const optionsContainers = document.querySelectorAll('.options-container');
+            optionsContainers.forEach(container => {
+                if (!container.contains(e.target) && 
+                    !e.target.closest('.selected-option')) {
+                    container.classList.remove('active');
+                }
+            });
+        });
     });
 
     // 페이지 완전 로드 후 최종 언어 콘텐츠 업데이트

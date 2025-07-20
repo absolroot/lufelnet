@@ -1779,6 +1779,51 @@ const personaData = {
         comment_jp: "パーティーに持っているだけでも戦闘開始時『竜血』を獲得する"
 
     },
+    "쿠시나다히메": {
+        name_en: "Kushinada-Hime",
+        name_jp: "クシナダヒメ",
+        grade: "5",
+        star: "4",
+        position: "구원",
+        element: "빙결",
+        instinct: {
+            name: "다정한 보살핌 II",
+            name_en: "Intimate Care II",
+            name_jp: "慈愛のささやき II",
+            effects: [
+                "효과 명중이 21.2% 증가한다.",
+                "버프 스킬을 1개 시전할 때마다 모든 괴도의 공격력이 8.5% 영구 증가한다. 최대 3회 중첩된다."
+            ],
+            effects_en: [
+                "Increases EHR by 21.2%. After using a buff skill, permanently increases all allies' ATK by 8.5%, up to 3 stacks."
+            ],
+            effects_jp: [
+                "効果命中が21.2%上昇。バフスキルを1つ使用するごとに、味方全体の攻撃力が8.5%上昇（最大3回まで）。"
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "마하타루카쟈",
+            name_en: "Matarukaja",
+            name_jp: "マハタルカジャ",
+            effect: "모든 동료의 공격력이 10.9% 증가하고, 자신의 공격력 500포인트마다 0.9% 추가 증가한다. 상한은 7.2%이며, 효과는 3턴 동안 지속된다.",
+            effect_en: "Increase all allies' ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
+            effect_jp: "3ターンの間、味方全体の攻撃力が10.9%上昇する。自身の攻撃力500ごとに、味方の攻撃力がさらに0.9%上昇する（最大7.2%まで）。",
+            priority: 0,
+            icon: "버프광역"
+        },
+        highlight: {
+            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
+            effect_en: "Increases all allies dmg dealt by 29.5% for 2 turns.",
+            effect_jp: "すべての味方の与えるダメージが29.5%増加し2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+             {name : "리벨리온", priority: 2},
+             {name : "타루카쟈", priority: 2},
+             {name : "마하타루카 오토", priority: 1},
+        ]
+    },
     "아프사라스": {
         name_en: "Apsaras",
         name_jp: "アプサラス",

@@ -677,12 +677,12 @@ const defenseCalcData = [
             "LV10": 36.6,
             "LV10+심상5": 40.4,
             "LV13": 38.8,
-            "LV13+심상5": 43.6
+            "LV13+심상5": 42.6
         },
         defaultOption: "LV13+심상5",
-        value: 43.6,
+        value: 42.6,
         duration: "2턴",
-        note: ""
+        note: "스킬3(강화) 중복 불가"
     },
     {
         id: "mio3",

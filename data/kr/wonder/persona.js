@@ -2266,5 +2266,97 @@ const personaData = {
             {name : "마도의 재능", priority: 0 },
             {name : "물리 강화", priority: 0 },
         ]
+    },
+    "오로바스": {
+        name_en: "Orobas",
+        name_jp: "オロバス",
+        grade: "1",
+        star: "2",
+        position: "굴복",
+        element: "화염",
+        instinct: {
+            name: "열광적인 점쟁이 I",
+            name_en: "Fanatic Diviner I",
+            name_jp: "熱狂の占い師 I",
+            effects: [
+                "효과 명중이 7% 증가한다.",
+                "적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 8.2% 증가한다."
+            ],
+            effects_en: [
+                "Increases Effect Hit by 7%.",
+                "When an enemy uses a skill, increases the main target's Fire dmg taken by 8.2% for 2 turns."
+            ],
+            effects_jp: [
+                "効果命中が7%上昇。敵がスキルを使用する時、選択した対象の火炎属性ダメージが8.2%上昇（2ターン持続）。"
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "화염 내성 제거",
+            name_en: "Fire Break",
+            name_jp: "火炎耐性解除",
+            effect: "2턴 동안 적 1명의 화염 내성을 제거한다.",
+            effect_en: "Suppress innate Fire resistances of 1 foe for 2 turns.",
+            effect_jp: "1体の敵の火炎耐性を2ターンの間解除する。",
+            priority: 3,
+            icon: "디버프"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 90.0%의 화염 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.    ",
+            effect_en: "Deals 90.0% ATK as Fire dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
+            effect_jp: "すべての敵に攻撃力90.0%の火炎属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+        ],
+        comment : "화염 내성 제거 효과가 필요할 때 채용한다.",
+        comment_en: "Adopted when Fire Resistance Removal effects are needed.",
+        comment_jp: "火炎耐性解除効果が必要な時に採用する。"
+    },
+    "자타유": {
+        name_en: "Jatayu",
+        name_jp: "ジャターユ",
+        grade: "4",
+        star: "3",
+        position: "굴복",
+        element: "질풍",
+        instinct: {
+            name: "파공의 금빛 날개 II",
+            name_en: "Soaring Golden Wings II",
+            name_jp: "風神の金翼 II",
+            effects: [
+                "효과 명중이 14% 증가한다.",
+                "질풍 속성 페르소나 스킬 시전 후 2턴 동안 스킬 목표의 방어력이 20% 감소한다."
+            ],
+            effects_en: [
+                "Increases Effect Hit by 14%.",
+                "After using a Wind-type Persona skill, decreases the main target's DEF by 20% for 2 turns."
+            ],
+            effects_jp: [
+                "効果命中が14%上昇。風属性スキルを使用した後、選択した対象の防御力が20%低下（2ターン持続）。"
+            ],
+            priority: 0
+        },
+        uniqueSkill: { 
+            name: "질풍 내성 제거",
+            name_en: "Wind Break",
+            name_jp: "風属性耐性解除",
+            effect: "2턴 동안 적 1명의 질풍 내성을 제거한다.",
+            effect_en: "Suppress innate Wind resistances of 1 foe for 2 turns.",
+            effect_jp: "1体の敵の風属性耐性を2ターンの間解除する。",
+            priority: 3,
+            icon: "디버프"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 90.0%의 질풍 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
+            effect_en: "Deals 90.0% ATK as Wind dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
+            effect_jp: "すべての敵に攻撃力90.0%の風属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+        ],
+        comment : "질풍 내성 제거 효과가 필요할 때 채용한다.",
+        comment_en: "Adopted when Wind Resistance Removal effects are needed.",
+        comment_jp: "風属性耐性解除効果が必要な時に採用する。"
     }
 };

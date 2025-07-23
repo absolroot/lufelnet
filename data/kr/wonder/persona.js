@@ -1229,9 +1229,9 @@ const personaData = {
             name_en: "Elec Break",
             name_jp: "電撃ガードキル",
             effect: "2턴 동안 적 1명의 전격 내성을 제거한다.",
-            effect_en: "Suppress innate Electric resistances of 1 foe for 3 turns.",
-            effect_jp: "3ターンの間、敵単体の電撃耐性を打ち消す。",
-            priority: 0,
+            effect_en: "Suppress innate Electric resistances of 1 foe for 2 turns.",
+            effect_jp: "2ターンの間、敵単体の電撃耐性を打ち消す。",
+            priority: 3,
             icon: "디버프"
         },
         highlight: {
@@ -2358,5 +2358,53 @@ const personaData = {
         comment : "질풍 내성 제거 효과가 필요할 때 채용한다.",
         comment_en: "Adopted when Wind Resistance Removal effects are needed.",
         comment_jp: "風属性耐性解除効果が必要な時に採用する。"
+    },
+    "아라하바키": {
+        name_en: "Arahabaki",
+        name_jp: "アラハバキ",
+        grade: "5",
+        star: "3",
+        position: "굴복",
+        element: "빙결",
+        instinct: {
+            name: "철로 만든 몸 II",
+            name_en: "Iron Body II",
+            name_jp: "鉄製の身体 II",
+            effects: [
+                "방어력이 21.2% 증가한다.",
+                "모든 동료가 받는 약점 대미지가 23% 감소한다."
+            ],
+            effects_en: [
+                "Increases DEF by 21.2%.",
+                "All allies take 23% less damage from Weakness dmg."
+            ],
+            effects_jp: [
+                "防御力が21.2%上昇。味方全体の弱点被ダメージが18%低下。"
+            ],
+            priority: 0
+        },
+        uniqueSkill: {
+            name: "타룬다",
+            name_en: "Tarnada",
+            name_jp: "タルナダ",
+            effect: "3턴 동안 적 1명의 공격력이 25.8% 감소한다.",
+            effect_en: "Decreases ATK of 1 foe by 25.8% for 3 turns.",
+            effect_jp: "3ターンの間、敵単体の攻撃力が25.8%低下させる。",
+            priority: 0,
+            icon: "디버프"
+        },
+        highlight: {
+            effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
+            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
+            effect_jp: "すべての味方が攻撃力48.6%+1471のシールドを獲得し2ターンの間持続する。",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "방어 강화", priority: 0 },
+            {name : "방어의 마음가짐", priority: 0 },
+            {name : "치료 촉진", priority: 0 },
+            {name : "대미지 면역", priority: 0 },
+        ],
+        comment : "받는 대미지 감소 효과가 필요할 때 채용한다.",
     }
 };

@@ -2,6 +2,23 @@ const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "유스케": {
+        "name": "Yusuke Kitagawa",
+        "weapon4-1": {
+            "name": "Jagato",
+            "health": 1966,
+            "attack": 433,
+            "defense": 422,
+            "description": "Increase Defense by 18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%. Each time a counterattack is activated, increase Ice damage by  7.4%/9.6%/9.6%/11.8%/11.8%/14.0%/14.0% for 2 turns. Stacks up to 2 times."
+        },
+        "weapon5-1": {
+            "name": "Shadowkiller",
+            "health": 2457,
+            "attack": 541,
+            "defense": 528,
+            "description": "Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%.At the start of battle, increase counterattack damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. After gaining a shield, gain 1 Blade Spirit stack. Increase counterattack damage by 2% per stack. At 6 stacks, increase counterattack damage by 2.0%/2.6%/2.6%/3.2%/3.2%/3.8%/3.8%. This effect is permanent."
+        }
+    },
     "미나미": {
         "name": "Minami Miyashita",
         "weapon4-1":{

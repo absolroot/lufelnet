@@ -2,6 +2,48 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "유스케": {
+        "name": "Yusuke Kitagawa",
+        "skill1": {
+            "name": "Frozen Presence",
+            "element": "빙결",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Ice damage to all foes equal to 72.1%/79.5%/76.6%/84.0% of Yusuke's Defense. Inflict Freeze on main target for 2 turns with a 100% base chance."
+        },
+        "skill2": {
+            "name": "Bone-Chilling Cold",
+            "element": "빙결",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Ice damage to random foes equal to 92.9%/102.4%/98.6%/108.1% of Yusuke's Defense (5 hits). Prioritize new targets for each hit. If Yusuke has a shield, increase skill damage by 30%. For repeated hits on the same target, decrease damage by 60% each time, up to a minimum of 20% damage."
+        },
+        "skill3": {
+            "name": "Keen Eye",
+            "element": "물리",
+            "type": "버프",
+            "sp": 24,
+            "cool": 1,
+            "description": "Change the next activated Inspiration to Imagination.\nImagination: Counterattack chance becomes 100%, damage increases by 78.1%/86.1%/82.9%/90.9% of Defense, and changes to an AoE attack. If not activated by the start of Yusuke's next action, it will activate automatically.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% + 555/555/683/683 of Defense, temporarily change Yusuke's weakness to base attribute, and nullify all spiritual ailments. Also, inflict Taunt on all foes for 2 turns."
+        },
+        "skill_highlight": {
+            "element": "빙결",
+            "type": "광역피해",
+            "description": "Deal Ice damage to all foes equal to 178.1%/196.4%/189.1%/207.3% of Yusuke's Defense. Increase Inspiration counterattack activation chance by 35% for 3 turns."
+        },
+        "passive1": {
+            "name": "Painter's Focus",
+            "element": "패시브",
+            "description": "Each time a shield is gained, increase damage dealt to foes by 7.5% for 2 turns (stacks up to 6 times)."
+        },
+        "passive2": {
+            "name": "Artist's Intuition",
+            "element": "패시브",
+            "description": "Each time a shield is gained with Yusuke's skills, increase Yusuke's pierce rate by 20.0% for 1 turn."
+        }
+    },
     "미나미": {
         "name": "Minami Miyashita",
         "skill1": {

@@ -2,6 +2,23 @@ const enCharacterRitualData = {
     "원더": {
         "name": "Wonder"
     },
+    "유스케": {
+        "name": "Yusuke Kitagawa",
+        "r0": "Inspiration",
+        "r0_detail": "When taking skill damage, 65% fixed chance to counterattack via Resonance, dealing Ice damage equal to 88% of Defense. This effect is enhanced to Imagination when using a skill.",
+        "r1": "Natural Talent",
+        "r1_detail": "Every 2 times Keen Eye is used, gain 1 Imagination opportunity. This additional counterattack deals 70% of the original damage.",
+        "r2": "Both Beauty and Vice",
+        "r2_detail": "Increase the skill levels of Keen Eye and Thief Tactics by 3, up to a maximum of 15 levels.",
+        "r3": "A Breathtaking Sight",
+        "r3_detail": "When HP is 70% or higher, increase additional damage dealt by counterattacks by 35%.",
+        "r4": "Still Life",
+        "r4_detail": "Increase the skill levels of Frozen Presence and Bone-Chilling Cold by 3, up to a maximum of 15 levels.",
+        "r5": "With a Single Stroke",
+        "r5_detail": "Highlight Enhanced: After using Highlight, increase counterattack damage by 30% for 3 turns.",
+        "r6": "Finishing Touches",
+        "r6_detail": "Inspiration and Imagination effects are changed to Vision & Emotion and Creation. Counterattacks become 2 consecutive attacks, each dealing 90% of the original attack's damage. Also, increase counterattack pierce rate by 30%."
+    },
     "미나미": {
         "name": "Minami Miyashita",
         "r0": "Nurse's Oath",

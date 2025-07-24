@@ -752,17 +752,29 @@ const loadCharacterImages = () => {
     return;
   }
   
-  const allCharacters = [...window.characterList.mainParty, ...window.characterList.supportParty];
-  
+  // 정렬: release_order 내림차순, 같으면 rarity 내림차순
+  const allCharacters = [...window.characterList.mainParty, ...window.characterList.supportParty]
+    .filter(character => character !== "원더" && window.characterData[character]);
+
+  allCharacters.sort((a, b) => {
+    const aData = window.characterData[a];
+    const bData = window.characterData[b];
+    const aRarity = Number(aData.rarity) || 0;
+    const bRarity = Number(bData.rarity) || 0;
+    const aOrder = Number(aData.release_order) || 0;
+    const bOrder = Number(bData.release_order) || 0;
+    if (bRarity !== aRarity) {
+      return bRarity - aRarity;
+    }
+    return bOrder - aOrder;
+  });
+
   allCharacters.forEach(character => {
-    if (character === "원더") return; // 원더 제외
-    
     // 캐릭터 데이터 존재 확인
     if (!window.characterData[character]) {
       console.warn(`Character data not found for: ${character}`);
       return;
     }
-    
     const img = document.createElement('img');
     img.src = `${BASE_URL}/assets/img/tier/${character}.webp`;
     img.alt = character;

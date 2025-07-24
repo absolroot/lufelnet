@@ -433,12 +433,6 @@ button {
 /* Mobile Responsiveness */
 @media (max-width: 1200px) {
   .position-tiers-container {
-    grid-template-columns: 55px repeat(4, 1fr) 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .position-tiers-container {
     width: 100%;
     margin: 20px 0;
     /* Keep all 7 position columns on tablet */
@@ -501,7 +495,7 @@ button {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .position-tiers-container {
     /* Change to vertical mobile layout */
     display: block;
@@ -765,7 +759,7 @@ button {
   color: rgba(255, 255, 255, 0.8);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .help-text {
     display: none;
   }
@@ -779,7 +773,7 @@ button {
   opacity: 0.8;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .help-text {
     margin: 15px 0;
     padding: 12px;
@@ -790,7 +784,7 @@ button {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .help-text {
     margin: 10px 0;
     padding: 10px;

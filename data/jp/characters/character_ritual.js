@@ -1,5 +1,4 @@
 const jpCharacterRitualData = {
-    
     "유스케": {
         "name": "喜多川 祐介",
         "r0": "インスピレーション",

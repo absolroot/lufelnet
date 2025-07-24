@@ -30,7 +30,7 @@ const resetTierImages = (tierRow) => {
 
 const handleDeleteTier = () => {
   if (activeTier) {
-    const isMobile = window.innerWidth <= 480;
+    const isMobile = window.innerWidth <= 768;
     
     if (isMobile) {
       // Mobile layout: find and remove the entire mobile container
@@ -117,7 +117,7 @@ const handlePrependTier = () => {
       
       // Create new tier row elements
       const tierColor = getTierColor("New");
-      const isMobile = window.innerWidth <= 480;
+      const isMobile = window.innerWidth <= 768;
       
       if (isMobile) {
         // For mobile, just create the mobile tier row normally
@@ -203,7 +203,7 @@ const handleAppendTier = () => {
       
       // Create new tier row elements
       const tierColor = getTierColor("New");
-      const isMobile = window.innerWidth <= 480;
+      const isMobile = window.innerWidth <= 768;
       
       if (isMobile) {
         // For mobile, just create the mobile tier row normally
@@ -293,7 +293,7 @@ const handleSettingsClick = (tierLabelCell) => {
 const getNextTierRow = (currentTierLabelCell) => {
   if (!currentTierLabelCell) return null;
   
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 768;
   
   if (isMobile) {
     // In mobile layout, find the next mobile container
@@ -323,7 +323,7 @@ const getTierRowFromElement = (tierLabelCell) => {
     return null;
   }
   
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 768;
   
   if (isMobile) {
     // In mobile layout, the tier container includes the label and positions container
@@ -372,7 +372,7 @@ const handleMoveTier = (tierLabelCell, direction) => {
 const getPreviousTierRow = (tierLabelCell) => {
   if (!tierLabelCell) return null;
   
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 768;
   
   if (isMobile) {
     // In mobile layout, find the previous mobile container
@@ -399,7 +399,7 @@ const getPreviousTierRow = (tierLabelCell) => {
 // Responsive handler to rebuild layout when screen size changes
 let currentLayout = null;
 const handleResponsiveLayout = () => {
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 768;
   const newLayout = isMobile ? 'mobile' : 'desktop';
   
   if (currentLayout !== newLayout) {
@@ -593,7 +593,7 @@ const getTierColor = (label) => {
 
 const createTierRow = (label = "New") => {
   const tierColor = getTierColor(label);
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 768;
 
   if (isMobile) {
     return createMobileTierRow(label, tierColor);
@@ -1136,7 +1136,7 @@ const getTierDataFromURL = () => {
 const loadTierDataFromURL = (tierData) => {
   if (!tierData || !Array.isArray(tierData)) return;
   
-  const isMobile = window.innerWidth <= 480;
+  const isMobile = window.innerWidth <= 768;
   
   // 기존 티어 행들을 모두 제거
   const existingTierLabels = document.querySelectorAll('.tier-label-cell');
@@ -1261,7 +1261,7 @@ window.initPositionTierMaker = () => {
   initFilters();
   
   // Initialize responsive layout
-  currentLayout = window.innerWidth <= 480 ? 'mobile' : 'desktop';
+  currentLayout = window.innerWidth <= 768 ? 'mobile' : 'desktop';
   
   // Add resize event listener for responsive layout
   window.addEventListener('resize', () => {

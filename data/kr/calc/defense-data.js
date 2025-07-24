@@ -497,6 +497,24 @@ const defenseCalcData = [
         note: "원소이상 2종 이하일 경우 매 턴 원더의 공격 필수"
     },
     {
+        id: "wonder-weapon-death",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        target: "단일/광역",
+        skillIcon: `${BASE_URL}/assets/img/wonder-weapon/망자의 눈.webp`,
+        skillName: "망자의 눈",
+        options: ["1중첩","2중첩"],
+        values: {
+            "1중첩": 10.0,
+            "2중첩": 20.0,
+        },
+        defaultOption: "2중첩",
+        value: 20.0,
+        duration: "2턴",
+        note: "적에게 상태이상 부여 시"
+    },
+    {
         id: 4,
         charName: "",
         charImage: "",

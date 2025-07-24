@@ -550,7 +550,7 @@ const BUFF_DATA = {
                 {
                     target: '아군 전체',
                     effects: [
-                        { type: '대미지 보너스', value: 10 },
+                        { type: '대미지 보너스', value: 15 },
                     ],
                     duration: '2턴'
                 }
@@ -568,7 +568,7 @@ const BUFF_DATA = {
                 {
                     target: '아군 전체',
                     effects: [
-                        { type: '공격력 %', value: 12 },
+                        { type: '공격력 %', value: 18 },
                     ],
                     duration: '3턴'
                 }
@@ -613,7 +613,7 @@ const BUFF_DATA = {
                     ],
                     duration: '1턴',
                     condition: '핵열'
-                }
+                },
             ],
             options: {
             },
@@ -954,6 +954,13 @@ const BUFF_DATA = {
                     ],
                     condition: '물리',
                     duration: '3턴'
+                },
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 20.0 }
+                    ],
+                    note: '적에게 상태이상 부여 2스택'
                 }
             ]
         }
@@ -1258,7 +1265,7 @@ const BUFF_DATA = {
                     effects: [
                         { type: '방어력 감소', value: 93.1 }
                     ],
-                    duration: '2턴',
+                    duration: '3턴',
                     condition: '약점'
                 }
             ],
@@ -1295,7 +1302,7 @@ const BUFF_DATA = {
                     effects: [
                         { type: '방어력 감소', value: 46.6 }
                     ],
-                    duration: '2턴'
+                    duration: '3턴'
                 }
             ],
             options: {
@@ -1331,7 +1338,7 @@ const BUFF_DATA = {
                     effects: [
                         { type: '대미지 보너스', value: 35.3 }
                     ],
-                    duration: '2턴'
+                    duration: '3턴'
                 }
             ],
             options: {

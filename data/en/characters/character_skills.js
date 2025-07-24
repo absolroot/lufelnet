@@ -456,7 +456,7 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Nuclear damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack. For each stack of Power of Friendship the party has, increase damage by 10%."
+            "description": "Deal Nuke damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack. For each stack of Power of Friendship the party has, increase damage by 10%."
         },
         "skill2": {
             "name": "Justice Barrier",

@@ -1117,7 +1117,7 @@ const personaData = {
             name_jp: "破邪の宝塔 III",
             effects: [
                 "크리티컬 확률이 17.5% 증가한다.",
-                "적에게 스킬 시전 시, 메인 목표 적이 원소 이상을 1중첩 보유할 때마다 받는 핵열 데미지가 1턴 동안 10% 증가한다. (3회 중첩 가능).",
+                "적에게 스킬 시전 시, 메인 목표 적이 원소 이상을 1중첩 보유할 때마다 받는 핵열 데미지가 2턴 동안 10% 증가한다. (3회 중첩 가능).",
                 "또한 다른 적이 해당 효과의 40%를 획득한다."
             ],
             effects_en: [
@@ -1132,9 +1132,9 @@ const personaData = {
             name: "존왕의 항복",
             name_en: "The King's Surrender",
             name_jp: "尊王の調伏",
-            effect: "1명의 적에게 180.0%의 핵열 속성 대미지를 주고, 원소 이상 상태인 적 공격 시 해당 스킬 대미지가 25% 증가한다.",
-            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases dmg dealt to enemy inflicted with Elemental Ailments by 25%.",
-            effect_jp: "敵単体に180.0％攻撃力の核熱属性ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25％上昇する。",
+            effect: "1명의 적에게 180.0%의 핵열 속성 대미지를 주고, 원소 이상 상태인 적 공격 시 해당 스킬 대미지가 25% 증가한다. 또한 아군 핵열 속성 동료의 공격력이 20% 증가하고, 2턴간 지속된다.",
+            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases dmg dealt to enemy inflicted with Elemental Ailments by 25% and increases all Nuke allies' ATK by 20% for 2 turns.",
+            effect_jp: "敵単体に180.0％攻撃力の核熱属性ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25％上昇する。また、核熱属性の味方の攻撃力が20％上昇し、2ターンの間持続する。",
             priority: 0,
             icon: "핵열"
         },
@@ -1259,13 +1259,13 @@ const personaData = {
             name_en: "Otherworldly Saint III",
             name_jp: "世俗を超越した聖人 III",
             effects: [
-                "공격력이 29.1% 증가한다.\n전투 시작 시 『불씨』를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 『불씨』 1중첩을 획득한다. 만약 화상일 경우 『불씨』를 추가로 1중첩 획득하며 3턴 동안 지속된다 (10회 중첩 가능).\n매회 스킬은 『불씨』를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시『불씨』가 4중첩 이상이면 모든 『불씨』를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다."
+                "공격력이 29.1% 증가한다.\n전투 시작 시 『불씨』를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 『불씨』 1중첩을 획득한다. 만약 화상일 경우 『불씨』를 추가로 1중첩 획득하며 3턴 동안 지속된다 (10회 중첩 가능).\n매회 스킬은 『불씨』를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시『불씨』가 4중첩 이상이면 모든 『불씨』를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1.5% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다."
             ],
             effects_en: [
-                "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases all allies' dmg dealt by 1% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
+                "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases all allies' dmg dealt by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
             ],
             effects_jp: [
-                "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方キャラクターが元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方キャラクターにペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
+                "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方キャラクターが元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方キャラクターにペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
             ],
             priority: 2
         },
@@ -1273,9 +1273,9 @@ const personaData = {
             name: "정화의 불",
             name_en: "Fire of Purification",
             name_jp: "浄化の火",
-            effect: "3턴 동안 모든 아군 캐릭터의 공격력이 8.0% 증가하고, 자신의 공격력 500마다 0.5% 추가 증가한다(최대 4%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-            effect_en: "Increases all allies' ATK by 8% + 0.5% for every 500 ATK you have, up to 4% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
-            effect_jp: "3ターンの間全ての味方キャラクターの攻撃力が8.0%増加し、自分の攻撃力500ごとに0.5%追加増加する（最大4%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍キャラクターにペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
+            effect: "3턴 동안 모든 아군 캐릭터의 공격력이 12.0% 증가하고, 자신의 공격력 500마다 0.8% 추가 증가한다(최대 6%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
+            effect_en: "Increases all allies' ATK by 12% + 0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
+            effect_jp: "3ターンの間全ての味方キャラクターの攻撃力が12.0%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍キャラクターにペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
             priority: 3,
             icon: "버프광역"
         },
@@ -1390,6 +1390,55 @@ const personaData = {
         comment_en: "Triggers core passive effect on enemies already in Burn state with [Overheat: Fire damage or El Jihad: Shock addition].",
         comment_jp: "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。"
     },
+    "멜키세덱": {
+        name_en: "Melchizedek",
+        name_jp: "メルキセデク",
+        grade: "6",
+        star: "5",
+        position: "지배",
+        element: "축복",
+        instinct: {
+            name: "인왕의 심판 III",
+            name_en: "King of Righteousness Judgement III",
+            name_jp: "王の裁き III",
+            effects: [
+                "공격력이 24.9% 증가한다.",
+                "자신이 스킬 시전 시, 2턴 동안 모든 동료의 축복 중첩 수에 따라 주는 축복 대미지가 4% 증가한다 (8회 중첩 가능). 다른 축복 속성 아군은 해당 효과의 50%를 획득한다. 스킬 시전 시, 축복 중첩 수가 3중첩 이상인 괴도의 공격력이 15% 증가하며 2턴 동안 지속된다."
+            ],
+            effects_en: [
+                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on all allies, up to 8 stacks. For allies with other Bless elements, gains 50% of the effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
+            ],
+            effects_jp: [
+                "攻撃力が24.9%上昇。スキル使用時、味方の祝福重複数に応じて2ターンの間祝福ダメージが4%増加する（8重複可能）。他の祝福属性の味方は効果の50%を獲得する。スキル使用時、祝福重複数が3重複以上の味方の攻撃力が15%増加（2ターン持続）。"
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "구원의 빛",
+            name_en: "Light of Salvation",
+            name_jp: "救いの光",
+            effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
+            effect_en: "Deals 79.4% ATK Bless dmg to all foes and gains 2 stacks of Bless. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
+            effect_jp: "全ての敵に79.4% ATKの祝福属性ダメージを与え、味方全体に祝福重複2重複を付与する。自分は祝福重複ごとにスキルダメージが5%増加し、最大25%増加する。",
+            priority: 1,
+            icon: "축복광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 180.0%의 축복 속성 대미지를 준다.",
+            effect_en: "Deals 180.0% ATK as Bless dmg to all foes.",
+            effect_jp: "全ての敵に180.0% ATKの祝福属性ダメージを与える。",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "마하타루카 오토", priority: 0},
+            {name : "마도의 재능", priority: 0},
+            {name : "공격 강화", priority: 0},
+            {name : "어드바이스", priority: 0},
+            {name : "정교한 타격", priority: 0},
+            {name : "축복 강화", priority: 0}
+       ],
+    },
+
     "요시츠네": {
         name_en: "Yoshitsune",
         name_jp: "ヨシツネ",
@@ -2406,5 +2455,7 @@ const personaData = {
             {name : "대미지 면역", priority: 0 },
         ],
         comment : "받는 대미지 감소 효과가 필요할 때 채용한다.",
+        comment_en: "Adopted when damage reduction effects are needed.",
+        comment_jp: "受けるダメージ減少効果が必要な時に採用する。"
     }
 };

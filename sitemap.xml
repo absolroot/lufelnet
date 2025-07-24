@@ -37,4 +37,29 @@ sitemap:
       </url>
     {% endunless %}
   {% endfor %}
-</urlset> 
+  
+  <!-- Tier List and Tier Maker specific URLs -->
+  <!-- Tier List (default) -->
+  <url>
+    <loc>{{ site.url }}/tier/position-tier/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/tier/position-tier/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/tier/position-tier/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/tier/position-tier/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tier/position-tier/" />
+  </url>
+  
+  <!-- Tier Maker -->
+  <url>
+    <loc>{{ site.url }}/tier/position-tier/?list=false</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/tier/position-tier/?lang=kr&amp;list=false" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/tier/position-tier/?lang=en&amp;list=false" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/tier/position-tier/?lang=jp&amp;list=false" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tier/position-tier/?list=false" />
+  </url>
+</urlset>

@@ -39,6 +39,7 @@ class Navigation {
                 tacticForge: '택틱 대장간',
                 tier: '티어',
                 tierMaker: '티어 메이커',
+                tierList: '티어 리스트',
                 calculator: '계산기',
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
@@ -56,6 +57,7 @@ class Navigation {
                 tacticForge: 'Tactics Forge',
                 tier: 'Tier',
                 tierMaker: 'Tier Maker',
+                tierList: 'Tier List',
                 calculator: 'Calculator',
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Calculator',
@@ -73,6 +75,7 @@ class Navigation {
                 tacticForge: '戦術鍛冶場',
                 tier: 'ティア',
                 tierMaker: 'ティアメーカー',
+                tierList: 'ティアリスト',
                 calculator: '計算機',
                 payCalc: '課金計算機',
                 defenseCalc: '防御力計算機',
@@ -190,7 +193,11 @@ class Navigation {
                         <span data-text="${texts.tier}">${texts.tier}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/tier?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-maker">
+                        <!--
+                        <a href="${BASE_URL}/tier/position-tier/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-list">
+                            <span data-text="${texts.tierList}">◈　${texts.tierList}</span>
+                        </a>-->
+                        <a href="${BASE_URL}/tier/position-tier/?lang=${currentLang}&v=${APP_VERSION}&list=false" class="nav-sub-item" data-nav="tier-maker">
                             <span data-text="${texts.tierMaker}">◈　${texts.tierMaker}</span>
                         </a>
                     </div>

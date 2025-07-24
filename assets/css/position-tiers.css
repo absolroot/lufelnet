@@ -857,3 +857,136 @@ button {
   outline: 2.5px solid transparent;
   outline-offset: -2.5px;
 }
+
+/* Ritual Modal Styles */
+.ritual-modal {
+  border: none;
+  border-radius: 8px;
+  background: var(--tier-bg-color);
+  color: white;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+}
+
+.ritual-modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.ritual-modal-content {
+  padding: 20px;
+}
+
+.ritual-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.ritual-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: white;
+}
+
+.ritual-modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ritual-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.ritual-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.ritual-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--tier-control-bg-color);
+  min-height: 60px;
+}
+
+.ritual-option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ritual-option.selected {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.2);
+}
+
+.ritual-option:first-child {
+  grid-column: 1 / -1;
+}
+
+.ritual-none {
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+}
+
+.ritual-option img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Ritual icon on character card */
+.character-ritual-icon {
+  position: absolute !important;
+  bottom: 2px !important;
+  right: 2px !important;
+  width: 30px !important;
+  height: 30px !important;
+  object-fit: contain;
+  z-index: 100 !important;
+  pointer-events: none;
+  display: block !important;
+  filter: drop-shadow(1px 0 0 #ffffff)
+  drop-shadow(-1px 0 0 #ffffff)
+  drop-shadow(0 1px 0 #ffffff)
+  drop-shadow(0 -1px 0 #ffffff);
+}
+
+/* Wrapper for character images with ritual icons */
+.character-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.character-wrapper img:first-child {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure character images have relative positioning for ritual icon */
+.main-wrapper img {
+  position: relative;
+}

@@ -505,13 +505,23 @@ const handleDragover = (event) => {
     target.classList.add("drag-over");
     target.appendChild(draggedImage);
   } else if (target.tagName === "IMG" && target !== draggedImage) {
+    // hierarchy 오류 방지: draggedImage가 target의 부모이거나 target이 draggedImage의 부모인 경우 방지
+    if (draggedImage.contains(target) || target.contains(draggedImage)) {
+      return; // hierarchy 충돌 방지
+    }
+    
     const { left, width } = target.getBoundingClientRect();
     const midPoint = left + width / 2;
 
-    if (event.clientX < midPoint) {
-      target.before(draggedImage);
-    } else {
-      target.after(draggedImage);
+    try {
+      if (event.clientX < midPoint) {
+        target.before(draggedImage);
+      } else {
+        target.after(draggedImage);
+      }
+    } catch (error) {
+      // HierarchyRequestError 발생 시 무시
+      console.warn('Hierarchy error prevented during drag operation:', error);
     }
   }
 };
@@ -793,26 +803,26 @@ const loadCharacterImages = () => {
   });
 };
 
-// 개별 이미지에 드래그 이벤트 리스너 추가하는 함수
-const attachDragListeners = (img) => {
+// 개별 이미지 또는 wrapper에 드래그 이벤트 리스너 추가하는 함수
+const attachDragListeners = (element) => {
   // 기존 이벤트 리스너 제거 (완전히 새로 시작)
-  const newImg = img.cloneNode(true);
-  img.parentNode.replaceChild(newImg, img);
+  const newElement = element.cloneNode(true);
+  element.parentNode.replaceChild(newElement, element);
   
   // 새로운 이벤트 리스너 추가
-  newImg.addEventListener("dragstart", (e) => {
+  newElement.addEventListener("dragstart", (e) => {
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.effectAllowed = "move";
-    newImg.classList.add("dragging");
+    newElement.classList.add("dragging");
     
     // 포지션 하이라이트 추가 (안전하게)
     setTimeout(() => {
-      highlightPositionMatch(newImg);
+      highlightPositionMatch(newElement);
     }, 0);
   });
 
-  newImg.addEventListener("dragend", (e) => {
-    newImg.classList.remove("dragging");
+  newElement.addEventListener("dragend", (e) => {
+    newElement.classList.remove("dragging");
     // Remove all drag-over classes and position highlights
     document.querySelectorAll('.position-cell').forEach(el => {
       el.classList.remove('drag-over');
@@ -822,30 +832,26 @@ const attachDragListeners = (img) => {
     
     // 드래그 완료 후 리스너 재확인
     setTimeout(() => {
-      if (!newImg.dataset.dragListenersAttached) {
-        attachDragListeners(newImg);
+      if (!newElement.dataset.dragListenersAttached) {
+        attachDragListeners(newElement);
       }
     }, 100);
   });
 
-  newImg.addEventListener("dblclick", (e) => {
+  // 더블클릭 이벤트는 이미지 또는 wrapper에 모두 적용
+  newElement.addEventListener("dblclick", (e) => {
     e.preventDefault();
-    if (newImg.parentElement !== cardsContainer) {
-      cardsContainer.appendChild(newImg);
-      cardsContainer.scrollLeft = cardsContainer.scrollWidth;
-      // 더블클릭 후 리스너 재확인
-      setTimeout(() => {
-        if (!newImg.dataset.dragListenersAttached) {
-          attachDragListeners(newImg);
-        }
-      }, 100);
+    // wrapper인 경우 내부 이미지를 찾아서 전달
+    const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
+    if (targetImage) {
+      openRitualModal(targetImage);
     }
   });
   
   // 이벤트 리스너 추가 완료 표시
-  newImg.dataset.dragListenersAttached = 'true';
+  newElement.dataset.dragListenersAttached = 'true';
   
-  return newImg;
+  return newElement;
 };
 
 // 모든 이미지에 드래그 기능 초기화
@@ -1183,11 +1189,72 @@ const loadTierDataFromURL = (tierData) => {
         }
         
         if (positionCell && characters) {
-          characters.forEach(charName => {
+          characters.forEach(charData => {
+            // 캐릭터 데이터가 문자열인지 객체인지 확인 (하위 호환성)
+            const charName = typeof charData === 'string' ? charData : charData.name;
+            let ritualType = 'none';
+            
+            if (typeof charData === 'object') {
+              // 새로운 JSON 형식: { "name": "...", "Awareness": 1 }
+              if (charData.Awareness) {
+                ritualType = `num${charData.Awareness}`;
+              }
+              // 이전 형식 호환성: { "name": "...", "ritual": "Awareness 1" }
+              else if (charData.ritual && charData.ritual !== 'none') {
+                const match = charData.ritual.match(/Awareness (\d+)/);
+                if (match) {
+                  ritualType = `num${match[1]}`;
+                }
+              }
+            }
+            
             // 캐릭터 이미지를 찾아서 해당 포지션 셀에 배치
             const charImage = document.querySelector(`img[alt="${charName}"]`);
             if (charImage) {
+              // ritual 데이터 설정
+              charImage.dataset.ritual = ritualType;
+              
+              // 기존 ritual 아이콘 제거
+              const existingIcon = charImage.parentElement.querySelector('.character-ritual-icon');
+              if (existingIcon) {
+                existingIcon.remove();
+              }
+              
               positionCell.appendChild(charImage);
+              
+              // ritual 아이콘 추가 (none이 아닌 경우)
+              if (ritualType && ritualType !== 'none') {
+                const ritualIcon = document.createElement('img');
+                ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
+                ritualIcon.className = 'character-ritual-icon';
+                ritualIcon.alt = `Ritual ${ritualType}`;
+                
+                // Always create a wrapper for proper positioning
+                const parent = charImage.parentElement;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'character-wrapper';
+                wrapper.draggable = true;
+                
+                // Copy all attributes from image to wrapper for drag functionality
+                wrapper.alt = charImage.alt;
+                wrapper.dataset.element = charImage.dataset.element;
+                wrapper.dataset.position = charImage.dataset.position;
+                wrapper.dataset.rarity = charImage.dataset.rarity;
+                wrapper.dataset.tags = charImage.dataset.tags;
+                wrapper.dataset.ritual = ritualType;
+                wrapper.dataset.dragListenersAttached = 'true';
+                
+                // Remove draggable from image since wrapper will handle it
+                charImage.draggable = false;
+                
+                // Insert wrapper and move image into it
+                parent.insertBefore(wrapper, charImage);
+                wrapper.appendChild(charImage);
+                wrapper.appendChild(ritualIcon);
+                
+                // Attach drag listeners to wrapper instead of image
+                attachDragListeners(wrapper);
+              }
             }
           });
         }
@@ -1258,6 +1325,7 @@ window.initPositionTierMaker = () => {
   initDraggables();
   initPositionTiers();
   initColorOptions();
+  initRitualModal();
   initFilters();
   
   // Initialize responsive layout
@@ -1391,6 +1459,33 @@ cardsContainer.addEventListener("dragleave", (event) => {
   }
 }); 
 
+// 리추얼 데이터를 JSON 형식으로 변환하는 함수
+const convertRitualToJSON = (ritualType) => {
+  if (!ritualType || ritualType === 'none') {
+    return null;
+  }
+  const ritualMap = {
+    'num1': { "Awareness": 1 },
+    'num2': { "Awareness": 2 }, 
+    'num3': { "Awareness": 3 },
+    'num4': { "Awareness": 4 },
+    'num5': { "Awareness": 5 },
+    'num6': { "Awareness": 6 }
+  };
+  return ritualMap[ritualType] || null;
+};
+
+// 리추얼 JSON 데이터를 내부 형식으로 역변환하는 함수 (import용)
+const convertRitualFromJSON = (ritualData) => {
+  if (!ritualData || typeof ritualData !== 'object') {
+    return 'none';
+  }
+  if (ritualData.Awareness) {
+    return `num${ritualData.Awareness}`;
+  }
+  return 'none';
+};
+
 // 티어 리스트 결과를 JSON으로 내보내는 함수 (인코딩 없이)
 const exportTierListAsJSON = () => {
   console.log('Exporting tier list as JSON...');
@@ -1425,9 +1520,36 @@ const exportTierListAsJSON = () => {
           const characters = [];
           
           // 해당 셀의 모든 캐릭터 이미지 수집 (이름만 저장)
-          const images = nextElement.querySelectorAll('img');
-          images.forEach(img => {
-            characters.push(img.alt); // 이름만 저장
+          const wrappers = nextElement.querySelectorAll('.character-wrapper');
+          const images = nextElement.querySelectorAll('img:not(.character-ritual-icon)');
+          
+          // DOM 순서대로 모든 캐릭터 수집 (wrapper와 일반 이미지 순서 유지)
+          const allElements = Array.from(nextElement.children);
+          
+          allElements.forEach(element => {
+            let img = null;
+            let ritualType = 'none';
+            
+            if (element.classList.contains('character-wrapper')) {
+              // wrapper 안의 이미지 처리
+              img = element.querySelector('img:not(.character-ritual-icon)');
+              ritualType = element.dataset.ritual || 'none';
+            } else if (element.tagName === 'IMG' && !element.classList.contains('character-ritual-icon')) {
+              // 일반 이미지 처리
+              img = element;
+              ritualType = element.dataset.ritual || 'none';
+            }
+            
+            if (img) {
+              const characterData = {
+                name: img.alt
+              };
+              const ritualData = convertRitualToJSON(ritualType);
+              if (ritualData) {
+                Object.assign(characterData, ritualData);
+              }
+              characters.push(characterData);
+            }
           });
           
           positionData[positionId] = characters;
@@ -1466,9 +1588,36 @@ const exportTierListAsJSON = () => {
           const characters = [];
           
           // 해당 셀의 모든 캐릭터 이미지 수집 (이름만 저장)
-          const images = nextElement.querySelectorAll('img');
-          images.forEach(img => {
-            characters.push(img.alt); // 이름만 저장
+          const wrappers = nextElement.querySelectorAll('.character-wrapper');
+          const images = nextElement.querySelectorAll('img:not(.character-ritual-icon)');
+          
+          // DOM 순서대로 모든 캐릭터 수집 (wrapper와 일반 이미지 순서 유지)
+          const allElements = Array.from(nextElement.children);
+          
+          allElements.forEach(element => {
+            let img = null;
+            let ritualType = 'none';
+            
+            if (element.classList.contains('character-wrapper')) {
+              // wrapper 안의 이미지 처리
+              img = element.querySelector('img:not(.character-ritual-icon)');
+              ritualType = element.dataset.ritual || 'none';
+            } else if (element.tagName === 'IMG' && !element.classList.contains('character-ritual-icon')) {
+              // 일반 이미지 처리
+              img = element;
+              ritualType = element.dataset.ritual || 'none';
+            }
+            
+            if (img) {
+              const characterData = {
+                name: img.alt
+              };
+              const ritualData = convertRitualToJSON(ritualType);
+              if (ritualData) {
+                Object.assign(characterData, ritualData);
+              }
+              characters.push(characterData);
+            }
           });
           
           positionData[positionId] = characters;
@@ -1518,3 +1667,135 @@ const handleShareClick = () => {
     prompt('티어 리스트 데이터 (이것을 파일에 저장하세요):', jsonData);
   });
 }; 
+
+// Ritual Modal Functionality
+let currentRitualImage = null;
+const ritualModal = document.querySelector('.ritual-modal');
+
+// Open ritual modal for character image
+const openRitualModal = (img) => {
+  currentRitualImage = img;
+  
+  // Show current ritual selection
+  const currentRitual = img.dataset.ritual || 'none';
+  const ritualOptions = ritualModal.querySelectorAll('.ritual-option');
+  ritualOptions.forEach(option => {
+    option.classList.remove('selected');
+    if (option.dataset.ritual === currentRitual) {
+      option.classList.add('selected');
+    }
+  });
+  
+  ritualModal.showModal();
+};
+
+// Close ritual modal
+const closeRitualModal = () => {
+  ritualModal.close();
+  currentRitualImage = null;
+};
+
+// Set ritual for character
+const setCharacterRitual = (ritualType) => {
+  if (!currentRitualImage) return;
+  
+  // Check if image is already in a wrapper
+  const existingWrapper = currentRitualImage.closest('.character-wrapper');
+  
+  if (existingWrapper) {
+    // Remove existing ritual icon from wrapper
+    const existingIcon = existingWrapper.querySelector('.character-ritual-icon');
+    if (existingIcon) {
+      existingIcon.remove();
+    }
+    
+    // Update wrapper ritual data
+    existingWrapper.dataset.ritual = ritualType;
+    currentRitualImage.dataset.ritual = ritualType;
+    
+    // Add new ritual icon if not 'none'
+    if (ritualType !== 'none') {
+      const ritualIcon = document.createElement('img');
+      ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
+      ritualIcon.className = 'character-ritual-icon';
+      ritualIcon.alt = `Ritual ${ritualType}`;
+      existingWrapper.appendChild(ritualIcon);
+    }
+  } else {
+    // wrapper가 없는 경우는 해당 이미지와 연결된 리추얼 아이콘이 없으므로 제거할 필요 없음
+    // 다른 캐릭터의 리추얼 아이콘을 제거하지 않도록 주의
+    
+    // Set ritual data on image
+    currentRitualImage.dataset.ritual = ritualType;
+    
+    // Add ritual icon if not 'none'
+    if (ritualType !== 'none') {
+      const ritualIcon = document.createElement('img');
+      ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
+      ritualIcon.className = 'character-ritual-icon';
+      ritualIcon.alt = `Ritual ${ritualType}`;
+      
+      // Create a wrapper for proper positioning
+      const parent = currentRitualImage.parentElement;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'character-wrapper';
+      wrapper.draggable = true;
+      
+      // Copy all attributes from image to wrapper for drag functionality
+      wrapper.alt = currentRitualImage.alt;
+      wrapper.dataset.element = currentRitualImage.dataset.element;
+      wrapper.dataset.position = currentRitualImage.dataset.position;
+      wrapper.dataset.rarity = currentRitualImage.dataset.rarity;
+      wrapper.dataset.tags = currentRitualImage.dataset.tags;
+      wrapper.dataset.ritual = ritualType;
+      wrapper.dataset.dragListenersAttached = 'true';
+      
+      // Remove draggable from image since wrapper will handle it
+      currentRitualImage.draggable = false;
+      
+      // Insert wrapper and move image into it
+      parent.insertBefore(wrapper, currentRitualImage);
+      wrapper.appendChild(currentRitualImage);
+      wrapper.appendChild(ritualIcon);
+      
+      // Attach drag listeners to wrapper instead of image
+      attachDragListeners(wrapper);
+    }
+  }
+  
+  closeRitualModal();
+};
+
+// Initialize ritual modal event listeners
+const initRitualModal = () => {
+  if (!ritualModal) return;
+  
+  // Close button
+  const closeBtn = ritualModal.querySelector('.ritual-modal-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeRitualModal);
+  }
+  
+  // Ritual option clicks
+  const ritualOptions = ritualModal.querySelectorAll('.ritual-option');
+  ritualOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const ritualType = option.dataset.ritual;
+      setCharacterRitual(ritualType);
+    });
+  });
+  
+  // Close on backdrop click
+  ritualModal.addEventListener('click', (e) => {
+    if (e.target === ritualModal) {
+      closeRitualModal();
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && ritualModal.open) {
+      closeRitualModal();
+    }
+  });
+};

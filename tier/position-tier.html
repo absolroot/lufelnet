@@ -225,6 +225,39 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         </section>
     </dialog>
     
+    <!-- Ritual Modal -->
+    <dialog class="ritual-modal">
+        <div class="ritual-modal-content">
+            <div class="ritual-modal-header">
+                <h3>Awareness</h3>
+                <button class="ritual-modal-close">&times;</button>
+            </div>
+            <div class="ritual-options">
+                <div class="ritual-option" data-ritual="none">
+                    <div class="ritual-none">NONE</div>
+                </div>
+                <div class="ritual-option" data-ritual="num1">
+                    <img src="{{ site.baseurl }}/assets/img/ritual/num1.png" alt="Ritual 1">
+                </div>
+                <div class="ritual-option" data-ritual="num2">
+                    <img src="{{ site.baseurl }}/assets/img/ritual/num2.png" alt="Ritual 2">
+                </div>
+                <div class="ritual-option" data-ritual="num3">
+                    <img src="{{ site.baseurl }}/assets/img/ritual/num3.png" alt="Ritual 3">
+                </div>
+                <div class="ritual-option" data-ritual="num4">
+                    <img src="{{ site.baseurl }}/assets/img/ritual/num4.png" alt="Ritual 4">
+                </div>
+                <div class="ritual-option" data-ritual="num5">
+                    <img src="{{ site.baseurl }}/assets/img/ritual/num5.png" alt="Ritual 5">
+                </div>
+                <div class="ritual-option" data-ritual="num6">
+                    <img src="{{ site.baseurl }}/assets/img/ritual/num6.png" alt="Ritual 6">
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
 
 </div>
 
@@ -244,7 +277,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 filter_position: "직업",
                 filter_rarity: "유형",
                 filter_tag: "태그",
-                help_message: "* 캐릭터 이동이 안될 경우 캐릭터를 더블 클릭해서 아래 리스트로 이동한 뒤 일정 시간 뒤 다시 시도해주세요."
+                help_message: "* 캐릭터를 더블클릭하면 의식을 설정할 수 있습니다."
             },
             en: {
                 language_notice: "",
@@ -255,7 +288,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 filter_position: "{{ site.data.i18n.en.filter_position | default: 'Position' }}",
                 filter_rarity: "{{ site.data.i18n.en.filter_rarity | default: 'Type' }}",
                 filter_tag: "{{ site.data.i18n.en.filter_tag | default: 'Tag' }}",
-                help_message: "* If character movement doesn't work, double-click the character to move it to the list below, then try again after a while."
+                help_message: "* Double-click the character to set the Awareness."
             },
             jp: {
                 language_notice: "",
@@ -266,7 +299,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 filter_position: "{{ site.data.i18n.jp.filter_position | default: '職業' }}",
                 filter_rarity: "{{ site.data.i18n.jp.filter_rarity | default: 'タイプ' }}",
                 filter_tag: "{{ site.data.i18n.jp.filter_tag | default: 'タグ' }}",
-                help_message: "* キャラクターの移動ができない場合は、キャラクターをダブルクリックして下のリストに移動してから、しばらく時間をおいて再試行してください。"
+                help_message: "* キャラクターをダブルクリックして意識を設定してください。"
             }
         };
         

@@ -795,7 +795,7 @@ alternate_urls:
             if ((index + 1) % 15 === 1 && index < sortedPersonas.length - 1) 
             {
                 const adContainer = document.createElement('div');
-                adContainer.className = 'ad-container';
+                adContainer.className = 'ad-container dynamic-ad';
                 adContainer.style.overflow = 'visible';
                 adContainer.style.width = '100%';
                 adContainer.style.borderRadius = '10px';
@@ -891,6 +891,33 @@ alternate_urls:
             grades: new Set()
         };
         
+        // 광고 가시성 관리 함수
+        function manageAdVisibility() {
+            const hasActiveFilters = Array.from(checkboxes).some(cb => cb.checked);
+            const hasActiveSearch = searchInput && searchInput.value.trim() !== '';
+            const isFilteringActive = hasActiveFilters || hasActiveSearch;
+            
+            const dynamicAds = document.querySelectorAll('.dynamic-ad');
+            
+            if (isFilteringActive) {
+                // 필터나 검색이 활성화된 경우: 마지막 광고만 남기고 나머지 숨김
+                dynamicAds.forEach((ad, index) => {
+                    if (index === dynamicAds.length - 1) {
+                        // 마지막 광고는 표시
+                        ad.style.display = 'block';
+                    } else {
+                        // 나머지 광고는 숨김
+                        ad.style.display = 'none';
+                    }
+                });
+            } else {
+                // 필터나 검색이 비활성화된 경우: 모든 광고 표시
+                dynamicAds.forEach(ad => {
+                    ad.style.display = 'block';
+                });
+            }
+        }
+        
         // 성능 최적화된 필터 적용 함수
         function applyFilters() {
             // 필터 상태를 Set으로 캐싱하여 빠른 조회
@@ -938,6 +965,9 @@ alternate_urls:
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
                 document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
+                
+                // 광고 가시성 관리
+                manageAdVisibility();
             });
         }
 

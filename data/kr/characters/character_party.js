@@ -48,9 +48,9 @@ const recommendParty = {
             {
                 type: "REDUCE DEF",
                 list: ["야노식", "노른", "비슈누"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
+                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
+                comment_en: "Decrease enemy defense",
+                comment_jp: "敵の防御力を低下させるペルソナ"
             },
             {
                 type: "ATK",
@@ -92,7 +92,7 @@ const recommendParty = {
         "persona": [
             {
                 type: "ATK",
-                list: ["앨리스", "지국천"],
+                list: ["앨리스", "지국천", "광목천"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
@@ -107,9 +107,9 @@ const recommendParty = {
             {
                 type: "REDUCE DEF",
                 list: ["년수", "수르트", "비슈누", "노른"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
+                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
+                comment_en: "Decrease enemy defense",
+                comment_jp: "敵の防御力を低下させるペルソナ"
             }
         ],
         "party": [
@@ -133,6 +133,83 @@ const recommendParty = {
             },
             {
                 members: ["렌", "미오", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "안": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["라미아", "바포멧", "광목천", "지국천"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "아메노우즈메"],
+                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
+                comment_en: "Increase critical rate and effect",
+                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수", "수르트", "비슈누", "노른"],
+                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
+                comment_en: "Decrease enemy defense",
+                comment_jp: "敵の防御力を低下させるペルソナ"
+            }
+        ],
+        "party": [
+            {
+                members: ["안", "키요시", "레오", "카요"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["안", "미나미", "레오", "카요"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["안", "루우나", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["안", "미오", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "류지": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["광목천", "지국천"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "아메노우즈메"],
+                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
+                comment_en: "Increase critical rate and effect",
+                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+            },
+        ],
+        "party": [
+            {
+                members: ["류지", "레오", "하루나", "카요"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""

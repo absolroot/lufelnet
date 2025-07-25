@@ -571,23 +571,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     translationData = window.jpRevelationData;
                 }
                 
-                console.log('일월성진 효과 디버깅:', {
+                /* console.log('일월성진 효과 디버깅:', {
                     revelation: revelation,
                     currentLang: currentLang,
                     hasTranslationData: !!translationData,
                     translationDataKeys: translationData ? Object.keys(translationData.sub_effects || {}) : []
-                });
+                });*/
                 
                 if (currentLang === 'en' && translationData && translationData.sub_effects) {
                     // 한국어 키를 영어 키로 변환
                     const englishKey = translateRevelationName(revelation, false);
-                    console.log('영어 키 변환:', revelation, '→', englishKey);
+                    // console.log('영어 키 변환:', revelation, '→', englishKey);
                     
                     if (translationData.sub_effects[englishKey]) {
                         effectData = translationData.sub_effects[englishKey];
                         set2Text = effectData.set2;
                         set4Text = effectData.set4;
-                        console.log('영어 효과 데이터 사용:', effectData);
+                        // console.log('영어 효과 데이터 사용:', effectData);
                     } else {
                         console.log('영어 효과 데이터 없음:', englishKey);
                         console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
@@ -595,13 +595,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (currentLang === 'jp' && translationData && translationData.sub_effects) {
                     // 한국어 키를 일본어 키로 변환
                     const japaneseKey = translateRevelationName(revelation, false);
-                    console.log('일본어 키 변환:', revelation, '→', japaneseKey);
+                    // console.log('일본어 키 변환:', revelation, '→', japaneseKey);
                     
                     if (translationData.sub_effects[japaneseKey]) {
                         effectData = translationData.sub_effects[japaneseKey];
                         set2Text = effectData.set2;
                         set4Text = effectData.set4;
-                        console.log('일본어 효과 데이터 사용:', effectData);
+                        // console.log('일본어 효과 데이터 사용:', effectData);
                     } else {
                         console.log('일본어 효과 데이터 없음:', japaneseKey);
                         console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     effectData = revelationData.sub_effects[revelation];
                     set2Text = effectData.set2;
                     set4Text = effectData.set4;
-                    console.log('한국어 효과 데이터 사용:', effectData);
+                   // console.log('한국어 효과 데이터 사용:', effectData);
                 }
                 
                 if (effectData) {
@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         .map(el => el.textContent.trim())
                         .filter(text => text); // 빈 문자열 제거
 
-                    console.log(currentSubRevs);
+                    // console.log(currentSubRevs);
                     
                     // 현재 선택된 일월성진에 대한 세트 효과만 필터링
                     let tooltipText = '';
@@ -752,24 +752,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 스킬 정보 채우기 (전역 함수로 설정)
     window.fillSkillsInfo = function(characterName) {
-        console.log('fillSkillsInfo 호출됨:', characterName);
+        // console.log('fillSkillsInfo 호출됨:', characterName);
         const skillsGrid = document.querySelector('.skills-grid');
         
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
-        console.log('현재 언어:', currentLang);
+        // console.log('현재 언어:', currentLang);
         
         // 언어별 데이터 사용
         let character;
         if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
             character = window.enCharacterSkillsData[characterName];
-            console.log('영어 스킬 데이터 사용:', character);
+            // console.log('영어 스킬 데이터 사용:', character);
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
-            console.log('일본어 스킬 데이터 사용:', character);
+            // console.log('일본어 스킬 데이터 사용:', character);
         } else {
             character = characterSkillsData[characterName];
-            console.log('한국어 스킬 데이터 사용:', character);
+            // console.log('한국어 스킬 데이터 사용:', character);
         }
         
         if (!character) return;
@@ -835,7 +835,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_support', 'passive1', 'passive2'];
         }
 
-        console.log(skillTypes);
+        // console.log(skillTypes);
         
         skillsGrid.innerHTML = ''; // 기존 내용 초기화
         
@@ -871,7 +871,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // highlight 스킬의 경우 name이 없을 경우 "HIGHLIGHT"로 이름 표시
             let skillName = type === 'skill_highlight' && !skill.name ? 'HIGHLIGHT' : (skill.name || '');
             
-            console.log(skill);
+            // console.log(skill);
             // 각 스킬의 고유한 description 사용
             let description = skill.description || '';
             

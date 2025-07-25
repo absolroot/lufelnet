@@ -1225,10 +1225,55 @@ h2{
 
 .party-member img {
     width: 50px;
-    height: 50px;
+    height: 60px;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 4px;
+    transition: filter 0.3s ease;
+}
+
+.party-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    margin: 0 0;
+    position: relative;
+}
+
+.party-member.spoiler {
+    cursor: pointer;
+}
+
+.party-member.spoiler img,
+.party-member.spoiler .character-name {
+    filter: blur(4px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.party-member.spoiler::after {
+    content: 'SPOILER';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.party-member .character-name {
+    font-size: 12px;
+    text-align: center;
+    word-break: keep-all;
+    margin-top: 2px;
+    transition: filter 0.3s ease;
 }
 
 .party-member span {
@@ -1260,7 +1305,8 @@ h2{
     }
     
     .party-member {
-        width: 60px;
+        width: 50px;
+        margin: 0 0;
     }
     
     .party-member img {

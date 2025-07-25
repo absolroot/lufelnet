@@ -481,13 +481,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     });
                 });
                 
-                console.log('언어별 데이터 파일 로드 완료:', langPath);
+                // console.log('언어별 데이터 파일 로드 완료:', langPath);
                 
                 // 언어별 데이터 로드 완료 후 스킬 정보 로드
                 setTimeout(() => {
-                    console.log('영어/일본어 - fillSkillsInfo 호출 준비');
+                    // console.log('영어/일본어 - fillSkillsInfo 호출 준비');
                     if (typeof fillSkillsInfo === 'function') {
-                        console.log('fillSkillsInfo 함수 존재 - 호출');
+                        // console.log('fillSkillsInfo 함수 존재 - 호출');
                         fillSkillsInfo(characterName);
                     } else {
                         console.log('fillSkillsInfo 함수가 정의되지 않음');
@@ -509,9 +509,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
         // 한국어인 경우 바로 스킬 정보 로드
         if (currentLang === 'kr') {
-            console.log('한국어 - fillSkillsInfo 호출 준비');
+            // console.log('한국어 - fillSkillsInfo 호출 준비');
             if (typeof fillSkillsInfo === 'function') {
-                console.log('fillSkillsInfo 함수 존재 - 호출');
+                // console.log('fillSkillsInfo 함수 존재 - 호출');
                 fillSkillsInfo(characterName);
             } else {
                 console.log('fillSkillsInfo 함수가 정의되지 않음');
@@ -553,12 +553,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     }
                 }
                 
-                console.log('언어별 데이터 로드 결과:', {
+                /*console.log('언어별 데이터 로드 결과:', {
                     lang: currentLang,
                     skills: !!localizedSkills,
                     ritual: !!localizedRitual,
                     weapon: !!localizedWeapon
-                });
+                });*/
             } catch (e) {
                 console.log('언어별 데이터 로드 실패:', e);
             }
@@ -688,12 +688,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');
-        console.log('Character data:', character);
-        console.log('battle_plus_stats value:', character.battle_plus_stats);
-        console.log('battlePlusStats element:', battlePlusStats);
+        // console.log('Character data:', character);
+        // console.log('battle_plus_stats value:', character.battle_plus_stats);
+        // console.log('battlePlusStats element:', battlePlusStats);
         
         if (character.battle_plus_stats && character.battle_plus_stats !== 'nan') {
-            console.log('Original battle_plus_stats:', character.battle_plus_stats);
+            // console.log('Original battle_plus_stats:', character.battle_plus_stats);
             
             // <b> 태그의 수 확인
             const bTagCount = (character.battle_plus_stats.match(/<b>/g) || []).length;
@@ -714,11 +714,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             } else {
                 // 기존 방식대로 한 열로 표시
                 let rawContent = character.battle_plus_stats.trim();
-                console.log('Raw content:', rawContent);
+                // console.log('Raw content:', rawContent);
                 
                 // / 기준으로 분할
                 let items = rawContent.split(/\s*\/\s*/);
-                console.log('Split items:', items);
+                // console.log('Split items:', items);
                 
                 // 첫 번째 항목이 ·로 시작하지 않으면 추가
                 if (items[0] && !items[0].trim().startsWith('·')) {
@@ -752,10 +752,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                      }
                  });
                  
-                 console.log('Final items:', items);
+                 // console.log('Final items:', items);
             }
         } else {
-            console.log('battle_plus_stats is empty or nan');
+            // console.log('battle_plus_stats is empty or nan');
             battlePlusStats.textContent = '-';
         }
         
@@ -1385,7 +1385,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         // revelationData를 enRevelationData로 변경해서 실행
                         const modifiedScript = scriptContent.replace('const enRevelationData', 'window.enRevelationData');
                         eval(modifiedScript);
-                        console.log('영어 계시 데이터 로드 완료:', window.enRevelationData);
+                        // console.log('영어 계시 데이터 로드 완료:', window.enRevelationData);
                         resolve();
                     })
                     .catch(error => {
@@ -1400,7 +1400,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         // revelationData를 jpRevelationData로 변경해서 실행
                         const modifiedScript = scriptContent.replace('const jpRevelationData', 'window.jpRevelationData');
                         eval(modifiedScript);
-                        console.log('일본어 계시 데이터 로드 완료:', window.jpRevelationData);
+                        // console.log('일본어 계시 데이터 로드 완료:', window.jpRevelationData);
                         resolve();
                     })
                     .catch(error => {
@@ -1447,10 +1447,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     // 디버깅을 위한 함수
     window.checkRevelationData = function() {
-        console.log('현재 언어:', getCurrentLanguage());
-        console.log('한국어 데이터:', window.revelationData);
-        console.log('영어 데이터:', window.enRevelationData);
-        console.log('일본어 데이터:', window.jpRevelationData);
+        // console.log('현재 언어:', getCurrentLanguage());
+        // console.log('한국어 데이터:', window.revelationData);
+        // console.log('영어 데이터:', window.enRevelationData);
+        // console.log('일본어 데이터:', window.jpRevelationData);
     };
 
     // 번역 테스트 함수
@@ -1677,7 +1677,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             'HEAL': { 'en': 'HEAL', 'jp': '回復' },
             'DEBUFF': { 'en': 'DEBUFF', 'jp': 'デバフ' },
             'SUPPORT': { 'en': 'SUPPORT', 'jp': 'サポート' },
-            'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' }
+            'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' },
+            'CRITICAL' : { 'en': 'CRITICAL', 'jp': 'クリティカル' }
         };
 
         personaData.forEach(category => {
@@ -1758,6 +1759,106 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         });
     }
 
+    // Extract data from script text (same as index.html)
+    function extractDataFromScript(scriptText) {
+        // characterData와 characterList를 추출하는 정규식
+        const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
+        const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
+        
+        if (!characterDataMatch || !characterListMatch) {
+            throw new Error('Failed to extract data from script');
+        }
+        
+        // JSON으로 파싱하기 위해 Function 생성자 사용
+        const characterData = new Function('return ' + characterDataMatch[1])();
+        const characterList = new Function('return ' + characterListMatch[1])();
+        
+        return { characterData, characterList };
+    }
+
+    // Load character list for the current language
+    let currentLangCharacterList = { mainParty: [], supportParty: [] };
+    let characterListLoaded = false;
+    
+    async function loadCharacterList() {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr') {
+            characterListLoaded = true;
+            return; // No need to load for Korean
+        }
+        
+        try {
+            console.log(`Loading ${currentLang} character list...`);
+            const langUrl = `../data/${currentLang}/characters/characters.js?v=${Date.now()}`;
+            console.log('Character list URL:', langUrl);
+            
+            const langResponse = await fetch(langUrl);
+            console.log('Character list response status:', langResponse.status);
+            
+            if (langResponse.ok) {
+                console.log('✅ Character list loaded successfully');
+                const langScriptText = await langResponse.text();
+                console.log('Character list script text length:', langScriptText.length);
+                
+                const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
+                
+                console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
+                
+                // Store the character list
+                currentLangCharacterList = {
+                    mainParty: [...(langCharacterList.mainParty || [])],
+                    supportParty: [...(langCharacterList.supportParty || [])]
+                };
+                characterListLoaded = true;
+                
+                console.log(`Successfully loaded ${currentLang} character list:`, currentLangCharacterList);
+            } else {
+                console.error(`Failed to load ${currentLang} character list:`, langResponse.status);
+                characterListLoaded = true; // Mark as loaded to prevent blocking
+            }
+        } catch (error) {
+            console.error(`Error loading ${currentLang} character list:`, error);
+            characterListLoaded = true; // Mark as loaded to prevent blocking
+        }
+    }
+
+    // Check if a character exists in the current language's character list
+    async function isCharacterReleased(koreanName) {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr') return true; // Always show all characters in Korean
+        
+        // If we haven't loaded the character list yet, assume it's not released
+        // The actual check will happen when the list is loaded
+        if (!characterListLoaded) {
+            console.log(`Character list not loaded yet, assuming ${koreanName} is not released`);
+            return false;
+        }
+        
+        // Check if the character is in either mainParty or supportParty
+        const isReleased = currentLangCharacterList.mainParty.includes(koreanName) || 
+                          currentLangCharacterList.supportParty.includes(koreanName);
+        
+        console.log(`Character ${koreanName} released in ${currentLang}:`, isReleased);
+        console.log('Available mainParty:', currentLangCharacterList.mainParty);
+        console.log('Available supportParty:', currentLangCharacterList.supportParty);
+        
+        return isReleased;
+    }
+    
+    // Load character list when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCharacterList().then(() => {
+            // If we have recommendations to show, refresh them after loading the character list
+            const recommendations = document.getElementById('recommended-sections');
+            if (recommendations && recommendations.style.display !== 'none') {
+                const characterName = new URLSearchParams(window.location.search).get('name');
+                if (characterName) {
+                    loadRecommendations(characterName);
+                }
+            }
+        });
+    });
+
     function loadRecommendedParty(partyData) {
         const container = document.getElementById('recommended-party-content');
         container.innerHTML = '';
@@ -1785,9 +1886,26 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const partyList = document.createElement('div');
             partyList.className = 'party-list';
             
-            party.members.forEach(memberName => {
-                const memberItem = document.createElement('div');
-                memberItem.className = 'party-member';
+            // Process each member asynchronously
+            const processMembers = async () => {
+                for (const memberName of party.members) {
+                    const memberItem = document.createElement('div');
+                    memberItem.className = 'party-member';
+                    
+                    // Check if character is released in current language using Korean name
+                    const isReleased = await isCharacterReleased(memberName);
+                    
+                    if (!isReleased) {
+                        memberItem.classList.add('spoiler');
+                        memberItem.addEventListener('click', function(e) {
+                            if (this.classList.contains('spoiler')) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                this.classList.remove('spoiler');
+                            }
+                            // On second click, the default link behavior will work
+                        });
+                    }
                 
                 const link = document.createElement('a');
                 link.href = `character.html?name=${memberName}`;
@@ -1798,14 +1916,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 img.onerror = function() { this.style.display = 'none'; };
                 
                 const name = document.createElement('span');
+                name.className = 'character-name'; // Add class for styling
                 // 캐릭터 이름 다국어 처리
                 name.textContent = getLocalizedCharacterName(memberName);
                 
                 link.appendChild(img);
                 memberItem.appendChild(link);
                 memberItem.appendChild(name);
-                partyList.appendChild(memberItem);
-            });
+                    partyList.appendChild(memberItem);
+                }
+            };
+            
+            // Start processing members
+            processMembers();
             
             partySection.appendChild(partyList);
             

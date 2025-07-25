@@ -305,6 +305,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
+        <!-- Persona 3 광고-->
+        <div id="ad-unit-p3-1" class="ad-unit">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695"
+                data-ad-slot="2039727945"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 
 
@@ -414,6 +426,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="8118051131"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <!-- Persona 3 광고-->
+        <div id="ad-unit-p3-1" class="ad-unit">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695"
+                data-ad-slot="2039727945"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -1953,7 +1977,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         return isReleased;
     }
     
-    // Check if character has persona5 property and update ads visibility
+    // Check if character has persona5 or persona3 property and update ads visibility
     function updateAdsForPersona5(characterName) {
         const character = characterData[characterName];
         if (!character) return;
@@ -1966,9 +1990,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 ad.style.display = 'none';
             });
             // Persona 5 광고는 이미 표시된 상태 유지
-        } else {
-            // Persona 5 광고 숨기기
+        }
+        else if (character.persona3) {
+            // 일반 광고 숨기기
+            document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])').forEach(ad => {
+                ad.style.display = 'none';
+            });
+            // Persona 3 광고는 이미 표시된 상태 유지
+        }
+        else {
+            // Persona 3, 5 광고 숨기기
             document.querySelectorAll('[id^="ad-unit-p5-"]').forEach(ad => {
+                ad.style.display = 'none';
+            });
+            document.querySelectorAll('[id^="ad-unit-p3-"]').forEach(ad => {
                 ad.style.display = 'none';
             });
             // 일반 광고는 이미 표시된 상태 유지
@@ -1982,7 +2017,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const recommendations = document.getElementById('recommended-sections');
             const characterName = new URLSearchParams(window.location.search).get('name');
             if (characterName) {
-                // Update ads based on character's persona5 property
+                // Update ads based on character's persona3, persona5 property
                 updateAdsForPersona5(characterName);
                 // Load recommendations if the section is visible
                 if (recommendations && recommendations.style.display !== 'none') {

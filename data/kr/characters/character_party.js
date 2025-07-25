@@ -19,6 +19,7 @@ const recommendParty = {
         ]
     },
     "사나다": {
+        "weapon": ["마그네틱 스톰", "메커니컬 심판자", "천상의 별"],
         "persona": [
             {
                 type: "ATK",
@@ -58,6 +59,7 @@ const recommendParty = {
         ]
     },
     "이치고": {
+        "weapon": ["망령의 저주", "태고의 역장", "천상의 별", "메커니컬 심판자"],
         "persona": [
             {
                 type: "CRITICAL",
@@ -97,6 +99,7 @@ const recommendParty = {
         ] 
     },
     "유키 마코토": {
+        "weapon": ["작열의 연옥", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -130,6 +133,7 @@ const recommendParty = {
         ]
     },
     "야오링·사자무":{
+        "weapon": ["작열의 연옥", "천상의 별"],
         "persona": [
             {
                 type: "CRITICAL",
@@ -160,6 +164,7 @@ const recommendParty = {
         ]
     },
     "카스미": {
+        "weapon": ["태고의 역장", "크리스탈 트레저", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -196,6 +201,7 @@ const recommendParty = {
         ]
     },
     "하루": {
+        "weapon": ["천상의 별", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -244,6 +250,7 @@ const recommendParty = {
         ]
     },
     "몽타뉴·백조":{
+        "weapon": ["태고의 역장", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -286,6 +293,7 @@ const recommendParty = {
         ]
     },
     "모토하·여름": {
+        "weapon": ["크리스탈 트레저", "메커니컬 심판자", "천상의 별"],
         "persona": [
             {
                 type: "ATK",
@@ -322,6 +330,7 @@ const recommendParty = {
         ]
     },
     "키라": {
+        "weapon": ["망자의 눈", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -367,6 +376,7 @@ const recommendParty = {
         ]
     },
     "마코토": {
+        "weapon": ["태고의 역장", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -397,6 +407,7 @@ const recommendParty = {
         ]
     },
     "유스케": {
+        "weapon": ["메아리의 절규", "메커니컬 심판자", "천상의 별"],
         "persona": [
             {
                 type: "CRITICAL",
@@ -435,6 +446,7 @@ const recommendParty = {
         ] 
     },
     "유이 YUI": {
+        "weapon": ["태고의 역장","메커니컬 심판자","7일의 불꽃"],
         "persona": [
             {
                 type: "REDUCE DEF",
@@ -449,7 +461,7 @@ const recommendParty = {
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "서큐버스"]
+                list: ["디오니소스", "서큐버스", "아메노우즈메"]
             }
         ],
         "party": [
@@ -474,6 +486,7 @@ const recommendParty = {
         ]
     },
     "렌": {
+        "weapon": ["망령의 저주", "천상의 별","메커니컬 심판자","7일의 불꽃"],
         "persona": [
             {
                 type: "ATK",
@@ -525,6 +538,7 @@ const recommendParty = {
         ]
     },
     "안": {
+        "weapon": ["작열의 연옥", "천상의 별", "메커니컬 심판자", "7일의 불꽃"],
         "persona": [
             {
                 type: "ATK",
@@ -570,6 +584,7 @@ const recommendParty = {
         ]
     },
     "류지": {
+        "weapon": ["망자의 눈", "메커니컬 심판자", "7일의 불꽃"],
         "persona": [
             {
                 type: "ATK",

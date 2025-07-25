@@ -2,7 +2,7 @@
 layout: default
 custom_css: [cha_detail]
 custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min]
-custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, characters/character.js]
+custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, characters/character.js, wonder/weapons.js]
 permalink: /character.html
 language: kr
 title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
@@ -1621,8 +1621,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             
             const noteText = document.createElement('p');
             noteText.textContent = currentLang === 'en' 
-                ? 'Note: Some recommended personas may not be released yet in your region.'
-                : '※推奨されているペルソナの一部は、現在の地域ではリリースされていない可能性があります。';
+                ? 'Note: Some recommended personas & weapons may not be released yet in your region.'
+                : '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。';
                 
             noteContainer.appendChild(noteText);
             document.getElementById('recommended-persona-content').parentNode.insertBefore(noteContainer, document.getElementById('recommended-persona-content'));
@@ -1686,6 +1686,59 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     function loadRecommendedPersona(personaData) {
         const container = document.getElementById('recommended-persona-content');
         container.innerHTML = '';
+
+        // Get character name from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name');
+        const currentLang = getCurrentLanguage();
+
+        // Add Wonder Weapons section if character has weapons
+        if (characterName && recommendParty[characterName]?.weapon?.length > 0) {
+            const weaponSection = document.createElement('div');
+            weaponSection.className = 'persona-attribute-section';
+            
+            const title = document.createElement('h3');
+            title.textContent = currentLang === 'en' ? 'WEAPONS' : 
+                              (currentLang === 'jp' ? 'ウェポン' : 'WEAPONS');
+            weaponSection.appendChild(title);
+            
+            const weaponList = document.createElement('div');
+            weaponList.className = 'persona-list';
+            
+            recommendParty[characterName].weapon.forEach(weaponName => {
+                const weaponItem = document.createElement('div');
+                weaponItem.className = 'persona-item';
+                
+                const img = document.createElement('img');
+                img.src = `../assets/img/wonder-weapon/${weaponName}.webp`;
+                img.alt = weaponName;
+                img.onerror = function() {
+                    this.onerror = null;
+                    this.src = '../assets/img/placeholder.png';
+                };
+                
+                const name = document.createElement('span');
+                // Get localized weapon name from matchWeapons if available
+                if (matchWeapons && matchWeapons[weaponName]) {
+                    if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
+                        name.textContent = matchWeapons[weaponName].name_en;
+                    } else if (currentLang === 'jp' && matchWeapons[weaponName].name_jp) {
+                        name.textContent = matchWeapons[weaponName].name_jp;
+                    } else {
+                        name.textContent = weaponName;
+                    }
+                } else {
+                    name.textContent = weaponName;
+                }
+                
+                weaponItem.appendChild(img);
+                weaponItem.appendChild(name);
+                weaponList.appendChild(weaponItem);
+            });
+            
+            weaponSection.appendChild(weaponList);
+            container.appendChild(weaponSection);
+        }
 
         // 속성 이름 다국어 처리
         const attributeTranslations = {
@@ -1806,21 +1859,21 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
         
         try {
-            console.log(`Loading ${currentLang} character list...`);
+            // console.log(`Loading ${currentLang} character list...`);
             const langUrl = `../data/${currentLang}/characters/characters.js?v=${Date.now()}`;
-            console.log('Character list URL:', langUrl);
+            // console.log('Character list URL:', langUrl);
             
             const langResponse = await fetch(langUrl);
-            console.log('Character list response status:', langResponse.status);
+            // console.log('Character list response status:', langResponse.status);
             
             if (langResponse.ok) {
-                console.log('✅ Character list loaded successfully');
+                // console.log('✅ Character list loaded successfully');
                 const langScriptText = await langResponse.text();
-                console.log('Character list script text length:', langScriptText.length);
+                // console.log('Character list script text length:', langScriptText.length);
                 
                 const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
                 
-                console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
+                // console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
                 
                 // Store the character list
                 currentLangCharacterList = {
@@ -1829,7 +1882,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 };
                 characterListLoaded = true;
                 
-                console.log(`Successfully loaded ${currentLang} character list:`, currentLangCharacterList);
+                // console.log(`Successfully loaded ${currentLang} character list:`, currentLangCharacterList);
             } else {
                 console.error(`Failed to load ${currentLang} character list:`, langResponse.status);
                 characterListLoaded = true; // Mark as loaded to prevent blocking
@@ -1848,7 +1901,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // If we haven't loaded the character list yet, assume it's not released
         // The actual check will happen when the list is loaded
         if (!characterListLoaded) {
-            console.log(`Character list not loaded yet, assuming ${koreanName} is not released`);
+            // console.log(`Character list not loaded yet, assuming ${koreanName} is not released`);
             return false;
         }
         
@@ -1856,9 +1909,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const isReleased = currentLangCharacterList.mainParty.includes(koreanName) || 
                           currentLangCharacterList.supportParty.includes(koreanName);
         
-        console.log(`Character ${koreanName} released in ${currentLang}:`, isReleased);
-        console.log('Available mainParty:', currentLangCharacterList.mainParty);
-        console.log('Available supportParty:', currentLangCharacterList.supportParty);
+        // console.log(`Character ${koreanName} released in ${currentLang}:`, isReleased);
+        // console.log('Available mainParty:', currentLangCharacterList.mainParty);
+        // console.log('Available supportParty:', currentLangCharacterList.supportParty);
         
         return isReleased;
     }

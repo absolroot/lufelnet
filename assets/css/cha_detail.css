@@ -143,7 +143,7 @@
 }
 
 .character-name {
-    margin: 16px 0 16px 0;
+    margin: 16px 0 8px 0;
     color: rgb(255, 255, 255, 0.95);
 }
 
@@ -1129,17 +1129,24 @@ h2{
 }
 
 /* 페르소나 리스트 */
-.persona-list, .party-list {
+.persona-list {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     padding: 10px 0;
 }
 
+.party-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0px 0;
+}
+
 .persona-comment, .party-comment {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.85em;
-    margin: 0 0 15px 0;
+    margin: 0 0 0px 0;
     line-height: 1.5;
     padding: 8px 12px;
     background: rgba(0, 0, 0, 0.05);
@@ -1186,11 +1193,22 @@ h2{
 
 /* 파티 섹션 */
 .party-section {
-    margin-bottom: 25px;
-    padding: 15px;
+    margin-bottom: 40px;
+    /* padding: 15px;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05); */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .party-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
 }
 
 .party-section h4 {

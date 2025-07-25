@@ -1609,12 +1609,30 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 섹션 제목 다국어 지원
         updateSectionTitles();
 
+        // Add note about unreleased personas for non-Korean languages (only if not already added)
+        const currentLang = getCurrentLanguage();
+        if (currentLang !== 'kr' && !document.querySelector('.unreleased-note')) {
+            const noteContainer = document.createElement('div');
+            noteContainer.className = 'unreleased-note';
+            noteContainer.style.fontSize = '0.9em';
+            noteContainer.style.color = '#888';
+            noteContainer.style.marginBottom = '15px';
+            noteContainer.style.fontStyle = 'italic';
+            
+            const noteText = document.createElement('p');
+            noteText.textContent = currentLang === 'en' 
+                ? 'Note: Some recommended personas may not be released yet in your region.'
+                : '※推奨されているペルソナの一部は、現在の地域ではリリースされていない可能性があります。';
+                
+            noteContainer.appendChild(noteText);
+            document.getElementById('recommended-persona-content').parentNode.insertBefore(noteContainer, document.getElementById('recommended-persona-content'));
+        }
+
         // 추천 페르소나 로드
         loadRecommendedPersona(data.persona);
         
         // 추천 파티 로드
         loadRecommendedParty(data.party);
-        
     }
 
     // 섹션 제목 다국어 지원

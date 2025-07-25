@@ -1131,6 +1131,9 @@ alternate_urls:
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
                 document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
+                
+                // 광고 가시성 관리
+                manageAdVisibility();
             });
         }
         
@@ -1159,6 +1162,9 @@ alternate_urls:
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
                 document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
+                
+                // 검색 후 광고 가시성 관리
+                manageAdVisibility();
             });
         }
 

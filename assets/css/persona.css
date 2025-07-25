@@ -311,13 +311,17 @@
         margin-bottom: 10px;
     }
     .card {
-        max-width: 120px;
+        max-width: 80px;
         width: 40vw;
     }
     .persona-cards {
         justify-content: space-between;
         padding: 10px;
         gap: 2vh 2vw;
+    }
+    .position-container {
+        width: 32px;
+        height: 32px;
     }
 
     .filter-toggle-btn img {
@@ -584,6 +588,11 @@ input, textarea {
     line-height: 1.5;
 }
 
+@media (max-width: 1440px) {
+    .persona-info-section p {
+        font-size: 12px;
+    }
+}
 .skill-highlight-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

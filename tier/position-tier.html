@@ -194,6 +194,44 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
     <!-- Separator line -->
     <div class="separator-line"></div>
 
+    <!-- Tier Criteria Section (only shown in Tier List mode) -->
+    <div id="tier-criteria-section" class="tier-criteria-section" style="display: none;">
+        <div class="tier-criteria-toggle">
+            <button id="tier-criteria-btn" class="tier-criteria-button">
+                <span id="tier-criteria-title">티어 기준</span>
+                <span class="tier-criteria-arrow">▼</span>
+            </button>
+        </div>
+        <div id="tier-criteria-content" class="tier-criteria-content" style="display: none;">
+            <!-- Korean -->
+            <div class="tier-criteria-text kr-text">
+                <ul>
+                    <li>lufel.net 제작자가 작성한 티어입니다. 개인 별로 기준은 다를 수 있으므로, 참고 및 재미로만 봐주세요.</li>
+                    <li>LV80, 모든 스킬 레벨 등 의식을 제외한 모든 값이 기본적으로 세팅돼있는 경우를 말합니다.</li>
+                    <li>경쟁 콘텐츠를 중심으로 작성됐으며, 버전 업데이트에 따라 티어는 지속적으로 변동될 수 있습니다.</li>
+                </ul>
+            </div>
+            <!-- English -->
+            <div class="tier-criteria-text en-text" style="display: none;">
+                <ul>
+                    <li>This tier list is created by the lufel.net. Individual standards may vary, so please use it for reference and entertainment only.</li>
+                    <li>Assumes LV80, all skill levels, and all values are basically set except for Awareness.</li>
+                    <li>Written with competitive content in mind, tiers may continuously change with version updates.</li>
+                    <li>If you want to see the Asian version instead of the global version, you can change the language setting to Korean.</li>
+                </ul>
+            </div>
+            <!-- Japanese -->
+            <div class="tier-criteria-text jp-text" style="display: none;">
+                <ul>
+                    <li>このティアリストはlufel.netが作成したものです。個人によって基準は異なる場合がありますので、参考と娯楽としてのみご覧ください。</li>
+                    <li>LV80、すべてのスキルレベルなど、意識（Awareness）を除くすべての値が基本的に設定されている場合を指します。</li>
+                    <li>競争コンテンツを中心に作成されており、バージョンアップデートによってティアは継続的に変動する可能性があります。</li>
+                    <li>グローバル版ではなくアジア版を見たい場合は、言語設定で韓国語に変更すると見ることができます。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- Position Tier Container -->
     <div class="position-tiers-container">
         <!-- Header Row -->
@@ -362,8 +400,66 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         const helpMessage = document.getElementById('help-message');
         if (helpMessage) helpMessage.textContent = data.help_message;
         
+        // 티어 기준 섹션 표시/숨김 및 언어 업데이트
+        const tierCriteriaSection = document.getElementById('tier-criteria-section');
+        if (tierCriteriaSection) {
+            if (isListMode) {
+                // 티어 리스트 모드일 때 표시
+                tierCriteriaSection.style.display = 'block';
+                updateTierCriteriaLanguage(currentLang);
+            } else {
+                // 티어 메이커 모드일 때는 숨김
+                tierCriteriaSection.style.display = 'none';
+            }
+        }
+        
         // 태그 필터 번역
         await updateTagFilterTranslations(currentLang);
+    }
+    
+    // 티어 기준 언어 업데이트 함수
+    function updateTierCriteriaLanguage(currentLang) {
+        // 제목 업데이트
+        const tierCriteriaTitle = document.getElementById('tier-criteria-title');
+        if (tierCriteriaTitle) {
+            if (currentLang === 'en') {
+                tierCriteriaTitle.textContent = 'Tier Criteria';
+            } else if (currentLang === 'jp') {
+                tierCriteriaTitle.textContent = 'ティア基準';
+            } else {
+                tierCriteriaTitle.textContent = '티어 기준';
+            }
+        }
+        
+        // 언어별 텍스트 표시/숨김
+        const krText = document.querySelector('.tier-criteria-text.kr-text');
+        const enText = document.querySelector('.tier-criteria-text.en-text');
+        const jpText = document.querySelector('.tier-criteria-text.jp-text');
+        
+        if (krText) krText.style.display = currentLang === 'kr' ? 'block' : 'none';
+        if (enText) enText.style.display = currentLang === 'en' ? 'block' : 'none';
+        if (jpText) jpText.style.display = currentLang === 'jp' ? 'block' : 'none';
+    }
+    
+    // 티어 기준 토글 기능 초기화
+    function initTierCriteriaToggle() {
+        const tierCriteriaBtn = document.getElementById('tier-criteria-btn');
+        const tierCriteriaContent = document.getElementById('tier-criteria-content');
+        const tierCriteriaArrow = document.querySelector('.tier-criteria-arrow');
+        
+        if (tierCriteriaBtn && tierCriteriaContent) {
+            tierCriteriaBtn.addEventListener('click', function() {
+                const isVisible = tierCriteriaContent.style.display !== 'none';
+                
+                if (isVisible) {
+                    tierCriteriaContent.style.display = 'none';
+                    if (tierCriteriaArrow) tierCriteriaArrow.textContent = '▼';
+                } else {
+                    tierCriteriaContent.style.display = 'block';
+                    if (tierCriteriaArrow) tierCriteriaArrow.textContent = '▲';
+                }
+            });
+        }
     }
     
     // 태그 필터 번역 함수
@@ -450,33 +546,22 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             
             const krScriptText = await krResponse.text();
             const { characterData: krCharacterData, characterList: krCharacterList } = extractDataFromScript(krScriptText);
-            
-            console.log('KR character count:', Object.keys(krCharacterData).length);
-            console.log('KR character list:', krCharacterList);
+
             
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
             if (currentLang !== 'kr') {
-                console.log(`🔍 Attempting to load ${currentLang} data...`);
                 const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
-                console.log('Language data URL:', langUrl);
                 
                 const langResponse = await fetch(langUrl);
-                console.log('Language data response status:', langResponse.status);
                 
                 if (langResponse.ok) {
-                    console.log('✅ Language data loaded successfully');
                     const langScriptText = await langResponse.text();
-                    console.log('Language script text length:', langScriptText.length);
                     
                     const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
                     
-                    console.log(`${currentLang.toUpperCase()} character count:`, Object.keys(langCharacterData).length);
-                    console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
                     
                     // 3. 데이터 병합
-                    console.log('🔄 Starting data merge...');
                     const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
-                    console.log('✅ Data merge completed');
                     
                     // 전역 변수 설정
                     window.characterData = mergedData;
@@ -489,7 +574,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     window.characterList = krCharacterList;
                 }
             } else {
-                console.log('Using KR data directly');
                 // 한국어인 경우 그대로 사용
                 window.characterData = krCharacterData;
                 window.characterList = krCharacterList;
@@ -607,7 +691,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         }
         
         isInitializing = true;
-        console.log('=== STARTING POSITION TIER MAKER PAGE INITIALIZATION ===');
         
         // 캐릭터 데이터 로딩
         const dataLoaded = await loadCharacterData();
@@ -617,10 +700,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             return;
         }
         
-        console.log('Character data loaded successfully');
-        console.log('Available characters:', Object.keys(window.characterData).length);
-        console.log('Character list:', window.characterList);
-        
+
         // 포지션별 티어 메이커 초기화 (position-tiers.js에서 정의된 함수)
         if (typeof window.initPositionTierMaker === 'function') {
             window.initPositionTierMaker();
@@ -631,7 +711,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         // 초기화 완료
         isInitializing = false;
         isInitialized = true;
-        console.log('=== POSITION TIER MAKER PAGE INITIALIZATION COMPLETED ===');
     }
     
     // 페이지 로드 시 초기화
@@ -640,6 +719,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         
         // 기본 초기화 작업
         Navigation.load('position-tier-maker');
+        
+        // 티어 기준 토글 기능 초기화
+        initTierCriteriaToggle();
         
         // SEO 설정 업데이트
         updateSEOContent();

@@ -438,7 +438,8 @@
 /* hide specific nav button in mobile */
 
 @media (max-width: 768px) {  
-    .nav-item[data-nav="tier"] {
+    /* Show the tier navigation item but hide the tier maker submenu item */
+    .nav-item[data-nav="tier"] .nav-sub-item[data-nav="tier-maker"] {
         display: none;
     }
 }

@@ -1960,8 +1960,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             // Process each member asynchronously
             const processMembers = async () => {
                 for (const memberName of party.members) {
-                    const memberItem = document.createElement('div');
+                    const memberItem = document.createElement('a');
                     memberItem.className = 'party-member';
+                    memberItem.href = `character.html?name=${memberName}`;
                     
                     // Check if character is released in current language using Korean name
                     const isReleased = await isCharacterReleased(memberName);
@@ -1987,8 +1988,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 img.onerror = function() { this.style.display = 'none'; };
                 
                 const name = document.createElement('span');
-                name.className = 'character-name'; // Add class for styling
-                // 캐릭터 이름 다국어 처리
+                    name.className = 'character-name';
                 name.textContent = getLocalizedCharacterName(memberName);
                 
                 link.appendChild(img);

@@ -194,14 +194,14 @@ const recommendParty = {
         "persona": [
             {
                 type: "ATK",
-                list: ["광목천", "지국천"],
+                list: ["광목천", "지국천", "도미니온"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "아메노우즈메"],
+                list: ["디오니소스"],
                 comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
                 comment_en: "Increase critical rate and effect",
                 comment_jp: "クリティカル確率と効果を高めるためのペルソナ"

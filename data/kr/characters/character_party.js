@@ -29,17 +29,11 @@ const recommendParty = {
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "서큐버스"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스", "서큐버스"]
             },
             {
                 type: "REDUCE DEF",
-                list: ["년수", "수르트"],
-                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
-                comment_en: "Decrease enemy defense",
-                comment_jp: "敵の防御力を低下させるペルソナ"
+                list: ["년수", "수르트"]
             }
         ],
         "party": [
@@ -67,24 +61,18 @@ const recommendParty = {
         "persona": [
             {
                 type: "CRITICAL",
-                list: ["디오니소스"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스"]
             },
             {
                 type: "REDUCE DEF",
-                list: ["년수", "야노식", "비슈누"],
-                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
-                comment_en: "Decrease enemy defense",
-                comment_jp: "敵の防御力を低下させるペルソナ"
+                list: ["년수", "야노식", "비슈누"]
             },
             {
                 type: "ATK",
                 list: ["바스키", "앨리스"],
-                comment: "지속 대미지 증가 및 주원 대미지 증가",
-                comment_en: "Increase dot damage and curse damage",
-                comment_jp: "持続ダメージと呪いダメージを上げる"
+                comment: "바스키의 지속 대미지 증가는 대미지 보너스가 아닌 별도 곱 계산이다.",
+                comment_en: "The DOT damage increase of VASUKI is not a damage bonus but a separate multiplication calculation.",
+                comment_jp: "VASUKIの持続ダメージ増加はダメージボーナスではなく別々の乗算計算です。"
             }
         ],
         "party": [
@@ -108,21 +96,315 @@ const recommendParty = {
             }
         ] 
     },
+    "유키 마코토": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["자오우곤겐", "도미니온"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "서큐버스", "유룽"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수", "야노식", "노른", "비슈누"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ],
+        "party": [
+            {
+                members: ["유키 마코토", "리코·매화", "유카리", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "야오링·사자무":{
+        "persona": [
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "서큐버스", "아메노우즈메"]
+            },
+            {
+                type: "ATK",
+                list: ["도미니온", "광목천", "지국천", "황룡"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수", "수르트"]
+            }
+        ],
+        "party": [
+            {
+                members: ["야오링·사자무", "미오", "아케치", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["야오링·사자무", "미오", "루우나", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "카스미": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["스라오샤", "광목천", "지국천"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["비슈누", "야노식"]
+            }
+        ],
+        "party": [
+            {
+                members: ["카스미", "레오", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["카스미", "미나미", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["카스미", "리코·매화", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "하루": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["시바", "오오쿠니누시", "네코쇼군", "도미니온"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["시바", "년수", "수르트", "비슈누", "노른"]
+            }
+        ],
+        "party": [
+            {
+                members: ["하루", "토모코·여름", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["하루", "토모코·여름", "렌", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["하루", "토모코·여름", "아케치", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["하루", "미오", "리코·매화", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["하루", "미오", "마유미", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "몽타뉴·백조":{
+        "persona": [
+            {
+                type: "ATK",
+                list: ["광목천", "지국천", "나르키소스", "도미니온"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["비슈누", "노른", "야노식"]
+            }
+        ],
+        "party": [
+            {
+                members: ["몽타뉴·백조", "레오", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["몽타뉴·백조", "슌", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["몽타뉴·백조", "리코·매화", "루우나", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["몽타뉴·백조", "루우나", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "모토하·여름": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["도미니온", "광목천", "지국천"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "서큐버스", "아메노우즈메"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수", "수르트", "비슈누", "노른"]
+            }
+        ],
+        "party": [
+            {
+                members: ["모토하·여름", "미나미", "레오", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["모토하·여름", "토모코·여름", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["모토하·여름", "토모코·여름", "루우나", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "키라": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["릴리스", "광목천", "지국천", "도미니온"],
+                comment: "만능 속성을 선봉에 두고 원더 무기를 통한 속성 대미지 증가 효과를 통해 DOT 대미지 증가",
+                comment_en: "Increase DOT damage by placing the Allmighty attribute at the front and enhancing elemental damage through the Wonder weapon",
+                comment_jp: "万能属性を先頭に配置し、ワンダー武器による属性ダメージ増加効果でDOTダメージを強化する。"
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "유룽"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["야노식", "비슈누", "노른"]
+            }
+        ],
+        "party": [
+            {
+                members: ["키라", "미나미", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["키라", "토모코·여름", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["키라", "레오", "아야카", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["키라", "토모코·여름", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "마코토": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["비사문천"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "유룽"]
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["야노식", "비슈누", "노른"]
+            }
+        ],
+        "party": [
+            {
+                members: ["마코토", "치즈코", "레오", "유우미"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["마코토", "치즈코", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
     "유스케": {
         "persona": [
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "서큐버스"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스", "서큐버스"]
             },
             {
-                type: "DEF",
-                list: ["산달폰", "미트라스", "아프사라스", "킹프로스트"],
-                comment: "실드 및 방어력을 올려주는 페르소나",
-                comment_en: "Increase shield and defense",
-                comment_jp: "盾と防御力を上げるペルソナ"
+                type: "DEF/SHIELD",
+                list: ["산달폰", "미트라스", "아프사라스", "킹프로스트"]
             }
         ],
         "party": [
@@ -156,10 +438,7 @@ const recommendParty = {
         "persona": [
             {
                 type: "REDUCE DEF",
-                list: ["야노식", "노른", "비슈누"],
-                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
-                comment_en: "Decrease enemy defense",
-                comment_jp: "敵の防御力を低下させるペルソナ"
+                list: ["야노식", "노른", "비슈누"]
             },
             {
                 type: "ATK",
@@ -170,10 +449,7 @@ const recommendParty = {
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "서큐버스"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스", "서큐버스"]
             }
         ],
         "party": [
@@ -208,17 +484,11 @@ const recommendParty = {
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "서큐버스", "아메노우즈메"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스", "서큐버스", "아메노우즈메"]
             },
             {
                 type: "REDUCE DEF",
-                list: ["년수", "수르트", "비슈누", "노른"],
-                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
-                comment_en: "Decrease enemy defense",
-                comment_jp: "敵の防御力を低下させるペルソナ"
+                list: ["년수", "수르트", "비슈누", "노른"]
             }
         ],
         "party": [
@@ -229,7 +499,7 @@ const recommendParty = {
                 comment_jp: ""
             },
             {
-                members: ["렌", "하루나", "야오링", "리코"],
+                members: ["렌", "레오", "야오링", "리코"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
@@ -242,6 +512,12 @@ const recommendParty = {
             },
             {
                 members: ["렌", "미오", "아야카", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["렌", "리코·매화", "아야카", "후타바"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
@@ -259,17 +535,11 @@ const recommendParty = {
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스", "아메노우즈메"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스", "아메노우즈메"]
             },
             {
                 type: "REDUCE DEF",
-                list: ["년수", "수르트", "비슈누", "노른"],
-                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
-                comment_en: "Decrease enemy defense",
-                comment_jp: "敵の防御力を低下させるペルソナ"
+                list: ["년수", "수르트", "비슈누", "노른"]
             }
         ],
         "party": [
@@ -310,10 +580,7 @@ const recommendParty = {
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스"],
-                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
-                comment_en: "Increase critical rate and effect",
-                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+                list: ["디오니소스"]
             },
         ],
         "party": [

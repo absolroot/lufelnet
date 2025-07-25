@@ -1402,3 +1402,106 @@ h2{
     margin-bottom: 0.5em;
 }
 
+/* Weapon Effect Modal */
+.weapon-effect-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.weapon-effect-modal.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.weapon-effect-modal-content {
+    background-color: #1a1a1a;
+    border: 1px solid #d3bc8e;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.weapon-effect-modal.show .weapon-effect-modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.weapon-effect-modal.show .weapon-effect-modal-content {
+    transform: scale(1);
+}
+
+.weapon-effect-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #d3bc8e;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.weapon-effect-close:hover,
+.weapon-effect-close:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.weapon-effect-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.weapon-effect-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 15px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.weapon-effect-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #d3bc8e;
+}
+
+.weapon-effect-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    white-space: pre-line;
+}
+
+.weapon-effect-description p {
+    margin: 0 0 10px 0;
+}
+
+.weapon-effect-description p:last-child {
+    margin-bottom: 0;
+}

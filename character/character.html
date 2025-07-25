@@ -1708,9 +1708,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             recommendParty[characterName].weapon.forEach(weaponName => {
                 const weaponItem = document.createElement('div');
                 weaponItem.className = 'persona-item';
+                weaponItem.style.cursor = 'pointer';
                 
                 const img = document.createElement('img');
-                img.src = `../assets/img/wonder-weapon/${weaponName}.webp`;
+                const imgSrc = `../assets/img/wonder-weapon/${weaponName}.webp`;
+                img.src = imgSrc;
                 img.alt = weaponName;
                 img.onerror = function() {
                     this.onerror = null;
@@ -1719,17 +1721,21 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 
                 const name = document.createElement('span');
                 // Get localized weapon name from matchWeapons if available
+                let weaponNameText = weaponName;
                 if (matchWeapons && matchWeapons[weaponName]) {
                     if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
-                        name.textContent = matchWeapons[weaponName].name_en;
+                        weaponNameText = matchWeapons[weaponName].name_en;
                     } else if (currentLang === 'jp' && matchWeapons[weaponName].name_jp) {
-                        name.textContent = matchWeapons[weaponName].name_jp;
-                    } else {
-                        name.textContent = weaponName;
+                        weaponNameText = matchWeapons[weaponName].name_jp;
                     }
-                } else {
-                    name.textContent = weaponName;
                 }
+                name.textContent = weaponNameText;
+                
+                // Add click handler to show weapon effect
+                weaponItem.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showWeaponEffect(weaponName, imgSrc, weaponNameText);
+                });
                 
                 weaponItem.appendChild(img);
                 weaponItem.appendChild(name);
@@ -2014,6 +2020,78 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             container.appendChild(partySection);
         });
     }
+    
+    // Weapon Effect Modal Functions
+    function showWeaponEffect(weaponId, imageUrl, weaponName) {
+        const modal = document.getElementById('weapon-effect-modal');
+        const modalImage = document.getElementById('weapon-effect-image');
+        const modalTitle = document.getElementById('weapon-effect-title');
+        const modalDescription = document.getElementById('weapon-effect-description');
+        
+        // Set the weapon image and name
+        modalImage.src = imageUrl;
+        modalImage.alt = weaponName;
+        modalTitle.textContent = weaponName;
+        
+        // Get the effect text based on current language
+        let effectText = 'No effect information available.';
+        if (matchWeapons && matchWeapons[weaponId]) {
+            if (currentLang === 'en' && matchWeapons[weaponId].effect_en) {
+                effectText = matchWeapons[weaponId].effect_en;
+            } else if (currentLang === 'jp' && matchWeapons[weaponId].effect_jp) {
+                effectText = matchWeapons[weaponId].effect_jp;
+            } else if (matchWeapons[weaponId].effect) {
+                effectText = matchWeapons[weaponId].effect; // Default to Korean
+            }
+        }
+        
+        // Set the effect text with proper line breaks
+        modalDescription.innerHTML = effectText.replace(/\n/g, '<br>');
+        
+        // Show the modal
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Close modal when clicking the close button
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.weapon-effect-close')) {
+            closeWeaponEffectModal();
+            return;
+        }
+        
+        // Close modal when clicking outside the modal content
+        const modal = document.getElementById('weapon-effect-modal');
+        const modalContent = document.querySelector('.weapon-effect-modal-content');
+        if (modal.classList.contains('show') && !e.target.closest('.weapon-effect-modal-content') && !e.target.closest('.persona-item')) {
+            closeWeaponEffectModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('weapon-effect-modal');
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeWeaponEffectModal();
+        }
+    });
+    
+    function closeWeaponEffectModal() {
+        const modal = document.getElementById('weapon-effect-modal');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
 </script>
 
+<!-- Weapon Effect Modal -->
+<div id="weapon-effect-modal" class="weapon-effect-modal">
+    <div class="weapon-effect-modal-content">
+        <span class="weapon-effect-close">&times;</span>
+        <div class="weapon-effect-header">
+            <img id="weapon-effect-image" src="" alt="Weapon" class="weapon-effect-image">
+            <h3 id="weapon-effect-title"></h3>
+        </div>
+        <div id="weapon-effect-description" class="weapon-effect-description"></div>
+    </div>
+</div>
 

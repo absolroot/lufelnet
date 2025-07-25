@@ -283,15 +283,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
     </div>
     <!-- 광고 -->
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-format="fluid"
-        data-ad-layout-key="-gc+3n+7a-ag-4h"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="5373524213"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <div id="ad-unit-1">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-gc+3n+7a-ag-4h"
+            data-ad-client="ca-pub-5862324369257695"
+            data-ad-slot="5373524213"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
     <!-- 스킬 섹션 -->
     <div class="skills-card card-style">
@@ -380,15 +382,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </div>
 
     <!-- 광고 -->
-    <ins class="adsbygoogle"
-    style="display:block"
-    data-ad-format="fluid"
-    data-ad-layout-key="-gc+3n+7a-ag-4h"
-    data-ad-client="ca-pub-5862324369257695"
-    data-ad-slot="5373524213"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <div id="ad-unit-2">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-gc+3n+7a-ag-4h"
+            data-ad-client="ca-pub-5862324369257695"
+            data-ad-slot="5373524213"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
     <!-- 추천 페르소나와 파티 섹션 -->
     <div id="recommended-sections" style="display: none;">
@@ -1523,7 +1527,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '대미지 보너스': 'ダメージボーナス',
                 '대미지보너스': 'ダメージボーナス',
                 '크리티컬 확률': 'クリティカル確率',
-                '크리티컬확률': 'クリティカル確률',
+                '크리티컬확률': 'クリティカル確率',
                 '크리티컬 효과': 'クリティカル効果',
                 '크리티컬효과': 'クリティカル効果',
                 '관통': '貫通',
@@ -1922,14 +1926,50 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         return isReleased;
     }
     
+    // Check if character has persona5 property and update ads accordingly
+    function updateAdsForPersona5(characterName) {
+        const character = characterData[characterName];
+        if (!character) return;
+
+        // Persona 5 character ad settings
+        const persona5Ad = `
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-gc+3n+7a-ag-4h"
+                data-ad-client="ca-pub-5862324369257695"
+                data-ad-slot="YOUR_PERSONA5_AD_SLOT"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            <\/script>
+        `;
+
+        // Update both ad units if character is from Persona 5
+        if (character.persona5) {
+            const adUnit1 = document.getElementById('ad-unit-1');
+            const adUnit2 = document.getElementById('ad-unit-2');
+            
+            if (adUnit1) adUnit1.innerHTML = persona5Ad;
+            if (adUnit2) adUnit2.innerHTML = persona5Ad;
+            
+            // Re-initialize the ads
+            if (window.adsbygoogle && window.adsbygoogle.loaded) {
+                window.adsbygoogle.push({});
+            }
+        }
+    }
+
     // Load character list when the page loads
     document.addEventListener('DOMContentLoaded', () => {
         loadCharacterList().then(() => {
             // If we have recommendations to show, refresh them after loading the character list
             const recommendations = document.getElementById('recommended-sections');
-            if (recommendations && recommendations.style.display !== 'none') {
-                const characterName = new URLSearchParams(window.location.search).get('name');
-                if (characterName) {
+            const characterName = new URLSearchParams(window.location.search).get('name');
+            if (characterName) {
+                // Update ads based on character's persona5 property
+                updateAdsForPersona5(characterName);
+                // Load recommendations if the section is visible
+                if (recommendations && recommendations.style.display !== 'none') {
                     loadRecommendations(characterName);
                 }
             }

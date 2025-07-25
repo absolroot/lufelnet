@@ -132,6 +132,33 @@ const recommendParty = {
             }
         ]
     },
+    "아케치": {
+        "weapon": ["플라스마 섬멸자"],
+        "persona": [
+            {
+                type: "ATK",
+                list: ["황룡", "지국천"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스"]
+            }
+        ],
+        "party": [
+            {
+                members: [ "아케치", "야오링·사자무", "미오", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["아케치", "하루", "토모코·여름", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
     "야오링·사자무":{
         "weapon": ["작열의 연옥", "천상의 별"],
         "persona": [

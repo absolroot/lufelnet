@@ -283,13 +283,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
     </div>
     <!-- 광고 -->
-    <div id="ad-unit-1">
+    <div id="ad-unit-1" class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
             data-ad-layout-key="-gc+3n+7a-ag-4h"
             data-ad-client="ca-pub-5862324369257695"
             data-ad-slot="5373524213"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <!-- Persona 5 광고 (기본적으로 숨김) -->
+    <div id="ad-unit-p5-1" class="ad-unit" style="display: none;">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-gc+3n+7a-9n-68"
+            data-ad-client="ca-pub-5862324369257695"
+            data-ad-slot="8118051131"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
@@ -382,13 +394,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </div>
 
     <!-- 광고 -->
-    <div id="ad-unit-2">
+    <div id="ad-unit-2" class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
             data-ad-layout-key="-gc+3n+7a-ag-4h"
             data-ad-client="ca-pub-5862324369257695"
             data-ad-slot="5373524213"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <!-- Persona 5 광고 (기본적으로 숨김) -->
+    <div id="ad-unit-p5-2" class="ad-unit" style="display: none;">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="fluid"
+            data-ad-layout-key="-gc+3n+7a-9n-68"
+            data-ad-client="ca-pub-5862324369257695"
+            data-ad-slot="8118051131"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
@@ -1926,36 +1950,30 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         return isReleased;
     }
     
-    // Check if character has persona5 property and update ads accordingly
+    // Check if character has persona5 property and update ads visibility
     function updateAdsForPersona5(characterName) {
         const character = characterData[characterName];
         if (!character) return;
 
-        // Persona 5 character ad settings
-        const persona5Ad = `
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3n+7a-ag-4h"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="YOUR_PERSONA5_AD_SLOT"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            <\/script>
-        `;
-
-        // Update both ad units if character is from Persona 5
+        // Persona 5 캐릭터인 경우 Persona 5 광고를 표시하고 일반 광고는 숨김
         if (character.persona5) {
-            const adUnit1 = document.getElementById('ad-unit-1');
-            const adUnit2 = document.getElementById('ad-unit-2');
-            
-            if (adUnit1) adUnit1.innerHTML = persona5Ad;
-            if (adUnit2) adUnit2.innerHTML = persona5Ad;
-            
-            // Re-initialize the ads
-            if (window.adsbygoogle && window.adsbygoogle.loaded) {
-                window.adsbygoogle.push({});
-            }
+            // 일반 광고 숨기기
+            document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])').forEach(ad => {
+                ad.style.display = 'none';
+            });
+            // Persona 5 광고 표시
+            document.querySelectorAll('[id^="ad-unit-p5-"]').forEach(ad => {
+                ad.style.display = 'block';
+            });
+        } else {
+            // 일반 광고 표시
+            document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])').forEach(ad => {
+                ad.style.display = 'block';
+            });
+            // Persona 5 광고 숨기기
+            document.querySelectorAll('[id^="ad-unit-p5-"]').forEach(ad => {
+                ad.style.display = 'none';
+            });
         }
     }
 

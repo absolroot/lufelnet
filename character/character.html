@@ -282,7 +282,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             </div>
         </div>
     </div>
-    <!-- 광고 -->
+    <!-- 광고 (기본적으로 표시) -->
     <div id="ad-unit-1" class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
@@ -294,8 +294,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
-    <!-- Persona 5 광고 (기본적으로 숨김) -->
-    <div id="ad-unit-p5-1" class="ad-unit" style="display: none;">
+    <!-- Persona 5 광고 (기본적으로 표시) -->
+    <div id="ad-unit-p5-1" class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
@@ -393,7 +393,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
     </div>
 
-    <!-- 광고 -->
+    <!-- 광고 (기본적으로 표시) -->
     <div id="ad-unit-2" class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
@@ -405,8 +405,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
-    <!-- Persona 5 광고 (기본적으로 숨김) -->
-    <div id="ad-unit-p5-2" class="ad-unit" style="display: none;">
+    <!-- Persona 5 광고 (기본적으로 표시) -->
+    <div id="ad-unit-p5-2" class="ad-unit">
         <ins class="adsbygoogle"
             style="display:block"
             data-ad-format="fluid"
@@ -1955,25 +1955,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const character = characterData[characterName];
         if (!character) return;
 
-        // Persona 5 캐릭터인 경우 Persona 5 광고를 표시하고 일반 광고는 숨김
+        // 기본적으로 모든 광고가 표시된 상태에서
+        // Persona 5 캐릭터인 경우 일반 광고를 숨기고, 아닌 경우 Persona 5 광고를 숨김
         if (character.persona5) {
             // 일반 광고 숨기기
             document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])').forEach(ad => {
                 ad.style.display = 'none';
             });
-            // Persona 5 광고 표시
-            document.querySelectorAll('[id^="ad-unit-p5-"]').forEach(ad => {
-                ad.style.display = 'block';
-            });
+            // Persona 5 광고는 이미 표시된 상태 유지
         } else {
-            // 일반 광고 표시
-            document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])').forEach(ad => {
-                ad.style.display = 'block';
-            });
             // Persona 5 광고 숨기기
             document.querySelectorAll('[id^="ad-unit-p5-"]').forEach(ad => {
                 ad.style.display = 'none';
             });
+            // 일반 광고는 이미 표시된 상태 유지
         }
     }
 

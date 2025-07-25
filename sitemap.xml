@@ -62,4 +62,46 @@ sitemap:
     <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/tier/position-tier/?lang=jp&amp;list=false" />
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tier/position-tier/?list=false" />
   </url>
+  
+  <!-- Character Pages -->
+  {% comment %}
+  Character list from data/kr/characters/characters.js
+  Main Party: 렌, 루우나, 루페르, 레오, 류지, 리코·매화, 마사키, 마유미, 마코토, 미나미, 모르가나, 모토하, 모토하·여름, 몽타뉴, 몽타뉴·백조, 미오, 사나다, 슌, 세이지, 안, 아야카, 아케치, 야오링, 야오링·사자무, 원더, 유스케, 유이 YUI, 유카리, 유키미, 유키 마코토, 이케나미, 이치고, 카스미, 키라, 키요시, 토모코, 토모코·여름, 토시야, 하루, 하루나, 치즈코
+  Support Party: 리코, 미유, 마나카, 유우미, 카요, 후타바
+  {% endcomment %}
+  
+  {% assign characters = "렌,루우나,루페르,레오,류지,리코·매화,마사키,마유미,마코토,미나미,미나미·여름,모르가나,모토하,모토하·여름,몽타뉴,몽타뉴·백조,미오,사나다,슌,세이지,안,아야카,아케치,야오링,야오링·사자무,유스케,유이 YUI,유카리,유키미,유키 마코토,이케나미,이치고,카스미,키라,키요시,토모코,토모코·여름,토시야,하루,하루나,치즈코,리코,미유,마나카,유우미,카요,후타바" | split: "," %}
+  {% assign languages = "kr,en,jp" | split: "," %}
+  
+  {% for character in characters %}
+    {% unless character == "원더" %}
+      {% assign encoded_name = character | url_encode %}
+      
+      <!-- Character: {{ character }} -->
+      <url>
+        <loc>{{ site.url }}/character.html?name={{ encoded_name }}</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        {% for lang in languages %}
+          <xhtml:link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}/character.html?name={{ encoded_name }}&amp;lang={{ lang }}" />
+        {% endfor %}
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/character.html?name={{ encoded_name }}" />
+      </url>
+      
+      <!-- Character with explicit language parameters -->
+      {% for lang in languages %}
+        <url>
+          <loc>{{ site.url }}/character.html?name={{ encoded_name }}&amp;lang={{ lang }}</loc>
+          <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+          <changefreq>monthly</changefreq>
+          <priority>0.6</priority>
+          {% for alt_lang in languages %}
+            <xhtml:link rel="alternate" hreflang="{{ alt_lang }}" href="{{ site.url }}/character.html?name={{ encoded_name }}&amp;lang={{ alt_lang }}" />
+          {% endfor %}
+          <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/character.html?name={{ encoded_name }}" />
+        </url>
+      {% endfor %}
+    {% endunless %}
+  {% endfor %}
 </urlset>

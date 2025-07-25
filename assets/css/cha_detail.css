@@ -1193,11 +1193,11 @@ h2{
 
 /* 파티 섹션 */
 .party-section {
-    margin-bottom: 40px;
-    /* padding: 15px;
-    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.02);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05); */
+    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1208,6 +1208,7 @@ h2{
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
+        padding: 8px;
     }
 }
 
@@ -1323,7 +1324,7 @@ h2{
     }
     
     .party-member {
-        width: 50px;
+        width: 54px;
         margin: 0 0;
     }
     

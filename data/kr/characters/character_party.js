@@ -1,4 +1,113 @@
 const recommendParty = {
+    "원더": {
+        "persona": [
+            {
+                type: "",
+                list: [""],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ],
+        "party": [
+            {
+                members: ["원더", "", "", ""],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "사나다": {
+        "persona": [
+            {
+                type: "ATK",
+                list: ["토르", "유룽"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스", "서큐버스"],
+                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
+                comment_en: "Increase critical rate and effect",
+                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수", "수르트"],
+                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
+                comment_en: "Decrease enemy defense",
+                comment_jp: "敵の防御力を低下させるペルソナ"
+            }
+        ],
+        "party": [
+            {
+                members: ["사나다", "마유미", "미오", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["사나다", "마유미", "리코·매화", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["사나다", "마유미", "유카리", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "이치고": {
+        "persona": [
+            {
+                type: "CRITICAL",
+                list: ["디오니소스"],
+                comment: "크리티컬 확률과 효과를 높이기 위한 페르소나",
+                comment_en: "Increase critical rate and effect",
+                comment_jp: "クリティカル確率と効果を高めるためのペルソナ"
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수", "야노식", "비슈누"],
+                comment: "적의 방어력을 감소시키는 능력을 보유한 페르소나",
+                comment_en: "Decrease enemy defense",
+                comment_jp: "敵の防御力を低下させるペルソナ"
+            },
+            {
+                type: "ATK",
+                list: ["바스키", "앨리스"],
+                comment: "지속 대미지 증가 및 주원 대미지 증가",
+                comment_en: "Increase dot damage and curse damage",
+                comment_jp: "持続ダメージと呪いダメージを上げる"
+            }
+        ],
+        "party": [
+            {
+                members: ["이치고","리코·매화","아야카","마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["이치고","리코·매화","아야카","후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["이치고","미나미·여름","아야카","후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ] 
+    },
     "유스케": {
         "persona": [
             {
@@ -210,25 +319,6 @@ const recommendParty = {
         "party": [
             {
                 members: ["류지", "레오", "하루나", "카요"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
-            }
-        ]
-    },
-    "원더": {
-        "persona": [
-            {
-                type: "",
-                list: [""],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
-            }
-        ],
-        "party": [
-            {
-                members: ["원더", "", "", ""],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""

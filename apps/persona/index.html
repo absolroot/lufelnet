@@ -487,6 +487,24 @@ alternate_urls:
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
 
+    // URL에서 검색 파라미터를 가져와서 검색을 실행하는 함수
+    function handleSearchParam() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        console.log("[DEBUG] search param:", searchQuery);
+
+        if (searchQuery) {
+            const searchInput = document.getElementById('personaSearch');
+            console.log("[DEBUG] searchInput:", searchInput);
+
+            if (searchInput) {
+                searchInput.value = searchQuery;
+                console.log("[DEBUG] Dispatching input event");
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('persona');
         VersionChecker.check();
@@ -499,9 +517,13 @@ alternate_urls:
             // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
             const hasLangParam = window.location.search.includes('lang=');
             if (hasLangParam) {
+                console.log("HELLOHELLO")
                 // 언어 파라미터가 있으면 바로 콘텐츠 로드
                 updateLanguageContent().then(() => {
-                    initializePageContent();
+                    initializePageContent().then(() => {
+                        // 검색 파라미터 처리 (짧은 지연 추가)
+                        setTimeout(handleSearchParam, 100);
+                    });
                 });
             } else {
                 // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
@@ -510,16 +532,23 @@ alternate_urls:
                 window.history.replaceState({}, '', currentUrl);
                 
                 updateLanguageContent().then(() => {
-                    initializePageContent();
+                    initializePageContent().then(() => {
+                        // 검색 파라미터 처리 (짧은 지연 추가)
+                        setTimeout(handleSearchParam, 100);
+                    });
                 });
             }
         } else {
-            updateLanguageContent();
-            initializePageContent();
+            updateLanguageContent().then(() => {
+                initializePageContent().then(() => {
+                    // 검색 파라미터 처리 (짧은 지연 추가)
+                    setTimeout(handleSearchParam, 100);
+                });
+            });
         }
     });
 
-    function initializePageContent() {
+    async function initializePageContent() {
         const cardsContainer = document.getElementById('personaCards');
         
         // 현재 언어 확인
@@ -937,8 +966,9 @@ alternate_urls:
         // 디바운싱을 위한 타이머
         let searchDebounceTimer;
         
-        searchInput.addEventListener('input', (e) => {
-            const searchValue = e.target.value.toLowerCase();
+        // 검색 핸들러 함수 분리
+        function handleSearchInput(e) {
+            const searchValue = e ? e.target.value.toLowerCase() : '';
             
             // 드롭다운 업데이트 (즉시)
             updateDropdown(searchValue);
@@ -948,7 +978,10 @@ alternate_urls:
             searchDebounceTimer = setTimeout(() => {
                 filterBySearch(searchValue);
             }, 100); // 100ms 디바운싱
-        });
+        }
+        
+        // 이벤트 리스너 등록
+        searchInput.addEventListener('input', handleSearchInput);
         
         // 드롭다운 업데이트 함수 분리
         function updateDropdown(searchValue) {
@@ -1002,6 +1035,23 @@ alternate_urls:
         
         // 성능 최적화된 검색 필터링 함수
         function filterBySearch(searchValue) {
+            // URL에서 검색 파라미터 처리 (약간의 지연을 두어 DOM이 완전히 로드되도록 함)
+            setTimeout(() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const searchParam = urlParams.get('search');
+                
+                if (searchParam) {
+                    // 입력 필드에 검색어 설정
+                    searchInput.value = decodeURIComponent(searchParam);
+                    
+                    // 검색 실행 (직접 filterBySearch 호출)
+                    filterBySearch(searchInput.value.toLowerCase());
+                    
+                    // 드롭다운도 업데이트
+                    updateDropdown(searchInput.value.toLowerCase());
+                }
+            }, 100);
+            
             // 캐시에서 결과 확인
             if (searchCache.has(searchValue)) {
                 applySearchResults(searchCache.get(searchValue));

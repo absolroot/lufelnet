@@ -2,7 +2,7 @@
 layout: default
 custom_css: [cha_detail]
 custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min]
-custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, tooltip.js]
+custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, characters/character.js]
 permalink: /character.html
 language: kr
 title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
@@ -376,6 +376,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
         <div class="weapons-container">
             <!-- 무기들이 여기에 동적으로 추가됨 -->
+        </div>
+    </div>
+
+    <!-- 추천 페르소나와 파티 섹션 -->
+    <div id="recommended-sections" style="display: none;">
+        <!-- 추천 페르소나 -->
+        <div class="recommended-persona-card card-style">
+            <h2>추천 페르소나</h2>
+            <div id="recommended-persona-content" class="recommended-persona-content">
+                <!-- 페르소나 내용이 여기에 동적으로 추가됨 -->
+            </div>
+        </div>
+
+        <!-- 추천 파티 -->
+        <div class="recommended-party-card card-style">
+            <h2>추천 파티</h2>
+            <div id="recommended-party-content" class="recommended-party-content">
+                <!-- 파티 내용이 여기에 동적으로 추가됨 -->
+            </div>
         </div>
     </div>
 
@@ -885,6 +904,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if (characterName && characterData[characterName]) {
             loadWeapons(characterName, 'mixed');
         }
+
+        // 추천 페르소나와 파티 로드
+        loadRecommendations(characterName);
                         
         // 툴팁 추가
         addTooltips();
@@ -1571,6 +1593,231 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             }
         });
     };
+
+    // 추천 페르소나와 파티 로드 함수
+    function loadRecommendations(characterName) {
+        if (!characterName || !recommendParty[characterName]) {
+            document.getElementById('recommended-sections').style.display = 'none';
+            return;
+        }
+
+        const data = recommendParty[characterName];
+        document.getElementById('recommended-sections').style.display = 'block';
+
+        // 섹션 제목 다국어 지원
+        updateSectionTitles();
+
+        // 추천 페르소나 로드
+        loadRecommendedPersona(data.persona);
+        
+        // 추천 파티 로드
+        loadRecommendedParty(data.party);
+        
+    }
+
+    // 섹션 제목 다국어 지원
+    function updateSectionTitles() {
+        const currentLang = getCurrentLanguage();
+        const personaTitle = document.querySelector('.recommended-persona-card h2');
+        const partyTitle = document.querySelector('.recommended-party-card h2');
+        
+        if (currentLang === 'en') {
+            if (personaTitle) personaTitle.textContent = 'Recommended Personas';
+            if (partyTitle) partyTitle.textContent = 'Recommended Parties';
+        } else if (currentLang === 'jp') {
+            if (personaTitle) personaTitle.textContent = '推奨ペルソナ';
+            if (partyTitle) partyTitle.textContent = '推奨パーティ';
+        } else {
+            if (personaTitle) personaTitle.textContent = '추천 페르소나';
+            if (partyTitle) partyTitle.textContent = '추천 파티';
+        }
+    }
+
+    // 페르소나 이름 다국어 지원
+    function getLocalizedPersonaName(personaName) {
+        const currentLang = getCurrentLanguage();
+        if (!personaData || !personaData[personaName]) {
+            return personaName;
+        }
+        
+        if (currentLang === 'en' && personaData[personaName].name_en) {
+            return personaData[personaName].name_en;
+        } else if (currentLang === 'jp' && personaData[personaName].name_jp) {
+            return personaData[personaName].name_jp;
+        }
+        return personaName;
+    }
+
+    // 캐릭터 이름 다국어 지원
+    function getLocalizedCharacterName(characterName) {
+        const currentLang = getCurrentLanguage();
+        if (!characterData || !characterData[characterName]) {
+            return characterName;
+        }
+        
+        if (currentLang === 'en' && characterData[characterName].codename) {
+            return characterData[characterName].codename;
+        } else if (currentLang === 'jp' && characterData[characterName].name_jp) {
+            return characterData[characterName].name_jp;
+        }
+        return characterName;
+    }
+
+    function loadRecommendedPersona(personaData) {
+        const container = document.getElementById('recommended-persona-content');
+        container.innerHTML = '';
+
+        // 속성 이름 다국어 처리
+        const attributeTranslations = {
+            'BUFF': { 'en': 'BUFF', 'jp': 'バフ' },
+            'DEF': { 'en': 'DEF', 'jp': '防御' },
+            'ATK': { 'en': 'ATK', 'jp': '攻撃' },
+            'HEAL': { 'en': 'HEAL', 'jp': '回復' },
+            'DEBUFF': { 'en': 'DEBUFF', 'jp': 'デバフ' },
+            'SUPPORT': { 'en': 'SUPPORT', 'jp': 'サポート' },
+            'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' }
+        };
+
+        personaData.forEach(category => {
+            const attributeSection = document.createElement('div');
+            attributeSection.className = 'persona-attribute-section';
+            
+            const title = document.createElement('h3');
+            // 속성 이름 다국어 처리
+            const currentLang = getCurrentLanguage();
+            const attribute = category.type;
+            
+            if (currentLang === 'en' && attributeTranslations[attribute]?.en) {
+                title.textContent = attributeTranslations[attribute].en;
+            } else if (currentLang === 'jp' && attributeTranslations[attribute]?.jp) {
+                title.textContent = attributeTranslations[attribute].jp;
+            } else {
+                title.textContent = attribute;
+            }
+            attributeSection.appendChild(title);
+            
+            // 코멘트를 페르소나 리스트 위로 이동
+            const commentContainer = document.createElement('div');
+            commentContainer.className = 'comment-container';
+            
+            if (category.comment || category.comment_en || category.comment_jp) {
+                const commentEl = document.createElement('p');
+                commentEl.className = 'persona-comment';
+                
+                if (currentLang === 'en' && category.comment_en) {
+                    commentEl.textContent = category.comment_en;
+                } else if (currentLang === 'jp' && category.comment_jp) {
+                    commentEl.textContent = category.comment_jp;
+                } else {
+                    commentEl.textContent = category.comment;
+                }
+                commentContainer.appendChild(commentEl);
+            }
+            
+            const personaList = document.createElement('div');
+            personaList.className = 'persona-list';
+            
+            category.list.forEach(personaName => {
+                    const personaItem = document.createElement('div');
+                    personaItem.className = 'persona-item';
+                    
+                    const personaLink = document.createElement('a');
+                    personaLink.href = '#';
+                    personaLink.onclick = function(e) {
+                        e.preventDefault();
+                        // Open persona page in new tab with search parameter
+                        const personaPageUrl = `${window.location.origin}/persona/?search=${encodeURIComponent(personaName)}`;
+                        window.open(personaPageUrl, '_blank');
+                    };
+                    
+                    const img = document.createElement('img');
+                    img.src = `../assets/img/persona/${personaName}.webp`;
+                    img.alt = personaName;
+                    img.onerror = function() {
+                        this.onerror = null;
+                        this.src = '../assets/img/placeholder.png';
+                    };
+                    
+                    const name = document.createElement('span');
+                    name.textContent = getLocalizedPersonaName(personaName);
+                    
+                    personaLink.appendChild(img);
+                    personaItem.appendChild(personaLink);
+                    personaItem.appendChild(name);
+                    personaList.appendChild(personaItem);
+                });
+                
+            attributeSection.appendChild(personaList);
+            // 코멘트 컨테이너를 페르소나 리스트 아래에 추가
+            if (commentContainer.hasChildNodes()) {
+                attributeSection.appendChild(commentContainer);
+            }
+            container.appendChild(attributeSection);
+        });
+    }
+
+    function loadRecommendedParty(partyData) {
+        const container = document.getElementById('recommended-party-content');
+        container.innerHTML = '';
+
+        partyData.forEach((party, index) => {
+            const partySection = document.createElement('div');
+            partySection.className = 'party-section';
+            
+            // 파티 코멘트 컨테이너 생성 (나중에 추가하기 위해)
+            let commentEl = null;
+            if (party.comment || party.comment_en || party.comment_jp) {
+                const currentLang = getCurrentLanguage();
+                commentEl = document.createElement('p');
+                commentEl.className = 'party-comment';
+                
+                if (currentLang === 'en' && party.comment_en) {
+                    commentEl.textContent = party.comment_en;
+                } else if (currentLang === 'jp' && party.comment_jp) {
+                    commentEl.textContent = party.comment_jp;
+                } else {
+                    commentEl.textContent = party.comment;
+                }
+            }
+            
+            const partyList = document.createElement('div');
+            partyList.className = 'party-list';
+            
+            party.members.forEach(memberName => {
+                const memberItem = document.createElement('div');
+                memberItem.className = 'party-member';
+                
+                const link = document.createElement('a');
+                link.href = `character.html?name=${memberName}`;
+                
+                const img = document.createElement('img');
+                img.src = `../assets/img/tier/${memberName}.webp`;
+                img.alt = memberName;
+                img.onerror = function() { this.style.display = 'none'; };
+                
+                const name = document.createElement('span');
+                // 캐릭터 이름 다국어 처리
+                name.textContent = getLocalizedCharacterName(memberName);
+                
+                link.appendChild(img);
+                memberItem.appendChild(link);
+                memberItem.appendChild(name);
+                partyList.appendChild(memberItem);
+            });
+            
+            partySection.appendChild(partyList);
+            
+            // 파티 리스트 아래에 코멘트 추가
+            if (commentEl) {
+                const commentContainer = document.createElement('div');
+                commentContainer.className = 'comment-container';
+                commentContainer.appendChild(commentEl);
+                partySection.appendChild(commentContainer);
+            }
+            
+            container.appendChild(partySection);
+        });
+    }
 </script>
 
 

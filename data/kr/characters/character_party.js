@@ -24,6 +24,12 @@ const recommendParty = {
                 comment_jp: "MARIANの意識1の20%貫通を活用するためのパーティ"
             },
             {
+                members: ["유스케", "야오링", "유키미", "미유"],
+                comment: "야오링(RIN) 광역 디버프를 활용",
+                comment_en: "Utilize RIN's area debuff",
+                comment_jp: "RINのエリアデバフを活用するパーティ"
+            },
+            {
                 members: ["유스케", "마사키", "유키미", "유우미"],
                 comment: "실드를 빠르게 올려 유스케의 패시브를 활성화",
                 comment_en: "Increase shield to activate FOX's passive",

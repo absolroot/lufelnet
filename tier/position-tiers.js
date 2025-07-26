@@ -7,6 +7,12 @@ const cardsContainer = document.querySelector(".cards");
 
 let activeTier;
 
+// 티어 데이터 로딩 상태 관리
+let isTierDataLoading = false;
+
+// 티어 리스트 모드 (true: 보기 모드, false: 편집 모드)
+let isTierListMode = false;
+
 // 필터링된 캐릭터들의 원래 위치를 저장하는 맵 (parent와 nextSibling 정보 포함)
 const originalPositions = new Map();
 
@@ -274,6 +280,11 @@ const handleAppendTier = () => {
 };
 
 const handleSettingsClick = (tierLabelCell) => {
+  // 티어 데이터 로딩 중이거나 티어 리스트 모드일 때는 설정 창을 열지 않음
+  if (isTierDataLoading || isTierListMode) {
+    return;
+  }
+  
   activeTier = tierLabelCell;
 
   // populate the textarea
@@ -510,14 +521,33 @@ const handleDragover = (event) => {
       return; // hierarchy 충돌 방지
     }
     
-    const { left, width } = target.getBoundingClientRect();
+    // Find the appropriate container to insert the dragged image
+    // If target is inside a character-wrapper, use the wrapper as reference
+    let referenceElement = target;
+    const targetWrapper = target.closest('.character-wrapper');
+    
+    if (targetWrapper) {
+      // If target is inside a wrapper, use the wrapper as reference point
+      referenceElement = targetWrapper;
+    }
+    
+    // Get the parent container (position-cell or cards container)
+    const parentContainer = referenceElement.parentElement;
+    
+    // Only proceed if we have a valid parent container
+    if (!parentContainer) {
+      return;
+    }
+    
+    const { left, width } = referenceElement.getBoundingClientRect();
     const midPoint = left + width / 2;
 
     try {
+      // Insert relative to the reference element (wrapper or image)
       if (event.clientX < midPoint) {
-        target.before(draggedImage);
+        referenceElement.before(draggedImage);
       } else {
-        target.after(draggedImage);
+        referenceElement.after(draggedImage);
       }
     } catch (error) {
       // HierarchyRequestError 발생 시 무시
@@ -809,8 +839,25 @@ const attachDragListeners = (element) => {
   const newElement = element.cloneNode(true);
   element.parentNode.replaceChild(newElement, element);
   
+  // 티어 리스트 모드에서는 드래그 비활성화 및 클릭 스타일 적용
+  if (isTierListMode) {
+    newElement.draggable = false;
+    newElement.style.cursor = 'pointer';
+    newElement.classList.add('clickable-character');
+  } else {
+    newElement.draggable = true;
+    newElement.style.cursor = 'grab';
+    newElement.classList.remove('clickable-character');
+  }
+  
   // 새로운 이벤트 리스너 추가
   newElement.addEventListener("dragstart", (e) => {
+    // 티어 데이터 로딩 중이거나 티어 리스트 모드일 때는 드래그를 막음
+    if (isTierDataLoading || isTierListMode) {
+      e.preventDefault();
+      return;
+    }
+    
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.effectAllowed = "move";
     newElement.classList.add("dragging");
@@ -848,6 +895,27 @@ const attachDragListeners = (element) => {
     }
   });
   
+  // 캐릭터 클릭 시 상세 페이지로 이동 (티어 리스트 모드에서만)
+  newElement.addEventListener("click", (e) => {
+    // 티어 리스트 모드가 아니면 클릭 네비게이션 비활성화
+    if (!isTierListMode) {
+      return;
+    }
+    
+    // 드래그 중이거나 더블클릭 이벤트와 겹치지 않도록 처리
+    if (e.detail === 1) { // 단일 클릭만 처리
+      setTimeout(() => {
+        if (e.detail === 1) { // 더블클릭이 아닌 경우에만 실행
+          const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
+          if (targetImage && targetImage.alt) {
+            const characterName = targetImage.alt;
+            window.location.href = `/character.html?name=${encodeURIComponent(characterName)}`;
+          }
+        }
+      }, 200); // 더블클릭 감지를 위한 지연
+    }
+  });
+  
   // 이벤트 리스너 추가 완료 표시
   newElement.dataset.dragListenersAttached = 'true';
   
@@ -870,8 +938,20 @@ const initDraggables = () => {
 
 // 새로 추가되거나 이동된 이미지에 드래그 기능 재적용
 const refreshDragListeners = () => {
-  const allImages = document.querySelectorAll('img[draggable="true"]');
-  allImages.forEach(attachDragListeners);
+  initDraggables();
+};
+
+// 모든 캐릭터의 드래그 리스너를 모드에 맞게 업데이트
+const updateAllDragListenersForMode = () => {
+  // 모든 캐릭터 이미지와 wrapper 찾기
+  const allCharacters = document.querySelectorAll('.main-wrapper img, .character-wrapper');
+  
+  allCharacters.forEach(element => {
+    // 이미 드래그 리스너가 있는 요소만 업데이트
+    if (element.dataset.dragListenersAttached === 'true') {
+      attachDragListeners(element);
+    }
+  });
 };
 
 // DOM 변화를 감지하여 자동으로 드래그 리스너를 새로고침하는 MutationObserver
@@ -1142,6 +1222,9 @@ const getTierDataFromURL = () => {
 const loadTierDataFromURL = (tierData) => {
   if (!tierData || !Array.isArray(tierData)) return;
   
+  // 티어 데이터 로딩 시작
+  isTierDataLoading = true;
+  
   const isMobile = window.innerWidth <= 768;
   
   // 기존 티어 행들을 모두 제거
@@ -1261,6 +1344,9 @@ const loadTierDataFromURL = (tierData) => {
       });
     }
   });
+  
+  // 티어 데이터 로딩 완료
+  isTierDataLoading = false;
 };
 
 // 포지션별 티어 메이커 초기화 함수 (전역에서 접근 가능하도록)
@@ -1270,6 +1356,21 @@ window.initPositionTierMaker = () => {
   // URL 파라미터 확인 및 제목 설정
   const urlParams = new URLSearchParams(window.location.search);
   const shouldLoadList = urlParams.get('list') !== 'false';
+  
+  // 티어 리스트 모드 설정 (list=false가 아니면 티어 리스트 모드)
+  isTierListMode = shouldLoadList;
+  
+  // 티어 리스트 모드에 따라 CSS 클래스 적용
+  if (isTierListMode) {
+    document.body.classList.add('tier-list-mode');
+  } else {
+    document.body.classList.remove('tier-list-mode');
+  }
+  
+  // 모드 변경 후 모든 드래그 리스너 업데이트 (초기화 완료 후 실행)
+  setTimeout(() => {
+    updateAllDragListenersForMode();
+  }, 1000);
   
   // 현재 언어 확인
   const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';

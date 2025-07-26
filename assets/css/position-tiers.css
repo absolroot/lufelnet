@@ -23,6 +23,25 @@ body {
   cursor: grab;
 }
 
+/* Clickable character styles for tier list mode */
+.clickable-character {
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-character:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  z-index: 10;
+  position: relative;
+}
+
+/* Hide move buttons in tier list mode */
+.tier-list-mode .settings-cell .moveup,
+.tier-list-mode .settings-cell .movedown {
+  display: none !important;
+}
+
 .main-wrapper img.dragging {
   opacity: 0.25;
 }

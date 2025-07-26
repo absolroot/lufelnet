@@ -2,6 +2,1123 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "미나미·여름": {
+        "name": "Minami Miyashita Summer",
+        "skill1": {
+            "name": "Summer Gift Basket",
+            "element": "축복광역",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 64.4%/71.0%/68.4%/75.0% of Max HP as Bless damage to all enemies and inflict 'Candied' state: When attacked, damage dealt increases by 9.8%/10.8%/10.4%/11.4%. (For every 1200 Max HP of Miyashita Minami Summer, damage increases by an additional 4%, up to a maximum of 11712/12912/12432/13632 HP considered.) Duration: 3 turns."
+        },
+        "skill2": {
+            "name": "Midsummer Flower Field",
+            "element": "버프",
+            "type": "버프",
+            "sp": 22,
+            "cool": 0,
+            "description": "Increase all allies' damage by 7.8%/8.6%/8.3%/9.1%. (For every 1200 Max HP of Miyashita Minami Summer, damage increases by an additional 3.2%, up to 11712/12912/12432/13632 HP considered.) Duration: 3 turns. Also grants all allies 1 stack of Bless effect and removes 1 debuff."
+        },
+        "skill3": {
+            "name": "Bouquet Beyond the Horizon",
+            "element": "버프",
+            "type": "버프",
+            "sp": 25,
+            "cool": 2,
+            "description": "Increase one ally's Critical Rate by 15.6%/17.2%/16.6%/18.2% (excluding self) and increase Critical Damage. (The increase equals 33.33% of Miyashita Minami Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 3 turns.\nDuring this time, when Miyashita Minami Summer uses a medicine on that ally, additionally increase their Critical Damage. (The increase equals 16.66% of Miyashita Minami Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 1 turn."
+        },
+        "skill_highlight": {
+            "element": "버프",
+            "type": "버프",
+            "sp": 0,
+            "cool": 0,
+            "description": "Increase one ally's damage by 24.4%/26.9%/25.9%/28.4% (excluding self) and increase Critical Damage. (The increase equals 16.66% of Miyashita Minami Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 2 turns. Additionally, the next medicine used by self is 9.8%/10.8%/10.4%/11.4% more effective."
+        },
+        "passive1": {
+            "name": "Prayer",
+            "element": "패시브",
+            "description": "Whenever a Persona skill is used on an ally, grant them 1 stack of Bless effect. If Miyashita Minami Summer is in battle, damage dealt increases by 6.0% per Bless stack on allies, up to a maximum of 36.0%."
+        },
+        "passive2": {
+            "name": "Care",
+            "element": "패시브",
+            "description": "If Miyashita Minami Summer is in battle, allies' Attack increases by 12.0%, and for each additional type of buff medicine effect, Attack increases by an additional 15.0%."
+        }
+    },
+	"이치고": {
+        "name": "Shikano Ichigo",
+        "skill1": {
+            "name": "Crimson Butterfly",
+            "element": "주원",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 1,
+            "description": "Deal 129.0%/142.2%/137.0%/150.2% of Attack as Curse damage to 1 enemy and add 2 stacks of 『Resentment』. If the target's current HP is above 70%, this skill's damage is increased by 200%. When this skill defeats the target, it triggers its effect once more (can chain)."
+        },
+        "skill2": {
+            "name": "Kiss of the Crimson Rose",
+            "element": "주원",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 92.9%/102.4%/98.6%/108.1% of Attack as Curse damage to 1 enemy and add 4 stacks of 『Resentment』."
+        },
+        "skill3": {
+            "name": "Shh! Execution Time",
+            "element": "주원",
+            "type": "단일피해",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deal 221.6%/244.3%/235.2%/257.9% + (number of 『Resentment』 stacks × 11.7%/12.9%/12.4%/13.6%) of Attack as Curse damage to 1 enemy. If 『Resentment』 reaches 10 stacks, deal an additional 103.3%/113.8%/109.6%/120.2% of Attack as Curse damage. 『Resentment』 duration is then reset."
+        },
+        "skill_highlight": {
+            "element": "주원",
+            "type": "단일피해",
+            "cool": 0,
+            "description": "Deal 457.1%/503.9%/485.2%/532.0% of Attack as Curse damage to 1 enemy, and for 3 turns, 『Resentment』 can trigger critical hits. Instantly resolve all types of DoT effects on the target once, and resolve 『Resentment』 effects 2 additional times."
+        },
+        "passive1": {
+            "name": "Obsession",
+            "element": "패시브",
+            "description": "For each stack of 『Obsession』, increase own Attack by 15.0%."
+        },
+        "passive2": {
+            "name": "Attachment",
+            "element": "패시브",
+            "description": "When Ichigo Shikano is on the field, all allies' DoT effects are increased by 15.0%."
+        }
+    },
+	"사나다": {
+        "name": "Akihiko Sanada",
+        "skill1": {
+            "name": "Lightning Field",
+            "element": "전격광역",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Gain 1 stack of 『Fighting Spirit』 and deal 122.8%/135.4%/130.3%/142.9% of Attack as Electric damage to all enemies, increasing Akihiko Sanada's Critical Damage by 11.7%/12.9%/12.4%/13.6% for 3 turns."
+        },
+        "skill2": {
+            "name": "Thunder Crash",
+            "element": "전격광역",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Gain 1 stack of 『Fighting Spirit』 and deal 92.1%/101.6%/97.8%/107.2% of Attack as Electric damage to all enemies, then gain 2 stacks of 『Determination』."
+        },
+        "skill3": {
+            "name": "Spark Fist",
+            "element": "전격광역",
+            "type": "광역피해",
+            "sp": 24,
+            "cool": 2,
+            "description": "Deal 136.4%/150.4%/144.8%/158.8% of Attack as Electric damage to all enemies. If Akihiko Sanada has 2 or more stacks of 『Fighting Spirit』, consume all of them, increasing this skill's multiplier by 40.9%/45.1%/43.1%/47.6% for each stack consumed."
+        },
+        "skill_highlight": {
+            "name": "Theurgia - Lightning Spear",
+            "element": "전격광역",
+            "type": "광역피해",
+            "sp": 0,
+            "cool": 0,
+            "description": "Activation Condition: Theurgia Energy 140\nDeal 261.7%/287.9%/293.1%/319.3% of Attack as Electric damage to all enemies. This skill will 『always critically hit』, with Critical Damage fixed at 200%."
+        },
+        "skill_support": {
+            "name": "Support Skill",
+            "element": "패시브",
+            "type": "버프",
+            "description": "Increase 1 ally's Critical Damage by 20% for 1 turn."
+        },
+        "passive1": {
+            "name": "Hot-Blooded",
+            "element": "패시브",
+            "description": "When dealing damage to a downed enemy, Akihiko Sanada's damage increases by 30.0%."
+        },
+        "passive2": {
+            "name": "Persistence",
+            "element": "패시브",
+            "description": "Each time Akihiko Sanada lands a Critical Hit, increase his Attack by 13.5% for 3 turns (up to 3 stacks)."
+        }
+    },
+	"유카리": {
+        "name": "Yukari Takeba",
+        "skill1": {
+            "name": "Wind Storm",
+            "element": "질풍",
+            "type": "단일 피해",
+            "sp": 23,
+            "cool": 0,
+            "description": "Deal 200.1%/220.6%/212.4%/232.9% of Attack as Wind damage to 1 enemy, with a 100% base chance to inflict Windswept and apply 『Trace of Wind』 for 2 turns. Only 1 『Trace of Wind』 can exist on the field at a time. When an enemy with 『Trace of Wind』 dies, the effect transfers to the enemy with the highest HP.\n\nPassive: When an ally uses a skill on a target with 『Trace of Wind』, that skill's damage increases by 8.8%/9.7%/9.3%/10.2%, plus 0.72% for every 100 Attack Yukari Takeba has, up to 29.3%/32.3%/31.1%/34.1%."
+        },
+        "skill2": {
+            "name": "Chaser of the Wind",
+            "element": "버프광역",
+            "type": "",
+            "sp": 25,
+            "cool": 0,
+            "description": "Reduce all allies' damage taken by 29.3%/32.3%/31.1%/34.1% for 3 turns. Also increase the main target's Attack by 7.8%/8.6%/8.3%/9.1%, plus 0.78% per 100 Attack Yukari Takeba has (up to 31.2%/34.4%/33.2%/36.4%). Additionally, increase damage by 0.24% per 100 Attack (up to 9.8%/10.8%/10.4%/11.4%) for 2 turns."
+        },
+        "skill3": {
+            "name": "Revive Arrow",
+            "element": "치료광역",
+            "type": "",
+            "sp": 27,
+            "cool": 0,
+            "description": "Heal all allies for 39.1%/43.1%/41.5%/45.6% of Yukari Takeba's Attack + 2507/3158/3081/3773 HP. Consume all 『Words of Wind』 stacks, restoring 17.5 Theurgia Energy per stack to the main target. After using Theurgia, that target's Attack increases by 29.3%/32.3%/31.1%/34.1% for 2 turns (up to 2 stacks). If the Theurgia Energy restored exceeds the limit, the excess is temporarily stored and returned after Theurgia is used, up to the target's maximum Theurgia Energy and lasting for 2 turns. If the main target is not a S.E.E.S. member, each 『Words of Wind』 stack consumed increases their next HIGHLIGHT total damage by 9.8%/10.8%/10.4%/11.4%."
+        },
+        "skill_highlight": {
+            "name": "Theurgia - Cyclone Arrow",
+            "element": "질풍",
+            "type": "",
+            "description": "Activation Condition: Theurgia Energy 70\nDeal 416.0%/457.6%/465.9%/507.5% of Attack as Wind damage to 1 enemy, and for every 100 Attack Yukari Takeba has, increase all allies' damage by 0.48% (up to 20.0%/22.0%/22.4%/24.4%). Remove 2 buffs from the target, inflict Windswept with 100% base chance, and apply 『Trace of Wind』 for 2 turns."
+        },
+        "skill_support": {
+            "name": "Support Skill",
+            "element": "패시브",
+            "type": "",
+            "description": "Remove 1 status ailment from 1 ally."
+        },
+        "passive1": {
+            "name": "Resonance",
+            "element": "패시브",
+            "description": "When Yukari Takeba is on the field, all allies' HIGHLIGHT and Theurgia damage increases by 45.0%."
+        },
+        "passive2": {
+            "name": "Competitive Spirit",
+            "element": "패시브",
+            "description": "During battle, Yukari Takeba's Max HP increases by 60 for every 100 Attack, up to 2700."
+        }
+    },
+	"유키 마코토": {
+        "name": "Makoto Yuki",
+        "skill1": {
+            "name": "Flame of Melody",
+            "element": "화염",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 59.8%/66.0%/63.2%/69.6% of Attack as Fire damage 3 times to 1 enemy and gain 2 stacks of 『Moon Phase』 for 2 turns (up to 4 stacks). When Makoto Yuki uses 『Crimson Devouring Blaze』 to consume 『Moon Phase』 stacks to deal damage, the skill multiplier increases by 32.5%/35.8%/34.5%/37.8% for 2 turns."
+        },
+        "skill2": {
+            "name": "Battle Song Under the Moon",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 20,
+            "cool": 0,
+            "description": "Increase all allies' Critical Damage by 23.4%/25.8%/24.9%/27.3% and Makoto Yuki's Attack by 19.5%/21.5%/20.7%/22.7% for 2 turns. Gain 2 stacks of 『Moon Phase』 for 2 turns (up to 4 stacks)."
+        },
+        "skill3": {
+            "name": "Crimson Devouring Blaze",
+            "element": "화염",
+            "type": "단일피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "Activation Condition: Have at least 2 stacks of 『Moon Phase』\nConsume all 『Moon Phase』 stacks, dealing 76.2%/84.0%/80.9%/88.7% of Attack as Fire damage per stack to 1 enemy.\nThen consume all 『Special Moon Phase』 stacks, dealing 134.6%/148.4%/142.9%/156.7% of Attack as Fire damage per stack to 1 enemy. When 『Moon Phase』 reaches 4 stacks, using this skill increases Makoto Yuki's Penetration by 11.7%/12.9%/12.4%/13.6% and damage dealt by 24.4%/26.9%/25.9%/28.4%."
+        },
+        "skill_highlight": {
+            "name": "Theurgia - Aldana",
+            "element": "화염",
+            "type": "",
+            "description": "Activation Condition: Theurgia Energy 100\nDeal 151.1%/162.6%/160.5%/171.6% of Attack as Fire damage 4 times to 1 enemy. Gain 1 stack of 『Special Moon Phase』 for 2 turns (up to 4 stacks)."
+        },
+        "skill_highlight2": {
+            "name": "Theurgia - Cadenza",
+            "element": "버프",
+            "type": "버프",
+            "description": "Activation Condition: Theurgia Energy 100\nIncrease all allies' Attack by 25.0%/26.9%/26.5%/28.4% and damage dealt by 20.0%/21.5%/21.2%/22.7% for 2 turns. Gain 1 stack of 『Special Moon Phase』 for 2 turns (up to 4 stacks)."
+        },
+        "skill_support": {
+            "name": "Support Skill",
+            "element": "패시브",
+            "type": "버프",
+            "description": "Increase 1 ally's Attack by 20% for 1 turn."
+        },
+        "passive1": {
+            "name": "Lead",
+            "element": "패시브",
+            "description": "After using Theurgia, increase all allies' Attack by 40.0%, and S.E.E.S. allies' Attack increases by an additional 20.0%. Effect lasts 2 turns."
+        },
+        "passive2": {
+            "name": "Trust",
+            "element": "패시브",
+            "description": "When Makoto Yuki gains a buff/heal/shield effect from an ally's skill, increase his Critical Damage by 7.2% for 2 turns (up to 3 stacks)."
+        }
+    },
+	"이케나미": {
+        "name": "Shoki Ikenami",
+        "skill1": {
+            "name": "Shining Monologue",
+            "element": "축복",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 151.8%/161.1%/158.0%/167.3% of Attack as Bless damage to 1 enemy, and all allies gain 2 stacks of Blessing. Additionally, all allies' damage increases (by 0.8% per 100 Attack of Shoki Ikenami, up to 35.1%/37.2%/36.6%/38.7%) for 2 turns."
+        },
+        "skill2": {
+            "name": "Unfamiliar Space",
+            "element": "버프",
+            "type": "버프",
+            "sp": 24,
+            "cool": 2,
+            "description": "Increase the Defense of 1 ally (excluding self) (by 0.83% per 100 Attack of Shoki Ikenami, up to 36.6%/38.9%/38.1%/40.4%), and grant immunity to certain mental ailments (Dizzy, Sleep, Confusion, Forget) for 2 turns."
+        },
+        "skill3": {
+            "name": "Performance of the Stars",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 24,
+            "cool": 0,
+            "description": "Increase all allies' Attack (by 15% of own Attack, up to 569/617/592/650) for 2 turns.\nDepending on the current 『Improvisation』 state, the main target gains additional effects.\n『Improvisation: Penetration』: For 2 turns, the main target's DoT effects increase by 14.0%/15.5%/14.5%/16.0% and Effect Hit Rate increases by 30%.\n『Improvisation: Overturn』: For 2 turns, the main target's Skill Mastery increases by 655/722/682/749, and when applying TECHNICAL, Attack increases by 20%.\n『Improvisation: Empathy』: For 2 turns, the main target's Critical Damage increases by 24.4%/26.9%/25.4%/27.9%.\n『Improvisation: Resonance』: For 2 turns, the main target's Penetration increases by 12.0%/13.2%/12.5%/13.7%."
+        },
+        "skill_highlight": {
+            "element": "버프광역",
+            "type": "버프",
+            "description": "Increase all allies' Attack (by 6.5% of own Attack, up to 284/302/296/314) and Effect Resistance by 82.0%/87.1%/85.3%/90.4% for 2 turns. Additionally, all allies gain 1 stack of Blessing."
+        },
+        "passive1": {
+            "name": "True Colors",
+            "element": "패시브",
+            "description": "For allies with Blessing effects, damage increases by 5% per Blessing stack, up to 25.0%."
+        },
+        "passive2": {
+            "name": "Reversal",
+            "element": "패시브",
+            "description": "For every 1% of Effect Hit Rate, increase Attack by 0.72%, up to 72.0%."
+        }
+    },
+	"마나카": {
+        "name": "Manaka Nagao",
+        "skill1": {
+            "name": "Song of the Sky",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 4,
+            "description": "Increase all allies' damage by 7.0%/7.7%/7.8%/8.5% + (additional 1% damage bonus for every 164 Attack of Manaka Nagao, up to an additional 28.0%/31.8%/31.4%/34.2%) for 2 turns. Gain 4 stacks of 『Chant』."
+        },
+        "skill2": {
+            "name": "Healing Light Song",
+            "element": "치료광역",
+            "type": "치료",
+            "cool": 8,
+            "description": "Heal all allies for 10.0%/10.0%/11.2%/11.2% of Attack + 681/816/989/1124 HP and remove 1 debuff from all allies. If 『Chant』 is present, consume 1 stack of 『Chant』 to reduce this skill’s preparation time by 1 action. Preparation time can be reduced by up to 4 actions this way. When manually cast, healing is increased by 50%.\nPassive: When Manaka Nagao accumulates 12 stacks of 『Chant』 during battle, this healing effect is automatically triggered once."
+        },
+        "skill3": {
+            "name": "Reincarnation of Time and Space",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 4,
+            "description": "Increase all allies' Attack by 11% of Manaka Nagao's Attack + 128/141/143/156. Consume all stacks of 『Chant』, and for each stack consumed, increase all allies' Penetration (by 0.1% for every 460 Attack of Manaka Nagao) and Attack (by 0.1% for every 460 Attack of Manaka Nagao) for 2 turns. (This skill calculates up to 4600/5060/5980/6440 Attack of Manaka Nagao.)"
+        },
+        "skill_highlight": {
+            "name": "Element Boost",
+            "element": "패시브",
+            "description": "Increase the corresponding attribute of all deployed allies by 20% of each Decipher Phantom Thief's attribute."
+        },
+        "passive1": {
+            "name": "Wingbeat",
+            "element": "패시브",
+            "description": "Increase the Attack of allies under 『Heavenly Melody』 by 37.5%."
+        },
+        "passive2": {
+            "name": "Determination",
+            "element": "패시브",
+            "description": "For every accumulated stack of 『Chant』, increase all allies' Penetration by 1.0% (up to 12 stacks)."
+        }
+    },
+	"마유미": {
+        "name": "Mayumi Hashimoto",
+        "skill1": {
+            "name": "Swirling Suppression",
+            "element": "물리광역",
+            "type": "광역피해",
+            "hp": 8,
+            "cool": 0,
+            "description": "Deal 134.2%/148.0%/142.5%/156.2% of Attack as Physical damage to all enemies, and increase all allies' damage by 8.8%/9.7%/9.3%/10.2% for 2 turns (damage increases by an additional 2% for every 10 Speed, up to a maximum of 35.1%/38.7%/37.3%/40.9%).\nOn Extra Turn: Skill damage increases by 50% and guarantees a critical hit on the main target."
+        },
+        "skill2": {
+            "name": "Overload Acceleration",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 22,
+            "cool": 0,
+            "description": "Increase all allies' Attack by 8.8%/9.7%/9.3%/10.2% for 2 turns (Attack increases by an additional 2% for every 10 Speed, up to a maximum of 35.1%/38.7%/37.3%/40.9%), and increase Defense by 9.8%/10.9%/10.4%/11.4% (Defense increases by 2.22% for every 10 Speed, up to a maximum of 39.0%/43.0%/41.4%/45.4%).\nOn Extra Turn: Grant all allies a shield that blocks 1964/2114/2054/2204 damage for 2 turns."
+        },
+        "skill3": {
+            "name": "Engine Roar",
+            "element": "버프광역",
+            "type": "버프",
+            "sp": 25,
+            "cool": 0,
+            "description": "Increase all allies' Penetration by 1.0%/1.1%/1.0%/1.1% for 2 turns (Penetration increases by 0.22% for every 10 Speed, up to a maximum of 3.9%/4.3%/4.1%/4.5%), and increase Attack by 12.7%/14.0%/13.5%/14.8% (Attack increases by 2.89% for every 10 Speed, up to a maximum of 50.8%/56.0%/53.9%/59.1%).\nOn Extra Turn: Increase the main target's Penetration by 2.0%/2.2%/2.1%/2.3% for 1 turn (Penetration increases by 0.44% for every 10 Speed, up to a maximum of 7.8%/8.6%/8.3%/9.1%)."
+        },
+        "skill_highlight": {
+            "element": "버프광역",
+            "type": "버프",
+            "description": "Increase all allies' Attack by 5.9%/6.5%/6.2%/6.8% for 2 turns (Attack increases by 1.33% for every 10 Speed, up to a maximum of 23.4%/25.8%/24.9%/27.3%), and increase damage by 5.9%/6.5%/6.2%/6.8% (damage increases by 1.33% for every 10 Speed, up to a maximum of 23.4%/25.8%/24.9%/27.3%). Additionally, when the main target deals damage to an enemy, the enemy's Down Gauge is further reduced by 1 point."
+        },
+        "passive1": {
+            "name": "Vanguard",
+            "element": "패시브",
+            "description": "When Mayumi Hashimoto is on the field, Extra Turn damage dealt by all allies increases by 30.0%."
+        },
+        "passive2": {
+            "name": "Pressurization",
+            "element": "패시브",
+            "description": "When Mayumi Hashimoto is on the field, all allies deal 24.0% more damage to Downed targets. If Mayumi knocks down a target, she deals an additional 48.0% Attack as Physical damage to that target."
+        }
+    },
+	"아케치": {
+        "name": "Goro Akechi",
+        "skill1": {
+            "name": "Promise of Justice",
+            "element": "축복광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 93.2%/102.8%/98.9%/108.5% of Attack as Bless damage to all enemies, heal all allies for 1561/1561/1657/1657 HP, and grant all allies 1 stack of Blessing. Gain 『Truth』 and enter the 『Accuracy』 state for 2 turns. In the 『Accuracy』 state, all allies' damage dealt increases by 19.5%/21.5%/20.7%/22.7%."
+        },
+        "skill2": {
+            "name": "Tilted Hunting Ground",
+            "element": "주원광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 116.5%/128.5%/123.7%/135.6% of Attack as Curse damage to all enemies. Gain 『Truth』 and enter the 『Chaos』 state for 2 turns. In the 『Chaos』 state, all enemies' Defense decreases by 25.4%/28.0%/26.9%/29.5%, 『Chaos Arrows』 activation count increases by 1, and damage dealt increases by 19.5%/21.5%/20.7%/22.7%."
+        },
+        "skill3": {
+            "name": "Golden Arrow Rain · Ruin",
+            "element": "만능광역",
+            "type":"광역피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "Activation Condition: Possess 『Truth』\nConsume all 『Accurate Arrows』 to deal fixed Almighty damage equal to 『Accurate Arrows』 recorded damage × 19.5%/21.5%/20.7%/22.7% to all enemies. Then, fire 『Chaos Arrows』 4 times at random enemies, each dealing 77.4%/85.3%/82.2%/90.1% of Attack as Almighty damage. Prioritizes enemies not yet hit, and if the same target is hit multiple times, subsequent hits deal 15% of the damage."
+        },
+        "skill_highlight": {
+            "element": "만능",
+            "type":"광역피해",
+            "description": "Deal 103.5%/114.1%/109.8%/120.4% of Attack as Bless damage once, and 103.5%/114.1%/109.8%/120.4% as Curse damage once to all enemies. Increase 『Chaos Arrows』 activation count by 2, lasting for 4 turns."
+        },
+        "passive1": {
+            "name": "Doctrine",
+            "element": "패시브",
+            "description": "When Goro Akechi joins the team, he can trigger a Desire Sonata of any element. At the start of battle, damage dealt increases by 15.0% for each Desire Sonata activated."
+        },
+        "passive2": {
+            "name": "Craving",
+            "element": "패시브",
+            "description": "When dealing Almighty damage, for every 1% Defense Reduction effect on the target, Akechi's damage increases by 0.5% (up to 120.0%)."
+        }    
+    },
+	"미오": {
+        "name": "Mio Natsukawa",
+        "skill1": {
+            "name": "Echo of Waves",
+            "element": "빙결광역",
+            "type":"디버프", 
+            "sp": 20,
+            "cool": 0,
+            "description": "Gain 1 stack of 『Flame Suppression』. Deal 97.6%/107.6%/103.6%/113.6% of Attack as Ice damage to all enemies, with a 50% base chance to inflict Freeze. Also reduce Defense by 7.8%/8.6%/8.3%/9.1% (Defense decreases by an additional 1% per 5.47% Effect Hit, up to 31.2%/34.4%/33.2%/36.4%), and increase Skill Mastery by 195/195/207/207 points when attacking this unit, lasting 3 turns. If there are enemies with Burn, remove Burn and inflict all enemies with 『Blazing Breath』 (『Blazing Breath』 cannot trigger this effect).\n『Blazing Breath』: Treated as Burn for 3 turns. All Phantom Thieves gain 976/1076/1036/1136 Skill Mastery when attacking units with this state."
+        },
+        "skill2": {
+            "name": "Binding Waves",
+            "element": "빙결",      
+            "type":"제어",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal 195.2%/215.2%/207.2%/227.2% of Attack as Ice damage to a single enemy and apply an Ice TECHNICAL. When 『Ice Seal』 triggers, its base chance increases to 43.9%/48.4%/46.6%/51.1%."
+        },      
+        "skill3": {
+            "name": "Burst of the Current",
+            "element": "빙결광역",
+            "type":"디버프",
+            "sp": 20,
+            "cool": 0,
+            "description": "Can be cast upon reaching 2 stacks of 『Flame Suppression』.\nConsume 2 stacks of 『Flame Suppression』 to deal 109.8%/121.1%/116.5%/127.8% of Attack as Ice damage to all enemies and reduce Defense by 7.3%/8.1%/7.7%/8.5% (Defense decreases by an additional 1% per 5.83% Effect Hit, up to 29.3%/32.3%/31.1%/34.1%), lasting 2 turns. Also applies Ice TECHNICAL, and when 『Ice Flame』 triggers, it always hits and the effect upgrades to 『Lightbringer』.\n『Lightbringer』: Increases all damage received by 9.8%/10.8%/10.4%/11.4% (increases by 1% per 4.38% Effect Hit, up to 39.0%/43.0%/41.4%/45.4%).\n\nUpon reaching 4 stacks of 『Flame Suppression』, this skill upgrades to 『Dragon Surge Explosion』.\n『Dragon Surge Explosion』: Consume 4 stacks of 『Flame Suppression』 to deal 131.8%/145.3%/139.9%/153.4% of Attack as Ice damage to all enemies and reduce Defense by 8.8%/9.7%/9.3%/10.2% (Defense decreases by an additional 1% per 4.86% Effect Hit, up to 35.1%/38.7%/37.3%/40.9%), lasting 2 turns. Also applies Ice TECHNICAL, and when 『Ice Flame』 triggers, it always hits and upgrades to 『Lightbringer』.\n『Lightbringer』: Increases all damage received by 11.7%/12.9%/12.4%/13.6% (increases by 1% per 3.65% Effect Hit, up to 46.8%/51.6%/49.7%/54.5%)."
+        },
+        "skill_highlight": {
+            "element": "빙결광역",
+            "type":"디버프",
+            "description": "Deal 39.0%/43.0%/41.4%/45.4% of Attack as Ice damage to all enemies and increase their damage taken for 2 turns (1% increase per 5.83% Effect Hit, up to 29.3%/32.3%/31.1%/34.1%). Also apply Ice TECHNICAL to the target, increasing 『Ice Seal』 base chance to 28%, and enemies under Ice Seal take increased damage (1% increase per 17.5% Effect Hit, up to 9.8%/10.8%/10.4%/11.4%). Then deal 117.1%/129.1%/124.3%/136.3% of Attack as Ice damage to all enemies."
+        },
+        "passive1": {
+            "name": "Protection",
+            "element": "패시브",
+            "description": "Whenever Mio Natsukawa applies TECHNICAL, all Phantom Thieves gain a shield blocking 1050 damage for 2 turns."
+        },
+        "passive2": {
+            "name": "Threat",
+            "element": "패시브",
+            "description": "While Mio Natsukawa is on the field, enemies affected by Freeze take 27.0% more damage."
+        }
+    },
+    "루우나": {
+        "name": "Runa Dogenzaka",
+        "skill1": {
+            "name": "Fiery Handshake",
+            "element": "화염광역",
+            "type":"디버프",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deals 73.2%/80.7%/77.7%/85.2% of Attack as Fire damage to all enemies. Reduces the target's Defense (by 15.4% of her Effect Hit Rate, up to 26.4%/29.2%/27.9%/30.7%), and when hit by Fire skills, their Defense is further reduced by 26.4%/26.4%/28.0%/28.0% for 2 turns. Also has a 50% base chance to inflict Burn. Runa gains 『Heated Welcome』 (if both this and 『Warning to Villains』 apply, the highest Defense reduction value is used)."
+        },
+        "skill2": {
+            "name": "Warning to Villains",
+            "element": "화염",
+            "type":"디버프",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deals 170.8%/188.3%/181.3%/198.8% of Attack as Fire damage to 1 enemy, and reduces their Defense by 14.6%/14.6%/15.5%/15.5% + (31.4% of her Effect Hit Rate, up to 53.7%/59.3%/56.9%/62.5%) for 2 turns. Runa gains 『Relentless Pursuit』 (if both this and 『Fiery Handshake』 apply, the highest Defense reduction value is used)."
+        },
+        "skill3": {
+            "name": "GOGO Woof!",
+            "element": "화염광역",
+            "type":"디버프",
+            "sp": 24,
+            "cool": 0,
+            "description": "Depending on whether she has 『Heated Welcome』 or 『Relentless Pursuit』, this skill will trigger a different effect, but only one can activate at a time.\n『Heated Welcome』: Deals 109.8%/109.8%/116.6%/116.6% of Attack as Fire damage to all enemies, and for 2 turns, increases damage they take (by 24% of her Effect Hit Rate, up to 41.0%/45.2%/43.5%/47.7%) and Fire damage taken by 20.5%/22.7%/21.7%/23.9%.\n『Relentless Pursuit』: Deals 219.6%/219.6%/233.1%/233.1% of Attack as Fire damage to 1 enemy, and for 2 turns, increases damage they take (by 34.3% of her Effect Hit Rate, up to 58.6%/64.7%/62.1%/68.2%) and additional effect damage by 29.3%/31.6%/31.8%/34.1%."
+        },
+        "skill_highlight": {
+            "element": "화염광역",
+            "type":"디버프",
+            "description": "Deals 214.7%/236.7%/227.9%/249.9% of Attack as Fire damage to all enemies, and the enemy team gains 2 stacks of 『Super Villain』.\n『Super Villain』: When any enemy is hit by a Chase (additional effect) skill or Fire skill, 1 stack is consumed, and for 2 turns, they take increased damage (by 22.9% of her Effect Hit Rate, up to 39.0%/43.0%/41.4%/45.4%)."
+        },
+        "passive1": {
+            "name": "Loyalty",
+            "element": "패시브",
+            "description": "During battle, she gains an Attack bonus equal to 60.0% of her Effect Hit Rate."
+        },
+        "passive2": {
+            "name": "Passion",
+            "element": "패시브",
+            "description": "After applying a debuff to an enemy with a skill, her Attack increases by 33.0%. When allies deal Fire or additional effect damage, she gains the same Attack increase effect for 1 turn."
+        }
+    },
+    "리코": {
+        "name": "Riko Tanemura",
+        "skill1": {
+            "name": "Crimson Shadow Arts",
+            "element": "버프광역",
+            "type":"디버프",
+            "cool": 4,
+            "description": "Reduces all enemies' Defense by 10.0%/10.0%/10.8%/10.8%. If Riko's Speed is over 100, every additional 10 points reduces Defense by an extra 4.9%, up to 29.4%/32.3%/31.8%/34.7%. Lasts for 2 turns. At the same time, the main target's 『Weak Point』 is exposed."
+        },
+        "skill2": {
+            "name": "Illusion of Plum Blossoms",
+            "element": "버프광역",
+            "type":"디버프",
+            "cool": 8,
+            "description": "Increases damage taken by all enemies by 10.5%/11.6%/11.3%/12.4% for 2 turns. When an allied Phantom Thief reduces down gauge or knocks an enemy down, the cooldown of this skill is reduced by 1 action. When the cooldown reaches 0 actions, this skill automatically activates once."
+        },
+        "skill3": {
+            "name": "Gentle Drizzle",
+            "element": "버프광역",
+            "type":"버프",
+            "cool": 8,
+            "unlock": "『Intel』 stacks ≥ 5",
+            "description": "Activation Condition: 『Intel』 stacks ≥ 5\nConsumes all 『Intel』 to grant all allies 『Arrogance』 and heal the main target by 12.7%/12.7%/13.7%/13.7% of HP.\n『Arrogance』: Increases damage dealt by 12.6%/13.8%/13.6%/14.8%, with additional damage bonuses for each 『Intel』 consumed (if Riko's Speed is over 100, every additional 10 points increases damage by 1.05%, up to 6.3%/6.9%/6.8%/7.4%). Lasts for 1 turn."
+        },
+        "skill_highlight": {
+            "name": "Attribute Boost",
+            "element": "패시브",
+            "type":"패시브",
+            "description": "Increases all allies' corresponding attribute stats by 15% of the Revealed Phantom Thief's attributes."
+        },
+        "passive1": {
+            "name": "Butterfly's Dream",
+            "element": "패시브",
+            "description": "At battle start, if Riko's Speed exceeds 100, for each point above 100, all Phantom Thieves gain +6 HP, +2 ATK, and +2 DEF, up to a maximum of +360 HP, +120 ATK, and +120 DEF."
+        },
+        "passive2": {
+            "name": "Song of the Crane",
+            "element": "패시브",
+            "description": "All enemies take 60.0% more damage from ONEMORE and All-Out Attacks."
+        }
+    },
+    "리코·매화": {
+        "name": "Riko Tanemura·Vast",
+        "skill1": {
+            "name": "Scattering Plum Blossoms",
+            "element": "질풍",
+            "type":"단일피해",
+            "cool": 0,
+            "description": "Deals 183.0%/201.7%/194.3%/213.0% of Riko Tanemura·Vast's ATK as Wind damage to 1 enemy and inflicts Windswept with a 100% base chance for 2 turns. Also inflicts 『Falling Petals』, causing Wind damage dealt to increase by 18.3% of the portion exceeding Riko Tanemura·Vast's Critical Effect over 100% (up to 388.0%/418.0%/418.0%/448.0% Critical Effect), lasting 2 turns.\nRiko Tanemura·Vast recovers 16 SP."
+        },
+        "skill2": {
+            "name": "Plum Under the Umbrella",
+            "element": "버프광역",
+            "type":"버프",
+            "cool": 0,
+            "description": "Increases all allies' ATK by 12.8% of the portion exceeding Riko Tanemura·Vast's Critical Effect over 100% (up to 388.0%/418.0%/418.0%/448.0% Critical Effect) for 2 turns and restores 4 SP.\nDuring this time, when any ally deals Persona Skill/Additional Effect/HIGHLIGHT damage, Riko Tanemura·Vast recovers 12 SP (triggers once per turn)."
+        },
+        "skill3": {
+            "name": "Lingering Plum Scent",
+            "element": "버프",
+            "type":"버프",
+            "sp": "50 - 200",
+            "cool": 0,
+            "description": "Consumes all SP to increase 1 ally's Critical Rate (excluding self) by 16.0%/17.0%/17.0%/18.0%, and for every 2 SP spent, the following effects are enhanced by 1% strength for 2 turns (applies up to 388.0%/418.0%/418.0%/448.0% Critical Effect of Riko Tanemura·Vast).\n\n· 50+ SP spent: ATK increase, +2.4 ATK for every 1% exceeding Riko Tanemura·Vast's Critical Effect over 100%.\n· 100+ SP spent: Critical Effect increase, +12% of the portion exceeding Riko Tanemura·Vast's Critical Effect over 100%.\n· 150+ SP spent: Additional Critical Effect increase, +6% of the portion exceeding Riko Tanemura·Vast's Critical Effect over 100%."
+        },
+        "skill_highlight": {
+            "element": "버프",
+            "type":"버프",
+            "description": "Increases 1 ally's ATK (excluding self) for 2 turns (ATK +2.5 for every 1% exceeding Riko Tanemura·Vast's Critical Effect over 100%, up to 388.0%/418.0%/418.0%/448.0% Critical Effect) and Critical Effect by 24.4%/26.9%/25.9%/28.4%.\nRestores 20 SP to all other allies."
+        },
+        "passive1": {
+            "name": "Full Bloom",
+            "element": "패시브",
+            "description": "After using 『Lingering Plum Scent』, the skill's main target gains 『Flower Bud』 for 2 turns.\nEach time the target deals skill damage, gains 1 stack of 『Bloom』 increasing ATK by 30 for 3 turns (up to 10 stacks).\nAt 5 stacks of 『Bloom』, ATK increases by 8.0% of the portion exceeding Riko Tanemura·Vast's Critical Effect over 100%, and Critical Effect increases by 5.0% of the portion exceeding 100%.\nAt 10 stacks, Critical Effect further increases by 5.0% of the portion exceeding Riko Tanemura·Vast's Critical Effect over 100%."
+        },
+        "passive2": {
+            "name": "Vigor",
+            "element": "패시브",
+            "description": "During battle, Riko Tanemura·Vast's Critical Effect increases according to SP recovered, up to +84.0% Critical Effect for 450.0% SP recovered."
+        }
+    },
+    "마사키": {
+        "name": "Masaki Ashiya",
+        "skill1": {
+            "name": "Blessing of Compassion",
+            "element": "빙결",
+            "type":"단일피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "Deals 149.2%/164.2%/158.4%/173.4% of Masaki Ashiya's DEF as Ice damage to 1 designated enemy and 44.8%/50.3%/47.6%/53.1% of DEF as Ice damage to other enemies, with a 97.6%/97.6%/103.6%/103.6% base chance to Freeze the main target. Masaki Ashiya restores 2 『Valor』. If Masaki Ashiya is under 『Declaration of Justice』, the main target takes additional damage for 2 turns (1% extra damage per 600 DEF, up to 9.8%/10.8%/10.4%/11.4%). However, 『Valor』 recovery is reduced to 1 point."
+        },
+        "skill2": {
+            "name": "Guardian of Honor",
+            "element": "버프",
+            "type":"실드",
+            "sp": 26,
+            "cool": 0,
+            "description": "Grants 1 stack of 『Saint of Honesty』 to 1 ally, blocking 22.8%/22.8%/24.2%/24.2% of DEF + 650/790/799/939 damage, and increases DEF by 20% of Masaki Ashiya's DEF (up to 1220/1345/1295/1420) for 2 turns. If the ally’s HP is above 60% when applied, their chance of being targeted increases by 50%. At the start of Masaki Ashiya's next turn, that ally gains 1 additional stack of 『Saint of Honesty』. If under 『Declaration of Justice』, the shield amount of 『Saint of Honesty』 is increased by 25% for 2 turns."
+        },
+        "skill3": {
+            "name": "Prayer of the Soul",
+            "element": "버프광역",
+            "type":"실드",
+            "sp": 30,
+            "cool": 1,
+            "description": "Grants all allies 1 stack of 『Saint of Honesty』 blocking DEF ×12% +360 damage and 1 stack of 『Blessing of Purity』 blocking 49.2%/49.2%/52.2%/52.2% of DEF +1400/1705/1721/2026 damage. All allies gain 1 down gauge reduction and a damage increase (1% per 300 DEF, up to 19.5%/21.5%/20.7%/22.7%) for 2 turns."
+        },
+        "skill_highlight": {
+            "element": "버프광역",
+            "type":"실드",
+            "description": "Grants all allies 1 stack of 『Blessing of Purity』 blocking 59.0%/59.0%/62.7%/62.7% of DEF +1681/2044/2066/2429 damage. All allies take 31.9%/35.1%/33.9%/37.1% less damage for 2 turns."
+        },
+        "passive1": {
+            "name": "Sacrifice",
+            "element": "패시브",
+            "description": "All allies protected by Masaki Ashiya's shield gain 24.0% increased DEF."
+        },
+        "passive2": {
+            "name": "Humility",
+            "element": "패시브",
+            "description": "All allies protected by Masaki Ashiya's shield gain 48.0% increased Effect RES."
+        }
+    },
+    "마코토": {
+        "name": "Makoto Niijima",
+        "skill1": {
+            "name": "Pulse Combo",
+            "element": "핵열광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 83.0%/91.5%/88.1%/96.6% of Makoto Niijima's ATK as Nuclear damage 5 times to random enemies, prioritizing enemies that haven't been hit. If multiple hits strike the same target, damage is reduced to 20%. If the main target has an Elemental Ailment, inflicts TECHNICAL and deals an additional 29.3%/29.3%/31.1%/31.1% of Nuclear damage. Has a 100% base chance to inflict 『Radiation』 on the main target."
+        },
+        "skill2": {
+            "name": "Nuclear Resonance",
+            "element": "치료",
+            "type":"단일치료",
+            "sp": 22,
+            "cool": 0,
+            "description": "Heals 1 ally by 52.7%/52.7%/55.9%/55.9% of Makoto Niijima's ATK +1500/1824/1844/2168 HP, and increases Makoto Niijima's ATK by 48.8%/53.8%/51.8%/56.8% until the end of the next turn. Gains 2 stacks of 『Fortitude』, plus additional stacks based on the number of Elemental Ailments present on enemies."
+        },
+        "skill3": {
+            "name": "Nuclear Critical",
+            "element": "핵열",
+            "type":"단일피해",
+            "sp": 21,
+            "cool": 0,
+            "description": "Deals 210.6%/232.1%/223.6%/245.1% of ATK as Nuclear damage to 1 enemy. If the target has an Elemental Ailment, inflicts TECHNICAL and deals an additional 39.0%/43.0%/41.4%/45.4% of Nuclear damage. Gains 2 stacks of 『Fortitude』.\nWhen in 『Iron Will』 state, this skill upgrades to 『Nuclear Overload』.\n\n『Nuclear Overload』: Deals 243.6%/268.5%/258.6%/283.5% of ATK as Nuclear damage to 1 enemy, and for each Elemental Ailment the target has, inflicts TECHNICAL and deals an additional 34.2%/37.7%/36.3%/39.8% of Nuclear damage (up to 3 hits)."
+        },
+        "skill_highlight": {
+            "element": "핵열",
+            "type":"단일피해",
+            "description": "Gains 2 stacks of 『Thermal Material』 and deals 390.4%/430.4%/414.4%/454.4% of ATK as Nuclear damage to 1 enemy. Consumes all current 『Thermal Material』 stacks, and for each stack consumed, adds 1 random Elemental Ailment (up to 2 ailments). For each remaining stack consumed, this skill's damage increases by 20%."
+        },
+        "passive1": {
+            "name": "Concentration",
+            "element": "패시브",
+            "description": "For each type of Elemental Ailment on the field, Makoto Niijima's ATK increases by 15.0%."
+        },
+        "passive2": {
+            "name": "Determination",
+            "element": "패시브",
+            "description": "At the start of battle, damage reduction increases by 2.0%/4.0%/4.0%/6.0%. Each time Makoto Niijima enters 『Iron Will』 state, damage reduction increases by an additional 6.0%, up to a maximum of 18.0%."
+        }
+    },
+    "모토하·여름": {
+        "name": "Motoha Arai·Summer",
+        "skill1": {
+            "name": "Summer Magic",
+            "element": "축복광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 87.8%/96.8%/93.2%/102.2% of Motoha Arai·Summer's ATK as Bless damage to all enemies. If she is in the 『Midsummer』 state, consumes 10% of her max HP to deal an additional 29.3%/32.3%/31.1%/34.1% of Bless damage to all enemies once."
+        },
+        "skill2": {
+            "name": "Leisurely Vacation",
+            "element": "축복",
+            "type":"단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 136.6%/150.6%/145.0%/159.0% of Motoha Arai·Summer's ATK as Bless damage to 1 enemy and restores 20% of her max HP. If she is in the 『Midsummer』 state, deals an additional 34.2%/37.7%/36.3%/39.8% of Bless damage to the target once."
+        },
+        "skill3": {
+            "name": "Wave Chaser",
+            "element": "축복광역",
+            "type":"광역피해",
+            "sp": 24,
+            "cool": 5,
+            "description": "Immediately enters 『Midsummer』 state, lasting until the end of the next turn. Consumes 15% of her max HP to deal 159.7%/176.0%/169.5%/185.8% of Bless damage to all enemies. While in 『Midsummer』, her Critical Rate increases by 9.8%/9.8%/10.4%/10.4%, and her damage increases by 29.3%/29.3%/31.1%/31.1%."
+        },
+        "skill_highlight": {
+            "element": "축복광역",
+            "type":"광역피해",
+            "description": "Deals 195.2%/215.2%/207.2%/227.2% of Motoha Arai·Summer's ATK as Bless damage to all enemies and restores 20% of her max HP. If her HP is above 50%, the HIGHLIGHT skill damage increases by an additional 25%."
+        },
+        "passive1": {
+            "name": "Shade",
+            "element": "패시브",
+            "description": "When Motoha Arai·Summer receives overhealing, her damage increases by 30.0% for 2 turns."
+        },
+        "passive2": {
+            "name": "Heatwave",
+            "element": "패시브",
+            "description": "If Motoha Arai·Summer's max HP exceeds 8000 during battle, she gains an additional 24 ATK for every extra 100 max HP, up to a maximum of 1920."
+        }
+    },
+    "몽타뉴·백조": {
+        "name": "Kotone Montagne·Swan",
+        "skill1": {
+            "name": "Prelude of the Storm/Chilling Wind",
+            "element": "질풍빙결",
+            "type":"단일피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "『Spring Form』: Deals 65.9%/72.7%/69.9%/76.7% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times and has a 30% base chance to inflict Gust. If Kotone Montagne·Swan is within 『Spring Barrier』, additionally inflicts 『Wind Wound』 for 2 turns. Attacking enemies under 『Wind Wound』 increases Critical Effect by 29.3%/29.3%/31.1%/31.1%.\n\n『Winter Form』: Deals 122.2%/134.7%/129.7%/142.2% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to Freeze. If the target is already Frozen, inflicts 『Frostbite』 for 2 turns. Enemies with 『Frostbite』 take 13.7%/13.7%/14.5%/14.5% more Ice damage."
+        },
+        "skill2": {
+            "name": "Drifting Clouds/Snowfall Plains",
+            "element": "질풍빙결광역",
+            "type":"광역피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "『Spring Form』: Deals 31.3%/34.5%/33.3%/36.5% of Kotone Montagne·Swan's ATK as Wind damage to all enemies 3 times. If within 『Spring Barrier』, additionally gains 1 『Morning Dew Crystal』.\n\n『Winter Form』: Deals 83.8%/92.4%/89.0%/97.6% of Kotone Montagne·Swan's ATK as Ice damage to all enemies, with a 48.8%/48.8%/51.8%/51.8% base chance to Freeze. If within 『Winter Barrier』, this attack's damage is increased by 20%."
+        },
+        "skill3": {
+            "name": "Approaching Spring/Winter Night Waltz",
+            "element": "질풍빙결",
+            "type":"단일피해",
+            "sp": 28,
+            "cool": 0,
+            "description": "『Spring Form』: Casts 『Spring Barrier』 lasting 1 turn, dealing 82.9%/91.5%/87.9%/96.5% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times. While 『Spring Barrier』 is active, when any Phantom Thief deals Wind damage via Persona Skills, HIGHLIGHT, or Extra Effects, deals additional Wind damage equal to 20% of Kotone Montagne·Swan's ATK to the main target and grants 1 『Morning Dew Crystal』 to Kotone Montagne·Swan. When 『Spring Barrier』 ends, consumes all 『Morning Dew Crystals』 to deal (3 + number of crystals) * 34.2%/37.7%/36.3%/39.8% of Kotone Montagne·Swan's ATK as Wind damage to the current main target. This damage counts as Extra Damage.\n\n『Winter Form』: Casts 『Winter Night Barrier』 lasting 1 turn, dealing 183.2%/201.9%/194.5%/213.2% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy. While 『Winter Night Barrier』 is active, after any Phantom Thief is attacked, all allies gain a 『Snowball Shield』 that blocks 1301/1301/1381/1381 damage. This effect triggers up to 2 times. When any Phantom Thief deals Ice damage via Persona Skills, HIGHLIGHT, or Extra Effects, Kotone Montagne·Swan gains 1 『Winter Frost Crystal』. When 『Winter Night Barrier』 ends, consumes all 『Winter Frost Crystals』 to deal (3 + number of crystals) * 27.9%/30.8%/29.6%/32.5% of Kotone Montagne·Swan's ATK as Ice damage to the current main target. This damage counts as Extra Damage."
+        },
+        "skill_highlight": {
+            "element": "질풍빙결",
+            "type":"단일피해",
+            "description": "『Spring Form』: Deals 149.6%/165.0%/158.8%/174.2% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times. If within 『Spring Barrier』, gains an extra 『Morning Dew Crystal』 exceeding the normal limit. Otherwise, deals an additional Wind damage hit to the target.\n\n『Winter Form』: Deals 380.6%/419.6%/404.0%/443.0% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy, with a 68.3%/68.3%/72.5%/72.5% base chance to inflict 『Ice Seal』 for 1 turn. If within 『Winter Night Barrier』, the base chance of 『Ice Seal』 increases by 29.3%/29.3%/31.1%/31.1%. Otherwise, this attack's damage is increased by 20%."
+        },
+        "passive1": {
+            "name": "Cherishment",
+            "element": "패시브",
+            "description": "If another Wind Phantom Thief is in the team, Kotone Montagne·Swan's Wind damage increases by 133.0%. If another Ice Phantom Thief is in the team, Kotone Montagne·Swan's Ice damage increases by 33.0%."
+        },
+        "passive2": {
+            "name": "Yearning",
+            "element": "패시브",
+            "description": "『Spring Form』: Each time a Phantom Thief deals Wind damage, all Phantom Thieves' ATK increases by 8.1% for 2 turns (stacks up to 5 times). 『Winter Night Form』: Each time Kotone Montagne·Swan gains a shield, all Phantom Thieves' DEF increases by 9.0% for 2 turns (stacks up to 4 times)."
+        }
+    },
+    "아야카": {
+        "name": "Ayaka Sakai",
+        "skill1": {
+            "name": "Passionate Sonata",
+            "element": "전격광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 85.4%/94.1%/90.7%/99.4% of Ayaka Sakai's ATK as Elec damage to all enemies. If there is an 『Enthusiastic Audience』, they deal an additional 83.3%/91.8%/88.4%/96.9% of their ATK as Elec damage to the main target once."
+        },
+        "skill2": {
+            "name": "Improvised Solo",
+            "element": "버프",
+            "type":"버프",
+            "sp": 20,
+            "cool": 0,
+            "description": "Selects 1 ally to become an 『Enthusiastic Audience』, increasing their ATK by 24% of Ayaka Sakai's ATK for 3 turns (up to 976/1076/1036/1136). Only one 『Enthusiastic Audience』 can exist at a time."
+        },
+        "skill3": {
+            "name": "Finale: Resonance Activation",
+            "element": "버프",
+            "type":"버프",
+            "sp": 25,
+            "cool": 1,
+            "description": "Selects 1 ally to immediately cast their HIGHLIGHT skill. The damage of this HIGHLIGHT is increased by 78.1%/86.1%/82.9%/90.9%. HIGHLIGHTs triggered this way do not count towards the character’s HIGHLIGHT cooldown. If the target is an S.E.E.S. member, the effect changes to a 20.7% boost to their next Theurgy final damage."
+        },
+        "skill_highlight": {
+            "element": "버프광역",
+            "type":"버프",
+            "description": "For 4 Phantom Thief actions, all allies receive a 45.5%/50.1%/48.3%/52.9% damage bonus. During this period, allies recover 10% HIGHLIGHT energy after each action, up to 40% total."
+        },
+        "passive1": {
+            "name": "Accent",
+            "element": "패시브",
+            "description": "When an ally Phantom Thief uses HIGHLIGHT/Theurgy, that Phantom Thief’s ATK is immediately increased by 24.0% for 1 turn. If that ally is the Enthusiastic Audience, the effect is increased by 1.5x."
+        },
+        "passive2": {
+            "name": "Stroke",
+            "element": "패시브",
+            "description": "After an ally Phantom Thief uses HIGHLIGHT/Theurgy, Ayaka Sakai instantly restores 15.0% of her ATK + 1350 HP to the ally with the lowest HP ratio."
+        }
+    },
+    "야오링·사자무": {
+        "name": "Yaoling Li·Lion Dance",
+        "skill1": {
+            "name": "New Year's Blessing",
+            "element": "화염광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 120.4%/132.8%/127.8%/140.2% of Yaoling Li·Lion Dance's ATK as Fire damage to all enemies and increases her Critical Rate by 10% for 2 turns. 『Firework Meteor』 is enhanced, dealing an additional 72.8%/80.2%/77.3%/84.7% of her ATK as Fire damage for 1 turn."
+        },
+        "skill2": {
+            "name": "Song of Fireworks",
+            "element": "화염광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 73.8%/81.4%/78.3%/85.9% of Yaoling Li·Lion Dance's ATK as Fire damage to all enemies, with a 75% base chance to inflict Burn and 『Flames of Time』 for 2 turns. 『Firework Meteor』 is enhanced to have a 75% base chance to inflict 『Flames of Time』 for 1 turn.\n『Flames of Time』: Deals 63.4%/69.9%/67.3%/73.8% of Yaoling Li·Lion Dance's ATK as Fire damage each turn, lasting 2 turns (up to 4 stacks)."
+        },
+        "skill3": {
+            "name": "Meteor Fire",
+            "element": "버프",
+            "type":"버프",
+            "sp": 24,
+            "cool": 1,
+            "description": "Ignites her blade and enters 『Dance of Iron Flowers』 state, increasing damage dealt by 34.3%/37.8%/36.4%/39.9%. During this time, her melee attack is enhanced into 『Firework Meteor』. Lasts 1 turn or until 『Firework Meteor』 is cast.\n『Firework Meteor』: Deals 127.4%/140.4%/135.2%/148.2% of her ATK as Fire damage to all enemies and inflicts Fire TECHNICAL. When 『Explosive Combustion』 is triggered, TECHNICAL effect is increased by up to 20%.\nStarts with a 1-turn cooldown. After casting this skill, other skills can still be used in the same turn. This skill is not considered a Persona skill."
+        },
+        "skill_highlight": {
+            "element": "화염광역",
+            "type":"광역피해",
+            "description": "Deals 205.9%/227.0%/218.6%/239.7% of Yaoling Li·Lion Dance's ATK as Fire damage to all enemies. Increases her ATK by 19.5%/21.5%/20.7%/22.7% and increases 『Firework Meteor』's damage by 19.5%/21.5%/20.7%/22.7% for 2 turns."
+        },
+        "passive1": {
+            "name": "Auspice",
+            "element": "패시브",
+            "description": "Increases damage dealt to Burned enemies by 36.0%."
+        },
+        "passive2": {
+            "name": "Harmony",
+            "element": "패시브",
+            "description": "At the start of battle, increases her ATK by 30.0% for 2 turns. When she or allies inflict TECHNICAL, the duration of this effect resets and its effect increases up to 45.0%."
+        }
+    },
+    "유우미": {
+        "name": "Yumi Shiina",
+        "skill1": {
+            "name": "Alluring Fragrance",
+            "element": "버프광역",
+            "type":"버프",
+            "cool": 6,
+            "description": "Increases all allies' ATK by 8% of Yumi Shiina's ATK for 3 turns (up to 5000/5500/6500/7000 ATK).\nWhen cast, if Yumi Shiina has a 『Cocktail』, she consumes 1 『Cocktail』 to enhance the skill effect (consumes the highest quality 『Cocktail』 first). Consuming 『Mix·DELUXE/Mix/Rough』 increases the skill effect by 120%, 100%, or 50% respectively."
+        },
+        "skill2": {
+            "name": "Colorful Ingredients",
+            "element": "버프",
+            "type":"버프",
+            "cool": 4,
+            "description": "Increases 1 ally's damage dealt for 2 turns (1% bonus damage per 250 ATK of Yumi Shiina, up to 5000/5500/6500/7000 ATK), and increases max HP by 13.0%/13.0%/14.6%/14.6%.\nWhen dealing damage, restores HP equal to 2% of the damage dealt for 1 turn. Upon casting, Yumi Shiina consumes 1 『Rough/Mix』 to gain 1 『Mix·DELUXE』."
+        },
+        "skill3": {
+            "name": "Fragrant Wine",
+            "element": "버프광역",
+            "type":"버프",
+            "cool": 8,
+            "unlock": "Unlocked when possessing 『Cocktail』",
+            "description": "Activation Condition: Unlocked when possessing 『Cocktail』\nConsumes all 『Cocktails』 to specially adjust the attributes of the designated ally.\nFor each 『Mix·DELUXE/Mix/Rough』 consumed, activates the following effects at 120%, 100%, or 50% strength respectively:\nIncreases all allies' specially adjusted attribute damage (1% bonus damage per 250 ATK of Yumi Shiina, up to 5000/5500/6500/7000 ATK), and increases the designated ally's specially crafted attribute damage by up to 1.2× for 2 turns."
+        },
+        "skill_highlight": {
+            "name": "Attribute Boost",
+            "element": "패시브",
+            "type":"패시브",
+            "description": "Increases the corresponding attribute values of all deployed allies by 20% of the Phantom Thieves’ respective attributes."
+        },
+        "passive1": {
+            "name": "Stir",
+            "element": "패시브",
+            "description": "For each Phantom Thief in the team, all Phantom Thieves' corresponding attribute damage increases by 4%."
+        },
+        "passive2": {
+            "name": "Shake",
+            "element": "패시브",
+            "description": "At the start of battle, Yumi Shiina gains 3 random 『Flavors』 based on the attributes of Phantom Thieves in the team."
+        }
+    },
+    "치즈코": {
+        "name": "Chizuko Nagao",
+        "skill1": {
+            "name": "Signal Bomb",
+            "element": "핵열",
+            "type":"단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 170.8%/186.3%/177.8%/193.3% Nuclear damage to 1 enemy. Reduces the target's DEF by 22.5% of Chizuko Nagao's Effect Hit Rate, up to 37.3%/37.3%/38.8%/38.8%. Also has a 100% base chance to inflict a random elemental ailment the enemy does not already have."
+        },
+        "skill2": {
+            "name": "Carpet Bombing",
+            "element": "핵열광역",
+            "type":"광역피해",
+            "sp": 22,
+            "cool": 0,
+            "description": "Deals 91.5%/100.5%/95.3%/104.3% Nuclear damage to all enemies. Has a 40% base chance to inflict a random elemental ailment that the enemy does not already have."
+        },
+        "skill3": {
+            "name": "Focused Ground Bombardment",
+            "element": "핵열",
+            "type":"단일피해",
+            "sp": 24,
+            "cool": 1,
+            "description": "Deals 195.2%/215.2%/203.2%/223.2% Nuclear damage to 1 enemy. For each elemental ailment the target has, the damage they take increases by 11.3% of Chizuko Nagao's Effect Hit Rate, up to 18.7%/20.7%/19.5%/21.5%. Lasts 2 turns and can stack up to 3 times."
+        },
+        "skill_highlight": {
+            "element": "핵열",
+            "type":"단일피해",
+            "description": "Deals 324.5%/357.5%/337.8%/370.8% Nuclear damage to 1 enemy and has a 75% base chance to inflict 2 random elemental ailments the enemy does not already have."
+        },
+        "passive1": {
+            "name": "Annihilation",
+            "element": "패시브",
+            "description": "Enemies with 『Radiation』 take 15.0% more Nuclear damage."
+        },
+        "passive2": {
+            "name": "Tactics",
+            "element": "패시브",
+            "description": "During battle, Chizuko Nagao gains an ATK bonus equal to 45.0% of her Effect Hit Rate."
+        }
+    },
+    "카스미": {
+        "name": "Kasumi Yoshizawa",
+        "skill1": {
+            "name": "Light in the Darkness",
+            "element": "축복",
+            "type":"단일피해",
+            "sp": 23,
+            "cool": 0,
+            "description": "When actively used, deals 186.9%/206.1%/198.4%/217.5% Bless damage to 1 enemy, and Kasumi Yoshizawa gains 『Dance Move』 『Brave Step』 (stacks up to 3 times). When the Dance Partner uses this skill, it deals 121.6%/134.1%/129.1%/141.5% Bless damage to 1 enemy, and Kasumi Yoshizawa gains 『Dance Move』 『Brave Step』 (stacks up to 3 times)."
+        },
+        "skill2": {
+            "name": "Dancing Together",
+            "element": "버프",
+            "type":"버프",
+            "sp": 22,
+            "cool": 0,
+            "description": "Selects 1 ally as the 『Dance Partner』 for 1 turn. Increases ATK of both Kasumi Yoshizawa and the 『Dance Partner』 by 32.4%/35.7%/34.4%/37.7% for 3 turns. Kasumi Yoshizawa gains 『Dance Move』 『Swift Step』 (1 stack max). When the 『Dance Partner』 uses a Persona skill, Kasumi Yoshizawa immediately casts 『Light in the Darkness』 on a random enemy (or on the same main target if the partner’s skill targets an enemy). Only 1 『Dance Partner』 can exist at a time."
+        },
+        "skill3": {
+            "name": "Blooming Heart",
+            "element": "축복",
+            "type":"단일피해",
+            "sp": 27,
+            "cool": 0,
+            "description": "Deals 214.7%/236.7%/227.9%/249.9% Bless damage to 1 enemy. If Kasumi Yoshizawa is in the 『Masquerade』 state, this skill’s damage increases by 30% and her Critical Effect increases by 29.3%/29.3%/31.1%/31.1%."
+        },
+        "skill_highlight": {
+            "element": "축복",
+            "type":"단일피해",
+            "unlock":"자신이 『가면무도회』 상태.",
+            "description": "Condition: Kasumi Yoshizawa is in the 『Masquerade』 state.\nDeals 243.8%/268.8%/258.8%/283.8% Bless damage to 1 enemy. If she has 『Dance Move』, she gains the following effects:\n『Brave Step』: Each stack increases HIGHLIGHT skill damage by 15%.\n『Swift Step』: HIGHLIGHT Critical Rate increases by 10%, and Critical Effect increases by 20%."
+        },
+        "passive1": {
+            "name": "Faith",
+            "element": "패시브",
+            "description": "Bless damage increases by 10.0% for each 『Dance Move』 stack Kasumi Yoshizawa has, up to 30.0%."
+        },
+        "passive2": {
+            "name": "Determination",
+            "element": "패시브",
+            "description": "When an ally triggers a HIGHLIGHT effect, Kasumi Yoshizawa’s ATK increases by 45.0% for 2 turns."
+        }
+    },
+    "키라": {
+        "name": "Kira Kitazato",
+        "skill1": {
+            "name": "Severing Technique / Sinful Game",
+            "element": "물리",
+            "type":"단일피해",
+            "sp": 21,
+            "cool": 0,
+            "description": "『Hunter』 State: Deals 47.3%/52.2%/50.2%/55.1% Physical damage to 1 enemy 4 times and adds 1 stack of 『Bleed』.\n『Executioner』 State: Deals 201.4%/222.1%/213.7%/234.4% Physical damage to 1 enemy, and after the skill ends, removes 2 stacks of 『Bleed』 from the enemy (can trigger 『Incision』 effect)."
+        },
+        "skill2": {
+            "name": "Fatal Pleasure / Curtain Call",
+            "element": "물리",
+            "type":"단일피해",
+            "sp": 21,
+            "cool": 0,
+            "description": "『Hunter』 State: Deals 84.2%/92.8%/89.4%/98.0% Physical damage to 1 enemy 2 times, instantly settles 『Bleed』 damage once, and resets the duration of 『Bleed』.\n『Executioner』 State: Deals 201.3%/222.0%/213.7%/234.4% Physical damage to 1 enemy. For each stack of 『Bleed』 on the target, this skill's damage and 『Incision』 damage increase by 2%. After the skill ends, removes all 『Bleed』 stacks from the enemy (can trigger 『Incision』 effect)."
+        },
+        "skill3": {
+            "name": "Veil of Night",
+            "element": "버프",
+            "type":"전환",
+            "sp": 15,
+            "cool": 0,
+            "description": "Unlocks when any enemy’s 『Bleed』 stacks ≥ 7.\nSwitches to 『Executioner』 State, changing skill mode and gaining the following effect: When using skills, for every 3 stacks of 『Bleed』 on the target, Kira Kitazato applies 『Incision』 once, dealing 66.7%/73.5%/70.8%/77.6% Physical damage. After using this skill, other skills can still be used this turn, and it automatically switches back to 『Hunter』 State at the end of the turn."
+        },
+        "skill_highlight": {
+            "element": "물리",
+            "type":"단일피해",
+            "description": "Switches to 『Hunter』 State and immediately adds 5 stacks of 『Bleed』 to 1 enemy. Then switches to 『Executioner』 State and deals 328.5%/362.2%/348.7%/382.4% Physical damage to that enemy (can trigger 『Incision』 effect)."
+        },
+        "passive1": {
+            "name": "Infection",
+            "element": "패시브",
+            "description": "For every 30% Effect Hit Rate, the Physical damage of 『Bleed』 increases by 4% of Kira Kitazato’s ATK. Up to 90% Effect Hit Rate is counted."
+        },
+        "passive2": {
+            "name": "Corruption",
+            "element": "패시브",
+            "description": "While in 『Hunter』 State, Effect Hit Rate increases by 36%.\nWhile in 『Executioner』 State, Penetration increases by 21%."
+        }
+    },
+    "토모코·여름": {
+        "name": "Noge Tomoko·Summer",
+        "skill1": {
+            "name": "A Glass of Summer Drink",
+            "element": "염동광역",
+            "type":"광역피해",
+            "sp": 23,
+            "cool": 0,
+            "description": "Deals 77.6%/85.5%/82.4%/90.3% Psi damage to random enemies 4 times, prioritizing targets that have not yet been hit. Each hit adds 1 stack of 『Flame』. Subsequent hits on the same target deal only 30% damage.\nPassive: The skill damage multiplier/healing amount of 『Brilliant Flame』 increases by 51.7%/51.7%/59.9%/59.9%."
+        },
+        "skill2": {
+            "name": "Please Enjoy",
+            "element": "치료",
+            "type":"치료",
+            "sp": 27,
+            "cool": 0,
+            "description": "Heals 1 ally for 22.4%/22.4%/23.8%/23.8% of ATK +1438/1749/1767/2078 HP, increases their ATK by 14.6%/14.6%/15.5%/15.5%, Effect Hit Rate by 58.6%/58.6%/62.2%/62.2%, and damage dealt by 30%. Whenever that ally deals skill damage, 1 stack of 『Flame』 is added and lasts 2 turns (up to 5 additional stacks of 『Flame』 during the duration)."
+        },
+        "skill3": {
+            "name": "Midnight Thrill",
+            "element": "염동광역",
+            "type":"광역피해",
+            "sp": 25,
+            "cool": 0,
+            "description": "Deals 61.0%/67.2%/64.8%/71.0% Psi damage to all enemies and increases their damage taken by 19.5%/19.5%/20.7%/20.7%. Also, each time enemies take skill damage, 1 stack of 『Flame』 is added and lasts 2 turns. At the start of Noge Tomoko·Summer's turn, the duration decreases by 1 turn. 『Flame』 can be added up to 5 times during this effect (this damage does not trigger additional 『Flame』 effects from existing skills)."
+        },
+        "skill_highlight": {
+            "element": "염동",
+            "type":"광역피해",
+            "description": "Deals 82.4%/90.9%/87.4%/95.9% Psi damage to random enemies 3 times, prioritizing targets that have not yet been hit. Each hit adds 1 stack of 『Flame』. Subsequent hits on the same target deal only 30% damage."
+        },
+        "passive1": {
+            "name": "Sparkling",
+            "element": "패시브",
+            "description": "During battle, her Psi damage and Max HP increase based on her Healing Effect. At 42.0% Healing Effect, Psi damage increases by 70.0% and Max HP increases by 2100."
+        },
+        "passive2": {
+            "name": "Radiance",
+            "element": "패시브",
+            "description": "When 『Please Enjoy』 is activated, the Max HP of the skill’s main target increases by 1800 for 2 turns. Additionally, the ally with the lowest HP recovers HP equal to 60% of the skill’s healing amount."
+        }
+    },
+    "하루": {
+        "name": "Haru Okumura",
+        "skill1": {
+            "name": "Focused Aim",
+            "element": "염동광역",
+            "type":"광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deals 68.8%/75.9%/73.0%/80.1% Psi damage to all enemies twice. Has a 97.6%/97.6%/103.6%/103.6% base chance to apply 『Crosshair』 to the main target, and a 53.7%/53.7%/57.0%/57.0% base chance to apply it to other targets. Converts enemy 『Crosshair』 stacks to Haru’s 『Crosshair』 (stacks count). Lasts for 3 turns. Gains 『Thermal Energy Mod』, which increases skill damage by 29.3%/32.3%/31.1%/34.1% when Haru has 『Crosshair』 during gunfire, and removes all 『Crosshair』 after gunfire ends."
+        },
+        "skill2": {
+            "name": "Suppressive Fire",
+            "element": "총격",
+            "type":"단일피해",
+            "hp": 12,
+            "cool": 0,
+            "description": "Deals 151.6%/167.1%/160.9%/176.4% Gun damage to 1 enemy. When attacking an enemy with 『Crosshair』, increases Penetration by 19.5%/19.5%/20.7%/20.7%. Gains 『Armor Removal Mod』, causing gunfire to additionally deal 39.0%/43.0%/41.4%/45.4% Psi damage to the main target, and triggers the skill damage bonus effect of 『Thermal Energy Mod』."
+        },
+        "skill3": {
+            "name": "Iron Burst",
+            "element": "염동광역",
+            "type":"광역피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "Deals 129.2%/142.5%/137.2%/150.4% Psi damage to all enemies. When attacking enemies with 『Crosshair』, Critical Rate increases by 19.5%/19.5%/20.7%/20.7%. Gains 『Spread Mod』, causing gunfire to additionally deal 29.3%/32.3%/31.1%/34.1% Psi damage to all enemies, and triggers the skill damage bonus effect of 『Thermal Energy Mod』."
+        },
+        "skill_highlight": {
+            "element": "염동광역",
+            "type":"광역피해",
+            "description": "Deals 206.9%/228.1%/219.6%/240.8% Psi damage to all enemies. If modification is not at max and 『Overclock Mod』 is not present, gains 『Overclock Mod』, increasing Critical Rate during gunfire by 14.6%/14.6%/15.5%/15.5%. Otherwise, this attack’s skill damage increases by 14.6%/16.1%/15.5%/17.0%."
+        },
+        "passive1": {
+            "name": "Bullet Casting",
+            "element": "패시브",
+            "description": "For every 1.45% Effect Hit Rate, gains 1% ATK bonus (up to 165.0%). For every 50% Effect Hit Rate, gains 1 stack of Critical Effect +20%, up to 3 stacks."
+        },
+        "passive2": {
+            "name": "Tactics",
+            "element": "패시브",
+            "description": "Each modification used permanently adds 1 stack of 『Gun Barrel Heating』. When 『Gun Barrel Heating』 reaches certain stacks, Haru gains attribute bonuses:\n1 stack: +18.0% Effect Hit Rate, +18.0% Effect Resistance\n2 stacks: +18.0% ATK, +18.0% DEF\n3 stacks: +18.0% Critical Effect"
+        }
+    },
+    "후타바": {
+        "name": "Sakura Futaba",
+        "skill1": {
+            "name": "Silent Infiltration",
+            "element": "버프광역",
+            "type":"디버프",
+            "cool": 4,
+            "description": "Reduces all enemies' DEF by 6% + (0.53% per 100 ATK of Sakura Futaba, up to 4600/5060/5980/6440 ATK) for 3 turns. During this period, if enemies take Weakness damage, this effect is doubled. When her Analysis Progress reaches 100%, grants all allies 『Hack Complete』 for 2 turns."
+        },
+        "skill2": {
+            "name": "Data Decryption",
+            "element": "버프",
+            "type":"디버프",
+            "cool": 4,
+            "description": "Increases damage taken by 1 enemy by 6% + (0.38% per 100 ATK of Sakura Futaba, up to 4600/5060/5980/6440 ATK) for 3 turns. When an ally deals damage to the target using a Persona Skill/Additional Effect/HIGHLIGHT, Sakura Futaba gains 15% Analysis Progress. When her Analysis Progress reaches 100%, grants all allies 『Hack Complete』 for 2 turns."
+        },
+        "skill3": {
+            "name": "In the Name of the Phoenix",
+            "element": "버프",
+            "type":"버프",
+            "cool": 8,
+            "unlock": "Ally must have 『Hack Complete』.",
+            "description": "Activation Condition: An ally must have 『Hack Complete』.\nIncreases 1 ally Phantom Thief's ATK by 270/297/302/329 + (21.7 per 100 ATK of Sakura Futaba, up to 4600/5060/5980/6440 ATK) for 2 turns. Applies a 『Disruption Virus』 of the ally's affinity to all enemies for 1 turn.\n『Disruption Virus』: Alters the target's affinity. Null, Repel, and Drain become Resist, Resist becomes Normal, Normal becomes Weak. If Weak, the target takes 25% more Weakness damage."
+        },
+        "skill_highlight": {
+            "name": "Stat Boost",
+            "element": "패시브",
+            "description": "Increases corresponding attributes of all deployed allies by 20% of each Phantom Thief's attribute."
+        },
+        "passive1": {
+            "name": "Playfulness",
+            "element": "패시브",
+            "description": "Starts battle with 100% Analysis Progress."
+        },
+        "passive2": {
+            "name": "Cleanup",
+            "element": "패시브",
+            "description": "While in 『Hack Complete』 state, all Phantom Thieves gain a shield equal to 30.0% of Sakura Futaba's ATK for 3 turns."
+        }
+    },
+
     "유스케": {
         "name": "Yusuke Kitagawa",
         "skill1": {

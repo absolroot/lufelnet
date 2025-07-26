@@ -98,6 +98,10 @@ const operationData = {
         ],
         note: [
             "· 적의 체력 %에 따라 택틱 변화"
+        ],
+        note_en : [
+            "· Tactic changes based on enemy HP",
+            "· Global Version "
         ]
     },
     "루우나": {

@@ -197,6 +197,12 @@ redirect_from:
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
         <div class="search-count"></div>
+        <div class="spoiler-toggle-container">
+            <label class="spoiler-toggle-label">
+                <input type="checkbox" id="spoilerToggle" class="spoiler-toggle-checkbox">
+                <span class="spoiler-toggle-text" id="spoilerToggleText">스포일러 보기</span>
+            </label>
+        </div>
     </div>
 
     <!-- Character card container -->
@@ -206,6 +212,118 @@ redirect_from:
 
 
 </div>
+
+<style>
+/* 스포일러 토글 스타일 */
+.spoiler-toggle-container {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.spoiler-toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.spoiler-toggle-label:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.spoiler-toggle-checkbox {
+    appearance: none;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.2s ease;
+    background: transparent;
+    background-image: none !important;
+    margin-right: 4px !important;
+}
+
+.spoiler-toggle-checkbox:checked {
+    background: #a90505b7;
+    border-color: #a90505b7;
+    background-image: none !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 4px !important;
+}
+
+/* 체크 표시가 박스 가운데에 있을 수 있도록 */
+.spoiler-toggle-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 1px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 0 0 2px;
+}
+
+.spoiler-toggle-checkbox:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.spoiler-toggle-text {
+    font-weight: 500;
+}
+
+/* 검색 섹션 레이아웃 조정 */
+.search-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    flex: 1;
+    position: relative;
+}
+
+.search-count {
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+/* 미출시 캐릭터 태그 스타일 */
+.not-released-tag {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    background: #f6d933;
+    color: #000;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 0px;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 캐릭터 카드에 relative position 추가 (태그 위치 기준) */
+.card {
+    position: relative;
+}
+
+.card a {
+    position: relative;
+    display: block;
+}
+</style>
 
 <script>
     // 다국어 지원 함수
@@ -367,9 +485,18 @@ redirect_from:
         return { characterData, characterList };
     }
 
+    // 스포일러 토글 상태 확인 함수
+    function isSpoilerEnabled() {
+        return localStorage.getItem('spoilerToggle') === 'true';
+    }
+
     // 언어별 캐릭터 데이터 로딩 및 병합
     async function loadCharacterData() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const spoilerEnabled = isSpoilerEnabled();
+        
+        // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 언어별 캐릭터 리스트 저장
+        let originalLangCharacterList = null;
         
         try {
             // 1. 한국어 데이터 로딩 (기본 데이터)
@@ -384,60 +511,75 @@ redirect_from:
             //console.log('KR character count:', Object.keys(krCharacterData).length);
             //console.log('KR character list:', krCharacterList);
             
-            // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
+            // 2. 언어별 데이터 로딩 및 원본 리스트 저장
             if (currentLang !== 'kr') {
-                //console.log(`🔍 Attempting to load ${currentLang} data...`);
+                // 스포일러 모드에서도 원본 언어 리스트를 얻기 위해 언어별 데이터 로드
                 const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
-                //console.log('Language data URL:', langUrl);
-                
                 const langResponse = await fetch(langUrl);
-                //console.log('Language data response status:', langResponse.status);
                 
                 if (langResponse.ok) {
-                    //console.log('✅ Language data loaded successfully');
                     const langScriptText = await langResponse.text();
-                    //console.log('Language script text length:', langScriptText.length);
-                    
                     const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
                     
-                    //console.log(`${currentLang.toUpperCase()} character count:`, Object.keys(langCharacterData).length);
-                    //console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
+                    // 원본 언어별 캐릭터 리스트 저장 (스포일러 모드에서 비교용)
+                    originalLangCharacterList = [...(langCharacterList?.mainParty || []), ...(langCharacterList?.supportParty || [])];
                     
-                    // 3. 데이터 병합 (하이브리드 방식) - 언어별 캐릭터만 포함
-                    //console.log('🔄 Starting data merge...');
-                    const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
-                    //console.log('✅ Data merge completed');
-                    
-                    // 중요: 전역 변수를 완전히 교체
-                    window.characterData = mergedData; // 병합된 데이터만 사용
-                    window.characterList = langCharacterList; // 언어별 캐릭터 목록 사용
-                    
-                    //console.log('Final characterData count:', Object.keys(window.characterData).length);
-                    //console.log('Final characterData keys:', Object.keys(window.characterData));
-                    //console.log('Final character list:', window.characterList);
-                    
-                    // 병합된 데이터 샘플 확인
-                    const sampleChar = Object.keys(window.characterData)[1]; // 렌
-                    /*console.log(`🔍 Final merged data sample (${sampleChar}):`, {
-                        element: window.characterData[sampleChar]?.element,
-                        position: window.characterData[sampleChar]?.position, 
-                        rarity: window.characterData[sampleChar]?.rarity,
-                        name: window.characterData[sampleChar]?.name,
-                        persona: window.characterData[sampleChar]?.persona
-                    });*/
-                    
+                    // 스포일러 모드가 비활성화된 경우에만 언어별 데이터 사용
+                    if (!spoilerEnabled) {
+                        //console.log('✅ Language data loaded successfully');
+                        //console.log('Language script text length:', langScriptText.length);
+                        
+                        //console.log(`${currentLang.toUpperCase()} character count:`, Object.keys(langCharacterData).length);
+                        //console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
+                        
+                        // 3. 데이터 병합 (하이브리드 방식) - 언어별 캐릭터만 포함
+                        //console.log('🔄 Starting data merge...');
+                        const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
+                        //console.log('✅ Data merge completed');
+                        
+                        // 중요: 전역 변수를 완전히 교체
+                        window.characterData = mergedData; // 병합된 데이터만 사용
+                        window.characterList = langCharacterList; // 언어별 캐릭터 목록 사용
+                        
+                        //console.log('Final characterData count:', Object.keys(window.characterData).length);
+                        //console.log('Final characterData keys:', Object.keys(window.characterData));
+                        //console.log('Final character list:', window.characterList);
+                        
+                        // 병합된 데이터 샘플 확인
+                        const sampleChar = Object.keys(window.characterData)[1]; // 렌
+                        /*console.log(`🔍 Final merged data sample (${sampleChar}):`, {
+                            element: window.characterData[sampleChar]?.element,
+                            position: window.characterData[sampleChar]?.position, 
+                            rarity: window.characterData[sampleChar]?.rarity,
+                            name: window.characterData[sampleChar]?.name,
+                            persona: window.characterData[sampleChar]?.persona
+                        });*/
+                        
+                    } else {
+                        console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
+                        // 언어별 데이터가 없으면 한국어 데이터 사용
+                        window.characterData = krCharacterData;
+                        window.characterList = krCharacterList;
+                    }
                 } else {
-                    console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
-                    // 언어별 데이터가 없으면 한국어 데이터 사용
-                    window.characterData = krCharacterData;
-                    window.characterList = krCharacterList;
+                    // 언어별 데이터가 없으면 KR 리스트를 원본으로 사용
+                    originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
                 }
             } else {
-                console.log('Using KR data directly');
-                // 한국어인 경우 그대로 사용
+                if (spoilerEnabled && currentLang !== 'kr') {
+                    console.log('🔓 Spoiler mode enabled, using KR data for', currentLang);
+                    // 스포일러 모드에서는 KR 리스트를 원본으로 사용
+                    originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
+                } else {
+                    console.log('Using KR data directly');
+                }
+                // 한국어인 경우 또는 스포일러 토글이 활성화된 경우 KR 데이터 사용
                 window.characterData = krCharacterData;
                 window.characterList = krCharacterList;
             }
+            
+            // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 리스트를 전역 변수에 저장
+            window.originalLangCharacterList = originalLangCharacterList;
             
             return true;
             
@@ -775,9 +917,13 @@ redirect_from:
             
             // Add name
             const nameText = document.createElement('span');
-            // 영어일 때 코드네임 사용, 없으면 일반 이름 사용
+            // 스포일러 모드와 언어에 따른 이름 표시 로직
+            const spoilerEnabled = isSpoilerEnabled();
             if (currentLang === 'en' && charData.codename) {
                 nameText.textContent = charData.codename;
+            } else if (currentLang === 'jp' && spoilerEnabled && charData.name_jp) {
+                // 스포일러 모드에서 일본어 이름 사용
+                nameText.textContent = charData.name_jp;
             } else {
                 nameText.textContent = charData.name;
             }
@@ -785,6 +931,27 @@ redirect_from:
             nameText.dataset.persona3 = charData.persona3;
             nameText.dataset.persona4 = charData.persona4;
             nameText.dataset.persona5 = charData.persona5;
+            
+            // 스포일러 모드에서 미출시 캐릭터 태그 추가
+            if (spoilerEnabled && currentLang !== 'kr') {
+                // 원본 언어별 characterList에 없는 캐릭터를 미출시로 판단
+                const originalCharacterList = window.originalLangCharacterList || [];
+                const isUnreleased = !originalCharacterList.includes(characterName);
+                
+                console.log(`Checking ${characterName}: originalList includes = ${originalCharacterList.includes(characterName)}, isUnreleased = ${isUnreleased}`);
+                
+                if (isUnreleased) {
+                    const notReleasedTag = document.createElement('div');
+                    notReleasedTag.className = 'not-released-tag';
+                    const tagTexts = {
+                        en: 'Not Released',
+                        jp: '未リリース'
+                    };
+                    notReleasedTag.textContent = tagTexts[currentLang] || 'Not Released';
+                    link.appendChild(notReleasedTag);
+                    console.log(`Added Not Released tag for ${characterName}`);
+                }
+            }
             
             positionContainer.appendChild(positionIcon);
             link.appendChild(positionContainer);
@@ -1223,6 +1390,48 @@ redirect_from:
         }
     }
     
+    // 스포일러 토글 초기화 함수
+    function initializeSpoilerToggle() {
+        const spoilerToggle = document.getElementById('spoilerToggle');
+        const spoilerToggleText = document.getElementById('spoilerToggleText');
+        
+        if (!spoilerToggle || !spoilerToggleText) return;
+        
+        // 저장된 상태 복원
+        const savedState = localStorage.getItem('spoilerToggle') === 'true';
+        spoilerToggle.checked = savedState;
+        
+        // 언어별 텍스트 설정
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const toggleTexts = {
+            kr: '스포일러 보기',
+            en: 'Show Spoilers',
+            jp: 'スポイラー表示'
+        };
+        spoilerToggleText.textContent = toggleTexts[currentLang] || toggleTexts.kr;
+        
+        // 토글 이벤트 리스너
+        spoilerToggle.addEventListener('change', function() {
+            const isEnabled = this.checked;
+            localStorage.setItem('spoilerToggle', isEnabled.toString());
+            
+            console.log('Spoiler toggle changed:', isEnabled);
+            
+            // 페이지 새로고침
+            window.location.reload();
+        });
+        
+        // EN/JP에서만 토글 표시 (KR에서는 숨김)
+        const spoilerContainer = document.querySelector('.spoiler-toggle-container');
+        if (spoilerContainer) {
+            if (currentLang === 'kr') {
+                spoilerContainer.style.display = 'none';
+            } else {
+                spoilerContainer.style.display = 'block';
+            }
+        }
+    }
+    
     // 페이지 로드 시 초기화 (통합된 초기화 함수)
     document.addEventListener('DOMContentLoaded', async () => {
         // console.log('DOMContentLoaded event fired');
@@ -1257,6 +1466,9 @@ redirect_from:
             updateLanguageContent();
             await initializePageContent();
         }
+        
+        // 스포일러 토글 초기화
+        initializeSpoilerToggle();
     });
     
     // 추가 안전장치: window.onload에서도 체크

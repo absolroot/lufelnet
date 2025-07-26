@@ -909,7 +909,13 @@ const attachDragListeners = (element) => {
           const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
           if (targetImage && targetImage.alt) {
             const characterName = targetImage.alt;
-            window.location.href = `/character.html?name=${encodeURIComponent(characterName)}`;
+            
+            // 현재 URL에서 언어 파라미터 추출
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentLang = urlParams.get('lang') || 'kr'; // 기본값은 'kr'
+            
+            // 언어 파라미터를 유지하며 캐릭터 상세 페이지로 이동
+            window.location.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}`;
           }
         }
       }, 200); // 더블클릭 감지를 위한 지연

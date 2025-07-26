@@ -2412,9 +2412,9 @@ const personaData = {
         name_en: "Arahabaki",
         name_jp: "アラハバキ",
         grade: "5",
-        star: "3",
-        position: "굴복",
-        element: "빙결",
+        star: "4",
+        position: "방위",
+        element: "물리",
         instinct: {
             name: "철로 만든 몸 II",
             name_en: "Iron Body II",

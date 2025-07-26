@@ -995,8 +995,18 @@ document.addEventListener('DOMContentLoaded', () => {
             item.label && item.value && item.label.trim() !== '' && item.value.trim() !== ''
         );
         
+        // 현재 언어에 따른 note 배열 선택
+        const currentLang = getCurrentLanguage();
+        let noteArray = operationData[characterName].note; // 기본값은 한국어
+        
+        if (currentLang === 'en' && operationData[characterName].note_en) {
+            noteArray = operationData[characterName].note_en;
+        } else if (currentLang === 'jp' && operationData[characterName].note_jp) {
+            noteArray = operationData[characterName].note_jp;
+        }
+        
         // note 배열이 비어있거나 모든 항목이 빈 값인 경우
-        const hasNoteContent = operationData[characterName].note.some(note => 
+        const hasNoteContent = noteArray && noteArray.some(note => 
             note && note.trim() !== ''
         );
 
@@ -1012,7 +1022,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // 의식 텍스트 번역
                     let translatedLabel = item.label;
-                    const currentLang = getCurrentLanguage();
                     if (currentLang === 'en') {
                         translatedLabel = translatedLabel.replace(/의식/g, 'Awareness');
                     } else if (currentLang === 'jp') {
@@ -1036,7 +1045,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // note 섹션 처리
         if (hasNoteContent) {
-            noteContent.innerHTML = operationData[characterName].note
+            noteContent.innerHTML = noteArray
                 .filter(note => note && note.trim() !== '')
                 .map(note => `<div class="operation-note">${note}</div>`)
                 .join('');

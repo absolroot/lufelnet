@@ -455,7 +455,7 @@ input[type="checkbox"]:hover {
 .tooltip-text {
     /*text-decoration: underline !important;*/
     position: relative;
-    cursor: help;
+    cursor: help !important;
     color: rgb(207, 194, 177, 1);
 }
 
@@ -468,6 +468,7 @@ input[type="checkbox"]:hover {
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 4px;
+    border: 1px solid rgb(225, 204, 47);
     font-size: 14px;
     white-space: pre-wrap;
     max-width: 300px;

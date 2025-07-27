@@ -587,6 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         effectData = translationData.sub_effects[englishKey];
                         set2Text = effectData.set2;
                         set4Text = effectData.set4;
+                        setTypes = effectData.type;
                         // console.log('영어 효과 데이터 사용:', effectData);
                     } else {
                         console.log('영어 효과 데이터 없음:', englishKey);
@@ -601,6 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         effectData = translationData.sub_effects[japaneseKey];
                         set2Text = effectData.set2;
                         set4Text = effectData.set4;
+                        setTypes = effectData.type;
                         // console.log('일본어 효과 데이터 사용:', effectData);
                     } else {
                         console.log('일본어 효과 데이터 없음:', japaneseKey);
@@ -610,6 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     effectData = revelationData.sub_effects[revelation];
                     set2Text = effectData.set2;
                     set4Text = effectData.set4;
+                    setTypes = effectData.type;
                    // console.log('한국어 효과 데이터 사용:', effectData);
                 }
                 
@@ -624,7 +627,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     const setText = setTexts[currentLang] || setTexts.kr;
                     
-                    const tooltipText = `[${translatedTitle}]\n${setText.set2}: ${set2Text}\n${setText.set4}: ${set4Text}`;
+                    let tooltipText = `[${translatedTitle}]\n${setText.set2}: ${set2Text}\n${setText.set4}: ${set4Text}`;
+
+                    // setTypes 에 '미출시'가 있는 경우
+                    if (setTypes && setTypes.includes('미출시'))
+                    {
+                        if(currentLang === 'en')
+                        {
+                            tooltipText += `\n\n#NOT RELEASED IN GLOBAL SERVER#`;
+                        }
+                        else if(currentLang === 'jp')
+                        {
+                            tooltipText += `\n\n#グローバルサーバーで未発表#`;
+                        }
+                    }
+
                     item.setAttribute('data-tooltip', tooltipText);
                 }
             } else {
@@ -673,6 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // 표시된 번역 텍스트를 원본 키로 역매핑해서 매칭
                         let subRevKeys;
                         
+                        console.log(subRevKeys);
                         if (currentLang === 'en' && translationData) {
                             // 영어 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
                             subRevKeys = Object.keys(setEffectsData).filter(englishSubKey => {
@@ -690,7 +708,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 return currentSubRevs.includes(translatedSubName);
                             });
                         }
-                        
                         tooltipText = subRevKeys.map(subRevKey => {
                             const effect = setEffectsData[subRevKey];
                             const mainTitle = translateRevelationName(revelation, true);
@@ -705,6 +722,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             } else {
                                 // 한국어 키를 번역
                                 subTitle = translateRevelationName(subRevKey, false);
+                            }
+                            if (currentLang === 'en' && subTitle=='type')
+                            {
+                                return '#NOT RELEASED IN GLOBAL SERVER#';
+                            }
+                            else if (currentLang === 'jp' && subTitle=='type')
+                            {
+                                return '#グローバルサーバーで未発表#';
                             }
                             
                             return `[${mainTitle} - ${subTitle}]\n${effect}`;
@@ -729,6 +754,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 } else {
                                     // 한국어 키를 번역
                                     subTitle = translateRevelationName(subRevKey, false);
+                                }
+                                if (currentLang === 'en' && subTitle=='type')
+                                {
+                                    return '#NOT RELEASED IN GLOBAL SERVER#';
+                                }
+                                else if (currentLang === 'jp' && subTitle=='type')
+                                {
+                                    return '#グローバルサーバーで未発表#';
                                 }
                                 return `[${mainTitle} - ${subTitle}]\n${effect}`;
                             })

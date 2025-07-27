@@ -180,7 +180,7 @@ const enRevelationData = {
         "Worry": {
             "set2": "Increases SP Recovery by 80%.",
             "set4": "When entering battle immediately recovers 25% of HIGHLIGHT charge, doesn't stack.",
-            "type": ["HL 25%"]
+            "type": ["HL 25%","미출시"]
         },
         "Defeat": {
             "set2": "Increases Effect Hit Rate by 15%.",
@@ -210,7 +210,7 @@ const enRevelationData = {
         "Virtue": {
             "set2": "Increase Bless DMG by 10%.",
             "set4": "Increase Bless skill CRIT by 12% when your HP% is not less than 50%.",
-            "type": ["축복"]
+            "type": ["축복","미출시"]
         },
         "Ruin": {
             "set2": "Curse damage increased by 10%.",
@@ -265,12 +265,12 @@ const enRevelationData = {
         "Change": {
             "set2": "Electric damage increased by 10%.",
             "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
-            "type": ["전격"]
+            "type": ["전격", "미출시"]
         },
         "Sorrow": {
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 3 turns; Gain this effect again when you use HIGHLIGHT.",
-            "type": ["주원"]
+            "type": ["주원", "미출시"]
         }
     },
     "set_effects": {

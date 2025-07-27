@@ -502,10 +502,42 @@ alternate_urls:
         const mainRevelations = Object.keys(currentRevelationData.main);
         const subRevelations = Object.keys(currentRevelationData.sub);
         
+        // Function to check if a revelation is unreleased
+        const isUnreleased = (revelation) => {
+            if (currentLang === 'kr') return false;
+            
+            if (revelation.type === 'sub') {
+                const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
+                return effects && effects.type && effects.type.includes('미출시');
+            } else {
+                const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
+                return mainEffects && mainEffects.type && mainEffects.type.includes('미출시');
+            }
+        };
+
         // Create array of all revelations (sub revelations first, then main revelations)
+        // and sort to put unreleased items at the end of their respective sections
         const allRevelations = [
-            ...subRevelations.map(name => ({ name, type: 'sub' })),
-            ...mainRevelations.map(name => ({ name, type: 'main' }))
+            // Sub revelations - unreleased at the end
+            ...subRevelations
+                .map(name => ({ name, type: 'sub' }))
+                .sort((a, b) => {
+                    const aUnreleased = isUnreleased(a);
+                    const bUnreleased = isUnreleased(b);
+                    if (aUnreleased && !bUnreleased) return 1;
+                    if (!aUnreleased && bUnreleased) return -1;
+                    return 0;
+                }),
+            // Main revelations - unreleased at the end
+            ...mainRevelations
+                .map(name => ({ name, type: 'main' }))
+                .sort((a, b) => {
+                    const aUnreleased = isUnreleased(a);
+                    const bUnreleased = isUnreleased(b);
+                    if (aUnreleased && !bUnreleased) return 1;
+                    if (!aUnreleased && bUnreleased) return -1;
+                    return 0;
+                })
         ];
         
         // 초기 검색 결과 수 표시
@@ -604,30 +636,12 @@ alternate_urls:
             typeLabelContent.appendChild(typeText);
             typeLabelContent.appendChild(iconContainer);
             
-            // Check if revelation has "미출시" (unreleased) type and add indicator for EN/JP
-            if (currentLang !== 'kr') {
-                let hasUnreleasedType = false;
-                
-                // Check in sub_effects or set_effects for "미출시" type
-                if (revelation.type === 'sub') {
-                    const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
-                    if (effects && effects.type && effects.type.includes('미출시')) {
-                        hasUnreleasedType = true;
-                    }
-                } else {
-                    const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
-                    if (mainEffects && mainEffects.type && mainEffects.type.includes('미출시')) {
-                        hasUnreleasedType = true;
-                    }
-                }
-                
-                // Add "not released" indicator if needed
-                if (hasUnreleasedType) {
-                    const notReleasedLabel = document.createElement('div');
-                    notReleasedLabel.className = 'not-released-label';
-                    notReleasedLabel.textContent = currentLang === 'en' ? 'Not Released' : 'リリース前';
-                    typeLabelContent.appendChild(notReleasedLabel);
-                }
+            // Add "not released" indicator for unreleased revelations in EN/JP
+            if (currentLang !== 'kr' && isUnreleased(revelation)) {
+                const notReleasedLabel = document.createElement('div');
+                notReleasedLabel.className = 'not-released-label';
+                notReleasedLabel.textContent = currentLang === 'en' ? 'Not Released' : 'リリース前';
+                typeLabelContent.appendChild(notReleasedLabel);
             }
             typeLabel.appendChild(typeLabelContent);
             

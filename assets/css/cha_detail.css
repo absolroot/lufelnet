@@ -275,9 +275,17 @@ h2{
     font-size: 16px;
     margin: 10px 0px 20px 0px;
     font-weight: 600;
-    display: grid;
-    grid-template-columns: 200px 1fr;
+    display: flex;
+    align-items: center;
     gap: 8px;
+}
+
+.help-icon{
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    margin-bottom: 4px;
+    cursor: pointer;
 }
 
 /* label and value */

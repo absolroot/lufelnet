@@ -115,7 +115,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             <!-- 계시 섹션 -->
             <div class="setting-group revelation-settings">
                 <div class="setting-section">
-                    <h3>계시</h3>
+                    <h3>계시 <span class="help-icon" onclick="showHelpModal('revelation')">?</span></h3>
                     <div class="revelation-set">
                         <div class="main-revelation">
                             <span class="label">주
@@ -130,7 +130,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>주 옵션</h3>
+                    <h3>주 옵션 <span class="help-icon" onclick="showHelpModal('main-option')">?</span></h3>
                     <div class="main-options">
                         <div class="option-row">
                             <span class="label">
@@ -159,7 +159,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>부 옵션</h3>
+                    <h3>부 옵션 <span class="help-icon" onclick="showHelpModal('sub-option')">?</span></h3>
                     <div class="sub-options">
                         <div class="option-row">
                             <span class="priority">1순위</span>
@@ -180,7 +180,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             <!-- 스탯 요구사항 섹션 -->
             <div class="setting-group stats-requirements">
                 <div class="setting-section">
-                    <h3>권장 육성 스탯</h3>
+                    <h3>권장 육성 스탯 <span class="help-icon" onclick="showHelpModal('recommended-stats')">?</span></h3>
                     <div class="stat-levels">
                         <div class="stat-level">
                             <span class="label">LV10</span>
@@ -205,7 +205,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>전투 진입 시 +</h3>
+                    <h3>전투 진입 시 + <span class="help-icon" onclick="showHelpModal('battle-entry')">?</span></h3>
                     <p class="battle-plus-stats"></p>
                 </div>
             </div>
@@ -214,7 +214,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             <!-- 스킬&심상 섹션 -->
             <div class="setting-group skill-mind-settings">
                 <div class="setting-section">
-                    <h3>스킬</h3>
+                    <h3>스킬 <span class="help-icon" onclick="showHelpModal('skill')">?</span></h3>
                     <div class="skill-levels">
                         <div class="skill-level">
                             <span class="label">스킬 1</span>
@@ -235,7 +235,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>심상 (LV 5)</h3>
+                    <h3>심상 (LV 5) <span class="help-icon" onclick="showHelpModal('mind-lv5')">?</span></h3>
                     <div class="mind-settings">
                         <div class="mind-stats">
                             <div class="stat-row">
@@ -267,7 +267,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             <!-- 운영 섹션 -->
             <div class="setting-group operation-settings">
                 <div class="setting-section">
-                    <h3>추천 운영</h3>
+                    <h3>추천 운영 <span class="help-icon" onclick="showHelpModal('recommended-operation')">?</span></h3>
                     <div class="operation-levels">
                         <!-- 운영 내용이 여기에 동적으로 추가됨 -->
                     </div>
@@ -1127,7 +1127,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const revelationLabel = currentLang === 'kr' ? '계시' :
                               currentLang === 'en' ? 'Revelation' : '啓示';
         const revelationEl = document.querySelector('.revelation-settings h3');
-        if (revelationEl) revelationEl.textContent = revelationLabel;
+        if (revelationEl) revelationEl.innerHTML = revelationLabel + ' ' + createHelpIcon('revelation');
 
         // 주 라벨 번역 (일본어 수정)
         const mainLabel = currentLang === 'kr' ? '주' :
@@ -1159,29 +1159,39 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             }
         });
 
-        // 주 옵션 라벨 번역
+        // Helper function to create help icon SVG
+        function createHelpIcon(helpType) {
+            return `<span class="help-icon" onclick="showHelpModal('${helpType}')">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/>
+                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/>
+                </svg>
+            </span>`;
+        }
+
+        // 주 옵션 라벨 번역 (help 아이콘 포함)
         const mainOptionLabel = currentLang === 'kr' ? '주 옵션' :
                               currentLang === 'en' ? 'Main Options' : 'メインオプション';
         const mainOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(2) h3');
-        if (mainOptionEl) mainOptionEl.textContent = mainOptionLabel;
+        if (mainOptionEl) mainOptionEl.innerHTML = mainOptionLabel + ' ' + createHelpIcon('main-option');
 
-        // 부 옵션 라벨 번역
+        // 부 옵션 라벨 번역 (help 아이콘 포함)
         const subOptionLabel = currentLang === 'kr' ? '부 옵션' :
                              currentLang === 'en' ? 'Sub Options' : 'サブオプション';
         const subOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(3) h3');
-        if (subOptionEl) subOptionEl.textContent = subOptionLabel;
+        if (subOptionEl) subOptionEl.innerHTML = subOptionLabel + ' ' + createHelpIcon('sub-option');
 
-        // 권장 육성 스탯 라벨 번역
+        // 권장 육성 스탯 라벨 번역 (help 아이콘 포함)
         const recommendedStatsLabel = currentLang === 'kr' ? '권장 육성 스탯' :
                                     currentLang === 'en' ? 'Recommended Stats' : '推奨育成ステータス';
         const recommendedStatsEl = document.querySelector('.stats-requirements h3:first-child');
-        if (recommendedStatsEl) recommendedStatsEl.textContent = recommendedStatsLabel;
+        if (recommendedStatsEl) recommendedStatsEl.innerHTML = recommendedStatsLabel + ' ' + createHelpIcon('recommended-stats');
 
-        // 전투 진입 시 라벨 번역
+        // 전투 진입 시 라벨 번역 (help 아이콘 포함)
         const battleEntryLabel = currentLang === 'kr' ? '전투 진입 시 +' :
                                currentLang === 'en' ? 'Battle Entry +' : '戦闘開始時 +';
         const battleEntryEl = document.querySelector('.stats-requirements .setting-section:last-child h3');
-        if (battleEntryEl) battleEntryEl.textContent = battleEntryLabel;
+        if (battleEntryEl) battleEntryEl.innerHTML = battleEntryLabel + ' ' + createHelpIcon('battle-entry');
 
 
 
@@ -1242,13 +1252,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const skillLabel = currentLang === 'kr' ? '스킬' :
                           currentLang === 'en' ? 'Skills' : 'スキル';
         const skillTitleEl = document.querySelector('.skill-mind-settings .setting-section:first-child h3');
-        if (skillTitleEl) skillTitleEl.textContent = skillLabel;
+        if (skillTitleEl) skillTitleEl.innerHTML = skillLabel + ' ' + createHelpIcon('skill');
 
         // 심상 라벨 번역
         const mindLabel = currentLang === 'kr' ? '심상 (LV 5)' :
                          currentLang === 'en' ? 'Mind (LV 5)' : '心象 (LV 5)';
         const mindTitleEl = document.querySelector('.skill-mind-settings .setting-section:last-child h3');
-        if (mindTitleEl) mindTitleEl.textContent = mindLabel;
+        if (mindTitleEl) mindTitleEl.innerHTML = mindLabel + ' ' + createHelpIcon('mind-lv5');
 
         // 스킬 레벨 라벨 번역
         const skillLevelLabels = {
@@ -1278,7 +1288,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const operationLabel = currentLang === 'kr' ? '추천 운영' :
                              currentLang === 'en' ? 'Skill Rotation' : 'スキル回転';
         const operationTitleEl = document.querySelector('.operation-settings .setting-section:first-child h3');
-        if (operationTitleEl) operationTitleEl.textContent = operationLabel;
+        if (operationTitleEl) operationTitleEl.innerHTML = operationLabel + ' ' + createHelpIcon('recommended-operation');
 
         // 참고사항 라벨 번역
         const notesLabel = currentLang === 'kr' ? '참고사항' :
@@ -2172,6 +2182,178 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         modal.classList.remove('show');
         document.body.style.overflow = '';
     }
+    
+    // Help Modal Functions
+    function showHelpModal(helpType) {
+        const modal = document.getElementById('help-modal');
+        const modalTitle = document.getElementById('help-modal-title');
+        const modalDescription = document.getElementById('help-modal-description');
+        
+        // Get current language
+        const currentLang = getCurrentLanguage();
+        
+        // Help content data
+        const helpContent = {
+            'revelation': {
+                'kr': {
+                    title: '계시',
+                    content: '추천하는 계시 목록, 파티 구성 및 적에 따라 추천 계시는 바뀔 수 있으니 각 계시를 클릭해 효과를 읽고 알맞은 계시를 선택하세요.'
+                },
+                'en': {
+                    title: 'Revelations',
+                    content: 'Recommended revelation list. The recommended revelations may change depending on party composition and enemies, so click on each revelation to read the effects and select the appropriate revelation.'
+                },
+                'jp': {
+                    title: '啓示',
+                    content: '推奨される啓示リスト。パーティ構成や敵によって推奨啓示は変わる可能性があるため、各啓示をクリックして効果を読み、適切な啓示を選択してください。'
+                }
+            },
+            'main-option': {
+                'kr': {
+                    title: '주 옵션',
+                    content: '각 계시 위치별 추천하는 옵션, 의식(Awareness) 및 무기에 따라 우선 순위가 바뀔 수 있습니다.'
+                },
+                'en': {
+                    title: 'Main Options',
+                    content: 'Recommended options for each revelation position. Priority may change depending on Awareness and weapons.'
+                },
+                'jp': {
+                    title: 'メインオプション',
+                    content: '各啓示位置別の推奨オプション。意識(Awareness)や武器によって優先順位が変わる場合があります。'
+                }
+            },
+            'sub-option': {
+                'kr': {
+                    title: '부 옵션',
+                    content: `캐릭터 별 계시에서 우선되는 부 옵션을 의미합니다. 부 옵션의 범위는 다음 링크(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)를 참고하세요.`
+                },
+                'en': {
+                    title: 'Sub Options',
+                    content: `Refers to the sub-options that are prioritized in revelations for each character. Please refer to the following link for the range of sub-options: <a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>.`
+                },
+                'jp': {
+                    title: 'サブオプション',
+                    content: `キャラクター別啓示で優先されるサブオプションを意味します。サブオプションの範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。`
+                }
+            },
+            'recommended-stats': {
+                'kr': {
+                    title: '권장 육성 스탯',
+                    content: '캐릭터의 스킬에 스탯의 영향도를 받는 형태가 있을 경우 최대 효과를 보기 위한 스테이터스. 가능하면 충족하는 것을 추천드립니다.'
+                },
+                'en': {
+                    title: 'Recommended Training Stats',
+                    content: 'Status required to achieve maximum effect when character skills are affected by stats. Recommend meeting these requirements if possible.'
+                },
+                'jp': {
+                    title: '推奨育成ステータス',
+                    content: 'キャラクターのスキルにステータスの影響を受ける形がある場合、最大効果を得るためのステータス。可能であれば満たすことをお勧めします。'
+                }
+            },
+            'battle-entry': {
+                'kr': {
+                    title: '전투 진입 시 +',
+                    content: '전투에 진입 시 버프 등으로 권장 육성 스탯에 영향을 주는 요소들입니다.'
+                },
+                'en': {
+                    title: 'Battle Entry +',
+                    content: 'Elements that affect recommended training stats through buffs when entering battle.'
+                },
+                'jp': {
+                    title: '戦闘進入時 +',
+                    content: '戦闘に進入時、バフなどで推奨育成ステータスに影響を与える要素です。'
+                }
+            },
+            'skill': {
+                'kr': {
+                    title: '스킬',
+                    content: '8레벨은 주요하지 않은 스킬, MAX는 가능하면 최대 레벨, 별표는 주요 스킬입니다.'
+                },
+                'en': {
+                    title: 'Skills',
+                    content: 'Level 8 for non-essential skills, MAX for skills that should be maxed if possible, Star for key skills.'
+                },
+                'jp': {
+                    title: 'スキル',
+                    content: '8レベルは重要でないスキル、MAXは可能であれば最大レベル、星印は主要スキルです。'
+                }
+            },
+            'mind-lv5': {
+                'kr': {
+                    title: '심상 (LV 5)',
+                    content: '별표는 가능하면 먼저 찍어야할 우선 순위 심상입니다.'
+                },
+                'en': {
+                    title: 'Mind (LV 5)',
+                    content: 'Star indicates priority mind images that should be taken first if possible.'
+                },
+                'jp': {
+                    title: '心象 (LV 5)',
+                    content: '星印は可能であれば先に取るべき優先順位心象です。'
+                }
+            },
+            'recommended-operation': {
+                'kr': {
+                    title: '추천 운영',
+                    content: '의식(Awareness) 단계 별 기본 운영 예시입니다. 적과 파티에 따라 순서는 변동될 수 있습니다. 상위 의식 사이클이 별도로 적혀있지 않다면 의식 증가에 사이클이 영향을 받지 않습니다.'
+                },
+                'en': {
+                    title: 'Skill Rotation',
+                    content: 'Basic cycle examples for each Awareness stage. The order may vary depending on enemies and party composition. If no separate higher awareness cycle is written, it means there are no additional cycle changes as awareness increases.'
+                },
+                'jp': {
+                    title: 'スキル回転',
+                    content: '意識(Awareness)段階別基本サイクル例です。敵とパーティによって順序は変動する可能性があります。上位意識サイクルが別途記載されていなければ、別途のサイクル変化は意識増加に伴ってないという話です。'
+                }
+            }
+        };
+        
+        // Get content for current language and help type
+        const content = helpContent[helpType] && helpContent[helpType][currentLang] 
+            ? helpContent[helpType][currentLang] 
+            : helpContent[helpType]['kr']; // Fallback to Korean
+        
+        if (content) {
+            modalTitle.textContent = content.title;
+            modalDescription.innerHTML = content.content;
+        } else {
+            modalTitle.textContent = 'Help';
+            modalDescription.textContent = 'No help information available.';
+        }
+        
+        // Show the modal
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeHelpModal() {
+        const modal = document.getElementById('help-modal');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    
+    // Close help modal when clicking the close button or outside
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.help-close')) {
+            closeHelpModal();
+            return;
+        }
+        
+        // Close modal when clicking outside the modal content
+        const modal = document.getElementById('help-modal');
+        const modalContent = document.querySelector('.help-modal-content');
+        if (modal && modal.classList.contains('show') && !e.target.closest('.help-modal-content') && !e.target.closest('.help-icon')) {
+            closeHelpModal();
+        }
+    });
+    
+    // Close help modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('help-modal');
+        if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
+            closeHelpModal();
+        }
+    });
 </script>
 
 <!-- Weapon Effect Modal -->
@@ -2183,6 +2365,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             <h3 id="weapon-effect-title"></h3>
         </div>
         <div id="weapon-effect-description" class="weapon-effect-description"></div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div id="help-modal" class="weapon-effect-modal">
+    <div class="help-modal-content weapon-effect-modal-content">
+        <span class="help-close weapon-effect-close">&times;</span>
+        <div class="help-header weapon-effect-header">
+            <h3 id="help-modal-title"></h3>
+        </div>
+        <div id="help-modal-description" class="help-description weapon-effect-description"></div>
     </div>
 </div>
 

@@ -25,7 +25,7 @@ const mapping_en = {
     "헛수고": "Futility",
     "실망": "Despair",
     "우려": "Worry",
-    "화해": "Reconciliation",
+    "화해": "Reconcilation",
     "진리": "Truth",
     "주권": "Control",
     "방해": "Ruin",
@@ -76,7 +76,7 @@ const enRevelationData = {
         "헛수고": "Futility",
         "실망": "Despair",
         "우려": "Worry",
-        "화해": "Reconciliation",
+        "화해": "Reconcilation",
         "진리": "Truth",
         "주권": "Control",
         "방해": "Ruin",
@@ -99,7 +99,7 @@ const enRevelationData = {
     "main": {
         "Breakthrough" : ["Sorrow","Change"],
         "Hope" : ["Labor","Fixation"],
-        "Creation": ["Worry","Reconciliation"],
+        "Creation": ["Worry","Reconcilation"],
         "Awareness": ["Truth","Control","Ruin"],
         "Departure": ["Control","Prosperity","Ruin"],
         "Growth": ["Opulence","Renewal","Power"],
@@ -121,7 +121,7 @@ const enRevelationData = {
         "Futility": ["Faith"],
         "Despair": ["Freedom"],
         "Worry": ["Creation"],
-        "Reconciliation": ["Creation"],
+        "Reconcilation": ["Creation"],
         "Truth": ["Awareness","Harmony"],
         "Control": ["Awareness","Departure"],
         "Ruin": ["Awareness","Departure"],
@@ -157,15 +157,15 @@ const enRevelationData = {
             "set4": "Increase own attack by 10% every 6 turns (Enemies and allies turn count for this effect), can be stacked 3 times.",
             "type": ["버프"]
         },
-        "Reconciliation": {
+        "Reconcilation": {
             "set2": "Increases Speed by 6.",
             "set4": "During combat your HP, ATK, DEF increase by 15%.",
-            "type": ["버프"]
+            "type": ["버프", "미출시"]
         },
         "Labor": {
             "set2": "Increase HP by 12%.",
             "set4": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by 8%.",
-            "type": ["버프"]
+            "type": ["버프", "미출시"]
         },
         "Peace": {
             "set2": "Defense increased by 20%.",
@@ -185,7 +185,7 @@ const enRevelationData = {
         "Defeat": {
             "set2": "Increases Effect Hit Rate by 15%.",
             "set4": "Increases fire damage to enemies affected by ailments by 20%.",
-            "type": ["화염", "디버프"]
+            "type": ["화염", "디버프", "미출시"]
         },
         "Opulence": {
             "set2": "Ice DMG increased by 10%.",
@@ -195,12 +195,12 @@ const enRevelationData = {
         "Success": {
             "set2": "Increases Crit Rate by 7.5%.",
             "set4": "Follow Up Attack Damage is increased by 40%.",
-            "type": ["추가 효과"]
+            "type": ["추가 효과", "미출시"]
         },
         "Oppression": {
             "set2": "Increase Physical DMG by 10%.",
             "set4": "Gain [Resentment] after every hit of skill damage: Increase ATK by 5% for 2 turn up to 6 stacks.",
-            "type": ["물리"]
+            "type": ["물리", "미출시"]
         },
         "Courage": {
             "set2": "Physical damage increased by 10%.",
@@ -230,7 +230,7 @@ const enRevelationData = {
         "Pleasure": {
             "set2": "Increase Psy DMG by 10%.",
             "set4": "Increase ATK by 15% when dealing Psy damage. Additionally increase ATK by 15%.",
-            "type": ["염동"]
+            "type": ["염동", "미출시"]
         },
         "Strife": {
             "set2": "Fire damage increased by 10%.",
@@ -245,22 +245,22 @@ const enRevelationData = {
         "Futility": {
             "set2": "Increase ATK by 12%.",
             "set4": "Increase EHR by 30% for 2 turns; Gain this effect again when you deal TECHNICAL.",
-            "type": ["TECHNICAL"]
+            "type": ["TECHNICAL", "미출시"]
         },
         "Despair": {
             "set2": "Increase ATK by 12%.",
             "set4": "When dealing Persona skill damage, increase the current Persona skill damage by 25% if your last Persona skill damage was a different element.",
-            "type": ["만능"]
+            "type": ["만능", "미출시"]
         },
         "Prudence": {
             "set2": "Decrease SPD by 3, Increase ATK by 18%.",
             "set4": "Increase DMG Dealt by 16%.",
-            "type": ["버프"]
+            "type": ["버프", "미출시"]
         },
         "Fixation": {
             "set2": "Increase ATK by 12%.",
             "set4": "Increase ATK by 25% for 3 turns; Gain this effect again when you use Theurgy.",
-            "type": ["버프"]
+            "type": ["버프", "미출시"]
         },
         "Change": {
             "set2": "Electric damage increased by 10%.",
@@ -276,11 +276,13 @@ const enRevelationData = {
     "set_effects": {
         "Breakthrough": {
             "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
-            "Sorrow": "Increase damage over time by 16%."
+            "Sorrow": "Increase damage over time by 16%.",
+            "type": ["미출시"]
         },
         "Hope": {
             "Labor": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
-            "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%."
+            "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%.",
+            "type": ["미출시"]
         },
         "Departure": {
             "Control": "Decrease main target's DEF by 23% for 2 turns after attacking them with a skill.",
@@ -308,18 +310,21 @@ const enRevelationData = {
             "Power": "Increase the cap of the ATK buff up to 5 stacks."
         },
         "Creation": {
-            "Reconciliation": "At the start of battle, increases the DMG Dealt of the ally with the lowest SPD by 12%, doesn't stack.",
-            "Worry": "Increases CRIT DMG by 15%/ 30%/ 45% when you have 100%/ 150%/ 200% SP Recovery."
+            "Reconcilation": "At the start of battle, increases the DMG Dealt of the ally with the lowest SPD by 12%, doesn't stack.",
+            "Worry": "Increases CRIT DMG by 15%/ 30%/ 45% when you have 100%/ 150%/ 200% SP Recovery.",
+            "type": ["미출시"]
         },
         "Integrity": {
             "Labor": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 80% of your Healing Bonus.",
-            "Fixation": "After using Theurgy, increase all Thieves' DMG Dealt by 10% for 3 turns."
+            "Fixation": "After using Theurgy, increase all Thieves' DMG Dealt by 10% for 3 turns.",
+            "type": ["미출시"]
         },
         "Resolve": {
             "Virtue": "Increase DMG Bonus by 10%/20%/30% when you reached 6000/9000/12000 HP.",
             "Labor": "When equipped by Navigator Thieves: Decrease the main target's DEF by 10% for 2 turns when inflicting debuffs.",
-            "Prudence": "At the start of battle, if your SPD is at the 3rd/4th slot, then additionally increase own ATK by 24%/30%."
+            "Prudence": "At the start of battle, if your SPD is at the 3rd/4th slot, then additionally increase own ATK by 24%/30%.",
+            "type": ["미출시"]
         },
         "Acceptance": {
             "Peace": "Increase DEF by 40% for 2 turns when attacked.",
@@ -334,7 +339,8 @@ const enRevelationData = {
         "Freedom": {
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
             "Success": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
-            "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%."
+            "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%.",
+            "type": ["미출시"]
         },
         "Meditation": {
             "Opulence": "Increase Follow Up CRIT DMG by 50%.",
@@ -344,7 +350,8 @@ const enRevelationData = {
         "Wisdom": {
             "Oppression": "Increase Physical DMG and Effect Hit Rate by 20% when [Resentment] is not less than 5 stacks.",
             "Virtue": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
-            "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Effect Hit Rate."
+            "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Effect Hit Rate.",
+            "type": ["미출시"]
         }
     }
 };

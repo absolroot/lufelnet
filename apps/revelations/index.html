@@ -603,6 +603,32 @@ alternate_urls:
             
             typeLabelContent.appendChild(typeText);
             typeLabelContent.appendChild(iconContainer);
+            
+            // Check if revelation has "미출시" (unreleased) type and add indicator for EN/JP
+            if (currentLang !== 'kr') {
+                let hasUnreleasedType = false;
+                
+                // Check in sub_effects or set_effects for "미출시" type
+                if (revelation.type === 'sub') {
+                    const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
+                    if (effects && effects.type && effects.type.includes('미출시')) {
+                        hasUnreleasedType = true;
+                    }
+                } else {
+                    const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
+                    if (mainEffects && mainEffects.type && mainEffects.type.includes('미출시')) {
+                        hasUnreleasedType = true;
+                    }
+                }
+                
+                // Add "not released" indicator if needed
+                if (hasUnreleasedType) {
+                    const notReleasedLabel = document.createElement('div');
+                    notReleasedLabel.className = 'not-released-label';
+                    notReleasedLabel.textContent = currentLang === 'en' ? 'Not Released' : 'リリース前';
+                    typeLabelContent.appendChild(notReleasedLabel);
+                }
+            }
             typeLabel.appendChild(typeLabelContent);
             
             // Effect description
@@ -631,13 +657,17 @@ alternate_urls:
                 // For main revelations, show set_effects
                 const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
                 if (mainEffects) {
+                    // subName이 type이 아닌 것들만
                     effectsContainer.innerHTML = Object.entries(mainEffects)
-                        .map(([subName, effect]) => `
+                        .filter(([subName]) => subName !== 'type')
+                        .map(([subName, effect]) => {
+                            return `
                             <div class="effect-set">
                                 <div class="set-label">${subName}</div>
                                 <div class="set-desc">${effect}</div>
                             </div>
-                        `).join('');
+                        `;
+                        }).join('');
                 }
             }
             
@@ -868,3 +898,20 @@ alternate_urls:
     } // initializePageContent 함수 종료
 </script>
 
+
+<style>
+.not-released-label {
+    position: absolute;
+    top: 10px;
+    right: -1px;
+    background: #c62323;
+    color: #000;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 0px;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+</style>

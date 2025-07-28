@@ -5,55 +5,32 @@ language: kr
 ---
 <link rel="stylesheet" href="login.css">
 {% include supabase-config.html %}
+
 <div class="main-wrapper">
-<div class="auth-container">
-  <div class="auth-box">
-    <h2>로그인</h2>
-    <!--
-    <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="이메일" required>
-      <input type="password" id="loginPassword" placeholder="비밀번호" required>
-      <button type="submit">로그인</button>
-    </form>
-    <div class="auth-links">
-      <a href="/login/signup.html">회원가입</a>
-      <a href="/login/forgot-password.html">비밀번호 찾기</a>
-    </div>-->
-    <div class="social-login">
-      <button id="googleLogin" class="google-btn">
-        <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
-        Google로 로그인
-      </button>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>로그인</h2>
+      <!--
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="이메일" required>
+        <input type="password" id="loginPassword" placeholder="비밀번호" required>
+        <button type="submit">로그인</button>
+      </form>
+      <div class="auth-links">
+        <a href="/login/signup.html">회원가입</a>
+        <a href="/login/forgot-password.html">비밀번호 찾기</a>
+      </div>-->
+      <div class="social-login">
+        <button id="googleLogin" class="google-btn">
+          <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
+          Google로 로그인
+        </button>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
-
 
 <script>
-// 로그인 처리
-/*
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-
-  try {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) throw error;
-    
-    alert('로그인 성공!');
-    window.location.href = '/'; // 메인 페이지로 리다이렉트
-  } catch (error) {
-    alert('로그인 실패: ' + error.message);
-  }
-});*/
-
 // URL에서 redirect 파라미터 확인
 function getRedirectUrl() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -63,23 +40,20 @@ function getRedirectUrl() {
 // 구글 로그인 처리
 document.getElementById('googleLogin').addEventListener('click', async (e) => {
   try {
-    // 버튼 비활성화 및 로딩 상태 표시
     const button = e.currentTarget;
     const originalText = button.innerHTML;
     button.disabled = true;
     button.innerHTML = '<span class="loading-spinner"></span> 구글 로그인 중...';
 
-    // 리다이렉트 URL을 세션 스토리지에 저장
     const redirectUrl = getRedirectUrl();
     sessionStorage.setItem('auth_redirect', redirectUrl);
 
-    // 사용자에게 안내 메시지 표시
     const confirmMessage = 
       '구글 로그인을 위해 인증 페이지로 이동합니다.\n\n' +
-      '※ 구글 인증 과정에서 나타나는 supabase 링크는 정상입니다.\n'
-    
+      '※ 구글 인증 과정에서 나타나는 supabase 링크는 정상입니다.\n';
+
     if (window.confirm(confirmMessage)) {
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: 'https://lufel.net/auth/callback',
@@ -89,42 +63,29 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
           }
         }
       });
-
       if (error) throw error;
     } else {
-      // 사용자가 취소한 경우
       button.disabled = false;
       button.innerHTML = originalText;
       sessionStorage.removeItem('auth_redirect');
       return;
     }
-
   } catch (error) {
     console.error('로그인 에러:', error);
-    alert('로그인 처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-    
-    // 버튼 상태 복구
+    alert('로그인 처리 중 문제가 발생했습니다.');
     const button = document.getElementById('googleLogin');
     button.disabled = false;
-    button.innerHTML = originalText;
+    button.innerHTML = 'Google로 로그인';
     sessionStorage.removeItem('auth_redirect');
   }
 });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-        Navigation.load('');
-        VersionChecker.check();
-});
-
 async function checkLoginStatus() {
   const { data, error } = await supabase.auth.getSession();
-  
   if (error) {
     console.error('세션 확인 에러:', error);
     return false;
   }
-
   if (data.session) {
     console.log('로그인 상태:', data.session.user);
     return true;
@@ -134,6 +95,9 @@ async function checkLoginStatus() {
   }
 }
 
-checkLoginStatus();
-
-</script> 
+document.addEventListener('DOMContentLoaded', () => {
+  Navigation.load('');
+  VersionChecker.check();
+  checkLoginStatus();
+});
+</script>

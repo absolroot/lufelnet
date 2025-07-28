@@ -1,0 +1,484 @@
+---
+layout: default
+custom_css: [tactic, tactic-share]
+custom_js: [tooltip, tactic-preview]
+custom_data: [tooltip.js, characters/characters.js, revelations/revelations.js, tactic/pattern.js, wonder/weapons.js, wonder/persona.js, wonder/skills.js]
+permalink: /tactic/tactics.html
+language: kr
+title: 택틱 보관함 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
+---
+{% include supabase-config.html %}
+
+<!-- 메인 컨텐츠 -->
+<div class="main-wrapper">
+    <!-- 네비게이션 경로 -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">택틱 / 택틱 보관함</span>
+    </div>
+    <div class="header-container">
+        <h1>택틱 보관함</h1>
+    </div>
+
+    <div class="top-container">
+        <div class="ranking-container">
+            <div class="ranking-header">
+                <img src="{{ site.baseurl }}/assets/img/tactic-share/rank.png" alt="랭킹" class="ranking-title-icon">
+                <div class="ranking-tabs">
+                    <button class="ranking-tab active" data-period="weekly">주간</button>
+                    <button class="ranking-tab" data-period="monthly">월간</button>
+                    <button class="ranking-tab" data-period="all">역대</button>
+                </div>
+            </div>
+            <div class="ranking-list">
+                <!-- 랭킹은 JavaScript로 동적 생성됨 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="tactic-controls">
+        <div class="search-container">
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="제목 검색..." />
+                <button id="searchButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="view-tabs">
+            <button class="tab-button active" data-view="all">전체</button>
+            <button class="tab-button" data-view="best">베스트</button>
+        </div>
+    </div>
+
+    <!-- 게시물 목록 -->
+    <div class="posts-container">
+        <div class="posts-list" id="postsList"></div>
+        <div class="pagination">
+            <button id="prevPage" disabled>이전</button>
+            <span id="currentPage">1</span>
+            <button id="nextPage">다음</button>
+        </div>
+    </div>
+</div>
+
+<script>
+class TacticsViewer {
+    constructor() {
+        this.currentPage = 1;
+        this.postsPerPage = 10;
+        this.currentView = 'all';
+        this.searchKeyword = '';
+        this.currentRankingPeriod = 'weekly';
+        this.allTactics = [];
+        this.filteredTactics = [];
+        this.tacticPreview = new TacticPreview();
+        
+        this.init();
+    }
+
+    async init() {
+        await this.loadTactics();
+        this.initTabs();
+        this.initSearch();
+        this.initRanking();
+        this.renderTactics();
+        this.loadRanking();
+    }
+
+    async loadTactics() {
+        try {
+            const { data, error } = await supabase
+                .from('tactics')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('데이터 로드 오류:', error);
+                return;
+            }
+
+            this.allTactics = data.map(tactic => ({
+                id: tactic.id,
+                title: tactic.title,
+                author: tactic.author,
+                comment: tactic.comment,
+                likes: tactic.likes || 0,
+                recentLikes: tactic.recentLikes || 0,
+                createdAt: new Date(tactic.created_at),
+                query: typeof tactic.query === 'string' ? JSON.parse(tactic.query) : tactic.query,
+                url: tactic.url
+            }));
+
+            this.applyFilters();
+        } catch (error) {
+            console.error('택틱 로드 실패:', error);
+        }
+    }
+
+    applyFilters() {
+        let filtered = [...this.allTactics];
+
+        // 검색 필터
+        if (this.searchKeyword) {
+            filtered = filtered.filter(tactic => 
+                tactic.title.toLowerCase().includes(this.searchKeyword.toLowerCase())
+            );
+        }
+
+        // 베스트 필터 (좋아요 5개 이상)
+        if (this.currentView === 'best') {
+            filtered = filtered.filter(tactic => tactic.likes >= 5);
+        }
+
+        this.filteredTactics = filtered;
+        this.currentPage = 1;
+    }
+
+    renderTactics() {
+        const startIndex = (this.currentPage - 1) * this.postsPerPage;
+        const endIndex = startIndex + this.postsPerPage;
+        const tacticsToShow = this.filteredTactics.slice(startIndex, endIndex);
+
+        const postsList = document.getElementById('postsList');
+        postsList.innerHTML = '';
+
+        tacticsToShow.forEach(tactic => {
+            const postElement = this.createPostElement(tactic);
+            postsList.appendChild(postElement);
+        });
+
+        this.updatePaginationButtons();
+    }
+
+    createPostElement(tactic) {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post-item';
+        postDiv.setAttribute('data-post-id', tactic.id);
+        
+        postDiv.innerHTML = `
+            <div class="post-header">
+                <h3>
+                    ${tactic.url ? `
+                        <a href="${tactic.url}" target="_blank" rel="noopener noreferrer" class="post-title">
+                            ${this.escapeHtml(tactic.title)}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
+                            </svg>
+                        </a>
+                    ` : `
+                        <span class="post-title">${this.escapeHtml(tactic.title)}</span>
+                    `}
+                </h3>
+                <div class="post-meta">
+                    <span class="post-author">${this.escapeHtml(tactic.author)}</span>
+                    <span class="separator">|</span>
+                    <span class="post-date">${this.formatDate(tactic.createdAt)}</span>
+                </div>
+                ${tactic.comment ? `<div class="post-comment">${this.escapeHtml(tactic.comment)}</div>` : ''}
+            </div>
+            
+            <div class="post-content">
+                ${tactic.url ? `
+                    <div class="post-link">
+                        <a href="${tactic.url}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
+                    </div>
+                ` : ''}
+                <div class="tactic-preview-container"></div>
+            </div>
+
+            <div class="post-footer">
+                <div class="likes-section">
+                    <button onclick="tacticsViewer.handleLike('${tactic.id}')" class="like-button">
+                        <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요">
+                    </button>
+                    <div class="likes-count-wrapper">
+                        <span class="likes-count">${tactic.likes}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // 택틱 프리뷰 생성
+        this.addTacticPreview(postDiv, tactic.query);
+
+        return postDiv;
+    }
+
+    addTacticPreview(postElement, tacticData) {
+        try {
+            const previewContainer = postElement.querySelector('.tactic-preview-container');
+            const preview = this.createTacticPreview(tacticData);
+            if (preview) {
+                previewContainer.appendChild(preview);
+            }
+        } catch (error) {
+            console.error('택틱 프리뷰 생성 실패:', error);
+        }
+    }
+
+    createTacticPreview(tacticData) {
+        if (!tacticData || !tacticData.party) return null;
+
+        const previewDiv = document.createElement('div');
+        previewDiv.className = 'tactic-preview';
+
+        // 파티 이미지 컨테이너
+        const partyImagesContainer = document.createElement('div');
+        partyImagesContainer.className = 'party-images-container';
+
+        const partyImagesDiv = document.createElement('div');
+        partyImagesDiv.className = 'party-images';
+
+        // 파티원 정렬 및 이미지 생성
+        const orderedParty = tacticData.party
+            .filter(pm => pm.name !== "")
+            .sort((a, b) => {
+                if (a.order === "-") return 1;
+                if (b.order === "-") return -1;
+                return parseInt(a.order, 10) - parseInt(b.order, 10);
+            });
+
+        orderedParty.forEach(member => {
+            // 원더인 경우 건너뛰기
+            if (member.name === "원더") return;
+            
+            const container = document.createElement('div');
+            if (characterData[member.name]) {
+                container.className = 'character-container';
+
+                const charImg = document.createElement('img');
+                charImg.className = 'character-img';
+                charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
+                charImg.alt = member.name;
+                charImg.title = member.name;
+                container.appendChild(charImg);
+            }
+
+            // 의식 이미지
+            const ritualLevel = parseInt(member.ritual);
+            if (ritualLevel >= 1 && ritualLevel <= 6) {
+                const ritualImg = document.createElement('img');
+                ritualImg.className = 'ritual-img';
+                ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
+                ritualImg.alt = `의식 ${ritualLevel}`;
+                container.appendChild(ritualImg);
+            }
+
+            partyImagesDiv.appendChild(container);
+        });
+
+        partyImagesContainer.appendChild(partyImagesDiv);
+        previewDiv.appendChild(partyImagesContainer);
+        
+        return previewDiv;
+    }
+
+    async handleLike(tacticId) {
+        try {
+            const { data, error } = await supabase
+                .from('tactics')
+                .select('likes')
+                .eq('id', tacticId)
+                .single();
+
+            if (error) {
+                console.error('좋아요 조회 실패:', error);
+                return;
+            }
+
+            const newLikes = (data.likes || 0) + 1;
+
+            const { error: updateError } = await supabase
+                .from('tactics')
+                .update({ likes: newLikes })
+                .eq('id', tacticId);
+
+            if (updateError) {
+                console.error('좋아요 업데이트 실패:', updateError);
+                return;
+            }
+
+            // UI 업데이트
+            const likeButton = document.querySelector(`[data-id="${tacticId}"] .like-count`);
+            if (likeButton) {
+                likeButton.textContent = newLikes;
+            }
+
+            // 로컬 데이터 업데이트
+            const tactic = this.allTactics.find(t => t.id === tacticId);
+            if (tactic) {
+                tactic.likes = newLikes;
+            }
+
+        } catch (error) {
+            console.error('좋아요 처리 실패:', error);
+        }
+    }
+
+    updatePaginationButtons() {
+        const totalPages = Math.ceil(this.filteredTactics.length / this.postsPerPage);
+        const prevButton = document.getElementById('prevPage');
+        const nextButton = document.getElementById('nextPage');
+        const currentPageSpan = document.getElementById('currentPage');
+
+        prevButton.disabled = this.currentPage === 1;
+        nextButton.disabled = this.currentPage === totalPages || totalPages === 0;
+        currentPageSpan.textContent = this.currentPage;
+
+        prevButton.onclick = () => {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.renderTactics();
+            }
+        };
+
+        nextButton.onclick = () => {
+            if (this.currentPage < totalPages) {
+                this.currentPage++;
+                this.renderTactics();
+            }
+        };
+    }
+
+    initTabs() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                this.currentView = button.dataset.view;
+                this.applyFilters();
+                this.renderTactics();
+            });
+        });
+    }
+
+    initSearch() {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+
+        const performSearch = () => {
+            this.searchKeyword = searchInput.value.trim();
+            this.applyFilters();
+            this.renderTactics();
+        };
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+
+    initRanking() {
+        const rankingTabs = document.querySelectorAll('.ranking-tab');
+        rankingTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                rankingTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                this.currentRankingPeriod = tab.dataset.period;
+                this.loadRanking();
+            });
+        });
+    }
+
+    async loadRanking() {
+        try {
+            const now = new Date();
+            let startDate;
+
+            switch(this.currentRankingPeriod) {
+                case 'weekly':
+                    startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                    break;
+                case 'monthly':
+                    startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+                    break;
+                case 'all':
+                    startDate = new Date(0);
+                    break;
+            }
+
+            const filteredTactics = this.allTactics.filter(tactic => 
+                tactic.createdAt >= startDate
+            );
+
+            const authorStats = new Map();
+            filteredTactics.forEach(tactic => {
+                const stats = authorStats.get(tactic.author) || { posts: 0, likes: 0 };
+                stats.posts++;
+                stats.likes += tactic.likes;
+                authorStats.set(tactic.author, stats);
+            });
+
+            const rankings = Array.from(authorStats.entries())
+                .map(([author, stats]) => ({
+                    author,
+                    score: (stats.posts * 5) + stats.likes,
+                    posts: stats.posts,
+                    likes: stats.likes
+                }))
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3);
+
+            this.renderRanking(rankings);
+        } catch (error) {
+            console.error('랭킹 로드 실패:', error);
+        }
+    }
+
+    renderRanking(rankings) {
+        const container = document.querySelector('.ranking-list');
+        container.innerHTML = rankings.map((rank, index) => `
+            <div class="ranking-item" data-rank="${index + 1}">
+                <div class="ranking-position">
+                    <img src="${BASE_URL}/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}위" class="rank-icon">
+                </div>
+                <div class="ranking-info">
+                    <div class="ranking-author">${this.escapeHtml(rank.author)}</div>
+                    <div class="ranking-stats">
+                        택틱 ${rank.posts}개 · 좋아요 ${rank.likes}개
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    formatDate(date) {
+        const now = new Date();
+        const diff = now - date;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        
+        if (days === 0) {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            if (hours === 0) {
+                const minutes = Math.floor(diff / (1000 * 60));
+                return `${minutes}분 전`;
+            }
+            return `${hours}시간 전`;
+        } else if (days < 7) {
+            return `${days}일 전`;
+        } else {
+            return date.toLocaleDateString('ko-KR');
+        }
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('tactics');
+    window.tacticsViewer = new TacticsViewer();
+});
+</script>

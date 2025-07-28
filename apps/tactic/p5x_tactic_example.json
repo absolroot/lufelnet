@@ -1,0 +1,460 @@
+{
+  "title": "P5X Tactic Maker",
+  "wonderPersonas": [
+    "트론",
+    "디오니소스",
+    "토르"
+  ],
+  "weapon": "마그네틱 스톰",
+  "personaSkills": [
+    "정화의 불",
+    "타루카쟈",
+    "",
+    "레볼루션",
+    "무한 알고리즘",
+    "타루카쟈",
+    "하늘이 부른 번개",
+    "",
+    ""
+  ],
+  "party": [
+    {
+      "name": "마유미",
+      "order": "1",
+      "ritual": "6",
+      "mainRev": "신뢰",
+      "subRev": "풍요"
+    },
+    {
+      "name": "원더",
+      "order": "2",
+      "ritual": "0",
+      "mainRev": "",
+      "subRev": ""
+    },
+    {
+      "name": "미오",
+      "order": "3",
+      "ritual": "6",
+      "mainRev": "신념",
+      "subRev": "헛수고"
+    },
+    {
+      "name": "사나다",
+      "order": "4",
+      "ritual": "6",
+      "mainRev": "돌파",
+      "subRev": "변화"
+    },
+    {
+      "name": "마나카",
+      "order": "-",
+      "ritual": "6",
+      "mainRev": "희망",
+      "subRev": "직책"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "추가턴"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "사나다(이하 모두 동일)"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "트론",
+          "action": "",
+          "memo": "타루카쟈>사나다(이하 모두 동일)"
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "방패상황 보고 하라타겟 지정"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "디오니소스",
+          "action": "",
+          "memo": "무한 알고리즘"
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "방패 많이 남은 애"
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "추가턴"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "가속 2번"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "디오니소스",
+          "action": "",
+          "memo": "HIGHLIGHT"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "토르",
+          "action": "",
+          "memo": "교체"
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "토르",
+          "action": "",
+          "memo": "하늘이 부른 번개"
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "디오니소스",
+          "action": "",
+          "memo": "타루카쟈"
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "디오니소스",
+          "action": "",
+          "memo": "무한 알고리즘"
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "선율x2>사나다"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "추가턴"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "가속x2"
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마유미",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": "미오"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "토르",
+          "action": "",
+          "memo": "하늘이 부른 번개"
+        },
+        {
+          "type": 1,
+          "character": "미오",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "지원>셀프"
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "사나다",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    }
+  ]
+}

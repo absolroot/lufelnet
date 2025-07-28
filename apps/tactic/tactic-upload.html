@@ -25,9 +25,9 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     <!-- 로그인 확인 메시지 -->
     <div id="loginRequired" class="login-required" style="display: none;">
         <div class="login-message">
-            <h3>로그인이 필요합니다</h3>
-            <p>택틱을 업로드하려면 로그인해주세요.</p>
-            <button id="loginButton" class="login-btn">로그인하기</button>
+            <h3 data-i18n="login_required">로그인이 필요합니다</h3>
+            <p data-i18n="login_required_desc">택틱을 업로드하려면 로그인해주세요.</p>
+            <button id="loginButton" class="login-btn" data-i18n="login">로그인하기</button>
         </div>
     </div>
 
@@ -35,71 +35,83 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     <div id="uploadForm" class="upload-container" style="display: none;">
         <form id="tacticUploadForm" class="tactic-upload-form">
             <div class="form-section">
-                <h3>택틱 정보</h3>
+                <h3 data-i18n="tactic_info">택틱 정보</h3>
                 
+                <!-- 지역 -->
+                <div class="form-group">
+                    <label for="tacticRegion" data-i18n="region">지역 *</label>
+                    <select id="tacticRegion" name="tacticRegion" required>
+                        <option value="kr">한국 (KR)</option>
+                        <option value="tw">대만 (TW)</option>
+                        <option value="cn">중국 (CN)</option>
+                        <option value="en">글로벌 (EN)</option>
+                        <option value="jp">일본 (JP)</option>
+                    </select>
+                </div>
+
                 <!-- 택틱 타입 -->
                 <div class="form-group">
-                    <label for="tacticType">택틱 타입 *</label>
+                    <label for="tacticType" data-i18n="tactic_type">택틱 타입 *</label>
                     <select id="tacticType" name="tacticType" required>
-                        <option value="">선택해주세요</option>
-                        <option value="흉몽">흉몽</option>
-                        <option value="바다">바다</option>
-                        <option value="이벤트">이벤트</option>
-                        <option value="기타">기타</option>
+                        <option value="" data-i18n="select_please">선택해주세요</option>
+                        <option value="흉몽" data-i18n="nightmare">흉몽</option>
+                        <option value="바다" data-i18n="sea">바다</option>
+                        <option value="이벤트" data-i18n="event">이벤트</option>
+                        <option value="기타" data-i18n="other">기타</option>
                     </select>
                 </div>
 
                 <!-- 제목 -->
                 <div class="form-group">
-                    <label for="tacticTitle">제목 *</label>
-                    <input type="text" id="tacticTitle" name="tacticTitle" placeholder="[택틱 타입] 보스 이름 (점수)" required>
-                    <small>예: [첩첩 흉몽] 쿠 훌린 (1.4억)</small>
+                    <label for="tacticTitle" data-i18n="title">제목 *</label>
+                    <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="[택틱 타입] 보스 이름 (점수)" required>
+                    <small data-i18n="title_example">예: [첩첩 흉몽] 쿠 훌린 (1.4억)</small>
                 </div>
 
                 <!-- 작성자 -->
                 <div class="form-group">
-                    <label for="tacticAuthor">작성자 *</label>
+                    <label for="tacticAuthor" data-i18n="author">작성자 *</label>
                     <input type="text" id="tacticAuthor" name="tacticAuthor" required>
                 </div>
             </div>
 
             <div class="form-section">
-                <h3>택틱 데이터</h3>
+                <h3 data-i18n="tactic_data">택틱 데이터</h3>
                 
                 <!-- JSON 파일 업로드 -->
                 <div class="form-group">
-                    <label for="jsonFile">택틱 JSON 파일 *</label>
+                    <label for="jsonFile" data-i18n="json_file">택틱 JSON 파일 *</label>
                     <input type="file" id="jsonFile" name="jsonFile" accept=".json" required>
-                    <small>택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.</small>
+                    <small data-i18n="json_file_desc">택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.</small>
                 </div>
 
                 <!-- JSON 데이터 미리보기 -->
                 <div id="jsonPreview" class="json-preview" style="display: none;">
-                    <h4>데이터 미리보기</h4>
+                    <h4 data-i18n="data_preview">데이터 미리보기</h4>
                     <div id="previewContent"></div>
                 </div>
             </div>
 
             <div class="form-section">
-                <h3>추가 정보 (선택사항)</h3>
+                <h3 data-i18n="additional_info">추가 정보 (선택사항)</h3>
                 
                 <!-- 코멘트 -->
                 <div class="form-group">
-                    <label for="tacticComment">코멘트</label>
-                    <textarea id="tacticComment" name="tacticComment" rows="4" placeholder="원본 링크, 유튜브 링크, 참고 사항 등"></textarea>
+                    <label for="tacticComment" data-i18n="comment">코멘트</label>
+                    <textarea id="tacticComment" name="tacticComment" rows="4" data-i18n-placeholder="comment_placeholder" placeholder="원본 링크, 유튜브 링크, 참고 사항 등"></textarea>
                 </div>
 
                 <!-- URL -->
                 <div class="form-group">
-                    <label for="tacticUrl">관련 URL</label>
+                    <label for="tacticUrl" data-i18n="related_url">관련 URL</label>
                     <input type="url" id="tacticUrl" name="tacticUrl" placeholder="https://example.com">
-                    <small>유튜브 링크, 원본 택틱 링크 등</small>
+                    <small data-i18n="url_desc">유튜브 링크, 원본 택틱 링크 등</small>
                 </div>
             </div>
 
             <div class="form-actions">
-                <button type="button" id="previewButton" class="preview-btn">미리보기</button>
-                <button type="submit" id="submitButton" class="submit-btn">업로드</button>
+                <button type="button" id="previewButton" class="preview-btn" data-i18n="preview">미리보기</button>
+                <button type="submit" id="submitButton" class="submit-btn" data-i18n="upload">업로드</button>
             </div>
         </form>
     </div>
@@ -108,14 +120,14 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     <div id="previewModal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>택틱 미리보기</h3>
+                <h3 data-i18n="tactic_preview">택틱 미리보기</h3>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="modalPreviewContent"></div>
             </div>
             <div class="modal-footer">
-                <button class="modal-close-btn">닫기</button>
+                <button class="modal-close-btn" data-i18n="close">닫기</button>
             </div>
         </div>
     </div>
@@ -124,7 +136,7 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     <div id="loadingOverlay" class="loading-overlay" style="display: none;">
         <div class="loading-spinner">
             <div class="spinner"></div>
-            <p>업로드 중...</p>
+            <p data-i18n="uploading">업로드 중...</p>
         </div>
     </div>
 </div>
@@ -374,18 +386,150 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 </style>
 
 <script>
+// 다국어 지원
+const translations = {
+    kr: {
+        tactic_info: '택틱 정보',
+        region: '지역 *',
+        tactic_type: '택틱 타입 *',
+        select_please: '선택해주세요',
+        nightmare: '흉몽',
+        sea: '바다',
+        event: '이벤트',
+        other: '기타',
+        title: '제목 *',
+        title_placeholder: '[택틱 타입] 보스 이름 (점수)',
+        title_example: '예: [첩첩 흉몽] 쿠 훌린 (1.4억)',
+        author: '작성자 *',
+        tactic_data: '택틱 데이터',
+        json_file: '택틱 JSON 파일 *',
+        json_file_desc: '택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.',
+        data_preview: '데이터 미리보기',
+        additional_info: '추가 정보 (선택사항)',
+        comment: '코멘트',
+        comment_placeholder: '원본 링크, 유튜브 링크, 참고 사항 등',
+        related_url: '관련 URL',
+        url_desc: '유튜브 링크, 원본 택틱 링크 등',
+        preview: '미리보기',
+        upload: '업로드',
+        login_required: '로그인이 필요합니다',
+        login_required_desc: '택틱을 업로드하려면 로그인해주세요.',
+        login: '로그인하기',
+        tactic_preview: '택틱 미리보기',
+        close: '닫기',
+        uploading: '업로드 중...'
+    },
+    en: {
+        tactic_info: 'Tactic Information',
+        region: 'Region *',
+        tactic_type: 'Tactic Type *',
+        select_please: 'Please select',
+        nightmare: 'Nightmare',
+        sea: 'Sea',
+        event: 'Event',
+        other: 'Other',
+        title: 'Title *',
+        title_placeholder: '[Tactic Type] Boss Name (Score)',
+        title_example: 'e.g.: [Nightmare] Cu Chulainn (140M)',
+        author: 'Author *',
+        tactic_data: 'Tactic Data',
+        json_file: 'Tactic JSON File *',
+        json_file_desc: 'Please upload the JSON file exported from the tactic maker.',
+        data_preview: 'Data Preview',
+        additional_info: 'Additional Information (Optional)',
+        comment: 'Comment',
+        comment_placeholder: 'Original link, YouTube link, notes, etc.',
+        related_url: 'Related URL',
+        url_desc: 'YouTube link, original tactic link, etc.',
+        preview: 'Preview',
+        upload: 'Upload',
+        login_required: 'Login Required',
+        login_required_desc: 'Please log in to upload tactics.',
+        login: 'Login',
+        tactic_preview: 'Tactic Preview',
+        close: 'Close',
+        uploading: 'Uploading...'
+    },
+    jp: {
+        tactic_info: 'タクティック情報',
+        region: '地域 *',
+        tactic_type: 'タクティックタイプ *',
+        select_please: '選択してください',
+        nightmare: 'ナイトメア',
+        sea: '海',
+        event: 'イベント',
+        other: 'その他',
+        title: 'タイトル *',
+        title_placeholder: '[タクティックタイプ] ボス名 (スコア)',
+        title_example: '例: [ナイトメア] クー・フーリン (1.4億)',
+        author: '作成者 *',
+        tactic_data: 'タクティックデータ',
+        json_file: 'タクティック JSON ファイル *',
+        json_file_desc: 'タクティックメーカーからエクスポートしたJSONファイルをアップロードしてください。',
+        data_preview: 'データプレビュー',
+        additional_info: '追加情報 (オプション)',
+        comment: 'コメント',
+        comment_placeholder: '元のリンク、YouTubeリンク、備考など',
+        related_url: '関連URL',
+        url_desc: 'YouTubeリンク、元のタクティックリンクなど',
+        preview: 'プレビュー',
+        upload: 'アップロード',
+        login_required: 'ログインが必要です',
+        login_required_desc: 'タクティックをアップロードするにはログインしてください。',
+        login: 'ログイン',
+        tactic_preview: 'タクティックプレビュー',
+        close: '閉じる',
+        uploading: 'アップロード中...'
+    }
+};
+
 class TacticUploader {
     constructor() {
         this.currentUser = null;
         this.tacticData = null;
         this.tacticPreview = new TacticPreview();
+        this.currentLang = this.getCurrentLanguage();
         
         this.init();
     }
 
+    getCurrentLanguage() {
+        // Jekyll의 page.language 또는 site.lang 사용
+        return window.currentLang || 'kr';
+    }
+
     async init() {
+        this.initLanguage();
         await this.checkAuth();
         this.initEventListeners();
+        this.initRegionDropdown();
+    }
+
+    initLanguage() {
+        const lang = this.currentLang;
+        if (translations[lang]) {
+            // data-i18n 속성을 가진 요소들 번역
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // placeholder 번역
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+        }
+    }
+
+    initRegionDropdown() {
+        const regionSelect = document.getElementById('tacticRegion');
+        // 현재 언어에 따라 기본값 설정
+        regionSelect.value = this.currentLang;
     }
 
     async checkAuth() {
@@ -511,7 +655,10 @@ class TacticUploader {
             }
             
         } catch (error) {
-            alert('JSON 파일을 읽는데 실패했습니다. 올바른 형식인지 확인해주세요.');
+            const errorMessage = this.currentLang === 'en' ? 'Failed to read JSON file. Please check if the format is correct.' :
+                               this.currentLang === 'jp' ? 'JSONファイルの読み取りに失敗しました。形式が正しいか確認してください。' :
+                               'JSON 파일을 읽는데 실패했습니다. 올바른 형식인지 확인해주세요.';
+            alert(errorMessage);
             console.error('JSON 파싱 오류:', error);
         }
     }
@@ -594,7 +741,10 @@ class TacticUploader {
 
     showPreview() {
         if (!this.tacticData) {
-            alert('먼저 JSON 파일을 업로드해주세요.');
+            const message = this.currentLang === 'en' ? 'Please upload a JSON file first.' :
+                           this.currentLang === 'jp' ? '最初にJSONファイルをアップロードしてください。' :
+                           '먼저 JSON 파일을 업로드해주세요.';
+            alert(message);
             return;
         }
 
@@ -668,7 +818,8 @@ class TacticUploader {
             title: document.getElementById('tacticTitle').value,
             author: document.getElementById('tacticAuthor').value,
             comment: document.getElementById('tacticComment').value,
-            url: document.getElementById('tacticUrl').value
+            url: document.getElementById('tacticUrl').value,
+            region: document.getElementById('tacticRegion').value
         };
     }
 
@@ -681,8 +832,11 @@ class TacticUploader {
         const formData = this.getFormData();
         
         // 유효성 검사
-        if (!formData.type || !formData.title || !formData.author) {
-            alert('필수 항목을 모두 입력해주세요.');
+        if (!formData.type || !formData.title || !formData.author || !formData.region) {
+            const message = this.currentLang === 'en' ? 'Please fill in all required fields.' :
+                           this.currentLang === 'jp' ? '必須項目をすべて入力してください。' :
+                           '필수 항목을 모두 입력해주세요.';
+            alert(message);
             return;
         }
 
@@ -699,21 +853,29 @@ class TacticUploader {
                     query: this.tacticData,
                     likes: 0,
                     recentLikes: 0,
-                    tactic_type: formData.type
+                    tactic_type: formData.type,
+                    region: formData.region,
+                    user_id: this.currentUser.id
                 }]);
 
             if (error) {
                 throw error;
             }
 
-            alert('택틱이 성공적으로 업로드되었습니다!');
+            const successMessage = this.currentLang === 'en' ? 'Tactic uploaded successfully!' :
+                                  this.currentLang === 'jp' ? 'タクティックが正常にアップロードされました！' :
+                                  '택틱이 성공적으로 업로드되었습니다!';
+            alert(successMessage);
             
             // 택틱 목록 페이지로 이동
             window.location.href = '/tactic/tactics.html';
             
         } catch (error) {
             console.error('업로드 실패:', error);
-            alert('업로드 중 오류가 발생했습니다. 다시 시도해주세요.');
+            const errorMessage = this.currentLang === 'en' ? 'An error occurred during upload. Please try again.' :
+                               this.currentLang === 'jp' ? 'アップロード中にエラーが発生しました。再試行してください。' :
+                               '업로드 중 오류가 발생했습니다. 다시 시도해주세요.';
+            alert(errorMessage);
         } finally {
             this.showLoading(false);
         }

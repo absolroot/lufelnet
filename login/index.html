@@ -10,16 +10,6 @@ language: kr
   <div class="auth-container">
     <div class="auth-box">
       <h2>로그인</h2>
-      <!--
-      <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="이메일" required>
-        <input type="password" id="loginPassword" placeholder="비밀번호" required>
-        <button type="submit">로그인</button>
-      </form>
-      <div class="auth-links">
-        <a href="/login/signup.html">회원가입</a>
-        <a href="/login/forgot-password.html">비밀번호 찾기</a>
-      </div>-->
       <div class="social-login">
         <button id="googleLogin" class="google-btn">
           <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
@@ -31,13 +21,11 @@ language: kr
 </div>
 
 <script>
-// URL에서 redirect 파라미터 확인
 function getRedirectUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get('redirect') || '/';
 }
 
-// 구글 로그인 처리
 document.getElementById('googleLogin').addEventListener('click', async (e) => {
   try {
     const button = e.currentTarget;
@@ -57,10 +45,8 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
         provider: 'google',
         options: {
           redirectTo: 'https://lufel.net/auth/callback',
-          queryParams: {
-            prompt: 'select_account',
-            access_type: 'offline'
-          }
+          flowType: 'pkce',  // PKCE 플로우 추가
+          queryParams: { prompt: 'select_account', access_type: 'offline' }
         }
       });
       if (error) throw error;
@@ -68,7 +54,6 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       button.disabled = false;
       button.innerHTML = originalText;
       sessionStorage.removeItem('auth_redirect');
-      return;
     }
   } catch (error) {
     console.error('로그인 에러:', error);

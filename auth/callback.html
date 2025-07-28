@@ -65,41 +65,25 @@ title: 인증 처리 중
 
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
-    console.log('콜백 페이지 진입:', window.location.href);
-  
+    console.log('콜백 URL:', window.location.href);
     try {
-      // 1. OAuth 인증 코드 교환
+      // PKCE 플로우: 코드 교환
       const { data, error } = await supabase.auth.exchangeCodeForSession(window.location.href);
+      console.log('교환 결과:', { data, error });
   
-      console.log('exchangeCodeForSession 결과:', { data, error });
+      if (error) throw error;
   
-      if (error) {
-        console.error('세션 교환 실패:', error);
-        throw error;
+      if (data.session) {
+        console.log('세션 생성 완료:', data.session.user);
+        localStorage.setItem('user', JSON.stringify(data.session.user));
+  
+        const redirectUrl = sessionStorage.getItem('auth_redirect') || '/';
+        sessionStorage.removeItem('auth_redirect');
+        window.location.href = redirectUrl;
+      } else {
+        console.error('세션 없음');
+        window.location.href = '/login';
       }
-  
-      // 2. 세션 확인 로직
-      const checkSession = async (retry = 0) => {
-        const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-        console.log(`세션 확인 [${retry}]:`, { sessionData, sessionError });
-  
-        if (sessionData?.session) {
-          console.log('세션 생성 완료:', sessionData.session.user);
-          localStorage.setItem('user', JSON.stringify(sessionData.session.user));
-  
-          const redirectUrl = sessionStorage.getItem('auth_redirect') || '/';
-          sessionStorage.removeItem('auth_redirect');
-          window.location.href = redirectUrl;
-        } else if (retry < 3) {
-          // 1초 후 재시도
-          setTimeout(() => checkSession(retry + 1), 1000);
-        } else {
-          console.error('세션이 생성되지 않음.');
-          window.location.href = '/login';
-        }
-      };
-  
-      checkSession();
     } catch (error) {
       console.error('콜백 인증 에러:', error);
       alert('인증 처리 중 문제가 발생했습니다.');
@@ -108,4 +92,3 @@ title: 인증 처리 중
     }
   });
   </script>
-  

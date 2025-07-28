@@ -44,8 +44,7 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'https://lufel.net/auth/callback',
-          queryParams: { prompt: 'select_account', access_type: 'offline' }
+          queryParams: { prompt: 'consent', access_type: 'offline' }
         }
       });
       if (error) throw error;

@@ -5,6 +5,12 @@
 <script>
   const supabaseUrl = 'https://ipdkvuybgxczqwwmrqsw.supabase.co'
   const supabaseKey = 'sb_publishable_Hk_7I7kkgaAKrPLQz_sdUA_XvrKoJbI'
-  
-  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
-</script> 
+
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey, {
+    auth: {
+      persistSession: true,            // 세션을 브라우저 로컬스토리지에 저장
+      autoRefreshToken: true,          // 액세스 토큰 자동 갱신
+      detectSessionInUrl: true         // URL 해시에서 세션 토큰 자동 추출
+    }
+  });
+</script>

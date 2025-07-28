@@ -116,4 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('');
         VersionChecker.check();
 });
+
+async function checkLoginStatus() {
+  const { data, error } = await supabase.auth.getSession();
+  
+  if (error) {
+    console.error('세션 확인 에러:', error);
+    return false;
+  }
+
+  if (data.session) {
+    console.log('로그인 상태:', data.session.user);
+    return true;
+  } else {
+    console.log('로그인 안됨');
+    return false;
+  }
+}
+
+checkLoginStatus();
+
 </script> 

@@ -67,26 +67,29 @@ title: 인증 처리 중
   document.addEventListener('DOMContentLoaded', async () => {
     console.log('콜백 URL:', window.location.href);
   
-    // Supabase가 자동으로 세션을 저장했는지 확인
+    // 세션 변화 감지 (세션이 생성될 때까지 기다림)
+    supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth 이벤트:', event, session);
+      if (event === 'SIGNED_IN' && session) {
+        console.log('로그인 성공 (onAuthStateChange):', session.user);
+        localStorage.setItem('user', JSON.stringify(session.user));
+  
+        const redirectUrl = sessionStorage.getItem('auth_redirect') || '/';
+        sessionStorage.removeItem('auth_redirect');
+        window.location.href = redirectUrl;
+      }
+    });
+  
+    // 혹시 이미 세션이 세팅된 경우 바로 처리
     const { data, error } = await supabase.auth.getSession();
-    console.log('세션 상태:', data, error);
+    console.log('콜백 첫 세션 상태:', data, error);
   
-    if (error) {
-      console.error('세션 확인 에러:', error);
-      window.location.href = '/login';
-      return;
-    }
-  
-    if (data.session) {
-      console.log('로그인 성공:', data.session.user);
+    if (data?.session) {
+      console.log('이미 로그인된 상태:', data.session.user);
       localStorage.setItem('user', JSON.stringify(data.session.user));
-  
       const redirectUrl = sessionStorage.getItem('auth_redirect') || '/';
       sessionStorage.removeItem('auth_redirect');
       window.location.href = redirectUrl;
-    } else {
-      console.error('세션이 존재하지 않음');
-      window.location.href = '/login';
     }
   });
   </script>

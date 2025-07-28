@@ -481,13 +481,13 @@ class TacticUploader {
     }
 
     getCurrentLanguage() {
-        // Jekyll의 page.language 또는 site.lang 사용
-        // HTML lang 속성에서 언어 감지
-        const htmlLang = document.documentElement.lang;
-        if (htmlLang && ['kr', 'en', 'jp'].includes(htmlLang)) {
-            return htmlLang;
+        // LanguageRouter를 사용하거나 기본값으로 'kr' 반환
+        if (typeof LanguageRouter !== 'undefined') {
+            return LanguageRouter.getCurrentLanguage();
+        } else if (window.currentLang) {
+            return window.currentLang;
         }
-        return window.currentLang || 'kr';
+        return 'kr';
     }
 
     async init() {
@@ -649,26 +649,186 @@ class TacticUploader {
         const file = event.target.files[0];
         if (!file) return;
 
-        try {
-            const text = await file.text();
-            const data = JSON.parse(text);
-            
-            this.tacticData = data;
-            this.showJsonPreview(data);
-            
-            // 제목이 비어있으면 파일의 제목 사용
-            const titleInput = document.getElementById('tacticTitle');
-            if (!titleInput.value.trim() && data.title) {
-                titleInput.value = data.title;
-            }
-            
-        } catch (error) {
-            const errorMessage = this.currentLang === 'en' ? 'Failed to read JSON file. Please check if the format is correct.' :
-                               this.currentLang === 'jp' ? 'JSONファイルの読み取りに失敗しました。形式が正しいか確認してください。' :
-                               'JSON 파일을 읽는데 실패했습니다. 올바른 형식인지 확인해주세요.';
-            alert(errorMessage);
-            console.error('JSON 파싱 오류:', error);
+        // 파일 크기 제한 (예: 1MB)
+        const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+        if (file.size > MAX_FILE_SIZE) {
+            this.showError(this.currentLang === 'en' ? 'File is too large. Maximum size is 1MB.' :
+                         this.currentLang === 'jp' ? 'ファイルサイズが大きすぎます。最大1MBまでです。' :
+                         '파일 크기가 너무 큽니다. 최대 1MB까지 업로드 가능합니다.');
+            event.target.value = '';
+            return;
         }
+
+        const reader = new FileReader();
+        
+        reader.onload = (e) => {
+            try {
+                // JSON 파싱
+                const jsonData = JSON.parse(e.target.result);
+                
+                // 1. 필수 필드 확인
+                if (!jsonData.party || !Array.isArray(jsonData.party)) {
+                    throw new Error('INVALID_FORMAT');
+                }
+                
+                // 2. 파티 멤버가 있는지 확인
+                if (jsonData.party.length === 0) {
+                    throw new Error('NO_CHARACTERS');
+                }
+                
+                // 3. 위험한 코드 실행 방지
+                const jsonString = JSON.stringify(jsonData);
+                if (/(\b|\s)(eval\(|setTimeout\(|setInterval\(|Function\(|document\.|window\.|\$\(|`|\$\{)/.test(jsonString)) {
+                    throw new Error('POTENTIAL_XSS');
+                }
+                
+                // 4. 각 파티 멤버에 필요한 필드가 있는지 확인
+                const requiredFields = ['id', 'name', 'level'];
+                for (const member of jsonData.party) {
+                    if (!member || typeof member !== 'object') {
+                        throw new Error('INVALID_MEMBER');
+                    }
+                    
+                    for (const field of requiredFields) {
+                        if (!(field in member)) {
+                            throw new Error('MISSING_FIELD_' + field.toUpperCase());
+                        }
+                    }
+                }
+                
+                // 검증 완료: 데이터 저장
+                this.tacticData = jsonData;
+                
+                // 미리보기 영역 표시
+                const previewSection = document.getElementById('jsonPreview');
+                previewSection.style.display = 'block';
+                
+                // JSON 데이터를 보기 좋게 표시 (민감한 정보는 제외)
+                const displayData = { ...jsonData };
+                if (displayData.party) {
+                    displayData.party = displayData.party.map(char => ({
+                        id: char.id,
+                        name: char.name,
+                        level: char.level,
+                        // 기타 필요한 필드만 포함
+                    }));
+                }
+                
+                document.getElementById('previewContent').textContent = 
+                    JSON.stringify(displayData, null, 2);
+                
+                // 성공 메시지
+                const successMsg = this.currentLang === 'en' ? 'File uploaded successfully!' :
+                                 this.currentLang === 'jp' ? 'ファイルのアップロードに成功しました！' :
+                                 '파일이 성공적으로 업로드되었습니다!';
+                
+                // 기존 에러 메시지 제거
+                const errorDisplay = document.getElementById('errorDisplay');
+                if (errorDisplay) errorDisplay.remove();
+                
+                // 성공 메시지 표시 (0.3초 후 사라짐)
+                const successDisplay = document.createElement('div');
+                successDisplay.textContent = successMsg;
+                successDisplay.style.color = '#28a745';
+                successDisplay.style.margin = '10px 0';
+                successDisplay.style.padding = '10px';
+                successDisplay.style.border = '1px solid #b1dfbb';
+                successDisplay.style.borderRadius = '4px';
+                successDisplay.style.backgroundColor = '#e8f5e9';
+                document.querySelector('.upload-form').prepend(successDisplay);
+                
+                setTimeout(() => {
+                    successDisplay.style.opacity = '0';
+                    setTimeout(() => {
+                        successDisplay.remove();
+                    }, 300);
+                }, 300);
+                
+            } catch (error) {
+                console.error('JSON 처리 오류:', error);
+                let errorMessage;
+                
+                // 오류 유형에 따른 메시지 설정
+                switch(error.message) {
+                    case 'INVALID_FORMAT':
+                        errorMessage = this.currentLang === 'en' ? 'Invalid file format. The file must contain a valid tactic.' :
+                                      this.currentLang === 'jp' ? '無効なファイル形式です。有効なタクティックデータを含むファイルをアップロードしてください。' :
+                                      '잘못된 파일 형식입니다. 유효한 택틱 데이터가 포함된 파일을 업로드해주세요.';
+                        break;
+                    case 'NO_CHARACTERS':
+                        errorMessage = this.currentLang === 'en' ? 'No character data found in the file.' :
+                                      this.currentLang === 'jp' ? 'ファイルにキャラクター情報が含まれていません。' :
+                                      '파일에 캐릭터 정보가 없습니다.';
+                        break;
+                    case 'POTENTIAL_XSS':
+                        errorMessage = this.currentLang === 'en' ? 'Security alert: The file contains potentially dangerous content.' :
+                                      this.currentLang === 'jp' ? 'セキュリティ警告：ファイルに危険な可能性のあるコンテンツが含まれています。' :
+                                      '보안 경고: 파일에 위험할 수 있는 내용이 포함되어 있습니다.';
+                        break;
+                    case 'INVALID_MEMBER':
+                        errorMessage = this.currentLang === 'en' ? 'Invalid character data format.' :
+                                      this.currentLang === 'jp' ? '無効なキャラクターデータ形式です。' :
+                                      '잘못된 캐릭터 데이터 형식입니다.';
+                        break;
+                    case 'MISSING_FIELD_ID':
+                    case 'MISSING_FIELD_NAME':
+                    case 'MISSING_FIELD_LEVEL':
+                        const field = error.message.replace('MISSING_FIELD_', '').toLowerCase();
+                        errorMessage = this.currentLang === 'en' ? `Missing required field: ${field}` :
+                                      this.currentLang === 'jp' ? `必須フィールドがありません: ${field}` :
+                                      `필수 필드가 없습니다: ${field}`;
+                        break;
+                    default:
+                        errorMessage = this.currentLang === 'en' ? 'Failed to process the file. Please check if the format is correct.' :
+                                      this.currentLang === 'jp' ? 'ファイルの処理に失敗しました。形式が正しいか確認してください。' :
+                                      '파일 처리에 실패했습니다. 올바른 형식인지 확인해주세요.';
+                }
+                
+                this.showError(errorMessage);
+                event.target.value = ''; // 파일 입력 초기화
+            }
+        };
+        
+        reader.onerror = () => {
+            const errorMessage = this.currentLang === 'en' ? 'Error reading the file. The file may be corrupted.' :
+                               this.currentLang === 'jp' ? 'ファイルの読み込み中にエラーが発生しました。ファイルが破損している可能性があります。' :
+                               '파일을 읽는 중 오류가 발생했습니다. 파일이 손상되었을 수 있습니다.';
+            this.showError(errorMessage);
+        };
+        
+        // 파일 읽기 시작
+        try {
+            reader.readAsText(file);
+        } catch (error) {
+            console.error('File read error:', error);
+            this.showError(this.currentLang === 'en' ? 'An error occurred while reading the file.' :
+                          this.currentLang === 'jp' ? 'ファイルの読み込み中にエラーが発生しました。' :
+                          '파일을 읽는 중 오류가 발생했습니다.');
+        }
+    }
+
+    showError(message) {
+        // 오류 메시지를 화면에 표시
+        const errorDisplay = document.getElementById('errorDisplay') || (() => {
+            const div = document.createElement('div');
+            div.id = 'errorDisplay';
+            div.style.color = '#ff4d4d';
+            div.style.margin = '10px 0';
+            div.style.padding = '10px';
+            div.style.border = '1px solid #ffb3b3';
+            div.style.borderRadius = '4px';
+            div.style.backgroundColor = '#fff2f2';
+            document.querySelector('.upload-form').prepend(div);
+            return div;
+        })();
+        
+        errorDisplay.textContent = message;
+        setTimeout(() => {
+            errorDisplay.style.opacity = '0';
+            setTimeout(() => {
+                errorDisplay.remove();
+            }, 300);
+        }, 5000);
     }
 
     showJsonPreview(data) {
@@ -749,10 +909,23 @@ class TacticUploader {
 
     showPreview() {
         if (!this.tacticData) {
-            const message = this.currentLang === 'en' ? 'Please upload a JSON file first.' :
-                           this.currentLang === 'jp' ? '最初にJSONファイルをアップロードしてください。' :
-                           '먼저 JSON 파일을 업로드해주세요.';
-            alert(message);
+            this.showError(this.currentLang === 'en' ? 'Please upload a JSON file first.' :
+                         this.currentLang === 'jp' ? '最初にJSONファイルをアップロードしてください。' :
+                         '먼저 JSON 파일을 업로드해주세요.');
+            return;
+        }
+        
+        // JSON 데이터에 캐릭터가 있는지 확인
+        try {
+            const tacticObj = typeof this.tacticData === 'string' ? JSON.parse(this.tacticData) : this.tacticData;
+            if (!tacticObj.party || !Array.isArray(tacticObj.party) || tacticObj.party.length === 0) {
+                throw new Error('No character data found in JSON');
+            }
+        } catch (error) {
+            console.error('Invalid tactic data:', error);
+            this.showError(this.currentLang === 'en' ? 'Invalid tactic data: No character information found.' :
+                          this.currentLang === 'jp' ? '無効なデータです。キャラクター情報が見つかりません。' :
+                          '유효하지 않은 택틱 데이터입니다. 캐릭터 정보를 찾을 수 없습니다.');
             return;
         }
 
@@ -760,7 +933,7 @@ class TacticUploader {
         const modalContent = document.getElementById('modalPreviewContent');
         
         // 폼 데이터 수집
-        const formData = this.getFormData();
+        const formData = this.getFormData(true);
         
         // 미리보기 생성
         const tacticUrl = `https://lufel.net/tactic/?code=${formData.url}`;
@@ -813,16 +986,19 @@ class TacticUploader {
         return result;
     }
 
-    getFormData() {
+    getFormData(forPreviewOrUpload = false) {
         const type = document.getElementById('tacticType').value;
-        const title = document.getElementById('tacticTitle').value;
+        let title = document.getElementById('tacticTitle').value;
         
-        // 타입을 제목 앞에 자동으로 붙이기
-        const finalTitle = type ? `[${type}] ${title}` : title;
+        // 미리보기나 업로드 시에만 타입을 제목에 포함시킨 데이터 가져오기
+        if (forPreviewOrUpload && type) {
+            title = `[${type}] ${title}`;
+        }
         
         return {
             type: type,
-            title: finalTitle,
+            title: title,
+            originalTitle: document.getElementById('tacticTitle').value, // 원본 제목 유지
             author: document.getElementById('tacticAuthor').value,
             comment: document.getElementById('tacticComment').value,
             region: document.getElementById('tacticRegion').value,
@@ -836,7 +1012,7 @@ class TacticUploader {
             return;
         }
 
-        const formData = this.getFormData();
+        const formData = this.getFormData(true);
         
         // 유효성 검사 (URL은 자동 생성되므로 제외)
         const originalTitle = document.getElementById('tacticTitle').value;

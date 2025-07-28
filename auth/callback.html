@@ -65,8 +65,16 @@ title: 인증 처리 중
 
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
+
+    if (window.location.search.includes('lang=')) {
+      window.location.href = window.location.origin + '/auth/callback' + window.location.hash;
+    }
+
     console.log('콜백 URL:', window.location.href);
-  
+    console.log("Hash fragment:", window.location.hash);
+    console.log("Query params:", window.location.search);
+
+
     // 세션 변화 감지 (세션이 생성될 때까지 기다림)
     supabase.auth.onAuthStateChange((event, session) => {
       console.log('Auth 이벤트:', event, session);

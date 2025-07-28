@@ -35,6 +35,23 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     <div id="uploadForm" class="upload-container" style="display: none;">
         <form id="tacticUploadForm" class="tactic-upload-form">
             <div class="form-section">
+                <h3 data-i18n="tactic_data">택틱 데이터</h3>
+                
+                <!-- JSON 파일 업로드 -->
+                <div class="form-group">
+                    <label for="jsonFile" data-i18n="json_file">택틱 JSON 파일 *</label>
+                    <input type="file" id="jsonFile" name="jsonFile" accept=".json" required>
+                    <small data-i18n="json_file_desc">택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.</small>
+                </div>
+
+                <!-- JSON 데이터 미리보기 -->
+                <div id="jsonPreview" class="json-preview" style="display: none;">
+                    <h4 data-i18n="data_preview">데이터 미리보기</h4>
+                    <div id="previewContent"></div>
+                </div>
+            </div>
+
+            <div class="form-section">
                 <h3 data-i18n="tactic_info">택틱 정보</h3>
                 
                 <!-- 지역 -->
@@ -64,8 +81,8 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
                 <!-- 제목 -->
                 <div class="form-group">
                     <label for="tacticTitle" data-i18n="title">제목 *</label>
-                    <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="[택틱 타입] 보스 이름 (점수)" required>
-                    <small data-i18n="title_example">예: [첩첩 흉몽] 쿠 훌린 (1.4억)</small>
+                    <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="보스 이름 (점수)" required>
+                    <small data-i18n="title_example">예: 쿠 훌린 (1.4억)</small>
                 </div>
 
                 <!-- 작성자 -->
@@ -76,36 +93,12 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
             </div>
 
             <div class="form-section">
-                <h3 data-i18n="tactic_data">택틱 데이터</h3>
-                
-                <!-- JSON 파일 업로드 -->
-                <div class="form-group">
-                    <label for="jsonFile" data-i18n="json_file">택틱 JSON 파일 *</label>
-                    <input type="file" id="jsonFile" name="jsonFile" accept=".json" required>
-                    <small data-i18n="json_file_desc">택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.</small>
-                </div>
-
-                <!-- JSON 데이터 미리보기 -->
-                <div id="jsonPreview" class="json-preview" style="display: none;">
-                    <h4 data-i18n="data_preview">데이터 미리보기</h4>
-                    <div id="previewContent"></div>
-                </div>
-            </div>
-
-            <div class="form-section">
                 <h3 data-i18n="additional_info">추가 정보 (선택사항)</h3>
                 
                 <!-- 코멘트 -->
                 <div class="form-group">
                     <label for="tacticComment" data-i18n="comment">코멘트</label>
-                    <textarea id="tacticComment" name="tacticComment" rows="4" data-i18n-placeholder="comment_placeholder" placeholder="원본 링크, 유튜브 링크, 참고 사항 등"></textarea>
-                </div>
-
-                <!-- URL -->
-                <div class="form-group">
-                    <label for="tacticUrl" data-i18n="related_url">관련 URL</label>
-                    <input type="url" id="tacticUrl" name="tacticUrl" placeholder="https://example.com">
-                    <small data-i18n="url_desc">유튜브 링크, 원본 택틱 링크 등</small>
+                    <textarea id="tacticComment" name="tacticComment" rows="4" data-i18n-placeholder="comment_placeholder" placeholder="참고 사항, 메모 등"></textarea>
                 </div>
             </div>
 
@@ -398,8 +391,8 @@ const translations = {
         event: '이벤트',
         other: '기타',
         title: '제목 *',
-        title_placeholder: '[택틱 타입] 보스 이름 (점수)',
-        title_example: '예: [첩첩 흉몽] 쿠 훌린 (1.4억)',
+        title_placeholder: '보스 이름 (점수)',
+        title_example: '예: 쿠 훌린 (1.4억)',
         author: '작성자 *',
         tactic_data: '택틱 데이터',
         json_file: '택틱 JSON 파일 *',
@@ -407,9 +400,7 @@ const translations = {
         data_preview: '데이터 미리보기',
         additional_info: '추가 정보 (선택사항)',
         comment: '코멘트',
-        comment_placeholder: '원본 링크, 유튜브 링크, 참고 사항 등',
-        related_url: '관련 URL',
-        url_desc: '유튜브 링크, 원본 택틱 링크 등',
+        comment_placeholder: '참고 사항, 메모 등',
         preview: '미리보기',
         upload: '업로드',
         login_required: '로그인이 필요합니다',
@@ -429,8 +420,8 @@ const translations = {
         event: 'Event',
         other: 'Other',
         title: 'Title *',
-        title_placeholder: '[Tactic Type] Boss Name (Score)',
-        title_example: 'e.g.: [Nightmare] Cu Chulainn (140M)',
+        title_placeholder: 'Boss Name (Score)',
+        title_example: 'e.g.: Cu Chulainn (140M)',
         author: 'Author *',
         tactic_data: 'Tactic Data',
         json_file: 'Tactic JSON File *',
@@ -438,9 +429,7 @@ const translations = {
         data_preview: 'Data Preview',
         additional_info: 'Additional Information (Optional)',
         comment: 'Comment',
-        comment_placeholder: 'Original link, YouTube link, notes, etc.',
-        related_url: 'Related URL',
-        url_desc: 'YouTube link, original tactic link, etc.',
+        comment_placeholder: 'Notes, memo, etc.',
         preview: 'Preview',
         upload: 'Upload',
         login_required: 'Login Required',
@@ -460,8 +449,8 @@ const translations = {
         event: 'イベント',
         other: 'その他',
         title: 'タイトル *',
-        title_placeholder: '[タクティックタイプ] ボス名 (スコア)',
-        title_example: '例: [ナイトメア] クー・フーリン (1.4億)',
+        title_placeholder: 'ボス名 (スコア)',
+        title_example: '例: クー・フーリン (1.4億)',
         author: '作成者 *',
         tactic_data: 'タクティックデータ',
         json_file: 'タクティック JSON ファイル *',
@@ -469,9 +458,7 @@ const translations = {
         data_preview: 'データプレビュー',
         additional_info: '追加情報 (オプション)',
         comment: 'コメント',
-        comment_placeholder: '元のリンク、YouTubeリンク、備考など',
-        related_url: '関連URL',
-        url_desc: 'YouTubeリンク、元のタクティックリンクなど',
+        comment_placeholder: '備考、メモなど',
         preview: 'プレビュー',
         upload: 'アップロード',
         login_required: 'ログインが必要です',
@@ -495,24 +482,35 @@ class TacticUploader {
 
     getCurrentLanguage() {
         // Jekyll의 page.language 또는 site.lang 사용
+        // HTML lang 속성에서 언어 감지
+        const htmlLang = document.documentElement.lang;
+        if (htmlLang && ['kr', 'en', 'jp'].includes(htmlLang)) {
+            return htmlLang;
+        }
         return window.currentLang || 'kr';
     }
 
     async init() {
-        this.initLanguage();
         await this.checkAuth();
+        // DOM이 완전히 로드된 후 번역 실행
+        setTimeout(() => {
+            this.initLanguage();
+        }, 100);
         this.initEventListeners();
         this.initRegionDropdown();
     }
 
     initLanguage() {
         const lang = this.currentLang;
+        console.log('Current language:', lang); // 디버그용
+        
         if (translations[lang]) {
             // data-i18n 속성을 가진 요소들 번역
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
                     element.textContent = translations[lang][key];
+                    console.log(`Translated ${key} to:`, translations[lang][key]); // 디버그용
                 }
             });
 
@@ -523,6 +521,16 @@ class TacticUploader {
                     element.placeholder = translations[lang][key];
                 }
             });
+            
+            // option 요소들도 번역
+            document.querySelectorAll('option[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        } else {
+            console.log('No translations found for language:', lang);
         }
     }
 
@@ -755,20 +763,17 @@ class TacticUploader {
         const formData = this.getFormData();
         
         // 미리보기 생성
-        const previewHTML = `
-            <div class="preview-post">
+        const tacticUrl = `https://lufel.net/tactic/?code=${formData.url}`;
+        const previewHtml = `
+            <div class="tactic-post">
                 <div class="post-header">
-                    <h3>
-                        ${formData.url ? `
-                            <a href="${formData.url}" target="_blank" rel="noopener noreferrer" class="post-title">
-                                ${formData.title}
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
-                                </svg>
-                            </a>
-                        ` : `
-                            <span class="post-title">${formData.title}</span>
-                        `}
+                    <h3 class="post-title-wrapper">
+                        <a href="${tacticUrl}" target="_blank" rel="noopener noreferrer" class="post-title">
+                            ${formData.title}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
+                            </svg>
+                        </a>
                     </h3>
                     <div class="post-meta">
                         <span class="post-author">${formData.author}</span>
@@ -779,28 +784,15 @@ class TacticUploader {
                 </div>
                 
                 <div class="post-content">
-                    ${formData.url ? `
-                        <div class="post-link">
-                            <a href="${formData.url}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
-                        </div>
-                    ` : ''}
-                    <div class="tactic-preview-container"></div>
-                </div>
-
-                <div class="post-footer">
-                    <div class="likes-section">
-                        <button class="like-button">
-                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요">
-                        </button>
-                        <div class="likes-count-wrapper">
-                            <span class="likes-count">0</span>
-                        </div>
+                    <div class="post-link">
+                        <a href="${tacticUrl}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
                     </div>
+                    <div class="tactic-preview-container"></div>
                 </div>
             </div>
         `;
         
-        modalContent.innerHTML = previewHTML;
+        modalContent.innerHTML = previewHtml;
         
         // 택틱 프리뷰 추가
         const previewContainer = modalContent.querySelector('.tactic-preview-container');
@@ -812,14 +804,29 @@ class TacticUploader {
         modal.style.display = 'flex';
     }
 
+    generateRandomCode() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < 12; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
     getFormData() {
+        const type = document.getElementById('tacticType').value;
+        const title = document.getElementById('tacticTitle').value;
+        
+        // 타입을 제목 앞에 자동으로 붙이기
+        const finalTitle = type ? `[${type}] ${title}` : title;
+        
         return {
-            type: document.getElementById('tacticType').value,
-            title: document.getElementById('tacticTitle').value,
+            type: type,
+            title: finalTitle,
             author: document.getElementById('tacticAuthor').value,
             comment: document.getElementById('tacticComment').value,
-            url: document.getElementById('tacticUrl').value,
-            region: document.getElementById('tacticRegion').value
+            region: document.getElementById('tacticRegion').value,
+            url: this.generateRandomCode()
         };
     }
 
@@ -831,8 +838,9 @@ class TacticUploader {
 
         const formData = this.getFormData();
         
-        // 유효성 검사
-        if (!formData.type || !formData.title || !formData.author || !formData.region) {
+        // 유효성 검사 (URL은 자동 생성되므로 제외)
+        const originalTitle = document.getElementById('tacticTitle').value;
+        if (!formData.type || !originalTitle || !formData.author || !formData.region) {
             const message = this.currentLang === 'en' ? 'Please fill in all required fields.' :
                            this.currentLang === 'jp' ? '必須項目をすべて入力してください。' :
                            '필수 항목을 모두 입력해주세요.';
@@ -849,7 +857,7 @@ class TacticUploader {
                     title: formData.title,
                     author: formData.author,
                     comment: formData.comment || null,
-                    url: formData.url || null,
+                    url: formData.url,
                     query: this.tacticData,
                     likes: 0,
                     recentLikes: 0,
@@ -857,6 +865,9 @@ class TacticUploader {
                     region: formData.region,
                     user_id: this.currentUser.id
                 }]);
+
+            console.log('Tactic uploaded with URL code:', formData.url);
+            console.log('Full URL will be: https://lufel.net/tactic/?code=' + formData.url);
 
             if (error) {
                 throw error;

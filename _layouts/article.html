@@ -16,6 +16,8 @@ Article 페이지용 동적 메타 태그 설정
 {% assign page_image = page.image | default: "/assets/img/logo/logo.webp" %}
 {% assign page_url = site.url | append: page.url %}
 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
 <!-- 동적 메타 태그 설정 -->
 <meta property="og:title" content="{{ page_title }} - LufelNet">
 <meta property="og:description" content="{{ page_description | strip_html | truncate: 160 }}">

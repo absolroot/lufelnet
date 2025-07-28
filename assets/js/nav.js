@@ -230,11 +230,11 @@ class Navigation {
                             
                             <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/en.png" alt="en" class="flag-icon">
-                                <span>English(Beta)</span>
+                                <span>English</span>
                             </div>
                             <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
-                                <span>日本語(Beta)</span>
+                                <span>日本語</span>
                             </div>
                             <!-- 
                             <div class="option ${currentLang === 'cn' ? 'selected' : ''} disabled" data-value="cn" role="button" tabindex="0" onclick="return false;">

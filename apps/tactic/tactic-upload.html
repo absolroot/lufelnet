@@ -390,17 +390,42 @@ class TacticUploader {
 
     async checkAuth() {
         try {
-            const { data: { user } } = await supabase.auth.getUser();
+            // 먼저 현재 세션 확인
+            const { data: { session }, error: sessionError } = await supabase.auth.getSession();
             
-            if (user) {
-                this.currentUser = user;
+            if (sessionError) {
+                console.error('세션 확인 실패:', sessionError);
+                this.showLoginRequired();
+                return;
+            }
+
+            if (session && session.user) {
+                this.currentUser = session.user;
                 this.showUploadForm();
                 
                 // 작성자 필드에 사용자 이름 자동 입력
                 const authorInput = document.getElementById('tacticAuthor');
-                authorInput.value = user.user_metadata?.display_name || user.email || '';
+                const displayName = session.user.user_metadata?.display_name || 
+                                   session.user.user_metadata?.full_name || 
+                                   session.user.email || '';
+                authorInput.value = displayName;
+                
+                console.log('사용자 인증 확인됨:', displayName);
             } else {
-                this.showLoginRequired();
+                // 세션이 없으면 로컬 스토리지도 확인
+                const localUser = localStorage.getItem('user');
+                if (localUser) {
+                    try {
+                        const userData = JSON.parse(localUser);
+                        // 로컬 스토리지에 사용자 정보가 있지만 세션이 없는 경우
+                        // 세션을 다시 확인하거나 로그인 필요
+                        this.showLoginRequired();
+                    } catch (e) {
+                        this.showLoginRequired();
+                    }
+                } else {
+                    this.showLoginRequired();
+                }
             }
         } catch (error) {
             console.error('인증 확인 실패:', error);

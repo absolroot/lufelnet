@@ -54,6 +54,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   }
 });*/
 
+// URL에서 redirect 파라미터 확인
+function getRedirectUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('redirect') || '/';
+}
+
 // 구글 로그인 처리
 document.getElementById('googleLogin').addEventListener('click', async (e) => {
   try {
@@ -62,6 +68,10 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
     const originalText = button.innerHTML;
     button.disabled = true;
     button.innerHTML = '<span class="loading-spinner"></span> 구글 로그인 중...';
+
+    // 리다이렉트 URL을 세션 스토리지에 저장
+    const redirectUrl = getRedirectUrl();
+    sessionStorage.setItem('auth_redirect', redirectUrl);
 
     // 사용자에게 안내 메시지 표시
     const confirmMessage = 
@@ -85,6 +95,7 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
       // 사용자가 취소한 경우
       button.disabled = false;
       button.innerHTML = originalText;
+      sessionStorage.removeItem('auth_redirect');
       return;
     }
 
@@ -96,6 +107,7 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
     const button = document.getElementById('googleLogin');
     button.disabled = false;
     button.innerHTML = originalText;
+    sessionStorage.removeItem('auth_redirect');
   }
 });
 

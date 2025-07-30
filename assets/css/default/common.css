@@ -492,6 +492,7 @@ input[type="checkbox"]:hover {
 }
 
 /* 『』 문자 간격 조정 */
+/*
 .bracket-left {
     display: inline-block;
     margin-left: -0.4em;
@@ -500,7 +501,7 @@ input[type="checkbox"]:hover {
 .bracket-right {
     display: inline-block;
     margin-right: -0.3em;
-}
+}*/
 
 .number-value {
     color: #c0a0a0;

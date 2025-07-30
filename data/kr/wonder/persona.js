@@ -551,7 +551,7 @@ const personaData = {
             name_en: "Wind Barrier",
             name_jp: "護風の盾",
             effect: "모든 동료가 2턴 동안 공격력 19.5%+590의 실드를 획득한다. 실드가 대미지를 받으면 35.0%의 기본 확률로 대미지를 준 대상을 풍습 상태에 빠뜨린다.",
-            effect_en: "Grants 1 ally 19.5% ATK + 590 Shield for 2 turns. When that ally takes damage, there is a 35.0% base chance to inflict Winded for 2 turns on the source of damage.",
+            effect_en: "Grants All allies 19.5% ATK + 590 Shield for 2 turns. When that ally takes damage, there is a 35.0% base chance to inflict Winded for 2 turns on the source of damage.",
             effect_jp: "味方全体に攻撃力19.5%＋590のシールド(2ターン持続)を付与する。シールドがダメージを受けた時、35.0%の確率で、攻撃者を風襲状態にする。",
             priority: 0,
             icon: "버프광역"

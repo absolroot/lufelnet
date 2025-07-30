@@ -6,7 +6,7 @@ const operationData = {
     "미나미·여름": {
         basic: [
             { label: "의식 0", value: "3 › 2 › 1 › 3 › 2 › 1" },
-            { label: "의식 1", value: "3 › 1 › 2 › 3 › 1 › 2" },
+            { label: "의식 2", value: "3 › 1 › 2 › 3 › 1 › 2" },
         ],
         note: ["· 아이템은 모두 독립적인 대미지 버킷으로 계산된다"],
         note_en: ["· All items are calculated as independent damage buckets"],

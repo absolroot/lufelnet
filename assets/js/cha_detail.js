@@ -94,36 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 전투 진입 시 요구 스탯 +
-        const battlePlusStats = document.querySelector('.battle-plus-stats');
-        if (character.battle_plus_stats && character.battle_plus_stats !== 'nan') {
-            // <b> 태그의 수 확인
-            const bTagCount = (character.battle_plus_stats.match(/<b>/g) || []).length;
-            
-            if (bTagCount >= 2) {
-                // 2열 레이아웃으로 변경
-                battlePlusStats.style.display = 'grid';
-                battlePlusStats.style.gridTemplateColumns = 'repeat(2, 1fr)';
-                battlePlusStats.style.gap = '20px';
-                
-                // <b> 태그로 분할하여 각 섹션을 div로 래핑
-                const sections = character.battle_plus_stats.split(/<b>/).filter(Boolean);
-                battlePlusStats.innerHTML = sections.map(section => {
-                    const processedSection = section.trim().replace(/\//g, '<br>·');
-                    const finalSection = processedSection.replace(/<<br>·b><br>/, '</b>');
-                    return `<div class="battle-stat-section"><b>${finalSection}</div>`;
-                }).join('');
-            } else {
-                // 기존 방식대로 한 열로 표시
-                let content = character.battle_plus_stats
-                    .split('\n').join('<br>')
-                    .replace(/\//g, '<br>·');
-                content = content.replace(/<<br>·b><br>/, '</b>');
-                battlePlusStats.innerHTML = content;
-            }
-        } else {
-            battlePlusStats.textContent = '-';
-        }
+        // battle-plus stats는 character.html에서 처리
 
         // 계시 세트
         const mainRevelationValue = document.querySelector('.main-revelation .value');
@@ -1015,6 +986,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 운영 정보 채우기
     function fillOperationInfo(characterName) {
+        const currentLang = getCurrentLanguage();
         const operationSettings = document.querySelector('.operation-settings');
         if (!operationSettings || !operationData[characterName]) return;
 
@@ -1023,13 +995,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const basicContent = operationSettings.querySelector('.operation-levels');
         const noteContent = operationSettings.querySelector('.operation-notes');
 
+        // 현재 언어에 따른 basic 배열 선택
+        let basicArray = operationData[characterName].basic; // 기본값은 한국어
+        if (currentLang === 'en' && operationData[characterName].basic_en) {
+            basicArray = operationData[characterName].basic_en;
+        } else if (currentLang === 'jp' && operationData[characterName].basic_jp) {
+            basicArray = operationData[characterName].basic_jp;
+        }
+
         // basic 배열이 비어있거나 모든 항목이 빈 값인 경우
-        const hasBasicContent = operationData[characterName].basic.some(item => 
+        const hasBasicContent = basicArray.some(item => 
             item.label && item.value && item.label.trim() !== '' && item.value.trim() !== ''
         );
+
         
         // 현재 언어에 따른 note 배열 선택
-        const currentLang = getCurrentLanguage();
         let noteArray = operationData[characterName].note; // 기본값은 한국어
         
         if (currentLang === 'en' && operationData[characterName].note_en) {
@@ -1045,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // basic 섹션 처리
         if (hasBasicContent) {
-            basicContent.innerHTML = operationData[characterName].basic
+            basicContent.innerHTML = basicArray
                 .filter(item => item.label && item.value && item.label.trim() !== '' && item.value.trim() !== '')
                 .map(item => {
                     const skills = item.value.split(' › ');
@@ -1141,6 +1121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             operationSettings.style.display = 'none';
         }
+        
     }
 
 

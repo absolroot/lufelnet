@@ -743,16 +743,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');
-        // console.log('Character data:', character);
-        // console.log('battle_plus_stats value:', character.battle_plus_stats);
-        // console.log('battlePlusStats element:', battlePlusStats);
+        // 언어 별 battle-plus-stats
+        if (currentLang === 'en' && character.battle_plus_stats_en) {
+            battlePlusStats.textContent = character.battle_plus_stats_en;
+        } else if (currentLang === 'jp' && character.battle_plus_stats_jp) {
+            battlePlusStats.textContent = character.battle_plus_stats_jp;
+        } else {
+            battlePlusStats.textContent = character.battle_plus_stats;
+        }
+        console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
         
-        if (character.battle_plus_stats && character.battle_plus_stats !== 'nan') {
+        if (battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
             // console.log('Original battle_plus_stats:', character.battle_plus_stats);
             
             // <b> 태그의 수 확인
-            const bTagCount = (character.battle_plus_stats.match(/<b>/g) || []).length;
-            
+            const bTagCount = (battlePlusStats.textContent.match(/<b>/g) || []).length;
+            console.log('bTagCount:', bTagCount);
+            console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
             if (bTagCount >= 2) {
                 // 2열 레이아웃으로 변경
                 battlePlusStats.style.display = 'grid';
@@ -760,7 +767,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 battlePlusStats.style.gap = '20px';
                 
                 // <b> 태그로 분할하여 각 섹션을 div로 래핑
-                const sections = character.battle_plus_stats.split(/<b>/).filter(Boolean);
+                const sections = battlePlusStats.textContent.split(/<b>/).filter(Boolean);
                 battlePlusStats.innerHTML = sections.map(section => {
                     const processedSection = section.trim().replace(/\s*\/\s*/g, '<br>·');
                     const finalSection = processedSection.replace(/<<br>·b><br>/, '</b>');
@@ -768,7 +775,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }).join('');
             } else {
                 // 기존 방식대로 한 열로 표시
-                let rawContent = character.battle_plus_stats.trim();
+                let rawContent = battlePlusStats.textContent.trim();
                 // console.log('Raw content:', rawContent);
                 
                 // / 기준으로 분할
@@ -1579,7 +1586,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '총기' : 'Gun Shot',
                 '총격' : 'Gun Shot',
                 '의식' : 'Awareness',
-                '전용무기' : 'Exclusive Weapon'
+                '전용무기' : 'Exclusive Weapon',
+                '4성 무기' : '4 Star Weapon',
+                '패시브' : 'Passive',
+                '실드효과' : 'Shield Effect'
             },
             'jp': {
                 '생명': 'HP',
@@ -1613,7 +1623,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '총기' : '銃撃',
                 '총격' : '銃撃',
                 '의식' : '意識',
-                '전용무기' : '専用武器'
+                '전용무기' : '専用武器',
+                '4성 무기' : '4星武器',
+                '패시브' : 'パッシブ',
+                '실드효과' : 'シールド効果'
             }
         };
 

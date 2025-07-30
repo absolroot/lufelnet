@@ -67,7 +67,9 @@ const criticalCalcData = [
         options: [],
         value: 12.0,
         duration: "-",
-        note: "생명 백분율 50% 이상"
+        note: "생명 백분율 50% 이상",
+        note_en: "Health percentage 50% or above",
+        note_jp: "生命力 50%以上",
     },
     {
         id: "개선",
@@ -105,7 +107,9 @@ const criticalCalcData = [
         options: [],
         value: 12.0,
         duration: "-",
-        note: "만능 속성 한정"
+        note: "만능 속성 한정",
+        note_en: "Only Allmighty",
+        note_jp: "万能属性",
     },
     {
         id: "희망",
@@ -124,7 +128,9 @@ const criticalCalcData = [
         options: [],
         value: 6.0,
         duration: "3턴",
-        note: "스킬로 대미지 8회 중첩 시 효력 발생"
+        note: "스킬로 대미지 8회 중첩 시 효력 발생",
+        note_en: "Skill damage 8 consecutive hits",
+        note_jp: "スキルで8回連続ダメージ",
     },
     {
         id: "wonder1",
@@ -143,7 +149,9 @@ const criticalCalcData = [
         options: [],
         value: 15.7,
         duration: "3턴",
-        note: "원더 크리티컬 확률 40% 이상"
+        note: "원더 크리티컬 확률 40% 이상",
+        note_en: "Wonder critical rate 40% or above",
+        note_jp: "ワンダークリティカル確率40%以上",
     },
     {
         id: "wonder2",
@@ -162,7 +170,9 @@ const criticalCalcData = [
         options: [],
         value: 10.9,
         duration: "3턴",
-        note: "원더 크리티컬 확률 40% 이상"
+        note: "원더 크리티컬 확률 40% 이상",
+        note_en: "Wonder critical rate 40% or above",
+        note_jp: "ワンダークリティカル確率40%以上",
     },
     {
         id: "wonder3",
@@ -181,7 +191,9 @@ const criticalCalcData = [
         options: [],
         value: 6,
         duration: "3턴",
-        note: "전투 시작 시"
+        note: "전투 시작 시",
+        note_en: "start of the battle",
+        note_jp: "戦闘開始時",
     },
     {
         id: "wonder4",
@@ -200,7 +212,9 @@ const criticalCalcData = [
         options: [],
         value: 10,
         duration: "2턴",
-        note: "감전 효과 부여 시"
+        note: "감전 효과 부여 시",
+        note_en: "When shocked",
+        note_jp: "感電効果付与時",
     },
     {
         id: "wonder5",
@@ -219,7 +233,9 @@ const criticalCalcData = [
         options: [],
         value: 11.7,
         duration: "1턴",
-        note: "동료를 목표로 스킬 시전 시"
+        note: "동료를 목표로 스킬 시전 시",
+        note_en: "targeting an ally",
+        note_jp: "仲間を対象にする時",
     },
     {
         id: "wonder6",
@@ -238,7 +254,9 @@ const criticalCalcData = [
         options: [],
         value: 18.0,
         duration: "1턴",
-        note: "3중첩 / 목표가 염동 대미지를 받을 때"
+        note: "3중첩 / 목표가 염동 대미지를 받을 때",
+        note_en: "3 hits / target takes PSY damage",
+        note_jp: "3重 / 目標が念動ダメージを受けた時",
     },
     {
         id: "minami-summer",
@@ -283,7 +301,9 @@ const criticalCalcData = [
         options: [],
         value: 12.0,
         duration: "2턴",
-        note: "『시공의 윤회』사용 시"
+        note: "『시공의 윤회』사용 시",
+        note_en: "When using Skill3",
+        note_jp: "スキル3使用時",
     },
     {
         id: "rico-flower",
@@ -309,7 +329,9 @@ const criticalCalcData = [
         defaultOption: "LV13+심상5",
         value: 18.0,
         duration: "2턴",
-        note: "의식6 → 광역으로 변경"
+        note: "의식6 → 광역으로 변경",
+        note_en: "Skill 6 → Multi",
+        note_jp: "スキル6→複数対象",
     },
     {
         id: "ayaka",
@@ -330,7 +352,9 @@ const criticalCalcData = [
         },
         value: 15.0,
         duration: "2턴",
-        note: "『열성 관객』"
+        note: "『열성 관객』",
+        note_en: "Skill2",
+        note_jp: "スキル2",
     },
     {
         id: "futaba",
@@ -351,7 +375,9 @@ const criticalCalcData = [
         },
         value: 12.0,
         duration: "2/3턴",
-        note: "『분석 진도』100% /『해킹 완료』"
+        note: "『분석 진도』100% /『해킹 완료』",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "yuwoomi",
@@ -398,7 +424,9 @@ const criticalCalcData = [
         },
         value: 12.0,
         duration: "2턴",
-        note: "『놀이친구』"
+        note: "『놀이친구』",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "masaki",
@@ -440,7 +468,9 @@ const criticalCalcData = [
         },
         value: 15.0,
         duration: "",
-        note: "『집착』 2중첩"
+        note: "『집착』 2중첩",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "ichigo2",
@@ -513,7 +543,9 @@ const criticalCalcData = [
         defaultOption: "개조5&6",
         value: 31.4,
         duration: "2턴",
-        note: "집념 2중첩"
+        note: "집념 2중첩",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "yukimakoto1",
@@ -532,7 +564,9 @@ const criticalCalcData = [
         options: [],
         value: 16.0,
         duration: "-",
-        note: "월상 4중첩"
+        note: "월상 4중첩",
+        note_en: "Moon 4stack",
+        note_jp: "月相4重",
     },
     {
         id: "yukimakoto2",
@@ -558,7 +592,9 @@ const criticalCalcData = [
         defaultOption: "개조5&6",
         value: 31.0,
         duration: "2턴",
-        note: "월상 3중첩"
+        note: "월상 3중첩",
+        note_en: "Moon 3stack",
+        note_jp: "月相3重",
     },
     {
         id: "mayumi1",
@@ -579,7 +615,9 @@ const criticalCalcData = [
         },
         value: 20.0,
         duration: "-",
-        note: "고급 강화 효과『소용돌이 억압』"
+        note: "고급 강화 효과『소용돌이 억압』",
+        note_en: "Accelerate skill1",
+        note_jp: "スキル1加速",
     },
     {
         id: "mayumi2",
@@ -619,7 +657,9 @@ const criticalCalcData = [
         },
         value: 16.0,
         duration: "-",
-        note: "『정확』 상태와 『혼돈』 상태가 공존 시"
+        note: "『정확』 상태와 『혼돈』 상태가 공존 시",
+        note_en: "Accurate and Chaos",
+        note_jp: "正確と混乱が同時に存在する時",
     },
     {
         id: "akechi2",
@@ -640,7 +680,9 @@ const criticalCalcData = [
         },
         value: 20.0,
         duration: "-",
-        note: "아군 괴도 크리티컬 확률 합산 50% 이상"
+        note: "아군 괴도 크리티컬 확률 합산 50% 이상",
+        note_en: "All allies critical rate 50% or more",
+        note_jp: "全味方のクリティカル確率50%以上",
     },
     {
         id: "akechi3",
@@ -706,7 +748,9 @@ const criticalCalcData = [
         },
         value: 10.0,
         duration: "2턴",
-        note: "의식6 이상 지속시간 영구"
+        note: "의식6 이상 지속시간 영구",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "yaoling-sajamu3",
@@ -732,7 +776,9 @@ const criticalCalcData = [
         defaultOption: "개조5&6",
         value: 31.0,
         duration: "-",
-        note: "『철꽃의 춤』 상태"
+        note: "『철꽃의 춤』 상태",
+        note_en: "Transform state",
+        note_jp: "鋼花の状態",
     },
     {
         id: "kasmi3",
@@ -753,7 +799,9 @@ const criticalCalcData = [
         },
         value: 10.0,
         duration: "-",
-        note: "『스위프트 스텝』 보유 시 하이라이트 한정"
+        note: "『스위프트 스텝』 보유 시 하이라이트 한정",
+        note_en: "HIGHLIGHT",
+        note_jp: "ハイライト",
     },
     {
         id: "kasmi1",
@@ -779,7 +827,9 @@ const criticalCalcData = [
         defaultOption: "4중첩",
         value: 12.0,
         duration: "-",
-        note: "『춤사위』"
+        note: "『춤사위』",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "kasmi2",
@@ -800,7 +850,9 @@ const criticalCalcData = [
         },
         value: 15.0,
         duration: "3턴",
-        note: "『함께 추는 춤』스킬 2 사용 시"
+        note: "『함께 추는 춤』스킬 2 사용 시",
+        note_en: "Skill2",
+        note_jp: "スキル2",
     },
     {
         id: "kasmi3",
@@ -845,7 +897,9 @@ const criticalCalcData = [
         defaultOption: "개조5&6",
         value: 30.6,
         duration: "2턴",
-        note: "결정 3중첩 획득 기준"
+        note: "결정 3중첩 획득 기준",
+        note_en: "3stack",
+        note_jp: "3重",
     },
     {
         id: "mongtanew-baekso2",
@@ -891,7 +945,9 @@ const criticalCalcData = [
         defaultOption: "13레벨+5심상",
         value: 20.7,
         duration: "-",
-        note: "『조준점』을 보유한 적 공격 시, 스킬3 한정"
+        note: "『조준점』을 보유한 적 공격 시, 스킬3 한정",
+        note_en: "Skill3",
+        note_jp: "スキル3",
     },
     {
         id: "haru4",
@@ -917,7 +973,9 @@ const criticalCalcData = [
         defaultOption: "13레벨+5심상",
         value: 15.5,
         duration: "-",
-        note: "『오버클럭 개조』획득, 총격 한정"
+        note: "『오버클럭 개조』획득, 총격 한정",
+        note_en: "Gun Shot",
+        note_jp: "ガンショット",
     },
     {
         id: "haru1",
@@ -942,7 +1000,9 @@ const criticalCalcData = [
         defaultOption: "조준점 3개",
         value: 18.0,   
         duration: "-",
-        note: "『조준점』 1개 당 6%"
+        note: "『조준점』 1개 당 6%",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "haru2",
@@ -963,7 +1023,9 @@ const criticalCalcData = [
         },
         value: 20.0,
         duration: "-",
-        note: "『개조』 2개 이상 중첩, 『확산 개조』및 『조준점』보유"
+        note: "『개조』 2개 이상 중첩, 『확산 개조』및 『조준점』보유",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "motoha2",
@@ -989,7 +1051,9 @@ const criticalCalcData = [
         defaultOption: "13레벨+5심상",
         value: 10.4,
         duration: "-",
-        note: "『한여름』 상태"
+        note: "『한여름』 상태",
+        note_en: "Transform state",
+        note_jp: "寒夏の状態",
     },
     {
         id: "motoha1",
@@ -1010,7 +1074,9 @@ const criticalCalcData = [
         },
         value: 10.0,
         duration: "-",
-        note: "『한여름』 상태"
+        note: "『한여름』 상태",
+        note_en: "Transform state",
+        note_jp: "寒夏の状態",
     },
     {
         id: "tomoko1",
@@ -1031,7 +1097,9 @@ const criticalCalcData = [
         },
         value: 35.0,
         duration: "-",
-        note: "『찬란한 불꽃놀이』 효과 한정"
+        note: "『찬란한 불꽃놀이』 효과 한정",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "makoto2",
@@ -1090,7 +1158,9 @@ const criticalCalcData = [
         },
         value: 12.0,
         duration: "-",
-        note: "『놀이 친구』가 있을 때"
+        note: "『놀이 친구』가 있을 때",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "YUI1",
@@ -1114,7 +1184,9 @@ const criticalCalcData = [
         defaultOption: "적 감전",
         value: 30.0,
         duration: "-",
-        note: "『추격』한정"
+        note: "『추격』한정",
+        note_en: "Follow-up",
+        note_jp: "追撃",
     },
     {
         id: "YUI3",
@@ -1206,7 +1278,9 @@ const criticalCalcData = [
         },
         value: 30.0,
         duration: "-",
-        note: "스킬3 한정"
+        note: "스킬3 한정",
+        note_en: "Skill3",
+        note_jp: "スキル3",
     },
     {
         id: "morgana2",
@@ -1227,7 +1301,9 @@ const criticalCalcData = [
         },
         value: 30.0,
         duration: "-",
-        note: "『직감』치료 효과 한정"
+        note: "『직감』치료 효과 한정",
+        note_en: "Healing",
+        note_jp: "治療",
     },
     {
         id: "morgana3",
@@ -1319,7 +1395,9 @@ const criticalCalcData = [
         },
         value: 30.0,
         duration: "-",
-        note: "『리바운드』가 없는 경우 스킬 1 한정"
+        note: "『리바운드』가 없는 경우 스킬 1 한정",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "ryuji1",
@@ -1340,7 +1418,9 @@ const criticalCalcData = [
         },
         value: 30.0,
         duration: "-",
-        note: "『리바운드』상태"
+        note: "『리바운드』상태",
+        note_en: "",
+        note_jp: "",
     },
 
     {
@@ -1388,7 +1468,9 @@ const criticalCalcData = [
         },
         value: 20.0,
         duration: "-",
-        note: "『격려』 3중첩 이상 보유, 스킬3 한정"
+        note: "『격려』 3중첩 이상 보유, 스킬3 한정",
+        note_en: "",
+        note_jp: "",
     },
     {
         id: "seige1",
@@ -1415,7 +1497,9 @@ const criticalCalcData = [
         defaultOption: "5중첩",
         value: 20.0,
         duration: "-",
-        note: "『격려』 1중첩 당 4%"
+        note: "『격려』 1중첩 당 4%",
+        note_en: "",
+        note_jp: "",
     },
 
     {

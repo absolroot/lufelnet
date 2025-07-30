@@ -174,6 +174,18 @@ const operationData = {
             { label: "의식 6(단일)", value: "3 › 2 › 1 › 3 › 2 › 1" },
             { label: "의식 6(다중)", value: "3 › 1 › 2 › 3 › 1 › 2" }
         ],
+        basic_en: [
+            { label: "Awareness 0 (Single)", value: "2 › 3 › 2 › 3 › 2 › 3" },
+            { label: "Awareness 0 (Multi)", value: "1 › 3 › 1 › 3 › 1 › 3" },
+            { label: "Awareness 6 (Single)", value: "3 › 2 › 1 › 3 › 2 › 1" },
+            { label: "Awareness 6 (Multi)", value: "3 › 1 › 2 › 3 › 1 › 2" }
+        ],
+        basic_jp: [
+            { label: "意識 0 (単体)", value: "2 › 3 › 2 › 3 › 2 › 3" },
+            { label: "意識 0 (複数)", value: "1 › 3 › 1 › 3 › 1 › 3" },
+            { label: "意識 6 (単体)", value: "3 › 2 › 1 › 3 › 2 › 1" },
+            { label: "意識 6 (複数)", value: "3 › 1 › 2 › 3 › 1 › 2" }
+        ],
         note: [
             "-"
         ]
@@ -216,6 +228,20 @@ const operationData = {
             { label: "의식 1 (다중)", value: "3 › 2 › 3 › 2 › 3 › 2" },
             { label: "의식 6", value: "3 + 1 › 2 › 3 + 1 › 2 › 3 + 1 › 2" },
         ],
+        basic_en: [
+            { label: "Awareness 0 (Gale)", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "Awareness 0 (Single)", value: "3 › 1 › 3 › 1 › 3 › 1" },
+            { label: "Awareness 1 (Single)", value: "3 › 1 › 3 › 1 › 3 › 1" },
+            { label: "Awareness 1 (Multi)", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "Awareness 6", value: "3 + 1 › 2 › 3 + 1 › 2 › 3 + 1 › 2" },
+        ],
+        basic_jp: [
+            { label: "意識 0 (疾風)", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "意識 0 (単体)", value: "3 › 1 › 3 › 1 › 3 › 1" },
+            { label: "意識 1 (単体)", value: "3 › 1 › 3 › 1 › 3 › 1" },
+            { label: "意識 1 (複数)", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "意識 6", value: "3 + 1 › 2 › 3 + 1 › 2 › 3 + 1 › 2" },
+        ],
         note: [
             "· 패시브 만개의 크리티컬 효과 버프 상한 없음",
             "· 질풍 파티가 아닌 경우 의식 0의 운영법은 3-2 고정"
@@ -241,6 +267,14 @@ const operationData = {
         basic: [
             { label: "의식 0", value: "3 › 변신 + 3 › 3 › 3 › 변신 + 3 › 3" },
             { label: "의식 6", value: "3 › 변신 + 3 + 3 › 3 › 3 › 변신 + 3 + 3 › 3" }
+        ],
+        basic_en: [
+            { label: "Awareness 0", value: "3 › Trans + 3 › 3 › 3 › Trans + 3 › 3" },
+            { label: "Awareness 6", value: "3 › Trans + 3 + 3 › 3 › 3 › Trans + 3 + 3 › 3" }
+        ],
+        basic_jp: [
+            { label: "意識 0", value: "3 › 変身 + 3 › 3 › 3 › 変身 + 3 › 3" },
+            { label: "意識 6", value: "3 › 変身 + 3 + 3 › 3 › 3 › 変身 + 3 + 3 › 3" }
         ],
         note: [
             "-"
@@ -313,9 +347,15 @@ const operationData = {
             "-"
         ]
     },
-    "슌": {
+    "shore": {
         basic: [
             { label: "의식 6", value: "총기 › 3 › 2 › 총기 › 3 › 2" }
+        ],
+        basic_en: [
+            { label: "Awareness 6", value: "Gun › 3 › 2 › Gun › 3 › 2" }
+        ],
+        basic_jp: [
+            { label: "意識 6", value: "銃 › 3 › 2 › 銃 › 3 › 2" }
         ],
         note: [
             "-"
@@ -372,6 +412,18 @@ const operationData = {
             { label: "의식 1", value: "1 › 3 + 근접 › 근접 › 1 › 3 + 근접 › 근접" },
             { label: "의식 1 (3/6턴)", value: "근접 › 3 + 1 › 근접 › 근접 › 3 + 1 › 근접" },
             { label: "의식 6", value: "3 + 1 › 근접 › 근접 › 근접 › 근접 › 근접" }
+        ],
+        basic_en: [
+            { label: "Awareness 0", value: "1 › 3 + Melee › 1 › 3 + Melee › 1 › 3 + Melee" },
+            { label: "Awareness 1", value: "1 › 3 + Melee › Melee › 1 › 3 + Melee › Melee" },
+            { label: "Awareness 1 (3/6Turn)", value: "Melee › 3 + 1 › Melee › Melee › 3 + 1 › Melee" },
+            { label: "Awareness 6", value: "3 + 1 › Melee › Melee › Melee › Melee › Melee" }
+        ],
+        basic_jp: [
+            { label: "意識 0", value: "1 › 3 + 接近 › 1 › 3 + 接近 › 1 › 3 + 接近" },
+            { label: "意識 1", value: "1 › 3 + 接近 › 接近 › 1 › 3 + 接近 › 接近" },
+            { label: "意識 1 (3/6턴Turn)", value: "接近 › 3 + 1 › 接近 › 接近 › 3 + 1 › 接近" },
+            { label: "意識 6", value: "3 + 1 › 接近 › 接近 › 接近 › 接近 › 接近" }
         ],
         note: [
             "-"
@@ -430,6 +482,16 @@ const operationData = {
             { label: "의식 1", value: "2 › 1 + 변신 + HL › 3 › 2 › 1 + 변신 + HL › 3" },
             { label: "의식 6", value: "2 › 3 › 변신 + HL + HL + 3 › 2 › 3 › 변신 + HL + HL + 3" }
         ],
+        basic_en: [
+            { label: "Awareness 0", value: "2 › 1 + Trans › 2 + HL › 2 › 1 › 2 + Trans + HL" },
+            { label: "Awareness 1", value: "2 › 1 + Trans + HL › 3 › 2 › 1 + Trans + HL › 3" },
+            { label: "Awareness 6", value: "2 › 3 › Trans + HL + HL + 3 › 2 › 3 › Trans + HL + HL + 3" }
+        ],
+        basic_jp: [
+            { label: "意識 0", value: "2 › 1 + 変身 › 2 + HL › 2 › 1 › 2 + 変身 + HL" },
+            { label: "意識 1", value: "2 › 1 + 変身 + HL › 3 › 2 › 1 + 変身 + HL › 3" },
+            { label: "意識 6", value: "2 › 3 › 変身 + HL + HL + 3 › 2 › 3 › 変身 + HL + HL + 3" }
+        ],
         note: [
             "· 2스킬 + 1스킬 3회 스택 예열 이후 HL 사용"
         ],
@@ -453,6 +515,16 @@ const operationData = {
             { label: "의식 0", value: "1 › 1 › 2 › 2 › 2 › 변신 + 2" },
             { label: "의식 1", value: "1 › 변신 + 1 › 1 › 2 › 변신 + 1 › 변신 + 2" },
             { label: "의식 6", value: "1 › 변신 + 1 › 변신 + 1 › 2 › 변신 + 1 › 변신 + 2"}
+        ],
+        basic_en: [
+            { label: "Awareness 0", value: "1 › 1 › 2 › 2 › 2 › Trans + 2" },
+            { label: "Awareness 1", value: "1 › Trans + 1 › 1 › 2 › Trans + 1 › Trans + 2" },
+            { label: "Awareness 6", value: "1 › Trans + 1 › Trans + 1 › 2 › Trans + 1 › Trans + 2"}
+        ],
+        basic_jp: [
+            { label: "意識 0", value: "1 › 1 › 2 › 2 › 2 › 変身 + 2" },
+            { label: "意識 1", value: "1 › 変身 + 1 › 1 › 2 › 変身 + 1 › 変身 + 2" },
+            { label: "意識 6", value: "1 › 変身 + 1 › 変身 + 1 › 2 › 変身 + 1 › 変身 + 2"}
         ],
         note: [
             "· 지속 대미지 기믹에 따라 사냥꾼/집행관 비율 조정",
@@ -508,6 +580,12 @@ const operationData = {
     "하루": {
         basic: [
             { label: "의식 0", value: "1 › HL + 3 › 총격 › 1 › 3 › HL + 총격" },
+        ],
+        basic_en: [
+            { label: "Awareness 0", value: "1 › HL + 3 › Gun › 1 › 3 › HL + Gun" }
+        ],
+        basic_jp: [
+            { label: "意識 0", value: "1 › HL + 3 › 銃 › 1 › 3 › HL + 銃" }
         ],
         note: [
             "-"

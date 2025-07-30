@@ -573,6 +573,8 @@ alternate_urls:
             detailContainer.dataset.rarity = personaData[personaName].star;
             detailContainer.dataset.name = personaName;  // Add data-name attribute for search
             detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
+            detailContainer.dataset.event = personaData[personaName].event;
+            detailContainer.dataset.wild_emblem_rainbow = personaData[personaName].wild_emblem_rainbow;
             
             // Left card image section
             const cardSection = document.createElement('div');
@@ -670,10 +672,25 @@ alternate_urls:
             // Name and grade
             const headerInfo = document.createElement('div');
             headerInfo.className = 'persona-header-info';
-            headerInfo.innerHTML = `
+            if(personaData[personaName].wild_emblem_rainbow){
+                headerInfo.innerHTML = `
+                <h2>${displayName}</h2>
+                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
+                <img class="persona-wild-emblem-rainbow-img" src="{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png" style="width:20px; height:20px;" alt="How to get : Wild Emblem Rainbow">
+            `;
+            }else if(personaName !== "야노식"){
+                headerInfo.innerHTML = `
+                <h2>${displayName}</h2>
+                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
+                <img class="persona-wild-emblem-rainbow-img" src="{{ site.baseurl }}/assets/img/persona/velvet.png" style="width:16px; height:16px; filter: drop-shadow(0px 1px rgb(255, 255, 255, 0.25)) drop-shadow(1px 0px rgb(255, 255, 255, 0.25)) drop-shadow(-1px 0px rgb(255, 255, 255, 0.25)) drop-shadow(0px -1px rgb(255, 255, 255, 0.25));" alt="How to get : velvet room">
+            `;
+            } else{
+                headerInfo.innerHTML = `
                 <h2>${displayName}</h2>
                 <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
             `;
+            }
+
             
             // Instinct
             const instinctInfo = document.createElement('div');

@@ -57,6 +57,7 @@ const personaData = {
     "비슈누": {
         name_en: "Vishnu",
         name_jp: "ヴィシュヌ",
+        wild_emblem_rainbow : true,
         grade: "8",
         star: "5",
         position: "반항",
@@ -227,6 +228,8 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "주원",
+        wild_emblem_rainbow : true,
+        event: true,
         instinct: {
             name: "해 지면 출몰하는 괴수 III",
             name_en: "Yearly Beast III",
@@ -719,6 +722,7 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "축복",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "죄악의 경청자 III",
             name_en: "Listener of Sin III",
@@ -775,6 +779,7 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "총격",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "하늘과 땅을 잇는 올가미 III",
             name_en: "Serpent of the Sky and Earth III",
@@ -820,6 +825,7 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "물리",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "만연한 적막 III",
             name_en: "Deadly Silence III",
@@ -870,6 +876,7 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "염동",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "인과의 유전 III",
             name_en: "Karma Reversal III",
@@ -922,6 +929,8 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "만능",
+        wild_emblem_rainbow : true,
+        event: true,
         instinct: {
             name: "붕괴의 나팔 III",
             name_en: "Trumpet of Destruction III",
@@ -1015,6 +1024,7 @@ const personaData = {
         star: "5",
         position: "반항",
         element: "화염",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "삼세 제도 III",
             name_en: "Three Ages' Salvation III",
@@ -1111,6 +1121,7 @@ const personaData = {
         star: "5",
         position: "반항",
         element: "핵열",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "격노의 혜산 III",
             name_en: "Furious Umbrella III",
@@ -1254,6 +1265,7 @@ const personaData = {
         star: "5",
         position: "우월",
         element: "화염",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "세속을 초월한 성인 III",
             name_en: "Otherworldly Saint III",
@@ -1397,6 +1409,7 @@ const personaData = {
         star: "5",
         position: "지배",
         element: "축복",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "인왕의 심판 III",
             name_en: "King of Righteousness Judgement III",
@@ -1446,6 +1459,7 @@ const personaData = {
         star: "5",
         position: "지배",
         element: "물리",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "연승의 숙명 III",
             name_en: "Destined Streak III",
@@ -1584,6 +1598,7 @@ const personaData = {
         star: "5",
         position: "방위",
         element: "만능",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "거대한 수호 III",
             name_en: "Higher Protection III",
@@ -1783,6 +1798,8 @@ const personaData = {
         star: "5",
         position: "지배",
         element: "물리",
+        wild_emblem_rainbow : true,
+        event: true,
         instinct: {
             name: "용사의 살의 III",
             name_en: "Fearless Hero III",
@@ -1924,6 +1941,7 @@ const personaData = {
         star: "5",
         position: "방위",
         element: "빙결",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "얼음의 심판 III",
             name_en: "Frozen Adjudication III",
@@ -1970,6 +1988,7 @@ const personaData = {
         star: "5",
         position: "지배",
         element: "만능",
+        wild_emblem_rainbow : true,
         instinct: {
             name: "한밤의 유혹 III",
             name_en: "Midnight Seduction III",
@@ -2274,6 +2293,8 @@ const personaData = {
         star: "5",
         position: "반항",
         element: "물리",
+        wild_emblem_rainbow : true,
+        event: true,
         instinct: {
             name: "포효하는 맹견 III",
             name_en: "Roaring Hound III",

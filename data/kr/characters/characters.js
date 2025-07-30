@@ -89,6 +89,8 @@ const characterData = {
             "LV13+5": "생명 13632, 크리티컬 효과 246.4%"
         },
         "battle_plus_stats": "<b>생명</b>/ 해명의힘 / 직책 8% / 마이팰리스 260 <b>크리티컬 효과</b>/ 해명의 힘",
+        "battle_plus_stats_en": "<b>HP</b>/ Navi Power / Card-Labor 8% / MyPalace 260 <b>Critical Effect</b>/ Navi Power",
+        "battle_plus_stats_jp": "<b>HP</b>/ 解明の力 / 職責 8% / マイパレス 260 <b>クリティカル効果</b>/ 解明の力",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -486,6 +488,8 @@ const characterData = {
             "LV13+5": "효과명중 200%"
         },
         "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 헛수고 : 2턴 동안 30% 효과명중 증가",
+        "battle_plus_stats_en": "MyPalace 2.3% / MyPalace Rating / Futility : 2 turns of 30% Effect Hit increase",
+        "battle_plus_stats_jp": "マイパレス 2.3% / マイパレス評価 / 徒労 : 2ターン分 30% 効果命中増加",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -796,6 +800,8 @@ const characterData = {
             "LV13+5": "SP회복 480.0% (33 사이클) , 크리티컬 효과 448%"
         },
         "battle_plus_stats": "<b>SP회복</b>/ 의식 0: 60% / 마이팰리스: 5% <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45%",
+        "battle_plus_stats_en": "<b>SP recovery</b>/ Awareness 0: 60% / MyPalace: 5% <b>Critical Effect</b>/ Navi Power / Passive: 84% / Creation+Worry: 45%",
+        "battle_plus_stats_jp": "<b>SP回復</b>/ 意識 0: 60% / マイパレス: 5% <b>クリティカル効果</b>/ 解明の力 / パッシブ: 84% / 結造+憂慮: 45%",
         "skill1_lv": "MAX",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
@@ -1681,6 +1687,8 @@ const characterData = {
             "LV13+5": false
         },
         "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 의식3 : 동료가 원소이상 부여 시 2턴 10% 증가 (3중첩)",
+        "battle_plus_stats_en": "· MyPalace 2.3% / MyPalace Rating / Awareness 3: 30%",
+        "battle_plus_stats_jp": "· マイパレス 2.3% / マイパレス評価 / 意識3: 30%",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",

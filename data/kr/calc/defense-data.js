@@ -645,6 +645,21 @@ const defenseCalcData = [
         note: "축복 속성 한정"
     },
     {
+        id: "minami_sum1",
+        charName: "미나미·여름",
+        charImage: "미나미·여름.webp",
+        type: "의식2",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual2.png`,
+        skillName: "바람에 흔들리는 꽃",
+        options: [],
+        values: {},
+        defaultOption: "",
+        value: 25.0,
+        duration: "3턴",
+        note: "스킬1"
+    },
+    {
         id: "ichigo2",
         charName: "이치고",
         charImage: "이치고.webp",
@@ -818,6 +833,21 @@ const defenseCalcData = [
         value: 29.5,
         duration: "2턴/4턴",
         note: "의식1 이상 4턴"
+    },
+    {
+        id: "mont_swan1",
+        charName: "몽타뉴·백조",
+        charImage: "몽타뉴·백조.webp",
+        type: "의식2",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual2.png`,
+        skillName: "세월의 시와 바람의 탄식",
+        options: [],
+        values: {},
+        defaultOption: "",
+        value: 40.0,
+        duration: "3턴",
+        note: "봄 형태"
     },
     {
         id: "tomoko1",

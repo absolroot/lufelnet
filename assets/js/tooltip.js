@@ -201,38 +201,56 @@ function addTooltips() {
             
             // 클릭 이벤트 리스너 추가
             tooltip.addEventListener('click', function(e) {
-                const tooltipText = this.getAttribute('data-tooltip');
-                
-                // 기존 배너가 있다면 제거
-                const existingBanner = document.querySelector('.tooltip-mobile-banner');
-                if (existingBanner) {
-                    existingBanner.remove();
-                }
-                
-                // 새로운 배너 생성
-                const banner = document.createElement('div');
-                banner.className = 'tooltip-mobile-banner';
-                banner.textContent = tooltipText;
-                
-                // 배너에 닫기 버튼 추가
-                const closeButton = document.createElement('button');
-                closeButton.className = 'tooltip-banner-close';
-                closeButton.innerHTML = '×';
-                closeButton.onclick = () => banner.remove();
-                banner.appendChild(closeButton);
-                
-                // 배너를 body에 추가
-                document.body.appendChild(banner);
-                
-                // 5초 후 자동으로 배너 제거
-                setTimeout(() => {
-                    if (banner.parentElement) {
-                        banner.remove();
+                try {
+                    const tooltipText = this.getAttribute('data-tooltip');
+                    
+                    if (!tooltipText) {
+                        console.warn('툴팁 텍스트가 없습니다.');
+                        return;
                     }
-                }, 5000);
-                
-                e.preventDefault();
-                e.stopPropagation();
+                    
+                    // 기존 배너가 있다면 제거
+                    const existingBanner = document.querySelector('.tooltip-mobile-banner');
+                    if (existingBanner) {
+                        existingBanner.remove();
+                    }
+                    
+                    // 새로운 배너 생성
+                    const banner = document.createElement('div');
+                    banner.className = 'tooltip-mobile-banner';
+                    banner.textContent = tooltipText;
+                    
+                    // 배너에 닫기 버튼 추가
+                    const closeButton = document.createElement('button');
+                    closeButton.className = 'tooltip-banner-close';
+                    closeButton.innerHTML = '×';
+                    closeButton.onclick = () => {
+                        if (banner.parentElement) {
+                            banner.remove();
+                        }
+                    };
+                    banner.appendChild(closeButton);
+                    
+                    // 배너를 body에 추가
+                    if (document.body) {
+                        document.body.appendChild(banner);
+                    } else {
+                        console.warn('document.body가 없습니다.');
+                        return;
+                    }
+                    
+                    // 5초 후 자동으로 배너 제거
+                    setTimeout(() => {
+                        if (banner.parentElement) {
+                            banner.remove();
+                        }
+                    }, 5000);
+                    
+                    e.preventDefault();
+                    e.stopPropagation();
+                } catch (error) {
+                    console.error('모바일 툴팁 배너 생성 중 오류:', error);
+                }
             });
         }
     });

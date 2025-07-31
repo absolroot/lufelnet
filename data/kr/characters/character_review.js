@@ -3,7 +3,17 @@ const characterReview = {
         review: ``
     },
     "미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
-        review: ``
+        review: 
+`**아이템 목록**
+- 1턴 동안 동료 1명의 공격력을 30% 증가 (무한 사용)
+- 1턴 동안 동료 1명의 방어력을 45% 증가 (무한 사용)
+- 1턴 동안 동료 1명의 주는 대미지를 25% 증가 (무한 사용)
+- 1턴 동안 동료 1명의 지속 대미지 효과가 10% 증가 
+- 1턴 동안 동료 1명의 추가 효과 대미지 증폭이 10% 증가 
+- 1턴 동안 동료 1명의 ONE MORE / 총공격 대미지 증폭이 10% 증가
+- 1턴 동안 동료 1명의 HIGHLIHGT / 테우르기아 대미지 증폭이 10% 증가
+- 1턴 동안 동료 1명의 스킬 마스터가 600 증가
+`
     },
     "이치고": { name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
         review: ``

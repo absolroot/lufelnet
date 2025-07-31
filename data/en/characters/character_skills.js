@@ -268,7 +268,7 @@ const enCharacterSkillsData = {
             "type": "버프",
             "sp": 24,
             "cool": 0,
-            "description": "Increase all allies' Attack (by 15% of own Attack, up to 569/617/592/650) for 2 turns.\nDepending on the current 『Improvisation』 state, the main target gains additional effects.\n『Improvisation: Penetration』: For 2 turns, the main target's DoT effects increase by 14.0%/15.5%/14.5%/16.0% and Effect Hit Rate increases by 30%.\n『Improvisation: Overturn』: For 2 turns, the main target's Skill Mastery increases by 655/722/682/749, and when applying TECHNICAL, Attack increases by 20%.\n『Improvisation: Empathy』: For 2 turns, the main target's Critical Damage increases by 24.4%/26.9%/25.4%/27.9%.\n『Improvisation: Resonance』: For 2 turns, the main target's Penetration increases by 12.0%/13.2%/12.5%/13.7%."
+            "description": "Increase all allies' Attack (by 15% of own Attack, up to 569/617/592/650) for 2 turns.\nDepending on the current 『Improvisation』 state, the main target gains additional effects.\n『Improvisation: Penetration』: For 2 turns, the main target's DoT effects increase by 14.0%/15.5%/14.5%/16.0% and Ailment Accuracy Rate increases by 30%.\n『Improvisation: Overturn』: For 2 turns, the main target's Skill Mastery increases by 655/722/682/749, and when applying TECHNICAL, Attack increases by 20%.\n『Improvisation: Empathy』: For 2 turns, the main target's Critical Damage increases by 24.4%/26.9%/25.4%/27.9%.\n『Improvisation: Resonance』: For 2 turns, the main target's Penetration increases by 12.0%/13.2%/12.5%/13.7%."
         },
         "skill_highlight": {
             "element": "버프광역",
@@ -283,7 +283,7 @@ const enCharacterSkillsData = {
         "passive2": {
             "name": "Reversal",
             "element": "패시브",
-            "description": "For every 1% of Effect Hit Rate, increase Attack by 0.72%, up to 72.0%."
+            "description": "For every 1% of Ailment Accuracy Rate, increase Attack by 0.72%, up to 72.0%."
         }
     },
 	"마나카": {
@@ -417,7 +417,7 @@ const enCharacterSkillsData = {
             "type":"디버프", 
             "sp": 20,
             "cool": 0,
-            "description": "Gain 1 stack of 『Flame Suppression』. Deal 97.6%/107.6%/103.6%/113.6% of Attack as Ice damage to all enemies, with a 50% base chance to inflict Freeze. Also reduce Defense by 7.8%/8.6%/8.3%/9.1% (Defense decreases by an additional 1% per 5.47% Effect Hit, up to 31.2%/34.4%/33.2%/36.4%), and increase Skill Mastery by 195/195/207/207 points when attacking this unit, lasting 3 turns. If there are enemies with Burn, remove Burn and inflict all enemies with 『Blazing Breath』 (『Blazing Breath』 cannot trigger this effect).\n『Blazing Breath』: Treated as Burn for 3 turns. All Phantom Thieves gain 976/1076/1036/1136 Skill Mastery when attacking units with this state."
+            "description": "Gain 1 stack of 『Flame Suppression』. Deal 97.6%/107.6%/103.6%/113.6% of Attack as Ice damage to all enemies, with a 50% base chance to inflict Freeze. Also reduce Defense by 7.8%/8.6%/8.3%/9.1% (Defense decreases by an additional 1% per 5.47% Ailment Accuracy, up to 31.2%/34.4%/33.2%/36.4%), and increase Skill Mastery by 195/195/207/207 points when attacking this unit, lasting 3 turns. If there are enemies with Burn, remove Burn and inflict all enemies with 『Blazing Breath』 (『Blazing Breath』 cannot trigger this effect).\n『Blazing Breath』: Treated as Burn for 3 turns. All Phantom Thieves gain 976/1076/1036/1136 Skill Mastery when attacking units with this state."
         },
         "skill2": {
             "name": "Binding Waves",
@@ -433,12 +433,12 @@ const enCharacterSkillsData = {
             "type":"디버프",
             "sp": 20,
             "cool": 0,
-            "description": "Can be cast upon reaching 2 stacks of 『Flame Suppression』.\nConsume 2 stacks of 『Flame Suppression』 to deal 109.8%/121.1%/116.5%/127.8% of Attack as Ice damage to all enemies and reduce Defense by 7.3%/8.1%/7.7%/8.5% (Defense decreases by an additional 1% per 5.83% Effect Hit, up to 29.3%/32.3%/31.1%/34.1%), lasting 2 turns. Also applies Ice TECHNICAL, and when 『Ice Flame』 triggers, it always hits and the effect upgrades to 『Lightbringer』.\n『Lightbringer』: Increases all damage received by 9.8%/10.8%/10.4%/11.4% (increases by 1% per 4.38% Effect Hit, up to 39.0%/43.0%/41.4%/45.4%).\n\nUpon reaching 4 stacks of 『Flame Suppression』, this skill upgrades to 『Dragon Surge Explosion』.\n『Dragon Surge Explosion』: Consume 4 stacks of 『Flame Suppression』 to deal 131.8%/145.3%/139.9%/153.4% of Attack as Ice damage to all enemies and reduce Defense by 8.8%/9.7%/9.3%/10.2% (Defense decreases by an additional 1% per 4.86% Effect Hit, up to 35.1%/38.7%/37.3%/40.9%), lasting 2 turns. Also applies Ice TECHNICAL, and when 『Ice Flame』 triggers, it always hits and upgrades to 『Lightbringer』.\n『Lightbringer』: Increases all damage received by 11.7%/12.9%/12.4%/13.6% (increases by 1% per 3.65% Effect Hit, up to 46.8%/51.6%/49.7%/54.5%)."
+            "description": "Can be cast upon reaching 2 stacks of 『Flame Suppression』.\nConsume 2 stacks of 『Flame Suppression』 to deal 109.8%/121.1%/116.5%/127.8% of Attack as Ice damage to all enemies and reduce Defense by 7.3%/8.1%/7.7%/8.5% (Defense decreases by an additional 1% per 5.83% Ailment Accuracy, up to 29.3%/32.3%/31.1%/34.1%), lasting 2 turns. Also applies Ice TECHNICAL, and when 『Ice Flame』 triggers, it always hits and the effect upgrades to 『Lightbringer』.\n『Lightbringer』: Increases all damage received by 9.8%/10.8%/10.4%/11.4% (increases by 1% per 4.38% Ailment Accuracy, up to 39.0%/43.0%/41.4%/45.4%).\n\nUpon reaching 4 stacks of 『Flame Suppression』, this skill upgrades to 『Dragon Surge Explosion』.\n『Dragon Surge Explosion』: Consume 4 stacks of 『Flame Suppression』 to deal 131.8%/145.3%/139.9%/153.4% of Attack as Ice damage to all enemies and reduce Defense by 8.8%/9.7%/9.3%/10.2% (Defense decreases by an additional 1% per 4.86% Ailment Accuracy, up to 35.1%/38.7%/37.3%/40.9%), lasting 2 turns. Also applies Ice TECHNICAL, and when 『Ice Flame』 triggers, it always hits and upgrades to 『Lightbringer』.\n『Lightbringer』: Increases all damage received by 11.7%/12.9%/12.4%/13.6% (increases by 1% per 3.65% Ailment Accuracy, up to 46.8%/51.6%/49.7%/54.5%)."
         },
         "skill_highlight": {
             "element": "빙결광역",
             "type":"디버프",
-            "description": "Deal 39.0%/43.0%/41.4%/45.4% of Attack as Ice damage to all enemies and increase their damage taken for 2 turns (1% increase per 5.83% Effect Hit, up to 29.3%/32.3%/31.1%/34.1%). Also apply Ice TECHNICAL to the target, increasing 『Ice Seal』 base chance to 28%, and enemies under Ice Seal take increased damage (1% increase per 17.5% Effect Hit, up to 9.8%/10.8%/10.4%/11.4%). Then deal 117.1%/129.1%/124.3%/136.3% of Attack as Ice damage to all enemies."
+            "description": "Deal 39.0%/43.0%/41.4%/45.4% of Attack as Ice damage to all enemies and increase their damage taken for 2 turns (1% increase per 5.83% Ailment Accuracy, up to 29.3%/32.3%/31.1%/34.1%). Also apply Ice TECHNICAL to the target, increasing 『Ice Seal』 base chance to 28%, and enemies under Ice Seal take increased damage (1% increase per 17.5% Ailment Accuracy, up to 9.8%/10.8%/10.4%/11.4%). Then deal 117.1%/129.1%/124.3%/136.3% of Attack as Ice damage to all enemies."
         },
         "passive1": {
             "name": "Protection",
@@ -459,7 +459,7 @@ const enCharacterSkillsData = {
             "type":"디버프",
             "sp": 22,
             "cool": 0,
-            "description": "Deals 73.2%/80.7%/77.7%/85.2% of Attack as Fire damage to all enemies. Reduces the target's Defense (by 15.4% of her Effect Hit Rate, up to 26.4%/29.2%/27.9%/30.7%), and when hit by Fire skills, their Defense is further reduced by 26.4%/26.4%/28.0%/28.0% for 2 turns. Also has a 50% base chance to inflict Burn. Runa gains 『Heated Welcome』 (if both this and 『Warning to Villains』 apply, the highest Defense reduction value is used)."
+            "description": "Deals 73.2%/80.7%/77.7%/85.2% of Attack as Fire damage to all enemies. Reduces the target's Defense (by 15.4% of her Ailment Accuracy Rate, up to 26.4%/29.2%/27.9%/30.7%), and when hit by Fire skills, their Defense is further reduced by 26.4%/26.4%/28.0%/28.0% for 2 turns. Also has a 50% base chance to inflict Burn. Runa gains 『Heated Welcome』 (if both this and 『Warning to Villains』 apply, the highest Defense reduction value is used)."
         },
         "skill2": {
             "name": "Warning to Villains",
@@ -467,7 +467,7 @@ const enCharacterSkillsData = {
             "type":"디버프",
             "sp": 22,
             "cool": 0,
-            "description": "Deals 170.8%/188.3%/181.3%/198.8% of Attack as Fire damage to 1 enemy, and reduces their Defense by 14.6%/14.6%/15.5%/15.5% + (31.4% of her Effect Hit Rate, up to 53.7%/59.3%/56.9%/62.5%) for 2 turns. Runa gains 『Relentless Pursuit』 (if both this and 『Fiery Handshake』 apply, the highest Defense reduction value is used)."
+            "description": "Deals 170.8%/188.3%/181.3%/198.8% of Attack as Fire damage to 1 enemy, and reduces their Defense by 14.6%/14.6%/15.5%/15.5% + (31.4% of her Ailment Accuracy Rate, up to 53.7%/59.3%/56.9%/62.5%) for 2 turns. Runa gains 『Relentless Pursuit』 (if both this and 『Fiery Handshake』 apply, the highest Defense reduction value is used)."
         },
         "skill3": {
             "name": "GOGO Woof!",
@@ -475,17 +475,17 @@ const enCharacterSkillsData = {
             "type":"디버프",
             "sp": 24,
             "cool": 0,
-            "description": "Depending on whether she has 『Heated Welcome』 or 『Relentless Pursuit』, this skill will trigger a different effect, but only one can activate at a time.\n『Heated Welcome』: Deals 109.8%/109.8%/116.6%/116.6% of Attack as Fire damage to all enemies, and for 2 turns, increases damage they take (by 24% of her Effect Hit Rate, up to 41.0%/45.2%/43.5%/47.7%) and Fire damage taken by 20.5%/22.7%/21.7%/23.9%.\n『Relentless Pursuit』: Deals 219.6%/219.6%/233.1%/233.1% of Attack as Fire damage to 1 enemy, and for 2 turns, increases damage they take (by 34.3% of her Effect Hit Rate, up to 58.6%/64.7%/62.1%/68.2%) and additional effect damage by 29.3%/31.6%/31.8%/34.1%."
+            "description": "Depending on whether she has 『Heated Welcome』 or 『Relentless Pursuit』, this skill will trigger a different effect, but only one can activate at a time.\n『Heated Welcome』: Deals 109.8%/109.8%/116.6%/116.6% of Attack as Fire damage to all enemies, and for 2 turns, increases damage they take (by 24% of her Ailment Accuracy Rate, up to 41.0%/45.2%/43.5%/47.7%) and Fire damage taken by 20.5%/22.7%/21.7%/23.9%.\n『Relentless Pursuit』: Deals 219.6%/219.6%/233.1%/233.1% of Attack as Fire damage to 1 enemy, and for 2 turns, increases damage they take (by 34.3% of her Ailment Accuracy Rate, up to 58.6%/64.7%/62.1%/68.2%) and additional effect damage by 29.3%/31.6%/31.8%/34.1%."
         },
         "skill_highlight": {
             "element": "화염광역",
             "type":"디버프",
-            "description": "Deals 214.7%/236.7%/227.9%/249.9% of Attack as Fire damage to all enemies, and the enemy team gains 2 stacks of 『Super Villain』.\n『Super Villain』: When any enemy is hit by a Chase (additional effect) skill or Fire skill, 1 stack is consumed, and for 2 turns, they take increased damage (by 22.9% of her Effect Hit Rate, up to 39.0%/43.0%/41.4%/45.4%)."
+            "description": "Deals 214.7%/236.7%/227.9%/249.9% of Attack as Fire damage to all enemies, and the enemy team gains 2 stacks of 『Super Villain』.\n『Super Villain』: When any enemy is hit by a Chase (additional effect) skill or Fire skill, 1 stack is consumed, and for 2 turns, they take increased damage (by 22.9% of her Ailment Accuracy Rate, up to 39.0%/43.0%/41.4%/45.4%)."
         },
         "passive1": {
             "name": "Loyalty",
             "element": "패시브",
-            "description": "During battle, she gains an Attack bonus equal to 60.0% of her Effect Hit Rate."
+            "description": "During battle, she gains an Attack bonus equal to 60.0% of her Ailment Accuracy Rate."
         },
         "passive2": {
             "name": "Passion",
@@ -875,7 +875,7 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 170.8%/186.3%/177.8%/193.3% Nuclear damage to 1 enemy. Reduces the target's DEF by 22.5% of Chizuko Nagao's Effect Hit Rate, up to 37.3%/37.3%/38.8%/38.8%. Also has a 100% base chance to inflict a random elemental ailment the enemy does not already have."
+            "description": "Deals 170.8%/186.3%/177.8%/193.3% Nuclear damage to 1 enemy. Reduces the target's DEF by 22.5% of Chizuko Nagao's Ailment Accuracy Rate, up to 37.3%/37.3%/38.8%/38.8%. Also has a 100% base chance to inflict a random elemental ailment the enemy does not already have."
         },
         "skill2": {
             "name": "Carpet Bombing",
@@ -891,7 +891,7 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 24,
             "cool": 1,
-            "description": "Deals 195.2%/215.2%/203.2%/223.2% Nuclear damage to 1 enemy. For each elemental ailment the target has, the damage they take increases by 11.3% of Chizuko Nagao's Effect Hit Rate, up to 18.7%/20.7%/19.5%/21.5%. Lasts 2 turns and can stack up to 3 times."
+            "description": "Deals 195.2%/215.2%/203.2%/223.2% Nuclear damage to 1 enemy. For each elemental ailment the target has, the damage they take increases by 11.3% of Chizuko Nagao's Ailment Accuracy Rate, up to 18.7%/20.7%/19.5%/21.5%. Lasts 2 turns and can stack up to 3 times."
         },
         "skill_highlight": {
             "element": "핵열",
@@ -906,7 +906,7 @@ const enCharacterSkillsData = {
         "passive2": {
             "name": "Tactics",
             "element": "패시브",
-            "description": "During battle, Chizuko Nagao gains an ATK bonus equal to 45.0% of her Effect Hit Rate."
+            "description": "During battle, Chizuko Nagao gains an ATK bonus equal to 45.0% of her Ailment Accuracy Rate."
         }
     },
     "카스미": {
@@ -986,12 +986,12 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Infection",
             "element": "패시브",
-            "description": "For every 30% Effect Hit Rate, the Physical damage of 『Bleed』 increases by 4% of Kira Kitazato’s ATK. Up to 90% Effect Hit Rate is counted."
+            "description": "For every 30% Ailment Accuracy Rate, the Physical damage of 『Bleed』 increases by 4% of Kira Kitazato’s ATK. Up to 90% Ailment Accuracy Rate is counted."
         },
         "passive2": {
             "name": "Corruption",
             "element": "패시브",
-            "description": "While in 『Hunter』 State, Effect Hit Rate increases by 36%.\nWhile in 『Executioner』 State, Penetration increases by 21%."
+            "description": "While in 『Hunter』 State, Ailment Accuracy Rate increases by 36%.\nWhile in 『Executioner』 State, Penetration increases by 21%."
         }
     },
     "토모코·여름": {
@@ -1010,7 +1010,7 @@ const enCharacterSkillsData = {
             "type":"치료",
             "sp": 27,
             "cool": 0,
-            "description": "Heals 1 ally for 22.4%/22.4%/23.8%/23.8% of ATK +1438/1749/1767/2078 HP, increases their ATK by 14.6%/14.6%/15.5%/15.5%, Effect Hit Rate by 58.6%/58.6%/62.2%/62.2%, and damage dealt by 30%. Whenever that ally deals skill damage, 1 stack of 『Flame』 is added and lasts 2 turns (up to 5 additional stacks of 『Flame』 during the duration)."
+            "description": "Heals 1 ally for 22.4%/22.4%/23.8%/23.8% of ATK +1438/1749/1767/2078 HP, increases their ATK by 14.6%/14.6%/15.5%/15.5%, Ailment Accuracy Rate by 58.6%/58.6%/62.2%/62.2%, and damage dealt by 30%. Whenever that ally deals skill damage, 1 stack of 『Flame』 is added and lasts 2 turns (up to 5 additional stacks of 『Flame』 during the duration)."
         },
         "skill3": {
             "name": "Midnight Thrill",
@@ -1070,12 +1070,12 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Bullet Casting",
             "element": "패시브",
-            "description": "For every 1.45% Effect Hit Rate, gains 1% ATK bonus (up to 165.0%). For every 50% Effect Hit Rate, gains 1 stack of Critical Effect +20%, up to 3 stacks."
+            "description": "For every 1.45% Ailment Accuracy Rate, gains 1% ATK bonus (up to 165.0%). For every 50% Ailment Accuracy Rate, gains 1 stack of Critical Effect +20%, up to 3 stacks."
         },
         "passive2": {
             "name": "Tactics",
             "element": "패시브",
-            "description": "Each modification used permanently adds 1 stack of 『Gun Barrel Heating』. When 『Gun Barrel Heating』 reaches certain stacks, Haru gains attribute bonuses:\n1 stack: +18.0% Effect Hit Rate, +18.0% Effect Resistance\n2 stacks: +18.0% ATK, +18.0% DEF\n3 stacks: +18.0% Critical Effect"
+            "description": "Each modification used permanently adds 1 stack of 『Gun Barrel Heating』. When 『Gun Barrel Heating』 reaches certain stacks, Haru gains attribute bonuses:\n1 stack: +18.0% Ailment Accuracy Rate, +18.0% Effect Resistance\n2 stacks: +18.0% ATK, +18.0% DEF\n3 stacks: +18.0% Critical Effect"
         }
     },
     "후타바": {

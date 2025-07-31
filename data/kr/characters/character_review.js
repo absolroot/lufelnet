@@ -2,7 +2,7 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
-    "미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
+"미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
         review: `
 대미지를 높이는 수치에 대한 거의 모든 버프를 보유하고 있고 수치 또한 높은 편으로 **모든 주력 딜러를 보조 가능**한 서포터입니다.
 
@@ -14,9 +14,9 @@ const characterReview = {
 
 
 **아이템 목록**
-- 1턴 동안 동료 1명의 공격력을 30% 증가 (무한 사용)
-- 1턴 동안 동료 1명의 방어력을 45% 증가 (무한 사용)
-- 1턴 동안 동료 1명의 주는 대미지를 25% 증가 (무한 사용)
+- 1턴 동안 동료 1명의 공격력을 30% 증가 (무제한)
+- 1턴 동안 동료 1명의 방어력을 45% 증가 (무제한)
+- 1턴 동안 동료 1명의 주는 대미지를 25% 증가 (무제한)
 - 1턴 동안 동료 1명의 지속 대미지 효과가 10% 증가 
 - 1턴 동안 동료 1명의 추가 효과 대미지 증폭이 10% 증가 
 - 1턴 동안 동료 1명의 ONE MORE / 총공격 대미지 증폭이 10% 증가
@@ -33,9 +33,9 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 <br>
 
 **Item List**
-- Increases 1 ally's ATK by 30% for 1 turn (unlimited use)
-- Increases 1 ally's DEF by 45% for 1 turn (unlimited use)
-- Increases 1 ally's damage dealt by 25% for 1 turn (unlimited use)
+- Increases 1 ally's ATK by 30% for 1 turn (unlimited)
+- Increases 1 ally's DEF by 45% for 1 turn (unlimited)
+- Increases 1 ally's damage dealt by 25% for 1 turn (unlimited)
 - Increases 1 ally's DoT effect by 10% for 1 turn
 - Increases 1 ally's Additional Effect DMG by 10% for 1 turn
 - Increases 1 ally's ONE MORE / All-Out Attack DMG by 10% for 1 turn
@@ -52,9 +52,9 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 <br>
 
 **アイテム一覧**
-- 味方単体の攻撃力を1ターンの間30%上昇（無制限使用）
-- 味方単体の防御力を1ターンの間45%上昇（無制限使用）
-- 味方単体の与ダメージを1ターンの間25%上昇（無制限使用）
+- 味方単体の攻撃力を1ターンの間30%上昇（無制限）
+- 味方単体の防御力を1ターンの間45%上昇（無制限）
+- 味方単体の与ダメージを1ターンの間25%上昇（無制限）
 - 味方単体の継続ダメージ効果を1ターンの間10%上昇
 - 味方単体の追加効果ダメージを1ターンの間10%上昇
 - 味方単体のONE MORE／総攻撃ダメージを1ターンの間10%上昇
@@ -68,8 +68,34 @@ After using Skill 3, the user can consume a buff during their own turn to use an
     "사나다": { name_en: "Akihiko Sanada", name_jp: "真田 明彦", codename: "SANADA",
         review: ``
     },
-    "유카리": { name_en: "Yukari Takeba", name_jp: "岳羽 ゆかり", codename: "YUKARI",
-        review: ``
+"유카리": { name_en: "Yukari Takeba", name_jp: "岳羽 ゆかり", codename: "YUKARI",
+        review: `
+**테우르기아 에너지 충전**이 핵심 기능인 힐러입니다. 
+
+버퍼로서의 관점을 본다면 P3 파티에 한정적이지만, 힐러로서 바라본다면 생존 환경에서 충분히 뛰어난 활약을 할 수 있습니다.
+
+적에게 스택을 부여하고, 부여된 적에게 피해를 입히면 치료와 테우르기아 게이지를 회복시킬 수 있는 스택을 얻습니다. 
+
+해당 **추가 치료는 "YUKARI의 행동 시작 전"까지 1회만 발동**합니다. 
+`,
+review_en: 
+`A healer whose core function is **Theurgy energy charging**.
+
+From a buffer perspective, she is limited to P3 party setups, but as a healer, she performs excellently in survival-focused environments.
+
+She applies stacks to enemies, and when attacking stacked enemies, she gains stacks that restore healing and Theurgy gauge.
+
+This **additional healing activates only once "before YUKARI's action begins"**.
+`,
+review_jp: `
+**テウルギアエネルギーのチャージ**が主な役割のヒーラーです。
+
+バッファーとして見ればP3パーティに限定されますが、ヒーラーとして見れば生存環境で十分に活躍できます。
+
+敵にスタックを付与し、スタックされた敵にダメージを与えることで、回復とテウルギアゲージを回復するスタックを獲得します。
+
+この**追加回復は「YUKARIの行動開始前」までに1回のみ発動**します。
+`
     },
     "유키 마코토": { name_en: "Makoto Yuki", name_jp: "結城 理", codename: "MAKOTO",
         review: ``
@@ -155,7 +181,7 @@ After using Skill 3, the user can consume a buff during their own turn to use an
     "야오링·사자무": { name_en: "Yaoling Li·Lion Dance", name_jp: "李瑤鈴·獅子舞", codename: "RIN",
         review: ``
     },
-    "유스케": { name_en: "Yusuke Kitagawa", name_jp: "喜多川 祐介", codename: "FOX",
+"유스케": { name_en: "Yusuke Kitagawa", name_jp: "喜多川 祐介", codename: "FOX",
         review: `**방어력**을 기반으로 하는 **반격형 딜러**로 설계돼 **버티거나 오토 플레이에 뛰어난 딜러**입니다.
 
 **65%의 반격확률**이라는 불안정한 요소가 있어 스킬3의 100% 반격이나 하이라이트를 사용하지 않는 경우, 최고 점수를 위해 반복 플레이가 필요할 수 있습니다.
@@ -217,7 +243,45 @@ review_jp:`**防御力**を基にした**反撃型アタッカー**として設�
         review: ``
     },
     "토시야": { name_en: "Seumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
-        review: ``
+        review:`
+주원 효과를 기반으로 적에게 % 대미지를 주는 딜러입니다.
+
+**주원 효과는 적의 체력에 비례한 대미지를 주며, 주원이 아닌 만능 속성 대미지에 영향**을 받습니다.
+
+따라서 만능 속성 대미지를 올릴 수 있도록 원더의 무기 메커니컬 심판자를 활용하거나, **대미지 보너스를 올리는 형태로 버프가 구성**돼야 합니다.
+
+스킬1이 부여하는 [증오 시]는 30%의 확률로 적에게 주원 효과를 부여하고, 30%는 효과 명중 수치에 따라 증가할 수 있습니다.
+
+스킬1을 반복해 최대한 많은 주원 효과를 적에게 부여하고, 페르소나 **파즈스**의 패시브를 통해 주원 효과를 결산시키면 큰 대미지를 적에게 부여할 수 있습니다.
+
+참고사항으로 절대 다수의 **경쟁 콘텐츠 보스는 체력 비례 대미지 대폭 감소 패시브를 지니고 있습니다.**
+`,
+        review_en: `
+A damage dealer that uses Curse Effects to deal % damage to enemies.
+
+**Curse Effects deal damage based on the enemy's HP and are affected by Almighty damage, not Curse itself.**
+
+Therefore, buffs should be structured to **increase Damage Bonus(Atk Mult)** or use Wonder’s weapon “Ex Machina” to boost Almighty damage.
+
+**[Verse of Hate]** applied by Skill 1 has a 30% chance to inflict Curse Effects on the enemy, and this 30% can increase depending on Ailment Accuracy Rate.
+
+By repeating Skill 1 to inflict as many Curse Effects as possible, and using Persona **Pazuzu**’s passive to finalize those effects, you can deal great damage to enemies.
+
+As a side note, **most competitive content bosses have passives that greatly reduce HP-percentage-based damage.**
+`,
+review_jp: `
+呪怨効果を基に敵に％ダメージを与えるアタッカーです。
+
+**呪怨効果は敵のHPに比例したダメージを与え、呪怨ではなく万能属性ダメージの影響を受けます。**
+
+そのため、ワンダーの武器「機械の裁き」を活用して万能ダメージを上げるか、**ダメージボーナスを上げる形でバフを構成**する必要があります。
+
+スキル1で付与されるVerse of Hateは30%の確率で敵に呪怨効果を付与し、この30%は効果命中により上昇する可能性があります。
+
+スキル1を繰り返してできるだけ多くの敵に呪怨効果を付与し、ペルソナ**パズズ**のパッシブでこれを清算することで、大きなダメージを与えることができます。
+
+参考までに、**ほとんどの競争コンテンツのボスはHP比例ダメージを大きく軽減するパッシブを持っています。**
+`
     },
     "하루": { name_en: "Haru Okumura", name_jp: "奥村 春", codename: "NOIR",
         review: ``

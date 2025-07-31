@@ -113,7 +113,7 @@ Each revelation position has fixed main stats that can appear.
 | Universe | Attack, Defense |
 | Sun | HP |
 | Moon | Attack, Attack Mult., HP, Defense, Healing Effect |
-| Star | Crit Rate, Crit Mult., HP, Attack, Defense, Effect Hit |
+| Star | Crit Rate, Crit Mult., HP, Attack, Defense, Ailment Accuracy |
 | Planet | Attack, Defense, HP, SP Recovery, Speed |
 
 Generally, since main stats have higher maximum values, it's better to prioritize main stats before considering sub stats.
@@ -153,7 +153,7 @@ Below are the sub stat values that can appear on each revelation:
 | **HP** | 175 | 157 | 140 | 123 | 105 |
 | **Defense %** | 6.4% | 5.8% | 5.2% | 4.5% | 3.8% |
 | **Defense** | / | / | / | / | / |
-| **Effect Hit** | 5.2% | 4.7% | 4.1% | 3.6% | 3.1% |
+| **Ailment Accuracy** | 5.2% | 4.7% | 4.1% | 3.6% | 3.1% |
 | **SP Recovery** | 12.5% | 11.2% | 10.0% | 8.7% | 7.5% |
 | **Speed** | 2.8 | 2.5 | 2.2 | 1.9 | 1.6 |
 
@@ -173,7 +173,7 @@ Below are the sub stat values that can appear on each revelation:
 | **HP** | 140 | 126 | 112 | 98 | 84 |
 | **Defense %** | 5.2% | 4.6% | 4.1% | 3.5% | 3.0% |
 | **Defense** | 46 | 41 | 37 | 32 | 27 |
-| **Effect Hit** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
+| **Ailment Accuracy** | 4.1% | 3.7% | 3.4% | 2.8% | 2.5% |
 | **SP Recovery** | 10.0% | 9.0% | 7.9% | 7.0% | 5.9% |
 | **Speed** | 2.2 | 2 | 1.8 | 1.5 | 1.3 |
 

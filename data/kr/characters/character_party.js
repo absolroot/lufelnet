@@ -654,10 +654,10 @@ const recommendParty = {
         ],
         "party": [
             {
-                members: ["토시야", "", "", ""],
-                comment: "원더 외에는 자유롭게 구성해도 된다.",
-                comment_en: "Free to configure other than Wonder.",
-                comment_jp: "ワンダー以外は自由に構成可能。"
+                members: ["토시야", "카요", "", ""],
+                comment: "효과 명중을 올려주는 카요를 통해 주원 효과 부여 확률을 높인다.",
+                comment_en: "Increase the chance of applying Curse by OKYANN, who increases Ailment Accuracy Rate.",
+                comment_jp: "OKYANNを活用して呪怨効果付与確率を上げる。"
             }
         ]
     }

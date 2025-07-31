@@ -1103,6 +1103,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     operationSettings.style.gap = '20px';
                 }
             }
+
         }, 100);
         
         // 영어/일본어에서 주의 메시지 표시
@@ -1135,6 +1136,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if(currentLang !== 'kr')
         {
             roleElement.style.display = 'none';
+        }
+
+        const noteSection = document.querySelector('.operation-settings .setting-section:last-child');
+        if(noteSection.querySelector('.operation-notes').innerHTML.trim() === '')
+        {
+            console.log('noteSection is empty');
+            noteSection.style.display = 'none';
+
+            const operationSettings = document.querySelector('.operation-settings');
+                if (operationSettings) {
+                    operationSettings.style.gridTemplateColumns = '1fr';
+                    operationSettings.style.display = 'flex';
+                    operationSettings.style.flexDirection = 'column';
+                }
+        }
+        else
+        {
+            console.log('noteSection is not empty');
+            console.log(noteSection.innerHTML);
         }
         
     });
@@ -1390,8 +1410,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     '관통': 'Pierce Rate',
                     '방어력': 'Defense',
                     '방어': 'Defense',
-                    '효과 명중': 'Effect Hit',
-                    '효과명중': 'Effect Hit',
+                    '효과 명중': 'Ailment Accuracy',
+                    '효과명중': 'Ailment Accuracy',
                     '속도': 'Speed'
                 },
                 'jp': {
@@ -1613,8 +1633,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '방어력 감소' : 'Defense Reduction',
                 '방어력': 'Defense',
                 '방어': 'Defense',
-                '효과 명중': 'Effect Hit',
-                '효과명중': 'Effect Hit',
+                '효과 명중': 'Ailment Accuracy',
+                '효과명중': 'Ailment Accuracy',
                 '속도': 'Speed',
                 '치료효과': 'Healing Effect',
                 '치료': 'Healing',

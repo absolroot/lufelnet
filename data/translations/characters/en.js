@@ -76,7 +76,7 @@ const characterTranslations = {
         "크리티컬 효과": "CRIT DMG",
         "크리티컬 확률": "CRIT Rate",
         "관통": "Pierce Rate",
-        "효과 명중": "Effect Hit",
+        "효과 명중": "Ailment Accur.",
         "치료 효과": "Healing Effect",
         "속도": "Speed",
         "생명": "HP",

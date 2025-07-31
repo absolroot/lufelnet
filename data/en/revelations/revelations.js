@@ -183,7 +183,7 @@ const enRevelationData = {
             "type": ["HL 25%","미출시"]
         },
         "Defeat": {
-            "set2": "Increases Effect Hit Rate by 15%.",
+            "set2": "Increases Ailment Accuracy Rate by 15%.",
             "set4": "Increases fire damage to enemies affected by ailments by 20%.",
             "type": ["화염", "디버프", "미출시"]
         },
@@ -348,9 +348,9 @@ const enRevelationData = {
             "Love": "Increase Healing Effect by 28% for 2 turns after landing a Crit."
         },
         "Wisdom": {
-            "Oppression": "Increase Physical DMG and Effect Hit Rate by 20% when [Resentment] is not less than 5 stacks.",
+            "Oppression": "Increase Physical DMG and Ailment Accuracy Rate by 20% when [Resentment] is not less than 5 stacks.",
             "Virtue": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
-            "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Effect Hit Rate.",
+            "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Ailment Accuracy Rate.",
             "type": ["미출시"]
         }
     }

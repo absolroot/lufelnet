@@ -1078,7 +1078,7 @@ const personaData = {
             name_jp: "再生の呪い III",
             effects: [
                 "효과 명중이 34.9% 증가한다.",
-                "모든 적이 받는 주원 속성 데미지가 18% 증가한다.",
+                "모든 적이 받는 주원 속성 대미지가 18% 증가한다.",
                 "모든 동료가 주원 속성의 페르소나 스킬을 1개 시전할 때마다 앨리스의 효과 명중, 공격력이 12.6% 증가한다. 효과는 2턴 동안 지속되며 3회 중첩 가능하다."
             ],
             effects_en: [
@@ -1128,7 +1128,7 @@ const personaData = {
             name_jp: "破邪の宝塔 III",
             effects: [
                 "크리티컬 확률이 17.5% 증가한다.",
-                "적에게 스킬 시전 시, 메인 목표 적이 원소 이상을 1중첩 보유할 때마다 받는 핵열 데미지가 2턴 동안 10% 증가한다. (3회 중첩 가능).",
+                "적에게 스킬 시전 시, 메인 목표 적이 원소 이상을 1중첩 보유할 때마다 받는 핵열 대미지가 2턴 동안 10% 증가한다. (3회 중첩 가능).",
                 "또한 다른 적이 해당 효과의 40%를 획득한다."
             ],
             effects_en: [
@@ -1481,7 +1481,7 @@ const personaData = {
             name: "팔척뛰기",
             name_en: "Hassou Tobi",
             name_jp: "八艘跳び",
-            effect: "모든 적에게 공격력 15.0%의 물리 속성 데미지를 8회 주고, 적 1명당 해당 스킬 데미지가 5% 증가하며, 최대 15% 증가한다.",
+            effect: "모든 적에게 공격력 15.0%의 물리 속성 대미지를 8회 주고, 적 1명당 해당 스킬 대미지가 5% 증가하며, 최대 15% 증가한다.",
             effect_en: "Deals 15.0% ATK Phys dmg to all foes 8 times. For every 1 foe, increases skill damage by 5%, up to 15%.",
             effect_jp: "全ての敵に15.0% ATKの物理属性ダメージを8回与え、敵1体ごとに該当スキルダメージが5%増加し、最大15%増加する。",
             priority: 3,
@@ -1531,7 +1531,7 @@ const personaData = {
             name_en: "Hunter's Code",
             name_jp: "狩猟本能",
             effect: "2턴 동안 동료 1명이 주는 대미지가 18.0% 증가한다. 목표 동료의 효과 명중 20%마다 1.0%의 추가 대미지를 획득한다. 최대 6.0%까지 중첩된다.",
-            effect_en: "Increases 1 ally's damage dealt by 18.0% + 1.0% for every 20% Effect Hit Rate the ally has to a maximum of 6.0% for 3 turns.",
+            effect_en: "Increases 1 ally's damage dealt by 18.0% + 1.0% for every 20% Ailment Accuracy Rate the ally has to a maximum of 6.0% for 3 turns.",
             effect_jp: "3ターンの間、味方単体の与ダメージが18.0%上昇し、対象の状態異常命中が20%ごとに、さらにダメージが1.0%上昇する。この効果は最大6.0%まで上昇する。",
             priority: 1,
             icon: "버프"
@@ -2153,7 +2153,7 @@ const personaData = {
             name_jp: "怠惰への寒波 II",
             effects: [
                 "효과저항이 17% 증가한다.",
-                "적을 목표로 페르소나 스킬을 시전한 후 2턴 동안 스킬 메인 목표가 받는 빙결 속성 데미지가 14.4%증가한다. 생명이 50%미만일 시 효과가 추가로 40% 증가한다."
+                "적을 목표로 페르소나 스킬을 시전한 후 2턴 동안 스킬 메인 목표가 받는 빙결 속성 대미지가 14.4%증가한다. 생명이 50%미만일 시 효과가 추가로 40% 증가한다."
             ],
             effects_en: [
                 "Increases Effect RES by 17%.",
@@ -2353,7 +2353,7 @@ const personaData = {
                 "적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 8.2% 증가한다."
             ],
             effects_en: [
-                "Increases Effect Hit by 7%.",
+                "Increases Ailment Accuracy by 7%.",
                 "When an enemy uses a skill, increases the main target's Fire dmg taken by 8.2% for 2 turns."
             ],
             effects_jp: [
@@ -2399,7 +2399,7 @@ const personaData = {
                 "질풍 속성 페르소나 스킬 시전 후 2턴 동안 스킬 목표의 방어력이 20% 감소한다."
             ],
             effects_en: [
-                "Increases Effect Hit by 14%.",
+                "Increases Ailment Accuracy by 14%.",
                 "After using a Wind-type Persona skill, decreases the main target's DEF by 20% for 2 turns."
             ],
             effects_jp: [

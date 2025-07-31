@@ -56,7 +56,7 @@ const matchWeapons = {
     name_en : "Hive Guard",
     name_jp : "ハイブガード",
     effect: "효과 명중이 68.0% 증가한다.\n자신이 주는 원소 이상|정신 이상의 부여율이 25.0% 증가하고, 적이 임의의 이상 상태에 빠지면 해당 적을 추가로 『기생 감염』에 빠지게 해 3턴 동안 받는 대미지가 20.0% 증가한다.\n필드에 『기생 감염』 상태에 빠진 적이 있으면 자신의 효과 명중이 8.0% 증가하고, 공격력이 14.0% 증가한다.",
-    effect_en: "Increase Effect Hit Rate by 68.0%.\nIncrease user's elemental/mental ailment infliction rate by 25.0%. When a foe is afflicted, also inflict Parasitic Infection, making them take 20.0% more damage for 3 turns.\nIf a foe with Parasitic Infection is on the field, increase user's Effect Hit Rate by 8.0% and Attack by 14.0%.",
+    effect_en: "Increase Ailment Accuracy Rate by 68.0%.\nIncrease user's elemental/mental ailment infliction rate by 25.0%. When a foe is afflicted, also inflict Parasitic Infection, making them take 20.0% more damage for 3 turns.\nIf a foe with Parasitic Infection is on the field, increase user's Ailment Accuracy Rate by 8.0% and Attack by 14.0%.",
     effect_jp: "効果命中が68.0%上昇する。\n自身の属性・精神異常付与率が25.0%上昇。敵が異常状態になると『寄生感染』を付与し、3ターンの間受けるダメージが20.0%増加。\n『寄生感染』状態の敵がいる時、自身の効果命中が8.0%、攻撃力が14.0%上昇する。"
   },
   "야수의 이빨" :  {
@@ -91,7 +91,7 @@ const matchWeapons = {
     name_en : "Curse of the Phantom",
     name_jp : "幻の呪い",
     effect: "효과 명중이 68.0% 증가한다.\n임의의 캐릭터가 페르소나 스킬을 사용해 주원 속성 대미지를 준 후, 원더가 70%의 기본 확률로 목표에게 『악령의 저주』를 부여한다. 자신이 『악령의 저주』를 보유한 적 공격 시, 공격력이 36.0% 증가한다.\n『악령의 저주』: 3턴 동안 방어가 25.0% 감소하고, 받는 주원 속성 대미지가 16.0% 증가한다.",
-    effect_en: "Increase Effect Hit Rate by 68.0%.\nWhen any ally deals Curse damage, 70% chance to inflict Phantom's Curse on the target. Attacking a cursed foe increases Attack by 36.0%.\nPhantom's Curse: For 3 turns, Defense -25.0% and Curse damage taken +16.0%.",
+    effect_en: "Increase Ailment Accuracy Rate by 68.0%.\nWhen any ally deals Curse damage, 70% chance to inflict Phantom's Curse on the target. Attacking a cursed foe increases Attack by 36.0%.\nPhantom's Curse: For 3 turns, Defense -25.0% and Curse damage taken +16.0%.",
     effect_jp: "効果命中が68.0%上昇する。\n味方が呪怨属性ダメージを与えると、70%の確率で敵に『悪霊の呪い』を付与。呪われた敵を攻撃すると攻撃力+36.0%。\n『悪霊の呪い』：3ターン、防御力-25.0%、呪怨ダメージ+16.0%。"
   },
   "메아리의 절규" :  {

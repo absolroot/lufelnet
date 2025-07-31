@@ -349,7 +349,7 @@ const enCharacterRitualData = {
         "r1": "For Two",
         "r1_detail": "When 『Radiation』 is active, all allies' corresponding Fire, Electric, Ice, and Wind damage is increased by 15% against enemies with Burn, Shock, Freeze, or Wind Shear states.",
         "r2": "Grand Strategist",
-        "r2_detail": "Whenever all allies inflict an elemental ailment once, her Effect Hit Rate increases by 10% for 2 turns (up to 3 stacks).",
+        "r2_detail": "Whenever all allies inflict an elemental ailment once, her Ailment Accuracy Rate increases by 10% for 2 turns (up to 3 stacks).",
         "r3": "Alright... Let's Fire!",
         "r3_detail": "The skill levels of 『Signal Bomb』 and 『Carpet Bombing』 increase by 2, up to a maximum of 15.",
         "r4": "Veteran Driver",

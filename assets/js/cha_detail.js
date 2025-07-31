@@ -1110,7 +1110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             noteContent.innerHTML = noteArray
                 .filter(note => note && note.trim() !== '')
                 .map(note => `<div class="operation-note">${note}</div>`)
-                .join('');
+                .join('');    
         } else {
             noteContent.innerHTML = ''; // 내용만 비우기
         }

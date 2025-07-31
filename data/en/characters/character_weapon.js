@@ -105,7 +105,7 @@ const enCharacterWeaponData = {
             "attack": 539,
             "defense": 349,
             "skill_name": "Oracle's Coffin",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When receiving a Bless effect, ATK increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% and Effect Hit increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns (stacks up to 3 times)."
+            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When receiving a Bless effect, ATK increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% and Ailment Accuracy increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns (stacks up to 3 times)."
         },
         "weapon4-2": {
             "name": "Illusion Silhouette",
@@ -113,7 +113,7 @@ const enCharacterWeaponData = {
             "attack": 594,
             "defense": 449,
             "skill_name": "Curtain within Curtain",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When using a Persona skill on an ally, Effect Hit increases by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% for 2 turns, and the skill target also gains 60% of this effect."
+            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When using a Persona skill on an ally, Ailment Accuracy increases by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% for 2 turns, and the skill target also gains 60% of this effect."
         },
         "weapon5-1": {
             "name": "Stigmata of White Night",
@@ -414,7 +414,7 @@ const enCharacterWeaponData = {
             "attack": 693,
             "defense": 444,
             "skill_name": "Shakedown",
-            "description": "Effect Hit Rate increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When an elemental ailment is applied to an enemy, their DEF decreases by 33.0%/43.0%/43.0%/53.0%/53.0%/63.0%/63.0% for 2 turns (can stack once). Every 2 turns, at the start of the turn, has a base 80.0%/95.0%/95.0%/110.0%/110.0%/125.0%/125.0% chance to inflict a random elemental ailment that the enemy does not already have."
+            "description": "Ailment Accuracy Rate increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When an elemental ailment is applied to an enemy, their DEF decreases by 33.0%/43.0%/43.0%/53.0%/53.0%/63.0%/63.0% for 2 turns (can stack once). Every 2 turns, at the start of the turn, has a base 80.0%/95.0%/95.0%/110.0%/110.0%/125.0%/125.0% chance to inflict a random elemental ailment that the enemy does not already have."
         }
     },
     "카스미": {
@@ -482,7 +482,7 @@ const enCharacterWeaponData = {
             "attack": 607,
             "defense": 341,
             "skill_name": "Vulnerable Gap",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For each enemy with a status ailment, ATK and Effect Hit Rate increase by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%, up to 9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%."
+            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For each enemy with a status ailment, ATK and Ailment Accuracy Rate increase by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%, up to 9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%."
         },
         "weapon5-1": {
             "name": "Sacred Transfer",
@@ -490,7 +490,7 @@ const enCharacterWeaponData = {
             "attack": 759,
             "defense": 427,
             "skill_name": "Precision Training",
-            "description": "Effect Hit Rate increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When attacking an enemy with 『Aim Point』, psychokinesis damage increases by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Each time 『Modification』 is obtained, ATK increases by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."
+            "description": "Ailment Accuracy Rate increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When attacking an enemy with 『Aim Point』, psychokinesis damage increases by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Each time 『Modification』 is obtained, ATK increases by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."
         }
     },
     "후타바": {

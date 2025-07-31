@@ -1513,3 +1513,123 @@ h2{
 .weapon-effect-description p:last-child {
     margin-bottom: 0;
 }
+
+
+
+
+
+
+.review-content {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    letter-spacing: -0.025em;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.review-content p {
+    margin: 0 0 12px 0;
+}
+
+.review-content strong {
+    color: #ffdb70;
+    font-weight: 600;
+}
+
+.review-content em {
+    color: #ff6b6b;
+    font-style: italic;
+}
+
+.review-content h1, .review-content h2, .review-content h3 {
+    color: #ffdb70;
+    margin: 16px 0 8px 0;
+    font-weight: 600;
+}
+
+.review-content ul, .review-content ol {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.review-content li {
+    margin: 4px 0;
+}
+
+.review-content blockquote {
+    border-left: 3px solid #ffdb70;
+    padding-left: 12px;
+    margin: 12px 0;
+    font-style: italic;
+    color: #cccccc;
+}
+
+.review-content code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #ffdb70;
+}
+
+.review-content pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 12px 0;
+}
+
+.review-content pre code {
+    background: none;
+    padding: 0;
+    color: #ffffff;
+}
+
+.review-content a {
+    color: #4fc3f7;
+    text-decoration: none;
+}
+
+.review-content a:hover {
+    text-decoration: underline;
+}
+
+.review-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 8px 0;
+}
+
+.review-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+
+.review-content th,
+.review-content td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.review-content th {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffdb70;
+    font-weight: 600;
+}
+
+.review-content tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.review-content hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 20px 0;
+}
+
+

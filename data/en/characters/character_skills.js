@@ -116,12 +116,12 @@ const enCharacterSkillsData = {
             "description": "Deal 136.4%/150.4%/144.8%/158.8% of Attack as Electric damage to all enemies. If Akihiko Sanada has 2 or more stacks of 『Fighting Spirit』, consume all of them, increasing this skill's multiplier by 40.9%/45.1%/43.1%/47.6% for each stack consumed."
         },
         "skill_highlight": {
-            "name": "Theurgia - Lightning Spear",
+            "name": "Theurgy - Lightning Spear",
             "element": "전격광역",
             "type": "광역피해",
             "sp": 0,
             "cool": 0,
-            "description": "Activation Condition: Theurgia Energy 140\nDeal 261.7%/287.9%/293.1%/319.3% of Attack as Electric damage to all enemies. This skill will 『always critically hit』, with Critical Damage fixed at 200%."
+            "description": "Activation Condition: Theurgy Energy 140\nDeal 261.7%/287.9%/293.1%/319.3% of Attack as Electric damage to all enemies. This skill will 『always critically hit』, with Critical Damage fixed at 200%."
         },
         "skill_support": {
             "name": "Support Skill",
@@ -164,13 +164,13 @@ const enCharacterSkillsData = {
             "type": "",
             "sp": 27,
             "cool": 0,
-            "description": "Heal all allies for 39.1%/43.1%/41.5%/45.6% of Yukari Takeba's Attack + 2507/3158/3081/3773 HP. Consume all 『Words of Wind』 stacks, restoring 17.5 Theurgia Energy per stack to the main target. After using Theurgia, that target's Attack increases by 29.3%/32.3%/31.1%/34.1% for 2 turns (up to 2 stacks). If the Theurgia Energy restored exceeds the limit, the excess is temporarily stored and returned after Theurgia is used, up to the target's maximum Theurgia Energy and lasting for 2 turns. If the main target is not a S.E.E.S. member, each 『Words of Wind』 stack consumed increases their next HIGHLIGHT total damage by 9.8%/10.8%/10.4%/11.4%."
+            "description": "Heal all allies for 39.1%/43.1%/41.5%/45.6% of Yukari Takeba's Attack + 2507/3158/3081/3773 HP. Consume all 『Words of Wind』 stacks, restoring 17.5 Theurgy Energy per stack to the main target. After using Theurgy, that target's Attack increases by 29.3%/32.3%/31.1%/34.1% for 2 turns (up to 2 stacks). If the Theurgy Energy restored exceeds the limit, the excess is temporarily stored and returned after Theurgy is used, up to the target's maximum Theurgy Energy and lasting for 2 turns. If the main target is not a S.E.E.S. member, each 『Words of Wind』 stack consumed increases their next HIGHLIGHT total damage by 9.8%/10.8%/10.4%/11.4%."
         },
         "skill_highlight": {
-            "name": "Theurgia - Cyclone Arrow",
+            "name": "Theurgy - Cyclone Arrow",
             "element": "질풍",
             "type": "",
-            "description": "Activation Condition: Theurgia Energy 70\nDeal 416.0%/457.6%/465.9%/507.5% of Attack as Wind damage to 1 enemy, and for every 100 Attack Yukari Takeba has, increase all allies' damage by 0.48% (up to 20.0%/22.0%/22.4%/24.4%). Remove 2 buffs from the target, inflict Windswept with 100% base chance, and apply 『Trace of Wind』 for 2 turns."
+            "description": "Activation Condition: Theurgy Energy 70\nDeal 416.0%/457.6%/465.9%/507.5% of Attack as Wind damage to 1 enemy, and for every 100 Attack Yukari Takeba has, increase all allies' damage by 0.48% (up to 20.0%/22.0%/22.4%/24.4%). Remove 2 buffs from the target, inflict Windswept with 100% base chance, and apply 『Trace of Wind』 for 2 turns."
         },
         "skill_support": {
             "name": "Support Skill",
@@ -181,7 +181,7 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Resonance",
             "element": "패시브",
-            "description": "When Yukari Takeba is on the field, all allies' HIGHLIGHT and Theurgia damage increases by 45.0%."
+            "description": "When Yukari Takeba is on the field, all allies' HIGHLIGHT and Theurgy damage increases by 45.0%."
         },
         "passive2": {
             "name": "Competitive Spirit",
@@ -216,16 +216,16 @@ const enCharacterSkillsData = {
             "description": "Activation Condition: Have at least 2 stacks of 『Moon Phase』\nConsume all 『Moon Phase』 stacks, dealing 76.2%/84.0%/80.9%/88.7% of Attack as Fire damage per stack to 1 enemy.\nThen consume all 『Special Moon Phase』 stacks, dealing 134.6%/148.4%/142.9%/156.7% of Attack as Fire damage per stack to 1 enemy. When 『Moon Phase』 reaches 4 stacks, using this skill increases Makoto Yuki's Penetration by 11.7%/12.9%/12.4%/13.6% and damage dealt by 24.4%/26.9%/25.9%/28.4%."
         },
         "skill_highlight": {
-            "name": "Theurgia - Aldana",
+            "name": "Theurgy - Aldana",
             "element": "화염",
             "type": "",
-            "description": "Activation Condition: Theurgia Energy 100\nDeal 151.1%/162.6%/160.5%/171.6% of Attack as Fire damage 4 times to 1 enemy. Gain 1 stack of 『Special Moon Phase』 for 2 turns (up to 4 stacks)."
+            "description": "Activation Condition: Theurgy Energy 100\nDeal 151.1%/162.6%/160.5%/171.6% of Attack as Fire damage 4 times to 1 enemy. Gain 1 stack of 『Special Moon Phase』 for 2 turns (up to 4 stacks)."
         },
         "skill_highlight2": {
-            "name": "Theurgia - Cadenza",
+            "name": "Theurgy - Cadenza",
             "element": "버프",
             "type": "버프",
-            "description": "Activation Condition: Theurgia Energy 100\nIncrease all allies' Attack by 25.0%/26.9%/26.5%/28.4% and damage dealt by 20.0%/21.5%/21.2%/22.7% for 2 turns. Gain 1 stack of 『Special Moon Phase』 for 2 turns (up to 4 stacks)."
+            "description": "Activation Condition: Theurgy Energy 100\nIncrease all allies' Attack by 25.0%/26.9%/26.5%/28.4% and damage dealt by 20.0%/21.5%/21.2%/22.7% for 2 turns. Gain 1 stack of 『Special Moon Phase』 for 2 turns (up to 4 stacks)."
         },
         "skill_support": {
             "name": "Support Skill",
@@ -236,7 +236,7 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Lead",
             "element": "패시브",
-            "description": "After using Theurgia, increase all allies' Attack by 40.0%, and S.E.E.S. allies' Attack increases by an additional 20.0%. Effect lasts 2 turns."
+            "description": "After using Theurgy, increase all allies' Attack by 40.0%, and S.E.E.S. allies' Attack increases by an additional 20.0%. Effect lasts 2 turns."
         },
         "passive2": {
             "name": "Trust",

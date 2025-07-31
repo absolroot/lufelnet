@@ -78,8 +78,8 @@ const personaData = {
             ],
             effects_jp: [
                 "クリティカル率が17.5%増加する。",
-                "風習の効果命中が20%増加し、風習状態の敵に与えるダメージが20%増加する。",
-                "風習状態を追加または初期化する時、敵の防御力が48%追加減少し、2ターンの間持続する。"
+                "風襲の効果命中が20%増加し、風襲状態の敵に与えるダメージが20%増加する。",
+                "風襲状態を追加または初期化する時、敵の防御力が48%追加減少し、2ターンの間持続する。"
             ],
             priority: 3
         },
@@ -89,7 +89,7 @@ const personaData = {
             name_jp: "敵を滅する風",
             effect: "1명의 적에게 공격력 192.0%의 질풍 속성 대미지를 주고, 75%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 적이 풍습 상태인 경우 지속 시간을 초기화하고, 이번 스킬이 주는 대미지가 27.0% 증가하며 적이 받는 질풍 대미지가 27.0% 심화된다. 효과는 2턴 동안 지속된다.",
             effect_en: "Deals 192.0% ATK Wind dmg to 1 foe, with a 75% base chance to inflict Winded; If foe is already inflicted with Winded, refreshes its duration, increases this damage by 27.0% and increases their Wind dmg taken by 27.0% for 2 turns.",
-            effect_jp: "1体の敵に192.0% ATKの風属性ダメージを与え、75%の基本確率で敵を風習状態にする。敵が既に風習状態の場合、持続時間を初期化し、このスキルのダメージが27.0%増加し、敵が受ける風ダメージが27.0%深化する。効果は2ターンの間持続する。",
+            effect_jp: "1体の敵に192.0% ATKの風属性ダメージを与え、75%の基本確率で敵を風襲状態にする。敵が既に風襲状態の場合、持続時間を初期化し、このスキルのダメージが27.0%増加し、敵が受ける風ダメージが27.0%深化する。効果は2ターンの間持続する。",
             priority: 3,
             icon: "질풍"
         },
@@ -111,7 +111,7 @@ const personaData = {
         ],
         comment : "마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
         comment_en: "Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Winded.",
-        comment_jp: "マハガルダインを通じて風習付与時に広域防御力減少効果を適用できる。"
+        comment_jp: "マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
     },
     "디오니소스": {
         name_en: "Dionysus",

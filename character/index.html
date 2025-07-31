@@ -10,9 +10,10 @@ redirect_from:
 
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
+     <!--
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
-    </div>
+    </div>-->
     
     <div class="navigation-path">
         <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
@@ -341,7 +342,7 @@ redirect_from:
                 search_placeholder: "캐릭터 검색..."
             },
             en: {
-                language_notice: "{{ site.data.i18n.en.language_notice | default: '🌍 English translation is in progress. Some content may still be in Korean.' }}",
+                language_notice: "{{ site.data.i18n.en.language_notice | default: '' }}",
                 nav_home: "{{ site.data.i18n.en.nav_home | default: 'Home' }}",
                 nav_current: "{{ site.data.i18n.en.character_breadcrumb | default: 'Characters' }}",
                 page_title: "{{ site.data.i18n.en.character_page_title | default: 'Characters' }}",
@@ -349,7 +350,7 @@ redirect_from:
                 search_placeholder: "{{ site.data.i18n.en.character_search_placeholder | default: 'Search characters...' }}"
             },
             jp: {
-                language_notice: "{{ site.data.i18n.jp.language_notice | default: '🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。' }}",
+                language_notice: "{{ site.data.i18n.jp.language_notice | default: '' }}",
                 nav_home: "{{ site.data.i18n.jp.nav_home | default: 'ホーム' }}",
                 nav_current: "{{ site.data.i18n.jp.character_breadcrumb | default: 'キャラクター' }}",
                 page_title: "{{ site.data.i18n.jp.character_page_title | default: 'キャラクター' }}",

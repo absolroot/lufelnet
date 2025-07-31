@@ -298,6 +298,18 @@ document.addEventListener('DOMContentLoaded', () => {
             weaknessIcon.style.display = 'block';
             weaknessIcon.style.left = setElementPositions(character.element_weakness) + 'px';
         }
+
+        // 계시 툴팁 적용
+        if (typeof addTooltips === 'function') {
+            addTooltips();
+        } else {
+            // addTooltips 함수가 아직 로드되지 않았으면 지연 실행
+            setTimeout(() => {
+                if (typeof addTooltips === 'function') {
+                    addTooltips();
+                }
+            }, 100);
+        }
     }
 
     // URL에서 캐릭터 이름을 가져와서 현재 페이지 표시
@@ -351,9 +363,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // role과 tag 정보 채우기
         const roleElement = document.querySelector('.chracter-role');
         const tagElement = document.querySelector('.chracter-tag');
+    
+
+        if(currentLang === 'en' && character.role_en)
+        {
+            roleElement.textContent = character.role_en;
+        }
+        else if(currentLang === 'jp' && character.role_jp)
+        {
+            roleElement.textContent = character.role_jp;
+        }
+
+        if (currentLang === 'en' && character.tag_en)
+        {
+            tagElement.textContent = character.tag_en;
+        }
+        else if(currentLang === 'jp' && character.tag_jp)
+        {
+            tagElement.textContent = character.tag_jp;
+        }
 
         // role 정보 채우기
-        if (character.role) {
+        if (character.role && currentLang === 'kr') {
             roleElement.textContent = character.role;
         }
 
@@ -906,7 +937,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 툴팁 적용
         window.updateSkillDescriptions('0', characterName);
-        addTooltips();
+        if (typeof addTooltips === 'function') {
+            addTooltips();
+        } else {
+            // addTooltips 함수가 아직 로드되지 않았으면 지연 실행
+            setTimeout(() => {
+                if (typeof addTooltips === 'function') {
+                    addTooltips();
+                }
+            }, 100);
+        }
     };
 
     window.updateSkillDescriptions = function(levelIndex, characterName) {
@@ -981,7 +1021,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // 툴팁 다시 적용
-        addTooltips();
+        if (typeof addTooltips === 'function') {
+            addTooltips();
+        } else {
+            // addTooltips 함수가 아직 로드되지 않았으면 지연 실행
+            setTimeout(() => {
+                if (typeof addTooltips === 'function') {
+                    addTooltips();
+                }
+            }, 100);
+        }
     };
 
     // 운영 정보 채우기

@@ -1,0 +1,175 @@
+const characterReview = {
+    "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
+        review: ``
+    },
+    "미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
+        review: ``
+    },
+    "이치고": { name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
+        review: ``
+    },
+    "사나다": { name_en: "Akihiko Sanada", name_jp: "真田 明彦", codename: "SANADA",
+        review: ``
+    },
+    "유카리": { name_en: "Yukari Takeba", name_jp: "岳羽 ゆかり", codename: "YUKARI",
+        review: ``
+    },
+    "유키 마코토": { name_en: "Makoto Yuki", name_jp: "結城 理", codename: "MAKOTO",
+        review: ``
+    },
+    "이케나미": { name_en: "Shoki Ikenami", name_jp: "池波 星輝", codename: "LUCE",
+        review: ``
+    },
+    "마나카": { name_en: "Manaka Nagao", name_jp: "長尾 愛歌", codename: "ANGE",
+        review: ``
+    },
+    "마유미": { name_en: "Mayumi Hashimoto", name_jp: "橋本 麻由美", codename: "TURBO",
+        review: ``
+    },
+    "아케치": { name_en: "Goro Akechi", name_jp: "明智 吾郎", codename: "CROW",
+        review: ``
+    },
+    "미오": { name_en: "Mio Natsukawa", name_jp: "夏川 澪", codename: "MATOI",
+        review: ``
+    },
+    "레오": { name_en: "Leo Kamiyama", name_jp: "神山 嶺央", codename: "LEON",
+        review: ``
+    },
+    "렌": { name_en: "Ren Amamiya", name_jp: "雨宮 蓮", codename: "JOKER",
+        review: ``
+    },
+    "루우나": { name_en: "Runa Dogenzaka", name_jp: "道玄坂 琉七", codename: "HOWLER",
+        review: ``
+    },
+    "루페르": { name_en: "Lufel", name_jp: "ルフェル", codename: "CATTLE",
+        review: ``
+    },
+    "류지": { name_en: "Ryuji Sakamoto", name_jp: "坂本 竜司", codename: "SKULL",
+        review: ``
+    },
+    "리코": { name_en: "Riko Tanemura", name_jp: "多祢村 理子", codename: "WIND",
+        review: ``
+    },
+    "리코·매화": { name_en: "Riko Tanemura·Vast", name_jp: "多祢村 理子・花見", codename: "WIND·Vast",
+        review: ``
+    },
+    "마사키": { name_en: "Masaki Ashiya", name_jp: "蘆谷 真咲", codename: "CHERISH",
+        review: ``
+    },
+    "마코토": { name_en: "Makoto Niijima", name_jp: "新島 真", codename: "QUEEN",
+        review: ``
+    },
+    "미나미": { name_en: "Miyashita Minami", name_jp: "宮下 美波", codename: "MARIAN",
+        review: ``
+    },
+    "미유": { name_en: "Miyu Sahara", name_jp: "佐原 海夕", codename: "PUPPET",
+        review: ``
+    },
+    "모르가나": { name_en: "Morgana", name_jp: "モルガナ", codename: "MONA",
+        review: ``
+    },
+    "모토하": { name_en: "Motoha Arai", name_jp: "新井 素羽", codename: "CLOSER",
+        review: ``
+    },
+    "모토하·여름": { name_en: "Motoha Arai·Summer", name_jp: "新井 素羽・夏", codename: "CLOSER·Summer",
+        review: ``
+    },
+    "몽타뉴": { name_en: "Kotone Montagne", name_jp: "琴音 モンターニュ", codename: "MONT",
+        review: ``
+    },
+    "몽타뉴·백조": { name_en: "Kotone Montagne·Swan", name_jp: "琴音 モンターニュ・スワン", codename: "MONT·Swan",
+        review: ``
+    },
+    "세이지": { name_en: "Seiji Shiratori", name_jp: "白鳥 誠司", codename: "FLEURET",
+        review: ``
+    },
+    "슌": { name_en: "Shun Kano", name_jp: "加納 駿", codename: "SOY",
+        review: ``
+    },
+    "아야카": { name_en: "Ayaka Sakai", name_jp: "坂井 綾香", codename: "CHORD",
+        review: ``
+    },
+    "안": { name_en: "Ann Takamaki", name_jp: "高巻 杏", codename: "PANTHER",
+        review: ``
+    },
+    "야오링": { name_en: "Yaoling Li", name_jp: "李瑤鈴", codename: "RIN",
+        review: ``
+    },
+    "야오링·사자무": { name_en: "Yaoling Li·Lion Dance", name_jp: "李瑤鈴·獅子舞", codename: "RIN",
+        review: ``
+    },
+    "유스케": { name_en: "Yusuke Kitagawa", name_jp: "喜多川 祐介", codename: "FOX",
+        review: `**방어력**을 기반으로 하는 **반격형 딜러**로 설계돼 **버티거나 오토 플레이에 뛰어난 딜러**입니다.
+
+**65%의 반격확률**이라는 불안정한 요소가 있어 스킬3의 100% 반격이나 하이라이트를 사용하지 않는 경우, 최고 점수를 위해 반복 플레이가 필요할 수 있습니다.
+
+캐릭터들의 절대 다수가 공격력의 영향을 받는 만큼 버퍼 다수가 공격력을 올려주기에 **함께 쓸 수 있는 버프가 제한적**입니다.
+
+반격형 딜러라는 특성 때문에 마지막에 순서를 배정하는 다른 딜러와 달리 **첫번째 순서로 배치**하는 것이 버프 유지 관점에서 효율적입니다.
+
+패시브와 의식6에서 관통을 주지만, 정작 FOX를 위한 수르트와 잭오랜턴은 기본 방어력 수치가 낮아 극적인 효과를 보기 어렵습니다.`,
+review_en: `Designed as a **counter-type damage dealer** based on **Defense**, this character excels as a **durable or auto-play optimized dealer**.
+
+Due to the unstable **65% counter rate**, unless Skill 3 guaranteed 100% counter or the Highlight is used, repeated runs may be necessary to achieve the highest score.
+
+Since most characters scale with ATK and many buffers boost ATK, **available buff options are limited**.
+
+Because it is a **counter-type dealer**, unlike other dealers who are placed last in the turn order, it is more effective to **assign them to the first slot** in terms of maintaining buffs.
+
+Though Penetration is granted through passives and Awareness 6, Surt and Jack-o-Lantern, intended for FOX, have low base Defense, making it difficult to see dramatic results.`,
+review_jp:`**防御力**を基にした**反撃型アタッカー**として設計されており、**耐久やオートプレイに優れたアタッカー**です。
+
+**反撃確率65%**という不安定な要素があるため、スキル3の100%反撃やハイライトを使用しない限り、最高スコアを狙うには周回が必要になることがあります。
+
+キャラクターの大多数が攻撃力に依存し、多くのバッファーも攻撃力を上げるため、**一緒に使えるバフが限られています**。
+
+**反撃型アタッカー**という特性上、他のディーラーのように最後ではなく、**最初の順番に配置**する方がバフ維持の面で効率的です。
+
+パッシブやAwareness 6 で貫通を得られますが、FOX向けのスルトやジャックランタンは基礎防御力が低いため、大きな効果は得にくいです。`
+
+    },
+    "유우미": { name_en: "Yumi Shiina", name_jp: "椎名 悠美", codename: "PHOEBE",
+        review: ``
+    },
+    "유이 YUI": { name_en: "Yui", name_jp: "ユイ", codename: "BUI",
+        review: 
+``
+    },
+    "유키미": { name_en: "Yukimi Fujikawa", name_jp: "藤川 雪実", codename: "YUKI",
+        review: ``
+    },
+    "치즈코": { name_en: "Chizuko Nagao", name_jp: "長尾 千津子", codename: "VINO",
+        review: ``
+    },
+    "카스미": { name_en: "Kasumi Yoshizawa", name_jp: "芳澤 かすみ", codename: "VIOLET",
+        review: ``
+    },
+    "카요": { name_en: "Tomiyama Kao", name_jp: "富山 佳代", codename: "OKYANN",
+        review: ``
+    },
+    "키라": { name_en: "Kira Kitazato", name_jp: "北里 基良", codename: "MESSA",
+        review: ``
+    },
+    "키요시": { name_en: "Kurotani Kiyoshi", name_jp: "黒谷清", codename: "KEY",
+        review: ``
+    },
+    "토모코": { name_en: "Noge Tomoko", name_jp: "野毛 朋子", codename: "MOKO",
+        review: ``
+    },
+    "토모코·여름": { name_en: "Noge Tomoko Summer", name_jp: "野毛 朋子 夏", codename: "MOKO·Summer",
+        review: ``
+    },
+    "토시야": { name_en: "Seumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
+        review: ``
+    },
+    "하루": { name_en: "Haru Okumura", name_jp: "奥村 春", codename: "NOIR",
+        review: ``
+    },
+    "하루나": { name_en: "Haruna Nishimori", name_jp: "西森 陽菜", codename: "RIDDLE",
+        review: ``
+    },
+    "후타바": { name_en: "Sakura Futaba", name_jp: "佐倉 双葉", codename: "NAVI",
+        review: ``
+    }
+  };
+  

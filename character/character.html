@@ -2,7 +2,7 @@
 layout: default
 custom_css: [cha_detail]
 custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min]
-custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, characters/character.js, wonder/weapons.js]
+custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, characters/character.js, wonder/weapons.js, characters/character_review.js]
 permalink: /character.html
 language: kr
 title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
@@ -103,6 +103,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     <span class="dot" data-index="1"></span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 리뷰 섹션 -->
+    <div class="review-card card-style">
+        <h2>요약</h2>
+        <div class="review-content" id="character-review">
+            <!-- 리뷰 내용이 여기에 동적으로 로드됩니다 -->
         </div>
     </div>
 
@@ -477,88 +485,88 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const characterName = urlParams.get('name');
         const currentLang = getCurrentLanguage();
     
-    // 언어별 데이터 파일 동적 로드
-    async function loadLanguageData() {
-        if (currentLang !== 'kr') {
-            const langPath = currentLang === 'en' ? 'en' : 'jp';
-            const basePath = '{{ site.baseurl }}/data/' + langPath + '/characters/';
-            
-            try {
-                // 스킬 데이터 로드
-                const skillScript = document.createElement('script');
-                skillScript.src = basePath + 'character_skills.js?v=' + APP_VERSION;
-                document.head.appendChild(skillScript);
+        // 언어별 데이터 파일 동적 로드
+        async function loadLanguageData() {
+            if (currentLang !== 'kr') {
+                const langPath = currentLang === 'en' ? 'en' : 'jp';
+                const basePath = '{{ site.baseurl }}/data/' + langPath + '/characters/';
                 
-                // 의식 데이터 로드
-                const ritualScript = document.createElement('script');
-                ritualScript.src = basePath + 'character_ritual.js?v=' + APP_VERSION;
-                document.head.appendChild(ritualScript);
-                
-                // 무기 데이터 로드
-                const weaponScript = document.createElement('script');
-                weaponScript.src = basePath + 'character_weapon.js?v=' + APP_VERSION;
-                document.head.appendChild(weaponScript);
-                
-                // 스크립트 로드 완료 대기
-                await new Promise(resolve => {
-                    let loadedCount = 0;
-                    [skillScript, ritualScript, weaponScript].forEach(script => {
-                        script.onload = () => {
-                            loadedCount++;
-                            if (loadedCount === 3) {
-                                // 로드된 데이터를 window 객체에 할당
-                                if (currentLang === 'en') {
-                                    // 영어 데이터 할당
-                                    if (typeof enCharacterSkillsData !== 'undefined') {
-                                        window.enCharacterSkillsData = enCharacterSkillsData;
+                try {
+                    // 스킬 데이터 로드
+                    const skillScript = document.createElement('script');
+                    skillScript.src = basePath + 'character_skills.js?v=' + APP_VERSION;
+                    document.head.appendChild(skillScript);
+                    
+                    // 의식 데이터 로드
+                    const ritualScript = document.createElement('script');
+                    ritualScript.src = basePath + 'character_ritual.js?v=' + APP_VERSION;
+                    document.head.appendChild(ritualScript);
+                    
+                    // 무기 데이터 로드
+                    const weaponScript = document.createElement('script');
+                    weaponScript.src = basePath + 'character_weapon.js?v=' + APP_VERSION;
+                    document.head.appendChild(weaponScript);
+                    
+                    // 스크립트 로드 완료 대기
+                    await new Promise(resolve => {
+                        let loadedCount = 0;
+                        [skillScript, ritualScript, weaponScript].forEach(script => {
+                            script.onload = () => {
+                                loadedCount++;
+                                if (loadedCount === 3) {
+                                    // 로드된 데이터를 window 객체에 할당
+                                    if (currentLang === 'en') {
+                                        // 영어 데이터 할당
+                                        if (typeof enCharacterSkillsData !== 'undefined') {
+                                            window.enCharacterSkillsData = enCharacterSkillsData;
+                                        }
+                                        if (typeof enCharacterRitualData !== 'undefined') {
+                                            window.enCharacterRitualData = enCharacterRitualData;
+                                        }
+                                        if (typeof enCharacterWeaponData !== 'undefined') {
+                                            window.enCharacterWeaponData = enCharacterWeaponData;
+                                        }
+                                    } else if (currentLang === 'jp') {
+                                        // 일본어 데이터 할당
+                                        if (typeof jpCharacterSkillsData !== 'undefined') {
+                                            window.jpCharacterSkillsData = jpCharacterSkillsData;
+                                        }
+                                        if (typeof jpCharacterRitualData !== 'undefined') {
+                                            window.jpCharacterRitualData = jpCharacterRitualData;
+                                        }
+                                        if (typeof jpCharacterWeaponData !== 'undefined') {
+                                            window.jpCharacterWeaponData = jpCharacterWeaponData;
+                                        }
                                     }
-                                    if (typeof enCharacterRitualData !== 'undefined') {
-                                        window.enCharacterRitualData = enCharacterRitualData;
-                                    }
-                                    if (typeof enCharacterWeaponData !== 'undefined') {
-                                        window.enCharacterWeaponData = enCharacterWeaponData;
-                                    }
-                                } else if (currentLang === 'jp') {
-                                    // 일본어 데이터 할당
-                                    if (typeof jpCharacterSkillsData !== 'undefined') {
-                                        window.jpCharacterSkillsData = jpCharacterSkillsData;
-                                    }
-                                    if (typeof jpCharacterRitualData !== 'undefined') {
-                                        window.jpCharacterRitualData = jpCharacterRitualData;
-                                    }
-                                    if (typeof jpCharacterWeaponData !== 'undefined') {
-                                        window.jpCharacterWeaponData = jpCharacterWeaponData;
-                                    }
+                                    resolve();
                                 }
-                                resolve();
-                            }
-                        };
+                            };
+                        });
                     });
-                });
-                
-                // console.log('언어별 데이터 파일 로드 완료:', langPath);
-                
-                // 언어별 데이터 로드 완료 후 스킬 정보 로드
-                setTimeout(() => {
-                    // console.log('영어/일본어 - fillSkillsInfo 호출 준비');
-                    if (typeof fillSkillsInfo === 'function') {
-                        // console.log('fillSkillsInfo 함수 존재 - 호출');
-                        fillSkillsInfo(characterName);
-                    } else {
-                        console.log('fillSkillsInfo 함수가 정의되지 않음');
-                    }
-                }, 100);
-            } catch (e) {
-                console.log('언어별 데이터 파일 로드 실패:', e);
+                    
+                    // console.log('언어별 데이터 파일 로드 완료:', langPath);
+                    
+                    // 언어별 데이터 로드 완료 후 스킬 정보 로드
+                    setTimeout(() => {
+                        // console.log('영어/일본어 - fillSkillsInfo 호출 준비');
+                        if (typeof fillSkillsInfo === 'function') {
+                            // console.log('fillSkillsInfo 함수 존재 - 호출');
+                            fillSkillsInfo(characterName);
+                        } else {
+                            console.log('fillSkillsInfo 함수가 정의되지 않음');
+                        }
+                    }, 100);
+                } catch (e) {
+                    console.log('언어별 데이터 파일 로드 실패:', e);
+                }
             }
         }
-    }
-        
+            
         if (!characterName || !characterData[characterName]) {
             console.error('Character not found');
             return;
         }
-        
+            
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await loadLanguageData();
         
@@ -618,6 +626,34 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 console.log('언어별 데이터 로드 실패:', e);
             }
         }
+        
+        // 캐릭터 리뷰 렌더링 함수
+
+        const reviewContainer = document.getElementById('character-review');
+        if (!reviewContainer) return;
+        
+        // character_review.js에서 캐릭터 정보 가져오기
+        const characterReviewData = characterReview[characterName];
+        const ReviewCard = document.querySelector('.review-card');
+
+        if (!characterReviewData || !characterReviewData.review) {
+            reviewContainer.innerHTML = '<p style="color: #888; font-style: italic;">이 캐릭터에 대한 리뷰가 아직 작성되지 않았습니다.</p>';
+            // 정보가 없을 경우 해당 카드 display: none;
+            reviewContainer.style.display = 'none';
+            ReviewCard.style.display = 'none';
+        }
+        let currentReview = characterReviewData.review;
+        // 언어별 리뷰 설정
+        if (currentLang === 'en' && characterReviewData.review_en) {
+            currentReview = characterReviewData.review_en;
+        } else if (currentLang === 'jp' && characterReviewData.review_jp) {
+            currentReview = characterReviewData.review_jp;
+        } 
+        
+        // 마크다운을 HTML로 변환
+        const htmlContent = marked.parse(currentReview);
+        reviewContainer.innerHTML = htmlContent;
+
 
         // 이미지 설정
         document.querySelector('.thief-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
@@ -1086,26 +1122,33 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             }
         }
 
-        // 외국어에서 특정 요소들 숨기기
-        if (currentLang !== 'kr') {
-            // tag와 role 숨기기 (올바른 클래스명 사용)
-            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
-            tagElements.forEach(el => {
-                if (el) el.style.display = 'none';
-            });
-        } else {
-            // 한국어일 때는 다시 보이게 하기
-            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
-            tagElements.forEach(el => {
-                if (el) el.style.display = '';
-            });
+        
+
+
+        const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
+        tagElements.forEach(el => {
+            if (el) el.style.display = '';
+        });
+
+        //role은 kr 아니면 숨기기
+        const roleElement = document.querySelector('.chracter-role');
+        if(currentLang !== 'kr')
+        {
+            roleElement.style.display = 'none';
         }
+        
     });
 
     // 번역 함수 분리
     function applyTranslations() {
         const currentLang = getCurrentLanguage();
         
+        // 리뷰 라벨 번역
+        const reviewLabel = currentLang === 'kr' ? '요약' :
+                            currentLang === 'en' ? 'Summary' : '要約';
+        const reviewEl = document.querySelector('.review-card h2');
+        if (reviewEl) reviewEl.textContent = reviewLabel;
+
         // 추천 세팅 라벨 번역
         const recommendLabel = currentLang === 'kr' ? '추천 세팅' :
                              currentLang === 'en' ? 'Recommended Setup' : 'おすすめ設定';
@@ -1555,6 +1598,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '치료효과': '치료효과'
             },
             'en': {
+                '최대 생명 증가': 'Max HP Up',
+                '최대 생명': 'Max HP',
                 '생명': 'HP',
                 '생명력': 'HP',
                 '공격력': 'Attack',
@@ -1565,12 +1610,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '크리티컬 효과': 'Crit Mult',
                 '크리티컬효과': 'Crit Mult',
                 '관통': 'Pierce Rate',
+                '방어력 감소' : 'Defense Reduction',
                 '방어력': 'Defense',
                 '방어': 'Defense',
                 '효과 명중': 'Effect Hit',
                 '효과명중': 'Effect Hit',
                 '속도': 'Speed',
                 '치료효과': 'Healing Effect',
+                '치료': 'Healing',
                 '추격': 'Follow-up',
                 '효과 저항': 'Effect Resi',
                 '효과저항': 'Effect Resi',
@@ -1589,9 +1636,46 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '전용무기' : 'Exclusive Weapon',
                 '4성 무기' : '4 Star Weapon',
                 '패시브' : 'Passive',
-                '실드효과' : 'Shield Effect'
+                '실드효과' : 'Shield Effect',
+                '추가 효과' : 'Follow-up',
+                '반격' : 'CounterAttack',
+                '받는 대미지 증가': 'Damage Taken',
+                '수면': 'Sleep',
+                '원소 이상': 'Element Alignment',
+                '실드' : 'Shield',
+                '주원' : 'Curse',
+                '지속 대미지' : 'DOT',
+                '화상' : 'Burn',
+                '화염 속성': 'Fire',
+                '축복' : 'Blessing',
+                '풍습' : 'Windswept',
+                '동결' : 'Freeze',
+                '감전' : 'Shock',
+                '공격받을 확률 증가' : 'Taunt',
+                '전격' : 'Electric',
+                '망각' : 'Forget',
+                '감소' : 'Decrease',
+                '제거' : 'Remove',
+                '크리티컬' : 'Critical',
+                '차지' : 'Charge',
+                '추가 턴' : 'Additional Turn',
+                '디버프' : 'Debuff',
+                '지속 회복' : 'DOT Recovery',
+                '부활' : 'Revive',
+                '변신' : 'Transform',
+                '약점 변경' : 'Weakness Change',
+                '폼 체인지' : 'Form Change',
+                '스킬마스터' : 'Skill Master',
+                '빙결 속성' : 'Ice',
+                '대미지 축적' : 'Damage Accumulation',
+                '다운' : 'Down',
+                '테우르기아 충전' : 'Theurgy Charge',
+                '테우르기아' : 'Theurgy',
+                '아이템' : 'Item'
             },
             'jp': {
+                '최대 생명 증가': '最大HP上昇',
+                '최대 생명': '最大HP',
                 '생명': 'HP',
                 '생명력': 'HP',
                 '공격력': '攻撃力',
@@ -1602,6 +1686,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '크리티컬 효과': 'クリティカル効果',
                 '크리티컬효과': 'クリティカル効果',
                 '관통': '貫通',
+                '방어력 감소' : '防御力減少',
                 '방어력': '防御力',
                 '방어': '防御力',
                 '효과 명중': '効果命中',
@@ -1626,7 +1711,41 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '전용무기' : '専用武器',
                 '4성 무기' : '4星武器',
                 '패시브' : 'パッシブ',
-                '실드효과' : 'シールド効果'
+                '실드효과' : 'シールド効果',
+                '추가 효과' : '意識奏功',
+                '받는 대미지 증가': 'ダメージ受け',
+                '수면': '睡眠',
+                '원소 이상': '元素異常',
+                '실드' : 'シールド',
+                '주원' : '呪怨',
+                '지속 대미지' : 'ドット',
+                '화상' : '燃焼',
+                '화염 속성': '火炎',
+                '축복' : '祝福',
+                '풍습' : '風襲',
+                '동결' : '凍結',
+                '공격받을 확률 증가' : '挑発',
+                '감전' : '感電',
+                '전격' : '電撃',
+                '망각' : '忘却',
+                '감소' : '減少',
+                '제거' : '除去',
+                '크리티컬' : 'クリティカル',
+                '차지' : 'チャージ',
+                '추가 턴' : '追加ターン',
+                '디버프' : 'デバフ',
+                '지속 회복' : 'ドット回復',
+                '부활' : '復活',
+                '변신' : '変身',
+                '약점 변경' : '弱点変更',
+                '폼 체인지' : 'フォームチェンジ',
+                '스킬마스터' : 'スキルマスター',
+                '빙결 속성' : '氷結',
+                '대미지 축적' : 'ダメージ蓄積',
+                '다운' : 'ダウン',
+                '테우르기아 충전' : 'テウルギアャージ',
+                '테우르기아' : 'テウルギア',
+                '아이템' : 'アイテム'
             }
         };
 
@@ -2196,6 +2315,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         document.body.style.overflow = '';
     }
     
+
+
+
     // Help Modal Functions
     function showHelpModal(helpType) {
         const modal = document.getElementById('help-modal');
@@ -2367,6 +2489,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             closeHelpModal();
         }
     });
+    
+
 </script>
 
 <!-- Weapon Effect Modal -->

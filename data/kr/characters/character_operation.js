@@ -187,7 +187,7 @@ const operationData = {
             { label: "意識 6 (複数)", value: "3 › 1 › 2 › 3 › 1 › 2" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "루페르": {
@@ -195,7 +195,7 @@ const operationData = {
             { label: "의식 6", value: "3 › 1 › 3 › 1 › 3 › 1" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "류지": {
@@ -203,7 +203,7 @@ const operationData = {
             { label: "의식 0", value: "3 › 3 › 3 › 3 › 3 › 3" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "리코": {
@@ -260,7 +260,7 @@ const operationData = {
             { label: "의식 0", value: "3 › 2 › 3 › 2 › 3 › 2" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "마코토": {
@@ -277,7 +277,7 @@ const operationData = {
             { label: "意識 6", value: "3 › 変身 + 3 + 3 › 3 › 3 › 変身 + 3 + 3 › 3" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "미나미": {
@@ -285,7 +285,7 @@ const operationData = {
             { label: "의식 0", value: "3 › 2 › 3 › 2 › 3 › 2" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "미유": {
@@ -293,7 +293,7 @@ const operationData = {
             { label: "의식 0", value: "1 › 1 › 3" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "모르가나": {
@@ -302,7 +302,7 @@ const operationData = {
             { label: "의식 6", value: "3 › 3 › 3 › 3 › 3 › 3" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "모토하": {
@@ -310,7 +310,7 @@ const operationData = {
             { label: "의식 6", value: "1 › 2 › 1 › 2 › 1 › 2" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "모토하·여름": {
@@ -319,7 +319,7 @@ const operationData = {
             { label: "의식 1", value: "3 › 1 › 3 › 1 › 3 › 1" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "몽타뉴": {
@@ -327,7 +327,7 @@ const operationData = {
             { label: "의식 6", value: "2 › 3 › 2 › 3 › 2 › 3" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "몽타뉴·백조": {
@@ -336,7 +336,7 @@ const operationData = {
             { label: "의식 6", value: "3 › 1 › 1 › 3 › 1 › 1" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "세이지": {
@@ -344,7 +344,7 @@ const operationData = {
             { label: "의식 6", value: "3 › 3 › 3 › 3 › 3 › 3" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "shore": {
@@ -358,7 +358,7 @@ const operationData = {
             { label: "意識 6", value: "銃 › 3 › 2 › 銃 › 3 › 2" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "아야카": {
@@ -426,7 +426,7 @@ const operationData = {
             { label: "意識 6", value: "3 + 1 › 接近 › 接近 › 接近 › 接近 › 接近" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "유스케": {
@@ -465,7 +465,7 @@ const operationData = {
             { label: "의식 0", value: "3 › 1 › 3 › 1 › 3 › 1" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "유키미": {
@@ -473,7 +473,7 @@ const operationData = {
             { label: "의식 6", value: "2 › 3 › 2 › 3 › 2 › 3" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "카스미": {
@@ -507,7 +507,7 @@ const operationData = {
             { label: "의식 6", value: "3 › 1 › 3 › 1" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "키라": {
@@ -558,7 +558,7 @@ const operationData = {
             { label: "의식 6", value: "2 › 3 › 2 › 1 › 2 › 3" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "토모코·여름": {
@@ -566,7 +566,7 @@ const operationData = {
             { label: "의식 0", value: "2 › 3 › 2 › 3 › 2 › 3" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "토시야": {
@@ -574,7 +574,7 @@ const operationData = {
             { label: "의식 6", value: "1 › 1 › 1 › 1 › 1 › 1" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "하루": {
@@ -588,7 +588,7 @@ const operationData = {
             { label: "意識 0", value: "1 › HL + 3 › 銃 › 1 › 3 › HL + 銃" }
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "하루나": {
@@ -596,7 +596,7 @@ const operationData = {
             { label: "의식 0", value: "1 › 3 › 1 › 3 › 1 › 3" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "치즈코": {
@@ -604,7 +604,7 @@ const operationData = {
             { label: "의식 6", value: "1 › 3 › 1 › 3 › 1 › 3" },
         ],
         note: [
-            "-"
+            ""
         ]
     },
     "후타바": {
@@ -612,7 +612,7 @@ const operationData = {
             { label: "의식 0", value: "1 › 3 › 1 › 3" },
         ],
         note: [
-            "-"
+            ""
         ]
     }
 }; 

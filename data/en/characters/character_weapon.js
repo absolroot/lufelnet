@@ -287,20 +287,20 @@ const enCharacterWeaponData = {
     "마코토": {
         "name": "Makoto Niijima",
         "weapon4-1": {
-            "name": "Maha Punch",
+            "name": "Omega Knuckle",
             "health": 1649,
             "attack": 613,
             "defense": 359,
             "skill_name": "Unquenchable Flame",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When dealing Nuclear DMG, DMG increases by 4.4%/5.6%/5.6%/6.8%/6.8%/8.0%/8.0% for each stack of 『Fortitude』."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When dealing Nuclear damage, increase damage by 4.4%/5.6%/5.6%/6.8%/6.8%/8.0%/8.0% for each Tenacity stack gained."
         },
         "weapon5-1": {
-            "name": "Nuclear Apocalypse",
+            "name": "Nuclear Finisher",
             "health": 2061,
             "attack": 766,
             "defense": 449,
             "skill_name": "Will Extinction",
-            "description": "Nuclear DMG increases by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When attacking enemies with an elemental ailment, ATK increases by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. When any ally inflicts an elemental ailment, Makoto gains 1 stack of 『Thermal Energy』. Upon entering 『Iron Will』 state, all 『Thermal Energy』 stacks are consumed, and for each stack, the next skill's Nuclear DMG increases by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%, up to a maximum of 60.0%/78.0%/78.0%/96.0%/96.0%/114.0%/114.0%."
+            "description": "Increase Nuclear damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When attacking a foe with an elemental ailment, increase Attack by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. When an ally inflicts an elemental ailment, gain 1 Heat stack. When Crash Out is active, spend all Heat stacks to increase next Nuclear skill damage by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for each Heat stack, up to 60.0%/78.0%/78.0%/96.0%/96.0%/114.0%/114.0%."
         }
     },
     "모토하·여름": {
@@ -401,20 +401,20 @@ const enCharacterWeaponData = {
     "치즈코": {
         "name": "Chizuko Nagao",
         "weapon4-1": {
-            "name": "Gravity Sword",
+            "name": "Gravitational Force",
             "health": 1744,
             "attack": 554,
             "defense": 355,
             "skill_name": "Quantum Radiation",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Enemies on the field with elemental ailments have their DEF reduced by 9.6%/12.4%/12.4%/15.2%/15.2%/18.0%/18.0%. If the enemy has 『Radiation』, DEF is further reduced by 9.6%/12.4%/12.4%/15.2%/15.2%/18.0%/18.0%."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When a foe with an elemental ailment is present, decrease that foe's Defense by 9.6%/12.4%/12.4%/15.2%/15.2%/18.0%/18.0%. Also, when inflicted with Radiation, decrease Defense by 9.6%/12.4%/12.4%/15.2%/15.2%/18.0%/18.0% more."
         },
         "weapon5-1": {
-            "name": "Overclock Pulse",
+            "name": "Jolting Pulse",
             "health": 2180,
             "attack": 693,
             "defense": 444,
             "skill_name": "Shakedown",
-            "description": "Ailment Accuracy Rate increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When an elemental ailment is applied to an enemy, their DEF decreases by 33.0%/43.0%/43.0%/53.0%/53.0%/63.0%/63.0% for 2 turns (can stack once). Every 2 turns, at the start of the turn, has a base 80.0%/95.0%/95.0%/110.0%/110.0%/125.0%/125.0% chance to inflict a random elemental ailment that the enemy does not already have."
+            "description": "Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. After inflicting an elemental ailment on a foe, decrease the target's Defense by 33.0%/43.0%/43.0%/53.0%/53.0%/63.0%/63.0% for 2 turns. This effect does not stack. Every 2 turns, at the start of Chizuko's action, 80.0%/95.0%/95.0%/110.0%/110.0%/125.0%/125.0% base chance to inflict 1 foe with a random elemental ailment that it does not have."
         }
     },
     "카스미": {

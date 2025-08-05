@@ -420,6 +420,12 @@ const recommendParty = {
         ],
         "party": [
             {
+                members: ["마코토", "치즈코", "레오", "카요"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
                 members: ["마코토", "치즈코", "레오", "유우미"],
                 comment: "",
                 comment_en: "",

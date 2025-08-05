@@ -692,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // 표시된 번역 텍스트를 원본 키로 역매핑해서 매칭
                         let subRevKeys;
                         
-                        console.log(subRevKeys);
+                        //console.log(subRevKeys);
                         if (currentLang === 'en' && translationData) {
                             // 영어 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
                             subRevKeys = Object.keys(setEffectsData).filter(englishSubKey => {
@@ -788,17 +788,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // 스킬 정보 채우기 (전역 함수로 설정)
     window.fillSkillsInfo = function(characterName) {
         // console.log('fillSkillsInfo 호출됨:', characterName);
+        
         const skillsGrid = document.querySelector('.skills-grid');
         
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
         // console.log('현재 언어:', currentLang);
-        
+
         // 언어별 데이터 사용
         let character;
         if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
             character = window.enCharacterSkillsData[characterName];
-            // console.log('영어 스킬 데이터 사용:', character);
+           // console.log('영어 스킬 데이터 사용:', character);
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
             // console.log('일본어 스킬 데이터 사용:', character);
@@ -814,6 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
             character[skillType] && character[skillType].name
         );
         
+
         // 스킬이 모두 비어있으면 스킬 섹션 전체를 숨김
         const skillSection = skillsGrid.closest('.skills-card');
         if (!hasActiveSkills) {

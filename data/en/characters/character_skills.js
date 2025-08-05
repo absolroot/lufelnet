@@ -619,43 +619,43 @@ const enCharacterSkillsData = {
     "마코토": {
         "name": "Makoto Niijima",
         "skill1": {
-            "name": "Pulse Combo",
+            "name": "Sanctioned Drift",
             "element": "핵열광역",
             "type":"광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 83.0%/91.5%/88.1%/96.6% of Makoto Niijima's ATK as Nuclear damage 5 times to random enemies, prioritizing enemies that haven't been hit. If multiple hits strike the same target, damage is reduced to 20%. If the main target has an Elemental Ailment, inflicts TECHNICAL and deals an additional 29.3%/29.3%/31.1%/31.1% of Nuclear damage. Has a 100% base chance to inflict 『Radiation』 on the main target."
+            "description": "Deal Nuclear damage to foes equal to 83.0%/91.5%/88.1%/96.6% of Attack (5 hits). From the second hit, prioritze new targets and change damage to 20% for hits on the same target. Also inflict a random elemental ailment on the target of each hit, prioritizing inflicting ones the target doesn't have.\nIf the target has an elemental ailment, activate a Techincal and deal bonus Nuclear damage equal to 29.3%/29.3%/31.1%/31.1% of Attack.\nInflict Radiation on the main target for 2 turns."
         },
         "skill2": {
-            "name": "Nuclear Resonance",
+            "name": "President's Prowess",
             "element": "치료",
             "type":"단일치료",
             "sp": 22,
             "cool": 0,
-            "description": "Heals 1 ally by 52.7%/52.7%/55.9%/55.9% of Makoto Niijima's ATK +1500/1824/1844/2168 HP, and increases Makoto Niijima's ATK by 48.8%/53.8%/51.8%/56.8% until the end of the next turn. Gains 2 stacks of 『Fortitude』, plus additional stacks based on the number of Elemental Ailments present on enemies."
+            "description": "Restore HP of 1 ally equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168. Increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nGain 3 Tenacity stacks, and gain more Tenacity stacks for each unique elemental ailment on foes."
         },
         "skill3": {
-            "name": "Nuclear Critical",
+            "name": "Nuclear Fury",
             "element": "핵열",
             "type":"단일피해",
             "sp": 21,
             "cool": 0,
-            "description": "Deals 210.6%/232.1%/223.6%/245.1% of ATK as Nuclear damage to 1 enemy. If the target has an Elemental Ailment, inflicts TECHNICAL and deals an additional 39.0%/43.0%/41.4%/45.4% of Nuclear damage. Gains 2 stacks of 『Fortitude』.\nWhen in 『Iron Will』 state, this skill upgrades to 『Nuclear Overload』.\n\n『Nuclear Overload』: Deals 243.6%/268.5%/258.6%/283.5% of ATK as Nuclear damage to 1 enemy, and for each Elemental Ailment the target has, inflicts TECHNICAL and deals an additional 34.2%/37.7%/36.3%/39.8% of Nuclear damage (up to 3 hits)."
+            "description": "Deal Nuclear damage to 1 foe equal to 210.6%/232.2%/223.6%/245.1% of Attack, and gain 2 Tenacity stacks.\nIf the main target has an elemental ailment, activate a Technical, dealing bonus Nuclear damage equal to 39.0%/43.0%/41.4%/45.4% of Attack.\nWhen Crash Out is active, evolve this skill to Thermonuclear Fury.\nThermonuclear Fury: Deal Nuclear damage to 1 foe equal to 243.6%/268.6%/258.6%/283.5% of Attack. For each different elemental ailment the foe has, activate a Technical, dealing bonus Nuclear damage equal to 34.2%/37.7%/36.3%/39.8% of Attack (up to 3 hits)."
         },
         "skill_highlight": {
             "element": "핵열",
             "type":"단일피해",
-            "description": "Gains 2 stacks of 『Thermal Material』 and deals 390.4%/430.4%/414.4%/454.4% of ATK as Nuclear damage to 1 enemy. Consumes all current 『Thermal Material』 stacks, and for each stack consumed, adds 1 random Elemental Ailment (up to 2 ailments). For each remaining stack consumed, this skill's damage increases by 20%."
+            "description": "Deal Nuclear damage to 1 foe equal to 468.5%/516.5%/497.3%/545.3% of Attack, gain 2 Frenzied Voltage stacks, and activate the following effects.\nSpend 1 Frenzied Voltage stack to inflict 1 random elemental ailment on foes, continuing until foes have 2 elemental ailments. Spend all remaining Frenzied Voltage stacks to increase the damage of this skill by 20% per stack."
         },
         "passive1": {
-            "name": "Concentration",
+            "name": "Chief Strategist",
             "element": "패시브",
-            "description": "For each type of Elemental Ailment on the field, Makoto Niijima's ATK increases by 15.0%."
+            "description": "During battle, for each different type of elemental ailment on foes, increase Attack by 15.0%."
         },
         "passive2": {
-            "name": "Determination",
+            "name": "Unshakable Will",
             "element": "패시브",
-            "description": "At the start of battle, damage reduction increases by 2.0%/4.0%/4.0%/6.0%. Each time Makoto Niijima enters 『Iron Will』 state, damage reduction increases by an additional 6.0%, up to a maximum of 18.0%."
+            "description": "At the start of battle, increase damage reduction rate by 6.0%, and when Crash Out is active, increase damage reduction rate by 6.0% more (up to 18.0%)."
         }
     },
     "모토하·여름": {
@@ -870,43 +870,43 @@ const enCharacterSkillsData = {
     "치즈코": {
         "name": "Chizuko Nagao",
         "skill1": {
-            "name": "Signal Bomb",
+            "name": "Diving Ray",
             "element": "핵열",
             "type":"단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 170.8%/186.3%/177.8%/193.3% Nuclear damage to 1 enemy. Reduces the target's DEF by 22.5% of Chizuko Nagao's Ailment Accuracy Rate, up to 37.3%/37.3%/38.8%/38.8%. Also has a 100% base chance to inflict a random elemental ailment the enemy does not already have."
+            "description": "Deal Nuclear damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack.\nFor 2 turns, decrease the target's Defense by 22.5% of Chizuko's ailment accuracy (up to 37.3%/37.3%/38.8%/38.8%) and inflict a random elemental ailment that the target does not already have."
         },
         "skill2": {
-            "name": "Carpet Bombing",
+            "name": "Blunt Edge",
             "element": "핵열광역",
             "type":"광역피해",
             "sp": 22,
             "cool": 0,
-            "description": "Deals 91.5%/100.5%/95.3%/104.3% Nuclear damage to all enemies. Has a 40% base chance to inflict a random elemental ailment that the enemy does not already have."
+            "description": "Deal Nuclear damage to all foes equal to 91.5%/100.9%/95.2%/104.6% of Attack. Has a 40% chance to inflict a random elemental ailment that the foe does not already have."
         },
         "skill3": {
-            "name": "Focused Ground Bombardment",
+            "name": "Bullseye Bomber",
             "element": "핵열",
             "type":"단일피해",
             "sp": 24,
             "cool": 1,
-            "description": "Deals 195.2%/215.2%/203.2%/223.2% Nuclear damage to 1 enemy. For each elemental ailment the target has, the damage they take increases by 11.3% of Chizuko Nagao's Ailment Accuracy Rate, up to 18.7%/20.7%/19.5%/21.5%. Lasts 2 turns and can stack up to 3 times."
+            "description": "Deal Nuclear damage to 1 foe equal to 195.2%/215.2%/203.2%/223.2% of Attack.\nIncrease the target's damage taken by 11.3% of Chizuko's ailment accuracy (up to 18.7%/20.7%/19.5%/21.4%) for 2 turns, based on the number of unique elemental ailments they have."
         },
         "skill_highlight": {
             "element": "핵열",
             "type":"단일피해",
-            "description": "Deals 324.5%/357.5%/337.8%/370.8% Nuclear damage to 1 enemy and has a 75% base chance to inflict 2 random elemental ailments the enemy does not already have."
+            "description": "Deal Nuclear damage to 1 foe equal to 324.5%/357.8%/337.8%/371.1% of Attack. Has a 75% chance to inflict 2 random elemental ailments that the foe does not already have."
         },
         "passive1": {
-            "name": "Annihilation",
+            "name": "Eagle Eye",
             "element": "패시브",
-            "description": "Enemies with 『Radiation』 take 15.0% more Nuclear damage."
+            "description": "Increase Nuclear damage taken by foes with Radiation by 15.0%. Lasts for 2 turns."
         },
         "passive2": {
-            "name": "Tactics",
+            "name": "Perfect Timing",
             "element": "패시브",
-            "description": "During battle, Chizuko Nagao gains an ATK bonus equal to 45.0% of her Ailment Accuracy Rate."
+            "description": "During battle, Increase Attack by 45.0% of ailment accuracy."
         }
     },
     "카스미": {
@@ -1161,8 +1161,9 @@ const enCharacterSkillsData = {
             "description": "Each time a shield is gained with Yusuke's skills, increase Yusuke's pierce rate by 20.0% for 1 turn."
         }
     },
+    
     "미나미": {
-        "name": "Minami Miyashita",
+        "name": "Miyashita Minami",
         "skill1": {
             "name": "Nurse's Light",
             "element": "축복",
@@ -1195,7 +1196,7 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Health Comes First",
             "element": "패시브",
-            "description": "After Minami heals an ally, increase that ally's damage by 15.0% + (3.0% × target ally's Blessing stacks) for 1 turn (up to 30%)."
+            "description": `After Minami heals an ally, increase that ally's damage by 15.0% + (3.0% × target ally's Blessing stacks) for 1 turn (up to 30%).`
         },
         "passive2": {
             "name": "Peace of Mind",
@@ -1247,9 +1248,6 @@ const enCharacterSkillsData = {
         }
     },
 
-    "미나미": {
-        "name": "",
-    },
     "렌": {
         "name": "Ren Amamiya",
         "skill1": {

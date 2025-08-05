@@ -140,7 +140,30 @@ review_jp: `
         review: ``
     },
     "마코토": { name_en: "Makoto Niijima", name_jp: "新島 真", codename: "QUEEN",
-        review: ``
+        review: `
+강력한 단일 타겟 딜러로, **핵열 속성이 P5부터 등장했다는 점을 고려할 때 속성 면에서 이득**을 가지고 가는 캐릭터입니다.
+
+의식6에서 추가 턴을 가질 수 있게 됨으로서 초반 단일 타겟 딜러로서는 최강의 자리를 가지게 됩니다.
+
+원소 이상에 큰 영향을 받는 만큼 **치즈코와의 파티 구성은 필수적**입니다.
+
+TECHNICAL을 지니고 있지만, 이후 추가된 수치인 스킬 마스터 효과에는 현재 영향을 받지 않습니다.`,
+review_en: `
+As a powerful single-target damage dealer, this character benefits from the introduction of the Nuclear attribute starting from P5, giving her a **distinct elemental advantage**.
+
+With an extra turn gained at Revelation 6, she becomes the strongest early-game single-target DPS.
+
+Since she is heavily reliant on elemental ailments, forming a **party with VINO is essential**.
+
+Although the character possesses TECHNICAL, they are currently not affected by the later-added SKILL MASTER effect.`,
+review_jp: `
+強力な単体ターゲットアタッカーであり、P5から登場した核熱属性を活かせるため、属性面で有利なキャラクターです。
+
+啓示6で追加ターンを獲得できるようになり、序盤の単体アタッカーとして最強の地位を確立します。
+
+属性異常の影響を大きく受けるため、**VINOとの編成は必須**です。
+
+TECHNICALを所持していますが、後から追加された数値であるSKILL MASTER効果の影響は現時点では受けていません。`
     },
     "미나미": { name_en: "Miyashita Minami", name_jp: "宮下 美波", codename: "MARIAN",
         review: ``
@@ -222,7 +245,24 @@ review_jp:`**防御力**を基にした**反撃型アタッカー**として設�
         review: ``
     },
     "치즈코": { name_en: "Chizuko Nagao", name_jp: "長尾 千津子", codename: "VINO",
-        review: ``
+        review: `
+4성임에도 불구하고 **방어력 감소 수치가 높아 준 5성에 달하는 디버퍼**입니다.
+
+5성 무기를 활용하고 계시(주권여정) 카드를 세팅한다면 **최대 124.8%의 방어력 감소**가 가능합니다.
+
+원소 이상을 다수 부여하므로 QUEEN 파티에 무조건적으로 채용되는 캐릭터이며, 이후에도 더 뛰어난 디버퍼를 얻기 전에는 주기적으로 활용됩니다.`,
+review_en: `
+Despite being a 4★, this character is a **debuffer with DEF reduction values rivaling that of a 5★**.
+
+If you equip a 5★ weapon and Revelation cards (Departure&Control), **up to 124.8% DEF reduction** is achievable.
+
+By inflicting multiple elemental ailments, she becomes a must-pick for QUEEN teams and will continue to see usage regularly until a stronger debuffer is released.`,
+review_jp: `
+4★でありながら、**5★に匹敵する防御力減少値を持つデバッファー**です。
+
+5★武器を装備し、啓示カードをセットすれば、**最大124.8%の防御力減少**が可能です。
+
+複数の属性異常を付与できるため、QUEENパーティには必須キャラであり、より優れたデバッファーが登場するまでは定期的に活用されます。`
     },
     "카스미": { name_en: "Kasumi Yoshizawa", name_jp: "芳澤 かすみ", codename: "VIOLET",
         review: ``

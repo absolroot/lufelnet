@@ -151,7 +151,7 @@ TECHNICAL을 지니고 있지만, 이후 추가된 수치인 스킬 마스터 �
 review_en: `
 As a powerful single-target damage dealer, this character benefits from the introduction of the Nuclear attribute starting from P5, giving her a **distinct elemental advantage**.
 
-With an extra turn gained at Revelation 6, she becomes the strongest early-game single-target DPS.
+With an extra turn gained at A6, she becomes the strongest early-game single-target DPS.
 
 Since she is heavily reliant on elemental ailments, forming a **party with VINO is essential**.
 

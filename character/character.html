@@ -467,7 +467,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         try {
             (adsbygoogle = window.adsbygoogle || []).push({});
         } catch (e) {
-            console.log('최하단 광고 푸시 중 오류 발생:', e);
+            console.log('최하단 광고 푸시 중 오류 발생:', e, 'id:', id);
         }
     </script>
 
@@ -491,7 +491,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 try {
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 } catch (e) {
-                    console.warn("광고 푸시 중 오류 발생:", e);
+                    console.warn("광고 푸시 중 오류 발생:", e, 'id:', id);
                 }
             } else {
                 // 100ms 후 재시도 (최대 10회)
@@ -582,7 +582,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 el.style.display = "none";
             }
         });
-        }, 1500);  // 광고 로딩 기다렸다가 1.5초 후 검사
+        }, 2000);  // 광고 로딩 기다렸다가 1.5초 후 검사
 
         document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
             observer.observe(adEl, { attributes: true });

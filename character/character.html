@@ -2125,55 +2125,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const character = characterData[characterName];
             if (!character) return;
 
-            function pushAdUnitsForCharacter(characterName) {
-    const character = characterData[characterName];
-    if (!character) return;
-
-    try {
-        // 광고 DOM을 먼저 모두 display: none 해두고
-        const allAdUnits = document.querySelectorAll('.ad-unit');
-        allAdUnits.forEach(ad => ad.style.display = 'none');
-
-        // 조건에 따라 특정 광고 DOM만 표시 + push 실행
-        if (character.persona5) {
-            const p5Ad = document.getElementById('ad-unit-p5-1');
-            if (p5Ad) {
-                p5Ad.style.display = 'block';
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-            const p5Ad2 = document.getElementById('ad-unit-p5-2');
-            if (p5Ad2) {
-                p5Ad2.style.display = 'block';
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-        } else if (character.persona3) {
-            const p3Ad = document.getElementById('ad-unit-p3-1');
-            if (p3Ad) {
-                p3Ad.style.display = 'block';
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-            const p3Ad2 = document.getElementById('ad-unit-p3-2');
-            if (p3Ad2) {
-                p3Ad2.style.display = 'block';
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-        } else {
-            const defaultAd = document.getElementById('ad-unit-1');
-            if (defaultAd) {
-                defaultAd.style.display = 'block';
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-            const defaultAd2 = document.getElementById('ad-unit-2');
-            if (defaultAd2) {
-                defaultAd2.style.display = 'block';
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-        }
-
-
             // 기본적으로 모든 광고가 표시된 상태에서
             // Persona 5 캐릭터인 경우 일반 광고를 숨기고, 아닌 경우 Persona 5 광고를 숨김
-            /*
             if (character.persona5) {
                 // 일반 광고 숨기기
                 const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
@@ -2210,12 +2163,48 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     }
                 });
                 // 일반 광고는 이미 표시된 상태 유지
-            }*/
+            }
         } catch (error) {
             console.warn('광고 업데이트 중 오류 발생:', error);
             // 오류가 발생해도 다른 기능에 영향을 주지 않도록 함
         }
     }
+
+
+    function pushAdUnitsForCharacter(characterName) {
+        const character = characterData[characterName];
+        if (!character) return;
+
+        try {
+            // 광고 DOM을 먼저 모두 display: none 해두고
+            const allAdUnits = document.querySelectorAll('.ad-unit');
+            allAdUnits.forEach(ad => ad.style.display = 'none');
+
+            // 조건에 따라 특정 광고 DOM만 표시 + push 실행
+            if (character.persona5) {
+                const p5Ad = document.getElementById('ad-unit-p5-1');
+                if (p5Ad) {
+                    p5Ad.style.display = 'block';
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
+            } else if (character.persona3) {
+                const p3Ad = document.getElementById('ad-unit-p3-1');
+                if (p3Ad) {
+                    p3Ad.style.display = 'block';
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
+            } else {
+                const defaultAd = document.getElementById('ad-unit-1');
+                if (defaultAd) {
+                    defaultAd.style.display = 'block';
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
+            }
+        } catch (error) {
+            console.warn('광고 푸시 중 오류 발생:', error);
+        }
+    }
+
 
     // Load character list when the page loads
     document.addEventListener('DOMContentLoaded', () => {
@@ -2225,7 +2214,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const characterName = new URLSearchParams(window.location.search).get('name');
             if (characterName) {
                 // Update ads based on character's persona3, persona5 property
-                updateAdsForPersona5(characterName);
+                //updateAdsForPersona5(characterName);
+                pushAdUnitsForCharacter(characterName);
                 // Load recommendations if the section is visible
                 if (recommendations && recommendations.style.display !== 'none') {
                     loadRecommendations(characterName);

@@ -407,7 +407,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <!-- 광고 (기본적으로 표시) -->
         <div id="ad-unit-2" class="ad-unit">
             <ins class="adsbygoogle"
-                style="display:block; background-color:transparent"
+                style="display:block;"
                 data-ad-format="fluid"
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
@@ -416,7 +416,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
         <div id="ad-unit-p5-2" class="ad-unit">
             <ins class="adsbygoogle"
-                style="display:block; background-color:transparent"
+                style="display:block;"
                 data-ad-format="fluid"
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
@@ -424,7 +424,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
         <div id="ad-unit-p3-2" class="ad-unit">
             <ins class="adsbygoogle"
-                style="display:block; background-color:transparent"
+                style="display:block;"
                 data-ad-format="fluid"
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
@@ -463,7 +463,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+            console.log('광고 푸시 중 오류 발생:', e);
+        }
     </script>
 </div>
 
@@ -2203,14 +2207,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     p5Ad.style.display = 'block';
                     setTimeout(() => {
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    }, 100);
+                    }, 300);
                 }
                 const p5Ad2 = document.getElementById('ad-unit-p5-2');
                 if (p5Ad2) {
                     p5Ad2.style.display = 'block';
                     setTimeout(() => {
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    }, 100);
+                    }, 300);
                 }
             } else if (character.persona3) {
                 const p3Ad = document.getElementById('ad-unit-p3-1');
@@ -2218,14 +2222,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     p3Ad.style.display = 'block';
                     setTimeout(() => {
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    }, 100);
+                    }, 300);
                 }
                 const p3Ad2 = document.getElementById('ad-unit-p3-2');
                 if (p3Ad2) {
                     p3Ad2.style.display = 'block';
                     setTimeout(() => {
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    }, 100);
+                    }, 300);
                 }
             } else {
                 const defaultAd = document.getElementById('ad-unit-1');
@@ -2233,14 +2237,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     defaultAd.style.display = 'block';
                     setTimeout(() => {
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    }, 100);
+                    }, 300);
                 }
                 const defaultAd2 = document.getElementById('ad-unit-2');
                 if (defaultAd2) {
                     defaultAd2.style.display = 'block';
                     setTimeout(() => {
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    }, 100);
+                    }, 300);
                 }
             }
         } catch (error) {

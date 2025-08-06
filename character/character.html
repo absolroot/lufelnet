@@ -2201,19 +2201,46 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const p5Ad = document.getElementById('ad-unit-p5-1');
                 if (p5Ad) {
                     p5Ad.style.display = 'block';
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    setTimeout(() => {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 100);
+                }
+                const p5Ad2 = document.getElementById('ad-unit-p5-2');
+                if (p5Ad2) {
+                    p5Ad2.style.display = 'block';
+                    setTimeout(() => {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 100);
                 }
             } else if (character.persona3) {
                 const p3Ad = document.getElementById('ad-unit-p3-1');
                 if (p3Ad) {
                     p3Ad.style.display = 'block';
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    setTimeout(() => {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 100);
+                }
+                const p3Ad2 = document.getElementById('ad-unit-p3-2');
+                if (p3Ad2) {
+                    p3Ad2.style.display = 'block';
+                    setTimeout(() => {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 100);
                 }
             } else {
                 const defaultAd = document.getElementById('ad-unit-1');
                 if (defaultAd) {
                     defaultAd.style.display = 'block';
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    setTimeout(() => {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 100);
+                }
+                const defaultAd2 = document.getElementById('ad-unit-2');
+                if (defaultAd2) {
+                    defaultAd2.style.display = 'block';
+                    setTimeout(() => {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }, 100);
                 }
             }
         } catch (error) {

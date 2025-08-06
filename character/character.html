@@ -2210,7 +2210,6 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }, 200);
 
                 // 광고 흰 박스 숨김
-                /*
                 setTimeout(() => {
                 document.querySelectorAll(".adsbygoogle").forEach(el => {
                     const status = el.getAttribute("data-ad-status");
@@ -2218,13 +2217,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     console.log("google status", status);
                     console.log("google adslot", adslot);
                     if (status === "unfilled" || el.querySelector("iframe") === null) {
-                    el.style.display = "none";
-                    if (el.parentElement) {
-                        el.parentElement.style.display = "none";
-                    }
+                        el.style.display = "none";
                     }
                 });
-                }, 3000);  // 광고 로딩 기다렸다가 검사*/
+                }, 3000);  // 광고 로딩 기다렸다가 3초 후 검사
 
                 document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
                     observer.observe(adEl, { attributes: true });

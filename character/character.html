@@ -2213,6 +2213,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 setTimeout(() => {
                 document.querySelectorAll(".adsbygoogle").forEach(el => {
                     const status = el.getAttribute("data-ad-status");
+                    const adslot = el.getAttribute("data-ad-slot");
+                    console.log("google status", status);
+                    console.log("google adslot", adslot);
                     if (status === "unfilled" || el.querySelector("iframe") === null) {
                     el.style.display = "none";
                     if (el.parentElement) {

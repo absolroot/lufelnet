@@ -292,19 +292,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <!-- 광고 (기본적으로 표시) -->
         <div id="ad-unit-1" class="ad-unit">
             <ins class="adsbygoogle"
-                style="display:block; background-color:transparent"
+                style="display:block;"
                 data-ad-format="fluid"
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="5373524213"></ins>
         </div>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        
         <div id="ad-unit-p5-1" class="ad-unit">
             <ins class="adsbygoogle"
-                style="display:block; background-color:transparent"
+                style="display:block;"
                 data-ad-format="fluid"
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
@@ -312,7 +308,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
         <div id="ad-unit-p3-1" class="ad-unit">
             <ins class="adsbygoogle"
-                style="display:block; background-color:transparent"
+                style="display:block;"
                 data-ad-format="fluid"
                 data-ad-layout-key="-gc+3r+68-9q-29"
                 data-ad-client="ca-pub-5862324369257695"
@@ -459,17 +455,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     <!-- 최하단 광고-->
     <div style="height: 24px;"></div>
+    <div id="ad-unit-bottom">
     <ins class="adsbygoogle"
         style="display:block"
         data-ad-client="ca-pub-5862324369257695"
         data-ad-slot="9244892982"
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
+    </div>
     <script>
         try {
             (adsbygoogle = window.adsbygoogle || []).push({});
         } catch (e) {
-            console.log('광고 푸시 중 오류 발생:', e);
+            console.log('최하단 광고 푸시 중 오류 발생:', e);
         }
     </script>
 
@@ -584,7 +582,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 el.style.display = "none";
             }
         });
-        }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
+        }, 1500);  // 광고 로딩 기다렸다가 1.5초 후 검사
 
         document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
             observer.observe(adEl, { attributes: true });

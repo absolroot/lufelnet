@@ -455,6 +455,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     <!-- 최하단 광고-->
     <div style="height: 24px;"></div>
+    
     <div id="ad-unit-bottom">
     <ins class="adsbygoogle"
         style="display:block"
@@ -518,7 +519,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             // 조건에 따라 특정 광고 DOM만 표시 + push 실행
             if (character.persona5) {
                 showAdAndPush('ad-unit-p5-1');
-                showAdAndPush('ad-unit-p5-2');
+                setTimeout(() => {
+                    showAdAndPush('ad-unit-p5-2');
+                }, 100);
 
                 const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
                 adsToHide.forEach(ad => {
@@ -528,7 +531,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 });
             } else if (character.persona3) {
                 showAdAndPush('ad-unit-p3-1');
-                showAdAndPush('ad-unit-p3-2');
+                setTimeout(() => {
+                    showAdAndPush('ad-unit-p3-2');
+                }, 100);
 
                 const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])');
                 adsToHide.forEach(ad => {
@@ -538,7 +543,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 });
             } else {
                 showAdAndPush('ad-unit-1');
-                showAdAndPush('ad-unit-2');
+                setTimeout(() => {
+                    showAdAndPush('ad-unit-2');
+                }, 100);
 
                 const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
                 const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');

@@ -1,10 +1,10 @@
 * {
     font-family: 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: -0.02em;
 }
 
 
 body {
-    font-family: "Noto Sans", "Open Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: #1f1f1f;
     color: #ffffff;
     margin: 0;
@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     opacity: 1;
     transition: opacity 0.3s ease;
-    /*letter-spacing: -0.025em; */
+    /*letter-spacing: -0.025em; */  
 }
 
 

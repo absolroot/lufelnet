@@ -2210,18 +2210,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }, 200);
 
                 // 광고 흰 박스 숨김
-                const observer = new MutationObserver((mutationsList) => {
-                    for (const mutation of mutationsList) {
-                        const node = mutation.target;
-                        if (
-                        node.classList?.contains("adsbygoogle") &&
-                        node.getAttribute("data-ad-status") === "unfilled"
-                        ) {
-                        node.style.display = "none"; // 흰 박스 숨김
-                        node.parentElement?.style.display = "none"; // 감싸는 div도 숨길 수 있음
-                        }
+                setTimeout(() => {
+                document.querySelectorAll(".adsbygoogle").forEach(el => {
+                    const status = el.getAttribute("data-ad-status");
+                    if (status === "unfilled" || el.querySelector("iframe") === null) {
+                    el.style.display = "none";
+                    if (el.parentElement) {
+                        el.parentElement.style.display = "none";
+                    }
                     }
                 });
+                }, 1000);  // 광고 로딩 기다렸다가 검사
 
                 document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
                     observer.observe(adEl, { attributes: true });

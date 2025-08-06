@@ -2195,24 +2195,39 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const el = document.getElementById(id);
         if (!el) return;
 
-        el.style.display = 'block';  // display 먼저 적용
+        el.style.display = 'block';
 
-        // 2번의 requestAnimationFrame으로 layout 안정적으로 확보
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                const ins = el.querySelector('.adsbygoogle');
-                if (ins && ins.offsetWidth >= 250) {
-                    try {
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    } catch (e) {
-                        console.warn("광고 푸시 중 오류 발생:", e);
-                    }
-                } else {
-                    console.warn(`${id}의 광고 요소 width가 충분하지 않음 (현재: ${ins?.offsetWidth || 0}px)`);
+        const checkAndPush = () => {
+            const ins = el.querySelector('.adsbygoogle');
+
+            if (!ins) return;
+
+            // adsbygoogle이 화면에 제대로 포함되어 있고, 최소 width 확보됐는지 확인
+            const isVisible = ins.offsetParent !== null;
+            const widthOk = ins.offsetWidth >= 250;
+
+            if (isVisible && widthOk) {
+                try {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {
+                    console.warn("광고 푸시 중 오류 발생:", e);
                 }
-            });
-        });
+            } else {
+                // 100ms 후 재시도 (최대 10회)
+                if (!ins.__retryCount) ins.__retryCount = 0;
+                if (ins.__retryCount < 10) {
+                    ins.__retryCount++;
+                    setTimeout(checkAndPush, 100);
+                } else {
+                    console.warn(`${id} 광고 푸시 실패: width=${ins.offsetWidth}, visible=${isVisible}`);
+                }
+            }
+        };
+
+        // 첫 시도
+        requestAnimationFrame(checkAndPush);
     }
+
 
 
     // push 광고 

@@ -48,6 +48,10 @@ HIGHLIGHT, ONE MORE, 총 공격, 해명 괴도 행동 등 괴도 행동이 넘�
 
 - 100%를 초과하여 충전되지 않는다.
 
+- **하이라이트는 한 번 사용한 후 같은 캐릭터는 4번 행동하기 전까지 사용하지 못한다.** (예. 2턴 사용 시 6턴 사용 가능)
+
+- 원더는 각 페르소나 별로 다른 하이라이트 턴이 돌아간다.
+
 </div>
 
 <div class="content-en" markdown="1">
@@ -83,7 +87,9 @@ In the past, enemy attacks were also counted, allowing strange strategies like g
 
 - The charge cannot exceed 100%.
 
+- **After using HIGHLIGHT, the same character cannot use it again until they have taken 4 more actions.** (For example, if used on Turn 2, it can be used again on Turn 6.)
 
+- For Wonder, each Persona has a separate HIGHLIGHT cooldown.
 
 </div>
 
@@ -120,5 +126,8 @@ HIGHLIGHT、ONE MORE、総攻撃、解明怪盗行動など、怪盗行動とし
 
 - 100%を超えてチャージされることはない。
 
+- **ハイライトは一度使用すると、同じキャラクターが4回行動するまで再度使用できません。**（例：2ターン目に使用した場合、6ターン目に再使用可能）
+
+- ワンダーはペルソナごとにハイライトのクールタイムが個別に管理されます。
 
 </div>

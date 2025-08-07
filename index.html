@@ -128,6 +128,30 @@ alternate_urls:
                     <img src="{{ site.baseurl }}/assets/img/home/4.webp" alt="택틱 일러스트" class="card-illustration" loading="lazy">
                 </a>
             </div>
+
+            <div class="menu-card" id="menu-article-card">
+                <a href="./article/" class="card-content" style="text-decoration: none; color: inherit;">
+                    <div class="text-section">
+                        <h2 id="menu-article-title">가이드 <img src="{{ site.baseurl }}/assets/img/home/icon5.png" alt="아티클 아이콘" class="title-icon"></h2>
+                        <p class="desktop-description" id="menu-article-desc-desktop">게임에서 알려주지 않는 정보들을 정리했어요</p>
+                        <p class="mobile-description" id="menu-article-desc-mobile">게임에서 알려주지 않는 정보들을 정리했어요</p>
+                        <button class="view-more" id="menu-article-btn">바로가기 →</button>
+                    </div>
+                    <img src="{{ site.baseurl }}/assets/img/home/5.webp" alt="아티클 일러스트" class="card-illustration" loading="lazy">
+                </a>
+            </div>
+
+            <div class="menu-card" id="menu-tier-card">
+                <a href="./tier/position-tier/" class="card-content" style="text-decoration: none; color: inherit;">
+                    <div class="text-section">
+                        <h2 id="menu-tier-title">티어 <img src="{{ site.baseurl }}/assets/img/home/icon6.png" alt="티어 아이콘" class="title-icon"></h2>
+                        <p class="desktop-description" id="menu-tier-desc-desktop">티어를 참고하여 괴도를 육성해보세요</p>
+                        <p class="mobile-description" id="menu-tier-desc-mobile">티어를 참고하여 괴도를 육성해보세요</p>
+                        <button class="view-more" id="menu-tier-btn">바로가기 →</button>
+                    </div>
+                    <img src="{{ site.baseurl }}/assets/img/home/6.webp" alt="티어 일러스트" class="card-illustration" loading="lazy">
+                </a>
+            </div>
         </div>
         <div class="update-notice">
             
@@ -370,6 +394,8 @@ alternate_urls:
                     menu_persona: "{{ site.data.i18n.en.menu_persona | default: 'Personas' }}",
                     menu_revelations: "{{ site.data.i18n.en.menu_revelations | default: 'Revelations' }}",
                     menu_tactic: "{{ site.data.i18n.en.menu_tactic | default: 'Tactics' }}",
+                    menu_article: "{{ site.data.i18n.en.menu_article | default: 'Guides' }}",
+                    menu_tier: "{{ site.data.i18n.en.menu_tier | default: 'Tiers' }}",
                     menu_character_desc_desktop: "{{ site.data.i18n.en.menu_character_desc_desktop | default: 'Meet character development strategies<br>for higher scores and easier clears' }}",
                     menu_character_desc_mobile: "{{ site.data.i18n.en.menu_character_desc_mobile | default: 'Meet character development strategies' }}",
                     menu_persona_desc_desktop: "{{ site.data.i18n.en.menu_persona_desc_desktop | default: 'Core persona recommendations<br>and skill settings for each persona' }}",
@@ -378,6 +404,10 @@ alternate_urls:
                     menu_revelations_desc_mobile: "{{ site.data.i18n.en.menu_revelations_desc_mobile | default: 'All revelation information at a glance!' }}",
                     menu_tactic_desc_desktop: "{{ site.data.i18n.en.menu_tactic_desc_desktop | default: 'Create and share your own tactics,<br>achieve high scores in ocean and nightmare' }}",
                     menu_tactic_desc_mobile: "{{ site.data.i18n.en.menu_tactic_desc_mobile | default: 'Create and share your own tactics' }}",
+                    menu_article_desc_desktop: "{{ site.data.i18n.en.menu_article_desc_desktop | default: 'Compiled information that the game doesn&#39;t tell you.' }}",
+                    menu_article_desc_mobile: "{{ site.data.i18n.en.menu_article_desc_mobile | default: 'Compiled information that the game doesn&#39;t tell you.' }}",
+                    menu_tier_desc_desktop: "{{ site.data.i18n.en.menu_tier_desc_desktop | default: 'Try building your Phantom Thieves based on the tier list.' }}",
+                    menu_tier_desc_mobile: "{{ site.data.i18n.en.menu_tier_desc_mobile | default: 'Building your Phantom Thieves by the tier list.' }}",
                     menu_goto: "{{ site.data.i18n.en.menu_goto | default: 'Go to' }}",
                     popular_characters: "{{ site.data.i18n.en.popular_characters | default: 'Popular Characters' }}",
                     recent_updates: "{{ site.data.i18n.en.recent_updates | default: 'Recent Updates' }}",
@@ -395,6 +425,8 @@ alternate_urls:
                     menu_persona: "{{ site.data.i18n.jp.menu_persona | default: 'ペルソナ' }}",
                     menu_revelations: "{{ site.data.i18n.jp.menu_revelations | default: '啓示' }}",
                     menu_tactic: "{{ site.data.i18n.jp.menu_tactic | default: 'タクティクス' }}",
+                    menu_article: "{{ site.data.i18n.jp.menu_article | default: 'ガイド' }}",
+                    menu_tier: "{{ site.data.i18n.jp.menu_tier | default: 'ティア' }}",
                     menu_character_desc_desktop: "{{ site.data.i18n.jp.menu_character_desc_desktop | default: 'より高いスコア、より簡単なクリアのための<br>怪盗別育成戦略をご紹介します' }}",
                     menu_character_desc_mobile: "{{ site.data.i18n.jp.menu_character_desc_mobile | default: '怪盗別育成戦略をご紹介します' }}",
                     menu_persona_desc_desktop: "{{ site.data.i18n.jp.menu_persona_desc_desktop | default: 'コアペルソナ推薦と共に<br>各ペルソナに合うスキル設定まで' }}",
@@ -403,6 +435,10 @@ alternate_urls:
                     menu_revelations_desc_mobile: "{{ site.data.i18n.jp.menu_revelations_desc_mobile | default: '啓示情報を一目で！' }}",
                     menu_tactic_desc_desktop: "{{ site.data.i18n.jp.menu_tactic_desc_desktop | default: '自分だけのタクティクスを作成・共有し、<br>海と悪夢で高スコアを獲得しましょう' }}",
                     menu_tactic_desc_mobile: "{{ site.data.i18n.jp.menu_tactic_desc_mobile | default: '自分だけのタクティクスを作成・共有しましょう' }}",
+                    menu_article_desc_desktop: "{{ site.data.i18n.jp.menu_article_desc_desktop | default: 'ゲーム内で説明されない情報をまとめました。' }}",
+                    menu_article_desc_mobile: "{{ site.data.i18n.jp.menu_article_desc_mobile | default: 'ゲーム内で説明されない情報をまとめました。' }}",
+                    menu_tier_desc_desktop: "{{ site.data.i18n.jp.menu_tier_desc_desktop | default: 'ティア表を参考にして怪盗を育成してみましょう。' }}",
+                    menu_tier_desc_mobile: "{{ site.data.i18n.jp.menu_tier_desc_mobile | default: 'ティア表を参考にして怪盗を育成してみましょう。' }}",
                     menu_goto: "{{ site.data.i18n.jp.menu_goto | default: '移動' }}",
                     popular_characters: "{{ site.data.i18n.jp.popular_characters | default: '人気怪盗' }}",
                     recent_updates: "{{ site.data.i18n.jp.recent_updates | default: '最新アップデート' }}",
@@ -474,7 +510,9 @@ alternate_urls:
             'menu-character-title': data.menu_character,
             'menu-persona-title': data.menu_persona,
             'menu-revelations-title': data.menu_revelations,
-            'menu-tactic-title': data.menu_tactic
+            'menu-tactic-title': data.menu_tactic,
+            'menu-article-title': data.menu_article,
+            'menu-tier-title': data.menu_tier
         };
         
         Object.keys(menuTitles).forEach(id => {
@@ -495,7 +533,11 @@ alternate_urls:
             'menu-revelations-desc-desktop': data.menu_revelations_desc_desktop,
             'menu-revelations-desc-mobile': data.menu_revelations_desc_mobile,
             'menu-tactic-desc-desktop': data.menu_tactic_desc_desktop,
-            'menu-tactic-desc-mobile': data.menu_tactic_desc_mobile
+            'menu-tactic-desc-mobile': data.menu_tactic_desc_mobile,
+            'menu-article-desc-desktop': data.menu_article_desc_desktop,
+            'menu-article-desc-mobile': data.menu_article_desc_mobile,
+            'menu-tier-desc-desktop': data.menu_tier_desc_desktop,
+            'menu-tier-desc-mobile': data.menu_tier_desc_mobile
         };
         
         Object.keys(menuDescs).forEach(id => {

@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "HIGHLIGHT 충전 메커니즘"
-date: 2025-07-15 12:00:00 +0900
+date: 2025-08-07 00:00:00 +0900
 categories: [Guide]
 tags: [guide]
 author: Root

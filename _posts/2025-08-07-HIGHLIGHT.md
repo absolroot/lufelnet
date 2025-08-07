@@ -1,0 +1,124 @@
+---
+layout: article
+title: "HIGHLIGHT 충전 메커니즘"
+date: 2025-07-15 12:00:00 +0900
+categories: [Guide]
+tags: [guide]
+author: Root
+thumbnail: /apps/article/asset/highlight1.png
+translations:
+  kr:
+    title: "HIGHLIGHT 충전 메커니즘"
+  en:
+    title: "HIGHLIGHT Charge Mechanism"
+  jp:
+    title: "HIGHLIGHTチャージメカニズム"
+---
+
+<div class="content-kr" markdown="1">
+
+<img src="/apps/article/asset/highlight1.png" >
+
+HIGHLIGHT 게이지 메커니즘은 가장 중요한 요소 중 하나인데도 인게임 내에서 설명이 되고 있지 않은 요소 중 하나다.
+
+<br>
+
+# 게이지 수치
+
+- **각 괴도의 행동 1회당 기본 17% 게이지를 충전한다.**
+
+- **약점을 타격할 경우 21% (+4%)의 게이지를 충전한다.**
+
+<br>
+
+HIGHLIGHT, ONE MORE, 총 공격, 해명 괴도 행동 등 괴도 행동이 넘어가지 않는 모든 액션은 영향을 주지 않는다.
+
+오로지 일반 공격, 페르소나 스킬, 방어, 아이템, 총격 등 행동을 1회 소모하는 효과만 하이라이트 충전에 영향을 준다.
+
+과거에는 적의 타격도 계산에 포함돼 약점을 맞아 추가로 타격 받는 등 괴상한 전략이 있었으나 메커니즘이 간결화됐다.  (=과거 전략이 현재와는 맞지 않는 이유)
+
+---
+
+# 이외 특이사항
+
+- 계시 카드를 통해 25% 게이지를 얻고 시작할 경우 약점을 2번 타격해야 2턴 첫번째 괴도 타이밍에 HIGHLIGHT를 쓸 수 있다. 
+(25% + 21% + 21% + 17% + 17% = 101%)
+
+- JOCKER 및 QUEEN 등의 추가 턴 행동도 HIGHLIGHT 충전이 가능하다.
+
+- 100%를 초과하여 충전되지 않는다.
+
+</div>
+
+<div class="content-en" markdown="1">
+
+<img src="/apps/article/asset/highlight1.png" >
+
+The HIGHLIGHT charge mechanism is one of the most important elements, yet it is not explained in-game.
+
+<br>
+
+# Gauge Values
+
+- **Each Thief action charges the gauge by a base of 17%.**
+
+- **Hitting a Weakness charges the gauge by 21% (+4%).**
+
+<br>
+
+Actions that do not count as a Thief action—such as HIGHLIGHT, ONE MORE, All-Out Attack, or Navi Thief actions—do not affect the charge.
+
+Only actions that consume one action, such as Normal Attack, Persona Skill, Defense, Item, or Gunshot, will contribute to the HIGHLIGHT charge.
+
+In the past, enemy attacks were also counted, allowing strange strategies like getting hit again by Weakness, but the mechanism has since been simplified. (=This is why old strategies no longer work.)
+
+---
+
+# Other Notes
+
+- If you start the battle with 25% gauge from a Revelation card, you must hit Weakness twice in order to use HIGHLIGHT on the first Thief's turn in round 2.
+(25% + 21% + 21% + 17% + 17% = 101%)
+
+- Additional turn actions, such as those by JOKER or QUEEN, can also charge HIGHLIGHT.
+
+- The charge cannot exceed 100%.
+
+
+
+</div>
+
+<div class="content-jp" markdown="1">
+
+<img src="/apps/article/asset/highlight1.png" >
+
+HIGHLIGHTチャージメカニズムは最も重要な要素の一つであるにもかかわらず、ゲーム内では説明されていない。
+
+<br>
+
+# ゲージ数値
+
+- **怪盗の行動1回ごとに基本17%ゲージがチャージされる。**
+
+- **弱点を突いた場合、21%（+4%）ゲージがチャージされる。**
+
+<br>
+
+HIGHLIGHT、ONE MORE、総攻撃、解明怪盗行動など、怪盗行動としてカウントされないすべてのアクションはチャージに影響しない。
+
+通常攻撃、ペルソナスキル、防御、アイテム、ガンショットなど、1回の行動を消費する効果のみがHIGHLIGHTチャージに影響を与える。
+
+以前は敵の攻撃も計算に含まれ、弱点を突かれて追加で攻撃を受けるなど奇妙な戦略もあったが、現在はメカニズムが簡略化された（＝過去の戦略が現在は通用しない理由）。
+
+---
+
+# その他の特記事項
+
+- 啓示カードで25%ゲージを得て開始した場合、弱点を2回突くことで2ターン目の最初の怪盗タイミングでHIGHLIGHTを使える。
+（25% + 21% + 21% + 17% + 17% = 101%）
+
+- JOKERやQUEENなどの追加ターン行動もHIGHLIGHTチャージが可能。
+
+- 100%を超えてチャージされることはない。
+
+
+</div>

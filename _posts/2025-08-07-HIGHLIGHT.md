@@ -41,6 +41,8 @@ HIGHLIGHT, ONE MORE, 총 공격, 해명 괴도 행동 등 괴도 행동이 넘�
 
 # 이외 특이사항
 
+<img src="/apps/article/asset/highlight2.png" >
+
 - 계시 카드를 통해 25% 게이지를 얻고 시작할 경우 약점을 2번 타격해야 2턴 첫번째 괴도 타이밍에 HIGHLIGHT를 쓸 수 있다. 
 (25% + 21% + 21% + 17% + 17% = 101%)
 
@@ -79,6 +81,8 @@ In the past, enemy attacks were also counted, allowing strange strategies like g
 ---
 
 # Other Notes
+
+<img src="/apps/article/asset/highlight2.png" >
 
 - If you start the battle with 25% gauge from a Revelation card, you must hit Weakness twice in order to use HIGHLIGHT on the first Thief's turn in round 2.
 (25% + 21% + 21% + 17% + 17% = 101%)
@@ -119,6 +123,8 @@ HIGHLIGHT、ONE MORE、総攻撃、解明怪盗行動など、怪盗行動とし
 ---
 
 # その他の特記事項
+
+<img src="/apps/article/asset/highlight2.png" >
 
 - 啓示カードで25%ゲージを得て開始した場合、弱点を2回突くことで2ターン目の最初の怪盗タイミングでHIGHLIGHTを使える。
 （25% + 21% + 21% + 17% + 17% = 101%）

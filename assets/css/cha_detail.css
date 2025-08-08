@@ -49,6 +49,7 @@
     display: flex;
     transition: transform 0.3s ease;
     width: 100%;
+    gap: 200px;
 }
 
 .carousel-item {
@@ -59,19 +60,12 @@
 
 .thief-image,
 .persona-image {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: 600px;
     object-fit: contain;
 }
 
-/* specific attribute icons are displayed larger */
-.character-images img[src*="키라 - 하르피이아.webp"],
-.character-images img[src*="리코·매화 - 치요메.webp"],
-.character-images img[src*="카스미 - 상드리옹.webp"],
-.character-images img[src*="몽타뉴·백조 - 테르프시코레.webp"],
-.character-images img[src*="마사키 - 아말테이아.webp"]{
-    width: 600px;
-}
 
 
 .carousel-dots {
@@ -79,6 +73,8 @@
     justify-content: center;
     gap: 8px;
     margin-top: 16px;
+    position: relative;
+    z-index: 100;
 }
 
 .dot {

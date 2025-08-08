@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel-inner');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
+    let slideWidth = carousel.clientWidth; // 개별 슬라이드 너비(px)
+    const slideGap = 200; // CSS gap과 동일하게 유지
 
     // 도트 클릭 이벤트
     dots.forEach((dot, index) => {
@@ -14,8 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function moveToSlide(index) {
         currentSlide = index;
-        const offset = -index * 100;
-        carousel.style.transform = `translateX(${offset}%)`;
+        const offsetPx = -index * (slideWidth + slideGap);
+        carousel.style.transition = '';
+        carousel.style.transform = `translateX(${offsetPx}px)`;
+        prevTranslate = offsetPx;
+        currentTranslate = offsetPx;
         updateDots();
     }
 
@@ -54,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             isDragging = true;
             startPos = e.pageX;
         }
+        // 드래그 시작: 전환 제거
+        carousel.style.transition = 'none';
         prevTranslate = currentTranslate;
     }
 
@@ -69,8 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentTranslate = prevTranslate + diff;
         
-        // 이동 제한 (-100% ~ 0%)
-        currentTranslate = Math.max(Math.min(currentTranslate, 0), -carousel.clientWidth);
+        // 이동 제한 (첫 슬라이드 ~ 마지막 슬라이드)
+        const maxTranslate = 0;
+        const minTranslate = -((slideWidth + slideGap) * 1); // 현재 2장 기준
+        currentTranslate = Math.max(Math.min(currentTranslate, maxTranslate), minTranslate);
         
         carousel.style.transform = `translateX(${currentTranslate}px)`;
     }
@@ -80,12 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
         isDragging = false;
 
         const movedBy = currentTranslate - prevTranslate;
-        const threshold = carousel.clientWidth * 0.2;
+        const threshold = slideWidth * 0.2;
 
         if (Math.abs(movedBy) > threshold) {
             if (movedBy < 0 && currentSlide < 1) {
+                carousel.style.transition = '';
                 moveToSlide(1);
             } else if (movedBy > 0 && currentSlide > 0) {
+                carousel.style.transition = '';
                 moveToSlide(0);
             } else {
                 moveToSlide(currentSlide);
@@ -97,4 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 초기 도트 상태 설정
     updateDots();
+
+    // 리사이즈 대응: 슬라이드 너비 갱신 및 현재 위치 보정
+    window.addEventListener('resize', () => {
+        const prevSlideWidth = slideWidth;
+        slideWidth = carousel.clientWidth;
+        // 현재 인덱스 기준 오프셋 재계산
+        const offsetPx = -currentSlide * (slideWidth + slideGap);
+        carousel.style.transition = 'none';
+        carousel.style.transform = `translateX(${offsetPx}px)`;
+        prevTranslate = offsetPx;
+        currentTranslate = offsetPx;
+        // 다음 프레임에 전환 복원
+        requestAnimationFrame(() => {
+            carousel.style.transition = '';
+        });
+    });
 });

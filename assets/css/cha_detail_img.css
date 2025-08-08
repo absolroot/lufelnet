@@ -1,0 +1,189 @@
+.carousel {
+    clip-path: inset(-100px -100px -100px -100px);
+    overflow: visible !important;
+    z-index: 0;
+}
+
+.card-style{
+    position: relative;
+    z-index: 99;
+}
+
+/* specific attribute icons are displayed larger */
+.character-images img[src*="키라 - 하르피이아.webp"],
+.character-images img[src*="리코·매화 - 치요메.webp"],
+.character-images img[src*="카스미 - 상드리옹.webp"],
+.character-images img[src*="몽타뉴·백조 - 테르프시코레.webp"],
+.character-images img[src*="마사키 - 아말테이아.webp"]{
+    width: 600px;
+}
+
+.character-images img[src*="루페르.webp"]{
+    scale: 0.8;
+}
+
+.character-images img[src*="유카리.webp"],
+.character-images img[src*="토시야.webp"]{
+    scale: 1.4;
+}
+
+.character-images img[src*="미오.webp"],
+.character-images img[src*="이치고.webp"],
+.character-images img[src*="리코·매화.webp"]{
+    scale: 1.2;
+}
+
+.character-images img[src*="모토하·여름.webp"],
+.character-images img[src*="토모코·여름.webp"],
+.character-images img[src*="안.webp"],
+.character-images img[src*="세이지.webp"]{
+    scale: 1.1;
+}
+
+.character-images img[src*="유키 마코토.webp"],
+.character-images img[src*="유스케.webp"],
+.character-images img[src*="유이 YUI.webp"],
+.character-images img[src*="레오.webp"],
+.character-images img[src*="모토하.webp"],
+.character-images img[src*="유키미.webp"]{
+    scale: 1.05;
+}
+
+
+.character-images img[src*="미나미·여름.webp"]{
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+    scale: 1.05;
+}
+
+.character-images img[src*="마나카.webp"]{
+    position: relative;
+    top: 80px;
+    left: 20px;
+    scale: 1.2;
+}
+
+.character-images img[src*="사나다.webp"]{
+    position: relative;
+    top: 50px;
+    scale: 1.15;
+}
+
+.character-images img[src*="이케나미.webp"]{
+    position: relative;
+    top: 10px;
+    scale: 1.15;
+}
+
+.character-images img[src*="마유미.webp"]{
+    position: relative;
+    top: 10px;
+    left: 40px;
+    scale: 1.4;
+}
+
+.character-images img[src*="아케치.webp"]{
+    position: relative;
+    top: 30px;
+    scale: 1.1;
+}
+
+.character-images img[src*="야오링·사자무.webp"]{
+    position: relative;
+    top: 25px;
+    scale: 1.1;
+}
+
+.character-images img[src*="렌.webp"],
+.character-images img[src*="카스미.webp"],
+.character-images img[src*="루우나.webp"]{
+    position: relative;
+    top: 10px;
+    right: 60px;
+    scale: 1.05;
+}
+
+.character-images img[src*="렌 - 아르센.webp"]{
+    position: relative;
+    top: 10px;
+    left: 60px;
+    scale: 1.3;
+}
+
+.character-images img[src*="하루.webp"]{
+    scale: 1.05;
+    position: relative;
+    top: 15px;
+}
+
+.character-images img[src*="몽타뉴·백조.webp"]{
+    position: relative;
+    top: 30px;
+    right: 40px;
+    scale: 1.2;
+}
+
+.character-images img[src*="마사키.webp"]{
+    position: relative;
+    right: 50px;
+}
+
+.character-images img[src*="후타바.webp"]{
+    scale: 0.98;
+    position: relative;
+    right: 50px;
+}
+
+.character-images img[src*="키라.webp"]{
+    position: relative;
+    top: 20px;
+    left: 20px;
+    scale: 1.05;
+}
+
+.character-images img[src*="아야카.webp"]{
+    position: relative;
+    right: 40px;
+    top: 20px;
+    scale: 1.07;
+}
+
+.character-images img[src*="리코.webp"]{
+    position: relative;
+    right: 40px;
+    scale: 1.05;
+}
+
+/* '유키 마코토'가 아닌 '마코토'만 적용 */
+.character-images img[src*="마코토.webp"]:not([src*="유키 마코토.webp"]) {
+    position: relative;
+    right: 60px;
+    top: 30px;
+    scale: 1.05;
+}
+
+.character-images img[src*="유우미.webp"]{
+    scale: 1.03;
+}
+
+.character-images img[src*="몽타뉴.webp"]{
+    position: relative;
+    right: 30px;
+    scale: 1.1;
+    top: 15px;
+}
+
+.character-images img[src*="슌.webp"]{
+    position: relative;
+    right: 40px;
+    scale: 1.06;
+    top: 10px;
+}
+
+.character-images img[src*="토모코.webp"]{
+    scale: 1.12;
+    position: relative;
+    left: 30px;
+    bottom: 30px;
+}

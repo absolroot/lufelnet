@@ -20,13 +20,13 @@ const characterTranslations = {
     
     // 직업 번역  
     positions: {
-        "구원": "Salvation",
-        "굴복": "Submission", 
-        "반항": "Rebellion",
+        "구원": "Medic",
+        "굴복": "Saboteur", 
+        "반항": "Assassin",
         "방위": "Defense",
-        "우월": "Superiority",
-        "지배": "Domination",
-        "해명": "Clarification"
+        "우월": "Strategist",
+        "지배": "Sweeper",
+        "해명": "Elucidator"
     },
     
     // 태그 번역

@@ -52,7 +52,8 @@ HIGHLIGHT, ONE MORE, 총 공격, 해명 괴도 행동 등 괴도 행동이 넘�
 
 - **하이라이트는 한 번 사용한 후 같은 캐릭터는 4번 행동하기 전까지 사용하지 못한다.** (예. 2턴에 해당 캐릭터 행동 전에 사용 시 6턴에 사용 가능)
 
-- 원더는 각 페르소나 별로 다른 하이라이트 턴이 돌아간다.
+- 원더는 각 페르소나의 직업 별로 다른 하이라이트 턴이 돌아간다.
+(구원·방위·우월 페르소나는 모두 동일한 효과를 지니고 있기에 같은 쿨타임을 공유한다.)
 
 </div>
 
@@ -94,7 +95,8 @@ In the past, enemy attacks were also counted, allowing strange strategies like g
 - **After using HIGHLIGHT, the same character cannot use it again until they have taken 4 more actions.**
 (If HIGHLIGHT is used before that character’s action in Turn 2, it can be used again in Turn 6.)
 
-- For Wonder, each Persona has a separate HIGHLIGHT cooldown.
+- Wonder’s HIGHLIGHT turn varies depending on the Persona’s Role.
+(Personas with the Medic, Defense, and Strategist roles share the same effect, so they also share the same cooldown.)
 
 </div>
 
@@ -136,6 +138,7 @@ HIGHLIGHT、ONE MORE、総攻撃、解明怪盗行動など、怪盗行動とし
 - **ハイライトは一度使用すると、同じキャラクターが4回行動するまで再度使用できません。**
 （2ターン目のそのキャラクターの行動前にハイライトを使用した場合、6ターン目に再び使用できます。）
 
-- ワンダーはペルソナごとにハイライトのクールタイムが個別に管理されます。
+- ワンダーのHIGHLIGHTターンは、ペルソナの職業によって異なります。
+（救済、防衛、優越のペルソナは同じ効果を持つため、クールタイムも共通です。）
 
 </div>

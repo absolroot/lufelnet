@@ -27,15 +27,15 @@ HIGHLIGHT 게이지 메커니즘은 가장 중요한 요소 중 하나인데도 
 
 - **각 괴도의 행동 1회당 기본 17% 게이지를 충전한다.**
 
-- **약점을 타격할 경우 21% (+4%)의 게이지를 충전한다.**
+- **해당 행동에서 약점을 타격할 경우 21%(+4%)의 게이지를 충전한다.**
+
+- **해당 행동에 의해 ONE MORE나 추가 행동이 발동했을 때 약점을 타격할 경우 추가로 +4%의 게이지를 충전한다.**
 
 <br>
 
-HIGHLIGHT, ONE MORE, 총 공격, 해명 괴도 행동 등 괴도 행동이 넘어가지 않는 모든 액션은 영향을 주지 않는다.
+HIGHLIGHT, 총 공격, 해명 괴도 행동 등 괴도 행동이 넘어가지 않는 모든 액션은 영향을 주지 않는다.
 
-오로지 일반 공격, 페르소나 스킬, 방어, 아이템, 총격 등 행동을 1회 소모하는 효과만 하이라이트 충전에 영향을 준다.
-
-과거에는 적의 타격도 계산에 포함돼 약점을 맞아 추가로 타격 받는 등 괴상한 전략이 있었으나 메커니즘이 간결화됐다.  (=과거 전략이 현재와는 맞지 않는 이유)
+오로지 일반 공격, 페르소나 스킬, 방어, 아이템, 총격 등 행동을 1회 소모하는 과정에서 주는 효과만 하이라이트 충전에 영향을 준다.
 
 ---
 
@@ -71,11 +71,13 @@ The HIGHLIGHT charge mechanism is one of the most important elements, yet it is 
 
 - **Hitting a Weakness charges the gauge by 21% (+4%).**
 
+- **If that action triggers ONE MORE or an extra action, and the weakness is hit during that, an additional +4% gauge is charged.**
+
 <br>
 
-Actions that do not count as a Thief action—such as HIGHLIGHT, ONE MORE, All-Out Attack, or Navi Thief actions—do not affect the charge.
+Actions that do not count as a Thief action—such as HIGHLIGHT, All-Out Attack, or Navi Thief actions—do not affect the charge.
 
-Only actions that consume one action, such as Normal Attack, Persona Skill, Defense, Item, or Gunshot, will contribute to the HIGHLIGHT charge.
+Only effects from consuming one action, such as normal attacks, Persona skills, guarding, using items, or gun attacks, will affect HIGHLIGHT gauge charge.
 
 In the past, enemy attacks were also counted, allowing strange strategies like getting hit again by Weakness, but the mechanism has since been simplified. (=This is why old strategies no longer work.)
 
@@ -114,11 +116,13 @@ HIGHLIGHTチャージメカニズムは最も重要な要素の一つである�
 
 - **弱点を突いた場合、21%（+4%）ゲージがチャージされる。**
 
+- **その行動によってONE MOREや追加行動が発動し、その中で弱点を突いた場合、さらに+4%のゲージが追加でチャージされます。**
+
 <br>
 
-HIGHLIGHT、ONE MORE、総攻撃、解明怪盗行動など、怪盗行動としてカウントされないすべてのアクションはチャージに影響しない。
+HIGHLIGHT、総攻撃、解明怪盗行動など、怪盗行動としてカウントされないすべてのアクションはチャージに影響しない。
 
-通常攻撃、ペルソナスキル、防御、アイテム、ガンショットなど、1回の行動を消費する効果のみがHIGHLIGHTチャージに影響を与える。
+通常攻撃、ペルソナスキル、防御、アイテム使用、銃撃など、1回の行動を消費する効果のみがHIGHLIGHTゲージのチャージに影響します。
 
 以前は敵の攻撃も計算に含まれ、弱点を突かれて追加で攻撃を受けるなど奇妙な戦略もあったが、現在はメカニズムが簡略化された（＝過去の戦略が現在は通用しない理由）。
 

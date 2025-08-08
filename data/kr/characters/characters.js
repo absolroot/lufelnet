@@ -1702,7 +1702,7 @@ const characterData = {
         "persona_jp": "アンペロス",
         "name": "나가오 치즈코",
         "name_en": "Chizuko Nagao",
-        "name_jp": "長尾 千津子",
+        "name_jp": "長尾 チヅ子",
         "codename": "VINO",
         "sub_revel2": ["-"],
         "sub_revel3": ["효과명중"],

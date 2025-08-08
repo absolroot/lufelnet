@@ -244,7 +244,7 @@ review_jp:`**防御力**を基にした**反撃型アタッカー**として設�
     "유키미": { name_en: "Yukimi Fujikawa", name_jp: "藤川 雪実", codename: "YUKI",
         review: ``
     },
-    "치즈코": { name_en: "Chizuko Nagao", name_jp: "長尾 千津子", codename: "VINO",
+    "치즈코": { name_en: "Chizuko Nagao", name_jp: "長尾 チヅ子", codename: "VINO",
         review: `
 4성임에도 불구하고 **방어력 감소 수치가 높아 준 5성에 달하는 디버퍼**입니다.
 

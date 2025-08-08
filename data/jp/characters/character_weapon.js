@@ -399,7 +399,7 @@ const jpCharacterWeaponData = {
         }
     },
     "치즈코": {
-        "name": "長尾 千津子",
+        "name": "長尾 チヅ子",
         "weapon4-1": {
             "name": "グラビティフォース",
             "health": 1744,

@@ -868,7 +868,7 @@ const jpCharacterSkillsData = {
         }
     },
     "치즈코": {
-        "name": "長尾 千津子",
+        "name": "長尾 チヅ子",
         "skill1": {
             "name": "ダイビングレイ",
             "element": "핵열",

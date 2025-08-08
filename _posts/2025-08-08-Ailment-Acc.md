@@ -103,7 +103,7 @@ P5X에는 다양한 효과가 있고 확률을 가지고 있다.
 
 P5X contains various effects that have chance rates.
 
-A representative example is Tomoko’s Skill 3 — at LV12, it has a **base chancey of 81.3%** to inflict Sleep on the enemy.
+A representative example is Tomoko’s Skill 3 — at LV12, it has a **base chance of 81.3%** to inflict Sleep on the enemy.
 
 However, **even if you grant Tomoko more than +20% Ailment Accuracy through Revelation cards, enemies will not be inflicted with Sleep at 100% chance**.
 
@@ -124,7 +124,7 @@ According to the developer’s response, the calculation formula is as follows:
 
 <img src="/apps/article/asset/ailment acc2.png" >
 
-The base chancey is the chance written in the skill or effect description. For example, Narcissus’s “Vertigo” (paraphrase) skill has a base chancey of 32.6% at LV6.
+The base chancey is the chance written in the skill or effect description. For example, Narcissus’s “Vertigo” (paraphrase) skill has a base chance of 32.6% at LV6.
 
 <br>
 

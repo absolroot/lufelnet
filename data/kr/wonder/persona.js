@@ -73,7 +73,7 @@ const personaData = {
             ],
             effects_en: [
                 "Increases CRIT Rate by 17.5%.",
-                "Increases EHR when inflicting Winded by 20% and increase dmg dealt to foes with Winded by 20%.",
+                "Increases Ailment Accuracy when inflicting Winded by 20% and increase dmg dealt to foes with Winded by 20%.",
                 "Decreases the foes' DEF by 48% when refreshing or inflicting Winded for 2 turns."
             ],
             effects_jp: [
@@ -296,8 +296,8 @@ const personaData = {
                 "화상 효과를 부여할 떄 효과 명중이 50% 증가한다. 생명이 50% 이상인 적에게 해당 효과가 30% 추가 증가한다."
             ],
             effects_en: [
-                "Increases EHR by 20.9%.",
-                "Increases EHR by 50% when inflicting Burn. Increases the effect by 30% when the foe is above 50% HP."
+                "Increases Ailment Accuracy by 20.9%.",
+                "Increases Ailment Accuracy by 50% when inflicting Burn. Increases the effect by 30% when the foe is above 50% HP."
             ],
             effects_jp: [
                 "状態異常命中が20.9%上昇。",
@@ -345,7 +345,7 @@ const personaData = {
                 "전투 시작 시 3턴 동안 공격력이 가장 높은 괴도의 공격력이 14% 증가하고, 크리티컬 확률이 6% 증가한다."
             ],
             effects_en: [
-                "Increases EHR by 21.2%.",
+                "Increases Ailment Accuracy by 21.2%.",
                 "At the start of battle, increases the ATK and CRIT Rate for the ally with the highest ATK by 14% and 6% for 3 turns, prioritizing Single-target/Multi-target Thief."
             ],
             effects_jp: [
@@ -398,7 +398,7 @@ const personaData = {
                 "감전 효과 부여 시 모든 동료의 크리티컬 확률이 2턴 동안 10% 증가한다."
             ],
             effects_en: [
-                "Increases EHR by 15%.",
+                "Increases Ailment Accuracy by 15%.",
                 "After inflicting Shock, increases all allies' CRIT Rate by 10.0% for 2 turns."
             ],
             effects_jp: [
@@ -495,7 +495,7 @@ const personaData = {
                 "또한 2턴 동안 자신의 효과 명중이 18% 증가한다."
             ],
             effects_en: [
-                "Increases EHR by 24.9%. After inflicting Winded, increases the main target's dmg taken by 22.4% for 2 turns and increases own EHR by 18% for 2 turns."
+                "Increases Ailment Accuracy by 24.9%. After inflicting Winded, increases the main target's dmg taken by 22.4% for 2 turns and increases own Ailment Accuracy by 18% for 2 turns."
             ],
             effects_jp: [
                 "状態異常命中率が24.9%上昇。風襲にした時、選択した対象の被ダメージが22.4%上昇（2ターン持続）。さらに自身の状態異常命中が18%上昇（2ターン持続）。"
@@ -790,7 +790,7 @@ const personaData = {
                 "자신이 페르소나 스킬 시전 시, 『응시』를 5중첩 보유한 경우 『응시』를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 15% 증가하며, 『뱀독』을 1중첩 추가 획득한다."
             ],
             effects_en: [
-                "Increases EHR by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 15% and gain 1 stack of [Serpent's Bite]."
+                "Increases Ailment Accuracy by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 15% and gain 1 stack of [Serpent's Bite]."
             ],
             effects_jp: [
                 "効果命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を15%増加させ、『ヴァスキの毒』を1重複獲得する。"
@@ -836,7 +836,7 @@ const personaData = {
                 "적이 물리 대미지를 3회 받을 때마다 추가로 1중첩을 획득하며 독립적으로 계산된다. 최대 3회 중첩 가능하며 2턴 동안 지속된다."
             ],
             effects_en: [
-                "Increases EHR by 34.9%. [Nightmare] decreases Effect RES by 15% and DEF by 10% for 2 turns. Under [Nightmare], increases enemies' Phys dmg taken by 8% for 1 turn. Additionally increases Phys dmg taken stacks by 1 after the enemy takes 3 hits of Phys damage, up to 3 stacks, each stack counts down independently."
+                "Increases Ailment Accuracy by 34.9%. [Nightmare] decreases Effect RES by 15% and DEF by 10% for 2 turns. Under [Nightmare], increases enemies' Phys dmg taken by 8% for 1 turn. Additionally increases Phys dmg taken stacks by 1 after the enemy takes 3 hits of Phys damage, up to 3 stacks, each stack counts down independently."
             ],
             effects_jp: [
                 "効果命中が34.9%増加する。『悪夢』は2ターンの間効果抵抗が15%、防御力が10%減少する。『悪夢』状態の時、敵が受ける物理ダメージが8%増加する。敵が物理ダメージを3回受けるたびに追加で1重複を獲得し、独立して計算される。最大3回重複可能で2ターンの間持続する。"
@@ -940,7 +940,7 @@ const personaData = {
                 "자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 중가하고, 적이 받는 대미지가 6.5% 중가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
             ],
             effects_en: [
-                "Increases EHR by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your EHR by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
+                "Increases Ailment Accuracy by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your Ailment Accuracy by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
             ],
             effects_jp: [
                 "効果命中が34.9%増加する。ペルソナスキルで敵にデバフ効果を付与すると、敵のデバフ効果が15個以上の時、自身の効果命中が50%上昇し、敵が受けるダメージが6.5%上昇する。敵にデバフ効果を付与した後、2ターンの間敵全体の防御力が12%減少する。"
@@ -1082,7 +1082,7 @@ const personaData = {
                 "모든 동료가 주원 속성의 페르소나 스킬을 1개 시전할 때마다 앨리스의 효과 명중, 공격력이 12.6% 증가한다. 효과는 2턴 동안 지속되며 3회 중첩 가능하다."
             ],
             effects_en: [
-                "Increases EHR by 34.9%. Increases all foes' Curse dmg taken by 18%. After any ally uses Curse skills, increases Alice's EHR and ATK by 12.6% for 2 turns, up to 3 stacks."
+                "Increases Ailment Accuracy by 34.9%. Increases all foes' Curse dmg taken by 18%. After any ally uses Curse skills, increases Alice's Ailment Accuracy and ATK by 12.6% for 2 turns, up to 3 stacks."
             ],
             effects_jp: [
                 "状態異常命中が34.9％上昇。敵全体の被呪怨属性ダメージが18％上昇。味方全体が呪怨属性スキルを1回使う毎、アリスの状態異常命中、攻撃力が12.6％上昇（最大3つ、2ターン持続）。"
@@ -1094,7 +1094,7 @@ const personaData = {
             name_en: "Die For Me!",
             name_jp: "死んでくれる？",
             effect: "2턴 동안 모든 적이 받는 주원 속성 대미지가 17.5% 증가하고, 효과 명중 30%마다 추가로 2% 증가한다. 상한은 10%이다. 적의 생명이 50% 미만일 시 높은 확률로 즉사 효과가 추가된다.",
-            effect_en: "Increases all enemies' Curse DMG Taken by 17.5% + 2% for every 30% EHR you have, up to 10% for 2 turns. There is a high chance of insta-kill to enemies under 50% HP. The lower the HP, the higher the chance.",
+            effect_en: "Increases all enemies' Curse DMG Taken by 17.5% + 2% for every 30% Ailment Accuracy you have, up to 10% for 2 turns. There is a high chance of insta-kill to enemies under 50% HP. The lower the HP, the higher the chance.",
             effect_jp: "2ターンの間、敵全体の呪怨属性の被ダメージを17.5％上昇し、状態異常命中率30％ごとに追加で2％上昇する（最大10％）。敵のHPが50％未満の場合、高確率で即死させる。",
             priority: 2,
             icon: "주원광역"
@@ -1322,7 +1322,7 @@ const personaData = {
                 "화상 효과를 부여할 때 효과 명중이 40% 증가한다. 화상 효과 부여 후 2턴 동안 모든 동료의 공격력이 12% 증가한다."
             ],
             effects_en: [
-                "Increases EHR by 15%. Increases EHR by 40% when inflicting Burn. After inflicting Burn, increases all allies' ATK by 12% for 2 turns."
+                "Increases Ailment Accuracy by 15%. Increases Ailment Accuracy by 40% when inflicting Burn. After inflicting Burn, increases all allies' ATK by 12% for 2 turns."
             ],
             effects_jp: [
                 "状態異常命中が15%上昇し、炎上の場合は命中率が40%上昇。炎上した時、味方全体の攻撃力を12%上昇（2ターン持続）。"
@@ -1519,7 +1519,7 @@ const personaData = {
                 "전투 시작 시 2턴 동안 모든 동료의 효과 명중이 10% 증가하고, 효과 명중이 가장 높은 동료의 효과 명중이 14% 증가한다."
             ],
             effects_en: [
-                "Increases EHR by 15%. At the start of battle, increases all allies' EHR by 10%, increases the EHR for the ally with the highest EHR by 14% for 2 turns."
+                "Increases Ailment Accuracy by 15%. At the start of battle, increases all allies' Ailment Accuracy by 10%, increases the Ailment Accuracy for the ally with the highest Ailment Accuracy by 14% for 2 turns."
             ],
             effects_jp: [
                 "状態異常命中が15%上昇。戦闘開始時、味方全体の状態異常命中を10%上昇。状態異常命中が最も高い味方の状態異常命中を14%上昇（2ターン持続）。"
@@ -1861,7 +1861,7 @@ const personaData = {
                 "버프 스킬을 1개 시전할 때마다 모든 괴도의 공격력이 8.5% 영구 증가한다. 최대 3회 중첩된다."
             ],
             effects_en: [
-                "Increases EHR by 21.2%. After using a buff skill, permanently increases all allies' ATK by 8.5%, up to 3 stacks."
+                "Increases Ailment Accuracy by 21.2%. After using a buff skill, permanently increases all allies' ATK by 8.5%, up to 3 stacks."
             ],
             effects_jp: [
                 "効果命中が21.2%上昇。バフスキルを1つ使用するごとに、味方全体の攻撃力が8.5%上昇（最大3回まで）。"

@@ -244,7 +244,7 @@ const enRevelationData = {
         },
         "Futility": {
             "set2": "Increase ATK by 12%.",
-            "set4": "Increase EHR by 30% for 2 turns; Gain this effect again when you deal TECHNICAL.",
+            "set4": "Increase Ailment Accuracy by 30% for 2 turns; Gain this effect again when you deal TECHNICAL.",
             "type": ["TECHNICAL", "미출시"]
         },
         "Despair": {

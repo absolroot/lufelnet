@@ -446,6 +446,8 @@ const translations = {
         tactic_preview: '택틱 미리보기',
         close: '닫기',
         uploading: '업로드 중...',
+        saving: '저장 중...',
+        deleting: '삭제 중...',
         lang_kr: '한국 (KR)',
         lang_en: '글로벌 (EN)',
         lang_jp: '일본 (JP)',
@@ -486,6 +488,8 @@ const translations = {
         tactic_preview: 'Tactic Preview',
         close: 'Close',
         uploading: 'Uploading...',
+        saving: 'Saving...',
+        deleting: 'Deleting...',
         lang_kr: 'KR',
         lang_en: 'EN',
         lang_jp: 'JP',
@@ -526,6 +530,8 @@ const translations = {
         tactic_preview: 'タクティックプレビュー',
         close: '閉じる',
         uploading: 'アップロード中...',
+        saving: '保存中...',
+        deleting: '削除中...',
         lang_kr: 'KR',
         lang_en: 'EN',
         lang_jp: 'JP',
@@ -825,7 +831,7 @@ class TacticUploader {
     async saveEdit() {
         if (!this.editMode || !this.editPostId) return;
         const formData = this.getFormData(false);
-        this.showLoading(true);
+        this.showLoading(true, 'save');
         try {
             const { error } = await supabase
                 .from('tactics')
@@ -845,7 +851,7 @@ class TacticUploader {
         } catch (e) {
             alert(this.currentLang === 'en' ? 'Save failed.' : this.currentLang === 'jp' ? '保存に失敗しました。' : '저장에 실패했습니다.');
         } finally {
-            this.showLoading(false);
+            this.showLoading(false, 'save');
         }
     }
 
@@ -853,7 +859,7 @@ class TacticUploader {
         if (!this.editMode || !this.editPostId) return;
         const confirmMsg = this.currentLang === 'en' ? 'Delete this tactic?' : this.currentLang === 'jp' ? 'このタクティックを削除しますか？' : '이 택틱을 삭제할까요?';
         if (!confirm(confirmMsg)) return;
-        this.showLoading(true);
+        this.showLoading(true, 'delete');
         try {
             const { error } = await supabase
                 .from('tactics')
@@ -866,7 +872,7 @@ class TacticUploader {
         } catch (e) {
             alert(this.currentLang === 'en' ? 'Delete failed.' : this.currentLang === 'jp' ? '削除に失敗しました。' : '삭제에 실패했습니다.');
         } finally {
-            this.showLoading(false);
+            this.showLoading(false, 'delete');
         }
     }
 
@@ -1137,9 +1143,24 @@ class TacticUploader {
         }
     }
 
-    showLoading(show) {
-        document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
-        document.getElementById('submitButton').disabled = show;
+    showLoading(show, mode = 'upload') {
+        const overlay = document.getElementById('loadingOverlay');
+        if (overlay) overlay.style.display = show ? 'flex' : 'none';
+        // 텍스트 교체 (업로드/저장/삭제)
+        const t = translations[this.currentLang] || translations.kr;
+        const p = overlay ? overlay.querySelector('p[data-i18n="uploading"]') : null;
+        if (overlay && p) {
+            if (mode === 'save') p.textContent = t.saving || t.uploading;
+            else if (mode === 'delete') p.textContent = t.deleting || t.uploading;
+            else p.textContent = t.uploading;
+        }
+        // 버튼 비활성화 (업로드 버튼이 없는 편집 모드 대비 안전 가드)
+        const submitBtn = document.getElementById('submitButton');
+        if (submitBtn) submitBtn.disabled = show;
+        const saveBtn = document.getElementById('saveButton');
+        if (saveBtn) saveBtn.disabled = show;
+        const deleteBtn = document.getElementById('deleteButton');
+        if (deleteBtn) deleteBtn.disabled = show;
     }
 
     escapeHtml(text) {

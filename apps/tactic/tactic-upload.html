@@ -131,6 +131,28 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
         </div>
     </div>
 
+    <!-- 업로드 성공 모달 -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="successModalTitle">업로드 완료</h3>
+                <button class="modal-close success-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessageText">택틱이 성공적으로 업로드되었습니다!</p>
+                <div class="success-row">
+                    <span class="label" id="accessLabel">다음 주소로 접근할 수 있습니다:</span>
+                    <a id="publicLinkEl" class="link" href="#" target="_blank" rel="noopener noreferrer"></a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn success-close">닫기</button>
+                <button id="copyUrlBtnModal" class="modal-close-btn">URL 복사</button>
+                <button id="goListBtnModal" class="modal-close-btn">목록으로</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 로딩 오버레이 -->
     <div id="loadingOverlay" class="loading-overlay" style="display: none;">
         <div class="loading-spinner">
@@ -1168,44 +1190,33 @@ class TacticUploader {
             const successMessage = this.currentLang === 'en' ? 'Tactic uploaded successfully!' :
                                   this.currentLang === 'jp' ? 'タクティックが正常にアップロードされました！' :
                                   '택틱이 성공적으로 업로드되었습니다!';
-            // 성공 메시지 + 접근 URL 표시
-            try {
-                const urlCode = formData.url;
-                const publicLink = `https://lufel.net/tactic/?library=${encodeURIComponent(urlCode)}`;
-                const box = document.getElementById('uploadSuccessBox');
-                if (box) {
-                    const labelText = this.currentLang === 'en' ? 'You can access it at:' : this.currentLang === 'jp' ? '以下のURLでアクセスできます:' : '다음 주소로 접근할 수 있습니다:';
-                    const goList = this.currentLang === 'en' ? 'Go to list' : this.currentLang === 'jp' ? '一覧へ' : '목록으로';
-                    const copyText = this.currentLang === 'en' ? 'Copy URL' : this.currentLang === 'jp' ? 'URLをコピー' : 'URL 복사';
-                    box.innerHTML = `
-                        <h4 class="success-title">${successMessage}</h4>
-                        <div class="success-row">
-                            <span class="label">${labelText}</span>
-                            <a class="link" href="${publicLink}" target="_blank" rel="noopener noreferrer">${publicLink}</a>
-                        </div>
-                        <div class="btns">
-                            <button type="button" class="btn" id="copyUrlBtn">${copyText}</button>
-                            <button type="button" class="btn" id="goListBtn">${goList}</button>
-                        </div>
-                    `;
-                    box.style.display = 'block';
-                    const copyBtn = document.getElementById('copyUrlBtn');
-                    const goListBtn = document.getElementById('goListBtn');
-                    if (copyBtn) copyBtn.onclick = async () => {
-                        try {
-                            await navigator.clipboard.writeText(publicLink);
-                            alert(this.currentLang === 'en' ? 'Copied!' : this.currentLang === 'jp' ? 'コピーしました！' : '복사되었습니다!');
-                        } catch (_) {}
-                    };
-                    if (goListBtn) goListBtn.onclick = () => { window.location.href = '/tactic/tactics.html'; };
-                } else {
-                    alert(successMessage + '\n' + publicLink);
-                    window.location.href = '/tactic/tactics.html';
-                }
-            } catch (_) {
-                alert(successMessage);
-                window.location.href = '/tactic/tactics.html';
+            // 성공 팝업(모달)로 URL 안내 표시
+            const urlCode = formData.url;
+            const publicLink = `https://lufel.net/tactic/?library=${encodeURIComponent(urlCode)}`;
+            const modal = document.getElementById('successModal');
+            const msgEl = document.getElementById('successMessageText');
+            const linkEl = document.getElementById('publicLinkEl');
+            const accessLabel = document.getElementById('accessLabel');
+            const titleEl = document.getElementById('successModalTitle');
+            const copyBtnM = document.getElementById('copyUrlBtnModal');
+            const goListBtnM = document.getElementById('goListBtnModal');
+
+            if (titleEl) titleEl.textContent = (this.currentLang === 'en' ? 'Upload Completed' : this.currentLang === 'jp' ? 'アップロード完了' : '업로드 완료');
+            if (msgEl) msgEl.textContent = successMessage;
+            if (accessLabel) accessLabel.textContent = (this.currentLang === 'en' ? 'You can access it at:' : this.currentLang === 'jp' ? '以下のURLでアクセスできます:' : '다음 주소로 접근할 수 있습니다:');
+            if (linkEl) { linkEl.href = publicLink; linkEl.textContent = publicLink; }
+            if (copyBtnM) {
+                copyBtnM.textContent = (this.currentLang === 'en' ? 'Copy URL' : this.currentLang === 'jp' ? 'URLをコピー' : 'URL 복사');
+                copyBtnM.onclick = async () => {
+                    try { await navigator.clipboard.writeText(publicLink); alert(this.currentLang === 'en' ? 'Copied!' : this.currentLang === 'jp' ? 'コピーしました！' : '복사되었습니다!'); } catch(_) {}
+                };
             }
+            if (goListBtnM) {
+                goListBtnM.textContent = (this.currentLang === 'en' ? 'Go to list' : this.currentLang === 'jp' ? '一覧へ' : '목록으로');
+                goListBtnM.onclick = () => { window.location.href = '/tactic/tactics.html'; };
+            }
+            document.querySelectorAll('.success-close').forEach(el => el.onclick = () => { modal.style.display = 'none'; });
+            if (modal) modal.style.display = 'flex';
             
         } catch (error) {
             console.error('업로드 실패:', error);

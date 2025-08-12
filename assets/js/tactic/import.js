@@ -87,8 +87,11 @@ window.applyImportedData = function(payload, options = {}) {
 
       const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
       if (partyDiv) {
-        const nameInput = partyDiv.querySelector('.party-name-input');
-        if (nameInput) nameInput.value = name || '';
+        // 최신 마크업은 select.party-name 사용
+        const nameSelect = partyDiv.querySelector('.party-name');
+        if (nameSelect) {
+          nameSelect.value = name || '';
+        }
         const orderSelect = partyDiv.querySelector('.party-order');
         if (orderSelect) orderSelect.value = order || '';
         const ritualSelect = partyDiv.querySelector('.party-ritual');
@@ -157,6 +160,83 @@ window.applyImportedData = function(payload, options = {}) {
 
     updatePartyImages();
     renderTurns();
+
+    // 다국어 적용 (무기/고유스킬/파티명/계시 표시 텍스트) - 로딩 후에도 재시도
+    (function applyI18nAfterLoad() {
+      try {
+        const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : ((typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr');
+        if (currentLang !== 'kr') {
+          // 무기 표시 (입력값은 KR 유지, 표시 텍스트만 번역)
+          const weaponInput = document.querySelector('.wonder-weapon-input');
+          if (weaponInput && weaponInput.value && typeof matchWeapons !== 'undefined') {
+            const weaponName = weaponInput.value;
+            const meta = matchWeapons[weaponName];
+            if (meta) {
+              let displayName = weaponName;
+              if (currentLang === 'en' && meta.name_en) displayName = meta.name_en;
+              else if (currentLang === 'jp' && meta.name_jp) displayName = meta.name_jp;
+              const inputContainer = weaponInput.closest('.input-container') || weaponInput.parentElement;
+              if (inputContainer) {
+                inputContainer.setAttribute('data-display-text', displayName);
+                inputContainer.classList.add('show-translation');
+              }
+            }
+          }
+
+          // 페르소나 고유스킬 표시 (입력값은 KR 유지, 표시 텍스트만 번역)
+          const skillInputs = document.querySelectorAll('.persona-skill-input');
+          skillInputs.forEach((input, index) => {
+            if (index % 3 !== 0) return; // 고유 스킬 슬롯만
+            const personaIndex = Math.floor(index / 3);
+            const selectedPersona = wonderPersonas[personaIndex];
+            if (selectedPersona && typeof personaData !== 'undefined' && personaData[selectedPersona]) {
+              const unique = personaData[selectedPersona].uniqueSkill || {};
+              let displayName = input.value;
+              if (currentLang === 'en' && unique.name_en) displayName = unique.name_en;
+              else if (currentLang === 'jp' && unique.name_jp) displayName = unique.name_jp;
+              const inputContainer = input.closest('.input-container') || input.parentElement;
+              if (inputContainer) {
+                inputContainer.setAttribute('data-display-text', displayName);
+                inputContainer.classList.add('show-translation');
+              }
+            }
+          });
+
+          // 파티원 이름 표시: 선택된 옵션의 텍스트만 번역 적용 (값은 KR 유지)
+          document.querySelectorAll('.party-member').forEach(member => {
+            const sel = member.querySelector('.party-name');
+            if (!sel || !sel.value) return;
+            const origin = sel.value;
+            if (typeof characterData !== 'undefined' && characterData[origin]) {
+              const ch = characterData[origin];
+              let display = origin;
+              if (currentLang === 'en' && ch.name_en) display = ch.name_en;
+              else if (currentLang === 'jp' && ch.name_jp) display = ch.name_jp;
+              const opt = sel.querySelector(`option[value="${CSS.escape(origin)}"]`);
+              if (opt) opt.textContent = display;
+            }
+          });
+
+          // 계시 옵션 텍스트 번역
+          const langData = (window.languageData && window.languageData[currentLang]) ? window.languageData[currentLang] : null;
+          const revMap = langData && langData.revelationMapping ? langData.revelationMapping : null;
+          if (revMap) {
+            document.querySelectorAll('.main-revelation, .sub-revelation').forEach(select => {
+              for (const option of select.options) {
+                if (!option.value) continue;
+                option.textContent = revMap[option.value] || option.value;
+              }
+            });
+          }
+        }
+      } catch (_) {}
+
+      // languageData가 아직 준비 전일 수 있으므로 짧게 재시도
+      if (!window.__APPLY_I18N_TRIED__) {
+        window.__APPLY_I18N_TRIED__ = 1;
+        setTimeout(applyI18nAfterLoad, 400);
+      }
+    })();
 
     // URL 파라미터 정리
     if (!keepUrl && typeof getBaseUrl === 'function') {

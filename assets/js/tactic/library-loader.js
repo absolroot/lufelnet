@@ -17,7 +17,15 @@
     const code = params.get('library');
     if (!code) return;
 
-    const ready = await waitFor(() => (typeof supabase !== 'undefined') && (typeof window.applyImportedData === 'function'));
+    // 번역 리소스와 applyImportedData 둘 다 준비될 때까지 대기
+    const ready = await waitFor(() => (
+      typeof supabase !== 'undefined' &&
+      typeof window.applyImportedData === 'function' &&
+      typeof characterData !== 'undefined' &&
+      typeof personaData !== 'undefined' &&
+      typeof matchWeapons !== 'undefined' &&
+      typeof revelationData !== 'undefined'
+    ), 8000, 50);
     if (!ready) return;
 
     const { data, error } = await supabase
@@ -34,8 +42,11 @@
     }
     if (!payload || typeof payload !== 'object') return;
 
-    // 공통 적용 함수 호출 (URL은 유지)
+    // 공통 적용 함수 호출 (URL은 유지). 번역 표시가 즉시 적용되도록 약간 딜레이 후 한 번 더 번역 적용을 트리거
     window.applyImportedData(payload, { keepUrl: true, titleOverride: data.title });
+    setTimeout(() => {
+      try { if (typeof translateUI === 'function') translateUI(); } catch(_) {}
+    }, 200);
   }
 
   document.addEventListener('DOMContentLoaded', loadFromLibraryParam);

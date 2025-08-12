@@ -59,10 +59,9 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
                     <label for="tacticRegion" data-i18n="region">지역 *</label>
                     <select id="tacticRegion" name="tacticRegion" required>
                         <option value="kr">한국 (KR)</option>
-                        <option value="tw">대만 (TW)</option>
-                        <option value="cn">중국 (CN)</option>
                         <option value="en">글로벌 (EN)</option>
                         <option value="jp">일본 (JP)</option>
+                        <option value="sea">동남아 (SEA)</option>
                     </select>
                 </div>
 
@@ -586,8 +585,15 @@ class TacticUploader {
     }
 
     showLoginRequired() {
-        document.getElementById('loginRequired').style.display = 'block';
-        document.getElementById('uploadForm').style.display = 'none';
+        try {
+            const currentUrl = window.location.href;
+            // 즉시 로그인 페이지로 리다이렉트 (사용자 상호작용 없이)
+            window.location.replace(`/login/?redirect=${encodeURIComponent(currentUrl)}`);
+        } catch (e) {
+            // 혹시 실패 시 기존 안내 UI 노출 (폴백)
+            document.getElementById('loginRequired').style.display = 'block';
+            document.getElementById('uploadForm').style.display = 'none';
+        }
     }
 
     showUploadForm() {

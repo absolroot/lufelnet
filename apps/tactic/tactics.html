@@ -1,11 +1,11 @@
 ---
 layout: default
 custom_css: [tactic, tactic-share]
-custom_js: [tooltip, tactic-preview]
+custom_js: [tooltip, language-router, tactic-preview]
 custom_data: [tooltip.js, characters/characters.js, revelations/revelations.js, tactic/pattern.js, wonder/weapons.js, wonder/persona.js, wonder/skills.js]
 permalink: /tactic/tactics.html
 language: kr
-title: 택틱 보관함 - 페르소나5 더 팬텀 X 루페르넷
+title: 택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
 ---
 {% include supabase-config.html %}
@@ -14,18 +14,30 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
 <div class="main-wrapper">
     <!-- 네비게이션 경로 -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a id="nav-home" href="../../?v=${APP_VERSION}">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page">택틱 / 택틱 보관함</span>
+        <span class="current-page" id="nav-current">택틱 / 택틱 도서관</span>
     </div>
     <div class="header-container">
-        <h1>택틱 보관함</h1>
+        <h1 id="page-title">택틱 도서관</h1>
+    </div>
+
+    <!-- 상단 필터: 지역 -->
+    <div class="top-inline-filters">
+        <div class="filters-top-row">
+            <div class="view-tabs" id="regionButtons">
+                <button class="tab-button active" data-region="ALL">ALL</button>
+                <button class="tab-button" data-region="KR">KR</button>
+                <button class="tab-button" data-region="GLB">GLB</button>
+            </div>
+            <a href="/tactic/tactic-upload.html" id="uploadButton" class="upload-btn">택틱 업로드</a>
+        </div>
     </div>
 
     <div class="top-container">
         <div class="ranking-container">
             <div class="ranking-header">
-                <img src="{{ site.baseurl }}/assets/img/tactic-share/rank.png" alt="랭킹" class="ranking-title-icon">
+                <h3 class="ranking-title-text">순위</h3>
                 <div class="ranking-tabs">
                     <button class="ranking-tab active" data-period="weekly">주간</button>
                     <button class="ranking-tab" data-period="monthly">월간</button>
@@ -35,6 +47,12 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
             <div class="ranking-list">
                 <!-- 랭킹은 JavaScript로 동적 생성됨 -->
             </div>
+        </div>
+        <div class="character-filter-card" style="">
+            <div class="card-header" style="display:flex; align-items:center; justify-content:space-between;">
+                <h3 id="charFilterTitle" style="margin:0;">캐릭터 필터</h3>
+            </div>
+            <div id="characterFilterGrid" class="character-grid" style="display:grid; padding-top:16px; width:100%; max-height: 200px; overflow:auto;"></div>
         </div>
     </div>
 
@@ -49,9 +67,17 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
                 </button>
             </div>
         </div>
-        <div class="view-tabs">
-            <button class="tab-button active" data-view="all">전체</button>
-            <button class="tab-button" data-view="best">베스트</button>
+        <!-- 타입 필터 (텍스트형) -->
+        <div class="inline-filters" id="typeButtons">
+            <span class="filter-item active" data-type="ALL">전체</span>
+            <span class="filter-divider"></span>
+            <span class="filter-item" data-type="흉몽">흉몽</span>
+            <span class="filter-divider"></span>
+            <span class="filter-item" data-type="바다">바다</span>
+            <span class="filter-divider"></span>
+            <span class="filter-item" data-type="이벤트">이벤트</span>
+            <span class="filter-divider"></span>
+            <span class="filter-item" data-type="기타">기타</span>
         </div>
     </div>
 
@@ -77,11 +103,21 @@ class TacticsViewer {
         this.allTactics = [];
         this.filteredTactics = [];
         this.tacticPreview = new TacticPreview();
+        this.currentRegion = 'ALL';
+        this.currentType = 'ALL';
+        this.userIP = '';
+        this.currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         this.init();
     }
 
     async init() {
+        await this.getUserIP();
+        this.initRegionFilters();
+        this.initTypeFilters();
+        this.initCharacterFilter();
+        this.initMobileCollapsibles();
+        this.initLanguageTexts();
         await this.loadTactics();
         this.initTabs();
         this.initSearch();
@@ -90,33 +126,155 @@ class TacticsViewer {
         this.loadRanking();
     }
 
+    // 모바일에서 Ranking/캐릭터 필터 접기/펼치기
+    initMobileCollapsibles() {
+        const apply = () => {
+            const isMobile = window.innerWidth <= 640;
+            const ranking = document.querySelector('.ranking-container');
+            const rankingHeader = ranking?.querySelector('.ranking-header');
+            const charCard = document.querySelector('.character-filter-card');
+            const charHeader = charCard?.querySelector('.card-header');
+
+            const ensureCaret = (headerEl) => {
+                if (!headerEl) return null;
+                let caret = headerEl.querySelector('.collapse-caret');
+                if (!caret) {
+                    caret = document.createElement('span');
+                    caret.className = 'collapse-caret';
+                    caret.textContent = '▼';
+                    headerEl.appendChild(caret);
+                }
+                return caret;
+            };
+
+            if (isMobile) {
+                if (ranking && rankingHeader) {
+                    ranking.classList.add('collapsible', 'collapsed');
+                    const caret = ensureCaret(rankingHeader);
+                    rankingHeader.style.cursor = 'pointer';
+                    rankingHeader.onclick = () => {
+                        ranking.classList.toggle('collapsed');
+                        caret.textContent = ranking.classList.contains('collapsed') ? '▶' : '▼';
+                    };
+                    // 초기 화살표 상태
+                    if (caret) caret.textContent = '▶';
+                }
+                if (charCard && charHeader) {
+                    charCard.classList.add('collapsible', 'collapsed');
+                    const caret2 = ensureCaret(charHeader);
+                    charHeader.style.cursor = 'pointer';
+                    charHeader.onclick = () => {
+                        charCard.classList.toggle('collapsed');
+                        caret2.textContent = charCard.classList.contains('collapsed') ? '▶' : '▼';
+                    };
+                    if (caret2) caret2.textContent = '▶';
+                }
+            } else {
+                // 데스크탑: 항상 펼침, 이벤트 제거
+                if (ranking && rankingHeader) {
+                    ranking.classList.remove('collapsed');
+                    rankingHeader.style.cursor = '';
+                    const caret = rankingHeader.querySelector('.collapse-caret');
+                    if (caret) caret.remove();
+                    rankingHeader.onclick = null;
+                }
+                if (charCard && charHeader) {
+                    charCard.classList.remove('collapsed');
+                    charHeader.style.cursor = '';
+                    const caret2 = charHeader.querySelector('.collapse-caret');
+                    if (caret2) caret2.remove();
+                    charHeader.onclick = null;
+                }
+            }
+        };
+
+        // 적용 및 리사이즈 감지
+        apply();
+        window.addEventListener('resize', () => {
+            // 성능 보호: 리사이즈마다 재적용
+            apply();
+        });
+    }
+
     async loadTactics() {
         try {
-            const { data, error } = await supabase
+            let query = supabase
                 .from('tactics')
                 .select('*')
                 .order('created_at', { ascending: false });
 
+            if (this.currentRegion && this.currentRegion !== 'ALL') {
+                if (this.currentRegion === 'GLB') {
+                    query = query.in('region', ['en','jp','sea']);
+                } else if (this.currentRegion === 'KR') {
+                    query = query.eq('region', 'kr');
+                }
+            }
+            if (this.currentType && this.currentType !== 'ALL') {
+                query = query.eq('tactic_type', this.currentType);
+            }
+
+            const { data, error } = await query;
             if (error) {
                 console.error('데이터 로드 오류:', error);
                 return;
             }
+
+            const tacticIds = data.map(t => String(t.id));
+            const likesMap = await this.loadLikesMap(tacticIds);
 
             this.allTactics = data.map(tactic => ({
                 id: tactic.id,
                 title: tactic.title,
                 author: tactic.author,
                 comment: tactic.comment,
-                likes: tactic.likes || 0,
-                recentLikes: tactic.recentLikes || 0,
+                likes: likesMap[String(tactic.id)]?.likes || 0,
+                recentLikes: 0,
                 createdAt: new Date(tactic.created_at),
-                query: typeof tactic.query === 'string' ? JSON.parse(tactic.query) : tactic.query,
-                url: tactic.url
+                query: typeof tactic.query === 'string' ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null) : tactic.query,
+                url: tactic.url,
+                isLiked: this.isLikedByMe(likesMap[String(tactic.id)]),
+                region: tactic.region || null,
+                tactic_type: tactic.tactic_type || null
             }));
 
             this.applyFilters();
         } catch (error) {
             console.error('택틱 로드 실패:', error);
+        }
+    }
+
+    async loadLikesMap(tacticIds) {
+        const result = {};
+        if (!tacticIds || tacticIds.length === 0) return result;
+        const { data, error } = await supabase
+            .from('tactic_likes')
+            .select('id,tactic_id,likes,recent_like')
+            .in('tactic_id', tacticIds);
+        if (error) {
+            console.error('likes 로드 실패:', error);
+            return result;
+        }
+        data.forEach(row => {
+            result[row.tactic_id] = {
+                id: row.id,
+                likes: row.likes || 0,
+                recent_like: row.recent_like || null
+            };
+        });
+        return result;
+    }
+
+    isLikedByMe(likeRow) {
+        if (!likeRow || !likeRow.recent_like || !this.userIP) return false;
+        try {
+            const map = likeRow.recent_like;
+            const ts = map[this.userIP];
+            if (!ts) return false;
+            const last = new Date(ts).getTime();
+            return (Date.now() - last) < 24*60*60*1000;
+        } catch(e) {
+            return false;
         }
     }
 
@@ -128,6 +286,17 @@ class TacticsViewer {
             filtered = filtered.filter(tactic => 
                 tactic.title.toLowerCase().includes(this.searchKeyword.toLowerCase())
             );
+        }
+
+        // 캐릭터 필터
+        if (this.selectedCharacter) {
+            filtered = filtered.filter(tactic => {
+                try {
+                    const q = tactic.query;
+                    const party = Array.isArray(q?.party) ? q.party : [];
+                    return party.some(p => p.name === this.selectedCharacter);
+                } catch(e) { return false; }
+            });
         }
 
         // 베스트 필터 (좋아요 5개 이상)
@@ -165,13 +334,14 @@ class TacticsViewer {
                 <h3>
                     ${tactic.url ? `
                         <a href="${tactic.url}" target="_blank" rel="noopener noreferrer" class="post-title">
+                            ${this.renderTypeBadge(tactic.tactic_type)}
                             ${this.escapeHtml(tactic.title)}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
                             </svg>
                         </a>
                     ` : `
-                        <span class="post-title">${this.escapeHtml(tactic.title)}</span>
+                        <span class="post-title">${this.renderTypeBadge(tactic.tactic_type)}${this.escapeHtml(tactic.title)}</span>
                     `}
                 </h3>
                 <div class="post-meta">
@@ -193,7 +363,7 @@ class TacticsViewer {
 
             <div class="post-footer">
                 <div class="likes-section">
-                    <button onclick="tacticsViewer.handleLike('${tactic.id}')" class="like-button">
+                    <button onclick="tacticsViewer.handleLike('${tactic.id}')" class="like-button ${tactic.isLiked ? 'liked' : ''}" ${tactic.isLiked ? 'disabled' : ''}>
                         <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요">
                     </button>
                     <div class="likes-count-wrapper">
@@ -207,6 +377,17 @@ class TacticsViewer {
         this.addTacticPreview(postDiv, tactic.query);
 
         return postDiv;
+    }
+
+    renderTypeBadge(type) {
+        if (!type || type === 'ALL') return '';
+        const map = {
+            kr: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' },
+            en: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
+            jp: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
+        };
+        const label = (map[this.currentLang] || map.kr)[type] || type;
+        return `<span class="type-badge">${label}</span>`;
     }
 
     addTacticPreview(postElement, tacticData) {
@@ -280,41 +461,49 @@ class TacticsViewer {
 
     async handleLike(tacticId) {
         try {
-            const { data, error } = await supabase
-                .from('tactics')
-                .select('likes')
-                .eq('id', tacticId)
-                .single();
-
-            if (error) {
-                console.error('좋아요 조회 실패:', error);
+            const { data: likeRow, error: likeErr } = await supabase
+                .from('tactic_likes')
+                .select('id,likes,recent_like')
+                .eq('tactic_id', String(tacticId))
+                .maybeSingle();
+            if (likeErr) {
+                console.error('like row 조회 실패:', likeErr);
+            }
+            let likes = likeRow?.likes || 0;
+            const recent = (likeRow?.recent_like && typeof likeRow.recent_like === 'object') ? likeRow.recent_like : {};
+            const last = recent[this.userIP] ? new Date(recent[this.userIP]).getTime() : 0;
+            if (last && (Date.now() - last) < 24*60*60*1000) {
+                alert(this.currentLang === 'en' ? 'You already liked this within 24 hours.' : this.currentLang === 'jp' ? '24時間以内に既にいいねしました。' : '24시간 내 이미 좋아요 했습니다.');
                 return;
             }
+            likes += 1;
+            recent[this.userIP] = new Date().toISOString();
 
-            const newLikes = (data.likes || 0) + 1;
-
-            const { error: updateError } = await supabase
-                .from('tactics')
-                .update({ likes: newLikes })
-                .eq('id', tacticId);
-
-            if (updateError) {
-                console.error('좋아요 업데이트 실패:', updateError);
-                return;
+            if (likeRow && likeRow.id) {
+                const { error: upErr } = await supabase
+                    .from('tactic_likes')
+                    .update({ likes, recent_like: recent })
+                    .eq('id', likeRow.id);
+                if (upErr) throw upErr;
+            } else {
+                const { error: insErr } = await supabase
+                    .from('tactic_likes')
+                    .insert([{ tactic_id: String(tacticId), likes, recent_like: recent }]);
+                if (insErr) throw insErr;
             }
 
             // UI 업데이트
-            const likeButton = document.querySelector(`[data-id="${tacticId}"] .like-count`);
-            if (likeButton) {
-                likeButton.textContent = newLikes;
-            }
+            const likeButton = document.querySelector(`[data-post-id="${tacticId}"] .like-button`);
+            const likesCount = document.querySelector(`[data-post-id="${tacticId}"] .likes-count`);
+            if (likeButton) likeButton.classList.add('liked');
+            if (likeButton) likeButton.disabled = true;
+            if (likesCount) likesCount.textContent = likes;
 
-            // 로컬 데이터 업데이트
-            const tactic = this.allTactics.find(t => t.id === tacticId);
+            const tactic = this.allTactics.find(t => String(t.id) === String(tacticId));
             if (tactic) {
-                tactic.likes = newLikes;
+                tactic.likes = likes;
+                tactic.isLiked = true;
             }
-
         } catch (error) {
             console.error('좋아요 처리 실패:', error);
         }
@@ -345,6 +534,236 @@ class TacticsViewer {
         };
     }
 
+    initRegionFilters() {
+        const container = document.getElementById('regionButtons');
+        if (!container) return;
+        container.addEventListener('click', (e) => {
+            const item = e.target.closest('.tab-button');
+            if (!item) return;
+            container.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            item.classList.add('active');
+            this.currentRegion = item.dataset.region;
+            this.loadTactics().then(() => { this.applyFilters(); this.renderTactics(); this.loadRanking(); });
+        });
+    }
+
+    initTypeFilters() {
+        const labels = this.getTypeLabels();
+        const container = document.getElementById('typeButtons');
+        // 라벨 현지화 (텍스트형 아이템)
+        container.querySelectorAll('.filter-item').forEach(el => {
+            const type = el.dataset.type;
+            el.textContent = (type === 'ALL') ? labels.ALL : (labels[type] || el.textContent);
+        });
+        container.addEventListener('click', (e) => {
+            const item = e.target.closest('.filter-item');
+            if (!item) return;
+            container.querySelectorAll('.filter-item').forEach(b => b.classList.remove('active'));
+            item.classList.add('active');
+            this.currentType = item.dataset.type;
+            this.loadTactics().then(() => { this.applyFilters(); this.renderTactics(); });
+        });
+    }
+
+    getTypeLabels() {
+        if (this.currentLang === 'en') {
+            return { ALL: 'All', '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' };
+        } else if (this.currentLang === 'jp') {
+            return { ALL: '全体', '흉몽': '凶夢', '바다': '海', '이벤트': 'イベント', '기타': 'その他' };
+        }
+        return { ALL: '전체', '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' };
+    }
+
+    // 캐릭터 필터 초기화
+    initCharacterFilter() {
+        this.selectedCharacter = null;
+        const grid = document.getElementById('characterFilterGrid');
+        if (!grid) return;
+
+        // release_order 기준 내림차순 정렬, '원더' 제외
+        const allNames = [...(characterList?.mainParty || []), ...(characterList?.supportParty || [])];
+        const sortedNames = allNames
+            .filter(n => n !== '원더')
+            .sort((a, b) => {
+                const ra = (characterData?.[a]?.release_order ?? -Infinity);
+                const rb = (characterData?.[b]?.release_order ?? -Infinity);
+                return rb - ra; // 내림차순
+            });
+        const fragment = document.createDocumentFragment();
+        sortedNames.forEach(name => {
+            const img = document.createElement('img');
+            img.src = `${BASE_URL}/assets/img/tier/${name}.webp`;
+            // 언어에 따른 타이틀/대체 텍스트
+            let displayTitle = name;
+            if (this.currentLang === 'en') {
+                displayTitle = characterData?.[name]?.name_en || name;
+            } else if (this.currentLang === 'jp') {
+                displayTitle = characterData?.[name]?.name_jp || name;
+            }
+            img.alt = displayTitle;
+            img.title = displayTitle;
+            img.className = 'char-face';
+            img.addEventListener('click', () => {
+                // 토글 선택
+                if (this.selectedCharacter === name) {
+                    this.selectedCharacter = null;
+                    img.classList.remove('selected');
+                } else {
+                    this.selectedCharacter = name;
+                    // 선택 표시 업데이트
+                    grid.querySelectorAll('img').forEach(el => el.classList.remove('selected'));
+                    img.classList.add('selected');
+                }
+                this.applyFilters();
+                this.renderTactics();
+            });
+            fragment.appendChild(img);
+        });
+        grid.innerHTML = '';
+        grid.appendChild(fragment);
+
+        // 초기화 버튼 제거 버전: 더미
+    }
+
+    // 언어별 UI 텍스트 초기화
+    initLanguageTexts() {
+        const t = {
+            kr: {
+                search: '제목 검색...',
+                ranking: '순위',
+                weekly: '주간',
+                monthly: '월간',
+                alltime: '역대',
+                title: '택틱 도서관',
+                nav_home: '홈',
+                nav_current: '택틱 / 택틱 도서관',
+                prev: '이전',
+                next: '다음',
+                upload: '택틱 업로드',
+                filter_char: '캐릭터 필터',
+                type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
+            },
+            en: {
+                search: 'Search title...',
+                ranking: 'Ranking',
+                weekly: 'Weekly',
+                monthly: 'Monthly',
+                alltime: 'Alltime',
+                title: 'Tactics Library',
+                nav_home: 'Home',
+                nav_current: 'Tactics / Library',
+                prev: 'Prev',
+                next: 'Next',
+                upload: 'Upload Tactic',
+                filter_char: 'Character Filter',
+                type: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' }
+            },
+            jp: {
+                search: 'タイトル検索...',
+                ranking: '順位',
+                weekly: '週間',
+                monthly: '月間',
+                alltime: '通算',
+                title: 'タクティクス図書館',
+                nav_home: 'ホーム',
+                nav_current: 'タクティクス / 図書館',
+                prev: '前',
+                next: '次',
+                upload: 'タクティクスをアップロード',
+                filter_char: 'キャラクターフィルター',
+                type: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
+            }
+        }[this.currentLang] || {
+            search: '제목 검색...', ranking: '순위', weekly: '주간', monthly: '월간', alltime: '역대', title: '택틱 도서관', nav_home: '홈', nav_current: '택틱 / 택틱 도서관', prev: '이전', next: '다음', upload: '택틱 업로드', filter_char: '캐릭터 필터', type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
+        };
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.placeholder = t.search;
+
+        const rankingTitle = document.querySelector('.ranking-title-text');
+        if (rankingTitle) rankingTitle.textContent = t.ranking;
+
+        const tabs = document.querySelectorAll('.ranking-tab');
+        tabs.forEach(tab => {
+            const period = tab.getAttribute('data-period');
+            if (period === 'weekly') tab.textContent = t.weekly;
+            if (period === 'monthly') tab.textContent = t.monthly;
+            if (period === 'all') tab.textContent = t.alltime;
+        });
+
+        // 헤더/네비/페이지네이션 텍스트
+        const pageTitle = document.getElementById('page-title');
+        if (pageTitle) pageTitle.textContent = t.title;
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        if (navHome) navHome.textContent = t.nav_home;
+        if (navCurrent) navCurrent.textContent = t.nav_current;
+        const prevBtn = document.getElementById('prevPage');
+        const nextBtn = document.getElementById('nextPage');
+        if (prevBtn) prevBtn.textContent = t.prev;
+        if (nextBtn) nextBtn.textContent = t.next;
+
+        const uploadBtn = document.getElementById('uploadButton');
+        if (uploadBtn) uploadBtn.textContent = t.upload;
+        const charFilterTitle = document.getElementById('charFilterTitle');
+        if (charFilterTitle) charFilterTitle.textContent = t.filter_char;
+
+        // 타입 필터 라벨 현지화
+        const typeItems = document.querySelectorAll('#typeButtons .filter-item');
+        typeItems.forEach(el => {
+            const key = el.dataset.type;
+            if (t.type[key]) el.textContent = t.type[key];
+        });
+
+        // 영어(JP)에서 랭킹 탭 폰트 사이즈 조정
+        const rankingTabs = document.querySelectorAll('.ranking-tab');
+        rankingTabs.forEach(btn => {
+            if (this.currentLang === 'en') {
+                btn.style.fontSize = '11px';
+            } else {
+                btn.style.fontSize = '';
+            }
+        });
+
+        // SEO 업데이트
+        this.updateSEO(t);
+    }
+
+    updateSEO(t) {
+        const seoMap = {
+            kr: {
+                title: '택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X 택틱들을 확인하세요.'
+            },
+            en: {
+                title: 'Tactics Library - Persona 5: The Phantom X LufelNet',
+                description: 'Browse community tactics for Persona 5: The Phantom X.'
+            },
+            jp: {
+                title: 'タクティクス図書館 - ペルソナ5 ザ・ファントム X LufelNet',
+                description: 'ペルソナ5 ザ・ファントム X の戦術を閲覧できます。'
+            }
+        };
+        const lang = this.currentLang in seoMap ? this.currentLang : 'kr';
+        const meta = seoMap[lang];
+        document.title = meta.title;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (metaDesc) metaDesc.setAttribute('content', meta.description);
+        if (ogTitle) ogTitle.setAttribute('content', meta.title);
+        if (ogDesc) ogDesc.setAttribute('content', meta.description);
+    }
+
+    async getUserIP() {
+        try {
+            const res = await fetch('https://api.ipify.org?format=json');
+            const json = await res.json();
+            this.userIP = json.ip;
+        } catch(e) {
+            this.userIP = '';
+        }
+    }
     initTabs() {
         const tabButtons = document.querySelectorAll('.tab-button');
         tabButtons.forEach(button => {
@@ -405,9 +824,16 @@ class TacticsViewer {
                     break;
             }
 
-            const filteredTactics = this.allTactics.filter(tactic => 
-                tactic.createdAt >= startDate
-            );
+            // 현재 지역 필터에 따라 집계 대상 선택
+            let regionSet = null;
+            if (this.currentRegion === 'KR') regionSet = new Set(['kr']);
+            if (this.currentRegion === 'GLB') regionSet = new Set(['en','jp','sea']);
+
+            const filteredTactics = this.allTactics.filter(tactic => {
+                const inTime = tactic.createdAt >= startDate;
+                const inRegion = !regionSet || regionSet.has((tactic.region || '').toLowerCase());
+                return inTime && inRegion;
+            });
 
             const authorStats = new Map();
             filteredTactics.forEach(tactic => {
@@ -417,7 +843,7 @@ class TacticsViewer {
                 authorStats.set(tactic.author, stats);
             });
 
-            const rankings = Array.from(authorStats.entries())
+            let rankings = Array.from(authorStats.entries())
                 .map(([author, stats]) => ({
                     author,
                     score: (stats.posts * 5) + stats.likes,
@@ -426,6 +852,11 @@ class TacticsViewer {
                 }))
                 .sort((a, b) => b.score - a.score)
                 .slice(0, 3);
+
+            // 비어 있으면 placeholder 채우기
+            while (rankings.length < 3) {
+                rankings.push({ author: '-', score: 0, posts: 0, likes: 0 });
+            }
 
             this.renderRanking(rankings);
         } catch (error) {

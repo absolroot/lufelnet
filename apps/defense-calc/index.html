@@ -1,69 +1,82 @@
 ---
 layout: default
 custom_css: [defense-calc]
-custom_js: [tooltip, defense-calc]
+custom_js: [tooltip, language-router, defense-calc]
 custom_data: [tooltip.js, calc/boss.js, calc/defense-data.js]
 permalink: /defense-calc/
 language: kr
 title : 방어력 감소 계산기 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X 방어력 감소 계산기
+alternate_urls:
+  en: /defense-calc/?lang=en
+  jp: /defense-calc/?lang=jp
+redirect_from:
+  - /kr/defense-calc/
 ---
+
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/defense-calc/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/defense-calc/" />
+{% endif %}
 
 <!-- main contents -->
 <div class="main-wrapper">
     <!-- navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page">방어력 계산</span>
+        <span class="current-page" id="nav-current">방어력 계산</span>
     </div>
     <div class="header-container">
-        <h1>방어력 감소 계산기</h1>
+        <h1 id="page-title">방어력 감소 계산기</h1>
     </div>
     
     <!-- top card container -->
     <div class="top-cards">
         <!-- boss select card -->
         <div class="boss-card card-style">
-            <h2>보스 정보</h2>
+            <h2 id="boss-info-title">보스 정보</h2>
             <div class="boss-select-container">
                 <select id="bossSelect">
-                    <option value="">보스 선택</option>
+                    <option value="" id="bossSelectPlaceholder">보스 선택</option>
                 </select>
                 <div class="boss-stats">
-                    <div>· 기본 방어력: <span id="baseDefense">-</span></div>
-                    <div>· 보스 방어 계수: <span id="defenseCoef">-</span></div>
+                    <div><span id="baseDefenseLabel">· 기본 방어력:</span> <span id="baseDefense">-</span></div>
+                    <div><span id="defenseCoefLabel">· 보스 방어 계수:</span> <span id="defenseCoef">-</span></div>
                 </div>
             </div>
         </div>
                 
         <!-- penetrate total card -->
         <div class="stat-card card-style">
-            <h2>관통 합계</h2>
+            <h2 id="penetrate-total-title">관통 합계</h2>
             <div class="penetrate-value">0%</div>
             <div class="penetrate-value-description">
-                <div class="final-defense-coef">관통 적용 방어 계수: <span id="finalDefenseCoef">-</span></div>
-                <div>※ 방어 계수= 보스 방어 계수 × (100-관통)%</div>
+                <div class="final-defense-coef"><span id="finalDefenseCoefLabel">관통 적용 방어 계수:</span> <span id="finalDefenseCoef">-</span></div>
+                <div id="penetrateDesc">※ 방어 계수= 보스 방어 계수 × (100-관통)%</div>
             </div>
         </div>
         
         <!-- defense reduce total card -->
         <div class="stat-card card-style">
-            <h2>방어력 감소 합계</h2>
+            <h2 id="defense-reduce-total-title">방어력 감소 합계</h2>
             <div class="total-value">0%</div>
             <div class="defense-reduce-value-description">
-                <div class="final-defense-coef2">최종 방어 계수: <span id="finalDefenseCoef2">-</span></div>
-                <div>※ 방어 계수= 관통 적용 방어 계수 - 방어력 감소</div>
+                <div class="final-defense-coef2"><span id="finalDefenseCoef2Label">최종 방어 계수:</span> <span id="finalDefenseCoef2">-</span></div>
+                <div id="defenseReduceDesc">※ 방어 계수= 관통 적용 방어 계수 - 방어력 감소</div>
             </div>
         </div>
         
         <!-- final damage increase card -->
         <div class="damage-card card-style">
-            <h2>최종 대미지 증가 <span class="tooltip-icon" data-tooltip="대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]">?</span></h2>
+            <h2 id="final-damage-increase-title">최종 대미지 증가 <span class="tooltip-icon" id="finalDamageTooltip" data-tooltip="대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]">?</span></h2>
             <div class="damage-increase"></div>
             <div class="damage-formula">
-                <div class="formula-row">· 기본 최종 대미지 배수: <span id="noDefReduce">-</span></div>
-                <div class="formula-row">· 방어력 감소 최종 대미지 배수: <span id="withDefReduce">-</span></div>
+                <div class="formula-row"><span id="baseFinalDamageLabel">· 기본 최종 대미지 배수:</span> <span id="noDefReduce">-</span></div>
+                <div class="formula-row"><span id="withDefReduceLabel">· 방어력 감소 최종 대미지 배수:</span> <span id="withDefReduce">-</span></div>
             </div>
         </div>
     </div>
@@ -79,12 +92,12 @@ description: 페르소나5 더 팬텀 X 방어력 감소 계산기
         <div class="tab-content active" id="penetrate-tab">
             <div class="penetrate-input-container">
                 <div class="penetrate-input-group">
-                    <label>계시 관통 합계</label>
+                    <label id="revelationPenetrateLabel">계시 관통 합계</label>
                     <input type="number" id="revelationPenetrate" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
                 <div class="penetrate-input-group">
-                    <label>해명의 힘</label>
+                    <label id="explanationPowerLabel">해명의 힘</label>
                     <input type="number" id="explanationPower" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
@@ -169,6 +182,17 @@ description: 페르소나5 더 팬텀 X 방어력 감소 계산기
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('defense-calc');
         VersionChecker.check();
+        // 다국어 SEO/텍스트 업데이트
+        updateSEOContent();
+        if (typeof LanguageRouter !== 'undefined') {
+            const hasLangParam = window.location.search.includes('lang=');
+            if (!hasLangParam) {
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+            }
+        }
+        updateLanguageContent();
         
         // 탭 전환 기능 추가
         const tabButtons = document.querySelectorAll('.tab-button');
@@ -187,5 +211,218 @@ description: 페르소나5 더 팬텀 X 방어력 감소 계산기
             });
         });
     });
+
+    // 언어별 UI 텍스트 업데이트
+    function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const i18n = {
+            kr: {
+                nav_home: '홈',
+                nav_current: '방어력 계산',
+                page_title: '방어력 감소 계산기',
+                boss_info: '보스 정보',
+                boss_select: '보스 선택',
+                base_defense: '· 기본 방어력:',
+                defense_coef: '· 보스 방어 계수:',
+                penetrate_total: '관통 합계',
+                final_defense_coef_after_pierce: '관통 적용 방어 계수:',
+                penetrate_desc: '※ 방어 계수= 보스 방어 계수 × (100-관통)%',
+                defense_reduce_total: '방어력 감소 합계',
+                final_defense_coef: '최종 방어 계수:',
+                defense_reduce_desc: '※ 방어 계수= 관통 적용 방어 계수 - 방어력 감소',
+                final_damage_increase: '최종 대미지 증가',
+                tooltip_formula: '대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]',
+                base_final_damage: '· 기본 최종 대미지 배수:',
+                with_def_reduce: '· 방어력 감소 최종 대미지 배수:',
+                tab_pierce: '관통',
+                tab_defense: '방어력 감소',
+                revelation_penetrate: '계시 관통 합계',
+                explanation_power: '해명의 힘',
+                th_select: '선택',
+                th_thief: '괴도',
+                th_type: '분류',
+                th_target: '목표',
+                th_name: '이름',
+                th_option: '옵션',
+                th_value: '수치',
+                th_duration: '지속시간',
+                th_note: '비고'
+            },
+            en: {
+                nav_home: 'Home',
+                nav_current: 'Defense Calc',
+                page_title: 'Defense Reduction Calculator',
+                boss_info: 'Boss Info',
+                boss_select: 'Select Boss',
+                base_defense: '· Enemy Defense:',
+                defense_coef: '· Boss Defense Coefficient:',
+                penetrate_total: 'Total Pierce',
+                final_defense_coef_after_pierce: 'Defense Coef. after Pierce:',
+                penetrate_desc: '※ Defense Coef. = Boss Defense Coef. × (100 - Pierce)%',
+                defense_reduce_total: 'Total Defense Reduction',
+                final_defense_coef: 'Final Defense Coef.:',
+                defense_reduce_desc: '※ Defense Coef. = After Pierce Coef. - Defense Reduction',
+                final_damage_increase: 'Final Damage Increase',
+                tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
+                base_final_damage: '· Base final damage mult.:',
+                with_def_reduce: '· With defense reduction mult.:',
+                tab_pierce: 'Pierce',
+                tab_defense: 'Defense Reduction',
+                revelation_penetrate: 'Revelation Pierce Total',
+                explanation_power: 'Elucidation Power',
+                th_select: 'Select',
+                th_thief: 'Thief',
+                th_type: 'Type',
+                th_target: 'Target',
+                th_name: 'Name',
+                th_option: 'Option',
+                th_value: 'Value',
+                th_duration: 'Duration',
+                th_note: 'Note'
+            },
+            jp: {
+                nav_home: 'ホーム',
+                nav_current: '防御力計算',
+                page_title: '防御力減少計算機',
+                boss_info: 'ボス情報',
+                boss_select: 'ボス選択',
+                base_defense: '・ 敵防御力:',
+                defense_coef: '・ ボス防御係数:',
+                penetrate_total: '貫通合計',
+                final_defense_coef_after_pierce: '貫通適用の防御係数:',
+                penetrate_desc: '※ 防御係数 = ボス防御係数 × (100 - 貫通)%',
+                defense_reduce_total: '防御力減少合計',
+                final_defense_coef: '最終防御係数:',
+                defense_reduce_desc: '※ 防御係数 = 貫通適用の防御係数 - 防御力減少',
+                final_damage_increase: '最終ダメージ増加',
+                tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
+                base_final_damage: '・ 基本 最終ダメージ倍率:',
+                with_def_reduce: '・ 防御力減少あり 最終ダメージ倍率:',
+                tab_pierce: '貫通',
+                tab_defense: '防御力減少',
+                revelation_penetrate: '啓示 貫通合計',
+                explanation_power: '解明の力',
+                th_select: '選択',
+                th_thief: '怪盗',
+                th_type: '分類',
+                th_target: '対象',
+                th_name: '名前',
+                th_option: 'オプション',
+                th_value: '数値',
+                th_duration: '持続時間',
+                th_note: '備考'
+            }
+        };
+
+        const t = i18n[currentLang] || i18n.kr;
+
+        // 네비/제목
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        if (navHome) navHome.textContent = t.nav_home;
+        if (navCurrent) navCurrent.textContent = t.nav_current;
+        if (pageTitle) pageTitle.textContent = t.page_title;
+
+        // 보스 카드
+        const bossInfoTitle = document.getElementById('boss-info-title');
+        const bossSelectPlaceholder = document.getElementById('bossSelectPlaceholder');
+        const baseDefenseLabel = document.getElementById('baseDefenseLabel');
+        const defenseCoefLabel = document.getElementById('defenseCoefLabel');
+        if (bossInfoTitle) bossInfoTitle.textContent = t.boss_info;
+        if (bossSelectPlaceholder) bossSelectPlaceholder.textContent = t.boss_select;
+        if (baseDefenseLabel) baseDefenseLabel.textContent = t.base_defense;
+        if (defenseCoefLabel) defenseCoefLabel.textContent = t.defense_coef;
+
+        // 관통 카드
+        const penetrateTitle = document.getElementById('penetrate-total-title');
+        const finalDefenseCoefLabel = document.getElementById('finalDefenseCoefLabel');
+        const penetrateDesc = document.getElementById('penetrateDesc');
+        if (penetrateTitle) penetrateTitle.textContent = t.penetrate_total;
+        if (finalDefenseCoefLabel) finalDefenseCoefLabel.textContent = t.final_defense_coef_after_pierce;
+        if (penetrateDesc) penetrateDesc.textContent = t.penetrate_desc;
+
+        // 방깎 카드
+        const defenseReduceTitle = document.getElementById('defense-reduce-total-title');
+        const finalDefenseCoef2Label = document.getElementById('finalDefenseCoef2Label');
+        const defenseReduceDesc = document.getElementById('defenseReduceDesc');
+        if (defenseReduceTitle) defenseReduceTitle.textContent = t.defense_reduce_total;
+        if (finalDefenseCoef2Label) finalDefenseCoef2Label.textContent = t.final_defense_coef;
+        if (defenseReduceDesc) defenseReduceDesc.textContent = t.defense_reduce_desc;
+
+        // 최종 대미지 카드
+        const finalDamageTitle = document.getElementById('final-damage-increase-title');
+        const finalDamageTooltip = document.getElementById('finalDamageTooltip');
+        const baseFinalDamageLabel = document.getElementById('baseFinalDamageLabel');
+        const withDefReduceLabel = document.getElementById('withDefReduceLabel');
+        if (finalDamageTitle) finalDamageTitle.firstChild && (finalDamageTitle.firstChild.textContent = t.final_damage_increase + ' ');
+        if (finalDamageTooltip) finalDamageTooltip.setAttribute('data-tooltip', t.tooltip_formula);
+        if (baseFinalDamageLabel) baseFinalDamageLabel.textContent = t.base_final_damage;
+        if (withDefReduceLabel) withDefReduceLabel.textContent = t.with_def_reduce;
+
+        // 탭 라벨
+        const tabPierce = document.querySelector('.tab-button[data-tab="penetrate"]');
+        const tabDefense = document.querySelector('.tab-button[data-tab="defense"]');
+        if (tabPierce) tabPierce.textContent = t.tab_pierce;
+        if (tabDefense) tabDefense.textContent = t.tab_defense;
+
+        // 입력 라벨
+        const revelationPenetrateLabel = document.getElementById('revelationPenetrateLabel');
+        const explanationPowerLabel = document.getElementById('explanationPowerLabel');
+        if (revelationPenetrateLabel) revelationPenetrateLabel.textContent = t.revelation_penetrate;
+        if (explanationPowerLabel) explanationPowerLabel.textContent = t.explanation_power;
+
+        // 테이블 헤더 (양쪽 테이블 모두 적용)
+        setTextAll('.check-column', t.th_select);
+        setTextAll('.char-img-column', t.th_thief);
+        setTextAll('.type-column', t.th_type);
+        setTextAll('.target-column', t.th_target);
+        setTextAll('.skill-name-column', t.th_name);
+        setTextAll('.option-column', t.th_option);
+        setTextAll('.value-column', t.th_value);
+        setTextAll('.duration-column', t.th_duration);
+        setTextAll('.note-column', t.th_note);
+
+        // 툴팁 재초기화 (텍스트 변경 반영)
+        if (typeof addTooltips === 'function') {
+            addTooltips();
+        }
+    }
+
+    function setTextAll(selector, text) {
+        // 표 본문(td)까지 덮어쓰지 않도록 헤더(th)만 변경
+        document.querySelectorAll(`.defense-table thead ${selector}`).forEach(el => {
+            if (el && text !== undefined && text !== null) {
+                el.textContent = text;
+            }
+        });
+    }
+
+    // 언어별 SEO 설정
+    function updateSEOContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const seoData = {
+            kr: {
+                title: '방어력 감소 계산기 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X 방어력 감소 계산기'
+            },
+            en: {
+                title: 'Defense Reduction Calculator - Persona 5: The Phantom X LufelNet',
+                description: 'Persona 5: The Phantom X Defense Reduction Calculator'
+            },
+            jp: {
+                title: '防御力減少計算機 - ペルソナ5 ザ・ファントム X LufelNet',
+                description: 'ペルソナ5 ザ・ファントム X 防御力減少計算機'
+            }
+        };
+        const currentSEO = seoData[currentLang] || seoData.kr;
+        document.title = currentSEO.title;
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+    }
 </script>
 

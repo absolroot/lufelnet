@@ -14,12 +14,17 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 <div class="main-wrapper">
     <!-- 네비게이션 경로 -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a id="nav-home" href="../../?v=${APP_VERSION}">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page">택틱 / 택틱 업로드</span>
+        <span class="current-page" id="nav-current">택틱 / 택틱 업로드</span>
     </div>
     <div class="header-container">
-        <h1>택틱 업로드</h1>
+        <h1 id="page-title">택틱 업로드</h1>
+    </div>
+    <div id="userInfoBar" class="user-info-bar" style="display:none;">
+        <span class="user-label" data-i18n="signed_in_as">로그인:</span>
+        <span id="userDisplayName"></span>
+        <button id="logoutButton" class="logout-btn" data-i18n="logout">로그아웃</button>
     </div>
 
     <!-- 로그인 확인 메시지 -->
@@ -58,10 +63,10 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
                 <div class="form-group">
                     <label for="tacticRegion" data-i18n="region">지역 *</label>
                     <select id="tacticRegion" name="tacticRegion" required>
-                        <option value="kr">한국 (KR)</option>
-                        <option value="en">글로벌 (EN)</option>
-                        <option value="jp">일본 (JP)</option>
-                        <option value="sea">동남아 (SEA)</option>
+                        <option value="kr" data-i18n="lang_kr">한국 (KR)</option>
+                        <option value="en" data-i18n="lang_en">글로벌 (EN)</option>
+                        <option value="jp" data-i18n="lang_jp">일본 (JP)</option>
+                        <option value="sea" data-i18n="lang_sea">동남아 (SEA)</option>
                     </select>
                 </div>
 
@@ -80,7 +85,7 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
                 <!-- 제목 -->
                 <div class="form-group">
                     <label for="tacticTitle" data-i18n="title">제목 *</label>
-                    <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="보스 이름 (점수)" required>
+                    <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="보스 이름 (점수)" required style="width: 90%;">
                     <small data-i18n="title_example">예: 쿠 훌린 (1.4억)</small>
                 </div>
 
@@ -97,7 +102,7 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
                 <!-- 코멘트 -->
                 <div class="form-group">
                     <label for="tacticComment" data-i18n="comment">코멘트</label>
-                    <textarea id="tacticComment" name="tacticComment" rows="4" data-i18n-placeholder="comment_placeholder" placeholder="참고 사항, 메모 등"></textarea>
+                    <textarea id="tacticComment" name="tacticComment" rows="4" data-i18n-placeholder="comment_placeholder" placeholder="참고 사항, 메모 등" style="width: 90%;"></textarea>
                 </div>
             </div>
 
@@ -171,7 +176,13 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 .upload-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;    
+}
+
+@media (max-width: 768px) {
+    .upload-container {
+        padding: 0;
+    }
 }
 
 .tactic-upload-form {
@@ -186,6 +197,7 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 
 .form-section h3 {
     color: #fff;
+    margin-top: 0;
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
@@ -205,7 +217,6 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 .form-group input,
 .form-group select,
 .form-group textarea {
-    width: 90%;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
@@ -236,6 +247,7 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 .json-preview h4 {
     color: #fff;
     margin-bottom: 10px;
+    margin-top: 0;
 }
 
 .form-actions {
@@ -375,6 +387,32 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* 사용자 정보 바 */
+.user-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0 16px 0;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+}
+.user-info-bar .user-label {
+    color: rgba(255,255,255,0.85);
+}
+.logout-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.logout-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
 </style>
 
 <script>
@@ -407,7 +445,18 @@ const translations = {
         login: '로그인하기',
         tactic_preview: '택틱 미리보기',
         close: '닫기',
-        uploading: '업로드 중...'
+        uploading: '업로드 중...',
+        lang_kr: '한국 (KR)',
+        lang_en: '글로벌 (EN)',
+        lang_jp: '일본 (JP)',
+        lang_sea: '동남아 (SEA)',
+        signed_in_as: '로그인:',
+        logout: '로그아웃',
+        nav_home: '홈',
+        nav_current: '택틱 / 택틱 업로드',
+        page_title: '택틱 업로드',
+        seo_title: '택틱 업로드 - 페르소나5 더 팬텀 X 루페르넷',
+        seo_desc: '페르소나5 더 팬텀 X 택틱을 업로드하세요.'
     },
     en: {
         tactic_info: 'Tactic Information',
@@ -436,7 +485,18 @@ const translations = {
         login: 'Login',
         tactic_preview: 'Tactic Preview',
         close: 'Close',
-        uploading: 'Uploading...'
+        uploading: 'Uploading...',
+        lang_kr: 'KR',
+        lang_en: 'EN',
+        lang_jp: 'JP',
+        lang_sea: 'SEA',
+        signed_in_as: 'Signed in as:',
+        logout: 'Logout',
+        nav_home: 'Home',
+        nav_current: 'Tactic / Upload',
+        page_title: 'Upload Tactic',
+        seo_title: 'Upload Tactic - Persona 5: The Phantom X LufelNet',
+        seo_desc: 'Upload your tactics for Persona 5: The Phantom X.'
     },
     jp: {
         tactic_info: 'タクティック情報',
@@ -465,7 +525,18 @@ const translations = {
         login: 'ログイン',
         tactic_preview: 'タクティックプレビュー',
         close: '閉じる',
-        uploading: 'アップロード中...'
+        uploading: 'アップロード中...',
+        lang_kr: 'KR',
+        lang_en: 'EN',
+        lang_jp: 'JP',
+        lang_sea: 'SEA',
+        signed_in_as: 'ログイン：',
+        logout: 'ログアウト',
+        nav_home: 'ホーム',
+        nav_current: 'タクティック / アップロード',
+        page_title: 'タクティックをアップロード',
+        seo_title: 'タクティックをアップロード - ペルソナ5 ザ・ファントム X LufelNet',
+        seo_desc: 'ペルソナ5 ザ・ファントム X のタクティックをアップロードしてください。'
     }
 };
 
@@ -494,6 +565,7 @@ class TacticUploader {
         // DOM이 완전히 로드된 후 번역 실행
         setTimeout(() => {
             this.initLanguage();
+            this.updateLanguageTextsAndSEO();
         }, 100);
         this.initEventListeners();
         this.initRegionDropdown();
@@ -528,9 +600,29 @@ class TacticUploader {
                     element.textContent = translations[lang][key];
                 }
             });
+            // 상단 네비/페이지 타이틀 번역
+            const navHome = document.getElementById('nav-home');
+            const navCurrent = document.getElementById('nav-current');
+            const pageTitle = document.getElementById('page-title');
+            if (navHome && translations[lang].nav_home) navHome.textContent = translations[lang].nav_home;
+            if (navCurrent && translations[lang].nav_current) navCurrent.textContent = translations[lang].nav_current;
+            if (pageTitle && translations[lang].page_title) pageTitle.textContent = translations[lang].page_title;
         } else {
             console.log('No translations found for language:', lang);
         }
+    }
+
+    updateLanguageTextsAndSEO() {
+        const lang = this.currentLang;
+        const t = translations[lang] || translations.kr;
+        // SEO
+        document.title = t.seo_title;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (metaDesc) metaDesc.setAttribute('content', t.seo_desc);
+        if (ogTitle) ogTitle.setAttribute('content', t.seo_title);
+        if (ogDesc) ogDesc.setAttribute('content', t.seo_desc);
     }
 
     initRegionDropdown() {
@@ -553,6 +645,7 @@ class TacticUploader {
             if (session && session.user) {
                 this.currentUser = session.user;
                 this.showUploadForm();
+                this.updateUserInfoBar();
                 
                 // 작성자 필드에 사용자 이름 자동 입력
                 const authorInput = document.getElementById('tacticAuthor');
@@ -601,12 +694,37 @@ class TacticUploader {
         document.getElementById('uploadForm').style.display = 'block';
     }
 
+    updateUserInfoBar() {
+        const bar = document.getElementById('userInfoBar');
+        const nameEl = document.getElementById('userDisplayName');
+        if (!bar || !nameEl || !this.currentUser) return;
+        const displayName = this.currentUser.user_metadata?.display_name ||
+                           this.currentUser.user_metadata?.full_name ||
+                           this.currentUser.email || '';
+        nameEl.textContent = displayName;
+        bar.style.display = 'flex';
+    }
+
     initEventListeners() {
         // 로그인 버튼
         document.getElementById('loginButton').addEventListener('click', () => {
             const currentUrl = window.location.href;
             window.location.href = `/login/?redirect=${encodeURIComponent(currentUrl)}`;
         });
+
+        // 로그아웃 버튼
+        const logoutBtn = document.getElementById('logoutButton');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    await supabase.auth.signOut();
+                    // 로그아웃 후 리다이렉트
+                    window.location.replace(`/login/?redirect=${encodeURIComponent('/tactic/tactic-upload.html')}`);
+                } catch (e) {
+                    alert('로그아웃에 실패했습니다.');
+                }
+            });
+        }
 
         // 파일 업로드
         document.getElementById('jsonFile').addEventListener('change', (e) => {
@@ -689,12 +807,7 @@ class TacticUploader {
             }
             
             // 파티 정보 텍스트
-            const partyInfo = document.createElement('div');
-            partyInfo.innerHTML = `
-                <p><strong>파티 구성:</strong> ${data.party.filter(p => p.name).map(p => p.name).join(', ')}</p>
-                <p><strong>턴 수:</strong> ${data.turns ? data.turns.length : 0}턴</p>
-            `;
-            contentDiv.appendChild(partyInfo);
+                    // 파티 구성/턴수 표기는 미리보기에서 제외
         }
         
         previewDiv.style.display = 'block';

@@ -393,7 +393,7 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 8px 0 16px 0;
+    margin: 8px 20px 16px 20px;
     padding: 10px 14px;
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.12);
@@ -992,20 +992,30 @@ class TacticUploader {
                     title: formData.title,
                     author: formData.author,
                     comment: formData.comment || null,
-                    url: formData.url,
+                    url: formData.url || null,
                     query: this.tacticData,
-                    likes: 0,
-                    recentLikes: 0,
                     tactic_type: formData.type,
                     region: formData.region,
                     user_id: this.currentUser.id
-                }]);
+                }])
+                .select('id')
+                .single();
 
             console.log('Tactic uploaded with URL code:', formData.url);
             console.log('Full URL will be: https://lufel.net/tactic/?code=' + formData.url);
 
             if (error) {
                 throw error;
+            }
+
+            const newTacticId = data?.id;
+            if (newTacticId) {
+                const { error: likeInitError } = await supabase
+                    .from('tactic_likes')
+                    .insert([{ tactic_id: String(newTacticId), likes: 0, recent_like: null }]);
+                if (likeInitError) {
+                    console.error('초기 좋아요 행 생성 실패:', likeInitError);
+                }
             }
 
             const successMessage = this.currentLang === 'en' ? 'Tactic uploaded successfully!' :

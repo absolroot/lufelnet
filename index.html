@@ -23,6 +23,8 @@ alternate_urls:
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
 {% endif %}
 
+{% include supabase-config.html %}
+
 <style>
     .header-container .language-selector-container {
         max-width: 120px;
@@ -238,8 +240,8 @@ alternate_urls:
 
     <div class="posts-container" id="posts-container">
         <div class="posts-header">
-            <h2><a href="./tactic/tactic-share.html" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 대장간 NEW</a></h2>
-            <a href="./tactic/tactic-share.html" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
+            <h2><a href="./tactic/tactics.html" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 대장간 NEW</a></h2>
+            <a href="./tactic/tactics.html" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
         </div>
         <div class="posts-list" id="postsList"></div>
     </div>
@@ -342,10 +344,10 @@ alternate_urls:
             link.href = url.pathname + url.search;
         });
         
-        // 택틱 대장간 링크들 업데이트
-        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactic-share.html"]');
+        // 택틱 도서관 링크들 업데이트 (홈 목록 이동 버튼)
+        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactics.html"]');
         tacticLinks.forEach(link => {
-            const url = new URL('./tactic/tactic-share.html' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+            const url = new URL('./tactic/tactics.html' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
             link.href = url.pathname + url.search;
         });
         
@@ -384,7 +386,7 @@ alternate_urls:
                     guide_city: "도시 생활",
                     guide_growth: "육성 및 재화",
                     guide_battle: "전투 및 팰리스",
-                    tactic_workshop: "택틱 대장간 NEW",
+                    tactic_workshop: "택틱 도서관",
                     show_more: "더보기"
                 },
                 en: {
@@ -415,7 +417,7 @@ alternate_urls:
                     guide_city: "{{ site.data.i18n.en.guide_city | default: 'City Life' }}",
                     guide_growth: "{{ site.data.i18n.en.guide_growth | default: 'Growth & Resources' }}",
                     guide_battle: "{{ site.data.i18n.en.guide_battle | default: 'Battle & Palace' }}",
-                    tactic_workshop: "{{ site.data.i18n.en.tactic_workshop | default: 'Tactic Workshop NEW' }}",
+                    tactic_workshop: "{{ site.data.i18n.en.tactic_workshop | default: 'Tactic Library' }}",
                     show_more: "{{ site.data.i18n.en.show_more | default: 'Show More' }}"
                 },
                 jp: {
@@ -446,7 +448,7 @@ alternate_urls:
                     guide_city: "{{ site.data.i18n.jp.guide_city | default: '都市生活' }}",
                     guide_growth: "{{ site.data.i18n.jp.guide_growth | default: '育成・資源' }}",
                     guide_battle: "{{ site.data.i18n.jp.guide_battle | default: '戦闘・パレス' }}",
-                    tactic_workshop: "{{ site.data.i18n.jp.tactic_workshop | default: 'タクティクス工房 NEW' }}",
+                    tactic_workshop: "{{ site.data.i18n.jp.tactic_workshop | default: 'タクティクス図書館' }}",
                     show_more: "{{ site.data.i18n.jp.show_more | default: 'もっと見る' }}"
                 }
             };
@@ -634,6 +636,7 @@ alternate_urls:
             }
             
             // 택틱 대장간 섹션은 표시하되 오버레이 추가
+            /*
             const postsContainer = document.getElementById('posts-container');
             if (postsContainer) {
                 postsContainer.style.display = 'block';
@@ -673,7 +676,7 @@ alternate_urls:
                 links.forEach(link => {
                     link.style.pointerEvents = 'none';
                 });
-            }
+            }*/
         } else {
             // 한국어인 경우 모든 메뉴 활성화
             const tacticCard = document.getElementById('menu-tactic-card');
@@ -918,11 +921,11 @@ alternate_urls:
             });
         }
         
-        // 한국어인 경우에만 택틱 관련 기능 로드
+        // 홈 택틱 미리보기: tactic-posts-home.js의 공용 함수로 일원화
         const urlParams = new URLSearchParams(window.location.search);
-        const currentLangFromUrl = urlParams.get('lang') || 'kr';
-        if (currentLangFromUrl === 'kr') {
-            window.tacticShare = new TacticShare({ postsPerPage: 2});
+        const currentLangFromUrl = urlParams.get('lang') || (typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr');
+        if (typeof window.loadHomeTacticsFromSupabase === 'function') {
+            window.loadHomeTacticsFromSupabase(currentLangFromUrl);
         }
         
         // 클릭 이벤트 감지하여 언어 선택기 닫기
@@ -1085,4 +1088,28 @@ alternate_urls:
 
     // Load update history on page load
     document.addEventListener('DOMContentLoaded', loadUpdates);
+
+    // 유틸
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    function formatDate(date) {
+        const now = new Date();
+        const diff = now.getTime() - date.getTime();
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        if (days === 0) {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            if (hours === 0) {
+                const minutes = Math.floor(diff / (1000 * 60));
+                return `${minutes}분 전`;
+            }
+            return `${hours}시간 전`;
+        } else if (days < 7) {
+            return `${days}일 전`;
+        } else {
+            return date.toLocaleDateString('ko-KR');
+        }
+    }
     </script>

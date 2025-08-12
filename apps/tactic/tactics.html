@@ -35,6 +35,7 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
                 <button class="tab-button active" data-region="ALL">ALL</button>
                 <button class="tab-button" data-region="KR">KR</button>
                 <button class="tab-button" data-region="GLB">GLB</button>
+                <button class="tab-button" data-region="JP">JP</button>
             </div>
             <a href="/tactic/tactic-upload.html" id="uploadButton" class="upload-btn">택틱 업로드</a>
         </div>
@@ -235,7 +236,9 @@ class TacticsViewer {
 
             if (this.currentRegion && this.currentRegion !== 'ALL') {
                 if (this.currentRegion === 'GLB') {
-                    query = query.in('region', ['en','jp','sea']);
+                    query = query.in('region', ['en','sea']);
+                } else if (this.currentRegion === 'JP') {
+                    query = query.eq('region', 'jp');
                 } else if (this.currentRegion === 'KR') {
                     query = query.eq('region', 'kr');
                 }
@@ -924,7 +927,8 @@ class TacticsViewer {
             // 현재 지역 필터에 따라 집계 대상 선택
             let regionSet = null;
             if (this.currentRegion === 'KR') regionSet = new Set(['kr']);
-            if (this.currentRegion === 'GLB') regionSet = new Set(['en','jp','sea']);
+            if (this.currentRegion === 'GLB') regionSet = new Set(['en','sea']);
+            if (this.currentRegion === 'JP') regionSet = new Set(['jp']);
 
             const filteredTactics = this.allTactics.filter(tactic => {
                 const inTime = tactic.createdAt >= startDate;

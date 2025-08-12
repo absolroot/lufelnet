@@ -36,7 +36,8 @@ class Navigation {
                 revelations: '계시',
                 tactic: '택틱',
                 tacticMaker: '택틱 메이커',
-                tacticForge: '택틱 대장간',
+                tacticForge: '택틱 대장간(구)',
+                tacticLibrary: '택틱 도서관(신)',
                 tier: '티어',
                 tierMaker: '티어 메이커',
                 tierList: '티어 리스트',
@@ -55,6 +56,7 @@ class Navigation {
                 tactic: 'Tactics',
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
+                tacticLibrary: 'Tactics Library',
                 tier: 'Tier',
                 tierMaker: 'Tier Maker',
                 tierList: 'Tier List',
@@ -73,6 +75,7 @@ class Navigation {
                 tactic: '戦術',
                 tacticMaker: '戦術メーカー',
                 tacticForge: '戦術鍛冶場',
+                tacticLibrary: 'タクティクス図書館',
                 tier: 'ティア',
                 tierMaker: 'ティアメーカー',
                 tierList: 'ティアリスト',
@@ -108,8 +111,8 @@ class Navigation {
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
             kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            en: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic-maker', 'about'],
-            jp: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic-maker', 'about'],
+            en: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic', 'about'],
+            jp: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -174,9 +177,13 @@ class Navigation {
                         <a href="${BASE_URL}/tactic?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
                             <span data-text="${texts.tacticMaker}">◈　${texts.tacticMaker}</span>
                         </a>
+                        <a href="${BASE_URL}/tactic/tactics.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactics">
+                            <span data-text="${texts.tacticLibrary}">◈　${texts.tacticLibrary}</span>
+                        </a>
+                        ${currentLang === 'kr' ? `
                         <a href="${BASE_URL}/tactic/tactic-share.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-share">
                             <span data-text="${texts.tacticForge}">◈　${texts.tacticForge}</span>
-                        </a>
+                        </a>` : ''}
                     </div>
                 </div>
                 ` : ''}
@@ -317,7 +324,7 @@ class Navigation {
             }
 
             // 택틱 관련 페이지인 경우 추가 처리
-            if (activePage === 'tactic' || activePage === 'tactic-maker' || activePage === 'tactic-share') {
+            if (activePage === 'tactic' || activePage === 'tactic-maker' || activePage === 'tactic-share' || activePage === 'tactics') {
                 const tacticMenu = document.querySelector('[data-nav="tactic"]');
                 if (tacticMenu) {
                     tacticMenu.classList.add('active');
@@ -328,6 +335,8 @@ class Navigation {
                         activeSubItem = document.querySelector('[data-nav="tactic-maker"]');
                     } else if (activePage === 'tactic-share') {
                         activeSubItem = document.querySelector('[data-nav="tactic-share"]');
+                    } else if (activePage === 'tactics') {
+                        activeSubItem = document.querySelector('[data-nav="tactics"]');
                     }
                     
                     if (activeSubItem) {

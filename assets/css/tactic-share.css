@@ -496,6 +496,16 @@
     transition: color 0.2s;
 }
 
+/* 제목 텍스트는 최대 2줄로 표시하고 넘치면 말줄임 */
+.post-title-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
 .type-badge{
     display: inline-block;
     background: rgba(255,255,255,0.15);

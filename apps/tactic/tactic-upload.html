@@ -111,6 +111,8 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
                 <button type="submit" id="submitButton" class="submit-btn" data-i18n="upload">업로드</button>
             </div>
         </form>
+        <!-- 업로드 결과 표시 -->
+        <div id="uploadSuccessBox" class="upload-success" style="display:none; margin-top:16px;"></div>
     </div>
 
     <!-- 미리보기 모달 -->
@@ -412,6 +414,45 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 }
 .logout-btn:hover {
     background: rgba(255,255,255,0.1);
+}
+
+/* 업로드 성공 박스 */
+.upload-success {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 16px;
+}
+.upload-success .success-title {
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+.upload-success .success-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+.upload-success .label {
+    color: rgba(255,255,255,0.8);
+}
+.upload-success .link {
+    color: #7fc8ff;
+    text-decoration: underline;
+    word-break: break-all;
+}
+.upload-success .btns {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+.upload-success .btn {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 </style>
 
@@ -1127,10 +1168,44 @@ class TacticUploader {
             const successMessage = this.currentLang === 'en' ? 'Tactic uploaded successfully!' :
                                   this.currentLang === 'jp' ? 'タクティックが正常にアップロードされました！' :
                                   '택틱이 성공적으로 업로드되었습니다!';
-            alert(successMessage);
-            
-            // 택틱 목록 페이지로 이동
-            window.location.href = '/tactic/tactics.html';
+            // 성공 메시지 + 접근 URL 표시
+            try {
+                const urlCode = formData.url;
+                const publicLink = `https://lufel.net/tactic/?library=${encodeURIComponent(urlCode)}`;
+                const box = document.getElementById('uploadSuccessBox');
+                if (box) {
+                    const labelText = this.currentLang === 'en' ? 'You can access it at:' : this.currentLang === 'jp' ? '以下のURLでアクセスできます:' : '다음 주소로 접근할 수 있습니다:';
+                    const goList = this.currentLang === 'en' ? 'Go to list' : this.currentLang === 'jp' ? '一覧へ' : '목록으로';
+                    const copyText = this.currentLang === 'en' ? 'Copy URL' : this.currentLang === 'jp' ? 'URLをコピー' : 'URL 복사';
+                    box.innerHTML = `
+                        <h4 class="success-title">${successMessage}</h4>
+                        <div class="success-row">
+                            <span class="label">${labelText}</span>
+                            <a class="link" href="${publicLink}" target="_blank" rel="noopener noreferrer">${publicLink}</a>
+                        </div>
+                        <div class="btns">
+                            <button type="button" class="btn" id="copyUrlBtn">${copyText}</button>
+                            <button type="button" class="btn" id="goListBtn">${goList}</button>
+                        </div>
+                    `;
+                    box.style.display = 'block';
+                    const copyBtn = document.getElementById('copyUrlBtn');
+                    const goListBtn = document.getElementById('goListBtn');
+                    if (copyBtn) copyBtn.onclick = async () => {
+                        try {
+                            await navigator.clipboard.writeText(publicLink);
+                            alert(this.currentLang === 'en' ? 'Copied!' : this.currentLang === 'jp' ? 'コピーしました！' : '복사되었습니다!');
+                        } catch (_) {}
+                    };
+                    if (goListBtn) goListBtn.onclick = () => { window.location.href = '/tactic/tactics.html'; };
+                } else {
+                    alert(successMessage + '\n' + publicLink);
+                    window.location.href = '/tactic/tactics.html';
+                }
+            } catch (_) {
+                alert(successMessage);
+                window.location.href = '/tactic/tactics.html';
+            }
             
         } catch (error) {
             console.error('업로드 실패:', error);

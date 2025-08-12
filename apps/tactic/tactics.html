@@ -21,6 +21,12 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
     <div class="header-container">
         <h1 id="page-title">택틱 도서관</h1>
     </div>
+    <!-- 로그인 사용자 정보 바 -->
+    <div id="userInfoBar" class="user-info-bar" style="display:none; margin-top:8px;">
+        <span class="user-label">로그인:</span>
+        <span id="userDisplayName"></span>
+        <button id="logoutButton" class="logout-btn">로그아웃</button>
+    </div>
 
     <!-- 상단 필터: 지역 -->
     <div class="top-inline-filters">
@@ -107,12 +113,14 @@ class TacticsViewer {
         this.currentType = 'ALL';
         this.userIP = '';
         this.currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
+        this.currentUser = null;
         
         this.init();
     }
 
     async init() {
         await this.getUserIP();
+        await this.checkAuth();
         this.initRegionFilters();
         this.initTypeFilters();
         this.initCharacterFilter();
@@ -235,7 +243,8 @@ class TacticsViewer {
                 url: tactic.url,
                 isLiked: this.isLikedByMe(likesMap[String(tactic.id)]),
                 region: tactic.region || null,
-                tactic_type: tactic.tactic_type || null
+                tactic_type: tactic.tactic_type || null,
+                user_id: tactic.user_id || null
             }));
 
             this.applyFilters();
@@ -325,23 +334,32 @@ class TacticsViewer {
     }
 
     createPostElement(tactic) {
+        const libraryLink = tactic.url ? `/tactic/?library=${encodeURIComponent(tactic.url)}` : null;
         const postDiv = document.createElement('div');
         postDiv.className = 'post-item';
         postDiv.setAttribute('data-post-id', tactic.id);
         
+        const canEdit = !!(this.currentUser && tactic.user_id && this.currentUser.id === tactic.user_id);
+        const editSvg = canEdit ? `
+            <svg class="edit-icon" data-edit-id="${tactic.id}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 6px;cursor:pointer;vertical-align:middle;">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+            </svg>` : '';
+
         postDiv.innerHTML = `
             <div class="post-header">
                 <h3>
-                    ${tactic.url ? `
-                        <a href="${tactic.url}" target="_blank" rel="noopener noreferrer" class="post-title">
+                    ${libraryLink ? `
+                        <a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">
                             ${this.renderTypeBadge(tactic.tactic_type)}
                             ${this.escapeHtml(tactic.title)}
+                            ${editSvg}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
                             </svg>
                         </a>
                     ` : `
-                        <span class="post-title">${this.renderTypeBadge(tactic.tactic_type)}${this.escapeHtml(tactic.title)}</span>
+                        <span class="post-title">${this.renderTypeBadge(tactic.tactic_type)}${this.escapeHtml(tactic.title)}${editSvg}</span>
                     `}
                 </h3>
                 <div class="post-meta">
@@ -353,9 +371,9 @@ class TacticsViewer {
             </div>
             
             <div class="post-content">
-                ${tactic.url ? `
+                ${libraryLink ? `
                     <div class="post-link">
-                        <a href="${tactic.url}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
+                        <a href="${libraryLink}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
                     </div>
                 ` : ''}
                 <div class="tactic-preview-container"></div>
@@ -376,7 +394,52 @@ class TacticsViewer {
         // 택틱 프리뷰 생성
         this.addTacticPreview(postDiv, tactic.query);
 
+        // 편집 아이콘 클릭 처리
+        if (canEdit) {
+            const icon = postDiv.querySelector('.edit-icon');
+            if (icon) {
+                icon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.goToEdit(tactic);
+                });
+            }
+        }
+
         return postDiv;
+    }
+
+    async checkAuth() {
+        try {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session && session.user) {
+                this.currentUser = session.user;
+                this.showUserInfoBar();
+            }
+        } catch (e) { /* ignore */ }
+    }
+
+    showUserInfoBar() {
+        const bar = document.getElementById('userInfoBar');
+        const nameEl = document.getElementById('userDisplayName');
+        const logoutBtn = document.getElementById('logoutButton');
+        if (!bar || !this.currentUser) return;
+        const displayName = this.currentUser.user_metadata?.display_name || this.currentUser.user_metadata?.full_name || this.currentUser.email || '';
+        if (nameEl) nameEl.textContent = displayName;
+        bar.style.display = 'flex';
+        if (logoutBtn) {
+            logoutBtn.onclick = async () => {
+                try { await supabase.auth.signOut(); window.location.reload(); } catch (_) {}
+            };
+        }
+    }
+
+    goToEdit(tactic) {
+        // 업로드 페이지로 이동: library 로더가 채우고, 업로드 페이지에서 edit 모드로 동작하도록 파라미터 전달
+        const params = new URLSearchParams();
+        if (tactic.url) params.set('library', tactic.url);
+        params.set('edit', '1');
+        params.set('id', tactic.id);
+        window.location.href = `/tactic/tactic-upload.html?${params.toString()}`;
     }
 
     renderTypeBadge(type) {

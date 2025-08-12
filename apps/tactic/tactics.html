@@ -102,7 +102,7 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
 class TacticsViewer {
     constructor() {
         this.currentPage = 1;
-        this.postsPerPage = 10;
+        this.postsPerPage = 5;
         this.currentView = 'all';
         this.searchKeyword = '';
         this.currentRankingPeriod = 'weekly';
@@ -704,6 +704,8 @@ class TacticsViewer {
                 next: '다음',
                 upload: '택틱 업로드',
                 filter_char: '캐릭터 필터',
+                signed_in_as: '로그인:',
+                logout: '로그아웃',
                 type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
             },
             en: {
@@ -719,6 +721,8 @@ class TacticsViewer {
                 next: 'Next',
                 upload: 'Upload Tactic',
                 filter_char: 'Character Filter',
+                signed_in_as: 'Signed in as:',
+                logout: 'Logout',
                 type: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' }
             },
             jp: {
@@ -734,6 +738,8 @@ class TacticsViewer {
                 next: '次',
                 upload: 'タクティクスをアップロード',
                 filter_char: 'キャラクターフィルター',
+                signed_in_as: 'ログイン：',
+                logout: 'ログアウト',
                 type: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
             }
         }[this.currentLang] || {
@@ -770,6 +776,12 @@ class TacticsViewer {
         if (uploadBtn) uploadBtn.textContent = t.upload;
         const charFilterTitle = document.getElementById('charFilterTitle');
         if (charFilterTitle) charFilterTitle.textContent = t.filter_char;
+
+        // 로그인 정보 바 언어 적용
+        const userLabel = document.querySelector('#userInfoBar .user-label');
+        const logoutBtn = document.getElementById('logoutButton');
+        if (userLabel) userLabel.textContent = t.signed_in_as;
+        if (logoutBtn) logoutBtn.textContent = t.logout;
 
         // 타입 필터 라벨 현지화
         const typeItems = document.querySelectorAll('#typeButtons .filter-item');
@@ -929,38 +941,74 @@ class TacticsViewer {
 
     renderRanking(rankings) {
         const container = document.querySelector('.ranking-list');
-        container.innerHTML = rankings.map((rank, index) => `
+        const i18n = this.getI18n();
+        container.innerHTML = rankings.map((rank, index) => {
+            const statsText = i18n.rankingStats(rank.posts, rank.likes);
+            return `
             <div class="ranking-item" data-rank="${index + 1}">
                 <div class="ranking-position">
-                    <img src="${BASE_URL}/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}위" class="rank-icon">
+                    <img src="${BASE_URL}/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}" class="rank-icon">
                 </div>
                 <div class="ranking-info">
                     <div class="ranking-author">${this.escapeHtml(rank.author)}</div>
-                    <div class="ranking-stats">
-                        택틱 ${rank.posts}개 · 좋아요 ${rank.likes}개
-                    </div>
+                    <div class="ranking-stats">${statsText}</div>
                 </div>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
     }
 
     formatDate(date) {
+        const i18n = this.getI18n();
         const now = new Date();
-        const diff = now - date;
+        const diff = now.getTime() - date.getTime();
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        
         if (days === 0) {
             const hours = Math.floor(diff / (1000 * 60 * 60));
             if (hours === 0) {
                 const minutes = Math.floor(diff / (1000 * 60));
-                return `${minutes}분 전`;
+                return i18n.relative.minutes(minutes);
             }
-            return `${hours}시간 전`;
+            return i18n.relative.hours(hours);
         } else if (days < 7) {
-            return `${days}일 전`;
+            return i18n.relative.days(days);
         } else {
-            return date.toLocaleDateString('ko-KR');
+            return date.toLocaleDateString(i18n.dateLocale);
         }
+    }
+
+    getI18n() {
+        const lang = this.currentLang || 'kr';
+        if (lang === 'en') {
+            return {
+                rankingStats: (posts, likes) => `${posts} Tactics · ${likes} Likes`,
+                relative: {
+                    minutes: (m) => `${m} min ago`,
+                    hours: (h) => `${h} hours ago`,
+                    days: (d) => `${d} days ago`
+                },
+                dateLocale: 'en-US'
+            };
+        } else if (lang === 'jp') {
+            return {
+                rankingStats: (posts, likes) => `タクティクス ${posts}件 ・ いいね ${likes}件`,
+                relative: {
+                    minutes: (m) => `${m}分前`,
+                    hours: (h) => `${h}時間前`,
+                    days: (d) => `${d}日前`
+                },
+                dateLocale: 'ja-JP'
+            };
+        }
+        // default kr
+        return {
+            rankingStats: (posts, likes) => `택틱 ${posts}개 · 좋아요 ${likes}개`,
+            relative: {
+                minutes: (m) => `${m}분 전`,
+                hours: (h) => `${h}시간 전`,
+                days: (d) => `${d}일 전`
+            },
+            dateLocale: 'ko-KR'
+        };
     }
 
     escapeHtml(text) {

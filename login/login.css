@@ -7,7 +7,7 @@
 }
 
 .auth-box {
-  background: rgb(255, 255, 255);
+  background: rgb(90 44 44 / 80%);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -18,7 +18,7 @@
 .auth-box h2 {
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #111;
+  color: #eeeeee;
 }
 
 form {

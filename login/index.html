@@ -21,6 +21,58 @@ language: kr
 </div>
 
 <script>
+// i18n
+const translations = {
+  kr: {
+    title: '로그인',
+    button: 'Google로 로그인',
+    loading: '<span class="loading-spinner"></span> 구글 로그인 중...',
+    confirm: '구글 로그인을 위해 인증 페이지로 이동합니다.\n\n※ 구글 인증 과정에서 나타나는 supabase 링크는 정상입니다.',
+    error: '로그인 처리 중 문제가 발생했습니다.'
+  },
+  en: {
+    title: 'Login',
+    button: 'Sign in with Google',
+    loading: '<span class="loading-spinner"></span> Signing in with Google...',
+    confirm: 'You will be redirected to the Google authentication page.\n\n※ Seeing a supabase link during Google auth is normal.',
+    error: 'An error occurred during login.'
+  },
+  jp: {
+    title: 'ログイン',
+    button: 'Googleでログイン',
+    loading: '<span class="loading-spinner"></span> Googleでログイン中...',
+    confirm: 'Google認証ページに移動します。\n\n※ 認証中に表示される supabase リンクは正常です。',
+    error: 'ログイン処理中にエラーが発生しました。'
+  }
+};
+
+function getLang() {
+  try {
+    if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+      return LanguageRouter.getCurrentLanguage();
+    }
+    if (window.currentLang) return window.currentLang;
+  } catch (_) {}
+  return 'kr';
+}
+
+function getButtonLabelHTML(lang) {
+  const t = translations[lang] || translations.kr;
+  return `<img src="https://www.google.com/favicon.ico" alt="Google" width="20"> ${t.button}`;
+}
+
+function applyLoginTexts(lang) {
+  const t = translations[lang] || translations.kr;
+  // h2
+  const titleEl = document.querySelector('.auth-box h2');
+  if (titleEl) titleEl.textContent = t.title;
+  // document title
+  document.title = t.title;
+  // button
+  const btn = document.getElementById('googleLogin');
+  if (btn) btn.innerHTML = getButtonLabelHTML(lang);
+}
+
 function getRedirectUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get('redirect') || '/';
@@ -29,16 +81,16 @@ function getRedirectUrl() {
 document.getElementById('googleLogin').addEventListener('click', async (e) => {
   try {
     const button = e.currentTarget;
-    const originalText = button.innerHTML;
+    const lang = getLang();
+    const t = translations[lang] || translations.kr;
+    const originalText = getButtonLabelHTML(lang);
     button.disabled = true;
-    button.innerHTML = '<span class="loading-spinner"></span> 구글 로그인 중...';
+    button.innerHTML = t.loading;
 
     const redirectUrl = getRedirectUrl();
     sessionStorage.setItem('auth_redirect', redirectUrl);
 
-    const confirmMessage = 
-      '구글 로그인을 위해 인증 페이지로 이동합니다.\n\n' +
-      '※ 구글 인증 과정에서 나타나는 supabase 링크는 정상입니다.\n';
+    const confirmMessage = (translations[lang] || translations.kr).confirm;
 
     if (window.confirm(confirmMessage)) {
       const { error } = await supabase.auth.signInWithOAuth({
@@ -56,10 +108,11 @@ document.getElementById('googleLogin').addEventListener('click', async (e) => {
     }
   } catch (error) {
     console.error('로그인 에러:', error);
-    alert('로그인 처리 중 문제가 발생했습니다.');
+    const lang = getLang();
+    alert((translations[lang] || translations.kr).error);
     const button = document.getElementById('googleLogin');
     button.disabled = false;
-    button.innerHTML = 'Google로 로그인';
+    button.innerHTML = getButtonLabelHTML(getLang());
     sessionStorage.removeItem('auth_redirect');
   }
 });
@@ -82,6 +135,7 @@ async function checkLoginStatus() {
 document.addEventListener('DOMContentLoaded', () => {
   Navigation.load('');
   VersionChecker.check();
+  applyLoginTexts(getLang());
   checkLoginStatus();
 });
 </script>

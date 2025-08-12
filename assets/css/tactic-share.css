@@ -824,3 +824,30 @@ small {
     }
 
 }
+
+
+.user-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 20px 16px 20px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+}
+.user-info-bar .user-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.logout-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}

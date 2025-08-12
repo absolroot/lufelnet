@@ -134,13 +134,55 @@ window.applyImportedData = function(payload, options = {}) {
     setupWonderConfig();
     setupPartySelection();
 
-    // 계시 값 재설정 (setupPartySelection 이후에 실행)
+    // setparty가 이미 input 기반 UI를 구성한 경우, 입력 값 강제 주입
+    try {
+      const currentLangForParty = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+      partyMembers.forEach(member => {
+        const container = document.querySelector(`.party-member[data-index="${member.index}"] .input-container`);
+        const input = document.querySelector(`.party-member[data-index="${member.index}"] .party-name-input`);
+        if (input) {
+          input.value = member.name || '';
+          // 번역 표시 보정
+          if (input.value && currentLangForParty !== 'kr') {
+            if (typeof characterData !== 'undefined' && characterData[input.value]) {
+              const ch = characterData[input.value];
+              let display = input.value;
+              if (currentLangForParty === 'en' && ch.name_en) display = ch.name_en;
+              else if (currentLangForParty === 'jp' && ch.name_jp) display = ch.name_jp;
+              if (container) {
+                container.setAttribute('data-display-text', display);
+                container.classList.add('show-translation');
+              }
+            }
+          } else if (container) {
+            container.classList.remove('show-translation');
+          }
+        }
+      });
+    } catch(_) {}
+
+    // 계시 값 재설정 (setupPartySelection 이후에 실행) + 파티 이름 보정
     const postPartyArray = isRaw ? (data.party || []) : (data.p || []);
     postPartyArray.forEach((p, idx) => {
       const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+      const name = isRaw ? p.name : p.n;
       const mainRev = isRaw ? p.mainRev : p.mr;
       const subRev = isRaw ? p.subRev : p.sr;
-      if (partyDiv && mainRev) {
+      if (!partyDiv) return;
+      // 파티 이름 select 보정: 옵션이 없으면 추가 후 선택
+      const nameSelect = partyDiv.querySelector('.party-name');
+      if (nameSelect) {
+        if (name) {
+          const has = Array.from(nameSelect.options).some(o => o.value === name);
+          if (!has) {
+            const opt = document.createElement('option');
+            opt.value = name; opt.textContent = name; nameSelect.appendChild(opt);
+          }
+        }
+        nameSelect.value = name || '';
+      }
+      // 계시 값 적용
+      if (mainRev) {
         const mainRevSelect = partyDiv.querySelector('.main-revelation');
         const subRevSelect = partyDiv.querySelector('.sub-revelation');
         if (mainRevSelect) {

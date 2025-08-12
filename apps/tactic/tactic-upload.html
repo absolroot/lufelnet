@@ -749,25 +749,10 @@ class TacticUploader {
             });
         });
 
-        // 택틱 타입 변경시 제목 자동 업데이트
-        document.getElementById('tacticType').addEventListener('change', (e) => {
-            this.updateTitlePrefix(e.target.value);
-        });
+        // 택틱 타입 변경 시 제목 자동 접두어 추가는 사용하지 않음
     }
 
-    updateTitlePrefix(type) {
-        const titleInput = document.getElementById('tacticTitle');
-        const currentTitle = titleInput.value;
-        
-        // 기존 접두사 제거
-        const cleanTitle = currentTitle.replace(/^\[.*?\]\s*/, '');
-        
-        if (type && type !== '기타') {
-            titleInput.value = `[${type}] ${cleanTitle}`;
-        } else {
-            titleInput.value = cleanTitle;
-        }
-    }
+    // 제목 자동 접두어 추가 기능 제거
 
     async handleFileUpload(event) {
         const file = event.target.files[0];
@@ -949,10 +934,7 @@ class TacticUploader {
         const type = document.getElementById('tacticType').value;
         let title = document.getElementById('tacticTitle').value;
         
-        // 미리보기나 업로드 시에만 타입을 제목에 포함시킨 데이터 가져오기
-        if (forPreviewOrUpload && type) {
-            title = `[${type}] ${title}`;
-        }
+        // 제목에 타입 자동 포함하지 않음 (tactics에서 타입 배지로 표기)
         
         return {
             type: type,

@@ -66,6 +66,12 @@
     object-fit: contain;
 }
 
+/* 이미지 로딩 전에는 아예 보이지 않도록 처리 */
+.thief-image:not([data-loaded="true"]),
+.persona-image:not([data-loaded="true"]) {
+    visibility: hidden;
+}
+
 
 
 .carousel-dots {
@@ -141,6 +147,23 @@
 .character-name {
     margin: 16px 0 8px 0;
     color: rgb(255, 255, 255, 0.95);
+}
+
+/* 이름 스켈레톤 플레이스홀더 */
+.character-name.skeleton {
+    display: inline-block;
+    min-width: 140px;
+    height: 1em;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.15) 37%, rgba(255,255,255,0.08) 63%);
+    background-size: 400% 100%;
+    color: transparent !important;
+    animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
 }
 
 .code-name {

@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
-custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min]
+custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min, character/tactic-example]
 custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
 permalink: /character.html
 language: kr
@@ -54,7 +54,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             </div>
             <div class="name-section">
                 <div class="name-row">
-                    <h1 class="character-name">캐릭터 이름</h1>
+                    <h1 class="character-name">Character Name</h1>
                     <div class="icon-group">
                         <div class="element-icons"></div>
                         <div class="position-icon"></div>
@@ -639,232 +639,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // Get character name from URL
         const urlParams = new URLSearchParams(window.location.search);
         const characterName = urlParams.get('name');
-        // 택틱 예시 로드
+        // 이미지 로딩 완료 시에만 표시되도록 data-loaded 세팅
         try {
-            const currentLang = (function(){
-                const urlLang = urlParams.get('lang');
-                if (urlLang && ['kr','en','jp'].includes(urlLang)) return urlLang;
-                const saved = localStorage.getItem('preferredLanguage');
-                if (saved && ['kr','en','jp'].includes(saved)) return saved;
-                return 'kr';
-            })();
-            // en/jp 스포일러 판단을 위해 캐릭터 출시 목록을 먼저 로드
-            try {
-                if (typeof loadCharacterList === 'function') {
-                    await loadCharacterList();
-                }
-            } catch(_) {}
-
-            // 제목 현지화 및 +더보기 링크 구성
-            const titleMap = { kr: '택틱 예시', en: 'Tactic Examples', jp: 'タクティクス例' };
-            const moreMap = { kr: '+ 더보기', en: '+ More', jp: '+ もっと見る' };
-            const titleEl = document.getElementById('tactic-examples-title');
-            const moreEl = document.getElementById('tactic-examples-more');
-            if (titleEl) titleEl.textContent = titleMap[currentLang] || titleMap.kr;
-            if (moreEl) {
-                moreEl.textContent = moreMap[currentLang] || moreMap.kr;
-                const params = new URLSearchParams();
-                params.set('char', characterName || '');
-                params.set('lang', currentLang);
-                moreEl.href = `/tactic/tactics.html?${params.toString()}`;
+            const thiefImg = document.querySelector('.thief-image');
+            const personaImg = document.querySelector('.persona-image');
+            if (thiefImg) {
+                thiefImg.addEventListener('load', () => thiefImg.setAttribute('data-loaded', 'true'));
+                thiefImg.addEventListener('error', () => thiefImg.remove());
             }
-
-            // Supabase에서 해당 캐릭터가 포함된 최신 택틱을 페이지네이션으로 탐색하여 최대 3개 로드
-            if (typeof supabase !== 'undefined' && characterName) {
-                const matched = [];
-                const pageSize = 100;
-                let offset = 0;
-                for (let page = 0; page < 20 && matched.length < 3; page++) { // 안전 가드 최대 2000개 탐색
-                    const { data, error } = await supabase
-                        .from('tactics')
-                        .select('id,title,author,created_at,url,query')
-                        .order('created_at', { ascending: false })
-                        .range(offset, offset + pageSize - 1);
-                    if (error || !Array.isArray(data) || data.length === 0) break;
-                    data.forEach(t => {
-                        if (matched.length >= 3) return;
-                        const q = (typeof t.query === 'string' ? (t.query.startsWith('{') ? JSON.parse(t.query) : null) : t.query);
-                        if (Array.isArray(q?.party) && q.party.some(p => p.name === characterName)) {
-                            matched.push({ ...t, query: q });
-                        }
-                    });
-                    if (data.length < pageSize) break;
-                    offset += pageSize;
-                }
-
-                if (matched.length > 0) {
-                    const list = document.getElementById('tactic-examples-list');
-                    const wrap = document.getElementById('character-tactic-examples');
-                    if (wrap) wrap.style.display = '';
-                    if (list) {
-                        list.innerHTML = '';
-
-                        // 좋아요 맵/내 IP 로드
-                        let likesMap = {};
-                        let myIP = '';
-                        try {
-                            const ipRes = await fetch('https://api.ipify.org?format=json');
-                            const ipJson = await ipRes.json();
-                            myIP = ipJson.ip || '';
-                        } catch(_) { myIP = ''; }
-                        try {
-                            const ids = matched.slice(0,3).map(t => String(t.id));
-                            if (ids.length > 0) {
-                                const { data: likeRows } = await supabase
-                                    .from('tactic_likes')
-                                    .select('id,tactic_id,likes,recent_like')
-                                    .in('tactic_id', ids);
-                                (likeRows || []).forEach(row => {
-                                    likesMap[String(row.tactic_id)] = {
-                                        id: row.id,
-                                        likes: row.likes || 0,
-                                        recent_like: row.recent_like || null
-                                    };
-                                });
-                            }
-                        } catch(_) {}
-
-                        // 좋아요 처리 함수
-                        window.charHandleLike = async function(tacticId) {
-                            try {
-                                const { data: likeRow } = await supabase
-                                    .from('tactic_likes')
-                                    .select('id,likes,recent_like')
-                                    .eq('tactic_id', String(tacticId))
-                                    .maybeSingle();
-                                let likes = likeRow?.likes || 0;
-                                const recent = (likeRow?.recent_like && typeof likeRow.recent_like === 'object') ? likeRow.recent_like : {};
-                                const last = recent[myIP] ? new Date(recent[myIP]).getTime() : 0;
-                                if (last && (Date.now() - last) < 24*60*60*1000) {
-                                    const msg = currentLang === 'en' ? 'You already liked this within 24 hours.' : currentLang === 'jp' ? '24時間以内に既にいいねしました。' : '24시간 내 이미 좋아요 했습니다.';
-                                    alert(msg);
-                                    return;
-                                }
-                                likes += 1;
-                                recent[myIP] = new Date().toISOString();
-                                if (likeRow && likeRow.id) {
-                                    await supabase.from('tactic_likes').update({ likes, recent_like: recent }).eq('id', likeRow.id);
-                                } else {
-                                    await supabase.from('tactic_likes').insert([{ tactic_id: String(tacticId), likes, recent_like: recent }]);
-                                }
-                                const wrapper = document.querySelector(`[data-post-id="${tacticId}"]`);
-                                if (wrapper) {
-                                    const likeButton = wrapper.querySelector('.like-button');
-                                    const likesCount = wrapper.querySelector('.likes-count');
-                                    if (likeButton) { likeButton.classList.add('liked'); likeButton.disabled = true; }
-                                    if (likesCount) { likesCount.textContent = String(likes); }
-                                }
-                            } catch (error) {
-                                console.error('캐릭터 페이지 좋아요 처리 실패:', error);
-                            }
-                        };
-
-                        matched.slice(0,3).forEach(t => {
-                            const libraryLink = t.url ? `/tactic/?library=${encodeURIComponent(t.url)}` : null;
-                            const item = document.createElement('div');
-                            item.className = 'post-item';
-                            item.setAttribute('data-post-id', String(t.id));
-                            const likeRow = likesMap[String(t.id)] || null;
-                            const likeCount = likeRow?.likes || 0;
-                            const likedByMe = (function(){
-                                try {
-                                    if (!likeRow || !likeRow.recent_like || !myIP) return false;
-                                    const ts = likeRow.recent_like[myIP];
-                                    if (!ts) return false;
-                                    const last = new Date(ts).getTime();
-                                    return (Date.now() - last) < 24*60*60*1000;
-                                } catch(_) { return false; }
-                            })();
-                            item.innerHTML = `
-                                <div class="post-header">
-                                    <h3 style="margin:0;font-size:16px;">
-                                        ${libraryLink ? `<a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">${(t.title || '').replace(/[<>]/g,'')}
-                                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;margin-left:4px;\"><path d=\"M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z\" fill=\"rgba(255, 255, 255, 0.6)\"></path></svg></a>`
-                                            : `<span class=\"post-title\">${(t.title || '').replace(/[<>]/g,'')}</span>`}
-                                    </h3>
-                                    <div class="post-meta" style="font-size:12px;opacity:0.8;">
-                                        <span class="post-author">${(t.author || '').replace(/[<>]/g,'')}</span>
-                                        <span class="separator">|</span>
-                                        <span class="post-date">${new Date(t.created_at).toLocaleDateString(currentLang==='en'?'en-US':(currentLang==='jp'?'ja-JP':'ko-KR'))}</span>
-                                    </div>
-                                </div>
-                                <div class="tactic-preview-container"></div>
-                                <div class="post-footer">
-                                    <div class="likes-section">
-                                        <button onclick="charHandleLike('${String(t.id)}')" class="like-button ${likedByMe ? 'liked' : ''}" ${likedByMe ? 'disabled' : ''}>
-                                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요">
-                                        </button>
-                                        <div class="likes-count-wrapper"><span class="likes-count">${likeCount}</span></div>
-                                    </div>
-                                </div>
-                            `;
-                            list.appendChild(item);
-                            try {
-                                const preview = (function createPreview(q){
-                                    if (!q || !Array.isArray(q.party)) return null;
-                                    const previewDiv = document.createElement('div');
-                                    previewDiv.className = 'tactic-preview';
-                                    const container = document.createElement('div');
-                                    container.className = 'party-images-container';
-                                    const images = document.createElement('div');
-                                    images.className = 'party-images';
-                                    const ordered = q.party.filter(pm => pm.name !== '').sort((a,b)=>{
-                                        if (a.order === '-') return 1; if (b.order === '-') return -1; return parseInt(a.order,10)-parseInt(b.order,10);
-                                    });
-                                    ordered.forEach(m => {
-                                        if (m.name === '원더') return;
-                                        const c = document.createElement('div');
-                                        if (typeof characterData !== 'undefined' && characterData[m.name]) {
-                                            c.className = 'character-container';
-                                            const img = document.createElement('img');
-                                            img.className = 'character-img';
-                                            img.src = `${BASE_URL}/assets/img/character-half/${m.name}.webp`;
-                                            img.alt = m.name; img.title = m.name;
-                                            c.appendChild(img);
-                                            // 스포일러 처리: 현재 언어에서 미출시인 경우 가림
-                                            try {
-                                                const urlLang = new URLSearchParams(window.location.search).get('lang');
-                                                const savedLang = localStorage.getItem('preferredLanguage');
-                                                const currentLangLocal = (urlLang && ['kr','en','jp'].includes(urlLang)) ? urlLang : (savedLang && ['kr','en','jp'].includes(savedLang) ? savedLang : 'kr');
-                                                if (currentLangLocal !== 'kr') {
-                                                    const isReleased = ((typeof currentLangCharacterList !== 'undefined') && (currentLangCharacterList.mainParty || []).includes(m.name)) ||
-                                                                      ((typeof currentLangCharacterList !== 'undefined') && (currentLangCharacterList.supportParty || []).includes(m.name));
-                                                    if (!isReleased) {
-                                                        c.classList.add('spoiler');
-                                                        c.addEventListener('click', function(ev){
-                                                            if (this.classList.contains('spoiler')) {
-                                                                ev.preventDefault();
-                                                                ev.stopPropagation();
-                                                                this.classList.remove('spoiler');
-                                                            }
-                                                        });
-                                                    }
-                                                }
-                                            } catch(_) {}
-                                        }
-                                        const level = parseInt(m.ritual);
-                                        if (level >=1 && level <=6) {
-                                            const ri = document.createElement('img');
-                                            ri.className = 'ritual-img';
-                                            ri.src = `${BASE_URL}/assets/img/ritual/num${level}.png`;
-                                            ri.alt = `의식 ${level}`;
-                                            c.appendChild(ri);
-                                        }
-                                        images.appendChild(c);
-                                    });
-                                    container.appendChild(images);
-                                    previewDiv.appendChild(container);
-                                    return previewDiv;
-                                })(t.query);
-                                const previewContainer = item.querySelector('.tactic-preview-container');
-                                if (preview && previewContainer) previewContainer.appendChild(preview);
-                            } catch(_) {}
-                        });
-                    }
-                }
+            if (personaImg) {
+                personaImg.addEventListener('load', () => personaImg.setAttribute('data-loaded', 'true'));
+                personaImg.addEventListener('error', () => personaImg.remove());
             }
-        } catch (e) { console.warn('캐릭터 택틱 예시 로드 실패:', e); }
-        const currentLang = getCurrentLanguage();
+        } catch(_) {}
     
         // 언어별 데이터 파일 동적 로드
         async function loadLanguageData() {
@@ -1040,11 +827,16 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         document.querySelector('.thief-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
         document.querySelector('.persona-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
         
-        // Set character name
+        // Set character name (en에서는 로딩 전에 skeleton 사용)
         const nameElement = document.querySelector('.character-name');
         if (nameElement) {
-            if (currentLang === 'en' && character.name_en) {
-                nameElement.textContent = character.name_en;
+            if (currentLang === 'en') {
+                nameElement.classList.add('skeleton');
+                // 다음 프레임에 실제 텍스트 주입하여 스켈레톤 제거
+                requestAnimationFrame(() => {
+                    nameElement.textContent = character.name_en || characterName;
+                    nameElement.classList.remove('skeleton');
+                });
             } else if (currentLang === 'jp' && character.name_jp) {
                 nameElement.textContent = character.name_jp;
             } else {
@@ -2650,6 +2442,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             
             // Process each member asynchronously
             const processMembers = async () => {
+                const currentPageChar = new URLSearchParams(window.location.search).get('name');
                 for (const memberName of party.members) {
                     const memberItem = document.createElement('a');
                     memberItem.className = 'party-member';
@@ -2658,7 +2451,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     // Check if character is released in current language using Korean name
                     const isReleased = await isCharacterReleased(memberName);
                     
-                    if (!isReleased) {
+                    if (!isReleased && memberName !== currentPageChar) {
                         memberItem.classList.add('spoiler');
                         memberItem.addEventListener('click', function(e) {
                             if (this.classList.contains('spoiler')) {
@@ -2668,6 +2461,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                             }
                             // On second click, the default link behavior will work
                         });
+                    }
+                    // 현재 페이지 캐릭터는 스포일러 제외 (전역 토글이 켜져 있어도 강제 해제)
+                    if (memberName === currentPageChar) {
+                        memberItem.classList.remove('spoiler');
                     }
                 
                 const link = document.createElement('a');

@@ -2,7 +2,7 @@ const jpCharacterWeaponData = {
     "원더": {
         "name": "ワンダー"
     },
-    "미유·여름": {
+    "미유-여름": {
         "name": "佐原 海夕 夏",
         "weapon4-1": {
             "name": "海と月の上の空",

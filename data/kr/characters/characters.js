@@ -83,7 +83,7 @@ const characterData = {
         "sub_option2": ["크리티컬 효과", "크리티컬 확률"],
         "sub_option3": ["관통", "공격력", "대미지 보너스"],
         "minimum_stats": {
-            "LV10": "SP 회복 280%",
+            "LV10": "-",
             "LV10+5": "-",
             "LV12": false,
             "LV12+5": false,

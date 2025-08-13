@@ -2,7 +2,7 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
-    "미유·여름": {
+    "미유-여름": {
         "name": "Miyu Sahara Summer",
         "skill1": {
             "name": "Jellyfish's Dream",

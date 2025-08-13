@@ -2,7 +2,7 @@ const enCharacterRitualData = {
     "원더": {
         "name": "Wonder"
     },
-    "미유·여름": {
+    "미유-여름": {
         "name": "Miyu Sahara·Summer",
         "r0": "Call of the Waves",
         "r0_detail": "Miyu Sahara (Summer) can ride her surfboard to deploy [Sea's Domain] during battle, consuming SP to continuously unleash tidal assaults on enemies. Her maximum SP is increased to 200, and she starts the battle with 0 SP. At the start of each ally's turn (excluding herself), Miyu Sahara (Summer) restores 15 SP (this effect is affected by SP recovery traits).\n\nBased on total SP recovered during battle (including amounts exceeding the limit), Miyu Sahara (Summer) gains the following bonuses:\nAt 100 SP: +10% ATK;\nAt 200 SP: +10% DMG Bonus;\nAt 300 SP: +12% CRIT Rate;\nAt 400 SP: +24% CRIT DMG.",

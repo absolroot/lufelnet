@@ -2,7 +2,7 @@ const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
-    "미유·여름": {
+    "미유-여름": {
         "name": "Miyu Sahara Summer",
         "weapon4-1": {
             "name": "Sky Above the Sea and Moon",

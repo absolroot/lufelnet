@@ -18,6 +18,27 @@ const recommendParty = {
             }
         ]
     },
+    "미유·여름": {
+        "weapon": [],
+        "persona": [
+            {
+            }
+        ],
+        "party": [
+            {
+                members: ["미유·여름", "리코·매화", "마유미", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["미유·여름", "미나미·여름", "마유미", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
     "사나다": {
         "weapon": ["마그네틱 스톰", "메커니컬 심판자", "천상의 별"],
         "persona": [

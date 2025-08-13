@@ -240,8 +240,8 @@ alternate_urls:
 
     <div class="posts-container" id="posts-container">
         <div class="posts-header">
-            <h2><a href="./tactic/tactics.html" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 대장간 NEW</a></h2>
-            <a href="./tactic/tactics.html" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
+            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 대장간 NEW</a></h2>
+            <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
         </div>
         <div class="posts-list" id="postsList"></div>
     </div>
@@ -345,9 +345,9 @@ alternate_urls:
         });
         
         // 택틱 도서관 링크들 업데이트 (홈 목록 이동 버튼)
-        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactics.html"]');
+        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactics"]');
         tacticLinks.forEach(link => {
-            const url = new URL('./tactic/tactics.html' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+            const url = new URL('./tactic/tactics' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
             link.href = url.pathname + url.search;
         });
         

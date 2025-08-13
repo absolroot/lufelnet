@@ -49,7 +49,8 @@
 .character-images img[src*="몽타뉴·백조 - 테르프시코레.webp"],
 .character-images img[src*="안 - 카르멘.webp"],
 .character-images img[src*="몽타뉴 - 테르프시코레.webp"],
-.character-images img[src*="세이지 - 레우코테아.webp"]{
+.character-images img[src*="세이지 - 레우코테아.webp"],
+.character-images img[src*="미유·여름.webp"]{
     scale: 1.1;
 }
 

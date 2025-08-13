@@ -3,6 +3,16 @@ const operationData = {
         basic: [],
         note: []
     },
+    "미유·여름": {
+        basic: [
+            { label: "의식 0", value: "-" },
+            { label: "의식 1", value: "-" },
+            { label: "의식 6", value: "-" },
+        ],
+        note: [],
+        note_en: [],
+        note_jp: []
+    },
     "미나미·여름": {
         basic: [
             { label: "의식 0", value: "3 › 2 › 1 › 3 › 2 › 1" },

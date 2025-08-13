@@ -608,9 +608,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         });
         }, 2000);  // 광고 로딩 기다렸다가 1.5초 후 검사
 
+        /*
         document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
             observer.observe(adEl, { attributes: true });
-        });
+        });*/
     }
     </script>
 </div>
@@ -2158,42 +2159,48 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const personaList = document.createElement('div');
             personaList.className = 'persona-list';
             
-            category.list.forEach(personaName => {
-                    const personaItem = document.createElement('div');
-                    personaItem.className = 'persona-item';
+            try{
+                category.list.forEach(personaName => {
+                        const personaItem = document.createElement('div');
+                        personaItem.className = 'persona-item';
+                        
+                        const personaLink = document.createElement('a');
+                        personaLink.href = '#';
+                        personaLink.onclick = function(e) {
+                            e.preventDefault();
+                            // Open persona page in new tab with search parameter
+                            const personaPageUrl = `${window.location.origin}/persona/?search=${encodeURIComponent(personaName)}`;
+                            window.open(personaPageUrl, '_blank');
+                        };
+                        
+                        const img = document.createElement('img');
+                        img.src = `../assets/img/persona/${personaName}.webp`;
+                        img.alt = personaName;
+                        img.onerror = function() {
+                            this.onerror = null;
+                            this.src = '../assets/img/placeholder.png';
+                        };
+                        
+                        const name = document.createElement('span');
+                        name.textContent = getLocalizedPersonaName(personaName);
+                        
+                        personaLink.appendChild(img);
+                        personaItem.appendChild(personaLink);
+                        personaItem.appendChild(name);
+                        personaList.appendChild(personaItem);
+                    });
                     
-                    const personaLink = document.createElement('a');
-                    personaLink.href = '#';
-                    personaLink.onclick = function(e) {
-                        e.preventDefault();
-                        // Open persona page in new tab with search parameter
-                        const personaPageUrl = `${window.location.origin}/persona/?search=${encodeURIComponent(personaName)}`;
-                        window.open(personaPageUrl, '_blank');
-                    };
-                    
-                    const img = document.createElement('img');
-                    img.src = `../assets/img/persona/${personaName}.webp`;
-                    img.alt = personaName;
-                    img.onerror = function() {
-                        this.onerror = null;
-                        this.src = '../assets/img/placeholder.png';
-                    };
-                    
-                    const name = document.createElement('span');
-                    name.textContent = getLocalizedPersonaName(personaName);
-                    
-                    personaLink.appendChild(img);
-                    personaItem.appendChild(personaLink);
-                    personaItem.appendChild(name);
-                    personaList.appendChild(personaItem);
-                });
-                
-            attributeSection.appendChild(personaList);
-            // 코멘트 컨테이너를 페르소나 리스트 아래에 추가
-            if (commentContainer.hasChildNodes()) {
-                attributeSection.appendChild(commentContainer);
+                attributeSection.appendChild(personaList);
+                // 코멘트 컨테이너를 페르소나 리스트 아래에 추가
+                if (commentContainer.hasChildNodes()) {
+                    attributeSection.appendChild(commentContainer);
+                }
+                container.appendChild(attributeSection);
             }
-            container.appendChild(attributeSection);
+            catch(error){
+                // console.error('Error loading recommended persona:', error);
+                console.log('Error loading recommended persona');
+            }
         });
     }
 

@@ -2,6 +2,9 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
+    "미유·여름": { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
+        review: ``
+    },
 "미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
         review: `
 대미지를 높이는 수치에 대한 거의 모든 버프를 보유하고 있고 수치 또한 높은 편으로 **모든 주력 딜러를 보조 가능**한 서포터입니다.

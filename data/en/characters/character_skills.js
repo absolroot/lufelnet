@@ -2,51 +2,6 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
-    "미유-여름": {
-        "name": "Miyu Sahara Summer",
-        "skill1": {
-            "name": "Jellyfish's Dream",
-            "element": "빙결광역",
-            "type": "AoE DMG",
-            "sp": 0,
-            "cool": 0,
-            "description": "Deals 74.5%/82.1%/79.0%/86.7% ATK as Ice DMG to all foes and has a 100% base chance to Freeze them for 2 turns.\nRestores 20 SP to self (this effect is affected by SP recovery traits).\nSP gained this way can exceed the maximum SP limit (up to additional SP equal to the max SP)."
-        },
-        "skill2": {
-            "name": "Blue Concerto",
-            "element": "빙결광역",
-            "type": "AoE DMG",
-            "sp": 0,
-            "cool": 0,
-            "description": "Deals 148.8%/164.1%/158.0%/173.2% ATK as Ice DMG to all foes.\nWhile in [Sea's Domain], this skill's damage increases by 20% for each stack of [Overlapping Waves]. After using this skill, you leave [Sea's Domain] and reset [Overlapping Waves]. This skill is considered an additional effect."
-        },
-        "skill3": {
-            "name": "Riding the Light Over Blue Waves",
-            "element": "버프",
-            "type": "Enhance",
-            "sp": 60,
-            "cool": 0,
-            "description": "Mount your surfboard to immediately cleanse yourself of mental ailments and deploy [Sea's Domain].\nDuring this period, you are immune to Down, mental ailments, and control effects, and cannot perform melee attacks, gun attacks, or use items.\nWhenever you gain any ailment or buff, the duration is extended by 1 turn.\nAt the end of an ally's turn during this period, if you have enough SP, automatically consume a set amount of SP to activate [Waves and Clouds].\n\n[Waves and Clouds]: Consumes 30 SP to deal 49.1%/54.1%/52.1%/57.1% ATK as Ice DMG to all foes and grants yourself 1 stack of [Overlapping Waves].\nEach stack of [Overlapping Waves] increases [Waves and Clouds] DMG by 5% and SP cost by 30, stacking up to 4 times.\n[Waves and Clouds] is considered an additional effect and does not inflict Down gauge.\nUsing this skill again removes [Sea's Domain] and resets [Overlapping Waves]. You may use other skills that turn, but cannot redeploy [Sea's Domain]."
-        },
-        "skill_highlight": {
-            "name": "",
-            "element": "빙결광역",
-            "type": "AoE DMG",
-            "sp": 0,
-            "cool": 0,
-            "description": "Deals 219.6%/242.1%/233.1%/255.6% ATK as Ice DMG to all foes.\nIf in [Sea's Domain], deals an additional 146.4%/161.4%/155.4%/170.4% ATK as Ice DMG."
-        },
-        "passive1": {
-            "name": "Exchange",
-            "element": "패시브",
-            "description": "During battle, your ATK increases proportionally to your SP recovery amount, up to a 98.0% ATK increase at 280.0% SP recovery."
-        },
-        "passive2": {
-            "name": "Cleverness",
-            "element": "패시브",
-            "description": "While in [Sea's Domain], DMG dealt is increased by 30%."
-        }
-    },
     "미나미·여름": {
         "name": "Minami Miyashita Summer",
         "skill1": {

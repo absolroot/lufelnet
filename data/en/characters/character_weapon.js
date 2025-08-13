@@ -2,25 +2,7 @@ const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
-    "미유-여름": {
-        "name": "Miyu Sahara Summer",
-        "weapon4-1": {
-            "name": "Sky Above the Sea and Moon",
-            "health": 1807.87,
-            "attack": 623.35,
-            "defense": 313.75,
-            "skill_name": "",
-            "description": "Increases ATK by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. While in [Sea's Domain], increases ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
-        },
-        "weapon5-1": {
-            "name": "Mermaid Princess in a Dream",
-            "health": 2259.46,
-            "attack": 779.61,
-            "defense": 391.98,
-            "skill_name": "",
-            "description": "Increases CRIT DMG by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Increases CRIT Rate of additional effects by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%. When using skills that consume energy, increases self DMG dealt by 6.8%/8.8%/8.8%/10.8%/10.8%/12.8%/12.8%, stacking up to 5 times and lasting permanently for the rest of the battle."
-        }
-    },
+
     "미나미·여름": {
         "name": "Miyashita Minami Summer",
         "weapon4-1": {

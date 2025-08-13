@@ -2,23 +2,6 @@ const enCharacterRitualData = {
     "원더": {
         "name": "Wonder"
     },
-    "미유-여름": {
-        "name": "Miyu Sahara·Summer",
-        "r0": "Call of the Waves",
-        "r0_detail": "Miyu Sahara (Summer) can ride her surfboard to deploy [Sea's Domain] during battle, consuming SP to continuously unleash tidal assaults on enemies. Her maximum SP is increased to 200, and she starts the battle with 0 SP. At the start of each ally's turn (excluding herself), Miyu Sahara (Summer) restores 15 SP (this effect is affected by SP recovery traits).\n\nBased on total SP recovered during battle (including amounts exceeding the limit), Miyu Sahara (Summer) gains the following bonuses:\nAt 100 SP: +10% ATK;\nAt 200 SP: +10% DMG Bonus;\nAt 300 SP: +12% CRIT Rate;\nAt 400 SP: +24% CRIT DMG.",
-        "r1": "Girl from the Deep Sea",
-        "r1_detail": "[Waves and Clouds] SP cost is halved and maximum stacks of [Overlapping Waves] increase by 2.\nWhen deploying [Sea's Domain], immediately extend the duration of all status effects you have by 1 turn.",
-        "r2": "Gaze Beneath the Sunset",
-        "r2_detail": "While in [Sea's Domain], CRIT DMG increases by 20%.\nEvery 4 uses of [Waves and Clouds], Miyu Sahara (Summer) additionally triggers a special [Waves and Clouds] once. This additional activation consumes no SP and does not grant [Overlapping Waves].",
-        "r3": "To Reach That Light",
-        "r3_detail": "Increases the skill level of [Riding the Light Over Blue Waves] and [Combat Technique] by 3.",
-        "r4": "Quiet Wait",
-        "r4_detail": "Enhances HIGHLIGHT effect, increasing own additional effect DMG by 30% for 2 turns.",
-        "r5": "Into the Arms of the Waves",
-        "r5_detail": "Increases the skill level of [Jellyfish's Dream] and [Blue Concerto] by 3.",
-        "r6": "That Blue Dream",
-        "r6_detail": "Increases Miyu Sahara (Summer)'s maximum SP by an additional 200, starts battle with full SP, and automatically deploys [Sea's Domain].\nIncreases maximum stacks of [Overlapping Waves] by 2.\n[Jellyfish's Dream] restores SP by 275%.\nAfter using [Blue Concerto], [Sea's Domain] is not removed, and [Overlapping Waves] are reset at the end of the turn.\nAfter reset, restores SP to maximum."
-    },
     "미나미·여름": {
     "name": "Minami Miyashita·Summer",
     "r0": "Time Stopped for You",

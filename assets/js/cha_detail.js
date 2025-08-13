@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const currentLang = getCurrentLanguage();
                     const mindTexts = {
                         'kr': '심상 5',
-                        'en': 'Mind 5',
+                        'en': 'Mindscape 5',
                         'jp': '心象 5'
                     };
                     level.querySelector('.label').textContent = levels[index].slice(0, -1) + (mindTexts[currentLang] || '심상 5');

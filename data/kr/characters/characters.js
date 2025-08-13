@@ -54,7 +54,7 @@ const characterData = {
         "name_en": "Wonder",
         "name_jp": "主人公"
     },
-    "미유·여름": {
+    "미유-여름": {
         "limit": true,
         "role": "광역 빙결 추가효과 딜러",
         "role_en": "AOE Freeze Follow-up Dealer",

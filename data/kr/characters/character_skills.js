@@ -2,7 +2,7 @@ const characterSkillsData = {
     "원더": {
         "name": "원더"
     },
-    "미유·여름":{
+    "미유-여름":{
         "name": "사하라 미유",
         "skill1": {
             "name": "해파리의 꿈",

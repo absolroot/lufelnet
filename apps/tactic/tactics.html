@@ -55,7 +55,7 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
                 <!-- 랭킹은 JavaScript로 동적 생성됨 -->
             </div>
         </div>
-        <div class="character-filter-card" style="">
+        <div class="character-filter-card">
             <div class="card-header" style="display:flex; align-items:center; justify-content:space-between;">
                 <h3 id="charFilterTitle" style="margin:0;">캐릭터 필터</h3>
             </div>
@@ -321,6 +321,9 @@ class TacticsViewer {
                 tactic.title.toLowerCase().includes(this.searchKeyword.toLowerCase())
             );
         }
+
+        // URL 파라미터로 캐릭터 필터 초기 적용 (?char=레오)
+        /* URL 파라미터는 초기화 시 한 번만 반영. 여기서는 다시 설정하지 않음 */
 
         // 캐릭터 필터
         if (this.selectedCharacter) {
@@ -677,8 +680,12 @@ class TacticsViewer {
                 const rb = (characterData?.[b]?.release_order ?? -Infinity);
                 return rb - ra; // 내림차순
             });
+        // 중복 제거 (메인/서포트에 중복 존재 시 한 번만 표시)
+        const uniqueNames = [];
+        const seen = new Set();
+        sortedNames.forEach(n => { if (!seen.has(n)) { seen.add(n); uniqueNames.push(n); } });
         const fragment = document.createDocumentFragment();
-        sortedNames.forEach(name => {
+        uniqueNames.forEach(name => {
             const img = document.createElement('img');
             img.src = `${BASE_URL}/assets/img/tier/${name}.webp`;
             // 언어에 따른 타이틀/대체 텍스트
@@ -691,11 +698,13 @@ class TacticsViewer {
             img.alt = displayTitle;
             img.title = displayTitle;
             img.className = 'char-face';
+            img.dataset.name = name;
             img.addEventListener('click', () => {
                 // 토글 선택
                 if (this.selectedCharacter === name) {
                     this.selectedCharacter = null;
-                    img.classList.remove('selected');
+                    // 동일 이름의 모든 썸네일에서 선택 해제 (잠재 중복 안전)
+                    grid.querySelectorAll('img').forEach(el => { if (el.dataset?.name === name) el.classList.remove('selected'); });
                 } else {
                     this.selectedCharacter = name;
                     // 선택 표시 업데이트
@@ -704,6 +713,13 @@ class TacticsViewer {
                 }
                 this.applyFilters();
                 this.renderTactics();
+                // URL 상태 동기화 (해제 시 char 제거, 선택 시 char=name)
+                try {
+                    const params = new URLSearchParams(window.location.search);
+                    if (this.selectedCharacter) params.set('char', this.selectedCharacter); else params.delete('char');
+                    const newUrl = `${window.location.pathname}?${params.toString()}`;
+                    window.history.replaceState({}, '', newUrl);
+                } catch(_) {}
             });
             fragment.appendChild(img);
         });
@@ -711,6 +727,19 @@ class TacticsViewer {
         grid.appendChild(fragment);
 
         // 초기화 버튼 제거 버전: 더미
+        // URL 파라미터에 의해 선택된 캐릭터 하이라이트 적용 (한 번만 반영, 이후 클릭 토글 가능)
+        try {
+            const urlChar = new URLSearchParams(window.location.search).get('char');
+            if (urlChar) {
+                if (this.selectedCharacter == null) this.selectedCharacter = urlChar;
+                // 일관성 있게 하나만 선택 표시
+                grid.querySelectorAll('img').forEach(el => el.classList.remove('selected'));
+                const firstMatch = grid.querySelector(`img[data-name="${CSS.escape(this.selectedCharacter)}"]`);
+                if (firstMatch) firstMatch.classList.add('selected');
+                this.applyFilters();
+                this.renderTactics();
+            }
+        } catch(_) {}
     }
 
     // 언어별 UI 텍스트 초기화

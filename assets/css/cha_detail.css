@@ -625,6 +625,22 @@ h2{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* character tactic examples title row */
+#character-tactic-examples .card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 16.6px 0;
+}
+
+#character-tactic-examples .card-title-row h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 
 /* setting card style */
 .settings-grid {
@@ -1278,6 +1294,34 @@ h2{
 }
 
 .party-member.spoiler::after {
+    content: 'SPOILER';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* spoiler style for tactic examples preview characters */
+.character-container.spoiler {
+    position: relative;
+    cursor: pointer;
+}
+
+.character-container.spoiler img {
+    filter: blur(4px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.character-container.spoiler::after {
     content: 'SPOILER';
     position: absolute;
     top: 50%;

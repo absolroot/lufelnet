@@ -18,7 +18,7 @@ const WeaponData = {
             "description": ""
         }
     },
-    "미유·여름": {
+    "미유-여름": {
         "name": "사하라 미유",
         "weapon4-1":{
             "name": "바다와 달 위의 하늘",

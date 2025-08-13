@@ -631,18 +631,31 @@ body {
     background: #7e1822;
     border: 1px solid #ffffff;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
     padding: 0;
     margin-left: 16px;
     margin-right: 8px;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
   }
 
   /* 기존 export-import-btn의 hover 효과 덮어쓰기 */
   .export-import-btn.toggle-ui-btn:hover {
     width: 48px !important;  /* 너비 고정 */
     background: #a30e1d;  /* 비활성화 상태에서는 기본 색상 유지 */
+  }
+
+  /* 데스크톱 헤더 토글은 hover 시에도 레이아웃/크기 변화가 없도록 강제 고정 */
+  .header-container .toggle-ui-btn,
+  .header-container .toggle-ui-btn:hover,
+  .header-container .toggle-ui-btn:focus {
+    width: 48px !important;
+    height: 24px !important;
+    border: 1px solid #ffffff !important;
+    padding: 0 !important;
+    margin-left: 16px !important;
+    margin-right: 8px !important;
   }
 
   .export-import-btn.toggle-ui-btn.active:hover {
@@ -655,11 +668,13 @@ body {
     content: "";
     position: absolute;
     left: 3px;  /* 4px에서 3px로 조정 */
+    top: 50%;
     width: 18px;  /* 22px에서 18px로 축소 */
     height: 18px;  /* 22px에서 18px로 축소 */
     border-radius: 50%;
     background: #ffffff;
-    transition: all 0.3s ease;
+    transition: left 0.3s ease, background-color 0.3s ease;
+    transform: translateY(-50%);
   }
 
   /* 활성화 상태 */
@@ -997,6 +1012,12 @@ body {
       width: 100px;
     }
 
+    /* EN/JP에서는 토글 버튼 폭을 120px로 확장 */
+    html[data-lang="en"] .mobile-buttons .toggle-ui-btn,
+    html[data-lang="jp"] .mobile-buttons .toggle-ui-btn {
+      width: 120px;
+    }
+
     /* 모바일 버튼 아이콘 */
     .mobile-lock-btn::before,
     .mobile-buttons .toggle-ui-btn::before {
@@ -1008,7 +1029,7 @@ body {
     /* toggle-ui 버튼 아이콘 */
     .mobile-buttons .toggle-ui-btn::before {
       font-size: 12px;
-      content: "🕶️ 편집 UI 숨김";
+      content: attr(data-label);
       background: none !important;  /* 배경 제거 */
       box-shadow: none !important;  /* 그림자 제거 */
       border: none !important;      /* 테두리 제거 */
@@ -1020,7 +1041,7 @@ body {
 
     .mobile-buttons .toggle-ui-btn.active::before {
       font-size: 12px;
-      content: "🔍 편집 UI 표시";
+      content: attr(data-label-active);
       background: none !important;  /* 배경 제거 */
       box-shadow: none !important;  /* 그림자 제거 */
       border: none !important;      /* 테두리 제거 */
@@ -1050,13 +1071,13 @@ body {
     background-color: rgb(255, 255, 255, 0.2);
   }
 
-  /* 툴팁 스타일 개선 */
-  [title] {
+  /* 툴팁 스타일 개선 (토글 스위치는 제외) */
+  [title]:not(.toggle-ui-btn) {
     position: relative;
     transition: all 0.1s ease;
   }
 
-  [title]:hover::after {
+  [title]:not(.toggle-ui-btn):hover::after {
     content: attr(title);
     position: absolute;
     bottom: 100%;
@@ -1079,7 +1100,7 @@ body {
   }
 
   /* 툴팁 화살표 */
-  [title]:hover::before {
+  [title]:not(.toggle-ui-btn):hover::before {
     content: '';
     position: absolute;
     bottom: 100%;
@@ -1088,6 +1109,26 @@ body {
     border: 6px solid transparent;
     border-top-color: rgba(0, 0, 0, 0.9);
     margin-bottom: -1px;
+  }
+
+  /* 헤더의 편집 UI 토글 전용 툴팁: ::after만 사용하여 스위치의 ::before(동그라미)와 충돌 방지 */
+  .header-container .toggle-ui-btn[title] {
+    position: relative;
+  }
+  .header-container .toggle-ui-btn[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 2000;
+    pointer-events: none;
   }
 
   /* 페르소나 이미지에 대한 특별한 툴팁 위치 조정 */

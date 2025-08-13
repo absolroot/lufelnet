@@ -570,11 +570,39 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         }
       }
 
+      // 모바일 토글 버튼 라벨 설정 (다국어)
+      function updateToggleUILabels() {
+        const currentLang = getCurrentLanguage();
+        const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+        if (mobileToggleBtn) {
+          const labelMap = {
+            kr: { off: '🕶️ 편집 UI 숨김', on: '🔍 편집 UI 표시' },
+            en: { off: '🕶️ Hide Edit UI', on: '🔍 Show Edit UI' },
+            jp: { off: '🕶️ 編集UIを非表示', on: '🔍 編集UIを表示' }
+          };
+          const t = labelMap[currentLang] || labelMap.kr;
+          mobileToggleBtn.setAttribute('data-label', t.off);
+          mobileToggleBtn.setAttribute('data-label-active', t.on);
+        }
+
+        // 데스크톱 토글 버튼은 스위치형(텍스트 없음)이지만 접근성/힌트를 위해 title 제공
+        const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+        if (desktopToggleBtn) {
+          const titleText = currentLang === 'en' ? 'Toggle edit UI'
+                            : currentLang === 'jp' ? '編集UIの表示切替'
+                            : '편집 UI 토글';
+          desktopToggleBtn.setAttribute('title', titleText);
+        }
+      }
+
       // DOM is loaded, initialize initial settings
       document.addEventListener("DOMContentLoaded", () => {
 
         // 번역 적용
         translateUI();
+        updateToggleUILabels();
+        // CSS에서 언어별 스타일 분기를 위해 <html>에 data-lang 설정
+        try { document.documentElement.setAttribute('data-lang', getCurrentLanguage()); } catch(_) {}
 
         // Initialize navigation
         Navigation.load('tactic');

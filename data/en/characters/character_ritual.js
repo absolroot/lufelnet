@@ -396,9 +396,9 @@ const enCharacterRitualData = {
     "키라": {
         "name": "Kira Kitazato",
         "r0": "Reaper's Assault",
-        "r0_detail": "Kira Kitazato has two states: 『Hunter』 and 『Executor』, with skills changing upon state transition. The default state is 『Hunter』.\n『Hunter』: When dealing skill damage, there is a 70% base chance to inflict 1 stack of 『Bleed』 on the target. When a target with 『Bleed』 dies, the remaining stacks transfer to the enemy with the highest HP.\n『Executor』: When using a skill, for every 3 stacks of 『Bleed』 on the target, Kira Kitazato deals an additional 『Incision』 hit.\n『Bleed』: Deals Almighty damage equal to 1% of the target's Max HP + Physical damage equal to 4% of Kira Kitazato's ATK per turn, lasting 4 turns (up to 10 stacks).\n『Incision』: Deals Physical damage based on Kira Kitazato's ATK and the level of 『Veil of Night』, and cannot trigger critical hits or Down value damage.",
+        "r0_detail": "Kira Kitazato has two states: 『Hunter』 and 『Executioner』, with skills changing upon state transition. The default state is 『Hunter』.\n『Hunter』: When dealing skill damage, there is a 70% base chance to inflict 1 stack of 『Bleed』 on the target. When a target with 『Bleed』 dies, the remaining stacks transfer to the enemy with the highest HP.\n『Executioner』: When using a skill, for every 3 stacks of 『Bleed』 on the target, Kira Kitazato deals an additional 『Incision』 hit.\n『Bleed』: Deals Almighty damage equal to 1% of the target's Max HP + Physical damage equal to 4% of Kira Kitazato's ATK per turn, lasting 4 turns (up to 10 stacks).\n『Incision』: Deals Physical damage based on Kira Kitazato's ATK and the level of 『Veil of Night』, and cannot trigger critical hits or Down value damage.",
         "r1": "Rose Circle",
-        "r1_detail": "In 『Hunter』 state, the first skill damage to all enemies applies an additional 5 stacks of 『Bleed』.\nIn 『Executor』 state, skill damage increases based on the number of debuffs on the target. At 10 debuffs, skill damage is increased by up to 80%.",
+        "r1_detail": "In 『Hunter』 state, the first skill damage to all enemies applies an additional 5 stacks of 『Bleed』.\nIn 『Executioner』 state, skill damage increases based on the number of debuffs on the target. At 10 debuffs, skill damage is increased by up to 80%.",
         "r2": "Companion of Flowers",
         "r2_detail": "The multiplier of 『Incision』 increases by 35% of Kira Kitazato's ATK, and Kira recovers HP equal to 2% of 『Incision』 damage dealt (up to Kira Kitazato's Level * 15 + 300 points per turn).",
         "r3": "Bouquet in the Pocket",
@@ -408,7 +408,7 @@ const enCharacterRitualData = {
         "r5": "Thrilling Experiment",
         "r5_detail": "The skill levels of 『Fatal Pleasure/Curtain Call』 and 『Veil of Night』 increase by 3, up to a maximum of 15.",
         "r6": "Bow Before Me",
-        "r6_detail": "The maximum stack of 『Bleed』 increases to 13, and all enemies have at least 3 stacks of 『Bleed』.\nIn 『Executor』 state, using 『Sinful Game』 no longer removes 『Bleed』 stacks from the target. The 『Incision』 effect upgrades to 『Lingering Slash』, which deals 100% increased damage and inflicts 50% splash damage to all other enemies. 『Lingering Slash』 can trigger all effects related to 『Incision』 in every skill."
+        "r6_detail": "The maximum stack of 『Bleed』 increases to 13, and all enemies have at least 3 stacks of 『Bleed』.\nIn 『Executioner』 state, using 『Sinful Game』 no longer removes 『Bleed』 stacks from the target. The 『Incision』 effect upgrades to 『Lingering Slash』, which deals 100% increased damage and inflicts 50% splash damage to all other enemies. 『Lingering Slash』 can trigger all effects related to 『Incision』 in every skill."
     },
     "토모코·여름": {
         "name": "Noge Tomoko Summer",

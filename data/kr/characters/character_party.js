@@ -19,12 +19,24 @@ const recommendParty = {
         ]
     },
     "미유·여름": {
-        "weapon": [],
+        "weapon": ["빙하의 영겁"],
         "persona": [
             {
+                type: "ATK",
+                list: ["사히모치노카미"]
+            },
+            {
+                type: "CRITICAL",
+                list: ["디오니소스"]
             }
         ],
         "party": [
+            {
+                members: ["미유·여름", "미나미·여름", "미오", "마나카"],
+                comment: "미유는 방어력 감소 및 관통 효과를 보유하고 있지 않아 미오를 통해 방어력 감소 수치를 확보한다.",
+                comment_en: "Miyu does not have a defense reduction or penetration effect, so she relies on Mio to obtain the defense reduction effect.",
+                comment_jp: "ミユは防御力減少や貫通効果を持たないため、ミオを通じて防御力減少効果を得る。"
+            }
         ]
     },
     "사나다": {

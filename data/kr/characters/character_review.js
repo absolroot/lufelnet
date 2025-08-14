@@ -4,23 +4,45 @@ const characterReview = {
     },
     "미유·여름": { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
         review: `
-바다의 영역 속에서 아군의 턴마다 **SP 소모량이 늘어나는 추가 효과**로 지속적으로 공격하고, 스킬2를 통해 강력한 대미지를 결산하는 구조를 지닌 딜러입니다.
+바다의 영역 속에서 아군의 턴 종료마다 **공격할 때마다 강해지는 추가 효과**로 적을 지속적으로 공격합니다.
+
+추가 효과를 반복할 수록 SP 소모량이 늘어나기 때문에 **스킬2를 통해 강력한 대미지를 주고 중첩을 초기화하는 구조**를 지니고 있습니다.
+
+**아군의 턴 시작 시에 SP를 회복**하며 관련 의식 별로 사이클이 변경됩니다. 6턴 보스 기준 의식0/1/2/6 각각 12/16/20/30회의 추가 효과 발동이 가능합니다.
+
+<br>
 
 SP회복에 큰 영향을 받는 캐릭터지만 **기본 188.5%** SP회복과 계시 카드 진의 **SP 회복 주 옵션 90.4%**, 마이팰리스 5%만 추가하더라도 **283.9%의 SP 회복**을 쉽게 확보할 수 있습니다.
-
-의식 별로 사이클이 변경되는 딜러로 6턴 보스 기준 의식0/1/2/6마다 각각 12/16/20/30회의 추가 효과 발동이 가능합니다.
 
 - 추가효과 중첩 당 5% 대미지 증가 계산 방식 : 스킬 계수 × (100% + 5% × 중첩 개수)
 
 - 스킬2 중첩 당 대미지 증가 계산 방식 : 스킬 계수 × (100% + 10% × 중첩 개수)`,
 review_en: `
-- Follow up damage increase calculation: Skill coefficient × (100% + 5% × stack count)
+Within [Sea’s Domain], the character continuously attacks enemies with a **Follow-up that grows stronger with each attack** at the end of each ally’s turn.  
 
-- Skill 2 damage increase calculation: Skill coefficient × (100% + 10% × stack count)`,
+Since the SP cost increases the more the Follow-up is repeated, the kit is designed to **deal heavy damage with Skill 2 and reset the stacks**.  
+
+**Recovers SP at the start of an ally’s turn**, and the rotation changes depending on the related Awareness. Against a 6-turn boss, it is possible to trigger the Follow-up 12/16/20/30 times for Awareness levels 0/1/2/6 respectively.  
+
+<br>
+
+Although greatly influenced by SP recovery, the character can easily reach **283.9% SP recovery** even with just the base **188.5%** SP recovery, the **SP Recovery main stat of Revelation Card Planet (90.4%)**, and My Palace’s 5%.  
+
+- Follow-up stack DMG increase calculation: Skill coefficient × (100% + 5% × stack count)  
+- Skill 2 stack DMG increase calculation: Skill coefficient × (100% + 10% × stack count)  `,
 review_jp: `
-- 追加効果スタックごとの5%ダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)
+『海の領域』の中で、味方ターン終了時に**攻撃するたびに強化される意識奏功**で敵を継続的に攻撃する。  
 
-- スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)`
+意識奏功を繰り返すほどSP消費が増えるため、**スキル2で強力なダメージを与えてスタックをリセットする構造**を持っている。  
+
+**味方ターン開始時にSPを回復**し、関連する意識によってサイクルが変化する。6ターンのボス戦では、意識レベル0/1/2/6でそれぞれ12/16/20/30回の意識奏功発動が可能。  
+
+<br>
+
+SP回復の影響を大きく受けるキャラクターだが、**基礎188.5%**のSP回復に加え、啓示カード「プラネット」の**SP回復メイン効果90.4%**、マイパレスの5%だけでも、**283.9%のSP回復**を容易に確保できる。  
+
+- 意識奏功スタックごとのダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)  
+- スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)  `
     },
 "미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
         review: `

@@ -623,6 +623,54 @@ const personaData = {
         comment_en: "Provides consistent ATK buffs to allies, especially effective for low HP allies.",
         comment_jp: "味方に一貫したATKバフを提供し、特に低HPの味方に効果的である。"
     },
+    "사히모치노카미": {
+        name_en: "Sahi-mochi-no-kami",
+        name_jp: "さひもちのかみ",
+        grade: "8",
+        star: "5",
+        position: "지배",
+        element: "빙결",
+        wild_emblem_rainbow : true,
+        instinct: {
+            name: "신속한 귀환자 III",
+            name_en: "Swift Returner III",
+            name_jp: "迅速なる送還者 III",
+            effects: [
+                "공격력이 29.1% 상승한다.",
+                "전투 시작 시 [한린] 5중첩을 획득한다. 아군이 페르소나 스킬을 사용할 때, 자신이 [한린] 1중첩을 획득하며, 최대 5중첩까지 가능하다. 추가 효과 발동 시 [예리한 한린] 1중첩을 획득하며, 최대 5중첩까지 가능하다. 자신이 적 대상에게 페르소나 스킬을 사용한 후, [한린]이 5중첩이면 [한린]과 [예리한 한린]을 모두 소모하고, 중첩 1개당 적이 받는 피해를 1.5% 증가시키며, 효과는 2턴 동안 지속된다."
+            ],
+            effects_en: [
+                "Increases ATK by 29.1%. At the start of battle, gains 5 stacks of [Cold Scales]. When an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1.5% per stack for 2 turns."
+            ],
+            effects_jp: [
+                "攻撃力が29.1%上昇する。戦闘開始時に「寒鱗」を5スタック獲得する。味方がペルソナスキルを発動すると、自身が「寒鱗」を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、「鋭い寒鱗」を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の「寒鱗」が5スタックに達している場合、「寒鱗」と「鋭い寒鱗」をすべて消費し、スタック1つにつき敵が受けるダメージを1.5%増加させる（持続2ターン）。"
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "심연의 서늘함",
+            name_en: "Chilling Depth",
+            name_jp: "深淵の冷気",
+            effect: "모든 적에게 공격력 100.0%의 빙결 속성 피해를 준다. 2턴 동안 적이 받는 추가 효과 피해량을 8.0% 증가시키며, 받는 빙결 속성 피해를 8.0% 증가시킨다.",
+            effect_en: "Deals 100.0% ATK Ice dmg to all foes. For 2 turns, increases all foes' additional dmg taken by 8.0%, and increases all foes' Ice dmg taken by 8.0%.",
+            effect_jp: "敵全体に攻撃力100.0%の氷結属性ダメージを与える。2ターンの間、敵が受ける追加ダメージが8.0%増加、敵が受ける氷結属性ダメージが8.0%増加する。",
+            priority: 1,
+            icon: "빙결광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 180.0%의 빙결 속성 대미지를 준다.",
+            effect_en: "Deals 180.0% ATK as Ice dmg to all foes.",
+            effect_jp: "全ての敵に180.0% ATKの氷結属性ダメージを与える。",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "공격 강화", priority: 0 },
+            {name : "빙결 강화", priority: 0 },
+            {name : "어드바이스", priority: 0 },
+            {name : "정교한 타격", priority: 0 },
+            {name : "마도의 재능", priority: 0 }
+        ]
+    },
     "야마타노오로치": {
         name_en: "Yamata-no-Orochi",
         name_jp: "ヤマタノオロチ",

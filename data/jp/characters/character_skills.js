@@ -6,7 +6,7 @@ const jpCharacterSkillsData = {
         "name": "佐原 海夕 夏",
         "skill1": {
             "name": "クラゲの夢",
-            "element": "빙결광역역",
+            "element": "빙결광역",
             "type": "全体ダメージ",
             "sp": 0,
             "cool": 0,

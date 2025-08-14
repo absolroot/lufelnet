@@ -502,6 +502,13 @@ input, textarea {
     transform: translateX(5%) translateY(15%);
 }
 
+.persona-img[src*="사히모치노카미.webp"] {  
+    position: relative;
+    scale: 1;
+    bottom: 20px;
+    left: 4px;
+}
+
 .persona-detail-container {
     width: 100%;
     display: flex;

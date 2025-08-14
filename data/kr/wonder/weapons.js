@@ -4,6 +4,7 @@ function getWonderWeaponOptions() {
       "태고의 역장",
       "메커니컬 심판자",
       "작열의 연옥",
+      "빙하의 영겁",
       "플라스마 섬멸자",
       "하이브 가드",
       "야수의 이빨",
@@ -17,6 +18,13 @@ function getWonderWeaponOptions() {
 }
 
 const matchWeapons = {
+  "빙하의 영겁" :  {
+    name_en : "Glacial Eternity",
+    name_jp : "氷河永寂",
+    effect : "공격력이 56.0% 증가한다.\n전투 시작 시 아군 1명에게 [극한 각인]을 부여한다. 원더가 아군을 대상으로 페르소나 스킬을 사용할 경우, 추가로 목표에게 [극한 각인]을 부여한다(필드에 1명만 보유 가능). 필드에 [극한 각인]을 보유한 아군이 존재할 경우, 원더가 가하는 피해가 35.0% 증가한다.\n[극한 각인]: 피해량이 16.0% 증가하고, 빙결 속성 대미지가 추가로 22.0% 증가하며, 3턴 동안 지속된다.",
+    effect_en: "Increase Attack by 56.0%.\nAt battle start, grant [Extreme Mark] to 1 ally. When WONDER uses a Persona skill on an ally, grant [Extreme Mark] to the target (only 1 ally can have this). If an ally with [Extreme Mark] is on the field, WONDER's damage is increased by 35.0%.\n[Extreme Mark]: Increase damage by 16.0% and Ice damage by 22.0% for 3 turns.",
+    effect_jp: "攻撃力が56.0%上昇する。\n戦闘開始時、味方1人に『極限の印』を付与。ワンダーが味方にペルソナスキルを使用すると、その対象に『極限の印』を付与（味方は1人しか持てない）。『極限の印』を持つ味方がいる場合、ワンダーのダメージが35.0%増加する。\n『極限の印』：ダメージが16.0%増加、氷結属性ダメージが22.0%増加（3ターン）。"
+  },
   "천상의 별" :  {
     name_en : "Starry Compass",
     name_jp : "天の星",

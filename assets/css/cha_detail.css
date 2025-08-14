@@ -1184,6 +1184,7 @@ h2{
     flex-wrap: wrap;
     gap: 15px;
     padding: 0px 0;
+    min-width: 440px;
 }
 
 .persona-comment, .party-comment {
@@ -1366,6 +1367,7 @@ h2{
     word-break: keep-all;
     margin-top: 2px;
     transition: filter 0.3s ease;
+    word-wrap: break-word;
 }
 
 .party-member span {

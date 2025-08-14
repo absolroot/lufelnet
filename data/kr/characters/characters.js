@@ -79,16 +79,16 @@ const characterData = {
         "sub_revel2": ["공격력", "대미지 보너스"],
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력", "SP 회복"],
-        "sub_option1": ["SP 회복"],
-        "sub_option2": ["크리티컬 효과", "관통"],
-        "sub_option3": ["크리티컬 확률", "공격력", "대미지 보너스"],
+        "sub_option1": ["크리티컬 효과", "관통"],
+        "sub_option2": ["크리티컬 확률", "SP 회복"],
+        "sub_option3": ["공격력", "대미지 보너스"],
         "minimum_stats": {
-            "LV10": "SP 회복 227.3%",
-            "LV10+5": "SP 회복 227.3%",
+            "LV10": "SP 회복 220.1%",
+            "LV10+5": "SP 회복 220.1%",
             "LV12": false,
             "LV12+5": false,
-            "LV13": "-",
-            "LV13+5": "-"
+            "LV13": "SP 회복 300.1%",
+            "LV13+5": "SP 회복 300.1%"
         },
         "battle_plus_stats": "· 기본 스탯: 188% / 마이팰리스: 5%",
         "battle_plus_stats_en": "· Base Stat: 188% / MyPalace: 5%",

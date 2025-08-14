@@ -3,7 +3,18 @@ const characterReview = {
         review: ``
     },
     "미유·여름": { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
-        review: ``
+        review: `
+- 추가효과 중첩 당 5% 대미지 증가 계산 방식 : 스킬 계수 × (100% + 5% × 중첩 개수)
+
+- 스킬2 중첩 당 대미지 증가 계산 방식 : 스킬 계수 × (100% + 10% × 중첩 개수)`,
+review_en: `
+- Follow up damage increase calculation: Skill coefficient × (100% + 5% × stack count)
+
+- Skill 2 damage increase calculation: Skill coefficient × (100% + 10% × stack count)`,
+review_jp: `
+- 追加効果スタックごとの5%ダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)
+
+- スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)`
     },
 "미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
         review: `

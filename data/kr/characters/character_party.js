@@ -25,18 +25,6 @@ const recommendParty = {
             }
         ],
         "party": [
-            {
-                members: ["미유·여름", "리코·매화", "마유미", "마나카"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
-            },
-            {
-                members: ["미유·여름", "미나미·여름", "마유미", "마나카"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
-            }
         ]
     },
     "사나다": {

@@ -3,7 +3,7 @@
 const characterList = {
     mainParty: [
         "렌", "루우나", "루페르", "레오", "류지",
-        "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "모르가나",
+        "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "사나다", "슌",
         "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
         "원더", "유스케", "유이 YUI","유카리", "유키미", "유키 마코토", "이케나미", "이치고", "카스미",
@@ -54,7 +54,7 @@ const characterData = {
         "name_en": "Wonder",
         "name_jp": "主人公"
     },
-    "미유-여름": {
+    "미유·여름": {
         "limit": true,
         "role": "광역 빙결 추가효과 딜러",
         "role_en": "AOE Freeze Follow-up Dealer",
@@ -80,27 +80,27 @@ const characterData = {
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력", "SP 회복"],
         "sub_option1": ["SP 회복"],
-        "sub_option2": ["크리티컬 효과", "크리티컬 확률"],
-        "sub_option3": ["관통", "공격력", "대미지 보너스"],
+        "sub_option2": ["크리티컬 효과", "관통"],
+        "sub_option3": ["크리티컬 확률", "공격력", "대미지 보너스"],
         "minimum_stats": {
-            "LV10": "-",
+            "LV10": "SP 회복 280%",
             "LV10+5": "-",
             "LV12": false,
             "LV12+5": false,
             "LV13": "-",
             "LV13+5": "-"
         },
-        "battle_plus_stats": "· 마이팰리스: 5%",
-        "battle_plus_stats_en": "· MyPalace: 5%",
-        "battle_plus_stats_jp": "· マイパレス: 5%",
+        "battle_plus_stats": "· 기본 스탯: 188% / 마이팰리스: 5%",
+        "battle_plus_stats_en": "· Base Stat: 188% / MyPalace: 5%",
+        "battle_plus_stats_jp": "· 基本ステータス: 188% / マイパレス: 5%",
         "skill1_lv": "MAX",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
-        "mind_stats1": "",
-        "mind_stats2": "",
-        "mind_skill1": "",
-        "mind_skill2": ""
+        "mind_stats1": "공격력 20%!",
+        "mind_stats2": "크리티컬 확률 12%!",
+        "mind_skill1": "1/2!",
+        "mind_skill2": "3/HL!"
     },
     "미나미·여름": {
         "limit": true,

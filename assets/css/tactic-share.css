@@ -9,23 +9,22 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 10px 20px 0px 20px;
 }
 
 .top-container{
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding: 0 20px;
+    /* padding: 0 20px; */
 }
 
 .header-container{
-    padding: 0 20px;
+     padding: 0 0px; 
 }
 
 /* 상단 인라인 필터 (지역/타입) */
 .top-inline-filters{
-    padding: 0 20px;
+    /* padding: 0 20px; */
     margin: 8px 0 16px 0;
     display: flex;
     flex-direction: column;
@@ -201,7 +200,7 @@
 /* 캐릭터 필터 카드 (랭킹과 통일) */
 .character-filter-card{
     width: 100%;
-    max-width: 780px;
+    max-width: 820px;
     box-sizing: border-box;
     background: #3d3030;
     border-radius: 8px;
@@ -341,7 +340,7 @@
 /* 검색 및 탭 search & tabs */
 
 .tactic-controls {
-    padding: 0 20px;
+    /* padding: 0 20px; */
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -439,7 +438,7 @@
 
 .posts-container {
     margin-top: 1rem;
-    padding: 0 20px;
+    /* padding: 0 20px; */
 }
 
 .posts-list {

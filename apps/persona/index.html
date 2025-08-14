@@ -501,6 +501,9 @@ alternate_urls:
                 searchInput.value = searchQuery;
                 console.log("[DEBUG] Dispatching input event");
                 searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+                // 초기 파라미터 적용 시 자동완성 드롭다운은 표시하지 않음
+                const dropdown = document.getElementById('searchDropdown');
+                if (dropdown) dropdown.style.display = 'none';
             }
         }
     }
@@ -1082,23 +1085,6 @@ alternate_urls:
         
         // 성능 최적화된 검색 필터링 함수
         function filterBySearch(searchValue) {
-            // URL에서 검색 파라미터 처리 (약간의 지연을 두어 DOM이 완전히 로드되도록 함)
-            setTimeout(() => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const searchParam = urlParams.get('search');
-                
-                if (searchParam) {
-                    // 입력 필드에 검색어 설정
-                    searchInput.value = decodeURIComponent(searchParam);
-                    
-                    // 검색 실행 (직접 filterBySearch 호출)
-                    filterBySearch(searchInput.value.toLowerCase());
-                    
-                    // 드롭다운도 업데이트
-                    updateDropdown(searchInput.value.toLowerCase());
-                }
-            }, 100);
-            
             // 캐시에서 결과 확인
             if (searchCache.has(searchValue)) {
                 applySearchResults(searchCache.get(searchValue));

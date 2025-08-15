@@ -652,16 +652,37 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const characterName = urlParams.get('name');
         // 이미지 로딩 완료 시에만 표시되도록 data-loaded 세팅
         try {
+            const fallbackSrc = `{{ site.baseurl }}/assets/img/character-detail/character_bg.png`;
             const thiefImg = document.querySelector('.thief-image');
             const personaImg = document.querySelector('.persona-image');
-            if (thiefImg) {
-                thiefImg.addEventListener('load', () => thiefImg.setAttribute('data-loaded', 'true'));
-                thiefImg.addEventListener('error', () => thiefImg.remove());
-            }
-            if (personaImg) {
-                personaImg.addEventListener('load', () => personaImg.setAttribute('data-loaded', 'true'));
-                personaImg.addEventListener('error', () => personaImg.remove());
-            }
+
+            const wireImage = (imgEl) => {
+                if (!imgEl) return;
+                imgEl.addEventListener('load', () => {
+                    try { imgEl.setAttribute('data-loaded', 'true'); } catch(_) {}
+                });
+                imgEl.addEventListener('error', () => {
+                    try {
+                        // 실패 시 플레이스홀더 이미지로 대체하고 강제로 표시
+                        imgEl.src = fallbackSrc;
+                        imgEl.setAttribute('data-loaded', 'true');
+                    } catch(_) {}
+                });
+                // 캐시된 이미지 즉시 처리
+                if (imgEl.complete && imgEl.naturalWidth > 0) {
+                    imgEl.setAttribute('data-loaded', 'true');
+                } else {
+                    // 일부 모바일 브라우저에서 load 이벤트 누락 대비 가드
+                    setTimeout(() => {
+                        if (!imgEl.hasAttribute('data-loaded')) {
+                            imgEl.setAttribute('data-loaded', 'true');
+                        }
+                    }, 1500);
+                }
+            };
+
+            wireImage(thiefImg);
+            wireImage(personaImg);
         } catch(_) {}
     
         // 언어별 데이터 파일 동적 로드

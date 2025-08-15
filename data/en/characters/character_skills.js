@@ -99,7 +99,7 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 20,
             "cool": 1,
-            "description": "Deal 129.0%/142.2%/137.0%/150.2% of Attack as Curse damage to 1 enemy and add 2 stacks of 『Resentment』. If the target's current HP is above 70%, this skill's damage is increased by 200%. When this skill defeats the target, it triggers its effect once more (can chain)."
+            "description": "Deal 129.0%/142.2%/137.0%/150.2% of Attack as Curse damage to 1 enemy and add 2 stacks of 『Hatred』. If the target's current HP is above 70%, this skill's damage is increased by 200%. When this skill defeats the target, it triggers its effect once more (can chain)."
         },
         "skill2": {
             "name": "Kiss of the Crimson Rose",
@@ -107,7 +107,7 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal 92.9%/102.4%/98.6%/108.1% of Attack as Curse damage to 1 enemy and add 4 stacks of 『Resentment』."
+            "description": "Deal 92.9%/102.4%/98.6%/108.1% of Attack as Curse damage to 1 enemy and add 4 stacks of 『Hatred』."
         },
         "skill3": {
             "name": "Shh! Execution Time",
@@ -115,18 +115,18 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 22,
             "cool": 0,
-            "description": "Deal 221.6%/244.3%/235.2%/257.9% + (number of 『Resentment』 stacks × 11.7%/12.9%/12.4%/13.6%) of Attack as Curse damage to 1 enemy. If 『Resentment』 reaches 10 stacks, deal an additional 103.3%/113.8%/109.6%/120.2% of Attack as Curse damage. 『Resentment』 duration is then reset."
+            "description": "Deal 221.6%/244.3%/235.2%/257.9% + (number of 『Hatred』 stacks × 11.7%/12.9%/12.4%/13.6%) of Attack as Curse damage to 1 enemy. If 『Hatred』 reaches 10 stacks, deal an additional 103.3%/113.8%/109.6%/120.2% of Attack as Curse damage. 『Hatred』 duration is then reset."
         },
         "skill_highlight": {
             "element": "주원",
             "type": "단일피해",
             "cool": 0,
-            "description": "Deal 457.1%/503.9%/485.2%/532.0% of Attack as Curse damage to 1 enemy, and for 3 turns, 『Resentment』 can trigger critical hits. Instantly resolve all types of DoT effects on the target once, and resolve 『Resentment』 effects 2 additional times."
+            "description": "Deal 457.1%/503.9%/485.2%/532.0% of Attack as Curse damage to 1 enemy, and for 3 turns, 『Hatred』 can trigger critical hits. Instantly resolve all types of DoT effects on the target once, and resolve 『Hatred』 effects 2 additional times."
         },
         "passive1": {
-            "name": "Obsession",
+            "name": "Covet",
             "element": "패시브",
-            "description": "For each stack of 『Obsession』, increase own Attack by 15.0%."
+            "description": "For each stack of 『Covet』, increase own Attack by 15.0%."
         },
         "passive2": {
             "name": "Attachment",

@@ -19,15 +19,15 @@ const recommendParty = {
         ]
     },
     "미유·여름": {
-        "weapon": ["빙하의 영겁"],
+        "weapon": ["빙하의 영겁!", "천상의 별"],
         "persona": [
             {
                 type: "ATK",
-                list: ["사히모치노카미"]
+                list: ["사히모치노카미!", "도미니온"]
             },
             {
                 type: "CRITICAL",
-                list: ["디오니소스"]
+                list: ["디오니소스", "유룽"]
             }
         ],
         "party": [
@@ -53,11 +53,11 @@ const recommendParty = {
         ]
     },
     "사나다": {
-        "weapon": ["마그네틱 스톰", "메커니컬 심판자", "천상의 별"],
+        "weapon": ["마그네틱 스톰!", "메커니컬 심판자", "천상의 별"],
         "persona": [
             {
                 type: "ATK",
-                list: ["토르", "유룽"],
+                list: ["토르!", "유룽"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
@@ -93,23 +93,24 @@ const recommendParty = {
         ]
     },
     "이치고": {
-        "weapon": ["망령의 저주", "태고의 역장", "천상의 별", "메커니컬 심판자"],
+        "weapon": ["망령의 저주!", "태고의 역장", "천상의 별", "메커니컬 심판자"],
         "persona": [
+            {
+                type: "ATK",
+                list: ["바스키!", "앨리스"],
+                comment: "바스키의 지속 대미지 증가는 대미지 보너스가 아닌 별도 곱 계산이다.",
+                comment_en: "The DOT damage increase of VASUKI is not a damage bonus but a separate multiplication calculation.",
+                comment_jp: "VASUKIの持続ダメージ増加はダメージボーナスではなく別々の乗算計算です。"
+            },
             {
                 type: "CRITICAL",
                 list: ["디오니소스"]
             },
             {
                 type: "REDUCE DEF",
-                list: ["년수", "야노식", "비슈누"]
-            },
-            {
-                type: "ATK",
-                list: ["바스키", "앨리스"],
-                comment: "바스키의 지속 대미지 증가는 대미지 보너스가 아닌 별도 곱 계산이다.",
-                comment_en: "The DOT damage increase of VASUKI is not a damage bonus but a separate multiplication calculation.",
-                comment_jp: "VASUKIの持続ダメージ増加はダメージボーナスではなく別々の乗算計算です。"
+                list: ["야노식", "년수", "비슈누"]
             }
+            
         ],
         "party": [
             {
@@ -133,11 +134,11 @@ const recommendParty = {
         ] 
     },
     "유키 마코토": {
-        "weapon": ["작열의 연옥", "메커니컬 심판자"],
+        "weapon": ["작열의 연옥!", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
-                list: ["자오우곤겐", "도미니온"],
+                list: ["자오우곤겐!", "도미니온"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
@@ -166,12 +167,44 @@ const recommendParty = {
             }
         ]
     },
-    "아케치": {
-        "weapon": ["플라스마 섬멸자"],
+    "미오": {
         "persona": [
             {
                 type: "ATK",
-                list: ["황룡", "지국천"]
+                list: ["트론!"],
+                comment: "스킬1은 화상 효과가 필수적이므로, 트론의 스킬을 사용해 화상을 지속 발동시킨다.",
+                comment_en: "Skill 1 is essential for the burn effect, so use the skill of Throne to keep the burn effect active.",
+                comment_jp: "スキル1は火傷効果が必須なため、ソロネのスキルを使用して火傷を持続発動させる。" 
+            },
+            {
+                type: "REDUCE DEF",
+                list: ["년수"]
+            }
+        ],
+        "party": [
+            {
+                members: ["미오", "야오링·사자무", "아케치", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+            {
+                members: ["미오", "야오링·사자무", "리코·매화", "후타바"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
+    "아케치": {
+        "weapon": ["플라스마 섬멸자!"],
+        "persona": [
+            {
+                type: "ATK",
+                list: ["황룡!", "지국천"],
+                comment: "아케치는 2가지 속성의 공격을 하기에 황룡의 패시브를 발동시키기에 용이하다.",
+                comment_en: "Akechi can attack with two attributes, making it easier to trigger the passive of the Yellow Dragon.",
+                comment_jp: "明智は2つの属性の攻撃を行うため、ヨドロウのパッシブを発動しやすい。"
             },
             {
                 type: "CRITICAL",
@@ -194,7 +227,7 @@ const recommendParty = {
         ]
     },
     "야오링·사자무":{
-        "weapon": ["작열의 연옥", "천상의 별"],
+        "weapon": ["작열의 연옥!", "천상의 별"],
         "persona": [
             {
                 type: "CRITICAL",
@@ -206,7 +239,7 @@ const recommendParty = {
             },
             {
                 type: "REDUCE DEF",
-                list: ["년수", "수르트"]
+                list: ["년수!", "수르트"]
             }
         ],
         "party": [
@@ -229,7 +262,7 @@ const recommendParty = {
         "persona": [
             {
                 type: "ATK",
-                list: ["스라오샤", "광목천", "지국천"]
+                list: ["스라오샤!", "광목천", "지국천"]
             },
             {
                 type: "CRITICAL",
@@ -262,11 +295,11 @@ const recommendParty = {
         ]
     },
     "하루": {
-        "weapon": ["천상의 별", "메커니컬 심판자"],
+        "weapon": ["천상의 별!", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
-                list: ["시바", "오오쿠니누시", "네코쇼군", "도미니온"]
+                list: ["시바!", "오오쿠니누시", "네코쇼군", "도미니온"]
             },
             {
                 type: "CRITICAL",
@@ -274,7 +307,7 @@ const recommendParty = {
             },
             {
                 type: "REDUCE DEF",
-                list: ["시바", "년수", "수르트", "비슈누", "노른"]
+                list: ["시바!", "년수", "수르트", "비슈누", "노른"]
             }
         ],
         "party": [
@@ -323,7 +356,7 @@ const recommendParty = {
             },
             {
                 type: "REDUCE DEF",
-                list: ["비슈누", "노른", "야노식"]
+                list: ["비슈누!", "노른", "야노식"]
             }
         ],
         "party": [
@@ -437,11 +470,11 @@ const recommendParty = {
         ]
     },
     "마코토": {
-        "weapon": ["태고의 역장", "메커니컬 심판자"],
+        "weapon": ["태고의 역장!", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
-                list: ["비사문천"]
+                list: ["비사문천!"]
             },
             {
                 type: "CRITICAL",
@@ -521,7 +554,7 @@ const recommendParty = {
             },
             {
                 type: "ATK",
-                list: ["유룽", "토르", "아메노우즈메"],
+                list: ["유룽!", "토르", "아메노우즈메"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
@@ -686,7 +719,7 @@ const recommendParty = {
             },
             {
                 type: "DOT",
-                list: ["파즈스", "아누비스"],
+                list: ["파즈스!", "아누비스"],
                 comment: "적에게 주원 효과를 부여하고 파즈스의 패시브를 통해 주원 효과를 정산한다. 주원은 체력 대비 % 대미지로 들어가게 된다.",
                 comment_en: "Apply the curse effect to the enemy and cancel the curse effect using Pazzus's passive. Curse damage is calculated as a % of the enemy's HP.",
                 comment_jp: "敵に呪いを加え、パズスのパッシブで呪いを打ち消す。呪いダメージは敵のHPの%で計算される。"

@@ -365,7 +365,7 @@ const operationData = {
             ""
         ]
     },
-    "shore": {
+    "슌": {
         basic: [
             { label: "의식 6", value: "총기 › 3 › 2 › 총기 › 3 › 2" }
         ],

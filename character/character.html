@@ -898,10 +898,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 이미지 세팅 보호 (URL 인코딩 포함)
         try {
             const thiefImgEl = document.querySelector('.thief-image');
-            const thiefFile = encodeURIComponent(`${characterName}.webp`);
+            const thiefFile = `${characterName}.webp`;
             if (thiefImgEl) thiefImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaImgEl = document.querySelector('.persona-image');
-            const personaFile = encodeURIComponent(`${characterName} - ${character.persona}.webp`);
+            const personaFile = `${characterName} - ${character.persona}.webp`;
             if (personaImgEl) personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
         } catch(e) { console.warn('[SAFE:set-images]', e); }
         
@@ -1168,14 +1168,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             for (const weapon of weaponTypes) {
                 const imagePath = `{{ site.baseurl }}/assets/img/character-weapon/${characterName}-${weapon.suffix}.png`;
                 
-                // 무기 데이터 가져오기
+                // 무기 데이터 가져오기 (현재 언어 데이터 우선)
                 const weaponData = characterWeapons[weapon.key];
+                // 한국어 원본 데이터의 highlight도 병합해서 사용
+                const krWeaponData = (WeaponData && WeaponData[characterName] && WeaponData[characterName][weapon.key]) || null;
 
                 // weaponData가 없으면 건너뛰기
                 if (!weaponData) continue;
 
                 const weaponItem = document.createElement('div');
                 weaponItem.className = 'weapon-item';
+                // highlight: true 이면 언어와 무관하게 하이라이트 스타일 적용
+                const isHighlighted = (weaponData && weaponData.highlight === true) || (krWeaponData && krWeaponData.highlight === true);
+                if (isHighlighted) weaponItem.classList.add('super-highlight');
                 
                 // 무기 이미지
                 const weaponImage = document.createElement('img');
@@ -1603,7 +1608,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 진급강화/스킬깨달음 라벨 번역
         const mindStatsLabels = {
             'kr': ['진급강화 1', '진급강화 2', '스킬깨달음 1', '스킬깨달음 2'],
-            'en': ['Promotion 1', 'Promotion 2', 'Skill Enforce 1', 'Skill Enforce 2'],
+            'en': ['Stats 1', 'Stats 2', 'Skill Enforce 1', 'Skill Enforce 2'],
             'jp': ['進級強化 1', '進級強化 2', 'スキル覚醒 1', 'スキル覚醒 2']
         };
         document.querySelectorAll('.mind-stats .stat-row .label, .mind-skills .skill-row .label').forEach((el, index) => {
@@ -1949,7 +1954,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '다운' : 'Down',
                 '테우르기아 충전' : 'Theurgy Charge',
                 '테우르기아' : 'Theurgy',
-                '아이템' : 'Item'
+                '아이템' : 'Item',
+                '미정' : 'TBD'
             },
             'jp': {
                 '최대 생명 증가': '最大HP上昇',
@@ -2023,7 +2029,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '다운' : 'ダウン',
                 '테우르기아 충전' : 'テウルギアャージ',
                 '테우르기아' : 'テウルギア',
-                '아이템' : 'アイテム'
+                '아이템' : 'アイテム',
+                '미정' : '未定'
             }
         };
 
@@ -2183,7 +2190,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             recommendParty[characterName].weapon.forEach(weaponName => {
                 const weaponItem = document.createElement('div');
                 weaponItem.className = 'persona-item';
+                // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
+                const hasHighlight = /!+$/.test(weaponName);
+                if (hasHighlight) weaponItem.classList.add('super-highlight');
                 weaponItem.style.cursor = 'pointer';
+                weaponName = weaponName.replace(/!+$/,'');
                 
                 const img = document.createElement('img');
                 const imgSrc = `../assets/img/wonder-weapon/${weaponName}.webp`;
@@ -2204,7 +2215,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         weaponNameText = matchWeapons[weaponName].name_jp;
                     }
                 }
-                name.textContent = weaponNameText;
+                // 표시 텍스트에서는 ! 제거
+                name.textContent = weaponNameText.replace(/!+$/,'');
                 
                 // Add click handler to show weapon effect
                 weaponItem.addEventListener('click', (e) => {
@@ -2276,7 +2288,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 category.list.forEach(personaName => {
                         const personaItem = document.createElement('div');
                         personaItem.className = 'persona-item';
+                        // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
+                        const hasHighlight = /!+$/.test(personaName);
+                        if (hasHighlight) personaItem.classList.add('super-highlight');
                         
+                        personaName = personaName.replace(/!+$/,'');
                         const personaLink = document.createElement('a');
                         personaLink.href = '#';
                         personaLink.onclick = function(e) {
@@ -2295,7 +2311,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         };
                         
                         const name = document.createElement('span');
-                        name.textContent = getLocalizedPersonaName(personaName);
+                        // 표시 텍스트에서는 ! 제거 후 출력
+                        const localized = getLocalizedPersonaName(personaName);
+                        name.textContent = localized.replace(/!+$/,'');
                         
                         personaLink.appendChild(img);
                         personaItem.appendChild(personaLink);

@@ -25,7 +25,46 @@ body {
     transition: opacity 0.3s ease;
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
+.super-highlight {
+    position: relative;
+    border-radius: 10px;
+}
+
+.super-highlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;                /* 상하좌우 0 */
+    padding: 1px;            /* 테두리 두께 */
+    border-radius: inherit;  /* 부모와 동일한 라운드 */
+    background: linear-gradient(
+        45deg,
+        #4169e1,
+        #c4ffff,
+        #e4c2d3,
+        #4169e1,
+        #c4ffff
+    );
+    /* 내부는 투명, 테두리 영역만 보이도록 마스킹 */
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; /* Safari */
+    mask-composite: exclude;     /* Other browsers */
+    pointer-events: none;        /* 클릭 방해 방지 */
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+}
 
 /* PC 환경의 배경 스타일 - 스크롤 성능 최적화 */
 @media screen and (min-width: 769px) {

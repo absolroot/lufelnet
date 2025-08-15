@@ -39,11 +39,11 @@ const enCharacterRitualData = {
     "이치고": {
         "name": "Ichigo Shikano",
         "r0": "Addictive Love",
-        "r0_detail": "When Ichigo Shikano casts 『Crimson Butterfly』 for the first time, she gains 1 stack of 『Obsession』. Each time she casts HIGHLIGHT, she gains 1 stack of 『Obsession』. 『Obsession』 can stack up to 3 times, granting the following effects based on its stacks:\n· 1 stack: For each stack of 『Resentment』, the enemy takes 2.5% increased damage.\n· 2 stacks: Critical Rate increases by 15%, and all damage dealt by Persona skills is treated as damage over time.\n· 3 stacks: Damage over time effects are increased by 25%.",
+        "r0_detail": "When Ichigo Shikano casts 『Crimson Butterfly』 for the first time, she gains 1 stack of 『Covet』. Each time she casts HIGHLIGHT, she gains 1 stack of 『Covet』. 『Covet』 can stack up to 3 times, granting the following effects based on its stacks:\n· 1 stack: For each stack of 『Hatred』, the enemy takes 2.5% increased damage.\n· 2 stacks: Critical Rate increases by 15%, and all damage dealt by Persona skills is treated as damage over time.\n· 3 stacks: Damage over time effects are increased by 25%.",
         "r1": "If It Breaks",
-        "r1_detail": "Each stack of 『Resentment』 reduces the enemy’s Defense by 3%, and each time a Persona skill is used, it applies 1 additional stack of 『Resentment』 to the target.",
+        "r1_detail": "Each stack of 『Hatred』 reduces the enemy’s Defense by 3%, and each time a Persona skill is used, it applies 1 additional stack of 『Hatred』 to the target.",
         "r2": "If It Corrupts",
-        "r2_detail": "At the start of battle, she gains 1 stack of 『Obsession』. The maximum stacks of 『Obsession』 increase to 5, and additional effects are gained depending on the stacks:\n· 4 stacks: Critical Damage increases by 36%.\n· 5 stacks: When taking lethal damage for the first time, she enters a Near-Death state and gains 4 stacks of 『Mad Delusion』. While in Near-Death, HP cannot fall below 1, and at the end of each ally's turn, 1 stack of 『Mad Delusion』 is consumed. She dies when all stacks are consumed.",
+        "r2_detail": "At the start of battle, she gains 1 stack of 『Covet』. The maximum stacks of 『Covet』 increase to 5, and additional effects are gained depending on the stacks:\n· 4 stacks: Critical Damage increases by 36%.\n· 5 stacks: When taking lethal damage for the first time, she enters a Near-Death state and gains 4 stacks of 『Mad Delusion』. While in Near-Death, HP cannot fall below 1, and at the end of each ally's turn, 1 stack of 『Mad Delusion』 is consumed. She dies when all stacks are consumed.",
         "r3": "If It Forgives",
         "r3_detail": "The skill levels of 『Shh! Execution Time』 and 『Combat Technique』 increase by 3, up to a maximum of level 15.",
         "r4": "If It Loves",
@@ -51,7 +51,7 @@ const enCharacterRitualData = {
         "r5": "If It’s Dangerous",
         "r5_detail": "The skill levels of 『Crimson Butterfly』 and 『Kiss of the Red Rose』 increase by 3, up to a maximum of level 15.",
         "r6": "If It Were Another Me",
-        "r6_detail": "The maximum stacks of 『Resentment』 increase to 15.\n· When 『Obsession』 reaches the specified stack counts, the following effects are gained:\n· 1 stack: After casting 『Crimson Butterfly』, it is cast once more on the target (once per battle).\n· 2 stacks: After casting 『Kiss of the Red Rose』, it is cast once more on the target (once per battle).\n· 3 stacks: After casting 『Shh! Execution Time』, it is cast once more on the target (once per battle).\n· 4 stacks: On her turn, she casts 『HIGHLIGHT』 once on the designated target (once per battle, does not consume HIGHLIGHT energy, and does not affect HIGHLIGHT cooldown)."
+        "r6_detail": "The maximum stacks of 『Hatred』 increase to 15.\n· When 『Covet』 reaches the specified stack counts, the following effects are gained:\n· 1 stack: After casting 『Crimson Butterfly』, it is cast once more on the target (once per battle).\n· 2 stacks: After casting 『Kiss of the Red Rose』, it is cast once more on the target (once per battle).\n· 3 stacks: After casting 『Shh! Execution Time』, it is cast once more on the target (once per battle).\n· 4 stacks: On her turn, she casts 『HIGHLIGHT』 once on the designated target (once per battle, does not consume HIGHLIGHT energy, and does not affect HIGHLIGHT cooldown)."
     },
     "사나다": {
         "name": "Sanada Akihiko",

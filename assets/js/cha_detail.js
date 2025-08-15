@@ -1108,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 의식 텍스트 번역
                     let translatedLabel = item.label;
                     if (currentLang === 'en') {
-                        translatedLabel = translatedLabel.replace(/의식/g, 'Awareness');
+                        translatedLabel = translatedLabel.replace(/의식 /g, 'A');
                     } else if (currentLang === 'jp') {
                         translatedLabel = translatedLabel.replace(/의식/g, '意識');
                     }

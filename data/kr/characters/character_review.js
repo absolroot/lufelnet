@@ -105,7 +105,128 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 `
     },
     "이치고": { name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
-        review: ``
+        review: `
+주원 속성 지속 대미지『원념』중첩을 적에게 부여하는 강력한 단일 딜러입니다.
+
+**스킬1과 스킬2를 통해 『원념』을 적에게 부여**하고, 최대 중첩을 완성 한 후 **스킬3으로 『원념』의 지속시간을 갱신하고 강력한 대미지**를 줍니다.
+
+그리고 **HIGHLIGHT는 중첩된 『원념』을 결산하고, 『원념』지속 대미지가 크리티컬이 가능**하도록 합니다.
+
+HIGHLIGHT와 스킬1에 영향을 받는 『집착』중첩은 전체적으로 대미지를 올려주는 자체 버프를 획득합니다.
+
+---
+
+이치고는 정말 강력하지만 딜링 메커니즘은 역대 캐릭터 중 가장 복잡합니다. 
+
+『원념』이 대미지를 주는 방식은 크게 2가지로, **적이 턴을 끝낼 때 받는 대미지**와 **HL을 통해 강제로 지속 대미지**를 계산할 때가 다릅니다.
+
+- 각 『원념』은 적에게 부여할 때의 이치고의 버프 상태를 기억(스냅샷)하며, **3스킬을 통해 갱신할 때 해당 시점의 이치고 버프로 덮어씌워집니다.** 
+
+- 크리티컬은 별도로 각 **지속 대미지 중첩이 계산되는 시점의 이치고의 크리티컬 확률과 효과**를 따라갑니다. 
+이 시점에 이치고의 크리티컬 확률이 100% 보다 낮아 크리티컬이 발동되지 않을 경우 [안정 영역] 메커니즘이 발동되지 않는 버그가 있습니다. 
+
+- 적이 턴을 끝낼 때 받는 지속대미지 결산의 경우 이치고의 관통 버프가 적용되지 않아, 방어력 감소 효과가 다른 캐릭터들보다 유의미합니다.
+
+---
+
+아래는 이치고의 버프 상태가 적용되는 버프 테이블입니다.
+
+| -                         | 공격력 / 대미지보너스 | 크리티컬 확률 / 효과         | 방어력 감소 | 관통 |
+|---------------------------|----------------------|-----------------------------|-------------|------|
+| 1/2/3스킬                 | O                    | O                           | O           | O    |
+| 원념 부여/갱신             | O                    | -                           | O           | -    |
+| 원념×2 결산 - HL          | -                    | O (결산 시점 기준)          | -           | O    |
+| 지속대미지 결산 - HL      | -                    | O (결산 시점 기준)          | -           | -    |
+| 원념 결산 - 턴 종료        | -                    | O (결산 시점 기준)          | -           | -    |
+| HIGHLIGHT 기본            | O                    | -                           | O           | O    |
+
+
+<br>
+
+**지속 대미지 증가**라는 버프가 기존 대미지 증가와는 다르게 별도의 버킷으로 계산됩니다.
+
+참고로 이치고가 나타나기 전에 출시됐던 '년수'의 지속 대미지 증가는 일반적인 대미지 증가 버킷으로 계산됩니다.
+
+`,
+review_en: `
+Ichigo is a powerful single-target DPS who applies the main attribute’s DoT [Hatred] stacks to enemies.  
+
+**Applies [Hatred] to enemies via S1 and S2**, and after reaching the maximum stacks, **uses S3 to refresh the duration of [Hatred] and deal massive damage**.  
+
+Additionally, **HIGHLIGHT settles the stacked [Hatred] and allows [Hatred] DoT to crit**.  
+
+The [Covet] stacks affected by HIGHLIGHT and S1 grant Ichigo a self-buff that increases overall damage.  
+
+---
+
+Ichigo is extremely strong, but her damage-dealing mechanism is the most complex among all characters to date.  
+
+There are two main ways [Hatred] deals damage: **damage dealt when the enemy ends their turn** and **forced DoT calculation via HL**.  
+
+- Each [Hatred] stack snapshots Ichigo’s buff state at the time it is applied, and **when refreshed with S3, it is overwritten with Ichigo’s buffs at that moment**.  
+
+- Critical hits follow **Ichigo’s CRIT Rate and CRIT DMG at the moment each DoT stack is calculated**. If Ichigo’s CRIT Rate is below 100% at that time and a critical hit does not occur, the Stable Domain mechanic will not trigger due to a bug.  
+
+- For DoT settlement when the enemy ends their turn, Ichigo’s Pierce buff does not apply, making DEF reduction effects more meaningful than for other characters.  
+
+---
+
+Below is the buff table showing where Ichigo’s buff state applies:  
+
+| -                         | ATK / DMG Bonus      | CRIT Rate / CRIT DMG         | DEF Reduction | Pierce |
+|---------------------------|----------------------|------------------------------|---------------|--------|
+| S1/S2/S3                  | O                    | O                            | O             | O      |
+| Hatred Apply/Refresh      | O                    | -                            | O             | -      |
+| Hatred×2 Settlement - HL  | -                    | O (based on settlement time) | -             | O      |
+| DoT Settlement - HL       | -                    | O (based on settlement time) | -             | -      |
+| Hatred Settlement - Turn End | -                 | O (based on settlement time) | -             | -      |
+| HIGHLIGHT Base            | O                    | -                            | O             | O      |
+
+<br>
+
+The **DoT DMG Bonus** buff is calculated in a separate bucket from the regular DMG Bonus.  
+
+For reference, the DoT DMG Bonus of *Nian* released before Ichigo is calculated in the regular DMG Bonus bucket.  
+`,
+review_jp: `
+苺は、主属性の持続ダメージ[Hatred]スタックを敵に付与する強力な単体アタッカー。  
+
+**S1とS2で[Hatred]を敵に付与**し、最大スタックに達した後、**S3で[Hatred]の持続時間を更新しつつ大ダメージを与える**。  
+
+さらに、**HIGHLIGHTはスタックされた[Hatred]を決算し、[Hatred]の持続ダメージがクリティカル可能になる**。  
+
+HIGHLIGHTとS1の影響を受ける[Covet]スタックは、全体的なダメージを上げる自己バフを苺に付与する。  
+
+---
+
+苺は非常に強力だが、ダメージメカニズムは歴代キャラクターの中でも最も複雑。  
+
+[Hatred]がダメージを与える方式は大きく2つあり、**敵がターン終了時に受けるダメージ**と、**HLで強制的に持続ダメージを決算する場合**がある。  
+
+- 各[Hatred]は付与時の苺のバフ状態をスナップショットし、**S3で更新する際にはその時点の苺のバフで上書きされる**。  
+
+- クリティカルは**各持続ダメージスタックが計算される時点の苺のクリティカル率と効果**に依存する。この時に苺のクリティカル率が100%未満でクリティカルが発生しない場合、Stable Domainのメカニズムが発動しないバグが存在する。  
+
+- 敵がターン終了時に受ける持続ダメージ決算では、苺の貫通バフが適用されないため、防御力減少効果が他キャラクターよりも有効。  
+
+---
+
+以下は苺のバフ状態が適用されるバフテーブルである。  
+
+| -                         | 攻撃力 / ダメージボーナス | クリティカル率 / 効果        | 防御力減少 | 貫通 |
+|---------------------------|---------------------------|------------------------------|------------|------|
+| S1/S2/S3                  | O                         | O                            | O          | O    |
+| Hatred付与/更新           | O                         | -                            | O          | -    |
+| Hatred×2決算 - HL         | -                         | O（決算時点基準）            | -          | O    |
+| 持続ダメージ決算 - HL     | -                         | O（決算時点基準）            | -          | -    |
+| Hatred決算 - ターン終了    | -                         | O（決算時点基準）            | -          | -    |
+| HIGHLIGHT基本             | O                         | -                            | O          | O    |
+
+<br>
+
+**持続ダメージ増加**というバフは、既存のダメージ増加とは異なり、別のバケットで計算される。  
+
+ちなみに、苺登場前に実装された年獣の持続ダメージ増加は、通常のダメージ増加バケットで計算される。`
     },
     "사나다": { name_en: "Akihiko Sanada", name_jp: "真田 明彦", codename: "SANADA",
         review: ``
@@ -198,7 +319,7 @@ review_jp: `
     "마사키": { name_en: "Masaki Ashiya", name_jp: "蘆谷 真咲", codename: "CHERISH",
         review: ``
     },
-    "마코토": { name_en: "Makoto Niijima", name_jp: "新島 真", codename: "QUEEN",
+"마코토": { name_en: "Makoto Niijima", name_jp: "新島 真", codename: "QUEEN",
         review: `
 강력한 단일 타겟 딜러로, **핵열 속성이 P5부터 등장했다는 점을 고려할 때 속성 면에서 이득**을 가지고 가는 캐릭터입니다.
 
@@ -293,8 +414,50 @@ review_jp:`**防御力**を基にした**反撃型アタッカー**として設�
 パッシブやAwareness 6 で貫通を得られますが、FOX向けのスルトやジャックランタンは基礎防御力が低いため、大きな効果は得にくいです。`
 
     },
-    "유우미": { name_en: "Yumi Shiina", name_jp: "椎名 悠美", codename: "PHOEBE",
-        review: ``
+"유우미": { name_en: "Yumi Shiina", name_jp: "椎名 悠美", codename: "PHOEBE",
+        review: `
+유우미(PHOEBE)는 강력한 속성 대미지 보너스를 부여하는 해명 괴도로 동일 속성의 아군이 많을 수록 가치가 높아집니다.
+
+아군이 속성 공격을 할 때마다 중첩이 1개씩 쌓이게 되고 **중첩이 3개가 되면 칵테일을 제조**합니다. **동일 속성의 중첩을 모을수록 높은 품질의 칵테일을 생성**합니다.
+
+만약 품질이 낮은 칵테일을 생성하더라도 1개는 스킬2를 통해 최고 등급의 칵테일로 변환할 수 있고, **스킬3을 통해 특정 속성의 대미지를 크게 증가**시킬 수 있습니다.
+
+<br>
+
+요구 공격력이 높은 편이라 계시 카드 세팅을 신경써줘야하고, 전용 무기가 공격력을 올려줄 뿐 아니라 행동 턴 수를 변화시킬 수 있는 요소가 있어 전용 무기를 신경 쓰는 편이 좋습니다.
+
+최초의 5성 해명 괴도로서 기존 15%씩 스탯을 아군에게 나눠주던 4성과 달리, **아군에게 스탯의 20%를 나눠줌으로서 해명 괴도의 스탯을 보다 신경써야 합니다.**
+
+칵테일에 의존하는 캐릭터로 의식6에 칵테일의 상한이 3잔에서 4잔으로 늘어나는 영향도가 높습니다.
+`,
+review_en: `
+Phoebe is an Elucidator Phantom Thief who provides a powerful elemental damage bonus, making her more valuable the more allies share her element.  
+
+Each time an ally performs an elemental attack, she gains 1 stack, and **when 3 stacks are reached, she mixes a cocktail**. **The more stacks of the same element gathered, the higher the quality of the cocktail produced**.  
+
+Even if a low-quality cocktail is created, one can be upgraded to the highest tier via Skill 2, and **Skill 3 can greatly boost the damage of a specific element**.  
+
+<br>
+
+Since her ATK requirement is relatively high, careful Revelation Card setup is needed. Her exclusive weapon not only increases ATK but also has an effect that can alter turn order, so it’s worth investing in.  
+
+As the first 5★ Elucidator Phantom Thief, unlike 4★ units who shared 15% of their stats with allies, **she shares 20% of her stats with allies, making her own stats even more important**.  
+
+Being a cocktail-dependent character, at Awareness 6, the cocktail limit increases from 3 to 4 glasses, which has a significant impact.`,
+review_jp: `
+椎名 悠美（PHOEBE）は強力な属性ダメージボーナスを付与する解明怪盗で、同属性の味方が多いほど価値が高まる。  
+
+味方が属性攻撃を行うたびに1スタックを獲得し、**3スタックに達するとカクテルを作成**する。**同じ属性のスタックを集めるほど、より高品質なカクテルを生成**できる。  
+
+低品質のカクテルが生成されても、スキル2で1つを最高ランクのカクテルに変換可能で、**スキル3で特定属性のダメージを大幅に強化**できる。  
+
+<br>
+
+要求攻撃力が高めなので啓示カードのセットに注意が必要で、専用武器は攻撃力を上げるだけでなく行動順を変化させる効果もあるため、専用武器に投資する価値がある。  
+
+初の★5解明怪盗として、従来の★4が味方にステータスを15%分配していたのに対し、**味方にステータスの20%を分配するため、自身のステータスをより重視する必要がある**。  
+
+カクテルに依存するキャラクターであり、意識6ではカクテルの上限が3杯から4杯に増えるため、その影響は大きい。  `
     },
     "유이 YUI": { name_en: "Yui", name_jp: "ユイ", codename: "BUI",
         review: 
@@ -303,7 +466,7 @@ review_jp:`**防御力**を基にした**反撃型アタッカー**として設�
     "유키미": { name_en: "Yukimi Fujikawa", name_jp: "藤川 雪実", codename: "YUKI",
         review: ``
     },
-    "치즈코": { name_en: "Chizuko Nagao", name_jp: "長尾 チヅ子", codename: "VINO",
+"치즈코": { name_en: "Chizuko Nagao", name_jp: "長尾 チヅ子", codename: "VINO",
         review: `
 4성임에도 불구하고 **방어력 감소 수치가 높아 준 5성에 달하는 디버퍼**입니다.
 
@@ -341,7 +504,7 @@ review_jp: `
     "토모코·여름": { name_en: "Noge Tomoko Summer", name_jp: "野毛 朋子 夏", codename: "MOKO·Summer",
         review: ``
     },
-    "토시야": { name_en: "Seumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
+"토시야": { name_en: "Seumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
         review:`
 주원 효과를 기반으로 적에게 % 대미지를 주는 딜러입니다.
 

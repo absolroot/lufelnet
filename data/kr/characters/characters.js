@@ -1625,7 +1625,7 @@ const characterData = {
         "sub_revel4": ["공격력"],
         "sub_option1": ["공격력"],
         "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option3": ["대미지보너스"],
+        "sub_option3": ["대미지보너스", "관통"],
         "minimum_stats": {
             "LV10": "공격력 5000",
             "LV10+5": "공격력 5500",

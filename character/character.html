@@ -658,6 +658,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             const wireImage = (imgEl) => {
                 if (!imgEl) return;
+                // 로딩 우선순위 및 디코딩 힌트
+                try { imgEl.setAttribute('loading', 'eager'); } catch(_) {}
+                try { imgEl.setAttribute('decoding', 'sync'); } catch(_) {}
+                try { imgEl.setAttribute('fetchpriority', 'high'); } catch(_) {}
                 imgEl.addEventListener('load', () => {
                     try { imgEl.setAttribute('data-loaded', 'true'); } catch(_) {}
                 });
@@ -679,6 +683,27 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         }
                     }, 1500);
                 }
+                // 최종 보증: 비동기 프리페치 후 DOM에 재주입 (레이스 대비)
+                setTimeout(() => {
+                    try {
+                        if (imgEl.naturalWidth === 0) {
+                            const tmp = new Image();
+                            tmp.onload = () => {
+                                try {
+                                    imgEl.src = tmp.src;
+                                    imgEl.setAttribute('data-loaded', 'true');
+                                } catch(_) {}
+                            };
+                            tmp.onerror = () => {
+                                try {
+                                    imgEl.src = fallbackSrc;
+                                    imgEl.setAttribute('data-loaded', 'true');
+                                } catch(_) {}
+                            };
+                            tmp.src = imgEl.currentSrc || imgEl.src;
+                        }
+                    } catch(_) {}
+                }, 800);
             };
 
             wireImage(thiefImg);
@@ -776,8 +801,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const personaFile = encodeURIComponent(`${characterName} - ${basicCharacter.persona}.webp`);
             const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-            if (thiefEl && !thiefEl.src) { thiefEl.src = thiefSrc; thiefEl.setAttribute('fetchpriority', 'high'); }
-            if (personaEl && !personaEl.src) { personaEl.src = personaSrc; personaEl.setAttribute('fetchpriority', 'high'); }
+            if (thiefEl) { thiefEl.src = thiefSrc; thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading','eager'); }
+            if (personaEl) { personaEl.src = personaSrc; personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading','eager'); }
             const preload1 = document.createElement('link');
             preload1.rel = 'preload';
             preload1.as = 'image';

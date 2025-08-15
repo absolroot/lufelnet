@@ -767,6 +767,27 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             return;
         }
             
+        // 이미지 우선 로딩: 다국어 데이터 로드와 상관없이 즉시 표시되도록 선행 주입
+        try {
+            const basicCharacter = characterData[characterName];
+            const thiefEl = document.querySelector('.thief-image');
+            const personaEl = document.querySelector('.persona-image');
+            const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
+            const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${basicCharacter.persona}.webp`;
+            if (thiefEl && !thiefEl.src) thiefEl.src = thiefSrc;
+            if (personaEl && !personaEl.src) personaEl.src = personaSrc;
+            const preload1 = document.createElement('link');
+            preload1.rel = 'preload';
+            preload1.as = 'image';
+            preload1.href = thiefSrc;
+            document.head.appendChild(preload1);
+            const preload2 = document.createElement('link');
+            preload2.rel = 'preload';
+            preload2.as = 'image';
+            preload2.href = personaSrc;
+            document.head.appendChild(preload2);
+        } catch(e) { console.warn('[SAFE:early-image-load]', e); }
+
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
         

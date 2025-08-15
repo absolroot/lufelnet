@@ -633,8 +633,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
 <script>
     document.addEventListener('DOMContentLoaded', async function() {
-        Navigation.load('character', 1);
-        VersionChecker.check();
+        // 안전 실행 유틸리티: 개별 블록에서 오류가 나도 전체 흐름을 막지 않음
+        const safeRun = (name, fn) => { try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); } };
+        const safeAwait = async (name, promise) => { try { return await promise; } catch (e) { console.warn(`[SAFE:${name}]`, e); return undefined; } };
+        const safeAddEvent = (el, evt, handler, name = 'event') => {
+            try {
+                if (el && el.addEventListener) {
+                    el.addEventListener(evt, (...args) => { try { handler && handler(...args); } catch (e) { console.warn(`[SAFE:${name}:${evt}]`, e); } });
+                }
+            } catch (e) { console.warn(`[SAFE:addEvent:${name}]`, e); }
+        };
+
+        safeRun('Navigation.load', () => Navigation.load('character', 1));
+        safeRun('VersionChecker.check', () => VersionChecker.check());
 
         // Get character name from URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -736,17 +747,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
             
         // 언어별 데이터 로드 후 캐릭터 정보 설정
-        await loadLanguageData();
+        await safeAwait('loadLanguageData', loadLanguageData());
         
         // 한국어인 경우 바로 스킬 정보 로드
         if (currentLang === 'kr') {
-            // console.log('한국어 - fillSkillsInfo 호출 준비');
-            if (typeof fillSkillsInfo === 'function') {
-                // console.log('fillSkillsInfo 함수 존재 - 호출');
-                fillSkillsInfo(characterName);
-            } else {
-                console.log('fillSkillsInfo 함수가 정의되지 않음');
-            }
+            safeRun('fillSkillsInfo-kr', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
         }
 
         const character = characterData[characterName];
@@ -797,99 +802,114 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
         // 캐릭터 리뷰 렌더링 함수
 
-        const reviewContainer = document.getElementById('character-review');
-        if (!reviewContainer) return;
-        
-        // character_review.js에서 캐릭터 정보 가져오기
-        const characterReviewData = characterReview[characterName];
-        const ReviewCard = document.querySelector('.review-card');
-
-        if (!characterReviewData || !characterReviewData.review) {
-            reviewContainer.innerHTML = '<p style="color: #888; font-style: italic;">이 캐릭터에 대한 리뷰가 아직 작성되지 않았습니다.</p>';
-            // 정보가 없을 경우 해당 카드 display: none;
-            reviewContainer.style.display = 'none';
-            ReviewCard.style.display = 'none';
-        }
-        let currentReview = characterReviewData.review;
-        // 언어별 리뷰 설정
-        if (currentLang === 'en' && characterReviewData.review_en) {
-            currentReview = characterReviewData.review_en;
-        } else if (currentLang === 'jp' && characterReviewData.review_jp) {
-            currentReview = characterReviewData.review_jp;
-        } 
-        
-        // 마크다운을 HTML로 변환
-        const htmlContent = marked.parse(currentReview);
-        reviewContainer.innerHTML = htmlContent;
+        // 안전하게 리뷰 렌더링
+        try {
+            const reviewContainer = document.getElementById('character-review');
+            if (!reviewContainer) throw new Error('reviewContainer not found');
+            const characterReviewData = characterReview[characterName];
+            const ReviewCard = document.querySelector('.review-card');
+            if (!characterReviewData || !characterReviewData.review) {
+                reviewContainer.innerHTML = '<p style="color: #888; font-style: italic;">이 캐릭터에 대한 리뷰가 아직 작성되지 않았습니다.</p>';
+                reviewContainer.style.display = 'none';
+                if (ReviewCard) ReviewCard.style.display = 'none';
+            } else {
+                let currentReview = characterReviewData.review;
+                if (currentLang === 'en' && characterReviewData.review_en) {
+                    currentReview = characterReviewData.review_en;
+                } else if (currentLang === 'jp' && characterReviewData.review_jp) {
+                    currentReview = characterReviewData.review_jp;
+                }
+                const htmlContent = marked.parse(currentReview);
+                reviewContainer.innerHTML = htmlContent;
+            }
+        } catch(e) { console.warn('[SAFE:render-review]', e); }
 
 
         // 이미지 설정
-        document.querySelector('.thief-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
-        document.querySelector('.persona-image').src = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
+        // 이미지 세팅 보호
+        try {
+            const thiefImgEl = document.querySelector('.thief-image');
+            if (thiefImgEl) thiefImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
+            const personaImgEl = document.querySelector('.persona-image');
+            if (personaImgEl) personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
+        } catch(e) { console.warn('[SAFE:set-images]', e); }
         
         // Set character name (en에서는 로딩 전에 skeleton 사용)
-        const nameElement = document.querySelector('.character-name');
-        if (nameElement) {
-            if (currentLang === 'en') {
-                nameElement.classList.add('skeleton');
-                // 다음 프레임에 실제 텍스트 주입하여 스켈레톤 제거
-                requestAnimationFrame(() => {
-                    nameElement.textContent = character.name_en || characterName;
-                    nameElement.classList.remove('skeleton');
-                });
-            } else if (currentLang === 'jp' && character.name_jp) {
-                nameElement.textContent = character.name_jp;
-            } else {
-                nameElement.textContent = characterName;
+        try {
+            const nameElement = document.querySelector('.character-name');
+            if (nameElement) {
+                if (currentLang === 'en') {
+                    nameElement.classList.add('skeleton');
+                    requestAnimationFrame(() => {
+                        try { nameElement.textContent = character.name_en || characterName; } catch(_) {}
+                        nameElement.classList.remove('skeleton');
+                    });
+                } else if (currentLang === 'jp' && character.name_jp) {
+                    nameElement.textContent = character.name_jp;
+                } else {
+                    nameElement.textContent = characterName;
+                }
             }
-        }
+        } catch(e) { console.warn('[SAFE:set-name]', e); }
         
         // 코드네임 설정
-        const codeNameLabel = currentLang === 'kr' ? '코드네임 ' :
-                             currentLang === 'en' ? 'Code Name ' : 'コードネーム ';
-        document.querySelector('.code-name').innerHTML = `
-            <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
-        `;
-        
-        // 페르소나 설정
-        const personaLabel = currentLang === 'kr' ? '페르소나 ' :
-                            currentLang === 'en' ? 'Persona ' : 'ペルソナ ';
-        const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
-                            currentLang === 'jp' && character.persona_jp ? character.persona_jp :
-                            character.persona || '';
-        document.querySelector('.persona-name').innerHTML = `
-            <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
-        `;
+        try {
+            const codeNameLabel = currentLang === 'kr' ? '코드네임 ' :
+                                 currentLang === 'en' ? 'Code Name ' : 'コードネーム ';
+            const codeEl = document.querySelector('.code-name');
+            if (codeEl) {
+                codeEl.innerHTML = `
+                    <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
+                `;
+            }
+            const personaLabel = currentLang === 'kr' ? '페르소나 ' :
+                                currentLang === 'en' ? 'Persona ' : 'ペルソナ ';
+            const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
+                                currentLang === 'jp' && character.persona_jp ? character.persona_jp :
+                                character.persona || '';
+            const personaEl = document.querySelector('.persona-name');
+            if (personaEl) {
+                personaEl.innerHTML = `
+                    <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
+                `;
+            }
+        } catch(e) { console.warn('[SAFE:code-persona]', e); }
         
         // 속성 아이콘 설정
-        if (character.element) {
-            const elementIcons = document.querySelector('.element-icons');
-            elementIcons.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
-        }
+        try {
+            if (character.element) {
+                const elementIcons = document.querySelector('.element-icons');
+                if (elementIcons) elementIcons.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
+            }
+        } catch(e) { console.warn('[SAFE:element-icon]', e); }
         
         // 직업 아이콘 및 이름 설정
-        if (character.position) {
-            const positionIcon = document.querySelector('.position-icon');
-            const positionName = document.querySelector('.position-name');
-            positionIcon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
-            //positionName.textContent = character.position;
-        }
+        try {
+            if (character.position) {
+                const positionIcon = document.querySelector('.position-icon');
+                if (positionIcon) positionIcon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
+            }
+        } catch(e) { console.warn('[SAFE:position-icon]', e); }
         
         // 약점/내성 설정 (데이터가 있을 경우에만)
         const resistanceIcons = document.querySelector('.resistance-icons');
-        if (character.resistances && Array.isArray(character.resistances)) {
-            character.resistances.forEach(res => {
-                const icon = document.createElement('div');
-                icon.className = `resistance-icon ${res.type}`;
-                icon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${res.element}.png" alt="${res.element}">`;
-                resistanceIcons.appendChild(icon);
-            });
-        }
+        try {
+            if (character.resistances && Array.isArray(character.resistances)) {
+                character.resistances.forEach(res => {
+                    const icon = document.createElement('div');
+                    icon.className = `resistance-icon ${res.type}`;
+                    icon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${res.element}.png" alt="${res.element}">`;
+                    resistanceIcons.appendChild(icon);
+                });
+            }
+        } catch(e) { console.warn('[SAFE:resistances]', e); }
         
         // 스탯 설정 (데이터가 있을 경우에만)
-        if (character.stats) {
-            const statGrid = document.querySelector('.stat-grid');
-            statGrid.innerHTML = `
+        try {
+            if (character.stats) {
+                const statGrid = document.querySelector('.stat-grid');
+                if (!statGrid) throw new Error('statGrid not found');
+                statGrid.innerHTML = `
                 <div class="stat-item">
                     <span class="stat-label">공격력</span>
                     <span class="stat-value">${character.stats.attack || 0}</span>
@@ -923,7 +943,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     <span class="stat-value">${character.stats.effectHit || 0}%</span>
                 </div>
             `;
-        }
+            }
+        } catch(e) { console.warn('[SAFE:stat-grid]', e); }
         
 
         // 스킬 설정은 cha_detail.js에서 자동 처리됨
@@ -948,21 +969,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
 
         // 초기 의식 내용 설정
-        updateAllRitualContent();
+        try { updateAllRitualContent(); } catch(e) { console.warn('[SAFE:updateAllRitualContent]', e); }
         
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');
-        // 언어 별 battle-plus-stats
-        if (currentLang === 'en' && character.battle_plus_stats_en) {
-            battlePlusStats.textContent = character.battle_plus_stats_en;
-        } else if (currentLang === 'jp' && character.battle_plus_stats_jp) {
-            battlePlusStats.textContent = character.battle_plus_stats_jp;
-        } else {
-            battlePlusStats.textContent = character.battle_plus_stats;
-        }
-        console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
+        try {
+            if (!battlePlusStats) throw new Error('battlePlusStats not found');
+            // 언어 별 battle-plus-stats
+            if (currentLang === 'en' && character.battle_plus_stats_en) {
+                battlePlusStats.textContent = character.battle_plus_stats_en;
+            } else if (currentLang === 'jp' && character.battle_plus_stats_jp) {
+                battlePlusStats.textContent = character.battle_plus_stats_jp;
+            } else {
+                battlePlusStats.textContent = character.battle_plus_stats;
+            }
+        } catch(e) { console.warn('[SAFE:battlePlus-init]', e); }
         
-        if (battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
+        if (battlePlusStats && battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
             // console.log('Original battle_plus_stats:', character.battle_plus_stats);
             
             // <b> 태그의 수 확인
@@ -1025,8 +1048,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                  
                  // console.log('Final items:', items);
             }
-        } else {
-            // console.log('battle_plus_stats is empty or nan');
+        } else if (battlePlusStats) {
             battlePlusStats.textContent = '-';
         }
         
@@ -1174,30 +1196,29 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
 
         // 캐릭터 로드 시 무기 정보도 함께 로드
-        if (characterName && characterData[characterName]) {
-            loadWeapons(characterName, 'mixed');
-        }
+        try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch(e) { console.warn('[SAFE:loadWeapons-init]', e); }
 
         // 추천 페르소나와 파티 로드
-        loadRecommendations(characterName);
+        try { loadRecommendations(characterName); } catch(e) { console.warn('[SAFE:loadRecommendations]', e); }
                         
         // 툴팁 추가
-        addTooltips();
+        try { addTooltips(); } catch(e) { console.warn('[SAFE:addTooltips]', e); }
 
         // 버튼 이벤트 리스너 추가
         const enhancementButtons = document.querySelectorAll('.enhancement-btn');
         
         enhancementButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 활성 버튼 스타일 변경
-                enhancementButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // 무기 다시 로드
-                const urlParams = new URLSearchParams(window.location.search);
-                const characterName = urlParams.get('name');
-                loadWeapons(characterName, button.dataset.stage);
-            });
+            try {
+                button.addEventListener('click', () => {
+                    try {
+                        enhancementButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const characterName = urlParams.get('name');
+                        loadWeapons(characterName, button.dataset.stage);
+                    } catch(e) { console.warn('[SAFE:enhancement-click-inner]', e); }
+                });
+            } catch(e) { console.warn('[SAFE:enhancement-click]', e); }
         });
 
         
@@ -1235,7 +1256,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const currentSiteInfo = siteInfo[currentLang] || siteInfo['kr'];
         
         // 타이틀 업데이트
-        document.title = `${characterDisplayName} - ${currentSiteInfo.siteName}`;
+        try { document.title = `${characterDisplayName} - ${currentSiteInfo.siteName}`; } catch(e) { console.warn('[SAFE:seo-title]', e); }
         
         // 메타 태그 업데이트 (태그가 존재하는 경우에만)
         const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
@@ -1247,88 +1268,81 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const ogUrl = document.querySelector('meta[property="og:url"]');
         const canonicalLink = document.getElementById('canonical-link');
 
-        if (metaDescription) metaDescription.setAttribute('content', description);
-        if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
-        if (ogDescription) ogDescription.setAttribute('content', description);
-        if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
-        if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
-        if (canonicalLink) {
-            const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
-            canonicalLink.setAttribute('href', canonicalUrl);
-        }
+        try {
+            if (metaDescription) metaDescription.setAttribute('content', description);
+            if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
+            if (ogDescription) ogDescription.setAttribute('content', description);
+            if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
+            if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
+            if (canonicalLink) {
+                const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
+                canonicalLink.setAttribute('href', canonicalUrl);
+            }
+        } catch(e) { console.warn('[SAFE:seo-meta]', e); }
 
         // 번역 적용 (캐릭터 데이터 로드 후)
-        applyTranslations();
+        try { applyTranslations(); } catch(e) { console.warn('[SAFE:applyTranslations]', e); }
         
         // 번역 적용 후 레이아웃 재계산
         setTimeout(() => {
-            if (typeof fillOperationInfo === 'function') {
-                fillOperationInfo(characterName);
+            try { if (typeof fillOperationInfo === 'function') { fillOperationInfo(characterName); } } catch(e) { console.warn('[SAFE:fillOperationInfo-timeout]', e); }
+            try {
+                if (window.innerWidth <= 768) {
+                    const operationSettings = document.querySelector('.operation-settings');
+                    if (operationSettings) {
+                        operationSettings.style.gridTemplateColumns = '1fr';
+                        operationSettings.style.display = 'flex';
+                        operationSettings.style.flexDirection = 'column';
+                        operationSettings.style.gap = '20px';
+                    }
+                }
+            } catch(e) { console.warn('[SAFE:operationSettings-mobile]', e); }
+        }, 100);
+        
+        // 영어/일본어에서 주의 메시지 표시
+        try {
+            if (currentLang === 'en' || currentLang === 'jp') {
+                const warningMessage = currentLang === 'en' ? 
+                    'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)' :
+                    '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、心象など）';
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'warning-message';
+                warningDiv.style.cssText = 'background: rgba(17, 17, 17, 0.2); color: #6c757d; padding: 10px; margin: 15px 0; border-radius: 4px; font-size: 13px; opacity: 0.5;';
+                warningDiv.innerHTML = `<strong>${currentLang === 'en' ? 'Notice' : '注意'}</strong><br>${warningMessage}`;
+                const settingsCard = document.querySelector('.settings-card');
+                if (settingsCard) {
+                    settingsCard.insertBefore(warningDiv, settingsCard.firstChild.nextSibling);
+                }
             }
-            
-            // 모바일에서는 무조건 1열로 설정
-            if (window.innerWidth <= 768) {
+        } catch(e) { console.warn('[SAFE:lang-warning]', e); }
+
+        
+
+
+        try {
+            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
+            tagElements.forEach(el => { if (el) el.style.display = ''; });
+        } catch(e) { console.warn('[SAFE:tag-display]', e); }
+
+        //role은 kr 아니면 숨기기
+        try {
+            const roleElement = document.querySelector('.chracter-role');
+            if(currentLang !== 'kr' && roleElement) { roleElement.style.display = 'none'; }
+        } catch(e) { console.warn('[SAFE:role-hide]', e); }
+
+        try {
+            const noteSection = document.querySelector('.operation-settings .setting-section:last-child');
+            const notes = noteSection ? noteSection.querySelector('.operation-notes') : null;
+            if (!notes || notes.innerHTML.trim() === '') {
+                if (noteSection) noteSection.style.display = 'none';
                 const operationSettings = document.querySelector('.operation-settings');
                 if (operationSettings) {
                     operationSettings.style.gridTemplateColumns = '1fr';
                     operationSettings.style.display = 'flex';
                     operationSettings.style.flexDirection = 'column';
-                    operationSettings.style.gap = '20px';
                 }
             }
-
-        }, 100);
-        
-        // 영어/일본어에서 주의 메시지 표시
-        if (currentLang === 'en' || currentLang === 'jp') {
-            const warningMessage = currentLang === 'en' ? 
-                'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)' :
-                '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、心象など）';
-            
-            const warningDiv = document.createElement('div');
-            warningDiv.className = 'warning-message';
-            warningDiv.style.cssText = 'background: rgba(17, 17, 17, 0.2); color: #6c757d; padding: 10px; margin: 15px 0; border-radius: 4px; font-size: 13px; opacity: 0.5;';
-            warningDiv.innerHTML = `<strong>${currentLang === 'en' ? 'Notice' : '注意'}</strong><br>${warningMessage}`;
-            
-            const settingsCard = document.querySelector('.settings-card');
-            if (settingsCard) {
-                settingsCard.insertBefore(warningDiv, settingsCard.firstChild.nextSibling);
-            }
-        }
-
-        
-
-
-        const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
-        tagElements.forEach(el => {
-            if (el) el.style.display = '';
-        });
-
-        //role은 kr 아니면 숨기기
-        const roleElement = document.querySelector('.chracter-role');
-        if(currentLang !== 'kr')
-        {
-            roleElement.style.display = 'none';
-        }
-
-        const noteSection = document.querySelector('.operation-settings .setting-section:last-child');
-        if(noteSection.querySelector('.operation-notes').innerHTML.trim() === '')
-        {
-            console.log('noteSection is empty');
-            noteSection.style.display = 'none';
-
-            const operationSettings = document.querySelector('.operation-settings');
-                if (operationSettings) {
-                    operationSettings.style.gridTemplateColumns = '1fr';
-                    operationSettings.style.display = 'flex';
-                    operationSettings.style.flexDirection = 'column';
-                }
-        }
-        else
-        {
-            console.log('noteSection is not empty');
-            console.log(noteSection.innerHTML);
-        }
+        } catch(e) { console.warn('[SAFE:note-section]', e); }
         
     });
 

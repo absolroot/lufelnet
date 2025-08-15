@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 안전 실행 유틸리티: 개별 블록에서 에러가 나도 이후 로직이 계속 진행되도록 보장
+    const safeRun = (name, fn) => {
+        try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); }
+    };
+    const safeAddEvent = (el, evt, handler, name = 'event') => {
+        try {
+            if (el && el.addEventListener) {
+                el.addEventListener(evt, (...args) => {
+                    try { handler && handler(...args); } catch (e) { console.warn(`[SAFE:${name}:${evt}]`, e); }
+                });
+            }
+        } catch (e) { console.warn(`[SAFE:addEvent:${name}]`, e); }
+    };
     
     // 현재 언어 가져오기 함수
     function getCurrentLanguage() {
@@ -319,34 +332,40 @@ document.addEventListener('DOMContentLoaded', () => {
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
         
-        // 페르소나3 캐릭터일 때 person3r.css 적용, 코드네임 제거
-        if (character.persona3) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = `${BASE_URL}/assets/css/persona3r.css`;
-            document.head.appendChild(link);
-            document.querySelector('.code-name').style.display = 'none';
-            document.querySelector('.sees').style.display = 'block';
+        // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
+        safeRun('persona3-css-and-text', () => {
+            if (character.persona3) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = `${BASE_URL}/assets/css/persona3r.css`;
+                document.head.appendChild(link);
+                const codeNameEl = document.querySelector('.code-name');
+                if (codeNameEl) codeNameEl.style.display = 'none';
+                const seesEl = document.querySelector('.sees');
+                if (seesEl) seesEl.style.display = 'block';
+                const hl = document.querySelector('[data-text="highlight"]');
+                if (hl) hl.textContent = '테우르기아';
+            } else {
+                const hl = document.querySelector('[data-text="highlight"]');
+                if (hl) hl.textContent = '하이라이트';
+            }
+        });
 
-            document.querySelector('[data-text="highlight"]').textContent = '테우르기아';
-        }
-        else {
-            document.querySelector('[data-text="highlight"]').textContent = '하이라이트';
-        }
+        // 페르소나5 콜라보 스타일 적용 (안전 실행)
+        safeRun('persona5-css', () => {
+            if (character.persona5) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = `${BASE_URL}/assets/css/persona5r.css`;
+                document.head.appendChild(link);
+            }
+        });
 
-        // 페르소나5 콜라보 캐릭터일 때 persona5r.css 적용
-        if (character.persona5) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = `${BASE_URL}/assets/css/persona5r.css`;
-            document.head.appendChild(link);
-        }
-
-        fillSettingsInfo(character);
-        fillOperationInfo(characterName);  // 운영 정보 추가
-        // 아이템 개수 업데이트 함수 호출
-        updateSkillLevelItems();
-        updateMindItems();
+        // 주요 데이터 렌더링 호출들을 안전 실행으로 래핑
+        safeRun('fillSettingsInfo', () => fillSettingsInfo(character));
+        safeRun('fillOperationInfo', () => fillOperationInfo(characterName));
+        safeRun('updateSkillLevelItems', updateSkillLevelItems);
+        safeRun('updateMindItems', updateMindItems);
         const currentPage = document.querySelector('.current-page');
         const currentLang = getCurrentLanguage();
         let characterDisplayName = characterData[characterName].name;
@@ -408,16 +427,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     // 의식 탭 기능
-    document.querySelectorAll('.ritual-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            // 기존 활성 탭과 이미지 비활성화
-            document.querySelector('.ritual-tab.active').classList.remove('active');
-            document.querySelector('.ritual-image.active').classList.remove('active');
-            
-            // 클릭한 탭과 해당 이미지 활성화
-            tab.classList.add('active');
-            const ritualLevel = tab.dataset.ritual;
-            document.querySelector(`.ritual-image[src*="ritual${ritualLevel}.png"]`).classList.add('active');
+    safeRun('ritual-tab-events', () => {
+        document.querySelectorAll('.ritual-tab').forEach(tab => {
+            safeAddEvent(tab, 'click', () => {
+                const activeTab = document.querySelector('.ritual-tab.active');
+                if (activeTab) activeTab.classList.remove('active');
+                const activeImg = document.querySelector('.ritual-image.active');
+                if (activeImg) activeImg.classList.remove('active');
+                tab.classList.add('active');
+                const ritualLevel = tab && tab.dataset ? tab.dataset.ritual : undefined;
+                const img = ritualLevel ? document.querySelector(`.ritual-image[src*="ritual${ritualLevel}.png"]`) : null;
+                if (img) img.classList.add('active');
+            }, 'ritualTab');
         });
     });
 

@@ -104,7 +104,7 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - 味方単体のスキルマスターを1ターンの間600上昇
 `
     },
-    "이치고": { name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
+"이치고": { name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
         review: `
 주원 속성 지속 대미지『원념』중첩을 적에게 부여하는 강력한 단일 딜러입니다.
 
@@ -149,84 +149,86 @@ HIGHLIGHT와 스킬1에 영향을 받는 『집착』중첩은 전체적으로 �
 
 `,
 review_en: `
-Ichigo is a powerful single-target DPS who applies the main attribute’s DoT [Hatred] stacks to enemies.  
+A powerful single-target DPS that applies stacks of the Curse-element DoT [Hatred] to enemies.  
 
-**Applies [Hatred] to enemies via S1 and S2**, and after reaching the maximum stacks, **uses S3 to refresh the duration of [Hatred] and deal massive damage**.  
+**Applies [Hatred] to enemies through S1 and S2**, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.  
 
-Additionally, **HIGHLIGHT settles the stacked [Hatred] and allows [Hatred] DoT to crit**.  
+In addition, **HIGHLIGHT settles the stacked [Hatred] and allows [Hatred]’s DoT to crit**.  
 
-The [Covet] stacks affected by HIGHLIGHT and S1 grant Ichigo a self-buff that increases overall damage.  
-
----
-
-Ichigo is extremely strong, but her damage-dealing mechanism is the most complex among all characters to date.  
-
-There are two main ways [Hatred] deals damage: **damage dealt when the enemy ends their turn** and **forced DoT calculation via HL**.  
-
-- Each [Hatred] stack snapshots Ichigo’s buff state at the time it is applied, and **when refreshed with S3, it is overwritten with Ichigo’s buffs at that moment**.  
-
-- Critical hits follow **Ichigo’s CRIT Rate and CRIT DMG at the moment each DoT stack is calculated**. If Ichigo’s CRIT Rate is below 100% at that time and a critical hit does not occur, the Stable Domain mechanic will not trigger due to a bug.  
-
-- For DoT settlement when the enemy ends their turn, Ichigo’s Pierce buff does not apply, making DEF reduction effects more meaningful than for other characters.  
+The [Covet] stacks affected by HIGHLIGHT and S1 grant a self-buff that increases overall damage.  
 
 ---
 
-Below is the buff table showing where Ichigo’s buff state applies:  
+Ichigo is extremely powerful, but her damage-dealing mechanism is the most complex among all characters to date.  
 
-| -                         | ATK / DMG Bonus      | CRIT Rate / CRIT DMG         | DEF Reduction | Pierce |
+[Hatred] deals damage in two main ways: **damage dealt at the end of the enemy’s turn** and **forced DoT calculation via HL**.  
+
+- Each [Hatred] stack snapshots Ichigo’s buff state at the time of application, and **when refreshed via S3, it overwrites with Ichigo’s buffs at that moment**.  
+
+- Criticals are calculated separately, based on **Ichigo’s Critical Rate and Critical Damage at the time each DoT stack is calculated**.  
+  If Ichigo’s Critical Rate is below 100% at this point and a crit does not occur, the Stable Domain mechanic will not activate due to a bug.  
+
+- For end-of-turn DoT settlement, Ichigo’s pierce buffs do not apply, making Defense Reduction effects more significant compared to other characters.  
+
+---
+
+Below is the buff table showing which of Ichigo’s buffs apply:  
+
+| -                         | ATK / DMG Bonus      | Critical Rate / Critical DMG | DEF Reduction | Pierce |
 |---------------------------|----------------------|------------------------------|---------------|--------|
 | S1/S2/S3                  | O                    | O                            | O             | O      |
-| Hatred Apply/Refresh      | O                    | -                            | O             | -      |
+| Hatred Application/Refresh| O                    | -                            | O             | -      |
 | Hatred×2 Settlement - HL  | -                    | O (based on settlement time) | -             | O      |
 | DoT Settlement - HL       | -                    | O (based on settlement time) | -             | -      |
 | Hatred Settlement - Turn End | -                 | O (based on settlement time) | -             | -      |
-| HIGHLIGHT Base            | O                    | -                            | O             | O      |
+| HIGHLIGHT Base            | O                    | -                            | O             | O      |  
 
 <br>
 
-The **DoT DMG Bonus** buff is calculated in a separate bucket from the regular DMG Bonus.  
+The **DoT Damage Increase** buff is calculated in a separate bucket from standard damage increases.  
 
-For reference, the DoT DMG Bonus of *Nian* released before Ichigo is calculated in the regular DMG Bonus bucket.  
+For reference, Nian’s DoT Damage Increase, released before Ichigo, is calculated in the standard damage increase bucket.   
 `,
 review_jp: `
-苺は、主属性の持続ダメージ[Hatred]スタックを敵に付与する強力な単体アタッカー。  
+単体対象に呪怨属性の持続ダメージ[怨念]スタックを付与する強力なアタッカー。  
 
-**S1とS2で[Hatred]を敵に付与**し、最大スタックに達した後、**S3で[Hatred]の持続時間を更新しつつ大ダメージを与える**。  
+**S1とS2で敵に[怨念]を付与**し、最大スタックに到達した後、**S3で持続時間を更新しつつ強力なダメージを与える**。  
 
-さらに、**HIGHLIGHTはスタックされた[Hatred]を決算し、[Hatred]の持続ダメージがクリティカル可能になる**。  
+さらに、**HIGHLIGHTは蓄積された[怨念]を精算し、[怨念]の持続ダメージがクリティカル可能になる**。  
 
-HIGHLIGHTとS1の影響を受ける[Covet]スタックは、全体的なダメージを上げる自己バフを苺に付与する。  
-
----
-
-苺は非常に強力だが、ダメージメカニズムは歴代キャラクターの中でも最も複雑。  
-
-[Hatred]がダメージを与える方式は大きく2つあり、**敵がターン終了時に受けるダメージ**と、**HLで強制的に持続ダメージを決算する場合**がある。  
-
-- 各[Hatred]は付与時の苺のバフ状態をスナップショットし、**S3で更新する際にはその時点の苺のバフで上書きされる**。  
-
-- クリティカルは**各持続ダメージスタックが計算される時点の苺のクリティカル率と効果**に依存する。この時に苺のクリティカル率が100%未満でクリティカルが発生しない場合、Stable Domainのメカニズムが発動しないバグが存在する。  
-
-- 敵がターン終了時に受ける持続ダメージ決算では、苺の貫通バフが適用されないため、防御力減少効果が他キャラクターよりも有効。  
+HIGHLIGHTおよびS1の影響を受ける[執着]スタックは、全体的なダメージを上昇させる自己バフを付与する。  
 
 ---
 
-以下は苺のバフ状態が適用されるバフテーブルである。  
+苺は非常に強力だが、ダメージメカニズムはこれまでのキャラクターの中で最も複雑である。  
 
-| -                         | 攻撃力 / ダメージボーナス | クリティカル率 / 効果        | 防御力減少 | 貫通 |
-|---------------------------|---------------------------|------------------------------|------------|------|
-| S1/S2/S3                  | O                         | O                            | O          | O    |
-| Hatred付与/更新           | O                         | -                            | O          | -    |
-| Hatred×2決算 - HL         | -                         | O（決算時点基準）            | -          | O    |
-| 持続ダメージ決算 - HL     | -                         | O（決算時点基準）            | -          | -    |
-| Hatred決算 - ターン終了    | -                         | O（決算時点基準）            | -          | -    |
-| HIGHLIGHT基本             | O                         | -                            | O          | O    |
+[怨念]がダメージを与える方法は主に2つあり、**敵ターン終了時に発生するダメージ**と、**HLによる強制的な持続ダメージ精算**である。  
+
+- 各[怨念]は付与時の苺のバフ状態をスナップショットし、**S3で更新する際、その時点の苺のバフで上書きされる**。  
+
+- クリティカルは別計算で、**各持続ダメージスタックが計算される時点の苺のクリティカル率とクリティカル効果**に従う。  
+  この時点で苺のクリティカル率が100%未満でクリティカルが発生しない場合、Stable Domainのメカニズムが発動しない不具合がある。  
+
+- ターン終了時の持続ダメージ精算では苺の貫通バフが適用されないため、防御力減少効果が他のキャラクターに比べて有意義になる。  
+
+---
+
+以下は苺のバフ状態が適用されるバフテーブルである：  
+
+| -                         | 攻撃力 / ダメージボーナス | クリティカル率 / 効果       | 防御力減少 | 貫通 |
+|---------------------------|--------------------------|-----------------------------|------------|------|
+| S1/S2/S3                  | O                        | O                           | O          | O    |
+| 怨念付与/更新             | O                        | -                           | O          | -    |
+| 怨念×2精算 - HL           | -                        | O (精算時点基準)            | -          | O    |
+| 持続ダメージ精算 - HL     | -                        | O (精算時点基準)            | -          | -    |
+| 怨念精算 - ターン終了     | -                        | O (精算時点基準)            | -          | -    |
+| HIGHLIGHT 基本            | O                        | -                           | O          | O    |  
 
 <br>
 
 **持続ダメージ増加**というバフは、既存のダメージ増加とは異なり、別のバケットで計算される。  
 
-ちなみに、苺登場前に実装された年獣の持続ダメージ増加は、通常のダメージ増加バケットで計算される。`
+参考までに、苺登場前に実装された年獣の持続ダメージ増加は、通常のダメージ増加バケットで計算される。`
     },
     "사나다": { name_en: "Akihiko Sanada", name_jp: "真田 明彦", codename: "SANADA",
         review: ``

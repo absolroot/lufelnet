@@ -55,8 +55,8 @@ const enCharacterWeaponData = {
             "health": 2378,
             "attack": 773,
             "defense": 361,
-            "skill_name": "Obsession",
-            "description": "Critical Rate increases by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%. When 『Obsession』 reaches 1/2/3 stacks, her damage dealt increases by\n1 stack: 11.0%/14.2%/14.2%/17.4%/17.4%/20.6%/20.6% \\ 2 stacks: 22.0%/28.5%/28.5%/35.0%/35.0%/41.5%/41.5% \\ 3 stacks: 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%.\nWhen casting 『Shh! Execution Time』, Critical Damage increases by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%."
+            "skill_name": "Covet",
+            "description": "Critical Rate increases by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%. When 『Covet』 reaches 1/2/3 stacks, her damage dealt increases by\n1 stack: 11.0%/14.2%/14.2%/17.4%/17.4%/20.6%/20.6% \\ 2 stacks: 22.0%/28.5%/28.5%/35.0%/35.0%/41.5%/41.5% \\ 3 stacks: 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%.\nWhen casting 『Shh! Execution Time』, Critical Damage increases by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%."
         }
     },
     "사나다": {

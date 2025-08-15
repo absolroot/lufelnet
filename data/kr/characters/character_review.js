@@ -2,7 +2,7 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
-    "미유·여름": { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
+"미유·여름": { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
         review: `
 바다의 영역 속에서 아군의 턴 종료마다 **공격할 때마다 강해지는 추가 효과**로 적을 지속적으로 공격합니다.
 
@@ -157,8 +157,25 @@ review_jp: `
     "미오": { name_en: "Mio Natsukawa", name_jp: "夏川 澪", codename: "MATOI",
         review: ``
     },
-    "레오": { name_en: "Leo Kamiyama", name_jp: "神山 嶺央", codename: "LEON",
-        review: ``
+"레오": { name_en: "Leo Kamiyama", name_jp: "神山 嶺央", codename: "LEON",
+        review: `
+단일 목표의 공격력 수치와 크리티컬 효과를 크게 올려주는 버퍼입니다.
+
+2500이 넘는 공격력, 최대 100%가 넘는 크리티컬 효과를 부여 가능해 **4성이지만 압도적인 버프 성능**을 지니고 있습니다.
+
+2스킬이 체력의 30%를 제외하지만 **동료의 생명이 60% 이하일 경우 버프 최대 효율을 얻게 되므로 버프 대상이 적에게 공격을 받을 필요**가 있습니다.`,
+review_en: `
+A buffer that greatly boosts the ATK stat and CRIT DMG of a single target.  
+
+With over 2500 ATK and the ability to grant more than 100% CRIT DMG, it delivers **overwhelming performance despite being a 4★ unit.**  
+
+Skill 2 consumes 30% of HP, but since **the buff reaches maximum efficiency when the ally’s HP is 60% or lower, the buff target needs to take enemy attacks.**  `,
+review_jp: `
+単体の攻撃力数値とクリティカル効果を大幅に強化するバッファー。  
+
+攻撃力2500超え、クリティカル効果100%以上付与可能で、**★4ながら圧倒的な性能を誇る。**  
+
+スキル2はHPを30%消費するが、**味方のHPが60%以下の時にバフが最大効率となるため、バフ対象は敵からの攻撃を受ける必要がある。**  `
     },
     "렌": { name_en: "Ren Amamiya", name_jp: "雨宮 蓮", codename: "JOKER",
         review: ``

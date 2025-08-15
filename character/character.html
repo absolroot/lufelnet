@@ -772,10 +772,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const basicCharacter = characterData[characterName];
             const thiefEl = document.querySelector('.thief-image');
             const personaEl = document.querySelector('.persona-image');
-            const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
-            const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${basicCharacter.persona}.webp`;
-            if (thiefEl && !thiefEl.src) thiefEl.src = thiefSrc;
-            if (personaEl && !personaEl.src) personaEl.src = personaSrc;
+            const thiefFile = encodeURIComponent(`${characterName}.webp`);
+            const personaFile = encodeURIComponent(`${characterName} - ${basicCharacter.persona}.webp`);
+            const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
+            const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
+            if (thiefEl && !thiefEl.src) { thiefEl.src = thiefSrc; thiefEl.setAttribute('fetchpriority', 'high'); }
+            if (personaEl && !personaEl.src) { personaEl.src = personaSrc; personaEl.setAttribute('fetchpriority', 'high'); }
             const preload1 = document.createElement('link');
             preload1.rel = 'preload';
             preload1.as = 'image';
@@ -868,12 +870,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
 
         // 이미지 설정
-        // 이미지 세팅 보호
+        // 이미지 세팅 보호 (URL 인코딩 포함)
         try {
             const thiefImgEl = document.querySelector('.thief-image');
-            if (thiefImgEl) thiefImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${characterName}.webp`;
+            const thiefFile = encodeURIComponent(`${characterName}.webp`);
+            if (thiefImgEl) thiefImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaImgEl = document.querySelector('.persona-image');
-            if (personaImgEl) personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${characterName} - ${character.persona}.webp`;
+            const personaFile = encodeURIComponent(`${characterName} - ${character.persona}.webp`);
+            if (personaImgEl) personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
         } catch(e) { console.warn('[SAFE:set-images]', e); }
         
         // Set character name (en에서는 로딩 전에 skeleton 사용)

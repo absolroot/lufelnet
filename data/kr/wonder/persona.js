@@ -670,7 +670,7 @@ const personaData = {
         comment_jp: "ビシュヌが別のパーティで使用されていますが、同じメカニズムが必要な場合は使用できます。"
     },
     "사히모치노카미": {
-        name_en: "Sahi-mochi-no-kami",
+        name_en: "Sahimochi-no-kami",
         name_jp: "さひもちのかみ",
         grade: "8",
         star: "5",

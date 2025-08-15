@@ -1052,6 +1052,13 @@ h2{
         width: 100%;
     }
 
+    /* 모바일에서 이미지 로드 전에도 캐러셀 영역이 붕괴되지 않도록 공간 확보 */
+    .carousel {
+        width: 100%;
+        min-height: 66vw; /* 화면 너비 기준 대략적인 높이 확보 */
+        aspect-ratio: 3 / 4; /* 지원 브라우저에서 비율 유지 */
+    }
+
     .thief-image,
     .persona-image {
         width: 100% !important;

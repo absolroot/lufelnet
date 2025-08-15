@@ -557,16 +557,16 @@
         margin: 0 auto;
     }
     
-    /* mobile dropdown */
+    /* mobile dropdown: open upwards */
     .options-container {
-        bottom: auto;
-        top: 100%;
-        border-radius: 0 0 4px 4px;
+        top: auto;
+        bottom: 100%;
+        border-radius: 4px 4px 0 0;
     }
     
     .options-container.active {
         border: 1px solid rgba(255, 255, 255, 0.3);
-        border-top: none;
+        border-bottom: none;
     }
 }
 

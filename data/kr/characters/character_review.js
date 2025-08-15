@@ -8,7 +8,7 @@ const characterReview = {
 
 추가 효과를 반복할 수록 SP 소모량이 늘어나기 때문에 **스킬2를 통해 강력한 대미지를 주고 중첩을 초기화하는 구조**를 지니고 있습니다.
 
-**아군의 턴 시작 시에 SP를 회복**하며 관련 의식 별로 사이클이 변경됩니다. 6턴 보스 기준 의식0/1/2/6 각각 12/16/20/30회의 추가 효과 발동이 가능합니다.
+**아군의 턴 시작 시에 SP를 회복**하며 의식 0/1/6별로 사이클이 변경됩니다. 
 
 <br>
 
@@ -22,7 +22,7 @@ Within [Sea’s Domain], the character continuously attacks enemies with a **Fol
 
 Since the SP cost increases the more the Follow-up is repeated, the kit is designed to **deal heavy damage with Skill 2 and reset the stacks**.  
 
-**Recovers SP at the start of an ally’s turn**, and the rotation changes depending on the related Awareness. Against a 6-turn boss, it is possible to trigger the Follow-up 12/16/20/30 times for Awareness levels 0/1/2/6 respectively.  
+**Recovers SP at the start of an ally’s turn**, and the rotation changes depending on the related Awareness 0/1/6. 
 
 <br>
 
@@ -35,7 +35,7 @@ review_jp: `
 
 意識奏功を繰り返すほどSP消費が増えるため、**スキル2で強力なダメージを与えてスタックをリセットする構造**を持っている。  
 
-**味方ターン開始時にSPを回復**し、関連する意識によってサイクルが変化する。6ターンのボス戦では、意識レベル0/1/2/6でそれぞれ12/16/20/30回の意識奏功発動が可能。  
+**味方ターン開始時にSPを回復**し、関連する意識 0/1/6によってサイクルが変化する。
 
 <br>
 

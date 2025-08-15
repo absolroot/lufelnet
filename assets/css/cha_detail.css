@@ -66,10 +66,10 @@
     object-fit: contain;
 }
 
-/* 이미지 로딩 전에는 아예 보이지 않도록 처리 */
+/* 이미지 로딩 전 숨김 처리 제거 (다국어 환경에서 이벤트 지연/누락시 보이도록) */
 .thief-image:not([data-loaded="true"]),
 .persona-image:not([data-loaded="true"]) {
-    visibility: hidden;
+    visibility: visible;
 }
 
 
@@ -1053,11 +1053,12 @@ h2{
     }
 
     /* 모바일에서 이미지 로드 전에도 캐러셀 영역이 붕괴되지 않도록 공간 확보 */
+    /*
     .carousel {
         width: 100%;
-        min-height: 66vw; /* 화면 너비 기준 대략적인 높이 확보 */
-        aspect-ratio: 3 / 4; /* 지원 브라우저에서 비율 유지 */
-    }
+        min-height: 66vw; 
+        aspect-ratio: 3 / 4; 
+    }*/
 
     .thief-image,
     .persona-image {

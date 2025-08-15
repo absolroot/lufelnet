@@ -879,9 +879,9 @@ const characterData = {
             "LV13": "SP회복 450.1% , 크리티컬 효과 418%",
             "LV13+5": "SP회복 480.0% (33 사이클) , 크리티컬 효과 448%"
         },
-        "battle_plus_stats": "<b>SP회복</b>/ 의식 0: 60% / 마이팰리스: 5% <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45% / 마이팰리스: 2%",
-        "battle_plus_stats_en": "<b>SP recovery</b>/ Awareness 0: 60% / MyPalace: 5% <b>Critical Effect</b>/ Navi Power / Passive: 84% / Creation+Worry: 45% / MyPalace: 2%",
-        "battle_plus_stats_jp": "<b>SP回復</b>/ 意識 0: 60% / マイパレス: 5% <b>クリティカル効果</b>/ 解明の力 / パッシブ: 84% / 結造+憂慮: 45% / マイパレス: 2%",
+        "battle_plus_stats": "<b>SP회복</b>/ 기본 스탯: 188.5% / 의식 0: 60% / 마이팰리스: 5% <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45% / 마이팰리스: 2%",
+        "battle_plus_stats_en": "<b>SP recovery</b>/ Base Stat: 188.5% / Awareness 0: 60% / MyPalace: 5% <b>Critical Effect</b>/ Navi Power / Passive: 84% / Creation+Worry: 45% / MyPalace: 2%",
+        "battle_plus_stats_jp": "<b>SP回復</b>/ 基本スタット: 188.5% / 意識 0: 60% / マイパレス: 5% <b>クリティカル効果</b>/ 解明の力 / パッシブ: 84% / 結造+憂慮: 45% / マイパレス: 2%",
         "skill1_lv": "MAX",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",

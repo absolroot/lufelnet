@@ -6,20 +6,19 @@ const operationData = {
     "미유·여름": {
         basic: [
             { label: "의식 0", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "의식 0", value: "3 › 1 › 1 › 1 › 1 › 2" },
             { label: "의식 1", value: "3 › 1 › 2 › 3 › 1 › 2" },
             { label: "의식 6", value: "1 › 2 › 1 › 2 › 1 › 2" },
+            { label: "의식 6 (ANGE)", value: "1 › 2 › 2 › 2 › 1 › 2" },
         ],
         note: [
-            "· 의식 1의 SP 회복 최소 필요량은 300.1%",
-            "· 의식 6의 SP 회복 최소 필요량은 266.7%",
+            "신규 캐릭터로 아직 조정 중"
         ],
         note_en: [
-            "· The minimum required SP recovery for A1 is 300.1%",
-            "· The minimum required SP recovery for A6 is 266.7%"
+            "· New character, still adjusting"
         ],
         note_jp: [
-            "· 意識1のSP回復最低必要量は300.1%",
-            "· 意識6のSP回復最低必要量は266.7%"
+            "· 新キャラクターで調整中"
         ]
     },
     "미나미·여름": {

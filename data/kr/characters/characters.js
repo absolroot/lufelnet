@@ -78,7 +78,7 @@ const characterData = {
         "codename": "PUPPET·Summer",
         "sub_revel2": ["공격력", "대미지 보너스"],
         "sub_revel3": ["크리티컬 효과"],
-        "sub_revel4": ["SP 회복"],
+        "sub_revel4": ["공격력", "SP 회복"],
         "sub_option1": ["크리티컬 효과", "관통"],
         "sub_option2": ["크리티컬 확률", "SP 회복"],
         "sub_option3": ["공격력", "대미지 보너스"],

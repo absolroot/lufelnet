@@ -31,17 +31,24 @@ const recommendParty = {
             }
         ],
         "party": [
+            /*
             {
                 members: ["미유·여름", "미나미·여름", "미오", "마나카"],
                 comment: "미유는 방어력 감소 및 관통 효과를 보유하고 있지 않아 미오를 통해 방어력 감소 수치를 확보한다.",
                 comment_en: "Miyu does not have a defense reduction or penetration effect, so she relies on Mio to obtain the defense reduction effect.",
                 comment_jp: "ミユは防御力減少や貫通効果を持たないため、ミオを通じて防御力減少効果を得る。"
-            },
+            },*/
             {
                 members: ["미유·여름", "미나미·여름", "마유미", "마나카"],
                 comment: "마유미의 추가턴을 활용해 추가 효과 공격을 더 발동시킨다.",
                 comment_en: "Use Mayumi's additional turn to trigger follow-up attacks more.",
                 comment_jp: "マユミの追加ターンを活用して追加効果攻撃をより多く発動させる。"
+            },
+            {
+                members: ["미유·여름", "리코·매화", "마유미", "마나카"],
+                comment: "리코는 아군의 SP회복이 가능하므로 미유의 SP 관리에 용이하다.",
+                comment_en: "Riko can recover SP for allies, making it easier to manage Miyu's SP.",
+                comment_jp: "リコはアライアンスのSP回復が可能なため、ミユのSP管理が容易になる。"
             }
         ]
     },

@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         try { if (typeof loadCharacterList === 'function') await loadCharacterList(); } catch(_) {}
 
         // 택틱 예시 카드 텍스트 로컬라이즈 및 링크 구성
-        const titleMap = { kr: '택틱 예시', en: 'Tactic Examples', jp: 'タクティクス例' };
+        const titleMap = { kr: '택틱 도서관', en: 'Tactic Library', jp: 'タクティック図書館' };
         const moreMap  = { kr: '+ 더보기', en: '+ More', jp: '+ もっと見る' };
         const titleEl = document.getElementById('tactic-examples-title');
         const moreEl  = document.getElementById('tactic-examples-more');
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             for (let page = 0; page < 20 && matched.length < 3; page++) {
                 const { data, error } = await supabase
                     .from('tactics')
-                    .select('id,title,author,created_at,url,query')
+                    .select('id,title,author,created_at,url,query,region,tactic_type')
                     .order('created_at', { ascending: false })
                     .range(offset, offset + pageSize - 1);
                 if (error || !Array.isArray(data) || data.length === 0) break;
@@ -147,6 +147,28 @@ document.addEventListener('DOMContentLoaded', async function() {
                         }
                     };
 
+                    // 배지 렌더링 헬퍼 (tactics와 동일한 스타일/라벨)
+                    const renderTypeBadge = (type) => {
+                        if (!type || type === 'ALL') return '';
+                        const map = {
+                            kr: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' },
+                            en: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
+                            jp: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
+                        };
+                        const label = (map[currentLang] || map.kr)[type] || type;
+                        return `<span class="type-badge">${label}</span>`;
+                    };
+                    const renderRegionBadge = (region) => {
+                        if (!region) return '';
+                        const r = String(region).toLowerCase();
+                        let label = '';
+                        if (r === 'kr') label = 'KR';
+                        else if (r === 'jp') label = 'JP';
+                        else if (r === 'en' || r === 'sea') label = 'GLB';
+                        else label = r.toUpperCase();
+                        return `<span class="region-badge">${label}</span>`;
+                    };
+
                     matched.slice(0,3).forEach(t => {
                         const libraryLink = t.url ? `/tactic/?library=${encodeURIComponent(t.url)}` : null;
                         const item = document.createElement('div');
@@ -163,12 +185,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                                 return (Date.now() - last) < 24*60*60*1000;
                             } catch(_) { return false; }
                         })();
+                        const typeBadge = renderTypeBadge(t.tactic_type);
+                        const regionBadge = renderRegionBadge(t.region);
                         item.innerHTML = `
                             <div class="post-header">
                                 <h3 style="margin:0;font-size:16px;">
-                                    ${libraryLink ? `<a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">${(t.title || '').replace(/[<>]/g,'')}
+                                    ${libraryLink ? `<a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">${regionBadge}${typeBadge}<span class="post-title-text">${(t.title || '').replace(/[<>]/g,'')}</span>
                                         <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" style=\"vertical-align:middle;margin-left:4px;\"><path d=\"M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z\" fill=\"rgba(255, 255, 255, 0.6)\"></path></svg></a>`
-                                        : `<span class=\"post-title\">${(t.title || '').replace(/[<>]/g,'')}</span>`}
+                                        : `<span class=\"post-title\">${regionBadge}${typeBadge}<span class=\"post-title-text\">${(t.title || '').replace(/[<>]/g,'')}</span></span>`}
                                 </h3>
                                 <div class="post-meta" style="font-size:12px;opacity:0.8;">
                                     <span class="post-author">${(t.author || '').replace(/[<>]/g,'')}</span>

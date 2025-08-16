@@ -13,6 +13,9 @@ let isTierDataLoading = false;
 // 티어 리스트 모드 (true: 보기 모드, false: 편집 모드)
 let isTierListMode = false;
 
+// 글로벌 언어(en/jp)에서 KR 티어 파일 강제 사용 여부
+let forceUseKRTierInGlobal = false;
+
 // 필터링된 캐릭터들의 원래 위치를 저장하는 맵 (parent와 nextSibling 정보 포함)
 const originalPositions = new Map();
 
@@ -833,6 +836,31 @@ const loadCharacterImages = () => {
   });
 };
 
+// 주어진 캐릭터 이름들이 DOM에 없으면 카드 풀에 보강 생성
+const ensurePoolHasCharacters = (characterNames) => {
+  if (!Array.isArray(characterNames) || characterNames.length === 0) return;
+  const allImgs = Array.from(document.querySelectorAll('img'));
+  characterNames.forEach(name => {
+    try {
+      const exists = allImgs.some(img => img.alt === name);
+      if (exists) return;
+      if (!window.characterData || !window.characterData[name]) return;
+      const img = document.createElement('img');
+      img.src = `${BASE_URL}/assets/img/tier/${name}.webp`;
+      img.alt = name;
+      img.draggable = true;
+      img.dataset.element = window.characterData[name].element;
+      img.dataset.position = window.characterData[name].position;
+      img.dataset.rarity = window.characterData[name].rarity;
+      img.dataset.tags = window.characterData[name].tag || '';
+      if (window.characterData[name].rarity == 4) img.classList.add('star4');
+      else if (window.characterData[name].rarity == 5) img.classList.add('star5');
+      cardsContainer.appendChild(img);
+      attachDragListeners(img);
+    } catch(_) { /* ignore single entry */ }
+  });
+};
+
 // 개별 이미지 또는 wrapper에 드래그 이벤트 리스너 추가하는 함수
 const attachDragListeners = (element) => {
   // 기존 이벤트 리스너 제거 (완전히 새로 시작)
@@ -1175,11 +1203,11 @@ const initFilters = () => {
 };
 
 // 파일에서 티어 데이터를 가져오는 함수 (단순 JSON)
-const loadTierDataFromFile = async () => {
+const loadTierDataFromFile = async (useKROverride = false) => {
   try {
     // 현재 언어에 따라 파일 선택
     const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-    const fileName = currentLang === 'kr' ? 'kr_tier.json' : 'global_tier.json';
+    const fileName = (useKROverride || currentLang === 'kr') ? 'kr_tier.json' : 'global_tier.json';
     const filePath = `../${fileName}`;
     
     console.log('Loading tier data from file:', filePath);
@@ -1204,6 +1232,57 @@ const loadTierDataFromFile = async () => {
   } catch (error) {
     console.error('Failed to load tier data from file:', error);
     return null;
+  }
+};
+
+// 티어 소스 전환 API (전역 노출)
+// source: 'global' | 'kr' | 'kr_spoiler'
+window.setTierSource = async (source) => {
+  try {
+    const src = source || 'global';
+    forceUseKRTierInGlobal = (src !== 'global');
+    if (!isTierListMode) {
+      // 리스트 모드가 아닌 경우엔 동작하지 않음
+      return;
+    }
+    isTierDataLoading = true;
+    // 0) 캐릭터 리스트/데이터 재로딩
+    // - global, kr: 현재 언어의 characterList 사용 (listLangOverride undefined)
+    // - kr_spoiler: KR characterList 강제 사용 (listLangOverride='kr')
+    if (typeof window.loadCharacterDataForTierSource === 'function') {
+      const override = (src === 'kr_spoiler') ? 'kr' : undefined;
+      await window.loadCharacterDataForTierSource(override);
+    }
+    // 기존 티어를 초기 상태로 재구성하여 깔끔히 교체
+    // 1) 모든 포지션 셀 초기화 및 카드 풀 초기화 후 재구성
+    document.querySelectorAll('.position-cell').forEach(cell => { cell.innerHTML = ''; });
+    cardsContainer.innerHTML = '';
+    loadCharacterImages();
+    initDraggables();
+    // 2) 파일에서 원하는 소스로 재로딩
+    const tierData = await loadTierDataFromFile(forceUseKRTierInGlobal);
+    if (tierData) {
+      // 캐릭터 이미지들이 준비되었다고 가정하고 바로 적용
+      loadTierDataFromURL(tierData);
+      // 안전장치: 티어 데이터에 포함된 이름이 풀에 없으면 보강 생성
+      try {
+        if (src === 'kr_spoiler') {
+          const names = [];
+          tierData.forEach(t => {
+            Object.values(t.positions || {}).forEach(list => {
+              (list || []).forEach(cd => {
+                const n = typeof cd === 'string' ? cd : cd?.name; if (n) names.push(n);
+              });
+            });
+          });
+          ensurePoolHasCharacters(Array.from(new Set(names)));
+        }
+      } catch(_) {}
+    }
+  } catch (e) {
+    console.error('Failed to switch tier source:', e);
+  } finally {
+    isTierDataLoading = false;
   }
 };
 
@@ -1455,7 +1534,7 @@ window.initPositionTierMaker = () => {
       } else {
         // URL에 없으면 파일에서 로드
         console.log('No URL data, trying to load from file...');
-        tierData = await loadTierDataFromFile();
+        tierData = await loadTierDataFromFile(forceUseKRTierInGlobal);
       }
       
       if (tierData) {

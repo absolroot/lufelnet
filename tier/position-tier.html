@@ -217,7 +217,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     <li>This tier list is created by the lufel.net. Individual standards may vary, so please use it for reference and entertainment only.</li>
                     <li>Assumes LV80, all skill levels, and all values are basically set except for Awareness.</li>
                     <li>Written with competitive content in mind, tiers may continuously change with version updates.</li>
-                    <li>If you want to see the Asian version instead of the global version, you can change the language setting to Korean.</li>
                 </ul>
             </div>
             <!-- Japanese -->
@@ -226,9 +225,17 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     <li>このティアリストはlufel.netが作成したものです。個人によって基準は異なる場合がありますので、参考と娯楽としてのみご覧ください。</li>
                     <li>LV80、すべてのスキルレベルなど、意識（Awareness）を除くすべての値が基本的に設定されている場合を指します。</li>
                     <li>競争コンテンツを中心に作成されており、バージョンアップデートによってティアは継続的に変動する可能性があります。</li>
-                    <li>グローバル版ではなくアジア版を見たい場合は、言語設定で韓国語に変更すると見ることができます。</li>
                 </ul>
             </div>
+        </div>
+    </div>
+
+    <!-- Tier Source Toggle Section (separate from Tier Criteria) -->
+    <div id="tier-source-toggle" class="tier-source-toggle" style="display:none;">
+        <div style="display:flex; gap:8px; align-items:center;">
+            <button id="btn-global-tier" class="tier-source-btn" style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">Global</button>
+            <button id="btn-kr-tier" class="tier-source-btn" style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">GLB on KR</button>
+            <button id="btn-kr-spoiler-tier" class="tier-source-btn" style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">[Spoiler] KR</button>
         </div>
     </div>
 
@@ -431,6 +438,29 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 tierCriteriaSection.style.display = 'none';
             }
         }
+
+        // 티어 소스 토글 섹션 노출/라벨 현지화 (en/jp 전용)
+        const sourceToggle = document.getElementById('tier-source-toggle');
+        const btnGlobal = document.getElementById('btn-global-tier');
+        const btnKR = document.getElementById('btn-kr-tier');
+        const btnKRSpoiler = document.getElementById('btn-kr-spoiler-tier');
+        if (sourceToggle && btnGlobal && btnKR && btnKRSpoiler) {
+            // 리스트 모드(보기)에서만 노출, 메이커(list=false)에서는 숨김
+            if (isListMode && (currentLang === 'en' || currentLang === 'jp')) {
+                sourceToggle.style.display = 'block';
+                if (currentLang === 'en') {
+                    btnGlobal.textContent = 'Global';
+                    btnKR.textContent = 'GLB on KR';
+                    btnKRSpoiler.textContent = '[Spoiler] KR';
+                } else {
+                    btnGlobal.textContent = 'グローバル';
+                    btnKR.textContent = 'グローバル(韓国版)';
+                    btnKRSpoiler.textContent = '[ネタバレ] 韓国版';
+                }
+            } else {
+                sourceToggle.style.display = 'none';
+            }
+        }
         
         // 태그 필터 번역
         await updateTagFilterTranslations(currentLang);
@@ -553,7 +583,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
     }
 
     // 언어별 캐릭터 데이터 로딩 및 병합
-    async function loadCharacterData() {
+    // listLangOverride: 'kr'를 전달하면 캐릭터 리스트는 KR 기준 사용 (표시 이름은 현재 언어 우선)
+    async function loadCharacterData(listLangOverride) {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         try {
@@ -578,13 +609,14 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     
                     const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
                     
-                    
-                    // 3. 데이터 병합
+                    // 3. 데이터 병합 (KR 전체 키 기준으로 병합, 언어 데이터 있으면 덮어쓰기)
                     const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
-                    
-                    // 전역 변수 설정
+
+                    // 전역 변수 설정:
+                    // - kr_spoiler(override='kr'): KR 리스트 강제 사용
+                    // - 그렇지 않으면 현재 언어 리스트 사용, 없으면 KR 리스트
                     window.characterData = mergedData;
-                    window.characterList = langCharacterList;
+                    window.characterList = (listLangOverride === 'kr') ? krCharacterList : (langCharacterList || krCharacterList);
                     
                 } else {
                     console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
@@ -597,6 +629,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 window.characterData = krCharacterData;
                 window.characterList = krCharacterList;
             }
+
+            // 4. characterList가 변경되었으므로, 전역 캐시/파생 데이터 초기화 보조
+            try {
+                window.characterListUpdatedAt = Date.now();
+            } catch(_) {}
             
             return true;
             
@@ -605,49 +642,46 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             return false;
         }
     }
+
+    // 외부에서 리스트 소스 오버라이드로 재로딩할 수 있도록 전역 노출
+    window.loadCharacterDataForTierSource = async function(listLangOverride){
+        return await loadCharacterData(listLangOverride);
+    }
     
     // 캐릭터 데이터 병합 함수
     function mergeCharacterData(krData, langData) {
+        // KR 전체를 기본으로 두고, 언어 데이터가 존재하는 항목만 필요한 필드를 덮어쓴다
         const mergedData = {};
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
-        // 언어별 데이터에 있는 캐릭터만 포함
-        for (const characterKey in langData) {
-            if (krData[characterKey]) {
-                // 한국어 데이터를 기본으로 완전히 복사
-                mergedData[characterKey] = { ...krData[characterKey] };
-                
-                const langChar = langData[characterKey];
-                const krChar = krData[characterKey];
-                
-                // name 처리: 현재 언어에 따라 적절한 이름 사용
-                if (currentLang === 'en') {
-                    if (krChar.name_en) {
-                        mergedData[characterKey].name = krChar.name_en;
-                    } else if (langChar.name && langChar.name !== '') {
-                        mergedData[characterKey].name = langChar.name;
-                    }
-                } else if (currentLang === 'jp') {
-                    if (krChar.name_jp) {
-                        mergedData[characterKey].name = krChar.name_jp;
-                    } else if (langChar.name && langChar.name !== '') {
-                        mergedData[characterKey].name = langChar.name;
-                    }
-                }
-                
-                // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
-                if (langChar.role && langChar.role !== '') {
-                    mergedData[characterKey].role = langChar.role;
-                }
-                if (langChar.tag && langChar.tag !== '') {
-                    mergedData[characterKey].tag = langChar.tag;
-                }
-                if (langChar.release_order !== undefined && langChar.release_order !== 0) {
-                    mergedData[characterKey].release_order = langChar.release_order;
-                }
+
+        // 1) KR 데이터 전부 복사
+        Object.keys(krData || {}).forEach(key => {
+            mergedData[key] = { ...krData[key] };
+        });
+
+        // 2) 언어 데이터가 제공되면 필요한 필드만 덮어쓰기
+        Object.keys(langData || {}).forEach(characterKey => {
+            const krChar = krData[characterKey];
+            const langChar = langData[characterKey];
+            if (!krChar) return; // KR에 없는 키는 무시
+
+            // 이름 현지화: KR 데이터에 별도 현지화 필드가 있으면 우선, 없으면 언어 데이터의 name
+            if (currentLang === 'en') {
+                if (krChar.name_en) mergedData[characterKey].name = krChar.name_en;
+                else if (langChar?.name) mergedData[characterKey].name = langChar.name;
+            } else if (currentLang === 'jp') {
+                if (krChar.name_jp) mergedData[characterKey].name = krChar.name_jp;
+                else if (langChar?.name) mergedData[characterKey].name = langChar.name;
             }
-        }
-        
+
+            // 보조 필드 덮어쓰기 (값이 있을 때만)
+            if (langChar?.role) mergedData[characterKey].role = langChar.role;
+            if (langChar?.tag) mergedData[characterKey].tag = langChar.tag;
+            if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
+                mergedData[characterKey].release_order = langChar.release_order;
+            }
+        });
+
         return mergedData;
     }
     
@@ -765,6 +799,37 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         } else {
             await updateLanguageContent();
             await initializePageContent();
+        }
+
+        // 티어 소스 버튼 이벤트 연결 (en/jp 전용)
+        const btnGlobal = document.getElementById('btn-global-tier');
+        const btnKR = document.getElementById('btn-kr-tier');
+        const btnKRSpoiler = document.getElementById('btn-kr-spoiler-tier');
+        const setActive = (which) => {
+            if (!btnGlobal || !btnKR || !btnKRSpoiler) return;
+            const applyActive = (el, active) => {
+                el.style.background = active ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.08)';
+                el.style.borderColor = active ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.2)';
+            };
+            applyActive(btnGlobal, which === 'global');
+            applyActive(btnKR, which === 'kr');
+            applyActive(btnKRSpoiler, which === 'kr_spoiler');
+        };
+        if (btnGlobal && btnKR && btnKRSpoiler) {
+            // 기본값: Global 활성화
+            setActive('global');
+            btnGlobal.addEventListener('click', async () => {
+                setActive('global');
+                if (typeof window.setTierSource === 'function') await window.setTierSource('global');
+            });
+            btnKR.addEventListener('click', async () => {
+                setActive('kr');
+                if (typeof window.setTierSource === 'function') await window.setTierSource('kr');
+            });
+            btnKRSpoiler.addEventListener('click', async () => {
+                setActive('kr_spoiler');
+                if (typeof window.setTierSource === 'function') await window.setTierSource('kr_spoiler');
+            });
         }
     });
     

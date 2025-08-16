@@ -23,6 +23,10 @@ body {
   cursor: grab;
 }
 
+.header-container, .navigation-path{
+  padding: 0 0px;
+}
+
 /* Clickable character styles for tier list mode */
 .clickable-character {
   cursor: pointer !important;
@@ -56,7 +60,7 @@ button {
 .position-tiers-container {
   width: min(1400px, 100%);
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 24px;
   border: 2px solid var(--border-color);
   display: grid;
   grid-template-columns: 60px repeat(7, 1fr) 45px;
@@ -316,7 +320,7 @@ button {
 }
 
 .filter-content {
-  padding: 0px 20px 0px 20px;
+  padding: 0px 0px 0px 0px;
 }
 
 .filter-group {
@@ -435,7 +439,7 @@ button {
 }
 
 .separator-line {
-  padding: 0 20px;
+  padding: 0 0px;
   width: 100%;
   height: 1px;
   background: linear-gradient(
@@ -1084,7 +1088,8 @@ button {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .tier-criteria-section {
-    margin: 15px 10px;
+    margin: 15px 8px;
+    width: calc(100% - 16px);
   }
   
   .tier-criteria-button {
@@ -1098,5 +1103,9 @@ button {
   
   .tier-criteria-text {
     font-size: 12px;
+  }
+
+  .tier-source-toggle{
+    margin: 0 8px;
   }
 }

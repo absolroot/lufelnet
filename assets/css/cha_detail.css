@@ -1211,6 +1211,7 @@ h2{
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    word-break: break-all;
 }
 
 .persona-item:hover {
@@ -1591,6 +1592,7 @@ h2{
     letter-spacing: -0.025em;
     font-size: 14px;
     margin-top: 20px;
+    word-break: break-all;
 }
 
 .review-content p {

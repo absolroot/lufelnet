@@ -379,7 +379,7 @@ class TacticsViewer {
                 <h3>
                     ${libraryLink ? `
                         <a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">
-                            ${this.renderTypeBadge(tactic.tactic_type)}
+                            ${this.renderRegionBadge(tactic.region)} ${this.renderTypeBadge(tactic.tactic_type)} 
                             <span class="post-title-text">${this.escapeHtml(tactic.title)}</span>
                             ${editSvg}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -480,6 +480,18 @@ class TacticsViewer {
         const label = (map[this.currentLang] || map.kr)[type] || type;
         return `<span class="type-badge">${label}</span>`;
     }
+    renderRegionBadge = (region) => {
+        // 지역 필터가 ALL이 아닐 때는 지역 배지를 렌더하지 않음 (필터 컨텍스트에서 중복 정보 제거)
+        if (!region) return '';
+        if (this.currentRegion && this.currentRegion !== 'ALL') return '';
+        const r = String(region).toLowerCase();
+        let label = '';
+        if (r === 'kr') label = 'KR';
+        else if (r === 'jp') label = 'JP';
+        else if (r === 'en' || r === 'sea') label = 'GLB';
+        else label = r.toUpperCase();
+        return `<span class="region-badge">${label}</span>`;
+    };
 
     addTacticPreview(postElement, tacticData) {
         try {
@@ -634,6 +646,7 @@ class TacticsViewer {
             container.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             item.classList.add('active');
             this.currentRegion = item.dataset.region;
+            // 렌더 시점에서 region-badge는 renderRegionBadge에서 조건부 렌더링함
             this.loadTactics().then(() => { this.applyFilters(); this.renderTactics(); this.loadRanking(); });
         });
     }

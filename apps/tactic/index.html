@@ -614,6 +614,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
         const urlParams = new URLSearchParams(window.location.search);
         const sharedData = urlParams.get('data');
+        const libraryParam = urlParams.get('library');
         
         // 번역 데이터를 먼저 로드하는 함수
         async function loadTranslationData() {
@@ -955,6 +956,17 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           updateAutoActions();
           updatePartyImages();
           renderTurns();
+
+          // 데이터도 라이브러리도 없는 순수 진입 시, 편집 UI를 기본으로 보이고 토글 버튼 비활성화
+          if (!libraryParam) {
+            const containerEl = document.querySelector('.container');
+            if (containerEl) containerEl.classList.remove('hide-ui');
+            const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+            const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+            if (desktopToggleBtn) desktopToggleBtn.classList.remove('active');
+            if (mobileToggleBtn) mobileToggleBtn.classList.remove('active');
+            try { localStorage.setItem('uiHidden', false); } catch(_) {}
+          }
         }
 
         // Add skill list to datalist

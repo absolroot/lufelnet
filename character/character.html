@@ -2549,12 +2549,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 for (const memberName of party.members) {
                     const memberItem = document.createElement('a');
                     memberItem.className = 'party-member';
-                    memberItem.href = `character.html?name=${memberName}`;
-                    
+                    if (memberName !== "") {
+                        memberItem.href = `character.html?name=${memberName}`;
+                    }
                     // Check if character is released in current language using Korean name
                     const isReleased = await isCharacterReleased(memberName);
                     
-                    if (!isReleased && memberName !== currentPageChar) {
+                    if (!isReleased && memberName !== currentPageChar && memberName !== "") {
                         memberItem.classList.add('spoiler');
                         memberItem.addEventListener('click', function(e) {
                             if (this.classList.contains('spoiler')) {

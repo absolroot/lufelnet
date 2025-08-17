@@ -83,12 +83,12 @@ const characterData = {
         "sub_option2": ["크리티컬 확률", "SP 회복"],
         "sub_option3": ["공격력", "대미지 보너스"],
         "minimum_stats": {
-            "LV10": "SP 회복 260.1% (미정)",
-            "LV10+5": "SP 회복 260.1% (미정)",
+            "LV10": "SP 회복 286.7%",
+            "LV10+5": "SP 회복 286.7%",
             "LV12": false,
             "LV12+5": false,
-            "LV13": "SP 회복 300.1% (미정)",
-            "LV13+5": "SP 회복 300.1% (미정)"
+            "LV13": "SP 회복 300.1%",
+            "LV13+5": "SP 회복 300.1%"
         },
         "battle_plus_stats": "· 기본 스탯: 188.5% / 마이팰리스: 5%",
         "battle_plus_stats_en": "· Base Stat: 188.5% / MyPalace: 5%",

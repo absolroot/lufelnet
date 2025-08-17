@@ -8,11 +8,28 @@ const characterReview = {
 
 추가 효과를 반복할 수록 SP 소모량이 늘어나기 때문에 **스킬2를 통해 강력한 대미지를 주고 중첩을 초기화하는 구조**를 지니고 있습니다.
 
-**아군의 턴 시작 시에 SP를 회복**하며 의식 0/1/6별로 사이클이 변경됩니다. 
+**아군의 턴 시작 시에 SP를 회복**하며 이를 활용해 최대한 많은 추가 효과를 발동시키는 것이 중요합니다. 
 
 <br>
 
 SP회복에 큰 영향을 받는 캐릭터지만 **기본 188.5%** SP회복과 계시 카드 진의 **SP 회복 주 옵션 90.4%**, 마이팰리스 5%만 추가하더라도 **283.9%의 SP 회복**을 쉽게 확보할 수 있습니다.
+
+추천 운영 사이클에 따른 필요 SP 회복량은 다음과 같습니다. 추가 턴은 고려되지 않은 횟수입니다.
+
+| 의식 | 해명 괴도 | SP 회복 필요량 | + 리코·매화 | 추가 효과 횟수 (6턴) |
+|------|-----------|---------|---------------------|-----------------------|
+| 0 | 후타바 | 266.7% | 260.1% | 12 |
+| **0** | **후타바** | **333.4%** | **330.1%** | **14** |
+| 0 | 마나카 | 286.7% | - | 14 |
+| **0** | **마나카** | **337.6%** | - | **15** |
+| 1 | 후타바 | 240.1% | 235.1% | 14 |
+| **1** | **후타바** | **300.1%** | **293.4%** | **16** |
+| 1 | 마나카 | 265.1% | - | 16 |
+| **1** | **마나카** | **300.1%** | - | **17** |
+| 6 | 후타바 | ~188.5%~ | - | 30 |
+| 6 | 마나카 | ~188.5%~ | - | 30 |
+
+---
 
 - 추가효과 중첩 당 5% 대미지 증가 계산 방식 : 스킬 계수 × (100% + 5% × 중첩 개수)
 
@@ -22,11 +39,28 @@ Within [Sea’s Domain], the character continuously attacks enemies with a **Fol
 
 Since the SP cost increases the more the Follow-up is repeated, the kit is designed to **deal heavy damage with Skill 2 and reset the stacks**.  
 
-**Recovers SP at the start of an ally’s turn**, and the rotation changes depending on the related Awareness 0/1/6. 
+**Recovers SP at the start of an ally’s turn**, and it is important to use the SP as much as possible to trigger as many additional effects as possible.
 
 <br>
 
 Although greatly influenced by SP recovery, the character can easily reach **283.9% SP recovery** even with just the base **188.5%** SP recovery, the **SP Recovery main stat of Revelation Card Planet (90.4%)**, and My Palace’s 5%.  
+
+Recommended SP recovery requirements based on the suggested operation cycle are as follows. Extra turns are not included in the count.  
+
+| Awareness | Elucidator | Required SP Recovery | + RIKO 5★ | Follow-up Count (6 turns) |
+|-----------|------------|----------------------|-----------|----------------------------|
+| 0 | NAVI   | 266.7% | 260.1% | 12 |
+| **0** | **NAVI** | **333.4%** | **330.1%** | **14** |
+| 0 | ANGE   | 286.7% | - | 14 |
+| **0** | **ANGE** | **337.6%** | - | **15** |
+| 1 | NAVI   | 240.1% | 235.1% | 14 |
+| **1** | **NAVI** | **300.1%** | **293.4%** | **16** |
+| 1 | ANGE   | 265.1% | - | 16 |
+| **1** | **ANGE** | **300.1%** | - | **17** |
+| 6 | NAVI   | ~188.5%~ | - | 30 |
+| 6 | ANGE   | ~188.5%~ | - | 30 |
+
+---
 
 - Follow-up stack DMG increase calculation: Skill coefficient × (100% + 5% × stack count)  
 - Skill 2 stack DMG increase calculation: Skill coefficient × (100% + 10% × stack count)  `,
@@ -35,11 +69,28 @@ review_jp: `
 
 意識奏功を繰り返すほどSP消費が増えるため、**スキル2で強力なダメージを与えてスタックをリセットする構造**を持っている。  
 
-**味方ターン開始時にSPを回復**し、関連する意識 0/1/6によってサイクルが変化する。
+**味方ターン開始時にSPを回復**し、これを活用して最大限の意識奏功を発動させることが重要です。
 
 <br>
 
 SP回復の影響を大きく受けるキャラクターだが、**基礎188.5%**のSP回復に加え、啓示カード「プラネット」の**SP回復メイン効果90.4%**、マイパレスの5%だけでも、**283.9%のSP回復**を容易に確保できる。  
+
+推奨運用サイクルに基づく必要SP回復量は以下の通りです。追加ターンは回数に含まれていません。  
+
+| 意識 | 解明怪盗 | 必要SP回復量 | + 多祢村 5★ | 追加効果回数（6ターン） |
+|------|-----------|--------------|-------------|--------------------------|
+| 0 | NAVI  | 266.7% | 260.1% | 12 |
+| **0** | **NAVI** | **333.4%** | **330.1%** | **14** |
+| 0 | ANGE  | 286.7% | - | 14 |
+| **0** | **ANGE** | **337.6%** | - | **15** |
+| 1 | NAVI  | 240.1% | 235.1% | 14 |
+| **1** | **NAVI** | **300.1%** | **293.4%** | **16** |
+| 1 | ANGE  | 265.1% | - | 16 |
+| **1** | **ANGE** | **300.1%** | - | **17** |
+| 6 | NAVI  | ~188.5%~ | - | 30 |
+| 6 | ANGE  | ~188.5%~ | - | 30 |
+
+---
 
 - 意識奏功スタックごとのダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)  
 - スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)  `
@@ -110,7 +161,7 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 
 **스킬1과 스킬2를 통해 『원념』을 적에게 부여**하고, 최대 중첩을 완성 한 후 **스킬3으로 『원념』의 지속시간을 갱신하고 강력한 대미지**를 줍니다.
 
-그리고 **HIGHLIGHT는 중첩된 『원념』을 결산하고, 『원념』지속 대미지가 크리티컬이 가능**하도록 합니다.
+그리고 **HIGHLIGHT는 중첩된 『원념』을 결산**하고, **『원념』지속 대미지가 크리티컬이 가능**하도록 합니다.
 
 HIGHLIGHT와 스킬1에 영향을 받는 『집착』중첩은 전체적으로 대미지를 올려주는 자체 버프를 획득합니다.
 
@@ -120,7 +171,7 @@ HIGHLIGHT와 스킬1에 영향을 받는 『집착』중첩은 전체적으로 �
 
 『원념』이 대미지를 주는 방식은 크게 2가지로, **적이 턴을 끝낼 때 받는 대미지**와 **HL을 통해 강제로 지속 대미지**를 계산할 때가 다릅니다.
 
-- 각 『원념』은 적에게 부여할 때의 이치고의 버프 상태를 기억(스냅샷)하며, **3스킬을 통해 갱신할 때 해당 시점의 이치고 버프로 덮어씌워집니다.** 
+- 각 『원념』은 적에게 부여할 때의 이치고의 버프 상태를 기억(스냅샷)하며, **3스킬을 통해 갱신할 때 해당 시점의 이치고 버프**로 덮어씌워집니다. 
 
 - 크리티컬은 별도로 각 **지속 대미지 중첩이 계산되는 시점의 이치고의 크리티컬 확률과 효과**를 따라갑니다. 
 이 시점에 이치고의 크리티컬 확률이 100% 보다 낮아 크리티컬이 발동되지 않을 경우 [안정 영역] 메커니즘이 발동되지 않는 버그가 있습니다. 
@@ -153,7 +204,7 @@ A powerful single-target DPS that applies stacks of the Curse-element DoT [Hatre
 
 **Applies [Hatred] to enemies through S1 and S2**, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.  
 
-In addition, **HIGHLIGHT settles the stacked [Hatred] and allows [Hatred]’s DoT to crit**.  
+In addition, **HIGHLIGHT settles the stacked [Hatred]** and allows **[Hatred]’s DoT to crit**.  
 
 The [Covet] stacks affected by HIGHLIGHT and S1 grant a self-buff that increases overall damage.  
 
@@ -163,7 +214,7 @@ Ichigo is extremely powerful, but her damage-dealing mechanism is the most compl
 
 [Hatred] deals damage in two main ways: **damage dealt at the end of the enemy’s turn** and **forced DoT calculation via HL**.  
 
-- Each [Hatred] stack snapshots Ichigo’s buff state at the time of application, and **when refreshed via S3, it overwrites with Ichigo’s buffs at that moment**.  
+- Each [Hatred] stack snapshots Ichigo’s buff state at the time of application, and **when refreshed via S3, it overwrites with Ichigo’s buffs** at that moment.  
 
 - Criticals are calculated separately, based on **Ichigo’s Critical Rate and Critical Damage at the time each DoT stack is calculated**.  
   If Ichigo’s Critical Rate is below 100% at this point and a crit does not occur, the Stable Domain mechanic will not activate due to a bug.  

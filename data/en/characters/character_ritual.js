@@ -17,7 +17,7 @@ const enCharacterRitualData = {
         "r5": "Into the Arms of the Waves",
         "r5_detail": "Increases the skill level of [Jellyfish's Dream] and [Blue Concerto] by 3.",
         "r6": "That Blue Dream",
-        "r6_detail": "Increases Miyu Sahara (Summer)'s maximum SP by 250, starts battle with full SP, and automatically deploys [Sea's Domain].\nIncreases maximum stacks of [Overlapping Waves] by 2.\n[Jellyfish's Dream] restores 50% more SP.\nAfter using [Blue Concerto], [Sea's Domain] is not removed, and [Overlapping Waves] are reset at the end of the turn.\nAfter reset, restores SP to maximum."
+        "r6_detail": "Increases Miyu Sahara (Summer)'s maximum SP by an additional 250, starts battle with full SP, and automatically deploys [Sea's Domain].\nIncreases maximum stacks of [Overlapping Waves] by 2.\n[Jellyfish's Dream] restores 50% more SP.\nAfter using [Blue Concerto], [Sea's Domain] is not removed, and [Overlapping Waves] are reset at the end of the turn.\nAfter reset, restores SP to maximum.",
     },
     "미나미·여름": {
     "name": "Minami Miyashita·Summer",

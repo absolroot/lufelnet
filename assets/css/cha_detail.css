@@ -1592,16 +1592,22 @@ h2{
     letter-spacing: -0.025em;
     font-size: 14px;
     margin-top: 20px;
-    word-break: break-all;
 }
+
+@media (max-width: 768px) {
+    .review-content {
+        font-size: 13px;
+    }
+}
+
 
 .review-content p {
     margin: 0 0 12px 0;
 }
 
 .review-content strong {
-    color: #ffdb70;
-    font-weight: 600;
+    color: #fbdc7f;
+    font-weight: 500;
 }
 
 .review-content em {
@@ -1610,7 +1616,7 @@ h2{
 }
 
 .review-content h1, .review-content h2, .review-content h3 {
-    color: #ffdb70;
+    color: #fbdc7f;
     margin: 16px 0 8px 0;
     font-weight: 600;
 }
@@ -1674,6 +1680,7 @@ h2{
     width: 100%;
     border-collapse: collapse;
     margin: 12px 0;
+    word-break: break-all;
 }
 
 .review-content th,
@@ -1681,6 +1688,7 @@ h2{
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 8px 12px;
     text-align: left;
+    font-size: 12px;
 }
 
 .review-content th {

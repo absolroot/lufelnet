@@ -6,13 +6,12 @@ const operationData = {
     "미유·여름": {
         basic: [
             { label: "의식 0", value: "3 › 2 › 3 › 2 › 3 › 2" },
-            { label: "의식 0", value: "3 › 1 › 1 › 1 › 1 › 2" },
-            { label: "의식 1", value: "3 › 1 › 2 › 3 › 1 › 2" },
-            { label: "의식 6", value: "1 › 2 › 1 › 2 › 1 › 2" },
+            { label: "의식 0/1 (ANGE)", value: "3 › 1 › 1 › 1 › 1 › 2" },
+            { label: "의식 0/1 (NAVI)", value: "3 › 1 › 2 › 3 › 1 › 2" },
             { label: "의식 6 (ANGE)", value: "1 › 2 › 2 › 2 › 1 › 2" },
         ],
         note: [
-            "신규 캐릭터로 아직 조정 중"
+            "해명 괴도에 따라 택틱 변화",
         ],
         note_en: [
             "· New character, still adjusting"

@@ -16,6 +16,10 @@ SP회복에 큰 영향을 받는 캐릭터지만 **기본 188.5%** SP회복과 �
 
 추천 운영 사이클에 따른 필요 SP 회복량은 다음과 같습니다. 마나카(ANGE)의 추가 턴은 고려되지 않은 횟수입니다.
 
+- 후타바 : 3 › 1 › 2 › 3 › 1 › 2  
+
+- 마나카 : 3 › 1 › 1 › 1 › 1 › 2
+
 <table>
   <tr>
     <th>의식</th>
@@ -139,18 +143,113 @@ Although greatly influenced by SP recovery, the character can easily reach **283
 
 Recommended SP recovery requirements based on the suggested operation cycle are as follows. Extra turns are not included in the count.  
 
-| Awareness | Elucidator | Required SP Recovery | + RIKO 5★ | Follow-up Count (6 turns) |
-|-----------|------------|----------------------|-----------|----------------------------|
-| 0 | NAVI   | 266.7% | 260.1% | 12 |
-| **0** | **NAVI** | **333.4%** | **330.1%** | **14** |
-| 0 | ANGE   | 286.7% | - | 14 |
-| **0** | **ANGE** | **337.6%** | - | **15** |
-| 1 | NAVI   | 240.1% | 235.1% | 14 |
-| **1** | **NAVI** | **300.1%** | **293.4%** | **16** |
-| 1 | ANGE   | 265.1% | - | 16 |
-| **1** | **ANGE** | **300.1%** | - | **17** |
-| 6 | NAVI   | ~188.5%~ | - | 30 |
-| 6 | ANGE   | ~188.5%~ | - | 30 |
+- NAVI : 3 › 1 › 2 › 3 › 1 › 2  
+- ANGE : 3 › 1 › 1 › 1 › 1 › 2  
+
+<table>
+  <tr>
+    <th>Awareness</th>
+    <th>Party Member</th>
+    <th>Required SP Recovery</th>
+    <th>+ RIKO 5★</th>
+    <th>Follow-up Count (6 turns)</th>
+  </tr>
+  <tr>
+    <td rowspan="6">0</td>
+    <td>NAVI</td>
+    <td>266.7%</td>
+    <td>260.1%</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>NAVI</td>
+    <td>333.4%</td>
+    <td>330.1%</td>
+    <td>14</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>NAVI TURBO</b></td>
+    <td><b>290.1%</b></td>
+    <td><b>286.7%</b></td>
+    <td><b>14</b></td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>286.7%</td>
+    <td>-</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>337.6%</td>
+    <td>-</td>
+    <td>15</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>ANGE TURBO</b></td>
+    <td><b>290.1%</b></td>
+    <td>-</td>
+    <td><b>15</b></td>
+  </tr>
+
+  <tr>
+    <td rowspan="7">1</td>
+    <td>NAVI</td>
+    <td>240.1%</td>
+    <td>235.1%</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>NAVI</td>
+    <td>300.1%</td>
+    <td>293.4%</td>
+    <td>16</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>NAVI TURBO</b></td>
+    <td><b>293.4%</b></td>
+    <td><b>280.1%</b></td>
+    <td><b>16</b></td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>265.1%</td>
+    <td>-</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>300.1%</td>
+    <td>-</td>
+    <td>17</td>
+  </tr>
+  <tr>
+    <td>ANGE TURBO</td>
+    <td>293.4%</td>
+    <td>-</td>
+    <td>18</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>ANGE TURBO</b></td>
+    <td><b>320.1%</b></td>
+    <td>-</td>
+    <td><b>19</b></td>
+  </tr>
+
+  <tr>
+    <td rowspan="2">6</td>
+    <td>NAVI</td>
+    <td>188.5%</td>
+    <td>-</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>188.5%</td>
+    <td>-</td>
+    <td>30</td>
+  </tr>
+</table>
 
 ---
 
@@ -169,18 +268,113 @@ SP回復の影響を大きく受けるキャラクターだが、**基礎188.5%*
 
 推奨運用サイクルに基づく必要SP回復量は以下の通りです。追加ターンは回数に含まれていません。  
 
-| 意識 | 解明怪盗 | 必要SP回復量 | + 多祢村 5★ | 追加効果回数（6ターン） |
-|------|-----------|--------------|-------------|--------------------------|
-| 0 | NAVI  | 266.7% | 260.1% | 12 |
-| **0** | **NAVI** | **333.4%** | **330.1%** | **14** |
-| 0 | ANGE  | 286.7% | - | 14 |
-| **0** | **ANGE** | **337.6%** | - | **15** |
-| 1 | NAVI  | 240.1% | 235.1% | 14 |
-| **1** | **NAVI** | **300.1%** | **293.4%** | **16** |
-| 1 | ANGE  | 265.1% | - | 16 |
-| **1** | **ANGE** | **300.1%** | - | **17** |
-| 6 | NAVI  | ~188.5%~ | - | 30 |
-| 6 | ANGE  | ~188.5%~ | - | 30 |
+- NAVI : 3 › 1 › 2 › 3 › 1 › 2  
+- ANGE : 3 › 1 › 1 › 1 › 1 › 2  
+
+<table>
+  <tr>
+    <th>意識</th>
+    <th>パーティーメンバー</th>
+    <th>必要SP回復量</th>
+    <th>+ 多祢村 5★</th>
+    <th>追加効果回数 (6ターン)</th>
+  </tr>
+  <tr>
+    <td rowspan="6">0</td>
+    <td>NAVI</td>
+    <td>266.7%</td>
+    <td>260.1%</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>NAVI</td>
+    <td>333.4%</td>
+    <td>330.1%</td>
+    <td>14</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>NAVI TURBO</b></td>
+    <td><b>290.1%</b></td>
+    <td><b>286.7%</b></td>
+    <td><b>14</b></td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>286.7%</td>
+    <td>-</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>337.6%</td>
+    <td>-</td>
+    <td>15</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>ANGE TURBO</b></td>
+    <td><b>290.1%</b></td>
+    <td>-</td>
+    <td><b>15</b></td>
+  </tr>
+
+  <tr>
+    <td rowspan="7">1</td>
+    <td>NAVI</td>
+    <td>240.1%</td>
+    <td>235.1%</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>NAVI</td>
+    <td>300.1%</td>
+    <td>293.4%</td>
+    <td>16</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>NAVI TURBO</b></td>
+    <td><b>293.4%</b></td>
+    <td><b>280.1%</b></td>
+    <td><b>16</b></td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>265.1%</td>
+    <td>-</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>300.1%</td>
+    <td>-</td>
+    <td>17</td>
+  </tr>
+  <tr>
+    <td>ANGE TURBO</td>
+    <td>293.4%</td>
+    <td>-</td>
+    <td>18</td>
+  </tr>
+  <tr style="color:rgb(255, 240, 131);">
+    <td><b>ANGE TURBO</b></td>
+    <td><b>320.1%</b></td>
+    <td>-</td>
+    <td><b>19</b></td>
+  </tr>
+
+  <tr>
+    <td rowspan="2">6</td>
+    <td>NAVI</td>
+    <td>188.5%</td>
+    <td>-</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>ANGE</td>
+    <td>188.5%</td>
+    <td>-</td>
+    <td>30</td>
+  </tr>
+</table>
 
 ---
 

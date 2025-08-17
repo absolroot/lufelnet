@@ -1,0 +1,187 @@
+---
+layout: default
+custom_css: [material-planner]
+custom_js: [material-planner]
+permalink: /material-calc/
+language: kr
+title: 재료 플래너 - 페르소나5 더 팬텀 X 루페르넷
+description: P5X 캐릭터 육성 재료 플래너 (레벨/무기/스킬/심상)
+---
+
+<div class="main-wrapper">
+    <div class="navigation-path">
+        <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" data-lang-key="pageTitle">재료 플래너</span>
+    </div>
+
+    <div class="header-container">
+        <h1 id="plannerTitle">Planner</h1>
+        <div class="planner-toolbar">
+            <button id="addCharacterBtn" class="primary-btn">+ <span data-lang-key="addCharacter">캐릭터 추가</span></button>
+            <!--
+            <label class="spoiler-toggle" id="spoilerContainer" style="display:none;">
+                <input type="checkbox" id="spoilerToggle">
+                <span data-lang-key="showSpoiler">스포일러 포함 (KR 전체 목록 사용)</span>
+            </label>-->
+        </div>
+    </div>
+
+    <!-- 상단 합산 요약 -->
+    <section class="summary-card card-style">
+        <div class="summary-header">
+            <h2 data-lang-key="materialSummary">재료 합산</h2>
+            <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="toggle">▾</button>
+        </div>
+        <div id="summaryGrid" class="material-grid"></div>
+    </section>
+
+    <!-- 캐릭터별 플랜 카드 컨테이너 -->
+    <section id="plansContainer" class="plans-grid"></section>
+
+    <!-- 캐릭터 선택 모달 -->
+    <div id="characterSelectModal" class="modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 data-lang-key="selectCharacter">캐릭터 선택</h3>
+                <button class="icon-btn close" data-close>✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="character-filter">
+                    <input type="text" id="characterSearch" placeholder="Search" autocomplete="off">
+                </div>
+                <div id="characterGrid" class="character-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 캐릭터 설정 모달 -->
+    <div id="characterSetupModal" class="modal" aria-hidden="true">
+        <div class="modal-dialog large">
+            <div class="modal-header">
+                <h3 id="setupModalTitle">Setup</h3>
+                <button class="icon-btn close" data-close>✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="setup-grid">
+                    <div class="setup-section">
+                        <h4 data-lang-key="level">레벨</h4>
+                        <div class="row LV-row">
+                            <label><span data-lang-key="current">현재</span> LV</label>
+                            <input id="lvFrom" type="number" min="1" max="80" value="1">
+                            <span class="arrow">→</span>
+                            <label><span data-lang-key="target">목표</span> LV</label>
+                            <input id="lvTo" type="number" min="1" max="80" value="80">
+                        </div>
+                        <div class="row">
+                            <label><span data-lang-key="weapon">무기</span> LV</label>
+                            <input id="wpFrom" type="number" min="1" max="80" value="1">
+                            <span class="arrow">→</span>
+                            <label><span data-lang-key="target">목표</span> LV</label>
+                            <input id="wpTo" type="number" min="1" max="80" value="80">
+                        </div>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4 data-lang-key="skills">스킬</h4>
+                        <div class="skill-list">
+                            <div class="row">
+                                <label>S1</label>
+                                <input id="s1From" type="number" min="1" max="10" value="1">
+                                <span class="arrow">→</span>
+                                <input id="s1To" type="number" min="1" max="10" value="10">
+                            </div>
+                            <div class="row">
+                                <label>S2</label>
+                                <input id="s2From" type="number" min="1" max="10" value="1">
+                                <span class="arrow">→</span>
+                                <input id="s2To" type="number" min="1" max="10" value="10">
+                            </div>
+                            <div class="row">
+                                <label>S3</label>
+                                <input id="s3From" type="number" min="1" max="10" value="1">
+                                <span class="arrow">→</span>
+                                <input id="s3To" type="number" min="1" max="10" value="10">
+                            </div>
+                            <div class="row">
+                                <label>HL</label>
+                                <input id="s4From" type="number" min="1" max="10" value="1">
+                                <span class="arrow">→</span>
+                                <input id="s4To" type="number" min="1" max="10" value="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4 data-lang-key="mind">심상</h4>
+                        <div class="row align-center">
+                            <label><input id="mindAllToggle" type="checkbox" checked> <span data-lang-key="enableAll">기본 12개 활성화</span></label>
+                        </div>
+                        <div id="mindBaseGrid" class="mind-grid"></div>
+                        <div class="row">
+                            <label data-lang-key="mindStat1">심상 스탯 1</label>
+                            <input id="mindStat1From" type="number" min="1" max="5" value="1">
+                            <span class="arrow">→</span>
+                            <input id="mindStat1To" type="number" min="1" max="5" value="5">
+                        </div>
+                        <div class="row">
+                            <label data-lang-key="mindStat2">심상 스탯 2</label>
+                            <input id="mindStat2From" type="number" min="1" max="5" value="1">
+                            <span class="arrow">→</span>
+                            <input id="mindStat2To" type="number" min="1" max="5" value="5">
+                        </div>
+                        <div class="row">
+                            <label data-lang-key="mindSkill1">심상 스킬 1</label>
+                            <input id="mindSkill1From" type="number" min="1" max="5" value="1">
+                            <span class="arrow">→</span>
+                            <input id="mindSkill1To" type="number" min="1" max="5" value="5">
+                        </div>
+                        <div class="row">
+                            <label data-lang-key="mindSkill2">심상 스킬 2</label>
+                            <input id="mindSkill2From" type="number" min="1" max="5" value="1">
+                            <span class="arrow">→</span>
+                            <input id="mindSkill2To" type="number" min="1" max="5" value="5">
+                        </div>
+                        <div class="row">
+                            <label data-lang-key="mindAttr">심상 속성 강화</label>
+                            <input id="mindAttrFrom" type="number" min="1" max="12" value="1">
+                            <span class="arrow">→</span>
+                            <input id="mindAttrTo" type="number" min="1" max="12" value="12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
+                <button id="savePlanBtn" class="primary-btn" data-lang-key="save">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 보유량 입력 모달 (EXP/한계돌파 그룹 편집) -->
+    <div id="inventoryModal" class="modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="inventoryModalTitle">Inventory</h3>
+                <button class="icon-btn close" data-close>✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="inventoryForm" class="setup-section"></div>
+                <p id="inventoryHint" style="opacity:.8;margin-top:8px;font-size:12px;"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
+                <button id="saveInventoryBtn" class="primary-btn" data-lang-key="save">저장</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('material-calc');
+    window.MaterialPlanner && window.MaterialPlanner.init();
+});
+</script>
+
+

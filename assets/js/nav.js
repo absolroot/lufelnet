@@ -42,6 +42,7 @@ class Navigation {
                 tierMaker: '티어 메이커',
                 tierList: '티어 리스트',
                 calculator: '계산기',
+                materialCalc: '재료 플래너',
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
@@ -61,6 +62,7 @@ class Navigation {
                 tierMaker: 'Tier Maker',
                 tierList: 'Tier List',
                 calculator: 'Calculator',
+                materialCalc: 'Material Planner',
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Calculator',
                 criticalCalc: 'Critical Calculator',
@@ -80,6 +82,7 @@ class Navigation {
                 tierMaker: 'ティアメーカー',
                 tierList: 'ティアリスト',
                 calculator: '計算機',
+                materialCalc: '素材プランナー',
                 payCalc: '課金計算機',
                 defenseCalc: '防御力計算機',
                 criticalCalc: 'クリティカル計算機',
@@ -155,6 +158,10 @@ class Navigation {
                         <span data-text="${texts.calculator}">${texts.calculator}</span>
                     </div>
                     <div class="submenu">
+                        <!--
+                        <a href="${BASE_URL}/material-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="material-calc">
+                            <span data-text="${texts.materialCalc}">◈　${texts.materialCalc}</span>
+                        </a>-->
                         <a href="${BASE_URL}/pay-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
                             <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
                         </a>
@@ -351,7 +358,7 @@ class Navigation {
             }
 
             // 계산기 관련 페이지인 경우 추가 처리
-            if (activePage === 'pay-calc' || activePage === 'defense-calc' || activePage === 'critical-calc') {
+            if (activePage === 'pay-calc' || activePage === 'defense-calc' || activePage === 'critical-calc' || activePage === 'material-calc') {
                 const calculatorMenu = document.querySelector('[data-nav="calculator"]');
                 if (calculatorMenu) {
                     calculatorMenu.classList.add('active');

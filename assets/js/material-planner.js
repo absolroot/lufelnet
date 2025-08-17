@@ -1,0 +1,1276 @@
+/* eslint-disable */
+(function(){
+    const LANG = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+    const STATE = {
+        plans: [], // {id, name, rarity, image, inputs:{...}, materials:{id,count}}
+        totals: {},
+        lang: LANG,
+        spoiler: false,
+        characterData: null,
+        characterList: null,
+        inventory: { // 사용자 보유 수량
+            lv_exp1: 0, lv_exp2: 0, lv_exp3: 0,
+            lv_limit1: 0, lv_limit2: 0, lv_limit3: 0,
+            wp_exp1: 0, wp_exp2: 0, wp_exp3: 0,
+            wp_limit1: 0, wp_limit2: 0, wp_limit3: 0,
+            skill_lv_1: 0, skill_lv_2: 0, skill_lv_3: 0, skill_rose: 0,
+            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0
+        }
+    };
+
+    // 레벨 돌파 요구량은 material_costs.js 의 level 섹션을 사용합니다.
+
+    // 이미지 매핑 (요약 카드용) — 페이지 가이드에서 사용하는 키 기본값
+    const MATERIAL_ICONS = {
+        money: '/apps/article/asset/growth_material/item-1.png',
+        // EXP items (custom icons provided by user)
+        lv_exp1: '/apps/material-calc/img/cha_lv_1.png', // +200
+        lv_exp2: '/apps/material-calc/img/cha_lv_2.png', // +1000
+        lv_exp3: '/apps/material-calc/img/cha_lv_3.png', // +4000
+        // Future: level limit items (icons reserved)
+        lv_limit1: '/apps/material-calc/img/cha_lv_limit_1.png',
+        lv_limit2: '/apps/material-calc/img/cha_lv_limit_2.png',
+        lv_limit3: '/apps/material-calc/img/cha_lv_limit_3.png',
+        // Weapon EXP & limit
+        wp_exp1: '/apps/material-calc/img/weapon_lv_1.png',
+        wp_exp2: '/apps/material-calc/img/weapon_lv_2.png',
+        wp_exp3: '/apps/material-calc/img/weapon_lv_3.png',
+        wp_limit1: '/apps/material-calc/img/weapon_lv_limit_1.png',
+        wp_limit2: '/apps/material-calc/img/weapon_lv_limit_2.png',
+        wp_limit3: '/apps/material-calc/img/weapon_lv_limit_3.png',
+        md_mercury: '/apps/material-calc/img/mind_base.png',
+        md_stat1: '/apps/material-calc/img/mind_stat1.png',
+        md_stat2: '/apps/material-calc/img/mind_stat2.png',
+        md_skill1: '/apps/material-calc/img/mind_skill1.png',
+        md_skill2: '/apps/material-calc/img/mind_skill2.png',
+        md_bell: '/apps/material-calc/img/mind_lv.png',
+        konpaku_gem: '/apps/material-calc/img/konpaku_gem.png',
+        // skills icons
+        skill_lv_1: '/apps/material-calc/img/skill_lv_1.png',
+        skill_lv_2: '/apps/material-calc/img/skill_lv_2.png',
+        skill_lv_3: '/apps/material-calc/img/skill_lv_3.png',
+        skill_rose: '/apps/material-calc/img/skill_rose.png',
+        skill_item1: '/apps/material-calc/img/skill_item1.png',
+        skill_item2: '/apps/material-calc/img/skill_item2.png',
+        skill_item3: '/apps/material-calc/img/skill_item3.png',
+        skill_item4: '/apps/material-calc/img/skill_item4.png'
+    };
+
+    // 다국어 텍스트
+    const I18N = {
+        kr: {
+            pageTitle: '재료 플래너', addCharacter: '캐릭터 추가', selectCharacter: '캐릭터 선택',
+            materialSummary: '재료 합산', showSpoiler: '스포일러 포함 (KR 전체 목록 사용)',
+            level: '레벨', current: '현재', target: '목표', weapon: '무기', skills: '스킬',
+            mind: '심상', enableAll: '기본 12개 활성화', mindStat1: '스탯 1', mindStat2: '스탯 2',
+            mindSkill1: '스킬 1', mindSkill2: '스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
+            remove: '삭제', details: '상세'
+        },
+        en: {
+            pageTitle: 'Planner', addCharacter: 'Add Character', selectCharacter: 'Select Character',
+            materialSummary: 'Material Summary', showSpoiler: 'Show spoiler (use KR full list)',
+            level: 'Level', current: 'Current', target: 'Target', weapon: 'Weapon', skills: 'Skills',
+            mind: 'Mindscape', enableAll: 'Enable base 12', mindStat1: 'Stat 1', mindStat2: 'Stat 2',
+            mindSkill1: 'Skill 1', mindSkill2: 'Skill 2', mindAttr: 'Attribute', cancel: 'Cancel', save: 'Save',
+            remove: 'Remove', details: 'Details'
+        },
+        jp: {
+            pageTitle: 'プランナー', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
+            materialSummary: '素材サマリー', showSpoiler: 'ネタバレ含む（KR全リスト）',
+            level: 'レベル', current: '現在', target: '目標', weapon: '武器', skills: 'スキル',
+            mind: '心象', enableAll: '基本12個 有効', mindStat1: 'ステ1', mindStat2: 'ステ2',
+            mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
+            remove: '削除', details: '詳細'
+        }
+    };
+
+    function t(key){
+        const pack = I18N[STATE.lang] || I18N.kr;
+        return pack[key] || key;
+    }
+
+    // 데이터 로드 (언어별 목록 + 스포일러 처리)
+    async function loadCharacterData(){
+        const lang = STATE.lang;
+        const useKrFull = (lang !== 'kr' && STATE.spoiler);
+        const listPath = useKrFull ? '/data/kr/characters/characters.js' : `/data/${lang}/characters/characters.js`;
+        const [res, krRes] = await Promise.all([
+            fetch(`${BASE_URL}${listPath}?v=${APP_VERSION}`).then(r=>r.text()),
+            fetch(`${BASE_URL}/data/kr/characters/characters.js?v=${APP_VERSION}`).then(r=>r.text()).catch(()=>''),
+        ]);
+        const tmp = {};
+        new Function('out', `${res}; out.characterList = (typeof characterList!=='undefined')?characterList:[]; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(tmp);
+        const krBox = {};
+        if(krRes) new Function('out', `${krRes}; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(krBox);
+        STATE.characterList = tmp.characterList || [];
+        // 캐릭터 메타 병합: 키별로 KR 메타가 우선(특히 name_en/name_jp), 언어별 메타의 필드가 있으면 보조로 유지
+        const merged = { ...(tmp.characterData||{}) };
+        const krMap = krBox.characterData || {};
+        for(const k in krMap){
+            if(!Object.prototype.hasOwnProperty.call(merged, k)) merged[k] = {};
+            merged[k] = { ...(merged[k]||{}), ...(krMap[k]||{}) };
+        }
+        STATE.characterData = merged;
+    }
+
+    // 모달 유틸
+    function openModal(id){
+        document.getElementById(id).setAttribute('aria-hidden','false');
+    }
+    function closeModal(id){
+        document.getElementById(id).setAttribute('aria-hidden','true');
+    }
+
+    // 보조: 캐릭터 키 정규화 (KR 키로 정규화)
+    function resolveCharacterKey(name){
+        if(!STATE.characterData) return name;
+        if(STATE.characterData[name]) return name;
+        const lower = String(name).toLowerCase();
+        for(const [kr, meta] of Object.entries(STATE.characterData)){
+            if(String(meta.name_en||'').toLowerCase() === lower) return kr;
+            if(String(meta.name_jp||'').toLowerCase() === lower) return kr;
+            if(String(meta.codename||'').toLowerCase() === lower) return kr;
+        }
+        return name;
+    }
+    function displayNameByLang(krKey){
+        const meta = STATE.characterData?.[krKey] || {};
+        // name_en/name_jp는 KR 데이터에만 존재하므로, EN/JP에서도 KR 메타를 참조하도록 병합을 이미 수행함
+        if(STATE.lang==='en' && meta.name_en) return meta.name_en;
+        if(STATE.lang==='jp' && meta.name_jp) return meta.name_jp;
+        return krKey;
+    }
+
+    // 캐릭터 선택 모달 렌더링
+    function renderCharacterSelect(){
+        const grid = document.getElementById('characterGrid');
+        if(!grid||!STATE.characterList) return;
+        const allRaw = [...(STATE.characterList.mainParty||[]), ...(STATE.characterList.supportParty||[])];
+        // EN/JP에서 리스트가 다른 문자열을 가질 수 있어 정규화
+        const all = allRaw.map(resolveCharacterKey);
+        // tactics의 정렬 규칙 유사 적용: release_order desc, exclude '원더'
+        let names = all.filter(n=>n!=='원더').sort((a,b)=>{
+            const ra = (STATE.characterData?.[a]?.release_order ?? -Infinity);
+            const rb = (STATE.characterData?.[b]?.release_order ?? -Infinity);
+            return rb - ra;
+        });
+        // 이미 추가한 캐릭터 숨기기
+        const planned = new Set(STATE.plans.map(p=>p.name));
+        names = names.filter(n=> !planned.has(n));
+        // 검색 필터: KR/EN/JP/코드네임(codename) 모두 검색
+        const q = (document.getElementById('characterSearch')?.value || '').trim().toLowerCase();
+        if(q){ names = names.filter(n=>{
+            const meta = STATE.characterData?.[n] || {};
+            const en = (meta.name_en||'').toLowerCase();
+            const jp = (meta.name_jp||'').toLowerCase();
+            const code = (meta.codename||'').toLowerCase();
+            return n.toLowerCase().includes(q) || en.includes(q) || jp.includes(q) || code.includes(q);
+        }); }
+        const seen = new Set();
+        const unique = names.filter(n=>!seen.has(n) && seen.add(n));
+        const frag = document.createDocumentFragment();
+        unique.forEach(name=>{
+            const meta = STATE.characterData?.[name] || {};
+            const wrap = document.createElement('div'); wrap.style.display='flex'; wrap.style.flexDirection='column'; wrap.style.alignItems='center'; wrap.style.cursor='pointer';
+            const img = document.createElement('img');
+            img.src = `${BASE_URL}/assets/img/tier/${name}.webp`;
+            img.alt = name; img.title = name;
+            const label = document.createElement('div');
+            label.style.marginTop='4px'; label.style.fontSize='11px'; label.style.opacity='0.9'; label.style.textAlign='center';
+            label.textContent = displayNameByLang(name);
+            wrap.appendChild(img); wrap.appendChild(label);
+            wrap.addEventListener('click',()=>{ closeModal('characterSelectModal'); startSetupFor(name); });
+            frag.appendChild(wrap);
+        });
+        grid.innerHTML=''; grid.appendChild(frag);
+        const search = document.getElementById('characterSearch');
+        if(search && !search._bound){ search._bound = true; search.addEventListener('input', ()=> renderCharacterSelect()); }
+
+        // 모달 내 spoiler 토글 배치 (EN/JP에서만 표시)
+        const filterWrap = document.querySelector('.character-filter');
+        if(filterWrap && (STATE.lang==='en' || STATE.lang==='jp')){
+            let holder = document.getElementById('modalSpoilerToggle');
+            if(!holder){
+                holder = document.createElement('label');
+                holder.id = 'modalSpoilerToggle';
+                holder.style.display='flex'; holder.style.alignItems='center'; holder.style.gap='8px'; holder.style.marginTop='8px';
+                const cb = document.createElement('input'); cb.type='checkbox'; cb.id='modalSpoilerCB';
+                const span = document.createElement('span'); span.textContent = t('showSpoiler');
+                holder.appendChild(cb); holder.appendChild(span);
+                filterWrap.appendChild(holder);
+                cb.onchange = async ()=>{ STATE.spoiler = cb.checked; await loadCharacterData(); renderCharacterSelect(); };
+            }
+            const cb = document.getElementById('modalSpoilerCB'); if(cb) cb.checked = !!STATE.spoiler;
+        }
+    }
+
+    // 설정 모달 시작
+    function startSetupFor(name, editingId){
+        const title = document.getElementById('setupModalTitle');
+        title.textContent = `${name}`;
+        // 초기화 값 유지(기본 채움)
+        openModal('characterSetupModal');
+        // 저장 핸들러 바인딩
+        const saveBtn = document.getElementById('savePlanBtn');
+        saveBtn.onclick = ()=>{
+            const inputs = collectInputs();
+            const materials = estimateMaterials(inputs); // 임시 계산 (백데이터 기반)
+            if(editingId){
+                // 기존 플랜 업데이트
+                const idx = STATE.plans.findIndex(pl=>pl.id===editingId);
+                if(idx!==-1){
+                    STATE.plans[idx] = {
+                        ...STATE.plans[idx],
+                        inputs,
+                        materials
+                    };
+                    recalcTotals(); renderPlans(); renderSummary(); saveState();
+                }
+            }else{
+                addPlan({ name, rarity: STATE.characterData?.[name]?.rarity || 5, inputs, materials });
+            }
+            closeModal('characterSetupModal');
+        };
+        // mind base 12 셀 렌더
+        renderMindBaseGrid();
+        // 편집 시 기존 값으로 프리필
+        if (editingId){
+            const plan = STATE.plans.find(pl=>pl.id===editingId);
+            if(plan){
+                // 숫자 입력 세팅
+                const setVal=(id,v)=>{const el=document.getElementById(id); if(el) el.value=String(v);};
+                const i=plan.inputs;
+                setVal('lvFrom',i.lvFrom); setVal('lvTo',i.lvTo);
+                setVal('wpFrom',i.wpFrom); setVal('wpTo',i.wpTo);
+                setVal('s1From',i.s1From); setVal('s1To',i.s1To);
+                setVal('s2From',i.s2From); setVal('s2To',i.s2To);
+                setVal('s3From',i.s3From); setVal('s3To',i.s3To);
+                setVal('s4From',i.s4From); setVal('s4To',i.s4To);
+                setVal('mindStat1From',i.mindStat1From); setVal('mindStat1To',i.mindStat1To);
+                setVal('mindStat2From',i.mindStat2From); setVal('mindStat2To',i.mindStat2To);
+                setVal('mindSkill1From',i.mindSkill1From); setVal('mindSkill1To',i.mindSkill1To);
+                setVal('mindSkill2From',i.mindSkill2From); setVal('mindSkill2To',i.mindSkill2To);
+                setVal('mindAttrFrom',i.mindAttrFrom); setVal('mindAttrTo',i.mindAttrTo);
+                // 심상 배지 체크 세팅
+                const grid=document.getElementById('mindBaseGrid');
+                if(grid && Array.isArray(i.mindBase)){
+                    const cells=grid.querySelectorAll('input[type="checkbox"]');
+                    cells.forEach((cb,idx)=>{
+                        const on = !!i.mindBase[idx];
+                        cb.checked = on;
+                        const bg=cb.previousSibling; if(bg && bg.style){
+                            bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${on?'mind_bg_active':'mind_bg_incactive'}.png)`;
+                            const ic = bg.querySelector('img'); if(ic) ic.style.opacity = on? '1':'1';
+                        }
+                    });
+                    const master=document.getElementById('mindAllToggle');
+                    if(master){ master.checked = i.mindBase.every(v=>v); }
+                }
+            }
+        }
+        // 슬라이더 부착
+        attachSliders();
+    }
+
+    function renderMindBaseGrid(){
+        const grid = document.getElementById('mindBaseGrid');
+        if(!grid) return;
+        const frag = document.createDocumentFragment();
+        for(let i=1;i<=12;i++){
+            const wrapper = document.createElement('div');
+            wrapper.className = 'mind-cell';
+            // 배경
+            const bg = document.createElement('div');
+            bg.style.position='relative'; bg.style.width='36px'; bg.style.height='36px';
+            bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/mind_bg_incactive.png)`;
+            bg.style.backgroundSize='cover';
+            // 아이콘: base_1,2,3,1,2,3 순환
+            const groupIdx = ((i-1)%3)+1;
+            const icon = document.createElement('img');
+            icon.src = `${BASE_URL}/apps/material-calc/img/mind_base_${groupIdx}.png`;
+            icon.style.width='100%'; icon.style.height='100%'; icon.style.objectFit='contain';
+            icon.style.opacity='1';
+            const hidden = document.createElement('input'); hidden.type='checkbox'; hidden.checked=true; hidden.dataset.index=String(i); hidden.style.display='none';
+            // 초기 활성화 배경/불투명도
+            bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/mind_bg_active.png)`;
+            icon.style.opacity = '1';
+            bg.onclick = ()=>{
+                hidden.checked = !hidden.checked;
+                bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${hidden.checked?'mind_bg_active':'mind_bg_incactive'}.png)`;
+                icon.style.opacity = hidden.checked ? '1' : '1';
+                // 전체 체크박스 동기화
+                const all = Array.from(grid.querySelectorAll('input[type="checkbox"]'));
+                const allOn = all.every(el=>el.checked);
+                const master = document.getElementById('mindAllToggle');
+                if(master) master.checked = allOn;
+            };
+            bg.appendChild(icon);
+            wrapper.appendChild(bg);
+            wrapper.appendChild(hidden);
+            frag.appendChild(wrapper);
+        }
+        grid.innerHTML=''; grid.appendChild(frag);
+        const toggle = document.getElementById('mindAllToggle');
+        toggle.onchange = ()=>{
+            grid.querySelectorAll('input[type="checkbox"]').forEach(el=>{
+                el.checked = toggle.checked;
+                const cell = el.previousSibling; // bg div
+                if(cell && cell.style){
+                    cell.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${el.checked?'mind_bg_active':'mind_bg_incactive'}.png)`;
+                    cell.querySelector('img').style.opacity = el.checked ? '1' : '0.5';
+                }
+            });
+        };
+    }
+
+    // 설정 슬라이더(숫자 입력 동기화)
+    function attachSliders(){
+        const pairs = [
+            ['lvFrom',1,80],['lvTo',1,80],
+            ['wpFrom',1,80],['wpTo',1,80],
+            ['s1From',1,10],['s1To',1,10],
+            ['s2From',1,10],['s2To',1,10],
+            ['s3From',1,10],['s3To',1,10],
+            ['s4From',1,10],['s4To',1,10]
+        ];
+        pairs.forEach(([id,min,max])=>{
+            const input=document.getElementById(id);
+            if(!input || input.dataset.sliderAttached) return;
+            input.dataset.sliderAttached='1';
+            const slider=document.createElement('input');
+            slider.type='range'; slider.min=String(min); slider.max=String(max); slider.step='1';
+            slider.value=input.value;
+            slider.style.width='100%'; slider.style.marginTop='6px';
+            input.parentElement && input.parentElement.appendChild(slider);
+            const sync=()=>{ input.value=slider.value; };
+            slider.addEventListener('input',sync);
+            input.addEventListener('change',()=>{ slider.value=input.value; });
+        });
+    }
+
+    // 입력값 수집
+    function val(id,min,max){
+        const v = Number(document.getElementById(id).value||0);
+        return Math.max(min, Math.min(max, v));
+    }
+    function collectInputs(){
+        const inputs = {
+            lvFrom: val('lvFrom',1,80), lvTo: val('lvTo',1,80),
+            wpFrom: val('wpFrom',1,80), wpTo: val('wpTo',1,80),
+            s1From: val('s1From',1,10), s1To: val('s1To',1,10),
+            s2From: val('s2From',1,10), s2To: val('s2To',1,10),
+            s3From: val('s3From',1,10), s3To: val('s3To',1,10),
+            s4From: val('s4From',1,10), s4To: val('s4To',1,10),
+            mindBase: Array.from(document.querySelectorAll('#mindBaseGrid input[type="checkbox"]')).map(c=>c.checked),
+            mindStat1From: val('mindStat1From',1,5), mindStat1To: val('mindStat1To',1,5),
+            mindStat2From: val('mindStat2From',1,5), mindStat2To: val('mindStat2To',1,5),
+            mindSkill1From: val('mindSkill1From',1,5), mindSkill1To: val('mindSkill1To',1,5),
+            mindSkill2From: val('mindSkill2From',1,5), mindSkill2To: val('mindSkill2To',1,5),
+            mindAttrFrom: val('mindAttrFrom',1,12), mindAttrTo: val('mindAttrTo',1,12)
+        };
+        // 범위 보정
+        if(inputs.lvTo<inputs.lvFrom) inputs.lvTo = inputs.lvFrom;
+        if(inputs.wpTo<inputs.wpFrom) inputs.wpTo = inputs.wpFrom;
+        ['s1','s2','s3','s4'].forEach(k=>{ if(inputs[`${k}To`] < inputs[`${k}From`]) inputs[`${k}To`] = inputs[`${k}From`]; });
+        if(inputs.mindStat1To<inputs.mindStat1From) inputs.mindStat1To = inputs.mindStat1From;
+        if(inputs.mindStat2To<inputs.mindStat2From) inputs.mindStat2To = inputs.mindStat2From;
+        if(inputs.mindSkill1To<inputs.mindSkill1From) inputs.mindSkill1To = inputs.mindSkill1From;
+        if(inputs.mindSkill2To<inputs.mindSkill2From) inputs.mindSkill2To = inputs.mindSkill2From;
+        if(inputs.mindAttrTo<inputs.mindAttrFrom) inputs.mindAttrTo = inputs.mindAttrFrom;
+        return inputs;
+    }
+
+    // 계산 로직 (백데이터 기반). 실제 수치는 apps/material-calc/data/material_costs.js에서 로드
+    let COSTS = null;
+    // 스킬 기본 비용 테이블 (목표 레벨별 추가 소모)
+
+    async function ensureCosts(){
+        if(COSTS) return COSTS;
+        try{
+            const baseUrl = `${BASE_URL}/apps/material-calc/data`;
+            const [text, expText, wexpText] = await Promise.all([
+                fetch(`${baseUrl}/material_costs.js?v=${APP_VERSION}`).then(r=>r.text()),
+                fetch(`${baseUrl}/level_exp.js?v=${APP_VERSION}`).then(r=>r.text()),
+                fetch(`${baseUrl}/weapon_level_exp.js?v=${APP_VERSION}`).then(r=>r.text())
+            ]);
+            const box = {};
+            new Function('out', `${text}; out.COSTS = MATERIAL_COSTS;`)(box);
+            new Function('out', `${expText}; out.LEVEL_EXP = LEVEL_EXP_TO_NEXT; out.LEVEL_GEM = typeof LEVEL_GEM_TO_NEXT!=='undefined'?LEVEL_GEM_TO_NEXT:{};`)(box);
+            new Function('out', `${wexpText}; out.WEAPON_LEVEL_EXP = WEAPON_LEVEL_EXP_TO_NEXT; out.WEAPON_LEVEL_GEM = typeof WEAPON_LEVEL_GEM_TO_NEXT!=='undefined'?WEAPON_LEVEL_GEM_TO_NEXT:{};`)(box);
+            COSTS = box.COSTS;
+            COSTS.__LEVEL_EXP = box.LEVEL_EXP;
+            COSTS.__WEAPON_LEVEL_EXP = box.WEAPON_LEVEL_EXP || {};
+            COSTS.__LEVEL_GEM = box.LEVEL_GEM || {};
+            COSTS.__WEAPON_LEVEL_GEM = box.WEAPON_LEVEL_GEM || {};
+        }catch(err){
+            console.warn('Load MATERIAL_COSTS failed. Using zeros', err);
+            COSTS = { level:{}, weapon:{}, skills:{}, mind:{}, __LEVEL_EXP:{} };
+        }
+        return COSTS;
+    }
+
+    function addCount(dict,key,delta){ dict[key] = (dict[key]||0) + delta; }
+
+    function estimateMaterials(inputs){
+        // 간이 계산: 각 구간별 합계를 백데이터 테이블에서 누적
+        const mats = {};
+        if(!COSTS){ /* 비동기 로딩 전에 저장 호출 가능 */ }
+        const costs = COSTS || { level:{}, weapon:{}, skills:{}, mind:{}, __LEVEL_EXP:{} };
+        // LEVEL: 경험치 아이템/한계돌파 동시 계산
+        // 1) 경험치 합산 → 그리디로 4000/1000/200 단위로 분해
+        let expSum = 0;
+        for(let lv=inputs.lvFrom; lv<inputs.lvTo; lv++){
+            expSum += (costs.__LEVEL_EXP?.[lv] || 0);
+        }
+        if(expSum>0){
+            // greedy: 4000, 1000, 200
+            const unit3 = 4000, unit2 = 1000, unit1 = 200;
+            const c3 = Math.floor(expSum / unit3); expSum -= c3*unit3; if(c3>0) addCount(mats,'lv_exp3', c3);
+            const c2 = Math.floor(expSum / unit2); expSum -= c2*unit2; if(c2>0) addCount(mats,'lv_exp2', c2);
+            // 남은 값이 0이 아니면 200 단위로 올림 처리
+            let c1 = Math.ceil(expSum / unit1); if(c1>0) addCount(mats,'lv_exp1', c1);
+        }
+        // 캐릭터 레벨업 구간 gem 합산
+        for(let lv=inputs.lvFrom; lv<inputs.lvTo; lv++){
+            const g = costs.__LEVEL_GEM?.[lv] || 0; if(g) addCount(mats,'konpaku_gem', g);
+        }
+        // 2) 레벨 한계돌파 아이템 (10,20,30...80 목표 구간 진입 시 필요 수량 적용)
+        for(let lv=inputs.lvFrom+1; lv<=inputs.lvTo; lv++){
+            const row = costs.level[lv];
+            if(!row) continue;
+            Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        // WEAPON: 경험치/한계돌파 (현재는 캐릭터 LV와 동일 규칙 가정)
+        let wpExpSum = 0;
+        for(let lv=inputs.wpFrom; lv<inputs.wpTo; lv++){
+            wpExpSum += (costs.__WEAPON_LEVEL_EXP?.[lv] || 0);
+        }
+        if(wpExpSum>0){
+            const unit3 = 4000, unit2 = 1000, unit1 = 200;
+            const c3 = Math.floor(wpExpSum / unit3); wpExpSum -= c3*unit3; if(c3>0) addCount(mats,'wp_exp3', c3);
+            const c2 = Math.floor(wpExpSum / unit2); wpExpSum -= c2*unit2; if(c2>0) addCount(mats,'wp_exp2', c2);
+            let c1 = Math.ceil(wpExpSum / unit1); if(c1>0) addCount(mats,'wp_exp1', c1);
+        }
+        for(let lv=inputs.wpFrom; lv<inputs.wpTo; lv++){
+            const g = costs.__WEAPON_LEVEL_GEM?.[lv] || 0; if(g) addCount(mats,'konpaku_gem', g);
+        }
+        for(let lv=inputs.wpFrom+1; lv<=inputs.wpTo; lv++){
+            const rowW = costs.weapon[lv];
+            if(!rowW) continue;
+            // rowW는 lv_limit 키를 가질 수 있으니 wp_limit 키로 매핑
+            Object.entries(rowW).forEach(([k,v])=>{
+                if(k.startsWith('lv_limit')){
+                    const wpKey = k.replace('lv_limit','wp_limit');
+                    addCount(mats, wpKey, v||0);
+                } else {
+                    addCount(mats, k, v||0);
+                }
+            });
+        }
+        // WEAPON
+        for(let lv=inputs.wpFrom+1; lv<=inputs.wpTo; lv++){
+            const row = costs.weapon[lv]; if(!row) continue;
+            Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        // SKILLS (각 스킬별)
+        const charMeta = (STATE.characterData?.[inputs.name]) || {};
+        const skillItemIndex = Math.max(1, Math.min(4, Number(charMeta.skill_item || 1)));
+        ['s1','s2','s3','s4'].forEach((sk)=>{
+            for(let lv=inputs[`${sk}From`]+1; lv<=inputs[`${sk}To`]; lv++){
+                let row = costs.skills?.[lv];
+                if(!row) row = SKILL_LEVEL_COSTS[lv];
+                if(!row) continue;
+                Object.entries(row).forEach(([k,v])=>{
+                    if(!v) return;
+                    if(k==='skill_item') addCount(mats, `skill_item${skillItemIndex}`, v);
+                    else addCount(mats, k, v);
+                });
+            }
+        });
+        // MIND (베이스 12개 체크 수 만큼 곱 적용 + 스탯/스킬/속성 테이블)
+        const enabled = inputs.mindBase.filter(Boolean).length;
+        for(let lv=1; lv<=enabled; lv++){
+            const row = (costs.mind.base && costs.mind.base[lv]) || null;
+            if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        for(let lv=inputs.mindStat1From+1; lv<=inputs.mindStat1To; lv++){
+            const row = costs.mind.stat1?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        for(let lv=inputs.mindStat2From+1; lv<=inputs.mindStat2To; lv++){
+            const row = costs.mind.stat2?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        for(let lv=inputs.mindSkill1From+1; lv<=inputs.mindSkill1To; lv++){
+            const row = costs.mind.skill1?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        for(let lv=inputs.mindSkill2From+1; lv<=inputs.mindSkill2To; lv++){
+            const row = costs.mind.skill2?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        for(let lv=inputs.mindAttrFrom+1; lv<=inputs.mindAttrTo; lv++){
+            const row = costs.mind.attr?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        return mats;
+    }
+
+    function addPlan({name, rarity, inputs, materials}){
+        const id = Date.now()+ '_' + Math.random().toString(36).slice(2,7);
+        const plan = { id, name, rarity, image: `${BASE_URL}/assets/img/tier/${name}.webp`, inputs, materials };
+        STATE.plans.push(plan);
+        recalcTotals();
+        renderPlans();
+        renderSummary();
+    }
+
+    function removePlan(id){
+        STATE.plans = STATE.plans.filter(p=>p.id!==id);
+        recalcTotals();
+        renderPlans();
+        renderSummary();
+    }
+
+    function recalcTotals(){
+        const totals = {};
+        STATE.plans.forEach(p=>{
+            Object.entries(p.materials||{}).forEach(([k,v])=> addCount(totals,k, v||0));
+        });
+        STATE.totals = totals;
+    }
+
+    // 렌더: 요약
+    function renderSummary(){
+        const grid = document.getElementById('summaryGrid');
+        if(!grid) return;
+        const frag = document.createDocumentFragment();
+        const entries = Object.entries(STATE.totals).sort((a,b)=>{
+            const aa = materialSortOrder(a[0]);
+            const bb = materialSortOrder(b[0]);
+            if(aa!==bb) return aa-bb;
+            return a[0] > b[0] ? 1 : -1;
+        });
+
+        // 그룹형 시뮬레이션(돌파/EXP)
+        const n1 = STATE.totals['lv_limit1']|0, n2 = STATE.totals['lv_limit2']|0, n3 = STATE.totals['lv_limit3']|0;
+        const limitSummary = computeLimitSummary({ n1, n2, n3 }, STATE.inventory);
+        const e1 = STATE.totals['lv_exp1']|0, e2 = STATE.totals['lv_exp2']|0, e3 = STATE.totals['lv_exp3']|0;
+        const expSummary = computeExpVisual({ n1:e1, n2:e2, n3:e3 }, STATE.inventory);
+        // skills 상향(3:1, 2:1) 시뮬레이션: lv1/2/3만 대상
+        const s1 = STATE.totals['skill_lv_1']|0, s2 = STATE.totals['skill_lv_2']|0, s3 = STATE.totals['skill_lv_3']|0;
+        const skillSummary = computeLimitSummary({ n1:s1, n2:s2, n3:s3 }, { lv_limit1:STATE.inventory.skill_lv_1|0, lv_limit2:STATE.inventory.skill_lv_2|0, lv_limit3:STATE.inventory.skill_lv_3|0 });
+        // weapon 그룹도 별도 계산 (STATE.inventory의 wp_*를 임시 맵으로 매핑)
+        const wn1 = STATE.totals['wp_limit1']|0, wn2 = STATE.totals['wp_limit2']|0, wn3 = STATE.totals['wp_limit3']|0;
+        const winvLimit = { lv_limit1: STATE.inventory.wp_limit1|0, lv_limit2: STATE.inventory.wp_limit2|0, lv_limit3: STATE.inventory.wp_limit3|0 };
+        const wpLimitSummary = computeLimitSummary({ n1:wn1, n2:wn2, n3:wn3 }, winvLimit);
+        const we1 = STATE.totals['wp_exp1']|0, we2 = STATE.totals['wp_exp2']|0, we3 = STATE.totals['wp_exp3']|0;
+        const winvExp = { lv_exp1: STATE.inventory.wp_exp1|0, lv_exp2: STATE.inventory.wp_exp2|0, lv_exp3: STATE.inventory.wp_exp3|0 };
+        const wpExpSummary = computeExpVisual({ n1:we1, n2:we2, n3:we3 }, winvExp);
+
+        entries.forEach(([key,cnt])=>{
+            const div = document.createElement('div');
+            div.className='material-chip ' + chipLevelClass(key);
+            const img = document.createElement('img');
+            img.src = MATERIAL_ICONS[key] || MATERIAL_ICONS.money; // 폴백
+            let owned = STATE.inventory[key] || 0;
+            if(key.startsWith('lv_limit')){
+                owned = limitSummary.visual[key] ?? 0;
+            } else if(key.startsWith('lv_exp')){
+                owned = expSummary[key] ?? 0;
+            } else if(key.startsWith('wp_limit')){
+                const mapKey = key.replace('wp_','lv_');
+                owned = wpLimitSummary.visual[mapKey] ?? 0;
+            } else if(key.startsWith('wp_exp')){
+                const mapKey = key.replace('wp_','lv_');
+                owned = wpExpSummary[mapKey] ?? 0;
+            } else if(key==='skill_lv_1'){
+                owned = skillSummary.visual.lv_limit1 ?? Math.min(cnt, STATE.inventory[key]||0);
+            } else if(key==='skill_lv_2'){
+                owned = skillSummary.visual.lv_limit2 ?? Math.min(cnt, STATE.inventory[key]||0);
+            } else if(key==='skill_lv_3'){
+                owned = skillSummary.visual.lv_limit3 ?? Math.min(cnt, STATE.inventory[key]||0);
+            } else {
+                owned = Math.min(cnt, STATE.inventory[key]||0);
+            }
+            const p = document.createElement('div'); p.className='cnt';
+            const ownSpan = document.createElement('span'); ownSpan.className='own';
+            ownSpan.textContent = (key==='konpaku_gem') ? formatK(owned|0) : String(owned|0);
+            if((owned|0) < (cnt|0)) ownSpan.classList.add('bad');
+            const sep = document.createTextNode('/');
+            const needSpan = document.createElement('span'); needSpan.className='need'; needSpan.textContent = (key==='konpaku_gem') ? formatK(cnt|0) : String(cnt|0);
+            p.appendChild(ownSpan); p.appendChild(sep); p.appendChild(needSpan);
+            div.title = `${owned|0} / ${cnt|0}`;
+            if(key==='lv_limit3' && limitSummary.badge3>0){
+                const badge = document.createElement('div'); badge.className='craft-badge';
+                const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                const span=document.createElement('span'); span.textContent=String(limitSummary.badge3);
+                badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+            }
+            if(key==='lv_limit2' && limitSummary.badge2>0){
+                const badge2 = document.createElement('div'); badge2.className='craft-badge';
+                const icon2=document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                const span2=document.createElement('span'); span2.textContent=String(limitSummary.badge2);
+                badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
+            }
+            if(key==='skill_lv_3' && skillSummary.badge3>0){
+                const badge = document.createElement('div'); badge.className='craft-badge';
+                const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                const span=document.createElement('span'); span.textContent=String(skillSummary.badge3);
+                badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+            }
+            if(key==='skill_lv_2' && skillSummary.badge2>0){
+                const badge2 = document.createElement('div'); badge2.className='craft-badge';
+                const icon2=document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                const span2=document.createElement('span'); span2.textContent=String(skillSummary.badge2);
+                badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
+            }
+            if(key==='wp_limit3' && wpLimitSummary.badge3>0){
+                const badge = document.createElement('div'); badge.className='craft-badge';
+                const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                const span=document.createElement('span'); span.textContent=String(wpLimitSummary.badge3);
+                badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+            }
+            if(key==='wp_limit2' && wpLimitSummary.badge2>0){
+                const badge2 = document.createElement('div'); badge2.className='craft-badge';
+                const icon2=document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                const span2=document.createElement('span'); span2.textContent=String(wpLimitSummary.badge2);
+                badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
+            }
+            // 클릭 시 그룹별 보유량 편집
+            div.addEventListener('click', ()=>{
+                if(key.startsWith('lv_exp')) openInventoryModal('lv_exp');
+                else if(key.startsWith('lv_limit')) openInventoryModal('lv_limit');
+                else if(key.startsWith('wp_exp')) openInventoryModal('wp_exp');
+                else if(key.startsWith('wp_limit')) openInventoryModal('wp_limit');
+                else if(key.startsWith('skill_')) openInventoryModal('skill');
+                else if(key==='konpaku_gem') openInventoryModal('gem');
+                else if(key.startsWith('md_')) openInventoryModal('mind');
+            });
+            div.appendChild(img); div.appendChild(p); frag.appendChild(div);
+        });
+        grid.innerHTML=''; grid.appendChild(frag);
+    }
+
+    // 렌더: 계획 카드들
+    function renderPlans(){
+        const root = document.getElementById('plansContainer');
+        if(!root) return;
+        const frag = document.createDocumentFragment();
+        STATE.plans.forEach(p=>{
+            const card = document.createElement('div'); card.className='plan-card';
+            const header = document.createElement('div'); header.className='plan-header'; header.style.position='relative';
+            const title = document.createElement('div'); title.className='plan-title';
+            const starImg = (p.rarity>=5)? `${BASE_URL}/assets/img/character-detail/star5.png` : `${BASE_URL}/assets/img/character-detail/star4.png`;
+            const starCount = Math.max(1, Math.min(5, p.rarity||5));
+            // 다국어 캐릭터명
+            let displayName = p.name;
+            const cd = STATE.characterData?.[p.name];
+            if(STATE.lang==='en' && cd?.name_en) displayName = cd.name_en;
+            else if(STATE.lang==='jp' && cd?.name_jp) displayName = cd.name_jp;
+
+            // 좌측 아바타
+            const avatar = document.createElement('img');
+            avatar.src = p.image; avatar.alt = displayName; avatar.className = 'plan-avatar';
+            title.appendChild(avatar);
+            // 우측 2행 박스
+            const right = document.createElement('div'); right.className = 'plan-title-right';
+            const nameRow = document.createElement('div'); nameRow.className = 'name-row'; nameRow.textContent = displayName;
+            const metaRow = document.createElement('div'); metaRow.className = 'meta-row';
+            // 속성, 직업 아이콘
+            try{ if(cd?.element){ const elI = document.createElement('img'); elI.src = `${BASE_URL}/assets/img/character-cards/속성_${cd.element}.png`; elI.alt = cd.element; elI.className='meta-icon'; metaRow.appendChild(elI); } }catch(_){ }
+            try{ if(cd?.position){ const poI = document.createElement('img'); poI.src = `${BASE_URL}/assets/img/character-cards/직업_${cd.position}.png`; poI.alt = cd.position; poI.className='meta-icon'; metaRow.appendChild(poI); } }catch(_){ }
+            // 별 아이콘
+            const starWrap = document.createElement('span'); starWrap.className = 'star-wrap';
+            for(let i=0;i<starCount;i++){ const s=document.createElement('img'); s.src=starImg; s.alt='star'; s.style.width='14px'; s.style.height='14px'; s.style.objectFit='contain'; starWrap.appendChild(s);}            
+            metaRow.appendChild(starWrap);
+            right.appendChild(nameRow); right.appendChild(metaRow);
+            title.appendChild(right);
+            const actions = document.createElement('div'); actions.className='plan-actions';
+            const menuBtn = document.createElement('button'); menuBtn.className='menu-btn'; menuBtn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>';
+            const menu = document.createElement('div'); menu.className='menu';
+            const editBtn = document.createElement('button'); editBtn.textContent='Edit';
+            const deleteBtn = document.createElement('button'); deleteBtn.textContent='Delete'; deleteBtn.style.color='tomato';
+            menu.appendChild(editBtn); menu.appendChild(deleteBtn);
+            actions.appendChild(menuBtn);
+            header.appendChild(title); header.appendChild(actions); header.appendChild(menu); card.appendChild(header);
+            // 메뉴 토글 + 바깥 클릭 시 닫기
+            menu.addEventListener('click', (e)=> e.stopPropagation());
+            menuBtn.onclick = (e)=>{
+                e.stopPropagation();
+                const opened = menu.classList.toggle('show');
+                if(opened){
+                    const onDocClick = (ev)=>{
+                        if(!menu.contains(ev.target) && ev.target!==menuBtn){
+                            menu.classList.remove('show');
+                            document.removeEventListener('click', onDocClick);
+                        }
+                    };
+                    // 다음 틱에 등록해 현재 클릭으로 바로 닫히지 않게 함
+                    setTimeout(()=> document.addEventListener('click', onDocClick), 0);
+                }
+            };
+            deleteBtn.onclick = ()=>{ removePlan(p.id); };
+            editBtn.onclick = ()=>{ startSetupFor(p.name, p.id); };
+
+            const matGrid = document.createElement('div'); matGrid.className='material-grid';
+            // 그룹별 실제 충당(자동 변환) 계산
+            const needL1 = p.materials['lv_limit1']|0, needL2 = p.materials['lv_limit2']|0, needL3 = p.materials['lv_limit3']|0;
+            const limitSummary = computeLimitSummary({ n1:needL1, n2:needL2, n3:needL3 }, STATE.inventory);
+            const needE1 = p.materials['lv_exp1']|0, needE2 = p.materials['lv_exp2']|0, needE3 = p.materials['lv_exp3']|0;
+            const visualExp = computeExpVisual({ n1:needE1, n2:needE2, n3:needE3 }, STATE.inventory);
+
+            // 무기 그룹(돌파/EXP) 시뮬레이션
+            const wNeedL1 = p.materials['wp_limit1']|0, wNeedL2 = p.materials['wp_limit2']|0, wNeedL3 = p.materials['wp_limit3']|0;
+            const winvLimit = { lv_limit1: STATE.inventory.wp_limit1|0, lv_limit2: STATE.inventory.wp_limit2|0, lv_limit3: STATE.inventory.wp_limit3|0 };
+            const wpLimitSummary = computeLimitSummary({ n1:wNeedL1, n2:wNeedL2, n3:wNeedL3 }, winvLimit);
+            const wNeedE1 = p.materials['wp_exp1']|0, wNeedE2 = p.materials['wp_exp2']|0, wNeedE3 = p.materials['wp_exp3']|0;
+            const winvExp = { lv_exp1: STATE.inventory.wp_exp1|0, lv_exp2: STATE.inventory.wp_exp2|0, lv_exp3: STATE.inventory.wp_exp3|0 };
+            const visualWpExp = computeExpVisual({ n1:wNeedE1, n2:wNeedE2, n3:wNeedE3 }, winvExp);
+
+            // 스킬 변환 시뮬레이션 준비
+            const needS1 = p.materials['skill_lv_1']|0, needS2 = p.materials['skill_lv_2']|0, needS3 = p.materials['skill_lv_3']|0;
+            const sinv = { lv_limit1: STATE.inventory.skill_lv_1|0, lv_limit2: STATE.inventory.skill_lv_2|0, lv_limit3: STATE.inventory.skill_lv_3|0 };
+            const skillSummary = computeLimitSummary({ n1:needS1, n2:needS2, n3:needS3 }, sinv);
+
+            Object.entries(Object.fromEntries(Object.entries(p.materials||{}).sort((a,b)=>{
+                const aa = materialSortOrder(a[0]);
+                const bb = materialSortOrder(b[0]);
+                if(aa!==bb) return aa-bb;
+                return a[0] > b[0] ? 1 : -1;
+            }))).forEach(([k,c])=>{
+                const div = document.createElement('div'); div.className='material-chip ' + chipLevelClass(k);
+                const img = document.createElement('img'); img.src = MATERIAL_ICONS[k] || MATERIAL_ICONS.money;
+                // 자동 충당(변환 적용)된 보이는 보유/필요 계산 (그룹 처리)
+                let visual = STATE.inventory[k]||0;
+                if(k.startsWith('lv_limit')){
+                    visual = limitSummary.visual[k] ?? 0;
+                } else if(k.startsWith('lv_exp')){
+                    visual = visualExp[k] ?? 0;
+                } else if(k.startsWith('wp_limit')){
+                    const mapKey = k.replace('wp_','lv_');
+                    visual = wpLimitSummary.visual[mapKey] ?? 0;
+                } else if(k.startsWith('wp_exp')){
+                    const mapKey = k.replace('wp_','lv_');
+                    visual = visualWpExp[mapKey] ?? 0;
+                } else if(k==='skill_lv_1'){
+                    visual = skillSummary.visual.lv_limit1 ?? Math.min(c, STATE.inventory[k]||0);
+                } else if(k==='skill_lv_2'){
+                    visual = skillSummary.visual.lv_limit2 ?? Math.min(c, STATE.inventory[k]||0);
+                } else if(k==='skill_lv_3'){
+                    visual = skillSummary.visual.lv_limit3 ?? Math.min(c, STATE.inventory[k]||0);
+                } else {
+                    visual = Math.min(c, STATE.inventory[k]||0);
+                }
+                const txt = document.createElement('div'); txt.className='cnt';
+                const ownSpan2 = document.createElement('span'); ownSpan2.className='own'; ownSpan2.textContent = (k==='konpaku_gem') ? formatK(visual|0) : String(visual|0);
+                if((visual|0) < (c|0)) ownSpan2.classList.add('bad');
+                const sep2 = document.createTextNode('/');
+                const needSpan2 = document.createElement('span'); needSpan2.className='need'; needSpan2.textContent = (k==='konpaku_gem') ? formatK(c|0) : String(c|0);
+                txt.appendChild(ownSpan2); txt.appendChild(sep2); txt.appendChild(needSpan2);
+                // 돌파3 배지: 실제 상향 제작 수 표시
+                if(k==='lv_limit3' && limitSummary.badge3>0){
+                    const badge = document.createElement('div'); badge.className='craft-badge';
+                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span = document.createElement('span'); span.textContent = String(limitSummary.badge3);
+                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+                }
+                if(k==='lv_limit2' && limitSummary.badge2>0){
+                    const badge2 = document.createElement('div'); badge2.className='craft-badge';
+                    const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                    const span2 = document.createElement('span'); span2.textContent = String(limitSummary.badge2);
+                    badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
+                }
+                if(k==='wp_limit3' && wpLimitSummary.badge3>0){
+                    const badge = document.createElement('div'); badge.className='craft-badge';
+                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span = document.createElement('span'); span.textContent = String(wpLimitSummary.badge3);
+                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+                }
+                if(k==='wp_limit2' && wpLimitSummary.badge2>0){
+                    const badge2 = document.createElement('div'); badge2.className='craft-badge';
+                    const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                    const span2 = document.createElement('span'); span2.textContent = String(wpLimitSummary.badge2);
+                    badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
+                }
+                if(k==='skill_lv_3' && skillSummary.badge3>0){
+                    const badge = document.createElement('div'); badge.className='craft-badge';
+                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span = document.createElement('span'); span.textContent = String(skillSummary.badge3);
+                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+                }
+                if(k==='skill_lv_2' && skillSummary.badge2>0){
+                    const badge = document.createElement('div'); badge.className='craft-badge';
+                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span = document.createElement('span'); span.textContent = String(skillSummary.badge2);
+                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
+                }
+                div.title = `${visual|0} / ${c|0}`;
+                div.addEventListener('click', ()=>{
+                    if(k.startsWith('lv_exp')) openInventoryModal('lv_exp');
+                    else if(k.startsWith('lv_limit')) openInventoryModal('lv_limit');
+                    else if(k.startsWith('wp_exp')) openInventoryModal('wp_exp');
+                    else if(k.startsWith('wp_limit')) openInventoryModal('wp_limit');
+                    else if(k.startsWith('skill_')) openInventoryModal('skill');
+                    else if(k==='konpaku_gem') openInventoryModal('gem');
+                    else if(k.startsWith('md_')) openInventoryModal('mind');
+                });
+                div.appendChild(img); div.appendChild(txt); matGrid.appendChild(div);
+            });
+            // details toggle
+            const detailBtn = document.createElement('button'); detailBtn.className='mini-btn'; detailBtn.textContent='View Details';
+            actions.insertBefore(detailBtn, menuBtn);
+            const details = document.createElement('div'); details.className='plan-details'; details.style.display='none';
+            const mindBaseHtml = (()=>{
+                const arr = (p.inputs.mindBase||[]).slice(0,12);
+                const items = arr.map((on,idx)=>{
+                    const gi = ((idx)%3)+1;
+                    const op = on? '1' : '0.35';
+                    return `<img src="${BASE_URL}/apps/material-calc/img/mind_base_${gi}.png" style="width:16px;height:16px;object-fit:contain;opacity:${op};margin-right:2px;">`;
+                }).join('');
+                return `<div class="mind-seq">${items}</div>`;
+            })();
+            details.innerHTML = `
+                <div class="row"><label>Level</label><div>${p.inputs.lvFrom}</div><div>→</div><div>${p.inputs.lvTo}</div></div>
+                <div class="row"><label>Weapon</label><div>${p.inputs.wpFrom}</div><div>→</div><div>${p.inputs.wpTo}</div></div>
+                <div class="row"><label>Skill1</label><div>${p.inputs.s1From}</div><div>→</div><div>${p.inputs.s1To}</div></div>
+                <div class="row"><label>Skill2</label><div>${p.inputs.s2From}</div><div>→</div><div>${p.inputs.s2To}</div></div>
+                <div class="row"><label>Skill3</label><div>${p.inputs.s3From}</div><div>→</div><div>${p.inputs.s3To}</div></div>
+                <div class="row"><label>HL/TH</label><div>${p.inputs.s4From}</div><div>→</div><div>${p.inputs.s4To}</div></div>
+                <div class="row"><label>Mind Base</label><div style="grid-column: span 3; display:flex; align-items:center;">${mindBaseHtml}</div></div>
+                <div class="row"><label>Mind Stat1</label><div>${p.inputs.mindStat1From}</div><div>→</div><div>${p.inputs.mindStat1To}</div></div>
+                <div class="row"><label>Mind Stat2</label><div>${p.inputs.mindStat2From}</div><div>→</div><div>${p.inputs.mindStat2To}</div></div>
+                <div class="row"><label>Mind Skill1</label><div>${p.inputs.mindSkill1From}</div><div>→</div><div>${p.inputs.mindSkill1To}</div></div>
+                <div class="row"><label>Mind Skill2</label><div>${p.inputs.mindSkill2From}</div><div>→</div><div>${p.inputs.mindSkill2To}</div></div>
+                <div class="row"><label>Mind Attr</label><div>${p.inputs.mindAttrFrom}</div><div>→</div><div>${p.inputs.mindAttrTo}</div></div>
+            `;
+            detailBtn.onclick = ()=>{
+                // 모든 카드 상세를 동시에 토글
+                const all = document.querySelectorAll('.plan-details');
+                const show = details.style.display==='none';
+                const display = show ? 'block':'none';
+                all.forEach(d=> d.style.display = display);
+            };
+
+            card.appendChild(matGrid);
+            card.appendChild(details);
+            frag.appendChild(card);
+        });
+        root.innerHTML=''; root.appendChild(frag);
+    }
+
+    // 이벤트/초기화
+    async function boot(){
+        // 다국어 문구 적용
+        STATE.lang = (typeof getCurrentLanguage==='function'?getCurrentLanguage():'kr') || 'kr';
+        document.querySelectorAll('[data-lang-key]').forEach(el=>{
+            const key = el.getAttribute('data-lang-key');
+            el.textContent = t(key);
+        });
+        const ttl = document.getElementById('plannerTitle'); if(ttl) ttl.textContent = t('pageTitle');
+
+        // spoiler 토글 (EN/JP만 표시)
+        const spoilerWrap = document.getElementById('spoilerContainer');
+        if(spoilerWrap) spoilerWrap.style.display = (STATE.lang==='en' || STATE.lang==='jp') ? 'flex' : 'none';
+        const spoilerToggle = document.getElementById('spoilerToggle');
+        if(spoilerToggle){ spoilerToggle.onchange = async () => { STATE.spoiler = spoilerToggle.checked; await loadCharacterData(); renderCharacterSelect(); }; }
+
+        // 데이터 로드
+        await loadCharacterData();
+        await ensureCosts();
+
+        // 버튼 바인딩
+        document.getElementById('addCharacterBtn').onclick = ()=>{ openModal('characterSelectModal'); renderCharacterSelect(); };
+        document.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', e=>{
+            const modal = e.target.closest('.modal'); if(modal) modal.setAttribute('aria-hidden','true');
+        }));
+        const collapse = document.getElementById('collapseSummary');
+        if(collapse){
+            collapse.onclick = ()=>{
+                const grid = document.getElementById('summaryGrid');
+                const open = collapse.getAttribute('aria-expanded') === 'true';
+                collapse.setAttribute('aria-expanded', String(!open));
+                grid.style.display = open ? 'none' : 'grid';
+                collapse.textContent = open ? '▸' : '▾';
+            };
+        }
+
+        // 저장 데이터 불러오기
+        loadState();
+        recalcTotals();
+        renderSummary();
+        renderPlans();
+    }
+
+    window.MaterialPlanner = { init: boot };
+    
+    // ===== 재고(보유량) 모달 =====
+    function openInventoryModal(type){
+        const form = document.getElementById('inventoryForm');
+        const title = document.getElementById('inventoryModalTitle');
+        const hint = document.getElementById('inventoryHint');
+        if(!form) return;
+        form.innerHTML = '';
+        let rows = [];
+        if(type==='lv_exp'){
+            title.textContent = 'Character EXP'; hint.textContent='';
+            rows = [
+                { key:'lv_exp3', label:'+4000', icon:MATERIAL_ICONS.lv_exp3 },
+                { key:'lv_exp2', label:'+1000', icon:MATERIAL_ICONS.lv_exp2 },
+                { key:'lv_exp1', label:'+200', icon:MATERIAL_ICONS.lv_exp1 }
+            ];
+        } else if(type==='lv_limit'){
+            title.textContent = 'Character Level Break'; hint.textContent='';
+            rows = [
+                { key:'lv_limit3', label:'Tier 3', icon:MATERIAL_ICONS.lv_limit3 },
+                { key:'lv_limit2', label:'Tier 2', icon:MATERIAL_ICONS.lv_limit2 },
+                { key:'lv_limit1', label:'Tier 1', icon:MATERIAL_ICONS.lv_limit1 }
+            ];
+        } else if(type==='wp_exp'){
+            title.textContent = 'Weapon EXP'; hint.textContent='';
+            rows = [
+                { key:'wp_exp3', label:'+4000', icon:MATERIAL_ICONS.wp_exp3 },
+                { key:'wp_exp2', label:'+1000', icon:MATERIAL_ICONS.wp_exp2 },
+                { key:'wp_exp1', label:'+200', icon:MATERIAL_ICONS.wp_exp1 }
+            ];
+        } else if(type==='wp_limit'){
+            title.textContent = 'Weapon Level Break'; hint.textContent='';
+            rows = [
+                { key:'wp_limit3', label:'Tier 3', icon:MATERIAL_ICONS.wp_limit3 },
+                { key:'wp_limit2', label:'Tier 2', icon:MATERIAL_ICONS.wp_limit2 },
+                { key:'wp_limit1', label:'Tier 1', icon:MATERIAL_ICONS.wp_limit1 }
+            ];
+        } else if(type==='skill'){
+            title.textContent = 'Skills'; hint.textContent='';
+            rows = [
+                { key:'skill_lv_3', label:'Skill Lv3', icon:MATERIAL_ICONS.skill_lv_3 },
+                { key:'skill_lv_2', label:'Skill Lv2', icon:MATERIAL_ICONS.skill_lv_2 },
+                { key:'skill_lv_1', label:'Skill Lv1', icon:MATERIAL_ICONS.skill_lv_1 },
+                { key:'skill_rose', label:'Skill Rose', icon:MATERIAL_ICONS.skill_rose },
+                { key:'skill_item1', label:'Skill Item1', icon:MATERIAL_ICONS.skill_item1 },
+                { key:'skill_item2', label:'Skill Item2', icon:MATERIAL_ICONS.skill_item2 },
+                { key:'skill_item3', label:'Skill Item3', icon:MATERIAL_ICONS.skill_item3 },
+                { key:'skill_item4', label:'Skill Item4', icon:MATERIAL_ICONS.skill_item4 }
+            ];
+        } else if(type==='gem'){
+            title.textContent = 'Konpaku Gem'; hint.textContent='';
+            rows = [ { key:'konpaku_gem', label:'Gem', icon:MATERIAL_ICONS.konpaku_gem } ];
+        } else if(type==='mind'){
+            title.textContent = 'Mindscape'; hint.textContent='';
+            rows = [
+                { key:'md_mercury', label:'Base', icon:MATERIAL_ICONS.md_mercury },
+                { key:'md_bell', label:'Attribute Lv', icon:MATERIAL_ICONS.md_bell },
+                { key:'md_stat1', label:'Stat 1', icon:MATERIAL_ICONS.md_stat1 },
+                { key:'md_stat2', label:'Stat 2', icon:MATERIAL_ICONS.md_stat2 },
+                { key:'md_skill1', label:'Skill 1', icon:MATERIAL_ICONS.md_skill1 },
+                { key:'md_skill2', label:'Skill 2', icon:MATERIAL_ICONS.md_skill2 }
+            ];
+        }
+        const frag = document.createDocumentFragment();
+        rows.forEach(r=>{
+            const row = document.createElement('div'); row.className='row';
+            const img = document.createElement('img'); img.src = r.icon; img.style.width='28px'; img.style.height='28px';
+            const lab = document.createElement('label'); lab.textContent = r.label; lab.style.minWidth='80px';
+            const input = document.createElement('input'); input.type='number'; input.min='0'; input.step='1'; input.value = String(STATE.inventory[r.key]||0); input.dataset.key=r.key;
+            row.appendChild(img); row.appendChild(lab); row.appendChild(document.createTextNode(': ')); row.appendChild(input);
+            frag.appendChild(row);
+        });
+        form.appendChild(frag);
+        const saveBtn = document.getElementById('saveInventoryBtn');
+        saveBtn.onclick = ()=>{
+            // 입력값 저장
+            form.querySelectorAll('input[type="number"]').forEach(el=>{
+                const k = el.dataset.key; const v = Math.max(0, Math.floor(Number(el.value||0)));
+                STATE.inventory[k] = v;
+            });
+            closeModal('inventoryModal');
+            saveState();
+            renderSummary(); renderPlans();
+        };
+        openModal('inventoryModal');
+    }
+
+    // 시각용 보유수량(자동 충당 변환 적용) 계산
+    function computeVisualOwned(key, need, inv){
+        // 로컬 복사해 변환 시뮬레이션 (입력 원본은 불변)
+        const e1=inv.lv_exp1|0, e2=inv.lv_exp2|0, e3=inv.lv_exp3|0;
+        const l1=inv.lv_limit1|0, l2=inv.lv_limit2|0, l3=inv.lv_limit3|0;
+        let exp = { e1, e2, e3 };
+        let lim = { l1, l2, l3 };
+
+        // 먼저 돌파: 상향만 (1→2, 2→3) 3:1
+        // 3의 필요치 충족을 위해 2 초과분을 상향, 2 필요치 충족 위해 1 초과분 상향
+        function consumeLimit(k, n){ // k: 'l1'/'l2'/'l3'
+            if(n<=0) return 0;
+            if(k==='l3'){
+                return Math.min(n, lim.l3);
+            } else if(k==='l2'){
+                let own = lim.l2;
+                let take = Math.min(n, own);
+                own -= take; n -= take; lim.l2 = own;
+                if(n>0){
+                    // 상향 제작
+                    const craft = Math.min(Math.floor(lim.l1/3), n);
+                    lim.l1 -= craft*3; take += craft; n -= craft;
+                }
+                return take;
+            } else {
+                // l1은 하향 대상 없음, 자체 소비만
+                let take = Math.min(n, lim.l1);
+                lim.l1 -= take; return take;
+            }
+        }
+
+        function visualForLimit(targetKey, required){
+            if(targetKey==='lv_limit3'){
+                // 직접 보유 우선
+                const direct = Math.min(required, lim.l3);
+                let remain = required - direct;
+                if(remain<=0) return direct;
+                // 2와 1을 상향해 3을 제작 (3:1, 1은 먼저 2로 3:1)
+                const totalL2Avail = lim.l2 + Math.floor(lim.l1/3);
+                const craftable = Math.floor(totalL2Avail / 3);
+                const craft = Math.min(remain, craftable);
+                return direct + craft;
+            }
+            if(targetKey==='lv_limit2'){
+                const direct = Math.min(required, lim.l2);
+                let remain = required - direct;
+                if(remain<=0) return direct;
+                const craftFromL1 = Math.min(remain, Math.floor(lim.l1/3));
+                return direct + craftFromL1;
+            }
+            if(targetKey==='lv_limit1'){
+                return Math.min(required, lim.l1);
+            }
+            return 0;
+        }
+
+        function visualForExp(targetKey, need){
+            // 우선 동일단계 직접 사용, 부족하면 상위에서 하향 분해(1000→200×5, 4000→1000×4)
+            if(targetKey==='lv_exp3'){
+                const direct = Math.min(need, exp.e3); exp.e3 -= direct; return direct;
+            }
+            if(targetKey==='lv_exp2'){
+                let got = Math.min(need, exp.e2); exp.e2 -= got; let rem = need - got;
+                if(rem>0){ // 상위에서 하향: 4000→1000 (1:4)
+                    const craft = Math.min(exp.e3*4, rem); // e3 한 개당 4개 생산
+                    const useE3 = Math.ceil(craft/4);
+                    exp.e3 -= useE3; got += craft;
+                }
+                return got;
+            }
+            if(targetKey==='lv_exp1'){
+                let got = Math.min(need, exp.e1); exp.e1 -= got; let rem = need - got;
+                if(rem>0){ // 1000→200 (1:5)
+                    const craftFromE2 = Math.min(exp.e2*5, rem);
+                    const useE2 = Math.ceil(craftFromE2/5);
+                    exp.e2 -= useE2; got += craftFromE2; rem -= craftFromE2;
+                }
+                if(rem>0){ // 4000→1000→200 (1:20)
+                    const craftFromE3 = Math.min(exp.e3*20, rem);
+                    const useE3 = Math.ceil(craftFromE3/20);
+                    exp.e3 -= useE3; got += craftFromE3; rem -= craftFromE3;
+                }
+                return got;
+            }
+            return 0;
+        }
+
+        if(key.startsWith('lv_limit')){
+            const needCount = need|0; // 각 칩의 필요한 수량
+            if(key==='lv_limit3'){
+                // 먼저 직접 보유 사용
+                let take = Math.min(needCount, lim.l3); lim.l3 -= take; let rem = needCount - take;
+                if(rem>0){ // 2에서 상향
+                    const fromL2 = Math.min(rem, lim.l2 + Math.floor(lim.l1/3));
+                    // consume in visual model
+                    const crafted = visualForLimit('lv_limit2', rem);
+                    return take + crafted;
+                }
+                return take;
+            }
+            if(key==='lv_limit2') return visualForLimit('lv_limit2', needCount);
+            if(key==='lv_limit1') return visualForLimit('lv_limit1', needCount);
+        }
+        if(key.startsWith('lv_exp')){
+            const needCount = need|0;
+            if(key==='lv_exp3') return visualForExp('lv_exp3', needCount);
+            if(key==='lv_exp2') return visualForExp('lv_exp2', needCount);
+            if(key==='lv_exp1') return visualForExp('lv_exp1', needCount);
+        }
+        // 기본은 원본 보유
+        return inv[key]||0;
+    }
+
+    // 그룹형 시각 보유치(돌파) 계산: 1→2→3 상향 변환만 허용
+    function computeLimitVisual(need, inv){
+        let l1 = inv.lv_limit1|0, l2 = inv.lv_limit2|0, l3 = inv.lv_limit3|0;
+        const n1 = need.n1|0, n2 = need.n2|0, n3 = need.n3|0;
+
+        // 0) 모두 충분하면 변환 없음
+        if (l1 >= n1 && l2 >= n2 && l3 >= n3) {
+            return { lv_limit1: n1, lv_limit2: n2, lv_limit3: n3 };
+        }
+
+        // 1) 1 충족(직접만)
+        const visual1 = Math.min(n1, l1);
+        const surplus1 = Math.max(0, l1 - n1);
+
+        // 2) 1의 초과분을 2로 상향 (3:1)
+        const addTo2 = Math.floor(surplus1 / 3);
+        const eff2 = l2 + addTo2;
+
+        // 3) 2가 목표치보다 3개 이상 초과하지 않으면 스톱
+        if (eff2 <= n2 + 2) {
+            const visual2 = Math.min(eff2, n2);
+            const visual3 = Math.min(l3, n3);
+            return { lv_limit1: visual1, lv_limit2: visual2, lv_limit3: visual3 };
+        }
+
+        // 4) 2의 초과분을 3으로 상향 (3:1)
+        const surplus2 = eff2 - n2; // >= 3
+        let convertTo3 = Math.floor(surplus2 / 3);
+
+        // 5) 3 필요 초과 시 초과분을 2에게 *3으로 되돌림
+        const maxNeedFrom2 = Math.max(0, n3 - l3);
+        if (convertTo3 > maxNeedFrom2) {
+            convertTo3 = maxNeedFrom2; // 되돌림은 시각 보유치에선 2를 n2로 보장하면 충분
+        }
+
+        const visual3 = Math.min(n3, l3 + convertTo3);
+        const visual2 = Math.min(eff2, n2); // 2는 항상 목표 충족으로 표시
+        return { lv_limit1: visual1, lv_limit2: visual2, lv_limit3: visual3 };
+    }
+
+    // 그룹형 시각 보유치(EXP) 계산: 하향/상향 모두 허용해 부족분 충당
+    function computeExpVisual(need, inv){
+        const W1 = 200, W2 = 1000, W3 = 4000;
+        const e1 = inv.lv_exp1|0, e2 = inv.lv_exp2|0, e3 = inv.lv_exp3|0;
+        const n1 = need.n1|0, n2 = need.n2|0, n3 = need.n3|0;
+
+        let A = e3*W3 + e2*W2 + e1*W1;
+        const R = n3*W3 + n2*W2 + n1*W1;
+
+        if (A >= R) {
+            return { lv_exp1: n1, lv_exp2: n2, lv_exp3: n3 };
+        }
+
+        // 부족한 경우, 총량 A로 상위부터 그리디로 채움 → 나머지로 2, 1 채우기
+        let v3 = Math.min(n3, Math.floor(A / W3));
+        A -= v3 * W3;
+        let v2 = Math.min(n2, Math.floor(A / W2));
+        A -= v2 * W2;
+        let v1 = Math.min(n1, Math.floor(A / W1));
+
+        return { lv_exp1: v1, lv_exp2: v2, lv_exp3: v3 };
+    }
+    function chipLevelClass(key){
+        if(key==='lv_limit1' || key==='lv_exp1' || key==='wp_limit1' || key==='wp_exp1' || key==='skill_lv_1') return 'lv1';
+        if(key==='lv_limit2' || key==='lv_exp2' || key==='wp_limit2' || key==='wp_exp2' || key==='skill_lv_2') return 'lv2';
+        if(key==='lv_limit3' || key==='lv_exp3' || key==='wp_limit3' || key==='wp_exp3' || key==='skill_lv_3') return 'lv3';
+        return 'default';
+    }
+    // 재료 정렬 우선순위 (요청 순서 적용)
+    function materialSortOrder(key){
+        // character exp (높은 등급 우선: 3→2→1)
+        if(key==='lv_exp3') return 101;
+        if(key==='lv_exp2') return 102;
+        if(key==='lv_exp1') return 103;
+        // character limit (3→2→1)
+        if(key==='lv_limit3') return 201;
+        if(key==='lv_limit2') return 202;
+        if(key==='lv_limit1') return 203;
+        // weapon exp (3→2→1)
+        if(key==='wp_exp3') return 301;
+        if(key==='wp_exp2') return 302;
+        if(key==='wp_exp1') return 303;
+        // weapon limit (3→2→1)
+        if(key==='wp_limit3') return 401;
+        if(key==='wp_limit2') return 402;
+        if(key==='wp_limit1') return 403;
+        // skills (무기와 mind 사이에 위치)
+        if(key==='skill_lv_3') return 501;
+        if(key==='skill_lv_2') return 502;
+        if(key==='skill_lv_1') return 503;
+        if(key==='skill_item1') return 504;
+        if(key==='skill_item2') return 505;
+        if(key==='skill_item3') return 506;
+        if(key==='skill_item4') return 507;
+        if(key==='skill_rose') return 508;
+        // mind base / lv / stat / skill
+        if(key==='md_mercury') return 601; // mind base(기초 재화)
+        if(key==='md_bell') return 610;   // mind lv(속성 강화)
+        if(key==='md_stat1') return 620;
+        if(key==='md_stat2') return 621;
+        if(key==='md_skill1') return 630;
+        if(key==='md_skill2') return 631;
+        if(key==='konpaku_gem') return 50; // 통화는 항상 상단에 가까이 노출
+        return 9999;
+    }
+    // 합산용: 돌파 변환 배지(3에 표시할 제작 수) 포함한 결과
+    function computeLimitSummary(need, inv){
+        let l1 = inv.lv_limit1|0, l2 = inv.lv_limit2|0, l3 = inv.lv_limit3|0;
+        const n1 = need.n1|0, n2 = need.n2|0, n3 = need.n3|0;
+        // 모두 충분 → 변환 없음
+        if(l1>=n1 && l2>=n2 && l3>=n3){
+            return { visual:{ lv_limit1:n1, lv_limit2:n2, lv_limit3:n3 }, badge3:0, badge2:0 };
+        }
+        const visual1 = Math.min(n1, l1);
+        const surplus1 = Math.max(0, l1 - n1);
+        const addTo2 = Math.floor(surplus1/3);
+        const eff2 = l2 + addTo2;
+        const deficit2 = Math.max(0, n2 - l2);
+        const used2 = Math.min(addTo2, deficit2);
+        if(eff2 <= n2 + 2){
+            return { visual:{ lv_limit1:visual1, lv_limit2:Math.min(eff2,n2), lv_limit3:Math.min(l3,n3) }, badge3:0, badge2:used2 };
+        }
+        const surplus2 = eff2 - n2;
+        let convertTo3 = Math.floor(surplus2/3);
+        const maxNeedFrom2 = Math.max(0, n3 - l3);
+        let badge3 = convertTo3;
+        if(convertTo3 > maxNeedFrom2){
+            badge3 = maxNeedFrom2;
+        }
+        const visual3 = Math.min(n3, l3 + badge3);
+        const visual2 = n2;
+        return { visual:{ lv_limit1:visual1, lv_limit2:visual2, lv_limit3:visual3 }, badge3, badge2:used2 };
+    }
+
+    // 포맷: 1000 -> 1k, 12050 -> 12.1k
+    function formatK(n){
+        if(!Number.isFinite(n)) return String(n||0);
+        if(Math.abs(n) < 1000) return String(n);
+        const v = n/1000;
+        const s = (v>=10)? v.toFixed(0) : v.toFixed(1);
+        return s + 'k';
+    }
+    // 로컬 저장/복구
+    function saveState(){
+        try{
+            const data = {
+                inventory: STATE.inventory,
+                plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs }))
+            };
+            localStorage.setItem('materialPlannerStateV1', JSON.stringify(data));
+        }catch(_){/* ignore */}
+    }
+    function loadState(){
+        try{
+            const raw = localStorage.getItem('materialPlannerStateV1');
+            if(!raw) return;
+            const data = JSON.parse(raw);
+            if(data.inventory) STATE.inventory = { ...STATE.inventory, ...data.inventory };
+            if(Array.isArray(data.plans)){
+                STATE.plans = data.plans.map(sp=>{
+                    const materials = estimateMaterials(sp.inputs);
+                    return {
+                        id: Date.now()+ '_' + Math.random().toString(36).slice(2,7),
+                        name: sp.name,
+                        rarity: sp.rarity,
+                        image: `${BASE_URL}/assets/img/tier/${sp.name}.webp`,
+                        inputs: sp.inputs,
+                        materials
+                    };
+                });
+            }
+        }catch(_){/* ignore */}
+    }
+})();
+
+

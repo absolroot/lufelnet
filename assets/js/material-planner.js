@@ -64,7 +64,7 @@
             level: '레벨', current: '현재', target: '목표', weapon: '무기', skills: '스킬',
             mind: '심상', enableAll: '기본 12개 활성화', mindStat1: '스탯 1', mindStat2: '스탯 2',
             mindSkill1: '스킬 1', mindSkill2: '스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
-            remove: '삭제', details: '상세'
+            remove: '삭제', details: '상세', home: '홈', viewDetails: '상세'
         },
         en: {
             pageTitle: 'Planner', addCharacter: 'Add Character', selectCharacter: 'Select Character',
@@ -72,7 +72,7 @@
             level: 'Level', current: 'Current', target: 'Target', weapon: 'Weapon', skills: 'Skills',
             mind: 'Mindscape', enableAll: 'Enable base 12', mindStat1: 'Stat 1', mindStat2: 'Stat 2',
             mindSkill1: 'Skill 1', mindSkill2: 'Skill 2', mindAttr: 'Attribute', cancel: 'Cancel', save: 'Save',
-            remove: 'Remove', details: 'Details'
+            remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details'
         },
         jp: {
             pageTitle: 'プランナー', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
@@ -80,7 +80,7 @@
             level: 'レベル', current: '現在', target: '目標', weapon: '武器', skills: 'スキル',
             mind: '心象', enableAll: '基本12個 有効', mindStat1: 'ステ1', mindStat2: 'ステ2',
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
-            remove: '削除', details: '詳細'
+            remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細'
         }
     };
 
@@ -493,17 +493,23 @@
             const row = (costs.mind.base && costs.mind.base[lv]) || null;
             if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
         }
+        // Mind Stat: 각 트랙(stat1, stat2)은 독립 진행이지만, 레벨업 액션당 두 재료가 합산되어 소모
         for(let lv=inputs.mindStat1From+1; lv<=inputs.mindStat1To; lv++){
-            const row = costs.mind.stat1?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row1 = costs.mind.stat1?.[lv]; if(row1) Object.entries(row1).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row2 = costs.mind.stat2?.[lv]; if(row2) Object.entries(row2).forEach(([k,v])=> addCount(mats,k, v||0));
         }
         for(let lv=inputs.mindStat2From+1; lv<=inputs.mindStat2To; lv++){
-            const row = costs.mind.stat2?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row1 = costs.mind.stat1?.[lv]; if(row1) Object.entries(row1).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row2 = costs.mind.stat2?.[lv]; if(row2) Object.entries(row2).forEach(([k,v])=> addCount(mats,k, v||0));
         }
+        // Mind Skill: 각 트랙(skill1, skill2)도 동일 규칙
         for(let lv=inputs.mindSkill1From+1; lv<=inputs.mindSkill1To; lv++){
-            const row = costs.mind.skill1?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row1 = costs.mind.skill1?.[lv]; if(row1) Object.entries(row1).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row2 = costs.mind.skill2?.[lv]; if(row2) Object.entries(row2).forEach(([k,v])=> addCount(mats,k, v||0));
         }
         for(let lv=inputs.mindSkill2From+1; lv<=inputs.mindSkill2To; lv++){
-            const row = costs.mind.skill2?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row1 = costs.mind.skill1?.[lv]; if(row1) Object.entries(row1).forEach(([k,v])=> addCount(mats,k, v||0));
+            const row2 = costs.mind.skill2?.[lv]; if(row2) Object.entries(row2).forEach(([k,v])=> addCount(mats,k, v||0));
         }
         for(let lv=inputs.mindAttrFrom+1; lv<=inputs.mindAttrTo; lv++){
             const row = costs.mind.attr?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
@@ -1161,8 +1167,8 @@
         return { lv_exp1: v1, lv_exp2: v2, lv_exp3: v3 };
     }
     function chipLevelClass(key){
-        if(key==='lv_limit1' || key==='lv_exp1' || key==='wp_limit1' || key==='wp_exp1' || key==='skill_lv_1') return 'lv1';
-        if(key==='lv_limit2' || key==='lv_exp2' || key==='wp_limit2' || key==='wp_exp2' || key==='skill_lv_2') return 'lv2';
+        if(key==='lv_limit1' || key==='lv_exp1' || key==='wp_limit1' || key==='wp_exp1' || key==='skill_lv_1' || key==='md_stat1' || key==='md_skill1') return 'lv1';
+        if(key==='lv_limit2' || key==='lv_exp2' || key==='wp_limit2' || key==='wp_exp2' || key==='skill_lv_2' || key==='md_skill2' || key==='md_stat2') return 'lv2';
         if(key==='lv_limit3' || key==='lv_exp3' || key==='wp_limit3' || key==='wp_exp3' || key==='skill_lv_3') return 'lv3';
         return 'default';
     }

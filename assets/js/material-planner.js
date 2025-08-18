@@ -67,7 +67,8 @@
             mindSkill1: '심상 스킬 1', mindSkill2: '심상 스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
             remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
             confirm: '확인', deleteConfirmTitle: '삭제 확인', deleteConfirmMessage: '이 캐릭터의 플랜을 삭제합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
-            helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.'
+            helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.',
+            reset: '초기화', resetConfirmTitle: '초기화 확인', resetConfirmMessage: '모든 플랜을 초기화합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?'
         },
         en: {
             pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
@@ -77,7 +78,8 @@
             mindSkill1: 'Mind Skill 1', mindSkill2: 'Mind Skill 2', mindAttr: 'Mind Attribute', cancel: 'Cancel', save: 'Save',
             remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
             confirm: 'Confirm', deleteConfirmTitle: 'Delete Plan', deleteConfirmMessage: 'This character plan will be deleted. This action cannot be undone. Continue?',
-            helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.'
+            helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.',
+            reset: 'Reset', resetConfirmTitle: 'Reset Confirm', resetConfirmMessage: 'All plans will be reset. This action cannot be undone. Continue?'
         },
         jp: {
             pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
@@ -87,7 +89,8 @@
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
             remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
             confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',
-            helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。'
+            helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。',
+            reset: 'リセット', resetConfirmTitle: 'リセットの確認', resetConfirmMessage: 'すべてのプランをリセットします。この操作は元に戻すことができません。続行しますか?'
         }
     };
 
@@ -970,6 +973,26 @@
 
         // 버튼 바인딩
         document.getElementById('addCharacterBtn').onclick = ()=>{ openModal('characterSelectModal'); renderCharacterSelect(); };
+
+        const resetBtn = document.getElementById('resetBtn');
+        if(resetBtn){
+            resetBtn.textContent=t('reset');
+        }
+        resetBtn.onclick = ()=>{
+            const title = t('resetConfirmTitle');
+            const msg = t('resetConfirmMessage');
+            // 기본 confirm 사용 (각 언어 메시지 지원)
+            // 필요 시 커스텀 모달로 교체 가능
+            if(window.confirm(`${title}\n\n${msg}`)){
+                STATE.plans = [];
+                STATE.inventory = {};
+                saveState();
+                window.location.reload();
+                renderPlans();
+            }
+        };
+
+
         document.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', e=>{
             const modal = e.target.closest('.modal'); if(modal) modal.setAttribute('aria-hidden','true');
         }));
@@ -1350,13 +1373,18 @@
         return { visual:{ lv_limit1:visual1, lv_limit2:visual2, lv_limit3:visual3 }, badge3, badge2:used2 };
     }
 
-    // 포맷: 1000 -> 1k, 12050 -> 12.1k
+    // 포맷: 1000 -> 1k, 12050 -> 12.1k 1000000 -> 1m
     function formatK(n){
         if(!Number.isFinite(n)) return String(n||0);
         if(Math.abs(n) < 1000) return String(n);
-        const v = n/1000;
+        if(n < 1000000){
+            const v = n/1000;
+            const s = (v>=10)? v.toFixed(0) : v.toFixed(1);
+            return s + 'k';
+        }
+        const v = n/1000000;
         const s = (v>=10)? v.toFixed(0) : v.toFixed(1);
-        return s + 'k';
+        return s + 'm';
     }
     // 로컬 저장/복구
     function saveState(){

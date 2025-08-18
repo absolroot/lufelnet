@@ -6,19 +6,19 @@
 .spoiler-toggle{display:flex;gap:8px;align-items:center;color:rgba(255,255,255,.8)}
 
 
-.summary-card{padding:16px 20px 24px 20px;margin:0px 20px 20px 20px;border-radius:10px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25)}
+.summary-card{padding:16px 20px 16px 20px;margin:0px 20px 20px 20px;border-radius:10px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25)}
 .summary-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .summary-header h2{margin:0; font-size:18px}
 .icon-btn{background:transparent;border:0px solid rgba(255,255,255,.2);color:#fff;border-radius:6px;padding:2px 8px;cursor:pointer}
-.material-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(60px,1fr));gap:10px;margin-top:12px}
-.material-chip{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid rgba(255,255,255,.1);padding:8px;border-radius:8px;position:relative;overflow:hidden}
+.material-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(60px,1fr));gap:10px;margin-top:12px;margin-bottom:8px;}
+.material-chip{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid rgba(255,255,255,.1);padding:8px;border-radius:6px;position:relative;overflow:hidden}
 .material-chip>*{position:relative;z-index:1}
 .material-chip::before{content:"";position:absolute;left:0;right:0;bottom:0;top:50%;opacity:.45;pointer-events:none;z-index:0}
 /* pure gradients */
-.material-chip.lv1::before{background:linear-gradient(to top, rgba(0,126,255,.55), rgba(0,126,255,0))}
-.material-chip.lv2::before{background:linear-gradient(to top, rgba(178,0,255,.55), rgba(178,0,255,0))}
-.material-chip.lv3::before{background:linear-gradient(to top, rgba(255,153,0,.55), rgba(255,153,0,0))}
-.material-chip.default::before{background:linear-gradient(to top, rgba(255,255,255,.55), rgba(255,255,255,0))}
+.material-chip.lv1::before{background:linear-gradient(to top, rgba(0,126,255,.55), rgba(0,126,255,0)); border-bottom: 2px solid rgba(0,126,255,1);}
+.material-chip.lv2::before{background:linear-gradient(to top, rgba(178,0,255,.55), rgba(178,0,255,0)); border-bottom: 2px solid rgba(178,0,255,1);}
+.material-chip.lv3::before{background:linear-gradient(to top, rgba(255,153,0,.55), rgba(255,153,0,0)); border-bottom: 2px solid rgba(255,153,0,1);}
+.material-chip.default::before{background:linear-gradient(to top, rgba(255,255,255,.55), rgba(255,255,255,0)); border-bottom: 2px solid rgba(255,255,255,1);}
 .material-chip img{width:36px;height:36px;object-fit:contain;aspect-ratio:1/1;background:transparent;border-radius:6px;padding:2px}
 .material-chip img[src*="weapon_lv_limit_1.png"]{scale:0.8}
 .material-chip img[src*="weapon_lv_1.png"],.material-chip img[src*="weapon_lv_2.png"],.material-chip img[src*="weapon_lv_3.png"]{scale:1.3}
@@ -30,7 +30,7 @@
 .material-chip img[src*="skill_item5.png"]{scale:1.2}
 .material-chip img[src*="mind_skill1.png"]{scale:0.85}
 .material-chip img[src*="mind_skill2.png"]{scale:0.9}
-.material-chip .cnt{font-size:12px;font-weight:100;color:#fbf0f0}
+.material-chip .cnt{font-size:11px;font-weight:100;color:#fbf0f0; margin-top: 2px;}
 .material-chip{cursor:pointer}
 
 /* craft badge (convertible amount) */
@@ -112,7 +112,7 @@
 .modal .close{border:none}
 
 /* character grid */
-.character-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px}
+.character-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px;row-gap: 24px;}
 .character-grid img{width:100%;aspect-ratio:1/1;border-radius:8px;border:1px solid rgba(255,255,255,.1);cursor:pointer;background:#000;object-fit:contain}
 .character-grid img:hover{filter:brightness(1.1)}
 .character-filter{margin-bottom:12px}
@@ -174,7 +174,7 @@
 
 .help-text {
     text-align: center;
-    margin: 0px 20px 0px 20px;
+    margin: 0px 20px 40px 20px;
     padding: 12px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;

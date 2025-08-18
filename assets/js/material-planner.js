@@ -534,6 +534,7 @@
             const row = costs.level[lv];
             if(!row) continue;
             Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+
         }
         // WEAPON: 경험치/한계돌파 (현재는 캐릭터 LV와 동일 규칙 가정)
         let wpExpSum = 0;
@@ -549,20 +550,7 @@
         for(let lv=inputs.wpFrom; lv<inputs.wpTo; lv++){
             const g = costs.__WEAPON_LEVEL_GEM?.[lv] || 0; if(g) addCount(mats,'konpaku_gem', g);
         }
-        for(let lv=inputs.wpFrom+1; lv<=inputs.wpTo; lv++){
-            const rowW = costs.weapon[lv];
-            if(!rowW) continue;
-            // rowW는 lv_limit 키를 가질 수 있으니 wp_limit 키로 매핑
-            Object.entries(rowW).forEach(([k,v])=>{
-                if(k.startsWith('lv_limit')){
-                    const wpKey = k.replace('lv_limit','wp_limit');
-                    addCount(mats, wpKey, v||0);
-                } else {
-                    addCount(mats, k, v||0);
-                }
-            });
-        }
-        // WEAPON
+        // WEAPON 레벨 돌파
         for(let lv=inputs.wpFrom+1; lv<=inputs.wpTo; lv++){
             const row = costs.weapon[lv]; if(!row) continue;
             Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
@@ -1359,10 +1347,10 @@
         // mind base / lv / stat / skill
         if(key==='md_mercury') return 601; // mind base(기초 재화)
         if(key==='md_bell') return 610;   // mind lv(속성 강화)
-        if(key==='md_stat1') return 620;
-        if(key==='md_stat2') return 621;
-        if(key==='md_skill1') return 630;
-        if(key==='md_skill2') return 631;
+        if(key==='md_stat1') return 621;
+        if(key==='md_stat2') return 620;
+        if(key==='md_skill1') return 631;
+        if(key==='md_skill2') return 630;
         if(key==='konpaku_gem') return 50; // 통화는 항상 상단에 가까이 노출
         return 9999;
     }

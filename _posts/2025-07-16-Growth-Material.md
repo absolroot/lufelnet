@@ -234,27 +234,27 @@ img_md:
 
 <img src="/apps/article/asset/growth_material/item-302021.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 35 | 75 | 110 | 110 |
+| LV 1 | LV 2 | LV 3 |
+| --- | --- | --- |
+| 35 | 75 | 110 |
 
 <img src="/apps/article/asset/growth_material/item-302022.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 6 | 6 | 15 | 15 |
+| LV 4 | LV 5 |
+| --- | --- | 
+| 6 | 15 |
 
 <img src="/apps/article/asset/growth_material/item-302011.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 25 | 50 | 80 | 80 |
+| LV 1 | LV 2 | LV 3 |
+| --- | --- | --- |
+| 25 | 50 | 80 |
 
 <img src="/apps/article/asset/growth_material/item-302012.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 2 | 2 | 3 | 3 |
+| LV 4 | LV 5 | 
+| --- | --- | 
+| 2 | 3 |
 
 <img src="/apps/article/asset/growth_material/item-302031.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
@@ -402,27 +402,27 @@ img_md:
 
 <img src="/apps/article/asset/growth_material/item-302021.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 35 | 75 | 110 | 110 |
+| LV 1 | LV 2 | LV 3 |
+| --- | --- | --- |
+| 35 | 75 | 110 |
 
 <img src="/apps/article/asset/growth_material/item-302022.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 6 | 6 | 15 | 15 |
+| LV 4 | LV 5 |
+| --- | --- | 
+| 6 | 15 |
 
 <img src="/apps/article/asset/growth_material/item-302011.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 25 | 50 | 80 | 80 |
+| LV 1 | LV 2 | LV 3 |
+| --- | --- | --- |
+| 25 | 50 | 80 |
 
 <img src="/apps/article/asset/growth_material/item-302012.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 2 | 2 | 3 | 3 |
+| LV 4 | LV 5 | 
+| --- | --- | 
+| 2 | 3 |
 
 <img src="/apps/article/asset/growth_material/item-302031.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
@@ -569,27 +569,27 @@ img_md:
 
 <img src="/apps/article/asset/growth_material/item-302021.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 35 | 75 | 110 | 110 |
+| LV 1 | LV 2 | LV 3 |
+| --- | --- | --- |
+| 35 | 75 | 110 |
 
 <img src="/apps/article/asset/growth_material/item-302022.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 6 | 6 | 15 | 15 |
+| LV 4 | LV 5 |
+| --- | --- | 
+| 6 | 15 |
 
 <img src="/apps/article/asset/growth_material/item-302011.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 25 | 50 | 80 | 80 |
+| LV 1 | LV 2 | LV 3 |
+| --- | --- | --- |
+| 25 | 50 | 80 |
 
 <img src="/apps/article/asset/growth_material/item-302012.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
-| LV 1 | LV 2 | LV 3 | LV 4 |
-| --- | --- | --- | --- |
-| 2 | 2 | 3 | 3 |
+| LV 4 | LV 5 | 
+| --- | --- | 
+| 2 | 3 |
 
 <img src="/apps/article/asset/growth_material/item-302031.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 

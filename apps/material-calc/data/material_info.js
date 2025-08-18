@@ -34,7 +34,7 @@ const MATERIAL_INFO = {
     lv_limit1: {
       name: { kr: '붓꽃의 향기', en: 'Whiff of Iris', jp: 'アヤメの香り' },
       desc: {
-        kr: '잠재력 레벨을 1·2로 올리는 데 사용된다.',
+        kr: '잠재력 레벨을 1·2로 올리는 데 사용된다. (최대 레벨 30)',
         en: 'Raises an ally’s Talent level (up to 2).',
         jp: '仲間の潜在レベルを1または2まで上げる。'
       }
@@ -42,7 +42,7 @@ const MATERIAL_INFO = {
     lv_limit2: {
       name: { kr: '붓꽃의 진한 향기', en: 'Fragrance of Iris', jp: '濃厚なアヤメの香り' },
       desc: {
-        kr: '잠재력 레벨을 3·4·5로 올리는 데 사용된다.',
+        kr: '잠재력 레벨을 3·4·5로 올리는 데 사용된다. (최대 레벨 60)',
         en: 'Raises an ally’s Talent level (up to 5).',
         jp: '仲間の潜在レベルを3、4、または5まで上げる。'
       }
@@ -50,7 +50,7 @@ const MATERIAL_INFO = {
     lv_limit3: {
       name: { kr: '붓꽃의 깊은 향기', en: 'Essence of Iris', jp: '深いアヤメの香り' },
       desc: {
-        kr: '잠재력 레벨을 6·7로 올리는 데 사용된다.',
+        kr: '잠재력 레벨을 6·7로 올리는 데 사용된다. (최대 레벨 80)',
         en: 'Raises an ally’s Talent level (up to 7).',
         jp: '仲間の潜在レベルを6または7まで上げる。'
       }
@@ -82,7 +82,7 @@ const MATERIAL_INFO = {
     wp_limit1: {
       name: { kr: '거친 광석', en: 'Blue Crystal', jp: 'ブルークリスタル' },
       desc: {
-        kr: '무기 레벨을 LV2·LV3으로 올리는 데 사용된다.',
+        kr: '무기 레벨을 LV2·LV3으로 올리는 데 사용된다. (최대 레벨 30)',
         en: 'Can overclock a level 10 - 20 weapon.',
         jp: 'レベル10～20の武器をブーストできる。'
       }
@@ -90,7 +90,7 @@ const MATERIAL_INFO = {
     wp_limit2: {
       name: { kr: '고급 광석', en: 'Purple Crystal', jp: 'パープルクリスタル' },
       desc: {
-        kr: '무기 레벨을 LV4·LV5·LV6으로 올리는 데 사용된다.',
+        kr: '무기 레벨을 LV4·LV5·LV6으로 올리는 데 사용된다. (최대 레벨 60)',
         en: 'Can overclock a level 30 - 50 weapon.',
         jp: 'レベル30～50の武器をブーストできる。'
       }
@@ -98,7 +98,7 @@ const MATERIAL_INFO = {
     wp_limit3: {
       name: { kr: '최고급 광석', en: 'Yellow Crystal', jp: 'イエロークリスタル' },
       desc: {
-        kr: '무기 레벨을 LV7-10으로 올리는 데 사용된다.',
+        kr: '무기 레벨을 LV7·LV8으로 올리는 데 사용된다. (최대 레벨 80)',
         en: 'Can overclock a level 60 - 70 weapon.',
         jp: 'レベル60～70の武器をブーストできる。'
       }
@@ -192,7 +192,7 @@ const MATERIAL_INFO = {
       }
     },
     md_stat1: {
-      name: { kr: '명성 수정구·하급', en: 'Fame Crystal (L)', jp: '星名クリスタル・下級' },
+      name: { kr: '명성 수정구·하급', en: 'Blue Fame Crystal', jp: '星名クリスタル・下級' },
       desc: {
         kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -200,7 +200,7 @@ const MATERIAL_INFO = {
       }
     },
     md_stat2: {
-      name: { kr: '명성 수정구·고급', en: 'Fame Crystal (H)', jp: '星名クリスタル・上級' },
+      name: { kr: '명성 수정구·고급', en: 'Purple Fame Crystal', jp: '星名クリスタル・上級' },
       desc: {
         kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -208,7 +208,7 @@ const MATERIAL_INFO = {
       }
     },
     md_skill1: {
-      name: { kr: '별가루 병·하급', en: 'Star Dust Vial (L)', jp: '星屑瓶・下級' },
+      name: { kr: '별가루 병·하급', en: 'Blue Star Dust Vial', jp: '星屑瓶・下級' },
       desc: {
         kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
         en: '',
@@ -216,7 +216,7 @@ const MATERIAL_INFO = {
       }
     },
     md_skill2: {
-      name: { kr: '별가루 병·고급', en: 'Star Dust Vial (H)', jp: '星屑瓶・上級' },
+      name: { kr: '별가루 병·고급', en: 'Purple Star Dust Vial', jp: '星屑瓶・上級' },
       desc: {
         kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
         en: '',

@@ -1050,43 +1050,43 @@
         if(type==='lv_exp'){
             title.textContent = 'Character EXP'; hint.textContent='';
             rows = [
-                { key:'lv_exp3', label:'+4000', icon:MATERIAL_ICONS.lv_exp3 },
-                { key:'lv_exp2', label:'+1000', icon:MATERIAL_ICONS.lv_exp2 },
-                { key:'lv_exp1', label:'+200', icon:MATERIAL_ICONS.lv_exp1 }
+                { key:'lv_exp3', label:materialInfoFor('lv_exp3').name, icon:MATERIAL_ICONS.lv_exp3 },
+                { key:'lv_exp2', label:materialInfoFor('lv_exp2').name, icon:MATERIAL_ICONS.lv_exp2 },
+                { key:'lv_exp1', label:materialInfoFor('lv_exp1').name, icon:MATERIAL_ICONS.lv_exp1 }
             ];
         } else if(type==='lv_limit'){
             title.textContent = 'Character Level Break'; hint.textContent='';
             rows = [
-                { key:'lv_limit3', label:'Tier 3', icon:MATERIAL_ICONS.lv_limit3 },
-                { key:'lv_limit2', label:'Tier 2', icon:MATERIAL_ICONS.lv_limit2 },
-                { key:'lv_limit1', label:'Tier 1', icon:MATERIAL_ICONS.lv_limit1 }
+                { key:'lv_limit3', label:materialInfoFor('lv_limit3').name, icon:MATERIAL_ICONS.lv_limit3 },
+                { key:'lv_limit2', label:materialInfoFor('lv_limit2').name, icon:MATERIAL_ICONS.lv_limit2 },
+                { key:'lv_limit1', label:materialInfoFor('lv_limit1').name, icon:MATERIAL_ICONS.lv_limit1 }
             ];
         } else if(type==='wp_exp'){
             title.textContent = 'Weapon EXP'; hint.textContent='';
             rows = [
-                { key:'wp_exp3', label:'+2000', icon:MATERIAL_ICONS.wp_exp3 },
-                { key:'wp_exp2', label:'+500', icon:MATERIAL_ICONS.wp_exp2 },
-                { key:'wp_exp1', label:'+100', icon:MATERIAL_ICONS.wp_exp1 }
+                { key:'wp_exp3', label:materialInfoFor('wp_exp3').name, icon:MATERIAL_ICONS.wp_exp3 },
+                { key:'wp_exp2', label:materialInfoFor('wp_exp2').name, icon:MATERIAL_ICONS.wp_exp2 },
+                { key:'wp_exp1', label:materialInfoFor('wp_exp1').name, icon:MATERIAL_ICONS.wp_exp1 }
             ];
         } else if(type==='wp_limit'){
             title.textContent = 'Weapon Level Break'; hint.textContent='';
             rows = [
-                { key:'wp_limit3', label:'Tier 3', icon:MATERIAL_ICONS.wp_limit3 },
-                { key:'wp_limit2', label:'Tier 2', icon:MATERIAL_ICONS.wp_limit2 },
-                { key:'wp_limit1', label:'Tier 1', icon:MATERIAL_ICONS.wp_limit1 }
+                { key:'wp_limit3', label:materialInfoFor('wp_limit3').name, icon:MATERIAL_ICONS.wp_limit3 },
+                { key:'wp_limit2', label:materialInfoFor('wp_limit2').name, icon:MATERIAL_ICONS.wp_limit2 },
+                { key:'wp_limit1', label:materialInfoFor('wp_limit1').name, icon:MATERIAL_ICONS.wp_limit1 }
             ];
         } else if(type==='skill'){
             title.textContent = 'Skills'; hint.textContent='';
             rows = [
-                { key:'skill_lv_3', label:'Skill Lv3', icon:MATERIAL_ICONS.skill_lv_3 },
-                { key:'skill_lv_2', label:'Skill Lv2', icon:MATERIAL_ICONS.skill_lv_2 },
-                { key:'skill_lv_1', label:'Skill Lv1', icon:MATERIAL_ICONS.skill_lv_1 },
-                { key:'skill_rose', label:'Skill Rose', icon:MATERIAL_ICONS.skill_rose },
-                { key:'skill_item1', label:'Skill Item1', icon:MATERIAL_ICONS.skill_item1 },
-                { key:'skill_item2', label:'Skill Item2', icon:MATERIAL_ICONS.skill_item2 },
-                { key:'skill_item3', label:'Skill Item3', icon:MATERIAL_ICONS.skill_item3 },
-                { key:'skill_item4', label:'Skill Item4', icon:MATERIAL_ICONS.skill_item4 },
-                { key:'skill_item5', label:'Skill Item5', icon:MATERIAL_ICONS.skill_item5 }
+                { key:'skill_lv_3', label:materialInfoFor('skill_lv_3').name, icon:MATERIAL_ICONS.skill_lv_3 },
+                { key:'skill_lv_2', label:materialInfoFor('skill_lv_2').name, icon:MATERIAL_ICONS.skill_lv_2 },
+                { key:'skill_lv_1', label:materialInfoFor('skill_lv_1').name, icon:MATERIAL_ICONS.skill_lv_1 },
+                { key:'skill_rose', label:materialInfoFor('skill_rose').name, icon:MATERIAL_ICONS.skill_rose },
+                { key:'skill_item1', label:materialInfoFor('skill_item1').name, icon:MATERIAL_ICONS.skill_item1 },
+                { key:'skill_item2', label:materialInfoFor('skill_item2').name, icon:MATERIAL_ICONS.skill_item2 },
+                { key:'skill_item3', label:materialInfoFor('skill_item3').name, icon:MATERIAL_ICONS.skill_item3 },
+                { key:'skill_item4', label:materialInfoFor('skill_item4').name, icon:MATERIAL_ICONS.skill_item4 },
+                { key:'skill_item5', label:materialInfoFor('skill_item5').name, icon:MATERIAL_ICONS.skill_item5 }
             ];
         } else if(type==='gem'){
             title.textContent = 'Konpaku Gem'; hint.textContent='';
@@ -1094,12 +1094,12 @@
         } else if(type==='mind'){
             title.textContent = t('mind'); hint.textContent='';
             rows = [
-                { key:'md_mercury', label:t('mindBase'), icon:MATERIAL_ICONS.md_mercury },
-                { key:'md_bell', label:t('mindAttr'), icon:MATERIAL_ICONS.md_bell },
-                { key:'md_stat1', label:t('mindStat1'), icon:MATERIAL_ICONS.md_stat1 },
-                { key:'md_stat2', label:t('mindStat2'), icon:MATERIAL_ICONS.md_stat2 },
-                { key:'md_skill1', label:t('mindSkill1'), icon:MATERIAL_ICONS.md_skill1 },
-                { key:'md_skill2', label:t('mindSkill2'), icon:MATERIAL_ICONS.md_skill2 }
+                { key:'md_mercury', label:materialInfoFor('md_mercury').name, icon:MATERIAL_ICONS.md_mercury },
+                { key:'md_bell', label:materialInfoFor('md_bell').name, icon:MATERIAL_ICONS.md_bell },
+                { key:'md_stat1', label:materialInfoFor('md_stat1').name, icon:MATERIAL_ICONS.md_stat1 },
+                { key:'md_stat2', label:materialInfoFor('md_stat2').name, icon:MATERIAL_ICONS.md_stat2 },
+                { key:'md_skill1', label:materialInfoFor('md_skill1').name, icon:MATERIAL_ICONS.md_skill1 },
+                { key:'md_skill2', label:materialInfoFor('md_skill2').name, icon:MATERIAL_ICONS.md_skill2 }
             ];
         }
         const frag = document.createDocumentFragment();

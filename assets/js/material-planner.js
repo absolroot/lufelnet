@@ -997,8 +997,9 @@
             const modal = e.target.closest('.modal'); if(modal) modal.setAttribute('aria-hidden','true');
         }));
         const collapse = document.getElementById('collapseSummary');
+        const summaryHeader = document.querySelector('.summary-header');
         if(collapse){
-            collapse.onclick = ()=>{
+            summaryHeader.onclick = ()=>{
                 const grid = document.getElementById('summaryGrid');
                 const open = collapse.getAttribute('aria-expanded') === 'true';
                 collapse.setAttribute('aria-expanded', String(!open));

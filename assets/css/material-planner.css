@@ -8,7 +8,7 @@
 
 .summary-card{padding:16px 20px 16px 20px;margin:0px 20px 20px 20px;border-radius:10px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25)}
 .summary-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.summary-header h2{margin:0; font-size:18px}
+.summary-header h2{margin:0; font-size:16px}
 .icon-btn{background:transparent;border:0px solid rgba(255,255,255,.2);color:#fff;border-radius:6px;padding:2px 8px;cursor:pointer}
 .material-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(60px,1fr));gap:10px;margin-top:12px;margin-bottom:8px;}
 .material-chip{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid rgba(255,255,255,.1);padding:8px;border-radius:6px;position:relative;overflow:hidden}
@@ -45,6 +45,7 @@
 .plan-details{margin-top:8px;border-top:1px solid rgba(255,255,255,.08);padding:8px 4px;font-size:14px;color:rgba(255,255,255,.9)}
 .plan-details .row{grid-template-columns:1fr auto auto auto;gap:8px}
 .plan-details .row label{opacity:.8}
+.mind-seq{display: flex; align-items: center; justify-content: center; margin-right: -6px;}
 
 /* menu */
 .menu-btn{background:transparent;border:0;border-radius:6px;color:#fff;padding:2px 0px 0px 0px;cursor:pointer}

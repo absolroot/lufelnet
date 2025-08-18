@@ -69,7 +69,7 @@ const criticalCalcData = [
         duration: "-",
         note: "생명 백분율 50% 이상",
         note_en: "Health percentage 50% or above",
-        note_jp: "生命力 50%以上",
+        note_jp: "HP 50%以上",
     },
     {
         id: "개선",

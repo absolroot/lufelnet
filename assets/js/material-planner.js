@@ -1011,6 +1011,17 @@
                 collapse.textContent = open ? '▸' : '▾';
             };
         }
+        // 모바일 환경에서 로드 시 초기 값은 접힌 상태로
+        if(window.innerWidth < 768){
+            const grid = document.getElementById('summaryGrid');
+            const collapse = document.getElementById('collapseSummary');
+            if(collapse){
+                collapse.setAttribute('aria-expanded', 'false');
+                collapse.setAttribute('aria-expanded', String(false));
+                grid.style.display = 'none';
+                collapse.textContent = '▸';
+            }
+        }
 
         // 저장 데이터 불러오기
         loadState();

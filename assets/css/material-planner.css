@@ -1,4 +1,11 @@
 .header-container{display: flex; justify-content: space-between;}
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 10px;
+    }
+}
 
 .planner-toolbar{display:flex;gap:12px;align-items:center;padding:0 0px}
 .planner-toolbar .primary-btn,.planner-toolbar .secondary-btn{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;padding:8px 14px 8px 10px;cursor:pointer}

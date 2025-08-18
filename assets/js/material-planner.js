@@ -14,7 +14,7 @@
             wp_exp1: 0, wp_exp2: 0, wp_exp3: 0,
             wp_limit1: 0, wp_limit2: 0, wp_limit3: 0,
             skill_lv_1: 0, skill_lv_2: 0, skill_lv_3: 0, skill_rose: 0,
-            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0
+            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0
         }
     };
 
@@ -53,40 +53,55 @@
         skill_item1: '/apps/material-calc/img/skill_item1.png',
         skill_item2: '/apps/material-calc/img/skill_item2.png',
         skill_item3: '/apps/material-calc/img/skill_item3.png',
-        skill_item4: '/apps/material-calc/img/skill_item4.png'
+        skill_item4: '/apps/material-calc/img/skill_item4.png',
+        skill_item5: '/apps/material-calc/img/skill_item5.png'
     };
 
     // 다국어 텍스트
     const I18N = {
         kr: {
-            pageTitle: '재료 플래너', addCharacter: '캐릭터 추가', selectCharacter: '캐릭터 선택',
+            pageTitle: '육성 계산기', addCharacter: '캐릭터 추가', selectCharacter: '캐릭터 선택',
             materialSummary: '재료 합산', showSpoiler: '스포일러 포함 (KR 전체 목록 사용)',
-            level: '레벨', current: '현재', target: '목표', weapon: '무기', skills: '스킬',
-            mind: '심상', enableAll: '기본 12개 활성화', mindStat1: '스탯 1', mindStat2: '스탯 2',
-            mindSkill1: '스킬 1', mindSkill2: '스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
-            remove: '삭제', details: '상세', home: '홈', viewDetails: '상세'
+            level: '레벨', current: '괴도', target: '목표', weapon: '무기', skills: '스킬',
+            mind: '심상', enableAll: '12개 전체 활성화', mindBase: '심상', mindStat1: '심상 스탯 1', mindStat2: '심상 스탯 2',
+            mindSkill1: '심상 스킬 1', mindSkill2: '심상 스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
+            remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
+            confirm: '확인', deleteConfirmTitle: '삭제 확인', deleteConfirmMessage: '이 캐릭터의 플랜을 삭제합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
+            helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.'
         },
         en: {
-            pageTitle: 'Planner', addCharacter: 'Add Character', selectCharacter: 'Select Character',
+            pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
             materialSummary: 'Material Summary', showSpoiler: 'Show spoiler (use KR full list)',
-            level: 'Level', current: 'Current', target: 'Target', weapon: 'Weapon', skills: 'Skills',
-            mind: 'Mindscape', enableAll: 'Enable base 12', mindStat1: 'Stat 1', mindStat2: 'Stat 2',
-            mindSkill1: 'Skill 1', mindSkill2: 'Skill 2', mindAttr: 'Attribute', cancel: 'Cancel', save: 'Save',
-            remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details'
+            level: 'Level', current: 'Character', target: 'Target', weapon: 'Weapon', skills: 'Skills',
+            mind: 'Mindscape', enableAll: 'Enable all 12', mindBase: 'Mind Base', mindStat1: 'Mind Stat 1', mindStat2: 'Mind Stat 2',
+            mindSkill1: 'Mind Skill 1', mindSkill2: 'Mind Skill 2', mindAttr: 'Mind Attribute', cancel: 'Cancel', save: 'Save',
+            remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
+            confirm: 'Confirm', deleteConfirmTitle: 'Delete Plan', deleteConfirmMessage: 'This character plan will be deleted. This action cannot be undone. Continue?',
+            helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.'
         },
         jp: {
-            pageTitle: 'プランナー', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
+            pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
             materialSummary: '素材サマリー', showSpoiler: 'ネタバレ含む（KR全リスト）',
-            level: 'レベル', current: '現在', target: '目標', weapon: '武器', skills: 'スキル',
-            mind: '心象', enableAll: '基本12個 有効', mindStat1: 'ステ1', mindStat2: 'ステ2',
+            level: 'レベル', current: '怪盗', target: '目標', weapon: '武器', skills: 'スキル',
+            mind: '心象', enableAll: '12個 全て有効', mindBase: '心象 基本', mindStat1: 'ステ1', mindStat2: 'ステ2',
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
-            remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細'
+            remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
+            confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',
+            helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。'
         }
     };
 
     function t(key){
         const pack = I18N[STATE.lang] || I18N.kr;
         return pack[key] || key;
+    }
+    
+    // help text 콘텐츠 다국어로 바꾸기
+    function updateHelpText(){
+        const helpText = document.querySelector('.help-text');
+        if(helpText){
+            helpText.textContent = t('helpText');
+        }
     }
 
     // 데이터 로드 (언어별 목록 + 스포일러 처리)
@@ -207,14 +222,20 @@
     // 설정 모달 시작
     function startSetupFor(name, editingId){
         const title = document.getElementById('setupModalTitle');
-        title.textContent = `${name}`;
+
+        let displayName = name;
+        const cd = STATE.characterData?.[name];
+        if(STATE.lang==='en' && cd?.name_en) displayName = cd.name_en;
+        else if(STATE.lang==='jp' && cd?.name_jp) displayName = cd.name_jp;
+
+        title.textContent = `${displayName}`;
         // 초기화 값 유지(기본 채움)
         openModal('characterSetupModal');
         // 저장 핸들러 바인딩
         const saveBtn = document.getElementById('savePlanBtn');
         saveBtn.onclick = ()=>{
             const inputs = collectInputs();
-            const materials = estimateMaterials(inputs); // 임시 계산 (백데이터 기반)
+            const materials = estimateMaterials(inputs, name); // 임시 계산 (백데이터 기반)
             if(editingId){
                 // 기존 플랜 업데이트
                 const idx = STATE.plans.findIndex(pl=>pl.id===editingId);
@@ -228,6 +249,7 @@
                 }
             }else{
                 addPlan({ name, rarity: STATE.characterData?.[name]?.rarity || 5, inputs, materials });
+                saveState();
             }
             closeModal('characterSetupModal');
         };
@@ -323,29 +345,58 @@
         };
     }
 
-    // 설정 슬라이더(숫자 입력 동기화)
+    // 설정 슬라이더(듀얼 레이아웃: 라벨 / 숫자입력 / 슬라이더)
     function attachSliders(){
-        const pairs = [
-            ['lvFrom',1,80],['lvTo',1,80],
-            ['wpFrom',1,80],['wpTo',1,80],
-            ['s1From',1,10],['s1To',1,10],
-            ['s2From',1,10],['s2To',1,10],
-            ['s3From',1,10],['s3To',1,10],
-            ['s4From',1,10],['s4To',1,10]
-        ];
-        pairs.forEach(([id,min,max])=>{
-            const input=document.getElementById(id);
-            if(!input || input.dataset.sliderAttached) return;
-            input.dataset.sliderAttached='1';
-            const slider=document.createElement('input');
-            slider.type='range'; slider.min=String(min); slider.max=String(max); slider.step='1';
-            slider.value=input.value;
-            slider.style.width='100%'; slider.style.marginTop='6px';
-            input.parentElement && input.parentElement.appendChild(slider);
-            const sync=()=>{ input.value=slider.value; };
-            slider.addEventListener('input',sync);
-            input.addEventListener('change',()=>{ slider.value=input.value; });
-        });
+        const getRowByInput=(id)=>{ const el=document.getElementById(id); return el? el.closest('.setting-row'): null; };
+        const makeDual=(row, fromId, toId, min, max)=>{
+            if(!row || row.dataset.dualAttached) return;
+            const from=document.getElementById(fromId); const to=document.getElementById(toId);
+            if(!from || !to) return;
+            row.dataset.dualAttached='1';
+            const existingLabel = row.querySelector('label');
+            const labelText = existingLabel ? existingLabel.textContent : '';
+
+            // 컨테이너
+            const wrapper=document.createElement('div'); wrapper.className='dual-wrapper';
+            const title=document.createElement('div'); title.className='row-title'; title.textContent=labelText; wrapper.appendChild(title);
+
+            // 숫자 입력 행: 기존 input을 이동하여 유지
+            const numberRow=document.createElement('div'); numberRow.className='dual-number-row';
+            const arrow1=document.createElement('div'); arrow1.className='arrow big'; arrow1.textContent='→';
+            numberRow.appendChild(from);
+            numberRow.appendChild(arrow1);
+            numberRow.appendChild(to);
+
+            // 슬라이더 행
+            const sliderRow=document.createElement('div'); sliderRow.className='dual-slider-row';
+            const slL=document.createElement('input'); slL.type='range'; slL.min=String(min); slL.max=String(max); slL.step='1'; slL.value=from.value;
+            const slR=document.createElement('input'); slR.type='range'; slR.min=String(min); slR.max=String(max); slR.step='1'; slR.value=to.value;
+            sliderRow.appendChild(slL); sliderRow.appendChild(slR);
+
+            // 동기화
+            slL.addEventListener('input',()=>{ from.value=slL.value; });
+            slR.addEventListener('input',()=>{ to.value=slR.value; });
+            from.addEventListener('change',()=>{ slL.value=from.value; });
+            to.addEventListener('change',()=>{ slR.value=to.value; });
+
+            // 기존 행 정리: 라벨 제거, 새 구조 삽입
+            row.innerHTML='';
+            wrapper.appendChild(numberRow);
+            wrapper.appendChild(sliderRow);
+            row.appendChild(wrapper);
+        };
+        makeDual(getRowByInput('lvFrom'), 'lvFrom','lvTo', 1, 80);
+        makeDual(getRowByInput('wpFrom'), 'wpFrom','wpTo', 1, 80);
+        makeDual(getRowByInput('s1From'), 's1From','s1To', 1, 10);
+        makeDual(getRowByInput('s2From'), 's2From','s2To', 1, 10);
+        makeDual(getRowByInput('s3From'), 's3From','s3To', 1, 10);
+        makeDual(getRowByInput('s4From'), 's4From','s4To', 1, 10);
+        // 심상 행들
+        makeDual(getRowByInput('mindStat1From'), 'mindStat1From','mindStat1To', 0, 5);
+        makeDual(getRowByInput('mindStat2From'), 'mindStat2From','mindStat2To', 0, 5);
+        makeDual(getRowByInput('mindSkill1From'), 'mindSkill1From','mindSkill1To', 0, 5);
+        makeDual(getRowByInput('mindSkill2From'), 'mindSkill2From','mindSkill2To', 0, 5);
+        makeDual(getRowByInput('mindAttrFrom'), 'mindAttrFrom','mindAttrTo', 0, 12);
     }
 
     // 입력값 수집
@@ -362,11 +413,11 @@
             s3From: val('s3From',1,10), s3To: val('s3To',1,10),
             s4From: val('s4From',1,10), s4To: val('s4To',1,10),
             mindBase: Array.from(document.querySelectorAll('#mindBaseGrid input[type="checkbox"]')).map(c=>c.checked),
-            mindStat1From: val('mindStat1From',1,5), mindStat1To: val('mindStat1To',1,5),
-            mindStat2From: val('mindStat2From',1,5), mindStat2To: val('mindStat2To',1,5),
-            mindSkill1From: val('mindSkill1From',1,5), mindSkill1To: val('mindSkill1To',1,5),
-            mindSkill2From: val('mindSkill2From',1,5), mindSkill2To: val('mindSkill2To',1,5),
-            mindAttrFrom: val('mindAttrFrom',1,12), mindAttrTo: val('mindAttrTo',1,12)
+            mindStat1From: val('mindStat1From',0,5), mindStat1To: val('mindStat1To',0,5),
+            mindStat2From: val('mindStat2From',0,5), mindStat2To: val('mindStat2To',0,5),
+            mindSkill1From: val('mindSkill1From',0,5), mindSkill1To: val('mindSkill1To',0,5),
+            mindSkill2From: val('mindSkill2From',0,5), mindSkill2To: val('mindSkill2To',0,5),
+            mindAttrFrom: val('mindAttrFrom',0,12), mindAttrTo: val('mindAttrTo',0,12)
         };
         // 범위 보정
         if(inputs.lvTo<inputs.lvFrom) inputs.lvTo = inputs.lvFrom;
@@ -382,6 +433,8 @@
 
     // 계산 로직 (백데이터 기반). 실제 수치는 apps/material-calc/data/material_costs.js에서 로드
     let COSTS = null;
+    // 재료 설명 데이터 (이름/설명 다국어)
+    let MATERIAL_INFO_DATA = null;
     // 스킬 기본 비용 테이블 (목표 레벨별 추가 소모)
 
     async function ensureCosts(){
@@ -409,9 +462,32 @@
         return COSTS;
     }
 
+    async function ensureMaterialInfo(){
+        if(MATERIAL_INFO_DATA) return MATERIAL_INFO_DATA;
+        try{
+            const baseUrl = `${BASE_URL}/apps/material-calc/data`;
+            const text = await fetch(`${baseUrl}/material_info.js?v=${APP_VERSION}`).then(r=>r.text());
+            const box = {};
+            new Function('out', `${text}; out.INFO = MATERIAL_INFO;`)(box);
+            MATERIAL_INFO_DATA = box.INFO || {};
+        }catch(_){
+            MATERIAL_INFO_DATA = {};
+        }
+        return MATERIAL_INFO_DATA;
+    }
+
+    function materialInfoFor(key, fallbackLabel){
+        const info = MATERIAL_INFO_DATA?.[key];
+        if(!info) return { name: fallbackLabel||key, desc: '' };
+        const lang = STATE.lang || 'en';
+        const name = (info.name?.[lang] || info.name?.en || fallbackLabel || key);
+        const desc = (info.desc?.[lang] || info.desc?.en || '');
+        return { name, desc };
+    }
+
     function addCount(dict,key,delta){ dict[key] = (dict[key]||0) + delta; }
 
-    function estimateMaterials(inputs){
+    function estimateMaterials(inputs, characterName){
         // 간이 계산: 각 구간별 합계를 백데이터 테이블에서 누적
         const mats = {};
         if(!COSTS){ /* 비동기 로딩 전에 저장 호출 가능 */ }
@@ -446,7 +522,7 @@
             wpExpSum += (costs.__WEAPON_LEVEL_EXP?.[lv] || 0);
         }
         if(wpExpSum>0){
-            const unit3 = 4000, unit2 = 1000, unit1 = 200;
+            const unit3 = 2000, unit2 = 500, unit1 = 100;
             const c3 = Math.floor(wpExpSum / unit3); wpExpSum -= c3*unit3; if(c3>0) addCount(mats,'wp_exp3', c3);
             const c2 = Math.floor(wpExpSum / unit2); wpExpSum -= c2*unit2; if(c2>0) addCount(mats,'wp_exp2', c2);
             let c1 = Math.ceil(wpExpSum / unit1); if(c1>0) addCount(mats,'wp_exp1', c1);
@@ -473,8 +549,9 @@
             Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
         }
         // SKILLS (각 스킬별)
-        const charMeta = (STATE.characterData?.[inputs.name]) || {};
-        const skillItemIndex = Math.max(1, Math.min(4, Number(charMeta.skill_item || 1)));
+        const resolvedKey = resolveCharacterKey(characterName || (inputs && inputs.name) || '');
+        const charMeta = (STATE.characterData?.[resolvedKey]) || {};
+        const skillItemIndex = Math.max(1, Math.min(5, Number(charMeta.skill_item || 1)));
         ['s1','s2','s3','s4'].forEach((sk)=>{
             for(let lv=inputs[`${sk}From`]+1; lv<=inputs[`${sk}To`]; lv++){
                 let row = costs.skills?.[lv];
@@ -567,7 +644,7 @@
         const wpLimitSummary = computeLimitSummary({ n1:wn1, n2:wn2, n3:wn3 }, winvLimit);
         const we1 = STATE.totals['wp_exp1']|0, we2 = STATE.totals['wp_exp2']|0, we3 = STATE.totals['wp_exp3']|0;
         const winvExp = { lv_exp1: STATE.inventory.wp_exp1|0, lv_exp2: STATE.inventory.wp_exp2|0, lv_exp3: STATE.inventory.wp_exp3|0 };
-        const wpExpSummary = computeExpVisual({ n1:we1, n2:we2, n3:we3 }, winvExp);
+        const wpExpSummary = computeExpVisual({ n1:we1, n2:we2, n3:we3 }, winvExp, true);
 
         entries.forEach(([key,cnt])=>{
             const div = document.createElement('div');
@@ -640,13 +717,13 @@
             }
             // 클릭 시 그룹별 보유량 편집
             div.addEventListener('click', ()=>{
-                if(key.startsWith('lv_exp')) openInventoryModal('lv_exp');
-                else if(key.startsWith('lv_limit')) openInventoryModal('lv_limit');
-                else if(key.startsWith('wp_exp')) openInventoryModal('wp_exp');
-                else if(key.startsWith('wp_limit')) openInventoryModal('wp_limit');
-                else if(key.startsWith('skill_')) openInventoryModal('skill');
-                else if(key==='konpaku_gem') openInventoryModal('gem');
-                else if(key.startsWith('md_')) openInventoryModal('mind');
+                if(key.startsWith('lv_exp')) openInventoryModal('lv_exp', key);
+                else if(key.startsWith('lv_limit')) openInventoryModal('lv_limit', key);
+                else if(key.startsWith('wp_exp')) openInventoryModal('wp_exp', key);
+                else if(key.startsWith('wp_limit')) openInventoryModal('wp_limit', key);
+                else if(key.startsWith('skill_')) openInventoryModal('skill', key);
+                else if(key==='konpaku_gem') openInventoryModal('gem', key);
+                else if(key.startsWith('md_')) openInventoryModal('mind', key);
             });
             div.appendChild(img); div.appendChild(p); frag.appendChild(div);
         });
@@ -690,8 +767,8 @@
             const actions = document.createElement('div'); actions.className='plan-actions';
             const menuBtn = document.createElement('button'); menuBtn.className='menu-btn'; menuBtn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>';
             const menu = document.createElement('div'); menu.className='menu';
-            const editBtn = document.createElement('button'); editBtn.textContent='Edit';
-            const deleteBtn = document.createElement('button'); deleteBtn.textContent='Delete'; deleteBtn.style.color='tomato';
+            const editBtn = document.createElement('button'); editBtn.textContent=t('edit');
+            const deleteBtn = document.createElement('button'); deleteBtn.textContent=t('remove'); deleteBtn.style.color='tomato';
             menu.appendChild(editBtn); menu.appendChild(deleteBtn);
             actions.appendChild(menuBtn);
             header.appendChild(title); header.appendChild(actions); header.appendChild(menu); card.appendChild(header);
@@ -711,7 +788,16 @@
                     setTimeout(()=> document.addEventListener('click', onDocClick), 0);
                 }
             };
-            deleteBtn.onclick = ()=>{ removePlan(p.id); };
+            deleteBtn.onclick = ()=>{
+                const title = t('deleteConfirmTitle');
+                const msg = t('deleteConfirmMessage');
+                // 기본 confirm 사용 (각 언어 메시지 지원)
+                // 필요 시 커스텀 모달로 교체 가능
+                if(window.confirm(`${title}\n\n${msg}`)){
+                    removePlan(p.id);
+                    saveState();
+                }
+            };
             editBtn.onclick = ()=>{ startSetupFor(p.name, p.id); };
 
             const matGrid = document.createElement('div'); matGrid.className='material-grid';
@@ -727,7 +813,7 @@
             const wpLimitSummary = computeLimitSummary({ n1:wNeedL1, n2:wNeedL2, n3:wNeedL3 }, winvLimit);
             const wNeedE1 = p.materials['wp_exp1']|0, wNeedE2 = p.materials['wp_exp2']|0, wNeedE3 = p.materials['wp_exp3']|0;
             const winvExp = { lv_exp1: STATE.inventory.wp_exp1|0, lv_exp2: STATE.inventory.wp_exp2|0, lv_exp3: STATE.inventory.wp_exp3|0 };
-            const visualWpExp = computeExpVisual({ n1:wNeedE1, n2:wNeedE2, n3:wNeedE3 }, winvExp);
+            const visualWpExp = computeExpVisual({ n1:wNeedE1, n2:wNeedE2, n3:wNeedE3 }, winvExp, true);
 
             // 스킬 변환 시뮬레이션 준비
             const needS1 = p.materials['skill_lv_1']|0, needS2 = p.materials['skill_lv_2']|0, needS3 = p.materials['skill_lv_3']|0;
@@ -808,18 +894,18 @@
                 }
                 div.title = `${visual|0} / ${c|0}`;
                 div.addEventListener('click', ()=>{
-                    if(k.startsWith('lv_exp')) openInventoryModal('lv_exp');
-                    else if(k.startsWith('lv_limit')) openInventoryModal('lv_limit');
-                    else if(k.startsWith('wp_exp')) openInventoryModal('wp_exp');
-                    else if(k.startsWith('wp_limit')) openInventoryModal('wp_limit');
-                    else if(k.startsWith('skill_')) openInventoryModal('skill');
-                    else if(k==='konpaku_gem') openInventoryModal('gem');
-                    else if(k.startsWith('md_')) openInventoryModal('mind');
+                    if(k.startsWith('lv_exp')) openInventoryModal('lv_exp', k);
+                    else if(k.startsWith('lv_limit')) openInventoryModal('lv_limit', k);
+                    else if(k.startsWith('wp_exp')) openInventoryModal('wp_exp', k);
+                    else if(k.startsWith('wp_limit')) openInventoryModal('wp_limit', k);
+                    else if(k.startsWith('skill_')) openInventoryModal('skill', k);
+                    else if(k==='konpaku_gem') openInventoryModal('gem', k);
+                    else if(k.startsWith('md_')) openInventoryModal('mind', k);
                 });
                 div.appendChild(img); div.appendChild(txt); matGrid.appendChild(div);
             });
             // details toggle
-            const detailBtn = document.createElement('button'); detailBtn.className='mini-btn'; detailBtn.textContent='View Details';
+            const detailBtn = document.createElement('button'); detailBtn.className='mini-btn'; detailBtn.textContent=t('viewDetails');
             actions.insertBefore(detailBtn, menuBtn);
             const details = document.createElement('div'); details.className='plan-details'; details.style.display='none';
             const mindBaseHtml = (()=>{
@@ -832,18 +918,18 @@
                 return `<div class="mind-seq">${items}</div>`;
             })();
             details.innerHTML = `
-                <div class="row"><label>Level</label><div>${p.inputs.lvFrom}</div><div>→</div><div>${p.inputs.lvTo}</div></div>
-                <div class="row"><label>Weapon</label><div>${p.inputs.wpFrom}</div><div>→</div><div>${p.inputs.wpTo}</div></div>
-                <div class="row"><label>Skill1</label><div>${p.inputs.s1From}</div><div>→</div><div>${p.inputs.s1To}</div></div>
-                <div class="row"><label>Skill2</label><div>${p.inputs.s2From}</div><div>→</div><div>${p.inputs.s2To}</div></div>
-                <div class="row"><label>Skill3</label><div>${p.inputs.s3From}</div><div>→</div><div>${p.inputs.s3To}</div></div>
+                <div class="row"><label>${t('level')}</label><div>${p.inputs.lvFrom}</div><div>→</div><div>${p.inputs.lvTo}</div></div>
+                <div class="row"><label>${t('weapon')}</label><div>${p.inputs.wpFrom}</div><div>→</div><div>${p.inputs.wpTo}</div></div>
+                <div class="row"><label>${t('skills')}1</label><div>${p.inputs.s1From}</div><div>→</div><div>${p.inputs.s1To}</div></div>
+                <div class="row"><label>${t('skills')}2</label><div>${p.inputs.s2From}</div><div>→</div><div>${p.inputs.s2To}</div></div>
+                <div class="row"><label>${t('skills')}3</label><div>${p.inputs.s3From}</div><div>→</div><div>${p.inputs.s3To}</div></div>
                 <div class="row"><label>HL/TH</label><div>${p.inputs.s4From}</div><div>→</div><div>${p.inputs.s4To}</div></div>
-                <div class="row"><label>Mind Base</label><div style="grid-column: span 3; display:flex; align-items:center;">${mindBaseHtml}</div></div>
-                <div class="row"><label>Mind Stat1</label><div>${p.inputs.mindStat1From}</div><div>→</div><div>${p.inputs.mindStat1To}</div></div>
-                <div class="row"><label>Mind Stat2</label><div>${p.inputs.mindStat2From}</div><div>→</div><div>${p.inputs.mindStat2To}</div></div>
-                <div class="row"><label>Mind Skill1</label><div>${p.inputs.mindSkill1From}</div><div>→</div><div>${p.inputs.mindSkill1To}</div></div>
-                <div class="row"><label>Mind Skill2</label><div>${p.inputs.mindSkill2From}</div><div>→</div><div>${p.inputs.mindSkill2To}</div></div>
-                <div class="row"><label>Mind Attr</label><div>${p.inputs.mindAttrFrom}</div><div>→</div><div>${p.inputs.mindAttrTo}</div></div>
+                <div class="row"><label>${t('mindBase')}</label><div style="grid-column: span 3; display:flex; align-items:center;">${mindBaseHtml}</div></div>
+                <div class="row"><label>${t('mindStat1')}</label><div>${p.inputs.mindStat1From}</div><div>→</div><div>${p.inputs.mindStat1To}</div></div>
+                <div class="row"><label>${t('mindStat2')}</label><div>${p.inputs.mindStat2From}</div><div>→</div><div>${p.inputs.mindStat2To}</div></div>
+                <div class="row"><label>${t('mindSkill1')}</label><div>${p.inputs.mindSkill1From}</div><div>→</div><div>${p.inputs.mindSkill1To}</div></div>
+                <div class="row"><label>${t('mindSkill2')}</label><div>${p.inputs.mindSkill2From}</div><div>→</div><div>${p.inputs.mindSkill2To}</div></div>
+                <div class="row"><label>${t('mindAttr')}</label><div>${p.inputs.mindAttrFrom}</div><div>→</div><div>${p.inputs.mindAttrTo}</div></div>
             `;
             detailBtn.onclick = ()=>{
                 // 모든 카드 상세를 동시에 토글
@@ -880,6 +966,8 @@
         await loadCharacterData();
         await ensureCosts();
 
+        updateHelpText();
+
         // 버튼 바인딩
         document.getElementById('addCharacterBtn').onclick = ()=>{ openModal('characterSelectModal'); renderCharacterSelect(); };
         document.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', e=>{
@@ -906,12 +994,13 @@
     window.MaterialPlanner = { init: boot };
     
     // ===== 재고(보유량) 모달 =====
-    function openInventoryModal(type){
+    async function openInventoryModal(type, focusKey){
         const form = document.getElementById('inventoryForm');
         const title = document.getElementById('inventoryModalTitle');
         const hint = document.getElementById('inventoryHint');
         if(!form) return;
         form.innerHTML = '';
+        await ensureMaterialInfo();
         let rows = [];
         if(type==='lv_exp'){
             title.textContent = 'Character EXP'; hint.textContent='';
@@ -930,9 +1019,9 @@
         } else if(type==='wp_exp'){
             title.textContent = 'Weapon EXP'; hint.textContent='';
             rows = [
-                { key:'wp_exp3', label:'+4000', icon:MATERIAL_ICONS.wp_exp3 },
-                { key:'wp_exp2', label:'+1000', icon:MATERIAL_ICONS.wp_exp2 },
-                { key:'wp_exp1', label:'+200', icon:MATERIAL_ICONS.wp_exp1 }
+                { key:'wp_exp3', label:'+2000', icon:MATERIAL_ICONS.wp_exp3 },
+                { key:'wp_exp2', label:'+500', icon:MATERIAL_ICONS.wp_exp2 },
+                { key:'wp_exp1', label:'+100', icon:MATERIAL_ICONS.wp_exp1 }
             ];
         } else if(type==='wp_limit'){
             title.textContent = 'Weapon Level Break'; hint.textContent='';
@@ -951,30 +1040,52 @@
                 { key:'skill_item1', label:'Skill Item1', icon:MATERIAL_ICONS.skill_item1 },
                 { key:'skill_item2', label:'Skill Item2', icon:MATERIAL_ICONS.skill_item2 },
                 { key:'skill_item3', label:'Skill Item3', icon:MATERIAL_ICONS.skill_item3 },
-                { key:'skill_item4', label:'Skill Item4', icon:MATERIAL_ICONS.skill_item4 }
+                { key:'skill_item4', label:'Skill Item4', icon:MATERIAL_ICONS.skill_item4 },
+                { key:'skill_item5', label:'Skill Item5', icon:MATERIAL_ICONS.skill_item5 }
             ];
         } else if(type==='gem'){
             title.textContent = 'Konpaku Gem'; hint.textContent='';
             rows = [ { key:'konpaku_gem', label:'Gem', icon:MATERIAL_ICONS.konpaku_gem } ];
         } else if(type==='mind'){
-            title.textContent = 'Mindscape'; hint.textContent='';
+            title.textContent = t('mind'); hint.textContent='';
             rows = [
-                { key:'md_mercury', label:'Base', icon:MATERIAL_ICONS.md_mercury },
-                { key:'md_bell', label:'Attribute Lv', icon:MATERIAL_ICONS.md_bell },
-                { key:'md_stat1', label:'Stat 1', icon:MATERIAL_ICONS.md_stat1 },
-                { key:'md_stat2', label:'Stat 2', icon:MATERIAL_ICONS.md_stat2 },
-                { key:'md_skill1', label:'Skill 1', icon:MATERIAL_ICONS.md_skill1 },
-                { key:'md_skill2', label:'Skill 2', icon:MATERIAL_ICONS.md_skill2 }
+                { key:'md_mercury', label:t('mindBase'), icon:MATERIAL_ICONS.md_mercury },
+                { key:'md_bell', label:t('mindAttr'), icon:MATERIAL_ICONS.md_bell },
+                { key:'md_stat1', label:t('mindStat1'), icon:MATERIAL_ICONS.md_stat1 },
+                { key:'md_stat2', label:t('mindStat2'), icon:MATERIAL_ICONS.md_stat2 },
+                { key:'md_skill1', label:t('mindSkill1'), icon:MATERIAL_ICONS.md_skill1 },
+                { key:'md_skill2', label:t('mindSkill2'), icon:MATERIAL_ICONS.md_skill2 }
             ];
         }
         const frag = document.createDocumentFragment();
+        // 헤더: 선택한 재료의 큰 아이콘 + 이름/설명 (가능하면)
+        if(focusKey){
+            const header=document.createElement('div'); header.className='inv-header';
+            const icon=document.createElement('img'); icon.className='inv-header-icon'; icon.src = MATERIAL_ICONS[focusKey] || MATERIAL_ICONS.money;
+            const textBox=document.createElement('div'); textBox.className='inv-header-text';
+            const firstRow = rows.find(r=>r.key===focusKey) || rows[0];
+            const info = materialInfoFor(focusKey, firstRow?.label || focusKey);
+            const nm=document.createElement('div'); nm.className='inv-header-name'; nm.textContent = info.name;
+            const ds=document.createElement('div'); ds.className='inv-header-desc'; ds.textContent = info.desc || '';
+            textBox.appendChild(nm); textBox.appendChild(ds);
+            header.appendChild(icon); header.appendChild(textBox);
+            frag.appendChild(header);
+        }
         rows.forEach(r=>{
-            const row = document.createElement('div'); row.className='row';
+            const row = document.createElement('div'); row.className='row inv-row';
             const img = document.createElement('img'); img.src = r.icon; img.style.width='28px'; img.style.height='28px';
             const lab = document.createElement('label'); lab.textContent = r.label; lab.style.minWidth='80px';
             const input = document.createElement('input'); input.type='number'; input.min='0'; input.step='1'; input.value = String(STATE.inventory[r.key]||0); input.dataset.key=r.key;
             row.appendChild(img); row.appendChild(lab); row.appendChild(document.createTextNode(': ')); row.appendChild(input);
-            frag.appendChild(row);
+            // slider (single) under the row
+            const slider = document.createElement('input'); slider.type='range'; slider.min='0';
+            const defaultMax = (r.key==='konpaku_gem') ? 9999999 : 9999;
+            slider.max=String(Math.max( input.value|0, defaultMax )); slider.step='1'; slider.value = input.value;
+            slider.className = 'inventory-slider';
+            slider.addEventListener('input', ()=>{ input.value = slider.value; });
+            input.addEventListener('change', ()=>{ slider.value = input.value; });
+            const wrap = document.createElement('div'); wrap.className='inv-wrap'; wrap.appendChild(row); wrap.appendChild(slider);
+            frag.appendChild(wrap);
         });
         form.appendChild(frag);
         const saveBtn = document.getElementById('saveInventoryBtn');
@@ -1145,8 +1256,8 @@
     }
 
     // 그룹형 시각 보유치(EXP) 계산: 하향/상향 모두 허용해 부족분 충당
-    function computeExpVisual(need, inv){
-        const W1 = 200, W2 = 1000, W3 = 4000;
+    function computeExpVisual(need, inv, wp=false){
+        const W1 = wp? 100: 200, W2 = wp? 500: 1000, W3 = wp? 2000: 4000;
         const e1 = inv.lv_exp1|0, e2 = inv.lv_exp2|0, e3 = inv.lv_exp3|0;
         const n1 = need.n1|0, n2 = need.n2|0, n3 = need.n3|0;
 
@@ -1198,7 +1309,8 @@
         if(key==='skill_item2') return 505;
         if(key==='skill_item3') return 506;
         if(key==='skill_item4') return 507;
-        if(key==='skill_rose') return 508;
+        if(key==='skill_item5') return 508;
+        if(key==='skill_rose') return 509;
         // mind base / lv / stat / skill
         if(key==='md_mercury') return 601; // mind base(기초 재화)
         if(key==='md_bell') return 610;   // mind lv(속성 강화)
@@ -1264,7 +1376,7 @@
             if(data.inventory) STATE.inventory = { ...STATE.inventory, ...data.inventory };
             if(Array.isArray(data.plans)){
                 STATE.plans = data.plans.map(sp=>{
-                    const materials = estimateMaterials(sp.inputs);
+                    const materials = estimateMaterials(sp.inputs, sp.name);
                     return {
                         id: Date.now()+ '_' + Math.random().toString(36).slice(2,7),
                         name: sp.name,

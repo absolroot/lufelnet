@@ -39,12 +39,12 @@ const MATERIAL_COSTS = {
     mind: {
         base: { 1:{ md_mercury:100 }, 2:{ md_mercury:150 }, 3:{ md_mercury:200 }, 4:{ md_mercury:300 }, 5:{ md_mercury:400 }, 6:{ md_mercury:500 }, 7:{ md_mercury:650 }, 8:{ md_mercury:800 }, 9:{ md_mercury:950 }, 10:{ md_mercury:1100 }, 11:{ md_mercury:1250 }, 12:{ md_mercury:1450 } },
         // 스탯/스킬은 1→5를 2,3,4,5 도달 레벨 키로 표기
-        stat1: { 2: { md_stat1: 35 }, 3: { md_stat1: 75 }, 4: { md_stat1: 110 }, 5: { md_stat1: 110 } },
+        stat1: { 1: { md_stat1: 35 }, 2: { md_stat1: 75 }, 3: { md_stat1: 110 } },
         stat2: { 4: { md_stat2: 6 }, 5: { md_stat2: 15 } },
-        skill1: { 2: { md_skill1: 25 }, 3: { md_skill1: 50 }, 4: { md_skill1: 80 }, 5: { md_skill1: 80 } },
+        skill1: { 1: { md_skill1: 25 }, 2: { md_skill1: 50 }, 3: { md_skill1: 80 }},
         skill2: { 4: { md_skill2: 2 }, 5: { md_skill2: 3 } },
         // 속성 강화 1→12 (도달 레벨 키)
-        attr: { 1:{},2:{ md_bell:10 },3:{ md_bell:20 },4:{ md_bell:30 },5:{ md_bell:45 },6:{ md_bell:65 },7:{ md_bell:85 },8:{ md_bell:110 },9:{ md_bell:135 },10:{ md_bell:165 },11:{ md_bell:200 },12:{ md_bell:240 },13:{ md_bell:280 } }
+        attr: { 1:{ md_bell:10 },2:{ md_bell:20 },3:{ md_bell:30 },4:{ md_bell:45 },5:{ md_bell:65 },6:{ md_bell:85 },7:{ md_bell:110 },8:{ md_bell:135 },9:{ md_bell:165 },10:{ md_bell:200 },11:{ md_bell:240 },12:{ md_bell:280 } }
     }
 };
 

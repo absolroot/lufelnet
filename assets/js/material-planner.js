@@ -316,6 +316,10 @@
             icon.style.width='100%'; icon.style.height='100%'; icon.style.objectFit='contain';
             icon.style.opacity='1';
             const hidden = document.createElement('input'); hidden.type='checkbox'; hidden.checked=true; hidden.dataset.index=String(i); hidden.style.display='none';
+            // 아이콘 위에 번호 i 추가
+            const seq = document.createElement('div'); seq.className='mind-num'; seq.textContent=String(i);
+            bg.appendChild(seq);
+
             // 초기 활성화 배경/불투명도
             bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/mind_bg_active.png)`;
             icon.style.opacity = '1';
@@ -342,7 +346,7 @@
                 const cell = el.previousSibling; // bg div
                 if(cell && cell.style){
                     cell.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${el.checked?'mind_bg_active':'mind_bg_incactive'}.png)`;
-                    cell.querySelector('img').style.opacity = el.checked ? '1' : '0.5';
+                    cell.querySelector('img').style.opacity = el.checked ? '1' : '1';
                 }
             });
         };

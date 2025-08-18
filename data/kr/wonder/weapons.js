@@ -36,7 +36,7 @@ const matchWeapons = {
   },
   "태고의 역장" :  {
     name_en : "Arc Knife",
-    name_jp : "時の逆響",
+    name_jp : "アークナイフ",
     where_to_get : "Shop",
     effect : "공격력이 56.0% 증가한다. 적이 원소 이상일 시, 2턴 동안 자신의 공격력이 20.0% 증가한다. 원소 이상 상태를 줄 때, 효과 명중이 30.0% 증가한다.\n적을 공격할 시, 2턴 동안 적의 방어력이 9.0% 감소한다. 적이 원소 이상 상태를 한 종류 가지고 있을 때마다, 해당 효과를 추가로 1회 발동한다(4회 중첩 가능).",
     effect_en: "Increase Attack by 56.0%.\nAfter inflicting an elemental ailment, increase Attack by 20.0% for 2 turns and increase ailment accuracy by 30.0%.\nWhen attacking, decrease enemy Defense by 9.0% for 2 turns. This effect is applied once per ailment type (up to 4).",
@@ -84,7 +84,7 @@ const matchWeapons = {
   },
   "크리스탈 트레저" :  {
     name_en : "Glimmer",
-    name_jp : "水晶の宝箱",
+    name_jp : "グリッター",
     where_to_get : "Shop",
     effect: "공격력이 56.0% 증가한다.\n축복 속성 대미지 및 치료 효과가 22.0% 증가한다.\n턴 시작 시 1명의 괴도에게 축복 효과를 제공하며, 해당 괴도에게 16.0%의 대미지 보너스를 제공한다. 만약 이 괴도가 축복 속성 괴도일 경우, 16.0%의 축복 대미지 보너스를 추가로 획득한다.\n이후 2턴마다 같은 효과가 1회 발동한다.",
     effect_en: "Increase Attack by 56.0%.\nIncrease Bless damage and healing by 22.0%. At start of turn, grant Blessing to 1 ally, increasing damage by 16.0%.\nIf the ally's attribute is Bless, grant an additional 16.0% Bless damage. Reactivates every 2 turns.",

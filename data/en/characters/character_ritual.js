@@ -503,7 +503,7 @@ const enCharacterRitualData = {
         "r1": "Payappa",
         "r1_detail": "Increase critical rate of follow-up attacks by 20%. Increase critical rate by 10% after landing a follow-up attack on Shocked foes.",
         "r2": "Welcome Rain",
-        "r2_detail": "After performing a follow-up attack on a foe, increase Attack of Yui and allies with Player 2 by 10% for 2 turns. Stacks up to 3 times.",
+        "r2_detail": "After performing a follow-up attack on a foe, increase Attack of YUI and allies with Player 2 by 10% for 2 turns. Stacks up to 3 times.",
         "r3": "Rainbow Maker",
         "r3_detail": "Increase the skill levels of Sparky Surprise and Thief Tactics by 3.",
         "r4": "Virtual Fertilizer",
@@ -511,7 +511,7 @@ const enCharacterRitualData = {
         "r5": "Flower Garden",
         "r5_detail": "Increase the skill levels of Electric Bomb and Meta Dynamite by 3.",
         "r6": "Humongously Huge Harvest",
-        "r6_detail": "If only 1 foe is present, increase Yui's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes.",
+        "r6_detail": "If only 1 foe is present, increase YUI's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes.",
     },
     "렌": {
         "name": "Ren Amamiya",

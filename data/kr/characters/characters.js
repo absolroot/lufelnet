@@ -1683,7 +1683,7 @@ const characterData = {
         "persona_en": "Apseudes",
         "persona_jp": "アブセウデス",
         "name": "YUI",
-        "name_en": "Yui",
+        "name_en": "YUI",
         "name_jp": "ユイ",
         "codename": "BUI",
         "skill_item": 2,

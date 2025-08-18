@@ -798,7 +798,7 @@ review_jp: `
 
 カクテルに依存する怪盗であり、意識6ではカクテルの上限が3杯から4杯に増えるため、その影響は大きい。  `
     },
-    "유이 YUI": { name_en: "Yui", name_jp: "ユイ", codename: "BUI",
+    "유이 YUI": { name_en: "YUI", name_jp: "ユイ", codename: "BUI",
         review: 
 ``
     },

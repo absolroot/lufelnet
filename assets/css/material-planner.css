@@ -94,6 +94,10 @@
 .modal-footer{display:flex;justify-content:flex-end;gap:8px;padding:12px 16px;border-top:1px solid rgba(255,255,255,.08)}
 .modal .close{border:none}
 
+.setup-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover;margin-right:8px;}
+
+
+
 /* character grid */
 .character-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px;row-gap: 24px;}
 .character-grid img{width:100%;aspect-ratio:1/1;border-radius:8px;border:1px solid rgba(255,255,255,.1);cursor:pointer;background:#000;object-fit:contain}
@@ -103,7 +107,8 @@
 .character-filter #modalSpoilerToggle{display:flex;align-items:center;gap:8px;margin-top:8px}
 .character-filter #modalSpoilerToggle input{width:auto;padding:0;border:0;background:transparent;color:inherit;appearance:auto}
 .character-filter #modalSpoilerToggle span{font-size:12px;opacity:.9}
-.modal-header h3{margin:0}
+.modal-header h3{margin:0; margin-right:auto; font-size:16px;}
+
 
 /* toggle (mind all) - match modal spoiler style */
 #mindAllToggle{width:auto;padding:0;border:0;background:transparent;color:inherit;appearance:auto}
@@ -111,7 +116,10 @@
 
 /* setup */
 
-.primary-btn, .secondary-btn{padding: 4px 8px;}
+.modal-footer .primary-btn, .modal-footer .secondary-btn{padding: 6px 12px;
+    background: #4766ca;
+    border: 0;
+    border-radius: 4px;}
 .setup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .setup-section{padding:0px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.1); font-size:13px;}
 .setup-section h4{margin:0 0 12px 0; font-size:16px; font-weight: 700; color: #a4b6ff;}

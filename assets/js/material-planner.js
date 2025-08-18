@@ -211,7 +211,7 @@
             if(!holder){
                 holder = document.createElement('label');
                 holder.id = 'modalSpoilerToggle';
-                holder.style.display='flex'; holder.style.alignItems='center'; holder.style.gap='8px'; holder.style.marginTop='8px';
+                holder.style.display='flex'; holder.style.alignItems='center'; holder.style.gap='8px'; holder.style.marginTop='8px'; holder.style.marginLeft='2px';
                 const cb = document.createElement('input'); cb.type='checkbox'; cb.id='modalSpoilerCB';
                 const span = document.createElement('span'); span.textContent = t('showSpoiler');
                 holder.appendChild(cb); holder.appendChild(span);
@@ -226,6 +226,18 @@
     function startSetupFor(name, editingId){
         const title = document.getElementById('setupModalTitle');
 
+        const modalHeader = document.querySelector('#characterSetupModal .modal-header');
+        //이전 아바타 제거
+        const prevAvatar = modalHeader.querySelector('.setup-avatar');
+        if(prevAvatar) prevAvatar.remove();
+
+        const avatar = document.createElement('img');
+        avatar.src = `${BASE_URL}/assets/img/tier/${name}.webp`;
+        avatar.alt = name; avatar.className = 'setup-avatar';
+        // 가장 앞에 추가
+        modalHeader.insertBefore(avatar, modalHeader.firstChild);
+        console.log(avatar);
+        
         let displayName = name;
         const cd = STATE.characterData?.[name];
         if(STATE.lang==='en' && cd?.name_en) displayName = cd.name_en;
@@ -1017,6 +1029,11 @@
         recalcTotals();
         renderSummary();
         renderPlans();
+
+        // plan 길이가 0이고 ,인벤토리의 모든 값이 0인 경우 캐릭터 선택 모달 띄우기
+        if(STATE.plans.length === 0 && Object.values(STATE.inventory).every(v => v === 0)){
+            openModal('characterSelectModal'); renderCharacterSelect();
+        }
     }
 
     window.MaterialPlanner = { init: boot };

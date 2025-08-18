@@ -1274,7 +1274,7 @@ const enCharacterSkillsData = {
             "type":"버프",
             "sp": 25,
             "cool": 1,
-            "description": "Grant Player 2 to 1 ally for 2 turns, and increase Yui's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/137.2%/141.1%/145.4% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns."
+            "description": "Grant Player 2 to 1 ally for 2 turns, and increase YUI's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/137.2%/141.1%/145.4% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns."
         },
         "skill_highlight": {
             "element": "버프",
@@ -1289,7 +1289,7 @@ const enCharacterSkillsData = {
         "passive2": {
             "name": "Let's Go Together",
             "element": "패시브",
-            "description": "When an ally has Player 2, increase that ally and Yui's critical rate by 12.0% and Attack by 12.0%."
+            "description": "When an ally has Player 2, increase that ally and YUI's critical rate by 12.0% and Attack by 12.0%."
         }
     },
 

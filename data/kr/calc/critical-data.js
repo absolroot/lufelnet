@@ -10,7 +10,7 @@ const criticalCalcData = [
         skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
         skillName: "기본 크리티컬 확률",
         skillName_en: "Default Critical Rate",
-        skillName_jp: "基本クリティカル確率",
+        skillName_jp: "基本CRT発生率",
         options: [],
         value: 5.0,
         duration: "-",
@@ -151,7 +151,7 @@ const criticalCalcData = [
         duration: "3턴",
         note: "원더 크리티컬 확률 40% 이상",
         note_en: "Wonder critical rate 40% or above",
-        note_jp: "ワンダークリティカル確率40%以上",
+        note_jp: "ワンダーCRT発生率40%以上",
     },
     {
         id: "wonder2",
@@ -172,7 +172,7 @@ const criticalCalcData = [
         duration: "3턴",
         note: "원더 크리티컬 확률 40% 이상",
         note_en: "Wonder critical rate 40% or above",
-        note_jp: "ワンダークリティカル確率40%以上",
+        note_jp: "ワンダーCRT発生率40%以上",
     },
     {
         id: "wonder3",
@@ -750,7 +750,7 @@ const criticalCalcData = [
         duration: "-",
         note: "아군 괴도 크리티컬 확률 합산 50% 이상",
         note_en: "All allies critical rate 50% or more",
-        note_jp: "全味方のクリティカル確率50%以上",
+        note_jp: "全味方のCRT発生率50%以上",
     },
     {
         id: "akechi3",

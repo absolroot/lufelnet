@@ -71,9 +71,9 @@ class Navigation {
             },
             jp: {
                 home: 'ホーム',
-                character: 'キャラクター',
+                character: '怪盗',
                 persona: 'ペルソナ',
-                revelations: '覚醒',
+                revelations: '啓示',
                 tactic: 'タクティクス',
                 tacticMaker: 'タクティックメーカー',
                 tacticForge: 'タクティック鍛冶場',

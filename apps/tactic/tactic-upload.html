@@ -1055,7 +1055,7 @@ class TacticUploader {
         } catch (error) {
             console.error('Invalid tactic data:', error);
             this.showError(this.currentLang === 'en' ? 'Invalid tactic data: No character information found.' :
-                          this.currentLang === 'jp' ? '無効なデータです。キャラクター情報が見つかりません。' :
+                          this.currentLang === 'jp' ? '無効なデータです。怪盗情報が見つかりません。' :
                           '유효하지 않은 택틱 데이터입니다. 캐릭터 정보를 찾을 수 없습니다.');
             return;
         }

@@ -64,7 +64,7 @@ const matchWeapons = {
     where_to_get : "Shop",
     effect: "공격력이 60.7% 증가한다.\n전투가 시작될 때 혹은 임의의 캐릭터가 페르소나 스킬을 사용해 만능 속성 대미지를 준 후 『공명』 효과가 발동되며 2턴 동안 지속된다.\n『공명』: 현재 라인업이 활성화한 소나타 효과 수량에 따라 다음 효과가 발동된다.\n소나타 최소 1개: 자신의 공격력이 30.0% 증가하고, 만능 속성 대미지가 12.0% 증가하며, 모든 괴도가 효과의 50%를 획득한다.\n소나타 최소 2개: 모든 괴도의 크리티컬 효과가 18.0% 증가한다.",
     effect_en: "Increase Attack by 60.7%.\nAt battle start or after a Persona skill deals Almighty damage, Resonance is triggered for 2 turns.\nResonance: Based on the number of active Sonata effects.\n1+ Sonata: User's Attack +30.0%, Almighty damage +12.0%, all allies get 50% of this.\n2+ Sonata: All allies' Critical Damage +18.0%.",
-    effect_jp: "攻撃力が60.7%上昇する。\n戦闘開始時または任意のキャラが万能属性ダメージを与えると『共鳴』が2ターン発動。\n『共鳴』：アクティブなソナタ効果数に応じて効果発動。\nソナタ1個以上：自身攻撃力+30.0%、万能ダメージ+12.0%、味方は50%を共有。\nソナタ2個以上：味方全体のクリティカル効果+18.0%。"
+    effect_jp: "攻撃力が60.7%上昇する。\n戦闘開始時または任意のキャラが万能属性ダメージを与えると『共鳴』が2ターン発動。\n『共鳴』：アクティブなソナタ効果数に応じて効果発動。\nソナタ1個以上：自身攻撃力+30.0%、万能ダメージ+12.0%、味方は50%を共有。\nソナタ2個以上：味方全体のCRT倍率+18.0%。"
   },
   "하이브 가드" :  {
     name_en : "Hive Guard",
@@ -72,7 +72,7 @@ const matchWeapons = {
     where_to_get : "Palace 4",
     effect: "효과 명중이 68.0% 증가한다.\n자신이 주는 원소 이상|정신 이상의 부여율이 25.0% 증가하고, 적이 임의의 이상 상태에 빠지면 해당 적을 추가로 『기생 감염』에 빠지게 해 3턴 동안 받는 대미지가 20.0% 증가한다.\n필드에 『기생 감염』 상태에 빠진 적이 있으면 자신의 효과 명중이 8.0% 증가하고, 공격력이 14.0% 증가한다.",
     effect_en: "Increase Ailment Accuracy Rate by 68.0%.\nIncrease user's elemental/mental ailment infliction rate by 25.0%. When a foe is afflicted, also inflict Parasitic Infection, making them take 20.0% more damage for 3 turns.\nIf a foe with Parasitic Infection is on the field, increase user's Ailment Accuracy Rate by 8.0% and Attack by 14.0%.",
-    effect_jp: "効果命中が68.0%上昇する。\n自身の属性・精神異常付与率が25.0%上昇。敵が異常状態になると『寄生感染』を付与し、3ターンの間受けるダメージが20.0%増加。\n『寄生感染』状態の敵がいる時、自身の効果命中が8.0%、攻撃力が14.0%上昇する。"
+    effect_jp: "状態異常命中が68.0%上昇する。\n自身の属性・精神異常付与率が25.0%上昇。敵が異常状態になると『寄生感染』を付与し、3ターンの間受けるダメージが20.0%増加。\n『寄生感染』状態の敵がいる時、自身の状態異常命中が8.0%、攻撃力が14.0%上昇する。"
   },
   "야수의 이빨" :  {
     name_en : "Animal's Fang",
@@ -96,7 +96,7 @@ const matchWeapons = {
     where_to_get : "Shop",
     effect: "공격력이 56.0% 증가한다.\n전투 진입 시 자신의 크리티컬 확률이 19.0% 증가한다.\n전투 중 임의의 캐릭터가 페르소나 스킬을 사용해 전격 속성 대미지를 준 후, 모든 캐릭터에 2턴 동안 지속되는 『자력 플라즈마』를 추가한다. 『자력 플라즈마』: 주는 대미지가 18.0% 증가하고, 전격 속성 대미지를 줄 때 크리티컬 효과가 18.0% 증가한다.",
     effect_en: "Increase Attack by 56.0%.\nAt battle start, increase user's Critical Rate by 19.0%.\nAfter any ally deals Electric damage with a Persona skill, grant all allies Magnetic Plasma for 2 turns: Damage dealt +18.0% and Electric Critical Damage +18.0%.",
-    effect_jp: "攻撃力が56.0%上昇する。\n戦闘開始時、クリティカル率が19.0%上昇。\n戦闘中、誰かがペルソナスキルで電撃ダメージを与えると、全員に『磁力プラズマ』2ターン：与ダメ+18.0%、電撃クリティカル効果+18.0%。"
+    effect_jp: "攻撃力が56.0%上昇する。\n戦闘開始時、クリティカル率が19.0%上昇。\n戦闘中、誰かがペルソナスキルで電撃ダメージを与えると、全員に『磁力プラズマ』2ターン：与ダメ+18.0%、電撃CRT倍率+18.0%。"
   },
   "망자의 눈" :  {
     name_en : "Eye of Obsequies",
@@ -112,7 +112,7 @@ const matchWeapons = {
     where_to_get : "Shop",
     effect: "효과 명중이 68.0% 증가한다.\n임의의 캐릭터가 페르소나 스킬을 사용해 주원 속성 대미지를 준 후, 원더가 70%의 기본 확률로 목표에게 『악령의 저주』를 부여한다. 자신이 『악령의 저주』를 보유한 적 공격 시, 공격력이 36.0% 증가한다.\n『악령의 저주』: 3턴 동안 방어가 25.0% 감소하고, 받는 주원 속성 대미지가 16.0% 증가한다.",
     effect_en: "Increase Ailment Accuracy Rate by 68.0%.\nWhen any ally deals Curse damage, 70% chance to inflict Phantom's Curse on the target. Attacking a cursed foe increases Attack by 36.0%.\nPhantom's Curse: For 3 turns, Defense -25.0% and Curse damage taken +16.0%.",
-    effect_jp: "効果命中が68.0%上昇する。\n味方が呪怨属性ダメージを与えると、70%の確率で敵に『悪霊の呪い』を付与。呪われた敵を攻撃すると攻撃力+36.0%。\n『悪霊の呪い』：3ターン、防御力-25.0%、呪怨ダメージ+16.0%。"
+    effect_jp: "状態異常命中が68.0%上昇する。\n味方が呪怨属性ダメージを与えると、70%の確率で敵に『悪霊の呪い』を付与。呪われた敵を攻撃すると攻撃力+36.0%。\n『悪霊の呪い』：3ターン、防御力-25.0%、呪怨ダメージ+16.0%。"
   },
   "메아리의 절규" :  {
     name_en : "All In",

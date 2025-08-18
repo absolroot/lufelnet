@@ -100,7 +100,7 @@ const recommendParty = {
                 list: ["바스키!", "앨리스"],
                 comment: "바스키의 지속 대미지 증가는 대미지 보너스가 아닌 별도 곱 계산이다.",
                 comment_en: "The DOT damage increase of VASUKI is not a damage bonus but a separate multiplication calculation.",
-                comment_jp: "VASUKIの持続ダメージ増加はダメージボーナスではなく別々の乗算計算です。"
+                comment_jp: "VASUKIの持続ダメージ増加は攻撃倍率+ではなく別々の乗算計算です。"
             },
             {
                 type: "CRITICAL",

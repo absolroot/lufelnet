@@ -42,7 +42,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         characterText = 'Characters';
                     } else if (currentLang === 'jp') {
                         homeText = 'ホーム';
-                        characterText = 'キャラクター';
+                        characterText = '怪盗';
                     }
                     
                     document.write(`<a href="../../?v=${APP_VERSION}">${homeText}</a>`);
@@ -1474,7 +1474,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 일월성진 라벨 번역 (일본어 수정)
         const sunMoonStarEarthLabel = currentLang === 'kr' ? '일월성진' :
-                                     currentLang === 'en' ? 'S/M/S/P' : '日月星辰';
+                                     currentLang === 'en' ? 'S/M/S/P' : '旭月星天';
         const sunMoonLabelEl = document.querySelector('.sub-revelation .label');
         if (sunMoonLabelEl) sunMoonLabelEl.textContent = sunMoonStarEarthLabel;
 
@@ -1482,7 +1482,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const sunMoonStarLabels = {
             'kr': ['일', '월', '성', '진'],
             'en': ['Sun', 'Moon', 'Star', 'Planet'],
-            'jp': ['日', '月', '星', '辰']
+            'jp': ['旭', '月', '星', '天']
         };
         document.querySelectorAll('.main-options .option-row .label').forEach((el, index) => {
             if (sunMoonStarLabels[currentLang] && sunMoonStarLabels[currentLang][index]) {
@@ -1681,18 +1681,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     '생명': 'HP',
                     '생명력': 'HP',
                     '공격력': '攻撃力',
-                    '대미지 보너스': 'ダメージボーナス',
-                    '대미지보너스': 'ダメージボーナス',
-                    '크리티컬 확률': 'クリティカル確率',
-                    '크리티컬확률': 'クリティカル確率',
-                    '크리티컬 효과': 'クリティカル効果',
-                    '크리티컬효과': 'クリティカル効果',
+                    '대미지 보너스': '攻撃倍率+',
+                    '대미지보너스': '攻撃倍率+',
+                    '크리티컬 확률': 'CRT発生率',
+                    '크리티컬확률': 'CRT発生率',
+                    '크리티컬 효과': 'CRT倍率',
+                    '크리티컬효과': 'CRT倍率',
                     '관통': '貫通',
                     '방어력': '防御力',
                     '방어': '防御力',
-                    '효과 명중': '効果命中',
+                    '효과 명중': '状態異常命中',
                     '효과명중': '効果命중',
-                    '속도': '速度'
+                    '속도': '速さ'
                 }
             };
 
@@ -1963,20 +1963,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '생명': 'HP',
                 '생명력': 'HP',
                 '공격력': '攻撃力',
-                '대미지 보너스': 'ダメージボーナス',
-                '대미지보너스': 'ダメージボーナス',
-                '크리티컬 확률': 'クリティカル確率',
-                '크리티컬확률': 'クリティカル確率',
-                '크리티컬 효과': 'クリティカル効果',
-                '크리티컬효과': 'クリティカル効果',
+                '대미지 보너스': '攻撃倍率+',
+                '대미지보너스': '攻撃倍率+',
+                '크리티컬 확률': 'CRT発生率',
+                '크리티컬확률': 'CRT発生率',
+                '크리티컬 효과': 'CRT倍率',
+                '크리티컬효과': 'CRT倍率',
                 '관통': '貫通',
                 '방어력 감소' : '防御力減少',
                 '방어력': '防御力',
                 '방어': '防御力',
-                '효과 명중': '効果命中',
-                '효과명중': '効果命中',
-                '속도': '速度',
-                '치료효과': '治療効果',
+                '효과 명중': '状態異常命中',
+                '효과명중': '状態異常命中',
+                '속도': '速さ',
+                '치료효과': 'HP回復量',
                 '추격': '追撃',
                 '효과 저항': '効果耐性',
                 '효과저항': '効果耐性',
@@ -2721,7 +2721,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 },
                 'jp': {
                     title: 'サブオプション',
-                    content: `キャラクター別啓示で優先されるサブオプションを意味します。サブオプションの範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。`
+                    content: `怪盗別啓示で優先されるサブオプションを意味します。サブオプションの範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。`
                 }
             },
             'recommended-stats': {
@@ -2735,7 +2735,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 },
                 'jp': {
                     title: '推奨育成ステータス',
-                    content: 'キャラクターのスキルにステータスの影響を受ける形がある場合、最大効果を得るためのステータス。可能であれば満たすことをお勧めします。(戦闘開始時)'
+                    content: '怪盗のスキルにステータスの影響を受ける形がある場合、最大効果を得るためのステータス。可能であれば満たすことをお勧めします。(戦闘開始時)'
                 }
             },
             'battle-entry': {

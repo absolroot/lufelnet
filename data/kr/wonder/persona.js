@@ -106,7 +106,7 @@ const personaData = {
         ],
         comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 무한 알고리즘은 과금 이벤트를 통해 배포된 스킬 카드.",
         comment_en: "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events.",
-        comment_jp: "メディアラハンによる治療にも本能クリティカル効果30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。"
+        comment_jp: "メディアラハンによる治療にも本能CRT倍率30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。"
     },
     "비슈누": {
         name_en: "Vishnu",
@@ -132,7 +132,7 @@ const personaData = {
             ],
             effects_jp: [
                 "クリティカル率が17.5%増加する。",
-                "風襲の効果命中が20%増加し、風襲状態の敵に与えるダメージが20%増加する。",
+                "風襲の状態異常命中が20%増加し、風襲状態の敵に与えるダメージが20%増加する。",
                 "風襲状態を追加または初期化する時、敵の防御力が48%追加減少し、2ターンの間持続する。"
             ],
             priority: 3
@@ -195,7 +195,7 @@ const personaData = {
             effects_jp: [
                 "攻撃力が29.1%増加する。",
                 "敵にペルソナスキル使用時、2ターンの間スキルターゲットが『太陽の滅絶』を獲得する。",
-                "『太陽の滅絶』を保有するキャラクターは初めて火炎ダメージを受ける時『恐怖(ニエン)』を獲得し、3ターンの間受けるダメージが12%増加する。",
+                "『太陽の滅絶』を保有する怪盗は初めて火炎ダメージを受ける時『恐怖(ニエン)』を獲得し、3ターンの間受けるダメージが12%増加する。",
                 "また、2ターンの間75%基本確率で火傷を負う。"
             ],
             priority: 3
@@ -458,7 +458,7 @@ const personaData = {
             name_jp: "エレクトリックダンス",
             effect: "1명의 적에게 공격력 143.0%의 전격 속성 대미지를 주고, 2턴 동안 100.0%의 기본 확률로 감전 효과를 부여한다.",
             effect_en: "Deals 143.0% ATK Elec dmg to 1 foe, with a 100.0% base chance to inflict Shock for 2 turns.",
-            effect_jp: "敵単体に攻撃力143.0%の電撃属性ダメージを与える。100.0%の確률で、2ターンの間、敵を感電状態にする。",
+            effect_jp: "敵単体に攻撃力143.0%の電撃属性ダメージを与える。100.0%の確率で、2ターンの間、敵を感電状態にする。",
             priority: 0,
             icon: "전격"
         },
@@ -887,7 +887,7 @@ const personaData = {
                 "Increases Ailment Accuracy by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 15% and gain 1 stack of [Serpent's Bite]."
             ],
             effects_jp: [
-                "効果命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を15%増加させ、『ヴァスキの毒』を1重複獲得する。"
+                "状態異常命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を15%増加させ、『ヴァスキの毒』を1重複獲得する。"
             ],
             priority: 2
         },
@@ -933,7 +933,7 @@ const personaData = {
                 "Increases Ailment Accuracy by 34.9%. [Nightmare] decreases Effect RES by 15% and DEF by 10% for 2 turns. Under [Nightmare], increases enemies' Phys dmg taken by 8% for 1 turn. Additionally increases Phys dmg taken stacks by 1 after the enemy takes 3 hits of Phys damage, up to 3 stacks, each stack counts down independently."
             ],
             effects_jp: [
-                "効果命中が34.9%増加する。『悪夢』は2ターンの間効果抵抗が15%、防御力が10%減少する。『悪夢』状態の時、敵が受ける物理ダメージが8%増加する。敵が物理ダメージを3回受けるたびに追加で1重複を獲得し、独立して計算される。最大3回重複可能で2ターンの間持続する。"
+                "状態異常命中が34.9%増加する。『悪夢』は2ターンの間効果抵抗が15%、防御力が10%減少する。『悪夢』状態の時、敵が受ける物理ダメージが8%増加する。敵が物理ダメージを3回受けるたびに追加で1重複を獲得し、独立して計算される。最大3回重複可能で2ターンの間持続する。"
             ],
             priority: 2
         },
@@ -1037,7 +1037,7 @@ const personaData = {
                 "Increases Ailment Accuracy by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your Ailment Accuracy by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
             ],
             effects_jp: [
-                "効果命中が34.9%増加する。ペルソナスキルで敵にデバフ効果を付与すると、敵のデバフ効果が15個以上の時、自身の効果命中が50%上昇し、敵が受けるダメージが6.5%上昇する。敵にデバフ効果を付与した後、2ターンの間敵全体の防御力が12%減少する。"
+                "状態異常命中が34.9%増加する。ペルソナスキルで敵にデバフ効果を付与すると、敵のデバフ効果が15個以上の時、自身の状態異常命中が50%上昇し、敵が受けるダメージが6.5%上昇する。敵にデバフ効果を付与した後、2ターンの間敵全体の防御力が12%減少する。"
             ],
             priority: 2
         },
@@ -1141,7 +1141,7 @@ const personaData = {
             name_jp: "怒りの真神",
             effect: "1명의 적에게 공격력 48.0%의 화염 속성 대미지를 4회 준다. 적군에게 「외상」을 주며 3턴 동안 지속된다. 「외상」기간 동안 목표가 화염 속성 대미지를 1회 받을 때 마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
             effect_en: "Deals 48.0% ATK Fire dmg to 1 foe 4 times. Inflicts the foe with [Trauma] for 3 turns. During [Trauma], each time the target takes 1 hit of Fire dmg, increases their CRIT dmg taken by 3% for 2 turns, up to 8 stacks.",
-            effect_jp: "1体の敵に48.0% ATKの火炎属性ダメージを4回与える。敵軍に「外傷」を与え、3ターンの間持続する。「外傷」期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるクリティカル効果が3%増加する（8回重複可能）。",
+            effect_jp: "1体の敵に48.0% ATKの火炎属性ダメージを4回与える。敵軍に「外傷」を与え、3ターンの間持続する。「外傷」期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるCRT倍率が3%増加する（8回重複可能）。",
             priority: 3,
             icon: "화염"
         },
@@ -1325,7 +1325,7 @@ const personaData = {
                 "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases all allies' dmg dealt by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
             ],
             effects_jp: [
-                "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方キャラクターが元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方キャラクターにペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
+                "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
             ],
             priority: 2
         },
@@ -1335,7 +1335,7 @@ const personaData = {
             name_jp: "浄化の火",
             effect: "3턴 동안 모든 아군 캐릭터의 공격력이 12.0% 증가하고, 자신의 공격력 500마다 0.8% 추가 증가한다(최대 6%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
             effect_en: "Increases all allies' ATK by 12% + 0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
-            effect_jp: "3ターンの間全ての味方キャラクターの攻撃力が12.0%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍キャラクターにペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
+            effect_jp: "3ターンの間全ての味方怪盗の攻撃力が12.0%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍怪盗にペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
             priority: 3,
             icon: "버프광역"
         },
@@ -1352,7 +1352,7 @@ const personaData = {
         ],
         comment : "화상이 필수적인 캐릭터(ex. 미오)에게 사용하는 형태로 채용된다.",
         comment_en: "Adopted in a form used for characters who require burn effects (e.g., Mio).",
-        comment_jp: "火傷が必須的なキャラクター（例：ミオ）に使用する形で採用される。"
+        comment_jp: "火傷が必須的な怪盗（例：ミオ）に使用する形で採用される。"
     },
     "라미아": {
         name_en: "Lamia",
@@ -1521,7 +1521,7 @@ const personaData = {
                 "Increases CRIT DMG by 34.9%. At the start of battle, gains 4 stacks of [Ambush]. When using the signature skill there is a 60% chance to gain [Ambush], each stack increases own ATK by 9% for 2 turns, up to 8 stacks. Increases the CRIT Rate of the signature skill by 30% when reaching 8 stacks."
             ],
             effects_jp: [
-                "クリティカル効果が34.9%増加する。戦闘開始時『奇襲』を4重複獲得する。2ターンの間固有スキルがダメージを与えるたびに60%確率で『奇襲』を獲得し、毎回自分の攻撃力が9%ずつ増加する（8回重複可能）。8重複到達時クリティカル確率が30%増加する。"
+                "CRT倍率が34.9%増加する。戦闘開始時『奇襲』を4重複獲得する。2ターンの間固有スキルがダメージを与えるたびに60%確率で『奇襲』を獲得し、毎回自分の攻撃力が9%ずつ増加する（8回重複可能）。8重複到達時CRT発生率が30%増加する。"
             ],
             priority: 3
         },
@@ -1865,7 +1865,7 @@ const personaData = {
             effects_jp: [
                 "攻撃力が29.1%増加する。",
                 "戦闘開始時『竜血』を獲得する。自分が物理属性スキル使用時3ターンの間攻撃力が10%増加する。",
-                "固有スキル使用時『竜血』状態を強化し、物理属性スキルを使用すればダメージが28%、クリティカル効果が28%追加で増加する。"
+                "固有スキル使用時『竜血』状態を強化し、物理属性スキルを使用すればダメージが28%、CRT倍率が28%追加で増加する。"
             ],
             priority: 2
         },
@@ -1912,7 +1912,7 @@ const personaData = {
                 "Increases Ailment Accuracy by 21.2%. After using a buff skill, permanently increases all allies' ATK by 8.5%, up to 3 stacks."
             ],
             effects_jp: [
-                "効果命中が21.2%上昇。バフスキルを1つ使用するごとに、味方全体の攻撃力が8.5%上昇（最大3回まで）。"
+                "状態異常命中が21.2%上昇。バフスキルを1つ使用するごとに、味方全体の攻撃力が8.5%上昇（最大3回まで）。"
             ],
             priority: 1
         },
@@ -2356,7 +2356,7 @@ const personaData = {
                 "Inflicts [Mortal Barb] when dealing Critical, detonates this the next time you use the signature skill, additionally increases skill damage by 87% ATK. When detonating, there is a low chance of insta-kill."
             ],
             effects_jp: [
-                "クリティカル確率が17.5%増加する。",
+                "CRT発生率が17.5%増加する。",
                 "クリティカル時敵に「致命の罠」を追加し、次の固有スキル攻撃で標識を爆発させてスキルダメージが攻撃力の87%分追加増加する。標識爆発時低い確率で即死効果が発動される。"
             ],
             priority: 0
@@ -2367,7 +2367,7 @@ const personaData = {
             name_jp: "ゲイボルク",
             effect: "공격력 174.0%의 물리 대미지를 1단계 주며, 공격을 받은 적에게 디버프가 1중첩 있을 때마다 해당 스킬 크리티컬 확률이 4% 증가한다. 크리티컬 버프는 최대 20%까지 획득한다.",
             effect_en: "Deals 174.0% ATK Phys dmg to 1 foe, increases CRIT Rate by 4% for every stack of debuffs the foe has, up to 20% Crit Rate Bonus.",
-            effect_jp: "攻撃力174.0%の物理ダメージを1段階与え、攻撃を受けた敵にデバフが1重複ある度に該当スキルクリティカル確率が4%増加する。クリティカルバフは最大20%まで獲得する。",
+            effect_jp: "攻撃力174.0%の物理ダメージを1段階与え、攻撃を受けた敵にデバフが1重複ある度に該当スキルCRT発生率が4%増加する。クリティカルバフは最大20%まで獲得する。",
             priority: 0,
             icon: "물리"
         },
@@ -2405,7 +2405,7 @@ const personaData = {
                 "When an enemy uses a skill, increases the main target's Fire dmg taken by 8.2% for 2 turns."
             ],
             effects_jp: [
-                "効果命中が7%上昇。敵がスキルを使用する時、選択した対象の火炎属性ダメージが8.2%上昇（2ターン持続）。"
+                "状態異常命中が7%上昇。敵がスキルを使用する時、選択した対象の火炎属性ダメージが8.2%上昇（2ターン持続）。"
             ],
             priority: 1
         },
@@ -2451,7 +2451,7 @@ const personaData = {
                 "After using a Wind-type Persona skill, decreases the main target's DEF by 20% for 2 turns."
             ],
             effects_jp: [
-                "効果命中が14%上昇。風属性スキルを使用した後、選択した対象の防御力が20%低下（2ターン持続）。"
+                "状態異常命中が14%上昇。風属性スキルを使用した後、選択した対象の防御力が20%低下（2ターン持続）。"
             ],
             priority: 0
         },

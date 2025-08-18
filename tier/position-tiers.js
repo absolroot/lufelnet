@@ -1480,8 +1480,8 @@ window.initPositionTierMaker = () => {
       tierList: 'ティアリスト',
       tierMaker: 'ティアメーカー',
       metaPrefix: 'ペルソナ5 ザ・ファントム X LufelNet - ',
-      listDesc: 'P5Xキャラクターのポジション別ティアリストを確認してください。',
-      makerDesc: 'ポジション別にP5Xキャラクターティアを作ってみましょう。'
+      listDesc: 'P5X怪盗のポジション別ティアリストを確認してください。',
+      makerDesc: 'ポジション別にP5X怪盗ティアを作ってみましょう。'
     }
   };
   

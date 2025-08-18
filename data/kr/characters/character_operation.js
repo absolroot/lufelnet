@@ -17,7 +17,7 @@ const operationData = {
             "· New character, still adjusting"
         ],
         note_jp: [
-            "· 新キャラクターで調整中"
+            "· 新怪盗で調整中"
         ]
     },
     "미나미·여름": {
@@ -268,7 +268,7 @@ const operationData = {
             "· If the party is not a Gale party, the skill 0 cycle is 3-2"
         ],
         note_jp: [
-            "· パッシブのクリティカル効果バフの上限なし",
+            "· パッシブのCRT倍率バフの上限なし",
             "· 疾風パーティーでない場合の儀式0の運用法は3-2固定"
         ]
     },

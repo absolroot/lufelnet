@@ -138,8 +138,8 @@
 .row img{object-fit:contain}
 .inv-wrap{display:flex;flex-direction:column;gap:6px;margin:0px 0 32px 0}
 .inventory-slider{width:100%;appearance:none;-webkit-appearance:none;height:6px;background:linear-gradient(90deg, rgba(90,120,255,.2), rgba(90,120,255,.9));border-radius:999px}
-.inventory-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#1a73e8;border:2px solid #bcd2ff;margin-top:-4px;position:relative;top:1px}
-.inventory-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#1a73e8;border:2px solid #bcd2ff}
+.inventory-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#1a73e8;border:2px solid #bcd2ff;margin-top:-4px;position:relative;top:1px}
+.inventory-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#1a73e8;border:2px solid #bcd2ff}
 .setting-row{align-items:center;margin:6px 0}
 .setting-row label{min-width:64px}
 .setting-row .arrow{opacity:.6}
@@ -163,8 +163,8 @@
 /* slider styling */
 .dual-slider-row input[type="range"]::-webkit-slider-runnable-track{height:6px;background:linear-gradient(90deg, rgba(90,120,255,.1), rgba(90,120,255,.9));border-radius:999px}
 .dual-slider-row input[type="range"]::-moz-range-track{height:6px;background:linear-gradient(90deg, rgba(90,120,255,.2), rgba(90,120,255,.9));border-radius:999px}
-.dual-slider-row input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#398eff;border:2px solid #bcd2ff;margin-top:-4px;position:relative;top:-1px}
-.dual-slider-row input[type="range"]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#398eff;border:2px solid #bcd2ff}
+.dual-slider-row input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#398eff;border:2px solid #bcd2ff;margin-top:-4px;position:relative;top:-1px}
+.dual-slider-row input[type="range"]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#398eff;border:2px solid #bcd2ff}
 .dual-slider-row input[type="range"]:focus{outline:none}
 .arrow.big{opacity:.8;font-size:18px}
 

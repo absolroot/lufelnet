@@ -511,7 +511,7 @@ Ichigo is extremely powerful, but her damage-dealing mechanism is the most compl
 
 Below is the buff table showing which of Ichigo’s buffs apply:  
 
-| -                         | ATK / DMG Bonus      | Critical Rate / Critical DMG | DEF Reduction | Pierce |
+| -                         | ATK / ATK Mult      | Crit Rate / Crit Mult | DEF Reduction | Pierce |
 |---------------------------|----------------------|------------------------------|---------------|--------|
 | S1/S2/S3                  | O                    | O                            | O             | O      |
 | Hatred Application/Refresh| O                    | -                            | O             | -      |

@@ -273,7 +273,7 @@ const enCharacterWeaponData = {
             "attack": 517,
             "defense": 338,
             "skill_name": "Merciless",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When recovering SP with a Persona skill, Critical DMG increases by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns (up to 2 stacks)."
+            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When recovering SP with a Persona skill, Crit Mult increases by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns (up to 2 stacks)."
         },
         "weapon5-1": {
             "name": "Wings of the Winter Crane",
@@ -281,7 +281,7 @@ const enCharacterWeaponData = {
             "attack": 647,
             "defense": 422,
             "skill_name": "Gentle Snow Breeze",
-            "description": "Critical DMG increases by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When casting a skill on an ally, Critical DMG of all allies except self increases by 13.2%/17.2%/17.2%/21.2%/21.2%/25.2%/25.2% for 2 turns. Each time 50 SP is consumed when using a skill, the main target's damage dealt increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns."
+            "description": "Crit Mult increases by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When casting a skill on an ally, Crit Mult of all allies except self increases by 13.2%/17.2%/17.2%/21.2%/21.2%/25.2%/25.2% for 2 turns. Each time 50 SP is consumed when using a skill, the main target's damage dealt increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns."
         }
     },
     "마사키": {
@@ -338,7 +338,7 @@ const enCharacterWeaponData = {
             "attack": 706,
             "defense": 361,
             "skill_name": "Burning Summer",
-            "description": "Bless-type DMG increases by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. While in 『Midsummer』 state, Critical DMG increases by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. Upon entering 『Midsummer』 state, gain 2 stacks of Sunlight. Each time a Persona Skill or HIGHLIGHT skill is used, 1 stack of Sunlight is consumed to increase that skill's DMG by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "description": "Bless-type DMG increases by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. While in 『Midsummer』 state, Crit Mult increases by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. Upon entering 『Midsummer』 state, gain 2 stacks of Sunlight. Each time a Persona Skill or HIGHLIGHT skill is used, 1 stack of Sunlight is consumed to increase that skill's DMG by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
         }
     },
     "몽타뉴·백조": { 

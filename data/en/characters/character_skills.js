@@ -586,14 +586,14 @@ const enCharacterSkillsData = {
             "element": "질풍",
             "type":"단일피해",
             "cool": 0,
-            "description": "Deals 183.0%/201.7%/194.3%/213.0% of Riko Tanemura·Vast's ATK as Wind damage to 1 enemy and inflicts Windswept with a 100% base chance for 2 turns. Also inflicts 『Falling Petals』, causing Wind damage dealt to increase by 18.3% of the portion exceeding Riko Tanemura·Vast's Critical DMG over 100% (up to 388.0%/418.0%/418.0%/448.0% Critical DMG), lasting 2 turns.\nRiko Tanemura·Vast recovers 16 SP."
+            "description": "Deals 183.0%/201.7%/194.3%/213.0% of Riko Tanemura·Vast's ATK as Wind damage to 1 enemy and inflicts Windswept with a 100% base chance for 2 turns. Also inflicts 『Falling Petals』, causing Wind damage dealt to increase by 18.3% of the portion exceeding Riko Tanemura·Vast's Crit Mult over 100% (up to 388.0%/418.0%/418.0%/448.0% Crit Mult), lasting 2 turns.\nRiko Tanemura·Vast recovers 16 SP."
         },
         "skill2": {
             "name": "Plum Under the Umbrella",
             "element": "버프광역",
             "type":"버프",
             "cool": 0,
-            "description": "Increases all allies' ATK by 12.8% of the portion exceeding Riko Tanemura·Vast's Critical DMG over 100% (up to 388.0%/418.0%/418.0%/448.0% Critical DMG) for 2 turns and restores 4 SP.\nDuring this time, when any ally deals Persona Skill/Additional Effect/HIGHLIGHT damage, Riko Tanemura·Vast recovers 12 SP (triggers once per turn)."
+            "description": "Increases all allies' ATK by 12.8% of the portion exceeding Riko Tanemura·Vast's Crit Mult over 100% (up to 388.0%/418.0%/418.0%/448.0% Crit Mult) for 2 turns and restores 4 SP.\nDuring this time, when any ally deals Persona Skill/Additional Effect/HIGHLIGHT damage, Riko Tanemura·Vast recovers 12 SP (triggers once per turn)."
         },
         "skill3": {
             "name": "Lingering Plum Scent",
@@ -601,22 +601,22 @@ const enCharacterSkillsData = {
             "type":"버프",
             "sp": "50 - 200",
             "cool": 0,
-            "description": "Consumes all SP to increase 1 ally's Critical Rate (excluding self) by 16.0%/17.0%/17.0%/18.0%, and for every 2 SP spent, the following effects are enhanced by 1% strength for 2 turns (applies up to 388.0%/418.0%/418.0%/448.0% Critical DMG of Riko Tanemura·Vast).\n\n· 50+ SP spent: ATK increase, +2.4 ATK for every 1% exceeding Riko Tanemura·Vast's Critical DMG over 100%.\n· 100+ SP spent: Critical DMG increase, +12% of the portion exceeding Riko Tanemura·Vast's Critical DMG over 100%.\n· 150+ SP spent: Additional Critical DMG increase, +6% of the portion exceeding Riko Tanemura·Vast's Critical DMG over 100%."
+            "description": "Consumes all SP to increase 1 ally's Critical Rate (excluding self) by 16.0%/17.0%/17.0%/18.0%, and for every 2 SP spent, the following effects are enhanced by 1% strength for 2 turns (applies up to 388.0%/418.0%/418.0%/448.0% Crit Mult of Riko Tanemura·Vast).\n\n· 50+ SP spent: ATK increase, +2.4 ATK for every 1% exceeding Riko Tanemura·Vast's Crit Mult over 100%.\n· 100+ SP spent: Crit Mult increase, +12% of the portion exceeding Riko Tanemura·Vast's Crit Mult over 100%.\n· 150+ SP spent: Additional Crit Mult increase, +6% of the portion exceeding Riko Tanemura·Vast's Crit Mult over 100%."
         },
         "skill_highlight": {
             "element": "버프",
             "type":"버프",
-            "description": "Increases 1 ally's ATK (excluding self) for 2 turns (ATK +2.5 for every 1% exceeding Riko Tanemura·Vast's Critical DMG over 100%, up to 388.0%/418.0%/418.0%/448.0% Critical DMG) and Critical DMG by 24.4%/26.9%/25.9%/28.4%.\nRestores 20 SP to all other allies."
+            "description": "Increases 1 ally's ATK (excluding self) for 2 turns (ATK +2.5 for every 1% exceeding Riko Tanemura·Vast's Crit Mult over 100%, up to 388.0%/418.0%/418.0%/448.0% Crit Mult) and Crit Mult by 24.4%/26.9%/25.9%/28.4%.\nRestores 20 SP to all other allies."
         },
         "passive1": {
             "name": "Full Bloom",
             "element": "패시브",
-            "description": "After using 『Lingering Plum Scent』, the skill's main target gains 『Flower Bud』 for 2 turns.\nEach time the target deals skill damage, gains 1 stack of 『Bloom』 increasing ATK by 30 for 3 turns (up to 10 stacks).\nAt 5 stacks of 『Bloom』, ATK increases by 8.0% of the portion exceeding Riko Tanemura·Vast's Critical DMG over 100%, and Critical DMG increases by 5.0% of the portion exceeding 100%.\nAt 10 stacks, Critical DMG further increases by 5.0% of the portion exceeding Riko Tanemura·Vast's Critical DMG over 100%."
+            "description": "After using 『Lingering Plum Scent』, the skill's main target gains 『Flower Bud』 for 2 turns.\nEach time the target deals skill damage, gains 1 stack of 『Bloom』 increasing ATK by 30 for 3 turns (up to 10 stacks).\nAt 5 stacks of 『Bloom』, ATK increases by 8.0% of the portion exceeding Riko Tanemura·Vast's Crit Mult over 100%, and Crit Mult increases by 5.0% of the portion exceeding 100%.\nAt 10 stacks, Crit Mult further increases by 5.0% of the portion exceeding Riko Tanemura·Vast's Crit Mult over 100%."
         },
         "passive2": {
             "name": "Vigor",
             "element": "패시브",
-            "description": "During battle, Riko Tanemura·Vast's Critical DMG increases according to SP recovered, up to +84.0% Critical DMG for 450.0% SP recovered."
+            "description": "During battle, Riko Tanemura·Vast's Crit Mult increases according to SP recovered, up to +84.0% Crit Mult for 450.0% SP recovered."
         }
     },
     "마사키": {
@@ -753,7 +753,7 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "『Spring Form』: Deals 65.9%/72.7%/69.9%/76.7% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times and has a 30% base chance to inflict Gust. If Kotone Montagne·Swan is within 『Spring Barrier』, additionally inflicts 『Wind Wound』 for 2 turns. Attacking enemies under 『Wind Wound』 increases Critical DMG by 29.3%/29.3%/31.1%/31.1%.\n\n『Winter Form』: Deals 122.2%/134.7%/129.7%/142.2% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to Freeze. If the target is already Frozen, inflicts 『Frostbite』 for 2 turns. Enemies with 『Frostbite』 take 13.7%/13.7%/14.5%/14.5% more Ice damage."
+            "description": "『Spring Form』: Deals 65.9%/72.7%/69.9%/76.7% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times and has a 30% base chance to inflict Gust. If Kotone Montagne·Swan is within 『Spring Barrier』, additionally inflicts 『Wind Wound』 for 2 turns. Attacking enemies under 『Wind Wound』 increases Crit Mult by 29.3%/29.3%/31.1%/31.1%.\n\n『Winter Form』: Deals 122.2%/134.7%/129.7%/142.2% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to Freeze. If the target is already Frozen, inflicts 『Frostbite』 for 2 turns. Enemies with 『Frostbite』 take 13.7%/13.7%/14.5%/14.5% more Ice damage."
         },
         "skill2": {
             "name": "Drifting Clouds/Snowfall Plains",
@@ -978,13 +978,13 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 27,
             "cool": 0,
-            "description": "Deals 214.7%/236.7%/227.9%/249.9% Bless damage to 1 enemy. If Kasumi Yoshizawa is in the 『Masquerade』 state, this skill’s damage increases by 30% and her Critical DMG increases by 29.3%/29.3%/31.1%/31.1%."
+            "description": "Deals 214.7%/236.7%/227.9%/249.9% Bless damage to 1 enemy. If Kasumi Yoshizawa is in the 『Masquerade』 state, this skill’s damage increases by 30% and her Crit Mult increases by 29.3%/29.3%/31.1%/31.1%."
         },
         "skill_highlight": {
             "element": "축복",
             "type":"단일피해",
             "unlock":"자신이 『가면무도회』 상태.",
-            "description": "Condition: Kasumi Yoshizawa is in the 『Masquerade』 state.\nDeals 243.8%/268.8%/258.8%/283.8% Bless damage to 1 enemy. If she has 『Dance Move』, she gains the following effects:\n『Brave Step』: Each stack increases HIGHLIGHT skill damage by 15%.\n『Swift Step』: HIGHLIGHT Critical Rate increases by 10%, and Critical DMG increases by 20%."
+            "description": "Condition: Kasumi Yoshizawa is in the 『Masquerade』 state.\nDeals 243.8%/268.8%/258.8%/283.8% Bless damage to 1 enemy. If she has 『Dance Move』, she gains the following effects:\n『Brave Step』: Each stack increases HIGHLIGHT skill damage by 15%.\n『Swift Step』: HIGHLIGHT Critical Rate increases by 10%, and Crit Mult increases by 20%."
         },
         "passive1": {
             "name": "Faith",
@@ -1115,12 +1115,12 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Bullet Casting",
             "element": "패시브",
-            "description": "For every 1.45% Ailment Accuracy Rate, gains 1% ATK bonus (up to 165.0%). For every 50% Ailment Accuracy Rate, gains 1 stack of Critical DMG +20%, up to 3 stacks."
+            "description": "For every 1.45% Ailment Accuracy Rate, gains 1% ATK bonus (up to 165.0%). For every 50% Ailment Accuracy Rate, gains 1 stack of Crit Mult +20%, up to 3 stacks."
         },
         "passive2": {
             "name": "Tactics",
             "element": "패시브",
-            "description": "Each modification used permanently adds 1 stack of 『Gun Barrel Heating』. When 『Gun Barrel Heating』 reaches certain stacks, Haru gains attribute bonuses:\n1 stack: +18.0% Ailment Accuracy Rate, +18.0% Effect Resistance\n2 stacks: +18.0% ATK, +18.0% DEF\n3 stacks: +18.0% Critical DMG"
+            "description": "Each modification used permanently adds 1 stack of 『Gun Barrel Heating』. When 『Gun Barrel Heating』 reaches certain stacks, Haru gains attribute bonuses:\n1 stack: +18.0% Ailment Accuracy Rate, +18.0% Effect Resistance\n2 stacks: +18.0% ATK, +18.0% DEF\n3 stacks: +18.0% Crit Mult"
         }
     },
     "후타바": {

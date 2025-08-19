@@ -492,7 +492,7 @@ A more detailed formula is as follows:
 × ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%)} 
 ÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%) + 1400}
 
-× ⓓ {Critical Effect (when Critical occurs) or Stable Domain}
+× ⓓ {Critical DMG(Mult) (when Critical occurs) or Stable Domain}
 
 × ⓔ Skill Coefficient 
 
@@ -758,22 +758,22 @@ In other words, since it draws a curve graph where efficiency increases as the d
 
 # ⓓ Critical
 
-Critical damage multiplies damage by the 'Critical Effect' amount when critical hits occur.
+Critical damage multiplies damage by the 'Critical DMG(Mult)' amount when critical hits occur.
 
-The base critical rate is 5%, and the base critical effect is 150%, meaning there's a 5% chance to deal 1.5x damage.
+The base critical rate is 5%, and the base Critical DMG(Mult) is 150%, meaning there's a 5% chance to deal 1.5x damage.
 
-Notably, Dionysus can increase critical rate by 15.7% through Rebellion, and increase critical effect by 30% through its passive.
+Notably, Dionysus can increase critical rate by 15.7% through Rebellion, and increase Critical DMG(Mult) by 30% through its passive.
 
 ![damage.png](/apps/article/asset/damage12.png)
 
 In boss sections, while criticals don't occur due to the Stable Domain, damage is increased based on expected value calculations.
 
-> Critical Rate × (Critical Effect - 100%)
+> Critical Rate × (Critical DMG(Mult) - 100%)
 > 
 
 ![damage.png](/apps/article/asset/damage13.png)
 
-If you increase critical rate by 10%, increasing critical effect by twice that amount (20%) is most efficient.
+If you increase critical rate by 10%, increasing Critical DMG(Mult) by twice that amount (20%) is most efficient.
 
 ---
 
@@ -827,7 +827,7 @@ After all values are calculated, a random value between 0.95 ~ 1.05 is multiplie
 × ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%)} 
 ÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%) + 1400}
 
-× ⓓ {Critical Effect (when Critical occurs) or Stable Domain}
+× ⓓ {Critical DMG(Mult) (when Critical occurs) or Stable Domain}
 
 × ⓔ Skill Coefficient 
 
@@ -857,7 +857,7 @@ The following are the results assuming each summed value:
 - ⓒ Defense Reduction: 80%
 - ⓒ Winded Status: YES 12%
 - ⓓ Critical Rate: 40%
-- ⓓ Critical Effect: 220%
+- ⓓ Critical DMG(Mult): 220%
 - ⓔ Skill Coefficient: 120%
 - ⓕ Weakness Coefficient: 120% (Weakness)
 - ⓖ Final Damage Bonus: 40%

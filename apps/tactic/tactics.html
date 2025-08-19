@@ -474,8 +474,8 @@ class TacticsViewer {
         if (!type || type === 'ALL') return '';
         const map = {
             kr: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' },
-            en: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
-            jp: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
+            en: { '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
+            jp: { '흉몽': '兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' }
         };
         const label = (map[this.currentLang] || map.kr)[type] || type;
         return `<span class="type-badge">${label}</span>`;
@@ -671,9 +671,9 @@ class TacticsViewer {
 
     getTypeLabels() {
         if (this.currentLang === 'en') {
-            return { ALL: 'All', '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' };
+            return { ALL: 'All', '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' };
         } else if (this.currentLang === 'jp') {
-            return { ALL: '全体', '흉몽': '凶夢', '바다': '海', '이벤트': 'イベント', '기타': 'その他' };
+            return { ALL: '全体', '흉몽': '兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' };
         }
         return { ALL: '전체', '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' };
     }
@@ -790,7 +790,7 @@ class TacticsViewer {
                 filter_char: 'Character Filter',
                 signed_in_as: 'Signed in as:',
                 logout: 'Logout',
-                type: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' }
+                type: { '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' }
             },
             jp: {
                 search: 'タイトル検索...',
@@ -798,16 +798,16 @@ class TacticsViewer {
                 weekly: '週間',
                 monthly: '月間',
                 alltime: '通算',
-                title: 'タクティクス図書館',
+                title: 'タクティクスライブラリー',
                 nav_home: 'ホーム',
-                nav_current: 'タクティクス / 図書館',
+                nav_current: 'タクティクス / ライブラリー',
                 prev: '前',
                 next: '次',
                 upload: 'タクティクスをアップロード',
                 filter_char: '怪盗フィルター',
                 signed_in_as: 'ログイン：',
                 logout: 'ログアウト',
-                type: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
+                type: { '흉몽': '兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' }
             }
         }[this.currentLang] || {
             search: '제목 검색...', ranking: '순위', weekly: '주간', monthly: '월간', alltime: '역대', title: '택틱 도서관', nav_home: '홈', nav_current: '택틱 / 택틱 도서관', prev: '이전', next: '다음', upload: '택틱 업로드', filter_char: '캐릭터 필터', type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
@@ -882,7 +882,7 @@ class TacticsViewer {
                 description: 'Browse community tactics for Persona 5: The Phantom X.'
             },
             jp: {
-                title: 'タクティクス図書館 - ペルソナ5 ザ・ファントム X LufelNet',
+                title: 'タクティクスライブラリー - ペルソナ5 ザ・ファントム X LufelNet',
                 description: 'ペルソナ5 ザ・ファントム X の戦術を閲覧できます。'
             }
         };

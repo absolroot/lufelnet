@@ -714,7 +714,7 @@ const characterData = {
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지보너스 16%",
-        "mind_stats2": "공격력 20%",
+        "mind_stats2": "효과명중 24%",
         "mind_skill1": "3/HL!",
         "mind_skill2": "1/2!"
     },

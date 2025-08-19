@@ -467,13 +467,13 @@
             ]);
             const box = {};
             new Function('out', `${text}; out.COSTS = MATERIAL_COSTS;`)(box);
-            new Function('out', `${expText}; out.LEVEL_EXP = LEVEL_EXP_TO_NEXT; out.LEVEL_GEM = typeof LEVEL_GEM_TO_NEXT!=='undefined'?LEVEL_GEM_TO_NEXT:{};`)(box);
-            new Function('out', `${wexpText}; out.WEAPON_LEVEL_EXP = WEAPON_LEVEL_EXP_TO_NEXT; out.WEAPON_LEVEL_GEM = typeof WEAPON_LEVEL_GEM_TO_NEXT!=='undefined'?WEAPON_LEVEL_GEM_TO_NEXT:{};`)(box);
+            new Function('out', `${expText}; out.LEVEL_EXP = LEVEL_EXP_TO_NEXT;`)(box);
+            new Function('out', `${wexpText}; out.WEAPON_LEVEL_EXP = WEAPON_LEVEL_EXP_TO_NEXT;`)(box);
             COSTS = box.COSTS;
             COSTS.__LEVEL_EXP = box.LEVEL_EXP;
             COSTS.__WEAPON_LEVEL_EXP = box.WEAPON_LEVEL_EXP || {};
-            COSTS.__LEVEL_GEM = box.LEVEL_GEM || {};
-            COSTS.__WEAPON_LEVEL_GEM = box.WEAPON_LEVEL_GEM || {};
+            //COSTS.__LEVEL_GEM = box.LEVEL_GEM || {};
+            //COSTS.__WEAPON_LEVEL_GEM = box.WEAPON_LEVEL_GEM || {};
         }catch(err){
             console.warn('Load MATERIAL_COSTS failed. Using zeros', err);
             COSTS = { level:{}, weapon:{}, skills:{}, mind:{}, __LEVEL_EXP:{} };
@@ -518,17 +518,33 @@
             expSum += (costs.__LEVEL_EXP?.[lv] || 0);
         }
         if(expSum>0){
+            let expSumForGem = expSum;
             // greedy: 4000, 1000, 200
             const unit3 = 4000, unit2 = 1000, unit1 = 200;
             const c3 = Math.floor(expSum / unit3); expSum -= c3*unit3; if(c3>0) addCount(mats,'lv_exp3', c3);
             const c2 = Math.floor(expSum / unit2); expSum -= c2*unit2; if(c2>0) addCount(mats,'lv_exp2', c2);
             // 남은 값이 0이 아니면 200 단위로 올림 처리
             let c1 = Math.ceil(expSum / unit1); if(c1>0) addCount(mats,'lv_exp1', c1);
+
+            // 레벨업 잼 소모량
+            // c3 * 20 * 30 + c2 * 5 * 30 + c1 * 1 * 30
+            if(inputs.lvTo!==80){
+                const gemCount = (c3 * 20 * 30) + (c2 * 5 * 30) + (c1 * 1 * 30);
+                if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
+            }
+            else{
+                console.log('expSumForGem', expSumForGem);
+                const gemCount = Math.floor(expSumForGem * 0.15);
+                if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
+            }
         }
+
+        
         // 캐릭터 레벨업 구간 gem 합산
+        /*
         for(let lv=inputs.lvFrom; lv<inputs.lvTo; lv++){
             const g = costs.__LEVEL_GEM?.[lv] || 0; if(g) addCount(mats,'konpaku_gem', g);
-        }
+        }*/
         // 2) 레벨 한계돌파 아이템 (10,20,30...80 목표 구간 진입 시 필요 수량 적용)
         for(let lv=inputs.lvFrom+1; lv<=inputs.lvTo; lv++){
             const row = costs.level[lv];
@@ -541,15 +557,27 @@
         for(let lv=inputs.wpFrom; lv<inputs.wpTo; lv++){
             wpExpSum += (costs.__WEAPON_LEVEL_EXP?.[lv] || 0);
         }
+        console.log('wpExpSum', wpExpSum);
         if(wpExpSum>0){
+            let wpExpSumForGem = wpExpSum;
             const unit3 = 2000, unit2 = 500, unit1 = 100;
             const c3 = Math.floor(wpExpSum / unit3); wpExpSum -= c3*unit3; if(c3>0) addCount(mats,'wp_exp3', c3);
             const c2 = Math.floor(wpExpSum / unit2); wpExpSum -= c2*unit2; if(c2>0) addCount(mats,'wp_exp2', c2);
             let c1 = Math.ceil(wpExpSum / unit1); if(c1>0) addCount(mats,'wp_exp1', c1);
+            if(inputs.wpTo!==80){
+                const gemCount = (c3 * 20 * 25) + (c2 * 5 * 25) + (c1 * 1 * 25);
+                if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
+            }
+            else{
+                console.log('wpExpSumForGem', wpExpSumForGem);
+                const gemCount = Math.floor(wpExpSumForGem * 0.25);
+                if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
+            }
         }
+        /*
         for(let lv=inputs.wpFrom; lv<inputs.wpTo; lv++){
             const g = costs.__WEAPON_LEVEL_GEM?.[lv] || 0; if(g) addCount(mats,'konpaku_gem', g);
-        }
+        }*/
         // WEAPON 레벨 돌파
         for(let lv=inputs.wpFrom+1; lv<=inputs.wpTo; lv++){
             const row = costs.weapon[lv]; if(!row) continue;

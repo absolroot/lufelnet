@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                         if (!type || type === 'ALL') return '';
                         const map = {
                             kr: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' },
-                            en: { '흉몽': 'Nightmare', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
-                            jp: { '흉몽': 'ナイトメア', '바다': '魂の海', '이벤트': 'イベント', '기타': 'その他' }
+                            en: { '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
+                            jp: { '흉몽': '兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' }
                         };
                         const label = (map[currentLang] || map.kr)[type] || type;
                         return `<span class="type-badge">${label}</span>`;

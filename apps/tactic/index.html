@@ -570,6 +570,62 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         }
       }
 
+      
+
+      // 언어별 SEO 설정 함수
+      function updateSEOContent() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const currentLang = urlParams.get('lang') || 'kr';
+          
+          const seoData = {
+            'kr': {
+                title: '택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X 택틱 메이커' 
+            },
+            'en': {
+                title: 'Tactic Maker - Persona 5: The Phantom X LufelNet',
+                description: 'Persona 5: The Phantom X Tactic Maker'
+            },
+            'jp': {
+                title: 'タクティクスメーカー - ペルソナ5 ザ・ファントムX LufelNet',
+                description: 'ペルソナ5 ザ・ファントムX タクティクスメーカー'
+            }
+        };
+                  
+          const currentSEO = seoData[currentLang] || seoData['kr'];
+          
+          // 타이틀 업데이트
+          document.title = currentSEO.title;
+          
+          // 메타 태그 업데이트
+          let metaDescription = document.querySelector('meta[name="description"]');
+          if (!metaDescription) {
+              metaDescription = document.createElement('meta');
+              metaDescription.name = 'description';
+              document.head.appendChild(metaDescription);
+          }
+          metaDescription.setAttribute('content', currentSEO.description);
+          
+          let ogTitle = document.querySelector('meta[property="og:title"]');
+          if (!ogTitle) {
+              ogTitle = document.createElement('meta');
+              ogTitle.setAttribute('property', 'og:title');
+              document.head.appendChild(ogTitle);
+          }
+          ogTitle.setAttribute('content', currentSEO.title);
+          
+          let ogDescription = document.querySelector('meta[property="og:description"]');
+          if (!ogDescription) {
+              ogDescription = document.createElement('meta');
+              ogDescription.setAttribute('property', 'og:description');
+              document.head.appendChild(ogDescription);
+          }
+          ogDescription.setAttribute('content', currentSEO.description);
+      }
+
+
+
+
       // 모바일 토글 버튼 라벨 설정 (다국어)
       function updateToggleUILabels() {
         const currentLang = getCurrentLanguage();
@@ -607,6 +663,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         // Initialize navigation
         Navigation.load('tactic');
         VersionChecker.check();
+        updateSEOContent();
 
         function isMobile() {
           return window.innerWidth < 1200;

@@ -42,7 +42,7 @@ class Navigation {
                 tierMaker: '티어 메이커',
                 tierList: '티어 리스트',
                 calculator: '계산기',
-                materialCalc: '재료 플래너',
+                materialCalc: '육성 계산기',
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
@@ -62,7 +62,7 @@ class Navigation {
                 tierMaker: 'Tier Maker',
                 tierList: 'Tier List',
                 calculator: 'Calculator',
-                materialCalc: 'Material Planner',
+                materialCalc: 'Progression',
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Calculator',
                 criticalCalc: 'Critical Calculator',
@@ -75,14 +75,14 @@ class Navigation {
                 persona: 'ペルソナ',
                 revelations: '啓示',
                 tactic: 'タクティクス',
-                tacticMaker: 'タクティックメーカー',
+                tacticMaker: 'タクティクスメーカー',
                 tacticForge: 'タクティック鍛冶場',
-                tacticLibrary: 'タクティクス図書館',
+                tacticLibrary: 'タクティクスライブラリー',
                 tier: 'ティア',
                 tierMaker: 'ティアメーカー',
                 tierList: 'ティアリスト',
                 calculator: '計算機',
-                materialCalc: '素材プランナー',
+                materialCalc: '育成計算機',
                 payCalc: '課金計算機',
                 defenseCalc: '防御力計算機',
                 criticalCalc: 'クリティカル計算機',
@@ -114,8 +114,8 @@ class Navigation {
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
             kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            en: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic', 'about'],
-            jp: ['character', 'persona', 'revelations', 'tier', 'article', 'tactic', 'about'],
+            en: ['character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            jp: ['character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -158,10 +158,10 @@ class Navigation {
                         <span data-text="${texts.calculator}">${texts.calculator}</span>
                     </div>
                     <div class="submenu">
-                        <!--
                         <a href="${BASE_URL}/material-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="material-calc">
                             <span data-text="${texts.materialCalc}">◈　${texts.materialCalc}</span>
-                        </a>-->
+                        </a>
+                        ${currentLang === 'kr' ? `
                         <a href="${BASE_URL}/pay-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
                             <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
                         </a>
@@ -170,7 +170,7 @@ class Navigation {
                         </a>
                         <a href="${BASE_URL}/critical-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
                             <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>
-                        </a>
+                        </a>` : ''}
                     </div>
                 </div>
                 ` : ''}

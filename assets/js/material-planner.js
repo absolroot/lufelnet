@@ -1429,11 +1429,11 @@
         if(Math.abs(n) < 1000) return String(n);
         if(n < 1000000){
             const v = n/1000;
-            const s = (v>=10)? v.toFixed(0) : v.toFixed(1);
+            const s = (v>=100)? v.toFixed(0) : v.toFixed(1);
             return s + 'k';
         }
         const v = n/1000000;
-        const s = (v>=10)? v.toFixed(0) : v.toFixed(1);
+        const s = (v>=100)? v.toFixed(0) : v.toFixed(1);
         return s + 'm';
     }
     // 로컬 저장/복구

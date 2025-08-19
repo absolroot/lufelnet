@@ -67,7 +67,7 @@
             mindSkill1: '심상 스킬 1', mindSkill2: '심상 스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
             remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
             confirm: '확인', deleteConfirmTitle: '삭제 확인', deleteConfirmMessage: '이 캐릭터의 플랜을 삭제합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
-            helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.',
+            helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\nP5X는 계정 정보 연동을 지원하지 않습니다. 보유 중인 재료는 수동으로 입력해주세요.',
             reset: '초기화', resetConfirmTitle: '초기화 확인', resetConfirmMessage: '모든 플랜을 초기화합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?'
         },
         en: {
@@ -78,7 +78,7 @@
             mindSkill1: 'Mind Skill 1', mindSkill2: 'Mind Skill 2', mindAttr: 'Mind Attribute', cancel: 'Cancel', save: 'Save',
             remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
             confirm: 'Confirm', deleteConfirmTitle: 'Delete Plan', deleteConfirmMessage: 'This character plan will be deleted. This action cannot be undone. Continue?',
-            helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.',
+            helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.\nP5X does not support account information linking. Please enter your owned materials manually.',
             reset: 'Reset', resetConfirmTitle: 'Reset Confirm', resetConfirmMessage: 'All plans will be reset. This action cannot be undone. Continue?'
         },
         jp: {
@@ -89,7 +89,7 @@
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
             remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
             confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',
-            helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。',
+            helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。\nP5Xはアカウント情報の連携に対応していません。所持している素材は手動で入力してください。',
             reset: 'リセット', resetConfirmTitle: 'リセットの確認', resetConfirmMessage: 'すべてのプランをリセットします。この操作は元に戻すことができません。続行しますか?'
         }
     };
@@ -103,7 +103,8 @@
     function updateHelpText(){
         const helpText = document.querySelector('.help-text');
         if(helpText){
-            helpText.textContent = t('helpText');
+            // \n이 있을 경우 줄바꿈
+            helpText.innerHTML = t('helpText').replace(/\n/g, '<br>');
         }
     }
 

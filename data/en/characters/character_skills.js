@@ -677,7 +677,7 @@ const enCharacterSkillsData = {
             "type":"단일치료",
             "sp": 22,
             "cool": 0,
-            "description": "Restore HP of 1 ally equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168. Increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nGain 3 Tenacity stacks, and gain more Tenacity stacks for each unique elemental ailment on foes."
+            "description": "Restore HP to 1 ally equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168, and increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 3 turns.\nAlso gain 3 Tenacity stacks, and gain additional Tenacity stacks for each elemental ailment on foes."
         },
         "skill3": {
             "name": "Nuclear Fury",
@@ -874,26 +874,26 @@ const enCharacterSkillsData = {
     "유우미": {
         "name": "Yumi Shiina",
         "skill1": {
-            "name": "Alluring Fragrance",
+            "name": "Tempting Build",
             "element": "버프광역",
             "type":"버프",
             "cool": 6,
-            "description": "Increases all allies' ATK by 8% of Yumi Shiina's ATK for 3 turns (up to 5000/5500/6500/7000 ATK).\nWhen cast, if Yumi Shiina has a 『Cocktail』, she consumes 1 『Cocktail』 to enhance the skill effect (consumes the highest quality 『Cocktail』 first). Consuming 『Mix·DELUXE/Mix/Rough』 increases the skill effect by 120%, 100%, or 50% respectively."
+            "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. Tailor-Made, Standard, and Basic Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
         },
         "skill2": {
-            "name": "Colorful Ingredients",
+            "name": "Charming Gaze",
             "element": "버프",
             "type":"버프",
             "cool": 4,
-            "description": "Increases 1 ally's damage dealt for 2 turns (1% bonus damage per 250 ATK of Yumi Shiina, up to 5000/5500/6500/7000 ATK), and increases max HP by 13.0%/13.0%/14.6%/14.6%.\nWhen dealing damage, restores HP equal to 2% of the damage dealt for 1 turn. Upon casting, Yumi Shiina consumes 1 『Rough/Mix』 to gain 1 『Mix·DELUXE』."
+            "description": "Increase 1 ally's damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack) and their max HP by 13.0%/13.0%/14.6%/14.6% for 2 turns. When the target deals damage to a foe, restore the target's HP by 2% of damage dealt for 1 turn.\nWhen activating a skill, spend 1 Basic or Standard Cocktail to gain 1 Tailor-Made Cocktail."
         },
         "skill3": {
             "name": "Fragrant Wine",
             "element": "버프광역",
             "type":"버프",
             "cool": 8,
-            "unlock": "Unlocked when possessing 『Cocktail』",
-            "description": "Activation Condition: Unlocked when possessing 『Cocktail』\nConsumes all 『Cocktails』 to specially adjust the attributes of the designated ally.\nFor each 『Mix·DELUXE/Mix/Rough』 consumed, activates the following effects at 120%, 100%, or 50% strength respectively:\nIncreases all allies' specially adjusted attribute damage (1% bonus damage per 250 ATK of Yumi Shiina, up to 5000/5500/6500/7000 ATK), and increases the designated ally's specially crafted attribute damage by up to 1.2× for 2 turns."
+            "unlock": "This skill requires Cocktails.",
+            "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). Tailor-Made, Standard, and Basic Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more Standard or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
         },
         "skill_highlight": {
             "name": "Attribute Boost",
@@ -902,14 +902,14 @@ const enCharacterSkillsData = {
             "description": "Increases the corresponding attribute values of all deployed allies by 20% of the Phantom Thieves’ respective attributes."
         },
         "passive1": {
-            "name": "Stir",
+            "name": "Cocktail Party",
             "element": "패시브",
-            "description": "For each Phantom Thief in the team, all Phantom Thieves' corresponding attribute damage increases by 4%."
+            "description": "Increase party's attribute damage by 4% based on main attributes of party members."
         },
         "passive2": {
-            "name": "Shake",
+            "name": "Taking Orders",
             "element": "패시브",
-            "description": "At the start of battle, Yumi Shiina gains 3 random 『Flavors』 based on the attributes of Phantom Thieves in the team."
+            "description": "At the start of the battle, gain Mixers based on the most common main attibute of party members participating in the battle."
         }
     },
     "치즈코": {

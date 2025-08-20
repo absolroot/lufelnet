@@ -1233,7 +1233,7 @@ h2{
     font-size: 11px;
     text-align: center;
     line-height: 1.2;
-    word-break: keep-all;
+    word-break: normal;
     max-width: 100%;
 }
 

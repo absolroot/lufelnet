@@ -105,7 +105,7 @@ const personaData = {
              {name : "방어 강화", priority: 0},
         ],
         comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 무한 알고리즘은 과금 이벤트를 통해 배포된 스킬 카드.",
-        comment_en: "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events.",
+        comment_en: "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
         comment_jp: "メディアラハンによる治療にも本能CRT倍率30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。"
     },
     "비슈누": {
@@ -223,7 +223,7 @@ const personaData = {
              {name : "방어 강화", priority: 0},
         ],
         comment : "음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다로 대체 가능하다.",
-        comment_en: "Rhythmic Intrusion is a skill card distributed through paid events and can be replaced with Marakunda.",
+        comment_en: "Rhythmic Intrusion is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
         comment_jp: "音律の侵入は課金イベントを通じて配布されたスキルカードでマハラクンダで代替可能である。"
     },
     "도미니온": {

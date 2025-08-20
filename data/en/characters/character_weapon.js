@@ -401,20 +401,20 @@ const enCharacterWeaponData = {
     "유우미": {
         "name": "Yumi Shiina",
         "weapon4-1": {
-            "name": "Stargazing Diviner",
+            "name": "Starrynight Soothsayer",
             "health": 1823,
             "attack": 586,
             "defense": 320,
             "skill_name": "Seductive Kiss",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When using a skill, the target’s damage dealt increases by 4.8%/6.0%/6.0%/7.2%/7.2%/8.4%/8.4%. If the skill consumes a 『Cocktail』, the main target’s damage dealt further increases by 3.6%/4.5%/4.5%/5.4%/5.4%/6.3%/6.3% for 2 turns."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After using a skill, increase main target's damage by 4.8%/6.0%/6.0%/7.2%/7.2%/8.4%/8.4% for 2 turns. If this skill spends Cocktails, increase damage by 3.6%/4.5%/4.5%/5.4%/5.4%/6.3%/6.3% more."
         },
         "weapon5-1": {
-            "name": "Feather under the Moonlight",
+            "name": "Moonlit Feather",
             "health": 2279,
             "attack": 733,
             "defense": 400,
             "skill_name": "Wine & Revelry",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Each time Yumi Shiina consumes a 『Mix·DELUXE/Mix/Rough』, it triggers the following effects with 120%/100%/50% potency: for 2 turns, all allies randomly gain one of the following buffs—ATK +6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4%, damage dealt +5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%, or Critical Rate +4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6% (prioritizing effects not already active; identical effects do not stack). When Yumi Shiina crafts 2 『Cocktails』, there is a 55%/70%/70%/85%/85%/100%/100% chance to reduce the decoder thief's preparation time by 1 action."
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For each Cocktail spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% (2 turns)\nIncrease damage by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5% (2 turns)\nIncrease critical rate by 4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6% (2 turns)\nThese effects do not stack. If the Cocktail spent was Tailor-Made, multiply effect by 120%. If it was Standard, multiply effect by 100%. If it was Basic, multiply effect by 50%. For every 2 Cocktailsgained, reduce Yumi's cooldown time by 1 turn."
         }
     },
     "치즈코": {

@@ -83,7 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     level.querySelector('.label').textContent = levels[index].slice(0, -1) + (mindTexts[currentLang] || '심상 5');
                 }
                 const valueElement = level.querySelector('.value');
-                const statValue = character.minimum_stats[levels[index]] || '-';
+                let statValue = character.minimum_stats[levels[index]] || '-';
+                if(character.minimum_stats_glb){
+                    statValue = character.minimum_stats_glb[levels[index]] || '-';
+                }
                 
                 if (statValue !== '-') {
                     // 콤마로 구분된 여러 스탯을 처리

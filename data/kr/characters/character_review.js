@@ -778,7 +778,7 @@ Even if a low-quality cocktail is created, one can be upgraded to the highest ti
 
 <br>
 
-Since her ATK requirement is relatively high, careful Revelation Card setup is needed. Her exclusive weapon not only increases ATK but also has an effect that can alter turn order, so it’s worth investing in.  
+Her exclusive weapon not only increases ATK but also has an effect that can alter turn order, so it’s worth investing in.  
 
 As the first 5★ Elucidator Phantom Thief, unlike 4★ units who shared 15% of their stats with allies, **she shares 20% of her stats with allies, making her own stats even more important**.  
 
@@ -792,7 +792,7 @@ review_jp: `
 
 <br>
 
-要求攻撃力が高めなので啓示カードのセットに注意が必要で、専用武器は攻撃力を上げるだけでなく行動順を変化させる効果もあるため、専用武器に投資する価値がある。  
+専用武器は攻撃力を上げるだけでなく行動順を変化させる効果もあるため、専用武器に投資する価値がある。  
 
 初の★5解明怪盗として、従来の★4が味方にステータスを15%分配していたのに対し、**味方にステータスの20%を分配するため、自身のステータスをより重視する必要がある**。  
 

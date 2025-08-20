@@ -1656,7 +1656,14 @@ const characterData = {
             "LV13": "공격력 6500",
             "LV13+5": "공격력 7000"
         },
-        
+        "minimum_stats_glb": {
+            "LV10": "공격력 4600",
+            "LV10+5": "공격력 5060",
+            "LV12": false,
+            "LV12+5": false,
+            "LV13": "공격력 5980",
+            "LV13+5": "공격력 6440"
+        },
         "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",

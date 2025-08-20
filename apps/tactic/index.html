@@ -1350,7 +1350,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             header.style.display = 'flex';
             header.style.alignItems = 'center';
             header.appendChild(arrow);
-            sections[cardId] = { card, header, bodyEls, arrow, collapsed: false };
+            sections[cardId] = { card, header, bodyEls, arrow, collapsed: false, userToggled: false };
 
             const apply = (s) => {
               s.bodyEls.forEach(el => el.style.display = s.collapsed ? 'none' : '');
@@ -1358,12 +1358,15 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             };
 
             const syncWithViewport = () => {
-              if (window.__forceAccordionCollapse === true) {
-                sections[cardId].collapsed = true;
-              } else if (isMobile()) {
-                sections[cardId].collapsed = true;
-              } else {
-                sections[cardId].collapsed = false;
+              // Only set default based on viewport if user hasn't interacted yet.
+              if (!sections[cardId].userToggled) {
+                if (window.__forceAccordionCollapse === true) {
+                  sections[cardId].collapsed = true;
+                } else if (isMobile()) {
+                  sections[cardId].collapsed = true;
+                } else {
+                  sections[cardId].collapsed = false;
+                }
               }
               apply(sections[cardId]);
             };
@@ -1375,10 +1378,11 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
               if (!isMobile()) {
                 // Desktop: toggle both together
                 const targetState = !sections[cardId].collapsed;
-                Object.values(sections).forEach(s => { s.collapsed = targetState; apply(s); });
+                Object.values(sections).forEach(s => { s.collapsed = targetState; s.userToggled = true; apply(s); });
               } else {
                 // Mobile: toggle this only
                 sections[cardId].collapsed = !sections[cardId].collapsed;
+                sections[cardId].userToggled = true;
                 apply(sections[cardId]);
               }
             });
@@ -1388,7 +1392,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             // expose global controller
             if (typeof window.setAccordionCollapsed !== 'function') {
               window.setAccordionCollapsed = function(collapsed){
-                Object.values(sections).forEach(s => { s.collapsed = !!collapsed; apply(s); });
+                Object.values(sections).forEach(s => { s.collapsed = !!collapsed; s.userToggled = true; apply(s); });
               };
             }
           }

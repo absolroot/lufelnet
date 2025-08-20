@@ -16,6 +16,25 @@ function getCurrentLanguage() {
   return 'kr';
 }
 
+// 페이지 스크롤 잠금/해제 유틸
+let __scrollLockY = 0;
+function lockPageScroll() {
+  __scrollLockY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${__scrollLockY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+}
+function unlockPageScroll() {
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  window.scrollTo(0, __scrollLockY || 0);
+}
+
 // 페르소나 이름 번역 함수
 function getPersonaDisplayName(personaName) {
   const currentLang = getCurrentLanguage();
@@ -175,6 +194,10 @@ const createWeaponDropdownItems = (filter = "") => {
     nameSpan.textContent = getWeaponDisplayName(weapon);
     item.appendChild(nameSpan);
     
+    // 클릭 시 포커스 이동으로 인한 스크롤 보정을 막기 위해 mousedown을 억제
+    item.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+    });
     item.addEventListener("click", () => {
       weaponInput.value = weapon;
       customDropdown.classList.remove("active");
@@ -348,6 +371,7 @@ inputs.forEach((input, idx) => {
   const inputContainer = document.createElement("div");
   inputContainer.className = "input-container";
   inputContainer.style.position = "relative";
+  inputContainer.style.overflowAnchor = "none"; // 스크롤 앵커링 비활성화
   
   // 기존 input을 새 컨테이너로 이동
   input.parentNode.insertBefore(inputContainer, input);
@@ -356,6 +380,7 @@ inputs.forEach((input, idx) => {
   // 커스텀 드롭다운 생성
   const customDropdown = document.createElement("div");
   customDropdown.className = "custom-dropdown";
+  customDropdown.style.overflowAnchor = "none"; // 스크롤 앵커링 비활성화
   inputContainer.appendChild(customDropdown);
   
   // 드롭다운 선택 중인지 여부 플래그 (중복 change 방지)
@@ -434,11 +459,13 @@ inputs.forEach((input, idx) => {
   
   // 페르소나 입력 필드 이벤트 처리
   input.addEventListener("focus", function() {
-    // 스크롤 위치 저장
+    // 스크롤 위치 저장 (필요 시 사용, 강제 스크롤 이동은 하지 않음)
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     // 원래 값 저장 (값은 더 이상 비우지 않음: 값 손실/스크롤점프 방지)
     this.setAttribute('data-original-value', this.value);
+    // setparty 방식으로 편집 편의성을 위해 포커스 시 값을 비움
+    this.value = '';
 
     // 번역 표시 제거하여 placeholder가 보이도록 함
     inputContainer.classList.remove('show-translation');
@@ -446,10 +473,8 @@ inputs.forEach((input, idx) => {
     createPersonaDropdownItems('');
     customDropdown.classList.add("active");
     
-    // 스크롤 위치 복원
-    setTimeout(() => {
-      window.scrollTo(0, scrollTop);
-    }, 0);
+    // 현재 스크롤 위치 스냅샷(필요 시 활용). 강제 스크롤 이동은 하지 않음
+    window.lastScrollY = window.scrollY;
   });
   
   input.addEventListener("blur", function() {
@@ -470,24 +495,21 @@ inputs.forEach((input, idx) => {
         inputContainer.classList.remove('show-translation');
       }
 
-      // change 이벤트를 발생시켜, 복원된 값에 따른 후속 처리가 이루어지도록 함
-      const event = new Event("change", { bubbles: true });
-      this.dispatchEvent(event);
+      // 값이 실제로 변경되었고, 드롭다운 선택 중이 아니며, import 중이 아닐 때만 change 발생
+      const prev = this.getAttribute('data-original-value') || '';
+      const changed = this.value.trim() !== '' && this.value !== prev;
+      if (!isSelecting && changed && !window.__IS_APPLYING_IMPORT) {
+        const event = new Event("change", { bubbles: true });
+        this.dispatchEvent(event);
+      }
 
     }, 200); // 200ms delay to allow click on dropdown items
   });
   
   input.addEventListener("input", function() {
-    // 스크롤 위치 저장
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
     createPersonaDropdownItems(this.value);
     customDropdown.classList.add("active");
-    
-    // 스크롤 위치 복원
-    setTimeout(() => {
-      window.scrollTo(0, scrollTop);
-    }, 0);
+    // 강제 스크롤 이동 제거
   });
   
   // 드롭다운 화살표 클릭 처리
@@ -690,6 +712,10 @@ styleElement.textContent = `
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         left: 0;
         top: 100%;
+        /* 스크롤 점프 감소: 브라우저 앵커/스크롤 체인 억제 */
+        overflow-anchor: none;
+        overscroll-behavior: contain;
+        contain: layout paint;
     }
     
     .custom-dropdown.active {
@@ -731,6 +757,8 @@ styleElement.textContent = `
     /* 번역된 텍스트 표시를 위한 스타일 */
     .input-container {
         position: relative;
+        /* 스크롤 앵커 비활성화로 문서 스크롤 보정 방지 */
+        overflow-anchor: none;
     }
     
     /* 번역 모드일 때 원본 텍스트 숨기기 */
@@ -881,6 +909,7 @@ skillInputs.forEach((input) => {
             item.appendChild(nameSpan);
             
             item.addEventListener("click", () => {
+                isSelecting = true;
                 // 실제 값은 한국어 이름으로 저장
                 input.value = skill.name;
                 customDropdown.classList.remove("active");
@@ -901,6 +930,9 @@ skillInputs.forEach((input) => {
                 // change 이벤트 강제 발생
                 const event = new Event("change", { bubbles: true });
                 input.dispatchEvent(event);
+
+                // 다음 틱에서 선택 상태 해제
+                setTimeout(() => { isSelecting = false; }, 0);
             });
             customDropdown.appendChild(item);
         });
@@ -911,15 +943,17 @@ skillInputs.forEach((input) => {
         // 스크롤 위치 저장
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // 원래 값 저장 후 입력 필드 초기화
+        // 원래 값만 저장 (값은 비우지 않음)
         this.setAttribute('data-original-value', this.value);
-        this.value = '';
 
         // 번역 표시 제거
         inputContainer.classList.remove('show-translation');
 
         createDropdownItems('');
         customDropdown.classList.add("active");
+
+        // 드롭다운 표시 동안 페이지 스크롤 잠금
+        lockPageScroll();
 
         // 스크롤 위치 복원
         setTimeout(() => {
@@ -930,6 +964,9 @@ skillInputs.forEach((input) => {
     input.addEventListener("blur", function() {
         setTimeout(() => {
             customDropdown.classList.remove("active");
+
+            // 페이지 스크롤 잠금 해제
+            unlockPageScroll();
 
             // 값에 따른 번역 표시 적용
             if (this.value && getCurrentLanguage() !== 'kr') {

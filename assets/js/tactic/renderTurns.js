@@ -92,8 +92,6 @@ function renderTurns() {
     const menuBtn = document.createElement('button');
     menuBtn.className = 'menu-btn';
     menuBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>';
-    // 편집 UI 숨김일 때 메뉴 버튼 숨김
-    if (isLocked) menuBtn.style.display = 'none';
     const menu = document.createElement('div');
     menu.className = 'menu';
     const styleButton = (btn)=>{ btn.style.width='100%'; btn.style.maxWidth='120px'; btn.style.textAlign='left'; btn.style.padding='8px 10px'; btn.style.background='transparent'; btn.style.border='none'; btn.style.cursor='pointer'; };

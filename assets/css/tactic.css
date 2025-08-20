@@ -14,6 +14,12 @@ body {
     -webkit-overflow-scrolling: auto;
   }
 
+  @media (max-width: 768px) {
+    .main-wrapper {
+      width: calc(100% - 32px); 
+    }
+  }
+
   .container {
     width: 100%;
     max-width: 100vw;
@@ -25,6 +31,14 @@ body {
   .header-container {
     padding: 0px 0px 10px 0px;
   }
+
+  @media (max-width: 768px) {
+    .hide-ui .header-container {
+      gap: 0;
+      margin-bottom: 16px;
+    }
+  }
+
   .container h1 {
     color:#FFFFFF
   }
@@ -123,7 +137,7 @@ body {
   }
   
   .turn-header {
-    cursor: grab;
+    /*cursor: grab;*/
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 4px;
@@ -131,9 +145,10 @@ body {
     margin-right: auto;
   }
   
+  /*
   .turn-header:active {
     cursor: grabbing;
-  }
+  }*/
   
   .actions {
     margin-top : 8px;
@@ -149,12 +164,16 @@ body {
     border-radius: 3px;
     margin-bottom: 4px;
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 1fr;
+    grid-template-columns: 0.6fr 0.6fr minmax(0, 1fr) auto;
     gap: 16px;
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
     margin-left: 0;
     min-width: 0; 
+  }
+
+  .action-item .hide-ui{
+    grid-template-columns: 0.6fr 0.6fr 1fr;
   }
   
   .action-item:hover {
@@ -184,6 +203,11 @@ body {
     color: #fff;
     padding: 2px 0px 0px 0px;
     cursor: pointer;
+  }
+
+  /* 편집 UI 숨김: 메뉴 버튼도 숨김 */
+  .hide-ui .menu-btn {
+    display: none !important;
   }
 
   .menu {
@@ -352,6 +376,13 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
+  }
+
+  .hide-ui .clone-action,
+  .hide-ui .delete-action,
+  .hide-ui .clear-input,
+  .hide-ui .add-action{
+    display: none !important;  
   }
   
   .clone-action:hover {
@@ -659,6 +690,10 @@ body {
     border-radius: 36px;
     width: fit-content;
     height: auto;
+  }
+
+  .hide-ui .export-import-btn {
+    display: none;
   }
 
   .export-import-btn:hover {
@@ -977,7 +1012,6 @@ body {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-bottom: 16px;
     color: white;
     font-size: 12px;
   }
@@ -1009,9 +1043,11 @@ body {
 
     /* 모바일 버튼 컨테이너 */
     .mobile-buttons {
+      position: relative;
       display: flex;
       gap: 8px;
       margin-bottom: 16px;
+      left: -8px;
     }
 
     /* 모바일에서의 공통 버튼 스타일 */
@@ -1492,12 +1528,18 @@ body {
     .hide-ui .mobile-lock-btn {
       display: none !important;  /* opacity 대신 display: none 사용 */
     }
+
     .hide-ui .action-item {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 0.5fr 0.5fr 1.5fr;
       gap: 8px;
       padding: 8px 8px 0px 8px;
       align-items: center;
     }
+    .hide-ui .action-item .action-character, .hide-ui .action-item .action-skill, .hide-ui .action-item .action-memo-display, .hide-ui .action-item .wonder-persona-select {
+      padding-right: 0px !important;
+      padding-left: 0px !important;
+    }
+    
 
     /* 액션 아이템 내부의 입력 필드가 포커스를 유지하도록 설정 */
     .action-item input[type="text"] {
@@ -1544,7 +1586,6 @@ body {
   }
 
   .action-memo-display {
-    width: 160px;
     padding: 8px 12px;
     border-radius: 3px;
     font-size: 13px;

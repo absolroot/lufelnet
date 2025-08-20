@@ -1,7 +1,7 @@
 // Korean → English mapping
 const mapping_en = {
     // Main revelations
-    "돌파": "Breakthrough",
+    "돌파": "Perseverance",
     "희망": "Hope",
     "창조": "Creation",
     "깨달음": "Awareness",
@@ -19,7 +19,7 @@ const mapping_en = {
     
     // Sub revelations
     "슬픔": "Sorrow",
-    "변화": "Change",
+    "변화": "Transformation",
     "신중": "Prudence",
     "고집": "Fixation",
     "헛수고": "Futility",
@@ -28,19 +28,19 @@ const mapping_en = {
     "화해": "Reconcilation",
     "진리": "Truth",
     "주권": "Control",
-    "방해": "Ruin",
+    "방해": "Hindrance",
     "풍요": "Prosperity",
     "화려": "Opulence",
     "변환": "Renewal",
     "힘": "Power",
-    "억압": "Oppression",
+    "억압": "Repression",
     "환희": "Pleasure",
     "미덕": "Virtue",
     "용맹": "Courage",
     "사랑": "Love",
     "평화": "Peace",
     "승리": "Victory",
-    "직책": "Labor",
+    "직책": "Works",
     "분쟁": "Strife",
     "개선": "Success",
     "좌절": "Defeat"
@@ -52,7 +52,7 @@ const enRevelationData = {
     "mapping_en": mapping_en,
     // Korean -> English translation mapping
     "mainTranslated": {
-        "돌파": "Breakthrough",
+        "돌파": "Perseverance",
         "희망": "Hope",
         "창조": "Creation",
         "깨달음": "Awareness",
@@ -70,7 +70,7 @@ const enRevelationData = {
     },
     "subTranslated": {
         "슬픔": "Sorrow",
-        "변화": "Change",
+        "변화": "Transformation",
         "신중": "Prudence",
         "고집": "Fixation",
         "헛수고": "Futility",
@@ -79,43 +79,43 @@ const enRevelationData = {
         "화해": "Reconcilation",
         "진리": "Truth",
         "주권": "Control",
-        "방해": "Ruin",
+        "방해": "Hindrance",
         "풍요": "Prosperity",
         "화려": "Opulence",
         "변환": "Renewal",
         "힘": "Power",
-        "억압": "Oppression",
+        "억압": "Repression",
         "환희": "Pleasure",
         "미덕": "Virtue",
         "용맹": "Courage",
         "사랑": "Love",
         "평화": "Peace",
         "승리": "Victory",
-        "직책": "Labor",
+        "직책": "Works",
         "분쟁": "Strife",
         "개선": "Success",
         "좌절": "Defeat"
     },
     "main": {
-        "Breakthrough" : ["Sorrow","Change"],
-        "Hope" : ["Labor","Fixation"],
+        "Perseverance" : ["Sorrow","Transformation"],
+        "Hope" : ["Works","Fixation"],
         "Creation": ["Worry","Reconcilation"],
-        "Awareness": ["Truth","Control","Ruin"],
-        "Departure": ["Control","Prosperity","Ruin"],
+        "Awareness": ["Truth","Control","Hindrance"],
+        "Departure": ["Control","Prosperity","Hindrance"],
         "Growth": ["Opulence","Renewal","Power"],
-        "Wisdom": ["Oppression","Pleasure","Virtue"],
+        "Wisdom": ["Repression","Pleasure","Virtue"],
         "Meditation": ["Opulence","Courage","Love"],
         "Faith": ["Peace","Love","Futility"],
         "Trust": ["Renewal","Power","Prosperity"],
         "Harmony": ["Victory","Power","Truth"],
-        "Resolve": ["Virtue","Labor","Prudence"],
+        "Resolve": ["Virtue","Works","Prudence"],
         "Acceptance": ["Peace","Strife","Love"],
         "Freedom": ["Success","Defeat","Despair"],
-        "Integrity": ["Pleasure","Labor","Fixation"]
+        "Integrity": ["Pleasure","Works","Fixation"]
     },
     "sub": {
-        "Sorrow": ["Breakthrough"],
-        "Change": ["Breakthrough"],
+        "Sorrow": ["Perseverance"],
+        "Transformation": ["Perseverance"],
         "Prudence": ["Resolve"],
         "Fixation": ["Integrity","Hope"],
         "Futility": ["Faith"],
@@ -124,19 +124,19 @@ const enRevelationData = {
         "Reconcilation": ["Creation"],
         "Truth": ["Awareness","Harmony"],
         "Control": ["Awareness","Departure"],
-        "Ruin": ["Awareness","Departure"],
+        "Hindrance": ["Awareness","Departure"],
         "Prosperity": ["Departure","Trust"],
         "Opulence": ["Growth","Meditation"],
         "Renewal": ["Growth","Trust"],
         "Power": ["Growth","Trust","Harmony"],
-        "Oppression": ["Wisdom"],
+        "Repression": ["Wisdom"],
         "Pleasure": ["Wisdom","Integrity"],
         "Virtue": ["Wisdom","Resolve"],
         "Courage": ["Meditation"],
         "Love": ["Meditation","Faith","Acceptance"],
         "Peace": ["Faith","Acceptance"],
         "Victory": ["Harmony"],
-        "Labor": ["Resolve","Integrity","Hope"],
+        "Works": ["Resolve","Integrity","Hope"],
         "Strife": ["Acceptance"],
         "Success": ["Freedom"],
         "Defeat": ["Freedom"]
@@ -162,7 +162,7 @@ const enRevelationData = {
             "set4": "During combat your HP, ATK, DEF increase by 15%.",
             "type": ["버프", "미출시"]
         },
-        "Labor": {
+        "Works": {
             "set2": "Increase HP by 12%.",
             "set4": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by 8%.",
             "type": ["버프", "미출시"]
@@ -197,7 +197,7 @@ const enRevelationData = {
             "set4": "Follow Up Attack Damage is increased by 40%.",
             "type": ["추가 효과", "미출시"]
         },
-        "Oppression": {
+        "Repression": {
             "set2": "Increase Physical DMG by 10%.",
             "set4": "Gain [Resentment] after every hit of skill damage: Increase ATK by 5% for 2 turn up to 6 stacks.",
             "type": ["물리", "미출시"]
@@ -212,7 +212,7 @@ const enRevelationData = {
             "set4": "Increase Bless skill CRIT by 12% when your HP% is not less than 50%.",
             "type": ["축복","미출시"]
         },
-        "Ruin": {
+        "Hindrance": {
             "set2": "Curse damage increased by 10%.",
             "set4": "Increase skill damage to enemies with debuffs by 20%.",
             "type": ["주원"]
@@ -262,7 +262,7 @@ const enRevelationData = {
             "set4": "Increase ATK by 25% for 3 turns; Gain this effect again when you use Theurgy.",
             "type": ["버프", "미출시"]
         },
-        "Change": {
+        "Transformation": {
             "set2": "Electric damage increased by 10%.",
             "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
             "type": ["전격", "미출시"]
@@ -274,24 +274,24 @@ const enRevelationData = {
         }
     },
     "set_effects": {
-        "Breakthrough": {
-            "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
+        "Perseverance": {
+            "Transformation": "Each enemy on field increases your electric damage by 8%, up to 32%.",
             "Sorrow": "Increase damage over time by 16%.",
             "type": ["미출시"]
         },
         "Hope": {
-            "Labor": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
+            "Works": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
             "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%.",
             "type": ["미출시"]
         },
         "Departure": {
             "Control": "Decrease main target's DEF by 23% for 2 turns after attacking them with a skill.",
             "Prosperity": "Increase all allies' DMG Dealt by 8% for 1 turn when attacking enemies.",
-            "Ruin": "Increase ATK by 30% for 3 turns after defeating an enemy."
+            "Hindrance": "Increase ATK by 30% for 3 turns after defeating an enemy."
         },
         "Awareness": {
             "Control": "Increase all allies' Fire DMG by 6% for 2 turns when you inflict Burn.",
-            "Ruin": "Increase ATK by 9% after every hit of damage to enemy with debuffs for 1 turn, up to 3 stacks.",
+            "Hindrance": "Increase ATK by 9% after every hit of damage to enemy with debuffs for 1 turn, up to 3 stacks.",
             "Truth": "Increase DMG Dealt by 12% when attacking enemies inflicted with Elemental Ailments, up to 2 stacks."
         },
         "Trust": {
@@ -315,14 +315,14 @@ const enRevelationData = {
             "type": ["미출시"]
         },
         "Integrity": {
-            "Labor": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",
+            "Works": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 80% of your Healing Bonus.",
             "Fixation": "After using Theurgy, increase all Thieves' DMG Dealt by 10% for 3 turns.",
             "type": ["미출시"]
         },
         "Resolve": {
             "Virtue": "Increase DMG Bonus by 10%/20%/30% when you reached 6000/9000/12000 HP.",
-            "Labor": "When equipped by Navigator Thieves: Decrease the main target's DEF by 10% for 2 turns when inflicting debuffs.",
+            "Works": "When equipped by Navigator Thieves: Decrease the main target's DEF by 10% for 2 turns when inflicting debuffs.",
             "Prudence": "At the start of battle, if your SPD is at the 3rd/4th slot, then additionally increase own ATK by 24%/30%.",
             "type": ["미출시"]
         },
@@ -348,7 +348,7 @@ const enRevelationData = {
             "Love": "Increase Healing Effect by 28% for 2 turns after landing a Crit."
         },
         "Wisdom": {
-            "Oppression": "Increase Physical DMG and Ailment Accuracy Rate by 20% when [Resentment] is not less than 5 stacks.",
+            "Repression": "Increase Physical DMG and Ailment Accuracy Rate by 20% when [Resentment] is not less than 5 stacks.",
             "Virtue": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Ailment Accuracy Rate.",
             "type": ["미출시"]

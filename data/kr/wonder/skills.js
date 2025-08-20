@@ -449,7 +449,7 @@ const personaSkillList = {
     },
     "엘 지하드": {
         name_jp: "エル・ジハード",
-        name_en: "El Jihad",
+        name_en: "Thunder Reign",
         description: "모든 적에게 공격력 64.8%의 전격 속성 대미지를 주고, 36.0%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
         description_jp: "敵全体に攻撃力64.8％の電撃属性ダメージを与える。36.0％の確率で敵を2ターンの間、感電状態にする。",
         description_en: "Deals 64.8% ATK Electric dmg to all foes and has a 36.0% chance of inflicting Shock for 2 turns.",

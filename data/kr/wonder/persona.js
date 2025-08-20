@@ -1447,7 +1447,7 @@ const personaData = {
             {name : "어드바이스", priority: 0},
         ],
         comment : "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
-        comment_en: "Triggers core passive effect on enemies already in Burn state with [Overheat: Fire damage or El Jihad: Shock addition].",
+        comment_en: "Triggers core passive effect on enemies already in Burn state with [Overheat: Fire damage or Thunder Reign: Shock addition].",
         comment_jp: "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。"
     },
     "멜키세덱": {

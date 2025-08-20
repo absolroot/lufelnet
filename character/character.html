@@ -1181,6 +1181,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // highlight: true 이면 언어와 무관하게 하이라이트 스타일 적용
                 const isHighlighted = (weaponData && weaponData.highlight === true) || (krWeaponData && krWeaponData.highlight === true);
                 if (isHighlighted) weaponItem.classList.add('super-highlight');
+
                 
                 // 무기 이미지
                 const weaponImage = document.createElement('img');
@@ -1224,6 +1225,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     star.alt = '★';
                     weaponStars.appendChild(star);
                 }
+                // weapon.key가 weapon4-2라면 별 옆에 'EVENT' 텍스트를 추가한다.
+                console.log(weapon.key);
+                if(weapon.key=="weapon4-2"){
+                    const eventText = document.createElement('span');
+                    eventText.className = 'event-text';
+                    eventText.textContent = 'EVENT';
+                    eventText.style.color = '#ecda81';
+                    eventText.style.fontSize = '10px';
+                    eventText.style.lineHeight = '1';
+                    eventText.style.margin = '1px 0 0 4px';
+                    weaponStars.appendChild(eventText);
+                }
 
                 // 스킬 정보
                 const weaponSkill = document.createElement('div');
@@ -1245,6 +1258,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         `;
                     }
                 }
+
+                
 
                 weaponHeader.appendChild(weaponName);
                 weaponHeader.appendChild(weaponStars);

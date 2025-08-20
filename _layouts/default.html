@@ -213,8 +213,6 @@
         const prev = root.style.scrollBehavior;
         root.style.scrollBehavior = 'auto';
         scroller.scrollTop = y + SCROLL_DELTA;
-        scroller.scrollTop = y;
-        root.style.scrollBehavior = prev || '';
       });
     }
   

@@ -1422,7 +1422,7 @@ body {
 
     /* 액션 아이템 레이아웃 수정 */
     .action-item {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
       padding: 8px;
     }

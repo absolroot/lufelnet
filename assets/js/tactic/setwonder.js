@@ -358,6 +358,9 @@ inputs.forEach((input, idx) => {
   customDropdown.className = "custom-dropdown";
   inputContainer.appendChild(customDropdown);
   
+  // 드롭다운 선택 중인지 여부 플래그 (중복 change 방지)
+  let isSelecting = false;
+  
   // datalist 속성 제거 (커스텀 드롭다운 사용)
   input.removeAttribute("list");
   
@@ -396,6 +399,9 @@ inputs.forEach((input, idx) => {
       item.appendChild(nameSpan);
       
       item.addEventListener("click", () => {
+        // 선택 중 플래그 설정 (blur에서 중복 처리 방지)
+        isSelecting = true;
+
         // 실제 값은 한국어 이름으로 저장
         input.value = persona;
         customDropdown.classList.remove("active");
@@ -413,9 +419,14 @@ inputs.forEach((input, idx) => {
         // 포커스를 잃게 하여 번역된 텍스트가 바로 보이도록 함
         setTimeout(() => input.blur(), 0);
         
-        // change 이벤트 발생 (고유스킬 설정을 위해)
-        const event = new Event("change", { bubbles: true });
-        input.dispatchEvent(event);
+        // change 이벤트는 한 번만 발생시키기
+        if (!window.__IS_APPLYING_IMPORT) {
+          const event = new Event("change", { bubbles: true });
+          input.dispatchEvent(event);
+        }
+
+        // 다음 틱에서 플래그 해제
+        setTimeout(() => { isSelecting = false; }, 0);
       });
       customDropdown.appendChild(item);
     });
@@ -426,9 +437,8 @@ inputs.forEach((input, idx) => {
     // 스크롤 위치 저장
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // 원래 값 저장 후 입력 필드 초기화
+    // 원래 값 저장 (값은 더 이상 비우지 않음: 값 손실/스크롤점프 방지)
     this.setAttribute('data-original-value', this.value);
-    this.value = '';
 
     // 번역 표시 제거하여 placeholder가 보이도록 함
     inputContainer.classList.remove('show-translation');
@@ -921,11 +931,6 @@ skillInputs.forEach((input) => {
         setTimeout(() => {
             customDropdown.classList.remove("active");
 
-            // 새로운 값이 선택되지 않았다면 원래 값으로 복원
-            if (this.value.trim() === '') {
-                this.value = this.getAttribute('data-original-value') || '';
-            }
-
             // 값에 따른 번역 표시 적용
             if (this.value && getCurrentLanguage() !== 'kr') {
                 const displayName = getSkillDisplayName(this.value);
@@ -935,14 +940,19 @@ skillInputs.forEach((input) => {
                 inputContainer.classList.remove('show-translation');
             }
 
-            // change 이벤트 발생
-            const event = new Event("change", { bubbles: true });
-            this.dispatchEvent(event);
+            // change 이벤트는 드롭다운 선택이 아닌 경우이면서, 값이 실제로 변경된 경우에만 발생
+            const prev = this.getAttribute('data-original-value') || '';
+            const changed = this.value.trim() !== '' && this.value !== prev;
+            if (!isSelecting && changed && !window.__IS_APPLYING_IMPORT) {
+                const event = new Event("change", { bubbles: true });
+                this.dispatchEvent(event);
+            }
 
         }, 200);
     });
-    
+  
     input.addEventListener("input", function() {
+        if (window.__IS_APPLYING_IMPORT) return;
         createDropdownItems(this.value);
         customDropdown.classList.add("active");
     });
@@ -964,6 +974,7 @@ skillInputs.forEach((input) => {
     
     // 입력 이벤트 리스너
     input.addEventListener("change", () => {
+        if (window.__IS_APPLYING_IMPORT) return;
         // 현재 스크롤 위치 저장
         const scrollY = window.scrollY;
         
@@ -977,6 +988,7 @@ skillInputs.forEach((input) => {
     });
     
     input.addEventListener("input", () => {
+        if (window.__IS_APPLYING_IMPORT) return;
         // 현재 스크롤 위치 저장
         const scrollY = window.scrollY;
         

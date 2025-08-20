@@ -1,6 +1,9 @@
 // 공통 적용 함수: 파일이든 외부 데이터든 동일 로직으로 UI에 주입
 window.applyImportedData = function(payload, options = {}) {
   try {
+    // 임포트 중에는 각종 입력 핸들러(debouncedUpdate 등)로 인한 재렌더를 억제
+    // 이벤트 측에서는 window.__IS_APPLYING_IMPORT 플래그를 확인해 불필요한 처리 방지
+    window.__IS_APPLYING_IMPORT = true;
     const { keepUrl = false, titleOverride } = options;
     const data = typeof payload === 'string' ? JSON.parse(payload) : payload;
 
@@ -51,24 +54,36 @@ window.applyImportedData = function(payload, options = {}) {
     if (isRaw) {
       turns = data.turns.map(turn => ({
         turn: turn.turn,
-        actions: (turn.actions || []).map(action => ({
-          type: action.type === 0 || action.type === 'auto' ? 'auto' : 'manual',
-          character: action.character,
-          wonderPersona: action.wonderPersona,
-          action: action.action,
-          memo: action.memo || ''
-        }))
+        actions: (turn.actions || []).map(action => {
+          const personaName = action.wonderPersona;
+          const providedIndex = (typeof action.wonderPersonaIndex === 'number') ? action.wonderPersonaIndex : -1;
+          const resolvedIndex = (personaName ? wonderPersonas.indexOf(personaName) : -1);
+          return {
+            type: action.type === 0 || action.type === 'auto' ? 'auto' : 'manual',
+            character: action.character,
+            wonderPersona: personaName,
+            wonderPersonaIndex: providedIndex !== -1 ? providedIndex : resolvedIndex,
+            action: action.action,
+            memo: action.memo || ''
+          };
+        })
       }));
     } else if (isCompressed) {
       turns = data.t.map(turn => ({
         turn: turn.n,
-        actions: (turn.a || []).map(action => ({
-          type: action.m ? 'manual' : 'auto',
-          character: action.c,
-          wonderPersona: action.w,
-          action: action.a,
-          memo: action.mm || ''
-        }))
+        actions: (turn.a || []).map(action => {
+          const personaName = action.w;
+          const providedIndex = (typeof action.wi === 'number') ? action.wi : -1; // 압축 포맷의 인덱스 키 가정: wi
+          const resolvedIndex = (personaName ? wonderPersonas.indexOf(personaName) : -1);
+          return {
+            type: action.m ? 'manual' : 'auto',
+            character: action.c,
+            wonderPersona: personaName,
+            wonderPersonaIndex: providedIndex !== -1 ? providedIndex : resolvedIndex,
+            action: action.a,
+            memo: action.mm || ''
+          };
+        })
       }));
     } else {
       throw new Error('Unrecognized file format');
@@ -284,9 +299,17 @@ window.applyImportedData = function(payload, options = {}) {
     if (!keepUrl && typeof getBaseUrl === 'function') {
       window.history.replaceState({}, document.title, getBaseUrl());
     }
+
+    // 임포트 후 액션 메모를 현재 원더 페르소나/스킬 입력값 기준으로 동기화
+    try {
+      if (typeof updateActionMemos === 'function') updateActionMemos();
+    } catch(_) {}
   } catch (error) {
     console.error('Invalid file data:', error);
     alert('파일 형식이 올바르지 않습니다.');
+  } finally {
+    // 임포트 완료
+    window.__IS_APPLYING_IMPORT = false;
   }
 };
 

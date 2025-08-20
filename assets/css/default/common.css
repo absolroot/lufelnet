@@ -3,6 +3,7 @@
     letter-spacing: -0.02em;
 }
 
+html{ scrollbar-gutter: stable both-edges; } /* 초기 폭 변화 방지 */
 
 .adsbygoogle-noablate {
     right: 86px !important;
@@ -124,7 +125,6 @@ body {
 
 /* 메인 컨텐츠 영역 */
 .main-wrapper {
-    position: relative; /* 이미 있음 */
     left: 120px;    
     width: calc(100% - 240px);
     position: relative;

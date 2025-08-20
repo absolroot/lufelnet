@@ -287,9 +287,17 @@
         
         // 업데이트 함수를 디바운스 처리
         const debouncedUpdate = debounce(() => {
-          updateAutoActions();
+          // 현재 턴 순서(번호) 스냅샷
+          const prevOrder = Array.isArray(turns) ? turns.map(t => t.turn) : [];
+
+          updateAutoActions(); // 내부에서 renderTurns() 호출됨
           updatePartyImages();
-          renderTurns();
+          updateActionMemos(); // 메모만 갱신 (턴 재정렬 방지)
+
+          // 혹시라도 외부 요인으로 turns 순서가 바뀌었을 경우, 기존 순서로 복원
+          if (Array.isArray(turns) && prevOrder.length === turns.length) {
+            turns.sort((a, b) => prevOrder.indexOf(a.turn) - prevOrder.indexOf(b.turn));
+          }
         }, 300);
         
         inputs.forEach((input, idx) => {

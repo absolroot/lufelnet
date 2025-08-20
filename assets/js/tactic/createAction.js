@@ -222,9 +222,34 @@
             personaSelect.appendChild(opt);
           });
           
+          // 추가 특수 액션 옵션 (데이터 기준: HIGHLIGHT, ONE MORE, 총격, 근접, 방어, 아이템)
+          const sep = document.createElement('option');
+          sep.disabled = true; sep.value = '';
+          sep.textContent = '──────────';
+          personaSelect.appendChild(sep);
+          const specialActions = ['HIGHLIGHT','ONE MORE','총격','근접','방어','아이템'];
+          specialActions.forEach(key => {
+            const opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = getActionDisplayName(key);
+            if (action.action === key) opt.selected = true;
+            personaSelect.appendChild(opt);
+          });
+          
           personaSelect.addEventListener("change", e => {
-            const newPersona = e.target.value;
+            const val = e.target.value;
+            const specialActions = ['HIGHLIGHT','ONE MORE','총격','근접','방어','아이템'];
+            // 특수 액션 선택 시: action.action 설정, wonderPersona 초기화
+            if (specialActions.includes(val)) {
+              action.action = val;
+              action.wonderPersona = "";
+              renderTurns();
+              return;
+            }
+            // 페르소나 선택 시: wonderPersona 설정, 일반 action 초기화
+            const newPersona = val;
             action.wonderPersona = newPersona;
+            action.action = "";
     
             // 선택된 페르소나의 인덱스 찾기
             const personaIndex = wonderPersonas.indexOf(newPersona);
@@ -251,6 +276,7 @@
             renderTurns();
           });
           li.appendChild(personaSelect);
+          
         } else if (action.character) {
           // 스킬 드롭다운으로 변경
           const skillSelect = document.createElement("select");

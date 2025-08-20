@@ -1057,16 +1057,6 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             }
         });
 
-        // Handle scroll end
-        window.addEventListener('scroll', function() {
-          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-            // Add a small margin when almost at the end of the scroll
-            document.body.style.paddingBottom = '100px';
-          } else {
-            document.body.style.paddingBottom = '';
-          }
-        });
-
         // 화면 크기에 따라 캡처 버튼 표시 여부 설정
         function updateCaptureButtonVisibility() {
           const captureBtn = document.querySelector('.capture-btn');

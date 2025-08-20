@@ -17,23 +17,7 @@ function getCurrentLanguage() {
 }
 
 // 페이지 스크롤 잠금/해제 유틸
-let __scrollLockY = 0;
-function lockPageScroll() {
-  __scrollLockY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${__scrollLockY}px`;
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.width = '100%';
-}
-function unlockPageScroll() {
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.left = '';
-  document.body.style.right = '';
-  document.body.style.width = '';
-  window.scrollTo(0, __scrollLockY || 0);
-}
+// (removed) scroll lock utilities were causing delayed scroll jumps
 
 // 페르소나 이름 번역 함수
 function getPersonaDisplayName(personaName) {
@@ -226,9 +210,6 @@ const createWeaponDropdownItems = (filter = "") => {
 
 // 무기 입력 필드 이벤트 처리
 weaponInput.addEventListener("focus", function() {
-  // 스크롤 위치 저장
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
   // 원래 값 저장 후 입력 필드 초기화
   this.setAttribute('data-original-value', this.value);
   this.value = '';
@@ -238,11 +219,6 @@ weaponInput.addEventListener("focus", function() {
 
   createWeaponDropdownItems('');
   customDropdown.classList.add("active");
-
-  // 스크롤 위치 복원
-  setTimeout(() => {
-    window.scrollTo(0, scrollTop);
-  }, 0);
 });
 
 weaponInput.addEventListener("blur", function() {
@@ -266,41 +242,38 @@ weaponInput.addEventListener("blur", function() {
 });
 
 weaponInput.addEventListener("input", function() {
-  // 현재 스크롤 위치 저장
-  const scrollY = window.scrollY;
-
   createWeaponDropdownItems(this.value);
   customDropdown.classList.add("active");
 
   // 상태 업데이트 및 스크롤 복원
   debouncedUpdate();
-  setTimeout(() => {
-    window.scrollTo(0, scrollY);
-  }, 10);
 });
 
 // 드롭다운 화살표 클릭 처리
 weaponInput.addEventListener("mousedown", function(e) {
+  // 기본 포커스 스크롤을 막고 스크롤 없이 포커스
+  e.preventDefault();
+  if (this.focus) {
+    try { this.focus({ preventScroll: true }); } catch (_) { this.focus(); }
+  }
   // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
   if (e.offsetX > this.offsetWidth - 20) {
-    e.preventDefault();
-    
     if (customDropdown.classList.contains("active")) {
       customDropdown.classList.remove("active");
     } else {
       createWeaponDropdownItems(this.value);
       customDropdown.classList.add("active");
     }
+  } else {
+    // 일반 클릭 시 드롭다운 표시
+    createWeaponDropdownItems(this.value);
+    customDropdown.classList.add("active");
   }
 });
 
 // 무기 변경 시 스크롤 보존하며 상태 업데이트
 weaponInput.addEventListener("change", () => {
-  const scrollY = window.scrollY;
   debouncedUpdate();
-  setTimeout(() => {
-    window.scrollTo(0, scrollY);
-  }, 10);
 });
 
 const inputs = wonderConfigDiv.querySelectorAll(".wonder-persona-input");
@@ -423,6 +396,9 @@ inputs.forEach((input, idx) => {
       nameSpan.textContent = getPersonaDisplayName(persona);
       item.appendChild(nameSpan);
       
+      // prevent focus-induced scroll jumps
+      item.addEventListener("mousedown", (e) => { e.preventDefault(); });
+
       item.addEventListener("click", () => {
         // 선택 중 플래그 설정 (blur에서 중복 처리 방지)
         isSelecting = true;
@@ -514,15 +490,23 @@ inputs.forEach((input, idx) => {
   
   // 드롭다운 화살표 클릭 처리
   input.addEventListener("mousedown", function(e) {
+    // 항상 기본 포커스 동작을 막고 스크롤 없이 포커스
+    e.preventDefault();
+    if (this.focus) {
+      try { this.focus({ preventScroll: true }); } catch (_) { this.focus(); }
+    }
+    // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
     if (e.offsetX > this.offsetWidth - 20) {
-      e.preventDefault();
-      
       if (customDropdown.classList.contains("active")) {
         customDropdown.classList.remove("active");
       } else {
         createPersonaDropdownItems(this.value);
         customDropdown.classList.add("active");
       }
+    } else {
+      // 일반 클릭 시 드롭다운 표시 유지/생성
+      createPersonaDropdownItems(this.value);
+      customDropdown.classList.add("active");
     }
   });
   
@@ -612,10 +596,6 @@ inputs.forEach((input, idx) => {
     }
     
     debouncedUpdate();
-    // 스크롤 위치 복원
-    setTimeout(() => {
-      window.scrollTo(0, scrollY);
-    }, 10);
   });
 
   // input 직접 입력 이벤트도 추가
@@ -940,9 +920,6 @@ skillInputs.forEach((input) => {
     
     // 드롭다운 관련 이벤트 처리
     input.addEventListener("focus", function() {
-        // 스크롤 위치 저장
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
         // 원래 값만 저장 (값은 비우지 않음)
         this.setAttribute('data-original-value', this.value);
 
@@ -951,22 +928,12 @@ skillInputs.forEach((input) => {
 
         createDropdownItems('');
         customDropdown.classList.add("active");
-
-        // 드롭다운 표시 동안 페이지 스크롤 잠금
-        lockPageScroll();
-
-        // 스크롤 위치 복원
-        setTimeout(() => {
-            window.scrollTo(0, scrollTop);
-        }, 0);
+        // do not lock page scroll or force scroll restoration
     });
     
     input.addEventListener("blur", function() {
         setTimeout(() => {
             customDropdown.classList.remove("active");
-
-            // 페이지 스크롤 잠금 해제
-            unlockPageScroll();
 
             // 값에 따른 번역 표시 적용
             if (this.value && getCurrentLanguage() !== 'kr') {
@@ -1012,30 +979,16 @@ skillInputs.forEach((input) => {
     // 입력 이벤트 리스너
     input.addEventListener("change", () => {
         if (window.__IS_APPLYING_IMPORT) return;
-        // 현재 스크롤 위치 저장
-        const scrollY = window.scrollY;
-        
         debouncedUpdate();
         updateActionMemos();
-        
-        // 스크롤 위치 복원
-        setTimeout(() => {
-            window.scrollTo(0, scrollY);
-        }, 10);
+        // no forced scroll restoration
     });
     
     input.addEventListener("input", () => {
         if (window.__IS_APPLYING_IMPORT) return;
-        // 현재 스크롤 위치 저장
-        const scrollY = window.scrollY;
-        
         debouncedUpdate();
         updateActionMemos();
-        
-        // 스크롤 위치 복원
-        setTimeout(() => {
-            window.scrollTo(0, scrollY);
-        }, 10);
+        // no forced scroll restoration
     });
 
   });

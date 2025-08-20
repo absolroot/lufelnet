@@ -193,15 +193,9 @@
 
 
 <script>
-  // 광고 1픽셀 이동
   (function () {
     const SCROLL_DELTA = 1;
     let nudged = false;
-  
-    function computedRight(el){
-      const r = parseFloat(getComputedStyle(el).right || '0');
-      return isNaN(r) ? 0 : r;
-    }
   
     function microNudge() {
       if (nudged) return;
@@ -224,35 +218,16 @@
       });
     }
   
-    function checkAndNudge() {
-      const rail = document.querySelector('ins.adsbygoogle[data-side-rail-status="displayed"]');
-      if (!rail) return;
+    microNudge();
   
-      // 이미 오른쪽 가장자리면 패스
-      if (computedRight(rail) === 0) return;
-  
-      microNudge();
-  
-      // 안전망: 아주 드물게 첫 nudge 후에도 right!=0일 수 있으니 한번 더 확인
-      setTimeout(() => {
-        if (document.contains(rail) && computedRight(rail) !== 0) {
-          // 필요시 최후수단으로 스타일 교정 (원치 않으면 주석 처리)
-          // rail.style.setProperty('right', '0px', 'important');
-          // rail.style.removeProperty('left');
-        }
-      }, 400);
-    }
-  
-    // 광고 DOM 삽입 감지
-    const mo = new MutationObserver(checkAndNudge);
-    mo.observe(document.documentElement, { subtree: true, childList: true });
-  
+
     // 초기 로드 후 약간의 지연을 두고도 체크 (광고가 늦게 올 때 대비)
     window.addEventListener('load', () => {
-      setTimeout(checkAndNudge, 150);
-      setTimeout(checkAndNudge, 600);
+      setTimeout(microNudge, 150);
+      setTimeout(microNudge, 600);
     });
   })();
-  </script>
+</script>
+  
   
 </html>

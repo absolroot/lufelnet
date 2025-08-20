@@ -12,7 +12,7 @@ translations:
   en:
     title: "Ailment Accuracy Mechanism"
   jp:
-    title: ""
+    title: "状態異常命中率の計算方法"
 ---
 
 <div class="content-kr" markdown="1">

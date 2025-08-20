@@ -194,7 +194,7 @@
 
 <script>
   (function () {
-    const SCROLL_DELTA = 1;
+    const SCROLL_DELTA = 10;
     let nudged = false;
   
     function microNudge() {
@@ -223,9 +223,7 @@
 
     // 초기 로드 후 약간의 지연을 두고도 체크 (광고가 늦게 올 때 대비)
     window.addEventListener('load', () => {
-      setTimeout(microNudge, 150);
       setTimeout(microNudge, 600);
-      setTimeout(microNudge, 1000);
       setTimeout(microNudge, 1500);
     });
   })();

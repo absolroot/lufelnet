@@ -214,11 +214,15 @@
           const personaSelect = document.createElement("select");
           personaSelect.className = "wonder-persona-select";
           
+          // wonderPersonas 슬롯 인덱스를 값으로 사용하여 안정성 확보
           wonderPersonas.forEach((p, idx) => {
             const opt = document.createElement("option");
-            opt.value = p;
+            opt.value = String(idx);
             opt.textContent = p ? getPersonaDisplayName(p) : `${getUIText('persona')}${idx + 1}`; // 번역된 페르소나 이름
-            if (action.wonderPersona === p) opt.selected = true;
+            // 기존 데이터 호환: wonderPersonaIndex 우선, 없으면 이름 비교로 선택 처리
+            const isSelectedByIndex = (typeof action.wonderPersonaIndex === 'number' && action.wonderPersonaIndex === idx);
+            const isSelectedByName = (typeof action.wonderPersonaIndex !== 'number' && action.wonderPersona === p);
+            if (isSelectedByIndex || isSelectedByName) opt.selected = true;
             personaSelect.appendChild(opt);
           });
           
@@ -243,17 +247,18 @@
             if (specialActions.includes(val)) {
               action.action = val;
               action.wonderPersona = "";
+              action.wonderPersonaIndex = undefined;
               renderTurns();
               return;
             }
-            // 페르소나 선택 시: wonderPersona 설정, 일반 action 초기화
-            const newPersona = val;
+            // 페르소나 슬롯 선택 시: index 기반으로 설정
+            const personaIndex = parseInt(val, 10);
+            const newPersona = wonderPersonas[personaIndex] || "";
+            action.wonderPersonaIndex = personaIndex;
             action.wonderPersona = newPersona;
             action.action = "";
     
-            // 선택된 페르소나의 인덱스 찾기
-            const personaIndex = wonderPersonas.indexOf(newPersona);
-            if (personaIndex !== -1) {
+            if (personaIndex >= 0) {
               // 해당 페르소나의 스킬 입력값 가져오기
               const skillInputs = document.querySelectorAll(
                 `.persona-skill-input[data-persona-index="${personaIndex}"]`
@@ -268,11 +273,8 @@
               
               // 메모 입력 필드 업데이트
               const memoInput = li.querySelector(".action-memo");
-              if (memoInput) {
-                memoInput.value = action.memo;
-              }
+              if (memoInput) memoInput.value = action.memo;
             }
-            
             renderTurns();
           });
           li.appendChild(personaSelect);

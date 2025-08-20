@@ -1328,18 +1328,18 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
       }
     </script>
     <script>
-      // Mobile accordion for Wonder and Party cards
+      // Mobile/PC accordion for Wonder and Party cards
       (function(){
         const svgArrow = '<svg width="8px" height="8px" viewBox="-19.04 0 75.804 75.804" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" stroke-width="1.13706"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><g id="Group_65" data-name="Group 65" transform="translate(-831.568 -384.448)"><path id="Path_57" data-name="Path 57" d="M833.068,460.252a1.5,1.5,0,0,1-1.061-2.561l33.557-33.56a2.53,2.53,0,0,0,0-3.564l-33.557-33.558a1.5,1.5,0,0,1,2.122-2.121l33.556,33.558a5.53,5.53,0,0,1,0,7.807l-33.557,33.56A1.5,1.5,0,0,1,833.068,460.252Z" fill="#ffffff"></path></g></g></svg>';
         const isMobile = () => window.innerWidth <= 768;
-        function setupAccordion(cardId){
+        const sections = {};
+
+        function initSection(cardId){
           const card = document.getElementById(cardId);
           if(!card) return;
           const header = card.querySelector('h2');
           if(!header) return;
-          // collect body children (everything except h2)
           const bodyEls = Array.from(card.children).filter(el => el.tagName && el.tagName.toLowerCase() !== 'h2');
-          // add arrow once
           if(!header.querySelector('.accordion-arrow')){
             const arrow = document.createElement('span');
             arrow.className = 'accordion-arrow';
@@ -1350,30 +1350,57 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             header.style.display = 'flex';
             header.style.alignItems = 'center';
             header.appendChild(arrow);
-            let collapsed = false;
-            const apply = () => {
-              bodyEls.forEach(el => el.style.display = collapsed ? 'none' : '');
-              arrow.style.transform = collapsed ? 'rotate(90deg)' : 'rotate(0deg)';
+            sections[cardId] = { card, header, bodyEls, arrow, collapsed: false };
+
+            const apply = (s) => {
+              s.bodyEls.forEach(el => el.style.display = s.collapsed ? 'none' : '');
+              s.arrow.style.transform = s.collapsed ? 'rotate(90deg)' : 'rotate(0deg)';
             };
+
             const syncWithViewport = () => {
-              if(isMobile()){
-                collapsed = true;
+              if (window.__forceAccordionCollapse === true) {
+                sections[cardId].collapsed = true;
+              } else if (isMobile()) {
+                sections[cardId].collapsed = true;
               } else {
-                collapsed = false;
+                sections[cardId].collapsed = false;
               }
-              apply();
+              apply(sections[cardId]);
             };
+
             // initial
             syncWithViewport();
-            // toggle on header click
-            header.addEventListener('click', () => { collapsed = !collapsed; apply(); });
-            // respond to resize
+
+            header.addEventListener('click', () => {
+              if (!isMobile()) {
+                // Desktop: toggle both together
+                const targetState = !sections[cardId].collapsed;
+                Object.values(sections).forEach(s => { s.collapsed = targetState; apply(s); });
+              } else {
+                // Mobile: toggle this only
+                sections[cardId].collapsed = !sections[cardId].collapsed;
+                apply(sections[cardId]);
+              }
+            });
+
             window.addEventListener('resize', syncWithViewport);
+
+            // expose global controller
+            if (typeof window.setAccordionCollapsed !== 'function') {
+              window.setAccordionCollapsed = function(collapsed){
+                Object.values(sections).forEach(s => { s.collapsed = !!collapsed; apply(s); });
+              };
+            }
           }
         }
+
         document.addEventListener('DOMContentLoaded', function(){
-          setupAccordion('wonder-config');
-          setupAccordion('party-selection');
+          initSection('wonder-config');
+          initSection('party-selection');
+          // If forced collapse was set before init, apply once
+          if (window.__forceAccordionCollapse === true && typeof window.setAccordionCollapsed === 'function') {
+            window.setAccordionCollapsed(true);
+          }
         });
       })();
     </script>

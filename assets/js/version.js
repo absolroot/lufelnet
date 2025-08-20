@@ -1,4 +1,4 @@
-const APP_VERSION = '2.3.7';  // 현재 앱 버전
+const APP_VERSION = '2.3.8';  // 현재 앱 버전
 
 class VersionChecker {
     static check() {

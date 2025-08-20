@@ -58,6 +58,20 @@
       }
     } catch (_) {}
 
+    // 아코디언: 라이브러리 경유 진입 시 PC/모바일 모두 접힌 상태로 시작
+    try {
+      window.__forceAccordionCollapse = true;
+      if (typeof window.setAccordionCollapsed === 'function') {
+        window.setAccordionCollapsed(true);
+      } else {
+        document.addEventListener('DOMContentLoaded', function(){
+          if (typeof window.setAccordionCollapsed === 'function') {
+            window.setAccordionCollapsed(true);
+          }
+        });
+      }
+    } catch (_) {}
+
     // 기본값으로 편집 UI 숨김 처리 (모바일/데스크톱 모두 적용)
     try {
       const container = document.querySelector('.container');

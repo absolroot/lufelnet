@@ -545,6 +545,13 @@ body {
     height: 100px;
   }
 
+  @media (max-width: 768px) {
+    .character-container {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
   .character-img {
     width: 100px;
     height: 100px;
@@ -553,6 +560,13 @@ body {
     border: 2px solid #DFE1E6;
     transition: all 0.2s ease;
     box-shadow: 4px 4px 0px rgba(255, 0, 0, 0.7);
+  }
+
+  @media (max-width: 768px) {
+    .character-img {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   .character-text-circle {
@@ -591,6 +605,13 @@ body {
     z-index: 1;
     filter: drop-shadow(0 0 1px rgb(0, 0, 0))
             drop-shadow(0 0 1px rgb(0, 0, 0));
+  }
+
+  @media (max-width: 768px) {
+    .ritual-img {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .character-container:hover .character-img {
@@ -789,6 +810,12 @@ body {
     z-index: 1;
     filter: drop-shadow(0 0 1px white)
             drop-shadow(0 0 1px white);
+  }
+
+  @media (max-width: 768px) {
+    .weapon-img {
+      height: 80px;
+    }
   }
 
   .middle-contianer {
@@ -1383,6 +1410,7 @@ body {
     .party-images {
       flex-wrap: wrap;
       justify-content: center;
+      margin-bottom: 32px;
     }
 
     .persona-images {

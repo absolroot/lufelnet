@@ -34,6 +34,7 @@ class Navigation {
                 character: '캐릭터',
                 persona: '페르소나',
                 revelations: '계시',
+                wonderweapon: '원더 무기',
                 tactic: '택틱',
                 tacticMaker: '택틱 메이커',
                 tacticForge: '택틱 대장간(구)',
@@ -54,7 +55,7 @@ class Navigation {
                 character: 'Character',
                 persona: 'Persona',
                 revelations: 'Revelations',
-                tactic: 'Tactics',
+                wonderweapon: 'Wonder Daggers',
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
                 tacticLibrary: 'Tactics Library',
@@ -74,6 +75,7 @@ class Navigation {
                 character: '怪盗',
                 persona: 'ペルソナ',
                 revelations: '啓示',
+                wonderweapon: 'ワンダー武器',
                 tactic: 'タクティクス',
                 tacticMaker: 'タクティクスメーカー',
                 tacticForge: 'タクティック鍛冶場',
@@ -113,9 +115,9 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['home', 'character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            en: ['character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            jp: ['character', 'persona', 'revelations', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            kr: ['home', 'character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -149,6 +151,12 @@ class Navigation {
                 <a href="${BASE_URL}/revelations?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="revelations">
                     <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
+                </a>
+                ` : ''}
+                ${currentMenus.includes('wonderweapon') ? `
+                <a href="${BASE_URL}/wonder-weapon?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="wonderweapon">
+                    <img src="${BASE_URL}/assets/img/nav/wonder-weapon.png" alt="wonderweapon" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <span data-text="${texts.wonderweapon}">${texts.wonderweapon}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('calculator') ? `

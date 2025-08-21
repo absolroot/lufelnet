@@ -4196,7 +4196,7 @@ const personaSkillList = {
     },
     "방어 강화 I": {
         name_jp: "防御強化Ⅰ",
-        name_en: "Defense Boost I",
+        name_en: "Protect Boost I",
         description: "방어력이 8.8% 증가한다.",
         description_jp: "防御力が8.8%上昇する。",
         description_en: "Increases DEF by 8.8% .",
@@ -4213,7 +4213,7 @@ const personaSkillList = {
     },
     "방어 강화 II": {
         name_jp: "防御強化Ⅱ",
-        name_en: "Defense Boost II",
+        name_en: "Protect Boost II",
         description: "방어력이 12.5% 증가한다.",
         description_jp: "防御力が12.5%上昇する。",
         description_en: "Increases DEF by 12.5% .",
@@ -4230,7 +4230,7 @@ const personaSkillList = {
     },
     "방어 강화 III": {
         name_jp: "防御強化Ⅲ",
-        name_en: "Defense Boost III",
+        name_en: "Protect Boost III",
         description: "방어력이 16.3% 증가한다.",
         description_jp: "防御力が16.3%上昇する。",
         description_en: "Increase DEF by 16.3% .",
@@ -4247,7 +4247,7 @@ const personaSkillList = {
     },
     "방어 강화": {
         name_jp: "防御強化",
-        name_en: "Defense Boost",
+        name_en: "Protect Boost",
         description: "방어력이 8.8%/12.5%/16.3% 증가한다.",
         description_jp: "防御力が8.8%/12.5%/16.3%上昇する。",
         description_en: "Increases DEF by 8.8%/12.5%/16.3% .",
@@ -4273,7 +4273,7 @@ const personaSkillList = {
     },
     "대미지 면역 II": {
         name_jp: "ダメージ免疫Ⅱ",
-        name_en: "Damage Reduction II",
+        name_en: "Reduction Boost II",
         description: "받는 대미지가 6.7% 감소한다.",
         description_jp: "受けるダメージが6.7%軽減される。",
         description_en: "Decrease damage taken by 6.7% .",
@@ -4290,7 +4290,7 @@ const personaSkillList = {
     },
     "대미지 면역 III": {
         name_jp: "ダメージ免疫Ⅲ",
-        name_en: "Damage Reduction III",
+        name_en: "Reduction Boost III",
         description: "받는 대미지가 8.7% 감소한다.",
         description_jp: "受けるダメージが8.7%軽減される。",
         description_en: "Decrease damage taken by 8.7% .",
@@ -4324,7 +4324,7 @@ const personaSkillList = {
     },
     "대미지 면역": {
         name_jp: "ダメージ免疫",
-        name_en: "Damage Reduction",
+        name_en: "Reduction Boost",
         description: "받는 대미지가 4.7%/6.7%/8.7%/10.8% 감소한다.",
         description_jp: "受けるダメージが4.7%/6.7%/8.7%/10.8%軽減される。",
         description_en: "Decrease damage taken by 4.7%/6.7%/8.7%/10.8% .",

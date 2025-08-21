@@ -370,7 +370,10 @@
     }
 
     .logo-container {
-        margin-bottom: 4vw !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 16px;
+        margin-bottom: 0px;
     }
 
     .main-nav {
@@ -381,7 +384,7 @@
         top: 0;  /* 명시적으로 top 위치 지정 */
         transition: 0.3s ease;
         z-index: 1000;
-        padding-top: 60px;
+        padding-top: 0px;
         visibility: hidden;
         opacity: 0;
         margin: 0;
@@ -427,10 +430,6 @@
     
     .hamburger-btn {
         right: 20px;
-    }
-
-    .logo-container {
-        margin-bottom: 4vw !important;
     }
 }
 

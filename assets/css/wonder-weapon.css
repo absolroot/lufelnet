@@ -38,7 +38,7 @@
 .weapon-img { max-height:180px; }
 
 @media (max-width: 1200px) {
-  .weapon-img { max-height:120px; }
+  .weapon-img { max-height:140px; }
   .img-container { flex: 0 0 60px; }
   .card { gap: 12px; padding-left: 10px; padding-right: 10px; }
 }
@@ -171,7 +171,7 @@
     grid-column: 1 / -1;
     margin-top: 0;
   }
-  .effect-block { grid-template-columns: 1fr; padding: 10px 12px 12px 12px;}
+  .effect-block { grid-template-columns: 1fr; padding: 10px 12px 12px 12px; margin-top:8px;}
   .effect-label { display: none }
 }
 

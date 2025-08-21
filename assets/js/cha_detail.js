@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mindTexts = {
                         'kr': '심상 5',
                         'en': 'Minds 5',
-                        'jp': '心象 5'
+                        'jp': 'イメジャリー 5'
                     };
                     level.querySelector('.label').textContent = levels[index].slice(0, -1) + (mindTexts[currentLang] || '심상 5');
                 }
@@ -867,8 +867,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? ['All', 'LV10', 'LV10+Minds.5', 'LV12', 'LV12+Minds.5']
                 : ['All', 'LV10', 'LV10+Minds.5', 'LV13', 'LV13+Minds.5'],
             jp: characterInfo.rarity === 4 
-                ? ['全体', 'LV10', 'LV10+心象5', 'LV12', 'LV12+心象5']
-                : ['全体', 'LV10', 'LV10+心象5', 'LV13', 'LV13+心象5']
+                ? ['全体', 'LV10', 'LV10+イメジャリー5', 'LV12', 'LV12+イメジャリー5']
+                : ['全体', 'LV10', 'LV10+イメジャリー5', 'LV13', 'LV13+イメジャリー5']
         };
         
         const levels = levelTexts[currentLang] || levelTexts.kr;

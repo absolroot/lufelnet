@@ -460,8 +460,8 @@ const characterData = {
         "sub_revel3": ["크리티컬 확률/크리티컬 효과"],
         "sub_revel4": ["속도"],
         "sub_option1": ["속도"],
-        "sub_option2": [""],
-        "sub_option3": [""],
+        "sub_option2": ["크리티컬 확률"],
+        "sub_option3": ["크리티컬 효과", "대미지 보너스"],
         "minimum_stats": {
             "LV10": "속도 176 (전용무기 180)",
             "LV10+5": "속도 194",

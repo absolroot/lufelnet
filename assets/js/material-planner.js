@@ -85,7 +85,7 @@
             pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
             materialSummary: '素材サマリー', showSpoiler: 'ネタバレ含む（KR全リスト）',
             level: 'レベル', current: '怪盗', target: '目標', weapon: '武器', skills: 'スキル',
-            mind: '心象', enableAll: '12個 全て有効', mindBase: '心象 基本', mindStat1: 'ステ1', mindStat2: 'ステ2',
+            mind: 'イメジャリー', enableAll: '12個 全て有効', mindBase: 'イメジャリー 基本', mindStat1: 'ステ1', mindStat2: 'ステ2',
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
             remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
             confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',

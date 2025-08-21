@@ -1102,7 +1102,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                  const mindTexts = {
                      'kr': '심상5',
                      'en': 'Mindscape5',
-                     'jp': '心象5'
+                     'jp': 'イメジャリー5'
                  };
                  
                  items.forEach((item, index) => {
@@ -1395,7 +1395,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             if (currentLang === 'en' || currentLang === 'jp') {
                 const warningMessage = currentLang === 'en' ? 
                     'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)' :
-                    '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、心象など）';
+                    '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、イメジャリーなど）';
                 const warningDiv = document.createElement('div');
                 warningDiv.className = 'warning-message';
                 warningDiv.style.cssText = 'background: rgba(17, 17, 17, 0.2); color: #6c757d; padding: 10px; margin: 15px 0; border-radius: 4px; font-size: 13px; opacity: 0.5;';
@@ -1547,7 +1547,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const mindTexts = {
             'kr': '심상5',
             'en': 'Minds5',
-            'jp': '心象5'
+            'jp': 'イメジャリー5'
         };
         // 심상 텍스트 번역은 battle-plus-stats에서 제외 (이미 처리됨)
         // document.querySelectorAll('.battle-plus-stats').forEach(el => {
@@ -1563,7 +1563,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const skillLevelButtonLabels = {
             'kr': ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'],
             'en': ['All', 'LV10', 'LV10+Mind5', 'LV13', 'LV13+Mind5'],
-            'jp': ['全体', 'LV10', 'LV10+心象5', 'LV13', 'LV13+心象5']
+            'jp': ['全体', 'LV10', 'LV10+イメジャリー5', 'LV13', 'LV13+イメジャリー5']
         };
         document.querySelectorAll('.skill-level-btn').forEach((btn, index) => {
             if (skillLevelButtonLabels[currentLang] && skillLevelButtonLabels[currentLang][index]) {
@@ -1604,7 +1604,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 심상 라벨 번역
         const mindLabel = currentLang === 'kr' ? '심상 (LV 5)' :
-                         currentLang === 'en' ? 'Mindscape (LV 5)' : '心象 (LV 5)';
+                         currentLang === 'en' ? 'Mindscape (LV 5)' : 'イメジャリー (LV 5)';
         const mindTitleEl = document.querySelector('.skill-mind-settings .setting-section:last-child h3');
         if (mindTitleEl) mindTitleEl.innerHTML = mindLabel + ' ' + createHelpIcon('mind-lv5');
 
@@ -1997,8 +1997,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '효과저항': '効果耐性',
                 'SP 회복' : 'SP 回復',
                 'SP회복' : 'SP 回復',
-                '해명의힘' : '解明の力',
-                '해명의 힘' : '解明の力',
+                '해명의힘' : 'ステータス強化',
+                '해명의 힘' : 'ステータス強化',
                 '직책' : '職責',
                 '마이팰리스 평점' : 'マイパレス評価',
                 '마이팰리스' : 'マイパレス',
@@ -2791,8 +2791,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     content: 'Star indicates priority mind images that should be taken first if possible.'
                 },
                 'jp': {
-                    title: '心象 (LV 5)',
-                    content: '星印は可能であれば先に取るべき優先順位心象です。'
+                    title: 'イメジャリー (LV 5)',
+                    content: '星印は可能であれば先に取るべき優先順位イメジャリーです。'
                 }
             },
             'recommended-operation': {

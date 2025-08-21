@@ -779,7 +779,7 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Cherishment",
             "element": "패시브",
-            "description": "If another Wind Phantom Thief is in the team, Kotone Montagne·Swan's Wind damage increases by 133.0%. If another Ice Phantom Thief is in the team, Kotone Montagne·Swan's Ice damage increases by 33.0%."
+            "description": "If another Wind Phantom Thief is in the team, Kotone Montagne·Swan's Wind damage increases by 33.0%. If another Ice Phantom Thief is in the team, Kotone Montagne·Swan's Ice damage increases by 33.0%."
         },
         "passive2": {
             "name": "Yearning",

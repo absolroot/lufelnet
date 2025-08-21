@@ -56,6 +56,7 @@ class Navigation {
                 persona: 'Persona',
                 revelations: 'Revelations',
                 wonderweapon: 'Wonder Daggers',
+                tactic: 'Tactics',
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
                 tacticLibrary: 'Tactics Library',

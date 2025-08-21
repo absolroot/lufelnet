@@ -2,7 +2,6 @@
 .main-nav {
     width: 240px;
     background-color: #422e2e;
-    padding: 20px 0;
     flex-shrink: 0;
     position: fixed;
     overflow: hidden;
@@ -46,7 +45,7 @@
     gap: 10px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
     padding: 12px 24px;
     outline: none;
     user-select: none;
@@ -370,7 +369,7 @@
         flex-direction: row;
         justify-content: flex-start;
         gap: 16px;
-        margin-bottom: 0px;
+        margin: 0px;
     }
 
     .main-nav {
@@ -387,13 +386,15 @@
         -webkit-overflow-scrolling: touch;
         pointer-events: none;   /* 닫힌 상태엔 클릭 막기 */
         z-index: 1000;
+        padding-bottom: calc(24px + env(safe-area-inset-bottom));
+        scroll-padding-bottom: calc(24px + env(safe-area-inset-bottom)); /* 스크롤 앵커 대비 */
     }
     
     /* 배경 이미지 처리 수정 */
     .main-nav::after {
         position: absolute;     /* fixed → absolute */
-    bottom: 0; left: 0; right: 0;
-    width: 100%;
+        bottom: 0; left: 0; right: 0;
+        width: 100%;
     }
 
     .main-nav.active {
@@ -437,7 +438,6 @@
 /* language selector */
 .language-selector-container {
     margin-top: auto;
-    margin-bottom: 40px;
     padding: 15px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
@@ -446,6 +446,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     position: relative; /* 상대 위치 설정 */
     z-index: 1; /* 언어 선택기를 배경보다 위로 */
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
 }
 
 /* custom language selector */

@@ -74,7 +74,7 @@
 }
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .top-cards {
         grid-template-columns: 1fr;
     }
@@ -265,7 +265,7 @@ select:-moz-focusring {
 
 
 /* 모바일 대응을 위한 테이블 스타일 수정 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .navigation-path, .header-container, .filter-content, .top-cards{
         padding-left: 0px;
         padding-right: 0px;
@@ -442,7 +442,7 @@ select:-moz-focusring {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .note-column:not(:empty)::before {
         content: "💬 ";
     }
@@ -526,7 +526,7 @@ select:-moz-focusring {
 }
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .table-tabs {
         margin: 0;
         background-color: transparent;
@@ -591,7 +591,7 @@ select:-moz-focusring {
 }
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .penetrate-input-container {
         padding: 10px;
     }

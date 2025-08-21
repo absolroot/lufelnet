@@ -343,7 +343,7 @@ class DefenseCalc {
     }
 
     initializeMobileHeader() {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1200) {
             const headerContainer = document.createElement('div');
             headerContainer.className = 'mobile-table-header';
 
@@ -384,7 +384,7 @@ class DefenseCalc {
 
             // 화면 크기 변경 시 캐릭터 이름 업데이트
             window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1200) {
                     this.updateMobileCharNames();
                 }
             });
@@ -392,7 +392,7 @@ class DefenseCalc {
     }
 
     updateMobileCharNames() {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1200) {
             console.log('updateMobileCharNames');
             const rows = this.tableBody.querySelectorAll('tr');
             let lastValidCharName = '';

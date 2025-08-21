@@ -330,7 +330,7 @@ input[type="checkbox"]:hover {
 }
 
 /* 반응형 디자인 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .top-cards {
         flex-direction: column;
     }
@@ -881,7 +881,7 @@ input[type="checkbox"]:hover {
     color: #ffd700;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .damage-formula {
         flex-direction: column;
     }

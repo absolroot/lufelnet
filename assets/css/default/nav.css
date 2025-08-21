@@ -360,7 +360,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .mobile-header {
         display: block;
     }
@@ -437,7 +437,7 @@
 
 /* hide specific nav button in mobile */
 
-@media (max-width: 768px) {  
+@media (max-width: 1200px) {  
     /* Show the tier navigation item but hide the tier maker submenu item */
     .nav-item[data-nav="tier"] .nav-sub-item[data-nav="tier-maker"] {
         display: none;
@@ -546,7 +546,7 @@
 }
 
 /* mobile language selector */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .language-selector-container {
         margin-top: 20px;
         padding: 15px;

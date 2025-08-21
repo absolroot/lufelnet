@@ -323,7 +323,7 @@
 }
 
 /* 반응형 스타일 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .about-content {
         padding: 10px;
     }

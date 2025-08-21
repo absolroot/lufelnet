@@ -100,7 +100,7 @@ body {
 }
 
 /* 모바일 환경의 단순화된 배경 스타일 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .container {
         background: 
             linear-gradient(to bottom, rgba(83, 45, 45, 0.3), rgba(29, 26, 25, 0.3)),
@@ -136,7 +136,7 @@ body {
     max-width: 1200px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1440px) {
     .main-wrapper {
         left: 0;
     }
@@ -204,7 +204,7 @@ body {
     transform: translateX(120px);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .footer-container {
         transform: translateX(0px);
     }
@@ -458,7 +458,7 @@ input[type="checkbox"]:hover {
 }
 
 /* 모바일 반응형 스타일 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
 
     .main-wrapper {
         margin-left: 0;
@@ -601,7 +601,7 @@ input[type="checkbox"]:hover {
 }
 
 /* 모바일에서 기존 툴팁 스타일 제거 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .tooltip-text::before,
     .tooltip-text::after {
         display: none;

@@ -518,7 +518,7 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .position-tiers-container {
     /* Change to vertical mobile layout */
     display: block;
@@ -807,7 +807,7 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .help-text {
     margin: 10px 0;
     padding: 10px;
@@ -819,7 +819,7 @@ button {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .main-wrapper {
       width: calc(100% - 32px) !important;
       padding-top: 60px !important;
@@ -1086,7 +1086,7 @@ button {
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .tier-criteria-section {
     margin: 15px 8px;
     width: calc(100% - 16px);

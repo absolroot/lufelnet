@@ -83,7 +83,7 @@ img_md:
     font-size: 20px !important; 
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .compact-table td img, .compact-table th img {
       max-height: 14px !important;
     }

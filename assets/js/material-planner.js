@@ -1094,7 +1094,7 @@
             };
         }
         // 모바일 환경에서 로드 시 초기 값은 접힌 상태로
-        if(window.innerWidth < 768){
+        if(window.innerWidth < 1200){
             const grid = document.getElementById('summaryGrid');
             const collapse = document.getElementById('collapseSummary');
             if(collapse){

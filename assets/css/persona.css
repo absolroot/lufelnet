@@ -861,7 +861,7 @@ input, textarea {
 
 
 /* 모바일 화면 레이아웃 조정 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
 
     .navigation-path, .header-container, .filter-content, .persona-cards{
         padding-left: 0px;

@@ -237,7 +237,7 @@ class CriticalCalc {
         row.appendChild(noteCell);
 
         // 모바일용 추가 정보
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1200) {
             const mobileInfo = document.createElement('td');
             mobileInfo.className = 'mobile-info';
             mobileInfo.innerHTML = `
@@ -317,7 +317,7 @@ class CriticalCalc {
     }
 
     initializeMobileHeader() {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1200) {
             const headerContainer = document.createElement('div');
             headerContainer.className = 'mobile-table-header';
 
@@ -358,7 +358,7 @@ class CriticalCalc {
 
             // 화면 크기 변경 시 캐릭터 이름 업데이트
             window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1200) {
                     this.updateMobileCharNames();
                 }
             });
@@ -367,7 +367,7 @@ class CriticalCalc {
 
     updateMobileCharNames() {
         console.log('updateMobileCharNames called');
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1200) {
             console.log('mobile width detected:', window.innerWidth);
             // 버프 테이블 처리
             const processTable = (tableBody) => {

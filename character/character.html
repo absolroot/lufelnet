@@ -1378,7 +1378,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         setTimeout(() => {
             try { if (typeof fillOperationInfo === 'function') { fillOperationInfo(characterName); } } catch(e) { console.warn('[SAFE:fillOperationInfo-timeout]', e); }
             try {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1200) {
                     const operationSettings = document.querySelector('.operation-settings');
                     if (operationSettings) {
                         operationSettings.style.gridTemplateColumns = '1fr';
@@ -2887,7 +2887,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
 
 <style>
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1200px) {
         .post-item{
             width: calc(100% - 40px);
             display: flex;

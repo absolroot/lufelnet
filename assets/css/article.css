@@ -36,7 +36,7 @@
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
 
     .navigation-path, .header-container {
         padding-left: 0px;
@@ -201,7 +201,7 @@
 }
 
 /* 모바일 스타일 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .article-preview {
         flex-direction: column;
         gap: 1rem;
@@ -344,7 +344,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .article {
     padding: 15px;
   }

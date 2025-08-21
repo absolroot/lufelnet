@@ -399,7 +399,7 @@ img[src*="item-mind_stat2.png"] {
 } 
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .main-wrapper {
         box-sizing: border-box;
     }
@@ -588,7 +588,7 @@ img[src*="item-mind_stat2.png"] {
 }
 
 /* 모바일 비고 아이콘 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .note-column:not(:empty)::before {
         content: "💬 ";
     }

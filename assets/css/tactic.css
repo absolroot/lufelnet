@@ -14,7 +14,7 @@ body {
     -webkit-overflow-scrolling: auto;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .main-wrapper {
       width: calc(100% - 32px); 
     }
@@ -32,7 +32,7 @@ body {
     padding: 0px 0px 10px 0px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .hide-ui .header-container {
       gap: 0;
       margin-bottom: 16px;
@@ -90,7 +90,7 @@ body {
     height: 100%; /* 내용물 높이에 맞춤 */
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .card {
       padding: 16px 16px 20px 16px;
     }
@@ -545,7 +545,7 @@ body {
     height: 100px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .character-container {
       width: 80px;
       height: 80px;
@@ -562,7 +562,7 @@ body {
     box-shadow: 4px 4px 0px rgba(255, 0, 0, 0.7);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .character-img {
       width: 80px;
       height: 80px;
@@ -607,7 +607,7 @@ body {
             drop-shadow(0 0 1px rgb(0, 0, 0));
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .ritual-img {
       width: 40px;
       height: 40px;
@@ -812,7 +812,7 @@ body {
             drop-shadow(0 0 1px white);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .weapon-img {
       height: 80px;
     }
@@ -1600,7 +1600,7 @@ body {
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1200px) {
     .wonder-weapon-input ~ .clear-input,
     .wonder-persona-input ~ .clear-input {
         display: none !important;

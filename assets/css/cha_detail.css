@@ -985,7 +985,7 @@ h2{
 }
 
 /* mobile responsive */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
 
     .character-name{
         font-size: 24px;
@@ -1138,7 +1138,7 @@ h2{
 }
 
 /* mobile banner style */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .revelation-value.tooltip-text.mobile-banner[data-tooltip]::before {
         white-space: pre-line;
         width: 90%;
@@ -1249,7 +1249,7 @@ h2{
     gap: 8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .party-section {
         flex-direction: column;
         gap: 10px;
@@ -1382,7 +1382,7 @@ h2{
 }
 
 /* 모바일 반응형 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .persona-list {
         gap: 10px;
     }
@@ -1594,7 +1594,7 @@ h2{
     margin-top: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .review-content {
         font-size: 13px;
     }

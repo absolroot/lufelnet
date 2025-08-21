@@ -52,7 +52,7 @@
 }
 
 /* 모바일 화면 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .update-notification {
         top: 50%;
         left: 50%;

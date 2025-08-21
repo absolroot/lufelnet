@@ -27,7 +27,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .container {
         background: linear-gradient(to bottom, rgba(113, 0, 0, 0.3), rgba(34, 0, 0, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111;
         background-size: 100% 100%, 30px 30px, 30px 30px;

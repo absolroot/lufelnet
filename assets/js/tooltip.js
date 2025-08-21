@@ -153,7 +153,7 @@ function addTooltips() {
     tooltips.forEach(tooltip => {
         const viewportWidth = window.innerWidth;
         
-        if (viewportWidth > 768) {
+        if (viewportWidth > 1200) {
             // PC 환경에서는 마우스 진입 시에만 위치 계산
             tooltip.addEventListener('mouseenter', function() {
                 const range = document.createRange();

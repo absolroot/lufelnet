@@ -308,7 +308,7 @@ select:-moz-focusring {
 }
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .main-wrapper {
         box-sizing: border-box;
     }
@@ -596,7 +596,7 @@ img[src*="check-on.png"].checkbox-img {
 }
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .card-header {
         flex-direction: column;
         align-items: flex-start;
@@ -802,7 +802,7 @@ img[src*="check-on.png"] {
 }
 
 /* 모바일 대응 */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .table-tabs {
         margin: 0;
         background-color: transparent;

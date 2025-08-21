@@ -107,7 +107,7 @@ button {
   opacity: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .controls {
     grid-template-columns: repeat(2, 1fr);
     width: 100px;
@@ -452,7 +452,7 @@ button {
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .navigation-path, .header-container, .filter-content {
     padding-left: 0px;
     padding-right: 0px;

@@ -450,7 +450,7 @@ input, textarea {
     background: rgba(255, 255, 255, 0.3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .navigation-path, .header-container, .filter-content{
         padding-left: 0px;
         padding-right: 0px;
@@ -482,7 +482,7 @@ input, textarea {
     gap: 16px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .search-section {
         padding: 0px;
         width: 100%;

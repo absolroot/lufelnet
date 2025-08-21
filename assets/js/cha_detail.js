@@ -1173,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // 모바일 환경이거나 줄바꿈이 발생한 경우 1열로 변경
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1200) {
                 operationSettings.style.gridTemplateColumns = '1fr';
                 operationSettings.style.display = 'flex';
                 operationSettings.style.flexDirection = 'column';

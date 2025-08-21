@@ -89,7 +89,7 @@ const PAY_DATA = {
             amber: 1150,
             destiny: 3,
             destinyCoins: 3,
-            price: 25000,
+            price: 23000,
             maxCount: 99
         },
         {

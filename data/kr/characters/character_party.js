@@ -345,7 +345,7 @@ const recommendParty = {
         ]
     },
     "몽타뉴·백조":{
-        "weapon": ["태고의 역장", "메커니컬 심판자"],
+        "weapon": ["태고의 역장!", "메커니컬 심판자","설원의 침묵"],
         "persona": [
             {
                 type: "ATK",

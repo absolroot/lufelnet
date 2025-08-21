@@ -19,7 +19,7 @@ const recommendParty = {
         ]
     },
     "미유·여름": {
-        "weapon": ["빙하의 영겁!", "천상의 별"],
+        "weapon": ["설원의 침묵!", "천상의 별"],
         "persona": [
             {
                 type: "ATK",

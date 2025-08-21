@@ -683,7 +683,7 @@ const personaData = {
             name_jp: "迅速なる送還者 III",
             effects: [
                 "공격력이 29.1% 상승한다.",
-                "전투 시작 시 [한린] 5중첩을 획득한다. 아군이 페르소나 스킬을 사용할 때, 자신이 [한린] 1중첩을 획득하며, 최대 5중첩까지 가능하다. 추가 효과 발동 시 [예리한 한린] 1중첩을 획득하며, 최대 5중첩까지 가능하다. 자신이 적 대상에게 페르소나 스킬을 사용한 후, [한린]이 5중첩이면 [한린]과 [예리한 한린]을 모두 소모하고, 중첩 1개당 적이 받는 피해를 1.5% 증가시키며, 효과는 2턴 동안 지속된다."
+                "전투 시작 시 『차가운 비늘』 5중첩을 획득한다. 아군이 페르소나 스킬을 사용 시 자신은 『차가운 비늘』 1중첩을 획득한다 (5회 중첩 가능). 추가 효과 시전 시 『예리한 비늘』 1중첩을 획득한다 (5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때,『차가운 비늘』이 5중첩이면 『차가운 비늘』과 『예리한 비늘』을 모두 소모하고, 2턴 동안 중첩 1개당 적이 받는 피해를 1.5% 증가시킨다."
             ],
             effects_en: [
                 "Increases ATK by 29.1%. At the start of battle, gains 5 stacks of [Cold Scales]. When an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1.5% per stack for 2 turns."
@@ -694,10 +694,10 @@ const personaData = {
             priority: 1
         },
         uniqueSkill: {
-            name: "심연의 서늘함",
+            name: "한 줄기 냉기",
             name_en: "Chilling Depth",
             name_jp: "深淵の冷気",
-            effect: "모든 적에게 공격력 100.0%의 빙결 속성 피해를 준다. 2턴 동안 적이 받는 추가 효과 피해량을 8.0% 증가시키며, 받는 빙결 속성 피해를 8.0% 증가시킨다.",
+            effect: "적 전체에게 공격력 100.0%의 빙결 속성 대미지를 주고, 2턴 동안 적이 받는 추가 효과 대미지 증폭을 8.0% 증가시키며, 받는 빙결 속성 대미지가 8.0% 증가한다.",
             effect_en: "Deals 100.0% ATK Ice dmg to all foes. For 2 turns, increases all foes' additional dmg taken by 8.0%, and increases all foes' Ice dmg taken by 8.0%.",
             effect_jp: "敵全体に攻撃力100.0%の氷結属性ダメージを与える。2ターンの間、敵が受ける追加ダメージが8.0%増加、敵が受ける氷結属性ダメージが8.0%増加する。",
             priority: 1,

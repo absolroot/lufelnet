@@ -3,7 +3,7 @@
     letter-spacing: -0.02em;
 }
 
-html{ scrollbar-gutter: stable both-edges; } /* 초기 폭 변화 방지 */
+/* html{ scrollbar-gutter: stable both-edges; }*/ /* 초기 폭 변화 방지 */
 
 .adsbygoogle-noablate {
     right: 86px !important;

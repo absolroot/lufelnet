@@ -677,7 +677,7 @@ const enCharacterSkillsData = {
             "type":"단일치료",
             "sp": 22,
             "cool": 0,
-            "description": "Restore HP to 1 ally equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168, and increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 3 turns.\nAlso gain 3 Tenacity stacks, and gain additional Tenacity stacks for each elemental ailment on foes."
+            "description": "Restore HP to 1 ally equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168, and increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nAlso gain 3 Tenacity stacks, and gain additional Tenacity stacks for each elemental ailment on foes."
         },
         "skill3": {
             "name": "Nuclear Fury",

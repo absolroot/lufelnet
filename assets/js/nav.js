@@ -115,7 +115,7 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['home', 'character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
             en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
             jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
             cn: ['character', 'article', 'about']

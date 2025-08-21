@@ -89,14 +89,14 @@
 
 .nav-link img {
     margin-right: 10px;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
 }
 
-.nav-link span {
-    margin-left: 4px;
-    font-size: 15px;
+.nav-link span, .nav-main-item span {
+    margin-left: 6px;
+    font-size: 14px;
 }
 
 .nav-link:hover {
@@ -155,10 +155,7 @@
     margin-right: 10px;
 }
 
-.nav-main-item span {
-    margin-left: 4px;
-    font-size: 15px;
-}
+
 
 
 .has-submenu.active .nav-main-item {

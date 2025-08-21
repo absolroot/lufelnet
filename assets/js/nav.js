@@ -407,32 +407,21 @@ class Navigation {
         hamburgerBtn.addEventListener('click', () => {
             const nav = document.querySelector('.main-nav');
             const header = document.querySelector('.mobile-header');
+            
+            const willOpen = !hamburgerBtn.classList.contains('active');
+            
             hamburgerBtn.classList.toggle('active');
             nav.classList.toggle('active');
             header.classList.toggle('active');
 
+
+
             if (willOpen) {
-                // ① 오버레이 스크롤 위치 초기화 (iOS 사파리 대응)
+                // iOS에서 가끔 scrollTop=0이 먹기 전에 그려져서 두 번 처리
+                nav.style.webkitOverflowScrolling = 'auto';
                 nav.scrollTop = 0;
-            
-                // ② 바디 스크롤 락 (iOS 안전패턴)
-                const y = window.scrollY;
-                document.body.dataset._scrollY = y;
-                document.body.style.position = 'fixed';
-                document.body.style.top = `-${y}px`;
-                document.body.style.left = '0';
-                document.body.style.right = '0';
-                document.body.style.width = '100%';
-              } else {
-                // 바디 스크롤 원복
-                const y = parseInt(document.body.dataset._scrollY || '0', 10);
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.left = '';
-                document.body.style.right = '';
-                document.body.style.width = '';
-                delete document.body.dataset._scrollY;
-                window.scrollTo(0, y);
+                void nav.offsetHeight;                       // 강제 리플로우
+                nav.style.webkitOverflowScrolling = 'touch';
             }
         });
 

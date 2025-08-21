@@ -375,40 +375,30 @@
 
     .main-nav {
         position: fixed;
+        top: 0; right: 0; bottom: 0; left: auto; /* 높이 대신 bottom:0 */
         width: 100vw;
-        right: -100vw;
-        left: auto;
-        top: 0;  /* 명시적으로 top 위치 지정 */
-        transition: 0.3s ease;
-        z-index: 1000;
-        padding-top: 0px;
-        visibility: hidden;
-        opacity: 0;
-        margin: 0;
-        padding-left: 0;
-        padding-right: 0;
-        box-sizing: border-box;
-        height: 100dvh;
+        /* right:-100vw, visibility/opacity 제거 */
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        will-change: transform;
+        /* iOS 스크롤 안정화 */
         overflow-y: auto;
-        overscroll-behavior: contain; /* 스크롤 체인 방지 */
+        overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
+        pointer-events: none;   /* 닫힌 상태엔 클릭 막기 */
+        z-index: 1000;
     }
     
     /* 배경 이미지 처리 수정 */
     .main-nav::after {
-        position: fixed;
-        bottom: 0;
-        left: auto;
-        right: -100vw; /* 메뉴와 같이 이동하도록 설정 */
-        width: 100vw;
-        opacity: 0;
-        transition: all 0.3s ease;
+        position: absolute;     /* fixed → absolute */
+    bottom: 0; left: 0; right: 0;
+    width: 100%;
     }
 
     .main-nav.active {
-        right: 0;
-        visibility: visible;
-        opacity: 1;
+        transform: translateX(0);
+    pointer-events: auto;
     }
 
     .main-nav.active::after {

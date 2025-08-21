@@ -1,0 +1,213 @@
+/* Wonder Weapon Page Styles - based on revelations.css */
+
+.main-content {
+  background-color: transparent;
+  width: 100%;
+}
+
+/* One-column grid at all widths */
+.weapon-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  justify-content: left;
+  padding: 20px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  background: #3d3030;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover { filter: brightness(1.1); z-index: 1; }
+.card.active { border-color: rgba(255,255,255,0.5); filter: brightness(1.1); z-index: 2; }
+
+.img-container { display: flex;
+      justify-content: center;
+      width: 90px;}
+.weapon-img { max-height:180px; }
+
+@media (max-width: 1200px) {
+  .weapon-img { max-height:120px; }
+  .img-container { flex: 0 0 60px; }
+  .card { gap: 12px; padding-left: 10px; padding-right: 10px; }
+}
+
+.info-container { flex: 1; min-width: 200px; width: 100%; color: #fff; word-break: break-word; overflow-wrap: break-word; }
+
+.title-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.weapon-name { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.95); }
+.source { font-size: 12px; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.15); padding: 4.5px 10px; border-radius: 8px; }
+
+
+.effect-block { display: grid; grid-template-columns: 70px 1fr; 
+  gap: 8px; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 10px; }
+.effect-label { color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 500; }
+.effect-text { color: rgba(255,255,255,0.75); font-size: 13px; white-space: pre-line; }
+
+/* Accordion */
+.accordion {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.15);
+}
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border: none;
+}
+.accordion-header:hover { filter: brightness(1.1); }
+.accordion-content { display: none; padding: 10px 12px; color: rgba(255,255,255,0.85); font-size: 13px; }
+.accordion-content.open { display: block; }
+
+.user-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.user-tag { background: rgba(0,0,0,0.35); color: rgba(255,255,255,0.9); padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+
+/* Character link items inside accordion */
+.character-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.95);
+  padding: 0px 12px 0px 0px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-decoration: none;
+}
+.character-link:hover { filter: brightness(1.1); }
+.character-img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #222;
+}
+.character-name { line-height: 1; }
+
+/* Character icons (position/element) */
+.char-icons { display: inline-flex; gap: 4px; align-items: center; }
+.char-icon { width: 16px; height: 16px; object-fit: contain; }
+
+/* Utilities */
+.separator-line { padding: 0 20px; width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 90%, transparent); margin: 0 0 24px 0; box-sizing: border-box; }
+
+@media (max-width: 1200px) {
+  .navigation-path, .header-container, .weapon-cards { padding-left: 0; padding-right: 0; }
+  .header-container h1 { margin-bottom: 0; }
+}
+
+/* Effect levels and highlighting */
+/* .levels-block {grid-column: 1 / -1;}*/
+.levels-controls { display: flex; gap: 8px; margin-bottom: 12px; }
+.level-btn {
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  webkit-user-select: none;
+}
+.level-btn:focus { outline: none; }
+.level-btn.active {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+  .levels-block { margin-top: 4px }
+  .levels-controls { margin-bottom: 4px }
+}
+
+
+/* Mobile layout: image + title row on first line; effect + accordion below */
+@media (max-width: 768px) {
+  .card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    grid-auto-rows: auto;
+    grid-template-rows: auto 1fr;
+    align-items: start;
+  }
+  .img-container {
+    grid-column: 1;  grid-row: 1 / -1;
+  }
+  .source {padding: 6px 12px; width: fit-content; border-radius: 8px;}
+  .info-container { display: contents; }
+  .title-row {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+  .levels-block{
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+  }
+  .levels-controls{ flex-wrap: wrap; }
+  .level-btn { padding: 4px 12px; }
+  .effect-block, .accordion {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+  .effect-block { grid-template-columns: 1fr; padding: 10px 12px 12px 12px;}
+  .effect-label { display: none }
+}
+
+/* Sort controls */
+.sort-controls {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px 8px 20px;
+}
+
+@media (max-width: 1200px) {
+  .sort-controls {
+    padding: 0;
+  }
+}
+
+.sort-button {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.sort-button.active {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* Priority character */
+.character-link.priority .character-img {
+  border: 1px solid #000;
+  border-color: #ffcc00;
+  box-shadow: 0 0 0 1px rgba(255, 204, 0, 0.5);
+}
+
+
+.effect-text .num { color: #ffda82; font-weight: 400; }

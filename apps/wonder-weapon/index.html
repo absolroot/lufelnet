@@ -1,0 +1,534 @@
+---
+layout: default
+custom_css: [wonder-weapon]
+custom_js: []
+permalink: /wonder-weapon/
+redirect_from:
+  - /kr/wonder-weapon/
+  - /kr/wonder-weapon/index.html
+language: kr
+title: 원더 무기 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X의 원더 무기 정보
+alternate_urls:
+  en: /wonder-weapon/?lang=en
+  jp: /wonder-weapon/?lang=jp
+---
+
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/wonder-weapon/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/wonder-weapon/" />
+{% endif %}
+
+<div class="main-wrapper">
+  <div id="language-notice" class="language-notice" style="display: none;">
+    <p id="language-notice-text"></p>
+  </div>
+
+  <div class="navigation-path">
+    <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+    <span class="separator">/</span>
+    <span class="current-page" id="nav-current">원더 무기</span>
+  </div>
+
+  <div class="header-container">
+    <h1 id="page-title">원더 무기</h1>
+  </div>
+
+  <div class="separator-line"></div>
+
+  <div class="sort-controls">
+    <button id="sort-desc" class="sort-button active" type="button" aria-pressed="true">출시 순 ↓</button>
+    <button id="sort-asc" class="sort-button" type="button" aria-pressed="false">출시 순 ↑</button>
+  </div>
+
+  <!-- Cards -->
+  <div class="weapon-cards" id="weaponCards"></div>
+
+  <!-- 광고 -->
+  <div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-gc+3n+7a-ag-4h"
+      data-ad-client="ca-pub-5862324369257695"
+      data-ad-slot="5373524213"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<style>
+.responsive-padding { margin-top: 20px; padding: 0 0; }
+@media (max-width: 1200px) { .responsive-padding { padding: 0; } }
+</style>
+
+<script>
+  // No-op: do not delete data globals; they are provided by data files
+
+  // Load data files
+  async function loadDataFiles() {
+    return new Promise((resolve, reject) => {
+      // Remove any previous scripts to avoid duplication
+      document.querySelectorAll('script[src*="/data/kr/wonder/weapons.js"]').forEach(s => s.remove());
+      document.querySelectorAll('script[src*="/data/kr/characters/character_party.js"]').forEach(s => s.remove());
+      document.querySelectorAll('script[src*="/data/kr/characters/characters.js"]').forEach(s => s.remove());
+
+      const scripts = [
+        '/data/kr/wonder/weapons.js',
+        '/data/kr/characters/character_party.js',
+        '/data/kr/characters/characters.js',
+      ];
+
+      let loaded = 0;
+      scripts.forEach(src => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = () => {
+          loaded++;
+          if (loaded === scripts.length) {
+            resolve();
+          }
+        };
+        s.onerror = () => reject(new Error('Failed to load ' + src));
+        document.head.appendChild(s);
+      });
+    });
+  }
+
+  // i18n labels
+  const i18n = {
+    kr: {
+      language_notice: "",
+      nav_home: "홈",
+      nav_current: "원더 무기",
+      page_title: "원더 무기",
+      label_source: "획득처",
+      label_effect: "효과",
+      label_characters: "주요 괴도",
+      sort_release_desc: "출시 순 ↓",
+      sort_release_asc: "출시 순 ↑",
+      source_map: {
+        "Shop": "교환",
+        "Palace 1": "팰리스 1",
+        "Palace 2": "팰리스 2",
+        "Palace 3": "팰리스 3",
+        "Palace 3-2": "팰리스 3-2",
+        "Palace 4": "팰리스 4"
+      }
+    },
+    en: {
+      language_notice: "Please let us know if you find an accurate translation.\nIt may contain content that hasn't been released yet.",
+      nav_home: "Home",
+      nav_current: "Wonder Daggers",
+      page_title: "Wonder Daggers",
+      label_source: "Source",
+      label_effect: "Effect",
+      label_characters: "Characters",
+      sort_release_desc: "Release ↓",
+      sort_release_asc: "Release ↑",
+      source_map: {
+        "Shop": "Shop",
+        "Palace 1": "Palace 1",
+        "Palace 2": "Palace 2",
+        "Palace 3": "Palace 3",
+        "Palace 3-2": "Palace 3-2",
+        "Palace 4": "Palace 4"
+      }
+    },
+    jp: {
+      language_notice: "正確な翻訳が見つかった場合は、お知らせください。\nまだリリースされていないコンテンツが含まれている可能性があります。",
+      nav_home: "ホーム",
+      nav_current: "ワンダー武器",
+      page_title: "ワンダー武器",
+      label_source: "入手",
+      label_effect: "効果",
+      label_characters: "使用キャラ",
+      sort_release_desc: "発売順 ↓",
+      sort_release_asc: "発売順 ↑",
+      source_map: {
+        "Shop": "ショップ",
+        "Palace 1": "パレス1",
+        "Palace 2": "パレス2",
+        "Palace 3": "パレス3",
+        "Palace 3-2": "パレス3-2",
+        "Palace 4": "パレス4"
+      }
+    }
+  };
+
+  // SEO per language
+  function updateSEO() {
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const seo = {
+      kr: {
+        title: '원더 무기 - 페르소나5 더 팬텀 X 루페르넷',
+        description: '페르소나5 더 팬텀 X의 원더 무기 정보. 획득처, 효과, 사용 캐릭터를 확인하세요.'
+      },
+      en: {
+        title: 'Wonder Weapons - Persona 5: The Phantom X LufelNet',
+        description: 'Wonder weapon information for Persona 5: The Phantom X. See source, effect, and characters.'
+      },
+      jp: {
+        title: 'ワンダー武器 - ペルソナ5 ザ・ファントム X LufelNet',
+        description: 'P5Xのワンダー武器情報。入手方法・効果・使用キャラを確認。'
+      }
+    }[lang] || null;
+
+    if (!seo) return;
+    document.title = seo.title;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (metaDescription) metaDescription.setAttribute('content', seo.description);
+    if (ogTitle) ogTitle.setAttribute('content', seo.title);
+    if (ogDescription) ogDescription.setAttribute('content', seo.description);
+  }
+
+  // Update static labels per language
+  function updateStaticTexts() {
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const t = i18n[lang] || i18n.kr;
+
+    if (lang !== 'kr' && t.language_notice) {
+      const notice = document.getElementById('language-notice');
+      const noticeText = document.getElementById('language-notice-text');
+      if (notice && noticeText) {
+        noticeText.textContent = t.language_notice;
+        notice.style.display = 'block';
+      }
+    }
+
+    const navHome = document.getElementById('nav-home');
+    const navCurrent = document.getElementById('nav-current');
+    const pageTitle = document.getElementById('page-title');
+
+    if (navHome) navHome.textContent = t.nav_home;
+    if (navCurrent) navCurrent.textContent = t.nav_current;
+    if (pageTitle) pageTitle.textContent = t.page_title;
+
+    // sort buttons
+    const btnDesc = document.getElementById('sort-desc');
+    const btnAsc = document.getElementById('sort-asc');
+    if (btnDesc) btnDesc.textContent = (t.sort_release_desc || '출시 순 ↓');
+    if (btnAsc) btnAsc.textContent = (t.sort_release_asc || '출시 순 ↑');
+  }
+
+  function normWeaponName(name) {
+    if (!name) return '';
+    return String(name).replace(/!/g, '').trim();
+  }
+
+  function getLocalizedName(koreanName, lang) {
+    const data = (typeof matchWeapons !== 'undefined') && matchWeapons[koreanName];
+    if (!data) return koreanName;
+    if (lang === 'en' && data.name_en) return data.name_en;
+    if (lang === 'jp' && data.name_jp) return data.name_jp;
+    return koreanName;
+  }
+
+  function getLocalizedEffect(koreanName, lang) {
+    const data = (typeof matchWeapons !== 'undefined') && matchWeapons[koreanName];
+    if (!data) return '';
+    if (lang === 'en' && data.effect_en) return data.effect_en;
+    if (lang === 'jp' && data.effect_jp) return data.effect_jp;
+    return data.effect || '';
+  }
+
+  function getLocalizedSource(koreanName, lang) {
+    const data = (typeof matchWeapons !== 'undefined') && matchWeapons[koreanName];
+    const raw = (data && data.where_to_get) ? data.where_to_get : '';
+    const t = i18n[lang] || i18n.kr;
+    const map = t.source_map || {};
+    // Map only known keys; otherwise show raw
+    return map[raw] || raw;
+  }
+
+  // Character helpers
+  function getCharacterLabel(koreanCharName, lang) {
+    const c = (typeof characterData !== 'undefined') ? characterData[koreanCharName] : null;
+    if (!c) return koreanCharName;
+    if (lang === 'en' && c.codename) return c.codename;
+    if (lang === 'jp' && c.name_jp) return c.name_jp;
+    return koreanCharName; // default KR label
+  }
+
+  function isPriorityUser(koreanCharName, koreanWeaponName) {
+    if (typeof recommendParty === 'undefined') return false;
+    const cfg = recommendParty[koreanCharName];
+    if (!cfg || !Array.isArray(cfg.weapon)) return false;
+    const target = normWeaponName(koreanWeaponName);
+    return cfg.weapon.some(w => normWeaponName(w) === target && /!/.test(w));
+  }
+
+  // Sorting state
+  let sortOrder = 'desc'; // default: latest first
+
+  function getSortedWeaponKeys() {
+    const keys = (typeof matchWeapons !== 'undefined') ? Object.keys(matchWeapons) : [];
+    const arr = keys.map(k => {
+      const raw = matchWeapons[k] ? matchWeapons[k].order : 0;
+      const num = Number(raw);
+      return { key: k, order: Number.isFinite(num) ? num : 0 };
+    });
+    arr.sort((a, b) => sortOrder === 'asc' ? (a.order - b.order) : (b.order - a.order));
+    return arr.map(x => x.key);
+  }
+
+  function findUsersOfWeapon(koreanName) {
+    const users = [];
+    if (typeof recommendParty === 'undefined') return users;
+
+    const target = normWeaponName(koreanName);
+    Object.entries(recommendParty).forEach(([charName, cfg]) => {
+      if (!cfg || !Array.isArray(cfg.weapon)) return;
+      const has = cfg.weapon.some(w => normWeaponName(w) === target);
+      if (has) users.push(charName);
+    });
+    return users;
+  }
+
+  function renderCards() {
+    const cards = document.getElementById('weaponCards');
+    cards.innerHTML = '';
+
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const t = i18n[lang] || i18n.kr;
+
+    // Build sorted list by weapon order
+    const list = getSortedWeaponKeys();
+
+    list.forEach((krName) => {
+      const data = (typeof matchWeapons !== 'undefined') ? matchWeapons[krName] : null;
+      const displayName = getLocalizedName(krName, lang);
+      const effectText = getLocalizedEffect(krName, lang);
+      const sourceText = getLocalizedSource(krName, lang);
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.name = krName;
+
+      const imgContainer = document.createElement('div');
+      imgContainer.className = 'img-container';
+
+      const img = document.createElement('img');
+      img.className = 'weapon-img';
+      img.src = `{{ site.baseurl }}/assets/img/wonder-weapon/${krName}.webp`;
+      img.alt = displayName;
+      img.loading = 'lazy';
+      imgContainer.appendChild(img);
+
+      const info = document.createElement('div');
+      info.className = 'info-container';
+
+      const titleRow = document.createElement('div');
+      titleRow.className = 'title-row';
+      const title = document.createElement('div');
+      title.className = 'weapon-name';
+      title.textContent = displayName;
+      const source = document.createElement('div');
+      source.className = 'source';
+      source.textContent = `${t.label_source}: ${sourceText}`;
+      titleRow.appendChild(title);
+      titleRow.appendChild(source);
+
+      // Effect: support A0..A6 switching when text contains 7-split values
+      const levelBlock = document.createElement('div');
+      levelBlock.className = 'levels-block';
+      const effectBlock = document.createElement('div');
+      effectBlock.className = 'effect-block';
+      const effectLabel = document.createElement('div');
+      effectLabel.className = 'effect-label';
+      effectLabel.textContent = t.label_effect;
+      const effectBody = document.createElement('div');
+      effectBody.className = 'effect-text';
+
+      // Helpers for effects
+      const sevenSplitTest = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/; // no 'g' for test
+      const sevenSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/g; // 'g' for replace
+      function hasSevenSplit(s) { return sevenSplitTest.test(s); }
+      function renderEffectHTML(src, idx) {
+        // Replace 7-split sequences by selected index
+        const replaced = src.replace(sevenSplitReplace, (match) => {
+          const parts = match.split('/').map(x => x.trim());
+          return parts[Math.min(Math.max(idx, 0), 6)] || parts[0];
+        });
+        // Highlight numbers
+        const numberRegex = /(\d+(?:\.\d+)?%?)/g;
+        const safe = replaced.replace(numberRegex, '<span class="num">$1<\/span>');
+        return safe;
+      }
+
+      let currentLevel = 6;
+      const needsLevels = hasSevenSplit(effectText || '');
+      if (needsLevels) {
+        const levels = document.createElement('div');
+        levels.className = 'levels-controls';
+        for (let i = 0; i < 7; i++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'level-btn' + (i === currentLevel ? ' active' : '');
+          btn.textContent = `A${i}`;
+          btn.setAttribute('aria-pressed', i === currentLevel ? 'true' : 'false');
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentLevel = i;
+            levels.querySelectorAll('.level-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            effectBody.innerHTML = renderEffectHTML(effectText || '', currentLevel);
+          });
+          levels.appendChild(btn);
+        }
+        levelBlock.appendChild(levels);
+      }
+      effectBody.innerHTML = renderEffectHTML(effectText || '', currentLevel);
+      effectBlock.appendChild(effectLabel);
+      effectBlock.appendChild(effectBody);
+
+      // Accordion: Characters
+      const accordion = document.createElement('div');
+      accordion.className = 'accordion';
+      const header = document.createElement('div');
+      header.className = 'accordion-header';
+      header.setAttribute('aria-expanded', 'false');
+      header.innerHTML = `<span>${t.label_characters}</span><span>+</span>`;
+      const content = document.createElement('div');
+      content.className = 'accordion-content';
+
+      const users = findUsersOfWeapon(krName);
+      if (users.length) {
+        const grid = document.createElement('div');
+        grid.className = 'user-list';
+        // Sort users so priority users (with '!') appear first
+        const sortedUsers = users.slice().sort((a, b) => {
+          const pa = isPriorityUser(a, krName) ? 1 : 0;
+          const pb = isPriorityUser(b, krName) ? 1 : 0;
+          return pb - pa; // true first
+        });
+        sortedUsers.forEach(u => {
+          const a = document.createElement('a');
+          a.className = 'character-link' + (isPriorityUser(u, krName) ? ' priority' : '');
+          a.href = `/character.html?name=${encodeURIComponent(u)}`;
+
+          if(u==='원더'){
+            // href 삭제
+            a.removeAttribute('href');
+          }
+
+          const cimg = document.createElement('img');
+          cimg.className = 'character-img';
+          cimg.src = `{{ site.baseurl }}/assets/img/tier/${u}.webp`;
+          cimg.alt = u;
+          cimg.loading = 'lazy';
+          cimg.onerror = function() { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
+
+          // Icons for position and element
+          const icons = document.createElement('span');
+          icons.className = 'char-icons';
+          const cdata = (typeof characterData !== 'undefined') ? characterData[u] : null;
+          const pos = cdata && cdata.position ? cdata.position : '';
+          const ele = cdata && cdata.element ? cdata.element : '';
+          if (pos) {
+            const pi = document.createElement('img');
+            pi.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${pos}.png`;
+            pi.alt = pos;
+            pi.loading = 'lazy';
+            pi.className = 'char-icon';
+            icons.appendChild(pi);
+          }
+          if (ele) {
+            const ei = document.createElement('img');
+            ei.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${ele}.png`;
+            ei.alt = ele;
+            ei.loading = 'lazy';
+            ei.className = 'char-icon';
+            icons.appendChild(ei);
+          }
+
+          const label = document.createElement('span');
+          label.className = 'character-name';
+          label.textContent = getCharacterLabel(u, lang);
+
+          a.appendChild(cimg);
+          a.appendChild(icons);
+          a.appendChild(label);
+          grid.appendChild(a);
+        });
+        content.appendChild(grid);
+      } else {
+        content.textContent = '-';
+      }
+
+      // Expand/collapse by clicking the card (not links/buttons)
+      card.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target.closest('a') || target.closest('button') || target.closest('.level-btn')) return; // ignore interactive elements
+        const isOpen = content.classList.toggle('open');
+        header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        header.lastElementChild.textContent = isOpen ? '−' : '+';
+        card.classList.toggle('active', isOpen);
+      });
+
+      accordion.appendChild(header);
+      accordion.appendChild(content);
+
+      info.appendChild(titleRow);
+      info.appendChild(levelBlock);
+      info.appendChild(effectBlock);
+      info.appendChild(accordion);
+
+      card.appendChild(imgContainer);
+      card.appendChild(info);
+      cards.appendChild(card);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+      if (typeof Navigation !== 'undefined') {
+        Navigation.load('wonder-weapon', 1);
+      }
+      if (typeof VersionChecker !== 'undefined') {
+        VersionChecker.check();
+      }
+
+      updateSEO();
+      await loadDataFiles();
+      updateStaticTexts();
+      // Sort controls events
+      const btnDesc = document.getElementById('sort-desc');
+      const btnAsc = document.getElementById('sort-asc');
+      if (btnDesc && btnAsc) {
+        btnDesc.addEventListener('click', () => {
+          sortOrder = 'desc';
+          btnDesc.classList.add('active');
+          btnDesc.setAttribute('aria-pressed', 'true');
+          btnAsc.classList.remove('active');
+          btnAsc.setAttribute('aria-pressed', 'false');
+          renderCards();
+        });
+        btnAsc.addEventListener('click', () => {
+          sortOrder = 'asc';
+          btnAsc.classList.add('active');
+          btnAsc.setAttribute('aria-pressed', 'true');
+          btnDesc.classList.remove('active');
+          btnDesc.setAttribute('aria-pressed', 'false');
+          renderCards();
+        });
+      }
+
+      renderCards();
+    } catch (e) {
+      console.error(e);
+      const wrapper = document.querySelector('.main-wrapper');
+      const div = document.createElement('div');
+      div.className = 'error-message';
+      div.textContent = '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+      wrapper.prepend(div);
+    }
+  });
+</script>

@@ -1,5 +1,6 @@
 const recommendParty = {
     "원더": {
+        "weapon": ["야수의 이빨!", "하이브 가드!", "7일의 불꽃!"],
         "persona": [
             {
                 type: "",
@@ -19,7 +20,7 @@ const recommendParty = {
         ]
     },
     "미유·여름": {
-        "weapon": ["설원의 침묵!", "천상의 별"],
+        "weapon": ["설원의 침묵!"],
         "persona": [
             {
                 type: "ATK",
@@ -53,7 +54,7 @@ const recommendParty = {
         ]
     },
     "사나다": {
-        "weapon": ["마그네틱 스톰!", "메커니컬 심판자", "천상의 별"],
+        "weapon": ["마그네틱 스톰!"],
         "persona": [
             {
                 type: "ATK",
@@ -93,7 +94,7 @@ const recommendParty = {
         ]
     },
     "이치고": {
-        "weapon": ["망령의 저주!", "태고의 역장", "천상의 별", "메커니컬 심판자"],
+        "weapon": ["망령의 저주!", "태고의 역장", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -258,7 +259,7 @@ const recommendParty = {
         ]
     },
     "카스미": {
-        "weapon": ["태고의 역장", "크리스탈 트레저", "메커니컬 심판자"],
+        "weapon": ["태고의 역장!", "크리스탈 트레저", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -387,7 +388,7 @@ const recommendParty = {
         ]
     },
     "모토하·여름": {
-        "weapon": ["크리스탈 트레저", "메커니컬 심판자", "천상의 별"],
+        "weapon": ["크리스탈 트레저!", "메커니컬 심판자", "천상의 별"],
         "persona": [
             {
                 type: "ATK",
@@ -424,7 +425,7 @@ const recommendParty = {
         ]
     },
     "키라": {
-        "weapon": ["망자의 눈", "메커니컬 심판자"],
+        "weapon": ["망자의 눈!", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -507,7 +508,7 @@ const recommendParty = {
         ]
     },
     "유스케": {
-        "weapon": ["메아리의 절규", "메커니컬 심판자", "천상의 별"],
+        "weapon": ["메아리의 절규!", "설원의 침묵!", "메커니컬 심판자", "천상의 별"],
         "persona": [
             {
                 type: "CRITICAL",
@@ -546,7 +547,7 @@ const recommendParty = {
         ] 
     },
     "유이 YUI": {
-        "weapon": ["태고의 역장","메커니컬 심판자","7일의 불꽃"],
+        "weapon": ["마그네틱 스톰!","태고의 역장","메커니컬 심판자"],
         "persona": [
             {
                 type: "REDUCE DEF",
@@ -586,7 +587,7 @@ const recommendParty = {
         ]
     },
     "렌": {
-        "weapon": ["망령의 저주", "천상의 별","메커니컬 심판자","7일의 불꽃"],
+        "weapon": ["망령의 저주!", "천상의 별","메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -638,7 +639,7 @@ const recommendParty = {
         ]
     },
     "안": {
-        "weapon": ["작열의 연옥", "천상의 별", "메커니컬 심판자", "7일의 불꽃"],
+        "weapon": ["작열의 연옥!", "천상의 별", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -684,7 +685,7 @@ const recommendParty = {
         ]
     },
     "류지": {
-        "weapon": ["망자의 눈", "메커니컬 심판자", "7일의 불꽃"],
+        "weapon": ["망자의 눈", "메커니컬 심판자"],
         "persona": [
             {
                 type: "ATK",
@@ -708,7 +709,7 @@ const recommendParty = {
         ]
     },
     "토시야": {
-        "weapon": ["메커니컬 심판자"],
+        "weapon": ["메커니컬 심판자!"],
         "persona": [
             {
                 type: "ATK",

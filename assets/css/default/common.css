@@ -706,13 +706,19 @@ html {
 /* 언어 안내 메시지 스타일 */
 .language-notice {
     background: rgba(255, 193, 7, 0.1);
-    border: 1px solid rgba(255, 193, 7, 0.3);
+    border: 1px solid rgba(255, 193, 7, 0.1);
     border-radius: 8px;
     padding: 12px 16px;
-    margin: 16px 0;
+    margin: 16px 20px;
     color: #856404;
     font-size: 14px;
     text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .language-notice {
+        margin: 16px 0;
+    }
 }
 
 .language-notice p {

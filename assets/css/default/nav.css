@@ -388,8 +388,10 @@
         padding-left: 0;
         padding-right: 0;
         box-sizing: border-box;
-        height: 100vh;
+        height: 100dvh;
         overflow-y: auto;
+        overscroll-behavior: contain; /* 스크롤 체인 방지 */
+        -webkit-overflow-scrolling: touch;
     }
     
     /* 배경 이미지 처리 수정 */

@@ -410,6 +410,30 @@ class Navigation {
             hamburgerBtn.classList.toggle('active');
             nav.classList.toggle('active');
             header.classList.toggle('active');
+
+            if (willOpen) {
+                // ① 오버레이 스크롤 위치 초기화 (iOS 사파리 대응)
+                nav.scrollTop = 0;
+            
+                // ② 바디 스크롤 락 (iOS 안전패턴)
+                const y = window.scrollY;
+                document.body.dataset._scrollY = y;
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${y}px`;
+                document.body.style.left = '0';
+                document.body.style.right = '0';
+                document.body.style.width = '100%';
+              } else {
+                // 바디 스크롤 원복
+                const y = parseInt(document.body.dataset._scrollY || '0', 10);
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.left = '';
+                document.body.style.right = '';
+                document.body.style.width = '';
+                delete document.body.dataset._scrollY;
+                window.scrollTo(0, y);
+            }
         });
 
         // 모바일에서 메뉴 아이템 클릭시 메뉴 닫기

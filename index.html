@@ -249,7 +249,7 @@ alternate_urls:
 </div>
 
 <!-- iframe -->
-<iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe>
+<!-- <iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe> -->
 
     <script>
     // 다국어 데이터 로드
@@ -951,6 +951,7 @@ alternate_urls:
             console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
         }, 100);
 
+        /*
         const musicPlayer = document.getElementById('music-player');
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
@@ -983,7 +984,7 @@ alternate_urls:
         // Save current state before page unload
         window.addEventListener('beforeunload', () => {
             sessionStorage.setItem('musicState', isPlaying ? 'playing' : 'paused');
-        });
+        });*/
     });
 
     // Load update history

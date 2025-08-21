@@ -120,7 +120,7 @@
         const tmp = {};
         new Function('out', `${res}; out.characterList = (typeof characterList!=='undefined')?characterList:[]; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(tmp);
         const krBox = {};
-        if(krRes) new Function('out', `${krRes}; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(krBox);
+        if(krRes) new Function('out', `${krRes}; out.characterList = (typeof characterList!=='undefined')?characterList:[]; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(krBox);
         STATE.characterList = tmp.characterList || [];
         // 캐릭터 메타 병합: 키별로 KR 메타가 우선(특히 name_en/name_jp), 언어별 메타의 필드가 있으면 보조로 유지
         const merged = { ...(tmp.characterData||{}) };
@@ -130,6 +130,8 @@
             merged[k] = { ...(merged[k]||{}), ...(krMap[k]||{}) };
         }
         STATE.characterData = merged;
+        // KR 전용 캐릭터 리스트(특히 support_party)를 보관
+        STATE.krCharacterList = krBox.characterList || null;
     }
 
     // 모달 유틸
@@ -247,9 +249,9 @@
         title.textContent = `${displayName}`;
         // 초기화 값 유지(기본 채움)
         openModal('characterSetupModal');
-        // 지원 파티 여부 판단 및 현재 모달 상태 플래그 저장
+        // 지원 파티 여부 판단 및 현재 모달 상태 플래그 저장 (KR 리스트의 support_party 기준)
         const isSupport = (()=>{
-            const sp = (STATE.characterList?.supportParty||[]).map(resolveCharacterKey);
+            const sp = (STATE.krCharacterList?.supportParty||[]).map(resolveCharacterKey);
             return sp.includes(name);
         })();
         STATE._currentIsSupport = !!isSupport;

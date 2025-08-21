@@ -247,10 +247,21 @@
         title.textContent = `${displayName}`;
         // 초기화 값 유지(기본 채움)
         openModal('characterSetupModal');
+        // 지원 파티 여부 판단 및 현재 모달 상태 플래그 저장
+        const isSupport = (()=>{
+            const sp = (STATE.characterList?.supportParty||[]).map(resolveCharacterKey);
+            return sp.includes(name);
+        })();
+        STATE._currentIsSupport = !!isSupport;
         // 저장 핸들러 바인딩
         const saveBtn = document.getElementById('savePlanBtn');
         saveBtn.onclick = ()=>{
             const inputs = collectInputs();
+            // 지원 파티는 S4를 1로 고정
+            if(STATE._currentIsSupport){
+                inputs.s4From = 1;
+                inputs.s4To = 1;
+            }
             const materials = estimateMaterials(inputs, name); // 임시 계산 (백데이터 기반)
             if(editingId){
                 // 기존 플랜 업데이트
@@ -283,7 +294,12 @@
                 setVal('s1From',i.s1From); setVal('s1To',i.s1To);
                 setVal('s2From',i.s2From); setVal('s2To',i.s2To);
                 setVal('s3From',i.s3From); setVal('s3To',i.s3To);
-                setVal('s4From',i.s4From); setVal('s4To',i.s4To);
+                // 지원 파티일 경우 S4는 1로 강제
+                if(STATE._currentIsSupport){
+                    setVal('s4From',1); setVal('s4To',1);
+                }else{
+                    setVal('s4From',i.s4From); setVal('s4To',i.s4To);
+                }
                 setVal('mindStat1From',i.mindStat1From); setVal('mindStat1To',i.mindStat1To);
                 setVal('mindStat2From',i.mindStat2From); setVal('mindStat2To',i.mindStat2To);
                 setVal('mindSkill1From',i.mindSkill1From); setVal('mindSkill1To',i.mindSkill1To);
@@ -308,6 +324,32 @@
         }
         // 슬라이더 부착
         attachSliders();
+        // 지원 파티일 경우 S4 입력/슬라이더를 잠금 및 1로 고정, 아니면 정상화
+        if(STATE._currentIsSupport){
+            const f = document.getElementById('s4From');
+            const t = document.getElementById('s4To');
+            if(f) { f.value = '1'; f.setAttribute('max','1'); f.setAttribute('min','1'); f.disabled = true; }
+            if(t) { t.value = '1'; t.setAttribute('max','1'); t.setAttribute('min','1'); t.disabled = true; }
+            const row = f ? f.closest('.setting-row') : null;
+            if(row){
+                const sliders = row.querySelectorAll('.dual-slider-row input[type="range"]');
+                sliders.forEach(sl=>{ sl.min='1'; sl.max='1'; sl.value='1'; sl.disabled=true; });
+            }
+            //skill-list 클래스의 마지막 setting-row는 display none으로 숨김
+            const hlRow = document.querySelector('.skill-list .setting-row:last-child');
+            if(hlRow){ hlRow.style.display = 'none'; }
+        }else{
+            // 일반 파티: S4 입력과 슬라이더를 기본(1~10)으로 활성화
+            const f = document.getElementById('s4From');
+            const t = document.getElementById('s4To');
+            if(f) { f.removeAttribute('disabled'); f.setAttribute('min','1'); f.setAttribute('max','10'); }
+            if(t) { t.removeAttribute('disabled'); t.setAttribute('min','1'); t.setAttribute('max','10'); }
+            const row = f ? f.closest('.setting-row') : null;
+            if(row){
+                const sliders = row.querySelectorAll('.dual-slider-row input[type="range"]');
+                sliders.forEach(sl=>{ sl.disabled=false; sl.min='1'; sl.max='10'; });
+            }
+        }
     }
 
     function renderMindBaseGrid(){
@@ -394,10 +436,17 @@
             sliderRow.appendChild(slL); sliderRow.appendChild(slR);
 
             // 동기화
-            slL.addEventListener('input',()=>{ from.value=slL.value; });
-            slR.addEventListener('input',()=>{ to.value=slR.value; });
-            from.addEventListener('change',()=>{ slL.value=from.value; });
-            to.addEventListener('change',()=>{ slR.value=to.value; });
+            const normalize = ()=>{
+                const fv = Number(from.value);
+                let tv = Number(to.value);
+                if(tv < fv){ tv = fv; to.value = String(tv); slR.value = String(tv); }
+            };
+            slL.addEventListener('input',()=>{ from.value=slL.value; normalize(); });
+            slR.addEventListener('input',()=>{ to.value=slR.value; normalize(); });
+            from.addEventListener('input',()=>{ slL.value=from.value; normalize(); });
+            from.addEventListener('change',()=>{ slL.value=from.value; normalize(); });
+            to.addEventListener('input',()=>{ slR.value=to.value; normalize(); });
+            to.addEventListener('change',()=>{ slR.value=to.value; normalize(); });
 
             // 기존 행 정리: 라벨 제거, 새 구조 삽입
             row.innerHTML='';
@@ -410,7 +459,9 @@
         makeDual(getRowByInput('s1From'), 's1From','s1To', 1, 10);
         makeDual(getRowByInput('s2From'), 's2From','s2To', 1, 10);
         makeDual(getRowByInput('s3From'), 's3From','s3To', 1, 10);
-        makeDual(getRowByInput('s4From'), 's4From','s4To', 1, 10);
+        // S4: 지원 파티면 최대 1로 제한
+        const s4Max = STATE._currentIsSupport ? 1 : 10;
+        makeDual(getRowByInput('s4From'), 's4From','s4To', 1, s4Max);
         // 심상 행들
         makeDual(getRowByInput('mindStat1From'), 'mindStat1From','mindStat1To', 0, 5);
         makeDual(getRowByInput('mindStat2From'), 'mindStat2From','mindStat2To', 0, 5);

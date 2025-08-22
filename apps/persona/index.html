@@ -292,6 +292,7 @@ alternate_urls:
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- 카드 리스트 위에 직접 삽입 -->
@@ -453,18 +454,6 @@ alternate_urls:
             display: none;
         }
     </style>
-    <!-- 
-    <div class="ad-container" style="width: calc(100% - 40px); margin: 20px 0 10px 0; padding: 0px 20px; max-height: 240px; overflow: hidden; border-radius: 10px;">
-      <ins class="adsbygoogle"
-           style="display:block; border-radius: 10px;"
-           data-ad-format="fluid"
-           data-ad-layout-key="-er+5f+66-dn+4y"
-           data-ad-client="ca-pub-5862324369257695"
-           data-ad-slot="6110222512"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div> -->
 
     <!-- Persona card container -->
     <div class="persona-cards" id="personaCards">
@@ -794,8 +783,20 @@ alternate_urls:
             elementIcon.loading = 'lazy';
             elementIcon.decoding = 'async';
 
-            
             positionContainer.appendChild(positionIcon);
+            
+            // Wild Emblem
+            if(personaData[personaName].wild_emblem_rainbow){
+                const wildEmblem = document.createElement('img');
+                wildEmblem.src = `{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png`;
+                wildEmblem.alt = "wild emblem";
+                wildEmblem.className = 'wild-emblem';
+                wildEmblem.loading = 'lazy';
+                wildEmblem.decoding = 'async';
+                // attach to card so it can be absolutely positioned at top-right via CSS
+                card.appendChild(wildEmblem);
+            }
+
             
             // Final assembly
             card.appendChild(cardBg);
@@ -843,6 +844,11 @@ alternate_urls:
             const nameCaption = document.createElement('div');
             nameCaption.className = 'persona-name';
             nameCaption.textContent = displayName;
+
+            // 만약 persona_best 값이 true 일경우 nameCaption에 color 적용
+            if(personaData[personaName].best_persona){
+                nameCaption.style.color = 'rgb(255 109 122)';
+            }
             cardSection.appendChild(nameCaption);
 
             // Name and grade
@@ -864,6 +870,13 @@ alternate_urls:
                 headerInfo.innerHTML = `
                 <h2>${displayName}</h2>
                 <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
+            `;
+            }
+
+            // event -> EVENT 텍스트 추가
+            if(personaData[personaName].event){
+                headerInfo.innerHTML += `
+                <div class="persona-event-text" style="color: rgb(236, 218, 129); font-size: 10px; line-height: 1; margin: 1px 0px 0px 0px;">EVENT</div>
             `;
             }
 

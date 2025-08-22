@@ -6,6 +6,7 @@ const personaData = {
         star: "5",
         position: "반항",
         element: "총격",
+        best_persona: true,
         instinct: {
             name: "잔당의 수확 III",
             name_en: "Reaper III",
@@ -47,6 +48,7 @@ const personaData = {
             {name : "리벨리온", priority: 3},
             {name : "어드바이스", priority: 3},
             {name : "타루카쟈", priority: 2},
+            {name : "치료 촉진", priority: 1},
             {name : "대미지 면역", priority: 0},
             {name : "방어 강화", priority: 0},
        ],
@@ -61,6 +63,7 @@ const personaData = {
         star: "4",
         position: "우월",
         element: "염동",
+        best_persona: true,
         instinct: {
             name: "술취한 카니발 III",
             name_en: "Druken Revelry III",
@@ -98,13 +101,15 @@ const personaData = {
              {name : "무한 알고리즘", priority: 3},
              {name : "리벨리온", priority: 3},
              {name : "타루카쟈", priority: 3},
-             {name : "라쿠카쟈", priority: 2},
+             {name : "라쿠카쟈", priority: 1},
+             {name : "마하타루카 오토", priority: 1 },
+             {name : "치료 촉진", priority: 1},
              {name : "메디아라한", priority: 1},
              {name : "치료 강화", priority: 1},
              {name : "대미지 면역", priority: 0},
              {name : "방어 강화", priority: 0},
         ],
-        comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 무한 알고리즘은 과금 이벤트를 통해 배포된 스킬 카드.",
+        comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 본능을 통해 크리티컬 확률을 확보하고 해명 괴도를 통해 추가로 받으므로 리벨리온을 위한 별도 어드바이스 패시브가 필요하지 않다.",
         comment_en: "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
         comment_jp: "メディアラハンによる治療にも本能CRT倍率30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。"
     },
@@ -116,6 +121,7 @@ const personaData = {
         star: "5",
         position: "반항",
         element: "질풍",
+        best_persona: true,
         instinct: {
             name: "중생에 내리는 은혜 III",
             name_en: "Blessing to All III",
@@ -167,6 +173,62 @@ const personaData = {
         comment_en: "Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Winded.",
         comment_jp: "マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
     },
+    "도미니온": {
+        name_en: "Dominion",
+        name_jp: "ドミニオン",
+        grade: "7",
+        star: "5",
+        position: "우월",
+        element: "축복",
+        best_persona: true,
+        instinct: {
+            name: "천사의 호령 III",
+            name_en: "Angel's Order III",
+            name_jp: "天使の号令 III",
+            effects: [
+                "공격력이 29.1% 증가한다.",
+                "동료를 목표로 스킬 시전 후 『호령』을 2중첩 획득한다",
+                "동료가 페르소나 스킬을 사용해 대미지를 줄 시, 『호령』을 1중첩 소모해 1턴 동안 주는 대미지가 15%, 공격력이 6.4% 증가한다."
+            ],
+            effects_en: [
+                "Increases ATK by 29.1%.",
+                "Gains 2 [Order] when using a skill on allies.",
+                "When allies deals damage with a skill, consume 1 stack of [Order] to increase their DMG Dealt by 15% and ATK by 6.4% for 1 turn."
+            ],
+            effects_jp: [
+                "攻撃力が29.1％上昇。",
+                "味方にスキルを使用後、「号令」を2つ獲得。味方がスキルでダメージを与えた時に「号令」を一つ消費して、1ターンの間与えるダメージが15％、攻撃力が6.4％上昇。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "응집",
+            name_en: "Cohesion",
+            name_jp: "凝結",
+            effect: "모든 동료의 공격력이 15% 증가하고, 자신의 공격력 500마다 1.25%가 추가 증가한다. 상한은 10%이며 효과는 2턴 동안 지속된다. 또한 스킬의 메인 목표가 주는 대미지가 8% 추가 증가하고, 자신의 공격력 500마다 1% 추가 증가한다. 상한은 8%이며 효과는 1턴 동안 지속된다.",
+            effect_en: "Increases all allies' ATK by 15% + 1.25% for every 500 ATK you have, up to 10% for 2 turns. Increases the main target's dmg dealt by 8% + 1% for every 500 ATK you have, up to 8% for 1 turn.",
+            effect_jp: "2ターンの間、味方全体の攻撃力が15％上昇し、自身の攻撃力500ごとに追加で攻撃力が1.25％上昇する（最大10％）。さらに1ターンの間、選択した対象の与ダメージが8％上昇し、自身の攻撃力500ごとに追加で与ダメージが1％上昇する（最大8％）。",
+            priority: 3,
+            icon: "버프광역"
+        },
+        highlight: {
+            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
+            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
+            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+             {name : "리벨리온", priority: 2},
+             {name : "어드바이스", priority: 2},
+             {name : "타루카쟈", priority: 2},
+             {name : "치료 촉진", priority: 1 },
+             {name : "대미지 면역", priority: 0},
+             {name : "방어 강화", priority: 0},
+        ],
+        comment : "호령 + 응집 버프를 통해 1턴에 최대 공격력 31.4%, 대미지 31% 증가효과를 부여할 수 있다.",
+        comment_en: "Through Order + Cohesion buffs, you can provide maximum ATK 31.4% and damage 31% increase effects in 1 turn.",
+        comment_jp: "号令＋凝結バフを通じて1ターンに最大攻撃力31.4%、ダメージ31%増加効果を付与できる。"
+    },
     "년수": {
         name_en: "Nian",
         name_jp: "年獣",
@@ -174,6 +236,7 @@ const personaData = {
         star: "5",
         position: "굴복",
         element: "주원",
+        best_persona: true,
         wild_emblem_rainbow : true,
         event: true,
         instinct: {
@@ -223,44 +286,43 @@ const personaData = {
              {name : "방어 강화", priority: 0},
         ],
         comment : "음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다로 대체 가능하다.",
-        comment_en: "Rhythmic Intrusion is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
+        comment_en: "Melodic Infiltration is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
         comment_jp: "音律の侵入は課金イベントを通じて配布されたスキルカードでマハラクンダで代替可能である。"
     },
-    "도미니온": {
-        name_en: "Dominion",
-        name_jp: "ドミニオン",
-        grade: "7",
-        star: "5",
+    "광목천": {
+        name_en: "Koumokuten",
+        name_jp: "コウモクテン",
+        grade: "5",
+        star: "4",
         position: "우월",
-        element: "축복",
+        element: "물리",
+        best_persona: true,
         instinct: {
-            name: "천사의 호령 III",
-            name_en: "Angel's Order III",
-            name_jp: "天使の号令 III",
+            name: "천왕의 주시 II",
+            name_en: "Heavenly Gaze II",
+            name_jp: "天王の眼力 II",
             effects: [
-                "공격력이 29.1% 증가한다.",
-                "동료를 목표로 스킬 시전 후 『호령』을 2중첩 획득한다",
-                "동료가 페르소나 스킬을 사용해 대미지를 줄 시, 『호령』을 1중첩 소모해 1턴 동안 주는 대미지가 15%, 공격력이 6.4% 증가한다."
+                "효과 명중이 21.2% 증가한다.",
+                "전투 시작 시 3턴 동안 공격력이 가장 높은 괴도의 공격력이 14% 증가하고, 크리티컬 확률이 6% 증가한다."
             ],
             effects_en: [
-                "Increases ATK by 29.1%.",
-                "Gains 2 [Order] when using a skill on allies.",
-                "When allies deals damage with a skill, consume 1 stack of [Order] to increase their DMG Dealt by 15% and ATK by 6.4% for 1 turn."
+                "Increases Ailment Accuracy by 21.2%.",
+                "At the start of battle, increases the ATK and CRIT Rate for the ally with the highest ATK by 14% and 6% for 3 turns, prioritizing Single-target/Multi-target Thief."
             ],
             effects_jp: [
-                "攻撃力が29.1％上昇。",
-                "味方にスキルを使用後、「号令」を2つ獲得。味方がスキルでダメージを与えた時に「号令」を一つ消費して、1ターンの間与えるダメージが15％、攻撃力が6.4％上昇。"
+                "状態異常命中が21.2%上昇。",
+                "戦闘開始時、攻撃力が最も高い味方の攻撃力が14%上昇し、クリティカル率が6%上昇（3ターン持続）"
             ],
             priority: 3
         },
         uniqueSkill: {
-            name: "응집",
-            name_en: "Cohesion",
-            name_jp: "凝結",
-            effect: "모든 동료의 공격력이 15% 증가하고, 자신의 공격력 500마다 1.25%가 추가 증가한다. 상한은 10%이며 효과는 2턴 동안 지속된다. 또한 스킬의 메인 목표가 주는 대미지가 8% 추가 증가하고, 자신의 공격력 500마다 1% 추가 증가한다. 상한은 8%이며 효과는 1턴 동안 지속된다.",
-            effect_en: "Increases all allies' ATK by 15% + 1.25% for every 500 ATK you have, up to 10% for 2 turns. Increases the main target's dmg dealt by 8% + 1% for every 500 ATK you have, up to 8% for 1 turn.",
-            effect_jp: "2ターンの間、味方全体の攻撃力が15％上昇し、自身の攻撃力500ごとに追加で攻撃力が1.25％上昇する（最大10％）。さらに1ターンの間、選択した対象の与ダメージが8％上昇し、自身の攻撃力500ごとに追加で与ダメージが1％上昇する（最大8％）。",
-            priority: 3,
+            name: "레볼루션",
+            name_en: "Revolution",
+            name_jp: "レボリューション",
+            effect: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 추가로 1.1%가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
+            effect_en: "Increase all allies CRIT by 6.5% + 1.1% for every 10% CRIT Wonder has to a maximum of 4.4% for 3 turns.",
+            effect_jp: "3ターンの間、味方全体のクリティカル率が6.5%上昇する。自身のクリティカル率が10%ごとに、味方のクリティカル率がさらに1.1%上昇する（最大4.4%まで）。",
+            priority: 2,
             icon: "버프광역"
         },
         highlight: {
@@ -270,15 +332,65 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
-             {name : "리벨리온", priority: 2},
-             {name : "어드바이스", priority: 2},
-             {name : "타루카쟈", priority: 2},
-             {name : "대미지 면역", priority: 0},
-             {name : "방어 강화", priority: 0},
+             {name : "라쿤다", priority: 3 },
+             {name : "마하타루카 오토", priority: 3 },
+             {name : "민첩의 마음가짐", priority: 3 },
+             {name : "리벨리온", priority: 1 },
+             {name : "어드바이스", priority: 1 },
+             {name : "타루카쟈", priority: 1 },
+             {name : "치료 촉진", priority: 1 },
         ],
-        comment : "호령 + 응집 버프를 통해 1턴에 최대 공격력 31.4%, 대미지 31% 증가효과를 부여할 수 있다.",
-        comment_en: "Through Order + Cohesion buffs, you can provide maximum ATK 31.4% and damage 31% increase effects in 1 turn.",
-        comment_jp: "号令＋凝結バフを通じて1ターンに最大攻撃力31.4%、ダメージ31%増加効果を付与できる。"
+        comment : "본능 버프는 페르소나 전환 후에도 지속된다. ",
+        comment_en: "The core passive buff continues even after persona switching.",
+        comment_jp: "本能バフはペルソナ転換後も持続する。"
+    },
+    "지국천": {
+        name_en: "Jikokuten",
+        name_jp: "ジコクテン",
+        grade: "3",
+        star: "4",
+        position: "우월",
+        element: "물리",
+        best_persona: true,
+        instinct: {
+            name: "혜토의 동쪽 I",
+            name_en: "Wisdom of the East I",
+            name_jp: "慧志の東 I",
+            effects: [
+                "방어력이 15.9% 증가한다.",
+                "동료를 목표로 스킬 시전 시 2턴 동안 메인 목표의 공격력이 15.5% 증가한다. 목표의 생명이 60% 미만일 시 해당 효과는 30%까지 증가한다."
+            ],
+            effects_en: [
+                "Increases DEF by 15.9%. When using a skill on allies, increases the main target's ATK by 13.5% for 2 turns, increases this effect by 30% when the target is below 60% HP."
+            ],
+            effects_jp: [
+                "防御力が15.9%増加する。味方を対象にスキル使用時、2ターンの間メインターゲットの攻撃力が15.5%増加する。ターゲットの生命が60%未満の時、該当効果は30%まで増加する。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "마하타루카쟈",
+            name_en: "Matarukaja",
+            name_jp: "マハタルカジャ",
+            effect: "모든 동료의 공격력이 10.9% 증가하고,자신의 공격력 500포인트마다 0.9% 추가 증가한다. 상한은 7.2%이며, 효과는 3턴 동안 지속된다.",
+            effect_en: "Increase all allies ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
+            effect_jp: "3ターンの間、味方全体の攻撃力が10.9%上昇する。自身の攻撃力が500ごとに、味方の攻撃力がさらに0.9%上昇する（最大7.2%まで）。",
+            priority: 1,
+            icon: "버프광역"
+        },
+        highlight: {
+            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
+            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
+            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+             {name : "타루카쟈", priority: 3},
+             {name : "리벨리온", priority: 3 },
+             {name : "치료 촉진", priority: 1 },
+        ],
+        comment_en: "Provides consistent ATK buffs to allies, especially effective for low HP allies.",
+        comment_jp: "味方に一貫したATKバフを提供し、特に低HPの味方に効果的である。"
     },
     "수르트": {
         name_en: "Surt",
@@ -287,6 +399,7 @@ const personaData = {
         star: "3",
         position: "굴복",
         element: "화염",
+        best_persona: true,
         instinct: {
             name: "맹렬한 불길의 군주 III",
             name_en: "Inferno Monarch I",
@@ -329,105 +442,6 @@ const personaData = {
         comment_en: "The only persona that possesses Marakunda besides the Marakunda skill card.",
         comment_jp: "マハラクンダスキルカード以外で唯一のマハラクンダを所有するペルソナ。"
     },
-    "광목천": {
-        name_en: "Koumokuten",
-        name_jp: "コウモクテン",
-        grade: "5",
-        star: "4",
-        position: "우월",
-        element: "물리",
-        instinct: {
-            name: "천왕의 주시 II",
-            name_en: "Heavenly Gaze II",
-            name_jp: "天王の眼力 II",
-            effects: [
-                "효과 명중이 21.2% 증가한다.",
-                "전투 시작 시 3턴 동안 공격력이 가장 높은 괴도의 공격력이 14% 증가하고, 크리티컬 확률이 6% 증가한다."
-            ],
-            effects_en: [
-                "Increases Ailment Accuracy by 21.2%.",
-                "At the start of battle, increases the ATK and CRIT Rate for the ally with the highest ATK by 14% and 6% for 3 turns, prioritizing Single-target/Multi-target Thief."
-            ],
-            effects_jp: [
-                "状態異常命中が21.2%上昇。",
-                "戦闘開始時、攻撃力が最も高い味方の攻撃力が14%上昇し、クリティカル率が6%上昇（3ターン持続）"
-            ],
-            priority: 3
-        },
-        uniqueSkill: {
-            name: "레볼루션",
-            name_en: "Revolution",
-            name_jp: "レボリューション",
-            effect: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 추가로 1.1%가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies CRIT by 6.5% + 1.1% for every 10% CRIT Wonder has to a maximum of 4.4% for 3 turns.",
-            effect_jp: "3ターンの間、味方全体のクリティカル率が6.5%上昇する。自身のクリティカル率が10%ごとに、味方のクリティカル率がさらに1.1%上昇する（最大4.4%まで）。",
-            priority: 2,
-            icon: "버프광역"
-        },
-        highlight: {
-            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
-            priority: 1
-        },
-        recommendSkill : [
-             {name : "라쿤다", priority: 3 },
-             {name : "마하타루카 오토", priority: 3 },
-             {name : "민첩의 마음가짐", priority: 3 },
-             {name : "리벨리온", priority: 1 },
-             {name : "어드바이스", priority: 1 },
-             {name : "타루카쟈", priority: 1 },
-        ],
-        comment : "본능 버프는 페르소나 전환 후에도 지속된다. ",
-        comment_en: "The core passive buff continues even after persona switching.",
-        comment_jp: "本能バフはペルソナ転換後も持続する。"
-    },
-    "지국천": {
-        name_en: "Jikokuten",
-        name_jp: "ジコクテン",
-        grade: "3",
-        star: "4",
-        position: "우월",
-        element: "물리",
-        instinct: {
-            name: "혜토의 동쪽 I",
-            name_en: "Wisdom of the East I",
-            name_jp: "慧志の東 I",
-            effects: [
-                "방어력이 15.9% 증가한다.",
-                "동료를 목표로 스킬 시전 시 2턴 동안 메인 목표의 공격력이 15.5% 증가한다. 목표의 생명이 60% 미만일 시 해당 효과는 30%까지 증가한다."
-            ],
-            effects_en: [
-                "Increases DEF by 15.9%. When using a skill on allies, increases the main target's ATK by 13.5% for 2 turns, increases this effect by 30% when the target is below 60% HP."
-            ],
-            effects_jp: [
-                "防御力が15.9%増加する。味方を対象にスキル使用時、2ターンの間メインターゲットの攻撃力が15.5%増加する。ターゲットの生命が60%未満の時、該当効果は30%まで増加する。"
-            ],
-            priority: 3
-        },
-        uniqueSkill: {
-            name: "마하타루카쟈",
-            name_en: "Matarukaja",
-            name_jp: "マハタルカジャ",
-            effect: "모든 동료의 공격력이 10.9% 증가하고,자신의 공격력 500포인트마다 0.9% 추가 증가한다. 상한은 7.2%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
-            effect_jp: "3ターンの間、味方全体の攻撃力が10.9%上昇する。自身の攻撃力が500ごとに、味方の攻撃力がさらに0.9%上昇する（最大7.2%まで）。",
-            priority: 1,
-            icon: "버프광역"
-        },
-        highlight: {
-            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
-            priority: 1
-        },
-        recommendSkill : [
-             {name : "타루카쟈", priority: 3},
-             {name : "리벨리온", priority: 3 },
-        ],
-        comment_en: "Provides consistent ATK buffs to allies, especially effective for low HP allies.",
-        comment_jp: "味方に一貫したATKバフを提供し、特に低HPの味方に効果的である。"
-    },
     "아메노우즈메": {
         name_en: "Ame-no-Uzume",
         name_jp: "アメノウズメ",
@@ -435,6 +449,7 @@ const personaData = {
         star: "5",
         position: "반항",
         element: "전격",
+        best_persona: true,
         instinct: {
             name: "전율하는 신락 I",
             name_en: "Trembling Kagura I",
@@ -485,6 +500,7 @@ const personaData = {
         star: "4",
         position: "우월",
         element: "주원",
+        best_persona: true,
         instinct: {
             name: "황홀한 속삭임 I",
             name_en: "Intoxicating Murmur I",
@@ -521,8 +537,11 @@ const personaData = {
              {name : "리벨리온", priority: 3 },
              {name : "어드바이스", priority: 3 },
              {name : "타루카쟈", priority: 3 },
-             {name : "라쿠카쟈", priority: 3 },
-        ]
+             {name : "라쿠카쟈", priority: 2 },
+        ],
+        comment : "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
+        comment_en: "Take the maximum effect of Rebellion by taking the core passive critical rate increase. The description is in 10% units, but the effect is applied in 0.1% units.",
+        comment_jp: "リベリオンの最大効果を得るために、クリティカル確率のパッシブを取る。説明は10%単位ですが、効果は0.1%単位で適用されます。"
     },
     "유룽": {
         name_en: "Yurlungur",
@@ -531,6 +550,7 @@ const personaData = {
         star: "3",
         position: "굴복",
         element: "전격",
+        best_persona: true,
         instinct: {
             name: "성천에 잠든 뱀 II",
             name_en: "Holy Pond's Serpent I",
@@ -545,7 +565,7 @@ const personaData = {
             effects_jp: [
                 "クリティカルダメージが17.4%上昇。敵の被クリティカルダメージが14%上昇。敵が感電中の時、さらに9%上昇。"
             ],
-            priority: 2
+            priority: 3
         },
         uniqueSkill: {
             name: "전격 내성 제거",
@@ -554,7 +574,7 @@ const personaData = {
             effect: "2턴 동안 적 1명의 전격 내성을 제거한다.",
             effect_en: "Suppress innate Electric resistances of 1 foe for 2 turns.",
             effect_jp: "2ターンの間、敵単体の電撃耐性を打ち消す。",
-            priority: 3,
+            priority: 1,
             icon: "디버프"
         },
         highlight: {
@@ -677,6 +697,7 @@ const personaData = {
         position: "지배",
         element: "빙결",
         wild_emblem_rainbow : true,
+        event: true,
         instinct: {
             name: "신속한 귀환자 III",
             name_en: "Swift Returner III",
@@ -1016,53 +1037,6 @@ const personaData = {
             {name : "염동 강화", priority: 0 },
         ]
     },
-    "트럼페터": {
-        name_en: "Trumpeter",
-        name_jp: "トランペッター",
-        grade: "7",
-        star: "5",
-        position: "굴복",
-        element: "만능",
-        wild_emblem_rainbow : true,
-        event: true,
-        instinct: {
-            name: "붕괴의 나팔 III",
-            name_en: "Trumpet of Destruction III",
-            name_jp: "破壊のパフェ III",
-            effects: [
-                "효과 명중이 34.9% 중가한다.",
-                "자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 중가하고, 적이 받는 대미지가 6.5% 중가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
-            ],
-            effects_en: [
-                "Increases Ailment Accuracy by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your Ailment Accuracy by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
-            ],
-            effects_jp: [
-                "状態異常命中が34.9%増加する。ペルソナスキルで敵にデバフ効果を付与すると、敵のデバフ効果が15個以上の時、自身の状態異常命中が50%上昇し、敵が受けるダメージが6.5%上昇する。敵にデバフ効果を付与した後、2ターンの間敵全体の防御力が12%減少する。"
-            ],
-            priority: 2
-        },
-        uniqueSkill: {
-            name: "나락의 파동",
-            name_en: "Wave of Despair",
-            name_jp: "ナラロクの波",
-            effect: "12.7%의 기본 확률로 적 전체를 절망 상태에 빠뜨린다. 『절망』: 정신 이상으로 행동이 불가하다. 턴마다 일정한 SP가 차감되고 몇 턴 후 사망한다.",
-            effect_en: "12.7% of base chance to put all foes into [Despair] status. [Despair]: Unable to act. SP is deducted every turn and dies after a few turns.",
-            effect_jp: "12.7%の基礎確率で全ての敵を『絶望』状態にする。『絶望』：行動不能。SPは毎ターン減少し、数ターン後に死亡する。",
-            priority: 1,
-            icon: "디버프광역"
-        },
-        highlight: {
-            effect: "모든 적에게 공격력 45.0%의 만능 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
-            effect_en: "Deals 45.0% ATK Allmighty dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
-            effect_jp: "全ての敵に45.0% ATKの万能属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
-            priority: 1
-        },
-        recommendSkill : [
-            {name : "명중 강화", priority: 3 },
-            {name : "우중충한 하늘", priority: 3 }
-        ]
-    },
-
     "오오쿠니누시": {
         name_en: "Okuninushi",
         name_jp: "オオクニヌシ",
@@ -1450,56 +1424,6 @@ const personaData = {
         comment_en: "Triggers core passive effect on enemies already in Burn state with [Overheat: Fire damage or Thunder Reign: Shock addition].",
         comment_jp: "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。"
     },
-    "멜키세덱": {
-        name_en: "Melchizedek",
-        name_jp: "メルキセデク",
-        grade: "6",
-        star: "5",
-        position: "지배",
-        element: "축복",
-        wild_emblem_rainbow : true,
-        instinct: {
-            name: "인왕의 심판 III",
-            name_en: "King of Righteousness Judgement III",
-            name_jp: "王の裁き III",
-            effects: [
-                "공격력이 24.9% 증가한다.",
-                "자신이 스킬 시전 시, 2턴 동안 모든 동료의 축복 중첩 수에 따라 주는 축복 대미지가 4% 증가한다 (8회 중첩 가능). 다른 축복 속성 아군은 해당 효과의 50%를 획득한다. 스킬 시전 시, 축복 중첩 수가 3중첩 이상인 괴도의 공격력이 15% 증가하며 2턴 동안 지속된다."
-            ],
-            effects_en: [
-                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on all allies, up to 8 stacks. For allies with other Bless elements, gains 50% of the effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
-            ],
-            effects_jp: [
-                "攻撃力が24.9%上昇。スキル使用時、味方の祝福重複数に応じて2ターンの間祝福ダメージが4%増加する（8重複可能）。他の祝福属性の味方は効果の50%を獲得する。スキル使用時、祝福重複数が3重複以上の味方の攻撃力が15%増加（2ターン持続）。"
-            ],
-            priority: 1
-        },
-        uniqueSkill: {
-            name: "구원의 빛",
-            name_en: "Light of Salvation",
-            name_jp: "救いの光",
-            effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
-            effect_en: "Deals 79.4% ATK Bless dmg to all foes and gains 2 stacks of Bless. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
-            effect_jp: "全ての敵に79.4% ATKの祝福属性ダメージを与え、味方全体に祝福重複2重複を付与する。自分は祝福重複ごとにスキルダメージが5%増加し、最大25%増加する。",
-            priority: 1,
-            icon: "축복광역"
-        },
-        highlight: {
-            effect: "모든 적에게 공격력 180.0%의 축복 속성 대미지를 준다.",
-            effect_en: "Deals 180.0% ATK as Bless dmg to all foes.",
-            effect_jp: "全ての敵に180.0% ATKの祝福属性ダメージを与える。",
-            priority: 0
-        },
-        recommendSkill : [
-            {name : "마하타루카 오토", priority: 0},
-            {name : "마도의 재능", priority: 0},
-            {name : "공격 강화", priority: 0},
-            {name : "어드바이스", priority: 0},
-            {name : "정교한 타격", priority: 0},
-            {name : "축복 강화", priority: 0}
-       ],
-    },
-
     "요시츠네": {
         name_en: "Yoshitsune",
         name_jp: "ヨシツネ",
@@ -1548,7 +1472,10 @@ const personaData = {
             {name : "마도의 재능", priority: 3 },
             {name : "물리 강화", priority: 3 },
             {name : "공격의 마음가짐", priority: 3},
-        ]
+        ],
+        comment: "WONDER를 메인 딜러로 사용할 경우 이 페르소나를 채용한다.",
+        comment_en: "Adopt this persona when using WONDER as main dealer.",
+        comment_jp: "WONDERをメインディーラーとして使用する場合、このペルソナを採用する。",
     },
 
     "네코쇼군": {
@@ -1593,6 +1520,101 @@ const personaData = {
         recommendSkill : [
             {name : "명중 강화", priority: 3 },
         ]
+    },
+    "트럼페터": {
+        name_en: "Trumpeter",
+        name_jp: "トランペッター",
+        grade: "7",
+        star: "5",
+        position: "굴복",
+        element: "만능",
+        wild_emblem_rainbow : true,
+        event: true,
+        instinct: {
+            name: "붕괴의 나팔 III",
+            name_en: "Trumpet of Destruction III",
+            name_jp: "破壊のパフェ III",
+            effects: [
+                "효과 명중이 34.9% 중가한다.",
+                "자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 중가하고, 적이 받는 대미지가 6.5% 중가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
+            ],
+            effects_en: [
+                "Increases Ailment Accuracy by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your Ailment Accuracy by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
+            ],
+            effects_jp: [
+                "状態異常命中が34.9%増加する。ペルソナスキルで敵にデバフ効果を付与すると、敵のデバフ効果が15個以上の時、自身の状態異常命中が50%上昇し、敵が受けるダメージが6.5%上昇する。敵にデバフ効果を付与した後、2ターンの間敵全体の防御力が12%減少する。"
+            ],
+            priority: 2
+        },
+        uniqueSkill: {
+            name: "나락의 파동",
+            name_en: "Wave of Despair",
+            name_jp: "ナラロクの波",
+            effect: "12.7%의 기본 확률로 적 전체를 절망 상태에 빠뜨린다. 『절망』: 정신 이상으로 행동이 불가하다. 턴마다 일정한 SP가 차감되고 몇 턴 후 사망한다.",
+            effect_en: "12.7% of base chance to put all foes into [Despair] status. [Despair]: Unable to act. SP is deducted every turn and dies after a few turns.",
+            effect_jp: "12.7%の基礎確率で全ての敵を『絶望』状態にする。『絶望』：行動不能。SPは毎ターン減少し、数ターン後に死亡する。",
+            priority: 1,
+            icon: "디버프광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 45.0%의 만능 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
+            effect_en: "Deals 45.0% ATK Allmighty dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
+            effect_jp: "全ての敵に45.0% ATKの万能属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "명중 강화", priority: 3 },
+            {name : "우중충한 하늘", priority: 3 }
+        ]
+    },
+    "멜키세덱": {
+        name_en: "Melchizedek",
+        name_jp: "メルキセデク",
+        grade: "6",
+        star: "5",
+        position: "지배",
+        element: "축복",
+        wild_emblem_rainbow : true,
+        instinct: {
+            name: "인왕의 심판 III",
+            name_en: "King of Righteousness Judgement III",
+            name_jp: "王の裁き III",
+            effects: [
+                "공격력이 24.9% 증가한다.",
+                "자신이 스킬 시전 시, 2턴 동안 모든 동료의 축복 중첩 수에 따라 주는 축복 대미지가 4% 증가한다 (8회 중첩 가능). 다른 축복 속성 아군은 해당 효과의 50%를 획득한다. 스킬 시전 시, 축복 중첩 수가 3중첩 이상인 괴도의 공격력이 15% 증가하며 2턴 동안 지속된다."
+            ],
+            effects_en: [
+                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on all allies, up to 8 stacks. For allies with other Bless elements, gains 50% of the effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
+            ],
+            effects_jp: [
+                "攻撃力が24.9%上昇。スキル使用時、味方の祝福重複数に応じて2ターンの間祝福ダメージが4%増加する（8重複可能）。他の祝福属性の味方は効果の50%を獲得する。スキル使用時、祝福重複数が3重複以上の味方の攻撃力が15%増加（2ターン持続）。"
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "구원의 빛",
+            name_en: "Light of Salvation",
+            name_jp: "救いの光",
+            effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
+            effect_en: "Deals 79.4% ATK Bless dmg to all foes and gains 2 stacks of Bless. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
+            effect_jp: "全ての敵に79.4% ATKの祝福属性ダメージを与え、味方全体に祝福重複2重複を付与する。自分は祝福重複ごとにスキルダメージが5%増加し、最大25%増加する。",
+            priority: 1,
+            icon: "축복광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 180.0%의 축복 속성 대미지를 준다.",
+            effect_en: "Deals 180.0% ATK as Bless dmg to all foes.",
+            effect_jp: "全ての敵に180.0% ATKの祝福属性ダメージを与える。",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "마하타루카 오토", priority: 0},
+            {name : "마도의 재능", priority: 0},
+            {name : "공격 강화", priority: 0},
+            {name : "어드바이스", priority: 0},
+            {name : "정교한 타격", priority: 0},
+            {name : "축복 강화", priority: 0}
+       ],
     },
     "미트라스": {
         name_en: "Mithras",

@@ -770,10 +770,6 @@ input, textarea {
     color: rgb(255, 255, 255, 0.6);
 }
 
-
-
-
-
 .search-section {
     position: relative;
     padding: 0 20px;
@@ -864,6 +860,65 @@ input, textarea {
 .search-dropdown::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 4px;
+}
+
+
+.explain-container {
+    margin: 20px 0 0 0;
+    padding: 0 20px;
+}
+@media (max-width: 1200px) {
+    .explain-container {
+        padding: 0 0px;
+    }
+}
+
+.explain-box {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+}
+
+.explain-section h4 {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-examples {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.priority-item span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.priority-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 

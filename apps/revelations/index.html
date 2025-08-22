@@ -282,6 +282,19 @@ alternate_urls:
         });
     }
 
+    // 캐릭터 데이터 로더 (KR 데이터 사용)
+    async function loadCharacterData() {
+        return new Promise((resolve, reject) => {
+            // 중복 로딩 방지
+            document.querySelectorAll('script[src*="/data/kr/characters/characters.js"]').forEach(s => s.remove());
+            const s = document.createElement('script');
+            s.src = '/data/kr/characters/characters.js';
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('Failed to load /data/kr/characters/characters.js'));
+            document.head.appendChild(s);
+        });
+    }
+
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -305,7 +318,8 @@ alternate_urls:
                 effect_heal: "치료",
                 count_unit: "개",
                 set_effect_2: "2세트",
-                set_effect_4: "4세트"
+                set_effect_4: "4세트",
+                label_characters: "사용 캐릭터"
             },
             en: {
                 language_notice: "🌍 Please let me know if you find an accurate translation.\nIt may contain content that hasn't been released yet.",
@@ -324,7 +338,8 @@ alternate_urls:
                 effect_heal: "Heal",
                 count_unit: "",
                 set_effect_2: "2-Set",
-                set_effect_4: "4-Set"
+                set_effect_4: "4-Set",
+                label_characters: "Characters"
             },
             jp: {
                 language_notice: "🌍 正確な翻訳が見つかった場合は、お知らせください。\nまだリリースされていないコンテンツが含まれている可能性があります。",
@@ -343,7 +358,8 @@ alternate_urls:
                 effect_heal: "回復",
                 count_unit: "",
                 set_effect_2: "2セット",
-                set_effect_4: "4セット"
+                set_effect_4: "4セット",
+                label_characters: "使用キャラ"
             }
         };
         
@@ -454,6 +470,8 @@ alternate_urls:
             
             // 데이터 로드
             await loadLanguageData(currentLang);
+            // 캐릭터 데이터 로드
+            await loadCharacterData();
             
             // 언어 콘텐츠 업데이트
             await updateLanguageContent();
@@ -700,6 +718,130 @@ alternate_urls:
             
             infoContainer.appendChild(typeLabel);
             infoContainer.appendChild(effectsContainer);
+
+            // ---- Characters Accordion ----
+            // i18n label
+            const tLabel = (function(){
+                const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+                const map = {
+                    kr: '사용 캐릭터',
+                    en: 'Characters',
+                    jp: '使用キャラ'
+                };
+                // prefer i18nData if available
+                try {
+                    const tdata = (window.i18nSetEffect2 !== undefined) ? null : null; // no-op, ensure no crash
+                } catch (e) {}
+                return (lang==='en'? 'Characters' : (lang==='jp'? '使用キャラ' : '사용 캐릭터'));
+            })();
+
+            // Helpers
+            function getCharacterLabel(koreanCharName, lang) {
+                const c = (typeof characterData !== 'undefined') ? characterData[koreanCharName] : null;
+                if (!c) return koreanCharName;
+                if (lang === 'en' && c.codename) return c.codename;
+                if (lang === 'jp' && c.name_jp) return c.name_jp;
+                return koreanCharName;
+            }
+            function findUsersOfRevelation(koreanRevName) {
+                if (typeof characterData === 'undefined') return [];
+                const users = [];
+                Object.entries(characterData).forEach(([charName, c]) => {
+                    const mains = Array.isArray(c.main_revelation) ? c.main_revelation : [];
+                    const subs = Array.isArray(c.sub_revelation) ? c.sub_revelation : [];
+                    if (mains.includes(koreanRevName) || subs.includes(koreanRevName)) {
+                        users.push(charName);
+                    }
+                });
+                // sort by name
+                users.sort((a,b)=>a.localeCompare(b,'ko'));
+                return users;
+            }
+
+            const accordion = document.createElement('div');
+            accordion.className = 'accordion';
+            const header = document.createElement('div');
+            header.className = 'accordion-header';
+            header.setAttribute('aria-expanded','false');
+            header.innerHTML = `<span>${tLabel}</span><span>+</span>`;
+            const content = document.createElement('div');
+            content.className = 'accordion-content';
+
+            const users = findUsersOfRevelation(koreanName);
+            if (users.length) {
+                const grid = document.createElement('div');
+                grid.className = 'user-list';
+                const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+                users.forEach(u => {
+                    const a = document.createElement('a');
+                    a.className = 'character-link';
+                    a.href = `/character.html?name=${encodeURIComponent(u)}`;
+
+                    const cimg = document.createElement('img');
+                    cimg.className = 'character-img';
+                    cimg.src = `{{ site.baseurl }}/assets/img/tier/${u}.webp`;
+                    cimg.alt = u;
+                    cimg.loading = 'lazy';
+                    cimg.onerror = function() { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
+
+                    const icons = document.createElement('span');
+                    icons.className = 'char-icons';
+                    const cdata = (typeof characterData !== 'undefined') ? characterData[u] : null;
+                    const pos = cdata && cdata.position ? cdata.position : '';
+                    const ele = cdata && cdata.element ? cdata.element : '';
+                    if (pos) {
+                        const pi = document.createElement('img');
+                        pi.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${pos}.png`;
+                        pi.alt = pos;
+                        pi.loading = 'lazy';
+                        pi.className = 'char-icon';
+                        icons.appendChild(pi);
+                    }
+                    if (ele) {
+                        const ei = document.createElement('img');
+                        ei.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${ele}.png`;
+                        ei.alt = ele;
+                        ei.loading = 'lazy';
+                        ei.className = 'char-icon';
+                        icons.appendChild(ei);
+                    }
+
+                    const label = document.createElement('span');
+                    label.className = 'character-name';
+                    label.textContent = getCharacterLabel(u, lang);
+
+                    a.appendChild(cimg);
+                    a.appendChild(icons);
+                    a.appendChild(label);
+                    grid.appendChild(a);
+                });
+                content.appendChild(grid);
+            } else {
+                content.textContent = '-';
+            }
+
+            // Toggle on card click (ignore interactive elements)
+            card.addEventListener('click', (e) => {
+                const target = e.target;
+                if (target.closest('a') || target.closest('button')) return;
+                const isOpen = content.classList.toggle('open');
+                header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                header.lastElementChild.textContent = isOpen ? '−' : '+';
+                card.classList.toggle('active', isOpen);
+            });
+
+            // Also allow toggling by clicking the accordion header directly
+            header.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.classList.toggle('open');
+                header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                header.lastElementChild.textContent = isOpen ? '−' : '+';
+                card.classList.toggle('active', isOpen);
+            });
+
+            accordion.appendChild(header);
+            accordion.appendChild(content);
+            infoContainer.appendChild(accordion);
             
             card.appendChild(imgContainer);
             card.appendChild(infoContainer);

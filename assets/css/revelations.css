@@ -445,3 +445,62 @@
         width: 100%;
     }
 }
+
+/* Accordion (characters using this revelation) */
+.accordion {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.15);
+}
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.25);
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    padding: 10px 12px;
+    cursor: pointer;
+    border: none;
+}
+.accordion-header:hover { filter: brightness(1.1); }
+.accordion-content { display: none; padding: 10px 12px; color: rgba(255,255,255,0.85); font-size: 13px; }
+.accordion-content.open { display: block; }
+
+.user-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.user-tag { background: rgba(0,0,0,0.35); color: rgba(255,255,255,0.9); padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+
+/* Character link items inside accordion */
+.character-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.35);
+    color: rgba(255,255,255,0.95);
+    padding: 0px 12px 0px 0px;
+    border-radius: 999px;
+    font-size: 12px;
+    text-decoration: none;
+}
+.character-link:hover { filter: brightness(1.1); }
+.character-img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #222;
+}
+.character-name { line-height: 1; }
+
+/* Character icons (position/element) */
+.char-icons { display: inline-flex; gap: 4px; align-items: center; }
+.char-icon { width: 16px; height: 16px; object-fit: contain; }
+
+/* Priority highlight parity with wonder-weapon */
+.character-link.priority .character-img {
+    border: 1px solid #000;
+    border-color: #ffcc00;
+    box-shadow: 0 0 0 1px rgba(255, 204, 0, 0.5);
+}

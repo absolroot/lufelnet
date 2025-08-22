@@ -878,7 +878,7 @@ const enCharacterSkillsData = {
             "element": "버프광역",
             "type":"버프",
             "cool": 6,
-            "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. Tailor-Made, Standard, and Basic Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
+            "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. [Tailor-Made], [Standard], and [Basic] Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
         },
         "skill2": {
             "name": "Charming Gaze",
@@ -893,7 +893,7 @@ const enCharacterSkillsData = {
             "type":"버프",
             "cool": 8,
             "unlock": "This skill requires Cocktails.",
-            "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). Tailor-Made, Standard, and Basic Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more Standard or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
+            "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). [Tailor-Made], [Standard], and [Basic] Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more [Standard] or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
         },
         "skill_highlight": {
             "name": "Attribute Boost",
@@ -1188,12 +1188,12 @@ const enCharacterSkillsData = {
             "type": "버프",
             "sp": 24,
             "cool": 1,
-            "description": "Change the next activated Inspiration to Imagination.\nImagination: Counterattack chance becomes 100%, damage increases by 78.1%/86.1%/82.9%/90.9% of Defense, and changes to an AoE attack. If not activated by the start of Yusuke's next action, it will activate automatically.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% + 555/555/683/683 of Defense, temporarily change Yusuke's weakness to base attribute, and nullify all spiritual ailments. Also, inflict Taunt on all foes for 2 turns."
+            "description": "Change the next activated [Inspiration] to [Imagination].\n[Imagination]: Counterattack chance becomes 100%, damage increases by 78.1%/86.1%/82.9%/90.9% of Defense, and changes to an AoE attack. If not activated by the start of Yusuke's next action, it will activate automatically.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% + 555/555/683/683 of Defense, temporarily change Yusuke's weakness to base attribute, and nullify all spiritual ailments. Also, inflict Taunt on all foes for 2 turns."
         },
         "skill_highlight": {
             "element": "빙결",
             "type": "광역피해",
-            "description": "Deal Ice damage to all foes equal to 178.1%/196.4%/189.1%/207.3% of Yusuke's Defense. Increase Inspiration counterattack activation chance by 35% for 3 turns."
+            "description": "Deal Ice damage to all foes equal to 178.1%/196.4%/189.1%/207.3% of Yusuke's Defense. Increase [Inspiration] counterattack activation chance by 35% for 3 turns."
         },
         "passive1": {
             "name": "Painter's Focus",
@@ -1481,7 +1481,7 @@ const enCharacterSkillsData = {
             "type": "디버프 중첩",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Curse damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack. Decrease foes' Defense by 3% for every 10 points of Yaoling's Speed for 2 turns (up to 49.7%/54.8%/53.5%/58.6%). Also gain 4 Memory stacks for each foe attacked."
+            "description": "Deal Curse damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack. Decrease foes' Defense by 3% for every 10 points of Yaoling's Speed for 2 turns (up to 49.7%/54.8%/53.5%/58.6%). Also gain 4 [Memory] stacks for each foe attacked."
         },
         "skill2": {
             "name": "Flowers of Naihe",
@@ -1526,7 +1526,7 @@ const enCharacterSkillsData = {
             "type": "단일 피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Psychokinesis damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack, and grant Affection to party for 1 turn. Affection: When dealing damage with a skill, Haruna gains 1 Childish Heart stack."
+            "description": "Deal Psychokinesis damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack, and grant [Affection] to party for 1 turn. [Affection]: When dealing damage with a skill, Haruna gains 1 Childish Heart stack."
         },
         "skill2": {
             "name": "Ready for Adventure",
@@ -1555,7 +1555,7 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Let's Hold Hands",
             "element": "패시브",
-            "description": "Each time an ally with Affection deals damage, 40.0% chance to gain 1 Childish Heart stack."
+            "description": "Each time an ally with [Affection] deals damage, 40.0% chance to gain 1 Childish Heart stack."
         },
         "passive2": {
             "name": "Safety in Numbers",
@@ -2048,14 +2048,14 @@ const enCharacterSkillsData = {
             "element": "버프광역",
             "type": "버프광역",
             "cool": 4,
-            "description": "Increase party's Attack by 12% of Tomiyama's Attack for 1 turn (up to 4500/4950/5400/5850 of Attack), increase ailment accuracy by 35.0%/38.5%/37.8%/41.3%, and gain 1 Beat stack."
+            "description": "Increase party's Attack by 12% of Tomiyama's Attack for 1 turn (up to 4500/4950/5400/5850 of Attack), increase ailment accuracy by 35.0%/38.5%/37.8%/41.3%, and gain 1 [Beat] stack."
         },
         "skill2": {
             "name": "Intermission",
             "element": "버프광역",
             "type": "버프광역",
             "cool": 8,
-            "description": "Restore party's SP by 22/27/26/31, and grant 3 Beat stacks."
+            "description": "Restore party's SP by 22/27/26/31, and grant 3 [Beat] stacks."
         },
         "skill3": {
             "name": "Retro Dance Number",
@@ -2073,12 +2073,12 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Toe-Tapping",
             "element": "패시브",
-            "description": "For every 4 Beat stacks gained, inflict 1 random elemental ailment on the foe with the highest remaining HP."
+            "description": "For every 4 [Beat] stacks gained, inflict 1 random elemental ailment on the foe with the highest remaining HP."
         },
         "passive2": {
             "name": "Outdated Slang",
             "element": "패시브",
-            "description": "When an ally inflicts an elemental ailment on a foe, increase that ally's damage by 15.0% for 2 turns. Also, 21.0% chance to grant 1 Beat stack."
+            "description": "When an ally inflicts an elemental ailment on a foe, increase that ally's damage by 15.0% for 2 turns. Also, 21.0% chance to grant 1 [Beat] stack."
         }
     }
 };

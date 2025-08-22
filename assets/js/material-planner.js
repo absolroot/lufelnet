@@ -239,7 +239,7 @@
         avatar.alt = name; avatar.className = 'setup-avatar';
         // 가장 앞에 추가
         modalHeader.insertBefore(avatar, modalHeader.firstChild);
-        console.log(avatar);
+        //console.log(avatar);
         
         let displayName = name;
         const cd = STATE.characterData?.[name];
@@ -587,7 +587,7 @@
                 if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
             }
             else{
-                console.log('expSumForGem', expSumForGem);
+                //console.log('expSumForGem', expSumForGem);
                 const gemCount = Math.floor(expSumForGem * 0.15);
                 if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
             }
@@ -611,7 +611,7 @@
         for(let lv=inputs.wpFrom; lv<inputs.wpTo; lv++){
             wpExpSum += (costs.__WEAPON_LEVEL_EXP?.[lv] || 0);
         }
-        console.log('wpExpSum', wpExpSum);
+        //console.log('wpExpSum', wpExpSum);
         if(wpExpSum>0){
             let wpExpSumForGem = wpExpSum;
             const unit3 = 2000, unit2 = 500, unit1 = 100;
@@ -623,7 +623,7 @@
                 if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
             }
             else{
-                console.log('wpExpSumForGem', wpExpSumForGem);
+                //console.log('wpExpSumForGem', wpExpSumForGem);
                 const gemCount = Math.floor(wpExpSumForGem * 0.25);
                 if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
             }

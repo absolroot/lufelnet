@@ -252,12 +252,12 @@ alternate_urls:
                     setTimeout(() => {
                         if (lang === 'en' && typeof enRevelationData !== 'undefined') {
                             window.enRevelationData = enRevelationData;
-                            console.log('English revelation data loaded:', enRevelationData);
+                            //console.log('English revelation data loaded:', enRevelationData);
                         } else if (lang === 'jp' && typeof jpRevelationData !== 'undefined') {
                             window.jpRevelationData = jpRevelationData;
-                            console.log('Japanese revelation data loaded:', jpRevelationData);
+                            //console.log('Japanese revelation data loaded:', jpRevelationData);
                         } else if (lang === 'kr' && typeof revelationData !== 'undefined') {
-                            console.log('Korean revelation data loaded:', revelationData);
+                            //console.log('Korean revelation data loaded:', revelationData);
                         } else {
                             console.warn('No revelation data found for language:', lang);
                         }

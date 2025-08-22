@@ -1,6 +1,6 @@
 class CriticalCalc {
     constructor() {
-        console.log('CriticalCalc constructor');
+        //console.log('CriticalCalc constructor');
         this.buffTableBody = document.getElementById('buffTableBody');
         this.selfTableBody = document.getElementById('selfTableBody');
         this.totalValue = document.querySelector('.total-value');
@@ -13,7 +13,7 @@ class CriticalCalc {
 
         // 화면 크기 변경 시 테이블 다시 그리기
         window.addEventListener('resize', () => {
-            console.log('resize event');
+            //console.log('resize event');
             this.buffTableBody.innerHTML = '';
             this.selfTableBody.innerHTML = '';
             this.initializeTables();
@@ -29,7 +29,7 @@ class CriticalCalc {
             this.revelationInput.addEventListener('input', () => this.updateTotal());
             this.explanationInput.addEventListener('input', () => this.updateTotal());
         } else {
-            console.error('입력 필드를 찾을 수 없습니다.');
+            //console.error('입력 필드를 찾을 수 없습니다.');
         }
     }
 
@@ -50,7 +50,7 @@ class CriticalCalc {
     }
 
     initializeTables() {
-        console.log('initializeTables');
+        //console.log('initializeTables');
         // 데이터를 버프와 자신으로 분리
         const buffData = criticalCalcData.filter(data => data.target !== '자신');
         const selfData = criticalCalcData.filter(data => data.target === '자신');
@@ -366,17 +366,17 @@ class CriticalCalc {
     }
 
     updateMobileCharNames() {
-        console.log('updateMobileCharNames called');
+        //console.log('updateMobileCharNames called');
         if (window.innerWidth <= 1200) {
-            console.log('mobile width detected:', window.innerWidth);
+            //console.log('mobile width detected:', window.innerWidth);
             // 버프 테이블 처리
             const processTable = (tableBody) => {
                 if (!tableBody) {
-                    console.log('tableBody is null');
+                    //console.log('tableBody is null');
                     return;
                 }
                 const rows = tableBody.querySelectorAll('tr');
-                console.log('processing rows:', rows.length);
+                //console.log('processing rows:', rows.length);
                 let lastValidCharName = '';
 
                 rows.forEach(row => {
@@ -386,11 +386,11 @@ class CriticalCalc {
                         if (currentName) {
                             lastValidCharName = currentName;
                             charNameCell.dataset.originalName = lastValidCharName;
-                            console.log('found valid name:', lastValidCharName);
+                            //console.log('found valid name:', lastValidCharName);
                         } else if (lastValidCharName) {
                             charNameCell.textContent = lastValidCharName;
                             charNameCell.dataset.isInherited = 'true';
-                            console.log('inherited name:', lastValidCharName);
+                            //console.log('inherited name:', lastValidCharName);
                         }
                     }
                 });
@@ -400,11 +400,11 @@ class CriticalCalc {
             processTable(this.buffTableBody);
             processTable(this.selfTableBody);
         } else {
-            console.log('desktop width detected:', window.innerWidth);
+            //console.log('desktop width detected:', window.innerWidth);
             // 모바일 모드가 아닐 때는 원래 이름으로 복원
             const restoreTable = (tableBody) => {
                 if (!tableBody) {
-                    console.log('tableBody is null');
+                    //console.log('tableBody is null');
                     return;
                 }
                 const inheritedCells = tableBody.querySelectorAll('.char-name-column[data-is-inherited="true"]');

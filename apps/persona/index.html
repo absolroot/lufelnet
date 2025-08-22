@@ -24,6 +24,7 @@ alternate_urls:
 {% endif %}
 
 <div class="main-wrapper">
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/skillfrom.css?v={{ site.time | date: '%s' }}">
     <!-- 언어 안내 메시지 -->
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
@@ -487,19 +488,21 @@ alternate_urls:
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
 
+    
+
     // URL에서 검색 파라미터를 가져와서 검색을 실행하는 함수
     function handleSearchParam() {
         const urlParams = new URLSearchParams(window.location.search);
         const searchQuery = urlParams.get('search');
-        console.log("[DEBUG] search param:", searchQuery);
+        //console.log("[DEBUG] search param:", searchQuery);
 
         if (searchQuery) {
             const searchInput = document.getElementById('personaSearch');
-            console.log("[DEBUG] searchInput:", searchInput);
+            //console.log("[DEBUG] searchInput:", searchInput);
 
             if (searchInput) {
                 searchInput.value = searchQuery;
-                console.log("[DEBUG] Dispatching input event");
+                //console.log("[DEBUG] Dispatching input event");
                 searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 // 초기 파라미터 적용 시 자동완성 드롭다운은 표시하지 않음
                 const dropdown = document.getElementById('searchDropdown');
@@ -520,7 +523,6 @@ alternate_urls:
             // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
             const hasLangParam = window.location.search.includes('lang=');
             if (hasLangParam) {
-                console.log("HELLOHELLO")
                 // 언어 파라미터가 있으면 바로 콘텐츠 로드
                 updateLanguageContent().then(() => {
                     initializePageContent().then(() => {
@@ -780,7 +782,7 @@ alternate_urls:
                                 <li data-priority="${skill.priority}">
                                     <div class="skill-info">
                                         <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
-                                        <span class="skill-name">${skillName}</span>
+                                        <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
                                         <span class="skill-description">${skillDescription}</span>
                                     </div>
                                 </li>
@@ -1285,8 +1287,8 @@ alternate_urls:
         document.querySelectorAll(".adsbygoogle").forEach(el => {
             const status = el.getAttribute("data-ad-status");
             const adslot = el.getAttribute("data-ad-slot");
-            console.log("google status", status);
-            console.log("google adslot", adslot);
+            //console.log("google status", status);
+            //console.log("google adslot", adslot);
             if (status === "unfilled" || el.querySelector("iframe") === null) {
                 el.style.display = "none";
             }
@@ -1313,15 +1315,6 @@ alternate_urls:
     border-radius: 12px;
     padding: 20px;
     color: #fff;
-}
-
-@media (max-width: 1200px) {
-    .explain-container {
-        padding: 0;
-    }
-    .explain-box {
-        gap: 24px;
-    }
 }
 
 .explain-section h4 {
@@ -1359,3 +1352,5 @@ alternate_urls:
 }
 
 </style>
+<script>window.SITE_BASEURL = '{{ site.baseurl }}';</script>
+<script src="{{ site.baseurl }}/apps/persona/skillfrom.js?v={{ site.time | date: '%s' }}"></script>

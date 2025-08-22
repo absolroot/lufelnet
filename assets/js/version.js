@@ -4,8 +4,8 @@ class VersionChecker {
     static check() {
         // 로컬 스토리지에서 마지막으로 확인한 버전 가져오기
         const lastVersion = localStorage.getItem('appVersion');
-        console.log('Current stored version:', lastVersion);
-        console.log('Current app version:', APP_VERSION);
+        //console.log('Current stored version:', lastVersion);
+        //console.log('Current app version:', APP_VERSION);
         if (lastVersion === null) {
             // 최초 실행시
             localStorage.setItem('appVersion', APP_VERSION);
@@ -24,7 +24,7 @@ class VersionChecker {
             await Promise.all(
                 cacheNames.map(name => caches.delete(name))
             );
-            console.log('Cache cleared successfully');
+            //console.log('Cache cleared successfully');
             
             // CSS와 JS 파일 강제 새로고침 (APP_VERSION 사용)
             const resources = document.querySelectorAll('link[rel="stylesheet"], script[src]');
@@ -51,7 +51,7 @@ class VersionChecker {
                 await Promise.all(
                     registrations.map(registration => registration.unregister())
                 );
-                console.log('Service workers unregistered');
+                //console.log('Service workers unregistered');
             }
 
             // 브라우저 캐시 강제 무효화

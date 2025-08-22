@@ -26,20 +26,20 @@ class LanguageRouter {
         const hasUrlLang = urlParams.get('lang');
         
         if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
-            console.log('👋 First-time visitor detected, initializing language detection...');
+            //console.log('👋 First-time visitor detected, initializing language detection...');
             const detectedLang = await this.detectLanguageByIP();
             
             // 감지된 언어로 자동 리다이렉트
             if (detectedLang) {
                 const newUrl = new URL(window.location);
                 newUrl.searchParams.set('lang', detectedLang);
-                console.log('🔄 Redirecting to detected language:', detectedLang);
+                //console.log('🔄 Redirecting to detected language:', detectedLang);
                 window.location.replace(newUrl.toString());
             }
         } else if (hasLanguagePreference && !hasUrlLang) {
             // 저장된 언어 설정이 있지만 URL에 lang 파라미터가 없는 경우 자동 적용
             const savedLang = localStorage.getItem('preferredLanguage');
-            console.log('🔄 Applying saved language preference:', savedLang);
+            //console.log('🔄 Applying saved language preference:', savedLang);
             const newUrl = new URL(window.location);
             newUrl.searchParams.set('lang', savedLang);
             window.location.replace(newUrl.toString());
@@ -92,8 +92,8 @@ class LanguageRouter {
                 }
                 
                 // 즉시 리다이렉트
-                console.log('Redirecting from:', fullUrl);
-                console.log('Redirecting to:', newUrl);
+                //console.log('Redirecting from:', fullUrl);
+                //console.log('Redirecting to:', newUrl);
                 window.location.replace(newUrl);
                 return;
             }
@@ -134,7 +134,7 @@ class LanguageRouter {
     // IP 기반 언어 자동 감지
     static async detectLanguageByIP() {
         try {
-            console.log('🌍 Detecting user location for language setting...');
+            //console.log('🌍 Detecting user location for language setting...');
             
             // 여러 IP 지역 감지 API를 시도 (폴백 지원)
             const apis = [
@@ -161,7 +161,7 @@ class LanguageRouter {
                         break;
                     }
                 } catch (apiError) {
-                    console.log(`Failed to fetch from ${api}:`, apiError.message);
+                    // console.log(`Failed to fetch from ${api}:`, apiError.message);
                     continue;
                 }
             }
@@ -175,20 +175,20 @@ class LanguageRouter {
                                locationData.country || 
                                locationData.countryCode;
             
-            console.log('🌍 Detected country:', countryCode);
+            //console.log('🌍 Detected country:', countryCode);
             
             let detectedLang = 'en'; // 기본값을 영어로 변경
             
             // 국가 코드에 따른 언어 설정
             if (countryCode === 'KR') {
                 detectedLang = 'kr';
-                console.log('🇰🇷 Korean user detected');
+                //console.log('🇰🇷 Korean user detected');
             } else if (countryCode === 'JP') {
                 detectedLang = 'jp';
-                console.log('🇯🇵 Japanese user detected');
+                //console.log('🇯🇵 Japanese user detected');
             } else {
                 detectedLang = 'en';
-                console.log('🌎 International user detected, setting English');
+                //console.log('🌎 International user detected, setting English');
             }
             
             // 자동 감지된 언어를 로컬 스토리지에 저장
@@ -196,12 +196,12 @@ class LanguageRouter {
             localStorage.setItem('languageDetected', 'true');
             localStorage.setItem('detectedCountry', countryCode);
             
-            console.log('✅ Auto-detected language saved:', detectedLang);
+            //console.log('✅ Auto-detected language saved:', detectedLang);
             
             return detectedLang;
             
         } catch (error) {
-            console.log('❌ Failed to detect language by IP:', error.message);
+            //console.log('❌ Failed to detect language by IP:', error.message);
             
             // IP 감지 실패 시 브라우저 언어로 폴백
             const browserLang = navigator.language.toLowerCase();
@@ -209,20 +209,20 @@ class LanguageRouter {
             
             if (browserLang.startsWith('ko')) {
                 fallbackLang = 'kr';
-                console.log('🇰🇷 Fallback to Korean (browser language)');
+                //console.log('🇰🇷 Fallback to Korean (browser language)');
             } else if (browserLang.startsWith('ja')) {
                 fallbackLang = 'jp';
-                console.log('🇯🇵 Fallback to Japanese (browser language)');
+                //console.log('🇯🇵 Fallback to Japanese (browser language)');
             } else {
                 fallbackLang = 'en';
-                console.log('🌎 Fallback to English (browser language)');
+                //console.log('🌎 Fallback to English (browser language)');
             }
             
             localStorage.setItem('preferredLanguage', fallbackLang);
             localStorage.setItem('languageDetected', 'true');
             localStorage.setItem('detectionMethod', 'browser');
             
-            console.log('✅ Fallback language saved:', fallbackLang);
+            //console.log('✅ Fallback language saved:', fallbackLang);
             
             return fallbackLang;
         }
@@ -420,7 +420,7 @@ class LanguageRouter {
         localStorage.removeItem('languageDetected');
         localStorage.removeItem('detectedCountry');
         localStorage.removeItem('detectionMethod');
-        console.log('🔄 Language settings reset. Reload the page to detect language again.');
+        //console.log('🔄 Language settings reset. Reload the page to detect language again.');
     }
 }
 
@@ -446,10 +446,10 @@ if (typeof window !== 'undefined') {
         const hasUrlLang = urlParams.get('lang');
         
         if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
-            console.log('🔄 Forcing language detection on page load...');
+            //console.log('🔄 Forcing language detection on page load...');
             LanguageRouter.detectLanguageByIP().then(detectedLang => {
                 if (detectedLang && detectedLang !== 'kr') {
-                    console.log(`🌍 Detected language: ${detectedLang}, redirecting...`);
+                    //console.log(`🌍 Detected language: ${detectedLang}, redirecting...`);
                     const newUrl = new URL(window.location);
                     newUrl.searchParams.set('lang', detectedLang);
                     window.location.replace(newUrl.toString());
@@ -467,15 +467,15 @@ window.LanguageRouter = LanguageRouter;
 
 // 쉬운 디버깅을 위한 전역 함수들
 window.debugLanguage = function() {
-    console.log('🔍 Language Debug Info:');
-    console.table(LanguageRouter.getLanguageDebugInfo());
+    //console.log('🔍 Language Debug Info:');
+    //console.table(LanguageRouter.getLanguageDebugInfo());
     
     // IP 감지 테스트
-    console.log('🌍 Testing IP detection...');
+    //console.log('🌍 Testing IP detection...');
     LanguageRouter.detectLanguageByIP().then(lang => {
-        console.log('✅ IP Detection Result:', lang);
+        //console.log('✅ IP Detection Result:', lang);
     }).catch(err => {
-        console.log('❌ IP Detection Failed:', err);
+        //console.log('❌ IP Detection Failed:', err);
     });
 };
 
@@ -484,7 +484,7 @@ window.resetLanguage = function() {
 };
 
 window.testIPDetection = async function() {
-    console.log('🧪 Testing IP Detection APIs...');
+    //console.log('🧪 Testing IP Detection APIs...');
     
     const apis = [
         'https://ipapi.co/json/',
@@ -494,12 +494,12 @@ window.testIPDetection = async function() {
     
     for (const api of apis) {
         try {
-            console.log(`Testing ${api}...`);
+            //console.log(`Testing ${api}...`);
             const response = await fetch(api);
             const data = await response.json();
-            console.log(`✅ ${api}:`, data);
+            //console.log(`✅ ${api}:`, data);
         } catch (error) {
-            console.log(`❌ ${api}:`, error.message);
+            //console.log(`❌ ${api}:`, error.message);
         }
     }
 }; 

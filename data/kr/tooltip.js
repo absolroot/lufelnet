@@ -194,3 +194,115 @@ const tooltip = {
     //이치고
     "원념" : "4턴 동안 턴마다 시카노 이치고의 공격력 18%의 주원 속성 대미지를 받는다 (10회 중첩 가능). 『원념』을 가진 적이 사망하면 체력이 가장 많은 적에게 전이된다 (주원 속성이 무,흡,반인 적에게는 전이되지 않음).",
 }
+
+const tooltip_en = {
+//Common
+    "Resonance" : "An effect that will be activated when specific conditions are met.",
+    "Technical" : "[Skill] Some skills will activate effects if certain conditions are met.",
+    "inflict Curse" : "[Status] Lose 1% HP for 2 turns.",
+    "Blessing" : "[Status] Recover 1% HP for 2 turns.",
+    "Taunt" : "[Status] Enemies will prioritize targeting the user.",
+    "Elemental Ailment" : "Burn, Freeze, Shock, and Windswept are classified as elemental ailments.",
+    "Windswept" : "[Elemental Ailment] Decrease Defense by 12% for 2 turns.",
+    "Burning" : "[Elemental Ailment] Lose 5% HP for 2 turns.",
+    "Burn" : "[Elemental Ailment] Lose 5% HP for 2 turns.",
+    "Freeze" : "[Elemental Ailment] Decrease Attack by 12% for 2 turns.",
+    "Shocked" : "[Elemental Ailment] Increase critical taken rate by 10% for 2 turns.",
+    "Shock": "[Elemental Ailment] Increase critical taken rate by 10% for 2 turns.",
+    "Fire Technical" : "Some fire skills have other effects on foes in certain states.",
+    "Fireburn" : "After activating, increase damage dealt to target by 2%.",
+    "Spiritual Ailments" : "Dizzy, Forget, Sleep, Rage, Despair, Confuse, Fear, and Brainwash are classified as spiritual ailments.",
+    "Sleep" : "[Spiritual Ailment] Unable to act. Recover 5% HP and SP every turn. Removed after taking damage from an attack.",
+    "Forget" : "[Spiritual Ailment] Cannot use skills.",
+
+    //Leon
+    "Power of Friendship" : "[Count] Increase allies' Attack when granted.",
+
+    //Fleuret
+    "Right to Strike" : "[Count] Increase Seiji's Attack and Speed.",
+
+    //Yuki
+    "Oath" : "[Status] At the end of Yukimi's action, grant a shield to the selected ally.",
+    "Gavel" : "[Count] When spent, deal Bless damage to 1 foe, increase party's Attack, and grant shield.",
+
+    //Puppet
+    "Seashell" : "[Count] Increase ally shield and various stats based on number of stacks.",
+
+    //Mont
+    "Ice Crystal" : "[Count] When a certain amount is spent, activates Blade Dancer.",
+    "Blade Dancer" : "[Resonance] After using a skill, if at a certain number of Ice Crystal stacks or higher, deal Ice damage to foes as a follow up. This effect counts as a Resonance.",
+    "Durandal of Ice" : "[Skill] Deal Ice damage to 1 foe. When Kotone has a set number of Ice Crystal attacks and Parhelion is active, increase damage based on foe's missing HP.",
+
+    //Sepia
+    "Verse of Hate" : "[Count] When spent to activate Sonnet of Fate, chance to inflict Curse on foe.",
+    "Verse of Healing" : "[Count] When spent to activate Sonnet of Fate, restore HP of ally with the lowest remaining HP.",
+    "Verse of Passion" : "[Count] When spent to activate Sonnet of Fate, deal bonus Almighty damage to foe.",
+    "Sonnet of Fate" : "[Resonance] With a certain number of Verse stacks, when an ally acts, deal follow-up Curse damage to 1 foe.",
+    "Verse of Zenith" : "[Count] Gain the effects of all Verses at once.",
+    "Verse" : "[Count] With a certain number of stacks, when an ally acts, deal follow-up Curse damage to 1 foe.",
+    
+    //Key
+    "Chosen One" : "[Count] Increase party's fire damage. When using a skill, take damage.",
+    "Sacred Flame" : "[Status] When target foe takes action, deal Fire damage (2 turns).",
+
+    //Okyann
+    "Beat" : "[Count] When spending a certain number of stacks, activate Pulsating Rhythm for all allies.",
+    "Pulsating Rhythm" : "[Count] Increase party's Attack, Defense, and Status Ailment Accuracy.",
+
+    //Moko
+    "Greenleaf" : "[Count] Spent when Tomoko uses certain skills.",
+
+    //Soy	
+    "Desperado" : "[Status] At the end of an action, recover HP.",
+
+    //Cattle
+    "Starfire III" : "[Status] Allies healed using skills gain Starfire, increasing Attack for 1 turn.",
+    "Starfire II" : "[Status] Allies healed using skills gain Starfire, increasing Attack for 1 turn.",
+    "Starfire I" : "[Status] Allies healed using skills gain Starfire, increasing Attack for 1 turn.",
+    "Starfire" : "[Status] Allies healed using skills gain Starfire, increasing Attack for 1 turn.",
+
+    //Vino
+    "Radiation" : "[Elemental Ailment] Increase Nuclear damage by 15% for 2 turns.",
+
+    //Ann
+    "La Vie en Rose" : "[Status] When dealing Fire damage to foes, gain 1 Passion stack. With 4 Passion stacks, gain this status at start of action and increase Attack.",
+
+    //Mona
+    "Chivalry" : "[Count] Spend stacks to heal the party's HP.",
+
+    //Skull
+    "Rebound" : "[Condition] Next skill used deals increased damage.",
+
+    //Riddle
+    "Affection" : "[Status] When allies granted this status deal damage with a skill, Haruna gains Childish Heart and Mystery.",
+    "Childish Heart" : "[Count] When spent, increase party's Attack.",
+
+    //Rin
+    "Memory" : "[Count] After spending a certain number of stacks, gain Meng Po Soup.",
+    "Meng Po Soup" : "[Count] Spend all when using a skill. Chance to inflict Forget and increase the effect of certain skills.",
+    "Waters of Oblivion" : "[Count] Foes take increased damage based on Speed.",
+
+    //Joker	
+    "Will of Rebellion" : "[Count] At 3 stacks, able to take an extra action. Spend 3 stacks after the extra action is taken.",
+
+    //Marian
+    "Diagnosis" : "[Count] Increase Minami's max HP by 15% for each stack. When using certain skills, spend all stacks to strengthen those skills' effects.",
+
+    //Fox
+    "Inspiration" : "[Status] After taking damage from enemy skills, random chance to counterattack and deal Ice damage.",
+    "Imagination" : "[Status] 100% chance to counterattack. Change to multi-target and increase damage.",
+    "Vision & Emotion" : "[Status] Change counterattacks to deal 2 consecutive hits with pierce effect.",
+    "Creation" : "[Status] 100% chance to counterattack. Change to multi-target, increase damage, and deal 2 consecutive hits with pierce effect.",
+    
+    //Queen
+    "Tenacity" : "[Count] Increase Makoto's Attack by 6% and Defense by 2%.",
+    "Crash Out" : "[Effect] Increase Makoto's Attack by 40% and Defense by 20% for 2 turns, and Nuclear Fury evolves to Thermonuclear Fury.",
+
+    //Phoebe
+    "Cocktail" : "[Count] Created when Phoebe gains Mixers. There are 3 levels of quality: Tailor-Made, Standard, and Basic. When using skills, spend a Cocktail to increase various effects.",
+    "Cocktails" : "[Count] Created when Phoebe gains Mixers. There are 3 levels of quality: Tailor-Made, Standard, and Basic. When using skills, spend a Cocktail to increase various effects.",
+    "Tailor-Made" : "[Effect] A cocktail created with 3 Mixers of the same attribute.",
+    "Standard" : "[Effect] A cocktail created with 2 Mixers of the same attribute.",
+    "Basic" : "[Effect] A cocktail created with 3 Mixers of the different attributes.",
+    "Mixer" : "[Count] Gain 1 Mixer when allies deal damage to foes with skills, Resonances, or Highlights. After reaching 3 stacks, create a Cocktail based on the types of Mixers.",
+}

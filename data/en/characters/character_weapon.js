@@ -414,7 +414,7 @@ const enCharacterWeaponData = {
             "attack": 733,
             "defense": 400,
             "skill_name": "Wine & Revelry",
-            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For each Cocktail spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% (2 turns)\nIncrease damage by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5% (2 turns)\nIncrease critical rate by 4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6% (2 turns)\nThese effects do not stack. If the Cocktail spent was Tailor-Made, multiply effect by 120%. If it was Standard, multiply effect by 100%. If it was Basic, multiply effect by 50%. For every 2 Cocktailsgained, reduce Yumi's cooldown time by 1 turn."
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For each Cocktail spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% (2 turns)\nIncrease damage by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5% (2 turns)\nIncrease critical rate by 4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6% (2 turns)\nThese effects do not stack. If the Cocktail spent was [Tailor-Made], multiply effect by 120%. If it was [Standard], multiply effect by 100%. If it was [Basic], multiply effect by 50%. For every 2 Cocktailsgained, reduce Yumi's cooldown time by 1 turn."
         }
     },
     "치즈코": {
@@ -887,14 +887,14 @@ const enCharacterWeaponData = {
             "health": 1870,
             "attack": 554,
             "defense": 338,
-            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After using a support skill, 43.0%/56.0%/56.0%/69.0%/69.0%/82.0%/82.0% chance to gain 1 Beat stack."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After using a support skill, 43.0%/56.0%/56.0%/69.0%/69.0%/82.0%/82.0% chance to gain 1 [Beat] stack."
         },
         "weapon5-1": {
             "name": "Retro Disco Style",
             "health": 2338,
             "attack": 693,
             "defense": 422,
-            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After granting user's Pulsating Rhythm, 41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0% chance to gain 1 Beat stack. Increase buffs from Pulsating Rhythm by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After granting user's Pulsating Rhythm, 41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0% chance to gain 1 [Beat] stack. Increase buffs from Pulsating Rhythm by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
         }
     }
 };

@@ -480,7 +480,7 @@ alternate_urls:
             }
         }
         
-        console.log('🌐 현재 언어 설정:', currentLang);
+        //console.log('🌐 현재 언어 설정:', currentLang);
         
         // 다국어 데이터 로드
         await loadI18nData();
@@ -779,7 +779,7 @@ alternate_urls:
         
         // 첫 방문자이고 언어 설정이 없는 경우에만 감지
         if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
-            console.log('👋 첫 방문자 감지, IP 기반 언어 설정 시작...');
+            //console.log('👋 첫 방문자 감지, IP 기반 언어 설정 시작...');
             
             try {
                 const apis = [
@@ -801,23 +801,23 @@ alternate_urls:
                             const data = await response.json();
                             const countryCode = data.country_code || data.country;
                             
-                            console.log(`🌍 감지된 국가: ${countryCode}`);
+                            //console.log(`🌍 감지된 국가: ${countryCode}`);
                             
                             if (countryCode === 'KR') {
                                 detectedLang = 'kr';
-                                console.log('🇰🇷 한국 사용자 감지');
+                                //console.log('🇰🇷 한국 사용자 감지');
                             } else if (countryCode === 'JP') {
                                 detectedLang = 'jp';
-                                console.log('🇯🇵 일본 사용자 감지');
+                                //console.log('🇯🇵 일본 사용자 감지');
                             } else {
                                 detectedLang = 'en';
-                                console.log('🌎 해외 사용자 감지');
+                                //console.log('🌎 해외 사용자 감지');
                             }
                             
                             break; // 첫 번째 성공한 API로 결정
                         }
                     } catch (error) {
-                        console.log(`❌ ${api} 실패:`, error.message);
+                        //console.log(`❌ ${api} 실패:`, error.message);
                         continue;
                     }
                 }
@@ -826,11 +826,11 @@ alternate_urls:
                 localStorage.setItem('preferredLanguage', detectedLang);
                 localStorage.setItem('languageDetected', 'true');
                 
-                console.log(`✅ 감지된 언어: ${detectedLang}`);
+                //console.log(`✅ 감지된 언어: ${detectedLang}`);
                 
                 // 한국어가 아닌 경우 리다이렉트
                 if (detectedLang !== 'kr') {
-                    console.log(`🔄 ${detectedLang} 언어로 리다이렉트...`);
+                    //console.log(`🔄 ${detectedLang} 언어로 리다이렉트...`);
                     const newUrl = new URL(window.location);
                     newUrl.searchParams.set('lang', detectedLang);
                     window.location.replace(newUrl.toString());
@@ -838,7 +838,7 @@ alternate_urls:
                 }
                 
             } catch (error) {
-                console.log('❌ 언어 감지 실패:', error);
+                //console.log('❌ 언어 감지 실패:', error);
                 // 폴백: 브라우저 언어 확인
                 const browserLang = navigator.language.toLowerCase();
                 let fallbackLang = 'kr';
@@ -948,7 +948,7 @@ alternate_urls:
         setTimeout(async () => {
             await updateLanguageContent();
             updateSEOContent();
-            console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
+            //console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
         }, 100);
 
         /*

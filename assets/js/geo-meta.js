@@ -124,7 +124,7 @@
         if (!imageExists) {
             console.warn(`Language-specific image not found: ${imageUrl}`);
             imageUrl = baseUrl + '/assets/img/home/seo.png'; // 기본 이미지로 폴백
-            console.log(`Fallback to default image: ${imageUrl}`);
+            //console.log(`Fallback to default image: ${imageUrl}`);
         }
         
         // 기본 메타태그 업데이트
@@ -159,8 +159,8 @@
         // 언어 설정 저장
         localStorage.setItem('preferred_language', lang);
         
-        console.log(`Meta tags updated for language: ${lang}`);
-        console.log(`Thumbnail image set to: ${imageUrl}`);
+        //console.log(`Meta tags updated for language: ${lang}`);
+        //console.log(`Thumbnail image set to: ${imageUrl}`);
     }
     
     // 메타태그 생성/업데이트 헬퍼 함수

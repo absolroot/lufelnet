@@ -645,7 +645,7 @@ class TacticUploader {
 
     initLanguage() {
         const lang = this.currentLang;
-        console.log('Current language:', lang); // 디버그용
+        //console.log('Current language:', lang); // 디버그용
         
         if (translations[lang]) {
             // data-i18n 속성을 가진 요소들 번역
@@ -653,7 +653,7 @@ class TacticUploader {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
                     element.textContent = translations[lang][key];
-                    console.log(`Translated ${key} to:`, translations[lang][key]); // 디버그용
+                    //console.log(`Translated ${key} to:`, translations[lang][key]); // 디버그용
                 }
             });
 
@@ -680,7 +680,7 @@ class TacticUploader {
             if (navCurrent && translations[lang].nav_current) navCurrent.textContent = translations[lang].nav_current;
             if (pageTitle && translations[lang].page_title) pageTitle.textContent = translations[lang].page_title;
         } else {
-            console.log('No translations found for language:', lang);
+            //console.log('No translations found for language:', lang);
         }
     }
 
@@ -726,7 +726,7 @@ class TacticUploader {
                                    session.user.email || '';
                 authorInput.value = displayName;
                 
-                console.log('사용자 인증 확인됨:', displayName);
+                //console.log('사용자 인증 확인됨:', displayName);
             } else {
                 // 세션이 없으면 로컬 스토리지도 확인
                 const localUser = localStorage.getItem('user');
@@ -1170,8 +1170,8 @@ class TacticUploader {
                 .select('id')
                 .single();
 
-            console.log('Tactic uploaded with URL code:', formData.url);
-            console.log('Full URL will be: https://lufel.net/tactic/?code=' + formData.url);
+            //console.log('Tactic uploaded with URL code:', formData.url);
+            //console.log('Full URL will be: https://lufel.net/tactic/?code=' + formData.url);
 
             if (error) {
                 throw error;

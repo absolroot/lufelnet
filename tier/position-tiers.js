@@ -417,7 +417,7 @@ const handleResponsiveLayout = () => {
   const newLayout = isMobile ? 'mobile' : 'desktop';
   
   if (currentLayout !== newLayout) {
-    console.log(`Layout changed to: ${newLayout}`);
+    //console.log(`Layout changed to: ${newLayout}`);
     currentLayout = newLayout;
     
     // Store current tier data
@@ -1210,27 +1210,27 @@ const loadTierDataFromFile = async (useKROverride = false) => {
     const fileName = (useKROverride || currentLang === 'kr') ? 'kr_tier.json' : 'global_tier.json';
     const filePath = `../${fileName}`;
     
-    console.log('Loading tier data from file:', filePath);
+    //console.log('Loading tier data from file:', filePath);
     
     const response = await fetch(filePath);
     if (!response.ok) {
-      console.log('Tier file not found:', filePath);
+      //console.log('Tier file not found:', filePath);
       return null;
     }
     
     const jsonData = await response.text();
     if (!jsonData.trim()) {
-      console.log('Tier file is empty');
+      //console.log('Tier file is empty');
       return null;
     }
     
     // 단순히 JSON 파싱
     const tierData = JSON.parse(jsonData);
     
-    console.log('Tier data loaded from file:', tierData);
+    //console.log('Tier data loaded from file:', tierData);
     return tierData;
   } catch (error) {
-    console.error('Failed to load tier data from file:', error);
+    //console.error('Failed to load tier data from file:', error);
     return null;
   }
 };
@@ -1503,7 +1503,7 @@ window.initPositionTierMaker = () => {
   
   // 이미 초기화된 경우 중복 실행 방지
   if (document.querySelector('.position-header')) {
-    console.log('Position tier maker already initialized');
+    //console.log('Position tier maker already initialized');
     return;
   }
   
@@ -1530,10 +1530,10 @@ window.initPositionTierMaker = () => {
       let tierData = getTierDataFromURL();
       
       if (tierData) {
-        console.log('Loading tier data from URL...');
+        //console.log('Loading tier data from URL...');
       } else {
         // URL에 없으면 파일에서 로드
-        console.log('No URL data, trying to load from file...');
+        //console.log('No URL data, trying to load from file...');
         tierData = await loadTierDataFromFile(forceUseKRTierInGlobal);
       }
       
@@ -1563,9 +1563,9 @@ window.initPositionTierMaker = () => {
     return tierData;
   };
   
-  console.log('🎮 Console commands available:');
-  console.log('  shareTierList() - Copy tier data to clipboard');
-  console.log('  exportTierList() - Show tier data in console');
+  //console.log('🎮 Console commands available:');
+  //console.log('  shareTierList() - Copy tier data to clipboard');
+  //console.log('  exportTierList() - Show tier data in console');
 };
 
 // 페이지 로드 시 초기화 시도 (데이터가 없으면 대기)
@@ -1674,7 +1674,7 @@ const convertRitualFromJSON = (ritualData) => {
 
 // 티어 리스트 결과를 JSON으로 내보내는 함수 (인코딩 없이)
 const exportTierListAsJSON = () => {
-  console.log('Exporting tier list as JSON...');
+  //console.log('Exporting tier list as JSON...');
   
   // 표준 티어 목록 (항상 포함되어야 함)
   const standardTiers = ['T0', 'T0.5', 'T1', 'T2', 'T3', 'T4'];

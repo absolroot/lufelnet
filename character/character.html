@@ -611,8 +611,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         document.querySelectorAll(".adsbygoogle").forEach(el => {
             const status = el.getAttribute("data-ad-status");
             const adslot = el.getAttribute("data-ad-slot");
-            console.log("google status", status);
-            console.log("google adslot", adslot);
+            //console.log("google status", status);
+            //console.log("google adslot", adslot);
             if (status === "unfilled" || el.querySelector("iframe") === null) {
                 el.style.display = "none";
             }
@@ -1061,8 +1061,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             
             // <b> 태그의 수 확인
             const bTagCount = (battlePlusStats.textContent.match(/<b>/g) || []).length;
-            console.log('bTagCount:', bTagCount);
-            console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
+            //console.log('bTagCount:', bTagCount);
+            //console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
             if (bTagCount >= 2) {
                 // 2열 레이아웃으로 변경
                 battlePlusStats.style.display = 'grid';
@@ -1226,7 +1226,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     weaponStars.appendChild(star);
                 }
                 // weapon.key가 weapon4-2라면 별 옆에 'EVENT' 텍스트를 추가한다.
-                console.log(weapon.key);
+                //console.log(weapon.key);
                 if(weapon.key=="weapon4-2"){
                     const eventText = document.createElement('span');
                     eventText.className = 'event-text';

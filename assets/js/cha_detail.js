@@ -616,8 +616,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTypes = effectData.type;
                         // console.log('영어 효과 데이터 사용:', effectData);
                     } else {
-                        console.log('영어 효과 데이터 없음:', englishKey);
-                        console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
+                        //console.log('영어 효과 데이터 없음:', englishKey);
+                        //console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
                     }
                 } else if (currentLang === 'jp' && translationData && translationData.sub_effects) {
                     // 한국어 키를 일본어 키로 변환
@@ -631,8 +631,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTypes = effectData.type;
                         // console.log('일본어 효과 데이터 사용:', effectData);
                     } else {
-                        console.log('일본어 효과 데이터 없음:', japaneseKey);
-                        console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
+                        //console.log('일본어 효과 데이터 없음:', japaneseKey);
+                        //console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
                     }
                 } else if (revelationData.sub_effects && revelationData.sub_effects[revelation]) {
                     effectData = revelationData.sub_effects[revelation];

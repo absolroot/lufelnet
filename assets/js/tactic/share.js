@@ -326,7 +326,7 @@ function shareURL() {
       const subRev = document.querySelector(`.party-member[data-index="${idx}"]`)?.querySelector(".sub-revelation")?.value;
       
       // 디버깅 로그 추가 - 모든 계시 값 확인
-      console.log(`[DEBUG] Party Member ${idx} - mainRev: "${mainRev}", subRev: "${subRev}"`);
+      //console.log(`[DEBUG] Party Member ${idx} - mainRev: "${mainRev}", subRev: "${subRev}"`);
       
       if (mainRev) obj.mr = MAIN_REV_TO_CODE[mainRev];
       if (subRev) obj.sr = SUB_REV_TO_CODE[subRev];
@@ -357,7 +357,7 @@ function shareURL() {
     delete data.h;
   }
 
-  console.log(data);
+  //console.log(data);
 
   const jsonString = JSON.stringify(data)
     .replace(/":"/g, '$')

@@ -194,7 +194,7 @@ const enCharacterRitualData = {
         "r0": "All Embraces and Warmth",
         "r0_detail": "When she has either 『Passionate Welcome』 or 『Relentless Pursuit』, 『GOGO Woof!』 becomes available.\nAfter using 『GOGO Woof!』, there is a 60% base chance to reduce the target's healing received by 50% and decrease their Defense by 18% for 2 turns.",
         "r1": "Gentle Assurance",
-        "r1_detail": "When using 『GOGO Woof!』, if triggered under 『Passionate Welcome』, the enemy's Fire damage taken increases by an additional 36% for 2 turns.\nIf triggered under 『Relentless Pursuit』, the enemy's Follow-up (Additional Effect) damage taken increases by an additional 40% for 2 turns.",
+        "r1_detail": "When using 『GOGO Woof!』, if triggered under 『Passionate Welcome』, the enemy's Fire damage taken increases by an additional 36% for 2 turns.\nIf triggered under 『Relentless Pursuit』, the enemy's Resonance (Additional Effect) damage taken increases by an additional 40% for 2 turns.",
         "r2": "An Understanding Heart",
         "r2_detail": "Targets affected by Runa Dogenzaka's debuffs take 36% more Critical Damage and receive 20% less healing.",
         "r3": "Silent Encouragement",
@@ -204,7 +204,7 @@ const enCharacterRitualData = {
         "r5": "Source of Sunshine and Joy",
         "r5_detail": "The skill levels of 『Fiery Handshake』 and 『Warning to Villains』 increase by 3, up to a maximum of 15.",
         "r6": "Forever By My Side",
-        "r6_detail": "At the start of battle, she gains both 『Passionate Welcome』 and 『Relentless Pursuit』, and the abnormal effect duration of 『Fiery Handshake』, 『Warning to Villains』, and 『GOGO Woof!』 is extended by 1 turn.\nWhen she has both 『Passionate Welcome』 and 『Relentless Pursuit』 simultaneously, all enemies take 18% more Fire damage from 『GOGO Woof!』 and the main target takes 25% more Follow-up damage.\nBoth 『Passionate Welcome』 and 『Relentless Pursuit』 effects activate simultaneously (damage bonuses do not stack, the higher value takes precedence when both are triggered)."
+        "r6_detail": "At the start of battle, she gains both 『Passionate Welcome』 and 『Relentless Pursuit』, and the abnormal effect duration of 『Fiery Handshake』, 『Warning to Villains』, and 『GOGO Woof!』 is extended by 1 turn.\nWhen she has both 『Passionate Welcome』 and 『Relentless Pursuit』 simultaneously, all enemies take 18% more Fire damage from 『GOGO Woof!』 and the main target takes 25% more Resonance damage.\nBoth 『Passionate Welcome』 and 『Relentless Pursuit』 effects activate simultaneously (damage bonuses do not stack, the higher value takes precedence when both are triggered)."
     },
     "리코": {
         "name": "Riko Tanemura",
@@ -345,19 +345,19 @@ const enCharacterRitualData = {
     "유우미": {
         "name": "Yumi Shiina",
         "r0": "Expert Bartender",
-        "r0_detail": "When an ally deals damage with a skill, Resonance, or Highlight, Yumi gains 1 Mixer stack of the corresponding attribute.\nAfter gaining 3 Mixer stacks, change them to a Cocktail (max 3).\nIf the 3 Mixers have the same attribute, create a Tailor-Made Cocktail. If 2 are the same, create a Standard Cocktail. If all 3 are different, create a Basic Cocktail.\nWhen Yumi uses a skill, spend Cocktail stacks to activate various effects for the party and restore all allies' SP by 8.",
+        "r0_detail": "When an ally deals damage with a skill, Resonance, or Highlight, Yumi gains 1 Mixer stack of the corresponding attribute.\nAfter gaining 3 Mixer stacks, change them to a Cocktail (max 3).\nIf the 3 Mixers have the same attribute, create a [Tailor-Made] Cocktail. If 2 are the same, create a [Standard] Cocktail. If all 3 are different, create a [Basic] Cocktail.\nWhen Yumi uses a skill, spend Cocktail stacks to activate various effects for the party and restore all allies' SP by 8.",
         "r1": "Mojito",
-        "r1_detail": "When gaining a Cocktail, randomly gain 1 Mixer stack of the attributes spent.\nWhen activating Tempting Build or Invigorating Blend, and spending 1 Basic or Standard Cocktail, gain 1 Standard or Tailor-Made Cocktail.",
+        "r1_detail": "When gaining a Cocktail, randomly gain 1 Mixer stack of the attributes spent.\nWhen activating Tempting Build or Invigorating Blend, and spending 1 [Basic] or [Standard] Cocktail, gain 1 [Standard] or [Tailor-Made] Cocktail.",
         "r2": "Screwdriver",
         "r2_detail": "Increase party's damage by 16% when spending a Cocktail. Lasts for 2 turns.",
         "r3": "Martini",
         "r3_detail": "Increase the skill levels of Charming Gaze and Invigorating Blend by 3.",
         "r4": "Bloody Mary",
-        "r4_detail": "When an ally uses Highlight, increase their Attack by 10% for 1 turn. Gain 1 Tailor-Made Cocktail.",
+        "r4_detail": "When an ally uses Highlight, increase their Attack by 10% for 1 turn. Gain 1 [Tailor-Made] Cocktail.",
         "r5": "Old Fashioned",
         "r5_detail": "Increase the skill level of Tempting Build by 3.",
         "r6": "XYZ",
-        "r6_detail": "The maximum number of Cocktail stacks increases to 4.\nAt the start of battle, gain 1 Tailor-Made Cocktail. After every 3 Cocktails gained, gain 1 more Tailor-Made Cocktail.\nWhen spending a Tailor-Made, Standard, or Basic Cocktail to activate a skill, increase the skill effect from 120%/100%/50% up to 135%/120%/75% (includes Tempting Build, Invigorating Blend, and Moonlit Banquet)."
+        "r6_detail": "The maximum number of Cocktail stacks increases to 4.\nAt the start of battle, gain 1 [Tailor-Made] Cocktail. After every 3 Cocktails gained, gain 1 more [Tailor-Made] Cocktail.\nWhen spending a [Tailor-Made], [Standard], or [Basic] Cocktail to activate a skill, increase the skill effect from 120%/100%/50% up to 135%/120%/75% (includes Tempting Build, Invigorating Blend, and Moonlit Banquet)."
     },
     "치즈코": {
         "name": "Chizuko Nagao",
@@ -477,7 +477,7 @@ const enCharacterRitualData = {
         "r5": "With a Single Stroke",
         "r5_detail": "Highlight Enhanced: After using Highlight, increase counterattack damage by 30% for 3 turns.",
         "r6": "Finishing Touches",
-        "r6_detail": "Inspiration and Imagination effects are changed to Vision & Emotion and Creation. Counterattacks become 2 consecutive attacks, each dealing 90% of the original attack's damage. Also, increase counterattack pierce rate by 30%."
+        "r6_detail": "[Inspiration] and [Imagination] effects are changed to [Vision & Emotion] and [Creation]. Counterattacks become 2 consecutive attacks, each dealing 90% of the original attack's damage. Also, increase counterattack pierce rate by 30%."
     },
     "미나미": {
         "name": "Minami Miyashita",
@@ -499,7 +499,7 @@ const enCharacterRitualData = {
     "유이 YUI": {
         "name": "YUI",
         "r0": "Jolly Cooperation",
-        "r0_detail": "When an ally deals damage with a skill, there is a 35% chance to activate Resonance , dealing Electric damage equal to 80% of Attack as a follow-up attack. After a follow-up, increase target's next Electric damage taken by 15% for 2 turns.",
+        "r0_detail": "When an ally deals damage with a skill, there is a 35% chance to activate Resonance , dealing Electric damage equal to 80% of Attack as a Resonance attack. After a follow-up, increase target's next Electric damage taken by 15% for 2 turns.",
         "r1": "Payappa",
         "r1_detail": "Increase critical rate of follow-up attacks by 20%. Increase critical rate by 10% after landing a follow-up attack on Shocked foes.",
         "r2": "Welcome Rain",
@@ -584,7 +584,7 @@ const enCharacterRitualData = {
     "야오링": {
         "name": "Li Yaoling",
         "r0": "Goddess of Oblivion",
-        "r0_detail": "On Yaoling's action, gain 1 Memory stack for every 10 points of Speed (up to 18 stacks per turn). When Memory reaches 40 stacks, spend all stacks to gain 1 Meng Po Soup stack. When using a skill, spend 1 Meng Po Soup stack for a 50% chance to inflict Forget on 1 foe for 1 turn, and enhance effects of Flowers of Naihe and Lion Dance of Oblivion.",
+        "r0_detail": "On Yaoling's action, gain 1 [Memory] stack for every 10 points of Speed (up to 18 stacks per turn). When [Memory] reaches 40 stacks, spend all stacks to gain 1 Meng Po Soup stack. When using a skill, spend 1 Meng Po Soup stack for a 50% chance to inflict Forget on 1 foe for 1 turn, and enhance effects of Flowers of Naihe and Lion Dance of Oblivion.",
         "r1": "Road to Rebirth",
         "r1_detail": "At the start of battle, gain 1 Meng Po Soup stack.",
         "r2": "Soul Reaper",
@@ -737,9 +737,9 @@ const enCharacterRitualData = {
     "키요시": {
         "name": "Kurotani Kiyoshi",
         "r0": "Make Sparks Fly",
-        "r0_detail": "When using skills, gain 1 Chosen One stack.\nChosen One: Increase party's Fire damage by 5%, and when Kurotani attacks with a skill, the target takes 4% of his current HP as damage. Lasts for 2 turns. Stacks up to 5 times.\nChosen One's duration is managed individually for each stack.",
+        "r0_detail": "When using skills, gain 1 [Chosen One] stack.\n[Chosen One]: Increase party's Fire damage by 5%, and when Kurotani attacks with a skill, the target takes 4% of his current HP as damage. Lasts for 2 turns. Stacks up to 5 times.\n[Chosen One]'s duration is managed individually for each stack.",
         "r1": "Uncontrollable Power",
-        "r1_detail": "On Kurotani's action, for each stack of Chosen One, 12% chance to inflict Burn on 1 random foe.",
+        "r1_detail": "On Kurotani's action, for each stack of [Chosen One], 12% chance to inflict Burn on 1 random foe.",
         "r2": "Flaming Phenomenon",
         "r2_detail": "On Kurotani's action, for each Burning foe, increase Kurotani's damage by 8% for 1 turn. Counts up to 3 foes.",
         "r3": "Repent, Sinner",
@@ -749,7 +749,7 @@ const enCharacterRitualData = {
         "r5": "Exorcism",
         "r5_detail": "Increase the skill levels of Crimson Summon and Thief Tactics by 2, up to a maximum of 15.",
         "r6": "Contagious Passion",
-        "r6_detail": "When Chosen One reaches 10 stacks, increase party's Fire damage by 30% for 2 turns."
+        "r6_detail": "When [Chosen One] reaches 10 stacks, increase party's Fire damage by 30% for 2 turns."
     },
     "토모코": {
         "name": "Tomoko Noge",
@@ -805,15 +805,15 @@ const enCharacterRitualData = {
     "카요": {
         "name": "Tomiyama Kayo",
         "r0": "Fever Time",
-        "r0_detail": "When using a skill, gain Beat stacks. When Beat stacks reach 4 or more, Resonance activates, spending 4 Beat stacks to grant 1 Pulsating Rhythm stack to the party. When allies have Pulsating Rhythm, increase Attack by 20%, Defense by 20% and ailment accuracy by 10% for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
+        "r0_detail": "When using a skill, gain [Beat] stacks. When [Beat] stacks reach 4 or more, Resonance activates, spending 4 [Beat] stacks to grant 1 Pulsating Rhythm stack to the party. When allies have Pulsating Rhythm, increase Attack by 20%, Defense by 20% and ailment accuracy by 10% for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
         "r1": "Finish with a Smile",
-        "r1_detail": "At the start of battle, gain 2 Beat stacks, and increase party's ailment accuracy by 35% for 1 turn.",
+        "r1_detail": "At the start of battle, gain 2 [Beat] stacks, and increase party's ailment accuracy by 35% for 1 turn.",
         "r2": "Disco Ball",
-        "r2_detail": "After granting Pulsating Rhythm, 20% chance to gain 1 Beat stack.",
+        "r2_detail": "After granting Pulsating Rhythm, 20% chance to gain 1 [Beat] stack.",
         "r3": "Pop and Show It",
         "r3_detail": "Increase the skill levels of Club Okyann and Intermission by 2, up to level 15.",
         "r4": "Queen of the Stage",
-        "r4_detail": "When an ally uses a Highlight, 67% chance to gain 1 Beat stack.",
+        "r4_detail": "When an ally uses a Highlight, 67% chance to gain 1 [Beat] stack.",
         "r5": "Raise the Roof",
         "r5_detail": "Increase the skill level of Retro Dance Number by 2, up to level 15.",
         "r6": "Hey, DJ!",

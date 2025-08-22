@@ -134,13 +134,13 @@ class TacticShare {
             
             const doc = await chunkRef.get();
             if (!doc.exists) {
-                console.log('청크가 존재하지 않습니다.');
+                //console.log('청크가 존재하지 않습니다.');
                 this.renderPosts([]);
                 return;
             }
 
             const chunkData = doc.data();
-            console.log('청크 데이터:', chunkData); // 디버깅용
+            //console.log('청크 데이터:', chunkData); // 디버깅용
 
             const posts = Object.values(chunkData.posts || {})
                 .filter(post => {
@@ -176,7 +176,7 @@ class TacticShare {
                     isLiked: post.likes?.recentIPs?.includes(this.userIP) || false
                 }));
 
-            console.log('처리된 게시물:', posts); // 디버깅용
+            //console.log('처리된 게시물:', posts); // 디버깅용
                 this.renderPosts(posts);
             
             // 페이지네이션 상태 업데이트
@@ -721,13 +721,13 @@ class TacticShare {
                 (now.getTime() - this.lastCacheUpdate.getTime() < this.cacheDuration) &&
                 Object.keys(this.cachedPosts).length < 1000) {
                 
-                console.log('캐시된 데이터 사용');
+                //console.log('캐시된 데이터 사용');
                 this.processRankingData(this.cachedPosts, startDate);
                 return;
             }
 
             // 캐시가 없거나 만료된 경우 새로 로드
-            console.log('새로운 데이터 로드');
+            //console.log('새로운 데이터 로드');
             const chunks = await db.collection('post_chunks').get();
             let allPosts = {};
 

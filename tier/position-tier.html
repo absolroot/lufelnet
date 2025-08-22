@@ -621,7 +621,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     window.characterList = (listLangOverride === 'kr') ? krCharacterList : (langCharacterList || krCharacterList);
                     
                 } else {
-                    console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
+                    //console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
                     // 언어별 데이터가 없으면 한국어 데이터 사용
                     window.characterData = krCharacterData;
                     window.characterList = krCharacterList;
@@ -741,7 +741,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
     async function initializePageContent() {
         // 중복 실행 방지
         if (isInitializing || isInitialized) {
-            console.log('initializePageContent already running or completed');
+            //console.log('initializePageContent already running or completed');
             return;
         }
         
@@ -770,7 +770,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
     
     // 페이지 로드 시 초기화
     document.addEventListener('DOMContentLoaded', async () => {
-        console.log('DOMContentLoaded event fired');
+        //console.log('DOMContentLoaded event fired');
         
         // 기본 초기화 작업
         Navigation.load('position-tier-maker');
@@ -837,9 +837,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
     
     // 추가 안전장치
     window.addEventListener('load', async () => {
-        console.log('Window load event fired');
+        //console.log('Window load event fired');
         if (!isInitialized) {
-            console.log('Page not initialized yet, running initialization...');
+            //console.log('Page not initialized yet, running initialization...');
             await initializePageContent();
         }
     });

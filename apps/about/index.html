@@ -85,6 +85,12 @@ alternate_urls:
             <button id="donateButton" class="donate-button" data-kr="후원 | Donate" data-en="Support | Donate" data-jp="サポート | 寄付">후원 | Donate</button>
         </div>
 
+        <!-- Inline donate (EN/JP only) -->
+        <div class="about-section" id="donate-inline" style="display: none;">
+            <div id="donation-inline-text"></div>
+            <div class="kofi-inline" id="kofiInline"></div>
+        </div>
+
         <div class="about-section">
             <h2 id="thanks-title">Thanks To</h2>
             <p id="thanks-description" class="korean-content">
@@ -281,11 +287,11 @@ alternate_urls:
             진심으로 감사드립니다.
         </p>
         <p id="donation-message-en" class="donation-message english-content" style="display: none;">
-            Thank you. As a user who truly loves P5X, I am continuously managing lufel.net.<br>
+            As a user who truly loves P5X, I am continuously managing lufel.net.<br>
             Your donation will be a great driving force for improving the site. Thank you sincerely.
         </p>
         <p id="donation-message-jp" class="donation-message japanese-content" style="display: none;">
-            ありがとうございます。P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>
+            P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>
             あなたの寄付はサイトを改善する大きな原動力になります。心から感謝いたします。
         </p>
         
@@ -364,6 +370,7 @@ alternate_urls:
         if (!data) return;
         
         // 언어 안내 메시지
+        /*
         if (currentLang !== 'kr') {
             const notice = document.getElementById('language-notice');
             const noticeText = document.getElementById('language-notice-text');
@@ -371,7 +378,7 @@ alternate_urls:
                 noticeText.textContent = data.language_notice;
                 notice.style.display = 'block';
             }
-        }
+        }*/
         
         // 제목 업데이트
         const siteTitle = document.getElementById('site-title');
@@ -403,10 +410,14 @@ alternate_urls:
             japaneseContent.forEach(el => el.style.display = 'block');
         }
         
-        // 외국어 사용자에게는 KR 교환코드와 카카오페이 숨김
+        // 외국어 사용자에게는 KR 교환코드, 카카오페이, 모달형 후원 숨김, 인라인 Ko-fi 표시
         if (currentLang !== 'kr') {
             const exchangeCodeSection = document.getElementById('exchange-code-section');
             const kakaoPayContainer = document.getElementById('kakao-pay-container');
+            const donateInline = document.getElementById('donate-inline');
+            const donateButton = document.getElementById('donateButton');
+            const inlineText = document.getElementById('donation-inline-text');
+            const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
             
             if (exchangeCodeSection) {
                 exchangeCodeSection.style.display = 'none';
@@ -414,9 +425,26 @@ alternate_urls:
             if (kakaoPayContainer) {
                 kakaoPayContainer.style.display = 'none';
             }
+            if (donateInline) {
+                donateInline.style.display = 'block';
+            }
+            if (donateButton) {
+                donateButton.style.display = 'none';
+            }
+            if (donateButtonSection) {
+                donateButtonSection.style.display = 'none';
+            }
+
+            // 기존 모달의 EN/JP 문구를 그대로 재사용하여 인라인에 삽입
+            if (inlineText) {
+                let srcEl = null;
+                if (currentLang === 'en') srcEl = document.getElementById('donation-message-en');
+                else if (currentLang === 'jp') srcEl = document.getElementById('donation-message-jp');
+                if (srcEl) inlineText.innerHTML = srcEl.outerHTML;
+            }
         }
     }
-
+    
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -568,7 +596,7 @@ alternate_urls:
             });
         }
         
-        // 모달 관련 기능
+        // 모달 관련 기능 (KR 전용)
         const donateModal = document.getElementById('donateModal');
         const donateBtn = document.getElementById('donateButton');
         const donateCloseButton = document.querySelector('#donateModal .close-button');
@@ -586,8 +614,21 @@ alternate_urls:
         // 이벤트 핸들러 초기화 (한 번만 실행)
         let isCodeHandlerSetup = false;
         
-        donateBtn.onclick = function() {
-            donateModal.style.display = 'block';
+        // 언어에 따라 후원 방식 분기
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (currentLang === 'kr') {
+            donateBtn.onclick = function() {
+                donateModal.style.display = 'block';
+            }
+        } else {
+            // EN/JP: 인라인 Ko-fi 렌더링 (필요 시 스크롤)
+            renderKoFiInline();
+            if (donateBtn) {
+                donateBtn.onclick = function() {
+                    const inline = document.getElementById('donate-inline');
+                    if (inline) inline.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         }
         
         donateCloseButton.onclick = function() {
@@ -630,5 +671,21 @@ alternate_urls:
                 exchangeCodeModal.style.display = 'none';
             }
         }
+        
+        // Ko-fi 인라인 렌더링 (스크립트 로드 금지: body 덮어쓰는 문제 방지)
+        function renderKoFiInline() {
+            const container = document.getElementById('kofiInline');
+            if (!container) return;
+            container.innerHTML = `
+                <div class="btn-container">
+                    <a title="Support me on ko-fi.com" class="kofi-button" style="background-color:#72a4f2; display:inline-block; padding:8px 12px; border-radius:6px; color:#fff; text-decoration:none; font-weight:600;"
+                       href="https://ko-fi.com/S6S11F0PUN" target="_blank" rel="noopener">
+                        <span class="kofitext" style="display:inline-flex; align-items:center; gap:6px;">
+                            <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg" style="height:18px; vertical-align:middle;">
+                            Support me on Ko-fi
+                        </span>
+                    </a>
+                </div>`;
+        }
     } // initializePageContent 함수 종료
-</script> 
+</script>

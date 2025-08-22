@@ -169,9 +169,9 @@ const personaData = {
              {name : "공격 강화", priority: 1},
              {name : "민첩의 마음가짐", priority: 0},
         ],
-        comment : "마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
-        comment_en: "Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Winded.",
-        comment_jp: "マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
+        comment : "강력한 방어력 감소 효과를 지닌 페르소나, 마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
+        comment_en: "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Winded.",
+        comment_jp: "強力な防御力低下効果を持つペルソナ。マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
     },
     "도미니온": {
         name_en: "Dominion",
@@ -340,9 +340,9 @@ const personaData = {
              {name : "타루카쟈", priority: 1 },
              {name : "치료 촉진", priority: 1 },
         ],
-        comment : "본능 버프는 페르소나 전환 후에도 지속된다. ",
-        comment_en: "The core passive buff continues even after persona switching.",
-        comment_jp: "本能バフはペルソナ転換後も持続する。"
+        comment : "전투 시작 시 가장 맨 앞에 배치해야 한다. 본능 버프는 페르소나 전환 후에도 지속된다. ",
+        comment_en: "Must be placed in the front row at the start of battle. The core passive buff continues even after persona switching.",
+        comment_jp: "戦闘開始時に最も前方に配置しなければならない。本能バフはペルソナ転換後も持続する。"
     },
     "지국천": {
         name_en: "Jikokuten",

@@ -62,7 +62,7 @@
         kr: {
             pageTitle: '육성 계산기', addCharacter: '캐릭터 추가', selectCharacter: '캐릭터 선택',
             materialSummary: '재료 합산', showSpoiler: '스포일러 포함 (KR 전체 목록 사용)',
-            level: '레벨', current: '괴도', target: '목표', weapon: '무기', skills: '스킬',
+            level: '레벨', current: '괴도', current2: '현재', target: '목표', weapon: '무기', skills: '스킬',
             mind: '심상', enableAll: '12개 전체 활성화', mindBase: '심상', mindStat1: '심상 스탯 1', mindStat2: '심상 스탯 2',
             mindSkill1: '심상 스킬 1', mindSkill2: '심상 스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
             remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
@@ -73,7 +73,7 @@
         en: {
             pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
             materialSummary: 'Material Summary', showSpoiler: 'Show spoiler (use KR full list)',
-            level: 'Level', current: 'Character', target: 'Target', weapon: 'Weapon', skills: 'Skills',
+            level: 'Level', current: 'Character', current2: 'Current', target: 'Target', weapon: 'Weapon', skills: 'Skills',
             mind: 'Mindscape', enableAll: 'Enable all 12', mindBase: 'Mind Base', mindStat1: 'Mind Stat 1', mindStat2: 'Mind Stat 2',
             mindSkill1: 'Mind Skill 1', mindSkill2: 'Mind Skill 2', mindAttr: 'Mind Attribute', cancel: 'Cancel', save: 'Save',
             remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
@@ -84,7 +84,7 @@
         jp: {
             pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
             materialSummary: '素材サマリー', showSpoiler: 'ネタバレ含む（KR全リスト）',
-            level: 'レベル', current: '怪盗', target: '目標', weapon: '武器', skills: 'スキル',
+            level: 'レベル', current: '怪盗', current2: '現在', target: '目標', weapon: '武器', skills: 'スキル',
             mind: 'イメジャリー', enableAll: '12個 全て有効', mindBase: 'イメジャリー 基本', mindStat1: 'ステ1', mindStat2: 'ステ2',
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
             remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
@@ -282,7 +282,7 @@
             }
             closeModal('characterSetupModal');
         };
-        // mind base 12 셀 렌더
+        // mind base 12 셀 렌더 (현재/목표 분리)
         renderMindBaseGrid();
         // 편집 시 기존 값으로 프리필
         if (editingId){
@@ -307,21 +307,11 @@
                 setVal('mindSkill1From',i.mindSkill1From); setVal('mindSkill1To',i.mindSkill1To);
                 setVal('mindSkill2From',i.mindSkill2From); setVal('mindSkill2To',i.mindSkill2To);
                 setVal('mindAttrFrom',i.mindAttrFrom); setVal('mindAttrTo',i.mindAttrTo);
-                // 심상 배지 체크 세팅
-                const grid=document.getElementById('mindBaseGrid');
-                if(grid && Array.isArray(i.mindBase)){
-                    const cells=grid.querySelectorAll('input[type="checkbox"]');
-                    cells.forEach((cb,idx)=>{
-                        const on = !!i.mindBase[idx];
-                        cb.checked = on;
-                        const bg=cb.previousSibling; if(bg && bg.style){
-                            bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${on?'mind_bg_active':'mind_bg_incactive'}.png)`;
-                            const ic = bg.querySelector('img'); if(ic) ic.style.opacity = on? '1':'1';
-                        }
-                    });
-                    const master=document.getElementById('mindAllToggle');
-                    if(master){ master.checked = i.mindBase.every(v=>v); }
-                }
+                // 심상 현재/목표 값 프리필 (과거 저장 호환: mindBase만 있을 수 있음)
+                const curCount = Array.isArray(i.mindBaseCurrent) ? i.mindBaseCurrent.filter(Boolean).length : 0;
+                const tarCount = Array.isArray(i.mindBaseTarget) ? i.mindBaseTarget.filter(Boolean).length
+                                 : (Array.isArray(i.mindBase) ? i.mindBase.filter(Boolean).length : 12);
+                setMindBaseCounts(curCount, Math.max(curCount, tarCount));
             }
         }
         // 슬라이더 부착
@@ -355,58 +345,109 @@
     }
 
     function renderMindBaseGrid(){
-        const grid = document.getElementById('mindBaseGrid');
-        if(!grid) return;
-        const frag = document.createDocumentFragment();
-        for(let i=1;i<=12;i++){
-            const wrapper = document.createElement('div');
-            wrapper.className = 'mind-cell';
-            // 배경
-            const bg = document.createElement('div');
-            bg.style.position='relative'; bg.style.width='36px'; bg.style.height='36px';
-            bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/mind_bg_incactive.png)`;
-            bg.style.backgroundSize='cover';
-            // 아이콘: base_1,2,3,1,2,3 순환
-            const groupIdx = ((i-1)%3)+1;
-            const icon = document.createElement('img');
-            icon.src = `${BASE_URL}/apps/material-calc/img/mind_base_${groupIdx}.png`;
-            icon.style.width='100%'; icon.style.height='100%'; icon.style.objectFit='contain';
-            icon.style.opacity='1';
-            const hidden = document.createElement('input'); hidden.type='checkbox'; hidden.checked=true; hidden.dataset.index=String(i); hidden.style.display='none';
-            // 아이콘 위에 번호 i 추가
-            const seq = document.createElement('div'); seq.className='mind-num'; seq.textContent=String(i);
-            bg.appendChild(seq);
-
-            // 초기 활성화 배경/불투명도
-            bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/mind_bg_active.png)`;
-            icon.style.opacity = '1';
-            bg.onclick = ()=>{
-                hidden.checked = !hidden.checked;
-                bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${hidden.checked?'mind_bg_active':'mind_bg_incactive'}.png)`;
-                icon.style.opacity = hidden.checked ? '1' : '1';
-                // 전체 체크박스 동기화
-                const all = Array.from(grid.querySelectorAll('input[type="checkbox"]'));
-                const allOn = all.every(el=>el.checked);
-                const master = document.getElementById('mindAllToggle');
-                if(master) master.checked = allOn;
-            };
-            bg.appendChild(icon);
-            wrapper.appendChild(bg);
-            wrapper.appendChild(hidden);
-            frag.appendChild(wrapper);
+        const host = document.getElementById('mindBaseGrid');
+        if(!host) return;
+        // The HTML sets class="mind-grid" on #mindBaseGrid which turns the container itself into a grid (single row).
+        // Remove that class so our two rows can stack vertically.
+        if(host.classList.contains('mind-grid')){
+            host.classList.remove('mind-grid');
+            host.classList.add('mind-base-container'); // neutral wrapper class (no special layout required)
         }
-        grid.innerHTML=''; grid.appendChild(frag);
-        const toggle = document.getElementById('mindAllToggle');
-        toggle.onchange = ()=>{
-            grid.querySelectorAll('input[type="checkbox"]').forEach(el=>{
-                el.checked = toggle.checked;
-                const cell = el.previousSibling; // bg div
-                if(cell && cell.style){
-                    cell.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${el.checked?'mind_bg_active':'mind_bg_incactive'}.png)`;
-                    cell.querySelector('img').style.opacity = el.checked ? '1' : '1';
-                }
-            });
+        // helper to build a row: Title -> Grid -> Slider (full width)
+        const buildRow = (idPrefix, titleText)=>{
+            const row = document.createElement('div');
+            row.className = 'setting-row align-center';
+            // title
+            const title = document.createElement('div'); title.className='row-title'; title.textContent=titleText; row.appendChild(title);
+            // grid (icons)
+            const grid = document.createElement('div'); grid.className='mind-grid'; grid.id = idPrefix==='cur' ? 'mindBaseCurrentGrid' : 'mindBaseTargetGrid';
+            const frag = document.createDocumentFragment();
+            for(let i=1;i<=12;i++){
+                const wrapperCell = document.createElement('div'); wrapperCell.className='mind-cell';
+                const bg = document.createElement('div');
+                bg.style.position='relative'; bg.style.width='36px'; bg.style.height='36px'; bg.style.backgroundSize='cover';
+                const groupIdx = ((i-1)%3)+1; const icon = document.createElement('img');
+                icon.src = `${BASE_URL}/apps/material-calc/img/mind_base_${groupIdx}.png`;
+                icon.style.width='100%'; icon.style.height='100%'; icon.style.objectFit='contain'; icon.style.opacity='1';
+                const hidden = document.createElement('input'); hidden.type='checkbox'; hidden.dataset.index=String(i); hidden.style.display='none';
+                const seq = document.createElement('div'); seq.className='mind-num'; seq.textContent=String(i);
+                bg.appendChild(seq); bg.appendChild(icon);
+                wrapperCell.appendChild(bg); wrapperCell.appendChild(hidden); frag.appendChild(wrapperCell);
+                // click behavior (sequential rule)
+                bg.onclick = ()=>{
+                    const idx = i;
+                    const isCur = (idPrefix==='cur');
+                    const cur = getMindBaseCount('cur');
+                    const tar = getMindBaseCount('tar');
+                    if(isCur){ setMindBaseCounts(idx, Math.max(idx, tar)); }
+                    else { setMindBaseCounts(cur, Math.max(idx, cur)); }
+                };
+            }
+            grid.appendChild(frag);
+            row.appendChild(grid);
+            // full-width slider row
+            const sliderRow = document.createElement('div'); sliderRow.className='single-slider-row';
+            const slider = document.createElement('input'); slider.type='range'; slider.min = idPrefix==='cur'? '0':'1'; slider.max='12'; slider.step='1';
+            slider.id = idPrefix==='cur' ? 'mindBaseCurSlider' : 'mindBaseTarSlider'; slider.value = idPrefix==='cur'? '0':'12';
+            sliderRow.appendChild(slider);
+            // optional value label (hidden via CSS per user's preference)
+            const valueLabel = document.createElement('div'); valueLabel.id = idPrefix==='cur' ? 'mindBaseCurCount' : 'mindBaseTarCount'; valueLabel.textContent = slider.value;
+            sliderRow.appendChild(valueLabel);
+            row.appendChild(sliderRow);
+            return row;
         };
+
+        host.innerHTML='';
+        host.appendChild(buildRow('cur', t('current2')));
+        host.appendChild(buildRow('tar', t('target')));
+
+        // initial paint according to defaults
+        setMindBaseCounts(0, 12);
+
+        // slider bindings
+        const curSl = document.getElementById('mindBaseCurSlider');
+        const tarSl = document.getElementById('mindBaseTarSlider');
+        curSl.addEventListener('input', ()=>{
+            const c = Number(curSl.value); const tval = Math.max(c, Number(tarSl.value));
+            setMindBaseCounts(c, tval);
+        });
+        tarSl.addEventListener('input', ()=>{
+            const c = Number(curSl.value); let tval = Number(tarSl.value); if(tval < 1) tval = 1; if(tval < c) tval = c;
+            setMindBaseCounts(c, tval);
+        });
+    }
+
+    function paintMindGrid(gridId, count){
+        const grid = document.getElementById(gridId); if(!grid) return;
+        const cells = grid.querySelectorAll('input[type="checkbox"]');
+        cells.forEach((cb, idx)=>{
+            const on = (idx < count);
+            cb.checked = on;
+            const bg = cb.previousSibling; if(bg && bg.style){
+                bg.style.backgroundImage = `url(${BASE_URL}/apps/material-calc/img/${on?'mind_bg_active':'mind_bg_incactive'}.png)`;
+                const ic = bg.querySelector('img'); if(ic) ic.style.opacity = '1';
+            }
+        });
+    }
+
+    function getMindBaseCount(prefix){
+        const gridId = prefix==='cur' ? 'mindBaseCurrentGrid' : 'mindBaseTargetGrid';
+        const grid = document.getElementById(gridId); if(!grid) return 0;
+        const checked = Array.from(grid.querySelectorAll('input[type="checkbox"]')).filter(c=>c.checked).length;
+        return checked;
+    }
+
+    function setMindBaseCounts(curCount, tarCount){
+        // enforce bounds
+        curCount = Math.max(0, Math.min(12, curCount|0));
+        tarCount = Math.max(1, Math.min(12, tarCount|0));
+        if(tarCount < curCount) tarCount = curCount;
+        paintMindGrid('mindBaseCurrentGrid', curCount);
+        paintMindGrid('mindBaseTargetGrid', tarCount);
+        const curSl = document.getElementById('mindBaseCurSlider'); if(curSl) curSl.value = String(curCount);
+        const tarSl = document.getElementById('mindBaseTarSlider'); if(tarSl) tarSl.value = String(tarCount);
+        const curLb = document.getElementById('mindBaseCurCount'); if(curLb) curLb.textContent = String(curCount);
+        const tarLb = document.getElementById('mindBaseTarCount'); if(tarLb) tarLb.textContent = String(tarCount);
     }
 
     // 설정 슬라이더(듀얼 레이아웃: 라벨 / 숫자입력 / 슬라이더)
@@ -485,7 +526,15 @@
             s2From: val('s2From',1,10), s2To: val('s2To',1,10),
             s3From: val('s3From',1,10), s3To: val('s3To',1,10),
             s4From: val('s4From',1,10), s4To: val('s4To',1,10),
-            mindBase: Array.from(document.querySelectorAll('#mindBaseGrid input[type="checkbox"]')).map(c=>c.checked),
+            // mind base: current/target 각각 별도 배열 생성
+            mindBaseCurrent: (()=>{
+                const grid = document.getElementById('mindBaseCurrentGrid');
+                return grid? Array.from(grid.querySelectorAll('input[type="checkbox"]')).map(c=>c.checked) : Array(12).fill(false);
+            })(),
+            mindBaseTarget: (()=>{
+                const grid = document.getElementById('mindBaseTargetGrid');
+                return grid? Array.from(grid.querySelectorAll('input[type="checkbox"]')).map(c=>c.checked) : Array(12).fill(true);
+            })(),
             mindStat1From: val('mindStat1From',0,5), mindStat1To: val('mindStat1To',0,5),
             mindStat2From: val('mindStat2From',0,5), mindStat2To: val('mindStat2To',0,5),
             mindSkill1From: val('mindSkill1From',0,5), mindSkill1To: val('mindSkill1To',0,5),
@@ -653,9 +702,17 @@
                 });
             }
         });
-        // MIND (베이스 12개 체크 수 만큼 곱 적용 + 스탯/스킬/속성 테이블)
-        const enabled = inputs.mindBase.filter(Boolean).length;
-        for(let lv=1; lv<=enabled; lv++){
+        // MIND BASE: 현재→목표 구간만 비용 합산 (과거 호환: mindBase만 있을 수 있음)
+        let curBase = 0, tarBase = 0;
+        if(Array.isArray(inputs.mindBaseCurrent) || Array.isArray(inputs.mindBaseTarget)){
+            curBase = Array.isArray(inputs.mindBaseCurrent) ? inputs.mindBaseCurrent.filter(Boolean).length : 0;
+            tarBase = Array.isArray(inputs.mindBaseTarget) ? inputs.mindBaseTarget.filter(Boolean).length : 0;
+            if(tarBase < curBase) tarBase = curBase; // 안전장치
+        } else if (Array.isArray(inputs.mindBase)){
+            // 기존 데이터는 현재=0, 목표=enabled로 간주
+            curBase = 0; tarBase = inputs.mindBase.filter(Boolean).length;
+        }
+        for(let lv=curBase+1; lv<=tarBase; lv++){
             const row = (costs.mind.base && costs.mind.base[lv]) || null;
             if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
         }

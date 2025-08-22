@@ -1,349 +1,69 @@
 /* About 페이지 스타일 */
-.about-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #fff;
-}
+.about-content { max-width: 1000px; margin: 0 auto; padding: 20px; color: #fff; }
+.about-section { background-color: rgba(0, 0, 0, 0.6); border-radius: 8px; padding: 20px; margin-bottom: 30px; border: 1px solid rgba(211, 188, 142, 0.3); }
+.about-section h2 { color: #d3bc8e; margin-top: 0px; margin-bottom: 16px; font-size: 22px; border-bottom: 1px solid rgba(211, 188, 142, 0.3); padding-bottom: 8px; }
+.about-section p { line-height: 1.6; font-size: 16px; color: #e0e0e0; }
 
-.about-section {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    border: 1px solid rgba(211, 188, 142, 0.3);
-}
+.discord-link, .email-link { color: #d3bc8e; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+.discord-link:hover, .email-link:hover { color: #fff; text-decoration: underline; }
 
-.about-section h2 {
-    color: #d3bc8e;
-    margin-top: 0px;
-    margin-bottom: 16px;
-    font-size: 22px;
-    border-bottom: 1px solid rgba(211, 188, 142, 0.3);
-    padding-bottom: 8px;
-}
-
-.about-section p {
-    line-height: 1.6;
-    font-size: 16px;
-    color: #e0e0e0;
-}
-
-.discord-link, .email-link {
-    color: #d3bc8e;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.discord-link:hover, .email-link:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.donate-button {
-    background-color: #d3bc8e;
-    color: #422e2e;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin-top: 0px;
-}
-
-.donate-button:hover {
-    background-color: #b39c70;
-    transform: translateY(-2px);
-}
+.donate-button { background-color: #d3bc8e; color: #422e2e; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; margin-top: 0px; }
+.donate-button:hover { background-color: #b39c70; transform: translateY(-2px); }
 
 /* 모달 스타일 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(3px);
-}
-
-.modal-content {
-    background-color: #422e2e;
-    margin: 10% auto;
-    padding: 30px;
-    border: 1px solid #d3bc8e;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 8px;
-    color: #fff;
-    position: relative;
-}
-
-.close-button {
-    color: #d3bc8e;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-button:hover {
-    color: #fff;
-}
-
-.modal-content h2 {
-    color: #d3bc8e;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 24px;
-    border-bottom: 1px solid rgba(211, 188, 142, 0.3);
-    padding-bottom: 10px;
-}
-
-.donation-message, .donation-message-en {
-    margin-bottom: 20px;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.donation-message-en {
-    font-style: italic;
-    color: #bbb;
-    font-size: 14px;
-}
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px); }
+.modal-content { background-color: #422e2e; margin: 10% auto; padding: 30px; border: 1px solid #d3bc8e; width: 80%; max-width: 600px; border-radius: 8px; color: #fff; position: relative; }
+.close-button { color: #d3bc8e; position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close-button:hover { color: #fff; }
+.modal-content h2 { color: #d3bc8e; margin-bottom: 20px; text-align: center; font-size: 24px; border-bottom: 1px solid rgba(211, 188, 142, 0.3); padding-bottom: 10px; }
+.donation-message, .donation-message-en { margin-bottom: 20px; line-height: 1.6; text-align: center; }
+.donation-message-en { font-style: italic; color: #bbb; font-size: 14px; }
 
 /* about-section 내 영어 번역용 스타일 */
-.about-section .donation-message-en {
-    text-align: left;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 5px;
-    font-style: italic;
-}
-
-.donation-methods {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-top: 30px;
-}
-
-.kofi-container {
-    display: flex;
-    justify-content: center;
-}
-
-.kofi-container iframe {
-    width: 226px !important;
-    height: 60px !important;
-}
-
-.kofi-button {
-    width: 202px !important;
-    height: 44px !important;
-    border-radius: 12px !important;
-    justify-content: center !important;
-}
-
-.bmc-container {
-    margin-bottom: 0px;
-}
-
-.kakao-pay-container {
-    text-align: center;
-}
-
-.kakao-pay-button {
-    padding: 8px 16px;
-    background-color: #FFEB00;
-    color: #000000;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: all 0.3s ease;
-    min-height: 60px;
-    width: 226px; /* 버튼 크기 맞추기 */
-    margin: 0 auto; /* 중앙 정렬 */
-}
-
-.kakao-pay-button:hover {
-    background-color: #F2DC00;
-}
-
-.kakao-pay-button::before {
-    content: "";
-    display: inline-block;
-    background-image: url('../img/logo/kakaopay-logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 48px;
-    height: 32px;
-    margin-right: 8px;
-}
+.about-section .donation-message-en { text-align: left; font-size: 12px; color: rgba(255, 255, 255, 0.5); margin-top: 5px; font-style: italic; }
+.donation-methods { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 30px; }
+.kofi-container { display: flex; justify-content: center; }
+.kofi-container iframe { width: 226px !important; height: 60px !important; }
+.kofi-button { width: 202px !important; height: 44px !important; border-radius: 12px !important; justify-content: center !important; }
+.bmc-container { margin-bottom: 0px; }
+.kakao-pay-container { text-align: center; }
+.kakao-pay-button { padding: 8px 16px; background-color: #FFEB00; color: #000000; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; position: relative; transition: all 0.3s ease; min-height: 60px; width: 226px; /* 버튼 크기 맞추기 */margin: 0 auto; /* 중앙 정렬 */}
+.kakao-pay-button:hover { background-color: #F2DC00; }
+.kakao-pay-button::before { content: ""; display: inline-block; background-image: url('../img/logo/kakaopay-logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center; width: 48px; height: 32px; margin-right: 8px; }
 
 /* 카카오페이 QR 모달 */
-.kakao-modal {
-    max-width: 400px;
-}
-
-.kakao-qr-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.kakao-qr {
-    max-width: 300px;
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-}
+.kakao-modal { max-width: 400px; }
+.kakao-qr-container { display: flex; justify-content: center; align-items: center; margin: 20px 0; }
+.kakao-qr { max-width: 300px; height: auto; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); border-radius: 8px; }
 
 /* 교환코드 모달 */
-.modal-content h3 {
-    color: #d3bc8e;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 20px;
-    border-bottom: 1px solid rgba(211, 188, 142, 0.3);
-    padding-bottom: 10px;
-}
-
-.exchange-notice {
-    text-align: center;
-    color: #bbb;
-    font-size: 14px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    background-color: rgba(211, 188, 142, 0.1);
-    padding: 10px;
-    border-radius: 4px;
-    border-left: 3px solid #d3bc8e;
-}
-
-.exchange-codes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    
-    /* 스크롤 성능 개선 */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    
-    /* GPU 가속 및 성능 최적화 */
-    transform: translateZ(0);
-    will-change: scroll-position;
-    contain: layout style paint;
-    
-    /* 커스텀 스크롤바 */
-    scrollbar-width: thin;
-    scrollbar-color: #d3bc8e rgba(0, 0, 0, 0.3);
-}
+.modal-content h3 { color: #d3bc8e; margin-bottom: 15px; text-align: center; font-size: 20px; border-bottom: 1px solid rgba(211, 188, 142, 0.3); padding-bottom: 10px; }
+.exchange-notice { text-align: center; color: #bbb; font-size: 14px; margin-bottom: 20px; line-height: 1.6; background-color: rgba(211, 188, 142, 0.1); padding: 10px; border-radius: 4px; border-left: 3px solid #d3bc8e; }
+.exchange-codes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; max-height: 400px; overflow-y: auto; padding: 10px; background-color: rgba(0, 0, 0, 0.3); border-radius: 4px; 
+    /* 스크롤 성능 개선 */scroll-behavior: smooth; -webkit-overflow-scrolling: touch; 
+    /* GPU 가속 및 성능 최적화 */transform: translateZ(0); will-change: scroll-position; contain: layout style paint; 
+    /* 커스텀 스크롤바 */scrollbar-width: thin; scrollbar-color: #d3bc8e rgba(0, 0, 0, 0.3); }
 
 /* 웹킷 브라우저용 스크롤바 스타일 */
-.exchange-codes::-webkit-scrollbar {
-    width: 8px;
-}
-
-.exchange-codes::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-}
-
-.exchange-codes::-webkit-scrollbar-thumb {
-    background: #d3bc8e;
-    border-radius: 4px;
-    transition: background 0.2s ease;
-}
-
-.exchange-codes::-webkit-scrollbar-thumb:hover {
-    background: #b39c70;
-}
-
-.code-item {
-    background-color: rgba(211, 188, 142, 0.1);
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #fff;
-    border: 1px solid rgba(211, 188, 142, 0.3);
-    cursor: pointer;
-    transition: all 0.1s ease;
-    text-align: center;
-    
-    /* GPU 가속 활성화 */
-    will-change: background-color, border-color;
-    transform: translateZ(0);
-}
-
-.code-item:hover {
-    background-color: rgba(211, 188, 142, 0.2);
-    border-color: #d3bc8e;
-}
-
-.code-item:active {
-    transform: translateZ(0) scale(0.98);
-}
+.exchange-codes::-webkit-scrollbar { width: 8px; }
+.exchange-codes::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 4px; }
+.exchange-codes::-webkit-scrollbar-thumb { background: #d3bc8e; border-radius: 4px; transition: background 0.2s ease; }
+.exchange-codes::-webkit-scrollbar-thumb:hover { background: #b39c70; }
+.code-item { background-color: rgba(211, 188, 142, 0.1); padding: 8px 12px; border-radius: 4px; font-size: 12px; color: #fff; border: 1px solid rgba(211, 188, 142, 0.3); cursor: pointer; transition: all 0.1s ease; text-align: center; 
+    /* GPU 가속 활성화 */will-change: background-color, border-color; transform: translateZ(0); }
+.code-item:hover { background-color: rgba(211, 188, 142, 0.2); border-color: #d3bc8e; }
+.code-item:active { transform: translateZ(0) scale(0.98); }
 
 /* 복사 완료 상태 */
-.code-item.copied {
-    background-color: rgba(211, 188, 142, 0.5);
-    border-color: #d3bc8e;
-    color: #422e2e;
-    font-weight: bold;
-}
+.code-item.copied { background-color: rgba(211, 188, 142, 0.5); border-color: #d3bc8e; color: #422e2e; font-weight: bold; }
 
 /* 복사 실패 상태 */
-.code-item.copy-failed {
-    background-color: rgba(255, 100, 100, 0.3);
-    border-color: #ff6464;
-    color: #ffcccc;
-}
+.code-item.copy-failed { background-color: rgba(255, 100, 100, 0.3); border-color: #ff6464; color: #ffcccc; }
 
 /* 반응형 스타일 */
-@media screen and (max-width: 1200px) {
-    .about-content {
-        padding: 10px;
-    }
-    
-    .modal-content {
-        width: 90%;
-        margin: 20% auto;
-        padding: 20px;
-    }
-    
-    .donation-methods {
-        flex-direction: column;
-    }
-    
-    .exchange-codes {
-        grid-template-columns: 1fr;
-        max-height: 300px;
-    }
-    
-    .code-item {
-        font-size: 12px;
-    }
+@media screen and (max-width: 1200px) { .about-content { padding: 10px; }
+    .modal-content { width: 90%; margin: 20% auto; padding: 20px; }
+    .donation-methods { flex-direction: column; }
+    .exchange-codes { grid-template-columns: 1fr; max-height: 300px; }
+    .code-item { font-size: 12px; }
 } 

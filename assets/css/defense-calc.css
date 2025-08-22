@@ -1,653 +1,262 @@
 /* 상단 카드 컨테이너 */
-.top-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-    padding: 0px 20px 0px 20px;
-}
+.top-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px; padding: 0px 20px 0px 20px; }
 
-.stat-card, .boss-card, .damage-card {
-    padding: 10px 20px 10px 20px;
-    text-align: left;
-    background-color: #3d3030;
-    border-radius: 10px;
-}
+.stat-card, .boss-card, .damage-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #3d3030; border-radius: 10px; }
 
-.top-cards h2 {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
-    padding : 10px 0px 10px 0px;
-    margin : 0px;
-}
+.top-cards h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); padding : 10px 0px 10px 0px; margin : 0px; }
 
 
-.total-defense {
-    margin-bottom: 20px;
-    text-align: left;
-    padding : 0 20px;
-}
+.total-defense { margin-bottom: 20px; text-align: left; padding : 0 20px; }
 
-.total-value, .penetrate-value {
-    font-size: 36px;
-    font-weight: bold;
-    color: #dd8484;
-}
+.total-value, .penetrate-value { font-size: 36px; font-weight: bold; color: #dd8484; }
 
-.total-value-description, .penetrate-value-description, .defense-reduce-value-description {
-    margin-top: 14px;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-}
+.total-value-description, .penetrate-value-description, .defense-reduce-value-description { margin-top: 14px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
 
 
-.boss-select-container select {
-    font-size: 13px;
-    background-color: #3d3030;
-    color: rgb(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    padding: 8px 4px !important;
-    margin: 5px 0px 0px 0px;
-    background-color: rgb(0, 0, 0, 0.2);
-}
+.boss-select-container select { font-size: 13px; background-color: #3d3030; color: rgb(255, 255, 255, 0.8); border: none; border-radius: 4px; cursor: pointer; width: 100%; padding: 8px 4px !important; margin: 5px 0px 0px 0px; background-color: rgb(0, 0, 0, 0.2); }
 
-.boss-stats {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-}
+.boss-stats { display: flex; flex-direction: column; margin: 0px; }
 
-.damage-formula,.boss-stats{
-    margin-top: 10px;
-    font-size: 12px !important;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
-}
+.damage-formula,.boss-stats{ margin-top: 10px; font-size: 12px !important; line-height: 1.6; color: rgba(255, 255, 255, 0.6); }
 
-.damage-increase {
-    font-size: 36px;
-    font-weight: bold;
-    color: #dd8484;
-}
+.damage-increase { font-size: 36px; font-weight: bold; color: #dd8484; }
 
 /* 모바일 대응 */
-@media (max-width: 1200px) {
-    .top-cards {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 1200px) { .top-cards { grid-template-columns: 1fr; }
 }
 
 
 
 
 
-.defense-table-container, .penetrate-table-container {
-    overflow-x: auto;
-    margin : 0 20px;
-    padding : 20px 20px 30px 20px;
-    border-radius: 10px;
-    background-color: #3d3030;
-}
+.defense-table-container, .penetrate-table-container { overflow-x: auto; margin : 0 20px; padding : 20px 20px 30px 20px; border-radius: 10px; background-color: #3d3030; }
 
-.defense-table, .penetrate-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
+.defense-table, .penetrate-table { width: 100%; border-collapse: collapse; text-align: left; }
 
 .defense-table th, .penetrate-table th,
-.defense-table td, .penetrate-table td {
-    font-size: 13px;
-    padding: 10px;
-    color: rgb(255, 255, 255, 0.4);
-    height: 30px;  /* 셀 높이도 지정 */
+.defense-table td, .penetrate-table td { font-size: 13px; padding: 10px; color: rgb(255, 255, 255, 0.4); height: 30px;  /* 셀 높이도 지정 */
 }
 
-.defense-table tr, .penetrate-table tr {
-    min-height: 30px;
-}
+.defense-table tr, .penetrate-table tr { min-height: 30px; }
 
-.skill-name-column {
-    color: rgb(247, 243, 243) !important;
-}
+.skill-name-column { color: rgb(247, 243, 243) !important; }
 
-.value-column {
-    color: #dd8484 !important;
-    font-weight: bold;
-}
+.value-column { color: #dd8484 !important; font-weight: bold; }
 
-.check-column {
-    width: 30px;
-}
+.check-column { width: 30px; }
 
 
-.char-img-column img {
-    height: 36px;
-    border-radius: 25px;
-    object-fit: contain;
-}
+.char-img-column img { height: 36px; border-radius: 25px; object-fit: contain; }
 
-.skill-icon-column img {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-}
+.skill-icon-column img { height: 32px; width: 32px; object-fit: contain; }
 
-.skill-icon {
-    width: 24px !important;
-    height: 24px !important;
-    max-width: 24px !important;
-    max-height: 24px !important;
-    object-fit: contain !important;
-}
+.skill-icon { width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important; object-fit: contain !important; }
 
 
-img[src*="check-off.png"] {
-    width: 20px !important;
-    height: 20px !important;
-    object-fit: contain !important;
-    opacity: 0.6;
-    cursor: pointer;
-}
-img[src*="check-on.png"] {
-    width: 25px !important;
-    height: 25px !important;
-    object-fit: contain !important;
-    transform: translateX(-1px) translateY(-0.5px);
-    cursor: pointer;
-}
+img[src*="check-off.png"] { width: 20px !important; height: 20px !important; object-fit: contain !important; opacity: 0.6; cursor: pointer; }
+img[src*="check-on.png"] { width: 25px !important; height: 25px !important; object-fit: contain !important; transform: translateX(-1px) translateY(-0.5px); cursor: pointer; }
 
-.option-column select {
-    font-size: 12px;
-    background-color: rgb(0, 0, 0, 0.1);
-    color: rgb(255, 255, 255, 0.4);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: fit-content;
-    padding: 8px 4px !important;
-}
+.option-column select { font-size: 12px; background-color: rgb(0, 0, 0, 0.1); color: rgb(255, 255, 255, 0.4); border: none; border-radius: 4px; cursor: pointer; width: fit-content; padding: 8px 4px !important; }
 
 /* 옵션 스타일링 */
-select option {
-    background-color: #3d3030;
-    color: rgb(255, 255, 255, 0.8);
-}
+select option { background-color: #3d3030; color: rgb(255, 255, 255, 0.8); }
 
 /* 선택된 옵션 스타일링 */
-select option:checked {
-    background-color: #4d3e3e;
-}
+select option:checked { background-color: #4d3e3e; }
 
 /* 호버 상태 스타일링 */
-select option:hover {
-    background-color: #4d3e3e;
-}
+select option:hover { background-color: #4d3e3e; }
 
 /* Firefox에서 옵션 배경색 강제 적용 */
-select:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 rgb(255, 255, 255, 0.8);
-}
+select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255, 0.8); }
 
-.defense-table td, .penetrate-table td {
-    vertical-align: middle;
-    padding: 8px;
-}
+.defense-table td, .penetrate-table td { vertical-align: middle; padding: 8px; }
 
 /* 괴도 이름이 비어있는 행의 스타일 */
-.defense-table tr:not(:first-child) td, .penetrate-table tr:not(:first-child) td {
-    border-top: 1px solid rgb(255, 255, 255, 0.2);
-}
+.defense-table tr:not(:first-child) td, .penetrate-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.2); }
 
-.defense-table tr.empty-char td, .penetrate-table tr.empty-char td {
-    border-top: none;
-}
+.defense-table tr.empty-char td, .penetrate-table tr.empty-char td { border-top: none; }
 
 /* 첫 번째 행은 항상 테두리 표시 */
-.defense-table tr:first-child td, .penetrate-table tr:first-child td {
-    border-top: 1px solid rgb(255, 255, 255, 0.5);
-} 
+.defense-table tr:first-child td, .penetrate-table tr:first-child td { border-top: 1px solid rgb(255, 255, 255, 0.5); } 
 
 
-.defense-table tr:last-child td, .penetrate-table tr:last-child td {
-    border-bottom: 1px solid  rgb(255, 255, 255, 0.2);
-} 
+.defense-table tr:last-child td, .penetrate-table tr:last-child td { border-bottom: 1px solid  rgb(255, 255, 255, 0.2); } 
 
 /* 테이블 헤더 스타일 */
-.defense-table th, .penetrate-table th {
-    padding: 10px 8px 15px 8px;  /* 상 우 하 좌 패딩 */
+.defense-table th, .penetrate-table th { padding: 10px 8px 15px 8px;  /* 상 우 하 좌 패딩 */
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);  /* 헤더 아래 구분선 추가 */
     color: rgba(255, 255, 255, 0.6);  /* 헤더 텍스트 색상 */
     font-weight: 800;  /* 폰트 두께 */
 }
 
 /* 테이블 셀 스타일 */
-.defense-table td, .penetrate-table td {
-    vertical-align: middle;
-    padding: 8px;
-} 
+.defense-table td, .penetrate-table td { vertical-align: middle; padding: 8px; } 
 
 
 /* 광역 또는 단일/광역인 경우 색상 변경 */
-.target-column[data-target="광역"] {
-    color: rgb(221, 132, 132, 0.5);  /* 붉은 계열 색상 */
+.target-column[data-target="광역"] { color: rgb(221, 132, 132, 0.5);  /* 붉은 계열 색상 */
 } 
-.target-column[data-target="단일"] {
-    color: rgba(208, 221, 132, 0.5);  /* 붉은 계열 색상 */
+.target-column[data-target="단일"] { color: rgba(208, 221, 132, 0.5);  /* 붉은 계열 색상 */
 } 
 
 /* 선택된 행의 스타일 */
-.defense-table tr.selected td, .penetrate-table tr.selected td {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
+.defense-table tr.selected td, .penetrate-table tr.selected td { color: rgba(255, 255, 255, 0.9) !important; }
 
-.defense-table tr.selected .target-column[data-target="광역"], .penetrate-table tr.selected .target-column[data-target="광역"] {
-    color: rgba(221, 132, 132, 0.9) !important;
-}
+.defense-table tr.selected .target-column[data-target="광역"], .penetrate-table tr.selected .target-column[data-target="광역"] { color: rgba(221, 132, 132, 0.9) !important; }
 
-.defense-table tr.selected .target-column[data-target="단일"], .penetrate-table tr.selected .target-column[data-target="단일"] {
-    color: rgba(208, 221, 132, 0.9) !important;
-}
+.defense-table tr.selected .target-column[data-target="단일"], .penetrate-table tr.selected .target-column[data-target="단일"] { color: rgba(208, 221, 132, 0.9) !important; }
 
-.defense-table-container .defense-table tr.selected .value-column {
-    color: rgba(221, 132, 132) !important;
-} 
+.defense-table-container .defense-table tr.selected .value-column { color: rgba(221, 132, 132) !important; } 
 
 
-.penetrate-table-container .defense-table tr.selected .value-column {
-    color:#5384d8 !important;
-} 
+.penetrate-table-container .defense-table tr.selected .value-column { color:#5384d8 !important; } 
 
 
 
 /* 모바일 대응을 위한 테이블 스타일 수정 */
-@media (max-width: 1200px) {
-    .navigation-path, .header-container, .filter-content, .top-cards{
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+@media (max-width: 1200px) { .navigation-path, .header-container, .filter-content, .top-cards{ padding-left: 0px; padding-right: 0px; }
 
-    .defense-table-container, .penetrate-table-container {
-        background-color: transparent;
-        padding: 0;
-        margin: 0;
-    }
+    .defense-table-container, .penetrate-table-container { background-color: transparent; padding: 0; margin: 0; }
 
-    .defense-table, .penetrate-table, #defenseTableBody, #penetrateTableBody{
-        background-color: none;
-    }
+    .defense-table, .penetrate-table, #defenseTableBody, #penetrateTableBody{ background-color: none; }
 
     /* 모바일 헤더 스타일 */
-    .mobile-table-header {
-        display: none;
-        grid-template-columns: auto auto auto auto;
-        gap: 8px;
-        padding: 12px;
-        background: #3d3030;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.6);
-    }
+    .mobile-table-header { display: none; grid-template-columns: auto auto auto auto; gap: 8px; padding: 12px; background: #3d3030; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; color: rgba(255, 255, 255, 0.6); }
 
-    .mobile-header-group {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
+    .mobile-header-group { display: flex; flex-direction: column; gap: 4px; }
 
-    .mobile-header-group span {
-        white-space: nowrap;
-    }
+    .mobile-header-group span { white-space: nowrap; }
 
-    .defense-table, .penetrate-table {
-        display: block;
-        padding-top: 8px;
-    }
+    .defense-table, .penetrate-table { display: block; padding-top: 8px; }
 
-    .defense-table thead, .penetrate-table thead {
-        display: none;
-    }
+    .defense-table thead, .penetrate-table thead { display: none; }
 
-    .defense-table tbody, .penetrate-table tbody {
-        display: block;
-    }
+    .defense-table tbody, .penetrate-table tbody { display: block; }
 
-    .defense-table tr, .penetrate-table tr {
-        display: grid;
-        grid-template-areas:
-            "check char-img char-name char-name"
-            "skill-icon skill-name skill-name value"
-            "none target option duration"
-            "none note note note";
-        grid-template-columns: 60px 60px 1fr auto;
-        gap: 8px;
-        padding: 12px;
-        margin: 0 0 8px 0px;
-        background: rgba(221, 132, 132, 0.1);
-        border-radius: 8px;
-    }
+    .defense-table tr, .penetrate-table tr { display: grid; grid-template-areas:
+    "check char-img char-name char-name"
+    "skill-icon skill-name skill-name value"
+    "none target option duration"
+    "none note note note"; grid-template-columns: 60px 60px 1fr auto; gap: 8px; padding: 12px; margin: 0 0 8px 0px; background: rgba(221, 132, 132, 0.1); border-radius: 8px; }
 
-    .defense-table td, .penetrate-table td {
-        padding: 0px;
-        border: none !important;
-    }
+    .defense-table td, .penetrate-table td { padding: 0px; border: none !important; }
 
     /* 각 열의 그리드 영역 지정 */
     .check-column { 
-        grid-area: check; 
-        display: flex;
-        align-items: center;
-    }
+    grid-area: check; 
+    display: flex; align-items: center; }
     .char-img-column { 
-        grid-area: char-img;
-        display: flex;
-        align-items: center;
-    }
+    grid-area: char-img; display: flex; align-items: center; }
     .char-name-column { 
-        grid-area: char-name;
-        display: flex;
-        align-items: center;
-    }
+    grid-area: char-name; display: flex; align-items: center; }
     .skill-icon-column { 
-        grid-area: skill-icon;
-        display: flex;
-        align-items: center;
-    }
+    grid-area: skill-icon; display: flex; align-items: center; }
     .skill-name-column { 
-        grid-area: skill-name;
-        display: flex;
-        align-items: center;
-    }
+    grid-area: skill-name; display: flex; align-items: center; }
     .value-column { 
-        grid-area: value;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
+    grid-area: value; display: flex; align-items: center; justify-content: flex-end; }
     .type-column { 
-        display: none;
-        grid-area: type;
-        font-size: 12px;
-    }
+    display: none; grid-area: type; font-size: 12px; }
     .target-column { 
-        grid-area: target;
-        font-size: 12px;
-    }
+    grid-area: target; font-size: 12px; }
     .option-column { 
-        grid-area: option;
-        font-size: 12px;
-    }
+    grid-area: option; font-size: 12px; }
     .duration-column { 
-        grid-area: duration;
-        font-size: 12px;
-        text-align: right;
-    }
+    grid-area: duration; font-size: 12px; text-align: right; }
     .note-column { 
-        grid-area: note;
-        font-size: 12px;
-        height: fit-content;
-        min-height: 36px;
-        color: rgba(255, 255, 255, 0.5);
-    }
-    .note-column:not(:empty)::before {
-        content: "💬 ";
-    }
+    grid-area: note; font-size: 12px; height: fit-content; min-height: 36px; color: rgba(255, 255, 255, 0.5); }
+    .note-column:not(:empty)::before { content: "💬 "; }
 
     /* 이미지 크기 조정 */
-    .char-img-column img {
-        height: 32px;
-        width: 32px;
-    }
+    .char-img-column img { height: 32px; width: 32px; }
 
-    .skill-icon-column img {
-        height: 24px;
-        width: 24px;
-    }
+    .skill-icon-column img { height: 24px; width: 24px; }
 
     /* 선택된 행 스타일 */
-    .defense-table tr.selected, .penetrate-table tr.selected {
-        background: rgba(221, 132, 132, 0.2);
-        border : 1px solid rgba(255, 255, 255, 0.5);
-    }
+    .defense-table tr.selected, .penetrate-table tr.selected { background: rgba(221, 132, 132, 0.2); border : 1px solid rgba(255, 255, 255, 0.5); }
 
     /* 빈 캐릭터 행 스타일 */
-    .defense-table tr.empty-char, .penetrate-table tr.empty-char {
-        padding-top: 8px;
-    }
+    .defense-table tr.empty-char, .penetrate-table tr.empty-char { padding-top: 8px; }
 
     /* 옵션 선택 스타일 */
-    .option-column select {
-        width: 100%;
-        padding: 4px !important;
-    }
+    .option-column select { width: 100%; padding: 4px !important; }
 
     /* note-column에 텍스트가 없으면 display: none; */
-    .note-column:empty {
-        display: none;
-    }
+    .note-column:empty { display: none; }
     
 
     /* 체크박스 이미지 크기 */
     img[src*="check-off.png"],
-    img[src*="check-on.png"] {
-        width: 20px !important;
-        height: 20px !important;
-    }
+    img[src*="check-on.png"] { width: 20px !important; height: 20px !important; }
 }
 
-@media screen and (max-width: 1200px) {
-    .note-column:not(:empty)::before {
-        content: "💬 ";
-    }
+@media screen and (max-width: 1200px) { .note-column:not(:empty)::before { content: "💬 "; }
 }
 
-.penetrate-table-container {
-    margin : 0 20px 20px 20px;
-}
+.penetrate-table-container { margin : 0 20px 20px 20px; }
 
-.final-defense-coef {
-    font-size: 12px;
-    color: #5384d8;
-}
+.final-defense-coef { font-size: 12px; color: #5384d8; }
 
-.final-defense-coef2 {
-    font-size: 12px;
-    color: #dd8484;
-}
+.final-defense-coef2 { font-size: 12px; color: #dd8484; }
 
-.penetrate-table-container .value-column, .penetrate-value{
-    color: #5384d8 !important;
-}
+.penetrate-table-container .value-column, .penetrate-value{ color: #5384d8 !important; }
 
 /* 탭 스타일 */
-.table-tabs {
-    margin: 0 20px;
-    padding: 0;
-    background-color: #3d3030;
-    border-radius: 10px;
-}
+.table-tabs { margin: 0 20px; padding: 0; background-color: #3d3030; border-radius: 10px; }
 
-.tab-buttons {
-    display: flex;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0 20px;
-}
+.tab-buttons { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0 20px; }
 
-.tab-button {
-    padding: 12px 20px;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-}
+.tab-button { padding: 12px 20px; background: none; border: none; color: rgba(255, 255, 255, 0.6); font-size: 14px; cursor: pointer; position: relative; transition: all 0.3s ease; }
 
-.tab-button:hover {
-    color: rgba(255, 255, 255, 0.8);
-}
+.tab-button:hover { color: rgba(255, 255, 255, 0.8); }
 
-.tab-button.active {
-    color: #dd8484;
-    font-weight: bold;
-}
+.tab-button.active { color: #dd8484; font-weight: bold; }
 
-.tab-button.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #dd8484;
-}
+.tab-button.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #dd8484; }
 
-.tab-content {
-    display: none;
-    padding: 20px;
-}
+.tab-content { display: none; padding: 20px; }
 
-.tab-content.active {
-    display: block;
-}
+.tab-content.active { display: block; }
 
-.defense-table-container, .penetrate-table-container {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-}
+.defense-table-container, .penetrate-table-container { background-color: transparent; padding: 0; margin: 0; }
 
 /* 모바일 대응 */
-@media (max-width: 1200px) {
-    .table-tabs {
-        margin: 0;
-        background-color: transparent;
-    }
+@media (max-width: 1200px) { .table-tabs { margin: 0; background-color: transparent; }
 
-    .tab-buttons {
-        padding: 0;
-        margin-bottom: 10px;
-    }
+    .tab-buttons { padding: 0; margin-bottom: 10px; }
 
-    .tab-button {
-        padding: 10px 15px;
-        font-size: 13px;
-    }
+    .tab-button { padding: 10px 15px; font-size: 13px; }
 
-    .tab-content {
-        padding: 0;
-    }
+    .tab-content { padding: 0; }
 }
 
 /* 관통 입력 필드 스타일 */
-.penetrate-input-container {
-    padding: 10px 0px 20px 0px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    flex-wrap: wrap;
-    display: flex;
-    column-gap: 40px;
-}
+.penetrate-input-container { padding: 10px 0px 20px 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); flex-wrap: wrap; display: flex; column-gap: 40px; }
 
-.penetrate-input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
+.penetrate-input-group { display: flex; align-items: center; margin-bottom: 10px; }
 
-.penetrate-input-group label {
-    width: 100px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-}
+.penetrate-input-group label { width: 100px; color: rgba(255, 255, 255, 0.8); font-size: 14px; }
 
-.penetrate-input-group input {
-    width: 100px;
-    padding: 5px 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    color: #5384d8;
-    font-size: 14px;
-    text-align: right;
-}
+.penetrate-input-group input { width: 100px; padding: 5px 10px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #5384d8; font-size: 14px; text-align: right; }
 
-.penetrate-input-group input:focus {
-    outline: none;
-    border-color: #5384d8;
-}
+.penetrate-input-group input:focus { outline: none; border-color: #5384d8; }
 
-.penetrate-input-group span {
-    margin-left: 5px;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-}
+.penetrate-input-group span { margin-left: 5px; color: rgba(255, 255, 255, 0.6); font-size: 14px; }
 
 /* 모바일 대응 */
-@media (max-width: 1200px) {
-    .penetrate-input-container {
-        padding: 10px;
-    }
+@media (max-width: 1200px) { .penetrate-input-container { padding: 10px; }
 
-    .penetrate-input-group label {
-        width: 100px;
-        font-size: 13px;
-    }
+    .penetrate-input-group label { width: 100px; font-size: 13px; }
 
-    .penetrate-input-group input {
-        width: 80px;
-        font-size: 13px;
-    }
+    .penetrate-input-group input { width: 80px; font-size: 13px; }
 }
 
-.tooltip-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: #666;
-    color: white;
-    font-size: 12px;
-    margin-left: 8px;
-    cursor: help;
-    position: relative;
-}
+.tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background-color: #666; color: white; font-size: 12px; margin-left: 8px; cursor: help; position: relative; }
 
-.tooltip-icon:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 12px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    white-space: nowrap;
-    z-index: 1000;
-    margin-bottom: 5px;
-}
+.tooltip-icon:hover::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 8px 12px; background-color: rgba(0, 0, 0, 0.8); color: white; border-radius: 4px; font-size: 14px; white-space: nowrap; z-index: 1000; margin-bottom: 5px; }
 
-.tooltip-icon:hover::before {
-    content: '';
-    position: absolute;
-    bottom: calc(100% - 5px);
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-}
+.tooltip-icon:hover::before { content: ''; position: absolute; bottom: calc(100% - 5px); left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent; }
 
 
 

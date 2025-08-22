@@ -1,68 +1,39 @@
 /* PC 환경의 배경 스타일 - 성능 최적화 */
-@media screen and (min-width: 769px) {
-    .container {
-        background: 
-            linear-gradient(to bottom, rgb(90, 173, 237, 0.3), rgb(5, 21, 166, 0.3)),
-            linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
-            linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
-            radial-gradient(circle at 50% 50%, rgba(47, 168, 255, 0.08), transparent 60%),
-            #111;
-        background-size: 
-            100% 100%,
-            30px 30px,
-            30px 30px,
-            100% 100%;
-        background-attachment: 
-            scroll,
-            scroll,
-            scroll,
-            scroll;
-        background-position: 
-            0 0,
-            0 0,
-            0 0,
-            center center;
-    }
+@media screen and (min-width: 769px) { .container { background: 
+    linear-gradient(to bottom, rgb(90, 173, 237, 0.3), rgb(5, 21, 166, 0.3)),
+    linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
+    radial-gradient(circle at 50% 50%, rgba(47, 168, 255, 0.08), transparent 60%),
+    #111; background-size: 
+    100% 100%,
+    30px 30px,
+    30px 30px,
+    100% 100%; background-attachment: 
+    scroll,
+    scroll,
+    scroll,
+    scroll; background-position: 
+    0 0,
+    0 0,
+    0 0,
+    center center; }
 }
 
-@media screen and (max-width: 1200px) {
-    .container {
-        background: linear-gradient(to bottom, rgb(90, 173, 237,0.3), rgb(5, 21, 166, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111;
-        background-size: 100% 100%, 30px 30px, 30px 30px;
-        background-attachment: scroll, scroll, scroll;
-        background-position: 0 0, 0 0, 0 0;
-    }
+@media screen and (max-width: 1200px) { .container { background: linear-gradient(to bottom, rgb(90, 173, 237,0.3), rgb(5, 21, 166, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111; background-size: 100% 100%, 30px 30px, 30px 30px; background-attachment: scroll, scroll, scroll; background-position: 0 0, 0 0, 0 0; }
 }
 
-.rh {
-    background-color: #393f4b !important;
-}
+.rh { background-color: #393f4b !important; }
 
-.card-style {
-    background: #393f4b;
-}
+.card-style { background: #393f4b; }
 
-.main-nav {
-    background-color: #2e3142;
-}
+.main-nav { background-color: #2e3142; }
 
-.nav-link.active span{
-    color: #8ad9e0;
-}
+.nav-link.active span{ color: #8ad9e0; }
 
-.mobile-header {
-    background-color: #2e3142;
-}
+.mobile-header { background-color: #2e3142; }
 
-.options-container {
-    background-color: #2e3142;
-}
+.options-container { background-color: #2e3142; }
 
-.selected-option, .nav-sub-item {
-    background-color: rgb(0,0,0,0.1);
-}
+.selected-option, .nav-sub-item { background-color: rgb(0,0,0,0.1); }
 
-.selected-option:hover {
-    background-color:  rgb(0,0,0,0.1);
-    border-color: rgba(255, 255, 255, 0.4);
-}
+.selected-option:hover { background-color:  rgb(0,0,0,0.1); border-color: rgba(255, 255, 255, 0.4); }

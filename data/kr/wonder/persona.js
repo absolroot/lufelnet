@@ -574,7 +574,7 @@ const personaData = {
             effect: "2턴 동안 적 1명의 전격 내성을 제거한다.",
             effect_en: "Suppress innate Electric resistances of 1 foe for 2 turns.",
             effect_jp: "2ターンの間、敵単体の電撃耐性を打ち消す。",
-            priority: 1,
+            priority: 3,
             icon: "디버프"
         },
         highlight: {
@@ -584,11 +584,16 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
+            {name : "타루카쟈", priority: 3 },
+            {name : "리벨리온", priority: 3 },
             {name : "지오다인", priority: 3 },
             {name : "감전율 UP", priority: 3 },
             {name : "명중 강화", priority: 3 },
             {name : "우중충한 하늘", priority: 3},
-        ]
+        ],
+        comment: "감전 효과를 주지 않아도 필드에 존재하는 것만으로도 크리티컬 효과 18%를 올릴 수 있다.",
+        comment_en: "Even without applying the Shock effect, simply being present on the field can increase Crit Mult by 18%.",
+        comment_jp: "感電効果を与えなくても、フィールドに存在するだけでCRT倍率を上昇させることができる。"
     },
     "나르키소스": {
         name_en: "Narcissus",
@@ -721,7 +726,7 @@ const personaData = {
             effect: "적 전체에게 공격력 100.0%의 빙결 속성 대미지를 주고, 2턴 동안 적이 받는 추가 효과 대미지 증폭을 8.0% 증가시키며, 받는 빙결 속성 대미지가 8.0% 증가한다.",
             effect_en: "Deals 100.0% ATK Ice dmg to all foes. For 2 turns, increases all foes' additional dmg taken by 8.0%, and increases all foes' Ice dmg taken by 8.0%.",
             effect_jp: "敵全体に攻撃力100.0%の氷結属性ダメージを与える。2ターンの間、敵が受ける追加ダメージが8.0%増加、敵が受ける氷結属性ダメージが8.0%増加する。",
-            priority: 1,
+            priority: 2,
             icon: "빙결광역"
         },
         highlight: {
@@ -826,9 +831,11 @@ const personaData = {
             effect_jp: "全ての敵に180.0% ATKの念動属性ダメージを与える。",
             priority: 0
         },
-        recommendSkill : [
-            
-        ]
+        recommendSkill : [        
+        ],
+        comment : "백업 출전에서 공격력 15% 증가 버프를 활용할 수 있을 때 사용한다.",
+        comment_en: "Use when you can utilize the 15% ATK buff in a backup.",
+        comment_jp: "バックアップ出戦で15%の攻撃力ボーナスを活用できる時、使用する。"
     },
     "스라오샤": {
         name_en: "Sraosha",
@@ -1085,54 +1092,6 @@ const personaData = {
             {name : "물리 강화", priority: 0 },
         ]
     },
-    "자오우곤겐":{
-        name_en: "Zaou-Gongen",
-        name_jp: "蔵王権現",
-        grade: "8",
-        star: "5",
-        position: "반항",
-        element: "화염",
-        wild_emblem_rainbow : true,
-        instinct: {
-            name: "삼세 제도 III",
-            name_en: "Three Ages' Salvation III",
-            name_jp: "三世済度 III",
-            effects: [
-                "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 3턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 『불멸의 진리』를 획득한다.",
-                "『불멸의 진리』: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 12%, 대미지가 10% 증가한다."
-            ],
-            effects_en: [
-                "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 12% and dmg dealt by 10%."
-            ],
-            effects_jp: [
-                "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、3ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が12%、ダメージが10%増加する。"
-            ],
-            priority: 3
-        },
-        uniqueSkill: {
-            name: "분노한 진신",
-            name_en: "Fury Incarnate",
-            name_jp: "怒りの真神",
-            effect: "1명의 적에게 공격력 48.0%의 화염 속성 대미지를 4회 준다. 적군에게 「외상」을 주며 3턴 동안 지속된다. 「외상」기간 동안 목표가 화염 속성 대미지를 1회 받을 때 마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
-            effect_en: "Deals 48.0% ATK Fire dmg to 1 foe 4 times. Inflicts the foe with [Trauma] for 3 turns. During [Trauma], each time the target takes 1 hit of Fire dmg, increases their CRIT dmg taken by 3% for 2 turns, up to 8 stacks.",
-            effect_jp: "1体の敵に48.0% ATKの火炎属性ダメージを4回与える。敵軍に「外傷」を与え、3ターンの間持続する。「外傷」期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるCRT倍率が3%増加する（8回重複可能）。",
-            priority: 3,
-            icon: "화염"
-        },
-        highlight: {
-            effect: "1명의 적에게 공격력 360.0%의 화염 속성 대미지를 준다.",
-            effect_en: "Deal 360% ATK as Fire dmg to 1 foe.",
-            effect_jp: "1体の敵に360.0% ATKの火炎属性ダメージを与える。",
-            priority: 0
-        },
-        recommendSkill : [
-            {name : "공격 강화", priority: 0 },
-            {name : "어드바이스", priority: 0 },
-            {name : "정교한 타격", priority: 0 },
-            {name : "마도의 재능", priority: 0 },
-            {name : "화염 강화", priority: 0 },
-        ]
-    },
     "앨리스": {
         name_en: "Alice",
         name_jp: "アリス",
@@ -1214,7 +1173,7 @@ const personaData = {
             effect: "1명의 적에게 180.0%의 핵열 속성 대미지를 주고, 원소 이상 상태인 적 공격 시 해당 스킬 대미지가 25% 증가한다. 또한 아군 핵열 속성 동료의 공격력이 20% 증가하고, 2턴간 지속된다.",
             effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases dmg dealt to enemy inflicted with Elemental Ailments by 25% and increases all Nuke allies' ATK by 20% for 2 turns.",
             effect_jp: "敵単体に180.0％攻撃力の核熱属性ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25％上昇する。また、核熱属性の味方の攻撃力が20％上昇し、2ターンの間持続する。",
-            priority: 0,
+            priority: 1,
             icon: "핵열"
         },
         highlight: {
@@ -1278,6 +1237,54 @@ const personaData = {
             {name : "어드바이스", priority: 0},
             {name : "정교한 타격", priority: 0},
             {name : "전격 강화", priority: 0},
+        ]
+    },
+    "자오우곤겐":{
+        name_en: "Zaou-Gongen",
+        name_jp: "蔵王権現",
+        grade: "8",
+        star: "5",
+        position: "반항",
+        element: "화염",
+        wild_emblem_rainbow : true,
+        instinct: {
+            name: "삼세 제도 III",
+            name_en: "Three Ages' Salvation III",
+            name_jp: "三世済度 III",
+            effects: [
+                "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 3턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 『불멸의 진리』를 획득한다.",
+                "『불멸의 진리』: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 12%, 대미지가 10% 증가한다."
+            ],
+            effects_en: [
+                "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 12% and dmg dealt by 10%."
+            ],
+            effects_jp: [
+                "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、3ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が12%、ダメージが10%増加する。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "분노한 진신",
+            name_en: "Fury Incarnate",
+            name_jp: "怒りの真神",
+            effect: "1명의 적에게 공격력 48.0%의 화염 속성 대미지를 4회 준다. 적군에게 「외상」을 주며 3턴 동안 지속된다. 「외상」기간 동안 목표가 화염 속성 대미지를 1회 받을 때 마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
+            effect_en: "Deals 48.0% ATK Fire dmg to 1 foe 4 times. Inflicts the foe with [Trauma] for 3 turns. During [Trauma], each time the target takes 1 hit of Fire dmg, increases their CRIT dmg taken by 3% for 2 turns, up to 8 stacks.",
+            effect_jp: "1体の敵に48.0% ATKの火炎属性ダメージを4回与える。敵軍に「外傷」を与え、3ターンの間持続する。「外傷」期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるCRT倍率が3%増加する（8回重複可能）。",
+            priority: 3,
+            icon: "화염"
+        },
+        highlight: {
+            effect: "1명의 적에게 공격력 360.0%의 화염 속성 대미지를 준다.",
+            effect_en: "Deal 360% ATK as Fire dmg to 1 foe.",
+            effect_jp: "1体の敵に360.0% ATKの火炎属性ダメージを与える。",
+            priority: 0
+        },
+        recommendSkill : [
+            {name : "공격 강화", priority: 0 },
+            {name : "어드바이스", priority: 0 },
+            {name : "정교한 타격", priority: 0 },
+            {name : "마도의 재능", priority: 0 },
+            {name : "화염 강화", priority: 0 },
         ]
     },
     "트론": {
@@ -1958,7 +1965,10 @@ const personaData = {
              {name : "리벨리온", priority: 2},
              {name : "타루카쟈", priority: 2},
              {name : "마하타루카 오토", priority: 1},
-        ]
+        ],
+        comment: "필드에 존재하지 않으면 영구 공격력 버프는 사라진다.",
+        comment_en: "If not present on the field, the permanent ATK buff will disappear.",
+        comment_jp: "フィールドに存在しなければ、永続的な攻撃力バフは消滅する。"
     },
     "아프사라스": {
         name_en: "Apsaras",

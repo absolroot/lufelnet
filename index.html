@@ -1153,4 +1153,17 @@ alternate_urls:
             return date.toLocaleDateString('ko-KR');
         }
     }
+
+    // 광고 흰 박스 숨김
+    setTimeout(() => {
+        document.querySelectorAll(".adsbygoogle").forEach(el => {
+            const status = el.getAttribute("data-ad-status");
+            const adslot = el.getAttribute("data-ad-slot");
+            //console.log("google status", status);
+            //console.log("google adslot", adslot);
+            if (status === "unfilled" || el.querySelector("iframe") === null) {
+                el.style.display = "none";
+            }
+        });
+    }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
     </script>

@@ -965,8 +965,10 @@ alternate_urls:
                             return `
                                 <li data-priority="${skill.priority}">
                                     <div class="skill-info">
-                                        <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
-                                        <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
+                                        <div class="skill-name-container">
+                                            <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
+                                            <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
+                                        </div>
                                         <span class="skill-description">${skillDescription}</span>
                                     </div>
                                 </li>

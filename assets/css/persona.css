@@ -307,10 +307,33 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 .persona-recommended-skills li { margin: 8px 0; }
 
 .skill-info { display: flex; align-items: center; gap: 10px; }
+/* Ensure icon + name group keeps original spacing and alignment */
+.skill-info .skill-name-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;     /* matches prior icon-name gap */
+    flex: 0 0 auto;
+}
+
+/* Make the icon+name group look clickable */
+.persona-recommended-skills .skill-name-container {
+    padding: 2px 6px;
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.persona-recommended-skills .skill-name-container:hover {
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+@media (max-width: 1200px) {
+    .persona-recommended-skills .skill-name-container { padding: 4px 6px; }
+}
 
 .skill-icon { width: 20px; height: 20px; }
-
-.skill-name { min-width: 90px; font-size: 12px; }
+.skill-name { min-width: 95px; font-size: 12px; }
 
 .skill-description { color: rgba(255, 255, 255, 0.8); font-size: 12px; }
 

@@ -150,12 +150,18 @@
 
     container.addEventListener('click', async (e) => {
       const target = e.target;
-      if (!(target && target.classList && target.classList.contains('skill-name'))) return;
+      // Accept clicks on the name container or anything inside it (icon, name text)
+      const nameContainer = target.closest('.skill-name-container');
+      if (!nameContainer) return;
+
+      // Find the actual skill-name element within the container to read attributes/text
+      const nameEl = nameContainer.querySelector('.skill-name');
+      if (!nameEl) return;
 
       const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-      const korFull = target.getAttribute('data-skill-kor-full') || '';
-      const baseKor = target.getAttribute('data-skill-base-kor') || stripRankSuffix(korFull);
-      const rankFromUI = extractRankSuffix(target.textContent || '');
+      const korFull = nameEl.getAttribute('data-skill-kor-full') || '';
+      const baseKor = nameEl.getAttribute('data-skill-base-kor') || stripRankSuffix(korFull);
+      const rankFromUI = extractRankSuffix(nameEl.textContent || '');
 
       // Prepare skill icon and description (using global personaSkillList if present)
       let skillInfo = null;
@@ -176,7 +182,7 @@
       const map = await loadSkillSourceMap();
       const entry = map[baseKor];
 
-      const title = (target.textContent || baseKor).trim();
+      const title = (nameEl.textContent || baseKor).trim();
 
       const noSourcesText = (function () {
         if (currentLang === 'en') return 'No sources found.';

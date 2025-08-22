@@ -416,9 +416,10 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
     .persona-info-section { gap: 10px; }
 
     /* skill-info 아이템들 상단 정렬*/
-    .skill-info { align-items: flex-start; }
+    .skill-info { align-items: flex-start; flex-wrap:wrap; gap: 8px; padding-bottom: 8px;}
     
     /* 긴 단어도 잘리면 줄바꿈 */
     .skill-description { width: 100%; word-break: break-all; }
-    .skill-name { min-width: 60px; }
+    /* skill 60px 넘어가면 ...으로 바꿈 */
+    .skill-name {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 }

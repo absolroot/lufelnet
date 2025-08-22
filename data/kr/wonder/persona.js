@@ -389,6 +389,7 @@ const personaData = {
              {name : "리벨리온", priority: 3 },
              {name : "치료 촉진", priority: 1 },
         ],
+        comment : "",
         comment_en: "Provides consistent ATK buffs to allies, especially effective for low HP allies.",
         comment_jp: "味方に一貫したATKバフを提供し、特に低HPの味方に効果的である。"
     },

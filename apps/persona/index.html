@@ -244,6 +244,11 @@ alternate_urls:
         <div class="search-count">
             <span id="filteredCount">전체 0개</span>
         </div>
+        <!-- Expand-all toggle -->
+        <div class="expand-all-toggle">
+            <input type="checkbox" id="expandAllToggle">
+            <label for="expandAllToggle" id="expandAllLabel">전체 펼치기</label>
+        </div>
     </div>
 
     <!-- Explain Container -->
@@ -321,6 +326,10 @@ alternate_urls:
             
             /* 트랜지션 비활성화로 성능 향상 */
             transition: none !important;
+            /* 화면 밖 콘텐츠 지연 렌더링 및 레이아웃 격리 */
+            content-visibility: auto;
+            contain-intrinsic-size: 520px; /* 카드 대략 높이 힌트: 실제 렌더 후 교정됨 */
+            contain: content;
         }
         
         .persona-img, .card-background, .cover-star {
@@ -340,6 +349,108 @@ alternate_urls:
         .persona-cards {
             contain: layout style paint;
             overflow-anchor: none;
+            /* 8열 그리드 배치 */
+            display: grid;
+            grid-template-columns: repeat(8, minmax(0, 1fr));
+            /* Define gap vars so we can compensate around grid-break */
+            --row-gap: 16px;
+            --col-gap: 24px;
+            gap: var(--row-gap) var(--col-gap);
+        }
+
+        /* 반응형 열 수 조정 */
+        @media (max-width: 1440px) {
+            .persona-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            .persona-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        }
+        @media (max-width: 660px) {
+            .persona-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        @media (max-width: 540px) {
+            .persona-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        @media (max-width: 450px) {
+            .persona-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        /* 카드 컨테이너: 기본은 1열 차지, 확장 시 전폭 차지 */
+        .persona-detail-container {
+            grid-column: span 1;
+        }
+        .persona-detail-container.expanded {
+            grid-column: 1 / -1;
+        }
+        /* 확장 상태일 때 별도 패딩을 적용할 수 있도록 훅 제공 */
+        @media(min-width:1440px){
+            .persona-detail-container{
+                padding: 0px;
+                background: rgba(0, 0, 0, 0.5)
+            }
+            .persona-detail-container.active {
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.3)
+            }
+        }
+        @media(max-width:1440px){
+            .persona-detail-container{
+                padding: 20px 0 0 0px;
+            }
+            .persona-detail-container.active {
+                padding: 20px 10px 10px 10px;
+            }
+        }
+
+        /* 기본(축소) 상태에선 정보 섹션 숨김, 카드와 이름만 노출 */
+        .persona-detail-container .persona-info-section {
+            display: none;
+        }
+        .persona-detail-container.expanded .persona-info-section,
+        .expand-all .persona-detail-container .persona-info-section {
+            display: flex;
+        }
+
+        
+        .persona-detail-container .persona-header-info {
+            margin-top: 8px;
+        }
+
+        /* 카드 하단 이름 캡션 (축소 모드에서 표시) */
+        .persona-detail-container .persona-name {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            color: EEEEEE;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* expand-all 시 전폭 확장 */
+        .expand-all .persona-detail-container {
+            grid-column: 1 / -1;
+        }
+
+        .expand-all-toggle {display:flex;align-items:center;gap:8px;}
+        .expand-all-toggle input{width:auto;padding:0;border:0;background:transparent;color:inherit;appearance:auto}
+        .expand-all-toggle label{font-size:12px;opacity:.9}
+        @media screen and (max-width: 768px) {
+            .expand-all-toggle {display:none;}
+        }
+
+        /* 광고는 그리드에서 항상 전폭 사용 */
+        .persona-cards .ad-container {
+            grid-column: 1 / -1;
+        }
+
+        /* grid-break는 더 이상 사용하지 않습니다. */
+
+        /* Hide name caption when active (expanded styling) */
+        .persona-detail-container.active .persona-card-section .persona-name {
+            display: none;
         }
     </style>
     <!-- 
@@ -567,9 +678,17 @@ alternate_urls:
         const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
         document.getElementById('filteredCount').textContent = `${countText} ${Object.keys(personaData).length}${countUnit}`;
 
-        const sortedPersonas = Object.keys(personaData)
-        
-        sortedPersonas.forEach((personaName, index) => {
+        const sortedPersonas = Object.keys(personaData);
+        // 대량 렌더링 최적화: 청크 단위로 분할 렌더링하여 메인 스레드 점유를 줄임
+        const CHUNK_SIZE = 10;
+        let currentIndex = 0;
+
+        function renderChunk() {
+            const fragment = document.createDocumentFragment();
+            let processed = 0;
+            while (processed < CHUNK_SIZE && currentIndex < sortedPersonas.length) {
+                const personaName = sortedPersonas[currentIndex];
+                const index = currentIndex;
             const detailContainer = document.createElement('div');
             detailContainer.className = 'persona-detail-container';
             // Add data attributes for filtering
@@ -580,6 +699,8 @@ alternate_urls:
             detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
             detailContainer.dataset.event = personaData[personaName].event;
             detailContainer.dataset.wild_emblem_rainbow = personaData[personaName].wild_emblem_rainbow;
+            // Preserve original order for restoring after collapse
+            detailContainer.dataset.order = String(index);
             
             // Left card image section
             const cardSection = document.createElement('div');
@@ -623,11 +744,15 @@ alternate_urls:
             positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaData[personaName].position}.png`;
             positionIcon.alt = personaData[personaName].position;
             positionIcon.className = 'position-icon';
+            positionIcon.loading = 'lazy';
+            positionIcon.decoding = 'async';
             
             const elementIcon = document.createElement('img');
             elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].element}.png`;
             elementIcon.alt = personaData[personaName].element;
             elementIcon.className = 'element-icon';
+            elementIcon.loading = 'lazy';
+            elementIcon.decoding = 'async';
 
             
             positionContainer.appendChild(positionIcon);
@@ -674,6 +799,12 @@ alternate_urls:
                 comment = persona.comment_jp || persona.comment;
             }
             
+            // Collapsed-mode name caption under the card
+            const nameCaption = document.createElement('div');
+            nameCaption.className = 'persona-name';
+            nameCaption.textContent = displayName;
+            cardSection.appendChild(nameCaption);
+
             // Name and grade
             const headerInfo = document.createElement('div');
             headerInfo.className = 'persona-header-info';
@@ -810,12 +941,12 @@ alternate_urls:
             detailContainer.appendChild(cardSection);
             detailContainer.appendChild(infoSection);
             
-            cardsContainer.appendChild(detailContainer);
+            fragment.appendChild(detailContainer);
 
             // 15개의 카드마다 광고 삽입
-            
-            if ((index + 1) % 15 === 1 && index < sortedPersonas.length - 1) 
-            {
+            // 잠시 비활성화
+            /*
+            if ((index + 1) % 15 === 1 && index < sortedPersonas.length - 1) {
                 const adContainer = document.createElement('div');
                 adContainer.className = 'ad-container dynamic-ad';
                 adContainer.style.overflow = 'visible';
@@ -833,7 +964,7 @@ alternate_urls:
                 ins.setAttribute('data-ad-slot', '6110222512');
 
                 adContainer.appendChild(ins);
-                cardsContainer.appendChild(adContainer);
+                fragment.appendChild(adContainer);
 
                 // 광고 스크립트 실행 (adsbygoogle 배열이 준비된 후에)
                 setTimeout(() => {
@@ -844,10 +975,158 @@ alternate_urls:
                     }
                 }, 300);
             }
+            */
+                currentIndex++;
+                processed++;
+            }
+            // 청크 단위로 DOM 삽입
+            cardsContainer.appendChild(fragment);
+            
+            if (currentIndex < sortedPersonas.length) {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(renderChunk, { timeout: 100 });
+                } else {
+                    setTimeout(renderChunk, 0);
+                }
+            } else {
+                // 전체 렌더 완료 후 툴팁 1회 지연 실행 및 컨테이너 캐싱
+                if (typeof addTooltips === 'function') {
+                    if ('requestIdleCallback' in window) {
+                        requestIdleCallback(() => addTooltips(), { timeout: 1000 });
+                    } else {
+                        setTimeout(() => addTooltips(), 0);
+                    }
+                }
+                // 컨테이너 목록 캐싱 (필터/검색에서 재사용)
+                containers = document.querySelectorAll('.persona-detail-container');
+                // 인터랙션 연결
+                wireCardInteractions();
+            }
+        }
+        // 초기 렌더 시작
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(renderChunk, { timeout: 50 });
+        } else {
+            setTimeout(renderChunk, 0);
+        }
 
-            // Initialize tooltips
-            addTooltips();
-        });
+        // 컨테이너 목록은 렌더 완료 후 할당됨
+        let containers = null;
+
+        // 카드 클릭 확장 및 전체 펼치기 토글 연결
+        function wireCardInteractions() {
+            const grid = document.getElementById('personaCards');
+            const expandAllToggle = document.getElementById('expandAllToggle');
+
+            // i18n for label
+            const expandAllLabel = document.getElementById('expandAllLabel');
+            const labelTexts = { kr: '전체 펼치기', en: 'Expand all', jp: 'すべて展開' };
+            const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+            if (expandAllLabel) expandAllLabel.textContent = labelTexts[currentLang] || labelTexts.kr;
+
+            function removeAllBreakers() {
+                grid.querySelectorAll('.grid-break').forEach(b => b.remove());
+            }
+
+            // Legacy no-ops (grid-break no longer used)
+            function ensureBreakerBefore(_container) { /* no-op */ }
+            function removeBreakerBefore(_container) { /* no-op */ }
+            function removeAllBreakers() {
+                grid.querySelectorAll('.grid-break').forEach(n => n.remove());
+            }
+
+            // Clean any leftover breakers from previous sessions/interactions
+            removeAllBreakers();
+
+            function applyExpandAllState() {
+                if (!expandAllToggle) return;
+                if (expandAllToggle.checked) {
+                    grid.classList.add('expand-all');
+                    // 전체 확장: 모든 컨테이너 확장 및 active
+                    containers.forEach(c => {
+                        c.classList.add('expanded');
+                        c.classList.add('active');
+                    });
+                } else {
+                    grid.classList.remove('expand-all');
+                    // 전체 축소: 모든 컨테이너 축소 및 active 제거
+                    containers.forEach(c => {
+                        c.classList.remove('expanded');
+                        c.classList.remove('active');
+                    });
+                    restoreOriginalOrder();
+                }
+            }
+
+            function restoreOriginalOrder() {
+                const items = Array.from(grid.querySelectorAll('.persona-detail-container'));
+                items.sort((a, b) => (parseInt(a.dataset.order) - parseInt(b.dataset.order)));
+                const frag = document.createDocumentFragment();
+                items.forEach(el => frag.appendChild(el));
+                grid.appendChild(frag);
+            }
+
+            function getSameRowPrevious(container) {
+                const rect = container.getBoundingClientRect();
+                const top = rect.top;
+                const tolerance = 8; // px, breakpoint/zoom 오차 보정
+                const prevSiblings = [];
+                let el = container.previousElementSibling;
+                while (el) {
+                    if (el.classList && el.classList.contains('persona-detail-container')) {
+                        // 숨김(absolute)인 경우 제외
+                        const style = window.getComputedStyle(el);
+                        if (style.position !== 'absolute') {
+                            const r = el.getBoundingClientRect();
+                            if (Math.abs(r.top - top) <= tolerance) {
+                                prevSiblings.push(el);
+                            } else {
+                                // 다른 행을 만나면 중단
+                                break;
+                            }
+                        }
+                    } else if (el.classList && el.classList.contains('grid-break')) {
+                        // 그리드 브레이커 만나면 같은 행 이전 요소는 없음
+                        break;
+                    }
+                    el = el.previousElementSibling;
+                }
+                // DOM 순서 유지 위해 역순으로 쌓였던 것을 뒤집어 반환
+                return prevSiblings.reverse();
+            }
+
+            // 개별 카드 클릭으로 확장/축소 (expand-all이 꺼져 있을 때만)
+            containers.forEach(container => {
+                const clickTarget = container.querySelector('.persona-card-section') || container;
+                clickTarget.style.cursor = 'pointer';
+                clickTarget.addEventListener('click', (e) => {
+                    if (expandAllToggle && expandAllToggle.checked) return; // 전체 펼치기 중에는 개별 토글 비활성화
+                    const willExpand = !container.classList.contains('expanded');
+                    if (willExpand) {
+                        // 확장: 같은 행의 앞선 카드들을 먼저 계산하고
+                        // 확장 카드를 그 행의 첫 요소 앞에 이동하여 새 줄을 시작하게 함
+                        const sameRowPrev = getSameRowPrevious(container);
+                        if (sameRowPrev.length > 0) {
+                            const firstOfRow = sameRowPrev[0];
+                            firstOfRow.parentNode.insertBefore(container, firstOfRow);
+                        }
+                        container.classList.add('expanded');
+                        container.classList.add('active');
+                    } else {
+                        // 축소: 클래스 제거 후 원래 DOM 순서 복구
+                        container.classList.remove('expanded');
+                        container.classList.remove('active');
+                        restoreOriginalOrder();
+                    }
+                });
+            });
+
+            if (expandAllToggle) {
+                expandAllToggle.addEventListener('change', applyExpandAllState);
+                // 초기 상태 적용
+                applyExpandAllState();
+            }
+        }
 
         // ----------------------------------------------------
         // Filter implementation
@@ -942,13 +1221,13 @@ alternate_urls:
         
         // 성능 최적화된 필터 적용 함수
         function applyFilters() {
+            if (!containers) return; // 아직 렌더링 중이면 무시
             // 필터 상태를 Set으로 캐싱하여 빠른 조회
             filterCache.elements = new Set(Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value));
             filterCache.positions = new Set(Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value));
             filterCache.rarities = new Set(Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value)));
             filterCache.grades = new Set(Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value));
             
-            const containers = document.querySelectorAll('.persona-detail-container');
             let visibleCount = 0;
             
             // requestAnimationFrame으로 DOM 조작 배치 처리
@@ -996,7 +1275,8 @@ alternate_urls:
         // Search functionality implementation
         const searchInput = document.getElementById('personaSearch');
         const dropdown = document.getElementById('searchDropdown');
-        const containers = document.querySelectorAll('.persona-detail-container');
+        // Note: reuse cached NodeList from above to avoid redeclaration and extra DOM query
+        // const containers = document.querySelectorAll('.persona-detail-container');
         
         // 언어별 페르소나 이름 매핑 생성
         const personaNameMapping = {};
@@ -1093,7 +1373,6 @@ alternate_urls:
                 return;
             }
             
-            const containers = document.querySelectorAll('.persona-detail-container');
             let visibleCount = 0;
             const results = [];
             
@@ -1303,6 +1582,11 @@ alternate_urls:
     margin: 20px 0 0 0;
     padding: 0 20px;
 }
+@media (max-width: 1200px) {
+    .explain-container {
+        padding: 0 0px;
+    }
+}
 
 .explain-box {
     width: 100%;
@@ -1332,6 +1616,7 @@ alternate_urls:
     display: flex;
     gap: 20px;
     font-size: 14px;
+    flex-wrap: wrap;
 }
 
 .priority-item {

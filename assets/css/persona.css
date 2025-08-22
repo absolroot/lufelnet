@@ -32,7 +32,8 @@
     /* 카드의 가로:세로 비율을 고정 */
     aspect-ratio: 1/1.67;
     cursor: pointer;
-    transition: all 0.1s;
+    /* 전체 속성 전환은 레이아웃/페인트 유발 가능성 → 필요한 속성만 지정 */
+    transition: filter 0.1s;
     overflow: hidden;
 }
 
@@ -115,7 +116,8 @@
     object-fit: contain !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%);
+    /* 스크롤 시 비용 큰 컬러 필터 제거 (필요 시 사전 렌더링된 자산 사용 권장) */
+    /* filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%); */
 }
 
 /* 호버 시 카드 이미지 색이 빛나는 효과*/
@@ -510,7 +512,6 @@ input, textarea {
 }
 
 .persona-detail-container {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
@@ -518,6 +519,11 @@ input, textarea {
     margin-bottom: 32px;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 12px;
+    /* 오프스크린 영역 생략으로 스크롤 페인트 비용 절감 */
+    content-visibility: auto;
+    contain: content;
+    contain-intrinsic-size: 520px;
+    justify-content: center;
 }
 
 .persona-card-section {
@@ -658,7 +664,8 @@ input, textarea {
         #c4ffff
     );
     background-size: 200% auto;
-    animation: gradient 4s linear infinite;
+    /* 스크롤 시 지속 애니메이션은 큰 페인트 비용 → 정적 처리 */
+    animation: none;
 }
 
 .persona-instinct-info[data-priority="2"],
@@ -776,6 +783,7 @@ input, textarea {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .search-container {
@@ -886,8 +894,6 @@ input, textarea {
         padding: 0;
         margin: 0;
         width: 100%; 
-        display: flex;
-        justify-content: center;
     }
     .card {
         margin: 0 auto;        

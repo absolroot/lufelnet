@@ -60,7 +60,7 @@ class Navigation {
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
                 tacticLibrary: 'Tactics Library',
-                tier: 'Tier',
+                tier: 'Tiers',
                 tierMaker: 'Tier Maker',
                 tierList: 'Tier List',
                 calculator: 'Calculator',
@@ -116,9 +116,9 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
-            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'tier', 'article', 'about'],
+            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'tier', 'about'],
+            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'tier', 'about'],
+            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'tier', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -209,6 +209,12 @@ class Navigation {
                     <span data-text="${texts.tacticMaker}">${texts.tacticMaker}</span>
                 </a>
                 ` : ''}
+                ${currentMenus.includes('article') ? `
+                    <a href="${BASE_URL}/article/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="article">
+                        <img src="${BASE_URL}/assets/img/nav/article.png" alt="article" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <span data-text="${texts.article}">${texts.article}</span>
+                    </a>
+                    ` : ''}
                 ${currentMenus.includes('tier') ? `
                 <div class="nav-item has-submenu" data-nav="tier">
                     <div class="nav-main-item">
@@ -224,12 +230,6 @@ class Navigation {
                         </a>
                     </div>
                 </div>
-                ` : ''}
-                ${currentMenus.includes('article') ? `
-                <a href="${BASE_URL}/article/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="article">
-                    <img src="${BASE_URL}/assets/img/nav/article.png" alt="article" style="width: 32px; height: 32px; object-fit: contain;" />
-                    <span data-text="${texts.article}">${texts.article}</span>
-                </a>
                 ` : ''}
                 ${currentMenus.includes('about') ? `
                 <a href="${BASE_URL}/about?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="about">

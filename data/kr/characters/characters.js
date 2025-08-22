@@ -100,8 +100,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "공격력 20%!",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3/HL!"
     },
     "미나미·여름": {
         "limit": true,
@@ -149,8 +149,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "생명 20%!",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "이치고": {
         "limit": true,
@@ -196,8 +196,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지 보너스 16%",
         "mind_stats2": "관통 7.5%!",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/HL!"
     },
     "사나다": {
         "limit": true,
@@ -244,8 +244,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/3!",
-        "mind_skill2": "2/TH!",
+        "mind_skill1": "S1/S3!",
+        "mind_skill2": "S2/TH!",
     },
     "유카리": {
         "limit": true,
@@ -292,8 +292,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "SP 회복",
         "mind_stats2": "공격력",
-        "mind_skill1": "1/3!",
-        "mind_skill2": "2/TH!",
+        "mind_skill1": "S1/S3!",
+        "mind_skill2": "S2/TH!",
     },
 
     "유키 마코토": {
@@ -334,8 +334,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지 보너스 16%",
         "mind_stats2": "관통 7.5%",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/TH!",
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/TH!",
     },
 
     "이케나미": {
@@ -382,8 +382,8 @@ const characterData = {
         "skill4_lv": "8",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "효과 명중 24%",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/HL!",
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/HL!",
     },
 
     "마나카": {
@@ -430,8 +430,8 @@ const characterData = {
         "skill4_lv": "-",
         "mind_stats1": "생명 20%",
         "mind_stats2": "공격력 20%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3!"
     },
     "마유미": {
         "limit": false,
@@ -477,8 +477,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "속도 10!",
         "mind_stats2": "크리티컬 확률 12%",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/HL!"
     },
     "아케치": {
         "limit": true,
@@ -525,8 +525,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3/HL!"
     },
 
     "미오": {
@@ -575,8 +575,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "효과명중 24%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3/HL!"
     },
     "레오": {
         "limit": false,
@@ -621,8 +621,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "생명 20%",
         "mind_stats2": "공격력 20%×",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "렌": {
         "limit": true,
@@ -668,8 +668,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "루우나": {
         "limit": false,
@@ -715,8 +715,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "효과명중 24%",
-        "mind_skill1": "3/HL!",
-        "mind_skill2": "1/2!"
+        "mind_skill1": "S3/HL!",
+        "mind_skill2": "S1/S2!"
     },
     "루페르": {
         "limit": false,
@@ -808,8 +808,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/HL",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL",
+        "mind_skill2": "S2/S3!"
     },
     "리코": {
         "limit": false,
@@ -855,8 +855,8 @@ const characterData = {
         "skill4_lv": "-",
         "mind_stats1": "생명 20%",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3!"
     },
     "리코·매화": {
         "limit": true,
@@ -902,8 +902,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "마사키": {
         "limit": false,
@@ -947,8 +947,8 @@ const characterData = {
         "skill4_lv": "8",
         "mind_stats1": "효과저항 24%×",
         "mind_stats2": "방어력 30%",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/HL"
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/HL"
     },
     "마코토": {
         "limit": true,
@@ -993,8 +993,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "2/HL!",
-        "mind_skill2": "1/3!"
+        "mind_skill1": "S2/HL!",
+        "mind_skill2": "S1/S3!"
     },
     "미나미": {
         "limit": false,
@@ -1039,7 +1039,7 @@ const characterData = {
         "mind_stats1": "효과저항 24%×",
         "mind_stats2": "생명 20%×",
         "mind_skill1": "2/HL×",
-        "mind_skill2": "1/3×"
+        "mind_skill2": "S1/S3×"
     },
     "미유": {
         "limit": false,
@@ -1083,8 +1083,8 @@ const characterData = {
         "skill4_lv": "-",
         "mind_stats1": "실드효과 14%×",
         "mind_stats2": "방어력 30%",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3"
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3"
     },
     "모르가나": {
         "limit": false,
@@ -1217,8 +1217,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "몽타뉴": {
         "limit": false,
@@ -1306,8 +1306,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "세이지": {
         "limit": false,
@@ -1350,8 +1350,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/HL!"
     },
     "슌": {
         "limit": false,
@@ -1438,8 +1438,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지감면 16%",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "안": {
         "limit": false,
@@ -1483,8 +1483,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "야오링": {
         "limit": false,
@@ -1527,8 +1527,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "효과명중 24%×",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "1/HL",
-        "mind_skill2": "2/3"
+        "mind_skill1": "S1/HL",
+        "mind_skill2": "S2/S3"
     },
     "야오링·사자무": {
         "limit": true,
@@ -1572,8 +1572,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "유스케": {
         "limit": true,
@@ -1618,8 +1618,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/HL",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL",
+        "mind_skill2": "S2/S3!"
     },
     "유우미": {
         "limit": false,
@@ -1671,8 +1671,8 @@ const characterData = {
         "skill4_lv": "-",
         "mind_stats1": "생명 20%",
         "mind_stats2": "공격력 20%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3!"
     },
     "유이 YUI": {
         "limit": true,
@@ -1716,8 +1716,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3/추격!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3/추격!"
     },
     "유키미": {
         "limit": false,
@@ -1760,8 +1760,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "실드효과 14%×",
         "mind_stats2": "방어력 30%",
-        "mind_skill1": "1/3",
-        "mind_skill2": "2/HL"
+        "mind_skill1": "S1/S3",
+        "mind_skill2": "S2/HL"
     },
     "치즈코": {
         "limit": false,
@@ -1807,8 +1807,8 @@ const characterData = {
         "skill4_lv": "8",
         "mind_stats1": "효과명중 24%!",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "1/HL",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL",
+        "mind_skill2": "S2/S3!"
     },
     "카스미": {
         "limit": true,
@@ -1853,8 +1853,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "크리티컬 확률 12%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3/HL!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3/HL!"
     },
     "카요": {
         "limit": false,
@@ -1898,8 +1898,8 @@ const characterData = {
         "skill4_lv": "-",
         "mind_stats1": "효과명중 28%",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "2/3",
-        "mind_skill2": "1"
+        "mind_skill1": "S2/S3",
+        "mind_skill2": "S1"
     },
     "키라": {
         "limit": true,
@@ -1943,8 +1943,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "관통 7.5%!",
-        "mind_skill1": "1/HL!",
-        "mind_skill2": "2/3!"
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "키요시": {
         "limit": false,
@@ -2076,8 +2076,8 @@ const characterData = {
         "skill4_lv": "8",
         "mind_stats1": "SP회복 125%",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "1/2",
-        "mind_skill2": "3/HL"
+        "mind_skill1": "S1/S2",
+        "mind_skill2": "S3/HL"
     },
     "토시야": {
         "limit": false,
@@ -2166,8 +2166,8 @@ const characterData = {
         "skill4_lv": "MAX!",
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
-        "mind_skill1": "3/HL!",
-        "mind_skill2": "1/2"
+        "mind_skill1": "S3/HL!",
+        "mind_skill2": "S1/S2"
     },
     "하루나": {
         "limit": false,
@@ -2210,8 +2210,8 @@ const characterData = {
         "skill4_lv": "MAX",
         "mind_stats1": "대미지보너스 16%",
         "mind_stats2": "공격력 20%",
-        "mind_skill1": "1/HL",
-        "mind_skill2": "2/3"
+        "mind_skill1": "S1/HL",
+        "mind_skill2": "S2/S3"
     },
     "후타바": {
         "limit": true,
@@ -2256,7 +2256,7 @@ const characterData = {
         "skill4_lv": "-",
         "mind_stats1": "생명 20%!",
         "mind_stats2": "공격력 20%!",
-        "mind_skill1": "1/2!",
-        "mind_skill2": "3!"
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3!"
     }
 };

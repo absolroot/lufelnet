@@ -125,6 +125,8 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
 
   .main-revelation, .sub-revelation { width: 80px !important; }
 
+  .rev-display {width: 90px !important}
+
   .action-buttons { display: flex; gap: 4px; margin-left: auto; align-items: center; height: 100%; }
 
   .clone-action { display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; padding: 0; border: none; background-color: transparent; cursor: pointer; opacity: 0.6; transition: opacity 0.2s ease; /* SVG 아이콘 수정 */

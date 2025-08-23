@@ -76,19 +76,19 @@ function getPlaceholderText(type) {
     const lang = getCurrentLanguage();
     const placeholders = {
         persona: {
-            kr: '선택 또는 입력',
-            en: 'Select or type',
-            jp: '選択または入力'
+            kr: '선택',
+            en: 'Select',
+            jp: '選択'
         },
         weapon: {
-            kr: '선택 또는 입력',
-            en: 'Select or type',
-            jp: '選択または入力'
+            kr: '선택',
+            en: 'Select',
+            jp: '選択'
         },
         skill: {
-            kr: '선택 또는 입력',
-            en: 'Select or type',
-            jp: '選択または入力'
+            kr: '선택',
+            en: 'Select',
+            jp: '選択'
         }
     };
     return placeholders[type]?.[lang] || '';
@@ -116,6 +116,8 @@ function getUniqueSkillDisplayName(personaName, skillName) {
 // 무기 입력 필드 수정
 const weaponInput = wonderConfigDiv.querySelector(".wonder-weapon-input");
 weaponInput.placeholder = getPlaceholderText('weapon');
+// Make weapon input non-editable; open dropdown only
+weaponInput.setAttribute('readonly', 'readonly');
 const weaponContainer = weaponInput.parentElement;
 
 // input을 컨테이너로 감싸기
@@ -156,6 +158,12 @@ const createWeaponDropdownItems = (filter = "") => {
       weapon.toLowerCase().includes(filter.toLowerCase())
     );
   }
+  // 언어별 표시 이름으로 정렬
+  try {
+    const lang = getCurrentLanguage();
+    const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+    filteredWeapons.sort((a, b) => getWeaponDisplayName(a).localeCompare(getWeaponDisplayName(b), locale, { sensitivity: 'base' }));
+  } catch (_) { /* no-op */ }
   
   // 드롭다운 항목 추가
   filteredWeapons.forEach(weapon => {
@@ -178,10 +186,7 @@ const createWeaponDropdownItems = (filter = "") => {
     nameSpan.textContent = getWeaponDisplayName(weapon);
     item.appendChild(nameSpan);
     
-    // 클릭 시 포커스 이동으로 인한 스크롤 보정을 막기 위해 mousedown을 억제
-    item.addEventListener("mousedown", (e) => {
-      e.preventDefault();
-    });
+    // 파티 드롭다운과 동일하게 mousedown 억제 제거
     item.addEventListener("click", () => {
       weaponInput.value = weapon;
       customDropdown.classList.remove("active");
@@ -210,13 +215,11 @@ const createWeaponDropdownItems = (filter = "") => {
 
 // 무기 입력 필드 이벤트 처리
 weaponInput.addEventListener("focus", function() {
-  // 원래 값 저장 후 입력 필드 초기화
+  // 원래 값 저장만; 값은 유지 (비편집형)
   this.setAttribute('data-original-value', this.value);
-  this.value = '';
-
   // 번역 표시 제거
   inputContainer.classList.remove('show-translation');
-
+  // 항상 전체 목록 표시
   createWeaponDropdownItems('');
   customDropdown.classList.add("active");
 });
@@ -241,32 +244,16 @@ weaponInput.addEventListener("blur", function() {
   }, 200);
 });
 
-weaponInput.addEventListener("input", function() {
-  createWeaponDropdownItems(this.value);
-  customDropdown.classList.add("active");
+// Disable typing-based filtering (readonly prevents typing anyway)
+// Keep dropdown behavior driven by click/focus only
 
-  // 상태 업데이트 및 스크롤 복원
-  debouncedUpdate();
-});
-
-// 드롭다운 화살표 클릭 처리
+// Toggle dropdown on any click
 weaponInput.addEventListener("mousedown", function(e) {
-  // 기본 포커스 스크롤을 막고 스크롤 없이 포커스
   e.preventDefault();
-  if (this.focus) {
-    try { this.focus({ preventScroll: true }); } catch (_) { this.focus(); }
-  }
-  // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
-  if (e.offsetX > this.offsetWidth - 20) {
-    if (customDropdown.classList.contains("active")) {
-      customDropdown.classList.remove("active");
-    } else {
-      createWeaponDropdownItems(this.value);
-      customDropdown.classList.add("active");
-    }
+  if (customDropdown.classList.contains("active")) {
+    customDropdown.classList.remove("active");
   } else {
-    // 일반 클릭 시 드롭다운 표시
-    createWeaponDropdownItems(this.value);
+    createWeaponDropdownItems('');
     customDropdown.classList.add("active");
   }
 });
@@ -298,6 +285,8 @@ const debounce = (func, wait) => {
     timeout = setTimeout(later, wait);
   };
 };
+
+// (파티 입력 로직과 동일하게) 별도 스크롤 스냅샷/로깅 사용하지 않음
 
 // 액션 메모 자동 업데이트 함수 (인덱스 우선)
 function updateActionMemos() {
@@ -339,12 +328,13 @@ const debouncedUpdate = debounce(() => {
 
 inputs.forEach((input, idx) => {
   input.placeholder = getPlaceholderText('persona');
+  // Make persona input non-editable; open dropdown only
+  input.setAttribute('readonly', 'readonly');
 
   // input을 컨테이너로 감싸기
   const inputContainer = document.createElement("div");
   inputContainer.className = "input-container";
-  inputContainer.style.position = "relative";
-  inputContainer.style.overflowAnchor = "none"; // 스크롤 앵커링 비활성화
+  // 스타일은 CSS에서 정의됨 (position, overflow-anchor)
   
   // 기존 input을 새 컨테이너로 이동
   input.parentNode.insertBefore(inputContainer, input);
@@ -353,7 +343,7 @@ inputs.forEach((input, idx) => {
   // 커스텀 드롭다운 생성
   const customDropdown = document.createElement("div");
   customDropdown.className = "custom-dropdown";
-  customDropdown.style.overflowAnchor = "none"; // 스크롤 앵커링 비활성화
+  // 스크롤 앵커링 스타일은 CSS에서 처리
   inputContainer.appendChild(customDropdown);
   
   // 드롭다운 선택 중인지 여부 플래그 (중복 change 방지)
@@ -375,6 +365,12 @@ inputs.forEach((input, idx) => {
                 persona.toLowerCase().includes(filter.toLowerCase());
       });
     }
+    // 언어별 표시 이름으로 정렬
+    try {
+      const lang = getCurrentLanguage();
+      const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+      filteredPersonas.sort((a, b) => getPersonaDisplayName(a).localeCompare(getPersonaDisplayName(b), locale, { sensitivity: 'base' }));
+    } catch (_) { /* no-op */ }
     
     // 드롭다운 항목 추가
     filteredPersonas.forEach(persona => {
@@ -396,8 +392,7 @@ inputs.forEach((input, idx) => {
       nameSpan.textContent = getPersonaDisplayName(persona);
       item.appendChild(nameSpan);
       
-      // prevent focus-induced scroll jumps
-      item.addEventListener("mousedown", (e) => { e.preventDefault(); });
+      // 파티 드롭다운과 동일하게 mousedown 억제 제거
 
       item.addEventListener("click", () => {
         // 선택 중 플래그 설정 (blur에서 중복 처리 방지)
@@ -418,7 +413,7 @@ inputs.forEach((input, idx) => {
         }
 
         // 포커스를 잃게 하여 번역된 텍스트가 바로 보이도록 함
-        setTimeout(() => input.blur(), 0);
+        setTimeout(() => { input.blur(); }, 0);
         
         // change 이벤트는 한 번만 발생시키기
         if (!window.__IS_APPLYING_IMPORT) {
@@ -435,22 +430,13 @@ inputs.forEach((input, idx) => {
   
   // 페르소나 입력 필드 이벤트 처리
   input.addEventListener("focus", function() {
-    // 스크롤 위치 저장 (필요 시 사용, 강제 스크롤 이동은 하지 않음)
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // 원래 값 저장 (값은 더 이상 비우지 않음: 값 손실/스크롤점프 방지)
+    // 원래 값 저장만; 값은 유지 (비편집형)
     this.setAttribute('data-original-value', this.value);
-    // setparty 방식으로 편집 편의성을 위해 포커스 시 값을 비움
-    this.value = '';
-
     // 번역 표시 제거하여 placeholder가 보이도록 함
     inputContainer.classList.remove('show-translation');
-
+    // 전체 목록 표시
     createPersonaDropdownItems('');
     customDropdown.classList.add("active");
-    
-    // 현재 스크롤 위치 스냅샷(필요 시 활용). 강제 스크롤 이동은 하지 않음
-    window.lastScrollY = window.scrollY;
   });
   
   input.addEventListener("blur", function() {
@@ -478,34 +464,18 @@ inputs.forEach((input, idx) => {
         const event = new Event("change", { bubbles: true });
         this.dispatchEvent(event);
       }
-
     }, 200); // 200ms delay to allow click on dropdown items
   });
   
-  input.addEventListener("input", function() {
-    createPersonaDropdownItems(this.value);
-    customDropdown.classList.add("active");
-    // 강제 스크롤 이동 제거
-  });
+  // Disable typing-based filtering
   
-  // 드롭다운 화살표 클릭 처리
+  // Toggle dropdown on any click
   input.addEventListener("mousedown", function(e) {
-    // 항상 기본 포커스 동작을 막고 스크롤 없이 포커스
     e.preventDefault();
-    if (this.focus) {
-      try { this.focus({ preventScroll: true }); } catch (_) { this.focus(); }
-    }
-    // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
-    if (e.offsetX > this.offsetWidth - 20) {
-      if (customDropdown.classList.contains("active")) {
-        customDropdown.classList.remove("active");
-      } else {
-        createPersonaDropdownItems(this.value);
-        customDropdown.classList.add("active");
-      }
+    if (customDropdown.classList.contains("active")) {
+      customDropdown.classList.remove("active");
     } else {
-      // 일반 클릭 시 드롭다운 표시 유지/생성
-      createPersonaDropdownItems(this.value);
+      createPersonaDropdownItems('');
       customDropdown.classList.add("active");
     }
   });
@@ -598,185 +568,10 @@ inputs.forEach((input, idx) => {
     debouncedUpdate();
   });
 
-  // input 직접 입력 이벤트도 추가
-  input.addEventListener("input", (e) => {
-    // 현재 스크롤 위치 저장
-    const scrollY = window.scrollY;
-    const oldPersona = wonderPersonas[idx];
-    const newPersona = e.target.value;
-    wonderPersonas[idx] = newPersona;
-    
-    // 고유 스킬 설정
-    const uniqueSkillInput = wonderConfigDiv.querySelector(
-        `.persona-skill-input[data-persona-index="${idx}"][data-skill-slot="0"]`
-    );
-    
-    if (newPersona && personaData[newPersona]) {
-        // 고유 스킬 설정 및 비활성화 (번역된 이름으로 표시)
-        const uniqueSkillName = personaData[newPersona].uniqueSkill.name;
-        uniqueSkillInput.value = uniqueSkillName;
-        uniqueSkillInput.disabled = true;
-        uniqueSkillInput.classList.add('unique-skill');
-        
-        // 번역된 스킬 이름으로 표시
-        if (getCurrentLanguage() !== 'kr') {
-          const displaySkillName = getUniqueSkillDisplayName(newPersona, uniqueSkillName);
-          uniqueSkillInput.setAttribute('data-display-value', displaySkillName);
-          
-          // 고유스킬 입력 필드가 .input-container로 감싸져 있지 않은 경우 처리
-          let skillInputContainer = uniqueSkillInput.closest('.input-container');
-          if (!skillInputContainer) {
-            // .input-container로 감싸기
-            skillInputContainer = document.createElement('div');
-            skillInputContainer.className = 'input-container';
-            skillInputContainer.style.position = 'relative';
-            
-            uniqueSkillInput.parentNode.insertBefore(skillInputContainer, uniqueSkillInput);
-            skillInputContainer.appendChild(uniqueSkillInput);
-          }
-          
-          skillInputContainer.setAttribute('data-display-text', displaySkillName);
-          skillInputContainer.classList.add('show-translation');
-        } else {
-          // 한국어 모드일 때는 번역 표시 제거
-          let skillInputContainer = uniqueSkillInput.closest('.input-container');
-          if (skillInputContainer) {
-            skillInputContainer.classList.remove('show-translation');
-          }
-        }
-        
-        // 턴 데이터에서 해당 페르소나 업데이트 및 액션 메모 설정
-        turns.forEach(turn => {
-            turn.actions.forEach(action => {
-                if (action.character === "원더" && action.wonderPersona === oldPersona) {
-                    action.wonderPersona = newPersona;
-                    // 스킬1이 있으면 스킬1을, 없으면 고유스킬을 메모에 설정
-                    const skill1Input = wonderConfigDiv.querySelector(
-                        `.persona-skill-input[data-persona-index="${idx}"][data-skill-slot="1"]`
-                    );
-                    action.memo = skill1Input?.value || uniqueSkillName || "";
-                }
-            });
-        });
-    } else {
-        // 페르소나가 선택되지 않은 경우 초기화
-        uniqueSkillInput.value = '';
-        uniqueSkillInput.disabled = false;
-        uniqueSkillInput.classList.remove('unique-skill');
-        
-        // 번역 표시 제거
-        let skillInputContainer = uniqueSkillInput.closest('.input-container');
-        if (skillInputContainer) {
-          skillInputContainer.classList.remove('show-translation');
-        }
-    }
-    
-    debouncedUpdate();
-  });
+  // 상태 업데이트는 change 또는 드롭다운 선택 시에만 처리 (중복/과도한 리플로 방지)
 });
 
-// 드롭다운 높이 제한을 위한 스타일 추가
-const styleElement = document.createElement('style');
-styleElement.textContent = `
-    /* 커스텀 드롭다운 스타일 */
-    .custom-dropdown {
-        display: none;
-        position: absolute;
-        max-height: 300px; /* 약 20개 항목 표시 가능한 높이 */
-        overflow-y: auto;
-        background: #3d3030;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 3px;
-        z-index: 1000;
-        width: 100%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        left: 0;
-        top: 100%;
-        /* 스크롤 점프 감소: 브라우저 앵커/스크롤 체인 억제 */
-        overflow-anchor: none;
-        overscroll-behavior: contain;
-        contain: layout paint;
-    }
-    
-    .custom-dropdown.active {
-        display: block;
-    }
-    
-    .dropdown-item {
-        padding: 8px 12px;
-        cursor: pointer;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 12px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .dropdown-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .skill-icon {
-        width: 16px;
-        height: 16px;
-        object-fit: contain;
-    }
-
-    .persona-icon {
-        width: 24px;
-        height: 24px;
-        object-fit: contain;
-    }
-    
-    .weapon-icon {
-        width: 24px;
-        height: 24px;
-        object-fit: contain;
-    }
-    
-    /* 번역된 텍스트 표시를 위한 스타일 */
-    .input-container {
-        position: relative;
-        /* 스크롤 앵커 비활성화로 문서 스크롤 보정 방지 */
-        overflow-anchor: none;
-    }
-    
-    /* 번역 모드일 때 원본 텍스트 숨기기 */
-    .input-container.show-translation input {
-        color: transparent !important;
-        text-shadow: none !important;
-    }
-    
-    /* 포커스 시에는 원본 텍스트 보이기 */
-    .input-container.show-translation input:focus {
-        color: rgba(255, 255, 255, 0.9) !important;
-    }
-    
-    /* 번역된 텍스트 오버레이 */
-    .input-container.show-translation::before {
-        content: attr(data-display-text);
-        position: absolute;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: rgba(255, 255, 255, 0.9);
-        pointer-events: none;
-        z-index: 1;
-        font-size: 12px;
-        font-family: inherit;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: calc(100% - 40px);
-    }
-    
-    /* 포커스 시에는 번역 텍스트 숨기기 */
-    .input-container.show-translation input:focus + *::before,
-    .input-container.show-translation:has(input:focus)::before {
-        display: none;
-    }
-`;
-document.head.appendChild(styleElement);
+// 스타일은 외부 CSS(assets/css/tactic.css)로 이동됨
 
 // 기존 입력값들 번역 표시 초기화
 function initializeTranslations() {
@@ -822,19 +617,31 @@ skillsDatalist.id = "persona-skills-list";
 // personaSkillList에서 모든 스킬 수집
 const skillsWithIcons = [];
 
-// personaSkillList의 모든 스킬 추가
-Object.entries(personaSkillList).forEach(([skillName, skillData]) => {
+// personaSkillList의 모든 스킬 추가 (원래 선언 순서를 보존하기 위해 인덱스 기록)
+Object.keys(personaSkillList).forEach((skillName, idx) => {
+    const skillData = personaSkillList[skillName] || {};
     skillsWithIcons.push({
         name: skillName,
-        icon: skillData.icon || "" // 아이콘 정보가 없을 경우 빈 문자열
+        icon: skillData.icon || "", // 아이콘 정보가 없을 경우 빈 문자열
+        __index: idx
     });
 });
 
+// 스킬 우선순위 (아이콘 기준): 디버프(0) > 버프(1) > 기타(2)
+function getSkillPriority(skillName) {
+  const data = personaSkillList[skillName];
+  const icon = data && typeof data.icon === 'string' ? data.icon : '';
+  if (icon.includes('디버프')) return 0;
+  if (icon.includes('버프')) return 1;
+  return 2;
+}
 
 // 페르소나 스킬 입력 필드 설정
 const skillInputs = wonderConfigDiv.querySelectorAll(".persona-skill-input");
 skillInputs.forEach((input) => {
     input.placeholder = getPlaceholderText('skill');
+    // Make skill input non-editable; open dropdown only
+    input.setAttribute('readonly', 'readonly');
 
     // datalist 속성 제거 (커스텀 드롭다운 사용)
     input.removeAttribute("list");
@@ -864,6 +671,17 @@ skillInputs.forEach((input) => {
                         skill.name.toLowerCase().includes(filter.toLowerCase());
             });
         }
+        // 아이콘 기준 그룹화: 디버프 -> 버프 -> 기타, 각 그룹 내에서는 원래 선언 순서 유지
+        try {
+            filteredSkills.sort((a, b) => {
+                const pa = getSkillPriority(a.name);
+                const pb = getSkillPriority(b.name);
+                if (pa !== pb) return pa - pb;
+                const ia = (a.__index ?? 0);
+                const ib = (b.__index ?? 0);
+                return ia - ib;
+            });
+        } catch (_) { /* no-op */ }
         
         // 드롭다운 항목 추가 (모든 스킬 표시)
         filteredSkills.forEach(skill => {
@@ -955,24 +773,16 @@ skillInputs.forEach((input) => {
         }, 200);
     });
   
-    input.addEventListener("input", function() {
-        if (window.__IS_APPLYING_IMPORT) return;
-        createDropdownItems(this.value);
-        customDropdown.classList.add("active");
-    });
+    // Disable typing-based filtering (readonly prevents typing anyway)
     
-    // 드롭다운 화살표 클릭 처리
+    // Toggle dropdown on any click
     input.addEventListener("mousedown", function(e) {
-        // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
-        if (e.offsetX > this.offsetWidth - 20) {
-            e.preventDefault();
-            
-            if (customDropdown.classList.contains("active")) {
-                customDropdown.classList.remove("active");
-            } else {
-                createDropdownItems(this.value);
-                customDropdown.classList.add("active");
-            }
+        e.preventDefault();
+        if (customDropdown.classList.contains("active")) {
+            customDropdown.classList.remove("active");
+        } else {
+            createDropdownItems('');
+            customDropdown.classList.add("active");
         }
     });
     
@@ -984,14 +794,37 @@ skillInputs.forEach((input) => {
         // no forced scroll restoration
     });
     
-    input.addEventListener("input", () => {
-        if (window.__IS_APPLYING_IMPORT) return;
-        debouncedUpdate();
-        updateActionMemos();
-        // no forced scroll restoration
-    });
+    // Removed duplicate input listener (updates now handled in the first input handler above)
 
   });
+  // 닫기: 드롭다운 바깥 클릭 시 모두 닫기 (한 번만 바인딩)
+  if (!wonderConfigDiv.__outsideCloseBound) {
+    const closeIfOutside = (evt) => {
+      const target = evt.target;
+      const openDropdowns = wonderConfigDiv.querySelectorAll('.custom-dropdown.active');
+      if (!openDropdowns.length) return;
+
+      openDropdowns.forEach(dd => {
+        const container = dd.closest('.input-container');
+        // 컨테이너나 드롭다운 내부를 클릭한 경우는 제외
+        if (container && (container.contains(target) || dd.contains(target))) return;
+        dd.classList.remove('active');
+      });
+    };
+
+    document.addEventListener('mousedown', closeIfOutside, true);
+    document.addEventListener('touchstart', closeIfOutside, true);
+    // 포커스가 다른 요소로 이동했을 때 닫기
+    document.addEventListener('focusin', (evt) => closeIfOutside(evt), true);
+    // ESC 키로 닫기
+    document.addEventListener('keydown', (evt) => {
+      if (evt.key === 'Escape') {
+        const openDropdowns = wonderConfigDiv.querySelectorAll('.custom-dropdown.active');
+        openDropdowns.forEach(dd => dd.classList.remove('active'));
+      }
+    }, true);
+    Object.defineProperty(wonderConfigDiv, '__outsideCloseBound', { value: true, writable: false });
+  }
+
   //renderTurns();
 }
-

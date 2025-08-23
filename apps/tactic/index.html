@@ -1192,38 +1192,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
            - UI만 커스텀, 이미지 표시 및 다국어 표시 유지(getRevelationDisplayName 사용)
         =========================*/
         (function initRevelationCustomDropdowns(){
-          // 스타일 1회 주입
-          if (!document.querySelector('style[data-rev-dropdown]')) {
-            const st = document.createElement('style');
-            st.setAttribute('data-rev-dropdown','true');
-            st.textContent = `
-              .rev-select-wrap { position: relative; display: block; width: 100%; }
-              .rev-select-wrap select.main-revelation,
-              .rev-select-wrap select.sub-revelation { 
-                position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-                opacity: 0; pointer-events: none; /* 통합성 유지를 위해 DOM 상 유지 */
-              }
-              .rev-display { 
-
-                display: flex; align-items: center; gap: 8px; width: 100%;
-                background: #2e2626; color: #eee; border: 1px solid rgba(255,255,255,0.2);
-                padding: 6px 8px; border-radius: 3px; cursor: pointer; user-select: none;
-              }
-              .rev-display img { width: 20px; height: 20px; object-fit: cover; border-radius: 2px; }
-              .rev-display span { font-size: 14px; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-              .rev-options { 
-                display: none; position: absolute; left: 0; right: 0; top: calc(100% + 4px); width: 100%;
-                max-height: 240px; overflow-y: auto; background: #3d3030; z-index: 1000;
-                border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-              }
-              .rev-options.active { display: block; }
-              .rev-option { display: flex; align-items: center; gap: 8px; padding: 8px; cursor: pointer; color: #eee; }
-              .rev-option:hover { background: rgba(255,255,255,0.1); }
-              .rev-option img { width: 20px; height: 20px; object-fit: cover; border-radius: 2px; }
-              .rev-option span { font-size: 14px;flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-            `;
-            document.head.appendChild(st);
-          }
+          // 스타일은 assets/css/tactic.css에 정의됨
 
           const BASE = (typeof BASE_URL !== 'undefined' && BASE_URL) ? BASE_URL : '';
 

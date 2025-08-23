@@ -127,6 +127,100 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
 
   .rev-display {width: 90px !important}
 
+  /* Revelation custom dropdown (moved from inline) */
+  .rev-select-wrap { position: relative; display: block; width: 100%; }
+  .rev-select-wrap select.main-revelation,
+  .rev-select-wrap select.sub-revelation {
+    position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+    opacity: 0; pointer-events: none; /* keep native select for events/state */
+  }
+  .rev-display {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    background: #2e2626; color: #eee; /* border removed to blend with UI */
+    padding: 6px 8px; border-radius: 3px; cursor: pointer; user-select: none;
+  }
+  .rev-display img { width: 20px; height: 20px; object-fit: cover; border-radius: 2px; }
+  .rev-display span { font-size: 13px; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rev-options {
+    display: none; position: absolute; left: 0; right: 0; top: calc(100% + 4px); width: 100%;
+    max-height: 240px; overflow-y: auto; background: #3d3030; z-index: 1000;
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+  .rev-options.active { display: block; }
+  .rev-option { display: flex; align-items: center; gap: 8px; padding: 8px; cursor: pointer; color: #eee; }
+  .rev-option:hover { background: rgba(255,255,255,0.1); }
+  .rev-option img { width: 20px; height: 20px; object-fit: cover; border-radius: 2px; }
+  .rev-option span { font-size: 13px; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Wonder settings: custom dropdown (moved from inline JS) */
+  .custom-dropdown {
+    display: none;
+    position: absolute;
+    max-height: 300px; /* about 20 items tall */
+    overflow-y: auto;
+    background: #3d3030;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    left: 0;
+    top: 100%;
+  }
+
+  .custom-dropdown.active { display: block; }
+
+  .dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dropdown-item:hover { background: rgba(255, 255, 255, 0.1); }
+
+  .skill-icon { width: 16px; height: 16px; object-fit: contain; }
+  .persona-icon { width: 24px; height: 24px; object-fit: contain; }
+  .weapon-icon { width: 24px; height: 24px; object-fit: contain; }
+
+  /* Translation overlay for non-KR display */
+  .input-container { position: relative; /* ensure positioning context */ }
+
+  .input-container.show-translation input {
+    color: transparent !important;
+    text-shadow: none !important;
+  }
+
+  .input-container.show-translation input:focus {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .input-container.show-translation::before {
+    content: attr(data-display-text);
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+    z-index: 1;
+    font-size: 12px;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 40px);
+  }
+
+  /* Hide overlay when focusing input */
+  .input-container.show-translation input:focus + *::before,
+  .input-container.show-translation:has(input:focus)::before {
+    display: none;
+  }
+
   .action-buttons { display: flex; gap: 4px; margin-left: auto; align-items: center; height: 100%; }
 
   .clone-action { display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; padding: 0; border: none; background-color: transparent; cursor: pointer; opacity: 0.6; transition: opacity 0.2s ease; /* SVG 아이콘 수정 */

@@ -1928,7 +1928,7 @@ const personaData = {
         name_jp: "クシナダヒメ",
         grade: "5",
         star: "4",
-        position: "구원",
+        position: "우월",
         element: "빙결",
         instinct: {
             name: "다정한 보살핌 II",

@@ -76,19 +76,19 @@ function getPlaceholderText(type) {
     const lang = getCurrentLanguage();
     const placeholders = {
         persona: {
-            kr: '선택',
-            en: 'Select',
-            jp: '選択'
+            kr: '-',
+            en: '-',
+            jp: '-'
         },
         weapon: {
-            kr: '선택',
-            en: 'Select',
-            jp: '選択'
+            kr: '-',
+            en: '-',
+            jp: '-'
         },
         skill: {
-            kr: '선택',
-            en: 'Select',
-            jp: '選択'
+            kr: '-',
+            en: '-',
+            jp: '-'
         }
     };
     return placeholders[type]?.[lang] || '';
@@ -324,6 +324,10 @@ const debouncedUpdate = debounce(() => {
   if (Array.isArray(turns) && prevOrder.length === turns.length) {
     turns.sort((a, b) => prevOrder.indexOf(a.turn) - prevOrder.indexOf(b.turn));
   }
+  // UI가 갱신된 후 스킬 아이콘/오버레이 재적용 (임포트/라이브러리 적용 이후 포함)
+  if (window.wonderApplySkillInputDecor) {
+    window.wonderApplySkillInputDecor();
+  }
 }, 300);
 
 inputs.forEach((input, idx) => {
@@ -511,6 +515,9 @@ inputs.forEach((input, idx) => {
         uniqueSkillInput.value = uniqueSkillName;
         uniqueSkillInput.disabled = true;
         uniqueSkillInput.classList.add('unique-skill');
+        // 고유 스킬 아이콘 표시 (데이터의 uniqueSkill.icon 사용)
+        const uniqueIconKey = personaData[newPersona]?.uniqueSkill?.icon || '';
+        setSkillIconOnInputWithElement(uniqueSkillInput, uniqueIconKey);
         
         // 번역된 스킬 이름으로 표시
         if (getCurrentLanguage() !== 'kr') {
@@ -563,6 +570,8 @@ inputs.forEach((input, idx) => {
         if (skillInputContainer) {
           skillInputContainer.classList.remove('show-translation');
         }
+        // 고유 스킬 아이콘 제거
+        setSkillIconOnInputWithElement(uniqueSkillInput, '');
     }
     
     debouncedUpdate();
@@ -576,39 +585,127 @@ inputs.forEach((input, idx) => {
 // 기존 입력값들 번역 표시 초기화
 function initializeTranslations() {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr') return;
   
-  // 페르소나 입력 필드들
+  // 페르소나 입력 필드들: 번역 오버레이는 비-KR만
   inputs.forEach((input) => {
+    const inputContainer = input.closest('.input-container');
+    if (!inputContainer) return;
     if (input.value && personaData[input.value]) {
       const displayName = getPersonaDisplayName(input.value);
       input.setAttribute('data-display-value', displayName);
-      const inputContainer = input.closest('.input-container');
-      if (inputContainer) {
+      if (currentLang !== 'kr') {
         inputContainer.setAttribute('data-display-text', displayName);
         inputContainer.classList.add('show-translation');
+      } else {
+        inputContainer.classList.remove('show-translation');
       }
+    } else {
+      inputContainer.classList.remove('show-translation');
     }
   });
   
-  // 스킬 입력 필드들
+  // 스킬 입력 필드들: 아이콘은 항상, 오버레이는 비-KR만
   skillInputs.forEach((input) => {
-    if (input.value && personaSkillList[input.value]) {
-      const displayName = getSkillDisplayName(input.value);
-      input.setAttribute('data-display-value', displayName);
-      const inputContainer = input.closest('.input-container');
-      if (inputContainer) {
-        inputContainer.setAttribute('data-display-text', displayName);
-        inputContainer.classList.add('show-translation');
+    const val = input.value;
+    const inputContainer = input.closest('.input-container');
+    if (!inputContainer) return;
+    const isUnique = input.getAttribute('data-skill-slot') === '0';
+    const baseKey = resolveSkillKey(val);
+    if (!isUnique) {
+      if (baseKey && personaSkillList[baseKey]) {
+        const displayName = getSkillDisplayName(baseKey);
+        input.setAttribute('data-display-value', displayName);
+        if (currentLang !== 'kr') {
+          inputContainer.setAttribute('data-display-text', displayName);
+          inputContainer.classList.add('show-translation');
+        } else {
+          inputContainer.classList.remove('show-translation');
+        }
+      } else {
+        inputContainer.classList.remove('show-translation');
       }
     }
+    // 선택 스킬 아이콘 적용 (값이 없으면 제거)
+    setSkillIconOnInput(input, baseKey || '');
   });
 }
+
+// 아이콘/오버레이 적용을 외부에서도 호출할 수 있게 전역 노출
+window.wonderApplySkillInputDecor = function() {
+  const currentLang = getCurrentLanguage();
+  const skillInputs = document.querySelectorAll('.persona-skill-input');
+  skillInputs.forEach((input) => {
+    const val = input.value;
+    const baseKey = resolveSkillKey(val);
+    // 아이콘 적용
+    const isUnique = input.getAttribute('data-skill-slot') === '0';
+    if (isUnique) {
+      const personaIndex = input.getAttribute('data-persona-index');
+      let personaKey = undefined;
+      if (typeof personaIndex !== 'undefined' && personaIndex !== null) {
+        const pi = Number(personaIndex);
+        if (!Number.isNaN(pi) && Array.isArray(wonderPersonas)) {
+          personaKey = wonderPersonas[pi];
+        }
+      }
+      const uIcon = personaKey && personaData[personaKey]?.uniqueSkill?.icon ? personaData[personaKey].uniqueSkill.icon : '';
+      setSkillIconOnInputWithElement(input, uIcon || '');
+    } else {
+      setSkillIconOnInput(input, baseKey || '');
+    }
+    // 번역 오버레이 적용은 비-KR만
+    const container = input.closest('.input-container');
+    if (!container) return;
+    if (!isUnique && baseKey && currentLang !== 'kr') {
+      const displayName = getSkillDisplayName(baseKey);
+      container.setAttribute('data-display-text', displayName);
+      container.classList.add('show-translation');
+    } else if (!isUnique) {
+      container.classList.remove('show-translation');
+    }
+  });
+};
 
 // 초기화 실행 (여러 번 실행하여 확실히 적용)
 setTimeout(initializeTranslations, 100);
 setTimeout(initializeTranslations, 500);
 setTimeout(initializeTranslations, 1000);
+// 프로그램적으로 값이 주입된 경우(임포트 등)에도 아이콘/오버레이 적용
+setTimeout(() => {
+  if (window.wonderApplySkillInputDecor) {
+    window.wonderApplySkillInputDecor();
+  }
+}, 1200);
+// 추가 지연 호출들 (늦게 주입되는 경우 커버)
+[2000, 3000, 5000].forEach(ms => setTimeout(() => {
+  if (window.wonderApplySkillInputDecor) window.wonderApplySkillInputDecor();
+}, ms));
+
+// 임포트 플래그 해제 대기 후 한 번 적용
+(function waitImportThenDecor() {
+  if (typeof window.__IS_APPLYING_IMPORT === 'undefined') return; // 플래그 미사용 시 스킵
+  let checks = 0;
+  const maxChecks = 60; // 최대 60회 (약 12초 @200ms)
+  const iv = setInterval(() => {
+    checks++;
+    if (!window.__IS_APPLYING_IMPORT || checks >= maxChecks) {
+      clearInterval(iv);
+      if (window.wonderApplySkillInputDecor) window.wonderApplySkillInputDecor();
+    }
+  }, 200);
+})();
+
+// 짧은 폴링: 늦게 채워지는 값에 대해서도 아이콘/오버레이 적용 보장 (최대 ~10초)
+(function startSkillIconShortPoll() {
+  let ticks = 0;
+  const maxTicks = 20; // ~10s at 500ms
+  const iv = setInterval(() => {
+    ticks++;
+    if (window.wonderApplySkillInputDecor) window.wonderApplySkillInputDecor();
+    // 종료 조건: 충분히 반복했거나, 더 이상 열려있는 드롭다운이 없고(안정 상태 가정) 시간이 경과
+    if (ticks >= maxTicks) clearInterval(iv);
+  }, 500);
+})();
 
 // 페르소나 스킬 datalist 생성
 const skillsDatalist = document.createElement("datalist");
@@ -636,6 +733,82 @@ function getSkillPriority(skillName) {
   return 2;
 }
 
+// (임포트 대응) 로컬라이즈된 스킬명 -> 기준(KR) 키로 역매핑
+function resolveSkillKey(name) {
+  if (!name) return '';
+  if (personaSkillList[name]) return name; // 이미 KR 키
+  const lang = getCurrentLanguage();
+  // EN/JP로 들어왔을 가능성: 전체 검색
+  for (const [kr, data] of Object.entries(personaSkillList)) {
+    if (!data) continue;
+    if (data.name_en && data.name_en === name) return kr;
+    if (data.name_jp && data.name_jp === name) return kr;
+  }
+  // 현재 언어와 무관하게 마지막 시도: 대소문자 무시 비교
+  const lower = String(name).toLowerCase();
+  for (const [kr, data] of Object.entries(personaSkillList)) {
+    if (!data) continue;
+    if (kr.toLowerCase() === lower) return kr;
+    if (data.name_en && data.name_en.toLowerCase() === lower) return kr;
+    if (data.name_jp && data.name_jp.toLowerCase() === lower) return kr;
+  }
+  return '';
+}
+
+// 선택된 스킬 아이콘을 인풋에 표시/제거 (컨테이너에 이미지 엘리먼트로 표시)
+function setSkillIconOnInput(inputEl, skillName) {
+  const baseKey = resolveSkillKey(skillName);
+  const data = personaSkillList[baseKey];
+  const icon = data && typeof data.icon === 'string' ? data.icon : '';
+  const container = inputEl.closest('.input-container');
+  if (!container) return;
+  let iconEl = container.querySelector('.skill-selected-icon');
+  if (icon) {
+    if (!iconEl) {
+      iconEl = document.createElement('img');
+      iconEl.className = 'skill-selected-icon';
+      iconEl.alt = '';
+      container.appendChild(iconEl);
+    }
+    iconEl.src = `${BASE_URL}/assets/img/skill-element/${icon}.png`;
+    inputEl.classList.add('has-icon');
+    container.classList.add('has-skill-icon');
+  } else {
+    if (iconEl) {
+      iconEl.remove();
+    }
+    inputEl.classList.remove('has-icon');
+    const ic = inputEl.closest('.input-container');
+    if (ic) ic.classList.remove('has-skill-icon');
+  }
+}
+
+// 요소(속성) 키로 바로 아이콘을 설정하는 헬퍼 (예: uniqueSkill.icon)
+function setSkillIconOnInputWithElement(inputEl, elementKey) {
+  const icon = elementKey ? String(elementKey) : '';
+  const container = inputEl.closest('.input-container');
+  if (!container) return;
+  let iconEl = container.querySelector('.skill-selected-icon');
+  if (icon) {
+    if (!iconEl) {
+      iconEl = document.createElement('img');
+      iconEl.className = 'skill-selected-icon';
+      iconEl.alt = '';
+      container.appendChild(iconEl);
+    }
+    iconEl.src = `${BASE_URL}/assets/img/skill-element/${icon}.png`;
+    iconEl.onerror = function() { this.style.display = 'none'; };
+    inputEl.classList.add('has-icon');
+    container.classList.add('has-skill-icon');
+  } else {
+    if (iconEl) {
+      iconEl.remove();
+    }
+    inputEl.classList.remove('has-icon');
+    container.classList.remove('has-skill-icon');
+  }
+}
+
 // 페르소나 스킬 입력 필드 설정
 const skillInputs = wonderConfigDiv.querySelectorAll(".persona-skill-input");
 skillInputs.forEach((input) => {
@@ -657,83 +830,88 @@ skillInputs.forEach((input) => {
     const customDropdown = document.createElement("div");
     customDropdown.className = "custom-dropdown";
     inputContainer.appendChild(customDropdown);
-    
-    // 드롭다운 항목 생성 함수
-    const createDropdownItems = (filter = "") => {
-        customDropdown.innerHTML = "";
-        
-        // 스킬 목록 필터링 (필터가 있을 경우만 필터링)
-        let filteredSkills = skillsWithIcons;
-        if (filter) {
-            filteredSkills = skillsWithIcons.filter(skill => {
-                const displayName = getSkillDisplayName(skill.name);
-                return displayName.toLowerCase().includes(filter.toLowerCase()) ||
-                        skill.name.toLowerCase().includes(filter.toLowerCase());
-            });
-        }
-        // 아이콘 기준 그룹화: 디버프 -> 버프 -> 기타, 각 그룹 내에서는 원래 선언 순서 유지
-        try {
-            filteredSkills.sort((a, b) => {
-                const pa = getSkillPriority(a.name);
-                const pb = getSkillPriority(b.name);
-                if (pa !== pb) return pa - pb;
-                const ia = (a.__index ?? 0);
-                const ib = (b.__index ?? 0);
-                return ia - ib;
-            });
-        } catch (_) { /* no-op */ }
-        
-        // 드롭다운 항목 추가 (모든 스킬 표시)
-        filteredSkills.forEach(skill => {
-            const item = document.createElement("div");
-            item.className = "dropdown-item";
-            
-            // 아이콘이 있으면 이미지 추가
-            if (skill.icon) {
-                const iconImg = document.createElement("img");
-                iconImg.className = "skill-icon";
-                iconImg.src = `${BASE_URL}/assets/img/skill-element/${skill.icon}.png`;
-                iconImg.alt = "";
-                iconImg.onerror = function() {
-                    // 이미지 로드 실패 시 아이콘 제거
-                    this.style.display = 'none';
-                };
-                item.appendChild(iconImg);
-            }
-            
-            // 스킬 이름 추가 (번역된 이름으로 표시)
-            const nameSpan = document.createElement("span");
-            nameSpan.textContent = getSkillDisplayName(skill.name);
-            item.appendChild(nameSpan);
-            
-            item.addEventListener("click", () => {
-                isSelecting = true;
-                // 실제 값은 한국어 이름으로 저장
-                input.value = skill.name;
-                customDropdown.classList.remove("active");
-                
-                // 표시는 번역된 이름으로 업데이트
-                const displayName = getSkillDisplayName(skill.name);
-                input.setAttribute('data-display-value', displayName);
-                if (getCurrentLanguage() !== 'kr') {
-                  inputContainer.setAttribute('data-display-text', displayName);
-                  inputContainer.classList.add('show-translation');
-                } else {
-                  inputContainer.classList.remove('show-translation');
-                }
-                
-                // 포커스를 잃게 하여 번역된 텍스트가 바로 보이도록 함
-                setTimeout(() => input.blur(), 0);
-                
-                // change 이벤트 강제 발생
-                const event = new Event("change", { bubbles: true });
-                input.dispatchEvent(event);
 
-                // 다음 틱에서 선택 상태 해제
-                setTimeout(() => { isSelecting = false; }, 0);
-            });
-            customDropdown.appendChild(item);
+    // 드롭다운 항목 생성 함수 (필터 적용)
+    const createDropdownItems = (filter = "") => {
+      customDropdown.innerHTML = "";
+
+      // 최상단에 '-' 선택 해제 항목 추가
+      const noneItem = document.createElement('div');
+      noneItem.className = 'dropdown-item';
+      const noneLabel = document.createElement('span');
+      noneLabel.textContent = '-';
+      noneItem.appendChild(noneLabel);
+      noneItem.addEventListener('click', () => {
+        isSelecting = true;
+        input.value = '';
+        customDropdown.classList.remove('active');
+        input.removeAttribute('data-display-value');
+        inputContainer.removeAttribute('data-display-text');
+        inputContainer.classList.remove('show-translation');
+        setSkillIconOnInput(input, '');
+        setTimeout(() => input.blur(), 0);
+        const event = new Event('change', { bubbles: true });
+        input.dispatchEvent(event);
+        setTimeout(() => { isSelecting = false; }, 0);
+      });
+      customDropdown.appendChild(noneItem);
+
+      // 스킬 목록 필터링
+      let filteredSkills = skillsWithIcons;
+      if (filter) {
+        filteredSkills = skillsWithIcons.filter(skill => {
+          const displayName = getSkillDisplayName(skill.name);
+          return displayName.toLowerCase().includes(filter.toLowerCase()) ||
+                 skill.name.toLowerCase().includes(filter.toLowerCase());
         });
+      }
+      // 아이콘 기준 그룹화: 디버프 -> 버프 -> 기타, 각 그룹 내에서는 원래 선언 순서 유지
+      try {
+        filteredSkills.sort((a, b) => {
+          const pa = getSkillPriority(a.name);
+          const pb = getSkillPriority(b.name);
+          if (pa !== pb) return pa - pb;
+          const ia = (a.__index ?? 0);
+          const ib = (b.__index ?? 0);
+          return ia - ib;
+        });
+      } catch (_) { /* no-op */ }
+
+      // 드롭다운 항목 추가
+      filteredSkills.forEach(skill => {
+        const item = document.createElement('div');
+        item.className = 'dropdown-item';
+        if (skill.icon) {
+          const iconImg = document.createElement('img');
+          iconImg.className = 'skill-icon';
+          iconImg.src = `${BASE_URL}/assets/img/skill-element/${skill.icon}.png`;
+          iconImg.alt = '';
+          iconImg.onerror = function() { this.style.display = 'none'; };
+          item.appendChild(iconImg);
+        }
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = getSkillDisplayName(skill.name);
+        item.appendChild(nameSpan);
+        item.addEventListener('click', () => {
+          isSelecting = true;
+          input.value = skill.name;
+          customDropdown.classList.remove('active');
+          const displayName = getSkillDisplayName(skill.name);
+          input.setAttribute('data-display-value', displayName);
+          if (getCurrentLanguage() !== 'kr') {
+            inputContainer.setAttribute('data-display-text', displayName);
+            inputContainer.classList.add('show-translation');
+          } else {
+            inputContainer.classList.remove('show-translation');
+          }
+          setSkillIconOnInput(input, skill.name);
+          setTimeout(() => input.blur(), 0);
+          const event = new Event('change', { bubbles: true });
+          input.dispatchEvent(event);
+          setTimeout(() => { isSelecting = false; }, 0);
+        });
+        customDropdown.appendChild(item);
+      });
     };
     
     // 드롭다운 관련 이벤트 처리

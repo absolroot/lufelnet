@@ -2089,42 +2089,6 @@ const personaSkillList = {
             }
         ]
     },
-    "데카쟈": {
-        name_jp: "デカジャ",
-        name_en: "Dekaja",
-        description: "모든 적의 속성 증가 효과 1개를 제거한다.",
-        description_en: "Negate 1 stat increasing effect for all foes.",
-        description_jp: "敵全体のステータス上昇効果を1つ解除する。",
-        type: "지원",
-        target: "전체",
-        icon : "버프광역",
-        effects: [
-            {
-                type: "버프해제",
-                target: "적",
-                category: "속성증가",
-                count: 1
-            }
-        ]
-    },
-    "데쿤다": {
-        name_jp: "デクンダ",
-        name_en: "Dekunda",
-        description: "모든 동료의 속성 감소 효과를 1개 제거한다.",
-        description_en: "Negate 1 stat reducing effect for all allies.",
-        description_jp: "味方全体のステータス低下効果を1つ打ち消す。",
-        type: "지원",
-        target: "전체",
-        icon : "버프",
-        effects: [
-            {
-                type: "디버프해제",
-                target: "아군",
-                category: "속성감소",
-                count: 1
-            }
-        ]
-    },
     "타루카쟈": {
         name_jp: "タルカジャ",
         name_en: "Tarukaja",
@@ -2314,6 +2278,42 @@ const personaSkillList = {
                 stat: "대미지",
                 value: 20.0,
                 duration: 2
+            }
+        ]
+    },
+    "데카쟈": {
+        name_jp: "デカジャ",
+        name_en: "Dekaja",
+        description: "모든 적의 속성 증가 효과 1개를 제거한다.",
+        description_en: "Negate 1 stat increasing effect for all foes.",
+        description_jp: "敵全体のステータス上昇効果を1つ解除する。",
+        type: "지원",
+        target: "전체",
+        icon : "버프광역",
+        effects: [
+            {
+                type: "버프해제",
+                target: "적",
+                category: "속성증가",
+                count: 1
+            }
+        ]
+    },
+    "데쿤다": {
+        name_jp: "デクンダ",
+        name_en: "Dekunda",
+        description: "모든 동료의 속성 감소 효과를 1개 제거한다.",
+        description_en: "Negate 1 stat reducing effect for all allies.",
+        description_jp: "味方全体のステータス低下効果を1つ打ち消す。",
+        type: "지원",
+        target: "전체",
+        icon : "버프",
+        effects: [
+            {
+                type: "디버프해제",
+                target: "아군",
+                category: "속성감소",
+                count: 1
             }
         ]
     },

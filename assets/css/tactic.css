@@ -256,6 +256,25 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
     background-size: 11px !important; /* 화살표 크기 조정 */
   }
 
+  /* 스킬 아이콘이 표시될 때 좌측 여백 확보 */
+  .persona-skill-input.has-icon { padding-left: 26px !important; }
+
+  /* 번역 오버레이가 있을 때 아이콘과 겹치지 않도록 위치 조정 */
+  .input-container.has-skill-icon.show-translation::before { left: 28px; }
+
+  /* 선택된 스킬 아이콘 (입력 컨테이너 내부 좌측 고정) */
+  .input-container .skill-selected-icon {
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    object-fit: contain;
+    opacity: 0.95;
+  }
+
   .persona-skill-input::placeholder { font-size: 11px; color: rgb(255, 255, 255, 0.5); }
 
   .weapon-container { margin-bottom: 0px; height: fit-content; }

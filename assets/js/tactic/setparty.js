@@ -272,12 +272,17 @@
           
           // 현재 언어에 맞는 캐릭터 목록 사용
           const currentLang = getCurrentLanguage();
+          // KR 리스트 강제 사용 플래그 (localStorage)
+          let forceKR = false;
+          try {
+              forceKR = localStorage.getItem('forceKRList') === 'true';
+          } catch (_) { forceKR = false; }
           let characterOptions = [];
-          if (currentLang !== 'kr' && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
+          if (!forceKR && currentLang !== 'kr' && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
               characterOptions = index === 4 
                   ? window.languageData[currentLang].characterList.supportParty 
                   : window.languageData[currentLang].characterList.mainParty;
-          } else if (typeof characterList !== 'undefined') { // Fallback to Korean list (window.characterList -> characterList)
+          } else if (typeof characterList !== 'undefined') { // Fallback or forced to Korean list
               characterOptions = index === 4 ? characterList.supportParty : characterList.mainParty;
           }
           

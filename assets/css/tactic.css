@@ -242,6 +242,12 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
 
   .top-buttons { display: flex; gap: 16px; margin-left: auto; margin-right: 0px; align-items: center; }
 
+  /* KR list toggle (desktop) */
+  .kr-toggle-container { display: inline-flex; align-items: center; gap: 6px; color: #fff; font-size: 12px; opacity: 0.9; }
+  .kr-toggle-container input { margin: 0; }
+  .kr-toggle-container .kr-toggle-label { white-space: nowrap; }
+  .hide-ui .kr-toggle-container { display: none !important; }
+
   .export-import-btn { padding: 8px 24px; color: white; border: none; cursor: pointer; font-size: 13px; /*background: url("{{ site.baseurl }}/assets/img/ui/newstab.png") no-repeat center center; background-size: cover; width: 135px;*/
     background: #552429; border-radius: 36px; width: fit-content; height: auto; }
 
@@ -269,6 +275,12 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .export-import-btn.toggle-ui-btn.active:hover { width: 48px !important;  /* 너비 고정 */
     background: #ffffff;  /* 활성화 상태에서는 흰색 유지 */
   }
+
+  /* KR list toggle (mobile row - hidden by default) */
+  .kr-toggle-mobile { display: none; margin: 8px 0 0; }
+  .kr-toggle-mobile label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; }
+  .kr-toggle-mobile input { margin: 0; }
+  .hide-ui .kr-toggle-mobile { display: none !important; }
 
   /* 토글 스위치 */
   .toggle-ui-btn::before { content: ""; position: absolute; left: 3px;  /* 4px에서 3px로 조정 */
@@ -449,6 +461,10 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
 
     /* 헤더의 toggle-ui-btn은 숨김 */
     .header-container .toggle-ui-btn {   display: none; }
+
+    /* Desktop KR toggle hidden on mobile, show mobile row */
+    .kr-toggle-container { display: none; }
+    .kr-toggle-mobile { display: flex; justify-content: center; }
 
     .mobile-lock-btn {   display: flex;   align-items: center; }
     

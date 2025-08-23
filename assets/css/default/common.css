@@ -174,21 +174,6 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
     .mobile-logo-container{ display: none !important; }
 }
 
-
-
-
-
-/* 커스텀 체크박스 스타일 */
-input[type="checkbox"] { appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 28px; height: 28px; background-image: url('/assets/img/ui/check-off.png'); background-size: contain; background-repeat: no-repeat; background-position: center; cursor: pointer; vertical-align: middle; margin: 0; }
-
-input[type="checkbox"]:checked { background-image: url('/assets/img/ui/check-on.png'); }
-
-/* 체크박스 포커스 스타일 제거 */
-input[type="checkbox"]:focus { outline: none; }
-
-/* 체크박스 호버 효과 */
-input[type="checkbox"]:hover { opacity: 0.8; }
-
 /* 뒤로가기 버튼 */
 .back-button { width: 60px; height: 35px; padding : 16px 0px 0px 10px; display: block; object-fit: contain; }
 

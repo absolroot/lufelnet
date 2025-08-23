@@ -1144,7 +1144,7 @@ const personaData = {
     },
     "비사문천": {
         name_en: "Bishamonten",
-        name_jp: "毘沙門天",
+        name_jp: "ビシャモンテン",
         grade: "7",
         star: "5",
         position: "반항",
@@ -1242,7 +1242,7 @@ const personaData = {
     },
     "자오우곤겐":{
         name_en: "Zaou-Gongen",
-        name_jp: "蔵王権現",
+        name_jp: "ザオウゴンゲン",
         grade: "8",
         star: "5",
         position: "반항",

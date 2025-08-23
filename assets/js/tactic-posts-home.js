@@ -90,6 +90,22 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
 
 function formatHomeDate(date) {
   try {
+    // Detect current language for home list
+    let lang = (window.__HOME_LANG__ || '').toLowerCase();
+    if (!lang) {
+      try {
+        const urlLang = new URLSearchParams(window.location.search).get('lang');
+        if (urlLang) lang = urlLang;
+      } catch(_) {}
+      if (!lang && typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+        try { lang = LanguageRouter.getCurrentLanguage(); } catch(_) {}
+      }
+      if (!lang) {
+        try { lang = localStorage.getItem('preferredLanguage') || 'kr'; } catch(_) { lang = 'kr'; }
+      }
+    }
+    if (!['kr','en','jp'].includes(lang)) lang = 'kr';
+
     const now = new Date();
     const diff = now - date;
     const days = Math.floor(diff / (1000*60*60*24));
@@ -97,13 +113,20 @@ function formatHomeDate(date) {
       const hours = Math.floor(diff / (1000*60*60));
       if (hours === 0) {
         const minutes = Math.floor(diff / (1000*60));
+        if (lang === 'en') return `${minutes} min ago`;
+        if (lang === 'jp') return `${minutes}分前`;
         return `${minutes}분 전`;
       }
+      if (lang === 'en') return `${hours} hours ago`;
+      if (lang === 'jp') return `${hours}時間前`;
       return `${hours}시간 전`;
     } else if (days < 7) {
+      if (lang === 'en') return `${days} days ago`;
+      if (lang === 'jp') return `${days}日前`;
       return `${days}일 전`;
     }
-    return date.toLocaleDateString('ko-KR');
+    const locale = (lang === 'en') ? 'en-US' : (lang === 'jp') ? 'ja-JP' : 'ko-KR';
+    return date.toLocaleDateString(locale);
   } catch(_) { return ''; }
 }
 

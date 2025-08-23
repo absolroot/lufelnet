@@ -34,11 +34,23 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         </div>
       </div>
       <div class="top-buttons">
+        <!-- KR List Toggle (Desktop) - placed just left of Export -->
+        <label class="kr-toggle-container" title="Force party dropdown to use KR list">
+          <input type="checkbox" id="forceKRListToggleDesktop" />
+          <span class="kr-toggle-label">KR character list</span>
+        </label>
         <button class="export-import-btn" onclick="exportData()">내보내기</button>
         <button class="export-import-btn" onclick="importData()">가져오기</button>
         <!--<button class="export-import-btn" onclick="handleShare()">공유하기</button>-->
         <button class="export-import-btn capture-btn" onclick="captureAndShare()">화면 캡처</button>
         <button class="export-import-btn toggle-ui-btn" onclick="toggleUI()"></button>
+      </div>
+      <!-- KR List Toggle (Mobile) - a new row under export/import -->
+      <div class="kr-toggle-mobile">
+        <label>
+          <input type="checkbox" id="forceKRListToggleMobile" />
+          <span class="kr-toggle-mobile-label">KR character list</span>
+        </label>
       </div>
     </div>
     
@@ -637,9 +649,69 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         // CSS에서 언어별 스타일 분기를 위해 <html>에 data-lang 설정
         try { document.documentElement.setAttribute('data-lang', getCurrentLanguage()); } catch(_) {}
 
-        // Initialize navigation
-        Navigation.load('tactic');
-        VersionChecker.check();
+        // Initialize KR list toggle UI (desktop + mobile)
+        (function initKRListToggle(){
+          const currentLang = getCurrentLanguage();
+          const desktopWrap = document.querySelector('.kr-toggle-container');
+          const mobileWrap = document.querySelector('.kr-toggle-mobile');
+          const desktopChk = document.getElementById('forceKRListToggleDesktop');
+          const mobileChk = document.getElementById('forceKRListToggleMobile');
+
+          // Hide entirely when KR
+          const hideForKR = currentLang === 'kr';
+          if (desktopWrap) desktopWrap.style.display = hideForKR ? 'none' : '';
+          if (mobileWrap) mobileWrap.style.display = hideForKR ? 'none' : '';
+
+          // Show only one depending on viewport
+          function applyViewportVisibility() {
+            if (hideForKR) return; // already hidden
+            const isMob = (window.innerWidth < 1200);
+            if (desktopWrap) desktopWrap.style.display = isMob ? 'none' : '';
+            if (mobileWrap) mobileWrap.style.display = isMob ? '' : 'none';
+          }
+          applyViewportVisibility();
+          window.addEventListener('resize', applyViewportVisibility);
+
+          // Load state
+          let saved = false;
+          try { saved = localStorage.getItem('forceKRList') === 'true'; } catch(_) {}
+          if (desktopChk) desktopChk.checked = saved;
+          if (mobileChk) mobileChk.checked = saved;
+
+          // Label translation (EN default already set). JP translation
+          if (currentLang === 'jp') {
+            const dl = document.querySelector('.kr-toggle-label');
+            const ml = document.querySelector('.kr-toggle-mobile-label');
+            if (dl) dl.textContent = 'KRキャラクター一覧を使用';
+            if (ml) ml.textContent = 'KRキャラクター一覧を使用';
+          }
+
+          function applyChange(val){
+            try { localStorage.setItem('forceKRList', String(val)); } catch(_) {}
+            // Close any open dropdowns by blurring focused input to refresh on next open
+            if (document.activeElement && document.activeElement.blur) {
+              document.activeElement.blur();
+            }
+            // Live refresh party dropdowns if function is available
+            try { if (typeof setupPartySelection === 'function') { setupPartySelection(); } } catch(_) {}
+          }
+
+          // Sync handlers
+          if (desktopChk) desktopChk.addEventListener('change', (e)=>{
+            const v = e.target.checked;
+            if (mobileChk) mobileChk.checked = v;
+            applyChange(v);
+          });
+          if (mobileChk) mobileChk.addEventListener('change', (e)=>{
+            const v = e.target.checked;
+            if (desktopChk) desktopChk.checked = v;
+            applyChange(v);
+          });
+        })();
+
+        // Initialize navigation (guarded)
+        try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('tactic'); } } catch(_) {}
+        try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch(_) {}
         updateSEOContent();
 
         function isMobile() {
@@ -677,8 +749,9 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
               }
             }
             
-            // If shared data, set UI to hidden state by default
-            document.querySelector('.container').classList.add('hide-ui');
+            // If shared data, set UI to hidden state by default (guarded)
+            const containerEl = document.querySelector('.container');
+            if (containerEl) { containerEl.classList.add('hide-ui'); }
             const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
             const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
             if (desktopToggleBtn) desktopToggleBtn.classList.add('active');

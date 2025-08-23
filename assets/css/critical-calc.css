@@ -1,3 +1,9 @@
+/* 커스텀 체크박스 스타일 */
+input[type="checkbox"] { appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 28px; height: 28px; background-image: url('/assets/img/ui/check-off.png'); background-size: contain; background-repeat: no-repeat; background-position: center; cursor: pointer; vertical-align: middle; margin: 0; }
+input[type="checkbox"]:checked { background-image: url('/assets/img/ui/check-on.png'); }
+input[type="checkbox"]:focus { outline: none; } /* 체크박스 포커스 스타일 제거 */
+input[type="checkbox"]:hover { opacity: 0.8; }
+
 /* 상단 카드 컨테이너 */
 .top-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px; padding: 0px 20px 0px 20px; }
 

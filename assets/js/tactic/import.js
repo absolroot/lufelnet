@@ -172,6 +172,11 @@ window.applyImportedData = function(payload, options = {}) {
           } else if (container) {
             container.classList.remove('show-translation');
           }
+          // 아이콘 및 관련 상태 갱신을 위해 change 이벤트 발생 (setparty.js의 핸들러 이용)
+          try {
+            const evt = new Event('change', { bubbles: true });
+            input.dispatchEvent(evt);
+          } catch (_) {}
         }
       });
     } catch(_) {}
@@ -217,6 +222,16 @@ window.applyImportedData = function(payload, options = {}) {
 
     updatePartyImages();
     renderTurns();
+
+    // characterData가 늦게 로드되는 경우를 대비해 짧게 재시도하여 아이콘을 보정
+    try {
+      setTimeout(() => {
+        document.querySelectorAll('.party-member .party-name-input').forEach(input => {
+          const evt = new Event('change', { bubbles: true });
+          input.dispatchEvent(evt);
+        });
+      }, 300);
+    } catch (_) {}
 
     // 다국어 적용 (무기/고유스킬/파티명/계시 표시 텍스트) - 로딩 후에도 재시도
     (function applyI18nAfterLoad() {

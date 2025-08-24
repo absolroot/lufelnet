@@ -1200,8 +1200,7 @@ class TacticUploader {
             const titleEl = document.getElementById('successModalTitle');
             const copyBtnM = document.getElementById('copyUrlBtnModal');
             const goListBtnM = document.getElementById('goListBtnModal');
-            const closeBtnM = document.getElementById('success-close');
-            
+            const closeBtnM = document.querySelector('.modal-footer .success-close');
 
             if (titleEl) titleEl.textContent = (this.currentLang === 'en' ? 'Upload Completed' : this.currentLang === 'jp' ? 'アップロード完了' : '업로드 완료');
             if (msgEl) msgEl.textContent = successMessage;

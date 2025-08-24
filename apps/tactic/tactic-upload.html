@@ -1200,13 +1200,13 @@ class TacticUploader {
             const titleEl = document.getElementById('successModalTitle');
             const copyBtnM = document.getElementById('copyUrlBtnModal');
             const goListBtnM = document.getElementById('goListBtnModal');
-            const closeBtnM = document.querySelector('.modal-footer .success-close');
+            const closeBtnM = modal ? modal.querySelector('.modal-footer .success-close') : document.querySelector('.modal-footer .success-close');
 
             if (titleEl) titleEl.textContent = (this.currentLang === 'en' ? 'Upload Completed' : this.currentLang === 'jp' ? 'アップロード完了' : '업로드 완료');
             if (msgEl) msgEl.textContent = successMessage;
             if (accessLabel) accessLabel.textContent = (this.currentLang === 'en' ? 'You can access it at:' : this.currentLang === 'jp' ? '以下のURLでアクセスできます:' : '다음 주소로 접근할 수 있습니다:');
             if (linkEl) { linkEl.href = publicLink; linkEl.textContent = publicLink; }
-            // 닫기 버튼 
+            // 닫기 버튼 (footer) 텍스트 설정
             if (closeBtnM) {
                 closeBtnM.textContent = (this.currentLang === 'en' ? 'Close' : this.currentLang === 'jp' ? '閉じる' : '닫기');
             }
@@ -1221,7 +1221,14 @@ class TacticUploader {
                 goListBtnM.onclick = () => { window.location.href = '/tactic/tactics.html'; };
             }
             document.querySelectorAll('.success-close').forEach(el => el.onclick = () => { modal.style.display = 'none'; });
-            if (modal) modal.style.display = 'flex';
+            // 모달 표시 직전, 혹시 다른 처리에서 텍스트가 바뀌었을 수 있으므로 다시 한 번 보장
+            if (modal) {
+                const footerCloseBtns = modal.querySelectorAll('.modal-footer .success-close');
+                footerCloseBtns.forEach(btn => {
+                    btn.textContent = (this.currentLang === 'en' ? 'Close' : this.currentLang === 'jp' ? '閉じる' : '닫기');
+                });
+                modal.style.display = 'flex';
+            }
             
         } catch (error) {
             console.error('업로드 실패:', error);

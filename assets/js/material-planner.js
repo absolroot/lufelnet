@@ -332,6 +332,9 @@
             if(hlRow){ hlRow.style.display = 'none'; }
         }else{
             // 일반 파티: S4 입력과 슬라이더를 기본(1~10)으로 활성화
+            // 이전에 지원 파티 편집에서 숨겨졌을 수 있으므로 다시 표시
+            const hlRow = document.querySelector('.skill-list .setting-row:last-child');
+            if(hlRow){ hlRow.style.display = ''; }
             const f = document.getElementById('s4From');
             const t = document.getElementById('s4To');
             if(f) { f.removeAttribute('disabled'); f.setAttribute('min','1'); f.setAttribute('max','10'); }
@@ -339,7 +342,12 @@
             const row = f ? f.closest('.setting-row') : null;
             if(row){
                 const sliders = row.querySelectorAll('.dual-slider-row input[type="range"]');
-                sliders.forEach(sl=>{ sl.disabled=false; sl.min='1'; sl.max='10'; });
+                sliders.forEach((sl, idx)=>{
+                    sl.disabled=false; sl.min='1'; sl.max='10';
+                    // 왼쪽/오른쪽 슬라이더 값을 현재 input 값과 동기화
+                    if(idx === 0 && f) sl.value = String(f.value);
+                    if(idx === 1 && t) sl.value = String(t.value);
+                });
             }
         }
     }
@@ -387,7 +395,7 @@
             row.appendChild(grid);
             // full-width slider row
             const sliderRow = document.createElement('div'); sliderRow.className='single-slider-row';
-            const slider = document.createElement('input'); slider.type='range'; slider.min = idPrefix==='cur'? '0':'1'; slider.max='12'; slider.step='1';
+            const slider = document.createElement('input'); slider.type='range'; slider.min = idPrefix==='cur'? '0':'0'; slider.max='12'; slider.step='1';
             slider.id = idPrefix==='cur' ? 'mindBaseCurSlider' : 'mindBaseTarSlider'; slider.value = idPrefix==='cur'? '0':'12';
             sliderRow.appendChild(slider);
             // optional value label (hidden via CSS per user's preference)
@@ -412,7 +420,7 @@
             setMindBaseCounts(c, tval);
         });
         tarSl.addEventListener('input', ()=>{
-            const c = Number(curSl.value); let tval = Number(tarSl.value); if(tval < 1) tval = 1; if(tval < c) tval = c;
+            const c = Number(curSl.value); let tval = Number(tarSl.value); if(tval < 0) tval = 0; if(tval < c) tval = c;
             setMindBaseCounts(c, tval);
         });
     }
@@ -440,7 +448,7 @@
     function setMindBaseCounts(curCount, tarCount){
         // enforce bounds
         curCount = Math.max(0, Math.min(12, curCount|0));
-        tarCount = Math.max(1, Math.min(12, tarCount|0));
+        tarCount = Math.max(0, Math.min(12, tarCount|0));
         if(tarCount < curCount) tarCount = curCount;
         paintMindGrid('mindBaseCurrentGrid', curCount);
         paintMindGrid('mindBaseTargetGrid', tarCount);

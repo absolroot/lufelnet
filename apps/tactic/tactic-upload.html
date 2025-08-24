@@ -1200,11 +1200,17 @@ class TacticUploader {
             const titleEl = document.getElementById('successModalTitle');
             const copyBtnM = document.getElementById('copyUrlBtnModal');
             const goListBtnM = document.getElementById('goListBtnModal');
+            const closeBtnM = document.getElementById('success-close');
+            
 
             if (titleEl) titleEl.textContent = (this.currentLang === 'en' ? 'Upload Completed' : this.currentLang === 'jp' ? 'アップロード完了' : '업로드 완료');
             if (msgEl) msgEl.textContent = successMessage;
             if (accessLabel) accessLabel.textContent = (this.currentLang === 'en' ? 'You can access it at:' : this.currentLang === 'jp' ? '以下のURLでアクセスできます:' : '다음 주소로 접근할 수 있습니다:');
             if (linkEl) { linkEl.href = publicLink; linkEl.textContent = publicLink; }
+            // 닫기 버튼 
+            if (closeBtnM) {
+                closeBtnM.textContent = (this.currentLang === 'en' ? 'Close' : this.currentLang === 'jp' ? '閉じる' : '닫기');
+            }
             if (copyBtnM) {
                 copyBtnM.textContent = (this.currentLang === 'en' ? 'Copy URL' : this.currentLang === 'jp' ? 'URLをコピー' : 'URL 복사');
                 copyBtnM.onclick = async () => {

@@ -113,92 +113,91 @@
 
     partyImagesContainer.appendChild(partyImagesDiv);
 
-    // 원더의 페르소나 이미지 추가
-    if (wonderPersonas.some(persona => persona !== "")) {
-      const personaImagesDiv = document.createElement("div");
-      personaImagesDiv.className = "persona-images";
+    // 원더의 페르소나 이미지 컨테이너: 항상 렌더하여 DOM 변동 최소화
+    const personaImagesDiv = document.createElement("div");
+    personaImagesDiv.className = "persona-images";
+    // 필요 시 최소 높이로 행 높이 고정 (CSS에 이미 정의되어 있으면 제거 가능)
+    // personaImagesDiv.style.minHeight = '64px';
 
-      wonderPersonas.forEach((persona, index) => {
-        if (persona) {
-          const container = document.createElement("div");
-          container.className = "persona-container";
+    wonderPersonas.forEach((persona) => {
+      if (persona) {
+        const container = document.createElement("div");
+        container.className = "persona-container";
 
-          const personaImg = document.createElement("img");
-          personaImg.className = "persona-img";
-          personaImg.src = `${BASE_URL}/assets/img/tactic-persona/${persona}.webp`;
-          personaImg.alt = persona;
-          
-          // 커스텀 툴팁 div 생성
-          const tooltip = document.createElement("div");
-          tooltip.className = "persona-tooltip";
-          
-          // 현재 언어 감지 함수
-          function getCurrentLanguage() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlLang = urlParams.get('lang');
-            if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
-              return urlLang;
-            }
-            const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
-              return savedLang;
-            }
-            return 'kr';
+        const personaImg = document.createElement("img");
+        personaImg.className = "persona-img";
+        personaImg.src = `${BASE_URL}/assets/img/tactic-persona/${persona}.webp`;
+        personaImg.alt = persona;
+        
+        // 커스텀 툴팁 div 생성
+        const tooltip = document.createElement("div");
+        tooltip.className = "persona-tooltip";
+        
+        // 현재 언어 감지 함수
+        function getCurrentLanguage() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const urlLang = urlParams.get('lang');
+          if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+            return urlLang;
           }
+          const savedLang = localStorage.getItem('preferredLanguage');
+          if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+            return savedLang;
+          }
+          return 'kr';
+        }
 
-          // 페르소나 이름 번역 함수
-          function getPersonaDisplayName(personaName) {
-            const currentLang = getCurrentLanguage();
-            if (currentLang === 'kr' || !personaData[personaName]) {
-              return personaName;
-            }
-            
-            const persona = personaData[personaName];
-            if (currentLang === 'en' && persona.name_en) {
-              return persona.name_en;
-            } else if (currentLang === 'jp' && persona.name_jp) {
-              return persona.name_jp;
-            }
+        // 페르소나 이름 번역 함수
+        function getPersonaDisplayName(personaName) {
+          const currentLang = getCurrentLanguage();
+          if (currentLang === 'kr' || !personaData[personaName]) {
             return personaName;
           }
           
-          // 툴팁 내용 구성 (번역 적용)
-          const currentLang = getCurrentLanguage();
-          const instinct = personaData[persona]?.instinct;
-          const displayPersonaName = getPersonaDisplayName(persona);
-          
-          let instinctName = instinct?.name || "";
-          let instinctEffects = instinct?.effects || [];
-          
-          // 본능 이름 번역
-          if (currentLang === 'en' && instinct?.name_en) {
-            instinctName = instinct.name_en;
-          } else if (currentLang === 'jp' && instinct?.name_jp) {
-            instinctName = instinct.name_jp;
+          const personaObj = personaData[personaName];
+          if (currentLang === 'en' && personaObj.name_en) {
+            return personaObj.name_en;
+          } else if (currentLang === 'jp' && personaObj.name_jp) {
+            return personaObj.name_jp;
           }
-          
-          // 본능 효과 번역
-          if (currentLang === 'en' && instinct?.effects_en) {
-            instinctEffects = instinct.effects_en;
-          } else if (currentLang === 'jp' && instinct?.effects_jp) {
-            instinctEffects = instinct.effects_jp;
-          }
-          
-          let tooltipText = `${displayPersonaName}\n${instinctName}\n`;
-          if (instinctEffects.length > 0) {
-            tooltipText += "\n" + instinctEffects.join("\n");
-          }
-          tooltip.textContent = tooltipText;
-
-          container.appendChild(personaImg);
-          container.appendChild(tooltip);
-          personaImagesDiv.appendChild(container);
+          return personaName;
         }
-      });
+        
+        // 툴팁 내용 구성 (번역 적용)
+        const currentLang = getCurrentLanguage();
+        const instinct = personaData[persona]?.instinct;
+        const displayPersonaName = getPersonaDisplayName(persona);
+        
+        let instinctName = instinct?.name || "";
+        let instinctEffects = instinct?.effects || [];
+        
+        // 본능 이름 번역
+        if (currentLang === 'en' && instinct?.name_en) {
+          instinctName = instinct.name_en;
+        } else if (currentLang === 'jp' && instinct?.name_jp) {
+          instinctName = instinct.name_jp;
+        }
+        
+        // 본능 효과 번역
+        if (currentLang === 'en' && instinct?.effects_en) {
+          instinctEffects = instinct.effects_en;
+        } else if (currentLang === 'jp' && instinct?.effects_jp) {
+          instinctEffects = instinct.effects_jp;
+        }
+        
+        let tooltipText = `${displayPersonaName}\n${instinctName}\n`;
+        if (instinctEffects.length > 0) {
+          tooltipText += "\n" + instinctEffects.join("\n");
+        }
+        tooltip.textContent = tooltipText;
 
-      if (personaImagesDiv.children.length > 0) {
-        partyImagesContainer.appendChild(personaImagesDiv);
+        container.appendChild(personaImg);
+        container.appendChild(tooltip);
+        personaImagesDiv.appendChild(container);
       }
-    }
+    });
+
+    // 항상 추가 (비어있어도 유지)
+    partyImagesContainer.appendChild(personaImagesDiv);
   }
 

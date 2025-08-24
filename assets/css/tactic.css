@@ -119,7 +119,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .input-group label { white-space: nowrap; /* 라벨 텍스트 줄바꿈 방지 */
     color: rgba(255, 255, 255, 0.9); font-weight: 500; }
 
-  .party-name-input { width: 120px; padding : 8px; border-radius: 3px; border : none; background-color: rgba(0, 0, 0, 0.15); font-size: 14px; color: rgba(255, 255, 255, 0.9); }
+  .party-name-input { width: 84px; padding : 8px; border-radius: 3px; border : none; background-color: rgba(0, 0, 0, 0.15); font-size: 14px; color: rgba(255, 255, 255, 0.9); }
 
   .party-order, .party-ritual { width: 45px; }
 

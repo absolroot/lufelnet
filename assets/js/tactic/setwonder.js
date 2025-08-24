@@ -313,7 +313,7 @@ function updateActionMemos() {
 
 // 업데이트 함수를 디바운스 처리
 const debouncedUpdate = debounce(() => {
-  // 현재 턴 순서(번호) 스냅샷
+  // 현재 turns 배열의 순서를 저장해 둔다 (재렌더 후에도 동일 순서 유지)
   const prevOrder = Array.isArray(turns) ? turns.map(t => t.turn) : [];
 
   updateAutoActions(); // 내부에서 renderTurns() 호출됨
@@ -328,6 +328,7 @@ const debouncedUpdate = debounce(() => {
   if (window.wonderApplySkillInputDecor) {
     window.wonderApplySkillInputDecor();
   }
+
 }, 300);
 
 inputs.forEach((input, idx) => {
@@ -486,22 +487,33 @@ inputs.forEach((input, idx) => {
   
   // clear 버튼 추가
   const clearBtn = document.createElement("button");
+  clearBtn.type = "button"; // 폼 제출 방지로 스크롤 점프 예방
   clearBtn.className = "clear-input";
   clearBtn.textContent = "×";
-  clearBtn.addEventListener("click", () => {
+  clearBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // 변경 없음이면 스킵
+    if ((input.value || "") === "" && (wonderPersonas[idx] || "") === "") {
+      input.focus();
+      return;
+    }
     input.value = "";
     wonderPersonas[idx] = "";
     debouncedUpdate();
+    // setparty.js와 동일하게 단순 포커스만 유지
     input.focus();
   });
   inputContainer.appendChild(clearBtn);
   
   // input 이벤트 리스너 수정
   input.addEventListener("change", (e) => {
-    // 현재 스크롤 위치 저장
-    const scrollY = window.scrollY;
     const oldPersona = wonderPersonas[idx];
     const newPersona = e.target.value;
+    // 변경 없음이면 스킵
+    if ((oldPersona || '') === (newPersona || '')) {
+      return;
+    }
     wonderPersonas[idx] = newPersona;
     
     // 고유 스킬 설정
@@ -523,21 +535,11 @@ inputs.forEach((input, idx) => {
         if (getCurrentLanguage() !== 'kr') {
           const displaySkillName = getUniqueSkillDisplayName(newPersona, uniqueSkillName);
           uniqueSkillInput.setAttribute('data-display-value', displaySkillName);
-          
-          // 고유스킬 입력 필드가 .input-container로 감싸져 있지 않은 경우 처리
-          let skillInputContainer = uniqueSkillInput.closest('.input-container');
-          if (!skillInputContainer) {
-            // .input-container로 감싸기
-            skillInputContainer = document.createElement('div');
-            skillInputContainer.className = 'input-container';
-            skillInputContainer.style.position = 'relative';
-            
-            uniqueSkillInput.parentNode.insertBefore(skillInputContainer, uniqueSkillInput);
-            skillInputContainer.appendChild(uniqueSkillInput);
+          const skillInputContainer = uniqueSkillInput.closest('.input-container');
+          if (skillInputContainer) {
+            skillInputContainer.setAttribute('data-display-text', displaySkillName);
+            skillInputContainer.classList.add('show-translation');
           }
-          
-          skillInputContainer.setAttribute('data-display-text', displaySkillName);
-          skillInputContainer.classList.add('show-translation');
         } else {
           // 한국어 모드일 때는 번역 표시 제거
           let skillInputContainer = uniqueSkillInput.closest('.input-container');
@@ -666,29 +668,18 @@ window.wonderApplySkillInputDecor = function() {
   });
 };
 
-// 초기화 실행 (여러 번 실행하여 확실히 적용)
+// 초기화 실행: 1회만 호출하여 불필요한 리플로우 방지
 setTimeout(initializeTranslations, 100);
-setTimeout(initializeTranslations, 500);
-setTimeout(initializeTranslations, 1000);
-// 프로그램적으로 값이 주입된 경우(임포트 등)에도 아이콘/오버레이 적용
 setTimeout(() => {
-  if (window.wonderApplySkillInputDecor) {
-    window.wonderApplySkillInputDecor();
-  }
-}, 1200);
-// 추가 지연 호출들 (늦게 주입되는 경우 커버)
-[2000, 3000, 5000].forEach(ms => setTimeout(() => {
   if (window.wonderApplySkillInputDecor) window.wonderApplySkillInputDecor();
-}, ms));
+}, 150);
 
 // 임포트 플래그 해제 대기 후 한 번 적용
+// 임포트가 실제 사용되는 경우에만 1회 후처리
 (function waitImportThenDecor() {
-  if (typeof window.__IS_APPLYING_IMPORT === 'undefined') return; // 플래그 미사용 시 스킵
-  let checks = 0;
-  const maxChecks = 60; // 최대 60회 (약 12초 @200ms)
+  if (typeof window.__IS_APPLYING_IMPORT === 'undefined') return;
   const iv = setInterval(() => {
-    checks++;
-    if (!window.__IS_APPLYING_IMPORT || checks >= maxChecks) {
+    if (!window.__IS_APPLYING_IMPORT) {
       clearInterval(iv);
       if (window.wonderApplySkillInputDecor) window.wonderApplySkillInputDecor();
     }
@@ -696,16 +687,7 @@ setTimeout(() => {
 })();
 
 // 짧은 폴링: 늦게 채워지는 값에 대해서도 아이콘/오버레이 적용 보장 (최대 ~10초)
-(function startSkillIconShortPoll() {
-  let ticks = 0;
-  const maxTicks = 20; // ~10s at 500ms
-  const iv = setInterval(() => {
-    ticks++;
-    if (window.wonderApplySkillInputDecor) window.wonderApplySkillInputDecor();
-    // 종료 조건: 충분히 반복했거나, 더 이상 열려있는 드롭다운이 없고(안정 상태 가정) 시간이 경과
-    if (ticks >= maxTicks) clearInterval(iv);
-  }, 500);
-})();
+// 지속 폴링 제거: 상시 리플로우 방지
 
 // 페르소나 스킬 datalist 생성
 const skillsDatalist = document.createElement("datalist");

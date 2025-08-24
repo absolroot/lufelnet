@@ -109,10 +109,27 @@
         }
         
         .character-icon {
+          width: 24px;
+          height: 24px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        /* 선택된 캐릭터 아이콘 공간을 항상 예약하여 가로크기 변동 방지 (파티 이름 입력칸에만 적용) */
+        .input-container.party-name-container input.party-name-input {
+            padding-left: 36px;
+        }
+        .selected-character-icon {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
             width: 24px;
             height: 24px;
             object-fit: cover;
             border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* 번역된 텍스트 표시를 위한 스타일 */
@@ -120,19 +137,20 @@
             position: relative;
         }
         
-        .input-container.show-translation input {
+        .input-container.party-name-container.show-translation input {
             color: transparent !important;
             text-shadow: none !important;
         }
         
-        .input-container.show-translation input:focus {
+        .input-container.party-name-container.show-translation input:focus {
             color: rgba(255, 255, 255, 0.9) !important;
         }
         
-        .input-container.show-translation::before {
+        .input-container.party-name-container.show-translation::before {
             content: attr(data-display-text);
             position: absolute;
-            left: 8px;
+            /* 아이콘 영역만큼 띄워 텍스트가 겹치지 않도록 함 */
+            left: 36px;
             top: 50%;
             transform: translateY(-50%);
             color: rgba(255, 255, 255, 0.9);
@@ -143,10 +161,11 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: calc(100% - 40px); /* clear 버튼 고려 */
+            /* clear 버튼(우측 40px) + 아이콘 예약 공간(좌측 36px) 고려 */
+            max-width: calc(100% - 76px);
         }
         
-        .input-container.show-translation:has(input:focus)::before {
+        .input-container.party-name-container.show-translation:has(input:focus)::before {
             display: none;
         }
       `;
@@ -175,12 +194,17 @@
       
       // 주 계시 옵션 설정
       if (mainRevSelect) {
-        // 기존 옵션 초기화
+        // 기존 옵션 초기화 (기존 로직과 동일하게 빈 값 유지)
         mainRevSelect.innerHTML = '<option value="">-</option>';
         
-        // 주 계시 옵션 추가 (한국어 기준)
+        // 주 계시 옵션 추가 (언어별 A-Z 정렬)
         if (typeof revelationData !== 'undefined' && revelationData.main) {
-            Object.keys(revelationData.main).forEach(rev => {
+            const lang = getCurrentLanguage();
+            const locale = lang === 'kr' ? 'ko' : (lang === 'jp' ? 'ja' : 'en');
+            const mains = Object.keys(revelationData.main).sort((a, b) =>
+              getRevelationDisplayName(a).localeCompare(getRevelationDisplayName(b), locale, { sensitivity: 'base' })
+            );
+            mains.forEach(rev => {
                 const opt = document.createElement("option");
                 opt.value = rev;
                 opt.textContent = getRevelationDisplayName(rev); // 생성 시 바로 번역
@@ -196,14 +220,19 @@
           if (selectedMain && revelationData && revelationData.main[selectedMain]) {
             subRevSelect.disabled = false;
             
-            // 일월성진 옵션 설정
-            subRevSelect.innerHTML = '<option value="">-</option>';
-            revelationData.main[selectedMain].forEach(subRev => {
-              const opt = document.createElement("option");
-              opt.value = subRev;
-              opt.textContent = getRevelationDisplayName(subRev); // 생성 시 바로 번역
-              subRevSelect.appendChild(opt);
-            });
+            // 일월성진 옵션 설정 (언어별 A-Z 정렬, 빈 값 유지)
+          subRevSelect.innerHTML = '<option value="">-</option>';
+          const lang = getCurrentLanguage();
+          const locale = lang === 'kr' ? 'ko' : (lang === 'jp' ? 'ja' : 'en');
+          const subs = [...revelationData.main[selectedMain]].sort((a, b) =>
+            getRevelationDisplayName(a).localeCompare(getRevelationDisplayName(b), locale, { sensitivity: 'base' })
+          );
+          subs.forEach(subRev => {
+            const opt = document.createElement("option");
+            opt.value = subRev;
+            opt.textContent = getRevelationDisplayName(subRev); // 생성 시 바로 번역
+            subRevSelect.appendChild(opt);
+          });
           } else {
             subRevSelect.disabled = true;
             subRevSelect.innerHTML = '<option value="">-</option>';
@@ -222,7 +251,7 @@
       if (nameSelect) {
         // input container 생성
         const inputContainer = document.createElement("div");
-        inputContainer.className = "input-container";
+        inputContainer.className = "input-container party-name-container";
         inputContainer.style.position = "relative";
         
         // input 요소 생성
@@ -255,6 +284,8 @@
           updateAutoActions();
           updatePartyImages();
           renderTurns();
+          // 선택 아이콘 제거
+          setCharacterIconOnInputWithElement(input, "");
           input.focus();
         });
         
@@ -265,13 +296,39 @@
         
         // select를 새로운 input container로 교체
         nameSelect.parentNode.replaceChild(inputContainer, nameSelect);
+        // 초기 값 기준으로 아이콘 표시
+        setCharacterIconOnInputWithElement(input, partyMembers[index].name);
         
+        // 선택된 캐릭터 아이콘을 입력창에 표시/제거
+        function setCharacterIconOnInputWithElement(inputEl, charName) {
+          const container = inputEl.closest('.input-container');
+          if (!container) return;
+          let img = container.querySelector('.selected-character-icon');
+          const valid = charName && typeof characterData !== 'undefined' && characterData[charName];
+          if (valid) {
+            if (!img) {
+              img = document.createElement('img');
+              img.className = 'selected-character-icon';
+              img.alt = '';
+              container.appendChild(img);
+            }
+            img.src = `${BASE_URL}/assets/img/character-half/${charName}.webp`;
+            img.onerror = function() { this.style.display = 'none'; };
+            img.onload = function() { this.style.display = ''; };
+            container.classList.add('has-char-icon');
+          } else {
+            if (img) img.remove();
+            container.classList.remove('has-char-icon');
+          }
+        }
+
         // 드롭다운 항목 생성 함수
         const createDropdownItems = (filter = "") => {
           customDropdown.innerHTML = "";
           
           // 현재 언어에 맞는 캐릭터 목록 사용
           const currentLang = getCurrentLanguage();
+          const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
           // KR 리스트 강제 사용 플래그 (localStorage)
           let forceKR = false;
           try {
@@ -296,6 +353,10 @@
                      displayName.toLowerCase().includes(lowerCaseFilter);
             });
           }
+          // 언어별 표시명 기준 A-Z 정렬
+          filteredCharacters = [...filteredCharacters].sort((a, b) =>
+            getCharacterDisplayName(a).localeCompare(getCharacterDisplayName(b), locale, { sensitivity: 'base' })
+          );
           
           // 드롭다운 항목 추가
           filteredCharacters.forEach(char => {
@@ -331,6 +392,9 @@
               } else {
                   inputContainer.classList.remove('show-translation');
               }
+
+              // 선택된 캐릭터 아이콘 적용
+              setCharacterIconOnInputWithElement(input, char);
 
               // 포커스 즉시 해제하여 번역된 값이 보이도록 함
               setTimeout(() => input.blur(), 0);
@@ -377,6 +441,9 @@
             } else {
                 inputContainer.classList.remove('show-translation');
             }
+
+            // 블러 시 현재 값 기준으로 아이콘 갱신
+            setCharacterIconOnInputWithElement(this, this.value);
           }, 200);
         });
         
@@ -406,6 +473,9 @@
           const selectedName = e.target.value;
           const currentRitual = ritualSelect.value;
           partyMembers[index].name = selectedName;
+
+          // 입력 변경 시 아이콘 갱신
+          setCharacterIconOnInputWithElement(input, selectedName);
           
           // 턴 데이터에서 해당 캐릭터 업데이트
           turns.forEach(turn => {
@@ -438,11 +508,16 @@
               if (charData.main_revelation) {
                 mainRevSelect.value = charData.main_revelation[0];
                 
-                // 일월성진 옵션 설정
+                // 일월성진 옵션 설정 (언어별 A-Z 정렬, 빈 값 유지)
                 if (revelationData.main[charData.main_revelation[0]]) {
                   subRevSelect.disabled = false;
                   subRevSelect.innerHTML = '<option value="">-</option>';
-                  revelationData.main[charData.main_revelation[0]].forEach(subRev => {
+                  const lang = getCurrentLanguage();
+                  const locale = lang === 'kr' ? 'ko' : (lang === 'jp' ? 'ja' : 'en');
+                  const subs = [...revelationData.main[charData.main_revelation[0]]].sort((a, b) =>
+                    getRevelationDisplayName(a).localeCompare(getRevelationDisplayName(b), locale, { sensitivity: 'base' })
+                  );
+                  subs.forEach(subRev => {
                     const opt = document.createElement("option");
                     opt.value = subRev;
                     opt.textContent = getRevelationDisplayName(subRev); // 생성 시 바로 번역

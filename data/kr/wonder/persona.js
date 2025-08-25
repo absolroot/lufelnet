@@ -22,8 +22,8 @@ const personaData = {
                 "[Marked]: Reduce enemy defense by 29.6% for 2 turns."
             ],
             effects_jp: [
-                "攻撃力が29.1%上昇。味方が「標的」に攻撃した時、攻撃力が20%上昇。「標的」を保有した敵の防御力が12%追加減少する。自分が「標的」を持つ敵攻撃時、攻撃力18%の銃撃属性ダメージを1回与える。",
-                "「標的」：2ターンの間、敵の防御力が29.6%減少する。"
+                "攻撃力が29.1%上昇。味方が『標的』に攻撃した時、攻撃力が20%上昇。『標的』を保有した敵の防御力が12%追加減少する。自分が『標的』を持つ敵攻撃時、攻撃力18%の銃撃属性ダメージを1回与える。",
+                "『標的』：2ターンの間、敵の防御力が29.6%減少する。"
             ],
             priority: 3
         },
@@ -33,7 +33,7 @@ const personaData = {
             name_jp: "タトラショット",
             effect: "1명의 적에게 공격력 203.3%의 총격 속성 대미지를 주고, 75%의 고정 확률로 적이 『조준』을 획득한다. 『조준』: 2턴 동안 적의 방어력이 29.6% 감소한다.",
             effect_en: "Deals 203.3% ATK as Gun DMG to 1 foe, has 75% fixed chance of inflicting [Marked]: Reduce enemy defense by 29.6% for 2 turns.",
-            effect_jp: "敵単体に攻撃力203.3%の銃撃属性ダメージを与える。75%の確率で敵を2ターンの間、「標的」状態にする。「標的」状態：防御力が29.6%低下する。",
+            effect_jp: "敵単体に攻撃力203.3%の銃撃属性ダメージを与える。75%の確率で敵を2ターンの間、『標的』状態にする。『標的』状態：防御力が29.6%低下する。",
             priority: 0,
             icon: "총격"
         },
@@ -64,9 +64,15 @@ const personaData = {
         position: "우월",
         element: "염동",
         best_persona: true,
+        cost: {
+            blue : false,
+            purple: true,
+            rainbow: false,
+            coin : 4250
+        },
         instinct: {
             name: "술취한 카니발 III",
-            name_en: "Druken Revelry III",
+            name_en: "Feast of the Frenzied III",
             name_jp: "狂乱の酒宴 III",
             effects: [
                 "크리티컬 확률이 14.8% 증가한다.",
@@ -77,7 +83,7 @@ const personaData = {
                 "When using a Persona skill on allies, increases the main target's CRIT DMG by 30% for 2 turns."
             ],
             effects_jp: [
-                "クリティカル率が14.8%上昇。味方にスキルを使用後、選択した対象のクリティカルダメージを30%上昇（2ターン持続）。"
+                "クリティカル率が14.8%上昇する。味方にスキルを使用した時、2ターンの間、選択した対象のクリティカルダメージが30%上昇する。"
             ],
             priority: 3
         },
@@ -86,15 +92,15 @@ const personaData = {
             name_en: "Revolution",
             name_jp: "レボリューション",
             effect: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 추가로 1.1%가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies CRIT by 6.5% + 1.1% for every 10% CRIT Wonder has to a maximum of 4.4% for 3 turns.",
+            effect_en: "Increase party's CRIT by 6.5% + 1.1% for every 10% CRIT Wonder has to a maximum of 4.4% for 3 turns.",
             effect_jp: "3ターンの間、味方全体のクリティカル率が6.5%上昇する。自身のクリティカル率が10%ごとに、味方のクリティカル率がさらに1.1%上昇する（最大4.4%まで）。",
             priority: 2,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -133,8 +139,8 @@ const personaData = {
             ],
             effects_en: [
                 "Increases CRIT Rate by 17.5%.",
-                "Increases Ailment Accuracy when inflicting Winded by 20% and increase dmg dealt to foes with Winded by 20%.",
-                "Decreases the foes' DEF by 48% when refreshing or inflicting Winded for 2 turns."
+                "Increases Ailment Accuracy when inflicting Windswept by 20% and increase damage to foes with Windswept by 20%.",
+                "Decreases the foes' DEF by 48% when refreshing or inflicting Windswept for 2 turns."
             ],
             effects_jp: [
                 "クリティカル率が17.5%増加する。",
@@ -148,7 +154,7 @@ const personaData = {
             name_en: "Winds of Nirvana",
             name_jp: "敵を滅する風",
             effect: "1명의 적에게 공격력 192.0%의 질풍 속성 대미지를 주고, 75%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 적이 풍습 상태인 경우 지속 시간을 초기화하고, 이번 스킬이 주는 대미지가 27.0% 증가하며 적이 받는 질풍 대미지가 27.0% 심화된다. 효과는 2턴 동안 지속된다.",
-            effect_en: "Deals 192.0% ATK Wind dmg to 1 foe, with a 75% base chance to inflict Winded; If foe is already inflicted with Winded, refreshes its duration, increases this damage by 27.0% and increases their Wind dmg taken by 27.0% for 2 turns.",
+            effect_en: "Deals 192.0% ATK Wind dmg to 1 foe, with a 75% base chance to inflict Windswept; If foe is already inflicted with Windswept, refreshes its duration, increases this damage by 27.0% and increases their Wind dmg taken by 27.0% for 2 turns.",
             effect_jp: "1体の敵に192.0% ATKの風属性ダメージを与え、75%の基本確率で敵を風襲状態にする。敵が既に風襲状態の場合、持続時間を初期化し、このスキルのダメージが27.0%増加し、敵が受ける風ダメージが27.0%深化する。効果は2ターンの間持続する。",
             priority: 3,
             icon: "질풍"
@@ -170,7 +176,7 @@ const personaData = {
              {name : "민첩의 마음가짐", priority: 0},
         ],
         comment : "강력한 방어력 감소 효과를 지닌 페르소나, 마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
-        comment_en: "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Winded.",
+        comment_en: "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
         comment_jp: "強力な防御力低下効果を持つペルソナ。マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
     },
     "도미니온": {
@@ -183,7 +189,7 @@ const personaData = {
         best_persona: true,
         instinct: {
             name: "천사의 호령 III",
-            name_en: "Angel's Order III",
+            name_en: "Angel's Command III",
             name_jp: "天使の号令 III",
             effects: [
                 "공격력이 29.1% 증가한다.",
@@ -192,12 +198,12 @@ const personaData = {
             ],
             effects_en: [
                 "Increases ATK by 29.1%.",
-                "Gains 2 [Order] when using a skill on allies.",
-                "When allies deals damage with a skill, consume 1 stack of [Order] to increase their DMG Dealt by 15% and ATK by 6.4% for 1 turn."
+                "Gains 2 [Commandment] when using a skill on allies.",
+                "When allies deals damage with a skill, consume 1 stack of [Commandment] to increase their damage by 15% and ATK by 6.4% for 1 turn."
             ],
             effects_jp: [
                 "攻撃力が29.1％上昇。",
-                "味方にスキルを使用後、「号令」を2つ獲得。味方がスキルでダメージを与えた時に「号令」を一つ消費して、1ターンの間与えるダメージが15％、攻撃力が6.4％上昇。"
+                "味方にスキルを使用後、『号令』を2つ獲得。味方がスキルでダメージを与えた時に『号令』を一つ消費して、1ターンの間与えるダメージが15％、攻撃力が6.4％上昇。"
             ],
             priority: 3
         },
@@ -206,15 +212,15 @@ const personaData = {
             name_en: "Cohesion",
             name_jp: "凝結",
             effect: "모든 동료의 공격력이 15% 증가하고, 자신의 공격력 500마다 1.25%가 추가 증가한다. 상한은 10%이며 효과는 2턴 동안 지속된다. 또한 스킬의 메인 목표가 주는 대미지가 8% 추가 증가하고, 자신의 공격력 500마다 1% 추가 증가한다. 상한은 8%이며 효과는 1턴 동안 지속된다.",
-            effect_en: "Increases all allies' ATK by 15% + 1.25% for every 500 ATK you have, up to 10% for 2 turns. Increases the main target's dmg dealt by 8% + 1% for every 500 ATK you have, up to 8% for 1 turn.",
+            effect_en: "Increases party's ATK by 15% + 1.25% for every 500 ATK you have, up to 10% for 2 turns. Increases the main target's damage by 8% + 1% for every 500 ATK you have, up to 8% for 1 turn.",
             effect_jp: "2ターンの間、味方全体の攻撃力が15％上昇し、自身の攻撃力500ごとに追加で攻撃力が1.25％上昇する（最大10％）。さらに1ターンの間、選択した対象の与ダメージが8％上昇し、自身の攻撃力500ごとに追加で与ダメージが1％上昇する（最大8％）。",
             priority: 3,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -226,7 +232,7 @@ const personaData = {
              {name : "방어 강화", priority: 0},
         ],
         comment : "호령 + 응집 버프를 통해 1턴에 최대 공격력 31.4%, 대미지 31% 증가효과를 부여할 수 있다.",
-        comment_en: "Through Order + Cohesion buffs, you can provide maximum ATK 31.4% and damage 31% increase effects in 1 turn.",
+        comment_en: "Through Commandment + Cohesion buffs, you can provide maximum ATK 31.4% and damage 31% increase effects in 1 turn.",
         comment_jp: "号令＋凝結バフを通じて1ターンに最大攻撃力31.4%、ダメージ31%増加効果を付与できる。"
     },
     "년수": {
@@ -299,7 +305,7 @@ const personaData = {
         best_persona: true,
         instinct: {
             name: "천왕의 주시 II",
-            name_en: "Heavenly Gaze II",
+            name_en: "Heavenly King's Eyes II",
             name_jp: "天王の眼力 II",
             effects: [
                 "효과 명중이 21.2% 증가한다.",
@@ -310,8 +316,8 @@ const personaData = {
                 "At the start of battle, increases the ATK and CRIT Rate for the ally with the highest ATK by 14% and 6% for 3 turns, prioritizing Single-target/Multi-target Thief."
             ],
             effects_jp: [
-                "状態異常命中が21.2%上昇。",
-                "戦闘開始時、攻撃力が最も高い味方の攻撃力が14%上昇し、クリティカル率が6%上昇（3ターン持続）"
+                "状態異常命中が21.2%上昇する。",
+                "戦闘開始時、3ターンの間、攻撃力が最も高い味方の攻撃力が14%上昇し、クリティカル率が6%上昇する。"
             ],
             priority: 3
         },
@@ -320,15 +326,15 @@ const personaData = {
             name_en: "Revolution",
             name_jp: "レボリューション",
             effect: "모든 동료의 크리티컬 확률이 6.5% 증가하고, 자신의 크리티컬 확률 10%마다 추가로 1.1%가 증가한다. 상한은 4.4%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies CRIT by 6.5% + 1.1% for every 10% CRIT Wonder has to a maximum of 4.4% for 3 turns.",
+            effect_en: "Increase party's CRIT by 6.5% + 1.1% for every 10% CRIT Wonder has to a maximum of 4.4% for 3 turns.",
             effect_jp: "3ターンの間、味方全体のクリティカル率が6.5%上昇する。自身のクリティカル率が10%ごとに、味方のクリティカル率がさらに1.1%上昇する（最大4.4%まで）。",
             priority: 2,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -355,7 +361,7 @@ const personaData = {
         instinct: {
             name: "혜토의 동쪽 I",
             name_en: "Wisdom of the East I",
-            name_jp: "慧志の東 I",
+            name_jp: "慧土の東 I",
             effects: [
                 "방어력이 15.9% 증가한다.",
                 "동료를 목표로 스킬 시전 시 2턴 동안 메인 목표의 공격력이 15.5% 증가한다. 목표의 생명이 60% 미만일 시 해당 효과는 30%까지 증가한다."
@@ -364,7 +370,7 @@ const personaData = {
                 "Increases DEF by 15.9%. When using a skill on allies, increases the main target's ATK by 13.5% for 2 turns, increases this effect by 30% when the target is below 60% HP."
             ],
             effects_jp: [
-                "防御力が15.9%増加する。味方を対象にスキル使用時、2ターンの間メインターゲットの攻撃力が15.5%増加する。ターゲットの生命が60%未満の時、該当効果は30%まで増加する。"
+                "防御力が15.9%上昇する。味方にスキルを使用した時、2ターンの間、選択した対象の攻撃力が15.5%上昇し、対象のHPが60%未満の場合、効果がさらに30%上昇する。"
             ],
             priority: 3
         },
@@ -373,15 +379,15 @@ const personaData = {
             name_en: "Matarukaja",
             name_jp: "マハタルカジャ",
             effect: "모든 동료의 공격력이 10.9% 증가하고,자신의 공격력 500포인트마다 0.9% 추가 증가한다. 상한은 7.2%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
+            effect_en: "Increase party's ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
             effect_jp: "3ターンの間、味方全体の攻撃力が10.9%上昇する。自身の攻撃力が500ごとに、味方の攻撃力がさらに0.9%上昇する（最大7.2%まで）。",
             priority: 1,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -403,7 +409,7 @@ const personaData = {
         best_persona: true,
         instinct: {
             name: "맹렬한 불길의 군주 III",
-            name_en: "Inferno Monarch I",
+            name_en: "Lord of Flames III",
             name_jp: "烈焔の君主 III",
             effects: [
                 "효과 명중이 20.9% 증가한다.",
@@ -411,11 +417,11 @@ const personaData = {
             ],
             effects_en: [
                 "Increases Ailment Accuracy by 20.9%.",
-                "Increases Ailment Accuracy by 50% when inflicting Burn. Increases the effect by 30% when the foe is above 50% HP."
+                "Increases Ailment Accuracy by 50% when inflicting Burn. If foe's HP is 50% or more, increase effect 30%.."
             ],
             effects_jp: [
-                "状態異常命中が20.9%上昇。",
-                "炎上の命中率が50%上昇。敵のHPが50%以上の時、効果が30%上昇"
+                "状態異常命中が20.9%上昇する。",
+                "炎上の命中率が50%上昇する。敵のHPが50％以上の時、効果がさらに30%上昇する。"
             ],
             priority: 0
         },
@@ -454,7 +460,7 @@ const personaData = {
         best_persona: true,
         instinct: {
             name: "전율하는 신락 I",
-            name_en: "Trembling Kagura I",
+            name_en: "Divine Exultation I",
             name_jp: "昂揚の神楽 I",
             effects: [
                 "효과 명중이 15% 증가한다.",
@@ -462,16 +468,16 @@ const personaData = {
             ],
             effects_en: [
                 "Increases Ailment Accuracy by 15%.",
-                "After inflicting Shock, increases all allies' CRIT Rate by 10.0% for 2 turns."
+                "After inflicting Shock, increases party's CRIT Rate by 10.0% for 2 turns."
             ],
             effects_jp: [
-                "状態異常命中が15%上昇。感電させた時、味方全体のクリティカル率が10.0%上昇（2ターン持続）。"
+                "状態異常命中が15%上昇する。敵を感電状態にした時、2ターンの間、味方全体のクリティカル率を10%上昇させる。"
             ],
             priority: 3
         },
         uniqueSkill: {
             name: "전류의 흐름",
-            name_en: "Electric Surge",
+            name_en: "Electric Dance",
             name_jp: "エレクトリックダンス",
             effect: "1명의 적에게 공격력 143.0%의 전격 속성 대미지를 주고, 2턴 동안 100.0%의 기본 확률로 감전 효과를 부여한다.",
             effect_en: "Deals 143.0% ATK Elec dmg to 1 foe, with a 100.0% base chance to inflict Shock for 2 turns.",
@@ -482,7 +488,7 @@ const personaData = {
         highlight: {
             effect: "1명의 적에게 공격력 360.0%의 전격 속성 대미지를 준다.",
             effect_en: "Deal 360% ATK as Elec dmg to 1 foe.",
-            effect_jp: "1体の敵に360.0% ATKの電撃属性ダメージを与える。",
+            effect_jp: "敵単体に攻撃力360.0%の電撃属性ダメージを与える。",
             priority: 0
         },
         recommendSkill : [
@@ -503,9 +509,15 @@ const personaData = {
         position: "우월",
         element: "주원",
         best_persona: true,
+        cost : {
+            blue: true,
+            purple: false,
+            rainbow: false,
+            coin : 100
+        },
         instinct: {
             name: "황홀한 속삭임 I",
-            name_en: "Intoxicating Murmur I",
+            name_en: "Intoxicated Whisper I",
             name_jp: "酩酊のささやき I",
             effects: [
                 "공격력이 3.5% 증가한다.",
@@ -515,7 +527,7 @@ const personaData = {
                 "Increases ATK by 3.5%. When using a skill on an ally, increases their CRIT Rate by 10.2% for 1 turn."
             ],
             effects_jp: [
-                "攻撃力が3.5%上昇。味方にスキルを使用後、その味方のクリティカル率を10.2%上昇（1ターン持続）"
+                "攻撃力が3.5%上昇する。味方にスキルを使用した時、1ターンの間、対象のクリティカル率を11.7%上昇させる。"
             ],
             priority: 3
         },
@@ -531,8 +543,8 @@ const personaData = {
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -555,7 +567,7 @@ const personaData = {
         best_persona: true,
         instinct: {
             name: "성천에 잠든 뱀 II",
-            name_en: "Holy Pond's Serpent I",
+            name_en: "Rainbow Snake's Thunder II",
             name_jp: "虹蛇の雷声 II",
             effects: [
                 "크리티컬 효과가 17.4% 증가한다.",
@@ -565,7 +577,7 @@ const personaData = {
                 "Increases CRIT DMG by 17.4%. Increases all foes' CRIT DMG taken by 14%, if they are inflicted with Shock, additionally increases the effect by 9%."
             ],
             effects_jp: [
-                "クリティカルダメージが17.4%上昇。敵の被クリティカルダメージが14%上昇。敵が感電中の時、さらに9%上昇。"
+                "クリティカルダメージが17.4%上昇する。敵の被クリティカルダメージが16%上昇する。敵が感電状態の時、さらに11%上昇する。"
             ],
             priority: 3
         },
@@ -607,7 +619,7 @@ const personaData = {
         element: "질풍",
         instinct: {
             name: "잃어버린 꽃향기 II",
-            name_en: "Lost Fragrance II",
+            name_en: "Bewildering Fragrance II",
             name_jp: "花香の惑い II",
             effects: [
                 "효과 명중이 24.9% 증가한다.",
@@ -615,20 +627,20 @@ const personaData = {
                 "또한 2턴 동안 자신의 효과 명중이 18% 증가한다."
             ],
             effects_en: [
-                "Increases Ailment Accuracy by 24.9%. After inflicting Winded, increases the main target's dmg taken by 22.4% for 2 turns and increases own Ailment Accuracy by 18% for 2 turns."
+                "Increases Ailment Accuracy by 24.9%. After inflicting Windswept, increases the main target's dmg taken by 22.4% for 2 turns and increases own Ailment Accuracy by 18% for 2 turns."
             ],
             effects_jp: [
-                "状態異常命中率が24.9%上昇。風襲にした時、選択した対象の被ダメージが22.4%上昇（2ターン持続）。さらに自身の状態異常命中が18%上昇（2ターン持続）。"
+                "状態異常命中率が24.9%上昇する。風襲状態にした時、2ターンの間、選択した対象の被ダメージを22.4%上昇する。さらに2ターンの間、自身の状態異常命中が18%上昇する。"
             ],
             priority: 3
         },
         uniqueSkill: {
             name: "매복사냥",
-            name_en: "Wild Hunt",
+            name_en: "Spike",
             name_jp: "スパイク",
             effect: "1명의 적에게 155.1%의 질풍 속성 대미지를 주고, 2턴 동안 100%의 기본 확률로 적을 풍습 상태에 빠뜨린다.",
-            effect_en: "Deals 155.1% ATK Wind dmg to 1 foe and has a 100.0% chance of inflicting Winded for 2 turns.",
-            effect_jp: "敵単体に攻撃力155.1%の疾風属性ダメージを与える。100%の確率で、2ターンの間、敵を風襲状態にする",
+            effect_en: "Deals 155.1% ATK Wind dmg to 1 foe and has a 100.0% chance of inflicting Windswept for 2 turns.",
+            effect_jp: "敵単体に攻撃力155.1%の疾風属性ダメージを与える。100%の確率で、2ターンの間、敵を風襲状態にする。",
             priority: 1,
             icon: "질풍"
         },
@@ -655,17 +667,17 @@ const personaData = {
         element: "질풍",
         instinct: {
             name: "운명의 풍습 III",
-            name_en: "Wind of Fate III",
+            name_en: "Guidance of Fate III",
             name_jp: "運命の導き III",
             effects: [
                 "방어력이 37.4% 증가한다.",
                 "풍습 효과 부여 시 효과를 입은 적의 방어력이 31.5% 감소하고, 자신의 방어력이 30% 증가한다. 효과는 2턴 간 지속된다."
             ],
             effects_en: [
-                "Increases DEF by 37.4%. After inflicting Winded, decreases the DEF of the inflicted enemies by 31.5% and increases own DEF by 30% for 2 turns."
+                "Increases DEF by 37.4%. After inflicting Windswept, decreases the DEF of the inflicted enemies by 31.5% and increases own DEF by 30% for 2 turns."
             ],
             effects_jp: [
-                "防御力が37.4%上昇。敵を風襲にした時、対象の防御力が31.5%低下し、自身の防御力が30%上昇(2ターン持続)"
+                "防御力が37.4%上昇する。敵を風襲状態にした時、2ターンの間、対象の防御力を31.5%低下させ、自身の防御力が30%上昇する。"
             ],
             priority: 3
         },
@@ -674,15 +686,15 @@ const personaData = {
             name_en: "Wind Barrier",
             name_jp: "護風の盾",
             effect: "모든 동료가 2턴 동안 공격력 19.5%+590의 실드를 획득한다. 실드가 대미지를 받으면 35.0%의 기본 확률로 대미지를 준 대상을 풍습 상태에 빠뜨린다.",
-            effect_en: "Grants All allies 19.5% ATK + 590 Shield for 2 turns. When that ally takes damage, there is a 35.0% base chance to inflict Winded for 2 turns on the source of damage.",
-            effect_jp: "味方全体に攻撃力19.5%＋590のシールド(2ターン持続)を付与する。シールドがダメージを受けた時、35.0%の確率で、攻撃者を風襲状態にする。",
+            effect_en: "Grants party's 19.5% ATK + 590 Shield for 2 turns. When that ally takes damage, there is a 35.0% base chance to inflict Windswept for 2 turns on the source of damage.",
+            effect_jp: "味方全体に攻撃力19.5%+590のシールド（2ターン持続）を付与する。シールドがダメージを受けた時、35.0%の確率で、攻撃者を風襲状態にする。",
             priority: 0,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
-            effect_jp: "全ての味方が48.6% ATK+1471のシールドを獲得し、2ターンの間持続する。",
+            effect_en: "Grants party's 48.6% ATK + 1471 shield for 2 turns.",
+            effect_jp: "2ターンの間、味方全体に攻撃力48.6%+1471のシールドを付与する。",
             priority: 0
         },
         recommendSkill : [
@@ -718,7 +730,7 @@ const personaData = {
                 "Increases ATK by 29.1%. At the start of battle, gains 5 stacks of [Cold Scales]. When an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1.5% per stack for 2 turns."
             ],
             effects_jp: [
-                "攻撃力が29.1%上昇する。戦闘開始時に「寒鱗」を5スタック獲得する。味方がペルソナスキルを発動すると、自身が「寒鱗」を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、「鋭い寒鱗」を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の「寒鱗」が5スタックに達している場合、「寒鱗」と「鋭い寒鱗」をすべて消費し、スタック1つにつき敵が受けるダメージを1.5%増加させる（持続2ターン）。"
+                "攻撃力が29.1%上昇する。戦闘開始時に『寒鱗』を5スタック獲得する。味方がペルソナスキルを発動すると、自身が『寒鱗』を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、『鋭い寒鱗』を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の『寒鱗』が5スタックに達している場合、『寒鱗』と『鋭い寒鱗』をすべて消費し、スタック1つにつき敵が受けるダメージを1.5%増加させる（持続2ターン）。"
             ],
             priority: 1
         },
@@ -765,24 +777,24 @@ const personaData = {
                 "Increases CRIT Rate by 17.5%. At the start of battle, gains 3 stacks of [Screams of Sacrifice]. Gains 1 stack of [Screams of Sacrifice] at the end of your turn. When using the signature skill, if you have 3 stacks of [Screams of Sacrifice], then consumes 3 stacks of [Screams of Sacrifice] to inflict all foes with Freeze for 3 turns, and increases all foes' TECHNICAL dmg taken by 25% for 3 turns."
             ],
             effects_jp: [
-                "クリティカル率が17.5％上昇。戦闘開始時に「生贄の悲鳴」を3つ獲得、自身のターン終了時に「生贄の悲鳴」を1つ獲得。固有スキル使用時、「生贄の悲鳴」が3つ以上の場合、3つ消費し、敵全体を凍結状態にする（3ターン継続）。さらに敵の被テクニカルダメージが25％上昇（3ターン継続）。"
+                "クリティカル率が17.5%上昇する。戦闘開始時に『生贄の悲鳴』を3つ獲得し、自身のターン終了時に『生贄の悲鳴』を1つ獲得する。固有スキルを使用した時、『生贄の悲鳴』が3つ以上の場合、『生贄の悲鳴』を3つ消費し、3ターンの間、敵全体を凍結状態にする。さらに3ターンの間、敵の被テクニカルダメージが25%上昇する。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "광풍 눈",
-            name_en: "Blizzard",
+            name_en: "Raging Blizzard",
             name_jp: "狂雪",
             effect: "모든 적에게 공격력 100.0%의 빙결 속성 대미지를 주고, 2턴 동안 100.0%의 기본 확률로 메인 목표 적을 동결 상태에 빠뜨린다.",
             effect_en: "Deals 100.0% ATK Ice dmg to all foes, with a 100% base chance to inflict all foes with Freeze for 2 turns.",
-            effect_jp: "敵全体に攻撃力100.0%の氷結属性ダメージを与え、100.0%の確率で、2ターンの間、選択した対象を凍結状態にする。",
+            effect_jp: "敵全体に攻撃力100.0%の氷結属性ダメージを与え、75.0%の確率で、2ターンの間、選択した対象を凍結状態にする。",
             priority: 1,
             icon: "빙결광역"
         },
         highlight: {
             effect: "1명의 적에게 공격력 360.0%의 빙결 속성 대미지를 준다.",
             effect_en: "Deal 360% ATK as Ice dmg to 1 foe.",
-            effect_jp: "1体の敵に360.0% ATKの氷結属性ダメージを与える。",
+            effect_jp: "敵単体に攻撃力360.0%の氷結属性ダメージを与える。",
             priority: 0
         },
         recommendSkill : [
@@ -802,7 +814,7 @@ const personaData = {
         element: "염동",
         instinct: {
             name: "길조의 주인 III",
-            name_en: "Lord of Auspiciousness III",
+            name_en: "Auspicious Sign III",
             name_jp: "瑞兆の主 III",
             effects: [
                 "공격력이 29.1% 증가한다.",
@@ -811,16 +823,16 @@ const personaData = {
                 "『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 15% 증가하며, 자신의 스킬이 진화한다."
             ],
             effects_en: [
-                "Increases ATK by 29.1%. Works when not active: Gains 1 stack of [Four Symbols] when allies deal different elemental damage, up to 4 stacks. At the start of your turn, if you have at least 4 stacks of [Four Symbols], then consumes all [Four Symbols] to gain [Four Symbols' Power]: Increases own ATK by 30% and all allies' ATK by 15%, then evolves your signature skill for 2 turns."
+                "Increases ATK by 29.1%. Works when not active: Gains 1 stack of [Four Gods] when allies deal different elemental damage, up to 4 stacks. At the start of your turn, if you have at least 4 stacks of [Four Gods], then consumes all [Four Gods] to gain [Four Gods' Power]: Increases own ATK by 30% and party's ATK by 15%, then evolves your signature skill for 2 turns."
             ],
             effects_jp: [
-                "攻撃力が29.1％上昇。控えでも効果発動：味方が異なる属性ダメージを与える毎「四神」を1つ付与（最大4つ）。自身のターン開始時に「四神」が4つの時、すべての「四神」を消費して「四神の力」を獲得。「四神の力」：自身の攻撃力が30％上昇、味方全体の攻撃力が15％上昇、コウリュウのスキルが進化（2ターン持続）。"
+                "攻撃力が29.1%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を1つ付与する。この効果は最大4つまで累積できる。自身のターン開始時に『四神』が4つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：2ターンの間、自身の攻撃力が30％上昇し、味方全体の攻撃力が15%上昇する。また、コウリュウのスキルが進化する。"
             ],
             priority: 2 
         },
         uniqueSkill: {
             name: "심마격",
-            name_en: "Devious Strike",
+            name_en: "Spirit Strike",
             name_jp: "心魔撃",
             effect: "모든 적에게 공격력 101.4%의 염동 속성 대미지를 준다.",
             effect_en: "Deals 101.4% ATK Psy dmg to all foes. Evolved: Deals 125.0% ATK Psy dmg to all foes. There is a 35.0% base chance to inflict all foes with Dizzy for 2 turns.",
@@ -831,7 +843,7 @@ const personaData = {
         highlight: {
             effect: "모든 적에게 공격력 180.0%의 염동 속성 대미지를 준다.",
             effect_en: "Deals 180.0% ATK as Psy dmg to all foes.",
-            effect_jp: "全ての敵に180.0% ATKの念動属性ダメージを与える。",
+            effect_jp: "敵全体に攻撃力180.0%の念動属性ダメージを与える。",
             priority: 0
         },
         recommendSkill : [        
@@ -1057,7 +1069,7 @@ const personaData = {
         element: "염동",
         instinct: {
             name: "지배자의 위엄 II",
-            name_en: "Regent's Majesty II",
+            name_en: "Ruler's Majesty II",
             name_jp: "支配者の威厳 II",
             effects: [
                 "크리티컬 확률이 12.5% 증가한다.",
@@ -1068,16 +1080,16 @@ const personaData = {
                 "Increases CRIT Rate by 12.5%. After dealing damage with a Persona skill, increases foes' Psy dmg taken by 8.5% for 3 turns, up to 3 stacks. Increases Psy damage by 10% when attacking foes with this debuff."
             ],
             effects_jp: [
-                "クリティカル率が12.5%上昇。スキルを使用時、敵の被念動属性ダメージが8.5%上昇(最大3つ3ターン持続)。該当効果を保有した敵攻撃時、念動属性ダメージが10%増加する。"
+                "クリティカル率が12.5%上昇する。スキルを使用した時、3ターンの間、敵の念動属性の被ダメージを8.5%上昇する。この効果は最大3つまで累積できる。この効果が付与されている敵を攻撃する時、念動属性の与ダメージが10%上昇する。"
             ],
             priority: 2
         },
         uniqueSkill: {
             name: "정신 파동",
-            name_en: "Mental Wave",
+            name_en: "Spirit Wave",
             name_jp: "精神波",
             effect: "모든 적에게 공격력 88.0%의 염동 속성 대미지를 준다. 정신 이상 적에 대한 대미지는 20% 증가하며, 목표 적의 약점 속성이 염동일 경우에는 주는 대미지가 추가로 15% 증가한다.",
-            effect_en: "Deals 88.0% ATK Psy dmg to all foes. Increases dmg dealt by 20% if the foe is inflicted with Mental Ailments. Additionally increases dmg dealt by 15% if the foe is weak to Psy.",
+            effect_en: "Deals 88.0% ATK Psy dmg to all foes. Increases damage by 20% if the foe is inflicted with Mental Ailments. Additionally increases damage by 15% if the foe is weak to Psy.",
             effect_jp: "敵全体に攻撃力88.0%の念動属性ダメージを与える。行動異常の敵への与ダメージが20%上昇する。敵の弱点が念動の場合、さらにダメージが15%上昇する。",
             priority: 1,
             icon: "염동광역"
@@ -1105,7 +1117,7 @@ const personaData = {
         element: "주원",
         instinct: {
             name: "환생의 주원 III",
-            name_en: "Curse of Rebirth III",
+            name_en: "Undying Curse III",
             name_jp: "再生の呪い III",
             effects: [
                 "효과 명중이 34.9% 증가한다.",
@@ -1143,7 +1155,7 @@ const personaData = {
         ],
         comment : "기본 명중 80% + 명중 강화 IV 16.2% + 우중충한 하늘 16.9% + 본능 34.9% + 마이팰리스 2.3% = 150.3% 로 \'죽어 줄래?\' 상한 10%를 채울 수 있다. (우중충한 하늘 적용 여부 미확인)",
         comment_en: "Base accuracy 80% + Accuracy Enhancement IV 16.2% + Gloomy Sky 16.9% + Core Passive 34.9% + My Palace 2.3% = 150.3%, which can reach the 'Die For Me!' upper limit of 10%. (Gloomy Sky application unconfirmed)",
-        comment_jp: "基本命中80% + 命中強化IV 16.2% + 憂鬱な空16.9% + 本能34.9% + マイパレス2.3% = 150.3%で「死んでくれる？」上限10%を満たすことができる。（憂鬱な空適用可否未確認）"
+        comment_jp: "基本命中80% + 命中強化IV 16.2% + 憂鬱な空16.9% + 本能34.9% + マイパレス2.3% = 150.3%で『死んでくれる？』上限10%を満たすことができる。（憂鬱な空適用可否未確認）"
     },
     "비사문천": {
         name_en: "Bishamonten",
@@ -1153,9 +1165,15 @@ const personaData = {
         position: "반항",
         element: "핵열",
         wild_emblem_rainbow : true,
+        cost: {
+            blue: false,
+            purple: false,
+            rainbow: true,
+            coin: 300
+        },
         instinct: {
             name: "격노의 혜산 III",
-            name_en: "Furious Umbrella III",
+            name_en: "Tower of Purification III",
             name_jp: "破邪の宝塔 III",
             effects: [
                 "크리티컬 확률이 17.5% 증가한다.",
@@ -1166,17 +1184,17 @@ const personaData = {
                 "Increases CRIT Rate by 17.5%. After using a skill on enemies, increases the main target's Nuke dmg taken by 10% for 1 turn for every Elemental Ailment they have, up to 3 stacks. All other enemies gain 40% of this effect."
             ],
             effects_jp: [
-                "クリティカル率が17.5％上昇。敵にスキルを使用時、属性異常1つごとに、対象の被核熱属性ダメージが10％上昇（最大3つ、1ターン持続）。また、他の敵が該当効果の40％を獲得する。"
+                "クリティカル率が17.5%上昇する。敵にスキルを使用する時、選択した対象の敵に属性異常が1つあるごとに、1ターンの間、対象が受ける核熱ダメージが10%上昇する。この効果は最大3つまで累積できる。また、他の敵全体もこの効果の40%を受ける。"
             ],
             priority: 2
         },
         uniqueSkill: {
             name: "존왕의 항복",
-            name_en: "The King's Surrender",
+            name_en: "Imperial Purge",
             name_jp: "尊王の調伏",
             effect: "1명의 적에게 180.0%의 핵열 속성 대미지를 주고, 원소 이상 상태인 적 공격 시 해당 스킬 대미지가 25% 증가한다. 또한 아군 핵열 속성 동료의 공격력이 20% 증가하고, 2턴간 지속된다.",
-            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases dmg dealt to enemy inflicted with Elemental Ailments by 25% and increases all Nuke allies' ATK by 20% for 2 turns.",
-            effect_jp: "敵単体に180.0％攻撃力の核熱属性ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25％上昇する。また、核熱属性の味方の攻撃力が20％上昇し、2ターンの間持続する。",
+            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases damage to enemy inflicted with Elemental Ailments by 25% and increases all Nuke allies' ATK by 20% for 2 turns.",
+            effect_jp: "敵単体に180.0%攻撃力の核熱ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25%上昇する。また、核熱属性の味方の攻撃力が20％上昇し、2ターンの間持続する。",
             priority: 1,
             icon: "핵열"
         },
@@ -1204,34 +1222,34 @@ const personaData = {
         element: "전격",
         instinct: {
             name: "뇌신의 위엄 III",
-            name_en: "Thunder God's Majesty III",
+            name_en: "Thunder Lord's Majesty III",
             name_jp: "雷神の威厳 III",
             effects: [
                 "아군 괴도가 전격 속성의 페르소나 스킬/추가 효과/HIGHLIGHT 시전 시 2턴 동안 자신이 『뇌신의 위세』를 1중첩 획득한다(3회 중첩 가능).",
                 "자신이 페르소나 스킬 대미지를 주었을 때, 만약 자신의 『뇌신의 위세』가 3중첩이면 2턴 동안 전체 적이 받는 전격 속성 대미지가 12% 증가하고, 받는 전격 속성 크리티컬 효과가 20% 증가한다."
             ],
             effects_en: [
-                "Increases CRIT DMG by 34.9%. When allies use Elec Persona skill / Follow Up / HIGHLIGHT / Theurgy, gains 1 stack of [Thunder God's Might] for 2 turns, up to 3 stacks. When you deal damage with a Persona skill, if you have 3 stacks of [Thunder God's Might], increases all enemies' Elec dmg taken by 12% and Elec CRIT dmg taken by 20% for 2 turns."
+                "Increases CRIT DMG by 34.9%. When allies use Elec Persona skill / Follow Up / HIGHLIGHT / Theurgy, gains 1 stack of [Thunder Lord's Majesty] for 2 turns, up to 3 stacks. When you deal damage with a Persona skill, if you have 3 stacks of [Thunder Lord's Majesty], increases all enemies' Elec dmg taken by 12% and Elec CRIT dmg taken by 20% for 2 turns."
             ],
             effects_jp: [
-                "クリティカルダメージが34.9％上昇。味方が電撃属性スキル/意識奏功/ハイライトを使う毎、自身が「雷神の威厳」を1つ獲得（最大3つ、2ターン持続）。自身がスキルで電撃属性ダメージを与えた時、「雷神の威厳」が3つの場合、敵全体の被電撃属性ダメージが12％上昇、被電撃属性クリティカルダメージが20％上昇（2ターン継続）。"
+                "クリティカルダメージが34.9%上昇する。味方が電撃属性のスキル/意識奏功/ハイライトを使用した時、2ターンの間、自身が『雷神の威厳』を1つ獲得する。この効果は最大3つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が3つの場合、2ターンの間、敵全体の電撃属性の被ダメージが12%上昇し、電撃属性の被クリティカルダメージが20%上昇する。"
             ],
             priority: 2
         },
         uniqueSkill: {
             name: "하늘이 부른 번개",
-            name_en: "Heavenly Thunder",
-            name_jp: "召雷",
+            name_en: "Thunder Caller",
+            name_jp: "招雷",
             effect: "모든 적에게 공격력 112%의 전격 속성 대미지를 준다. 『뇌신의 위세』가 3중첩일 경우, 80%의 기본 확률로 모든 적을 감전 상태에 빠뜨린다.",
-            effect_en: "Deals 112.0% ATK Elec dmg to all foes. When [Thunder God's Might] is at 3 stacks, there is an 80% base chance to inflict all enemies with Shock for 2 turns.",
-            effect_jp: "敵全体に攻撃力112％の電撃属性ダメージを与える。「雷神の威厳」が3つの時、80％の確率で2ターンの間、敵全体を感電状態にする。",
+            effect_en: "Deals 112.0% ATK Elec dmg to all foes. When [Thunder Lord's Majesty] is at 3 stacks, there is an 80% base chance to inflict all enemies with Shock for 2 turns.",
+            effect_jp: "敵全体に攻撃力112.0%の電撃属性ダメージを与える。『雷神の威厳』が3つの時、80%の確率で2ターンの間、敵全体を感電状態にする。",
             priority: 2,
             icon: "전격광역"
         },
         highlight: {
             effect: "모든 적에게 공격력 180%의 전격 속성 대미지를 준다.",
             effect_en: "Deals 180.0% ATK as Elec dmg to all foes.",
-            effect_jp: "全ての敵に180% ATKの電撃属性ダメージを与える。",
+            effect_jp: "敵全体に攻撃力180.0%の電撃属性ダメージを与える。",
             priority: 0
         },
         recommendSkill : [
@@ -1260,7 +1278,7 @@ const personaData = {
                 "『불멸의 진리』: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 12%, 대미지가 10% 증가한다."
             ],
             effects_en: [
-                "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 12% and dmg dealt by 10%."
+                "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 12% and damage by 10%."
             ],
             effects_jp: [
                 "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、3ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が12%、ダメージが10%増加する。"
@@ -1271,9 +1289,9 @@ const personaData = {
             name: "분노한 진신",
             name_en: "Fury Incarnate",
             name_jp: "怒りの真神",
-            effect: "1명의 적에게 공격력 48.0%의 화염 속성 대미지를 4회 준다. 적군에게 「외상」을 주며 3턴 동안 지속된다. 「외상」기간 동안 목표가 화염 속성 대미지를 1회 받을 때 마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
+            effect: "1명의 적에게 공격력 48.0%의 화염 속성 대미지를 4회 준다. 적군에게 『외상』을 주며 3턴 동안 지속된다. 『외상』기간 동안 목표가 화염 속성 대미지를 1회 받을 때 마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
             effect_en: "Deals 48.0% ATK Fire dmg to 1 foe 4 times. Inflicts the foe with [Trauma] for 3 turns. During [Trauma], each time the target takes 1 hit of Fire dmg, increases their CRIT dmg taken by 3% for 2 turns, up to 8 stacks.",
-            effect_jp: "1体の敵に48.0% ATKの火炎属性ダメージを4回与える。敵軍に「外傷」を与え、3ターンの間持続する。「外傷」期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるCRT倍率が3%増加する（8回重複可能）。",
+            effect_jp: "1体の敵に48.0% ATKの火炎属性ダメージを4回与える。敵軍に『外傷』を与え、3ターンの間持続する。『外傷』期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるCRT倍率が3%増加する（8回重複可能）。",
             priority: 3,
             icon: "화염"
         },
@@ -1307,7 +1325,7 @@ const personaData = {
                 "공격력이 29.1% 증가한다.\n전투 시작 시 『불씨』를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 『불씨』 1중첩을 획득한다. 만약 화상일 경우 『불씨』를 추가로 1중첩 획득하며 3턴 동안 지속된다 (10회 중첩 가능).\n매회 스킬은 『불씨』를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시『불씨』가 4중첩 이상이면 모든 『불씨』를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1.5% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다."
             ],
             effects_en: [
-                "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases all allies' dmg dealt by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
+                "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
             ],
             effects_jp: [
                 "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
@@ -1319,15 +1337,15 @@ const personaData = {
             name_en: "Fire of Purification",
             name_jp: "浄化の火",
             effect: "3턴 동안 모든 아군 캐릭터의 공격력이 12.0% 증가하고, 자신의 공격력 500마다 0.8% 추가 증가한다(최대 6%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-            effect_en: "Increases all allies' ATK by 12% + 0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
+            effect_en: "Increases party's ATK by 12% + 0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
             effect_jp: "3ターンの間全ての味方怪盗の攻撃力が12.0%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍怪盗にペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
             priority: 3,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -1349,33 +1367,33 @@ const personaData = {
         instinct: {
             name: "아름다운 탐욕 I",
             name_en: "Gorgeous Greed I",
-            name_jp: "艶やかなる貪欲 I",
+            name_jp: "艷やかなる貪欲 I",
             effects: [
                 "효과 명중이 15% 증가한다.",
                 "화상 효과를 부여할 때 효과 명중이 40% 증가한다. 화상 효과 부여 후 2턴 동안 모든 동료의 공격력이 12% 증가한다."
             ],
             effects_en: [
-                "Increases Ailment Accuracy by 15%. Increases Ailment Accuracy by 40% when inflicting Burn. After inflicting Burn, increases all allies' ATK by 12% for 2 turns."
+                "Increases Ailment Accuracy by 15%. Increases Ailment Accuracy by 40% when inflicting Burn. After inflicting Burn, increases party's ATK by 12% for 2 turns."
             ],
             effects_jp: [
-                "状態異常命中が15%上昇し、炎上の場合は命中率が40%上昇。炎上した時、味方全体の攻撃力を12%上昇（2ターン持続）。"
+                "状態異常命中が15%上昇し、炎上の場合は命中率が40%上昇する。炎上状態にした時、2ターンの間、味方全体の攻撃力を12%上昇させる。"
             ],
             priority: 2
         },
         uniqueSkill: {
             name: "화제",
-            name_en: "Fire Offering",
+            name_en: "Bonfire Festival",
             name_jp: "火祭り",
             effect: "1명의 적에게 150.0%의 화염 속성 대미지를 주고, 50.0%의 기본 확률로 적을 화상 상태에 빠뜨린다. 필드의 화상 상태인 적이 없을 시 명중 확률이 2배가 된다.",
             effect_en: "Deals 150.0% ATK Fire dmg to 1 foe, with a 50% base chance to inflict Burn, double the chance if there are no enemies inflicted with Burn.",
-            effect_jp: "敵単体に攻撃力150.0%の火炎属性ダメージを与える。50.0%の確率で敵を炎上状態にする。炎上状態の敵がいない場合、命中率が2倍になる。",
+            effect_jp: "敵単体に150.0%の火炎属性ダメージを与える。50.0%の確率で敵を炎上状態にする。炎上状態の敵がいない場合、命中率が2倍になる。",
             priority: 1,
             icon: "화염"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 화염 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
             effect_en: "Deals 90.0% ATK Fire dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
-            effect_jp: "全ての敵に90.0% ATKの火炎属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            effect_jp: "敵全体に攻撃力90.0%の火炎属性ダメージを与える。さらに2ターンの間、被ダメージが19.6%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -1394,7 +1412,7 @@ const personaData = {
         element: "화염",
         instinct: {
             name: "악마의 주조 III",
-            name_en: "Demonic Melter III",
+            name_en: "Devil's Deliquescence III",
             name_jp: "悪魔の蕩かし III",
             effects: [
                 "공격력이 24.9% 증가한다.",
@@ -1404,13 +1422,13 @@ const personaData = {
                 "Increases ATK by 24.9%. After dealing Persona skill damage to foes inflicted with Burn, increases all enemies' Fire dmg taken by 29% for 1 turn."
             ],
             effects_jp: [
-                "攻撃力が24.9%上昇。炎上中の敵にスキルダメージ時、敵全体の被火炎属性ダメージが29%上昇(1ターン持続)"
+                "攻撃力が24.9%上昇する。スキルで炎上状態の敵にダメージを与えた時、1ターンの間、敵全体の火炎属性の被ダメージを29%上昇する。"
             ],
             priority: 2
         },
         uniqueSkill: {
             name: "극열",
-            name_en: "Overheat",
+            name_en: "Red-Hot",
             name_jp: "灼熱",
             effect: "모든 적에게 67.5%의 화염 속성 대미지를 주고, 100%의 고정 확률로 스킬 메인 목표를 화상 상태에 빠뜨린다.",
             effect_en: "Deals 67.5% ATK Fire damage to all enemies and has a 100% fixed chance of inflicting Burn to the main target for 2 turns.",
@@ -1421,7 +1439,7 @@ const personaData = {
         highlight: {
             effect: "모든 적에게 공격력 180.0%의 화염 속성 대미지를 준다.",
             effect_en: "Deals 180.0% ATK as Fire dmg to all foes.",
-            effect_jp: "全ての敵に180.0% ATKの火炎属性ダメージを与える。",
+            effect_jp: "敵全体に攻撃力180.0%の火炎属性ダメージを与える。",
             priority: 0
         },
         recommendSkill : [
@@ -1432,7 +1450,7 @@ const personaData = {
             {name : "어드바이스", priority: 0},
         ],
         comment : "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
-        comment_en: "Triggers core passive effect on enemies already in Burn state with [Overheat: Fire damage or Thunder Reign: Shock addition].",
+        comment_en: "Triggers core passive effect on enemies already in Burn state with [Red-Hot: Fire damage or Wild Thunder: Shock addition].",
         comment_jp: "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。"
     },
     "요시츠네": {
@@ -1498,14 +1516,14 @@ const personaData = {
         element: "염동",
         instinct: {
             name: "건어를 사주겠다옹 I",
-            name_en: "Have a Dried Fish I",
+            name_en: "Stockfish I",
             name_jp: "干物をどうぞニャ I",
             effects: [
                 "효과 명중이 15% 증가한다.",
                 "전투 시작 시 2턴 동안 모든 동료의 효과 명중이 10% 증가하고, 효과 명중이 가장 높은 동료의 효과 명중이 14% 증가한다."
             ],
             effects_en: [
-                "Increases Ailment Accuracy by 15%. At the start of battle, increases all allies' Ailment Accuracy by 10%, increases the Ailment Accuracy for the ally with the highest Ailment Accuracy by 14% for 2 turns."
+                "Increases Ailment Accuracy by 15%. At the start of battle, increases party's Ailment Accuracy by 10%, increases the Ailment Accuracy for the ally with the highest Ailment Accuracy by 14% for 2 turns."
             ],
             effects_jp: [
                 "状態異常命中が15%上昇。戦闘開始時、味方全体の状態異常命中を10%上昇。状態異常命中が最も高い味方の状態異常命中を14%上昇（2ターン持続）。"
@@ -1514,18 +1532,18 @@ const personaData = {
         },
         uniqueSkill: {
             name: "사냥 행동",
-            name_en: "Hunter's Code",
+            name_en: "Hunter's Instincts",
             name_jp: "狩猟本能",
             effect: "2턴 동안 동료 1명이 주는 대미지가 18.0% 증가한다. 목표 동료의 효과 명중 20%마다 1.0%의 추가 대미지를 획득한다. 최대 6.0%까지 중첩된다.",
             effect_en: "Increases 1 ally's damage dealt by 18.0% + 1.0% for every 20% Ailment Accuracy Rate the ally has to a maximum of 6.0% for 3 turns.",
-            effect_jp: "3ターンの間、味方単体の与ダメージが18.0%上昇し、対象の状態異常命中が20%ごとに、さらにダメージが1.0%上昇する。この効果は最大6.0%まで上昇する。",
+            effect_jp: "2ターンの間、味方単体の与ダメージが18.0%上昇し、対象の状態異常命中が20%ごとに、さらにダメージが1.0%上昇する。この効果は最大6.0%まで上昇する。",
             priority: 1,
             icon: "버프"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "全ての味方の与えるダメージが29.5%増加し、2ターンの間持続する。",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 0
         },
         recommendSkill : [
@@ -1586,26 +1604,32 @@ const personaData = {
         position: "지배",
         element: "축복",
         wild_emblem_rainbow : true,
+        cost: {
+            blue : false,
+            purple: false,
+            rainbow: true,
+            coin : 200
+        },
         instinct: {
             name: "인왕의 심판 III",
-            name_en: "King of Righteousness Judgement III",
-            name_jp: "王の裁き III",
+            name_en: "Verdict of Justice III",
+            name_jp: "正義の審判 III",
             effects: [
                 "공격력이 24.9% 증가한다.",
                 "자신이 스킬 시전 시, 2턴 동안 모든 동료의 축복 중첩 수에 따라 주는 축복 대미지가 4% 증가한다 (8회 중첩 가능). 다른 축복 속성 아군은 해당 효과의 50%를 획득한다. 스킬 시전 시, 축복 중첩 수가 3중첩 이상인 괴도의 공격력이 15% 증가하며 2턴 동안 지속된다."
             ],
             effects_en: [
-                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on all allies, up to 8 stacks. For allies with other Bless elements, gains 50% of the effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
+                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on party's, up to 8 stacks. For allies with other Bless elements, gains 50% of the effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
             ],
             effects_jp: [
-                "攻撃力が24.9%上昇。スキル使用時、味方の祝福重複数に応じて2ターンの間祝福ダメージが4%増加する（8重複可能）。他の祝福属性の味方は効果の50%を獲得する。スキル使用時、祝福重複数が3重複以上の味方の攻撃力が15%増加（2ターン持続）。"
+                "攻撃力が24.9%上昇する。自身がスキルを発動する時、味方全体の祝印の数に応じて(最大8つまで)、2ターンの間、祝福ダメージが4%上昇する。さらに2ターンの間、祝印の数が3つ以上の味方の攻撃力が15%上昇する。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "구원의 빛",
-            name_en: "Light of Salvation",
-            name_jp: "救いの光",
+            name_en: "Shining Salvation",
+            name_jp: "光り輝く裁済",
             effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
             effect_en: "Deals 79.4% ATK Bless dmg to all foes and gains 2 stacks of Bless. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
             effect_jp: "全ての敵に79.4% ATKの祝福属性ダメージを与え、味方全体に祝福重複2重複を付与する。自分は祝福重複ごとにスキルダメージが5%増加し、最大25%増加する。",
@@ -1636,7 +1660,7 @@ const personaData = {
         element: "핵열",
         instinct: {
             name: "태양의 비호 II",
-            name_en: "Burning Sun's Blessing II",
+            name_en: "Sun's Protection II",
             name_jp: "太陽の守護 II",
             effects: [
                 "생명이 11.6% 증가한다.",
@@ -1646,7 +1670,7 @@ const personaData = {
                 "Increases HP by 11.6%. When using a skill on allies, increases their DEF by 14.5% for 2 turns. If they are above 50% HP, increases the effect by 50%."
             ],
             effects_jp: [
-                "HPが11.6%上昇。味方にスキル使用時、その味方の防御力が14.5%上昇。HPが50%を超える場合、効果がさらに50%上昇（2ターン持続）。"
+                "HPが11.6%上昇する。味方にスキルを使用した時、2ターンの間、対象の防御力が14.5%上昇、HPが50%を超える場合、防御力がさらに50%上昇する。"
             ],
             priority: 2
         },
@@ -1655,15 +1679,15 @@ const personaData = {
             name_en: "Marakukaja",
             name_jp: "マハラクカジャ",
             effect: "모든 동료의 방어력이 16.3% 증가하고, 자신의 방어력 500마다 2.7% 추가 증가한다. 상한은 10.8%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies DEF by 16.3% + 2.7% for every 500 DEF Wonder has to a maximum of 10.8% for 3 turns",
+            effect_en: "Increase party's DEF by 16.3% + 2.7% for every 500 DEF Wonder has to a maximum of 10.8% for 3 turns",
             effect_jp: "3ターンの間、味方全体の防御力が16.3%上昇する。自身の防御力が500ごとに、味方の防御力がさらに2.7%上昇する（最大10.8%まで）。",
             priority: 1,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
-            effect_jp: "全ての味方が48.6% ATK + 1471のシールドを獲得し、2ターンの間持続する。",
+            effect_en: "Grants party's 48.6% ATK + 1471 shield for 2 turns.",
+            effect_jp: "2ターンの間、味方全体に攻撃力48.6%+1471のシールドを付与する。",
             priority: 0
         },
         recommendSkill : [
@@ -1701,14 +1725,14 @@ const personaData = {
             name_en: "Devoted Protection",
             name_jp: "献身の庇護",
             effect: "모든 동료가 공격력 25.5%+771의 실드를 획득한다. 메인 목표 동료가 임의의 실드를 보유하고 있을 때 주는 대미지가 20.4% 증가하며, 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 25.5% ATK + 771 shield. Increases the main target's dmg dealt when they have shield by 20.4% for 2 turns.",
+            effect_en: "Grants party's 25.5% ATK + 771 shield. Increases the main target's damage when they have shield by 20.4% for 2 turns.",
             effect_jp: "全ての味方が25.5% ATK + 771のシールドを獲得する。メインターゲット味方が任意のシールドを保有している時、与えるダメージが20.4%増加し、2ターンの間持続する。",
             priority: 1,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
+            effect_en: "Grants party's 48.6% ATK + 1471 shield for 2 turns.",
             effect_jp: "全ての味方が48.6% ATK + 1471のシールドを獲得し、2ターンの間持続する。",
             priority: 0
         },
@@ -1742,7 +1766,7 @@ const personaData = {
                 "When granting healing effects, the target recovers HP equal to 5% ATK for 2 turns starting next turn."
             ],
             effects_jp: [
-                "HPが8.7%上昇。回復後の2ターンの間、対象のHPを攻撃力5%で回復。"
+                "HPが8.7%上昇する。回復した時、2ターンの間、対象のHPを攻撃力5%で回復する。"
             ],
             priority: 2
         },
@@ -1758,8 +1782,8 @@ const personaData = {
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 생명을 회복한다.",
-            effect_en: "Restore HP equal to 48.6% ATK + 1471 to all allies.",
-            effect_jp: "すべての味方が攻撃力48.6%+1471の生命を回復する。",
+            effect_en: "Restore HP equal to 48.6% ATK + 1471 to party's.",
+            effect_jp: "味方全体のHPを攻撃力48.6%+1471回復する。",
             priority: 1
         },
         recommendSkill : [
@@ -1767,6 +1791,7 @@ const personaData = {
              {name : "공격 강화", priority: 1 },
              {name : "방어 강화", priority: 0 },
              {name : "대미지 면역", priority: 0 },
+            {name : "치료 촉진", priority: 0 },
         ],
         comment : "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Attack enhancement applies to healing values. (Low priority due to limited impact)",
@@ -1781,7 +1806,7 @@ const personaData = {
         element: "핵열",
         instinct: {
             name: "달의 요괴의 소란 III",
-            name_en: "Fairy Queen's Disturbance III",
+            name_en: "Fae Revelry III",
             name_jp: "妖精乱舞 III",
             effects: [
                 "주는 치료 효과가 18% 증가한다.",
@@ -1792,24 +1817,24 @@ const personaData = {
                 "After healing with a Persona skill, there is a 77.5% base chance to inflict 1 random enemy with a random Elemental Ailment and decreases their DEF by 9% for 2 turns."
             ],
             effects_jp: [
-                "回復量が18%上昇。スキルで回復した後、77.5%の確率で、ランダムな敵1体を属性異常にし、防御力が9%減少する(2ターン持続)。"
+                "回復量が18%上昇する。スキルで回復した時、77.5%の確率で、2ターンの間、ランダムな敵1体を属性異常にする。さらにその敵の防御力を9%低下させる。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "격정과 진정",
-            name_en: "Invigorating Caress",
+            name_en: "Reassuring Embrace",
             name_jp: "奮い立つ抱擁",
             effect: "모든 동료가 공격력 18.0%+544의 생명을 회복하며, 생명이 50% 미만인 동료에게 주는 치료 효과가 25% 증가한다. 또한 모든 동료가 SP 4포인트를 회복한다.",
-            effect_en: "Restores 18.0% ATK + 544 HP to all allies. Increases Healing Effect by 25% to allies under 50% HP. Restores 4 SP to all allies.",
-            effect_jp: "味方全体のHPを攻撃力18.0%＋544回復し、HP50%未満の味方への回復量が25%上昇する。さらに味方全体のSPを4回復する。",
+            effect_en: "Restores 18.0% ATK + 544 HP to party's. Increases Healing Effect by 25% to allies under 50% HP. Restores 4 SP to party's.",
+            effect_jp: "味方全体のHPを攻撃力18.0%+544回復し、HP50%未満の味方への回復量が25%上昇する。さらに味方全体のSPを4回復する。",
             priority: 2,
             icon: "치료광역"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 생명을 회복한다.",
-            effect_en: "Restore HP equal to 48.6% ATK + 1471 HP to all allies.",
-            effect_jp: "すべての味方が攻撃力48.6%+1471の生命を回復する。",
+            effect_en: "Restore HP equal to 48.6% ATK + 1471 HP to party's.",
+            effect_jp: "味方全体のHPを攻撃力48.6%+1471回復する。",
             priority: 1
         },
         recommendSkill : [
@@ -1817,6 +1842,7 @@ const personaData = {
             {name : "공격 강화", priority: 1 },
             {name : "방어 강화", priority: 0 },
             {name : "대미지 면역", priority: 0 },
+            {name : "치료 촉진", priority: 0 },
         ],
         comment : "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Attack enhancement applies to healing values. (Low priority due to limited impact)",
@@ -1831,7 +1857,7 @@ const personaData = {
         element: "염동",
         instinct: {
             name: "지모신의 비호 III",
-            name_en: "Mother Earth's Protection III",
+            name_en: "Mother Earth's Support III",
             name_jp: "地母神の庇護 III",
             effects: [
                 "생명이 21.2% 증가한다.",
@@ -1842,7 +1868,7 @@ const personaData = {
                 "After using Healing skills, increases the healed allies' ATK by 16% and DEF by 10.5% for 1 turn."
             ],
             effects_jp: [
-                "HPが21.2%上昇。回復した後、対象の攻撃力が16%上昇し、防御力が10.5%上昇(1ターン持続)。"
+                "HPが21.2%上昇する。回復した時、1ターンの間、回復を受けた味方の攻撃力が16%上昇し、防御力が10.5%上昇する。"
             ],
             priority: 2
         },
@@ -1858,8 +1884,8 @@ const personaData = {
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 생명을 회복한다.",
-            effect_en: "Restore HP equal to 48.6% ATK + 1471 HP to all allies.",
-            effect_jp: "すべての味方が攻撃力48.6%+1471の生命を回復する。",
+            effect_en: "Restore HP equal to 48.6% ATK + 1471 HP to party's.",
+            effect_jp: "味方全体のHPを攻撃力48.6%+1471回復する。",
             priority: 1
         },
         recommendSkill : [
@@ -1867,10 +1893,60 @@ const personaData = {
             {name : "공격 강화", priority: 1 },
             {name : "방어 강화", priority: 0 },
             {name : "대미지 면역", priority: 0 },
+            {name : "치료 촉진", priority: 0 },
         ],
         comment : "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Core passive effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
         comment_jp: "ハイライトによる治療にも本能効果が発動する。攻撃強化は治療数値に適用される。（影響力が高くないため優先順位は低い）"
+    },
+    "사라스바티": {
+        name_en: "Sarasvati",
+        name_jp: "サラスバティ",
+        grade : "5",
+        star : "5",
+        position: "구원",
+        element: "축복",
+        instinct: {
+            name: "지혜의 메아리 II",
+            name_en: "Echoes of Purity II",
+            name_jp: "浄慧の響き II",
+            effects: [
+                "주는 치료 효과가 15%로 증가한다.",
+                "치료 효과를 부여한 후, 현재 생명 백분율이 가장 낮은 동료가 자신의 공격력 27%에 해당하는 추가 회복을 획득한다. 생명이 50% 미만일 경우 해당 효과가 15% 증가한다."
+            ],
+            effects_en: [
+                "Increases Healing Effect by 15%.",
+                "After using Healing skills, the ally with the lowest HP recovers an additional amount equal to 27% of their ATK. If they are below 50% HP, the effect is increased by 15%."
+            ],
+            effects_jp: [
+                "HP回復量が15%上昇。治癒効果を付与した後、現在の生命率が最も低い仲間が自分の攻撃力の27%に相当する追加回復を獲得する。ライフが50%未満の場合、その効果は15%増加する。"
+            ],
+            priority: 2
+        },
+        uniqueSkill: {
+            name: "어머니의 음송",
+            name_en: "Mother Goddess' Chant",
+            name_jp: "母神の吟唱",
+            effect: "2턴 동안 모든 동료가 공격력 19.2%+581의 생명을 회복하고, 모든 동료가 받는 대미지가 8.5% 감소한다.",
+            effect_en: "Restore HP equal to 19.2% ATK + 581 to party's for 2 turns and decreases damage received by 8.5% for party's.",
+            effect_jp: "味方全体のHPを攻撃力19.2%+581回復する。さらに2ターンの間、味方全体の被ダメージを8.5%低下させる。",
+            priority: 1,
+            icon: "치료광역"
+        },
+        highlight: {
+            effect: "모든 동료가 공격력 48.6%+1471의 생명을 회복한다.",
+            effect_en: "Restore HP equal to 48.6% ATK + 1471 HP to party's.",
+            effect_jp: "味方全体のHPを攻撃力48.6%+1471回復する。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "치료 강화", priority: 3 },
+            {name : "공격 강화", priority: 1 },
+            {name : "방어 강화", priority: 0 },
+            {name : "대미지 면역", priority: 0 },
+            {name : "치료 촉진", priority: 0 },
+        ],
+        
     },
     "지크프리트": {
         name_en: "Siegfried",
@@ -1906,9 +1982,9 @@ const personaData = {
             name: "용을 베는 자태",
             name_en: "Dragon Slayer",
             name_jp: "竜を斬る姿態",
-            effect: "모든 적에게 공격력 95.0%의 물리 속성 대미지를 준다. 만약 자신이 「용혈」 상태를 보유하지 않은 경우 자신에게 「용혈」을 부여한다. 만약 자신이 「용혈」 상태이면,「용혈」 상태를 강화하고 지속 시간을 갱신한다.",
+            effect: "모든 적에게 공격력 95.0%의 물리 속성 대미지를 준다. 만약 자신이 『용혈』 상태를 보유하지 않은 경우 자신에게 『용혈』을 부여한다. 만약 자신이 『용혈』 상태이면,『용혈』 상태를 강화하고 지속 시간을 갱신한다.",
             effect_en: "Deals 95.0% ATK Phys dmg to all enemies. If you don't have Dragon Blood, gain Dragon Blood. If you have Dragon Blood, boost Dragon Blood and refresh its duration.",
-            effect_jp: "すべての敵に攻撃力95.0%の物理属性ダメージを与える。もし自分が「竜血」状態を保有していない場合、自分に「竜血」を付与する。もし自分が「竜血」状態なら、「竜血」状態を強化し持続時間を更新する。",
+            effect_jp: "すべての敵に攻撃力95.0%の物理属性ダメージを与える。もし自分が『竜血』状態を保有していない場合、自分に『竜血』を付与する。もし自分が『竜血』状態なら、『竜血』状態を強化し持続時間を更新する。",
             priority: 0,
             icon: "물리광역"
         },
@@ -1927,7 +2003,7 @@ const personaData = {
 
     },
     "쿠시나다히메": {
-        name_en: "Kushinada-Hime",
+        name_en: "Kushinada",
         name_jp: "クシナダヒメ",
         grade: "5",
         star: "4",
@@ -1935,17 +2011,17 @@ const personaData = {
         element: "빙결",
         instinct: {
             name: "다정한 보살핌 II",
-            name_en: "Intimate Care II",
-            name_jp: "慈愛のささやき II",
+            name_en: "Beloved Princess II",
+            name_jp: "愛されし姫 II",
             effects: [
                 "효과 명중이 21.2% 증가한다.",
                 "버프 스킬을 1개 시전할 때마다 모든 괴도의 공격력이 8.5% 영구 증가한다. 최대 3회 중첩된다."
             ],
             effects_en: [
-                "Increases Ailment Accuracy by 21.2%. After using a buff skill, permanently increases all allies' ATK by 8.5%, up to 3 stacks."
+                "Increases Ailment Accuracy by 21.2%. After using a buff skill, permanently increases party's ATK by 8.5%, up to 3 stacks."
             ],
             effects_jp: [
-                "状態異常命中が21.2%上昇。バフスキルを1つ使用するごとに、味方全体の攻撃力が8.5%上昇（最大3回まで）。"
+                "状態異常命中が21.2%上昇する。強化スキルを1つ使用するごとに、味方全体の攻撃力が永続的に8.5%上昇する。最大3つまで累積できる。"
             ],
             priority: 1
         },
@@ -1954,15 +2030,15 @@ const personaData = {
             name_en: "Matarukaja",
             name_jp: "マハタルカジャ",
             effect: "모든 동료의 공격력이 10.9% 증가하고, 자신의 공격력 500포인트마다 0.9% 추가 증가한다. 상한은 7.2%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase all allies' ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
+            effect_en: "Increase party's ATK by 10.9% + 0.9% for every 500 ATK Wonder has to a maximum of 7.2% for 3 turns.",
             effect_jp: "3ターンの間、味方全体の攻撃力が10.9%上昇する。自身の攻撃力500ごとに、味方の攻撃力がさらに0.9%上昇する（最大7.2%まで）。",
             priority: 0,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increases all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "すべての味方の与えるダメージが29.5%増加し2ターンの間持続する。",
+            effect_en: "Increases party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -1983,7 +2059,7 @@ const personaData = {
         element: "빙결",
         instinct: {
             name: "감미로운 노랫소리 I",
-            name_en: "Gentle Chant I",
+            name_en: "Loving Whisper I",
             name_jp: "慈愛のささやき I",
             effects: [
                 "방어력이 8.7% 중가한다. 동료를 목표로 스킬 시전 시 2턴 동안 동료의 방어력이 15.4% 증가한다."
@@ -1992,7 +2068,7 @@ const personaData = {
                 "Increases DEF by 8.7%. When using a skill on allies, increases their DEF by 15.4% for 2 turns."
             ],
             effects_jp: [
-                "防御力が8.7%上昇。味方にスキルを使用後、その味方の防御力を15.4%上昇（2ターン持続）。"
+                "防御力が8.7%上昇する。味方にスキルを使用した時、2ターンの間、対象の防御力を15.4%上昇させる。"
             ],
             priority: 1
         },
@@ -2008,8 +2084,8 @@ const personaData = {
         },
         highlight: {
             effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increases all allies dmg dealt by 29.5% for 2 turns.",
-            effect_jp: "すべての味方の与えるダメージが29.5%増加し2ターンの間持続する。",
+            effect_en: "Increases party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
             priority: 0
         },
         recommendSkill : [
@@ -2018,7 +2094,7 @@ const personaData = {
              {name : "민첩의 마음가짐", priority: 1},
         ]
     },
-    "킹프로스트": {
+    "킹 프로스트": {
         name_en: "King Frost",
         name_jp: "キングフロスト",
         grade: "7",
@@ -2028,7 +2104,7 @@ const personaData = {
         wild_emblem_rainbow : true,
         instinct: {
             name: "얼음의 심판 III",
-            name_en: "Frozen Adjudication III",
+            name_en: "Tundra's Judgment III",
             name_jp: "氷雪の裁き III",
             effects: [
                 "방어력이 37.4% 증가한다.",
@@ -2039,24 +2115,24 @@ const personaData = {
                 "After giving Shield to allies, increases the main target's DEF by 25% and Ice dmg bonus by 15% for 2 turns."
             ],
             effects_jp: [
-                "防御力が37.4％上昇。シールドを付与した対象に防御力25％上昇、氷結属性与ダメージ15％上昇を付与（2ターン持続）。"
+                "防御力が37.4%上昇する。味方にシールドを付与する時、2ターンの間、選択した対象の防御力が25%上昇し、氷結属性の与ダメージが15%上昇する。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "눈의 여왕의 비호",
-            name_en: "Snow Aegis",
+            name_en: "Snow King's Protection",
             name_jp: "雪王の加護",
             effect: "모든 동료가 공격력 22.8%+690의 실드를 획득하며, 실드 기간 동안 방어력이 30% 증가한다. 효과는 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 22.8% ATK + 690 shield for 2 turns. When the Shield is active increases DEF by 30%.",
-            effect_jp: "2ターンの間、味方全体に攻撃力22.8％+690のシールドを付与する。シールドが存在する間、防御力が30％上昇する。",
+            effect_en: "Grants party's 22.8% ATK + 690 shield for 2 turns. When the Shield is active increases DEF by 30%.",
+            effect_jp: "2ターンの間、味方全体に攻撃力22.8%+690のシールドを付与する。シールドが存在する間、防御力が30%上昇する。",
             priority: 1,
             icon: "버프광역"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
-            effect_jp: "すべての味方が攻撃力48.6%+1471のシールドを獲得し2ターンの間持続する。",
+            effect_en: "Grants party's 48.6% ATK + 1471 shield for 2 turns.",
+            effect_jp: "2ターンの間、味方全体に攻撃力48.6%+1471のシールドを付与する。",
             priority: 0
         },
         recommendSkill : [
@@ -2098,9 +2174,9 @@ const personaData = {
             name: "살육 유도",
             name_en: "Carnage Allure",
             name_jp: "殺戮誘導",
-            effect: "모든 적에게 공격력 25.0%의 만능 대미지를 주고, 그 후 공격력 37.5%의 주원 대미지를 준다. 스킬이 「얼음」「폭풍」「저주」형태로 진화 가능: 모든 적에게 공격력 25.0%의 만능 대미지를 주고, 그 후 공격력 101.0%의 (빙결, 질풍 또는 주원) 대미지를 준다.",
+            effect: "모든 적에게 공격력 25.0%의 만능 대미지를 주고, 그 후 공격력 37.5%의 주원 대미지를 준다. 스킬이 『얼음』『폭풍』『저주』형태로 진화 가능: 모든 적에게 공격력 25.0%의 만능 대미지를 주고, 그 후 공격력 101.0%의 (빙결, 질풍 또는 주원) 대미지를 준다.",
             effect_en: "Deals 25.0% ATK Almighty dmg to all foes, then deals 37.5% ATK Curse dmg. Skill can evolves into [Ice] [Wind] [Curse] form: Deals 25.0% ATK Almighty dmg, then deals 101.0% ATK (Ice, Wind, Curse) dmg.",
-            effect_jp: "すべての敵に攻撃力25.0%の万能ダメージを与え、その後攻撃力37.5%の呪怨ダメージを与える。スキルが「氷」「嵐」「呪い」形態に進化可能：すべての敵に攻撃力25.0%の万能ダメージを与え、その後攻撃力101.0%の（氷結、疾風または呪怨）ダメージを与える。",
+            effect_jp: "すべての敵に攻撃力25.0%の万能ダメージを与え、その後攻撃力37.5%の呪怨ダメージを与える。スキルが『氷』『嵐』『呪い』形態に進化可能：すべての敵に攻撃力25.0%の万能ダメージを与え、その後攻撃力101.0%の（氷結、疾風または呪怨）ダメージを与える。",
             priority: 0,
             icon: "만능광역"
         },
@@ -2127,7 +2203,7 @@ const personaData = {
         element: "주원",
         instinct: {
             name: "죽음의 심판관 III",
-            name_en: "Judge of Souls III",
+            name_en: "Arbiter of Souls III",
             name_jp: "ソウルジャッジ III",
             effects: [
                 "공격력이 29.1% 증가한다.",
@@ -2148,10 +2224,10 @@ const personaData = {
         },
         uniqueSkill: {
             name: "왕생의 심판",
-            name_en: "Afterlife Judgement",
+            name_en: "Underworld Judgement",
             name_jp: "冥府の審判",
             effect: "1명의 적에게 공격력 165.0%의 주원 속성 대미지를 주고, 스킬 시전 시 자신이 가진 축복 효과 또는 목표가 가진 주원 효과에 따라 해당 스킬이 주는 대미지가 10% 증가하며 최대 4회까지 중첩된다.",
-            effect_en: "Deals 165.0% ATK Curse dmg to 1 foe. When using this skill, each stack of Bless on you or each stack of Curse on the target increases DMG Dealt by 10%, up to 4 stacks.",
+            effect_en: "Deals 165.0% ATK Curse dmg to 1 foe. When using this skill, each stack of Bless on you or each stack of Curse on the target increases damage by 10%, up to 4 stacks.",
             effect_jp: "敵単体に攻撃力165.0%の呪怨属性ダメージを与える。スキルを使用する時、自身の祝印、または対象の呪印1つ毎に、このスキルの与ダメージが10%上昇する。この効果は最大4つまで累積できる。",
             priority: 0,
             icon: "주원"
@@ -2191,24 +2267,24 @@ const personaData = {
                 "After attacking foes with a Persona skill, there is a 60% fixed chance to inflict 1 stack of Curse on the main target. Immediately triggers all of the main target's Curse stacks."
             ],
             effects_jp: [
-                "攻撃力が17.7%上昇。スキルで敵を攻撃した後、60%の確率で選択した対象に呪印を1つ付与。呪印ダメージを即時発生。"
+                "攻撃力が17.7%上昇する。スキルで敵を攻撃した後、60%の確率で選択した対象に呪印を1つ付与する。その後、呪印ダメージを即時発生させる。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "마하에이가온",
-            name_en: "Maeiga",
+            name_en: "Maeigaon",
             name_jp: "マハエイガオン",
             effect: "모든 적에게 공격력 66.5%의 주원 속성 대미지를 주고, 일정 확률로 적이 주원 효과 1개를 획득한다.",
             effect_en: "Deals 66.5% ATK Curse dmg to all foes and has a chance to inflict 1 stack of Curse.",
-            effect_jp: "敵全体に攻撃力66.5%の呪怨属性ダメージを与える。一定の確率で敵に1つの呪印を付与する。",
+            effect_jp: "敵全体に攻撃力45.5%の呪怨属性ダメージを与える。一定の確率で敵に1つの『呪印』を付与する。",
             priority: 0,
             icon: "주원광역"
         },
         highlight: {
             effect: "모든 적에게 공격력 180.0%의 주원 속성 대미지를 준다.",
             effect_en: "Deals 180.0% ATK as Curse dmg to all foes.",
-            effect_jp: "すべての敵に攻撃力180.0%の呪怨属性ダメージを与える。",
+            effect_jp: "敵全体に攻撃力180.0%の呪怨属性ダメージを与える。",
             priority: 0
         },
         recommendSkill : [
@@ -2233,7 +2309,7 @@ const personaData = {
         element: "빙결",
         instinct: {
             name: "한파의 나태함 II",
-            name_en: "Cold Wave of Sloth II",
+            name_en: "Ice the Slackers II",
             name_jp: "怠惰への寒波 II",
             effects: [
                 "효과저항이 17% 증가한다.",
@@ -2244,7 +2320,7 @@ const personaData = {
                 "After using a Persona skill on enemies, increases the main target's Ice dmg taken by 14.4% for 2 turns. If they are under 50% HP, additionally increases effect by 40%."
             ],
             effects_jp: [
-                "状態異常抵抗が17％上昇。敵にスキルを使用時、選択した対象の被氷結属性ダメージが14.4%上昇（2ターン持続）。対象のHPが50%未満の時、効果がさらに40%上昇。"
+                "状態異常抵抗が17%上昇する。敵にスキルを使用した時、2ターンの間、選択した対象の氷結属性の被ダメージが14.4%上昇し、対象のHPが50%未満の時、効果がさらに40%上昇する。"
             ],
             priority: 1
         },
@@ -2262,7 +2338,7 @@ const personaData = {
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 빙결 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
             effect_en: "Deals 90.0% ATK Ice dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
-            effect_jp: "すべての敵に攻撃力90.0%の氷結属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            effect_jp: "敵全体に攻撃力90.0%の氷結属性ダメージを与える。さらに2ターンの間、被ダメージが19.6%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -2283,7 +2359,7 @@ const personaData = {
         element: "화염",
         instinct: {
             name: "태양의 분노 III",
-            name_en: "Sun's Wrath III",
+            name_en: "Servant of the Sun III",
             name_jp: "太陽神の使い III",
             effects: [
                 "공격력이 17.5% 증가한다.",
@@ -2291,16 +2367,16 @@ const personaData = {
             ],
             effects_en: [
                 "Increases ATK by 17.5%.",
-                "When you don't have any debuffs, increases ATK by 30% and Fire dmg dealt by 16.5%."
+                "When you don't have any debuffs, increases ATK by 30% and Fire damage by 16.5%."
             ],
             effects_jp: [
-                "攻撃力が17.5%上昇。自身が弱体中でない場合、攻撃力が30%上昇し、火炎属性ダメージが16.5%上昇"
+                "攻撃力が17.5%上昇する。自身が弱体状態ではない場合、攻撃力が30%上昇し、火炎属性の与ダメージが16.5%上昇する。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "마하라기다인",
-            name_en: "Maragion",
+            name_en: "Maragidyne",
             name_jp: "マハラギダイン",
             effect: "모든 적에게 공격력 60.8%의 화염 속성 대미지를 주고, 33.8%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
             effect_en: "Deals 60.8% ATK Fire dmg to all foes and has a 33.8% chance of inflicting Burn for 2 turns.",
@@ -2311,7 +2387,7 @@ const personaData = {
         highlight: {
             effect: "모든 적에게 공격력 180.0%의 화염 속성 대미지를 준다.",
             effect_en: "Deals 180.0% ATK as Fire dmg to all foes.",
-            effect_jp: "すべての敵に攻撃力180.0%の火炎属性ダメージを与える。",
+            effect_jp: "敵全体に攻撃力180.0%の火炎属性ダメージを与える。",
             priority: 1
         },
         recommendSkill : [
@@ -2334,7 +2410,7 @@ const personaData = {
         element: "물리",
         instinct: {
             name: "코끼리의 응시 II",
-            name_en: "Elephant's Gaze II",
+            name_en: "Demonic Eyes II",
             name_jp: "魔象の邪眼 II",
             effects: [
                 "효과저항이 17.4% 증가한다.",
@@ -2342,10 +2418,10 @@ const personaData = {
             ],
             effects_en: [
                 "Increases Effect Resistance by 17.4%.",
-                "All allies take 20% less damage from enemies with any debuffs."
+                "party's take 20% less damage from enemies with any debuffs."
             ],
             effects_jp: [
-                "効果抵抗が17.4%上昇。デバフ効果を持つ敵から受けるダメージが20%減少。"
+                "状態異常抵抗が17.4%上昇する。味方全体の、弱体状態の敵から受けるダメージが20%低下する。"
             ],
             priority: 2
         },
@@ -2362,7 +2438,7 @@ const personaData = {
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
+            effect_en: "Grants party's 48.6% ATK + 1471 shield for 2 turns.",
             effect_jp: "すべての味方が攻撃力48.6%+1471のシールドを獲得し2ターンの間持続する。",
             priority: 0
         },
@@ -2387,7 +2463,7 @@ const personaData = {
             name_jp: "咆哮する猛犬 III",
             effects: [
                 "크리티컬 확률이 17.5% 중가한다.",
-                "크리티컬 시 적에게 「치명덫」을 추가하고, 다음 고유 스킬 공격으로 표식을 폭발시켜 스킬 대미지가 공격력의 87%만큼 추가 증가한다. 표식 폭발 시 낮은 확률로 즉사 효과가 발동된다."
+                "크리티컬 시 적에게 『치명덫』을 추가하고, 다음 고유 스킬 공격으로 표식을 폭발시켜 스킬 대미지가 공격력의 87%만큼 추가 증가한다. 표식 폭발 시 낮은 확률로 즉사 효과가 발동된다."
             ],
             effects_en: [
                 "Increases CRIT Rate by 17.5%.",
@@ -2395,7 +2471,7 @@ const personaData = {
             ],
             effects_jp: [
                 "CRT発生率が17.5%増加する。",
-                "クリティカル時敵に「致命の罠」を追加し、次の固有スキル攻撃で標識を爆発させてスキルダメージが攻撃力の87%分追加増加する。標識爆発時低い確率で即死効果が発動される。"
+                "クリティカル時敵に『致命の罠』を追加し、次の固有スキル攻撃で標識を爆発させてスキルダメージが攻撃力の87%分追加増加する。標識爆発時低い確率で即死効果が発動される。"
             ],
             priority: 0
         },
@@ -2432,8 +2508,8 @@ const personaData = {
         element: "화염",
         instinct: {
             name: "열광적인 점쟁이 I",
-            name_en: "Fanatic Diviner I",
-            name_jp: "熱狂の占い師 I",
+            name_en: "Fanatical Prophet I",
+            name_jp: "熟狂の予言者 I",
             effects: [
                 "효과 명중이 7% 증가한다.",
                 "적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 8.2% 증가한다."
@@ -2443,14 +2519,14 @@ const personaData = {
                 "When an enemy uses a skill, increases the main target's Fire dmg taken by 8.2% for 2 turns."
             ],
             effects_jp: [
-                "状態異常命中が7%上昇。敵がスキルを使用する時、選択した対象の火炎属性ダメージが8.2%上昇（2ターン持続）。"
+                "状態異常命中が7%上昇する。敵にスキルを使用した時、2ターンの間、対象の火炎属性の被ダメージを8.2%上昇する。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "화염 내성 제거",
             name_en: "Fire Break",
-            name_jp: "火炎耐性解除",
+            name_jp: "火炎ガードキル",
             effect: "2턴 동안 적 1명의 화염 내성을 제거한다.",
             effect_en: "Suppress innate Fire resistances of 1 foe for 2 turns.",
             effect_jp: "1体の敵の火炎耐性を2ターンの間解除する。",
@@ -2479,8 +2555,8 @@ const personaData = {
         element: "질풍",
         instinct: {
             name: "파공의 금빛 날개 II",
-            name_en: "Soaring Golden Wings II",
-            name_jp: "風神の金翼 II",
+            name_en: "Golden Wings II",
+            name_jp: "破空の金翼 II",
             effects: [
                 "효과 명중이 14% 증가한다.",
                 "질풍 속성 페르소나 스킬 시전 후 2턴 동안 스킬 목표의 방어력이 20% 감소한다."
@@ -2490,14 +2566,14 @@ const personaData = {
                 "After using a Wind-type Persona skill, decreases the main target's DEF by 20% for 2 turns."
             ],
             effects_jp: [
-                "状態異常命中が14%上昇。風属性スキルを使用した後、選択した対象の防御力が20%低下（2ターン持続）。"
+                "状態異常命中が14%上昇する。疾風属性のスキルを使用した時、2ターンの間、対象の防御力を20%低下させる。"
             ],
             priority: 0
         },
         uniqueSkill: { 
             name: "질풍 내성 제거",
             name_en: "Wind Break",
-            name_jp: "風属性耐性解除",
+            name_jp: "疾風ガードキル",
             effect: "2턴 동안 적 1명의 질풍 내성을 제거한다.",
             effect_en: "Suppress innate Wind resistances of 1 foe for 2 turns.",
             effect_jp: "1体の敵の風属性耐性を2ターンの間解除する。",
@@ -2508,7 +2584,7 @@ const personaData = {
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 질풍 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
             effect_en: "Deals 90.0% ATK as Wind dmg to all foes and increase their dmg taken by 19.6% for 2 turns.",
-            effect_jp: "すべての敵に攻撃力90.0%の風属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            effect_jp: "敵全体に攻撃力90.0%の疾風属性ダメージを与える。さらに2ターンの間、被ダメージが19.6%上昇する。",
             priority: 1
         },
         recommendSkill : [
@@ -2534,10 +2610,10 @@ const personaData = {
             ],
             effects_en: [
                 "Increases DEF by 21.2%.",
-                "All allies take 23% less damage from Weakness dmg."
+                "party's take 23% less damage from Weakness dmg."
             ],
             effects_jp: [
-                "防御力が21.2%上昇。味方全体の弱点被ダメージが18%低下。"
+                "防御力が21.2%上昇する。味方全体の弱点被ダメージを23%低下させる。"
             ],
             priority: 0
         },
@@ -2554,7 +2630,7 @@ const personaData = {
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
-            effect_en: "Grants all allies 48.6% ATK + 1471 shield for 2 turns.",
+            effect_en: "Grants party's 48.6% ATK + 1471 shield for 2 turns.",
             effect_jp: "すべての味方が攻撃力48.6%+1471のシールドを獲得し2ターンの間持続する。",
             priority: 0
         },

@@ -89,7 +89,7 @@ button { cursor: pointer; border: none; transition: 0.5s; }
 
 .filter-toggle-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-.filter-toggle-btn img { width: 24px; height: 24px; }
+.filter-toggle-btn img { width: 20px; height: 20px; }
 
 .filter-reset-btn { margin-right: auto; background: none; border: none; cursor: pointer; padding: 0px; }
 

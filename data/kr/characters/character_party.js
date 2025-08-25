@@ -516,7 +516,7 @@ const recommendParty = {
             },
             {
                 type: "DEF/SHIELD",
-                list: ["산달폰", "미트라스", "아프사라스", "킹프로스트"]
+                list: ["산달폰", "미트라스", "아프사라스", "킹 프로스트"]
             }
         ],
         "party": [

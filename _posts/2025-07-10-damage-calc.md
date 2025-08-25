@@ -286,7 +286,7 @@ translations:
 
 <br>
 
-### ⓒ-4 풍습(Winded)
+### ⓒ-4 풍습(Windswept)
 
 > 적 방어 값 × [방어 계수] × (100% - 풍습 12%)
 > 
@@ -489,8 +489,8 @@ A more detailed formula is as follows:
 
 × ⓑ {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
 
-× ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%)} 
-÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%) + 1400}
+× ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Windswept 12%)} 
+÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Windswept 12%) + 1400}
 
 × ⓓ {Critical DMG(Mult) (when Critical occurs) or Stable Domain}
 
@@ -642,7 +642,7 @@ A notable example is Yaoring's Skill 3. Since it's tied to the enemy, this attri
 
 # ⓒ Enemy Defense
 
-> 1 - {Enemy Defense Value × [Defense Coefficient] × (100% - Winded 12%)} ÷ {Enemy Defense Value × [Defense Coefficient] × (100% - Winded 12%) + 1400}
+> 1 - {Enemy Defense Value × [Defense Coefficient] × (100% - Windswept 12%)} ÷ {Enemy Defense Value × [Defense Coefficient] × (100% - Windswept 12%) + 1400}
 
 > ※ Defense Coefficient = (100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction
 >
@@ -731,9 +731,9 @@ The defense coefficient from defense reduction cannot go below 0.
 
 <br>
 
-### ⓒ-4 Winded
+### ⓒ-4 Windswept
 
-> Enemy Defense Value × [Defense Coefficient] × (100% - Winded 12%)
+> Enemy Defense Value × [Defense Coefficient] × (100% - Windswept 12%)
 > 
 
 As a status ailment, it multiplies 88% to the result after all defense coefficients are calculated.
@@ -742,7 +742,7 @@ It has the characteristic of becoming worthless if you reduce the defense coeffi
 
 ![damage.png](/apps/article/asset/damage10.png)
 
-Generally, Personas with defense reduction effects often require Winded.
+Generally, Personas with defense reduction effects often require Windswept.
 
 ![damage.png](/apps/article/asset/damage11.png)
 
@@ -824,8 +824,8 @@ After all values are calculated, a random value between 0.95 ~ 1.05 is multiplie
 
 × ⓑ {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
 
-× ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%)} 
-÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Winded 12%) + 1400}
+× ⓒ 1 - {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Windswept 12%)} 
+÷ {Enemy Defense Value × [(100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction] × (100% - Windswept 12%) + 1400}
 
 × ⓓ {Critical DMG(Mult) (when Critical occurs) or Stable Domain}
 
@@ -855,7 +855,7 @@ The following are the results assuming each summed value:
 - ⓒ Dominion Additional Defense Coefficient: 158.3%
 - ⓒ Pierce: 10%
 - ⓒ Defense Reduction: 80%
-- ⓒ Winded Status: YES 12%
+- ⓒ Windswept Status: YES 12%
 - ⓓ Critical Rate: 40%
 - ⓓ Critical DMG(Mult): 220%
 - ⓔ Skill Coefficient: 120%

@@ -51,7 +51,7 @@
 
 .filter-toggle-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-.filter-toggle-btn img { width: 24px; height: 24px; }
+.filter-toggle-btn img { width: 20px; height: 20px; }
 
 .filter-reset-btn { margin-right: auto; background: none; border: none; cursor: pointer; padding: 0px; }
 
@@ -112,7 +112,7 @@
     .persona-cards {justify-content: space-between;padding: 10px;gap: 2vh 2vw;}
     .position-container {width: 32px;height: 32px;}
     .wild-emblem {width: 20%;}
-    .filter-toggle-btn img {width: 24px;height: 24px;}
+    .filter-toggle-btn img {width: 20px;height: 20px;}
 }
 
 body { caret-color: transparent; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; overflow-y: overlay; /* 모던 브라우저에서 콘텐츠 위에 스크롤바 표시 */
@@ -180,7 +180,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .persona-img[src*="지크프리트.webp"] {  transform: translateX(7%) translateY(0%) scale(0.95);}
 
-.persona-img[src*="킹프로스트.webp"] {  transform: translateX(0%) translateY(-5%) scale(0.95);}
+.persona-img[src*="킹 프로스트.webp"] {  transform: translateX(0%) translateY(-5%) scale(0.95);}
 
 .persona-img[src*="릴리스.webp"] {  transform: translateX(-12%) translateY(10%) scale(1.1);}
 

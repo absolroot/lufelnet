@@ -449,7 +449,7 @@ const personaSkillList = {
     },
     "엘 지하드": {
         name_jp: "エル・ジハード",
-        name_en: "Thunder Reign",
+        name_en: "Wild Thunder",
         description: "모든 적에게 공격력 64.8%의 전격 속성 대미지를 주고, 36.0%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
         description_jp: "敵全体に攻撃力64.8％の電撃属性ダメージを与える。36.0％の確率で敵を2ターンの間、感電状態にする。",
         description_en: "Deals 64.8% ATK Electric dmg to all foes and has a 36.0% chance of inflicting Shock for 2 turns.",
@@ -2061,7 +2061,7 @@ const personaSkillList = {
         name_jp: "バイスディ",
         name_en: "Baisudi",
         description: "동료 1명의 화상, 동결, 감전, 풍습 효과를 제거한다.",
-        description_en: "Cures Burn, Freeze, Shock, Winded of 1 ally",
+        description_en: "Cures Burn, Freeze, Shock, Windswept of 1 ally",
         description_jp: "味方単体の炎上、凍結、感電、風襲を治療する。",
         type: "지원",
         target: "단일",
@@ -4808,7 +4808,7 @@ const personaSkillList = {
     },
     "민첩의 마음가짐 I": {
         name_jp: "敏捷の心得Ⅰ",
-        name_en: "Speed Master I",
+        name_en: "Agility Master I",
         description: "속도가 6포인트 증가하고, 방어력이 0% 감소한다.",
         description_jp: "速さが6上昇し、防御力が0%低下する。",
         description_en: "Increases SPD by 6 .",
@@ -4830,7 +4830,7 @@ const personaSkillList = {
     },
     "민첩의 마음가짐 II": {
         name_jp: "敏捷の心得Ⅱ",
-        name_en: "Speed Master II",
+        name_en: "Agility Master II",
         description: "속도가 9포인트 증가하고, 방어력이 4% 감소한다.",
         description_jp: "速さが9上昇し、防御力が4%低下する。",
         description_en: "Increases SPD by 9 and decreases DEF by 4% .",
@@ -4852,7 +4852,7 @@ const personaSkillList = {
     },
     "민첩의 마음가짐 III": {
         name_jp: "敏捷の心得Ⅲ",
-        name_en: "Speed Master III",
+        name_en: "Agility Master III",
         description: "속도가 12포인트 증가하고, 방어력이 8% 감소한다.",
         description_jp: "速さが12上昇し、防御力が8%低下する。",
         description_en: "Increases SPD by 12 and decreases DEF by 8% .",
@@ -4874,7 +4874,7 @@ const personaSkillList = {
     },
     "민첩의 마음가짐 IV": {
         name_jp: "敏捷の心得Ⅳ",
-        name_en: "Speed Master IV",
+        name_en: "Agility Master IV",
         description: "속도가 15포인트 증가하고, 방어력이 12% 감소한다.",
         description_jp: "速さが15上昇し、防御力が12%低下する。",
         description_en: "Increases SPD by 15 and decreases DEF by 12% .",
@@ -4896,7 +4896,7 @@ const personaSkillList = {
     },
     "민첩의 마음가짐": {
         name_jp: "敏捷の心得",
-        name_en: "Speed Master",
+        name_en: "Agility Master",
         description: "속도가 6/9/12/15포인트 증가하고, 방어력이 0%/4%/8%/12% 감소한다.",
         description_jp: "速さが6/9/12/15上昇し、防御力が0%/4%/8%/12%低下する。",
         description_en: "Increases SPD by 6/9/12/15 and decreases DEF by 0%/4%/8%/12% .",

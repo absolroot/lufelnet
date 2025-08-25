@@ -204,6 +204,12 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 
 .tooltip-text:hover::before { visibility: visible; opacity: 1; }
 
+/* JS 커서 추종 툴팁이 활성화될 때 기존 ::before 숨김 (데스크톱) */
+.tooltip-text.js-tooltip-active::before { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+
+/* 커서 추종 툴팁 컨테이너 */
+.cursor-tooltip { position: fixed; left: 0; top: 0; display: none; pointer-events: none; padding: 8px 12px; background-color: rgba(0, 0, 0, 0.9); color: #fff; border: 1px solid rgb(225, 204, 47); border-radius: 4px; font-size: 14px; max-width: 300px; white-space: pre-wrap; z-index: 2000; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+
 /* 『』 문자 간격 조정 */
 /*
 .bracket-left { display: inline-block; margin-left: -0.4em; }

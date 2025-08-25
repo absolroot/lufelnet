@@ -192,46 +192,65 @@ function addTooltips() {
         const viewportWidth = window.innerWidth;
         
         if (viewportWidth > 1200) {
-            // PC 환경에서는 마우스 진입 시에만 위치 계산
-            tooltip.addEventListener('mouseenter', function() {
-                const range = document.createRange();
-                const textNode = this.childNodes[0];
-                
-                if (!textNode) return;
+            // PC: 커서 추종 툴팁
+            const floating = document.getElementById('cursor-tooltip') || (function() {
+                const el = document.createElement('div');
+                el.id = 'cursor-tooltip';
+                el.className = 'cursor-tooltip';
+                document.body.appendChild(el);
+                return el;
+            })();
 
-                range.setStart(textNode, 0);
-                range.setEnd(textNode, textNode.length);
-                const rects = Array.from(range.getClientRects());
-                
-                let rect;
-                if (rects.length > 1) {
-                    rect = rects.reduce((shortest, current) => 
-                        current.width < shortest.width ? current : shortest
-                    );
-                } else {
-                    rect = rects[0];
+            const showFloating = (el, content) => {
+                if (!content) return;
+                el.textContent = content;
+                el.style.display = 'block';
+            };
+
+            const hideFloating = (el) => {
+                el.style.display = 'none';
+            };
+
+            const moveFloating = (el, e) => {
+                const offset = 16; // 커서와의 거리
+                let x = e.clientX + offset;
+                let y = e.clientY + offset;
+
+                // 뷰포트 경계 내로 보정
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                // 먼저 표시하여 크기 측정
+                if (el.style.display !== 'block') {
+                    el.style.display = 'block';
                 }
+                const ttW = el.offsetWidth;
+                const ttH = el.offsetHeight;
 
-                if (!rect) return;
+                if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
 
-                const relativePosition = rect.left / window.innerWidth;
-                
-                if (rect.top < 100) {
-                    this.classList.add('show-bottom');
-                }
+                el.style.left = x + 'px';
+                el.style.top = y + 'px';
+            };
 
-                if (relativePosition < 0.25) {
-                    this.classList.add('align-right');
-                } else if (relativePosition > 0.75) {
-                    this.classList.add('align-left');
-                } else {
-                    this.classList.add('align-center');
-                }
+            tooltip.addEventListener('mouseenter', function(e) {
+                try {
+                    const content = this.getAttribute('data-tooltip');
+                    this.classList.add('js-tooltip-active'); // CSS ::before 숨김
+                    showFloating(floating, content);
+                    moveFloating(floating, e);
+                } catch (_) { /* noop */ }
             });
 
-            // 마우스가 떠날 때 클래스 제거
+            tooltip.addEventListener('mousemove', function(e) {
+                try { moveFloating(floating, e); } catch (_) { /* noop */ }
+            });
+
             tooltip.addEventListener('mouseleave', function() {
-                this.classList.remove('show-bottom', 'align-right', 'align-left', 'align-center');
+                try {
+                    hideFloating(floating);
+                    this.classList.remove('js-tooltip-active');
+                } catch (_) { /* noop */ }
             });
         } else {
             // 모바일 환경에서는 배너 스타일 적용

@@ -2364,6 +2364,7 @@ const personaSkillList = {
         type: "지원",
         target: "단일",
         icon : "디버프",
+        icon_gl : "버프",
         effects: [
             {
                 type: "디버프",
@@ -2382,6 +2383,7 @@ const personaSkillList = {
         type: "지원",
         target: "전체",
         icon : "디버프광역",
+        icon_gl : "버프광역",
         effects: [
             {
                 type: "디버프",
@@ -2400,6 +2402,7 @@ const personaSkillList = {
         type: "지원",
         target: "전체",
         icon : "디버프광역",
+        icon_gl : "버프광역",
         effects: [
             {
                 type: "디버프",
@@ -2424,6 +2427,7 @@ const personaSkillList = {
         type: "지원",
         target: "단일",
         icon : "디버프",
+        icon_gl : "버프",
         effects: [
             {
                 type: "디버프",

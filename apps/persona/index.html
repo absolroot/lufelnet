@@ -901,8 +901,12 @@ alternate_urls:
             const uniqueSkillInfo = document.createElement('div');
             uniqueSkillInfo.className = 'persona-unique-skill-info';
             uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
+            // Use global icon when language is en/jp and icon_gl exists
+            const uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp')
+                ? (personaData[personaName].uniqueSkill.icon_gl || personaData[personaName].uniqueSkill.icon)
+                : personaData[personaName].uniqueSkill.icon;
             uniqueSkillInfo.innerHTML = `
-                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].uniqueSkill.icon}.png" alt="Skill Element" class="skill-type-icon"> ${uniqueSkillName}</h3>
+                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${uniqueSkillIconName}.png" alt="Skill Element" class="skill-type-icon"> ${uniqueSkillName}</h3>
                 <p>${uniqueSkillEffect}</p>
             `;
             
@@ -961,12 +965,16 @@ alternate_urls:
                                 skillName = skillInfo.name_jp || skill.name;
                                 skillDescription = skillInfo.description_jp || skillInfo.description;
                             }
+                            // Choose icon based on language (use icon_gl for en/jp when available)
+                            const iconName = (currentLang === 'en' || currentLang === 'jp')
+                                ? (skillInfo.icon_gl || skillInfo.icon)
+                                : skillInfo.icon;
                             
                             return `
                                 <li data-priority="${skill.priority}">
                                     <div class="skill-info">
                                         <div class="skill-name-container">
-                                            <img src="{{ site.baseurl }}/assets/img/persona/속성_${skillInfo.icon}.png" alt="${skillInfo.icon}" class="skill-icon">
+                                            <img src="{{ site.baseurl }}/assets/img/persona/속성_${iconName}.png" alt="${iconName}" class="skill-icon">
                                             <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
                                         </div>
                                         <span class="skill-description">${skillDescription}</span>

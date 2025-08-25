@@ -527,8 +527,10 @@ inputs.forEach((input, idx) => {
         uniqueSkillInput.value = uniqueSkillName;
         uniqueSkillInput.disabled = true;
         uniqueSkillInput.classList.add('unique-skill');
-        // 고유 스킬 아이콘 표시 (데이터의 uniqueSkill.icon 사용)
-        const uniqueIconKey = personaData[newPersona]?.uniqueSkill?.icon || '';
+        // 고유 스킬 아이콘 표시 (언어에 따라 icon_gl 우선)
+        const lang = getCurrentLanguage();
+        const u = personaData[newPersona]?.uniqueSkill || {};
+        const uniqueIconKey = (lang === 'en' || lang === 'jp') ? (u.icon_gl || u.icon || '') : (u.icon || '');
         setSkillIconOnInputWithElement(uniqueSkillInput, uniqueIconKey);
         
         // 번역된 스킬 이름으로 표시
@@ -650,9 +652,11 @@ window.wonderApplySkillInputDecor = function() {
           personaKey = wonderPersonas[pi];
         }
       }
-      const uIcon = personaKey && personaData[personaKey]?.uniqueSkill?.icon ? personaData[personaKey].uniqueSkill.icon : '';
+      const uData = personaKey ? (personaData[personaKey]?.uniqueSkill || {}) : {};
+      const uIcon = (currentLang === 'en' || currentLang === 'jp') ? (uData.icon_gl || uData.icon || '') : (uData.icon || '');
       setSkillIconOnInputWithElement(input, uIcon || '');
     } else {
+      // Pass the resolved skill key; setSkillIconOnInput will choose icon (icon_gl for en/jp) internally
       setSkillIconOnInput(input, baseKey || '');
     }
     // 번역 오버레이 적용은 비-KR만
@@ -702,6 +706,7 @@ Object.keys(personaSkillList).forEach((skillName, idx) => {
     skillsWithIcons.push({
         name: skillName,
         icon: skillData.icon || "", // 아이콘 정보가 없을 경우 빈 문자열
+        icon_gl: skillData.icon_gl || "",
         __index: idx
     });
 });
@@ -741,7 +746,15 @@ function resolveSkillKey(name) {
 function setSkillIconOnInput(inputEl, skillName) {
   const baseKey = resolveSkillKey(skillName);
   const data = personaSkillList[baseKey];
-  const icon = data && typeof data.icon === 'string' ? data.icon : '';
+  const lang = getCurrentLanguage();
+  let icon = '';
+  if (data) {
+    if (lang === 'en' || lang === 'jp') {
+      icon = (typeof data.icon_gl === 'string' && data.icon_gl) ? data.icon_gl : (typeof data.icon === 'string' ? data.icon : '');
+    } else {
+      icon = (typeof data.icon === 'string') ? data.icon : '';
+    }
+  }
   const container = inputEl.closest('.input-container');
   if (!container) return;
   let iconEl = container.querySelector('.skill-selected-icon');
@@ -866,7 +879,9 @@ skillInputs.forEach((input) => {
         if (skill.icon) {
           const iconImg = document.createElement('img');
           iconImg.className = 'skill-icon';
-          iconImg.src = `${BASE_URL}/assets/img/skill-element/${skill.icon}.png`;
+          const lang = getCurrentLanguage();
+          const iconName = (lang === 'en' || lang === 'jp') ? (skill.icon_gl || skill.icon) : skill.icon;
+          iconImg.src = `${BASE_URL}/assets/img/skill-element/${iconName}.png`;
           iconImg.alt = '';
           iconImg.onerror = function() { this.style.display = 'none'; };
           item.appendChild(iconImg);

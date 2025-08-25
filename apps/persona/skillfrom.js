@@ -170,7 +170,12 @@
         skillInfo = skillsMap[korFull] || skillsMap[baseKor] || null;
       }
       const siteBase = (typeof window !== 'undefined' && window.SITE_BASEURL) ? window.SITE_BASEURL : '';
-      const iconKey = (skillInfo && skillInfo.icon) ? skillInfo.icon : '';
+      // Choose icon based on language (use icon_gl for en/jp when available)
+      const iconKey = (skillInfo)
+        ? ((currentLang === 'en' || currentLang === 'jp')
+            ? (skillInfo.icon_gl || skillInfo.icon || '')
+            : (skillInfo.icon || ''))
+        : '';
       const iconSrc = iconKey ? `${siteBase}/assets/img/persona/속성_${iconKey}.png` : '';
       let subtitle = '';
       if (skillInfo) {

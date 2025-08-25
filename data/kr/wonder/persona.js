@@ -427,7 +427,8 @@ const personaData = {
             effect_en: "Decrease DEF of all foes by 27.1% for 3 turns.",
             effect_jp: "3ターンの間、敵全体の防御力を27.1%低下させる。",
             priority: 3,
-            icon: "디버프광역"
+            icon: "디버프광역",
+            icon_gl : "버프광역"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 화염 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
@@ -576,7 +577,8 @@ const personaData = {
             effect_en: "Suppress innate Electric resistances of 1 foe for 2 turns.",
             effect_jp: "2ターンの間、敵単体の電撃耐性を打ち消す。",
             priority: 3,
-            icon: "디버프"
+            icon: "디버프",
+            icon_gl : "버프"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 전격 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
@@ -928,7 +930,8 @@ const personaData = {
             effect_en: "Increases the enemy's dmg taken by 16.0% and gains 1 stack of [Serpent's Bite] (up to 2 stacks). Effect lasts for 3 turns. [Serpent's Bite]: Each turn, the highest ATK Wonder deals 12.8% ATK Psy dmg to the target (maximum 300% of Wonder ATK).",
             effect_jp: "敵が受けるダメージが16.0%増加し、『ヴァスキの毒』を1重複獲得（最大2重複）。効果は3ターンの間持続する。『ヴァスキの毒』：各ターン、最も高いATKのウォンダーがターゲットに12.8% ATKの念動属性ダメージを与える（最大300%のウォンダーATK適用）。",
             priority: 2,
-            icon: "디버프"
+            icon: "디버프",
+            icon_gl : "버프"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 총격 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
@@ -2253,7 +2256,8 @@ const personaData = {
             effect_en: "Decrease DEF of 1 enemy by 38.8% for 3 turns.",
             effect_jp: "3ターンの間、敵単体の防御力が38.8%低下する。",
             priority: 1,
-            icon: "디버프"
+            icon: "디버프",
+            icon_gl : "버프",
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 빙결 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
@@ -2353,7 +2357,8 @@ const personaData = {
             effect_en: "Decreases ATK of all foes by 18.1% for 3 turns.",
             effect_jp: "3ターンの間、敵全体の攻撃力を18.1%低下させる。",
             priority: 0,
-            icon: "디버프광역"
+            icon: "디버프광역",
+            icon_gl : "버프광역"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",
@@ -2450,7 +2455,8 @@ const personaData = {
             effect_en: "Suppress innate Fire resistances of 1 foe for 2 turns.",
             effect_jp: "1体の敵の火炎耐性を2ターンの間解除する。",
             priority: 3,
-            icon: "디버프"
+            icon: "디버프",
+            icon_gl : "버프"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 화염 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.    ",
@@ -2496,7 +2502,8 @@ const personaData = {
             effect_en: "Suppress innate Wind resistances of 1 foe for 2 turns.",
             effect_jp: "1体の敵の風属性耐性を2ターンの間解除する。",
             priority: 3,
-            icon: "디버프"
+            icon: "디버프",
+            icon_gl : "버프"
         },
         highlight: {
             effect: "모든 적에게 공격력 90.0%의 질풍 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
@@ -2542,7 +2549,8 @@ const personaData = {
             effect_en: "Decreases ATK of 1 foe by 25.8% for 3 turns.",
             effect_jp: "3ターンの間、敵単体の攻撃力が25.8%低下させる。",
             priority: 0,
-            icon: "디버프"
+            icon: "디버프",
+            icon_gl : "버프"
         },
         highlight: {
             effect: "모든 동료가 공격력 48.6%+1471의 실드를 획득하며 2턴 동안 지속된다.",

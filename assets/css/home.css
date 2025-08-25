@@ -1,6 +1,6 @@
 .header-container { max-width: 1200px; padding : 20px 0px 20px 0px; width: 100%; margin: 0 auto; display: flex; flex-direction: row; align-items: center; gap: 8px; }
 
-.header-container h1 { font-size: 32px; filter: drop-shadow(0px 1px rgb(0, 0, 0, 0.5)) drop-shadow(1px 0px rgb(0, 0, 0, 0.5)) drop-shadow(-1px 0px rgb(0, 0, 0, 0.5)) ; font-weight: 900; background: #eeeeee; background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient 4s linear infinite; }
+.header-container h1 { font-size: 32px; filter: drop-shadow(0px 1px rgb(0, 0, 0, 0.5)) drop-shadow(1px 0px rgb(0, 0, 0, 0.5)) drop-shadow(-1px 0px rgb(0, 0, 0, 0.5)) ; font-weight: 900; background: #eeeeee; background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; /*animation: gradient 4s linear infinite;*/ animation:none; }
 @keyframes gradient { 0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }

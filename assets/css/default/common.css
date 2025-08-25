@@ -21,18 +21,11 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 .super-highlight::before { content: ""; position: absolute; inset: 0;                /* 상하좌우 0 */
     padding: 1px;            /* 테두리 두께 */
     border-radius: inherit;  /* 부모와 동일한 라운드 */
-    background: linear-gradient(
-        45deg,
-        #4169e1,
-        #c4ffff,
-        #e4c2d3,
-        #4169e1,
-        #c4ffff
-    ); /* 내부는 투명, 테두리 영역만 보이도록 마스킹 */
+    background: linear-gradient(45deg, #b1c0ec, #efefef, #c4ffff, #efefef, #e4c2d3, #efefef, #c6a9f9, #ba7f96, #efefef, #c4ffff); /* 내부는 투명, 테두리 영역만 보이도록 마스킹 */
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; /* Safari */
     mask-composite: exclude;     /* Other browsers */
     pointer-events: none;        /* 클릭 방해 방지 */
-    background-size: 200% auto; animation: gradient 4s linear infinite; }
+    background-size: 150% auto; /*animation: gradient 4s linear infinite; */ animation:none}
 
 /* PC 환경의 배경 스타일 - 스크롤 성능 최적화 */
 @media screen and (min-width: 769px) { .container { background: 
@@ -198,7 +191,7 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 .tooltip-text { /*text-decoration: underline !important;*/
     position: relative; cursor: help !important; color: rgb(207, 194, 177, 1); }
 
-.tooltip-text::before { width: 40vw; content: attr(data-tooltip); position: absolute; bottom: 100%; padding: 8px 12px; background-color: rgba(0, 0, 0, 0.9); color: white; border-radius: 4px; border: 1px solid rgb(225, 204, 47); font-size: 14px; white-space: pre-wrap; max-width: 300px; visibility: hidden; opacity: 0; transition: opacity 0.2s; z-index: 1000; left: 50%; transform: translateX(-50%); }
+.tooltip-text::before { width: 40vw; content: attr(data-tooltip); position: absolute; bottom: 100%; padding: 8px 12px; background-color: rgba(0, 0, 0, 0.9); color: white; border-radius: 4px; border: 1px solid rgb(255, 247, 185); font-size: 14px; white-space: pre-wrap; max-width: 300px; visibility: hidden; opacity: 0; transition: opacity 0.2s; z-index: 1000; left: 50%; transform: translateX(-50%); }
 
 .tooltip-text.show-bottom::before { bottom: auto; top: 100%; }
 
@@ -214,7 +207,7 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 }
 
 /* 커서 추종 툴팁 컨테이너 */
-.cursor-tooltip { position: fixed; left: 0; top: 0; display: none; pointer-events: none; padding: 8px 12px; background-color: rgba(0, 0, 0, 0.9); color: #fff; border: 1px solid rgb(225, 204, 47); border-radius: 4px; font-size: 14px; max-width: 300px; white-space: pre-wrap; z-index: 2000; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.cursor-tooltip { position: fixed; left: 0; top: 0; display: none; pointer-events: none; padding: 8px 12px; background-color: rgba(0, 0, 0, 0.9); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 4px; font-size: 14px; max-width: 300px; white-space: pre-wrap; z-index: 2000; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 
 /* 『』 문자 간격 조정 */
 /*

@@ -116,15 +116,11 @@ small { color: #6c757d; display: block; margin-top: 0.5rem; }
 
 .post-item.best, .tab-button[data-view="best"]{ position: relative; background: #2D2424; border: 1px solid transparent; background-clip: padding-box; }
 
-.post-item.best::before{ content: ""; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px; border-radius: 8px;  /* post-item의 border-radius와 동일하게 */
+.post-item.best::before{ content: ""; position: absolute; top: -0.5px; left: -0.5px; right: -0.5px; bottom: -0.5px; border-radius: 8px;  /* post-item의 border-radius와 동일하게 */
     z-index: -1; margin: -1px; background: linear-gradient(
     45deg,
-    #4169e1,
-    #c4ffff,
-    #e4c2d3,
-    #4169e1,
-    #c4ffff
-    ); background-size: 200% auto; animation: gradient 4s linear infinite; }
+     #b1c0ec, #c4ffff, #e4c2d3, #ba7f96, #c4ffff
+    ); background-size: 100% auto; /* animation: gradient 4s linear infinite;*/ animation: none; }
 
 @keyframes gradient { 0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }

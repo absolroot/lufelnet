@@ -103,7 +103,6 @@
 .character-filter #modalSpoilerToggle span{font-size:12px;opacity:.9}
 .modal-header h3{margin:0; margin-right:auto; font-size:16px;}
 
-
 /* toggle (mind all) - match modal spoiler style */
 #mindAllToggle{width:auto;padding:0;border:0;background:transparent;color:inherit;appearance:auto}
 #mindAllToggle + span{font-size:12px;opacity:.9}
@@ -169,11 +168,15 @@
 
 #mindBaseCurCount, #mindBaseTarCount{ display: none; }
 
+.filter-header {padding:0 20px; }
+.filter-content {margin-top: 10px;}
+
 @media (max-width:1200px){ .material-grid{grid-template-columns:repeat(auto-fill,minmax(56px,1fr))}
     .plans-grid{grid-template-columns:1fr}
-
+    .filter-header {padding:0 0px;}
     .navigation-path, .header-container, .plans-grid{padding-left: 0; padding-right: 0;}
     .summary-card{margin-left: 0; margin-right: 0;}
+    .help-text {margin:0}
 }
 
 

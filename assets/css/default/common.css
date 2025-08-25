@@ -184,8 +184,7 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 
 /* 모바일 반응형 스타일 */
 @media screen and (max-width: 1200px) {
-    .main-wrapper { margin-left: 0; width: 100%; transform: translateX(0px); }
-    .main-wrapper { width: 100%; padding: 16px; padding-top: 60px; }
+    .main-wrapper { margin-left: 0; width: calc(100% - 32px); transform: translateX(0px); padding: 16px; padding-top: 60px; }
     .logo-container { padding: 10px 20px; margin: 0; width: 100%; box-sizing: border-box; }
     .back-button-link { position: fixed; top: 10px; left: 10px; width: 40px; height: 40px; z-index: 1002; /* 헤더보다 위에 표시 */}
     .back-button { width: 40px; height: 25px; object-fit: contain; }

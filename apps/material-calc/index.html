@@ -1,6 +1,6 @@
 ---
 layout: default
-custom_css: [material-planner]
+custom_css: [material-planner, character]
 custom_js: [material-planner]
 permalink: /material-calc/
 language: kr
@@ -36,6 +36,86 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         </div>
         <div id="summaryGrid" class="material-grid"></div>
     </section>
+
+    <!-- 필터/정렬 영역 (summary 아래) -->
+    <div class="filter-section" id="plannerFilterSection">
+        <div class="filter-header" style="display:flex;align-items:center;gap:8px;">
+            <button class="filter-toggle-btn" id="plannerFilterToggle">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
+                <span data-lang-key="filter">필터</span>
+            </button>
+            <div style="flex:1"></div>
+            <!-- 정렬 드롭다운 -->
+            <label style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-size:14px;">
+                <span id="sortLabel" data-lang-key="sort">정렬</span>
+                <select id="plannerSortSelect" style="background:#1f120e;border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 8px;border-radius:4px;">
+                    <option value="release_asc" data-lang-key="sort.releaseAsc">출시 순 ↑</option>
+                    <option value="release_desc" data-lang-key="sort.releaseDesc">출시 순 ↓</option>
+                    <option value="name_asc" data-lang-key="sort.nameAsc">이름 순 ↑</option>
+                    <option value="name_desc" data-lang-key="sort.nameDesc">이름 순 ↓</option>
+                </select>
+            </label>
+            <button class="filter-reset-btn" id="plannerFilterReset" style="display:none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
+            </button>
+        </div>
+
+        <div class="filter-content" id="plannerFilterContent" style="display: none;">
+            <!-- 일단 캐릭터 페이지의 구조를 간략히 유지(추후 실제 필터 로직 연결 예정) -->
+            <div class="filter-group">
+                <h3 data-lang-key="filterGroup.element">속성</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" name="element" value="물리"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리"><span></span></label>
+                    <label><input type="checkbox" name="element" value="총격"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격"><span></span></label>
+                    <label><input type="checkbox" name="element" value="화염"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염"><span></span></label>
+                    <label><input type="checkbox" name="element" value="빙결"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결"><span></span></label>
+                    <label><input type="checkbox" name="element" value="전격"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격"><span></span></label>
+                    <label><input type="checkbox" name="element" value="질풍"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍"><span></span></label>
+                    <label><input type="checkbox" name="element" value="염동"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동"><span></span></label>
+                    <label><input type="checkbox" name="element" value="핵열"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열"><span></span></label>
+                    <label><input type="checkbox" name="element" value="축복"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복"><span></span></label>
+                    <label><input type="checkbox" name="element" value="주원"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원"><span></span></label>
+                    <label><input type="checkbox" name="element" value="만능"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능"><span></span></label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3 data-lang-key="filterGroup.position">직업</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" name="position" value="지배"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배"></label>
+                    <label><input type="checkbox" name="position" value="반항"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항"></label>
+                    <label><input type="checkbox" name="position" value="우월"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월"></label>
+                    <label><input type="checkbox" name="position" value="굴복"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복"></label>
+                    <label><input type="checkbox" name="position" value="방위"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위"></label>
+                    <label><input type="checkbox" name="position" value="구원"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원"></label>
+                    <label><input type="checkbox" name="position" value="해명"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명"></label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3 data-lang-key="filterGroup.rarity">등급</h3>
+                <div class="filter-options tag-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 캐릭터별 플랜 카드 컨테이너 -->
     <section id="plansContainer" class="plans-grid"></section>

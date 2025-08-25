@@ -78,13 +78,13 @@
 .filter-header { display: none; /*display: flex; align-items: center; padding: 0px 12px 10px 12px;*/
 }
 
-.filter-toggle-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
+.filter-toggle-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: #fff; cursor: pointer; padding: 8px 0; }
 
 .filter-toggle-btn img { width: 24px; height: 24px; }
 
-.filter-reset-btn { margin-right: auto; background: none; border: none; cursor: pointer; padding: 0px; }
+.filter-reset-btn { margin-right: auto; background: none; border: none; cursor: pointer; padding: 0px; align-items: center; display: flex; margin-left:8px}
 
-.filter-reset-btn img { height: 28px; object-fit: contain; }
+.filter-reset-btn img { height: 24px; object-fit: contain; }
 /*
 .filter-content { padding: 4px 20px 12px 24px; background-color: #242424; border-radius: 8px; }*/
 

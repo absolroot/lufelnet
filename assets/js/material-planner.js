@@ -8,6 +8,8 @@
         spoiler: false,
         characterData: null,
         characterList: null,
+        // 정렬 키 (localStorage로 유지). release/name + asc/desc
+        sortKey: 'release_desc',
         inventory: { // 사용자 보유 수량
             lv_exp1: 0, lv_exp2: 0, lv_exp3: 0,
             lv_limit1: 0, lv_limit2: 0, lv_limit3: 0,
@@ -68,7 +70,12 @@
             remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
             confirm: '확인', deleteConfirmTitle: '삭제 확인', deleteConfirmMessage: '이 캐릭터의 플랜을 삭제합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
             helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\nP5X는 계정 정보 연동을 지원하지 않습니다. 보유 중인 재료는 수동으로 입력해주세요.',
-            reset: '초기화', resetConfirmTitle: '초기화 확인', resetConfirmMessage: '모든 플랜을 초기화합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?'
+            reset: '초기화', resetConfirmTitle: '초기화 확인', resetConfirmMessage: '모든 플랜을 초기화합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
+            // filter / sort UI
+            filter: '필터', sort: '정렬',
+            'sort.releaseAsc': '출시 순 ↑', 'sort.releaseDesc': '출시 순 ↓',
+            'sort.nameAsc': '이름 순 ↑', 'sort.nameDesc': '이름 순 ↓',
+            'filterGroup.element': '속성', 'filterGroup.position': '직업', 'filterGroup.rarity': '등급'
         },
         en: {
             pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
@@ -79,7 +86,12 @@
             remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
             confirm: 'Confirm', deleteConfirmTitle: 'Delete Plan', deleteConfirmMessage: 'This character plan will be deleted. This action cannot be undone. Continue?',
             helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.\nP5X does not support account information linking. Please enter your owned materials manually.',
-            reset: 'Reset', resetConfirmTitle: 'Reset Confirm', resetConfirmMessage: 'All plans will be reset. This action cannot be undone. Continue?'
+            reset: 'Reset', resetConfirmTitle: 'Reset Confirm', resetConfirmMessage: 'All plans will be reset. This action cannot be undone. Continue?',
+            // filter / sort UI
+            filter: 'Filter', sort: 'Sort',
+            'sort.releaseAsc': 'Release ↑', 'sort.releaseDesc': 'Release ↓',
+            'sort.nameAsc': 'Name ↑', 'sort.nameDesc': 'Name ↓',
+            'filterGroup.element': 'Element', 'filterGroup.position': 'Role', 'filterGroup.rarity': 'Rarity'
         },
         jp: {
             pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
@@ -90,7 +102,12 @@
             remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
             confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',
             helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。\nP5Xはアカウント情報の連携に対応していません。所持している素材は手動で入力してください。',
-            reset: 'リセット', resetConfirmTitle: 'リセットの確認', resetConfirmMessage: 'すべてのプランをリセットします。この操作は元に戻すことができません。続行しますか?'
+            reset: 'リセット', resetConfirmTitle: 'リセットの確認', resetConfirmMessage: 'すべてのプランをリセットします。この操作は元に戻すことができません。続行しますか?',
+            // filter / sort UI
+            filter: 'フィルター', sort: 'ソート',
+            'sort.releaseAsc': '実装順 ↑', 'sort.releaseDesc': '実装順 ↓',
+            'sort.nameAsc': '名前 ↑', 'sort.nameDesc': '名前 ↓',
+            'filterGroup.element': '属性', 'filterGroup.position': '役割', 'filterGroup.rarity': 'レアリティ'
         }
     };
 
@@ -889,7 +906,63 @@
         const root = document.getElementById('plansContainer');
         if(!root) return;
         const frag = document.createDocumentFragment();
-        STATE.plans.forEach(p=>{
+        // 활성 필터 읽기
+        const getChecked = (name)=> Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el=>el.value);
+        const fElement = getChecked('element');
+        const fPosition = getChecked('position');
+        const fRarity = getChecked('rarity'); // values: '4','5'
+        // 필터 적용
+        const filtered = STATE.plans.filter(p=>{
+            const meta = STATE.characterData?.[resolveCharacterKey(p.name)] || {};
+            if(fElement.length && !fElement.includes(meta.element)) return false;
+            if(fPosition.length && !fPosition.includes(meta.position)) return false;
+            if(fRarity.length && !fRarity.includes(String(meta.rarity))) return false;
+            return true;
+        });
+
+        // 정렬 적용
+        const toName = (anyName)=>{
+            const krKey = resolveCharacterKey(anyName);
+            const meta = STATE.characterData?.[krKey] || {};
+            if(STATE.lang==='en' && meta.name_en) return meta.name_en;
+            if(STATE.lang==='jp' && meta.name_jp) return meta.name_jp;
+            return krKey;
+        };
+        const getRelease = (anyName)=>{
+            const krKey = resolveCharacterKey(anyName);
+            const meta = STATE.characterData?.[krKey] || {};
+            const v = (typeof meta.release_order === 'number') ? meta.release_order
+                  : (typeof meta.release === 'number') ? meta.release
+                  : (typeof meta.order === 'number') ? meta.order
+                  : (typeof meta.index === 'number') ? meta.index
+                  : null;
+            // 미정/없음은 매우 큰 값으로 하여 항상 뒤로 밀기
+            return (v==null) ? Number.MAX_SAFE_INTEGER : v;
+        };
+        const sorted = [...filtered].sort((a,b)=>{
+            const k = STATE.sortKey;
+            if(k==='name_asc' || k==='name_desc'){
+                const na = toName(a.name) || '';
+                const nb = toName(b.name) || '';
+                if(na===nb) return 0;
+                const res = na > nb ? 1 : -1;
+                return k==='name_asc' ? res : -res;
+            }else{
+                // release
+                const ra = getRelease(a.name);
+                const rb = getRelease(b.name);
+                if(ra===rb){
+                    // tie-breaker: name asc
+                    const na = toName(a.name) || '';
+                    const nb = toName(b.name) || '';
+                    if(na===nb) return 0;
+                    return na > nb ? 1 : -1;
+                }
+                const res = ra - rb;
+                return (k==='release_asc') ? res : -res;
+            }
+        });
+        sorted.forEach(p=>{
             const card = document.createElement('div'); card.className='plan-card';
             const header = document.createElement('div'); header.className='plan-header'; header.style.position='relative';
             const title = document.createElement('div'); title.className='plan-title';
@@ -1012,38 +1085,38 @@
                 // 돌파3 배지: 실제 상향 제작 수 표시
                 if(k==='lv_limit3' && limitSummary.badge3>0){
                     const badge = document.createElement('div'); badge.className='craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
-                    const span = document.createElement('span'); span.textContent = String(limitSummary.badge3);
+                    const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span=document.createElement('span'); span.textContent=String(limitSummary.badge3);
                     badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
                 }
                 if(k==='lv_limit2' && limitSummary.badge2>0){
                     const badge2 = document.createElement('div'); badge2.className='craft-badge';
-                    const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
-                    const span2 = document.createElement('span'); span2.textContent = String(limitSummary.badge2);
+                    const icon2=document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                    const span2=document.createElement('span'); span2.textContent=String(limitSummary.badge2);
                     badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
                 }
                 if(k==='wp_limit3' && wpLimitSummary.badge3>0){
                     const badge = document.createElement('div'); badge.className='craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
-                    const span = document.createElement('span'); span.textContent = String(wpLimitSummary.badge3);
+                    const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span=document.createElement('span'); span.textContent=String(wpLimitSummary.badge3);
                     badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
                 }
                 if(k==='wp_limit2' && wpLimitSummary.badge2>0){
                     const badge2 = document.createElement('div'); badge2.className='craft-badge';
-                    const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
-                    const span2 = document.createElement('span'); span2.textContent = String(wpLimitSummary.badge2);
+                    const icon2=document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width='12px'; icon2.style.height='12px';
+                    const span2=document.createElement('span'); span2.textContent=String(wpLimitSummary.badge2);
                     badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
                 }
                 if(k==='skill_lv_3' && skillSummary.badge3>0){
                     const badge = document.createElement('div'); badge.className='craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
-                    const span = document.createElement('span'); span.textContent = String(skillSummary.badge3);
+                    const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span=document.createElement('span'); span.textContent=String(skillSummary.badge3);
                     badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
                 }
                 if(k==='skill_lv_2' && skillSummary.badge2>0){
                     const badge = document.createElement('div'); badge.className='craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
-                    const span = document.createElement('span'); span.textContent = String(skillSummary.badge2);
+                    const icon=document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width='12px'; icon.style.height='12px';
+                    const span=document.createElement('span'); span.textContent=String(skillSummary.badge2);
                     badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
                 }
                 div.title = `${visual|0} / ${c|0}`;
@@ -1098,6 +1171,13 @@
             frag.appendChild(card);
         });
         root.innerHTML=''; root.appendChild(frag);
+
+        // 필터 리셋 버튼 표시 여부 갱신
+        const filterResetBtn = document.getElementById('plannerFilterReset');
+        if(filterResetBtn){
+            const anyOn = (fElement.length + fPosition.length + fRarity.length) > 0;
+            filterResetBtn.style.display = anyOn ? '' : 'none';
+        }
     }
 
     // 이벤트/초기화
@@ -1143,7 +1223,6 @@
             }
         };
 
-
         document.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', e=>{
             const modal = e.target.closest('.modal'); if(modal) modal.setAttribute('aria-hidden','true');
         }));
@@ -1158,16 +1237,42 @@
                 collapse.textContent = open ? '▸' : '▾';
             };
         }
-        // 모바일 환경에서 로드 시 초기 값은 접힌 상태로
-        if(window.innerWidth < 1200){
-            const grid = document.getElementById('summaryGrid');
-            const collapse = document.getElementById('collapseSummary');
-            if(collapse){
-                collapse.setAttribute('aria-expanded', 'false');
-                collapse.setAttribute('aria-expanded', String(false));
-                grid.style.display = 'none';
-                collapse.textContent = '▸';
-            }
+        // 필터 토글 버튼 (#plannerFilterToggle)과 내용 영역 (#plannerFilterContent)
+        const filterToggleBtn = document.getElementById('plannerFilterToggle');
+        const filterContent = document.getElementById('plannerFilterContent');
+        if(filterToggleBtn && filterContent){
+            filterToggleBtn.setAttribute('aria-expanded', String(false));
+            filterContent.style.display = 'none';
+            filterToggleBtn.onclick = ()=>{
+                const open = filterContent.style.display !== 'none';
+                const next = open ? 'none' : 'block';
+                filterContent.style.display = next;
+                filterToggleBtn.setAttribute('aria-expanded', String(next==='block'));
+            };
+        }
+
+        // 정렬 드롭다운 유지/변경 처리
+        const sortSelect = document.getElementById('plannerSortSelect');
+        if(sortSelect){
+            const saved = localStorage.getItem('material_planner_sort');
+            if(saved) sortSelect.value = saved;
+            sortSelect.onchange = ()=>{
+                STATE.sortKey = sortSelect.value || 'release_desc';
+                localStorage.setItem('material_planner_sort', STATE.sortKey);
+                renderPlans();
+            };
+        }
+
+        // 필터 변경 이벤트 바인딩 (element/position/rarity)
+        const filterInputs = document.querySelectorAll('#plannerFilterContent input[type="checkbox"][name="element"], #plannerFilterContent input[type="checkbox"][name="position"], #plannerFilterContent input[type="checkbox"][name="rarity"]');
+        filterInputs.forEach(el=> el.addEventListener('change', ()=>{ renderPlans(); }));
+        // 필터 리셋 버튼
+        const filterResetBtn = document.getElementById('plannerFilterReset');
+        if(filterResetBtn){
+            filterResetBtn.addEventListener('click', ()=>{
+                document.querySelectorAll('#plannerFilterContent input[type="checkbox"]:checked').forEach(cb=>{ cb.checked = false; });
+                renderPlans();
+            });
         }
 
         // 저장 데이터 불러오기

@@ -375,6 +375,17 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 
 .revelation-value.tooltip-text[data-tooltip]::before { white-space: pre-line; min-width: 200px; line-height: 1.4; padding: 10px; }
 
+/* Desktop: use JS floating tooltip instead of CSS ::before for revelations */
+@media (min-width: 1201px) {
+  /* 실제 캐릭터 페이지에서는 .revelation-value-item에 tooltip-text가 붙음 */
+  .revelation-values .tooltip-text::before,
+  .revelation-values .tooltip-text::after,
+  .revelation-value-item.tooltip-text::before,
+  .revelation-value-item.tooltip-text::after,
+  .revelation-value.tooltip-text::before,
+  .revelation-value.tooltip-text::after { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+}
+
 /* mobile banner style */
 @media (max-width: 1200px) { .revelation-value.tooltip-text.mobile-banner[data-tooltip]::before { white-space: pre-line; width: 90%; max-width: 400px; }
 }

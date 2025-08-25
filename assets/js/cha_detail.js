@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (character.rarity) {
             raritySection.style.display = 'flex';
             raritySection.style.gap = '2px';
+            raritySection.style.alignItems = 'center'; // 세로 가운데 정렬
             
             const starCount = character.rarity;
             const starType = character.rarity === 4 ? 'star4.png' : 'star5.png';
@@ -282,6 +283,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 star.style.height = '20px';
                 raritySection.appendChild(star);
             }
+
+            // 한정 여부 아이콘을 rarity-section 내부(오른쪽)에 추가
+            try {
+                // 기존 아이콘 제거 (중복 방지)
+                const oldIcon = raritySection.querySelector('img.limit-icon');
+                if (oldIcon) oldIcon.remove();
+
+                const limitImg = document.createElement('img');
+                limitImg.className = 'limit-icon';
+                limitImg.src = `${BASE_URL}/assets/img/character-detail/${character.limit ? 'limit.png' : 'limit_non.png'}`;
+                limitImg.alt = character.limit ? 'limit' : 'non_limit';
+                limitImg.style.width = '24px';
+                limitImg.style.margin = '4px 0 0 6px';
+
+                raritySection.appendChild(limitImg);
+            } catch(_) {}
         }
 
         // 속성 위치 계산

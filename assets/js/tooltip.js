@@ -1,9 +1,106 @@
+// 내부 유틸: 단일 요소에 툴팁 리스너 바인딩 (중복 방지)
+function bindTooltipElement(el) {
+    if (!el || el.dataset.tooltipBound === '1') return;
+    const viewportWidth = window.innerWidth;
+    let node = el;
+
+    // 현재 바인딩 모드 확인 (desktop/mobile)
+    const currentMode = node.dataset.tooltipMode;
+
+    if (viewportWidth > 1200) {
+        // 데스크톱 모드 필요. 기존에 모바일로 바인딩되어 있다면 리셋
+        if (currentMode !== 'desktop') {
+            const fresh = node.cloneNode(true);
+            fresh.classList.remove('mobile-banner');
+            node.replaceWith(fresh);
+            node = fresh;
+            node.dataset.tooltipMode = 'desktop';
+            // 남아있는 모바일 배너 제거
+            const leftoverBanner = document.querySelector('.tooltip-mobile-banner');
+            if (leftoverBanner) leftoverBanner.remove();
+        } else {
+            // 이미 데스크톱 모드면 계속 진행 (이전 바인딩이 제거되었을 수 있으므로 재검사)
+        }
+
+        // PC: 커서 추종 툴팁 컨테이너 준비
+        const floating = document.getElementById('cursor-tooltip') || (function() {
+            const el = document.createElement('div');
+            el.id = 'cursor-tooltip';
+            el.className = 'cursor-tooltip';
+            document.body.appendChild(el);
+            return el;
+        })();
+
+        const showFloating = (el, content) => { if (!content) return; el.textContent = content; el.style.display = 'block'; };
+        const hideFloating = (el) => { el.style.display = 'none'; };
+        const moveFloating = (el, e) => {
+            const offset = 16;
+            let x = e.clientX + offset;
+            let y = e.clientY + offset;
+            const vw = window.innerWidth; const vh = window.innerHeight;
+            if (el.style.display !== 'block') { el.style.display = 'block'; }
+            const ttW = el.offsetWidth; const ttH = el.offsetHeight;
+            if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+            if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+            el.style.left = x + 'px'; el.style.top = y + 'px';
+        };
+
+        node.addEventListener('mouseenter', function(e) {
+            try {
+                const content = this.getAttribute('data-tooltip');
+                this.classList.add('js-tooltip-active');
+                showFloating(floating, content); moveFloating(floating, e);
+            } catch (_) {}
+        });
+        node.addEventListener('mousemove', function(e) { try { moveFloating(floating, e); } catch (_) {} });
+        node.addEventListener('mouseleave', function() { try { hideFloating(floating); this.classList.remove('js-tooltip-active'); } catch (_) {} });
+
+        // 중복 바인딩 방지 플래그
+        node.dataset.tooltipBound = '1';
+    } else {
+        // 모바일 모드 필요. 기존에 데스크톱으로 바인딩되어 있다면 리셋
+        if (currentMode !== 'mobile') {
+            const fresh = node.cloneNode(true);
+            fresh.classList.add('mobile-banner');
+            node.replaceWith(fresh);
+            node = fresh;
+            node.dataset.tooltipMode = 'mobile';
+        }
+
+        node.addEventListener('click', function(e) {
+            try {
+                const tooltipText = this.getAttribute('data-tooltip');
+                if (!tooltipText) return;
+                const existingBanner = document.querySelector('.tooltip-mobile-banner');
+                if (existingBanner) existingBanner.remove();
+                const banner = document.createElement('div');
+                banner.className = 'tooltip-mobile-banner';
+                banner.textContent = tooltipText;
+                const closeButton = document.createElement('button');
+                closeButton.className = 'tooltip-banner-close';
+                closeButton.innerHTML = '×';
+                closeButton.onclick = () => { if (banner.parentElement) banner.remove(); };
+                banner.appendChild(closeButton);
+                if (document.body) document.body.appendChild(banner); else return;
+                setTimeout(() => { if (banner.parentElement) banner.remove(); }, 5000);
+                e.preventDefault(); e.stopPropagation();
+            } catch (error) { console.error('모바일 툴팁 배너 생성 중 오류:', error); }
+        });
+
+        node.dataset.tooltipBound = '1';
+    }
+}
+
 // 툴팁 기능 추가
 function addTooltips() {
     const descriptions = document.querySelectorAll('.ritual-description, .weapon-skill p, .skill-description, .set-desc, .persona-instinct-info p, .persona-unique-skill-info p, .persona-highlight-info p');
     
     descriptions.forEach(desc => {
         let html = desc.innerHTML;
+        
+        // 기존에 생성된 tooltip wrapper를 제거하여 중첩 생성을 방지
+        // 예: <span class="tooltip-text" ...>Blessing</span> -> Blessing
+        html = html.replace(/<span\s+class=["']tooltip-text["'][^>]*>([\s\S]*?)<\/span>/g, '$1');
         
         
         // 숫자와 퍼센트 처리 (소수점 포함)
@@ -185,130 +282,29 @@ function addTooltips() {
         }
     });
 
-    // 툴팁 위치 조정
-    const tooltips = document.querySelectorAll('.tooltip-text');
-    
-    tooltips.forEach(tooltip => {
-        const viewportWidth = window.innerWidth;
-        
-        if (viewportWidth > 1200) {
-            // PC: 커서 추종 툴팁
-            const floating = document.getElementById('cursor-tooltip') || (function() {
-                const el = document.createElement('div');
-                el.id = 'cursor-tooltip';
-                el.className = 'cursor-tooltip';
-                document.body.appendChild(el);
-                return el;
-            })();
+    // 번역/치환이 끝난 후 현재 존재하는 모든 툴팁 요소에 리스너 바인딩
+    document.querySelectorAll('.tooltip-text').forEach(bindTooltipElement);
 
-            const showFloating = (el, content) => {
-                if (!content) return;
-                el.textContent = content;
-                el.style.display = 'block';
-            };
-
-            const hideFloating = (el) => {
-                el.style.display = 'none';
-            };
-
-            const moveFloating = (el, e) => {
-                const offset = 16; // 커서와의 거리
-                let x = e.clientX + offset;
-                let y = e.clientY + offset;
-
-                // 뷰포트 경계 내로 보정
-                const vw = window.innerWidth;
-                const vh = window.innerHeight;
-                // 먼저 표시하여 크기 측정
-                if (el.style.display !== 'block') {
-                    el.style.display = 'block';
-                }
-                const ttW = el.offsetWidth;
-                const ttH = el.offsetHeight;
-
-                if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
-                if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
-
-                el.style.left = x + 'px';
-                el.style.top = y + 'px';
-            };
-
-            tooltip.addEventListener('mouseenter', function(e) {
-                try {
-                    const content = this.getAttribute('data-tooltip');
-                    this.classList.add('js-tooltip-active'); // CSS ::before 숨김
-                    showFloating(floating, content);
-                    moveFloating(floating, e);
-                } catch (_) { /* noop */ }
-            });
-
-            tooltip.addEventListener('mousemove', function(e) {
-                try { moveFloating(floating, e); } catch (_) { /* noop */ }
-            });
-
-            tooltip.addEventListener('mouseleave', function() {
-                try {
-                    hideFloating(floating);
-                    this.classList.remove('js-tooltip-active');
-                } catch (_) { /* noop */ }
-            });
-        } else {
-            // 모바일 환경에서는 배너 스타일 적용
-            tooltip.classList.add('mobile-banner');
-            
-            // 클릭 이벤트 리스너 추가
-            tooltip.addEventListener('click', function(e) {
-                try {
-                    const tooltipText = this.getAttribute('data-tooltip');
-                    
-                    if (!tooltipText) {
-                        console.warn('툴팁 텍스트가 없습니다.');
-                        return;
+    // 이후 DOM 변동(번역으로 인한 innerHTML 교체 등) 시 새로 추가되는 요소에도 자동 바인딩
+    try {
+        if (!window.__tooltipObserver) {
+            const observer = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    if (m.type === 'childList') {
+                        m.addedNodes && m.addedNodes.forEach(node => {
+                            if (node.nodeType !== 1) return; // ELEMENT_NODE
+                            if (node.classList && node.classList.contains('tooltip-text')) bindTooltipElement(node);
+                            const inner = node.querySelectorAll ? node.querySelectorAll('.tooltip-text') : [];
+                            inner && inner.forEach(bindTooltipElement);
+                        });
+                    } else if (m.type === 'attributes' && m.target && m.target.classList && m.target.classList.contains('tooltip-text')) {
+                        // data-tooltip 변경 시에도 바인딩 보장
+                        bindTooltipElement(m.target);
                     }
-                    
-                    // 기존 배너가 있다면 제거
-                    const existingBanner = document.querySelector('.tooltip-mobile-banner');
-                    if (existingBanner) {
-                        existingBanner.remove();
-                    }
-                    
-                    // 새로운 배너 생성
-                    const banner = document.createElement('div');
-                    banner.className = 'tooltip-mobile-banner';
-                    banner.textContent = tooltipText;
-                    
-                    // 배너에 닫기 버튼 추가
-                    const closeButton = document.createElement('button');
-                    closeButton.className = 'tooltip-banner-close';
-                    closeButton.innerHTML = '×';
-                    closeButton.onclick = () => {
-                        if (banner.parentElement) {
-                            banner.remove();
-                        }
-                    };
-                    banner.appendChild(closeButton);
-                    
-                    // 배너를 body에 추가
-                    if (document.body) {
-                        document.body.appendChild(banner);
-                    } else {
-                        console.warn('document.body가 없습니다.');
-                        return;
-                    }
-                    
-                    // 5초 후 자동으로 배너 제거
-                    setTimeout(() => {
-                        if (banner.parentElement) {
-                            banner.remove();
-                        }
-                    }, 5000);
-                    
-                    e.preventDefault();
-                    e.stopPropagation();
-                } catch (error) {
-                    console.error('모바일 툴팁 배너 생성 중 오류:', error);
                 }
             });
+            observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-tooltip'] });
+            window.__tooltipObserver = observer;
         }
-    });
+    } catch (_) {}
 }

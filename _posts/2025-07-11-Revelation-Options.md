@@ -17,6 +17,10 @@ translations:
 
 <div class="content-kr" markdown="1">
 
+모든 스탯 수치는 레벨 1부터 레벨 25까지 노란색 계시 카드를 기준으로 한다.
+
+<br>
+
 # 주 옵션 (Main Stats)
 
 각 계시 위치 별로 나올 수 있는 주 옵션이 고정돼 있다.
@@ -30,6 +34,13 @@ translations:
 | 진 (Planet) | 공격력, 방어력, 생명, SP 회복, 속도 |
 
 일반적으로 메인 스탯의 최댓값이 높은 관계로, 메인 스탯을 챙긴 이후 부 옵션을 고려하는 편이 좋다.
+
+### 주 (Universe)
+
+| 옵션 | 최소 | 최대 |
+| --- | --- | --- |
+| 공격력 | 54 | 359 |
+| 방어력 | 54 | 359 |
 
 ---
 
@@ -103,6 +114,10 @@ translations:
 </div>
 
 <div class="content-en" markdown="1">
+
+Stats are based on the yellow revelation cards starting at Lv1 to Lv25
+
+<br>
 
 # Main Stats
 
@@ -188,6 +203,10 @@ There are more decimal values, but they are displayed according to values proces
 </div>
 
 <div class="content-jp" markdown="1">
+
+すべてのステータスの数値はレベル1からレベル25までの黄色の啓示カードを基準にしています。
+
+<br>
 
 # メインステータス
 

@@ -110,6 +110,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // 권장 스탯이 전부 '-'인 경우 전체 섹션 숨김
+        try {
+            const statValueEls = Array.from(document.querySelectorAll('.stat-level .value'))
+                .filter(el => {
+                    const row = el.closest('.stat-level');
+                    if (!row) return false;
+                    const style = window.getComputedStyle(row);
+                    return style.display !== 'none' && style.visibility !== 'hidden';
+                });
+            const allDash = statValueEls.length > 0 && statValueEls.every(el => (el.textContent || '').trim() === '-');
+            if (allDash) {
+                const statsReq = document.querySelector('.stats-requirements');
+                if (statsReq) statsReq.style.display = 'none';
+            }
+        } catch (_) {}
+
         // battle-plus stats는 character.html에서 처리
 
         // 계시 세트
@@ -294,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 limitImg.className = 'limit-icon';
                 limitImg.src = `${BASE_URL}/assets/img/character-detail/${character.limit ? 'limit.png' : 'limit_non.png'}`;
                 limitImg.alt = character.limit ? 'limit' : 'non_limit';
-                limitImg.style.width = '24px';
+                limitImg.style.width = '26px';
                 limitImg.style.margin = '4px 0 0 6px';
 
                 raritySection.appendChild(limitImg);

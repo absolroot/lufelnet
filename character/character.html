@@ -2648,6 +2648,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
         // Set the effect text with proper line breaks
         modalDescription.innerHTML = effectText.replace(/\n/g, '<br>');
+
+        // modaDescription에 <br> 추가
+        const br = document.createElement('br');
+        modalDescription.appendChild(br);
+
+        // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
+        const detailLink = document.createElement('a');
+        detailLink.href = `/wonder-weapon/`;
+        detailLink.textContent = 'Detail →';
+        detailLink.target = '_blank';
+        modalDescription.appendChild(detailLink);
         
         // Show the modal
         modal.classList.add('show');

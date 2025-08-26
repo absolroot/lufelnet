@@ -128,6 +128,7 @@ alternate_urls:
       label_source: "획득처",
       label_effect: "효과",
       label_characters: "주요 괴도",
+      label_release: "출시 시점",
       sort_release_desc: "출시 순 ↓",
       sort_release_asc: "출시 순 ↑",
       source_map: {
@@ -147,6 +148,7 @@ alternate_urls:
       label_source: "Source",
       label_effect: "Effect",
       label_characters: "Characters",
+      label_release: "Released with",
       sort_release_desc: "Release ↓",
       sort_release_asc: "Release ↑",
       source_map: {
@@ -166,6 +168,7 @@ alternate_urls:
       label_source: "入手",
       label_effect: "効果",
       label_characters: "使用キャラ",
+      label_release: "実装時期",
       sort_release_desc: "発売順 ↓",
       sort_release_asc: "発売順 ↑",
       source_map: {
@@ -495,10 +498,95 @@ alternate_urls:
       accordion.appendChild(header);
       accordion.appendChild(content);
 
+      // Accordion: Release timing
+      const relAccordion = document.createElement('div');
+      relAccordion.className = 'accordion';
+      const relHeader = document.createElement('div');
+      relHeader.className = 'accordion-header';
+      relHeader.setAttribute('aria-expanded', 'false');
+      relHeader.innerHTML = `<span>${t.label_release || '출시 시점'}</span><span>+</span>`;
+      const relContent = document.createElement('div');
+      relContent.className = 'accordion-content';
+
+      const releaseVal = data && data.release ? String(data.release) : '';
+      if (releaseVal) {
+        if (/palace/i.test(releaseVal)) {
+          // Show mapped palace text if available
+          const mapped = (i18n[lang] && i18n[lang].source_map && i18n[lang].source_map[releaseVal]) ? i18n[lang].source_map[releaseVal] : releaseVal;
+          relContent.textContent = mapped;
+        } else {
+          // Treat as character name
+          const grid = document.createElement('div');
+          grid.className = 'user-list';
+          const a = document.createElement('a');
+          a.className = 'character-link';
+          a.href = `/character.html?name=${encodeURIComponent(releaseVal)}`;
+
+          if(releaseVal==='원더'){
+            a.removeAttribute('href');
+          }
+
+          const cimg = document.createElement('img');
+          cimg.className = 'character-img';
+          cimg.src = `{{ site.baseurl }}/assets/img/tier/${releaseVal}.webp`;
+          cimg.alt = releaseVal;
+          cimg.loading = 'lazy';
+          cimg.onerror = function() { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${releaseVal}.webp`; };
+
+          // Icons for position and element
+          const icons = document.createElement('span');
+          icons.className = 'char-icons';
+          const cdata = (typeof characterData !== 'undefined') ? characterData[releaseVal] : null;
+          const pos = cdata && cdata.position ? cdata.position : '';
+          const ele = cdata && cdata.element ? cdata.element : '';
+          if (pos) {
+            const pi = document.createElement('img');
+            pi.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${pos}.png`;
+            pi.alt = pos;
+            pi.loading = 'lazy';
+            pi.className = 'char-icon';
+            icons.appendChild(pi);
+          }
+          if (ele) {
+            const ei = document.createElement('img');
+            ei.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${ele}.png`;
+            ei.alt = ele;
+            ei.loading = 'lazy';
+            ei.className = 'char-icon';
+            icons.appendChild(ei);
+          }
+
+          const label = document.createElement('span');
+          label.className = 'character-name';
+          label.textContent = getCharacterLabel(releaseVal, lang);
+
+          a.appendChild(cimg);
+          a.appendChild(icons);
+          a.appendChild(label);
+          grid.appendChild(a);
+          relContent.appendChild(grid);
+        }
+      } else {
+        relContent.textContent = '-';
+      }
+
+      // Toggle only when clicking the release header
+      relHeader.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = relContent.classList.toggle('open');
+        relHeader.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        relHeader.lastElementChild.textContent = isOpen ? '−' : '+';
+        relAccordion.classList.toggle('active', isOpen);
+      });
+
+      relAccordion.appendChild(relHeader);
+      relAccordion.appendChild(relContent);
+
       info.appendChild(titleRow);
       info.appendChild(levelBlock);
       info.appendChild(effectBlock);
       info.appendChild(accordion);
+      info.appendChild(relAccordion);
 
       card.appendChild(imgContainer);
       card.appendChild(info);

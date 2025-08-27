@@ -232,3 +232,6 @@ table.rev-table-sub th:nth-child(2),
 table.rev-table-sub td:nth-child(2) { color: #ffcc33; }
 table.rev-table-main th:nth-child(2),
 table.rev-table-main td:nth-child(2) { color: #ffcc33; }
+
+/* Pink-highlight for specific option labels (moon/star/planet main stats) */
+.rev-label-pink { color: #ffd1d1;}

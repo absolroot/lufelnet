@@ -1519,13 +1519,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 주 옵션 라벨 번역 (help 아이콘 포함)
         const mainOptionLabel = currentLang === 'kr' ? '주 옵션' :
-                              currentLang === 'en' ? 'Main Options' : 'メインオプション';
+                              currentLang === 'en' ? 'Main Options' : '主属性';
         const mainOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(2) h3');
         if (mainOptionEl) mainOptionEl.innerHTML = mainOptionLabel + ' ' + createHelpIcon('main-option');
 
         // 부 옵션 라벨 번역 (help 아이콘 포함)
         const subOptionLabel = currentLang === 'kr' ? '부 옵션' :
-                             currentLang === 'en' ? 'Sub Options' : 'サブオプション';
+                             currentLang === 'en' ? 'Sub Options' : '副属性';
         const subOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(3) h3');
         if (subOptionEl) subOptionEl.innerHTML = subOptionLabel + ' ' + createHelpIcon('sub-option');
 
@@ -1634,7 +1634,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 추천 운영 라벨 번역
         const operationLabel = currentLang === 'kr' ? '추천 운영' :
-                             currentLang === 'en' ? 'Skill Rotation' : 'スキル回転';
+                             currentLang === 'en' ? 'Skill Rotation' : 'スキル利用順';
         const operationTitleEl = document.querySelector('.operation-settings .setting-section:first-child h3');
         if (operationTitleEl) operationTitleEl.innerHTML = operationLabel + ' ' + createHelpIcon('recommended-operation');
 
@@ -2732,7 +2732,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     content: 'Recommended options for each revelation position. Priority may change depending on Awareness and weapons.'
                 },
                 'jp': {
-                    title: 'メインオプション',
+                    title: '主属性',
                     content: '各啓示位置別の推奨オプション。意識(Awareness)や武器によって優先順位が変わる場合があります。'
                 }
             },
@@ -2746,8 +2746,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     content: `Refers to the sub-options that are prioritized in revelations for each character. Please refer to the following link for the range of sub-options: <a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>.`
                 },
                 'jp': {
-                    title: 'サブオプション',
-                    content: `怪盗別啓示で優先されるサブオプションを意味します。サブオプションの範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。`
+                    title: '副属性',
+                    content: `怪盗別啓示で優先される副属性を意味します。副属性の範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。`
                 }
             },
             'recommended-stats': {
@@ -2816,7 +2816,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     content: 'Basic cycle examples for each Awareness stage. The order may vary depending on enemies and party composition. If no separate higher awareness cycle is written, it means there are no additional cycle changes as awareness increases.'
                 },
                 'jp': {
-                    title: 'スキル回転',
+                    title: 'スキル利用順',
                     content: '意識(Awareness)段階別基本サイクル例です。敵とパーティによって順序は変動する可能性があります。上位意識サイクルが別途記載されていなければ、別途のサイクル変化は意識増加に伴ってないという話です。'
                 }
             }

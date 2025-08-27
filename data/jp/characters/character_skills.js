@@ -357,7 +357,7 @@ const jpCharacterSkillsData = {
         "skill_highlight": {
             "name": "ステータス強化",
             "element": "패시브",
-            "description": "悠美のステータスの20%分、味方全体のステータスを上昇させる。"
+            "description": "長尾のステータスの20%分、味方全体のステータスを上昇させる。"
         },
         "passive1": {
             "name": "羽ばたき",
@@ -566,7 +566,7 @@ const jpCharacterSkillsData = {
             "name": "ステータス強化",
             "element": "패시브",
             "type":"패시브",
-            "description": "悠美のステータスの15%分、味方全体のステータスを上昇させる。"
+            "description": "富山のステータスの15%分、味方全体のステータスを上昇させる。"
         },
         "passive1": {
             "name": "蝶の夢",
@@ -899,7 +899,7 @@ const jpCharacterSkillsData = {
             "name": "ステータス強化",
             "element": "패시브",
             "type":"패시브",
-            "description": "解明怪盗の各属性値の20%分、出撃中の全味方の対応する属性値が上昇する。"
+            "description": "椎名 悠美の各属性値の20%分、出撃中の全味方の対応する属性値が上昇する。"
         },
         "passive1": {
             "name": "カクテルパーティー",
@@ -1150,7 +1150,7 @@ const jpCharacterSkillsData = {
         "skill_highlight": {
             "name": "ステータス強化",
             "element": "패시브",
-            "description": "悠美のステータスの20%分、味方全体のステータスを上昇させる。"
+            "description": "佐倉のステータスの20%分、味方全体のステータスを上昇させる。"
         },
         "passive1": {
             "name": "悪戯心",
@@ -2025,7 +2025,7 @@ const jpCharacterSkillsData = {
             "name": "ステータス強化",
             "element": "패시브",
             "type": "패시브",
-            "description": "悠美のステータスの15%分、味方全体のステータスを上昇させる。"
+            "description": "自身のステータスの15%分、味方全体のステータスを上昇させる。"
         },
         "passive1": {
             "name": "波間のささやき",
@@ -2065,7 +2065,7 @@ const jpCharacterSkillsData = {
             "name": "ステータス強化",
             "element": "패시브",
             "type": "패시브",
-            "description": "悠美のステータスの15%分、味方全体のステータスを上昇させる。"
+            "description": "富山のステータスの15%分、味方全体のステータスを上昇させる。"
         },
         "passive1": {
             "name": "ダンサブル",

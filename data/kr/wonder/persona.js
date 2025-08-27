@@ -922,7 +922,7 @@ const personaData = {
             name_en: "Serpent of the Sky and Earth III",
             name_jp: "天と地を繋ぐヴァスキ III",
             effects: [
-                "효과 명중이 34.9% 중가한다.",
+                "효과 명중이 34.9% 증가한다.",
                 "전투 시작 시 『응시』를 5중첩 획득한다. 아군 동료가 스킬로 디버프 효과 추가 시, 자신이 『응시』를 1중첩 획득한다(5회 중첩 가능, 동료 마다 턴당『응시』최대 1회 추가).",
                 "자신이 페르소나 스킬 시전 시, 『응시』를 5중첩 보유한 경우 『응시』를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 15% 증가하며, 『뱀독』을 1중첩 추가 획득한다."
             ],
@@ -938,7 +938,7 @@ const personaData = {
             name: "끝없는 속박",
             name_en: "Endless Bind",
             name_jp: "無限の縛り",
-            effect: "1명의 적의 받는 대미지가 16.0% 중가하고, 목표가『뱀독』을 1중첩 획득한다(2회 중첩 가능). 효과는 3턴 동안 지속된다. 『뱀독』: 턴마다 아군 중 공격력이 가장 높은 괴도 공격력 12.8%의 주원 속성 대미지를 받는다(최대로 원더 공격력의 300% 적용).",
+            effect: "1명의 적의 받는 대미지가 16.0% 증가하고, 목표가『뱀독』을 1중첩 획득한다(2회 중첩 가능). 효과는 3턴 동안 지속된다. 『뱀독』: 턴마다 아군 중 공격력이 가장 높은 괴도 공격력 12.8%의 주원 속성 대미지를 받는다(최대로 원더 공격력의 300% 적용).",
             effect_en: "Increases the enemy's dmg taken by 16.0% and gains 1 stack of [Serpent's Bite] (up to 2 stacks). Effect lasts for 3 turns. [Serpent's Bite]: Each turn, the highest ATK Wonder deals 12.8% ATK Psy dmg to the target (maximum 300% of Wonder ATK).",
             effect_jp: "敵が受けるダメージが16.0%増加し、『ヴァスキの毒』を1重複獲得（最大2重複）。効果は3ターンの間持続する。『ヴァスキの毒』：各ターン、最も高いATKのウォンダーがターゲットに12.8% ATKの念動属性ダメージを与える（最大300%のウォンダーATK適用）。",
             priority: 2,
@@ -1193,8 +1193,8 @@ const personaData = {
             name_en: "Imperial Purge",
             name_jp: "尊王の調伏",
             effect: "1명의 적에게 180.0%의 핵열 속성 대미지를 주고, 원소 이상 상태인 적 공격 시 해당 스킬 대미지가 25% 증가한다. 또한 아군 핵열 속성 동료의 공격력이 20% 증가하고, 2턴간 지속된다.",
-            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases damage to enemy inflicted with Elemental Ailments by 25% and increases all Nuke allies' ATK by 20% for 2 turns.",
-            effect_jp: "敵単体に180.0%攻撃力の核熱ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25%上昇する。また、核熱属性の味方の攻撃力が20％上昇し、2ターンの間持続する。",
+            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases 25% damage to enemy inflicted with Elemental Ailments.",
+            effect_jp: "敵単体に180.0%攻撃力の核熱ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25%上昇する。また。",
             priority: 1,
             icon: "핵열"
         },
@@ -1466,9 +1466,9 @@ const personaData = {
             name_en: "Destined Streak III",
             name_jp: "連勝の宿命 III",
             effects: [
-                "크리티컬 효과가 34.9% 중가한다.",
+                "크리티컬 효과가 34.9% 증가한다.",
                 "전투 시작 시 『기습』을 4중첩 획득한다. 2턴 동안 고유 스킬이 대미지를 줄 때마다 60% 확률로 『기습』을 획득하며,",
-                "매회 자신의 공격력이 9%씩 중가한다(8회 중첩 가능). 8중첩 도달 시 크리티컬 확률이 30% 증가한다."
+                "매회 자신의 공격력이 9%씩 증가한다(8회 중첩 가능). 8중첩 도달 시 크리티컬 확률이 30% 증가한다."
             ],
             effects_en: [
                 "Increases CRIT DMG by 34.9%. At the start of battle, gains 4 stacks of [Ambush]. When using the signature skill there is a 60% chance to gain [Ambush], each stack increases own ATK by 9% for 2 turns, up to 8 stacks. Increases the CRIT Rate of the signature skill by 30% when reaching 8 stacks."
@@ -1564,8 +1564,8 @@ const personaData = {
             name_en: "Trumpet of Destruction III",
             name_jp: "破壊のパフェ III",
             effects: [
-                "효과 명중이 34.9% 중가한다.",
-                "자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 중가하고, 적이 받는 대미지가 6.5% 중가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
+                "효과 명중이 34.9% 증가한다.",
+                "자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 증가하고, 적이 받는 대미지가 6.5% 증가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
             ],
             effects_en: [
                 "Increases Ailment Accuracy by 34.9%. When using a Persona skill against an enemy, if the number of debuff effects on the target is 15 or more, increases your Ailment Accuracy by 50% for 2 turns and increases the enemy's dmg taken by 6.5% for 2 turns. After adding debuff effects to the enemy, decreases all foes' DEF by 12% for 2 turns."
@@ -1709,8 +1709,8 @@ const personaData = {
             name_en: "Higher Protection III",
             name_jp: "巨大な守護 III",
             effects: [
-                "방어력이 43.6% 중가한다.",
-                "산달폰이 필드 에 있을 경우 실드를 보유하고 있는 동료의 방어력이 42% 중가한다. 백업 출전 시 버프 효과를 25% 획득한다."
+                "방어력이 43.6% 증가한다.",
+                "산달폰이 필드 에 있을 경우 실드를 보유하고 있는 동료의 방어력이 42% 증가한다. 백업 출전 시 버프 효과를 25% 획득한다."
             ],
             effects_en: [
                 "Increases DEF by 43.6%. When Sandalphon is present, increases all shielded allies' DEF by 42%, gains 25% of this effect when not present. Decreases the HP cost to 15% when using the signature skill."
@@ -2062,7 +2062,7 @@ const personaData = {
             name_en: "Loving Whisper I",
             name_jp: "慈愛のささやき I",
             effects: [
-                "방어력이 8.7% 중가한다. 동료를 목표로 스킬 시전 시 2턴 동안 동료의 방어력이 15.4% 증가한다."
+                "방어력이 8.7% 증가한다. 동료를 목표로 스킬 시전 시 2턴 동안 동료의 방어력이 15.4% 증가한다."
             ],
             effects_en: [
                 "Increases DEF by 8.7%. When using a skill on allies, increases their DEF by 15.4% for 2 turns."
@@ -2154,8 +2154,8 @@ const personaData = {
             name_en: "Midnight Seduction III",
             name_jp: "真夜中の誘惑 III",
             effects: [
-                "공격력이 29.1% 중가한다.",
-                "빙결, 질풍 또는 주원 속성의 스킬을 사용하면 2턴 동안 자신의 해당 속성 대미지가 30% 중가하고, 대미지가 10% 감면된다.",
+                "공격력이 29.1% 증가한다.",
+                "빙결, 질풍 또는 주원 속성의 스킬을 사용하면 2턴 동안 자신의 해당 속성 대미지가 30% 증가하고, 대미지가 10% 감면된다.",
                 "릴리스가 빙결, 질풍 또는 주원 속성의 스킬을 사용하면 고유 스킬이 진화하여 같은 속성의 대미지를 추가하고, 이번 스킬 대미지가 대폭 증가 및 임시 관통 보너스를 15% 획득한다."
             ],
             effects_en: [
@@ -2462,7 +2462,7 @@ const personaData = {
             name_en: "Roaring Hound III",
             name_jp: "咆哮する猛犬 III",
             effects: [
-                "크리티컬 확률이 17.5% 중가한다.",
+                "크리티컬 확률이 17.5% 증가한다.",
                 "크리티컬 시 적에게 『치명덫』을 추가하고, 다음 고유 스킬 공격으로 표식을 폭발시켜 스킬 대미지가 공격력의 87%만큼 추가 증가한다. 표식 폭발 시 낮은 확률로 즉사 효과가 발동된다."
             ],
             effects_en: [

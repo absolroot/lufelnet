@@ -210,7 +210,7 @@ There are more decimal values, but they are displayed according to values proces
 
 # メインステータス
 
-各啓示のポジション別に出現可能なメインオプションが固定されています。
+各啓示のポジション別に出現可能な主属性が固定されています。
 
 | ポジション | オプション |
 | --- | --- |

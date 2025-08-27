@@ -581,13 +581,43 @@ alternate_urls:
         }
     }
 
+    // Helper: determine if a main stat label should be pink-highlighted for a given tab and language
+    function isRevPinkLabel(lang, slotKey, label) {
+        const L = lang || 'kr';
+        const K = slotKey || '';
+        const maps = {
+            kr: {
+                moon: new Set(['대미지 보너스', '치료 효과']),
+                star: new Set(['크리티컬 확률', '크리티컬 효과', '효과 명중']),
+                planet: new Set(['SP 회복', '속도'])
+            },
+            en: {
+                moon: new Set(['Attack Mult.', 'Healing Effect']),
+                star: new Set(['Crit Rate', 'Crit Mult.', 'Ailment Accuracy']),
+                planet: new Set(['SP Recovery', 'Speed'])
+            },
+            jp: {
+                moon: new Set(['攻撃倍率+', 'HP回復量']),
+                star: new Set(['CRT発生率', 'CRT倍率', '状態異常命中']),
+                planet: new Set(['SP回復', '速さ'])
+            }
+        };
+        const dict = maps[L] || maps.kr;
+        const set = dict[K];
+        return !!(set && set.has(label));
+    }
+
     function renderMainTable(lang, slotKey) {
         const i18n = revI18n[lang] || revI18n.kr;
         const rows = (mainStatsData[lang] || mainStatsData.kr)[slotKey] || [];
         const header = `<div class="rev-subsection-title">${i18n.main_title}</div>`;
         // Show bigger values first (Max -> Min)
         const table = [`<div class="rev-table-wrap"><table class="rev-table rev-table-main"><thead><tr><th>${i18n.col_option}</th><th>${i18n.col_max}</th><th>${i18n.col_min}</th></tr></thead><tbody>`,
-            ...rows.map(r=>`<tr><td>${r[0]}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`),
+            ...rows.map(r=>{
+                const pink = isRevPinkLabel(lang, slotKey, r[0]);
+                const label = pink ? `<span class="rev-label-pink">${r[0]}</span>` : r[0];
+                return `<tr><td>${label}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`;
+            }),
             `</tbody></table></div>`].join('');
         return header + table;
     }

@@ -633,7 +633,7 @@ With over 2500 ATK and the ability to grant more than 100% CRIT DMG, it delivers
 
 Skill 2 consumes 30% of HP, but since **the buff reaches maximum efficiency when the ally’s HP is 60% or lower, the buff target needs to take enemy attacks.**  `,
 review_jp: `
-単体の攻撃力数値とCRT倍率を大幅に強化するバッファー。  
+単体の攻撃力数値とCRT倍率を大幅に強化するバファー。  
 
 攻撃力2500超え、CRT倍率100%以上付与可能で、**★4ながら圧倒的な性能を誇る。**  
 
@@ -680,7 +680,7 @@ Although the character possesses TECHNICAL, they are currently not affected by t
 review_jp: `
 強力な単体ターゲットアタッカーであり、P5から登場した核熱属性を活かせるため、属性面で有利な怪盗です。
 
-啓示6で追加ターンを獲得できるようになり、序盤の単体アタッカーとして最強の地位を確立します。
+意識6で追加ターンを獲得できるようになり、序盤の単体アタッカーとして最強の地位を確立します。
 
 属性異常の影響を大きく受けるため、**VINOとの編成は必須**です。
 
@@ -746,13 +746,13 @@ Because it is a **counter-type dealer**, unlike other dealers who are placed las
 Though Penetration is granted through passives and Awareness 6, Surt and Jack-o-Lantern, intended for FOX, have low base Defense, making it difficult to see dramatic results.`,
 review_jp:`**防御力**を基にした**反撃型アタッカー**として設計されており、**耐久やオートプレイに優れたアタッカー**です。
 
-**反撃確率65%**という不安定な要素があるため、スキル3の100%反撃やハイライトを使用しない限り、最高スコアを狙うには周回が必要になることがあります。
+<b>反撃確率65%</b>という不安定な要素があるため、スキル3の100%反撃やハイライトを使用しない限り、最高スコアを狙うには周回が必要になることがあります。
 
 怪盗の大多数が攻撃力に依存し、多くのバッファーも攻撃力を上げるため、**一緒に使えるバフが限られています**。
 
-**反撃型アタッカー**という特性上、他のディーラーのように最後ではなく、**最初の順番に配置**する方がバフ維持の面で効率的です。
+**反撃型アタッカー**という特性上、他のアタッカーのように最後ではなく、**最初の順番に配置**する方がバフ維持の面で効率的です。
 
-パッシブやAwareness 6 で貫通を得られますが、FOX向けのスルトやジャックランタンは基礎防御力が低いため、大きな効果は得にくいです。`
+パッシブや意識6 で貫通を得られますが、FOX向けのスルトやジャックランタンは基礎防御力が低いため、大きな効果は得にくいです。`
 
     },
 "유우미": { name_en: "Yumi Shiina", name_jp: "椎名 悠美", codename: "PHOEBE",
@@ -879,7 +879,7 @@ review_jp: `
 
 そのため、ワンダーの武器「機械の裁き」を活用して万能ダメージを上げるか、**攻撃倍率+を上げる形でバフを構成**する必要があります。
 
-スキル1で付与されるVerse of Hateは30%の確率で敵に呪怨効果を付与し、この30%は状態異常命中により上昇する可能性があります。
+スキル1で付与される憎文は30%の確率で敵に呪怨効果を付与し、この30%は状態異常命中により上昇する可能性があります。
 
 スキル1を繰り返してできるだけ多くの敵に呪怨効果を付与し、ペルソナ**パズズ**のパッシブでこれを清算することで、大きなダメージを与えることができます。
 

@@ -3215,7 +3215,7 @@ const personaSkillList = {
         icon: "패시브"
     },
     "마도의 재능 I": {
-        name_jp: "魔導の才能Ⅰ",
+        name_jp: "戦闘の才覚Ⅰ",
         name_en: "Magic Ability I",
         description: "주는 대미지가 4.7% 증가한다.",
         description_en: "Increase damage by 4.7% .",
@@ -3232,7 +3232,7 @@ const personaSkillList = {
         ]
     },
     "마도의 재능 II": {
-        name_jp: "魔導の才能Ⅱ",
+        name_jp: "戦闘の才覚Ⅱ",
         name_en: "Magic Ability II",
         description: "주는 대미지가 6.7% 증가한다.",
         description_en: "Increase damage dealt by 6.7% .",
@@ -3249,7 +3249,7 @@ const personaSkillList = {
         ]
     },
     "마도의 재능 III": {
-        name_jp: "魔導の才能Ⅲ",
+        name_jp: "戦闘の才覚Ⅲ",
         name_en: "Magic Ability III",
         description: "주는 대미지가 8.7% 증가한다.",
         description_en: "Increase damage dealt by 8.7% .",
@@ -3266,7 +3266,7 @@ const personaSkillList = {
         ]
     },
     "마도의 재능 IV": {
-        name_jp: "魔導の才能Ⅳ",
+        name_jp: "戦闘の才覚Ⅳ",
         name_en: "Magic Ability IV",
         description: "주는 대미지가 10.8% 증가한다.",
         description_en: "Increase damage dealt by 10.8% .",
@@ -3283,7 +3283,7 @@ const personaSkillList = {
         ]
     },
     "마도의 재능 V": {
-        name_jp: "魔導の才能Ⅴ",
+        name_jp: "戦闘の才覚Ⅴ",
         name_en: "Magic Ability V",
         description: "주는 대미지가 13.0% 증가한다.",
         description_en: "Increase damage dealt by 13.0% .",
@@ -3300,7 +3300,7 @@ const personaSkillList = {
         ]
     },
     "마도의 재능": {
-        name_jp: "魔導の才能",
+        name_jp: "戦闘の才覚",
         name_en: "Magic Ability",
         description: "주는 대미지가 4.7%/6.7%/8.7%/10.8%/13.0% 증가한다.",
         description_en: "Increase damage dealt by 4.7%/6.7%/8.7%/10.8%/13.0% .",
@@ -4199,7 +4199,7 @@ const personaSkillList = {
         icon: "패시브"
     },
     "방어 강화 I": {
-        name_jp: "防御強化Ⅰ",
+        name_jp: "プロテクブースタⅠ",
         name_en: "Protect Boost I",
         description: "방어력이 8.8% 증가한다.",
         description_jp: "防御力が8.8%上昇する。",
@@ -4216,7 +4216,7 @@ const personaSkillList = {
         ]
     },
     "방어 강화 II": {
-        name_jp: "防御強化Ⅱ",
+        name_jp: "プロテクブースタⅡ",
         name_en: "Protect Boost II",
         description: "방어력이 12.5% 증가한다.",
         description_jp: "防御力が12.5%上昇する。",
@@ -4233,7 +4233,7 @@ const personaSkillList = {
         ]
     },
     "방어 강화 III": {
-        name_jp: "防御強化Ⅲ",
+        name_jp: "プロテクブースタⅢ",
         name_en: "Protect Boost III",
         description: "방어력이 16.3% 증가한다.",
         description_jp: "防御力が16.3%上昇する。",
@@ -4250,7 +4250,7 @@ const personaSkillList = {
         ]
     },
     "방어 강화": {
-        name_jp: "防御強化",
+        name_jp: "プロテクブースタ",
         name_en: "Protect Boost",
         description: "방어력이 8.8%/12.5%/16.3% 증가한다.",
         description_jp: "防御力が8.8%/12.5%/16.3%上昇する。",
@@ -4259,7 +4259,7 @@ const personaSkillList = {
         icon: "패시브"
     },
     "대미지 면역 I": {
-        name_jp: "ダメージ免疫Ⅰ",
+        name_jp: "レデュースブースタⅠ",
         name_en: "Reduction Boost I",
         description: "받는 대미지가 4.7% 감소한다.",
         description_jp: "受けるダメージが4.7%軽減される。",
@@ -4276,7 +4276,7 @@ const personaSkillList = {
         ]
     },
     "대미지 면역 II": {
-        name_jp: "ダメージ免疫Ⅱ",
+        name_jp: "レデュースブースタⅡ",
         name_en: "Reduction Boost II",
         description: "받는 대미지가 6.7% 감소한다.",
         description_jp: "受けるダメージが6.7%軽減される。",
@@ -4293,7 +4293,7 @@ const personaSkillList = {
         ]
     },
     "대미지 면역 III": {
-        name_jp: "ダメージ免疫Ⅲ",
+        name_jp: "レデュースブースタⅢ",
         name_en: "Reduction Boost III",
         description: "받는 대미지가 8.7% 감소한다.",
         description_jp: "受けるダメージが8.7%軽減される。",
@@ -4310,7 +4310,7 @@ const personaSkillList = {
         ]
     },
     "대미지 면역 IV": {
-        name_jp: "ダメージ免疫Ⅳ",
+        name_jp: "レデュースブースタⅣ",
         name_en: "Reduction Boost IV",
         description: "받는 대미지가 10.8% 감소한다.",
         description_jp: "受けるダメージが10.8%軽減される。",
@@ -4327,7 +4327,7 @@ const personaSkillList = {
         ]
     },
     "대미지 면역": {
-        name_jp: "ダメージ免疫",
+        name_jp: "レデュースブースタ",
         name_en: "Reduction Boost",
         description: "받는 대미지가 4.7%/6.7%/8.7%/10.8% 감소한다.",
         description_jp: "受けるダメージが4.7%/6.7%/8.7%/10.8%軽減される。",
@@ -4396,7 +4396,7 @@ const personaSkillList = {
         icon: "패시브"
     },
     "명중 강화 I": {
-        name_jp: "命中強化Ⅰ",
+        name_jp: "異常命中ブースタⅠ",
         name_en: "Accuracy Boost I",
         description: "효과 명중이 7% 증가한다.",
         description_jp: "状態異常命中が7%上昇する。",
@@ -4413,7 +4413,7 @@ const personaSkillList = {
         ]
     },
     "명중 강화 II": {
-        name_jp: "命中強化Ⅱ",
+        name_jp: "異常命中ブースタⅡ",
         name_en: "Accuracy Boost II",
         description: "효과 명중이 10% 증가한다.",
         description_jp: "状態異常命中が10%上昇する。",
@@ -4430,7 +4430,7 @@ const personaSkillList = {
         ]
     },
     "명중 강화 III": {
-        name_jp: "命中強化Ⅲ",
+        name_jp: "異常命中ブースタⅢ",
         name_en: "Accuracy Boost III",
         description: "효과 명중이 13% 증가한다.",
         description_jp: "状態異常命中が13%上昇する。",
@@ -4447,7 +4447,7 @@ const personaSkillList = {
         ]
     },
     "명중 강화 IV": {
-        name_jp: "命中強化Ⅳ",
+        name_jp: "異常命中ブースタⅣ",
         name_en: "Accuracy Boost IV",
         description: "효과 명중이 16.2% 증가한다.",
         description_jp: "状態異常命中が16.2%上昇する。",
@@ -4464,7 +4464,7 @@ const personaSkillList = {
         ]
     },
     "명중 강화 V": {
-        name_jp: "命中強化Ⅴ",
+        name_jp: "異常命中ブースタⅤ",
         name_en: "Accuracy Boost V",
         description: "효과 명중이 19.4% 증가한다.",
         description_jp: "状態異常命中が19.4%上昇する。",
@@ -4481,7 +4481,7 @@ const personaSkillList = {
         ]
     },
     "명중 강화": {
-        name_jp: "命中強化",
+        name_jp: "異常命中ブースタ",
         name_en: "Accuracy Boost",
         description: "효과 명중이 7%/10%/13%/16.2%/19.4% 증가한다.",
         description_jp: "状態異常命中が7%/10%/13%/16.2%/19.4%上昇する。",
@@ -4904,7 +4904,7 @@ const personaSkillList = {
         icon: "패시브"
     },
     "실드 강화" : {
-        name_jp: "シールド強化",
+        name_jp: "シールドブースタ",
         name_en: "Shield Boost",
         description: "실드 효과가 4.2%/-/7.8%/9.7% 증가한다.",
         description_jp: "シールド効果が4.2%/-/7.8%/9.7%上昇する。",

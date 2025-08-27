@@ -22,7 +22,7 @@ const personaData = {
                 "[Marked]: Reduce enemy defense by 29.6% for 2 turns."
             ],
             effects_jp: [
-                "攻撃力が29.1%上昇。味方が『標的』に攻撃した時、攻撃力が20%上昇。『標的』を保有した敵の防御力が12%追加減少する。自分が『標的』を持つ敵攻撃時、攻撃力18%の銃撃属性ダメージを1回与える。",
+                "攻撃力が29.1%上昇。戦闘開始時、敵単体に『標的』を付与。味方が『標的』に攻撃した時、攻撃力が20%上昇。『標的』の防御力がさらに12%低下。自身が『標的』を攻撃した時、追加で攻撃力18%の銃撃属性ダメージ",
                 "『標的』：2ターンの間、敵の防御力が29.6%減少する。"
             ],
             priority: 3
@@ -54,7 +54,7 @@ const personaData = {
        ],
         comment : "선봉으로 사용하지 않고 교체 후 페르소나 스킬 사용 시 '전투 시작 시 『조준』 획득' 이 발동 돼 『조준』이 적용된다 (최초 1회). 버프도 동일하게 『조준』이 발동된다.",
         comment_en: "If you don't use Janosik as the vanguard, when you use the Persona skill after replacing, the '『Marked』 is obtained at the start of battle' is triggered, and the '『Marked』' is applied (only once). The buff also triggers '『Marked』'.",
-        comment_jp: "ジャノシクを先頭にしないで、ペルソナスキルを使用する前に交代した場合、『ジャノシクの収穫 III』が発動し、『マーク』が付与されます（1回のみ）。バフも『マーク』が発動します。"
+        comment_jp: "ヤノシークを先頭にしないで戦闘を開始して、戦闘中にヤノシークでスキル（バフスキルでも可）を利用すると、『ハンティング』の効果で『標的』が付与されます（1回のみ）。"
     },
     "디오니소스": {
         name_en: "Dionysus",
@@ -348,7 +348,7 @@ const personaData = {
         ],
         comment : "전투 시작 시 가장 맨 앞에 배치해야 한다. 본능 버프는 페르소나 전환 후에도 지속된다. ",
         comment_en: "Must be placed in the front row at the start of battle. The core passive buff continues even after persona switching.",
-        comment_jp: "戦闘開始時に最も前方に配置しなければならない。本能バフはペルソナ転換後も持続する。"
+        comment_jp: "戦闘開始時、1体目のペルソナにしておくべきである。『天王の眼力』はペルソナチェンジした後も持続する。"
     },
     "지국천": {
         name_en: "Jikokuten",
@@ -499,7 +499,7 @@ const personaData = {
         ],
         comment : "광역 감전을 통해 감전에 의한 크리티컬 확률 증가에 이어 본능을 통한 10%로 총 20%의 크리티컬 확률 증가를 노릴 수 있다.",
         comment_en: "Through area-wide shock, you can aim for a total of 20% critical rate increase with 10% from the core passive following the critical rate increase from shock.",
-        comment_jp: "広域感電を通じて感電によるクリティカル率増加に続いて本能による10%で総20%のクリティカル率増加を狙うことができる。"
+        comment_jp: "感電によるCRT率上昇と『昂揚の神楽』による10%で計20%のCRT率上昇を狙うことができる。"
     },
     "서큐버스": {
         name_en: "Succubus",
@@ -1155,7 +1155,7 @@ const personaData = {
         ],
         comment : "기본 명중 80% + 명중 강화 IV 16.2% + 우중충한 하늘 16.9% + 본능 34.9% + 마이팰리스 2.3% = 150.3% 로 \'죽어 줄래?\' 상한 10%를 채울 수 있다. (우중충한 하늘 적용 여부 미확인)",
         comment_en: "Base accuracy 80% + Accuracy Enhancement IV 16.2% + Gloomy Sky 16.9% + Core Passive 34.9% + My Palace 2.3% = 150.3%, which can reach the 'Die For Me!' upper limit of 10%. (Gloomy Sky application unconfirmed)",
-        comment_jp: "基本命中80% + 命中強化IV 16.2% + 憂鬱な空16.9% + 本能34.9% + マイパレス2.3% = 150.3%で『死んでくれる？』上限10%を満たすことができる。（憂鬱な空適用可否未確認）"
+        comment_jp: "基本命中率80%+異常命中ブースタIV 16.2% + 浮かない空 16.9% + 再生の呪い 34.9% + マイパレス効果 2.3% = 150.3%で、『死んでくれる？』の最大効果10%を満たすことができる（浮かない空の適用可否は未確認）"
     },
     "비사문천": {
         name_en: "Bishamonten",
@@ -1504,7 +1504,7 @@ const personaData = {
         ],
         comment: "WONDER를 메인 딜러로 사용할 경우 이 페르소나를 채용한다.",
         comment_en: "Adopt this persona when using WONDER as main dealer.",
-        comment_jp: "WONDERをメインディーラーとして使用する場合、このペルソナを採用する。",
+        comment_jp: "WONDERをメインアタッカーとして利用する場合、このペルソナを採用すると。",
     },
 
     "네코쇼군": {
@@ -1795,11 +1795,11 @@ const personaData = {
         ],
         comment : "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Attack enhancement applies to healing values. (Low priority due to limited impact)",
-        comment_jp: "攻撃強化は治療数値に適用される。（影響力が高くないため優先順位は低い）"
+        comment_jp: "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）"
     },
     "티타니아": {
         name_en: "Titania",
-        name_jp: "ティタニア",
+        name_jp: "ティターニア",
         grade: "6",
         star: "5",
         position: "구원",
@@ -1846,7 +1846,7 @@ const personaData = {
         ],
         comment : "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Attack enhancement applies to healing values. (Low priority due to limited impact)",
-        comment_jp: "攻撃強化は治療数値に適用される。（影響力が高くないため優先順位は低い）"
+        comment_jp: "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）"
     },
     "파르바티": {
         name_en: "Parvati",
@@ -1897,7 +1897,7 @@ const personaData = {
         ],
         comment : "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Core passive effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
-        comment_jp: "ハイライトによる治療にも本能効果が発動する。攻撃強化は治療数値に適用される。（影響力が高くないため優先順位は低い）"
+        comment_jp: "ハイライトによる治療にも本能効果が発動する。アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）"
     },
     "사라스바티": {
         name_en: "Sarasvati",
@@ -2620,7 +2620,7 @@ const personaData = {
         uniqueSkill: {
             name: "타룬다",
             name_en: "Tarnada",
-            name_jp: "タルナダ",
+            name_jp: "タルンダ",
             effect: "3턴 동안 적 1명의 공격력이 25.8% 감소한다.",
             effect_en: "Decreases ATK of 1 foe by 25.8% for 3 turns.",
             effect_jp: "3ターンの間、敵単体の攻撃力が25.8%低下させる。",

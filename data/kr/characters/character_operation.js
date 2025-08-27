@@ -180,7 +180,7 @@ const operationData = {
             "· Global Version A5 Cycle = A4 Cycle"
         ],
         note_jp: [
-            "· 敵の体力%によってテクニックが変化します。",
+            "· 敵の残りHPによって、戦術が変化します",
             "· グローバルバージョンA5サイクル = A4サイクル"
         ]
     },
@@ -405,7 +405,7 @@ const operationData = {
             "· Change the order of Lavian Rose activations to 1, 3, and so on"
         ],
         note_jp: [
-            "· 没頭の活性化順序によって1、3の順序を変更する"
+            "· 『ラビアンローズ』状態に合わせて、スキルの順序を変更してください"
         ]
     },
     "야오링": {
@@ -457,7 +457,7 @@ const operationData = {
             "· Set the battle order to 1 to maximize the duration of the buff"
         ],
         note_jp: [
-            "· 戦闘順序を1番に設定してバッフ維持時間最大化"
+            "· 戦闘順序を1番に設定してバフ維持時間最大化"
         ]
     },
     "유우미": {
@@ -473,7 +473,7 @@ const operationData = {
             "· The operation changes based on the number of exclusive weapon actions and the party"
         ],
         note_jp: [
-            "· チョコレートを製造するためのチームの属性によって、ワンダーの先頭のフェルソナを使用",
+            "· 戦闘開始時に『テイクオーダー』の効果でフレーバーを取得する際、ワンダーは先頭のペルソナの属性として扱われます",
             "· 専用武器の行動減少回数とパーティーによって運用が変化します。"
         ]
     },

@@ -899,7 +899,7 @@ const jpCharacterSkillsData = {
             "name": "ステータス強化",
             "element": "패시브",
             "type":"패시브",
-            "description": "椎名 悠美の各属性値の20%分、出撃中の全味方の対応する属性値が上昇する。"
+            "description": "悠美のステータスの20%分、味方全体のステータスを上昇させる"
         },
         "passive1": {
             "name": "カクテルパーティー",

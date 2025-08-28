@@ -1549,7 +1549,7 @@ const characterData = {
         "name": "리 야오링·사자무",
         "name_en": "Yaoling Li·Lion Dance",
         "name_jp": "李瑤鈴·獅子舞",
-        "codename": "RIN",
+        "codename": "RIN·Lion Dance",
         "skill_item": 4,
         "sub_revel2": ["공격력", "대미지보너스"],
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],

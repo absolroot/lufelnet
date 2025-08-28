@@ -203,7 +203,8 @@ function addTooltips() {
             sortedKeys.forEach(key => {
                 if (!specialKeywords.includes(key)) {
                     // 대소문자 구분 안함
-                    const regex = new RegExp(`${key}(?![^<]*>)`, 'gi');
+                    const keyEsc = escapeRegExp(key);
+                    const regex = new RegExp(`${keyEsc}(?![^<]*>)`, 'gi');
                     html = html.replace(regex, (match) => {
                         const marker = `###TOOLTIP${counter}###`;
                         replacements.set(marker, `<span class="tooltip-text" data-tooltip="${dict[key]}">${match}</span>`);
@@ -240,31 +241,37 @@ function addTooltips() {
             const replacements = new Map();
             
             sortedKeys.forEach(key => {
+                let replacedForKey = false;
+                const keyEsc = escapeRegExp(key);
                 if (specialKeywords.includes(key)) {
-                    const regex = new RegExp(`${key}(?![^<]*>)`, 'g');
+                    const regex = new RegExp(`${keyEsc}(?![^<]*>)`, 'g');
                     html = html.replace(regex, (match) => {
                         const marker = `###TOOLTIP${counter}###`;
                         replacements.set(marker, `<span class="tooltip-text" data-tooltip="${tooltip[key]}">${match}</span>`);
                         counter++;
+                        replacedForKey = true;
                         return marker;
                     });
                 } else if (specialEffectKeywords.includes(key)) {
-                    const regex = new RegExp(`${key} 효과(?![^<]*>)`, 'g');
+                    const regex = new RegExp(`${keyEsc} 효과(?![^<]*>)`, 'g');
                     html = html.replace(regex, (match) => {
                         const marker = `###TOOLTIP${counter}###`;
                         replacements.set(marker, `<span class="tooltip-text" data-tooltip="${tooltip[key]}">${key}</span> 효과`);
                         counter++;
+                        replacedForKey = true;
                         return marker;
                     });
                 } else {
-                    const regex = new RegExp(`『${key}』(?![^<]*>)`, 'g');
+                    const regex = new RegExp(`『${keyEsc}』(?![^<]*>)`, 'g');
                     html = html.replace(regex, () => {
                         const marker = `###TOOLTIP${counter}###`;
                         replacements.set(marker, `『<span class="tooltip-text" data-tooltip="${tooltip[key]}">${key}</span>』`);
                         counter++;
+                        replacedForKey = true;
                         return marker;
                     });
                 }
+                // if (replacedForKey) matchedKeys.push(key);
             });
             
             // 임시 마커를 실제 툴팁으로 교체
@@ -273,12 +280,13 @@ function addTooltips() {
             desc.innerHTML = html;
 
             // 『』 장식 처리 (KR 전용)
+            /*
             if (!html.includes('class="bracket-left"') && !html.includes('class="bracket-right"')) {
                 html = html.replace(/『(?![^<]*>)/g, '<span class="bracket-left">『</span>');
                 html = html.replace(/』(?![^<]*>)/g, '<span class="bracket-right">』</span>');
                 
                 desc.innerHTML = html;
-            }
+            }*/
         }
     });
 

@@ -845,7 +845,7 @@ review_jp: `
     "토모코·여름": { name_en: "Noge Tomoko Summer", name_jp: "野毛 朋子 夏", codename: "MOKO·Summer",
         review: ``
     },
-"토시야": { name_en: "Seumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
+"토시야": { name_en: "Sumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
         review:`
 주원 효과를 기반으로 적에게 % 대미지를 주는 딜러입니다.
 

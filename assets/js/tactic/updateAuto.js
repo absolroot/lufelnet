@@ -1,6 +1,9 @@
-    
-      /* ========== 자동 액션 업데이트 ========== */
+    /* ========== 자동 액션 업데이트 ========== */
       function updateAutoActions() {
+        // 임포트 중에는 자동 액션 업데이트 스킵 (턴 데이터 보존)
+        if (window.__IS_APPLYING_IMPORT) {
+          return;
+        }
         // URL 파라미터에 data가 있는 경우에만 자동 업데이트를 건너뜀
      //   if (new URLSearchParams(window.location.search).has('data')) {
      //     return;
@@ -29,18 +32,8 @@
             return action;
           }).filter(action => action !== null);
 
-          // 새로운 파티원에 대한 자동 액션 추가
-          sortedParty.forEach(member => {
-            if (!updatedActions.some(action => action.character === member.name)) {
-              updatedActions.push({
-                type: 'auto',
-                character: member.name,
-                wonderPersona: "",
-                action: "",
-                memo: ""
-              });
-            }
-          });
+          // 새로운 파티원에 대한 자동 액션은 생성하지 않음
+          // (임포트 데이터 보존 및 의식 패턴/사용자 조작에 의해서만 생성되도록 함)
 
           // 해명괴도의 빈칸 action 삭제
           updatedActions = updatedActions.filter(action => {
@@ -94,4 +87,3 @@
         
         renderTurns();
       }
-      

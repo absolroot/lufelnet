@@ -223,13 +223,12 @@ window.applyImportedData = function(payload, options = {}) {
     updatePartyImages();
     renderTurns();
 
-    // characterData가 늦게 로드되는 경우를 대비해 짧게 재시도하여 아이콘을 보정
+    // characterData 지연 로딩 시 아이콘만 안전하게 보정 (이벤트 재디스패치 없이 UI만 갱신)
     try {
       setTimeout(() => {
-        document.querySelectorAll('.party-member .party-name-input').forEach(input => {
-          const evt = new Event('change', { bubbles: true });
-          input.dispatchEvent(evt);
-        });
+        if (typeof updatePartyImages === 'function') {
+          updatePartyImages();
+        }
       }, 300);
     } catch (_) {}
 

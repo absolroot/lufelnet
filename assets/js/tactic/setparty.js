@@ -274,16 +274,18 @@
           const oldName = partyMembers[index].name;
           partyMembers[index].name = "";
           
-          // 해당 캐릭터의 자동 액션 삭제
-          turns.forEach(turn => {
-            turn.actions = turn.actions.filter(action => 
-              action.type === 'manual' || action.character !== oldName
-            );
-          });
-          
-          updateAutoActions();
-          updatePartyImages();
-          renderTurns();
+          if (!window.__IS_APPLYING_IMPORT) {
+            // 해당 캐릭터의 자동 액션 삭제
+            turns.forEach(turn => {
+              turn.actions = turn.actions.filter(action => 
+                action.type === 'manual' || action.character !== oldName
+              );
+            });
+            
+            updateAutoActions();
+            updatePartyImages();
+            renderTurns();
+          }
           // 선택 아이콘 제거
           setCharacterIconOnInputWithElement(input, "");
           input.focus();
@@ -477,14 +479,17 @@
           // 입력 변경 시 아이콘 갱신
           setCharacterIconOnInputWithElement(input, selectedName);
           
-          // 턴 데이터에서 해당 캐릭터 업데이트
-          turns.forEach(turn => {
-            turn.actions.forEach(action => {
-              if (action.character === oldName) {
-                action.character = selectedName || "";
-              }
+          // 임포트 중에는 턴 데이터 변형 스킵
+          if (!window.__IS_APPLYING_IMPORT) {
+            // 턴 데이터에서 해당 캐릭터 업데이트
+            turns.forEach(turn => {
+              turn.actions.forEach(action => {
+                if (action.character === oldName) {
+                  action.character = selectedName || "";
+                }
+              });
             });
-          });
+          }
           
           // 원더일 경우 의식과 주 계시 비활성화
           if (selectedName === "원더") {
@@ -532,8 +537,8 @@
               }
             }
             
-            // 새로 선택된 캐릭터의 의식 패턴이 있는지 확인
-            if (ritualPatterns[selectedName]) {
+            // 임포트 중에는 자동 패턴 주입 스킵
+            if (!window.__IS_APPLYING_IMPORT && ritualPatterns[selectedName]) {
               const pattern = findPatternForLevel(selectedName, currentRitual);
               if (pattern) {
                 turns.forEach((turn, turnIndex) => {
@@ -568,12 +573,16 @@
               }
             }
             else{
-              updateAutoActions();
+              if (!window.__IS_APPLYING_IMPORT) {
+                updateAutoActions();
+              }
             }
           }
-          //updateAutoActions();
-          updatePartyImages();
-          renderTurns();
+          // 임포트 중에는 렌더/이미지 갱신 스킵 (import.js에서 수행)
+          if (!window.__IS_APPLYING_IMPORT) {
+            updatePartyImages();
+            renderTurns();
+          }
         });
 
         // input 직접 입력 이벤트도 추가
@@ -633,9 +642,11 @@
             }
           }
           
-          updateAutoActions();
-          updatePartyImages();
-          renderTurns();
+          if (!window.__IS_APPLYING_IMPORT) {
+            updateAutoActions();
+            updatePartyImages();
+            renderTurns();
+          }
         });
       }
 
@@ -658,220 +669,111 @@
         
         partyMembers[index].order = newOrder;
         
-        // 턴 데이터의 순서 업데이트
-        turns.forEach(turn => {
-          // 1. 순서 변경이 불가한 액션들 분리
-          const fixedActions = turn.actions.filter(action => 
-            action.action === 'HIGHLIGHT' || 
-            action.action === 'ONE MORE' ||
-            partyMembers.find(pm => pm.name === action.character)?.index === 4
-          );
-          
-          // 2. 순서 변경이 가능한 액션들 분리
-          const sortableActions = turn.actions.filter(action => 
-            !fixedActions.includes(action)
-          );
-          
-          // 3. 파티 순서대로 정렬
-          const sortedParty = partyMembers
-            .filter(pm => pm.name !== "" && pm.index !== 4)  // 해명 괴도 제외
-            .sort((a, b) => {
-              if (a.order === "-") return 1;
-              if (b.order === "-") return -1;
-              return parseInt(a.order, 10) - parseInt(b.order, 10);
-            });
-          
-          // 4. 순서 변경이 가능한 액션들을 파티 순서대로 재정렬
-          const sortedActions = [];
-          sortedParty.forEach(member => {
-            // 해당 캐릭터의 모든 액션을 순서대로 가져옴
-            const characterActions = sortableActions.filter(a => a.character === member.name);
-            sortedActions.push(...characterActions);  // 연속된 행동 순서 유지
-          });
-          
-          // 5. 최종 액션 배열 구성
-          // 고정 액션들은 원래 위치 유지, 정렬된 액션들 추가
-          const finalActions = [];
-          turn.actions.forEach(action => {
-            if (fixedActions.includes(action)) {
-              finalActions.push(action);
-            }
-          });
-          finalActions.push(...sortedActions);
-          
-          turn.actions = finalActions;
-        });
-        
-        updatePartyImages();
-        renderTurns();
-      });
-
-      // 의식 변경 이벤트 리스너 수정
-      ritualSelect.addEventListener("change", (e) => {
-        const newRitual = e.target.value;
-        const characterName = partyMembers[index].name;
-        partyMembers[index].ritual = newRitual;
-        
-        if (ritualPatterns[characterName]) {
-          const pattern = findPatternForLevel(characterName, newRitual);
-          if (pattern) {
-            turns.forEach((turn, turnIndex) => {
-              // 해당 캐릭터의 기존 자동 액션 제거
-              turn.actions = turn.actions.filter(action => 
-                !(action.type === 'auto' && action.character === characterName)
-              );
-              
-              // 해당 턴의 패턴이 있고 빈 배열이 아닌 경우에만 액션 추가
-              if (pattern[turnIndex] && pattern[turnIndex].length > 0) {
-                pattern[turnIndex].forEach(actionData => {
-                  if (actionData.order === 0) {
-                    turn.actions.unshift({
-                      type: 'auto',
-                      character: characterName,
-                      action: actionData.type,
-                      wonderPersona: "",
-                      memo: ""
-                    });
-                  } else {
-                    turn.actions.push({
-                      type: 'auto',
-                      character: characterName,
-                      action: actionData.type,
-                      wonderPersona: "",
-                      memo: ""
-                    });
-                  }
-                });
-              }
+        // 임포트 중에는 턴 재정렬과 렌더를 스킵
+        if (!window.__IS_APPLYING_IMPORT) {
+          turns.forEach(turn => {
+            // 1. 순서 변경이 불가한 액션들 분리
+            const fixedActions = turn.actions.filter(action => 
+              action.action === 'HIGHLIGHT' || 
+              action.action === 'ONE MORE' ||
+              partyMembers.find(pm => pm.name === action.character)?.index === 4
+            );
+            
+            // 2. 순서 변경이 가능한 액션들 분리
+            const sortableActions = turn.actions.filter(action => 
+              !fixedActions.includes(action)
+            );
+            
+            // 3. 파티 순서대로 정렬
+            const sortedParty = partyMembers
+              .filter(pm => pm.name !== "" && pm.index !== 4)  
+              .sort((a, b) => {
+                if (a.order === "-") return 1;
+                if (b.order === "-") return -1;
+                return parseInt(a.order, 10) - parseInt(b.order, 10);
+              });
+            
+            // 4. 순서 변경이 가능한 액션들을 파티 순서대로 재정렬
+            const sortedActions = [];
+            sortedParty.forEach(member => {
+              // 해당 캐릭터의 모든 액션을 순서대로 가져옴
+              const characterActions = sortableActions.filter(a => a.character === member.name);
+              sortedActions.push(...characterActions);  
             });
             
-            renderTurns();
+            // 5. 최종 액션 배열 구성
+            // 고정 액션들은 원래 위치 유지, 정렬된 액션들 추가
+            const finalActions = [];
+            turn.actions.forEach(action => {
+              if (fixedActions.includes(action)) {
+                finalActions.push(action);
+              }
+            });
+            finalActions.push(...sortedActions);
+            
+            turn.actions = finalActions;
+          });
+          
+          updatePartyImages();
+          renderTurns();
+        }
+      });
+    }); // end of partyDivs.forEach
+  } // end of setupPartySelection
+
+  // 번역 초기화 최상위 함수
+  function initializePartyTranslations() {
+    const currentLang = getCurrentLanguage();
+    
+    // 한국어 모드일 경우, 번역 표시 제거 및 원본 값으로 복원
+    if (currentLang === 'kr') {
+      document.querySelectorAll('.input-container.show-translation').forEach(container => {
+        container.classList.remove('show-translation');
+      });
+      document.querySelectorAll('select.main-revelation, select.sub-revelation').forEach(select => {
+        // 옵션 텍스트를 다시 한국어로
+        for (const option of select.options) {
+          if (option.value) {
+            option.textContent = option.value;
           }
         }
-        
-        updatePartyImages();
       });
+      return;
+    }
+
+    document.querySelectorAll(".party-member").forEach(div => {
+      // 캐릭터 이름 번역
+      const nameInput = div.querySelector(".party-name-input");
+      if (nameInput && nameInput.value) {
+        const displayName = getCharacterDisplayName(nameInput.value);
+        const inputContainer = nameInput.closest('.input-container');
+        if (inputContainer) {
+          inputContainer.setAttribute('data-display-text', displayName);
+          inputContainer.classList.add('show-translation');
+        }
+      }
+
+      // 계시 번역
+      const mainRevSelect = div.querySelector(".main-revelation");
+      const subRevSelect = div.querySelector(".sub-revelation");
+      if (mainRevSelect) {
+        for (const option of mainRevSelect.options) {
+          if (option.value) {
+            option.textContent = getRevelationDisplayName(option.value);
+          }
+        }
+      }
+      if (subRevSelect) {
+        for (const option of subRevSelect.options) {
+          if (option.value) {
+            option.textContent = getRevelationDisplayName(option.value);
+          }
+        }
+      }
     });
-  }
-  
-  // Helper to fetch a JS object literal from a script file using regex
-  async function fetchObjectFromScript(src, objectName) {
-      try {
-          const text = await fetch(src).then(res => {
-              if (!res.ok) {
-                  if (res.status === 404) return null;
-                  throw new Error(`Failed to fetch script: ${res.statusText}`);
-              }
-              return res.text();
-          });
-
-          if (!text) return null;
-
-          // Regex to find "const objectName = { ... };"
-          const regex = new RegExp(`const ${objectName} = (\\{[\\s\\S]*?\\});`);
-          const match = text.match(regex);
-
-          if (match && match[1]) {
-              // Safely parse the matched object string
-              return new Function(`return ${match[1]}`)();
-          }
-          return null;
-      } catch (error) {
-          console.error(`Error loading object "${objectName}" from ${src}:`, error);
-          return null;
-      }
-  }
-
-  // 페이지 로드 시 필요한 데이터와 번역을 설정하는 함수
-  async function setupTranslations() {
-      const lang = getCurrentLanguage();
-
-      if (typeof characterData === 'undefined' || typeof revelationData === 'undefined') {
-          console.warn("Base Korean data not found. Retrying...");
-          setTimeout(setupTranslations, 200);
-          return;
-      }
-
-      if (lang !== 'kr') {
-          // 언어별 캐릭터 리스트 가져오기
-          const charList = await fetchObjectFromScript(`${BASE_URL}/data/${lang}/characters/characters.js`, 'characterList');
-          if (charList) {
-              if (!window.languageData) window.languageData = {};
-              window.languageData[lang] = { characterList: charList };
-          }
-
-          // 언어별 계시 매핑 가져오기
-          const mapping = await fetchObjectFromScript(`${BASE_URL}/data/${lang}/revelations/revelations.js`, `mapping_${lang}`);
-          if (mapping) {
-              if (!window.languageData[lang]) window.languageData[lang] = {};
-              window.languageData[lang].revelationMapping = mapping;
-          }
-      }
-
-      // 모든 데이터 준비 후 UI 번역 적용 및 UI 재생성
-      setupPartySelection();
-      initializePartyTranslations();
-  }
-
-  // 현재 언어 감지 함수
-  function initializePartyTranslations() {
-      const currentLang = getCurrentLanguage();
-      
-      // 한국어 모드일 경우, 번역 표시 제거 및 원본 값으로 복원
-      if (currentLang === 'kr') {
-        document.querySelectorAll('.input-container.show-translation').forEach(container => {
-            container.classList.remove('show-translation');
-        });
-        document.querySelectorAll('select.main-revelation, select.sub-revelation').forEach(select => {
-            // 옵션 텍스트를 다시 한국어로
-            for (const option of select.options) {
-                if (option.value) {
-                    option.textContent = option.value;
-                }
-            }
-        });
-        return;
-      }
-
-      document.querySelectorAll(".party-member").forEach(div => {
-          const index = parseInt(div.getAttribute("data-index"), 10);
-          
-          // 캐릭터 이름 번역
-          const nameInput = div.querySelector(".party-name-input");
-          if (nameInput && nameInput.value) {
-              const displayName = getCharacterDisplayName(nameInput.value);
-              const inputContainer = nameInput.closest('.input-container');
-              if (inputContainer) {
-                  inputContainer.setAttribute('data-display-text', displayName);
-                  inputContainer.classList.add('show-translation');
-              }
-          }
-
-          // 계시 번역
-          const mainRevSelect = div.querySelector(".main-revelation");
-          const subRevSelect = div.querySelector(".sub-revelation");
-          if (mainRevSelect) {
-            // 주 계시 옵션의 텍스트만 번역
-            for (const option of mainRevSelect.options) {
-                if(option.value) {
-                    option.textContent = getRevelationDisplayName(option.value);
-                }
-            }
-          }
-          if (subRevSelect) {
-            // 하위 계시 옵션의 텍스트만 번역
-            for (const option of subRevSelect.options) {
-                if(option.value) {
-                    option.textContent = getRevelationDisplayName(option.value);
-                }
-            }
-          }
-      });
   }
 
   // DOMContentLoaded 이후에 번역 초기화 함수를 호출
   document.addEventListener('DOMContentLoaded', () => {
-      // 데이터 로드 및 번역 적용 시작
-      setupTranslations();
+    initializePartyTranslations();
   });
-  

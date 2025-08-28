@@ -417,10 +417,10 @@ const operationData = {
             "· 방어력 감소 상황에 따라 택틱 변화"
         ],
         note_en: [
-            "· Tactics change based on enemy's armor reduction"
+            "· Tactics change based on enemy's defense reduction"
         ],
         note_jp: [
-            "· 相手の防御力を低下させた状況によってテクニックが変化します。"
+            "· 敵の防御力の減少状況に応じて、戦術が変化します。"
         ]
     },
     "야오링·사자무": {

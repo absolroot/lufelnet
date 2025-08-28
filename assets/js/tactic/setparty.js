@@ -44,6 +44,64 @@
     return mapping && mapping[revName] ? mapping[revName] : revName;
   }
 
+  // 번역 데이터(계시 맵) 보장 로더
+  // - window.languageData[currentLang].revelationMapping 을 채워 드롭다운 생성 전에 번역 가능하게 함
+  // - 여러 번 호출되어도 1회만 네트워크 로드
+  let __translationsLoadingPromise = null;
+  async function setupTranslations() {
+    try {
+      const lang = getCurrentLanguage();
+      if (lang === 'kr') return; // 한국어는 원본 사용
+
+      // languageData 구조 준비
+      if (!window.languageData) window.languageData = {};
+      if (!window.languageData[lang]) window.languageData[lang] = {};
+
+      // 이미 맵이 준비됐다면 종료
+      if (window.languageData[lang].revelationMapping) return;
+
+      // 동시 호출 방지
+      if (__translationsLoadingPromise) {
+        return await __translationsLoadingPromise;
+      }
+
+      __translationsLoadingPromise = (async () => {
+        const base = (typeof BASE_URL !== 'undefined' && BASE_URL) ? BASE_URL : '';
+        const ver = (typeof APP_VERSION !== 'undefined' && APP_VERSION) ? `?v=${APP_VERSION}` : '';
+        const url = `${base}/data/${lang}/revelations/revelations.js${ver}`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`Failed to load revelations for ${lang}`);
+        const txt = await res.text();
+
+        // en/jp 각각 전역 공개로 변경 후 실행
+        let patched = txt;
+        if (lang === 'en') {
+          patched = patched.replace('const enRevelationData', 'window.enRevelationData');
+        } else if (lang === 'jp') {
+          patched = patched.replace('const jpRevelationData', 'window.jpRevelationData');
+        }
+        // eslint-disable-next-line no-eval
+        eval(patched);
+
+        // 매핑 추출 및 주입
+        let revMap = null;
+        if (lang === 'en' && window.enRevelationData) {
+          revMap = window.enRevelationData.mapping_en || null;
+        } else if (lang === 'jp' && window.jpRevelationData) {
+          revMap = window.jpRevelationData.mapping_jp || null;
+        }
+        if (revMap) {
+          window.languageData[lang].revelationMapping = revMap;
+        }
+      })();
+
+      await __translationsLoadingPromise;
+    } catch (_) {
+      // 실패해도 기능은 KR 폴백으로 동작
+    }
+  }
+
   function translateSelectOptions(selectElement) {
     const currentLang = getCurrentLanguage();
     if (currentLang === 'kr') {
@@ -774,6 +832,7 @@
   }
 
   // DOMContentLoaded 이후에 번역 초기화 함수를 호출
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    try { await setupTranslations(); } catch(_) {}
     initializePartyTranslations();
   });

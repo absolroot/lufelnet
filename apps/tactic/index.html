@@ -692,8 +692,16 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             if (document.activeElement && document.activeElement.blur) {
               document.activeElement.blur();
             }
-            // Live refresh party dropdowns if function is available
-            try { if (typeof setupPartySelection === 'function') { setupPartySelection(); } } catch(_) {}
+            // Live refresh party dropdowns: ensure translations ready first
+            try {
+              if (typeof setupTranslations === 'function') {
+                setupTranslations()
+                  .then(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} })
+                  .catch(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} });
+              } else {
+                if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+              }
+            } catch(_) {}
           }
 
           // Sync handlers
@@ -856,7 +864,15 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
               
               // Default UI settings
               setupWonderConfig();
-              setupPartySelection();
+              try {
+                if (typeof setupTranslations === 'function') {
+                  setupTranslations()
+                    .then(() => { try { setupPartySelection(); } catch(_) {} })
+                    .catch(() => { try { setupPartySelection(); } catch(_) {} });
+                } else {
+                  setupPartySelection();
+                }
+              } catch(_) { setupPartySelection(); }
 
               // 번역 적용 (공유 데이터 로드 후)
               const currentLang = getCurrentLanguage();
@@ -1059,7 +1075,15 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           });
         } else {
           setupWonderConfig();
-          setupPartySelection();
+          try {
+            if (typeof setupTranslations === 'function') {
+              setupTranslations()
+                .then(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} })
+                .catch(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} });
+            } else {
+              if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+            }
+          } catch(_) { if (typeof setupPartySelection === 'function') { setupPartySelection(); } }
           updateAutoActions();
           updatePartyImages();
           renderTurns();

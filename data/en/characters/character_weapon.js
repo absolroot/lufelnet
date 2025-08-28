@@ -22,7 +22,7 @@ const enCharacterWeaponData = {
         }
     },
     "미나미·여름": {
-        "name": "Miyashita Minami Summer",
+        "name": "Minami Miyashita Summer",
         "weapon4-1": {
             "name": "Afternoon Tea Time",
             "health": 2125,
@@ -342,7 +342,7 @@ const enCharacterWeaponData = {
         }
     },
     "몽타뉴·백조": { 
-        "name": "Kotone Montagne·Swan",
+        "name": "Montagne Kotone·Swan",
         "weapon4-1": {
             "name": "Lady of the North Wind",
             "health": 1838,
@@ -475,7 +475,7 @@ const enCharacterWeaponData = {
         }
     },
     "토모코·여름": {
-        "name": "Noge Tomoko·Summer",
+        "name": "Tomoko Noge·Summer",
         "weapon4-1": {
             "name": "Language of Waves",
             "health": 1870,
@@ -513,7 +513,7 @@ const enCharacterWeaponData = {
         }
     },
     "후타바": {
-        "name": "Sakura Futaba",
+        "name": "Futaba Sakura",
         "weapon4-1": {
             "name": "C-Model Laptop",
             "health": 1791,
@@ -660,7 +660,7 @@ const enCharacterWeaponData = {
         }
     },
     "야오링": {
-        "name": "Li Yaoling",
+        "name": "Yaoling Li",
         "weapon4-1": {
             "name": "Sunstaff",
             "health": 1680,
@@ -711,7 +711,7 @@ const enCharacterWeaponData = {
         }
     },
     "레오": {
-        "name": "Leon Kamiyama",
+        "name": "Leo Kamiyama",
         "weapon4-1": {
             "name": "Justice Lance",
             "health": 1838,
@@ -745,7 +745,7 @@ const enCharacterWeaponData = {
         }
     },
     "몽타뉴": {
-        "name": "Kotone Montagne",
+        "name": "Montagne Kotone",
         "weapon4-1": {
             "name": "Edelweiss",
             "health": 1728,
@@ -796,7 +796,7 @@ const enCharacterWeaponData = {
         }
     },
     "유키미": {
-        "name": "Fujikawa Yukimi",
+        "name": "Yukimi Fujikawa",
         "weapon4-1": {
             "name": "Heavy Metal Pain",
             "health": 1870,
@@ -813,7 +813,7 @@ const enCharacterWeaponData = {
         }
     },
     "키요시": {
-        "name": "Kurotani Kiyoshi",
+        "name": "Kiyoshi Kurotani",
         "weapon4-1": {
             "name": "Death Stinger",
             "health": 2251,
@@ -847,7 +847,7 @@ const enCharacterWeaponData = {
         }
     },
     "토시야": {
-        "name": "Sumi Toshiya",
+        "name": "Toshiya Sumi",
         "weapon4-1": {
             "name": "Scarlet Scepter",
             "health": 1807,
@@ -881,7 +881,7 @@ const enCharacterWeaponData = {
         }
     },
     "카요": {
-        "name": "Tomiyama Kayo",
+        "name": "Kayo Tomiyama",
         "weapon4-1": {
             "name": "Emerald Charmer",
             "health": 1870,

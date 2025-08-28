@@ -65,7 +65,7 @@ const operationData = {
             "· 의식 1 v2는 마나카 의식6 + 유키 마코토 사이클"
         ],
         note_en: [
-            "· Skill 1 v2 is the cycle of Manaka Skill 6 + Yuki Makoto"
+            "· Skill 1 v2 is the cycle of Manaka Skill 6 + Makoto Yuki"
         ],
         note_jp: [
             "· スキル1V2はマナカ・スキル6＋結城誠のサイクル"

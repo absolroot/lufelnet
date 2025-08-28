@@ -55,7 +55,7 @@ const enCharacterSkillsData = {
             "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal 64.4%/71.0%/68.4%/75.0% of Max HP as Bless damage to all enemies and inflict 'Candied' state: When attacked, damage dealt increases by 9.8%/10.8%/10.4%/11.4%. (For every 1200 Max HP of Miyashita Minami Summer, damage increases by an additional 4%, up to a maximum of 11712/12912/12432/13632 HP considered.) Duration: 3 turns."
+            "description": "Deal 64.4%/71.0%/68.4%/75.0% of Max HP as Bless damage to all enemies and inflict 'Candied' state: When attacked, damage dealt increases by 9.8%/10.8%/10.4%/11.4%. (For every 1200 Max HP of Minami Miyashita Summer, damage increases by an additional 4%, up to a maximum of 11712/12912/12432/13632 HP considered.) Duration: 3 turns."
         },
         "skill2": {
             "name": "Midsummer Flower Field",
@@ -63,7 +63,7 @@ const enCharacterSkillsData = {
             "type": "버프",
             "sp": 22,
             "cool": 0,
-            "description": "Increase all allies' damage by 7.8%/8.6%/8.3%/9.1%. (For every 1200 Max HP of Miyashita Minami Summer, damage increases by an additional 3.2%, up to 11712/12912/12432/13632 HP considered.) Duration: 3 turns. Also grants all allies 1 stack of Bless effect and removes 1 debuff."
+            "description": "Increase all allies' damage by 7.8%/8.6%/8.3%/9.1%. (For every 1200 Max HP of Minami Miyashita Summer, damage increases by an additional 3.2%, up to 11712/12912/12432/13632 HP considered.) Duration: 3 turns. Also grants all allies 1 stack of Bless effect and removes 1 debuff."
         },
         "skill3": {
             "name": "Bouquet Beyond the Horizon",
@@ -71,28 +71,28 @@ const enCharacterSkillsData = {
             "type": "버프",
             "sp": 25,
             "cool": 2,
-            "description": "Increase one ally's Critical Rate by 15.6%/17.2%/16.6%/18.2% (excluding self) and increase Critical Damage. (The increase equals 33.33% of Miyashita Minami Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 3 turns.\nDuring this time, when Miyashita Minami Summer uses a medicine on that ally, additionally increase their Critical Damage. (The increase equals 16.66% of Miyashita Minami Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 1 turn."
+            "description": "Increase one ally's Critical Rate by 15.6%/17.2%/16.6%/18.2% (excluding self) and increase Critical Damage. (The increase equals 33.33% of Minami Miyashita Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 3 turns.\nDuring this time, when Minami Miyashita Summer uses a medicine on that ally, additionally increase their Critical Damage. (The increase equals 16.66% of Minami Miyashita Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 1 turn."
         },
         "skill_highlight": {
             "element": "버프",
             "type": "버프",
             "sp": 0,
             "cool": 0,
-            "description": "Increase one ally's damage by 24.4%/26.9%/25.9%/28.4% (excluding self) and increase Critical Damage. (The increase equals 16.66% of Miyashita Minami Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 2 turns. Additionally, the next medicine used by self is 9.8%/10.8%/10.4%/11.4% more effective."
+            "description": "Increase one ally's damage by 24.4%/26.9%/25.9%/28.4% (excluding self) and increase Critical Damage. (The increase equals 16.66% of Minami Miyashita Summer's Critical Damage beyond 100%, up to 213.4%/229.9%/229.9%/246.4% Critical Damage considered.) Duration: 2 turns. Additionally, the next medicine used by self is 9.8%/10.8%/10.4%/11.4% more effective."
         },
         "passive1": {
             "name": "Prayer",
             "element": "패시브",
-            "description": "Whenever a Persona skill is used on an ally, grant them 1 stack of Bless effect. If Miyashita Minami Summer is in battle, damage dealt increases by 6.0% per Bless stack on allies, up to a maximum of 36.0%."
+            "description": "Whenever a Persona skill is used on an ally, grant them 1 stack of Bless effect. If Minami Miyashita Summer is in battle, damage dealt increases by 6.0% per Bless stack on allies, up to a maximum of 36.0%."
         },
         "passive2": {
             "name": "Care",
             "element": "패시브",
-            "description": "If Miyashita Minami Summer is in battle, allies' Attack increases by 12.0%, and for each additional type of buff medicine effect, Attack increases by an additional 15.0%."
+            "description": "If Minami Miyashita Summer is in battle, allies' Attack increases by 12.0%, and for each additional type of buff medicine effect, Attack increases by an additional 15.0%."
         }
     },
 	"이치고": {
-        "name": "Shikano Ichigo",
+        "name": "Ichigo Shikano",
         "skill1": {
             "name": "Crimson Butterfly",
             "element": "주원",
@@ -746,14 +746,14 @@ const enCharacterSkillsData = {
         }
     },
     "몽타뉴·백조": {
-        "name": "Kotone Montagne·Swan",
+        "name": "Montagne Kotone·Swan",
         "skill1": {
             "name": "Prelude of the Storm/Chilling Wind",
             "element": "질풍빙결",
             "type":"단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "『Spring Form』: Deals 65.9%/72.7%/69.9%/76.7% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times and has a 30% base chance to inflict Gust. If Kotone Montagne·Swan is within 『Spring Barrier』, additionally inflicts 『Wind Wound』 for 2 turns. Attacking enemies under 『Wind Wound』 increases Crit Mult by 29.3%/29.3%/31.1%/31.1%.\n\n『Winter Form』: Deals 122.2%/134.7%/129.7%/142.2% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to Freeze. If the target is already Frozen, inflicts 『Frostbite』 for 2 turns. Enemies with 『Frostbite』 take 13.7%/13.7%/14.5%/14.5% more Ice damage."
+            "description": "『Spring Form』: Deals 65.9%/72.7%/69.9%/76.7% of Montagne Kotone·Swan's ATK as Wind damage to 1 enemy 3 times and has a 30% base chance to inflict Gust. If Montagne Kotone·Swan is within 『Spring Barrier』, additionally inflicts 『Wind Wound』 for 2 turns. Attacking enemies under 『Wind Wound』 increases Crit Mult by 29.3%/29.3%/31.1%/31.1%.\n\n『Winter Form』: Deals 122.2%/134.7%/129.7%/142.2% of Montagne Kotone·Swan's ATK as Ice damage to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to Freeze. If the target is already Frozen, inflicts 『Frostbite』 for 2 turns. Enemies with 『Frostbite』 take 13.7%/13.7%/14.5%/14.5% more Ice damage."
         },
         "skill2": {
             "name": "Drifting Clouds/Snowfall Plains",
@@ -761,7 +761,7 @@ const enCharacterSkillsData = {
             "type":"광역피해",
             "sp": 24,
             "cool": 0,
-            "description": "『Spring Form』: Deals 31.3%/34.5%/33.3%/36.5% of Kotone Montagne·Swan's ATK as Wind damage to all enemies 3 times. If within 『Spring Barrier』, additionally gains 1 『Morning Dew Crystal』.\n\n『Winter Form』: Deals 83.8%/92.4%/89.0%/97.6% of Kotone Montagne·Swan's ATK as Ice damage to all enemies, with a 48.8%/48.8%/51.8%/51.8% base chance to Freeze. If within 『Winter Barrier』, this attack's damage is increased by 20%."
+            "description": "『Spring Form』: Deals 31.3%/34.5%/33.3%/36.5% of Montagne Kotone·Swan's ATK as Wind damage to all enemies 3 times. If within 『Spring Barrier』, additionally gains 1 『Morning Dew Crystal』.\n\n『Winter Form』: Deals 83.8%/92.4%/89.0%/97.6% of Montagne Kotone·Swan's ATK as Ice damage to all enemies, with a 48.8%/48.8%/51.8%/51.8% base chance to Freeze. If within 『Winter Barrier』, this attack's damage is increased by 20%."
         },
         "skill3": {
             "name": "Approaching Spring/Winter Night Waltz",
@@ -769,22 +769,22 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 28,
             "cool": 0,
-            "description": "『Spring Form』: Casts 『Spring Barrier』 lasting 1 turn, dealing 82.9%/91.5%/87.9%/96.5% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times. While 『Spring Barrier』 is active, when any Phantom Thief deals Wind damage via Persona Skills, HIGHLIGHT, or Extra Effects, deals additional Wind damage equal to 20% of Kotone Montagne·Swan's ATK to the main target and grants 1 『Morning Dew Crystal』 to Kotone Montagne·Swan. When 『Spring Barrier』 ends, consumes all 『Morning Dew Crystals』 to deal (3 + number of crystals) * 34.2%/37.7%/36.3%/39.8% of Kotone Montagne·Swan's ATK as Wind damage to the current main target. This damage counts as Extra Damage.\n\n『Winter Form』: Casts 『Winter Night Barrier』 lasting 1 turn, dealing 183.2%/201.9%/194.5%/213.2% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy. While 『Winter Night Barrier』 is active, after any Phantom Thief is attacked, all allies gain a 『Snowball Shield』 that blocks 1301/1301/1381/1381 damage. This effect triggers up to 2 times. When any Phantom Thief deals Ice damage via Persona Skills, HIGHLIGHT, or Extra Effects, Kotone Montagne·Swan gains 1 『Winter Frost Crystal』. When 『Winter Night Barrier』 ends, consumes all 『Winter Frost Crystals』 to deal (3 + number of crystals) * 27.9%/30.8%/29.6%/32.5% of Kotone Montagne·Swan's ATK as Ice damage to the current main target. This damage counts as Extra Damage."
+            "description": "『Spring Form』: Casts 『Spring Barrier』 lasting 1 turn, dealing 82.9%/91.5%/87.9%/96.5% of Montagne Kotone·Swan's ATK as Wind damage to 1 enemy 3 times. While 『Spring Barrier』 is active, when any Phantom Thief deals Wind damage via Persona Skills, HIGHLIGHT, or Extra Effects, deals additional Wind damage equal to 20% of Montagne Kotone·Swan's ATK to the main target and grants 1 『Morning Dew Crystal』 to Montagne Kotone·Swan. When 『Spring Barrier』 ends, consumes all 『Morning Dew Crystals』 to deal (3 + number of crystals) * 34.2%/37.7%/36.3%/39.8% of Montagne Kotone·Swan's ATK as Wind damage to the current main target. This damage counts as Extra Damage.\n\n『Winter Form』: Casts 『Winter Night Barrier』 lasting 1 turn, dealing 183.2%/201.9%/194.5%/213.2% of Montagne Kotone·Swan's ATK as Ice damage to 1 enemy. While 『Winter Night Barrier』 is active, after any Phantom Thief is attacked, all allies gain a 『Snowball Shield』 that blocks 1301/1301/1381/1381 damage. This effect triggers up to 2 times. When any Phantom Thief deals Ice damage via Persona Skills, HIGHLIGHT, or Extra Effects, Montagne Kotone·Swan gains 1 『Winter Frost Crystal』. When 『Winter Night Barrier』 ends, consumes all 『Winter Frost Crystals』 to deal (3 + number of crystals) * 27.9%/30.8%/29.6%/32.5% of Montagne Kotone·Swan's ATK as Ice damage to the current main target. This damage counts as Extra Damage."
         },
         "skill_highlight": {
             "element": "질풍빙결",
             "type":"단일피해",
-            "description": "『Spring Form』: Deals 149.6%/165.0%/158.8%/174.2% of Kotone Montagne·Swan's ATK as Wind damage to 1 enemy 3 times. If within 『Spring Barrier』, gains an extra 『Morning Dew Crystal』 exceeding the normal limit. Otherwise, deals an additional Wind damage hit to the target.\n\n『Winter Form』: Deals 380.6%/419.6%/404.0%/443.0% of Kotone Montagne·Swan's ATK as Ice damage to 1 enemy, with a 68.3%/68.3%/72.5%/72.5% base chance to inflict 『Ice Seal』 for 1 turn. If within 『Winter Night Barrier』, the base chance of 『Ice Seal』 increases by 29.3%/29.3%/31.1%/31.1%. Otherwise, this attack's damage is increased by 20%."
+            "description": "『Spring Form』: Deals 149.6%/165.0%/158.8%/174.2% of Montagne Kotone·Swan's ATK as Wind damage to 1 enemy 3 times. If within 『Spring Barrier』, gains an extra 『Morning Dew Crystal』 exceeding the normal limit. Otherwise, deals an additional Wind damage hit to the target.\n\n『Winter Form』: Deals 380.6%/419.6%/404.0%/443.0% of Montagne Kotone·Swan's ATK as Ice damage to 1 enemy, with a 68.3%/68.3%/72.5%/72.5% base chance to inflict 『Ice Seal』 for 1 turn. If within 『Winter Night Barrier』, the base chance of 『Ice Seal』 increases by 29.3%/29.3%/31.1%/31.1%. Otherwise, this attack's damage is increased by 20%."
         },
         "passive1": {
             "name": "Cherishment",
             "element": "패시브",
-            "description": "If another Wind Phantom Thief is in the team, Kotone Montagne·Swan's Wind damage increases by 33.0%. If another Ice Phantom Thief is in the team, Kotone Montagne·Swan's Ice damage increases by 33.0%."
+            "description": "If another Wind Phantom Thief is in the team, Montagne Kotone·Swan's Wind damage increases by 33.0%. If another Ice Phantom Thief is in the team, Montagne Kotone·Swan's Ice damage increases by 33.0%."
         },
         "passive2": {
             "name": "Yearning",
             "element": "패시브",
-            "description": "『Spring Form』: Each time a Phantom Thief deals Wind damage, all Phantom Thieves' ATK increases by 8.1% for 2 turns (stacks up to 5 times). 『Winter Night Form』: Each time Kotone Montagne·Swan gains a shield, all Phantom Thieves' DEF increases by 9.0% for 2 turns (stacks up to 4 times)."
+            "description": "『Spring Form』: Each time a Phantom Thief deals Wind damage, all Phantom Thieves' ATK increases by 8.1% for 2 turns (stacks up to 5 times). 『Winter Night Form』: Each time Montagne Kotone·Swan gains a shield, all Phantom Thieves' DEF increases by 9.0% for 2 turns (stacks up to 4 times)."
         }
     },
     "아야카": {
@@ -1040,7 +1040,7 @@ const enCharacterSkillsData = {
         }
     },
     "토모코·여름": {
-        "name": "Noge Tomoko·Summer",
+        "name": "Tomoko Noge·Summer",
         "skill1": {
             "name": "A Glass of Summer Drink",
             "element": "염동광역",
@@ -1063,7 +1063,7 @@ const enCharacterSkillsData = {
             "type":"광역피해",
             "sp": 25,
             "cool": 0,
-            "description": "Deals 61.0%/67.2%/64.8%/71.0% Psi damage to all enemies and increases their damage taken by 19.5%/19.5%/20.7%/20.7%. Also, each time enemies take skill damage, 1 stack of 『Flame』 is added and lasts 2 turns. At the start of Noge Tomoko·Summer's turn, the duration decreases by 1 turn. 『Flame』 can be added up to 5 times during this effect (this damage does not trigger additional 『Flame』 effects from existing skills)."
+            "description": "Deals 61.0%/67.2%/64.8%/71.0% Psi damage to all enemies and increases their damage taken by 19.5%/19.5%/20.7%/20.7%. Also, each time enemies take skill damage, 1 stack of 『Flame』 is added and lasts 2 turns. At the start of Tomoko Noge·Summer's turn, the duration decreases by 1 turn. 『Flame』 can be added up to 5 times during this effect (this damage does not trigger additional 『Flame』 effects from existing skills)."
         },
         "skill_highlight": {
             "element": "염동",
@@ -1124,20 +1124,20 @@ const enCharacterSkillsData = {
         }
     },
     "후타바": {
-        "name": "Sakura Futaba",
+        "name": "Futaba Sakura",
         "skill1": {
             "name": "Silent Infiltration",
             "element": "버프광역",
             "type":"디버프",
             "cool": 4,
-            "description": "Reduces all enemies' DEF by 6% + (0.53% per 100 ATK of Sakura Futaba, up to 4600/5060/5980/6440 ATK) for 3 turns. During this period, if enemies take Weakness damage, this effect is doubled. When her Analysis Progress reaches 100%, grants all allies 『Hack Complete』 for 2 turns."
+            "description": "Reduces all enemies' DEF by 6% + (0.53% per 100 ATK of Futaba Sakura, up to 4600/5060/5980/6440 ATK) for 3 turns. During this period, if enemies take Weakness damage, this effect is doubled. When her Analysis Progress reaches 100%, grants all allies 『Hack Complete』 for 2 turns."
         },
         "skill2": {
             "name": "Data Decryption",
             "element": "버프",
             "type":"디버프",
             "cool": 4,
-            "description": "Increases damage taken by 1 enemy by 6% + (0.38% per 100 ATK of Sakura Futaba, up to 4600/5060/5980/6440 ATK) for 3 turns. When an ally deals damage to the target using a Persona Skill/Additional Effect/HIGHLIGHT, Sakura Futaba gains 15% Analysis Progress. When her Analysis Progress reaches 100%, grants all allies 『Hack Complete』 for 2 turns."
+            "description": "Increases damage taken by 1 enemy by 6% + (0.38% per 100 ATK of Futaba Sakura, up to 4600/5060/5980/6440 ATK) for 3 turns. When an ally deals damage to the target using a Persona Skill/Additional Effect/HIGHLIGHT, Futaba Sakura gains 15% Analysis Progress. When her Analysis Progress reaches 100%, grants all allies 『Hack Complete』 for 2 turns."
         },
         "skill3": {
             "name": "In the Name of the Phoenix",
@@ -1145,7 +1145,7 @@ const enCharacterSkillsData = {
             "type":"버프",
             "cool": 8,
             "unlock": "Ally must have 『Hack Complete』.",
-            "description": "Activation Condition: An ally must have 『Hack Complete』.\nIncreases 1 ally Phantom Thief's ATK by 270/297/302/329 + (21.7 per 100 ATK of Sakura Futaba, up to 4600/5060/5980/6440 ATK) for 2 turns. Applies a 『Disruption Virus』 of the ally's affinity to all enemies for 1 turn.\n『Disruption Virus』: Alters the target's affinity. Null, Repel, and Drain become Resist, Resist becomes Normal, Normal becomes Weak. If Weak, the target takes 25% more Weakness damage."
+            "description": "Activation Condition: An ally must have 『Hack Complete』.\nIncreases 1 ally Phantom Thief's ATK by 270/297/302/329 + (21.7 per 100 ATK of Futaba Sakura, up to 4600/5060/5980/6440 ATK) for 2 turns. Applies a 『Disruption Virus』 of the ally's affinity to all enemies for 1 turn.\n『Disruption Virus』: Alters the target's affinity. Null, Repel, and Drain become Resist, Resist becomes Normal, Normal becomes Weak. If Weak, the target takes 25% more Weakness damage."
         },
         "skill_highlight": {
             "name": "Stat Boost",
@@ -1160,7 +1160,7 @@ const enCharacterSkillsData = {
         "passive2": {
             "name": "Cleanup",
             "element": "패시브",
-            "description": "While in 『Hack Complete』 state, all Phantom Thieves gain a shield equal to 30.0% of Sakura Futaba's ATK for 3 turns."
+            "description": "While in 『Hack Complete』 state, all Phantom Thieves gain a shield equal to 30.0% of Futaba Sakura's ATK for 3 turns."
         }
     },
 
@@ -1208,7 +1208,7 @@ const enCharacterSkillsData = {
     },
     
     "미나미": {
-        "name": "Miyashita Minami",
+        "name": "Minami Miyashita",
         "skill1": {
             "name": "Nurse's Light",
             "element": "축복",
@@ -1474,7 +1474,7 @@ const enCharacterSkillsData = {
         }
     },
     "야오링": {
-        "name": "Li Yaoling",
+        "name": "Yaoling Li",
         "skill1": {
             "name": "Underworld Ferry",
             "element": "주원광역",
@@ -1609,7 +1609,7 @@ const enCharacterSkillsData = {
         }
     },
     "레오": {
-        "name": "Leon Kamiyama",
+        "name": "Leo Kamiyama",
         "skill1": {
             "name": "Atomic Smash",
             "element": "핵열",
@@ -1693,7 +1693,7 @@ const enCharacterSkillsData = {
         }
     },
     "몽타뉴": {
-        "name": "Kotone Montagne",
+        "name": "Montagne Kotone",
         "skill1": {
             "name": "Frost Lily",
             "element": "빙결광역",
@@ -1825,7 +1825,7 @@ const enCharacterSkillsData = {
         }
     },
     "유키미": {
-        "name": "Fujikawa Yukimi",
+        "name": "Yukimi Fujikawa",
         "skill1": {
             "name": "Sword of Condemnation",
             "element": "축복광역",
@@ -1870,7 +1870,7 @@ const enCharacterSkillsData = {
         }
     },
     "키요시": {
-        "name": "Kurotani Kiyoshi",
+        "name": "Kiyoshi Kurotani",
         "skill1": {
             "name": "Ring of Fire",
             "element": "화염",
@@ -1957,7 +1957,7 @@ const enCharacterSkillsData = {
         }
     },
     "토시야": {
-        "name": "Sumi Toshiya",
+        "name": "Toshiya Sumi",
         "skill1": {
             "name": "Unexpected Tragedy",
             "element": "주원",
@@ -2042,7 +2042,7 @@ const enCharacterSkillsData = {
         }
     },
     "카요": {
-        "name": "Tomiyama Kayo",
+        "name": "Kayo Tomiyama",
         "skill1": {
             "name": "Club Okyann",
             "element": "버프광역",

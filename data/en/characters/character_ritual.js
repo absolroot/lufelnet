@@ -54,11 +54,11 @@ const enCharacterRitualData = {
         "r6_detail": "The maximum stacks of 『Hatred』 increase to 15.\n· When 『Covet』 reaches the specified stack counts, the following effects are gained:\n· 1 stack: After casting 『Crimson Butterfly』, it is cast once more on the target (once per battle).\n· 2 stacks: After casting 『Kiss of the Red Rose』, it is cast once more on the target (once per battle).\n· 3 stacks: After casting 『Shh! Execution Time』, it is cast once more on the target (once per battle).\n· 4 stacks: On her turn, she casts 『HIGHLIGHT』 once on the designated target (once per battle, does not consume HIGHLIGHT energy, and does not affect HIGHLIGHT cooldown)."
     },
     "사나다": {
-        "name": "Sanada Akihiko",
+        "name": "Akihiko Sanada",
         "r0": "Reason for Battle",
-        "r0_detail": "After Sanada Akihiko uses a Persona Skill/Theurgy to deal Elec damage, he gains 1 stack of 『Determination』. At the start of battle, he gains 2 stacks of 『Determination』 (up to 12 stacks). At the start of his turn, he can consume 6 stacks of 『Determination』 to cast 『Invincible Fist』 once. 『Invincible Fist』: Grants himself 1 stack of 『Fighting Spirit』 and deals 55.9% ATK Physical damage to all enemies. This skill is considered an additional effect.\n\n『Fighting Spirit』: Increases his Penetration by 4% (up to 3 stacks).",
+        "r0_detail": "After Akihiko Sanada uses a Persona Skill/Theurgy to deal Elec damage, he gains 1 stack of 『Determination』. At the start of battle, he gains 2 stacks of 『Determination』 (up to 12 stacks). At the start of his turn, he can consume 6 stacks of 『Determination』 to cast 『Invincible Fist』 once. 『Invincible Fist』: Grants himself 1 stack of 『Fighting Spirit』 and deals 55.9% ATK Physical damage to all enemies. This skill is considered an additional effect.\n\n『Fighting Spirit』: Increases his Penetration by 4% (up to 3 stacks).",
         "r1": "Boxing Club Captain",
-        "r1_detail": "If Sanada Akihiko has 『Fighting Spirit』, his Critical Rate increases by 20%.\nAt the start of battle, he gains 70 points of Theurgy Energy.",
+        "r1_detail": "If Akihiko Sanada has 『Fighting Spirit』, his Critical Rate increases by 20%.\nAt the start of battle, he gains 70 points of Theurgy Energy.",
         "r2": "Awkward Feelings",
         "r2_detail": "When he consumes 『Determination』 to cast 『Invincible Fist』, his damage increases by 30% for 3 turns.\nWhen dealing damage to downed enemies, his 『Down Special Attack』 increases by 10%.",
         "r3": "Self-Restraint",
@@ -68,7 +68,7 @@ const enCharacterRitualData = {
         "r5": "Hidden True Feelings",
         "r5_detail": "The skill levels of 『Lightning Field』 and 『Combat Technique』 increase by 3, up to a maximum of 15.",
         "r6": "Seeker of Strength",
-        "r6_detail": "At the start of battle, Sanada Akihiko gains 6 additional stacks of 『Determination』, and the maximum stack limit of 『Determination』 increases to 18. The stack limit of 『Fighting Spirit』 increases to 4, and for each stack of 『Fighting Spirit』 he possesses, his damage increases by 8%.\nAfter Sanada Akihiko casts 『Spark Fist』, he additionally casts 『Extreme・Deadly Blow』 once.\n\n『Extreme・Deadly Blow』: Based on the number of 『Fighting Spirit』 stacks consumed this turn, deals 13.5% ATK Elec damage per stack to all enemies with 『Guaranteed Critical Hit』 and 『Defense Ignore』, and grants 1 stack of 『Fighting Spirit』. This skill is considered an additional effect."
+        "r6_detail": "At the start of battle, Akihiko Sanada gains 6 additional stacks of 『Determination』, and the maximum stack limit of 『Determination』 increases to 18. The stack limit of 『Fighting Spirit』 increases to 4, and for each stack of 『Fighting Spirit』 he possesses, his damage increases by 8%.\nAfter Akihiko Sanada casts 『Spark Fist』, he additionally casts 『Extreme・Deadly Blow』 once.\n\n『Extreme・Deadly Blow』: Based on the number of 『Fighting Spirit』 stacks consumed this turn, deals 13.5% ATK Elec damage per stack to all enemies with 『Guaranteed Critical Hit』 and 『Defense Ignore』, and grants 1 stack of 『Fighting Spirit』. This skill is considered an additional effect."
     },
     "유카리": {
         "name": "Yukari Takeba",
@@ -292,9 +292,9 @@ const enCharacterRitualData = {
         "r6_detail": "The 『Midsummer』 effect is enhanced into 『Summer Sun』, and in 『Summer Sun』 state, 『Summer Day Magic』 deals 3 additional hits of damage.\n『Leisurely Vacation』 also restores HP equal to 20% of her Max HP. The damage multiplier of 『Wave Chaser』 is increased by 50%."
     },
     "몽타뉴·백조": {
-        "name": "Kotone Montagne·Swan",
+        "name": "Montagne Kotone·Swan",
         "r0": "Spring Pond and the Idle Swan",
-        "r0_detail": "Kotone Montagne·Swan has two forms: 『Spring Form』 and 『Winter Night Form』. Before using 『Spring Barrier』/『Winter Night Barrier』, she can freely switch forms. When switching forms, Kotone Montagne·Swan gains the corresponding set of elemental skills. At the start of battle, the default form is 『Spring Form』, but if the team has more Ice-element allies than Wind-element allies, the default form is set to 『Winter Night Form』.",
+        "r0_detail": "Montagne Kotone·Swan has two forms: 『Spring Form』 and 『Winter Night Form』. Before using 『Spring Barrier』/『Winter Night Barrier』, she can freely switch forms. When switching forms, Montagne Kotone·Swan gains the corresponding set of elemental skills. At the start of battle, the default form is 『Spring Form』, but if the team has more Ice-element allies than Wind-element allies, the default form is set to 『Winter Night Form』.",
         "r1": "Melody of Tears by the Pond",
         "r1_detail": "『Spring Form』: Each time she enters 『Spring Barrier』, she gains 1 『Morning Dew Crystal』. When 『Spring Barrier』 ends, she gains an additional damage bonus of 8% per 『Morning Dew Crystal』 (up to 40%).\n『Winter Night Form』: Each time she enters 『Winter Night Barrier』, she gains 1 『Winter Frost Crystal』. When 『Winter Night Barrier』 ends, she gains an additional damage bonus of 8% per 『Winter Frost Crystal』 (up to 40%).",
         "r2": "Poems of Time and the Lament of the Wind",
@@ -302,7 +302,7 @@ const enCharacterRitualData = {
         "r3": "Shimmer and Dance of Wings",
         "r3_detail": "The skill levels of 『Scattering Clouds / Snowfall Plain』 and 『Approaching Spring / Winter Night Waltz』 increase by 3, up to a maximum of 15.",
         "r4": "Light Turns Like a Dream",
-        "r4_detail": "『Spring Form』: When using HIGHLIGHT while in 『Spring Barrier』, Kotone Montagne·Swan gains 1 『Morning Dew Crystal』 that exceeds the usual stack limit. Otherwise, HIGHLIGHT skill damage increases by 25%.\n『Winter Night Form』: When using HIGHLIGHT while in 『Winter Night Barrier』, Kotone Montagne·Swan gains 1 『Winter Frost Crystal』 that exceeds the usual stack limit. Otherwise, HIGHLIGHT skill damage increases by 25%.",
+        "r4_detail": "『Spring Form』: When using HIGHLIGHT while in 『Spring Barrier』, Montagne Kotone·Swan gains 1 『Morning Dew Crystal』 that exceeds the usual stack limit. Otherwise, HIGHLIGHT skill damage increases by 25%.\n『Winter Night Form』: When using HIGHLIGHT while in 『Winter Night Barrier』, Montagne Kotone·Swan gains 1 『Winter Frost Crystal』 that exceeds the usual stack limit. Otherwise, HIGHLIGHT skill damage increases by 25%.",
         "r5": "Beyond the End of Life",
         "r5_detail": "The skill levels of 『Prelude of the Storm / Chilling Wind』 and 『Combat Skills』 increase by 3, up to a maximum of 15.",
         "r6": "Soul That Yields Not to Fate",
@@ -411,9 +411,9 @@ const enCharacterRitualData = {
         "r6_detail": "The maximum stack of 『Bleed』 increases to 13, and all enemies have at least 3 stacks of 『Bleed』.\nIn 『Executioner』 state, using 『Sinful Game』 no longer removes 『Bleed』 stacks from the target. The 『Incision』 effect upgrades to 『Lingering Slash』, which deals 100% increased damage and inflicts 50% splash damage to all other enemies. 『Lingering Slash』 can trigger all effects related to 『Incision』 in every skill."
     },
     "토모코·여름": {
-        "name": "Noge Tomoko Summer",
+        "name": "Tomoko Noge Summer",
         "r0": "Brilliant Fireworks",
-        "r0_detail": "Noge Tomoko·Summer's skills add 『Flame』 to enemies.\nWhen any ally uses a skill and the total number of 『Flame』 stacks on enemies reaches 3, Noge Tomoko·Summer triggers an additional effect. For every 3 stacks of 『Flame』 removed from all enemies, she deals 19.0% of ATK as Psy damage to all enemies and reduces their damage dealt by 30% for 1 turn. Additionally, all allies restore 9.0% of ATK + 900 HP once. Based on the number of 『Flame』 stacks removed in one trigger, damage and healing can occur up to 5 times (this damage does not trigger the skill's 『Flame』 effect).\nThe damage of the additional effect varies depending on the number of enemies on the field: 150% / 120% / 100% when there are 1 / 2 / ≥3 enemies. This additional effect does not inflict Down value damage, and if an enemy dies, its 『Flame』 stacks are redistributed randomly to other enemies.",
+        "r0_detail": "Tomoko Noge·Summer's skills add 『Flame』 to enemies.\nWhen any ally uses a skill and the total number of 『Flame』 stacks on enemies reaches 3, Tomoko Noge·Summer triggers an additional effect. For every 3 stacks of 『Flame』 removed from all enemies, she deals 19.0% of ATK as Psy damage to all enemies and reduces their damage dealt by 30% for 1 turn. Additionally, all allies restore 9.0% of ATK + 900 HP once. Based on the number of 『Flame』 stacks removed in one trigger, damage and healing can occur up to 5 times (this damage does not trigger the skill's 『Flame』 effect).\nThe damage of the additional effect varies depending on the number of enemies on the field: 150% / 120% / 100% when there are 1 / 2 / ≥3 enemies. This additional effect does not inflict Down value damage, and if an enemy dies, its 『Flame』 stacks are redistributed randomly to other enemies.",
         "r1": "Unwavering Light",
         "r1_detail": "Each time an enemy is hit by the 『Brilliant Fireworks』 effect, its DEF is reduced by 15% for 3 turns (up to 3 stacks).\nThe healing effect of 『Enjoy Your Meal』 applies to all allies.",
         "r2": "This Summer Isn't Over Yet",
@@ -445,17 +445,17 @@ const enCharacterRitualData = {
         "r6_detail": "When Haru Okumura has 2 or more 『Modifications』, her grenades evolve into 『Parting Gift』 and she gains an additional gunfire effect that triggers all 『Modification』 effects. All damage dealt is 50% of the original damage.\nPersona skill-added 『Modification』 effects:\n『Thermal Energy Modification』: Gunfire skills additionally reduce enemy effect resistance by 27% for 2 turns.\n『Armor Removal Modification』: When using a gunfire skill while holding a 『Target Mark』, Haru Okumura's penetration increases by 12%.\n『Diffusion Modification』: When using a gunfire skill while holding a 『Target Mark』, Haru Okumura's critical rate increases by 20% and critical damage by 20%."
     },
     "후타바": {
-        "name": "Sakura Futaba",
+        "name": "Futaba Sakura",
         "r0": "Information Gathering",
-        "r0_detail": "When an ally Phantom Thief uses a Persona skill, Futaba gains 5% 『Analysis Progress』.\nWhen an ally deals Weakness damage via Persona Skill/Additional Effect/HIGHLIGHT, Sakura Futaba gains an additional 15% 『Analysis Progress』.\nWhile in 『Hack Complete』 state, allies' damage increases by 20%.",
+        "r0_detail": "When an ally Phantom Thief uses a Persona skill, Futaba gains 5% 『Analysis Progress』.\nWhen an ally deals Weakness damage via Persona Skill/Additional Effect/HIGHLIGHT, Futaba Sakura gains an additional 15% 『Analysis Progress』.\nWhile in 『Hack Complete』 state, allies' damage increases by 20%.",
         "r1": "Scan Analysis",
-        "r1_detail": "When Sakura Futaba's 『Analysis Progress』 reaches 100% or during 『Hack Complete』 state, allies' critical rate increases by 12%.",
+        "r1_detail": "When Futaba Sakura's 『Analysis Progress』 reaches 100% or during 『Hack Complete』 state, allies' critical rate increases by 12%.",
         "r2": "Remote Support",
-        "r2_detail": "When an ally Phantom Thief attacks an enemy with Futaba's debuff effect, their ATK increases by 25%. When an ally is about to take lethal damage, their HP will not drop below 1, and all Phantom Thieves gain a shield equal to 20% of Sakura Futaba's ATK. This effect activates only once per battle.",
+        "r2_detail": "When an ally Phantom Thief attacks an enemy with Futaba's debuff effect, their ATK increases by 25%. When an ally is about to take lethal damage, their HP will not drop below 1, and all Phantom Thieves gain a shield equal to 20% of Futaba Sakura's ATK. This effect activates only once per battle.",
         "r3": "Charge",
         "r3_detail": "The skill levels of 『In the Name of the Phoenix』 and 『Data Decode』 increase by 3, up to a maximum of 15.",
         "r4": "Stealth Attack",
-        "r4_detail": "When any Phantom Thief uses a HIGHLIGHT skill, Sakura Futaba gains 1 stack of 『Weakness Analysis』 (up to 2 stacks). When Futaba uses 『Silent Infiltration』 or 『Data Decode』, all 『Weakness Analysis』 stacks are consumed to increase skill effects by 8% per stack.",
+        "r4_detail": "When any Phantom Thief uses a HIGHLIGHT skill, Futaba Sakura gains 1 stack of 『Weakness Analysis』 (up to 2 stacks). When Futaba uses 『Silent Infiltration』 or 『Data Decode』, all 『Weakness Analysis』 stacks are consumed to increase skill effects by 8% per stack.",
         "r5": "Brain Warfare",
         "r5_detail": "The skill level of 『Silent Infiltration』 increases by 3, up to a maximum of 15.",
         "r6": "Virus Infiltration",
@@ -582,7 +582,7 @@ const enCharacterRitualData = {
         "r6_detail": "When attacking foes with Fire skills, 60% chance to gain 1 Passion stack. When Ann has La Vie en Rose, increase Fire damage by 11% per Passion stack (up to 110%)."
     },
     "야오링": {
-        "name": "Li Yaoling",
+        "name": "Yaoling Li",
         "r0": "Goddess of Oblivion",
         "r0_detail": "On Yaoling's action, gain 1 [Memory] stack for every 10 points of Speed (up to 18 stacks per turn). When [Memory] reaches 40 stacks, spend all stacks to gain 1 Meng Po Soup stack. When using a skill, spend 1 Meng Po Soup stack for a 50% chance to inflict Forget on 1 foe for 1 turn, and enhance effects of Flowers of Naihe and Lion Dance of Oblivion.",
         "r1": "Road to Rebirth",
@@ -633,7 +633,7 @@ const enCharacterRitualData = {
         "r6_detail": "After Starfire II ends, gain Starfire III for 1 turn. Starfire III: Increase Attack by 8% of Lufel's Attack, increase Fire damage by 20%, and increase healing received by 10%."
     },
     "레오": {
-        "name": "Leon Kamiyama",
+        "name": "Leo Kamiyama",
         "r0": "Hyper Hero Time!",
         "r0_detail": "Grant 1 Power of Friendship stack to allies when their HP falls below 75%. Stacks up to 2 times. When allies have Power of Friendship, increase Attack by 6% of Kamiyama's Attack (up to 120/180/240, at level 1/50/70) for 1 turn.",
         "r1": "Intense Link",
@@ -667,7 +667,7 @@ const enCharacterRitualData = {
         "r6_detail": "Increase Shocked foes' Electric damage taken by 20%, and increase Electric critical damage taken by 20%."
     },
     "몽타뉴": {
-        "name": "Kotone Montagne",
+        "name": "Montagne Kotone",
         "r0": "Blade Dancer",
         "r0_detail": "On ally's action, gain 1 Ice Crystal stack. Stacks up to 12 times. After using a skill, when Ice Crystal reaches 10 stacks, activate Resonance, spending 10 Ice Crystal stacks to deal 65% follow-up Ice damage to the main target. This Resonance is guaranteed to be a critical hit. When using Frost Lily or Winter Storm, if the Resonance is activated, gain Parhelion. Parhelion is used to strengthen Durandal of Ice.",
         "r1": "Camel Spin",
@@ -718,7 +718,7 @@ const enCharacterRitualData = {
         "r6_detail": "Increase chance to gain Right to Strike by 20%. When Seiji has 5 Right to Strike stacks, Blustering Épée, Graceful Gale, and Saber Surge deal 1 more hit."
     },
     "유키미": {
-        "name": "Fujikawa Yukimi",
+        "name": "Yukimi Fujikawa",
         "r0": "Scales of Fairness",
         "r0_detail": "At the start of battle, grant Oath to 1 random ally. At the end of Yukimi's action, grant a shield equal to 24% of Yukimi's Defense to an ally with Oath. *Only 1 ally can have Oath at a time.",
         "r1": "Legal Proceedings",
@@ -735,7 +735,7 @@ const enCharacterRitualData = {
         "r6_detail": "Increase damage by 10% for Yukimi and allies with Oath. Increase Bless damage by 2% for each Blessing stack on Yukimi and allies with Oath (up to 20%)."
     },
     "키요시": {
-        "name": "Kurotani Kiyoshi",
+        "name": "Kiyoshi Kurotani",
         "r0": "Make Sparks Fly",
         "r0_detail": "When using skills, gain 1 [Chosen One] stack.\n[Chosen One]: Increase party's Fire damage by 5%, and when Kurotani attacks with a skill, the target takes 4% of his current HP as damage. Lasts for 2 turns. Stacks up to 5 times.\n[Chosen One]'s duration is managed individually for each stack.",
         "r1": "Uncontrollable Power",
@@ -769,9 +769,9 @@ const enCharacterRitualData = {
         "r6_detail": "Allies with Cheer Song have their damage increased by 20% and ailment accuracy increased by 15%."
     },
     "토시야": {
-        "name": "Sumi Toshiya",
+        "name": "Toshiya Sumi",
         "r0": "Sonnet of Fate",
-        "r0_detail": "Each time an ally deals damage, Sumi Toshiya's inspiration activates to gain 1 Verse stack.\nAfter gaining 14 Verse stacks to complete a chapter, deal follow-up Curse damage equal to 130% of Attack to the main target last attacked.",
+        "r0_detail": "Each time an ally deals damage, Toshiya Sumi's inspiration activates to gain 1 Verse stack.\nAfter gaining 14 Verse stacks to complete a chapter, deal follow-up Curse damage equal to 130% of Attack to the main target last attacked.",
         "r1": "Creative Outburst",
         "r1_detail": "After using an active skill, increase damage of the next Sonnet of Fate by 40%.",
         "r2": "Death's Aria",
@@ -803,7 +803,7 @@ const enCharacterRitualData = {
         "r6_detail": "Increase maximum number of Seashell stacks to 8. When Seashell reaches 8 stacks, increase damage by 20%."
     },
     "카요": {
-        "name": "Tomiyama Kayo",
+        "name": "Kayo Tomiyama",
         "r0": "Fever Time",
         "r0_detail": "When using a skill, gain [Beat] stacks. When [Beat] stacks reach 4 or more, Resonance activates, spending 4 [Beat] stacks to grant 1 Pulsating Rhythm stack to the party. When allies have Pulsating Rhythm, increase Attack by 20%, Defense by 20% and ailment accuracy by 10% for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
         "r1": "Finish with a Smile",

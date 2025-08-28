@@ -383,7 +383,7 @@ SP回復の影響を大きく受ける怪盗だが、**基礎188.5%**のSP回復
 - 意識奏功スタックごとのダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)  
 - スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)  `
     },
-"미나미·여름": { name_en: "Miyashita Minami Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
+"미나미·여름": { name_en: "Minami Miyashita Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
         review: `
 대미지를 높이는 수치에 대한 거의 모든 버프를 보유하고 있고 수치 또한 높은 편으로 **모든 주력 딜러를 보조 가능**한 서포터입니다.
 
@@ -686,7 +686,7 @@ review_jp: `
 
 TECHNICALを所持していますが、後から追加された数値であるSKILL MASTER効果の影響は現時点では受けていません。`
     },
-    "미나미": { name_en: "Miyashita Minami", name_jp: "宮下 美波", codename: "MARIAN",
+    "미나미": { name_en: "Minami Miyashita", name_jp: "宮下 美波", codename: "MARIAN",
         review: ``
     },
     "미유": { name_en: "Miyu Sahara", name_jp: "佐原 海夕", codename: "PUPPET",
@@ -701,10 +701,10 @@ TECHNICALを所持していますが、後から追加された数値であるSK
     "모토하·여름": { name_en: "Motoha Arai·Summer", name_jp: "新井 素羽・夏", codename: "CLOSER·Summer",
         review: ``
     },
-    "몽타뉴": { name_en: "Kotone Montagne", name_jp: "琴音 モンターニュ", codename: "MONT",
+    "몽타뉴": { name_en: "Montagne Kotone", name_jp: "琴音 モンターニュ", codename: "MONT",
         review: ``
     },
-    "몽타뉴·백조": { name_en: "Kotone Montagne·Swan", name_jp: "琴音 モンターニュ・スワン", codename: "MONT·Swan",
+    "몽타뉴·백조": { name_en: "Montagne Kotone·Swan", name_jp: "琴音 モンターニュ・スワン", codename: "MONT·Swan",
         review: ``
     },
     "세이지": { name_en: "Seiji Shiratori", name_jp: "白鳥 誠司", codename: "FLEURET",
@@ -830,22 +830,22 @@ review_jp: `
     "카스미": { name_en: "Kasumi Yoshizawa", name_jp: "芳澤 かすみ", codename: "VIOLET",
         review: ``
     },
-    "카요": { name_en: "Tomiyama Kao", name_jp: "富山 佳代", codename: "OKYANN",
+    "카요": { name_en: "Kayo Tomiyama", name_jp: "富山 佳代", codename: "OKYANN",
         review: ``
     },
     "키라": { name_en: "Kira Kitazato", name_jp: "北里 基良", codename: "MESSA",
         review: ``
     },
-    "키요시": { name_en: "Kurotani Kiyoshi", name_jp: "黒谷清", codename: "KEY",
+    "키요시": { name_en: "Kiyoshi Kurotani", name_jp: "黒谷清", codename: "KEY",
         review: ``
     },
-    "토모코": { name_en: "Noge Tomoko", name_jp: "野毛 朋子", codename: "MOKO",
+    "토모코": { name_en: "Tomoko Noge", name_jp: "野毛 朋子", codename: "MOKO",
         review: ``
     },
-    "토모코·여름": { name_en: "Noge Tomoko Summer", name_jp: "野毛 朋子 夏", codename: "MOKO·Summer",
+    "토모코·여름": { name_en: "Tomoko Noge Summer", name_jp: "野毛 朋子 夏", codename: "MOKO·Summer",
         review: ``
     },
-"토시야": { name_en: "Sumi Tosiya", name_jp: "須見 俊也", codename: "SEPIA",
+"토시야": { name_en: "Toshiya Sumi", name_jp: "須見 俊也", codename: "SEPIA",
         review:`
 주원 효과를 기반으로 적에게 % 대미지를 주는 딜러입니다.
 
@@ -892,7 +892,7 @@ review_jp: `
     "하루나": { name_en: "Haruna Nishimori", name_jp: "西森 陽菜", codename: "RIDDLE",
         review: ``
     },
-    "후타바": { name_en: "Sakura Futaba", name_jp: "佐倉 双葉", codename: "NAVI",
+    "후타바": { name_en: "Futaba Sakura", name_jp: "佐倉 双葉", codename: "NAVI",
         review: ``
     }
   };

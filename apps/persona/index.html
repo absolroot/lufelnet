@@ -25,6 +25,7 @@ alternate_urls:
 
 <div class="main-wrapper">
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/skillfrom.css?v={{ site.time | date: '%s' }}">
+    <script src="{{ site.baseurl }}/apps/persona/getfrom.js?v={{ site.time | date: '%s' }}"></script>
     <!-- 언어 안내 메시지 -->
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
@@ -453,6 +454,19 @@ alternate_urls:
         .persona-detail-container.active .persona-card-section .persona-name {
             display: none;
         }
+
+        /* Acquisition (획득처) section */
+        .persona-acq-info { padding: 12px 16px 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; display: flex; gap: 16px; align-items: center; }
+        .persona-acq-info .acq-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+        .persona-acq-info .acq-header h3 { font-size: 13px; margin: 0; }
+        .persona-acq-info .acq-detail { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #ddd; border-radius: 6px; padding: 2px 6px; font-size: 11px; cursor: pointer; }
+        .persona-acq-info .acq-body { display:flex; flex-direction: column; gap:6px; }
+        .persona-acq-info .acq-row { display:flex; align-items:center; gap:6px; flex-wrap: wrap; }
+        .persona-acq-info .acq-icon { width: 22px; height: 22px; object-fit: contain; }
+        .persona-acq-info .acq-plus { opacity: .8; padding: 0 2px; }
+        .persona-acq-info .acq-text { font-size: 12px; opacity: .9; }
+        .persona-acq-info .acq-emblem { display:inline-flex; align-items:center; gap:4px; }
+        .persona-acq-info .acq-emblem-num { font-size: 12px; color: #ffd54f; }
     </style>
 
     <!-- Persona card container -->
@@ -854,31 +868,11 @@ alternate_urls:
             // Name and grade
             const headerInfo = document.createElement('div');
             headerInfo.className = 'persona-header-info';
-            if(personaData[personaName].wild_emblem_rainbow){
-                headerInfo.innerHTML = `
-                <h2>${displayName}</h2>
-                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
-                <img class="persona-wild-emblem-rainbow-img" src="{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png" style="width:20px; height:20px;" alt="How to get : Wild Emblem Rainbow">
+            
+            headerInfo.innerHTML = `
+            <h2>${displayName}</h2>
+            <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
             `;
-            }else if(personaName !== "야노식"){
-                headerInfo.innerHTML = `
-                <h2>${displayName}</h2>
-                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
-                <img class="persona-wild-emblem-rainbow-img" src="{{ site.baseurl }}/assets/img/persona/velvet.png" style="width:16px; height:16px; filter: drop-shadow(0px 1px rgb(255, 255, 255, 0.25)) drop-shadow(1px 0px rgb(255, 255, 255, 0.25)) drop-shadow(-1px 0px rgb(255, 255, 255, 0.25)) drop-shadow(0px -1px rgb(255, 255, 255, 0.25));" alt="How to get : velvet room">
-            `;
-            } else{
-                headerInfo.innerHTML = `
-                <h2>${displayName}</h2>
-                <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
-            `;
-            }
-
-            // event -> EVENT 텍스트 추가
-            if(personaData[personaName].event){
-                headerInfo.innerHTML += `
-                <div class="persona-event-text" style="color: rgb(236, 218, 129); font-size: 10px; line-height: 1; margin: 1px 0px 0px 0px;">EVENT</div>
-            `;
-            }
 
             
             // Instinct
@@ -932,6 +926,12 @@ alternate_urls:
             
             // Add elements to info section
             infoSection.appendChild(headerInfo);
+            // Insert Acquisition section between header and instinct (if script is loaded)
+            try {
+                if (window.Acquisition && typeof window.Acquisition.renderInto === 'function') {
+                    window.Acquisition.renderInto(infoSection, personaName);
+                }
+            } catch (e) { /* noop */ }
             infoSection.appendChild(instinctInfo);
             infoSection.appendChild(skillContainer);  // Add container instead of individual elements
 
@@ -1644,9 +1644,9 @@ alternate_urls:
                 priority_high: "상",
                 priority_medium: "중", 
                 priority_low: "하",
-                priority_normal: "일반",
-                priority_very_low: "매우 낮음",
-                priority_highest: "높음"
+                priority_normal: "중",
+                priority_very_low: "최하",
+                priority_highest: "상"
             },
             en: {
                 instinct_title: "Core Passive · Unique Skill · HIGHLIGHT",

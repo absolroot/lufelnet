@@ -65,9 +65,9 @@ const personaData = {
         element: "염동",
         best_persona: true,
         cost: {
-            blue : false,
+            blue : 0,
             purple: true,
-            rainbow: false,
+            rainbow: 0,
             coin : 4250
         },
         instinct: {
@@ -128,6 +128,11 @@ const personaData = {
         position: "반항",
         element: "질풍",
         best_persona: true,
+        cost: {
+            blue : 0,
+            purple: 0,
+            rainbow: 400,
+        },
         instinct: {
             name: "중생에 내리는 은혜 III",
             name_en: "Blessing to All III",
@@ -187,6 +192,12 @@ const personaData = {
         position: "우월",
         element: "축복",
         best_persona: true,
+        cost: {
+            blue : 0,
+            purple: 0,
+            rainbow: 0
+        },
+        combination: ["티타니아","오베론"],
         instinct: {
             name: "천사의 호령 III",
             name_en: "Angel's Command III",
@@ -245,6 +256,11 @@ const personaData = {
         best_persona: true,
         wild_emblem_rainbow : true,
         event: true,
+        cost: {
+            blue : 0,
+            purple: 0,
+            rainbow: 400
+        },
         instinct: {
             name: "해 지면 출몰하는 괴수 III",
             name_en: "Yearly Beast III",
@@ -303,6 +319,12 @@ const personaData = {
         position: "우월",
         element: "물리",
         best_persona: true,
+        cost: {
+            blue : 0,
+            purple: 0,
+            rainbow: 0
+        },
+        combination: ["레드 라이더","기리메칼라"],
         instinct: {
             name: "천왕의 주시 II",
             name_en: "Heavenly King's Eyes II",
@@ -511,8 +533,8 @@ const personaData = {
         best_persona: true,
         cost : {
             blue: true,
-            purple: false,
-            rainbow: false,
+            purple: 0,
+            rainbow: 0,
             coin : 100
         },
         instinct: {
@@ -711,7 +733,7 @@ const personaData = {
     },
     "사히모치노카미": {
         name_en: "Sahimochi-no-kami",
-        name_jp: "さひもちのかみ",
+        name_jp: "サヒモチノカミ",
         grade: "8",
         star: "5",
         position: "지배",
@@ -835,7 +857,7 @@ const personaData = {
             name_en: "Spirit Strike",
             name_jp: "心魔撃",
             effect: "모든 적에게 공격력 101.4%의 염동 속성 대미지를 준다.",
-            effect_en: "Deals 101.4% ATK Psy dmg to all foes. Evolved: Deals 125.0% ATK Psy dmg to all foes. There is a 35.0% base chance to inflict all foes with Dizzy for 2 turns.",
+            effect_en: "Deal Psychokinesis damage to all foes equal to 101.4% of Attack. Evolved: Deal Psychokinesis damage to all foes equal to 125.0% of Attack. There is a 35.0% base chance to inflict all foes with Dizzy for 2 turns.",
             effect_jp: "敵全体に攻撃力101.4％の念動属性ダメージを与える。進化：敵全体に攻撃力125.0％の念動属性ダメージを与える。35.0％の基本確率で敵全体を目眩状態にする。",
             priority: 0,
             icon: "염동광역"
@@ -958,7 +980,7 @@ const personaData = {
 
     "체르노보그": {
         name_en: "Chernobog",
-        name_jp: "チェルノボーグ",
+        name_jp: "チェルノボグ",
         grade: "7",
         star: "5",
         position: "굴복",
@@ -1167,7 +1189,7 @@ const personaData = {
         wild_emblem_rainbow : true,
         cost: {
             blue: false,
-            purple: false,
+            purple: 0,
             rainbow: true,
             coin: 300
         },
@@ -1605,8 +1627,8 @@ const personaData = {
         element: "축복",
         wild_emblem_rainbow : true,
         cost: {
-            blue : false,
-            purple: false,
+            blue : 0,
+            purple: 0,
             rainbow: true,
             coin : 200
         },

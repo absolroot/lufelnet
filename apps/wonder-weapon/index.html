@@ -39,18 +39,7 @@ alternate_urls:
 
   <div class="separator-line"></div>
 
-    <!-- 광고 -->
-    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 12px; margin-bottom: 18px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:970px;height:90px"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="9244892982"></ins>
-    </div>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <!---->
-
+  
   <div class="sort-controls">
     <button id="sort-desc" class="sort-button active" type="button" aria-pressed="true">출시 순 ↓</button>
     <button id="sort-asc" class="sort-button" type="button" aria-pressed="false">출시 순 ↑</button>
@@ -58,42 +47,12 @@ alternate_urls:
 
   <!-- Cards -->
   <div class="weapon-cards" id="weaponCards"></div>
-
-  <!-- 광고 -->
-  <div class="ads-container responsive-padding">
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-format="fluid"
-      data-ad-layout-key="-gc+3n+7a-ag-4h"
-      data-ad-client="ca-pub-5862324369257695"
-      data-ad-slot="5373524213"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-    
-    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:970px;height:90px"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="9244892982"></ins>
-    </div>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <div style="height: 12px;"></div>
-    <!---->
+  
     <style>
+        .inline-ad { margin: 16px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
         @media (max-width: 540px) {
-            .AD-bottom {
-                display: none !important;
-            }
+            .inline-ad { display: none !important; }
         }
-        @media (min-width: 540px) {
-            .ads-container {
-                display: none !important;
-            }
-        }
-        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
-        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
 </div>
 
@@ -335,7 +294,40 @@ alternate_urls:
     // Build sorted list by weapon order
     const list = getSortedWeaponKeys();
 
+    // Build a stable grouping map based on a fixed (desc) base order so ad positions don't move
+    const baseArr = (typeof matchWeapons !== 'undefined') ? Object.keys(matchWeapons).map(k => {
+      const raw = matchWeapons[k] ? matchWeapons[k].order : 0;
+      const num = Number(raw);
+      return { key: k, order: Number.isFinite(num) ? num : 0 };
+    }) : [];
+    baseArr.sort((a, b) => b.order - a.order); // fixed base: latest first
+    const groupIndexByKey = {};
+    baseArr.forEach((x, idx) => { groupIndexByKey[x.key] = Math.floor(idx / 4); });
+
+    function createInlineAd() {
+      const wrap = document.createElement('div');
+      wrap.className = 'inline-ad';
+      const ins = document.createElement('ins');
+      ins.className = 'adsbygoogle';
+      ins.style.display = 'inline-block';
+      ins.style.width = '970px';
+      ins.style.height = '90px';
+      ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
+      ins.setAttribute('data-ad-slot', '9244892982');
+      wrap.appendChild(ins);
+      return wrap;
+    }
+
+    let lastGroup = null;
+
     list.forEach((krName) => {
+      const currentGroup = groupIndexByKey[krName] ?? null;
+      if (lastGroup !== null && currentGroup !== lastGroup) {
+        const ad = createInlineAd();
+        cards.appendChild(ad);
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+      }
+      lastGroup = currentGroup;
       const data = (typeof matchWeapons !== 'undefined') ? matchWeapons[krName] : null;
       const displayName = getLocalizedName(krName, lang);
       const effectText = getLocalizedEffect(krName, lang);

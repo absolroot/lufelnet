@@ -535,9 +535,9 @@ const operationData = {
             { label: "의식 6", value: "1 › 변신 + 1 › 변신 + 1 › 2 › 변신 + 1 › 변신 + 2"}
         ],
         basic_en: [
-            { label: "Awareness 0", value: "1 › 1 › 2 › 2 › 2 › Trans + 2" },
-            { label: "Awareness 1", value: "1 › Trans + 1 › 1 › 2 › Trans + 1 › Trans + 2" },
-            { label: "Awareness 6", value: "1 › Trans + 1 › Trans + 1 › 2 › Trans + 1 › Trans + 2"}
+            { label: "Awareness 0", value: "1 › 1 › 2 › 2 › 2 › 3 + 2" },
+            { label: "Awareness 1", value: "1 › 3 + 1 › 1 › 2 › 3 + 1 › 3 + 2" },
+            { label: "Awareness 6", value: "1 › 3 + 1 › 3 + 1 › 2 › 3 + 1 › 3 + 2"}
         ],
         basic_jp: [
             { label: "意識 0", value: "1 › 1 › 2 › 2 › 2 › 変身 + 2" },

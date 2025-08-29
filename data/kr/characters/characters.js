@@ -1935,8 +1935,8 @@ const characterData = {
             "LV10+5": false,
             "LV12": false,
             "LV12+5": false,
-            "LV13": "관통 31.5% (개조6)",
-            "LV13+5": "관통 31.5% (개조6)"
+            "LV13": "관통 31.5% (A6)",
+            "LV13+5": "관통 31.5% (A6)"
         },
         "battle_plus_stats": "nan",
         "skill1_lv": "MAX!",

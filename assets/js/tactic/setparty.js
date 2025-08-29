@@ -277,6 +277,62 @@
         
         partyMembers[index].ritual = "0";
       }
+
+      // 의식(ritual) 변경 시 상태 반영 및 자동 패턴/UI 갱신
+      if (ritualSelect) {
+        ritualSelect.addEventListener("change", (e) => {
+          const newLevel = e.target.value;
+          partyMembers[index].ritual = newLevel;
+          const selectedName = partyMembers[index].name;
+
+          // 원더는 의식 고정 0
+          if (selectedName === "원더") {
+            partyMembers[index].ritual = "0";
+            return;
+          }
+
+          if (!window.__IS_APPLYING_IMPORT) {
+            // 캐릭터 의식 패턴 재적용
+            const hasPattern = typeof ritualPatterns !== 'undefined' && ritualPatterns[selectedName];
+            const pattern = hasPattern && (typeof findPatternForLevel === 'function') ? findPatternForLevel(selectedName, newLevel) : null;
+            turns.forEach((turn, turnIndex) => {
+              // 기존 자동 액션 제거
+              turn.actions = turn.actions.filter(action => !(action.type === 'auto' && action.character === selectedName));
+              // 새 패턴 삽입 또는 기본 빈 액션 삽입
+              if (pattern && pattern[turnIndex] && pattern[turnIndex].length > 0) {
+                pattern[turnIndex].forEach(actionData => {
+                  const newAction = {
+                    type: 'auto',
+                    character: selectedName,
+                    action: actionData.type,
+                    wonderPersona: "",
+                    memo: ""
+                  };
+                  if (actionData.order === 0) {
+                    turn.actions.unshift(newAction);
+                  } else {
+                    turn.actions.push(newAction);
+                  }
+                });
+              } else {
+                // 드롭다운의 기본값 노출을 위한 빈 자동 액션
+                turn.actions.push({
+                  type: 'auto',
+                  character: selectedName,
+                  action: "",
+                  wonderPersona: "",
+                  memo: ""
+                });
+              }
+            });
+
+            // 자동 액션 정합성 보정 및 UI 갱신
+            if (typeof updateAutoActions === 'function') updateAutoActions();
+            if (typeof updatePartyImages === 'function') updatePartyImages();
+            if (typeof renderTurns === 'function') renderTurns();
+          }
+        });
+      }
       
       // 주 계시 옵션 설정
       if (mainRevSelect) {
@@ -624,39 +680,41 @@
             }
             
             // 임포트 중에는 자동 패턴 주입 스킵
-            if (!window.__IS_APPLYING_IMPORT && ritualPatterns[selectedName]) {
-              const pattern = findPatternForLevel(selectedName, currentRitual);
-              if (pattern) {
-                turns.forEach((turn, turnIndex) => {
-                    // 해당 캐릭터의 기존 자동 액션 제거
-                    turn.actions = turn.actions.filter(action => 
-                      !(action.type === 'auto' && action.character === selectedName)
-                    );
-                    
-                    // 해당 턴의 패턴이 있고 빈 배열이 아닌 경우에만 액션 추가
-                    if (pattern[turnIndex] && pattern[turnIndex].length > 0) {
-                      pattern[turnIndex].forEach(actionData => {
-                        if (actionData.order === 0) {
-                          turn.actions.unshift({
-                            type: 'auto',
-                            character: selectedName,
-                            action: actionData.type,
-                            wonderPersona: "",
-                            memo: ""
-                          });
-                        } else {
-                          turn.actions.push({
-                            type: 'auto',
-                            character: selectedName,
-                            action: actionData.type,
-                            wonderPersona: "",
-                            memo: ""
-                          });
-                        }
-                    });
-                  }
-                });
-              }
+            if (!window.__IS_APPLYING_IMPORT) {
+              const hasPattern = typeof ritualPatterns !== 'undefined' && ritualPatterns[selectedName];
+              const pattern = hasPattern && typeof findPatternForLevel === 'function' ? findPatternForLevel(selectedName, currentRitual) : null;
+              turns.forEach((turn, turnIndex) => {
+                // 기존 자동 액션 제거
+                turn.actions = turn.actions.filter(action => 
+                  !(action.type === 'auto' && action.character === selectedName)
+                );
+                // 패턴이 있으면 적용, 없거나 비어있으면 기본 빈 액션 1개 추가
+                if (pattern && pattern[turnIndex] && pattern[turnIndex].length > 0) {
+                  pattern[turnIndex].forEach(actionData => {
+                    const newAction = {
+                      type: 'auto',
+                      character: selectedName,
+                      action: actionData.type,
+                      wonderPersona: "",
+                      memo: ""
+                    };
+                    if (actionData.order === 0) {
+                      turn.actions.unshift(newAction);
+                    } else {
+                      turn.actions.push(newAction);
+                    }
+                  });
+                } else {
+                  // 드롭다운의 기본값(맨 위 옵션)이 선택되도록 빈 액션 추가
+                  turn.actions.push({
+                    type: 'auto',
+                    character: selectedName,
+                    action: "",
+                    wonderPersona: "",
+                    memo: ""
+                  });
+                }
+              });
             }
             else{
               if (!window.__IS_APPLYING_IMPORT) {
@@ -692,39 +750,41 @@
             mainRevSelect.disabled = false;
             
             // 새로 선택된 캐릭터의 의식 패턴이 있는지 확인
-            if (ritualPatterns[selectedName]) {
-              const pattern = findPatternForLevel(selectedName, currentRitual);
-              if (pattern) {
-                turns.forEach((turn, turnIndex) => {
-                    // 해당 캐릭터의 기존 자동 액션 제거
-                    turn.actions = turn.actions.filter(action => 
-                      !(action.type === 'auto' && action.character === selectedName)
-                    );
-                    
-                    // 해당 턴의 패턴이 있고 빈 배열이 아닌 경우에만 액션 추가
-                    if (pattern[turnIndex] && pattern[turnIndex].length > 0) {
-                      pattern[turnIndex].forEach(actionData => {
-                        if (actionData.order === 0) {
-                          turn.actions.unshift({
-                            type: 'auto',
-                            character: selectedName,
-                            action: actionData.type,
-                            wonderPersona: "",
-                            memo: ""
-                          });
-                        } else {
-                          turn.actions.push({
-                            type: 'auto',
-                            character: selectedName,
-                            action: actionData.type,
-                            wonderPersona: "",
-                            memo: ""
-                          });
-                        }
-                    });
-                  }
-                });
-              }
+            {
+              const hasPattern = typeof ritualPatterns !== 'undefined' && ritualPatterns[selectedName];
+              const pattern = hasPattern && typeof findPatternForLevel === 'function' ? findPatternForLevel(selectedName, currentRitual) : null;
+              turns.forEach((turn, turnIndex) => {
+                // 기존 자동 액션 제거
+                turn.actions = turn.actions.filter(action => 
+                  !(action.type === 'auto' && action.character === selectedName)
+                );
+                // 패턴이 있으면 적용, 없거나 비어있으면 기본 빈 액션 1개 추가
+                if (pattern && pattern[turnIndex] && pattern[turnIndex].length > 0) {
+                  pattern[turnIndex].forEach(actionData => {
+                    const newAction = {
+                      type: 'auto',
+                      character: selectedName,
+                      action: actionData.type,
+                      wonderPersona: "",
+                      memo: ""
+                    };
+                    if (actionData.order === 0) {
+                      turn.actions.unshift(newAction);
+                    } else {
+                      turn.actions.push(newAction);
+                    }
+                  });
+                } else {
+                  // 드롭다운의 기본값(맨 위 옵션)이 선택되도록 빈 액션 추가
+                  turn.actions.push({
+                    type: 'auto',
+                    character: selectedName,
+                    action: "",
+                    wonderPersona: "",
+                    memo: ""
+                  });
+                }
+              });
             }
           }
           

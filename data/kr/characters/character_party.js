@@ -425,7 +425,7 @@ const recommendParty = {
         ]
     },
     "키라": {
-        "weapon": ["망자의 눈!", "메커니컬 심판자"],
+        "weapon": ["망자의 눈!", "메커니컬 심판자!"],
         "persona": [
             {
                 type: "ATK",

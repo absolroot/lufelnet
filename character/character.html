@@ -301,6 +301,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="5373524213"></ins>
         </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <div id="ad-unit-p5-1" class="ad-unit">
             <ins class="adsbygoogle"
                 style="display:block;"
@@ -309,6 +312,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="8118051131"></ins>
         </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <div id="ad-unit-p3-1" class="ad-unit">
             <ins class="adsbygoogle"
                 style="display:block;"
@@ -317,6 +323,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="2039727945"></ins>
         </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 
 
@@ -415,6 +424,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="5373524213"></ins>
         </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         
         <div id="ad-unit-p5-2" class="ad-unit">
             <ins class="adsbygoogle"
@@ -424,6 +436,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="8118051131"></ins>
         </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
         <div id="ad-unit-p3-2" class="ad-unit">
             <ins class="adsbygoogle"
@@ -433,6 +448,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 data-ad-client="ca-pub-5862324369257695"
                 data-ad-slot="2039727945"></ins>
         </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <div style="height: 10px;"></div>
     </div>
 
@@ -489,86 +507,74 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </style>
 
     <script>
-    // Lazy push utilities (observer + prewarm)
-    let adObserver = null;
-    const preloadMargin = 700; // px
-    const rootMargin = '900px 0px 900px 0px';
+    function showAdAndPush(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
 
-    function pushOnce(ins) {
-        if (!ins || ins.dataset.pushed === '1') return;
-        try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            ins.dataset.pushed = '1';
-        } catch (e) {
-            // swallow
-        }
-    }
+        el.style.display = 'block';
 
-    function ensureObserver() {
-        if (adObserver) return adObserver;
-        adObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                const ins = entry.target;
-                if (entry.isIntersecting || entry.intersectionRatio > 0) {
-                    pushOnce(ins);
-                    obs.unobserve(ins);
+        const checkAndPush = () => {
+            const ins = el.querySelector('.adsbygoogle');
+
+            if (!ins) return;
+
+            // adsbygoogle이 화면에 제대로 포함되어 있고, 최소 width 확보됐는지 확인
+            const isVisible = ins.offsetParent !== null;
+            const widthOk = ins.offsetWidth >= 250;
+
+            if (isVisible && widthOk) {
+                try {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {
+                    console.warn("광고 푸시 중 오류 발생:", e, 'id:', id);
                 }
-            });
-        }, { root: null, rootMargin, threshold: 0 });
-        return adObserver;
-    }
-
-    function prewarmIfNearViewport(ins) {
-        try {
-            const rect = ins.getBoundingClientRect();
-            const vh = window.innerHeight || document.documentElement.clientHeight;
-            const above = rect.bottom >= -preloadMargin; // not far above
-            const below = rect.top <= vh + preloadMargin; // within bottom margin
-            if (above && below) {
-                pushOnce(ins);
-                return true;
+            } else {
+                // 100ms 후 재시도 (최대 10회)
+                if (!ins.__retryCount) ins.__retryCount = 0;
+                if (ins.__retryCount < 10) {
+                    ins.__retryCount++;
+                    setTimeout(checkAndPush, 100);
+                } else {
+                    console.warn(`${id} 광고 푸시 실패: width=${ins.offsetWidth}, visible=${isVisible}`);
+                }
             }
-        } catch(_) {}
-        return false;
+        };
+
+        // 첫 시도
+        requestAnimationFrame(checkAndPush);
     }
 
-    function observeOrPrewarm(container) {
-        if (!container) return;
-        container.style.display = 'block';
-        const ins = container.querySelector('.adsbygoogle');
-        if (!ins) return;
-        // Try prewarm first
-        if (!prewarmIfNearViewport(ins)) {
-            ensureObserver().observe(ins);
-        }
-    }
-
-    // Select relevant ad units (by persona) and lazy-init them
+    // push 광고 
     function pushAdUnitsForCharacter(characterName) {
         const character = characterData[characterName];
         if (!character) return;
 
         try {
-            // 조건에 따라 특정 광고 DOM만 표시
+            // 조건에 따라 특정 광고 DOM만 표시 + push 실행
             if (character.persona5) {
+                //showAdAndPush('ad-unit-p5-1');
+                //showAdAndPush('ad-unit-p5-2');
+
                 const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
                 adsToHide.forEach(ad => {
                     if (ad && ad.style) {
                         ad.style.display = 'none';
                     }
                 });
-                observeOrPrewarm(document.getElementById('ad-unit-p5-1'));
-                observeOrPrewarm(document.getElementById('ad-unit-p5-2'));
             } else if (character.persona3) {
+                //showAdAndPush('ad-unit-p3-1');
+                //showAdAndPush('ad-unit-p3-2');
+
                 const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])');
                 adsToHide.forEach(ad => {
                     if (ad && ad.style) {
                         ad.style.display = 'none';
                     }
                 });
-                observeOrPrewarm(document.getElementById('ad-unit-p3-1'));
-                observeOrPrewarm(document.getElementById('ad-unit-p3-2'));
             } else {
+                //showAdAndPush('ad-unit-1');
+                //showAdAndPush('ad-unit-2');
+
                 const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
                 const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');
                 
@@ -582,8 +588,6 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         ad.style.display = 'none';
                     }
                 });
-                observeOrPrewarm(document.getElementById('ad-unit-1'));
-                observeOrPrewarm(document.getElementById('ad-unit-2'));
             }
         } catch (error) {
             console.warn('광고 푸시 중 오류 발생:', error);

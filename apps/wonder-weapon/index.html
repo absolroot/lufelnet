@@ -694,7 +694,7 @@ alternate_urls:
             const adslot = el.getAttribute("data-ad-slot");
             //console.log("google status", status);
             //console.log("google adslot", adslot);
-            if (status === "unfilled" || el.querySelector("iframe") === null) {
+            if (status === "unfilled") {
                 el.style.display = "none";
             }
         });

@@ -302,7 +302,16 @@ alternate_urls:
     }) : [];
     baseArr.sort((a, b) => b.order - a.order); // fixed base: latest first
     // Keys at indices 3,7,11,... (every 4th) will carry an inline ad in their info-container
-    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 6 === 0)).map(x => x.key));
+    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 3 === 0)).map(x => x.key));
+
+    // Rotate among multiple ad slots (round-robin) to mitigate per-page init limits
+    const adSlots = ['9244892982', '7254578915', '7331282728', '6018201052'];
+    let adSlotIdx = 0;
+    const nextAdSlot = () => {
+      const slot = adSlots[adSlotIdx % adSlots.length];
+      adSlotIdx++;
+      return slot;
+    };
 
     function createInlineAd() {
       const wrap = document.createElement('div');
@@ -313,7 +322,7 @@ alternate_urls:
       ins.style.width = '970px';
       ins.style.height = '90px';
       ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
-      ins.setAttribute('data-ad-slot', '9244892982');
+      ins.setAttribute('data-ad-slot', nextAdSlot());
       wrap.appendChild(ins);
       return wrap;
     }
@@ -585,14 +594,38 @@ alternate_urls:
 
       card.appendChild(imgContainer);
       card.appendChild(info);
-      // If this card is designated as an ad carrier (every 4th in base order), attach ad to its info-container bottom
+      // If this card is designated as an ad carrier (every Nth in base order), attach ad to its info-container bottom
       if (adCarrierKeys.has(krName)) {
         const ad = createInlineAd();
         info.appendChild(ad);
-        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
       }
       cards.appendChild(card);
     });
+
+    // Lazy-initialize ads: only push when the ad enters viewport
+    const adInsList = cards.querySelectorAll('.inline-ad .adsbygoogle');
+    if ('IntersectionObserver' in window && adInsList.length) {
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            if (el.dataset.pushed === '1') { observer.unobserve(el); return; }
+            try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+            el.dataset.pushed = '1';
+            observer.unobserve(el);
+          }
+        });
+      }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+      adInsList.forEach(el => {
+        // mark not pushed yet
+        el.dataset.pushed = el.dataset.pushed || '0';
+        obs.observe(el);
+      });
+    } else {
+      // Fallback: initialize immediately
+      adInsList.forEach(el => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {} });
+    }
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
@@ -649,7 +682,7 @@ alternate_urls:
             const adslot = el.getAttribute("data-ad-slot");
             //console.log("google status", status);
             //console.log("google adslot", adslot);
-            if (status === "unfilled" || el.querySelector("iframe") === null) {
+            if (status === "unfilled") {
                 el.style.display = "none";
             }
         });

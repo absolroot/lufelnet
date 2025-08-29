@@ -81,13 +81,7 @@ Article 페이지용 동적 메타 태그 설정
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <style>
-        @media (max-width: 1440px) {
-            .AD-top {
-                display: none !important;
-            }
-        }
-    </style>
+    
 
     <div class="main-content">
         <article class="article-detail">
@@ -113,7 +107,19 @@ Article 페이지용 동적 메타 태그 설정
 
     <div style="height: 24px;"></div>
     
-    <div id="ad-unit-bottom" class="AD-bottom" style="text-align: center; align-items: center; display: flex; justify-content: center;"> 
+        <!-- 광고 -->
+  <div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="horizontal"
+        data-full-width-responsive="true"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+    
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
     <ins class="adsbygoogle"
         style="display:inline-block;width:970px;height:90px"
         data-ad-client="ca-pub-5862324369257695"
@@ -123,6 +129,21 @@ Article 페이지용 동적 메타 태그 설정
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
+    <!---->
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
 </div>
 
 <script>

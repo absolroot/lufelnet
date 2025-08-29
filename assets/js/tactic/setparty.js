@@ -276,6 +276,24 @@
         subRevSelect.value = "";
         
         partyMembers[index].ritual = "0";
+        // 원더가 초기 기본값인 경우에도 자동 액션을 기본 추가 (임포트 중에는 스킵)
+        if (!window.__IS_APPLYING_IMPORT && typeof turns !== 'undefined' && Array.isArray(turns)) {
+          turns.forEach(turn => {
+            // 기존 원더 자동 액션 제거
+            turn.actions = (turn.actions || []).filter(a => !(a.type === 'auto' && a.character === '원더'));
+            // 기본 빈 자동 액션 추가
+            turn.actions.push({
+              type: 'auto',
+              character: '원더',
+              action: '',
+              wonderPersona: '',
+              memo: ''
+            });
+          });
+          if (typeof updateAutoActions === 'function') updateAutoActions();
+          if (typeof updatePartyImages === 'function') updatePartyImages();
+          if (typeof renderTurns === 'function') renderTurns();
+        }
       }
 
       // 의식(ritual) 변경 시 상태 반영 및 자동 패턴/UI 갱신
@@ -442,6 +460,12 @@
         nameSelect.parentNode.replaceChild(inputContainer, nameSelect);
         // 초기 값 기준으로 아이콘 표시
         setCharacterIconOnInputWithElement(input, partyMembers[index].name);
+        // 초기 표시 시 EN/JP에서는 번역된 표시명을 보여주도록 처리 (값은 KR 고정)
+        if (getCurrentLanguage() !== 'kr' && input.value) {
+          const displayName = getCharacterDisplayName(input.value);
+          inputContainer.setAttribute('data-display-text', displayName);
+          inputContainer.classList.add('show-translation');
+        }
         
         // 선택된 캐릭터 아이콘을 입력창에 표시/제거
         function setCharacterIconOnInputWithElement(inputEl, charName) {
@@ -643,6 +667,21 @@
             subRevSelect.value = "";
             
             partyMembers[index].ritual = "0";
+            // 원더 선택 시에도 기본 자동 액션을 턴마다 1개씩 추가 (임포트 중에는 스킵)
+            if (!window.__IS_APPLYING_IMPORT) {
+              turns.forEach(turn => {
+                // 기존 원더 자동 액션 제거
+                turn.actions = (turn.actions || []).filter(a => !(a.type === 'auto' && a.character === '원더'));
+                // 기본 빈 자동 액션 추가
+                turn.actions.push({
+                  type: 'auto',
+                  character: '원더',
+                  action: '',
+                  wonderPersona: '',
+                  memo: ''
+                });
+              });
+            }
           } else {
             ritualSelect.disabled = false;
             mainRevSelect.disabled = false;
@@ -745,6 +784,21 @@
             subRevSelect.value = "";
             
             partyMembers[index].ritual = "0";
+            // 원더 입력 시에도 기본 자동 액션 추가 (임포트 중에는 스킵)
+            if (!window.__IS_APPLYING_IMPORT) {
+              turns.forEach(turn => {
+                // 기존 원더 자동 액션 제거
+                turn.actions = (turn.actions || []).filter(a => !(a.type === 'auto' && a.character === '원더'));
+                // 기본 빈 자동 액션 추가
+                turn.actions.push({
+                  type: 'auto',
+                  character: '원더',
+                  action: '',
+                  wonderPersona: '',
+                  memo: ''
+                });
+              });
+            }
           } else {
             ritualSelect.disabled = false;
             mainRevSelect.disabled = false;

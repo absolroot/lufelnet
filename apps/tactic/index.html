@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [tactic]
-custom_js: [tooltip, tactic/share, tactic/library-loader, tactic/import, tactic/export, tactic/setparty, tactic/setwonder, tactic/partyimg, tactic/createAction, tactic/renderTurns, tactic/updateAuto, tactic/findPattern]
+custom_js: [tooltip, tactic/share, tactic/library-loader, tactic/import, tactic/export, tactic/setparty, tactic/setwonder, tactic/partyimg, tactic/createAction, tactic/renderTurns, tactic/updateAuto, tactic/findPattern, tactic/capture]
 custom_data: [tooltip.js, tactic/pattern.js, characters/characters.js, revelations/revelations.js, wonder/weapons.js, wonder/persona.js, wonder/skills.js]
 permalink: /tactic/
 language: kr
@@ -42,7 +42,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         <button class="export-import-btn" onclick="exportData()">내보내기</button>
         <button class="export-import-btn" onclick="importData()">가져오기</button>
         <!--<button class="export-import-btn" onclick="handleShare()">공유하기</button>-->
-        <button class="export-import-btn capture-btn" onclick="captureAndShare()">화면 캡처</button>
+        <button class="export-import-btn capture-btn" onclick="captureAndDownload()">화면 캡처</button>
         <button class="export-import-btn toggle-ui-btn" onclick="toggleUI()"></button>
       </div>
       <!-- KR List Toggle (Mobile) - a new row under export/import -->
@@ -1392,166 +1392,6 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         });
       });
 
-      // html-to-image 라이브러리를 사용한 캡처 함수 (margin 조정)
-      async function captureAndShare() {
-        try {
-          // 로딩 표시
-          const loadingEl = document.createElement('div');
-          loadingEl.style.position = 'fixed';
-          loadingEl.style.top = '50%';
-          loadingEl.style.left = '50%';
-          loadingEl.style.transform = 'translate(-50%, -50%)';
-          loadingEl.style.background = 'rgba(0,0,0,0.7)';
-          loadingEl.style.color = 'white';
-          loadingEl.style.padding = '15px 20px';
-          loadingEl.style.borderRadius = '5px';
-          loadingEl.style.zIndex = '9999';
-          loadingEl.textContent = 'Capturing...';
-          document.body.appendChild(loadingEl);
-          
-          // UI 숨기기 (원래 상태 저장)
-          const container = document.querySelector('.container');
-          const originalUIState = container.classList.contains('hide-ui');
-          container.classList.add('hide-ui');
-          
-          // navigation-path 수정을 위한 원래 내용 저장
-          const navigationPath = document.querySelector('.navigation-path');
-          const originalNavigationContent = navigationPath.innerHTML;
-          navigationPath.innerHTML = 'lufel.net';
-          
-          // 캡처할 요소
-          const mainWrapper = document.querySelector('.main-wrapper');
-          
-          // 원래 스타일 저장
-          const originalStyles = {
-            left: mainWrapper.style.left,
-            right: mainWrapper.style.right,
-            marginLeft: mainWrapper.style.marginLeft,
-            marginRight: mainWrapper.style.marginRight,
-            paddingLeft: mainWrapper.style.paddingLeft,
-            paddingRight: mainWrapper.style.paddingRight,
-            containerMarginLeft: mainWrapper.style.marginLeft,
-            containerMarginRight: mainWrapper.style.marginRight,
-            containerPaddingLeft: mainWrapper.style.paddingLeft,
-            containerPaddingRight: mainWrapper.style.paddingRight
-          };
-          
-          // 캡처를 위해 스타일 설정
-          mainWrapper.style.left = '0';
-          mainWrapper.style.right = 'auto';
-          mainWrapper.style.marginLeft = '0';
-          mainWrapper.style.marginRight = '0';
-          mainWrapper.style.paddingLeft = '0';
-          mainWrapper.style.paddingRight = '0';
-          container.style.marginLeft = '0';
-          container.style.marginRight = '0';
-          container.style.paddingLeft = '0';
-          container.style.paddingRight = '0';
-
-          // 캡처에서 제외할 요소 숨기기
-          const mobileButtons = document.querySelector('.mobile-buttons');
-          const topButtons = document.querySelector('.top-buttons');
-          
-          const originalMobileButtonsDisplay = mobileButtons ? mobileButtons.style.display : null;
-          const originalTopButtonsDisplay = topButtons ? topButtons.style.display : null;
-          
-          if (mobileButtons) mobileButtons.style.display = 'none';
-          if (topButtons) topButtons.style.display = 'none';
-          
-          // 잠시 대기 (UI 변경 적용 시간)
-          await new Promise(resolve => setTimeout(resolve, 300));
-          
-          loadingEl.textContent = 'Capturing...';
-          
-          // 현재 main-wrapper의 크기 가져오기
-          const rect = mainWrapper.getBoundingClientRect();
-          
-          // html-to-image 라이브러리를 사용하여 캡처
-          const dataUrl = await htmlToImage.toPng(mainWrapper, {
-            quality: 1.0,
-            backgroundColor: '#1a1a1a',
-            pixelRatio: window.devicePixelRatio,
-            width: rect.width + 240,  // 현재 main-wrapper의 너비 사용
-            height: rect.height, // 현재 main-wrapper의 높이 사용
-            skipFonts: false,
-            fontEmbedCSS: true,
-            imagePlaceholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
-          });
-          
-          // navigation-path 원래 내용으로 복원
-          navigationPath.innerHTML = originalNavigationContent;
-          
-          // 원래 스타일로 복원
-          mainWrapper.style.left = originalStyles.left;
-          mainWrapper.style.right = originalStyles.right;
-          mainWrapper.style.marginLeft = originalStyles.marginLeft;
-          mainWrapper.style.marginRight = originalStyles.marginRight;
-          mainWrapper.style.paddingLeft = originalStyles.paddingLeft;
-          mainWrapper.style.paddingRight = originalStyles.paddingRight;
-          container.style.marginLeft = originalStyles.containerMarginLeft;
-          container.style.marginRight = originalStyles.containerMarginRight;
-          container.style.paddingLeft = originalStyles.containerPaddingLeft;
-          container.style.paddingRight = originalStyles.containerPaddingRight;
-          
-          // 숨긴 요소 복원
-          if (mobileButtons) mobileButtons.style.display = originalMobileButtonsDisplay || '';
-          if (topButtons) topButtons.style.display = originalTopButtonsDisplay || '';
-          
-          // UI 상태 복원
-          if (!originalUIState) {
-            container.classList.remove('hide-ui');
-          }
-          
-          loadingEl.textContent = 'Image generated!';
-          
-          // 공유 또는 다운로드
-          if (navigator.share) {
-            loadingEl.textContent = 'Preparing to share...';
-            const blob = await (await fetch(dataUrl)).blob();
-            const file = new File([blob], 'p5x-tactic.png', { type: 'image/png' });
-            
-            await navigator.share({
-              files: [file],
-              title: '페르소나5X 택틱',
-              text: '페르소나5X 택틱 메이커로 생성된 이미지입니다.'
-            });
-          } else {
-            const link = document.createElement('a');
-            link.download = 'p5x-tactic-lufelnet.png';
-            link.href = dataUrl;
-            link.click();
-          }
-          
-          // 로딩 표시 제거
-          document.body.removeChild(loadingEl);
-          
-        } catch (error) {
-          console.error('Capture error:', error);
-          alert('Capture error: ' + error.message);
-          
-          // navigation-path 원래 내용으로 복원 (오류 발생 시에도)
-          const navigationPath = document.querySelector('.navigation-path');
-          if (navigationPath) {
-            navigationPath.innerHTML = originalNavigationContent;
-          }
-          
-          // 오류 발생 시 UI 상태 복원
-          const container = document.querySelector('.container');
-          if (container.classList.contains('hide-ui')) {
-            container.classList.remove('hide-ui');
-          }
-          
-          // 로딩 표시 제거
-          try {
-            const loadingEl = document.querySelector('div[style*="position: fixed"]');
-            if (loadingEl && loadingEl.parentNode) {
-              loadingEl.parentNode.removeChild(loadingEl);
-            }
-          } catch (e) {
-            console.error('로딩 표시 제거 오류:', e);
-          }
-        }
-      }
     </script>
     <script>
       // Mobile/PC accordion for Wonder and Party cards

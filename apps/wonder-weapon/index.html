@@ -302,7 +302,7 @@ alternate_urls:
     }) : [];
     baseArr.sort((a, b) => b.order - a.order); // fixed base: latest first
     // Keys at indices 3,7,11,... (every 4th) will carry an inline ad in their info-container
-    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 4 === 0)).map(x => x.key));
+    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 6 === 0)).map(x => x.key));
 
     function createInlineAd() {
       const wrap = document.createElement('div');

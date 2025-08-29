@@ -29,10 +29,14 @@ turnContainers.forEach(container => {
     });
     });
     
-    currentTurns[turn.turn - 1] = {
-    turn: turn.turn,
-    actions: actions
+    const turnPayload = {
+      turn: turn.turn,
+      actions: actions
     };
+    if (turn.customName) {
+      turnPayload.customName = turn.customName;
+    }
+    currentTurns[turn.turn - 1] = turnPayload;
 });
 
 const data = {

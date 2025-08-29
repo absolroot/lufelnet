@@ -54,6 +54,7 @@ window.applyImportedData = function(payload, options = {}) {
     if (isRaw) {
       turns = data.turns.map(turn => ({
         turn: turn.turn,
+        customName: turn.customName ? String(turn.customName) : undefined,
         actions: (turn.actions || []).map(action => {
           // wonderPersona는 이름 또는 인덱스(숫자/숫자 문자열) 모두 허용
           let personaName = '';

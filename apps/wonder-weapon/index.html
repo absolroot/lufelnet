@@ -49,7 +49,7 @@ alternate_urls:
   <div class="weapon-cards" id="weaponCards"></div>
   
     <style>
-        .inline-ad { margin: 16px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
+        .inline-ad { margin: 16px 0 0px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
         @media (max-width: 540px) {
             .inline-ad { display: none !important; }
         }
@@ -294,15 +294,15 @@ alternate_urls:
     // Build sorted list by weapon order
     const list = getSortedWeaponKeys();
 
-    // Build a stable grouping map based on a fixed (desc) base order so ad positions don't move
+    // Build a stable base order (desc) so ad positions don't move regardless of current sort
     const baseArr = (typeof matchWeapons !== 'undefined') ? Object.keys(matchWeapons).map(k => {
       const raw = matchWeapons[k] ? matchWeapons[k].order : 0;
       const num = Number(raw);
       return { key: k, order: Number.isFinite(num) ? num : 0 };
     }) : [];
     baseArr.sort((a, b) => b.order - a.order); // fixed base: latest first
-    const groupIndexByKey = {};
-    baseArr.forEach((x, idx) => { groupIndexByKey[x.key] = Math.floor(idx / 6); }); // 무기 6개마다 광고 1개
+    // Keys at indices 3,7,11,... (every 4th) will carry an inline ad in their info-container
+    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 4 === 0)).map(x => x.key));
 
     function createInlineAd() {
       const wrap = document.createElement('div');
@@ -318,16 +318,7 @@ alternate_urls:
       return wrap;
     }
 
-    let lastGroup = null;
-
     list.forEach((krName) => {
-      const currentGroup = groupIndexByKey[krName] ?? null;
-      if (lastGroup !== null && currentGroup !== lastGroup) {
-        const ad = createInlineAd();
-        cards.appendChild(ad);
-        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
-      }
-      lastGroup = currentGroup;
       const data = (typeof matchWeapons !== 'undefined') ? matchWeapons[krName] : null;
       const displayName = getLocalizedName(krName, lang);
       const effectText = getLocalizedEffect(krName, lang);
@@ -594,6 +585,12 @@ alternate_urls:
 
       card.appendChild(imgContainer);
       card.appendChild(info);
+      // If this card is designated as an ad carrier (every 4th in base order), attach ad to its info-container bottom
+      if (adCarrierKeys.has(krName)) {
+        const ad = createInlineAd();
+        info.appendChild(ad);
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+      }
       cards.appendChild(card);
     });
   }
@@ -644,4 +641,17 @@ alternate_urls:
       wrapper.prepend(div);
     }
   });
+
+  // 광고 흰 박스 숨김
+  setTimeout(() => {
+        document.querySelectorAll(".adsbygoogle").forEach(el => {
+            const status = el.getAttribute("data-ad-status");
+            const adslot = el.getAttribute("data-ad-slot");
+            //console.log("google status", status);
+            //console.log("google adslot", adslot);
+            if (status === "unfilled" || el.querySelector("iframe") === null) {
+                el.style.display = "none";
+            }
+        });
+    }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
 </script>

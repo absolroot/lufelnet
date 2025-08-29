@@ -10,7 +10,7 @@
 .card:hover { filter: brightness(1.1); z-index: 1; }
 .card.active { border-color: rgba(255,255,255,0.5); filter: brightness(1.1); z-index: 2; }
 
-.img-container { display: flex;   justify-content: center;   width: 90px;}
+.img-container { display: flex;   justify-content: center;   width: 122px;}
 .weapon-img { max-height:180px; }
 
 @media (max-width: 1200px) { .weapon-img { max-height:140px; }

@@ -708,7 +708,7 @@ const characterData = {
             "LV13": "효과명중 182%",
             "LV13+5": "효과명중 199%"
         },
-        "battle_plus_stats": "· 전용무기 : 전투 중 효과명중 증가 / 마이팰리스 2.3% / 마이팰리스 평점 ",
+        "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% / 마이팰리스 평점 ",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -1210,7 +1210,9 @@ const characterData = {
             "LV13": "생명 16000",
             "LV13+5": "생명 16000"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점  / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 찬란 1800",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점 / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 패시브 1800",
+        "battle_plus_stats_en": "· 해명의힘 / 직책 8% / MyPalace 260 / MyPalace Point / Minami Passive 1500 / Minami Skill 3 / Tomoko·Summer Passive 1800",
+        "battle_plus_stats_jp": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점 / 宮下 美波 パッシブ 1500 / 宮下 美波 スキル3 / 野毛 朋子 夏 パッシブ 1800",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",

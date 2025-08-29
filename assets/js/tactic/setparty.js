@@ -57,8 +57,8 @@
       if (!window.languageData) window.languageData = {};
       if (!window.languageData[lang]) window.languageData[lang] = {};
 
-      // 이미 맵이 준비됐다면 종료
-      if (window.languageData[lang].revelationMapping) return;
+      // 이미 필요한 데이터가 준비됐다면 종료
+      if (window.languageData[lang].revelationMapping && window.languageData[lang].characterList) return;
 
       // 동시 호출 방지
       if (__translationsLoadingPromise) {
@@ -68,32 +68,60 @@
       __translationsLoadingPromise = (async () => {
         const base = (typeof BASE_URL !== 'undefined' && BASE_URL) ? BASE_URL : '';
         const ver = (typeof APP_VERSION !== 'undefined' && APP_VERSION) ? `?v=${APP_VERSION}` : '';
-        const url = `${base}/data/${lang}/revelations/revelations.js${ver}`;
 
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`Failed to load revelations for ${lang}`);
-        const txt = await res.text();
+        // 1) 계시(revelations) 매핑 로드
+        try {
+          const revUrl = `${base}/data/${lang}/revelations/revelations.js${ver}`;
+          const revRes = await fetch(revUrl);
+          if (!revRes.ok) throw new Error(`Failed to load revelations for ${lang}`);
+          const revTxt = await revRes.text();
 
-        // en/jp 각각 전역 공개로 변경 후 실행
-        let patched = txt;
-        if (lang === 'en') {
-          patched = patched.replace('const enRevelationData', 'window.enRevelationData');
-        } else if (lang === 'jp') {
-          patched = patched.replace('const jpRevelationData', 'window.jpRevelationData');
-        }
-        // eslint-disable-next-line no-eval
-        eval(patched);
+          // en/jp 각각 전역 공개로 변경 후 실행
+          let patchedRev = revTxt;
+          if (lang === 'en') {
+            patchedRev = patchedRev.replace('const enRevelationData', 'window.enRevelationData');
+          } else if (lang === 'jp') {
+            patchedRev = patchedRev.replace('const jpRevelationData', 'window.jpRevelationData');
+          }
+          // eslint-disable-next-line no-eval
+          eval(patchedRev);
 
-        // 매핑 추출 및 주입
-        let revMap = null;
-        if (lang === 'en' && window.enRevelationData) {
-          revMap = window.enRevelationData.mapping_en || null;
-        } else if (lang === 'jp' && window.jpRevelationData) {
-          revMap = window.jpRevelationData.mapping_jp || null;
-        }
-        if (revMap) {
-          window.languageData[lang].revelationMapping = revMap;
-        }
+          // 매핑 추출 및 주입
+          let revMap = null;
+          if (lang === 'en' && window.enRevelationData) {
+            revMap = window.enRevelationData.mapping_en || null;
+          } else if (lang === 'jp' && window.jpRevelationData) {
+            revMap = window.jpRevelationData.mapping_jp || null;
+          }
+          if (revMap) {
+            window.languageData[lang].revelationMapping = revMap;
+          }
+        } catch (_) { /* 실패해도 계속 진행 */ }
+
+        // 2) 언어별 캐릭터 목록 로드 (dropdown용)
+        try {
+          if (!window.languageData[lang].characterList) {
+            const chUrl = `${base}/data/${lang}/characters/characters.js${ver}`;
+            const chRes = await fetch(chUrl);
+            if (!chRes.ok) throw new Error(`Failed to load characters for ${lang}`);
+            let chTxt = await chRes.text();
+
+            // 전역 오염/충돌 방지를 위해 임시 전역으로 바꿔서 주입
+            chTxt = chTxt.replace(/const\s+characterList\s*=\s*/g, 'window.__tmpCharacterList = ');
+            // characterData는 글로벌(KR) 데이터 사용을 유지하므로 별도 병합/치환 없이 무시 가능
+            // 단, 일부 언어 파일이 const characterData 를 정의하므로 충돌 방지용으로 임시 주입
+            chTxt = chTxt.replace(/const\s+characterData\s*=\s*/g, 'window.__tmpCharacterData = ');
+
+            // eslint-disable-next-line no-eval
+            eval(chTxt);
+            if (window.__tmpCharacterList) {
+              window.languageData[lang].characterList = window.__tmpCharacterList;
+            }
+            // cleanup
+            try { delete window.__tmpCharacterList; } catch(_) {}
+            try { delete window.__tmpCharacterData; } catch(_) {}
+          }
+        } catch (_) { /* 실패해도 기능은 KR 폴백으로 동작 */ }
       })();
 
       await __translationsLoadingPromise;

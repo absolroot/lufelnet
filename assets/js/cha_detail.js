@@ -890,6 +890,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const characterInfo = characterData[characterName];
         if (!characterInfo) return;
 
+        //console.log(characterInfo);
         
         // 언어별 레벨 텍스트
         const levelTexts = {
@@ -905,11 +906,15 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         const levels = levelTexts[currentLang] || levelTexts.kr;
-        
+        console.log(levels);
+
         levels.forEach((level, index) => {
             const button = document.createElement('button');
             button.className = 'skill-level-btn' + (index === 0 ? ' active' : '');
+            console.log(button);
+            console.log(level);
             button.textContent = level;
+            console.log(button.textContent);
             button.dataset.level = index - 1; // 전체는 -1, 나머지는 0,1,2
             button.onclick = () => window.updateSkillDescriptions(button.dataset.level, characterName);
             buttonContainer.appendChild(button);

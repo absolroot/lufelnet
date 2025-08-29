@@ -1559,17 +1559,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         //     }
         // });
 
-        // 스킬 레벨 버튼 번역
-        const skillLevelButtonLabels = {
-            'kr': ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'],
-            'en': ['All', 'LV10', 'LV10+Mind5', 'LV13', 'LV13+Mind5'],
-            'jp': ['全体', 'LV10', 'LV10+イメジャリー5', 'LV13', 'LV13+イメジャリー5']
-        };
-        document.querySelectorAll('.skill-level-btn').forEach((btn, index) => {
-            if (skillLevelButtonLabels[currentLang] && skillLevelButtonLabels[currentLang][index]) {
-                btn.textContent = skillLevelButtonLabels[currentLang][index];
-            }
-        });
+        // 스킬 레벨 버튼 라벨은 assets/js/cha_detail.js 내 fillSkillsInfo()에서
+        // 캐릭터 레어도와 현재 언어에 맞게 정확히 설정됩니다.
+        // 여기서 고정된 라벨로 덮어쓰면(예: 4성도 13레벨 라벨 강제) 표시가 어긋나므로
+        // 더 이상 버튼 텍스트를 재설정하지 않습니다.
 
         // 무기 개조 버튼 번역
         const enhancementButtonLabels = {

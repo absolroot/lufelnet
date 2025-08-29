@@ -713,9 +713,9 @@ TECHNICALを所持していますが、後から追加された数値であるSK
     "슌": { name_en: "Shun Kano", name_jp: "加納 駿", codename: "SOY",
         review: ``
     },
-    "아야카": { name_en: "Ayaka Sakai", name_jp: "坂井 綾香", codename: "CHORD",
+"아야카": { name_en: "Ayaka Sakai", name_jp: "坂井 綾香", codename: "CHORD",
         review: `
-아야카는 HIGHLIGHT(이하 HL)를 컨트롤한다는 메커니즘 때문에 **P5X에서 압도적인 위치를 유지하는 버퍼**입니다.
+아야카는 HIGHLIGHT(이하 HL)를 컨트롤하는 **P5X에서 압도적인 위치를 유지하는 버퍼**입니다.
 
 모든 캐릭터는 HL을 재사용하는데 쿨다운에 의해 4번의 행동이 필요하고, 보스와 싸우는 일반적인 6턴의 경우 2턴과 6턴에 1번씩 총 2번만 사용 가능합니다.
 
@@ -734,6 +734,8 @@ TECHNICALを所持していますが、後から追加された数値であるSK
 **전용 무기** 또한 기존 메커니즘을 파괴하는 형태로 등장합니다. 
 
 **전투 시작 시 HL 게이지를 채워주는 효과**를 가지고 있어 다른 파티보다도 빠르게 HL를 사용할 수 있습니다.
+
+<br>
 
 **무기를 5재까지 강화**할 경우, HL 게이지를 76% 제공합니다. 이를 25%의 게이지를 제공하는 계시 세트와 함께 착용할 경우 **전투에 진입하자마자 HL을 사용**할 수 있습니다.
 
@@ -762,6 +764,8 @@ Her **exclusive weapon** also breaks existing mechanics.
 
 It has an effect that **fills the HL gauge at the start of battle**, allowing her party to use HL faster than others.
 
+<br>
+
 When the weapon is upgraded to **R5**, it grants 76% HL gauge. 
 
 Combined with a Revelation that provides 25% gauge, this enables **HL activation immediately at battle start**.
@@ -788,6 +792,8 @@ HL（HIGHLIGHT）をコントロールする独自のメカニズムによって
 **専用武器**もまた既存のメカニズムを覆す存在です。  
 
 **戦闘開始時にHLゲージを充填する効果**を持ち、他のパーティよりも早くHLを使用できます。
+
+<br>
 
 武器を**R5まで強化**するとHLゲージを76%提供します。25%のゲージを提供する啓示セットと組み合わせれば、**戦闘開始直後にHLを使用可能**となります。
 

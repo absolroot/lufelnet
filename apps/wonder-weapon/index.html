@@ -602,9 +602,21 @@ alternate_urls:
       cards.appendChild(card);
     });
 
-    // Lazy-initialize ads: only push when the ad enters viewport
+    // Lazy-initialize ads: push slightly before entering viewport to reduce pop-in
     const adInsList = cards.querySelectorAll('.inline-ad .adsbygoogle');
     if ('IntersectionObserver' in window && adInsList.length) {
+      // Prewarm: immediately init ads within preloadMargin below viewport
+      const preloadMargin = 700; // px ahead of viewport
+      adInsList.forEach(el => {
+        try {
+          const rect = el.getBoundingClientRect();
+          if (el.dataset.pushed !== '1' && rect.top < (window.innerHeight + preloadMargin)) {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            el.dataset.pushed = '1';
+          }
+        } catch(e) {}
+      });
+
       const obs = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -615,7 +627,7 @@ alternate_urls:
             observer.unobserve(el);
           }
         });
-      }, { root: null, rootMargin: '0px', threshold: 0.1 });
+      }, { root: null, rootMargin: '900px 0px 900px 0px', threshold: 0 });
 
       adInsList.forEach(el => {
         // mark not pushed yet

@@ -50,7 +50,7 @@ alternate_urls:
   
     <style>
         .inline-ad { margin: 16px 0 0px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
-        @media (max-width: 540px) {
+        @media (max-width: 1440px) {
             .inline-ad { display: none !important; }
         }
     </style>
@@ -302,10 +302,10 @@ alternate_urls:
     }) : [];
     baseArr.sort((a, b) => b.order - a.order); // fixed base: latest first
     // Keys at indices 3,7,11,... (every 4th) will carry an inline ad in their info-container
-    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 3 === 0)).map(x => x.key));
+    const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 4 === 0)).map(x => x.key));
 
     // Rotate among multiple ad slots (round-robin) to mitigate per-page init limits
-    const adSlots = ['9244892982', '7254578915', '7331282728', '6018201052'];
+    const adSlots = ['7254578915', '7331282728', '6018201052', '9244892982'];
     let adSlotIdx = 0;
     const nextAdSlot = () => {
       const slot = adSlots[adSlotIdx % adSlots.length];

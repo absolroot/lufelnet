@@ -55,14 +55,27 @@ window.applyImportedData = function(payload, options = {}) {
       turns = data.turns.map(turn => ({
         turn: turn.turn,
         actions: (turn.actions || []).map(action => {
-          const personaName = action.wonderPersona;
+          // wonderPersona는 이름 또는 인덱스(숫자/숫자 문자열) 모두 허용
+          let personaName = '';
+          let inferredIndex = -1;
+          const wp = action.wonderPersona;
+          if (wp !== undefined && wp !== null && wp !== '') {
+            const isNumeric = (typeof wp === 'number') || (typeof wp === 'string' && /^\d+$/.test(wp));
+            if (isNumeric) {
+              inferredIndex = Number(wp);
+              personaName = wonderPersonas[inferredIndex] || '';
+            } else {
+              personaName = wp;
+              inferredIndex = wonderPersonas.indexOf(personaName);
+            }
+          }
           const providedIndex = (typeof action.wonderPersonaIndex === 'number') ? action.wonderPersonaIndex : -1;
-          const resolvedIndex = (personaName ? wonderPersonas.indexOf(personaName) : -1);
+          const finalIndex = (providedIndex !== -1) ? providedIndex : inferredIndex;
           return {
             type: action.type === 0 || action.type === 'auto' ? 'auto' : 'manual',
             character: action.character,
             wonderPersona: personaName,
-            wonderPersonaIndex: providedIndex !== -1 ? providedIndex : resolvedIndex,
+            wonderPersonaIndex: finalIndex,
             action: action.action,
             memo: action.memo || ''
           };
@@ -72,14 +85,27 @@ window.applyImportedData = function(payload, options = {}) {
       turns = data.t.map(turn => ({
         turn: turn.n,
         actions: (turn.a || []).map(action => {
-          const personaName = action.w;
-          const providedIndex = (typeof action.wi === 'number') ? action.wi : -1; // 압축 포맷의 인덱스 키 가정: wi
-          const resolvedIndex = (personaName ? wonderPersonas.indexOf(personaName) : -1);
+          // 압축 포맷: action.w(이름 또는 인덱스), action.wi(인덱스)
+          let personaName = '';
+          let inferredIndex = -1;
+          const wp = action.w;
+          if (wp !== undefined && wp !== null && wp !== '') {
+            const isNumeric = (typeof wp === 'number') || (typeof wp === 'string' && /^\d+$/.test(wp));
+            if (isNumeric) {
+              inferredIndex = Number(wp);
+              personaName = wonderPersonas[inferredIndex] || '';
+            } else {
+              personaName = wp;
+              inferredIndex = wonderPersonas.indexOf(personaName);
+            }
+          }
+          const providedIndex = (typeof action.wi === 'number') ? action.wi : -1; // 인덱스 키: wi
+          const finalIndex = (providedIndex !== -1) ? providedIndex : inferredIndex;
           return {
             type: action.m ? 'manual' : 'auto',
             character: action.c,
             wonderPersona: personaName,
-            wonderPersonaIndex: providedIndex !== -1 ? providedIndex : resolvedIndex,
+            wonderPersonaIndex: finalIndex,
             action: action.a,
             memo: action.mm || ''
           };

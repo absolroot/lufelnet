@@ -699,4 +699,24 @@ alternate_urls:
             }
         });
     }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
+
+    setTimeout(() => {
+        document.querySelectorAll(".adsbygoogle").forEach(el => {
+            const status = el.getAttribute("data-ad-status");
+            const adslot = el.getAttribute("data-ad-slot");
+            if (status === "unfilled") {
+                el.style.display = "none";
+            }
+        });
+    }, 4000);  // 광고 로딩 기다렸다가 4초 후 검사
+
+    setTimeout(() => {
+        document.querySelectorAll(".adsbygoogle").forEach(el => {
+            const status = el.getAttribute("data-ad-status");
+            const adslot = el.getAttribute("data-ad-slot");
+            if (status === "unfilled") {
+                el.style.display = "none";
+            }
+        });
+    }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사
 </script>

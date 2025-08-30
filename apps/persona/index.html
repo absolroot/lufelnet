@@ -1056,6 +1056,24 @@ alternate_urls:
 
         // 컨테이너 목록은 렌더 완료 후 할당됨
         let containers = null;
+        // 광고 삽입 카운터 (Expand All 비활성 상태에서 카드 열 때만 증가)
+        let adOpenCount = 0;
+
+        function injectAdForContainer(container){
+            try {
+                const infoSection = container.querySelector('.persona-info-section');
+                if (!infoSection) return;
+                // 이미 삽입된 경우 중복 방지
+                if (infoSection.querySelector('.dynamic-ad')) return;
+                const adHost = document.createElement('div');
+                adHost.className = 'dynamic-ad card-inline-ad';
+                infoSection.appendChild(adHost);
+                if (typeof ModalAdInjector !== 'undefined' && ModalAdInjector.injectAdInto) {
+                    // 사용자 요청에 맞춰 768x90 사이즈 사용
+                    try { ModalAdInjector.injectAdInto(adHost, { width: 768, height: 90, className: 'card-ad-wrap', marginTop: 12 }); } catch (_) {}
+                }
+            } catch(_) { /* noop */ }
+        }
 
         // 카드 클릭 확장 및 전체 펼치기 토글 연결
         function wireCardInteractions() {
@@ -1147,6 +1165,11 @@ alternate_urls:
                     if (expandAllToggle && expandAllToggle.checked) return; // 전체 펼치기 중에는 개별 토글 비활성화
                     const willExpand = !container.classList.contains('expanded');
                     if (willExpand) {
+                        // Expand All이 꺼져 있을 때는 하나만 열리도록 이전 열린 카드 닫기
+                        /*
+                        containers.forEach(c => {
+                            if (c !== container) { c.classList.remove('expanded'); c.classList.remove('active'); }
+                        });*/
                         // 확장: 같은 행의 앞선 카드들을 먼저 계산하고
                         // 확장 카드를 그 행의 첫 요소 앞에 이동하여 새 줄을 시작하게 함
                         const sameRowPrev = getSameRowPrevious(container);
@@ -1156,6 +1179,14 @@ alternate_urls:
                         }
                         container.classList.add('expanded');
                         container.classList.add('active');
+
+                        // 광고 카운트 증가 및 1, 5, 9...번째 열 때 광고 삽입
+                        adOpenCount += 1;
+                        if (adOpenCount === 1 || ((adOpenCount - 1) % 4 === 0)) {
+                            injectAdForContainer(container);
+                            // 필터/검색 시 광고 가시성 규칙 적용
+                            try { manageAdVisibility(); } catch(_) {}
+                        }
                     } else {
                         // 축소: 클래스 제거 후 원래 DOM 순서 복구
                         container.classList.remove('expanded');

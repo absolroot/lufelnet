@@ -183,7 +183,53 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                     data-ad-slot="9244892982"></ins>
                 </div>
                 <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    // Push ad only when modal is opened (visible)
+                    (function() {
+                        const modal = document.getElementById('characterSelectModal');
+                        if (!modal) return;
+                        const ins = modal.querySelector('.adsbygoogle');
+                        if (!ins) return;
+
+                        function tryPushOnce() {
+                            if (!ins || ins.dataset.pushed === '1') return;
+                            // Ensure the ad has layout (modal visible, width secured)
+                            const isVisible = modal.offsetParent !== null || modal.getAttribute('aria-hidden') === 'false';
+                            const widthOk = ins.offsetWidth >= 250; // minimal width gate
+                            if (isVisible && widthOk) {
+                                try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch(_) {}
+                            } else {
+                                // retry a few times shortly after open
+                                if (!ins.__retryCount) ins.__retryCount = 0;
+                                if (ins.__retryCount < 10) { ins.__retryCount++; setTimeout(tryPushOnce, 120); }
+                            }
+                        }
+
+                        // Observe modal visibility changes via aria-hidden/class/style
+                        const obs = new MutationObserver(() => {
+                            const hidden = modal.getAttribute('aria-hidden');
+                            // Trigger when aria-hidden becomes 'false' or removed
+                            if (hidden === 'false' || hidden === null) {
+                                // small delay to allow layout
+                                setTimeout(tryPushOnce, 100);
+                                // schedule unfilled hide checks
+                                const hideIfUnfilled = () => {
+                                    const status = ins.getAttribute('data-ad-status');
+                                    if (status === 'unfilled' || !ins.querySelector('iframe')) {
+                                        ins.style.display = 'none';
+                                    }
+                                };
+                                setTimeout(hideIfUnfilled, 1000);
+                                setTimeout(hideIfUnfilled, 2000);
+                                setTimeout(hideIfUnfilled, 4000);
+                                setTimeout(hideIfUnfilled, 6000);
+                            }
+                        });
+                        try { obs.observe(modal, { attributes: true, attributeFilter: ['aria-hidden', 'style', 'class'] }); } catch(_) {}
+
+                        // Also hook focus to ensure push on manual open flows
+                        modal.addEventListener('transitionend', tryPushOnce, { once: false });
+                        modal.addEventListener('mouseenter', tryPushOnce, { once: false });
+                    })();
                 </script>
             </div>
         </div>

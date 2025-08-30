@@ -159,7 +159,7 @@
       if (contentEl) {
         const adWrap = document.createElement('div');
         adWrap.className = 'skill-source-inline-ad';
-        adWrap.style.cssText = 'margin:16px 0 0 0; display:flex; justify-content:center; align-items:center;';
+        adWrap.style.cssText = 'margin:20px 0 0 0; display:flex; justify-content:center; align-items:center;';
         const ins = document.createElement('ins');
         ins.className = 'adsbygoogle';
         ins.style.display = 'inline-block';

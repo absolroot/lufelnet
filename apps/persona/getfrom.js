@@ -654,7 +654,7 @@
     try{
       const adWrap = document.createElement('div');
       adWrap.className = 'acq-inline-ad';
-      adWrap.style.cssText = 'margin:40px 0 0 0; display:flex; justify-content:center; align-items:center;';
+      adWrap.style.cssText = 'margin:60px 0 0 0; display:flex; justify-content:center; align-items:center;';
       const ins = document.createElement('ins');
       ins.className = 'adsbygoogle';
       ins.style.display = 'inline-block';

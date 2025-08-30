@@ -89,7 +89,7 @@
 .modal .close{border:none}
 
 .setup-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover;margin-right:8px;}
-
+#characterSearch{ padding: 10px 16px 10px 16px !important;}
 
 
 /* character grid */

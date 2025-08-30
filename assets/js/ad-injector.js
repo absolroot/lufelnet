@@ -44,6 +44,16 @@
   function injectAdInto(containerEl, opts){
     // opts: { width, height, className, marginTop, tryWindows?: number[] (ms) }
     if (!containerEl) return null;
+    // 뷰포트 1440px 이하면 광고 삽입 생략
+    try {
+      if (typeof window !== 'undefined') {
+        if (window.matchMedia && window.matchMedia('(max-width: 1440px)').matches) {
+          return null;
+        }
+        const vw = window.innerWidth || (document && document.documentElement && document.documentElement.clientWidth) || 0;
+        if (vw && vw <= 1440) return null;
+      }
+    } catch(_) { /* noop */ }
     const width = (opts && opts.width) || 728;
     const height = (opts && opts.height) || 90;
     const cls = (opts && opts.className) || '';

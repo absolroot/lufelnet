@@ -1069,8 +1069,7 @@ alternate_urls:
                 adHost.className = 'dynamic-ad card-inline-ad';
                 infoSection.appendChild(adHost);
                 if (typeof ModalAdInjector !== 'undefined' && ModalAdInjector.injectAdInto) {
-                    // 사용자 요청에 맞춰 768x90 사이즈 사용
-                    try { ModalAdInjector.injectAdInto(adHost, { width: 768, height: 90, className: 'card-ad-wrap', marginTop: 12 }); } catch (_) {}
+                    try { ModalAdInjector.injectAdInto(adHost, { width: 970, height: 90, className: 'card-ad-wrap', marginTop: 12 }); } catch (_) {}
                 }
             } catch(_) { /* noop */ }
         }

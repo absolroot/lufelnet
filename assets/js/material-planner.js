@@ -234,7 +234,7 @@
             if(!holder){
                 holder = document.createElement('label');
                 holder.id = 'modalSpoilerToggle';
-                holder.style.display='flex'; holder.style.alignItems='center'; holder.style.gap='8px'; holder.style.marginTop='8px'; holder.style.marginLeft='2px';
+                holder.style.display='flex'; holder.style.alignItems='center'; holder.style.gap='8px'; holder.style.marginTop='16px'; holder.style.marginLeft='2px';
                 const cb = document.createElement('input'); cb.type='checkbox'; cb.id='modalSpoilerCB';
                 const span = document.createElement('span'); span.textContent = t('showSpoiler');
                 holder.appendChild(cb); holder.appendChild(span);

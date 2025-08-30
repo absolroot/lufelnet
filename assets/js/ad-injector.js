@@ -61,7 +61,8 @@
     ins.style.width = width + 'px';
     ins.style.height = height + 'px';
     ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
-    let currentSlot = nextUsableSlot();
+    // Rotation disabled: always use the first slot only  //         switchSlot();
+    let currentSlot = (w.__modalAdRotation && w.__modalAdRotation.slots && w.__modalAdRotation.slots[0]) || '7254578915';
     ins.setAttribute('data-ad-slot', currentSlot);
 
     wrap.appendChild(ins);
@@ -110,36 +111,22 @@
     };
     setTimeout(tryPush, 80);
 
-    let remainingSwitches = w.__modalAdRotation.slots.length - 1;
+    // Disable switching: on failure, just clean up immediately (no rotation)
+    let remainingSwitches = 0;
     const switchSlot = () => {
-      if (remainingSwitches <= 0){
-        // 모든 스위치 시도 후에도 iframe이 없으면 공백 제거
-        const hasFrame = !!ins.querySelector('iframe');
-        if (!hasFrame) {
-          markUnfilled(currentSlot);
-          if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
-        } else {
-          ins.style.display = 'inline-block';
-        }
-        return;
+      const hasFrame = !!ins.querySelector('iframe');
+      if (!hasFrame) {
+        markUnfilled(currentSlot);
+        if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
       }
-      remainingSwitches--;
-      // mark previous slot as unfilled to start cooldown
-      markUnfilled(currentSlot);
-      currentSlot = nextUsableSlot();
-      ins.style.display = 'inline-block';
-      ins.removeAttribute('data-ad-status');
-      ins.innerHTML = '';
-      ins.setAttribute('data-ad-slot', currentSlot);
-      ins.dataset.pushed = '';
-      ins.__retryCount = 0;
-      setTimeout(tryPush, 50);
+      return;
     };
 
     const checkAndFallback = () => {
       const status = ins.getAttribute('data-ad-status');
       const hasFrame = !!ins.querySelector('iframe');
       if (status === 'unfilled' || !hasFrame){
+        // No rotation: remove immediately
         switchSlot();
       }
     };

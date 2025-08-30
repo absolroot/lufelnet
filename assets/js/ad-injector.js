@@ -48,7 +48,8 @@
     const height = (opts && opts.height) || 90;
     const cls = (opts && opts.className) || '';
     const marginTop = (opts && typeof opts.marginTop === 'number') ? opts.marginTop : 16;
-    const windows = (opts && opts.tryWindows) || [1000, 2000, 4000, 6000];
+    const windows = (opts && opts.tryWindows) || [1000, 1500, 2000, 2500, 4000, 6000];
+    const aggressiveRemoveMs = (opts && typeof opts.aggressiveRemoveMs === 'number') ? opts.aggressiveRemoveMs : 600;
 
     const wrap = document.createElement('div');
     wrap.className = cls || 'inline-ad-wrap';
@@ -84,6 +85,17 @@
       });
       mo.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'], childList: true, subtree: true });
     } catch(_) { /* noop */ }
+
+    // 매우 빠른 초기 정리: 짧은 시간 내 iframe이 없으면 바로 제거해 공백 체감 최소화
+    setTimeout(() => {
+      if (!ins || !wrap || !wrap.parentNode) return;
+      const hasFrame = !!ins.querySelector('iframe');
+      if (!hasFrame) {
+        markUnfilled(currentSlot);
+        if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
+        if (mo) { try { mo.disconnect(); } catch(_){} mo = null; }
+      }
+    }, aggressiveRemoveMs);
 
     const tryPush = () => {
       if (!ins || ins.dataset.pushed === '1') return;

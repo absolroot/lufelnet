@@ -652,60 +652,64 @@
     area.appendChild(treeWrap);
     // Inject an ad at the bottom of the content on each open (728x90)
     try{
-      const adWrap = document.createElement('div');
-      adWrap.className = 'acq-inline-ad';
-      adWrap.style.cssText = 'margin:60px 0 0 0; display:flex; justify-content:center; align-items:center;';
-      const ins = document.createElement('ins');
-      ins.className = 'adsbygoogle';
-      ins.style.display = 'inline-block';
-      ins.style.width = '728px';
-      ins.style.height = '90px';
-      ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
-      ins.setAttribute('data-ad-slot', nextSharedAdSlot());
-      adWrap.appendChild(ins);
-      area.appendChild(adWrap);
-
-      const tryPush = () => {
-        if (!ins || ins.dataset.pushed === '1') return;
-        const isVisible = !m.classList.contains('hidden');
-        const widthOk = ins.offsetWidth >= 300;
-        if (isVisible && widthOk){
-          try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch(_){ /* ignore */ }
-        } else {
-          if (!ins.__retryCount) ins.__retryCount = 0;
-          if (ins.__retryCount < 10){ ins.__retryCount++; setTimeout(tryPush, 120); }
-        }
-      };
-      setTimeout(tryPush, 80);
-
-      // Try alternative slots before hiding if unfilled
-      let remainingSwitches = Math.max(0, getSharedAdRotation().slots.length - 1);
-      const trySwitchSlot = () => {
-        if (remainingSwitches <= 0){
-          ins.style.display = 'none';
-          return;
-        }
-        remainingSwitches--;
+      if (typeof ModalAdInjector !== 'undefined' && ModalAdInjector.injectAdInto){
+        try { ModalAdInjector.injectAdInto(area, { width: 728, height: 90, className: 'acq-inline-ad', marginTop: 60 }); } catch(_){ }
+      } else {
+        const adWrap = document.createElement('div');
+        adWrap.className = 'acq-inline-ad';
+        adWrap.style.cssText = 'margin:60px 0 0 0; display:flex; justify-content:center; align-items:center;';
+        const ins = document.createElement('ins');
+        ins.className = 'adsbygoogle';
         ins.style.display = 'inline-block';
-        ins.removeAttribute('data-ad-status');
-        ins.innerHTML = '';
+        ins.style.width = '728px';
+        ins.style.height = '90px';
+        ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
         ins.setAttribute('data-ad-slot', nextSharedAdSlot());
-        ins.dataset.pushed = '';
-        ins.__retryCount = 0;
-        setTimeout(tryPush, 50);
-      };
+        adWrap.appendChild(ins);
+        area.appendChild(adWrap);
 
-      const checkAndMaybeFallback = () => {
-        const status = ins.getAttribute('data-ad-status');
-        const hasFrame = !!ins.querySelector('iframe');
-        if (status === 'unfilled' || !hasFrame){
-          trySwitchSlot();
-        }
-      };
-      setTimeout(checkAndMaybeFallback, 1000);
-      setTimeout(checkAndMaybeFallback, 2000);
-      setTimeout(checkAndMaybeFallback, 4000);
-      setTimeout(checkAndMaybeFallback, 6000);
+        const tryPush = () => {
+          if (!ins || ins.dataset.pushed === '1') return;
+          const isVisible = !m.classList.contains('hidden');
+          const widthOk = ins.offsetWidth >= 300;
+          if (isVisible && widthOk){
+            try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch(_){ /* ignore */ }
+          } else {
+            if (!ins.__retryCount) ins.__retryCount = 0;
+            if (ins.__retryCount < 10){ ins.__retryCount++; setTimeout(tryPush, 120); }
+          }
+        };
+        setTimeout(tryPush, 80);
+
+        // Try alternative slots before hiding if unfilled
+        let remainingSwitches = Math.max(0, getSharedAdRotation().slots.length - 1);
+        const trySwitchSlot = () => {
+          if (remainingSwitches <= 0){
+            ins.style.display = 'none';
+            return;
+          }
+          remainingSwitches--;
+          ins.style.display = 'inline-block';
+          ins.removeAttribute('data-ad-status');
+          ins.innerHTML = '';
+          ins.setAttribute('data-ad-slot', nextSharedAdSlot());
+          ins.dataset.pushed = '';
+          ins.__retryCount = 0;
+          setTimeout(tryPush, 50);
+        };
+
+        const checkAndMaybeFallback = () => {
+          const status = ins.getAttribute('data-ad-status');
+          const hasFrame = !!ins.querySelector('iframe');
+          if (status === 'unfilled' || !hasFrame){
+            trySwitchSlot();
+          }
+        };
+        setTimeout(checkAndMaybeFallback, 1000);
+        setTimeout(checkAndMaybeFallback, 2000);
+        setTimeout(checkAndMaybeFallback, 4000);
+        setTimeout(checkAndMaybeFallback, 6000);
+      }
     }catch(_){ /* noop */ }
     // helper to compute subtree depth (number of edges); leaves have depth 0
     const depthOf = (n) => {

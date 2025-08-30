@@ -25,6 +25,7 @@ alternate_urls:
 
 <div class="main-wrapper">
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/skillfrom.css?v={{ site.time | date: '%s' }}">
+    <script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/persona/getfrom.js?v={{ site.time | date: '%s' }}"></script>
     <!-- 언어 안내 메시지 -->
     <div id="language-notice" class="language-notice" style="display: none;">
@@ -1006,40 +1007,6 @@ alternate_urls:
             detailContainer.appendChild(infoSection);
             
             fragment.appendChild(detailContainer);
-
-            // 15개의 카드마다 광고 삽입
-            // 잠시 비활성화
-            /*
-            if ((index + 1) % 15 === 1 && index < sortedPersonas.length - 1) {
-                const adContainer = document.createElement('div');
-                adContainer.className = 'ad-container dynamic-ad';
-                adContainer.style.overflow = 'visible';
-                adContainer.style.width = '100%';
-                adContainer.style.borderRadius = '10px';
-                adContainer.style.marginTop = '-20px';
-
-                // 광고 ins 태그만 동적으로 추가
-                const ins = document.createElement('ins');
-                ins.className = 'adsbygoogle';
-                ins.style.display = 'block';
-                ins.setAttribute('data-ad-format', 'fluid');
-                ins.setAttribute('data-ad-layout-key', '-er+5f+66-dn+4y');
-                ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
-                ins.setAttribute('data-ad-slot', '6110222512');
-
-                adContainer.appendChild(ins);
-                fragment.appendChild(adContainer);
-
-                // 광고 스크립트 실행 (adsbygoogle 배열이 준비된 후에)
-                setTimeout(() => {
-                    try {
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    } catch (e) {
-                        console.error("AdSense push failed:", e);
-                    }
-                }, 300);
-            }
-            */
                 currentIndex++;
                 processed++;
             }

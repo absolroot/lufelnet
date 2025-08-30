@@ -1,0 +1,119 @@
+// Ad Injector Utility (shared across pages/modals)
+// Provides shared round-robin rotation, 1-minute cooldown on unfilled slots,
+// parameterized size, safe push retries, and fallback across slots.
+(function(){
+  const w = (typeof window !== 'undefined') ? window : globalThis;
+
+  // init shared rotation and cooldown registries
+  if (!w.__modalAdRotation) {
+    w.__modalAdRotation = {
+      slots: ['7254578915', '7331282728', '6018201052', '9244892982'],
+      idx: 0
+    };
+  }
+  if (!w.__adSlotCooldown) {
+    // map: slotId -> lastUnfilledTs (ms)
+    w.__adSlotCooldown = {};
+  }
+
+  function now(){ return Date.now(); }
+
+  function nextUsableSlot() {
+    const state = w.__modalAdRotation;
+    const cooldown = w.__adSlotCooldown;
+    const n = state.slots.length;
+    for (let i = 0; i < n; i++) {
+      const slot = state.slots[(state.idx + i) % n];
+      const lastFail = cooldown[slot] || 0;
+      if ((now() - lastFail) >= 120 * 1000) {
+        state.idx = (state.idx + i + 1) % n; // advance past chosen slot
+        return slot;
+      }
+    }
+    // all cooled: pick the next by index anyway (will likely be cooled but we return something)
+    const slot = state.slots[state.idx % n];
+    state.idx = (state.idx + 1) % n;
+    return slot;
+  }
+
+  function markUnfilled(slot) {
+    if (!slot) return;
+    w.__adSlotCooldown[slot] = now();
+  }
+
+  function injectAdInto(containerEl, opts){
+    // opts: { width, height, className, marginTop, tryWindows?: number[] (ms) }
+    if (!containerEl) return null;
+    const width = (opts && opts.width) || 728;
+    const height = (opts && opts.height) || 90;
+    const cls = (opts && opts.className) || '';
+    const marginTop = (opts && typeof opts.marginTop === 'number') ? opts.marginTop : 16;
+    const windows = (opts && opts.tryWindows) || [1000, 2000, 4000, 6000];
+
+    const wrap = document.createElement('div');
+    wrap.className = cls || 'inline-ad-wrap';
+    wrap.style.cssText = `margin:${marginTop}px 0 0 0; display:flex; justify-content:center; align-items:center;`;
+
+    const ins = document.createElement('ins');
+    ins.className = 'adsbygoogle';
+    ins.style.display = 'inline-block';
+    ins.style.width = width + 'px';
+    ins.style.height = height + 'px';
+    ins.setAttribute('data-ad-client', 'ca-pub-5862324369257695');
+    let currentSlot = nextUsableSlot();
+    ins.setAttribute('data-ad-slot', currentSlot);
+
+    wrap.appendChild(ins);
+    containerEl.appendChild(wrap);
+
+    const tryPush = () => {
+      if (!ins || ins.dataset.pushed === '1') return;
+      const isVisible = ins.offsetParent !== null; // fairly robust for modals
+      const widthOk = ins.offsetWidth >= Math.min(300, width);
+      if (isVisible && widthOk){
+        try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch(_){ /* ignore */ }
+      } else {
+        if (!ins.__retryCount) ins.__retryCount = 0;
+        if (ins.__retryCount < 10){ ins.__retryCount++; setTimeout(tryPush, 120); }
+      }
+    };
+    setTimeout(tryPush, 80);
+
+    let remainingSwitches = w.__modalAdRotation.slots.length - 1;
+    const switchSlot = () => {
+      if (remainingSwitches <= 0){
+        ins.style.display = 'none';
+        return;
+      }
+      remainingSwitches--;
+      // mark previous slot as unfilled to start cooldown
+      markUnfilled(currentSlot);
+      currentSlot = nextUsableSlot();
+      ins.style.display = 'inline-block';
+      ins.removeAttribute('data-ad-status');
+      ins.innerHTML = '';
+      ins.setAttribute('data-ad-slot', currentSlot);
+      ins.dataset.pushed = '';
+      ins.__retryCount = 0;
+      setTimeout(tryPush, 50);
+    };
+
+    const checkAndFallback = () => {
+      const status = ins.getAttribute('data-ad-status');
+      const hasFrame = !!ins.querySelector('iframe');
+      if (status === 'unfilled' || !hasFrame){
+        switchSlot();
+      }
+    };
+    windows.forEach(t => setTimeout(checkAndFallback, t));
+
+    return { wrap, ins };
+  }
+
+  // Public API
+  w.ModalAdInjector = {
+    injectAdInto,
+    nextUsableSlot,
+    markUnfilled
+  };
+})();

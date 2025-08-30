@@ -22,7 +22,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: min(720px, 92vw);
+    width: min(768px, 92vw);
     max-height: 80vh;
     background: rgba(25, 25, 25, 1);
     color: #fff;

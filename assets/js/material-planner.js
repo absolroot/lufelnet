@@ -75,7 +75,8 @@
             filter: '필터', sort: '정렬',
             'sort.releaseAsc': '출시 순 ↑', 'sort.releaseDesc': '출시 순 ↓',
             'sort.nameAsc': '이름 순 ↑', 'sort.nameDesc': '이름 순 ↓',
-            'filterGroup.element': '속성', 'filterGroup.position': '직업', 'filterGroup.rarity': '등급'
+            'filterGroup.element': '속성', 'filterGroup.position': '직업', 'filterGroup.rarity': '등급',
+            includeInSummary: '합산 포함'
         },
         en: {
             pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
@@ -91,7 +92,8 @@
             filter: 'Filter', sort: 'Sort',
             'sort.releaseAsc': 'Release ↑', 'sort.releaseDesc': 'Release ↓',
             'sort.nameAsc': 'Name ↑', 'sort.nameDesc': 'Name ↓',
-            'filterGroup.element': 'Element', 'filterGroup.position': 'Role', 'filterGroup.rarity': 'Rarity'
+            'filterGroup.element': 'Element', 'filterGroup.position': 'Role', 'filterGroup.rarity': 'Rarity',
+            includeInSummary: 'Include in Material Summary'
         },
         jp: {
             pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
@@ -107,7 +109,8 @@
             filter: 'フィルター', sort: 'ソート',
             'sort.releaseAsc': '実装順 ↑', 'sort.releaseDesc': '実装順 ↓',
             'sort.nameAsc': '名前 ↑', 'sort.nameDesc': '名前 ↓',
-            'filterGroup.element': '属性', 'filterGroup.position': '役割', 'filterGroup.rarity': 'レアリティ'
+            'filterGroup.element': '属性', 'filterGroup.position': '役割', 'filterGroup.rarity': 'レアリティ',
+            includeInSummary: 'サマリーに含める'
         }
     };
 
@@ -767,7 +770,7 @@
 
     function addPlan({name, rarity, inputs, materials}){
         const id = Date.now()+ '_' + Math.random().toString(36).slice(2,7);
-        const plan = { id, name, rarity, image: `${BASE_URL}/assets/img/tier/${name}.webp`, inputs, materials };
+        const plan = { id, name, rarity, image: `${BASE_URL}/assets/img/tier/${name}.webp`, inputs, materials, include: true };
         STATE.plans.push(plan);
         recalcTotals();
         renderPlans();
@@ -784,6 +787,7 @@
     function recalcTotals(){
         const totals = {};
         STATE.plans.forEach(p=>{
+            if(p.include === false) return; // excluded from summary
             Object.entries(p.materials||{}).forEach(([k,v])=> addCount(totals,k, v||0));
         });
         STATE.totals = totals;
@@ -981,6 +985,12 @@
             // 우측 2행 박스
             const right = document.createElement('div'); right.className = 'plan-title-right';
             const nameRow = document.createElement('div'); nameRow.className = 'name-row'; nameRow.textContent = displayName;
+            // include toggle checkbox
+            nameRow.style.display = 'flex'; nameRow.style.alignItems='center'; nameRow.style.gap='8px';
+            const includeWrap = document.createElement('label'); includeWrap.style.marginLeft='auto'; includeWrap.style.display='flex'; includeWrap.style.alignItems='center';
+            const includeCb = document.createElement('input'); includeCb.type='checkbox'; includeCb.checked = (p.include !== false); includeCb.title = t('includeInSummary'); includeCb.setAttribute('aria-label', t('includeInSummary'));
+            includeWrap.appendChild(includeCb);
+            nameRow.appendChild(includeWrap);
             const metaRow = document.createElement('div'); metaRow.className = 'meta-row';
             // 속성, 직업 아이콘
             try{ if(cd?.element){ const elI = document.createElement('img'); elI.src = `${BASE_URL}/assets/img/character-cards/속성_${cd.element}.png`; elI.alt = cd.element; elI.className='meta-icon'; metaRow.appendChild(elI); } }catch(_){ }
@@ -1026,6 +1036,16 @@
                 }
             };
             editBtn.onclick = ()=>{ startSetupFor(p.name, p.id); };
+
+            // initial visual dim if excluded
+            if(p.include === false){ card.style.opacity = '0.6'; }
+            includeCb.onchange = ()=>{
+                p.include = includeCb.checked;
+                card.style.opacity = p.include === false ? '0.6' : '';
+                recalcTotals();
+                renderSummary();
+                saveState();
+            };
 
             const matGrid = document.createElement('div'); matGrid.className='material-grid';
             // 그룹별 실제 충당(자동 변환) 계산
@@ -1664,7 +1684,7 @@
         try{
             const data = {
                 inventory: STATE.inventory,
-                plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs }))
+                plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include: (p.include !== false) }))
             };
             localStorage.setItem('materialPlannerStateV1', JSON.stringify(data));
         }catch(_){/* ignore */}
@@ -1684,7 +1704,8 @@
                         rarity: sp.rarity,
                         image: `${BASE_URL}/assets/img/tier/${sp.name}.webp`,
                         inputs: sp.inputs,
-                        materials
+                        materials,
+                        include: (sp.include !== false)
                     };
                 });
             }

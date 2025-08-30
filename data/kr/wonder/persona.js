@@ -1127,7 +1127,7 @@ const personaData = {
             {name : "어드바이스", priority: 0 },
             {name : "정교한 타격", priority: 0 },
             {name : "마도의 재능", priority: 0 },
-            {name : "물리 강화", priority: 0 },
+            {name : "염동 강화", priority: 0 },
         ]
     },
     "앨리스": {

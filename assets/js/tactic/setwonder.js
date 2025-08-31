@@ -331,9 +331,234 @@ const debouncedUpdate = debounce(() => {
 
 }, 300);
 
+// 전역 포탈(고정 패널) 구현: 필요 시 1회 생성하여 재사용
+let __globalDropdownPortal = null;
+let __globalDropdownCtx = null; // { type: 'persona'|'skill', input, personaIndex?, skillSlot? }
+
+function ensureGlobalPortal() {
+  if (__globalDropdownPortal) return __globalDropdownPortal;
+  const portal = document.createElement('div');
+  portal.id = 'global-dropdown-portal';
+  portal.style.position = 'fixed';
+  portal.style.zIndex = '9999';
+  portal.style.minWidth = '220px';
+  portal.style.maxHeight = '50vh';
+  portal.style.overflowY = 'auto';
+  portal.style.background = '#1f1f1f';
+  portal.style.border = '1px solid rgba(255,255,255,0.15)';
+  portal.style.borderRadius = '8px';
+  portal.style.boxShadow = '0 8px 24px rgba(0,0,0,0.35)';
+  portal.style.display = 'none';
+  portal.style.padding = '6px';
+
+  // 검색 입력
+  const search = document.createElement('input');
+  search.type = 'text';
+  search.className = 'portal-search-input';
+  search.style.width = '100%';
+  search.style.boxSizing = 'border-box';
+  search.style.marginBottom = '6px';
+  search.style.padding = '6px 8px';
+  search.style.borderRadius = '6px';
+  search.style.border = '1px solid rgba(255,255,255,0.2)';
+  search.style.background = '#2a2a2a';
+  search.style.color = '#fff';
+  portal.appendChild(search);
+
+  const list = document.createElement('div');
+  list.className = 'portal-list';
+  portal.appendChild(list);
+
+  document.body.appendChild(portal);
+
+  // 이벤트: 타이핑 시 필터링
+  search.addEventListener('input', () => renderPortalList(search.value));
+
+  // ESC 닫기
+  document.addEventListener('keydown', (e) => {
+    if (portal.style.display !== 'none' && e.key === 'Escape') closePortal();
+  }, true);
+
+  // 외부 클릭 닫기
+  document.addEventListener('mousedown', (e) => {
+    if (portal.style.display === 'none') return;
+    if (!portal.contains(e.target)) closePortal();
+  }, true);
+
+  __globalDropdownPortal = portal;
+  return portal;
+}
+
+function openPortal(type, inputEl, ctx = {}) {
+  const portal = ensureGlobalPortal();
+  __globalDropdownCtx = { type, input: inputEl, ...ctx };
+  const rect = inputEl.getBoundingClientRect();
+  portal.style.left = `${Math.round(rect.left)}px`;
+  portal.style.top = `${Math.round(rect.bottom + 4)}px`;
+  portal.style.display = 'block';
+
+  const search = portal.querySelector('.portal-search-input');
+  const currentLang = getCurrentLanguage();
+  search.placeholder = currentLang === 'jp' ? '検索' : (currentLang === 'en' ? 'Search' : '검색');
+  search.value = '';
+  renderPortalList('');
+  // 패널 내부 검색창에만 포커스 이동 (메인 입력은 readonly 유지)
+  setTimeout(() => search.focus(), 0);
+}
+
+function closePortal() {
+  if (!__globalDropdownPortal) return;
+  __globalDropdownPortal.style.display = 'none';
+  __globalDropdownCtx = null;
+}
+
+function renderPortalList(filter) {
+  if (!__globalDropdownPortal || !__globalDropdownCtx) return;
+  const list = __globalDropdownPortal.querySelector('.portal-list');
+  list.innerHTML = '';
+  const { type, input, personaIndex, skillSlot } = __globalDropdownCtx;
+
+  if (type === 'persona') {
+    // 페르소나 목록
+    let items = Object.keys(personaData);
+    if (filter) {
+      const f = filter.toLowerCase();
+      items = items.filter(p => {
+        const dn = getPersonaDisplayName(p);
+        return dn.toLowerCase().includes(f) || p.toLowerCase().includes(f);
+      });
+    }
+    try {
+      const lang = getCurrentLanguage();
+      const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+      items.sort((a, b) => getPersonaDisplayName(a).localeCompare(getPersonaDisplayName(b), locale, { sensitivity: 'base' }));
+    } catch(_){}
+
+    items.forEach(persona => {
+      const row = document.createElement('div');
+      row.className = 'dropdown-item';
+      row.style.display = 'flex';
+      row.style.alignItems = 'center';
+      row.style.gap = '8px';
+      row.style.padding = '6px 8px';
+      row.style.cursor = 'pointer';
+      const img = document.createElement('img');
+      img.className = 'persona-icon';
+      img.src = `${BASE_URL}/assets/img/tactic-persona/${persona}.webp`;
+      img.alt = '';
+      img.style.width = '22px';
+      img.style.height = '22px';
+      img.onerror = function(){ this.style.display = 'none'; };
+      row.appendChild(img);
+      const span = document.createElement('span');
+      span.textContent = getPersonaDisplayName(persona);
+      row.appendChild(span);
+      row.addEventListener('click', () => {
+        // 값 설정 및 오버레이/체인지 처리
+        input.value = persona;
+        const displayName = getPersonaDisplayName(persona);
+        input.setAttribute('data-display-value', displayName);
+        const container = input.closest('.input-container');
+        if (container) {
+          if (getCurrentLanguage() !== 'kr') {
+            container.setAttribute('data-display-text', displayName);
+            container.classList.add('show-translation');
+          } else {
+            container.classList.remove('show-translation');
+          }
+        }
+        // change 디스패치
+        if (!window.__IS_APPLYING_IMPORT) {
+          const ev = new Event('change', { bubbles: true });
+          input.dispatchEvent(ev);
+        }
+        closePortal();
+      });
+      list.appendChild(row);
+    });
+  } else if (type === 'skill') {
+    // 스킬 목록 ('-' 항목 포함)
+    const addRow = (label, opt) => {
+      const row = document.createElement('div');
+      row.className = 'dropdown-item';
+      row.style.display = 'flex';
+      row.style.alignItems = 'center';
+      row.style.gap = '8px';
+      row.style.padding = '6px 8px';
+      row.style.cursor = 'pointer';
+      if (opt && opt.iconName) {
+        const img = document.createElement('img');
+        img.className = 'skill-icon';
+        img.src = `${BASE_URL}/assets/img/skill-element/${opt.iconName}.png`;
+        img.alt = '';
+        img.style.width = '22px';
+        img.style.height = '22px';
+        img.onerror = function(){ this.style.display = 'none'; };
+        row.appendChild(img);
+      }
+      const span = document.createElement('span');
+      span.textContent = label;
+      row.appendChild(span);
+      row.addEventListener('click', () => {
+        const val = opt && opt.value ? opt.value : '';
+        input.value = val;
+        const container = input.closest('.input-container');
+        if (container) {
+          if (val) {
+            const displayName = getSkillDisplayName(val);
+            input.setAttribute('data-display-value', displayName);
+            if (getCurrentLanguage() !== 'kr') {
+              container.setAttribute('data-display-text', displayName);
+              container.classList.add('show-translation');
+            } else {
+              container.classList.remove('show-translation');
+            }
+          } else {
+            input.removeAttribute('data-display-value');
+            container.removeAttribute('data-display-text');
+            container.classList.remove('show-translation');
+          }
+        }
+        // 아이콘 적용
+        setSkillIconOnInput(input, val || '');
+        // change 디스패치
+        const ev = new Event('change', { bubbles: true });
+        input.dispatchEvent(ev);
+        closePortal();
+      });
+      list.appendChild(row);
+    };
+
+    addRow('-', { value: '' });
+
+    let skills = Object.keys(personaSkillList).map((name, idx) => ({ name, __index: idx }));
+    if (filter) {
+      const f = filter.toLowerCase();
+      skills = skills.filter(s => {
+        const dn = getSkillDisplayName(s.name);
+        return dn.toLowerCase().includes(f) || s.name.toLowerCase().includes(f);
+      });
+    }
+    try {
+      skills.sort((a, b) => {
+        const pa = getSkillPriority(a.name);
+        const pb = getSkillPriority(b.name);
+        if (pa !== pb) return pa - pb;
+        return (a.__index ?? 0) - (b.__index ?? 0);
+      });
+    } catch(_){}
+    skills.forEach(s => {
+      const lang = getCurrentLanguage();
+      const data = personaSkillList[s.name] || {};
+      const iconName = (lang === 'en' || lang === 'jp') ? (data.icon_gl || data.icon || '') : (data.icon || '');
+      addRow(getSkillDisplayName(s.name), { value: s.name, iconName });
+    });
+  }
+}
+
 inputs.forEach((input, idx) => {
   input.placeholder = getPlaceholderText('persona');
-  // Make persona input non-editable; open dropdown only
+  // 포탈 방식: 메인 인풋은 readonly 유지
   input.setAttribute('readonly', 'readonly');
 
   // input을 컨테이너로 감싸기
@@ -345,11 +570,7 @@ inputs.forEach((input, idx) => {
   input.parentNode.insertBefore(inputContainer, input);
   inputContainer.appendChild(input);
   
-  // 커스텀 드롭다운 생성
-  const customDropdown = document.createElement("div");
-  customDropdown.className = "custom-dropdown";
-  // 스크롤 앵커링 스타일은 CSS에서 처리
-  inputContainer.appendChild(customDropdown);
+  // per-input 드롭다운 대신 전역 포탈을 사용
   
   // 드롭다운 선택 중인지 여부 플래그 (중복 change 방지)
   let isSelecting = false;
@@ -357,132 +578,18 @@ inputs.forEach((input, idx) => {
   // datalist 속성 제거 (커스텀 드롭다운 사용)
   input.removeAttribute("list");
   
-  // 페르소나 드롭다운 항목 생성 함수
-  const createPersonaDropdownItems = (filter = "") => {
-    customDropdown.innerHTML = "";
-    
-    // 페르소나 목록 필터링
-    let filteredPersonas = Object.keys(personaData);
-    if (filter) {
-      filteredPersonas = Object.keys(personaData).filter(persona => {
-        const displayName = getPersonaDisplayName(persona);
-        return displayName.toLowerCase().includes(filter.toLowerCase()) ||
-                persona.toLowerCase().includes(filter.toLowerCase());
-      });
-    }
-    // 언어별 표시 이름으로 정렬
-    try {
-      const lang = getCurrentLanguage();
-      const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
-      filteredPersonas.sort((a, b) => getPersonaDisplayName(a).localeCompare(getPersonaDisplayName(b), locale, { sensitivity: 'base' }));
-    } catch (_) { /* no-op */ }
-    
-    // 드롭다운 항목 추가
-    filteredPersonas.forEach(persona => {
-      const item = document.createElement("div");
-      item.className = "dropdown-item";
-      
-      // 페르소나 아이콘 추가
-      const iconImg = document.createElement("img");
-      iconImg.className = "persona-icon";
-      iconImg.src = `${BASE_URL}/assets/img/tactic-persona/${persona}.webp`;
-      iconImg.alt = "";
-      iconImg.onerror = function() {
-        this.style.display = 'none';
-      };
-      item.appendChild(iconImg);
-      
-      // 페르소나 이름 추가 (번역된 이름으로 표시)
-      const nameSpan = document.createElement("span");
-      nameSpan.textContent = getPersonaDisplayName(persona);
-      item.appendChild(nameSpan);
-      
-      // 파티 드롭다운과 동일하게 mousedown 억제 제거
-
-      item.addEventListener("click", () => {
-        // 선택 중 플래그 설정 (blur에서 중복 처리 방지)
-        isSelecting = true;
-
-        // 실제 값은 한국어 이름으로 저장
-        input.value = persona;
-        customDropdown.classList.remove("active");
-        
-        // 표시는 번역된 이름으로 업데이트
-        const displayName = getPersonaDisplayName(persona);
-        input.setAttribute('data-display-value', displayName);
-        if (getCurrentLanguage() !== 'kr') {
-          inputContainer.setAttribute('data-display-text', displayName);
-          inputContainer.classList.add('show-translation');
-        } else {
-          inputContainer.classList.remove('show-translation');
-        }
-
-        // 포커스를 잃게 하여 번역된 텍스트가 바로 보이도록 함
-        setTimeout(() => { input.blur(); }, 0);
-        
-        // change 이벤트는 한 번만 발생시키기
-        if (!window.__IS_APPLYING_IMPORT) {
-          const event = new Event("change", { bubbles: true });
-          input.dispatchEvent(event);
-        }
-
-        // 다음 틱에서 플래그 해제
-        setTimeout(() => { isSelecting = false; }, 0);
-      });
-      customDropdown.appendChild(item);
-    });
-  };
+  // per-input 드롭다운 생성/아이템 로직 제거 (전역 포탈 사용)
   
-  // 페르소나 입력 필드 이벤트 처리
-  input.addEventListener("focus", function() {
-    // 원래 값 저장만; 값은 유지 (비편집형)
-    this.setAttribute('data-original-value', this.value);
-    // 번역 표시 제거하여 placeholder가 보이도록 함
-    inputContainer.classList.remove('show-translation');
-    // 전체 목록 표시
-    createPersonaDropdownItems('');
-    customDropdown.classList.add("active");
-  });
+  // 포커스 이벤트에서는 아무 것도 하지 않음 (메인 입력 포커스/캐럿 미이동)
+  input.addEventListener("focus", function() {});
   
-  input.addEventListener("blur", function() {
-    setTimeout(() => {
-      customDropdown.classList.remove("active");
-
-      // 새로운 값이 선택되지 않았다면 원래 값으로 복원
-      if (this.value.trim() === '') {
-          this.value = this.getAttribute('data-original-value') || '';
-      }
-      
-      // 값에 따른 번역 표시 적용
-      if (this.value && getCurrentLanguage() !== 'kr') {
-        const displayName = getPersonaDisplayName(this.value);
-        inputContainer.setAttribute('data-display-text', displayName);
-        inputContainer.classList.add('show-translation');
-      } else {
-        inputContainer.classList.remove('show-translation');
-      }
-
-      // 값이 실제로 변경되었고, 드롭다운 선택 중이 아니며, import 중이 아닐 때만 change 발생
-      const prev = this.getAttribute('data-original-value') || '';
-      const changed = this.value.trim() !== '' && this.value !== prev;
-      if (!isSelecting && changed && !window.__IS_APPLYING_IMPORT) {
-        const event = new Event("change", { bubbles: true });
-        this.dispatchEvent(event);
-      }
-    }, 200); // 200ms delay to allow click on dropdown items
-  });
+  // blur 시 별도 처리 없음 (포탈 내부에서 선택/닫기 처리)
+  input.addEventListener("blur", function() {});
   
-  // Disable typing-based filtering
-  
-  // Toggle dropdown on any click
+  // 어떤 위치를 클릭하든 포탈 열기 (포커스 방지로 스크롤 점프 차단)
   input.addEventListener("mousedown", function(e) {
     e.preventDefault();
-    if (customDropdown.classList.contains("active")) {
-      customDropdown.classList.remove("active");
-    } else {
-      createPersonaDropdownItems('');
-      customDropdown.classList.add("active");
-    }
+    openPortal('persona', this, { personaIndex: idx });
   });
   
   // clear 버튼 추가
@@ -804,14 +911,14 @@ function setSkillIconOnInputWithElement(inputEl, elementKey) {
   }
 }
 
-// 페르소나 스킬 입력 필드 설정
+// 페르소나 스킬 입력 필드 설정 (전역 포탈 사용)
 const skillInputs = wonderConfigDiv.querySelectorAll(".persona-skill-input");
 skillInputs.forEach((input) => {
     input.placeholder = getPlaceholderText('skill');
-    // Make skill input non-editable; open dropdown only
+    // 포탈 방식: 메인 인풋은 readonly 유지
     input.setAttribute('readonly', 'readonly');
 
-    // datalist 속성 제거 (커스텀 드롭다운 사용)
+    // datalist 속성 제거 (커스텀 드롭다운 비사용)
     input.removeAttribute("list");
     
     const inputContainer = document.createElement("div");
@@ -820,158 +927,26 @@ skillInputs.forEach((input) => {
     
     input.parentNode.insertBefore(inputContainer, input);
     inputContainer.appendChild(input);
-    
-    // 커스텀 드롭다운 생성
-    const customDropdown = document.createElement("div");
-    customDropdown.className = "custom-dropdown";
-    inputContainer.appendChild(customDropdown);
 
-    // 드롭다운 항목 생성 함수 (필터 적용)
-    const createDropdownItems = (filter = "") => {
-      customDropdown.innerHTML = "";
+    // 포커스/블러는 별도 처리 없음 (포탈 내부에서만 상호작용)
+    input.addEventListener('focus', function() {});
+    input.addEventListener('blur', function() {});
 
-      // 최상단에 '-' 선택 해제 항목 추가
-      const noneItem = document.createElement('div');
-      noneItem.className = 'dropdown-item';
-      const noneLabel = document.createElement('span');
-      noneLabel.textContent = '-';
-      noneItem.appendChild(noneLabel);
-      noneItem.addEventListener('click', () => {
-        isSelecting = true;
-        input.value = '';
-        customDropdown.classList.remove('active');
-        input.removeAttribute('data-display-value');
-        inputContainer.removeAttribute('data-display-text');
-        inputContainer.classList.remove('show-translation');
-        setSkillIconOnInput(input, '');
-        setTimeout(() => input.blur(), 0);
-        const event = new Event('change', { bubbles: true });
-        input.dispatchEvent(event);
-        setTimeout(() => { isSelecting = false; }, 0);
-      });
-      customDropdown.appendChild(noneItem);
-
-      // 스킬 목록 필터링
-      let filteredSkills = skillsWithIcons;
-      if (filter) {
-        filteredSkills = skillsWithIcons.filter(skill => {
-          const displayName = getSkillDisplayName(skill.name);
-          return displayName.toLowerCase().includes(filter.toLowerCase()) ||
-                 skill.name.toLowerCase().includes(filter.toLowerCase());
-        });
-      }
-      // 아이콘 기준 그룹화: 디버프 -> 버프 -> 기타, 각 그룹 내에서는 원래 선언 순서 유지
-      try {
-        filteredSkills.sort((a, b) => {
-          const pa = getSkillPriority(a.name);
-          const pb = getSkillPriority(b.name);
-          if (pa !== pb) return pa - pb;
-          const ia = (a.__index ?? 0);
-          const ib = (b.__index ?? 0);
-          return ia - ib;
-        });
-      } catch (_) { /* no-op */ }
-
-      // 드롭다운 항목 추가
-      filteredSkills.forEach(skill => {
-        const item = document.createElement('div');
-        item.className = 'dropdown-item';
-        if (skill.icon) {
-          const iconImg = document.createElement('img');
-          iconImg.className = 'skill-icon';
-          const lang = getCurrentLanguage();
-          const iconName = (lang === 'en' || lang === 'jp') ? (skill.icon_gl || skill.icon) : skill.icon;
-          iconImg.src = `${BASE_URL}/assets/img/skill-element/${iconName}.png`;
-          iconImg.alt = '';
-          iconImg.onerror = function() { this.style.display = 'none'; };
-          item.appendChild(iconImg);
-        }
-        const nameSpan = document.createElement('span');
-        nameSpan.textContent = getSkillDisplayName(skill.name);
-        item.appendChild(nameSpan);
-        item.addEventListener('click', () => {
-          isSelecting = true;
-          input.value = skill.name;
-          customDropdown.classList.remove('active');
-          const displayName = getSkillDisplayName(skill.name);
-          input.setAttribute('data-display-value', displayName);
-          if (getCurrentLanguage() !== 'kr') {
-            inputContainer.setAttribute('data-display-text', displayName);
-            inputContainer.classList.add('show-translation');
-          } else {
-            inputContainer.classList.remove('show-translation');
-          }
-          setSkillIconOnInput(input, skill.name);
-          setTimeout(() => input.blur(), 0);
-          const event = new Event('change', { bubbles: true });
-          input.dispatchEvent(event);
-          setTimeout(() => { isSelecting = false; }, 0);
-        });
-        customDropdown.appendChild(item);
-      });
-    };
-    
-    // 드롭다운 관련 이벤트 처리
-    input.addEventListener("focus", function() {
-        // 원래 값만 저장 (값은 비우지 않음)
-        this.setAttribute('data-original-value', this.value);
-
-        // 번역 표시 제거
-        inputContainer.classList.remove('show-translation');
-
-        createDropdownItems('');
-        customDropdown.classList.add("active");
-        // do not lock page scroll or force scroll restoration
+    // 클릭 시 포탈 열기 (포커스 방지로 스크롤 점프 차단)
+    input.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      const personaIndex = this.getAttribute('data-persona-index');
+      const skillSlot = this.getAttribute('data-skill-slot');
+      openPortal('skill', this, { personaIndex, skillSlot });
     });
-    
-    input.addEventListener("blur", function() {
-        setTimeout(() => {
-            customDropdown.classList.remove("active");
 
-            // 값에 따른 번역 표시 적용
-            if (this.value && getCurrentLanguage() !== 'kr') {
-                const displayName = getSkillDisplayName(this.value);
-                inputContainer.setAttribute('data-display-text', displayName);
-                inputContainer.classList.add('show-translation');
-            } else {
-                inputContainer.classList.remove('show-translation');
-            }
-
-            // change 이벤트는 드롭다운 선택이 아닌 경우이면서, 값이 실제로 변경된 경우에만 발생
-            const prev = this.getAttribute('data-original-value') || '';
-            const changed = this.value.trim() !== '' && this.value !== prev;
-            if (!isSelecting && changed && !window.__IS_APPLYING_IMPORT) {
-                const event = new Event("change", { bubbles: true });
-                this.dispatchEvent(event);
-            }
-
-        }, 200);
-    });
-  
-    // Disable typing-based filtering (readonly prevents typing anyway)
-    
-    // Toggle dropdown on any click
-    input.addEventListener("mousedown", function(e) {
-        e.preventDefault();
-        if (customDropdown.classList.contains("active")) {
-            customDropdown.classList.remove("active");
-        } else {
-            createDropdownItems('');
-            customDropdown.classList.add("active");
-        }
-    });
-    
-    // 입력 이벤트 리스너
+    // 값 변경 시 상태 업데이트(기존 로직 유지)
     input.addEventListener("change", () => {
         if (window.__IS_APPLYING_IMPORT) return;
         debouncedUpdate();
         updateActionMemos();
-        // no forced scroll restoration
     });
-    
-    // Removed duplicate input listener (updates now handled in the first input handler above)
-
-  });
+});
   // 닫기: 드롭다운 바깥 클릭 시 모두 닫기 (한 번만 바인딩)
   if (!wonderConfigDiv.__outsideCloseBound) {
     const closeIfOutside = (evt) => {

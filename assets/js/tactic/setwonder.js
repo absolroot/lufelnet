@@ -339,6 +339,7 @@ let __globalDropdownTitle = null;
 let __globalDropdownClose = null;
 let __globalDropdownCtx = null; // { type: 'persona'|'skill', input, personaIndex?, skillSlot? }
 let __bodyOverflowPrev = '';
+let __lastOpenTs = 0; // 포탈이 열린 시각 (즉시 닫힘 방지)
 
 function ensureGlobalPortal() {
   if (__globalDropdownPortal) return __globalDropdownPortal;
@@ -446,19 +447,31 @@ function openPortal(type, inputEl, ctx = {}) {
   const portal = ensureGlobalPortal();
   __globalDropdownCtx = { type, input: inputEl, ...ctx };
   const rect = inputEl.getBoundingClientRect();
-  const isMobile = Math.min(window.innerWidth, window.innerHeight) <= 768;
+  // 모바일 여부를 가로 폭 기준으로만 판정해야 데스크탑(높이 1080 등)이 잘못 모바일로 분류되지 않음
+  const isMobile = window.innerWidth < 1440;
+  __lastOpenTs = Date.now();
   portal.style.display = 'block';
-  if (__globalDropdownBackdrop) __globalDropdownBackdrop.style.display = 'block';
+  if (__globalDropdownBackdrop) __globalDropdownBackdrop.style.display = isMobile ? 'block' : 'none';
+  if (__globalDropdownHeader) __globalDropdownHeader.style.display = isMobile ? 'flex' : 'none';
   // 배경 스크롤 잠금
   __bodyOverflowPrev = document.body.style.overflow || '';
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = isMobile ? 'hidden' : __bodyOverflowPrev;
 
   // 헤더 타이틀 설정
   if (__globalDropdownTitle) {
     const currentLang = getCurrentLanguage();
     const tPersona = currentLang === 'jp' ? 'ペルソナ選択' : (currentLang === 'en' ? 'Select Persona' : '페르소나 선택');
     const tSkill = currentLang === 'jp' ? 'スキル選択' : (currentLang === 'en' ? 'Select Skill' : '스킬 선택');
-    __globalDropdownTitle.textContent = (type === 'persona') ? tPersona : tSkill;
+    const tCharacter = currentLang === 'jp' ? 'キャラクター選択' : (currentLang === 'en' ? 'Select Character' : '캐릭터 선택');
+    const tRevMain = currentLang === 'jp' ? '主の啓示を選択' : (currentLang === 'en' ? 'Select Main Revelation' : '주 계시 선택');
+    const tRevSub = currentLang === 'jp' ? '日月星辰を選択' : (currentLang === 'en' ? 'Select Sub Revelation' : '일월성진 선택');
+    let title = tSkill;
+    if (type === 'persona') title = tPersona;
+    else if (type === 'skill') title = tSkill;
+    else if (type === 'character') title = tCharacter;
+    else if (type === 'rev-main') title = tRevMain;
+    else if (type === 'rev-sub') title = tRevSub;
+    __globalDropdownTitle.textContent = title;
   }
 
   if (isMobile) {
@@ -487,6 +500,9 @@ function openPortal(type, inputEl, ctx = {}) {
   // 패널 내부 검색창에만 포커스 이동 (메인 입력은 readonly 유지)
   setTimeout(() => search.focus(), 0);
 }
+
+// 전역 접근을 위해 노출 (setparty.js, index.html 등에서 사용)
+try { window.openPortal = openPortal; } catch(_) {}
 
 function closePortal() {
   if (!__globalDropdownPortal) return;
@@ -518,6 +534,31 @@ function renderPortalList(filter) {
       const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
       items.sort((a, b) => getPersonaDisplayName(a).localeCompare(getPersonaDisplayName(b), locale, { sensitivity: 'base' }));
     } catch(_){}
+
+    // '-' 선택 해제 옵션
+    const none = document.createElement('div');
+    none.className = 'dropdown-item';
+    none.style.display = 'flex';
+    none.style.alignItems = 'center';
+    none.style.gap = '8px';
+    none.style.padding = '6px 8px';
+    none.style.cursor = 'pointer';
+    none.textContent = '-';
+    none.addEventListener('click', () => {
+      input.value = '';
+      input.removeAttribute('data-display-value');
+      const container = input.closest('.input-container');
+      if (container) {
+        container.removeAttribute('data-display-text');
+        container.classList.remove('show-translation');
+      }
+      if (!window.__IS_APPLYING_IMPORT) {
+        const ev = new Event('change', { bubbles: true });
+        input.dispatchEvent(ev);
+      }
+      closePortal();
+    });
+    list.appendChild(none);
 
     items.forEach(persona => {
       const row = document.createElement('div');
@@ -638,6 +679,258 @@ function renderPortalList(filter) {
       const iconName = (lang === 'en' || lang === 'jp') ? (data.icon_gl || data.icon || '') : (data.icon || '');
       addRow(getSkillDisplayName(s.name), { value: s.name, iconName });
     });
+  } else if (type === 'character') {
+    // 캐릭터 목록 (setparty.js와 동일 로직 기반)
+    let items = [];
+    const currentLang = getCurrentLanguage();
+    const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
+    let forceKR = false;
+    try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch(_) { forceKR = false; }
+    const partyIndex = __globalDropdownCtx.partyIndex;
+    if (!forceKR && currentLang !== 'kr' && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
+      items = partyIndex === 4 ? window.languageData[currentLang].characterList.supportParty : window.languageData[currentLang].characterList.mainParty;
+    } else if (typeof characterList !== 'undefined') {
+      items = partyIndex === 4 ? characterList.supportParty : characterList.mainParty;
+    }
+
+    // 필터 및 정렬
+    let filtered = items;
+    if (filter) {
+      const f = String(filter).toLowerCase();
+      filtered = items.filter(char => {
+        const ch = (typeof characterData !== 'undefined') ? characterData[char] : null;
+        const names = [
+          String(char || '').toLowerCase(), // KR 키(코드키)
+          ch && ch.codename ? String(ch.codename).toLowerCase() : '', // codename
+          ch && ch.name ? String(ch.name).toLowerCase() : '', // KR 이름
+          ch && ch.name_kr ? String(ch.name_kr).toLowerCase() : '',
+          ch && ch.name_en ? String(ch.name_en).toLowerCase() : '',
+          ch && ch.name_jp ? String(ch.name_jp).toLowerCase() : ''
+        ].filter(Boolean);
+        return names.some(n => n.includes(f));
+      });
+    }
+    filtered = [...filtered].sort((a,b)=>{
+      const da = (function(c){
+        const lang = getCurrentLanguage();
+        if (!characterData[c]) return c;
+        const ch = characterData[c];
+        if (lang === 'en') return ch.codename || ch.name_en || c;
+        if (lang === 'jp') return ch.name_jp || c;
+        return c; // KR은 KR 키(표시용)
+      })(a);
+      const db = (function(c){
+        const lang = getCurrentLanguage();
+        if (!characterData[c]) return c;
+        const ch = characterData[c];
+        if (lang === 'en') return ch.codename || ch.name_en || c;
+        if (lang === 'jp') return ch.name_jp || c;
+        return c;
+      })(b);
+      return da.localeCompare(db, locale, { sensitivity: 'base' });
+    });
+
+    // '-' 선택 해제 옵션
+    const none = document.createElement('div');
+    none.className = 'dropdown-item';
+    none.textContent = '-';
+    none.addEventListener('click', () => {
+      if (__globalDropdownCtx.onSelect) {
+        __globalDropdownCtx.onSelect('', '');
+      } else if (input) {
+        input.value = '';
+        const ev = new Event('change', { bubbles: true });
+        input.dispatchEvent(ev);
+      }
+      closePortal();
+    });
+    list.appendChild(none);
+
+    filtered.forEach(char => {
+      const item = document.createElement('div');
+      item.className = 'dropdown-item';
+      const iconImg = document.createElement('img');
+      iconImg.className = 'character-icon';
+      iconImg.src = `${BASE_URL}/assets/img/character-half/${char}.webp`;
+      iconImg.alt = '';
+      iconImg.onerror = function(){ this.style.display='none'; };
+      item.appendChild(iconImg);
+      const nameSpan = document.createElement('span');
+      const disp = (function(c){
+        const lang = getCurrentLanguage();
+        if (!characterData[c]) return c;
+        const ch = characterData[c];
+        if (lang === 'en') return ch.codename || ch.name_en || c;
+        if (lang === 'jp') return ch.name_jp || c;
+        return c; // KR은 KR 키 표시
+      })(char);
+      nameSpan.textContent = disp;
+      item.appendChild(nameSpan);
+      item.addEventListener('click', () => {
+        // 내부 값은 KR 키 유지, 표시만 현지화(EN은 codename)
+        const valueToSet = char;
+        if (__globalDropdownCtx.onSelect) {
+          __globalDropdownCtx.onSelect(valueToSet, disp);
+        } else if (input) {
+          input.value = valueToSet;
+          const ev = new Event('change', { bubbles: true });
+          input.dispatchEvent(ev);
+        }
+        closePortal();
+      });
+      list.appendChild(item);
+    });
+
+  } else if (type === 'rev-main') {
+    if (typeof revelationData === 'undefined' || !revelationData.main) return;
+    const mains = Object.keys(revelationData.main);
+    const currentLang = getCurrentLanguage();
+    const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
+    let filtered = mains;
+    if (filter) {
+      const f = filter.toLowerCase();
+      filtered = mains.filter(n => {
+        const disp = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(n) : n;
+        return n.toLowerCase().includes(f) || disp.toLowerCase().includes(f);
+      });
+    }
+    filtered = [...filtered].sort((a,b)=>{
+      const da = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(a) : a;
+      const db = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(b) : b;
+      return da.localeCompare(db, locale, { sensitivity: 'base' });
+    });
+    // '-' 선택 해제 옵션
+    const none = document.createElement('div');
+    none.className = 'dropdown-item';
+    none.style.display = 'flex';
+    none.style.alignItems = 'center';
+    none.style.gap = '8px';
+    none.style.padding = '6px 8px';
+    none.style.cursor = 'pointer';
+    none.textContent = '-';
+    none.addEventListener('click', ()=>{
+      if (__globalDropdownCtx.onSelect) __globalDropdownCtx.onSelect('', '');
+      closePortal();
+    });
+    list.appendChild(none);
+    filtered.forEach(n => {
+      const item = document.createElement('div');
+      item.className = 'dropdown-item';
+      item.style.display = 'flex';
+      item.style.alignItems = 'center';
+      item.style.gap = '8px';
+      item.style.padding = '6px 8px';
+      item.style.cursor = 'pointer';
+      // 아이콘
+      const img = document.createElement('img');
+      img.className = 'revelation-icon';
+      img.src = `${BASE_URL}/assets/img/revelation/${n}.webp`;
+      img.alt = '';
+      img.style.width = 'none';
+      img.style.height = '24px';
+      img.onerror = function(){ this.style.display = 'none'; };
+      item.appendChild(img);
+      // 텍스트
+      const disp = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(n) : n;
+      const span = document.createElement('span');
+      span.textContent = disp;
+      item.appendChild(span);
+      item.addEventListener('click', ()=>{
+        if (__globalDropdownCtx.onSelect) __globalDropdownCtx.onSelect(n, disp);
+        closePortal();
+      });
+      list.appendChild(item);
+    });
+
+  } else if (type === 'rev-sub') {
+    if (typeof revelationData === 'undefined' || !revelationData.main) return;
+    // 1) 우선 컨텍스트(mainForSub)
+    let main = __globalDropdownCtx.mainForSub;
+    // 2) 컨텍스트가 없거나 유효하지 않으면, 현재 입력(sub select)로부터 같은 파티 블록의 주 계시 값을 동적으로 재조회
+    if (!main || !revelationData.main[main]) {
+      try {
+        const subEl = __globalDropdownCtx.input;
+        const partyDiv = subEl ? subEl.closest('[data-index]') : null;
+        const mainEl = partyDiv ? partyDiv.querySelector('.main-revelation') : null;
+        const domVal = mainEl ? mainEl.value : '';
+        if (domVal) main = domVal;
+      } catch(_) {}
+    }
+    const currentLang = getCurrentLanguage();
+    const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
+    // 주 계시가 표시명으로 들어온 경우 KR 키로 역매핑 시도
+    if (main && !revelationData.main[main]) {
+      try {
+        const entries = Object.keys(revelationData.main);
+        const match = entries.find(k => {
+          const disp = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(k) : k;
+          return String(disp).trim() === String(main).trim();
+        });
+        if (match) main = match;
+      } catch(_) {}
+    }
+    if (!main || !revelationData.main[main]) {
+      const warn = document.createElement('div');
+      warn.className = 'dropdown-item';
+      warn.textContent = currentLang === 'jp' ? '先にメインを選択' : (currentLang === 'en' ? 'Select main first' : '먼저 주 계시를 선택');
+      list.appendChild(warn);
+      return;
+    }
+    let subs = [...revelationData.main[main]];
+    if (filter) {
+      const f = filter.toLowerCase();
+      subs = subs.filter(n => {
+        const disp = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(n) : n;
+        return n.toLowerCase().includes(f) || disp.toLowerCase().includes(f);
+      });
+    }
+    subs = subs.sort((a,b)=>{
+      const da = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(a) : a;
+      const db = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(b) : b;
+      return da.localeCompare(db, locale, { sensitivity: 'base' });
+    });
+    // '-' 선택 해제 옵션
+    const none = document.createElement('div');
+    none.className = 'dropdown-item';
+    none.style.display = 'flex';
+    none.style.alignItems = 'center';
+    none.style.gap = '8px';
+    none.style.padding = '6px 8px';
+    none.style.cursor = 'pointer';
+    none.textContent = '-';
+    none.addEventListener('click', ()=>{
+      if (__globalDropdownCtx.onSelect) __globalDropdownCtx.onSelect('', '');
+      closePortal();
+    });
+    list.appendChild(none);
+    subs.forEach(n => {
+      const item = document.createElement('div');
+      item.className = 'dropdown-item';
+      item.style.display = 'flex';
+      item.style.alignItems = 'center';
+      item.style.gap = '8px';
+      item.style.padding = '6px 8px';
+      item.style.cursor = 'pointer';
+      // 아이콘
+      const img = document.createElement('img');
+      img.className = 'revelation-icon';
+      img.src = `${BASE_URL}/assets/img/revelation/${n}.webp`;
+      img.alt = '';
+      img.style.width = 'none';
+      img.style.height = '24px';
+      img.onerror = function(){ this.style.display = 'none'; };
+      item.appendChild(img);
+      // 텍스트
+      const disp = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(n) : n;
+      const span = document.createElement('span');
+      span.textContent = disp;
+      item.appendChild(span);
+      item.addEventListener('click', ()=>{
+        if (__globalDropdownCtx.onSelect) __globalDropdownCtx.onSelect(n, disp);
+        closePortal();
+      });
+      list.appendChild(item);
+    });
   }
 }
 
@@ -676,27 +969,6 @@ inputs.forEach((input, idx) => {
     e.preventDefault();
     openPortal('persona', this, { personaIndex: idx });
   });
-  
-  // clear 버튼 추가
-  const clearBtn = document.createElement("button");
-  clearBtn.type = "button"; // 폼 제출 방지로 스크롤 점프 예방
-  clearBtn.className = "clear-input";
-  clearBtn.textContent = "×";
-  clearBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    // 변경 없음이면 스킵
-    if ((input.value || "") === "" && (wonderPersonas[idx] || "") === "") {
-      input.focus();
-      return;
-    }
-    input.value = "";
-    wonderPersonas[idx] = "";
-    debouncedUpdate();
-    // setparty.js와 동일하게 단순 포커스만 유지
-    input.focus();
-  });
-  inputContainer.appendChild(clearBtn);
   
   // input 이벤트 리스너 수정
   input.addEventListener("change", (e) => {

@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [tactic]
-custom_js: [tooltip, tactic/share, tactic/library-loader, tactic/import, tactic/export, tactic/setparty, tactic/setwonder, tactic/partyimg, tactic/createAction, tactic/renderTurns, tactic/updateAuto, tactic/findPattern, tactic/capture]
+custom_js: [tooltip, tactic/share, tactic/library-loader, tactic/import, tactic/export,  tactic/setwonder, tactic/setparty, tactic/partyimg, tactic/createAction, tactic/renderTurns, tactic/updateAuto, tactic/findPattern, tactic/capture]
 custom_data: [tooltip.js, tactic/pattern.js, characters/characters.js, revelations/revelations.js, wonder/weapons.js, wonder/persona.js, wonder/skills.js]
 permalink: /tactic/
 language: kr
@@ -1292,8 +1292,25 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
             // 클릭 토글
             display.addEventListener('click', (e) => {
+              e.preventDefault();
               e.stopPropagation();
               if (select.disabled) return;
+              // 우선 전역 포탈 사용 (일관된 UI)
+              if (typeof openPortal === 'function') {
+                try { select.blur(); } catch(_) {}
+                const type = select.classList.contains('main-revelation') ? 'rev-main' : 'rev-sub';
+                const ctx = type === 'rev-sub' ? { mainForSub: (group.querySelector('select.main-revelation') || {}).value } : {};
+                openPortal(type, select, {
+                  ...ctx,
+                  onSelect: (value /* KR */) => {
+                    select.value = value;
+                    select.dispatchEvent(new Event('change', { bubbles: true }));
+                    // 포탈 내부에서 닫힘 처리됨
+                  }
+                });
+                return;
+              }
+              // 포탈이 없다면 기존 로컬 목록 토글로 폴백
               const isActive = list.classList.contains('active');
               document.querySelectorAll('.rev-options.active').forEach(el => el.classList.remove('active'));
               if (!isActive) list.classList.add('active');

@@ -137,7 +137,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .rev-display {
     display: flex; align-items: center; gap: 8px; width: 100%;
     background: #2e2626; color: #eee; /* border removed to blend with UI */
-    padding: 6px 8px; border-radius: 3px; cursor: pointer; user-select: none;
+    padding: 8px 8px; border-radius: 3px; cursor: pointer; user-select: none;
   }
   .rev-display img { width: 20px; height: 20px; object-fit: cover; border-radius: 2px; }
   .rev-display span { font-size: 13px; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

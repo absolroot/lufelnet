@@ -247,8 +247,8 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            /* clear 버튼(우측 40px) + 아이콘 예약 공간(좌측 36px) 고려 */
-            max-width: calc(100% - 76px);
+            /* 아이콘 예약 공간(좌측 36px)만 고려 */
+            max-width: calc(100% - 36px);
         }
         
         .input-container.party-name-container.show-translation:has(input:focus)::before {
@@ -406,6 +406,81 @@
           // 파티 이미지 업데이트 추가
           updatePartyImages();
         });
+
+        // 포탈 연결: 주/일월성진 select를 포탈로 대체(네이티브 select 방지)
+        const openMainRevPortal = (evt) => {
+          try { if (evt) { evt.preventDefault(); evt.stopPropagation(); if (evt.stopImmediatePropagation) evt.stopImmediatePropagation(); } } catch(_){ }
+          // WONDER(원더)거나 비활성화 상태면 열지 않음
+          try {
+            if (partyMembers[index]?.name === '원더' || mainRevSelect.disabled) return;
+          } catch(_){ }
+          try { mainRevSelect.blur(); } catch(_){ }
+          if (typeof openPortal === 'function') {
+            openPortal('rev-main', mainRevSelect, {
+              onSelect: (value /* KR */, display) => {
+                mainRevSelect.value = value;
+                const ev = new Event('change', { bubbles: true });
+                mainRevSelect.dispatchEvent(ev);
+              }
+            });
+          }
+        };
+        const openSubRevPortal = (evt) => {
+          try { if (evt) { evt.preventDefault(); evt.stopPropagation(); if (evt.stopImmediatePropagation) evt.stopImmediatePropagation(); } } catch(_){ }
+          // WONDER(원더)거나 비활성화 상태면 열지 않음
+          try {
+            if (partyMembers[index]?.name === '원더' || subRevSelect.disabled) return;
+          } catch(_){ }
+          try { subRevSelect.blur(); } catch(_){ }
+          if (typeof openPortal === 'function') {
+            openPortal('rev-sub', subRevSelect, {
+              mainForSub: mainRevSelect.value,
+              onSelect: (value /* KR */, display) => {
+                subRevSelect.value = value;
+                const ev = new Event('change', { bubbles: true });
+                subRevSelect.dispatchEvent(ev);
+              }
+            });
+          }
+        };
+
+        // 다양한 입력에 대응: mousedown/click/keydown
+        ['pointerdown','mousedown','click','touchstart'].forEach(ev => {
+          mainRevSelect.addEventListener(ev, openMainRevPortal);
+          subRevSelect.addEventListener(ev, openSubRevPortal);
+        });
+        // 네이티브 select 열림을 확실히 차단하기 위해 capture 단계에서도 차단
+        mainRevSelect.addEventListener('pointerdown', (e)=>openMainRevPortal(e), { capture: true });
+        subRevSelect.addEventListener('pointerdown', (e)=>openSubRevPortal(e), { capture: true });
+        mainRevSelect.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            openMainRevPortal(e);
+          }
+        });
+        subRevSelect.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            openSubRevPortal(e);
+          }
+        });
+
+        // disabled인 sub select는 이벤트가 막히므로 부모 컨테이너에도 핸들러 부착
+        const mainGroup = mainRevSelect.closest('.input-group') || mainRevSelect.parentElement;
+        const subGroup = subRevSelect.closest('.input-group') || subRevSelect.parentElement;
+        if (mainGroup) {
+          ['pointerdown','mousedown','click','touchstart'].forEach(ev => mainGroup.addEventListener(ev, (e) => {
+            // select 외 영역 클릭도 포탈 오픈 (레이블/컨테이너)
+            if (e.target !== mainRevSelect) {
+              openMainRevPortal(e);
+            }
+          }));
+        }
+        if (subGroup) {
+          ['pointerdown','mousedown','click','touchstart'].forEach(ev => subGroup.addEventListener(ev, (e) => {
+            if (e.target !== subRevSelect) {
+              openSubRevPortal(e);
+            }
+          }));
+        }
       }
 
       if (nameSelect) {
@@ -413,48 +488,21 @@
         const inputContainer = document.createElement("div");
         inputContainer.className = "input-container party-name-container";
         inputContainer.style.position = "relative";
+        inputContainer.setAttribute('tabindex', '0');
         
         // input 요소 생성
         const input = document.createElement("input");
+        input.classList.add('party-name-input');
         input.className = "party-name-input";
         input.value = partyMembers[index].name;
         input.placeholder = "";
         input.setAttribute("autocomplete", "off");
         
-        // 커스텀 드롭다운 생성
-        const customDropdown = document.createElement("div");
-        customDropdown.className = "custom-dropdown";
-        
-        // clear 버튼 생성
-        const clearBtn = document.createElement("button");
-        clearBtn.className = "clear-input";
-        clearBtn.textContent = "×";
-        clearBtn.addEventListener("click", () => {
-          input.value = "";
-          const oldName = partyMembers[index].name;
-          partyMembers[index].name = "";
-          
-          if (!window.__IS_APPLYING_IMPORT) {
-            // 해당 캐릭터의 자동 액션 삭제
-            turns.forEach(turn => {
-              turn.actions = turn.actions.filter(action => 
-                action.type === 'manual' || action.character !== oldName
-              );
-            });
-            
-            updateAutoActions();
-            updatePartyImages();
-            renderTurns();
-          }
-          // 선택 아이콘 제거
-          setCharacterIconOnInputWithElement(input, "");
-          input.focus();
-        });
+        // (로컬 드롭다운 제거: 전역 포탈 사용)
         
         // 요소들을 컨테이너에 추가
         inputContainer.appendChild(input);
-        inputContainer.appendChild(clearBtn);
-        inputContainer.appendChild(customDropdown);
+        // customDropdown 제거
         
         // select를 새로운 input container로 교체
         nameSelect.parentNode.replaceChild(inputContainer, nameSelect);
@@ -490,148 +538,49 @@
           }
         }
 
-        // 드롭다운 항목 생성 함수
-        const createDropdownItems = (filter = "") => {
-          customDropdown.innerHTML = "";
-          
-          // 현재 언어에 맞는 캐릭터 목록 사용
-          const currentLang = getCurrentLanguage();
-          const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
-          // KR 리스트 강제 사용 플래그 (localStorage)
-          let forceKR = false;
-          try {
-              forceKR = localStorage.getItem('forceKRList') === 'true';
-          } catch (_) { forceKR = false; }
-          let characterOptions = [];
-          if (!forceKR && currentLang !== 'kr' && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
-              characterOptions = index === 4 
-                  ? window.languageData[currentLang].characterList.supportParty 
-                  : window.languageData[currentLang].characterList.mainParty;
-          } else if (typeof characterList !== 'undefined') { // Fallback or forced to Korean list
-              characterOptions = index === 4 ? characterList.supportParty : characterList.mainParty;
-          }
-          
-          // 캐릭터 목록 필터링 (필터가 있을 경우만 필터링)
-          let filteredCharacters = characterOptions;
-          if (filter) {
-            const lowerCaseFilter = filter.toLowerCase();
-            filteredCharacters = characterOptions.filter(char => {
-              const displayName = getCharacterDisplayName(char);
-              return char.toLowerCase().includes(lowerCaseFilter) ||
-                     displayName.toLowerCase().includes(lowerCaseFilter);
-            });
-          }
-          // 언어별 표시명 기준 A-Z 정렬
-          filteredCharacters = [...filteredCharacters].sort((a, b) =>
-            getCharacterDisplayName(a).localeCompare(getCharacterDisplayName(b), locale, { sensitivity: 'base' })
-          );
-          
-          // 드롭다운 항목 추가
-          filteredCharacters.forEach(char => {
-            const item = document.createElement("div");
-            item.className = "dropdown-item";
-            
-            // 캐릭터 아이콘 추가
-            const iconImg = document.createElement("img");
-            iconImg.className = "character-icon";
-            iconImg.src = `${BASE_URL}/assets/img/character-half/${char}.webp`;
-            iconImg.alt = "";
-            iconImg.onerror = function() {
-              // 이미지 로드 실패 시 아이콘 제거
-              this.style.display = 'none';
-            };
-            item.appendChild(iconImg);
-            
-            // 캐릭터 이름 추가 (번역된 이름으로 표시)
-            const nameSpan = document.createElement("span");
-            nameSpan.textContent = getCharacterDisplayName(char);
-            item.appendChild(nameSpan);
-            
-            item.addEventListener("click", () => {
-              // 실제 값은 한국어로 설정
-              input.value = char;
-              customDropdown.classList.remove("active");
-
-              // 번역 표시 적용
-              if (getCurrentLanguage() !== 'kr') {
-                  const displayName = getCharacterDisplayName(char);
-                  inputContainer.setAttribute('data-display-text', displayName);
+        // 전역 포탈 방식: 입력은 readonly, 클릭 시 포탈 열기
+        input.setAttribute('readonly', 'readonly');
+        const openCharacterPortal = (e) => {
+          try { if (e) { e.preventDefault(); e.stopPropagation(); if (e.stopImmediatePropagation) e.stopImmediatePropagation(); } } catch(_){ }
+          if (typeof openPortal === 'function') {
+            openPortal('character', input, {
+              partyIndex: index,
+              onSelect: (charKR, displayName) => {
+                input.value = charKR;
+                // 번역 표시
+                if (getCurrentLanguage() !== 'kr') {
+                  inputContainer.setAttribute('data-display-text', displayName || getCharacterDisplayName(charKR));
                   inputContainer.classList.add('show-translation');
-              } else {
+                } else {
                   inputContainer.classList.remove('show-translation');
+                }
+                // 아이콘 적용
+                setCharacterIconOnInputWithElement(input, charKR);
+                // change 이벤트 발생 (기존 로직 실행)
+                const event = new Event('change', { bubbles: true });
+                input.dispatchEvent(event);
               }
-
-              // 선택된 캐릭터 아이콘 적용
-              setCharacterIconOnInputWithElement(input, char);
-
-              // 포커스 즉시 해제하여 번역된 값이 보이도록 함
-              setTimeout(() => input.blur(), 0);
-              
-              // change 이벤트 발생
-              const event = new Event("change", { bubbles: true });
-              input.dispatchEvent(event);
             });
-            customDropdown.appendChild(item);
-          });
+          }
         };
-        
-        // 드롭다운 관련 이벤트 처리
-        input.addEventListener("focus", function() {
-          // 원래 값 저장 후 입력 필드 초기화 (편집 용이성)
-          this.setAttribute('data-original-value', this.value);
-          this.value = '';
-
-          // 번역 표시 제거
-          inputContainer.classList.remove('show-translation');
-          
-          createDropdownItems('');
-          customDropdown.classList.add("active");
-          
-          // 현재 스크롤 위치 저장
-          window.lastScrollY = window.scrollY;
-        });
-        
-        input.addEventListener("blur", function() {
-          // 약간의 지연 후 드롭다운 닫기 (항목 클릭 이벤트가 발생할 시간 확보)
-          setTimeout(() => {
-            customDropdown.classList.remove("active");
-
-            // 새로운 값이 선택되지 않았으면 원래 값으로 복원
-            if (this.value.trim() === '') {
-                this.value = this.getAttribute('data-original-value') || '';
-            }
-            
-            // 값에 따른 번역 표시 적용
-            if (this.value && getCurrentLanguage() !== 'kr') {
-                const displayName = getCharacterDisplayName(this.value);
-                inputContainer.setAttribute('data-display-text', displayName);
-                inputContainer.classList.add('show-translation');
-            } else {
-                inputContainer.classList.remove('show-translation');
-            }
-
-            // 블러 시 현재 값 기준으로 아이콘 갱신
-            setCharacterIconOnInputWithElement(this, this.value);
-          }, 200);
-        });
-        
-        input.addEventListener("input", function() {
-          createDropdownItems(this.value);
-          customDropdown.classList.add("active");
-        });
-        
-        // 드롭다운 화살표 클릭 처리
-        input.addEventListener("mousedown", function(e) {
-          // 드롭다운 화살표 클릭 감지 (입력 필드의 오른쪽 20px 영역)
-          if (e.offsetX > this.offsetWidth - 20) {
-            e.preventDefault();
-            
-            if (customDropdown.classList.contains("active")) {
-              customDropdown.classList.remove("active");
-            } else {
-              createDropdownItems(this.value);
-              customDropdown.classList.add("active");
-            }
+        ['pointerdown','mousedown','click','touchstart'].forEach(ev => input.addEventListener(ev, openCharacterPortal));
+        // 컨테이너/라벨에서도 포탈 오픈
+        const containerOpenHandler = (e) => {
+          openCharacterPortal(e);
+        };
+        ['pointerdown','mousedown','click','touchstart'].forEach(ev => inputContainer.addEventListener(ev, containerOpenHandler));
+        // 같은 input-group 내 라벨도 클릭 시 포탈 오픈
+        const group = inputContainer.closest('.input-group');
+        const labelEl = group ? group.querySelector('label') : null;
+        if (labelEl) {
+          ['pointerdown','mousedown','click','touchstart'].forEach(ev => labelEl.addEventListener(ev, (e)=>{
+            // 라벨 클릭으로 포커스가 입력에 가지 전에 포탈 열기
+            containerOpenHandler(e);
+          }));
+        }
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            openCharacterPortal(e);
           }
         });
         

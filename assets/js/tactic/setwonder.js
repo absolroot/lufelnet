@@ -333,10 +333,29 @@ const debouncedUpdate = debounce(() => {
 
 // 전역 포탈(고정 패널) 구현: 필요 시 1회 생성하여 재사용
 let __globalDropdownPortal = null;
+let __globalDropdownBackdrop = null;
+let __globalDropdownHeader = null;
+let __globalDropdownTitle = null;
+let __globalDropdownClose = null;
 let __globalDropdownCtx = null; // { type: 'persona'|'skill', input, personaIndex?, skillSlot? }
+let __bodyOverflowPrev = '';
 
 function ensureGlobalPortal() {
   if (__globalDropdownPortal) return __globalDropdownPortal;
+  // 반투명 백드롭
+  const backdrop = document.createElement('div');
+  backdrop.id = 'global-dropdown-backdrop';
+  backdrop.style.position = 'fixed';
+  backdrop.style.left = '0';
+  backdrop.style.top = '0';
+  backdrop.style.width = '100vw';
+  backdrop.style.height = '100vh';
+  backdrop.style.background = 'rgba(0,0,0,0.45)';
+  backdrop.style.zIndex = '9998';
+  backdrop.style.display = 'none';
+  // 모바일에서 배경 스크롤 방지
+  backdrop.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false });
+
   const portal = document.createElement('div');
   portal.id = 'global-dropdown-portal';
   portal.style.position = 'fixed';
@@ -349,7 +368,36 @@ function ensureGlobalPortal() {
   portal.style.borderRadius = '8px';
   portal.style.boxShadow = '0 8px 24px rgba(0,0,0,0.35)';
   portal.style.display = 'none';
-  portal.style.padding = '6px';
+  portal.style.padding = '8px';
+
+  // 헤더 (타이틀 + 닫기 버튼)
+  const header = document.createElement('div');
+  header.className = 'portal-header';
+  header.style.display = 'flex';
+  header.style.alignItems = 'center';
+  header.style.justifyContent = 'space-between';
+  header.style.gap = '8px';
+  header.style.marginBottom = '6px';
+  const title = document.createElement('div');
+  title.className = 'portal-title';
+  title.style.color = '#fff';
+  title.style.fontSize = '14px';
+  title.style.fontWeight = '600';
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.className = 'portal-close';
+  closeBtn.textContent = '✕';
+  closeBtn.style.background = 'transparent';
+  closeBtn.style.color = '#fff';
+  closeBtn.style.border = 'none';
+  closeBtn.style.fontSize = '18px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.style.lineHeight = '1';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.addEventListener('click', () => closePortal());
+  header.appendChild(title);
+  header.appendChild(closeBtn);
+  portal.appendChild(header);
 
   // 검색 입력
   const search = document.createElement('input');
@@ -369,6 +417,7 @@ function ensureGlobalPortal() {
   list.className = 'portal-list';
   portal.appendChild(list);
 
+  document.body.appendChild(backdrop);
   document.body.appendChild(portal);
 
   // 이벤트: 타이핑 시 필터링
@@ -386,6 +435,10 @@ function ensureGlobalPortal() {
   }, true);
 
   __globalDropdownPortal = portal;
+  __globalDropdownBackdrop = backdrop;
+  __globalDropdownHeader = header;
+  __globalDropdownTitle = title;
+  __globalDropdownClose = closeBtn;
   return portal;
 }
 
@@ -393,9 +446,38 @@ function openPortal(type, inputEl, ctx = {}) {
   const portal = ensureGlobalPortal();
   __globalDropdownCtx = { type, input: inputEl, ...ctx };
   const rect = inputEl.getBoundingClientRect();
-  portal.style.left = `${Math.round(rect.left)}px`;
-  portal.style.top = `${Math.round(rect.bottom + 4)}px`;
+  const isMobile = Math.min(window.innerWidth, window.innerHeight) <= 768;
   portal.style.display = 'block';
+  if (__globalDropdownBackdrop) __globalDropdownBackdrop.style.display = 'block';
+  // 배경 스크롤 잠금
+  __bodyOverflowPrev = document.body.style.overflow || '';
+  document.body.style.overflow = 'hidden';
+
+  // 헤더 타이틀 설정
+  if (__globalDropdownTitle) {
+    const currentLang = getCurrentLanguage();
+    const tPersona = currentLang === 'jp' ? 'ペルソナ選択' : (currentLang === 'en' ? 'Select Persona' : '페르소나 선택');
+    const tSkill = currentLang === 'jp' ? 'スキル選択' : (currentLang === 'en' ? 'Select Skill' : '스킬 선택');
+    __globalDropdownTitle.textContent = (type === 'persona') ? tPersona : tSkill;
+  }
+
+  if (isMobile) {
+    // 모바일: 화면 중앙 모달
+    portal.style.width = 'min(92vw, 420px)';
+    portal.style.maxWidth = '92vw';
+    portal.style.maxHeight = '75vh';
+    portal.style.left = '50%';
+    portal.style.top = '50%';
+    portal.style.transform = 'translate(-50%, -50%)';
+  } else {
+    // 데스크탑: 입력 옆에 표시
+    portal.style.transform = 'none';
+    portal.style.width = 'auto';
+    portal.style.maxWidth = '420px';
+    portal.style.maxHeight = '50vh';
+    portal.style.left = `${Math.round(rect.left)}px`;
+    portal.style.top = `${Math.round(rect.bottom + 4)}px`;
+  }
 
   const search = portal.querySelector('.portal-search-input');
   const currentLang = getCurrentLanguage();
@@ -409,6 +491,9 @@ function openPortal(type, inputEl, ctx = {}) {
 function closePortal() {
   if (!__globalDropdownPortal) return;
   __globalDropdownPortal.style.display = 'none';
+  if (__globalDropdownBackdrop) __globalDropdownBackdrop.style.display = 'none';
+  // 배경 스크롤 복원
+  document.body.style.overflow = __bodyOverflowPrev || '';
   __globalDropdownCtx = null;
 }
 

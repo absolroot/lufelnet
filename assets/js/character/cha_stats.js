@@ -165,7 +165,7 @@
       setValueRow('.stats-main .stats-grid', 5, lv1.crit_rate+'%' ?? '');
       setValueRow('.stats-main .stats-grid', 6, lv1.crit_mult+'%' ?? '');
   
-      // 우측: 잠재력
+      // 우측: 잠재력 
       const a7 = statObj.awake7 || {};
       const entries = Object.entries(a7);
       // 타이틀 지역화
@@ -174,7 +174,8 @@
       if (entries.length > 0) {
         const [k, v] = entries[0];
         const label = translateAwakeLabel(k, lang);
-        const value = (v === undefined || v === null) ? '' : (isPercentKey(k) ? `${v}%` : `${v}`);
+        // 소숫점 첫째자리까지는 남기고, 둘째자리는 버림
+        const value = (v === undefined || v === null) ? '' : (isPercentKey(k) ? `${Math.floor(v*10)/10}%` : `${Math.floor(v*10)/10}`);
         setText('.stats-awake .label', label);
         setText('.stats-awake .value', value);
       } else {

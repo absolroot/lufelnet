@@ -12,9 +12,10 @@ const basicStatsData = {
         attack_per: 0,
         defense_per: 0,
         HP_per: 0,
-        sp_recover: 0
+        sp_recover: 0,
+        HP_recover: 0
     },
-    "미유·여름": {
+    "미유·여름": { 
         a0_lv1: {
             attack: 105,
             defense: 52,
@@ -22,16 +23,10 @@ const basicStatsData = {
             SP: 200,
             speed: 96.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-
+        awake7: {
+            sp_recover: 188.5
         }
     },
     "미나미·여름": {
@@ -42,16 +37,10 @@ const basicStatsData = {
             SP: 100,
             speed: 104.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            HP_per: 29
         }
     },
     "이치고": {
@@ -62,16 +51,10 @@ const basicStatsData = {
             SP: 100,
             speed: 96.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            attack_per: 29
         }
     },
     "사나다": {
@@ -82,16 +65,10 @@ const basicStatsData = {
             SP: 100,
             speed: 96.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            crit_rate: 22.4
         }
     },
     "유카리": {
@@ -102,16 +79,10 @@ const basicStatsData = {
             SP: 100,
             speed: 103.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            attack_per: 29
         }
     },
     "유키 마코토": {
@@ -122,16 +93,10 @@ const basicStatsData = {
             SP: 100,
             speed: 98.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            attack_per: 29
         }
     },
     "마나카": {
@@ -142,16 +107,10 @@ const basicStatsData = {
             SP: 100,
             speed: 100.0,
             crit_rate: 0,
-            crit_mult: 0,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 0
         },
-        a0_lv80: {
-            
+        awake7: {
+            attack_per: 29
         }
     },
     "이케나미": {
@@ -162,16 +121,10 @@ const basicStatsData = {
             SP: 100,
             speed: 104.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            ailment_accuracy: 26.1
         }
     },
     "마유미": {
@@ -182,16 +135,10 @@ const basicStatsData = {
             SP: 100,
             speed: 107.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            speed: 125.8
         }
     },
     "아케치": {
@@ -202,16 +149,10 @@ const basicStatsData = {
             SP: 100,
             speed: 95.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            attack_per: 29
         }
     },
     "미오": {
@@ -222,16 +163,10 @@ const basicStatsData = {
             SP: 100,
             speed: 104.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            ailment_accuracy: 34.9
         }
     },
     "야오링·사자무": {
@@ -242,16 +177,10 @@ const basicStatsData = {
             SP: 100,
             speed: 95.0,
             crit_rate: 5,
-            crit_mult: 150,
-            pierce_rate: 0,
-            ailment_accuracy: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0,
-            sp_recover: 0
+            crit_mult: 150
         },
-        a0_lv80: {
-            
+        awake7: {
+            attack_per: 29
         }
     },
     "카스미": {
@@ -262,28 +191,15 @@ const basicStatsData = {
             defense: 49.84,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 102.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3390.02,
             SP: 100.0,
-            attack: 1159.98,
-            defense: 560.0,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            attack: 1159.98
         },
         a1_lv80: {
             HP: 3450.82,
@@ -325,28 +241,15 @@ const basicStatsData = {
             defense: 56.96,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 104.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 104.0
+        },
+        awake7: {
+            sp_recover: 188.5
         },
         a0_lv80: {
             HP: 3629.97,
-            SP: 200.0,
             attack: 980.0,
             defense: 640.03,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 104.0,
-            sp_recover: 1.885,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
         },
         a1_lv80: {
             HP: 3695.57,
@@ -388,28 +291,15 @@ const basicStatsData = {
             defense: 58.15,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 105.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 105.0
+          },
+          awake7: {
+              ailment_accuracy: 34.9
           },
         a0_lv80: {
             HP: 3239.99,
-            SP: 100.0,
             attack: 1060.03,
-            defense: 653.36,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0.35,
-            speed: 105.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 653.36
           },
         a1_lv80: {
             HP: 3298.39,
@@ -451,28 +341,15 @@ const basicStatsData = {
             defense: 50.43,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 98.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 98.0
+        },
+        awake7: {
+            crit_mult: 184.9
         },
         a0_lv80: {
             HP: 3480.01,
-            SP: 100.0,
             attack: 1150.02,
             defense: 566.66,
-            crit_rate: 5,
-            crit_mult: 185,
-            ailment_accuracy: 0,
-            speed: 98.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
         },
         a1_lv80: {
             HP: 3542.41,
@@ -514,28 +391,15 @@ const basicStatsData = {
             defense: 57.55,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 97.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 97.0
+        },
+        awake7: {
+            ailment_accuracy: 34.9
         },
         a0_lv80: {
             HP: 3239.99,
-            SP: 100.0,
             attack: 1150.02,
-            defense: 646.69,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0.35,
-            speed: 97.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 646.69
         },
         a1_lv80: {
             HP: 3298.39,
@@ -577,28 +441,15 @@ const basicStatsData = {
             defense: 72.39,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 104.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 104.0
+        },
+        awake7: {
+            defense_per: 43.6
         },
         a0_lv80: {
             HP: 3539.98,
-            SP: 100.0,
             attack: 840.0,
-            defense: 813.35,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 104.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 813.35
         },
         a1_lv80: {
             HP: 3603.98,
@@ -640,28 +491,15 @@ const basicStatsData = {
             defense: 53.4,
             crit_rate: 0,
             crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3390.02,
-            SP: 100.0,
             attack: 1139.99,
-            defense: 599.98,
-            crit_rate: 0,
-            crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 599.98
         },
         a1_lv80: {
             HP: 3450.82,
@@ -703,28 +541,15 @@ const basicStatsData = {
             defense: 48.65,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 97.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 97.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3720.03,
-            SP: 100.0,
             attack: 1130.03,
-            defense: 546.67,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 97.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 546.67
         },
         a1_lv80: {
             HP: 3787.23,
@@ -766,28 +591,15 @@ const basicStatsData = {
             defense: 51.62,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            "speed": 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 103.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3539.98,
-            SP: 100.0,
             attack: 1089.98,
-            defense: 579.99,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 579.99
         },
         a1_lv80: {
             HP: 3603.98,
@@ -829,28 +641,15 @@ const basicStatsData = {
             defense: 48.65,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 96.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 96.0
+        },
+        awake7: {
+            HP_per: 29
         },
         a0_lv80: {
             HP: 3959.98,
-            SP: 100.0,
             attack: 1069.99,
-            defense: 546.67,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 96.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 546.67
         },
         a1_lv80: {
             HP: 4031.18,
@@ -892,28 +691,15 @@ const basicStatsData = {
             defense: 40.5,
             crit_rate: 0,
             crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 105.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 105.0
+        },
+        awake7: {
+            speed: 119.16
         },
         a0_lv80: {
             HP: 2609.99,
-            SP: 100.0,
             attack: 780.03,
-            defense: 455.4,
-            crit_rate: 0,
-            crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 119.16,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 455.4
         },
         a1_lv80: {
             HP: 2640.39,
@@ -955,28 +741,15 @@ const basicStatsData = {
             defense: 52.21,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3449.99,
-            SP: 100.0,
             attack: 1080.02,
-            defense: 586.65,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 586.65
         },
         a1_lv80: {
             HP: 3512.39,
@@ -1018,28 +791,15 @@ const basicStatsData = {
             defense: 53.99,
             crit_rate: 0,
             crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3449.99,
-            SP: 100.0,
             attack: 1109.97,
-            defense: 606.64,
-            crit_rate: 0,
-            crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 606.64
         },
         a1_lv80: {
             HP: 3512.39,
@@ -1081,28 +841,15 @@ const basicStatsData = {
             defense: 50.43,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 103.0
+        },
+        awake7: {
+            crit_rate: 22.4
         },
         a0_lv80: {
             HP: 3419.97,
-            SP: 100.0,
             attack: 1150.02,
-            defense: 566.66,
-            crit_rate: 22,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 566.66
         },
         a1_lv80: {
             HP: 3481.57,
@@ -1144,28 +891,15 @@ const basicStatsData = {
             defense: 71.2,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 102.0
+        },
+        awake7: {
+            defense_per: 43.6
         },
         a0_lv80: {
             HP: 3720.03,
-            SP: 100.0,
             attack: 820.01,
-            defense: 800.02,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 800.02
         },
         a1_lv80: {
             HP: 3787.23,
@@ -1207,28 +941,15 @@ const basicStatsData = {
             defense: 60.52,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 96.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 96.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3119.98,
-            SP: 100.0,
             attack: 1159.98,
-            defense: 680.01,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 96.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 680.01
         },
         a1_lv80: {
             HP: 3175.98,
@@ -1270,28 +991,15 @@ const basicStatsData = {
             defense: 44.95,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 103.0
+        },
+        awake7: {
+            ailment_accuracy: 26.1
         },
         a0_lv80: {
             HP: 2475.37,
-            SP: 100.0,
             attack: 787.7,
-            defense: 505.41,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0.26,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 505.41
         },
         a1_lv80: {
             HP: 2504.17,
@@ -1333,28 +1041,15 @@ const basicStatsData = {
             defense: 59.93,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 94.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 94.0
+        },
+        awake7: {
+            HP_recover: 20.9
         },
         a0_lv80: {
             HP: 4140.03,
-            SP: 100.0,
             attack: 910.0,
-            defense: 673.35,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 94.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 673.35
         },
         a1_lv80: {
             HP: 4214.43,
@@ -1396,28 +1091,15 @@ const basicStatsData = {
             defense: 49.84,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 102.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3270.01,
-            SP: 100.0,
             attack: 1179.97,
-            defense: 560.0,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 560.0
         },
         a1_lv80: {
             HP: 3329.21,
@@ -1459,28 +1141,15 @@ const basicStatsData = {
             defense: 47.47,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 94.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 94.0
+        },
+        awake7: {
+            crit_mult: 184.9
         },
         a0_lv80: {
             HP: 3959.98,
-            SP: 100.0,
             attack: 1100.01,
-            defense: 533.35,
-            crit_rate: 5,
-            crit_mult: 185,
-            ailment_accuracy: 0,
-            speed: 94.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 533.35
         },
         a1_lv80: {
             HP: 4031.18,
@@ -1521,28 +1190,15 @@ const basicStatsData = {
             defense: 55.18,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 94.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 94.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3239.99,
-            SP: 100.0,
             attack: 1209.99,
-            defense: 619.97,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 94.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 619.97
         },
         a1_lv80: {
             HP: 3298.39,
@@ -1584,28 +1240,15 @@ const basicStatsData = {
             defense: 57.55,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            crit_rate: 22.4
         },
         a0_lv80: {
             HP: 3300.03,
-            SP: 100.0,
             attack: 1100.01,
-            defense: 646.69,
-            crit_rate: 22,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 646.69
         },
         a1_lv80: {
             HP: 3359.23,
@@ -1647,28 +1290,15 @@ const basicStatsData = {
             defense: 56.37,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 106.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 106.0
+        },
+        awake7: {
+            speed: 124.89
         },
         a0_lv80: {
             HP: 3180.02,
-            SP: 100.0,
             attack: 1089.98,
-            defense: 633.37,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 124.89,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 633.37
         },
         a1_lv80: {
             HP: 3237.62,
@@ -1710,28 +1340,15 @@ const basicStatsData = {
             defense: 42.72,
             crit_rate: 0,
             crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            attack_per: 21.8
         },
         a0_lv80: {
             HP: 2655.42,
-            SP: 100.0,
             attack: 787.7,
-            defense: 479.97,
-            crit_rate: 0,
-            crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 479.97
         },
         a1_lv80: {
             HP: 2685.82,
@@ -1773,28 +1390,15 @@ const basicStatsData = {
             defense: 58.74,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 101.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 101.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 3539.98,
-            SP: 100.0,
             attack: 1010.02,
-            defense: 660.02,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 101.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 660.02
         },
         a1_lv80: {
             HP: 3603.98,
@@ -1836,28 +1440,15 @@ const basicStatsData = {
             defense: 52.96,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 104.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 104.0
+        },
+        awake7: {
+            defense_per: 32.6
         },
         a0_lv80: {
             HP: 2655.42,
-            SP: 100.0,
             attack: 637.67,
-            defense: 595.4,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 104.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 595.4
         },
         a1_lv80: {
             HP: 2685.82,
@@ -1899,28 +1490,15 @@ const basicStatsData = {
             defense: 38.72,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 102.0
+        },
+        awake7: {
+            HP_per: 21.8
         },
         a0_lv80: {
             HP: 3262.27,
-            SP: 100.0,
             attack: 637.67,
-            defense: 435.41,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 102.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 435.41
         },
         a1_lv80: {
             HP: 3299.87,
@@ -1962,28 +1540,15 @@ const basicStatsData = {
             defense: 41.39,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            crit_rate: 18
         },
         a0_lv80: {
             HP: 2475.37,
-            SP: 100.0,
             attack: 847.67,
-            defense: 465.43,
-            crit_rate: 18,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 465.43
         },
         a1_lv80: {
             HP: 2504.17,
@@ -2025,28 +1590,15 @@ const basicStatsData = {
             defense: 40.05,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 99.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 99.0
+        },
+        awake7: {
+            HP_per: 21.8
         },
         a0_lv80: {
             HP: 3195.43,
-            SP: 100.0,
             attack: 675.43,
-            defense: 450.02,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 99.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 450.02
         },
         a1_lv80: {
             HP: 3232.23,
@@ -2088,28 +1640,15 @@ const basicStatsData = {
             defense: 41.83,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 98.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 98.0
+        },
+        awake7: {
+            attack_per: 21.8
         },
         a0_lv80: {
             HP: 2565.43,
-            SP: 100.0,
             attack: 840.0,
-            defense: 470.01,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 98.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 470.01
         },
         a1_lv80: {
             HP: 2595.03,
@@ -2151,28 +1690,15 @@ const basicStatsData = {
             defense: 43.17,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 103.0
+        },
+        awake7: {
+            attack_per: 21.8
         },
         a0_lv80: {
             HP: 2677.7,
-            SP: 100.0,
             attack: 750.01,
-            defense: 485.42,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 103.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 485.42
         },
         a1_lv80: {
             HP: 2708.9,
@@ -2213,28 +1739,15 @@ const basicStatsData = {
             defense: 48.06,
             crit_rate: 0,
             crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            defense_per: 32.6
         },
         a0_lv80: {
             HP: 2655.42,
-            SP: 100.0,
             attack: 727.73,
-            defense: 540.01,
-            crit_rate: 0,
-            crit_mult: 0,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 540.01
         },
         a1_lv80: {
             HP: 2685.82,
@@ -2277,28 +1790,15 @@ const basicStatsData = {
             defense: 45.84,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 98.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 98.0
+        },
+        awake7: {
+            attack_per: 21.8
         },
         a0_lv80: {
             HP: 2430.01,
-            SP: 100.0,
             attack: 825.39,
-            defense: 515.37,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 98.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 515.37
         },
         a1_lv80: {
             HP: 2458.01,
@@ -2340,28 +1840,15 @@ const basicStatsData = {
             defense: 41.39,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 99.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 99.0
+        },
+        awake7: {
+            attack_per: 21.8
         },
         a0_lv80: {
             HP: 2452.29,
-            SP: 100.0,
             attack: 862.28,
-            defense: 465.43,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 99.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 465.43
         },
         a1_lv80: {
             HP: 2480.29,
@@ -2403,28 +1890,15 @@ const basicStatsData = {
             defense: 42.28,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 95.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 95.0
+        },
+        awake7: {
+            HP_per: 21.8
         },
         a0_lv80: {
             HP: 2812.32,
-            SP: 100.0,
             attack: 787.7,
-            defense: 475.39,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 95.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            defense: 475.39
         },
         a1_lv80: {
             HP: 2845.12,
@@ -2466,28 +1940,15 @@ const basicStatsData = {
             defense: 43.61,
             crit_rate: 5,
             crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 0,
-            defense_per: 0,
-            HP_per: 0
+            speed: 100.0
+        },
+        awake7: {
+            attack_per: 29
         },
         a0_lv80: {
             HP: 2609.99,
-            SP: 100.0,
             attack: 780.03,
-            defense: 490.0,
-            crit_rate: 5,
-            crit_mult: 150,
-            ailment_accuracy: 0,
-            speed: 100.0,
-            sp_recover: 0,
-            pierce_rate: 0,
-            attack_per: 29,
-            defense_per: 0,
-            HP_per: 0
+            defense: 490.0
         },
         a1_lv80: {
             HP: 2640.39,

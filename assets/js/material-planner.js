@@ -1602,38 +1602,38 @@
     // 재료 정렬 우선순위 (요청 순서 적용)
     function materialSortOrder(key){
         // character exp (높은 등급 우선: 3→2→1)
-        if(key==='lv_exp3') return 101;
-        if(key==='lv_exp2') return 102;
-        if(key==='lv_exp1') return 103;
+        if(key==='lv_exp3') return 201;
+        if(key==='lv_exp2') return 202;
+        if(key==='lv_exp1') return 203;
         // character limit (3→2→1)
-        if(key==='lv_limit3') return 201;
-        if(key==='lv_limit2') return 202;
-        if(key==='lv_limit1') return 203;
+        if(key==='lv_limit3') return 301;
+        if(key==='lv_limit2') return 302;
+        if(key==='lv_limit1') return 303;
         // weapon exp (3→2→1)
-        if(key==='wp_exp3') return 301;
-        if(key==='wp_exp2') return 302;
-        if(key==='wp_exp1') return 303;
+        if(key==='wp_exp3') return 801;
+        if(key==='wp_exp2') return 802;
+        if(key==='wp_exp1') return 803;
         // weapon limit (3→2→1)
-        if(key==='wp_limit3') return 401;
-        if(key==='wp_limit2') return 402;
-        if(key==='wp_limit1') return 403;
+        if(key==='wp_limit3') return 901;
+        if(key==='wp_limit2') return 902;
+        if(key==='wp_limit1') return 903;
         // skills (무기와 mind 사이에 위치)
         if(key==='skill_lv_3') return 501;
         if(key==='skill_lv_2') return 502;
         if(key==='skill_lv_1') return 503;
-        if(key==='skill_item1') return 504;
-        if(key==='skill_item2') return 505;
-        if(key==='skill_item3') return 506;
-        if(key==='skill_item4') return 507;
-        if(key==='skill_item5') return 508;
-        if(key==='skill_rose') return 509;
+        if(key==='skill_item1') return 402;
+        if(key==='skill_item2') return 403;
+        if(key==='skill_item3') return 404;
+        if(key==='skill_item4') return 405;
+        if(key==='skill_item5') return 406;
+        if(key==='skill_rose') return 401;
         // mind base / lv / stat / skill
-        if(key==='md_mercury') return 601; // mind base(기초 재화)
-        if(key==='md_bell') return 610;   // mind lv(속성 강화)
-        if(key==='md_stat1') return 621;
-        if(key==='md_stat2') return 620;
-        if(key==='md_skill1') return 631;
-        if(key==='md_skill2') return 630;
+        if(key==='md_mercury') return 106; // mind base(기초 재화)
+        if(key==='md_bell') return 105;   // mind lv(속성 강화)
+        if(key==='md_stat1') return 101;
+        if(key==='md_stat2') return 102;
+        if(key==='md_skill1') return 103;
+        if(key==='md_skill2') return 104;
         if(key==='konpaku_gem') return 50; // 통화는 항상 상단에 가까이 노출
         return 9999;
     }

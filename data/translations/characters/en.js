@@ -73,7 +73,7 @@ const characterTranslations = {
     stats: {
         "공격력": "ATK",
         "대미지 보너스": "DMG Bonus(ATK Mult)",
-        "크리티컬 효과": "CRIT DMG",
+        "크리티컬 효과": "CRIT Mult",
         "크리티컬 확률": "CRIT Rate",
         "관통": "Pierce Rate",
         "효과 명중": "Ailment Accur.",
@@ -87,7 +87,7 @@ const characterTranslations = {
     mindSkills: {
         "SP 회복": "SP Recovery",
         "대미지 보너스": "DMG Bonus(ATK Mult)",
-        "크리티컬 효과": "CRIT DMG",
+        "크리티컬 효과": "CRIT Mult",
         "크리티컬 확률": "CRIT Rate",
         "공격력": "ATK",
         "속도": "Speed",

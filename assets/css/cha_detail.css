@@ -75,7 +75,8 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 .skill-row,
 .operation-row,
 .main-revelation,
-.sub-revelation { display: grid; grid-template-columns: 100px 1fr; gap: 8px; align-items: center; padding : 0; margin-bottom: 8px; font-size: 14px; }
+.sub-revelation,
+.awake-row{ display: grid; grid-template-columns: 100px 1fr; gap: 8px; align-items: center; padding : 0; margin-bottom: 8px; font-size: 14px; }
 
 /* label style */
 .label,
@@ -89,6 +90,7 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 
 /* value style */
 .value { color: rgb(255, 255, 255, 0.9); }
+.awake-row .value { font-size: 14px; }
 
 .revelation-set { display: flex; flex-direction: column; gap: 0px; }
 .main-revelation, .sub-revelation { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
@@ -114,6 +116,16 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 /* stat section */
 .stat-grid { display: flex; flex-direction: row; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
 .stat-item { background: #1a1919; padding: 16px; border-radius: 8px; text-align: center; }
+
+/* character basic stats grid (left section in stats card) */
+.stats-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.stats-grid > .stat-row, .awake-row { min-width: 0; display: flex; gap: 8px; flex-direction: column; align-items: flex-start;}
+@media (min-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+    .setting-group.stats-settings { gap:16px !important; flex-direction:column; }
+}
 
 /* skill section */
 .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 16px; margin-top: 20px; margin-bottom: 20px; }

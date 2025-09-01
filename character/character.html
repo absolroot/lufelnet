@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
-custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min, character/tactic-example]
+custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min, character/tactic-example, character/cha_stats]
 custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
 permalink: /character.html
 language: kr
@@ -328,6 +328,55 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </script>
     </div>
 
+    <!-- 스텟 섹션 -->
+    <div class="stats-card card-style">
+        <h2>스탯</h2>
+        <div class="setting-group stats-settings" style="display:flex; gap:40px; align-items:stretch;">
+            <!-- 기초 스탯 (왼쪽 3/4) -->
+            <div class="setting-section" style="flex:3; display:flex; flex-direction:column;">
+                <h3>기초 스탯</h3>
+                <div class="stats-main">
+                    <div class="stats-grid">
+                        <div class="stat-row">
+                            <span class="label">생명</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">공격력</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">방어력</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">속도</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">크리티컬 확률</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">크리티컬 효과</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 잠재력 LV 7 (오른쪽 1/4) -->
+            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
+                <h3>잠재력 LV 7</h3>
+                <div class="stats-awake" style="display:flex; flex-direction:column; gap:8px;">
+                    <h3 class="awake-title" style="display:none;">잠재력 Lv7</h3>
+                    <div class="awake-row" style="display:flex; gap:8px;">
+                        <span class="label"></span>
+                        <span class="value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 스킬 섹션 -->
     <div class="skills-card card-style">
@@ -2767,6 +2816,34 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 'jp': {
                     title: 'イメジャリー (LV 5)',
                     content: '星印は可能であれば先に取るべき優先順位イメジャリーです。'
+                }
+            },
+            'base-stats': {
+                'kr': {
+                    title: '기초 스탯',
+                    content: '레벨1 기준입니다. 각 캐릭터는 소숫점 스테이터스를 가지고 있습니다. 소숫점 값은 인게임 내에서는 공개되지 않습니다.'
+                },
+                'en': {
+                    title: 'Base Stats',
+                    content: 'These are based on Level 1. Each character internally has fractional stats. These precise values are not exposed in-game.'
+                },
+                'jp': {
+                    title: '基礎ステータス',
+                    content: 'レベル1基準です。各キャラクターは内部的に小数点のステータスを持っています。これらの詳細値はゲーム内では公開されません。'
+                }
+            },
+            'awake7': {
+                'kr': {
+                    title: '잠재력 LV7',
+                    content: '잠재력이 LV7 일 때(최대 레벨 80) 얻은 보너스 스탯의 최종 합산 값입니다. 예로 크리티컬 확률이 22.4%일 경우 기본 5%에 17.4%를 추가로 얻은 결과입니다.'
+                },
+                'en': {
+                    title: 'Hidden Ability LV7',
+                    content: 'The final total of the bonus stats obtained at Hidden Ability LV7 (character level 80). For example, if CRIT Rate shows 22.4%, it means an additional 17.4% was gained on top of the base 5%.'
+                },
+                'jp': {
+                    title: '潜在能力 LV7',
+                    content: '潜在能力がLV7（キャラLv80）で得られるボーナスステータスの最終合計値です。例えばCRT発生率が22.4%の場合、17.4%が追加で得られた結果です。'
                 }
             },
             'recommended-operation': {

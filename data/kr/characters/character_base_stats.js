@@ -9,7 +9,9 @@ const basicStatsData = {
         crit_mult: 150,
         pierce_rate: 0,
         ailment_accuracy: 0,
-        attack_mult : 0,
+        attack_per: 0,
+        defense_per: 0,
+        HP_per: 0,
         sp_recover: 0
     },
     "미유·여름": {
@@ -23,7 +25,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -41,7 +45,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -59,7 +65,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -77,7 +85,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -95,7 +105,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -113,7 +125,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -131,7 +145,9 @@ const basicStatsData = {
             crit_mult: 0,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -149,7 +165,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -167,7 +185,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -185,7 +205,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -203,7 +225,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -221,7 +245,9 @@ const basicStatsData = {
             crit_mult: 150,
             pierce_rate: 0,
             ailment_accuracy: 0,
-            attack_mult : 0,
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0,
             sp_recover: 0
         },
         a0_lv80: {
@@ -240,7 +266,9 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3390.02,
@@ -253,8 +281,41 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3450.82,
+            attack: 1180.78,
+            defense: 570.4
+        },
+        a2_lv80: {
+            HP: 3512.42,
+            attack: 1201.58,
+            defense: 580.0
+        },
+        a3_lv80: {
+            HP: 3573.22,
+            attack: 1222.38,
+            defense: 590.4
+        },
+        a4_lv80: {
+            HP: 3634.02,
+            attack: 1243.18,
+            defense: 600.0
+        },
+        a5_lv80: {
+            HP: 3694.82,
+            attack: 1264.78,
+            defense: 610.4
+        },
+        a6_lv80: {
+            HP: 3756.42,
+            attack: 1285.58,
+            defense: 620.8
         }
+
     },
     "리코·매화": {
         a0_lv1: {
@@ -268,7 +329,9 @@ const basicStatsData = {
             speed: 104.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3629.97,
@@ -281,8 +344,41 @@ const basicStatsData = {
             speed: 104.0,
             sp_recover: 1.885,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3695.57,
+            attack: 997.6,
+            defense: 651.23
+        },
+        a2_lv80: {
+            HP: 3760.37,
+            attack: 1015.2,
+            defense: 663.23
+        },
+        a3_lv80: {
+            HP: 3825.97,
+            attack: 1032.8,
+            defense: 674.43
+        },
+        a4_lv80: {
+            HP: 3891.57,
+            attack: 1050.4,
+            defense: 686.43
+        },
+        a5_lv80: {
+            HP: 3956.37,
+            attack: 1068.0,
+            defense: 697.63
+        },
+        a6_lv80: {
+            HP: 4021.97,
+            attack: 1085.6,
+            defense: 708.83
         }
+
     },
     "루우나": {
         a0_lv1: {
@@ -296,7 +392,9 @@ const basicStatsData = {
             speed: 105.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
           },
         a0_lv80: {
             HP: 3239.99,
@@ -309,8 +407,41 @@ const basicStatsData = {
             speed: 105.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
-          }
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+          },
+        a1_lv80: {
+            HP: 3298.39,
+            attack: 1079.23,
+            defense: 665.36
+        },
+        a2_lv80: {
+            HP: 3356.79,
+            attack: 1098.43,
+            defense: 676.56
+        },
+        a3_lv80: {
+            HP: 3415.19,
+            attack: 1117.63,
+            defense: 688.56
+        },
+        a4_lv80: {
+            HP: 3473.59,
+            attack: 1136.03,
+            defense: 700.56
+        },
+        a5_lv80: {
+            HP: 3531.99,
+            attack: 1155.23,
+            defense: 712.56
+        },
+        a6_lv80: {
+            HP: 3589.59,
+            attack: 1174.43,
+            defense: 723.76
+        }
+
     },
     "몽타뉴·백조": {
         a0_lv1: {
@@ -324,7 +455,9 @@ const basicStatsData = {
             speed: 98.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3480.01,
@@ -337,8 +470,41 @@ const basicStatsData = {
             speed: 98.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3542.41,
+            attack: 1170.82,
+            defense: 577.06
+        },
+        a2_lv80: {
+            HP: 3605.61,
+            attack: 1191.62,
+            defense: 587.46
+        },
+        a3_lv80: {
+            HP: 3668.01,
+            attack: 1212.42,
+            defense: 597.06
+        },
+        a4_lv80: {
+            HP: 3730.41,
+            attack: 1233.22,
+            defense: 607.46
+        },
+        a5_lv80: {
+            HP: 3793.61,
+            attack: 1253.22,
+            defense: 617.86
+        },
+        a6_lv80: {
+            HP: 3856.01,
+            attack: 1274.02,
+            defense: 628.26
         }
+
     },
     "하루": {
         a0_lv1: {
@@ -352,7 +518,9 @@ const basicStatsData = {
             speed: 97.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3239.99,
@@ -365,8 +533,41 @@ const basicStatsData = {
             speed: 97.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3298.39,
+            attack: 1170.82,
+            defense: 658.69
+        },
+        a2_lv80: {
+            HP: 3356.79,
+            attack: 1191.62,
+            defense: 669.89
+        },
+        a3_lv80: {
+            HP: 3415.19,
+            attack: 1212.42,
+            defense: 681.89
+        },
+        a4_lv80: {
+            HP: 3473.59,
+            attack: 1233.22,
+            defense: 693.09
+        },
+        a5_lv80: {
+            HP: 3531.99,
+            attack: 1253.22,
+            defense: 705.09
+        },
+        a6_lv80: {
+            HP: 3589.59,
+            attack: 1274.02,
+            defense: 716.29
         }
+
     },
     "마사키": {
         a0_lv1: {
@@ -380,7 +581,9 @@ const basicStatsData = {
             speed: 104.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3539.98,
@@ -393,8 +596,41 @@ const basicStatsData = {
             speed: 104.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3603.98,
+            attack: 855.2,
+            defense: 827.75
+        },
+        a2_lv80: {
+            HP: 3667.18,
+            attack: 870.4,
+            defense: 842.95
+        },
+        a3_lv80: {
+            HP: 3731.18,
+            attack: 885.6,
+            defense: 857.35
+        },
+        a4_lv80: {
+            HP: 3795.18,
+            attack: 900.8,
+            defense: 871.75
+        },
+        a5_lv80: {
+            HP: 3858.38,
+            attack: 916.0,
+            defense: 886.95
+        },
+        a6_lv80: {
+            HP: 3922.38,
+            attack: 930.4,
+            defense: 901.35
         }
+
     },
     "후타바": {
         a0_lv1: {
@@ -408,7 +644,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3390.02,
@@ -421,8 +659,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3450.82,
+            attack: 1160.79,
+            defense: 611.18
+        },
+        a2_lv80: {
+            HP: 3512.42,
+            attack: 1180.79,
+            defense: 621.58
+        },
+        a3_lv80: {
+            HP: 3573.22,
+            attack: 1201.59,
+            defense: 632.78
+        },
+        a4_lv80: {
+            HP: 3634.02,
+            attack: 1222.39,
+            defense: 643.18
+        },
+        a5_lv80: {
+            HP: 3694.82,
+            attack: 1242.39,
+            defense: 654.38
+        },
+        a6_lv80: {
+            HP: 3756.42,
+            attack: 1263.19,
+            defense: 664.78
         }
+
     },
     "키라": {
         a0_lv1: {
@@ -436,7 +707,9 @@ const basicStatsData = {
             speed: 97.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3720.03,
@@ -449,8 +722,41 @@ const basicStatsData = {
             speed: 97.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3787.23,
+            attack: 1150.03,
+            defense: 556.27
+        },
+        a2_lv80: {
+            HP: 3853.63,
+            attack: 1170.83,
+            defense: 566.67
+        },
+        a3_lv80: {
+            HP: 3920.83,
+            attack: 1190.83,
+            defense: 576.27
+        },
+        a4_lv80: {
+            HP: 3988.03,
+            attack: 1211.63,
+            defense: 585.87
+        },
+        a5_lv80: {
+            HP: 4055.23,
+            attack: 1231.63,
+            defense: 596.27
+        },
+        a6_lv80: {
+            HP: 4121.63,
+            attack: 1252.43,
+            defense: 605.87
         }
+
     },
     "토모코·여름": {
         a0_lv1: {
@@ -464,7 +770,9 @@ const basicStatsData = {
             "speed": 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3539.98,
@@ -477,8 +785,41 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3603.98,
+            attack: 1109.98,
+            defense: 590.39
+        },
+        a2_lv80: {
+            HP: 3667.18,
+            attack: 1129.18,
+            defense: 600.79
+        },
+        a3_lv80: {
+            HP: 3731.18,
+            attack: 1149.18,
+            defense: 611.19
+        },
+        a4_lv80: {
+            HP: 3795.18,
+            attack: 1168.38,
+            defense: 621.59
+        },
+        a5_lv80: {
+            HP: 3858.38,
+            attack: 1188.38,
+            defense: 631.99
+        },
+        a6_lv80: {
+            HP: 3922.38,
+            attack: 1207.58,
+            defense: 642.39
         }
+
     },
     "모토하·여름": {
         a0_lv1: {
@@ -492,7 +833,9 @@ const basicStatsData = {
             speed: 96.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3959.98,
@@ -505,8 +848,41 @@ const basicStatsData = {
             speed: 96.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 4031.18,
+            attack: 1089.19,
+            defense: 556.27
+        },
+        a2_lv80: {
+            HP: 4102.38,
+            attack: 1108.39,
+            defense: 566.67
+        },
+        a3_lv80: {
+            HP: 4173.58,
+            attack: 1127.59,
+            defense: 576.27
+        },
+        a4_lv80: {
+            HP: 4244.78,
+            attack: 1146.79,
+            defense: 585.87
+        },
+        a5_lv80: {
+            HP: 4316.78,
+            attack: 1165.99,
+            defense: 596.27
+        },
+        a6_lv80: {
+            HP: 4387.98,
+            attack: 1185.19,
+            defense: 605.87
         }
+
     },
     "리코": {
         a0_lv1: {
@@ -520,7 +896,9 @@ const basicStatsData = {
             speed: 105.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2609.99,
@@ -533,8 +911,41 @@ const basicStatsData = {
             speed: 119.16,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2640.39,
+            attack: 788.83,
+            defense: 461.0
+        },
+        a2_lv80: {
+            HP: 2669.99,
+            attack: 797.63,
+            defense: 465.8
+        },
+        a3_lv80: {
+            HP: 2700.39,
+            attack: 807.23,
+            defense: 471.4
+        },
+        a4_lv80: {
+            HP: 2730.79,
+            attack: 816.03,
+            defense: 476.2
+        },
+        a5_lv80: {
+            HP: 2760.39,
+            attack: 824.83,
+            defense: 481.8
+        },
+        a6_lv80: {
+            HP: 2790.79,
+            attack: 833.63,
+            defense: 486.6
         }
+
     },
     "아야카": {
         a0_lv1: {
@@ -548,7 +959,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3449.99,
@@ -561,8 +974,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3512.39,
+            attack: 1099.22,
+            defense: 597.05
+        },
+        a2_lv80: {
+            HP: 3573.99,
+            attack: 1119.22,
+            defense: 607.45
+        },
+        a3_lv80: {
+            HP: 3636.39,
+            attack: 1138.42,
+            defense: 618.65
+        },
+        a4_lv80: {
+            HP: 3698.79,
+            attack: 1157.62,
+            defense: 629.05
+        },
+        a5_lv80: {
+            HP: 3760.39,
+            attack: 1177.62,
+            defense: 639.45
+        },
+        a6_lv80: {
+            HP: 3822.79,
+            attack: 1196.82,
+            defense: 649.85
         }
+
     },
     "유우미": {
         a0_lv1: {
@@ -576,7 +1022,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3449.99,
@@ -589,8 +1037,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3512.39,
+            attack: 1129.97,
+            defense: 617.84
+        },
+        a2_lv80: {
+            HP: 3573.99,
+            attack: 1149.97,
+            defense: 628.24
+        },
+        a3_lv80: {
+            HP: 3636.39,
+            attack: 1169.97,
+            defense: 639.44
+        },
+        a4_lv80: {
+            HP: 3698.79,
+            attack: 1189.97,
+            defense: 650.64
+        },
+        a5_lv80: {
+            HP: 3760.39,
+            attack: 1209.97,
+            defense: 661.04
+        },
+        a6_lv80: {
+            HP: 3822.79,
+            attack: 1229.97,
+            defense: 672.24
         }
+
     },
     "유이 YUI": {
         a0_lv1: {
@@ -604,7 +1085,9 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3419.97,
@@ -617,8 +1100,41 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3481.57,
+            attack: 1170.82,
+            defense: 577.06
+        },
+        a2_lv80: {
+            HP: 3543.17,
+            attack: 1191.62,
+            defense: 587.46
+        },
+        a3_lv80: {
+            HP: 3604.77,
+            attack: 1212.42,
+            defense: 597.06
+        },
+        a4_lv80: {
+            HP: 3666.37,
+            attack: 1233.22,
+            defense: 607.46
+        },
+        a5_lv80: {
+            HP: 3727.97,
+            attack: 1253.22,
+            defense: 617.86
+        },
+        a6_lv80: {
+            HP: 3789.57,
+            attack: 1274.02,
+            defense: 628.26
         }
+
     },
     "유스케": {
         a0_lv1: {
@@ -632,7 +1148,9 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3720.03,
@@ -645,8 +1163,41 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3787.23,
+            attack: 834.41,
+            defense: 814.42
+        },
+        a2_lv80: {
+            HP: 3853.63,
+            attack: 849.61,
+            defense: 828.82
+        },
+        a3_lv80: {
+            HP: 3920.83,
+            attack: 864.01,
+            defense: 843.22
+        },
+        a4_lv80: {
+            HP: 3988.03,
+            attack: 879.21,
+            defense: 857.62
+        },
+        a5_lv80: {
+            HP: 4055.23,
+            attack: 893.61,
+            defense: 872.02
+        },
+        a6_lv80: {
+            HP: 4121.63,
+            attack: 908.81,
+            defense: 886.42
         }
+
     },
     "마코토": {
         a0_lv1: {
@@ -660,7 +1211,9 @@ const basicStatsData = {
             speed: 96.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3119.98,
@@ -673,8 +1226,41 @@ const basicStatsData = {
             speed: 96.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3175.98,
+            attack: 1180.78,
+            defense: 692.01
+        },
+        a2_lv80: {
+            HP: 3231.98,
+            attack: 1201.58,
+            defense: 704.81
+        },
+        a3_lv80: {
+            HP: 3288.78,
+            attack: 1222.38,
+            defense: 716.81
+        },
+        a4_lv80: {
+            HP: 3344.78,
+            attack: 1243.18,
+            defense: 728.81
+        },
+        a5_lv80: {
+            HP: 3400.78,
+            attack: 1264.78,
+            defense: 741.61
+        },
+        a6_lv80: {
+            HP: 3456.78,
+            attack: 1285.58,
+            defense: 753.61
         }
+
     },
     "치즈코": {
         a0_lv1: {
@@ -688,7 +1274,9 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2475.37,
@@ -701,8 +1289,41 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2504.17,
+            attack: 796.5,
+            defense: 511.01
+        },
+        a2_lv80: {
+            HP: 2532.17,
+            attack: 806.1,
+            defense: 517.41
+        },
+        a3_lv80: {
+            HP: 2560.97,
+            attack: 814.9,
+            defense: 523.01
+        },
+        a4_lv80: {
+            HP: 2589.77,
+            attack: 823.7,
+            defense: 528.61
+        },
+        a5_lv80: {
+            HP: 2617.77,
+            attack: 833.3,
+            defense: 534.21
+        },
+        a6_lv80: {
+            HP: 2646.57,
+            attack: 842.1,
+            defense: 540.61
         }
+
     },
     "미나미": {
         a0_lv1: {
@@ -716,7 +1337,9 @@ const basicStatsData = {
             speed: 94.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 4140.03,
@@ -729,8 +1352,41 @@ const basicStatsData = {
             speed: 94.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 4214.43,
+            attack: 926.0,
+            defense: 685.35
+        },
+        a2_lv80: {
+            HP: 4288.83,
+            attack: 942.8,
+            defense: 697.35
+        },
+        a3_lv80: {
+            HP: 4363.23,
+            attack: 958.8,
+            defense: 709.35
+        },
+        a4_lv80: {
+            HP: 4438.43,
+            attack: 975.6,
+            defense: 722.15
+        },
+        a5_lv80: {
+            HP: 4512.83,
+            attack: 991.6,
+            defense: 734.15
+        },
+        a6_lv80: {
+            HP: 4587.23,
+            attack: 1008.4,
+            defense: 746.15
         }
+
     },
     "렌": {
         a0_lv1: {
@@ -744,7 +1400,9 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3270.01,
@@ -757,8 +1415,41 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3329.21,
+            attack: 1201.57,
+            defense: 570.4
+        },
+        a2_lv80: {
+            HP: 3387.61,
+            attack: 1222.37,
+            defense: 580.0
+        },
+        a3_lv80: {
+            HP: 3446.81,
+            attack: 1243.97,
+            defense: 590.4
+        },
+        a4_lv80: {
+            HP: 3505.21,
+            attack: 1264.77,
+            defense: 600.0
+        },
+        a5_lv80: {
+            HP: 3564.41,
+            attack: 1286.37,
+            defense: 610.4
+        },
+        a6_lv80: {
+            HP: 3622.81,
+            attack: 1307.17,
+            defense: 620.8
         }
+
     },
     "류지": {
         a0_lv1: {
@@ -772,7 +1463,9 @@ const basicStatsData = {
             speed: 94.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3959.98,
@@ -785,7 +1478,39 @@ const basicStatsData = {
             speed: 94.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 4031.18,
+            attack: 1120.01,
+            defense: 542.95
+        },
+        a2_lv80: {
+            HP: 4102.38,
+            attack: 1140.01,
+            defense: 552.55
+        },
+        a3_lv80: {
+            HP: 4173.58,
+            attack: 1159.21,
+            defense: 562.15
+        },
+        a4_lv80: {
+            HP: 4244.78,
+            attack: 1179.21,
+            defense: 571.75
+        },
+        a5_lv80: {
+            HP: 4316.78,
+            attack: 1199.21,
+            defense: 581.35
+        },
+        a6_lv80: {
+            HP: 4387.98,
+            attack: 1219.21,
+            defense: 590.95
         }
     },
     "안": {
@@ -800,7 +1525,9 @@ const basicStatsData = {
             speed: 94.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3239.99,
@@ -813,8 +1540,41 @@ const basicStatsData = {
             speed: 94.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3298.39,
+            attack: 1231.59,
+            defense: 631.17
+        },
+        a2_lv80: {
+            HP: 3356.79,
+            attack: 1253.19,
+            defense: 642.37
+        },
+        a3_lv80: {
+            HP: 3415.19,
+            attack: 1275.59,
+            defense: 653.57
+        },
+        a4_lv80: {
+            HP: 3473.59,
+            attack: 1297.19,
+            defense: 664.77
+        },
+        a5_lv80: {
+            HP: 3531.99,
+            attack: 1318.79,
+            defense: 675.97
+        },
+        a6_lv80: {
+            HP: 3589.59,
+            attack: 1340.39,
+            defense: 687.17
         }
+
     },
     "모르가나": {
         a0_lv1: {
@@ -828,7 +1588,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3300.03,
@@ -841,8 +1603,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3359.23,
+            attack: 1120.01,
+            defense: 658.69
+        },
+        a2_lv80: {
+            HP: 3419.23,
+            attack: 1140.01,
+            defense: 669.89
+        },
+        a3_lv80: {
+            HP: 3478.43,
+            attack: 1159.21,
+            defense: 681.89
+        },
+        a4_lv80: {
+            HP: 3537.63,
+            attack: 1179.21,
+            defense: 693.09
+        },
+        a5_lv80: {
+            HP: 3596.83,
+            attack: 1199.21,
+            defense: 705.09
+        },
+        a6_lv80: {
+            HP: 3656.83,
+            attack: 1219.21,
+            defense: 716.29
         }
+
     },
     "야오링": {
         a0_lv1: {
@@ -856,7 +1651,9 @@ const basicStatsData = {
             speed: 106.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3180.02,
@@ -869,8 +1666,41 @@ const basicStatsData = {
             speed: 124.89,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3237.62,
+            attack: 1109.98,
+            defense: 644.57
+        },
+        a2_lv80: {
+            HP: 3294.42,
+            attack: 1129.18,
+            defense: 656.57
+        },
+        a3_lv80: {
+            HP: 3352.02,
+            attack: 1149.18,
+            defense: 667.77
+        },
+        a4_lv80: {
+            HP: 3408.82,
+            attack: 1168.38,
+            defense: 678.97
+        },
+        a5_lv80: {
+            HP: 3466.42,
+            attack: 1188.38,
+            defense: 690.17
+        },
+        a6_lv80: {
+            HP: 3523.22,
+            attack: 1207.58,
+            defense: 702.17
         }
+
     },
     "카요": {
         a0_lv1: {
@@ -884,7 +1714,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2655.42,
@@ -897,8 +1729,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2685.82,
+            attack: 796.5,
+            defense: 485.57
+        },
+        a2_lv80: {
+            HP: 2717.02,
+            attack: 806.1,
+            defense: 491.17
+        },
+        a3_lv80: {
+            HP: 2747.42,
+            attack: 814.9,
+            defense: 496.77
+        },
+        a4_lv80: {
+            HP: 2777.82,
+            attack: 823.7,
+            defense: 502.37
+        },
+        a5_lv80: {
+            HP: 2808.22,
+            attack: 833.3,
+            defense: 507.97
+        },
+        a6_lv80: {
+            HP: 2839.42,
+            attack: 842.1,
+            defense: 513.57
         }
+
     },
     "하루나": {
         a0_lv1: {
@@ -912,7 +1777,9 @@ const basicStatsData = {
             speed: 101.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3539.98,
@@ -925,8 +1792,41 @@ const basicStatsData = {
             speed: 101.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3603.98,
+            attack: 1028.42,
+            defense: 672.02
+        },
+        a2_lv80: {
+            HP: 3667.18,
+            attack: 1046.02,
+            defense: 684.02
+        },
+        a3_lv80: {
+            HP: 3731.18,
+            attack: 1064.42,
+            defense: 696.02
+        },
+        a4_lv80: {
+            HP: 3795.18,
+            attack: 1082.82,
+            defense: 707.22
+        },
+        a5_lv80: {
+            HP: 3858.38,
+            attack: 1101.22,
+            defense: 719.22
+        },
+        a6_lv80: {
+            HP: 3922.38,
+            attack: 1118.82,
+            defense: 731.22
         }
+
     },
     "유키미": {
         a0_lv1: {
@@ -940,7 +1840,9 @@ const basicStatsData = {
             speed: 104.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2655.42,
@@ -953,8 +1855,41 @@ const basicStatsData = {
             speed: 104.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2685.82,
+            attack: 644.87,
+            defense: 602.6
+        },
+        a2_lv80: {
+            HP: 2717.02,
+            attack: 652.07,
+            defense: 609.0
+        },
+        a3_lv80: {
+            HP: 2747.42,
+            attack: 660.07,
+            defense: 616.2
+        },
+        a4_lv80: {
+            HP: 2777.82,
+            attack: 667.27,
+            defense: 622.6
+        },
+        a5_lv80: {
+            HP: 2808.22,
+            attack: 674.47,
+            defense: 629.8
+        },
+        a6_lv80: {
+            HP: 2839.42,
+            attack: 681.67,
+            defense: 637.0
         }
+
     },
     "슌": {
         a0_lv1: {
@@ -968,7 +1903,9 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3262.27,
@@ -981,8 +1918,41 @@ const basicStatsData = {
             speed: 102.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3299.87,
+            attack: 644.87,
+            defense: 440.21
+        },
+        a2_lv80: {
+            HP: 3337.47,
+            attack: 652.07,
+            defense: 445.81
+        },
+        a3_lv80: {
+            HP: 3375.07,
+            attack: 660.07,
+            defense: 450.61
+        },
+        a4_lv80: {
+            HP: 3412.67,
+            attack: 667.27,
+            defense: 455.41
+        },
+        a5_lv80: {
+            HP: 3450.27,
+            attack: 674.47,
+            defense: 460.21
+        },
+        a6_lv80: {
+            HP: 3487.87,
+            attack: 681.67,
+            defense: 465.81
         }
+
     },
     "세이지": {
         a0_lv1: {
@@ -996,7 +1966,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2475.37,
@@ -1009,8 +1981,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2504.17,
+            attack: 857.27,
+            defense: 471.03
+        },
+        a2_lv80: {
+            HP: 2532.17,
+            attack: 866.87,
+            defense: 475.83
+        },
+        a3_lv80: {
+            HP: 2560.97,
+            attack: 877.27,
+            defense: 481.43
+        },
+        a4_lv80: {
+            HP: 2589.77,
+            attack: 886.87,
+            defense: 487.03
+        },
+        a5_lv80: {
+            HP: 2617.77,
+            attack: 896.47,
+            defense: 492.63
+        },
+        a6_lv80: {
+            HP: 2646.57,
+            attack: 906.07,
+            defense: 497.43
         }
+
     },
     "키요시": {
         a0_lv1: {
@@ -1024,7 +2029,9 @@ const basicStatsData = {
             speed: 99.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 3195.43,
@@ -1037,8 +2044,41 @@ const basicStatsData = {
             speed: 99.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 3232.23,
+            attack: 683.43,
+            defense: 454.82
+        },
+        a2_lv80: {
+            HP: 3269.03,
+            attack: 690.63,
+            defense: 460.42
+        },
+        a3_lv80: {
+            HP: 3305.83,
+            attack: 698.63,
+            defense: 465.22
+        },
+        a4_lv80: {
+            HP: 3342.63,
+            attack: 706.63,
+            defense: 470.82
+        },
+        a5_lv80: {
+            HP: 3379.43,
+            attack: 714.63,
+            defense: 475.62
+        },
+        a6_lv80: {
+            HP: 3416.23,
+            attack: 721.83,
+            defense: 481.22
         }
+
     },
     "토시야": {
         a0_lv1: {
@@ -1052,7 +2092,9 @@ const basicStatsData = {
             speed: 98.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2565.43,
@@ -1065,8 +2107,41 @@ const basicStatsData = {
             speed: 98.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2595.03,
+            attack: 849.6,
+            defense: 475.61
+        },
+        a2_lv80: {
+            HP: 2624.63,
+            attack: 859.2,
+            defense: 481.21
+        },
+        a3_lv80: {
+            HP: 2654.23,
+            attack: 868.8,
+            defense: 486.01
+        },
+        a4_lv80: {
+            HP: 2683.83,
+            attack: 878.4,
+            defense: 491.61
+        },
+        a5_lv80: {
+            HP: 2713.43,
+            attack: 888.8,
+            defense: 497.21
+        },
+        a6_lv80: {
+            HP: 2743.03,
+            attack: 898.4,
+            defense: 502.81
         }
+
     },
     "토모코": {
         a0_lv1: {
@@ -1080,7 +2155,9 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2677.7,
@@ -1093,7 +2170,39 @@ const basicStatsData = {
             speed: 103.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2708.9,
+            attack: 758.81,
+            defense: 491.02
+        },
+        a2_lv80: {
+            HP: 2739.3,
+            attack: 767.61,
+            defense: 496.62
+        },
+        a3_lv80: {
+            HP: 2770.5,
+            attack: 775.61,
+            defense: 502.22
+        },
+        a4_lv80: {
+            HP: 2800.9,
+            attack: 784.41,
+            defense: 507.82
+        },
+        a5_lv80: {
+            HP: 2832.1,
+            attack: 793.21,
+            defense: 513.42
+        },
+        a6_lv80: {
+            HP: 2863.3,
+            attack: 802.01,
+            defense: 519.02
         }
     },
     "미유": {
@@ -1108,7 +2217,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2655.42,
@@ -1121,8 +2232,41 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2685.82,
+            attack: 735.73,
+            defense: 546.41
+        },
+        a2_lv80: {
+            HP: 2717.02,
+            attack: 744.53,
+            defense: 552.81
+        },
+        a3_lv80: {
+            HP: 2747.42,
+            attack: 752.53,
+            defense: 558.41
+        },
+        a4_lv80: {
+            HP: 2777.82,
+            attack: 761.33,
+            defense: 564.81
+        },
+        a5_lv80: {
+            HP: 2808.22,
+            attack: 769.33,
+            defense: 571.21
+        },
+        a6_lv80: {
+            HP: 2839.42,
+            attack: 778.13,
+            defense: 577.61
         }
+
     },
 
     "모토하": {
@@ -1137,7 +2281,9 @@ const basicStatsData = {
             speed: 98.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2430.01,
@@ -1150,8 +2296,41 @@ const basicStatsData = {
             speed: 98.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2458.01,
+            attack: 834.99,
+            defense: 520.97
+        },
+        a2_lv80: {
+            HP: 2486.01,
+            attack: 844.59,
+            defense: 527.37
+        },
+        a3_lv80: {
+            HP: 2514.01,
+            attack: 854.19,
+            defense: 532.97
+        },
+        a4_lv80: {
+            HP: 2542.01,
+            attack: 863.79,
+            defense: 539.37
+        },
+        a5_lv80: {
+            HP: 2570.01,
+            attack: 873.39,
+            defense: 544.97
+        },
+        a6_lv80: {
+            HP: 2598.01,
+            attack: 882.19,
+            defense: 551.37
         }
+
     },
     "몽타뉴": {
         a0_lv1: {
@@ -1165,7 +2344,9 @@ const basicStatsData = {
             speed: 99.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2452.29,
@@ -1178,8 +2359,41 @@ const basicStatsData = {
             speed: 99.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2480.29,
+            attack: 871.88,
+            defense: 471.03
+        },
+        a2_lv80: {
+            HP: 2509.09,
+            attack: 882.28,
+            defense: 475.83
+        },
+        a3_lv80: {
+            HP: 2537.09,
+            attack: 891.88,
+            defense: 481.43
+        },
+        a4_lv80: {
+            HP: 2565.09,
+            attack: 902.28,
+            defense: 487.03
+        },
+        a5_lv80: {
+            HP: 2593.89,
+            attack: 911.88,
+            defense: 492.63
+        },
+        a6_lv80: {
+            HP: 2621.89,
+            attack: 922.28,
+            defense: 497.43
         }
+
     },
     "루페르": {
         a0_lv1: {
@@ -1193,7 +2407,9 @@ const basicStatsData = {
             speed: 95.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2812.32,
@@ -1206,8 +2422,41 @@ const basicStatsData = {
             speed: 95.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2845.12,
+            attack: 796.5,
+            defense: 480.99
+        },
+        a2_lv80: {
+            HP: 2877.12,
+            attack: 806.1,
+            defense: 486.59
+        },
+        a3_lv80: {
+            HP: 2909.92,
+            attack: 814.9,
+            defense: 492.19
+        },
+        a4_lv80: {
+            HP: 2941.92,
+            attack: 823.7,
+            defense: 496.99
+        },
+        a5_lv80: {
+            HP: 2974.72,
+            attack: 833.3,
+            defense: 502.59
+        },
+        a6_lv80: {
+            HP: 3006.72,
+            attack: 842.1,
+            defense: 508.19
         }
+
     },
     "레오": {
         a0_lv1: {
@@ -1221,7 +2470,9 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 0,
+            defense_per: 0,
+            HP_per: 0
         },
         a0_lv80: {
             HP: 2609.99,
@@ -1234,7 +2485,39 @@ const basicStatsData = {
             speed: 100.0,
             sp_recover: 0,
             pierce_rate: 0,
-            attack_mult: 0
+            attack_per: 29,
+            defense_per: 0,
+            HP_per: 0
+        },
+        a1_lv80: {
+            HP: 2640.39,
+            attack: 788.83,
+            defense: 495.6
+        },
+        a2_lv80: {
+            HP: 2669.99,
+            attack: 797.63,
+            defense: 501.2
+        },
+        a3_lv80: {
+            HP: 2700.39,
+            attack: 807.23,
+            defense: 506.8
+        },
+        a4_lv80: {
+            HP: 2730.79,
+            attack: 816.03,
+            defense: 512.4
+        },
+        a5_lv80: {
+            HP: 2760.39,
+            attack: 824.83,
+            defense: 518.0
+        },
+        a6_lv80: {
+            HP: 2790.79,
+            attack: 833.63,
+            defense: 523.6
         }
     }
 };

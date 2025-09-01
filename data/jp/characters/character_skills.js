@@ -566,7 +566,7 @@ const jpCharacterSkillsData = {
             "name": "ステータス強化",
             "element": "패시브",
             "type":"패시브",
-            "description": "富山のステータスの15%分、味方全体のステータスを上昇させる。"
+            "description": "理子のステータスの15%分、味方全体のステータスを上昇させる。"
         },
         "passive1": {
             "name": "蝶の夢",

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>돌파(의식) Lv80 계산기 — 4성/5성 성장률 버전</title>
+<style>
+  :root{ --bg:#0e1117;--card:#141927;--text:#e6edf3;--muted:#93a1c8;--line:#1f2740;--accent:#6aa8ff; }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,'Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+  h1{font-size:22px;margin:0 0 14px}
+  .container{max-width:1100px;margin:0 auto;display:grid;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+  .row{display:grid;gap:12px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+  input,select,button{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #2a3356;background:#0c1120;color:var(--text);font-size:14px;outline:none}
+  select{cursor:pointer}
+  button{background:linear-gradient(180deg,#225dff,#1b4ddb);border:0;font-weight:600;cursor:pointer}
+  button.secondary{background:#0c1120;border:1px solid #2a3356}
+  .grid{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px;background:#0c1020;border:1px solid #202846;border-radius:12px;overflow:hidden}
+  .grid th,.grid td{padding:10px 12px;border-bottom:1px solid #1a2242}
+  .grid th{background:#111633;color:#a9b7e6;text-align:center}
+  .grid td{text-align:right}
+  .grid tr:last-child td{border-bottom:0}
+  .muted{color:var(--muted);font-size:12px}
+  .badge{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid #2a3356;background:#111633;color:#a9b7e6;font-size:12px}
+  .split{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+  @media (max-width:980px){.split{grid-template-columns:1fr}.cols-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>돌파(의식) Lv80 계산기 — 4성/5성 성장률 버전</h1>
+
+    <div class="card">
+      <div class="row cols-3">
+        <div>
+          <h3 style="margin:6px 0 10px">① Lv1 (0돌·잠재력0) 기준치</h3>
+          <div class="row cols-3">
+            <div><label>HP (Lv1)</label><input id="hp1" type="number" step="0.01" placeholder="예: 301.71"></div>
+            <div><label>ATK (Lv1)</label><input id="atk1" type="number" step="0.01" placeholder="예: 103.24"></div>
+            <div><label>DEF (Lv1)</label><input id="def1" type="number" step="0.01" placeholder="예: 49.84"></div>
+          </div>
+          <p class="muted" style="margin-top:8px">g = Lv1×9/89, J = Lv1×계수 (기본 0.32105), 결과 표시는 소수 자리 반올림</p>
+        </div>
+
+        <div>
+          <h3 style="margin:6px 0 10px">② Lv80 @ 돌파 n (앵커)</h3>
+          <div class="row cols-2" style="align-items:end">
+            <div>
+              <label>돌파 n (0~6)</label>
+              <select id="breakN">
+                <option value="0" selected>0</option>
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+              </select>
+            </div>
+            <div class="muted">Lv80은 잠재력 경계 7회(+7·J)를 이미 포함합니다.</div>
+          </div>
+          <div class="row cols-3" style="margin-top:6px">
+            <div><label>HP (Lv80 @ n)</label><input id="hp80"  type="number" step="0.01" placeholder="예: 3390.02"></div>
+            <div><label>ATK (Lv80 @ n)</label><input id="atk80" type="number" step="0.01" placeholder="예: 1159.98"></div>
+            <div><label>DEF (Lv80 @ n)</label><input id="def80" type="number" step="0.01" placeholder="예: 560.00"></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin:6px 0 10px">표시/보정 옵션</h3>
+          <div class="row">
+            <div>
+              <label>반올림 모드</label>
+              <select id="roundMode">
+                <option value="round" selected>반올림 (소수 둘째)</option>
+                <option value="floor">버림 (소수 둘째)</option>
+                <option value="ceil">올림 (소수 둘째)</option>
+              </select>
+            </div>
+            <div>
+              <label>소수 자리수</label>
+              <select id="decimals">
+                <option value="2" selected>둘째 자리</option>
+                <option value="1">첫째 자리</option>
+                <option value="0">정수</option>
+                <option value="3">셋째 자리</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <input id="useCalib" type="checkbox" checked style="width:auto">
+              <label for="useCalib" style="margin:0">앵커 보정(δ) 적용</label>
+            </div>
+          </div>
+          <div class="row" style="margin-top:8px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <input id="autoC" type="checkbox" style="width:auto">
+              <label for="autoC" style="margin:0">자동 C 추정 (n>0 권장)</label>
+            </div>
+            <div class="row cols-3">
+              <div><label>J 계수</label><input id="jCoeff" type="number" step="0.00001" value="0.32105"></div>
+              <div><label>C_HP (p당)</label><input id="c_hp" type="number" step="0.0001" value="0"></div>
+              <div><label>C_ATK (p당)</label><input id="c_atk" type="number" step="0.0001" value="0"></div>
+              <div><label>C_DEF (p당)</label><input id="c_def" type="number" step="0.0001" value="0"></div>
+            </div>
+            <div class="row cols-2">
+              <div>
+                <label>등급</label>
+                <select id="rarity">
+                  <option value="5" selected>5성 (돌파당 +2.5%)</option>
+                  <option value="4">4성 (돌파당 +1.5%)</option>
+                </select>
+              </div>
+              <div class="muted">등급에 따라 성장률 r이 달라집니다 (5성 r=0.025, 4성 r=0.015).</div>
+            </div>
+            <div class="muted">J = Lv1 × (계수). 보정 상수(C)는 켜지 않으면 0으로 동작합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:14px">
+        <button id="calcBtn">계산하기</button>
+        <button id="clearBtn" class="secondary">입력 지우기</button>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <h3 style="margin:6px 0 10px">의식(돌파) 0~6 결과 · Lv80</h3>
+        <table class="grid" id="resultTable">
+          <thead><tr><th>의식</th><th>HP</th><th>ATK</th><th>DEF</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="muted">※ 내부 엔진: 레벨마다 증가 후 반올림(둘째 자리) + 경계(11,21,31,41,51,61,71)에서 J를 더하고 반올림.</div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:6px 0 10px">사용한 파라미터</h3>
+        <div class="badge">g = Lv1×9/89, J = Lv1×(계수), r = 등급별 성장률, C = p당 고정 상수</div>
+        <table class="grid" style="margin-top:8px">
+          <thead><tr><th>항목</th><th>HP</th><th>ATK</th><th>DEF</th></tr></thead>
+          <tbody>
+            <tr><td>g (0돌 기준)</td><td id="g_hp"  style="text-align:right"></td><td id="g_atk" style="text-align:right"></td><td id="g_def" style="text-align:right"></td></tr>
+            <tr><td>J</td><td id="j_hp" style="text-align:right"></td><td id="j_atk" style="text-align:right"></td><td id="j_def" style="text-align:right"></td></tr>
+            <tr><td>r (돌파당)</td><td id="r_hp" style="text-align:right"></td><td id="r_atk" style="text-align:right"></td><td id="r_def" style="text-align:right"></td></tr>
+            <tr><td>C (p당)</td><td id="c_out_hp" style="text-align:right"></td><td id="c_out_atk" style="text-align:right"></td><td id="c_out_def" style="text-align:right"></td></tr>
+            <tr><td>δ (앵커 보정)</td><td id="d_hp" style="text-align:right"></td><td id="d_atk" style="text-align:right"></td><td id="d_def" style="text-align:right"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+
+  function roundByMode(x, decimals, mode){
+    const f = Math.pow(10, decimals);
+    if (mode==='floor') return Math.floor(x*f)/f;
+    if (mode==='ceil')  return Math.ceil(x*f)/f;
+    return Math.round(x*f)/f; // default round
+  }
+  const fmt = (v,d)=> Number.isFinite(v)? v.toFixed(d) : '—';
+
+  // 내부 엔진: 소수 둘째 자리 누적 반올림 + 잠재력 경계 J 추가
+  const round2 = (x)=> Math.round(x*100)/100;
+  function simulate80(lv1, pEff, jCoeff){
+    const g0 = lv1 * (9/89);           // 0돌 레벨당 증가량(연속)
+    const J  = round2(lv1 * jCoeff);   // 점프값(고정, 2자리 반올림)
+    let v = round2(lv1);
+    const inc = g0 * (1 + 0.025 * pEff); // pEff는 성장률 보정이 적용된 실수값 가능
+    for (let L=2; L<=80; L++){
+      v = round2(v + inc);
+      if (L===11||L===21||L===31||L===41||L===51||L===61||L===71){
+        v = round2(v + J);
+      }
+    }
+    return v;                          // 내부는 항상 두 자리
+  }
+
+  function calc(){
+    const hp1  = parseFloat($('#hp1').value);
+    const atk1 = parseFloat($('#atk1').value);
+    const def1 = parseFloat($('#def1').value);
+
+    const n    = parseInt($('#breakN').value,10);
+    const hp80 = parseFloat($('#hp80').value);
+    const atk80= parseFloat($('#atk80').value);
+    const def80= parseFloat($('#def80').value);
+
+    const mode = $('#roundMode').value;
+    const decimals = parseInt($('#decimals').value,10);
+    const useCalib = $('#useCalib').checked;
+    const autoC = $('#autoC').checked;
+
+    const jCoeff = parseFloat($('#jCoeff').value) || 0.32105;
+    const rarity = ($('#rarity') && $('#rarity').value) || '5';
+    const growthRate = (rarity === '4') ? 0.015 : 0.025; // 4성 1.5%, 5성 2.5%
+    const scale = growthRate / 0.025; // p효과 스케일링 (기본 엔진 0.025 대비)
+
+    if ([hp1,atk1,def1,hp80,atk80,def80].some(v=>!isFinite(v)) || !(n>=0 && n<=6)){
+      alert('입력값을 확인해 주세요. (돌파 n: 0~6)');
+      return;
+    }
+
+    // 기본 파라미터
+    const gHP  = hp1  * (9/89);
+    const gATK = atk1 * (9/89);
+    const gDEF = def1 * (9/89);
+    const JHP  = round2(hp1  * jCoeff);
+    const JATK = round2(atk1 * jCoeff);
+    const JDEF = round2(def1 * jCoeff);
+
+    // 앵커 예측 @ n (시뮬레이션, 성장률 반영)
+    const predHPn0  = simulate80(hp1,  n*scale, jCoeff);
+    const predATKn0 = simulate80(atk1, n*scale, jCoeff);
+    const predDEFn0 = simulate80(def1,  n*scale, jCoeff);
+
+    // C 상수 결정
+    let C_HP, C_ATK, C_DEF;
+    if (autoC && n>0){
+      C_HP  = (hp80  - predHPn0 )/n;
+      C_ATK = (atk80 - predATKn0)/n;
+      C_DEF = (def80 - predDEFn0)/n;
+    } else {
+      C_HP  = parseFloat($('#c_hp').value)  || 0;
+      C_ATK = parseFloat($('#c_atk').value) || 0;
+      C_DEF = parseFloat($('#c_def').value) || 0;
+    }
+
+    // δ 앵커 보정: C 반영 후 표시값 기준 차이를 흡수
+    const predHPn  = predHPn0  + C_HP * n;
+    const predATKn = predATKn0 + C_ATK* n;
+    const predDEFn = predDEFn0 + C_DEF* n;
+
+    const dHP  = useCalib ? (hp80  - roundByMode(predHPn , decimals, mode)) : 0;
+    const dATK = useCalib ? (atk80 - roundByMode(predATKn, decimals, mode)) : 0;
+    const dDEF = useCalib ? (def80 - roundByMode(predDEFn, decimals, mode)) : 0;
+
+    // 결과 테이블: 의식 0..6 (성장률 반영)
+    const tbody = $('#resultTable tbody');
+    tbody.innerHTML = '';
+    for (let k=0;k<=6;k++){
+      const rawHP  = simulate80(hp1,  k*scale, jCoeff) + C_HP * k  + dHP;
+      const rawATK = simulate80(atk1, k*scale, jCoeff) + C_ATK* k  + dATK;
+      const rawDEF = simulate80(def1,  k*scale, jCoeff) + C_DEF * k  + dDEF;
+
+      const hp  = roundByMode(rawHP , decimals, mode);
+      const atk = roundByMode(rawATK, decimals, mode);
+      const def = roundByMode(rawDEF, decimals, mode);
+
+      const tr = document.createElement('tr');
+      const td = (txt,align='right')=>{const x=document.createElement('td');x.textContent=txt;x.style.textAlign=align;return x;};
+      tr.appendChild(td(k.toString(),'center'));
+      tr.appendChild(td(fmt(hp,decimals)));
+      tr.appendChild(td(fmt(atk,decimals)));
+      tr.appendChild(td(fmt(def,decimals)));
+      tbody.appendChild(tr);
+    }
+
+    // 파라미터 표시
+    $('#g_hp').textContent  = fmt(roundByMode(gHP , decimals, mode), decimals);
+    $('#g_atk').textContent = fmt(roundByMode(gATK, decimals, mode), decimals);
+    $('#g_def').textContent = fmt(roundByMode(gDEF, decimals, mode), decimals);
+
+    $('#j_hp').textContent  = fmt(roundByMode(JHP , decimals, mode), decimals);
+    $('#j_atk').textContent = fmt(roundByMode(JATK, decimals, mode), decimals);
+    $('#j_def').textContent = fmt(roundByMode(JDEF, decimals, mode), decimals);
+
+    const rPct = (growthRate*100).toFixed(2) + '%';
+    $('#r_hp').textContent  = rPct;
+    $('#r_atk').textContent = rPct;
+    $('#r_def').textContent = rPct;
+
+    $('#c_out_hp').textContent  = fmt(roundByMode(C_HP , decimals, mode), decimals);
+    $('#c_out_atk').textContent = fmt(roundByMode(C_ATK, decimals, mode), decimals);
+    $('#c_out_def').textContent = fmt(roundByMode(C_DEF, decimals, mode), decimals);
+
+    $('#d_hp').textContent  = useCalib ? fmt(roundByMode(dHP , decimals, mode), decimals) : '0';
+    $('#d_atk').textContent = useCalib ? fmt(roundByMode(dATK, decimals, mode), decimals) : '0';
+    $('#d_def').textContent = useCalib ? fmt(roundByMode(dDEF, decimals, mode), decimals) : '0';
+  }
+
+  function clearAll(){
+    ['#hp1','#atk1','#def1','#hp80','#atk80','#def80'].forEach(id=>$(id).value='');
+    $('#breakN').value='0'; $('#useCalib').checked=true; $('#autoC').checked=false; $('#rarity').value='5';
+    $('#resultTable tbody').innerHTML='';
+    ['#g_hp','#g_atk','#g_def','#j_hp','#j_atk','#j_def','#r_hp','#r_atk','#r_def','#c_out_hp','#c_out_atk','#c_out_def','#d_hp','#d_atk','#d_def'].forEach(id=>$(id).textContent='');
+  }
+
+  $('#calcBtn').addEventListener('click', calc);
+  $('#clearBtn').addEventListener('click', clearAll);
+})();
+</script>
+</body>
+</html>

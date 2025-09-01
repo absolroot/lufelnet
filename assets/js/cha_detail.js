@@ -953,14 +953,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 costParts.push(`HP ${skill.hp}%`);
             }
             // 캐릭터 직업이 해명인 경우 '턴' 대신 '행동'
+            const currentLang = getCurrentLanguage();
+            // 직업에 따라 기본 라벨 세트 선택
+            const labelSet = (characterInfo.position === '해명')
+                ? { kr: '행동', en: 'Action', jp: '行動' }
+                : { kr: '턴',   en: 'Turn',   jp: 'ターン' };
             if (skill.cool && skill.cool > 0) {
-                if (characterInfo.position === '해명') {
-                    costParts.push(`${skill.cool}행동`);
-                } else {
-                    costParts.push(`${skill.cool}턴`);
-                }
+                const label = labelSet[currentLang] || labelSet.kr;
+                costParts.push(`${skill.cool}${label}`);
             }
-
             costText = costParts.join(' / ');
             
             // highlight 스킬의 경우 name이 없을 경우 "HIGHLIGHT"로 이름 표시

@@ -891,7 +891,7 @@ const characterData = {
             "LV12": false,
             "LV12+5": false,
             "LV13": "SP회복 450.1% , 크리티컬 효과 418%",
-            "LV13+5": "SP회복 480.0% (33 사이클) , 크리티컬 효과 448%"
+            "LV13+5": "SP회복 450.1% , 크리티컬 효과 448%"
         },
         "battle_plus_stats": "<b>SP회복</b>/ 기본 스탯: 188.5% / 의식 0: 60% / 마이팰리스: 5% <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45% / 마이팰리스: 2%",
         "battle_plus_stats_en": "<b>SP recovery</b>/ Base Stat: 188.5% / Awareness 0: 60% / MyPalace: 5% <b>Crit Mult</b>/ Navi Power / Passive: 84% / Creation+Worry: 45% / MyPalace: 2%",
@@ -1281,7 +1281,7 @@ const characterData = {
         "release_order": 17,
         "persona": "테르프시코레",
         "persona_en": "Terpsichore",
-        "persona_jp": "テルプシコレ",
+        "persona_jp": "テルプシコレー",
         "name": "코토네 몽타뉴·백조",
         "name_en": "Montagne Kotone·Swan",
         "name_jp": "琴音 モンターニュ・スワン",
@@ -2051,7 +2051,7 @@ const characterData = {
         "release_order": 12,
         "persona": "프로심나",
         "persona_en": "Prosymna",
-        "persona_jp": "プロシュムナ",
+        "persona_jp": "プロシムナ",
         "name": "노게 토모코·여름",
         "name_en": "Tomoko Noge·Summer",
         "name_jp": "野毛 朋子 夏",

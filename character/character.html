@@ -878,7 +878,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const characterReviewData = characterReview[characterName];
             const ReviewCard = document.querySelector('.review-card');
             if (!characterReviewData || !characterReviewData.review) {
-                reviewContainer.innerHTML = '<p style="color: #888; font-style: italic;">이 캐릭터에 대한 리뷰가 아직 작성되지 않았습니다.</p>';
+                reviewContainer.innerHTML = '<p style="color: #888; font-style: italic;"></p>';
                 reviewContainer.style.display = 'none';
                 if (ReviewCard) ReviewCard.style.display = 'none';
             } else {
@@ -888,7 +888,22 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 } else if (currentLang === 'jp' && characterReviewData.review_jp) {
                     currentReview = characterReviewData.review_jp;
                 }
-                const htmlContent = marked.parse(currentReview);
+                // 변환: 전각/유사 별표 → ASCII *, 제로폭/비가시/방향 제어/소프트하이픈/NBSP 제거 (언어 선택 이후 적용)
+                const normalized = currentReview
+                  .replace(/\uFF0A/g, '*')    // 전각 별표 ＊ → *
+                  .replace(/\u2217/g, '*')    // ∗ → *
+                  .replace(/[\u200B-\u200D\uFEFF]/g, '') // ZWSP/ZWNJ/ZWJ/ZWNBSP 제거
+                  .replace(/[\u200E\u200F]/g, '')          // LRM/RLM 제거
+                  .replace(/[\u202A-\u202E]/g, '')         // 방향 제어 문자 제거
+                  .replace(/\u00AD/g, '')                   // Soft hyphen 제거
+                  .replace(/\u2060/g, '')                   // WORD JOINER 제거
+                  .replace(/\u00A0/g, ' ');                 // NBSP → 공백
+
+                let htmlContent = marked.parse(normalized);
+                // 폴백: 파싱 후에도 **...**가 그대로 남았으면 강제 <strong> 치환 (이미 파싱된 경우엔 영향 없음)
+                if (htmlContent.includes('**')) {
+                  htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                }
                 reviewContainer.innerHTML = htmlContent;
             }
         } catch(e) { console.warn('[SAFE:render-review]', e); }
@@ -2024,7 +2039,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 '테우르기아 충전' : 'テウルギアャージ',
                 '테우르기아' : 'テウルギア',
                 '아이템' : 'アイテム',
-                '미정' : '未定'
+                '미정' : '未定',
+                '가드' : 'ダウン値', // 다운 값,
+                '벨벳 룸의 시련': 'ベルベットルームの試練'
             }
         };
 

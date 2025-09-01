@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         try { if (typeof loadCharacterList === 'function') await loadCharacterList(); } catch(_) {}
 
         // 택틱 예시 카드 텍스트 로컬라이즈 및 링크 구성
-        const titleMap = { kr: '택틱 도서관', en: 'Tactic Library', jp: 'タクティック図書館' };
+        const titleMap = { kr: '택틱 도서관', en: 'Tactic Library', jp: 'タクティクスライブラリー' };
         const moreMap  = { kr: '+ 더보기', en: '+ More', jp: '+ もっと見る' };
         const titleEl = document.getElementById('tactic-examples-title');
         const moreEl  = document.getElementById('tactic-examples-more');

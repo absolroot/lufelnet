@@ -162,8 +162,8 @@
       // Speed는 상수(그대로 숫자)
       setValueRow('.stats-main .stats-grid', 4, lv1.speed ?? '');
       // 두개는 뒤에 % 붙이기
-      setValueRow('.stats-main .stats-grid', 5, lv1.crit_rate+'%' ?? '');
-      setValueRow('.stats-main .stats-grid', 6, lv1.crit_mult+'%' ?? '');
+      //setValueRow('.stats-main .stats-grid', 5, lv1.crit_rate+'%' ?? '');
+      //setValueRow('.stats-main .stats-grid', 6, lv1.crit_mult+'%' ?? '');
   
       // 우측: 잠재력 
       const a7 = statObj.awake7 || {};

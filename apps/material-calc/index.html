@@ -19,6 +19,9 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         <h1 id="plannerTitle">Progression Calculator</h1>
         <div class="planner-toolbar">
             <button id="resetBtn" class="primary-btn" style="padding: 8px 10px;">초기화</button>
+            <!-- Backup / Load buttons (hidden on <=768px) -->
+            <button id="backupBtn" class="primary-btn desktop-only" style="padding: 8px 10px;">Backup</button>
+            <button id="loadBtn" class="primary-btn desktop-only" style="padding: 8px 10px;">Load</button>
             <button id="addCharacterBtn" class="primary-btn">+ <span data-lang-key="addCharacter">캐릭터 추가</span></button>     
             <!--
             <label class="spoiler-toggle" id="spoilerContainer" style="display:none;">
@@ -148,6 +151,9 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
     <div style="height: 12px;"></div>
     <!---->
     <style>
+        /* Hide backup/load on mobile */
+        .desktop-only { display:inline-flex; }
+        @media (max-width: 768px) { .desktop-only { display:none !important; } }
         @media (max-width: 1440px) {
             .AD-bottom {
                 display: none !important;
@@ -195,8 +201,24 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         });
     }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사
     </script>
-</div>
+    </div>
 
+    <!-- 불러오기 확인 모달 -->
+    <div id="loadConfirmModal" class="modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="loadConfirmTitle">Load Confirm</h3>
+                <button class="icon-btn close" data-close>✕</button>
+            </div>
+            <div class="modal-body">
+                <p id="loadConfirmMessage">Your current inventory will be replaced. Continue?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="loadYesBtn" class="primary-btn">Yes</button>
+                <button id="loadNoBtn" class="secondary-btn">No</button>
+            </div>
+        </div>
+    </div>
 
     <!-- 캐릭터 선택 모달 -->
     <div id="characterSelectModal" class="modal" aria-hidden="true">
@@ -442,6 +464,8 @@ function updateSEOContent() {
 
 </script>
 
+<!-- Export/Import handler -->
+<script src="{{ site.baseurl }}/assets/js/material-planner-export.js?v={{ site.time | date: '%s' }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('material-calc');

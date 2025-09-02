@@ -1307,7 +1307,99 @@
         }
     }
 
-    window.MaterialPlanner = { init: boot };
+    window.MaterialPlanner = {
+        init: boot,
+        // 외부 백업/복구용 최소 공개 API
+        exportState: function(){
+            try{
+                return {
+                    lang: STATE.lang,
+                    inventory: { ...STATE.inventory },
+                    plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include:(p.include!==false) }))
+                };
+            }catch(_){ return null; }
+        },
+        // 전체 상태 백업 (언어, 정렬, 스포일러, 인벤토리, 플랜)
+        exportFullState: function(){
+            try{
+                return {
+                    lang: STATE.lang,
+                    sortKey: STATE.sortKey,
+                    spoiler: !!STATE.spoiler,
+                    inventory: { ...STATE.inventory },
+                    plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include:(p.include!==false) }))
+                };
+            }catch(_){ return null; }
+        },
+        importInventory: function(inv){
+            if(!inv || typeof inv !== 'object') return false;
+            // 허용된 키만 복사
+            const allowed = Object.keys(STATE.inventory);
+            for(const k of allowed){
+                if(Object.prototype.hasOwnProperty.call(inv, k)){
+                    const v = Number(inv[k] ?? 0);
+                    STATE.inventory[k] = isNaN(v) ? 0 : v;
+                }
+            }
+            // 재계산 및 저장
+            recalcTotals();
+            renderSummary();
+            renderPlans();
+            saveState();
+            return true;
+        },
+        // 전체 상태 복원
+        importFullState: function(full){
+            try{
+                if(!full || typeof full !== 'object') return false;
+                // 언어
+                if(typeof full.lang === 'string') STATE.lang = full.lang;
+                // 정렬/스포일러
+                if(typeof full.sortKey === 'string') STATE.sortKey = full.sortKey;
+                if(typeof full.spoiler === 'boolean') STATE.spoiler = full.spoiler;
+                // 인벤토리
+                if(full.inventory && typeof full.inventory === 'object'){
+                    const allowed = Object.keys(STATE.inventory);
+                    for(const k of allowed){
+                        if(Object.prototype.hasOwnProperty.call(full.inventory, k)){
+                            const v = Number(full.inventory[k] ?? 0);
+                            STATE.inventory[k] = isNaN(v) ? 0 : v;
+                        }
+                    }
+                }
+                // 플랜
+                if(Array.isArray(full.plans)){
+                    // characterData가 필요한 정규화/희귀도 보정을 위해 사전 로드 보장
+                    // (boot 단계에서 이미 한 번 로드하지만, 안전하게 재시도)
+                    // 동기 컨텍스트이므로 await는 사용하지 않음. 이미 로드된 데이터로 진행.
+                    STATE.plans = full.plans
+                        .filter(p=>p && typeof p.name==='string' && p.inputs)
+                        .map(sp=>{
+                            const nameKr = (typeof resolveCharacterKey==='function') ? resolveCharacterKey(sp.name) : sp.name;
+                            const rarity = (sp.rarity || STATE.characterData?.[nameKr]?.rarity || 5);
+                            const materials = estimateMaterials(sp.inputs, nameKr);
+                            return {
+                                id: Date.now()+ '_' + Math.random().toString(36).slice(2,7),
+                                name: nameKr,
+                                rarity,
+                                image: `${BASE_URL}/assets/img/tier/${nameKr}.webp`,
+                                inputs: sp.inputs,
+                                materials,
+                                include: (sp.include !== false)
+                            };
+                        });
+                }
+                // 재계산 및 렌더
+                recalcTotals();
+                renderSummary();
+                renderPlans();
+                // 저장 (로컬키는 기존 구조 유지)
+                saveState();
+                return true;
+            }catch(_){ return false; }
+        },
+        getLang: function(){ return STATE.lang; }
+    };
     
     // ===== 재고(보유량) 모달 =====
     async function openInventoryModal(type, focusKey){

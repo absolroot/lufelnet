@@ -815,7 +815,7 @@ const characterData = {
         "limit": false,
         "role": "ONE MORE/총공격 서포터",
         "role_en": "One More/All-out Attack Support",
-        "role_jp": "ワンマイナー/総攻撃サポート",
+        "role_jp": "1More/総攻撃サポート",
         "tag":"방어력 감소, 받는 대미지 증가, 대미지보너스, 해명의 힘",
         "color": "#dc143c",
         "main_revelation": ["결심"],

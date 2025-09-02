@@ -289,3 +289,9 @@ html { overflow-y: scroll; /* 항상 세로 스크롤바 표시 */}
 
 .language-notice p { margin: 0; }
 
+/* 네비 오픈 시 배경 스크롤 잠금 (모바일) */
+html.nav-locked,
+body.nav-locked { overflow: hidden !important; overscroll-behavior: none; }
+
+/* iOS 대응: body를 fixed로 만들 때 레이아웃 깨짐 방지용 안전 설정은 JS에서 처리 */
+

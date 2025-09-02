@@ -238,6 +238,8 @@ class Navigation {
                 </a>
                 ` : ''}
                 
+                <div class="nav-spacer"></div>
+                <div class="nav-bg"></div>
                 <!-- language selector -->
                 <div class="language-selector-container">
                     <div class="custom-select">
@@ -389,6 +391,9 @@ class Navigation {
         
         // 스크롤 이벤트 처리
         let lastScroll = 0;
+        // 모바일 바디 스크롤 잠금용 저장 변수
+        let scrollPosition = 0;
+
         window.addEventListener('scroll', () => {
             if (window.innerWidth <= 1440) {  // 1440px under
                 const currentScroll = window.pageYOffset;
@@ -414,14 +419,34 @@ class Navigation {
             nav.classList.toggle('active');
             header.classList.toggle('active');
 
-
-
             if (willOpen) {
                 // iOS에서 가끔 scrollTop=0이 먹기 전에 그려져서 두 번 처리
                 nav.style.webkitOverflowScrolling = 'auto';
                 nav.scrollTop = 0;
                 void nav.offsetHeight;                       // 강제 리플로우
                 nav.style.webkitOverflowScrolling = 'touch';
+
+                // 768px 이하에서 배경 스크롤 잠금 (CSS와 임계값 일치)
+                if (window.innerWidth <= 768) {
+                    scrollPosition = window.scrollY || window.pageYOffset;
+                    document.documentElement.classList.add('nav-locked');
+                    document.body.classList.add('nav-locked');
+                    // 현재 스크롤 위치 고정
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                }
+            } else {
+                // 닫을 때 잠금 해제 (모바일 전용, 768px 이하)
+                if (window.innerWidth <= 768) {
+                    document.documentElement.classList.remove('nav-locked');
+                    document.body.classList.remove('nav-locked');
+                    // 원래 위치로 복원
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    window.scrollTo(0, scrollPosition || 0);
+                }
             }
         });
 
@@ -433,10 +458,19 @@ class Navigation {
                     const hamburgerBtn = document.querySelector('.hamburger-btn');
                     nav.classList.remove('active');
                     hamburgerBtn.classList.remove('active');
+                    // 잠금 해제는 모바일(<=1200px)에서만
+                    if (window.innerWidth <= 1200) {
+                        document.documentElement.classList.remove('nav-locked');
+                        document.body.classList.remove('nav-locked');
+                        document.body.style.position = '';
+                        document.body.style.top = '';
+                        document.body.style.width = '';
+                        window.scrollTo(0, scrollPosition || 0);
+                    }
                 }
             });
         });
-        
+
         // 메인 메뉴 클릭 이벤트 처리
         document.querySelectorAll('.has-submenu .nav-main-item').forEach(item => {
             item.addEventListener('click', function(e) {

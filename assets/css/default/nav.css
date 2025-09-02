@@ -22,10 +22,22 @@
 /* nav 내부 여백을 채우는 스페이서 (언어 선택기를 하단으로 밀어내기) */
 .nav-spacer { flex: 1 0 auto; }
 
-/* mobile: 단순 패딩으로 하단 바 대비 (nav_before.css 동작 재현) */
+/* mobile: safe-area 포함 패딩으로 하단 바 대비 */
 @media (max-width: 768px) {
-  .main-nav { padding-bottom: 64px; }
-  .language-selector-container { padding-bottom: 16px !important; }
+  .main-nav {
+    /* iOS 11 fallback */
+    padding-bottom: calc(64px + constant(safe-area-inset-bottom));
+    scroll-padding-bottom: calc(64px + constant(safe-area-inset-bottom));
+    /* modern iOS */
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    scroll-padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+  .language-selector-container {
+    /* iOS 11 fallback */
+    padding-bottom: calc(16px + constant(safe-area-inset-bottom)) !important;
+    /* modern iOS */
+    padding-bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+  }
   /* mobile은 배경 이미지 삭제 */
   .main-nav::after { display: none; }
 }

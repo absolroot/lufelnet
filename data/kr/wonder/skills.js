@@ -1,7 +1,7 @@
 // 스킬 목록
 const skillList = ["스킬1", "스킬2", "스킬3", "HIGHLIGHT","테우르기아", "총격", "근접", "방어", "특수 스킬", "ONE MORE", "아이템"];
 const skillList_en = ["Skill1", "Skill2", "Skill3", "HIGHLIGHT","Theurgy", "Gunshot", "Melee", "Defense", "Special Skill", "ONE MORE", "Item"];
-const skillList_jp = ["スキル1", "スキル2", "スキル3", "HIGHLIGHT","テウルギア", "ガンショット", "メイル", "ディフェンス", "スペシャルスキル", "ワンマイナー", "アイテム"];
+const skillList_jp = ["スキル1", "スキル2", "スキル3", "HIGHLIGHT","テウルギア", "銃撃", "近接攻撃", "ガード", "スペシャルスキル", "ワンマイナー", "アイテム"];
 
 
 // 페르소나 액티브 스킬 리스트

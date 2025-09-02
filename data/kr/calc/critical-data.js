@@ -1043,7 +1043,7 @@ const criticalCalcData = [
         duration: "-",
         note: "『오버클럭 개조』획득, 총격 한정",
         note_en: "Gun Shot",
-        note_jp: "ガンショット",
+        note_jp: "銃撃",
     },
     {
         id: "haru1",

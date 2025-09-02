@@ -11,7 +11,7 @@
 /* nav 하단 배경 (스크롤 뷰포트 하단에 sticky, 레이아웃 공간 0) */
 .nav-bg { position: sticky; bottom: 0; width: 100%; height: 0; pointer-events: none; z-index: 0;
   /* 다음 요소(언어 선택기) 하단 패딩만큼 끌어올려 빈 공간 제거 */
-  margin-bottom: calc(-1 * var(--ls-overlap) + 16px);
+  margin-bottom: calc(-1 * var(--ls-overlap));
 }
 .nav-bg::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: calc(200px + var(--ls-overlap));
   background-image: url('/assets/img/nav/nav_bg.webp'); background-position: bottom center; background-repeat: no-repeat; background-size: 100% 100%; opacity: 0.5; }
@@ -29,7 +29,13 @@
 
 /* mobile: iOS 하단 탭 안전영역 포함하여 겹치지 않도록 보정 */
 @media (max-width: 768px) {
-  .main-nav { --ls-overlap: calc(24px + env(safe-area-inset-bottom)); }
+  :root { 
+    /* iOS 11 fallback */
+    --ls-overlap: calc(48px + constant(safe-area-inset-bottom));
+    /* modern iOS */
+    --ls-overlap: calc(48px + env(safe-area-inset-bottom)); 
+  }
+  .main-nav { /* override shadowed var within nav subtree */ --ls-overlap: var(--ls-overlap); }
   .language-selector-container { padding-bottom: var(--ls-overlap) !important; }
 }
 
@@ -108,7 +114,7 @@
     width: 100vw; /* right:-100vw, visibility/opacity 제거 */
     transform: translateX(100%); transition: transform .3s ease; will-change: transform; /* iOS 스크롤 안정화 */
     overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; pointer-events: none;   /* 닫힌 상태엔 클릭 막기 */
-    z-index: 1000; padding-bottom: calc(24px + env(safe-area-inset-bottom)); scroll-padding-bottom: calc(24px + env(safe-area-inset-bottom)); /* 스크롤 앵커 대비 */
+    z-index: 1000; padding-bottom: var(--ls-overlap); scroll-padding-bottom: var(--ls-overlap); /* 스크롤 앵커 대비 */
     }
     
     /* ::after 사용 안함, .nav-bg 사용 */

@@ -35,7 +35,13 @@
     /* modern iOS */
     --ls-overlap: calc(48px + env(safe-area-inset-bottom)); 
   }
-  .main-nav { /* override shadowed var within nav subtree */ --ls-overlap: var(--ls-overlap); }
+  /* IMPORTANT: .main-nav 내부에 선언된 기본값(16px)이 :root 값을 가려서 모바일에서 직접 재정의 필요 */
+  .main-nav { 
+    /* iOS 11 fallback */
+    --ls-overlap: calc(48px + constant(safe-area-inset-bottom));
+    /* modern iOS */
+    --ls-overlap: calc(48px + env(safe-area-inset-bottom));
+  }
   .language-selector-container { padding-bottom: var(--ls-overlap) !important; }
 }
 

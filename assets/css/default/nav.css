@@ -1,7 +1,14 @@
+:root{
+  /* 세이프에어리어 하단 여백 변수 */
+  --safe-bottom: env(safe-area-inset-bottom);
+  /* 구 iOS 폴백 */
+  --safe-bottom-legacy: constant(safe-area-inset-bottom);
+}
+
 /* 기본 네비게이션 스타일 (PC) */
-.main-nav { width: 240px; background-color: #422e2e; flex-shrink: 0; position: fixed; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; height: 100vh; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; top: 0; left: 0; z-index: 100; /* 오른쪽에 border 1px */
+.main-nav { width: 240px; background-color: #422e2e; flex-shrink: 0; position: fixed; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; height: 100svh; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; top: 0; left: 0; z-index: 100; /* 오른쪽에 border 1px */ box-sizing: border-box;
     /* 언어 선택기 하단 패딩만큼 배경을 위로 겹치기 위한 변수 (태블릿/PC 기본 16px) */
-    --ls-overlap: calc(16px + env(safe-area-inset-bottom)); 
+    --ls-overlap: calc(24px + env(safe-area-inset-bottom)); 
     border-right: 1px solid rgba(255, 255, 255, 0.07); }
 
 /* background image */
@@ -22,18 +29,7 @@
 /* nav 내부 여백을 채우는 스페이서 (언어 선택기를 하단으로 밀어내기) */
 .nav-spacer { flex: 1 0 auto; }
 
-/* mobile: safe-area 포함 패딩으로 하단 바 대비 */
-@media (max-width: 768px) {
-  .main-nav {
-    position: fixed; top: 0; right: 0; bottom: 0; left: auto; /* 높이 대신 bottom:0 */
-    width: 100vw; /* right:-100vw, visibility/opacity 제거 */
-    transform: translateX(100%); transition: transform .3s ease; will-change: transform; /* iOS 스크롤 안정화 */
-    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; pointer-events: none;   /* 닫힌 상태엔 클릭 막기 */
-    z-index: 1000; padding-bottom: calc(24px + env(safe-area-inset-bottom)); scroll-padding-bottom: calc(24px + env(safe-area-inset-bottom)); /* 스크롤 앵커 대비 */
-  }
-  /* mobile은 배경 이미지 삭제 */
-  .main-nav::after { display: none; }
-}
+
 
 .logo-container { cursor: pointer; height: 100px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; margin: 20px 0; padding: 12px 24px; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; flex-shrink: 0; }
 .logo-container img[src*="lufel.webp"] { height: 50px; width: auto; filter: grayscale(100%) contrast(1.5); filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9)); }
@@ -82,10 +78,10 @@
 
 
 /* tablet responsive (769px ~ 1440px) */
-@media screen and (max-width: 1440px) and (min-width: 769px) { 
+@media screen and (max-width: 1440px) { 
     .main-nav { position: fixed; width: 240px; left: -240px; right: auto; transition: 0.3s ease; z-index: 1000; visibility: hidden; opacity: 0; 
         /* 전체 화면 높이에 맞춘 스크롤 컨테이너 */
-        top: 0; height: 100vh; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding-bottom: 0; }
+        top: 0; height: 100svh; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding-bottom: 0; }
     .main-nav.active { left: 0; right: auto; visibility: visible; opacity: 1; }
     /* ::after 배경 유지 (nav_before.css와 동일 동작) */
 }
@@ -100,19 +96,31 @@
 }
 
 
+/* mobile: safe-area 포함 패딩으로 하단 바 대비 */
+/*
+@media (max-width: 768px) {
+  .main-nav {
+    position: fixed; top: 0; right: 0; bottom: 0; left: auto;
+    width: 100vw;
+    transform: translateX(100%); transition: transform .3s ease; will-change: transform;
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; pointer-events: none;
+    z-index: 1000; padding-bottom: calc(24px + env(safe-area-inset-bottom)); scroll-padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+  .main-nav::after { display: none; }
+}*/
+
 @media screen and (max-width: 768px) { .mobile-header { display: block; }
 
     .hamburger-btn { display: block; }
     .logo-container { flex-direction: row; justify-content: flex-start; gap: 16px; margin: 0px; }
-
-    .main-nav { position: fixed; top: 0; right: 0; bottom: 0; left: auto; /* 높이 대신 bottom:0 */
-    width: 100vw; /* right:-100vw, visibility/opacity 제거 */
-    transform: translateX(100%); transition: transform .3s ease; will-change: transform; /* iOS 스크롤 안정화 */
-    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; pointer-events: none;   /* 닫힌 상태엔 클릭 막기 */
-    z-index: 1000; padding-bottom: 64px; scroll-padding-bottom: 64px; /* 스크롤 앵커 대비 */
-    }
     
-    /* ::after 배경 유지 */
+    .main-nav {
+      position: fixed; top: 0; right: 0 !important; bottom: 0; left: auto !important; 
+      transform: translateX(100%); transition: transform .3s ease; will-change: transform;
+      overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; pointer-events: none;
+      z-index: 1000; padding-top: 0px; padding-bottom: calc(24px + var(--safe-bottom)); padding-bottom: calc(24px + var(--safe-bottom-legacy));
+    }
+    .main-nav::after { display: none; }
     .main-nav.active { transform: translateX(0); pointer-events: auto; }
     .main-nav.active::after { right: 0; opacity: 0.5; }
     .nav-item { padding: 15px 28px; margin: 0; width: 100%; box-sizing: border-box; }
@@ -156,7 +164,7 @@
 .option .flag-icon { width: 16px; height: 16px; margin-right: 8px; }
 
 /* mobile language selector */
-@media (max-width: 768px) { .language-selector-container { margin-top: 20px; padding: 15px; }
+@media (max-width: 1200px) { .language-selector-container { margin-top: 20px; padding: 15px; }
     
     .custom-select { max-width: 200px; margin: 0 auto; }
     /* mobile dropdown: open upwards */

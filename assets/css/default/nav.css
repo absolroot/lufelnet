@@ -1,5 +1,5 @@
 /* 기본 네비게이션 스타일 (PC) */
-.main-nav { width: 240px; background-color: #422e2e; flex-shrink: 0; position: fixed; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; height: 100vh; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; top: 0; left: 0; z-index: 100; /* 오른쪽에 border 1px */
+.main-nav { width: 240px; background-color: #422e2e; flex-shrink: 0; position: fixed; overflow: hidden; display: flex; flex-direction: column; min-height: 100vh; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; top: 0; left: 0; z-index: 100; /* 오른쪽에 border 1px */
     /* 언어 선택기 하단 패딩만큼 배경을 위로 겹치기 위한 변수 (태블릿/PC 기본 16px) */
     --ls-overlap: calc(16px + env(safe-area-inset-bottom)); 
     border-right: 1px solid rgba(255, 255, 255, 0.07); }

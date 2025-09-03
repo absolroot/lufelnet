@@ -315,7 +315,7 @@ const enCharacterRitualData = {
         "r1": "♩Dawn's Greeting♪",
         "r1_detail": "At the start of battle, designates 1 ally as an 『Enthusiastic Fan』. Priority is given to the ally with the highest ATK among the Rebellion or Domination roles. The 『Enthusiastic Fan』 also gains +15% Critical Rate.",
         "r2": "♩Star of Enlightenment♪",
-        "r2_detail": "When using 『Finale: Resonance Activation』 to trigger an ally's HIGHLIGHT skill, that ally's damage increases by 30% for 1 turn.",
+        "r2_detail": "When using 『Finale: Resonance Activation』 to trigger an ally's HIGHLIGHT skill, that ally's damage increases by 30% for 2 turn.",
         "r3": "♩Slender Night Light♪",
         "r3_detail": "The skill levels of 『Passionate Sonata』 and 『Finale: Resonance Activation』 increase by 3, up to a maximum of 15.",
         "r4": "♩Self Transformation♪",
@@ -323,7 +323,7 @@ const enCharacterRitualData = {
         "r5": "♩Dream Outline♪",
         "r5_detail": "The skill levels of 『Impromptu Solo』 and 『Combat Skills』 increase by 3, up to a maximum of 15.",
         "r6": "♩You, My Destiny♪",
-        "r6_detail": "『Finale: Resonance Activation』 is immediately unlocked at the start of battle. Its cooldown is permanently reduced by 1 turn, with a minimum cooldown of 2 turns. After each use of 『Finale: Resonance Activation』, all Phantom Thieves' damage increases by 15% (up to 2 stacks)."
+        "r6_detail": "『Finale: Resonance Activation』 is immediately unlocked at the start of battle. Its cooldown is permanently 1 turn. After each use of 『Finale: Resonance Activation』, all Phantom Thieves' damage increases by 20% (up to 2 stacks)."
     },
     "야오링·사자무": {
         "name": "Yaoling Li·Lion Dance",

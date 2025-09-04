@@ -84,22 +84,22 @@ const characterData = {
         "sub_option2": ["미정"],
         "sub_option3": ["미정"],
         "minimum_stats": {
-            "LV10": "속도",
-            "LV10+5": "속도",
+            "LV10": "속도 180.2",
+            "LV10+5": "속도 194.0",
             "LV12": false,
             "LV12+5": false,
-            "LV13": "속도",
-            "LV13+5": "속도"
+            "LV13": "속도 187.3",
+            "LV13+5": "속도 205.3"
         },        
         "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
-        "skill1_lv": "-",
-        "skill2_lv": "-",
-        "skill3_lv": "-",
-        "skill4_lv": "-",
-        "mind_stats1": "-",
-        "mind_stats2": "-",
-        "mind_skill1": "-",
-        "mind_skill2": "-"
+        "skill1_lv": "MAX!",
+        "skill2_lv": "MAX!",
+        "skill3_lv": "MAX!",
+        "skill4_lv": "MAX!",
+        "mind_stats1": "공격력 20%",
+        "mind_stats2": "크리티컬 확률 12%",
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3/HL!"
     },
     "미유·여름": {
         "limit": true,

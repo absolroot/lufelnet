@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
-custom_js: [character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/tactic-example, character/cha_stats, character/character-i18n, character/helpmodal]
+custom_js: [cha_detail, tooltip, detail/dot-carousel, marked.min, character/tactic-example, character/cha_stats, character/character-i18n]
 custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
 permalink: /character.html
 language: kr
@@ -1324,6 +1324,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     }
                 }
 
+                
+
                 weaponHeader.appendChild(weaponName);
                 weaponHeader.appendChild(weaponStars);
 
@@ -1500,6 +1502,299 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         
     });
 
+    // 번역 함수 분리
+    function applyTranslations() {
+        try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch(e) { console.warn('[CharI18N:applySectionLabels]', e); }
+        try {
+            if (typeof window.translateStatTexts === 'function') {
+                window.translateStatTexts();
+            } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
+                I18NUtils.translateStatTexts();
+            }
+        } catch(e) { console.warn('[I18N:translateStatTexts]', e); }
+        return;
+        const currentLang = getCurrentLanguage();
+        
+        // 리뷰 라벨 번역
+        const reviewLabel = currentLang === 'kr' ? '요약' :
+                            currentLang === 'en' ? 'Summary' : '要約';
+        const reviewEl = document.querySelector('.review-card h2');
+        if (reviewEl) reviewEl.textContent = reviewLabel;
+
+        // 추천 세팅 라벨 번역
+        const recommendLabel = currentLang === 'kr' ? '추천 세팅' :
+                             currentLang === 'en' ? 'Recommended Setup' : 'おすすめ設定';
+        const recommendEl = document.querySelector('.settings-card h2');
+        if (recommendEl) recommendEl.textContent = recommendLabel;
+
+        // 스킬 대제목 번역
+        const skillsMainLabel = currentLang === 'kr' ? '스킬' :
+                               currentLang === 'en' ? 'Skills' : 'スキル';
+        const skillsMainEl = document.querySelector('.skills-card h2');
+        if (skillsMainEl) skillsMainEl.textContent = skillsMainLabel;
+
+        // 의식 대제목 번역
+        const ritualMainLabel = currentLang === 'kr' ? '의식' :
+                               currentLang === 'en' ? 'Awareness' : '意識';
+        const ritualMainEl = document.querySelector('.ritual-card h2');
+        if (ritualMainEl) ritualMainEl.textContent = ritualMainLabel;
+
+        // 전용 무기 대제목 번역
+        const weaponMainLabel = currentLang === 'kr' ? '전용 무기' :
+                               currentLang === 'en' ? 'Exclusive Weapon' : '専用武器';
+        const weaponMainEl = document.querySelector('.weapons-card h2');
+        if (weaponMainEl) weaponMainEl.textContent = weaponMainLabel;
+
+        // 계시 라벨 번역 (일본어 수정)
+        const revelationLabel = currentLang === 'kr' ? '계시' :
+                              currentLang === 'en' ? 'Revelation' : '啓示';
+        const revelationEl = document.querySelector('.revelation-settings h3');
+        if (revelationEl) revelationEl.innerHTML = revelationLabel + ' ' + createHelpIcon('revelation');
+
+        // 주 라벨 번역 (일본어 수정)
+        const mainLabel = currentLang === 'kr' ? '주' :
+                         currentLang === 'en' ? 'Space' : '宙';
+        const mainLabelEl = document.querySelector('.main-revelation .label');
+        if (mainLabelEl) {
+            const iconImg = mainLabelEl.querySelector('img');
+            mainLabelEl.innerHTML = `${mainLabel} `;
+            if (iconImg) mainLabelEl.appendChild(iconImg);
+        }
+
+        // 일월성진 라벨 번역 (일본어 수정)
+        const sunMoonStarEarthLabel = currentLang === 'kr' ? '일월성진' :
+                                     currentLang === 'en' ? 'S/M/S/P' : '旭月星天';
+        const sunMoonLabelEl = document.querySelector('.sub-revelation .label');
+        if (sunMoonLabelEl) sunMoonLabelEl.textContent = sunMoonStarEarthLabel;
+
+        // 일월성진 개별 라벨 번역
+        const sunMoonStarLabels = {
+            'kr': ['일', '월', '성', '진'],
+            'en': ['Sun', 'Moon', 'Star', 'Planet'],
+            'jp': ['旭', '月', '星', '天']
+        };
+        document.querySelectorAll('.main-options .option-row .label').forEach((el, index) => {
+            if (sunMoonStarLabels[currentLang] && sunMoonStarLabels[currentLang][index]) {
+                const iconImg = el.querySelector('img');
+                el.innerHTML = `${sunMoonStarLabels[currentLang][index]} `;
+                if (iconImg) el.appendChild(iconImg);
+            }
+        });
+
+        // Helper function to create help icon SVG
+        function createHelpIcon(helpType) {
+            return `<span class="help-icon" onclick="showHelpModal('${helpType}')">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/>
+                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/>
+                </svg>
+            </span>`;
+        }
+
+        // 주 옵션 라벨 번역 (help 아이콘 포함)
+        const mainOptionLabel = currentLang === 'kr' ? '주 옵션' :
+                              currentLang === 'en' ? 'Main Options' : '主属性';
+        const mainOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(2) h3');
+        if (mainOptionEl) mainOptionEl.innerHTML = mainOptionLabel + ' ' + createHelpIcon('main-option');
+
+        // 부 옵션 라벨 번역 (help 아이콘 포함)
+        const subOptionLabel = currentLang === 'kr' ? '부 옵션' :
+                             currentLang === 'en' ? 'Sub Options' : '副属性';
+        const subOptionEl = document.querySelector('.revelation-settings .setting-section:nth-child(3) h3');
+        if (subOptionEl) subOptionEl.innerHTML = subOptionLabel + ' ' + createHelpIcon('sub-option');
+
+        // 권장 육성 스탯 라벨 번역 (help 아이콘 포함)
+        const recommendedStatsLabel = currentLang === 'kr' ? '권장 육성 스탯' :
+                                    currentLang === 'en' ? 'Recommended Stats' : '推奨育成ステータス';
+        const recommendedStatsEl = document.querySelector('.stats-requirements h3:first-child');
+        if (recommendedStatsEl) recommendedStatsEl.innerHTML = recommendedStatsLabel + ' ' + createHelpIcon('recommended-stats');
+
+        // 전투 진입 시 라벨 번역 (help 아이콘 포함)
+        const battleEntryLabel = currentLang === 'kr' ? '전투 진입 시 +' :
+                               currentLang === 'en' ? 'Battle Entry +' : '戦闘開始時 +';
+        const battleEntryEl = document.querySelector('.stats-requirements .setting-section:last-child h3');
+        if (battleEntryEl) battleEntryEl.innerHTML = battleEntryLabel + ' ' + createHelpIcon('battle-entry');
+
+
+
+        // 심상 관련 텍스트 번역
+        const mindTexts = {
+            'kr': '심상5',
+            'en': 'Minds5',
+            'jp': 'イメジャリー5'
+        };
+        // 심상 텍스트 번역은 battle-plus-stats에서 제외 (이미 처리됨)
+        // document.querySelectorAll('.battle-plus-stats').forEach(el => {
+        //     if (el.textContent) {
+        //         let text = el.textContent;
+        //         text = text.replace(/심상5/g, mindTexts[currentLang] || '심상5');
+        //         text = text.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
+        //         el.textContent = text;
+        //     }
+        // });
+
+        // 스킬 레벨 버튼 라벨은 assets/js/cha_detail.js 내 fillSkillsInfo()에서
+        // 캐릭터 레어도와 현재 언어에 맞게 정확히 설정됩니다.
+        // 여기서 고정된 라벨로 덮어쓰면(예: 4성도 13레벨 라벨 강제) 표시가 어긋나므로
+        // 더 이상 버튼 텍스트를 재설정하지 않습니다.
+
+        // 무기 개조 버튼 번역
+        const enhancementButtonLabels = {
+            'kr': {
+                'mixed': '5성 개조0 / 4성 개조6',
+                'all': '전체',
+                '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6'
+            },
+            'en': {
+                'mixed': '5★ +0 / 4★ +6',
+                'all': 'All',
+                '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6'
+            },
+            'jp': {
+                'mixed': '5星 強化0 / 4星 強化6',
+                'all': '全体',
+                '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6'
+            }
+        };
+        document.querySelectorAll('.enhancement-btn').forEach(btn => {
+            const stage = btn.dataset.stage;
+            if (enhancementButtonLabels[currentLang] && enhancementButtonLabels[currentLang][stage]) {
+                btn.textContent = enhancementButtonLabels[currentLang][stage];
+            }
+        });
+
+        // 스킬 라벨 번역
+        const skillLabel = currentLang === 'kr' ? '스킬' :
+                          currentLang === 'en' ? 'Skills' : 'スキル';
+        const skillTitleEl = document.querySelector('.skill-mind-settings .setting-section:first-child h3');
+        if (skillTitleEl) skillTitleEl.innerHTML = skillLabel + ' ' + createHelpIcon('skill');
+
+        // 심상 라벨 번역
+        const mindLabel = currentLang === 'kr' ? '심상 (LV 5)' :
+                         currentLang === 'en' ? 'Mindscape (LV 5)' : 'イメジャリー (LV 5)';
+        const mindTitleEl = document.querySelector('.skill-mind-settings .setting-section:last-child h3');
+        if (mindTitleEl) mindTitleEl.innerHTML = mindLabel + ' ' + createHelpIcon('mind-lv5');
+
+        // 스킬 레벨 라벨 번역
+        const skillLevelLabels = {
+            'kr': ['스킬 1', '스킬 2', '스킬 3', '하이라이트'],
+            'en': ['Skill 1', 'Skill 2', 'Skill 3', 'Highlight'],
+            'jp': ['スキル 1', 'スキル 2', 'スキル 3', 'ハイライト']
+        };
+        document.querySelectorAll('.skill-levels .skill-level .label').forEach((el, index) => {
+            if (skillLevelLabels[currentLang] && skillLevelLabels[currentLang][index]) {
+                el.textContent = skillLevelLabels[currentLang][index];
+            }
+        });
+
+
+
+        // 스탯 텍스트 번역 함수
+        function translateStatTexts() {
+            const statTranslations = {
+                'kr': {
+                    '생명': '생명',
+                    '생명력': '생명',
+                    '공격력': '공격력',
+                    '대미지 보너스': '대미지 보너스',
+                    '대미지보너스': '대미지 보너스',
+                    '크리티컬 확률': '크리티컬 확률',
+                    '크리티컬확률': '크리티컬 확률',
+                    '크리티컬 효과': '크리티컬 효과',
+                    '크리티컬효과': '크리티컬 효과',
+                    '관통': '관통',
+                    '방어력': '방어력',
+                    '효과 명중': '효과 명중',
+                    '효과명중': '효과 명중',
+                    '속도': '속도'
+                },
+                'en': {
+                    '생명': 'HP',
+                    '생명력': 'HP',
+                    '공격력': 'Attack',
+                    '대미지 보너스': 'DMG Bonus(ATK Mult)',
+                    '대미지보너스': 'DMG Bonus(ATK Mult)',
+                    '크리티컬 확률': 'Crit Rate',
+                    '크리티컬확률': 'Crit Rate',
+                    '크리티컬 효과': 'Crit Mult',
+                    '크리티컬효과': 'Crit Mult',
+                    '관통': 'Pierce Rate',
+                    '방어력': 'Defense',
+                    '방어': 'Defense',
+                    '효과 명중': 'Ailment Accuracy',
+                    '효과명중': 'Ailment Accuracy',
+                    '속도': 'Speed'
+                },
+                'jp': {
+                    '생명': 'HP',
+                    '생명력': 'HP',
+                    '공격력': '攻撃力',
+                    '대미지 보너스': '攻撃倍率+',
+                    '대미지보너스': '攻撃倍率+',
+                    '크리티컬 확률': 'CRT発生率',
+                    '크리티컬확률': 'CRT発生率',
+                    '크리티컬 효과': 'CRT倍率',
+                    '크리티컬효과': 'CRT倍率',
+                    '관통': '貫通',
+                    '방어력': '防御力',
+                    '방어': '防御力',
+                    '효과 명중': '状態異常命中',
+                    '효과명중': '効果命중',
+                    '속도': '速さ'
+                }
+            };
+
+            // 모든 텍스트 요소에서 스탯 텍스트 번역
+            const allTextElements = document.querySelectorAll('*');
+            allTextElements.forEach(el => {
+                // 자식 요소가 없는 텍스트 노드만 처리
+                if (el.children.length === 0 && el.textContent.trim()) {
+                    let text = el.textContent;
+                    let hasChanged = false;
+                    
+                    // 각 스탯 텍스트를 번역
+                    Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                        const translatedStat = statTranslations[currentLang][koreanStat];
+                        if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                            text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                            hasChanged = true;
+                        }
+                    });
+                    
+                    if (hasChanged) {
+                        el.textContent = text;
+                    }
+                }
+            });
+
+            // 특정 클래스의 요소들도 처리
+            document.querySelectorAll('.stat-label, .value, .option-row .value').forEach(el => {
+                if (el.textContent.trim()) {
+                    let text = el.textContent;
+                    let hasChanged = false;
+                    
+                    Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                        const translatedStat = statTranslations[currentLang][koreanStat];
+                        if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                            text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                            hasChanged = true;
+                        }
+                    });
+                    
+                    if (hasChanged) {
+                        el.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // 스탯 텍스트 번역 실행
+        if (typeof window.translateStatTexts === 'function') {
+            window.translateStatTexts();
+        } else {
+            translateStatTexts();
+        }
+    }
 
     // MutationObserver를 사용해 동적 콘텐츠 변경 감지
     const observer = new MutationObserver((mutations) => {
@@ -1596,8 +1891,231 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         setTimeout(refreshRevelationDisplay, 100);
     });
 
+    // 전역 함수로 만들어서 다른 곳에서도 호출 가능하도록
+    window.translateStatTexts = function() {
+        const currentLang = getCurrentLanguage();
+        const statTranslations = {
+            'kr': {
+                '생명': '생명',
+                '생명력': '생명력',
+                '공격력': '공격력',
+                '대미지 보너스': '대미지 보너스',
+                '대미지보너스': '대미지 보너스',
+                '크리티컬 확률': '크리티컬 확률',
+                '크리티컬확률': '크리티컬 확률',
+                '크리티컬 효과': '크리티컬 효과',
+                '크리티컬효과': '크리티컬 효과',
+                '관통': '관통',
+                '방어력': '방어력',
+                '효과 명중': '효과 명중',
+                '효과명중': '효과 명중',
+                '속도': '속도',
+                '치료효과': '치료효과'
+            },
+            'en': {
+                '최대 생명 증가': 'Max HP Up',
+                '최대 생명': 'Max HP',
+                '생명': 'HP',
+                '생명력': 'HP',
+                '공격력': 'Attack',
+                '대미지 보너스': 'DMG Bonus(ATK Mult)',
+                '대미지보너스': 'DMG Bonus(ATK Mult)',
+                '크리티컬 확률': 'Crit Rate',
+                '크리티컬확률': 'Crit Rate',
+                '크리티컬 효과': 'Crit Mult',
+                '크리티컬효과': 'Crit Mult',
+                '관통': 'Pierce Rate',
+                '방어력 감소' : 'Defense Reduction',
+                '방어력': 'Defense',
+                '방어': 'Defense',
+                '효과 명중': 'Ailment Accuracy',
+                '효과명중': 'Ailment Accuracy',
+                '속도': 'Speed',
+                '치료효과': 'Healing Effect',
+                '치료': 'Healing',
+                '추격': 'Follow-up',
+                '효과 저항': 'Effect Resi',
+                '효과저항': 'Effect Resi',
+                'SP 회복' : 'SP Recovery',
+                'SP회복' : 'SP Recovery',
+                '해명의힘' : 'Navi Power',
+                '해명의 힘' : 'Navi Power',
+                '직책' : 'Labor',
+                '마이팰리스 평점' : 'My Palace Rating',
+                '마이팰리스' : 'My Palace',
+                '실드 효과' : 'Shield Effect',
+                '대미지감면' : 'Damage Reduction',
+                '총기' : 'Gun Shot',
+                '총격' : 'Gun Shot',
+                '의식' : 'Awareness',
+                '전용무기' : 'Exclusive Weapon',
+                '4성 무기' : '4 Star Weapon',
+                '패시브' : 'Passive',
+                '실드효과' : 'Shield Effect',
+                '추가 효과' : 'Follow-up',
+                '반격' : 'CounterAttack',
+                '받는 대미지 증가': 'Damage Taken',
+                '수면': 'Sleep',
+                '원소 이상': 'Element Alignment',
+                '실드' : 'Shield',
+                '주원' : 'Curse',
+                '지속 대미지' : 'DOT',
+                '화상' : 'Burn',
+                '화염 속성': 'Fire',
+                '축복' : 'Blessing',
+                '풍습' : 'Windswept',
+                '동결' : 'Freeze',
+                '감전' : 'Shock',
+                '공격받을 확률 증가' : 'Taunt',
+                '전격' : 'Electric',
+                '망각' : 'Forget',
+                '감소' : 'Decrease',
+                '제거' : 'Remove',
+                '크리티컬' : 'Critical',
+                '차지' : 'Charge',
+                '추가 턴' : 'Additional Turn',
+                '디버프' : 'Debuff',
+                '지속 회복' : 'DOT Recovery',
+                '부활' : 'Revive',
+                '변신' : 'Transform',
+                '약점 변경' : 'Weakness Change',
+                '폼 체인지' : 'Form Change',
+                '스킬마스터' : 'Skill Master',
+                '빙결 속성' : 'Ice',
+                '대미지 축적' : 'Damage Accumulation',
+                '다운' : 'Down',
+                '테우르기아 충전' : 'Theurgy Charge',
+                '테우르기아' : 'Theurgy',
+                '아이템' : 'Item',
+                '미정' : 'TBD'
+            },
+            'jp': {
+                '최대 생명 증가': '最大HP上昇',
+                '최대 생명': '最大HP',
+                '생명': 'HP',
+                '생명력': 'HP',
+                '공격력': '攻撃力',
+                '대미지 보너스': '攻撃倍率+',
+                '대미지보너스': '攻撃倍率+',
+                '크리티컬 확률': 'CRT発生率',
+                '크리티컬확률': 'CRT発生率',
+                '크리티컬 효과': 'CRT倍率',
+                '크리티컬효과': 'CRT倍率',
+                '관통': '貫通',
+                '방어력 감소' : '防御力減少',
+                '방어력': '防御力',
+                '방어': '防御力',
+                '효과 명중': '状態異常命中',
+                '효과명중': '状態異常命中',
+                '속도': '速さ',
+                '치료효과': 'HP回復量',
+                '치료': '治療',
+                '추격': '追撃',
+                '효과 저항': '効果耐性',
+                '효과저항': '効果耐性',
+                'SP 회복' : 'SP 回復',
+                'SP회복' : 'SP 回復',
+                '해명의힘' : 'ステータス強化',
+                '해명의 힘' : 'ステータス強化',
+                '직책' : '職責',
+                '마이팰리스 평점' : 'マイパレス評価',
+                '마이팰리스' : 'マイパレス',
+                '실드 효과' : 'シールド効果',
+                '대미지감면' : 'ダメージ減少',
+                '총기' : '銃撃',
+                '총격' : '銃撃',
+                '의식' : '意識',
+                '전용무기' : '専用武器',
+                '4성 무기' : '4星武器',
+                '패시브' : 'パッシブ',
+                '실드효과' : 'シールド効果',
+                '추가 효과' : '意識奏功',
+                '반격' : '反撃',
+                '받는 대미지 증가': 'ダメージ受け',
+                '수면': '睡眠',
+                '원소 이상': '元素異常',
+                '실드' : 'シールド',
+                '주원' : '呪怨',
+                '지속 대미지' : 'DOT',
+                '화상' : '燃焼',
+                '화염 속성': '火炎',
+                '축복' : '祝福',
+                '풍습' : '風襲',
+                '동결' : '凍結',
+                '공격받을 확률 증가' : '挑発',
+                '감전' : '感電',
+                '전격' : '電撃',
+                '망각' : '忘却',
+                '감소' : '減少',
+                '제거' : '除去',
+                '크리티컬' : 'クリティカル',
+                '차지' : 'チャージ',
+                '추가 턴' : '追加ターン',
+                '디버프' : 'デバフ',
+                '지속 회복' : 'DOT回復',
+                '부활' : '復活',
+                '변신' : '変身',
+                '약점 변경' : '弱点変更',
+                '폼 체인지' : 'フォームチェンジ',
+                '스킬마스터' : 'スキルマスター',
+                '빙결 속성' : '氷結',
+                '대미지 축적' : 'ダメージ蓄積',
+                '다운' : 'ダウン',
+                '테우르기아 충전' : 'テウルギアャージ',
+                '테우르기아' : 'テウルギア',
+                '아이템' : 'アイテム',
+                '미정' : '未定',
+                '가드' : 'ダウン値', // 다운 값,
+                '벨벳 룸의 시련': 'ベルベットルームの試練'
+            }
+        };
+
+        // 모든 텍스트 요소에서 스탯 텍스트 번역
+        const allTextElements = document.querySelectorAll('*');
+        allTextElements.forEach(el => {
+            // 자식 요소가 없는 텍스트 노드만 처리
+            if (el.children.length === 0 && el.textContent.trim()) {
+                let text = el.textContent;
+                let hasChanged = false;
+                
+                // 각 스탯 텍스트를 번역
+                Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                    const translatedStat = statTranslations[currentLang][koreanStat];
+                    if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                        text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                        hasChanged = true;
+                    }
+                });
+                
+                if (hasChanged) {
+                    el.textContent = text;
+                }
+            }
+        });
+
+        // 특정 클래스의 요소들도 처리
+        document.querySelectorAll('.stat-label, .value, .option-row .value').forEach(el => {
+            if (el.textContent.trim()) {
+                let text = el.textContent;
+                let hasChanged = false;
+                
+                Object.keys(statTranslations[currentLang] || {}).forEach(koreanStat => {
+                    const translatedStat = statTranslations[currentLang][koreanStat];
+                    if (text.includes(koreanStat) && koreanStat !== translatedStat) {
+                        text = text.replace(new RegExp(koreanStat, 'g'), translatedStat);
+                        hasChanged = true;
+                    }
+                });
+                
+                if (hasChanged) {
+                    el.textContent = text;
+                }
+            }
+        });
+    };
 
     // 공통 번역 유틸로 적용 함수 위임 (중복 로직 제거)
+    
     try {
         applyTranslations = function() {
             try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch(e) { console.warn('[CharI18N:applySectionLabels]', e); }
@@ -2207,8 +2725,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
 
 
-    // Help Modal Functions moved to assets/js/character/helpmodal.js
-    /*function showHelpModal(helpType) {
+    // Help Modal Functions
+    function showHelpModal(helpType) {
         const modal = document.getElementById('help-modal');
         const modalTitle = document.getElementById('help-modal-title');
         const modalDescription = document.getElementById('help-modal-description');
@@ -2405,7 +2923,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
             closeHelpModal();
         }
-    });*/
+    });
     
 
 </script>

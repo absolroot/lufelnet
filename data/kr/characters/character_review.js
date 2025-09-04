@@ -3,7 +3,7 @@ const characterReview = {
         review: ``
     },
     "카타야마":{ name_en: "Kumi Katayama", name_jp: "片山 久未", codename: "BLITZ",
-        review: `한국 서버에 정식 출시(09.11)되지 않았습니다. 내용이 언제든 변경될 수 있습니다.`,
+        review: `한국 서버에 정식 출시(09.11)되지 않았습니다. 출시 초기로 아직 캐릭터가 연구 중임에 따라 추천 세팅이 언제든 변경될 수 있습니다.`,
         review_en: `Not officially released in Korea; translation in progress.`,
         review_jp: `韓国では正式に発売されていないため、翻訳作業中です。`,
     },

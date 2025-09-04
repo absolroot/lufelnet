@@ -1215,8 +1215,8 @@ const personaData = {
             name_en: "Imperial Purge",
             name_jp: "尊王の調伏",
             effect: "1명의 적에게 180.0%의 핵열 속성 대미지를 주고, 원소 이상 상태인 적 공격 시 해당 스킬 대미지가 25% 증가한다. 또한 아군 핵열 속성 동료의 공격력이 20% 증가하고, 2턴간 지속된다.",
-            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases 25% damage to enemy inflicted with Elemental Ailments.",
-            effect_jp: "敵単体に180.0%攻撃力の核熱ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25%上昇する。また。",
+            effect_en: "Deals 180.0% ATK Nuke dmg to 1 foe. Increases 25% damage to enemy inflicted with Elemental Ailments. Increases nuclear allies' ATK by 20% for 2 turns.",
+            effect_jp: "敵単体に180.0%攻撃力の核熱ダメージを与え、属性異常の敵に対してはこのスキルの与ダメージが25%上昇する。また、核熱属性の味方の攻撃力が20%上昇し、2ターンの間持続する。",
             priority: 1,
             icon: "핵열"
         },

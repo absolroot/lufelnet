@@ -66,7 +66,7 @@ const characterTranslations = {
         "신중": "Caution",
         "슬픔": "Sorrow",
         "헛수고": "Futile Effort",
-        "직책": "Position"
+        "직책": "Labor"
     },
     
     // 스탯 옵션 번역

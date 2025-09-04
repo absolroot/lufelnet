@@ -3,6 +3,11 @@ const operationData = {
         basic: [],
         note: []
     },
+    "카타야마": {
+        basic: [
+            { label: "의식 0", value: "1 › 3 › 2 › 1 › 3 › 2" }
+        ]
+    },
     "미유·여름": {
         basic: [
             { label: "의식 0", value: "3 › 2 › 3 › 2 › 3 › 2" },
@@ -192,10 +197,10 @@ const operationData = {
             { label: "의식 6(다중)", value: "3 › 1 › 2 › 3 › 1 › 2" }
         ],
         basic_en: [
-            { label: "Awareness 0 (Single)", value: "2 › 3 › 2 › 3 › 2 › 3" },
-            { label: "Awareness 0 (Multi)", value: "1 › 3 › 1 › 3 › 1 › 3" },
-            { label: "Awareness 6 (Single)", value: "3 › 2 › 1 › 3 › 2 › 1" },
-            { label: "Awareness 6 (Multi)", value: "3 › 1 › 2 › 3 › 1 › 2" }
+            { label: "A0 (Single)", value: "2 › 3 › 2 › 3 › 2 › 3" },
+            { label: "A0 (Multi)", value: "1 › 3 › 1 › 3 › 1 › 3" },
+            { label: "A6 (Single)", value: "3 › 2 › 1 › 3 › 2 › 1" },
+            { label: "A6 (Multi)", value: "3 › 1 › 2 › 3 › 1 › 2" }
         ],
         basic_jp: [
             { label: "意識 0 (単体)", value: "2 › 3 › 2 › 3 › 2 › 3" },
@@ -247,11 +252,11 @@ const operationData = {
             { label: "의식 6", value: "3 + 1 › 2 › 3 + 1 › 2 › 3 + 1 › 2" },
         ],
         basic_en: [
-            { label: "Awareness 0 (Gale)", value: "3 › 2 › 3 › 2 › 3 › 2" },
-            { label: "Awareness 0 (Single)", value: "3 › 1 › 3 › 1 › 3 › 1" },
-            { label: "Awareness 1 (Single)", value: "3 › 1 › 3 › 1 › 3 › 1" },
-            { label: "Awareness 1 (Multi)", value: "3 › 2 › 3 › 2 › 3 › 2" },
-            { label: "Awareness 6", value: "3 + 1 › 2 › 3 + 1 › 2 › 3 + 1 › 2" },
+            { label: "A0 (Gale)", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "A0 (Single)", value: "3 › 1 › 3 › 1 › 3 › 1" },
+            { label: "A1 (Single)", value: "3 › 1 › 3 › 1 › 3 › 1" },
+            { label: "A1 (Multi)", value: "3 › 2 › 3 › 2 › 3 › 2" },
+            { label: "A6", value: "3 + 1 › 2 › 3 + 1 › 2 › 3 + 1 › 2" },
         ],
         basic_jp: [
             { label: "意識 0 (疾風)", value: "3 › 2 › 3 › 2 › 3 › 2" },
@@ -288,8 +293,8 @@ const operationData = {
             { label: "의식 6", value: "3 › 변신 + 3 + 3 › 3 › 3 › 변신 + 3 + 3 › 3" }
         ],
         basic_en: [
-            { label: "Awareness 0", value: "3 › Trans + 3 › 3 › 3 › Trans + 3 › 3" },
-            { label: "Awareness 6", value: "3 › Trans + 3 + 3 › 3 › 3 › Trans + 3 + 3 › 3" }
+            { label: "A0", value: "3 › Trans + 3 › 3 › 3 › Trans + 3 › 3" },
+            { label: "A6", value: "3 › Trans + 3 + 3 › 3 › 3 › Trans + 3 + 3 › 3" }
         ],
         basic_jp: [
             { label: "意識 0", value: "3 › 変身 + 3 › 3 › 3 › 変身 + 3 › 3" },
@@ -371,7 +376,7 @@ const operationData = {
             { label: "의식 6", value: "총기 › 3 › 2 › 총기 › 3 › 2" }
         ],
         basic_en: [
-            { label: "Awareness 6", value: "Gun › 3 › 2 › Gun › 3 › 2" }
+            { label: "A6", value: "Gun › 3 › 2 › Gun › 3 › 2" }
         ],
         basic_jp: [
             { label: "意識 6", value: "銃 › 3 › 2 › 銃 › 3 › 2" }
@@ -386,11 +391,26 @@ const operationData = {
             { label: "의식 1", value: "1 › 1 › 3 › 2 › 1 › 3" },
             { label: "의식 6", value: "3 › 1 › 3 › 2 › 1 › 3" }
         ],
+        basic_en: [
+            { label: "A0", value: "2 › 1 › 3 › 2 › 1 › 3" },
+            { label: "A1", value: "1 › 1 › 3 › 2 › 1 › 3" },
+            { label: "A6", value: "3 › 1 › 3 › 2 › 1 › 3" },
+            { label: "A6", value: "3 › 1 › 3 › 2 › 3 › 1" },
+            { label: "A6", value: "1 › 3 › 2 › 3 › 2 › 3" }
+        ],
+        basic_jp: [
+            { label: "意識 0", value: "2 › 1 › 3 › 2 › 1 › 3" },
+            { label: "意識 1", value: "1 › 1 › 3 › 2 › 1 › 3" },
+            { label: "意識 6", value: "3 › 1 › 3 › 2 › 1 › 3" },
+            { label: "意識 6", value: "3 › 1 › 3 › 2 › 3 › 1" },
+            { label: "意識 6", value: "1 › 3 › 2 › 3 › 2 › 3" }
+        ],
         note: [
             "· 전용무기 5개조 이상 + HL 25% 계시 착용 시 전투 시작 HL 100%"
         ],
         note_en: [
-            "· Exclusive weapon+5 and are wearing HL 25%, you will start the battle with HL 100%"
+            "· Exclusive weapon+5 and are wearing HL 25%, you will start the battle with HL 100%",
+            "· The A6 received buffs in GLB, diversifying its cycles."
         ],
         note_jp: [
             "· 専用武器5組以上＋HL25%啓示着用時、戦闘開始HL100%。"
@@ -433,10 +453,10 @@ const operationData = {
             { label: "의식 6", value: "3 + 1 › 근접 › 근접 › 근접 › 근접 › 근접" }
         ],
         basic_en: [
-            { label: "Awareness 0", value: "1 › 3 + Melee › 1 › 3 + Melee › 1 › 3 + Melee" },
-            { label: "Awareness 1", value: "1 › 3 + Melee › Melee › 1 › 3 + Melee › Melee" },
-            { label: "Awareness 1 (3/6Turn)", value: "Melee › 3 + 1 › Melee › Melee › 3 + 1 › Melee" },
-            { label: "Awareness 6", value: "3 + 1 › Melee › Melee › Melee › Melee › Melee" }
+            { label: "A0", value: "1 › 3 + Melee › 1 › 3 + Melee › 1 › 3 + Melee" },
+            { label: "A1", value: "1 › 3 + Melee › Melee › 1 › 3 + Melee › Melee" },
+            { label: "A1 (3/6Turn)", value: "Melee › 3 + 1 › Melee › Melee › 3 + 1 › Melee" },
+            { label: "A6", value: "3 + 1 › Melee › Melee › Melee › Melee › Melee" }
         ],
         basic_jp: [
             { label: "意識 0", value: "1 › 3 + 接近 › 1 › 3 + 接近 › 1 › 3 + 接近" },
@@ -502,9 +522,9 @@ const operationData = {
             { label: "의식 6", value: "2 › 3 › 변신 + HL + HL + 3 › 2 › 3 › 변신 + HL + HL + 3" }
         ],
         basic_en: [
-            { label: "Awareness 0", value: "2 › 1 + Trans › 2 + HL › 2 › 1 › 2 + Trans + HL" },
-            { label: "Awareness 1", value: "2 › 1 + Trans + HL › 3 › 2 › 1 + Trans + HL › 3" },
-            { label: "Awareness 6", value: "2 › 3 › Trans + HL + HL + 3 › 2 › 3 › Trans + HL + HL + 3" }
+            { label: "A0", value: "2 › 1 + Trans › 2 + HL › 2 › 1 › 2 + Trans + HL" },
+            { label: "A1", value: "2 › 1 + Trans + HL › 3 › 2 › 1 + Trans + HL › 3" },
+            { label: "A6", value: "2 › 3 › Trans + HL + HL + 3 › 2 › 3 › Trans + HL + HL + 3" }
         ],
         basic_jp: [
             { label: "意識 0", value: "2 › 1 + 変身 › 2 + HL › 2 › 1 › 2 + 変身 + HL" },
@@ -536,9 +556,9 @@ const operationData = {
             { label: "의식 6", value: "1 › 변신 + 1 › 변신 + 1 › 2 › 변신 + 1 › 변신 + 2"}
         ],
         basic_en: [
-            { label: "Awareness 0", value: "1 › 1 › 2 › 2 › 2 › 3 + 2" },
-            { label: "Awareness 1", value: "1 › 3 + 1 › 1 › 2 › 3 + 1 › 3 + 2" },
-            { label: "Awareness 6", value: "1 › 3 + 1 › 3 + 1 › 2 › 3 + 1 › 3 + 2"}
+            { label: "A0", value: "1 › 1 › 2 › 2 › 2 › 3 + 2" },
+            { label: "A1", value: "1 › 3 + 1 › 1 › 2 › 3 + 1 › 3 + 2" },
+            { label: "A6", value: "1 › 3 + 1 › 3 + 1 › 2 › 3 + 1 › 3 + 2"}
         ],
         basic_jp: [
             { label: "意識 0", value: "1 › 1 › 2 › 2 › 2 › 変身 + 2" },
@@ -601,7 +621,7 @@ const operationData = {
             { label: "의식 0", value: "1 › HL + 3 › 총격 › 1 › 3 › HL + 총격" },
         ],
         basic_en: [
-            { label: "Awareness 0", value: "1 › HL + 3 › Gun › 1 › 3 › HL + Gun" }
+            { label: "A0", value: "1 › HL + 3 › Gun › 1 › 3 › HL + Gun" }
         ],
         basic_jp: [
             { label: "意識 0", value: "1 › HL + 3 › 銃 › 1 › 3 › HL + 銃" }

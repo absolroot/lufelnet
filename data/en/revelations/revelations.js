@@ -142,132 +142,132 @@ const enRevelationData = {
         "Defeat": ["Freedom"]
     },
     "sub_effects": {
-        "Control": {
+        "Control": { // 주권
             "set2": "HP increased by 12%.",
             "set4": "When using skills to attack an enemy, it will cause additional damage of 8% of its own health to the main target.",
             "type": ["화염"]
         },
-        "Prosperity": {
+        "Prosperity": { // 풍요
             "set2": "Reduces incoming DMG by 8%.",
             "set4": "When entering battle immediately recovers 25% of HIGHLIGHT charge, doesn't stack.",
             "type": ["HL 25%", "버프"]
         },
-        "Power": {
+        "Power": { // 힘
             "set2": "Own attack increased by 12%.",
             "set4": "Increase own attack by 10% every 6 turns (Enemies and allies turn count for this effect), can be stacked 3 times.",
             "type": ["버프"]
         },
-        "Reconcilation": {
+        "Reconcilation": { // 화해
             "set2": "Increases Speed by 6.",
             "set4": "During combat your HP, ATK, DEF increase by 15%.",
             "type": ["버프", "미출시"]
         },
-        "Works": {
+        "Works": { // 직책
             "set2": "Increase HP by 12%.",
             "set4": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by 8%.",
-            "type": ["버프", "미출시"]
+            "type": ["버프"]
         },
-        "Peace": {
+        "Peace": { // 평화
             "set2": "Defense increased by 20%.",
             "set4": "Shield effect increased by 18%.",
             "type": ["빙결"]
         },
-        "Victory": {
+        "Victory": { // 승리
             "set2": "Wind damage increased by 10%.",
             "set4": "Each attack has a 25% fixed probability of causing additional damage equal to 20% of your own attack.",
             "type": ["질풍", "디버프"]
         },
-        "Worry": {
+        "Worry": { // 우려
             "set2": "Increases SP Recovery by 80%.",
             "set4": "When entering battle immediately recovers 25% of HIGHLIGHT charge, doesn't stack.",
             "type": ["HL 25%","미출시"]
         },
-        "Defeat": {
+        "Defeat": { // 좌절
             "set2": "Increases Ailment Accuracy Rate by 15%.",
             "set4": "Increases fire damage to enemies affected by ailments by 20%.",
             "type": ["화염", "디버프", "미출시"]
         },
-        "Opulence": {
+        "Opulence": { // 화려
             "set2": "Ice DMG increased by 10%.",
             "set4": "Follow-up attack damage is increased by 40%.",
             "type": ["빙결","추가 효과"]
         },
-        "Success": {
+        "Success": { // 개선
             "set2": "Increases Crit Rate by 7.5%.",
             "set4": "Follow Up Attack Damage is increased by 40%.",
             "type": ["추가 효과", "미출시"]
         },
-        "Repression": {
+        "Repression": { // 억압
             "set2": "Increase Physical DMG by 10%.",
             "set4": "Gain [Resentment] after every hit of skill damage: Increase ATK by 5% for 2 turn up to 6 stacks.",
-            "type": ["물리", "미출시"]
+            "type": ["물리"]
         },
-        "Courage": {
+        "Courage": { // 용맹
             "set2": "Physical damage increased by 10%.",
             "set4": "Crit DMG is increased by 30%, lasting for 2 rounds; the same effect will be obtained again after causing a critical hit.",
             "type": ["물리", "전격"]
         },
-        "Virtue": {
+        "Virtue": { // 미덕
             "set2": "Increase Bless DMG by 10%.",
             "set4": "Increase Bless skill CRIT by 12% when your HP% is not less than 50%.",
-            "type": ["축복","미출시"]
+            "type": ["축복"]
         },
-        "Hindrance": {
+        "Hindrance": { // 방해
             "set2": "Curse damage increased by 10%.",
             "set4": "Increase skill damage to enemies with debuffs by 20%.",
             "type": ["주원"]
         },
-        "Renewal": {
+        "Renewal": { // 변환
             "set2": "Electric damage increased by 10%.",
             "set4": "After any party member uses electric skills, the user's own electric damage will be increased by 9%, up to 3 stacks.",
             "type": ["전격"]
         },
-        "Truth": {
+        "Truth": { // 진리
             "set2": "Increase Nuke DMG by 10%.",
             "set4": "Deal 30% ATK damage to the main target if the enemy is inflicted with Elemental Ailments.",
             "type": ["핵열"]
         },
-        "Pleasure": {
+        "Pleasure": { // 환희
             "set2": "Increase Psy DMG by 10%.",
             "set4": "Increase ATK by 15% when dealing Psy damage. Additionally increase ATK by 15%.",
-            "type": ["염동", "미출시"]
+            "type": ["염동"]
         },
-        "Strife": {
+        "Strife": { // 분쟁
             "set2": "Fire damage increased by 10%.",
             "set4": "Attack increased by 15%. If the enemy is weak to fire, the attack will be increased by an additional 15%.",
             "type": ["화염"]
         },
-        "Love": {
+        "Love": { // 사랑
             "set2": "The healing effect is increased by 9%.",
             "set4": "When treating a party member whose health value is not higher than 50%, the healing effect will be increased by 23%.",
             "type": ["치료"]
         },
-        "Futility": {
+        "Futility": { // 헛수고
             "set2": "Increase ATK by 12%.",
             "set4": "Increase Ailment Accuracy by 30% for 2 turns; Gain this effect again when you deal TECHNICAL.",
             "type": ["TECHNICAL", "미출시"]
         },
-        "Despair": {
+        "Despair": { // 실망
             "set2": "Increase ATK by 12%.",
             "set4": "When dealing Persona skill damage, increase the current Persona skill damage by 25% if your last Persona skill damage was a different element.",
             "type": ["만능", "미출시"]
         },
-        "Prudence": {
+        "Prudence": { // 신중
             "set2": "Decrease SPD by 3, Increase ATK by 18%.",
             "set4": "Increase DMG Dealt by 16%.",
             "type": ["버프", "미출시"]
         },
-        "Fixation": {
+        "Fixation": { // 고집집
             "set2": "Increase ATK by 12%.",
             "set4": "Increase ATK by 25% for 3 turns; Gain this effect again when you use Theurgy.",
             "type": ["버프", "미출시"]
         },
-        "Transformation": {
+        "Transformation": { // 변화
             "set2": "Electric damage increased by 10%.",
             "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
             "type": ["전격", "미출시"]
         },
-        "Sorrow": {
+        "Sorrow": { // 슬픔
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 3 turns; Gain this effect again when you use HIGHLIGHT.",
             "type": ["주원", "미출시"]
@@ -314,17 +314,17 @@ const enRevelationData = {
             "Worry": "Increases CRIT DMG by 15%/ 30%/ 45% when you have 100%/ 150%/ 200% SP Recovery.",
             "type": ["미출시"]
         },
-        "Integrity": {
+        "Integrity": { // 진정성
             "Works": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 80% of your Healing Bonus.",
             "Fixation": "After using Theurgy, increase all Thieves' DMG Dealt by 10% for 3 turns.",
-            "type": ["미출시"]
+            //"type": ["미출시"]
         },
-        "Resolve": {
+        "Resolve": { // 결심 
             "Virtue": "Increase DMG Bonus by 10%/20%/30% when you reached 6000/9000/12000 HP.",
             "Works": "When equipped by Navigator Thieves: Decrease the main target's DEF by 10% for 2 turns when inflicting debuffs.",
             "Prudence": "At the start of battle, if your SPD is at the 3rd/4th slot, then additionally increase own ATK by 24%/30%.",
-            "type": ["미출시"]
+            //"type": ["미출시"]
         },
         "Acceptance": {
             "Peace": "Increase DEF by 40% for 2 turns when attacked.",
@@ -336,7 +336,7 @@ const enRevelationData = {
             "Peace": "After granting Shield, increase the target's DEF by 7% for 2 turns up to 3 stacks.",
             "Futility": "Increase all Thieves' DMG Dealt to enemies under TECHNICAL Ailment by 10%, can't be triggered again."
         },
-        "Freedom": {
+        "Freedom": { // 자유
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
             "Success": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
             "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%.",
@@ -347,11 +347,11 @@ const enRevelationData = {
             "Courage": "Increase Physical and Electric DMG by 12%. Increase the effect to 24% when there's only 1 enemy.",
             "Love": "Increase Healing Effect by 28% for 2 turns after landing a Crit."
         },
-        "Wisdom": {
+        "Wisdom": { // 지혜
             "Repression": "Increase Physical DMG and Ailment Accuracy Rate by 20% when [Resentment] is not less than 5 stacks.",
             "Virtue": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Ailment Accuracy Rate.",
-            "type": ["미출시"]
+            // "type": ["미출시"]
         }
     }
 };

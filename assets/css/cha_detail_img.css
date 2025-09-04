@@ -132,3 +132,7 @@
 .character-images img[src*="야오링 - 맹파.webp"]{ scale: 1.12; position: relative; bottom: 15px; }
 
 .character-images img[src*="하루나 - 다에이라.webp"]{ scale: 1.1; position: relative; left: 40px; bottom: 40px; }
+
+.character-images img[src*="카타야마.webp"]{ scale: 1.03; position: relative; right:10px}
+
+.character-images img[src*="카타야마 - 키스킬 릴라.webp"]{ scale: 1.5; position: relative; left: 60px; }

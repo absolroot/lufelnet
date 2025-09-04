@@ -541,26 +541,26 @@ const enCharacterSkillsData = {
     "리코": {
         "name": "Riko Tanemura",
         "skill1": {
-            "name": "Crimson Shadow Arts",
+            "name": "Scattered Plum Blossoms",
             "element": "버프광역",
             "type":"디버프",
             "cool": 4,
-            "description": "Reduces all enemies' Defense by 10.0%/10.0%/10.8%/10.8%. If Riko's Speed is over 100, every additional 10 points reduces Defense by an extra 4.9%, up to 29.4%/32.3%/31.8%/34.7%. Lasts for 2 turns. At the same time, the main target's 『Weak Point』 is exposed."
+            "description": "Decrease all foes' Defense by 10.0%/10.0%/10.8%/10.8% for 2 turns.\nWhen Riko's Speed is at 100 or more, decrease Defense by 4.9% for every 10 points of Speed over 100, up to 29.4%/32.3%/31.8%/34.7%.\nAlso inflict Insight on the main target."
         },
         "skill2": {
-            "name": "Illusion of Plum Blossoms",
+            "name": "Dreams in the Mist ",
             "element": "버프광역",
             "type":"디버프",
             "cool": 8,
-            "description": "Increases damage taken by all enemies by 10.5%/11.6%/11.3%/12.4% for 2 turns. When an allied Phantom Thief reduces down gauge or knocks an enemy down, the cooldown of this skill is reduced by 1 action. When the cooldown reaches 0 actions, this skill automatically activates once."
+            "description": "Increase all foes' damage taken by 10.5%/11.6%/11.3%/12.4% for 2 turns.\nWhen an ally inflicts weakness damage with a skill, or knocks down a foe, decrease cooldown time by 1. When cooldown time reaches 0, activate this skill."
         },
         "skill3": {
-            "name": "Gentle Drizzle",
+            "name": "Verngale Petals",
             "element": "버프광역",
             "type":"버프",
             "cool": 8,
             "unlock": "『Intel』 stacks ≥ 5",
-            "description": "Activation Condition: 『Intel』 stacks ≥ 5\nConsumes all 『Intel』 to grant all allies 『Arrogance』 and heal the main target by 12.7%/12.7%/13.7%/13.7% of HP.\n『Arrogance』: Increases damage dealt by 12.6%/13.8%/13.6%/14.8%, with additional damage bonuses for each 『Intel』 consumed (if Riko's Speed is over 100, every additional 10 points increases damage by 1.05%, up to 6.3%/6.9%/6.8%/7.4%). Lasts for 1 turn."
+            "description": "Spend all Intel stacks to grant Fair Winds to party for 1 turn and restore targeted ally's HP by 12.7%/12.7%/13.7%/13.7%.\nFair Winds: Increase damage to foes by 12.6%/13.9%/13.6%/14.9%. Increase more based on Riko's Speed and the number of Intel stacks spent. If Riko's Speed is above 100, increase damage by 1.05% for every 10 points of Speed over 100, up to 6.3%/6.9%/6.8%/7.4%."
         },
         "skill_highlight": {
             "name": "Attribute Boost",
@@ -569,14 +569,14 @@ const enCharacterSkillsData = {
             "description": "Increases all allies' corresponding attribute stats by 15% of the Revealed Phantom Thief's attributes."
         },
         "passive1": {
-            "name": "Butterfly's Dream",
+            "name": "Springtime Tempest",
             "element": "패시브",
-            "description": "At battle start, if Riko's Speed exceeds 100, for each point above 100, all Phantom Thieves gain +6 HP, +2 ATK, and +2 DEF, up to a maximum of +360 HP, +120 ATK, and +120 DEF."
+            "description": "At the start of battle, if Riko's Speed is above 100, increase party's HP by 6, Attack by 2, and Defense by 2 for every 1 point of Speed above 100.\nIncrease HP up to 360, Attack up to 120, and Defense up to 120."
         },
         "passive2": {
-            "name": "Song of the Crane",
+            "name": "Plum Blossom Glory",
             "element": "패시브",
-            "description": "All enemies take 60.0% more damage from ONEMORE and All-Out Attacks."
+            "description": "Increase 1 More and All-Out Attack damage by 60.0%."
         }
     },
     "리코·매화": {
@@ -790,43 +790,43 @@ const enCharacterSkillsData = {
     "아야카": {
         "name": "Ayaka Sakai",
         "skill1": {
-            "name": "Passionate Sonata",
+            "name": "Distortion",
             "element": "전격광역",
             "type":"광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 85.4%/94.1%/90.7%/99.4% of Ayaka Sakai's ATK as Elec damage to all enemies. If there is an 『Enthusiastic Audience』, they deal an additional 83.3%/91.8%/88.4%/96.9% of their ATK as Elec damage to the main target once."
+            "description": "Deal Electric damage to all foes equal to 85.4%/94.2%/90.6%/99.4% of Attack. 80% chance to inflict Shock on the main target for 2 turns.\nIf an ally has Costar, deal bonus Electric damage to the main target equal to 83.3%/91.8%/88.4%/96.9% of that ally's Attack (1 hit)."
         },
         "skill2": {
-            "name": "Improvised Solo",
+            "name": "Unison Notes",
             "element": "버프",
             "type":"버프",
             "sp": 20,
             "cool": 0,
-            "description": "Selects 1 ally to become an 『Enthusiastic Audience』, increasing their ATK by 24% of Ayaka Sakai's ATK for 3 turns (up to 976/1076/1036/1136). Only one 『Enthusiastic Audience』 can exist at a time."
+            "description": "Grant Costar to 1 ally, and increase their Attack by 24% of Ayaka's Attack (up to 1220/1345/1295/1420) for 3 turns.\nOnly 1 ally can be a Costar at a time."
         },
         "skill3": {
-            "name": "Finale: Resonance Activation",
+            "name": "Catchy Hook",
             "element": "버프",
             "type":"버프",
             "sp": 25,
             "cool": 1,
-            "description": "Selects 1 ally to immediately cast their HIGHLIGHT skill. The damage of this HIGHLIGHT is increased by 78.1%/86.1%/82.9%/90.9%. HIGHLIGHTs triggered this way do not count towards the character’s HIGHLIGHT cooldown. If the target is an S.E.E.S. member, the effect changes to a 20.7% boost to their next Theurgy final damage."
+            "description": "Immediately activate an ally's Highlight, and increase its damage by 78.1%/86.1%/82.9%/90.9%.\nThis skill does not affect the target's Highlight cooldown time, even if it activates a Highlight."
         },
         "skill_highlight": {
             "element": "버프광역",
             "type":"버프",
-            "description": "For 4 Phantom Thief actions, all allies receive a 45.5%/50.1%/48.3%/52.9% damage bonus. During this period, allies recover 10% HIGHLIGHT energy after each action, up to 40% total."
+            "description": "For 4 ally actions, increase party's damage by 45.5%/50.1%/48.3%/52.9%.\nWhile active, fill Highlight gauge by 10% after each ally action (up to 40%)."
         },
         "passive1": {
-            "name": "Accent",
+            "name": "Backing Track",
             "element": "패시브",
-            "description": "When an ally Phantom Thief uses HIGHLIGHT/Theurgy, that Phantom Thief’s ATK is immediately increased by 24.0% for 1 turn. If that ally is the Enthusiastic Audience, the effect is increased by 1.5x."
+            "description": "When an ally uses a Highlight, increase target's Attack by 24.0% for 1 turn.\nWhen the target has Costar, increase effects by 1.5 times."
         },
         "passive2": {
-            "name": "Stroke",
+            "name": "Chorus Effect",
             "element": "패시브",
-            "description": "After an ally Phantom Thief uses HIGHLIGHT/Theurgy, Ayaka Sakai instantly restores 15.0% of her ATK + 1350 HP to the ally with the lowest HP ratio."
+            "description": "After an ally uses a Highlight, the ally with the lowest HP recovers HP equal to 15.0% of Ayaka's Attack + 1350."
         }
     },
     "야오링·사자무": {

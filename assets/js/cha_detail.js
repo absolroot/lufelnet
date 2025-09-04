@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const valueElement = level.querySelector('.value');
                 let statValue = character.minimum_stats[levels[index]] || '-';
-                if(character.minimum_stats_glb){
+                if(character.minimum_stats_glb && currentLang != 'kr'){
                     statValue = character.minimum_stats_glb[levels[index]] || '-';
                 }
                 

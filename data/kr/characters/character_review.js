@@ -2,6 +2,11 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
+    "카타야마":{ name_en: "Kumi Katayama", name_jp: "片山 久未", codename: "BLITZ",
+        review: `한국 서버에 정식 출시(09.11)되지 않았습니다. 내용이 언제든 변경될 수 있습니다.`,
+        review_en: `Not officially released in Korea; translation in progress.`,
+        review_jp: `韓国では正式に発売されていないため、翻訳作業中です。`,
+    },
 "미유·여름": { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
         review: `
 바다의 영역 속에서 아군의 턴 종료마다 **공격할 때마다 강해지는 추가 효과**로 적을 지속적으로 공격한다.
@@ -834,6 +839,11 @@ When the weapon is upgraded to **R5**, it grants 76% HL gauge.
 Combined with a Revelation that provides 25% gauge, this enables **HL activation immediately at battle start**.
 
 For this reason, the unusual setup known as **A1R5** is considered a highly efficient form of character enhancement.
+
+---
+
+Since Skill 1 received a buff that added an **Shock** effect, you might also consider **Ailment Accuracy** as a sub-options.
+
 `,
     review_jp: `
 HL（HIGHLIGHT）をコントロールする独自のメカニズムによって、**P5Xにおいて圧倒的な位置を占めるバッファー**です。
@@ -861,6 +871,10 @@ HL（HIGHLIGHT）をコントロールする独自のメカニズムによって
 武器を**R5まで強化**するとHLゲージを76%提供します。25%のゲージを提供する啓示セットと組み合わせれば、**戦闘開始直後にHLを使用可能**となります。
 
 このため、**A1R5**という特異な形態が、効率的なキャラクター強化手段として評価されています。
+
+---
+
+**スキル1**がバフを受けて**感電**が追加されたため、サブステータスとして**状態異常命中**を考慮することもできる。
 `
     },
     "안": { name_en: "Ann Takamaki", name_jp: "高巻 杏", codename: "PANTHER",

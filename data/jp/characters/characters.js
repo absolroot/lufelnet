@@ -2,14 +2,14 @@ const characterList = {
     mainParty: [
         "렌", "루페르", "레오", "류지", "마코토", "모르가나",
         "모토하", "몽타뉴", "미나미", "슌",
-        "세이지", "안",  "야오링", 
+        "세이지", "아야카", "안",  "야오링", 
         "원더", "유스케", "유키미", "유이 YUI",
         "키요시", "치즈코", "토모코","토시야",
         "하루나"
         // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
     ],
     supportParty: [
-        "유우미", "미유", "카요"
+        "유우미", "리코", "미유", "카요"
         // P3R 서포트 캐릭터 제외: "마나카" (P3R 관련)
     ]
 };
@@ -22,47 +22,53 @@ const characterData = {
         "persona": "",
         "release_order": 0
     },
+    "아야카": {
+        "release_order": 9
+    },
+    "리코": {
+        "release_order": 8
+    },
     "유우미":{
         "role": "",
         "tag": "",
         "persona": "",
-        "release_order": 4
+        "release_order": 7
     },
     "마코토": {
         "role": "",
         "tag": "",
         "persona": "",
-        "release_order": 3
+        "release_order": 6
     },
     "치즈코": {
         "role": "",
         "tag": "",
         "persona": "",
-        "release_order": 3
+        "release_order": 5
     },
     "유스케": {
         "role": "",
         "tag": "",
         "persona": "",
-        "release_order": 2
+        "release_order": 4
     },
     "유이 YUI": {
         "role": "",
         "tag": "",
         "persona": "",
-        "release_order": 1
+        "release_order": 3
     },
     "미나미": {
         "role": "",
         "tag": "",
         "persona": "",
-        "release_order": 1
+        "release_order": 2
     },
     "렌": {
         "role": "",
         "tag": "",
         "persona": "アルセーヌ",
-        "release_order": 0
+        "release_order": 1
     },
     "루페르": {
         "role": "",

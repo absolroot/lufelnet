@@ -241,28 +241,25 @@ const enCharacterWeaponData = {
     "리코": {
         "name": "Riko Tanemura",
         "weapon4-1": {
-            "name": "Moonlight Silver Ring",
+            "name": "Moonlight Needle",
             "health": 1838,
             "attack": 549,
             "defense": 320,
-            "skill_name": "Moon in the Water",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time a 『Weak Point』 is broken, all allies' ATK permanently increases by 3.5%/4.6%/4.6%/5.7%/5.7%/6.8%/6.8% (up to 5 stacks)."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For each Insight stack spent, permanently increase party's Attack by 3.5%/4.6%/4.6%/5.7%/5.7%/6.8%/6.8%. Stacks up to 5 times."
         },
         "weapon4-2": {
-            "name": "Plum Blossom Legend",
+            "name": "Red Plum Blossom",
             "health": 1981,
             "attack": 554,
             "defense": 334,
-            "skill_name": "Flower Bud",
-            "description": "SPD increases by 4.6/4.6/5.9/5.9/7.2/7.2/8.5. Each time a 『Weak Point』 is broken, all allies gain one of the following effects for 2 turns: ATK +7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0%, DEF +11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0%, or HP +7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0%. At the same time, Riko has a fixed 5.0%/6.7%/6.7%/8.3%/8.3%/10.0%/10.0% chance to gain 1 extra 『Intel』."
+            "description": "Increase Speed by 4.6/4.6/5.9/5.9/7.2/7.2/8.5. For each Insight stack spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0% (2 turns)\nIncrease Defense by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% (2 turns)\nIncrease max HP by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0% (2 turns)\nAlso, 5.0%/6.7%/6.7%/8.3%/8.3%/10.0%/10.0% chance to gain 1 Intel stack."
         },
         "weapon5-1": {
-            "name": "Ninja·Wings of the Sky",
+            "name": "Kunoichi: Sky's Edge",
             "health": 2299,
             "attack": 687,
             "defense": 400,
-            "skill_name": "Shadow Dance",
-            "description": "SPD increases by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. Every 2 『Weak Points』 broken grants 2/3/3/4/4/5/5 extra 『Intel』. At the same time, all allies gain a 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% damage bonus for 1 turn. 『Intel』 stack limit increases to 11/12/12/13/13/14/14."
+            "description": "Increase Speed by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. For every 2 Insight stack spent, gain 2/3/3/4/4/5/5 Intel stacks. Also, increase party's damage by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% for 1 turn. Increase max stacks of Intel to 11/12/12/13/13/14/14."
         }
     },
     "리코·매화": {
@@ -363,20 +360,18 @@ const enCharacterWeaponData = {
     "아야카": {
         "name": "Ayaka Sakai",
         "weapon4-1": {
-            "name": "Rock'n Roll Solo",
+            "name": "Rock 'n' Roller",
             "health": 1823,
             "attack": 570,
             "defense": 310,
-            "skill_name": "Storm Rhythm",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After using 『Finale: Resonance Drive』, ATK increases by 28.0%/36.0%/36.0%/44.0%/44.0%/52.0%/52.0% for 2 turns."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter using Catchy Hook, increase Attack by 28.0%/36.0%/36.0%/44.0%/44.0%/52.0%/52.0% for 2 turns."
         },
         "weapon5-1": {
-            "name": "Shining Star",
+            "name": "Superstar",
             "health": 2279,
             "attack": 713,
             "defense": 387,
-            "skill_name": "Fervent Audience",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. At the start of battle, instantly gain 40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0% HL energy. 『Enthusiastic Fan』 ATK increases by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%, and each time an ally uses HL, 『Enthusiastic Fan』 ATK increases by 5.0%/6.4%/6.4%/7.9%/7.9%/9.4%/9.4% (up to 3 stacks)."
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. At the start of battle, fill Highlight Gauge by 40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%.\nIncrease Costar's Attack by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%. Each time an ally uses a Highlight, increase Costar's Attack by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%. Stacks up to 3 times."
         }
     },
     "야오링·사자무": {

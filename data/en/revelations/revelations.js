@@ -98,7 +98,7 @@ const enRevelationData = {
     },
     "main": {
         "Perseverance" : ["Sorrow","Transformation"],
-        "Hope" : ["Works","Fixation"],
+        "Hope" : ["Works","Fixation","Transformation"],
         "Creation": ["Worry","Reconcilation"],
         "Awareness": ["Truth","Control","Hindrance"],
         "Departure": ["Control","Prosperity","Hindrance"],
@@ -115,7 +115,7 @@ const enRevelationData = {
     },
     "sub": {
         "Sorrow": ["Perseverance"],
-        "Transformation": ["Perseverance"],
+        "Transformation": ["Perseverance","Hope"],
         "Prudence": ["Resolve"],
         "Fixation": ["Integrity","Hope"],
         "Futility": ["Faith"],
@@ -282,6 +282,7 @@ const enRevelationData = {
         "Hope": {
             "Works": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
             "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%.",
+            "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack.", 
             "type": ["미출시"]
         },
         "Departure": {

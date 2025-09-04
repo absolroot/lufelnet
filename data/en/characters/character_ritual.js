@@ -2,6 +2,23 @@ const enCharacterRitualData = {
     "원더": {
         "name": "Wonder"
     },
+    "카타야마": {
+        "name": "Kumi Katayama",
+        "r0": "Efficient Guidance",
+        "r0_detail": "After using [Passionate Whirlwind Slash], Kumi Katayama unlocks and can use [Secret Art: Flash Kick].\nUsing [Secret Art: Flash Kick] ignores enemy resistances and greatly reduces Down Value. Additionally, her applied [Deep Wound] DEF reduction effect is increased by 10%, plus an extra 2.22% for every 10 SPD (up to 40%).",
+        "r1": "Evil Unforgiven",
+        "r1_detail": "When knocking down an enemy, permanently reduces their maximum Down Value by 1.\n[Break] is enhanced, increasing target’s Crit Mult taken by 30%.\nWhen dealing Elec DMG, has 100% base chance to inflict Shock.",
+        "r2": "Guided by Justice",
+        "r2_detail": "When knocking down an enemy with a skill, increases the target’s [Down Special Attack] taken by 10% for 1 turn, and permanently increases all allies’ ATK by 10% (max 3 stacks).",
+        "r3": "Hot-Blooded Teacher",
+        "r3_detail": "Increases the level of [Passionate Whirlwind Slash] and [Judgment Thunderstrike] by 3 (up to level 15).",
+        "r4": "Shining Radiance",
+        "r4_detail": "HIGHLIGHT effect enhanced: After activating HIGHLIGHT, the next enemy you knock down permanently takes 20% more DMG (not stackable).",
+        "r5": "Peerless Teacher",
+        "r5_detail": "Increases the level of [Secret Art: Flash Kick] and [Combat Technique] by 3 (up to level 15).",
+        "r6": "Immortal Teacher’s Spirit",
+        "r6_detail": "At the start of battle, Kumi Katayama gains 2 stacks of [Burning Soul].\nEvery 2 Persona skills used grants 1 stack of [Burning Soul] (max 3 stacks).\nAt the start of her turn, consumes 1 stack to greatly enhance herself for 1 turn:\n· ATK +50%\n· Crit Rate +10%\n· Crit Mult +30%\nHIGHLIGHT can crit. Targets with [Deep Wound] take +30% more DMG, and those with [Break] take +20% more [Down Special Attak].\nWhen taking fatal DMG, consumes 1 stack of [Burning Soul] to nullify it (once per battle)."
+    },
     "미유·여름": {
         "name": "Miyu Sahara·Summer",
         "r0": "Call of the Waves",

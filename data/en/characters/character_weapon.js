@@ -2,6 +2,23 @@ const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "카타야마": {
+        "name": "Kumi Katayama",
+        "weapon4-1": {
+            "name": "Volt Red Heart",
+            "health": 1791,
+            "attack": 565,
+            "defense": 317,
+            "description": "ATK +12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When knocking down an enemy, ATK +7.5%/9.8%/9.8%/12.0%/12.0%/14.2%/14.2% for 1 turn (max 22.5%/29.2%/29.2%/36.0%/36.0%/42.7%/42.7%)."
+        },
+        "weapon5-1": {
+            "name": "Iron Oath Wolf Cavalier",
+            "health": 2239,
+            "attack": 706,
+            "defense": 396,
+            "description": "SPD +15.0/15.0/20.0/20.0/25.0/25.0/30.0. When using [Secret Art: Flash Kick], Crit Rate +9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0% for 2 turns. On knocking down an enemy, their Crit Mult taken increases by 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% for 1 turn."
+        }
+    },
     "미유·여름": {
         "name": "Miyu Sahara Summer",
         "weapon4-1": {

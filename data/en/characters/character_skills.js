@@ -2,6 +2,52 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "카타야마": {
+        "name": "Kumi Katayama",
+        "skill1": {
+            "name": "Passionate Whirlwind Slash",
+            "element": "전격광역",
+            "type": "AoE DMG",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deals 101.7%/112.1%/108.0%/118.4% ATK as Elec DMG to all enemies and inflicts [Deep Wound] for 2 turns.\n[Deep Wound]: DEF -9.8%/10.8%/10.4%/11.4% + an extra -2.22% per 10 SPD (max -39.0%/43.0%/41.4%/45.4%). DMG taken +7.8%/8.6%/8.3%/9.1% + extra +1.78% per 10 SPD (max 31.2%/34.4%/33.2%/36.4%).\nIf in [Overlimit], this skill deals +30% DMG.\nUnlocks [Secret Art: Flash Kick]."
+        },
+        "skill2": {
+            "name": "Judgment Thunderstrike",
+            "element": "전격광역",
+            "type": "AoE DMG",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deals 135.5%/149.3%/143.8%/157.7% ATK as Elec DMG to all enemies. On hit, reduces Down Value by 1 regardless of weakness and inflicts [Deep Wound] for 1 turn.\nIf in [Overlimit], reduces an additional 3 Down Value and applies [Break] for 1 turn.\n[Break]: [Down Special Attack] taken +0.56% per 10 SPD (max 9.8%/10.8%/10.4%/11.4%). DMG taken +1.33% per 10 SPD (max 23.4%/25.8%/24.9%/27.3%)."
+        },
+        "skill3": {
+            "name": "Secret Art: Flash Kick",
+            "element": "전격광역",
+            "type": "AoE DMG",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deals 141.9%/156.5%/150.6%/165.2% ATK as Elec DMG to all enemies. On hit, reduces 5 Down Value regardless of weakness and applies [Break] for 1 turn.\nIf this skill knocks down an enemy, grants [Overlimit] for 2 turns.\n[Overlimit]: Enhances the next [Passionate Whirlwind Slash] and [Judgment Thunderstrike]."
+        },
+        "skill_highlight": {
+            "name": "HIGHLIGHT",
+            "element": "전격광역",
+            "type": "AoE DMG",
+            "sp": 0,
+            "cool": 0,
+            "description": "Deals 317.6%/350.1%/337.1%/369.7% ATK as Elec DMG to all enemies. 50% base chance to inflict Shock (1 turn).\nAfter activation, the next enemy you knock down permanently loses 29.3%/32.3%/31.1%/34.1% DEF (not stackable)."
+        },
+        "passive1": {
+            "name": "Discipline",
+            "element": "패시브",
+            "description": "When allies attack Downed enemies, their ATK increases by 30.0%."
+        },
+        "passive2": {
+            "name": "Hot-Blooded",
+            "element": "패시브",
+            "description": "During battle, if SPD > 100, every point above 100 increases ATK by 24 (max 1920)."
+        }
+    },
+
     "미유·여름": {
         "name": "Miyu Sahara Summer",
         "skill1": {

@@ -1641,7 +1641,7 @@ const personaData = {
                 "자신이 스킬 시전 시, 2턴 동안 모든 동료의 축복 중첩 수에 따라 주는 축복 대미지가 4% 증가한다 (8회 중첩 가능). 다른 축복 속성 아군은 해당 효과의 50%를 획득한다. 스킬 시전 시, 축복 중첩 수가 3중첩 이상인 괴도의 공격력이 15% 증가하며 2턴 동안 지속된다."
             ],
             effects_en: [
-                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on party's, up to 8 stacks. For allies with other Bless elements, gains 50% of the effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
+                "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on party's, up to 8 stacks. Other bless allies gains 50% of this effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
             ],
             effects_jp: [
                 "攻撃力が24.9%上昇する。自身がスキルを発動する時、味方全体の祝印の数に応じて(最大8つまで)、2ターンの間、祝福ダメージが4%上昇する。さらに2ターンの間、祝印の数が3つ以上の味方の攻撃力が15%上昇する。"
@@ -1653,7 +1653,7 @@ const personaData = {
             name_en: "Shining Salvation",
             name_jp: "光り輝く裁済",
             effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
-            effect_en: "Deals 79.4% ATK Bless dmg to all foes and gains 2 stacks of Bless. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
+            effect_en: "Deals 79.4% ATK Bless dmg to all foes and grants 2 stacks of Blessing to all allies. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
             effect_jp: "全ての敵に79.4% ATKの祝福属性ダメージを与え、味方全体に祝福重複2重複を付与する。自分は祝福重複ごとにスキルダメージが5%増加し、最大25%増加する。",
             priority: 1,
             icon: "축복광역"

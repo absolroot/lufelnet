@@ -645,6 +645,94 @@ const defenseCalcData = [
         note: "축복 속성 한정"
     },
     {
+        id: "katayama1",
+        charName: "카타야마",
+        charImage: "카타야마.webp",
+        type: "스킬1",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
+        skillName: "열혈 회전베기",
+        options: [
+            "LV10",
+            "LV10+심상5",
+            "LV13",
+            "LV13+심상5"
+        ],
+        values: {
+            "LV10": 48.8,
+            "LV10+심상5": 53.8,
+            "LV13": 51.8,
+            "LV13+심상5": 56.8
+        },
+        defaultOption: "LV13+심상5",
+        value: 56.8,
+        duration: "2턴",
+        note: "스킬2와 중복 불가"
+    },
+    {
+        id: "katayama2",
+        charName: "",
+        charImage: "",
+        type: "스킬2",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
+        skillName: "심판의 뇌격",
+        options: [
+            "LV10",
+            "LV10+심상5",
+            "LV13",
+            "LV13+심상5"
+        ],
+        values: {
+            "LV10": 48.8,
+            "LV10+심상5": 53.8,
+            "LV13": 51.8,
+            "LV13+심상5": 56.8
+        },
+        defaultOption: "LV13+심상5",
+        value: 56.8,
+        duration: "1턴",
+        note: "스킬1과 중복 불가"
+    },
+    {
+        id: "katayama3",
+        charName: "",
+        charImage: "",
+        type: "HIGHLIGHT",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
+        skillName: "HIGHLIGHT",
+        options: [
+            "LV10",
+            "LV10+심상5",
+            "LV13",
+            "LV13+심상5"
+            ],
+        values: {
+            "LV10": 29.3,
+            "LV10+심상5": 32.3,
+            "LV13": 31.1,
+            "LV13+심상5": 34.1
+        },
+        defaultOption: "LV13+심상5",
+        value: 34.1,
+        duration: "-",
+        note: "이후 적 다운 시킬 경우"
+    },
+    {
+        id: "katayama4",
+        charName: "",
+        charImage: "",
+        type: "의식0",
+        target: "광역",
+        skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+        skillName: "고효율 지휘",
+        options: [],
+        value: 50.0,
+        duration: "",
+        note: "중상"
+    },
+    {
         id: "minami_sum1",
         charName: "미나미·여름",
         charImage: "미나미·여름.webp",

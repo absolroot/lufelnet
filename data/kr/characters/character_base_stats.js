@@ -15,6 +15,20 @@ const basicStatsData = {
         sp_recover: 0,
         HP_recover: 0
     },
+    "카타야마": {
+        a0_lv1: {
+            attack: 137,
+            defense: 69,
+            HP: 393,
+            SP: 100,
+            speed: 107.0,
+            crit_rate: 5,
+            crit_mult: 150
+        },
+        awake7: {
+            speed: 125.8
+        }
+    },
     "미유·여름": { 
         a0_lv1: {
             attack: 105,

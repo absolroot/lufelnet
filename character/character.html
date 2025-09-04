@@ -2139,6 +2139,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         });
     };
 
+    // 공통 번역 유틸로 적용 함수 위임 (중복 로직 제거)
+    /*
+    try {
+        applyTranslations = function() {
+            try { if (window.I18NUtils && typeof I18NUtils.applyCommonSectionLabels === 'function') { I18NUtils.applyCommonSectionLabels(); } } catch(e) { console.warn('[I18N:applyCommonSectionLabels]', e); }
+            try {
+                if (typeof window.translateStatTexts === 'function') {
+                    window.translateStatTexts();
+                } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
+                    I18NUtils.translateStatTexts();
+                }
+            } catch(e) { console.warn('[I18N:translateStatTexts]', e); }
+        };
+    } catch(e) { console.warn('[I18N:override-applyTranslations]', e); }*/
     // 추천 페르소나와 파티 로드 함수
     function loadRecommendations(characterName) {
         if (!characterName || !recommendParty[characterName]) {

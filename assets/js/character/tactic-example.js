@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const matched = [];
             const pageSize = 100;
             let offset = 0;
-            for (let page = 0; page < 20 && matched.length < 3; page++) {
+            for (let page = 0; page < 20; page++) {
                 const { data, error } = await supabase
                     .from('tactics')
                     .select('id,title,author,created_at,url,query,region,tactic_type')
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                     .range(offset, offset + pageSize - 1);
                 if (error || !Array.isArray(data) || data.length === 0) break;
                 data.forEach(t => {
-                    if (matched.length >= 3) return;
                     const q = (typeof t.query === 'string' ? (t.query.startsWith('{') ? JSON.parse(t.query) : null) : t.query);
                     if (Array.isArray(q?.party) && q.party.some(p => p.name === characterName)) {
                         matched.push({ ...t, query: q });
@@ -81,6 +80,46 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
 
             if (matched.length > 0) {
+                // 정렬: 스포일러 수(오름차순) → 언어 우선순위 → 날짜 최신순
+                const normalizeRegion = (region) => {
+                    const r = String(region || '').toLowerCase();
+                    if (r === 'sea' || r === 'glb' || r === 'global') return 'en';
+                    if (r === 'kr' || r === 'en' || r === 'jp') return r;
+                    return 'en';
+                };
+                const languageRank = (region) => {
+                    const r = normalizeRegion(region);
+                    if (currentLang === 'kr') return r === 'kr' ? 0 : 1;
+                    if (currentLang === 'jp') return r === 'jp' ? 0 : 1;
+                    return r === 'en' ? 0 : 1;
+                };
+                const countSpoilers = (q) => {
+                    try {
+                        if (!q || !Array.isArray(q.party)) return 0;
+                        if (currentLang === 'kr') return 0;
+                        let cnt = 0;
+                        q.party.forEach(m => {
+                            const name = (m && typeof m.name === 'string') ? m.name.trim().replace(/\u200B/g,'') : '';
+                            if (!name || name === '원더' || name === characterName) return;
+                            if (!(typeof characterData !== 'undefined' && characterData[name])) return;
+                            const released = ((typeof currentLangCharacterList !== 'undefined') && (currentLangCharacterList.mainParty || []).includes(name)) ||
+                                             ((typeof currentLangCharacterList !== 'undefined') && (currentLangCharacterList.supportParty || []).includes(name));
+                            if (!released) cnt += 1;
+                        });
+                        return cnt;
+                    } catch(_) { return 0; }
+                };
+                matched.sort((a, b) => {
+                    const sa = countSpoilers(a.query);
+                    const sb = countSpoilers(b.query);
+                    if (sa !== sb) return sa - sb;
+                    const la = languageRank(a.region);
+                    const lb = languageRank(b.region);
+                    if (la !== lb) return la - lb;
+                    const da = new Date(a.created_at).getTime();
+                    const db = new Date(b.created_at).getTime();
+                    return db - da;
+                });
                 const list = document.getElementById('tactic-examples-list');
                 const wrap = document.getElementById('character-tactic-examples');
                 if (wrap) wrap.style.display = '';

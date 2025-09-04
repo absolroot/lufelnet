@@ -2149,31 +2149,52 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const data = recommendParty[characterName];
         document.getElementById('recommended-sections').style.display = 'block';
 
+        // 추천 페르소나/무기 표시 여부 결정
+        const personaCardEl = document.querySelector('.recommended-persona-card');
+        const personaContentEl = document.getElementById('recommended-persona-content');
+        const hasWeapon = Array.isArray(data.weapon) && data.weapon.some(function(w){ return typeof w === 'string' && w.trim().length > 0; });
+        const hasPersona = Array.isArray(data.persona) && data.persona.some(function(category){
+            return Array.isArray(category.list) && category.list.some(function(p){ return typeof p === 'string' && p.trim().length > 0; });
+        });
+
         // 섹션 제목 다국어 지원
         updateSectionTitles();
 
-        // Add note about unreleased personas for non-Korean languages (only if not already added)
-        const currentLang = getCurrentLanguage();
-        if (currentLang !== 'kr' && !document.querySelector('.unreleased-note')) {
-            const noteContainer = document.createElement('div');
-            noteContainer.className = 'unreleased-note';
-            noteContainer.style.fontSize = '0.9em';
-            noteContainer.style.color = '#888';
-            noteContainer.style.marginBottom = '15px';
-            noteContainer.style.fontStyle = 'italic';
-            
-            const noteText = document.createElement('p');
-            noteText.textContent = currentLang === 'en' 
-                ? 'Note: Some recommended personas & weapons may not be released yet in your region.'
-                : '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。';
+        // persona 또는 weapon 둘 중 하나라도 없으면 카드 비표시
+        if (hasWeapon && hasPersona) {
+            if (personaCardEl) personaCardEl.style.display = '';
+
+            // 다국어 안내 노트 (비한국어) - 페르소나 카드가 표시될 때만 추가
+            const currentLang = getCurrentLanguage();
+            if (currentLang !== 'kr' && !document.querySelector('.unreleased-note')) {
+                const noteContainer = document.createElement('div');
+                noteContainer.className = 'unreleased-note';
+                noteContainer.style.fontSize = '0.9em';
+                noteContainer.style.color = '#888';
+                noteContainer.style.marginBottom = '15px';
+                noteContainer.style.fontStyle = 'italic';
                 
-            noteContainer.appendChild(noteText);
-            document.getElementById('recommended-persona-content').parentNode.insertBefore(noteContainer, document.getElementById('recommended-persona-content'));
+                const noteText = document.createElement('p');
+                noteText.textContent = currentLang === 'en' 
+                    ? 'Note: Some recommended personas & weapons may not be released yet in your region.'
+                    : '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。';
+                    
+                noteContainer.appendChild(noteText);
+                if (personaContentEl && personaContentEl.parentNode) {
+                    personaContentEl.parentNode.insertBefore(noteContainer, personaContentEl);
+                }
+            }
+
+            // 추천 페르소나/무기 로드
+            loadRecommendedPersona(data.persona);
+        } else {
+            // 둘 다 없으면 카드 숨김 및 내용 초기화, 기존 안내문도 제거
+            if (personaCardEl) personaCardEl.style.display = 'none';
+            if (personaContentEl) personaContentEl.innerHTML = '';
+            const existingNote = document.querySelector('.unreleased-note');
+            if (existingNote && existingNote.parentNode) existingNote.parentNode.removeChild(existingNote);
         }
 
-        // 추천 페르소나 로드
-        loadRecommendedPersona(data.persona);
-        
         // 추천 파티 로드
         loadRecommendedParty(data.party);
     }
@@ -2305,6 +2326,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' },
             'CRITICAL' : { 'en': 'CRITICAL', 'jp': 'クリティカル' }
         };
+        
+        // personaData가 없거나 비어있으면 이후 렌더링 생략
+        if (!Array.isArray(personaData) || personaData.length === 0) {
+            return;
+        }
 
         personaData.forEach(category => {
             const attributeSection = document.createElement('div');

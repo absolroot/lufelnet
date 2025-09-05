@@ -7,30 +7,168 @@ class DefenseCalc {
         this.finalDefenseCoefSpan = document.getElementById('finalDefenseCoef');
         this.revelationPenetrateInput = document.getElementById('revelationPenetrate');
         this.explanationPowerInput = document.getElementById('explanationPower');
+        this.baseDefenseInput = document.getElementById('baseDefenseInput');
+        this.defenseCoefInput = document.getElementById('defenseCoefInput');
+        this.reduceSecondLine = document.getElementById('reduceSecondLine');
+        this.reduceSecondSum = document.getElementById('reduceSecondSum');
+        this.reduceSecondTarget = document.getElementById('reduceSecondTarget');
+        this.pierceSecondLine = document.getElementById('pierceSecondLine');
+        this.pierceSecondSum = document.getElementById('pierceSecondSum');
+        this.pierceSecondTarget = document.getElementById('pierceSecondTarget');
+        this.orderSwitchBtn = document.getElementById('orderSwitchBtn');
+        this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소
+        this.reduceTotal = 0;
+        this.penetrateTotal = 0;
+        this.finalDefenseCoefValue = document.getElementById('finalDefenseCoefValue');
         this.selectedItems = new Set(); // 초기 선택 항목 설정
         this.selectedPenetrateItems = new Set(); // 관통 선택 항목
+        this.buildDatasets();
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
         this.initializeTable(); // 그 다음 테이블 초기화
         this.initializePenetrateTable(); // 관통 테이블 초기화
         this.initializeMobileHeader();
         this.initializePenetrateInputs();
+
+        if (this.orderSwitchBtn) {
+            this.orderSwitchBtn.addEventListener('click', () => {
+                this.isPierceFirst = !this.isPierceFirst;
+                this.applyOrderUI();
+                this.updateDamageCalculation();
+            });
+        }
+
+        // 초기 표시 강제: 합계/목표 라벨/구분자/목표를 항상 보이도록 설정
+        this.applyOrderUI();
+        // 초기 값은 실제 계산 결과로 채워지도록 함
+    }
+
+    // 새 데이터 포맷(객체) 지원: 그룹 오브젝트, 플랫 배열, id 인덱스 구성
+    buildDatasets() {
+        // 전역 상수 penetrateData / defenseCalcData 가 객체라고 가정 (키=그룹명, 값=아이템 배열)
+        this.penetrateGroups = (typeof penetrateData === 'object' && !Array.isArray(penetrateData)) ? penetrateData : {};
+        this.reduceGroups = (typeof defenseCalcData === 'object' && !Array.isArray(defenseCalcData)) ? defenseCalcData : {};
+
+        this.penetrateOrder = Object.keys(this.penetrateGroups);
+        this.reduceOrder = Object.keys(this.reduceGroups);
+
+        this.penetrateFlat = [];
+        this.reduceFlat = [];
+        this.idToPenetrateItem = new Map();
+        this.idToReduceItem = new Map();
+
+        // Helper to push items and index by id
+        const absorb = (groupsObj, flat, idMap) => {
+            Object.keys(groupsObj).forEach(groupName => {
+                const list = groupsObj[groupName] || [];
+                list.forEach(item => {
+                    if (!item) return;
+                    // 주입: 그룹명 보관(행 렌더링/이미지 추론용)
+                    // if (!item.charName) item.charName = groupName !== '계시' && groupName !== '원더' ? groupName : '';
+                    console.log(item.charName);
+                    if (!item.charImage && item.charName) item.charImage = `${item.charName}.webp`;
+                    flat.push(item);
+                    if (item.id !== undefined) idMap.set(item.id, item);
+                });
+            });
+        };
+
+        absorb(this.penetrateGroups, this.penetrateFlat, this.idToPenetrateItem);
+        absorb(this.reduceGroups, this.reduceFlat, this.idToReduceItem);
     }
 
     initializeTable() {
-        defenseCalcData.forEach(data => {
-            const row = this.createTableRow(data);
-            this.tableBody.appendChild(row);
-        });
+        this.renderAccordion(this.tableBody, false);
         // 초기 합계 계산
         this.updateTotal();
     }
 
     initializePenetrateTable() {
-        penetrateData.forEach(data => {
-            const row = this.createTableRow(data, true);
-            this.penetrateTableBody.appendChild(row);
-        });
+        this.renderAccordion(this.penetrateTableBody, true);
         this.updatePenetrateTotal();
+    }
+
+    // 데이터 -> 캐릭터별 그룹(등장 순서 유지)
+    groupByCharacter(dataList) {
+        const groupOrder = [];
+        const groups = new Map();
+        dataList.forEach(item => {
+            const groupKey = (item.charName && item.charName.trim()) ? item.charName.trim() : '-';
+            if (!groups.has(groupKey)) {
+                groups.set(groupKey, []);
+                groupOrder.push(groupKey);
+            }
+            groups.get(groupKey).push(item);
+        });
+        return { groupOrder, groups };
+    }
+
+    // 아코디언 렌더링 (그룹 헤더 + 각 row)
+    renderAccordion(tbody, isPenetrate) {
+        // 기존 내용 비움
+        while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+
+        const order = isPenetrate ? this.penetrateOrder : this.reduceOrder;
+        const groupsObj = isPenetrate ? this.penetrateGroups : this.reduceGroups;
+
+        order.forEach(groupName => {
+            const items = groupsObj[groupName] || [];
+
+            // 그룹 헤더 행
+            const headerTr = document.createElement('tr');
+            headerTr.className = 'group-header';
+            headerTr.setAttribute('data-group', groupName);
+
+            // 단일 셀 헤더
+            const fullTd = document.createElement('td');
+            fullTd.className = 'group-header-cell';
+            fullTd.setAttribute('colspan', '8');
+
+            const inner = document.createElement('div');
+            inner.className = 'group-header-inner';
+
+            const caret = document.createElement('span');
+            caret.className = 'accordion-caret open';
+            caret.textContent = '▾';
+            inner.appendChild(caret);
+
+            const infoWrap = document.createElement('span');
+            infoWrap.className = 'group-info';
+            const img = document.createElement('img');
+            img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+            img.className = 'group-avatar';
+            infoWrap.appendChild(img);
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'group-name';
+            nameSpan.textContent = groupName;
+            infoWrap.appendChild(nameSpan);
+            inner.appendChild(infoWrap);
+            fullTd.appendChild(inner);
+            headerTr.appendChild(fullTd);
+
+            // 토글 동작: 같은 그룹의 데이터 행 show/hide
+            headerTr.addEventListener('click', () => {
+                const isOpen = caret.classList.contains('open');
+                caret.classList.toggle('open', !isOpen);
+                caret.textContent = isOpen ? '▸' : '▾';
+                items.forEach(it => {
+                    if (it.__rowEl) it.__rowEl.style.display = isOpen ? 'none' : '';
+                });
+            });
+
+            tbody.appendChild(headerTr);
+
+            // 데이터 행들
+            items.forEach(item => {
+                const row = this.createTableRow(item, isPenetrate);
+                // 초기엔 펼침 상태
+                row.style.display = '';
+                row.classList.add('group-row');
+                row.setAttribute('data-group', groupName);
+                // 참조 저장해 토글에 사용
+                Object.defineProperty(item, '__rowEl', { value: row, writable: false });
+                tbody.appendChild(row);
+            });
+        });
     }
 
     createTableRow(data, isPenetrate = false) {
@@ -69,27 +207,7 @@ class DefenseCalc {
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
         
-        // 캐릭터 이미지 열
-        const charImgCell = document.createElement('td');
-        charImgCell.className = 'char-img-column';
-        if (data.charImage) {
-            const charImg = document.createElement('img');
-            charImg.src = `${BASE_URL}/assets/img/character-half/${data.charImage}`;
-            charImgCell.appendChild(charImg);
-        }
-        row.appendChild(charImgCell);
-        
-        // 괴도 이름 열
-        const charNameCell = document.createElement('td');
-        charNameCell.className = 'char-name-column';
-        charNameCell.textContent = data.charName;
-        row.appendChild(charNameCell);
-        
-        // 분류 열
-        const typeCell = document.createElement('td');
-        typeCell.className = 'type-column';
-        typeCell.textContent = data.type;
-        row.appendChild(typeCell);
+        // char-img-column / char-name-column 제거: 데이터 행에서는 표시 안 함
         
         // 목표 열
         const targetCell = document.createElement('td');
@@ -117,10 +235,45 @@ class DefenseCalc {
         }
         row.appendChild(skillIconCell);
         
-        // 스킬 이름 열
+        // 스킬 이름 열 (분류 + 이름 결합)
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
-        skillNameCell.textContent = data.skillName;
+        const currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
+        let localizedName = '';
+        if (currentLang === 'en' && data.skillName_en) localizedName = data.skillName_en;
+        else if (currentLang === 'jp' && data.skillName_jp) localizedName = data.skillName_jp;
+        else localizedName = data.skillName || '';
+
+        const typeSpan = document.createElement('span');
+        typeSpan.className = 'skill-type-label';
+        typeSpan.textContent = data.type;
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'skill-name-text';
+        
+        if (currentLang === 'kr') {
+            // KR: 분류 + 이름 모두 표기
+            nameSpan.textContent = localizedName;
+            skillNameCell.appendChild(typeSpan);
+            if (localizedName) {
+                const sep = document.createTextNode(' · ');
+                skillNameCell.appendChild(sep);
+                skillNameCell.appendChild(nameSpan);
+            }
+        } else {
+            // EN/JP: 기본은 분류만, 다국어 이름이 있으면 분류 + 이름
+            if ((currentLang === 'en' && data.skillName_en) || (currentLang === 'jp' && data.skillName_jp)) {
+                nameSpan.textContent = localizedName;
+                skillNameCell.appendChild(typeSpan);
+                const sep = document.createTextNode(' · ');
+                skillNameCell.appendChild(sep);
+                skillNameCell.appendChild(nameSpan);
+            } else {
+                // 분류만 강조
+                typeSpan.classList.add('type-only');
+                skillNameCell.appendChild(typeSpan);
+            }
+        }
         row.appendChild(skillNameCell);
         
         // 옵션 열
@@ -214,18 +367,19 @@ class DefenseCalc {
 
     updateTotal() {
         const total = Array.from(this.selectedItems)
-            .map(id => defenseCalcData.find(d => d.id === id))
-            .reduce((sum, item) => sum + item.value, 0);
-            
-        this.totalValue.textContent = `${total.toFixed(1)}%`;
+            .map(id => this.idToReduceItem.get(id))
+            .filter(Boolean)
+            .reduce((sum, item) => sum + (item.value || 0), 0);
+        this.reduceTotal = Math.max(0, total);
         this.updateDamageCalculation();
     }
 
     updatePenetrateTotal() {
         // 테이블에서 선택된 항목들의 합계
         const tableTotal = Array.from(this.selectedPenetrateItems)
-            .map(id => penetrateData.find(d => d.id === id))
-            .reduce((sum, item) => sum + item.value, 0);
+            .map(id => this.idToPenetrateItem.get(id))
+            .filter(Boolean)
+            .reduce((sum, item) => sum + (item.value || 0), 0);
         
         // 입력 필드의 값 (숫자가 아닌 경우 0으로 처리)
         const revelationValue = parseFloat(this.revelationPenetrateInput.value) || 0;
@@ -233,9 +387,10 @@ class DefenseCalc {
         
         // 전체 합계 계산
         const total = tableTotal + revelationValue + explanationValue;
+        const capped = Math.min(100, Math.max(0, total));
         
         // 합계 표시
-        this.penetrateValue.textContent = `${total.toFixed(1)}%`;
+        this.penetrateTotal = capped;
         
         // 대미지 계산 업데이트
         this.updateDamageCalculation();
@@ -243,11 +398,10 @@ class DefenseCalc {
 
     initializeBossSelect() {
         this.bossSelect = document.getElementById('bossSelect');
-        this.baseDefenseSpan = document.getElementById('baseDefense');
-        this.defenseCoefSpan = document.getElementById('defenseCoef');
         this.damageIncreaseDiv = document.querySelector('.damage-increase');
         this.noDefReduceSpan = document.getElementById('noDefReduce');
         this.withDefReduceSpan = document.getElementById('withDefReduce');
+        this.damageCard = document.querySelector('.top-row-2-damage');
 
         // 보스 선택 옵션 추가
         bossData.forEach(boss => {
@@ -260,70 +414,136 @@ class DefenseCalc {
             this.bossSelect.appendChild(option);
         });
 
-        this.bossSelect.addEventListener('change', () => this.updateDamageCalculation());
+        this.bossSelect.addEventListener('change', () => {
+            const boss = bossData.find(b => b.id === parseInt(this.bossSelect.value));
+            if (boss) {
+                if (this.baseDefenseInput) {
+                    this.baseDefenseInput.value = boss.baseDefense === '-' ? '' : boss.baseDefense;
+                }
+                if (this.defenseCoefInput) {
+                    this.defenseCoefInput.value = boss.defenseCoef === '-' ? '' : boss.defenseCoef;
+                }
+            }
+            this.updateDamageCalculation();
+        });
         
-        // 초기 계산 실행
+        // 입력 변경 시 실시간 반영
+        if (this.baseDefenseInput) {
+            this.baseDefenseInput.addEventListener('input', () => this.updateDamageCalculation());
+        }
+        if (this.defenseCoefInput) {
+            this.defenseCoefInput.addEventListener('input', () => this.updateDamageCalculation());
+        }
+
+        // 초기: 기본 선택된 보스 값으로 입력 필드 채우기
+        const initBoss = bossData.find(b => b.id === parseInt(this.bossSelect.value));
+        if (initBoss) {
+            if (this.baseDefenseInput) this.baseDefenseInput.value = initBoss.baseDefense === '-' ? '' : initBoss.baseDefense;
+            if (this.defenseCoefInput) this.defenseCoefInput.value = initBoss.defenseCoef === '-' ? '' : initBoss.defenseCoef;
+        }
+
         this.updateDamageCalculation();
     }
 
     updateDamageCalculation() {
-        const selectedBossId = this.bossSelect.value;
-        if (!selectedBossId) {
+        // 입력 값 확인
+        const baseDefense = parseFloat(this.baseDefenseInput && this.baseDefenseInput.value);
+        const defenseCoef = parseFloat(this.defenseCoefInput && this.defenseCoefInput.value);
+
+        if (!isFinite(baseDefense) || !isFinite(defenseCoef)) {
             this.resetDamageDisplay();
             return;
         }
 
-        const boss = bossData.find(b => b.id === parseInt(selectedBossId));
-        if (!boss) {
-            this.resetDamageDisplay();
-            return;
+        const penetrateTotal = Math.max(0, this.penetrateTotal || 0);
+        const reduceTotalRaw = Math.max(0, this.reduceTotal || 0);
+
+        let afterStep1Coef = defenseCoef; // 중간 단계 방어 계수
+        let afterPierceCoef = 0;          // 관통 적용 후 방어 계수
+        let finalCoef = 0;                // 최종 방어 계수
+
+        if (this.isPierceFirst) {
+            // 1단계: 관통
+            afterStep1Coef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
+            // 2단계: 방깎
+            const reduceApplied = Math.min(reduceTotalRaw, afterStep1Coef);
+            finalCoef = Math.max(0, afterStep1Coef - reduceApplied);
+            afterPierceCoef = afterStep1Coef; // 관통 적용 후 계수
+
+            // 두 번째 카드(방깎)의 합계/목표 표시
+            const reduceLabel = document.getElementById('reduceSumTargetLabel');
+            const pierceLabel = document.getElementById('pierceSumTargetLabel');
+            if (reduceLabel) reduceLabel.style.visibility = 'visible';
+            if (pierceLabel) pierceLabel.style.visibility = 'visible';
+            // 값 표시(두 번째 카드만 "합계 / 목표")
+            this.setSumTarget('reduce', reduceTotalRaw, afterStep1Coef);
+            this.setSumTarget('pierce', penetrateTotal, Number.NaN);
+            // 항상 합계/목표 보임 (비대상 카드는 '-' 처리)
+        } else {
+            // 1단계: 방깎
+            const reduceApplied = Math.min(reduceTotalRaw, defenseCoef);
+            afterStep1Coef = Math.max(0, defenseCoef - reduceApplied);
+            // 2단계: 관통
+            afterPierceCoef = penetrateTotal >= 100 ? 0 : afterStep1Coef * (100 - penetrateTotal) / 100;
+            finalCoef = afterPierceCoef;
+
+            // 두 번째 카드(관통)의 합계/목표 표시
+            const reduceLabel = document.getElementById('reduceSumTargetLabel');
+            const pierceLabel = document.getElementById('pierceSumTargetLabel');
+            if (reduceLabel) reduceLabel.style.visibility = 'visible';
+            if (pierceLabel) pierceLabel.style.visibility = 'visible';
+
+            // 관통 필요 목표 수치 = 100 - (방깎합계 / 보스방어계수) * 100 (0~100 범위)
+            let pierceTarget = 100;
+            if (isFinite(defenseCoef) && defenseCoef > 0) {
+                pierceTarget = 100 - (reduceTotalRaw / defenseCoef) * 100;
+                pierceTarget = Math.max(0, Math.min(100, pierceTarget));
+            } else {
+                pierceTarget = 100;
+            }
+            // 값 표시(두 번째 카드만 "합계 / 목표")
+            this.setSumTarget('pierce', penetrateTotal, pierceTarget);
+            this.setSumTarget('reduce', reduceTotalRaw, Number.NaN);
+            // 항상 합계/목표 보임 (비대상 카드는 '-' 처리)
         }
 
-        // 기본 방어력과 방어 계수 표시 처리
-        this.baseDefenseSpan.textContent = boss.baseDefense === '-' ? '미확인' : boss.baseDefense;
-        this.defenseCoefSpan.textContent = boss.defenseCoef === '-' ? '미확인' : `${boss.defenseCoef}%`;
+        // 최종 방어 계수 표기 (새 카드)
+        if (this.finalDefenseCoefValue) this.finalDefenseCoefValue.textContent = `${finalCoef.toFixed(1)}%`;
 
-        // 기본 방어력이 미확인인 경우 계산 중단
-        if (boss.baseDefense === '-') {
-            this.damageIncreaseDiv.textContent = '-';
-            this.noDefReduceSpan.textContent = '-';
-            this.withDefReduceSpan.textContent = '-';
-            this.finalDefenseCoefSpan.textContent = '-';
-            document.getElementById('finalDefenseCoef2').textContent = '-';
-            return;
-        }
-
-        const baseDefense = parseFloat(boss.baseDefense);
-        const defenseCoef = parseFloat(boss.defenseCoef);
-        const defenseReduce = Math.min(parseFloat(this.totalValue.textContent), defenseCoef);
-        
-        // 관통 효과 적용
-        const penetrateTotal = parseFloat(this.penetrateValue.textContent);
-        const modifiedDefenseCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
-        
-        // 최종 방어 계수 표시
-        this.finalDefenseCoefSpan.textContent = `${modifiedDefenseCoef.toFixed(1)}%`;
-        
-        // 방어력 감소 적용 방어 계수 계산 및 표시
-        const finalDefenseCoef2 = Math.max(0, modifiedDefenseCoef - defenseReduce);
-        document.getElementById('finalDefenseCoef2').textContent = `${finalDefenseCoef2.toFixed(1)}%`;
-        
-        // 방어력 감소 미적용
-        const noReduceDamage = 1-this.calculateDamage(baseDefense, defenseCoef);
-        
-        // 방어력 감소 적용 (최소값은 0으로 제한)
-        const finalDefenseCoef = Math.max(0, modifiedDefenseCoef - defenseReduce);
-        const withReduceDamage = 1-this.calculateDamage(baseDefense, finalDefenseCoef);
-        
-        // 최종 대미지 증가율
-        const damageIncrease = ((withReduceDamage / noReduceDamage)-1) * 100;
+        // 대미지 계산
+        const noReduceDamage = 1 - this.calculateDamage(baseDefense, defenseCoef);
+        const withReduceDamage = 1 - this.calculateDamage(baseDefense, finalCoef);
+        const damageIncrease = ((withReduceDamage / noReduceDamage) - 1) * 100;
 
         // 화면 업데이트
-        this.damageIncreaseDiv.textContent = damageIncrease >= 0 
-            ? `+${damageIncrease.toFixed(1)}%`
-            : `${damageIncrease.toFixed(1)}%`;
-        this.noDefReduceSpan.textContent = noReduceDamage.toFixed(3);
-        this.withDefReduceSpan.textContent = withReduceDamage.toFixed(3);
+        if (this.damageIncreaseDiv) {
+            this.damageIncreaseDiv.textContent = damageIncrease >= 0
+                ? `+${damageIncrease.toFixed(1)}%`
+                : `${damageIncrease.toFixed(1)}%`;
+        }
+        if (this.noDefReduceSpan) {
+            this.noDefReduceSpan.textContent = isFinite(noReduceDamage) ? noReduceDamage.toFixed(3) : '-';
+        }
+        if (this.withDefReduceSpan) {
+            this.withDefReduceSpan.textContent = isFinite(withReduceDamage) ? withReduceDamage.toFixed(3) : '-';
+        }
+        if (this.damageCard) this.damageCard.style.display = '';
+
+        // 초기 로드 또는 어떤 시점이든 현재 순서 기준으로 비대상/대상 카드 목표 노출 맞춤
+        if (this.isPierceFirst) {
+            // 방깎 목표 = 관통 적용 후 방어계수 (afterStep1Coef)
+            this.setSumTarget('reduce', reduceTotalRaw, afterStep1Coef);
+            this.setSumOnly('pierce', penetrateTotal);
+        } else {
+            // 관통 목표 = 100 - (방깎합계/보스방어계수)*100
+            let pierceTarget = 100;
+            if (isFinite(defenseCoef) && defenseCoef > 0) {
+                pierceTarget = 100 - (reduceTotalRaw / defenseCoef) * 100;
+                pierceTarget = Math.max(0, Math.min(100, pierceTarget));
+            }
+            this.setSumTarget('pierce', penetrateTotal, pierceTarget);
+            this.setSumOnly('reduce', reduceTotalRaw);
+        }
     }
 
     calculateDamage(baseDefense, defenseCoef) {
@@ -333,13 +553,13 @@ class DefenseCalc {
     }
 
     resetDamageDisplay() {
-        this.baseDefenseSpan.textContent = '-';
-        this.defenseCoefSpan.textContent = '-';
         this.damageIncreaseDiv.textContent = '-';
         this.noDefReduceSpan.textContent = '-';
         this.withDefReduceSpan.textContent = '-';
         this.finalDefenseCoefSpan.textContent = '-';
         document.getElementById('finalDefenseCoef2').textContent = '-';
+        if (this.reduceSecondLine) this.reduceSecondLine.style.display = 'none';
+        if (this.pierceSecondLine) this.pierceSecondLine.style.display = 'none';
     }
 
     initializeMobileHeader() {
@@ -423,6 +643,73 @@ class DefenseCalc {
         // 입력 필드 이벤트 리스너 추가
         this.revelationPenetrateInput.addEventListener('input', () => this.updatePenetrateTotal());
         this.explanationPowerInput.addEventListener('input', () => this.updatePenetrateTotal());
+    }
+
+    applyOrderUI() {
+        // 항상 합계/목표 라벨과 구분자/목표를 표시 상태로 유지
+        const reduceLabel = document.getElementById('reduceSumTargetLabel');
+        const pierceLabel = document.getElementById('pierceSumTargetLabel');
+        const pierceSep = document.getElementById('pierceValueSep');
+        const pierceTarget = document.getElementById('pierceValueTarget');
+        const reduceSep = document.getElementById('reduceValueSep');
+        const reduceTarget = document.getElementById('reduceValueTarget');
+
+        if (reduceLabel) reduceLabel.style.visibility = 'visible';
+        if (pierceLabel) pierceLabel.style.visibility = 'visible';
+        if (reduceSep) reduceSep.style.display = '';
+        if (reduceTarget) reduceTarget.style.display = '';
+        if (pierceSep) pierceSep.style.display = '';
+        if (pierceTarget) pierceTarget.style.display = '';
+    }
+
+    setSumOnly(type, sum) {
+        if (type === 'pierce') {
+            const vSum = document.getElementById('pierceValueSum');
+            const vSep = document.getElementById('pierceValueSep');
+            const vTarget = document.getElementById('pierceValueTarget');
+            if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
+            if (vSep) vSep.style.display = '';
+            if (vTarget) { vTarget.textContent = '-'; vTarget.style.display = ''; }
+        } else {
+            const vSum = document.getElementById('reduceValueSum');
+            const vSep = document.getElementById('reduceValueSep');
+            const vTarget = document.getElementById('reduceValueTarget');
+            if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
+            if (vSep) vSep.style.display = '';
+            if (vTarget) { vTarget.textContent = '-'; vTarget.style.display = ''; }
+        }
+    }
+
+    setSumTarget(type, sum, target) {
+        if (type === 'pierce') {
+            const vSum = document.getElementById('pierceValueSum');
+            const vSep = document.getElementById('pierceValueSep');
+            const vTarget = document.getElementById('pierceValueTarget');
+            if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
+            if (vSep) vSep.style.display = '';
+            if (vTarget) {
+                if (isFinite(target)) {
+                    vTarget.textContent = `${target.toFixed(1)}%`;
+                } else {
+                    vTarget.textContent = '-';
+                }
+                vTarget.style.display = '';
+            }
+        } else {
+            const vSum = document.getElementById('reduceValueSum');
+            const vSep = document.getElementById('reduceValueSep');
+            const vTarget = document.getElementById('reduceValueTarget');
+            if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
+            if (vSep) vSep.style.display = '';
+            if (vTarget) {
+                if (isFinite(target)) {
+                    vTarget.textContent = `${target.toFixed(1)}%`;
+                } else {
+                    vTarget.textContent = '-';
+                }
+                vTarget.style.display = '';
+            }
+        }
     }
 
 }

@@ -36,47 +36,84 @@ redirect_from:
     
     <!-- top card container -->
     <div class="top-cards">
-        <!-- boss select card -->
-        <div class="boss-card card-style">
-            <h2 id="boss-info-title">보스 정보</h2>
-            <div class="boss-select-container">
-                <select id="bossSelect">
-                    <option value="" id="bossSelectPlaceholder">보스 선택</option>
-                </select>
-                <div class="boss-stats">
-                    <div><span id="baseDefenseLabel">· 기본 방어력:</span> <span id="baseDefense">-</span></div>
-                    <div><span id="defenseCoefLabel">· 보스 방어 계수:</span> <span id="defenseCoef">-</span></div>
+        <!-- Row 1: Boss card full width -->
+        <div class="top-row-1">
+            <div class="boss-card card-style">
+                <h2 id="boss-info-title">보스 정보</h2>
+                <div class="boss-select-container">
+                    <select id="bossSelect">
+                        <option value="" id="bossSelectPlaceholder">보스 선택</option>
+                    </select>
+                </div>
+                <div class="boss-custom-inputs">
+                    <div class="input-group">
+                        <label for="baseDefenseInput" id="baseDefenseLabel">· 기본 방어력:</label>
+                        <input type="number" id="baseDefenseInput" min="0" step="1" placeholder="미확인" />
+                    </div>
+                    <div class="input-group">
+                        <label for="defenseCoefInput" id="defenseCoefLabel">· 보스 방어 계수:</label>
+                        <div class="inline-input">
+                            <input type="number" id="defenseCoefInput" min="0" step="0.1" placeholder="미확인" />
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label id="baseFinalDamageLabel">· 기본 최종 대미지 배수:</label>
+                        <div class="inline-input">
+                            <span id="noDefReduce">-</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-                
-        <!-- penetrate total card -->
-        <div class="stat-card card-style">
-            <h2 id="penetrate-total-title">관통 합계</h2>
-            <div class="penetrate-value">0%</div>
-            <div class="penetrate-value-description">
-                <div class="final-defense-coef"><span id="finalDefenseCoefLabel">관통 적용 방어 계수:</span> <span id="finalDefenseCoef">-</span></div>
-                <div id="penetrateDesc">※ 방어 계수= 보스 방어 계수 × (100-관통)%</div>
+
+        <!-- Row 2: Step cards with order switch, final coef, final damage -->
+        <div class="top-row-2">
+            <!-- Pierce card (항상 표시, 두 번째 단계일 때만 목표 노출) -->
+            <div class="stat-card card-style step-card" id="cardPierce" style="grid-column: 1;">
+                <h2 id="penetrate-total-title">관통 <span class="tooltip-icon" id="penetrateTooltip" data-tooltip="※ 방어 계수= 보스 방어 계수 × (100-관통)%">?</span></h2>
+                <div class="sum-target-label" id="pierceSumTargetLabel">합계 / 목표</div>
+                <div class="penetrate-value">
+                    <span class="value-sum" id="pierceValueSum">0%</span>
+                    <span class="value-sep" id="pierceValueSep"> / </span>
+                    <span class="value-target" id="pierceValueTarget">-</span>
+                </div>
             </div>
-        </div>
-        
-        <!-- defense reduce total card -->
-        <div class="stat-card card-style">
-            <h2 id="defense-reduce-total-title">방어력 감소 합계</h2>
-            <div class="total-value">0%</div>
-            <div class="defense-reduce-value-description">
-                <div class="final-defense-coef2"><span id="finalDefenseCoef2Label">최종 방어 계수:</span> <span id="finalDefenseCoef2">-</span></div>
-                <div id="defenseReduceDesc">※ 방어 계수= 관통 적용 방어 계수 - 방어력 감소</div>
+
+            <!-- Order Switch (fixed column) -->
+            <div class="order-switch-cell">
+                <button class="order-switch" id="orderSwitchBtn" aria-label="순서 전환" title="순서 전환">
+                    <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" width="28" height="28" aria-hidden="true">
+                        <path d="M8 10H20L16 6" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M16 14L4 14L8 18" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
-        
-        <!-- final damage increase card -->
-        <div class="damage-card card-style">
-            <h2 id="final-damage-increase-title">최종 대미지 증가 <span class="tooltip-icon" id="finalDamageTooltip" data-tooltip="대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]">?</span></h2>
-            <div class="damage-increase"></div>
-            <div class="damage-formula">
-                <div class="formula-row"><span id="baseFinalDamageLabel">· 기본 최종 대미지 배수:</span> <span id="noDefReduce">-</span></div>
-                <div class="formula-row"><span id="withDefReduceLabel">· 방어력 감소 최종 대미지 배수:</span> <span id="withDefReduce">-</span></div>
+
+            <!-- Defense Reduce card (항상 표시, 두 번째 단계일 때만 목표 노출) -->
+            <div class="stat-card card-style step-card" id="cardReduce" style="grid-column: 3;">
+                <h2 id="defense-reduce-total-title">방어력 감소 <span class="tooltip-icon" id="defenseReduceTooltip" data-tooltip="※ 방어 계수= 관통 적용 방어 계수 - 방어력 감소">?</span></h2>
+                <div class="sum-target-label" id="reduceSumTargetLabel">합계 / 목표</div>
+                <div class="total-value">
+                    <span class="value-sum" id="reduceValueSum">0%</span>
+                    <span class="value-sep" id="reduceValueSep"> / </span>
+                    <span class="value-target" id="reduceValueTarget">-</span>
+                </div>
+            </div>
+
+            <!-- Final Defense Coef (col 3) -->
+            <div class="defense-coef-card card-style" id="cardDefenseCoef" style="grid-column: 4;">
+                <h2 id="defense-coef-title">최종 방어력 계수</h2>
+                <div class="defense-coef-value" id="finalDefenseCoefValue">-</div>
+            </div>
+
+            <!-- Final damage (col 4) -->
+            <div class="damage-card card-style top-row-2-damage" style="grid-column: 5; display:none;">
+                <h2 id="final-damage-increase-title">최종 대미지 증가 <span class="tooltip-icon" id="finalDamageTooltip" data-tooltip="대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]">?</span></h2>
+                <div class="damage-increase"></div>
+                <div class="damage-formula">
+                    <!-- <div class="formula-row"><span id="withDefReduceLabel">· 방어력 감소 최종 대미지 배수:</span> <span id="withDefReduce">-</span></div>-->
+                </div>
             </div>
         </div>
     </div>
@@ -107,9 +144,6 @@ redirect_from:
                     <thead>
                         <tr>
                             <th class="check-column">선택</th>
-                            <th class="char-img-column">괴도</th>
-                            <th class="char-name-column"></th>
-                            <th class="type-column">분류</th>
                             <th class="target-column">목표</th>
                             <th class="skill-icon-column"></th>
                             <th class="skill-name-column">이름</th>
@@ -133,9 +167,6 @@ redirect_from:
                     <thead>
                         <tr>
                             <th class="check-column">선택</th>
-                            <th class="char-img-column">괴도</th>
-                            <th class="char-name-column"></th>
-                            <th class="type-column">분류</th>
                             <th class="target-column">목표</th>
                             <th class="skill-icon-column"></th>
                             <th class="skill-name-column">이름</th>
@@ -237,12 +268,14 @@ redirect_from:
                 boss_select: '보스 선택',
                 base_defense: '· 기본 방어력:',
                 defense_coef: '· 보스 방어 계수:',
-                penetrate_total: '관통 합계',
+                penetrate_total: '관통',
                 final_defense_coef_after_pierce: '관통 적용 방어 계수:',
-                penetrate_desc: '※ 방어 계수= 보스 방어 계수 × (100-관통)%',
-                defense_reduce_total: '방어력 감소 합계',
+                sum_target: '합계 / 목표',
+                penetrate_desc: '※ 보스 방어 계수 × (100-관통)%',
+                defense_reduce_total: '방어력 감소',
                 final_defense_coef: '최종 방어 계수:',
-                defense_reduce_desc: '※ 방어 계수= 관통 적용 방어 계수 - 방어력 감소',
+                final_defense_coef_title: '최종 방어력 계수',
+                defense_reduce_desc: '※ 보스 방어 계수 - 방어력 감소',
                 final_damage_increase: '최종 대미지 증가',
                 tooltip_formula: '대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]',
                 base_final_damage: '· 기본 최종 대미지 배수:',
@@ -271,10 +304,12 @@ redirect_from:
                 defense_coef: '· Boss Defense Coefficient:',
                 penetrate_total: 'Total Pierce',
                 final_defense_coef_after_pierce: 'Defense Coef. after Pierce:',
-                penetrate_desc: '※ Defense Coef. = Boss Defense Coef. × (100 - Pierce)%',
+                sum_target: 'Sum / Target',
+                penetrate_desc: '※ Boss Defense Coef. × (100 - Pierce)%',
                 defense_reduce_total: 'Total Defense Reduction',
                 final_defense_coef: 'Final Defense Coef.:',
-                defense_reduce_desc: '※ Defense Coef. = After Pierce Coef. - Defense Reduction',
+                final_defense_coef_title: 'Final Defense Coef.',
+                defense_reduce_desc: '※ Boss Defense Coef. - Defense Reduction',
                 final_damage_increase: 'Final Damage Increase',
                 tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
                 base_final_damage: '· Base final damage mult.:',
@@ -303,10 +338,12 @@ redirect_from:
                 defense_coef: '・ ボス防御係数:',
                 penetrate_total: '貫通合計',
                 final_defense_coef_after_pierce: '貫通適用の防御係数:',
-                penetrate_desc: '※ 防御係数 = ボス防御係数 × (100 - 貫通)%',
+                sum_target: '合計 / 目標',
+                penetrate_desc: '※ ボス防御係数 × (100 - 貫通)%',
                 defense_reduce_total: '防御力減少合計',
                 final_defense_coef: '最終防御係数:',
-                defense_reduce_desc: '※ 防御係数 = 貫通適用の防御係数 - 防御力減少',
+                final_defense_coef_title: '最終防御係数',
+                defense_reduce_desc: '※ ボス防御係数 - 防御力減少',
                 final_damage_increase: '最終ダメージ増加',
                 tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
                 base_final_damage: '・ 基本 最終ダメージ倍率:',
@@ -349,19 +386,37 @@ redirect_from:
 
         // 관통 카드
         const penetrateTitle = document.getElementById('penetrate-total-title');
-        const finalDefenseCoefLabel = document.getElementById('finalDefenseCoefLabel');
         const penetrateDesc = document.getElementById('penetrateDesc');
-        if (penetrateTitle) penetrateTitle.textContent = t.penetrate_total;
-        if (finalDefenseCoefLabel) finalDefenseCoefLabel.textContent = t.final_defense_coef_after_pierce;
+        if (penetrateTitle) {
+            const icon = penetrateTitle.querySelector('.tooltip-icon');
+            penetrateTitle.textContent = t.penetrate_total + ' ';
+            if (icon) penetrateTitle.appendChild(icon);
+        }
+        const penetrateIcon = document.getElementById('penetrateTooltip');
+        if (penetrateIcon) penetrateIcon.setAttribute('data-tooltip', t.penetrate_desc);
         if (penetrateDesc) penetrateDesc.textContent = t.penetrate_desc;
 
         // 방깎 카드
         const defenseReduceTitle = document.getElementById('defense-reduce-total-title');
-        const finalDefenseCoef2Label = document.getElementById('finalDefenseCoef2Label');
         const defenseReduceDesc = document.getElementById('defenseReduceDesc');
-        if (defenseReduceTitle) defenseReduceTitle.textContent = t.defense_reduce_total;
-        if (finalDefenseCoef2Label) finalDefenseCoef2Label.textContent = t.final_defense_coef;
+        if (defenseReduceTitle) {
+            const icon2 = defenseReduceTitle.querySelector('.tooltip-icon');
+            defenseReduceTitle.textContent = t.defense_reduce_total + ' ';
+            if (icon2) defenseReduceTitle.appendChild(icon2);
+        }
+        const defenseReduceIcon = document.getElementById('defenseReduceTooltip');
+        if (defenseReduceIcon) defenseReduceIcon.setAttribute('data-tooltip', t.defense_reduce_desc);
         if (defenseReduceDesc) defenseReduceDesc.textContent = t.defense_reduce_desc;
+
+        // 합계/목표 라벨 다국어
+        const pierceSumTargetLabel = document.getElementById('pierceSumTargetLabel');
+        const reduceSumTargetLabel = document.getElementById('reduceSumTargetLabel');
+        if (pierceSumTargetLabel) pierceSumTargetLabel.textContent = t.sum_target;
+        if (reduceSumTargetLabel) reduceSumTargetLabel.textContent = t.sum_target;
+
+        // 최종 방어력 계수 카드 제목
+        const finalCoefTitle = document.getElementById('defense-coef-title');
+        if (finalCoefTitle) finalCoefTitle.textContent = t.final_defense_coef_title;
 
         // 최종 대미지 카드
         const finalDamageTitle = document.getElementById('final-damage-increase-title');
@@ -396,9 +451,16 @@ redirect_from:
         setTextAll('.duration-column', t.th_duration);
         setTextAll('.note-column', t.th_note);
 
-        // 툴팁 재초기화 (텍스트 변경 반영)
-        if (typeof addTooltips === 'function') {
-            addTooltips();
+        // 툴팁 재초기화 (텍스트 변경 반영) + 제목 아이콘 강제 바인딩
+        //if (typeof addTooltips === 'function') { addTooltips(); }
+        
+        if (typeof bindTooltipElement === 'function') {
+            const tipEls = [
+                document.getElementById('penetrateTooltip'),
+                document.getElementById('defenseReduceTooltip'),
+                document.getElementById('finalDamageTooltip')
+            ];
+            tipEls.forEach(el => { if (el) bindTooltipElement(el); });
         }
     }
 

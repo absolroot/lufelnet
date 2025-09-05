@@ -24,3 +24,12 @@ end
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+
+
+# Gemfile
+gem "listen", "~> 3.8.0"        # 3.9.0 대신 3.8 계열로 고정
+
+group :development do
+  gem "webrick", "~> 1.8"
+  gem "wdm", ">= 0.1.1", platforms: [:mingw, :x64_mingw, :mswin]  # Windows 네이티브 파일 감시
+end

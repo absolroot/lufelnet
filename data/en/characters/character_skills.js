@@ -598,7 +598,7 @@ const enCharacterSkillsData = {
             "element": "버프광역",
             "type":"디버프",
             "cool": 8,
-            "description": "Increase all foes' damage taken by 10.5%/11.6%/11.3%/12.4% for 2 turns.\nWhen an ally inflicts weakness damage with a skill, or knocks down a foe, decrease cooldown time by 1. When cooldown time reaches 0, activate this skill."
+            "description": "Increase all foes' damage taken by 10.5%/11.6%/11.3%/12.4% for 2 turns.\nWhen an ally lowers a foe's Down Points or knocks down a foe, decrease cooldown time by 1. When cooldown time reaches 0, activate this skill."
         },
         "skill3": {
             "name": "Verngale Petals",

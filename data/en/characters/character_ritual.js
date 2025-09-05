@@ -332,7 +332,7 @@ const enCharacterRitualData = {
         "r1": "Hard Rock",
         "r1_detail": "At the start of battle, grant Costar to the ally with the highest Attack for 3 turns (prioritizing Assassins and Sweepers).\nIncrease that ally's critical rate by 15%.",
         "r2": "Crescendo Shout",
-        "r2_detail": "When using Catchy Hook, increase targeted ally's damage by 30% for 1 turn.",
+        "r2_detail": "When using Catchy Hook, increase targeted ally's damage by 30% for 2 turn.",
         "r3": "Amplifier",
         "r3_detail": "Increase the skill levels of Distortion and Catchy Hook by 3.",
         "r4": "Spotlight",

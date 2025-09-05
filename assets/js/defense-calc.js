@@ -127,8 +127,11 @@ class DefenseCalc {
             inner.className = 'group-header-inner';
 
             const caret = document.createElement('span');
-            caret.className = 'accordion-caret open';
-            caret.textContent = '▾';
+            caret.className = 'accordion-caret';
+            const isMobile = window.innerWidth <= 1200;
+            const initiallyOpen = !isMobile || groupName === '계시' || groupName === '원더';
+            caret.classList.toggle('open', initiallyOpen);
+            caret.textContent = initiallyOpen ? '▾' : '▸';
             inner.appendChild(caret);
 
             const infoWrap = document.createElement('span');
@@ -160,8 +163,8 @@ class DefenseCalc {
             // 데이터 행들
             items.forEach(item => {
                 const row = this.createTableRow(item, isPenetrate);
-                // 초기엔 펼침 상태
-                row.style.display = '';
+                // 초기 표시 상태 (모바일: '계시','원더'만 펼침, 데스크탑: 전체 펼침)
+                row.style.display = initiallyOpen ? '' : 'none';
                 row.classList.add('group-row');
                 row.setAttribute('data-group', groupName);
                 // 참조 저장해 토글에 사용

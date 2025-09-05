@@ -26,7 +26,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .damage-formula,.boss-stats{ margin-top: 10px; font-size: 12px !important; line-height: 1.6; color: rgba(255, 255, 255, 0.6); }
 
-.damage-increase { font-size: 36px; font-weight: bold; color: #dd8484; }
+.damage-increase { font-size: 36px; font-weight: bold; color: #ff5151; }
 
 /* Row layouts */
 .top-row-1 { display: grid; grid-template-columns: 1fr; }
@@ -73,13 +73,19 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 /* 최종 방어력 계수 카드 */
 .defense-coef-card { display: flex; flex-direction: column;}
 .defense-coef-card h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); margin: 0 0 8px 0; padding: 10px 0 0 0; }
-.defense-coef-value { font-size: 36px; font-weight: bold; color: #dd8484; }
+.defense-coef-value { font-size: 36px; font-weight: bold; color: #eaeaea; }
 
 /* 모바일 대응 */
 @media (max-width: 1200px) { .top-cards { grid-template-columns: 1fr; }
     .top-row-2 { display:flex; flex-direction: column; gap: 12px; }
     .order-switch { height: 32px; width: 32px; }
     .boss-custom-inputs { grid-template-columns: 1fr; }
+
+    .defense-coef-value, .damage-increase, .penetrate-value,.value-sum { font-size: 24px; }
+    .value-target { font-size: 20px; }
+
+    .top-cards h2 {margin: 0px; padding: 0px;}
+    .defense-coef-card, .damage-card{display: flex; flex-direction: row; align-items: center; gap: 16px; line-height: 1; padding: 20px;}
 }
 
 
@@ -93,7 +99,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .defense-table th, .penetrate-table th,
 .defense-table td, .penetrate-table td { font-size: 13px; padding: 10px; color: rgb(255, 255, 255, 0.4); height: 30px;  /* 셀 높이도 지정 */
 }
-.defense-table tr.group-header .group-header-cell { padding: 0 !important; }
+.defense-table tr.group-header .group-header-cell { padding: 0 !important; border-top: 2px solid #ffffff30 }
 .defense-table tr.group-header .group-header-cell > .group-info { flex: 1 1 auto; }
 .defense-table tr.group-header .group-header-cell > .accordion-caret { flex: 0 0 auto; }
 
@@ -116,11 +122,13 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .skill-icon { width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important; object-fit: contain !important; }
 
+img[src*="item-mind_stat2.png"] { scale: 0.8; }
+img[src*="character-weapon"],img[src*="wonder-weapon"] {scale: 1.1;}
 
-@media (min-width: 1200px) {
-    img[src*="check-off.png"] { width: 16px !important; height: 16px !important; object-fit: contain !important; opacity: 0.6; cursor: pointer; }
-    img[src*="check-on.png"] { width: 20px !important; height: 20px !important; object-fit: contain !important; transform: translateX(-1px) translateY(-0.5px); cursor: pointer; }   
-}
+
+img[src*="check-off.png"] { width: 16px !important; height: 16px !important; object-fit: contain !important; opacity: 0.6; cursor: pointer; padding-left:10px;}
+img[src*="check-on.png"] { width: 20px !important; height: 20px !important; object-fit: contain !important; transform: translateX(-1px) translateY(-0.5px); cursor: pointer; padding-left:10px;}   
+
 
 .option-column select { font-size: 12px; background-color: rgb(0, 0, 0, 0.1); color: rgb(255, 255, 255, 0.4); border: none; border-radius: 4px; cursor: pointer; width: fit-content; padding: 8px 4px !important; }
 
@@ -193,8 +201,10 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .defense-table .target-column { width: 60px; box-sizing: border-box; }
     .defense-table .skill-icon-column { width: 40px; box-sizing: border-box; }
     .defense-table .skill-name-column { width: 240px; box-sizing: border-box; }
+    .defense-table .value-column { width: 60px; box-sizing: border-box; }
     .defense-table .option-column { width: 150px; box-sizing: border-box; }
     .defense-table .duration-column { width: 60px; box-sizing: border-box; }
+    .defense-table .note-column { min-width: 270px; box-sizing: border-box; }
 }
 
 
@@ -270,8 +280,8 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .group-header-inner {padding: 0px !important;}
 
     /* 체크박스 이미지 크기 */
-    img[src*="check-off.png"],
-    img[src*="check-on.png"] { width: 20px !important; height: 20px !important; }
+    img[src*="check-off.png"] { width: 20px !important; height: 20px !important; padding-left:0px;}
+    img[src*="check-on.png"] { width: 25px !important; height: 25px !important; padding-left:0px;}
 }
 
 @media screen and (max-width: 1200px) { .note-column:not(:empty)::before { content: "💬 "; }

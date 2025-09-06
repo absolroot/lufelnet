@@ -1173,8 +1173,10 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/skill-element/물리.png`,
             skillName: "선봉 돌격",
-            options: ["LV12","LV12(황야의 구세주)"],
+            options: ["LV10","LV10(황야의 구세주)","LV12","LV12(황야의 구세주)"],
             values: {
+                "LV10": 30.0,
+                "LV10(황야의 구세주)": 59.9,
                 "LV12": 31.2,
                 "LV12(황야의 구세주)": 62.4
             },

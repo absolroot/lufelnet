@@ -34,11 +34,17 @@
                 const loc = this.lookupWonderLocalization('skill', nameKr);
                 if (loc) { item.skillName_en = loc.en; item.skillName_jp = loc.jp; }
             } else if (type === '페르소나') {
+                const hadUniqueSuffix = (/-\s*고유\s?스킬|-\s*고유스킬/).test(nameKr);
                 const base = nameKr.replace(/\s*-\s*고유\s?스킬/g, '').replace(/\s*-\s*고유스킬/g, '');
                 const loc = this.lookupWonderLocalization('persona', base);
                 if (loc) {
-                    item.skillName_en = `${loc.en} - Unique Skill`;
-                    item.skillName_jp = `${loc.jp} - 固有スキル`;
+                    if (hadUniqueSuffix) {
+                        item.skillName_en = `${loc.en} - Unique Skill`;
+                        item.skillName_jp = `${loc.jp} - 固有スキル`;
+                    } else {
+                        item.skillName_en = loc.en;
+                        item.skillName_jp = loc.jp;
+                    }
                 }
             }
         },

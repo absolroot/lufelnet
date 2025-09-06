@@ -357,6 +357,15 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .penetrate-input-group input { width: 80px; font-size: 13px; }
 }
 
+/* 방깎 커스텀 입력 필드 스타일 */
+.reduce-input-container { padding: 10px 0px 20px 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); flex-wrap: wrap; display: flex; column-gap: 40px; }
+.reduce-input-group { display: flex; align-items: center; margin-bottom: 10px; }
+.reduce-input-group label { width: 140px; color: rgba(255, 255, 255, 0.8); font-size: 14px; }
+.reduce-input-group input { width: 100px; padding: 5px 10px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #dd8484; font-size: 14px; text-align: right; }
+.reduce-input-group input:focus { outline: none; border-color: #dd8484; }
+.reduce-input-group span { margin-left: 5px; color: rgba(255, 255, 255, 0.6); font-size: 14px; }
+@media (max-width: 1200px) { .reduce-input-container { padding: 10px; } .reduce-input-group label { width: 160px; font-size: 13px; } .reduce-input-group input { width: 80px; font-size: 13px; } }
+
 .tooltip-icon { display: inline-flex; bottom:3px; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); color: white; font-size: 10px; margin-left: 8px; cursor: help; position: relative; }
 
 .tooltip-icon:hover::after { content: none; }

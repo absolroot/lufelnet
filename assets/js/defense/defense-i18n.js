@@ -102,7 +102,7 @@
                     boss_info_tip: 'Values are based on the highest difficulty. Even with the same name, each boss can have different Defense values. This is reference data and may not be exact.',
                     tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
                     base_final_damage: '· Base final damage mult.:', with_def_reduce: '· With defense reduction mult.:',
-                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', explanation_power: 'Elucidation Power',
+                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', explanation_power: 'Elucidation Power', other_reduce: 'Other Defense Reduction',
                     th_select: 'Select', th_thief: 'Thief', th_type: 'Type', th_target: 'Target', th_name: 'Name', th_option: 'Option', th_value: 'Value', th_duration: 'Duration', th_note: 'Note'
                 },
                 jp: {
@@ -114,7 +114,7 @@
                     boss_info_tip: '最高難易度を基準とした値です。同じ名前でもボスごとに防御力は異なる場合があります。参考用データであり、正確な数値ではありません。',
                     tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
                     base_final_damage: '・ 基本 最終ダメージ倍率:', with_def_reduce: '・ 防御力減少あり 最終ダメージ倍率:',
-                    tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', explanation_power: '解明の力',
+                    tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', explanation_power: '解明の力', other_reduce: 'その他 防御力減少',
                     th_select: '選択', th_thief: '怪盗', th_type: '分類', th_target: '対象', th_name: '名前', th_option: 'オプション', th_value: '数値', th_duration: '持続時間', th_note: '備考'
                 }
             };
@@ -196,8 +196,10 @@
 
             const revelationPenetrateLabel = document.getElementById('revelationPenetrateLabel');
             const explanationPowerLabel = document.getElementById('explanationPowerLabel');
+            const otherReduceLabel = document.getElementById('otherReduceLabel');
             if (revelationPenetrateLabel) revelationPenetrateLabel.textContent = t.revelation_penetrate;
             if (explanationPowerLabel) explanationPowerLabel.textContent = t.explanation_power;
+            if (otherReduceLabel) otherReduceLabel.textContent = (currentLang==='kr'?'기타 방어력 감소': t.other_reduce);
 
             this.setTextAll('.check-column', t.th_select);
             this.setTextAll('.char-img-column', t.th_thief);

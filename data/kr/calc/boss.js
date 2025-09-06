@@ -299,7 +299,7 @@ const bossData = [
         isSea: false,
         name: "비슈누 / 화신",
         name_en: "비슈누 / Mini",
-        name_jp: "비슈누 / ミニ",
+        name_jp: "비슈누 / 化身",
         icon: "",
         description: "-",
         resistances: {
@@ -323,7 +323,7 @@ const bossData = [
         isSea: false,
         name: "바알",
         name_en: "Baal",
-        name_jp: "バール",
+        name_jp: "バアル",
         icon: "",
         description: "스킬 대미지 또는 디버프를 받을 때마다 [쇠퇴] 중첩\n[쇠퇴] : 3턴 동안 방어력 3% 감소 (최대 15중첩, 45%)\n\n차지 이후 다음 턴 스킬 '마이무르' (단일 딜) 발동,\n[쇠퇴] 10 중첩 이상 시에 차지는 중단되고 '참격'으로 스킬 변경\n공격은 지배, 반항 괴도 우선",
         resistances: {
@@ -346,8 +346,8 @@ const bossData = [
         id: 11,
         isSea: false,
         name: "위타천",
-        name_en: "Idaten",
-        name_jp: "いだてん",
+        name_en: "Kartikeya",
+        name_jp: "カルティケーヤ",
         icon: "",
         description: "가루다'와  '자타유'가 대미지를 받을 때마다\n→ 3턴 동안 해당 괴도의 주는 대미지 4% 증가 (5회 중첩 가능)\n\n'호루스'와 '야타가라스'가 대미지를 받을 때마다\n→ 3턴 동안 해당 괴도의 관통이 2% 증가 (5회 중첩 가능)",
         resistances: {
@@ -370,8 +370,8 @@ const bossData = [
         id: 12,
         isSea: false,
         name: "위타천 / 가루다",
-        name_en: "Idaten / 가루다",
-        name_jp: "いだてん / 가루다",
+        name_en: "Kartikeya / 가루다",
+        name_jp: "カルティケーヤ / 가루다",
         icon: "",
         description: "-",
         resistances: {
@@ -394,8 +394,8 @@ const bossData = [
         id: 13,
         isSea: false,
         name: "위타천 / 자타유",
-        name_en: "Idaten / 자타유",
-        name_jp: "いだてん / 자타유",
+        name_en: "Kartikeya / 자타유",
+        name_jp: "カルティケーヤ / 자타유",
         icon: "",
         description: "-",
         resistances: {
@@ -418,8 +418,8 @@ const bossData = [
         id: 14,
         isSea: false,
         name: "위타천 / 호루스",
-        name_en: "Idaten / 호루스",
-        name_jp: "いだてん / 호루스",
+        name_en: "Kartikeya / 호루스",
+        name_jp: "カルティケーヤ / 호루스",
         icon: "",
         description: "-",
         resistances: {
@@ -442,8 +442,8 @@ const bossData = [
         id: 15,
         isSea: false,
         name: "위타천 / 야타가라스",
-        name_en: "Idaten / 야타가라스",
-        name_jp: "いだてん / 야타가라스",
+        name_en: "Kartikeya / 야타가라스",
+        name_jp: "カルティケーヤ / 야타가라스",
         icon: "",
         description: "-",
         resistances: {
@@ -467,7 +467,7 @@ const bossData = [
         isSea: false,
         name: "야츠카미즈오미츠누",
         name_en: "Yatsukamizu Omitsunu",
-        name_jp: "オミヅヌ",
+        name_jp: "オオミツヌ",
         icon: "",
         description: "페르소나/HIGHLIGHT/추가 효과로 대미지를 받을 때마다\n3턴 동안 받는 해당 속성 대미지가 6% 증가 (8중첩 가능)",
         resistances: {

@@ -182,7 +182,7 @@ const penetrateData = {
             duration: "2턴",
             note: "치료량 초과 시",
             note_en: "Overheal",
-            note_jp: "オーバーヘイル"
+            note_jp: "オーバーヒール"
         }
     ],
     "마사키":[

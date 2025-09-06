@@ -7,6 +7,7 @@ class DefenseCalc {
         this.finalDefenseCoefSpan = document.getElementById('finalDefenseCoef');
         this.revelationPenetrateInput = document.getElementById('revelationPenetrate');
         this.explanationPowerInput = document.getElementById('explanationPower');
+        this.otherReduceInput = document.getElementById('otherReduce');
         this.baseDefenseInput = document.getElementById('baseDefenseInput');
         this.defenseCoefInput = document.getElementById('defenseCoefInput');
         this.reduceSecondLine = document.getElementById('reduceSecondLine');
@@ -593,7 +594,8 @@ class DefenseCalc {
             .map(id => this.idToReduceItem.get(id))
             .filter(Boolean)
             .reduce((sum, item) => sum + (item.value || 0), 0);
-        this.reduceTotal = Math.max(0, total);
+        const extra = parseFloat(this.otherReduceInput && this.otherReduceInput.value) || 0;
+        this.reduceTotal = Math.max(0, total + Math.max(0, extra));
         this.updateDamageCalculation();
     }
 
@@ -844,6 +846,7 @@ class DefenseCalc {
         // 입력 필드 이벤트 리스너 추가
         this.revelationPenetrateInput.addEventListener('input', () => this.updatePenetrateTotal());
         this.explanationPowerInput.addEventListener('input', () => this.updatePenetrateTotal());
+        if (this.otherReduceInput) this.otherReduceInput.addEventListener('input', () => this.updateTotal());
     }
 
     applyOrderUI() {

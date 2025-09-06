@@ -23,6 +23,9 @@ class DefenseCalc {
         this.selectedItems = new Set(); // 초기 선택 항목 설정
         this.selectedPenetrateItems = new Set(); // 관통 선택 항목
         this.buildDatasets();
+        // CSV 기반 이름 매핑 프리로드
+        this._csvNameMap = null; // { krName: { en, jp } }
+        this._csvLoadPromise = null;
         // 원더 번역 주입을 렌더 전에 보장
         try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.enrichDefenseDataWithWonderNames) { DefenseI18N.enrichDefenseDataWithWonderNames(); } } catch(_) {}
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
@@ -83,7 +86,57 @@ class DefenseCalc {
         if (lang === 'en' && boss.name_en) baseName = boss.name_en;
         else if (lang === 'jp' && boss.name_jp) baseName = boss.name_jp;
 
+        // CSV 이름 매핑 적용 (단일/복합 모두). 제공된 name_en/name_jp를 우선 적용한 뒤, 매핑이 가능하면 매핑으로 대체
+        try {
+            if (lang !== 'kr' && typeof baseName === 'string') {
+                const mapped = this.mapNameUsingCsv(baseName, lang);
+                // 매핑 실패 시 원문과 동일 문자열이 돌아오므로, 그 경우에는 덮어쓰지 않음
+                if (mapped && mapped.trim() && mapped !== baseName) baseName = mapped;
+            }
+        } catch(_) {}
+
         return `${prefix}${baseName}`;
+    }
+
+    async ensureCsvNameMapLoaded() {
+        if (this._csvNameMap) return this._csvNameMap;
+        if (!this._csvLoadPromise) {
+            const url = `${BASE_URL}/data/kr/wonder/persona_skill_from.csv?v=${typeof APP_VERSION!== 'undefined' ? APP_VERSION : '1'}`;
+            this._csvLoadPromise = fetch(url)
+                .then(r => r.text())
+                .then(text => {
+                    const map = {};
+                    const lines = text.split(/\r?\n/).filter(l => l.trim().length>0);
+                    // skip header
+                    for (let i=1;i<lines.length;i++) {
+                        const row = lines[i].split(',');
+                        if (row.length < 3) continue;
+                        const kr = row[0]?.trim();
+                        const en = row[1]?.trim();
+                        const jp = row[2]?.trim();
+                        if (kr) map[kr] = { en, jp };
+                    }
+                    this._csvNameMap = map;
+                    return map;
+                })
+                .catch(_=> (this._csvNameMap = {}));
+        }
+        return this._csvLoadPromise;
+    }
+
+    mapNameUsingCsv(nameKr, lang) {
+        if (!nameKr) return null;
+        const map = this._csvNameMap;
+        if (!map) return null;
+        const parts = String(nameKr).split('/').map(s => s.trim()).filter(Boolean);
+        const out = parts.map(part => {
+            const rec = map[part];
+            if (!rec) return part;
+            if (lang === 'en' && rec.en) return rec.en;
+            if (lang === 'jp' && rec.jp) return rec.jp;
+            return part;
+        });
+        return out.join(' / ');
     }
 
     getGroupDisplayName(groupName) {
@@ -584,6 +637,16 @@ class DefenseCalc {
             this.bossSelect.appendChild(option);
         });
 
+        // CSV 이름 맵이 늦게 로드될 수 있으므로, 로드 완료 후 옵션 텍스트를 한 번 더 갱신
+        try {
+            this.ensureCsvNameMapLoaded().then(() => {
+                Array.from(this.bossSelect.options).forEach(opt => {
+                    const boss = bossData.find(b => b.id === parseInt(opt.value));
+                    if (boss) opt.textContent = this.getBossDisplayName(boss);
+                });
+            });
+        } catch(_) {}
+
         this.bossSelect.addEventListener('change', () => {
             const boss = bossData.find(b => b.id === parseInt(this.bossSelect.value));
             if (boss) {
@@ -605,8 +668,10 @@ class DefenseCalc {
             this.defenseCoefInput.addEventListener('input', () => this.updateDamageCalculation());
         }
 
-        // 초기: 기본 선택된 보스 값으로 입력 필드 채우기
+        // 초기: CSV 이름 맵 선로딩 후 기본 선택된 보스 값으로 입력 필드 채우기
         const initBoss = bossData.find(b => b.id === parseInt(this.bossSelect.value));
+        // 비동기 로딩 (백그라운드)
+        try { this.ensureCsvNameMapLoaded(); } catch(_) {}
         if (initBoss) {
             if (this.baseDefenseInput) this.baseDefenseInput.value = initBoss.baseDefense === '-' ? '' : initBoss.baseDefense;
             if (this.defenseCoefInput) this.defenseCoefInput.value = initBoss.defenseCoef === '-' ? '' : initBoss.defenseCoef;

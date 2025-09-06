@@ -64,6 +64,32 @@ const RESISTANCE_ICONS = {
 const bossData = [
     {
         id: 1,
+        isSea: true,
+        name: "단일 보스 (예시)",
+        name_en: "Single Boss (Example)",
+        name_jp: "シングルボス (例)",
+        icon: "",
+        description: "",
+        resistances: {},
+        baseDefense: "855",
+        defenseCoef: "263.2",
+        comment: ""
+    },
+    {
+        id: 2,
+        isSea: true,
+        name: "광역 보스 (예시)",
+        name_en: "Area Boss (Example)",
+        name_jp: "エリアボス (例)",
+        icon: "",
+        description: "",
+        resistances: {},
+        baseDefense: "567",
+        defenseCoef: "263.2",
+        comment: ""
+    },
+    {
+        id: 220,
         isSea: false,
         name: "단일 보스 (예시)",
         name_en: "Single Boss (Example)",
@@ -76,7 +102,7 @@ const bossData = [
         comment: ""
     },
     {
-        id: 2,
+        id: 221,
         isSea: false,
         name: "광역 보스 (예시)",
         name_en: "Area Boss (Example)",
@@ -88,6 +114,7 @@ const bossData = [
         defenseCoef: "258.4",
         comment: ""
     },
+
     {
         id: 3,
         isSea: true,
@@ -95,10 +122,11 @@ const bossData = [
         icon: "",
         description: "",
         resistances: {},
-        baseDefense: "1280",
+        baseDefense: "?",
         defenseCoef: "363.2",
         comment: ""
     },
+    /*
     {
         id: 4,
         isSea: true,
@@ -124,7 +152,7 @@ const bossData = [
     {
         id: 5,
         isSea: true,
-        name: "릴리스 / 누에 - 시종",
+        name: "릴리스 / 누에",
         icon: "../img/boss/누에.webp",
         description: "-",
         resistances: {
@@ -142,7 +170,7 @@ const bossData = [
         baseDefense: "-",
         defenseCoef: "263.2",
         comment: ""
-    },
+    },*/
     {
         id: 6,
         isSea: true,
@@ -164,6 +192,41 @@ const bossData = [
         baseDefense: 855,
         defenseCoef: 263.2,
         comment: "미나미의 2스 / 쿤다킬을 통해 [악마의 주원] 제거 가능"
+    },
+    {
+        id: 555,
+        isSea: true,
+        name: "쿠 훌린",
+        baseDefense: 855,
+        defenseCoef: 263.2,
+    },
+    {
+        id: 556,
+        isSea: true,
+        name: "오베론 / 티타니아",
+        baseDefense: 860,
+        defenseCoef: 263.2,
+    },
+    {
+        id: 557,
+        isSea: true,
+        name: "도미니온",
+        baseDefense: 376,
+        defenseCoef: 263.2,
+    },
+    {
+        id: 558,
+        isSea: true,
+        name: "수르트",
+        baseDefense: 855,
+        defenseCoef: 263.2,
+    },
+    {
+        id: 559,
+        isSea: true,
+        name: "비사문천 / 광목천 / 증장천 / 지국천",
+        baseDefense: 567,
+        defenseCoef: 263.2,
     },
     {
         id: 7,
@@ -235,6 +298,8 @@ const bossData = [
         id: 9,
         isSea: false,
         name: "비슈누 / 화신",
+        name_en: "비슈누 / Mini",
+        name_jp: "비슈누 / ミニ",
         icon: "",
         description: "-",
         resistances: {
@@ -257,6 +322,8 @@ const bossData = [
         id: 10,
         isSea: false,
         name: "바알",
+        name_en: "Baal",
+        name_jp: "バール",
         icon: "",
         description: "스킬 대미지 또는 디버프를 받을 때마다 [쇠퇴] 중첩\n[쇠퇴] : 3턴 동안 방어력 3% 감소 (최대 15중첩, 45%)\n\n차지 이후 다음 턴 스킬 '마이무르' (단일 딜) 발동,\n[쇠퇴] 10 중첩 이상 시에 차지는 중단되고 '참격'으로 스킬 변경\n공격은 지배, 반항 괴도 우선",
         resistances: {
@@ -279,6 +346,8 @@ const bossData = [
         id: 11,
         isSea: false,
         name: "위타천",
+        name_en: "Idaten",
+        name_jp: "いだてん",
         icon: "",
         description: "가루다'와  '자타유'가 대미지를 받을 때마다\n→ 3턴 동안 해당 괴도의 주는 대미지 4% 증가 (5회 중첩 가능)\n\n'호루스'와 '야타가라스'가 대미지를 받을 때마다\n→ 3턴 동안 해당 괴도의 관통이 2% 증가 (5회 중첩 가능)",
         resistances: {
@@ -301,6 +370,8 @@ const bossData = [
         id: 12,
         isSea: false,
         name: "위타천 / 가루다",
+        name_en: "Idaten / 가루다",
+        name_jp: "いだてん / 가루다",
         icon: "",
         description: "-",
         resistances: {
@@ -323,6 +394,8 @@ const bossData = [
         id: 13,
         isSea: false,
         name: "위타천 / 자타유",
+        name_en: "Idaten / 자타유",
+        name_jp: "いだてん / 자타유",
         icon: "",
         description: "-",
         resistances: {
@@ -345,6 +418,8 @@ const bossData = [
         id: 14,
         isSea: false,
         name: "위타천 / 호루스",
+        name_en: "Idaten / 호루스",
+        name_jp: "いだてん / 호루스",
         icon: "",
         description: "-",
         resistances: {
@@ -367,6 +442,8 @@ const bossData = [
         id: 15,
         isSea: false,
         name: "위타천 / 야타가라스",
+        name_en: "Idaten / 야타가라스",
+        name_jp: "いだてん / 야타가라스",
         icon: "",
         description: "-",
         resistances: {
@@ -388,7 +465,9 @@ const bossData = [
     {
         id: 16,
         isSea: false,
-        name: "야츠카미오미츠누",
+        name: "야츠카미즈오미츠누",
+        name_en: "Yatsukamizu Omitsunu",
+        name_jp: "オミヅヌ",
         icon: "",
         description: "페르소나/HIGHLIGHT/추가 효과로 대미지를 받을 때마다\n3턴 동안 받는 해당 속성 대미지가 6% 증가 (8중첩 가능)",
         resistances: {
@@ -411,6 +490,8 @@ const bossData = [
         id: 17,
         isSea: false,
         name: "파프니르",
+        name_en: "Fafnir",
+        name_jp: "ファフニール",
         icon: "",
         description: "모든 괴도에게 [파프니르의 주원] 추가 (받는 대미지 20% 증가)\n- 괴도가 우월/구원/방위 유형 기술 사용 시 [파프니르의 주원] 해제\n- 디버프 해제 시 파프니르에게 [주원의 배반] 1중첩 부여\n  중첩당 방어력 12% 감소, 3중첩 시 받는 HL 대미지 30% 증가 (최대 3중첩)",
         resistances: {
@@ -477,6 +558,8 @@ const bossData = [
         id: 20,
         isSea: false,
         name: "아타바크",
+        name_en: "Atabaka",
+        name_jp: "アタバク",
         icon: "",
         description: "-",
         resistances: {
@@ -499,6 +582,8 @@ const bossData = [
         id: 21,
         isSea: false,
         name: "야츠후사",
+        name_en: "Yatsufusa",
+        name_jp: "ヤツフサ",
         icon: "",
         description: "-",
         resistances: {
@@ -675,6 +760,8 @@ const bossData = [
         id: 29,
         isSea: false,
         name: "니드호그",
+        name_en: "Nidhoggr",
+        name_jp: "ニーズホッグ",
         icon: "",
         description: "니드호그와 뱀은「생명 연결」 상태\n「생명 연결」: 현재 생명 비율에 따라 받는 대미지 분배\n\n니드호그와 뱀이 스킬을 사용한 후, 모든 스킬 목표에게 「독소」 1중첩이 추가\n「독소」: 제거 불가, 중첩당 괴도가 턴 종료 시 일정 생명을 잃으며, 동시에 공격력이 10% 상승 (3회 중첩 가능).",
         resistances: {
@@ -693,6 +780,19 @@ const bossData = [
         defenseCoef: "258.4",
         comment: ""
     },
+    {
+        id: 30,
+        isSea: false,
+        name: "니드호그 / 유룽",
+        name_en: "Nidhoggr / 유룽",
+        name_jp: "ニーズホッグ / 유룽",
+        icon: "",
+        description: "-",
+        baseDefense: "364",
+        defenseCoef: "258.4",
+        comment: ""
+    }
+    /*
     {
         id: 29,
         isSea: false,
@@ -780,6 +880,6 @@ const bossData = [
         baseDefense: "364",
         defenseCoef: "258.4",
         comment: ""
-    }
+    }*/
 ];
 

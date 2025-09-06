@@ -536,8 +536,8 @@ const defenseCalcData = {
             value: 20.0,
             duration: "2턴",
             note: "적에게 상태이상 부여 시",
-            note_en: "Status debuff to enemy",
-            note_jp: "敵にステータスデバフ"
+            note_en: "Debuff applied to enemy",
+            note_jp: "敵にデバフ適用"
         },
         {
             id: 4,
@@ -559,7 +559,9 @@ const defenseCalcData = {
             options: [],
             value: 32.0,
             duration: "3턴",
-            note: ""
+            note: "",
+            note_en: "[KR] Payment Event Only",
+            note_jp: "[KR] 支払いイベントのみ"
         },
         {
             id: 6,
@@ -1091,7 +1093,14 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/skill-element/핵열.png`,
             skillName: "시그널 폭탄",
-            options: [],
+            options: ["LV10","LV10+심상5","LV12","LV12+심상5"],
+            values: {
+                "LV10": 37.3,
+                "LV10+심상5": 37.3,
+                "LV12": 38.8,
+                "LV12+심상5": 38.8
+            },
+            defaultOption: "LV12+심상5",
             value: 38.8,
             duration: "2턴",
             note: ""
@@ -1104,8 +1113,10 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
             skillName: "노을 그림자술",
-            options: ["LV12","LV12+심상5"],
+            options: ["LV10","LV10+심상5","LV12","LV12+심상5"],
             values: {
+                "LV10": 39.4,
+                "LV10+심상5": 42.3,
                 "LV12": 42.6,
                 "LV12+심상5": 45.5
             },
@@ -1122,9 +1133,10 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/주원광역.png`,
             skillName: "나룻배 사공",
-            options: ["LV10","LV13","LV13+심상5"],
+            options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
             values: {
                 "LV10": 49.7,
+                "LV10+심상5": 54.8,
                 "LV13": 53.5,
                 "LV13+심상5": 58.6
             },

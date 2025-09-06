@@ -65,7 +65,7 @@ class Navigation {
                 calculator: 'Calculator',
                 materialCalc: 'Progression',
                 payCalc: 'Payment Calculator',
-                defenseCalc: 'Defense Calculator',
+                defenseCalc: 'Defense Reduction',
                 criticalCalc: 'Critical Calculator',
                 article: 'Guides',
                 about: 'About'
@@ -86,7 +86,7 @@ class Navigation {
                 calculator: '計算機',
                 materialCalc: '育成計算機',
                 payCalc: '課金計算機',
-                defenseCalc: '防御力計算機',
+                defenseCalc: '防御力減少',
                 criticalCalc: 'クリティカル計算機',
                 article: 'ガイド',
                 about: '紹介'
@@ -169,12 +169,12 @@ class Navigation {
                         <a href="${BASE_URL}/material-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="material-calc">
                             <span data-text="${texts.materialCalc}">◈　${texts.materialCalc}</span>
                         </a>
+                        <a href="${BASE_URL}/defense-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
+                            <span data-text="${texts.defenseCalc}">◈　${texts.defenseCalc}</span>
+                        </a>
                         ${currentLang === 'kr' ? `
                         <a href="${BASE_URL}/pay-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
                             <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
-                        </a>
-                        <a href="${BASE_URL}/defense-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
-                            <span data-text="${texts.defenseCalc}">◈　${texts.defenseCalc}</span>
                         </a>
                         <a href="${BASE_URL}/critical-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
                             <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>

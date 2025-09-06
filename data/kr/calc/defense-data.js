@@ -6,6 +6,8 @@ const penetrateData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/revelation/희망.webp`,
             skillName: "직책 + 희망",
+            skillName_en: "Labor + Hope",
+            skillName_jp: "作業 + 希望",
             options: [],
             value: 5.0,
             duration: "1턴",
@@ -17,10 +19,14 @@ const penetrateData = {
             target: "자신",
             skillIcon: `${BASE_URL}/assets/img/revelation/자유.webp`,
             skillName: "자유 + 개선",
+            skillName_en: "Freedom + Success",
+            skillName_jp: "自由 + 改善",
             options: [],
             value: 16.0,
             duration: "-",
-            note: "영광 2중첩 추가효과 발동 시"
+            note: "영광 2중첩 추가효과 발동 시",
+            note_en: "2중첩 추가효과",
+            note_jp: "2중첩 추가효과"
         }
     ],
     "마나카":[
@@ -52,7 +58,9 @@ const penetrateData = {
             skillName: "결심",
             value: 12.0,
             duration: "-",
-            note: "성가 스택 * 1%"
+            note: "성가 스택 * 1%",
+            note_en: "스택 * 1%",
+            note_jp: "스택 * 1%"
         },
     ],
     "유카리":[
@@ -65,7 +73,9 @@ const penetrateData = {
             options: [],
             value: 20.0,
             duration: "2턴",
-            note: "스킬 메인 목표"
+            note: "스킬 메인 목표",
+            note_en: "Skill Main Target",
+            note_jp: "スキル メイン ターゲット"
         }
     ],
     "마유미":[
@@ -103,7 +113,9 @@ const penetrateData = {
             defaultOption: "LV13+심상5",
             value: 11.4,
             duration: "1턴",
-            note: "스킬3 추가턴 메인 목표"
+            note: "스킬3 추가턴 메인 목표",
+            note_en: "Skill 3 Additional Turn Main Target",
+            note_jp: "スキル3 追加ターン メイン ターゲット"
         },
         {
             id: "mayumi0",
@@ -131,7 +143,9 @@ const penetrateData = {
             options: [],
             value: 10.0,
             duration: "1턴",
-            note: "스킬3 추가턴 메인 목표"
+            note: "스킬3 추가턴 메인 목표",
+            note_en: "Skill 3 Additional Turn Main Target",
+            note_jp: "スキル3 追加ターン メイン ターゲット"
         }
     ],
     "이케나미":[
@@ -151,7 +165,9 @@ const penetrateData = {
             defaultOption: "LV12+심상5",
             value: 13.7,
             duration: "2턴",
-            note: "즉흥 교감(풍습) 상태 시"
+            note: "즉흥 교감(풍습) 상태 시",
+            note_en: "풍습 State",
+            note_jp: "풍습 状態"
         }
     ],
     "미나미":[
@@ -164,7 +180,9 @@ const penetrateData = {
             options: [],
             value: 20.0,
             duration: "2턴",
-            note: "치료량 초과 시"
+            note: "치료량 초과 시",
+            note_en: "Overheal",
+            note_jp: "オーバーヘイル"
         }
     ],
     "마사키":[
@@ -190,7 +208,9 @@ const penetrateData = {
             options: [],
             value: 8.0,
             duration: "-",
-            note: "방사선 보유 적 원소 이상 3개 이상"
+            note: "방사선 보유 적 원소 이상 3개 이상",
+            note_en: "Radiation + 원소 이상 3",
+            note_jp: "極熱 + 원소 이상 3"
         }
     ],
     "이치고":[
@@ -221,7 +241,9 @@ const penetrateData = {
             defaultOption: "의식0",
             value: 12.0,
             duration: "-",
-            note: "투지 중첩 당 4%"
+            note: "투지 중첩 당 4%",
+            note_en: "Fortitude 4%",
+            note_jp: "意志 4%"
         },
     ],
     "유키 마코토":[
@@ -241,7 +263,9 @@ const penetrateData = {
             defaultOption: "LV13+심상5",
             value: 13.6,
             duration: "-",
-            note: "월상 4중첩"
+            note: "월상 4중첩",
+            note_en: "Moon 4stack",
+            note_jp: "月相4重"
         },
         {
             id: "yukimakoto2",
@@ -252,7 +276,9 @@ const penetrateData = {
             options: [],
             value: 12.0,
             duration: "-",
-            note: "월상 보유 시"
+            note: "월상 보유 시",
+            note_en: "Moon",
+            note_jp: "月相"
         },
         {
             id: "yukimakoto3",
@@ -287,7 +313,9 @@ const penetrateData = {
             options: [],
             value: 21.0,
             duration: "-",
-            note: "집행관 상태"
+            note: "집행관 상태",
+            note_en: "Trans State",
+            note_jp: "変身 状態"
         },
         {
             id: "kira2",
@@ -316,7 +344,9 @@ const penetrateData = {
             defaultOption: "개조5&6",
             value: 47.5,
             duration: "-",
-            note: "절개 대미지 한정"
+            note: "절개 대미지 한정",
+            note_en: "Cutting Damage",
+            note_jp: "カット ダメージ"
         }
     ],
     "유스케":[
@@ -329,7 +359,7 @@ const penetrateData = {
             options: [],
             value: 20.0,
             duration: "1턴",
-            note: "3스킬 사용"
+            note: "3스킬"
         },
         {
             id: "yusuke2",
@@ -340,7 +370,7 @@ const penetrateData = {
             options: [],
             value: 30.0,
             duration: "-",
-            note: "반격 시"
+            note: "반격"
         }
     ],
     "마코토":[
@@ -361,7 +391,9 @@ const penetrateData = {
             defaultOption: "5중첩",
             value: 30.0,
             duration: "-",
-            note: "철의 의지 상태 원소이상 수"
+            note: "철의 의지 상태 원소 이상 수",
+            note_en: "Crash Out 원소 이상",
+            note_jp: "ブチ切れ 원소 이상"
         }
     ],
     "하루":[
@@ -374,7 +406,7 @@ const penetrateData = {
             options: [],
             value: 12.0,
             duration: "-",
-            note: "조준점 보유한 적 공격 시"
+            note: ""
         }
     ],
     "몽타뉴·백조":[
@@ -395,7 +427,9 @@ const penetrateData = {
             defaultOption: "5중첩",
             value: 20.0,
             duration: "-",
-            note: "결정 1개 당"
+            note: "결정 1개 당",
+            note_en: "Shard",
+            note_jp: "結晶"
         },
     ],
     "류지":[
@@ -408,7 +442,9 @@ const penetrateData = {
             options: [],
             value: 35.0,
             duration: "-",
-            note: "크리티컬 발생 시"
+            note: "크리티컬 발생 시",
+            note_en: "크리티컬",
+            note_jp: "크리티컬"
         }
     ],
 }
@@ -421,6 +457,8 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/revelation/여정.webp`,
             skillName: "주권 + 여정",
+            skillName_en: "Control + Departure",
+            skillName_jp: "支配 + 旅立",
             options: [],
             value: 23.0,
             duration: "2턴",
@@ -432,6 +470,8 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/revelation/결심.webp`,
             skillName: "직책 + 결심",
+            skillName_en: "Labor + Resolve",
+            skillName_jp: "作業 + 決心",
             options: [],
             value: 10.0,
             duration: "2턴",
@@ -477,7 +517,9 @@ const defenseCalcData = {
             defaultOption: "4중첩",
             value: 36.0,
             duration: "2턴",
-            note: "원소이상 2종 이하일 경우 매 턴 원더의 공격 필수"
+            note: "원소이상 2종 이하일 경우 매 턴 원더의 공격 필수",
+            note_en: "원소 이상 Required",
+            note_jp: "원소 이상 必須"
         },
         {
             id: "wonder-weapon-death",
@@ -493,7 +535,9 @@ const defenseCalcData = {
             defaultOption: "2중첩",
             value: 20.0,
             duration: "2턴",
-            note: "적에게 상태이상 부여 시"
+            note: "적에게 상태이상 부여 시",
+            note_en: "Status debuff to enemy",
+            note_jp: "敵にステータスデバフ"
         },
         {
             id: 4,
@@ -537,7 +581,9 @@ const defenseCalcData = {
             options: [],
             value: 48.0,
             duration: "2턴",
-            note: "풍습 부여 시"
+            note: "풍습 부여 시",
+            note_en: "풍습 Success",
+            note_jp: "풍습 成功"
         },
         {
             id: 8,
@@ -548,7 +594,9 @@ const defenseCalcData = {
             options: [],
             value: 31.5,
             duration: "2턴",
-            note: "풍습 부여 시"
+            note: "풍습 부여 시",
+            note_en: "풍습 Success",
+            note_jp: "풍습 成功"
         },
         {
             id: 9,
@@ -559,7 +607,9 @@ const defenseCalcData = {
             options: [],
             value: 41.6,
             duration: "2턴",
-            note: "[조준]"
+            note: "[조준]",
+            note_en: "Marked",
+            note_jp: "標的"
         },
         {
             id: 10,
@@ -592,7 +642,9 @@ const defenseCalcData = {
             options: [],
             value: 45.0,
             duration: "1턴",
-            note: "2턴마다 방어력 감소 효과 발동 가능"
+            note: "2턴마다 방어력 감소 효과 발동 가능",
+            note_en: "2턴 CD",
+            note_jp: "2ターン CD"
         },
         {
             id: 13,
@@ -603,7 +655,9 @@ const defenseCalcData = {
             options: [],
             value: 25.0,
             duration: "1턴",
-            note: "축복 속성 한정"
+            note: "축복 속성 한정",
+            note_en: "축복",
+            note_jp: "축복"
         },
     ],
     "카타야마":[
@@ -628,7 +682,9 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 56.8,
             duration: "2턴",
-            note: "스킬2와 중복 불가"
+            note: "스킬2와 중복 불가",
+            note_en: "Skill 2 overlap not allowed",
+            note_jp: "スキル2と重複不可"
         },
         {
             id: "katayama2",
@@ -651,7 +707,9 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 56.8,
             duration: "1턴",
-            note: "스킬1과 중복 불가"
+            note: "스킬1과 중복 불가",
+            note_en: "Skill 1 and overlap not allowed",
+            note_jp: "スキル1と重複不可"
         },
         {
             id: "katayama3",
@@ -674,7 +732,9 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 34.1,
             duration: "-",
-            note: "이후 적 다운 시킬 경우"
+            note: "이후 적 다운 시킬 경우",
+            note_en: "Down enemy",
+            note_jp: "다운 敵"
         },
         {
             id: "katayama4",
@@ -685,7 +745,9 @@ const defenseCalcData = {
             options: [],
             value: 50.0,
             duration: "",
-            note: "중상"
+            note: "중상",
+            note_en: "-",
+            note_jp: "-"
         },
     ],
     "미나미·여름":[
@@ -718,7 +780,9 @@ const defenseCalcData = {
             defaultOption: "의식6",
             value: 45.0,
             duration: "",
-            note: "원념 중첩 당 3%"
+            note: "원념 중첩 당 3%",
+            note_en: "Per Stack 3%",
+            note_jp: "1スタック 3%"
         },
     ],
     "미오":[
@@ -756,7 +820,9 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 42.6,
             duration: "2턴",
-            note: "스킬3(강화) 중복 불가"
+            note: "스킬3(강화) 중복 불가",
+            note_en: "Skill 3(Enhance) overlap not allowed",
+            note_jp: "スキル3(強化)と重複不可"
         },
         {
             id: "mio3",
@@ -856,7 +922,7 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 29.5,
             duration: "2턴/4턴",
-            note: "의식1 이상 4턴"
+            note: "의식1 → 4턴",
         },
     ],
     "몽타뉴·백조":[
@@ -871,7 +937,9 @@ const defenseCalcData = {
             defaultOption: "",
             value: 40.0,
             duration: "3턴",
-            note: "봄 형태"
+            note: "봄 형태",
+            note_en: "Spring",
+            note_jp: "春"
         }
     ],
     "토모코·여름":[
@@ -890,7 +958,9 @@ const defenseCalcData = {
             defaultOption: "3중첩",
             value: 45.0,
             duration: "3턴",
-            note: "화려한 불꽃 발동 시 1중첩"
+            note: "화려한 불꽃 발동 시 1중첩",
+            note_en: "추가 효과",
+            note_jp: "추가 효과"
         }
     ],
     "루우나":[
@@ -939,7 +1009,7 @@ const defenseCalcData = {
             options: [],
             value: 18.0,
             duration: "2턴",
-            note: "의식6 → 3턴으로 증가"
+            note: "의식6 → 3턴"
         },
         {
             id: "19-1",
@@ -957,7 +1027,7 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 58.7,
             duration: "2턴",
-            note: "의식6 → 3턴으로 증가"
+            note: "의식6 → 3턴"
         },
         {
             id: "19-2",
@@ -975,7 +1045,7 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 30.7,
             duration: "2턴",
-            note: "의식6 → 3턴으로 증가"
+            note: "의식6 → 3턴"
         },
         {
             id: 20,
@@ -993,7 +1063,7 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 78.0,
             duration: "2턴",
-            note: "의식6 → 3턴으로 증가"
+            note: "의식6 → 3턴"
         },
     ],
     "치즈코":[
@@ -1081,7 +1151,9 @@ const defenseCalcData = {
             defaultOption: "개조5&6",
             value: 57.0,
             duration: "1턴",
-            note: "공격 받을 시 발동"
+            note: "공격 받을 시 발동",
+            note_en: "Triggered when attacked",
+            note_jp: "攻撃を受けると発動"
         },
         {
             id: 25,
@@ -1108,7 +1180,9 @@ const defenseCalcData = {
             options: [],
             value: 35.0,
             duration: "3턴",
-            note: "10.0% 고정확률, 총기 42발 (리필 24)"
+            note: "10.0% 고정확률, 총기 42발 (리필 24)",
+            note_en: "10.0%, 42 bullets (24 refill)",
+            note_jp: "10.0%, 42発 (24リフィル)"
         }
     ]
 }; 

@@ -1,11 +1,19 @@
 /* 커스텀 체크박스 스타일 */
-input[type="checkbox"] { appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 28px; height: 28px; background-image: url('/assets/img/ui/check-off.png'); background-size: contain; background-repeat: no-repeat; background-position: center; cursor: pointer; vertical-align: middle; margin: 0; }
+input[type="checkbox"] { appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 20px; height: 20px; background-image: url('/assets/img/ui/check-off.png'); background-size: contain; background-repeat: no-repeat; background-position: center; cursor: pointer; vertical-align: middle; margin: 0; }
 input[type="checkbox"]:checked { background-image: url('/assets/img/ui/check-on.png'); }
 input[type="checkbox"]:focus { outline: none; } /* 체크박스 포커스 스타일 제거 */
 input[type="checkbox"]:hover { opacity: 0.8; }
 
+
+#spoilerToggleWrap { display: flex; gap: 4px;}
+
 /* 상단 카드 컨테이너 */
 .top-cards { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; padding: 0px 20px 0px 20px; }
+
+/* Page title row layout with spoiler toggle */
+.header-container { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+#spoilerToggleWrap { margin-left: auto; }
+@media (max-width: 1200px) { .header-container { flex-wrap: wrap; gap: 8px; } #spoilerToggleWrap { width: 100%; order: 2; display: flex; justify-content: flex-end; } }
 
 .boss-card, .damage-card, .defense-coef-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #4b3c3c; border-radius: 10px; }
 .stat-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #3d3030; border-radius: 10px; }
@@ -72,7 +80,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 /* 최종 방어력 계수 카드 */
 .defense-coef-card { display: flex; flex-direction: column;}
-.defense-coef-card h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); margin: 0 0 8px 0; padding: 10px 0 0 0; }
+.defense-coef-card h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); padding: 10px 0; }
 .defense-coef-value { font-size: 36px; font-weight: bold; color: #eaeaea; }
 
 /* 모바일 대응 */
@@ -198,7 +206,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 
 /* PC 열 별 크기 지정 */
 @media (min-width: 1200px) {
-    .defense-table .target-column { width: 60px; box-sizing: border-box; }
+    .defense-table .target-column { width: 66px; box-sizing: border-box; }
     .defense-table .skill-icon-column { width: 40px; box-sizing: border-box; }
     .defense-table .skill-name-column { width: 240px; box-sizing: border-box; }
     .defense-table .value-column { width: 60px; box-sizing: border-box; }

@@ -37,8 +37,7 @@ class Navigation {
                 wonderweapon: '원더 무기',
                 tactic: '택틱',
                 tacticMaker: '택틱 메이커',
-                tacticForge: '택틱 대장간(구)',
-                tacticLibrary: '택틱 도서관(신)',
+                tacticLibrary: '택틱 도서관',
                 tier: '티어',
                 tierMaker: '티어 메이커',
                 tierList: '티어 리스트',
@@ -196,10 +195,6 @@ class Navigation {
                         <a href="${BASE_URL}/tactic/tactics.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactics">
                             <span data-text="${texts.tacticLibrary}">◈　${texts.tacticLibrary}</span>
                         </a>
-                        ${currentLang === 'kr' ? `
-                        <a href="${BASE_URL}/tactic/tactic-share.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-share">
-                            <span data-text="${texts.tacticForge}">◈　${texts.tacticForge}</span>
-                        </a>` : ''}
                     </div>
                 </div>
                 ` : ''}

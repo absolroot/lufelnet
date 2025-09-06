@@ -23,11 +23,29 @@ class DefenseCalc {
         this.selectedItems = new Set(); // 초기 선택 항목 설정
         this.selectedPenetrateItems = new Set(); // 관통 선택 항목
         this.buildDatasets();
+        // 원더 번역 주입을 렌더 전에 보장
+        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.enrichDefenseDataWithWonderNames) { DefenseI18N.enrichDefenseDataWithWonderNames(); } } catch(_) {}
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
         this.initializeTable(); // 그 다음 테이블 초기화
         this.initializePenetrateTable(); // 관통 테이블 초기화
         this.initializeMobileHeader();
         this.initializePenetrateInputs();
+
+        // 초기 렌더 후 UI 텍스트 번역 적용 (전용 i18n)
+        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch(_) {}
+        // 사전 매핑 단어 번역(원더/계시 등)
+        try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
+
+        // 스포일러 토글 이벤트: 목록 재렌더링
+        try {
+            const sp = document.getElementById('showSpoilerToggle');
+            if (sp) {
+                sp.addEventListener('change', async () => {
+                    await this.renderAccordion(this.tableBody, false);
+                    await this.renderAccordion(this.penetrateTableBody, true);
+                });
+            }
+        } catch(_) {}
 
         if (this.orderSwitchBtn) {
             this.orderSwitchBtn.addEventListener('click', () => {
@@ -40,6 +58,106 @@ class DefenseCalc {
         // 초기 표시 강제: 합계/목표 라벨/구분자/목표를 항상 보이도록 설정
         this.applyOrderUI();
         // 초기 값은 실제 계산 결과로 채워지도록 함
+
+        // 캐릭터 이름 번역이 늦게 로드되는 경우 대비해 후처리 스케줄링
+        this.scheduleTranslateCharacterNames();
+    }
+
+    getCurrentLang() {
+        try {
+            if (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) return I18NUtils.getCurrentLanguageSafe();
+            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) return LanguageRouter.getCurrentLanguage();
+        } catch(_) {}
+        return 'kr';
+    }
+
+    getBossDisplayName(boss) {
+        const lang = this.getCurrentLang();
+        const isSea = !!boss.isSea;
+        let prefix = '';
+        if (lang === 'en') prefix = isSea ? '[SoS] ' : '[NTMR] ';
+        else if (lang === 'jp') prefix = isSea ? '[心の海] ' : '[閼兇夢] ';
+        else prefix = isSea ? '[바다] ' : '[흉몽] ';
+
+        let baseName = boss.name;
+        if (lang === 'en' && boss.name_en) baseName = boss.name_en;
+        else if (lang === 'jp' && boss.name_jp) baseName = boss.name_jp;
+
+        return `${prefix}${baseName}`;
+    }
+
+    getGroupDisplayName(groupName) {
+        const lang = this.getCurrentLang();
+        // 우선 특수 카테고리(원더/계시/공통)는 사전으로 번역
+        try {
+            if (typeof DefenseI18N !== 'undefined' && DefenseI18N.translateGroupName) {
+                const translated = DefenseI18N.translateGroupName(groupName);
+                if (translated && translated !== groupName) return translated;
+            }
+        } catch(_) {}
+        const excluded = groupName === '원더' || groupName === '계시' || groupName === '공통';
+        if (excluded) return groupName; // 사전에 없으면 원문 유지
+        try {
+            if (typeof characterData !== 'undefined' && characterData[groupName]) {
+                if (lang === 'en') return characterData[groupName].codename || groupName;
+                if (lang === 'jp') return characterData[groupName].name_jp || groupName;
+            }
+        } catch(_) {}
+        return groupName;
+    }
+
+    normalizeTextForLang(text) {
+        const lang = this.getCurrentLang();
+        if (!text || lang === 'kr') return text || '';
+        // 의식3 -> 의식2 보정
+        return String(text).replace(/의식\s*3/g, '의식2');
+    }
+
+    transformIconSrcForLang(src) {
+        const lang = this.getCurrentLang();
+        if (!src || lang === 'kr') return src;
+        let out = src;
+        // 디버프 → 버프, 디버프광역 → 버프광역
+        out = out.replace('/skill-element/디버프광역', '/skill-element/버프광역')
+                 .replace('/skill-element/디버프', '/skill-element/버프');
+        // 의식3 이미지는 의식2로
+        out = out.replace('item-mind_stat3', 'item-mind_stat2')
+                 .replace('의식3', '의식2')
+                 .replace('/character-detail/ritual3', '/character-detail/ritual2');
+        return out;
+    }
+
+    adjustImagesForLang(root=document) {
+        const lang = this.getCurrentLang();
+        if (lang === 'kr') return;
+        root.querySelectorAll('.defense-table-container img, .penetrate-table-container img').forEach(img => {
+            if (img && img.src) {
+                img.src = this.transformIconSrcForLang(img.src);
+            }
+        });
+    }
+
+    scheduleTranslateCharacterNames() {
+        const lang = this.getCurrentLang();
+        if (lang === 'kr') return;
+        let tries = 0;
+        const tryTranslate = () => {
+            tries++;
+            if (typeof characterData !== 'undefined') {
+                document.querySelectorAll('tr.group-header').forEach(tr => {
+                    const group = tr.getAttribute('data-group') || '';
+                    const nameEl = tr.querySelector('.group-name');
+                    if (nameEl) nameEl.textContent = this.getGroupDisplayName(group);
+                });
+                // 아이콘 경로도 언어에 맞춰 보정
+                this.adjustImagesForLang(document);
+                // 사전 매핑 단어 번역(원더/계시 등)
+                try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
+                return;
+            }
+            if (tries < 20) setTimeout(tryTranslate, 100);
+        };
+        tryTranslate();
     }
 
     // 새 데이터 포맷(객체) 지원: 그룹 오브젝트, 플랫 배열, id 인덱스 구성
@@ -103,15 +221,31 @@ class DefenseCalc {
     }
 
     // 아코디언 렌더링 (그룹 헤더 + 각 row)
-    renderAccordion(tbody, isPenetrate) {
+    async renderAccordion(tbody, isPenetrate) {
         // 기존 내용 비움
         while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
 
         const order = isPenetrate ? this.penetrateOrder : this.reduceOrder;
         const groupsObj = isPenetrate ? this.penetrateGroups : this.reduceGroups;
 
+        // 스포일러 토글에 따른 표시 캐릭터 목록 계산
+        const showSpoiler = !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
+        let visibleNames = [];
+        try {
+            if (typeof CharacterListLoader !== 'undefined') {
+                visibleNames = await CharacterListLoader.getVisibleNames(showSpoiler);
+            }
+        } catch(_) {}
+
         order.forEach(groupName => {
             const items = groupsObj[groupName] || [];
+
+            // 그룹 필터링: 원더/계시/공통 제외하고 목록에 없는 캐릭터는 스킵
+            if (!['원더','계시','공통'].includes(groupName)) {
+                if (Array.isArray(visibleNames) && visibleNames.length > 0 && !visibleNames.includes(groupName)) {
+                    return; // skip rendering this group
+                }
+            }
 
             // 그룹 헤더 행
             const headerTr = document.createElement('tr');
@@ -142,7 +276,7 @@ class DefenseCalc {
             infoWrap.appendChild(img);
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';
-            nameSpan.textContent = groupName;
+            nameSpan.textContent = this.getGroupDisplayName(groupName);
             infoWrap.appendChild(nameSpan);
             inner.appendChild(infoWrap);
             fullTd.appendChild(inner);
@@ -162,19 +296,30 @@ class DefenseCalc {
 
             // 데이터 행들
             items.forEach(item => {
-                const row = this.createTableRow(item, isPenetrate);
+                const row = this.createTableRow(item, isPenetrate, groupName);
                 // 초기 표시 상태 (모바일: '계시','원더'만 펼침, 데스크탑: 전체 펼침)
                 row.style.display = initiallyOpen ? '' : 'none';
                 row.classList.add('group-row');
                 row.setAttribute('data-group', groupName);
                 // 참조 저장해 토글에 사용
-                Object.defineProperty(item, '__rowEl', { value: row, writable: false });
+                try {
+                    if (!Object.prototype.hasOwnProperty.call(item, '__rowEl')) {
+                        Object.defineProperty(item, '__rowEl', { value: row, writable: true, configurable: true });
+                    } else {
+                        item.__rowEl = row;
+                    }
+                } catch(_) {
+                    try { item.__rowEl = row; } catch(_) {}
+                }
                 tbody.appendChild(row);
             });
+
+            // 그룹 헤더 렌더 후 텍스트 번역 보정
+            try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(tbody); } } catch(_) {}
         });
     }
 
-    createTableRow(data, isPenetrate = false) {
+    createTableRow(data, isPenetrate = false, groupName = '') {
         const row = document.createElement('tr');
         
         // 초기 선택된 항목에 대해 selected 클래스 추가
@@ -215,7 +360,7 @@ class DefenseCalc {
         // 목표 열
         const targetCell = document.createElement('td');
         targetCell.className = 'target-column';
-        targetCell.textContent = data.target;
+        targetCell.textContent = this.normalizeTextForLang(data.target);
         targetCell.setAttribute('data-target', data.target);
         row.appendChild(targetCell);
         
@@ -224,7 +369,7 @@ class DefenseCalc {
         skillIconCell.className = 'skill-icon-column';
         if (data.skillIcon) {
             const skillIcon = document.createElement('img');
-            skillIcon.src = data.skillIcon;
+            skillIcon.src = this.transformIconSrcForLang(data.skillIcon);
             
             // 스킬 관련 타입인 경우 skill-icon 클래스 추가
             if (data.type.includes('스킬') || 
@@ -243,13 +388,30 @@ class DefenseCalc {
         skillNameCell.className = 'skill-name-column';
         const currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
         let localizedName = '';
-        if (currentLang === 'en' && data.skillName_en) localizedName = data.skillName_en;
-        else if (currentLang === 'jp' && data.skillName_jp) localizedName = data.skillName_jp;
-        else localizedName = data.skillName || '';
+        // 기본: 현지화된 이름 우선
+        if (currentLang === 'en') {
+            localizedName = (data.skillName_en && String(data.skillName_en).trim()) ? data.skillName_en : '';
+        } else if (currentLang === 'jp') {
+            localizedName = (data.skillName_jp && String(data.skillName_jp).trim()) ? data.skillName_jp : '';
+        }
+        // 폴백 규칙: EN/JP에서도 원더 그룹의 전용무기/페르소나/스킬만 KR 이름으로 폴백 허용
+        if (!localizedName) {
+            const isWonder = groupName === '원더';
+            const typeStr = String(data.type || '');
+            const isWonderDisplayType = isWonder && (typeStr === '전용무기' || typeStr === '페르소나' || typeStr === '스킬');
+            if (currentLang !== 'kr' && isWonderDisplayType) {
+                localizedName = data.skillName || '';
+            } else if (currentLang === 'kr') {
+                localizedName = data.skillName || '';
+            } else {
+                // 그 외 언어/그룹은 폴백하지 않음 → 타입만 표시
+                localizedName = '';
+            }
+        }
 
         const typeSpan = document.createElement('span');
         typeSpan.className = 'skill-type-label';
-        typeSpan.textContent = data.type;
+        typeSpan.textContent = this.normalizeTextForLang(data.type);
         
         const nameSpan = document.createElement('span');
         nameSpan.className = 'skill-name-text';
@@ -264,8 +426,8 @@ class DefenseCalc {
                 skillNameCell.appendChild(nameSpan);
             }
         } else {
-            // EN/JP: 기본은 분류만, 다국어 이름이 있으면 분류 + 이름
-            if ((currentLang === 'en' && data.skillName_en) || (currentLang === 'jp' && data.skillName_jp)) {
+            // EN/JP: 번역된 이름이 존재하면 분류 + 이름, 없으면 분류만 강조
+            if (localizedName && localizedName.trim()) {
                 nameSpan.textContent = localizedName;
                 skillNameCell.appendChild(typeSpan);
                 const sep = document.createTextNode(' · ');
@@ -287,7 +449,7 @@ class DefenseCalc {
             data.options.forEach(option => {
                 const optionElement = document.createElement('option');
                 optionElement.value = option;
-                optionElement.textContent = option;
+                optionElement.textContent = this.normalizeTextForLang(option);
                 if (data.defaultOption && option === data.defaultOption) {
                     optionElement.selected = true;
                 }
@@ -321,13 +483,18 @@ class DefenseCalc {
         // 지속시간 열
         const durationCell = document.createElement('td');
         durationCell.className = 'duration-column';
-        durationCell.textContent = data.duration;
+        durationCell.textContent = this.normalizeTextForLang(data.duration);
         row.appendChild(durationCell);
         
         // 비고 열
         const noteCell = document.createElement('td');
         noteCell.className = 'note-column';
-        noteCell.textContent = data.note;
+        // note 다국어 지원
+        let noteText = data.note || '';
+        const lang = this.getCurrentLang();
+        if (lang === 'en' && data.note_en) noteText = data.note_en;
+        else if (lang === 'jp' && data.note_jp) noteText = data.note_jp;
+        noteCell.textContent = this.normalizeTextForLang(noteText);
         row.appendChild(noteCell);
         
         return row;
@@ -410,7 +577,7 @@ class DefenseCalc {
         bossData.forEach(boss => {
             const option = document.createElement('option');
             option.value = boss.id;
-            option.textContent = boss.name;
+            option.textContent = this.getBossDisplayName(boss);
             if (boss.id === 1) {  // id가 1인 보스를 기본 선택
                 option.selected = true;
             }
@@ -446,6 +613,8 @@ class DefenseCalc {
         }
 
         this.updateDamageCalculation();
+        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch(_) {}
+        try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
     }
 
     updateDamageCalculation() {

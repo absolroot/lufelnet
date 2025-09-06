@@ -240,7 +240,7 @@ alternate_urls:
 
     <div class="posts-container" id="posts-container">
         <div class="posts-header">
-            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 대장간 NEW</a></h2>
+            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 도서관 NEW</a></h2>
             <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
         </div>
         <div class="posts-list" id="postsList"></div>
@@ -675,48 +675,6 @@ alternate_urls:
                 guidesContainer.style.display = 'none';
             }
             
-            // 택틱 대장간 섹션은 표시하되 오버레이 추가
-            /*
-            const postsContainer = document.getElementById('posts-container');
-            if (postsContainer) {
-                postsContainer.style.display = 'block';
-                postsContainer.style.position = 'relative';
-                
-                // 기존 오버레이 제거
-                const existingOverlay = postsContainer.querySelector('.coming-soon-overlay');
-                if (existingOverlay) {
-                    existingOverlay.remove();
-                }
-                
-                // 새 오버레이 추가
-                const overlay = document.createElement('div');
-                overlay.className = 'coming-soon-overlay';
-                overlay.style.cssText = `
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(0, 0, 0, 0.7);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: white;
-                    font-size: 1.2rem;
-                    font-weight: bold;
-                    z-index: 10;
-                    border-radius: inherit;
-                    cursor: not-allowed;
-                `;
-                overlay.textContent = currentLang === 'en' ? 'Coming Soon' : '準備中';
-                postsContainer.appendChild(overlay);
-                
-                // 링크 비활성화
-                const links = postsContainer.querySelectorAll('a');
-                links.forEach(link => {
-                    link.style.pointerEvents = 'none';
-                });
-            }*/
         } else {
             // 한국어인 경우 모든 메뉴 활성화
             const tacticCard = document.getElementById('menu-tactic-card');
@@ -729,7 +687,7 @@ alternate_urls:
             removeComingSoonOverlay('menu-revelations-card');
             removeComingSoonOverlay('menu-tactic-card');
             
-            // 택틱 대장간 섹션 표시
+            // 택틱 도서관 섹션 표시
             const postsContainer = document.getElementById('posts-container');
             if (postsContainer) {
                 postsContainer.style.display = 'block';

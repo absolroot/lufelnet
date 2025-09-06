@@ -65,7 +65,9 @@ const bossData = [
     {
         id: 1,
         isSea: false,
-        name: "흉몽 단일 보스(반항)",
+        name: "단일 보스 (예시)",
+        name_en: "Single Boss (Example)",
+        name_jp: "シングルボス (例)",
         icon: "",
         description: "",
         resistances: {},
@@ -76,7 +78,9 @@ const bossData = [
     {
         id: 2,
         isSea: false,
-        name: "흉몽 광역 보스(지배)",
+        name: "광역 보스 (예시)",
+        name_en: "Area Boss (Example)",
+        name_jp: "エリアボス (例)",
         icon: "",
         description: "",
         resistances: {},

@@ -357,7 +357,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .penetrate-input-group input { width: 80px; font-size: 13px; }
 }
 
-.tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background-color: #666; color: white; font-size: 12px; margin-left: 8px; cursor: help; position: relative; }
+.tooltip-icon { display: inline-flex; bottom:3px; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); color: white; font-size: 10px; margin-left: 8px; cursor: help; position: relative; }
 
 .tooltip-icon:hover::after { content: none; }
 .tooltip-icon:hover::before { content: none; }

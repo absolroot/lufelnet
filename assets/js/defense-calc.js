@@ -695,53 +695,31 @@ class DefenseCalc {
         const penetrateTotal = Math.max(0, this.penetrateTotal || 0);
         const reduceTotalRaw = Math.max(0, this.reduceTotal || 0);
 
-        let afterStep1Coef = defenseCoef; // 중간 단계 방어 계수
-        let afterPierceCoef = 0;          // 관통 적용 후 방어 계수
-        let finalCoef = 0;                // 최종 방어 계수
+        // 계산은 순서와 무관하게 동일한 결과가 나오도록 정의
+        // 1) 관통 적용
+        const afterPierceCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
+        // 2) 방어력 감소 적용 (0 하한)
+        const finalCoef = Math.max(0, afterPierceCoef - reduceTotalRaw);
+
+        // UI 표기만 순서 스위치에 맞춰 라벨/목표를 변경
+        const reduceLabel = document.getElementById('reduceSumTargetLabel');
+        const pierceLabel = document.getElementById('pierceSumTargetLabel');
+        if (reduceLabel) reduceLabel.style.visibility = 'visible';
+        if (pierceLabel) pierceLabel.style.visibility = 'visible';
 
         if (this.isPierceFirst) {
-            // 1단계: 관통
-            afterStep1Coef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
-            // 2단계: 방깎
-            const reduceApplied = Math.min(reduceTotalRaw, afterStep1Coef);
-            finalCoef = Math.max(0, afterStep1Coef - reduceApplied);
-            afterPierceCoef = afterStep1Coef; // 관통 적용 후 계수
-
-            // 두 번째 카드(방깎)의 합계/목표 표시
-            const reduceLabel = document.getElementById('reduceSumTargetLabel');
-            const pierceLabel = document.getElementById('pierceSumTargetLabel');
-            if (reduceLabel) reduceLabel.style.visibility = 'visible';
-            if (pierceLabel) pierceLabel.style.visibility = 'visible';
-            // 값 표시(두 번째 카드만 "합계 / 목표")
-            this.setSumTarget('reduce', reduceTotalRaw, afterStep1Coef);
+            // 방깎 카드가 두 번째이므로 목표는 "관통 적용 후 방어계수"
+            this.setSumTarget('reduce', reduceTotalRaw, afterPierceCoef);
             this.setSumTarget('pierce', penetrateTotal, Number.NaN);
-            // 항상 합계/목표 보임 (비대상 카드는 '-' 처리)
         } else {
-            // 1단계: 방깎
-            const reduceApplied = Math.min(reduceTotalRaw, defenseCoef);
-            afterStep1Coef = Math.max(0, defenseCoef - reduceApplied);
-            // 2단계: 관통
-            afterPierceCoef = penetrateTotal >= 100 ? 0 : afterStep1Coef * (100 - penetrateTotal) / 100;
-            finalCoef = afterPierceCoef;
-
-            // 두 번째 카드(관통)의 합계/목표 표시
-            const reduceLabel = document.getElementById('reduceSumTargetLabel');
-            const pierceLabel = document.getElementById('pierceSumTargetLabel');
-            if (reduceLabel) reduceLabel.style.visibility = 'visible';
-            if (pierceLabel) pierceLabel.style.visibility = 'visible';
-
-            // 관통 필요 목표 수치 = 100 - (방깎합계 / 보스방어계수) * 100 (0~100 범위)
+            // 관통 카드가 두 번째일 때 목표 관통치(%)
             let pierceTarget = 100;
             if (isFinite(defenseCoef) && defenseCoef > 0) {
                 pierceTarget = 100 - (reduceTotalRaw / defenseCoef) * 100;
                 pierceTarget = Math.max(0, Math.min(100, pierceTarget));
-            } else {
-                pierceTarget = 100;
             }
-            // 값 표시(두 번째 카드만 "합계 / 목표")
             this.setSumTarget('pierce', penetrateTotal, pierceTarget);
             this.setSumTarget('reduce', reduceTotalRaw, Number.NaN);
-            // 항상 합계/목표 보임 (비대상 카드는 '-' 처리)
         }
 
         // 최종 방어 계수 표기 (새 카드)
@@ -766,21 +744,7 @@ class DefenseCalc {
         }
         if (this.damageCard) this.damageCard.style.display = '';
 
-        // 초기 로드 또는 어떤 시점이든 현재 순서 기준으로 비대상/대상 카드 목표 노출 맞춤
-        if (this.isPierceFirst) {
-            // 방깎 목표 = 관통 적용 후 방어계수 (afterStep1Coef)
-            this.setSumTarget('reduce', reduceTotalRaw, afterStep1Coef);
-            this.setSumOnly('pierce', penetrateTotal);
-        } else {
-            // 관통 목표 = 100 - (방깎합계/보스방어계수)*100
-            let pierceTarget = 100;
-            if (isFinite(defenseCoef) && defenseCoef > 0) {
-                pierceTarget = 100 - (reduceTotalRaw / defenseCoef) * 100;
-                pierceTarget = Math.max(0, Math.min(100, pierceTarget));
-            }
-            this.setSumTarget('pierce', penetrateTotal, pierceTarget);
-            this.setSumOnly('reduce', reduceTotalRaw);
-        }
+        // 하단 중복 표기는 제거됨 (위에서 UI표기를 이미 처리함)
     }
 
     calculateDamage(baseDefense, defenseCoef) {

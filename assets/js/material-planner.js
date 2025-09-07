@@ -482,9 +482,25 @@
     function attachSliders(){
         const getRowByInput=(id)=>{ const el=document.getElementById(id); return el? el.closest('.setting-row'): null; };
         const makeDual=(row, fromId, toId, min, max)=>{
-            if(!row || row.dataset.dualAttached) return;
+            if(!row) return;
             const from=document.getElementById(fromId); const to=document.getElementById(toId);
             if(!from || !to) return;
+
+            // 이미 부착된 경우: 슬라이더와 입력값 동기화만 수행 (버그 수정 포인트)
+            if(row.dataset.dualAttached){
+                const sliderRow = row.querySelector('.dual-slider-row');
+                if(sliderRow){
+                    const sliders = sliderRow.querySelectorAll('input[type="range"]');
+                    const slL = sliders[0];
+                    const slR = sliders[1];
+                    if(slL && slR){
+                        slL.min=String(min); slL.max=String(max); slL.step='1'; slL.value=from.value;
+                        slR.min=String(min); slR.max=String(max); slR.step='1'; slR.value=to.value;
+                    }
+                }
+                return;
+            }
+
             row.dataset.dualAttached='1';
             const existingLabel = row.querySelector('label');
             const labelText = existingLabel ? existingLabel.textContent : '';

@@ -16,7 +16,7 @@
             elapsed: (m, s) => `경과 시간: ${m}분 ${s}초`,
             sending: '요청 전송 중...',
             waiting: '서버 응답 대기 중...',
-            tryGet: 'POST 실패, GET 방식으로 재시도합니다...',
+            tryGet: '진행 중...', //POST 실패, GET 방식으로 재시도합니다...
             invalidUrl: '유효한 URL을 입력하세요.',
             done: (bytes) => `완료 (응답 바이트: ${bytes})`,
             failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
@@ -37,7 +37,7 @@
             elapsed: (m, s) => `Elapsed: ${m}m ${s}s`,
             sending: 'Sending request...',
             waiting: 'Waiting for server response...',
-            tryGet: 'POST failed, retrying with GET...',
+            tryGet: 'In progress...', //POST failed, retrying with GET...
             invalidUrl: 'Please enter a valid URL.',
             done: (bytes) => `Done (response bytes: ${bytes})`,
             failed: 'Something went wrong. Please try again later.',
@@ -59,7 +59,7 @@
             elapsed: (m, s) => `経過時間: ${m}分 ${s}秒`,
             sending: 'リクエスト送信中...',
             waiting: 'サーバーの応答を待機中...',
-            tryGet: 'POST に失敗、GET で再試行中...',
+            tryGet: '進行中...', //POST に失敗、GET で再試行中...
             invalidUrl: '有効なURLを入力してください。',
             done: (bytes) => `完了（応答バイト数: ${bytes}）`,
             failed: 'エラーが発生しました。時間をおいて再度お試しください。',
@@ -253,8 +253,7 @@
                 const merged = mergeWithCache(cloudMerged);
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
-                // 최신이 클라우드라면 업서트는 생략해도 되지만, onConflict로 안전하게 동기화 가능
-                await syncMergedToCloud(user);
+                // 최신이 클라우드인 경우에는 업서트 금지(요약 값이 재정의되는 문제 방지)
                 // 체크포인트 갱신: 4★/5★ 기준 최신 타임스탬프 저장
                 try {
                     const ckpt = loadCkpt();
@@ -299,7 +298,7 @@
             // 델타: 체크포인트 이후 + 4★/5★만 업로드
             const lastTs = ckpt?.[tkey]?.lastTs || 0;
             const records = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[])
-                .filter(r => (Number(r.grade) === 4 || Number(r.grade) === 5) && Number(r.timestamp||0) > lastTs);
+                .filter(r => (Number(r.grade) === 4 || Number(r.grade) === 5) && Number(r.timestamp||0) > lastTs && !!r.gachaId);
             // chunking (supabase 제한 대비)
             const chunkSize = 500;
             for (let i=0;i<records.length;i+=chunkSize){
@@ -324,21 +323,29 @@
             for (const tkey of types){
                 const b = merged.data[tkey];
                 if (!b || !b.summary) continue;
+                // total_pulls는 모든 등급 기준(2/3 포함), 나머지는 4/5 기반
+                const recsAll = (b.records||[]).flatMap(seg => Array.isArray(seg.record)? seg.record:[]);
+                const recs45 = recsAll.filter(r => Number(r.grade)===4 || Number(r.grade)===5);
+                const totalAll = Number(b.summary?.pulledSum ?? recsAll.length);
+                const total5 = Number(b.summary?.total5Star ?? recs45.filter(r=>Number(r.grade)===5).length);
+                const total4 = Number(b.summary?.total4Star ?? recs45.filter(r=>Number(r.grade)===4).length);
                 await supabase.from('pulls_summary_overall').upsert({
                     user_id: user.id,
                     gacha_type: tkey,
-                    region: (window.LanguageRouter && typeof LanguageRouter.getCurrentRegion==='function') ? LanguageRouter.getCurrentRegion() : null,
-                    total_pulls: Number(b.summary.pulledSum||0),
-                    eff_total_pulls: Number((() => {
-                        // 진행중 계산: 마지막 그룹(90일 기준) 내 null 세그먼트 길이 합산
-                        const list = Array.isArray(b.records)? b.records:[];
-                        if (list.length===0) return 0;
-                        const msDay=24*60*60*1000; const last=list[list.length-1]; const lastTs=Number(last?.lastTimestamp||0);
-                        let s=0; for (let i=list.length-1;i>=0;i--){ const seg=list[i]; const ts=Number(seg?.lastTimestamp||0); if (!ts) continue; if (Math.abs(lastTs-ts)>90*msDay) break; if (!seg.fivestar) s += (Array.isArray(seg.record)? seg.record.length:0); }
-                        return Number(b.summary.pulledSum||0) - s;
-                    })()),
-                    total_5star: Number(b.summary.total5Star||0),
-                    total_4star: Number(b.summary.total4Star||0),
+                    region: resolveRegion(),
+                    total_pulls: totalAll,
+                    eff_total_pulls: (b.summary && typeof b.summary.effTotal === 'number')
+                        ? Number(b.summary.effTotal||0)
+                        : Number((() => {
+                            // 진행중 계산: 마지막 그룹(90일 기준) 내 null 세그먼트 길이 합산
+                            const list = Array.isArray(b.records)? b.records:[];
+                            if (list.length===0) return 0;
+                            const msDay=24*60*60*1000; const last=list[list.length-1]; const lastTs=Number(last?.lastTimestamp||0);
+                            let s=0; for (let i=list.length-1;i>=0;i--){ const seg=list[i]; const ts=Number(seg?.lastTimestamp||0); if (!ts) continue; if (Math.abs(lastTs-ts)>90*msDay) break; if (!seg.fivestar) s += (Array.isArray(seg.record)? seg.record.length:0); }
+                            return totalAll - s;
+                        })()),
+                    total_5star: total5,
+                    total_4star: total4,
                     avg_5star_pity: b.summary.avgPity ?? null,
                     avg_4star_pity: null,
                     win5050_count: Number(b.summary.win5050||0),
@@ -361,32 +368,28 @@
             }
             const region = resolveRegion();
             for (const tkey of types){
-                // 월별 합계 계산: block.records를 월별로 그룹핑(4★/5★만 집계)
                 const block = merged.data[tkey]; if (!block) continue;
-                const recs = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[]).filter(r => Number(r.grade)===4 || Number(r.grade)===5);
-                const byMonth = new Map();
-                for (const r of recs){
-                    const d = new Date(Number(r.timestamp||0));
-                    if (isNaN(d)) continue;
-                    const ym = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`;
-                    if (!byMonth.has(ym)) byMonth.set(ym, { total:0, g5:0, g4:0, pity5Sum:0, pity5Cnt:0 });
-                    const m = byMonth.get(ym);
-                    m.total++;
-                    if (Number(r.grade)===5) { m.g5++; /* pity는 세그먼트 기반이라 근사 불가 → skip */ }
-                    if (Number(r.grade)===4) { m.g4++; }
-                }
+                // 월별 합계 계산: total_pulls는 모든 등급(2/3 포함)을 기준으로 집계, 4★/5★는 필터로 집계
+                const recsAll = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[]);
+                const recs45 = recsAll.filter(r => Number(r.grade)===4 || Number(r.grade)===5);
+                const byMonthAll = new Map();
+                const byMonth45 = new Map();
+                const toYm = (ts)=>{ const d=new Date(Number(ts||0)); if (isNaN(d)) return null; return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`; };
+                for (const r of recsAll){ const ym=toYm(r.timestamp); if (!ym) continue; if(!byMonthAll.has(ym)) byMonthAll.set(ym,{ total:0 }); byMonthAll.get(ym).total++; }
+                for (const r of recs45){ const ym=toYm(r.timestamp); if (!ym) continue; if(!byMonth45.has(ym)) byMonth45.set(ym,{ g5:0,g4:0 }); const m=byMonth45.get(ym); if (Number(r.grade)===5) m.g5++; else if (Number(r.grade)===4) m.g4++; }
                 for (const ym of ymKeys){
-                    const m = byMonth.get(ym) || { total:0, g5:0, g4:0, pity5Sum:0, pity5Cnt:0 };
+                    const a = byMonthAll.get(ym) || { total:0 };
+                    const b = byMonth45.get(ym) || { g5:0, g4:0 };
                     await supabase.from('pulls_summary_monthly').upsert({
                         user_id: user.id,
                         gacha_type: tkey,
                         year_month: ym,
                         region: region,
-                        total_pulls: m.total,
+                        total_pulls: a.total,
                         avg_5star_pity: null,
                         avg_4star_pity: null,
-                        total_5star: m.g5,
-                        total_4star: m.g4,
+                        total_5star: b.g5,
+                        total_4star: b.g4,
                         win5050_count: 0
                     }, { onConflict: 'user_id,gacha_type,year_month,region' });
                 }

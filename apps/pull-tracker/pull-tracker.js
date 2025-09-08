@@ -361,15 +361,21 @@
 
     function googleSignOut(){ __googleAuthed = false; __googleToken = null; renderAuthBarUI(null); }
 
-    async function driveFetchFileId(interactive = false) {
+    async function driveFetchFileIds(interactive = false) {
         try {
             if (!__googleToken) return null;
             const q = encodeURIComponent(`name='${DRIVE_FILE_NAME}' and 'appDataFolder' in parents and trashed=false`);
-            const url = `https://www.googleapis.com/drive/v3/files?q=${q}&spaces=appDataFolder&fields=files(id,name)`;
+            const url = `https://www.googleapis.com/drive/v3/files?q=${q}&spaces=appDataFolder&orderBy=modifiedTime desc&fields=files(id,name,modifiedTime)`;
             let res = await driveFetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } }, interactive);
             const json = await res.json();
-            return (json.files && json.files[0] && json.files[0].id) || null;
+            return Array.isArray(json.files) ? json.files : [];
         } catch(_) { return null; }
+    }
+
+    async function driveFetchFileId(interactive = false) {
+        const files = await driveFetchFileIds(interactive);
+        if (!files || files.length===0) return null;
+        return files[0].id || null;
     }
 
 
@@ -379,7 +385,8 @@
             // 항상 AppDataFolder에서만 로드(디버그에서도 예외 없음)
             const fileId = await driveFetchFileId(interactive);
             if (!fileId) return null;
-            let res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media', { headers: { Authorization: 'Bearer '+__googleToken } }, interactive);
+            const bust = Date.now();
+            let res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media&v='+bust, { headers: { Authorization: 'Bearer '+__googleToken, 'Cache-Control':'no-cache' } }, interactive);
             if (!res.ok) return null;
             return await res.json();
         } catch(_) { return null; }
@@ -419,10 +426,14 @@
     async function driveDeleteMerged(interactive = false) {
         try {
             if (!__googleToken) return false;
-            const fileId = await driveFetchFileId(interactive);
-            if (!fileId) return true;
-            const res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+fileId, { method:'DELETE', headers: { Authorization: 'Bearer '+__googleToken } }, interactive);
-            return res.ok || res.status === 404;
+            const files = await driveFetchFileIds(interactive);
+            if (!files || files.length===0) return true;
+            let allOk = true;
+            for (const f of files){
+                const res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+f.id, { method:'DELETE', headers: { Authorization: 'Bearer '+__googleToken } }, interactive);
+                allOk = allOk && (res.ok || res.status === 404);
+            }
+            return allOk;
         } catch(_) { return false; }
     }
 

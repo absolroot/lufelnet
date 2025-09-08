@@ -112,6 +112,21 @@
         } catch(_) {}
     }
 
+    function resolveRegion(){
+        try {
+            if (window.LanguageRouter && typeof LanguageRouter.getCurrentRegion === 'function') {
+                const r = LanguageRouter.getCurrentRegion();
+                if (r) return String(r).toLowerCase();
+            }
+        } catch(_) {}
+        // fallback: derive from lang param
+        try {
+            if (lang === 'jp') return 'jp';
+            if (lang === 'en') return 'en';
+            return 'kr';
+        } catch(_) { return 'kr'; }
+    }
+
     // --- Auth Bar (login/logout + sync stub) ---
     async function initAuthBar(){
         try {
@@ -344,7 +359,7 @@
                 const d = new Date(now.getFullYear(), now.getMonth()-i, 1);
                 ymKeys.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`);
             }
-            const region = (window.LanguageRouter && typeof LanguageRouter.getCurrentRegion==='function') ? LanguageRouter.getCurrentRegion() : null;
+            const region = resolveRegion();
             for (const tkey of types){
                 // 월별 합계 계산: block.records를 월별로 그룹핑(4★/5★만 집계)
                 const block = merged.data[tkey]; if (!block) continue;

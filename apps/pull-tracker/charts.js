@@ -27,13 +27,23 @@
                 const t = Number(r.timestamp||0); if (!t) continue; const dt = new Date(t); if (dt < start90 || dt > end) continue;
                 const idx = idxByKey.get(monthKey(new Date(dt.getFullYear(), dt.getMonth(), 1))); if (idx==null) continue; totals[idx]++;
             }
-            const allSegments = arr.flatMap(b => (b && Array.isArray(b.records)) ? b.records : []);
-            for (const seg of allSegments){
-                if (!seg || !seg.fivestar) continue;
-                const t = Number(seg.lastTimestamp || (Array.isArray(seg.record) && seg.record.length>0 ? seg.record[seg.record.length-1].timestamp : 0));
-                if (!t) continue; const dt = new Date(t); if (dt < start90 || dt > end) continue;
-                const idx = idxByKey.get(monthKey(new Date(dt.getFullYear(), dt.getMonth(), 1))); if (idx==null) continue;
-                const pity = ((Array.isArray(seg.record)? seg.record.length : 0) + 1); avg5[idx].sum += pity; avg5[idx].count++;
+            // 5★ 평균: 실제 기록 연속에서 5★가 발생할 때마다 그 직전까지의 pity를 월별로 집계
+            const sortedSegments = arr.flatMap(b => (b && Array.isArray(b.records)) ? b.records : []);
+            const chain = [];
+            for (const seg of sortedSegments){
+                const recs = Array.isArray(seg.record) ? seg.record : [];
+                for (const r of recs) chain.push(r);
+            }
+            chain.sort((a,b)=> Number(a.timestamp||0) - Number(b.timestamp||0));
+            let pityCounter = 0;
+            for (const r of chain){
+                const t = Number(r.timestamp||0); if (!t) continue; const dt = new Date(t); if (dt < start90 || dt > end) continue;
+                pityCounter++;
+                if (Number(r.grade) === 5){
+                    const idx = idxByKey.get(monthKey(new Date(dt.getFullYear(), dt.getMonth(), 1))); if (idx==null) { pityCounter=0; continue; }
+                    avg5[idx].sum += pityCounter; avg5[idx].count++;
+                    pityCounter = 0;
+                }
             }
             const avg5Final = avg5.map(o=> o.count>0 ? (o.sum/o.count) : 0);
             const avg4 = new Array(binCount).fill(null).map(()=>({sum:0,count:0}));
@@ -66,7 +76,12 @@
             ctx.save(); ctx.globalAlpha=0.7; ctx.strokeStyle='#ffffff'; ctx.lineWidth=2; ctx.beginPath();
             for (let i=0;i<binCount;i++){ const y=yAt(totals[i]); if (i===0) ctx.moveTo(xAt(i), y); else ctx.lineTo(xAt(i), y); }
             ctx.stroke(); ctx.globalAlpha=1; ctx.fillStyle='#ffffff'; ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.font='10px sans-serif';
-            for (let i=0;i<binCount;i++){ const x=xAt(i); const y=yAt(totals[i]); ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI*2); ctx.fill(); }
+            for (let i=0;i<binCount;i++){
+                const x=xAt(i); const y=yAt(totals[i]);
+                ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI*2); ctx.fill();
+                // 점 옆에 총 횟수 숫자 라벨 복구
+                ctx.fillText(String(totals[i]||0), x, y-6);
+            }
             ctx.restore();
             ctx.strokeStyle='#8fd9ff'; ctx.lineWidth=2; ctx.beginPath();
             for (let i=0;i<binCount;i++){ const y=yAt(avg5Final[i]); if (i===0) ctx.moveTo(xAt(i), y); else ctx.lineTo(xAt(i), y); }

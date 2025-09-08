@@ -16,11 +16,20 @@
             elapsed: (m, s) => `경과 시간: ${m}분 ${s}초`,
             sending: '요청 전송 중...',
             waiting: '서버 응답 대기 중...',
-            tryGet: 'POST 실패, GET 방식으로 재시도합니다...',
+            tryGet: '진행 중...', // POST 실패 GET 진행 
             invalidUrl: '유효한 URL을 입력하세요.',
             done: (bytes) => `완료 (응답 바이트: ${bytes})`,
             failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
-            confirmReset: '정말 초기화할까요?\n이 작업은 로컬에 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.'
+            confirmReset: '정말 초기화할까요?\n이 작업은 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.',
+            loadedDrive: '클라우드(Drive)에서 불러왔습니다.',
+            loadedLocal: '로컬 저장본에서 불러왔습니다.',
+            savedDrive: '클라우드(Drive)에 저장되었습니다.',
+            savedLocal: '로컬에 저장되었습니다.',
+            deletedDrive: '클라우드(Drive)에서 삭제했습니다.',
+            deleteDriveFailed: '클라우드(Drive) 삭제에 실패했습니다.',
+            driveForbidden: 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.',
+            driveNeedConsent: '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.',
+            driveNoData: '드라이브에 저장된 데이터가 없습니다.'
         },
         en: {
             pageTitle: 'Pull Tracker',
@@ -37,11 +46,20 @@
             elapsed: (m, s) => `Elapsed: ${m}m ${s}s`,
             sending: 'Sending request...',
             waiting: 'Waiting for server response...',
-            tryGet: 'POST failed, retrying with GET...',
+            tryGet: 'Processing...',
             invalidUrl: 'Please enter a valid URL.',
             done: (bytes) => `Done (response bytes: ${bytes})`,
             failed: 'Something went wrong. Please try again later.',
-            confirmReset: 'Are you sure you want to reset?\nThis will delete all locally stored gacha data (including last URL/response).'
+            confirmReset: 'Are you sure you want to reset?\nThis will delete all stored gacha data (including last URL/response).',
+            loadedDrive: 'Loaded from Drive.',
+            loadedLocal: 'Loaded from local cache.',
+            savedDrive: 'Saved to Drive.',
+            savedLocal: 'Saved locally.',
+            deletedDrive: 'Deleted from Drive.',
+            deleteDriveFailed: 'Failed to delete from Drive.',
+            driveForbidden: 'Google Drive access forbidden (403). Please review permissions/settings.',
+            driveNeedConsent: 'Drive permission is required. Click Login to grant access.',
+            driveNoData: 'No saved data found on Drive.'
         },
         jp: {
             pageTitle: 'Pull Tracker',
@@ -58,16 +76,26 @@
             elapsed: (m, s) => `経過時間: ${m}分 ${s}秒`,
             sending: 'リクエスト送信中...',
             waiting: 'サーバーの応答を待機中...',
-            tryGet: 'POST に失敗、GET で再試行中...',
+            tryGet: '処理中...',
             invalidUrl: '有効なURLを入力してください。',
             done: (bytes) => `完了（応答バイト数: ${bytes}）`,
             failed: 'エラーが発生しました。時間をおいて再度お試しください。',
-            confirmReset: '本当に初期化しますか？\nこの操作により、ローカルに保存されたガチャデータ（最後のURL/レスポンスを含む）がすべて削除されます。'
+            confirmReset: '本当に初期化しますか？\nこの操作により、保存されたガチャデータ(最後のURL/レスポンスを含む)がすべて削除されます。',
+            loadedDrive: 'Drive から読み込みました。',
+            loadedLocal: 'ローカルから読み込みました。',
+            savedDrive: 'Drive に保存しました。',
+            savedLocal: 'ローカルに保存しました。',
+            deletedDrive: 'Drive から削除しました。',
+            deleteDriveFailed: 'Drive の削除に失敗しました。',
+            driveForbidden: 'Google Drive へのアクセスが拒否されました（403）。権限や設定をご確認ください。',
+            driveNeedConsent: 'Drive へのアクセス許可が必要です。上部のログインを押して許可してください。',
+            driveNoData: 'Drive に保存されたデータがありません。'
         }
     };
 
     const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
-    const DEBUG = true;
+    const DEBUG = false;
+    const VERBOSE_LOG = false; // DEBUG 출력 중 상세 로그는 별도 플래그로 제어
     const t = messages[lang] || messages.kr;
 
     const els = {
@@ -110,10 +138,47 @@
         } catch(_) {}
     }
 
+    // DEBUG 예시 UI 바인딩 (DOM 생성 이후)
+    document.addEventListener('DOMContentLoaded', function(){
+        try {
+            const box = document.getElementById('debugExamples');
+            if (!box) return;
+            if (DEBUG) box.style.display = 'flex';
+            const btn = document.getElementById('applyExampleBtn');
+            const sel = document.getElementById('exampleSelect');
+            if (btn && sel) {
+                btn.addEventListener('click', async () => {
+                    try {
+                        const n = String(sel.value||'1');
+                        const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                        const url = `${base}/apps/pull-tracker/example${n==='1'?'':n}.json?v=${Date.now()}`;
+                        const res = await fetch(url);
+                        if (!res.ok) throw new Error('example fetch failed');
+                        const text = await res.text();
+                        setResult(text);
+                        try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
+                        const incoming = JSON.parse(text);
+                        const merged = mergeWithCache(incoming);
+                        localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
+                        renderCardsFromExample(merged);
+                        const beforeAuthed = __googleAuthed;
+                        await syncMergedToCloud();
+                        if (__googleAuthed) { __dataSource = 'drive'; setStatus(`${t.savedDrive} ${nowStamp()}\n✅ 완료`); }
+                        else { __dataSource = 'local'; setStatus(`${t.savedLocal} ${nowStamp()}\n✅ 완료`); }
+                    } catch(e){ setStatus('예시 적용 실패'); }
+                });
+            }
+        } catch(_) {}
+    });
+
     // --- Google Drive 로그인/동기화 ---
     let __googleAuthed = false;
     let __googleToken = null;
-    const DRIVE_FILE_NAME = 'p5x_pull_tracker.json'; // AppDataFolder 저장
+    let __tokenExpAt = 0;
+    let tokenClient = null;
+    const DRIVE_FILE_NAME = 'p5x_pull_tracker.json'; // 기본 파일명
+    const DEBUG_FOLDER_NAME = 'lufelnet_test'; // DEBUG 시 일반 드라이브 폴더
+    const APP_FILE_TAG = 'lufelnet'; // appProperties.ownerApp 태그
 
     function gapiLoad() {
         return new Promise(resolve => {
@@ -124,6 +189,103 @@
                 }, 50);
             } catch(_) { resolve(); }
         });
+    }
+
+    // GIS 하드닝: 사용자 제스처 없이 popup flow가 시작되지 않도록 차단
+    (function hardenGIS(){
+        const tryPatch = () => {
+            try {
+                if (!window.google || !google.accounts || !google.accounts.oauth2) return;
+                if (google.__pt_hardened) return;
+                const origInit = google.accounts.oauth2.initTokenClient;
+                if (typeof origInit !== 'function') return;
+                google.accounts.oauth2.initTokenClient = function(config){
+                    const client = origInit(config);
+                    const origReq = client.requestAccessToken && client.requestAccessToken.bind(client);
+                    if (typeof origReq === 'function') {
+                        client.requestAccessToken = function(options){
+                            const promptVal = (options && options.prompt) || (config && config.prompt) || undefined;
+                            const allow = !!window.__pt_allowInteractive || promptVal === '';
+                            if (!allow) {
+                                if (VERBOSE_LOG) console.log('[pull-tracker] blocked requestAccessToken without user gesture');
+                                return; // 차단
+                            }
+                            return origReq(options);
+                        };
+                    }
+                    return client;
+                };
+                google.__pt_hardened = true;
+            } catch(_) {}
+        };
+        window.__pt_allowInteractive = false;
+        const id = setInterval(()=>{ tryPatch(); if (window.google && google.__pt_hardened) clearInterval(id); }, 60);
+        document.addEventListener('DOMContentLoaded', tryPatch);
+    })();
+
+    // Token client (silent refresh)
+    function initTokenClientOnce(){
+        if (tokenClient) return tokenClient;
+        try {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: window.GOOGLE_CLIENT_ID,
+                scope: 'openid email https://www.googleapis.com/auth/drive.appdata',
+                callback: (resp) => {
+                    if (resp && resp.access_token) {
+                        __googleToken = resp.access_token;
+                        __googleAuthed = true;
+                        const sec = Number(resp.expires_in || 3600);
+                        __tokenExpAt = Date.now() + Math.max(0, (sec - 60) * 1000);
+                        try { localStorage.setItem('pull-tracker:google-token', __googleToken); } catch(_) {}
+                        localStorage.setItem('pull-tracker:google-exp', String(__tokenExpAt));
+                    }
+                }
+            });
+        } catch(_) {}
+        return tokenClient;
+    }
+
+    async function ensureTokenSilent(){
+        try {
+            // 저장된 토큰이 없으면 절대 무팝업 요청을 시도하지 않음 (사용자 클릭 전 UI 노출 방지)
+            if (!__googleToken) return false;
+            if (Date.now() < __tokenExpAt) return true;
+            initTokenClientOnce();
+            return await new Promise((resolve)=>{
+                try {
+                    tokenClient.callback = (resp)=>{ resolve(!!(resp && resp.access_token)); };
+                    tokenClient.requestAccessToken({ prompt: '' }); // 무팝업 갱신만
+                } catch(_) { resolve(false); }
+            });
+        } catch(_) { return false; }
+    }
+
+    async function tokenHas(scopeSubstr){
+        if (!__googleToken) return false;
+        try {
+            const r = await fetch('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + encodeURIComponent(__googleToken));
+            const j = await r.json();
+            return typeof j.scope === 'string' && j.scope.includes(scopeSubstr);
+        } catch(_) { return false; }
+    }
+
+    // 공통: Drive API 호출 래퍼 (401/403 시 선택적으로 재인증)
+    async function driveFetch(url, options = {}, interactive = false) {
+        let res = await fetch(url, options);
+        try {
+            if (res.status === 403) {
+                const txt = await res.clone().text();
+                if (/storageQuotaExceeded/i.test(txt)) {
+                    setStatus(lang==='en' ? 'Google Drive storage quota exceeded. Please free up space.' : (lang==='jp' ? 'Google ドライブの保存容量が上限に達しました。空き容量を確保してください。' : 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.'));
+                }
+            }
+        } catch(_) {}
+        // 재인증은 401(만료/무효 토큰)에 한정. 403은 권한/정책/쿼터 이슈일 수 있어 재팝업 금지
+        if (res.status === 401 && interactive) {
+            try { await gapiInit(); await googleSignIn(); } catch(_) {}
+            res = await fetch(url, { ...options, headers: { ...(options.headers||{}), Authorization: 'Bearer ' + __googleToken } });
+        }
+        return res;
     }
 
     async function gapiInit() {
@@ -156,17 +318,27 @@
         }
     }
 
+    // DEBUG 모드에서도 drive.file 범위는 사용하지 않음(예시 제출만 허용)
     const OAUTH_SCOPE = 'openid email https://www.googleapis.com/auth/drive.appdata';
 
     async function googleSignIn() {
         return new Promise((resolve) => {
             try {
+            // 사용자 제스처 구간: 인터랙티브 허용
+            const prev = window.__pt_allowInteractive;
+            window.__pt_allowInteractive = true;
             const client = google.accounts.oauth2.initTokenClient({
                 client_id: window.GOOGLE_CLIENT_ID,
                 scope: OAUTH_SCOPE,
                 callback: async (resp) => {
                 __googleToken = resp.access_token;
                 __googleAuthed = true;
+                try {
+                    const sec = Number(resp.expires_in || 3600);
+                    __tokenExpAt = Date.now() + Math.max(0, (sec - 60) * 1000);
+                    localStorage.setItem('pull-tracker:google-token', __googleToken);
+                    localStorage.setItem('pull-tracker:google-exp', String(__tokenExpAt));
+                } catch(_) {}
                 // 2) 사용자 정보 가져오기 (OIDC userinfo)
                 let profile = null;
                 try {
@@ -175,78 +347,81 @@
                     });
                     profile = r.ok ? await r.json() : null; // { email, name, ... }
                 } catch(_) {}
-                renderAuthBarUI(profile);
+                try { if (profile && profile.email) localStorage.setItem('pull-tracker:google-email', profile.email); } catch(_) {}
+                renderAuthBarUI(profile || { email: (localStorage.getItem('pull-tracker:google-email')||'') });
+                window.__pt_allowInteractive = prev;
                 resolve(resp);
                 }
             });
             client.requestAccessToken(); // 최초 동의 이후엔 prompt 없이 재발급됨
-            } catch(e) { resolve(null); }
+            } catch(e) { try { window.__pt_allowInteractive = false; } catch(_) {}; resolve(null); }
         });
     }
       
 
     function googleSignOut(){ __googleAuthed = false; __googleToken = null; renderAuthBarUI(null); }
 
-    async function driveFetchFileId() {
+    async function driveFetchFileId(interactive = false) {
         try {
             if (!__googleToken) return null;
             const q = encodeURIComponent(`name='${DRIVE_FILE_NAME}' and 'appDataFolder' in parents and trashed=false`);
             const url = `https://www.googleapis.com/drive/v3/files?q=${q}&spaces=appDataFolder&fields=files(id,name)`;
-            let res = await fetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } });
-            if (res.status === 401 || res.status === 403) {
-                await googleSignIn();
-                res = await fetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } });
-            }
+            let res = await driveFetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } }, interactive);
             const json = await res.json();
             return (json.files && json.files[0] && json.files[0].id) || null;
         } catch(_) { return null; }
     }
 
-    async function driveLoadMerged() {
+
+    async function driveLoadMerged(interactive = false) {
         try {
             if (!__googleToken) return null;
-            const fileId = await driveFetchFileId();
+            // 항상 AppDataFolder에서만 로드(디버그에서도 예외 없음)
+            const fileId = await driveFetchFileId(interactive);
             if (!fileId) return null;
-            const res = await fetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media', { headers: { Authorization: 'Bearer '+__googleToken }});
+            let res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media', { headers: { Authorization: 'Bearer '+__googleToken } }, interactive);
             if (!res.ok) return null;
             return await res.json();
         } catch(_) { return null; }
     }
 
-    async function driveSaveMerged(merged) {
+    async function driveSaveMerged(merged, interactive = false) {
         try {
             if (!__googleToken || !merged) return false;
-            const fileId = await driveFetchFileId();
-            const metadata = { name: DRIVE_FILE_NAME, parents: ['appDataFolder'] };
+            // 항상 AppDataFolder에만 저장
+            let fileId = await driveFetchFileId(interactive);
+            const folderParents = ['appDataFolder'];
+            const metadata = { name: DRIVE_FILE_NAME, parents: folderParents };
             const boundary = '-------314159265358979323846';
             const delimiter = '\r\n--' + boundary + '\r\n';
             const closeDelim = '\r\n--' + boundary + '--';
             const metaPart = 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata);
             const dataPart = 'Content-Type: application/json\r\n\r\n' + JSON.stringify(merged);
             const body = delimiter + metaPart + delimiter + dataPart + closeDelim;
-            const method = fileId ? 'PATCH' : 'POST';
-            const url = fileId
-                ? 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=multipart'
-                : 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
-            let res = await fetch(url, {
-                method,
-                headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary },
-                body
-            });
-            if (res.status === 401 || res.status === 403) {
-                await googleSignIn();
-                res = await fetch(url, { method, headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body });
+            // 1) 파일이 우리 앱 소유가 아니거나 PATCH 권한이 없으면 403이므로 POST 신규 생성으로 폴백
+            let res;
+            if (fileId) {
+                const url = 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=multipart';
+                res = await driveFetch(url, { method: 'PATCH', headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
+                if (res.status === 403) {
+                    // 폴백: 새 파일 생성
+                    const createUrl = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
+                    res = await driveFetch(createUrl, { method: 'POST', headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
+                }
+            } else {
+                const createUrl = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
+                res = await driveFetch(createUrl, { method: 'POST', headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
             }
             return res.ok;
         } catch(_) { return false; }
     }
 
-    async function driveDeleteMerged() {
+    async function driveDeleteMerged(interactive = false) {
         try {
             if (!__googleToken) return false;
-            const fileId = await driveFetchFileId();
+            const fileId = await driveFetchFileId(interactive);
             if (!fileId) return true;
-            const res = await fetch('https://www.googleapis.com/drive/v3/files/'+fileId, { method:'DELETE', headers: { Authorization: 'Bearer '+__googleToken }});
+            const res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+fileId, { method:'DELETE', headers: { Authorization: 'Bearer '+__googleToken } }, interactive);
             return res.ok || res.status === 404;
         } catch(_) { return false; }
     }
@@ -254,13 +429,43 @@
     async function initAuthBar(){
         const loginBtn = document.getElementById('ptLoginBtn');
         const logoutBtn = document.getElementById('ptLogoutBtn');
-        // 토큰 복원으로 로그인 유지
+        // 토큰 복원으로 로그인 유지 + 유효성 확인 (자동 재인증은 하지 않음)
         try {
             const tok = localStorage.getItem('pull-tracker:google-token');
-            if (tok) { __googleToken = tok; __googleAuthed = true; renderAuthBarUI({ email: 'Google Drive' }); }
-            else { renderAuthBarUI(null); }
+            if (tok) {
+                __googleToken = tok; __googleAuthed = true;
+                __tokenExpAt = Number(localStorage.getItem('pull-tracker:google-exp')||'0')||0;
+                // 새로고침 시에는 무팝업 갱신조차 시도하지 않음(일부 환경에서 팝업 생성 방지)
+                try {
+                    const r = await fetch('https://openidconnect.googleapis.com/v1/userinfo', { headers:{ Authorization:'Bearer '+__googleToken } });
+                    if (r.status === 401 || r.status === 403) { __googleAuthed = false; __googleToken = null; renderAuthBarUI({ email: (localStorage.getItem('pull-tracker:google-email')||'') }); }
+                    else {
+                        const profile = await r.json().catch(()=>null);
+                        try { if (profile && profile.email) localStorage.setItem('pull-tracker:google-email', profile.email); } catch(_) {}
+                        renderAuthBarUI(profile || { email: (localStorage.getItem('pull-tracker:google-email')||'') });
+                    }
+                } catch(_) {}
+            } else { renderAuthBarUI(null); }
         } catch(_) { renderAuthBarUI(null); }
-        if (loginBtn) loginBtn.onclick = async () => { await gapiInit(); const resp = await googleSignIn(); if (resp) renderAuthBarUI({ email: 'Google Drive' }); const cloud = await driveLoadMerged(); if (cloud && cloud.data) { const localStr = localStorage.getItem('pull-tracker:merged'); const local = localStr ? JSON.parse(localStr) : null; const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); } };
+        if (loginBtn) loginBtn.onclick = async () => {
+            const prev = window.__pt_allowInteractive;
+            window.__pt_allowInteractive = true;
+            try {
+                await gapiInit();
+                const resp = await googleSignIn();
+                const cloud = await driveLoadMerged(false);
+                if (cloud && cloud.data) {
+                    __dataSource = 'drive'; setStatus(t.loadedDrive);
+                    const m = mergeWithCache(cloud);
+                    localStorage.setItem('pull-tracker:merged', JSON.stringify(m));
+                    renderCardsFromExample(m);
+                } else {
+                    setStatus(t.driveNoData);
+                }
+            } finally {
+                window.__pt_allowInteractive = prev;
+            }
+        };
         if (logoutBtn) logoutBtn.onclick = () => { googleSignOut(); };
     }
 
@@ -268,10 +473,12 @@
     async function syncMergedToCloud(){
         try {
             if (!__googleAuthed) return;
+            const ok = await ensureTokenSilent();
+            if (!ok) return;
             const s = localStorage.getItem('pull-tracker:merged');
             if (!s) return;
             const merged = JSON.parse(s);
-            await driveSaveMerged(merged);
+            await driveSaveMerged(merged, true);
         } catch(_) {}
     }
 
@@ -510,6 +717,9 @@
         }
     }
 
+    let __dataSource = null; // 'drive' | 'local' | null
+    let __needDriveConsent = false;
+
     // inline 로딩 UI를 유지하면서 메시지만 교체하는 헬퍼
     function updateInlineStatus(message){
         try {
@@ -612,7 +822,11 @@
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
                 // Google Drive 동기화
-                try { await syncMergedToCloud(); } catch(_) {}
+                try {
+                    await syncMergedToCloud();
+                    if (__googleAuthed) setStatus(`${t.savedDrive} ${nowStamp()}`);
+                    else setStatus(`${t.savedLocal} ${nowStamp()}`);
+                } catch(_) {}
             } catch(_) {
                 // ignore parse error; keep raw text only
             }
@@ -623,7 +837,7 @@
         }
     }
 
-    function onClear() {
+    async function onClear() {
         try {
             const ok = window.confirm(t.confirmReset);
             if (!ok) return;
@@ -639,10 +853,19 @@
         try { localStorage.removeItem(STORAGE_KEY); } catch(_) {}
         try { localStorage.removeItem('pull-tracker:last-response'); } catch(_) {}
         try { localStorage.removeItem('pull-tracker:merged'); } catch(_) {}
+        __dataSource = null;
         // hide4 설정은 사용자 환경 설정이므로 유지
 
-        // Google Drive(AppDataFolder)에도 저장된 병합본 삭제 시도
-        try { if (typeof driveDeleteMerged === 'function') { driveDeleteMerged(); } } catch(_) {}
+        // Google Drive(AppDataFolder)에도 저장된 병합본 삭제 시도 (무팝업 갱신 후 삭제를 보장)
+        try {
+            if (__googleToken) {
+                await ensureTokenSilent();
+                const ok = await driveDeleteMerged(true);
+                try {
+                    setStatus(ok ? `${t.deletedDrive} ${nowStamp()}` : `${t.deleteDriveFailed} ${nowStamp()}`);
+                } catch(_) {}
+            }
+        } catch(_) {}
     }
 
     if (els.start) els.start.addEventListener('click', onStart);
@@ -990,6 +1213,22 @@
         catch(_) { return String(n); }
     }
 
+    function nowStamp(){
+        try {
+            const d = new Date();
+            const yy = String(d.getFullYear()).slice(-2);
+            const mm = String(d.getMonth()+1).padStart(2,'0');
+            const dd = String(d.getDate()).padStart(2,'0');
+            let h = d.getHours();
+            const ampm = h>=12 ? 'PM' : 'AM';
+            h = h%12; if (h===0) h = 12;
+            const hh = String(h).padStart(2,'0');
+            const mi = String(d.getMinutes()).padStart(2,'0');
+            const ss = String(d.getSeconds()).padStart(2,'0');
+            return `${yy}-${mm}-${dd} ${hh}:${mi}:${ss} ${ampm}`;
+        } catch(_) { return ''; }
+    }
+
     function tsToLocal(ts){
         try { const d = new Date(Number(ts)); if (!isNaN(d)) return d.toLocaleString(); } catch(_) {}
         return '';
@@ -1117,10 +1356,10 @@
     // 이름에서 캐릭터 클래스 키 추정 후 이미지 노출 (무기 카드는 제외)
     function characterThumbFor(displayName){
         try {
-            // 이름 풀서치로 class key 찾기
+            // 이름 풀서치로 class key 찾기 (예외 치환 적용)
             const globalChar = getCharData();
             if (!globalChar) return null;
-            const wanted = String(displayName).trim();
+            const wanted = String(applyNameFixups(displayName)).trim();
             const baseOf = (s) => String(s).split('·')[0].trim();
             const hasVar = (s) => String(s).includes('·');
             const wantedBase = baseOf(wanted);
@@ -1193,10 +1432,20 @@
     // 캐릭터 매칭 후보 이름들(다국어/코드네임 포함)
     function candidateNames(info){
         if (!info) return [];
-        const arr = [info.name, info.name_en, info.name_jp, info.codename]
+        const base = [info.name, info.name_en, info.name_jp, info.codename]
             .map(v => (v==null? '' : String(v).trim()))
             .filter(Boolean);
-        return Array.from(new Set(arr));
+        if (lang === 'jp') {
+            const extra = [];
+            for (const s of base){
+                try {
+                    const noSpace = String(s).replace(/[\s\u3000]+/g, '');
+                    if (noSpace && noSpace !== s) extra.push(noSpace);
+                } catch(_) {}
+            }
+            return Array.from(new Set(base.concat(extra)));
+        }
+        return Array.from(new Set(base));
     }
 
     function charNameByLang(info){
@@ -1209,21 +1458,24 @@
     function resolveCharacterClass(displayName){
         try {
             const globalChar = getCharData(); if (!globalChar) return null;
-            const wanted = String(displayName).trim();
+            let wanted = String(applyNameFixups(displayName)).trim();
+            // 일본어: 공백 제거 버전도 함께 고려
+            const wantedNorm = (lang==='jp') ? wanted.replace(/[\s\u3000]+/g,'') : wanted;
             const baseOf = (s) => String(s).split('·')[0].trim();
             const hasVar = (s) => String(s).includes('·');
             const wantedBase = baseOf(wanted);
             const wantedHasVar = hasVar(wanted);
             for (const [cls, info] of Object.entries(globalChar)){
                 const cands = candidateNames(info);
-                if (cands.some(nm => nm === wanted)) return cls;
+                if (cands.some(nm => nm === wanted || (lang==='jp' && nm.replace(/[\s\u3000]+/g,'') === wantedNorm))) return cls;
             }
             const candidates = [];
             for (const [cls, info] of Object.entries(globalChar)){
                 const cands = candidateNames(info);
                 for (const nm of cands){
                     if (!nm) continue;
-                    if (baseOf(nm) === wantedBase) { candidates.push({cls, nm, hasVar: hasVar(nm)}); break; }
+                    const nmBase = baseOf(nm);
+                    if (nmBase === wantedBase) { candidates.push({cls, nm, hasVar: hasVar(nm)}); break; }
                 }
             }
             if (candidates.length === 0) return null;
@@ -1293,14 +1545,25 @@
     }
 
     // 표시에 사용할 이름을 언어별로 결정 (이미지 매칭은 항상 한국어 클래스 키 기반 유지)
+    // 특정 예외 매핑 사전
+    const NAME_FIXUPS = {
+        'Yui': 'YUI',
+        'Kotone Montagne': 'Montagne Kotone'
+    };
+
+    function applyNameFixups(raw){
+        try { const k = String(raw||'').trim(); return NAME_FIXUPS[k] || k; } catch(_) { return raw; }
+    }
+
     function resolveDisplayName(name, label){
         try {
+            const fixed = applyNameFixups(name);
             if (label === 'weapon') {
-                const meta = resolveWeaponMeta(name);
+                const meta = resolveWeaponMeta(fixed);
                 const alt = meta ? weaponNameByLang(meta.ownerKey, meta.weaponKey) : null;
                 return alt || name;
             }
-            const cls = resolveCharacterClass(name);
+            const cls = resolveCharacterClass(fixed);
             if (!cls) return name;
             const info = (getCharData()||{})[cls];
             const alt = charNameByLang(info);
@@ -1340,14 +1603,35 @@
        const exampleUrl = exampleAttr;
 
         Promise.all([loadCharacters(), loadWeapons()]).then(async () => {
-            // Google Drive 병합본 우선 로드
+            // Google Drive 병합본 우선 로드 (무팝업 토큰 갱신만 시도, 팝업 재인증은 하지 않음)
             try { await gapiInit(); } catch(_) {}
             let cloud = null;
-            try { cloud = await driveLoadMerged(); } catch(_) {}
+            try {
+                cloud = await driveLoadMerged(false);
+                if (cloud && cloud.data) {
+                    __dataSource = 'drive'; setStatus(`${t.loadedDrive} ${nowStamp()}`);
+                    // 유저바가 비로그인 상태라면 저장 이메일로 표시 보정
+                    try {
+                        const email = localStorage.getItem('pull-tracker:google-email')||'';
+                        if (email) renderAuthBarUI({ email });
+                    } catch(_) {}
+                }
+            } catch(e) {
+                // fetch 예외에서는 status가 없을 수 있으니 응답 본문으로 403 추정
+                setStatus(t.driveForbidden);
+                __needDriveConsent = true;
+            }
             try {
                 if (cloud && cloud.data) { const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); return; }
+                // if (DEBUG) { setStatus(t.driveNeedConsent); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
-                if (mergedCached) { const json = JSON.parse(mergedCached); renderCardsFromExample(json); return; }
+                if (mergedCached) {
+                    const json = JSON.parse(mergedCached);
+                    __dataSource = 'local';
+                    if (__needDriveConsent) setStatus(`${t.loadedLocal} ${nowStamp()}\n${t.driveNeedConsent}`);
+                    else setStatus(`${t.loadedLocal} ${nowStamp()}`);
+                    renderCardsFromExample(json); return;
+                }
                 const cached = localStorage.getItem('pull-tracker:last-response');
                 if (cached) { const json = JSON.parse(cached); const m = mergeWithCache(json); renderCardsFromExample(m); return; }
             } catch(_) {}

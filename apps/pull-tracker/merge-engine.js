@@ -9,9 +9,21 @@
     function recomputeSummary(segments){
         const pulled = segments.reduce((s,seg)=> s + (Array.isArray(seg.record)? seg.record.length:0), 0);
         let t5=0, t4=0, win5050=0;
+        const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v)=>Number(v))) : null;
         for (const seg of segments){
             for (const r of (seg.record||[])){
-                if (Number(r.grade)===5) t5++; else if (Number(r.grade)===4) t4++;
+                if (Number(r.grade)===5) {
+                    t5++;
+                    // 50:50 판정: LOSE_5050_LIST에 포함되면 패배, 아니면 승리
+                    try {
+                        const idNum = Number(r.id);
+                        if (loseSet && Number.isFinite(idNum)) {
+                            if (!loseSet.has(idNum)) win5050++;
+                        }
+                    } catch(_) {}
+                } else if (Number(r.grade)===4) {
+                    t4++;
+                }
             }
         }
         let pitySum=0, pityCnt=0; let pity=0;
@@ -36,8 +48,9 @@
                     const grade = Number(r?.grade||0);
                     const timestamp = Number(r?.timestamp||0);
                     const gachaId = r?.gachaId != null ? String(r.gachaId) : null;
+                    const id = r && (r.id!=null || r.charId!=null) ? Number(r.id!=null ? r.id : r.charId) : null;
                     if (!timestamp) continue;
-                    rows.push({ name, grade, timestamp, gachaId });
+                    rows.push({ name, grade, timestamp, gachaId, id });
                 }
             }
         };
@@ -63,9 +76,9 @@
         if (cur.length>0) groups.push(cur);
         const segments = [];
         for (const g of groups){
-            const seg = { fivestar: null, lastTimestamp: g[g.length-1].timestamp, record: g.map(r=> ({ name:r.name, grade:r.grade, timestamp:r.timestamp, gachaId:r.gachaId })) };
+            const seg = { fivestar: null, lastTimestamp: g[g.length-1].timestamp, record: g.map(r=> ({ name:r.name, grade:r.grade, timestamp:r.timestamp, gachaId:r.gachaId, id: (r.id!=null? r.id: undefined) })) };
             const idx5 = g.findIndex(r=> Number(r.grade)===5);
-            if (idx5 >= 0) { const r5 = g[idx5]; seg.fivestar = { name: r5.name, timestamp: r5.timestamp }; }
+            if (idx5 >= 0) { const r5 = g[idx5]; seg.fivestar = { name: r5.name, timestamp: r5.timestamp, id: (r5.id!=null? r5.id: undefined) }; }
             segments.push(seg);
         }
         const summary = recomputeSummary(segments);

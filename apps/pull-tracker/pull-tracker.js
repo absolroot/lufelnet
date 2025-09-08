@@ -235,6 +235,15 @@
                     .in('grade', [4,5])
                     .order('timestamp', { ascending: true })
                     .limit(5000);
+                // 월별 summary도 함께 로드(최근 6개월)
+                const ymSince = (()=>{ const d = new Date(); return new Date(d.getFullYear(), d.getMonth()-5, 1); })();
+                const { data: monthlyRows } = await supabase
+                    .from('pulls_summary_monthly')
+                    .select('gacha_type,year_month,total_pulls,region')
+                    .eq('user_id', user.id)
+                    .gte('year_month', ymSince.toISOString().slice(0,10))
+                    .order('year_month', { ascending: true })
+                    .limit(200);
                 let cloudMerged = (Array.isArray(rows45) && rows45.length>0) ? shapeCloudRows(rows45) : { version:1, updatedAt: Date.now(), data:{ Confirmed:{summary:{},records:[]}, Fortune:{summary:{},records:[]}, Weapon:{summary:{},records:[]}, Gold:{summary:{},records:[]}, Newcomer:{summary:{},records:[]} } };
                 // summary_overall 기반으로 pulledSum/4/5 보정
                 if (cloudSummaryByType.size>0){
@@ -249,6 +258,12 @@
                             s.total4Star = Number(row.total_4star||0);
                             if (row.avg_5star_pity != null) s.avgPity = Number(row.avg_5star_pity);
                             if (row.win5050_count != null) s.win5050 = Number(row.win5050_count);
+                            // 월별 total도 summary에 첨부(그래프 총합용)
+                            if (Array.isArray(monthlyRows)){
+                                const map = {};
+                                for (const mr of monthlyRows){ if (mr.gacha_type===tkey){ map[String(mr.year_month)] = Number(mr.total_pulls||0); } }
+                                s.monthlyTotals = map; // key: 'YYYY-MM-01'
+                            }
                         }
                     }
                 }
@@ -392,7 +407,7 @@
                         avg_4star_pity: null,
                         total_5star: b.g5,
                         total_4star: b.g4,
-                        win5050_count: 0
+                        win5050_count: Number((b && b.win5050) || 0)
                     }, { onConflict: 'user_id,gacha_type,year_month,region' });
                 }
             }
@@ -663,6 +678,30 @@
         } catch(_) {}
     }
 
+    // 모든 등급(2/3 포함) 기준으로 월별/총합 보강
+    function enrichIncomingWithMonthlyAndTotals(incoming){
+        try {
+            if (!incoming || !incoming.data) return incoming;
+            const keys = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+            const toYm = (ts)=>{ const d=new Date(Number(ts||0)); if (isNaN(d)) return null; return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`; };
+            for (const k of keys){
+                const block = incoming.data[k]; if (!block) continue;
+                const segs = Array.isArray(block.records)? block.records: [];
+                let total = 0; const m = {};
+                for (const seg of segs){
+                    const recs = Array.isArray(seg.record)? seg.record: [];
+                    for (const r of recs){ total++; const ym = toYm(r.timestamp); if (ym) m[ym] = (m[ym]||0)+1; }
+                }
+                if (!block.summary) block.summary = {};
+                // 총합은 모든 등급 기준으로 보강
+                if (typeof block.summary.pulledSum !== 'number') block.summary.pulledSum = total;
+                // 월별 총합(모든 등급)
+                block.summary.monthlyTotals = Object.assign({}, m);
+            }
+        } catch(_) {}
+        return incoming;
+    }
+
     function startLoadingUI() {
         const startedAt = Date.now();
         // top inline status with spinner
@@ -736,7 +775,7 @@
             setResult(text);
 
             try {
-                const incoming = JSON.parse(text);
+                const incoming = enrichIncomingWithMonthlyAndTotals(JSON.parse(text));
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 // 병합 수행 → 저장 → 렌더
                 const merged = mergeWithCache(incoming);
@@ -793,7 +832,7 @@
                 const text = await fetch(url, { cache: 'no-store' }).then(r=> r.ok ? r.text() : Promise.reject(new Error('example fetch failed')));
                 setStatus('✅ 완료');
                 setResult(DEBUG ? text : '');
-                const incoming = JSON.parse(text);
+                const incoming = enrichIncomingWithMonthlyAndTotals(JSON.parse(text));
                 const merged = mergeWithCache(incoming);
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}

@@ -79,6 +79,7 @@
         input: document.getElementById('sourceUrl'),
         start: document.getElementById('startBtn'),
         clear: document.getElementById('clearBtn'),
+        example: document.getElementById('exampleBtn'),
         info: document.getElementById('info'),
         status: document.getElementById('status'),
         result: document.getElementById('result'),
@@ -94,6 +95,7 @@
         if (els.input) els.input.setAttribute('placeholder', t.placeholder);
         if (els.start) els.start.textContent = t.start;
         if (els.clear) els.clear.textContent = t.clear;
+        if (els.example) els.example.textContent = (lang==='en'?'EXAMPLE':(lang==='jp'?'EXAMPLE':'예제 제출'));
         if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
         const hide4 = document.getElementById('hide4Label');
         if (hide4) hide4.textContent = (lang==='en'?'Hide under 4★': (lang==='jp'?'4★ 以下を隠す':'4★ 이하 숨기기'));
@@ -279,7 +281,7 @@
                 return `pull-tracker:sync-count:${user.id}:${y}${m}${dd}`;
             })();
             const cnt = Number(localStorage.getItem(dayKey) || '0');
-            if (cnt >= 3) { setStatus(t.syncLimit || 'Sync limit reached'); return; }
+            if (cnt >= 99) { setStatus(t.syncLimit || 'Sync limit reached'); return; }
             localStorage.setItem(dayKey, String(cnt+1));
         } catch(_) {}
 
@@ -781,6 +783,27 @@
 
     if (els.start) els.start.addEventListener('click', onStart);
     if (els.clear) els.clear.addEventListener('click', onClear);
+    if (els.example && DEBUG) {
+        els.example.style.display = 'inline-block';
+        els.example.addEventListener('click', async () => {
+            try {
+                const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                const url = `${base}/apps/pull-tracker/example.json?v=${Date.now()}`;
+                updateInlineStatus(t.waiting);
+                const text = await fetch(url, { cache: 'no-store' }).then(r=> r.ok ? r.text() : Promise.reject(new Error('example fetch failed')));
+                setStatus('✅ 완료');
+                setResult(DEBUG ? text : '');
+                const incoming = JSON.parse(text);
+                const merged = mergeWithCache(incoming);
+                try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
+                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
+                renderCardsFromExample(merged);
+            } catch(e) {
+                setStatus(t.failed);
+                setResult(String(e && e.message ? e.message : e));
+            }
+        });
+    }
 
     // Build stat cards from example.json-like structure
     function renderCardsFromExample(payload) {

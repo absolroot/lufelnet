@@ -798,6 +798,14 @@
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
+                // 로그인 상태라면 예제 데이터도 요약/레코드 기준으로 동기화 시도
+                try {
+                    const { data } = await supabase.auth.getSession();
+                    const user = data && data.session ? data.session.user : null;
+                    if (user) {
+                        await syncMergedToCloud(user);
+                    }
+                } catch(_) {}
             } catch(e) {
                 setStatus(t.failed);
                 setResult(String(e && e.message ? e.message : e));

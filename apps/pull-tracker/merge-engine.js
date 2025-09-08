@@ -13,8 +13,6 @@
             for (const r of (seg.record||[])){
                 if (Number(r.grade)===5) t5++; else if (Number(r.grade)===4) t4++;
             }
-            // 50:50 추정: 운명/무기 타입 등에서 seg.fivestar가 한정인지 판별이 필요하지만
-            // 서버에서 정확한 카운트를 제공하지 않으므로 여기서는 보수적으로 0 유지
         }
         let pitySum=0, pityCnt=0; let pity=0;
         for (const seg of segments){
@@ -70,17 +68,7 @@
             if (idx5 >= 0) { const r5 = g[idx5]; seg.fivestar = { name: r5.name, timestamp: r5.timestamp }; }
             segments.push(seg);
         }
-        const computed = recomputeSummary(segments);
-        // 외부에서 제공된 요약(클라우드 summary_overall 등)이 있으면 우선 사용
-        const provided = (newBlock && newBlock.summary) ? newBlock.summary : null;
-        const summary = {
-            pulledSum: (provided && typeof provided.pulledSum === 'number') ? provided.pulledSum : computed.pulledSum,
-            total5Star: (provided && typeof provided.total5Star === 'number') ? provided.total5Star : computed.total5Star,
-            total4Star: (provided && typeof provided.total4Star === 'number') ? provided.total4Star : computed.total4Star,
-            win5050: (provided && typeof provided.win5050 === 'number') ? provided.win5050 : computed.win5050,
-            avgPity: (provided && (provided.avgPity!=null)) ? provided.avgPity : computed.avgPity,
-            effTotal: (provided && typeof provided.effTotal === 'number') ? provided.effTotal : undefined
-        };
+        const summary = recomputeSummary(segments);
         return { summary, records: segments };
     }
     function mergeWithCache(incoming){

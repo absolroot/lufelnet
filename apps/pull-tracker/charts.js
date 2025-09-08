@@ -22,23 +22,10 @@
             const monthLabels = bins.map(monthLabel);
             const idxByKey = new Map(bins.map((d,i)=> [monthKey(d), i]));
             const totals = new Array(binCount).fill(0);
-            // cloud summary가 제공한 월별 total을 우선 사용
-            const monthlyTotals = (()=>{
-                try {
-                    const s = (key==='pickup') ? null : (arr[0] && arr[0].summary && arr[0].summary.monthlyTotals ? arr[0].summary.monthlyTotals : null);
-                    if (!s) return null; const map = new Map();
-                    for (let i=0;i<binCount;i++){ const d=bins[i]; const k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`; if (s[k]!=null) map.set(i, Number(s[k])); }
-                    return map;
-                } catch(_) { return null; }
-            })();
             const avg5 = new Array(binCount).fill(null).map(()=>({sum:0,count:0}));
-            if (monthlyTotals && monthlyTotals.size>0){
-                monthlyTotals.forEach((v,i)=>{ totals[i] = Number(v||0); });
-            } else {
-                for (const r of allRecords){
-                    const t = Number(r.timestamp||0); if (!t) continue; const dt = new Date(t); if (dt < start90 || dt > end) continue;
-                    const idx = idxByKey.get(monthKey(new Date(dt.getFullYear(), dt.getMonth(), 1))); if (idx==null) continue; totals[idx]++;
-                }
+            for (const r of allRecords){
+                const t = Number(r.timestamp||0); if (!t) continue; const dt = new Date(t); if (dt < start90 || dt > end) continue;
+                const idx = idxByKey.get(monthKey(new Date(dt.getFullYear(), dt.getMonth(), 1))); if (idx==null) continue; totals[idx]++;
             }
             const allSegments = arr.flatMap(b => (b && Array.isArray(b.records)) ? b.records : []);
             for (const seg of allSegments){
@@ -91,9 +78,6 @@
             for (let i=0;i<binCount;i++){ const x=xAt(i); const y=yAt(avg4Final[i]); ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI*2); ctx.fill(); }
             ctx.fillStyle='rgba(255,255,255,.7)'; ctx.font='10px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='top';
             for (let i=0;i<binCount;i++){ ctx.fillText(monthLabels[i], xAt(i), vh-14); }
-            // 월별 총합 숫자 표시
-            ctx.fillStyle='rgba(255,255,255,.85)'; ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.font='11px sans-serif';
-            for (let i=0;i<binCount;i++){ const x=xAt(i); const y=yAt(totals[i]); ctx.fillText(String(totals[i]), x, y-2); }
         } catch(_) {}
     }
     window.drawOverviewChart = drawOverviewChart;

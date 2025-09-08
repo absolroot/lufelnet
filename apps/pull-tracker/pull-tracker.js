@@ -16,7 +16,7 @@
             elapsed: (m, s) => `경과 시간: ${m}분 ${s}초`,
             sending: '요청 전송 중...',
             waiting: '서버 응답 대기 중...',
-            tryGet: '진행 중...', //POST 실패, GET 방식으로 재시도합니다...
+            tryGet: 'POST 실패, GET 방식으로 재시도합니다...',
             invalidUrl: '유효한 URL을 입력하세요.',
             done: (bytes) => `완료 (응답 바이트: ${bytes})`,
             failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
@@ -37,12 +37,11 @@
             elapsed: (m, s) => `Elapsed: ${m}m ${s}s`,
             sending: 'Sending request...',
             waiting: 'Waiting for server response...',
-            tryGet: 'In progress...', //POST failed, retrying with GET...
+            tryGet: 'POST failed, retrying with GET...',
             invalidUrl: 'Please enter a valid URL.',
             done: (bytes) => `Done (response bytes: ${bytes})`,
             failed: 'Something went wrong. Please try again later.',
-            confirmReset: 'Are you sure you want to reset?\nThis will delete all locally stored gacha data (including last URL/response).',
-            syncLimit: 'Upload sync limit reached (3/day). Please try again later.'
+            confirmReset: 'Are you sure you want to reset?\nThis will delete all locally stored gacha data (including last URL/response).'
         },
         jp: {
             pageTitle: 'Pull Tracker',
@@ -59,12 +58,11 @@
             elapsed: (m, s) => `経過時間: ${m}分 ${s}秒`,
             sending: 'リクエスト送信中...',
             waiting: 'サーバーの応答を待機中...',
-            tryGet: '進行中...', //POST に失敗、GET で再試行中...
+            tryGet: 'POST に失敗、GET で再試行中...',
             invalidUrl: '有効なURLを入力してください。',
             done: (bytes) => `完了（応答バイト数: ${bytes}）`,
             failed: 'エラーが発生しました。時間をおいて再度お試しください。',
-            confirmReset: '本当に初期化しますか？\nこの操作により、ローカルに保存されたガチャデータ（最後のURL/レスポンスを含む）がすべて削除されます。',
-            syncLimit: 'アップロード同期の上限(1日3回)に達しました。後でもう一度お試しください。'
+            confirmReset: '本当に初期化しますか？\nこの操作により、ローカルに保存されたガチャデータ（最後のURL/レスポンスを含む）がすべて削除されます。'
         }
     };
 
@@ -79,9 +77,7 @@
         input: document.getElementById('sourceUrl'),
         start: document.getElementById('startBtn'),
         clear: document.getElementById('clearBtn'),
-        example: document.getElementById('exampleBtn'),
         info: document.getElementById('info'),
-        drive: document.getElementById('driveBtn'),
         status: document.getElementById('status'),
         result: document.getElementById('result'),
         cards: document.getElementById('cards'),
@@ -96,8 +92,6 @@
         if (els.input) els.input.setAttribute('placeholder', t.placeholder);
         if (els.start) els.start.textContent = t.start;
         if (els.clear) els.clear.textContent = t.clear;
-        if (els.example) els.example.textContent = (lang==='en'?'EXAMPLE':(lang==='jp'?'EXAMPLE':'예제 제출'));
-        if (els.drive) els.drive.textContent = (lang==='en'?'Drive Link':(lang==='jp'?'Drive 連携':'Drive 연동'));
         if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
         const hide4 = document.getElementById('hide4Label');
         if (hide4) hide4.textContent = (lang==='en'?'Hide under 4★': (lang==='jp'?'4★ 以下を隠す':'4★ 이하 숨기기'));
@@ -116,102 +110,133 @@
         } catch(_) {}
     }
 
-    // --------- Google Drive (GIS + Drive v3) ---------
-    let __driveAccessToken = null;
-    function driveIsReady(){ return !!__driveAccessToken; }
-    async function driveAuth(){
+    // --- Google Drive 로그인/동기화 ---
+    let __googleAuthed = false;
+    let __googleToken = null;
+    const DRIVE_FILE_NAME = 'p5x_pull_tracker.json'; // AppDataFolder 저장
+
+    function gapiLoad() {
+        return new Promise(resolve => {
+            try {
+                if (window.gapi && gapi.client) return resolve();
+                const tick = setInterval(() => {
+                    if (window.gapi) { clearInterval(tick); gapi.load('client', resolve); }
+                }, 50);
+            } catch(_) { resolve(); }
+        });
+    }
+
+    async function gapiInit() {
+        try {
+            await gapiLoad();
+            await gapi.client.init({
+                apiKey: '',
+                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+            });
+        } catch(_) {}
+    }
+
+    function renderAuthBarUI(profile) {
+        const bar = document.getElementById('ptUserBar');
+        const nameEl = document.getElementById('ptUserName');
+        const loginBtn = document.getElementById('ptLoginBtn');
+        const logoutBtn = document.getElementById('ptLogoutBtn');
+        if (!bar || !loginBtn || !logoutBtn) return;
+        bar.style.display = 'flex';
+        if (profile) {
+            if (nameEl) nameEl.textContent = profile.email || profile.name || '';
+            loginBtn.style.display = 'none';
+            logoutBtn.style.display = 'inline-block';
+        } else {
+            if (nameEl) nameEl.textContent = '';
+            loginBtn.style.display = 'inline-block';
+            logoutBtn.style.display = 'none';
+        }
+    }
+
+    async function googleSignIn() {
         return new Promise((resolve) => {
             try {
-                /* global google */
-                if (!window.google || !google.accounts || !google.accounts.oauth2) return resolve(false);
-                google.accounts.oauth2.initTokenClient({
-                    client_id: (window.GOOGLE_CLIENT_ID || ''),
+                const client = google.accounts.oauth2.initTokenClient({
+                    client_id: window.GOOGLE_CLIENT_ID,
                     scope: 'https://www.googleapis.com/auth/drive.appdata',
-                    callback: (resp)=>{
-                        if (resp && resp.access_token) { __driveAccessToken = resp.access_token; resolve(true); }
-                        else resolve(false);
-                    }
-                }).requestAccessToken({ prompt: 'consent' });
-            } catch(_) { resolve(false); }
+                    callback: (resp) => { __googleToken = resp.access_token; __googleAuthed = true; resolve(resp); }
+                });
+                client.requestAccessToken();
+            } catch(e) { resolve(null); }
         });
-    }
-    async function driveListByName(name){
-        try {
-            const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(`name='${name}' and 'appDataFolder' in parents`)}&spaces=appDataFolder&fields=files(id,name)`;
-            const r = await fetch(url, { headers: { Authorization: `Bearer ${__driveAccessToken}` } });
-            const j = await r.json(); return Array.isArray(j.files)? j.files: [];
-        } catch(_) { return []; }
-    }
-    async function driveDownload(fileId){
-        try {
-            const r = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, { headers: { Authorization: `Bearer ${__driveAccessToken}` } });
-            if (!r.ok) throw new Error('download failed');
-            return await r.text();
-        } catch(e){ throw e; }
-    }
-    async function driveUploadNew(name, body){
-        const boundary = 'lufelnet-' + Date.now();
-        const meta = { name, parents:['appDataFolder'], mimeType: 'application/json' };
-        const data = `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n${body}\r\n--${boundary}--`;
-        const r = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-            method: 'POST', headers: { Authorization: `Bearer ${__driveAccessToken}`, 'Content-Type': `multipart/related; boundary=${boundary}` }, body: data
-        });
-        if (!r.ok) throw new Error('upload failed'); return await r.json();
-    }
-    async function driveUpdate(fileId, body){
-        const r = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`, {
-            method: 'PATCH', headers: { Authorization: `Bearer ${__driveAccessToken}`, 'Content-Type': 'application/json' }, body
-        }); if (!r.ok) throw new Error('update failed'); return true;
-    }
-    async function driveSyncMerged(){
-        if (!driveIsReady()) { const ok = await driveAuth(); if (!ok) return false; }
-        // 로컬 merged
-        let merged = null; try { const s = localStorage.getItem('pull-tracker:merged'); if (s) merged = JSON.parse(s); } catch(_) {}
-        if (!merged) return false;
-        // 드라이브 pulls.json 병합
-        const name = 'pulls.json';
-        const files = await driveListByName(name);
-        let remote = null;
-        if (files.length>0){ try { const txt = await driveDownload(files[0].id); remote = JSON.parse(txt); } catch(_) {} }
-        const toSave = remote ? mergeWithCache(remote) : merged;
-        const payload = JSON.stringify(toSave);
-        if (files.length>0) await driveUpdate(files[0].id, payload); else await driveUploadNew(name, payload);
-        return true;
     }
 
-    function resolveRegion(){
+    function googleSignOut(){ __googleAuthed = false; __googleToken = null; renderAuthBarUI(null); }
+
+    async function driveFetchFileId() {
         try {
-            if (window.LanguageRouter && typeof LanguageRouter.getCurrentRegion === 'function') {
-                const r = LanguageRouter.getCurrentRegion();
-                if (r) return String(r).toLowerCase();
-            }
+            if (!__googleToken) return null;
+            const res = await fetch('https://www.googleapis.com/drive/v3/files?q=name%3D%27'+encodeURIComponent(DRIVE_FILE_NAME)+'%27+and+parents+in+appDataFolder&spaces=appDataFolder&fields=files(id,name)', {
+                headers: { Authorization: 'Bearer ' + __googleToken }
+            });
+            const json = await res.json();
+            const files = json && json.files || [];
+            return files[0]?.id || null;
+        } catch(_) { return null; }
+    }
+
+    async function driveLoadMerged() {
+        try {
+            if (!__googleToken) return null;
+            const fileId = await driveFetchFileId();
+            if (!fileId) return null;
+            const res = await fetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media', { headers: { Authorization: 'Bearer '+__googleToken }});
+            if (!res.ok) return null;
+            return await res.json();
+        } catch(_) { return null; }
+    }
+
+    async function driveSaveMerged(merged) {
+        try {
+            if (!__googleToken || !merged) return false;
+            const fileId = await driveFetchFileId();
+            const metadata = { name: DRIVE_FILE_NAME, parents: ['appDataFolder'] };
+            const boundary = '-------314159265358979323846';
+            const delimiter = '\r\n--' + boundary + '\r\n';
+            const closeDelim = '\r\n--' + boundary + '--';
+            const metaPart = 'Content-Type: application/json; charset=UTF-8\r\n\r\n' + JSON.stringify(metadata);
+            const dataPart = 'Content-Type: application/json\r\n\r\n' + JSON.stringify(merged);
+            const body = delimiter + metaPart + delimiter + dataPart + closeDelim;
+            const method = fileId ? 'PATCH' : 'POST';
+            const url = fileId
+                ? 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=multipart'
+                : 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
+            const res = await fetch(url, {
+                method,
+                headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary },
+                body
+            });
+            return res.ok;
+        } catch(_) { return false; }
+    }
+
+    async function initAuthBar(){
+        const loginBtn = document.getElementById('ptLoginBtn');
+        const logoutBtn = document.getElementById('ptLogoutBtn');
+        renderAuthBarUI(null);
+        if (loginBtn) loginBtn.onclick = async () => { await gapiInit(); const resp = await googleSignIn(); if (resp) renderAuthBarUI({ email: 'Google Drive' }); const cloud = await driveLoadMerged(); if (cloud && cloud.data) { const localStr = localStorage.getItem('pull-tracker:merged'); const local = localStr ? JSON.parse(localStr) : null; const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); } };
+        if (logoutBtn) logoutBtn.onclick = () => { googleSignOut(); };
+    }
+
+    // 병합 완료 시 Google Drive 저장
+    async function syncMergedToCloud(){
+        try {
+            if (!__googleAuthed) return;
+            const s = localStorage.getItem('pull-tracker:merged');
+            if (!s) return;
+            const merged = JSON.parse(s);
+            await driveSaveMerged(merged);
         } catch(_) {}
-        // fallback: derive from lang param
-        try {
-            if (lang === 'jp') return 'jp';
-            if (lang === 'en') return 'en';
-            return 'kr';
-        } catch(_) { return 'kr'; }
     }
 
-
-    function computeUpdatedAt(payload){
-        try {
-            if (!payload || !payload.data) return 0;
-            let maxTs = 0;
-            for (const k of ['Confirmed','Fortune','Weapon','Gold','Newcomer']){
-                const block = payload.data[k];
-                const recs = (block && Array.isArray(block.records)) ? block.records : [];
-                for (const seg of recs){
-                    const ts = Number(seg && seg.lastTimestamp || 0);
-                    if (ts > maxTs) maxTs = ts;
-                    const list = Array.isArray(seg && seg.record) ? seg.record : [];
-                    for (const r of list){ const rt = Number(r && r.timestamp || 0); if (rt>maxTs) maxTs = rt; }
-                }
-            }
-            return maxTs || Number(payload.updatedAt||0) || 0;
-        } catch(_) { return 0; }
-    }
+    // expose init for index.html
+    window.pullTrackerInitAuth = initAuthBar;
 
     function renderOverview(payload){
         try {
@@ -235,12 +260,7 @@
                 const pulled = sum('pulledSum');
                 const t5 = sum('total5Star');
                 const t4 = sum('total4Star');
-                // effTotal 우선순위: summary.effTotal 존재 시 사용, 없으면 in-progress 기반 계산
-                const effTotal = (()=>{
-                    const hasEff = arr.every(b => b && b.summary && typeof b.summary.effTotal === 'number');
-                    if (hasEff) return arr.reduce((s,b)=> s + Number(b.summary.effTotal||0), 0);
-                    return pulled - arr.reduce((s,b)=> s + inProgressOf(b||{}), 0);
-                })();
+                const effTotal = pulled - arr.reduce((s,b)=> s + inProgressOf(b||{}), 0);
                 const avg5 = (arr.map(b=>Number((b||{}).summary?.avgPity)||0).filter(Boolean).reduce((a,b)=>a+b,0) / Math.max(1, arr.filter(b=>Number(b?.summary?.avgPity)).length)) || null;
                 const rate5 = effTotal>0 && t5>=0 ? (t5/effTotal*100) : null;
                 const rate4 = pulled>0 && t4>=0 ? (t4/pulled*100) : null;
@@ -391,13 +411,12 @@
                 document.head.appendChild(s);
             } catch(_) { resolve(); }
         });
-        /*
         if (DEBUG) {
             try {
                 const g = getCharData();
                 console.log('[pull-tracker] characters loaded:', !!g, g ? Object.keys(g).length : 0);
             } catch(_) {}
-        }*/
+        }
     }
 
     let __weaponsLoading = null;
@@ -472,30 +491,6 @@
         } catch(_) {}
     }
 
-    // 모든 등급(2/3 포함) 기준으로 월별/총합 보강
-    function enrichIncomingWithMonthlyAndTotals(incoming){
-        try {
-            if (!incoming || !incoming.data) return incoming;
-            const keys = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
-            const toYm = (ts)=>{ const d=new Date(Number(ts||0)); if (isNaN(d)) return null; return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`; };
-            for (const k of keys){
-                const block = incoming.data[k]; if (!block) continue;
-                const segs = Array.isArray(block.records)? block.records: [];
-                let total = 0; const m = {};
-                for (const seg of segs){
-                    const recs = Array.isArray(seg.record)? seg.record: [];
-                    for (const r of recs){ total++; const ym = toYm(r.timestamp); if (ym) m[ym] = (m[ym]||0)+1; }
-                }
-                if (!block.summary) block.summary = {};
-                // 총합은 모든 등급 기준으로 보강
-                if (typeof block.summary.pulledSum !== 'number') block.summary.pulledSum = total;
-                // 월별 총합(모든 등급)
-                block.summary.monthlyTotals = Object.assign({}, m);
-            }
-        } catch(_) {}
-        return incoming;
-    }
-
     function startLoadingUI() {
         const startedAt = Date.now();
         // top inline status with spinner
@@ -563,21 +558,20 @@
         try {
             await Promise.all([loadCharacters(), loadWeapons()]);
             const text = await fetchRecords(userUrl);
-            // if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
+            if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
             stop();
             setStatus('✅ 완료');
             setResult(text);
 
             try {
-                const incoming = enrichIncomingWithMonthlyAndTotals(JSON.parse(text));
+                const incoming = JSON.parse(text);
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 // 병합 수행 → 저장 → 렌더
                 const merged = mergeWithCache(incoming);
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
-                // 로그인되어 있다면 클라우드로 동기화
-                // Supabase 업로드 비활성
-                try { await driveSyncMerged(); } catch(_) {}
+                // Google Drive 동기화
+                try { await syncMergedToCloud(); } catch(_) {}
             } catch(_) {
                 // ignore parse error; keep raw text only
             }
@@ -600,49 +594,13 @@
         try {
             localStorage.removeItem(STORAGE_KEY);
             localStorage.removeItem('pull-tracker:last-response');
-            localStorage.removeItem('pull-tracker:merged');
-            localStorage.removeItem('pull-tracker:ckpt');
-            localStorage.removeItem('pull-tracker:hide4');
-            // 로그인 스로틀 카운트는 사용자별 키라 일괄 삭제는 생략
+            // 계정 분리 없이 브라우저 레벨 캐시만 지우기. 
+            // 앱 저장소 prefix 패턴이 있으면 필요시 추가 삭제 로직을 여기에 확장.
         } catch(_) {}
-        // UI 리셋
-        try { if (els.cards) els.cards.innerHTML = ''; } catch(_) {}
-        try { if (els.overview) els.overview.innerHTML = ''; } catch(_) {}
-        try { const hide4Chk = document.getElementById('hide4Chk'); if (hide4Chk) hide4Chk.checked = false; } catch(_) {}
     }
 
     if (els.start) els.start.addEventListener('click', onStart);
     if (els.clear) els.clear.addEventListener('click', onClear);
-    if (els.example && DEBUG) {
-        els.example.style.display = 'inline-block';
-        els.example.addEventListener('click', async () => {
-            try {
-                const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                const url = `${base}/apps/pull-tracker/example.json?v=${Date.now()}`;
-                updateInlineStatus(t.waiting);
-                const text = await fetch(url, { cache: 'no-store' }).then(r=> r.ok ? r.text() : Promise.reject(new Error('example fetch failed')));
-                setStatus('✅ 완료');
-                setResult(DEBUG ? text : '');
-                const incoming = enrichIncomingWithMonthlyAndTotals(JSON.parse(text));
-                const merged = mergeWithCache(incoming);
-                try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
-                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
-                renderCardsFromExample(merged);
-                // Supabase 업로드 비활성, Drive 동기화만 수행
-                try { await driveSyncMerged(); } catch(_) {}
-            } catch(e) {
-                setStatus(t.failed);
-                setResult(String(e && e.message ? e.message : e));
-            }
-        });
-    }
-    if (els.drive && DEBUG) {
-        els.drive.style.display = 'inline-block';
-        els.drive.addEventListener('click', async ()=>{
-            const ok = await driveAuth();
-            setStatus(ok ? (lang==='en'?'Drive linked.':'드라이브 연동됨') : (lang==='en'?'Drive auth failed':'드라이브 연동 실패'));
-        });
-    }
 
     // Build stat cards from example.json-like structure
     function renderCardsFromExample(payload) {
@@ -805,7 +763,7 @@
             // 하단: 5★ → 4★ → 3★(이하 합산) 이름 pill 나열
             const pills = document.createElement('div');
             pills.className = 'pills';
-            // if (DEBUG) console.log('[pull-tracker] render pills for', label);
+            if (DEBUG) console.log('[pull-tracker] render pills for', label);
             renderNamePills(block, pills, label, hide4);
             card.appendChild(pills);
 
@@ -1025,16 +983,15 @@
             const list = [];
             const records = (block.records || []).flatMap(r => Array.isArray(r.record) ? r.record : []);
             // 5★ → 4★ → 3★ 순서로 name별 개수 집계
-            const byGrade = { 5: new Map(), 4: new Map() };
+            const byGrade = { 5: new Map(), 4: new Map(), 3: new Map(), 2: new Map() };
             for (const it of records) {
                 const g = Number(it.grade);
                 const name = it.name;
                 if (!name) continue;
-                if (g !== 5 && g !== 4) continue; // 3★/2★ 제거
-                const bucket = byGrade[g];
+                const bucket = byGrade[g] || byGrade[3];
                 bucket.set(name, (bucket.get(name) || 0) + 1);
             }
-            // if (DEBUG) console.log('[pull-tracker] grade buckets', Object.fromEntries(Object.entries(byGrade).map(([k,m])=>[k, m.size])));
+            if (DEBUG) console.log('[pull-tracker] grade buckets', Object.fromEntries(Object.entries(byGrade).map(([k,m])=>[k, m.size])));
             // 3★ 이하 묶기: 3★/2★ 총합 표시
             const gradesForList = [5, 4];
             for (const g of gradesForList) {
@@ -1063,7 +1020,11 @@
                 }
             }
             // 3★ 이하 totals
-            // 2★/3★는 완전히 제거: 요약 보정 및 표시 모두 제거
+            const total3 = sumMap(byGrade[3]);
+            const total2 = sumMap(byGrade[2]);
+            const lowLabel = lang === 'jp' ? '以下' : (lang === 'en' ? 'and below' : '이하');
+            if (total3 > 0 && !hide4) addPill(container, `3★ ${total3}`);
+            if (total2 > 0 && !hide4) addPill(container, `2★ ${total2}`);
         } catch(_) {}
     }
 
@@ -1150,7 +1111,7 @@
                     }
                 }
             }
-            // if (DEBUG) console.log('[pull-tracker] map name→class', displayName, '=>', found);
+            if (DEBUG) console.log('[pull-tracker] map name→class', displayName, '=>', found);
             if (!found) return null;
             const img = document.createElement('img');
             const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
@@ -1176,7 +1137,7 @@
                     this.src = fallback;
                 } else {
                     this.style.display='none';
-                    // if (DEBUG) console.log('[pull-tracker] image not found for', found);
+                    if (DEBUG) console.log('[pull-tracker] image not found for', found);
                 }
             };
             return img;
@@ -1302,37 +1263,25 @@
     }
 
     // Supabase rows → merged payload 형태로 변환
-    // shapeCloudRows 제거 (Supabase 비활성)
-
-    // 체크포인트 저장/로드/갱신 유틸
-    function loadCkpt(){
-        try { const s = localStorage.getItem('pull-tracker:ckpt'); return s ? JSON.parse(s) : {}; } catch(_) { return {}; }
-    }
-    function saveCkpt(obj){
-        try { localStorage.setItem('pull-tracker:ckpt', JSON.stringify(obj||{})); } catch(_) {}
-    }
-    function updateCkptForType(ckpt, type, ts){
-        try {
-            if (!ckpt[type]) ckpt[type] = {};
-            const cur = Number(ckpt[type].lastTs||0);
-            if (Number(ts)>cur) ckpt[type].lastTs = Number(ts);
-        } catch(_) {}
-    }
-    function getMaxTsForType(block, minGrade){
-        try {
-            const list = Array.isArray(block?.records) ? block.records : [];
-            let maxTs = 0;
-            for (const seg of list){
-                const recs = Array.isArray(seg?.record) ? seg.record : [];
-                for (const r of recs){
-                    if (Number(r?.grade) >= (minGrade||0)) {
-                        const ts = Number(r?.timestamp||0);
-                        if (ts>maxTs) maxTs = ts;
-                    }
-                }
-            }
-            return maxTs;
-        } catch(_) { return 0; }
+    function shapeCloudRows(rows){
+        const keys = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+        const data = {}; for (const k of keys) data[k] = { summary:{ pulledSum:0,total5Star:0,total4Star:0,win5050:0,avgPity:null }, records:[] };
+        const byType = new Map();
+        for (const r of rows){
+            const t = r.gacha_type; if (!data[t]) continue;
+            if (!byType.has(t)) byType.set(t, []);
+            byType.get(t).push({ name:r.name, grade:Number(r.grade||0), timestamp:Number(r.timestamp||0), gachaId:r.gacha_id||null });
+        }
+        for (const [t, arr] of byType.entries()){
+            arr.sort((a,b)=> a.timestamp-b.timestamp);
+            // 간단히 한 그룹으로 묶어 segment 구성
+            const seg = { fivestar: null, lastTimestamp: (arr[arr.length-1]?.timestamp||0), record: arr };
+            const i5 = arr.findIndex(v=> Number(v.grade)===5); if (i5>=0) seg.fivestar = { name: arr[i5].name, timestamp: arr[i5].timestamp };
+            data[t].records = [seg];
+            const s = { pulledSum: arr.length, total5Star: arr.filter(v=>v.grade===5).length, total4Star: arr.filter(v=>v.grade===4).length, win5050:0, avgPity:null };
+            data[t].summary = s;
+        }
+        return { version:1, updatedAt: Date.now(), data };
     }
 
     // Auto render from bundled example when available (dev view)
@@ -1345,18 +1294,17 @@
        const exampleUrl = exampleAttr;
 
         Promise.all([loadCharacters(), loadWeapons()]).then(async () => {
-            // 1) 로컬이 있으면 무조건 로컬 우선 렌더
+            // Google Drive 병합본 우선 로드
+            try { await gapiInit(); } catch(_) {}
+            let cloud = null;
+            try { cloud = await driveLoadMerged(); } catch(_) {}
             try {
+                if (cloud && cloud.data) { const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) { const json = JSON.parse(mergedCached); renderCardsFromExample(json); return; }
                 const cached = localStorage.getItem('pull-tracker:last-response');
                 if (cached) { const json = JSON.parse(cached); const m = mergeWithCache(json); renderCardsFromExample(m); return; }
             } catch(_) {}
-
-            // 2) Supabase 동기화 경로 제거
-
-            // 3) 아무것도 없으면 example 비활성 (네트워크 트래픽 회피)
-            setStatus('');
         });
     } catch(_) {}
 })();

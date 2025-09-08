@@ -177,7 +177,7 @@
             // 2) 클라우드 비교: summary_overall 최소 컬럼만
             const { data: sums } = await supabase
                 .from('pulls_summary_overall')
-                .select('gacha_type,total_pulls,total_5star,total_4star,avg_5star_pity,win5050_count,updated_at')
+                .select('gacha_type,total_pulls,eff_total_pulls,total_5star,total_4star,avg_5star_pity,win5050_count,updated_at')
                 .eq('user_id', user.id);
             let cloudSummaryByType = new Map();
             let cloudUpdatedAt = 0;
@@ -193,14 +193,12 @@
             const localTs = computeUpdatedAt(localMerged);
             const cloudTs = cloudUpdatedAt;
 
-            if (!localMerged && cloudMerged) {
-                // 로컬 없음 → 클라우드 사용
-                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(cloudMerged)); } catch(_) {}
-                renderCardsFromExample(cloudMerged);
-                return; // 업서트 불필요
+            if (!localMerged && cloudTs === 0) {
+                // 로컬 없음 + 클라우드 없음 → 아무것도 하지 않음
+                return;
             }
 
-            if (localMerged && !cloudMerged) {
+            if (localMerged && cloudTs === 0) {
                 // 클라우드 없음 → 로컬 업서트
                 await syncMergedToCloud(user);
                 return;
@@ -229,12 +227,11 @@
                         const row = cloudSummaryByType.get(tkey);
                         if (row){
                             s.pulledSum = Number(row.total_pulls||0);
+                            s.effTotal = Number(row.eff_total_pulls||0);
                             s.total5Star = Number(row.total_5star||0);
                             s.total4Star = Number(row.total_4star||0);
                             if (row.avg_5star_pity != null) s.avgPity = Number(row.avg_5star_pity);
                             if (row.win5050_count != null) s.win5050 = Number(row.win5050_count);
-                            // effTotal은 렌더에서 우선 사용하도록 summary에 보관(옵션)
-                            s.effTotal = Number(row.eff_total_pulls||0);
                         }
                     }
                 }
@@ -753,9 +750,15 @@
         try {
             localStorage.removeItem(STORAGE_KEY);
             localStorage.removeItem('pull-tracker:last-response');
-            // 계정 분리 없이 브라우저 레벨 캐시만 지우기. 
-            // 앱 저장소 prefix 패턴이 있으면 필요시 추가 삭제 로직을 여기에 확장.
+            localStorage.removeItem('pull-tracker:merged');
+            localStorage.removeItem('pull-tracker:ckpt');
+            localStorage.removeItem('pull-tracker:hide4');
+            // 로그인 스로틀 카운트는 사용자별 키라 일괄 삭제는 생략
         } catch(_) {}
+        // UI 리셋
+        try { if (els.cards) els.cards.innerHTML = ''; } catch(_) {}
+        try { if (els.overview) els.overview.innerHTML = ''; } catch(_) {}
+        try { const hide4Chk = document.getElementById('hide4Chk'); if (hide4Chk) hide4Chk.checked = false; } catch(_) {}
     }
 
     if (els.start) els.start.addEventListener('click', onStart);

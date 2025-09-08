@@ -81,7 +81,6 @@
         clear: document.getElementById('clearBtn'),
         example: document.getElementById('exampleBtn'),
         info: document.getElementById('info'),
-        drive: document.getElementById('driveBtn'),
         status: document.getElementById('status'),
         result: document.getElementById('result'),
         cards: document.getElementById('cards'),
@@ -97,7 +96,6 @@
         if (els.start) els.start.textContent = t.start;
         if (els.clear) els.clear.textContent = t.clear;
         if (els.example) els.example.textContent = (lang==='en'?'EXAMPLE':(lang==='jp'?'EXAMPLE':'예제 제출'));
-        if (els.drive) els.drive.textContent = (lang==='en'?'Drive Link':(lang==='jp'?'Drive 連携':'Drive 연동'));
         if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
         const hide4 = document.getElementById('hide4Label');
         if (hide4) hide4.textContent = (lang==='en'?'Hide under 4★': (lang==='jp'?'4★ 以下を隠す':'4★ 이하 숨기기'));
@@ -114,69 +112,6 @@
             if (loginBtn) loginBtn.textContent = (lang==='en'?'Login': (lang==='jp'?'ログイン':'로그인'));
             if (logoutBtn) logoutBtn.textContent = (lang==='en'?'Logout': (lang==='jp'?'ログアウト':'로그아웃'));
         } catch(_) {}
-    }
-
-    // --------- Google Drive (GIS + Drive v3) ---------
-    let __driveAccessToken = null;
-    function driveIsReady(){ return !!__driveAccessToken; }
-    async function driveAuth(){
-        return new Promise((resolve) => {
-            try {
-                /* global google */
-                if (!window.google || !google.accounts || !google.accounts.oauth2) return resolve(false);
-                google.accounts.oauth2.initTokenClient({
-                    client_id: (window.GOOGLE_CLIENT_ID || ''),
-                    scope: 'https://www.googleapis.com/auth/drive.appdata',
-                    callback: (resp)=>{
-                        if (resp && resp.access_token) { __driveAccessToken = resp.access_token; resolve(true); }
-                        else resolve(false);
-                    }
-                }).requestAccessToken({ prompt: 'consent' });
-            } catch(_) { resolve(false); }
-        });
-    }
-    async function driveListByName(name){
-        try {
-            const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(`name='${name}' and 'appDataFolder' in parents`)}&spaces=appDataFolder&fields=files(id,name)`;
-            const r = await fetch(url, { headers: { Authorization: `Bearer ${__driveAccessToken}` } });
-            const j = await r.json(); return Array.isArray(j.files)? j.files: [];
-        } catch(_) { return []; }
-    }
-    async function driveDownload(fileId){
-        try {
-            const r = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, { headers: { Authorization: `Bearer ${__driveAccessToken}` } });
-            if (!r.ok) throw new Error('download failed');
-            return await r.text();
-        } catch(e){ throw e; }
-    }
-    async function driveUploadNew(name, body){
-        const boundary = 'lufelnet-' + Date.now();
-        const meta = { name, parents:['appDataFolder'], mimeType: 'application/json' };
-        const data = `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n${body}\r\n--${boundary}--`;
-        const r = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-            method: 'POST', headers: { Authorization: `Bearer ${__driveAccessToken}`, 'Content-Type': `multipart/related; boundary=${boundary}` }, body: data
-        });
-        if (!r.ok) throw new Error('upload failed'); return await r.json();
-    }
-    async function driveUpdate(fileId, body){
-        const r = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`, {
-            method: 'PATCH', headers: { Authorization: `Bearer ${__driveAccessToken}`, 'Content-Type': 'application/json' }, body
-        }); if (!r.ok) throw new Error('update failed'); return true;
-    }
-    async function driveSyncMerged(){
-        if (!driveIsReady()) { const ok = await driveAuth(); if (!ok) return false; }
-        // 로컬 merged
-        let merged = null; try { const s = localStorage.getItem('pull-tracker:merged'); if (s) merged = JSON.parse(s); } catch(_) {}
-        if (!merged) return false;
-        // 드라이브 pulls.json 병합
-        const name = 'pulls.json';
-        const files = await driveListByName(name);
-        let remote = null;
-        if (files.length>0){ try { const txt = await driveDownload(files[0].id); remote = JSON.parse(txt); } catch(_) {} }
-        const toSave = remote ? mergeWithCache(remote) : merged;
-        const payload = JSON.stringify(toSave);
-        if (files.length>0) await driveUpdate(files[0].id, payload); else await driveUploadNew(name, payload);
-        return true;
     }
 
     function resolveRegion(){
@@ -858,7 +793,6 @@
                     const user = data && data.session ? data.session.user : null;
                     if (user) { await syncMergedToCloud(user); }
                 } catch(_) {}
-                try { await driveSyncMerged(); } catch(_) {}
             } catch(_) {
                 // ignore parse error; keep raw text only
             }
@@ -921,13 +855,6 @@
                 setStatus(t.failed);
                 setResult(String(e && e.message ? e.message : e));
             }
-        });
-    }
-    if (els.drive && DEBUG) {
-        els.drive.style.display = 'inline-block';
-        els.drive.addEventListener('click', async ()=>{
-            const ok = await driveAuth();
-            setStatus(ok ? (lang==='en'?'Drive linked.':'드라이브 연동됨') : (lang==='en'?'Drive auth failed':'드라이브 연동 실패'));
         });
     }
 

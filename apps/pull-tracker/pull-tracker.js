@@ -537,6 +537,12 @@
                 const merged = mergeWithCache(incoming);
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
+                // 로그인되어 있다면 클라우드로 동기화
+                try {
+                    const { data } = await supabase.auth.getSession();
+                    const user = data && data.session ? data.session.user : null;
+                    if (user) { await syncMergedToCloud(user); }
+                } catch(_) {}
             } catch(_) {
                 // ignore parse error; keep raw text only
             }
@@ -1227,6 +1233,28 @@
         } catch(_) { return name; }
     }
 
+    // Supabase rows → merged payload 형태로 변환
+    function shapeCloudRows(rows){
+        const keys = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+        const data = {}; for (const k of keys) data[k] = { summary:{ pulledSum:0,total5Star:0,total4Star:0,win5050:0,avgPity:null }, records:[] };
+        const byType = new Map();
+        for (const r of rows){
+            const t = r.gacha_type; if (!data[t]) continue;
+            if (!byType.has(t)) byType.set(t, []);
+            byType.get(t).push({ name:r.name, grade:Number(r.grade||0), timestamp:Number(r.timestamp||0), gachaId:r.gacha_id||null });
+        }
+        for (const [t, arr] of byType.entries()){
+            arr.sort((a,b)=> a.timestamp-b.timestamp);
+            // 간단히 한 그룹으로 묶어 segment 구성
+            const seg = { fivestar: null, lastTimestamp: (arr[arr.length-1]?.timestamp||0), record: arr };
+            const i5 = arr.findIndex(v=> Number(v.grade)===5); if (i5>=0) seg.fivestar = { name: arr[i5].name, timestamp: arr[i5].timestamp };
+            data[t].records = [seg];
+            const s = { pulledSum: arr.length, total5Star: arr.filter(v=>v.grade===5).length, total4Star: arr.filter(v=>v.grade===4).length, win5050:0, avgPity:null };
+            data[t].summary = s;
+        }
+        return { version:1, updatedAt: Date.now(), data };
+    }
+
     // Auto render from bundled example when available (dev view)
     try {
         /*
@@ -1236,9 +1264,33 @@
        const exampleAttr = null;
        const exampleUrl = exampleAttr;
 
-        Promise.all([loadCharacters(), loadWeapons()]).then(() => {
-            // 우선 로컬 저장본이 있으면 사용
+        Promise.all([loadCharacters(), loadWeapons()]).then(async () => {
+            // 로그인 사용자 있으면 Supabase 최신을 우선 합쳐서 사용
+            let mergedFromCloud = null;
             try {
+                const { data } = await supabase.auth.getSession();
+                const user = data && data.session ? data.session.user : null;
+                if (user) {
+                    // 사용자 레코드 최신 90일 가져와 병합
+                    const sinceMs = Date.now() - 90*24*60*60*1000;
+                    const { data: rows } = await supabase
+                        .from('pulls_records')
+                        .select('gacha_type,gacha_id,name,grade,timestamp')
+                        .eq('user_id', user.id)
+                        .gte('timestamp', sinceMs)
+                        .order('timestamp', { ascending: true })
+                        .limit(5000);
+                    if (Array.isArray(rows) && rows.length>0){
+                        const shaped = shapeCloudRows(rows);
+                        mergedFromCloud = mergeWithCache(shaped);
+                        try { localStorage.setItem('pull-tracker:merged', JSON.stringify(mergedFromCloud)); } catch(_) {}
+                    }
+                }
+            } catch(_) {}
+
+            // 로컬 또는 예제 로드
+            try {
+                if (mergedFromCloud) { renderCardsFromExample(mergedFromCloud); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) { const json = JSON.parse(mergedCached); renderCardsFromExample(json); return; }
                 const cached = localStorage.getItem('pull-tracker:last-response');

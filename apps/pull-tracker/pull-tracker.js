@@ -1,0 +1,1255 @@
+(() => {
+    // Simple local i18n
+    const messages = {
+        kr: {
+            pageTitle: 'Pull Tracker',
+            navCurrent: 'Pull Tracker',
+            inputLabel: '가챠 기록 URL',
+            placeholder: '여기에 주소를 붙여넣기...',
+            start: '가져오기',
+            clear: '초기화',
+            infoReady: '가챠 기록 URL을 입력하고 가져오기를 누르세요.',
+            infoNotice: '최근 90일 동안의 기록만 가져옵니다. 이전 기록은 게임 서버에서 제공되지 않습니다.\n가챠 시도 횟수가 많은 경우 로딩에 5분 이상 걸릴 수 있습니다.',
+            loadingTitle: '서버에서 기록을 조회 중입니다...',
+            loadingDetail: '네트워크 상태와 서버 부하에 따라 시간이 걸릴 수 있습니다.',
+            noticeLong: '최근 90일 뽑기 횟수에 따라 10분 이상 소요될 수 있습니다. 처리 중에는 브라우저 창을 닫지 말아주세요.',
+            elapsed: (m, s) => `경과 시간: ${m}분 ${s}초`,
+            sending: '요청 전송 중...',
+            waiting: '서버 응답 대기 중...',
+            tryGet: 'POST 실패, GET 방식으로 재시도합니다...',
+            invalidUrl: '유효한 URL을 입력하세요.',
+            done: (bytes) => `완료 (응답 바이트: ${bytes})`,
+            failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
+            confirmReset: '정말 초기화할까요?\n이 작업은 로컬에 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.'
+        },
+        en: {
+            pageTitle: 'Pull Tracker',
+            navCurrent: 'Pull Tracker',
+            inputLabel: 'Gacha Records URL',
+            placeholder: 'Paste the link here...',
+            start: 'Fetch',
+            clear: 'Clear',
+            infoReady: 'Paste your gacha records URL and press Fetch.',
+            infoNotice: 'Only the last 90 days of records can be fetched. Older records are not provided by game servers.\nIf you have many pulls, loading may take 5+ minutes.',
+            loadingTitle: 'Fetching records from the server...',
+            loadingDetail: 'Depending on network and server load, it can take some time.',
+            noticeLong: 'If you have many pulls in the last 90 days, it may take 10+ minutes. Please keep the browser open during processing.',
+            elapsed: (m, s) => `Elapsed: ${m}m ${s}s`,
+            sending: 'Sending request...',
+            waiting: 'Waiting for server response...',
+            tryGet: 'POST failed, retrying with GET...',
+            invalidUrl: 'Please enter a valid URL.',
+            done: (bytes) => `Done (response bytes: ${bytes})`,
+            failed: 'Something went wrong. Please try again later.',
+            confirmReset: 'Are you sure you want to reset?\nThis will delete all locally stored gacha data (including last URL/response).'
+        },
+        jp: {
+            pageTitle: 'Pull Tracker',
+            navCurrent: 'Pull Tracker',
+            inputLabel: '祈願履歴 URL',
+            placeholder: 'ここにリンクを貼り付けてください...',
+            start: '取得',
+            clear: 'クリア',
+            infoReady: '祈願履歴のURLを貼り付けて、取得を押してください。',
+            infoNotice: '直近90日の記録のみ取得できます。以前の記録はゲームサーバーでは提供されません。\n試行回数が多い場合、読み込みに5分以上かかることがあります。',
+            loadingTitle: 'サーバーから履歴を取得しています...',
+            loadingDetail: 'ネットワーク状況やサーバー負荷により時間がかかる場合があります。',
+            noticeLong: '直近90日のガチャ数によっては10分以上かかる場合があります。処理中はブラウザを閉じないでください。',
+            elapsed: (m, s) => `経過時間: ${m}分 ${s}秒`,
+            sending: 'リクエスト送信中...',
+            waiting: 'サーバーの応答を待機中...',
+            tryGet: 'POST に失敗、GET で再試行中...',
+            invalidUrl: '有効なURLを入力してください。',
+            done: (bytes) => `完了（応答バイト数: ${bytes}）`,
+            failed: 'エラーが発生しました。時間をおいて再度お試しください。',
+            confirmReset: '本当に初期化しますか？\nこの操作により、ローカルに保存されたガチャデータ（最後のURL/レスポンスを含む）がすべて削除されます。'
+        }
+    };
+
+    const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+    const DEBUG = true;
+    const t = messages[lang] || messages.kr;
+
+    const els = {
+        title: document.getElementById('pageTitle'),
+        navCurrent: document.getElementById('navCurrent'),
+        inputLabel: document.getElementById('inputLabel'),
+        input: document.getElementById('sourceUrl'),
+        start: document.getElementById('startBtn'),
+        clear: document.getElementById('clearBtn'),
+        info: document.getElementById('info'),
+        status: document.getElementById('status'),
+        result: document.getElementById('result'),
+        cards: document.getElementById('cards'),
+        cardsTitle: document.getElementById('cardsTitle'),
+        overview: document.getElementById('overview')
+    };
+
+    function applyTexts() {
+        if (els.title) els.title.textContent = t.pageTitle;
+        if (els.navCurrent) els.navCurrent.textContent = t.navCurrent;
+        if (els.inputLabel) els.inputLabel.textContent = t.inputLabel;
+        if (els.input) els.input.setAttribute('placeholder', t.placeholder);
+        if (els.start) els.start.textContent = t.start;
+        if (els.clear) els.clear.textContent = t.clear;
+        if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
+        const hide4 = document.getElementById('hide4Label');
+        if (hide4) hide4.textContent = (lang==='en'?'Hide under 4★': (lang==='jp'?'4★ 以下を隠す':'4★ 이하 숨기기'));
+        if (els.cardsTitle) {
+            const map = { kr: '요약 카드 (최근 90일)', en: 'Stats (Last 90 Days)', jp: '統計（直近90日）' };
+            els.cardsTitle.textContent = map[lang] || map.kr;
+        }
+        // auth bar labels
+        try {
+            const signed = document.getElementById('ptUserSignedAs');
+            const loginBtn = document.getElementById('ptLoginBtn');
+            const logoutBtn = document.getElementById('ptLogoutBtn');
+            if (signed) signed.textContent = (lang==='en'?'Signed in:': (lang==='jp'?'ログイン:':'로그인:'));
+            if (loginBtn) loginBtn.textContent = (lang==='en'?'Login': (lang==='jp'?'ログイン':'로그인'));
+            if (logoutBtn) logoutBtn.textContent = (lang==='en'?'Logout': (lang==='jp'?'ログアウト':'로그아웃'));
+        } catch(_) {}
+    }
+
+    // --- Auth Bar (login/logout + sync stub) ---
+    async function initAuthBar(){
+        try {
+            const bar = document.getElementById('ptUserBar');
+            const nameEl = document.getElementById('ptUserName');
+            const loginBtn = document.getElementById('ptLoginBtn');
+            const logoutBtn = document.getElementById('ptLogoutBtn');
+            if (!bar || !loginBtn || !logoutBtn) return;
+            // session check
+            const { data, error } = await supabase.auth.getSession();
+            const user = data && data.session ? data.session.user : null;
+            if (user){
+                bar.style.display = 'flex';
+                if (nameEl) nameEl.textContent = (user.user_metadata?.display_name || user.email || '');
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+                logoutBtn.onclick = async ()=>{ try { await supabase.auth.signOut(); location.reload(); } catch(_) {} };
+                // sync stub: merge cache upload
+                try { await syncMergedToCloud(user); } catch(_) {}
+            } else {
+                bar.style.display = 'flex';
+                if (nameEl) nameEl.textContent = '';
+                loginBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                loginBtn.onclick = ()=>{ try { window.location.href = `/login/?redirect=${encodeURIComponent(location.href)}`; } catch(_) {} };
+            }
+        } catch(_) {}
+    }
+
+    async function syncMergedToCloud(user){
+        // 1) 로컬 병합본 로드
+        let merged = null;
+        try { const s = localStorage.getItem('pull-tracker:merged'); if (s) merged = JSON.parse(s); } catch(_) {}
+        if (!merged || !merged.data) return;
+        const types = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+
+        // 2) 레코드 업서트: pulls_records (gacha_id 있으면 unique, 없으면 timestamp/name/grade로 덮기 목적의 다중 insert)
+        // 간단한 배치 업서트: 타입별 모든 segment의 record를 평탄화하여 upsert
+        for (const tkey of types){
+            const block = merged.data[tkey];
+            if (!block || !Array.isArray(block.records)) continue;
+            const records = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[]);
+            // chunking (supabase 제한 대비)
+            const chunkSize = 500;
+            for (let i=0;i<records.length;i+=chunkSize){
+                const chunk = records.slice(i, i+chunkSize).map(r => ({
+                    user_id: user.id,
+                    gacha_type: tkey,
+                    gacha_id: r.gachaId || null,
+                    name: r.name,
+                    grade: Number(r.grade||0),
+                    timestamp: Number(r.timestamp||0)
+                }));
+                if (chunk.length===0) continue;
+                try {
+                    // upsert on (user_id,gacha_id) when gacha_id not null, else rely on server-side policy or accept duplicates
+                    await supabase.from('pulls_records').upsert(chunk, { onConflict: 'user_id,gacha_id', ignoreDuplicates: false });
+                } catch(e){ /* ignore per-chunk */ }
+            }
+        }
+
+        // 3) summary overall/monthly upsert
+        try {
+            for (const tkey of types){
+                const b = merged.data[tkey];
+                if (!b || !b.summary) continue;
+                await supabase.from('pulls_summary_overall').upsert({
+                    user_id: user.id,
+                    gacha_type: tkey,
+                    total_pulls: Number(b.summary.pulledSum||0),
+                    eff_total_pulls: Number((() => {
+                        // 진행중 계산: 마지막 그룹(90일 기준) 내 null 세그먼트 길이 합산
+                        const list = Array.isArray(b.records)? b.records:[];
+                        if (list.length===0) return 0;
+                        const msDay=24*60*60*1000; const last=list[list.length-1]; const lastTs=Number(last?.lastTimestamp||0);
+                        let s=0; for (let i=list.length-1;i>=0;i--){ const seg=list[i]; const ts=Number(seg?.lastTimestamp||0); if (!ts) continue; if (Math.abs(lastTs-ts)>90*msDay) break; if (!seg.fivestar) s += (Array.isArray(seg.record)? seg.record.length:0); }
+                        return Number(b.summary.pulledSum||0) - s;
+                    })()),
+                    total_5star: Number(b.summary.total5Star||0),
+                    total_4star: Number(b.summary.total4Star||0),
+                    avg_5star_pity: b.summary.avgPity ?? null,
+                    avg_4star_pity: null,
+                    win5050_count: Number(b.summary.win5050||0),
+                    win5050_rate: null
+                }, { onConflict: 'user_id,gacha_type' });
+            }
+        } catch(_) {}
+
+        // 월별 요약은 클라이언트에서 계산 비용이 있으므로 추후 서버 함수로 이전 가능
+        // 여기서는 스킵
+    }
+
+    // expose init for index.html
+    window.pullTrackerInitAuth = initAuthBar;
+
+    function renderOverview(payload){
+        try {
+            const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+            const jewel = `${base}/assets/img/pay/이계 엠버.png`;
+            const get = (key) => payload.data[key];
+            const blocks = {
+                pickup: [get('Confirmed'), get('Fortune')],
+                weapon: [get('Weapon')],
+                standard: [get('Gold'), get('Newcomer')]
+            };
+            const inProgressOf = (b) => {
+                try {
+                    const list = Array.isArray(b.records) ? b.records : [];
+                    let s = 0; for (const seg of list) { if (seg && seg.fivestar == null) { const rec = Array.isArray(seg.record)?seg.record:[]; s += rec.length; } }
+                    return s;
+                } catch(_) { return 0; }
+            };
+            const calc = (arr) => {
+                const sum = (sel) => arr.reduce((s,b)=> s + (Number(((b||{}).summary||{})[sel])||0), 0);
+                const pulled = sum('pulledSum');
+                const t5 = sum('total5Star');
+                const t4 = sum('total4Star');
+                const effTotal = pulled - arr.reduce((s,b)=> s + inProgressOf(b||{}), 0);
+                const avg5 = (arr.map(b=>Number((b||{}).summary?.avgPity)||0).filter(Boolean).reduce((a,b)=>a+b,0) / Math.max(1, arr.filter(b=>Number(b?.summary?.avgPity)).length)) || null;
+                const rate5 = effTotal>0 && t5>=0 ? (t5/effTotal*100) : null;
+                const rate4 = pulled>0 && t4>=0 ? (t4/pulled*100) : null;
+                return { pulled, effTotal, t5, t4, avg5, rate5, rate4 };
+            };
+            const pickup = calc(blocks.pickup);
+            const weapon = calc(blocks.weapon);
+            const standard = calc(blocks.standard);
+
+            const jewelCost = (key) => {
+                if (key==='pickup') return pickup.pulled * 150;
+                if (key==='weapon') return weapon.pulled * 100;
+                if (key==='standard') {
+                    const goldPulled = Number((blocks.standard[0]?.summary?.pulledSum)||0);
+                    const newcomerPulled = Number((blocks.standard[1]?.summary?.pulledSum)||0);
+                    return goldPulled*150 + newcomerPulled*120;
+                }
+                return 0;
+            };
+
+            const makeCard = (key, title, data, ExtraRow=null, titleIcon=null) => {
+                const el = document.createElement('div');
+                el.className = 'overview-card';
+                // title with right-side icon (like stat-cards)
+                const titleWrap = document.createElement('div');
+                titleWrap.className = 'h3-row';
+                const h3 = document.createElement('h3'); h3.textContent = title;
+                titleWrap.appendChild(h3);
+                if (titleIcon){ const ic=document.createElement('img'); ic.src=titleIcon; ic.alt=key; ic.className='card-title-icon'; titleWrap.appendChild(ic); }
+                el.appendChild(titleWrap);
+                // top stats: 총 뽑기 N회 / {jewel} cost
+                const pullsSuffix = lang==='en' ? 'pulls' : (lang==='jp' ? '回' : '회');
+                const topRow = document.createElement('div'); topRow.className='stat'; topRow.style.fontSize='13px'; topRow.style.justifyContent='flex-start'; topRow.style.gap='16px';
+                // const l = document.createElement('span'); l.textContent = textFor('total');
+                const r = document.createElement('strong');
+                const txt = document.createElement('span'); txt.textContent = `${numberFmt(data.pulled)}${pullsSuffix}`; txt.style.marginRight='8px';
+                const jimg=document.createElement('img'); jimg.src=jewel; jimg.alt='j'; jimg.className='jewel'; jimg.style.marginLeft='16px';
+                const jv = document.createElement('span'); jv.textContent = numberFmt(jewelCost(key)); jv.style.fontSize='13px'; jv.style.color='#cdcdcd'; jv.style.fontWeight='400';
+                r.appendChild(txt); r.appendChild(jimg); r.appendChild(jv);
+                //topRow.appendChild(l); 
+                topRow.appendChild(r);
+                titleWrap.appendChild(topRow);
+                // el.appendChild(topRow);
+
+                // ----------------------------
+                // chart canvas
+                const canvas = document.createElement('canvas'); canvas.className='overview-chart';
+                el.appendChild(canvas);
+                requestAnimationFrame(()=> { try { if (window.drawOverviewChart) window.drawOverviewChart(canvas, blocks, key, lang); } catch(_) {} });
+
+                const table = document.createElement('div');
+                table.className = 'stat-table';
+                const header = document.createElement('div'); header.className='tr';
+                header.appendChild(cell('th',''));
+                header.appendChild(cell('th', textFor('count')));
+                header.appendChild(cell('th', textFor('rate')));
+                header.appendChild(cell('th', textFor('avg')));
+                table.appendChild(header);
+                // 5★
+                const row5 = document.createElement('div'); row5.className='tr five';
+                row5.appendChild(cell('td','5★'));
+                row5.appendChild(cell('td', numberFmt(data.t5)));
+                row5.appendChild(cell('td', data.rate5!=null?numberFmt(data.rate5,2)+'%':'-'));
+                row5.appendChild(cell('td', data.avg5!=null?numberFmt(data.avg5,2):'-'));
+                table.appendChild(row5);
+                // extra
+                if (ExtraRow){ const holder=document.createElement('div'); holder.innerHTML=ExtraRow; while(holder.firstChild){ table.appendChild(holder.firstChild);} }
+                // 4★
+                const row4 = document.createElement('div'); row4.className='tr four';
+                row4.appendChild(cell('td','4★'));
+                row4.appendChild(cell('td', numberFmt(data.t4)));
+                row4.appendChild(cell('td', data.rate4!=null?numberFmt(data.rate4,2)+'%':'-'));
+                row4.appendChild(cell('td', data.pulled>0?numberFmt(data.pulled/Math.max(1,data.t4),2):'-'));
+                table.appendChild(row4);
+                el.appendChild(table);
+                return el;
+            };
+            function cell(cls, html){ const d=document.createElement('div'); d.className=cls; d.innerHTML=html; return d; }
+            // drawOverviewChart moved to charts.js
+
+            // 5성 픽업(운명/확정 합산, 무기는 50:50)
+            const pickupWin = (Number(blocks.pickup[0]?.summary?.win5050)||0)+(Number(blocks.pickup[1]?.summary?.win5050)||0);
+            const pickupRate = (pickup.t5>0) ? (pickupWin / pickup.t5 * 100) : null;
+            const pickupAvg = (pickupWin>0) ? (pickup.effTotal / pickupWin) : null;
+            const pickupLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ ピックアップ':'5성 픽업')}`; 
+            const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate!=null?numberFmt(pickupRate,2)+'%':'-'}</div><div class=\"td\">${pickupAvg!=null?numberFmt(pickupAvg,2):'-'}</div></div>`;
+
+            const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050)||0);
+            const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star)||0);
+            const weaponLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ ピックアップ':'5성 픽업')}`;
+            const weaponAvg = weaponWin>0 ? (weapon.effTotal/weaponWin) : null;
+            const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5>0?numberFmt(weaponWin/weaponTotal5*100,2)+'%':'-'}</div><div class=\"td\">${weaponAvg!=null?numberFmt(weaponAvg,2):'-'}</div></div>`;
+
+            const wrap = els.overview;
+            wrap.innerHTML='';
+            const iconMap = { pickup: '정해진 운명.png', weapon: '정해진 코인.png', standard: '미래의 운명.png' };
+            wrap.appendChild(makeCard('pickup', (lang==='en'?'Pickup':(lang==='jp'?'ピックアップ':'픽업')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
+            wrap.appendChild(makeCard('weapon', (lang==='en'?'Weapon':(lang==='jp'?'武器':'무기')), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
+            wrap.appendChild(makeCard('standard', (lang==='en'?'Standard':(lang==='jp'?'通常':'일반')), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
+        } catch(_) {}
+    }
+
+    applyTexts();
+
+    // tooltip lib loader
+    function ensureTooltipLib(){
+        return new Promise((resolve)=>{
+            try {
+                if (window.bindTooltipElement) return resolve();
+                const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                const s = document.createElement('script');
+                s.src = `${base}/assets/js/tooltip.js?v=${Date.now()}`;
+                s.onload = () => resolve();
+                s.onerror = () => resolve();
+                document.head.appendChild(s);
+            } catch(_) { resolve(); }
+        });
+    }
+
+    // Load KR characters database for name→class mapping
+    function getCharData() {
+        try {
+            // top-level const characterData is not a window property; access via identifier when available
+            // eslint-disable-next-line no-undef
+            if (typeof characterData !== 'undefined') return characterData;
+        } catch(_) {}
+        return window.characterData || null;
+    }
+
+    // Load KR weapons database for weapon→owner mapping
+    function getWeaponData() {
+        try {
+            // eslint-disable-next-line no-undef
+            if (typeof WeaponData !== 'undefined') return WeaponData;
+        } catch(_) {}
+        return window.WeaponData || null;
+    }
+
+    async function loadCharacters() {
+        if (getCharData()) return;
+        await new Promise((resolve) => {
+            try {
+                const s = document.createElement('script');
+                const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                s.src = `${base}/data/kr/characters/characters.js?v=${Date.now()}`;
+                s.onload = () => resolve();
+                s.onerror = () => resolve();
+                document.head.appendChild(s);
+            } catch(_) { resolve(); }
+        });
+        if (DEBUG) {
+            try {
+                const g = getCharData();
+                console.log('[pull-tracker] characters loaded:', !!g, g ? Object.keys(g).length : 0);
+            } catch(_) {}
+        }
+    }
+
+    let __weaponsLoading = null;
+    async function loadWeapons() {
+        if (__weaponsLoading) return __weaponsLoading;
+        __weaponsLoading = new Promise((resolve) => {
+            const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+            const tasks = [];
+            try {
+                if (!getWeaponData()) {
+                    tasks.push(new Promise((res) => {
+                        const s = document.createElement('script');
+                        s.src = `${base}/data/kr/characters/character_weapon.js?v=${Date.now()}`;
+                        s.onload = () => res(); s.onerror = () => res(); document.head.appendChild(s);
+                    }));
+                }
+                if (!window.enCharacterWeaponData) {
+                    tasks.push(new Promise((res) => {
+                        const s = document.createElement('script');
+                        s.src = `${base}/data/en/characters/character_weapon.js?v=${Date.now()}`;
+                        s.onload = () => res(); s.onerror = () => res(); document.head.appendChild(s);
+                    }));
+                }
+                if (!window.jpCharacterWeaponData) {
+                    tasks.push(new Promise((res) => {
+                        const s = document.createElement('script');
+                        s.src = `${base}/data/jp/characters/character_weapon.js?v=${Date.now()}`;
+                        s.onload = () => res(); s.onerror = () => res(); document.head.appendChild(s);
+                    }));
+                }
+            } catch(_) {}
+            Promise.all(tasks).then(() => resolve());
+        });
+        return __weaponsLoading;
+    }
+
+    // Persist last URL
+    const STORAGE_KEY = 'pull-tracker:last-url';
+    try {
+        const last = localStorage.getItem(STORAGE_KEY);
+        if (last && els.input && !els.input.value) els.input.value = last;
+    } catch(_) {}
+
+    function setStatus(lines) {
+        if (!els.status) return;
+        if (Array.isArray(lines)) {
+            els.status.textContent = lines.filter(Boolean).join('\n');
+        } else {
+            els.status.textContent = lines || '';
+        }
+    }
+
+    // inline 로딩 UI를 유지하면서 메시지만 교체하는 헬퍼
+    function updateInlineStatus(message){
+        try {
+            if (!els.status) return;
+            els.status.innerHTML = `<span class="spinner" style="display:inline-block;vertical-align:-3px;margin-right:6px;width:14px;height:14px;border-width:2px"></span>${message} <span id="inline-elapsed"></span>`;
+        } catch(_) {}
+    }
+
+    function setResult(text) {
+        try {
+            const pre = document.getElementById('result');
+            if (!pre) return;
+            if (DEBUG) {
+                pre.style.display = 'block';
+                pre.textContent = text || '';
+            } else {
+                pre.style.display = 'none';
+                pre.textContent = '';
+            }
+        } catch(_) {}
+    }
+
+    function startLoadingUI() {
+        const startedAt = Date.now();
+        // top inline status with spinner
+        try {
+            updateInlineStatus(t.waiting);
+        } catch(_) {}
+        let dot = 0;
+        const anim = setInterval(() => {
+            dot = (dot + 1) % 4;
+            const d = '.'.repeat(dot);
+            const elapsedMs = Date.now() - startedAt;
+            const m = Math.floor(elapsedMs / 60000);
+            const s = Math.floor((elapsedMs % 60000) / 1000);
+            try { const el = document.getElementById('inline-elapsed'); if (el) el.textContent = `(${t.elapsed(m, s)})`; } catch(_) {}
+            try {
+                const ldTitle = document.getElementById('ld-title');
+                const ldSub = document.getElementById('ld-sub');
+                const ldElapsed = document.getElementById('ld-elapsed');
+                if (ldTitle) ldTitle.textContent = t.loadingTitle;
+                if (ldSub) ldSub.textContent = `${t.waiting} ${d}`;
+                if (ldElapsed) ldElapsed.textContent = t.elapsed(m, s);
+            } catch(_) {}
+        }, 1000);
+        return () => {
+            clearInterval(anim);
+            // no modal overlay hide; keep inline status only
+        };
+    }
+
+    async function fetchRecords(userUrl) {
+        const endpoint = 'https://iant.kr:5000/gacha/get_records';
+
+        // Try POST (x-www-form-urlencoded)
+        try {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                body: new URLSearchParams({ url: userUrl, translate: 'true' })
+            });
+            if (!res.ok) throw new Error('POST not ok');
+            const text = await res.text();
+            return text;
+        } catch (err) {
+            // POST 실패 시에도 스피너/경과 시간은 유지하고, 메시지만 교체
+            updateInlineStatus(`${t.tryGet}`);
+        }
+
+        // Fallback GET
+        const url = `${endpoint}?url=${encodeURIComponent(userUrl)}&translate=true`;
+        const res = await fetch(url, { method: 'GET' });
+        if (!res.ok) throw new Error('GET not ok');
+        return await res.text();
+    }
+
+    async function onStart() {
+        const userUrl = (els.input && els.input.value || '').trim();
+        if (!userUrl || !/^https?:\/\//i.test(userUrl)) {
+            setStatus(t.invalidUrl);
+            return;
+        }
+        try { localStorage.setItem(STORAGE_KEY, userUrl); } catch(_) {}
+
+        setResult('');
+        const stop = startLoadingUI();
+        try {
+            await Promise.all([loadCharacters(), loadWeapons()]);
+            const text = await fetchRecords(userUrl);
+            if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
+            stop();
+            setStatus('✅ 완료');
+            setResult(text);
+
+            try {
+                const incoming = JSON.parse(text);
+                try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
+                // 병합 수행 → 저장 → 렌더
+                const merged = mergeWithCache(incoming);
+                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
+                renderCardsFromExample(merged);
+            } catch(_) {
+                // ignore parse error; keep raw text only
+            }
+        } catch (err) {
+            stop();
+            setStatus(t.failed);
+            setResult(String(err && err.message ? err.message : err));
+        }
+    }
+
+    function onClear() {
+        try {
+            const ok = window.confirm(t.confirmReset);
+            if (!ok) return;
+        } catch(_) {}
+        if (els.input) els.input.value = '';
+        setStatus('');
+        setResult('');
+        // 삭제 대상 키들 정리
+        try {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem('pull-tracker:last-response');
+            // 계정 분리 없이 브라우저 레벨 캐시만 지우기. 
+            // 앱 저장소 prefix 패턴이 있으면 필요시 추가 삭제 로직을 여기에 확장.
+        } catch(_) {}
+    }
+
+    if (els.start) els.start.addEventListener('click', onStart);
+    if (els.clear) els.clear.addEventListener('click', onClear);
+
+    // Build stat cards from example.json-like structure
+    function renderCardsFromExample(payload) {
+        if (!payload || !payload.data || !els.cards) return;
+        // 카드 순서/행 구성: 1행(확정/운명/일반), 2행(무기/신규)
+        const types = [
+            ['Confirmed', 'confirmed'],
+            ['Fortune', 'fortune'],
+            ['Weapon', 'weapon'],
+            ['Gold', 'gold'],
+            ['Newcomer', 'newcomer']
+        ];
+
+        els.cards.innerHTML = '';
+        // 4★ 숨기기 상태 불러오기
+        let hide4 = false;
+        try { hide4 = localStorage.getItem('pull-tracker:hide4') === '1'; } catch(_) {}
+        const hide4Chk = document.getElementById('hide4Chk');
+        if (hide4Chk) { hide4Chk.checked = hide4; hide4Chk.onchange = () => {
+            try { localStorage.setItem('pull-tracker:hide4', hide4Chk.checked ? '1' : '0'); } catch(_) {}
+            // 재렌더
+            renderCardsFromExample(payload);
+        }; }
+        if (els.overview) renderOverview(payload);
+
+        for (const [key, label] of types) {
+            const block = payload.data[key];
+            if (!block) continue;
+
+            // 총 뽑기: summary.pulledSum
+            const total = getNumber(block, ['summary', 'pulledSum']);
+            // 진행 중(현재 5★ 미확정 구간) 계산: fivestar === null 인 섹션들의 record 길이 합
+            const inProgress = (() => {
+                try {
+                    const list = Array.isArray(block.records) ? block.records : [];
+                    if (list.length===0) return 0;
+                    // 90일 규칙: 가장 최근 그룹(=마지막 segment의 시각)이 포함된 fivestar:null 세그먼트만 집계
+                    const msDay = 24*60*60*1000;
+                    const lastSeg = list[list.length-1];
+                    const lastTime = Number(lastSeg?.lastTimestamp||0);
+                    if (!lastTime) return 0;
+                    let s = 0;
+                    for (let i=list.length-1;i>=0;i--){
+                        const seg = list[i];
+                        const ts = Number(seg?.lastTimestamp||0);
+                        if (!ts) continue;
+                        if (Math.abs(lastTime - ts) > 90*msDay) break; // 이전 그룹 도달 → 중단
+                        if (seg && seg.fivestar == null) {
+                            const rec = Array.isArray(seg.record) ? seg.record : [];
+                            s += rec.length;
+                        }
+                    }
+                    return s;
+                } catch(_) { return 0; }
+            })();
+            const effectiveTotal = Math.max(0, (Number.isFinite(total) ? total : 0) - inProgress);
+
+            const avgPity = getNumber(block, ['summary', 'avgPity']);
+            const total5 = getNumber(block, ['summary', 'total5Star']);
+            const total4 = getNumber(block, ['summary', 'total4Star']);
+            const win5050 = getNumber(block, ['summary', 'win5050']);
+
+            // 확률(비율): 전체 뽑기 대비 해당 등급 출현 비율
+            // 5★ 확률만 (총-진행중) 기준, 4★는 총 뽑기 기준
+            const fiveRate = effectiveTotal > 0 && total5 >= 0 ? ((total5 / effectiveTotal) * 100) : null;
+            const fourRate = total > 0 && total4 >= 0 ? ((total4 / total) * 100) : null;
+            // 평균 뽑기 횟수: 데이터 기반 근사치 (총 뽑기 / 등급 개수). 5★은 avgPity 우선 사용
+            const fiveAvg = avgPity != null ? avgPity : (total5 > 0 ? (total / total5) : null);
+            const fourAvg = total4 > 0 ? (total / total4) : null;
+            // 50:50 승리 비율: 5★ 중 win5050 개수 비율
+            const win5050Rate = (total5 > 0 && win5050 != null) ? ((win5050 / total5) * 100) : null;
+            const win5050Avg = (win5050 && win5050 > 0) ? (effectiveTotal / win5050) : null;
+
+            const card = document.createElement('div');
+            card.className = 'stat-card';
+
+            const titleWrap = document.createElement('div');
+            titleWrap.className = 'h3-row';
+            const title = document.createElement('h3');
+            title.textContent = toDisplayName(label);
+            const help = document.createElement('span');
+            help.className = 'help-icon';
+            help.setAttribute('data-tooltip', tooltipFor(label));
+            help.innerHTML = '<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/><path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/></svg>';
+            titleWrap.appendChild(title);
+
+            // title right-side icon
+            const icon = document.createElement('img');
+            icon.className = 'card-title-icon';
+            const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+            const iconMap = {
+                confirmed: '정해진 운명.png',
+                fortune: '정해진 운명.png',
+                gold: '미래의 운명.png',
+                newcomer: '미래의 운명.png',
+                weapon: '정해진 코인.png'
+            };
+            const iconName = iconMap[label];
+            if (iconName) {
+                icon.src = `${base}/assets/img/pay/${iconName}`;
+                icon.alt = label;
+                icon.loading = 'lazy';
+                titleWrap.appendChild(icon);
+            }
+            titleWrap.appendChild(help);
+            card.appendChild(titleWrap);
+            // bind cursor-follow tooltip
+            ensureTooltipLib().then(() => { try { if (window.bindTooltipElement) window.bindTooltipElement(help); } catch(_) {} });
+
+            // 상단 총계: 총 뽑기 / 진행 중 (진행중은 작고 연해)
+            const totalPair = (total != null) ? `${numberFmt(total)} / ` : '-';
+            const rowTop = makeStatRow(textFor('totalInProgress'), totalPair);
+            if (total != null) {
+                const ip = document.createElement('span'); ip.className='inprogress'; ip.textContent=numberFmt(inProgress);
+                rowTop.lastChild.appendChild(ip);
+            }
+            card.appendChild(rowTop);
+
+            // 표 헤더
+            const table = document.createElement('div');
+            table.className = 'stat-table';
+            table.appendChild(makeTableRow(['', textFor('count'), textFor('rate'), textFor('avg')], true));
+
+            // 5★ 행
+            const fiveRow = makeTableRow([
+                '5★',
+                total5 != null ? numberFmt(total5) : '-',
+                fiveRate != null ? numberFmt(fiveRate, 2) + '%' : '-',
+                fiveAvg != null ? numberFmt(fiveAvg, 2) : '-'
+            ]);
+            fiveRow.classList.add('five');
+            table.appendChild(fiveRow);
+
+            //  ㄴ 50:50 (Fortune/Weapon) - 평균도 표시
+            if (label === 'fortune' || label === 'weapon') {
+                const fiftyRow = makeTableRow([
+                    '  └ 50% '+textFor('win'),
+                    win5050 != null ? numberFmt(win5050) : '-',
+                    win5050Rate != null ? numberFmt(win5050Rate, 2) + '%' : '-',
+                    win5050Avg != null ? numberFmt(win5050Avg, 2) : '-'
+                ], false, true);
+                fiftyRow.classList.add('fifty');
+                table.appendChild(fiftyRow);
+            }
+
+            // 4★ 행
+            const fourRow = makeTableRow([
+                '4★',
+                total4 != null ? numberFmt(total4) : '-',
+                fourRate != null ? numberFmt(fourRate, 2) + '%' : '-',
+                fourAvg != null ? numberFmt(fourAvg, 2) : '-'
+            ]);
+            fourRow.classList.add('four');
+            table.appendChild(fourRow);
+
+            // 보장 규칙 행 제거 (요청)
+
+            card.appendChild(table);
+
+            // 하단: 5★ → 4★ → 3★(이하 합산) 이름 pill 나열
+            const pills = document.createElement('div');
+            pills.className = 'pills';
+            if (DEBUG) console.log('[pull-tracker] render pills for', label);
+            renderNamePills(block, pills, label, hide4);
+            card.appendChild(pills);
+
+            // 아코디언: 5★ 상세 기록 (이미지/이름/시간/천장)
+            try {
+                const accordion = document.createElement('details');
+                const summary = document.createElement('summary');
+                summary.textContent = textFor('fiveStarHistory');
+                accordion.appendChild(summary);
+                const listWrap = document.createElement('div');
+                listWrap.className = 'five-list';
+                const fiveRecords = collectFiveStarRecords(block);
+                for (const rec of fiveRecords) {
+                    const row = document.createElement('div');
+                    row.className = 'five-row';
+                    const left = document.createElement('div');
+                    left.className = 'five-left';
+                    const avatar = (label === 'weapon') ? weaponThumbFor(rec.name) : characterThumbFor(rec.name);
+                    if (avatar) left.appendChild(avatar);
+                    const nameEl = document.createElement('span');
+                    nameEl.textContent = rec.name;
+                    left.appendChild(nameEl);
+                    const right = document.createElement('div');
+                    right.className = 'five-right';
+                    const timeEl = document.createElement('span');
+                    timeEl.textContent = tsToLocal(rec.timestamp);
+                    const pityEl = document.createElement('span');
+                    pityEl.textContent = `${rec.pity} ${textFor('timesSuffix')}`;
+                    right.appendChild(timeEl);
+                    right.appendChild(pityEl);
+                    row.appendChild(left);
+                    row.appendChild(right);
+                    listWrap.appendChild(row);
+                }
+                accordion.appendChild(listWrap);
+                card.appendChild(accordion);
+            } catch(_) {}
+
+            els.cards.appendChild(card);
+        }
+    }
+
+    function getNumber(obj, path) {
+        try {
+            let cur = obj;
+            for (const k of path) cur = cur[k];
+            const n = Number(cur);
+            return Number.isFinite(n) ? n : null;
+        } catch(_) { return null; }
+    }
+
+    function makeStatRow(label, value) {
+        const row = document.createElement('div');
+        row.className = 'stat';
+        const l = document.createElement('span');
+        l.textContent = label;
+        const r = document.createElement('strong');
+        r.textContent = String(value);
+        row.appendChild(l);
+        row.appendChild(r);
+        return row;
+    }
+
+    function makeSectionLabel(text) {
+        const el = document.createElement('div');
+        el.style.margin = '10px 0 4px 0';
+        el.style.opacity = '.8';
+        el.style.fontWeight = '600';
+        el.textContent = text;
+        return el;
+    }
+
+    function makeTableRow(values, header = false, subtle = false) {
+        const row = document.createElement('div');
+        row.className = 'tr';
+        for (let i = 0; i < values.length; i++) {
+            const cell = document.createElement('div');
+            cell.className = header ? 'th' : 'td';
+            if (i === 0) cell.className += ' star';
+            if (subtle) cell.className += ' sub';
+            cell.textContent = values[i];
+            row.appendChild(cell);
+        }
+        return row;
+    }
+
+    function toDisplayName(key) {
+        const map = {
+            kr: { gold: '일반', fortune: '운명', weapon: '무기', confirmed: '확정', newcomer: '신규' },
+            en: { gold: 'Gold', fortune: 'Fortune', weapon: 'Weapon', confirmed: 'Confirmed', newcomer: 'Newcomer' },
+            jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', confirmed: '確定', newcomer: 'ニューカマー' }
+        };
+        const dict = map[lang] || map.kr;
+        return dict[key] || key;
+    }
+
+    function textFor(key) {
+        const dicts = {
+            kr: {
+                total: '총 뽑기',
+                totalInProgress: '총 뽑기 / 진행 중',
+                count: '합계',
+                rate: '확률',
+                avg: '평균 횟수',
+                win: '성공',
+                rule: '보장 규칙',
+                fiveStarHistory: '5★ 상세 기록',
+                timesSuffix: '회',
+                tooltip_confirmed: '확정: 5★ 110회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
+                tooltip_fortune: '운명: 5★ 80회 보장, 4★ 10회 보장 (50% 규칙).\n5★ 확률 및 50% 성공은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.\n50% 성공 여부는 현재 게임 서버에서 제공되지 않아 한정 캐릭터 여부를 통해 성공 여부를 판정합니다. 따라서 특정 상황에 따라 정확도가 떨어질 수 있습니다.',
+                tooltip_gold: '일반: 5★ 80회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
+                tooltip_weapon: '무기: 5★ 70회 보장, 4★ 10회 보장 (50% 규칙).\n5★ 확률 및 50% 성공은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.\n50% 성공 여부는 현재 게임 서버에서 제공되지 않아 한정 캐릭터 여부를 통해 성공 여부를 판정합니다. 따라서 특정 상황에 따라 정확도가 떨어질 수 있습니다.',
+                tooltip_newcomer: '신규: 5★ 50회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
+                fiveTotal: '5★ 총 횟수',
+                fivePityRate: '5★ 확률',
+                fiveAvg: '5★ 평균 횟수',
+                win5050Count: '50% 성공(횟수)',
+                win5050Rate: '50% 성공(확률)',
+                fourTotal: '4★ 총 횟수',
+                fourPityRate: '4★ 확률',
+                fourAvg: '4★ 평균 횟수'
+            },
+            en: {
+                total: 'Total Pulls',
+                totalInProgress: 'Total / In Progress',
+                count: 'Count',
+                rate: 'Rate',
+                avg: 'Avg Pulls',
+                win: 'Win',
+                rule: 'Guarantee',
+                fiveStarHistory: '5★ History',
+                timesSuffix: 'pulls',
+                tooltip_confirmed: 'Confirmed: 5★ at 110, 4★ at 10.\n5★ Rates are calculated using (Total - In Progress).',
+                tooltip_fortune: 'Fortune: 5★ at 80, 4★ at 10 (50:50 rule).\n5★Rates and 50:50 use (Total - In Progress).\n50:50 success is not provided by the game server; we infer it using featured/limited status, so accuracy may be reduced in some situations.',
+                tooltip_gold: 'Standard: 5★ at 80, 4★ at 10.\n5★ Rates use (Total - In Progress).',
+                tooltip_weapon: 'Weapon: 5★ at 70, 4★ at 10 (50:50 rule).\n5★ Rates and 50:50 use (Total - In Progress).\n50:50 success is not provided by the game server; we infer it using featured/limited status, so accuracy may be reduced in some situations.',
+                tooltip_newcomer: 'Newcomer: 5★ at 50, 4★ at 10.\n5★ Rates use (Total - In Progress).',
+                fiveTotal: '5★ Count',
+                fivePityRate: '5★ Rate',
+                fiveAvg: '5★ Avg Pulls',
+                win5050Count: 'Win 50:50 (Count)',
+                win5050Rate: 'Win 50:50 (Rate)',
+                fourTotal: '4★ Count',
+                fourPityRate: '4★ Rate',
+                fourAvg: '4★ Avg Pulls'
+            },
+            jp: {
+                total: '総ガチャ数',
+                totalInProgress: '総数 / 進行中',
+                count: '合計',
+                rate: '率',
+                avg: '平均回数',
+                win: '勝利',
+                rule: '保証',
+                fiveStarHistory: '5★ 詳細',
+                timesSuffix: '回',
+                tooltip_confirmed: '確定: 5★ 110回, 4★ 10回。\n5★確率および50%勝利は(総数 - 進行中)で計算します。',
+                tooltip_fortune: 'フォーチュン: 5★ 80回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。',
+                tooltip_gold: '通常: 5★ 80回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
+                tooltip_weapon: '武器: 5★ 70回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。',
+                tooltip_newcomer: 'ニューカマー: 5★ 50回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
+                fiveTotal: '5★ 回数',
+                fivePityRate: '5★ 率',
+                fiveAvg: '5★ 平均回数',
+                win5050Count: '50% 勝利(回数)',
+                win5050Rate: '50% 勝利(率)',
+                fourTotal: '4★ 回数',
+                fourPityRate: '4★ 率',
+                fourAvg: '4★ 平均回数'
+            }
+        };
+        const dict = dicts[lang] || dicts.kr;
+        return dict[key] || key;
+    }
+
+    function numberFmt(n, frac = 0) {
+        try { return new Intl.NumberFormat(undefined, { maximumFractionDigits: frac, minimumFractionDigits: frac }).format(n); }
+        catch(_) { return String(n); }
+    }
+
+    function tsToLocal(ts){
+        try { const d = new Date(Number(ts)); if (!isNaN(d)) return d.toLocaleString(); } catch(_) {}
+        return '';
+    }
+
+    function tooltipFor(label){
+        const key = label === 'confirmed' ? 'tooltip_confirmed'
+                 : label === 'fortune' ? 'tooltip_fortune'
+                 : label === 'gold' ? 'tooltip_gold'
+                 : label === 'weapon' ? 'tooltip_weapon'
+                 : label === 'newcomer' ? 'tooltip_newcomer'
+                 : null;
+        const dict = {
+            kr: textFor(key),
+            en: textFor(key),
+            jp: textFor(key)
+        };
+        return dict[lang] || '';
+    }
+
+    function pityRuleAvgFor(label) {
+        // 규칙: Confirmed(확정)=110, Fortune(운명)=80, Gold(골드)=80, Weapon(무기)=70, Newcomer(뉴커머)=50
+        // 4★은 전 타입 10
+        const five = (label === 'confirmed') ? 110
+                  : (label === 'fortune') ? 80
+                  : (label === 'gold') ? 80
+                  : (label === 'weapon') ? 70
+                  : (label === 'newcomer') ? 50
+                  : null;
+        const four = 10;
+        if (five == null) return '-';
+        return `5★ ${five}, 4★ ${four}`;
+    }
+
+    function renderNamePills(block, container, label, hide4) {
+        try {
+            const list = [];
+            const records = (block.records || []).flatMap(r => Array.isArray(r.record) ? r.record : []);
+            // 5★ → 4★ → 3★ 순서로 name별 개수 집계
+            const byGrade = { 5: new Map(), 4: new Map(), 3: new Map(), 2: new Map() };
+            for (const it of records) {
+                const g = Number(it.grade);
+                const name = it.name;
+                if (!name) continue;
+                const bucket = byGrade[g] || byGrade[3];
+                bucket.set(name, (bucket.get(name) || 0) + 1);
+            }
+            if (DEBUG) console.log('[pull-tracker] grade buckets', Object.fromEntries(Object.entries(byGrade).map(([k,m])=>[k, m.size])));
+            // 3★ 이하 묶기: 3★/2★ 총합 표시
+            const gradesForList = [5, 4];
+            for (const g of gradesForList) {
+                if (g===4 && hide4) continue;
+                const m = byGrade[g];
+                if (!m || m.size === 0) continue;
+                const arr = Array.from(m.entries()).sort((a,b) => b[1]-a[1]);
+                for (const [name, cnt] of arr) {
+                    const pill = document.createElement('span');
+                    pill.className = 'pill';
+                    if (g === 5) pill.classList.add('grade-5');
+                    else if (g === 4) pill.classList.add('grade-4');
+                    // 이미지: 무기 카드는 무기 이미지, 그 외는 캐릭터 이미지
+                    const img = (label === 'weapon') ? weaponThumbFor(name) : characterThumbFor(name);
+                    if (img) {
+                        pill.style.display = 'inline-flex';
+                        pill.style.alignItems = 'center';
+                        pill.style.gap = '6px';
+                        pill.appendChild(img);
+                    }
+                    const text = document.createElement('span');
+                    const disp = resolveDisplayName(name, label);
+                    text.textContent = `${disp} ${cnt}`;
+                    pill.appendChild(text);
+                    container.appendChild(pill);
+                }
+            }
+            // 3★ 이하 totals
+            const total3 = sumMap(byGrade[3]);
+            const total2 = sumMap(byGrade[2]);
+            const lowLabel = lang === 'jp' ? '以下' : (lang === 'en' ? 'and below' : '이하');
+            if (total3 > 0 && !hide4) addPill(container, `3★ ${total3}`);
+            if (total2 > 0 && !hide4) addPill(container, `2★ ${total2}`);
+        } catch(_) {}
+    }
+
+    function sumMap(m) {
+        if (!m) return 0; let s = 0; for (const v of m.values()) s += v; return s;
+    }
+    function addPill(container, text) {
+        const pill = document.createElement('span'); pill.className = 'pill'; pill.textContent = text; container.appendChild(pill);
+    }
+    // -------------------------
+    // Merge Engine (gachaId-aware)
+    // -------------------------
+    // merge-engine moved to merge-engine.js
+
+    // 5★ 기록 수집 (name, timestamp, pity)
+    function collectFiveStarRecords(block) {
+        try {
+            const rows = [];
+            const segments = Array.isArray(block.records) ? block.records : [];
+            for (const seg of segments) {
+                const recs = Array.isArray(seg.record) ? seg.record : [];
+                let pity = 0;
+                for (let i = 0; i < recs.length; i++) {
+                    const r = recs[i];
+                    pity++;
+                    if (r && Number(r.grade) === 5) {
+                        // translate display name using current lang
+                        let disp = r.name;
+                        const cls = resolveCharacterClass(r.name);
+                        if (cls) {
+                            const info = (getCharData()||{})[cls];
+                            const alt = charNameByLang(info);
+                            if (alt) disp = alt;
+                        }
+                        rows.push({ name: disp, timestamp: r.timestamp, pity });
+                        pity = 0;
+                    }
+                }
+            }
+            return rows;
+        } catch(_) { return []; }
+    }
+
+    // 이름에서 캐릭터 클래스 키 추정 후 이미지 노출 (무기 카드는 제외)
+    function characterThumbFor(displayName){
+        try {
+            // 이름 풀서치로 class key 찾기
+            const globalChar = getCharData();
+            if (!globalChar) return null;
+            const wanted = String(displayName).trim();
+            const baseOf = (s) => String(s).split('·')[0].trim();
+            const hasVar = (s) => String(s).includes('·');
+            const wantedBase = baseOf(wanted);
+            const wantedHasVar = hasVar(wanted);
+
+            let found = null;
+            // 1) 완전 일치
+            for (const [cls, info] of Object.entries(globalChar)) {
+                const cands = candidateNames(info);
+                if (cands.some(nm => nm === wanted)) { found = cls; break; }
+            }
+            // 2) 같은 base 내에서 변형 우선순위 선택
+            if (!found) {
+                const candidates = [];
+                for (const [cls, info] of Object.entries(globalChar)) {
+                    const cands = candidateNames(info);
+                    for (const nm of cands){
+                        if (!nm) continue;
+                        if (baseOf(nm) === wantedBase) {
+                            candidates.push({ cls, nm, hasVar: hasVar(nm) });
+                            break;
+                        }
+                    }
+                }
+                if (candidates.length > 0) {
+                    if (wantedHasVar) {
+                        // 변형명을 원하는 경우: 정확히 같은 변형명을 우선
+                        const exactVar = candidates.find(c => c.nm === wanted);
+                        found = (exactVar ? exactVar.cls : candidates[0].cls);
+                    } else {
+                        // 일반명을 원하는 경우: 변형이 없는 항목 우선
+                        const plain = candidates.find(c => !c.hasVar);
+                        found = (plain ? plain.cls : candidates[0].cls);
+                    }
+                }
+            }
+            if (DEBUG) console.log('[pull-tracker] map name→class', displayName, '=>', found);
+            if (!found) return null;
+            const img = document.createElement('img');
+            const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+            // 첫 시도: 캐시 우회를 위해 timestamp 쿼리 추가 (간헐적 미로딩 방지)
+            const ts = Date.now();
+            const first = `${base}/assets/img/tier/${found}.webp?v=${ts}`;
+            const fallback = `${base}/assets/img/character-half/${found}.webp?v=${ts}`;
+            img.src = first;
+            img.alt = found;
+            img.loading = 'lazy';
+            img.style.width = '18px';
+            img.style.height = '18px';
+            img.style.borderRadius = '50%';
+            img.style.objectFit = 'cover';
+            img.style.aspectRatio = '1 / 1';
+            img.decoding = 'async';
+            img.referrerPolicy = 'no-referrer';
+            // 안정화: 네트워크 지연 시 onload 보장 및 fallback 1회 재시도
+            let triedFallback = false;
+            img.onerror = function(){
+                if (!triedFallback) {
+                    triedFallback = true;
+                    this.src = fallback;
+                } else {
+                    this.style.display='none';
+                    if (DEBUG) console.log('[pull-tracker] image not found for', found);
+                }
+            };
+            return img;
+        } catch(_) { return null; }
+    }
+
+    // 캐릭터 매칭 후보 이름들(다국어/코드네임 포함)
+    function candidateNames(info){
+        if (!info) return [];
+        const arr = [info.name, info.name_en, info.name_jp, info.codename]
+            .map(v => (v==null? '' : String(v).trim()))
+            .filter(Boolean);
+        return Array.from(new Set(arr));
+    }
+
+    function charNameByLang(info){
+        if (!info) return '';
+        if (lang === 'en') return String(info.codename || info.name_en || info.name || '').trim();
+        if (lang === 'jp') return String(info.name_jp || info.name || '').trim();
+        return String(info.name || '').trim();
+    }
+
+    function resolveCharacterClass(displayName){
+        try {
+            const globalChar = getCharData(); if (!globalChar) return null;
+            const wanted = String(displayName).trim();
+            const baseOf = (s) => String(s).split('·')[0].trim();
+            const hasVar = (s) => String(s).includes('·');
+            const wantedBase = baseOf(wanted);
+            const wantedHasVar = hasVar(wanted);
+            for (const [cls, info] of Object.entries(globalChar)){
+                const cands = candidateNames(info);
+                if (cands.some(nm => nm === wanted)) return cls;
+            }
+            const candidates = [];
+            for (const [cls, info] of Object.entries(globalChar)){
+                const cands = candidateNames(info);
+                for (const nm of cands){
+                    if (!nm) continue;
+                    if (baseOf(nm) === wantedBase) { candidates.push({cls, nm, hasVar: hasVar(nm)}); break; }
+                }
+            }
+            if (candidates.length === 0) return null;
+            if (wantedHasVar) { const exact = candidates.find(c=>c.nm===wanted); return exact? exact.cls : candidates[0].cls; }
+            const plain = candidates.find(c=>!c.hasVar); return plain? plain.cls : candidates[0].cls;
+        } catch(_) { return null; }
+    }
+
+    // 무기 썸네일 생성: WeaponData에서 name으로 찾고, 소유 캐릭터 키와 weaponX-Y 추출
+    function weaponThumbFor(weaponName) {
+        try {
+            const name = String(weaponName || '').trim();
+            const meta = resolveWeaponMeta(name);
+            if (!meta) return null;
+            const ownerKey = meta.ownerKey; const weaponKey = meta.weaponKey;
+            if (!ownerKey || !weaponKey) return null;
+            const m = weaponKey.match(/^weapon(\d+)-(\d+)$/);
+            if (!m) return null;
+            const num1 = m[1];
+            const num2 = String(m[2]).padStart(2, '0');
+            const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+            const file = `${ownerKey}-${num1}-${num2}.png`;
+            const img = document.createElement('img');
+            img.src = `${base}/assets/img/character-weapon/${file}?v=${Date.now()}`;
+            img.alt = `${ownerKey}-${weaponKey}`;
+            img.loading = 'lazy';
+            img.style.width = '18px';
+            img.style.height = '18px';
+            img.style.objectFit = 'cover';
+            img.style.borderRadius = '3px';
+            img.decoding = 'async';
+            img.referrerPolicy = 'no-referrer';
+            img.onerror = function(){ this.style.display='none'; };
+            return img;
+        } catch(_) { return null; }
+    }
+
+    function resolveWeaponMeta(name){
+        try {
+            const datasets = [];
+            const kr = getWeaponData(); if (kr) datasets.push(kr);
+            if (window.enCharacterWeaponData) datasets.push(window.enCharacterWeaponData);
+            if (window.jpCharacterWeaponData) datasets.push(window.jpCharacterWeaponData);
+            const needle = String(name||'').trim(); if (!needle) return null;
+            for (const db of datasets){
+                for (const [charKey, obj] of Object.entries(db)){
+                    for (const [k,v] of Object.entries(obj)){
+                        if (!k.startsWith('weapon')) continue;
+                        const vname = v && typeof v.name==='string' ? v.name.trim() : '';
+                        if (vname && vname === needle) return { ownerKey: charKey, weaponKey: k };
+                    }
+                }
+            }
+            return null;
+        } catch(_) { return null; }
+    }
+
+    function weaponNameByLang(ownerKey, weaponKey){
+        try {
+            const db = (lang==='en') ? (window.enCharacterWeaponData||getWeaponData())
+                     : (lang==='jp') ? (window.jpCharacterWeaponData||getWeaponData())
+                     : getWeaponData();
+            const entry = db && db[ownerKey] && db[ownerKey][weaponKey];
+            const n = entry && entry.name ? String(entry.name).trim() : '';
+            return n || null;
+        } catch(_) { return null; }
+    }
+
+    // 표시에 사용할 이름을 언어별로 결정 (이미지 매칭은 항상 한국어 클래스 키 기반 유지)
+    function resolveDisplayName(name, label){
+        try {
+            if (label === 'weapon') {
+                const meta = resolveWeaponMeta(name);
+                const alt = meta ? weaponNameByLang(meta.ownerKey, meta.weaponKey) : null;
+                return alt || name;
+            }
+            const cls = resolveCharacterClass(name);
+            if (!cls) return name;
+            const info = (getCharData()||{})[cls];
+            const alt = charNameByLang(info);
+            return alt || name;
+        } catch(_) { return name; }
+    }
+
+    // Auto render from bundled example when available (dev view)
+    try {
+        /*
+        const exampleAttr = els.cards ? els.cards.getAttribute('data-example') : null;
+        const exampleUrl = exampleAttr || `${location.pathname}example.json`;
+        */
+       const exampleAttr = null;
+       const exampleUrl = exampleAttr;
+
+        Promise.all([loadCharacters(), loadWeapons()]).then(() => {
+            // 우선 로컬 저장본이 있으면 사용
+            try {
+                const mergedCached = localStorage.getItem('pull-tracker:merged');
+                if (mergedCached) { const json = JSON.parse(mergedCached); renderCardsFromExample(json); return; }
+                const cached = localStorage.getItem('pull-tracker:last-response');
+                if (cached) { const json = JSON.parse(cached); const m = mergeWithCache(json); renderCardsFromExample(m); return; }
+            } catch(_) {}
+            fetch(exampleUrl)
+                .then(r => r.ok ? r.text() : Promise.reject())
+                .then(text => { try { const json = JSON.parse(text); const m = mergeWithCache(json); renderCardsFromExample(m); } catch(_) {} })
+                .catch(() => {});
+        });
+    } catch(_) {}
+})();
+
+

@@ -69,7 +69,7 @@ const WeaponData = {
     "미나미·여름": {
         "name": "미야시타 미나미·여름",
         "weapon4-1":{
-            "name": "오후의 티타임",
+            "name": "오후의 차담",
             "health": 2125,
             "attack": 475,
             "defense": 320,
@@ -358,7 +358,7 @@ const WeaponData = {
     "류지": {
         "name": "사카모토 류지",
         "weapon4-1":{
-            "name": "가이아 프레셔",
+            "name": "가이아 프레서",
             "health": 2093,
             "attack": 581,
             "defense": 281,
@@ -412,7 +412,7 @@ const WeaponData = {
             "description": "공격력이 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0% 증가한다. 자신의 페르소나 스킬로 SP 회복 시 2턴 동안 자신의 크리티컬 효과가 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% 증가한다(2회 중첩 가능)."
         },
         "weapon5-1":{
-            "name": "겨울학의 날갯짓",
+            "name": "겨울학의 날개짓",
             "health": 2398,
             "attack": 647,
             "defense": 422,
@@ -839,7 +839,7 @@ const WeaponData = {
     "카요": {
         "name": "토미야마 카요",
         "weapon4-1":{
-            "name": "형광의 매혹 D4U",
+            "name": "형광의 매혹 D4u",
             "health": 1870,
             "attack": 554,
             "defense": 338,

@@ -1568,7 +1568,7 @@ const criticalCalcData = [
         target_en: "Self",
         target_jp: "自分",
         skillIcon: `${BASE_URL}/assets/img/character-weapon/류지-4-01.png`,
-        skillName: "가이아 프레셔",
+        skillName: "가이아 프레서",
         skillName_en: "4-star Weapon",
         skillName_jp: "4星武器",
         options: ["개조0&1","개조2&3","개조4&5","개조6"],

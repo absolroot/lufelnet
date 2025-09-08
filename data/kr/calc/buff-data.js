@@ -2976,7 +2976,7 @@ const BUFF_DATA = {
         {
             id: '리코·매화 전용무기',
             type: '전용무기',
-            skillName: '겨울학의 날갯짓',
+            skillName: '겨울학의 날개짓',
             skillIcon: `${BASE_URL}/assets/img/character-weapon/리코·매화-5-01.png`,
             targets: [
                 {

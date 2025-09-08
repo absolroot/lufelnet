@@ -144,40 +144,61 @@
         if (!bar || !loginBtn || !logoutBtn) return;
         bar.style.display = 'flex';
         if (profile) {
-            if (nameEl) nameEl.textContent = profile.email || profile.name || '';
+            if (nameEl) nameEl.textContent = profile?.email || profile?.name || 'Google Drive';
             loginBtn.style.display = 'none';
             logoutBtn.style.display = 'inline-block';
+            try { localStorage.setItem('pull-tracker:google-token', __googleToken||''); } catch(_) {}
         } else {
             if (nameEl) nameEl.textContent = '';
             loginBtn.style.display = 'inline-block';
             logoutBtn.style.display = 'none';
+            try { localStorage.removeItem('pull-tracker:google-token'); } catch(_) {}
         }
     }
+
+    const OAUTH_SCOPE = 'openid email https://www.googleapis.com/auth/drive.appdata';
 
     async function googleSignIn() {
         return new Promise((resolve) => {
             try {
-                const client = google.accounts.oauth2.initTokenClient({
-                    client_id: window.GOOGLE_CLIENT_ID,
-                    scope: 'https://www.googleapis.com/auth/drive.appdata',
-                    callback: (resp) => { __googleToken = resp.access_token; __googleAuthed = true; resolve(resp); }
-                });
-                client.requestAccessToken();
+            const client = google.accounts.oauth2.initTokenClient({
+                client_id: window.GOOGLE_CLIENT_ID,
+                scope: OAUTH_SCOPE,
+                callback: async (resp) => {
+                __googleToken = resp.access_token;
+                __googleAuthed = true;
+                // 2) 사용자 정보 가져오기 (OIDC userinfo)
+                let profile = null;
+                try {
+                    const r = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
+                    headers: { Authorization: 'Bearer ' + __googleToken }
+                    });
+                    profile = r.ok ? await r.json() : null; // { email, name, ... }
+                } catch(_) {}
+                renderAuthBarUI(profile);
+                resolve(resp);
+                }
+            });
+            client.requestAccessToken(); // 최초 동의 이후엔 prompt 없이 재발급됨
             } catch(e) { resolve(null); }
         });
     }
+      
 
     function googleSignOut(){ __googleAuthed = false; __googleToken = null; renderAuthBarUI(null); }
 
     async function driveFetchFileId() {
         try {
             if (!__googleToken) return null;
-            const res = await fetch('https://www.googleapis.com/drive/v3/files?q=name%3D%27'+encodeURIComponent(DRIVE_FILE_NAME)+'%27+and+parents+in+appDataFolder&spaces=appDataFolder&fields=files(id,name)', {
-                headers: { Authorization: 'Bearer ' + __googleToken }
-            });
+            const q = encodeURIComponent(`name='${DRIVE_FILE_NAME}' and 'appDataFolder' in parents and trashed=false`);
+            const url = `https://www.googleapis.com/drive/v3/files?q=${q}&spaces=appDataFolder&fields=files(id,name)`;
+            let res = await fetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } });
+            if (res.status === 401 || res.status === 403) {
+                await googleSignIn();
+                res = await fetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } });
+            }
             const json = await res.json();
-            const files = json && json.files || [];
-            return files[0]?.id || null;
+            return (json.files && json.files[0] && json.files[0].id) || null;
         } catch(_) { return null; }
     }
 
@@ -207,19 +228,38 @@
             const url = fileId
                 ? 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=multipart'
                 : 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
-            const res = await fetch(url, {
+            let res = await fetch(url, {
                 method,
                 headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary },
                 body
             });
+            if (res.status === 401 || res.status === 403) {
+                await googleSignIn();
+                res = await fetch(url, { method, headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body });
+            }
             return res.ok;
+        } catch(_) { return false; }
+    }
+
+    async function driveDeleteMerged() {
+        try {
+            if (!__googleToken) return false;
+            const fileId = await driveFetchFileId();
+            if (!fileId) return true;
+            const res = await fetch('https://www.googleapis.com/drive/v3/files/'+fileId, { method:'DELETE', headers: { Authorization: 'Bearer '+__googleToken }});
+            return res.ok || res.status === 404;
         } catch(_) { return false; }
     }
 
     async function initAuthBar(){
         const loginBtn = document.getElementById('ptLoginBtn');
         const logoutBtn = document.getElementById('ptLogoutBtn');
-        renderAuthBarUI(null);
+        // 토큰 복원으로 로그인 유지
+        try {
+            const tok = localStorage.getItem('pull-tracker:google-token');
+            if (tok) { __googleToken = tok; __googleAuthed = true; renderAuthBarUI({ email: 'Google Drive' }); }
+            else { renderAuthBarUI(null); }
+        } catch(_) { renderAuthBarUI(null); }
         if (loginBtn) loginBtn.onclick = async () => { await gapiInit(); const resp = await googleSignIn(); if (resp) renderAuthBarUI({ email: 'Google Drive' }); const cloud = await driveLoadMerged(); if (cloud && cloud.data) { const localStr = localStorage.getItem('pull-tracker:merged'); const local = localStr ? JSON.parse(localStr) : null; const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); } };
         if (logoutBtn) logoutBtn.onclick = () => { googleSignOut(); };
     }
@@ -411,12 +451,13 @@
                 document.head.appendChild(s);
             } catch(_) { resolve(); }
         });
+        /*
         if (DEBUG) {
             try {
                 const g = getCharData();
                 console.log('[pull-tracker] characters loaded:', !!g, g ? Object.keys(g).length : 0);
             } catch(_) {}
-        }
+        }*/
     }
 
     let __weaponsLoading = null;
@@ -558,7 +599,7 @@
         try {
             await Promise.all([loadCharacters(), loadWeapons()]);
             const text = await fetchRecords(userUrl);
-            if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
+            // if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
             stop();
             setStatus('✅ 완료');
             setResult(text);
@@ -587,16 +628,21 @@
             const ok = window.confirm(t.confirmReset);
             if (!ok) return;
         } catch(_) {}
-        if (els.input) els.input.value = '';
-        setStatus('');
-        setResult('');
-        // 삭제 대상 키들 정리
-        try {
-            localStorage.removeItem(STORAGE_KEY);
-            localStorage.removeItem('pull-tracker:last-response');
-            // 계정 분리 없이 브라우저 레벨 캐시만 지우기. 
-            // 앱 저장소 prefix 패턴이 있으면 필요시 추가 삭제 로직을 여기에 확장.
-        } catch(_) {}
+        // 입력 및 화면 초기화
+        try { if (els.input) els.input.value = ''; } catch(_) {}
+        try { setStatus(''); } catch(_) {}
+        try { setResult(''); } catch(_) {}
+        try { if (els.cards) els.cards.innerHTML = ''; } catch(_) {}
+        try { if (els.overview) els.overview.innerHTML = ''; } catch(_) {}
+
+        // 로컬 저장소 정리
+        try { localStorage.removeItem(STORAGE_KEY); } catch(_) {}
+        try { localStorage.removeItem('pull-tracker:last-response'); } catch(_) {}
+        try { localStorage.removeItem('pull-tracker:merged'); } catch(_) {}
+        // hide4 설정은 사용자 환경 설정이므로 유지
+
+        // Google Drive(AppDataFolder)에도 저장된 병합본 삭제 시도
+        try { if (typeof driveDeleteMerged === 'function') { driveDeleteMerged(); } } catch(_) {}
     }
 
     if (els.start) els.start.addEventListener('click', onStart);
@@ -763,7 +809,7 @@
             // 하단: 5★ → 4★ → 3★(이하 합산) 이름 pill 나열
             const pills = document.createElement('div');
             pills.className = 'pills';
-            if (DEBUG) console.log('[pull-tracker] render pills for', label);
+            // if (DEBUG) console.log('[pull-tracker] render pills for', label);
             renderNamePills(block, pills, label, hide4);
             card.appendChild(pills);
 
@@ -1111,7 +1157,7 @@
                     }
                 }
             }
-            if (DEBUG) console.log('[pull-tracker] map name→class', displayName, '=>', found);
+            // if (DEBUG) console.log('[pull-tracker] map name→class', displayName, '=>', found);
             if (!found) return null;
             const img = document.createElement('img');
             const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
@@ -1137,7 +1183,7 @@
                     this.src = fallback;
                 } else {
                     this.style.display='none';
-                    if (DEBUG) console.log('[pull-tracker] image not found for', found);
+                    // if (DEBUG) console.log('[pull-tracker] image not found for', found);
                 }
             };
             return img;

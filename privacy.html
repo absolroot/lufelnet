@@ -36,10 +36,47 @@
   <h2>5. Managing Your Consent</h2>
   <p>When you first visit lufel.net from the EU/EEA, a consent popup is shown. You may manage your preferences or withdraw consent using the "Manage options" link in the popup or by clearing cookies from your browser and revisiting the site.</p>
 
-  <h2>6. Contact</h2>
+  <h2>6. P5X Gacha Pull Tracker (가챠 통계) Data</h2>
+  <p>
+    The Pull Tracker feature lets you fetch and visualize your P5X gacha history using a user-supplied URL.
+    For technical reasons (CORS), the request is proxied via <strong>iant.kr</strong>. The following clarifies what is and is not processed/stored.
+  </p>
+  <h3>What We Process</h3>
+  <ul>
+    <li>The URL you paste (temporary request URL issued by the game) is used only to fetch your gacha history.</li>
+    <li>The resulting <strong>gacha history records</strong> (dates, item names/grades) are handled client-side and may be merged for statistics.</li>
+    <li><strong>No account identifiers</strong> (e.g., UID/auth key) are stored by this site. The temporary key is not saved on our servers.</li>
+  </ul>
+  <h3>Where Your Data Is Stored</h3>
+  <p><strong>Local (in your browser)</strong></p>
+  <ul>
+    <li>We store recent inputs and merged results in browser storage to speed up future visits (e.g., <code>pull-tracker:last-response</code>, <code>pull-tracker:merged</code>, <code>pull-tracker:hide4</code>).</li>
+  </ul>
+  <p><strong>Google Drive (optional)</strong></p>
+  <ul>
+    <li>If you sign in and choose to sync, the merged history is saved in your <strong>Google Drive AppDataFolder</strong> as <code>p5x_pull_tracker.json</code>.</li>
+    <li>We request the minimal scope (<code>drive.appdata</code>) and access only this app-specific file. You can delete it at any time.</li>
+  </ul>
+  <h3>How We Use Data</h3>
+  <ul>
+    <li>Data is used to compute personal statistics (rates, averages, “in progress” pity) and to render charts locally in your browser.</li>
+    <li>Aggregated/anonymous statistics may be used for analysis at <a href="https://iant.kr/gacha" target="_blank" rel="noopener">iant.kr/gacha</a>. We do not publish personally identifiable information.</li>
+  </ul>
+  <h3>How To Delete</h3>
+  <ul>
+    <li>Use the <strong>Clear</strong> button on the Pull Tracker page to wipe local data and request deletion of the Drive file.</li>
+    <li>You may also manually remove the file from Google Drive AppDataFolder and clear your browser storage/cookies.</li>
+  </ul>
+  <h3>Security Notes</h3>
+  <ul>
+    <li>Google sign-in is handled by Google Identity Services. Access tokens are stored only in your browser and are not kept on our servers.</li>
+    <li>We do not request access to your general Drive files; only the app’s hidden AppData file is used when you opt-in.</li>
+  </ul>
+
+  <h2>7. Contact</h2>
   <p>This site is operated by an individual. If you have any questions about this privacy notice, you can contact the site administrator at: <em>superphil722@gmail.com</em></p>
 
   <hr>
-  <p>Last updated: July 5, 2025</p>
+  <p>Last updated: Sep 9, 2025</p>
 </body>
 </html>

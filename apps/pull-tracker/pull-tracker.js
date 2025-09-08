@@ -22,9 +22,9 @@
             failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
             confirmReset: '정말 초기화할까요?\n이 작업은 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.',
             loadedDrive: '클라우드(Drive)에서 불러왔습니다.',
-            loadedLocal: '로컬 저장본에서 불러왔습니다.',
+            loadedLocal: '로컬 브라우저에서 불러왔습니다.',
             savedDrive: '클라우드(Drive)에 저장되었습니다.',
-            savedLocal: '로컬에 저장되었습니다.',
+            savedLocal: '로컬 브라우저에 저장되었습니다.',
             deletedDrive: '클라우드(Drive)에서 삭제했습니다.',
             deleteDriveFailed: '클라우드(Drive) 삭제에 실패했습니다.',
             allDeleted: '저장된 모든 데이터를 삭제했습니다.',
@@ -482,9 +482,9 @@
                 const cloud = await driveLoadMerged(false);
                 if (cloud && cloud.data) {
                     __dataSource = 'drive'; setStatus(t.loadedDrive);
-                    const m = mergeWithCache(cloud);
-                    localStorage.setItem('pull-tracker:merged', JSON.stringify(m));
-                    renderCardsFromExample(m);
+                    // 클라우드에는 이미 병합된 구조가 저장되어 있으므로 추가 병합 없이 그대로 사용
+                    localStorage.setItem('pull-tracker:merged', JSON.stringify(cloud));
+                    renderCardsFromExample(cloud);
                 } else {
                     setStatus(t.driveNoData);
                 }
@@ -1662,7 +1662,7 @@
                 __needDriveConsent = true;
             }
             try {
-                if (cloud && cloud.data) { const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); setHide4Visible(true); return; }
+                if (cloud && cloud.data) { localStorage.setItem('pull-tracker:merged', JSON.stringify(cloud)); renderCardsFromExample(cloud); setHide4Visible(true); return; }
                 // if (DEBUG) { setStatus(t.driveNeedConsent); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) {

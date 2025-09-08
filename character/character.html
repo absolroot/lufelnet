@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
-custom_js: [character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/tactic-example, character/cha_stats, character/character-i18n, character/helpmodal]
+custom_js: [character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/cha_stats, character/character-i18n, character/helpmodal]
 custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
 permalink: /character.html
 language: kr
@@ -526,13 +526,32 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </div>
 
     <!-- 택틱 예시 섹션 -->
-    <div id="character-tactic-examples" class="card-style" style="display:none;">
+    <!--
+    <div id="character-tactic-examples" class="card-style" style="display:block;">
         <div class="card-title-row">
             <h2 id="tactic-examples-title" style="margin:0;">택틱 예시</h2>
-            <a id="tactic-examples-more" href="/tactic/tactics.html" style="font-size:13px; text-decoration:none; color:#fff; opacity:0.8;">+ 더보기</a>
+            <!-- 원래 카드 내 3개 프리뷰 로딩은 egress 비용 때문에 비활성화 -->
+            <!--<a id="tactic-examples-more" href="/tactic/tactics.html" style="font-size:13px; text-decoration:none; color:#fff; opacity:0.8;">+ 더보기</a>
         </div>
-        <div id="tactic-examples-list" class="posts-list" style="margin-top:12px;"></div>
-    </div>
+        <!-- egress 절감을 위해 목록 비활성화: 링크로 이동하여 필터 적용된 결과를 보도록 안내 -->
+        <!--<div id="tactic-examples-cta" style="margin-top:12px; font-size:14px; color:#bdbdbd;">
+            <script>
+                (function(){
+                    try {
+                        var name = new URLSearchParams(window.location.search).get('name') || '';
+                        var link = document.getElementById('tactic-examples-more');
+                        if (link && name) {
+                            var url = new URL(link.getAttribute('href'), window.location.origin);
+                            url.searchParams.set('char', name);
+                            link.setAttribute('href', url.toString());
+                        }
+                    } catch(_) {}
+                })();
+            </script>
+            <span>아래 링크에서 이 캐릭터로 필터된 택틱을 확인하세요.</span>
+        </div>
+        <!-- <div id="tactic-examples-list" class="posts-list" style="margin-top:12px;"></div> -->
+    <!--</div>-->
 
     <!-- 최하단 광고-->
     <div style="height: 24px;"></div>

@@ -41,7 +41,8 @@
             invalidUrl: 'Please enter a valid URL.',
             done: (bytes) => `Done (response bytes: ${bytes})`,
             failed: 'Something went wrong. Please try again later.',
-            confirmReset: 'Are you sure you want to reset?\nThis will delete all locally stored gacha data (including last URL/response).'
+            confirmReset: 'Are you sure you want to reset?\nThis will delete all locally stored gacha data (including last URL/response).',
+            syncLimit: 'Upload sync limit reached (3/day). Please try again later.'
         },
         jp: {
             pageTitle: 'Pull Tracker',
@@ -62,7 +63,8 @@
             invalidUrl: '有効なURLを入力してください。',
             done: (bytes) => `完了（応答バイト数: ${bytes}）`,
             failed: 'エラーが発生しました。時間をおいて再度お試しください。',
-            confirmReset: '本当に初期化しますか？\nこの操作により、ローカルに保存されたガチャデータ（最後のURL/レスポンスを含む）がすべて削除されます。'
+            confirmReset: '本当に初期化しますか？\nこの操作により、ローカルに保存されたガチャデータ（最後のURL/レスポンスを含む）がすべて削除されます。',
+            syncLimit: 'アップロード同期の上限(1日3回)に達しました。後でもう一度お試しください。'
         }
     };
 
@@ -127,31 +129,165 @@
                 loginBtn.style.display = 'none';
                 logoutBtn.style.display = 'inline-block';
                 logoutBtn.onclick = async ()=>{ try { await supabase.auth.signOut(); location.reload(); } catch(_) {} };
-                // sync stub: merge cache upload
-                try { await syncMergedToCloud(user); } catch(_) {}
+                try { const clr = document.getElementById('clearBtn'); if (clr) clr.style.display = 'none'; } catch(_) {}
+                // 방어: 로그인 직후에만 양방향 동기화 수행 (egress 절감)
+                try {
+                    const key = `pull-tracker:login-sync:${user.id}`;
+                    const marked = localStorage.getItem(key);
+                    if (!marked) {
+                        await twoWaySyncOnLogin(user);
+                        try { localStorage.setItem(key, String(Date.now())); } catch(_) {}
+                    }
+                } catch(_) {}
             } else {
                 bar.style.display = 'flex';
                 if (nameEl) nameEl.textContent = '';
                 loginBtn.style.display = 'inline-block';
                 logoutBtn.style.display = 'none';
                 loginBtn.onclick = ()=>{ try { window.location.href = `/login/?redirect=${encodeURIComponent(location.href)}`; } catch(_) {} };
+                try { const clr = document.getElementById('clearBtn'); if (clr) clr.style.display = ''; } catch(_) {}
+            }
+        } catch(_) {}
+    }
+
+    function computeUpdatedAt(payload){
+        try {
+            if (!payload || !payload.data) return 0;
+            let maxTs = 0;
+            for (const k of ['Confirmed','Fortune','Weapon','Gold','Newcomer']){
+                const block = payload.data[k];
+                const recs = (block && Array.isArray(block.records)) ? block.records : [];
+                for (const seg of recs){
+                    const ts = Number(seg && seg.lastTimestamp || 0);
+                    if (ts > maxTs) maxTs = ts;
+                    const list = Array.isArray(seg && seg.record) ? seg.record : [];
+                    for (const r of list){ const rt = Number(r && r.timestamp || 0); if (rt>maxTs) maxTs = rt; }
+                }
+            }
+            return maxTs || Number(payload.updatedAt||0) || 0;
+        } catch(_) { return 0; }
+    }
+
+    async function twoWaySyncOnLogin(user){
+        try {
+            // 1) 로컬 병합본
+            let localMerged = null;
+            try { const s = localStorage.getItem('pull-tracker:merged'); if (s) localMerged = JSON.parse(s); } catch(_) {}
+
+            // 2) 클라우드 비교: summary_overall 최소 컬럼만
+            const { data: sums } = await supabase
+                .from('pulls_summary_overall')
+                .select('gacha_type,total_pulls,total_5star,total_4star,avg_5star_pity,win5050_count,updated_at')
+                .eq('user_id', user.id);
+            let cloudSummaryByType = new Map();
+            let cloudUpdatedAt = 0;
+            if (Array.isArray(sums)) {
+                for (const r of sums){
+                    cloudSummaryByType.set(r.gacha_type, r);
+                    const t = r.updated_at ? new Date(r.updated_at).getTime() : 0;
+                    if (t>cloudUpdatedAt) cloudUpdatedAt = t;
+                }
+            }
+
+            // 3) 비교 후 병합/업서트
+            const localTs = computeUpdatedAt(localMerged);
+            const cloudTs = cloudUpdatedAt;
+
+            if (!localMerged && cloudMerged) {
+                // 로컬 없음 → 클라우드 사용
+                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(cloudMerged)); } catch(_) {}
+                renderCardsFromExample(cloudMerged);
+                return; // 업서트 불필요
+            }
+
+            if (localMerged && !cloudMerged) {
+                // 클라우드 없음 → 로컬 업서트
+                await syncMergedToCloud(user);
+                return;
+            }
+
+            if (localTs >= cloudTs) {
+                // 로컬이 최신 또는 동일 → 로컬 우선 업서트 (증분 고려는 서버 측 onConflict에 위임)
+                await syncMergedToCloud(user);
+            } else {
+                // 클라우드가 더 최신 → 4★/5★ 레코드만 가져오고, 2/3은 summary_overall로 채움
+                const sinceMs = Date.now() - 90*24*60*60*1000;
+                const { data: rows45 } = await supabase
+                    .from('pulls_records')
+                    .select('gacha_type,gacha_id,name,grade,timestamp')
+                    .eq('user_id', user.id)
+                    .gte('timestamp', sinceMs)
+                    .in('grade', [4,5])
+                    .order('timestamp', { ascending: true })
+                    .limit(5000);
+                let cloudMerged = (Array.isArray(rows45) && rows45.length>0) ? shapeCloudRows(rows45) : { version:1, updatedAt: Date.now(), data:{ Confirmed:{summary:{},records:[]}, Fortune:{summary:{},records:[]}, Weapon:{summary:{},records:[]}, Gold:{summary:{},records:[]}, Newcomer:{summary:{},records:[]} } };
+                // summary_overall 기반으로 pulledSum/4/5 보정
+                if (cloudSummaryByType.size>0){
+                    for (const tkey of ['Confirmed','Fortune','Weapon','Gold','Newcomer']){
+                        const b = cloudMerged.data[tkey] || (cloudMerged.data[tkey] = { summary:{}, records:[] });
+                        const s = b.summary || (b.summary = {});
+                        const row = cloudSummaryByType.get(tkey);
+                        if (row){
+                            s.pulledSum = Number(row.total_pulls||0);
+                            s.total5Star = Number(row.total_5star||0);
+                            s.total4Star = Number(row.total_4star||0);
+                            if (row.avg_5star_pity != null) s.avgPity = Number(row.avg_5star_pity);
+                            if (row.win5050_count != null) s.win5050 = Number(row.win5050_count);
+                            // effTotal은 렌더에서 우선 사용하도록 summary에 보관(옵션)
+                            s.effTotal = Number(row.eff_total_pulls||0);
+                        }
+                    }
+                }
+                const merged = mergeWithCache(cloudMerged);
+                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
+                renderCardsFromExample(merged);
+                // 최신이 클라우드라면 업서트는 생략해도 되지만, onConflict로 안전하게 동기화 가능
+                await syncMergedToCloud(user);
+                // 체크포인트 갱신: 4★/5★ 기준 최신 타임스탬프 저장
+                try {
+                    const ckpt = loadCkpt();
+                    for (const tkey of ['Confirmed','Fortune','Weapon','Gold','Newcomer']){
+                        const block = merged && merged.data ? merged.data[tkey] : null;
+                        const maxTs = getMaxTsForType(block, 4);
+                        if (maxTs) updateCkptForType(ckpt, tkey, maxTs);
+                    }
+                    saveCkpt(ckpt);
+                } catch(_) {}
             }
         } catch(_) {}
     }
 
     async function syncMergedToCloud(user){
+        // 업로드 스로틀: 하루 3회 제한
+        try {
+            const dayKey = (()=>{
+                const d = new Date();
+                const y = d.getFullYear();
+                const m = String(d.getMonth()+1).padStart(2,'0');
+                const dd = String(d.getDate()).padStart(2,'0');
+                return `pull-tracker:sync-count:${user.id}:${y}${m}${dd}`;
+            })();
+            const cnt = Number(localStorage.getItem(dayKey) || '0');
+            if (cnt >= 3) { setStatus(t.syncLimit || 'Sync limit reached'); return; }
+            localStorage.setItem(dayKey, String(cnt+1));
+        } catch(_) {}
+
         // 1) 로컬 병합본 로드
         let merged = null;
         try { const s = localStorage.getItem('pull-tracker:merged'); if (s) merged = JSON.parse(s); } catch(_) {}
         if (!merged || !merged.data) return;
         const types = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+        const ckpt = loadCkpt();
 
         // 2) 레코드 업서트: pulls_records (gacha_id 있으면 unique, 없으면 timestamp/name/grade로 덮기 목적의 다중 insert)
         // 간단한 배치 업서트: 타입별 모든 segment의 record를 평탄화하여 upsert
         for (const tkey of types){
             const block = merged.data[tkey];
             if (!block || !Array.isArray(block.records)) continue;
-            const records = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[]);
+            // 델타: 체크포인트 이후 + 4★/5★만 업로드
+            const lastTs = ckpt?.[tkey]?.lastTs || 0;
+            const records = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[])
+                .filter(r => (Number(r.grade) === 4 || Number(r.grade) === 5) && Number(r.timestamp||0) > lastTs);
             // chunking (supabase 제한 대비)
             const chunkSize = 500;
             for (let i=0;i<records.length;i+=chunkSize){
@@ -179,6 +315,7 @@
                 await supabase.from('pulls_summary_overall').upsert({
                     user_id: user.id,
                     gacha_type: tkey,
+                    region: (window.LanguageRouter && typeof LanguageRouter.getCurrentRegion==='function') ? LanguageRouter.getCurrentRegion() : null,
                     total_pulls: Number(b.summary.pulledSum||0),
                     eff_total_pulls: Number((() => {
                         // 진행중 계산: 마지막 그룹(90일 기준) 내 null 세그먼트 길이 합산
@@ -195,6 +332,52 @@
                     win5050_count: Number(b.summary.win5050||0),
                     win5050_rate: null
                 }, { onConflict: 'user_id,gacha_type' });
+                // 체크포인트 갱신: 4★/5★ 레코드 기준 최신 ts
+                const maxTs = getMaxTsForType(b, 4);
+                if (maxTs) updateCkptForType(ckpt, tkey, maxTs);
+            }
+            saveCkpt(ckpt);
+        } catch(_) {}
+
+        // 4) 월간 델타 업서트 (최근 6개월)
+        try {
+            const now = new Date();
+            const ymKeys = [];
+            for (let i=0;i<6;i++){
+                const d = new Date(now.getFullYear(), now.getMonth()-i, 1);
+                ymKeys.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`);
+            }
+            const region = (window.LanguageRouter && typeof LanguageRouter.getCurrentRegion==='function') ? LanguageRouter.getCurrentRegion() : null;
+            for (const tkey of types){
+                // 월별 합계 계산: block.records를 월별로 그룹핑(4★/5★만 집계)
+                const block = merged.data[tkey]; if (!block) continue;
+                const recs = block.records.flatMap(seg => Array.isArray(seg.record)? seg.record:[]).filter(r => Number(r.grade)===4 || Number(r.grade)===5);
+                const byMonth = new Map();
+                for (const r of recs){
+                    const d = new Date(Number(r.timestamp||0));
+                    if (isNaN(d)) continue;
+                    const ym = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`;
+                    if (!byMonth.has(ym)) byMonth.set(ym, { total:0, g5:0, g4:0, pity5Sum:0, pity5Cnt:0 });
+                    const m = byMonth.get(ym);
+                    m.total++;
+                    if (Number(r.grade)===5) { m.g5++; /* pity는 세그먼트 기반이라 근사 불가 → skip */ }
+                    if (Number(r.grade)===4) { m.g4++; }
+                }
+                for (const ym of ymKeys){
+                    const m = byMonth.get(ym) || { total:0, g5:0, g4:0, pity5Sum:0, pity5Cnt:0 };
+                    await supabase.from('pulls_summary_monthly').upsert({
+                        user_id: user.id,
+                        gacha_type: tkey,
+                        year_month: ym,
+                        region: region,
+                        total_pulls: m.total,
+                        avg_5star_pity: null,
+                        avg_4star_pity: null,
+                        total_5star: m.g5,
+                        total_4star: m.g4,
+                        win5050_count: 0
+                    }, { onConflict: 'user_id,gacha_type,year_month,region' });
+                }
             }
         } catch(_) {}
 
@@ -227,7 +410,12 @@
                 const pulled = sum('pulledSum');
                 const t5 = sum('total5Star');
                 const t4 = sum('total4Star');
-                const effTotal = pulled - arr.reduce((s,b)=> s + inProgressOf(b||{}), 0);
+                // effTotal 우선순위: summary.effTotal 존재 시 사용, 없으면 in-progress 기반 계산
+                const effTotal = (()=>{
+                    const hasEff = arr.every(b => b && b.summary && typeof b.summary.effTotal === 'number');
+                    if (hasEff) return arr.reduce((s,b)=> s + Number(b.summary.effTotal||0), 0);
+                    return pulled - arr.reduce((s,b)=> s + inProgressOf(b||{}), 0);
+                })();
                 const avg5 = (arr.map(b=>Number((b||{}).summary?.avgPity)||0).filter(Boolean).reduce((a,b)=>a+b,0) / Math.max(1, arr.filter(b=>Number(b?.summary?.avgPity)).length)) || null;
                 const rate5 = effTotal>0 && t5>=0 ? (t5/effTotal*100) : null;
                 const rate4 = pulled>0 && t4>=0 ? (t4/pulled*100) : null;
@@ -954,12 +1142,13 @@
             const list = [];
             const records = (block.records || []).flatMap(r => Array.isArray(r.record) ? r.record : []);
             // 5★ → 4★ → 3★ 순서로 name별 개수 집계
-            const byGrade = { 5: new Map(), 4: new Map(), 3: new Map(), 2: new Map() };
+            const byGrade = { 5: new Map(), 4: new Map() };
             for (const it of records) {
                 const g = Number(it.grade);
                 const name = it.name;
                 if (!name) continue;
-                const bucket = byGrade[g] || byGrade[3];
+                if (g !== 5 && g !== 4) continue; // 3★/2★ 제거
+                const bucket = byGrade[g];
                 bucket.set(name, (bucket.get(name) || 0) + 1);
             }
             if (DEBUG) console.log('[pull-tracker] grade buckets', Object.fromEntries(Object.entries(byGrade).map(([k,m])=>[k, m.size])));
@@ -991,11 +1180,7 @@
                 }
             }
             // 3★ 이하 totals
-            const total3 = sumMap(byGrade[3]);
-            const total2 = sumMap(byGrade[2]);
-            const lowLabel = lang === 'jp' ? '以下' : (lang === 'en' ? 'and below' : '이하');
-            if (total3 > 0 && !hide4) addPill(container, `3★ ${total3}`);
-            if (total2 > 0 && !hide4) addPill(container, `2★ ${total2}`);
+            // 2★/3★는 완전히 제거: 요약 보정 및 표시 모두 제거
         } catch(_) {}
     }
 
@@ -1255,6 +1440,37 @@
         return { version:1, updatedAt: Date.now(), data };
     }
 
+    // 체크포인트 저장/로드/갱신 유틸
+    function loadCkpt(){
+        try { const s = localStorage.getItem('pull-tracker:ckpt'); return s ? JSON.parse(s) : {}; } catch(_) { return {}; }
+    }
+    function saveCkpt(obj){
+        try { localStorage.setItem('pull-tracker:ckpt', JSON.stringify(obj||{})); } catch(_) {}
+    }
+    function updateCkptForType(ckpt, type, ts){
+        try {
+            if (!ckpt[type]) ckpt[type] = {};
+            const cur = Number(ckpt[type].lastTs||0);
+            if (Number(ts)>cur) ckpt[type].lastTs = Number(ts);
+        } catch(_) {}
+    }
+    function getMaxTsForType(block, minGrade){
+        try {
+            const list = Array.isArray(block?.records) ? block.records : [];
+            let maxTs = 0;
+            for (const seg of list){
+                const recs = Array.isArray(seg?.record) ? seg.record : [];
+                for (const r of recs){
+                    if (Number(r?.grade) >= (minGrade||0)) {
+                        const ts = Number(r?.timestamp||0);
+                        if (ts>maxTs) maxTs = ts;
+                    }
+                }
+            }
+            return maxTs;
+        } catch(_) { return 0; }
+    }
+
     // Auto render from bundled example when available (dev view)
     try {
         /*
@@ -1265,41 +1481,26 @@
        const exampleUrl = exampleAttr;
 
         Promise.all([loadCharacters(), loadWeapons()]).then(async () => {
-            // 로그인 사용자 있으면 Supabase 최신을 우선 합쳐서 사용
-            let mergedFromCloud = null;
+            // 1) 로컬이 있으면 무조건 로컬 우선 렌더
             try {
-                const { data } = await supabase.auth.getSession();
-                const user = data && data.session ? data.session.user : null;
-                if (user) {
-                    // 사용자 레코드 최신 90일 가져와 병합
-                    const sinceMs = Date.now() - 90*24*60*60*1000;
-                    const { data: rows } = await supabase
-                        .from('pulls_records')
-                        .select('gacha_type,gacha_id,name,grade,timestamp')
-                        .eq('user_id', user.id)
-                        .gte('timestamp', sinceMs)
-                        .order('timestamp', { ascending: true })
-                        .limit(5000);
-                    if (Array.isArray(rows) && rows.length>0){
-                        const shaped = shapeCloudRows(rows);
-                        mergedFromCloud = mergeWithCache(shaped);
-                        try { localStorage.setItem('pull-tracker:merged', JSON.stringify(mergedFromCloud)); } catch(_) {}
-                    }
-                }
-            } catch(_) {}
-
-            // 로컬 또는 예제 로드
-            try {
-                if (mergedFromCloud) { renderCardsFromExample(mergedFromCloud); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) { const json = JSON.parse(mergedCached); renderCardsFromExample(json); return; }
                 const cached = localStorage.getItem('pull-tracker:last-response');
                 if (cached) { const json = JSON.parse(cached); const m = mergeWithCache(json); renderCardsFromExample(m); return; }
             } catch(_) {}
-            fetch(exampleUrl)
-                .then(r => r.ok ? r.text() : Promise.reject())
-                .then(text => { try { const json = JSON.parse(text); const m = mergeWithCache(json); renderCardsFromExample(m); } catch(_) {} })
-                .catch(() => {});
+
+            // 2) 로컬 없음 + 로그인 상태인 경우에만 클라우드에서 동기화 가져오기
+            try {
+                const { data } = await supabase.auth.getSession();
+                const user = data && data.session ? data.session.user : null;
+                if (user) {
+                    await twoWaySyncOnLogin(user); // 내부에서 렌더 수행
+                    return;
+                }
+            } catch(_) {}
+
+            // 3) 아무것도 없으면 example 비활성 (네트워크 트래픽 회피)
+            setStatus('');
         });
     } catch(_) {}
 })();

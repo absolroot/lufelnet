@@ -328,7 +328,7 @@
                     avg_4star_pity: null,
                     win5050_count: Number(b.summary.win5050||0),
                     win5050_rate: null
-                }, { onConflict: 'user_id,gacha_type' });
+                }, { onConflict: 'user_id,gacha_type,region' });
                 // 체크포인트 갱신: 4★/5★ 레코드 기준 최신 ts
                 const maxTs = getMaxTsForType(b, 4);
                 if (maxTs) updateCkptForType(ckpt, tkey, maxTs);

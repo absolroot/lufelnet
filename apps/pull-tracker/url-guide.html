@@ -10,154 +10,110 @@ description: "가챠 기록 URL을 얻는 방법 안내"
   <div class="navigation-path">
     <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-lang-key="home">홈</span></a>`);</script>
     <span class="separator">/</span>
-    <a href="{{ site.baseurl }}/pull-tracker/"><span>Pull Tracker</span></a>
+    <a href="{{ site.baseurl }}/pull-tracker/"><span id="navBack">Pull Tracker</span></a>
     <span class="separator">/</span>
-    <span class="current-page">URL 가이드</span>
+    <span class="current-page" id="guideCurrent">URL 가이드</span>
   </div>
-  <div class="pt-20 guide-container">
-    <h1 class="guide-title">기원 기록 제출</h1>
 
-    <div class="hero bg-background rounded-xl p-4">
-      <div class="hero-row">
-        <img class="hero-img" src="/images/paimon_faq.png" alt="Paimon">
-        <div class="hero-copy">
-          <p class="guide-text strong">기원 통계를 제출하고 백업해 여러분의 기원 기록을 6개월 이상 보존하세요. 또한 자동으로 천장과 기원 횟수를 찾아줍니다!</p>
-          <p class="guide-muted">또한 드라이브 동기화를 활성화하여 Google Drive에 기록을 동기화하고 백업할 수 있습니다</p>
-          <div class="hero-note bg-background-secondary">
-            <img class="hero-img small" src="/images/paimon_faq.png" alt="Paimon">
-            <p class="guide-warning">이전의 방법은 더이상 작동하지 않습니다, 아래의 새 방법을 따라주세요!</p>
+  <div class="header-container">
+    <h1 id="pageTitle">URL 가이드</h1>
+  </div>
+
+    <!-- 1) FAQ -->
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="1"><p class="guide-text" id="s1">FAQ를 확인하세요.</p>
+        <button id="openFaq" class="btn-outline" data-i18n="btnFaq">FAQ</button>
+      </div>
+    </div>
+
+    <!-- 2) PC Windows 안내 -->
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="2"><p class="guide-text" id="s2">현재는 PC Windows에서의 방법만 제공하고 있습니다.</p></div>
+    </div>
+
+    <!-- 3) 방법 선택 -->
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="3"><p class="guide-text" id="s3">원하는 방법을 선택하세요</p>
+        <div class="pill-row">
+          <button class="pill active" id="m1">1</button>
+          <button class="pill" id="m2">2</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 방법1 블록 -->
+    <div id="m1block">
+      <div class="step-row">
+  
+        <div class="content guide-card" data-step="4"><p class="guide-text" id="m1s1">PC에서 P5X을 실행하세요.</p></div>
+      </div>
+
+      <div class="step-row">
+  
+        <div class="content guide-card" data-step="5"><p class="guide-text" id="m1s2">다음 프로그램을 다운받아 실행하세요.</p>
+          <div class="pill-row">
+            <a class="pill" id="downloadBtn" href="https://iant.kr/gacha" target="_blank">프로그램 다운로드</a>
+            <button class="btn-outline" id="openProgInfo">프로그램에 대하여</button>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>1</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">서버를 선택하세요:</p>
-        <div class="select-wrap">
-          <button class="select-btn"><span>Asia/TW/HK/MO</span><svg viewBox="0 0 24 24" class="select-caret"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></button>
+      <div class="step-row">
+  
+        <div class="content guide-card" data-step="6"><p class="guide-text" id="m1s3">계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.</p></div>
+      </div>
+
+      <div class="step-row">
+  
+        <div class="content guide-card" data-step="7">
+          <p class="guide-text" id="m1s4">지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.</p>
+          <img src="{{ site.baseurl }}/apps/pull-tracker/program.png" alt="program" style="max-height:200px;object-fit:contain;border-radius:8px;margin-top:8px;">
+        </div>
+      </div>
+
+      <div class="step-row">
+  
+        <div class="content guide-card" data-step="8"><p class="guide-text" id="m1s5">프로그램을 닫아주세요.</p></div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="9"><p class="guide-text" id="m1s6">복사된 URL 입력하기</p>
+          <a class="pill" id="goInput1" href="{{ site.baseurl }}/pull-tracker/">Go Back</a>
         </div>
       </div>
     </div>
 
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>2</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">FAQ를 읽으십시오</p>
-        <button id="openFaq" class="btn-outline">FAQ 열기</button>
+    <!-- 방법2 블록 -->
+    <div id="m2block" style="display:none;">
+      <div class="step-row">
+  
+        <div class="content guide-card" data-step="4"><p class="guide-text" id="m2s1">다음 링크에서 방법을 확인하세요.</p>
+          <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank">p5xsummons</a>
+        </div>
       </div>
-    </div>
 
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>3</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">플랫폼을 선택하세요</p>
-        <div class="pill-row">
-          <button class="pill active">PC</button>
-          <button class="pill">Android</button>
-          <button class="pill">iOS</button>
+      <div class="step-row">
+        <div class="content guide-card" data-step="5"><p class="guide-text" id="m2s2">복사된 URL 입력하기</p>
+          <a class="pill" id="goInput2" href="{{ site.baseurl }}/pull-tracker/">Go Back</a>
         </div>
       </div>
     </div>
 
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>4</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">원하는 방법을 선택하세요</p>
-        <div class="pill-row">
-          <button class="pill active">방법 1</button>
-          <button class="pill">방법 2</button>
-          <button class="pill">방법 2 대안</button>
-          <button class="pill">수동</button>
-        </div>
-      </div>
-    </div>
 
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span class="text-primary">•</span></div><div class="step-bar"></div></div>
-      <div class="content">
-        <a href="https://www.youtube.com/watch?v=FCwZkHeIezw" target="_blank" class="btn-outline">
-          <svg viewBox="0 0 24 24" class="icon"><path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z"></path></svg>
-          <span style="margin-left:8px">영상 도움말</span>
-        </a>
-      </div>
-    </div>
 
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>5</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">PC에서 원신을 실행하세요 (만약 여러 개의 계정을 사용한다면 게임을 재시작하세요)</p></div>
-    </div>
-
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>6</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">뽑기 기록이 로딩될 때까지 기다리세요</p></div>
-    </div>
-
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>7</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">윈도우 키를 누르고, Powershell을 검색하세요</p></div>
-    </div>
-
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>8</span></div><div class="step-bar"></div></div>
-      <div class="content pb-2">
-        <p class="guide-text">Windows Powershell을 실행하고, 아래 스크립트를 복사해 Powershell에 붙여넣습니다</p>
-        <div class="script-row">
-          <pre id="psScript">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&amp;{$((New-Object System.Net.WebClient).DownloadString('https://gist.github.com/MadeBaruna/1d75c1d37d19eca71591ec8a31178235/raw/getlink.ps1'))} global"</pre>
-          <button id="copyScript">
-            <svg viewBox="0 0 24 24" style=" width:1.5rem; height:1.5rem; fill:white;" class=" svelte-1mzwbk9"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg>
-          </button>
-        </div>
-        <p class="guide-text">스크립트의 내용을 확인하려면 <a class="link" href="https://gist.github.com/MadeBaruna/1d75c1d37d19eca71591ec8a31178235" target="_blank">여기</a></p>
-      </div>
-    </div>
-
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>9</span></div><div class="step-bar"></div></div>
-      <div class="content"><p class="guide-text">ENTER 키를 누르면 링크가 클립보드에 복사됩니다</p></div>
-    </div>
-
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>10</span></div><div class="step-bar"></div></div>
-      <div class="content pb-8"><p class="guide-text">아래 텍스트 박스에 복사한 문자를 붙여넣기하세요</p></div>
-    </div>
-
-    <div class="step-row">
-      <div class="step"><div class="step-number"><span>11</span></div></div>
-      <div class="content form-block">
-        <div class="url-input-like" style="min-height: 3.5rem;">
-          <input placeholder="여기에 주소를 붙여넣기하세요... (https://webstatic...)" type="text" style="flex:1; background:transparent; border:none; outline:none; color:#fff;">
-        </div>
-        <div class="h-4"></div>
-        <div class="btn-row">
-          <div class="btn-group">
-            <button class="btn-outline btn-success">제출</button>
-            <button class="btn-outline">
-              <svg viewBox="0 0 24 24" style=" width:1.5rem; height:1.5rem; fill:currentColor;" class=" transform transition-all ease-in duration-100 svelte-1mzwbk9"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg>
-            </button>
-          </div>
-          <a href="{{ site.baseurl }}/pull-tracker/"><button class="btn-outline">취소</button></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="ad-row">
-      <div style="width: 100%; max-width: 400px;" id="nn_player">
-        <script async="true" src="https://live.primis.tech/live/liveView.php?schain=1.0,1!network-n.com,pa_3f85e405,1&playerApiId=netw0rkN&cbuster=1757306094869&subId=[SUBID_ENCODED]&pubUrl=https%3A%2F%2Fpaimon.moe%2Fwish%2Fimport%23&s=109389"></script>
-      </div>
-    </div>
   </div>
 
   <style>
     .guide-container { margin: 0 auto; }
     .bg-background { background:#0e1627; border:1px solid rgba(255,255,255,.08); border-radius:12px; }
     .bg-background-secondary { background:#132036; border-radius:12px; padding:8px; margin-top:8px; display:flex; align-items:center; }
-    .guide-title { color:#fff; font-size:40px; margin:0 0 12px 0; font-weight:900; }
     .guide-text { color:#e6e9f2; font-size:14px; margin:4px 0; }
     .guide-text.strong { font-weight:700; }
     .guide-muted { color:#9fb0d0; font-size:13px; margin:4px 0; }
     .guide-warning { color:#ffd166; font-size:13px; margin:0; }
-    .hero-row { display:flex; gap:12px; align-items:flex-start; }
-    .hero-img { height:64px; display:block; }
-    .hero-img.small { height:64px; margin-right:8px; display:none; }
-    .hero-note { display:none; align-items:center; gap:8px; }
     @media (max-width: 768px){ .hero-img{ display:none;} .hero-img.small{ display:block;} .hero-note{ display:flex;} }
     .step-row { display:flex; gap:12px; margin-bottom:12px; }
     .step { display:flex; flex-direction:column; align-items:center; }
@@ -169,11 +125,11 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     .select-btn { display:flex; align-items:center; justify-content:space-between; width:100%; padding:0 16px; height:56px; color:#fff; background:#0e1627; border:2px solid rgba(255,255,255,.18); border-radius:16px; cursor:pointer; }
     .select-caret { width:24px; height:24px; fill:#fff; }
     .pill-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-    .pill { display:inline-flex; align-items:center; gap:6px; border:2px solid rgba(255,255,255,.18); border-radius:999px; padding:8px 14px; color:#dbe3ff; background:#0e1627; transition: all .15s ease; }
-    .pill:hover { border-color:#6fa8ff; color:#fff; }
-    .pill.active { background:#2b416f; border-color:#6fa8ff; color:#fff; box-shadow:0 0 0 2px rgba(111,168,255,.15) inset; }
+    .pill { display:inline-flex; align-items:center; gap:6px; border:2px solid rgba(255,255,255,.18); border-radius:999px; padding:8px 14px; color:#dbe3ff; background:#270e0e; transition: all .15s ease; }
+    .pill:hover { border-color:#ca6464; color:#fff; }
+    .pill.active { background:#5a1919; border-color:#903636; color:#fff; box-shadow:0 0 0 2px rgba(111,168,255,.15) inset; }
     .btn-outline { color:#e6e9f2; background:transparent; border:2px solid rgba(255,255,255,.25); border-radius:12px; padding:8px 12px; cursor:pointer; transition:border-color .15s ease; }
-    .btn-outline:hover { border-color:#6fa8ff; }
+    .btn-outline:hover { border-color:#bb5858; }
     .btn-outline.btn-success { color:#7ef29a; border-color:rgba(126,242,154,.4); }
     .btn-group { display:flex; }
     .btn-group .btn-outline:first-child { border-top-right-radius:0; border-bottom-right-radius:0; }
@@ -188,11 +144,16 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     .script-row { display:flex; align-items:stretch; gap:8px; }
     .form-block { width:50%; min-width:280px; }
     .ad-row { margin-left:0; }
+    .guide-card { position:relative; background:#000000a9; border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px 12px 48px; width:100%; margin: 0 20px;}
+    .guide-card::before { content: attr(data-step); position:absolute; left:10px; top:10px; width:24px; height:24px; border-radius:999px; border:2px solid rgba(255,255,255,.35); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;}
+    .step .step-number, .step .step-bar { display:none; }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       try { window.BASE_URL = '{{ site.baseurl }}'; } catch(_) {}
+      // init top nav like pull-tracker
+      try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pull-tracker'); } } catch(_) {}
       // FAQ 모달
       const body = document.body;
       const open = document.getElementById('openFaq');
@@ -202,13 +163,75 @@ description: "가챠 기록 URL을 얻는 방법 안내"
           overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
           const modal = document.createElement('div');
           modal.style.maxWidth='720px'; modal.style.margin='10vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
-          modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff">FAQ</h3><button id="closeFaq" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div style="color:#ddd;white-space:pre-line;font-size:14px">이곳에 FAQ 내용을 넣어주세요.</div>`;
+          modal.innerHTML = `<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px\"><h3 style=\"margin:0;color:#fff\">FAQ</h3><button id=\"closeFaq\" style=\"color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent\">닫기</button></div><div id=\"faqBody\" style=\"color:#ddd;white-space:pre-line;font-size:14px\"></div>`;
           overlay.appendChild(modal);
           body.appendChild(overlay);
           overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
           modal.querySelector('#closeFaq').addEventListener('click', ()=> overlay.remove());
+          // load FAQ.json text1 by lang
+          try {
+            const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+            fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r=>r.json()).then(j=>{
+              const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text1; document.getElementById('faqBody').textContent = t || '';
+            }).catch(()=>{});
+          } catch(_) {}
         });
       }
+      // 프로그램 안내 모달(방법1의 (5) 내용)
+      const progBtn = document.getElementById('openProgInfo');
+      if (progBtn){ progBtn.addEventListener('click', ()=>{
+        const overlay = document.createElement('div');
+        overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
+        const modal = document.createElement('div');
+        modal.style.maxWidth='720px'; modal.style.margin='10vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
+        modal.innerHTML = `<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px\"><h3 style=\"margin:0;color:#fff\">프로그램에 대하여</h3><button id=\"closeProg\" style=\"color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent\">닫기</button></div><div id=\"progBody\" style=\"color:#ddd;white-space:pre-line;font-size:14px\"></div>`;
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
+        modal.querySelector('#closeProg').addEventListener('click', ()=> overlay.remove());
+        try {
+          const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+          fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r=>r.json()).then(j=>{
+            const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text2;
+            const el = document.getElementById('progBody');
+            if (el) {
+              try {
+                const esc = String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                const linkified = esc.replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>');
+                el.innerHTML = linkified.replace(/\n/g,'<br>');
+              } catch(_){ el.textContent = t || ''; }
+            }
+          }).catch(()=>{});
+        } catch(_) {}
+      }); }
+      // i18n for headings/nav + steps
+      try {
+        const params = new URLSearchParams(location.search); const lang = (params.get('lang')||'kr').toLowerCase();
+        const map = {
+          kr: { back: '계약 통계', current:'URL 가이드', title:'URL 가이드',
+            s1:'FAQ를 확인하세요.', s2:'현재는 PC Windows에서의 방법만 제공하고 있습니다.', s3:'원하는 방법을 선택하세요',
+            m1s1:'PC에서 P5X을 실행하세요.', m1s2:'다음 프로그램을 다운받아 실행하세요.', m1s3:'계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4:'지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5:'프로그램을 닫아주세요.', m1s6:'복사된 URL을 아래 링크에서 입력해주세요.',
+            prog:'프로그램에 대하여', dl:'프로그램 다운로드', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.' },
+          en: { back: 'Pull Tracker', current:'URL Guide', title:'URL Guide',
+            s1:'Check the FAQ.', s2:'Currently, only the PC Windows method is provided.', s3:'Choose a method',
+            m1s1:'Run P5X on your PC.', m1s2:'Download and run the program below.', m1s3:'Open the gacha history. Errors are expected.', m1s4:'Select region, click [Try Find URL], then press Copy to obtain the URL.', m1s5:'Close the program.', m1s6:'Go to URL input',
+            prog:'About the Program', dl:'Download Program', m2s1:'See the following link for method 2.', m2s2:'Go to URL input' },
+          jp: { back: 'ガチャ履歴', current:'URL ガイド', title:'URL ガイド',
+            s1:'FAQ を確認してください。', s2:'現在は PC Windows の方法のみ提供しています。', s3:'方法を選択してください',
+            m1s1:'PC で P5X を起動します。', m1s2:'以下のプログラムをダウンロードして実行します。', m1s3:'契約履歴を開きます。エラーは正常です。', m1s4:'地域を選択後［Try Find URL］をクリックし、Copy で URL を取得してください。', m1s5:'プログラムを終了してください。', m1s6:'URL入力へ',
+            prog:'プログラムについて', dl:'プログラムをダウンロード', m2s1:'次のリンクで方法をご確認ください。', m2s2:'URL入力へ' }
+        };
+        const t = map[lang]||map.kr;
+        document.getElementById('navBack').textContent = t.back;
+        document.getElementById('guideCurrent').textContent = t.current;
+        const pt = document.getElementById('pageTitle'); if (pt) pt.textContent = t.title;
+        const el = (id, val)=>{ const e=document.getElementById(id); if (e) e.textContent = val; };
+        el('s1', t.s1); el('s2', t.s2); el('s3', t.s3);
+        el('m1s1', t.m1s1); el('m1s2', t.m1s2); el('m1s3', t.m1s3); el('m1s4', t.m1s4); el('m1s5', t.m1s5); el('m1s6', t.m1s6);
+        el('m2s1', t.m2s1); el('m2s2', t.m2s2);
+        const dbtn = document.getElementById('downloadBtn'); if (dbtn) dbtn.textContent = t.dl;
+        const pbtn = document.getElementById('openProgInfo'); if (pbtn) pbtn.textContent = t.prog;
+      } catch(_) {}
       // 클립보드 복사
       const copyBtn = document.getElementById('copyScript');
       const pre = document.getElementById('psScript');
@@ -218,14 +241,20 @@ description: "가챠 기록 URL을 얻는 방법 안내"
         });
       }
       // pill active 토글 데모
-      document.querySelectorAll('.pill').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-          if (btn.parentElement){
-            btn.parentElement.querySelectorAll('.pill').forEach(b=> b.classList.remove('active'));
-          }
-          btn.classList.add('active');
-        });
-      });
+      const b1 = document.getElementById('m1');
+      const b2 = document.getElementById('m2');
+      const blk1 = document.getElementById('m1block');
+      const blk2 = document.getElementById('m2block');
+      function setTab(which){
+        try {
+          [b1,b2].forEach(b=> b.classList.remove('active'));
+          if (which===1){ b1.classList.add('active'); blk1.style.display=''; blk2.style.display='none'; }
+          else { b2.classList.add('active'); blk1.style.display='none'; blk2.style.display=''; }
+        } catch(_) {}
+      }
+      if (b1) b1.addEventListener('click', ()=> setTab(1));
+      if (b2) b2.addEventListener('click', ()=> setTab(2));
+      setTab(1);
     });
   </script>
 </div>

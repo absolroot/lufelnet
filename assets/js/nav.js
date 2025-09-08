@@ -84,10 +84,10 @@ class Navigation {
                 tierMaker: 'ティアメーカー',
                 tierList: 'ティアリスト',
                 calculator: '計算機',
-                materialCalc: '育成計算機',
-                payCalc: '課金計算機',
+                materialCalc: '育成',
+                payCalc: '課金',
                 defenseCalc: '防御力減少',
-                criticalCalc: 'クリティカル計算機',
+                criticalCalc: 'クリティカル',
                 article: 'ガイド',
                 about: '紹介'
             },

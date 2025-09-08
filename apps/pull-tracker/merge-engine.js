@@ -44,43 +44,38 @@
             for (const seg of segs){
                 const recs = Array.isArray(seg?.record) ? seg.record : [];
                 for (const r of recs){
-                    const name = String(r?.name||'');
-                    const grade = Number(r?.grade||0);
                     const timestamp = Number(r?.timestamp||0);
-                    const gachaId = r?.gachaId != null ? String(r.gachaId) : null;
-                    const id = r && (r.id!=null || r.charId!=null) ? Number(r.id!=null ? r.id : r.charId) : null;
                     if (!timestamp) continue;
-                    rows.push({ name, grade, timestamp, gachaId, id });
+                    // 원본 레코드 객체를 보존
+                    rows.push({ raw: { ...r }, timestamp, gachaId: r?.gachaId != null ? String(r.gachaId) : null });
                 }
             }
         };
         pushRowsFromSegs(oldSegs);
         pushRowsFromSegs(newSegs);
-        rows.sort((a,b)=> (a.timestamp-b.timestamp) || (b.grade-a.grade) || String(a.name).localeCompare(String(b.name)) );
+        // 정렬 및 중복 제거 (gachaId 우선)
+        rows.sort((a,b)=> a.timestamp - b.timestamp);
         const seenById = new Set();
         const seenFallback = new Set();
         const uniq = [];
         for (const r of rows){
+            const raw = r.raw || {};
             if (r.gachaId){ if (seenById.has(r.gachaId)) continue; seenById.add(r.gachaId); uniq.push(r); }
-            else { const key = `${r.timestamp}|${r.name}|${r.grade}`; if (seenFallback.has(key)) continue; seenFallback.add(key); uniq.push(r); }
+            else { const key = `${r.timestamp}|${raw.name}|${raw.grade}`; if (seenFallback.has(key)) continue; seenFallback.add(key); uniq.push(r); }
         }
-        const msDay = 24*60*60*1000;
-        const groups = []; let cur = [];
-        for (let i=0;i<uniq.length;i++){
-            const r = uniq[i];
-            if (cur.length===0) { cur.push(r); continue; }
-            const prev = cur[cur.length-1];
-            if (Math.abs(r.timestamp - prev.timestamp) > 90*msDay) { groups.push(cur); cur = [r]; }
-            else cur.push(r);
+        // 시간순으로 세그먼트 재구성: 5★가 나오면 세그먼트 종료
+        const segments = []; let curSeg = { fivestar: null, lastTimestamp: 0, record: [] };
+        for (const r of uniq){
+            const rec = { ...r.raw };
+            curSeg.record.push(rec);
+            curSeg.lastTimestamp = r.timestamp;
+            if (Number(rec.grade) === 5 && curSeg.fivestar == null) {
+                curSeg.fivestar = { name: rec.name, timestamp: rec.timestamp };
+                segments.push(curSeg);
+                curSeg = { fivestar: null, lastTimestamp: 0, record: [] };
+            }
         }
-        if (cur.length>0) groups.push(cur);
-        const segments = [];
-        for (const g of groups){
-            const seg = { fivestar: null, lastTimestamp: g[g.length-1].timestamp, record: g.map(r=> ({ name:r.name, grade:r.grade, timestamp:r.timestamp, gachaId:r.gachaId, id: (r.id!=null? r.id: undefined) })) };
-            const idx5 = g.findIndex(r=> Number(r.grade)===5);
-            if (idx5 >= 0) { const r5 = g[idx5]; seg.fivestar = { name: r5.name, timestamp: r5.timestamp, id: (r5.id!=null? r5.id: undefined) }; }
-            segments.push(seg);
-        }
+        if (curSeg.record.length > 0) { segments.push(curSeg); }
         const summary = recomputeSummary(segments);
         return { summary, records: segments };
     }

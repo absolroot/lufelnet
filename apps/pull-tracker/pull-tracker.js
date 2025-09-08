@@ -2,9 +2,9 @@
     // Simple local i18n
     const messages = {
         kr: {
-            pageTitle: 'Pull Tracker',
-            navCurrent: 'Pull Tracker',
-            inputLabel: '가챠 기록 URL',
+            pageTitle: '계약 통계',
+            navCurrent: '계약 통계',
+            inputLabel: 'URL 가이드',
             placeholder: '여기에 주소를 붙여넣기...',
             start: '가져오기',
             clear: '초기화',
@@ -27,14 +27,16 @@
             savedLocal: '로컬에 저장되었습니다.',
             deletedDrive: '클라우드(Drive)에서 삭제했습니다.',
             deleteDriveFailed: '클라우드(Drive) 삭제에 실패했습니다.',
+            allDeleted: '저장된 모든 데이터를 삭제했습니다.',
             driveForbidden: 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.',
             driveNeedConsent: '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.',
-            driveNoData: '드라이브에 저장된 데이터가 없습니다.'
+            driveNoData: '드라이브에 저장된 데이터가 없습니다.',
+            noData: '저장된 데이터가 없습니다.'
         },
         en: {
             pageTitle: 'Pull Tracker',
             navCurrent: 'Pull Tracker',
-            inputLabel: 'Gacha Records URL',
+            inputLabel: 'URL Guide',
             placeholder: 'Paste the link here...',
             start: 'Fetch',
             clear: 'Clear',
@@ -57,14 +59,16 @@
             savedLocal: 'Saved locally.',
             deletedDrive: 'Deleted from Drive.',
             deleteDriveFailed: 'Failed to delete from Drive.',
+            allDeleted: 'All saved data has been deleted.',
             driveForbidden: 'Google Drive access forbidden (403). Please review permissions/settings.',
             driveNeedConsent: 'Drive permission is required. Click Login to grant access.',
-            driveNoData: 'No saved data found on Drive.'
+            driveNoData: 'No saved data found on Drive.',
+            noData: 'No saved data.'
         },
         jp: {
-            pageTitle: 'Pull Tracker',
-            navCurrent: 'Pull Tracker',
-            inputLabel: '祈願履歴 URL',
+            pageTitle: 'ガチャ履歴',
+            navCurrent: 'ガチャ履歴',
+            inputLabel: 'URL ガイド',
             placeholder: 'ここにリンクを貼り付けてください...',
             start: '取得',
             clear: 'クリア',
@@ -87,9 +91,11 @@
             savedLocal: 'ローカルに保存しました。',
             deletedDrive: 'Drive から削除しました。',
             deleteDriveFailed: 'Drive の削除に失敗しました。',
+            allDeleted: '保存されたすべてのデータを削除しました。',
             driveForbidden: 'Google Drive へのアクセスが拒否されました（403）。権限や設定をご確認ください。',
             driveNeedConsent: 'Drive へのアクセス許可が必要です。上部のログインを押して許可してください。',
-            driveNoData: 'Drive に保存されたデータがありません。'
+            driveNoData: 'Drive に保存されたデータがありません。',
+            noData: '保存されたデータはありません。'
         }
     };
 
@@ -116,7 +122,8 @@
     function applyTexts() {
         if (els.title) els.title.textContent = t.pageTitle;
         if (els.navCurrent) els.navCurrent.textContent = t.navCurrent;
-        if (els.inputLabel) els.inputLabel.textContent = t.inputLabel;
+        const guideBtn = document.getElementById('openGuideBtn');
+        if (guideBtn) guideBtn.textContent = t.inputLabel;
         if (els.input) els.input.setAttribute('placeholder', t.placeholder);
         if (els.start) els.start.textContent = t.start;
         if (els.clear) els.clear.textContent = t.clear;
@@ -141,6 +148,14 @@
     // DEBUG 예시 UI 바인딩 (DOM 생성 이후)
     document.addEventListener('DOMContentLoaded', function(){
         try {
+            // URL 가이드 버튼 이동
+            const gbtn = document.getElementById('openGuideBtn');
+            if (gbtn) {
+                gbtn.addEventListener('click', ()=>{
+                    const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                    location.href = `${base}/pull-tracker/url-guide/?lang=${lang}`;
+                });
+            }
             const box = document.getElementById('debugExamples');
             if (!box) return;
             if (DEBUG) box.style.display = 'flex';
@@ -712,12 +727,8 @@
         return __weaponsLoading;
     }
 
-    // Persist last URL
+    // Persist last URL (자동 입력은 비활성화)
     const STORAGE_KEY = 'pull-tracker:last-url';
-    try {
-        const last = localStorage.getItem(STORAGE_KEY);
-        if (last && els.input && !els.input.value) els.input.value = last;
-    } catch(_) {}
 
     function setStatus(lines) {
         if (!els.status) return;
@@ -726,6 +737,10 @@
         } else {
             els.status.textContent = lines || '';
         }
+    }
+
+    function setHide4Visible(visible){
+        try { const lbl = document.querySelector('.hide4-toggle'); if (lbl) lbl.style.display = visible ? 'inline-block' : 'none'; } catch(_) {}
     }
 
     let __dataSource = null; // 'drive' | 'local' | null
@@ -827,9 +842,11 @@
 
             try {
                 const incoming = JSON.parse(text);
+                try { console.log('[pull-tracker][incoming]', incoming); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 // 병합 수행 → 저장 → 렌더
                 const merged = mergeWithCache(incoming);
+                try { console.log('[pull-tracker][merged]', merged); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
                 // Google Drive 동기화
@@ -871,12 +888,12 @@
         try {
             if (__googleToken) {
                 await ensureTokenSilent();
-                const ok = await driveDeleteMerged(true);
-                try {
-                    setStatus(ok ? `${t.deletedDrive} ${nowStamp()}` : `${t.deleteDriveFailed} ${nowStamp()}`);
-                } catch(_) {}
+                await driveDeleteMerged(true);
             }
         } catch(_) {}
+        // 최종 안내: 모든 저장 데이터 삭제
+        setStatus(`${t.allDeleted} ${nowStamp()}`);
+        setHide4Visible(false);
     }
 
     if (els.start) els.start.addEventListener('click', onStart);
@@ -917,23 +934,14 @@
                 try {
                     const list = Array.isArray(block.records) ? block.records : [];
                     if (list.length===0) return 0;
-                    // 90일 규칙: 가장 최근 그룹(=마지막 segment의 시각)이 포함된 fivestar:null 세그먼트만 집계
-                    const msDay = 24*60*60*1000;
-                    const lastSeg = list[list.length-1];
-                    const lastTime = Number(lastSeg?.lastTimestamp||0);
-                    if (!lastTime) return 0;
-                    let s = 0;
-                    for (let i=list.length-1;i>=0;i--){
-                        const seg = list[i];
-                        const ts = Number(seg?.lastTimestamp||0);
-                        if (!ts) continue;
-                        if (Math.abs(lastTime - ts) > 90*msDay) break; // 이전 그룹 도달 → 중단
-                        if (seg && seg.fivestar == null) {
-                            const rec = Array.isArray(seg.record) ? seg.record : [];
-                            s += rec.length;
-                        }
+                    // 최신 세그먼트는 lastTimestamp가 가장 큰 세그먼트로 판정 (배열 정렬 방향 무관)
+                    let latest = null; let maxTs = -Infinity;
+                    for (const seg of list){ const ts = Number(seg?.lastTimestamp||0); if (ts>maxTs){ maxTs=ts; latest=seg; } }
+                    if (latest && latest.fivestar == null) {
+                        const rec = Array.isArray(latest.record) ? latest.record : [];
+                        return rec.length;
                     }
-                    return s;
+                    return 0;
                 } catch(_) { return 0; }
             })();
             const effectiveTotal = Math.max(0, (Number.isFinite(total) ? total : 0) - inProgress);
@@ -1055,7 +1063,7 @@
                 accordion.appendChild(summary);
                 const listWrap = document.createElement('div');
                 listWrap.className = 'five-list';
-                const fiveRecords = collectFiveStarRecords(block);
+                const fiveRecords = collectFiveStarRecords(block).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
                 for (const rec of fiveRecords) {
                     const row = document.createElement('div');
                     row.className = 'five-row';
@@ -1065,6 +1073,16 @@
                     if (avatar) left.appendChild(avatar);
                     const nameEl = document.createElement('span');
                     nameEl.textContent = rec.name;
+                    // 운명/무기: 승(lose list에 없는 id)을 노란색으로 강조
+                    try {
+                        if (label==='fortune' || label==='weapon'){
+                            const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v)=>Number(v))) : null;
+                            const idNum = Number(rec.id);
+                            if (loseSet && Number.isFinite(idNum) && !loseSet.has(idNum)) {
+                                nameEl.style.color = '#ffc17c';
+                            }
+                        }
+                    } catch(_) {}
                     left.appendChild(nameEl);
                     const right = document.createElement('div');
                     right.className = 'five-right';
@@ -1280,6 +1298,7 @@
             const records = (block.records || []).flatMap(r => Array.isArray(r.record) ? r.record : []);
             // 5★ → 4★ → 3★ 순서로 name별 개수 집계
             const byGrade = { 5: new Map(), 4: new Map(), 3: new Map(), 2: new Map() };
+            const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v)=>Number(v))) : null;
             for (const it of records) {
                 const g = Number(it.grade);
                 const name = it.name;
@@ -1311,6 +1330,13 @@
                     const text = document.createElement('span');
                     const disp = resolveDisplayName(name, label);
                     text.textContent = `${disp} ${cnt}`;
+                    // 운명/무기: LOSE_5050_LIST 기준 승(win: not in list) 노란색 표시
+                    if ((label==='fortune' || label==='weapon') && g===5 && loseSet) {
+                        try {
+                            // 가능한 id/charId는 five history쪽에서만 안정적이므로 pills는 이름만 강조
+                            // 이름만으로 id 매칭은 불가 → pills에서는 전체 5성을 승 강조하지 않고, history에서 정확히 처리
+                        } catch(_) {}
+                    }
                     pill.appendChild(text);
                     container.appendChild(pill);
                 }
@@ -1355,7 +1381,7 @@
                             const alt = charNameByLang(info);
                             if (alt) disp = alt;
                         }
-                        rows.push({ name: disp, timestamp: r.timestamp, pity });
+                        rows.push({ name: disp, timestamp: r.timestamp, pity, id: (r && (r.id!=null||r.charId!=null) ? Number(r.id!=null? r.id: r.charId) : undefined) });
                         pity = 0;
                     }
                 }
@@ -1626,6 +1652,9 @@
                         const email = localStorage.getItem('pull-tracker:google-email')||'';
                         if (email) renderAuthBarUI({ email });
                     } catch(_) {}
+                } else {
+                    setStatus(t.noData);
+                    setHide4Visible(false);
                 }
             } catch(e) {
                 // fetch 예외에서는 status가 없을 수 있으니 응답 본문으로 403 추정
@@ -1633,18 +1662,21 @@
                 __needDriveConsent = true;
             }
             try {
-                if (cloud && cloud.data) { const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); return; }
+                if (cloud && cloud.data) { const m = mergeWithCache(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(m)); renderCardsFromExample(m); setHide4Visible(true); return; }
                 // if (DEBUG) { setStatus(t.driveNeedConsent); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) {
                     const json = JSON.parse(mergedCached);
+                    try { console.log('[pull-tracker][merged-local]', json); } catch(_) {}
                     __dataSource = 'local';
                     if (__needDriveConsent) setStatus(`${t.loadedLocal} ${nowStamp()}\n${t.driveNeedConsent}`);
                     else setStatus(`${t.loadedLocal} ${nowStamp()}`);
-                    renderCardsFromExample(json); return;
+                    renderCardsFromExample(json); setHide4Visible(true); return;
                 }
                 const cached = localStorage.getItem('pull-tracker:last-response');
-                if (cached) { const json = JSON.parse(cached); const m = mergeWithCache(json); renderCardsFromExample(m); return; }
+                if (cached) { const json = JSON.parse(cached); try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}; const m = mergeWithCache(json); try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}; renderCardsFromExample(m); setHide4Visible(true); return; }
+                setStatus(t.noData);
+                setHide4Visible(false);
             } catch(_) {}
         });
     } catch(_) {}

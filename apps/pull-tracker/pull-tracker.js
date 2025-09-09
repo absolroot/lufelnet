@@ -1596,6 +1596,7 @@
     // 특정 예외 매핑 사전
     const NAME_FIXUPS = {
         'Yui': 'YUI',
+        "ＹＵＩ": 'YUI',
         'Kotone Montagne': 'Montagne Kotone'
     };
 

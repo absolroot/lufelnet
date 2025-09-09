@@ -1,0 +1,99 @@
+---
+layout: default
+permalink: /pull-tracker/global-stats/
+language: kr
+title: "Global Stats - Persona 5: The Phantom X"
+description: "P5X 계약 전체 통계 (캐릭터/한정/무기)"
+---
+
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
+
+<div class="main-wrapper">
+  <div class="navigation-path">
+    <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-lang-key="home">홈</span></a>`);</script>
+    <span class="separator">/</span>
+    <span class="current-page" id="navCurrent">Global Stats</span>
+  </div>
+
+  <div class="header-container">
+    <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <h1 id="pageTitle">Global Stats</h1>
+      <select id="globalRegion" class="url-input" style="flex:0 0 140px; padding:8px 10px; font-size:13px;">
+        <option value="EN">EN</option>
+        <option value="JP">JP</option>
+        <option value="SEA">SEA</option>
+        <option value="KR">KR</option>
+        <option value="CN">CN</option>
+        <option value="TW">TW</option>
+      </select>
+    </div>
+  </div>
+
+  <section class="summary-cards" style="margin-top:8px;">
+    <div class="global-header">
+      <span id="globalStatsNote" class="global-note"></span>
+      <span id="gsStatus" style="opacity:.75; font-size:12px;"></span>
+    </div>
+  </section>
+
+  <!-- Overview + Info cards + Chart 
+       (moved from index, driven by global-stats.js) -->
+  <section class="summary-cards" style="margin-top:10px;">
+    <div id="globalInfoCards" class="info-cards-grid"></div>
+  </section>
+  <div class="card-style chart-card">
+    <canvas id="globalDailyChart" class="overview-chart" style="height:180px;margin-top:0px;"></canvas>
+  </div>
+  <!-- Pity distribution chart -->
+  <div class="card-style chart-card">
+    <div id="pityTabs" class="gs-tabs" style="margin-bottom:16px;"></div>
+    <canvas id="pityChart" class="overview-chart" style="height:220px;margin-top:0px;"></canvas>
+  </div>
+  <section class="summary-cards" style="margin-top:10px;">
+    <div id="globalCards" class="global-cards"></div>
+  </section>
+  <div class="section-divider"></div>
+  <!-- 3-column lists -->
+  <section class="summary-cards" style="margin-top:10px;">
+    <div id="gsTabs" class="gs-tabs"></div>
+    <div id="gsCards" class="gs-lists"></div>
+  </section>
+
+  <script>
+    // 언어별 SEO/메타 동적 설정 및 제목/내비 텍스트 적용
+    (function(){
+      try {
+        const params = new URLSearchParams(location.search);
+        const lang = (params.get('lang')||'kr').toLowerCase();
+        const meta = {
+          kr: { title: '전체 통계 - 페르소나5 더 팬텀 X', desc: 'P5X 계약 전체 통계와 일별 추이를 확인하세요.' },
+          en: { title: 'Global Stats - Persona 5: The Phantom X', desc: 'View P5X global gacha statistics and daily trends.' },
+          jp: { title: '全体統計 - ペルソナ5 ザ・ファントムX', desc: 'P5Xガチャの全体統計と日別推移を確認できます。' }
+        };
+        const cur = meta[lang] || meta.kr;
+        document.title = cur.title;
+        let d = document.querySelector('meta[name="description"]');
+        if (!d) { d = document.createElement('meta'); d.setAttribute('name','description'); document.head.appendChild(d); }
+        d.setAttribute('content', cur.desc);
+        let ogt = document.querySelector('meta[property="og:title"]'); if (!ogt){ ogt = document.createElement('meta'); ogt.setAttribute('property','og:title'); document.head.appendChild(ogt);} ogt.setAttribute('content', cur.title);
+        let ogd = document.querySelector('meta[property="og:description"]'); if (!ogd){ ogd = document.createElement('meta'); ogd.setAttribute('property','og:description'); document.head.appendChild(ogd);} ogd.setAttribute('content', cur.desc);
+        // 페이지 타이틀/내비 텍스트
+        const t = (lang==='en'?'Global Stats':(lang==='jp'?'全体統計':'전체 통계'));
+        const titleEl = document.getElementById('pageTitle'); if (titleEl) titleEl.textContent = t;
+        const navCur = document.getElementById('navCurrent'); if (navCur) navCur.textContent = t;
+      } catch(_) {}
+    })();
+  </script>
+
+  <script src="{{ site.baseurl }}/data/kr/characters/characters.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/apps/pull-tracker/lostlist.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/data/kr/characters/character_weapon.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/data/en/characters/character_weapon.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/data/jp/characters/character_weapon.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/apps/pull-tracker/global-stats.js?v={{ site.time | date: '%s' }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{ try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pull-tracker'); } } catch(_){} });
+  </script>
+</div>
+
+

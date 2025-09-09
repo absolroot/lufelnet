@@ -2,7 +2,7 @@
     // Simple local i18n
     const messages = {
         kr: {
-            pageTitle: '계약 트래커',
+            pageTitle: '계약 트래커 (beta)',
             navCurrent: '계약 트래커',
             inputLabel: 'URL 획득 방법',
             placeholder: '여기에 주소를 붙여넣기...',
@@ -34,7 +34,7 @@
             noData: '저장된 데이터가 없습니다.'
         },
         en: {
-            pageTitle: 'Pull Tracker',
+            pageTitle: 'Pull Tracker (beta)',
             navCurrent: 'Pull Tracker',
             inputLabel: 'How to get URL',
             placeholder: 'Paste the link here...',
@@ -66,7 +66,7 @@
             noData: 'No saved data.'
         },
         jp: {
-            pageTitle: 'ガチャ履歴',
+            pageTitle: 'ガチャ履歴 (beta)',
             navCurrent: 'ガチャ履歴',
             inputLabel: 'URL取得方法',
             placeholder: 'ここにリンクを貼り付けてください...',

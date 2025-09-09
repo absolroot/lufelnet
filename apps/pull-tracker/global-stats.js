@@ -40,9 +40,9 @@
     const note = document.getElementById('globalStatsNote');
     if (note) {
       const texts = {
-        kr: '※ P5X서버 기록은 50% 반천장(Win) 정보를 제공하지 않아, 현재는 한정 캐릭터를 성공으로 계산하고 있습니다. 따라서 마유미, 루우나 등은 성공 기준에 포함되지 않아 수치가 높게 보일 수 있습니다.',
-        en: '※ P5X server do not provide 50:50 Win data. Currently treat [Limited] characters as wins. Therefore, like PHOEBE or MARIAN are not included as wins, which may make the success avg appear higher.',
-        jp: '※ P5Xサーバーの記録は50:50勝利の情報を提供していません。現在は限定キャラを勝利として計算しています。そのため、PHOEBEやMARIANなどは勝利基準に含まれず、数値が高く見える場合があります。'
+        kr: '※ P5X서버 기록은 50% 반천장(Win) 정보를 제공하지 않아, 현재는 한정 캐릭터를 성공으로 계산하고 있습니다. 따라서 마유미, 루우나 등은 성공 기준에 포함되지 않아 수치가 높게/낮게 보일 수 있습니다.',
+        en: '※ P5X server do not provide 50:50 Win data. Currently treat [Limited] characters as wins. Therefore, like PHOEBE or MARIAN are not included as wins, which may make the success avg appear higher/lower.',
+        jp: '※ P5Xサーバーの記録は50:50勝利の情報を提供していません。現在は限定キャラを勝利として計算しています。そのため、PHOEBEやMARIANなどは勝利基準に含まれず、数値が高く/低く見える場合があります。'
       };
       note.textContent = texts[lang] || texts.kr;
     }

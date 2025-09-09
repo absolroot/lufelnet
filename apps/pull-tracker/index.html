@@ -95,9 +95,10 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
     <script src="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.js?v={{ site.time | date: '%s' }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            if (window.Navigation && typeof Navigation.load === 'function') {
-                try { Navigation.load('pullTracker_individual'); } catch(_) {}
-            }
+
+            try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_individual'); } } catch(_) {}
+            try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch(_) {}
+
             // expose base url to JS
             try { window.BASE_URL = '{{ site.baseurl }}'; } catch(_) {}
             // init Google auth bar

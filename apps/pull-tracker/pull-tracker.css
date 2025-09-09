@@ -12,7 +12,7 @@
 .url-btn.primary:hover { background:#5a3727; }
 .url-btn.secondary:hover { background:#2a1a13; }
 .url-btn:hover { background:#2a1a13; }
-.url-info { opacity:.85; font-size:14px; white-space:pre-line; padding:12px 14px; background:#00000020; border-radius:10px; }
+.url-info { opacity:.85; font-size:14px; white-space:pre-line; padding:12px 14px; background:#00000020; border-radius:10px; color:#ffffff8f}
 .url-status { line-height:1.6; font-size:14px; color:#ffe0e0; margin-left:4px }
 
 /* Overview */
@@ -113,6 +113,7 @@ details[open] > summary::before { content:'-'; }
 }
 @media (max-width: 640px) {
   .cards-grid, .overview-grid, .global-cards, .info-cards-grid { grid-template-columns: 1fr; }
+  #globalInfoCards {grid-template-columns: 1fr 1fr;}
 }
 @media (max-width: 768px) { 
     #result { min-height: 120px; } 

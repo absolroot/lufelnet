@@ -4,10 +4,10 @@
   const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
 
   const LABELS = {
-    kr: { title: '전체 통계', avg: '평균', count: '5★ 합계', loseRate: '50:50 패배율', pullsByDay: '일간 비율(%)', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' },
-    en: { title: 'Global Stats', avg: 'Avg', count: '5★ Count', loseRate: 'Lose 50:50 %', pullsByDay: 'Pull By Day %', charAvg:'Character 5★ Avg', charLimitedAvg:'Char Limited 5★ Avg', charCnt:'Character 5★ Count', weapAvg:'Weapon 5★ Avg', weapLimitedAvg:'Weapon Limited 5★ Avg', weapCnt:'Weapon 5★ Count' },
-    jp: { title: '全体統計', avg: '平均', count: '5★ 合計', loseRate: '50:50 敗北率', pullsByDay: '日別比率(%)', charAvg:'キャラ 5★ 平均', charLimitedAvg:'キャラ限定 5★ 平均', charCnt:'キャラ 5★ 獲得数', weapAvg:'武器 5★ 平均', weapLimitedAvg:'武器限定 5★ 平均', weapCnt:'武器 5★ 獲得数' }
-  }[lang] || { title:'전체 통계', avg:'평균', count:'5★ 합계', loseRate:'50:50 패배율', pullsByDay:'일간 비율(%)', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' };
+    kr: { title: '전체 통계', avg: '평균', count: '5★ 합계', loseRate: '50:50 패배율', pullsByDay: '일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' },
+    en: { title: 'Global Stats', avg: 'Avg', count: '5★ Count', loseRate: 'Lose 50:50 %', pullsByDay: 'Pulls By Day', charAvg:'Character 5★ Avg', charLimitedAvg:'Char Limited 5★ Avg', charCnt:'Character 5★ Count', weapAvg:'Weapon 5★ Avg', weapLimitedAvg:'Weapon Limited 5★ Avg', weapCnt:'Weapon 5★ Count' },
+    jp: { title: '全体統計', avg: '平均', count: '5★ 合計', loseRate: '50:50 敗北率', pullsByDay: '日別回数', charAvg:'キャラ 5★ 平均', charLimitedAvg:'キャラ限定 5★ 平均', charCnt:'キャラ 5★ 獲得数', weapAvg:'武器 5★ 平均', weapLimitedAvg:'武器限定 5★ 平均', weapCnt:'武器 5★ 獲得数' }
+  }[lang] || { title:'전체 통계', avg:'평균', count:'5★ 합계', loseRate:'50:50 패배율', pullsByDay:'일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' };
 
   // i18n phrases
   const I18N = {

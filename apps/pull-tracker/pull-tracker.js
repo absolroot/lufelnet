@@ -2,8 +2,8 @@
     // Simple local i18n
     const messages = {
         kr: {
-            pageTitle: '계약 통계',
-            navCurrent: '계약 통계',
+            pageTitle: '계약 트래커',
+            navCurrent: '계약 트래커',
             inputLabel: 'URL 획득 방법',
             placeholder: '여기에 주소를 붙여넣기...',
             start: '가져오기',
@@ -915,8 +915,8 @@
         if (!payload || !payload.data || !els.cards) return;
         // 카드 순서/행 구성: 1행(확정/운명/일반), 2행(무기/신규)
         const types = [
-            ['Confirmed', 'confirmed'],
             ['Fortune', 'fortune'],
+            ['Confirmed', 'confirmed'],
             ['Weapon', 'weapon'],
             ['Gold', 'gold'],
             ['Newcomer', 'newcomer']

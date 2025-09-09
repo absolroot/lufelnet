@@ -194,7 +194,7 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     document.addEventListener('DOMContentLoaded', () => {
       try { window.BASE_URL = '{{ site.baseurl }}'; } catch(_) {}
       // init top nav like pull-tracker
-      try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pull-tracker'); } } catch(_) {}
+      try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pullTracker'); } } catch(_) {}
       // FAQ 모달
       const body = document.body;
       const open = document.getElementById('openFaq');
@@ -249,7 +249,7 @@ description: "가챠 기록 URL을 얻는 방법 안내"
       try {
         const params = new URLSearchParams(location.search); const lang = (params.get('lang')||'kr').toLowerCase();
         const map = {
-          kr: { back: '계약 통계', current:'URL 가이드', title:'URL 가이드',
+          kr: { back: '계약 트래커', current:'URL 가이드', title:'URL 가이드',
             s1:'FAQ를 확인하세요.', s2:'현재는 PC Windows에서의 방법만 제공하고 있습니다.', s3:'원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
             m1s1:'PC에서 P5X을 실행하세요.', m1s2:'다음 링크에서 P5X_Gacha_Tools를 다운받아 압축을 풀고 실행하세요.', m1s3:'P5X에서 계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4:'지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5:'프로그램을 닫아주세요.', m1s6:'복사된 URL을 아래 링크에서 입력해주세요.',
             prog:'프로그램에 대하여', dl:'프로그램 제공 링크', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.' },

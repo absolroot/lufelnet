@@ -139,7 +139,7 @@
 
   async function fetchSummary(region){
     const key = String(region||'KR').toLowerCase();
-    const url = `https://iant.kr:5000/gacha/stat/${encodeURIComponent(key)}`;
+    const url = `https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/stats/stats_${encodeURIComponent(key)}.json`;
     const r = await fetch(url, { cache:'no-store' });
     if (!r.ok) throw new Error('stat fetch failed');
     return await r.json();
@@ -147,7 +147,7 @@
 
   async function fetchDaily(region, days=30){
     const key = String(region||'KR').toLowerCase();
-    const url = `https://iant.kr:5000/gacha/stat/day/${encodeURIComponent(key)}?days=${days}`;
+    const url = `https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/stats/stats_${encodeURIComponent(key)}_${days}d.json`;  
     const r = await fetch(url, { cache:'no-store' });
     if (!r.ok) throw new Error('day stat fetch failed');
     return await r.json();
@@ -156,7 +156,7 @@
   // character distribution for 3-column lists
   async function fetchCharacters(region){
     const key = String(region||'KR').toLowerCase();
-    const url = `https://iant.kr:5000/gacha/character/${encodeURIComponent(key)}`;
+    const url = `https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/character/character_${encodeURIComponent(key)}.json`;
     const r = await fetch(url, { cache:'no-store' });
     if (!r.ok) throw new Error('character fetch failed');
     return await r.json();
@@ -164,7 +164,7 @@
 
   async function fetchCharactersWeek(region, weeks){
     const key = String(region||'KR').toLowerCase();
-    const url = `https://iant.kr:5000/gacha/character/week/${encodeURIComponent(key)}?weeks=${Number(weeks||2)}`;
+    const url = `https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/character/character_${encodeURIComponent(key)}_${Number(weeks||2)}w.json`;
     const r = await fetch(url, { cache:'no-store' });
     if (!r.ok) throw new Error('character week fetch failed');
     return await r.json();
@@ -172,7 +172,7 @@
 
   async function fetchCharactersDay(region, days){
     const key = String(region||'KR').toLowerCase();
-    const url = `https://iant.kr:5000/gacha/character/day/${encodeURIComponent(key)}?days=${Number(days||30)}`;
+    const url = `https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/character/character_${encodeURIComponent(key)}_${Number(days||30)}d.json`;
     const r = await fetch(url, { cache:'no-store' });
     if (!r.ok) throw new Error('character day fetch failed');
     return await r.json();
@@ -182,7 +182,7 @@
     // periodJson: { data: [ { summary: {...} }, ... ] }
     const acc = { Confirmed:{}, Fortune:{}, Gold:{}, Newcomer:{}, Weapon:{} };
     try {
-      const arr = Array.isArray(periodJson?.data) ? periodJson.data : [];
+      const arr = periodJson ? periodJson : [];
       for (const row of arr){
         const s = row && row.summary ? row.summary : {};
         for (const type of Object.keys(acc)){
@@ -195,11 +195,11 @@
         }
       }
     } catch(_) {}
-    return { data: acc };
+    return acc;
   }
 
   function aggregateCharacters(json){
-    const data = (json && json.data) || {};
+    const data = (json) || {};
     const byId = new Map();
     const add = (obj)=>{ for (const [name, meta] of Object.entries(obj||{})){ const id = Number(meta.char_id||0); const c = Number(meta.count||0); if (!Number.isFinite(c)) continue; if (!byId.has(id)) byId.set(id, { name, count:0, id }); byId.get(id).count += c; } };
     add(data.Confirmed); add(data.Fortune); add(data.Gold); add(data.Newcomer);
@@ -258,10 +258,13 @@
       const range = (tabsWrap && tabsWrap.querySelector('.gs-tab.active') ? tabsWrap.querySelector('.gs-tab.active').dataset.range : 'all') || 'all';
       let json;
       if (range==='all') json = await fetchCharacters(region);
-      else if (range==='2w') json = mergePeriodSummaries(await fetchCharactersWeek(region, 2));
-      else if (range==='1m') json = mergePeriodSummaries(await fetchCharactersDay(region, 30));
-      else if (range==='3m') json = mergePeriodSummaries(await fetchCharactersDay(region, 90));
+      else if (range==='3w') json = mergePeriodSummaries(await fetchCharactersWeek(region, 3)); 
+      else if (range==='6w') json = mergePeriodSummaries(await fetchCharactersWeek(region, 6));
+      else if (range==='9w') json = mergePeriodSummaries(await fetchCharactersWeek(region, 9));
+      // else if (range==='3m') json = mergePeriodSummaries(await fetchCharactersDay(region, 90));
       else json = await fetchCharacters(region);
+      //console.log('json: ',json)
+
       const ag = aggregateCharacters(json);
       threeListsWrap.innerHTML = '';
       const tLimited = (lang==='en'? '5★ Limited List' : (lang==='jp'? '5★ 限定リスト' : '5★ 한정 리스트'));
@@ -280,8 +283,10 @@
     tabsWrap.innerHTML = '';
     const items = [
       { key:'all', label: (lang==='en'?'All':(lang==='jp'?'全体':'전체')) },
-      { key:'2w',  label: (lang==='en'?'2 Weeks':(lang==='jp'?'2週':'2주')) },
-      { key:'1m',  label: (lang==='en'?'1 Month':(lang==='jp'?'1ヶ月':'1개월')) },
+      { key:'3w',  label: (lang==='en'?'3 Weeks':(lang==='jp'?'3週':'3주')) },
+      { key:'6w',  label: (lang==='en'?'6 Weeks':(lang==='jp'?'6週':'6주')) },
+      { key:'9w',  label: (lang==='en'?'9 Weeks':(lang==='jp'?'9週':'9주')) },
+      //{ key:'1m',  label: (lang==='en'?'1 Month':(lang==='jp'?'1ヶ月':'1개월')) },
     ];
     for (const it of items){
       const b = document.createElement('button'); b.className='gs-tab'; b.textContent = it.label; b.dataset.range = it.key;
@@ -319,7 +324,8 @@
 
   async function fetchPity(region){
     const key = String(region||'KR').toLowerCase();
-    const url = `https://iant.kr:5000/gacha/pity/${encodeURIComponent(key)}`;
+    const url = `https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/pity/pity_${encodeURIComponent(key)}.json`;
+    console.log(url);
     const r = await fetch(url, { cache:'no-store' }); if (!r.ok) throw new Error('pity fetch failed');
     return await r.json();
   }
@@ -331,7 +337,7 @@
     // ---- data ----
     const kind = pityTabs && pityTabs.querySelector('.gs-tab.active')
       ? pityTabs.querySelector('.gs-tab.active').dataset.kind : 'Fortune';
-    const src = (json && json.data && json.data[kind]) || {};
+    const src = (json && json[kind]) || {};
     const maxX = PITY_MAX[kind] || 80;
   
     const bars = []; let total = 0;
@@ -522,14 +528,14 @@
   function renderCards(summary){
     if (!cardsWrap) return;
     cardsWrap.innerHTML = '';
-    const data = (summary && summary.data) || {};
+    const data = (summary) || {};
     const order = ['Fortune','Confirmed','Gold','Weapon','Newcomer'];
     for (const k of order){ cardsWrap.appendChild(makeGlobalCard(k, data[k] || null)); }
   }
 
   function renderInfoCards(summary){
     if (!infoWrap) return;
-    const data = (summary && summary.data) || {};
+    const data = (summary) || {};
     const charKeys = ['Fortune','Confirmed','Gold','Newcomer'];
     const weapKeys = ['Weapon'];
     const pick = (keys, field)=> keys.reduce((s,k)=> s + (Number((data[k]||{})[field]||0)||0), 0);
@@ -619,7 +625,7 @@
     if (!chartCanvas) return;
     const ctx = chartCanvas.getContext('2d');
     if (!ctx) return;
-    const rows = Array.isArray(json?.data)? json.data: [];
+    const rows = (json)? json: [];
     const labels = [];
     const values = [];
     for (const d of rows){

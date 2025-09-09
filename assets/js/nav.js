@@ -46,6 +46,9 @@ class Navigation {
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
+                pullTracker: '계약 트래커',
+                pullTracker_individual: '개인 통계',
+                pullTracker_global: '전체 통계',
                 article: '가이드',
                 about: 'about'
             },
@@ -67,6 +70,9 @@ class Navigation {
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Reduction',
                 criticalCalc: 'Critical Calculator',
+                pullTracker: 'Pull Tracker',
+                pullTracker_individual: 'Individual Stats',
+                pullTracker_global: 'Global Stats',
                 article: 'Guides',
                 about: 'About'
             },
@@ -88,6 +94,9 @@ class Navigation {
                 payCalc: '課金',
                 defenseCalc: '防御力減少',
                 criticalCalc: 'クリティカル',
+                pullTracker: 'ガチャ履歴',
+                pullTracker_individual: '個人統計',
+                pullTracker_global: '全体統計',
                 article: 'ガイド',
                 about: '紹介'
             },
@@ -115,9 +124,9 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'tier', 'about'],
-            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'tier', 'about'],
-            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'tier', 'about'],
+            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'about'],
+            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'about'],
+            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -159,6 +168,23 @@ class Navigation {
                     <span data-text="${texts.wonderweapon}">${texts.wonderweapon}</span>
                 </a>
                 ` : ''}
+                <!--
+                ${currentMenus.includes('pullTracker') ? `
+                <div class="nav-item has-submenu" data-nav="pullTracker">
+                    <div class="nav-main-item">
+                        <img src="${BASE_URL}/assets/img/nav/pull.png" alt="pullTracker" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <span data-text="${texts.pullTracker}">${texts.pullTracker}</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="${BASE_URL}/pull-tracker?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pullTracker_individual">
+                            <span data-text="${texts.pullTracker_individual}">◈　${texts.pullTracker_individual}</span>
+                        </a>
+                        <a href="${BASE_URL}/pull-tracker/global-stats?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pullTracker_global">
+                            <span data-text="${texts.pullTracker_global}">◈　${texts.pullTracker_global}</span>
+                        </a>
+                    </div>
+                </div>
+                ` : ''}-->
                 ${currentMenus.includes('calculator') ? `
                 <div class="nav-item has-submenu" data-nav="calculator">
                     <div class="nav-main-item">

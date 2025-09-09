@@ -31,11 +31,11 @@
 
 
 
-.logo-container { cursor: pointer; height: 100px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; margin: 20px 0; padding: 12px 24px; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; flex-shrink: 0; }
+.logo-container { cursor: pointer; height: 100px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; margin: 20px 0 10px 0; padding: 12px 24px; outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; flex-shrink: 0; }
 .logo-container img[src*="lufel.webp"] { height: 50px; width: auto; filter: grayscale(100%) contrast(1.5); filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9)); }
 .logo-container img[src*="lufelnet.png"] { margin-top: 4px; width: 120px; object-fit: contain; filter: drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.9)) invert(1); opacity: 0.9; }
 
-.nav-link { display: flex; align-items: center; gap: 0px; padding: 16px 24px; color: #ffffff; text-decoration: none; transition: all 0.3s ease; position: relative; z-index: 1; width: 100%; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+.nav-link { display: flex; align-items: center; gap: 0px; padding: 12px 24px; color: #ffffff; text-decoration: none; transition: all 0.3s ease; position: relative; z-index: 1; width: 100%; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
 .nav-link img { margin-right: 10px; width: 28px; height: 28px; object-fit: contain; }
 .nav-link span, .nav-main-item span { margin-left: 6px; font-size: 14px; }
 .nav-link:hover { background-color: rgba(0, 0, 0, 0.2); }

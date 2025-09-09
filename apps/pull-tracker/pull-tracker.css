@@ -101,6 +101,7 @@ details[open] > summary::before { content:'-'; }
 .auth-btn { background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.35); padding:6px 10px; border-radius:6px; cursor:pointer; }
 .auth-btn:hover { background: rgba(255,255,255,0.08); }
 .help-text { opacity:.85; font-size:12px; white-space:pre-line; text-align:left; margin:20px 0px 40px 0px; padding:12px; background:rgba(255,255,255,0.05); border-radius:8px; border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.6); line-height:1.8; }
+.scope-note { margin-left:8px; font-size:12px; opacity:0.5; }
 
 /* Responsive */
 @media (max-width: 1200px) {

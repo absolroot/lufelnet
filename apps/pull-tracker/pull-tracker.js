@@ -142,9 +142,17 @@
             const signed = document.getElementById('ptUserSignedAs');
             const loginBtn = document.getElementById('ptLoginBtn');
             const logoutBtn = document.getElementById('ptLogoutBtn');
+            const scopeNote = document.getElementById('ptScopeNote');
             if (signed) signed.textContent = (lang==='en'?'Signed in:': (lang==='jp'?'ログイン:':'로그인:'));
             if (loginBtn) loginBtn.textContent = (lang==='en'?'Login': (lang==='jp'?'ログイン':'로그인'));
             if (logoutBtn) logoutBtn.textContent = (lang==='en'?'Logout': (lang==='jp'?'ログアウト':'로그아웃'));
+            if (scopeNote) {
+                scopeNote.textContent = (lang==='en'
+                    ? '※ lufel.net can only read/write files created by this site.'
+                    : (lang==='jp'
+                        ? '※ このサイトで作成したファイルのみ読み書きできます。'
+                        : '※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.'));
+            }
         } catch(_) {}
     }
 

@@ -11,7 +11,7 @@
 
   // i18n phrases
   const I18N = {
-    en: { unitTimes: 'pulls', unitCount: '', obtained: 'obtained', pickupSuccess: 'Limit' },
+    en: { unitTimes: 'pulls', unitCount: '', obtained: 'obtained', pickupSuccess: 'Limited' },
     jp: { unitTimes: '回', unitCount: '回', obtained: '獲得', pickupSuccess: '成功' },
     kr: { unitTimes: '회', unitCount: '번', obtained: '획득', pickupSuccess: '한정 비율' }
   };

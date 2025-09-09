@@ -76,7 +76,8 @@ details[open] > summary::before { content:'-'; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Global header */
-.global-header { display:flex; align-items:center; gap:16px; margin: 0 0px 8px 0px; }
+.global-header { display:flex; align-items:center; flex-wrap: wrap; gap:16px; margin: 0 0px 16px 0px; row-gap: 0px;}
+.global-note { opacity:.7; font-size:12px; }
 .chart-card { padding:16px; margin: 16px 0px; }
 
 /* Global info 4-col */

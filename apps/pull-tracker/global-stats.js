@@ -13,7 +13,7 @@
   const I18N = {
     en: { unitTimes: 'pulls', unitCount: '', obtained: 'obtained', pickupSuccess: 'Limit' },
     jp: { unitTimes: '回', unitCount: '回', obtained: '獲得', pickupSuccess: '成功' },
-    kr: { unitTimes: '회', unitCount: '번', obtained: '획득', pickupSuccess: '픽업 성공' }
+    kr: { unitTimes: '회', unitCount: '번', obtained: '획득', pickupSuccess: '한정 비율' }
   };
 
   const NAME = {
@@ -31,6 +31,9 @@
   const chartCanvas = qs('#globalDailyChart');
   const threeListsWrap = qs('#gsCards');
   const tabsWrap = qs('#gsTabs');
+  // tooltip helpers
+  function makeTooltipHost(canvas){ try { const host = canvas && canvas.parentElement; if (!host) return null; if (getComputedStyle(host).position === 'static') host.style.position = 'relative'; let tip = host.querySelector('.chart-tip'); if (!tip){ tip = document.createElement('div'); tip.className='chart-tip'; tip.style.position='absolute'; tip.style.pointerEvents='none'; tip.style.background='rgba(0,0,0,0.8)'; tip.style.border='1px solid rgba(255,255,255,0.25)'; tip.style.borderRadius='6px'; tip.style.padding='6px 8px'; tip.style.fontSize='12px'; tip.style.color='#fff'; tip.style.whiteSpace='pre-line'; tip.style.transform='translate(8px, -32px)'; tip.style.display='none'; host.appendChild(tip);} return tip; } catch(_) { return null; } }
+  const dailyTipEl = chartCanvas ? makeTooltipHost(chartCanvas) : null;
 
   if (titleEl) titleEl.textContent = LABELS.title;
   if (regionEl) {
@@ -305,6 +308,9 @@
   const pityTabs = qs('#pityTabs');
   const PITY_MAX = { Confirmed:110, Fortune:80, Gold:80, Weapon:70, Newcomer:50 };
   let pityDataCache = null; // region별 최근 가져온 원본 JSON 캐시
+  const pityTipEl = pityCanvas ? makeTooltipHost(pityCanvas) : null;
+  let pityRenderCache = null; // { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH }
+  let dailyRenderCache = null; // { labels, values, padL, padR, padT, padB, width, height }
   function renderPityTabs(){
     if (!pityTabs) return;
     pityTabs.innerHTML=''; pityTabs.classList.add('plain');
@@ -484,6 +490,8 @@
     };
     legend('#4da3ff', 'Chance %');
     legend('#ffdd6b', 'Total Pull 5★', 84);
+    // cache for hover
+    pityRenderCache = { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH };
   }
   
   
@@ -604,20 +612,43 @@
     }
   }
 
-  function drawSmoothLine(ctx, points){
-    if (points.length<2) return;
+  function drawSmoothLine(ctx, points, tension = 0.5) {
+    if (!points || points.length === 0) return;
+  
+    // 1~2개 포인트는 그대로 그리기
+    if (points.length === 1) {
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      ctx.lineTo(points[0].x, points[0].y);
+      ctx.stroke();
+      return;
+    }
+    if (points.length === 2) {
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      ctx.lineTo(points[1].x, points[1].y);
+      ctx.stroke();
+      return;
+    }
+  
+    const t = Math.max(0, Math.min(1, tension)); // 0=직선, 0.35~0.6 권장
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
-    for (let i=1;i<points.length;i++){
-      const prev = points[i-1];
-      const cur = points[i];
-      const cx = (prev.x + cur.x)/2;
-      const cy = (prev.y + cur.y)/2;
-      ctx.quadraticCurveTo(prev.x, prev.y, cx, cy);
+  
+    for (let i = 0; i < points.length - 1; i++) {
+      const p0 = points[i - 1] || points[i];
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const p3 = points[i + 2] || p2;
+  
+      const cp1x = p1.x + (p2.x - p0.x) * (t / 6);
+      const cp1y = p1.y + (p2.y - p0.y) * (t / 6);
+      const cp2x = p2.x - (p3.x - p1.x) * (t / 6);
+      const cp2y = p2.y - (p3.y - p1.y) * (t / 6);
+  
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
     }
-    const last = points[points.length-1];
-    const before = points[points.length-2];
-    ctx.quadraticCurveTo(before.x, before.y, last.x, last.y);
+  
     ctx.stroke();
   }
 
@@ -649,8 +680,9 @@
     const padT = 28, padB = 28;
     const W = width - padL - padR, H = height - padT - padB;
     const maxV = Math.max(1, Math.max(...values, 1));
+    const maxY = maxV * 1.05;
     const px = (i)=> padL + (labels.length<=1? 0 : (i * (W/(labels.length-1))));
-    const py = (v)=> padT + (H - (v/maxV)*H);
+    const py = (v)=> padT + (H - (v/maxY)*H);
 
     // legend
     const legendText = LABELS.pullsByDay;
@@ -684,6 +716,8 @@
     ctx.lineWidth = 2.5;
     drawSmoothLine(ctx, points);
     // no dots (요청 사항)
+    // cache for hover
+    dailyRenderCache = { labels, values, padL, padR, padT, padB, width, height };
   }
 
   async function refreshAll(){
@@ -703,4 +737,9 @@
   if (tabsWrap) renderTabs();
   if (pityTabs) renderPityTabs();
   if (regionEl){ refreshAll(); refreshPity(); }
+  // hover handlers
+  function attachDailyHover(){ if (!chartCanvas || !dailyTipEl) return; chartCanvas.addEventListener('mouseleave', ()=>{ dailyTipEl.style.display='none'; }); chartCanvas.addEventListener('mousemove', (ev)=>{ try { if (!dailyRenderCache) return; const rect = chartCanvas.getBoundingClientRect(); const x = ev.clientX - rect.left; const { labels, values, padL, padR, padT, padB, width, height } = dailyRenderCache; const W = (width||chartCanvas.clientWidth) - padL - padR; const H = (height||chartCanvas.clientHeight) - padT - padB; if (W<=0) return; const idx = Math.max(0, Math.min(labels.length-1, Math.round(((x - padL)/W)*(labels.length-1)))); const lx = padL + (labels.length<=1?0:(idx*(W/(labels.length-1)))); const ly = padT + (H - (values[idx]/Math.max(1, Math.max(...values,1)))*H); dailyTipEl.style.left = `${lx}px`; dailyTipEl.style.top = `${ly}px`; dailyTipEl.style.display = 'block'; dailyTipEl.textContent = `${labels[idx]}\nTotal 5★: ${numberFmt(values[idx])}`; } catch(_){} }); }
+  function attachPityHover(){ if (!pityCanvas || !pityTipEl) return; pityCanvas.addEventListener('mouseleave', ()=>{ pityTipEl.style.display='none'; }); pityCanvas.addEventListener('mousemove', (ev)=>{ try { if (!pityRenderCache) return; const { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH } = pityRenderCache; const rect = pityCanvas.getBoundingClientRect(); const x = ev.clientX - rect.left; const W = (cssW||pityCanvas.clientWidth) - padL - padR; const colW = W / maxX; const idx = Math.max(1, Math.min(maxX, Math.round((x - padL)/colW + 0.5))); const bx = padL + (idx - 0.5)*colW; const by = padT + 8; pityTipEl.style.left = `${bx}px`; pityTipEl.style.top = `${by}px`; pityTipEl.style.display='block'; const chance = acc[idx-1]||0; const cnt = bars[idx-1]||0; pityTipEl.textContent = `Pity ${idx}\nChance%: ${numberFmt(chance,2)}\nTotal Pull 5★: ${numberFmt(cnt)}`; } catch(_){} }); }
+  attachDailyHover();
+  attachPityHover();
 })();

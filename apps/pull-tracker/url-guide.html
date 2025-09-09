@@ -19,19 +19,22 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     <h1 id="pageTitle">URL 가이드</h1>
   </div>
 
+  
+    <!-- 2) PC Windows 안내 -->
+    <div class="step-row">
+
+        <div class="content guide-card" data-step="1"><p class="guide-text" id="s2">현재는 PC Windows에서의 방법만 제공하고 있습니다.</p></div>
+      </div> 
+
+
     <!-- 1) FAQ -->
     <div class="step-row">
 
-      <div class="content guide-card" data-step="1"><p class="guide-text" id="s1">FAQ를 확인하세요.</p>
+      <div class="content guide-card" data-step="2"><p class="guide-text" id="s1">FAQ를 확인하세요.</p>
         <button id="openFaq" class="btn-outline" data-i18n="btnFaq">FAQ</button>
       </div>
     </div>
 
-    <!-- 2) PC Windows 안내 -->
-    <div class="step-row">
-
-      <div class="content guide-card" data-step="2"><p class="guide-text" id="s2">현재는 PC Windows에서의 방법만 제공하고 있습니다.</p></div>
-    </div>
 
     <!-- 3) 방법 선택 -->
     <div class="step-row">
@@ -56,7 +59,7 @@ description: "가챠 기록 URL을 얻는 방법 안내"
         <div class="content guide-card" data-step="5"><p class="guide-text" id="m1s2">다음 프로그램을 다운받아 실행하세요.</p> 
             <a class="guide-text"  href="https://github.com/iantCode/P5X_Gacha_Link" target="_blank">source code</a>
           <div class="pill-row">
-            <a class="pill" id="downloadBtn" href="https://iant.kr/gacha" target="_blank" style="text-decoration: none;">프로그램 다운로드</a>
+            <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank" style="text-decoration: none;">프로그램 다운로드</a>
             <button class="btn-outline" id="openProgInfo">프로그램에 대하여</button>
 
           </div>
@@ -211,16 +214,16 @@ description: "가챠 기록 URL을 얻는 방법 안내"
         const params = new URLSearchParams(location.search); const lang = (params.get('lang')||'kr').toLowerCase();
         const map = {
           kr: { back: '계약 통계', current:'URL 가이드', title:'URL 가이드',
-            s1:'FAQ를 확인하세요.', s2:'현재는 PC Windows에서의 방법만 제공하고 있습니다.', s3:'원하는 방법을 선택하세요',
-            m1s1:'PC에서 P5X을 실행하세요.', m1s2:'다음 프로그램을 다운받아 실행하세요.', m1s3:'계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4:'지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5:'프로그램을 닫아주세요.', m1s6:'복사된 URL을 아래 링크에서 입력해주세요.',
-            prog:'프로그램에 대하여', dl:'프로그램 다운로드', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.' },
+            s1:'FAQ를 확인하세요.', s2:'현재는 PC Windows에서의 방법만 제공하고 있습니다.', s3:'원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
+            m1s1:'PC에서 P5X을 실행하세요.', m1s2:'다음 링크에서 P5X_Gacha_Tools를 다운받아 압축을 풀고 실행하세요.', m1s3:'P5X에서 계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4:'지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5:'프로그램을 닫아주세요.', m1s6:'복사된 URL을 아래 링크에서 입력해주세요.',
+            prog:'프로그램에 대하여', dl:'프로그램 제공 링크', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.' },
           en: { back: 'Pull Tracker', current:'URL Guide', title:'URL Guide',
-            s1:'Check the FAQ.', s2:'Currently, only the PC Windows method is provided.', s3:'Choose a method',
-            m1s1:'Run P5X on your PC.', m1s2:'Download and run the program below.', m1s3:'Open the gacha history. Errors are expected.', m1s4:'Select region, click [Try Find URL], then press Copy to obtain the URL.', m1s5:'Close the program.', m1s6:'Go to URL input',
-            prog:'About the Program', dl:'Download Program', m2s1:'See the following link for method 2.', m2s2:'Go to URL input' },
+            s1:'Check the FAQ.', s2:'Currently, only the PC Windows method is provided.', s3:'Choose a method. Use the program / Direct URL extraction',
+            m1s1:'Run P5X on your PC.', m1s2:'Download P5X_Gacha_Tools from the following link, unzip it, and run it.', m1s3:'Open the gacha history in game P5X. Errors are expected.', m1s4:'Select region, click [Try Find URL], then press Copy to obtain the URL.', m1s5:'Close the program.', m1s6:'Go to URL input',
+            prog:'About the Program', dl:'Program Link', m2s1:'See the following link for method 2.', m2s2:'Go to URL input' },
           jp: { back: 'ガチャ履歴', current:'URL ガイド', title:'URL ガイド',
-            s1:'FAQ を確認してください。', s2:'現在は PC Windows の方法のみ提供しています。', s3:'方法を選択してください',
-            m1s1:'PC で P5X を起動します。', m1s2:'以下のプログラムをダウンロードして実行します。', m1s3:'契約履歴を開きます。エラーは正常です。', m1s4:'地域を選択後［Try Find URL］をクリックし、Copy で URL を取得してください。', m1s5:'プログラムを終了してください。', m1s6:'URL入力へ',
+            s1:'FAQ を確認してください。', s2:'現在は PC Windows の方法のみ提供しています。', s3:'方法を選択してください. プログラムを使用 / 直接 URL 抽出',
+            m1s1:'PC で P5X を起動します。', m1s2:'次のリンクからP5X_Gacha_Toolsをダウンロードして解凍して実行してください。', m1s3:'ゲームP5Xでガチャ履歴を開く。エラーは正常です。', m1s4:'地域を選択後［Try Find URL］をクリックし、Copy で URL を取得してください。', m1s5:'プログラムを終了してください。', m1s6:'URL入力へ',
             prog:'プログラムについて', dl:'プログラムをダウンロード', m2s1:'次のリンクで方法をご確認ください。', m2s2:'URL入力へ' }
         };
         const t = map[lang]||map.kr;

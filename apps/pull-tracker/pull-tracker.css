@@ -2,6 +2,7 @@
 .card-style { background:#3d3030; border:1px solid rgba(255,255,255,.08); border-radius:12px; margin:0 20px; }
 .summary-cards { margin:0 20px; }
 .section-divider { height:1px; background:rgba(255,255,255,.08); margin:16px 20px; }
+.header-container {padding-bottom: 0px;}
 
 /* Top URL row */
 .url-row { display:flex; gap:8px; flex-wrap: wrap; flex-direction: column; }
@@ -77,7 +78,7 @@ details[open] > summary::before { content:'-'; }
 
 /* Global header */
 .global-header { display:flex; align-items:center; flex-wrap: wrap; gap:16px; margin: 0 0px 16px 0px; row-gap: 0px;}
-.global-note { opacity:.7; font-size:12px; }
+.global-note { opacity:.7; font-size:12px; white-space:pre-line}
 .chart-card { padding:16px; margin: 16px 20px; }
 
 /* Global info 4-col */
@@ -143,7 +144,7 @@ details[open] > summary::before { content:'-'; }
 
 /* 3-column lists container and tabs */
 .gs-lists { display:flex; gap:12px; align-items:flex-start;}
-@media (max-width: 768px) { .gs-lists { flex-wrap:wrap; } }
+@media (max-width: 1200px) { .gs-lists { flex-wrap:wrap; } }
 .gs-lists > .rank-card { flex: 1 1 calc((100% - 24px)/3); min-width:260px; }
 /* 각 카드(열)는 동일 폭, 내부 내용 높이에 따라 개별로 커지도록 함 */
 .gs-tabs { display:flex; gap:8px; margin: 0 0 10px 0; flex-wrap: wrap; }

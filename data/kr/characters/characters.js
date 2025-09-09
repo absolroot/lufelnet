@@ -1749,7 +1749,7 @@ const characterData = {
         "persona_jp": "アプセウデス",
         "name": "YUI",
         "name_en": "YUI",
-        "name_jp": "ユイ",
+        "name_jp": "YUI",
         "codename": "BUI",
         "skill_item": 2,
         "sub_revel2": ["공격력", "대미지보너스"],

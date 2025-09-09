@@ -108,6 +108,7 @@
     const t = messages[lang] || messages.kr;
 
     const els = {
+        home: document.getElementById('navhome'),
         title: document.getElementById('pageTitle'),
         navCurrent: document.getElementById('navCurrent'),
         inputLabel: document.getElementById('inputLabel'),
@@ -123,6 +124,7 @@
     };
 
     function applyTexts() {
+        if(els.home) els.home.textContent = t.navhome;
         if (els.title) els.title.textContent = t.pageTitle;
         if (els.navCurrent) els.navCurrent.textContent = t.navCurrent;
         const guideBtn = document.getElementById('openGuideBtn');

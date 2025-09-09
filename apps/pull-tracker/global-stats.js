@@ -4,9 +4,9 @@
   const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
 
   const LABELS = {
-    kr: { title: '전체 통계', avg: '평균', count: '5★ 합계', loseRate: '50:50 패배율', pullsByDay: '5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' },
-    en: { title: 'Global Stats', avg: 'Avg', count: '5★ Count', loseRate: 'Lose 50:50 %', pullsByDay: '5★ Pulls By Day', charAvg:'Character 5★ Avg', charLimitedAvg:'Char Limited 5★ Avg', charCnt:'Character 5★ Count', weapAvg:'Weapon 5★ Avg', weapLimitedAvg:'Weapon Limited 5★ Avg', weapCnt:'Weapon 5★ Count' },
-    jp: { title: '全体統計', avg: '平均', count: '★5 合計', loseRate: '50:50 敗北率', pullsByDay: '★5 日別回数', charAvg:'キャラ ★5 平均', charLimitedAvg:'キャラ限定 ★5 平均', charCnt:'キャラ ★5 獲得数', weapAvg:'武器 ★5 平均', weapLimitedAvg:'武器限定 ★5 平均', weapCnt:'武器 ★5 獲得数' }
+    kr: { navhome: '홈', title: '전체 통계', avg: '평균', count: '5★ 합계', loseRate: '50:50 패배율', pullsByDay: '5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' },
+    en: { navhome: 'Home', title: 'Global Stats', avg: 'Avg', count: '5★ Count', loseRate: 'Lose 50:50 %', pullsByDay: '5★ Pulls By Day', charAvg:'Character 5★ Avg', charLimitedAvg:'Char Limited 5★ Avg', charCnt:'Character 5★ Count', weapAvg:'Weapon 5★ Avg', weapLimitedAvg:'Weapon Limited 5★ Avg', weapCnt:'Weapon 5★ Count' },
+    jp: { navhome: 'ホーム', title: '全体統計', avg: '平均', count: '★5 合計', loseRate: '50:50 敗北率', pullsByDay: '★5 日別回数', charAvg:'キャラ ★5 平均', charLimitedAvg:'キャラ限定 ★5 平均', charCnt:'キャラ ★5 獲得数', weapAvg:'武器 ★5 平均', weapLimitedAvg:'武器限定 ★5 平均', weapCnt:'武器 ★5 獲得数' }
   }[lang] || { title:'전체 통계', avg:'평균', count:'5★ 합계', loseRate:'50:50 패배율', pullsByDay:'5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' };
 
   // i18n phrases
@@ -24,6 +24,7 @@
 
   const ICONS = { Confirmed:'정해진 운명.png', Fortune:'정해진 운명.png', Gold:'미래의 운명.png', Weapon:'정해진 코인.png', Newcomer:'미래의 운명.png' };
 
+  const homeEl = qs('#navhome');
   const regionEl = qs('#globalRegion');
   const titleEl = qs('#globalStatsTitle');
   const cardsWrap = qs('#globalCards');
@@ -35,6 +36,7 @@
   function makeTooltipHost(canvas){ try { const host = canvas && canvas.parentElement; if (!host) return null; if (getComputedStyle(host).position === 'static') host.style.position = 'relative'; let tip = host.querySelector('.chart-tip'); if (!tip){ tip = document.createElement('div'); tip.className='chart-tip'; tip.style.position='absolute'; tip.style.pointerEvents='none'; tip.style.background='rgba(0,0,0,0.8)'; tip.style.border='1px solid rgba(255,255,255,0.25)'; tip.style.borderRadius='6px'; tip.style.padding='6px 8px'; tip.style.fontSize='12px'; tip.style.color='#fff'; tip.style.whiteSpace='pre-line'; tip.style.transform='translate(8px, -32px)'; tip.style.display='none'; host.appendChild(tip);} return tip; } catch(_) { return null; } }
   const dailyTipEl = chartCanvas ? makeTooltipHost(chartCanvas) : null;
 
+  if (homeEl) homeEl.textContent = LABELS.navhome;
   if (titleEl) titleEl.textContent = LABELS.title;
   if (regionEl) {
     const def = lang==='en'? 'EN' : lang==='jp'? 'JP' : 'KR';

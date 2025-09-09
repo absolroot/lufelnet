@@ -114,7 +114,12 @@ details[open] > summary::before { content:'-'; }
 @media (max-width: 640px) {
   .cards-grid, .overview-grid, .global-cards, .info-cards-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 768px) { #result { min-height: 120px; } }
+@media (max-width: 768px) { 
+    #result { min-height: 120px; } 
+    .navigation-path, .header-container {padding-left:0px; padding-right: 0px;}
+    .user-info-bar {margin-left:0px; margin-right:0px; flex-wrap: wrap;}
+    .card-style, .section-divider, .summary-cards {margin-left:0px; margin-right:0px;}
+}
 
 
 

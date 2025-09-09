@@ -168,7 +168,7 @@ class Navigation {
                     <span data-text="${texts.wonderweapon}">${texts.wonderweapon}</span>
                 </a>
                 ` : ''}
-                <!--
+                
                 ${currentMenus.includes('pullTracker') ? `
                 <div class="nav-item has-submenu" data-nav="pullTracker">
                     <div class="nav-main-item">
@@ -184,7 +184,7 @@ class Navigation {
                         </a>
                     </div>
                 </div>
-                ` : ''}-->
+                ` : ''}
                 ${currentMenus.includes('calculator') ? `
                 <div class="nav-item has-submenu" data-nav="calculator">
                     <div class="nav-main-item">

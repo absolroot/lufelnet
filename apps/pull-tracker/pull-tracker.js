@@ -2,6 +2,7 @@
     // Simple local i18n
     const messages = {
         kr: {
+            navhome: '홈',
             pageTitle: '계약 트래커 (beta)',
             navCurrent: '계약 트래커',
             inputLabel: 'URL 획득 방법',
@@ -34,6 +35,7 @@
             noData: '저장된 데이터가 없습니다.'
         },
         en: {
+            navhome: 'Home',
             pageTitle: 'Pull Tracker (beta)',
             navCurrent: 'Pull Tracker',
             inputLabel: 'How to get URL',
@@ -66,6 +68,7 @@
             noData: 'No saved data.'
         },
         jp: {
+            navhome: 'ホーム',
             pageTitle: 'ガチャ履歴 (beta)',
             navCurrent: 'ガチャ履歴',
             inputLabel: 'URL取得方法',
@@ -73,7 +76,7 @@
             start: '取得',
             clear: 'クリア',
             infoReady: '祈願履歴のURLを貼り付けて、取得を押してください。',
-            infoNotice: '直近90日の記録のみ取得できます。以前の記録はゲームサーバーでは提供されません。\n試行回数が多い場合、読み込みに5分以上かかることがあります。各URLには有効期限があり、期限切れ時に再取得が必要です。',
+            infoNotice: '契約履歴のURLを貼り付けて、"取得"ボタンを押してください。\n直近90日の履歴のみ取得できます。それ以前の履歴は、ゲームサーバーから取得できません。\n契約回数が多い場合、読込に5分以上かかる可能性があります。各URLには有効期限があるため、期限が切れた場合は再取得が必要です。',
             loadingTitle: 'サーバーから履歴を取得しています...',
             loadingDetail: 'ネットワーク状況やサーバー負荷により時間がかかる場合があります。',
             noticeLong: '直近90日のガチャ数によっては10分以上かかる場合があります。処理中はブラウザを閉じないでください。',
@@ -629,19 +632,19 @@
             const pickupWin = (Number(blocks.pickup[0]?.summary?.win5050)||0)+(Number(blocks.pickup[1]?.summary?.win5050)||0);
             const pickupRate = (pickup.t5>0) ? (pickupWin / pickup.t5 * 100) : null;
             const pickupAvg = (pickupWin>0) ? (pickup.effTotal / pickupWin) : null;
-            const pickupLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ ピックアップ':'5성 픽업')}`; 
+            const pickupLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ PICKUP':'5성 픽업')}`; 
             const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate!=null?numberFmt(pickupRate,2)+'%':'-'}</div><div class=\"td\">${pickupAvg!=null?numberFmt(pickupAvg,2):'-'}</div></div>`;
 
             const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050)||0);
             const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star)||0);
-            const weaponLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ ピックアップ':'5성 픽업')}`;
+            const weaponLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ PICKUP':'5성 픽업')}`;
             const weaponAvg = weaponWin>0 ? (weapon.effTotal/weaponWin) : null;
             const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5>0?numberFmt(weaponWin/weaponTotal5*100,2)+'%':'-'}</div><div class=\"td\">${weaponAvg!=null?numberFmt(weaponAvg,2):'-'}</div></div>`;
 
             const wrap = els.overview;
             wrap.innerHTML='';
             const iconMap = { pickup: '정해진 운명.png', weapon: '정해진 코인.png', standard: '미래의 운명.png' };
-            wrap.appendChild(makeCard('pickup', (lang==='en'?'Pickup':(lang==='jp'?'ピックアップ':'픽업')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
+            wrap.appendChild(makeCard('pickup', (lang==='en'?'Pickup':(lang==='jp'?'PICKUP':'픽업')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
             wrap.appendChild(makeCard('weapon', (lang==='en'?'Weapon':(lang==='jp'?'武器':'무기')), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
             wrap.appendChild(makeCard('standard', (lang==='en'?'Standard':(lang==='jp'?'通常':'일반')), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
         } catch(_) {}
@@ -1163,7 +1166,7 @@
         const map = {
             kr: { gold: '일반', fortune: '운명', weapon: '무기', confirmed: '확정', newcomer: '신규' },
             en: { gold: 'Gold', fortune: 'Fortune', weapon: 'Weapon', confirmed: 'Confirmed', newcomer: 'Newcomer' },
-            jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', confirmed: '確定', newcomer: 'ニューカマー' }
+            jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', confirmed: '確定', newcomer: '新米怪盗サポート' }
         };
         const dict = map[lang] || map.kr;
         return dict[key] || key;
@@ -1223,7 +1226,7 @@
                 total: '総ガチャ数',
                 totalInProgress: '総数 / 進行中',
                 count: '合計',
-                rate: '率',
+                rate: '割合',
                 avg: '平均回数',
                 win: '勝利',
                 rule: '保証',
@@ -1233,7 +1236,7 @@
                 tooltip_fortune: 'フォーチュン: 5★ 80回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。',
                 tooltip_gold: '通常: 5★ 80回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
                 tooltip_weapon: '武器: 5★ 70回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。',
-                tooltip_newcomer: 'ニューカマー: 5★ 50回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
+                tooltip_newcomer: '新米怪盗サポート: 5★ 50回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
                 fiveTotal: '5★ 回数',
                 fivePityRate: '5★ 率',
                 fiveAvg: '5★ 平均回数',

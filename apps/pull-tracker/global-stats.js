@@ -6,7 +6,7 @@
   const LABELS = {
     kr: { title: '전체 통계', avg: '평균', count: '5★ 합계', loseRate: '50:50 패배율', pullsByDay: '5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' },
     en: { title: 'Global Stats', avg: 'Avg', count: '5★ Count', loseRate: 'Lose 50:50 %', pullsByDay: '5★ Pulls By Day', charAvg:'Character 5★ Avg', charLimitedAvg:'Char Limited 5★ Avg', charCnt:'Character 5★ Count', weapAvg:'Weapon 5★ Avg', weapLimitedAvg:'Weapon Limited 5★ Avg', weapCnt:'Weapon 5★ Count' },
-    jp: { title: '全体統計', avg: '平均', count: '5★ 合計', loseRate: '50:50 敗北率', pullsByDay: '5★ 日別回数', charAvg:'キャラ 5★ 平均', charLimitedAvg:'キャラ限定 5★ 平均', charCnt:'キャラ 5★ 獲得数', weapAvg:'武器 5★ 平均', weapLimitedAvg:'武器限定 5★ 平均', weapCnt:'武器 5★ 獲得数' }
+    jp: { title: '全体統計', avg: '平均', count: '★5 合計', loseRate: '50:50 敗北率', pullsByDay: '★5 日別回数', charAvg:'キャラ ★5 平均', charLimitedAvg:'キャラ限定 ★5 平均', charCnt:'キャラ ★5 獲得数', weapAvg:'武器 ★5 平均', weapLimitedAvg:'武器限定 ★5 平均', weapCnt:'武器 ★5 獲得数' }
   }[lang] || { title:'전체 통계', avg:'평균', count:'5★ 합계', loseRate:'50:50 패배율', pullsByDay:'5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' };
 
   // i18n phrases
@@ -19,7 +19,7 @@
   const NAME = {
     kr: { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' },
     en: { Confirmed:'Confirmed', Fortune:'Fortune', Gold:'Gold', Weapon:'Weapon', Newcomer:'Newcomer' },
-    jp: { Confirmed:'確定', Fortune:'フォーチュン', Gold:'通常', Weapon:'武器', Newcomer:'ニューカマー' }
+    jp: { Confirmed:'確定', Fortune:'フォーチュン', Gold:'通常', Weapon:'武器', Newcomer:'新米怪盗サポート' }
   }[lang] || { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' };
 
   const ICONS = { Confirmed:'정해진 운명.png', Fortune:'정해진 운명.png', Gold:'미래의 운명.png', Weapon:'정해진 코인.png', Newcomer:'미래의 운명.png' };
@@ -270,9 +270,9 @@
 
       const ag = aggregateCharacters(json);
       threeListsWrap.innerHTML = '';
-      const tLimited = (lang==='en'? '5★ Limited List' : (lang==='jp'? '5★ 限定リスト' : '5★ 한정 리스트'));
-      const tStandard = (lang==='en'? '5★ Standard List' : (lang==='jp'? '5★ 通常リスト' : '5★ 통상 리스트'));
-      const tWeapon = (lang==='en'? '5★ Weapon List' : (lang==='jp'? '5★ 武器リスト' : '5★ 무기 리스트'));
+      const tLimited = (lang==='en'? '5★ Limited List' : (lang==='jp'? '★5 限定リスト' : '5★ 한정 리스트'));
+      const tStandard = (lang==='en'? '5★ Standard List' : (lang==='jp'? '★5 通常リスト' : '5★ 통상 리스트'));
+      const tWeapon = (lang==='en'? '5★ Weapon List' : (lang==='jp'? '★5 武器リスト' : '5★ 무기 리스트'));
       threeListsWrap.appendChild(createListCard(tLimited, ag.limited, 'character', 10));
       threeListsWrap.appendChild(createListCard(tStandard, ag.standard, 'character', 10));
       threeListsWrap.appendChild(createListCard(tWeapon, ag.weapon, 'weapon', 10));
@@ -518,7 +518,7 @@
     el.appendChild(top);
 
     const big = document.createElement('p'); big.className='big ' + (kind==='Weapon'?'weapon':'char');
-    const small = document.createElement('span'); small.textContent = '5★ '; small.style.opacity = .9; small.style.fontSize='12px'; small.style.marginRight='4px';
+    const small = document.createElement('span'); small.textContent = '★5 '; small.style.opacity = .9; small.style.fontSize='12px'; small.style.marginRight='4px';
     const UNIT_TIMES = (I18N[lang]||I18N.kr).unitTimes;
     big.textContent = avg!=null? `${numberFmt(avg,1)} ${UNIT_TIMES}` : '-';
     big.prepend(small);

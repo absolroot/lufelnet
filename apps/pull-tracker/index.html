@@ -32,7 +32,7 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
         <div style="display:flex; flex-direction:column; gap:12px; max-width:860px;">
             <div class="url-row" style="gap:8px;">
                 <div style="display:flex;gap:8px;align-items:center;">
-                    <button id="openGuideBtn" class="url-btn">URL 가이드</button>
+                    <button id="openGuideBtn" class="url-btn"><span class="help-icon"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/><path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/></svg></span><span style="margin-left:6px;">URL 획득방법</span></button>
                 </div>
                 <div style="display:flex;gap:8px;align-items:center;">
                     <input id="sourceUrl" type="url" inputmode="url" placeholder="https://..." class="url-input">
@@ -73,102 +73,30 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
         <div id="cards" class="cards-grid" data-example="{{ site.baseurl }}/apps/pull-tracker/example.json"></div>
     </section>
 
-    <!-- Help Text -->
-    <section class="summary-cards" style="margin-top:12px;">
-        <div id="ptHelpText" class="help-text"></div>
+
+    <!-- Global Stats Divider -->
+    <div class="section-divider"></div>
+    <section class="summary-cards" id="globalStatsSection" style="margin-top:16px;">
+        <div class="global-header">
+            <h3 id="globalStatsTitle">전체 통계</h3>
+            <select id="globalRegion" class="url-input" style="flex:0 0 140px; padding:8px 10px; font-size:13px;">
+                <option value="EN">EN</option>
+                <option value="JP">JP</option>
+                <option value="SEA">SEA</option>
+                <option value="KR">KR</option>
+                <option value="CN">CN</option>
+                <option value="TW">TW</option>
+            </select>
+        </div>
+        <div id="globalInfoCards" class="info-cards-grid"></div>
+        <div class="card-style chart-card">
+            <canvas id="globalDailyChart" class="overview-chart" style="height:180px;margin-top:0px;"></canvas>
+        </div>
+        <div id="globalCards" class="global-cards"></div>
     </section>
 
-    <style>
-        .card-style { background:#3d3030; border:1px solid rgba(255,255,255,.08); border-radius:12px; margin:0 20px;}
-        .summary-cards { margin:0 20px;}
-        @media (max-width: 1200px) {
-            .card-style, .summary-cards { margin: 0px;}
-            .header-container, .navigation-path { padding-left: 0px; padding-right: 0px;}
-        }
-
-        @media (max-width: 768px) { #result { min-height: 120px; } }
-        .cards-grid { display:grid; grid-template-columns: repeat(3, minmax(220px,1fr)); gap:12px; }
-        @media (max-width: 1200px) { .cards-grid { grid-template-columns: repeat(2, minmax(160px,1fr)); } }
-        @media (max-width: 640px) { .cards-grid { grid-template-columns: 1fr; } }
-        .stat-card { background:#3f3135; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px 16px 24px 16px; }
-        .stat-card h3 { margin:0 0 0px 0; font-size:16px; }
-        .stat { display:flex; justify-content:space-between; margin:4px 0; opacity:.95; font-size:14px; }
-        .stat-table { width:100%; margin-top:6px; border-top:1px solid rgba(255,255,255,.08); }
-        .stat-table .tr { display:grid; grid-template-columns: 1.2fr .8fr .8fr .8fr; gap:6px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.06); }
-        .stat-table .th { opacity:.8; font-weight:600; font-size:12px; }
-        .stat-table .td { font-size:13px; }
-        .stat-table .star { font-weight:700; }
-        .stat-table .tr .td:first-child { font-weight:700; }
-        .stat-table .sub { opacity:.9; }
-        .tr.five .td, .tr.five .star { color:#8fd9ff; }
-        .tr.fifty .td { color:#8fd9ff; }
-        .tr.four .td, .tr.four .star { color:#ffc17c; }
-        .pills { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; }
-        .pill { position:relative; background:#140d0a70; border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:4px 8px; font-size:12px; opacity:.95; }
-        /* Fancy grade borders */
-        .grade-5 { position: relative; border-radius:10px; }
-        .grade-5::after { content:""; position:absolute; inset:0; padding:1px; border-radius:inherit; opacity:0.6; background: linear-gradient(45deg, #b1c0ec, #efefef, #c4ffff, #efefef, #e4c2d3, #efefef, #c6a9f9, #ba7f96, #efefef, #c4ffff); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; background-size:150% auto; }
-        .grade-4 { position: relative; border-radius:10px; }
-        /* .grade-4::after { content:""; position:absolute; inset:0; padding:1px; border-radius:inherit; background:  #ffc17c; opacity:0.5; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; background-size:150% auto; }*/
-        .h3-row { display:flex; align-items:center; gap:8px; margin-bottom: 12px; }
-        .help-icon { position:relative; display:inline-flex; width:18px; height:18px; color:#fff; opacity:.8; cursor:help; }
-        .help-icon svg { width:18px; height:18px; }
-        .help-icon .help-tip { position:absolute; top:120%; right:0; white-space:nowrap; background:#181212; color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:6px; padding:8px 10px; font-size:12px; opacity:0; pointer-events:none; transform:translateY(-4px); transition:opacity .15s ease, transform .15s ease; z-index:50; filter:none; backdrop-filter:none; }
-        .help-icon:hover .help-tip { opacity:1; transform:translateY(0); }
-        .pill { display:inline-flex; align-items:center; gap:6px; }
-        .pill img { width:18px; height:18px; object-fit:cover; border-radius:50%; aspect-ratio:1/1; }
-        /* five list */
-        .five-list { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
-        .five-row { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-top:1px solid rgba(255,255,255,.06); }
-        .five-left { display:inline-flex; align-items:center; gap:8px; font-size:12px;}
-        .five-right { display:inline-flex; align-items:center; gap:12px; opacity:.85; font-size:12px; }
-        details { margin-top:20px; background:#0c080691; border:1px solid rgba(255,255,255,.06); border-radius:8px; padding:6px 10px; }
-        details > summary { cursor:pointer; list-style:none; font-size:13px; color: #ededed }
-        details > summary::marker { display:none; }
-        details > summary::before { content:'+'; display:inline-block; width:16px; margin-right:6px; opacity:.8; }
-        details[open] > summary::before { content:'-'; }
-        .card-title-icon { object-fit:cover; height:18px; }
-        .inprogress { opacity:.7; font-size:12px; }
-        /* URL row */
-        .url-row { display:flex; gap:8px; flex-wrap: wrap; flex-direction: column;}
-        .url-input { flex:1; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#1a110e; color:#fff; outline:none; transition:border-color .15s ease; }
-        .url-input:focus { border-color:#b38b6d; }
-        .url-btn { padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#231510; color:#fff; cursor:pointer; }
-        .url-btn.primary { background:#4e2e20; border-color:#6d4a37; }
-        .url-btn.primary:hover { background:#5a3727; }
-        .url-btn.secondary:hover { background:#2a1a13; }
-        .url-info { opacity:.85; font-size:14px; white-space:pre-line; }
-        .url-status { line-height:1.6; font-size:14px; color: #ffe0e0 }
-
-        /* Overview grid */
-        .overview-grid { display:grid; grid-template-columns: repeat(3, minmax(220px,1fr)); gap:12px; }
-        @media (max-width: 1200px) { .overview-grid { grid-template-columns: repeat(2, minmax(160px,1fr)); } }
-        @media (max-width: 640px) { .overview-grid { grid-template-columns: 1fr; } }
-        .overview-card { background:#3d3030; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px; }
-        .overview-card h3 { margin:0 0 0px 0; font-size:16px; display:flex; align-items:center; gap:8px; }
-        .overview-rows { display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap:6px; margin-top:6px; }
-        .overview-label { opacity:.85; font-size:12px; grid-column: 1 / -1; margin-top:6px; }
-        .jewel { object-fit:cover; height:16px; vertical-align:-3px; margin-right:0px; }
-        .overview-chart { width:100%; height:140px; display:block; margin-top:8px; }
-        .section-divider { height:1px; background:rgba(255,255,255,.08); margin:16px 20px; }
-        /* Loading overlay */
-        /* minimal inline spinner */
-        .spinner { width:16px; height:16px; border-radius:50%; border:2px solid rgba(255,255,255,.2); border-top-color:#fff; animation:spin 1s linear infinite; display:inline-block; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        /* Tooltip newline support */
-        .cursor-tooltip { white-space: pre-line; }
-        .tooltip-mobile-banner { white-space: pre-line; }
-        /* DEBUG raw response */
-        .raw-response { margin-top:8px; padding:10px; background:#0c0806; border:1px solid rgba(255,255,255,.12); color:#e8e8e8; border-radius:8px; max-height:260px; overflow:auto; white-space:pre-wrap; word-break:break-all; }
-        .hide4-toggle { display:inline-block; font-size:12px; opacity:.9; }
-        /* User bar */
-        .user-info-bar { display:flex; align-items:center; gap:10px; margin:8px 20px 20px 20px; padding:8px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; }
-        .user-info-bar .user-label { color:rgba(255,255,255,0.85); }
-        .auth-btn { background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.35); padding:6px 10px; border-radius:6px; cursor:pointer; }
-        .auth-btn:hover { background: rgba(255,255,255,0.08); }
-        .help-text { opacity:.85; font-size:12px; white-space:pre-line; text-align: left; margin: 20px 0px 40px 0px; padding: 12px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); line-height: 1.8; }
-
-    </style>
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
 
     <!-- modal loader removed; using inline spinner near status -->
     <!-- Google Identity Services & GAPI for Drive API -->
@@ -178,6 +106,7 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
     <script src="{{ site.baseurl }}/apps/pull-tracker/merge-engine.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/lostlist.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/charts.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/global-stats.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.js?v={{ site.time | date: '%s' }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -212,13 +141,56 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
             try {
                 const el = document.getElementById('ptHelpText');
                 const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
-                const KR = `·  로컬 데이터는 개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\n·  구글 드라이브 로그인을 통해 여러분의 Google Drive에서 내용을 저장하고 동기화할 수 있습니다.\n·  URL을 통해 제출된 정보는 계정 정보는 포함하지 않으며, 데이터는 통계(iant.kr/gacha)에 사용될 수 있습니다.\n·  Special Thanks To : Iant / TheROoNCo`;
+                const KR = `·  로컬 데이터는 개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\n·  구글 드라이브 로그인을 통해 여러분의 Google Drive에서 내용을 저장하고 동기화할 수 있습니다.\n·  URL을 통해 제출된 정보는 계정 정보를 비롯한 어떤 유저 식별자도 포함하지 않으며, 데이터는 통계(iant.kr/gacha)에 사용될 수 있습니다.\n·  Special Thanks To : Iant / TheROoNCo`;
                 const EN = `·  Local data is stored in your browser and will be deleted if you clear browsing data.\n·  By signing in with Google Drive, you can save and sync your data in your Google Drive.\n·  Data submitted via URL does not include account information; it may be used for statistics (iant.kr/gacha).\n·  Special Thanks To : Iant / TheROoNCo`;
                 const JP = `·  ローカルデータはお使いのブラウザに保存され、閲覧データをすべて削除すると消去されます。\n·  Google ドライブにログインすると、ご自身の Google Drive に保存・同期できます。\n·  URL で送信される情報にアカウント情報は含まれません。データは統計（iant.kr/gacha）に利用される場合があります。\n·  Special Thanks To : Iant / TheROoNCo`;
                 if (el) el.textContent = (lang==='en'?EN:(lang==='jp'?JP:KR));
             } catch(_) {}
         });
     </script>
+
+    <!-- Help Text -->
+    <section class="summary-cards" style="margin-top:12px;">
+        <div id="ptHelpText" class="help-text"></div>
+    </section>
+    
+    <!-- 광고 -->
+    <div class="ads-container responsive-padding">
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-gc+3n+7a-ag-4h"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="5373524213"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+        
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    <!---->
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    </div>
 </div>
 
 

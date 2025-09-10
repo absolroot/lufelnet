@@ -35,12 +35,22 @@ description: "가챠 기록 URL을 얻는 방법 안내"
       </div>
     </div>
 
-
-    <!-- 3) 방법 선택 -->
+    <!-- OS 선택 -->
     <div class="step-row">
+      <div class="content guide-card" data-step="3"><p class="guide-text" id="s2"></p>
+        <div class="pill-row" style="margin-top:6px;">
+          <button class="pill active" id="osWin">Windows</button>
+          <button class="pill" id="osIOS">iOS</button>
+        </div>
+      </div>
+    </div>
 
-      <div class="content guide-card" data-step="3"><p class="guide-text" id="s3">원하는 방법을 선택하세요</p>
-        <div class="pill-row">
+
+    <!-- 4) 방법 선택 (Windows 전용) -->
+    <div class="step-row" id="methodStep">
+
+      <div class="content guide-card" data-step="4"><p class="guide-text" id="s3">원하는 방법을 선택하세요</p>
+        <div class="pill-row" id="methodPills">
           <button class="pill active" id="m1">1</button>
           <button class="pill" id="m2">2</button>
         </div>
@@ -51,29 +61,29 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     <div id="m1block">
       <div class="step-row">
   
-        <div class="content guide-card" data-step="4"><p class="guide-text" id="m1s1">PC에서 P5X을 실행하세요.</p></div>
+        <div class="content guide-card" data-step="5"><p class="guide-text" id="m1s1">PC에서 P5X을 실행하세요.</p></div>
       </div>
 
       <div class="step-row">
-  
-        <div class="content guide-card" data-step="5"><p class="guide-text" id="m1s2">다음 프로그램을 다운받아 실행하세요.</p> 
-            <a class="guide-text"  href="https://github.com/iantCode/P5X_Gacha_Link" target="_blank">source code</a>
+
+        <div class="content guide-card" data-step="6"><p class="guide-text" id="m1s2">다음 프로그램을 다운받아 실행하세요.</p> 
           <div class="pill-row">
             <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank" style="text-decoration: none;">프로그램 다운로드</a>
             <button class="btn-outline" id="openProgInfo">프로그램에 대하여</button>
-
+            <button class="btn-outline" id="openTroubleshoot">문제 해결 방법</button>
           </div>
+          <a class="guide-text" href="https://github.com/iantCode/P5X_Gacha_Link" target="_blank" style="display:inline-block;margin-top:8px;">source code</a>
         </div>
       </div>
 
       <div class="step-row">
   
-        <div class="content guide-card" data-step="6"><p class="guide-text" id="m1s3">계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.</p></div>
+        <div class="content guide-card" data-step="7"><p class="guide-text" id="m1s3">계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.</p></div>
       </div>
 
       <div class="step-row">
   
-        <div class="content guide-card" data-step="7">
+        <div class="content guide-card" data-step="8">
           <p class="guide-text" id="m1s4">지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.</p>
           <img src="{{ site.baseurl }}/apps/pull-tracker/program.png" alt="program" style="max-height:200px;object-fit:contain;border-radius:8px;margin-top:8px;">
         </div>
@@ -81,28 +91,61 @@ description: "가챠 기록 URL을 얻는 방법 안내"
 
       <div class="step-row">
   
-        <div class="content guide-card" data-step="8"><p class="guide-text" id="m1s5">프로그램을 닫아주세요.</p></div>
+        <div class="content guide-card" data-step="9"><p class="guide-text" id="m1s5">프로그램을 닫아주세요.</p></div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="9"><p class="guide-text" id="m1s6">복사된 URL 입력하기</p>
+        <div class="content guide-card" data-step="10"><p class="guide-text" id="m1s6">복사된 URL 입력하기</p>
           <a class="pill" id="goInput1" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
         </div>
       </div>
     </div>
 
-    <!-- 방법2 블록 -->
+    <!-- 방법2 블록 (Windows) -->
     <div id="m2block" style="display:none;">
       <div class="step-row">
   
-        <div class="content guide-card" data-step="4"><p class="guide-text" id="m2s1">다음 링크에서 방법을 확인하세요.</p>
+        <div class="content guide-card" data-step="5"><p class="guide-text" id="m2s1">다음 링크에서 방법을 확인하세요.</p>
           <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank" style="text-decoration: none;">p5xsummons</a>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="5"><p class="guide-text" id="m2s2">복사된 URL 입력하기</p>
+        <div class="content guide-card" data-step="6"><p class="guide-text" id="m2s2">복사된 URL 입력하기</p>
           <a class="pill" id="goInput2" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- iOS 블록 -->
+    <div id="iosBlock" style="display:none;">
+      <div class="step-row">
+        <div class="content guide-card" data-step="5"><p class="guide-text" id="ios1">App Store에서 Stream 앱을 설치하세요.</p>
+          <a class="pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691" target="_blank" style="text-decoration:none;">Stream 앱 설치 페이지</a>
+          <div class="pill-row" style="margin-top:6px;">
+            <a class="pill" id="videoBtn" href="https://www.youtube.com/watch?v=m833g8ZNWVA" target="_blank" style="text-decoration:none;">영상 도움말</a>
+            <span id="videoNote" class="guide-muted" style="margin-left:6px;">(영상 예시와 절차는 동일하며, URL 도메인만 다릅니다.)</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="content guide-card" data-step="6"><p class="guide-text" id="ios2">Stream 앱에서 Sniff Now를 눌러 VPN/CA 구성을 허용하고 신뢰하세요.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="content guide-card" data-step="7"><p class="guide-text" id="ios3">P5X 실행 → 가챠 페이지 → 기록 보기로 이동하세요.</p></div>
+      </div>
+      <div class="step-row">
+        <div class="content guide-card" data-step="8"><p class="guide-text" id="ios4" style="white-space:pre-line;">다시 Stream으로 돌아가 Sniff History에서 요청을 확인합니다. 아래 서버에 맞는 URL이 포함된 요청을 찾아 길게 눌러 링크 전체를 복사하세요.
+(KR) nsywl-krcard.wmupd.com
+(CN) nsywl-gfcard.wmupd.com
+(TW) wwwidcweb.p5x.com.tw
+(JP) web.p5xjpupd.com
+(EN) euweb.p5xjpupd.com
+(SEA) web.p5x-sea.com</p></div>
+      </div>
+      <div class="step-row">
+        <div class="content guide-card" data-step="9"><p class="guide-text" id="ios5">복사된 URL 입력하기</p>
+          <a class="pill" id="goInputIOS" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
         </div>
       </div>
     </div>
@@ -204,7 +247,7 @@ description: "가챠 기록 URL을 얻는 방법 안내"
           overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
           const modal = document.createElement('div');
           modal.style.maxWidth='720px'; modal.style.margin='10vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
-          modal.innerHTML = `<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px\"><h3 style=\"margin:0;color:#fff\">FAQ</h3><button id=\"closeFaq\" style=\"color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent\">닫기</button></div><div id=\"faqBody\" style=\"color:#ddd;white-space:pre-line;font-size:14px\"></div>`;
+          modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff">FAQ</h3><button id="closeFaq" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="faqBody" style="color:#ddd;font-size:14px;line-height:1.9"></div>`;
           overlay.appendChild(modal);
           body.appendChild(overlay);
           overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
@@ -213,7 +256,20 @@ description: "가챠 기록 URL을 얻는 방법 안내"
           try {
             const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
             fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r=>r.json()).then(j=>{
-              const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text1; document.getElementById('faqBody').textContent = t || '';
+              const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text1; 
+              const faqBox = document.getElementById('faqBody');
+              if (faqBox){
+                try {
+                  const esc = String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                  let html = esc.replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>');
+                  html = html.split('\n').map(line=>{
+                    const L = line.trim();
+                    if (/^Q[.:\s]/i.test(L)) return `<div class="faq-q"><strong>${L}<\/strong><\/div>`;
+                    return `<div class="faq-a" style="margin-bottom:8px">${L}<\/div>`;
+                  }).join('');
+                  faqBox.innerHTML = html;
+                } catch(_) { faqBox.textContent = t || ''; }
+              }
             }).catch(()=>{});
           } catch(_) {}
         });
@@ -225,7 +281,7 @@ description: "가챠 기록 URL을 얻는 방법 안내"
         overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
         const modal = document.createElement('div');
         modal.style.maxWidth='720px'; modal.style.margin='10vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
-        modal.innerHTML = `<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px\"><h3 style=\"margin:0;color:#fff\">프로그램에 대하여</h3><button id=\"closeProg\" style=\"color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent\">닫기</button></div><div id=\"progBody\" style=\"color:#ddd;white-space:pre-line;font-size:14px\"></div>`;
+        modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff">프로그램에 대하여</h3><button id="closeProg" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="progBody" style="color:#ddd;white-space:pre-line;font-size:14px"></div>`;
         overlay.appendChild(modal);
         document.body.appendChild(overlay);
         overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
@@ -245,22 +301,159 @@ description: "가챠 기록 URL을 얻는 방법 안내"
           }).catch(()=>{});
         } catch(_) {}
       }); }
+      // 문제 해결 방법 모달
+      const tsBtn = document.getElementById('openTroubleshoot');
+      if (tsBtn){ tsBtn.addEventListener('click', ()=>{
+        const overlay = document.createElement('div');
+        overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
+        const modal = document.createElement('div');
+        modal.style.maxWidth='800px'; modal.style.margin='8vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
+        modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff" id="tsTitle">문제 해결 방법</h3><button id="closeTS" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="tsBody" style="color:#ddd;font-size:14px;white-space:pre-line"></div>`;
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
+        modal.querySelector('#closeTS').addEventListener('click', ()=> overlay.remove());
+        try {
+          const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+          const map = {
+            kr: {
+              title:'문제 해결 방법',
+              btn:'문제 해결 방법',
+              body:
+`1. 프로그램이 실행하면 오류가 발생해요
+관리자 권한으로 실행해주세요.
+
+2. 프로그램을 실행해도 아무런 창이 나오질 않아요.
+.NET 8.0이 PC에 설치돼있어야 합니다. 설치돼있지 않을 경우 다음 링크에서 다운로드하여 설치해주세요.
+https://dotnet.microsoft.com/ko-kr/download
+
+3. URL 획득 후 게임 내에서 가챠 기록을 조회할 때마다 기록을 조회할 수 없다고 알림이 나옵니다.
+프로그램을 다시 실행했다 종료해주세요. 그럼에도 불구하고 동일한 오류가 발생할 경우 
+C:\\Windows\\System32\\drivers\\etc\\hosts 파일을 직접 열어 아래 내용을 지우고 저장해주세요.
+
+127.0.0.1 nsywl-krcard.wmupd.com
+127.0.0.1 nsywl-gfcard.wmupd.com
+127.0.0.1 wwwidcweb.p5x.com.tw
+127.0.0.1 web.p5xjpupd.com
+127.0.0.1 euweb.p5xjpupd.com
+127.0.0.1 web.p5x-sea.com`
+            },
+            en: {
+              title:'Troubleshooting',
+              btn:'Troubleshooting',
+              body:
+`1. An error occurs when the program starts.
+Please run as Administrator.
+
+2. No window appears when I run the program.
+.NET 8.0 must be installed on your PC. If not installed, please download and install it from the link below.
+https://dotnet.microsoft.com/ko-kr/download
+
+3. After obtaining the URL, each time you open the in-game history you see a notice that it cannot be loaded.
+Run the program again and close it. If the same error persists, open 
+C:\\Windows\\System32\\drivers\\etc\\hosts and delete the following entries, then save.
+
+127.0.0.1 nsywl-krcard.wmupd.com
+127.0.0.1 nsywl-gfcard.wmupd.com
+127.0.0.1 wwwidcweb.p5x.com.tw
+127.0.0.1 web.p5xjpupd.com
+127.0.0.1 euweb.p5xjpupd.com
+127.0.0.1 web.p5x-sea.com`
+            },
+            jp: {
+              title:'トラブルシューティング',
+              btn:'トラブルシューティング',
+              body:
+`1. プログラムを起動するとエラーが発生します。
+管理者権限で実行してください。
+
+2. プログラムを実行してもウィンドウが表示されません。
+PC に .NET 8.0 がインストールされている必要があります。未インストールの場合は、以下のリンクからダウンロードしてインストールしてください。
+https://dotnet.microsoft.com/ko-kr/download
+
+3. URL 取得後、ゲーム内でガチャ履歴を開くたびに「読み込みできません」と表示されます。
+プログラムを再起動して終了してください。それでも同じエラーが続く場合は、
+C:\\Windows\\System32\\drivers\\etc\\hosts を開き、以下の内容を削除して保存してください。
+
+127.0.0.1 nsywl-krcard.wmupd.com
+127.0.0.1 nsywl-gfcard.wmupd.com
+127.0.0.1 wwwidcweb.p5x.com.tw
+127.0.0.1 web.p5xjpupd.com
+127.0.0.1 euweb.p5xjpupd.com
+127.0.0.1 web.p5x-sea.com`
+            }
+          };
+          const t = map[lang] || map.kr;
+          modal.querySelector('#tsTitle').textContent = t.title;
+          const body = modal.querySelector('#tsBody');
+          // 강조 및 코드 박스/경로 색상 적용
+          const html = String(t.body)
+            .replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>')
+            .replace(/(C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts)/g,'<span style="color:#ffcc88">$1<\/span>')
+            .replace(/(127\.0\.0\.1[\s\S]*web\.p5x-sea\.com)/, '<pre style="background:#0b1224;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px;white-space:pre-line">$1<\/pre>');
+          body.innerHTML = html;
+        } catch(_) {}
+      }); }
+
+      // OS/방법 토글
+      const winWrap = document.getElementById('m1block').parentElement;
+      const iosBlock = document.getElementById('iosBlock');
+      const osWin = document.getElementById('osWin');
+      const osIOS = document.getElementById('osIOS');
+      // OS 전환은 setOSTab에서 일괄 처리 (중복 로직 제거)
+
+      // 버튼 다국어 (문제 해결 방법)
+      try {
+        const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+        const txt = lang==='en' ? 'Troubleshooting' : (lang==='jp' ? 'トラブルシューティング' : '문제 해결 방법');
+        const b = document.getElementById('openTroubleshoot'); if (b) b.textContent = txt;
+      } catch(_) {}
       // i18n for headings/nav + steps
       try {
         const params = new URLSearchParams(location.search); const lang = (params.get('lang')||'kr').toLowerCase();
         const map = {
-          kr: { navhome: '홈', back: '계약 트래커', current:'URL 가이드', title:'URL 가이드',
-            s1:'FAQ를 확인하세요.', s2:'현재는 PC Windows에서의 방법만 제공하고 있습니다.', s3:'원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
+          kr: {
+            navhome:'홈', back:'계약 트래커', current:'URL 가이드', title:'URL 가이드',
+            s1:'FAQ를 확인하세요.', s2:'사용 중인 운영체제를 선택하세요. (안드로이드 방법을 제보 받습니다)', s3:'원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
             m1s1:'PC에서 P5X을 실행하세요.', m1s2:'다음 링크에서 P5X_Gacha_Tools를 다운받아 압축을 풀고 실행하세요.', m1s3:'P5X에서 계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4:'지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5:'프로그램을 닫아주세요.', m1s6:'복사된 URL을 아래 링크에서 입력해주세요.',
-            prog:'프로그램에 대하여', dl:'프로그램 제공 링크', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.' },
-          en: { navhome: 'Home', back: 'Pull Tracker', current:'URL Guide', title:'URL Guide',
-            s1:'Check the FAQ.', s2:'Currently, only the PC Windows method is provided.', s3:'Choose a method. Use the program / Direct URL extraction',
-            m1s1:'Run P5X on your PC.', m1s2:'Download P5X_Gacha_Tools from the following link, unzip it, and run it.', m1s3:'Open the gacha history in game P5X. Errors are expected.', m1s4:'Select region, click [Try Find URL], then press Copy to obtain the URL.', m1s5:'Close the program.', m1s6:'Go to URL input',
-            prog:'About the Program', dl:'Program Link', m2s1:'See the following link for method 2.', m2s2:'Go to URL input' },
-          jp: { navhome: 'ホーム', back: 'ガチャ履歴', current:'URL ガイド', title:'URL ガイド',
-            s1:'FAQ を確認してください。', s2:'現在は PC Windows の方法のみ提供しています。', s3:'以下の2つからURL取得方法を選択してください。1. 専用のプログラムを使用、2. URLを直接抽出',
-            m1s1:'PC で P5X を起動します。', m1s2:'\'プログラムをダウンロード\'からP5X_Gacha_Toolsをダウンロード/解凍して、プログラムを起動してください。', m1s3:'P5Xで契約履歴画面を開いてください。この時、P5X上でエラーが表示されますが、問題ありません。', m1s4:'地域を選択後［Try Find URL］をクリックし、Copy で URL を取得してください。', m1s5:'プログラムを終了してください。', m1s6:'URL入力へ',
-            prog:'プログラムについて', dl:'プログラムをダウンロード', m2s1:'次のリンクで方法をご確認ください。', m2s2:'URL入力へ' }
+            prog:'프로그램에 대하여', ts:'문제 해결 방법', dl:'프로그램 제공 링크', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.',
+            osWin:'Windows', osIOS:'iOS',
+            ios1:'App Store에서 Stream 앱을 설치하세요.',
+            ios2:'Stream에서 Sniff Now를 눌러 VPN/CA 설치 및 신뢰를 완료하세요.',
+            ios3:'P5X에서 가챠 기록 화면을 엽니다.',
+            ios4:'Stream → Sniff History에서 아래 서버에 맞는 URL이 포함된 요청을 찾아 길게 눌러 링크 전체를 복사하세요.\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
+            ios5:'복사된 URL을 아래 링크에서 입력해주세요.',
+            videoLabel:'영상 도움말', videoNote:'(영상 예시와 절차는 동일하며, URL 도메인만 다릅니다.)',
+            streamOpen:'Stream 앱 설치 페이지'
+          },
+          en: {
+            navhome:'Home', back:'Pull Tracker', current:'URL Guide', title:'URL Guide',
+            s1:'Check the FAQ.', s2:'Choose your OS. (Android steps welcome)', s3:'Choose a method. Use the program / Direct URL extraction',
+            m1s1:'Run P5X on your PC.', m1s2:'Download P5X_Gacha_Tools from the link, unzip, and run.', m1s3:'Open the gacha history in P5X. Errors are expected.', m1s4:'Select region → [Try Find URL] → Copy the URL.', m1s5:'Close the program.', m1s6:'Go to URL input',
+            prog:'About the Program', ts:'Troubleshooting', dl:'Program Link', m2s1:'See method 2 at the link below.', m2s2:'Go to URL input',
+            osWin:'Windows', osIOS:'iOS',
+            ios1:'Install the Stream app from the App Store.',
+            ios2:'In Stream, tap Sniff Now and allow/install/trust the VPN/CA.',
+            ios3:'Open P5X → Gacha → History.',
+            ios4:'Back to Stream → Sniff History, find a request that contains the URL for your server below and long-press to copy the entire link.\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
+            ios5:'Enter the copied URL via the link below.',
+            videoLabel:'Video Help', videoNote:'(Same workflow; only the URL domain differs.)',
+            streamOpen:'Open Stream Install Page'
+          },
+          jp: {
+            navhome:'ホーム', back:'ガチャ履歴', current:'URL ガイド', title:'URL ガイド',
+            s1:'FAQ を確認してください。', s2:'ご利用のOSを選択してください。（Android の方法の情報を募集しています）', s3:'次の2つからURL取得方法を選択: 専用プログラム / 直接抽出',
+            m1s1:'PC で P5X を起動します。', m1s2:'リンクから P5X_Gacha_Tools をダウンロード/解凍して起動。', m1s3:'P5X でガチャ履歴を開きます。エラー表示は想定内です。', m1s4:'地域選択 → [Try Find URL] → Copy で URL を取得。', m1s5:'プログラムを終了します。', m1s6:'URL入力へ',
+            prog:'プログラムについて', ts:'トラブルシューティング', dl:'プログラムをダウンロード', m2s1:'方法2は以下のリンクを参照。', m2s2:'URL入力へ',
+            osWin:'Windows', osIOS:'iOS',
+            ios1:'App Store から Stream アプリをインストール。',
+            ios2:'Stream の「Sniff Now」を押して VPN/CA を許可・インストール・信頼します。',
+            ios3:'P5X でガチャ履歴を開きます。',
+            ios4:'Stream → Sniff History に戻り、下記のサーバーに合った URL を含むリクエストを見つけ、長押ししてリンク全体をコピーします。\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
+            ios5:'下のリンクからコピーした URL を入力してください。',
+            videoLabel:'動画ヘルプ', videoNote:'（手順は同じで、ドメインのみ地域により異なります。）',
+            streamOpen:'Stream インストールページを開く'
+          }
         };
         const t = map[lang]||map.kr;
         document.getElementById('navhome').textContent = t.navhome;
@@ -273,6 +466,14 @@ description: "가챠 기록 URL을 얻는 방법 안내"
         el('m2s1', t.m2s1); el('m2s2', t.m2s2);
         const dbtn = document.getElementById('downloadBtn'); if (dbtn) dbtn.textContent = t.dl;
         const pbtn = document.getElementById('openProgInfo'); if (pbtn) pbtn.textContent = t.prog;
+        const tsb = document.getElementById('openTroubleshoot'); if (tsb) tsb.textContent = t.ts;
+        const osw = document.getElementById('osWin'); if (osw) osw.textContent = t.osWin;
+        const osi = document.getElementById('osIOS'); if (osi) osi.textContent = t.osIOS;
+        const set = (id,val)=>{ const e=document.getElementById(id); if (e) e.textContent = val; };
+        set('ios1', t.ios1); set('ios2', t.ios2); set('ios3', t.ios3); set('ios4', t.ios4); set('ios5', t.ios5);
+        const vb = document.getElementById('videoBtn'); if (vb) vb.textContent = t.videoLabel;
+        const vn = document.getElementById('videoNote'); if (vn) vn.textContent = t.videoNote;
+        const sb = document.getElementById('streamBtn'); if (sb) sb.textContent = t.streamOpen;
       } catch(_) {}
       // 클립보드 복사
       const copyBtn = document.getElementById('copyScript');
@@ -282,11 +483,12 @@ description: "가챠 기록 URL을 얻는 방법 안내"
           try { await navigator.clipboard.writeText(pre.textContent); copyBtn.style.opacity='0.7'; setTimeout(()=> copyBtn.style.opacity='1', 500); } catch(_) {}
         });
       }
-      // pill active 토글 데모
+      // pill active 토글 (방법)
       const b1 = document.getElementById('m1');
       const b2 = document.getElementById('m2');
       const blk1 = document.getElementById('m1block');
       const blk2 = document.getElementById('m2block');
+      const blkIOS = document.getElementById('iosBlock');
       function setTab(which){
         try {
           [b1,b2].forEach(b=> b.classList.remove('active'));
@@ -294,8 +496,40 @@ description: "가챠 기록 URL을 얻는 방법 안내"
           else { b2.classList.add('active'); blk1.style.display='none'; blk2.style.display=''; }
         } catch(_) {}
       }
+      // OS 토글
+      function setOSTab(which){
+        try {
+          [osWin, osIOS].forEach(b=> b.classList.remove('active'));
+          const method = document.getElementById('methodPills');
+          const methodStep = document.getElementById('methodStep');
+          if (which==='win'){
+            osWin.classList.add('active');
+            if (method) method.style.display='';
+            if (methodStep) methodStep.style.display='';
+            // Windows: 원래 번호 복구 (iOS 블록 5~9)
+            const steps = [5,6,7,8,9];
+            ['ios1','ios2','ios3','ios4','ios5'].forEach((id,idx)=>{
+              const el = document.getElementById(id); if (el){ const card = el.closest('.content'); if (card) card.setAttribute('data-step', String(steps[idx])); }
+            });
+            blk1.style.display=''; blk2.style.display=''; blkIOS.style.display='none';
+          } else {
+            osIOS.classList.add('active');
+            if (method) method.style.display='none';
+            if (methodStep) methodStep.style.display='none';
+            // iOS: 번호를 4~8로 재배치
+            const steps = [4,5,6,7,8];
+            ['ios1','ios2','ios3','ios4','ios5'].forEach((id,idx)=>{
+              const el = document.getElementById(id); if (el){ const card = el.closest('.content'); if (card) card.setAttribute('data-step', String(steps[idx])); }
+            });
+            blk1.style.display='none'; blk2.style.display='none'; blkIOS.style.display='';
+          }
+        } catch(_) {}
+      }
       if (b1) b1.addEventListener('click', ()=> setTab(1));
       if (b2) b2.addEventListener('click', ()=> setTab(2));
+      if (osWin) osWin.addEventListener('click', ()=> setOSTab('win'));
+      if (osIOS) osIOS.addEventListener('click', ()=> setOSTab('ios'));
+      setOSTab('win');
       setTab(1);
     });
   </script>

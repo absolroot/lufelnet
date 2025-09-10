@@ -128,6 +128,7 @@ const personaData = {
         position: "반항",
         element: "질풍",
         best_persona: true,
+        added: "KR v2.3.2",
         cost: {
             blue : 0,
             purple: 0,
@@ -256,6 +257,7 @@ const personaData = {
         best_persona: true,
         wild_emblem_rainbow : true,
         event: true,
+        added: "KR v3.3.1",
         cost: {
             blue : 0,
             purple: 0,
@@ -740,6 +742,7 @@ const personaData = {
         element: "빙결",
         wild_emblem_rainbow : true,
         event: true,
+        added: "KR v4.3.2",
         instinct: {
             name: "신속한 귀환자 III",
             name_en: "Swift Returner III",
@@ -882,6 +885,7 @@ const personaData = {
         position: "굴복",
         element: "축복",
         wild_emblem_rainbow : true,
+        added: "KR v3.1.0",
         instinct: {
             name: "죄악의 경청자 III",
             name_en: "Listener of Sin III",
@@ -939,6 +943,7 @@ const personaData = {
         position: "굴복",
         element: "총격",
         wild_emblem_rainbow : true,
+        added: "KR v4.2.1",
         instinct: {
             name: "하늘과 땅을 잇는 올가미 III",
             name_en: "Serpent of the Sky and Earth III",
@@ -986,6 +991,7 @@ const personaData = {
         position: "굴복",
         element: "물리",
         wild_emblem_rainbow : true,
+        added: "KR v2.1.1",
         instinct: {
             name: "만연한 적막 III",
             name_en: "Deadly Silence III",
@@ -1037,6 +1043,7 @@ const personaData = {
         position: "굴복",
         element: "염동",
         wild_emblem_rainbow : true,
+        added: "KR v2.3.2",
         instinct: {
             name: "인과의 유전 III",
             name_en: "Karma Reversal III",
@@ -1187,6 +1194,7 @@ const personaData = {
         position: "반항",
         element: "핵열",
         wild_emblem_rainbow : true,
+        added: "KR v1.3.1",
         cost: {
             blue: false,
             purple: 0,
@@ -1206,7 +1214,7 @@ const personaData = {
                 "Increases CRIT Rate by 17.5%. After using a skill on enemies, increases the main target's Nuke dmg taken by 10% for 1 turn for every Elemental Ailment they have, up to 3 stacks. All other enemies gain 40% of this effect."
             ],
             effects_jp: [
-                "クリティカル率が17.5%上昇する。敵にスキルを使用する時、選択した対象の敵に属性異常が1つあるごとに、1ターンの間、対象が受ける核熱ダメージが10%上昇する。この効果は最大3つまで累積できる。また、他の敵全体もこの効果の40%を受ける。"
+                "クリティカル率が17.5%上昇する。的にスキルを使用する時、選択した対象の敵に属性以上が1つあるごとに、2ターンの間、対象が受ける核熱ダメージが10%上昇する。この効果は最大3つまで累積できる。また、他の敵全体もこの効果の40%を受ける。"
             ],
             priority: 2
         },
@@ -1291,6 +1299,7 @@ const personaData = {
         position: "반항",
         element: "화염",
         wild_emblem_rainbow : true,
+        added: "KR v4.1.1",
         instinct: {
             name: "삼세 제도 III",
             name_en: "Three Ages' Salvation III",
@@ -1339,6 +1348,7 @@ const personaData = {
         position: "우월",
         element: "화염",
         wild_emblem_rainbow : true,
+        added: "KR v3.4.2",
         instinct: {
             name: "세속을 초월한 성인 III",
             name_en: "Otherworldly Saint III",
@@ -1483,6 +1493,7 @@ const personaData = {
         position: "지배",
         element: "물리",
         wild_emblem_rainbow : true,
+        added: "KR v2.1.1",
         instinct: {
             name: "연승의 숙명 III",
             name_en: "Destined Streak III",
@@ -1581,6 +1592,7 @@ const personaData = {
         element: "만능",
         wild_emblem_rainbow : true,
         event: true,
+        added: "KR v4.2.1",
         instinct: {
             name: "붕괴의 나팔 III",
             name_en: "Trumpet of Destruction III",
@@ -1626,6 +1638,7 @@ const personaData = {
         position: "지배",
         element: "축복",
         wild_emblem_rainbow : true,
+        added: "KR v1.3.1",
         cost: {
             blue : 0,
             purple: 0,
@@ -1644,7 +1657,7 @@ const personaData = {
                 "Increases ATK by 24.9%. When using a skill, increases Bless dmg by 4% for 2 turns based on the number of Bless stacks on party's, up to 8 stacks. Other bless allies gains 50% of this effect. When using a skill, increases ATK for allies with at least 3 stacks of Bless by 15% for 2 turns."
             ],
             effects_jp: [
-                "攻撃力が24.9%上昇する。自身がスキルを発動する時、味方全体の祝印の数に応じて(最大8つまで)、2ターンの間、祝福ダメージが4%上昇する。さらに2ターンの間、祝印の数が3つ以上の味方の攻撃力が15%上昇する。"
+                "攻撃力が24.9%上昇する。自身がスキルを発動する時、味方全体の祝印の数に応じて（最大8つまで）、2ターンの間、祝福属性ダメージが4%上昇し、他の祝福属性の味方はこの上昇効果の50%分を得る。さらに2ターンの間、祝印の数が3つ以上の味方の攻撃力が15%上昇する。"
             ],
             priority: 1
         },
@@ -1654,7 +1667,7 @@ const personaData = {
             name_jp: "光り輝く裁済",
             effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
             effect_en: "Deals 79.4% ATK Bless dmg to all foes and grants 2 stacks of Blessing to all allies. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
-            effect_jp: "全ての敵に79.4% ATKの祝福属性ダメージを与え、味方全体に祝福重複2重複を付与する。自分は祝福重複ごとにスキルダメージが5%増加し、最大25%増加する。",
+            effect_jp: "敵全体に攻撃力79.4%の祝福属性ダメージを与え、味方全体に祝印を2つ付与する。自身の祝印1つ毎にスキルダメージが5%上昇し、最大で25%まで上昇する。",
             priority: 1,
             icon: "축복광역"
         },
@@ -1726,6 +1739,7 @@ const personaData = {
         position: "방위",
         element: "만능",
         wild_emblem_rainbow : true,
+        added: "KR v2.3.2",
         instinct: {
             name: "거대한 수호 III",
             name_en: "Higher Protection III",
@@ -1923,7 +1937,7 @@ const personaData = {
     },
     "사라스바티": {
         name_en: "Sarasvati",
-        name_jp: "サラスバティ",
+        name_jp: "サラスヴァティ",
         grade : "5",
         star : "5",
         position: "구원",
@@ -1979,6 +1993,7 @@ const personaData = {
         element: "물리",
         wild_emblem_rainbow : true,
         event: true,
+        added: "KR v3.2.0",
         instinct: {
             name: "용사의 살의 III",
             name_en: "Fearless Hero III",
@@ -2124,6 +2139,7 @@ const personaData = {
         position: "방위",
         element: "빙결",
         wild_emblem_rainbow : true,
+        added: "KR v1.3.1",
         instinct: {
             name: "얼음의 심판 III",
             name_en: "Tundra's Judgment III",
@@ -2171,6 +2187,7 @@ const personaData = {
         position: "지배",
         element: "만능",
         wild_emblem_rainbow : true,
+        added: "KR v2.1.1",
         instinct: {
             name: "한밤의 유혹 III",
             name_en: "Midnight Seduction III",
@@ -2320,7 +2337,7 @@ const personaData = {
         ],
         comment : "아기다인을 통한 화상 효과 + 본능에 의한 주원 대미지 결산 형태로 운영된다. 주원 효과 대미지는 만능 대미지에 영향을 받는다.",
         comment_en: "Operated with burn effects through Agidyne + Curse damage settlement through core passive. Curse effect damage is affected by Almighty damage.",
-        comment_jp: "アギダインによる火傷効果＋本能による呪怨ダメージ決算形態で運営される。呪怨効果ダメージは万能ダメージの影響を受ける。"
+        comment_jp: "アギダインによる炎上＋本能による呪印ダメージの即時発生を利用して運用する。呪印ダメージは万能属性ダメージとして扱われる。"
     },
     "벨페고르": {
         name_en: "Belphegor",
@@ -2479,6 +2496,7 @@ const personaData = {
         element: "물리",
         wild_emblem_rainbow : true,
         event: true,
+        added: "KR v2.2.0",
         instinct: {
             name: "포효하는 맹견 III",
             name_en: "Roaring Hound III",
@@ -2613,7 +2631,7 @@ const personaData = {
         ],
         comment : "질풍 내성 제거 효과가 필요할 때 채용한다.",
         comment_en: "Adopted when Wind Resistance Removal effects are needed.",
-        comment_jp: "風属性耐性解除効果が必要な時に採用する。"
+        comment_jp: "疾風属性耐性を解除する必要がある時採用する。"
     },
     "아라하바키": {
         name_en: "Arahabaki",

@@ -358,7 +358,7 @@
   }
 
   function renderRowGroup(values){
-    // values: array of combination strings (non-empty)
+    // values: array of combination strings OR objects like { textOnly:true, text:"..." }
     const row = document.createElement('div');
     row.className = 'acq-row acq-grid';
     const count = values.length;
@@ -366,6 +366,18 @@
     values.forEach(v => {
       const col = document.createElement('div');
       col.className = 'acq-col';
+      // Text-only acquisition (non-clickable)
+      if (v && typeof v === 'object' && v.textOnly){
+        col.classList.add('disabled');
+        col.title = '';
+        const span = document.createElement('span');
+        span.className = 'acq-text';
+        span.textContent = v.text || '';
+        col.appendChild(span);
+        row.appendChild(col);
+        return;
+      }
+      // Backward compatibility: string combo
       col.dataset.combo = v;
       const clickable = isPersonaCombo(v);
       if (clickable){
@@ -796,6 +808,24 @@
     });
   }
 
+  function findAddedText(personaKrName){
+    try{
+      if (typeof personaData === 'object' && personaData){
+        // Direct key
+        if (personaData[personaKrName] && personaData[personaKrName].added){
+          return String(personaData[personaKrName].added);
+        }
+        // Normalized lookup
+        const norm = normalizeName(personaKrName);
+        const key = Object.keys(personaData).find(k => normalizeName(k) === norm);
+        if (key && personaData[key] && personaData[key].added){
+          return String(personaData[key].added);
+        }
+      }
+    }catch(_){ /* ignore */ }
+    return '';
+  }
+
   async function populate(container, personaKrName){
     try{ await loadAcqMap(); }catch(_){ /* ignore */ }
     const body = container.querySelector('.acq-body');
@@ -824,6 +854,11 @@
       .map(k => entry[k])
       .map(v => (v || '').trim())
       .filter(Boolean);
+    // Append persona.js added text as an extra acquisition if exists
+    const addedText = findAddedText(personaKrName);
+    if (addedText){
+      combos.push({ textOnly: true, text: addedText });
+    }
     if (combos.length){
       body.appendChild(renderRowGroup(combos));
       container.style.display = '';

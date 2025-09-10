@@ -1,7 +1,7 @@
 // 스킬 목록
 const skillList = ["스킬1", "스킬2", "스킬3", "HIGHLIGHT","테우르기아", "총격", "근접", "방어", "특수 스킬", "ONE MORE", "아이템"];
 const skillList_en = ["Skill1", "Skill2", "Skill3", "HIGHLIGHT","Theurgy", "Gunshot", "Melee", "Defense", "Special Skill", "ONE MORE", "Item"];
-const skillList_jp = ["スキル1", "スキル2", "スキル3", "HIGHLIGHT","テウルギア", "銃撃", "近接攻撃", "ガード", "スペシャルスキル", "ワンマイナー", "アイテム"];
+const skillList_jp = ["スキル1", "スキル2", "スキル3", "HIGHLIGHT","テウルギア", "銃撃", "近接攻撃", "ガード", "スペシャルスキル", "1more", "アイテム"];
 
 
 // 페르소나 액티브 스킬 리스트
@@ -2438,7 +2438,7 @@ const personaSkillList = {
         ]
     },
     "공격 강화 I": {
-        name_jp: "攻撃強化Ⅰ",
+        name_jp: "アタックブースタⅠ",
         name_en: "Attack Boost I",
         description: "공격력이 5.8% 증가한다.",
         description_jp: "攻撃力が5.8%上昇する。",
@@ -2455,7 +2455,7 @@ const personaSkillList = {
         ]
     },
     "공격 강화 II": {
-        name_jp: "攻撃強化Ⅱ",
+        name_jp: "アタックブースタⅡ",
         name_en: "Attack Boost II",
         description: "공격력이 8.3% 증가한다.",
         description_jp: "攻撃力が8.3%上昇する。",
@@ -2472,7 +2472,7 @@ const personaSkillList = {
         ]
     },
     "공격 강화 III": {
-        name_jp: "攻撃強化Ⅲ",
+        name_jp: "アタックブースタⅢ",
         name_en: "Attack Boost III",
         description: "공격력이 10.8% 증가한다.",
         description_jp: "攻撃力が10.8%上昇する。",
@@ -2489,7 +2489,7 @@ const personaSkillList = {
         ]
     },
     "공격 강화 IV": {
-        name_jp: "攻撃強化Ⅳ",
+        name_jp: "アタックブースタⅣ",
         name_en: "Attack Boost IV",
         description: "공격력이 13.5% 증가한다.",
         description_jp: "攻撃力が13.5%上昇する。",
@@ -2506,7 +2506,7 @@ const personaSkillList = {
         ]
     },
     "공격 강화 V": {
-        name_jp: "攻撃強化Ⅴ",
+        name_jp: "アタックブースタⅤ",
         name_en: "Attack Boost V",
         description: "공격력이 16.2% 증가한다.",
         description_en: "Increase ATK by 16.2% .",
@@ -2523,7 +2523,7 @@ const personaSkillList = {
         ]
     },
     "공격 강화": {
-        name_jp: "攻撃強化",
+        name_jp: "アタックブースタ",
         name_en: "Attack Boost",
         description: "공격력이 5.8%/8.3%/10.8%/13.5%/16.2% 증가한다.",
         description_en: "Increase ATK by 5.8%/8.3%/10.8%/13.5%/16.2% .",

@@ -1002,7 +1002,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 } else if (currentLang === 'jp' && character.name_jp) {
                     nameElement.textContent = character.name_jp;
                 } else {
-                    nameElement.textContent = characterName;
+                    nameElement.textContent = character.name;
                 }
             }
         } catch(e) { console.warn('[SAFE:set-name]', e); }

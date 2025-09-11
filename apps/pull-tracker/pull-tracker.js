@@ -634,19 +634,19 @@
             const pickupWin = (Number(blocks.pickup[0]?.summary?.win5050)||0)+(Number(blocks.pickup[1]?.summary?.win5050)||0);
             const pickupRate = (pickup.t5>0) ? (pickupWin / pickup.t5 * 100) : null;
             const pickupAvg = (pickupWin>0) ? (pickup.effTotal / pickupWin) : null;
-            const pickupLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ PICKUP':'5성 픽업')}`; 
+            const pickupLabel = `  └ ${lang==='en'?'5★ Limited':(lang==='jp'?'★5 限定':'5성 한정')}`; 
             const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate!=null?numberFmt(pickupRate,2)+'%':'-'}</div><div class=\"td\">${pickupAvg!=null?numberFmt(pickupAvg,2):'-'}</div></div>`;
 
             const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050)||0);
             const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star)||0);
-            const weaponLabel = `  └ ${lang==='en'?'5★ Pickup':(lang==='jp'?'5★ PICKUP':'5성 픽업')}`;
+            const weaponLabel = `  └ ${lang==='en'?'5★ Limited':(lang==='jp'?'★5 限定':'5성 한정')}`;
             const weaponAvg = weaponWin>0 ? (weapon.effTotal/weaponWin) : null;
             const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5>0?numberFmt(weaponWin/weaponTotal5*100,2)+'%':'-'}</div><div class=\"td\">${weaponAvg!=null?numberFmt(weaponAvg,2):'-'}</div></div>`;
 
             const wrap = els.overview;
             wrap.innerHTML='';
             const iconMap = { pickup: '정해진 운명.png', weapon: '정해진 코인.png', standard: '미래의 운명.png' };
-            wrap.appendChild(makeCard('pickup', (lang==='en'?'Pickup':(lang==='jp'?'PICKUP':'픽업')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
+            wrap.appendChild(makeCard('pickup', (lang==='en'?'Character':(lang==='jp'?'キャラクター':'캐릭터')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
             wrap.appendChild(makeCard('weapon', (lang==='en'?'Weapon':(lang==='jp'?'武器':'무기')), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
             wrap.appendChild(makeCard('standard', (lang==='en'?'Standard':(lang==='jp'?'通常':'일반')), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
         } catch(_) {}
@@ -1167,7 +1167,7 @@
     function toDisplayName(key) {
         const map = {
             kr: { gold: '일반', fortune: '운명', weapon: '무기', confirmed: '확정', newcomer: '신규' },
-            en: { gold: 'Gold', fortune: 'Fortune', weapon: 'Weapon', confirmed: 'Confirmed', newcomer: 'Newcomer' },
+            en: { gold: 'Gold', fortune: 'Chance', weapon: 'Weapon', confirmed: 'Target', newcomer: 'Newcomer' },
             jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', confirmed: '確定', newcomer: '新米怪盗サポート' }
         };
         const dict = map[lang] || map.kr;

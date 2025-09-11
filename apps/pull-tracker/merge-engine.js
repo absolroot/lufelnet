@@ -39,34 +39,45 @@
     function mergeTypeBlock(oldBlock, newBlock){
         const oldSegs = Array.isArray(oldBlock?.records) ? oldBlock.records : [];
         const newSegs = Array.isArray(newBlock?.records) ? newBlock.records : [];
+
         const rows = [];
-        const pushRowsFromSegs = (segs)=>{
+        const pushSegs = (segs, source) => {
             for (const seg of segs){
+                // 같은 timestamp(=같은 10연차)에서 나오는 정상 중복을 보존하기 위해
+                // timestamp별 순번 인덱스를 부여한다.
+                const perTsIdx = new Map();
                 const recs = Array.isArray(seg?.record) ? seg.record : [];
                 for (const r of recs){
-                    const timestamp = Number(r?.timestamp||0);
-                    if (!timestamp) continue;
-                    // 원본 레코드 객체를 보존
-                    rows.push({ raw: { ...r }, timestamp, gachaId: r?.gachaId != null ? String(r.gachaId) : null });
+                    const t  = Number(r?.timestamp ?? r?.time ?? r?.ts ?? 0);
+                    if (!t) continue;
+                    const id = (r?.gachaId ?? r?.id ?? r?.gid ?? null);
+                    const idx = perTsIdx.get(t) || 0;
+                    perTsIdx.set(t, idx + 1);
+                    rows.push({ raw: { ...r }, timestamp: t, gachaId: (id!=null? String(id): null), idx, source });
                 }
             }
         };
-        pushRowsFromSegs(oldSegs);
-        pushRowsFromSegs(newSegs);
-        // 정렬 및 중복 제거 (gachaId 우선)
-        rows.sort((a,b)=> a.timestamp - b.timestamp);
+        pushSegs(oldSegs, 'old');
+        pushSegs(newSegs, 'new');
+
+        // 안정 정렬: timestamp 오름차순 → 같은 timestamp는 입력 순서(idx)
+        rows.sort((a,b)=> (a.timestamp - b.timestamp) || (a.idx - b.idx));
+
+        // "ID만" 기준으로 중복 제거. ID가 없으면 절대 dedupe 하지 않음.
         const seenById = new Set();
-        const seenFallback = new Set();
         const uniq = [];
         for (const r of rows){
-            const raw = r.raw || {};
-            if (r.gachaId){ if (seenById.has(r.gachaId)) continue; seenById.add(r.gachaId); uniq.push(r); }
-            else { const key = `${r.timestamp}|${raw.name}|${raw.grade}`; if (seenFallback.has(key)) continue; seenFallback.add(key); uniq.push(r); }
+            if (r.gachaId){
+                if (seenById.has(r.gachaId)) continue;
+                seenById.add(r.gachaId);
+            }
+            uniq.push(r);
         }
+
         // 시간순으로 세그먼트 재구성: 5★가 나오면 세그먼트 종료
         const segments = []; let curSeg = { fivestar: null, lastTimestamp: 0, record: [] };
         for (const r of uniq){
-            const rec = { ...r.raw };
+            const rec = { ...r.raw, gachaId: r.gachaId };
             curSeg.record.push(rec);
             curSeg.lastTimestamp = r.timestamp;
             if (Number(rec.grade) === 5 && curSeg.fivestar == null) {

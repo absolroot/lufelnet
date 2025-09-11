@@ -18,7 +18,7 @@
 
   const NAME = {
     kr: { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' },
-    en: { Confirmed:'Confirmed', Fortune:'Fortune', Gold:'Gold', Weapon:'Weapon', Newcomer:'Newcomer' },
+    en: { Confirmed:'Target', Fortune:'Chance', Gold:'Gold', Weapon:'Weapon', Newcomer:'Newcomer' },
     jp: { Confirmed:'確定', Fortune:'フォーチュン', Gold:'通常', Weapon:'武器', Newcomer:'新米怪盗サポート' }
   }[lang] || { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' };
 

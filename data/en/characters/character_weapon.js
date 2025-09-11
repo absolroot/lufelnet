@@ -4,6 +4,14 @@ const enCharacterWeaponData = {
     },
     "카타야마": {
         "name": "Kumi Katayama",
+        "weapon3-1":{
+            "name": "Operation Boots",
+            "health": 1343,
+            "attack": 424,
+            "defense": 237,
+            "skill_name": "",
+            "description": "When possesses Super Extreme, SPD +7.4/8.5/9.6/10.7/11.8/12.9/14.0."
+        },
         "weapon4-1": {
             "name": "Volt Red Heart",
             "health": 1791,

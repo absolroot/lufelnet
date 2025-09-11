@@ -4,6 +4,14 @@ const jpCharacterWeaponData = {
     },
     "카타야마": {
         "name": "片山 久未",
+        "weapon3-1":{
+            "name": "オペレーションブーツ",
+            "health": 1343,
+            "attack": 424,
+            "defense": 237,
+            "skill_name": "",
+            "description": "自身が『超極限』所持時、7.4/8.5/9.6/10.7/11.8/12.9/14.0増加する。"
+        },
         "weapon4-1": {
             "name": "ボルト・レッドハート",
             "health": 1791,

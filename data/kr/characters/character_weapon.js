@@ -21,12 +21,12 @@ const WeaponData = {
     "카타야마": {
         "name": "카타야마 쿠미",
         "weapon3-1":{
-            "name": "-",
-            "health": 0,
-            "attack": 0,
-            "defense": 0,
+            "name": "작전 부츠",
+            "health": 1343,
+            "attack": 424,
+            "defense": 237,
             "skill_name": "",
-            "description": "자신이『초극한』 상태일 때 속도가 10.7/10.7/11.8/11.8/12.9/12.9/14.0 증가한다."
+            "description": "자신이『초극한』 보유 시 7.4/8.5/9.6/10.7/11.8/12.9/14.0 증가한다."
         },
         "weapon4-1":{
             "name": "볼트 하트",

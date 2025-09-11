@@ -64,7 +64,7 @@ const characterData = {
         "main_revelation": ["희망","창조"],
         "sub_revelation": ["변화","화해"],
         "element": "전격",
-        "element_weakness": "",
+        "element_weakness": "빙결",
         "element_resistance": "전격",
         "rarity": 5,
         "position": "굴복",

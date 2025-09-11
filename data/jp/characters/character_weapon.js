@@ -10,7 +10,7 @@ const jpCharacterWeaponData = {
             "attack": 424,
             "defense": 237,
             "skill_name": "",
-            "description": "自身が『超極限』所持時、7.4/8.5/9.6/10.7/11.8/12.9/14.0増加する。"
+            "description": "自身が『超極限』所持時、SPD +7.4/8.5/9.6/10.7/11.8/12.9/14.0増加する。"
         },
         "weapon4-1": {
             "name": "ボルト・レッドハート",

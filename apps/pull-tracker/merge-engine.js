@@ -50,10 +50,10 @@
                 for (const r of recs){
                     const t  = Number(r?.timestamp ?? r?.time ?? r?.ts ?? 0);
                     if (!t) continue;
-                    const id = (r?.gachaId ?? r?.id ?? r?.gid ?? null);
+                    const gid = (r?.gachaId != null) ? String(r.gachaId) : null;
                     const idx = perTsIdx.get(t) || 0;
                     perTsIdx.set(t, idx + 1);
-                    rows.push({ raw: { ...r }, timestamp: t, gachaId: (id!=null? String(id): null), idx, source });
+                    rows.push({ raw: { ...r }, timestamp: t, gachaId: gid, idx, source });
                 }
             }
         };

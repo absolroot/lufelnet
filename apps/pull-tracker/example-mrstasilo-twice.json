@@ -1,0 +1,3746 @@
+{
+    "version": 1,
+    "updatedAt": 1757624044921,
+    "data": {
+      "Confirmed": {
+        "summary": {
+          "pulledSum": 0,
+          "total5Star": 0,
+          "total4Star": 0,
+          "win5050": 0,
+          "avgPity": null
+        },
+        "records": []
+      },
+      "Fortune": {
+        "summary": {
+          "pulledSum": 196,
+          "total5Star": 2,
+          "total4Star": 28,
+          "win5050": 2,
+          "avgPity": 65
+        },
+        "records": [
+          {
+            "fivestar": {
+              "name": "Ren Amamiya",
+              "timestamp": 1751461411383
+            },
+            "lastTimestamp": 1751461411383,
+            "record": [
+              {
+                "gachaId": "31540757544738384",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1751040957865
+              },
+              {
+                "gachaId": "31540757544738388",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1751040957865
+              },
+              {
+                "gachaId": "31540757544738390",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1751040957865
+              },
+              {
+                "gachaId": "31540757544738396",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1041,
+                "name": "Lufel",
+                "timestamp": 1751040957865
+              },
+              {
+                "gachaId": "31540757545074980",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1751043834513
+              },
+              {
+                "gachaId": "31540757545074984",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1751043834513
+              },
+              {
+                "gachaId": "31540757545074988",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1751043834513
+              },
+              {
+                "gachaId": "16904058760580980",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1751088851696
+              },
+              {
+                "gachaId": "16904058760580982",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1751088851696
+              },
+              {
+                "gachaId": "16904058760580984",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1751088851696
+              },
+              {
+                "gachaId": "16904058760580986",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1751088851696
+              },
+              {
+                "gachaId": "16904058760580988",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1751088851696
+              },
+              {
+                "gachaId": "16904058760580990",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1181,
+                "name": "Toshiya Sumi",
+                "timestamp": 1751088851696
+              },
+              {
+                "gachaId": "9022759419509040",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1751181221968
+              },
+              {
+                "gachaId": "9022759419509042",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1751181221968
+              },
+              {
+                "gachaId": "9022759419509044",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1751181221968
+              },
+              {
+                "gachaId": "9022759419509046",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1751181221968
+              },
+              {
+                "gachaId": "9022759419509048",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1751181221968
+              },
+              {
+                "gachaId": "45051556448208030",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1751337223447
+              },
+              {
+                "gachaId": "45051556448208040",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 184,
+                "name": "Orobas",
+                "timestamp": 1751337223447
+              },
+              {
+                "gachaId": "6770959620003216",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003217",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1041,
+                "name": "Lufel",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003218",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 184,
+                "name": "Orobas",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003219",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003220",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003221",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003222",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003223",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003224",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "6770959620003225",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1751427806115
+              },
+              {
+                "gachaId": "2267359993625875",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625876",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625877",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625878",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625879",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625880",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625881",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625882",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625883",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "2267359993625884",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1751451274643
+              },
+              {
+                "gachaId": "11274559246604514",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1751461411383
+              },
+              {
+                "gachaId": "11274559246604516",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1271,
+                "name": "Miyu Sahara",
+                "timestamp": 1751461411383
+              },
+              {
+                "gachaId": "11274559246604518",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1751461411383
+              },
+              {
+                "gachaId": "11274559246604520",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1751461411383
+              },
+              {
+                "gachaId": "11274559246604522",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1751461411383
+              },
+              {
+                "gachaId": "11274559246604524",
+                "gachaType": 2,
+                "grade": 5,
+                "id": 1261,
+                "name": "Ren Amamiya",
+                "timestamp": 1751461411383
+              }
+            ]
+          },
+          {
+            "fivestar": {
+              "name": "Makoto Niijima",
+              "timestamp": 1754300578060
+            },
+            "lastTimestamp": 1754300578060,
+            "record": [
+              {
+                "gachaId": "11275855799313918",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1752144702649
+              },
+              {
+                "gachaId": "11275855799313920",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1752144702649
+              },
+              {
+                "gachaId": "11275855799313922",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1752144702649
+              },
+              {
+                "gachaId": "11275855799313924",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1752144702649
+              },
+              {
+                "gachaId": "11275855799313926",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1752144702649
+              },
+              {
+                "gachaId": "11275855799313928",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1752144702649
+              },
+              {
+                "gachaId": "11275855799315132",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1752144736053
+              },
+              {
+                "gachaId": "11275855799315134",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1752144736053
+              },
+              {
+                "gachaId": "11275855799315136",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1752144736053
+              },
+              {
+                "gachaId": "11275855799315138",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1752144736053
+              },
+              {
+                "gachaId": "11275855799315140",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1752144736053
+              },
+              {
+                "gachaId": "11275855799315796",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1752144754626
+              },
+              {
+                "gachaId": "11275855799315798",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1752144754626
+              },
+              {
+                "gachaId": "11275855799315800",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1752144754626
+              },
+              {
+                "gachaId": "11275855799315802",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1752144754626
+              },
+              {
+                "gachaId": "11275855799315804",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1752144754626
+              },
+              {
+                "gachaId": "11275855799317544",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1752144773927
+              },
+              {
+                "gachaId": "11275855799317546",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1061,
+                "name": "Shun Kano",
+                "timestamp": 1752144773927
+              },
+              {
+                "gachaId": "11275855799317548",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 184,
+                "name": "Orobas",
+                "timestamp": 1752144773927
+              },
+              {
+                "gachaId": "11275855799317550",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1752144773927
+              },
+              {
+                "gachaId": "11275855799317552",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1752144773927
+              },
+              {
+                "gachaId": "11275855799318588",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1752144794343
+              },
+              {
+                "gachaId": "11275855799318590",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1752144794343
+              },
+              {
+                "gachaId": "11275855799318592",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1181,
+                "name": "Toshiya Sumi",
+                "timestamp": 1752144794343
+              },
+              {
+                "gachaId": "11275855799318594",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1752144794343
+              },
+              {
+                "gachaId": "11275855799318596",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1752144794343
+              },
+              {
+                "gachaId": "11275855799318598",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1752144794343
+              },
+              {
+                "gachaId": "11275855799319506",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1752144814865
+              },
+              {
+                "gachaId": "11275855799319508",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1752144814865
+              },
+              {
+                "gachaId": "11275855799319510",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1752144814865
+              },
+              {
+                "gachaId": "11275855799319512",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1752144814865
+              },
+              {
+                "gachaId": "11275855799319514",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1752144814865
+              },
+              {
+                "gachaId": "11275855799319516",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1752144814865
+              },
+              {
+                "gachaId": "11275855799320356",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1752144835951
+              },
+              {
+                "gachaId": "11275855799320358",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1752144835951
+              },
+              {
+                "gachaId": "11275855799320360",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1752144835951
+              },
+              {
+                "gachaId": "11275855799320362",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1061,
+                "name": "Shun Kano",
+                "timestamp": 1752144835951
+              },
+              {
+                "gachaId": "11275855799320364",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1752144835951
+              },
+              {
+                "gachaId": "11275855799321816",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1071,
+                "name": "Leo Kamiyama",
+                "timestamp": 1752144870118
+              },
+              {
+                "gachaId": "11275855799321818",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1752144870118
+              },
+              {
+                "gachaId": "11275855799321820",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1131,
+                "name": "Yukimi Fujikawa",
+                "timestamp": 1752144870118
+              },
+              {
+                "gachaId": "11275855799321822",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1752144870118
+              },
+              {
+                "gachaId": "11275855799321824",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1752144870118
+              },
+              {
+                "gachaId": "11275855799323448",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1752144916553
+              },
+              {
+                "gachaId": "11275855799323450",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1752144916553
+              },
+              {
+                "gachaId": "11275855799323452",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1752144916553
+              },
+              {
+                "gachaId": "11275855799323454",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1752144916553
+              },
+              {
+                "gachaId": "11275855799323456",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 184,
+                "name": "Orobas",
+                "timestamp": 1752144916553
+              },
+              {
+                "gachaId": "11275855799324212",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1752144933247
+              },
+              {
+                "gachaId": "11275855799324214",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1752144933247
+              },
+              {
+                "gachaId": "11275855799324216",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1752144933247
+              },
+              {
+                "gachaId": "11275855799324218",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1752144933247
+              },
+              {
+                "gachaId": "11275855799324220",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1752144933247
+              },
+              {
+                "gachaId": "11275855799420072",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1752147113674
+              },
+              {
+                "gachaId": "11275855799420074",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1752147113674
+              },
+              {
+                "gachaId": "11275855799420076",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1752147113674
+              },
+              {
+                "gachaId": "11275855799420078",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1752147113674
+              },
+              {
+                "gachaId": "11275855799420080",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1752147113674
+              },
+              {
+                "gachaId": "11275855799420082",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1181,
+                "name": "Toshiya Sumi",
+                "timestamp": 1752147113674
+              },
+              {
+                "gachaId": "9024055991117746",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1752272078548
+              },
+              {
+                "gachaId": "9024055991117748",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1752272078548
+              },
+              {
+                "gachaId": "9024055991117750",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1752272078548
+              },
+              {
+                "gachaId": "9024055991117752",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1752272078548
+              },
+              {
+                "gachaId": "9024055991117754",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1752272078548
+              },
+              {
+                "gachaId": "9024055991117756",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1752272078548
+              },
+              {
+                "gachaId": "9024055991291244",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1752276068192
+              },
+              {
+                "gachaId": "9024055991291246",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1752276068192
+              },
+              {
+                "gachaId": "9024055991291248",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1752276068192
+              },
+              {
+                "gachaId": "9024055991291250",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1752276068192
+              },
+              {
+                "gachaId": "9024055991291252",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1752276068192
+              },
+              {
+                "gachaId": "23660754790672156",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1752598016651
+              },
+              {
+                "gachaId": "23660754790672160",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1752598016651
+              },
+              {
+                "gachaId": "23660754790672164",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1752598016651
+              },
+              {
+                "gachaId": "23660754790672170",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1752598016651
+              },
+              {
+                "gachaId": "7900366095416503",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416494",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1211,
+                "name": "Kotone Montagne",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416495",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416496",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416497",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416498",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416499",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416500",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1061,
+                "name": "Shun Kano",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416501",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1754300578060
+              },
+              {
+                "gachaId": "7900366095416502",
+                "gachaType": 2,
+                "grade": 5,
+                "id": 1201,
+                "name": "Makoto Niijima",
+                "timestamp": 1754300578060
+              }
+            ]
+          },
+          {
+            "fivestar": null,
+            "lastTimestamp": 1756978852326,
+            "record": [
+              {
+                "gachaId": "6775971977151370",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151371",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151372",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151373",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151374",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151375",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151376",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1121,
+                "name": "Kiyoshi Kurotani",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151377",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151378",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151379",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1755793766275
+              },
+              {
+                "gachaId": "6775971977151863",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151864",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151865",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151866",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151867",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151868",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151869",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151870",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1121,
+                "name": "Kiyoshi Kurotani",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151871",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "6775971977151872",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1755793789008
+              },
+              {
+                "gachaId": "15784408140884346",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1756978150700
+              },
+              {
+                "gachaId": "15784408140884348",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1756978150700
+              },
+              {
+                "gachaId": "15784408140884350",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1756978150700
+              },
+              {
+                "gachaId": "15784408140884352",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1756978150700
+              },
+              {
+                "gachaId": "15784408140884354",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1756978150700
+              },
+              {
+                "gachaId": "15784408140884356",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1756978150700
+              },
+              {
+                "gachaId": "15784408140884658",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1756978157615
+              },
+              {
+                "gachaId": "15784408140884660",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1756978157615
+              },
+              {
+                "gachaId": "15784408140884662",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1756978157615
+              },
+              {
+                "gachaId": "15784408140884664",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1211,
+                "name": "Kotone Montagne",
+                "timestamp": 1756978157615
+              },
+              {
+                "gachaId": "15784408140884666",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1756978157615
+              },
+              {
+                "gachaId": "15784408140884668",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1756978157615
+              },
+              {
+                "gachaId": "15784408140885376",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1756978165105
+              },
+              {
+                "gachaId": "15784408140885378",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1756978165105
+              },
+              {
+                "gachaId": "15784408140885380",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1756978165105
+              },
+              {
+                "gachaId": "15784408140885382",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1756978165105
+              },
+              {
+                "gachaId": "15784408140885384",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1756978165105
+              },
+              {
+                "gachaId": "15784408140885744",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1756978172926
+              },
+              {
+                "gachaId": "15784408140885746",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1211,
+                "name": "Kotone Montagne",
+                "timestamp": 1756978172926
+              },
+              {
+                "gachaId": "15784408140885748",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1756978172926
+              },
+              {
+                "gachaId": "15784408140885750",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1756978172926
+              },
+              {
+                "gachaId": "15784408140885752",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1756978172926
+              },
+              {
+                "gachaId": "15784408140886342",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1756978181832
+              },
+              {
+                "gachaId": "15784408140886344",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1756978181832
+              },
+              {
+                "gachaId": "15784408140886346",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1131,
+                "name": "Yukimi Fujikawa",
+                "timestamp": 1756978181832
+              },
+              {
+                "gachaId": "15784408140886348",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1756978181832
+              },
+              {
+                "gachaId": "15784408140886350",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1756978181832
+              },
+              {
+                "gachaId": "15784408140886352",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1756978181832
+              },
+              {
+                "gachaId": "15784408140887390",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1756978198599
+              },
+              {
+                "gachaId": "15784408140887380",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1756978198599
+              },
+              {
+                "gachaId": "15784408140887382",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1301,
+                "name": "Chizuko Nagao",
+                "timestamp": 1756978198599
+              },
+              {
+                "gachaId": "15784408140887384",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1756978198599
+              },
+              {
+                "gachaId": "15784408140887386",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1756978198599
+              },
+              {
+                "gachaId": "15784408140887388",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1756978198599
+              },
+              {
+                "gachaId": "15784408140924092",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1756978818702
+              },
+              {
+                "gachaId": "15784408140924094",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1756978818702
+              },
+              {
+                "gachaId": "15784408140924096",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1756978818702
+              },
+              {
+                "gachaId": "15784408140924098",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1756978818702
+              },
+              {
+                "gachaId": "15784408140924100",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1756978818702
+              },
+              {
+                "gachaId": "15784408140924102",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1121,
+                "name": "Kiyoshi Kurotani",
+                "timestamp": 1756978818702
+              },
+              {
+                "gachaId": "15784408140926220",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1756978852326
+              },
+              {
+                "gachaId": "15784408140926222",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1756978852326
+              },
+              {
+                "gachaId": "15784408140926224",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1756978852326
+              },
+              {
+                "gachaId": "15784408140926226",
+                "gachaType": 2,
+                "grade": 4,
+                "id": 1131,
+                "name": "Yukimi Fujikawa",
+                "timestamp": 1756978852326
+              },
+              {
+                "gachaId": "15784408140926228",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1756978852326
+              },
+              {
+                "gachaId": "15784408140926230",
+                "gachaType": 2,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1756978852326
+              }
+            ]
+          }
+        ]
+      },
+      "Weapon": {
+        "summary": {
+          "pulledSum": 71,
+          "total5Star": 2,
+          "total4Star": 8,
+          "win5050": 1,
+          "avgPity": 34.5
+        },
+        "records": [
+          {
+            "fivestar": {
+              "name": "Retro Disco Style",
+              "timestamp": 1754300785802
+            },
+            "lastTimestamp": 1754300785802,
+            "record": [
+              {
+                "gachaId": "51806955877523020",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210802,
+                "name": "Sweety SG",
+                "timestamp": 1751149385843
+              },
+              {
+                "gachaId": "51806955877523030",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210202,
+                "name": "God Saber",
+                "timestamp": 1751149385843
+              },
+              {
+                "gachaId": "51806955877524700",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210202,
+                "name": "God Saber",
+                "timestamp": 1751149407575
+              },
+              {
+                "gachaId": "51806955877524710",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211402,
+                "name": "Elegant Rapier",
+                "timestamp": 1751149407575
+              },
+              {
+                "gachaId": "51806955877524720",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212702,
+                "name": "C.A. Explorer",
+                "timestamp": 1751149407575
+              },
+              {
+                "gachaId": "3393259916531716",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211902,
+                "name": "Spike Whip",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531717",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212702,
+                "name": "C.A. Explorer",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531718",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211202,
+                "name": "Holy Nail",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531719",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212102,
+                "name": "Royal Saber",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531720",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 210403,
+                "name": "Lava Flame",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531721",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 211403,
+                "name": "Knight's Reward",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531722",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210802,
+                "name": "Sweety SG",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531723",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212102,
+                "name": "Royal Saber",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531724",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211202,
+                "name": "Holy Nail",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "3393259916531725",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211002,
+                "name": "Sharp Twinblades",
+                "timestamp": 1751967370131
+              },
+              {
+                "gachaId": "7900366095420607",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211802,
+                "name": "Noble Rod",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420608",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420609",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211802,
+                "name": "Noble Rod",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420610",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420611",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 210203,
+                "name": "Shamshir",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420612",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212702,
+                "name": "C.A. Explorer",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420613",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420614",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211902,
+                "name": "Spike Whip",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420615",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211202,
+                "name": "Holy Nail",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420616",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1754300689293
+              },
+              {
+                "gachaId": "7900366095420981",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210102,
+                "name": "Gang Star",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420982",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212702,
+                "name": "C.A. Explorer",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420983",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420984",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210702,
+                "name": "Punish Lance",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420985",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 213003,
+                "name": "Gravitational Force",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420986",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210902,
+                "name": "Willowstaff",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420987",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420988",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210202,
+                "name": "God Saber",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420989",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210902,
+                "name": "Willowstaff",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095420990",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210202,
+                "name": "God Saber",
+                "timestamp": 1754300698923
+              },
+              {
+                "gachaId": "7900366095421307",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 210403,
+                "name": "Lava Flame",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421308",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210302,
+                "name": "Lightning Hammer",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421309",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421310",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210702,
+                "name": "Punish Lance",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421311",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211402,
+                "name": "Elegant Rapier",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421312",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421313",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421314",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421315",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421316",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211202,
+                "name": "Holy Nail",
+                "timestamp": 1754300707342
+              },
+              {
+                "gachaId": "7900366095421695",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 210803,
+                "name": "Emerald Charmer",
+                "timestamp": 1754300721218
+              },
+              {
+                "gachaId": "7900366095421934",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210102,
+                "name": "Gang Star",
+                "timestamp": 1754300726758
+              },
+              {
+                "gachaId": "7900366095422156",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210802,
+                "name": "Sweety SG",
+                "timestamp": 1754300732912
+              },
+              {
+                "gachaId": "7900366095422503",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210402,
+                "name": "Break Tonfa",
+                "timestamp": 1754300738208
+              },
+              {
+                "gachaId": "7900366095422673",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210802,
+                "name": "Sweety SG",
+                "timestamp": 1754300744042
+              },
+              {
+                "gachaId": "7900366095422820",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210302,
+                "name": "Lightning Hammer",
+                "timestamp": 1754300749301
+              },
+              {
+                "gachaId": "7900366095423360",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212102,
+                "name": "Royal Saber",
+                "timestamp": 1754300768615
+              },
+              {
+                "gachaId": "7900366095423460",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 211802,
+                "name": "Noble Rod",
+                "timestamp": 1754300773768
+              },
+              {
+                "gachaId": "7900366095423555",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754300779469
+              },
+              {
+                "gachaId": "7900366095423702",
+                "gachaType": 3,
+                "grade": 5,
+                "id": 210804,
+                "name": "Retro Disco Style",
+                "timestamp": 1754300785802
+              }
+            ]
+          },
+          {
+            "fivestar": {
+              "name": "Superstar",
+              "timestamp": 1756978408217
+            },
+            "lastTimestamp": 1756978408217,
+            "record": [
+              {
+                "gachaId": "3396766469604948",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 211403,
+                "name": "Knight's Reward",
+                "timestamp": 1754348201829
+              },
+              {
+                "gachaId": "13529865632851564",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210102,
+                "name": "Gang Star",
+                "timestamp": 1754431526092
+              },
+              {
+                "gachaId": "6774466191890020",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210102,
+                "name": "Gang Star",
+                "timestamp": 1754440016929
+              },
+              {
+                "gachaId": "6774466191890409",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1754440039809
+              },
+              {
+                "gachaId": "6774466191890489",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210302,
+                "name": "Lightning Hammer",
+                "timestamp": 1754440044965
+              },
+              {
+                "gachaId": "6774466193377092",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210902,
+                "name": "Willowstaff",
+                "timestamp": 1754542133508
+              },
+              {
+                "gachaId": "6774466193377675",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210102,
+                "name": "Gang Star",
+                "timestamp": 1754542196776
+              },
+              {
+                "gachaId": "18033465266904844",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210702,
+                "name": "Punish Lance",
+                "timestamp": 1755024036761
+              },
+              {
+                "gachaId": "18033465266904864",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210402,
+                "name": "Break Tonfa",
+                "timestamp": 1755024042315
+              },
+              {
+                "gachaId": "18033465266904904",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212702,
+                "name": "C.A. Explorer",
+                "timestamp": 1755024047409
+              },
+              {
+                "gachaId": "4522666386032969",
+                "gachaType": 3,
+                "grade": 4,
+                "id": 213003,
+                "name": "Gravitational Force",
+                "timestamp": 1755162373363
+              },
+              {
+                "gachaId": "15784408140898904",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 212802,
+                "name": "Shrill Pickaxe",
+                "timestamp": 1756978408217
+              },
+              {
+                "gachaId": "15784408140898900",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210402,
+                "name": "Break Tonfa",
+                "timestamp": 1756978408217
+              },
+              {
+                "gachaId": "15784408140898902",
+                "gachaType": 3,
+                "grade": 5,
+                "id": 213204,
+                "name": "Superstar",
+                "timestamp": 1756978408217
+              }
+            ]
+          },
+          {
+            "fivestar": null,
+            "lastTimestamp": 1756978408217,
+            "record": [
+              {
+                "gachaId": "15784408140898906",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210602,
+                "name": "Steel Tomahawk",
+                "timestamp": 1756978408217
+              },
+              {
+                "gachaId": "15784408140898908",
+                "gachaType": 3,
+                "grade": 3,
+                "id": 210302,
+                "name": "Lightning Hammer",
+                "timestamp": 1756978408217
+              }
+            ]
+          }
+        ]
+      },
+      "Gold": {
+        "summary": {
+          "pulledSum": 167,
+          "total5Star": 2,
+          "total4Star": 21,
+          "win5050": 0,
+          "avgPity": 76
+        },
+        "records": [
+          {
+            "fivestar": {
+              "name": "Haruna Nishimori",
+              "timestamp": 1753612790916
+            },
+            "lastTimestamp": 1753612790916,
+            "record": [
+              {
+                "gachaId": "51806955877510696",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1751149254721
+              },
+              {
+                "gachaId": "51806955877510700",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1751149254721
+              },
+              {
+                "gachaId": "51806955877513120",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1751149274390
+              },
+              {
+                "gachaId": "51806955877513130",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1751149274390
+              },
+              {
+                "gachaId": "43925656535165020",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1751233526240
+              },
+              {
+                "gachaId": "43925656535165030",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1751233526240
+              },
+              {
+                "gachaId": "6770959620002100",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002101",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002102",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002103",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002104",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002105",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1041,
+                "name": "Lufel",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002106",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002107",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002108",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 184,
+                "name": "Orobas",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "6770959620002109",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1751427792461
+              },
+              {
+                "gachaId": "50681055990400170",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1751524735669
+              },
+              {
+                "gachaId": "50681055990400180",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1031,
+                "name": "Motoha Arai",
+                "timestamp": 1751524735669
+              },
+              {
+                "gachaId": "29288957766917110",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1751703661824
+              },
+              {
+                "gachaId": "29288957766917116",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1751703661824
+              },
+              {
+                "gachaId": "29288957766917120",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1271,
+                "name": "Miyu Sahara",
+                "timestamp": 1751703661824
+              },
+              {
+                "gachaId": "42799756648783656",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1751728755180
+              },
+              {
+                "gachaId": "42799756648783650",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1061,
+                "name": "Shun Kano",
+                "timestamp": 1751728755180
+              },
+              {
+                "gachaId": "18029958698645180",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1751752391371
+              },
+              {
+                "gachaId": "18029958698645184",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1751752391371
+              },
+              {
+                "gachaId": "18029958698645188",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1751752391371
+              },
+              {
+                "gachaId": "18029958698645190",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1751752391371
+              },
+              {
+                "gachaId": "46177456374117920",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1751884405130
+              },
+              {
+                "gachaId": "46177456374117930",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1751884405130
+              },
+              {
+                "gachaId": "3393259916530564",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530565",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1031,
+                "name": "Motoha Arai",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530566",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530567",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530568",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530569",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530570",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530571",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530572",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "3393259916530573",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1751967272385
+              },
+              {
+                "gachaId": "18029958706524576",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1752097799221
+              },
+              {
+                "gachaId": "18029958706524580",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1752097799221
+              },
+              {
+                "gachaId": "18029958706524584",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1752097799221
+              },
+              {
+                "gachaId": "11275855799300768",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1752144425096
+              },
+              {
+                "gachaId": "11275855799300770",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1752144425096
+              },
+              {
+                "gachaId": "11275855799300772",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1752144425096
+              },
+              {
+                "gachaId": "11275855799300774",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1752144425096
+              },
+              {
+                "gachaId": "11275855799300776",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1752144425096
+              },
+              {
+                "gachaId": "2268656556652470",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652471",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652472",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652473",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652474",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652475",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652476",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652477",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652478",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "2268656556652479",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1752458357522
+              },
+              {
+                "gachaId": "12402994190881310",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1753504285803
+              },
+              {
+                "gachaId": "12402994190881312",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1753504285803
+              },
+              {
+                "gachaId": "12402994190881314",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1753504285803
+              },
+              {
+                "gachaId": "12402994190881316",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1753504285803
+              },
+              {
+                "gachaId": "12402994190881318",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1081,
+                "name": "Kayo Tomiyama",
+                "timestamp": 1753504285803
+              },
+              {
+                "gachaId": "12402994190881320",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 250,
+                "name": "Kushi Mitama",
+                "timestamp": 1753504285803
+              },
+              {
+                "gachaId": "12402994192810042",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1753612744590
+              },
+              {
+                "gachaId": "12402994192810080",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1753612751014
+              },
+              {
+                "gachaId": "12402994192810136",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1753612756290
+              },
+              {
+                "gachaId": "12402994192810184",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1753612762772
+              },
+              {
+                "gachaId": "12402994192810252",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1753612767805
+              },
+              {
+                "gachaId": "12402994192810284",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1753612773366
+              },
+              {
+                "gachaId": "12402994192810324",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1753612778675
+              },
+              {
+                "gachaId": "12402994192810646",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1753612784282
+              },
+              {
+                "gachaId": "12402994192810868",
+                "gachaType": 1,
+                "grade": 5,
+                "id": 1281,
+                "name": "Haruna Nishimori",
+                "timestamp": 1753612790916
+              }
+            ]
+          },
+          {
+            "fivestar": {
+              "name": "Haruna Nishimori",
+              "timestamp": 1757450055001
+            },
+            "lastTimestamp": 1757450055001,
+            "record": [
+              {
+                "gachaId": "12402994195918856",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1753809732702
+              },
+              {
+                "gachaId": "12402994195918952",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1753809740273
+              },
+              {
+                "gachaId": "12402994195919004",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1753809745259
+              },
+              {
+                "gachaId": "16906593826231476",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1041,
+                "name": "Lufel",
+                "timestamp": 1754003768827
+              },
+              {
+                "gachaId": "16906593826231580",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1754003775063
+              },
+              {
+                "gachaId": "16906593826231670",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1754003780700
+              },
+              {
+                "gachaId": "16906593826231776",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1754003786327
+              },
+              {
+                "gachaId": "16906593826231844",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1754003791652
+              },
+              {
+                "gachaId": "16906593826231904",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1754003797156
+              },
+              {
+                "gachaId": "14654794014869136",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1754158911531
+              },
+              {
+                "gachaId": "14654794014869222",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1754158916550
+              },
+              {
+                "gachaId": "16906593829611656",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1754259824577
+              },
+              {
+                "gachaId": "16906593829611766",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1754259830111
+              },
+              {
+                "gachaId": "16906593829611900",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1754259838979
+              },
+              {
+                "gachaId": "16906593829611996",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1754259845257
+              },
+              {
+                "gachaId": "7900366095454943",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1754301739285
+              },
+              {
+                "gachaId": "7900366095455050",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1754301745785
+              },
+              {
+                "gachaId": "13529865632851400",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1754431518704
+              },
+              {
+                "gachaId": "6774466191889780",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 185,
+                "name": "Nekomata",
+                "timestamp": 1754440004094
+              },
+              {
+                "gachaId": "6774466191889866",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1754440008961
+              },
+              {
+                "gachaId": "6774466191893125",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1754440189743
+              },
+              {
+                "gachaId": "4522666383054282",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1754845526699
+              },
+              {
+                "gachaId": "18033465266904604",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1755024009311
+              },
+              {
+                "gachaId": "18033465266904640",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1755024014356
+              },
+              {
+                "gachaId": "4522666386033014",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1755162381708
+              },
+              {
+                "gachaId": "4522666386033025",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1121,
+                "name": "Kiyoshi Kurotani",
+                "timestamp": 1755162387038
+              },
+              {
+                "gachaId": "4522666386033058",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1755162392162
+              },
+              {
+                "gachaId": "12403965734272672",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1755238839873
+              },
+              {
+                "gachaId": "1144966666134254",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1755277610353
+              },
+              {
+                "gachaId": "7900366109393608",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1755491971264
+              },
+              {
+                "gachaId": "7900366109393665",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1755491976188
+              },
+              {
+                "gachaId": "7900366109393682",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1755491981284
+              },
+              {
+                "gachaId": "14657271326064152",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1755891997432
+              },
+              {
+                "gachaId": "10153671701141458",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1756092689219
+              },
+              {
+                "gachaId": "10153671701141490",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1756092694213
+              },
+              {
+                "gachaId": "10153671701141524",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1041,
+                "name": "Lufel",
+                "timestamp": 1756092699360
+              },
+              {
+                "gachaId": "10153671701141576",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1756092705314
+              },
+              {
+                "gachaId": "13531371422236654",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1756178512529
+              },
+              {
+                "gachaId": "13531371422236684",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1756178517974
+              },
+              {
+                "gachaId": "13531371422236714",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1756178523558
+              },
+              {
+                "gachaId": "13531371422236748",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1756178528899
+              },
+              {
+                "gachaId": "7901871888909545",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1756284225535
+              },
+              {
+                "gachaId": "18034971052383190",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1756535663805
+              },
+              {
+                "gachaId": "1146472450791648",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1756661954113
+              },
+              {
+                "gachaId": "1146472450793846",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1031,
+                "name": "Motoha Arai",
+                "timestamp": 1756662268622
+              },
+              {
+                "gachaId": "1146472450793864",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1756662275021
+              },
+              {
+                "gachaId": "1146472450793882",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1756662279855
+              },
+              {
+                "gachaId": "12405471519802072",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1756707921038
+              },
+              {
+                "gachaId": "12405471519802088",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1756707926030
+              },
+              {
+                "gachaId": "12405471519831538",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 166,
+                "name": "High Pixie",
+                "timestamp": 1756713104113
+              },
+              {
+                "gachaId": "12405471519831552",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1101,
+                "name": "Tomoko Noge",
+                "timestamp": 1756713109272
+              },
+              {
+                "gachaId": "12405471519831608",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1756713115639
+              },
+              {
+                "gachaId": "18034971054067824",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1756723360296
+              },
+              {
+                "gachaId": "18034971054067840",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1756723365949
+              },
+              {
+                "gachaId": "18034971054067856",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1756723370833
+              },
+              {
+                "gachaId": "18034971054067876",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1756723375999
+              },
+              {
+                "gachaId": "18034971054067892",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1756723380890
+              },
+              {
+                "gachaId": "18034971054067904",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 180,
+                "name": "Koppa Tengu",
+                "timestamp": 1756723385996
+              },
+              {
+                "gachaId": "18034971054067916",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1756723391060
+              },
+              {
+                "gachaId": "15784408140919814",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1756978751130
+              },
+              {
+                "gachaId": "15784408140920068",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1131,
+                "name": "Yukimi Fujikawa",
+                "timestamp": 1756978756538
+              },
+              {
+                "gachaId": "15784408140920388",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1756978761557
+              },
+              {
+                "gachaId": "15784408140920660",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1756978766394
+              },
+              {
+                "gachaId": "15784408140921354",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1756978771868
+              },
+              {
+                "gachaId": "15784408140921648",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 193,
+                "name": "Kodama",
+                "timestamp": 1756978776443
+              },
+              {
+                "gachaId": "7903108795533179",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1757027556668
+              },
+              {
+                "gachaId": "7903108795533385",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1757027562464
+              },
+              {
+                "gachaId": "7903108795533596",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 225,
+                "name": "Slime",
+                "timestamp": 1757027567397
+              },
+              {
+                "gachaId": "14658508236444448",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 192,
+                "name": "Apsaras",
+                "timestamp": 1757029879808
+              },
+              {
+                "gachaId": "11280808516970190",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 184,
+                "name": "Orobas",
+                "timestamp": 1757073206064
+              },
+              {
+                "gachaId": "2273609264481739",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1301,
+                "name": "Chizuko Nagao",
+                "timestamp": 1757161882555
+              },
+              {
+                "gachaId": "2273609267026173",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1757284604104
+              },
+              {
+                "gachaId": "2273609267026299",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 154,
+                "name": "Sudama",
+                "timestamp": 1757284609319
+              },
+              {
+                "gachaId": "5651308988741569",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1757364392771
+              },
+              {
+                "gachaId": "5651308988741682",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1181,
+                "name": "Toshiya Sumi",
+                "timestamp": 1757364397725
+              },
+              {
+                "gachaId": "5651308988741793",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1757364403769
+              },
+              {
+                "gachaId": "5651308988741920",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1757364408754
+              },
+              {
+                "gachaId": "9029008710442650",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 179,
+                "name": "Koropokguru",
+                "timestamp": 1757438257797
+              },
+              {
+                "gachaId": "12406708430453880",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1757450050002
+              },
+              {
+                "gachaId": "12406708430453966",
+                "gachaType": 1,
+                "grade": 5,
+                "id": 1281,
+                "name": "Haruna Nishimori",
+                "timestamp": 1757450055001
+              }
+            ]
+          },
+          {
+            "fivestar": null,
+            "lastTimestamp": 1757582922659,
+            "record": [
+              {
+                "gachaId": "12406708430644618",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 178,
+                "name": "Hua Po",
+                "timestamp": 1757460138267
+              },
+              {
+                "gachaId": "12406708430644620",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1757460138267
+              },
+              {
+                "gachaId": "12406708430644622",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1041,
+                "name": "Lufel",
+                "timestamp": 1757460138267
+              },
+              {
+                "gachaId": "12406708430644624",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 111,
+                "name": "Jack-o'-Lantern",
+                "timestamp": 1757460138267
+              },
+              {
+                "gachaId": "12406708430644626",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 220,
+                "name": "Kelpie",
+                "timestamp": 1757460138267
+              },
+              {
+                "gachaId": "12406708430644628",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 221,
+                "name": "Saki Mitama",
+                "timestamp": 1757460138267
+              },
+              {
+                "gachaId": "3399509176505383",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1757467990286
+              },
+              {
+                "gachaId": "4525409083330593",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1757553213268
+              },
+              {
+                "gachaId": "4525409083330635",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1757553218190
+              },
+              {
+                "gachaId": "4525409083330728",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 194,
+                "name": "Shiisaa",
+                "timestamp": 1757553223584
+              },
+              {
+                "gachaId": "4525409083330779",
+                "gachaType": 1,
+                "grade": 4,
+                "id": 1211,
+                "name": "Kotone Montagne",
+                "timestamp": 1757553228587
+              },
+              {
+                "gachaId": "4525409083330821",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1757553234803
+              },
+              {
+                "gachaId": "4525409083339153",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 156,
+                "name": "Pixie",
+                "timestamp": 1757553998372
+              },
+              {
+                "gachaId": "4525409083339206",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1757554003401
+              },
+              {
+                "gachaId": "14658508245973352",
+                "gachaType": 1,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1757582922659
+              }
+            ]
+          }
+        ]
+      },
+      "Newcomer": {
+        "summary": {
+          "pulledSum": 17,
+          "total5Star": 0,
+          "total4Star": 4,
+          "win5050": 0,
+          "avgPity": null
+        },
+        "records": [
+          {
+            "fivestar": null,
+            "lastTimestamp": 1751043789358,
+            "record": [
+              {
+                "gachaId": "31540757544730984",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 117,
+                "name": "Bicorn",
+                "timestamp": 1751040902692
+              },
+              {
+                "gachaId": "31540757544730976",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 182,
+                "name": "Onmoraki",
+                "timestamp": 1751040902692
+              },
+              {
+                "gachaId": "31540757544730980",
+                "gachaType": 4,
+                "grade": 4,
+                "id": 1141,
+                "name": "Seiji Shiratori",
+                "timestamp": 1751040902692
+              },
+              {
+                "gachaId": "31540757544730988",
+                "gachaType": 4,
+                "grade": 4,
+                "id": 1211,
+                "name": "Kotone Montagne",
+                "timestamp": 1751040902692
+              },
+              {
+                "gachaId": "31540757544735340",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1751040928159
+              },
+              {
+                "gachaId": "31540757544735336",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 163,
+                "name": "Mandrake",
+                "timestamp": 1751040928159
+              },
+              {
+                "gachaId": "31540757544735344",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 157,
+                "name": "Inugami",
+                "timestamp": 1751040928159
+              },
+              {
+                "gachaId": "31540757544735348",
+                "gachaType": 4,
+                "grade": 4,
+                "id": 1071,
+                "name": "Leo Kamiyama",
+                "timestamp": 1751040928159
+              },
+              {
+                "gachaId": "31540757544737470",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 226,
+                "name": "Nigi Mitama",
+                "timestamp": 1751040946908
+              },
+              {
+                "gachaId": "31540757544737476",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1751040946908
+              },
+              {
+                "gachaId": "31540757544737480",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 129,
+                "name": "Mokoi",
+                "timestamp": 1751040946908
+              },
+              {
+                "gachaId": "31540757545066900",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 143,
+                "name": "Suzaku",
+                "timestamp": 1751043766807
+              },
+              {
+                "gachaId": "31540757545066904",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 183,
+                "name": "Ippon-Datara",
+                "timestamp": 1751043766807
+              },
+              {
+                "gachaId": "31540757545066908",
+                "gachaType": 4,
+                "grade": 4,
+                "id": 1271,
+                "name": "Miyu Sahara",
+                "timestamp": 1751043766807
+              },
+              {
+                "gachaId": "31540757545070000",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 224,
+                "name": "Andras",
+                "timestamp": 1751043789358
+              },
+              {
+                "gachaId": "31540757545070004",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 165,
+                "name": "Makami",
+                "timestamp": 1751043789358
+              },
+              {
+                "gachaId": "31540757545070010",
+                "gachaType": 4,
+                "grade": 2,
+                "id": 116,
+                "name": "Agathion",
+                "timestamp": 1751043789358
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }

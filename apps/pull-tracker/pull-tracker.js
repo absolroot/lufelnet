@@ -188,7 +188,7 @@
                         const text = await res.text();
                         setResult(text);
                         try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
-                        const incoming = JSON.parse(text);
+                        const incoming = parseIncoming(text);
                         const merged = mergeWithCache(incoming);
                         localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
                         renderCardsFromExample(merged);
@@ -784,6 +784,51 @@
         } catch(_) {}
     }
 
+    // JSON.parse 전에 gachaId 숫자 리터럴을 문자열로 강제
+    function normalizeGachaIdText(text){
+        try {
+            // "gachaId": 123, "gachaId": 1.23e16 등 모든 숫자 리터럴을 문자열로 치환
+            return String(text).replace(/("gachaId"\s*:\s*)(-?\d+(?:\.\d+)?(?:[eE][+\-]?\d+)?)/g, '$1"$2"');
+        } catch(_) { return text; }
+    }
+    function parseIncoming(text){
+        try { return JSON.parse(normalizeGachaIdText(text)); }
+        catch(_) { return JSON.parse(text); }
+    }
+
+    // DEBUG: 병합/로컬 로드된 데이터(result-response) 표시
+    function setMergedDebug(obj){
+        if (!DEBUG) return;
+        try {
+            const raw = document.getElementById('result');
+            if (!raw) return;
+            // 캡션(한 번만 생성)
+            let cap = document.getElementById('resultMergedLabel');
+            if (!cap) {
+                cap = document.createElement('div');
+                cap.id = 'resultMergedLabel';
+                cap.style.marginTop = '8px';
+                cap.style.opacity = '.7';
+                cap.style.fontSize = '12px';
+                cap.textContent = 'result-response';
+                raw.insertAdjacentElement('afterend', cap);
+            } else {
+                cap.style.display = 'block';
+            }
+            let pre = document.getElementById('resultMerged');
+            if (!pre) {
+                pre = document.createElement('pre');
+                pre.id = 'resultMerged';
+                pre.className = 'raw-response'; // raw-response 스타일 재사용(스크롤/높이 제한)
+                pre.style.display = 'block';
+                pre.style.marginTop = '4px';
+                cap.insertAdjacentElement('afterend', pre);
+            }
+            pre.style.display = 'block';
+            pre.textContent = (typeof obj === 'string') ? obj : JSON.stringify(obj, null, 2);
+        } catch(_) {}
+    }
+
     function startLoadingUI() {
         const startedAt = Date.now();
         // top inline status with spinner
@@ -857,7 +902,7 @@
             setResult(text);
 
             try {
-                const incoming = JSON.parse(text);
+                const incoming = parseIncoming(text);
                 try { console.log('[pull-tracker][incoming]', incoming); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 // 병합 수행 → 저장 → 렌더
@@ -865,6 +910,7 @@
                 try { console.log('[pull-tracker][merged]', merged); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
+                setMergedDebug(merged);
                 // Google Drive 동기화
                 try {
                     await syncMergedToCloud();
@@ -890,6 +936,7 @@
         try { if (els.input) els.input.value = ''; } catch(_) {}
         try { setStatus(''); } catch(_) {}
         try { setResult(''); } catch(_) {}
+        try { const m = document.getElementById('resultMerged'); if (m) m.textContent = ''; } catch(_) {}
         try { if (els.cards) els.cards.innerHTML = ''; } catch(_) {}
         try { if (els.overview) els.overview.innerHTML = ''; } catch(_) {}
 
@@ -1679,7 +1726,7 @@
                 __needDriveConsent = true;
             }
             try {
-                if (cloud && cloud.data) { localStorage.setItem('pull-tracker:merged', JSON.stringify(cloud)); renderCardsFromExample(cloud); setHide4Visible(true); return; }
+                if (cloud && cloud.data) { localStorage.setItem('pull-tracker:merged', JSON.stringify(cloud)); renderCardsFromExample(cloud); setMergedDebug(cloud); setHide4Visible(true); return; }
                 // if (DEBUG) { setStatus(t.driveNeedConsent); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) {
@@ -1688,10 +1735,10 @@
                     __dataSource = 'local';
                     if (__needDriveConsent) setStatus(`${t.loadedLocal} ${nowStamp()}\n${t.driveNeedConsent}`);
                     else setStatus(`${t.loadedLocal} ${nowStamp()}`);
-                    renderCardsFromExample(json); setHide4Visible(true); return;
+                    renderCardsFromExample(json); setMergedDebug(json); setHide4Visible(true); return;
                 }
                 const cached = localStorage.getItem('pull-tracker:last-response');
-                if (cached) { const json = JSON.parse(cached); try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}; const m = mergeWithCache(json); try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}; renderCardsFromExample(m); setHide4Visible(true); return; }
+                if (cached) { const json = parseIncoming(cached); try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}; const m = mergeWithCache(json); try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}; renderCardsFromExample(m); setMergedDebug(m); setHide4Visible(true); return; }
                 setStatus(t.noData);
                 setHide4Visible(false);
             } catch(_) {}

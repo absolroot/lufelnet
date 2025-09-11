@@ -38,6 +38,91 @@ sitemap:
     {% endunless %}
   {% endfor %}
   
+  <!-- App pages with hreflang alternates (KR/EN/JP) -->
+  <!-- Material Calculator -->
+  <url>
+    <loc>{{ site.url }}/material-calc/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/material-calc/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/material-calc/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/material-calc/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/material-calc/" />
+  </url>
+
+  <!-- Defense Calculator -->
+  <url>
+    <loc>{{ site.url }}/defense-calc/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/defense-calc/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/defense-calc/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/defense-calc/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/defense-calc/" />
+  </url>
+
+  <!-- Persona -->
+  <url>
+    <loc>{{ site.url }}/persona/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/persona/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/persona/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/persona/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/persona/" />
+  </url>
+
+  <!-- Pull Tracker: Global Stats -->
+  <url>
+    <loc>{{ site.url }}/pull-tracker/global-stats/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/pull-tracker/global-stats/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/pull-tracker/global-stats/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/pull-tracker/global-stats/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/pull-tracker/global-stats/" />
+  </url>
+
+  <!-- Revelations -->
+  <url>
+    <loc>{{ site.url }}/revelations/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/revelations/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/revelations/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/revelations/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/revelations/" />
+  </url>
+
+  <!-- Wonder Weapons -->
+  <url>
+    <loc>{{ site.url }}/wonder-weapon/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/wonder-weapon/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/wonder-weapon/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/wonder-weapon/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/wonder-weapon/" />
+  </url>
+
+  <!-- Tactics Library -->
+  <url>
+    <loc>{{ site.url }}/tactic/tactics.html</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/tactic/tactics.html?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/tactic/tactics.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/tactic/tactics.html?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tactic/tactics.html" />
+  </url>
+
   <!-- Tier List and Tier Maker specific URLs -->
   <!-- Tier List (default) -->
   <url>

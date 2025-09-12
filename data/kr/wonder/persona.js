@@ -1537,7 +1537,7 @@ const personaData = {
         ],
         comment: "WONDER를 메인 딜러로 사용할 경우 이 페르소나를 채용한다.",
         comment_en: "Adopt this persona when using WONDER as main dealer.",
-        comment_jp: "WONDERをメインアタッカーとして利用する場合、このペルソナを採用すると。",
+        comment_jp: "WONDERをメインアタッカーとして利用する場合、このペルソナを採用する。",
     },
 
     "네코쇼군": {

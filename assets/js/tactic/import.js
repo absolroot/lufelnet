@@ -50,17 +50,34 @@ window.applyImportedData = function(payload, options = {}) {
       });
     }
 
+    const SPECIALS = ['HIGHLIGHT','ONE MORE','총격','근접','방어','아이템'];
+
     // 턴 데이터 설정
     if (isRaw) {
       turns = data.turns.map(turn => ({
         turn: turn.turn,
         customName: turn.customName ? String(turn.customName) : undefined,
         actions: (turn.actions || []).map(action => {
+          // 각 액션별 지역 변수로 안전 처리 (턴 간 값 누수 방지)
+          const wp = action.wonderPersona;
+          let isSpecial = false;
+          let computedAction = '';
+
+          // 특수 액션 감지: 원더일 때 wonderPersona 또는 action 에 들어올 수 있음
+          if (action.character === '원더') {
+            if (typeof wp === 'string' && SPECIALS.includes(wp)) {
+              isSpecial = true;
+              computedAction = wp;
+            } else if (typeof action.action === 'string' && SPECIALS.includes(action.action)) {
+              isSpecial = true;
+              computedAction = action.action;
+            }
+          }
+
           // wonderPersona는 이름 또는 인덱스(숫자/숫자 문자열) 모두 허용
           let personaName = '';
           let inferredIndex = -1;
-          const wp = action.wonderPersona;
-          if (wp !== undefined && wp !== null && wp !== '') {
+          if (!isSpecial && wp !== undefined && wp !== null && wp !== '') {
             const isNumeric = (typeof wp === 'number') || (typeof wp === 'string' && /^\d+$/.test(wp));
             if (isNumeric) {
               inferredIndex = Number(wp);
@@ -70,15 +87,17 @@ window.applyImportedData = function(payload, options = {}) {
               inferredIndex = wonderPersonas.indexOf(personaName);
             }
           }
+
           const providedIndex = (typeof action.wonderPersonaIndex === 'number') ? action.wonderPersonaIndex : -1;
           const finalIndex = (providedIndex !== -1) ? providedIndex : inferredIndex;
+
           return {
             type: action.type === 0 || action.type === 'auto' ? 'auto' : 'manual',
             character: action.character,
             wonderPersona: personaName,
             wonderPersonaIndex: finalIndex,
-            action: action.action,
-            memo: action.memo || ''
+            memo: action.memo || '',
+            action: isSpecial ? computedAction : (typeof action.action === 'string' ? action.action : '')
           };
         })
       }));
@@ -90,7 +109,11 @@ window.applyImportedData = function(payload, options = {}) {
           let personaName = '';
           let inferredIndex = -1;
           const wp = action.w;
-          if (wp !== undefined && wp !== null && wp !== '') {
+          let actionVal = action.a;
+          if (action.character === '원더' && typeof wp === 'string' && SPECIALS.includes(wp)) {
+            actionVal = wp;
+          }
+          else if (wp !== undefined && wp !== null && wp !== '') {
             const isNumeric = (typeof wp === 'number') || (typeof wp === 'string' && /^\d+$/.test(wp));
             if (isNumeric) {
               inferredIndex = Number(wp);
@@ -107,8 +130,8 @@ window.applyImportedData = function(payload, options = {}) {
             character: action.c,
             wonderPersona: personaName,
             wonderPersonaIndex: finalIndex,
-            action: action.a,
-            memo: action.mm || ''
+            memo: action.mm || '',
+            action: actionVal
           };
         })
       }));

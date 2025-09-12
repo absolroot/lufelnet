@@ -103,7 +103,7 @@
     };
 
     const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
-    const DEBUG = false;
+    const DEBUG = true;
     const VERBOSE_LOG = false; // DEBUG 출력 중 상세 로그는 별도 플래그로 제어
     const t = messages[lang] || messages.kr;
 
@@ -189,7 +189,7 @@
                         setResult(text);
                         try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                         const incoming = parseIncoming(text);
-                        const merged = mergeWithCache(incoming);
+                        const merged = ensureTsOrderInPayload(mergeWithCache(incoming));
                         localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
                         renderCardsFromExample(merged);
                         const beforeAuthed = __googleAuthed;
@@ -796,6 +796,36 @@
         catch(_) { return JSON.parse(text); }
     }
 
+    // payload 내 모든 record에 대해, 같은 timestamp 묶음에서 tsOrder/ts_order가 없으면 현재 배열 순서로 보정
+    function ensureTsOrderInPayload(payload){
+        try {
+            if (!payload || !payload.data) return payload;
+            const KEYS = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+            for (const k of KEYS){
+                const block = payload.data[k];
+                if (!block || !Array.isArray(block.records)) continue;
+                for (const seg of block.records){
+                    const recs = Array.isArray(seg?.record) ? seg.record : [];
+                    // timestamp별 인덱스 할당 (기존 tsOrder/ts_order가 있으면 그대로 둠)
+                    const perTsIdx = new Map();
+                    for (let i=0;i<recs.length;i++){
+                        const r = recs[i] || {};
+                        const t = Number(r.timestamp ?? r.time ?? r.ts ?? 0) || 0;
+                        const has = (r.tsOrder != null) || (r.ts_order != null);
+                        if (!t || has) continue;
+                        const idx = perTsIdx.get(t) || 0;
+                        perTsIdx.set(t, idx + 1);
+                        r.tsOrder = idx;
+                        r.ts_order = idx;
+                        // ensure persists on object
+                        recs[i] = r;
+                    }
+                }
+            }
+        } catch(_) {}
+        return payload;
+    }
+
     // DEBUG: 병합/로컬 로드된 데이터(result-response) 표시
     function setMergedDebug(obj){
         if (!DEBUG) return;
@@ -906,7 +936,7 @@
                 try { console.log('[pull-tracker][incoming]', incoming); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
                 // 병합 수행 → 저장 → 렌더
-                const merged = mergeWithCache(incoming);
+                const merged = ensureTsOrderInPayload(mergeWithCache(incoming));
                 try { console.log('[pull-tracker][merged]', merged); } catch(_) {}
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
@@ -997,11 +1027,16 @@
                 try {
                     const list = Array.isArray(block.records) ? block.records : [];
                     if (list.length===0) return 0;
-                    // 최신 세그먼트는 lastTimestamp가 가장 큰 세그먼트로 판정 (배열 정렬 방향 무관)
-                    let latest = null; let maxTs = -Infinity;
-                    for (const seg of list){ const ts = Number(seg?.lastTimestamp||0); if (ts>maxTs){ maxTs=ts; latest=seg; } }
-                    if (latest && latest.fivestar == null) {
-                        const rec = Array.isArray(latest.record) ? latest.record : [];
+                    // 진행 중 세그먼트들 중 lastTimestamp가 가장 큰 세그먼트 선택
+                    let latestUnfinished = null; let maxTs = -Infinity;
+                    for (const seg of list){
+                        if (seg && seg.fivestar == null){
+                            const ts = Number(seg.lastTimestamp||0);
+                            if (ts>maxTs){ maxTs=ts; latestUnfinished=seg; }
+                        }
+                    }
+                    if (latestUnfinished) {
+                        const rec = Array.isArray(latestUnfinished.record) ? latestUnfinished.record : [];
                         return rec.length;
                     }
                     return 0;
@@ -1680,10 +1715,16 @@
         for (const r of rows){
             const t = r.gacha_type; if (!data[t]) continue;
             if (!byType.has(t)) byType.set(t, []);
-            byType.get(t).push({ name:r.name, grade:Number(r.grade||0), timestamp:Number(r.timestamp||0), gachaId:r.gacha_id||null });
+            byType.get(t).push({ name:r.name, grade:Number(r.grade||0), timestamp:Number(r.timestamp||0), gachaId:(r.gacha_id!=null? String(r.gacha_id): null), tsOrder: (r.ts_order!=null? Number(r.ts_order): null) });
         }
         for (const [t, arr] of byType.entries()){
-            arr.sort((a,b)=> a.timestamp-b.timestamp);
+            arr.sort((a,b)=>{
+                const dt = a.timestamp - b.timestamp; if (dt) return dt;
+                const au = (a.tsOrder==null); const bu = (b.tsOrder==null);
+                if (au !== bu) return au ? -1 : 1;
+                if (!au && !bu) { const doo = a.tsOrder - b.tsOrder; if (doo) return doo; }
+                return 0;
+            });
             // 간단히 한 그룹으로 묶어 segment 구성
             const seg = { fivestar: null, lastTimestamp: (arr[arr.length-1]?.timestamp||0), record: arr };
             const i5 = arr.findIndex(v=> Number(v.grade)===5); if (i5>=0) seg.fivestar = { name: arr[i5].name, timestamp: arr[i5].timestamp };
@@ -1726,11 +1767,11 @@
                 __needDriveConsent = true;
             }
             try {
-                if (cloud && cloud.data) { localStorage.setItem('pull-tracker:merged', JSON.stringify(cloud)); renderCardsFromExample(cloud); setMergedDebug(cloud); setHide4Visible(true); return; }
+                if (cloud && cloud.data) { const fixed=ensureTsOrderInPayload(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(fixed)); renderCardsFromExample(fixed); setMergedDebug(fixed); setHide4Visible(true); return; }
                 // if (DEBUG) { setStatus(t.driveNeedConsent); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) {
-                    const json = JSON.parse(mergedCached);
+                    const json = ensureTsOrderInPayload(JSON.parse(mergedCached));
                     try { console.log('[pull-tracker][merged-local]', json); } catch(_) {}
                     __dataSource = 'local';
                     if (__needDriveConsent) setStatus(`${t.loadedLocal} ${nowStamp()}\n${t.driveNeedConsent}`);
@@ -1738,7 +1779,7 @@
                     renderCardsFromExample(json); setMergedDebug(json); setHide4Visible(true); return;
                 }
                 const cached = localStorage.getItem('pull-tracker:last-response');
-                if (cached) { const json = parseIncoming(cached); try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}; const m = mergeWithCache(json); try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}; renderCardsFromExample(m); setMergedDebug(m); setHide4Visible(true); return; }
+                if (cached) { const json = parseIncoming(cached); try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}; const m = ensureTsOrderInPayload(mergeWithCache(json)); try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}; renderCardsFromExample(m); setMergedDebug(m); setHide4Visible(true); return; }
                 setStatus(t.noData);
                 setHide4Visible(false);
             } catch(_) {}

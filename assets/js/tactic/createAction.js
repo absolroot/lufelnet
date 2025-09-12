@@ -213,16 +213,20 @@
         if (action.character === "원더") {
           const personaSelect = document.createElement("select");
           personaSelect.className = "wonder-persona-select";
-          
+          const specialActions = ['HIGHLIGHT','ONE MORE','총격','근접','방어','아이템'];
+          const isSpecialSelected = specialActions.includes(action.action);
           // wonderPersonas 슬롯 인덱스를 값으로 사용하여 안정성 확보
           wonderPersonas.forEach((p, idx) => {
             const opt = document.createElement("option");
             opt.value = String(idx);
             opt.textContent = p ? getPersonaDisplayName(p) : `${getUIText('persona')}${idx + 1}`; // 번역된 페르소나 이름
             // 기존 데이터 호환: wonderPersonaIndex 우선, 없으면 이름 비교로 선택 처리
-            const isSelectedByIndex = (typeof action.wonderPersonaIndex === 'number' && action.wonderPersonaIndex === idx);
-            const isSelectedByName = (typeof action.wonderPersonaIndex !== 'number' && action.wonderPersona === p);
-            if (isSelectedByIndex || isSelectedByName) opt.selected = true;
+            const isSelectedByIndex = (typeof action.wonderPersonaIndex === 'number') && (action.wonderPersonaIndex === idx);
+            const isSelectedByName  = (action.character === '원더' && action.wonderPersona === p);
+            // 이미 특수 액션이 선택된 경우, 페르소나 옵션은 선택하지 않음
+            if (!isSpecialSelected && (isSelectedByIndex || isSelectedByName)) {
+                opt.selected = true;
+            }
             personaSelect.appendChild(opt);
           });
           
@@ -231,7 +235,6 @@
           sep.disabled = true; sep.value = '';
           sep.textContent = '──────────';
           personaSelect.appendChild(sep);
-          const specialActions = ['HIGHLIGHT','ONE MORE','총격','근접','방어','아이템'];
           specialActions.forEach(key => {
             const opt = document.createElement('option');
             opt.value = key;

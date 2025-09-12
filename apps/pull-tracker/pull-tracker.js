@@ -103,7 +103,7 @@
     };
 
     const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
-    const DEBUG = true;
+    const DEBUG = false;
     const VERBOSE_LOG = false; // DEBUG 출력 중 상세 로그는 별도 플래그로 제어
     const t = messages[lang] || messages.kr;
 

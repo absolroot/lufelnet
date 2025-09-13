@@ -1524,7 +1524,7 @@ const personaData = {
         highlight: {
             effect: "모든 적에게 공격력 180.0%의 물리 속성 대미지를 준다.",
             effect_en: "Deals 180.0% ATK as Phys dmg to all foes.",
-            effect_jp: "全ての敵に180.0% ATKの物理属性ダメージを与える。",
+            effect_jp: "敵全体に攻撃力180.0%の物理属性ダメージを与える。",
             priority: 1
         },
         recommendSkill : [
@@ -1539,7 +1539,56 @@ const personaData = {
         comment_en: "Adopt this persona when using WONDER as main dealer.",
         comment_jp: "WONDERをメインアタッカーとして利用する場合、このペルソナを採用する。",
     },
-
+    "세탄타": {
+        name_en: "Setanta",
+        name_jp: "セタンタ",
+        grade: "3",
+        star: "5",
+        position: "지배",
+        element: "물리",
+        instinct: {
+            name: "살육의 전사Ⅰ",
+            name_en: "Bloodthirsty Warrior I",
+            name_jp: "連勝の宿命 III",
+            effects: [
+                "크리티컬 효과가 15% 증가한다. 디버프 상태의 적 공격 시 공격력이 35% 증가한다. 디버프 상태인 적에게 대미지를 준 후 1턴 동안 모든 동료의 공격력이 11.5% 증가한다."
+            ],
+            effects_en: [
+                "Increase critical damage by 15%. When attacking a foe with a debuff, increase Attack by 35%. If damage is dealt, increase party's Attack by 11.5% for 1 turn."
+            ],
+            effects_jp: [
+                "クリティカルダメージが１５%上昇する。弱体状態の敵を攻撃した時の攻撃力が３５%上昇し、ダメージを与えた場合、１ターンの間、味方全体の攻撃力を１１.５%上昇させる。"
+            ],
+            priority: 1
+        },
+        uniqueSkill: {
+            name: "영혼 감금",
+            name_en: "Spirit Binding",
+            name_jp: "魂の拘束",
+            effect: "모든 적에게 공격력 74.3%의 물리 속성 대미지를 주고, 모든 적이 디버프 효과를 가진 경우 해당 대미지는 12% 증가하며 최대 3회 중첩된다. 수면 상태인 적의 경우 바로 3회로 간주한다.",
+            effect_en: "Deal Physical damage to all foes equal to 74.3% of Attack. For each debuff on foes, increase damage by 12%. Stacks up to 3 times. If foes are Sleeping, it is counted as 3 debuffs.",
+            effect_jp: "敵全体に74.3%の物理属性ダメージを与える。敵に付与されている弱体効果が１つ毎に、ダメージが１２%上昇する。この効果は最大３つまで累積できる。睡眠状態の敵がいる場合、３つとして計算される。",
+            priority: 1,
+            icon: "물리광역"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 180.0%의 물리 속성 대미지를 준다.",
+            effect_en: "Deals 180.0% ATK as Phys dmg to all foes.",
+            effect_jp: "全ての敵に180.0% ATKの物理属性ダメージを与える。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "공격 강화", priority: 3 },
+            {name : "어드바이스", priority: 3 },
+            {name : "정교한 타격", priority: 3 },
+            {name : "마도의 재능", priority: 3 },
+            {name : "물리 강화", priority: 3 },
+            {name : "공격의 마음가짐", priority: 3},
+        ],
+        comment: "요시츠네가 없을 경우 대용으로 사용한다.",
+        comment_en: "If Yoshitsune is not available, use this persona as a replacement.",
+        comment_jp: "ヨシツネがいない場合、このペルソナを代替として使用する。",
+    },    
     "네코쇼군": {
         name_en: "Neko Shogun",
         name_jp: "ネコショウグン",

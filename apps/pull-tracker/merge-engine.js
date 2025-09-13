@@ -8,6 +8,7 @@
     }
     function recomputeSummary(segments){
         const pulled = segments.reduce((s,seg)=> s + (Array.isArray(seg.record)? seg.record.length:0), 0);
+        const inProgressCount = segments.reduce((s,seg)=> s + ((seg && seg.fivestar==null) ? ((Array.isArray(seg.record)? seg.record.length:0)) : 0), 0);
         let t5=0, t4=0, win5050=0;
         const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v)=>Number(v))) : null;
         for (const seg of segments){
@@ -34,7 +35,8 @@
             }
         }
         const avgPity = pityCnt>0 ? (pitySum/pityCnt) : null;
-        return { pulledSum: pulled, total5Star: t5, total4Star: t4, win5050, avgPity };
+        const effectivePulled = Math.max(0, pulled - inProgressCount);
+        return { pulledSum: pulled, total5Star: t5, total4Star: t4, win5050, avgPity, inProgressCount, effectivePulled };
     }
     function mergeTypeBlock(oldBlock, newBlock){
         const oldSegs = Array.isArray(oldBlock?.records) ? oldBlock.records : [];

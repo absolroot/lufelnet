@@ -928,7 +928,7 @@
             const text = await fetchRecords(userUrl);
             // if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
             stop();
-            setStatus('✅ 완료');
+            setStatus('✅ Complete');
             setResult(text);
 
             try {
@@ -1023,26 +1023,26 @@
             // 총 뽑기: summary.pulledSum
             const total = getNumber(block, ['summary', 'pulledSum']);
             // 진행 중(현재 5★ 미확정 구간) 계산: fivestar === null 인 섹션들의 record 길이 합
-            const inProgress = (() => {
+            let inProgress = (() => {
                 try {
                     const list = Array.isArray(block.records) ? block.records : [];
                     if (list.length===0) return 0;
-                    // 진행 중 세그먼트들 중 lastTimestamp가 가장 큰 세그먼트 선택
-                    let latestUnfinished = null; let maxTs = -Infinity;
+                    // 이 블록의 모든 진행 중 세그먼트 길이 합산 (overview 규칙과 동일화)
+                    let s = 0; 
                     for (const seg of list){
                         if (seg && seg.fivestar == null){
-                            const ts = Number(seg.lastTimestamp||0);
-                            if (ts>maxTs){ maxTs=ts; latestUnfinished=seg; }
+                            const rec = Array.isArray(seg.record) ? seg.record : [];
+                            s += rec.length;
                         }
                     }
-                    if (latestUnfinished) {
-                        const rec = Array.isArray(latestUnfinished.record) ? latestUnfinished.record : [];
-                        return rec.length;
-                    }
-                    return 0;
+                    return s;
                 } catch(_) { return 0; }
             })();
-            const effectiveTotal = Math.max(0, (Number.isFinite(total) ? total : 0) - inProgress);
+            // 엔진 summary 값이 있으면 우선 사용
+            const inProgressFromSummary = getNumber(block, ['summary', 'inProgressCount']);
+            if (Number.isFinite(inProgressFromSummary)) inProgress = inProgressFromSummary;
+            const effectiveSummary = getNumber(block, ['summary', 'effectivePulled']);
+            const effectiveTotal = Number.isFinite(effectiveSummary) ? effectiveSummary : Math.max(0, (Number.isFinite(total) ? total : 0) - inProgress);
 
             const avgPity = getNumber(block, ['summary', 'avgPity']);
             const total5 = getNumber(block, ['summary', 'total5Star']);
@@ -1054,7 +1054,7 @@
             const fiveRate = effectiveTotal > 0 && total5 >= 0 ? ((total5 / effectiveTotal) * 100) : null;
             const fourRate = total > 0 && total4 >= 0 ? ((total4 / total) * 100) : null;
             // 평균 뽑기 횟수: 데이터 기반 근사치 (총 뽑기 / 등급 개수). 5★은 avgPity 우선 사용
-            const fiveAvg = avgPity != null ? avgPity : (total5 > 0 ? (total / total5) : null);
+            const fiveAvg = (total5 > 0 ? (effectiveTotal / total5) : null);
             const fourAvg = total4 > 0 ? (total / total4) : null;
             // 50:50 승리 비율: 5★ 중 win5050 개수 비율
             const win5050Rate = (total5 > 0 && win5050 != null) ? ((win5050 / total5) * 100) : null;
@@ -1786,5 +1786,6 @@
         });
     } catch(_) {}
 })();
+
 
 

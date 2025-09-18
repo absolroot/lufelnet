@@ -1074,7 +1074,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     <span class="stat-value">${character.stats.defense || 0}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">생명력</span>
+                    <span class="stat-label">생명</span>
                     <span class="stat-value">${character.stats.hp || 0}</span>
                 </div>
                 <div class="stat-item">
@@ -1295,10 +1295,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // 스탯 정보
                 const weaponStats = document.createElement('div');
                 weaponStats.className = 'weapon-stats';
+                // 현재 언어 라벨 계산 (I18NUtils 폴백 포함)
+                const _lang = (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) ? I18NUtils.getCurrentLanguageSafe() : (typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'kr');
+                const _dict = (typeof I18NUtils !== 'undefined' && I18NUtils.statTranslations && I18NUtils.statTranslations[_lang]) ? I18NUtils.statTranslations[_lang] : null;
+                const _label = (ko) => (_dict && _dict[ko]) ? _dict[ko] : ko;
+                const _healthLabel = _label('생명');
+                const _attackLabel = _label('공격력');
+                const _defenseLabel = _label('방어력');
                 weaponStats.innerHTML = `
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="생명"><p>생명 ${weaponData.health || 0}</p>
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="공격력"><p>공격력 ${weaponData.attack || 0}</p>
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="방어력"><p>방어력 ${weaponData.defense || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="${_healthLabel}"><p>${_healthLabel} ${weaponData.health || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="${_attackLabel}"><p>${_attackLabel} ${weaponData.attack || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="${_defenseLabel}"><p>${_defenseLabel} ${weaponData.defense || 0}</p>
                 `;
 
                 // 별 표시
@@ -1358,11 +1365,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 
             }
             
-            // 무기 로드 후 스탯 텍스트 번역 적용
+            // 무기 로드 후 스탯 텍스트 번역 적용 (안전 폴백 포함)
             setTimeout(() => {
-                if (typeof translateStatTexts === 'function') {
-                    translateStatTexts();
-                }
+                try {
+                    if (typeof window.translateStatTexts === 'function') {
+                        window.translateStatTexts();
+                    } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
+                        I18NUtils.translateStatTexts(document);
+                    }
+                } catch(_) {}
             }, 100);
             
             addTooltips();

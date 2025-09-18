@@ -1214,7 +1214,7 @@ const enCharacterSkillsData = {
         "name": "Yusuke Kitagawa",
         "skill1": {
             "name": "Frozen Presence",
-            "element": "빙결",
+            "element": "빙결광역",
             "type": "광역피해",
             "sp": 20,
             "cool": 0,
@@ -1222,7 +1222,7 @@ const enCharacterSkillsData = {
         },
         "skill2": {
             "name": "Bone-Chilling Cold",
-            "element": "빙결",
+            "element": "빙결광역",
             "type": "광역피해",
             "sp": 20,
             "cool": 0,
@@ -1230,14 +1230,14 @@ const enCharacterSkillsData = {
         },
         "skill3": {
             "name": "Keen Eye",
-            "element": "물리",
+            "element": "버프",
             "type": "버프",
             "sp": 24,
             "cool": 1,
             "description": "Change the next activated [Inspiration] to [Imagination].\n[Imagination]: Counterattack chance becomes 100%, damage increases by 78.1%/86.1%/82.9%/90.9% of Defense, and changes to an AoE attack. If not activated by the start of Yusuke's next action, it will activate automatically.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% + 555/555/683/683 of Defense, temporarily change Yusuke's weakness to base attribute, and nullify all spiritual ailments. Also, inflict Taunt on all foes for 2 turns."
         },
         "skill_highlight": {
-            "element": "빙결",
+            "element": "빙결광역",
             "type": "광역피해",
             "description": "Deal Ice damage to all foes equal to 178.1%/196.4%/189.1%/207.3% of Yusuke's Defense. Increase [Inspiration] counterattack activation chance by 35% for 3 turns."
         },

@@ -956,8 +956,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentLang = getCurrentLanguage();
             // 직업에 따라 기본 라벨 세트 선택
             const labelSet = (characterInfo.position === '해명')
-                ? { kr: '행동', en: 'Action', jp: '行動' }
-                : { kr: '턴',   en: 'Turn',   jp: 'ターン' };
+                ? { kr: '행동', en: ' Action', jp: '行動' }
+                : { kr: '턴',   en: ' Turn',   jp: 'ターン' };
             if (skill.cool && skill.cool > 0) {
                 const label = labelSet[currentLang] || labelSet.kr;
                 costParts.push(`${skill.cool}${label}`);

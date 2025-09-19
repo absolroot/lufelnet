@@ -3216,7 +3216,7 @@ const personaSkillList = {
     },
     "마도의 재능 I": {
         name_jp: "戦闘の才覚Ⅰ",
-        name_en: "Magic Ability I",
+        name_en: "Battle Acumen I",
         description: "주는 대미지가 4.7% 증가한다.",
         description_en: "Increase damage by 4.7% .",
         description_jp: "与ダメージが4.7%上昇する。",
@@ -3233,7 +3233,7 @@ const personaSkillList = {
     },
     "마도의 재능 II": {
         name_jp: "戦闘の才覚Ⅱ",
-        name_en: "Magic Ability II",
+        name_en: "Battle Acumen II",
         description: "주는 대미지가 6.7% 증가한다.",
         description_en: "Increase damage dealt by 6.7% .",
         description_jp: "与ダメージが6.7%上昇する。",
@@ -3250,7 +3250,7 @@ const personaSkillList = {
     },
     "마도의 재능 III": {
         name_jp: "戦闘の才覚Ⅲ",
-        name_en: "Magic Ability III",
+        name_en: "Battle Acumen III",
         description: "주는 대미지가 8.7% 증가한다.",
         description_en: "Increase damage dealt by 8.7% .",
         description_jp: "与ダメージが8.7%上昇する。",
@@ -3267,7 +3267,7 @@ const personaSkillList = {
     },
     "마도의 재능 IV": {
         name_jp: "戦闘の才覚Ⅳ",
-        name_en: "Magic Ability IV",
+        name_en: "Battle Acumen IV",
         description: "주는 대미지가 10.8% 증가한다.",
         description_en: "Increase damage dealt by 10.8% .",
         description_jp: "与ダメージが10.8%上昇する。",
@@ -3284,7 +3284,7 @@ const personaSkillList = {
     },
     "마도의 재능 V": {
         name_jp: "戦闘の才覚Ⅴ",
-        name_en: "Magic Ability V",
+        name_en: "Battle Acumen V",
         description: "주는 대미지가 13.0% 증가한다.",
         description_en: "Increase damage dealt by 13.0% .",
         description_jp: "与ダメージが13.0%上昇する。",
@@ -3301,7 +3301,7 @@ const personaSkillList = {
     },
     "마도의 재능": {
         name_jp: "戦闘の才覚",
-        name_en: "Magic Ability",
+        name_en: "Battle Acumen",
         description: "주는 대미지가 4.7%/6.7%/8.7%/10.8%/13.0% 증가한다.",
         description_en: "Increase damage dealt by 4.7%/6.7%/8.7%/10.8%/13.0% .",
         description_jp: "与ダメージが4.7%/6.7%/8.7%/10.8%/13.0%上昇する。",

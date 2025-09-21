@@ -63,7 +63,7 @@
 .submenu { width: 100%; outline: none; -webkit-tap-highlight-color: transparent; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
 .has-submenu.active .submenu { display: block; max-height: 200px; /* 서브메뉴의 최대 높이 */}
 
-.nav-sub-item { display: flex; align-items: center; padding: 15px 24px 15px 48px; color: #ffffff; text-decoration: none; transition: all 0.3s ease; width: 100%; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; background-color: #3B2929; border-top: 1px solid transparent; border-bottom: 1px solid transparent; }
+.nav-sub-item { display: flex; align-items: center; padding: 12px 24px 12px 48px; color: #ffffff; text-decoration: none; transition: all 0.3s ease; width: 100%; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; background-color: #3B2929; border-top: 1px solid transparent; border-bottom: 1px solid transparent; }
 .nav-sub-item:hover { background-color: rgba(0, 0, 0, 0.2); }
 .nav-sub-item span { margin-left: 0 !important; font-size: 13px; }
 .nav-sub-item.active { background-color: rgba(0, 0, 0, 0.3); border-top-color: rgba(255, 255, 255, 0.1); border-bottom-color: rgba(255, 255, 255, 0.1); }

@@ -24,6 +24,7 @@ custom_data: ["characters/characters.js"]
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}/apps/gallery/" />
 {% endif %}
 
+
 <div class="main-wrapper">
   <div class="gallery-header">
     <div class="navigation-path">
@@ -43,7 +44,7 @@ custom_data: ["characters/characters.js"]
 
   <div class="gallery-toolbar">
     <div class="filters">
-      <input id="search-input" type="text" placeholder="검색..." aria-label="Search" />
+      <input id="search-input" style="display:none;" type="text" placeholder="검색..." aria-label="Search" />
       <select id="category-select" aria-label="Category">
         <option value="">All</option>
       </select>
@@ -62,6 +63,9 @@ custom_data: ["characters/characters.js"]
   </div>
 
   <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+  <div id="gallery-loader"><div class="gallery-spinner"></div></div>
+
+</div>
 
   <!-- 이미지 모달 -->
   <div id="image-modal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="image viewer">
@@ -75,7 +79,7 @@ custom_data: ["characters/characters.js"]
     <img id="modal-image" alt="" />
     <div class="modal-caption" id="modal-caption"></div>
   </div>
-</div>
+
 
 <!-- 갤러리 전용 CSS/JS 로딩 -->
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/gallery/gallery.css?v={{ site.time | date: '%s' }}">

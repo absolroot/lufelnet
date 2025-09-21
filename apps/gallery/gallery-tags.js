@@ -123,9 +123,7 @@
         const words = entry.name_en.split(' ');
         return words[0];
       }
-      if (lang === 'jp' && entry.name_jp) {
-        return name_jp;
-      }
+      if (lang === 'jp' && entry.name_jp) return entry.name_jp;
       return tag;
     } catch(_) { return tag; }
   }
@@ -223,68 +221,59 @@
   }
 
   /**
-   * 카드 렌더링
+   * 카드 DOM 생성 (단일)
    */
-  function render(list){
-    gridEl.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    list.forEach(item=>{
-      const card = document.createElement('div');
-      card.className = 'gallery-card';
-      const thumb = document.createElement('div');
-      thumb.className = 'thumb-wrapper';
-      const img = document.createElement('img');
-      img.alt = item.filename;
-      // 썸네일 있으면 우선 사용, 없으면 원본
-      img.setAttribute('data-src', buildThumbURL(item.filename));
-      img.onerror = function(){
-        const current = img.getAttribute('data-src') || '';
-        const isThumb = current.indexOf('/apps/gallery/images/thumbs/') !== -1;
-        if (isThumb) {
-          img.onerror = null; // 무한 루프 방지
-          img.setAttribute('data-src', buildImageURL(item.filename));
-        }
-      };
-      img.decoding = 'async';
-      img.loading = 'lazy';
-      thumb.appendChild(img);
-      // 캡션
-      const cap = document.createElement('div');
-      cap.className = 'card-caption';
-      const tags = document.createElement('div'); tags.className='tags';
-      const lang = getLang();
-      // 최대 4개만 표시 4개보다 많을 경우 ... 추가
-      // 모바일의 경우 3개만 표시
-      const isMobile = window.innerWidth <= 768;
-      let tags_sliced = [];
-      if (isMobile) {
-        tags_sliced = (item.tags||[]).map(t=> localizeCharacterTag(t, lang)).slice(0, 3);  
-        if (tags_sliced.length < item.tags.length) {
-          tags_sliced.push('...');
-        }
-      } else {
-        tags_sliced = (item.tags||[]).map(t=> localizeCharacterTag(t, lang)).slice(0, 4);  
-        if (tags_sliced.length < item.tags.length) {
-          tags_sliced.push('...');
-        }
+  function buildCard(item){
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb-wrapper';
+    const img = document.createElement('img');
+    img.alt = item.filename;
+    // 썸네일 있으면 우선 사용, 없으면 원본
+    img.setAttribute('data-src', buildThumbURL(item.filename));
+    img.onerror = function(){
+      const current = img.getAttribute('data-src') || '';
+      const isThumb = current.indexOf('/apps/gallery/images/thumbs/') !== -1;
+      if (isThumb) {
+        img.onerror = null; // 무한 루프 방지
+        img.setAttribute('data-src', buildImageURL(item.filename));
       }
-      
-      tags_sliced.forEach(t=>{
-        const chip = document.createElement('span');
-        chip.className = 'tag-chip';
-        if (t === '...') {
-          chip.textContent = t;
-        } else {
-          chip.textContent = `#${t}`;
-        }
-        tags.appendChild(chip);
-      });
-      cap.appendChild(tags);
-      // 클릭으로 모달
-      thumb.addEventListener('click', ()=> openModal(item));
-      card.appendChild(thumb); card.appendChild(cap);
-      frag.appendChild(card);
+    };
+    img.decoding = 'async';
+    img.loading = 'lazy';
+    thumb.appendChild(img);
+    // 캡션
+    const cap = document.createElement('div');
+    cap.className = 'card-caption';
+    const tags = document.createElement('div'); tags.className='tags';
+    const lang = getLang();
+    // 최대 4개(모바일 3개) 표시, 초과 시 ...
+    const isMobile = window.innerWidth <= 768;
+    let tags_sliced = [];
+    const mapped = (item.tags||[]).map(t=> getLocalizedTagLabel(t, lang));
+    tags_sliced = mapped.slice(0, isMobile ? 3 : 4);
+    if (tags_sliced.length < mapped.length) tags_sliced.push('...');
+    tags_sliced.forEach(t=>{
+      const chip = document.createElement('span');
+      chip.className = 'tag-chip';
+      chip.textContent = (t === '...') ? t : `#${t}`;
+      tags.appendChild(chip);
     });
+    cap.appendChild(tags);
+    // 클릭으로 모달
+    thumb.addEventListener('click', ()=> openModal(item));
+    card.appendChild(thumb); card.appendChild(cap);
+    return card;
+  }
+
+  /**
+   * 카드 렌더링 (append=true면 기존 유지하고 뒤에만 추가)
+   */
+  function render(list, append=false){
+    if (!append) gridEl.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    list.forEach(item=>{ frag.appendChild(buildCard(item)); });
     gridEl.appendChild(frag);
     setupLazy(gridEl);
   }
@@ -303,7 +292,7 @@
   function renderModalTags(item){
     modalCaption.innerHTML = '';
     const lang = getLang();
-    (item.tags||[]).map(t=> localizeCharacterTag(t, lang)).forEach(t=>{
+    (item.tags||[]).map(t=> getLocalizedTagLabel(t, lang)).forEach(t=>{
       const chip = document.createElement('span');
       chip.className = 'tag-chip';
       if (t === '...') {
@@ -363,16 +352,73 @@
     wireModal();
 
     Promise.all([fetchJsonList(), fetchDirFiles()]).then(([jsonList])=>{
-      const list = [...jsonList];
-      modalList = [...list];
-      populateFilters(list);
-      const update = ()=>{ const out = sortList(filterList(list)); modalList = [...out]; render(out); };
+      fullList = [...jsonList];
+      modalList = [...fullList];
+      populateFilters(fullList);
+
+      // 무한 스크롤 상태값
+      pageSize = 20;
+      visibleCount = 20;
+      filteredList = [...fullList];
+
+      const update = ()=>{
+        const out = sortList(filterList(fullList));
+        filteredList = [...out];
+        modalList = [...out];
+        visibleCount = pageSize; // 필터/정렬 변경 시 초기화
+        render(out.slice(0, visibleCount));
+      };
       [searchInput, categorySelect, tagSelect, sortSelect].forEach(el=> el && el.addEventListener('input', update));
       update();
+
+      // 인피니트 스크롤 시작
+      setupInfiniteScroll();
     }).catch(err=>{
       console.error(err);
       gridEl.innerHTML = '<div style="color:rgba(255,255,255,0.7); padding:12px;">Failed to load gallery data.</div>';
     });
+  }
+
+  // 인피니트 스크롤 구현
+  let fullList = [];
+  let filteredList = [];
+  let pageSize = 20;
+  let visibleCount = 20;
+  let ioLoadMore = null;
+
+  function ensureSentinel(){
+    let s = document.getElementById('gallery-sentinel');
+    if (!s){
+      s = document.createElement('div');
+      s.id = 'gallery-sentinel';
+      s.style.height = '1px';
+      s.style.width = '100%';
+      gridEl.after(s);
+    }
+    return s;
+  }
+
+  function setupInfiniteScroll(){
+    const sentinel = ensureSentinel();
+    if (ioLoadMore) ioLoadMore.disconnect();
+    ioLoadMore = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        if (visibleCount >= filteredList.length) return;
+        // 로딩 스피너 0.5초 노출 후 로드
+        const loader = document.getElementById('gallery-loader');
+        if (loader) loader.style.display = 'flex';
+        setTimeout(() => {
+          const nextCount = Math.min(visibleCount + pageSize, filteredList.length);
+          const slice = filteredList.slice(visibleCount, nextCount);
+          visibleCount = nextCount;
+          // 기존은 유지하고, 새 항목만 append 렌더링
+          render(slice, true);
+          if (loader) loader.style.display = 'none';
+        }, 500);
+      });
+    }, { rootMargin: '400px' });
+    ioLoadMore.observe(sentinel);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', main);

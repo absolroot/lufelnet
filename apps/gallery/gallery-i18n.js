@@ -5,9 +5,7 @@
   const GalleryI18N = {
     tag: {
       // 예시 매핑: 원문 => { en, jp, kr(optional) }
-      '하이라이트': { en: 'Highlight', jp: 'ハイライト', kr: '하이라이트' },
-      '풍경': { en: 'Landscape', jp: '風景', kr: '풍경' },
-      '인물': { en: 'Portrait', jp: 'ポートレート', kr: '인물' }
+      '메로페': { en: 'Merope', jp: 'メロペ', kr: '메로페' },
     },
     category: {
       'group': { en: 'Group', jp: 'グループ', kr: '그룹' }

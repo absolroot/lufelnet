@@ -250,9 +250,14 @@
     const lang = getLang();
     // 최대 4개(모바일 3개) 표시, 초과 시 ...
     const isMobile = window.innerWidth <= 768;
+    const isJapanese = lang === 'jp';
     let tags_sliced = [];
     const mapped = (item.tags||[]).map(t=> getLocalizedTagLabel(t, lang));
-    tags_sliced = mapped.slice(0, isMobile ? 3 : 4);
+
+
+    if (isJapanese && isMobile) tags_sliced = mapped.slice(0, 2);
+    else tags_sliced = mapped.slice(0, isMobile || isJapanese ? 3 : 4);
+    
     if (tags_sliced.length < mapped.length) tags_sliced.push('...');
     tags_sliced.forEach(t=>{
       const chip = document.createElement('span');

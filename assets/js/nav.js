@@ -50,6 +50,7 @@ class Navigation {
                 pullTracker_individual: '개인 통계',
                 pullTracker_global: '전체 통계',
                 article: '가이드',
+                gallery: '갤러리',
                 about: 'about'
             },
             en: {
@@ -74,6 +75,7 @@ class Navigation {
                 pullTracker_individual: 'Individual Stats',
                 pullTracker_global: 'Global Stats',
                 article: 'Guides',
+                gallery: 'Gallery',
                 about: 'About'
             },
             jp: {
@@ -98,6 +100,7 @@ class Navigation {
                 pullTracker_individual: '個人統計',
                 pullTracker_global: '全体統計',
                 article: 'ガイド',
+                gallery: 'ギャラリー',
                 about: '紹介'
             },
             cn: {
@@ -124,9 +127,9 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'about'],
-            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'about'],
-            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'about'],
+            kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -252,6 +255,12 @@ class Navigation {
                     </div>
                 </div>
                 ` : ''}
+                ${currentMenus.includes('gallery') ? `
+                    <a href="${BASE_URL}/gallery?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
+                        <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <span data-text="${texts.gallery}">${texts.gallery}</span>
+                    </a>
+                    ` : ''}
                 ${currentMenus.includes('about') ? `
                 <a href="${BASE_URL}/about?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="about">
                     <img src="${BASE_URL}/assets/img/nav/about.png" alt="about" style="width: 32px; height: 32px; object-fit: contain;" />

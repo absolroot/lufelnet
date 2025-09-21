@@ -750,7 +750,7 @@ const enCharacterSkillsData = {
         }
     },
     "모토하·여름": {
-        "name": "Motoha Arai·Summer",
+        "name": "Tropical Motoha",
         "skill1": {
             "name": "Summer Magic",
             "element": "축복광역",

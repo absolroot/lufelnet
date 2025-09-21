@@ -495,7 +495,7 @@ const jpCharacterWeaponData = {
         }
     },
     "토모코·여름": {
-        "name": "野毛 朋子・夏",
+        "name": "朋子·ピーチサマー",
         "weapon4-1": {
             "name": "波の言葉",
             "health": 1870,

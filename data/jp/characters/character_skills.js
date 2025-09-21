@@ -1085,7 +1085,7 @@ const jpCharacterSkillsData = {
         }
     },
     "토모코·여름": {
-        "name": "野毛 朋子・夏",
+        "name": "朋子·ピーチサマー",
         "skill1": {
             "name": "夏のドリンク一杯",
             "element": "염동광역",

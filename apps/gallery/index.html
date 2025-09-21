@@ -1,0 +1,92 @@
+---
+layout: default
+permalink: /apps/gallery/
+redirect_from:
+  - /gallery/
+  - /kr/gallery/
+  - /kr/gallery/index.html
+language: kr
+title: 갤러리 - P5X 루페르넷
+description: P5X 갤러리. 썸네일을 클릭해 원본 이미지를 크게 확인하세요.
+alternate_urls:
+  en: /apps/gallery/?lang=en
+  jp: /apps/gallery/?lang=jp
+custom_css: []
+custom_js: []
+custom_data: ["characters/characters.js"]
+---
+
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/apps/gallery/" />
+{% for lang in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/apps/gallery/" />
+{% endif %}
+
+<div class="main-wrapper">
+  <div class="gallery-header">
+    <div class="navigation-path">
+      <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+      <span class="separator">/</span>
+      <span class="current-page" id="nav-current">갤러리</span>
+    </div>
+    <div class="header-container">
+      <h1 id="gallery-title">갤러리</h1>
+    </div>
+    <!-- 
+    <p id="gallery-desc" class="korean-content">썸네일을 클릭하면 원본 이미지를 모달로 확인할 수 있습니다.</p>
+    <p id="gallery-desc-en" class="english-content" style="display:none;">Click a thumbnail to view the original image in a modal.</p>
+    <p id="gallery-desc-jp" class="japanese-content" style="display:none;">サムネイルをクリックすると、原寸画像をモーダルで表示します。</p>
+    -->
+  </div>
+
+  <div class="gallery-toolbar">
+    <div class="filters">
+      <input id="search-input" type="text" placeholder="검색..." aria-label="Search" />
+      <select id="category-select" aria-label="Category">
+        <option value="">All</option>
+      </select>
+      <select id="tag-select" aria-label="Tag">
+        <option value="">All Tags</option>
+      </select>
+    </div>
+    <div class="sort" style="display:none;">
+      <select id="sort-select" aria-label="Sort">
+        <option value="order_desc">Order ↓</option>
+        <option value="order_asc">Order ↑</option>
+        <option value="name_asc">Name A→Z</option>
+        <option value="name_desc">Name Z→A</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+
+  <!-- 이미지 모달 -->
+  <div id="image-modal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="image viewer">
+    <button class="modal-close" id="modal-close" aria-label="close">×</button>
+    <button class="modal-nav modal-prev" id="modal-prev" aria-label="previous" disabled>
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <button class="modal-nav modal-next" id="modal-next" aria-label="next" disabled>
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </button>
+    <img id="modal-image" alt="" />
+    <div class="modal-caption" id="modal-caption"></div>
+  </div>
+</div>
+
+<!-- 갤러리 전용 CSS/JS 로딩 -->
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/gallery/gallery.css?v={{ site.time | date: '%s' }}">
+<script src="{{ site.baseurl }}/apps/gallery/gallery-i18n.js?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ site.baseurl }}/apps/gallery/gallery-tags.js?v={{ site.time | date: '%s' }}" defer></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof Navigation !== 'undefined') {
+      Navigation.load();
+    }
+  });
+  </script>
+

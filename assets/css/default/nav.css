@@ -77,6 +77,7 @@
 .nav-icon { font-size: 20px; width: 24px; text-align: center; margin-right : 10px; }
 
 
+
 /* tablet responsive (769px ~ 1440px) */
 @media screen and (max-width: 1440px) { 
     .main-nav { position: fixed; width: 240px; left: -240px; right: auto; transition: 0.3s ease; z-index: 1000; visibility: hidden; opacity: 0; 
@@ -179,3 +180,13 @@
 .privacy-link { color: inherit; text-decoration: underline; }
 .privacy-link:visited { color: inherit; }
 .privacy-link:hover { color: inherit; }
+
+
+
+
+@media screen and (min-height: 960px) {
+  .nav-link { padding: 16px 24px; }
+  .nav-main-item { padding: 16px 24px; }
+  .nav-item { padding: 16px 24px; }
+  .nav-sub-item { padding: 16px 24px 16px 48px; }
+}

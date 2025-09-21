@@ -185,8 +185,8 @@
 
 
 @media screen and (min-height: 960px) {
-  .nav-link { padding: 16px 24px; }
-  .nav-main-item { padding: 16px 24px; }
-  .nav-item { padding: 16px 24px; }
-  .nav-sub-item { padding: 16px 24px 16px 48px; }
+  .nav-link { padding: 14px 24px; }
+  .nav-main-item { padding: 14px 24px; }
+  .nav-item { padding: 14px 24px; }
+  .nav-sub-item { padding: 14px 24px 14px 48px; }
 }

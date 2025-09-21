@@ -372,8 +372,12 @@
         modalList = [...out];
         visibleCount = pageSize; // 필터/정렬 변경 시 초기화
         render(out.slice(0, visibleCount));
+        // 관찰자 재설정 (필터 변경 후 즉시 하단 감지 가능)
+        setupInfiniteScroll();
       };
       [searchInput, categorySelect, tagSelect, sortSelect].forEach(el=> el && el.addEventListener('input', update));
+      // select 요소는 change 이벤트도 바인딩
+      [categorySelect, tagSelect, sortSelect].forEach(el=> el && el.addEventListener('change', update));
       update();
 
       // 인피니트 스크롤 시작

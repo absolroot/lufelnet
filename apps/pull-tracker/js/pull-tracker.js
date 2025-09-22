@@ -10,7 +10,7 @@
             start: '가져오기',
             clear: '초기화',
             infoReady: '가챠 기록 URL을 입력하고 가져오기를 누르세요.',
-            infoNotice: '최근 90일 동안의 기록만 가져옵니다. 이전 기록은 게임 서버에서 제공되지 않습니다.\n가챠 시도 횟수가 많은 경우 로딩에 5분 이상 걸릴 수 있습니다. 각 URL은 유효 기간이 있어 만료될 경우 새로 가져와야 합니다.',
+            infoNotice: '최근 90일 동안의 기록만 가져옵니다. 이전 기록은 게임 서버에서 제공되지 않습니다.\n가챠 시도 횟수가 많은 경우 로딩에 5분 이상 걸릴 수 있습니다. 각 URL은 유효 기간이 있어 만료될 경우 새로 가져와야 합니다.\n※ 현재 기록을 추가 업데이트하는 과정이 불안정합니다. URL을 추가 제출하기 전에 내보내기를 통해 기존 데이터를 보존해주세요.',
             loadingTitle: '서버에서 기록을 조회 중입니다...',
             loadingDetail: '네트워크 상태와 서버 부하에 따라 시간이 걸릴 수 있습니다.',
             noticeLong: '최근 90일 뽑기 횟수에 따라 10분 이상 소요될 수 있습니다. 처리 중에는 브라우저 창을 닫지 말아주세요.',
@@ -43,7 +43,7 @@
             start: 'Get Data',
             clear: 'Clear',
             infoReady: 'Paste your gacha records URL and press Fetch.',
-            infoNotice: 'Only the last 90 days of records can be fetched. Older records are not provided by game servers.\nIf you have many pulls, loading may take 5+ minutes. Each URL has an expiration date and must be refetched when it expires.',
+            infoNotice: 'Only the last 90 days of records can be fetched. Older records are not provided by game servers.\nIf you have many pulls, loading may take 5+ minutes. Each URL has an expiration date and must be refetched when it expires.\n※ Adding new records is currently unstable. Please export data to preserve it before submitting additional URLs.',
             loadingTitle: 'Fetching records from the server...',
             loadingDetail: 'Depending on network and server load, it can take some time.',
             noticeLong: 'If you have many pulls in the last 90 days, it may take 10+ minutes. Please keep the browser open during processing.',
@@ -182,7 +182,7 @@
                     try {
                         const n = String(sel.value||'1');
                         const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                        const url = `${base}/apps/pull-tracker/example${n==='1'?'':n}.json?v=${Date.now()}`;
+                        const url = `${base}/apps/pull-tracker/examples/example${n==='1'?'':n}.json?v=${Date.now()}`;
                         const res = await fetch(url);
                         if (!res.ok) throw new Error('example fetch failed');
                         const text = await res.text();

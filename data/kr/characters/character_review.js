@@ -806,24 +806,20 @@ TECHNICALを所持していますが、後から追加された数値であるSK
 review_en: `
 The first **Bless-type DPS**.
 
-She consumes her own HP to use skills, and her **core Skill 3** has an effect where **its cooldown is reduced when Motoha heals HP**, which naturally pairs her with healers such as **Minami Miyashita** or **Tomoko Noge·Summer**.
+She consumes her own HP to use skills, and her **core Skill 3** can remove its cooldown through stacks Motoha gains by **restoring HP**, which naturally pairs her with healers such as **Minami Miyashita** or **Tomoko Noge·Summer**.
 
 The higher her **HP**, the greater her **DMG Bonus (ATK Mult)** and **ATK** gained through passives and revelation cards.
 
 However, there’s no benefit beyond **16,000 HP**, so after accounting for party buffs, it’s best to stop stacking HP there and invest remaining stats into offensive options.
-
-Due to her HP-oriented mechanics, she has excellent survivability and a simple cycle, making her **well-suited for auto play**.
 `,
 review_jp: `
 初の**祝福属性アタッカー**。
 
-自身のHPを消費してスキルを使用し、**核心となるスキル3**は**素羽がHPを回復するとクールタイムが短縮される効果**を持つため、**宮下 美波**や**野毛 朋子・夏**といったヒーラーとの編成が前提となる。
+自身のHPを消費してスキルを使用し、**核心となるスキル3**は、モトハがHPを回復して獲得するスタックを通じてクールタイムを解除できる。**宮下 美波**や**野毛 朋子・夏**といったヒーラーとの編成が前提となる。
 
 **HPが高いほど攻撃倍率+やパッシブによる攻撃力**が上昇する。
 
 ただし**HPが16000**を超えてもメリットはないため、味方のバフを考慮して適度に確保し、**残りのステータスは攻撃的な要素に投資**するのが望ましい。
-
-HPが重要な特性を持つため生存力が非常に高く、サイクルも単純なため、**オートプレイにも適している**。
 `
     },
     "몽타뉴": { name_en: "Montagne Kotone", name_jp: "琴音 モンターニュ", codename: "MONT",

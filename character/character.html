@@ -380,14 +380,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </div>
 
     <!-- 스킬 섹션 -->
-    <div class="skills-card card-style">
+    <div class="skills-card card-style drag-me">
         <h2>스킬</h2>
         <div class="skills-grid">
         </div>
     </div>
 
     <!-- 의식 섹션 -->
-    <div class="ritual-card card-style">
+    <div class="ritual-card card-style drag-me">
         <div class="ritual-header">
             <h2>의식</h2>
         </div>
@@ -445,7 +445,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </div>
 
     <!-- 무기 섹션 -->
-    <div class="weapons-card card-style">
+    <div class="weapons-card card-style drag-me">
         <h2>전용 무기</h2>
         <div class="weapon-enhancement-buttons">
             <button class="enhancement-btn active" data-stage="mixed">5성 개조0 / 4성 개조6</button>
@@ -2234,6 +2234,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         modal.classList.remove('show');
         document.body.style.overflow = '';
     }    
+    // 실수로 포커스가 들어오면 즉시 떼기(드래그는 유지됨)
+    document.querySelectorAll('.drag-me').forEach(el => {
+    el.addEventListener('focus', () => el.blur());
+    });
 
 </script>
 

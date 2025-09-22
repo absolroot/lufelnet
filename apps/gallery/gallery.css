@@ -63,7 +63,7 @@
 }
 .gallery-modal.open { display: flex; }
 .gallery-modal img { max-width: 95vw; max-height: 85vh; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
     .gallery-modal.open {
       margin-left: 240px
     }

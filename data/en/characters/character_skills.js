@@ -752,43 +752,43 @@ const enCharacterSkillsData = {
     "모토하·여름": {
         "name": "Tropical Motoha",
         "skill1": {
-            "name": "Summer Magic",
+            "name": "Blue Sunrise",
             "element": "축복광역",
             "type":"광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 87.8%/96.8%/93.2%/102.2% of Motoha Arai·Summer's ATK as Bless damage to all enemies. If she is in the 『Midsummer』 state, consumes 10% of her max HP to deal an additional 29.3%/32.3%/31.1%/34.1% of Bless damage to all enemies once."
+            "description": "Deal Bless damage to all foes equal to 87.8%/96.8%/93.2%/102.2% of Attack. If Summer Hype is active, spend 10% of Motoha's max HP to deal bonus Bless damage to all foes equal to 29.3%/32.3%/31.1%/34.1% of Attack."
         },
         "skill2": {
-            "name": "Leisurely Vacation",
+            "name": "Summer 'Splosion",
             "element": "축복",
             "type":"단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 136.6%/150.6%/145.0%/159.0% of Motoha Arai·Summer's ATK as Bless damage to 1 enemy and restores 20% of her max HP. If she is in the 『Midsummer』 state, deals an additional 34.2%/37.7%/36.3%/39.8% of Bless damage to the target once."
+            "description": "Deal Bless damage to 1 foe equal to 136.6%/150.6%/145.0%/159.0% of Attack, and restore 20% of Motoha's max HP. If Summer Hype is active, deal bonus Bless damage to 1 foe equal to 34.2%/37.7%/36.3%/39.8% of Attack."
         },
         "skill3": {
-            "name": "Wave Chaser",
+            "name": "Surf 'n' Shine",
             "element": "축복광역",
             "type":"광역피해",
             "sp": 24,
-            "cool": 5,
-            "description": "Immediately enters 『Midsummer』 state, lasting until the end of the next turn. Consumes 15% of her max HP to deal 159.7%/176.0%/169.5%/185.8% of Bless damage to all enemies. While in 『Midsummer』, her Critical Rate increases by 9.8%/9.8%/10.4%/10.4%, and her damage increases by 29.3%/29.3%/31.1%/31.1%."
+            "cool": 1,
+            "description": "Immediately enter the Summer Hype state, which lasts until the end of Tropical Motoha's next turn.\nSpend 15% of her max HP to deal Bless damage to all foes equal to 159.7%/176.0%/169.5%/185.8% of Attack.\nSummer Hype: Increase critical rate by 9.8%/9.8%/10.4%/10.4% and damage by 29.3%/29.3%/31.1%/31.1%."
         },
         "skill_highlight": {
             "element": "축복광역",
             "type":"광역피해",
-            "description": "Deals 195.2%/215.2%/207.2%/227.2% of Motoha Arai·Summer's ATK as Bless damage to all enemies and restores 20% of her max HP. If her HP is above 50%, the HIGHLIGHT skill damage increases by an additional 25%."
+            "description": "Deal Bless damage to all foes equal to 195.2%/215.2%/207.2%/227.2% of Attack, and restore 20% of Motoha's max HP.\nIf her HP is above 50%, increase Highlight damage by 25%."
         },
         "passive1": {
-            "name": "Shade",
+            "name": "Energy Overload!",
             "element": "패시브",
-            "description": "When Motoha Arai·Summer receives overhealing, her damage increases by 30.0% for 2 turns."
+            "description": "When Tropical Motoha receives healing, increase damage by 30.0% for 2 turns."
         },
         "passive2": {
-            "name": "Heatwave",
+            "name": "Outshine the Sun!",
             "element": "패시브",
-            "description": "If Motoha Arai·Summer's max HP exceeds 8000 during battle, she gains an additional 24 ATK for every extra 100 max HP, up to a maximum of 1920."
+            "description": "During battle, increase Motoha's Attack by 24 points for every 100 points of max HP above 8000, up to 1920."
         }
     },
     "몽타뉴·백조": {

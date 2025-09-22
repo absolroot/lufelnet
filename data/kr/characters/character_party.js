@@ -406,21 +406,15 @@ const recommendParty = {
         "party": [
             {
                 members: ["모토하·여름", "미나미", "레오", "유우미"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
+                comment: "미나미의 스킬2를 통해 오버힐을 자주 제공할 수 있다.",
+                comment_en: "MARIAN S2 can provide up to three heals in a single turn, including blessings, and LEON S2 can also grant heal effects.",
+                comment_jp: "「MARIAN」のS2は祝福を含め3回の回復を1ターンで与えられ、「LEON」のS2も回復効果を付与できる。"
             },
             {
                 members: ["모토하·여름", "토모코·여름", "아야카", "후타바"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
-            },
-            {
-                members: ["모토하·여름", "토모코·여름", "루우나", "후타바"],
-                comment: "",
-                comment_en: "",
-                comment_jp: ""
+                comment: "토모코의 불꽃놀이를 활용해 힐을 반복적으로 제공 가능하다.",
+                comment_en: "Through the fireworks of MOKO Peach Summer, you can repeatedly provide the heel.",
+                comment_jp: "「MOKO ピーチサマー」の花火を通じて、ヒールを繰り返し提供できる。"
             }
         ]
     },

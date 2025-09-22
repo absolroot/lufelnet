@@ -295,3 +295,22 @@ body.nav-locked { overflow: hidden !important; overscroll-behavior: none; }
 
 /* iOS 대응: body를 fixed로 만들 때 레이아웃 깨짐 방지용 안전 설정은 JS에서 처리 */
 
+
+.drag-me * {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  
+    /* 혹시 포커스가 들어와도 캐럿 자체를 숨김 (크롬 대응) */
+    caret-color: transparent;
+    outline: none;
+  }
+
+  .drag-me:focus,
+  .drag-me *:focus {
+    outline: none;
+  }
+  .drag-me:is(input, textarea) { 
+    caret-color: transparent !important;
+  }

@@ -345,22 +345,22 @@ const enCharacterWeaponData = {
         }
     },
     "모토하·여름": {
-        "name": "Motoha Arai·Summer",
+        "name": "Tropical Motoha",
         "weapon4-1": {
-            "name": "Bang Bang Star",
+            "name": "Bubble Puff Star",
             "health": 2093,
             "attack": 565,
             "defense": 288,
-            "skill_name": "Sunbathing",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When receiving healing while in 『Midsummer』 state, DMG increases by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 2 turns (up to 2 stacks)."
+            "skill_name": "",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.When receiving healing while Summer Hype is active, increase damage by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% more for 2 turns, Stacks up to 2 times."
         },
         "weapon5-1": {
-            "name": "Twinkle Beach",
+            "name": "Colorful Coast",
             "health": 2616,
             "attack": 706,
             "defense": 361,
-            "skill_name": "Burning Summer",
-            "description": "Bless-type DMG increases by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. While in 『Midsummer』 state, Crit Mult increases by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. Upon entering 『Midsummer』 state, gain 2 stacks of Sunlight. Each time a Persona Skill or HIGHLIGHT skill is used, 1 stack of Sunlight is consumed to increase that skill's DMG by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "skill_name": "",
+            "description": "Increase Bless damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%.When Summer Hype is active, increase critical damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%.When using Surf 'n' Shine when Summer Hype is active, increase that skill's damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% and gain 1 Sunlight stack.When using a skill or Highlight, spend 1 Sunlight stack to increase the skill's damage by the same amount.Damage increases from Summer Hype and Sunlight will not stack, even if activated at the same time."
         }
     },
     "몽타뉴·백조": { 

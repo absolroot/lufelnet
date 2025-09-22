@@ -1258,7 +1258,7 @@ const characterData = {
             "LV13+5": "생명 16000"
         },
         "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점 / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 패시브 1800",
-        "battle_plus_stats_en": "· 해명의힘 / 직책 8% / MyPalace 260 / MyPalace Point / Minami Passive 1500 / Minami Skill 3 / Tomoko·Summer Passive 1800",
+        "battle_plus_stats_en": "· 해명의힘 / 직책 8% / MyPalace 260 / MyPalace Point / Minami Passive 1500 / Minami Skill 3 / Tomoko·Peach Summer Passive 1800",
         "battle_plus_stats_jp": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점 / 宮下 美波 パッシブ 1500 / 宮下 美波 スキル3 / 野毛 朋子 夏 パッシブ 1800",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",

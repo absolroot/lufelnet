@@ -1,8 +1,7 @@
-// Character list data for English version (P5X characters only - excluding P3R characters)
 const characterList = {
     mainParty: [
         "렌", "루페르", "레오", "류지", "마코토", "모르가나",
-        "모토하", "몽타뉴", "미나미", "슌",
+        "모토하", "모토하·여름", "몽타뉴", "미나미", "슌",
         "세이지", "아야카", "안",  "야오링", 
         "원더", "유스케", "유키미", "유이 YUI",
         "키요시", "치즈코", "토모코","토시야",
@@ -15,7 +14,6 @@ const characterList = {
     ]
 };
 
-
 // Character data (basic info only - detailed info will be merged from KR data)
 const characterData = {
     "원더": {
@@ -23,6 +21,9 @@ const characterData = {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "모토하·여름": {
+        "release_order": 10
     },
     "아야카": {
         "release_order": 9

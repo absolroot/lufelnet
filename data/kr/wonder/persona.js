@@ -1713,7 +1713,7 @@ const personaData = {
         uniqueSkill: {
             name: "구원의 빛",
             name_en: "Shining Salvation",
-            name_jp: "光り輝く裁済",
+            name_jp: "光り輝く救済",
             effect: "모든 적에게 공격력 79.4%의 축복 속성 대미지를 주고, 아군 모두에게 축복 효과 2중첩을 부여한다. 본인은 축복 효과 중첩당 스킬 대미지가 5% 증가하며 최대 25% 증가한다.",
             effect_en: "Deals 79.4% ATK Bless dmg to all foes and grants 2 stacks of Blessing to all allies. For every stack of Bless you have, increases skill damage by 5%, up to 25%.",
             effect_jp: "敵全体に攻撃力79.4%の祝福属性ダメージを与え、味方全体に祝印を2つ付与する。自身の祝印1つ毎にスキルダメージが5%上昇し、最大で25%まで上昇する。",

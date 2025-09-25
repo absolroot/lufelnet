@@ -6,6 +6,7 @@
     tag: {
       // 예시 매핑: 원문 => { en, jp, kr(optional) }
       '메로페': { en: 'Merope', jp: 'メロペ', kr: '메로페' },
+      '아란': { en: 'Aran', jp: '平野亞蘭', kr: '아란' },
     },
     category: {
       'group': { en: 'Group', jp: 'グループ', kr: '그룹' }

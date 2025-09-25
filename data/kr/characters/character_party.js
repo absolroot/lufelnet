@@ -562,7 +562,7 @@ const recommendParty = {
             }
         ] 
     },
-    "유이 YUI": {
+    "YUI": {
         "weapon": ["마그네틱 스톰!","태고의 역장","메커니컬 심판자"],
         "persona": [
             {
@@ -583,19 +583,19 @@ const recommendParty = {
         ],
         "party": [
             {
-                members: ["유이 YUI", "슌", "모토하", "카요"],
+                members: ["YUI", "슌", "모토하", "카요"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
             },
             {
-                members: ["유이 YUI", "치즈코", "아야카", "후타바"],
+                members: ["YUI", "치즈코", "아야카", "후타바"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""
             },
             {
-                members: ["유이 YUI", "미오", "마유미", "마나카"],
+                members: ["YUI", "미오", "마유미", "마나카"],
                 comment: "",
                 comment_en: "",
                 comment_jp: ""

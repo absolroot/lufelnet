@@ -3,6 +3,11 @@ const operationData = {
         basic: [],
         note: []
     },
+    "YUI·프리즘": {
+        basic: [
+            { label: "의식 0", value: "2+1 › 3 › 2+1 › 3 › 2+1 › 3" }
+        ]
+    },
     "카타야마": {
         basic: [
             { label: "의식 0", value: "1 › 3 › 2 › 1 › 3 › 2" }
@@ -509,7 +514,7 @@ const operationData = {
             "· 専用武器の行動減少回数とパーティーによって運用が変化します。"
         ]
     },
-    "유이 YUI": {
+    "YUI": {
         basic: [
             { label: "의식 0", value: "3 › 1 › 3 › 1 › 3 › 1" },
         ],

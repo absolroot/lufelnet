@@ -16,7 +16,7 @@ const mapping_en = {
     "수락": "Acceptance",
     "자유": "Freedom",
     "진정성": "Integrity",
-    
+    "민첩": "Agility",
     // Sub revelations
     "슬픔": "Sorrow",
     "변화": "Transformation",
@@ -43,7 +43,8 @@ const mapping_en = {
     "직책": "Labor",
     "분쟁": "Strife",
     "개선": "Success",
-    "좌절": "Defeat"
+    "좌절": "Defeat",
+    "충만": "Satiety"
 };
 
 // English revelation data
@@ -67,6 +68,7 @@ const enRevelationData = {
         "수락": "Acceptance",
         "자유": "Freedom",
         "진정성": "Integrity",
+        "민첩": "Agility"
     },
     "subTranslated": {
         "슬픔": "Sorrow",
@@ -94,7 +96,8 @@ const enRevelationData = {
         "직책": "Labor",
         "분쟁": "Strife",
         "개선": "Success",
-        "좌절": "Defeat"
+        "좌절": "Defeat",
+        "충만": "Satiety"
     },
     "main": {
         "Perseverance" : ["Sorrow","Transformation"],
@@ -111,7 +114,8 @@ const enRevelationData = {
         "Resolve": ["Virtue","Labor","Prudence"],
         "Acceptance": ["Peace","Strife","Love"],
         "Freedom": ["Success","Defeat","Despair"],
-        "Integrity": ["Pleasure","Labor","Fixation"]
+        "Integrity": ["Pleasure","Labor","Fixation"],
+        "Agility": ["Satiety"]
     },
     "sub": {
         "Sorrow": ["Perseverance"],
@@ -139,7 +143,8 @@ const enRevelationData = {
         "Labor": ["Resolve","Integrity","Hope"],
         "Strife": ["Acceptance"],
         "Success": ["Freedom"],
-        "Defeat": ["Freedom"]
+        "Defeat": ["Freedom"],
+        "Satiety": ["Agility"]
     },
     "sub_effects": {
         "Control": { // 주권
@@ -271,6 +276,11 @@ const enRevelationData = {
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 3 turns; Gain this effect again when you use HIGHLIGHT.",
             "type": ["주원", "미출시"]
+        },
+        "Satiety": { // 충만
+            "set2": "Increase ATK by 12%.",
+            "set4": "Increase DMG by 20% for 2 turns; Gain this effect again when using a Follow Up Skill.",
+            "type": ["추가 효과", "미출시"]
         }
     },
     "set_effects": {
@@ -353,6 +363,10 @@ const enRevelationData = {
             "Virtue": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Ailment Accuracy Rate.",
             // "type": ["미출시"]
+        },
+        "Agility": {
+            "Satiety": "Increase All Out Attack DMG by 16%."
         }
+
     }
 };

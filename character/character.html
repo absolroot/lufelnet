@@ -1118,7 +1118,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const description = item.querySelector('.ritual-description');
                 
                 title.textContent = ritualToUse[`r${level}`] || '';
-                description.textContent = ritualToUse[`r${level}_detail`] || '';
+                description.innerHTML = ritualToUse[`r${level}_detail`] || '';
             });
 
         }

@@ -361,7 +361,7 @@ const ritualPatterns = {
         ]
         }
     ],
-    "유이 YUI": [
+    "YUI": [
         {
         level: "0-6",  
         pattern: [

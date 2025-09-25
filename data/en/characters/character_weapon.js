@@ -1,328 +1,333 @@
-const enCharacterWeaponData = {
+enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
     "카타야마": {
         "name": "Kumi Katayama",
         "weapon3-1":{
-            "name": "Operation Boots",
+            "name": "Combat Boots",
             "health": 1343,
             "attack": 424,
             "defense": 237,
-            "skill_name": "",
-            "description": "When possesses Super Extreme, SPD +7.4/8.5/9.6/10.7/11.8/12.9/14.0."
+            "skill_name": "Unending Spirit",
+            "description": "When possessing Transcending Limit, SPD +7.4/8.5/9.6/10.7/11.8/12.9/14.0."
         },
         "weapon4-1": {
-            "name": "Volt Red Heart",
+            "name": "Voltic Loyalty",
             "health": 1791,
             "attack": 565,
             "defense": 317,
-            "description": "ATK +12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When knocking down an enemy, ATK +7.5%/9.8%/9.8%/12.0%/12.0%/14.2%/14.2% for 1 turn (max 22.5%/29.2%/29.2%/36.0%/36.0%/42.7%/42.7%)."
-        },
+            "skill_name": "Nocturnal Rover",
+            "description": "ATK is increased by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%. When Downing foes, increase ATK by 7.5/9.8/9.8/12.0/12.0/14.2/14.2% for every foe Downed for 1 turn, up to 22.5/29.2/29.2/36.0/36.0/42.7/42.7%."
+                    },
         "weapon5-1": {
-            "name": "Iron Oath Wolf Cavalier",
+            "name": "Ironvow Cavalry",
             "health": 2239,
             "attack": 706,
             "defense": 396,
-            "description": "SPD +15.0/15.0/20.0/20.0/25.0/25.0/30.0. When using [Secret Art: Flash Kick], Crit Rate +9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0% for 2 turns. On knocking down an enemy, their Crit Mult taken increases by 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% for 1 turn."
-        }
+				"skill_name": "Spirit Liberation",
+				"description": "SPD is increased by 15/15/20/20/25/25/30. After casting [Killing Blow: Flarefeet], increase CRIT Rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns. After Downing foes, increase their CRIT DMG Taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+       }
     },
     "미유·여름": {
         "name": "Miyu Sahara Summer",
         "weapon4-1": {
-            "name": "Sky Above the Sea and Moon",
+            "name": "Jellymoon Welkin",
             "health": 1807,
             "attack": 623,
             "defense": 313,
-            "skill_name": "",
-            "description": "Increases ATK by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. While in [Sea's Domain], increases ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "skill_name": "Lightgliding Journey",
+				"description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Under [Ocean's Domain], ATK is additionally increased by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
-            "name": "Mermaid Princess in a Dream",
+            "name": "Dreamdrifting Mermaid",
             "health": 2259,
             "attack": 779,
             "defense": 391,
-            "skill_name": "",
-            "description": "Increases CRIT DMG by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Increases CRIT Rate of additional effects by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%. When using skills that consume energy, increases self DMG dealt by 6.8%/8.8%/8.8%/10.8%/10.8%/12.8%/12.8%, stacking up to 5 times and lasting permanently for the rest of the battle."
+            "skill_name": "Rippling Dreams",
+            "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Follow-Up Actions' CRIT Rate is increased by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%, and increases DMG Dealt by 6.8%/8.8%/8.8%/10.8%/10.8%/12.8%/12.8% after consuming SP by casting skills, up to 5 stacks. This effect is permanent in this battle after obtaining."
         }
     },
     "미나미·여름": {
         "name": "Minami Miyashita Summer",
         "weapon4-1": {
-            "name": "Afternoon Tea Time",
+            "name": "Afternoon Teatime",
             "health": 2125,
             "attack": 475,
             "defense": 320,
-            "skill_name": "Sweet Feast",
-            "description": "Max HP increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When using a Persona skill targeting an ally, her Critical Damage increases by 17.4%/22.6%/22.6%/27.8%/27.8%/33.0%/33.0%."
+            "skill_name": "Saccherine Feast",
+            "description": "Maximum HP is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%;  When casting a Persona skill on an ally, increase CRIT DMG by 17.4%/22.6%/22.6%/27.8%/27.8%/33.0%/33.0%. "
         },
         "weapon5-1": {
-            "name": "Ever-Blooming Garden",
+            "name": "Everlasting Orchard",
             "health": 2655,
             "attack": 594,
             "defense": 400,
             "skill_name": "Summer Breeze",
-            "description": "Medicine effects increase by 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%. When using medicine on an ally, that ally’s Critical Damage increases by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns. When using a Persona skill targeting an ally, that ally’s ATK increases by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."
+            "description": "Item Effect is increased by 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%. When using an item on an ally, additionally increase the main target's CRIT DMG by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns. When casting a Persona skill on an ally, additionally increase the main target's ATK by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."
         }
     },
     "이치고": {
         "name": "Ichigo Shikano",
         "weapon4-1": {
-            "name": "Crimson Vow",
+            "name": "Bloodsworn Billet-Doux",
             "health": 1902,
             "attack": 618,
             "defense": 288,
-            "skill_name": "Love Dependence",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time HIGHLIGHT is activated, her damage increases by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 2 turns."
+            "skill_name": "Love Remains",
+            "description": "ATK is increased by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%. After using HIGHLIGHT, DMG Dealt is increased by 17.6/23.2/23.2/28.8/28.8/34.4/34.4% for 2 turns."
         },
         "weapon5-1": {
-            "name": "Puppet Show of Death",
+            "name": "Cursed Mannequin",
             "health": 2378,
             "attack": 773,
             "defense": 361,
-            "skill_name": "Covet",
-            "description": "Critical Rate increases by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%. When 『Covet』 reaches 1/2/3 stacks, her damage dealt increases by\n1 stack: 11.0%/14.2%/14.2%/17.4%/17.4%/20.6%/20.6% \\ 2 stacks: 22.0%/28.5%/28.5%/35.0%/35.0%/41.5%/41.5% \\ 3 stacks: 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%.\nWhen casting 『Shh! Execution Time』, Critical Damage increases by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%."
+            "skill_name": "Possessive Urge",
+            "description": "CRIT Rate is increased by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%. When [Covet] reaches 1/2/3 stacks, DMG dealt is increased by 11.0|14.2|14.2|17.4|17.4|20.6|20.6%/22.0|28.5|28.5|35.0|35.0|41.5|41.5%/34.0|44.0|44.0|54.0|54.0|64.0|64.0%; When casting [Shhh...Execution Time is Now!], CRIT DMG is increased by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
         }
     },
     "사나다": {
         "name": "Akihiko Sanada",
         "weapon4-1": {
-            "name": "Hell Cestus",
+            "name": "Wicked Cestus",
             "health": 1823,
             "attack": 618,
             "defense": 313,
-            "skill_name": "Explosive Power",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When he has 2 stacks of 『Fighting Spirit』, ATK increases by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "skill_name": "Epinephrine Rush",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When possessing 2 or more stacks of [Fighting Spirit], increase ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
             "name": "Sabazios",
             "health": 2279,
             "attack": 773,
             "defense": 391,
-            "skill_name": "Killer Force",
-            "description": "Critical Damage increases by 36.3%/36.3%/47.2%/47.2%/58.0%/58.0%/68.8%. When he gains 『Tenacity』, Critical Rate increases by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% for 2 turns (up to 2 stacks). When he lands a Critical Hit via Persona Skills/Theurgy/Additional Effects, damage increases by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "skill_name": "Ultimate Power",
+            "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When obtaining [Persistence], increase CRIT Rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% up to 2 stacks and for 2 turns. When a Persona Skill/Theurgy/Follow-Up Action scores a CRITICAL, increase DMG Dealt by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
         }
     },
     "유카리": {
         "name": "Yukari Takeba",
         "weapon4-1": {
-            "name": "Demon Bow",
+            "name": "Kishin Bow",
             "health": 1823,
             "attack": 565,
             "defense": 328,
-            "skill_name": "Decoy Arrow",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When casting 『Revive Arrow』, healing effectiveness increases by 13.0%/16.9%/16.9%/20.8%/20.8%/24.8%/24.8%."
+            "skill_name": "Deft Arrow",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When casting [Arrow of Rebirth], additionally increase Healing Effect by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8%."
         },
         "weapon5-1": {
             "name": "Sarnga",
             "health": 2279,
             "attack": 706,
             "defense": 409,
-            "skill_name": "Azure Arrow",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When allies attack enemies with 『Wind Trace』 and trigger healing, healing amount increases by 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%. When casting 『Revive Arrow』, for each stack of 『Wind Language』 consumed, all allies' damage dealt increases by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns (up to 2 stacks)."
+            "skill_name": "Verdant Arrow",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When allies recover HP by attacking enemies inflicted by [Wind Erosion], Healing Effect is additionally increased by 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%. When consuming [Wind's Whisper], for each stack consumed, increase all allies' DMG dealt by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns, up to 2 stacks."
         }
     },
     "유키 마코토": {
         "name": "Makoto Yuki",
         "weapon4-1": {
-            "name": "Myodo Totetsu",
+            "name": "Translucent Blade",
             "health": 1728,
             "attack": 628,
             "defense": 313,
-            "skill_name": "Will of Essence",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When granting a buff to an ally, all allies' damage increases by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%, and Makoto Yuki's damage increases by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% for 2 turns."
+            "skill_name": "Silent Resolve",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After providing a buff effect to allies, increase DMG dealt by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% for all allies. Increase DMG dealt additionally by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% to the user."
         },
         "weapon5-1": {
-            "name": "Deos Scyphos",
+            "name": "Deus Xiphos",
             "health": 2160,
             "attack": 786,
             "defense": 391,
             "skill_name": "Moment of Reversal",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When 『Moon Phase』 or 『Special Moon Phase』 reaches 3 stacks, Critical Rate increases by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When dealing damage 4 or more times with Persona Skills/Theurgy, gains a damage bonus of 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After gaining 3 or more [Moon Phase] or [Special Moon Phase], increase CRIT Rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When casting a Persona Skill/Theurgy that hits 4 instances or more, increase DMG Dealt by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
         }
     },
     "이케나미": {
         "name": "Shoki Ikenami",
         "weapon4-1": {
-            "name": "Oath Holy Sword",
+            "name": "Vowed Coronation",
             "health": 1823,
             "attack": 539,
             "defense": 349,
-            "skill_name": "Oracle's Coffin",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When receiving a Bless effect, ATK increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% and Ailment Accuracy increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns (stacks up to 3 times)."
+            "skill_name": "Fated Enthroning",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After granting a Blessing effect, increase ATK and EHR by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns and up to 3 stacks."
         },
         "weapon4-2": {
-            "name": "Illusion Silhouette",
+            "name": "Illusion Fostering",
             "health": 2497,
             "attack": 594,
             "defense": 449,
-            "skill_name": "Curtain within Curtain",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When using a Persona skill on an ally, Ailment Accuracy increases by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% for 2 turns, and the skill target also gains 60% of this effect."
+            "skill_name": "Innumerable Stages",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After casting a Persona skill to an ally, increase EHR by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% for 2 turns, the skill target would gain 60% of the effect."
         },
         "weapon5-1": {
-            "name": "Stigmata of White Night",
+            "name": "Midnight Sun, Starlit Prophecies",
             "health": 2279,
             "attack": 673,
             "defense": 436,
-            "skill_name": "Star's Descent",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When using a Persona skill on an ally with a Bless effect, that ally's damage dealt increases by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% for 2 turns. When using a Persona skill in a different 『Impromptu Performance』 state, Shoki Ikenami's ATK permanently increases by 14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0% (stacks up to 3 times), and all allies gain 50% of the effect."
+            "skill_name": "Starstruck Throne",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When casting a Persona skill on allies, if the target has Blessing on them, increase their DMG Dealt by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% for 2 turns.  When casting a Persona Skill under different [Improvs], increase ATK permanently by 14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0%, up to 3 stacks, and all allies would gain 50% of the effect."
         }
     },
     "마나카": {
         "name": "Manaka Nagao",
         "weapon4-1": {
-            "name": "Song of Dreams",
+            "name": "A Singer’s Fantasy",
             "health": 1776,
             "attack": 607,
             "defense": 317,
-            "skill_name": "Glass",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After Manaka Nagao uses a skill, her ATK increases by 11.0%/14.5%/14.5%/18.0%/18.0%/21.5%/21.5%. This effect stacks up to 2 times and lasts permanently during the battle."
+            "skill_name": "Crystalline Lazuli",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After casting a skill, increase ATK permanently by 11.0%/14.5%/14.5%/18.0%/18.0%/21.5%/21.5%, up to 2 stacks."
         },
         "weapon5-1": {
             "name": "Celestial Whisper",
             "health": 2219,
             "attack": 759,
             "defense": 396,
-            "skill_name": "Echo",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When Manaka Nagao gains 『Chant』, all allies additionally gain 『Listening Tone』. When 『Listening Tone』 reaches 12 stacks, all allies' Critical Damage increases by 15.3%/19.5%/19.5%/23.7%/23.7%/27.9%/27.9%.\n『Listening Tone』: Damage increases by 0.7%/0.9%/0.9%/1.1%/1.1%/1.3%/1.3% (max 12 stacks, lasts permanently during the battle)."
+            "skill_name": "Rosy Crimson",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For every stack of [Holy Song] gained, additionally grant all allies one stack of [Pellucid Voice]: DMG Dealt is increased by 0.7%/0.9%/0.9%/1.1%/1.1%/1.3%/1.3%, up to 12 stacks, permanent in battle after obtaining. When [Pellucid Voice] reaches 12 stacks, additionally increase CRIT DMG by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%."
         }
     },
     "마유미": {
         "name": "Mayumi Hashimoto",
         "weapon4-1": {
-            "name": "Pioneer",
+            "name": "Trailblazing Pioneer",
             "health": 1791,
             "attack": 554,
             "defense": 328,
-            "skill_name": "Elegant Effect",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After activating 『Rapid Halo』, her damage increases by 18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%."
+            "skill_name": "Wake Effect",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After casting [Quantum Transmission], increase DMG Dealt by 18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%."
         },
         "weapon5-1": {
-            "name": "Declaration of Victory",
+            "name": "Victory Declaration",
             "health": 2239,
             "attack": 693,
             "defense": 409,
             "skill_name": "Gravity Acceleration",
-            "description": "Speed increases by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. When her Speed exceeds 100, for every 10 points above 100, her ATK increases by 12.5%/16.3%/16.3%/20.0%/20.0%/23.8%/23.8%, up to a maximum of 100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%.\nAfter casting a Persona skill, for every 40 km/h of accumulated 『Speed』, all allies' damage increases by 3.4%/4.4%/4.4%/5.5%/5.5%/6.6%/6.6% for 2 turns, up to a maximum of 17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0%."
+            "description": "SPD is increased by 15/15/20/20/25/25/30. Every 10 SPD that exceeds 100 would increase ATK by 12.5%/16.2%/16.2%/20.0%/20.0%/23.8%/23.8%, up to 100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%. After casting a Persona Skill, every 40 km/h [Velocity] would increase all allies' DMG Dealt by 3.4%/4.4%/4.4%/5.4%/5.4%/6.4%/6.4%, up to 17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0% for 2 turns."
         }
     },
     "아케치": {
         "name": "Goro Akechi",
         "weapon4-1": {
-            "name": "Aonuma Beam Saber",
+            "name": "Quasar Saber",
             "health": 1870,
             "attack": 592,
             "defense": 328,
-            "skill_name": "Phase Fusion",
-            "description": "All-type damage increases by 9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%.\nWhen in the 『Truth』 state, ATK increases by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "skill_name": "Planar Cohesion",
+            "description": "Almighty DMG is increased by 9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%. When under [Truth], increase ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
-            "name": "Judgment of God",
+            "name": "Seraph’s Heart",
             "health": 2338,
             "attack": 739,
             "defense": 409,
             "skill_name": "Divine Blessing",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen entering the 『Precision』 or 『Chaos』 state, all allies' ATK increases by 21.0%/21.0%/27.3%/27.3%/33.7%/33.7%/40.0% for 2 turns. When the Detective Ally casts a Persona Skill/HIGHLIGHT/Additional Skill, Goro Akechi's critical damage increases by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns (up to 2 stacks)."
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After obtaining [Clarity] or [Chaos], increase all allies' ATK by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns. When [Detective Partner] casts a Persona Skill/HIGHLIGHT/Theurgy/Follow-Up Action, increase Crow's CRIT DMG by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns and up to 2 stacks."
         }
     },
     "미오": {
         "name": "Mio Natsukawa",
         "weapon4-1": {
-            "name": "Abyss Thorn",
+            "name": "Abyssal Thorn",
             "health": 1870,
             "attack": 539,
             "defense": 331,
-            "skill_name": "Flowing Sunset",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Accuracy increases by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% for each stack of 『Fire Suppression』."
+            "skill_name": "Waterflowing Afterglow",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Increase EHR by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% for every stack of [Extinguishing Power]."
         },
         "weapon5-1": {
-            "name": "Frostlight Stella",
+            "name": "Firecalming Lazuki",
             "health": 2338,
             "attack": 673,
             "defense": 414,
-            "skill_name": "Fearless Wildfire",
-            "description": "Accuracy increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. Gains an ATK bonus equal to 66.0%/68.0%/68.0%/70.0%/70.0%/72.0%/72.0% of own Accuracy during battle. When applying an Ice TECHNICAL, reduces the target’s DEF by an additional 23.3%/30.3%/30.3%/37.3%/37.3%/44.3%/44.3% for 2 turns."
+            "skill_name": "Conflagrations, Dauntless",
+            "description": "EHR is increased by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%; ATK is increased by 66.0%/68.0%/68.0%/70.0%/70.0%/72.0%/72.0% of EHR in battle. When dealing Ice TECHNICAL, decrease the foes' DEF by 23.3%/30.3%/30.3%/37.3%/37.3%/44.3%/44.3% for 2 turns."
         }
     },
     "루우나": { 
         "name": "Runa Dogenzaka",
         "weapon4-1": {
-            "name": "Fury Hunter",
+            "name": "Howling Hunter",
             "health": 1712,
             "attack": 560,
             "defense": 345,
-            "skill_name": "Precision Hunt",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. While under 『Passionate Welcome』 or 『Relentless Pursuit』 state, Accuracy increases by 22.0%/28.5%/28.5%/35.0%/35.0%/41.5%/41.5%."
+            "skill_name": "Precise Hunter",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When possessing [Warm Welcome] or [Furious Pursue], increase EHR by 22.0%/28.5%/28.5%/35.0%/35.0%/41.5%/41.5%."
         },
         "weapon5-1": {
-            "name": "Bite Claw",
+            "name": "Household Terror",
             "health": 2160,
             "attack": 700,
             "defense": 431,
-            "skill_name": "Fangs and Claws",
-            "description": "Accuracy increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When an ally Phantom Thief uses a Fire or Follow-up skill, Accuracy increases by 18.0%/23.0%/23.0%/28.0%/28.0%/33.0%/33.0% for 1 turn (1 stack max). When 『Passionate Welcome』 triggers, the target's DEF is reduced by 16.7%/21.7%/21.7%/26.7%/26.7%/31.7%/31.7% for 3 turns. When 『Relentless Pursuit』 triggers, the target's DEF is reduced by 33.3%/43.3%/43.3%/53.3%/53.3%/63.3%/63.3% for 3 turns (DEF reduction effects do not stack; the stronger effect applies)."
+            "skill_name": "Sharp Toothed, Fierce Clawed",
+            "description": "EHR is increased by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When allies cast Fire-affinity skills or Follow-Up Actions, increase EHR by 18.0%/23.0%/23.0%/28.0%/28.0%/33.0%/33.0% for 1 turn and up to 1 stack. When triggering [Warm Welcome] with [GO GO WOOF WOOF RU!], decrease the foes' DEF by 16.6%/21.6%/21.6%/26.6%/26.6%/31.6%/31.6% for 3 turns. When triggering [Furious Pursue], decrease the foe's DEF by 33.3%/43.3%/43.3%/53.3%/53.3%/63.3%/63.3% for 3 turns. The effects are not stackable."
         }
     },
     "리코": {
         "name": "Riko Tanemura",
         "weapon4-1": {
-            "name": "Moonlight Needle",
+            "name": "Limpid Moonlight, Silver Needles",
             "health": 1838,
             "attack": 549,
             "defense": 320,
-            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For each Insight stack spent, permanently increase party's Attack by 3.5%/4.6%/4.6%/5.7%/5.7%/6.8%/6.8%. Stacks up to 5 times."
+            "skill_name": "Reflected Moon",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When a [Insight] is broken, increase all allies' ATK permanently by 3.5%/4.6%/4.6%/5.7%/5.7%/6.8%/6.8%, up to 5 stacks."
         },
         "weapon4-2": {
-            "name": "Red Plum Blossom",
+            "name": "Blossom View, Crimson Plum",
             "health": 1981,
             "attack": 554,
             "defense": 334,
-            "description": "Increase Speed by 4.6/4.6/5.9/5.9/7.2/7.2/8.5. For each Insight stack spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0% (2 turns)\nIncrease Defense by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% (2 turns)\nIncrease max HP by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0% (2 turns)\nAlso, 5.0%/6.7%/6.7%/8.3%/8.3%/10.0%/10.0% chance to gain 1 Intel stack."
+            "skill_name": "In Bud",
+            "description": "SPD is increased by 4.6/4.6/5.9/5.9/7.2/7.2/8.5. When breaking a [Insight], grant all allies one of the effects: ATK is increased by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0%;DEF is increased by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0%; HP is increased by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0% for 2 turns. Additionally, there is a 5.0%/6.7%/6.7%/8.3%/8.3%/10.0%/10.0% fixed chance to gain 1 additional [Intel]."
         },
         "weapon5-1": {
-            "name": "Kunoichi: Sky's Edge",
+            "name": "Kunoichi: Sky's Edge, Blade’s Wings",
             "health": 2299,
             "attack": 687,
             "defense": 400,
-            "description": "Increase Speed by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. For every 2 Insight stack spent, gain 2/3/3/4/4/5/5 Intel stacks. Also, increase party's damage by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% for 1 turn. Increase max stacks of Intel to 11/12/12/13/13/14/14."
+            "skill_name": "Shadow Dance",
+            "description": "SPD is increased by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. For every 2 [Insight] broken, additionally gain 2/3/3/4/4/5/5 [Intel]. Additionally, increase all allies' DMG Dealt by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% for 1 turn. Maximum amount of [Intel] is increased to 11/12/12/13/13/14/14."
         }
     },
     "리코·매화": {
         "name": "Riko Tanemura·Vast",
         "weapon4-1": {
-            "name": "Clear Day Wind Chime",
+            "name": "Sunny Day, Fleeting Sparrows",
             "health": 1918,
             "attack": 517,
             "defense": 338,
             "skill_name": "Merciless",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When recovering SP with a Persona skill, Crit Mult increases by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns (up to 2 stacks)."
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When recovering SP through Persona skills, increase CRIT DMG by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns and up to 2 stacks."
         },
         "weapon5-1": {
-            "name": "Wings of the Winter Crane",
+            "name": "Dancing Crane, Wintry Aroma",
             "health": 2398,
             "attack": 647,
             "defense": 422,
-            "skill_name": "Gentle Snow Breeze",
-            "description": "Crit Mult increases by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When casting a skill on an ally, Crit Mult of all allies except self increases by 13.2%/17.2%/17.2%/21.2%/21.2%/25.2%/25.2% for 2 turns. Each time 50 SP is consumed when using a skill, the main target's damage dealt increases by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns."
+            "skill_name": "Startled Swan, Flying Snow",
+            "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When casting a skill on allies, increase all allies but self's CRIT DMG by 13.2%/17.2%/17.2%/21.2%/21.2%/25.2%/25.2% for 2 turns. When casting a skill, increase DMG Dealt of the skill target by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for every 50 SP consumed for 2 turns."
         }
     },
     "마사키": {
         "name": "Masaki Ashiya",
         "weapon4-1": {
-            "name": "Immortal Glory",
+            "name": "Undying Glory",
             "health": 1870,
             "attack": 443,
             "defense": 429,
-            "skill_name": "Trial of the Sword",
-            "description": "Shield effect increases by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. For allies with less than 60% HP, Masaki Ashiya's shield effect is further increased by 13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0%."
+            "skill_name": "Swords and Trials",
+            "description": "Shield Effect is increased by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. Shield Effect is additionally increased by 13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0% to allies below 60% HP."
         },
         "weapon5-1": {
-            "name": "Sacred Oath",
+            "name": "Holy Vow",
             "health": 2338,
             "attack": 554,
             "defense": 537,
-            "skill_name": "Medal of Glory",
-            "description": "DEF increases by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. 『Saint of Honesty』 shield amount increases by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%, and for each stack of 『Saint of Honesty』, allies gain an additional 8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5% DMG bonus (up to 2 stacks)."
+            "skill_name": "Medal of Honor",
+            "description": "DEF is increased by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. The Shield from [Upright Mark] is increased by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%, and each stack of [Upright Mark] would increase all allies' DMG Dealt by 8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5%, up to 2 stacks."
         }
     },
     "마코토": {
@@ -366,20 +371,20 @@ const enCharacterWeaponData = {
     "몽타뉴·백조": { 
         "name": "Montagne Kotone·Swan",
         "weapon4-1": {
-            "name": "Lady of the North Wind",
+            "name": "Fille de Borée",
             "health": 1838,
             "attack": 607,
             "defense": 299,
-            "skill_name": "Flourishing Life",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time 『Morning Dew Crystal』 or 『Winter Frost Crystal』 is obtained, ATK permanently increases by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3% (up to 10 stacks)."
+            "skill_name": "Vie Perpétuelle",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When obtaining [Morning Dew Crystal]/[Frost Crystal], permanently increase ATK by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%, up to 10 stacks."
         },
         "weapon5-1": {
-            "name": "Swan's Dream",
+            "name": "Rêve de Cygnes",
             "health": 2299,
             "attack": 759,
             "defense": 374,
-            "skill_name": "Change of Seasons",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Each time 『Morning Dew Crystal』 or 『Winter Frost Crystal』 is obtained, CRIT Rate increases by 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% for 2 turns (up to 3 stacks). When deploying 『Spring Barrier』/『Winter Night Barrier』, Wind DMG/Ice DMG increases by 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% for 2 turns."
+            "skill_name": "Cycles Saisonniers",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When obtaining [Morning Dew Crystal]/[Frost Crystal], CRIT Rate is increased by 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% for 2 turns and up to 3 stacks. When opening [Mid-Spring Domain]/[Winter Night Domain], Wind/Ice DMG Dealt is increased by 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% for 2 turns."
         }
     },
     "아야카": {
@@ -402,20 +407,20 @@ const enCharacterWeaponData = {
     "야오링·사자무": {
         "name": "Yaoling Li·Lion Dance",
         "weapon4-1": {
-            "name": "Lady in the Snow",
+            "name": "Timely Snow",
             "health": 1791,
             "attack": 634,
             "defense": 313,
-            "skill_name": "Cry of Late Winter",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/36.0%/36.0%/24.0%. When using 『Firework Meteor』, ATK increases by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "skill_name": "Echo in the Waning Year",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.When casting [Fiery Shooting Star], increase ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
-            "name": "Warm Spring Star",
+            "name": "Shining Sun",
             "health": 2239,
             "attack": 792,
             "defense": 391,
-            "skill_name": "Golden Bird of Red Blades",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. While in 『Ironflower Dance』 state, Critical Rate increases by 16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%. Fire-type TECHNICAL damage increases by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "skill_name": "Scarlet Blade, Golden Phoenix",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.During [Iron Flower Dance], increase CRIT Rate by 16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%. Increase DMG dealt by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% when dealing Fire TECHNICAL."
         }
     },
     "유우미": {
@@ -459,58 +464,58 @@ const enCharacterWeaponData = {
     "카스미": {
         "name": "Kasumi Yoshizawa",
         "weapon4-1": {
-            "name": "Shinai Sacred Blade",
+            "name": "Sword of Sinai",
             "health": 1791,
             "attack": 613,
             "defense": 296,
             "skill_name": "Blessing",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When her 『Dance Step』 has 2 or more stacks, her damage increases by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%."
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When [Posture] is at or above 2 stacks, increase DMG Dealt by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%."
         },
         "weapon5-1": {
-            "name": "Golden Sunlight",
+            "name": "Aurelian Twilight",
             "health": 2239,
             "attack": 766,
             "defense": 370,
-            "skill_name": "Morning Sun",
-            "description": "Critical Damage increases by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Each time she gains a 『Dance Step』 stack, her ATK increases by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns (can stack once). When an ally Phantom Thief uses HIGHLIGHT, she gains 1 stack of 『Revival』, increasing her damage by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns (up to 2 stacks). At 2 stacks of 『Revival』, her HIGHLIGHT damage further increases by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%."
+            "skill_name": "Sunrise",
+            "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. After obtaining any [Posture], ATK is increased by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns and up to 1 stack. After any ally casts a HIGHLIGHT/Theurgy, obtain 1 stack of [Awakening], increasing DMG Dealt by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns and up to 2 stacks. When [Awakening] reaches 2 stacks, additionally increase HIGHLIGHT DMG Dealt by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%."
         }
     },
     "키라": {
         "name": "Kira Kitazato",
         "weapon4-1": {
-            "name": "Gray Infinity",
+            "name": "Ashes Infinite",
             "health": 1966,
             "attack": 596,
             "defense": 288,
             "skill_name": "Crimson Kiss",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When inflicting 『Bleed』 on an enemy, ATK increases by 1.8%/2.4%/2.4%/3.0%/3.0%/3.6%/3.6% (up to 10 stacks). This effect lasts for the entire battle."
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After inflicting [Bleed] to foes, increase ATK permanently by 1.8%/2.4%/2.4%/3.0%/3.0%/3.6%/3.6%, up to 10 stacks."
         },
         "weapon5-1": {
-            "name": "Blood Weave",
+            "name": "Bloody Weave",
             "health": 2457,
             "attack": 746,
             "defense": 361,
-            "skill_name": "Vampiric Substance",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When dealing damage with 『Incision』, Pierce increases by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%. Damage dealt to enemies with 『Bleed』 increases by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%."
+            "skill_name": "Karmic Bloodfiend",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. PEN is increased by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5% when dealing DMG with [Laceration]. Increase DMG Dealt by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5% against foes inflicted with [Bleed]."
         }
     },
     "토모코·여름": {
         "name": "Tomoko Noge·Summer",
         "weapon4-1": {
-            "name": "Language of Waves",
+            "name": "Tidal Whisper",
             "health": 1870,
             "attack": 575,
             "defense": 306,
-            "skill_name": "Blooming Shadow",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After triggering 『Brilliant Fireworks』, self-healing effect increases by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8% for 2 turns."
+            "skill_name": "Lightshadow Bloom",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Increase Healing Effect by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8% after triggering [Gorgeous Fireworks] for 2 turns."
         },
         "weapon5-1": {
-            "name": "Ocean Orb Wand",
+            "name": "Darling Marbly",
             "health": 2388,
             "attack": 720,
             "defense": 383,
-            "skill_name": "Battlefield Blaze",
-            "description": "Healing effect increases by 22.0%/22.0%/28.5%/28.5%/35.0%/35.0%/41.5%. The skill damage multiplier/healing amount of 『Brilliant Fireworks』 increases by 18.5%/24.0%/24.0%/29.5%/29.5%/35.0%/35.0%. After an enemy is hit by 『Brilliant Fireworks』, the damage they receive increases by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0% for 3 turns (up to 2 stacks)."
+            "skill_name": "Fallfire",
+            "description": "Healing Effect is increased by 22.0%/22.0%/28.5%/28.5%/35.0%/35.0%/41.5%. [Gorgeous Fireworks]'s Healing and Skill Multiplier are increased by 18.5%/24.0%/24.0%/29.5%/29.5%/35.0%/35.0%. Increase DMG Taken of foes which are hit by [Gorgeous Fireworks] by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0% for 2 turns and up to 2 stacks."
         }
     },
     "하루": {
@@ -520,35 +525,35 @@ const enCharacterWeaponData = {
             "health": 1712,
             "attack": 607,
             "defense": 341,
-            "skill_name": "Vulnerable Gap",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For each enemy with a status ailment, ATK and Ailment Accuracy Rate increase by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%, up to 9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%."
+            "skill_name": "Ambush Advantage",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For every enemy under a debuff or an ailment, ATK and EHR are increased by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%, up to 9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%."
         },
         "weapon5-1": {
-            "name": "Sacred Transfer",
+            "name": "Holy Paean",
             "health": 2140,
             "attack": 759,
             "defense": 427,
-            "skill_name": "Precision Training",
-            "description": "Ailment Accuracy Rate increases by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When attacking an enemy with 『Aim Point』, psychokinesis damage increases by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Each time 『Modification』 is obtained, ATK increases by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."
+            "skill_name": "Precisely Honed",
+            "description": "EHR is increased by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When possessing [Sight], increase Psy DMG Dealt by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Each time after obtaining [Customization], increase ATK by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."
         }
     },
     "후타바": {
         "name": "Futaba Sakura",
         "weapon4-1": {
-            "name": "C-Model Laptop",
+            "name": "Portable C-Type",
             "health": 1791,
             "attack": 602,
             "defense": 317,
-            "skill_name": "Code Restoration",
-            "description": "ATK increases by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After applying 『Disruption Virus』, the enemy's damage taken increases by an additional 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."
+            "skill_name": "Recovery Code",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After inflicting [Disruption Virus], increase foes' DMG Taken by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."
         },
         "weapon5-1": {
-            "name": "HACK Specialist",
+            "name": "HACK Professional Edition",
             "health": 2239,
             "attack": 753,
             "defense": 396,
-            "skill_name": "Universal Chip",
-            "description": "ATK increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When an ally Phantom Thief deals weakness damage, ATK increases by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns. When Futaba applies a debuff to an enemy, that enemy's critical damage taken increases by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns (can stack 2 times)."
+            "skill_name": "All-Powerful Chip",
+            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When allies deal Weakness DMG, increase their ATK by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns. When inflicting a debuff to foes by your skills, increase their CRIT DMG Taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns and up to 2 stacks."
         }
     },
 
@@ -587,7 +592,7 @@ const enCharacterWeaponData = {
             "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When Minami has Diagnosis, increase healing effect by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%. When spending Diagnosis, increase party's damage by 25.0%/33.0%/33.0%/41.0%/41.0%/49.0%/49.0% for 1 turn."
         }
     },
-    "유이 YUI": {
+    "YUI": {
         "name": "YUI",
         "weapon4-1": {
             "name": "Meta Directors",
@@ -767,18 +772,20 @@ const enCharacterWeaponData = {
     "몽타뉴": {
         "name": "Montagne Kotone",
         "weapon4-1": {
-            "name": "Edelweiss",
+            "name": "Chant Céleste",
             "health": 1728,
             "attack": 607,
             "defense": 328,
-            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time Kotone gains Ice Crystal stacks, increase Ice damage by 2.4%/3.1%/3.1%/3.8%/3.8%/4.5%/4.5% for 1 turn. Stacks up to 10 times."
+				"skill_name": "Don Glacial",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Increase Ice DMG Dealt when obtaining [Ice Crystal] by 2.4%/3.1%/3.1%/3.8%/3.8%/4.5%/4.5% for 1 turn and up to 10 stacks."
         },
         "weapon5-1": {
-            "name": "Queen of Winter",
+            "name": "Reine de l'Hiver",
             "health": 2160,
             "attack": 759,
             "defense": 409,
-            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Activate Blade Dancer at 8+ Ice Crystal stacks and increase its damage by 46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%. Increase the power of Durandal of Ice at 8+ Ice Crystal stacks."
+			"skill_name": "Hiver Éternel",
+            "description": "CRIT DMG is increased by by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.  [Blade Dancer] can now be casted at 8 [Ice Crystal]. [Blade Dancer]'s DMG Dealt is increased by by 46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%. Additionally, [Durandal of Ice] is now enhanced at 8 [Ice Crystal]."
         }
     },
     "슌": {
@@ -925,4 +932,4 @@ window.enCharacterWeaponData = enCharacterWeaponData;
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = characterWeaponData;
-} 
+}

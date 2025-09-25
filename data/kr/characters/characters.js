@@ -6,7 +6,7 @@ const characterList = {
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "사나다", "슌",
         "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
-        "원더", "유스케", "유이 YUI","유카리", "유키미", "유키 마코토", "이케나미", "이치고", "카스미", "카타야마",
+        "원더", "유스케", "YUI", "YUI·프리즘","유카리", "유키미", "유키 마코토", "이케나미", "이치고", "카스미", "카타야마",
         "키라", "키요시", "토모코", "토모코·여름", "토시야",
         "하루", "하루나", "치즈코"
     ],
@@ -53,6 +53,51 @@ const characterData = {
         "codename": "WONDER",
         "name_en": "Wonder",
         "name_jp": "主人公"
+    },
+    "YUI·프리즘": {
+        "limit": true,
+        "role": "총공격 핵열 딜러",
+        "tag":"총공격, 추가 효과",
+        "color": "#7eede6",
+        "main_revelation": ["민첩"],
+        "sub_revelation": ["충만"],
+        "element": "핵열",
+        "element_weakness": "",
+        "element_resistance": "핵열",
+        "rarity": 5,
+        "position": "반항",
+        "release_order": 34,
+        "persona": "압세데우스",
+        "persona_en": "Apseudes",
+        "persona_jp": "アプセウデス",
+        "name": "YUI·프리즘",
+        "name_en": "YUI·PRISM",
+        "name_jp": "YUI·PRISM",
+        "codename": "BUI",
+        "skill_item": 5,
+        "sub_revel2": ["공격력", "대미지보너스"],
+        "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+        "sub_revel4": ["공격력"],
+        "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
+        "sub_option2": ["관통", "공격력", "대미지보너스"],
+        "sub_option3": [],
+        "minimum_stats": {
+            "LV10": false,
+            "LV10+5": false,
+            "LV12": false,
+            "LV12+5": false,
+            "LV13": false,
+            "LV13+5": false
+        },
+        "battle_plus_stats": "nan",
+        "skill1_lv": "MAX!",
+        "skill2_lv": "MAX!",
+        "skill3_lv": "MAX!",
+        "skill4_lv": "MAX",
+        "mind_stats1": "공격력 20%",
+        "mind_stats2": "크리티컬 효과 24%!",
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "카타야마": {
         "limit": true,
@@ -187,7 +232,7 @@ const characterData = {
             "LV13": "생명 12432, 크리티컬 효과 229.9%",
             "LV13+5": "생명 13632, 크리티컬 효과 246.4%"
         },
-        "battle_plus_stats": "<b>생명</b>/ 해명의힘 / 직책 8% / 마이팰리스 260 <b>크리티컬 효과</b>/ 해명의 힘 / 마이팰리스 2%",
+        "battle_plus_stats": "<b>생명</b>/ 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 <b>크리티컬 효과</b>/ 해명의 힘 / 마이팰리스 2%",
         "battle_plus_stats_en": "<b>HP</b>/ Navi Power / Card-Labor 8% / MyPalace 260 <b>Crit Mult</b>/ Navi Power / MyPalace 2%",
         "battle_plus_stats_jp": "<b>HP</b>/ 解明の力 / 職責 8% / マイパレス 260 <b>CRT倍率</b>/ 解明の力 / マイパレス 2%",
         "skill1_lv": "MAX!",
@@ -332,7 +377,7 @@ const characterData = {
             "LV13": "공격력 4667",
             "LV13+5": "공격력 5084"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -470,7 +515,7 @@ const characterData = {
             "LV13": "공격력 5980",
             "LV13+5": "공격력 6440"
         },
-        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
+        "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
@@ -661,7 +706,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점 ",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 ",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1078,7 +1123,7 @@ const characterData = {
             "LV13": "생명 15000",
             "LV13+5": "생명 15000"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "8",
@@ -1257,9 +1302,9 @@ const characterData = {
             "LV13": "생명 16000",
             "LV13+5": "생명 16000"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점 / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 패시브 1800",
-        "battle_plus_stats_en": "· 해명의힘 / 직책 8% / MyPalace 260 / MyPalace Point / Minami Passive 1500 / Minami Skill 3 / Tomoko·Peach Summer Passive 1800",
-        "battle_plus_stats_jp": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점 / 宮下 美波 パッシブ 1500 / 宮下 美波 スキル3 / 朋子・ピーチサマー パッシブ 1800",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점 / 미나미 패시브 1500 / 미나미 스킬3 / 토모코·여름 패시브 1800",
+        "battle_plus_stats_en": "· 해명의힘 / 직책 8% / MyPalace 50LV 260 / MyPalace 70LV 560 / MyPalace Point / Minami Passive 1500 / Minami Skill 3 / Tomoko·Peach Summer Passive 1800",
+        "battle_plus_stats_jp": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점 / 宮下 美波 パッシブ 1500 / 宮下 美波 スキル3 / 朋子・ピーチサマー パッシブ 1800",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -1436,7 +1481,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 260 / 마이팰리스 평점",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점",
         "skill1_lv": "8",
         "skill2_lv": "MAX!",
         "skill3_lv": "8",
@@ -1488,7 +1533,7 @@ const characterData = {
             "LV13": "공격력 5396",
             "LV13+5": "공격력 5917"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65  / 마이팰리스 평점 ",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110  / 마이팰리스 평점 ",
         "skill1_lv": "MAX",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -1721,7 +1766,7 @@ const characterData = {
             "LV13": "공격력 5980",
             "LV13+5": "공격력 6440"
         },
-        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
+        "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",
@@ -1731,7 +1776,7 @@ const characterData = {
         "mind_skill1": "S1/S2!",
         "mind_skill2": "S3!"
     },
-    "유이 YUI": {
+    "YUI": {
         "limit": true,
         "role": "전격 단일 딜러",
         "tag":"추가 효과, 감전, 크리티컬 확률",
@@ -1810,7 +1855,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false,
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 마이팰리스 평점 / 전용무기 ",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 50 / 마이팰리스 70LV 95 / 마이팰리스 평점 / 전용무기 ",
         "skill1_lv": "8",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",
@@ -1948,7 +1993,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
+        "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -2081,7 +2126,7 @@ const characterData = {
             "LV13": false,
             "LV13+5": false
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "8",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX",
@@ -2260,7 +2305,7 @@ const characterData = {
             "LV13": "공격력 5180",
             "LV13+5": "공격력 5680"
         },
-        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 65 / 마이팰리스 평점 / 의식1 / 전용무기",
+        "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 / 의식1 / 전용무기",
         "skill1_lv": "8",
         "skill2_lv": "8",
         "skill3_lv": "MAX!",
@@ -2306,7 +2351,7 @@ const characterData = {
             "LV13": "공격력 5980",
             "LV13+5": "공격력 6440"
         },
-        "battle_plus_stats": "· 마이팰리스 65 / 마이팰리스 평점",
+        "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
         "skill3_lv": "MAX!",

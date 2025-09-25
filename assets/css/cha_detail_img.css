@@ -18,7 +18,7 @@
 .character-images img[src*="이치고.webp"],
 .character-images img[src*="리코·매화.webp"],
 .character-images img[src*="치즈코 - 암펠로스.webp"],
-.character-images img[src*="유이 YUI - 압세데우스.webp"],
+.character-images img[src*="YUI - 압세데우스.webp"],
 .character-images img[src*="레오 - 에리테이아.webp"]{ scale: 1.2; }
 
 .character-images img[src*="하루 - 밀라디.webp"],
@@ -37,7 +37,7 @@
 
 .character-images img[src*="유키 마코토.webp"],
 .character-images img[src*="유스케.webp"],
-.character-images img[src*="유이 YUI.webp"],
+.character-images img[src*="YUI.webp"],
 .character-images img[src*="레오.webp"],
 .character-images img[src*="모토하.webp"],
 .character-images img[src*="유키미.webp"]{ scale: 1.05; }
@@ -136,3 +136,7 @@
 .character-images img[src*="카타야마.webp"]{ scale: 1.03; position: relative; right:10px}
 
 .character-images img[src*="카타야마 - 키스킬 릴라.webp"]{ scale: 1.5; position: relative; left: 60px; }
+
+.character-images img[src*="YUI·프리즘.webp"]{ scale: 1.25}
+
+.character-images img[src*="YUI·프리즘 - 압세데우스.webp"]{ scale: 1.1; }

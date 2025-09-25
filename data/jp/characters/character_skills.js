@@ -1293,7 +1293,7 @@ const jpCharacterSkillsData = {
             "description": "戦闘開始時、味方全体の最大ＨＰが美波の最大ＨＰ10.0%分（最大1500まで）上昇する。"
         }
     },
-    "유이 YUI": {
+    "YUI": {
         "name": "YUI",
         "skill1": {
             "name": "エレクトリックボム",

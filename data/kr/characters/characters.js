@@ -73,7 +73,7 @@ const characterData = {
         "name": "YUI·스텔라",
         "name_en": "YUI·PRISM",
         "name_jp": "YUI·プリズム",
-        "codename": "BUI",
+        "codename": "BUI·PRISM",
         "skill_item": 5,
         "sub_revel2": ["공격력", "대미지보너스"],
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],

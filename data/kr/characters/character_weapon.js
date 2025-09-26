@@ -18,7 +18,7 @@ const WeaponData = {
             "description": ""
         }
     },
-    "YUI·프리즘": {
+    "YUI·스텔라": {
         "weapon4-1":{
             "name": "감자감자 기항",
             "health": 1823,

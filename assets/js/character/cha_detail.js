@@ -981,7 +981,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return `<span class="skill-level-values">${value}</span>`;
                 }).join('/');
             });
-            
+
+
             skillCard.innerHTML = `
                 <img src="${iconPath}" alt="${skill.element}" class="skill-icon">
                 <div class="skill-info">
@@ -992,7 +993,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="skill-description">${description}</p>
                 </div>
             `;
-            
+
+            // (<p.skill-description>) 밖에 있는 테이블만 제거
+            skillCard.querySelectorAll('table').forEach(t => {
+                if (!t.closest('.skill-description')) t.remove();
+            });
+
             skillsGrid.appendChild(skillCard);
         });
         

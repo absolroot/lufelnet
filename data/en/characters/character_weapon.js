@@ -2,6 +2,25 @@ enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "YUI·스텔라": {
+        "name": "YUI·Chromatic",
+        "weapon4-1": {
+            "name": "Tuber Escapede",
+            "health": 1823,
+            "attack": 618,
+            "defense": 306,
+            "skill_name": "Off the Airway",
+            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%; After casting a Follow-Up Action, increase ATK when casting [Veggie Knights, Full Out!] by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
+        },
+        "weapon5-1": {
+            "name": "Abyss-Crossing Vessel",
+            "health": 2279,
+            "attack": 773,
+            "defense": 383,
+            "skill_name": "Journey to Deepspace",
+            "description": "CRIT Rate is increased by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. Increase ATK by 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0% permanently when summoning [Veggie Knight], up to 4 stacks. When casting [Veggie Knights, Full Out!], increase CRIT DMG by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%."
+        }
+    },
     "카타야마": {
         "name": "Kumi Katayama",
         "weapon3-1":{
@@ -83,7 +102,7 @@ enCharacterWeaponData = {
             "attack": 773,
             "defense": 361,
             "skill_name": "Possessive Urge",
-            "description": "CRIT Rate is increased by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%. When [Covet] reaches 1/2/3 stacks, DMG dealt is increased by 11.0|14.2|14.2|17.4|17.4|20.6|20.6%/22.0|28.5|28.5|35.0|35.0|41.5|41.5%/34.0|44.0|44.0|54.0|54.0|64.0|64.0%; When casting [Shhh...Execution Time is Now!], CRIT DMG is increased by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
+            "description": "CRIT Rate is increased by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%. When [Covet] reaches 1/2/3 stacks, DMG dealt is increased by 11.0/14.2/14.2/17.4/17.4/20.6/20.6%|22.0/28.5/28.5/35.0/35.0/41.5/41.5%|34.0/44.0/44.0/54.0/54.0/64.0/64.0%; When casting [Shhh。。。Execution Time is Now!], CRIT DMG is increased by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
         }
     },
     "사나다": {

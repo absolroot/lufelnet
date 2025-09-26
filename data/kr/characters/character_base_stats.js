@@ -15,7 +15,7 @@ const basicStatsData = {
         sp_recover: 0,
         HP_recover: 0
     },
-    "YUI·프리즘": {
+    "YUI·스텔라": {
         a0_lv1: {
             attack: 0,
             defense: 0,

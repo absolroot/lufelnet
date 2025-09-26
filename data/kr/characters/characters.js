@@ -6,7 +6,7 @@ const characterList = {
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "사나다", "슌",
         "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
-        "원더", "유스케", "YUI", "YUI·프리즘","유카리", "유키미", "유키 마코토", "이케나미", "이치고", "카스미", "카타야마",
+        "원더", "유스케", "YUI", "YUI·스텔라","유카리", "유키미", "유키 마코토", "이케나미", "이치고", "카스미", "카타야마",
         "키라", "키요시", "토모코", "토모코·여름", "토시야",
         "하루", "하루나", "치즈코"
     ],
@@ -54,7 +54,7 @@ const characterData = {
         "name_en": "Wonder",
         "name_jp": "主人公"
     },
-    "YUI·프리즘": {
+    "YUI·스텔라": {
         "limit": true,
         "role": "총공격 핵열 딜러",
         "tag":"총공격, 추가 효과",
@@ -67,12 +67,12 @@ const characterData = {
         "rarity": 5,
         "position": "반항",
         "release_order": 34,
-        "persona": "압세데우스",
+        "persona": "압세우데스",
         "persona_en": "Apseudes",
         "persona_jp": "アプセウデス",
-        "name": "YUI·프리즘",
+        "name": "YUI·스텔라",
         "name_en": "YUI·PRISM",
-        "name_jp": "YUI·PRISM",
+        "name_jp": "YUI·プリズム",
         "codename": "BUI",
         "skill_item": 5,
         "sub_revel2": ["공격력", "대미지보너스"],
@@ -1789,7 +1789,7 @@ const characterData = {
         "rarity": 5,
         "position": "반항",
         "release_order": 4,
-        "persona": "압세데우스",
+        "persona": "압세우데스",
         "persona_en": "Apseudes",
         "persona_jp": "アプセウデス",
         "name": "YUI",

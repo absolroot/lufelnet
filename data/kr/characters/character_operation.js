@@ -3,9 +3,10 @@ const operationData = {
         basic: [],
         note: []
     },
-    "YUI·프리즘": {
+    "YUI·스텔라": {
         basic: [
-            { label: "의식 0", value: "2+1 › 3 › 2+1 › 3 › 2+1 › 3" }
+            { label: "의식 0", value: "2+1 › 3 › 2+1 › 3 › 2+1 › 3" },
+            { label: "의식 6", value: "2+3 › 3 › 2+3 › 3 › 2+3 › 3" }
         ]
     },
     "카타야마": {

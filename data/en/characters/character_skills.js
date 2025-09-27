@@ -10,7 +10,7 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 22,
             "cool": 0,
-            "description": "Deal Nuke DMG equal to 100.7%/111.0%/106.9%/117.2% ATK to 1 foe, and gain 3 [Originium Force].\nAdditionally, enter [Chaotic Clash] for 2 turns.\n[Chaotic Clash]: When BUI·Chromatic’s turn ends, cast the Follow-Up Action [Veggie Knights, Attack!], rallying all [Veggie Knights] to deal Nuke DMG equal to 93.5%/103.1%/99.2%/108.8% ATK to a random foe, and activate the following effect based on BUI·Chromatic’s current color:\nUnder [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>], gain 1 [Originium Force];\nUnder [<span style='color:#C7BE5A;'>Primrose Potatoes</span>], gain [Spud Power], increasing the DMG Dealt of All-Out Attacks by 14.6%/16.1%/15.5%/17.0% for 3 turns.\nUnder [<span style='color:rgb(254, 100, 238);'>Magenta Mushrooms</span>], inflict the foes hit with [Spore], increasing their DMG Taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nUnder [<span style='color:rgb(11, 190, 11);'>Aquamarine Asparagus</span>], recover HP equal to 976/1076/1036/1136 of the DMG Dealt to the ally with the lowest HP.\nIf BUI·Chromatic possesses [<span style='color:#C7BE5A;'>Potato Knight</span>]s when casting the skill, she will automatically switch to [<span style='color:#C7BE5A;'>Primrose Potatoes</span>] at the end of her turn."
+            "description": "Deal Nuke DMG equal to 100.7%/111.0%/106.9%/117.2% ATK to 1 foe, and gain 3 [Originium Force].\nAdditionally, enter [Chaotic Clash] for 2 turns.\n[Chaotic Clash]: When BUI - Chromatic’s turn ends, cast the Follow-Up Action [Veggie Knights, Attack!], rallying all [Veggie Knights] to deal Nuke DMG equal to 93.5%/103.1%/99.2%/108.8% ATK to a random foe, and activate the following effect based on BUI - Chromatic’s current color:\nUnder [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>], gain 1 [Originium Force];\nUnder [<span style='color:#C7BE5A;'>Primrose Potatoes</span>], gain [Spud Power], increasing All-Out Attacks DMG by 14.6%/16.1%/15.5%/17.0% for 3 turns.\nUnder [Magenta Mushrooms], inflict the foes hit with [Spore], increasing their DMG Taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nUnder [Aquamarine Asparagus], recover HP equal to 976/1076/1036/1136 of the DMG Dealt to the ally with the lowest HP.\nIf BUI - Chromatic possesses [<span style='color:#C7BE5A;'>Potato Knight</span>]s when casting the skill, she will automatically switch to [<span style='color:#C7BE5A;'>Primrose Potatoes</span>] at the end of her turn."
         },
         "skill2": {
             "name": "Veggie Knights, Assemble!",
@@ -18,7 +18,7 @@ const enCharacterSkillsData = {
             "type":"버프",
             "sp": 0,
             "cool": 1,
-            "description": "Increase ATK by 19.5%/21.5%/20.7%/22.7% and CRIT Rate by 11.7%/12.9%/12.4%/13.6 for 2 turns, and summon 1 [Veggie Knight] based on the set sequence. This skill is not considered a Persona Skill, and BUI·Chromatic can still cast other skills in her turn after casting this skill.\nPassive: When BUI·Chromatic’s turn starts, automatically summon a [Veggie Knight] based on the set sequence.\nThere may be only 1 [Eggplant Knight], [Mushroom Knight], and [Asparagus Knight] on the field. BUI·Chromatic can summon multiple [Potato Knight]s, up to 4."
+            "description": "Increase ATK by 19.5%/21.5%/20.7%/22.7% and CRIT Rate by 11.7%/12.9%/12.4%/13.6 for 2 turns, and summon 1 [Veggie Knight] based on the set sequence. This skill is not considered a Persona Skill, and BUI - Chromatic can still cast other skills in her turn after casting this skill.\nPassive: When BUI - Chromatic’s turn starts, automatically summon a [Veggie Knight] based on the set sequence.\nThere may be only 1 [Eggplant Knight], [Mushroom Knight], and [Asparagus Knight] on the field. BUI - Chromatic can summon multiple [Potato Knight]s, up to 4."
         },
         "skill3": {
             "name": "Veggie Knights, Full Out!",
@@ -26,7 +26,7 @@ const enCharacterSkillsData = {
             "type":"단일피해",
             "sp": 23,
             "cool": 0,
-            "description": "Deal Nuke DMG equal to 104.3%/115.0%/110.7%/121.4% ATK to 1 foe. For every [Veggie Knight] present, additionally deal Nuke DMG equal to 29.3%/32.3%/31.1%/34.1% ATK once. When holding 2 or more [<span style='color:#C7BE5A;'>Potato Knight</span>]s, BUI·Chromatic will consume the extra [<span style='color:#C7BE5A;'>Potato Knight</span>]. Each [<span style='color:#C7BE5A;'>Potato Knight</span>] consumed will additionally deal Nuke DMG equal to 24.4%/26.9%/25.9%/28.4%% ATK. This Skill DMG is considered All-Out Attacks DMG. When casting this skill manually, gain 2 [Originium Force].\nPassive: When [Originium Force] reaches 7, consume all [Originium Force] to cast [Veggie Knights, Full Out!] to foes. This attack’s DMG is evenly spread out against all foes.\nIf BUI·Chromatic possesses [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] when casting the skill, she will automatically switch to [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>] at the end of her turn."
+            "description": "Deal Nuke DMG equal to 104.3%/115.0%/110.7%/121.4% ATK to 1 foe. For every [Veggie Knight] present, additionally deal Nuke DMG equal to 29.3%/32.3%/31.1%/34.1% ATK once. When holding 2 or more [<span style='color:#C7BE5A;'>Potato Knight</span>]s, BUI - Chromatic will consume the extra [<span style='color:#C7BE5A;'>Potato Knight</span>]. Each [<span style='color:#C7BE5A;'>Potato Knight</span>] consumed will additionally deal Nuke DMG equal to 24.4%/26.9%/25.9%/28.4%% ATK. This Skill DMG is considered All-Out Attacks DMG. When casting this skill manually, gain 2 [Originium Force].\nPassive: When [Originium Force] reaches 7, consume all [Originium Force] to cast [Veggie Knights, Full Out!] to foes. This attack’s DMG is evenly spread out against all foes.\nIf BUI - Chromatic possesses [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] when casting the skill, she will automatically switch to [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>] at the end of her turn."
         },
         "skill_highlight": {
             "element": "핵열광역",
@@ -36,12 +36,12 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Companion Star",
             "element": "패시브",
-            "description": "In Battle, increase BUI·Chromatic’s DMG Dealt by 8.1% for each [Veggie Knight] held, up to 4 [Veggie Knight]s."
+            "description": "In Battle, increase BUI - Chromatic’s DMG Dealt by 8.1% for each [Veggie Knight] held, up to 4 [Veggie Knight]s."
         },
         "passive2": {
             "name": "Glittering",
             "element": "패시브",
-            "description": "All-Out Attack DMG Dealt is increased by 15%.\nWhen participating in All-Out Attacks, increase the DMG additionally based on the amount of [Veggie Knights] held by BUI·Chromatic."
+            "description": "All-Out Attack DMG is increased by 15%.\nWhen participating in All-Out Attacks, increase the DMG additionally based on the amount of [Veggie Knights] held by BUI - Chromatic."
         }
     },
     "카타야마": {

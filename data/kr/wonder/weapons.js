@@ -1,5 +1,6 @@
 function getWonderWeaponOptions() {
   return [
+      "엔트로피·제로",
       "천상의 별",
       "태고의 역장",
       "메커니컬 심판자",
@@ -18,6 +19,16 @@ function getWonderWeaponOptions() {
 }
 
 const matchWeapons = {
+  "엔트로피·제로" :  {
+    name_en : "Entropy Zero",
+    name_jp : "エントロピー零",
+    where_to_get : "Shop",
+    release: "YUI·스텔라",
+    order: "15",
+    effect : "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n전투 진입 시 아군 전체에 『아토믹홀릭』을 2중첩 부여한다. 임의의 캐릭터가 페르소나 스킬로 핵열 속성 대미지를 줄 때 아군 전체에 『아토믹홀릭』을 1중첩 부여한다. 필드에 『아토믹홀릭』을 보유한 동료가 1명 있을 때마다 자신의 공격력이 50/58/66/75/83/91/100 증가한다.\n『아토믹홀릭』: 공격력이 5.5%/6.4%/7.3%/8.2%/9.2%/10.1%/11.0% 증가하고, 핵열 속성 대미지를 줄 때 크리티컬 효과가 5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0% 증가한다(2회 중첩 가능, 중첩마다 독립 계산). 효과는 2턴 동안 지속된다.",
+    effect_en: "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAt battle start, grant [Atomic Holic] to all allies 2 stacks. When any ally deals Atomic damage with a Persona skill, grant [Atomic Holic] to all allies 1 stack. Increase Attack by 50/58/66/75/83/91/100 when there's 1 ally with [Atomic Holic] on the field.\n[Atomic Holic]: Increase Attack by 5.5%/6.4%/7.3%/8.2%/9.2%/10.1%/11.0% and Atomic Critical Damage by 5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0% (can stack up to 2 times, each stack is independent). Effect lasts for 2 turns.",
+    effect_jp: "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n戦闘開始時、味方全体に『アトミック・ホリック』を2重付与。誰かがペルソナスキルで原子力ダメージを与えると、味方全体に『アトミック・ホリック』を1重付与。『アトミック・ホリック』を持つ味方が1人いる場合、攻撃力が50/58/66/75/83/91/100上昇。\n『アトミック・ホリック』：攻撃力が5.5%/6.4%/7.3%/8.2%/9.2%/10.1%/11.0%上昇し、原子力クリティカルダメージが5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0%上昇（2重付与可能、それぞれの重ね合わせは独立して計算）。効果は2ターン間持続。",
+  },
   "설원의 침묵" :  {
     name_en : "Glacial Eternity",
     name_jp : "氷河永寂",

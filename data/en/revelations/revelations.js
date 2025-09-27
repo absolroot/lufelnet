@@ -365,7 +365,7 @@ const enRevelationData = {
             // "type": ["미출시"]
         },
         "Agility": {
-            "Satiety": "Increase All Out Attack DMG by 16%."
+            "Satiety": "Increase All-Out Attack DMG by 16%."
         }
 
     }

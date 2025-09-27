@@ -7,6 +7,7 @@
       // 예시 매핑: 원문 => { en, jp, kr(optional) }
       '메로페': { en: 'Merope', jp: 'メロペ', kr: '메로페' },
       '아란': { en: 'Aran', jp: '平野亞蘭', kr: '아란' },
+      '이고르': { en: 'Igor', jp: 'イゴール', kr: '이고르' },
     },
     category: {
       'group': { en: 'Group', jp: 'グループ', kr: '그룹' }

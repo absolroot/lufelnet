@@ -51,6 +51,7 @@ const personaData = {
             {name : "치료 촉진", priority: 1},
             {name : "대미지 면역", priority: 0},
             {name : "방어 강화", priority: 0},
+            {name : "전의 공명", priority: 0},
        ],
         comment : "선봉으로 사용하지 않고 교체 후 페르소나 스킬 사용 시 '전투 시작 시 『조준』 획득' 이 발동 돼 『조준』이 적용된다 (최초 1회). 버프도 동일하게 『조준』이 발동된다.",
         comment_en: "If you don't use Janosik as the vanguard, when you use the Persona skill after replacing, the '『Marked』 is obtained at the start of battle' is triggered, and the '『Marked』' is applied (only once). The buff also triggers '『Marked』'.",
@@ -180,6 +181,7 @@ const personaData = {
              {name : "마도의 재능", priority: 1},
              {name : "공격 강화", priority: 1},
              {name : "민첩의 마음가짐", priority: 0},
+             {name : "전의 공명", priority: 0},
         ],
         comment : "강력한 방어력 감소 효과를 지닌 페르소나, 마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
         comment_en: "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
@@ -308,6 +310,7 @@ const personaData = {
              {name : "마하라쿤다", priority: 3},
              {name : "대미지 면역", priority: 0},
              {name : "방어 강화", priority: 0},
+             {name : "전의 공명", priority: 0},
         ],
         comment : "음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다로 대체 가능하다.",
         comment_en: "Melodic Infiltration is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
@@ -623,6 +626,7 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
+            {name : "라쿤다", priority: 3 },
             {name : "타루카쟈", priority: 3 },
             {name : "리벨리온", priority: 3 },
             {name : "지오다인", priority: 3 },
@@ -780,7 +784,8 @@ const personaData = {
             {name : "빙결 강화", priority: 0 },
             {name : "어드바이스", priority: 0 },
             {name : "정교한 타격", priority: 0 },
-            {name : "마도의 재능", priority: 0 }
+            {name : "마도의 재능", priority: 0 },
+            {name : "전의 공명", priority: 0},
         ]
     },
     "야마타노오로치": {
@@ -929,7 +934,7 @@ const personaData = {
              {name : "공격 강화", priority: 0},
              {name : "어드바이스", priority: 0},
              {name : "정교한 타격", priority: 0},
-             {name : "축복 강화", priority: 0}
+             {name : "축복 강화", priority: 0},
         ],
         comment : "선봉이 아닌 파티에 속해있기만 해도 『신의 귀』중첩을 획득 가능하다.",
         comment_en: "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
@@ -979,7 +984,8 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
-            {name : "라쿤다", priority: 3}
+            {name : "라쿤다", priority: 3},
+            {name : "전의 공명", priority: 0},
         ]
     },
 
@@ -1238,6 +1244,7 @@ const personaData = {
             {name : "라쿤다", priority: 3 },
             {name : "마하타루카 오토", priority: 2},
             {name : "민첩의 마음가짐", priority: 1},
+            {name : "전의 공명", priority: 0},
         ],
         comment : "라쿤다를 사용해도 본능 효과가 적용된다.",
         comment_en: "The core passive effect is applied even when using Rakunda.",
@@ -1338,6 +1345,7 @@ const personaData = {
             {name : "정교한 타격", priority: 0 },
             {name : "마도의 재능", priority: 0 },
             {name : "화염 강화", priority: 0 },
+            {name : "전의 공명", priority: 0},
         ]
     },
     "트론": {

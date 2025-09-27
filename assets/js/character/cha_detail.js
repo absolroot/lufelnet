@@ -420,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tagElement = document.querySelector('.chracter-tag');
     
 
+
         if(currentLang === 'en' && character.role_en)
         {
             roleElement.textContent = character.role_en;
@@ -428,6 +429,8 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             roleElement.textContent = character.role_jp;
         }
+
+        tagElement.textContent = character.tag;
 
         if (currentLang === 'en' && character.tag_en)
         {
@@ -444,12 +447,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // tag 정보 채우기
-        if (character.tag) {
-            // 기존 내용 초기화
-            tagElement.innerHTML = '';
-            
+        if (tagElement.textContent) {
+
             // 콤마로 분리하여 각각의 태그를 생성
-            const tags = character.tag.split(',').map(tag => tag.trim());
+            const tags = tagElement.textContent.split(',').map(tag => tag.trim());
+            tagElement.innerHTML = '';
             tags.forEach(tag => {
                 if (tag) {  // 빈 문자열이 아닌 경우에만 추가
                     const tagDiv = document.createElement('div');

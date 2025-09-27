@@ -16,7 +16,7 @@ const mapping_en = {
     "수락": "Acceptance",
     "자유": "Freedom",
     "진정성": "Integrity",
-    "민첩": "Agility",
+    "예리": "Agility",
     // Sub revelations
     "슬픔": "Sorrow",
     "변화": "Transformation",
@@ -68,7 +68,7 @@ const enRevelationData = {
         "수락": "Acceptance",
         "자유": "Freedom",
         "진정성": "Integrity",
-        "민첩": "Agility"
+        "예리": "Agility"
     },
     "subTranslated": {
         "슬픔": "Sorrow",

@@ -77,7 +77,7 @@ const characterData = {
         "name_jp": "YUI·ステラ",
         "codename": "BUI·Chroma",
         "skill_item": 5,
-        "sub_revel2": ["대미지보너스"],
+        "sub_revel2": ["대미지보너스", "공격력"],
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과", "크리티컬 확률"],

@@ -2,6 +2,38 @@
 const BUFF_DATA = {
     '원더': [
         {
+            id: '전의 공명',
+            type: '스킬',
+            skillName: '전의 공명',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력 %', value: 10 },
+                        { type: '크리티컬 효과', value: 10 },
+                    ],
+                    duration: '3턴'
+                }
+            ]
+        },
+        {
+            id: '해체 역장',
+            type: '스킬',
+            skillName: '해체 역장',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/디버프.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 24 },
+                        { type: '크리티컬 효과', value: 18 },
+                    ],
+                    duration: '3턴'
+                }
+            ]
+        },
+        {
             id: '무한 알고리즘',
             type: '스킬',
             skillName: '무한 알고리즘',
@@ -963,9 +995,472 @@ const BUFF_DATA = {
                     note: '적에게 상태이상 부여 2스택'
                 }
             ]
+        },
+        {
+            id: '엔트로피·제로',
+            type: '무기',
+            skillName: '엔트로피·제로',
+            skillIcon: `${BASE_URL}/assets/img/wonder-weapon/엔트로피·제로.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력 %', value: 22.0 },
+                        { type: '크리티컬 효과', value: 20.0 },
+                    ]
+                }
+            ]
         }
     ],
-    // 마나카
+//--------------------------------------------------------------------------------------------------------------------------------  
+    // 카타야마
+    
+    '카타야마': [
+        {
+            id: '카타야마 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/창조.webp`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 12}
+                    ]
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 스킬1',
+            type: '스킬1',
+            skillName: '스킬1/스킬2 - 중상',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 56.8 },
+                        { type: '대미지 보너스', value: 45.5 }
+                    ],
+                    duration: '2턴'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 스킬2',
+            type: '스킬2',
+            skillName: '스킬2/스킬3 - 격파',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '독립 배수', value: 11.4 },
+                        { type: '대미지 보너스', value: 34.1 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 하이라이트',
+            type: 'HL',
+            skillName: '하이라이트',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 34.1 },
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 패시브1',
+            type: '패시브1',
+            skillName: '훈계',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력', value: 30.0 }
+                    ],
+                    duration: '',
+                    condition: '다운'
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 의식0',
+            type: '의식0',
+            skillName: '효율적인 지도',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 50.0 }
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 의식1',
+            type: '의식1',
+            skillName: '악행 불허',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 30.0 },
+                        { type: '크리티컬 확률', value: 10.0 },
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: '감전'
+        },
+        {
+            id: '카타야마 의식2',
+            type: '의식2',
+            skillName: '정의의 인도',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual2.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '독립 배수', value: 10.0 },
+                        { type: '공격력 %', value: 30.0 },
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 의식4',
+            type: '의식4',
+            skillName: '열혈 교사',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual4.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 20.0 }
+                    ],
+            duration: '',
+                }
+            ],
+            options: {
+            },
+            note: 'HL 강화'
+        },
+        {
+            id: '카타야마 의식6',
+            type: '의식6',
+            skillName: '무쌍의 교사',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 30.0 },
+                        { type: '독립 배수', value: 20.0 },
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '카타야마 전용무기',
+            type: '전용무기',
+            skillName: '오의·섬광 다리',
+            skillIcon: `${BASE_URL}/assets/img/character-weapon/카타야마-5-01.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 58.2 }
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        }
+    ],
+    // 미나미 여름
+    '미나미·여름': [
+        {
+            id: '미나미·여름 계시',
+            type: '계시',
+            skillName: '계시',
+            skillIcon: `${BASE_URL}/assets/img/revelation/신뢰.webp`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 0.0 }
+                    ]
+                },
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 8.0}
+                    ]
+                }
+            ],
+            options: {
+                '신뢰 풍요': {
+                    '아군 전체': { '대미지 보너스': 8.0 },
+                    '메인 목표': { '대미지 보너스': 0 }
+                },
+                '창조 화해': {
+                    '아군 전체': { '대미지 보너스': 0 },
+                    '메인 목표': { '대미지 보너스': 12.0 }
+                }
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 스킬1',
+            type: '스킬1',
+            skillName: '여름 바구니',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/축복광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력', value: 56.8 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 스킬2',
+            type: '스킬2',
+            skillName: '한여름 꽃 들판',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '대미지 보너스', value: 45.5 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 스킬3',
+            type: '스킬3',
+            skillName: '너를 위한 꽃',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '크리티컬 확률', value: 18.2 },
+                        { type: '크리티컬 효과', value: 48.8 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 스킬3-2',
+            type: '스킬3-2',
+            skillName: '너를 위한 꽃 - 약품 사용 시',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '크리티컬 효과', value: 24.4 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 하이라이트',
+            type: 'HL',
+            skillName: '하이라이트',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/버프광역.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '크리티컬 효과', value: 24.4 },
+                        { type: '대미지 보너스', value: 28.4 }
+                    ],
+                    duration: ''
+                }
+            ],
+            options: {
+            },
+            note: '의식4 지속시간 3턴'
+        },
+        {
+            id: '미나미·여름 패시브1',
+            type: '패시브1',
+            skillName: '기원',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '대미지 보너스', value: 12.0 }
+                    ],
+                    duration: '',
+                    condition: ''
+                }
+            ],
+            options: {
+            },
+            note: '축복 스택 6%'
+        },
+        {
+            id: '미나미·여름 패시브2',
+            type: '패시브2',
+            skillName: '애호',
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '공격력', value: 57.0 }
+                    ],
+                    duration: '',
+                    condition: ''
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 의식2',
+            type: '의식2',
+            skillName: '바람에 흔들리는 꽃',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual2.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '방어력 감소', value: 25.0 },
+                        { type: '크리티컬 효과', value: 30.0 }
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 의식6',
+            type: '의식6',
+            skillName: '말하지 못한 비밀',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual6.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '독립 배수', value: 15.0 }
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 물약',
+            type: '물약',
+            skillName: '물약',
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+            targets: [
+                {
+                    target: '아군 전체',
+                    effects: [
+                        { type: '공격력', value: 47.4 },
+                        { type: '대미지 보너스', value: 39.5 },
+                        { type: '독립 배수', value: 15.8 }
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        },
+        {
+            id: '미나미·여름 전용무기',
+            type: '전용무기',
+            skillName: '시들지 않는 정원',
+            skillIcon: `${BASE_URL}/assets/img/character-weapon/미나미·여름-5-01.png`,
+            targets: [
+                {
+                    target: '메인 목표',
+                    effects: [
+                        { type: '크리티컬 효과', value: 29.1 },
+                        { type: '공격력 %', value: 19.0 }
+                    ],
+                    duration: '',
+                }
+            ],
+            options: {
+            },
+            note: ''
+        }
+    ],
+    // 마나카   
     '마나카': [
         {
             id: '해명의 힘',

@@ -140,18 +140,41 @@
                 for (const r of existing){ if (r.gachaId){ seen.add(r.gachaId); gidToSegIndex.set(String(r.gachaId), targetIdx); } }
                 continue;
             }
+            // 2-2) 신규 세그먼트(겹치는 ID 없음) 처리: 대상 세그먼트를 루프 전에 결정하여 분할 방지
+            let target = null;
+            let targetIndex = -1;
+            if (outSegs.length > 0) {
+                const last = outSegs[outSegs.length - 1];
+                // 진행 중이며 시간 연속성이 있을 때만 이어붙임
+                const firstTsOfIncoming = Number((Array.isArray(seg?.record) && seg.record.length>0 ? (seg.record[0]?.timestamp||seg.record[0]?.time||seg.record[0]?.ts) : 0) || 0);
+                if (last.fivestar == null && firstTsOfIncoming >= Number(last.lastTimestamp||0)) { target = last; targetIndex = outSegs.length - 1; }
+            }
+            if (!target){ outSegs.push({ fivestar: null, lastTimestamp: 0, record: [] }); target = outSegs[outSegs.length - 1]; targetIndex = outSegs.length - 1; }
             for (const obj of incomingCloned){
                 if (obj.gachaId && seen.has(obj.gachaId)) continue; // ID-based dedupe only
-                let target = null;
-                if (outSegs.length > 0) {
-                    const last = outSegs[outSegs.length - 1];
-                    // 진행 중이며 시간 연속성이 있을 때만 이어붙임
-                    const firstTsOfIncoming = Number((Array.isArray(seg?.record) && seg.record.length>0 ? (seg.record[0]?.timestamp||seg.record[0]?.time||seg.record[0]?.ts) : 0) || 0);
-                    if (last.fivestar == null && firstTsOfIncoming >= Number(last.lastTimestamp||0)) target = last;
-                }
-                if (!target){ outSegs.push({ fivestar: null, lastTimestamp: 0, record: [] }); target = outSegs[outSegs.length - 1]; }
                 appendRec(target, obj);
-                if (obj.gachaId){ seen.add(obj.gachaId); gidToSegIndex.set(String(obj.gachaId), outSegs.length - 1); }
+                if (obj.gachaId){ seen.add(obj.gachaId); gidToSegIndex.set(String(obj.gachaId), targetIndex); }
+            }
+            // 신규 세그먼트에 대해서도 결정적 정렬 및 동일 timestamp 내 tsOrder 재시드
+            if (target && Array.isArray(target.record)){
+                const existing = target.record.slice();
+                existing.sort((a,b)=>{
+                    const ta = Number(a.timestamp||0), tb = Number(b.timestamp||0);
+                    if (ta !== tb) return ta - tb;
+                    const oa = (a.tsOrder!=null)?Number(a.tsOrder):Infinity;
+                    const ob = (b.tsOrder!=null)?Number(b.tsOrder):Infinity;
+                    if (oa !== ob) return oa - ob;
+                    const ga = String(a.gachaId||'');
+                    const gb = String(b.gachaId||'');
+                    if (ga !== gb) return ga < gb ? -1 : 1;
+                    return 0;
+                });
+                const perTs = new Map();
+                for (const r of existing){ const ts = Number(r.timestamp||0); const idx = perTs.get(ts)||0; r.tsOrder = idx; perTs.set(ts, idx+1); }
+                // 메타 재계산
+                let maxTs = 0, minTs = Number.MAX_SAFE_INTEGER; let fv = null;
+                for (const r of existing){ const ts = Number(r.timestamp||0); if (ts > maxTs) maxTs = ts; if (ts < minTs) minTs = ts; if (!fv && Number(r.grade)===5) fv = { ...r }; }
+                outSegs[targetIndex] = { fivestar: fv, lastTimestamp: maxTs, firstTimestamp: (minTs===Number.MAX_SAFE_INTEGER?0:minTs), record: existing, times: existing.length };
             }
         }
 

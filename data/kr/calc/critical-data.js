@@ -450,6 +450,57 @@ const criticalCalcData = [
         note: ""
     },
     {
+        id: "yui-stella1",
+        charName: "유이·스텔라",
+        charImage: "YUI·스텔라.webp",
+        type: "스킬2",
+        type_en: "S1",
+        type_jp: "スキル2",
+        target: "자신",
+        target_en: "Self",
+        target_jp: "自分",
+        skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
+        skillName: "베지나이츠·집합",
+        skillName_en: "S2",
+        skillName_jp: "スキル2",
+        options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+        values: {
+            "LV10": 11.7,
+            "LV10+심상5": 12.9,
+            "LV13": 12.4,
+            "LV13+심상5": 13.6
+        },
+        value: 13.6,
+        duration: "2턴",
+        note: ""
+    },
+    {
+        id: "yui-stella2",
+        charName: "",
+        charImage: "",
+        type: "전용무기",
+        type_en: "Exclusive Weapon",
+        type_jp: "専用武器",
+        target: "자신",
+        target_en: "Self",
+        target_jp: "自分",
+        skillIcon: `${BASE_URL}/assets/img/character-weapon/YUI·스텔라-5-01.png`,
+        skillName: "심우주 횡단선",
+        skillName_en: "Exclusive Weapon",
+        skillName_jp: "専用武器",
+        options: ["개조0&1","개조2&3","개조4&5","개조6"],
+        values: {
+            "개조0": 18.1,
+            "개조1&2": 23.5,
+            "개조3&4": 28.9,
+            "개조5&6": 34.3
+        },
+        defaultOption: "개조6",
+        value: 34.3,
+        duration: "",
+        note: ""
+    },
+    {
         id: "katayama1",
         charName: "카타야마",
         charImage: "카타야마.webp",

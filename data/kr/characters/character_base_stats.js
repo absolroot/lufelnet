@@ -17,23 +17,23 @@ const basicStatsData = {
     },
     "YUI·스텔라": {
         a0_lv1: {
-            attack: 0,
-            defense: 0,
-            HP: 0,
+            attack: 121,
+            defense: 52,
+            HP: 311,
             SP: 100,
-            speed: 0,
+            speed: 96.0,
             crit_rate: 5,
             crit_mult: 150
         },
         awake7: {
-            attack_per: 29
+            attack_per: 29.0
         }
     },
     "카타야마": {
         a0_lv1: {
-            attack: 137,
-            defense: 69,
-            HP: 393,
+            attack: 109,
+            defense: 53,
+            HP: 303,
             SP: 100,
             speed: 107.0,
             crit_rate: 5,

@@ -44,7 +44,7 @@ const mapping_en = {
     "분쟁": "Strife",
     "개선": "Success",
     "좌절": "Defeat",
-    "충만": "Satiety"
+    "풍족": "Satiety"
 };
 
 // English revelation data
@@ -97,7 +97,7 @@ const enRevelationData = {
         "분쟁": "Strife",
         "개선": "Success",
         "좌절": "Defeat",
-        "충만": "Satiety"
+        "풍족": "Satiety"
     },
     "main": {
         "Perseverance" : ["Sorrow","Transformation"],
@@ -277,7 +277,7 @@ const enRevelationData = {
             "set4": "Increase DMG by 20% for 3 turns; Gain this effect again when you use HIGHLIGHT.",
             "type": ["주원", "미출시"]
         },
-        "Satiety": { // 충만
+        "Satiety": { // 풍족
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 2 turns; Gain this effect again when using a Follow Up Skill.",
             "type": ["추가 효과", "미출시"]

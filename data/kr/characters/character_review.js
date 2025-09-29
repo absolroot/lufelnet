@@ -2,39 +2,14 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
-"작성중": `의식 0 (연구 중)
-| - | 행동 | 가지 | 감자 | 버섯 | 아스파라거스 | 
-|-  | -   |- | - | - | - | 
-|1턴 |S2+S1| **1** (+1) | **1** (+1) | 0 | 0 |
-|2턴 |S3| 1 | 1 | **1** (+1) | 0 |
-|3턴 |S2+S1| 1 | **2** (+1) | 1 | **1** (+1) |
-|4턴 |S3| 1 | **3** → 0 | 1 | 1 |
-|5턴 |S2+S1| 1 | **2** (+2) | 1 | 1 |
-|6턴 |S3| 1 | **3** (+1) | 1 | 1 |
-
-의식 1 (연구 중)
-| - | 행동 | 가지 | 감자 | 버섯 | 아스파라거스 | 
-|-  | -   |- | - | - | - | 
-|1턴 |S2+S1| 1 | **3** (+2) | 1 | 1 |
-|2턴 |S3| 1 | **4** → 0 | 1 | 1 |
-|3턴 |S2+S1| 1 | **2** (+2) | 1 | 1 |
-|4턴 |S3| 1 | **3** → 0 | 1 | 1 |
-|5턴 |S2+S1| 1 | **2** (+2) | 1 | 1 |
-|6턴 |S3| 1 | **3** → 0 | 1 | 1 |`
-,
-
     "YUI·스텔라": { name_en: "YUI·PRISM", name_jp: "YUI·PRISM", codename: "YUI·PRISM",
         review: `
-현실 업무 때문에 업데이트가 평소보다 다소 늦어질 예정입니다. 양해 바랍니다. (추석 업데이트 예정)
-
----
+설명은 상당히 복잡하지만 실제로 운영 방식은 단순한 편으로 설명을 신경쓰지 않고 사이클 순서대로 진행하면 무리없게 구성됐습니다.
 
 - 매 턴 시작 시 자동으로 기사 1명 & 스킬2(쿨다운 1T) 사용 시 기사 1명을 소환합니다.
   - 가지 → 감자 → 버섯 → 아스파라거스
 
-
 - 스킬3 사용 시 감자 기사가 2명 이상일 경우 추가 감자 기사를 소모하여 대미지가 상승합니다. (최소 1기의 감자 기사는 남습니다.)
-
 
 - 『원동력』은 7스택이 쌓이면 패시브가 발동해 3스킬을 자동 사용합니다.
 
@@ -56,9 +31,7 @@ review_jp: `
 
 <br>
 
-다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화하지만, 관련 **수치가 보수적**이라 전체 점수 상승이 두드러지지 않을 수 있습니다.
-
-출시 시점 기준 **TURBO(마유미)**와 많이 비교되며, 의식6 보유자가 적어 비교 데이터가 부족하고, 카타야마 전용 보스 설계가 사라질 경우 효용이 떨어질 수 있습니다.
+다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화하지만, **TURBO(마유미)**와 많은 부분에서 비교됩니다.
 
 - **광역 보스**는 기본 **다운 수치가 5**라서 **의식1** 미만이면 2스킬의 다운이 확정되지 않습니다. **단일 보스**는 다운치가 더 높아 효용이 더 낮습니다.
 - 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, **적 턴 종료 시 다수 디버프가 사라져** 정작 본인이 그 효과를 활용하기 어렵습니다.
@@ -76,9 +49,7 @@ A debuffer that sharply reduces **Down Value** to force a **Down**, then makes t
 
 <br>
 
-It enables fast Downs and buffs the **independent bucket: [Down Special DMG]**, but the **numbers are conservative**, so overall score (damage) gains may not be striking.
-
-At release it’s often compared to **TURBO (Mayumi)**. With few players at A6, comparative data is limited, and if bosses aren’t tailored for Katayama, her value may drop.
+It enables fast Downs and buffs the **independent bucket: [Down Special DMG]**, at release it’s often compared to **TURBO (Mayumi)**.
 
 - **AoE bosses** typically start with **5 Down Value**, so without **A1**, Skill 2 won’t guarantee a Down. **Single-target bosses** often have even higher Down Value, lowering effectiveness further.
 - Katayama has multiple self-buffs (passives/skills), but **most of her applied debuffs expire at the end of the enemy’s turn**, so **she can’t fully exploit them herself**.
@@ -96,9 +67,7 @@ At release it’s often compared to **TURBO (Mayumi)**. With few players at A6, 
 
 <br>
 
-素早くダウンを取り、**独立バケットの『ダウン特効』**を強化できますが、**数値が保守的**なため、総合的なスコア（ダメージ）上昇は目立ちにくいです。
-
-リリース時点では**TURBO（マユミ）**とよく比較されます。意識6の所持者が少なく比較データが乏しいこと、また久未向けに設計されたボスがなくなると有用性が落ちる可能性があります。
+素早くダウンを取り、**独立バケットの『ダウン特効』**を強化できますが, **TURBO（マユミ）**とよく比較されます。
 
 - **全体ボス**は初期ダウン値が**5**のため、**意識1**（A1）未満ではスキル2のダウンが確定しません。**単体ボス**はさらにダウン値が高く、効果が薄れます。
 - 久未は自己強化（パッシブ/スキル）を複数持ちますが、**敵ターンの終了で大半のデバフが切れる**ため、**本人が十分に活かしにくい**側面があります。

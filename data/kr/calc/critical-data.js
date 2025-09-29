@@ -470,6 +470,7 @@ const criticalCalcData = [
             "LV13": 12.4,
             "LV13+심상5": 13.6
         },
+        defaultOption: "LV13+심상5",
         value: 13.6,
         duration: "2턴",
         note: ""

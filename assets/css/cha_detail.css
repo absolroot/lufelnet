@@ -92,6 +92,7 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 .value { color: rgb(255, 255, 255, 0.9); }
 .awake-row .value { font-size: 14px; }
 .lv80-grid .value { font-size: 13px; }
+.lv80-stats-card{ padding: 0px 0px 30px 0px; }
 
 .revelation-set { display: flex; flex-direction: column; gap: 0px; }
 .main-revelation, .sub-revelation { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }

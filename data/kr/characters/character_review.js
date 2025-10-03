@@ -4,52 +4,68 @@ const characterReview = {
     },
     "YUI·스텔라": { name_en: "YUI·PRISM", name_jp: "YUI·PRISM", codename: "YUI·PRISM",
         review: `
-설명은 상당히 복잡하지만 실제로 운영 방식은 단순한 편으로 설명을 신경쓰지 않고 사이클 순서대로 진행하면 무리없게 구성됐습니다.
+설명은 상당히 복잡하지만 실제로 운영 방식은 단순한 편으로 설명을 신경쓰지 않고 사이클 순서대로 진행하면 무리없게 구성됐다.
 
-- 매 턴 시작 시 자동으로 기사 1명 & 스킬2(쿨다운 1T) 사용 시 기사 1명을 소환합니다.
+- 매 턴 시작 시 자동으로 기사 1명 & 스킬2(쿨다운 1T) 사용 시 기사 1명을 소환한다.
   - 가지 → 감자 → 버섯 → 아스파라거스
 
-- 스킬3 사용 시 감자 기사가 2명 이상일 경우 추가 감자 기사를 소모하여 대미지가 상승합니다. (최소 1기의 감자 기사는 남습니다.)
+- 스킬3 사용 시 감자 기사가 2명 이상일 경우 추가 감자 기사를 소모하여 대미지가 상승한다. (최소 1기의 감자 기사는 남는다.)
 
-- 『원동력』은 7스택이 쌓이면 패시브가 발동해 3스킬을 자동 사용합니다.
+- 『원동력』은 7스택이 쌓이면 패시브가 발동해 3스킬을 자동 사용한다.
 
 `,
 review_en: `
-Due to real life commitments, This page updates&translations will be a little slower than usual. I appreciate your patience.`,
+Although the explanation may seem complicated, the actual gameplay cycle is simple. If you just follow the rotation order without worrying too much about the details, it works smoothly.
+
+- At the start of each turn, 1 Knight is automatically summoned, and using Skill 2 (1T cooldown) also summons 1 Knight.
+  - Eggplant → Potato → Mushroom → Asparagus
+
+- When using Skill 3, if you have 2 or more Potato Knights, additional Potato Knights will be consumed to increase damage. (At least 1 Potato Knight will remain.)
+
+- 『Mobilize Energy』: When 7 stacks are accumulated, the passive is triggered, automatically casting Skill 3.
+`,
 review_jp: `
-現実的な業務のため、このページの更新&翻訳が通常よりやや遅れる予定です。ご了承ください。`
+説明は複雑に見えるかもしれませんが、実際の運用はシンプルです。細かい説明を気にせず、サイクル順に進めれば問題なく構成されています。
+
+- 各ターン開始時に自動で騎士を1体召喚し、スキル2（クールダウン1T）を使用するとさらに騎士を1体召喚します。
+  - ナス → ジャガイモ → キノコ → アスパラガス
+
+- スキル3使用時、ジャガイモ騎士が2体以上いる場合、追加のジャガイモ騎士を消費してダメージが上昇します。（最低でもジャガイモ騎士1体は残ります。）
+
+- 『動力』：7スタックが溜まるとパッシブが発動し、自動的にスキル3を使用します。
+`
     },
     "카타야마":{ name_en: "Kumi Katayama", name_jp: "片山 久未", codename: "BLITZ",
       review: `
-다운 수치를 크게 깎아 **다운**을 유도하고, 다운된 적이 받는 대미지를 늘리는 디버퍼입니다.
+다운 수치를 크게 깎아 **다운**을 유도하고, 다운된 적이 받는 대미지를 늘리는 디버퍼.
 
-1) **1스킬**로 적에게 [방어력 감소]와 [받는 대미지 증가]를 2턴 부여하고, 3스킬을 해금합니다.
+1) **1스킬**로 적에게 [방어력 감소]와 [받는 대미지 증가]를 2턴 부여하고, 3스킬을 해금한다.
 
-2) **3스킬**은 **다운 수치 5 감소** + 1턴 동안 **『다운 특수 공격』**과 [받는 대미지 증가]를 강화하며, **다음 2스킬을 강화**하는 흐름입니다.
+2) **3스킬**은 **다운 수치 5 감소** + 1턴 동안 **『다운 특수 공격』**과 [받는 대미지 증가]를 강화하며, **다음 2스킬을 강화**하는 흐름이다.
 
-3) **강화된 2스킬**로 **다운 수치 4 감소** + 1스킬/3스킬과 동일한 디버프를 1턴 부여합니다. 상황에 따라 2스킬 대신 1스킬을 연계해도 됩니다.
+3) **강화된 2스킬**로 **다운 수치 4 감소** + 1스킬/3스킬과 동일한 디버프를 1턴 부여한다. 상황에 따라 2스킬 대신 1스킬을 연계해도 된다.
 
 <br>
 
-다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화하지만, **TURBO(마유미)**와 많은 부분에서 비교됩니다.
+다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화하지만, **TURBO(마유미)**와 많은 부분에서 비교된다.
 
-- **광역 보스**는 기본 **다운 수치가 5**라서 **의식1** 미만이면 2스킬의 다운이 확정되지 않습니다. **단일 보스**는 다운치가 더 높아 효용이 더 낮습니다.
-- 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, **적 턴 종료 시 다수 디버프가 사라져** 정작 본인이 그 효과를 활용하기 어렵습니다.
-- 방어력 감소가 HL에 묶여 **HL 강제**가 발생합니다. 빠른 효율을 위해 2턴에 HL을 쓰면, 일반적인 2·6턴 2회 HL 기회를 포기하게 됩니다.
-- 전용/4성 무기는 적을 다운시 발동합니다. 의식1 미만이면 효율이 급감하므로 **3성 무기**가 대안이 될 수 있습니다.
+- **광역 보스**는 기본 **다운 수치가 5**라서 **의식1** 미만이면 2스킬의 다운이 확정되지 않는다. **단일 보스**는 다운치가 더 높아 효용이 더 낮다.
+- 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, **적 턴 종료 시 다수 디버프가 사라져** 정작 본인이 그 효과를 활용하기 어렵다.
+- 방어력 감소가 HL에 묶여 **HL 강제**가 발생한다. 빠른 효율을 위해 2턴에 HL을 쓰면, 일반적인 2·6턴 2회 HL 기회를 포기하게 된다.
+- 전용/4성 무기는 적을 다운시 발동한다. 의식1 미만이면 효율이 급감하므로 **3성 무기**가 대안이 될 수 있다.
       `,
       review_en: `
 A debuffer that sharply reduces **Down Value** to force a **Down**, then makes the target **take more damage** while Down.
 
 1) **Skill 1** applies [DEF Down] and [DMG Taken Up] for 2 turns and unlocks Skill 3.
 
-2) **Skill 3** **reduces Down Value by 5**, strengthens **[Down Special DMG]** and [DMG Taken Up] for 1 turn, and **empowers your next Skill 2**.
+2) **Skill 3** **reduces Down Value by 5**, strengthens **[Downed Damage Taken]** and [DMG Taken Up] for 1 turn, and **empowers your next Skill 2**.
 
 3) The **empowered Skill 2** **reduces Down Value by 4** and applies the same debuffs as Skills 1/3 for 1 turn. Depending on the situation, you can chain back into Skill 1 instead of using Skill 2.
 
 <br>
 
-It enables fast Downs and buffs the **independent bucket: [Down Special DMG]**, at release it’s often compared to **TURBO (Mayumi)**.
+It enables fast Downs and buffs the **independent bucket: [Downed Damage Taken]**, at release it’s often compared to **TURBO (Mayumi)**.
 
 - **AoE bosses** typically start with **5 Down Value**, so without **A1**, Skill 2 won’t guarantee a Down. **Single-target bosses** often have even higher Down Value, lowering effectiveness further.
 - Katayama has multiple self-buffs (passives/skills), but **most of her applied debuffs expire at the end of the enemy’s turn**, so **she can’t fully exploit them herself**.
@@ -89,7 +105,7 @@ SP회복에 큰 영향을 받는 캐릭터지만 **기본 188.5%** SP회복과 �
 
 의식이 6에 도달할 경우 추가 SP를 250을 주므로, 별도의 SP회복이 필요 없어진다. (SP 280%까지는 패시브에 의해 변환되므로 공격력 손해가 없다.)
 
-추천 운영 사이클에 따른 필요 SP 회복량은 다음과 같습니다. 마나카(ANGE)의 추가 턴은 고려되지 않은 횟수이다.
+추천 운영 사이클에 따른 필요 SP 회복량은 다음과 같다. 마나카(ANGE)의 추가 턴은 고려되지 않은 횟수이다.
 
 - 후타바 : 3 › 1 › 2 › 3 › 1 › 2  
 
@@ -561,21 +577,21 @@ HIGHLIGHT와 스킬1에 영향을 받는 『집착』중첩은 전체적으로 �
 
 `,
 review_en: `
-A powerful single-target DPS that applies stacks of the Curse-element DoT [Hatred] to enemies.  
+A powerful single-target DPS that applies stacks of the Curse-element DoT [Resentment] to enemies.  
 
-**Applies [Hatred] to enemies through S1 and S2**, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.  
+**Applies [Resentment] to enemies through S1 and S2**, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.  
 
-In addition, **HIGHLIGHT settles the stacked [Hatred]** and allows **[Hatred]’s DoT to crit**.  
+In addition, **HIGHLIGHT settles the stacked [Resentment]** and allows **[Resentment]’s DoT to crit**.  
 
-The [Covet] stacks affected by HIGHLIGHT and S1 grant a self-buff that increases overall damage.  
+The [Obsessive Love] stacks affected by HIGHLIGHT and S1 grant a self-buff that increases overall damage.  
 
 ---
 
 Ichigo is extremely powerful, but her damage-dealing mechanism is the most complex among all characters to date.  
 
-[Hatred] deals damage in two main ways: **damage dealt at the end of the enemy’s turn** and **forced DoT calculation via HL**.  
+[Resentment] deals damage in two main ways: **damage dealt at the end of the enemy’s turn** and **forced DoT calculation via HL**.  
 
-- Each [Hatred] stack snapshots Ichigo’s buff state at the time of application, and **when refreshed via S3, it overwrites with Ichigo’s buffs** at that moment.  
+- Each [Resentment] stack snapshots Ichigo’s buff state at the time of application, and **when refreshed via S3, it overwrites with Ichigo’s buffs** at that moment.  
 
 - Criticals are calculated separately, based on **Ichigo’s Critical Rate and Critical Damage at the time each DoT stack is calculated**.  
   If Ichigo’s Critical Rate is below 100% at this point and a crit does not occur, the Stable Domain mechanic will not activate due to a bug.  
@@ -589,10 +605,10 @@ Below is the buff table showing which of Ichigo’s buffs apply:
 | -                         | ATK / ATK Mult      | Crit Rate / Crit Mult | DEF Reduction | Pierce |
 |---------------------------|----------------------|------------------------------|---------------|--------|
 | S1/S2/S3                  | O                    | O                            | O             | O      |
-| Hatred Application/Refresh| O                    | -                            | O             | -      |
-| Hatred×2 Settlement - HL  | -                    | O (based on settlement time) | -             | O      |
+| Resentment Application/Refresh| O                    | -                            | O             | -      |
+| Resentment×2 Settlement - HL  | -                    | O (based on settlement time) | -             | O      |
 | DoT Settlement - HL       | -                    | O (based on settlement time) | -             | -      |
-| Hatred Settlement - Turn End | -                 | O (based on settlement time) | -             | -      |
+| Resentment Settlement - Turn End | -                 | O (based on settlement time) | -             | -      |
 | HIGHLIGHT Base            | O                    | -                            | O             | O      |  
 
 <br>

@@ -3,72 +3,73 @@ const enCharacterSkillsData = {
         "name": "Wonder"
     },
     "YUI·스텔라": {
-        "name": "YUI·Chromatic",
+        "name": "YUI·Prism",
         "skill1": {
-            "name": "Cosmic Clash!",
+            "name": "Cosmic Smash",
             "element": "핵열",
             "type":"단일피해",
             "sp": 22,
             "cool": 0,
-            "description": "Deal Nuke DMG equal to 100.7%/111.0%/106.9%/117.2% ATK to 1 foe, and gain 3 [Originium Force].\nAdditionally, enter [Chaotic Clash] for 2 turns.\n[Chaotic Clash]: When BUI - Chromatic’s turn ends, cast the Follow-Up Action [Veggie Knights, Attack!], rallying all [Veggie Knights] to deal Nuke DMG equal to 93.5%/103.1%/99.2%/108.8% ATK to a random foe, and activate the following effect based on BUI - Chromatic’s current color:\nUnder [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>], gain 1 [Originium Force];\nUnder [<span style='color:#C7BE5A;'>Primrose Potatoes</span>], gain [Spud Power], increasing All-Out Attacks DMG by 14.6%/16.1%/15.5%/17.0% for 3 turns.\nUnder [Magenta Mushrooms], inflict the foes hit with [Spore], increasing their DMG Taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nUnder [Aquamarine Asparagus], recover HP equal to 976/1076/1036/1136 of the DMG Dealt to the ally with the lowest HP.\nIf BUI - Chromatic possesses [<span style='color:#C7BE5A;'>Potato Knight</span>]s when casting the skill, she will automatically switch to [<span style='color:#C7BE5A;'>Primrose Potatoes</span>] at the end of her turn."
+            "description": "Deal Nuke damage to 1 foe equal to 100.7%/111.0%/106.9%/117.2% of Attack, gain 3 points of [Mobilize Energy] and enter [Smash] state for 2 turns.\n\n[Smash]: At the end of YUI's turn, activate Resonance [Vegetable Knights: Strike], command all Vegetable Knights to deal Nuke damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack, then activate the following effects based on the current color state:\n\n[<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>]: Gain 1 point of [Mobilize Energy];\n[<span style='color:#C7BE5A;'>Potato Yellow</span>]: YUI gains [Tuber Power], increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\n[<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>]: Inflict skill target with [Mushroom Spores], increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\n[<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>]: Restore 976/1076/1036/1136 HP to the lowest HP ally.\n\nIf YUI has [<span style='color:#C7BE5A;'>Potato Knight</span>] after using this skill, change to [<span style='color:#C7BE5A;'>Potato Yellow</span>] state at the end of YUI's action."
         },
         "skill2": {
-            "name": "Veggie Knights, Assemble!",
+            "name": "Vegetable Knights: Assemble",
             "element": "버프",
             "type":"버프",
             "sp": 0,
             "cool": 1,
-            "description": "Increase ATK by 19.5%/21.5%/20.7%/22.7% and CRIT Rate by 11.7%/12.9%/12.4%/13.6 for 2 turns, and summon 1 [Veggie Knight] based on the set sequence. This skill is not considered a Persona Skill, and BUI - Chromatic can still cast other skills in her turn after casting this skill.\nPassive: When BUI - Chromatic’s turn starts, automatically summon a [Veggie Knight] based on the set sequence.\nThere may be only 1 [Eggplant Knight], [Mushroom Knight], and [Asparagus Knight] on the field. BUI - Chromatic can summon multiple [Potato Knight]s, up to 4."
+            "description": "Increase YUI's Attack by 19.5%/21.5%/20.7%/22.7% and critical rate by 11.7%/12.9%/12.4%/13.6. Lasts for 2 turns. Summon 1 Vegetable Knight in a specific order. After using this skill, YUI can use other skills, this doesn't count as a Persona skill. \nPassive: At the start of turn, automatically summon 1 Vegetable Knight in a specific order. \nYUI can only have 1 [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Knight</span>], [<span style='color:rgb(11, 190, 11);'>Asparagus Knight</span>], and 4 [<span style='color:#C7BE5A;'>Potato Knights</span>]."
         },
         "skill3": {
-            "name": "Veggie Knights, Full Out!",
+            "name": "Vegetable Knights: Mobilize",
             "element": "핵열",
             "type":"단일피해",
             "sp": 23,
             "cool": 0,
-            "description": "Deal Nuke DMG equal to 104.3%/115.0%/110.7%/121.4% ATK to 1 foe. For every [Veggie Knight] present, additionally deal Nuke DMG equal to 29.3%/32.3%/31.1%/34.1% ATK once. When holding 2 or more [<span style='color:#C7BE5A;'>Potato Knight</span>]s, BUI - Chromatic will consume the extra [<span style='color:#C7BE5A;'>Potato Knight</span>]. Each [<span style='color:#C7BE5A;'>Potato Knight</span>] consumed will additionally deal Nuke DMG equal to 24.4%/26.9%/25.9%/28.4%% ATK. This Skill DMG is considered All-Out Attacks DMG. When casting this skill manually, gain 2 [Originium Force].\nPassive: When [Originium Force] reaches 7, consume all [Originium Force] to cast [Veggie Knights, Full Out!] to foes. This attack’s DMG is evenly spread out against all foes.\nIf BUI - Chromatic possesses [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] when casting the skill, she will automatically switch to [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>] at the end of her turn."
+            "description": "Deal Nuke damage to 1 foe equal to 104.3%/115.0%/110.7%/121.4% of Attack, for every 1 Vegetable Knight, deal bonus Nuke damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. When YUI has 2 or more [<span style='color:#C7BE5A;'>Potato Knights</span>], spend additional Potato Knights, for every 1 Potato Knight spent, deal bonus Nuke damage equal to 24.4%/26.9%/25.9%/28.4%% of Attack. This skill damage counts as an All-Out Attack damage. When YUI manually uses this skill, gain 2 points of [Mobilize Energy].\n\nPassive: When YUI has 7 or more [Mobilize Energy] points, spend all [Mobilize Energy] to deal the damage from [Vegetable Knights: Mobilize], distribute this damage between all foes, this doesn't count as Persona skill damage.\nIf YUI has [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] after using this skill, change to [<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>] state at the end of YUI's action."
         },
         "skill_highlight": {
             "element": "핵열",
             "type":"단일피해",
-            "description": "Increase Deal Nuke DMG equal to 439.2%/484.2%/466.2%/511.2% ATK to 1 foe and cast [Veggie Knights, Attack!] to that foe 1 time.\n[Veggie Knights, Attack!]: Follow-Up Action. Deal Nuke DMG equal to 93.5%/103.1%/99.2%/108.8% ATK to 1 foe."
+            "description": "Deal Nuke damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack, and immediately activate [Vegetable Knights: Strike] on that foe based on specific rules."
         },
         "passive1": {
             "name": "Companion Star",
             "element": "패시브",
-            "description": "In Battle, increase BUI - Chromatic’s DMG Dealt by 8.1% for each [Veggie Knight] held, up to 4 [Veggie Knight]s."
+            "description": "During battle, for every 1 [Vegetable Knight], increase YUI's damage by 8.1%, up to 4 [Vegetable Knights]."
         },
         "passive2": {
-            "name": "Glittering",
+            "name": "Brilliant",
             "element": "패시브",
-            "description": "All-Out Attack DMG is increased by 15%.\nWhen participating in All-Out Attacks, increase the DMG additionally based on the amount of [Veggie Knights] held by BUI - Chromatic."
+            "description": "Increase All-Out Attack damage by 15%.\nWhen YUI is part of an All-Out Attack, increase that All-Out Attack's damage based on the total amount of [Vegetable Knights] YUI has."
         }
     },
     "카타야마": {
         "name": "Kumi Katayama",
         "skill1": {
-            "name": "Revolving Passionblade",
+            "name": "Wings of Passion",
             "element": "전격광역",
             "type": "AoE DMG",
             "sp": 22,
             "cool": 0,
-            "description": "Deal Elec DMG equal to 101.7%/112.1%/108.0%/118.4% ATK to all foes, and inflict them with [Cripple]: DEF is decreased by 9.8%/10.8%/10.4%/11.4% (For every 10 SPD, additionally decrease DEF by 2.22%, up to 39.0%/43.0%/41.4%/45.4%), and DMG Taken is increased by 7.8%/8.6%/8.3%/9.1% (For every 10 SPD, additionally decrease DMG Taken by 1.78%, up to 31.2%/34.4%/33.2%/36.4%) for 2 turns.\nWhen possessing [Transcending Limit], increase the Skill DMG by 30%.\nUnlocks [Killing Blow: Flarefeet]."
+            "description": "Deal Elec damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 2 turns.\nIf Katayama has [Super Limit], increase skill damage by 30%.\nUnlock [Secret Art: Lightning Legs]."
+
       },
         "skill2": {
-            "name": "Lightning Arbitrement",
+            "name": "Thunderous Judgement",
             "element": "전격광역",
             "type": "AoE DMG",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Elec DMG equal to 135.5%/149.3%/143.8%/157.7%  ATK to all foes, and decrease 1 Down Gauge regardless of affinity if the skill had done DMG. \nInflict foes hit with [Cripple]: DEF is decreased by 9.8%/10.8%/10.4%/11.4% (For every 10 SPD, additionally decrease DEF by 2.22%, up to 39.0%/43.0%/41.4%/45.4%), and DMG Taken is increased by 7.8%/8.6%/8.3%/9.1% (For every 10 SPD, additionally decrease DMG Taken by 1.78%, up to 31.2%/34.4%/33.2%/36.4%) for 2 turns.\nWhen possessing [Transcending Limit], decrease Down Gauge by 3, and inflict the foes hit with [Rupture]: Downed DMG Taken is increased by 0.56% for every 10 SPD, up to 9.8%/10.8%/10.4%/11.4%, and DMG Taken is increased by 5.9% (For every 10 SPD, additionally increase DMG Taken by 1.33%, up to 23.4%/25.8%/24.9%/27.3%) for 1 turn."
+            "description": "Deal Elec damage to all foes equal to 135.5%/149.3%/143.8%/157.7% of Attack, if skill dealt damage, ignore all affinites and decrease Down Points by 1, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 2 turn.\nIf Katayama has [Super Limit], decrease target's Down Points by 3 and inflict [Break]: Increase Downed Damage Taken by 0.56% for every 10 points of Katayama's Speed, up to 9.8%/10.8%/10.4%/11.4%, and increase damage taken by 5.9% + 1.33% for every 10 points of Katayama's Speed, up to 23.4%/25.8%/24.9%/27.3%. Lasts for 1 turn."
         },
         "skill3": {
-            "name": "Killing Blow: Flarefeet",
+            "name": "Secret Art: Lightning Legs",
             "element": "전격광역",
             "type": "AoE DMG",
             "sp": 25,
             "cool": 0,
-            "description": "Deal Elec DMG equal to 141.9%/156.5%/150.6%/165.2% ATK to all foes, and decrease Down Gauge by 5 regardless of affinity, and inflict foes hit with [Rupture]: Downed DMG Taken is increased by 0.56% for every 10 SPD, up to 9.8%/10.8%/10.4%/11.4%, and DMG Taken is increased by 5.9% (For every 10 SPD, additionally increase DMG Taken by 1.33%, up to 23.4%/25.8%/24.9%/27.3%) for 1 turn.\nIf the skill Downs any foe, gain [Transcending Limit] for 2 turns.\n[Transcending Limit]: Boost the effect of the next [Revolving Passionblade] and [Lightning Arbitrement]."
+            "description": "Deal Elec damage to all foes equal to 141.9%/156.5%/150.6%/165.2% of Attack, if skill dealt damage, ignore all affinites and decrease target's Down Points by 5, then inflict [Break]: Increase Downed Damage Taken by 0.56% for every 10 points of Katayama's Speed, up to 9.8%/10.8%/10.4%/11.4%, and increase damage taken by 5.9% + 1.33% for every 10 points of Katayama's Speed, up to 23.4%/25.8%/24.9%/27.3%. Lasts for 1 turn.\nIf this skill knocks down any target, grant Katayama [Super Limit] for 2 turns.\n[Super Limit]: Evolve the next [Wings of Passion] and [Thunderous Judgement]."
         },
         "skill_highlight": {
             "name": "HIGHLIGHT",
@@ -76,17 +77,17 @@ const enCharacterSkillsData = {
             "type": "AoE DMG",
             "sp": 0,
             "cool": 0,
-            "description": "Deal Elec DMG equal to 317.6%/350.1%/337.1%/369.7%  ATK to all foes, with a 50% base chance of inflicting them with Dizzy for 1 turn. \nDecrease the foes' DEF permanently by 29.3%/32.3%/31.1%/34.1% the next time you Down them after casting HIGHLIGHT. This effect cannot stack."
+            "description": "Deal Elec damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, with a 50% base chance to inflict Dizzy for 1 turn. After using Highlight, when Katayama knocks down a foe, decrease target's Defense by 29.3%/32.3%/31.1%/34.1%. This effect is permanent and cannot stack."
         },
         "passive1": {
-            "name": "Reprimand",
+            "name": "Admonition",
             "element": "패시브",
-            "description": "Increase ATK by 30% for all allies when they are attacking Downed foes."
+            "description": "When allies attack downed foes, increase their Attack by 30%."
         },
         "passive2": {
-            "name": "Ardor",
+            "name": "Passionate",
             "element": "패시브",
-            "description": "Increase ATK by 24 for every SPD exceeding 100 in battle, up to 1920."
+            "description": "During battle, when Katayama's Speed is above 100, increase Attack by 24 points for every point of Speed above 100, up to 1920."
         }
     },
 
@@ -98,7 +99,7 @@ const enCharacterSkillsData = {
             "type": "AoE DMG",
             "sp": 0,
             "cool": 0,
-            "description": "Deal Ice DMG equal to 100.7%/111.0%/106.9%/117.2% ATK to all foes, with a 100% base chance of inflicting Freeze to them for 2 turns. Recover 40 SP (This effect is affected by SP Recovery), and SP obtained through this way is able to exceed the maximum SP limit (up to SP equal to the SP cap)."
+            "description": "Deal Ice damage to all foes equal to 178.7%/197.0%/189.7%/208.0% of Attack, with a 100% base chance to inflict Freeze for 2 turns. Restore 40 SP to Miyu (this effect is affected by SP Recovery), SP restored by this can exceed the SP cap (up to SP equal to the SP cap)."
         },
         "skill2": {
             "name": "Cerulean Concerto",
@@ -106,15 +107,15 @@ const enCharacterSkillsData = {
             "type": "AoE DMG",
             "sp": 0,
             "cool": 0,
-            "description": "Deal Ice DMG equal to 178.7%/197.0%/189.7%/208.0% ATK to all foes. Inside [Ocean's Domain], increases Skill DMG by 10% for every stack of [Thousandfold Waves]. After casting the skill, exit [Ocean's Domain] and resets [Thousandfold Waves] count to 0. This skill is considered as a Follow Up Action."
+            "description": "Deal Ice damage to all foes equal to 178.7%/197.0%/189.7%/208.0% of Attack. When [Ocean's Domain] is active, each [Thousandfold Waves] stacks increase skill damage by 10%. After using this skill, exit [Ocean's Domain] and lose all [Thousandfold Waves] stacks. This counts as a Resonance."
         },
         "skill3": {
-            "name": "Leaping Onto Sunlit Waves",
+            "name": "Lightwave Leap",
             "element": "버프",
             "type": "Enhance",
             "sp": 60,
             "cool": 0,
-            "description": "Puppet rides her surfboard, cleanses all Mental Ailments on herself and opens [Ocean's Domain]: Grant Null Down and Null Mental/Control Ailment. In this state, she cannot use Sword, Gun, or items. When gaining any effect, extend that effect's duration by 1 turn. After any ally's turn ends, consume SP to cast [Surging Tides, Tilting Clouds].\n[Surging Tides, Tilting Clouds]: Consume 30 SP, and deal Ice DMG equal to 50.2%/55.3%/53.3%/58.4% ATK to all foes and gain 1 stack of [Thousandfold Waves]. Each stack of [Thousandfold Waves] increases [Surging Tides, Tilting Clouds]'s Skill DMG by 5% and SP consumed by 30, up to 4 stacks. [Surging Tides, Tilting Clouds] is seen as a Follow-Up Action, and cannot deplete Down Gauge.\nCasting the skill again will cause Puppet to exit [Ocean's Domain] and reset [Thousandfold Waves] to 0. Other skills can still be cast, but [Ocean's Domain] cannot be opened again during the turn."
+            "description": "Get on the surfboard, immediately cleanse Miyu's spiritual ailments and open [Ocean's Domain]: Gain Null Down and Null spiritual/control ailment, Miyu cannot use Melee Attack, Gun Attack, and Item; When gaining any effect, extend its duration by 1 turn; When an ally end their turn, automatically use [Tidal Surge] if Miyu has enough SP.\n[Tidal Surge]: Spend 30 SP to deal Ice damage to all foes equal to 50.2%/55.3%/53.3%/58.4% of Attack. Gain 1 [Thousandfold Waves] stack, each [Thousandfold Waves] stack increases [Tidal Surge] skill damage by 5% and SP cost by 30. Stack up to 4 times. This counts as a Resonance. Damage from this Resonance cannot deal Down Point damage.\nUse this skill again to exit [Ocean's Domain] then lose all [Thousandfold Waves]. Miyu can still use other skills this turn but cannot open [Ocean's Domain]."
         },
         "skill_highlight": {
             "name": "",
@@ -122,17 +123,18 @@ const enCharacterSkillsData = {
             "type": "AoE DMG",
             "sp": 0,
             "cool": 0,
-            "description": "Deal Ice DMG equal to 219.6%/242.1%/233.1%/255.6% ATK to all foes, and additionally deal Ice DMG equal to 146.4%/161.4%/155.4%/170.4% ATK to all foes if Puppet is in [Ocean's Domain]."
+            "description": "Deal Ice damage to all foes equal to 219.6%/242.1%/233.1%/255.6% of Attack. If [Ocean's Domain] is active, deal bonus Ice damage to all foes equal to 146.4%/161.4%/155.4%/170.4% of Attack."
+
         },
         "passive1": {
             "name": "Finesse",
             "element": "패시브",
-            "description": "In battle, increase ATK based on SP Recovery, up to 98% ATK at 280% SP Recovery."
+            "description": "During battle, increase Miyu's Attack based on her SP Recovery, up to 98% Attack at 280% SP Recovery."
         },
         "passive2": {
             "name": "Wit",
             "element": "패시브",
-            "description": "Increase DMG Dealt by 30% when Puppet is in [Ocean's Domain]."
+            "description": "When [Ocean's Domain] is active, increase damage by 30%."
         }
     },
     "미나미·여름": {
@@ -143,83 +145,83 @@ const enCharacterSkillsData = {
             "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Bless DMG to all foes equal to 64.4%/71.0%/68.4%/75.0% Max HP, and inflict [Candied] for 3 turns.\n[Candied]: When any ally attacks a Candied foe, increase ATK by 9.8%/10.8%/10.4%/11.4%.(For every 1200 Max HP Summer Marian has, additionally increase ATK by 4% more, up to 11712/12912/12432/13632)."
+            "description": "Deal Bless damage to all foes equal to 64.4%/71.0%/68.4%/75.0% of Minami's max HP. Then inflict [Candied] on them for 3 turns: When any ally attacks a Candied foe, increase Attack by 9.8%/10.8%/10.4%/11.4% (increase Attack by 4% more for every 1200 of Minami's max HP, up to 11712/12912/12432/13632 max HP)."
         },
         "skill2": {
-            "name": "Midsummer Flowerfield",
+            "name": "Midsummer Flower Field",
             "element": "버프",
             "type": "버프",
             "sp": 22,
             "cool": 0,
-            "description": "Increase all allies' DMG Dealt by 7.8%/8.6%/8.3%/9.1% (For every 1200 Max HP Summer Marian has, additionally increase DMG Dealt by 3.2%, up to 11712/12912/12432/13632) for 3 turns. Additionally, give 1 stack of Blessing to all allies, and cleanse 1 Negative Status."
+            "description": "Increase party's damage by 7.8%/8.6%/8.3%/9.1% for 3 turns (increase damage by 3.2% more for every 1200 of Minami's Max HP, up to 11712/12912/12432/13632 max HP). Grant party 1 Blessing stack, and cure 1 debuff."
         },
         "skill3": {
-            "name": "Bouquet Beyond the Horizon",
+            "name": "Faraway Flower",
             "element": "버프",
             "type": "버프",
             "sp": 25,
             "cool": 2,
-            "description": "Increase an ally's (Except Summer Marian) CRIT Rate by 15.6%/17.2%/16.6%/18.2%, and increase their CRIT DMG by 33.33% of Summer Marian's CRIT DMG that exceeds 100%, up to 213.4%/229.9%/229.9%/246.4% for 3 turns.\nDuring the duration, every time Summer Marian uses an item on that ally, additionally increase their CRIT DMG by 16.66% of Summer Marian's CRIT DMG that exceeds 100%, up to 213.4%/229.9%/229.9%/246.4% for 1 turn."
+            "description": "Increase 1 other ally's critical rate by 15.6%/17.2%/16.6%/18.2%, and critical damage by 33.33% of Minami's critical damage that is over by 100%, up to 213.4%/229.9%/229.9%/246.4% critical damage. Lasts for 3 turns. During this effect, when Minami uses an item on that ally, additionally increase their critical damage by 16.66% of Minami's critical damage that is over by 100%, up to 213.4%/229.9%/229.9%/246.4% critical damage. Lasts for 1 turn."
         },
         "skill_highlight": {
             "element": "버프",
             "type": "버프",
             "sp": 0,
             "cool": 0,
-            "description": "Increase an ally's (Except Summer Marian) DMG Dealt by 24.4%/26.9%/25.9%/28.4% and CRIT DMG by 16.66% of Summer Marian's CRIT DMG that exceeds 100%, up to 213.4%/229.9%/229.9%/246.4% for 2 turns. Additionally, the next time she uses an item, increase that item effect by 9.8%/10.8%/10.4%/11.4%."
+            "description": "Increase 1 other ally's damage by 24.4%/26.9%/25.9%/28.4% and critical damage by 16.66% of Minami's critical damage that is over by 100%, up to 213.4%/229.9%/229.9%/246.4% critical damage. Lasts for 2 turns. When Minami uses the next item, increase item effect by 9.8%/10.8%/10.4%/11.4%."
         },
         "passive1": {
-            "name": "Prayers",
+            "name": "Pray",
             "element": "패시브",
-            "description": "Every time Summer Marian uses a Persona skill on allies, give 1 stack of Blessing to them. When Summer Marian is on the field, increase DMG Dealt of allies by 6% for each stack of Blessing, up to 36%."
+            "description": "When using a Persona skill on allies, grant them 1 Blessing stack. When Minami is on the field, increase allies' damage by 6% for each Blessing stack they have, up to 36%."
         },
         "passive2": {
             "name": "Care",
             "element": "패시브",
-            "description": "When Summer Marian is on the field, increase all allies' ATK by 12%. For each buffing item effect on allies, additionally increase their ATK by 15%."
+            "description": "When Minami is on the field, increase allies' Attack by 12%. Increase Attack by 15% more for each Buff Item effect on allies."
         }
     },
 	"이치고": {
         "name": "Ichigo Shikano",
         "skill1": {
-            "name": "Neckbreaking Crimson",
+            "name": "Butterfly Beheadment",
             "element": "주원",
             "type": "단일피해",
             "sp": 20,
             "cool": 1,
-            "description": "Deal Curse DMG to 1 foe equal to 129.0%/142.2%/137.0%/150.2% of ATK, and inflict 2 [Hatred] stacks on the target. When the target is above 70% current HP, heavily increase skill damage by 200%. If this skill kills the target, activate this skill again (is able to chain activation).\n[Hatred]: Take Curse DMG equal to Ichigo's 6%/12%/18% ATK (at level 1/50/70) for 4 turns, up to 10 stacks. When the foe with [Hatred] dies, transfer its [Hatred] to the highest HP foe."
+            "description": "Deal Curse damage to 1 foe equal to 129.0%/142.2%/137.0%/150.2% of Attack, inflict 2 [Resentment] stacks on the target. When the target is above 70% current HP, increase skill damage by 200%. If this skill kills the target, activate this skill again (can chain activation).\n[Resentment]: Take Curse damage equal to 6%/12%/18% of Ichigo's Attack (effect increases at level 1/50/70) for 4 turns. Stacks up to 10 times. When a foe with [Resentment] dies, transfer its [Resentment] to the highest HP foe (cannot transfer to target with Null/Repel/Drain Curse)."
         },
         "skill2": {
-            "name": "Bloodrose Kiss",
+            "name": "Blood Rose's Kiss",
             "element": "주원",
             "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Curse DMG to 1 foe equal to 92.9%/102.4%/98.6%/108.1% of ATK, and inflict 4 [Hatred] stacks on the target."
+            "description": "Deal Curse damage to 1 foe equal to 92.9%/102.4%/98.6%/108.1% of Attack, inflict 4 [Resentment] stacks on the target."
         },
         "skill3": {
-            "name": "Shhh…Execution Time Is Now!",
+            "name": "Hush! It's Execution Time",
             "element": "주원",
             "type": "단일피해",
             "sp": 22,
             "cool": 0,
-            "description": "Deal Curse DMG to 1 foe equal to 221.6%/244.3%/235.2%/257.9% of ATK + [Hatred] stacks x 11.7%/12.9%/12.4%/13.6% of ATK, when [Hatred] stacks reach 10, additionally deal Curse DMG to 1 foe equal to 103.3%/113.8%/109.6%/120.2% of ATK; Then, refresh the duration of [Hatred]."
+            "description": "Deal Curse damage to 1 foe equal to 221.6%/244.3%/235.2%/257.9% of Attack + [Resentment] stacks x 11.7%/12.9%/12.4%/13.6% of Attack, when [Resentment] stacks reach 10, deal bonus Curse damage equal to 103.3%/113.8%/109.6%/120.2% of Attack; Then refresh the duration of [Resentment]."
         },
         "skill_highlight": {
             "element": "주원",
             "type": "단일피해",
             "cool": 0,
-            "description": "Deal Curse DMG to 1 foe equal to 457.1%/503.9%/485.2%/532.0% of ATK, and make [Hatred] able to deal CRITICAL for 3 turns. Immediately triggers all instances of DoT on the target, dealing DoT DMG and additionally deal [Hatred] damage twice."
+            "description": "Deal Curse damage to 1 foe equal to 457.1%/503.9%/485.2%/532.0% of ATK, and make [Resentment] can deal critical for 3 turns. Immediately deal all Damage Over Time damage on the target and deal [Resentment] damage 2 times."
         },
         "passive1": {
-            "name": "Covet",
+            "name": "Obsession",
             "element": "패시브",
-            "description": "Increase ATK by 15% for each [Covet] stack."
+            "description": "Increase Attack by 15% for each [Obsessive Love] stack."
         },
         "passive2": {
             "name": "Attachment",
             "element": "패시브",
-            "description": "When Ichigo is on the field, increase all allies’ DoT DMG Effect by 15%."
+            "description": "When Ichigo is on the field, increase party's Damage Over Time Effect by 15%."
         }
     },
 	"사나다": {

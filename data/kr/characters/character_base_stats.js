@@ -17,7 +17,7 @@ const basicStatsData = {
     },
     "YUI·스텔라": {
         a0_lv1: {
-            attack: 121,
+            attack: 104,
             defense: 52,
             HP: 311,
             SP: 100,
@@ -27,13 +27,48 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29.0
+        },
+        a0_lv80: {
+            HP: 3449.99,
+            attack: 1170.01,
+            defense: 579.99
+        },
+        a1_lv80: {
+            HP: 3512.39,
+            attack: 1190.81,
+            defense: 590.39
+        },
+        a2_lv80: {
+            HP: 3573.99,
+            attack: 1212.41,
+            defense: 600.79
+        },
+        a3_lv80: {
+            HP: 3636.39,
+            attack: 1233.21,
+            defense: 611.19
+        },
+        a4_lv80: {
+            HP: 3698.79,
+            attack: 1254.01,
+            defense: 621.59
+        },
+        a5_lv80: {
+            HP: 3760.39,
+            attack: 1275.61,
+            defense: 631.99
+        },
+        a6_lv80: {
+            HP: 3822.79,
+            attack: 1296.41,
+            defense: 642.39
         }
     },
     "카타야마": {
         a0_lv1: {
-            attack: 109,
-            defense: 53,
-            HP: 303,
+            attack: 95.23,
+            defense: 53.4,
+            HP: 301.71,
             SP: 100,
             speed: 107.0,
             crit_rate: 5,
@@ -41,6 +76,41 @@ const basicStatsData = {
         },
         awake7: {
             speed: 125.8
+        },
+        a0_lv80: {
+            HP: 3390.02,
+            attack: 1069.99,
+            defense: 599.98
+        },
+        a1_lv80: {
+            HP: 3450.82,
+            attack: 1089.19,
+            defense: 611.18
+        },
+        a2_lv80: {
+            HP: 3512.42,
+            attack: 1108.39,
+            defense: 621.58
+        },
+        a3_lv80: {
+            HP: 3573.22,
+            attack: 1127.59,
+            defense: 632.78
+        },
+        a4_lv80: {
+            HP: 3634.02,
+            attack: 1146.79,
+            defense: 643.18
+        },
+        a5_lv80: {
+            HP: 3694.82,
+            attack: 1165.99,
+            defense: 654.38
+        },
+        a6_lv80: {
+            HP: 3756.42,
+            attack: 1185.19,
+            defense: 664.78
         }
     },
     "미유·여름": { 
@@ -55,12 +125,47 @@ const basicStatsData = {
         },
         awake7: {
             sp_recover: 188.5
+        },
+        a0_lv80: {
+            HP: 3419.97,
+            attack: 1179.97,
+            defense: 593.32
+        },
+        a1_lv80: {
+            HP: 3481.57,
+            attack: 1201.57,
+            defense: 603.72
+        },
+        a2_lv80: {
+            HP: 3543.17,
+            attack: 1222.37,
+            defense: 614.92
+        },
+        a3_lv80: {
+            HP: 3604.77,
+            attack: 1243.97,
+            defense: 625.32
+        },
+        a4_lv80: {
+            HP: 3666.37,
+            attack: 1264.77,
+            defense: 635.72
+        },
+        a5_lv80: {
+            HP: 3727.97,
+            attack: 1286.37,
+            defense: 646.92
+        },
+        a6_lv80: {
+            HP: 3789.57,
+            attack: 1307.17,
+            defense: 657.32
         }
     },
     "미나미·여름": {
         a0_lv1: {
             attack: 80,
-            defense: 53,
+            defense: 53.99,
             HP: 357,
             SP: 100,
             speed: 104.0,
@@ -69,6 +174,41 @@ const basicStatsData = {
         },
         awake7: {
             HP_per: 29
+        },
+        a0_lv80: {
+            HP: 4020.02,
+            attack: 899.97,
+            defense: 606.64
+        },
+        a1_lv80: {
+            HP: 4092.02,
+            attack: 915.97,
+            defense: 617.84
+        },
+        a2_lv80: {
+            HP: 4164.82,
+            attack: 932.77,
+            defense: 628.24
+        },
+        a3_lv80: {
+            HP: 4236.82,
+            attack: 948.77,
+            defense: 639.44
+        },
+        a4_lv80: {
+            HP: 4309.62,
+            attack: 964.77,
+            defense: 650.64
+        },
+        a5_lv80: {
+            HP: 4381.62,
+            attack: 980.77,
+            defense: 661.04
+        },
+        a6_lv80: {
+            HP: 4454.42,
+            attack:  997.57,
+            defense: 672.24
         }
     },
     "이치고": {
@@ -83,6 +223,41 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29
+        },
+        a0_lv80: {
+            HP: 3600.02,
+            attack: 1170.01,
+            defense: 546.67
+        },
+        a1_lv80: {
+            HP: 3664.82,
+            attack: 1190.81,
+            defense: 556.27
+        },
+        a2_lv80: {
+            HP: 3729.62,
+            attack: 1212.41,
+            defense: 566.67
+        },
+        a3_lv80: {
+            HP: 3794.42,
+            attack: 1233.21,
+            defense: 576.27
+        },
+        a4_lv80: {
+            HP: 3859.22,
+            attack: 1254.01,
+            defense: 585.87
+        },
+        a5_lv80: {
+            HP: 3924.02,
+            attack: 1275.61,
+            defense: 596.27
+        },
+        a6_lv80: {
+            HP: 3988.82,
+            attack: 1296.41,
+            defense: 605.87
         }
     },
     "사나다": {
@@ -97,6 +272,41 @@ const basicStatsData = {
         },
         awake7: {
             crit_rate: 22.4
+        },
+        a0_lv80: {
+            HP: 3449.99,
+            attack: 1170.01,
+            defense: 593.32
+        },
+        a1_lv80: {
+            HP: 3512.39,
+            attack: 1190.81,
+            defense: 603.72
+        },
+        a2_lv80: {
+            HP: 3573.99,
+            attack: 1212.41,
+            defense: 614.92
+        },
+        a3_lv80: {
+            HP: 3636.39,
+            attack: 1233.21,
+            defense: 625.32
+        },
+        a4_lv80: {
+            HP: 3698.79,
+            attack: 1254.01,
+            defense: 635.72
+        },
+        a5_lv80: {
+            HP: 3760.39,
+            attack: 1275.61,
+            defense: 646.92
+        },
+        a6_lv80: {
+            HP: 3822.79,
+            attack: 1296.41,
+            defense: 657.32
         }
     },
     "유카리": {
@@ -111,6 +321,44 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29
+        },
+        awake7: {
+            crit_rate: 22.4
+        },
+        a0_lv80: {
+            HP: 3449.99,
+            attack: 1069.99,
+            defense: 619.97
+        },
+        a1_lv80: {
+            HP: 3512.39,
+            attack: 1089.19,
+            defense: 631.17
+        },
+        a2_lv80: {
+            HP: 3573.99,
+            attack: 1108.39,
+            defense: 642.37
+        },
+        a3_lv80: {
+            HP: 3636.39,
+            attack: 1127.59,
+            defense: 653.57
+        },
+        a4_lv80: {
+            HP: 3698.79,
+            attack: 1146.79,
+            defense: 664.77
+        },
+        a5_lv80: {
+            HP: 3760.39,
+            attack: 1165.99,
+            defense: 675.97
+        },
+        a6_lv80: {
+            HP: 3822.79,
+            attack: 1185.19,
+            defense: 687.17
         }
     },
     "유키 마코토": {
@@ -125,11 +373,46 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29
+        },
+        a0_lv80: {
+            HP: 3270.01,
+            attack: 1190.0,
+            defense: 593.32
+        },
+        a1_lv80: {
+            HP: 3329.21,
+            attack: 1211.6,
+            defense: 603.72
+        },
+        a2_lv80: {
+            HP: 3387.61,
+            attack: 1233.2,
+            defense: 614.92
+        },
+        a3_lv80: {
+            HP: 3446.81,
+            attack: 1254.0,
+            defense: 625.32
+        },
+        a4_lv80: {
+            HP: 3505.21,
+            attack: 1275.6,
+            defense: 635.72 
+        },
+        a5_lv80: {
+            HP: 3564.41,
+            attack: 1297.2,
+            defense: 646.92 
+        },
+        a6_lv80: {
+            HP: 3622.81,
+            attack: 1318.8,
+            defense: 657.32
         }
     },
     "마나카": {
         a0_lv1: {
-            attack: 102,
+            attack: 102.35,
             defense: 53,
             HP: 300,
             SP: 100,
@@ -139,6 +422,41 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29
+        },
+        a0_lv80: {
+            HP: 3360.0,
+            attack: 1150.02,
+            defense: 599.98,
+        },
+        a1_lv80: {
+            HP: 3420.8,
+            attack: 1170.82,
+            defense: 611.18
+        },
+        a2_lv80: {
+            HP: 3480.8,
+            attack: 1191.62,
+            defense: 621.58
+        },
+        a3_lv80: {
+            HP: 3541.6,
+            attack: 1212.42,
+            defense: 632.78
+        },
+        a4_lv80: {
+            HP: 3601.6,
+            attack: 1233.22,
+            defense: 643.18
+        },
+        a5_lv80: {
+            HP: 3662.4,
+            attack: 1253.22,
+            defense: 654.38
+        },
+        a6_lv80: {
+            HP: 3723.2,
+            attack: 1274.02,
+            defense: 664.78
         }
     },
     "이케나미": {
@@ -153,7 +471,42 @@ const basicStatsData = {
         },
         awake7: {
             ailment_accuracy: 26.1
-        }
+        },
+        a0_lv80: {
+            HP: 2587.71,
+            attack: 765.42,
+            defense: 495.38,
+        },
+        a1_lv80: {
+            HP: 2617.31,
+            attack: 774.22,
+            defense: 500.98,
+        },
+        a2_lv80: {
+            HP: 2647.71,
+            attack: 783.02,
+            defense: 506.58,
+        },
+        a3_lv80: {
+            HP: 2677.31,
+            attack: 791.82,
+            defense: 512.18,
+        },
+        a4_lv80: {
+            HP: 2706.91,
+            attack: 800.62,
+            defense: 518.58,
+        },
+        a5_lv80: {
+            HP: 2737.31,
+            attack: 809.42,
+            defense: 524.18,
+        },
+        a6_lv80: {
+            HP: 2766.91,
+            attack: 818.22,
+            defense: 529.78,
+        }        
     },
     "마유미": {
         a0_lv1: {
@@ -167,7 +520,42 @@ const basicStatsData = {
         },
         awake7: {
             speed: 125.8
-        }
+        },
+        a0_lv80: {
+            HP: 3390.02,
+            attack: 1050.0,
+            defense: 619.97,
+        },
+        a1_lv80: {
+            HP: 3450.82,
+            attack: 1069.2,
+            defense: 631.17,
+        },
+        a2_lv80: {
+            HP: 3512.42,
+            attack: 1087.6,
+            defense: 642.37,
+        },
+        a3_lv80: {
+            HP: 3573.22,
+            attack: 1106.8,
+            defense: 653.57,
+        },
+        a4_lv80: {
+            HP: 3634.02,
+            attack: 1126.0,
+            defense: 664.77,
+        },
+        a5_lv80: {
+            HP: 3694.82,
+            attack: 1144.4,
+            defense: 675.97,
+        },
+        a6_lv80: {
+            HP: 3756.42,
+            attack: 1163.6,
+            defense: 687.17,
+        }        
     },
     "아케치": {
         a0_lv1: {
@@ -181,7 +569,42 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29
-        }
+        },
+        a0_lv80: {
+            HP: 3539.98,
+            attack: 1120.0,
+            defense: 619.97,
+        },
+        a1_lv80: {
+            HP: 3603.98,
+            attack: 1140.0,
+            defense: 631.17,
+        },
+        a2_lv80: {
+            HP: 3667.18,
+            attack: 1160.0,
+            defense: 642.37,
+        },
+        a3_lv80: {
+            HP: 3731.18,
+            attack: 1180.8,
+            defense: 653.57,
+        },
+        a4_lv80: {
+            HP: 3795.18,
+            attack: 1200.8,
+            defense: 664.77,
+        },
+        a5_lv80: {
+            HP: 3858.38,
+            attack: 1220.8,
+            defense: 675.97,
+        },
+        a6_lv80: {
+            HP: 3922.38,
+            attack: 1240.8,
+            defense: 687.17,
+        }        
     },
     "미오": {
         a0_lv1: {
@@ -195,13 +618,48 @@ const basicStatsData = {
         },
         awake7: {
             ailment_accuracy: 34.9
-        }
+        },
+        a0_lv80: {
+            HP: 3539.98,
+            attack: 1019.98,
+            defense: 626.63,
+        },
+        a1_lv80: {
+            HP: 3603.98,
+            attack: 1038.38,
+            defense: 637.83,
+        },
+        a2_lv80: {
+            HP: 3667.18,
+            attack: 1056.78,
+            defense: 649.03,
+        },
+        a3_lv80: {
+            HP: 3731.18,
+            attack: 1075.18,
+            defense: 660.23,
+        },
+        a4_lv80: {
+            HP: 3795.18,
+            attack: 1093.58,
+            defense: 671.43,
+        },
+        a5_lv80: {
+            HP: 3858.38,
+            attack: 1111.98,
+            defense: 683.43,
+        },
+        a6_lv80: {
+            HP: 3922.38,
+            attack: 1130.38,
+            defense: 694.63,
+        }        
     },
     "야오링·사자무": {
         a0_lv1: {
             attack: 106,
             defense: 52,
-            HP: 302,
+            HP: 301.71,
             SP: 100,
             speed: 95.0,
             crit_rate: 5,
@@ -209,6 +667,41 @@ const basicStatsData = {
         },
         awake7: {
             attack_per: 29
+        },
+        a0_lv80: {
+            HP: 3390.02,
+            attack: 1200.03,
+            defense: 593.32
+        },
+        a1_lv80: {
+            HP: 3450.82,
+            attack: 1221.63,
+            defense: 603.72
+        },
+        a2_lv80: {
+            HP: 3512.42,
+            attack: 1243.23,
+            defense: 614.92
+        },
+        a3_lv80: {
+            HP: 3573.22,
+            attack: 1264.83,
+            defense: 625.32
+        },
+        a4_lv80: {
+            HP: 3634.02,
+            attack: 1286.43,
+            defense: 635.72
+        },
+        a5_lv80: {
+            HP: 3694.82,
+            attack: 1308.03,
+            defense: 646.92
+        },
+        a6_lv80: {
+            HP: 3756.42,
+            attack: 1329.63,
+            defense: 657.32
         }
     },
     "카스미": {
@@ -226,8 +719,8 @@ const basicStatsData = {
         },
         a0_lv80: {
             HP: 3390.02,
-            SP: 100.0,
-            attack: 1159.98
+            attack: 1159.98,
+            defense: 560.0
         },
         a1_lv80: {
             HP: 3450.82,
@@ -259,7 +752,6 @@ const basicStatsData = {
             attack: 1285.58,
             defense: 620.8
         }
-
     },
     "리코·매화": {
         a0_lv1: {
@@ -909,7 +1401,6 @@ const basicStatsData = {
             attack: 1274.02,
             defense: 628.26
         }
-
     },
     "유스케": {
         a0_lv1: {
@@ -1159,7 +1650,6 @@ const basicStatsData = {
             attack: 1307.17,
             defense: 620.8
         }
-
     },
     "류지": {
         a0_lv1: {

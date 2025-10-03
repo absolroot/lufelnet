@@ -91,6 +91,7 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 /* value style */
 .value { color: rgb(255, 255, 255, 0.9); }
 .awake-row .value { font-size: 14px; }
+.lv80-grid .value { font-size: 13px; }
 
 .revelation-set { display: flex; flex-direction: column; gap: 0px; }
 .main-revelation, .sub-revelation { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
@@ -373,9 +374,10 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
 
     .ritual-grid { grid-template-columns: 1fr; }
 
-    .weapon-image { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
+    .weapon-image { object-fit: contain; margin-bottom: 10px; }
+    .weapon-image-container { display:flex; justify-content: center; }
 
-    .weapon-item{ gap: 1em; display: grid; grid-template-columns: 1fr; justify-items: center; }
+    .weapon-item{ gap: 1em; display: grid; grid-template-columns: 1fr;}
 
     .weapon-stats p{ margin: 0 6px 0 2px; }
 

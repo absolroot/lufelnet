@@ -135,6 +135,173 @@
       }
     }
 
+    // LV80 기초 스탯 섹션 타이틀 지역화
+    function localizeLv80Title(lang) {
+      return lang === 'en' ? 'Base Stats (LV 80)' : (lang === 'jp' ? '基礎ステータス (LV 80)' : '기초 스탯 (LV 80)');
+    }
+
+    // a0_lv80 ~ a7_lv80 중 하나라도 데이터가 있는지 확인
+    function hasAnyLv80(statObj) {
+      if (!statObj) return false;
+      for (let i = 0; i <= 7; i++) {
+        const key = `a${i}_lv80`;
+        const v = statObj[key];
+        if (v && (v.HP != null || v.attack != null || v.defense != null)) return true;
+      }
+      return false;
+    }
+
+    // LV80 기초 스탯 DOM 빌드 및 렌더 (두 컬럼 영역 밖, 전체 폭 사용)
+    function renderLv80BaseStats(statObj, lang) {
+      try {
+        if (!hasAnyLv80(statObj)) return; // 전체 비표시
+
+        // 두 컬럼 래퍼(.stats-settings) 바로 아래(형제)로 삽입하여 전체 폭 사용
+        const settingsWrap = document.querySelector('.stats-card .stats-settings');
+        const cardRoot = document.querySelector('.stats-card');
+        if (!settingsWrap || !cardRoot) return;
+
+        // 컨테이너 생성
+        const wrap = document.createElement('div');
+        wrap.className = 'lv80-stats-card setting-section';
+        wrap.style.marginTop = '16px';
+
+        const title = document.createElement('h3');
+        title.className = 'lv80-title';
+        title.textContent = localizeLv80Title(lang);
+        wrap.appendChild(title);
+
+        const grid = document.createElement('div'); // 테이블 컨테이너
+        grid.className = 'lv80-grid';
+        grid.style.fontSize = '14px';
+        wrap.appendChild(grid);
+
+        // 항목 생성: a0~a7 순회, 존재하는 것만 추가
+        const items = [];
+        for (let i = 0; i <= 7; i++) {
+          const key = `a${i}_lv80`;
+          const v = statObj[key];
+          if (v && (v.HP != null || v.attack != null || v.defense != null)) {
+            items.push({ idx: i, data: v });
+          }
+        }
+        if (items.length === 0) return;
+
+        // 공통 라벨
+        const L_HP  = (lang === 'en' ? 'HP'  : (lang === 'jp' ? 'HP' : '생명'));
+        const L_ATK = (lang === 'en' ? 'ATK' : (lang === 'jp' ? '攻撃力' : '공격력'));
+        const L_DEF = (lang === 'en' ? 'DEF' : (lang === 'jp' ? '防御力' : '방어력'));
+
+        // 수치 포맷: 소수 첫째자리까지 표시, 둘째자리에서 반올림
+        function fmt1(v) {
+          if (v === undefined || v === null || isNaN(v)) return '';
+          const n = Math.round(Number(v) * 10) / 10;
+          return n.toFixed(1);
+        }
+
+        // 헤더 라벨 지역화: KR: 의식0~6, JP: 意識0~6, 그 외: A0~6
+        function lv80HeaderLabel(idx, lang) {
+          if (lang === 'kr') return `의식${idx}`;
+          if (lang === 'jp') return `意識${idx}`;
+          return `A${idx}`;
+        }
+
+        // 표 생성 함수들 (값 텍스트에 인라인 스타일 미적용)
+        function renderWide() {
+          grid.innerHTML = '';
+          const cols = items.length + 1; // 첫 컬럼은 라벨
+          grid.style.display = 'grid';
+          grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+          grid.style.gap = '6px';
+
+          // 헤더 행: [blank, A0/A1... (지역화)]
+          const headBlank = document.createElement('div');
+          headBlank.className = 'lv80-cell label';
+          grid.appendChild(headBlank);
+          items.forEach(({ idx }) => {
+            const h = document.createElement('div');
+            h.className = 'lv80-cell label';
+            h.textContent = lv80HeaderLabel(idx, lang);
+            grid.appendChild(h);
+          });
+
+          // HP 행
+          const hpLabel = document.createElement('div');
+          hpLabel.className = 'lv80-cell label';
+          hpLabel.textContent = L_HP;
+          grid.appendChild(hpLabel);
+          items.forEach(({ data }) => {
+            const c = document.createElement('div');
+            c.className = 'lv80-cell value';
+            c.textContent = fmt1(data.HP);
+            grid.appendChild(c);
+          });
+
+          // ATK 행
+          const atkLabel = document.createElement('div');
+          atkLabel.className = 'lv80-cell label';
+          atkLabel.textContent = L_ATK;
+          grid.appendChild(atkLabel);
+          items.forEach(({ data }) => {
+            const c = document.createElement('div');
+            c.className = 'lv80-cell value';
+            c.textContent = fmt1(data.attack);
+            grid.appendChild(c);
+          });
+
+          // DEF 행
+          const defLabel = document.createElement('div');
+          defLabel.className = 'lv80-cell label';
+          defLabel.textContent = L_DEF;
+          grid.appendChild(defLabel);
+          items.forEach(({ data }) => {
+            const c = document.createElement('div');
+            c.className = 'lv80-cell value';
+            c.textContent = fmt1(data.defense);
+            grid.appendChild(c);
+          });
+        }
+
+        function renderNarrow() {
+          grid.innerHTML = '';
+          const cols = 4; // A#, HP, ATK, DEF
+          grid.style.display = 'grid';
+          grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+          grid.style.gap = '6px';
+
+          // 헤더 행: ['', 생명, 공격력, 방어력]
+          const blank = document.createElement('div'); blank.className = 'lv80-cell label'; grid.appendChild(blank);
+          const h1 = document.createElement('div'); h1.className = 'lv80-cell label'; h1.textContent = L_HP; grid.appendChild(h1);
+          const h2 = document.createElement('div'); h2.className = 'lv80-cell label'; h2.textContent = L_ATK; grid.appendChild(h2);
+          const h3 = document.createElement('div'); h3.className = 'lv80-cell label'; h3.textContent = L_DEF; grid.appendChild(h3);
+
+          // 데이터 행들: [A#/의식#, hp, atk, def]
+          items.forEach(({ idx, data }) => {
+            const r0 = document.createElement('div'); r0.className = 'lv80-cell label'; r0.textContent = lv80HeaderLabel(idx, lang); grid.appendChild(r0);
+            const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt1(data.HP); grid.appendChild(r1);
+            const r2 = document.createElement('div'); r2.className = 'lv80-cell value'; r2.textContent = fmt1(data.attack); grid.appendChild(r2);
+            const r3 = document.createElement('div'); r3.className = 'lv80-cell value'; r3.textContent = fmt1(data.defense); grid.appendChild(r3);
+          });
+        }
+
+        function applyLayout() {
+          const wide = window.innerWidth >= 1200;
+          if (wide) renderWide(); else renderNarrow();
+        }
+
+        // 삽입 및 적용
+        if (settingsWrap.nextSibling) {
+          cardRoot.insertBefore(wrap, settingsWrap.nextSibling);
+        } else {
+          cardRoot.appendChild(wrap);
+        }
+        applyLayout();
+        window.addEventListener('resize', applyLayout);
+      } catch (e) {
+        console.warn('[cha_stats] renderLv80BaseStats error', e);
+      }
+    }
+
     async function init() {
       // DOM 준비
       if (!document.querySelector('.stats-card')) return;
@@ -165,6 +332,9 @@
       //setValueRow('.stats-main .stats-grid', 5, lv1.crit_rate+'%' ?? '');
       //setValueRow('.stats-main .stats-grid', 6, lv1.crit_mult+'%' ?? '');
   
+      // 레벨 80 기초 스탯 (a0_lv80 ~ a7_lv80)
+      renderLv80BaseStats(statObj, lang);
+
       // 우측: 잠재력 
       const a7 = statObj.awake7 || {};
       const entries = Object.entries(a7);

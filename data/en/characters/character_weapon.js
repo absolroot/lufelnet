@@ -3,22 +3,23 @@ enCharacterWeaponData = {
         "name": "Wonder"
     },
     "YUI·스텔라": {
-        "name": "YUI·Chromatic",
+        "name": "YUI·Prism",
         "weapon4-1": {
-            "name": "Tuber Escapede",
+            "name": "Potatoes of the Galaxy",
             "health": 1823,
             "attack": 618,
             "defense": 306,
-            "skill_name": "Off the Airway",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%; After casting a Follow-Up Action, increase ATK when casting [Veggie Knights, Full Out!] by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
+            "skill_name": "Space Trek",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After activating a Resonance, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% when using [Vegetable Knights: Mobilize]. Lasts for 2 turns."
         },
         "weapon5-1": {
-            "name": "Abyss-Crossing Vessel",
+            "name": "Deep Space Voyager",
             "health": 2279,
             "attack": 773,
             "defense": 383,
-            "skill_name": "Journey to Deepspace",
-            "description": "CRIT Rate is increased by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. Increase ATK by 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0% permanently when summoning [Veggie Knight], up to 4 stacks. When casting [Veggie Knights, Full Out!], increase CRIT DMG by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%."
+            "skill_name": "A Trip to Deep Space",
+            "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When summoning Vegetable Knights, increase user's Attack by 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%. Stacks up to 4 times. This effect is permanent. When using [Vegetable Knights: Mobilize], increase critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%."
+
         }
     },
     "카타야마": {
@@ -28,81 +29,82 @@ enCharacterWeaponData = {
             "health": 1343,
             "attack": 424,
             "defense": 237,
-            "skill_name": "Unending Spirit",
-            "description": "When possessing Transcending Limit, SPD +7.4/8.5/9.6/10.7/11.8/12.9/14.0."
+            "skill_name": "Endless Rush",
+            "description": "When user has [Super Limit], increase Speed by 7.4/8.5/9.6/10.7/11.8/12.9/14.0."
         },
         "weapon4-1": {
-            "name": "Voltic Loyalty",
+            "name": "Voltaic Heart",
             "health": 1791,
             "attack": 565,
             "defense": 317,
-            "skill_name": "Nocturnal Rover",
-            "description": "ATK is increased by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%. When Downing foes, increase ATK by 7.5/9.8/9.8/12.0/12.0/14.2/14.2% for every foe Downed for 1 turn, up to 22.5/29.2/29.2/36.0/36.0/42.7/42.7%."
+            "skill_name": "Night Roamer",
+            "description": "Increase Attack by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%.\nWhen user knocks down a foe, increase user's Attack by 7.5/9.8/9.8/12.0/12.0/14.2/14.2% for every knocked down foe, up to 22.5/29.2/29.2/36.0/36.0/42.7/42.7%. Lasts for 1 turn."
                     },
         "weapon5-1": {
-            "name": "Ironvow Cavalry",
+            "name": "Ironsworn Rider",
             "health": 2239,
             "attack": 706,
             "defense": 396,
-				"skill_name": "Spirit Liberation",
-				"description": "SPD is increased by 15/15/20/20/25/25/30. After casting [Killing Blow: Flarefeet], increase CRIT Rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns. After Downing foes, increase their CRIT DMG Taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+				"skill_name": "Demon Unleashed",
+				"description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nAfter user knocks down a foe, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+
        }
     },
     "미유·여름": {
         "name": "Miyu Sahara Summer",
         "weapon4-1": {
-            "name": "Jellymoon Welkin",
+            "name": "Clear Jellyfish Sky",
             "health": 1807,
             "attack": 623,
             "defense": 313,
-            "skill_name": "Lightgliding Journey",
-				"description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Under [Ocean's Domain], ATK is additionally increased by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "skill_name": "Sunlight Stroll",
+				"description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When [Ocean's Domain] is active, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
-            "name": "Dreamdrifting Mermaid",
+            "name": "Dreaming Mermaid",
             "health": 2259,
             "attack": 779,
             "defense": 391,
-            "skill_name": "Rippling Dreams",
-            "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Follow-Up Actions' CRIT Rate is increased by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%, and increases DMG Dealt by 6.8%/8.8%/8.8%/10.8%/10.8%/12.8%/12.8% after consuming SP by casting skills, up to 5 stacks. This effect is permanent in this battle after obtaining."
+            "skill_name": "Ripple Reverie",
+            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Increase Resonance critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%. When spending SP with a skill, increase damage by 6.8%/8.8%/8.8%/10.8%/10.8%/12.8%/12.8%. Stacks up to 5 times. This effect is permanent."
         }
     },
     "미나미·여름": {
         "name": "Minami Miyashita Summer",
         "weapon4-1": {
-            "name": "Afternoon Teatime",
+            "name": "Tea-Time Talk",
             "health": 2125,
             "attack": 475,
             "defense": 320,
-            "skill_name": "Saccherine Feast",
-            "description": "Maximum HP is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%;  When casting a Persona skill on an ally, increase CRIT DMG by 17.4%/22.6%/22.6%/27.8%/27.8%/33.0%/33.0%. "
+            "skill_name": "Sweet Feast",
+            "description": "Increase max HP by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%; When using a Persona skill on allies, increase user's critical damage by 17.4%/22.6%/22.6%/27.8%/27.8%/33.0%/33.0%. "
         },
         "weapon5-1": {
-            "name": "Everlasting Orchard",
+            "name": "Eternal Grove",
             "health": 2655,
             "attack": 594,
             "defense": 400,
             "skill_name": "Summer Breeze",
-            "description": "Item Effect is increased by 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%. When using an item on an ally, additionally increase the main target's CRIT DMG by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns. When casting a Persona skill on an ally, additionally increase the main target's ATK by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."
+            "description": "Increase item effect by 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%. When using an item on allies, increase main target's critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% more for 3 turns. When using a Persona skill on allies, increase main target's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% more for 2 turns."
         }
     },
     "이치고": {
         "name": "Ichigo Shikano",
         "weapon4-1": {
-            "name": "Bloodsworn Billet-Doux",
+            "name": "Bloody Love Letter",
             "health": 1902,
             "attack": 618,
             "defense": 288,
-            "skill_name": "Love Remains",
-            "description": "ATK is increased by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%. After using HIGHLIGHT, DMG Dealt is increased by 17.6/23.2/23.2/28.8/28.8/34.4/34.4% for 2 turns."
+            "skill_name": "Love Dependence",
+            "description": "Increase Attack by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%. After using Highlight, increase user's damage by 17.6/23.2/23.2/28.8/28.8/34.4/34.4% for 2 turns."
         },
         "weapon5-1": {
-            "name": "Cursed Mannequin",
+            "name": "Cursed Doll",
             "health": 2378,
             "attack": 773,
             "defense": 361,
-            "skill_name": "Possessive Urge",
-            "description": "CRIT Rate is increased by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%. When [Covet] reaches 1/2/3 stacks, DMG dealt is increased by 11.0/14.2/14.2/17.4/17.4/20.6/20.6%|22.0/28.5/28.5/35.0/35.0/41.5/41.5%|34.0/44.0/44.0/54.0/54.0/64.0/64.0%; When casting [Shhh。。。Execution Time is Now!], CRIT DMG is increased by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
+            "skill_name": "Possessive Desire",
+            "description": "Increase critical rate by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%.\nWhen [Obsessive Love] stacks reach 1/2/3, increase user's damage by 1.0/14.2/14.2/17.4/17.4/20.6/20.6%|22.0/28.5/28.5/35.0/35.0/41.5/41.5%|34.0/44.0/44.0/54.0/54.0/64.0/64.0%; When using [Hush! It's Execution Time], increase critical damage by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
         }
     },
     "사나다": {

@@ -328,57 +328,6 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </script>
     </div>
 
-    <!-- 스텟 섹션 -->
-    <div class="stats-card card-style">
-        <h2>스탯</h2>
-        <div class="setting-group stats-settings" style="display:flex; gap:40px; align-items:stretch;">
-            <!-- 기초 스탯 (왼쪽 3/4) -->
-            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
-                <h3>기초 스탯</h3>
-                <div class="stats-main">
-                    <div class="stats-grid">
-                        <div class="stat-row">
-                            <span class="label">생명</span>
-                            <span class="value"></span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="label">공격력</span>
-                            <span class="value"></span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="label">방어력</span>
-                            <span class="value"></span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="label">속도</span>
-                            <span class="value"></span>
-                        </div>
-                        <!--
-                        <div class="stat-row">
-                            <span class="label">크리티컬 확률</span>
-                            <span class="value"></span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="label">크리티컬 효과</span>
-                            <span class="value"></span>
-                        </div>-->
-                    </div>
-                </div>
-            </div>
-            <!-- 잠재력 LV 7 (오른쪽 1/4) -->
-            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
-                <h3>잠재력 LV 7</h3>
-                <div class="stats-awake" style="display:flex; flex-direction:column; gap:8px;">
-                    <h3 class="awake-title" style="display:none;">잠재력 Lv7</h3>
-                    <div class="awake-row" style="display:flex; gap:8px;">
-                        <span class="label"></span>
-                        <span class="value"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- 스킬 섹션 -->
     <div class="skills-card card-style drag-me">
         <h2>스킬</h2>
@@ -440,6 +389,58 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 스텟 섹션 -->
+    <div class="stats-card card-style">
+        <h2>스탯</h2>
+        <div class="setting-group stats-settings" style="display:flex; gap:40px; align-items:stretch;">
+            <!-- 기초 스탯 (왼쪽 3/4) -->
+            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
+                <h3>기초 스탯</h3>
+                <div class="stats-main">
+                    <div class="stats-grid">
+                        <div class="stat-row">
+                            <span class="label">생명</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">공격력</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">방어력</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">속도</span>
+                            <span class="value"></span>
+                        </div>
+                        <!--
+                        <div class="stat-row">
+                            <span class="label">크리티컬 확률</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">크리티컬 효과</span>
+                            <span class="value"></span>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <!-- 잠재력 LV 7 (오른쪽 1/4) -->
+            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
+                <h3>잠재력 LV 7</h3>
+                <div class="stats-awake" style="display:flex; flex-direction:column; gap:8px;">
+                    <h3 class="awake-title" style="display:none;">잠재력 Lv7</h3>
+                    <div class="awake-row" style="display:flex; gap:8px;">
+                        <span class="label"></span>
+                        <span class="value"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1269,6 +1270,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
                 
                 // 무기 이미지
+                // img container 안에 img 추가
+                const weaponImageContainer = document.createElement('div');
+                weaponImageContainer.className = 'weapon-image-container';
+
                 const weaponImage = document.createElement('img');
                 weaponImage.src = imagePath;
                 weaponImage.alt = weaponData.name || '무기 이미지';
@@ -1358,7 +1363,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 weaponInfo.appendChild(weaponStats);
                 weaponInfo.appendChild(weaponSkill);
 
-                weaponItem.appendChild(weaponImage);
+                weaponImageContainer.appendChild(weaponImage);
+                weaponItem.appendChild(weaponImageContainer);
                 weaponItem.appendChild(weaponInfo);
 
                 weaponsContainer.appendChild(weaponItem);

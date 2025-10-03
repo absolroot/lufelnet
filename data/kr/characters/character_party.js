@@ -24,7 +24,7 @@ const recommendParty = {
         "persona": [
             {
                 type: "ATK",
-                list: ["도미니온"]
+                list: ["도미니온", "비사문천"]
             },
             {
                 type: "CRITICAL",

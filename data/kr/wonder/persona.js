@@ -51,6 +51,7 @@ const personaData = {
             {name : "치료 촉진", priority: 1},
             {name : "대미지 면역", priority: 0},
             {name : "방어 강화", priority: 0},
+            {name : "해체 역장", priority: 0},
             {name : "전의 공명", priority: 0},
        ],
         comment : "선봉으로 사용하지 않고 교체 후 페르소나 스킬 사용 시 '전투 시작 시 『조준』 획득' 이 발동 돼 『조준』이 적용된다 (최초 1회). 버프도 동일하게 『조준』이 발동된다.",

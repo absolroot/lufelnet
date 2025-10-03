@@ -1472,12 +1472,12 @@ const BUFF_DATA = {
                     target: '아군 전체',
                     effects: [
                         { type: '공격력 %', value: 0 },
-                        { type: '공격력 상수', value: 0 },
-                        { type: '크리티컬 확률', value: 0 },
-                        { type: '크리티컬 효과', value: 0 },
-                        { type: '대미지 보너스', value: 0 },
+                        { type: '공격력 상수', value: 1260 },
+                        { type: '크리티컬 확률', value: 4.7 },
+                        { type: '크리티컬 효과', value: 18.2 },
+                        { type: '대미지 보너스', value: 2.4 },
                         { type: '방어력 감소', value: 0 },
-                        { type: '관통', value: 0 },
+                        { type: '관통', value: 3.2 },
                         { type: '스킬 마스터', value: 0 },
                         { type: '독립 배수', value: 0 }
                     ],

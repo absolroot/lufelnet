@@ -550,7 +550,7 @@ const characterData = {
         "name_jp": "橋本 麻由美",
         "codename": "TURBO",
         "skill_item": 3,
-        "sub_revel2": ["대미지보너스"],
+        "sub_revel2": ["대미지보너스", "공격력"],
         "sub_revel3": ["크리티컬 확률/크리티컬 효과"],
         "sub_revel4": ["속도"],
         "sub_option1": ["속도"],

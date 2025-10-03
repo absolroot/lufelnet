@@ -6,7 +6,7 @@ const enCharacterSkillsData = {
         "name": "YUI·Chromatic",
         "skill1": {
             "name": "Cosmic Clash!",
-            "element": "핵열광역",
+            "element": "핵열",
             "type":"단일피해",
             "sp": 22,
             "cool": 0,
@@ -22,14 +22,14 @@ const enCharacterSkillsData = {
         },
         "skill3": {
             "name": "Veggie Knights, Full Out!",
-            "element": "핵열광역",
+            "element": "핵열",
             "type":"단일피해",
             "sp": 23,
             "cool": 0,
             "description": "Deal Nuke DMG equal to 104.3%/115.0%/110.7%/121.4% ATK to 1 foe. For every [Veggie Knight] present, additionally deal Nuke DMG equal to 29.3%/32.3%/31.1%/34.1% ATK once. When holding 2 or more [<span style='color:#C7BE5A;'>Potato Knight</span>]s, BUI - Chromatic will consume the extra [<span style='color:#C7BE5A;'>Potato Knight</span>]. Each [<span style='color:#C7BE5A;'>Potato Knight</span>] consumed will additionally deal Nuke DMG equal to 24.4%/26.9%/25.9%/28.4%% ATK. This Skill DMG is considered All-Out Attacks DMG. When casting this skill manually, gain 2 [Originium Force].\nPassive: When [Originium Force] reaches 7, consume all [Originium Force] to cast [Veggie Knights, Full Out!] to foes. This attack’s DMG is evenly spread out against all foes.\nIf BUI - Chromatic possesses [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] when casting the skill, she will automatically switch to [<span style='color:rgb(184, 33, 214);'>Earthy Eggplants</span>] at the end of her turn."
         },
         "skill_highlight": {
-            "element": "핵열광역",
+            "element": "핵열",
             "type":"단일피해",
             "description": "Increase Deal Nuke DMG equal to 439.2%/484.2%/466.2%/511.2% ATK to 1 foe and cast [Veggie Knights, Attack!] to that foe 1 time.\n[Veggie Knights, Attack!]: Follow-Up Action. Deal Nuke DMG equal to 93.5%/103.1%/99.2%/108.8% ATK to 1 foe."
         },

@@ -2374,6 +2374,31 @@ const personaSkillList = {
             }
         ]
     },
+    "해체 역장": {
+        name_jp: "解体逆張り",
+        name_en: "Breakdown Reverse",
+        description: "3턴 동안 1명의 적이 받는 대미지가 24% 증가하고, 받는 크리티컬 효과가 18% 증가한다.",
+        description_en: "Increase 1 foe's DMG taken by 24% and CRIT DMG taken by 18% for 3 turns.",
+        description_jp: "3ターンの間、敵1体が受けるダメージが24%増加し、受けるCRT倍率が18%増加する。",
+        type: "지원",
+        target: "단일",
+        icon : "디버프",
+        icon_gl : "버프",
+        effects: [
+            {
+                type: "디버프",
+                stat: "대미지",
+                value: 24,
+                duration: 3
+            },
+            {
+                type: "디버프",
+                stat: "크리티컬 효과",
+                value: 18,
+                duration: 3
+            }
+        ]
+    },
     "마하라쿤다": {
         name_jp: "マハラクンダ",
         name_en: "Marakunda",

@@ -435,7 +435,7 @@ const enCharacterRitualData = {
         "r1": "Ring Around the Rosie",
         "r1_detail": "In [Hunter], additionally inflict 5 stacks of [Bleed] when dealing skill damage to each enemy for the first time. In [Executioner], increase skill damage based on the number of debuffs on enemies, up to 80% more skill damage at 10 stacks of debuffs.",
         "r2": "A Pocket Full of Posies",
-        "r2_detail": "After every 2 times you trigger [Gorgeous Fireworks], inflict 1 [Spark] to 1 enemy.",
+        "r2_detail": "Increase [Laceration] skill multiplier by 35% ATK. Restore HP equal to 2% of [Laceration] DMG (Up to Messa's level * 15+ 300 HP per turn).",
         "r3": "Accompanied by Flowers",
         "r3_detail": "[Incision Technique/Sinful Game] Lv. +3, up to a maximum of Lv. 15.\n[Combat Skills] Lv. +3, up to a maximum of Lv. 15.",
         "r4": "Jumping off the Ground",

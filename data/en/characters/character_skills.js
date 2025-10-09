@@ -275,15 +275,16 @@ const enCharacterSkillsData = {
             "description": "Increase ATK by 13.5% after landing a CRIT for 3 turns, up to 3 stacks."
         }
     },
-	"유카리": {
+"유카리": {
         "name": "Yukari Takeba",
         "skill1": {
-            "name": "Gale Blast",
+            "name": "Wind Burst",
             "element": "질풍",
             "type": "단일 피해",
             "sp": 23,
             "cool": 0,
-            "description": "Deals 200.1%/220.6%/212.4%/232.9% ATK as Wind DMG to 1 foe, with 100% chance to inflict Winded for 2 turns. Additionally, inflict the enemy with [Wind Erosion] for 2 turns. There can only be 1 Enemy with [Wind Erosion] on the field. When a foe with [Wind Erosion] is defeated, transfer their [Wind Erosion] to the foe with the highest HP.\nWhen allies attack, if any of the foes attacked are inflicted with [Wind Erosion], increase the ATK of that skill by 8.8%/9.7%/9.3%/10.2% (For Each 100 ATK, additionally increase ATK by 0.72%, up to 29.3%/32.3%/31.1%/34.1%)."
+            "description": "Deal Wind damage to 1 foe equal to 200.1%/220.6%/212.4%/232.9% of Attack, with a 100% base chance to inflict Windswept, then inflict the target with [Wind Erosion] for 2 turns, there can only be 1 [Wind Erosion]. When foe with [Wind Erosion] is defeated, transfer their [Wind Erosion] to the foe with the highest HP.\nPassive: When allies use skills, if any skill target has [Wind Erosion], increase skill Attack by 8.8%/9.7%/9.3%/10.2% + 0.72% for every 100 Attack, up to 29.3%/32.3%/31.1%/34.1%."
+
         },
         "skill2": {
             "name": "Windchaser’s Breath",
@@ -291,37 +292,40 @@ const enCharacterSkillsData = {
             "type": "",
             "sp": 25,
             "cool": 0,
-            "description": "Decrease all allies' DMG Taken by 29.3%/32.3%/31.1%/34.1% for 3 turns. Increase the ATK of the main target by 7.8%/8.6%/8.3%/9.1% (For every 100 ATK, additionally increase DMG Dealt by 0.78%, up to a maximum of 31.2%), and DMG Dealt for the main target by 0.24% for each 100 ATK, up to 9.8%/10.8%/10.4%/11.4% for 2 turns."
+            "description": "Decrease party's damage taken by 29.3%/32.3%/31.1%/34.1% for 3 turns; Then increase the main target's Attack by 7.8%/8.6%/8.3%/9.1% + 0.78% for every 100 Attack, up to 31.2%, and damage by 0.24% for every 100 Attack, up to 9.8%/10.8%/10.4%/11.4%. Lasts for 2 turns."
+
         },
         "skill3": {
-            "name": "Arrow of Rebirth",
+            "name": "Arrow of Rejuvenation",
             "element": "치료광역",
             "type": "",
             "sp": 27,
             "cool": 0,
-            "description": "Restore all allies' HP by 39.1%/43.1%/41.5%/45.6% ATK + 2507/3158/3081/3773 and depletes all [Wind's Whisper].\nFor every [Wind's Whisper] depleted, regenerates 17.5 Theurgy Energy for the main target (Overcapping Theurgy Energy will be stored temporarily, and will be returned after the target uses their [Theurgy]. The maximum amount of storage is based on the maximum Theurgy Energy of the target, and the storage lasts for 2 turns.).\nAdditionally, increase the ATK of the main target after they use Theurgy by 29.3%/32.3%/31.1%/34.1% for 2 turns and up to 2 stacks. If the main target is not a S.E.E.S. member, the effect is changed so that their next [HIGHLIGHT]'s Total DMG is increased by 9.8%/10.8%/10.4%/11.4% for each stack of [Wind's Whisper] consumed."
+            "description": "Restore party's HP by 39.1%/43.1%/41.5%/45.6% of Yukari's Attack + 2507/3158/3081/3773. Spend all [Wind Whisper], for every stack of [Wind Whisper] spent, restore 17.5 Theurgy Energy to the main target, then increase the target's Attack after using Theurgy by 29.3%/32.3%/31.1%/34.1% for 2 turns. Stacks up to 2 times. (When restoring Theurgy Energy, save the overflow Theurgy Energy then return it after the target used Theurgy, up to their Theurgy Energy cap. Lasts for 2 turns.) If the main target is not a S.E.E.S. member, then for every stack of [Wind Whisper] spent, increase their next Highlight total damage by Total DMG Amp by 9.8%/10.8%/10.4%/11.4%."
+
         },
         "skill_highlight": {
             "name": "Theurgy - Cyclone Arrow",
             "element": "질풍",
             "type": "",
-            "description": "Theurgy Use Condition: 70 Theurgy Energy.\nDeals 416.0%/457.6%/465.9%/507.5% ATK as Wind DMG to 1 enemy, and increase the DMG Dealt of all allies by 0.48% for each 100 ATK, up to 20.0%/22.0%/22.4%/24.4%. There is a 100% chance to inflict the enemy with Winded, and the enemy will be inflicted with [Wind Erosion] for 2 turns."
+            "description": "Use condition: When Yukari has 70 Theurgy Energy\nDeal Wind damage to 1 foe equal to 416.0%/457.6%/465.9%/507.5% of Attack. Increase party's damage by 0.48% for every 100 Attack, up to 20.0%/22.0%/22.4%/24.4%; Remove 2 buffs on the target, with a 100% base chance to inflict Windswept, then inflict the target with [Wind Erosion] for 2 turns."
+
         },
         "skill_support": {
             "name": "Assist Skill",
             "element": "패시브",
             "type": "",
-            "description": "Cleanse 1 Negative Status from an ally."
+            "description": "Cure 1 debuff from 1 ally."
         },
         "passive1": {
-            "name": "Tacit Teamwork",
+            "name": "Chemistry",
             "element": "패시브",
-            "description": "When Yukari is on the field, increase all allies' HIGHLIGHT/Theurgy DMG Dealt by 45%."
+            "description": "When Yukari is on the field, increase party's Highlight/Theurgy damage by 45%."
         },
         "passive2": {
-            "name": "Cheerfulness",
+            "name": "Competitiveness",
             "element": "패시브",
-            "description": "In Battle, increase Max HP by 100 for each 60 of ATK, up to a maximum of 2700 ATK."
+            "description": "During battle, increase Yukari's max HP by 100 for every 60 Attack, up to 2700."
         }
     },
 	"유키 마코토": {
@@ -1130,45 +1134,45 @@ const enCharacterSkillsData = {
         }
     },
     "토모코·여름": {
-        "name": "Tomoko Noge·Summer",
+        "name": "Seaside Tomoko",
         "skill1": {
-            "name": "Come Order a Drink",
+            "name": "Have a Cold Drink",
             "element": "염동광역",
             "type":"광역피해",
             "sp": 23,
             "cool": 0,
-            "description": "Deals 77.6%/85.5%/82.4%/90.3% ATK as Psy DMG to all enemies 4 times, prioritizing enemies that have not been attacked yet, inflicts 1 stack of [Spark] per hit of damage. Attacks on the same target will only deal 30% damage.\nPassive: Increase the damage/healing multiplier of [Gorgeous Fireworks] by 51.7%/51.7%/59.9%/59.9%."
+            "description": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Deal 30% damage for hits on the same target.\n\nPassive: Increase Summer Reminiscenceskill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%."
         },
         "skill2": {
-            "name": "Please Enjoy",
+            "name": "Hale Summer Days",
             "element": "치료",
             "type":"치료",
             "sp": 27,
             "cool": 0,
-            "description": "Restores 22.4%/22.4%/23.8%/23.8% ATK + 1438/1749/1767/2078 HP to 1 ally, increases their ATK by 14.6%/14.6%/15.5%/15.5%, EHR by 58.6%/58.6%/62.2%/62.2%, and damage dealt by 30%. They can now inflict 1 stack of [Spark] after each hit of damage for 2 turns, up to 5 stacks."
+            "description": "Restore 1 ally's HP by 22.4%/22.4%/23.8%/23.8% of Seaside Tomoko's Attack + 1437/1748/1767/2078. For 2 turns, increase the target's Attack by 14.6%/14.6%/15.5%/15.5%, ailment accuracy by 58.6%/58.6%/62.2%/62.2%, and damage by 30%; also, increase Attack (up to 22.5%) by 25% of the target's ailment accuracy (up to 90%). Inflict 1 Sparks stack for each time skill damage is dealt to a foe. Sparks from this effect can stack up to 5 times."
         },
         "skill3": {
-            "name": "Midnight Memory",
+            "name": "Sparkling Memories",
             "element": "염동광역",
             "type":"광역피해",
             "sp": 25,
             "cool": 0,
-            "description": "Deals 61.0%/67.2%/64.8%/71.0% ATK as Psy DMG to all enemies and increases their DMG Taken by 19.5%/19.5%/20.7%/20.7%. Inflict 1 stack of [Spark] to each enemy after each hit of damage for 1 turns, counts down at the start of your turn. When this effect is active, Summer Moko can inflict up to 5 stacks of [Spark] (That damage cannot trigger the effect of this skill)."
+            "description": "Deal Psy damage to all foes equal to 61.0%/67.2%/64.8%/71.0% of Attack. For 2 turns, increase foes' damage taken by 19.5%/19.5%/20.7%/20.7% and inflict 1 Sparks stack when foes take skill damage. At the start of Seaside Tomoko's turn, decrease this effect's duration by 1. Sparks stacks up to 5 times and isn't inflicted by damage from this skill."
         },
         "skill_highlight": {
             "element": "염동",
             "type":"광역피해",
-            "description": "Deals 82.4%/90.9%/87.4%/95.9% ATK as Psy DMG to all enemies randomly 3 times, prioritizing enemies that have not been attacked yet. Each hit of damage will inflicts 1 stack of [Spark]. Attacks on the same target will only deal 30% damage."
+            "description": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 Sparks stack per damage dealt. Repeated hits on the same target deal 30% damage."
         },
         "passive1": {
-            "name": "Dazzling",
+            "name": "Power of Memories",
             "element": "패시브",
-            "description": "During Battle, increase Psy DMG and Max HP based on own Healing Effect. Up to 42.0% Healing Effect for 70.0% Psy DMG and 2100 Max HP."
+            "description": "During battle, increase Seaside Tomoko's damage and max HP based on her HP recovery. When HP recovery is at up to 42.0%, increase Psy damage by 70.0% and max HP by 2100."
         },
         "passive2": {
-            "name": "Eye-Catching",
+            "name": "Soothing Waves",
             "element": "패시브",
-            "description": "When using [Please Enjoy], Increase the main target's Max HP by 1800 for 2 turns, then restore 60% skill healing to the lowest HP ally."
+            "description": "When activating Hale Summer Days, increase the main target's max HP by 1800 for 2 turns. Restore HP of the ally with the lowest HP, equal to 60% of skill healing."
         }
     },
     "하루": {

@@ -47,7 +47,6 @@ enCharacterWeaponData = {
             "defense": 396,
 				"skill_name": "Demon Unleashed",
 				"description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nAfter user knocks down a foe, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
-
        }
     },
     "미유·여름": {
@@ -133,8 +132,9 @@ enCharacterWeaponData = {
             "health": 1823,
             "attack": 565,
             "defense": 328,
-            "skill_name": "Deft Arrow",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When casting [Arrow of Rebirth], additionally increase Healing Effect by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8%."
+            "skill_name": "Effortless Arrow",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen using [Arrow of Rejuvenation], increase HP Recovery by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8%."
+
         },
         "weapon5-1": {
             "name": "Sarnga",
@@ -142,7 +142,7 @@ enCharacterWeaponData = {
             "attack": 706,
             "defense": 409,
             "skill_name": "Verdant Arrow",
-            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When allies recover HP by attacking enemies inflicted by [Wind Erosion], Healing Effect is additionally increased by 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%. When consuming [Wind's Whisper], for each stack consumed, increase all allies' DMG dealt by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns, up to 2 stacks."
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen allies restore HP by attacking foes with [Wind Erosion], additionally increase healing by 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%. When using [Arrow of Rejuvenation], for every stack of [Wind Whisper] spent, increase the party's damage by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns. Stacks up to 2 times."
         }
     },
     "유키 마코토": {
@@ -521,22 +521,22 @@ enCharacterWeaponData = {
         }
     },
     "토모코·여름": {
-        "name": "Tomoko Noge·Summer",
+        "name": "Seaside Tomoko",
         "weapon4-1": {
-            "name": "Tidal Whisper",
+            "name": "Ocean's Tidings",
             "health": 1870,
             "attack": 575,
             "defense": 306,
-            "skill_name": "Lightshadow Bloom",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Increase Healing Effect by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8% after triggering [Gorgeous Fireworks] for 2 turns."
+            "skill_name": "",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When activating Summer Reminiscence, increase Tomoko's healing by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8% for 2 turns."
         },
         "weapon5-1": {
-            "name": "Darling Marbly",
+            "name": "Bubble Babies",
             "health": 2388,
             "attack": 720,
             "defense": 383,
-            "skill_name": "Fallfire",
-            "description": "Healing Effect is increased by 22.0%/22.0%/28.5%/28.5%/35.0%/35.0%/41.5%. [Gorgeous Fireworks]'s Healing and Skill Multiplier are increased by 18.5%/24.0%/24.0%/29.5%/29.5%/35.0%/35.0%. Increase DMG Taken of foes which are hit by [Gorgeous Fireworks] by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0% for 2 turns and up to 2 stacks."
+            "skill_name": "",
+            "description": "Increase healing by 22.0%/22.0%/28.5%/28.5%/35.0%/35.0%/41.5%. Increase multiplier for skill damage from Summer Reminiscence and its healing by 18.5%/24.0%/24.0%/29.5%/29.5%/35.0%/35.0%. When activating Summer Reminiscence, increase the target's damage taken by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0% for 3 turns. This effect can stack up to 2 times.\nAlso decrease the target's Defense and ailment resistance by 12% for 3 turns."
         }
     },
     "하루": {

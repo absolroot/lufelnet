@@ -2375,8 +2375,8 @@ const personaSkillList = {
         ]
     },
     "해체 역장": {
-        name_jp: "解体逆張り",
-        name_en: "Breakdown Reverse",
+        name_jp: "解体フィールド",
+        name_en: "Abyssal Field",
         description: "3턴 동안 1명의 적이 받는 대미지가 24% 증가하고, 받는 크리티컬 효과가 18% 증가한다.",
         description_en: "Increase 1 foe's DMG taken by 24% and CRIT DMG taken by 18% for 3 turns.",
         description_jp: "3ターンの間、敵1体が受けるダメージが24%増加し、受けるCRT倍率が18%増加する。",
@@ -2464,7 +2464,7 @@ const personaSkillList = {
     },
     "전의 공명": {
         name_jp: "戦意の共鳴",
-        name_en: "Battle Spirit Harmony",
+        name_en: "Spirit Harmony",
         description: "자신이 적에게 페르소나 스킬 시전 시 3턴 동안 공격력이 가장 높은 아군 동료(지배/반항 우선 선택)의 공격력이 10%, 크리티컬 효과가 10% 증가한다. 해당 효과는 2턴의 쿨타임이 있다.",
         description_en: "Increase the ATK of the ally with the highest ATK among allies (Sweeper/Assassin priority) by 10% and CRIT DMG by 10% for 3 turns. This effect has a 2 turn cooldown.",
         description_jp: "自身が敵にペルソナスキルを使用した時、3ターンの間、味方の攻撃力が最も高い味方（支配/反抗 優先）の攻撃力が10%上昇し、クリティカルダメージが10%上昇する。この効果には2ターンのクールタイムがある。",

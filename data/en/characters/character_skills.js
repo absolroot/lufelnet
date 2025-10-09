@@ -1141,7 +1141,7 @@ const enCharacterSkillsData = {
             "type":"광역피해",
             "sp": 23,
             "cool": 0,
-            "description": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Deal 30% damage for hits on the same target.\n\nPassive: Increase Summer Reminiscenceskill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%."
+            "description": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Deal 30% damage for hits on the same target.\n\nPassive: Increase [Summer Reminiscence] skill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%."
         },
         "skill2": {
             "name": "Hale Summer Days",
@@ -1149,7 +1149,7 @@ const enCharacterSkillsData = {
             "type":"치료",
             "sp": 27,
             "cool": 0,
-            "description": "Restore 1 ally's HP by 22.4%/22.4%/23.8%/23.8% of Seaside Tomoko's Attack + 1437/1748/1767/2078. For 2 turns, increase the target's Attack by 14.6%/14.6%/15.5%/15.5%, ailment accuracy by 58.6%/58.6%/62.2%/62.2%, and damage by 30%; also, increase Attack (up to 22.5%) by 25% of the target's ailment accuracy (up to 90%). Inflict 1 Sparks stack for each time skill damage is dealt to a foe. Sparks from this effect can stack up to 5 times."
+            "description": "Restore 1 ally's HP by 22.4%/22.4%/23.8%/23.8% of Seaside Tomoko's Attack + 1437/1748/1767/2078. For 2 turns, increase the target's Attack by 14.6%/14.6%/15.5%/15.5%, ailment accuracy by 58.6%/58.6%/62.2%/62.2%, and damage by 30%; also, increase Attack (up to 22.5%) by 25% of the target's ailment accuracy (up to 90%). Inflict 1 [Sparks] stack for each time skill damage is dealt to a foe. [Sparks] from this effect can stack up to 5 times."
         },
         "skill3": {
             "name": "Sparkling Memories",
@@ -1157,12 +1157,12 @@ const enCharacterSkillsData = {
             "type":"광역피해",
             "sp": 25,
             "cool": 0,
-            "description": "Deal Psy damage to all foes equal to 61.0%/67.2%/64.8%/71.0% of Attack. For 2 turns, increase foes' damage taken by 19.5%/19.5%/20.7%/20.7% and inflict 1 Sparks stack when foes take skill damage. At the start of Seaside Tomoko's turn, decrease this effect's duration by 1. Sparks stacks up to 5 times and isn't inflicted by damage from this skill."
+            "description": "Deal Psy damage to all foes equal to 61.0%/67.2%/64.8%/71.0% of Attack. For 2 turns, increase foes' damage taken by 19.5%/19.5%/20.7%/20.7% and inflict 1 [Sparks] stack when foes take skill damage. At the start of Seaside Tomoko's turn, decrease this effect's duration by 1. [Sparks] stacks up to 5 times and isn't inflicted by damage from this skill."
         },
         "skill_highlight": {
             "element": "염동",
             "type":"광역피해",
-            "description": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 Sparks stack per damage dealt. Repeated hits on the same target deal 30% damage."
+            "description": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 [Sparks] stack per damage dealt. Repeated hits on the same target deal 30% damage."
         },
         "passive1": {
             "name": "Power of Memories",

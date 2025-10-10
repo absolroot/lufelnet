@@ -440,14 +440,18 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
     <style>
         /* Priority modal layout */
         .priority-col { background:#121015; border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:10px; max-height:70vh; overflow:auto; }
-        .priority-col.single { max-width:720px; margin:0 auto; }
+        /*.priority-col.single { width:100%; max-width:none; }*/
         .order-item { display:flex; align-items:center; gap:10px; background:#1a1720; border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:8px; margin-bottom:8px; cursor:grab; }
         .order-item:active { cursor:grabbing; }
         .order-num { width:28px; height:28px; display:flex; align-items:center; justify-content:center; background:#4b3b2c; color:#fff; border-radius:6px; font-weight:700; }
         .order-avatar { width:30px; height:30px; object-fit:cover; border-radius:6px; }
         .order-label { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
         .order-placeholder { border:2px dashed rgba(255,255,255,.3); border-radius:8px; height:46px; margin-bottom:8px; }
-        @media (max-width: 760px){ .priority-col.single { max-width:100%; } }
+        @media (max-width: 760px){ .priority-col.single { width:100%; } }
+        /* Limit scroll to the list only */
+        #customOrderModal .modal-body { max-height: 70vh; display:flex; flex-direction:column; overflow:hidden; }
+        #customOrderModal #customList { flex:1 1 auto; min-height:0; overflow:auto; }
+        #customOrderModal .priority-col { max-height: none; }
     </style>
 
 <script>

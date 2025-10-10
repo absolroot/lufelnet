@@ -75,8 +75,11 @@
             filter: '필터', sort: '정렬',
             'sort.releaseAsc': '출시 순 ↑', 'sort.releaseDesc': '출시 순 ↓',
             'sort.nameAsc': '이름 순 ↑', 'sort.nameDesc': '이름 순 ↓',
+            'sort.custom': '사용자 지정',
             'filterGroup.element': '속성', 'filterGroup.position': '직업', 'filterGroup.rarity': '등급',
-            includeInSummary: '합산 포함'
+            includeInSummary: '합산 포함',
+            priority: '우선순위',
+            dragToChangeOrder: '드래그하여 순서 변경'
         },
         en: {
             pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
@@ -92,8 +95,11 @@
             filter: 'Filter', sort: 'Sort',
             'sort.releaseAsc': 'Release ↑', 'sort.releaseDesc': 'Release ↓',
             'sort.nameAsc': 'Name ↑', 'sort.nameDesc': 'Name ↓',
+            'sort.custom': 'Custom',
             'filterGroup.element': 'Element', 'filterGroup.position': 'Role', 'filterGroup.rarity': 'Rarity',
-            includeInSummary: 'Include in Material Summary'
+            includeInSummary: 'Include in Material Summary',
+            priority: 'Priority',
+            dragToChangeOrder: 'Drag to change order'
         },
         jp: {
             pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
@@ -109,8 +115,11 @@
             filter: 'フィルター', sort: 'ソート',
             'sort.releaseAsc': '実装順 ↑', 'sort.releaseDesc': '実装順 ↓',
             'sort.nameAsc': '名前 ↑', 'sort.nameDesc': '名前 ↓',
+            'sort.custom': 'カスタム',
             'filterGroup.element': '属性', 'filterGroup.position': '役割', 'filterGroup.rarity': 'レアリティ',
-            includeInSummary: 'サマリーに含める'
+            includeInSummary: 'サマリーに含める',
+            priority: '優先順位',
+            dragToChangeOrder: 'ドラッグして順序を変更'
         }
     };
 
@@ -786,7 +795,12 @@
 
     function addPlan({name, rarity, inputs, materials}){
         const id = Date.now()+ '_' + Math.random().toString(36).slice(2,7);
-        const plan = { id, name, rarity, image: `${BASE_URL}/assets/img/tier/${name}.webp`, inputs, materials, include: true };
+        // 기본 order: 현재 최대 order + 1 (없으면 현재 길이 기준)
+        const nextOrder = (()=>{
+            const max = STATE.plans.reduce((m,p)=> Math.max(m, Number(p.order||0)), 0);
+            return (max>0? max : STATE.plans.length) + 1;
+        })();
+        const plan = { id, name, rarity, image: `${BASE_URL}/assets/img/tier/${name}.webp`, inputs, materials, include: true, order: nextOrder };
         STATE.plans.push(plan);
         recalcTotals();
         renderPlans();
@@ -967,6 +981,16 @@
                 if(na===nb) return 0;
                 const res = na > nb ? 1 : -1;
                 return k==='name_asc' ? res : -res;
+            }else if(k==='custom'){
+                const oa = (a.order==null)? Number.MAX_SAFE_INTEGER : Number(a.order);
+                const ob = (b.order==null)? Number.MAX_SAFE_INTEGER : Number(b.order);
+                if(oa===ob){
+                    const na = toName(a.name) || '';
+                    const nb = toName(b.name) || '';
+                    if(na===nb) return 0;
+                    return na > nb ? 1 : -1;
+                }
+                return oa - ob;
             }else{
                 // release
                 const ra = getRelease(a.name);
@@ -1291,12 +1315,24 @@
         const sortSelect = document.getElementById('plannerSortSelect');
         if(sortSelect){
             const saved = localStorage.getItem('material_planner_sort');
-            if(saved) sortSelect.value = saved;
+            if(saved){
+                sortSelect.value = saved;
+                STATE.sortKey = saved; // 초기 로딩 시 저장된 정렬 적용 (custom 포함)
+            }
             sortSelect.onchange = ()=>{
-                STATE.sortKey = sortSelect.value || 'release_desc';
-                localStorage.setItem('material_planner_sort', STATE.sortKey);
-                renderPlans();
+                const val = sortSelect.value || 'release_desc';
+                STATE.sortKey = val;
+                localStorage.setItem('material_planner_sort', val);
+                const gear = document.getElementById('plannerSortCustomBtn');
+                if(gear) gear.style.display = (val==='custom') ? '' : 'none';
+                if(val==='custom') openCustomOrderModal(); else renderPlans();
             };
+            // 초기 아이콘 표시 상태
+            const gear = document.getElementById('plannerSortCustomBtn');
+            if(gear){
+                gear.style.display = (sortSelect.value==='custom') ? '' : 'none';
+                gear.onclick = ()=>{ openCustomOrderModal(); };
+            }
         }
 
         // 필터 변경 이벤트 바인딩 (element/position/rarity)
@@ -1331,7 +1367,7 @@
                 return {
                     lang: STATE.lang,
                     inventory: { ...STATE.inventory },
-                    plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include:(p.include!==false) }))
+                        plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include:(p.include!==false), order: p.order }))
                 };
             }catch(_){ return null; }
         },
@@ -1343,7 +1379,7 @@
                     sortKey: STATE.sortKey,
                     spoiler: !!STATE.spoiler,
                     inventory: { ...STATE.inventory },
-                    plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include:(p.include!==false) }))
+                        plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include:(p.include!==false), order: p.order }))
                 };
             }catch(_){ return null; }
         },
@@ -1401,9 +1437,16 @@
                                 image: `${BASE_URL}/assets/img/tier/${nameKr}.webp`,
                                 inputs: sp.inputs,
                                 materials,
-                                include: (sp.include !== false)
+                                include: (sp.include !== false),
+                                order: (typeof sp.order==='number')? sp.order : undefined
                             };
                         });
+                    // order가 비어있는 항목 보정: 현재 순서대로 1.. 부여
+                    let next = 1;
+                    STATE.plans.forEach(p=>{
+                        if(typeof p.order !== 'number'){ p.order = next; }
+                        next++;
+                    });
                 }
                 // 재계산 및 렌더
                 recalcTotals();
@@ -1792,7 +1835,7 @@
         try{
             const data = {
                 inventory: STATE.inventory,
-                plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include: (p.include !== false) }))
+                plans: STATE.plans.map(p=>({ name:p.name, rarity:p.rarity, inputs:p.inputs, include: (p.include !== false), order: p.order }))
             };
             localStorage.setItem('materialPlannerStateV1', JSON.stringify(data));
         }catch(_){/* ignore */}
@@ -1813,11 +1856,166 @@
                         image: `${BASE_URL}/assets/img/tier/${sp.name}.webp`,
                         inputs: sp.inputs,
                         materials,
-                        include: (sp.include !== false)
+                        include: (sp.include !== false),
+                        order: (typeof sp.order==='number')? sp.order : undefined
                     };
                 });
+                // order 미지정 보정
+                let next = 1;
+                STATE.plans.forEach(p=>{ if(typeof p.order !== 'number'){ p.order = next; } next++; });
             }
         }catch(_){/* ignore */}
+    }
+
+    // ===== 커스텀 정렬(우선순위) 모달 =====
+    function openCustomOrderModal(){
+        const modal = document.getElementById('customOrderModal');
+        if(!modal) { renderPlans(); return; }
+        const title = modal.querySelector('#customOrderTitle');
+        const hint = modal.querySelector('#customOrderHint');
+        if(title) title.textContent = t('priority');
+        if(hint) hint.textContent = t('dragToChangeOrder');
+
+        // 현재 표시 순서 기준으로 초기 리스트 구성
+        const currentList = [...STATE.plans].sort((a,b)=>{
+            const oa = (a.order==null)? Number.MAX_SAFE_INTEGER : Number(a.order);
+            const ob = (b.order==null)? Number.MAX_SAFE_INTEGER : Number(b.order);
+            if(oa===ob) return (a.name > b.name ? 1 : -1);
+            return oa - ob;
+        });
+
+        const list = modal.querySelector('#customList');
+        if(list){
+            // remove previous listeners/placeholders if any
+            if(typeof list._dndCleanup === 'function'){
+                try{ list._dndCleanup(); }catch(_){ }
+                list._dndCleanup = null;
+            }
+            list.innerHTML='';
+        }
+        // ensure no leftover placeholders remain in DOM
+        modal.querySelectorAll('.order-placeholder').forEach(ph=>{ try{ ph.remove(); }catch(_){ } });
+
+        function makeItem(plan, idx){
+            const el = document.createElement('div');
+            el.className = 'order-item';
+            el.dataset.id = plan.id;
+            const num = document.createElement('div'); num.className='order-num'; num.textContent=String(idx+1);
+            const img = document.createElement('img'); img.src = plan.image; img.alt = plan.name; img.className='order-avatar';
+            const label = document.createElement('div'); label.className='order-label';
+            label.textContent = (STATE.lang==='en' && STATE.characterData?.[plan.name]?.name_en) ? STATE.characterData[plan.name].name_en
+                                : (STATE.lang==='jp' && STATE.characterData?.[plan.name]?.name_jp) ? STATE.characterData[plan.name].name_jp
+                                : plan.name;
+            el.appendChild(num); el.appendChild(img); el.appendChild(label);
+            return el;
+        }
+
+        const frag = document.createDocumentFragment();
+        currentList.forEach((p,i)=> frag.appendChild(makeItem(p,i)));
+        if(list) list.appendChild(frag);
+
+        // 모바일 포함 포인터 기반 드래그
+        const container = list;
+        const placeholder = document.createElement('div'); placeholder.className='order-placeholder';
+        let draggingEl = null; let startY = 0; let isDragging = false; let currentIndex = -1;
+
+        function pointerDown(e){
+            const item = e.target.closest('.order-item');
+            if(!item || !container) return;
+            e.preventDefault();
+            draggingEl = item; startY = (e.touches? e.touches[0].clientY : e.clientY); isDragging = true;
+            currentIndex = Array.from(container.children).indexOf(item);
+            // visually detach item from flow so 공간을 차지하지 않음
+            const h = item.getBoundingClientRect().height;
+            item.style.opacity = '0.6';
+            item.style.position = 'absolute';
+            item.style.width = 'calc(100% - 20px)';
+            item.style.zIndex = '10';
+            item.style.pointerEvents = 'none';
+            // placeholder occupies the space
+            placeholder.style.height = `${Math.ceil(h)}px`;
+            item.parentNode.insertBefore(placeholder, item);
+            document.addEventListener('pointermove', pointerMove);
+            document.addEventListener('pointerup', pointerUp, { once:true });
+            document.addEventListener('touchmove', pointerMove, { passive:false });
+            document.addEventListener('touchend', pointerUp, { once:true });
+        }
+        function pointerMove(e){
+            if(!isDragging||!container||!draggingEl) return;
+            if(e.cancelable) e.preventDefault();
+            const y = (e.touches? e.touches[0].clientY : e.clientY);
+            const dy = y - startY;
+            draggingEl.style.transform = `translateY(${dy}px)`;
+            const items = Array.from(container.querySelectorAll('.order-item')).filter(el=>el!==draggingEl);
+            const rect = placeholder.getBoundingClientRect();
+            for(const it of items){
+                const r = it.getBoundingClientRect();
+                if(y < r.top + r.height/2){
+                    container.insertBefore(placeholder, it);
+                    break;
+                }
+                if(it===items[items.length-1]){
+                    container.appendChild(placeholder);
+                }
+            }
+        }
+        function pointerUp(){
+            if(!container||!draggingEl) return;
+            draggingEl.style.opacity=''; draggingEl.style.transform=''; draggingEl.style.position=''; draggingEl.style.width=''; draggingEl.style.zIndex=''; draggingEl.style.pointerEvents='';
+            container.insertBefore(draggingEl, placeholder);
+            placeholder.remove();
+            isDragging=false; draggingEl=null; startY=0; currentIndex=-1;
+            renumber();
+        }
+        function renumber(){
+            if(!container) return;
+            const items = Array.from(container.querySelectorAll('.order-item'));
+            items.forEach((el, i)=>{ const n=el.querySelector('.order-num'); if(n) n.textContent=String(i+1); });
+        }
+        if(container){
+            container.addEventListener('pointerdown', pointerDown);
+            container.addEventListener('touchstart', pointerDown, { passive:false });
+            // provide cleanup method to avoid duplicate bindings on reopen
+            container._dndCleanup = ()=>{
+                try{ container.removeEventListener('pointerdown', pointerDown); }catch(_){ }
+                try{ container.removeEventListener('touchstart', pointerDown); }catch(_){ }
+                try{ document.removeEventListener('pointermove', pointerMove); }catch(_){ }
+                try{ document.removeEventListener('touchmove', pointerMove); }catch(_){ }
+                try{ document.removeEventListener('pointerup', pointerUp); }catch(_){ }
+                try{ document.removeEventListener('touchend', pointerUp); }catch(_){ }
+                modal.querySelectorAll('.order-placeholder').forEach(ph=>{ try{ ph.remove(); }catch(_){ } });
+            };
+        }
+
+        // 저장 버튼
+        const saveBtn = modal.querySelector('#customOrderSave');
+        if(saveBtn){
+            saveBtn.onclick = ()=>{
+                const orderIds = [];
+                if(container) container.querySelectorAll('.order-item').forEach(el=> orderIds.push(el.dataset.id));
+                // id -> order 값 매핑
+                orderIds.forEach((id, idx)=>{
+                    const p = STATE.plans.find(pl=>pl.id===id);
+                    if(p) p.order = idx+1;
+                });
+                STATE.sortKey = 'custom';
+                localStorage.setItem('material_planner_sort', 'custom');
+                saveState();
+                renderPlans();
+                closeModal('customOrderModal');
+            };
+        }
+        const cancelBtn = modal.querySelector('#customOrderCancel');
+        if(cancelBtn){ cancelBtn.onclick = ()=>{ if(container&&typeof container._dndCleanup==='function'){ container._dndCleanup(); } closeModal('customOrderModal'); renderPlans(); }; }
+
+        openModal('customOrderModal');
+        if(container) renumber();
+        // when modal closes via [x] or outside, cleanup
+        const closer = ()=>{
+            if(container&&typeof container._dndCleanup==='function') container._dndCleanup();
+            modal.removeEventListener('transitionend', closer);
+        };
+        try{ modal.addEventListener('transitionend', closer); }catch(_){ }
     }
 })();
 

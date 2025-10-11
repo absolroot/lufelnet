@@ -1,0 +1,4 @@
+/*이미지별 크기 조절*/
+.char-img.middle[alt*="유카리"] {
+  transform: translateY(-50%) scale(1.25) !important; right: 14% !important;
+}

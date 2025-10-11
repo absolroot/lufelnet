@@ -82,6 +82,9 @@ alternate_urls:
 
     
 
+    <!-- Carousel: inserted above menu-cards -->
+    <div id="home-carousel-root" style="width: 100%;"></div>
+    <div class="separator-line"></div>
     <!-- Main content -->
     <div class="main-content">
         <div class="menu-cards">
@@ -287,6 +290,10 @@ alternate_urls:
     </style>
     </div>
 </div>
+
+<!-- Carousel JS -->
+<script src="{{ site.baseurl }}/assets/js/home/carousel.js?v={{ site.time | date: '%s' }}"></script>
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/js/home/carousel.css?v={{ site.time | date: '%s' }}">
 
 <!-- iframe -->
 <!-- <iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe> -->

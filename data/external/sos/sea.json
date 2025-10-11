@@ -1,0 +1,88 @@
+{
+  "data": {
+    "boss": [
+      {
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Curse"
+              ],
+              "Weak": [
+                "Bless"
+              ]
+            },
+            "level": "89",
+            "name": "Baphomet",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 4570.7881,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 0,
+              "HP": 2091903.072,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "sn": 128401
+      },
+      {
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "level": "89",
+            "name": "Zaou-Gongen",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 4570.7881,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 213.7783,
+              "Down Points": 0,
+              "HP": 2091903.072,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "sn": 128402
+      }
+    ],
+    "buff": "Blood Ritual: When an ally spends HP to use a skill, they obtain 4 stacks of Blood's Grace. When allies activate a Highlight, all allies get 2 stacks of Blood's Grace. Lose 1 stack of Blood's Grace at the end of each turn.",
+    "endTime": "2025-10-17 09:30:00",
+    "startTime": "2025-09-30 10:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

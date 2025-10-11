@@ -1,0 +1,90 @@
+# .github/workflows/fetch-external-json.yml
+name: Fetch external JSON every 6h
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # 6시간마다 (UTC)
+  workflow_dispatch: {}      # 필요 시 수동 실행
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-external-json
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Fetch & update JSON files
+        env:
+          BASE_URL: https://iant.kr:5000/data
+        run: |
+          set -euo pipefail
+
+          # 저장 루트(정적 서빙용)
+          ROOT_DIR="data/external"
+          mkdir -p "$ROOT_DIR/gacha" "$ROOT_DIR/guildboss" "$ROOT_DIR/sos"
+
+          # 엔드포인트와 리전 정의
+          ENDPOINTS=("gacha" "guildboss" "sos")
+          REGIONS=("kr" "en" "cn" "tw" "jp")
+
+          changed=0
+
+          fetch_and_write () {
+            local endpoint="$1"
+            local region="$2"
+            local url="${BASE_URL}/${endpoint}/${region}"
+            local out="${ROOT_DIR}/${endpoint}/${region}.json"
+
+            echo "➡️  Fetching: ${url}"
+
+            # 가져오고 JSON 유효성/정렬 보장
+            tmp_new="$(mktemp)"
+            curl -sS "$url" -o "$tmp_new"
+            jq . "$tmp_new" > /dev/null  # 유효성 체크
+            jq -S . "$tmp_new" > "${tmp_new}.sorted"
+
+            # 기존 파일과 비교해서 변경 있을 때만 갱신
+            if [ -f "$out" ]; then
+              tmp_old="$(mktemp)"
+              jq -S . "$out" > "$tmp_old"
+              if diff -q "$tmp_old" "${tmp_new}.sorted" > /dev/null; then
+                echo "   No change: ${endpoint}/${region}.json"
+              else
+                cp "${tmp_new}.sorted" "$out"
+                echo "   Updated: ${endpoint}/${region}.json"
+                changed=1
+              fi
+            else
+              cp "${tmp_new}.sorted" "$out"
+              echo "   Created: ${endpoint}/${region}.json"
+              changed=1
+            fi
+          }
+
+          for ep in "${ENDPOINTS[@]}"; do
+            for rg in "${REGIONS[@]}"; do
+              fetch_and_write "$ep" "$rg"
+            done
+          done
+
+          # 변경이 있으면 커밋
+          if [ "$changed" -eq 1 ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore(data): update /data/external JSONs [skip ci]"
+            git push
+            echo "✅ Changes committed."
+          else
+            echo "✅ No changes to commit."
+          fi

@@ -1505,18 +1505,18 @@ const personaData = {
         added: "KR v2.1.1",
         instinct: {
             name: "연승의 숙명 III",
-            name_en: "Destined Streak III",
-            name_jp: "連勝の宿命 III",
+            name_en: "Victory Foretold III",
+            name_jp: "常勝の宿命 III",
             effects: [
                 "크리티컬 효과가 34.9% 증가한다.",
                 "전투 시작 시 『기습』을 4중첩 획득한다. 2턴 동안 고유 스킬이 대미지를 줄 때마다 60% 확률로 『기습』을 획득하며,",
                 "매회 자신의 공격력이 9%씩 증가한다(8회 중첩 가능). 8중첩 도달 시 크리티컬 확률이 30% 증가한다."
             ],
             effects_en: [
-                "Increases CRIT DMG by 34.9%. At the start of battle, gains 4 stacks of [Ambush]. When using the signature skill there is a 60% chance to gain [Ambush], each stack increases own ATK by 9% for 2 turns, up to 8 stacks. Increases the CRIT Rate of the signature skill by 30% when reaching 8 stacks."
+                "Increase critical damage by 34.9%. At the start of battle, gain 4 Guerrilla stacks. When dealing damage with a unique skill, 60% chance to gain Guerrilla: Increase Attack by 9% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 30%."
             ],
             effects_jp: [
-                "CRT倍率が34.9%増加する。戦闘開始時『奇襲』を4重複獲得する。2ターンの間固有スキルがダメージを与えるたびに60%確率で『奇襲』を獲得し、毎回自分の攻撃力が9%ずつ増加する（8回重複可能）。8重複到達時CRT発生率が30%増加する。"
+                "クリティカルダメージが３４.９%上昇する。戦闘開始時、『奇襲』を４つ獲得する。固有スキルでダメージを与えるごとに６０%の確率で『奇襲』を獲得し、２ターンの間、自身の攻撃力が１つ毎に９%上昇する。この効果は最大８つまで累積できる。８つ獲得した時、固有スキルのクリティカル率が３０%上昇する。"
             ],
             priority: 3
         },
@@ -1526,7 +1526,7 @@ const personaData = {
             name_jp: "八艘跳び",
             effect: "모든 적에게 공격력 15.0%의 물리 속성 대미지를 8회 주고, 적 1명당 해당 스킬 대미지가 5% 증가하며, 최대 15% 증가한다.",
             effect_en: "Deals 15.0% ATK Phys dmg to all foes 8 times. For every 1 foe, increases skill damage by 5%, up to 15%.",
-            effect_jp: "全ての敵に15.0% ATKの物理属性ダメージを8回与え、敵1体ごとに該当スキルダメージが5%増加し、最大15%増加する。",
+            effect_jp: "敵全体に攻撃力15.0%の物理属性ダメージを８回与える。敵が１体いるごとに、ダメージが５%上昇し、最大１５%まで上昇する。",
             priority: 3,
             icon: "물리광역"
         },

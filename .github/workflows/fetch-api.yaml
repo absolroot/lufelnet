@@ -35,7 +35,7 @@ jobs:
 
           # 엔드포인트와 리전 정의
           ENDPOINTS=("gacha" "guildboss" "sos")
-          REGIONS=("kr" "en" "cn" "tw" "jp")
+          REGIONS=("kr" "en" "cn" "tw" "jp", "sea")
 
           changed=0
 

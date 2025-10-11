@@ -1,0 +1,132 @@
+{
+  "data": {
+    "thief": [
+      {
+        "endTime": "2025-10-23 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Tropical Motoha",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Our Shining Summer",
+        "startTime": "2025-09-22 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-11-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Seaside Tomoko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Summer Breeze",
+        "startTime": "2025-10-09 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2025-10-23 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Colorful Coast",
+            "type": "weapon",
+            "user": "Motoha"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Bubble Puff Star",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-09-22 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2025-11-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Bubble Babies",
+            "type": "weapon",
+            "user": "Tomoko"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Ocean's Tidings",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-10-09 11:30:00",
+        "type": "Arms Deals"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -60,7 +60,7 @@ const characterData = {
         "tag":"총공격, 추가 효과",
         "tag_en": "All-Out Attack, Follow-Up",
         "tag_jp": "総攻撃、意識奏功",
-        "color": "#7eede6",
+        "color": "#82fae6",
         "main_revelation": ["예리"],
         "sub_revelation": ["풍족"],
         "element": "핵열",

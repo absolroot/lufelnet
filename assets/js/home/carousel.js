@@ -12,7 +12,7 @@
   const ROOT_ID = 'home-carousel-root';
   const REGIONS = ['cn', 'tw', 'sea', 'kr', 'en', 'jp'];
   const REGION_BASE_UTC = { cn: 8, tw: 8, sea: 8, kr: 9, en: 9, jp: 9 };
-  const SLIDE_INTERVAL_MS = 5000;
+  const SLIDE_INTERVAL_MS = 6000;
   const COUNTDOWN_INTERVAL_MS = 1000;
 
   const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
@@ -231,6 +231,91 @@
     return await res.json();
   }
 
+  async function fetchCustomSlides() {
+    try {
+      const url = `${BASE}/assets/js/home/custom-slides.json${APP_VER ? `?v=${APP_VER}` : ''}`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return [];
+      const data = await res.json().catch(() => []);
+      return Array.isArray(data) ? data : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function pickByLang(obj, baseKey, lang) {
+    const v_en = obj[`${baseKey}_en`];
+    const v_jp = obj[`${baseKey}_jp`];
+    const v_kr = obj[baseKey];
+    if (lang === 'en') return v_en || v_kr || v_jp || '';
+    if (lang === 'jp') return v_jp || v_kr || v_en || '';
+    return v_kr || v_en || v_jp || '';
+  }
+
+  function pickLinkByLang(item, lang) {
+    const l_en = item.link_en;
+    const l_jp = item.link_jp;
+    const l_kr = item.link;
+    if (lang === 'en') return l_en || l_kr || l_jp || '';
+    if (lang === 'jp') return l_jp || l_kr || l_en || '';
+    return l_kr || l_en || l_jp || '';
+  }
+
+  function isVisibleForLang(item, lang) {
+    try {
+      if (Array.isArray(item.visible_langs)) {
+        const arr = item.visible_langs.map(String).map(s => s.toLowerCase());
+        if (arr.length === 0) return false; // 빈 배열이면 어디에도 노출하지 않음
+        return arr.includes(lang);
+      }
+      const show_kr = item.show_kr;
+      const show_en = item.show_en;
+      const show_jp = item.show_jp;
+      if (lang === 'en' && typeof show_en === 'boolean') return show_en;
+      if (lang === 'jp' && typeof show_jp === 'boolean') return show_jp;
+      if (lang === 'kr' && typeof show_kr === 'boolean') return show_kr;
+    } catch(_) {}
+    return true; // default visible
+  }
+
+  function toAbsUrl(path) {
+    if (!path) return '';
+    const p = String(path);
+    if (/^https?:\/\//i.test(p)) return p;
+    if (p.startsWith('/')) return `${BASE}${p}`;
+    return `${BASE}/${p}`;
+  }
+
+  function mapCustomSlides(rawList) {
+    const lang = detectLang();
+    return (rawList || [])
+      .filter(item => isVisibleForLang(item, lang))
+      .map(item => {
+        const title = pickByLang(item, 'title', lang);
+        // support common misspelling 'subtilte'
+        const subtitle1 = pickByLang(item, 'subtitle', lang);
+        const subtitle2 = pickByLang(item, 'subtilte', lang);
+        const subtitle = subtitle1 || subtitle2;
+        const body = pickByLang(item, 'body', lang);
+        const color = item.color || null;
+        const image = item.image ? toAbsUrl(item.image) : null;
+        const bgImage = item.background_image ? toAbsUrl(item.background_image) : null;
+        const link = pickLinkByLang(item, lang) ? toAbsUrl(pickLinkByLang(item, lang)) : '';
+        const order = Number.isFinite(item.order) ? Number(item.order) : null;
+        return {
+          kind: 'custom',
+          name: title || '',
+          subtitle: subtitle || '',
+          body: body || '',
+          customColor: color,
+          customImage: image,
+          customBgImage: bgImage,
+          customLink: link,
+          order,
+        };
+      }).filter(x => x.name || x.subtitle || x.body);
+  }
+
   function mergeThiefByName(thiefArr) {
     const map = new Map();
     (thiefArr || []).forEach(entry => {
@@ -345,6 +430,8 @@
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
       .slide-fivestar { font-size: 0.95rem; opacity: 0.95; }
+      .slide-subtitle { font-size: 1.0rem; font-weight: 600; opacity: 0.95; }
+      .slide-body { font-size: 0.9rem; opacity: 0.9; }
       .slide-time { font-size: 0.9rem; opacity: 0.6; }
       .slide-countdown { font-size: 1rem; font-weight: 700; color: #ffd166; }
       .slide-right { position: relative; flex: 0 0 42%; min-width: 220px; max-width: 520px; display: block; z-index: 1; justify-content: center;}
@@ -359,7 +446,7 @@
       .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #666; cursor: pointer; }
       .carousel-dot.active { background: #fff; }
       .slide-bg { position: absolute; inset: 0; background: radial-gradient(120% 120% at 80% 100%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, rgba(0,0,0,0) 100%); }
-      .slide-link { position: absolute; inset: 0; z-index: 3; text-decoration: none; pointer-events: auto; }
+      .slide-link { position: absolute; inset: 0; z-index: 6; text-decoration: none; pointer-events: auto; }
       .slide-left, .slide-right { position: relative; z-index: 2; }
       @media (max-width: 768px) {
         .carousel-viewport { height: 250px; }
@@ -369,7 +456,7 @@
         .char-img.back { transform: translateY(-55%) scale(1.8); }
         .carousel-nav { display: none !important; }
         /* Ensure text above images on mobile */
-        .slide-left { z-index: 4; }
+        .slide-left { z-index: 2; }
         .slide-right { z-index: 2; height: 200px; width: 100%; }
         /* Shift images slightly more to the right to reveal text */
         .char-img { right: -6%; }
@@ -440,6 +527,9 @@
   function rgba(c, a) { return `rgba(${c.r}, ${c.g}, ${c.b}, ${a})`; }
 
   function getSlideBaseColor(slide) {
+    if (slide && slide.kind === 'custom' && slide.customColor) {
+      return parseHexColor(slide.customColor);
+    }
     const first = (slide.fiveStar || [])[0];
     if (!first) return null;
     const key = characterIndex.get(normalizeName(first.name));
@@ -457,12 +547,17 @@
 
     const bg = document.createElement('div');
     bg.className = 'slide-bg';
-    // color-based gradient if available
-    const baseColor = getSlideBaseColor(slide);
-    if (baseColor) {
-      const cStrong = rgba(baseColor, 0.45);
-      const cSoft = rgba(baseColor, 0.18);
-      bg.style.background = `radial-gradient(120% 120% at 80% 100%, ${cStrong}, ${cSoft} 60%, rgba(0,0,0,0) 100%)`;
+    // custom background image takes precedence
+    if (slide.kind === 'custom' && slide.customBgImage) {
+      bg.style.background = `url(${slide.customBgImage}) center/cover no-repeat`;
+    } else {
+      // color-based gradient if available
+      const baseColor = getSlideBaseColor(slide);
+      if (baseColor) {
+        const cStrong = rgba(baseColor, 0.6);
+        const cSoft = rgba(baseColor, 0.18);
+        bg.style.background = `radial-gradient(120% 120% at 80% 100%, ${cStrong}, ${cSoft} 60%, rgba(0,0,0,0) 100%)`;
+      }
     }
     el.appendChild(bg);
 
@@ -481,7 +576,14 @@
 
     const fivestarText = document.createElement('div');
     fivestarText.className = 'slide-fivestar';
-    if (slide.fiveStar && slide.fiveStar.length) {
+    if (slide.kind === 'custom') {
+      if (slide.subtitle) {
+        const sub = document.createElement('div');
+        sub.className = 'slide-subtitle';
+        sub.textContent = slide.subtitle;
+        fivestarText.appendChild(sub);
+      }
+    } else if (slide.fiveStar && slide.fiveStar.length) {
       const rawNames = slide.fiveStar.map(x => x.name);
       const uiLang = detectLang();
       const translated = rawNames.map(n => {
@@ -496,60 +598,79 @@
       }
     }
 
-    const time = document.createElement('div');
-    time.className = 'slide-time';
-    time.setAttribute('data-slide-index', String(index));
-
-    const countdown = document.createElement('div');
-    countdown.className = 'slide-countdown';
-    countdown.setAttribute('data-countdown-index', String(index));
+    let time, countdown, bodyLine;
+    if (slide.kind === 'custom') {
+      if (slide.body) {
+        bodyLine = document.createElement('div');
+        bodyLine.className = 'slide-body';
+        bodyLine.textContent = slide.body;
+      }
+    } else {
+      time = document.createElement('div');
+      time.className = 'slide-time';
+      time.setAttribute('data-slide-index', String(index));
+      countdown = document.createElement('div');
+      countdown.className = 'slide-countdown';
+      countdown.setAttribute('data-countdown-index', String(index));
+    }
 
     left.appendChild(name);
     // if (types.textContent) left.appendChild(types);
     // Stack title and fiveStar (no inline)
     left.appendChild(name);
     if (fivestarText.textContent) left.appendChild(fivestarText);
-    left.appendChild(time);
-    left.appendChild(countdown);
+    if (bodyLine) left.appendChild(bodyLine);
+    if (time) left.appendChild(time);
+    if (countdown) left.appendChild(countdown);
 
     const right = document.createElement('div');
     right.className = 'slide-right';
 
     // Limit images on mobile to 2
     const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
-    const imgs = (slide.fiveStar || []).slice(0, isMobile ? 2 : 3);
-    // Desired visual order for 3 images: 2(center),1(left),3(right) => indices [1,0,2]
-    const order = (imgs.length === 3) ? [0, 1, 2] : imgs.map((_, i) => i);
-    order.forEach((origIdx, posIdx) => {
-      const c = imgs[origIdx];
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.alt = c.name || 'character';
-      const src = getCharacterImageUrl(c.name);
-      if (!src) return; // hide if no image match
-      img.src = src;
-      img.className = 'char-img';
-      if (imgs.length === 1) {
-        img.style.right = '6%';
-        img.classList.add('front');
-      } else if (imgs.length === 2) {
-        if (posIdx === 0) { img.classList.add('back'); img.style.right = '20%'; }
-        else { img.classList.add('front'); img.style.right = '4%'; }
-      } else if (!isMobile && imgs.length === 3) {
-        // 3 images: give more spacing and allow left overlap on mobile
-        // order: center(front), left(back), right(back)
-        if (posIdx === 0) { img.classList.add('front', 'middle'); img.style.right = '6%'; }
-        else if (posIdx === 1) { img.classList.add('back'); img.style.right = '26%'; }
-        else { img.classList.add('back'); img.style.right = '-6%'; }
-      } else {
-        // mobile 2 images spacing
-        if (posIdx === 0) { img.classList.add('back'); img.style.right = '18%'; }
-        else { img.classList.add('front'); img.style.right = '-2%'; }
+    if (slide.kind === 'custom') {
+      if (slide.customImage) {
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = slide.name || 'banner';
+        img.src = slide.customImage;
+        img.className = 'char-img front middle';
+        img.onerror = function () { this.style.display = 'none'; };
+        right.appendChild(img);
       }
-      // On error: hide
-      img.onerror = function () { this.style.display = 'none'; };
-      right.appendChild(img);
-    });
+    } else {
+      const imgs = (slide.fiveStar || []).slice(0, isMobile ? 2 : 3);
+      // Desired visual order for 3 images: 2(center),1(left),3(right) => indices [1,0,2]
+      const order = (imgs.length === 3) ? [1, 0, 2] : imgs.map((_, i) => i);
+      order.forEach((origIdx, posIdx) => {
+        const c = imgs[origIdx];
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = c.name || 'character';
+        const src = getCharacterImageUrl(c.name);
+        if (!src) return; // hide if no image match
+        img.src = src;
+        img.className = 'char-img';
+        if (imgs.length === 1) {
+          img.style.right = '6%';
+          img.classList.add('front');
+        } else if (imgs.length === 2) {
+          if (posIdx === 0) { img.classList.add('back'); img.style.right = '20%'; }
+          else { img.classList.add('front'); img.style.right = '4%'; }
+        } else if (!isMobile && imgs.length === 3) {
+          // 3 images: center(front), left(back), right(back)
+          if (posIdx === 0) { img.classList.add('front', 'middle'); img.style.right = '6%'; }
+          else if (posIdx === 1) { img.classList.add('back'); img.style.right = '26%'; }
+          else { img.classList.add('back'); img.style.right = '-6%'; }
+        } else {
+          // mobile 2 images spacing
+          if (posIdx === 0) { img.classList.add('back'); img.style.right = '18%'; }
+          else { img.classList.add('front'); img.style.right = '-2%'; }
+        }
+        img.onerror = function () { this.style.display = 'none'; };
+        right.appendChild(img);
+      });
+    }
     if (!right.children.length) { right.style.display = 'none'; }
 
     // Adjust font-size based on number of characters
@@ -567,18 +688,26 @@
       fivestarText.style.fontSize = isMobileNow ? '0.85rem' : '0.85rem';
     }
 
-    // link overlay (use topKey mapping like image; no link if no mapping)
-    const names = (slide.fiveStar || []).map(x => x.name).filter(Boolean);
-    const mappedKeys = names.map(n => getCharacterTopKey(n)).filter(Boolean);
+    // link overlay
     let link = null;
-    if (names.length === 1 && mappedKeys.length === 1) {
-      link = document.createElement('a');
-      link.className = 'slide-link';
-      link.href = `${BASE}/character.html?name=${encodeURIComponent(mappedKeys[0])}`;
-    } else if (mappedKeys.length >= 1) {
-      link = document.createElement('a');
-      link.className = 'slide-link';
-      link.href = `${BASE}/character/`;
+    if (slide.kind === 'custom') {
+      if (slide.customLink) {
+        link = document.createElement('a');
+        link.className = 'slide-link';
+        link.href = slide.customLink;
+      }
+    } else {
+      const names = (slide.fiveStar || []).map(x => x.name).filter(Boolean);
+      const mappedKeys = names.map(n => getCharacterTopKey(n)).filter(Boolean);
+      if (names.length === 1 && mappedKeys.length === 1) {
+        link = document.createElement('a');
+        link.className = 'slide-link';
+        link.href = `${BASE}/character.html?name=${encodeURIComponent(mappedKeys[0])}`;
+      } else if (mappedKeys.length >= 1) {
+        link = document.createElement('a');
+        link.className = 'slide-link';
+        link.href = `${BASE}/character/`;
+      }
     }
 
     el.appendChild(left);
@@ -762,13 +891,16 @@
     root.appendChild(loading);
 
     try {
-      const data = await fetchGacha(state.region);
+      const [data, customRaw] = await Promise.all([
+        fetchGacha(state.region),
+        fetchCustomSlides(),
+      ]);
       const thief = (data && data.data && data.data.thief) ? data.data.thief : [];
       const merged = consolidateThiefByPrefixAndFiveStar(
         mergeThiefByName(thief)
       ).filter(x => Array.isArray(x.fiveStar) && x.fiveStar.length > 0);
       // Attach UTC times
-      const slides = merged.map(x => {
+      let slides = merged.map(x => {
         const startUTC = parseRegionLocalToUTC(x.startTime, state.region);
         const endUTC = parseRegionLocalToUTC(x.endTime, state.region);
         return {
@@ -777,6 +909,19 @@
           endUTC,
         };
       }).filter(x => x.startUTC && x.endUTC);
+
+      // Merge custom slides by order
+      const customSlides = mapCustomSlides(customRaw);
+      const withOrder = customSlides.filter(s => Number.isFinite(s.order));
+      const withoutOrder = customSlides.filter(s => !Number.isFinite(s.order));
+      withOrder.sort((a, b) => a.order - b.order);
+      withOrder.forEach(s => {
+        const idx = Math.max(0, Math.min(s.order, slides.length));
+        slides.splice(idx, 0, s);
+      });
+      for (let i = withoutOrder.length - 1; i >= 0; i--) {
+        slides.unshift(withoutOrder[i]);
+      }
 
       state.slides = slides;
       state.currentIndex = 0;

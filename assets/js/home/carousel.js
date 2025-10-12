@@ -517,6 +517,9 @@
       state.region = newRegion;
       saveRegion(newRegion);
       await reloadSlides();
+      // sync bosses section
+      try { if (window.reloadHomeBosses) window.reloadHomeBosses(); } catch (_) {}
+      try { if (window.reloadHomeSOS) window.reloadHomeSOS(); } catch (_) {}
     });
 
     utcSelect.addEventListener('change', () => {
@@ -665,16 +668,16 @@
         img.src = src;
         img.className = 'char-img';
         if (imgs.length === 1) {
-          img.style.right = '6%';
+          img.style.right = '16%';
           img.classList.add('front');
         } else if (imgs.length === 2) {
           if (posIdx === 0) { img.classList.add('back'); img.style.right = '20%'; }
           else { img.classList.add('front'); img.style.right = '4%'; }
         } else if (!isMobile && imgs.length === 3) {
           // 3 images: center(front), left(back), right(back)
-          if (posIdx === 0) { img.classList.add('front', 'middle'); img.style.right = '6%'; }
-          else if (posIdx === 1) { img.classList.add('back'); img.style.right = '26%'; }
-          else { img.classList.add('back'); img.style.right = '-6%'; }
+          if (posIdx === 0) { img.classList.add('front', 'middle'); img.style.right = '16%'; }
+          else if (posIdx === 1) { img.classList.add('back'); img.style.right = '36%'; }
+          else { img.classList.add('back'); img.style.right = '4%'; }
         } else {
           // mobile 2 images spacing
           if (posIdx === 0) { img.classList.add('back'); img.style.right = '18%'; }

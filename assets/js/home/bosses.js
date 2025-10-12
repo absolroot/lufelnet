@@ -165,7 +165,7 @@
       .boss-name .boss-lv { opacity:.65; font-weight:600; }
       .boss-affix { font-size:.92rem; opacity:.95; margin-bottom:0px; }
       .boss-affix-list { display:flex; gap:6px; flex-wrap:wrap; margin: 2px 0 0px; }
-      .affix-chip { display:inline-flex; align-items:center; padding:2px 6px; border:1px solid #333; border-radius:6px; background: rgba(0, 0, 0, 0.3); font-size:.86rem; }
+      .affix-chip { display:inline-flex; align-items:center; padding:2px 6px; border:1px solid #333; border-radius:6px; background: rgba(0, 0, 0, 0.3); font-size:.8rem; }
       .boss-elements { margin-top:0px; display:flex; justify-content:center; }
       .elements-line { position: relative; display:inline-block; height: 40px; }
       .elements-line img.elements-sprite { height: 32px; display:block; }

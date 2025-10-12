@@ -59,7 +59,7 @@
         jp: {
             character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
-            materialCalc: '育成', defenseCalc: '防御力減少', criticalCalc: 'クリティカル',
+            materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
             tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー'
         }

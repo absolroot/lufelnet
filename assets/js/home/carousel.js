@@ -916,15 +916,24 @@
         mergeThiefByName(thief)
       ).filter(x => Array.isArray(x.fiveStar) && x.fiveStar.length > 0);
       // Attach UTC times
-      let slides = merged.map(x => {
+      let slides = merged.map((x, idx) => {
         const startUTC = parseRegionLocalToUTC(x.startTime, state.region);
         const endUTC = parseRegionLocalToUTC(x.endTime, state.region);
         return {
           ...x,
           startUTC,
           endUTC,
+          __origIndex: idx,
         };
       }).filter(x => x.startUTC && x.endUTC);
+
+      // Order by most recent start time first; keep original order when equal
+      slides.sort((a, b) => {
+        const ta = a.startUTC.getTime();
+        const tb = b.startUTC.getTime();
+        if (tb !== ta) return tb - ta; // newer first
+        return a.__origIndex - b.__origIndex; // stable for equal times
+      });
 
       // Merge custom slides by order
       const customSlides = mapCustomSlides(customRaw, state.region);

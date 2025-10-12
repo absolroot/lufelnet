@@ -431,7 +431,7 @@
     root.__carouselStylesInjected = true;
     const style = document.createElement('style');
     style.textContent = `
-      .carousel-container { position: relative; width: 100%; margin: 0px 0 0px 0; overflow: hidden; border-radius: 10px; background: #0e0e0e; }
+      .carousel-container { position: relative; width: 100%; margin: 0px 0 0px 0; overflow: hidden; border-radius: 10px 10px 0 0; background: #0e0e0e; }
       .carousel-toolbar { position: relative; display: flex; gap: 8px; padding: 8px 12px; justify-content: flex-end; align-items: center; background: rgb(42,33,33); }
       .carousel-toolbar select { background:rgba(31, 31, 31, 0.5); color: #fff; border: 1px solid #333; border-radius: 6px; padding: 6px 8px; font-size: 11px; }
       .carousel-viewport { position: relative; width: 100%; height: 300px; }

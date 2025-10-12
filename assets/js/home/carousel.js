@@ -286,10 +286,23 @@
     return `${BASE}/${p}`;
   }
 
-  function mapCustomSlides(rawList) {
+  function isVisibleForRegion(item, region) {
+    try {
+      if (Array.isArray(item.regions)) {
+        if (item.regions.length === 0) return false;
+        return item.regions.map(String).map(s => s.toLowerCase()).includes(String(region).toLowerCase());
+      }
+      if (typeof item.region === 'string' && item.region.trim()) {
+        return String(item.region).toLowerCase() === String(region).toLowerCase();
+      }
+    } catch(_) {}
+    return true;
+  }
+
+  function mapCustomSlides(rawList, currentRegion) {
     const lang = detectLang();
     return (rawList || [])
-      .filter(item => isVisibleForLang(item, lang))
+      .filter(item => isVisibleForLang(item, lang) && isVisibleForRegion(item, currentRegion))
       .map(item => {
         const title = pickByLang(item, 'title', lang);
         // support common misspelling 'subtilte'
@@ -426,7 +439,7 @@
       .carousel-track { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; transition: transform 450ms ease; }
       .carousel-slide { position: relative; min-width: 100%; height: 100%; display: flex; align-items: stretch; color: #fff; overflow: hidden; }
       .slide-left { flex: 1 1 58%; min-width: 0; padding: 64px; display: flex; flex-direction: column; gap: 10px; z-index: 2; justify-content: center; }
-      .slide-name { font-size: 1.4rem; font-weight: 800; }
+      .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.8); }
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
       .slide-fivestar { font-size: 0.95rem; opacity: 0.95; }
@@ -911,7 +924,7 @@
       }).filter(x => x.startUTC && x.endUTC);
 
       // Merge custom slides by order
-      const customSlides = mapCustomSlides(customRaw);
+      const customSlides = mapCustomSlides(customRaw, state.region);
       const withOrder = customSlides.filter(s => Number.isFinite(s.order));
       const withoutOrder = customSlides.filter(s => !Number.isFinite(s.order));
       withOrder.sort((a, b) => a.order - b.order);

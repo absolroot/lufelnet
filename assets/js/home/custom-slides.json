@@ -3,13 +3,18 @@
       "kind": "custom",
       "order": 0,
       "title": "오만의 팰리스 - 가면 배우의 인연",
+      "title_en": "The Masked Actor's Fate",
+      "title_jp": "仮面バレイの運命",
       "subtitle": "V4.5 UPDATE",
       "body": "메인 스토리 업데이트",
+      "body_en": "Main story update",
+      "body_jp": "メインストーリーの更新",
       "image": "/assets/img/home/banner/wonder3.png",
       "background_image": "/assets/img/home/banner/luce-main-bg01ver3.webp",
       "color": "#e91e63",
       "link": "",
-      "visible_langs": ["kr"]  
+      "visible_langs": ["kr","en","jp"],
+      "regions": ["kr","cn","tw"]  
     },
     {
       "kind": "custom",

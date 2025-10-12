@@ -43,7 +43,7 @@
             start: 'Get Data',
             clear: 'Clear',
             infoReady: 'Paste your gacha records URL and press Fetch.',
-            infoNotice: 'Only the last 90 days of records can be fetched. Older records are not provided by game servers.\nIf you have many pulls, loading may take 5+ minutes. Each URL has an expiration date and must be refetched when it expires.\n※ Adding new records is currently unstable. Please export data to preserve it before submitting additional URLs.',
+            infoNotice: 'Only the last 90 days of records can be fetched. Older records are not provided by game servers.\nIf you have many pulls, loading may take 5+ minutes. Each URL has an expiration date and must be refetched when it expires.\n<div style="color:#fffff1;"><b>※ Adding new records is currently unstable. Please export data to preserve it before submitting additional URLs.</b></div>',
             loadingTitle: 'Fetching records from the server...',
             loadingDetail: 'Depending on network and server load, it can take some time.',
             noticeLong: 'If you have many pulls in the last 90 days, it may take 10+ minutes. Please keep the browser open during processing.',

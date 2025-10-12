@@ -91,7 +91,7 @@
 
   // elements sprite offsets (borrowed from cha_detail.js logic)
   function elementOffsetPx(krName) {
-    const map = { '물리': 15, '총격': 43, '화염': 75, '빙결': 100, '전격': 124, '질풍': 149, '염동': 175, '핵열': 203, '축복': 235, '주원': 263 };
+    const map = { '물리': 15, '총격': 43, '화염': 75, '빙결': 100, '전격': 124, '질풍': 149, '염동': 175, '핵열': 205, '축복': 235, '주원': 263 };
     return map[krName] || 0;
   }
   const elementNameMap = {

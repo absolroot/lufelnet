@@ -130,7 +130,7 @@
           const build = (typeof window.buildAdaptSprite === 'function') ? window.buildAdaptSprite : (function(){
             const elementNameMap = { Phys:'물리', Gun:'총격', Fire:'화염', Ice:'빙결', Electric:'전격', Wind:'질풍', Psychokinesis:'염동', Nuclear:'핵열', Bless:'축복', Curse:'주원' };
             const ADAPT_LABELS = { Weak:{kr:'약',en:'Wk',jp:'弱',cls:'weak'}, Resistant:{kr:'내',en:'Res',jp:'耐',cls:'res'}, Nullify:{kr:'무',en:'Nul',jp:'無',cls:'nul'}, Absorb:{kr:'흡',en:'Abs',jp:'吸',cls:'abs'}, Reflect:{kr:'반',en:'Rpl',jp:'反',cls:'rpl'} };
-            function elementOffsetPx(kr){ const map={ '물리':15, '총격':43, '화염':75, '빙결':100, '전격':124, '질풍':149, '염동':175, '핵열':203, '축복':235, '주원':263 }; return map[kr]||0; }
+            function elementOffsetPx(kr){ const map={ '물리':15, '총격':43, '화염':75, '빙결':100, '전격':124, '질풍':149, '염동':175, '핵열':205, '축복':235, '주원':263 }; return map[kr]||0; }
             return function localBuild(ad){ const l=detectLang(); const wrap=document.createElement('div'); wrap.className='elements-line'; const img=document.createElement('img'); img.className='elements-sprite'; img.alt='elements'; img.src=`${BASE}/assets/img/character-detail/elements.png`; wrap.appendChild(img); Object.keys(ADAPT_LABELS).forEach(k=>{ const list=(ad&&ad[k])||[]; const info=ADAPT_LABELS[k]; const text=(l==='en'?info.en:(l==='jp'?info.jp:info.kr)); list.forEach(en=>{ const kr=elementNameMap[en]||en; const x=elementOffsetPx(kr); const mark=document.createElement('span'); mark.className=`el-mark ${info.cls}`; mark.textContent=text; mark.title=`${k}: ${kr}`; mark.style.left=`${x}px`; if (text.length<=3) mark.classList.add('short'); wrap.appendChild(mark); }); }); return wrap; };
           })();
           right.appendChild(build(adapt));

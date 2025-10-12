@@ -881,7 +881,7 @@ const defenseCalcData = {
             },
             defaultOption: "LV13(의식5)+심상5",
             value: 93.1,
-            duration: "2턴",
+            duration: "3턴",
             note: ""
         },
         {
@@ -903,7 +903,7 @@ const defenseCalcData = {
             },
             defaultOption: "LV13(의식5)+심상5",
             value: 46.6,
-            duration: "2턴",
+            duration: "3턴",
             note: ""
         },
     ],

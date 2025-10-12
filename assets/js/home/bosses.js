@@ -155,13 +155,13 @@
       .bosses-mode { margin:6px 0 12px; opacity:.95; display:grid; grid-template-columns: 1fr; grid-auto-rows: auto; grid-row-gap: 2px; align-items: center; justify-items: start; }
       .bosses-mode-name { font-weight:700; grid-column: 1; }
       .bosses-countdown.local { grid-column: 1; justify-self: end; }
-      .bosses-mode-detail { font-size:.9rem; opacity:.75; margin-top:2px; grid-column: 1 / -1; }
+      .bosses-mode-detail { font-size:.9rem; opacity:.75; margin-top:10px; grid-column: 1 / -1; }
       .boss-item { padding:12px; background:rgba(0, 0, 0, 0.3); border:1px solid #2a2a2a; border-radius:8px; }
       .boss-row { display:flex; flex-direction:column; gap:8px; }
       .boss-left { display:flex; align-items:center; flex-direction:column;}
       @media (min-width:1200px) { .boss-row { display:grid; grid-template-columns: 1fr; align-items:center; } .boss-left { gap:10px;} .boss-affix-list { margin:0; } .bosses-mode { grid-template-columns: minmax(0,1fr) auto; grid-row-gap: 0; } .bosses-countdown.local { grid-column: 2; align-self: center; } }
       @media (max-width: 1199px) { .bosses-countdown.local { justify-self: start !important; text-align: left !important; font-size: 0.8rem; } }
-      .boss-name { font-weight:700; margin-bottom:0px; }
+      .boss-name { font-weight:700; margin-bottom:0px; font-size: 15px;}
       .boss-name .boss-lv { opacity:.65; font-weight:600; }
       .boss-affix { font-size:.92rem; opacity:.95; margin-bottom:0px; }
       .boss-affix-list { display:flex; gap:6px; flex-wrap:wrap; margin: 2px 0 0px; }

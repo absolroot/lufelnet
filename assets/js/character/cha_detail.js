@@ -334,18 +334,72 @@ document.addEventListener('DOMContentLoaded', () => {
             return elementPositions[elementType] || 0;
         }
 
+        // 요소 라벨 스타일 주입 (EN/JP에서 텍스트 배지 사용)
+        function ensureCharElementStyles() {
+            if (document.getElementById('char-elements-style')) return;
+            const s = document.createElement('style');
+            s.id = 'char-elements-style';
+            s.textContent = `
+                .char-el-badge { position:absolute; top:36px; transform: translateX(-50%) skew(0deg); font-style: italic; font-weight:900; font-size:14px; color:#fff; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 2px #000; pointer-events: none; }
+                .char-el-badge.res { color:#bbb; }
+                .char-el-badge.weak { color:#fff; }
+                @media (max-width: 768px) { .char-el-badge { font-size:12px; top:22px; } }
+            `;
+            document.head.appendChild(s);
+        }
+
         // 캐릭터 데이터 로드 후 실행되는 부분에 추가
         const resistanceIcon = document.querySelector('.resistance-icon');
         const weaknessIcon = document.querySelector('.weakness-icon');
 
-        if (resistanceIcon && character.element_resistance) {
-            resistanceIcon.style.display = 'block';
-            resistanceIcon.style.left = setElementPositions(character.element_resistance) + 'px';
-        }
-
-        if (weaknessIcon && character.element_weakness) {
-            weaknessIcon.style.display = 'block';
-            weaknessIcon.style.left = setElementPositions(character.element_weakness) + 'px';
+        // 언어별 표시: KR은 기존 아이콘, EN/JP는 텍스트 배지로 표기
+        const langForEl = getCurrentLanguage();
+        const useTextBadge = (langForEl === 'en' || langForEl === 'jp');
+        const parentEl = (resistanceIcon && resistanceIcon.parentElement) || (weaknessIcon && weaknessIcon.parentElement) || null;
+        if (useTextBadge) {
+            ensureCharElementStyles();
+            // 기존 아이콘 숨기기
+            if (resistanceIcon) resistanceIcon.style.display = 'none';
+            if (weaknessIcon) weaknessIcon.style.display = 'none';
+            if (parentEl) {
+                try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch(_) {}
+                // 기준 top 읽기 (아이콘 top과 정렬 시도)
+                let baseTop = '36px';
+                try {
+                    const ref = (resistanceIcon && window.getComputedStyle(resistanceIcon).top) || (weaknessIcon && window.getComputedStyle(weaknessIcon).top) || '';
+                    if (ref && ref !== 'auto') baseTop = ref;
+                } catch(_) {}
+                // 라벨 텍스트
+                const RES_TXT = (langForEl === 'en') ? 'Res' : (langForEl === 'jp' ? '耐' : '내');
+                const WK_TXT  = (langForEl === 'en') ? 'Wk'  : (langForEl === 'jp' ? '弱' : '약');
+                if (character.element_resistance) {
+                    const el = document.createElement('span');
+                    el.className = 'char-el-badge res';
+                    el.textContent = RES_TXT;
+                    el.style.left = (setElementPositions(character.element_resistance)+ 10) + 'px'; // + 10px
+                    el.style.top = baseTop;
+                    parentEl.appendChild(el);
+                }
+                if (character.element_weakness) {
+                    const el = document.createElement('span');
+                    el.className = 'char-el-badge weak';
+                    el.textContent = WK_TXT;
+                    el.style.left = (setElementPositions(character.element_weakness)+ 10) + 'px'; // + 10px
+                    el.style.top = baseTop;
+                    parentEl.appendChild(el);
+                }
+            }
+        } else {
+            // 한국어: 기존 아이콘 사용, 텍스트 배지 제거
+            if (parentEl) { try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch(_) {} }
+            if (resistanceIcon && character.element_resistance) {
+                resistanceIcon.style.display = 'block';
+                resistanceIcon.style.left = setElementPositions(character.element_resistance) + 'px';
+            }
+            if (weaknessIcon && character.element_weakness) {
+                weaknessIcon.style.display = 'block';
+                weaknessIcon.style.left = setElementPositions(character.element_weakness) + 'px';
+            }
         }
 
         // 계시 툴팁 적용

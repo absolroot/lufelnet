@@ -54,6 +54,15 @@ const characterData = {
         "name_en": "Wonder",
         "name_jp": "主人公"
     },
+    "미츠루": {
+        "limit": true,
+        "role": "",
+        "tag":"",
+        "color": "rgb(115, 180, 255)",
+        "codename": "MITSURU",
+        "name_en": "Kirijo Mitsuru",
+        "name_jp": "きりじょう みつる"
+    },
     "YUI·스텔라": {
         "limit": true,
         "role": "총공격 핵열 딜러",

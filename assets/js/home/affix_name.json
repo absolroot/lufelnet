@@ -1,0 +1,62 @@
+[
+    {
+        "description": "Foes' damage taken is increased by 6% for each debuff they are inflicted with, up to 30%.",
+        "name": "Debuff Domain"
+    },
+    {
+        "description": "Party's Curse damage is increased by 20%.",
+        "name": "Curse Domain"
+    },
+    {
+        "description": "Party's Fire damage is increased by 20%.",
+        "name": "Fire Domain"
+    },
+    {
+        "description": "Party's Wind damage is increased by 20%.",
+        "name": "Wind Domain"
+    },
+    {
+        "description": "Party's Ice damage is increased by 20%.",
+        "name": "Ice Domain"
+    },
+    {
+        "description": "Party's Electric damage is increased by 20%.",
+        "name": "Electric Domain"
+    },
+    {
+        "description": "Party's Psy damage is increased by 20%.",
+        "name": "Psy Domain"
+    },
+    {
+        "description": "Party's Nuclear damage is increased by 20%.",
+        "name": "Nuclear Domain"
+    },
+    {
+        "description": "Party's Bless damage is increased by 20%.",
+        "name": "Bless Domain"
+    },
+    {
+        "description": "Party's Gun damage is increased by 20%.",
+        "name": "Gun Domain"
+    },
+    {
+        "description": "Party's Physical damage is increased by 20%.",
+        "name": "Physical Domain"
+    },
+    {
+        "description": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
+        "name": "Berserk"
+    },
+    {
+        "description": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+        "name": "Gurdians & Medics"
+    },
+    {
+        "description": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+        "name": "Critical Stability"
+    },
+    {
+        "description": "After the boss takes an action, all allies are inflicted with Intimidation. When Intimidation is removed, all foes are inflicted with Intimidation.\nIntimidation: Defense decreases by 10%, up to 50%.",
+        "name": "Intimidation"
+    }
+]

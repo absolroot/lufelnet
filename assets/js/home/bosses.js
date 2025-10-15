@@ -11,6 +11,43 @@
   // timers
   let bossesCountdownTimer = null;
 
+  // affix description -> specific name map
+  let affixDescToName = null;
+  let affixMapLoaded = null;
+
+  function normalizeDesc(s) {
+    try { return String(s || '').replace(/\r\n/g, '\n').trim(); } catch (_) { return ''; }
+  }
+
+  async function loadAffixMap() {
+    if (affixDescToName) return affixDescToName;
+    if (!affixMapLoaded) {
+      affixMapLoaded = (async () => {
+        try {
+          const url = `${BASE}/assets/js/home/affix_name.json${APP_VER ? `?v=${APP_VER}` : ''}`;
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error('Failed to load affix_name.json');
+          const list = await res.json();
+          const map = {};
+          (list || []).forEach(it => {
+            const desc = normalizeDesc(it && it.description);
+            const name = (it && it.name) || '';
+            if (desc && name) {
+              map[desc] = name;
+            }
+          });
+          affixDescToName = map;
+          return affixDescToName;
+        } catch (e) {
+          try { console.error(e); } catch(_) {}
+          affixDescToName = {};
+          return affixDescToName;
+        }
+      })();
+    }
+    return await affixMapLoaded;
+  }
+
   function pad2(n) { return n < 10 ? '0' + n : '' + n; }
 
   function mapLangToRegion(lang) {
@@ -191,7 +228,7 @@
     return '흉몽의 문';
   }
 
-  function renderGuildBoss(root, data, region) {
+  function renderGuildBoss(root, data, region, affixMap) {
     injectStyles();
     const lang = detectLang();
     let card = root.querySelector('.bosses-card');
@@ -267,7 +304,13 @@
         if (!a || !a.name) return;
         const chip = document.createElement('span');
         chip.className = 'affix-chip';
-        chip.textContent = a.name;
+        let displayName = a.name;
+        if (displayName === 'Special Effect') {
+          const key = normalizeDesc(a.detail || a.description || '');
+          const map = affixMap || affixDescToName || {};
+          if (key && map[key]) displayName = map[key];
+        }
+        chip.textContent = displayName;
         if (a.detail) chip.setAttribute('data-tooltip', a.detail);
         affixList.appendChild(chip);
       });
@@ -331,8 +374,11 @@
     if (!root) return;
     try {
       const region = loadRegion();
-      const data = await fetchGuildBoss(region);
-      renderGuildBoss(root, data, region);
+      const [affixMap, data] = await Promise.all([
+        loadAffixMap(),
+        fetchGuildBoss(region)
+      ]);
+      renderGuildBoss(root, data, region, affixMap);
     } catch (e) {
       // eslint-disable-next-line no-console
       try { console.error(e); } catch(_) {}
@@ -345,8 +391,11 @@
     if (!root) return;
     try {
       const region = loadRegion();
-      const data = await fetchGuildBoss(region);
-      renderGuildBoss(root, data, region);
+      const [affixMap, data] = await Promise.all([
+        loadAffixMap(),
+        fetchGuildBoss(region)
+      ]);
+      renderGuildBoss(root, data, region, affixMap);
     } catch (e) { try { console.error(e); } catch(_) {} }
   };
 

@@ -5,43 +5,43 @@
     },
     {
         "description": "Party's Curse damage is increased by 20%.",
-        "name": "Curse Domain"
+        "name": "Curse +"
     },
     {
         "description": "Party's Fire damage is increased by 20%.",
-        "name": "Fire Domain"
+        "name": "Fire +"
     },
     {
         "description": "Party's Wind damage is increased by 20%.",
-        "name": "Wind Domain"
+        "name": "Wind +"
     },
     {
         "description": "Party's Ice damage is increased by 20%.",
-        "name": "Ice Domain"
+        "name": "Ice +"
     },
     {
         "description": "Party's Electric damage is increased by 20%.",
-        "name": "Electric Domain"
+        "name": "Electric +"
     },
     {
         "description": "Party's Psy damage is increased by 20%.",
-        "name": "Psy Domain"
+        "name": "Psy +"
     },
     {
         "description": "Party's Nuclear damage is increased by 20%.",
-        "name": "Nuclear Domain"
+        "name": "Nuclear +"
     },
     {
         "description": "Party's Bless damage is increased by 20%.",
-        "name": "Bless Domain"
+        "name": "Bless +"
     },
     {
         "description": "Party's Gun damage is increased by 20%.",
-        "name": "Gun Domain"
+        "name": "Gun +"
     },
     {
         "description": "Party's Physical damage is increased by 20%.",
-        "name": "Physical Domain"
+        "name": "Physical +"
     },
     {
         "description": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
@@ -52,11 +52,27 @@
         "name": "Gurdians & Medics"
     },
     {
+        "description": "Sweeper allies' damage is increased by 20%.",
+        "name": "Sweeper +"
+    },
+    {
+        "description": "Assassin allies' damage is increased by 20%.",
+        "name": "Assassin +"
+    },
+    {
+        "description": "Foes' damage taken is increased by 10% for each elemental ailment they have, up to 40%.",
+        "name": "Elemental Ailment"
+    },
+    {
         "description": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
         "name": "Critical Stability"
     },
     {
         "description": "After the boss takes an action, all allies are inflicted with Intimidation. When Intimidation is removed, all foes are inflicted with Intimidation.\nIntimidation: Defense decreases by 10%, up to 50%.",
         "name": "Intimidation"
+    },
+    {
+        "description": "When any ally receives healing, their final damage is increased by 8%. Lasts for 2 turns. Stacks up to 4 times.",
+        "name": "Healing"
     }
 ]

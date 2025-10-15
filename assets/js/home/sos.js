@@ -74,6 +74,13 @@
 
   function renderSOS(container, data, region){
     const lang = detectLang();
+    // ensure style for score ratio chip
+    if (!document.getElementById('sos-extra-style')) {
+      const s = document.createElement('style');
+      s.id = 'sos-extra-style';
+      s.textContent = `.boss-score-ratio{ color:#ffd166; font-weight:700; margin-left:6px; }`;
+      document.head.appendChild(s);
+    }
     // Reuse existing card if present (unified Boss card)
     let card = container.querySelector('.bosses-card');
     let hadCountdown = !!(card && card.querySelector('#bosses-countdown'));
@@ -119,7 +126,11 @@
       const item=document.createElement('div'); item.className='boss-item';
       const row=document.createElement('div'); row.className='boss-row';
       const left=document.createElement('div'); left.className='boss-left';
-      const head=document.createElement('div'); head.className='boss-name'; head.textContent=name; left.appendChild(head);
+      const head=document.createElement('div'); head.className='boss-name'; head.textContent=name; 
+      // score ratio badge (e.g., × 2.5)
+      const ratio = (typeof b.scoreRatio !== 'undefined' && b.scoreRatio !== null) ? String(b.scoreRatio) : '';
+      if (ratio) { const r=document.createElement('span'); r.className='boss-score-ratio'; r.textContent=`× ${ratio}`; head.appendChild(r); }
+      left.appendChild(head);
 
       // reuse adapt sprite if provided
       const adapt = (enemy && enemy.adapt) || {};

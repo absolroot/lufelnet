@@ -44,7 +44,8 @@ const mapping_en = {
     "분쟁": "Strife",
     "개선": "Success",
     "좌절": "Defeat",
-    "풍족": "Satiety"
+    "풍족": "Satiety",
+    "획득": "Obtain"
 };
 
 // English revelation data
@@ -97,10 +98,11 @@ const enRevelationData = {
         "분쟁": "Strife",
         "개선": "Success",
         "좌절": "Defeat",
-        "풍족": "Satiety"
+        "풍족": "Satiety",
+        "획득": "Obtain"
     },
     "main": {
-        "Perseverance" : ["Sorrow","Transformation"],
+        "Perseverance" : ["Sorrow","Transformation","Obtain"], //돌파
         "Hope" : ["Labor","Fixation","Transformation"],
         "Creation": ["Worry","Reconcilation"],
         "Awareness": ["Truth","Control","Hindrance"],
@@ -144,7 +146,8 @@ const enRevelationData = {
         "Strife": ["Acceptance"],
         "Success": ["Freedom"],
         "Defeat": ["Freedom"],
-        "Satiety": ["Agility"]
+        "Satiety": ["Agility"],
+        "Obtain": ["Perseverance"]
     },
     "sub_effects": {
         "Control": { // 주권
@@ -281,12 +284,18 @@ const enRevelationData = {
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 2 turns; Gain this effect again when using a Follow Up Skill.",
             "type": ["추가 효과", "미출시"]
+        },
+        "Obtain": { // 획득
+            "set2": "Increase ATK by 12%.",
+            "set4": "When cast a skill that reduces health, increase damage by 12% for 2 turns, up to 2 stacks.",
+            "type": ["미출시"]
         }
     },
     "set_effects": {
         "Perseverance": {
             "Transformation": "Each enemy on field increases your electric damage by 8%, up to 32%.",
             "Sorrow": "Increase damage over time by 16%.",
+            "Obtain": "Increase ATK based on your HP%, when HP% is 40%, increase ATK by 40%.",
             "type": ["미출시"]
         },
         "Hope": {

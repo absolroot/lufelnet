@@ -3,6 +3,12 @@ const operationData = {
         basic: [],
         note: []
     },
+    "미츠루2": {
+        basic: [
+            { label: "의식 0", value: "2+1 › 3+TH › 1 › 3+TH › 1 › 3+TH" },
+        ],
+        note: []
+    },
     "YUI·스텔라": {
         basic: [
             { label: "의식 0", value: "2+1 › 3 › 2+1 › 3 › 2+1 › 3" },

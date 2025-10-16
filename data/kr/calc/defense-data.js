@@ -662,6 +662,49 @@ const defenseCalcData = {
             note_jp: "축복"
         },
     ],
+    "미츠루":[
+        {
+            id: "mitsuru1",
+            type: "스킬1",
+            target: "단일",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/빙결.png`,
+            skillName: "화려한 얼음꽃",
+            options: ["LV10","LV10+심상5","LV10+심상5(의식1)","LV13+심상5","LV13+심상5(의식6)"],
+            values: {
+                "LV10": 35.14,
+                "LV10+심상5": 38.74,
+                "LV10+심상5(의식1)": 64.56,
+                "LV13+심상5": 68.16,
+                "LV13+심상5(의식6)": 81.79
+            },
+            defaultOption: "LV13+심상5(의식6)",
+            value: 81.79,
+            duration: "-",
+            note: "",
+            note_en: "",
+            note_jp: ""
+        },
+        {
+            id: "mitsuru2",
+            type: "스킬2",
+            target: "단일",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/빙결.png`,
+            skillName: "극한의 폭풍",
+            options: ["LV10","LV10+심상5","LV10+심상5(의식1)","LV13+심상5","LV13+심상5(의식6)"],
+            values: {
+                "LV10": 39.03,
+                "LV10+심상5": 43.03,
+                "LV13": 41.45,
+                "LV13+심상5": 45.45
+            },
+            defaultOption: "LV13+심상5",
+            value: 45.45,
+            duration: "-",
+            note: "",
+            note_en: "",
+            note_jp: ""
+        }
+    ],
     "카타야마":[
         {
             id: "katayama1",
@@ -875,7 +918,7 @@ const defenseCalcData = {
                 "LV10": 60.8,
                 "LV10+심상5": 65.7,
                 "LV13": 75.4,
-                "LV13+심상5": 80.3,
+                "LV13+심상5": 80.26,
                 "LV13(의식5)": 87.5,
                 "LV13(의식5)+심상5": 93.1
             },
@@ -897,12 +940,12 @@ const defenseCalcData = {
                 "LV10": 30.4,
                 "LV10+심상5": 32.8,
                 "LV13": 37.7,
-                "LV13+심상5": 40.1,
+                "LV13+심상5": 40.13,
                 "LV13(의식5)": 43.7,
-                "LV13(의식5)+심상5": 46.6
+                "LV13(의식5)+심상5": 46.55
             },
             defaultOption: "LV13(의식5)+심상5",
-            value: 46.6,
+            value: 46.55,
             duration: "3턴",
             note: ""
         },

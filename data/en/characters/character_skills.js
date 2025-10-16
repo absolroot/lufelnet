@@ -2,6 +2,9 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "미츠루": {
+
+    },
     "YUI·스텔라": {
         "name": "YUI·Prism",
         "skill1": {

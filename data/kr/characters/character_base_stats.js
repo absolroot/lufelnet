@@ -15,7 +15,7 @@ const basicStatsData = {
         sp_recover: 0,
         HP_recover: 0
     },
-    "미츠루2": {
+    "미츠루": {
         a0_lv1: {
             HP: 311,
             SP: 100.0,

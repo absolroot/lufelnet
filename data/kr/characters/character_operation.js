@@ -3,7 +3,7 @@ const operationData = {
         basic: [],
         note: []
     },
-    "미츠루2": {
+    "미츠루": {
         basic: [
             { label: "의식 0", value: "2+1 › 3+TH › 1 › 3+TH › 1 › 3+TH" },
         ],
@@ -51,7 +51,7 @@ const operationData = {
         basic: [
             { label: "의식 0", value: "1 › 2 › 2 › 3 › 3 › 3" },
             { label: "의식 1", value: "1 › 2 › 1 › 3 › 3 › 3" },
-            { label: "의식 6", value: "1+1 › 2+2 › 3 › 3 › 3 › 3+3" },
+            { label: "의식 6", value: "2+2 › 1+1 › 3 › 3 › 3 › 3+3" },
         ],
         note: [
             "· 전용 무기 및 기본 크리티컬 확률이 높아 파티에 따라 크리티컬 확률 조정",

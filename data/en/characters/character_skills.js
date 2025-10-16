@@ -14,7 +14,7 @@ const enCharacterSkillsData = {
         },
         "skill2": {
             "name": "Arctic Storm",
-            "element": "빙결", 
+            "element": "버프", 
             "type": "단일피해",
             "sp": 0, 
             "description": "Inflict 1 foe with [Queen's Gaze]. Decrease DEF by 7.8%/8.6%/8.3%/9.1%, also decrease Defense by 3.2% for every 300 Attack (up to 2928/3228/3108/3408 Attack) and increase damage taken by 2% for every every 300 Attack (up to 2928/3228/3108/3408 Attack). This effect is permanent. Only 1 [Queen's Gaze] can be active. When selecting a new target, pass [Queen's Gaze] to the new target. When the target with [Queen's Gaze] is defeated, pass [Queen's Gaze] to the highest HP foe. When passing [Queen's Gaze], pass all debuffs inflicted by Mitsuru. Mitsuru can use other skills, this doesn't count as a Persona skill."

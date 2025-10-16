@@ -31,7 +31,7 @@ const enCharacterSkillsData = {
             "name": "Theurgy - Blizzard Edge",
             "element": "빙결",
             "type": "단일피해",
-            "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 371.2%/408.3%/415.7%/452.9% of Attack. Upgrade target's [Frost] to [Rimebind] for 2 turns. When allies use a Persona skill to attack foes with [Rimebind], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frost] stacks * 20.0%/22.0%/22.4%/24.4% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
+            "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 371.2%/408.3%/415.7%/452.9% of Attack. Upgrade target's [Frost] to [Rime] for 2 turns. When allies use a Persona skill to attack foes with [Rime], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frost] stacks * 20.0%/22.0%/22.4%/24.4% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
         },
         "skill_support": {
             "name": "Assist Skill",
@@ -275,28 +275,28 @@ const enCharacterSkillsData = {
 	"사나다": {
         "name": "Akihiko Sanada",
         "skill1": {
-            "name": "Lightning Field",
+            "name": "Lightning Domain",
             "element": "전격광역",
             "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Gain 1 stack of [Fighting Spirit], and deal 122.8%/135.4%/130.3%/142.9% ATK as Elec DMG to all enemies. Increase CRIT DMG by 11.7%/12.9%/12.4%/13.6% for 3 turns."
+            "description": "Grant Akihiko 1 [Fighting Spirit] stack. Deal Elec damage to all foes equal to 122.8%/135.4%/130.3%/142.9% of Attack, increase Akihiko's critical damage by 11.7%/12.9%/12.4%/13.6% for 3 turns."
         },
         "skill2": {
-            "name": "Electric Blast",
+            "name": "Lightning Impact",
             "element": "전격광역",
             "type": "광역피해",
             "sp": 20,
             "cool": 0,
-            "description": "Gain 1 stack of [Fighting Spirit], and deal 92.1%/101.6%/97.8%/107.2% ATK as Elec DMG to all enemies. Additionally, gain 2 stacks of [Persistence]."
+            "description": "Grant Akihiko 1 [Fighting Spirit] stack. Deal Elec damage to all foes equal to 92.1%/101.6%/97.8%/107.2% of Attack, and grant Akihiko 2 [Obsession] stacks."
         },
         "skill3": {
-            "name": "Thunderstrike Flash",
+            "name": "Electric Flash",
             "element": "전격광역",
             "type": "광역피해",
             "sp": 24,
             "cool": 2,
-            "description": "Deal 136.4%/150.4%/144.8%/158.8% ATK as Elec DMG to all enemies. If Akihiko has 2 or more stack of [Fighting Spirit], consume all [Fighting Spirit] and increase the skill multiplier by 40.9%/45.1%/43.1%/47.6% for every [Fighting Spirit] consumed."
+            "description": "Deal Elec damage to all foes equal to 136.4%/150.4%/144.8%/158.8% of Attack. If Akihiko has 2 or more [Fighting Spirit] stacks, spend all [Fighting Spirit], for each [Fighting Spirit] stack spent, increase the skill multiplier by 40.9%/45.1%/43.1%/47.6%."
         },
         "skill_highlight": {
             "name": "Theurgy - Lightning Spike",
@@ -304,23 +304,23 @@ const enCharacterSkillsData = {
             "type": "광역피해",
             "sp": 0,
             "cool": 0,
-            "description": "Theurgy Use Condition: 140 Theurgy Energy.\nDeals 261.7%/287.9%/293.1%/319.3% ATK as Elec DMG to all enemies. This skill is guaranteed to CRIT, with a fixed CRIT DMG of 200%."
+            "description": "Use condition: When Akihiko has 140 Theurgy Energy\nDeal Elec damage to all foes equal to 261.7%/287.9%/293.1%/319.3% of Attack, this skill is guaranteed to be a critical hit, and has 200% critical damage."
         },
         "skill_support": {
             "name": "Assist Skill",
-            "element": "패시브",
+            "element": "버프",
             "type": "버프",
-            "description": "Increases 1 ally's CRIT DMG by 20% for 1 turn."
+            "description": "Increases 1 ally's critical damage by 20% for 1 turn."
         },
         "passive1": {
             "name": "Hot-Blooded",
             "element": "패시브",
-            "description": "Increase DMG Dealt by 30% to Downed enemies."
+            "description": "When Akihiko deals damage to knocked down foes, increase damage by 30%."
         },
         "passive2": {
-            "name": "Persistence",
+            "name": "Uphold",
             "element": "패시브",
-            "description": "Increase ATK by 13.5% after landing a CRIT for 3 turns, up to 3 stacks."
+            "description": "After dealing critical damage, increase Attack by 13.5% for 3 turns. Stacks up to 3 times."
         }
     },
 "유카리": {
@@ -361,7 +361,7 @@ const enCharacterSkillsData = {
         },
         "skill_support": {
             "name": "Assist Skill",
-            "element": "패시브",
+            "element": "버프",
             "type": "",
             "description": "Cure 1 debuff from 1 ally."
         },
@@ -384,7 +384,7 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deals 59.8%/66.0%/63.2%/69.6% ATK as Fire DMG to 1 enemy 3 times, gains 2 stacks of [Moon Phase] for 2 turns, up to 4 stacks.\nWhen Makoto Yuki consumes [Moon Phase] to deal DMG with [Scarlet-Devouring Blaze], increases the skill multiplier by 32.5%/35.8%/34.5%/37.8% for 2 turns."
+            "description": "Deal Fire damage to 1 foe equal to 59.8%/66.0%/63.2%/69.6% of Attack (3 hits), and gain 2 [Moon Phase] stacks for 2 turns. Stacks up to 4 times. When spending [Moon Phase] to deal damage with [Scarlet: Devouring Blaze], increase the skill multiplier by 32.5%/35.8%/34.5%/37.8% for 2 turns."
         },
         "skill2": {
             "name": "Moonlit Hymn",
@@ -392,43 +392,44 @@ const enCharacterSkillsData = {
             "type": "버프",
             "sp": 20,
             "cool": 0,
-            "description": "Increases all allies CRIT DMG by 23.4%/25.8%/24.9%/27.3% and own’s ATK by 19.5%/21.5%/20.7%/22.7% for 2 turns. Gains 2 stacks of [Moon Phase] for 2 turns, up to 4 stacks."
+            "description": "Increase party's critical damage by 23.4%/25.8%/24.9%/27.3% and Makoto's Attack by 19.5%/21.5%/20.7%/22.7% for 2 turns. Grant Makoto 2 [Moon Phase] stacks for 2 turns. Stacks up to 4 times."
         },
         "skill3": {
-            "name": "Scarlet-Devouring Blaze",
+            "name": "Scarlet: Devouring Blaze",
             "element": "화염",
             "type": "단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "Use Condition: When Makoto has at least 2 stacks of [Moon Phase.\nConsumes all [Moon Phase], for each stack of [Moon Phase] consumed, deals 1 hit of 76.2%/84.0%/80.9%/88.7% ATK as Fire DMG to 1 enemy.\nAfterwards, consumes all [Special Moon Phase], for each stack of [Special Moon Phase] consumed, additionally deals 1 hit of 134.6%/148.4%/142.9%/156.7% ATK as Fire DMG to 1 enemy.\nIf you have 4 stacks of [Moon Phase], increases own’s PEN by 11.7%/12.9%/12.4%/13.6% and DMG Dealt by 24.4%/26.9%/25.9%/28.4% when using this skill."
+            "description": "Use condition: When Makoto has at least 2 [Moon Phase] stacks. \nSpend all [Moon Phase], for each [Moon Phase] stack spent, deal Fire damage to 1 foe equal to 76.2%/84.0%/80.9%/88.7% of Attack. \nAlso spend all [Special Moon Phase], for each [Special Moon Phase] stack spent, deal Fire damage to 1 foe equal to 134.6%/148.4%/142.9%/156.7% of Attack. When this skill is used at 4 [Moon Phase] stacks, increase Makoto's pierce rate by 11.7%/12.9%/12.4%/13.6% and damage by 24.4%/26.9%/25.9%/28.4%."
         },
         "skill_highlight": {
             "name": "Theurgy - Ardhanari",
             "element": "화염",
             "type": "",
-            "description": "Theurgy Use Condition: 100 Theurgy Energy\nDeals 151.1%/162.6%/160.5%/171.6% ATK Fire DMG to 1 enemy 4 times. Gains 1 stack of [Special Moon Phase] for 2 turns, up to 4 stacks."
+            "description": "Use condition: When Makoto has 100 Theurgy Energy. \nDeal Fire damage to 1 foe equal to 151.1%/162.6%/160.5%/171.6% of Attack (4 hits), and gain 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
         },
         "skill_highlight2": {
             "name": "Theurgy - Cadenza",
             "element": "버프",
             "type": "버프",
-            "description": "Theurgy Use Condition: 100 Theurgy Energy\nIncreases all allies ATK by 25.0%/26.9%/26.5%/28.4% and DMG Dealt by 20.0%/21.5%/21.2%/22.7% for 2 turns. Gains 1 stack of [Special Moon Phase] for 2 turns, up to 4 stacks."
+            "description": "Use condition: When Makoto has 100 Theurgy Energy. \nIncrease party's Attack by 25.0%/26.9%/26.5%/28.4% and damage by 20.0%/21.5%/21.2%/22.7% for 2 turns. Grant Makoto 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
         },
         "skill_support": {
             "name": "Assist Skill",
-            "element": "패시브",
+            "element": "버프",
             "type": "버프",
-            "description": "Increase an ally's ATK by 20% for 1 turn."
+            "description": "Increase 1 ally's Attack by 20% for 1 turn."
         },
         "passive1": {
-            "name": "Leader",
+            "name": "Lead",
             "element": "패시브",
-            "description": "After using [Theurgy], increase all allies' ATK by 40%, additionally increases SEES allies' ATK by 20% for 2 turns."
+            "description": "After using Theurgy, increase party's Attack by 40%, also increase S.E.E.S. allies' Attack by 20% Lasts for 2 turns."
+
         },
         "passive2": {
             "name": "Trust",
             "element": "패시브",
-            "description": "When receiving buffs/healing/shield from allies, increases own CRIT DMG by 7.2% for 2 turns, up to 21.6%."
+            "description": "When Makoto receives a buff/healing/shielding from allies, increase critical damage by 7.2% for 2 turns. Stacks up to 3 times."
         }
     },
 	"이케나미": {

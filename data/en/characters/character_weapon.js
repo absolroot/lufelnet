@@ -132,16 +132,16 @@ enCharacterWeaponData = {
             "health": 1823,
             "attack": 618,
             "defense": 313,
-            "skill_name": "Epinephrine Rush",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When possessing 2 or more stacks of [Fighting Spirit], increase ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "skill_name": "Explosiveness",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen user has more than 2 or more [Fighting Spirit] stacks, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
             "name": "Sabazios",
             "health": 2279,
             "attack": 773,
             "defense": 391,
-            "skill_name": "Ultimate Power",
-            "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When obtaining [Persistence], increase CRIT Rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% up to 2 stacks and for 2 turns. When a Persona Skill/Theurgy/Follow-Up Action scores a CRITICAL, increase DMG Dealt by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "skill_name": "Lethality",
+            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen user gains [Obsession], increase critical rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7 for 2 turns. Stacks up to 2 times. When dealing critical damage with a Persona skill/Theurgy/Resonance, increase damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
         }
     },
     "유카리": {
@@ -172,15 +172,16 @@ enCharacterWeaponData = {
             "attack": 628,
             "defense": 313,
             "skill_name": "Silent Resolve",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After providing a buff effect to allies, increase DMG dealt by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% for all allies. Increase DMG dealt additionally by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% to the user."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. \nWhen user buffs allies, increase party's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% and increase user's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%. Lasts for 2 turns."
+
         },
         "weapon5-1": {
             "name": "Deus Xiphos",
             "health": 2160,
             "attack": 786,
             "defense": 391,
-            "skill_name": "Moment of Reversal",
-            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After gaining 3 or more [Moon Phase] or [Special Moon Phase], increase CRIT Rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When casting a Persona Skill/Theurgy that hits 4 instances or more, increase DMG Dealt by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+            "skill_name": "Hour of Reversal",
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. \nWhen user gains 3 [Moon Phase] stacks or [Special Moon Phase], increase critical rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When user deals 4 or more hits of damage with a Persona skill/Theurgy, increase damage 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
         }
     },
     "이케나미": {

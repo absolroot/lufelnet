@@ -121,7 +121,7 @@
     try { data = (typeof characterData !== 'undefined') ? characterData : (window.characterData || {}); } catch (_) { data = window.characterData || {}; }
     Object.keys(data || {}).forEach(topKey => {
       const item = data[topKey] || {};
-      const aliases = [topKey, item.name, item.name_en, item.name_jp];
+      const aliases = [topKey, item.name, item.name_en, item.name_jp, item.name_cn];
       aliases.forEach(alias => {
         if (!alias) return;
         index.set(normalizeName(alias), topKey);
@@ -151,7 +151,7 @@
       if (lang === 'en') return item.name_en || item.name || topKey;
       if (lang === 'jp') return item.name_jp || item.name || topKey;
       // default kr
-      return item.name || item.name_en || item.name_jp || topKey;
+      return item.name || item.name_en || item.name_jp || item.name_cn || topKey;
     } catch (_) {
       return topKey;
     }

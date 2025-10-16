@@ -58,7 +58,7 @@ const characterData = {
         "limit": true,
         "role": "단일 서포팅 딜러",
         "tag":"스킬 계수 증가, 방어력 감소, 대미지 보너스, 크리티컬 효과, 크리티컬 확률",
-        "color": "rgb(115, 180, 255)",
+        "color": "#73b4ff",
         "codename": "MITSURU",
         "name": "키리조 미츠루",
         "name_en": "Kirijo Mitsuru",

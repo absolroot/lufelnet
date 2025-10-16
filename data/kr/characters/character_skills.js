@@ -35,7 +35,7 @@ const characterSkillsData = {
         },
         "skill_support": {
             "name": "지원 기술",
-            "element": "디버프",
+            "element": "버프",
             "type": "버프",
             "description": "적 한 명에게 2턴 동안 지속되는 에너지 마크를 부여합니다. S.E.E.S. 멤버는 해당 적을 처음 공격할 때 테우르기아 에너지 35를 회복하고, S.E.E.S.가 아닌 멤버는 해당 적을 처음 공격할 때 HIGHLIGHT 에너지의 15%를 회복합니다."
         },
@@ -307,7 +307,7 @@ const characterSkillsData = {
         },
         "skill_support": {
             "name": "지원 기술",
-            "element": "패시브",
+            "element": "버프",
             "type": "버프",
             "description": "아군 1명의 크리티컬 효과를 1턴 동안 20% 증가시킨다."
         },
@@ -357,7 +357,7 @@ const characterSkillsData = {
         },
         "skill_support": {
             "name": "지원 기술",
-            "element": "패시브",
+            "element": "버프",
             "type": "",
             "description": "아군 1명의 상태이상을 1개 해제합니다."
         },
@@ -413,7 +413,7 @@ const characterSkillsData = {
         },
         "skill_support": {
             "name": "지원 기술",
-            "element": "패시브",
+            "element": "버프",
             "type": "버프",
             "description": "1턴 동안 동료 1명의 공격력이 20% 증가한다."
         },

@@ -52,32 +52,6 @@
         "name": "身も心も海に任せて",
         "startTime": "2025-10-09 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2025-10-30 10:59:59",
-        "fiveStar": [
-          {
-            "name": "宮下 美波",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "加納 駿",
-            "type": "thief"
-          },
-          {
-            "name": "黒谷 清",
-            "type": "thief"
-          },
-          {
-            "name": "佐原 海夕",
-            "type": "thief"
-          }
-        ],
-        "name": "天使の治療室",
-        "startTime": "2025-10-16 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
       }
     ],
     "weapon": [
@@ -149,41 +123,6 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2025-10-09 11:30:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2025-10-30 10:59:59",
-        "fiveStar": [
-          {
-            "name": "エンジェルハート",
-            "type": "weapon",
-            "user": "美波"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "デーモンバイト",
-            "type": "weapon",
-            "user": "駿"
-          },
-          {
-            "name": "デススティンガー",
-            "type": "weapon",
-            "user": "黒谷"
-          },
-          {
-            "name": "生命の賛歌",
-            "type": "weapon",
-            "user": "美波"
-          },
-          {
-            "name": "サブマリンソナー",
-            "type": "weapon",
-            "user": "海夕"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2025-10-16 11:30:00",
         "type": "武器補給"
       }
     ]

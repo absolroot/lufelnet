@@ -451,7 +451,7 @@
       @media (max-width: 768px) { .slide-right { flex-basis: 42%; min-width: 160px; } .slide-left { padding: 16px; } .slide-fivestar { font-size: 0.8rem; } .slide-time { font-size: 0.75rem; } .slide-countdown { font-size: 0.8rem; } .slide-name { font-size: 1.4rem !important; } }
       .char-img { position: absolute; top: 50%; right: 4%; height: auto; width: auto; max-height: 100%; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6)); transform: translateY(-50%); transition: transform 300ms ease, opacity 300ms ease; }
       .char-img.back { opacity: 0.85; transform: translateY(-50%) scale(1.02); z-index: 1; }
-      .char-img.front { z-index: 3; transform: translateY(-50%) scale(1.16); }
+      .char-img.front { z-index: 3; transform: translateY(-40%) scale(1.16); }
       .char-img.middle { z-index: 2; transform: translateX(-8%) translateY(-50%) scale(1.08) }
       .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
       .carousel-btn { pointer-events: auto; background: rgba(0,0,0,0.35); color: #fff; border: 1px solid #444; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; }

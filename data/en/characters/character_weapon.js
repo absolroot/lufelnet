@@ -2,6 +2,25 @@ enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "미츠루": {
+        "name": "키리조 미츠루",
+        "weapon4-1":{
+            "name": "Rose Flamberge",
+            "health": 1823,
+            "attack": 581,
+            "defense": 323,
+            "skill_name": "Elegant Presence",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When inflicting [Frost], increase user's damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn."
+        },
+        "weapon5-1":{
+            "name": "Longinus",
+            "health": 2279,
+            "attack": 726,
+            "defense": 405,
+            "skill_name": "Piercing Fate",
+            "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When inflicting [Frost], increase party's Attack by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns. After user uses Theurgy, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% and user's critical damage by 14.7%/19.3%/19.3%/23.9%/23.9%/28.5%/28.5% for 2 turns."
+        }
+    },
     "YUI·스텔라": {
         "name": "YUI·Prism",
         "weapon4-1": {

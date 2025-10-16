@@ -2,6 +2,23 @@ const enCharacterRitualData = {
     "원더": {
         "name": "Wonder"
     },
+    "미츠루": {
+        "name": "키리조 미츠루",
+        "r0": "President's Duty",
+        "r0_detail": "When Mitsuru deals Persona skill damage or Theurgy damage, inflict 1 [Frostbloom] stack on target for 2 turns. Stacks up to 5 times. When Mitsuru attacks foes with [Frostbloom], increase Attack by 7% * [Frostbloom] stacks. When allies use a Persona skill to attack foes with [Rimebind], activate [Cruel Edge].",
+        "r1": "C’est Magnifique!",
+        "r1_detail": "At the start of battle, inflict all foes with 2 [Rimebind] stacks that can exceed the cap. Stacks up to 2 times. This effect is permanent. Foes with [Rimebind] increase critical taken rate by 10%.",
+        "r2": "Fencing Queen",
+        "r2_detail": "Foes with [Queen's Gaze] increase critical damage taken by 40%. When passing [Queen's Gaze], pass all debuffs.",
+        "r3": "Execution!",
+        "r3_detail": "Increase the skill levels of Arctic Storm and Thief Tactics by 3.",
+        "r4": "Behind the Lies",
+        "r4_detail": "Theurgy Enhanced: Increase Theurgy damage by 20%. Increase target's damage taken by 20% more for 2 turns.",
+        "r5": "The Awkward Side",
+        "r5_detail": "Increase the skill levels of Ice Blossom and Glacial Lunge by 3.",
+        "r6": "Burning Will",
+        "r6_detail": "Increase the maximum number of [Frostbloom] stacks to 6. Double Mitsuru's base Theurgy Energy recovery. When using Theurgy, Mitsuru can upgrade target's [Rimebind] to [Frigid Confinement]. When allies attack foes with [Frigid Confinement], additionally activate [Cruel Edge] at 200% of the original attack's damage. When Mitsuru attacks foes with [Frigid Confinement], gain 15% total damage amp."
+    },
     "YUI·스텔라": {
         "name": "YUI·Prism",
         "r0": "Doki Doki Sprout Legion",

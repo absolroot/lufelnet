@@ -3,7 +3,52 @@ const enCharacterSkillsData = {
         "name": "Wonder"
     },
     "미츠루": {
-
+        "name": "Mitsuru Kirijo",
+        "skill1": {
+            "name": "Ice Blossom",
+            "element": "빙결",
+            "type": "단일피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Ice damage to 1 foe equal to 211.2%/232.8%/224.2%/245.8% of Attack, and inflict 3 [Frostbloom] stacks on target. Decrease target's Defense by 1.2% for every 300 Attack * [Frostbloom] stacks (up to 2928/3228/3108/3408 Attack) for 2 turns."
+        },
+        "skill2": {
+            "name": "Arctic Storm",
+            "element": "빙결", 
+            "type": "단일피해",
+            "sp": 0, 
+            "description": "Inflict 1 foe with [Queen's Gaze]. Decrease DEF by 7.8%/8.6%/8.3%/9.1%, also decrease Defense by 3.2% for every 300 Attack (up to 2928/3228/3108/3408 Attack) and increase damage taken by 2% for every every 300 Attack (up to 2928/3228/3108/3408 Attack). This effect is permanent. Only 1 [Queen's Gaze] can be active. When selecting a new target, pass [Queen's Gaze] to the new target. When the target with [Queen's Gaze] is defeated, pass [Queen's Gaze] to the highest HP foe. When passing [Queen's Gaze], pass all debuffs inflicted by Mitsuru. Mitsuru can use other skills, this doesn't count as a Persona skill."
+        },
+        "skill3": {
+            "name": "Glacial Lunge",
+            "element": "빙결",
+            "type": "단일피해",
+            "sp": 24,
+            "cool": 0,
+            "description": "Increase party's stats by 3% of Elucidator's stats for 2 turns. Deal Ice damage to 1 foe equal to 345.1%/380.5%/366.3%/401.7% of Attack, for every 1 [Frostbloom] stack, increase skill damage by 10%. When target have 5 [Frostbloom] stacks, increase skill critical rate by 15%."
+        },
+        "skill_highlight": {
+            "name": "Theurgy - Blizzard Edge",
+            "element": "빙결",
+            "type": "단일피해",
+            "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 371.2%/408.3%/415.7%/452.9% of Attack. Upgrade target's [Frostbloom] to [Rimebind] for 2 turns. When allies use a Persona skill to attack foes with [Rimebind], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frostbloom] stacks * 20.0%/22.0%/22.4%/24.4% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
+        },
+        "skill_support": {
+            "name": "Assist Skill",
+            "element": "버프",
+            "type": "버프",
+            "description": "Inflict 1 foe with [Energy Mark]. When S.E.E.S. member attack that foe for the first time, restore 35 Theurgy Energy to that member; When non S.E.E.S. member attack that foe for the first time, restore 15% HIGHLIGHT Energy."
+        },
+        "passive1": {
+            "name": "Responsibility",
+            "element": "패시브",
+            "description": "At the start of battle, decrease Elucidator's cooldown time by 4 turns."
+        },
+        "passive2": {
+            "name": "Order",
+            "element": "패시브",
+            "description": "When Mitsuru is on the field, all Assassin/Sweeper increase damage by 4.8% per [Frostbloom] stacks when attacking foes with [Frostbloom]."
+        }
     },
     "YUI·스텔라": {
         "name": "YUI·Prism",

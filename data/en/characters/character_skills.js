@@ -10,7 +10,7 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 20,
             "cool": 0,
-            "description": "Deal Ice damage to 1 foe equal to 211.2%/232.8%/224.2%/245.8% of Attack, and inflict 3 [Frostbloom] stacks on target. Decrease target's Defense by 1.2% for every 300 Attack * [Frostbloom] stacks (up to 2928/3228/3108/3408 Attack) for 2 turns."
+            "description": "Deal Ice damage to 1 foe equal to 211.2%/232.8%/224.2%/245.8% of Attack, and inflict 3 [Frost] stacks on target. Decrease target's Defense by 1.2% for every 300 Attack * [Frost] stacks (up to 2928/3228/3108/3408 Attack) for 2 turns."
         },
         "skill2": {
             "name": "Arctic Storm",
@@ -25,13 +25,13 @@ const enCharacterSkillsData = {
             "type": "단일피해",
             "sp": 24,
             "cool": 0,
-            "description": "Increase party's stats by 3% of Elucidator's stats for 2 turns. Deal Ice damage to 1 foe equal to 345.1%/380.5%/366.3%/401.7% of Attack, for every 1 [Frostbloom] stack, increase skill damage by 10%. When target have 5 [Frostbloom] stacks, increase skill critical rate by 15%."
+            "description": "Increase party's stats by 3% of Elucidator's stats for 2 turns. Deal Ice damage to 1 foe equal to 345.1%/380.5%/366.3%/401.7% of Attack, for every 1 [Frost] stack, increase skill damage by 10%. When target have 5 [Frost] stacks, increase skill critical rate by 15%."
         },
         "skill_highlight": {
             "name": "Theurgy - Blizzard Edge",
             "element": "빙결",
             "type": "단일피해",
-            "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 371.2%/408.3%/415.7%/452.9% of Attack. Upgrade target's [Frostbloom] to [Rimebind] for 2 turns. When allies use a Persona skill to attack foes with [Rimebind], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frostbloom] stacks * 20.0%/22.0%/22.4%/24.4% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
+            "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 371.2%/408.3%/415.7%/452.9% of Attack. Upgrade target's [Frost] to [Rimebind] for 2 turns. When allies use a Persona skill to attack foes with [Rimebind], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frost] stacks * 20.0%/22.0%/22.4%/24.4% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
         },
         "skill_support": {
             "name": "Assist Skill",
@@ -47,7 +47,7 @@ const enCharacterSkillsData = {
         "passive2": {
             "name": "Order",
             "element": "패시브",
-            "description": "When Mitsuru is on the field, all Assassin/Sweeper increase damage by 4.8% per [Frostbloom] stacks when attacking foes with [Frostbloom]."
+            "description": "When Mitsuru is on the field, all Assassin/Sweeper increase damage by 4.8% per [Frost] stacks when attacking foes with [Frost]."
         }
     },
     "YUI·스텔라": {

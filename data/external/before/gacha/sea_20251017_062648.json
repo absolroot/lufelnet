@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-10-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Ayaka Sakai",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Dazzling Encore",
+        "startTime": "2025-09-12 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2025-10-31 09:59:59",
         "fiveStar": [
           {
@@ -26,35 +52,44 @@
         "name": "Our Shining Summer",
         "startTime": "2025-09-30 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
-      },
+      }
+    ],
+    "weapon": [
       {
-        "endTime": "2025-11-14 09:59:59",
+        "endTime": "2025-10-17 10:59:59",
         "fiveStar": [
           {
-            "name": "Seaside Tomoko",
-            "type": "thief"
+            "name": "Superstar",
+            "type": "weapon",
+            "user": "Ayaka"
           }
         ],
         "fourStar": [
           {
-            "name": "Shun Kano",
-            "type": "thief"
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
           },
           {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
           },
           {
-            "name": "Miyu Sahara",
-            "type": "thief"
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          },
+          {
+            "name": "Rock 'n' Roller",
+            "type": "weapon",
+            "user": "Ayaka"
           }
         ],
-        "name": "Summer Breeze",
-        "startTime": "2025-10-17 10:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      }
-    ],
-    "weapon": [
+        "name": "Silent Pistol",
+        "startTime": "2025-09-12 10:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-10-31 09:59:59",
         "fiveStar": [
@@ -88,41 +123,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-09-30 10:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-11-14 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Bubble Babies",
-            "type": "weapon",
-            "user": "Tomoko"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Ocean's Tidings",
-            "type": "weapon",
-            "user": "Tomoko"
-          },
-          {
-            "name": "Death Stinger",
-            "type": "weapon",
-            "user": "Kurotani"
-          },
-          {
-            "name": "Submarine Sonar",
-            "type": "weapon",
-            "user": "Miyu"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-10-17 10:30:00",
         "type": "Arms Deals"
       }
     ]

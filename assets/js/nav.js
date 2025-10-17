@@ -201,13 +201,14 @@ class Navigation {
                         <a href="${BASE_URL}/defense-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
                             <span data-text="${texts.defenseCalc}">◈　${texts.defenseCalc}</span>
                         </a>
+                        <a href="${BASE_URL}/critical-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
+                            <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>
+                        </a>
                         ${currentLang === 'kr' ? `
                         <a href="${BASE_URL}/pay-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
                             <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
                         </a>
-                        <a href="${BASE_URL}/critical-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
-                            <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>
-                        </a>` : ''}
+                        ` : ''}
                     </div>
                 </div>
                 ` : ''}

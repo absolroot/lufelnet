@@ -371,9 +371,6 @@ const basicStatsData = {
         awake7: {
             attack_per: 29
         },
-        awake7: {
-            crit_rate: 22.4
-        },
         a0_lv80: {
             HP: 3449.99,
             attack: 1069.99,

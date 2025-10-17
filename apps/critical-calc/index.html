@@ -1,8 +1,8 @@
 ---
 layout: default
 custom_css: [critical-calc]
-custom_js: [tooltip, critical-calc]
-custom_data: [tooltip.js, calc/critical-data.js]
+custom_js: [tooltip, character/character-list, defense/defense-i18n, critical-calc]
+custom_data: [tooltip.js, calc/critical-data.js, characters/characters.js]
 permalink: /critical-calc/
 language: kr
 title : 크리티컬 계산기 - 페르소나5 더 팬텀 X 루페르넷
@@ -13,19 +13,22 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
 <div class="main-wrapper">
     <!-- 네비게이션 경로 -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page">크리티컬 계산</span>
+        <span class="current-page" id="navCurrent">크리티컬 확률 계산</span>
     </div>
     <div class="header-container">
-        <h1>크리티컬 확률 계산기</h1>
+        <h1 id="page-title">크리티컬 확률 계산기</h1>
+        <label id="spoilerToggleWrap" style="display:flex; align-items:center; cursor:pointer; font-size:13px; opacity:0.85;">
+            <input type="checkbox" id="showSpoilerToggle"> <span id="showSpoilerLabel" style="margin-left: 4px; color:#ededed;">Show Spoilers</span>
+        </label>
     </div>
     
     <!-- 상단 카드 컨테이너 -->
     <div class="top-cards">
         <!-- 크리티컬 확률 합계 카드 -->
         <div class="stat-card card-style">
-            <h2>크리티컬 확률 합계</h2>
+            <h2 id="total-title">크리티컬 확률 합계</h2>
             <div class="total-value">0%</div>
             <div class="total-value-description">
                 <div></div>
@@ -34,15 +37,15 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
 
         <!-- 크리티컬 입력 카드 -->
         <div class="stat-card card-style">
-            <h2>커스텀 크리티컬 확률</h2>
+            <h2 id="custom-title">커스텀 크리티컬 확률</h2>
             <div class="critical-input-container">
                 <div class="critical-input-group">
-                    <label>계시 합계</label>
+                    <label id="revelationSumLabel">계시 합계</label>
                     <input type="number" id="revelationCritical" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
                 <div class="critical-input-group">
-                    <label>해명의 힘</label>
+                    <label id="explanationPowerLabel">해명의 힘</label>
                     <input type="number" id="explanationPower" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
@@ -53,8 +56,8 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
     <!-- 데이터 테이블 -->
     <div class="table-tabs card-style">
         <div class="tab-buttons">
-            <button class="tab-button active" data-tab="buff">버프</button>
-            <button class="tab-button" data-tab="self">자신</button>
+            <button class="tab-button active" data-tab="buff" id="tabBuff">버프</button>
+            <button class="tab-button" data-tab="self" id="tabSelf">자신</button>
         </div>
         
         <!-- 버프 테이블 -->
@@ -62,17 +65,14 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
             <table class="critical-table">
                 <thead>
                     <tr>
-                        <th class="check-column">선택</th>
-                        <th class="char-img-column">괴도</th>
-                        <th class="char-name-column"></th>
-                        <th class="type-column">분류</th>
-                        <th class="target-column">목표</th>
+                        <th class="check-column" id="thSelect1">선택</th>
+                        <th class="target-column" id="thTarget1">목표</th>
                         <th class="skill-icon-column"></th>
-                        <th class="skill-name-column">이름</th>
-                        <th class="option-column">옵션</th>
-                        <th class="value-column">수치</th>
-                        <th class="duration-column">지속시간</th>
-                        <th class="note-column">비고</th>
+                        <th class="skill-name-column" id="thName1">이름</th>
+                        <th class="option-column" id="thOption1">옵션</th>
+                        <th class="value-column" id="thValue1">수치</th>
+                        <th class="duration-column" id="thDuration1">지속시간</th>
+                        <th class="note-column" id="thNote1">비고</th>
                     </tr>
                 </thead>
                 <tbody id="buffTableBody">
@@ -86,17 +86,14 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
             <table class="critical-table">
                 <thead>
                     <tr>
-                        <th class="check-column">선택</th>
-                        <th class="char-img-column">괴도</th>
-                        <th class="char-name-column"></th>
-                        <th class="type-column">분류</th>
-                        <th class="target-column">목표</th>
+                        <th class="check-column" id="thSelect2">선택</th>
+                        <th class="target-column" id="thTarget2">목표</th>
                         <th class="skill-icon-column"></th>
-                        <th class="skill-name-column">이름</th>
-                        <th class="option-column">옵션</th>
-                        <th class="value-column">수치</th>
-                        <th class="duration-column">지속시간</th>
-                        <th class="note-column">비고</th>
+                        <th class="skill-name-column" id="thName2">이름</th>
+                        <th class="option-column" id="thOption2">옵션</th>
+                        <th class="value-column" id="thValue2">수치</th>
+                        <th class="duration-column" id="thDuration2">지속시간</th>
+                        <th class="note-column" id="thNote2">비고</th>
                     </tr>
                 </thead>
                 <tbody id="selfTableBody">
@@ -147,6 +144,42 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('critical-calc', 1);
         VersionChecker.check();
+        // 언어 파라미터 기본 유지 (defense-calc와 유사 처리)
+        if (typeof LanguageRouter !== 'undefined') {
+            const hasLangParam = window.location.search.includes('lang=');
+            if (!hasLangParam) {
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+            }
+        }
+            // SEO (defense-calc 동작 복사)
+            function updateSEOContent() {
+                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                const seoData = {
+                    kr: {
+                        title: '크리티컬 계산기 - 페르소나5 더 팬텀 X 루페르넷',
+                        description: '페르소나5 더 팬텀 X 크리티컬 확률 계산기'
+                    },
+                    en: {
+                        title: 'Critical Rate Calculator - Persona 5: The Phantom X LufelNet',
+                        description: 'Persona 5: The Phantom X Critical Rate Calculator'
+                    },
+                    jp: {
+                        title: 'クリ率計算機 - ペルソナ5 ザ・ファントム X LufelNet',
+                        description: 'ペルソナ5 ザ・ファントム X クリ率計算機'
+                    }
+                };
+                const currentSEO = seoData[currentLang] || seoData.kr;
+                document.title = currentSEO.title;
+                const metaDescription = document.querySelector('meta[name="description"]');
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDescription = document.querySelector('meta[property="og:description"]');
+                if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+                if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+                if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+            }
+            updateSEOContent();
         new CriticalCalc();
     });
 </script>

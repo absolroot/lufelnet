@@ -114,7 +114,7 @@
             return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','tacticLibrary','tacticMaker','guide','tier','gallery'];
+            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery'];
         }
         // default to KR set
         return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery'];

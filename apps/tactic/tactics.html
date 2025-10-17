@@ -727,6 +727,12 @@ class TacticsViewer {
             img.title = displayTitle;
             img.className = 'char-face';
             img.dataset.name = name;
+
+            // 래퍼 생성 (배지 렌더링을 위한 컨테이너)
+            const wrap = document.createElement('div');
+            wrap.className = 'char-face-wrap';
+            wrap.appendChild(img);
+
             img.addEventListener('click', () => {
                 const selected = this.selectedCharacters;
                 const idx = selected.indexOf(name);
@@ -740,6 +746,7 @@ class TacticsViewer {
                         grid.querySelectorAll(`img[data-name="${CSS.escape(oldest)}"]`).forEach(el => {
                             el.classList.remove('selected');
                             el.removeAttribute('data-order');
+                            const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.remove('selected'); pw.removeAttribute('data-order'); }
                         });
                     }
                     selected.push(name);
@@ -750,12 +757,14 @@ class TacticsViewer {
                     if (!selected.includes(el.dataset.name)) {
                         el.classList.remove('selected');
                         el.removeAttribute('data-order');
+                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.remove('selected'); pw.removeAttribute('data-order'); }
                     }
                 });
                 selected.forEach((n, i) => {
                     grid.querySelectorAll(`img[data-name="${CSS.escape(n)}"]`).forEach(el => {
                         el.classList.add('selected');
                         el.setAttribute('data-order', String(i + 1));
+                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.add('selected'); pw.setAttribute('data-order', String(i + 1)); }
                     });
                 });
 
@@ -769,7 +778,7 @@ class TacticsViewer {
                     window.history.replaceState({}, '', newUrl);
                 } catch(_) {}
             });
-            fragment.appendChild(img);
+            fragment.appendChild(wrap);
         });
         grid.innerHTML = '';
         grid.appendChild(fragment);
@@ -784,6 +793,7 @@ class TacticsViewer {
                     grid.querySelectorAll(`img[data-name="${CSS.escape(n)}"]`).forEach(el => {
                         el.classList.add('selected');
                         el.setAttribute('data-order', String(i + 1));
+                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.add('selected'); pw.setAttribute('data-order', String(i + 1)); }
                     });
                 });
                 this.applyFilters();

@@ -2,6 +2,7 @@
   "data": {
     "boss": [
       {
+        "bonusRule": null,
         "enemy": [
           {
             "adapt": {
@@ -42,6 +43,7 @@
         "sn": 78401
       },
       {
+        "bonusRule": null,
         "enemy": [
           {
             "adapt": {

@@ -2,7 +2,6 @@
   "data": {
     "boss": [
       {
-        "bonusRule": null,
         "enemy": [
           {
             "adapt": {
@@ -11,21 +10,20 @@
               "Reflect": [],
               "Resistant": [
                 "Electric",
-                "Nuclear",
-                "Bless",
-                "Curse"
+                "Psychokinesis",
+                "Bless"
               ],
               "Weak": [
-                "Fire"
+                "Nuclear"
               ]
             },
             "level": "89",
-            "name": "被操控的莉莉丝",
+            "name": "被操控的黃龍",
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.545,
-              "Attack": 7182.6669,
+              "Attack": 4897.2729,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
@@ -44,7 +42,6 @@
         "sn": 78401
       },
       {
-        "bonusRule": null,
         "enemy": [
           {
             "adapt": {
@@ -52,27 +49,25 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire",
-                "Nuclear",
-                "Bless"
+                "Fire"
               ],
               "Weak": [
-                "Curse"
+                "Ice"
               ]
             },
             "level": "89",
-            "name": "被操控的座天使",
+            "name": "被操控的斯爾特",
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.436,
-              "Attack": 5027.868,
+              "Attack": 3428.0918,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
               "Damage Taken": 0,
               "Defense": 697.701,
-              "Down Points": 6.0,
+              "Down Points": 4.0,
               "HP": 1845674.208,
               "Pierce Rate": 0,
               "SP": 100.0,
@@ -81,13 +76,13 @@
             }
           }
         ],
-        "scoreRatio": 2.5,
+        "scoreRatio": 1.0,
         "sn": 78402
       }
     ],
-    "buff": "荧光菌毯: 使用神通法后自身获得2层『热情孢子』，使用HIGHLIGHT后自身获得1层『热情孢子』。『热情孢子』：每层提供10%的最终伤害加成，持续3回合（每层独立计算），最多可叠加4层。",
-    "endTime": "2025-11-06 06:30:00",
-    "startTime": "2025-10-16 07:30:00"
+    "buff": "氣穴坍塌: 進入戰鬥時，使所有友方獲得1層『厭氧反應』；使用追加效果攻擊敵人時，自身獲得1層『厭氧反應』；『厭氧反應』：造成的最終傷害提升40%，持續1回合。",
+    "endTime": "2025-10-23 07:30:00",
+    "startTime": "2025-09-29 08:30:00"
   },
   "msg": "OK",
   "status": 0

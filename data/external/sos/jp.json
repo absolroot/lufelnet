@@ -2,6 +2,7 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Bless attack Score x 2",
         "enemy": [
           {
             "adapt": {
@@ -42,6 +43,7 @@
         "sn": 138401
       },
       {
+        "bonusRule": "All ally Curse attack Score x 2",
         "enemy": [
           {
             "adapt": {

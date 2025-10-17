@@ -345,9 +345,9 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .persona-container:hover .persona-img { transform: scale(1.05); }
 
   /* 캐릭터 필터 썸네일 선택 강조 및 순번 배지 */
-  #characterFilterGrid img.char-face { position: relative; transition: transform .12s ease, box-shadow .12s ease; border-radius: 6px; }
-  #characterFilterGrid img.char-face.selected { outline: 3px solid #ffb400; box-shadow: 0 0 0 3px rgba(255,180,0,.25), 0 6px 14px rgba(0,0,0,.25); transform: scale(1.05); }
-  #characterFilterGrid img.char-face.selected::after { content: attr(data-order); position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #ffb400; color: #1a1a1a; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+  #characterFilterGrid img.char-face { position: relative; transition: transform .12s ease, box-shadow .12s ease; border-radius: 999px; border: 1px solid #0000000c; }
+  #characterFilterGrid img.char-face.selected { outline: 2px solid #ffc640; box-shadow: 0 0 0 3px rgba(255,180,0,.25), 0 6px 14px rgba(0,0,0,.25); transform: scale(1.02); }
+  #characterFilterGrid img.char-face.selected::after { content: attr(data-order); position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #ffc640; color: #1a1a1a; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
 
   /* 비활성화된 드롭다운 스타일 */
   select:disabled { background-color: rgba(255, 255, 255, 0.3); cursor: not-allowed; }

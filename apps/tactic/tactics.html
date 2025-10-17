@@ -152,6 +152,7 @@ class TacticsViewer {
         this.userIP = '';
         this.currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
         this.currentUser = null;
+        this.selectedCharacters = [];
         
         this.init();
     }
@@ -340,13 +341,12 @@ class TacticsViewer {
         // URL 파라미터로 캐릭터 필터 초기 적용 (?char=레오)
         /* URL 파라미터는 초기화 시 한 번만 반영. 여기서는 다시 설정하지 않음 */
 
-        // 캐릭터 필터
-        if (this.selectedCharacter) {
+        // 캐릭터 필터 (AND 조건, 최대 4개 선택)
+        if (this.selectedCharacters && this.selectedCharacters.length > 0) {
             filtered = filtered.filter(tactic => {
                 try {
-                    const q = tactic.query;
-                    const party = Array.isArray(q?.party) ? q.party : [];
-                    return party.some(p => p.name === this.selectedCharacter);
+                    const party = Array.isArray(tactic.query?.party) ? tactic.query.party : [];
+                    return this.selectedCharacters.every(name => party.some(p => p.name === name));
                 } catch(e) { return false; }
             });
         }
@@ -695,7 +695,7 @@ class TacticsViewer {
 
     // 캐릭터 필터 초기화
     initCharacterFilter() {
-        this.selectedCharacter = null;
+        this.selectedCharacters = Array.isArray(this.selectedCharacters) ? this.selectedCharacters : [];
         const grid = document.getElementById('characterFilterGrid');
         if (!grid) return;
 
@@ -728,23 +728,43 @@ class TacticsViewer {
             img.className = 'char-face';
             img.dataset.name = name;
             img.addEventListener('click', () => {
-                // 토글 선택
-                if (this.selectedCharacter === name) {
-                    this.selectedCharacter = null;
-                    // 동일 이름의 모든 썸네일에서 선택 해제 (잠재 중복 안전)
-                    grid.querySelectorAll('img').forEach(el => { if (el.dataset?.name === name) el.classList.remove('selected'); });
+                const selected = this.selectedCharacters;
+                const idx = selected.indexOf(name);
+                if (idx >= 0) {
+                    // 해제
+                    selected.splice(idx, 1);
                 } else {
-                    this.selectedCharacter = name;
-                    // 선택 표시 업데이트
-                    grid.querySelectorAll('img').forEach(el => el.classList.remove('selected'));
-                    img.classList.add('selected');
+                    // 추가 (최대 4개, 초과 시 가장 오래된 선택 자동 제거)
+                    if (selected.length === 4) {
+                        const oldest = selected.shift();
+                        grid.querySelectorAll(`img[data-name="${CSS.escape(oldest)}"]`).forEach(el => {
+                            el.classList.remove('selected');
+                            el.removeAttribute('data-order');
+                        });
+                    }
+                    selected.push(name);
                 }
+
+                // 선택 표시 및 순번 배지 갱신
+                grid.querySelectorAll('img.char-face').forEach(el => {
+                    if (!selected.includes(el.dataset.name)) {
+                        el.classList.remove('selected');
+                        el.removeAttribute('data-order');
+                    }
+                });
+                selected.forEach((n, i) => {
+                    grid.querySelectorAll(`img[data-name="${CSS.escape(n)}"]`).forEach(el => {
+                        el.classList.add('selected');
+                        el.setAttribute('data-order', String(i + 1));
+                    });
+                });
+
                 this.applyFilters();
                 this.renderTactics();
-                // URL 상태 동기화 (해제 시 char 제거, 선택 시 char=name)
+                // URL 상태 동기화 (CSV)
                 try {
                     const params = new URLSearchParams(window.location.search);
-                    if (this.selectedCharacter) params.set('char', this.selectedCharacter); else params.delete('char');
+                    if (selected.length) params.set('char', selected.join(',')); else params.delete('char');
                     const newUrl = `${window.location.pathname}?${params.toString()}`;
                     window.history.replaceState({}, '', newUrl);
                 } catch(_) {}
@@ -754,16 +774,18 @@ class TacticsViewer {
         grid.innerHTML = '';
         grid.appendChild(fragment);
 
-        // 초기화 버튼 제거 버전: 더미
-        // URL 파라미터에 의해 선택된 캐릭터 하이라이트 적용 (한 번만 반영, 이후 클릭 토글 가능)
+        // URL 파라미터에 의해 선택된 캐릭터들 하이라이트 적용 (CSV, 최대 4개)
         try {
             const urlChar = new URLSearchParams(window.location.search).get('char');
             if (urlChar) {
-                if (this.selectedCharacter == null) this.selectedCharacter = urlChar;
-                // 일관성 있게 하나만 선택 표시
-                grid.querySelectorAll('img').forEach(el => el.classList.remove('selected'));
-                const firstMatch = grid.querySelector(`img[data-name="${CSS.escape(this.selectedCharacter)}"]`);
-                if (firstMatch) firstMatch.classList.add('selected');
+                const names = urlChar.split(',').map(s => s.trim()).filter(Boolean).slice(0, 4);
+                this.selectedCharacters = names.filter(n => uniqueNames.includes(n));
+                this.selectedCharacters.forEach((n, i) => {
+                    grid.querySelectorAll(`img[data-name="${CSS.escape(n)}"]`).forEach(el => {
+                        el.classList.add('selected');
+                        el.setAttribute('data-order', String(i + 1));
+                    });
+                });
                 this.applyFilters();
                 this.renderTactics();
             }

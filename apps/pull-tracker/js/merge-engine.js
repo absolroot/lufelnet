@@ -38,6 +38,41 @@
         const effectivePulled = Math.max(0, pulled - inProgressCount);
         return { pulledSum: pulled, total5Star: t5, total4Star: t4, win5050, avgPity, inProgressCount, effectivePulled };
     }
+    // 결정적 정렬: timestamp asc → tsOrder(없으면 +∞) asc → gachaId asc
+    function sortRecordsDeterministic(arr){
+        return arr.sort((a,b)=>{
+            const ta = Number(a?.timestamp||0), tb = Number(b?.timestamp||0);
+            if (ta !== tb) return ta - tb;
+            const oa = (a && a.tsOrder!=null)?Number(a.tsOrder):((a && a.ts_order!=null)?Number(a.ts_order):Infinity);
+            const ob = (b && b.tsOrder!=null)?Number(b.tsOrder):((b && b.ts_order!=null)?Number(b.ts_order):Infinity);
+            if (oa !== ob) return oa - ob;
+            const ga = String(a?.gachaId||'');
+            const gb = String(b?.gachaId||'');
+            return ga < gb ? -1 : ga > gb ? 1 : 0;
+        });
+    }
+    function reindexTsOrder(records){
+        const perTs = new Map();
+        for (const r of records){
+            const ts = Number(r?.timestamp||0) || 0;
+            const idx = perTs.get(ts) || 0;
+            r.tsOrder = idx;
+            perTs.set(ts, idx + 1);
+        }
+    }
+    function recalcSegmentMeta(seg){
+        let maxTs = 0, minTs = Number.MAX_SAFE_INTEGER; let fv = null;
+        for (const r of (seg.record||[])){
+            const ts = Number(r.timestamp||0);
+            if (ts > maxTs) maxTs = ts;
+            if (ts < minTs) minTs = ts;
+            if (!fv && Number(r.grade)===5) fv = { ...r };
+        }
+        seg.lastTimestamp = maxTs;
+        seg.firstTimestamp = (minTs===Number.MAX_SAFE_INTEGER?0:minTs);
+        seg.fivestar = (seg.fivestar==null? fv : seg.fivestar) || fv;
+        seg.times = Array.isArray(seg.record) ? seg.record.length : 0;
+    }
     function mergeTypeBlock(oldBlock, newBlock){
         const oldSegs = Array.isArray(oldBlock?.records) ? oldBlock.records : [];
         const newSegs = Array.isArray(newBlock?.records) ? newBlock.records : [];
@@ -69,7 +104,7 @@
             for (const r of cloned){ if (r.gachaId) gidToSegIndex.set(String(r.gachaId), idx); }
         }
 
-        // 2) Append new records sequentially
+        // 2) Append/Move records with INCOMING AUTHORITATIVE segmentation
         const perSegTs = new Map(); // Map<segObj, Map<ts, nextIdx>>
         const seedSegTs = (seg) => {
             if (perSegTs.has(seg)) return;
@@ -106,94 +141,52 @@
         for (const { seg } of sortedNew){
             const recs = Array.isArray(seg?.record) ? seg.record : [];
             const incomingCloned = recs.map(cloneRec);
-            // 2-1) 교집합 기반 병합: incoming의 gachaId가 기존 세그먼트에 존재하면 해당 세그먼트로 병합
-            let targetIdx = -1;
-            for (const r of incomingCloned){ if (r.gachaId && gidToSegIndex.has(String(r.gachaId))) { targetIdx = gidToSegIndex.get(String(r.gachaId)); break; } }
-            if (targetIdx >= 0){
-                const target = outSegs[targetIdx];
-                const existing = Array.isArray(target?.record) ? target.record.slice() : [];
-                const byId = new Map();
-                for (const r of existing){ if (r.gachaId) byId.set(String(r.gachaId), r); }
-                for (const r of incomingCloned){
-                    const gid = r.gachaId ? String(r.gachaId) : null;
-                    if (!gid || !byId.has(gid)) { existing.push(r); if (gid) byId.set(gid, r); }
+            // 2-1) 항상 INCOMING 기준으로 타깃 세그먼트 생성
+            outSegs.push({ fivestar: null, lastTimestamp: 0, firstTimestamp: 0, record: [] });
+            const targetIndex = outSegs.length - 1;
+            const target = outSegs[targetIndex];
+            const targetById = new Map();
+            // 2-2) gid가 다른 세그먼트에 있으면 제거하고 타깃으로 이동
+            for (const r of incomingCloned){
+                const gid = r.gachaId ? String(r.gachaId) : null;
+                if (gid && gidToSegIndex.has(gid)){
+                    const fromIdx = gidToSegIndex.get(gid);
+                    if (fromIdx !== targetIndex){
+                        try {
+                            const before = outSegs[fromIdx];
+                            if (before && Array.isArray(before.record)){
+                                before.record = before.record.filter(x => String(x.gachaId||'') !== gid);
+                                gidToSegIndex.delete(gid);
+                            }
+                        } catch(_) {}
+                    }
                 }
-                // 결정적 정렬: timestamp asc, tsOrder asc(없으면 무한대), gachaId asc
-                existing.sort((a,b)=>{
-                    const ta = Number(a.timestamp||0), tb = Number(b.timestamp||0);
-                    if (ta !== tb) return ta - tb;
-                    const oa = (a.tsOrder!=null)?Number(a.tsOrder):Infinity;
-                    const ob = (b.tsOrder!=null)?Number(b.tsOrder):Infinity;
-                    if (oa !== ob) return oa - ob;
-                    const ga = String(a.gachaId||'');
-                    const gb = String(b.gachaId||'');
-                    if (ga !== gb) return ga < gb ? -1 : 1;
-                    return 0;
-                });
-                // 같은 timestamp 묶음에 tsOrder 재시드
-                const perTs = new Map();
-                for (const r of existing){ const ts = Number(r.timestamp||0); const idx = perTs.get(ts)||0; r.tsOrder = idx; perTs.set(ts, idx+1); }
-                // 메타 재계산
-                let maxTs = 0, minTs = Number.MAX_SAFE_INTEGER; let fv = null;
-                for (const r of existing){ const ts = Number(r.timestamp||0); if (ts > maxTs) maxTs = ts; if (ts < minTs) minTs = ts; if (!fv && Number(r.grade)===5) fv = { ...r }; }
-                outSegs[targetIdx] = { fivestar: fv, lastTimestamp: maxTs, firstTimestamp: (minTs===Number.MAX_SAFE_INTEGER?0:minTs), record: existing, times: existing.length };
-                for (const r of existing){ if (r.gachaId){ seen.add(r.gachaId); gidToSegIndex.set(String(r.gachaId), targetIdx); } }
-                continue;
+                if (!gid || !targetById.has(gid)) { appendRec(target, r); if (gid){ targetById.set(gid, true); gidToSegIndex.set(gid, targetIndex); } }
+                if (gid) seen.add(gid);
             }
-            // 2-2) 신규 세그먼트(겹치는 ID 없음) 처리: 대상 세그먼트를 루프 전에 결정하여 분할 방지
-            let target = null;
-            let targetIndex = -1;
-            if (outSegs.length > 0) {
-                const last = outSegs[outSegs.length - 1];
-                // 진행 중이며 시간 연속성이 있을 때만 이어붙임
-                const firstTsOfIncoming = Number((Array.isArray(seg?.record) && seg.record.length>0 ? (seg.record[0]?.timestamp||seg.record[0]?.time||seg.record[0]?.ts) : 0) || 0);
-                if (last.fivestar == null && firstTsOfIncoming >= Number(last.lastTimestamp||0)) { target = last; targetIndex = outSegs.length - 1; }
-            }
-            if (!target){ outSegs.push({ fivestar: null, lastTimestamp: 0, record: [] }); target = outSegs[outSegs.length - 1]; targetIndex = outSegs.length - 1; }
-            for (const obj of incomingCloned){
-                if (obj.gachaId && seen.has(obj.gachaId)) continue; // ID-based dedupe only
-                appendRec(target, obj);
-                if (obj.gachaId){ seen.add(obj.gachaId); gidToSegIndex.set(String(obj.gachaId), targetIndex); }
-            }
-            // 신규 세그먼트에 대해서도 결정적 정렬 및 동일 timestamp 내 tsOrder 재시드
-            if (target && Array.isArray(target.record)){
-                const existing = target.record.slice();
-                existing.sort((a,b)=>{
-                    const ta = Number(a.timestamp||0), tb = Number(b.timestamp||0);
-                    if (ta !== tb) return ta - tb;
-                    const oa = (a.tsOrder!=null)?Number(a.tsOrder):Infinity;
-                    const ob = (b.tsOrder!=null)?Number(b.tsOrder):Infinity;
-                    if (oa !== ob) return oa - ob;
-                    const ga = String(a.gachaId||'');
-                    const gb = String(b.gachaId||'');
-                    if (ga !== gb) return ga < gb ? -1 : 1;
-                    return 0;
-                });
-                const perTs = new Map();
-                for (const r of existing){ const ts = Number(r.timestamp||0); const idx = perTs.get(ts)||0; r.tsOrder = idx; perTs.set(ts, idx+1); }
-                // 메타 재계산
-                let maxTs = 0, minTs = Number.MAX_SAFE_INTEGER; let fv = null;
-                for (const r of existing){ const ts = Number(r.timestamp||0); if (ts > maxTs) maxTs = ts; if (ts < minTs) minTs = ts; if (!fv && Number(r.grade)===5) fv = { ...r }; }
-                outSegs[targetIndex] = { fivestar: fv, lastTimestamp: maxTs, firstTimestamp: (minTs===Number.MAX_SAFE_INTEGER?0:minTs), record: existing, times: existing.length };
+            // 2-3) 타깃 세그먼트 정렬 및 tsOrder 재시드, 메타 보정
+            if (Array.isArray(target.record)){
+                sortRecordsDeterministic(target.record);
+                reindexTsOrder(target.record);
+                recalcSegmentMeta(target);
             }
         }
 
-        // 3) Finalize segment metadata
-        for (const seg of outSegs){
+        // 3) Cleanup: 빈 세그먼트 제거 및 남은 세그먼트 메타 보정
+        for (let i=0;i<outSegs.length;i++){
+            const seg = outSegs[i];
+            if (!seg || !Array.isArray(seg.record)) continue;
+            // 정렬/재시드 보장
+            sortRecordsDeterministic(seg.record);
+            reindexTsOrder(seg.record);
             // recalc lastTimestamp and firstTimestamp for safety
-            let maxTs = 0, minTs = Number.MAX_SAFE_INTEGER;
-            for (const r of (seg.record||[])){
-                const ts = Number(r.timestamp||0);
-                if (ts > maxTs) maxTs = ts;
-                if (ts < minTs) minTs = ts;
-            }
-            seg.lastTimestamp = maxTs;
-            seg.firstTimestamp = (minTs===Number.MAX_SAFE_INTEGER?0:minTs);
-            seg.times = Array.isArray(seg.record) ? seg.record.length : 0;
+            recalcSegmentMeta(seg);
         }
+        // remove empty segments
+        const compacted = outSegs.filter(seg => Array.isArray(seg?.record) && seg.record.length>0);
 
-        const summary = recomputeSummary(outSegs);
-        return { summary, records: outSegs };
+        const summary = recomputeSummary(compacted);
+        return { summary, records: compacted };
     }
     function mergeWithCache(incoming){
         try {

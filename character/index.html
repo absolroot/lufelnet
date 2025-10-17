@@ -1093,11 +1093,19 @@ redirect_from:
                                 
                                 const div = document.createElement('div');
                                 div.className = 'dropdown-item';
-                                div.textContent = window.characterData[name].name;
+                                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                                const char = window.characterData[name];
+                                let displayName = char.name;
+                                if (currentLang === 'en') {
+                                    displayName = char.codename || char.name_en || char.name;
+                                } else if (currentLang === 'jp') {
+                                    displayName = char.name_jp || char.name;
+                                }
+                                div.textContent = displayName;
                                 div.addEventListener('click', () => {
-                                    searchInput.value = window.characterData[name].name;
+                                    searchInput.value = displayName;
                                     dropdown.style.display = 'none';
-                                    filterBySearch(name.toLowerCase());
+                                    filterBySearch(displayName.toLowerCase());
                                 });
                                 dropdown.appendChild(div);
                             });
@@ -1137,7 +1145,9 @@ redirect_from:
                 const characterKey = sortedCharacters.find(name => 
                     window.characterData[name] && 
                     (window.characterData[name].name === displayName || 
-                     window.characterData[name].codename === displayName)
+                     window.characterData[name].codename === displayName ||
+                     window.characterData[name].name_en === displayName ||
+                     window.characterData[name].name_jp === displayName)
                 );
 
                 // 별칭 매칭 확인
@@ -1148,7 +1158,9 @@ redirect_from:
                 // 코드네임도 검색 대상에 포함
                 const charData = characterKey ? window.characterData[characterKey] : null;
                 const codeNameMatch = charData && charData.codename && 
-                    charData.codename.toLowerCase().includes(searchValue);
+                    charData.codename.toLowerCase().includes(searchValue) ||
+                    charData.name_en && charData.name_en.toLowerCase().includes(searchValue) ||
+                    charData.name_jp && charData.name_jp.toLowerCase().includes(searchValue);
                 
                 const shouldShow = searchValue === '' || 
                     (characterKey && characterKey.toLowerCase().includes(searchValue)) || 

@@ -78,7 +78,7 @@
     if (!document.getElementById('sos-extra-style')) {
       const s = document.createElement('style');
       s.id = 'sos-extra-style';
-      s.textContent = `.boss-score-ratio{ color:#ffd166; font-weight:700; margin-left:6px; }`;
+      s.textContent = `.boss-score-ratio{ color:#ffd166; font-weight:700; margin-left:6px; } .boss-bonus{ margin-top:0px; font-size:.9rem; color:#eeeeee; opacity:.8; text-align:center; }`;
       document.head.appendChild(s);
     }
     // Reuse existing card if present (unified Boss card)
@@ -131,6 +131,10 @@
       const ratio = (typeof b.scoreRatio !== 'undefined' && b.scoreRatio !== null) ? String(b.scoreRatio) : '';
       if (ratio) { const r=document.createElement('span'); r.className='boss-score-ratio'; r.textContent=`× ${ratio}`; head.appendChild(r); }
       left.appendChild(head);
+
+      // bonus rule (if present) - place between name and elements
+      const bonusRule = (b && b.bonusRule) ? String(b.bonusRule).trim() : '';
+      if (bonusRule) { const br=document.createElement('div'); br.className='boss-bonus'; br.textContent=bonusRule; left.appendChild(br); }
 
       // reuse adapt sprite if provided
       const adapt = (enemy && enemy.adapt) || {};

@@ -1007,6 +1007,21 @@ const defenseCalcData = {
             note: "화려한 불꽃 발동 시 1중첩",
             note_en: "추가 효과",
             note_jp: "추가 효과"
+        },
+        {
+            id: "tomoko2",
+            type: "전용무기",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/character-weapon/토모코·여름-5-01.png`,
+            skillName: "오션구슬 완드(글로벌)",
+            skillName_en: "(GLB only)",
+            skillName_jp: "(JPのみ)",
+            options: [],
+            value: 12.0,
+            duration: "3턴",
+            note: "글로벌 서버 기준",
+            note_en: "-",
+            note_jp: "-"
         }
     ],
     "루우나":[

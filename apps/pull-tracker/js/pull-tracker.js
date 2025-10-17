@@ -754,6 +754,7 @@
             els.status.textContent = lines || '';
         }
     }
+    try { window.__pull_setStatus = setStatus; } catch(_) {}
 
     function setHide4Visible(visible){
         try { const lbl = document.querySelector('.hide4-toggle'); if (lbl) lbl.style.display = visible ? 'inline-block' : 'none'; } catch(_) {}
@@ -1201,6 +1202,7 @@
             els.cards.appendChild(card);
         }
     }
+    try { window.renderCardsFromExample = renderCardsFromExample; } catch(_) {}
 
     function getNumber(obj, path) {
         try {
@@ -1465,7 +1467,18 @@
             const rows = [];
             const segments = Array.isArray(block.records) ? block.records : [];
             for (const seg of segments) {
-                const recs = Array.isArray(seg.record) ? seg.record : [];
+                // 정렬 강제: timestamp asc → tsOrder/ts_order asc → gachaId asc
+                const recs = (Array.isArray(seg.record) ? seg.record.slice() : []).sort((a,b)=>{
+                    const ta = Number(a?.timestamp ?? a?.time ?? a?.ts ?? 0) || 0;
+                    const tb = Number(b?.timestamp ?? b?.time ?? b?.ts ?? 0) || 0;
+                    if (ta !== tb) return ta - tb;
+                    const oa = (a && a.tsOrder != null) ? Number(a.tsOrder) : ((a && a.ts_order != null) ? Number(a.ts_order) : Infinity);
+                    const ob = (b && b.tsOrder != null) ? Number(b.tsOrder) : ((b && b.ts_order != null) ? Number(b.ts_order) : Infinity);
+                    if (oa !== ob) return oa - ob;
+                    const ga = String(a && a.gachaId != null ? a.gachaId : '');
+                    const gb = String(b && b.gachaId != null ? b.gachaId : '');
+                    return ga < gb ? -1 : ga > gb ? 1 : 0;
+                });
                 let pity = 0;
                 for (let i = 0; i < recs.length; i++) {
                     const r = recs[i];

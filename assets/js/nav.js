@@ -70,7 +70,7 @@ class Navigation {
                 materialCalc: 'Progression',
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Reduction',
-                criticalCalc: 'Critical Calculator',
+                criticalCalc: 'Critical Rate',
                 pullTracker: 'Pull Tracker',
                 pullTracker_individual: 'Individual Stats',
                 pullTracker_global: 'Global Stats',

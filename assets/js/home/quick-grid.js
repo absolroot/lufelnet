@@ -7,7 +7,7 @@
         const base = typeof BASE_URL !== 'undefined' ? BASE_URL : '';
         style.textContent = `
             .main-content { border-radius: 0px 0px 10px 10px; background-color: #3d3030; }
-            .quick-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; width: 100%; margin: 12px 0 24px 0; }
+            .quick-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 16px; width: 100%; margin: 12px 0 24px 0; }
             .quick-item { display: flex; align-items: center; justify-content: center; }
             .quick-link { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: inherit; border: transparent; background: transparent; border-radius: 14px; padding: 12px 18px; transition: all .18s ease; position: relative; overflow: hidden; }
             .quick-link:hover, .quick-link:focus-visible { background: transparent; box-shadow: none; transform: none; }
@@ -47,21 +47,21 @@
             pullTracker: '계약 트래커', pullTracker_global: '계약 통계',
             materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
             tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',
-            tier: '티어', guide: '가이드', gallery: '갤러리'
+            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력', support: '서포트'
         },
         en: {
             character: 'Character', persona: 'Persona', revelations: 'Revelations', wonderweapon: 'Wonder Daggers',
             pullTracker: 'Pull Tracker', pullTracker_global: 'Pull Global Stats',
             materialCalc: 'Progression Calc', defenseCalc: 'Defense Calc', criticalCalc: 'Critical Calc',
             tacticLibrary: 'Tactics Library', tacticMaker: 'Tactic Maker',
-            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery'
+            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', synergy: 'Synergy', support: 'Support'
         },
         jp: {
             character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
             materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー'
+            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', synergy: 'シナジー', support: 'サポート'
         }
     };
 
@@ -79,7 +79,9 @@
         tacticMaker: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/tactic-maker.png`,
         tier: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/tier.png`,
         guide: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/article.png`,
-        gallery: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/gallery.png`
+        gallery: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/gallery.png`,
+        synergy: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/synergy.png`,
+        support: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/support.png`
     };
 
     const pathMap = {
@@ -96,7 +98,9 @@
         tacticMaker: '/tactic',
         tier: '/tier/position-tier/',
         guide: '/article',
-        gallery: '/gallery'
+        gallery: '/gallery',
+        synergy: '/synergy',
+        support: '/about'
     };
 
     const buildHref = (key, lang) => {
@@ -104,6 +108,18 @@
         const ver = typeof APP_VERSION !== 'undefined' ? APP_VERSION : (Date.now().toString());
         const path = pathMap[key] || '/';
         const url = new URL(base + path, window.location.origin);
+
+        // 새 창으로 띄우게
+        if (key === 'synergy' && lang === 'kr') {
+            return 'https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM/'
+        }
+    else if (key === 'synergy' && lang === 'en') {
+            return 'https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs'
+        }
+        else if (key === 'synergy' && lang === 'jp') {
+            return 'https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs'
+        }
+
         url.searchParams.set('lang', lang);
         url.searchParams.set('v', ver);
         return url.pathname + url.search;
@@ -111,13 +127,13 @@
 
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery'];
+            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','synergy','support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery'];
+            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','synergy','support'];
         }
         // default to KR set
-        return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery'];
+        return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','synergy','support'];
     };
 
     const render = () => {
@@ -132,6 +148,9 @@
             const a = document.createElement('a');
             a.className = 'quick-link';
             a.href = buildHref(key, lang);
+            if (key === 'synergy') {
+                a.target = '_blank';
+            }
             a.setAttribute('data-key', key);
             a.setAttribute('aria-label', dict[key] || key);
 
@@ -147,6 +166,11 @@
             const label = document.createElement('div');
             label.className = 'quick-label';
             label.textContent = dict[key] || key;
+
+            //라벨이 서포트인 경우 글자 노란색
+            if (key === 'support') {
+                label.style.color = 'rgb(255, 206, 206)';
+            }
 
             a.appendChild(iconWrap);
             a.appendChild(label);

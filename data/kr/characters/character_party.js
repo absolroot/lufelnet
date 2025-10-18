@@ -19,6 +19,18 @@ const recommendParty = {
             }
         ]
     },
+    "미츠루": {
+        "weapon": [],
+        "persona": [],
+        "party": [
+            {
+                members: ["미츠루", "유키 마코토", "리코·매화", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            },
+        ]
+    },
     "YUI·스텔라": {
         "weapon": ["엔트로피·제로!"],
         "persona": [

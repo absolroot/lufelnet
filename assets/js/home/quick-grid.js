@@ -169,7 +169,7 @@
 
             //라벨이 서포트인 경우 글자 노란색
             if (key === 'support') {
-                label.style.color = 'rgb(255, 206, 206)';
+                label.style.color = 'rgb(255, 226, 226)';
             }
 
             a.appendChild(iconWrap);

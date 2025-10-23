@@ -85,6 +85,7 @@ const characterData = {
         "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
         "sub_option2": ["공격력", "대미지보너스", "관통"],
         "sub_option3": [],
+
         "minimum_stats": {
             "LV10": "공격력 2928",
             "LV10+5": "공격력 3228",
@@ -93,6 +94,7 @@ const characterData = {
             "LV13": "공격력 3108",
             "LV13+5": "공격력 3408"
         },
+
         "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
@@ -101,7 +103,8 @@ const characterData = {
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
         "mind_skill1": "S1/S2!",
-        "mind_skill2": "S3/TH!"
+        "mind_skill2": "S3/TH!",
+        "name_tw": "桐条美鶴"
     },
     "YUI·스텔라": {
         "limit": true,

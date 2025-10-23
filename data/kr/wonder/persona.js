@@ -552,7 +552,7 @@ const personaData = {
                 "동료를 목표로 스킬 시전 시 1턴 동안 동료의 크리티컬 확률이 11.7% 증가한다."
             ],
             effects_en: [
-                "Increases ATK by 3.5%. When using a skill on an ally, increases their CRIT Rate by 10.2% for 1 turn."
+                "Increases ATK by 3.5%. When using a skill on an ally, increases their CRIT Rate by 11.7% for 1 turn."
             ],
             effects_jp: [
                 "攻撃力が3.5%上昇する。味方にスキルを使用した時、1ターンの間、対象のクリティカル率を11.7%上昇させる。"
@@ -576,7 +576,6 @@ const personaData = {
             priority: 1
         },
         recommendSkill : [
-             {name : "리벨리온", priority: 3 },
              {name : "어드바이스", priority: 3 },
              {name : "타루카쟈", priority: 3 },
              {name : "라쿠카쟈", priority: 2 },

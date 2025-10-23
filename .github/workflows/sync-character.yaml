@@ -36,6 +36,12 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install tooling
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm i -D recast @babel/parser prettier >/dev/null 2>&1
+
       - name: Run sync script
         env:
           INPUT_LANG: ${{ inputs.lang }}

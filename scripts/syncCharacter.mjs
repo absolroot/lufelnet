@@ -2,6 +2,10 @@
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
+import { parse } from '@babel/parser';
+import recast from 'recast';
+
+const b = recast.types.builders;
 
 function readJSON(filePath) {
   try {
@@ -59,140 +63,105 @@ function resolveLocalCodename(inputCode, mapping) {
   return inputCode;
 }
 
-function loadExternal(lang, local, quiet = false) {
+function loadExternal(lang, local) {
   const p = path.join('data', 'external', 'character', lang, `${local}.json`);
-  if (!fs.existsSync(p)) {
-    if (!quiet) console.warn(`[warn] external not found: ${p}`);
+  const json = readJSON(p);
+  if (!json) {
+    console.warn(`[warn] external not found: ${p}`);
     return null;
   }
-  const json = readJSON(p);
-  if (!json || !json.data || json.status !== 0) {
-    if (!quiet) console.warn(`[warn] external has no data: ${p}`);
-    return null;
+  if (!json.data || json.status !== 0) {
+    console.warn(`[warn] external has no data: ${p}`);
+    return { data: null };
   }
   return json;
 }
 
-// -------- Helper: find and replace a specific character block in big JS object --------
-function findCharacterBlock(jsText, charKey) {
-  const keyPattern = new RegExp(`"${charKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\s*:\\s*\\{`);
-  const match = keyPattern.exec(jsText);
-  if (!match) return null;
-  let start = match.index + match[0].length; // position after '{'
-  let i = start;
-  let depth = 1;
-  const n = jsText.length;
-  while (i < n) {
-    const ch = jsText[i];
-    if (ch === '{') depth++;
-    else if (ch === '}') {
-      depth--;
-      if (depth === 0) {
-        return { blockStart: start, blockEnd: i, keyStart: match.index, keyLen: match[0].length };
+function parseAst(code) {
+  return recast.parse(code, {
+    parser: {
+      parse(source) {
+        return parse(source, {
+          sourceType: 'module',
+          plugins: ['jsx', 'classProperties', 'objectRestSpread', 'optionalChaining']
+        });
       }
     }
-    i++;
-  }
+  });
+}
+
+function findTopObject(ast) {
+  let obj = null;
+  recast.types.visit(ast, {
+    visitVariableDeclarator(p) {
+      const init = p.node.init;
+      if (init && init.type === 'ObjectExpression' && p.parent && p.parent.node.type === 'VariableDeclaration') {
+        obj = { path: p, obj: init };
+        return false;
+      }
+      this.traverse(p);
+    }
+  });
+  return obj;
+}
+
+function getLiteralKey(node) {
+  if (!node) return null;
+  if (node.type === 'Identifier') return node.name;
+  if (node.type === 'StringLiteral' || node.type === 'Literal') return node.value;
   return null;
 }
 
-function replaceOrInsertProp(blockText, propName, jsonStr, indent = '        ') {
-  // Try to find existing property "propName": ...,
-  const propRegex = new RegExp(`("${propName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}")\\s*:\\s*`);
-  const m = propRegex.exec(blockText);
-  if (m) {
-    // locate value object/array starting right after colon
-    const valStart = m.index + m[0].length;
-    // detect structure (object or other), then find its end by braces/brackets balance
-    let i = valStart;
-    let depth = 0;
-    let end = valStart;
-    const open = blockText[i];
-    if (open === '{' || open === '[') {
-      const openCh = open;
-      const closeCh = open === '{' ? '}' : ']';
-      depth = 1; i++;
-      while (i < blockText.length) {
-        const ch = blockText[i];
-        if (ch === openCh) depth++;
-        else if (ch === closeCh) {
-          depth--;
-          if (depth === 0) { end = i + 1; break; }
-        }
-        i++;
-      }
-    } else {
-      // primitive or string until comma/newline/closing brace
-      while (i < blockText.length && ![',', '\n', '\r', '}'].includes(blockText[i])) i++;
-      end = i;
-    }
-    const before = blockText.slice(0, valStart);
-    const after = blockText.slice(end);
-    return before + jsonStr + after;
+function getProperty(objectExpression, keyName) {
+  return objectExpression.properties.find((p) => getLiteralKey(p.key) === keyName);
+}
+
+function ensureObjectProperty(objExpr, keyName) {
+  let prop = getProperty(objExpr, keyName);
+  if (!prop) {
+    prop = b.objectProperty(b.stringLiteral(keyName), b.objectExpression([]));
+    objExpr.properties.push(prop);
   }
-  // Insert before closing '}' with trailing comma if needed
-  const closeIdx = blockText.lastIndexOf('}');
-  if (closeIdx === -1) return blockText; // invalid
-  // ensure comma before insert (if last non-space before '}' is not '{')
-  const prev = blockText.slice(0, closeIdx).trimEnd();
-  const needComma = !prev.endsWith('{');
-  const insertion = `${needComma ? ',' : ''}\n${indent}"${propName}": ${jsonStr}\n    `;
-  return blockText.slice(0, closeIdx) + insertion + blockText.slice(closeIdx);
+  return prop;
 }
 
-function jsonCompact(obj) {
-  return JSON.stringify(obj, null, 0);
-}
-
-// Get existing property value text (object/array/primitive) for a prop inside a character block
-function getPropValueText(blockText, propName) {
-  const propRegex = new RegExp(`("${propName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}")\\s*:\\s*`);
-  const m = propRegex.exec(blockText);
-  if (!m) return null;
-  const valStart = m.index + m[0].length;
-  let i = valStart;
-  const open = blockText[i];
-  if (open === '{' || open === '[') {
-    const openCh = open;
-    const closeCh = open === '{' ? '}' : ']';
-    let depth = 1; i++;
-    while (i < blockText.length) {
-      const ch = blockText[i];
-      if (ch === openCh) depth++;
-      else if (ch === closeCh) { depth--; if (depth === 0) { return blockText.slice(valStart, i + 1); } }
-      i++;
-    }
+function setStringProp(objExpr, keyName, value) {
+  let prop = getProperty(objExpr, keyName);
+  if (!prop) {
+    prop = b.objectProperty(b.stringLiteral(keyName), b.stringLiteral(value));
+    objExpr.properties.push(prop);
   } else {
-    while (i < blockText.length && ![',', '\n', '\r', '}'].includes(blockText[i])) i++;
-    return blockText.slice(valStart, i);
+    prop.value = b.stringLiteral(value);
   }
-  return null;
 }
 
-// (legacy AST helpers removed)
+function setObjectProp(objExpr, keyName, valueObj) {
+  let prop = getProperty(objExpr, keyName);
+  const jsonAst = recast.parse(`const x = ${JSON.stringify(valueObj)};`).program.body[0].declarations[0].init;
+  if (!prop) {
+    prop = b.objectProperty(b.stringLiteral(keyName), jsonAst);
+    objExpr.properties.push(prop);
+  } else {
+    prop.value = jsonAst;
+  }
+}
 
 function findCharacterKeyByCodename(filePath, localCodename) {
   const code = readText(filePath);
-  const localUpper = String(localCodename).toUpperCase();
-  const codenameRe = /"codename"\s*:\s*"([^"]+)"/g;
-  let m;
-  while ((m = codenameRe.exec(code))) {
-    if (String(m[1]).toUpperCase() !== localUpper) continue;
-    const hitIdx = m.index;
-    // find nearest character key line before this index: 4-space indent then "Key": {
-    const headerRe = /^\s{4}"([^"]+)"\s*:\s*\{\s*$/gm;
-    let lastKey = null;
-    let lastPos = -1;
-    let hm;
-    while ((hm = headerRe.exec(code))) {
-      if (hm.index < hitIdx) {
-        lastKey = hm[1];
-        lastPos = hm.index;
-      } else {
-        break;
+  const ast = parseAst(code);
+  const top = findTopObject(ast);
+  if (!top) return null;
+  const props = top.obj.properties;
+  for (const p of props) {
+    if (p.value && p.value.type === 'ObjectExpression') {
+      const sub = p.value;
+      const codeProp = getProperty(sub, 'codename');
+      if (codeProp && codeProp.value && codeProp.value.type === 'StringLiteral') {
+        if (String(codeProp.value.value).toUpperCase() === String(localCodename).toUpperCase()) {
+          return getLiteralKey(p.key);
+        }
       }
     }
-    if (lastKey) return lastKey;
   }
   return null;
 }
@@ -201,82 +170,108 @@ function updateRitual(lang, charKey, external) {
   const ritualPath = path.join('data', lang, 'characters', 'character_ritual.js');
   if (!fs.existsSync(ritualPath)) return;
   const code = readText(ritualPath);
-  const found = findCharacterBlock(code, charKey);
-  if (!found) return;
-  const before = code.slice(0, found.blockStart);
-  const block = code.slice(found.blockStart, found.blockEnd);
-  const after = code.slice(found.blockEnd);
-  let newBlock = block;
-  if (external?.data?.name) newBlock = replaceOrInsertProp(newBlock, 'name', jsonCompact(external.data.name));
+  const ast = parseAst(code);
+  const top = findTopObject(ast);
+  if (!top) return;
+  let charProp = getProperty(top.obj, charKey);
+  if (!charProp) {
+    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
+    top.obj.properties.push(charProp);
+  }
+  const charObj = charProp.value;
+  if (external?.data?.name) setStringProp(charObj, 'name', external.data.name);
   const asc = external?.data?.skill?.ascend_skill || [];
   for (let i = 0; i < asc.length && i < 7; i++) {
     const item = asc[i];
     if (!item) continue;
-    newBlock = replaceOrInsertProp(newBlock, `r${i}`, jsonCompact(item.name || ''));
-    newBlock = replaceOrInsertProp(newBlock, `r${i}_detail`, jsonCompact(item.desc || ''));
+    setStringProp(charObj, `r${i}`, item.name || '');
+    setStringProp(charObj, `r${i}_detail`, item.desc || '');
   }
-  const output = before + newBlock + after;
-  try { new Function(output); } catch (e) { throw new Error('ritual file edit invalid'); }
+  const output = recast.print(ast).code;
   writeFile(ritualPath, output);
 }
 
-function mapNatureToElement(nature, lang) {
-  if (!nature) return undefined;
-  if (lang !== 'kr') return nature;
-  const n = String(nature).toLowerCase();
-  const map = {
-    ice: '빙결',
-    elec: '전격',
-    electric: '전격',
-    fire: '화염',
-    bless: '축복',
-    curse: '주원',
-    wind: '질풍',
-    psychokinesis: '염동',
-    almighty: '만능',
-    allmighty: '만능',
-    physical: '물리',
-    support: '버프',
-  };
-  return map[n] || nature;
+// ---------- Skill Transform Utilities ----------
+function parseCost(cost) {
+  if (!cost || typeof cost !== 'string') return {};
+  const m = cost.match(/\b(SP|HP)\s*:?[\s]*([0-9]+(?:\.[0-9]+)?)\b/i);
+  if (!m) return {};
+  const key = m[1].toUpperCase();
+  const val = Number(m[2]);
+  if (Number.isNaN(val)) return {};
+  return key === 'SP' ? { sp: val } : { hp: val };
 }
 
-function mapTagsToType(tags, lang) {
-  if (!Array.isArray(tags) || tags.length === 0) return undefined;
-  const set = new Set(tags.filter(Boolean).map((t) => String(t)));
-  const candidates = ['단일피해', '광역피해', '버프', '강화', '디버프'];
-  for (const c of candidates) if (set.has(c)) return c;
-  for (const t of set) {
-    if (t.includes('광역')) return '광역피해';
-    if (t.includes('단일')) return '단일피해';
-  }
+function toArray(x) {
+  if (!x) return [];
+  if (Array.isArray(x)) return x.filter(Boolean);
+  return [x];
+}
+
+const NATURE_TO_ELEMENT_KR = {
+  Ice: '빙결',
+  Elec: '전격',
+  Electric: '전격',
+  Fire: '화염',
+  Wind: '질풍',
+  Nuclear: '핵열',
+  Nuke: '핵열',
+  Psy: '염동',
+  Bless: '축복',
+  Curse: '주원',
+  Phys: '물리',
+  Physical: '물리',
+  Gun: '총격',
+  Almighty: '만능',
+  Support: '버프',
+  Debuff: '디버프'
+};
+
+function normStr(s) {
+  return String(s || '').toLowerCase();
+}
+
+function inferTypeFromTags(tags) {
+  const list = toArray(tags).map(normStr);
+  if (list.some((t) => t.includes('단일') || t.includes('single'))) return '단일피해';
+  if (list.some((t) => t.includes('광역') || t.includes('aoe'))) return '광역피해';
+  if (list.some((t) => t.includes('버프') || t.includes('buff'))) return '버프';
+  if (list.some((t) => t.includes('디버프') || t.includes('debuff'))) return '디버프';
   return undefined;
 }
 
-function parseCostToFields(cost) {
-  if (!cost || typeof cost !== 'string') return {};
-  const m = cost.match(/^(SP|HP)\s*(\d+)/i) || cost.match(/^(SP|HP)(\d+)/i);
-  if (!m) return {};
-  const val = parseInt(m[2], 10);
-  if (val === 0) return {}; // 0은 필드 생략
-  if (m[1].toUpperCase() === 'SP') return { sp: val };
-  if (m[1].toUpperCase() === 'HP') return { hp: val };
-  return {};
+function inferElement({ group, tags, nature }) {
+  // group: 'assist' | 'passive' | 'normal' | 'highlight' | 'theurgia'
+  if (group === 'assist') return '버프';
+  if (group === 'passive') return '패시브';
+  const list = toArray(tags).map((t) => t && String(t));
+  if (list.some((t) => t && (t.includes('버프') || /buff/i.test(t)))) return '버프';
+  if (list.some((t) => t && (t.includes('디버프') || /debuff/i.test(t)))) return '디버프';
+  if (nature && NATURE_TO_ELEMENT_KR[nature]) return NATURE_TO_ELEMENT_KR[nature];
+  return undefined;
 }
 
-function normalizeSkill(item, lang, { removeName = false, elementOverride, currentType } = {}) {
-  if (!item) return null;
-  const element = elementOverride || mapNatureToElement(item.nature, lang);
-  const mappedType = mapTagsToType(item.tags, lang);
-  const type = mappedType !== undefined ? mappedType : currentType; // 기존 type 보존
-  const costFields = parseCostToFields(item.cost || '');
+function transformSkill(item, { group, removeName = false, keepName = true } = {}) {
+  if (!item || typeof item !== 'object') return null;
+  const nature = item.nature || item.element || undefined;
   const out = {};
-  if (!removeName && item.name) out.name = item.name;
-  if (element !== undefined) out.element = element;
-  if (type !== undefined) out.type = type;
+  // name
+  if (!removeName && keepName && item.name) out.name = item.name;
+  // element
+  const element = inferElement({ group, tags: item.tags, nature });
+  if (element) out.element = element;
+  // type
+  const type = inferTypeFromTags(item.tags);
+  if (type) out.type = type;
+  // cost
+  const c = parseCost(item.cost);
+  if ('sp' in c) out.sp = c.sp;
+  if ('hp' in c) out.hp = c.hp;
+  // cool
   if (typeof item.cooldown === 'number') out.cool = item.cooldown;
-  if (item.desc) out.description = item.desc;
-  Object.assign(out, costFields);
+  // description
+  if (typeof item.desc === 'string') out.description = item.desc;
+  // Done
   return out;
 }
 
@@ -284,35 +279,46 @@ function updateSkills(lang, charKey, external) {
   const skillsPath = path.join('data', lang, 'characters', 'character_skills.js');
   if (!fs.existsSync(skillsPath)) return;
   const code = readText(skillsPath);
-  const found = findCharacterBlock(code, charKey);
-  if (!found) return;
-  const before = code.slice(0, found.blockStart);
-  const block = code.slice(found.blockStart, found.blockEnd);
-  const after = code.slice(found.blockEnd);
-  let newBlock = block;
+  const ast = parseAst(code);
+  const top = findTopObject(ast);
+  if (!top) return;
+  let charProp = getProperty(top.obj, charKey);
+  if (!charProp) {
+    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
+    top.obj.properties.push(charProp);
+  }
+  const charObj = charProp.value;
+
   const skills = external?.data?.skill || {};
   const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
-  const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null;
+  const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null; // rare
 
-  if (normal[0]) newBlock = replaceOrInsertProp(newBlock, 'skill1', jsonCompact(normalizeSkill(normal[0], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill1') || '{}').type })));
-  if (normal[1]) newBlock = replaceOrInsertProp(newBlock, 'skill2', jsonCompact(normalizeSkill(normal[1], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill2') || '{}').type })));
-  if (normal[2]) newBlock = replaceOrInsertProp(newBlock, 'skill3', jsonCompact(normalizeSkill(normal[2], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill3') || '{}').type })));
+  // normal_skill -> skill1/2/3
+  if (normal[0]) setObjectProp(charObj, 'skill1', transformSkill(normal[0], { group: 'normal' }));
+  if (normal[1]) setObjectProp(charObj, 'skill2', transformSkill(normal[1], { group: 'normal' }));
+  if (normal[2]) setObjectProp(charObj, 'skill3', transformSkill(normal[2], { group: 'normal' }));
 
-  if (assist[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_support', jsonCompact(normalizeSkill(assist[0], lang, { elementOverride: '패시브', currentType: JSON.parse(getPropValueText(newBlock, 'skill_support') || '{}').type })));
+  // assist_skill -> skill_support (element = 버프)
+  if (assist[0]) setObjectProp(charObj, 'skill_support', transformSkill(assist[0], { group: 'assist' }));
 
-  if (passive[0]) newBlock = replaceOrInsertProp(newBlock, 'passive1', jsonCompact(normalizeSkill(passive[0], lang, { elementOverride: '패시브', currentType: JSON.parse(getPropValueText(newBlock, 'passive1') || '{}').type })));
-  if (passive[1]) newBlock = replaceOrInsertProp(newBlock, 'passive2', jsonCompact(normalizeSkill(passive[1], lang, { elementOverride: '패시브', currentType: JSON.parse(getPropValueText(newBlock, 'passive2') || '{}').type })));
+  // passive_skill -> passive1/2 (element = 패시브)
+  if (passive[0]) setObjectProp(charObj, 'passive1', transformSkill(passive[0], { group: 'passive' }));
+  if (passive[1]) setObjectProp(charObj, 'passive2', transformSkill(passive[1], { group: 'passive' }));
 
-  if (highlight && highlight[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(highlight[0], lang, { removeName: true, currentType: JSON.parse(getPropValueText(newBlock, 'skill_highlight') || '{}').type })));
+  // highlight_skill -> skill_highlight (remove name)
+  if (highlight && highlight[0]) {
+    const hl = transformSkill(highlight[0], { group: 'highlight', removeName: true });
+    setObjectProp(charObj, 'skill_highlight', hl);
+  }
 
-  if (theurgia[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(theurgia[0], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill_highlight') || '{}').type })));
-  if (theurgia[1]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight2', jsonCompact(normalizeSkill(theurgia[1], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill_highlight2') || '{}').type })));
+  // theurgia_skill -> skill_highlight[/2] (keep name)
+  if (theurgia[0]) setObjectProp(charObj, 'skill_highlight', transformSkill(theurgia[0], { group: 'theurgia', keepName: true }));
+  if (theurgia[1]) setObjectProp(charObj, 'skill_highlight2', transformSkill(theurgia[1], { group: 'theurgia', keepName: true }));
 
-  const output = before + newBlock + after;
-  try { new Function(output); } catch (e) { throw new Error('skills file edit invalid'); }
+  const output = recast.print(ast).code;
   writeFile(skillsPath, output);
 }
 
@@ -327,12 +333,15 @@ function updateBaseStatsKR(charKey, external) {
   const basePath = path.join('data', 'kr', 'characters', 'character_base_stats.js');
   if (!fs.existsSync(basePath)) return;
   const code = readText(basePath);
-  const found = findCharacterBlock(code, charKey);
-  if (!found) return;
-  const before = code.slice(0, found.blockStart);
-  const block = code.slice(found.blockStart, found.blockEnd);
-  const after = code.slice(found.blockEnd);
-  let newBlock = block;
+  const ast = parseAst(code);
+  const top = findTopObject(ast);
+  if (!top) return;
+  let charProp = getProperty(top.obj, charKey);
+  if (!charProp) {
+    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
+    top.obj.properties.push(charProp);
+  }
+  const charObj = charProp.value;
   const stats = external?.data?.stats || null;
   if (stats) {
     const atk = parseSevenNumbers(stats['Attack']);
@@ -341,13 +350,16 @@ function updateBaseStatsKR(charKey, external) {
     if (atk && def && hp) {
       for (let i = 0; i < 7; i++) {
         const key = `a${i}_lv80`;
-        const obj = { HP: hp[i], attack: atk[i], defense: def[i] };
-        newBlock = replaceOrInsertProp(newBlock, key, jsonCompact(obj));
+        const objProp = ensureObjectProperty(charObj, key);
+        const v = objProp.value && objProp.value.type === 'ObjectExpression' ? objProp.value : b.objectExpression([]);
+        objProp.value = v;
+        setObjectProp(v, 'HP', hp[i]);
+        setObjectProp(v, 'attack', atk[i]);
+        setObjectProp(v, 'defense', def[i]);
       }
     }
   }
-  const output = before + newBlock + after;
-  try { new Function(output); } catch (e) { throw new Error('base stats file edit invalid'); }
+  const output = recast.print(ast).code;
   writeFile(basePath, output);
 }
 
@@ -355,18 +367,17 @@ function updateNamesKR(local, key, nameMap) {
   const krCharsPath = path.join('data', 'kr', 'characters', 'characters.js');
   if (!fs.existsSync(krCharsPath)) return;
   const code = readText(krCharsPath);
-  const found = findCharacterBlock(code, key);
-  if (!found) return;
-  const before = code.slice(0, found.blockStart);
-  const block = code.slice(found.blockStart, found.blockEnd);
-  const after = code.slice(found.blockEnd);
-  let newBlock = block;
-  if (nameMap.en) newBlock = replaceOrInsertProp(newBlock, 'name_en', jsonCompact(nameMap.en));
-  if (nameMap.jp) newBlock = replaceOrInsertProp(newBlock, 'name_jp', jsonCompact(nameMap.jp));
-  if (nameMap.cn) newBlock = replaceOrInsertProp(newBlock, 'name_cn', jsonCompact(nameMap.cn));
-  if (nameMap.tw) newBlock = replaceOrInsertProp(newBlock, 'name_tw', jsonCompact(nameMap.tw));
-  const output = before + newBlock + after;
-  try { new Function(output); } catch (e) { throw new Error('names file edit invalid'); }
+  const ast = parseAst(code);
+  const top = findTopObject(ast);
+  if (!top) return;
+  let charProp = getProperty(top.obj, key);
+  if (!charProp) return;
+  const obj = charProp.value;
+  if (nameMap.en) setStringProp(obj, 'name_en', nameMap.en);
+  if (nameMap.jp) setStringProp(obj, 'name_jp', nameMap.jp);
+  if (nameMap.cn) setStringProp(obj, 'name_cn', nameMap.cn);
+  if (nameMap.tw) setStringProp(obj, 'name_tw', nameMap.tw);
+  const output = recast.print(ast).code;
   writeFile(krCharsPath, output);
 }
 
@@ -402,20 +413,18 @@ function main() {
     console.warn(`[warn] Skip skills/stats update for ${lang}:${local} due to null data`);
   }
 
-  // Names enrichment: 요청 언어에 따라서만 보강 (kr일 때만 KR characters.js에 반영)
-  if (lang === 'kr') {
-    const extEN = loadExternal('en', local, true);
-    const extJP = loadExternal('jp', local, true);
-    const extCN = loadExternal('cn', local, true);
-    const extTW = loadExternal('tw', local, true);
-    const nameMap = {
-      en: extEN?.data?.name || null,
-      jp: extJP?.data?.name || null,
-      cn: extCN?.data?.name || null,
-      tw: extTW?.data?.name || null
-    };
-    updateNamesKR(local, key, nameMap);
-  }
+  // Names enrichment from multiple languages (best-effort)
+  const extEN = loadExternal('en', local);
+  const extJP = loadExternal('jp', local);
+  const extCN = loadExternal('cn', local);
+  const extTW = loadExternal('tw', local);
+  const nameMap = {
+    en: extEN?.data?.name || null,
+    jp: extJP?.data?.name || null,
+    cn: extCN?.data?.name || null,
+    tw: extTW?.data?.name || null
+  };
+  updateNamesKR(local, key, nameMap);
 
   console.log(`Sync completed for ${lang}:${local} (key='${key}')`);
 }

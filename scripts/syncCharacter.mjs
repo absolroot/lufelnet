@@ -291,10 +291,14 @@ function updateWeapons(lang, charKey, externalWeapon) {
   const five = Array.isArray(wdata.fiveStar) ? wdata.fiveStar : [];
   const four = Array.isArray(wdata.fourStar) ? wdata.fourStar : [];
 
+  console.log(`[weapon] target=${targetPath} key='${charKey}' fiveStar=${five.length} fourStar=${four.length}`);
+
   // fiveStar -> weapon5-1, weapon5-2, ...
   if (five.length > 0) {
     five.forEach((w, idx) => {
       const keyName = `weapon5-${idx + 1}`;
+      const beforeNode = getProperty(charObj, keyName)?.value;
+      const before = beforeNode ? astLiteralToValue(beforeNode) : undefined;
       const payload = {
         name: w?.name ?? '',
         health: w?.stat?.hp !== undefined ? toNumberOrKeep(w.stat.hp) : undefined,
@@ -304,6 +308,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
         description: w?.skill ?? ''
       };
       setMergedObjectProp(charObj, keyName, payload);
+      console.log(`[weapon] ${keyName} before=${before ? JSON.stringify(before) : 'null'} after=${JSON.stringify(payload)}`);
     });
   }
 
@@ -311,6 +316,8 @@ function updateWeapons(lang, charKey, externalWeapon) {
   if (four.length > 0) {
     four.forEach((w, idx) => {
       const keyName = `weapon4-${idx + 1}`;
+      const beforeNode = getProperty(charObj, keyName)?.value;
+      const before = beforeNode ? astLiteralToValue(beforeNode) : undefined;
       const payload = {
         name: w?.name ?? '',
         health: w?.stat?.hp !== undefined ? toNumberOrKeep(w.stat.hp) : undefined,
@@ -320,6 +327,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
         description: w?.skill ?? ''
       };
       setMergedObjectProp(charObj, keyName, payload);
+      console.log(`[weapon] ${keyName} before=${before ? JSON.stringify(before) : 'null'} after=${JSON.stringify(payload)}`);
     });
   }
 

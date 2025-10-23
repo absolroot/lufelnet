@@ -57,7 +57,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
-            git commit -m "chore(sync): apply external -> internal character sync (${INPUT_LANG}:${INPUT_CODE}) [skip ci]"
+            git commit -m "chore(sync): apply external -> internal character sync (${{ inputs.lang }}:${{ inputs.code }}) [skip ci]"
             git push
             echo "Changes committed."
           else

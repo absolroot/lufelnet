@@ -2093,6 +2093,7 @@ const characterData = {
         "sub_option1": ["관통"],
         "sub_option2": ["공격력", "대미지보너스", "크리티컬 확률"],
         "sub_option3": ["크리티컬 효과", "효과명중"],
+
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -2101,6 +2102,7 @@ const characterData = {
             "LV13": "관통 31.5% (A6)",
             "LV13+5": "관통 31.5% (A6)"
         },
+
         "battle_plus_stats": "nan",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
@@ -2109,7 +2111,9 @@ const characterData = {
         "mind_stats1": "공격력 20%",
         "mind_stats2": "관통 7.5%!",
         "mind_skill1": "S1/HL!",
-        "mind_skill2": "S2/S3!"
+        "mind_skill2": "S2/S3!",
+        "name_cn": "北里基良",
+        "name_tw": "北里基良"
     },
     "키요시": {
         "limit": false,

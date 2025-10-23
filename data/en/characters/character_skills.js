@@ -1142,45 +1142,16 @@ const enCharacterSkillsData = {
     },
     "키라": {
         "name": "Kira Kitazato",
-        "skill1": {
-            "name": "Incision Technique / Sinful Game",
-            "element": "물리",
-            "type":"단일피해",
-            "sp": 21,
-            "cool": 0,
-            "description": "[Hunter] Form: Deal 47.3%/52.2%/50.2%/55.1% ATK as Phys DMG to 1 enemy 4 times, inflicts 1 stack of [Bleed].\n[Executioner] Form: Deal 201.4%/222.1%/213.7%/234.4% ATK as Phys DMG to 1 enemy, removes 2 stacks of [Bleed] after this skill. (Can trigger the effect of [Laceration])."
-        },
-        "skill2": {
-            "name": "Lethal Pleasure / Curtain Call",
-            "element": "물리",
-            "type":"단일피해",
-            "sp": 21,
-            "cool": 0,
-            "description": "[Hunter] Form: Deal 84.2%/92.8%/89.4%/98.0% ATK as Phys DMG to 1 enemy 2 times. Immediately triggers [Bleed] DMG and refreshes the duration of [Bleed].\n[Executioner] Form: Deal 201.3%/222.0%/213.7%/234.4% ATK as Phys DMG to 1 enemy, for every 1 stack of [Bleed] on the target, increases the skill damage and [Laceration] damage by 2%, remove all stacks of [Bleed] after this skill. (Can trigger the effect of [Laceration])."
-        },
-        "skill3": {
-            "name": "Night’s Arrival",
-            "element": "버프",
-            "type":"전환",
-            "sp": 15,
-            "cool": 0,
-            "description": "Unlocks when any enemy have ≥ 7 stacks of [Bleed].\nTransforms into [Executioner], changes skill and gains this effect: When using skills, for every 3 stacks of [Bleed], deals 1 additional hit of [Laceration]: deal 66.7%/73.5%/70.8%/77.6% ATK as Phys DMG. You can still use other skills after using this skill, automatically transforms back into [Hunter] at the end of the turn."
-        },
+        "skill1": {"name":"Moonlit Scalpel / Midnight Surgery","element":"물리","type":"단일피해","sp":21,"cool":0,"description":"Doctor mode: Deal Physical damage to 1 foe equal to 47.3%/52.2%/50.2%/55.1% of Attack (4 hits) and inflict 1 Bleed stack.  Ripper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack, then remove 2 Bleed stacks from the target (can activate Rending effects)."},
+        "skill2": {"name":"Crimson Operation / Pathology","element":"물리","type":"단일피해","sp":21,"cool":0,"description":"Doctor mode: Deal Physical damage to 1 foe equal to 84.2%/92.9%/89.4%/98.0% of Attack (2 hits). At the same time, activate Bleed damage and reset the turn duration of the target's Bleed stacks 1 time.\nRipper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack. For each Bleed stack on the target, increase the damage of Rending activated by them and this skill by 2%, then remove all Bleed stacks from the target (can activate Rending effects)."},
+        "skill3": {"name":"Nightfall","sp":15,"cool":0,"description":"Switch to Ripper mode and change Kitazato's skills (can be activated when any foe has 7 or more Bleed stacks).\nWhen using skills in this mode, for every 3 Bleed stacks on the target, inflict 1 Rending stack (Physical damage equal to 66.7%/73.5%/70.8%/77.6% of Attack).\nAfter using this skill, Kitazato can use other skills and switches to Doctor mode at the end of the turn."},
         "skill_highlight": {
             "element": "물리",
             "type":"단일피해",
             "description": "Transforms into [Hunter], immediately inflicts 5 stacks of [Bleed] to 1 enemy. Afterwards immediately transform into [Executioner] and deal 328.5%/362.2%/348.7%/382.4% ATK as Phys DMG (Can Trigger the effect of [Laceration])."
         },
-        "passive1": {
-            "name": "Infect",
-            "element": "패시브",
-            "description": "For every 30% EHR, increase the Phys DMG from [Bleed] by 4% of own ATK, up to 90% EHR."
-        },
-        "passive2": {
-            "name": "Fester",
-            "element": "패시브",
-            "description": "Increase EHR by 36% as [Hunter].\nIncrease PEN by 21% as [Executioner]."
-        }
+        "passive1": {"name":"Hideous Mask","element":"패시브","cool":0,"description":"For every 30% of the user's ailment accuracy, increase Physical damage dealt from Bleed by 4% of the user's Attack (up to 90% of ailment accuracy)."},
+        "passive2": {"name":"Drawn Blade","element":"패시브","cool":0,"description":"When in Doctor mode, increase ailment accuracy by 36%.\nWhen in Ripper mode, increase pierce rate by 21%."}
     },
     "토모코·여름": {
         "name": "Seaside Tomoko",

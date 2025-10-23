@@ -267,7 +267,7 @@ function inferTypeFromTags(tags) {
   const list = toArray(tags).map(normStr);
   if (list.some((t) => t.includes('단일') || t.includes('single'))) return '단일피해';
   if (list.some((t) => t.includes('광역') || t.includes('aoe'))) return '광역피해';
-  if (list.some((t) => t.includes('버프') || t.includes('buff') || t.includes('support'))) return '버프';
+  if (list.some((t) => t.includes('버프') || t.includes('buff') || t.includes('support') || t.includes('補助'))) return '버프';
   if (list.some((t) => t.includes('디버프') || t.includes('debuff'))) return '디버프';
   return undefined;
 }

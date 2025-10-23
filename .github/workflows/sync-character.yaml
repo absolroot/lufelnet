@@ -1,0 +1,67 @@
+name: Sync character from external
+
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: Target language (kr/jp/en)
+        required: true
+        default: kr
+        type: choice
+        options:
+          - kr
+          - jp
+          - en
+      code:
+        description: API or local codename (e.g., mitsuru or KIRIJO)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-character
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install tooling
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm i -D recast @babel/parser prettier >/dev/null 2>&1
+
+      - name: Run sync script
+        env:
+          INPUT_LANG: ${{ inputs.lang }}
+          INPUT_CODE: ${{ inputs.code }}
+        run: |
+          set -euo pipefail
+          node scripts/syncCharacter.mjs --lang "$INPUT_LANG" --code "$INPUT_CODE"
+
+      - name: Commit & push if changed
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore(sync): apply external -> internal character sync (${INPUT_LANG}:${INPUT_CODE}) [skip ci]"
+            git push
+            echo "Changes committed."
+          else
+            echo "No changes to commit."
+          fi
+
+

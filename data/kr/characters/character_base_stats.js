@@ -17,10 +17,10 @@ const basicStatsData = {
     },
     "미츠루": {
         a0_lv1: {
-            HP: 311,
+            HP: 308,
             SP: 100.0,
             attack: 97.9,
-            defense: 0,
+            defense: 55,
             crit_rate: 5,
             crit_mult: 150,
             speed: 100.0

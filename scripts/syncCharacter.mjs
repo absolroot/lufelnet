@@ -291,7 +291,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
   const five = Array.isArray(wdata.fiveStar) ? wdata.fiveStar : [];
   const four = Array.isArray(wdata.fourStar) ? wdata.fourStar : [];
 
-  console.log(`[weapon] target=${targetPath} key='${charKey}' fiveStar=${five.length} fourStar=${four.length}`);
+  console.error(`::notice::[weapon] target=${targetPath} key='${charKey}' fiveStar=${five.length} fourStar=${four.length}`);
 
   // fiveStar -> weapon5-1, weapon5-2, ...
   if (five.length > 0) {
@@ -308,7 +308,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
         description: w?.skill ?? ''
       };
       setMergedObjectProp(charObj, keyName, payload);
-      console.log(`[weapon] ${keyName} before=${before ? JSON.stringify(before) : 'null'} after=${JSON.stringify(payload)}`);
+      console.error(`::notice::[weapon] ${keyName} before=${before ? JSON.stringify(before) : 'null'} after=${JSON.stringify(payload)}`);
     });
   }
 
@@ -327,7 +327,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
         description: w?.skill ?? ''
       };
       setMergedObjectProp(charObj, keyName, payload);
-      console.log(`[weapon] ${keyName} before=${before ? JSON.stringify(before) : 'null'} after=${JSON.stringify(payload)}`);
+      console.error(`::notice::[weapon] ${keyName} before=${before ? JSON.stringify(before) : 'null'} after=${JSON.stringify(payload)}`);
     });
   }
 

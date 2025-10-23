@@ -59,23 +59,23 @@ function resolveLocalCodename(inputCode, mapping) {
   return inputCode;
 }
 
-function loadExternal(lang, local) {
+function loadExternal(lang, local, quiet = false) {
   const p = path.join('data', 'external', 'character', lang, `${local}.json`);
-  const json = readJSON(p);
-  if (!json) {
-    console.warn(`[warn] external not found: ${p}`);
+  if (!fs.existsSync(p)) {
+    if (!quiet) console.warn(`[warn] external not found: ${p}`);
     return null;
   }
-  if (!json.data || json.status !== 0) {
-    console.warn(`[warn] external has no data: ${p}`);
-    return { data: null };
+  const json = readJSON(p);
+  if (!json || !json.data || json.status !== 0) {
+    if (!quiet) console.warn(`[warn] external has no data: ${p}`);
+    return null;
   }
   return json;
 }
 
 // -------- Helper: find and replace a specific character block in big JS object --------
 function findCharacterBlock(jsText, charKey) {
-  const keyPattern = new RegExp(`"${charKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\s*:\s*\{`);
+  const keyPattern = new RegExp(`"${charKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\s*:\\s*\\{`);
   const match = keyPattern.exec(jsText);
   if (!match) return null;
   let start = match.index + match[0].length; // position after '{'
@@ -98,7 +98,7 @@ function findCharacterBlock(jsText, charKey) {
 
 function replaceOrInsertProp(blockText, propName, jsonStr, indent = '        ') {
   // Try to find existing property "propName": ...,
-  const propRegex = new RegExp(`("${propName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}")\s*:\s*`);
+  const propRegex = new RegExp(`("${propName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}")\\s*:\\s*`);
   const m = propRegex.exec(blockText);
   if (m) {
     // locate value object/array starting right after colon
@@ -142,6 +142,31 @@ function replaceOrInsertProp(blockText, propName, jsonStr, indent = '        ') 
 
 function jsonCompact(obj) {
   return JSON.stringify(obj, null, 0);
+}
+
+// Get existing property value text (object/array/primitive) for a prop inside a character block
+function getPropValueText(blockText, propName) {
+  const propRegex = new RegExp(`("${propName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}")\\s*:\\s*`);
+  const m = propRegex.exec(blockText);
+  if (!m) return null;
+  const valStart = m.index + m[0].length;
+  let i = valStart;
+  const open = blockText[i];
+  if (open === '{' || open === '[') {
+    const openCh = open;
+    const closeCh = open === '{' ? '}' : ']';
+    let depth = 1; i++;
+    while (i < blockText.length) {
+      const ch = blockText[i];
+      if (ch === openCh) depth++;
+      else if (ch === closeCh) { depth--; if (depth === 0) { return blockText.slice(valStart, i + 1); } }
+      i++;
+    }
+  } else {
+    while (i < blockText.length && ![',', '\n', '\r', '}'].includes(blockText[i])) i++;
+    return blockText.slice(valStart, i);
+  }
+  return null;
 }
 
 // (legacy AST helpers removed)
@@ -218,11 +243,9 @@ function mapNatureToElement(nature, lang) {
 
 function mapTagsToType(tags, lang) {
   if (!Array.isArray(tags) || tags.length === 0) return undefined;
-  // KR 외부는 한국어 태그 사용. 가장 의미 있는 태그를 선택
   const set = new Set(tags.filter(Boolean).map((t) => String(t)));
   const candidates = ['단일피해', '광역피해', '버프', '강화', '디버프'];
   for (const c of candidates) if (set.has(c)) return c;
-  // 일부는 "광역" 같은 변형일 수 있음
   for (const t of set) {
     if (t.includes('광역')) return '광역피해';
     if (t.includes('단일')) return '단일피해';
@@ -232,18 +255,20 @@ function mapTagsToType(tags, lang) {
 
 function parseCostToFields(cost) {
   if (!cost || typeof cost !== 'string') return {};
-  const m = cost.match(/^(SP|HP)\s*(\d+)/i);
+  const m = cost.match(/^(SP|HP)\s*(\d+)/i) || cost.match(/^(SP|HP)(\d+)/i);
   if (!m) return {};
   const val = parseInt(m[2], 10);
+  if (val === 0) return {}; // 0은 필드 생략
   if (m[1].toUpperCase() === 'SP') return { sp: val };
   if (m[1].toUpperCase() === 'HP') return { hp: val };
   return {};
 }
 
-function normalizeSkill(item, lang, { removeName = false, elementOverride } = {}) {
+function normalizeSkill(item, lang, { removeName = false, elementOverride, currentType } = {}) {
   if (!item) return null;
   const element = elementOverride || mapNatureToElement(item.nature, lang);
-  const type = mapTagsToType(item.tags, lang);
+  const mappedType = mapTagsToType(item.tags, lang);
+  const type = mappedType !== undefined ? mappedType : currentType; // 기존 type 보존
   const costFields = parseCostToFields(item.cost || '');
   const out = {};
   if (!removeName && item.name) out.name = item.name;
@@ -272,19 +297,19 @@ function updateSkills(lang, charKey, external) {
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
   const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null;
 
-  if (normal[0]) newBlock = replaceOrInsertProp(newBlock, 'skill1', jsonCompact(normalizeSkill(normal[0], lang)));
-  if (normal[1]) newBlock = replaceOrInsertProp(newBlock, 'skill2', jsonCompact(normalizeSkill(normal[1], lang)));
-  if (normal[2]) newBlock = replaceOrInsertProp(newBlock, 'skill3', jsonCompact(normalizeSkill(normal[2], lang)));
+  if (normal[0]) newBlock = replaceOrInsertProp(newBlock, 'skill1', jsonCompact(normalizeSkill(normal[0], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill1') || '{}').type })));
+  if (normal[1]) newBlock = replaceOrInsertProp(newBlock, 'skill2', jsonCompact(normalizeSkill(normal[1], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill2') || '{}').type })));
+  if (normal[2]) newBlock = replaceOrInsertProp(newBlock, 'skill3', jsonCompact(normalizeSkill(normal[2], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill3') || '{}').type })));
 
-  if (assist[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_support', jsonCompact(normalizeSkill(assist[0], lang, { elementOverride: '패시브' })));
+  if (assist[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_support', jsonCompact(normalizeSkill(assist[0], lang, { elementOverride: '패시브', currentType: JSON.parse(getPropValueText(newBlock, 'skill_support') || '{}').type })));
 
-  if (passive[0]) newBlock = replaceOrInsertProp(newBlock, 'passive1', jsonCompact(normalizeSkill(passive[0], lang)));
-  if (passive[1]) newBlock = replaceOrInsertProp(newBlock, 'passive2', jsonCompact(normalizeSkill(passive[1], lang)));
+  if (passive[0]) newBlock = replaceOrInsertProp(newBlock, 'passive1', jsonCompact(normalizeSkill(passive[0], lang, { elementOverride: '패시브', currentType: JSON.parse(getPropValueText(newBlock, 'passive1') || '{}').type })));
+  if (passive[1]) newBlock = replaceOrInsertProp(newBlock, 'passive2', jsonCompact(normalizeSkill(passive[1], lang, { elementOverride: '패시브', currentType: JSON.parse(getPropValueText(newBlock, 'passive2') || '{}').type })));
 
-  if (highlight && highlight[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(highlight[0], lang, { removeName: true })));
+  if (highlight && highlight[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(highlight[0], lang, { removeName: true, currentType: JSON.parse(getPropValueText(newBlock, 'skill_highlight') || '{}').type })));
 
-  if (theurgia[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(theurgia[0], lang)));
-  if (theurgia[1]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight2', jsonCompact(normalizeSkill(theurgia[1], lang)));
+  if (theurgia[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(theurgia[0], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill_highlight') || '{}').type })));
+  if (theurgia[1]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight2', jsonCompact(normalizeSkill(theurgia[1], lang, { currentType: JSON.parse(getPropValueText(newBlock, 'skill_highlight2') || '{}').type })));
 
   const output = before + newBlock + after;
   try { new Function(output); } catch (e) { throw new Error('skills file edit invalid'); }
@@ -377,18 +402,20 @@ function main() {
     console.warn(`[warn] Skip skills/stats update for ${lang}:${local} due to null data`);
   }
 
-  // Names enrichment from multiple languages (best-effort)
-  const extEN = loadExternal('en', local);
-  const extJP = loadExternal('jp', local);
-  const extCN = loadExternal('cn', local);
-  const extTW = loadExternal('tw', local);
-  const nameMap = {
-    en: extEN?.data?.name || null,
-    jp: extJP?.data?.name || null,
-    cn: extCN?.data?.name || null,
-    tw: extTW?.data?.name || null
-  };
-  updateNamesKR(local, key, nameMap);
+  // Names enrichment: 요청 언어에 따라서만 보강 (kr일 때만 KR characters.js에 반영)
+  if (lang === 'kr') {
+    const extEN = loadExternal('en', local, true);
+    const extJP = loadExternal('jp', local, true);
+    const extCN = loadExternal('cn', local, true);
+    const extTW = loadExternal('tw', local, true);
+    const nameMap = {
+      en: extEN?.data?.name || null,
+      jp: extJP?.data?.name || null,
+      cn: extCN?.data?.name || null,
+      tw: extTW?.data?.name || null
+    };
+    updateNamesKR(local, key, nameMap);
+  }
 
   console.log(`Sync completed for ${lang}:${local} (key='${key}')`);
 }

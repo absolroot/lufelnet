@@ -267,7 +267,7 @@ function inferTypeFromTags(tags) {
   const list = toArray(tags).map(normStr);
   if (list.some((t) => t.includes('단일') || t.includes('single'))) return '단일피해';
   if (list.some((t) => t.includes('광역') || t.includes('aoe'))) return '광역피해';
-  if (list.some((t) => t.includes('버프') || t.includes('buff'))) return '버프';
+  if (list.some((t) => t.includes('버프') || t.includes('buff') || t.includes('support'))) return '버프';
   if (list.some((t) => t.includes('디버프') || t.includes('debuff'))) return '디버프';
   return undefined;
 }
@@ -277,7 +277,7 @@ function inferElement({ group, tags, nature }) {
   if (group === 'assist') return '버프';
   if (group === 'passive') return '패시브';
   const list = toArray(tags).map((t) => t && String(t));
-  if (list.some((t) => t && (t.includes('버프') || /buff/i.test(t)))) return '버프';
+  if (list.some((t) => t && (t.includes('버프') || /buff|support/i.test(t)))) return '버프';
   if (list.some((t) => t && (t.includes('디버프') || /debuff/i.test(t)))) return '디버프';
   if (nature && NATURE_TO_ELEMENT_KR[nature]) return NATURE_TO_ELEMENT_KR[nature];
   return undefined;
@@ -326,7 +326,10 @@ function updateSkills(lang, charKey, external) {
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
-  const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null; // rare
+  const highlightRaw = skills.highlight_skill;
+  const highlight = Array.isArray(highlightRaw)
+    ? highlightRaw
+    : (highlightRaw && typeof highlightRaw === 'object' ? [highlightRaw] : null);
 
   // normal_skill -> skill1/2/3
   if (normal[0]) setObjectProp(charObj, 'skill1', transformSkill(normal[0], { group: 'normal' }));

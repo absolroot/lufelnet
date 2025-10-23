@@ -191,18 +191,63 @@ function updateRitual(lang, charKey, external) {
   writeFile(ritualPath, output);
 }
 
-function cleanSkillItem(item, overrides = {}) {
+function mapNatureToElement(nature, lang) {
+  if (!nature) return undefined;
+  if (lang !== 'kr') return nature;
+  const n = String(nature).toLowerCase();
+  const map = {
+    ice: '빙결',
+    elec: '전격',
+    electric: '전격',
+    fire: '화염',
+    bless: '축복',
+    curse: '주원',
+    wind: '질풍',
+    psychokinesis: '염동',
+    almighty: '만능',
+    allmighty: '만능',
+    physical: '물리',
+    support: '버프',
+  };
+  return map[n] || nature;
+}
+
+function mapTagsToType(tags, lang) {
+  if (!Array.isArray(tags) || tags.length === 0) return undefined;
+  // KR 외부는 한국어 태그 사용. 가장 의미 있는 태그를 선택
+  const set = new Set(tags.filter(Boolean).map((t) => String(t)));
+  const candidates = ['단일피해', '광역피해', '버프', '강화', '디버프'];
+  for (const c of candidates) if (set.has(c)) return c;
+  // 일부는 "광역" 같은 변형일 수 있음
+  for (const t of set) {
+    if (t.includes('광역')) return '광역피해';
+    if (t.includes('단일')) return '단일피해';
+  }
+  return undefined;
+}
+
+function parseCostToFields(cost) {
+  if (!cost || typeof cost !== 'string') return {};
+  const m = cost.match(/^(SP|HP)\s*(\d+)/i);
+  if (!m) return {};
+  const val = parseInt(m[2], 10);
+  if (m[1].toUpperCase() === 'SP') return { sp: val };
+  if (m[1].toUpperCase() === 'HP') return { hp: val };
+  return {};
+}
+
+function normalizeSkill(item, lang, { removeName = false, elementOverride } = {}) {
   if (!item) return null;
-  const out = { ...item };
-  if ('nature' in out) {
-    out.element = out.nature;
-    delete out.nature;
-  }
-  // overrides
-  for (const k of Object.keys(overrides)) {
-    if (overrides[k] === undefined) delete out[k];
-    else out[k] = overrides[k];
-  }
+  const element = elementOverride || mapNatureToElement(item.nature, lang);
+  const type = mapTagsToType(item.tags, lang);
+  const costFields = parseCostToFields(item.cost || '');
+  const out = {};
+  if (!removeName && item.name) out.name = item.name;
+  if (element !== undefined) out.element = element;
+  if (type !== undefined) out.type = type;
+  if (typeof item.cooldown === 'number') out.cool = item.cooldown;
+  if (item.desc) out.description = item.desc;
+  Object.assign(out, costFields);
   return out;
 }
 
@@ -227,28 +272,26 @@ function updateSkills(lang, charKey, external) {
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
   const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null; // rare
 
-  // normal_skill -> skill1/2/3 (rename nature->element)
-  if (normal[0]) setObjectProp(charObj, 'skill1', cleanSkillItem(normal[0]));
-  if (normal[1]) setObjectProp(charObj, 'skill2', cleanSkillItem(normal[1]));
-  if (normal[2]) setObjectProp(charObj, 'skill3', cleanSkillItem(normal[2]));
+  // normal_skill -> skill1/2/3
+  if (normal[0]) setObjectProp(charObj, 'skill1', normalizeSkill(normal[0], lang));
+  if (normal[1]) setObjectProp(charObj, 'skill2', normalizeSkill(normal[1], lang));
+  if (normal[2]) setObjectProp(charObj, 'skill3', normalizeSkill(normal[2], lang));
 
   // assist_skill -> skill_support, element -> "패시브"
-  if (assist[0]) setObjectProp(charObj, 'skill_support', cleanSkillItem(assist[0], { element: '패시브' }));
+  if (assist[0]) setObjectProp(charObj, 'skill_support', normalizeSkill(assist[0], lang, { elementOverride: '패시브' }));
 
   // passive_skill -> passive1/2
-  if (passive[0]) setObjectProp(charObj, 'passive1', cleanSkillItem(passive[0]));
-  if (passive[1]) setObjectProp(charObj, 'passive2', cleanSkillItem(passive[1]));
+  if (passive[0]) setObjectProp(charObj, 'passive1', normalizeSkill(passive[0], lang));
+  if (passive[1]) setObjectProp(charObj, 'passive2', normalizeSkill(passive[1], lang));
 
   // highlight_skill -> skill_highlight (name removed)
   if (highlight && highlight[0]) {
-    const hl = cleanSkillItem(highlight[0]);
-    if (hl && 'name' in hl) delete hl.name;
-    setObjectProp(charObj, 'skill_highlight', hl);
+    setObjectProp(charObj, 'skill_highlight', normalizeSkill(highlight[0], lang, { removeName: true }));
   }
 
-  // theurgia_skill -> skill_highlight[/2], name -> theurgia name
-  if (theurgia[0]) setObjectProp(charObj, 'skill_highlight', cleanSkillItem(theurgia[0]));
-  if (theurgia[1]) setObjectProp(charObj, 'skill_highlight2', cleanSkillItem(theurgia[1]));
+  // theurgia_skill -> skill_highlight[/2], name 유지
+  if (theurgia[0]) setObjectProp(charObj, 'skill_highlight', normalizeSkill(theurgia[0], lang));
+  if (theurgia[1]) setObjectProp(charObj, 'skill_highlight2', normalizeSkill(theurgia[1], lang));
 
   const output = recast.print(ast).code;
   writeFile(skillsPath, output);

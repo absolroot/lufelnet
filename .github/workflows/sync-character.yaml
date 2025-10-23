@@ -48,7 +48,7 @@ jobs:
           INPUT_CODE: ${{ inputs.code }}
         run: |
           set -euo pipefail
-          if [ ! -d node_modules ]; then
+          if [ ! -d node_modules ] || [ ! -f node_modules/@babel/parser/package.json ] || [ ! -f node_modules/recast/package.json ]; then
             npm init -y >/dev/null 2>&1
             npm i -D recast @babel/parser prettier >/dev/null 2>&1
           fi

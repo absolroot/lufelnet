@@ -2,8 +2,8 @@
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
-import { parse } from '@babel/parser';
 import recast from 'recast';
+import meriyahParser from 'recast/parsers/meriyah';
 
 const b = recast.types.builders;
 
@@ -78,16 +78,7 @@ function loadExternal(lang, local) {
 }
 
 function parseAst(code) {
-  return recast.parse(code, {
-    parser: {
-      parse(source) {
-        return parse(source, {
-          sourceType: 'module',
-          plugins: ['jsx', 'classProperties', 'objectRestSpread', 'optionalChaining']
-        });
-      }
-    }
-  });
+  return recast.parse(code, { parser: meriyahParser });
 }
 
 function findTopObject(ast) {

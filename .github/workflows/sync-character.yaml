@@ -62,6 +62,8 @@ jobs:
           INPUT_CODE: ${{ inputs.code }}
         run: |
           set -euo pipefail
+          # Ensure deps before running (defensive)
+          npm i -D recast @babel/parser prettier
           node scripts/syncCharacter.mjs --lang "$INPUT_LANG" --code "$INPUT_CODE"
 
       - name: Commit & push if changed

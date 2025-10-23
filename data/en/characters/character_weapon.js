@@ -523,22 +523,8 @@ enCharacterWeaponData = {
     },
     "키라": {
         "name": "Kira Kitazato",
-        "weapon4-1": {
-            "name": "Ashes Infinite",
-            "health": 1966,
-            "attack": 596,
-            "defense": 288,
-            "skill_name": "Crimson Kiss",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After inflicting [Bleed] to foes, increase ATK permanently by 1.8%/2.4%/2.4%/3.0%/3.0%/3.6%/3.6%, up to 10 stacks."
-        },
-        "weapon5-1": {
-            "name": "Bloody Weave",
-            "health": 2457,
-            "attack": 746,
-            "defense": 361,
-            "skill_name": "Karmic Bloodfiend",
-            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. PEN is increased by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5% when dealing DMG with [Laceration]. Increase DMG Dealt by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5% against foes inflicted with [Bleed]."
-        }
+        "weapon4-1": {"name":"Undying Embers","health":1966.49,"attack":596.93,"defense":288.61,"skill_name":"","description":"Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhenever inflicting Bleed on foes, increase Attack by 1.8%/2.4%/2.4%/3.0%/3.0%/3.6%/3.6% more. This effect is permanent and stacks up to 10 times."},
+        "weapon5-1": {"name":"Bloodletter","health":2457.7,"attack":746.53,"defense":361.15,"skill_name":"","description":"Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Increase ailment accuracy by 15%.\nIncrease pierce rate of Rending damage by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%.\nIncrease damage dealt to foes inflicted with Bleed by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%."}
     },
     "토모코·여름": {
         "name": "Seaside Tomoko",

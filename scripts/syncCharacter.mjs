@@ -146,9 +146,60 @@ function findTopObject(ast) {
         return false;
       }
       this.traverse(p);
+    },
+    visitExpressionStatement(p) {
+      // Support top-level assignments like: foo = { ... }
+      const expr = p.node.expression;
+      if (
+        expr &&
+        expr.type === 'AssignmentExpression' &&
+        expr.right &&
+        expr.right.type === 'ObjectExpression'
+      ) {
+        obj = { path: p, obj: expr.right };
+        return false;
+      }
+      this.traverse(p);
     }
   });
   return obj;
+}
+
+function findObjectByVarName(ast, varName) {
+  let found = null;
+  recast.types.visit(ast, {
+    visitVariableDeclarator(p) {
+      if (
+        p.node.id &&
+        p.node.id.type === 'Identifier' &&
+        p.node.id.name === varName &&
+        p.node.init &&
+        p.node.init.type === 'ObjectExpression'
+      ) {
+        found = { path: p, obj: p.node.init };
+        return false;
+      }
+      this.traverse(p);
+    },
+    visitExpressionStatement(p) {
+      // Also support assignments like: varName = { ... }
+      const expr = p.node.expression;
+      if (
+        expr &&
+        expr.type === 'AssignmentExpression' &&
+        expr.left &&
+        expr.left.type === 'Identifier' &&
+        expr.left.name === varName &&
+        expr.right &&
+        expr.right.type === 'ObjectExpression'
+      ) {
+        found = { path: p, obj: expr.right };
+        return false;
+      }
+      this.traverse(p);
+    }
+  });
+  return found;
 }
 
 function getLiteralKey(node) {
@@ -251,9 +302,10 @@ function setMergedObjectProp(objExpr, keyName, updates, deleteKeys = []) {
 function findCharacterKeyByCodename(filePath, localCodename) {
   const code = readText(filePath);
   const ast = parseAst(code);
-  const top = findTopObject(ast);
-  if (!top) return null;
-  const props = top.obj.properties;
+  // Prefer characterData if present; fallback to first top-level object
+  const holder = findObjectByVarName(ast, 'characterData') || findTopObject(ast);
+  if (!holder) return null;
+  const props = holder.obj.properties;
   for (const p of props) {
     if (p.value && p.value.type === 'ObjectExpression') {
       const sub = p.value;

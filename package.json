@@ -9,9 +9,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/parser": "^7.28.4",
+    "@babel/parser": "^7.28.5",
     "prettier": "^3.6.2",
     "recast": "^0.23.11"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/absolroot/lufelnet.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/absolroot/lufelnet/issues"
+  },
+  "homepage": "https://github.com/absolroot/lufelnet#readme",
   "description": ""
 }

@@ -2,10 +2,6 @@
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
-import recast from 'recast';
-import * as meriyah from 'meriyah';
-
-const b = recast.types.builders;
 
 function readJSON(filePath) {
   try {
@@ -77,75 +73,78 @@ function loadExternal(lang, local) {
   return json;
 }
 
-function parseAst(code) {
-  return recast.parse(code, {
-    parser: {
-      parse(source) {
-        return meriyah.parse(source, {
-          module: true,
-          next: true,
-          jsx: true,
-        });
-      },
-    },
-  });
-}
-
-function findTopObject(ast) {
-  let obj = null;
-  recast.types.visit(ast, {
-    visitVariableDeclarator(p) {
-      const init = p.node.init;
-      if (init && init.type === 'ObjectExpression' && p.parent && p.parent.node.type === 'VariableDeclaration') {
-        obj = { path: p, obj: init };
-        return false;
+// -------- Helper: find and replace a specific character block in big JS object --------
+function findCharacterBlock(jsText, charKey) {
+  const keyPattern = new RegExp(`"${charKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\s*:\s*\{`);
+  const match = keyPattern.exec(jsText);
+  if (!match) return null;
+  let start = match.index + match[0].length; // position after '{'
+  let i = start;
+  let depth = 1;
+  const n = jsText.length;
+  while (i < n) {
+    const ch = jsText[i];
+    if (ch === '{') depth++;
+    else if (ch === '}') {
+      depth--;
+      if (depth === 0) {
+        return { blockStart: start, blockEnd: i, keyStart: match.index, keyLen: match[0].length };
       }
-      this.traverse(p);
     }
-  });
-  return obj;
-}
-
-function getLiteralKey(node) {
-  if (!node) return null;
-  if (node.type === 'Identifier') return node.name;
-  if (node.type === 'StringLiteral' || node.type === 'Literal') return node.value;
+    i++;
+  }
   return null;
 }
 
-function getProperty(objectExpression, keyName) {
-  return objectExpression.properties.find((p) => getLiteralKey(p.key) === keyName);
+function replaceOrInsertProp(blockText, propName, jsonStr, indent = '        ') {
+  // Try to find existing property "propName": ...,
+  const propRegex = new RegExp(`("${propName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}")\s*:\s*`);
+  const m = propRegex.exec(blockText);
+  if (m) {
+    // locate value object/array starting right after colon
+    const valStart = m.index + m[0].length;
+    // detect structure (object or other), then find its end by braces/brackets balance
+    let i = valStart;
+    let depth = 0;
+    let end = valStart;
+    const open = blockText[i];
+    if (open === '{' || open === '[') {
+      const openCh = open;
+      const closeCh = open === '{' ? '}' : ']';
+      depth = 1; i++;
+      while (i < blockText.length) {
+        const ch = blockText[i];
+        if (ch === openCh) depth++;
+        else if (ch === closeCh) {
+          depth--;
+          if (depth === 0) { end = i + 1; break; }
+        }
+        i++;
+      }
+    } else {
+      // primitive or string until comma/newline/closing brace
+      while (i < blockText.length && ![',', '\n', '\r', '}'].includes(blockText[i])) i++;
+      end = i;
+    }
+    const before = blockText.slice(0, valStart);
+    const after = blockText.slice(end);
+    return before + jsonStr + after;
+  }
+  // Insert before closing '}' with trailing comma if needed
+  const closeIdx = blockText.lastIndexOf('}');
+  if (closeIdx === -1) return blockText; // invalid
+  // ensure comma before insert (if last non-space before '}' is not '{')
+  const prev = blockText.slice(0, closeIdx).trimEnd();
+  const needComma = !prev.endsWith('{');
+  const insertion = `${needComma ? ',' : ''}\n${indent}"${propName}": ${jsonStr}\n    `;
+  return blockText.slice(0, closeIdx) + insertion + blockText.slice(closeIdx);
 }
 
-function ensureObjectProperty(objExpr, keyName) {
-  let prop = getProperty(objExpr, keyName);
-  if (!prop) {
-    prop = b.objectProperty(b.stringLiteral(keyName), b.objectExpression([]));
-    objExpr.properties.push(prop);
-  }
-  return prop;
+function jsonCompact(obj) {
+  return JSON.stringify(obj, null, 0);
 }
 
-function setStringProp(objExpr, keyName, value) {
-  let prop = getProperty(objExpr, keyName);
-  if (!prop) {
-    prop = b.objectProperty(b.stringLiteral(keyName), b.stringLiteral(value));
-    objExpr.properties.push(prop);
-  } else {
-    prop.value = b.stringLiteral(value);
-  }
-}
-
-function setObjectProp(objExpr, keyName, valueObj) {
-  let prop = getProperty(objExpr, keyName);
-  const jsonAst = recast.parse(`const x = ${JSON.stringify(valueObj)};`).program.body[0].declarations[0].init;
-  if (!prop) {
-    prop = b.objectProperty(b.stringLiteral(keyName), jsonAst);
-    objExpr.properties.push(prop);
-  } else {
-    prop.value = jsonAst;
-  }
-}
+// (legacy AST helpers removed)
 
 function findCharacterKeyByCodename(filePath, localCodename) {
   const code = readText(filePath);
@@ -171,24 +170,22 @@ function updateRitual(lang, charKey, external) {
   const ritualPath = path.join('data', lang, 'characters', 'character_ritual.js');
   if (!fs.existsSync(ritualPath)) return;
   const code = readText(ritualPath);
-  const ast = parseAst(code);
-  const top = findTopObject(ast);
-  if (!top) return;
-  let charProp = getProperty(top.obj, charKey);
-  if (!charProp) {
-    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
-    top.obj.properties.push(charProp);
-  }
-  const charObj = charProp.value;
-  if (external?.data?.name) setStringProp(charObj, 'name', external.data.name);
+  const found = findCharacterBlock(code, charKey);
+  if (!found) return;
+  const before = code.slice(0, found.blockStart);
+  const block = code.slice(found.blockStart, found.blockEnd);
+  const after = code.slice(found.blockEnd);
+  let newBlock = block;
+  if (external?.data?.name) newBlock = replaceOrInsertProp(newBlock, 'name', jsonCompact(external.data.name));
   const asc = external?.data?.skill?.ascend_skill || [];
   for (let i = 0; i < asc.length && i < 7; i++) {
     const item = asc[i];
     if (!item) continue;
-    setStringProp(charObj, `r${i}`, item.name || '');
-    setStringProp(charObj, `r${i}_detail`, item.desc || '');
+    newBlock = replaceOrInsertProp(newBlock, `r${i}`, jsonCompact(item.name || ''));
+    newBlock = replaceOrInsertProp(newBlock, `r${i}_detail`, jsonCompact(item.desc || ''));
   }
-  const output = recast.print(ast).code;
+  const output = before + newBlock + after;
+  try { new Function(output); } catch (e) { throw new Error('ritual file edit invalid'); }
   writeFile(ritualPath, output);
 }
 
@@ -256,45 +253,35 @@ function updateSkills(lang, charKey, external) {
   const skillsPath = path.join('data', lang, 'characters', 'character_skills.js');
   if (!fs.existsSync(skillsPath)) return;
   const code = readText(skillsPath);
-  const ast = parseAst(code);
-  const top = findTopObject(ast);
-  if (!top) return;
-  let charProp = getProperty(top.obj, charKey);
-  if (!charProp) {
-    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
-    top.obj.properties.push(charProp);
-  }
-  const charObj = charProp.value;
-
+  const found = findCharacterBlock(code, charKey);
+  if (!found) return;
+  const before = code.slice(0, found.blockStart);
+  const block = code.slice(found.blockStart, found.blockEnd);
+  const after = code.slice(found.blockEnd);
+  let newBlock = block;
   const skills = external?.data?.skill || {};
   const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
-  const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null; // rare
+  const highlight = Array.isArray(skills.highlight_skill) ? skills.highlight_skill : null;
 
-  // normal_skill -> skill1/2/3
-  if (normal[0]) setObjectProp(charObj, 'skill1', normalizeSkill(normal[0], lang));
-  if (normal[1]) setObjectProp(charObj, 'skill2', normalizeSkill(normal[1], lang));
-  if (normal[2]) setObjectProp(charObj, 'skill3', normalizeSkill(normal[2], lang));
+  if (normal[0]) newBlock = replaceOrInsertProp(newBlock, 'skill1', jsonCompact(normalizeSkill(normal[0], lang)));
+  if (normal[1]) newBlock = replaceOrInsertProp(newBlock, 'skill2', jsonCompact(normalizeSkill(normal[1], lang)));
+  if (normal[2]) newBlock = replaceOrInsertProp(newBlock, 'skill3', jsonCompact(normalizeSkill(normal[2], lang)));
 
-  // assist_skill -> skill_support, element -> "패시브"
-  if (assist[0]) setObjectProp(charObj, 'skill_support', normalizeSkill(assist[0], lang, { elementOverride: '패시브' }));
+  if (assist[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_support', jsonCompact(normalizeSkill(assist[0], lang, { elementOverride: '패시브' })));
 
-  // passive_skill -> passive1/2
-  if (passive[0]) setObjectProp(charObj, 'passive1', normalizeSkill(passive[0], lang));
-  if (passive[1]) setObjectProp(charObj, 'passive2', normalizeSkill(passive[1], lang));
+  if (passive[0]) newBlock = replaceOrInsertProp(newBlock, 'passive1', jsonCompact(normalizeSkill(passive[0], lang)));
+  if (passive[1]) newBlock = replaceOrInsertProp(newBlock, 'passive2', jsonCompact(normalizeSkill(passive[1], lang)));
 
-  // highlight_skill -> skill_highlight (name removed)
-  if (highlight && highlight[0]) {
-    setObjectProp(charObj, 'skill_highlight', normalizeSkill(highlight[0], lang, { removeName: true }));
-  }
+  if (highlight && highlight[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(highlight[0], lang, { removeName: true })));
 
-  // theurgia_skill -> skill_highlight[/2], name 유지
-  if (theurgia[0]) setObjectProp(charObj, 'skill_highlight', normalizeSkill(theurgia[0], lang));
-  if (theurgia[1]) setObjectProp(charObj, 'skill_highlight2', normalizeSkill(theurgia[1], lang));
+  if (theurgia[0]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight', jsonCompact(normalizeSkill(theurgia[0], lang)));
+  if (theurgia[1]) newBlock = replaceOrInsertProp(newBlock, 'skill_highlight2', jsonCompact(normalizeSkill(theurgia[1], lang)));
 
-  const output = recast.print(ast).code;
+  const output = before + newBlock + after;
+  try { new Function(output); } catch (e) { throw new Error('skills file edit invalid'); }
   writeFile(skillsPath, output);
 }
 
@@ -309,15 +296,12 @@ function updateBaseStatsKR(charKey, external) {
   const basePath = path.join('data', 'kr', 'characters', 'character_base_stats.js');
   if (!fs.existsSync(basePath)) return;
   const code = readText(basePath);
-  const ast = parseAst(code);
-  const top = findTopObject(ast);
-  if (!top) return;
-  let charProp = getProperty(top.obj, charKey);
-  if (!charProp) {
-    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
-    top.obj.properties.push(charProp);
-  }
-  const charObj = charProp.value;
+  const found = findCharacterBlock(code, charKey);
+  if (!found) return;
+  const before = code.slice(0, found.blockStart);
+  const block = code.slice(found.blockStart, found.blockEnd);
+  const after = code.slice(found.blockEnd);
+  let newBlock = block;
   const stats = external?.data?.stats || null;
   if (stats) {
     const atk = parseSevenNumbers(stats['Attack']);
@@ -326,16 +310,13 @@ function updateBaseStatsKR(charKey, external) {
     if (atk && def && hp) {
       for (let i = 0; i < 7; i++) {
         const key = `a${i}_lv80`;
-        const objProp = ensureObjectProperty(charObj, key);
-        const v = objProp.value && objProp.value.type === 'ObjectExpression' ? objProp.value : b.objectExpression([]);
-        objProp.value = v;
-        setObjectProp(v, 'HP', hp[i]);
-        setObjectProp(v, 'attack', atk[i]);
-        setObjectProp(v, 'defense', def[i]);
+        const obj = { HP: hp[i], attack: atk[i], defense: def[i] };
+        newBlock = replaceOrInsertProp(newBlock, key, jsonCompact(obj));
       }
     }
   }
-  const output = recast.print(ast).code;
+  const output = before + newBlock + after;
+  try { new Function(output); } catch (e) { throw new Error('base stats file edit invalid'); }
   writeFile(basePath, output);
 }
 

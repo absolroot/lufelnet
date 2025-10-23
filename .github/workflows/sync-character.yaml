@@ -36,22 +36,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install tooling
-        run: |
-          set -euo pipefail
-          if [ ! -f package.json ]; then
-            npm init -y
-          fi
-          npm i -D recast ast-types meriyah prettier
-
       - name: Run sync script
         env:
           INPUT_LANG: ${{ inputs.lang }}
           INPUT_CODE: ${{ inputs.code }}
         run: |
           set -euo pipefail
-          # Ensure deps before running (defensive)
-          npm i -D recast ast-types meriyah prettier
           node scripts/syncCharacter.mjs --lang "$INPUT_LANG" --code "$INPUT_CODE"
 
       - name: Commit & push if changed

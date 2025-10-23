@@ -39,8 +39,22 @@ jobs:
       - name: Install tooling
         run: |
           set -euo pipefail
-          npm init -y >/dev/null 2>&1
-          npm i -D recast @babel/parser prettier >/dev/null 2>&1
+          if [ ! -f package.json ]; then
+            npm init -y
+          fi
+          npm i -D recast @babel/parser prettier
+
+      - name: Ensure deps exist
+        run: |
+          set -euo pipefail
+          node -e "require.resolve('@babel/parser'); require.resolve('recast');"
+        continue-on-error: true
+
+      - name: Install missing deps (if needed)
+        if: ${{ failure() }}
+        run: |
+          set -euo pipefail
+          npm i -D recast @babel/parser prettier
 
       - name: Run sync script
         env:

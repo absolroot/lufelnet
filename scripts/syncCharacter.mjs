@@ -148,20 +148,26 @@ function jsonCompact(obj) {
 
 function findCharacterKeyByCodename(filePath, localCodename) {
   const code = readText(filePath);
-  const ast = parseAst(code);
-  const top = findTopObject(ast);
-  if (!top) return null;
-  const props = top.obj.properties;
-  for (const p of props) {
-    if (p.value && p.value.type === 'ObjectExpression') {
-      const sub = p.value;
-      const codeProp = getProperty(sub, 'codename');
-      if (codeProp && codeProp.value && codeProp.value.type === 'StringLiteral') {
-        if (String(codeProp.value.value).toUpperCase() === String(localCodename).toUpperCase()) {
-          return getLiteralKey(p.key);
-        }
+  const localUpper = String(localCodename).toUpperCase();
+  const codenameRe = /"codename"\s*:\s*"([^"]+)"/g;
+  let m;
+  while ((m = codenameRe.exec(code))) {
+    if (String(m[1]).toUpperCase() !== localUpper) continue;
+    const hitIdx = m.index;
+    // find nearest character key line before this index: 4-space indent then "Key": {
+    const headerRe = /^\s{4}"([^"]+)"\s*:\s*\{\s*$/gm;
+    let lastKey = null;
+    let lastPos = -1;
+    let hm;
+    while ((hm = headerRe.exec(code))) {
+      if (hm.index < hitIdx) {
+        lastKey = hm[1];
+        lastPos = hm.index;
+      } else {
+        break;
       }
     }
+    if (lastKey) return lastKey;
   }
   return null;
 }
@@ -324,17 +330,18 @@ function updateNamesKR(local, key, nameMap) {
   const krCharsPath = path.join('data', 'kr', 'characters', 'characters.js');
   if (!fs.existsSync(krCharsPath)) return;
   const code = readText(krCharsPath);
-  const ast = parseAst(code);
-  const top = findTopObject(ast);
-  if (!top) return;
-  let charProp = getProperty(top.obj, key);
-  if (!charProp) return;
-  const obj = charProp.value;
-  if (nameMap.en) setStringProp(obj, 'name_en', nameMap.en);
-  if (nameMap.jp) setStringProp(obj, 'name_jp', nameMap.jp);
-  if (nameMap.cn) setStringProp(obj, 'name_cn', nameMap.cn);
-  if (nameMap.tw) setStringProp(obj, 'name_tw', nameMap.tw);
-  const output = recast.print(ast).code;
+  const found = findCharacterBlock(code, key);
+  if (!found) return;
+  const before = code.slice(0, found.blockStart);
+  const block = code.slice(found.blockStart, found.blockEnd);
+  const after = code.slice(found.blockEnd);
+  let newBlock = block;
+  if (nameMap.en) newBlock = replaceOrInsertProp(newBlock, 'name_en', jsonCompact(nameMap.en));
+  if (nameMap.jp) newBlock = replaceOrInsertProp(newBlock, 'name_jp', jsonCompact(nameMap.jp));
+  if (nameMap.cn) newBlock = replaceOrInsertProp(newBlock, 'name_cn', jsonCompact(nameMap.cn));
+  if (nameMap.tw) newBlock = replaceOrInsertProp(newBlock, 'name_tw', jsonCompact(nameMap.tw));
+  const output = before + newBlock + after;
+  try { new Function(output); } catch (e) { throw new Error('names file edit invalid'); }
   writeFile(krCharsPath, output);
 }
 

@@ -146,17 +146,17 @@ jobs:
               tmp_old="$(mktemp)"
               jq -S . "$out" > "$tmp_old"
               if diff -q "$tmp_old" "${tmp_new}.sorted" > /dev/null; then
-                echo "   No change: weapon/${region}/${local_codename}_weapon.json"
+                echo "   No change: weapon/${region}/${local_codename}.json"
               else
                 cp "$out" "$backup_file"
                 echo "   Backup created: ${backup_file}"
                 cp "${tmp_new}.sorted" "$out"
-                echo "   Updated: weapon/${region}/${local_codename}_weapon.json"
+                echo "   Updated: weapon/${region}/${local_codename}.json"
                 changed=1
               fi
             else
               cp "${tmp_new}.sorted" "$out"
-              echo "   Created: weapon/${region}/${local_codename}_weapon.json"
+              echo "   Created: weapon/${region}/${local_codename}.json"
               changed=1
             fi
           }

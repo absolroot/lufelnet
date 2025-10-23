@@ -109,6 +109,20 @@ function loadExternal(lang, local) {
   return json;
 }
 
+function loadExternalWeapon(lang, local) {
+  const p = path.join('data', 'external', 'weapon', lang, `${local}.json`);
+  const json = readJSON(p);
+  if (!json) {
+    console.warn(`[warn] external weapon not found: ${p}`);
+    return null;
+  }
+  if (!json.data || json.status !== 0) {
+    console.warn(`[warn] external weapon has no data: ${p}`);
+    return { data: null };
+  }
+  return json;
+}
+
 function parseAst(code) {
   return recast.parse(code, {
     parser: {
@@ -196,6 +210,65 @@ function findCharacterKeyByCodename(filePath, localCodename) {
     }
   }
   return null;
+}
+
+function toNumberOrKeep(x) {
+  const n = Number(x);
+  return Number.isFinite(n) ? n : x;
+}
+
+function updateWeapons(lang, charKey, externalWeapon) {
+  const targetPath = path.join('data', lang, 'characters', 'character_weapon.js');
+  if (!fs.existsSync(targetPath)) return;
+  const code = readText(targetPath);
+  const ast = parseAst(code);
+  const top = findTopObject(ast);
+  if (!top) return;
+  let charProp = getProperty(top.obj, charKey);
+  if (!charProp) {
+    charProp = b.objectProperty(b.stringLiteral(charKey), b.objectExpression([]));
+    top.obj.properties.push(charProp);
+  }
+  const charObj = charProp.value;
+
+  const wdata = externalWeapon?.data || {};
+  const five = Array.isArray(wdata.fiveStar) ? wdata.fiveStar : [];
+  const four = Array.isArray(wdata.fourStar) ? wdata.fourStar : [];
+
+  // fiveStar -> weapon5-1, weapon5-2, ...
+  if (five.length > 0) {
+    five.forEach((w, idx) => {
+      const keyName = `weapon5-${idx + 1}`;
+      const payload = {
+        name: w?.name ?? '',
+        health: w?.stat?.hp !== undefined ? toNumberOrKeep(w.stat.hp) : undefined,
+        attack: w?.stat?.attack !== undefined ? toNumberOrKeep(w.stat.attack) : undefined,
+        defense: w?.stat?.defense !== undefined ? toNumberOrKeep(w.stat.defense) : undefined,
+        skill_name: '',
+        description: w?.skill ?? ''
+      };
+      setObjectProp(charObj, keyName, payload);
+    });
+  }
+
+  // fourStar -> weapon4-1, weapon4-2, ... (1개여도 -1 사용)
+  if (four.length > 0) {
+    four.forEach((w, idx) => {
+      const keyName = `weapon4-${idx + 1}`;
+      const payload = {
+        name: w?.name ?? '',
+        health: w?.stat?.hp !== undefined ? toNumberOrKeep(w.stat.hp) : undefined,
+        attack: w?.stat?.attack !== undefined ? toNumberOrKeep(w.stat.attack) : undefined,
+        defense: w?.stat?.defense !== undefined ? toNumberOrKeep(w.stat.defense) : undefined,
+        skill_name: '',
+        description: w?.skill ?? ''
+      };
+      setObjectProp(charObj, keyName, payload);
+    });
+  }
+
+  const output = recast.print(ast).code;
+  writeFile(targetPath, output);
 }
 
 function updateRitual(lang, charKey, external) {
@@ -447,6 +520,14 @@ async function main() {
     if (lang === 'kr') updateBaseStatsKR(key, extTarget);
   } else {
     console.warn(`[warn] Skip skills/stats update for ${lang}:${local} due to null data`);
+  }
+
+  // Update weapon (best-effort, independant of character data)
+  const extWeapon = loadExternalWeapon(lang, local);
+  if (extWeapon && extWeapon.data) {
+    updateWeapons(lang, key, extWeapon);
+  } else {
+    console.warn(`[warn] Skip weapon update for ${lang}:${local} due to null data`);
   }
 
   // Names enrichment from multiple languages (best-effort)

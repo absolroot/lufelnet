@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-10-23 10:59:59",
+        "fiveStar": [
+          {
+            "name": "素羽・トロピカル",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "多祢村 理子",
+            "type": "thief"
+          },
+          {
+            "name": "須見 俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "夏色レモンティック",
+        "startTime": "2025-09-22 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
         "endTime": "2025-11-06 10:59:59",
         "fiveStar": [
           {
@@ -55,6 +81,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-10-23 10:59:59",
+        "fiveStar": [
+          {
+            "name": "カラフルビーチ",
+            "type": "weapon",
+            "user": "素羽"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "プクプクスター",
+            "type": "weapon",
+            "user": "素羽"
+          },
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "銀月の鉤",
+            "type": "weapon",
+            "user": "理子"
+          },
+          {
+            "name": "スカーレットロッド",
+            "type": "weapon",
+            "user": "須見"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2025-09-22 11:30:00",
+        "type": "武器補給"
+      },
       {
         "endTime": "2025-11-06 10:59:59",
         "fiveStar": [

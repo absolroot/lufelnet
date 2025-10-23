@@ -42,19 +42,7 @@ jobs:
           if [ ! -f package.json ]; then
             npm init -y
           fi
-          npm i -D recast @babel/parser prettier
-
-      - name: Ensure deps exist
-        run: |
-          set -euo pipefail
-          node -e "require.resolve('@babel/parser'); require.resolve('recast');"
-        continue-on-error: true
-
-      - name: Install missing deps (if needed)
-        if: ${{ failure() }}
-        run: |
-          set -euo pipefail
-          npm i -D recast @babel/parser prettier
+          npm i -D recast meriyah prettier
 
       - name: Run sync script
         env:
@@ -63,7 +51,7 @@ jobs:
         run: |
           set -euo pipefail
           # Ensure deps before running (defensive)
-          npm i -D recast @babel/parser prettier
+          npm i -D recast meriyah prettier
           node scripts/syncCharacter.mjs --lang "$INPUT_LANG" --code "$INPUT_CODE"
 
       - name: Commit & push if changed

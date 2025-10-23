@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import recast from 'recast';
-import meriyahParser from 'recast/parsers/meriyah';
+import * as meriyah from 'meriyah';
 
 const b = recast.types.builders;
 
@@ -78,7 +78,17 @@ function loadExternal(lang, local) {
 }
 
 function parseAst(code) {
-  return recast.parse(code, { parser: meriyahParser });
+  return recast.parse(code, {
+    parser: {
+      parse(source) {
+        return meriyah.parse(source, {
+          module: true,
+          next: true,
+          jsx: true,
+        });
+      },
+    },
+  });
 }
 
 function findTopObject(ast) {

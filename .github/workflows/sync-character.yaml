@@ -47,12 +47,29 @@ jobs:
           INPUT_LANG: ${{ inputs.lang }}
           INPUT_CODE: ${{ inputs.code }}
         run: |
-          set -euo pipefail
+          set -euxo pipefail
+          echo "Node: $(node -v), NPM: $(npm -v)"
           if [ ! -d node_modules ] || [ ! -f node_modules/@babel/parser/package.json ] || [ ! -f node_modules/recast/package.json ]; then
             npm init -y >/dev/null 2>&1
             npm i -D recast @babel/parser prettier >/dev/null 2>&1
           fi
+          # Quick visibility into external inputs present on disk
+          CHAR_JSON="data/external/character/${INPUT_LANG}/${INPUT_CODE^^}.json"
+          WEAPON_JSON="data/external/weapon/${INPUT_LANG}/${INPUT_CODE^^}.json"
+          echo "Checking external inputs:";
+          ls -la "data/external/character/${INPUT_LANG}" || true
+          ls -la "data/external/weapon/${INPUT_LANG}" || true
+          if [ -f "$CHAR_JSON" ]; then echo "Found CHAR_JSON: $CHAR_JSON"; head -n 5 "$CHAR_JSON" || true; else echo "Missing CHAR_JSON: $CHAR_JSON"; fi
+          if [ -f "$WEAPON_JSON" ]; then echo "Found WEAPON_JSON: $WEAPON_JSON"; head -n 5 "$WEAPON_JSON" || true; else echo "Missing WEAPON_JSON: $WEAPON_JSON"; fi
           node scripts/syncCharacter.mjs --lang "$INPUT_LANG" --code "$INPUT_CODE"
+
+      - name: Show changes (status & targeted diffs)
+        run: |
+          set -euo pipefail
+          echo "Changed files:"; git status -s || true
+          echo "Diff (skills & weapons for selected lang):"
+          git --no-pager diff -- "data/${{ inputs.lang }}/characters/character_skills.js" || true
+          git --no-pager diff -- "data/${{ inputs.lang }}/characters/character_weapon.js" || true
 
       - name: Commit & push if changed
         run: |

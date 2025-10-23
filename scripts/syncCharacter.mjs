@@ -192,6 +192,62 @@ function setObjectProp(objExpr, keyName, valueObj) {
   }
 }
 
+function astLiteralToValue(node) {
+  if (!node) return undefined;
+  switch (node.type) {
+    case 'StringLiteral':
+    case 'NumericLiteral':
+    case 'BooleanLiteral':
+    case 'NullLiteral':
+      return node.value;
+    case 'ObjectExpression': {
+      const obj = {};
+      for (const p of node.properties || []) {
+        const k = getLiteralKey(p.key);
+        if (k == null) continue;
+        const v = astLiteralToValue(p.value);
+        obj[k] = v;
+      }
+      return obj;
+    }
+    case 'ArrayExpression': {
+      return node.elements.map((el) => astLiteralToValue(el));
+    }
+    default:
+      return undefined;
+  }
+}
+
+function valueToAstLiteral(value) {
+  return recast.parse(`const x = ${JSON.stringify(value)};`).program.body[0].declarations[0].init;
+}
+
+function setMergedObjectProp(objExpr, keyName, updates, deleteKeys = []) {
+  let prop = getProperty(objExpr, keyName);
+  let current = {};
+  if (prop && prop.value && prop.value.type === 'ObjectExpression') {
+    const plain = astLiteralToValue(prop.value);
+    if (plain && typeof plain === 'object' && !Array.isArray(plain)) current = plain;
+  }
+  // delete requested keys
+  for (const k of deleteKeys) {
+    if (k in current) delete current[k];
+  }
+  // shallow merge with null/undefined guard
+  const merged = { ...current };
+  for (const k of Object.keys(updates || {})) {
+    const v = updates[k];
+    if (v !== undefined && v !== null) merged[k] = v;
+  }
+  const astVal = valueToAstLiteral(merged);
+  if (!prop) {
+    prop = b.objectProperty(b.stringLiteral(keyName), astVal);
+    objExpr.properties.push(prop);
+  } else {
+    prop.value = astVal;
+  }
+}
+
 function findCharacterKeyByCodename(filePath, localCodename) {
   const code = readText(filePath);
   const ast = parseAst(code);
@@ -247,7 +303,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
         skill_name: '',
         description: w?.skill ?? ''
       };
-      setObjectProp(charObj, keyName, payload);
+      setMergedObjectProp(charObj, keyName, payload);
     });
   }
 
@@ -263,7 +319,7 @@ function updateWeapons(lang, charKey, externalWeapon) {
         skill_name: '',
         description: w?.skill ?? ''
       };
-      setObjectProp(charObj, keyName, payload);
+      setMergedObjectProp(charObj, keyName, payload);
     });
   }
 
@@ -350,7 +406,7 @@ function inferElement({ group, tags, nature }) {
   if (group === 'assist') return '버프';
   if (group === 'passive') return '패시브';
   const list = toArray(tags).map((t) => t && String(t));
-  if (list.some((t) => t && (t.includes('버프') || /buff|support/i.test(t)))) return '버프';
+  if (list.some((t) => t && (t.includes('버프') || /buff|support|補助/i.test(t)))) return '버프';
   if (list.some((t) => t && (t.includes('디버프') || /debuff/i.test(t)))) return '디버프';
   if (nature && NATURE_TO_ELEMENT_KR[nature]) return NATURE_TO_ELEMENT_KR[nature];
   return undefined;
@@ -405,26 +461,26 @@ function updateSkills(lang, charKey, external) {
     : (highlightRaw && typeof highlightRaw === 'object' ? [highlightRaw] : null);
 
   // normal_skill -> skill1/2/3
-  if (normal[0]) setObjectProp(charObj, 'skill1', transformSkill(normal[0], { group: 'normal' }));
-  if (normal[1]) setObjectProp(charObj, 'skill2', transformSkill(normal[1], { group: 'normal' }));
-  if (normal[2]) setObjectProp(charObj, 'skill3', transformSkill(normal[2], { group: 'normal' }));
+  if (normal[0]) setMergedObjectProp(charObj, 'skill1', transformSkill(normal[0], { group: 'normal' }));
+  if (normal[1]) setMergedObjectProp(charObj, 'skill2', transformSkill(normal[1], { group: 'normal' }));
+  if (normal[2]) setMergedObjectProp(charObj, 'skill3', transformSkill(normal[2], { group: 'normal' }));
 
   // assist_skill -> skill_support (element = 버프)
-  if (assist[0]) setObjectProp(charObj, 'skill_support', transformSkill(assist[0], { group: 'assist' }));
+  if (assist[0]) setMergedObjectProp(charObj, 'skill_support', transformSkill(assist[0], { group: 'assist' }));
 
   // passive_skill -> passive1/2 (element = 패시브)
-  if (passive[0]) setObjectProp(charObj, 'passive1', transformSkill(passive[0], { group: 'passive' }));
-  if (passive[1]) setObjectProp(charObj, 'passive2', transformSkill(passive[1], { group: 'passive' }));
+  if (passive[0]) setMergedObjectProp(charObj, 'passive1', transformSkill(passive[0], { group: 'passive' }));
+  if (passive[1]) setMergedObjectProp(charObj, 'passive2', transformSkill(passive[1], { group: 'passive' }));
 
   // highlight_skill -> skill_highlight (remove name)
   if (highlight && highlight[0]) {
     const hl = transformSkill(highlight[0], { group: 'highlight', removeName: true });
-    setObjectProp(charObj, 'skill_highlight', hl);
+    setMergedObjectProp(charObj, 'skill_highlight', hl);
   }
 
   // theurgia_skill -> skill_highlight[/2] (keep name)
-  if (theurgia[0]) setObjectProp(charObj, 'skill_highlight', transformSkill(theurgia[0], { group: 'theurgia', keepName: true }));
-  if (theurgia[1]) setObjectProp(charObj, 'skill_highlight2', transformSkill(theurgia[1], { group: 'theurgia', keepName: true }));
+  if (theurgia[0]) setMergedObjectProp(charObj, 'skill_highlight', transformSkill(theurgia[0], { group: 'theurgia', keepName: true }));
+  if (theurgia[1]) setMergedObjectProp(charObj, 'skill_highlight2', transformSkill(theurgia[1], { group: 'theurgia', keepName: true }));
 
   const output = recast.print(ast).code;
   writeFile(skillsPath, output);

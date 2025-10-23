@@ -8,10 +8,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@babel/parser": "^7.28.4",
     "prettier": "^3.6.2",
     "recast": "^0.23.11"
-  }
+  },
+  "description": ""
 }

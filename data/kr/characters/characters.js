@@ -64,7 +64,7 @@ const characterData = {
         "codename": "KIRIJO",
         "name": "키리조 미츠루",
         "name_en": "Mitsuru Kirijo",
-        "name_jp": "きりじょう みつる",
+        "name_jp": "桐条美鶴",
         "name_cn": "桐条美鹤",
         "main_revelation": ["진정성","창조","결심"],
         "sub_revelation": ["고집","화해","신중"],

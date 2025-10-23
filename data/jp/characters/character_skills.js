@@ -3,7 +3,7 @@ const jpCharacterSkillsData = {
         "name": "ワンダー"
     },
     "미츠루": {
-        "name": "きりじょう みつる",
+        "name": "桐条美鶴",
         "skill1": {
             "name": "絢爛氷華",
             "element": "빙결",

@@ -48,6 +48,10 @@ jobs:
           INPUT_CODE: ${{ inputs.code }}
         run: |
           set -euo pipefail
+          if [ ! -d node_modules ]; then
+            npm init -y >/dev/null 2>&1
+            npm i -D recast @babel/parser prettier >/dev/null 2>&1
+          fi
           node scripts/syncCharacter.mjs --lang "$INPUT_LANG" --code "$INPUT_CODE"
 
       - name: Commit & push if changed

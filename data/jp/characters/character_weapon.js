@@ -3,7 +3,7 @@ const jpCharacterWeaponData = {
         "name": "ワンダー"
     },
     "미츠루": {
-        "name": "きりじょう みつる",
+        "name": "桐条美鶴",
         "weapon4-1": {
             "name": "ローズフレイムソード",
             "health": 1823,

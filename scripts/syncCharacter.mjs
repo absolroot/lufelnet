@@ -2,10 +2,42 @@
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
-import { parse } from '@babel/parser';
-import recast from 'recast';
+import { execSync } from 'child_process';
 
-const b = recast.types.builders;
+let recast = null;
+let babelParser = null;
+let b = null;
+
+async function ensureDepsLoaded() {
+  async function tryLoad() {
+    try {
+      // dynamic import for ESM resolution
+      // eslint-disable-next-line no-undef
+      const r = await import('recast');
+      // eslint-disable-next-line no-undef
+      const bp = await import('@babel/parser');
+      recast = r.default || r;
+      babelParser = bp;
+      b = recast.types.builders;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  if (await tryLoad()) return;
+  try {
+    execSync('npm init -y', { stdio: 'ignore' });
+  } catch {}
+  try {
+    execSync('npm i -D recast @babel/parser prettier', { stdio: 'ignore' });
+  } catch (e) {
+    console.error('Failed to install dependencies recast/@babel/parser/prettier');
+    throw e;
+  }
+  if (!(await tryLoad())) {
+    throw new Error('Unable to load recast/@babel/parser after install');
+  }
+}
 
 function readJSON(filePath) {
   try {
@@ -81,7 +113,7 @@ function parseAst(code) {
   return recast.parse(code, {
     parser: {
       parse(source) {
-        return parse(source, {
+        return babelParser.parse(source, {
           sourceType: 'module',
           plugins: ['jsx', 'classProperties', 'objectRestSpread', 'optionalChaining']
         });
@@ -381,7 +413,8 @@ function updateNamesKR(local, key, nameMap) {
   writeFile(krCharsPath, output);
 }
 
-function main() {
+async function main() {
+  await ensureDepsLoaded();
   const { lang, code } = parseArgs();
   const mapping = loadCodenameMapping();
   const local = resolveLocalCodename(code, mapping);

@@ -2,7 +2,7 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
-"미츠루": { name_en: "Kirijo Mitsuru", name_jp: "桐条美鶴", codename: "MITSURU",
+"미츠루": { name_en: "Kirijo Mitsuru", name_jp: "桐条 美鶴", codename: "MITSURU",
         review: `
 포지션은 '반항'이지만 **'서포터'**의 역할이 강한 P3 콜라보 캐릭터로 기존에 지배 포지션이었지만 아군의 서포트를 담당했던 아케치의 개선된 반항 버전이다.
 

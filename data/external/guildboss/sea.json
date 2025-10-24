@@ -4,19 +4,15 @@
       {
         "affixs": [
           {
-            "detail": "Foes' damage taken is increased by 6% for each debuff they are inflicted with, up to 30%.",
+            "detail": "When any ally receives healing, their final damage is increased by 8%. Lasts for 2 turns. Stacks up to 4 times.",
             "name": "Special Effect"
           },
           {
-            "detail": "Party's Curse damage is increased by 20%.",
+            "detail": "Party's Bless damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
-            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "detail": "Sweeper allies' damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
@@ -30,53 +26,51 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
+              "Gun",
+              "Ice",
               "Electric",
               "Nuclear",
-              "Bless"
+              "Curse"
             ],
             "Weak": [
-              "Curse"
+              "Bless"
             ]
           },
-          "level": "82",
-          "name": "Dominion",
-          "skill": "905,902",
-          "sn": 730611,
+          "level": "78",
+          "name": "Nidhoggr",
+          "skill": "1021,905,1404,810",
+          "sn": 738111,
           "stat": {
             "Accuracy": 1.0,
-            "Ailment Acc.": 0.41,
-            "Ailment Resist.": 0.204,
-            "Attack": 6151.2546,
-            "Attack Mult.": 1.056,
+            "Ailment Acc.": 0.39,
+            "Ailment Resist.": 0.392,
+            "Attack": 2299.0167,
+            "Attack Mult.": 1.037,
             "Crit Mult.": 1.3,
             "Crit Rate": 0.0,
             "Damage Taken": 0,
-            "Defense": 363.958,
+            "Defense": 652.061,
             "Down Points": 0,
-            "HP": 158000.2304,
+            "HP": 209244.384,
             "Pierce Rate": 0,
             "SP": 100.0,
             "SP Recovery": 0,
-            "Speed": 80.0
+            "Speed": 89.4
           }
         }
       },
       {
         "affixs": [
           {
-            "detail": "After the boss takes an action, all allies are inflicted with Intimidation. When Intimidation is removed, all foes are inflicted with Intimidation.\nIntimidation: Defense decreases by 10%, up to 50%.",
+            "detail": "Foes' damage taken is increased by 10% for each elemental ailment they have, up to 40%.",
             "name": "Special Effect"
           },
           {
-            "detail": "Party's Fire damage is increased by 20%.",
+            "detail": "Assassin allies' damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
-            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "detail": "Party's Nuclear damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
@@ -90,43 +84,44 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
-              "Ice",
+              "Fire",
+              "Wind",
               "Bless"
             ],
             "Weak": [
-              "Fire"
+              "Nuclear"
             ]
           },
-          "level": "82",
-          "name": "Vishnu",
-          "skill": "407,905,408,1104",
-          "sn": 734611,
+          "level": "78",
+          "name": "Yatsufusa",
+          "skill": "2445,1021,712,1406,103",
+          "sn": 736111,
           "stat": {
             "Accuracy": 1.0,
-            "Ailment Acc.": 0.41,
-            "Ailment Resist.": 0.408,
-            "Attack": 4921.0037,
-            "Attack Mult.": 1.056,
+            "Ailment Acc.": 0.39,
+            "Ailment Resist.": 0.49,
+            "Attack": 5911.7581,
+            "Attack Mult.": 1.037,
             "Crit Mult.": 1.3,
             "Crit Rate": 0.0,
             "Damage Taken": 0,
-            "Defense": 668.935,
+            "Defense": 1242.02,
             "Down Points": 0,
-            "HP": 222662.2464,
+            "HP": 270333.8064,
             "Pierce Rate": 0,
             "SP": 100.0,
             "SP Recovery": 0,
-            "Speed": 90.0
+            "Speed": 94.367
           }
         }
       }
     ],
-    "endTime": "2025-10-24 09:30:00",
+    "endTime": "2025-10-31 09:30:00",
     "mode": {
-      "detail": "Each turn, the boss's attacks grow stronger, and you get more points!",
-      "name": "Multidimensional Dreamscape"
+      "detail": "Deal damage to make the boss Weakened and gain more points!",
+      "name": "Devourer of Dreams"
     },
-    "startTime": "2025-10-17 10:30:00"
+    "startTime": "2025-10-24 10:30:00"
   },
   "msg": "OK",
   "status": 0

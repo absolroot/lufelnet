@@ -52,32 +52,6 @@
         "name": "Summer Breeze",
         "startTime": "2025-10-17 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-11-07 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Minami Miyashita",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          },
-          {
-            "name": "Miyu Sahara",
-            "type": "thief"
-          }
-        ],
-        "name": "Angel's Diagnosis",
-        "startTime": "2025-10-24 10:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
@@ -149,41 +123,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-10-17 10:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-11-07 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Angel Heart",
-            "type": "weapon",
-            "user": "Minami"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Death Stinger",
-            "type": "weapon",
-            "user": "Kurotani"
-          },
-          {
-            "name": "Hymn of Life",
-            "type": "weapon",
-            "user": "Minami"
-          },
-          {
-            "name": "Submarine Sonar",
-            "type": "weapon",
-            "user": "Miyu"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-10-24 10:30:00",
         "type": "Arms Deals"
       }
     ]

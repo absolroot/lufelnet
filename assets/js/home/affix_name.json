@@ -74,5 +74,17 @@
     {
         "description": "When any ally receives healing, their final damage is increased by 8%. Lasts for 2 turns. Stacks up to 4 times.",
         "name": "Healing"
+    },
+    {
+        "description": "Foes' damage taken is increased by 3% for each debuff they have, up to 45%.",
+        "name": "Debuff Stacking"
+    },
+    {
+        "description": "Whenever an ally deals damage, that ally's damage is increased by 4%. Lasts for 3 turns. Stacks up to 10 times.",
+        "name": "Continuous Attack"
+    },
+    {
+        "description": "Party's Resonance damage is increased by 50%.",
+        "name": "Resonance +"
     }
 ]

@@ -28,29 +28,29 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2025-11-13 10:59:59",
+        "endTime": "2025-10-30 10:59:59",
         "fiveStar": [
           {
-            "name": "ＹＵＩ",
+            "name": "宮下 美波",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "富山 佳代",
+            "name": "加納 駿",
             "type": "thief"
           },
           {
-            "name": "藤川 雪実",
+            "name": "黒谷 清",
             "type": "thief"
           },
           {
-            "name": "須見 俊也",
+            "name": "佐原 海夕",
             "type": "thief"
           }
         ],
-        "name": "電影世界の住人",
-        "startTime": "2025-10-30 11:30:00",
+        "name": "天使の治療室",
+        "startTime": "2025-10-16 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
@@ -78,32 +78,6 @@
         "name": "シニカルジョーク",
         "startTime": "2025-10-23 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2025-11-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "ＹＵＩ",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "藤川 雪実",
-            "type": "thief"
-          },
-          {
-            "name": "須見 俊也",
-            "type": "thief"
-          }
-        ],
-        "name": "電影世界の住人",
-        "startTime": "2025-10-30 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
       },
       {
         "endTime": "2025-11-25 10:59:59",
@@ -169,38 +143,38 @@
         "type": "武器補給"
       },
       {
-        "endTime": "2025-11-13 10:59:59",
+        "endTime": "2025-10-30 10:59:59",
         "fiveStar": [
           {
-            "name": "サイバージャミンザー",
+            "name": "エンジェルハート",
             "type": "weapon",
-            "user": "ＹＵＩ"
+            "user": "美波"
           }
         ],
         "fourStar": [
           {
-            "name": "エメラルドチャーム",
+            "name": "デーモンバイト",
             "type": "weapon",
-            "user": "富山"
+            "user": "駿"
           },
           {
-            "name": "メタディレクター",
+            "name": "デススティンガー",
             "type": "weapon",
-            "user": "ＹＵＩ"
+            "user": "黒谷"
           },
           {
-            "name": "ヘビーメタルペイン",
+            "name": "生命の賛歌",
             "type": "weapon",
-            "user": "雪実"
+            "user": "美波"
           },
           {
-            "name": "スカーレットロッド",
+            "name": "サブマリンソナー",
             "type": "weapon",
-            "user": "須見"
+            "user": "海夕"
           }
         ],
         "name": "無音の硝煙",
-        "startTime": "2025-10-30 11:30:00",
+        "startTime": "2025-10-16 11:30:00",
         "type": "武器補給"
       },
       {

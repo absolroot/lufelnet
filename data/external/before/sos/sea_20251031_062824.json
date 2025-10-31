@@ -1,0 +1,93 @@
+{
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Bless attack Score x 2",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Nuclear",
+                "Curse"
+              ],
+              "Weak": [
+                "Psychokinesis"
+              ]
+            },
+            "level": "89",
+            "name": "Asura",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 3917.8183,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 0,
+              "HP": 8367612.288,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 138401
+      },
+      {
+        "bonusRule": "All ally Curse attack Score x 2",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Gun",
+                "Curse"
+              ]
+            },
+            "level": "89",
+            "name": "Power",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 6529.6972,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 0,
+              "HP": 1045951.536,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 138402
+      }
+    ],
+    "buff": "Channel Totem: When healing allies with Resonance, all allies gain 2 Mental Link stacks. When receiving a max HP increase effect, its target gains 4 Mental Link stacks.",
+    "endTime": "2025-10-31 09:30:00",
+    "startTime": "2025-10-17 10:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

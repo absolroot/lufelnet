@@ -11,7 +11,7 @@ const characterList = {
         "하루", "하루나", "치즈코"
     ],
     supportParty: [
-        "리코", "미유","마나카", "유우미", "카요", "후타바"
+        "리코", "미유","마나카", "유우미", "카요", "후타바", "후카"
     ]
 };
 
@@ -77,7 +77,22 @@ const characterData = {
         "name_jp": "山岸 風花",
         "name_cn": "山岸风花",
         "codename": "FUKA",
-
+        "skill_item": 5,
+        "sub_revel2": ["공격력"],
+        "sub_revel3": ["크리티컬 효과"],
+        "sub_revel4": ["공격력"],
+        "sub_option1": ["크리티컬 효과"],
+        "sub_option2": ["공격력"],
+        "sub_option3": [""],
+        "minimum_stats": {
+            "LV10": "공격력 4529, 크리티컬 효과 64.0%",
+            "LV10+5": "공격력 4982, 크리티컬 효과 70.4%",
+            "LV12": false,
+            "LV12+5": false,
+            "LV13": "공격력 5076, 크리티컬 효과 71.68%",
+            "LV13+5": "공격력 5529, 크리티컬 효과 78.08%"
+        },
+        "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 <b>크리티컬 효과</b>/ 마이팰리스 2%",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",

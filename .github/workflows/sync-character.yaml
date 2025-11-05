@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       lang:
-        description: Target language (kr/jp/en)
+        description: Target language (kr/jp/en/cn)
         required: true
         default: kr
         type: choice
@@ -12,6 +12,7 @@ on:
           - kr
           - jp
           - en
+          - cn
       code:
         description: API or local codename (e.g., mitsuru or KIRIJO)
         required: true

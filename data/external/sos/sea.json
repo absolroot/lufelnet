@@ -1,5 +1,93 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Phys attack Score x 2",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Phys",
+                "Psychokinesis"
+              ]
+            },
+            "level": "89",
+            "name": "Titania",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 5223.7578,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 0,
+              "HP": 4183806.144,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 148401
+      },
+      {
+        "bonusRule": "All ally Electric attack Score x 2",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Curse"
+              ],
+              "Weak": [
+                "Bless"
+              ]
+            },
+            "level": "89",
+            "name": "Zaou-Gongen",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.436,
+              "Attack": 3199.5524,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 697.701,
+              "Down Points": 0,
+              "HP": 2153286.576,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 148402
+      }
+    ],
+    "buff": "Blood Ritual: When an ally spends HP to use a skill or deals damage with Resonance, they gain 1 Bloodbath Blessing stack.",
+    "endTime": "2025-11-14 09:30:00",
+    "startTime": "2025-10-31 10:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

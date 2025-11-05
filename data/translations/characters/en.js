@@ -43,7 +43,26 @@ const characterTranslations = {
         "유틸": "Utility",
         "신규": "New",
         "추천": "Recommended",
-        "인기": "Popular"
+        "인기": "Popular",
+
+        // 필터 태그(캐릭터 페이지) 번역
+        "TECHNICAL": "TECHNICAL",
+        "추가 효과": "Resonance",
+        "추가효과": "Resonance",
+        "지속 대미지": "DOT",
+        "지속대미지": "DOT",
+        "방어력 감소": "Defense Reduction",
+        "방어력감소": "Defense Reduction",
+        "관통": "Pierce",
+        "효과 명중": "Ailment Accuracy",
+        "효과명중": "Ailment Accuracy",
+        "실드": "Shield",
+        "화상": "Burn",
+        "풍습": "Windswept",
+        "감전": "Shock",
+        "동결": "Freeze",
+        "HP 소모": "HP Cost",
+        "HP소모": "HP Cost"
     },
     
     // 계시 번역

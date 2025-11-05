@@ -178,6 +178,7 @@ redirect_from:
                     <label><input type="checkbox" name="tag" value="풍습"><span>풍습</span></label>
                     <label><input type="checkbox" name="tag" value="감전"><span>감전</span></label>
                     <label><input type="checkbox" name="tag" value="동결"><span>동결</span></label>
+                    <label><input type="checkbox" name="tag" value="HP소모"><span>HP 소모</span></label>
                 </div>
             </div>
         </div>
@@ -916,12 +917,14 @@ redirect_from:
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         
         // 영어/일본어일 때 태그 필터 숨기기
+        /*
         if (currentLang === 'en' || currentLang === 'jp') {
             const tagFilterGroup = document.querySelector('.filter-group:last-child');
             if (tagFilterGroup) {
                 tagFilterGroup.style.display = 'none';
             }
         }
+        */
 
         // 필터 변경 이벤트 리스너
         const filterInputs = document.querySelectorAll('input[type="checkbox"]');

@@ -2460,6 +2460,7 @@ const characterData = {
         "sub_option1": ["공격력"],
         "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
         "sub_option3": ["대미지보너스"],
+
         "minimum_stats": {
             "LV10": "공격력 4600",
             "LV10+5": "공격력 5060",
@@ -2468,6 +2469,7 @@ const characterData = {
             "LV13": "공격력 5980",
             "LV13+5": "공격력 6440"
         },
+
         "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX",
@@ -2476,6 +2478,7 @@ const characterData = {
         "mind_stats1": "생명 20%!",
         "mind_stats2": "공격력 20%!",
         "mind_skill1": "S1/S2!",
-        "mind_skill2": "S3!"
+        "mind_skill2": "S3!",
+        "name_tw": "佐倉雙葉"
     }
 };

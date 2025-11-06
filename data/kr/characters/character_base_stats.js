@@ -15,6 +15,55 @@ const basicStatsData = {
         sp_recover: 0,
         HP_recover: 0
     },
+    "후카": {
+        a0_lv1: {
+            HP: 0,
+            SP: 0,
+            attack: 0,
+            defense: 0,
+            crit_rate: 5,
+            crit_mult: 150,
+            speed: 0
+        },
+        awake7: {
+            attack_per: 29.0
+        },
+        a0_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        },
+        a1_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        },
+        a2_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        },
+        a3_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        },
+        a4_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        },
+        a5_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        },
+        a6_lv80: {
+            HP: 0,
+            attack: 0,
+            defense: 0
+        }
+    },
     "미츠루": {
         a0_lv1: {
             HP: 308,

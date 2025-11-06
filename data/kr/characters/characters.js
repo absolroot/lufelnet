@@ -56,6 +56,7 @@ const characterData = {
     },
     "후카": {
         "limit": true,
+        "persona3": true,
         "role": "아군 교체",
         "role_en": "Ally Swap",
         "role_jp": "アリー・スワップ",
@@ -78,11 +79,11 @@ const characterData = {
         "name_cn": "山岸风花",
         "codename": "FUKA",
         "skill_item": 5,
-        "sub_revel2": ["공격력"],
+        "sub_revel2": ["공격력", "대미지 보너스"],
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력"],
-        "sub_option1": ["크리티컬 효과"],
-        "sub_option2": ["공격력"],
+        "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
+        "sub_option2": ["공격력", "대미지 보너스", "관통"],
         "sub_option3": [""],
         "minimum_stats": {
             "LV10": "공격력 4529, 크리티컬 효과 64.0%",

@@ -9,7 +9,7 @@ const characterList = {
         // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
     ],
     supportParty: [
-        "유우미", "리코", "미유", "카요"
+        "유우미", "리코", "미유", "카요", "후타바"
         // P3R 서포트 캐릭터 제외: "마나카" (P3R 관련)
     ]
 };
@@ -21,6 +21,9 @@ const characterData = {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "후타바": {
+        "release_order": 13
     },
     "키라": {
         "release_order": 12

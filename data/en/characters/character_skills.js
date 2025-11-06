@@ -1235,43 +1235,16 @@ const enCharacterSkillsData = {
     },
     "후타바": {
         "name": "Futaba Sakura",
-        "skill1": {
-            "name": "Silent Hacking",
-            "element": "버프광역",
-            "type":"디버프",
-            "cool": 4,
-            "description": "Decrease all enemies' DEF by 6% + (An additional 0.53% for every 100 ATK, up to 4600/5060/5980/6440 ATK) for 3 turns. During this duration, double this debuff when enemies take Weak damage. Give all allies [Hack Complete] if you are at 100% Analysis Progress for 2 turns."
-        },
-        "skill2": {
-            "name": "Data Crack",
-            "element": "버프",
-            "type":"디버프",
-            "cool": 4,
-            "description": "Increase the DMG Taken of 1 enemy by 6% + (An additional 0.38% for every 100 ATK, up to 4600/5060/5980/6440 ATK) for 3 turns. During this duration, gain 15% Analysis Progress after allies deal damage with Persona skill/Follow Up/[HIGHLIGHT]. Give all allies [Hack Complete] if you are at 100% Analysis Progress for 2 turns."
-        },
-        "skill3": {
-            "name": "In the Name of Featherman",
-            "element": "버프",
-            "type":"버프",
-            "cool": 8,
-            "unlock": "Ally must have 『Hack Complete』.",
-            "description": "Increase 1 ally's ATK by 270+(An additional 21.7 for every 100 ATK, up to 4600/5060/5980/6440 ATK) for 2 turns. Inflicts [Disruption Virus] based on the target's element to all enemies for 1 turn. \n[Disruption Virus]: Change the target's resistance: Turn to Resist if they have Null, Repel, Absorb; Turn to Neutral if they have Resist; Turn to Weak if they have Neutral. Increase Weak DMG Taken by 25% if they have Weak."
-        },
+        "skill1": {"name":"Pentest Complete!","element":"버프","type":"버프","cool":0,"description":"For 3 turns, decrease all foes' Defense by 6%; decrease Defense by 0.53% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). When foes with this Defense decrease take weakness damage, multiply the effect by 2.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."},
+        "skill2": {"name":"Vulnerability Found!","element":"버프","type":"버프","cool":0,"description":"For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, or Highlight to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."},
+        "skill3": {"name":"Data Link Established!","element":"버프","type":"버프","cool":0,"unlock":"Ally must have 『Hack Complete』.","description":"Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.)"},
         "skill_highlight": {
             "name": "Attribute Improvement",
             "element": "패시브",
             "description": "Increase all allies' stats by 20% of Oracle's stats."
         },
-        "passive1": {
-            "name": "Playfulness",
-            "element": "패시브",
-            "description": "At the start of battle, gain 100% Analysis Progress."
-        },
-        "passive2": {
-            "name": "Cleanup",
-            "element": "패시브",
-            "description": "Give all allies 30% ATK Shield for 3 turns when they are in [Hack Complete]."
-        }
+        "passive1": {"name":"Programming Pro","element":"패시브","description":"At the start of battle, Futaba gains 100% to her Analysis Progress.","cool":0},
+        "passive2": {"name":"Rootkit","element":"패시브","description":"When Data Storm is active, grant all allies a shield equal to 30.0% of Futaba's Attack for 3 turns.","cool":0}
     },
 
     "유스케": {

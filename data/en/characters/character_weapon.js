@@ -566,22 +566,8 @@ enCharacterWeaponData = {
     },
     "후타바": {
         "name": "Futaba Sakura",
-        "weapon4-1": {
-            "name": "Portable C-Type",
-            "health": 1791,
-            "attack": 602,
-            "defense": 317,
-            "skill_name": "Recovery Code",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After inflicting [Disruption Virus], increase foes' DMG Taken by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."
-        },
-        "weapon5-1": {
-            "name": "HACK Professional Edition",
-            "health": 2239,
-            "attack": 753,
-            "defense": 396,
-            "skill_name": "All-Powerful Chip",
-            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When allies deal Weakness DMG, increase their ATK by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns. When inflicting a debuff to foes by your skills, increase their CRIT DMG Taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns and up to 2 stacks."
-        }
+        "weapon4-1": {"name":"Cyberdeck Pro","health":1791.59,"attack":602.36,"defense":317.1,"skill_name":"","description":"Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter inflicting Virus on a foe, increase the target's damage taken by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."},
+        "weapon5-1": {"name":"Technomage Ultra FS","health":2239.65,"attack":753.13,"defense":396.41,"skill_name":"","description":"Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen an ally deals weakness damage, increase the ally's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.\nAfter Futaba inflicts a debuff with a skill, increase the foe's critical damage taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns. This effect can stack up to 2 times."}
     },
 
 

@@ -118,7 +118,7 @@ const characterData = {
         "main_revelation": ["진정성","창조","결심"],
         "sub_revelation": ["고집","화해","신중"],
         "element": "빙결",
-        "element_weakness": "",
+        "element_weakness": "화염",
         "element_resistance": "빙결",
         "rarity": 5,
         "persona3": true,

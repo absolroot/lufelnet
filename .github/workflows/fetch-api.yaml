@@ -45,7 +45,7 @@ jobs:
           fetch_and_write () {
             local endpoint="$1"
             local region="$2"
-            local url="${BASE_URL}/${endpoint}/${region}"
+            local url="${BASE_URL}/${endpoint}/${region}?source=lufelnet"
             local out="${ROOT_DIR}/${endpoint}/${region}.json"
             local backup_dir="${ROOT_DIR}/before/${endpoint}"
             local timestamp=$(date +"%Y%m%d_%H%M%S")
@@ -87,7 +87,7 @@ jobs:
             local region="$1"
             local api_codename="$2"
             local local_codename="$3"
-            local url="${BASE_URL}/character/${region}/${api_codename}"
+            local url="${BASE_URL}/character/${region}/${api_codename}?source=lufelnet"
             local out="${ROOT_DIR}/character/${region}/${local_codename}.json"
             local backup_dir="${ROOT_DIR}/before/character/${region}"
             local timestamp=$(date +"%Y%m%d_%H%M%S")
@@ -126,7 +126,7 @@ jobs:
             local region="$1"
             local api_codename="$2"
             local local_codename="$3"
-            local url="${BASE_URL}/weapon/${region}/${api_codename}"
+            local url="${BASE_URL}/weapon/${region}/${api_codename}?source=lufelnet"
             local out="${ROOT_DIR}/weapon/${region}/${local_codename}.json"
             local backup_dir="${ROOT_DIR}/before/weapon/${region}"
             local timestamp=$(date +"%Y%m%d_%H%M%S")

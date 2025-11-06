@@ -1,0 +1,207 @@
+{
+  "data": {
+    "name": "佐仓双叶",
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "友方怪盗使用人格面具技能后，佐仓双叶获得5%『解析进度』。同伴使用人格面具技能/追加效果/HIGHLIGHT/神通法造成弱点伤害时，佐仓双叶额外获得15%『解析进度』。『骇入完成』状态下我方伤害提升10%/15%/20%（1/50/70级时升级）。",
+          "level": "1",
+          "name": "信息收集",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "佐仓双叶的『解析进度』为100%，或处于『骇入完成』状态时，我方怪盗暴击率提升12%。",
+          "level": "1",
+          "name": "扫描解析",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『以不死鸟的名义』、『数据破解』的技能等级提升3级，至多提升至15级。",
+          "level": "1",
+          "name": "破门而入",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "友方同伴攻击敌人时，若目标身上有来自佐仓双叶的负面效果，攻击力提升25%。友方一名同伴受到致命伤害时，使其血量不会低于1点，并使所有怪盗获得等同于佐仓双叶攻击力20%的护盾。此效果每场战斗仅能触发1次。",
+          "level": "1",
+          "name": "远程协助",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『无声侵袭』的技能等级提升3级，至多提升至15级。",
+          "level": "1",
+          "name": "头脑战争",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "任意怪盗使用HIGHLIGHT/神通法后，佐仓双叶获得1层『漏洞分析』，上限2层。佐仓双叶使用『无声侵袭』或『数据破解』时，消耗所有『漏洞分析』，每层提升8%技能效果。",
+          "level": "1",
+          "name": "隐蔽攻击",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用『以不死鸟的名义』时会对我方全体怪盗释放，同时为所有敌人添加我方所有怪盗对应的『扰乱病毒』（同一适应性的『扰乱病毒』仅能同时存在1种）。『骇入完成』的持续时间延长至3回合，并额外提升我方10%弱点伤害、伤害提升25%。",
+          "level": "1",
+          "name": "病毒入侵",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": null,
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使所有敌人防御力降低6%+(佐仓双叶每有100点攻击力额外使防御力降低0.53%，最多计入4600/5060/5980/6440点攻击力)，持续3回合。效果持续期间，敌人受到弱点伤害时，使上述减防效果翻倍。若自身解析进度为100%，给予我方全体『骇入完成』，持续2回合。",
+          "level": "10/10/13/13",
+          "name": "无声侵袭",
+          "nature": null,
+          "tags": [
+            "主动",
+            "减益"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使1名敌人受到伤害增加6%+(佐仓双叶每有100点攻击力额外使目标受到伤害增加0.38%，最多计入4600/5060/5980/6440点攻击力），持续3回合。效果持续期间，友方怪盗使用人格面具技能/追加效果/HIGHLIGHT/神通法对目标造成伤害后，佐仓双叶获得15%解析进度。若自身解析进度为100%，给予我方全体『骇入完成』，持续2回合。",
+          "level": "10/10/13/13",
+          "name": "数据破解",
+          "nature": null,
+          "tags": [
+            "主动",
+            "减益"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "AICondition (Based on GJ)",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "解锁条件：我方角色拥有『骇入完成』\n使1名友方怪盗的攻击力提升270/297/302/329+(佐仓双叶每有100点攻击力，额外提升其21.7攻击力，最多计入4600/5060/5980/6440点攻击力)，持续2回合。为全体敌人添加上该名怪盗适应性的『扰乱病毒』，持续1回合。『扰乱病毒』：改变目标的对应的适应性属性：若为无效、反弹、吸收，则变为耐性；若为耐性则变为普通；若为普通则变为弱点。若为弱点，则提升其25%受到弱点伤害。",
+          "level": "10/10/13/13",
+          "name": "以不死鸟的名义",
+          "nature": null,
+          "tags": [
+            "主动",
+            "增益"
+          ],
+          "target": "1 Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "战斗开始时获得100%解析进度。",
+          "level": "3",
+          "name": "玩心",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『骇入完成』状态下，所有怪盗获得佐仓双叶攻击力的30.0%的护盾，持续3回合。",
+          "level": "3",
+          "name": "善后",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1139.99 / 1160.79 / 1180.79 / 1201.59 / 1222.39 / 1242.39 / 1263.19",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Attack Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3390.02 / 3450.82 / 3512.42 / 3573.22 / 3634.02 / 3694.82 / 3756.42",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

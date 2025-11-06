@@ -61,6 +61,8 @@ const characterData = {
         "role_en": "Ally Swap",
         "role_jp": "アリー・スワップ",
         "tag": "아군 교체, 크리티컬 효과, 공격력, 디버프 제거",
+        "tag_en": "Ally Swap, 크리티컬 효과, 공격력, 디버프 제거",
+        "tag_jp": "アリー・スワップ、크리티컬 효과, 공격력, 디버프 제거",
         "color": "#91F1D8",
         "main_revelation": ["희망","진정성"],
         "sub_revelation": ["직책","직책"],
@@ -94,6 +96,8 @@ const characterData = {
             "LV13+5": "공격력 4272, 크리티컬 효과 78.08%"
         },
         "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 <b>크리티컬 효과</b>/ 마이팰리스 2%",
+        "battle_plus_stats_en": "<b>Attack</b>/ MyPalace 50LV 65 / MyPalace 70LV 110 / MyPalace Rating <b>크리티컬 효과</b>/ MyPalace 2%",
+        "battle_plus_stats_jp": "<b>Attack</b>/ マイパレス 50LV 65 / マイパレス 70LV 110 / マイパレス 評価 <b>크리티컬 효과</b>/ マイパレス 2%",
         "skill1_lv": "MAX!",
         "skill2_lv": "MAX!",
         "skill3_lv": "MAX!",

@@ -34,6 +34,9 @@
 .element-icon img[src*="속성_빙결.png"],
 .element-icon img[src*="속성_질풍빙결.png"] { width: 12% !important; }
 
+.element-icon[src*="속성_주원.png"] { width: 9% !important; }
+.filter-options img[src*="속성_주원.png"] { width: 16px !important; height: 16px !important; padding: 2px; }
+
 .position-container { position: absolute; top: 0; left: 0; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; z-index: 1; }
 
 .position-icon { width: 60% !important; height: auto !important; object-fit: contain !important; box-shadow: none !important; border-radius: 0 !important; filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%); }

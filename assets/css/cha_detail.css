@@ -26,6 +26,7 @@
 .icon-group { display: flex; align-items: center; gap: 10px; }
 .element-icons { display: flex; align-items: center;}
 .element-icons img { width: 40px; height: 40px; object-fit: contain; }
+.element-icons img[src*="속성_주원.png"] { width: 34px !important; height: 34px !important; padding: 3px; }
 .position-icon { display: flex; align-items: center; }
 .position-icon img { width: 40px; height: 40px; object-fit: contain; }
 .rarity-section { display: flex; align-items: center; gap: 2px; }
@@ -155,6 +156,7 @@ h2{ font-size: 20px; color: rgb(255, 255, 255, 0.8); padding : 10px 0px 20px 0px
     background: rgba(0, 0, 0, 0.15); }
 
 .skill-icon { width: 32px; height: 32px; object-fit: contain; }
+.skill-icon[src*="주원.png"] { width: 28px !important; height: 28px !important; padding: 2px; }
 .skill-info { flex: 1; }
 .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 0px; }
 .skill-name { font-size: 16px; font-weight: 500; color: rgba(255, 255, 255, 0.9); }

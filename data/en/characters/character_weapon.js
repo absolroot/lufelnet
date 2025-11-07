@@ -2,6 +2,25 @@ enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "후카": {
+        "name": "야미기시 후카",
+        "weapon4-1":{
+            "name": "D-Type Telecoms",
+            "health": 1839,
+            "attack": 592,
+            "defense": 310,
+            "skill_name": "Voice of Encouragement",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After user uses [Oracle Shift], increase user's Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+        },
+        "weapon5-1":{
+            "name": "Rainbow Conductor",
+            "health": 2299,
+            "attack": 740,
+            "defense": 388,
+            "skill_name": "Voice of Hope",
+            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen user gains [Wish Listener], increase party's Attack by 2.0%/2.6%/2.6%/3.2%/3.2%/3.8%/3.8%. Stacks up to 5 times. This effect is permanent.\nWhen using [Oracle Shift], increase party's critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns."
+        }
+    },
     "미츠루": {
         "name": "키리조 미츠루",
         "weapon4-1":{
@@ -214,20 +233,20 @@ enCharacterWeaponData = {
     "마나카": {
         "name": "Manaka Nagao",
         "weapon4-1": {
-            "name": "A Singer’s Fantasy",
+            "name": "Singer's Dream",
             "health": 1776,
             "attack": 607,
             "defense": 317,
-            "skill_name": "Crystalline Lazuli",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After casting a skill, increase ATK permanently by 11.0%/14.5%/14.5%/18.0%/18.0%/21.5%/21.5%, up to 2 stacks."
+            "skill_name": "Luminous Glaze",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After Manaka uses a skill, increase user's Attack by 11.0%/14.5%/14.5%/18.0%/18.0%/21.5%/21.5%. Stacks up to 2 times. This effect is permanent."
         },
         "weapon5-1": {
-            "name": "Celestial Whisper",
+            "name": "Heavenly Whisper",
             "health": 2219,
             "attack": 759,
             "defense": 396,
-            "skill_name": "Rosy Crimson",
-            "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For every stack of [Holy Song] gained, additionally grant all allies one stack of [Pellucid Voice]: DMG Dealt is increased by 0.7%/0.9%/0.9%/1.1%/1.1%/1.3%/1.3%, up to 12 stacks, permanent in battle after obtaining. When [Pellucid Voice] reaches 12 stacks, additionally increase CRIT DMG by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%."
+            "skill_name": "Divine Radiance",
+            "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Manaka gains 1 [Holy Song] stack, all allies gain 1 [Pure Sound] stack: Increase damage by 0.7%/0.9%/0.9%/1.1%/1.1%/1.3%/1.3%. Stacks up to 12 times. This effect is permanent. When [Pure Sound] reaches 12 stacks, increase critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%."
         }
     },
     "마유미": {

@@ -13,6 +13,9 @@ const criticalBuffData = {
               { id: "wonder5", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "단일", target_en: "Single", target_jp: "単体", skillIcon: "/assets/img/tactic-persona/서큐버스.webp", skillName: "서큐버스 - 본능", skillName_en: "Succubus - Passive", skillName_jp: "サキュバス - 本能", options: [], value: 11.7, duration: "1턴", note: "동료를 목표로 스킬 시전 시", note_en: "targeting an ally", note_jp: "仲間を対象にする時" },
               { id: "wonder6", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/tactic-persona/시바.webp", skillName: "시바 - 본능", skillName_en: "Shiva - Passive", skillName_jp: "シヴァ - 本能", options: [], value: 18, duration: "1턴", note: "3중첩 / 목표가 염동 대미지를 받을 때", note_en: "3 hits / target takes PSY damage", note_jp: "3重 / 目標が念動ダメージを受けた時" }
     ],
+    "후카": [
+              { id: "fuka1", type: "의식1", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "-", skillName_en: "", skillName_jp: "", options: [], value: 12, duration: "2턴", note: "2중첩", note_en: "2Stack", note_jp: "2重" }
+    ],
     "미츠루": [
               { id: "mitsuru1", type: "의식1", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "Brilliant！", skillName_en: "A1", skillName_jp: "意識1", options: [], value: 10, duration: "-", note: "『혹한 결속』", note_en: " ", note_jp: " " }
     ],

@@ -914,6 +914,8 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
             skillName: "소리없는 침습 (약점)",
+            skillName_en: "(Weakness)",
+            skillName_jp: "(弱体)",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식5)","LV13(의식5)+심상5"],
             values: {
                 "LV10": 60.8,

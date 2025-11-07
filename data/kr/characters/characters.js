@@ -2140,12 +2140,12 @@ const characterData = {
         "name_jp": "北里 基良",
         "codename": "MESSA",
         "skill_item": 3,
-        "sub_revel2": ["공격력"],
+        "sub_revel2": ["공격력", "대미지보너스"],
         "sub_revel3": ["공격력"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["관통"],
-        "sub_option2": ["공격력", "대미지보너스", "크리티컬 확률"],
-        "sub_option3": ["크리티컬 효과", "효과명중"],
+        "sub_option2": ["공격력", "대미지보너스", "효과명중"],
+        "sub_option3": ["크리티컬 효과", "크리티컬 확률"],
 
         "minimum_stats": {
             "LV10": false,

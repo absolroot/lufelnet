@@ -35,36 +35,38 @@ const characterReview = {
 3. 다만, 후보 캐릭터의 **디버프 상태를 참조하는 능력**은 정상적으로 작동함.
    - 예: 미츠루의 혹한 결정 상태의 적이 받는 크리티컬 효과 증가는 유지됨.`,
         review_en: `
-야마기시 후카는 『계시 전환』을 통해 아군과 교대할 수 있는 고유 능력을 지닌 해명 괴도다.
+Fuuka is a Thief with the unique ability to swap party members using [Oracle Shift].
 
-기존의 NAVI나 ANGE와 다르게 방어력 감소 메커니즘이 존재하지 않아 아군 구성에 유의해야 한다.
-
-
-**교체 메커니즘 요약**
-- 후카는 전투 시작 시 1명의 후보 캐릭터를 지정하고, 『계시 전환』으로 교체를 수행한다.
-- 『계시 전환』 시, 현재 캐릭터는 잠시 퇴장하고, 후보 캐릭터가 등장하여 1회 행동 후 퇴장한다. 이후 원래 캐릭터가 복귀해 남은 행동을 이어간다.
+Unlike Oracle or Ange, Fuuka provides no Defense down debuffs or pierce rate buffs, so you must be careful with your team composition.
 
 <br>
 
-**버프 상호작용**
-1. 기존 캐릭터가 후보 캐릭터로 교체될 때, **기존 캐릭터가 부여하지 않은 모든 버프는 후보 캐릭터에게 복사**된다.
-   - 후보 캐릭터가 자신에게 부여한 버프나, 기존 캐릭터가 자신에게 준 버프는 복사되지 않는다.
-2. 반대로, 후보 캐릭터가 퇴장하고 기존 캐릭터로 복귀할 때는 **아무런 버프도 복사되지 않는다.**
-3. 후보 캐릭터가 행동을 마치면, 복사된 버프의 지속 턴 수가 1 감소된다.
-  - 예시: 원더가 마유미 버프(2턴) + 리벨리온(3턴)을 받고 있을 때 후카가 아야카로 교체
-    - 아야카는 마유미 버프만 복사 (리벨리온은 원더가 자신에게 부여한 버프이므로 복사되지 않음)
-    - 아야카가 마유미 HL(2턴)을 사용
-    - 후카가 원더로 복귀 → 마유미 HL은 복사되지 않음, 원더는 기존의 리벨리온+마유미 버프를 그대로 유지
+**Swap Mechanics Summary**
+- After selecting Fuuka in the party menu, you can select 1 character not in the party as her [Backup Character] for [Oracle Shift]
+- When using [Oracle Shift], the acting [Current Character] become inactive, the [Backup Character] become active and take 1 action. After this action, the [Backup Character] become inactive, and the [Current Character] become active to continue their turn.
 
 <br>
 
-**후보 캐릭터 상호작용**
-1. 대부분의 패시브 및 특성은 후방에 있는 동안 발동하지 않음 (사망과 유사하게 취급됨).
-2. 후보 캐릭터를 대상으로 한 능력도 작동하지 않음.
-   - 예: 미츠루가 후방일 때, '냉혈의 칼날'은 아군이 서리 결속 적을 공격해도 발동되지 않음.
-   - 예: 카타야마의 방어력 감소 강화도 후방 이동 시 효과가 중단됨.
-3. 다만, 후보 캐릭터의 **디버프 상태를 참조하는 능력**은 정상적으로 작동함.
-   - 예: 미츠루의 혹한 결정 상태의 적이 받는 크리티컬 효과 증가는 유지됨.`,
+**Buff Interactions**
+1. When a [Current Character] is replaced by the [Backup Character], all buffs except those the [Current Character] applied to themselves are copied to the [Backup Character].
+    - Self buffs from the [Current Character] and [Backup Character] are not copied.
+2. Similarly, when the [Backup Character] become inactive and the [Current Character] become active, no buffs are copied.
+3. When the [Backup Character] end their action, decrease the duration of the copied buff by 1 turn.
+  - Example: When Wonder received a buff from Turbo (2 turns) + Rebellion (3 turns), and Fuuka swap Wonder with Chord
+    - Chord will only copies Turbo's buffs (Rebellion is not copied because it is a self buff on Wonder)
+    - Chord uses Turbo HIGHLIGHT (2 turns)
+    - Fuuka swaps Wonder back → Turbo HIGHLIGHT is not copied, Wonder has Turbo buff + Rebellion.
+
+<br>
+
+**Backup Character Interactions**
+1. Most passives and Talents are not active when the [Backup Character] is inactive. (treated similarly to faint)
+2. Effects that require the [Backup Character] active will also not work.
+    - Example: When Mitsuru is inactive, [Cruel Edge] will not activate even if allies attack foes with [Frost].
+    - Example: Blitz's Defense down buffs will be disabled when she is inactive.
+3. However, **debuff effects that are from the [Backup Character] will work**.
+    - Example: The critical damage taken debuff from Mitsuru's Awareness 2 
+`,
 review_jp: `
 山岸 風花は『啓示転換』によって味方と交代できる固有能力を持つ解明系怪盗。
 
@@ -164,9 +166,131 @@ review_jp: `
 - (옵션) 방어력 감소 수치가 부족할 경우에는 [주권]+[여정] 
 
         `,
-review_en: `Translation in progress...
+review_en: `Although Mitsuru's role is Assassin, her actual role is that of a **Saboteur**. She functions as an improved, single-target DPS version of Crow.
+
+Her **skill 2** can permanently decrease 1 foe's Defense and increase their damage taken, her **skill 1** can inflict 3 [Frost] stacks and decrease Defense.
+
+Her **skill 3** can increase party's stats by Elucidator's stats (3%), and deal heavy Ice damage.
+
+Her **Theurgy** can deal heavy Ice damage. For the next 2 turns, when allies deal Persona skill damage, Mitsuru will deal damage **equal to that ally's stats and skill attribute**. This can be seen as a skill multiplier buff. The multiplier is [Frost] stacks x 20.0%/22.0%/22.4%/24.4%.
+
+<br>
+
+At Awareness 0/1/6, Mitsuru can inflict 5/7/8 [Frost] stacks on foes.
+
+At Awareness 6, Mitsuru doubles [Cruel Edge]'s damage, making its skill multiplier become 110%/154%/585.6%
+
+Assuming an Assassin Thief attacks with a skill multiplier of 450%, the effective increase would be 24.4%/34.2%/130.1%.
+
+However, since the exact stats Mitsuru replicates are unclear, it is uncertain whether independent multiplier buffs on allies will affect her damage.
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Awareness</th>
+      <th>S1 S2 Defense Down</th>
+      <th>P2 Damage Taken Up</th>
+      <th>Skill Multiplier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A0 (LV10+5) - 5 stacks</td>
+      <td>107.6%</td>
+      <td>24.0%</td>
+      <td>110.0%</td>
+    </tr>
+    <tr>
+      <td>A1 (LV10+5) - 7 stacks</td>
+      <td>133.4%</td>
+      <td>33.6%</td>
+      <td>154.0%</td>
+    </tr>
+    <tr>
+      <td>A6 (LV13+5) - 8 stacks</td>
+      <td>154.5%</td>
+      <td>38.4%</td>
+      <td>585.6%</td>
+    </tr>
+  </tbody>
+</table>
+
+Mitsuru can inflict **heavy Defense down**, so the remaining party member can be a Strategist.
+
+---
+
+Mitsuru can use many revelation cards. You can choose according to the situation.
+
+- Use [Integrity] + [Fixation] if you want to balance between Mitsuru's damage and ally buffs
+
+- Use [Resolve] + [Prudence] if you want to focus on Mitsuru's damage
+
+- Use [Creation] + [Reconciliation] if you want to focus on ally buffs
+
+- (Option) Use [Departure] + [Control] if you do not cap Defense down
 `,
-review_jp: `翻訳中...`,
+review_jp: `
+桐条美鶴は『反抗』ポジションに属しているが、実際の役割は**サポーター**寄りのP3コラボキャラクター。以前の『支配』タイプで味方サポートを担当していた明智の改良版とも言える存在。
+
+- **スキル2**で敵単体の防御力を永続的に減少させ、被ダメージを増加させる。**スキル1**では**『霜結』3スタック**を付与しつつ防御力を低下させる。
+
+- **スキル3**には解明系怪盗の各属性値を3%上昇させる効果が含まれており、さらに高威力の氷結属性ダメージを与える。
+
+- **核心はテウルギア**。高倍率の氷結属性ダメージを与えた後、**2ターン**の間、味方がペルソナスキルでダメージを与えるたびに、**その味方の属性とステータスを複製した追加ダメージ**を美鶴自身が与える。\nこれは**スキル係数バフ**として理解すると分かりやすい。追加ダメージの係数は『霜結』スタック数 × 20.0%/22.0%/22.4%/24.4%。
+
+<br>
+
+**『霜結』のスタック数**は**意識0/1/6**でそれぞれ**5/7/8**個を維持できる。
+
+意識6では追加ダメージがさらに2倍加算されるため、味方が攻撃した際の**スキル係数**は**110%/154%/585.6%**の形で上昇し、意識6での倍率差が非常に大きい。
+
+反抗怪盗が450%のスキル係数で攻撃すると仮定した場合、24.4%/34.2%/130.1%の上昇効果を得る。
+
+ただし、味方ステータスのコピー範囲が明確でないため、味方が保有する独立バフの適用可否は状況によって異なる可能性がある。
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>意識レベル</th>
+      <th>S1 S2 防御力減少</th>
+      <th>P2 被ダメージ増加</th>
+      <th>スキル係数上昇</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>意識0 (LV10+5) - 5スタック</td>
+      <td>107.6%</td>
+      <td>24.0%</td>
+      <td>110.0%</td>
+    </tr>
+    <tr>
+      <td>意識1 (LV10+5) - 7スタック</td>
+      <td>133.4%</td>
+      <td>33.6%</td>
+      <td>154.0%</td>
+    </tr>
+    <tr>
+      <td>意識6 (LV13+5) - 8スタック</td>
+      <td>154.5%</td>
+      <td>38.4%</td>
+      <td>585.6%</td>
+    </tr>
+  </tbody>
+</table>
+
+**防御力減少値が非常に高い**ため、残りの1枠には『優越』タイプの怪盗を編成するのも良い。
+
+---
+
+啓示カードの選択肢は非常に自由度が高く、状況に応じて選べる。
+
+- 美鶴のダメージと味方バフのバランスを取りたい場合：[誠実]＋[固執]
+- 美鶴自身の火力に集中したい場合：[決心]＋[慎重]
+- 味方のバフ支援に重点を置きたい場合：[創造]＋[和解]
+- （オプション）防御力減少が不足する場合：[支配]＋[旅立]`,
 dump:``
     },
 
@@ -883,6 +1007,85 @@ review_jp: `
     "아케치": { name_en: "Goro Akechi", name_jp: "明智 吾郎", codename: "CROW",
         review: ``
     },
+"키라": { name_en: "Kira Kitazato", name_jp: "北里 基良", codename: "MESSA",
+        review: `
+단일 대상에 특화된 물리 딜러로, **『사냥꾼』 ↔ 『집행관』** 상태를 전환하며 『유혈』 중첩을 쌓고 『절개』로 폭발시키는 구조를 가진다.
+
+A0~A1에서는 『유혈』을 누적하고 유지하는 “출혈형”, A6에서는 『절개』를 연쇄로 터뜨리는 “폭발형”으로 운용 방식이 달라진다. A1부터도 “폭발형” 운영은 가능하다. 
+
+<br>
+
+**A0~A1 (출혈형)**  
+  『사냥꾼』 폼을 위주로 『유혈』 누적 및 갱신.  
+  - S1 → HL로 5중첩 확보 → S2로 결산 및 유지 → 마지막 턴 종료 시 단기『집행관』 진입.  
+
+<br>
+
+**A6 (폭발형)**  
+  『집행관』 폼을 위주로 『절개』를 반복.  
+  - 출혈 13스택 누적 이후 『밤의 장막』 진입 → S1/S2 연계로 『절개』발동.
+
+---
+  
+키라를 위한 보스를 제외하고서는 절대 다수의 보스가 체력 비례형 대미지 감소 효과를 가지고 있어 키라의 도트 대미지의 효율이 급감한다.
+
+도트 대미지에는 크리티컬이 적용되지 않지만, 물리 속성 타격에는 크리티컬이 적용돼 크리티컬 관련 스탯이 낮은 의식 레벨에서는 유효하다는 연구 결과가 있다.`,
+review_en: `
+A single-target Physical attacker who switches between **Hunter** and **Executioner** forms, stacking **Bleed** and detonating it through **Rend** damage.
+
+From **Awareness 0–1**, Kira focuses on building and maintaining Bleed stacks as a “Bleed-type”;  
+from **Awareness 6**, he transitions into a “Burst-type” that repeatedly triggers **Rend**.  
+Burst-oriented play becomes viable starting from Awareness 1.
+
+<br>
+
+**A0–A1 (Bleed-type)**  
+  Focus on stacking and refreshing **Bleed** in **Hunter Form**.  
+  - Use S1 → HL to apply 5 stacks → maintain with S2 → enter **Executioner Form** briefly at the end of turn.  
+
+<br>
+
+**A6 (Burst-type)**  
+  Focus on repeatedly triggering **Rend** in **Executioner Form**.  
+  - After reaching 13 **Bleed** stacks, activate **Night Veil** → chain S1/S2 to trigger **Rend** bursts.
+
+---
+
+Aside from bosses designed specifically for Kira, most bosses possess **HP-scaling damage reduction**, which drastically decreases the effectiveness of Kira’s Bleed damage.  
+
+While **Bleed** damage cannot crit, his **Physical hits can**,  
+making Critical-related stats still valuable at lower Awareness levels according to player analysis.
+`,
+
+review_jp: `
+単体特化の物理アタッカーで、**『狩人』↔『執行官』** フォームを切り替えながら **『ユーレット』（出血）** を蓄積し、**『裂傷』（レンディング）** で爆発させる構造を持つ。
+
+**覚醒A0〜A1**では『ユーレット』を蓄積・維持する「出血型」、  
+**A6**では『裂傷』を連鎖的に発動する「爆発型」として運用が変化する。  
+A1からでも「爆発型」の運用は十分可能。
+
+<br>
+
+**A0〜A1（出血型）**  
+  『狩人』フォームを中心に『ユーレット』を蓄積・更新。  
+  - S1 → HLで5スタック確保 → S2で決算と維持 → ターン終了時に短時間『執行官』化。  
+
+<br>
+  
+**A6（爆発型）**  
+  『執行官』フォームを主体に『裂傷』を連続発動。  
+  - 『ユーレット』を13スタックまで貯めた後、『夜の帳』を発動 → S1/S2連携で『裂傷』を誘発。
+
+---
+
+キラ専用ボスを除き、大多数のボスは**HP割合による被ダメージ軽減効果**を持っており、  
+そのためキラの**持続ダメージ（ドット）**効率は大幅に低下する。
+
+ドットダメージ自体にはクリティカルが適用されないが、  
+**物理属性攻撃にはクリティカルが適用される**ため、  
+低覚醒段階ではクリティカル系ステータスが有効であるという検証結果がある。
+`,
+    },
     "미오": { name_en: "Mio Natsukawa", name_jp: "夏川 澪", codename: "MATOI",
         review: ``
     },
@@ -1252,16 +1455,13 @@ review_jp: `
     "카요": { name_en: "Kayo Tomiyama", name_jp: "富山 佳代", codename: "OKYANN",
         review: ``
     },
-    "키라": { name_en: "Kira Kitazato", name_jp: "北里 基良", codename: "MESSA",
-        review: ``
-    },
     "키요시": { name_en: "Kiyoshi Kurotani", name_jp: "黒谷清", codename: "KEY",
         review: ``
     },
     "토모코": { name_en: "Tomoko Noge", name_jp: "野毛 朋子", codename: "MOKO",
         review: ``
     },
-    "토모코·여름": { name_en: "Seaside Tomoko", name_jp: "朋子・ピーチサマー", codename: "MOKO·Summer",
+"토모코·여름": { name_en: "Seaside Tomoko", name_jp: "朋子・ピーチサマー", codename: "MOKO·Summer",
         review: `
 아군 딜러에게는 **효과명중**과 **공격력**을 올려주고, 적은 **받는 대미지**를 증가시키는 힐러다.
 

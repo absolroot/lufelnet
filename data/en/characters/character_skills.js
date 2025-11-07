@@ -2,6 +2,45 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "후카": {
+        "name": "Fuuka Yamagishi",
+        "skill1": {
+            "name": "Radiant Power",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 4,
+            "description": "Increase party's Attack by 10.0%/11.0%/11.2%/12.2% + 1.143% for every 100 points of Fuuka's Attack, up to 40.0%/44.0%/44.8%/48.8%, and damage by 8.0%/8.8%/9.0%/9.8% + 0.914% for every 100 points of Fuuka's Attack, up to 32.0%/35.2%/35.8%/39.0%. Lasts for 2 turns. User gains 1 [Wish Listener] stack."
+        },
+        "skill2": {
+            "name": "Holy Prayer",
+            "element": "버프광역", 
+            "type": "버프",
+            "cool": 16,
+            "description": "Initial Cooldown Time: 16 ally actions\nIncrease party's Attack by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%. Lasts for 3 turns. If main target is a S.E.E.S. member, restore target's Theurgy Energy by 35 points, then increase target's Theurgy damage by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%. Lasts for 3 turns; If the main target is not a S.E.E.S. member, restore HIGHLIGHT Energy by 35 points, then increase target's HIGHLIGHT damage by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%.\nThis skill has an independent cooldown and does not affect the cooldown time of other skills."
+        },
+        "skill3": {
+            "name": "Spirit Wave",
+            "element": "버프광역",
+            "type": "버프",
+            "cool": 4,
+            "description": "Increase party's critical damage by 10.0%/11.0%/11.2%/12.2% + 0.625% for every 1% of Fuuka's critical damage, up to 40.0%/44.0%/44.8%/48.8%. Lasts for 2 turns. User gains 1 [Wish Listener] stacks.\nWhen any ally meets a certain conditions, activate one of the following effect in order of priority. (When no conditions are met, activate 1 random effect)\n1. When any ally is inflicted with Mental Ailments, cure 1 debuff on the target.\n2. When any ally is below 25% max HP, restore HP equal to 15% of  that ally's max HP.\n3. When any ally is below 30 SP, restore 30 SP to the lowest SP ally."
+        },
+        "skill_highlight": {
+            "name": "Stat Buff",
+            "element": "패시브",
+            "description": "Increase party's stats by 20% of Fuuka's stats."
+        },
+        "passive1": {
+            "name": "Benevolence",
+            "element": "패시브",
+            "description": "After any ally uses a Theurgy or HIGHLIGHT, increase party's critical damage by 24.0% for 2 turns."
+        },
+        "passive2": {
+            "name": "Compassion",
+            "element": "패시브",
+            "description": "Increase party's stats by 4.5% of [Backup Character]'s stats."
+        }
+    },
     "미츠루": {
         "name": "Mitsuru Kirijo",
         "skill1": {
@@ -481,36 +520,36 @@ const enCharacterSkillsData = {
             "element": "버프광역",
             "type": "버프",
             "cool": 4,
-            "description": "Increases all allies' DMG Dealt by 7.0%/7.7%/7.8%/8.5% + (For every 164 ATK, additionally increases DMG Dealt by 1%, up to 28.0%/31.8%/31.4%/34.2%) for 2 turns. Ange gains 4 stacks of [Holy Song]."
+            "description": "Increase party's damage by 7.0%/7.7%/7.8%/8.5% + 1% for every 164 points of Manaka's Attack, up to 28.0%/31.8%/31.4%/34.2%. Lasts for 2 turn. Manaka gains 4 [Holy Song] stacks."
         },
         "skill2": {
-            "name": "Poems of Radiance",
+            "name": "Poem of Radiance",
             "element": "치료광역",
             "type": "치료",
             "cool": 8,
-            "description": "Restores 10.0%/10.0%/11.2%/11.2% ATK + 681/816/989/1124 HP to all allies, and dispels 1 debuff from all allies. When Ange has [Holy Song], consumes 1 stack of [Holy Song] to decrease the skill cooldown by 1 action, up to 4 actions. When Ange manually use this skill, additionally increases healing by 50%.\nAfter Ange gains 12 stacks of [Holy Song], automatically trigger the healing from this skill once."
+            "description": "Restore party's HP by 10.0%/10.0%/11.2%/11.2% of Manaka's Attack + 681/816/989/1124, and cure 1 debuff. When Manaka has [Holy Song], spend 1 [Holy Song] stack to decrease skill cooldown by 1 action, up to 4 actions. When Manaka manually uses this skill, increase healing by 50%. \nPassive: After Manaka gained 12 [Holy Song] stacks, automatically activate the healing from this skill once."
         },
         "skill3": {
             "name": "Wheel of Time",
             "element": "버프광역",
             "type": "버프",
             "cool": 4,
-            "description": "Increases all allies' ATK based on 11% + 128/141/143/156 ATK. Consumes all [Holy Song], for every stack of [Holy Song] consumed, additionally increases all allies' PEN (Increases PEN by 0.1% for every 460 ATK, up to 4600/5060/5980/6440 ATK) and ATK (Increases ATK by 0.2% for every 460 ATK, up to 4600/5060/5980/6440 ATK) for 2 turns."
+            "description": "Increase party's Attack by 11% + 128/141/143/156 of Manaka's Attack. Spend all [Holy Song], for each [Holy Song] stack spent, increase party's pierce rate by 0.1% for every 460 points of Manaka's Attack, and Attack by 0.2% for every 460 points of Manaka's Attack. Lasts for 2 turns. (Up to 4600/5060/5980/6440 points of Attack)"
         },
         "skill_highlight": {
-            "name": "Attribute Improvement",
+            "name": "Stat Buff",
             "element": "패시브",
-            "description": "Increase all allies' stats by 20% of Ange's stats."
+            "description": "Increase party's stats by 15% of Manaka's stats."
         },
         "passive1": {
             "name": "Grace",
             "element": "패시브",
-            "description": "Increase the ATK for allies under [Myriad Song] by 37.5%."
+            "description": "Increase ATK for allies during [Myriad Song] by 37.5%."
         },
         "passive2": {
             "name": "Resilience",
             "element": "패시브",
-            "description": "Increase all allies' PEN by 1.0% after gaining 1 stack of [Holy Song], up to 12 stacks."
+            "description": "Based on gained [Holy Song] stacks, increase party's pierce rate by 1.0%. Stacks up to 12 times."
         }
     },
 	"마유미": {

@@ -323,6 +323,8 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
 
   .order-img { position: absolute; top: -5px; right: -5px; width: 54px; height: 18px; z-index: 1; }
 
+  .order-img[src*="num05.png"] { width: 32px !important; height: 32px !important; }
+
   .ritual-img { position: absolute; bottom: -5px; left: -5px; width: 45px; height: 45px; z-index: 1; filter: drop-shadow(0 0 1px rgb(0, 0, 0))
     drop-shadow(0 0 1px rgb(0, 0, 0)); }
 

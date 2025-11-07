@@ -198,6 +198,8 @@ window.applyImportedData = function(payload, options = {}) {
     // UI 기본 설정
     setupWonderConfig();
     setupPartySelection();
+    // 해명 칸이 '후카'면 괴도5 슬롯 동적 생성
+    try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch(_) {}
 
     // setparty가 이미 input 기반 UI를 구성한 경우, 입력 값 강제 주입
     try {

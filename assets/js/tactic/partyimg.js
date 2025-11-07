@@ -62,12 +62,19 @@
         container.appendChild(textCircle);
       }
       
-      // 순서 이미지
-      if (["1", "2", "3", "4"].includes(member.order)) {
+      // 순서 이미지 (+ 5 폴백 배지)
+      if (["1", "2", "3", "4", "5"].includes(member.order)) {
         const orderImg = document.createElement("img");
         orderImg.className = "order-img";
         orderImg.src = `${BASE_URL}/assets/img/ui/num0${member.order}.png`;
         orderImg.alt = `순서 ${member.order}`;
+        orderImg.onerror = function() {
+          this.style.display = 'none';
+          const badge = document.createElement('div');
+          badge.className = 'order-badge';
+          badge.textContent = String(member.order);
+          container.appendChild(badge);
+        };
         container.appendChild(orderImg);
       }
       

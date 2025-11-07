@@ -259,6 +259,11 @@
     }
     
     partyDivs.forEach(div => {
+      // 중복 초기화 방지 가드
+      if (div.getAttribute('data-init') === '1') {
+        return;
+      }
+      div.setAttribute('data-init','1');
       const index = parseInt(div.getAttribute("data-index"), 10);
       const nameSelect = div.querySelector(".party-name");
       const mainRevSelect = div.querySelector(".main-revelation");
@@ -310,6 +315,13 @@
           }
 
           if (!window.__IS_APPLYING_IMPORT) {
+            // 괴도5는 자동 패턴/빈 자동 액션 생성 비활성화
+            if (index === 5) {
+              if (typeof updateAutoActions === 'function') updateAutoActions();
+              if (typeof updatePartyImages === 'function') updatePartyImages();
+              if (typeof renderTurns === 'function') renderTurns();
+              return;
+            }
             // 캐릭터 의식 패턴 재적용
             const hasPattern = typeof ritualPatterns !== 'undefined' && ritualPatterns[selectedName];
             const pattern = hasPattern && (typeof findPatternForLevel === 'function') ? findPatternForLevel(selectedName, newLevel) : null;
@@ -669,6 +681,10 @@
             
             // 임포트 중에는 자동 패턴 주입 스킵
             if (!window.__IS_APPLYING_IMPORT) {
+              // 괴도5는 자동 패턴/빈 자동 액션 생성 비활성화
+              if (index === 5) {
+                // 아무것도 주입하지 않음
+              } else {
               const hasPattern = typeof ritualPatterns !== 'undefined' && ritualPatterns[selectedName];
               const pattern = hasPattern && typeof findPatternForLevel === 'function' ? findPatternForLevel(selectedName, currentRitual) : null;
               turns.forEach((turn, turnIndex) => {
@@ -703,6 +719,7 @@
                   });
                 }
               });
+              }
             }
             else{
               if (!window.__IS_APPLYING_IMPORT) {
@@ -714,6 +731,7 @@
           if (!window.__IS_APPLYING_IMPORT) {
             updatePartyImages();
             renderTurns();
+            try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch(_) {}
           }
         });
 
@@ -753,7 +771,7 @@
             mainRevSelect.disabled = false;
             
             // 새로 선택된 캐릭터의 의식 패턴이 있는지 확인
-            {
+            if (index !== 5) {
               const hasPattern = typeof ritualPatterns !== 'undefined' && ritualPatterns[selectedName];
               const pattern = hasPattern && typeof findPatternForLevel === 'function' ? findPatternForLevel(selectedName, currentRitual) : null;
               turns.forEach((turn, turnIndex) => {
@@ -795,12 +813,16 @@
             updateAutoActions();
             updatePartyImages();
             renderTurns();
+            try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch(_) {}
           }
         });
       }
 
-      // 순서 변경 시 이벤트
-      orderSelect.addEventListener("change", (e) => {
+      // 순서 변경 시 이벤트 (괴도5는 비활성화)
+      if (index === 5 && orderSelect) {
+        try { orderSelect.disabled = true; } catch(_) {}
+      }
+      if (index !== 5) orderSelect.addEventListener("change", (e) => {
         const newOrder = e.target.value;
         const oldOrder = partyMembers[index].order;
         
@@ -869,6 +891,242 @@
       });
     }); // end of partyDivs.forEach
   } // end of setupPartySelection
+
+  /* ========= 동적 괴도5 슬롯 관리 ========= */
+  function updateOrderOptions(maxOrder) {
+    // 메인(원더 포함)과 추가 슬롯(5)은 1..maxOrder, 해명(index=4)은 '-'
+    document.querySelectorAll('.party-member').forEach(div => {
+      const idx = Number(div.getAttribute('data-index'));
+      const orderSelect = div.querySelector('.party-order');
+      if (!orderSelect) return;
+      if (idx === 4) return; // 해명은 그대로 '-'
+      const prev = orderSelect.value;
+      orderSelect.innerHTML = '';
+      for (let n = 1; n <= maxOrder; n++) {
+        const opt = document.createElement('option');
+        opt.value = String(n);
+        opt.textContent = String(n);
+        orderSelect.appendChild(opt);
+      }
+      // 기존값 보존, 범위를 벗어나면 자동 보정
+      const newVal = (prev && Number(prev) >= 1 && Number(prev) <= maxOrder) ? prev : String(Math.min(maxOrder, Number(prev) || 1));
+      orderSelect.value = newVal;
+      const pIdx = Number(div.getAttribute('data-index'));
+      if (!Number.isNaN(pIdx) && partyMembers[pIdx]) {
+        partyMembers[pIdx].order = orderSelect.value;
+      }
+    });
+  }
+
+  function reassignOrdersOnShrink() {
+    // 유효한 주문자: index !== 4, 값은 '1'..'4'
+    const validOrders = new Set(['1','2','3','4']);
+    const used = new Set();
+    // 현재 사용 중인 값 집계(우선 고정)
+    partyMembers.forEach(pm => {
+      if (pm && pm.index !== 4 && validOrders.has(pm.order)) used.add(pm.order);
+    });
+    function findFree() {
+      for (const v of ['1','2','3','4']) if (!used.has(v)) return v;
+      return '4';
+    }
+    partyMembers.forEach(pm => {
+      if (!pm || pm.index === 4) return;
+      if (pm.order === '5') {
+        const nv = findFree();
+        pm.order = nv; used.add(nv);
+        const sel = document.querySelector(`.party-member[data-index="${pm.index}"] .party-order`);
+        if (sel) sel.value = nv;
+      }
+    });
+  }
+
+  function hasExtraThiefSlot() {
+    return !!document.querySelector('.party-member[data-index="5"]');
+  }
+
+  function ensureExtraThiefSlot() {
+    if (hasExtraThiefSlot()) { updateOrderOptions(5); return; }
+    // partyMembers 확장
+    if (!partyMembers[5]) {
+      partyMembers[5] = { index: 5, name: '', order: '5', ritual: '0' };
+    }
+    // DOM 생성
+    const host = document.getElementById('party-selection');
+    if (!host) return;
+    const block = document.createElement('div');
+    block.className = 'party-member';
+    block.setAttribute('data-index', '5');
+    block.innerHTML = `
+      <div class="input-group">
+        <label>괴도 5</label>
+        <select class="party-name">
+          <option value="">-</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>의식</label>
+        <select class="party-ritual" style="width: 50px;">
+          <option value="0" selected>0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>순서</label>
+        <select class="party-order" style="width: 50px;">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>주</label>
+        <select class="main-revelation">
+          <option value="">-</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>일월성진</label>
+        <select class="sub-revelation" disabled>
+          <option value="">-</option>
+        </select>
+      </div>`;
+    // 해명 블록 뒤에 삽입
+    const support = host.querySelector('.party-member[data-index="4"]');
+    if (support && support.nextSibling) host.insertBefore(block, support.nextSibling);
+    else host.appendChild(block);
+    // order 옵션 확장
+    updateOrderOptions(5);
+    // 새 블록만 초기화되도록 가드가 있으므로 전체 호출 안전
+    try { setupPartySelection(); } catch(_) {}
+    // 계시 커스텀 드롭다운(포탈 트리거형) 적용
+    try {
+      const mainSel = block.querySelector('select.main-revelation');
+      const subSel = block.querySelector('select.sub-revelation');
+      if (mainSel) enhanceRevSelectSimple(mainSel);
+      if (subSel) enhanceRevSelectSimple(subSel);
+    } catch(_) {}
+    // 아코디언 접힘 상태 동기화 및 토글 후에도 유지
+    try {
+      const syncExtraThiefCollapse = () => {
+        const card = document.getElementById('party-selection');
+        const sample = card ? card.querySelector('.party-member[data-index="0"]') : null;
+        if (!sample) return; // 초기화 전이면 스킵
+        const collapsed = window.getComputedStyle(sample).display === 'none';
+        block.style.display = collapsed ? 'none' : '';
+      };
+      // 최초 1회 동기화
+      syncExtraThiefCollapse();
+      // 헤더 클릭/리사이즈 후에도 동기화 (중복 바인딩 방지 가드)
+      const header = document.querySelector('#party-selection h2');
+      if (header && !window.__bindExtraThiefCollapse) {
+        header.addEventListener('click', () => setTimeout(syncExtraThiefCollapse, 0));
+        window.addEventListener('resize', () => setTimeout(syncExtraThiefCollapse, 0));
+        window.__bindExtraThiefCollapse = true;
+      }
+    } catch(_) {}
+  }
+
+  function removeExtraThiefSlot() {
+    const extra = document.querySelector('.party-member[data-index="5"]');
+    const removedName = partyMembers[5]?.name || '';
+    if (extra && extra.parentNode) extra.parentNode.removeChild(extra);
+    if (partyMembers.length > 5) partyMembers.splice(5, 1);
+    // 액션에서 해당 캐릭터 정리(수동/자동 모두 캐릭터만 비움)
+    try {
+      if (removedName && Array.isArray(turns)) {
+        turns.forEach(t => {
+          t.actions.forEach(a => { if (a.character === removedName) a.character = ''; });
+        });
+      }
+    } catch(_) {}
+    // order 축소 및 보정
+    reassignOrdersOnShrink();
+    updateOrderOptions(4);
+    try { renderTurns(); updatePartyImages(); } catch(_) {}
+  }
+
+  function refreshExtraSlotVisibility() {
+    try {
+      const supportName = (partyMembers && partyMembers[4]) ? partyMembers[4].name : '';
+      if (supportName === '후카') ensureExtraThiefSlot(); else removeExtraThiefSlot();
+    } catch(_) {}
+  }
+
+  // 전역 노출 (임포트 등에서 호출)
+  try { window.refreshExtraSlotVisibility = refreshExtraSlotVisibility; } catch(_) {}
+
+  // 간이 커스텀 드롭다운(포탈 기반) 적용: 동적 생성된 계시 select용
+  function enhanceRevSelectSimple(select){
+    if (!select || select.closest('.rev-select-wrap')) return;
+    const group = select.closest('.input-group') || select.parentElement;
+    if (!group) return;
+    const BASE = (typeof BASE_URL !== 'undefined' && BASE_URL) ? BASE_URL : '';
+    function getRevDisplayText(v){ try { return (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(v) : v; } catch(_) { return v; } }
+    const wrap = document.createElement('div');
+    wrap.className = 'rev-select-wrap';
+    const display = document.createElement('div');
+    display.className = 'rev-display';
+    // insert wrap just after label, similar to index.html enhancer
+    const label = group.querySelector('label');
+    if (label && label.nextSibling) group.insertBefore(wrap, label.nextSibling); else group.appendChild(wrap);
+    wrap.appendChild(display);
+    wrap.appendChild(select);
+    const updateDisp = () => {
+      display.innerHTML = '';
+      const current = select.value;
+      const text = current ? getRevDisplayText(current) : '-';
+      if (current) {
+        const img = document.createElement('img');
+        img.src = `${BASE}/assets/img/revelation/${current}.webp`;
+        img.alt = '';
+        img.onerror = function(){ this.style.display = 'none'; };
+        display.appendChild(img);
+      }
+      const span = document.createElement('span');
+      span.textContent = text;
+      display.appendChild(span);
+      display.style.opacity = select.disabled ? '0.6' : '1';
+      display.style.pointerEvents = select.disabled ? 'none' : 'auto';
+    };
+    display.addEventListener('click', (e)=>{
+      e.preventDefault(); e.stopPropagation();
+      if (select.disabled) return;
+      if (typeof openPortal === 'function') {
+        const type = select.classList.contains('main-revelation') ? 'rev-main' : 'rev-sub';
+        const ctx = type === 'rev-sub' ? { mainForSub: (group.querySelector('select.main-revelation') || {}).value } : {};
+        openPortal(type, select, {
+          ...ctx,
+          onSelect: (value)=>{
+            select.value = value;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+      }
+    });
+    // react to value/disabled changes
+    const mo = new MutationObserver(() => updateDisp());
+    mo.observe(select, { attributes: true, attributeFilter: ['disabled'], childList: true, subtree: false });
+    select.addEventListener('change', updateDisp);
+    // 폴링으로 programmatic value 변경 감지
+    let __lastVal = select.value;
+    let __lastDisabled = !!select.disabled;
+    setInterval(() => {
+      if (select.value !== __lastVal || !!select.disabled !== __lastDisabled) {
+        __lastVal = select.value;
+        __lastDisabled = !!select.disabled;
+        updateDisp();
+      }
+    }, 300);
+    updateDisp();
+  }
 
   // 번역 초기화 최상위 함수
   function initializePartyTranslations() {

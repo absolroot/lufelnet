@@ -19,7 +19,7 @@
   const NAME = {
     kr: { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' },
     en: { Confirmed:'Target', Fortune:'Chance', Gold:'Gold', Weapon:'Weapon', Newcomer:'Newcomer' },
-    jp: { Confirmed:'確定', Fortune:'フォーチュン', Gold:'通常', Weapon:'武器', Newcomer:'新米怪盗サポート' }
+    jp: { Confirmed:'TARGET', Fortune:'CHANCE', Gold:'通常', Weapon:'武器', Newcomer:'新米怪盗サポート' }
   }[lang] || { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' };
 
   const ICONS = { Confirmed:'정해진 운명.png', Fortune:'정해진 운명.png', Gold:'미래의 운명.png', Weapon:'정해진 코인.png', Newcomer:'미래의 운명.png' };

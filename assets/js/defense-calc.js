@@ -500,20 +500,53 @@ class DefenseCalc {
         optionCell.className = 'option-column';
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
-            data.options.forEach(option => {
+
+            // 표시 라벨/값/기본값/수치 매핑의 언어별 동작
+            const lang = this.getCurrentLang();
+            const baseOptions = Array.isArray(data.options) ? data.options : [];
+            let labelOptions = baseOptions;
+            if (lang === 'en' && Array.isArray(data.options_en) && data.options_en.length === baseOptions.length) {
+                labelOptions = data.options_en;
+            } else if (lang === 'jp' && Array.isArray(data.options_jp) && data.options_jp.length === baseOptions.length) {
+                labelOptions = data.options_jp;
+            }
+
+            // values 매핑: 언어 우선, 폴백 KR
+            const valuesLang = (lang === 'en' && data.values_en) ? data.values_en
+                              : (lang === 'jp' && data.values_jp) ? data.values_jp
+                              : null;
+            const valuesBase = data.values || null;
+
+            // 기본 선택 옵션: 언어 우선, 폴백 KR
+            const defaultLangOption = (lang === 'en' && data.defaultOption_en) ? data.defaultOption_en
+                                   : (lang === 'jp' && data.defaultOption_jp) ? data.defaultOption_jp
+                                   : null;
+
+            baseOptions.forEach((baseOpt, idx) => {
+                const label = labelOptions[idx] !== undefined ? labelOptions[idx] : baseOpt;
                 const optionElement = document.createElement('option');
-                optionElement.value = option;
-                optionElement.textContent = this.normalizeTextForLang(option);
-                if (data.defaultOption && option === data.defaultOption) {
+                // value는 표시되는 언어 라벨로 설정하고, KR 키는 data-base로 보관 (폴백용)
+                optionElement.value = label;
+                optionElement.setAttribute('data-base', baseOpt);
+                optionElement.textContent = this.normalizeTextForLang(label);
+                // 기본 선택: 언어 기본값 → KR 기본값 순
+                if ((defaultLangOption && label === defaultLangOption) || (data.defaultOption && baseOpt === data.defaultOption)) {
                     optionElement.selected = true;
                 }
                 select.appendChild(optionElement);
             });
             // 옵션 변경 시 수치 업데이트
             select.onchange = () => {
-                const selectedOption = select.value;
-                if (data.values && data.values[selectedOption]) {
-                    data.value = data.values[selectedOption];
+                const selectedLabel = select.value;
+                const selectedBase = select.options[select.selectedIndex]?.getAttribute('data-base');
+                let nextValue = null;
+                if (valuesLang && Object.prototype.hasOwnProperty.call(valuesLang, selectedLabel)) {
+                    nextValue = valuesLang[selectedLabel];
+                } else if (valuesBase && selectedBase && Object.prototype.hasOwnProperty.call(valuesBase, selectedBase)) {
+                    nextValue = valuesBase[selectedBase];
+                }
+                if (nextValue !== null && nextValue !== undefined) {
+                    data.value = nextValue;
                     valueCell.textContent = `${data.value}%`;
                     if (isPenetrate) {
                         this.updatePenetrateTotal();

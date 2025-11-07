@@ -917,6 +917,8 @@ const defenseCalcData = {
             skillName_en: "(Weakness)",
             skillName_jp: "(弱体)",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식5)","LV13(의식5)+심상5"],
+            options_en: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식4)","LV13(의식4)+심상5"],
+            options_jp: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식4)","LV13(의식4)+심상5"],
             values: {
                 "LV10": 60.8,
                 "LV10+심상5": 65.7,
@@ -925,7 +927,25 @@ const defenseCalcData = {
                 "LV13(의식5)": 87.5,
                 "LV13(의식5)+심상5": 93.1
             },
+            values_en: {
+                "LV10": 60.8,
+                "LV10+심상5": 65.7,
+                "LV13": 75.4,
+                "LV13+심상5": 80.26,
+                "LV13(의식4)": 87.5,
+                "LV13(의식4)+심상5": 93.1
+            },
+            values_jp: {
+                "LV10": 60.8,
+                "LV10+심상5": 65.7,
+                "LV13": 75.4,
+                "LV13+심상5": 80.26,
+                "LV13(의식4)": 87.5,
+                "LV13(의식4)+심상5": 93.1
+            },
             defaultOption: "LV13(의식5)+심상5",
+            defaultOption_en: "LV13(의식4)+심상5",
+            defaultOption_jp: "LV13(의식4)+심상5",
             value: 93.1,
             duration: "3턴",
             note: ""
@@ -939,6 +959,8 @@ const defenseCalcData = {
             skillIcon: `${BASE_URL}/assets/img/skill-element/버프.png`,
             skillName: "소리없는 침습",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식5)","LV13(의식5)+심상5"],
+            options_en: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식4)","LV13(의식4)+심상5"],
+            options_jp: ["LV10","LV10+심상5","LV13","LV13+심상5","LV13(의식4)","LV13(의식4)+심상5"],
             values: {
                 "LV10": 30.4,
                 "LV10+심상5": 32.8,
@@ -947,7 +969,25 @@ const defenseCalcData = {
                 "LV13(의식5)": 43.7,
                 "LV13(의식5)+심상5": 46.55
             },
+            values_en: {
+                "LV10": 30.4,
+                "LV10+심상5": 32.8,
+                "LV13": 37.7,
+                "LV13+심상5": 40.13,
+                "LV13(의식4)": 43.7,
+                "LV13(의식4)+심상5": 46.55
+            },
+            values_jp: {
+                "LV10": 30.4,
+                "LV10+심상5": 32.8,
+                "LV13": 37.7,
+                "LV13+심상5": 40.13,
+                "LV13(의식4)": 43.7,
+                "LV13(의식4)+심상5": 46.55
+            },
             defaultOption: "LV13(의식5)+심상5",
+            defaultOption_en: "LV13(의식4)+심상5",
+            defaultOption_jp: "LV13(의식4)+심상5",
             value: 46.55,
             duration: "3턴",
             note: ""

@@ -152,7 +152,7 @@ const MATERIAL_INFO = {
       }
     },
     skill_item3: {
-      name: { kr: '노안 향기', en: 'Incense', jp: '霊香（老眼）' },
+      name: { kr: '노안 향기', en: 'Incense', jp: '愉悦の霊香' },
       desc: {
         kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
         en: 'Raises an ally’s skill level (up to 10).',

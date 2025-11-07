@@ -2557,7 +2557,7 @@ const personaData = {
         instinct: {
             name: "포효하는 맹견 III",
             name_en: "Roaring Hound III",
-            name_jp: "咆哮する猛犬 III",
+            name_jp: "魔槍の使い手 III",
             effects: [
                 "크리티컬 확률이 17.5% 증가한다.",
                 "크리티컬 시 적에게 『치명덫』을 추가하고, 다음 고유 스킬 공격으로 표식을 폭발시켜 스킬 대미지가 공격력의 87%만큼 추가 증가한다. 표식 폭발 시 낮은 확률로 즉사 효과가 발동된다."
@@ -2567,18 +2567,18 @@ const personaData = {
                 "Inflicts [Mortal Barb] when dealing Critical, detonates this the next time you use the signature skill, additionally increases skill damage by 87% ATK. When detonating, there is a low chance of insta-kill."
             ],
             effects_jp: [
-                "CRT発生率が17.5%増加する。",
-                "クリティカル時敵に『致命の罠』を追加し、次の固有スキル攻撃で標識を爆発させてスキルダメージが攻撃力の87%分追加増加する。標識爆発時低い確率で即死効果が発動される。"
+                "クリティカル率が17.5%上昇する。",
+                "クリティカルが発生した時、敵に『致命の棘』を付与する。次に固有スキルで攻撃する時、『致命の棘』を消費して、スキルダメージを攻撃力の87%上昇させる。この時、低確率で即死効果が発動することがある。"
             ],
             priority: 0
         },
         uniqueSkill: {
             name: "가시창",
             name_en: "Gae Bulg",
-            name_jp: "ゲイボルク",
+            name_jp: "ゲイ・ボルグ",
             effect: "공격력 174.0%의 물리 대미지를 1단계 주며, 공격을 받은 적에게 디버프가 1중첩 있을 때마다 해당 스킬 크리티컬 확률이 4% 증가한다. 크리티컬 버프는 최대 20%까지 획득한다.",
             effect_en: "Deals 174.0% ATK Phys dmg to 1 foe, increases CRIT Rate by 4% for every stack of debuffs the foe has, up to 20% Crit Rate Bonus.",
-            effect_jp: "攻撃力174.0%の物理ダメージを1段階与え、攻撃を受けた敵にデバフが1重複ある度に該当スキルCRT発生率が4%増加する。クリティカルバフは最大20%まで獲得する。",
+            effect_jp: "敵単体に攻撃力174%の物理属性ダメージを与える。対象に付与されている弱体効果1つ毎に、このスキルのクリティカル率が4%上昇する（最大で20%）。",
             priority: 0,
             icon: "물리"
         },

@@ -372,9 +372,12 @@
         // 주 계시 옵션 추가 (언어별 A-Z 정렬)
         if (typeof revelationData !== 'undefined' && revelationData.main) {
             const lang = getCurrentLanguage();
-            const locale = lang === 'kr' ? 'ko' : (lang === 'jp' ? 'ja' : 'en');
+            const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+            let collator;
+            try { collator = new Intl.Collator(locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true }); }
+            catch(_) { collator = { compare: (x,y)=> String(x).localeCompare(String(y)) }; }
             const mains = Object.keys(revelationData.main).sort((a, b) =>
-              getRevelationDisplayName(a).localeCompare(getRevelationDisplayName(b), locale, { sensitivity: 'base' })
+              collator.compare(getRevelationDisplayName(a), getRevelationDisplayName(b))
             );
             mains.forEach(rev => {
                 const opt = document.createElement("option");
@@ -395,9 +398,12 @@
             // 일월성진 옵션 설정 (언어별 A-Z 정렬, 빈 값 유지)
           subRevSelect.innerHTML = '<option value="">-</option>';
           const lang = getCurrentLanguage();
-          const locale = lang === 'kr' ? 'ko' : (lang === 'jp' ? 'ja' : 'en');
+          const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+          let collator;
+          try { collator = new Intl.Collator(locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true }); }
+          catch(_) { collator = { compare: (x,y)=> String(x).localeCompare(String(y)) }; }
           const subs = [...revelationData.main[selectedMain]].sort((a, b) =>
-            getRevelationDisplayName(a).localeCompare(getRevelationDisplayName(b), locale, { sensitivity: 'base' })
+            collator.compare(getRevelationDisplayName(a), getRevelationDisplayName(b))
           );
           subs.forEach(subRev => {
             const opt = document.createElement("option");
@@ -660,9 +666,12 @@
                   subRevSelect.disabled = false;
                   subRevSelect.innerHTML = '<option value="">-</option>';
                   const lang = getCurrentLanguage();
-                  const locale = lang === 'kr' ? 'ko' : (lang === 'jp' ? 'ja' : 'en');
+                  const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+                  let collator;
+                  try { collator = new Intl.Collator(locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true }); }
+                  catch(_) { collator = { compare: (x,y)=> String(x).localeCompare(String(y)) }; }
                   const subs = [...revelationData.main[charData.main_revelation[0]]].sort((a, b) =>
-                    getRevelationDisplayName(a).localeCompare(getRevelationDisplayName(b), locale, { sensitivity: 'base' })
+                    collator.compare(getRevelationDisplayName(a), getRevelationDisplayName(b))
                   );
                   subs.forEach(subRev => {
                     const opt = document.createElement("option");
@@ -954,18 +963,26 @@
     // DOM 생성
     const host = document.getElementById('party-selection');
     if (!host) return;
+    // 언어별 라벨 로컬라이즈
+    const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+    const L = (ko, en, jp) => (lang === 'en' ? en : (lang === 'jp' ? jp : ko));
+    const lblThief5 = L('괴도 5', 'P5', '怪盗5');
+    const lblRitual = L('의식', 'A', '意識');
+    const lblOrder  = L('순서', 'Order', '順序');
+    const lblMain   = L('주', 'Uni.', '宙');
+    const lblSub    = L('일월성진', 'S/M/S/P', '旭月星天');
     const block = document.createElement('div');
     block.className = 'party-member';
     block.setAttribute('data-index', '5');
     block.innerHTML = `
       <div class="input-group">
-        <label>괴도 5</label>
+        <label>${lblThief5}</label>
         <select class="party-name">
           <option value="">-</option>
         </select>
       </div>
       <div class="input-group">
-        <label>의식</label>
+        <label>${lblRitual}</label>
         <select class="party-ritual" style="width: 50px;">
           <option value="0" selected>0</option>
           <option value="1">1</option>
@@ -977,7 +994,7 @@
         </select>
       </div>
       <div class="input-group">
-        <label>순서</label>
+        <label>${lblOrder}</label>
         <select class="party-order" style="width: 50px;">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -987,13 +1004,13 @@
         </select>
       </div>
       <div class="input-group">
-        <label>주</label>
+        <label>${lblMain}</label>
         <select class="main-revelation">
           <option value="">-</option>
         </select>
       </div>
       <div class="input-group">
-        <label>일월성진</label>
+        <label>${lblSub}</label>
         <select class="sub-revelation" disabled>
           <option value="">-</option>
         </select>

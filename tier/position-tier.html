@@ -302,6 +302,12 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     <img src="{{ site.baseurl }}/assets/img/ritual/num6.png" alt="Ritual 6">
                 </div>
             </div>
+            <div class="ritual-separator" style="margin: 8px 0; border-top: 1px solid #e5e7eb;"></div>
+            <div class="ritual-modal-footer" style="margin-top: 12px;">
+                <div class="ritual-copy-option" style="width: 100%;">
+                    <div class="ritual-none ritual-copy-button" style="width: 100%; text-align: center;">캐릭터 복사</div>
+                </div>
+            </div>
         </div>
     </dialog>
     
@@ -343,7 +349,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 filter_position: "직업",
                 filter_rarity: "유형",
                 filter_tag: "태그",
-                help_message: "* 캐릭터를 더블클릭하면 의식을 설정할 수 있습니다."
+                help_message: "* 캐릭터를 더블클릭하면 의식을 설정할 수 있습니다.",
+                ritual_copy: "캐릭터 복사"
             },
             en: {
                 language_notice: "",
@@ -354,7 +361,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 filter_position: "{{ site.data.i18n.en.filter_position | default: 'Position' }}",
                 filter_rarity: "{{ site.data.i18n.en.filter_rarity | default: 'Type' }}",
                 filter_tag: "{{ site.data.i18n.en.filter_tag | default: 'Tag' }}",
-                help_message: "* Double-click the character to set the Awareness."
+                help_message: "* Double-click the character to set the Awareness.",
+                ritual_copy: "Copy Character"
             },
             jp: {
                 language_notice: "",
@@ -365,7 +373,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 filter_position: "{{ site.data.i18n.jp.filter_position | default: '職業' }}",
                 filter_rarity: "{{ site.data.i18n.jp.filter_rarity | default: 'タイプ' }}",
                 filter_tag: "{{ site.data.i18n.jp.filter_tag | default: 'タグ' }}",
-                help_message: "* 怪盗をダブルクリックして意識を設定してください。"
+                help_message: "* 怪盗をダブルクリックして意識を設定してください。",
+                ritual_copy: "キャラクターをコピー"
             }
         };
         
@@ -427,6 +436,12 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
         // 도움말 메시지 업데이트
         const helpMessage = document.getElementById('help-message');
         if (helpMessage) helpMessage.textContent = data.help_message;
+        
+        // 리추얼 모달 복사 버튼 라벨
+        const ritualCopyBtn = document.querySelector('.ritual-copy-button');
+        if (ritualCopyBtn && data.ritual_copy) {
+            ritualCopyBtn.textContent = data.ritual_copy;
+        }
         
         // 티어 기준 섹션 표시/숨김 및 언어 업데이트
         const tierCriteriaSection = document.getElementById('tier-criteria-section');

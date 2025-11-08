@@ -518,6 +518,15 @@ function renderPortalList(filter) {
   const list = __globalDropdownPortal.querySelector('.portal-list');
   list.innerHTML = '';
   const { type, input, personaIndex, skillSlot } = __globalDropdownCtx;
+  // Locale-aware sorter (KR/EN/JP, with better JP collation)
+  const __lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+  const __locale = __lang === 'kr' ? 'ko-KR' : (__lang === 'jp' ? 'ja-JP' : 'en');
+  let __collator;
+  try {
+    __collator = new Intl.Collator(__locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true });
+  } catch(_) {
+    __collator = { compare: (a, b) => String(a).localeCompare(String(b)) };
+  }
 
   if (type === 'persona') {
     // 페르소나 목록
@@ -683,7 +692,6 @@ function renderPortalList(filter) {
     // 캐릭터 목록 (setparty.js와 동일 로직 기반)
     let items = [];
     const currentLang = getCurrentLanguage();
-    const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
     let forceKR = false;
     try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch(_) { forceKR = false; }
     const partyIndex = __globalDropdownCtx.partyIndex;
@@ -727,7 +735,7 @@ function renderPortalList(filter) {
         if (lang === 'jp') return ch.name_jp || c;
         return c;
       })(b);
-      return da.localeCompare(db, locale, { sensitivity: 'base' });
+      return __collator.compare(da, db);
     });
 
     // '-' 선택 해제 옵션
@@ -785,7 +793,6 @@ function renderPortalList(filter) {
     if (typeof revelationData === 'undefined' || !revelationData.main) return;
     const mains = Object.keys(revelationData.main);
     const currentLang = getCurrentLanguage();
-    const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
     let filtered = mains;
     if (filter) {
       const f = filter.toLowerCase();
@@ -797,7 +804,7 @@ function renderPortalList(filter) {
     filtered = [...filtered].sort((a,b)=>{
       const da = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(a) : a;
       const db = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(b) : b;
-      return da.localeCompare(db, locale, { sensitivity: 'base' });
+      return __collator.compare(da, db);
     });
     // '-' 선택 해제 옵션
     const none = document.createElement('div');
@@ -857,7 +864,6 @@ function renderPortalList(filter) {
       } catch(_) {}
     }
     const currentLang = getCurrentLanguage();
-    const locale = currentLang === 'kr' ? 'ko' : (currentLang === 'jp' ? 'ja' : 'en');
     // 주 계시가 표시명으로 들어온 경우 KR 키로 역매핑 시도
     if (main && !revelationData.main[main]) {
       try {
@@ -887,7 +893,7 @@ function renderPortalList(filter) {
     subs = subs.sort((a,b)=>{
       const da = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(a) : a;
       const db = (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(b) : b;
-      return da.localeCompare(db, locale, { sensitivity: 'base' });
+      return __collator.compare(da, db);
     });
     // '-' 선택 해제 옵션
     const none = document.createElement('div');

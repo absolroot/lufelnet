@@ -1971,6 +1971,37 @@ const initRitualModal = () => {
     });
   });
   
+  // Copy character button
+  const copyBtn = ritualModal.querySelector('.ritual-copy-button');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      if (!currentRitualImage) return;
+      
+      // 현재 선택된 이미지 기준으로 복제 생성
+      const sourceImg = currentRitualImage;
+      const clone = document.createElement('img');
+      clone.src = sourceImg.src;
+      clone.alt = sourceImg.alt || '';
+      clone.draggable = true;
+      
+      // 데이터셋 복사
+      ['element','position','rarity','tags','ritual'].forEach(key => {
+        if (sourceImg.dataset[key] !== undefined) {
+          clone.dataset[key] = sourceImg.dataset[key];
+        }
+      });
+      
+      // 등급별 클래스 유지
+      const rarity = parseInt(clone.dataset.rarity);
+      if (rarity === 4) clone.classList.add('star4');
+      else if (rarity === 5) clone.classList.add('star5');
+      
+      // 하단 카드 풀에 추가 후 드래그 리스너 연결
+      cardsContainer.appendChild(clone);
+      attachDragListeners(clone);
+    });
+  }
+  
   // Close on backdrop click
   ritualModal.addEventListener('click', (e) => {
     if (e.target === ritualModal) {

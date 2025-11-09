@@ -54,7 +54,7 @@ const criticalBuffData = {
     ],
     "미츠루": [
               { id: "mitsuru2", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/미츠루-5-01.png", skillName: "성창 롱기누스", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0&1", "개조2&3", "개조4&5", "개조6"], values: { "개조0&1": 18.1, "개조2&3": 23.5, "개조4&5": 28.9, "개조6": 34.3 }, defaultOption: "개조6", value: 34.3, duration: "", note: "" },
-              { id: "mitsuru3", type: "스킬3", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/skill-element/빙결.png", skillName: "얼음의 무도", skillName_en: "Skill 3", skillName_jp: "スキル3", options: [], values: {}, value: 15, duration: "2턴", note: "『서리 결속』 5중첩", note_en: "5 Stack", note_jp: "5 重" }
+              { id: "mitsuru3", type: "스킬3", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/skill-element/빙결.png", skillName: "얼음의 무도", skillName_en: "Skill 3", skillName_jp: "スキル3", options: [], values: {}, value: 15, duration: "2턴", note: "『서리 결정』 5중첩", note_en: "5 Stack", note_jp: "5 重" }
     ],
     "YUI·스텔라": [
               { id: "yui-stella1", type: "스킬2", type_en: "S1", type_jp: "スキル2", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/skill-element/버프.png", skillName: "베지나이츠·집합", skillName_en: "S2", skillName_jp: "スキル2", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 11.7, "LV10+심상5": 12.9, "LV13": 12.4, "LV13+심상5": 13.6 }, defaultOption: "LV13+심상5", value: 13.6, duration: "2턴", note: "" },

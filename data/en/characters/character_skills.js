@@ -1542,7 +1542,7 @@ const enCharacterSkillsData = {
         "passive1": {
             "name": "Masked Gentleman",
             "element": "패시브",
-            "description": "When healing with Chivalry, increase critical rate by 30.0%. When inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720."
+            "description": "When healing with Chivalry, increase critical rate by 30.0% (Chivalry can be critical). When inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720."
         },
         "passive2": {
             "name": "Morgana's Method",
@@ -1627,7 +1627,7 @@ const enCharacterSkillsData = {
             "type": "디버프",
             "sp": 0,
             "cool": 0,
-            "description": "Deal Curse damage to all foes equal to 146.4%/161.4%/155.4%/170.4% of Attack, and increase target's damage taken by 48.8%/53.8%/51.8%/56.8%. 30% chance to inflict Forget on foes for 2 turns."
+            "description": "Deal Curse damage to all foes equal to 146.4%/161.4%/155.4%/170.4% of Attack, and increase target's next instance of damage taken by 48.8%/53.8%/51.8%/56.8%. 30% chance to inflict Forget on foes for 2 turns."
         },
         "passive1": {
             "name": "Kung Fu Mastery",

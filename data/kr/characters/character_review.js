@@ -1159,7 +1159,7 @@ Ver2.0で登場した理子は、ストーリーを進めることで加入す�
     "리코·매화": { name_en: "Riko Tanemura·Vast", name_jp: "多祢村 理子・花見", codename: "WIND·Vast",
         review: ``
     },
-    "마사키": { name_en: "Masaki Ashiya", name_jp: "蘆谷 真咲", codename: "CHERISH",
+    "마사키": { name_en: "Masaki Ashiya", name_jp: "芦谷 真咲", codename: "CHERISH",
         review: ``
     },
 "마코토": { name_en: "Makoto Niijima", name_jp: "新島 真", codename: "QUEEN",

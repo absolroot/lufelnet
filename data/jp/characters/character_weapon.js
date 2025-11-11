@@ -362,7 +362,7 @@ const jpCharacterWeaponData = {
         }
     },
     "마사키": {
-        "name": "蘆谷 真咲",
+        "name": "芦谷 真咲",
         "weapon4-1": {
             "name": "不滅の栄光",
             "health": 1870,

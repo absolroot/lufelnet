@@ -87,6 +87,7 @@ const characterData = {
         "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
         "sub_option2": ["공격력", "대미지 보너스", "관통"],
         "sub_option3": [""],
+
         "minimum_stats": {
             "LV10": "공격력 3502, 크리티컬 효과 64.0%",
             "LV10+5": "공격력 3852, 크리티컬 효과 70.4%",
@@ -95,6 +96,7 @@ const characterData = {
             "LV13": "공격력 3922, 크리티컬 효과 71.68%",
             "LV13+5": "공격력 4272, 크리티컬 효과 78.08%"
         },
+
         "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 <b>크리티컬 효과</b>/ 마이팰리스 2%",
         "battle_plus_stats_en": "<b>Attack</b>/ MyPalace 50LV 65 / MyPalace 70LV 110 / MyPalace Rating <b>크리티컬 효과</b>/ MyPalace 2%",
         "battle_plus_stats_jp": "<b>Attack</b>/ マイパレス 50LV 65 / マイパレス 70LV 110 / マイパレス 評価 <b>크리티컬 효과</b>/ マイパレス 2%",
@@ -105,7 +107,8 @@ const characterData = {
         "mind_stats1": "공격력 20%!",
         "mind_stats2": "크리티컬 효과 24%!",
         "mind_skill1": "S1/S2!",
-        "mind_skill2": "S3!"
+        "mind_skill2": "S3!",
+        "name_tw": "山岸風花"
     },
     "미츠루": {
         "limit": true,

@@ -18,7 +18,7 @@ enCharacterWeaponData = {
             "attack": 740,
             "defense": 388,
             "skill_name": "Voice of Hope",
-            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen user gains [Wish Listener], increase party's Attack by 2.0%/2.6%/2.6%/3.2%/3.2%/3.8%/3.8%. Stacks up to 5 times. This effect is permanent.\nWhen using [Oracle Shift], increase party's critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns."
+            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.When user gains [Wish Listener], increase party's Attack by 2.0%/2.6%/2.6%/3.2%/3.2%/3.8%/3.8%. Stacks up to 5 times. This effect is permanent.When using [Oracle Shift], increase party's critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns."
         }
     },
     "미츠루": {

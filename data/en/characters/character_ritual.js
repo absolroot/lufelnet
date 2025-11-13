@@ -3,7 +3,7 @@ const enCharacterRitualData = {
         "name": "Wonder"
     },
     "후카": {
-        "name": "야미기시 후카",
+        "name": "야마기시 후카",
         "r0": "Steadfast Supporter",
         "r0_detail": "In party menu, Fuuka can select 1 non-Wonder ally as the [Backup Character]. During battle, Fuuka can spend [Wish Listener] to use [Oracle Shift] and make the [Backup Character] active and act. Fuuka can use [Oracle Shift] once after 1 [Combat Turn].\nAt the start of battle, Fuuka gains 1/2/3 [Wish Listener] stacks (effect increases at level 1/50/70). Stacks up to 4 times.\n[Oracle Shift]: Spend 4 [Wish Listener] stacks. The acting [Current Character] become inactive, the [Backup Character] become active and take 1 action. After this action, the [Backup Character] become inactive, and the [Current Character] become active to continue their turn.	When the [Backup Character] is active, they copy all status effects from the [Current Character] except those they applied to themselves. These are cleared when the [Backup Character] become inactive. When the [Backup Character] first become active, activate all [Start of Battle] effects. When the [Backup Character] become inactive, do not affect the duration of effects with turn limits. After the [Backup Character] is active for the first time, decrease their skill cooldown after every [Combat Turn]. \n[Combat Turn]: After all alive allies take 1 non Extra Action action, count as 1 combat turn.",
         "r1": "Where I Belong",

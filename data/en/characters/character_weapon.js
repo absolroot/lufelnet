@@ -3,7 +3,7 @@ enCharacterWeaponData = {
         "name": "Wonder"
     },
     "후카": {
-        "name": "야미기시 후카",
+        "name": "야마기시 후카",
         "weapon4-1":{
             "name": "D-Type Telecoms",
             "health": 1839,

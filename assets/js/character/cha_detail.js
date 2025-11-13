@@ -1104,7 +1104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
-        else if (characterInfo.persona3 && characterInfo.name === "야미기시 후카") {
+        else if (characterInfo.persona3 && characterInfo.name === "야마기시 후카") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
         }
         else if (characterInfo.persona3) {

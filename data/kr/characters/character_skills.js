@@ -4,7 +4,7 @@ const characterSkillsData = {
     },
 
     "후카": {
-        "name": "야미기시 후카",
+        "name": "야마기시 후카",
         "skill1": {
             "name": "빛나는 힘",
             "element": "버프광역",

@@ -1,0 +1,127 @@
+{
+  "data": {
+    "boss": [
+      {
+        "affixs": [
+          {
+            "detail": "When allies are on an extra action, critical rate is increased by 20%, and critical damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Foes' damage taken is increased by 6% for each debuff they are inflicted with, up to 30%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Party's Curse damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Electric",
+              "Nuclear",
+              "Bless"
+            ],
+            "Weak": [
+              "Curse"
+            ]
+          },
+          "level": "78",
+          "name": "Dominion",
+          "skill": "905,902",
+          "sn": 730111,
+          "stat": {
+            "Accuracy": 1.0,
+            "Ailment Acc.": 0.39,
+            "Ailment Resist.": 0.196,
+            "Attack": 2299.0167,
+            "Attack Mult.": 1.037,
+            "Crit Mult.": 1.3,
+            "Crit Rate": 0.0,
+            "Damage Taken": 0,
+            "Defense": 356.596,
+            "Down Points": 0,
+            "HP": 221264.7408,
+            "Pierce Rate": 0,
+            "SP": 100.0,
+            "SP Recovery": 0,
+            "Speed": 79.467
+          }
+        }
+      },
+      {
+        "affixs": [
+          {
+            "detail": "Party's Resonance damage is increased by 50%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Party's Electric damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Assassin allies' damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Phys",
+              "Gun",
+              "Fire",
+              "Curse"
+            ],
+            "Weak": [
+              "Electric"
+            ]
+          },
+          "level": "78",
+          "name": "Atavaka",
+          "skill": "2444,107,1008",
+          "sn": 735111,
+          "stat": {
+            "Accuracy": 1.0,
+            "Ailment Acc.": 0.39,
+            "Ailment Resist.": 0.49,
+            "Attack": 5911.7581,
+            "Attack Mult.": 1.037,
+            "Crit Mult.": 1.3,
+            "Crit Rate": 0.0,
+            "Damage Taken": 0,
+            "Defense": 1242.02,
+            "Down Points": 0,
+            "HP": 270333.8064,
+            "Pierce Rate": 0,
+            "SP": 100.0,
+            "SP Recovery": 0,
+            "Speed": 94.367
+          }
+        }
+      }
+    ],
+    "endTime": "2025-11-13 10:30:00",
+    "mode": {
+      "detail": "Deal damage to make the boss Weakened and gain more points!",
+      "name": "Devourer of Dreams"
+    },
+    "startTime": "2025-11-06 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-11-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "ＹＵＩ",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "藤川 雪実",
+            "type": "thief"
+          },
+          {
+            "name": "須見 俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "電影世界の住人",
+        "startTime": "2025-10-30 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
         "endTime": "2025-11-25 10:59:59",
         "fiveStar": [
           {
@@ -54,108 +80,30 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2025-11-27 10:59:59",
+        "endTime": "2025-11-13 10:59:59",
         "fiveStar": [
           {
-            "name": "喜多川 祐介",
+            "name": "ＹＵＩ",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "ルフェル",
+            "name": "富山 佳代",
             "type": "thief"
           },
           {
-            "name": "神山 嶺央",
+            "name": "藤川 雪実",
             "type": "thief"
           },
           {
-            "name": "琴音・モンターニュ",
+            "name": "須見 俊也",
             "type": "thief"
           }
         ],
-        "name": "お稲荷絵巻",
-        "startTime": "2025-11-13 11:30:00",
+        "name": "電影世界の住人",
+        "startTime": "2025-10-30 11:30:00",
         "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "喜多川 祐介",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "神山 嶺央",
-            "type": "thief"
-          },
-          {
-            "name": "琴音・モンターニュ",
-            "type": "thief"
-          }
-        ],
-        "name": "お稲荷絵巻",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "新島 真",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "神山 嶺央",
-            "type": "thief"
-          },
-          {
-            "name": "琴音・モンターニュ",
-            "type": "thief"
-          }
-        ],
-        "name": "世紀末の覇者",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "新島 真",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "神山 嶺央",
-            "type": "thief"
-          },
-          {
-            "name": "琴音・モンターニュ",
-            "type": "thief"
-          }
-        ],
-        "name": "世紀末の覇者",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
         "endTime": "2025-11-25 10:59:59",
@@ -211,6 +159,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-11-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "サイバージャミンザー",
+            "type": "weapon",
+            "user": "ＹＵＩ"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "メタディレクター",
+            "type": "weapon",
+            "user": "ＹＵＩ"
+          },
+          {
+            "name": "ヘビーメタルペイン",
+            "type": "weapon",
+            "user": "雪実"
+          },
+          {
+            "name": "スカーレットロッド",
+            "type": "weapon",
+            "user": "須見"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2025-10-30 11:30:00",
+        "type": "武器補給"
+      },
       {
         "endTime": "2025-11-25 10:59:59",
         "fiveStar": [
@@ -279,76 +262,6 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2025-11-06 11:30:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "影斬り",
-            "type": "weapon",
-            "user": "祐介"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "ジャスティスランサー",
-            "type": "weapon",
-            "user": "神山"
-          },
-          {
-            "name": "蛇牙刀",
-            "type": "weapon",
-            "user": "祐介"
-          },
-          {
-            "name": "エーデルワイス",
-            "type": "weapon",
-            "user": "琴音"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "核熱フィニッシャー",
-            "type": "weapon",
-            "user": "真"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "ジャスティスランサー",
-            "type": "weapon",
-            "user": "神山"
-          },
-          {
-            "name": "オメガナックル",
-            "type": "weapon",
-            "user": "真"
-          },
-          {
-            "name": "エーデルワイス",
-            "type": "weapon",
-            "user": "琴音"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2025-11-13 11:30:00",
         "type": "武器補給"
       }
     ]

@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-11-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yui",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Virtual Netizen",
+        "startTime": "2025-10-30 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2025-11-25 10:59:59",
         "fiveStar": [
           {
@@ -54,108 +80,30 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-11-27 10:59:59",
+        "endTime": "2025-11-13 10:59:59",
         "fiveStar": [
           {
-            "name": "Yusuke Kitagawa",
+            "name": "Yui",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Lufel",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Yukimi Fujikawa",
             "type": "thief"
           },
           {
-            "name": "Kotone Montagne",
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Art of the Fox",
-        "startTime": "2025-11-13 11:30:00",
+        "name": "Virtual Netizen",
+        "startTime": "2025-10-30 11:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Yusuke Kitagawa",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Art of the Fox",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Makoto Niijima",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Fist of the Phantom Star",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Makoto Niijima",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Fist of the Phantom Star",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
       },
       {
         "endTime": "2025-11-25 10:59:59",
@@ -211,6 +159,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-11-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Cyber Jammers",
+            "type": "weapon",
+            "user": "Yui"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Meta Directors",
+            "type": "weapon",
+            "user": "Yui"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-10-30 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-11-25 10:59:59",
         "fiveStar": [
@@ -279,76 +262,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-11-06 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Shadowkiller",
-            "type": "weapon",
-            "user": "Yusuke"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Jagato",
-            "type": "weapon",
-            "user": "Yusuke"
-          },
-          {
-            "name": "Edelweiss",
-            "type": "weapon",
-            "user": "Kotone"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-11-13 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-11-27 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Nuclear Finisher",
-            "type": "weapon",
-            "user": "Makoto"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Omega Knuckle",
-            "type": "weapon",
-            "user": "Makoto"
-          },
-          {
-            "name": "Edelweiss",
-            "type": "weapon",
-            "user": "Kotone"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-11-13 11:30:00",
         "type": "Arms Deals"
       }
     ]

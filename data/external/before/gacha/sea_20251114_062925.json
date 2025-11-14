@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-11-14 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Seaside Tomoko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Summer Breeze",
+        "startTime": "2025-10-17 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2025-11-21 09:59:59",
         "fiveStar": [
           {
@@ -11,15 +37,15 @@
         ],
         "fourStar": [
           {
-            "name": "Kayo Tomiyama",
+            "name": "Motoha Arai",
             "type": "thief"
           },
           {
-            "name": "Yukimi Fujikawa",
+            "name": "Seiji Shiratori",
             "type": "thief"
           },
           {
-            "name": "Toshiya Sumi",
+            "name": "Chizuko Nagao",
             "type": "thief"
           }
         ],
@@ -54,32 +80,6 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-14 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Futaba Sakura",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Flawless Hacker",
-        "startTime": "2025-11-14 10:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
         "endTime": "2025-11-21 09:59:59",
         "fiveStar": [
           {
@@ -89,15 +89,15 @@
         ],
         "fourStar": [
           {
-            "name": "Kayo Tomiyama",
+            "name": "Motoha Arai",
             "type": "thief"
           },
           {
-            "name": "Yukimi Fujikawa",
+            "name": "Seiji Shiratori",
             "type": "thief"
           },
           {
-            "name": "Toshiya Sumi",
+            "name": "Chizuko Nagao",
             "type": "thief"
           }
         ],
@@ -129,36 +129,45 @@
         ],
         "name": "Cynical Surgeon",
         "startTime": "2025-10-31 10:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-12-14 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Futaba Sakura",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Flawless Hacker",
-        "startTime": "2025-11-14 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-11-14 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Bubble Babies",
+            "type": "weapon",
+            "user": "Tomoko"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Ocean's Tidings",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-10-17 10:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-11-21 09:59:59",
         "fiveStar": [
@@ -170,9 +179,9 @@
         ],
         "fourStar": [
           {
-            "name": "Emerald Charmer",
+            "name": "Crime and Punishment",
             "type": "weapon",
-            "user": "Tomiyama"
+            "user": "Motoha"
           },
           {
             "name": "Meta Directors",
@@ -180,14 +189,14 @@
             "user": "Yui"
           },
           {
-            "name": "Heavy Metal Pain",
+            "name": "Knight's Reward",
             "type": "weapon",
-            "user": "Yukimi"
+            "user": "Shiratori"
           },
           {
-            "name": "Scarlet Scepter",
+            "name": "Gravitational Force",
             "type": "weapon",
-            "user": "Sumi"
+            "user": "Chizuko"
           }
         ],
         "name": "Silent Pistol",
@@ -227,41 +236,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-10-31 10:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-12-14 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Technomage Ultra FS",
-            "type": "weapon",
-            "user": "Futaba"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Cyberdeck Pro",
-            "type": "weapon",
-            "user": "Futaba"
-          },
-          {
-            "name": "Edelweiss",
-            "type": "weapon",
-            "user": "Kotone"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-11-14 10:30:00",
         "type": "Arms Deals"
       }
     ]

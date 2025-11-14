@@ -395,7 +395,7 @@ const personaData = {
                 "동료를 목표로 스킬 시전 시 2턴 동안 메인 목표의 공격력이 15.5% 증가한다. 목표의 생명이 60% 미만일 시 해당 효과는 30%까지 증가한다."
             ],
             effects_en: [
-                "Increases DEF by 15.9%. When using a skill on allies, increases the main target's ATK by 13.5% for 2 turns, increases this effect by 30% when the target is below 60% HP."
+                "Increases DEF by 15.9%. When using a skill on allies, increases the main target's ATK by 15.5% for 2 turns, increases this effect by 30% when the target is below 60% HP."
             ],
             effects_jp: [
                 "防御力が15.9%上昇する。味方にスキルを使用した時、2ターンの間、選択した対象の攻撃力が15.5%上昇し、対象のHPが60%未満の場合、効果がさらに30%上昇する。"
@@ -1217,7 +1217,7 @@ const personaData = {
                 "또한 다른 적이 해당 효과의 40%를 획득한다."
             ],
             effects_en: [
-                "Increases CRIT Rate by 17.5%. After using a skill on enemies, increases the main target's Nuke dmg taken by 10% for 1 turn for every Elemental Ailment they have, up to 3 stacks. All other enemies gain 40% of this effect."
+                "Increases CRIT Rate by 17.5%. After using a skill on enemies, increases the main target's Nuke dmg taken by 10% for 2 turn for every Elemental Ailment they have, up to 3 stacks. All other enemies gain 40% of this effect."
             ],
             effects_jp: [
                 "クリティカル率が17.5%上昇する。的にスキルを使用する時、選択した対象の敵に属性以上が1つあるごとに、2ターンの間、対象が受ける核熱ダメージが10%上昇する。この効果は最大3つまで累積できる。また、他の敵全体もこの効果の40%を受ける。"
@@ -1940,6 +1940,55 @@ const personaData = {
         comment : "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
         comment_en: "Attack enhancement applies to healing values. (Low priority due to limited impact)",
         comment_jp: "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）"
+    },
+    "락슈미": {
+        name_en: "Lachmi",
+        name_jp: "ラクシュミ",
+        grade: "7",
+        star: "5",
+        position: "구원",
+        element: "빙결",
+        instinct: {
+            name: "연꽃의 춤 III",
+            name_en: "Lotus Dance III",
+            name_jp: "蓮華踊り III",
+            effects: [
+                "주는 치료 효과가 20.9% 증가한다. 『연화』로 치료한 후 2턴 동안 치료를 받은 동료의 생명 상한이 17.5% 증가한다. 『연화』의 치료 효과가 45% 증가한다."
+            ],
+            effects_en: [
+                "Increase healing by 20.9%. When healing with Lotus, increase max HP of allies healed by 17.5%. Increase Lotus' healing by 45%. Lasts for 2 turns."
+            ],
+            effects_jp: [
+                "回復量が20.9%上昇する。『蓮華』による回復時、２ターンの間、回復を受けた仲間の最大ＨＰが17.5%上昇し、『蓮華』による回復量が45%上昇する。"
+            ],
+            priority: 0
+        },
+        uniqueSkill: {
+            name: "연꽃의 노래",
+            name_en: "Flowers of the Pure Land",
+            name_jp: "浄土の花",
+            effect: "동료 1명이 공격력 32.7%+989의 생명을 회복하고, 자신이 『연화』를 2중첩 획득한다. 『연화』가 존재하는 동안 임의의 유닛 행동 후, 동료의 생명이 50% 미만이면 『연화』를 1중첩 소모해 공격력 8.4%+254의 생명을 회복한다. 『연화』는 1턴 동안 지속된다.",
+            effect_en: "Restore 1 ally's HP equal to 32.7% of Attack + 989. Gain 2 Lotus stacks for 1 turn. While user has Lotus, after each enemy and ally action, when an ally's HP is below 50%, spend 1 Lotus stack to restore HP equal to 8.4% of Attack + 254.",
+            effect_jp: "味方単体のＨＰを攻撃力32.7%＋989回復する。自身に『蓮華』（１ターン持続）を２つ付与する。『蓮華』が付与されている時、敵味方それぞれの行動後に味方のＨＰが５０%未満になると、『蓮華』を１つ消費し、攻撃力8.4%＋254のＨＰを回復させる。",
+            priority: 0,
+            icon: "치료"
+        },
+        highlight: {
+            effect: "모든 동료가 공격력 48.6%+1471의 생명을 회복한다.",
+            effect_en: "Restore HP equal to 48.6% ATK + 1471 HP to party's.",
+            effect_jp: "味方全体のHPを攻撃力48.6%+1471回復する。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "치료 강화", priority: 3 },
+            {name : "공격 강화", priority: 1 },
+            {name : "방어 강화", priority: 0 },
+            {name : "대미지 면역", priority: 0 },
+            {name : "치료 촉진", priority: 0 },
+        ],
+        comment : "",
+        comment_en: "",
+        comment_jp: ""
     },
     "파르바티": {
         name_en: "Parvati",

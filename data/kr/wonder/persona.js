@@ -1942,7 +1942,7 @@ const personaData = {
         comment_jp: "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）"
     },
     "락슈미": {
-        name_en: "Lachmi",
+        name_en: "Lakshmi",
         name_jp: "ラクシュミ",
         grade: "7",
         star: "5",

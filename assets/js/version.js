@@ -1,4 +1,4 @@
-const APP_VERSION = '2.9.0';  // 현재 앱 버전
+const APP_VERSION = '2.9.1';  // 현재 앱 버전
 
 class VersionChecker {
     static check() {
@@ -16,7 +16,7 @@ class VersionChecker {
         }
     }
 
-    
+
     static async clearCache() {
         try {
             // 모든 캐시 삭제
@@ -25,7 +25,7 @@ class VersionChecker {
                 cacheNames.map(name => caches.delete(name))
             );
             //console.log('Cache cleared successfully');
-            
+
             // CSS와 JS 파일 강제 새로고침 (APP_VERSION 사용)
             const resources = document.querySelectorAll('link[rel="stylesheet"], script[src]');
             resources.forEach(resource => {
@@ -34,7 +34,7 @@ class VersionChecker {
                 url.searchParams.delete('v');
                 // 새로운 버전 추가
                 url.searchParams.set('v', APP_VERSION);
-                
+
                 if (resource.tagName === 'LINK') {
                     resource.href = url.toString();
                 } else if (resource.src && !resource.src.includes('googlesyndication') && !resource.src.includes('googletagmanager')) {
@@ -44,7 +44,7 @@ class VersionChecker {
                     resource.parentNode.replaceChild(newScript, resource);
                 }
             });
-            
+
             // 서비스 워커 해제
             if ('serviceWorker' in navigator) {
                 const registrations = await navigator.serviceWorker.getRegistrations();
@@ -71,7 +71,7 @@ class VersionChecker {
     static showUpdateNotification(oldVersion, newVersion) {
         // 현재 언어 확인
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 언어별 텍스트 정의
         const i18nTexts = {
             kr: {
@@ -93,10 +93,10 @@ class VersionChecker {
                 close: "閉じる"
             }
         };
-        
+
         // 현재 언어에 맞는 텍스트 선택 (없으면 한국어)
         const texts = i18nTexts[currentLang] || i18nTexts['kr'];
-        
+
         const notification = document.createElement('div');
         notification.className = 'update-notification';
         notification.innerHTML = `

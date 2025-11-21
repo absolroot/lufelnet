@@ -1,8 +1,11 @@
 ---
 layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
-custom_js: [character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/cha_stats, character/character-i18n, character/helpmodal]
-custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js, characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js, characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
+custom_js: [character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/cha_stats,
+character/character-i18n, character/helpmodal]
+custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js,
+characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js,
+characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
 permalink: /character.html
 language: kr
 title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
@@ -14,7 +17,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     <!-- 상단 섹션: 이미지와 기본 정보 -->
     <div class="character-header">
-        
+
         <!-- 좌측: 캐릭터 정보 -->
         <div class="character-info">
             <!-- 네비게이션 경로 -->
@@ -25,18 +28,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         const urlParams = new URLSearchParams(window.location.search);
                         const langParam = urlParams.get('lang');
                         if (langParam) return langParam;
-                        
+
                         const path = window.location.pathname;
                         if (path.includes('/kr/')) return 'kr';
                         if (path.includes('/en/')) return 'en';
                         if (path.includes('/jp/')) return 'jp';
                         return 'kr';
                     }
-                    
+
                     const currentLang = getCurrentLanguage();
                     let homeText = '홈';
                     let characterText = '괴도';
-                    
+
                     if (currentLang === 'en') {
                         homeText = 'Home';
                         characterText = 'Characters';
@@ -44,7 +47,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         homeText = 'ホーム';
                         characterText = '怪盗';
                     }
-                    
+
                     document.write(`<a href="../../?v=${APP_VERSION}">${homeText}</a>`);
                 </script>
                 <span class="separator">/</span>
@@ -74,12 +77,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
                 <div class="info-row">
                     <div class="elements-container">
-                        <img src="{{ site.baseurl }}/assets/img/character-detail/elements.png" alt="elements" class="elements-sprite">
+                        <img src="{{ site.baseurl }}/assets/img/character-detail/elements.png" alt="elements"
+                            class="elements-sprite">
                         <div class="resistance-overlay">
-                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-resi.png" alt="resistance" class="resistance-icon">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-resi.png" alt="resistance"
+                                class="resistance-icon">
                         </div>
                         <div class="weakness-overlay">
-                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-weak.png" alt="weakness" class="weakness-icon">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-weak.png" alt="weakness"
+                                class="weakness-icon">
                         </div>
                     </div>
                 </div>
@@ -88,7 +94,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 </div>
             </div>
         </div>
-        
+
         <!-- 우측: 캐릭터 이미지 -->
         <div class="character-images">
             <div class="carousel">
@@ -108,7 +114,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         </div>
     </div>
 
-    
+
     <!-- 리뷰 섹션 -->
     <div class="review-card card-style">
         <h2>요약</h2>
@@ -122,7 +128,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <h2>추천 세팅</h2>
         <div class="settings-content">
 
-            
+
             <!-- 계시 섹션 -->
             <div class="setting-group revelation-settings">
                 <div class="setting-section">
@@ -130,7 +136,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     <div class="revelation-set">
                         <div class="main-revelation">
                             <span class="label">주
-                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" class="option-icon">
+                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주"
+                                    class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
@@ -145,25 +152,29 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     <div class="main-options">
                         <div class="option-row">
                             <span class="label">
-                                일 <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" class="option-icon">
+                                일 <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일"
+                                    class="option-icon">
                             </span>
                             <span class="value">생명</span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                월 <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" class="option-icon">
+                                월 <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월"
+                                    class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                성 <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" class="option-icon">
+                                성 <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성"
+                                    class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                진 <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" class="option-icon">
+                                진 <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진"
+                                    class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
@@ -294,34 +305,22 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <div style="height: 48px;"></div>
         <!-- 광고 (기본적으로 표시) -->
         <div id="ad-unit-1" class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block;"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3r+68-9q-29"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="5373524213"></ins>
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="5373524213"></ins>
         </div>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
         <div id="ad-unit-p5-1" class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block;"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3r+68-9q-29"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="8118051131"></ins>
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="8118051131"></ins>
         </div>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
         <div id="ad-unit-p3-1" class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block;"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3r+68-9q-29"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="2039727945"></ins>
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="2039727945"></ins>
         </div>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
@@ -343,49 +342,56 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <div class="ritual-grid">
             <div class="ritual-item" data-ritual="0">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual0.png" alt="의식 0" class="ritual-image active">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual0.png" alt="의식 0"
+                        class="ritual-image active">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="1">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual1.png" alt="의식 1" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual1.png" alt="의식 1"
+                        class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="2">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual2.png" alt="의식 2" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual2.png" alt="의식 2"
+                        class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="3">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual3.png" alt="의식 3" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual3.png" alt="의식 3"
+                        class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="4">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual4.png" alt="의식 4" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual4.png" alt="의식 4"
+                        class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="5">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual5.png" alt="의식 5" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual5.png" alt="의식 5"
+                        class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
             </div>
             <div class="ritual-item" data-ritual="6">
                 <div class="ritual-header-content">
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual6.png" alt="의식 6" class="ritual-image">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual6.png" alt="의식 6"
+                        class="ritual-image">
                     <h3 class="ritual-title"></h3>
                 </div>
                 <p class="ritual-description"></p>
@@ -468,36 +474,24 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <div style="height: 30px;"></div>
         <!-- 광고 (기본적으로 표시) -->
         <div id="ad-unit-2" class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block;"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3r+68-9q-29"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="5373524213"></ins>
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="5373524213"></ins>
         </div>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-        
+
         <div id="ad-unit-p5-2" class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block;"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3r+68-9q-29"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="8118051131"></ins>
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="8118051131"></ins>
         </div>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
 
         <div id="ad-unit-p3-2" class="ad-unit">
-            <ins class="adsbygoogle"
-                style="display:block;"
-                data-ad-format="fluid"
-                data-ad-layout-key="-gc+3r+68-9q-29"
-                data-ad-client="ca-pub-5862324369257695"
-                data-ad-slot="2039727945"></ins>
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="2039727945"></ins>
         </div>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
@@ -532,10 +526,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <div class="card-title-row">
             <h2 id="tactic-examples-title" style="margin:0;">택틱 예시</h2>
             <!-- 원래 카드 내 3개 프리뷰 로딩은 egress 비용 때문에 비활성화 -->
-            <!--<a id="tactic-examples-more" href="/tactic/tactics.html" style="font-size:13px; text-decoration:none; color:#fff; opacity:0.8;">+ 더보기</a>
+    <!--<a id="tactic-examples-more" href="/tactic/tactics.html" style="font-size:13px; text-decoration:none; color:#fff; opacity:0.8;">+ 더보기</a>
         </div>
         <!-- egress 절감을 위해 목록 비활성화: 링크로 이동하여 필터 적용된 결과를 보도록 안내 -->
-        <!--<div id="tactic-examples-cta" style="margin-top:12px; font-size:14px; color:#bdbdbd;">
+    <!--<div id="tactic-examples-cta" style="margin-top:12px; font-size:14px; color:#bdbdbd;">
             <script>
                 (function(){
                     try {
@@ -556,16 +550,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     <!-- 최하단 광고-->
     <div style="height: 24px;"></div>
-    
-    <div id="ad-unit-bottom" class="AD-bottom" style="text-align: center; align-items: center; display: flex; justify-content: center;"> 
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:970px;height:90px"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="9244892982"></ins>
+
+    <div id="ad-unit-bottom" class="AD-bottom"
+        style="text-align: center; align-items: center; display: flex; justify-content: center;">
+        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
+            data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
     </div>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
+    </script>
     <div style="height: 12px;"></div>
     <!---->
     <style>
@@ -577,123 +570,123 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </style>
 
     <script>
-    function showAdAndPush(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
+        function showAdAndPush(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
 
-        el.style.display = 'block';
+            el.style.display = 'block';
 
-        const checkAndPush = () => {
-            const ins = el.querySelector('.adsbygoogle');
+            const checkAndPush = () => {
+                const ins = el.querySelector('.adsbygoogle');
 
-            if (!ins) return;
+                if (!ins) return;
 
-            // adsbygoogle이 화면에 제대로 포함되어 있고, 최소 width 확보됐는지 확인
-            const isVisible = ins.offsetParent !== null;
-            const widthOk = ins.offsetWidth >= 250;
+                // adsbygoogle이 화면에 제대로 포함되어 있고, 최소 width 확보됐는지 확인
+                const isVisible = ins.offsetParent !== null;
+                const widthOk = ins.offsetWidth >= 250;
 
-            if (isVisible && widthOk) {
-                try {
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                } catch (e) {
-                    console.warn("광고 푸시 중 오류 발생:", e, 'id:', id);
-                }
-            } else {
-                // 100ms 후 재시도 (최대 10회)
-                if (!ins.__retryCount) ins.__retryCount = 0;
-                if (ins.__retryCount < 10) {
-                    ins.__retryCount++;
-                    setTimeout(checkAndPush, 100);
+                if (isVisible && widthOk) {
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (e) {
+                        console.warn("광고 푸시 중 오류 발생:", e, 'id:', id);
+                    }
                 } else {
-                    console.warn(`${id} 광고 푸시 실패: width=${ins.offsetWidth}, visible=${isVisible}`);
+                    // 100ms 후 재시도 (최대 10회)
+                    if (!ins.__retryCount) ins.__retryCount = 0;
+                    if (ins.__retryCount < 10) {
+                        ins.__retryCount++;
+                        setTimeout(checkAndPush, 100);
+                    } else {
+                        console.warn(`${id} 광고 푸시 실패: width=${ins.offsetWidth}, visible=${isVisible}`);
+                    }
                 }
-            }
-        };
+            };
 
-        // 첫 시도
-        requestAnimationFrame(checkAndPush);
-    }
-
-    // push 광고 
-    function pushAdUnitsForCharacter(characterName) {
-        const character = characterData[characterName];
-        if (!character) return;
-
-        try {
-            // 조건에 따라 특정 광고 DOM만 표시 + push 실행
-            if (character.persona5) {
-                //showAdAndPush('ad-unit-p5-1');
-                //showAdAndPush('ad-unit-p5-2');
-
-                const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
-                adsToHide.forEach(ad => {
-                    if (ad && ad.style) {
-                        ad.style.display = 'none';
-                    }
-                });
-            } else if (character.persona3) {
-                //showAdAndPush('ad-unit-p3-1');
-                //showAdAndPush('ad-unit-p3-2');
-
-                const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])');
-                adsToHide.forEach(ad => {
-                    if (ad && ad.style) {
-                        ad.style.display = 'none';
-                    }
-                });
-            } else {
-                //showAdAndPush('ad-unit-1');
-                //showAdAndPush('ad-unit-2');
-
-                const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
-                const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');
-                
-                p5AdsToHide.forEach(ad => {
-                    if (ad && ad.style) {
-                        ad.style.display = 'none';
-                    }
-                });
-                p3AdsToHide.forEach(ad => {
-                    if (ad && ad.style) {
-                        ad.style.display = 'none';
-                    }
-                });
-            }
-        } catch (error) {
-            console.warn('광고 푸시 중 오류 발생:', error);
+            // 첫 시도
+            requestAnimationFrame(checkAndPush);
         }
-    }
 
-    const characterName = new URLSearchParams(window.location.search).get('name');
-    if (characterName) {
-        // Update ads based on character's persona3, persona5 property
-        pushAdUnitsForCharacter(characterName);
-        
-        // 광고 업데이트 후 툴팁 다시 적용
-        setTimeout(() => {
-            if (typeof addTooltips === 'function') {
-                addTooltips();
+        // push 광고 
+        function pushAdUnitsForCharacter(characterName) {
+            const character = characterData[characterName];
+            if (!character) return;
+
+            try {
+                // 조건에 따라 특정 광고 DOM만 표시 + push 실행
+                if (character.persona5) {
+                    //showAdAndPush('ad-unit-p5-1');
+                    //showAdAndPush('ad-unit-p5-2');
+
+                    const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
+                    adsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                } else if (character.persona3) {
+                    //showAdAndPush('ad-unit-p3-1');
+                    //showAdAndPush('ad-unit-p3-2');
+
+                    const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])');
+                    adsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                } else {
+                    //showAdAndPush('ad-unit-1');
+                    //showAdAndPush('ad-unit-2');
+
+                    const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
+                    const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');
+
+                    p5AdsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                    p3AdsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                }
+            } catch (error) {
+                console.warn('광고 푸시 중 오류 발생:', error);
             }
-        }, 200);
+        }
 
-        // 광고 흰 박스 숨김
-        setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            //console.log("google status", status);
-            //console.log("google adslot", adslot);
-            if (status === "unfilled" || el.querySelector("iframe") === null) {
-                el.style.display = "none";
-            }
-        });
-        }, 2000);  // 광고 로딩 기다렸다가 1.5초 후 검사
+        const characterName = new URLSearchParams(window.location.search).get('name');
+        if (characterName) {
+            // Update ads based on character's persona3, persona5 property
+            pushAdUnitsForCharacter(characterName);
 
-        /*
-        document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
-            observer.observe(adEl, { attributes: true });
-        });*/
-    }
+            // 광고 업데이트 후 툴팁 다시 적용
+            setTimeout(() => {
+                if (typeof addTooltips === 'function') {
+                    addTooltips();
+                }
+            }, 200);
+
+            // 광고 흰 박스 숨김
+            setTimeout(() => {
+                document.querySelectorAll(".adsbygoogle").forEach(el => {
+                    const status = el.getAttribute("data-ad-status");
+                    const adslot = el.getAttribute("data-ad-slot");
+                    //console.log("google status", status);
+                    //console.log("google adslot", adslot);
+                    if (status === "unfilled" || el.querySelector("iframe") === null) {
+                        el.style.display = "none";
+                    }
+                });
+            }, 2000);  // 광고 로딩 기다렸다가 1.5초 후 검사
+
+            /*
+            document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
+                observer.observe(adEl, { attributes: true });
+            });*/
+        }
     </script>
 </div>
 
@@ -702,7 +695,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 <!-- 스크립트 ----------------------------------------------------------------------->
 
 <script>
-    document.addEventListener('DOMContentLoaded', async function() {
+    document.addEventListener('DOMContentLoaded', async function () {
         // 안전 실행 유틸리티: 개별 블록에서 오류가 나도 전체 흐름을 막지 않음
         const safeRun = (name, fn) => { try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); } };
         const safeAwait = async (name, promise) => { try { return await promise; } catch (e) { console.warn(`[SAFE:${name}]`, e); return undefined; } };
@@ -729,18 +722,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const wireImage = (imgEl) => {
                 if (!imgEl) return;
                 // 로딩 우선순위 및 디코딩 힌트
-                try { imgEl.setAttribute('loading', 'eager'); } catch(_) {}
-                try { imgEl.setAttribute('decoding', 'sync'); } catch(_) {}
-                try { imgEl.setAttribute('fetchpriority', 'high'); } catch(_) {}
+                try { imgEl.setAttribute('loading', 'eager'); } catch (_) { }
+                try { imgEl.setAttribute('decoding', 'sync'); } catch (_) { }
+                try { imgEl.setAttribute('fetchpriority', 'high'); } catch (_) { }
                 imgEl.addEventListener('load', () => {
-                    try { imgEl.setAttribute('data-loaded', 'true'); } catch(_) {}
+                    try { imgEl.setAttribute('data-loaded', 'true'); } catch (_) { }
                 });
                 imgEl.addEventListener('error', () => {
                     try {
                         // 실패 시 플레이스홀더 이미지로 대체하고 강제로 표시
                         imgEl.src = fallbackSrc;
                         imgEl.setAttribute('data-loaded', 'true');
-                    } catch(_) {}
+                    } catch (_) { }
                 });
                 // 캐시된 이미지 즉시 처리
                 if (imgEl.complete && imgEl.naturalWidth > 0) {
@@ -762,106 +755,103 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 try {
                                     imgEl.src = tmp.src;
                                     imgEl.setAttribute('data-loaded', 'true');
-                                } catch(_) {}
+                                } catch (_) { }
                             };
                             tmp.onerror = () => {
                                 try {
                                     imgEl.src = fallbackSrc;
                                     imgEl.setAttribute('data-loaded', 'true');
-                                } catch(_) {}
+                                } catch (_) { }
                             };
                             tmp.src = imgEl.currentSrc || imgEl.src;
                         }
-                    } catch(_) {}
+                    } catch (_) { }
                 }, 800);
             };
 
             wireImage(thiefImg);
             wireImage(personaImg);
-        } catch(_) {}
-    
+        } catch (_) { }
+
         // 언어별 데이터 파일 동적 로드
         async function loadLanguageData() {
             if (currentLang !== 'kr') {
                 const langPath = currentLang === 'en' ? 'en' : 'jp';
                 const basePath = '{{ site.baseurl }}/data/' + langPath + '/characters/';
-                
+
                 try {
-                    // 스킬 데이터 로드
-                    const skillScript = document.createElement('script');
-                    skillScript.src = basePath + 'character_skills.js?v=' + APP_VERSION;
-                    document.head.appendChild(skillScript);
-                    
-                    // 의식 데이터 로드
-                    const ritualScript = document.createElement('script');
-                    ritualScript.src = basePath + 'character_ritual.js?v=' + APP_VERSION;
-                    document.head.appendChild(ritualScript);
-                    
-                    // 무기 데이터 로드
-                    const weaponScript = document.createElement('script');
-                    weaponScript.src = basePath + 'character_weapon.js?v=' + APP_VERSION;
-                    document.head.appendChild(weaponScript);
-                    
-                    // 스크립트 로드 완료 대기
-                    await new Promise(resolve => {
+                    const scripts = [
+                        { name: 'skills', src: basePath + 'character_skills.js?v=' + APP_VERSION },
+                        { name: 'ritual', src: basePath + 'character_ritual.js?v=' + APP_VERSION },
+                        { name: 'weapon', src: basePath + 'character_weapon.js?v=' + APP_VERSION }
+                    ];
+
+                    await new Promise((resolve) => {
                         let loadedCount = 0;
-                        [skillScript, ritualScript, weaponScript].forEach(script => {
+                        let errorCount = 0;
+                        const totalScripts = scripts.length;
+
+                        // Timeout fallback to prevent hanging
+                        const timeoutId = setTimeout(() => {
+                            console.warn('Language data loading timed out');
+                            resolve();
+                        }, 5000);
+
+                        scripts.forEach(scriptInfo => {
+                            const script = document.createElement('script');
+                            script.src = scriptInfo.src;
+
                             script.onload = () => {
                                 loadedCount++;
-                                if (loadedCount === 3) {
-                                    // 로드된 데이터를 window 객체에 할당
-                                    if (currentLang === 'en') {
-                                        // 영어 데이터 할당
-                                        if (typeof enCharacterSkillsData !== 'undefined') {
-                                            window.enCharacterSkillsData = enCharacterSkillsData;
-                                        }
-                                        if (typeof enCharacterRitualData !== 'undefined') {
-                                            window.enCharacterRitualData = enCharacterRitualData;
-                                        }
-                                        if (typeof enCharacterWeaponData !== 'undefined') {
-                                            window.enCharacterWeaponData = enCharacterWeaponData;
-                                        }
-                                    } else if (currentLang === 'jp') {
-                                        // 일본어 데이터 할당
-                                        if (typeof jpCharacterSkillsData !== 'undefined') {
-                                            window.jpCharacterSkillsData = jpCharacterSkillsData;
-                                        }
-                                        if (typeof jpCharacterRitualData !== 'undefined') {
-                                            window.jpCharacterRitualData = jpCharacterRitualData;
-                                        }
-                                        if (typeof jpCharacterWeaponData !== 'undefined') {
-                                            window.jpCharacterWeaponData = jpCharacterWeaponData;
-                                        }
-                                    }
-                                    resolve();
-                                }
+                                checkCompletion();
                             };
+
+                            script.onerror = (e) => {
+                                console.error('Failed to load script:', scriptInfo.src, e);
+                                errorCount++;
+                                checkCompletion();
+                            };
+
+                            document.head.appendChild(script);
                         });
+
+                        function checkCompletion() {
+                            if (loadedCount + errorCount === totalScripts) {
+                                clearTimeout(timeoutId);
+
+                                // Assign data to window
+                                if (currentLang === 'en') {
+                                    if (typeof enCharacterSkillsData !== 'undefined') window.enCharacterSkillsData = enCharacterSkillsData;
+                                    if (typeof enCharacterRitualData !== 'undefined') window.enCharacterRitualData = enCharacterRitualData;
+                                    if (typeof enCharacterWeaponData !== 'undefined') window.enCharacterWeaponData = enCharacterWeaponData;
+                                } else if (currentLang === 'jp') {
+                                    if (typeof jpCharacterSkillsData !== 'undefined') window.jpCharacterSkillsData = jpCharacterSkillsData;
+                                    if (typeof jpCharacterRitualData !== 'undefined') window.jpCharacterRitualData = jpCharacterRitualData;
+                                    if (typeof jpCharacterWeaponData !== 'undefined') window.jpCharacterWeaponData = jpCharacterWeaponData;
+                                }
+                                resolve();
+                            }
+                        }
                     });
-                    
-                    // console.log('언어별 데이터 파일 로드 완료:', langPath);
-                    
-                    // 언어별 데이터 로드 완료 후 스킬 정보 로드
+
+                    // After loading, call fillSkillsInfo
                     setTimeout(() => {
-                        // console.log('영어/일본어 - fillSkillsInfo 호출 준비');
                         if (typeof fillSkillsInfo === 'function') {
-                            // console.log('fillSkillsInfo 함수 존재 - 호출');
                             fillSkillsInfo(characterName);
-                        } else {
-                            console.log('fillSkillsInfo 함수가 정의되지 않음');
                         }
                     }, 100);
+
                 } catch (e) {
-                    console.log('언어별 데이터 파일 로드 실패:', e);
+                    console.error('Error in loadLanguageData:', e);
                 }
             }
         }
-            
+
         if (!characterName || !characterData[characterName]) {
             console.error('Character not found');
             return;
         }
-            
+
         // 이미지 우선 로딩: 다국어 데이터 로드와 상관없이 즉시 표시되도록 선행 주입
         try {
             const basicCharacter = characterData[characterName];
@@ -871,8 +861,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const personaFile = encodeURIComponent(`${characterName} - ${basicCharacter.persona}.webp`);
             const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-            if (thiefEl) { thiefEl.src = thiefSrc; thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading','eager'); }
-            if (personaEl) { personaEl.src = personaSrc; personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading','eager'); }
+            if (thiefEl) { thiefEl.src = thiefSrc; thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); }
+            if (personaEl) { personaEl.src = personaSrc; personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading', 'eager'); }
             const preload1 = document.createElement('link');
             preload1.rel = 'preload';
             preload1.as = 'image';
@@ -883,11 +873,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             preload2.as = 'image';
             preload2.href = personaSrc;
             document.head.appendChild(preload2);
-        } catch(e) { console.warn('[SAFE:early-image-load]', e); }
+        } catch (e) { console.warn('[SAFE:early-image-load]', e); }
 
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
-        
+
         // 한국어인 경우 바로 스킬 정보 로드
         if (currentLang === 'kr') {
             safeRun('fillSkillsInfo-kr', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
@@ -895,12 +885,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         const character = characterData[characterName];
         const ritual = ritualData[characterName];
-        
+
         // 언어별 데이터 로드 (영어/일본어가 있는 경우 우선 사용)
         let localizedSkills = null;
         let localizedRitual = null;
         let localizedWeapon = null;
-        
+
         if (currentLang !== 'kr') {
             // 언어별 데이터 파일 동적 로드
             try {
@@ -927,7 +917,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         localizedWeapon = window.jpCharacterWeaponData[characterName];
                     }
                 }
-                
+
                 /*console.log('언어별 데이터 로드 결과:', {
                     lang: currentLang,
                     skills: !!localizedSkills,
@@ -938,7 +928,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 console.log('언어별 데이터 로드 실패:', e);
             }
         }
-        
+
         // 캐릭터 리뷰 렌더링 함수
 
         // 안전하게 리뷰 렌더링
@@ -960,23 +950,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }
                 // 변환: 전각/유사 별표 → ASCII *, 제로폭/비가시/방향 제어/소프트하이픈/NBSP 제거 (언어 선택 이후 적용)
                 const normalized = currentReview
-                  .replace(/\uFF0A/g, '*')    // 전각 별표 ＊ → *
-                  .replace(/\u2217/g, '*')    // ∗ → *
-                  .replace(/[\u200B-\u200D\uFEFF]/g, '') // ZWSP/ZWNJ/ZWJ/ZWNBSP 제거
-                  .replace(/[\u200E\u200F]/g, '')          // LRM/RLM 제거
-                  .replace(/[\u202A-\u202E]/g, '')         // 방향 제어 문자 제거
-                  .replace(/\u00AD/g, '')                   // Soft hyphen 제거
-                  .replace(/\u2060/g, '')                   // WORD JOINER 제거
-                  .replace(/\u00A0/g, ' ');                 // NBSP → 공백
+                    .replace(/\uFF0A/g, '*')    // 전각 별표 ＊ → *
+                    .replace(/\u2217/g, '*')    // ∗ → *
+                    .replace(/[\u200B-\u200D\uFEFF]/g, '') // ZWSP/ZWNJ/ZWJ/ZWNBSP 제거
+                    .replace(/[\u200E\u200F]/g, '')          // LRM/RLM 제거
+                    .replace(/[\u202A-\u202E]/g, '')         // 방향 제어 문자 제거
+                    .replace(/\u00AD/g, '')                   // Soft hyphen 제거
+                    .replace(/\u2060/g, '')                   // WORD JOINER 제거
+                    .replace(/\u00A0/g, ' ');                 // NBSP → 공백
 
                 let htmlContent = marked.parse(normalized);
                 // 폴백: 파싱 후에도 **...**가 그대로 남았으면 강제 <strong> 치환 (이미 파싱된 경우엔 영향 없음)
                 if (htmlContent.includes('**')) {
-                  htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                    htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
                 }
                 reviewContainer.innerHTML = htmlContent;
             }
-        } catch(e) { console.warn('[SAFE:render-review]', e); }
+        } catch (e) { console.warn('[SAFE:render-review]', e); }
 
 
         // 이미지 설정
@@ -988,8 +978,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const personaImgEl = document.querySelector('.persona-image');
             const personaFile = `${characterName} - ${character.persona}.webp`;
             if (personaImgEl) personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-        } catch(e) { console.warn('[SAFE:set-images]', e); }
-        
+        } catch (e) { console.warn('[SAFE:set-images]', e); }
+
         // Set character name (en에서는 로딩 전에 skeleton 사용)
         try {
             const nameElement = document.querySelector('.character-name');
@@ -997,7 +987,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 if (currentLang === 'en') {
                     nameElement.classList.add('skeleton');
                     requestAnimationFrame(() => {
-                        try { nameElement.textContent = character.name_en || characterName; } catch(_) {}
+                        try { nameElement.textContent = character.name_en || characterName; } catch (_) { }
                         nameElement.classList.remove('skeleton');
                     });
                 } else if (currentLang === 'jp' && character.name_jp) {
@@ -1006,12 +996,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     nameElement.textContent = character.name;
                 }
             }
-        } catch(e) { console.warn('[SAFE:set-name]', e); }
-        
+        } catch (e) { console.warn('[SAFE:set-name]', e); }
+
         // 코드네임 설정
         try {
             const codeNameLabel = currentLang === 'kr' ? '코드네임 ' :
-                                 currentLang === 'en' ? 'Code Name ' : 'コードネーム ';
+                currentLang === 'en' ? 'Code Name ' : 'コードネーム ';
             const codeEl = document.querySelector('.code-name');
             if (codeEl) {
                 codeEl.innerHTML = `
@@ -1019,34 +1009,34 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 `;
             }
             const personaLabel = currentLang === 'kr' ? '페르소나 ' :
-                                currentLang === 'en' ? 'Persona ' : 'ペルソナ ';
+                currentLang === 'en' ? 'Persona ' : 'ペルソナ ';
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
-                                currentLang === 'jp' && character.persona_jp ? character.persona_jp :
-                                character.persona || '';
+                currentLang === 'jp' && character.persona_jp ? character.persona_jp :
+                    character.persona || '';
             const personaEl = document.querySelector('.persona-name');
             if (personaEl) {
                 personaEl.innerHTML = `
                     <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
                 `;
             }
-        } catch(e) { console.warn('[SAFE:code-persona]', e); }
-        
+        } catch (e) { console.warn('[SAFE:code-persona]', e); }
+
         // 속성 아이콘 설정
         try {
             if (character.element) {
                 const elementIcons = document.querySelector('.element-icons');
                 if (elementIcons) elementIcons.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
             }
-        } catch(e) { console.warn('[SAFE:element-icon]', e); }
-        
+        } catch (e) { console.warn('[SAFE:element-icon]', e); }
+
         // 직업 아이콘 및 이름 설정
         try {
             if (character.position) {
                 const positionIcon = document.querySelector('.position-icon');
                 if (positionIcon) positionIcon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
             }
-        } catch(e) { console.warn('[SAFE:position-icon]', e); }
-        
+        } catch (e) { console.warn('[SAFE:position-icon]', e); }
+
         // 약점/내성 설정 (데이터가 있을 경우에만)
         const resistanceIcons = document.querySelector('.resistance-icons');
         try {
@@ -1058,8 +1048,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     resistanceIcons.appendChild(icon);
                 });
             }
-        } catch(e) { console.warn('[SAFE:resistances]', e); }
-        
+        } catch (e) { console.warn('[SAFE:resistances]', e); }
+
         // 스탯 설정 (데이터가 있을 경우에만)
         try {
             if (character.stats) {
@@ -1100,11 +1090,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 </div>
             `;
             }
-        } catch(e) { console.warn('[SAFE:stat-grid]', e); }
-        
+        } catch (e) { console.warn('[SAFE:stat-grid]', e); }
+
 
         // 스킬 설정은 cha_detail.js에서 자동 처리됨
-        
+
 
         // 의식 정보 설정
         const ritualItems = document.querySelectorAll('.ritual-item');
@@ -1112,12 +1102,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         function updateAllRitualContent() {
             // 언어별 의식 데이터 우선 사용
             const ritualToUse = localizedRitual || ritual;
-            
+
             ritualItems.forEach(item => {
                 const level = item.getAttribute('data-ritual');
                 const title = item.querySelector('.ritual-title');
                 const description = item.querySelector('.ritual-description');
-                
+
                 title.textContent = ritualToUse[`r${level}`] || '';
                 description.innerHTML = ritualToUse[`r${level}_detail`] || '';
             });
@@ -1125,8 +1115,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
 
         // 초기 의식 내용 설정
-        try { updateAllRitualContent(); } catch(e) { console.warn('[SAFE:updateAllRitualContent]', e); }
-        
+        try { updateAllRitualContent(); } catch (e) { console.warn('[SAFE:updateAllRitualContent]', e); }
+
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');
         try {
@@ -1139,11 +1129,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             } else {
                 battlePlusStats.textContent = character.battle_plus_stats;
             }
-        } catch(e) { console.warn('[SAFE:battlePlus-init]', e); }
-        
+        } catch (e) { console.warn('[SAFE:battlePlus-init]', e); }
+
         if (battlePlusStats && battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
             // console.log('Original battle_plus_stats:', character.battle_plus_stats);
-            
+
             // <b> 태그의 수 확인
             const bTagCount = (battlePlusStats.textContent.match(/<b>/g) || []).length;
             //console.log('bTagCount:', bTagCount);
@@ -1153,7 +1143,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 battlePlusStats.style.display = 'grid';
                 battlePlusStats.style.gridTemplateColumns = 'repeat(2, 1fr)';
                 battlePlusStats.style.gap = '20px';
-                
+
                 // <b> 태그로 분할하여 각 섹션을 div로 래핑
                 const sections = battlePlusStats.textContent.split(/<b>/).filter(Boolean);
                 battlePlusStats.innerHTML = sections.map(section => {
@@ -1165,49 +1155,49 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // 기존 방식대로 한 열로 표시
                 let rawContent = battlePlusStats.textContent.trim();
                 // console.log('Raw content:', rawContent);
-                
+
                 // / 기준으로 분할
                 let items = rawContent.split(/\s*\/\s*/);
                 // console.log('Split items:', items);
-                
+
                 // 첫 번째 항목이 ·로 시작하지 않으면 추가
                 if (items[0] && !items[0].trim().startsWith('·')) {
                     items[0] = '· ' + items[0].trim();
                 }
-                
+
                 // 나머지 항목들 앞에 ·를 추가 (이미 있으면 제거 후 추가)
                 for (let i = 1; i < items.length; i++) {
                     items[i] = '· ' + items[i].trim().replace(/^·\s*/, '');
                 }
-                
-                                 // DOM 요소 직접 생성
-                 battlePlusStats.innerHTML = '';
-                 
-                 // 심상 번역 텍스트 정의
-                 const mindTexts = {
-                     'kr': '심상5',
-                     'en': 'Mindscape5',
-                     'jp': 'イメジャリー5'
-                 };
-                 
-                 items.forEach((item, index) => {
-                     if (item.trim()) {
-                         const div = document.createElement('div');
-                         let processedItem = item.trim();
-                         // 심상 번역 처리
-                         processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
-                         processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
-                         div.textContent = processedItem;
-                         battlePlusStats.appendChild(div);
-                     }
-                 });
-                 
-                 // console.log('Final items:', items);
+
+                // DOM 요소 직접 생성
+                battlePlusStats.innerHTML = '';
+
+                // 심상 번역 텍스트 정의
+                const mindTexts = {
+                    'kr': '심상5',
+                    'en': 'Mindscape5',
+                    'jp': 'イメジャリー5'
+                };
+
+                items.forEach((item, index) => {
+                    if (item.trim()) {
+                        const div = document.createElement('div');
+                        let processedItem = item.trim();
+                        // 심상 번역 처리
+                        processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
+                        processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
+                        div.textContent = processedItem;
+                        battlePlusStats.appendChild(div);
+                    }
+                });
+
+                // console.log('Final items:', items);
             }
         } else if (battlePlusStats) {
             battlePlusStats.textContent = '-';
         }
-        
+
         // 수치 패턴 변환 함수
         function transformEnhancementValues(description, stage, weaponStars) {
             if (stage === 'all') {
@@ -1238,11 +1228,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         async function loadWeapons(characterName, stage = 'mixed') {
             const weaponsContainer = document.querySelector('.weapons-container');
             weaponsContainer.innerHTML = '';
-            
+
             // 언어별 무기 데이터 우선 사용
             const weaponDataToUse = localizedWeapon || WeaponData[characterName];
             if (!weaponDataToUse) return;
-            
+
             const characterWeapons = weaponDataToUse;
             const weaponTypes = [
                 { key: 'weapon5-1', suffix: '5-01', stars: 5 },
@@ -1253,7 +1243,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             for (const weapon of weaponTypes) {
                 const imagePath = `{{ site.baseurl }}/assets/img/character-weapon/${characterName}-${weapon.suffix}.png`;
-                
+
                 // 무기 데이터 가져오기 (현재 언어 데이터 우선)
                 const weaponData = characterWeapons[weapon.key];
                 // 한국어 원본 데이터의 highlight도 병합해서 사용
@@ -1268,7 +1258,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const isHighlighted = (weaponData && weaponData.highlight === true) || (krWeaponData && krWeaponData.highlight === true);
                 if (isHighlighted) weaponItem.classList.add('super-highlight');
 
-                
+
                 // 무기 이미지
                 // img container 안에 img 추가
                 const weaponImageContainer = document.createElement('div');
@@ -1324,7 +1314,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }
                 // weapon.key가 weapon4-2라면 별 옆에 'EVENT' 텍스트를 추가한다.
                 //console.log(weapon.key);
-                if(weapon.key=="weapon4-2"){
+                if (weapon.key == "weapon4-2") {
                     const eventText = document.createElement('span');
                     eventText.className = 'event-text';
                     eventText.textContent = 'EVENT';
@@ -1345,7 +1335,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
                     // 스킬명이 있으면 표시, 없으면 설명만 표시
                     if (weaponData.skill_name) {
-                    weaponSkill.innerHTML = `
+                        weaponSkill.innerHTML = `
                         <h4>${weaponData.skill_name}</h4>
                         <p>${description}</p>
                     `;
@@ -1368,9 +1358,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 weaponItem.appendChild(weaponInfo);
 
                 weaponsContainer.appendChild(weaponItem);
-                                
+
             }
-            
+
             // 무기 로드 후 스탯 텍스트 번역 적용 (안전 폴백 포함)
             setTimeout(() => {
                 try {
@@ -1379,25 +1369,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
                         I18NUtils.translateStatTexts(document);
                     }
-                } catch(_) {}
+                } catch (_) { }
             }, 100);
-            
+
             addTooltips();
 
         }
 
         // 캐릭터 로드 시 무기 정보도 함께 로드
-        try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch(e) { console.warn('[SAFE:loadWeapons-init]', e); }
+        try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch (e) { console.warn('[SAFE:loadWeapons-init]', e); }
 
         // 추천 페르소나와 파티 로드
-        try { loadRecommendations(characterName); } catch(e) { console.warn('[SAFE:loadRecommendations]', e); }
-                        
+        try { loadRecommendations(characterName); } catch (e) { console.warn('[SAFE:loadRecommendations]', e); }
+
         // 툴팁 추가
-        try { addTooltips(); } catch(e) { console.warn('[SAFE:addTooltips]', e); }
+        try { addTooltips(); } catch (e) { console.warn('[SAFE:addTooltips]', e); }
 
         // 버튼 이벤트 리스너 추가
         const enhancementButtons = document.querySelectorAll('.enhancement-btn');
-        
+
         enhancementButtons.forEach(button => {
             try {
                 button.addEventListener('click', () => {
@@ -1407,16 +1397,16 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         const urlParams = new URLSearchParams(window.location.search);
                         const characterName = urlParams.get('name');
                         loadWeapons(characterName, button.dataset.stage);
-                    } catch(e) { console.warn('[SAFE:enhancement-click-inner]', e); }
+                    } catch (e) { console.warn('[SAFE:enhancement-click-inner]', e); }
                 });
-            } catch(e) { console.warn('[SAFE:enhancement-click]', e); }
+            } catch (e) { console.warn('[SAFE:enhancement-click]', e); }
         });
 
-        
+
 
         // SEO 메타데이터 동적 업데이트
         const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
-        
+
         // 언어별 캐릭터명 설정
         let characterDisplayName = character.name;
         if (currentLang === 'en' && character.name_en) {
@@ -1424,7 +1414,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         } else if (currentLang === 'jp' && character.name_jp) {
             characterDisplayName = character.name_jp;
         }
-        
+
         // 언어별 사이트 정보
         const siteInfo = {
             'kr': {
@@ -1443,15 +1433,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 description: 'おすすめ設定、スキル、意識、専用武器情報'
             }
         };
-        
+
         const currentSiteInfo = siteInfo[currentLang] || siteInfo['kr'];
-        
+
         // 타이틀 업데이트
-        try { document.title = `${characterDisplayName} ${currentSiteInfo.siteName}`; } catch(e) { console.warn('[SAFE:seo-title]', e); }
-        
+        try { document.title = `${characterDisplayName} ${currentSiteInfo.siteName}`; } catch (e) { console.warn('[SAFE:seo-title]', e); }
+
         // 메타 태그 업데이트 (태그가 존재하는 경우에만)
         const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
-        
+
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
@@ -1469,14 +1459,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
                 canonicalLink.setAttribute('href', canonicalUrl);
             }
-        } catch(e) { console.warn('[SAFE:seo-meta]', e); }
+        } catch (e) { console.warn('[SAFE:seo-meta]', e); }
 
         // 번역 적용 (캐릭터 데이터 로드 후)
-        try { applyTranslations(); } catch(e) { console.warn('[SAFE:applyTranslations]', e); }
-        
+        try { applyTranslations(); } catch (e) { console.warn('[SAFE:applyTranslations]', e); }
+
         // 번역 적용 후 레이아웃 재계산
         setTimeout(() => {
-            try { if (typeof fillOperationInfo === 'function') { fillOperationInfo(characterName); } } catch(e) { console.warn('[SAFE:fillOperationInfo-timeout]', e); }
+            try { if (typeof fillOperationInfo === 'function') { fillOperationInfo(characterName); } } catch (e) { console.warn('[SAFE:fillOperationInfo-timeout]', e); }
             try {
                 if (window.innerWidth <= 1200) {
                     const operationSettings = document.querySelector('.operation-settings');
@@ -1487,13 +1477,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         operationSettings.style.gap = '20px';
                     }
                 }
-            } catch(e) { console.warn('[SAFE:operationSettings-mobile]', e); }
+            } catch (e) { console.warn('[SAFE:operationSettings-mobile]', e); }
         }, 100);
-        
+
         // 영어/일본어에서 주의 메시지 표시
         try {
             if (currentLang === 'en' || currentLang === 'jp') {
-                const warningMessage = currentLang === 'en' ? 
+                const warningMessage = currentLang === 'en' ?
                     'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)' :
                     '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、イメジャリーなど）';
                 const warningDiv = document.createElement('div');
@@ -1505,21 +1495,21 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     settingsCard.insertBefore(warningDiv, settingsCard.firstChild.nextSibling);
                 }
             }
-        } catch(e) { console.warn('[SAFE:lang-warning]', e); }
+        } catch (e) { console.warn('[SAFE:lang-warning]', e); }
 
-        
+
 
 
         try {
             const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
             tagElements.forEach(el => { if (el) el.style.display = ''; });
-        } catch(e) { console.warn('[SAFE:tag-display]', e); }
+        } catch (e) { console.warn('[SAFE:tag-display]', e); }
 
         //role은 kr 아니면 숨기기
         try {
             const roleElement = document.querySelector('.chracter-role');
-            if(currentLang !== 'kr' && roleElement) { roleElement.style.display = 'none'; }
-        } catch(e) { console.warn('[SAFE:role-hide]', e); }
+            if (currentLang !== 'kr' && roleElement) { roleElement.style.display = 'none'; }
+        } catch (e) { console.warn('[SAFE:role-hide]', e); }
 
         try {
             const noteSection = document.querySelector('.operation-settings .setting-section:last-child');
@@ -1533,8 +1523,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     operationSettings.style.flexDirection = 'column';
                 }
             }
-        } catch(e) { console.warn('[SAFE:note-section]', e); }
-        
+        } catch (e) { console.warn('[SAFE:note-section]', e); }
+
     });
 
 
@@ -1546,7 +1536,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 shouldTranslate = true;
             }
         });
-        
+
         if (shouldTranslate && typeof window.translateStatTexts === 'function') {
             setTimeout(() => {
                 window.translateStatTexts();
@@ -1563,7 +1553,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     // 언어별 계시 데이터 로드
     function loadRevelationDataByLanguage() {
         const currentLang = getCurrentLanguage();
-        
+
         return new Promise((resolve) => {
             if (currentLang === 'en') {
                 // 영어 계시 데이터 로드
@@ -1605,10 +1595,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     function refreshRevelationDisplay() {
         const urlParams = new URLSearchParams(window.location.search);
         const characterName = urlParams.get('name');
-        
+
         if (characterName && characterData[characterName]) {
             const character = characterData[characterName];
-            
+
             // 계시 부분만 다시 렌더링
             const mainRevelationValue = document.querySelector('.main-revelation .value');
             const subRevelationValue = document.querySelector('.sub-revelation .value');
@@ -1636,17 +1626,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     // 공통 번역 유틸로 적용 함수 위임 (중복 로직 제거)
     try {
-        applyTranslations = function() {
-            try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch(e) { console.warn('[CharI18N:applySectionLabels]', e); }
+        applyTranslations = function () {
+            try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch (e) { console.warn('[CharI18N:applySectionLabels]', e); }
             try {
                 if (typeof window.translateStatTexts === 'function') {
                     window.translateStatTexts();
                 } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
                     I18NUtils.translateStatTexts();
                 }
-            } catch(e) { console.warn('[I18N:translateStatTexts]', e); }
+            } catch (e) { console.warn('[I18N:translateStatTexts]', e); }
         };
-    } catch(e) { console.warn('[I18N:override-applyTranslations]', e); }
+    } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
     // 추천 페르소나와 파티 로드 함수
     function loadRecommendations(characterName) {
         if (!characterName || !recommendParty[characterName]) {
@@ -1660,9 +1650,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 추천 페르소나/무기 표시 여부 결정
         const personaCardEl = document.querySelector('.recommended-persona-card');
         const personaContentEl = document.getElementById('recommended-persona-content');
-        const hasWeapon = Array.isArray(data.weapon) && data.weapon.some(function(w){ return typeof w === 'string' && w.trim().length > 0; });
-        const hasPersona = Array.isArray(data.persona) && data.persona.some(function(category){
-            return Array.isArray(category.list) && category.list.some(function(p){ return typeof p === 'string' && p.trim().length > 0; });
+        const hasWeapon = Array.isArray(data.weapon) && data.weapon.some(function (w) { return typeof w === 'string' && w.trim().length > 0; });
+        const hasPersona = Array.isArray(data.persona) && data.persona.some(function (category) {
+            return Array.isArray(category.list) && category.list.some(function (p) { return typeof p === 'string' && p.trim().length > 0; });
         });
 
         // 섹션 제목 다국어 지원
@@ -1681,12 +1671,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 noteContainer.style.color = '#888';
                 noteContainer.style.marginBottom = '15px';
                 noteContainer.style.fontStyle = 'italic';
-                
+
                 const noteText = document.createElement('p');
-                noteText.textContent = currentLang === 'en' 
+                noteText.textContent = currentLang === 'en'
                     ? 'Note: Some recommended personas & weapons may not be released yet in your region.'
                     : '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。';
-                    
+
                 noteContainer.appendChild(noteText);
                 if (personaContentEl && personaContentEl.parentNode) {
                     personaContentEl.parentNode.insertBefore(noteContainer, personaContentEl);
@@ -1712,7 +1702,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const currentLang = getCurrentLanguage();
         const personaTitle = document.querySelector('.recommended-persona-card h2');
         const partyTitle = document.querySelector('.recommended-party-card h2');
-        
+
         if (currentLang === 'en') {
             if (personaTitle) personaTitle.textContent = 'Recommended Personas';
             if (partyTitle) partyTitle.textContent = 'Recommended Parties Example';
@@ -1731,7 +1721,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if (!personaData || !personaData[personaName]) {
             return personaName;
         }
-        
+
         if (currentLang === 'en' && personaData[personaName].name_en) {
             return personaData[personaName].name_en;
         } else if (currentLang === 'jp' && personaData[personaName].name_jp) {
@@ -1746,7 +1736,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if (!characterData || !characterData[characterName]) {
             return characterName;
         }
-        
+
         if (currentLang === 'en' && characterData[characterName].codename) {
             return characterData[characterName].codename;
         } else if (currentLang === 'jp' && characterData[characterName].name_jp) {
@@ -1768,15 +1758,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if (characterName && recommendParty[characterName]?.weapon?.length > 0) {
             const weaponSection = document.createElement('div');
             weaponSection.className = 'persona-attribute-section';
-            
+
             const title = document.createElement('h3');
-            title.textContent = currentLang === 'en' ? 'WEAPONS' : 
-                              (currentLang === 'jp' ? 'ウェポン' : 'WEAPONS');
+            title.textContent = currentLang === 'en' ? 'WEAPONS' :
+                (currentLang === 'jp' ? 'ウェポン' : 'WEAPONS');
             weaponSection.appendChild(title);
-            
+
             const weaponList = document.createElement('div');
             weaponList.className = 'persona-list';
-            
+
             recommendParty[characterName].weapon.forEach(weaponName => {
                 const weaponItem = document.createElement('div');
                 weaponItem.className = 'persona-item';
@@ -1784,17 +1774,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const hasHighlight = /!+$/.test(weaponName);
                 if (hasHighlight) weaponItem.classList.add('super-highlight');
                 weaponItem.style.cursor = 'pointer';
-                weaponName = weaponName.replace(/!+$/,'');
-                
+                weaponName = weaponName.replace(/!+$/, '');
+
                 const img = document.createElement('img');
                 const imgSrc = `../assets/img/wonder-weapon/${weaponName}.webp`;
                 img.src = imgSrc;
                 img.alt = weaponName;
-                img.onerror = function() {
+                img.onerror = function () {
                     this.onerror = null;
                     this.src = '../assets/img/placeholder.png';
                 };
-                
+
                 const name = document.createElement('span');
                 // Get localized weapon name from matchWeapons if available
                 let weaponNameText = weaponName;
@@ -1806,19 +1796,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     }
                 }
                 // 표시 텍스트에서는 ! 제거
-                name.textContent = weaponNameText.replace(/!+$/,'');
-                
+                name.textContent = weaponNameText.replace(/!+$/, '');
+
                 // Add click handler to show weapon effect
                 weaponItem.addEventListener('click', (e) => {
                     e.preventDefault();
                     showWeaponEffect(weaponName, imgSrc, weaponNameText);
                 });
-                
+
                 weaponItem.appendChild(img);
                 weaponItem.appendChild(name);
                 weaponList.appendChild(weaponItem);
             });
-            
+
             weaponSection.appendChild(weaponList);
             container.appendChild(weaponSection);
         }
@@ -1832,9 +1822,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             'DEBUFF': { 'en': 'DEBUFF', 'jp': 'デバフ' },
             'SUPPORT': { 'en': 'SUPPORT', 'jp': 'サポート' },
             'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' },
-            'CRITICAL' : { 'en': 'CRITICAL', 'jp': 'クリティカル' }
+            'CRITICAL': { 'en': 'CRITICAL', 'jp': 'クリティカル' }
         };
-        
+
         // personaData가 없거나 비어있으면 이후 렌더링 생략
         if (!Array.isArray(personaData) || personaData.length === 0) {
             return;
@@ -1843,12 +1833,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         personaData.forEach(category => {
             const attributeSection = document.createElement('div');
             attributeSection.className = 'persona-attribute-section';
-            
+
             const title = document.createElement('h3');
             // 속성 이름 다국어 처리
             const currentLang = getCurrentLanguage();
             const attribute = category.type;
-            
+
             if (currentLang === 'en' && attributeTranslations[attribute]?.en) {
                 title.textContent = attributeTranslations[attribute].en;
             } else if (currentLang === 'jp' && attributeTranslations[attribute]?.jp) {
@@ -1857,15 +1847,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 title.textContent = attribute;
             }
             attributeSection.appendChild(title);
-            
+
             // 코멘트를 페르소나 리스트 위로 이동
             const commentContainer = document.createElement('div');
             commentContainer.className = 'comment-container';
-            
+
             if (category.comment || category.comment_en || category.comment_jp) {
                 const commentEl = document.createElement('p');
                 commentEl.className = 'persona-comment';
-                
+
                 if (currentLang === 'en' && category.comment_en) {
                     commentEl.textContent = category.comment_en;
                 } else if (currentLang === 'jp' && category.comment_jp) {
@@ -1875,47 +1865,47 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }
                 commentContainer.appendChild(commentEl);
             }
-            
+
             const personaList = document.createElement('div');
             personaList.className = 'persona-list';
-            
-            try{
+
+            try {
                 category.list.forEach(personaName => {
-                        const personaItem = document.createElement('div');
-                        personaItem.className = 'persona-item';
-                        // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
-                        const hasHighlight = /!+$/.test(personaName);
-                        if (hasHighlight) personaItem.classList.add('super-highlight');
-                        
-                        personaName = personaName.replace(/!+$/,'');
-                        const personaLink = document.createElement('a');
-                        personaLink.href = '#';
-                        personaLink.onclick = function(e) {
-                            e.preventDefault();
-                            // Open persona page in new tab with search parameter
-                            const personaPageUrl = `${window.location.origin}/persona/?search=${encodeURIComponent(personaName)}`;
-                            window.open(personaPageUrl, '_blank');
-                        };
-                        
-                        const img = document.createElement('img');
-                        img.src = `../assets/img/persona/${personaName}.webp`;
-                        img.alt = personaName;
-                        img.onerror = function() {
-                            this.onerror = null;
-                            this.src = '../assets/img/placeholder.png';
-                        };
-                        
-                        const name = document.createElement('span');
-                        // 표시 텍스트에서는 ! 제거 후 출력
-                        const localized = getLocalizedPersonaName(personaName);
-                        name.textContent = localized.replace(/!+$/,'');
-                        
-                        personaLink.appendChild(img);
-                        personaItem.appendChild(personaLink);
-                        personaItem.appendChild(name);
-                        personaList.appendChild(personaItem);
-                    });
-                    
+                    const personaItem = document.createElement('div');
+                    personaItem.className = 'persona-item';
+                    // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
+                    const hasHighlight = /!+$/.test(personaName);
+                    if (hasHighlight) personaItem.classList.add('super-highlight');
+
+                    personaName = personaName.replace(/!+$/, '');
+                    const personaLink = document.createElement('a');
+                    personaLink.href = '#';
+                    personaLink.onclick = function (e) {
+                        e.preventDefault();
+                        // Open persona page in new tab with search parameter
+                        const personaPageUrl = `${window.location.origin}/persona/?search=${encodeURIComponent(personaName)}`;
+                        window.open(personaPageUrl, '_blank');
+                    };
+
+                    const img = document.createElement('img');
+                    img.src = `../assets/img/persona/${personaName}.webp`;
+                    img.alt = personaName;
+                    img.onerror = function () {
+                        this.onerror = null;
+                        this.src = '../assets/img/placeholder.png';
+                    };
+
+                    const name = document.createElement('span');
+                    // 표시 텍스트에서는 ! 제거 후 출력
+                    const localized = getLocalizedPersonaName(personaName);
+                    name.textContent = localized.replace(/!+$/, '');
+
+                    personaLink.appendChild(img);
+                    personaItem.appendChild(personaLink);
+                    personaItem.appendChild(name);
+                    personaList.appendChild(personaItem);
+                });
+
                 attributeSection.appendChild(personaList);
                 // 코멘트 컨테이너를 페르소나 리스트 아래에 추가
                 if (commentContainer.hasChildNodes()) {
@@ -1923,7 +1913,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }
                 container.appendChild(attributeSection);
             }
-            catch(error){
+            catch (error) {
                 // console.error('Error loading recommended persona:', error);
                 console.log('Error loading recommended persona');
             }
@@ -1935,50 +1925,50 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // characterData와 characterList를 추출하는 정규식
         const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
         const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
-        
+
         if (!characterDataMatch || !characterListMatch) {
             throw new Error('Failed to extract data from script');
         }
-        
+
         // JSON으로 파싱하기 위해 Function 생성자 사용
         const characterData = new Function('return ' + characterDataMatch[1])();
         const characterList = new Function('return ' + characterListMatch[1])();
-        
+
         return { characterData, characterList };
     }
 
     // Load character list for the current language
     let currentLangCharacterList = { mainParty: [], supportParty: [] };
     let characterListLoaded = false;
-    
+
     async function loadCharacterList() {
         const currentLang = getCurrentLanguage();
         if (currentLang === 'kr') {
             characterListLoaded = true;
             return; // No need to load for Korean
         }
-        
+
         try {
             // console.log(`Loading ${currentLang} character list...`);
             const langUrl = `../data/${currentLang}/characters/characters.js?v=${Date.now()}`;
             // console.log('Character list URL:', langUrl);
-            
+
             const langResponse = await fetch(langUrl);
             // console.log('Character list response status:', langResponse.status);
-            
+
             if (langResponse.ok) {
                 const langScriptText = await langResponse.text();
-                
+
                 const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
-                
-                
+
+
                 // Store the character list
                 currentLangCharacterList = {
                     mainParty: [...(langCharacterList.mainParty || [])],
                     supportParty: [...(langCharacterList.supportParty || [])]
                 };
                 characterListLoaded = true;
-                
+
             } else {
                 console.error(`Failed to load ${currentLang} character list:`, langResponse.status);
                 characterListLoaded = true; // Mark as loaded to prevent blocking
@@ -1993,20 +1983,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     async function isCharacterReleased(koreanName) {
         const currentLang = getCurrentLanguage();
         if (currentLang === 'kr') return true; // Always show all characters in Korean
-        
+
         // If we haven't loaded the character list yet, assume it's not released
         // The actual check will happen when the list is loaded
         if (!characterListLoaded) {
             return false;
         }
-        
+
         // Check if the character is in either mainParty or supportParty
-        const isReleased = currentLangCharacterList.mainParty.includes(koreanName) || 
-                          currentLangCharacterList.supportParty.includes(koreanName);
-        
+        const isReleased = currentLangCharacterList.mainParty.includes(koreanName) ||
+            currentLangCharacterList.supportParty.includes(koreanName);
+
         return isReleased;
     }
-    
+
     // Check if character has persona5 or persona3 property and update ads visibility
     function updateAdsForPersona5(characterName) {
         try {
@@ -2039,7 +2029,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // Persona 3, 5 광고 숨기기
                 const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
                 const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');
-                
+
                 p5AdsToHide.forEach(ad => {
                     if (ad && ad.style) {
                         ad.style.display = 'none';
@@ -2073,7 +2063,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 if (recommendations && recommendations.style.display !== 'none') {
                     loadRecommendations(characterName);
                 }
-                
+
             }
         });
     });
@@ -2085,14 +2075,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         partyData.forEach((party, index) => {
             const partySection = document.createElement('div');
             partySection.className = 'party-section';
-            
+
             // 파티 코멘트 컨테이너 생성 (나중에 추가하기 위해)
             let commentEl = null;
             if (party.comment || party.comment_en || party.comment_jp) {
                 const currentLang = getCurrentLanguage();
                 commentEl = document.createElement('p');
                 commentEl.className = 'party-comment';
-                
+
                 if (currentLang === 'en' && party.comment_en) {
                     commentEl.textContent = party.comment_en;
                 } else if (currentLang === 'jp' && party.comment_jp) {
@@ -2101,10 +2091,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     commentEl.textContent = party.comment;
                 }
             }
-            
+
             const partyList = document.createElement('div');
             partyList.className = 'party-list';
-            
+
             // Process each member asynchronously
             const processMembers = async () => {
                 const currentPageChar = new URLSearchParams(window.location.search).get('name');
@@ -2116,10 +2106,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     }
                     // Check if character is released in current language using Korean name
                     const isReleased = await isCharacterReleased(memberName);
-                    
+
                     if (!isReleased && memberName !== currentPageChar && memberName !== "") {
                         memberItem.classList.add('spoiler');
-                        memberItem.addEventListener('click', function(e) {
+                        memberItem.addEventListener('click', function (e) {
                             if (this.classList.contains('spoiler')) {
                                 e.preventDefault();
                                 e.stopPropagation();
@@ -2132,31 +2122,31 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     if (memberName === currentPageChar) {
                         memberItem.classList.remove('spoiler');
                     }
-                
-                const link = document.createElement('a');
-                link.href = `character.html?name=${memberName}`;
-                
-                const img = document.createElement('img');
-                img.src = `../assets/img/tier/${memberName}.webp`;
-                img.alt = memberName;
-                img.onerror = function() { this.style.display = 'none'; };
-                
-                const name = document.createElement('span');
+
+                    const link = document.createElement('a');
+                    link.href = `character.html?name=${memberName}`;
+
+                    const img = document.createElement('img');
+                    img.src = `../assets/img/tier/${memberName}.webp`;
+                    img.alt = memberName;
+                    img.onerror = function () { this.style.display = 'none'; };
+
+                    const name = document.createElement('span');
                     name.className = 'character-name';
-                name.textContent = getLocalizedCharacterName(memberName);
-                
-                link.appendChild(img);
-                memberItem.appendChild(link);
-                memberItem.appendChild(name);
+                    name.textContent = getLocalizedCharacterName(memberName);
+
+                    link.appendChild(img);
+                    memberItem.appendChild(link);
+                    memberItem.appendChild(name);
                     partyList.appendChild(memberItem);
                 }
             };
-            
+
             // Start processing members
             processMembers();
-            
+
             partySection.appendChild(partyList);
-            
+
             // 파티 리스트 아래에 코멘트 추가
             if (commentEl) {
                 const commentContainer = document.createElement('div');
@@ -2164,23 +2154,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 commentContainer.appendChild(commentEl);
                 partySection.appendChild(commentContainer);
             }
-            
+
             container.appendChild(partySection);
         });
     }
-    
+
     // Weapon Effect Modal Functions
     function showWeaponEffect(weaponId, imageUrl, weaponName) {
         const modal = document.getElementById('weapon-effect-modal');
         const modalImage = document.getElementById('weapon-effect-image');
         const modalTitle = document.getElementById('weapon-effect-title');
         const modalDescription = document.getElementById('weapon-effect-description');
-        
+
         // Set the weapon image and name
         modalImage.src = imageUrl;
         modalImage.alt = weaponName;
         modalTitle.textContent = weaponName;
-        
+
         // Get the effect text based on current language
         let effectText = 'No effect information available.';
         if (matchWeapons && matchWeapons[weaponId]) {
@@ -2192,7 +2182,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 effectText = matchWeapons[weaponId].effect; // Default to Korean
             }
         }
-        
+
         // Set the effect text with proper line breaks
         modalDescription.innerHTML = effectText.replace(/\n/g, '<br>');
 
@@ -2206,19 +2196,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         detailLink.textContent = 'Detail →';
         detailLink.target = '_blank';
         modalDescription.appendChild(detailLink);
-        
+
         // Show the modal
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
     }
-    
+
     // Close modal when clicking the close button
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (e.target.closest('.weapon-effect-close')) {
             closeWeaponEffectModal();
             return;
         }
-        
+
         // Close modal when clicking outside the modal content
         const modal = document.getElementById('weapon-effect-modal');
         const modalContent = document.querySelector('.weapon-effect-modal-content');
@@ -2226,23 +2216,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             closeWeaponEffectModal();
         }
     });
-    
+
     // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         const modal = document.getElementById('weapon-effect-modal');
         if (e.key === 'Escape' && modal.classList.contains('show')) {
             closeWeaponEffectModal();
         }
     });
-    
+
     function closeWeaponEffectModal() {
         const modal = document.getElementById('weapon-effect-modal');
         modal.classList.remove('show');
         document.body.style.overflow = '';
-    }    
+    }
     // 실수로 포커스가 들어오면 즉시 떼기(드래그는 유지됨)
     document.querySelectorAll('.drag-me').forEach(el => {
-    el.addEventListener('focus', () => el.blur());
+        el.addEventListener('focus', () => el.blur());
     });
 
 </script>
@@ -2274,27 +2264,29 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
 <style>
     @media screen and (max-width: 1200px) {
-        .post-item{
+        .post-item {
             width: calc(100% - 40px);
             display: flex;
             flex-wrap: wrap;
             justify-content: left;
             gap: 0 !important;
         }
-        .tactic-preview-container{
+
+        .tactic-preview-container {
             margin-left: 16px !important;
         }
 
-        .post-footer{
+        .post-footer {
             display: none;
         }
     }
-    .posts-list{
+
+    .posts-list {
         margin-bottom: 20px;
     }
-    .party-images-container{
+
+    .party-images-container {
         justify-content: right;
         margin-right: 16px;
     }
-
 </style>

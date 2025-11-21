@@ -51,7 +51,7 @@ const enCharacterRitualData = {
         "r5": "The Super Dimension Fleet",
         "r5_detail": "Increase the skill levels of Cosmic Smash and Thief Tactics by 3",
         "r6": "Galactic Celebration",
-                // gradient (#9A0BB5)(#C7BE5A)(#FF00E4)(#4ECC4F)
+        // gradient (#9A0BB5)(#C7BE5A)(#FF00E4)(#4ECC4F)
         "r6_detail": "Unlock [<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>Prismatic Wings</span>] state, [<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>Prismatic Wings</span>] has the ability of [<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>], [<span style='color:#C7BE5A;'>Potato Yellow</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>], and [<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>].\nAt the start of battle, [Smash] state is active. This effect is permanent.\nChange [Smash] effect to: At the end of all allies' turn, activate Resonance [Vegetable Knights: Strike].\nWhen YUI manually uses [Vegetable Knights: Assemble], summon 1 more [<span style='color:#C7BE5A;'>Potato Knight</span>]."
     },
     "카타야마": {
@@ -224,7 +224,7 @@ const enCharacterRitualData = {
         "r6": "Quick as Lightning",
         "r6_detail": "At the start of battle, heavily increases starting [Velocity] to 120km/h.\nDuring Extra Turn, you can use [Quantum Transmission] to turn 40km/h [Velocity] into Boost Energy, boosting your next Persona skill effect (up to 2 Boost Energy).\nHigh Skill Upgrade Effects (Need at least 1 Boost Energy):\n[Vortex Strangle]: When using this skill, increases own CRIT Rate by 20%; If this downs an enemy, increases all allies' ATK by 25% for 2 turns;\n[Overload Acceleration]: Increases Shield by 20%, extends the Shield by 1 turn;\n[Roaring Engine]: Now apply the PEN buff during Extra Turn on all allies.\nUltimate Skill Upgrade Effects (Need 2 Boost Energy):\n[Vortex Strangle]: Increases all allies' DMG Dealt to Downed enemies by 15% for 2 turn;\n[Overload Acceleration]: Decreases all allies' DMG Taken by 20% for 2 turn;\n[Roaring Engine]: Increases all allies' DMG Bonus by 25% for 2 turns."
     },
-    "아케치" : {
+    "아케치": {
         "name": "Goro Akechi",
         "r0": "Walking in Fog",
         "r0_detail": "At the start of battle, give the ally with the highest ATK [Detective Partner] (Prioritizing Dominate or Rebel Thief). Crow can manually choose a [Detective Partner] at the start of his turn (There can only be 1 [Detective Partner] at any given time). Crow gains 25% of the [Detective Partner]'s ATK, up to 500/750/1000 (at level 1, 50, 70). When [Detective Partner] deal DMG with a Persona skill/ HIGHLIGHT/ Follow Up, record their average DMG Dealt to all enemies (If it was a single target skill, then record 40% of the DMG). At the start of Crow's turn, gain 1 stack of [Arrow of Clarity] based on the total recorded DMG then clear the record. [Arrow of Clarity] lasts for 2 turns.",
@@ -511,7 +511,8 @@ const enCharacterRitualData = {
         "r5": "Explosive Cupcakes",
         "r5_detail": "[Fusion Aiming] Lv. +3, up to a maximum of Lv. 15.\n[Suppressing Fire] Lv. +3, up to a maximum of Lv. 15.",
         "r6": "Nightmare Rhapsody",
-        "r6_detail": "When Noir has not less than 2 [Customization], evolve your Gun Attack to [Farewell Gift]: Additionally deal 1 hit of Gun Attack damage with all [Customization] at 50% original damage. [Customization] from Persona skills give additional effects:\n- [Thermal Customization]: Gun Attack additionally decrease enemies' Effect RES by 27% for 2 turns;\n- [Piercing Customization]: Gun Attack gain 12% PEN when Noir has [Sight];\n- [Spreading Customization]: Gun Attack gain 20% CRIT Rate and 20% CRIT DMG when Haru Okumura has [Sight]."                                                                                                                                                                                                                                  },
+        "r6_detail": "When Noir has not less than 2 [Customization], evolve your Gun Attack to [Farewell Gift]: Additionally deal 1 hit of Gun Attack damage with all [Customization] at 50% original damage. [Customization] from Persona skills give additional effects:\n- [Thermal Customization]: Gun Attack additionally decrease enemies' Effect RES by 27% for 2 turns;\n- [Piercing Customization]: Gun Attack gain 12% PEN when Noir has [Sight];\n- [Spreading Customization]: Gun Attack gain 20% CRIT Rate and 20% CRIT DMG when Haru Okumura has [Sight]."
+    },
     "후타바": {
         "name": "Futaba Sakura",
         "r0": "Data Scan",
@@ -894,5 +895,5 @@ window.enCharacterRitualData = enCharacterRitualData;
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = characterRitualData;
+    module.exports = enCharacterRitualData;
 }

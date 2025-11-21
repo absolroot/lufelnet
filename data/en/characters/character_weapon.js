@@ -1,10 +1,10 @@
-enCharacterWeaponData = {
+const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
     "후카": {
         "name": "야마기시 후카",
-        "weapon4-1":{
+        "weapon4-1": {
             "name": "D-Type Telecoms",
             "health": 1839,
             "attack": 592,
@@ -12,7 +12,7 @@ enCharacterWeaponData = {
             "skill_name": "Voice of Encouragement",
             "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After user uses [Oracle Shift], increase user's Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
-        "weapon5-1":{
+        "weapon5-1": {
             "name": "Rainbow Conductor",
             "health": 2299,
             "attack": 740,
@@ -23,7 +23,7 @@ enCharacterWeaponData = {
     },
     "미츠루": {
         "name": "키리조 미츠루",
-        "weapon4-1":{
+        "weapon4-1": {
             "name": "Rose Flamberge",
             "health": 1823,
             "attack": 581,
@@ -31,7 +31,7 @@ enCharacterWeaponData = {
             "skill_name": "Elegant Presence",
             "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When inflicting [Frost], increase user's damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn."
         },
-        "weapon5-1":{
+        "weapon5-1": {
             "name": "Longinus",
             "health": 2279,
             "attack": 726,
@@ -62,7 +62,7 @@ enCharacterWeaponData = {
     },
     "카타야마": {
         "name": "Kumi Katayama",
-        "weapon3-1":{
+        "weapon3-1": {
             "name": "Combat Boots",
             "health": 1343,
             "attack": 424,
@@ -77,15 +77,15 @@ enCharacterWeaponData = {
             "defense": 317,
             "skill_name": "Night Roamer",
             "description": "Increase Attack by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%.\nWhen user knocks down a foe, increase user's Attack by 7.5/9.8/9.8/12.0/12.0/14.2/14.2% for every knocked down foe, up to 22.5/29.2/29.2/36.0/36.0/42.7/42.7%. Lasts for 1 turn."
-                    },
+        },
         "weapon5-1": {
             "name": "Ironsworn Rider",
             "health": 2239,
             "attack": 706,
             "defense": 396,
-				"skill_name": "Demon Unleashed",
-				"description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nAfter user knocks down a foe, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
-       }
+            "skill_name": "Demon Unleashed",
+            "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nAfter user knocks down a foe, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+        }
     },
     "미유·여름": {
         "name": "Miyu Sahara Summer",
@@ -95,7 +95,7 @@ enCharacterWeaponData = {
             "attack": 623,
             "defense": 313,
             "skill_name": "Sunlight Stroll",
-				"description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When [Ocean's Domain] is active, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When [Ocean's Domain] is active, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
         },
         "weapon5-1": {
             "name": "Dreaming Mermaid",
@@ -306,7 +306,7 @@ enCharacterWeaponData = {
             "description": "EHR is increased by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%; ATK is increased by 66.0%/68.0%/68.0%/70.0%/70.0%/72.0%/72.0% of EHR in battle. When dealing Ice TECHNICAL, decrease the foes' DEF by 23.3%/30.3%/30.3%/37.3%/37.3%/44.3%/44.3% for 2 turns."
         }
     },
-    "루우나": { 
+    "루우나": {
         "name": "Runa Dogenzaka",
         "weapon4-1": {
             "name": "Howling Hunter",
@@ -428,7 +428,7 @@ enCharacterWeaponData = {
             "description": "Increase Bless damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%.When Summer Hype is active, increase critical damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%.When using Surf 'n' Shine when Summer Hype is active, increase that skill's damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% and gain 1 Sunlight stack.When using a skill or Highlight, spend 1 Sunlight stack to increase the skill's damage by the same amount.Damage increases from Summer Hype and Sunlight will not stack, even if activated at the same time."
         }
     },
-    "몽타뉴·백조": { 
+    "몽타뉴·백조": {
         "name": "Montagne Kotone·Swan",
         "weapon4-1": {
             "name": "Fille de Borée",
@@ -542,8 +542,8 @@ enCharacterWeaponData = {
     },
     "키라": {
         "name": "Kira Kitazato",
-        "weapon4-1": {"name":"Undying Embers","health":1966.49,"attack":596.93,"defense":288.61,"skill_name":"","description":"Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhenever inflicting Bleed on foes, increase Attack by 1.8%/2.4%/2.4%/3.0%/3.0%/3.6%/3.6% more. This effect is permanent and stacks up to 10 times."},
-        "weapon5-1": {"name":"Bloodletter","health":2457.7,"attack":746.53,"defense":361.15,"skill_name":"","description":"Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Increase ailment accuracy by 15%.\nIncrease pierce rate of Rending damage by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%.\nIncrease damage dealt to foes inflicted with Bleed by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%."}
+        "weapon4-1": { "name": "Undying Embers", "health": 1966.49, "attack": 596.93, "defense": 288.61, "skill_name": "", "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhenever inflicting Bleed on foes, increase Attack by 1.8%/2.4%/2.4%/3.0%/3.0%/3.6%/3.6% more. This effect is permanent and stacks up to 10 times." },
+        "weapon5-1": { "name": "Bloodletter", "health": 2457.7, "attack": 746.53, "defense": 361.15, "skill_name": "", "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Increase ailment accuracy by 15%.\nIncrease pierce rate of Rending damage by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%.\nIncrease damage dealt to foes inflicted with Bleed by 25.0%/32.5%/32.5%/40.0%/40.0%/47.5%/47.5%." }
     },
     "토모코·여름": {
         "name": "Seaside Tomoko",
@@ -585,8 +585,8 @@ enCharacterWeaponData = {
     },
     "후타바": {
         "name": "Futaba Sakura",
-        "weapon4-1": {"name":"Cyberdeck Pro","health":1791.59,"attack":602.36,"defense":317.1,"skill_name":"","description":"Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter inflicting Virus on a foe, increase the target's damage taken by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns."},
-        "weapon5-1": {"name":"Technomage Ultra FS","health":2239.65,"attack":753.13,"defense":396.41,"skill_name":"","description":"Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen an ally deals weakness damage, increase the ally's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.\nAfter Futaba inflicts a debuff with a skill, increase the foe's critical damage taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns. This effect can stack up to 2 times."}
+        "weapon4-1": { "name": "Cyberdeck Pro", "health": 1791.59, "attack": 602.36, "defense": 317.1, "skill_name": "", "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter inflicting Virus on a foe, increase the target's damage taken by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns." },
+        "weapon5-1": { "name": "Technomage Ultra FS", "health": 2239.65, "attack": 753.13, "defense": 396.41, "skill_name": "", "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen an ally deals weakness damage, increase the ally's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.\nAfter Futaba inflicts a debuff with a skill, increase the foe's critical damage taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns. This effect can stack up to 2 times." }
     },
 
 
@@ -609,14 +609,14 @@ enCharacterWeaponData = {
     },
     "미나미": {
         "name": "Minami Miyashita",
-        "weapon4-1":{
+        "weapon4-1": {
             "name": "Hymn of Life",
             "health": 2188,
             "attack": 481,
             "defense": 355,
             "description": "Increase healing effect by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. Increase continuous healing effect by 28.5%/37.0%/37.0%/45.5%/45.5%/54.0%/54.0%. After using a healing skill, 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% chance to grant Blessing to the main target."
         },
-        "weapon5-1":{
+        "weapon5-1": {
             "name": "Angel Heart",
             "health": 2735,
             "attack": 601,
@@ -633,7 +633,7 @@ enCharacterWeaponData = {
             "defense": 299,
             "description": "Increase critical rate by 7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%. When performing a follow-up attack, increase Electric damage by 9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4% for 1 turn. Stacks up to 2 times."
         },
-        "weapon5-1":{
+        "weapon5-1": {
             "name": "Cyber Jammers",
             "health": 2259,
             "attack": 759,
@@ -735,14 +735,14 @@ enCharacterWeaponData = {
     },
     "하루나": {
         "name": "Haruna Nishimori",
-        "weapon4-1":{
+        "weapon4-1": {
             "name": "Chirpy Pickaxe",
             "health": 1870,
             "attack": 533,
             "defense": 349,
             "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After using a skill on an ally, for each Attack buff on the ally, increase Attack by 2.4%/3.1%/3.1%/3.8%/3.8%/4.5%/4.5% for 2 turns. Stacks up to 3 times."
         },
-        "weapon5-1":{
+        "weapon5-1": {
             "name": "Sweet Pickaxe",
             "health": 2338,
             "attack": 667,
@@ -752,14 +752,14 @@ enCharacterWeaponData = {
     },
     "루페르": {
         "name": "Lufel",
-        "weapon4-1":{
+        "weapon4-1": {
             "name": "Lava Flame",
             "health": 1981,
             "attack": 554,
             "defense": 334,
             "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. If Starfire is active, increase healing effect by 6.9%/9.0%/9.0%/11.1%/11.1%/13.2%/13.2% per stack of Starfire."
         },
-        "weapon5-1":{
+        "weapon5-1": {
             "name": "Fallen Angel Wing",
             "health": 2477,
             "attack": 693,
@@ -808,7 +808,7 @@ enCharacterWeaponData = {
             "health": 1728,
             "attack": 607,
             "defense": 328,
-				"skill_name": "Don Glacial",
+            "skill_name": "Don Glacial",
             "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Increase Ice DMG Dealt when obtaining [Ice Crystal] by 2.4%/3.1%/3.1%/3.8%/3.8%/4.5%/4.5% for 1 turn and up to 10 stacks."
         },
         "weapon5-1": {
@@ -816,7 +816,7 @@ enCharacterWeaponData = {
             "health": 2160,
             "attack": 759,
             "defense": 409,
-			"skill_name": "Hiver Éternel",
+            "skill_name": "Hiver Éternel",
             "description": "CRIT DMG is increased by by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.  [Blade Dancer] can now be casted at 8 [Ice Crystal]. [Blade Dancer]'s DMG Dealt is increased by by 46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%. Additionally, [Durandal of Ice] is now enhanced at 8 [Ice Crystal]."
         }
     },
@@ -963,5 +963,5 @@ window.enCharacterWeaponData = enCharacterWeaponData;
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = characterWeaponData;
+    module.exports = enCharacterWeaponData;
 }

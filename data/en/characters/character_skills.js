@@ -13,7 +13,7 @@ const enCharacterSkillsData = {
         },
         "skill2": {
             "name": "Holy Prayer",
-            "element": "버프광역", 
+            "element": "버프광역",
             "type": "버프",
             "cool": 16,
             "description": "Initial Cooldown Time: 16 ally actions\nIncrease party's Attack by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%. Lasts for 3 turns. If main target is a S.E.E.S. member, restore target's Theurgy Energy by 35 points, then increase target's Theurgy damage by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%. Lasts for 3 turns; If the main target is not a S.E.E.S. member, restore HIGHLIGHT Energy by 35 points, then increase target's HIGHLIGHT damage by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%.\nThis skill has an independent cooldown and does not affect the cooldown time of other skills."
@@ -53,9 +53,9 @@ const enCharacterSkillsData = {
         },
         "skill2": {
             "name": "Arctic Storm",
-            "element": "버프", 
+            "element": "버프",
             "type": "단일피해",
-            "sp": 0, 
+            "sp": 0,
             "description": "Inflict 1 foe with [Queen's Gaze]. Decrease DEF by 7.8%/8.6%/8.3%/9.1%, also decrease Defense by 3.2% for every 300 Attack (up to 2928/3228/3108/3408 Attack) and increase damage taken by 2% for every every 300 Attack (up to 2928/3228/3108/3408 Attack). This effect is permanent. Only 1 [Queen's Gaze] can be active. When selecting a new target, pass [Queen's Gaze] to the new target. When the target with [Queen's Gaze] is defeated, pass [Queen's Gaze] to the highest HP foe. When passing [Queen's Gaze], pass all debuffs inflicted by Mitsuru. Mitsuru can use other skills, this doesn't count as a Persona skill."
         },
         "skill3": {
@@ -94,7 +94,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Cosmic Smash",
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 22,
             "cool": 0,
             "description": "Deal Nuke damage to 1 foe equal to 100.7%/111.0%/106.9%/117.2% of Attack, gain 3 points of [Mobilize Energy] and enter [Smash] state for 2 turns.\n\n[Smash]: At the end of YUI's turn, activate Resonance [Vegetable Knights: Strike], command all Vegetable Knights to deal Nuke damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack, then activate the following effects based on the current color state:\n\n[<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>]: Gain 1 point of [Mobilize Energy];\n[<span style='color:#C7BE5A;'>Potato Yellow</span>]: YUI gains [Tuber Power], increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\n[<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>]: Inflict skill target with [Mushroom Spores], increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\n[<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>]: Restore 976/1076/1036/1136 HP to the lowest HP ally.\n\nIf YUI has [<span style='color:#C7BE5A;'>Potato Knight</span>] after using this skill, change to [<span style='color:#C7BE5A;'>Potato Yellow</span>] state at the end of YUI's action."
@@ -102,7 +102,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Vegetable Knights: Assemble",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 0,
             "cool": 1,
             "description": "Increase YUI's Attack by 19.5%/21.5%/20.7%/22.7% and critical rate by 11.7%/12.9%/12.4%/13.6. Lasts for 2 turns. Summon 1 Vegetable Knight in a specific order. After using this skill, YUI can use other skills, this doesn't count as a Persona skill. \nPassive: At the start of turn, automatically summon 1 Vegetable Knight in a specific order. \nYUI can only have 1 [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Knight</span>], [<span style='color:rgb(11, 190, 11);'>Asparagus Knight</span>], and 4 [<span style='color:#C7BE5A;'>Potato Knights</span>]."
@@ -110,14 +110,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Vegetable Knights: Mobilize",
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 23,
             "cool": 0,
             "description": "Deal Nuke damage to 1 foe equal to 104.3%/115.0%/110.7%/121.4% of Attack, for every 1 Vegetable Knight, deal bonus Nuke damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. When YUI has 2 or more [<span style='color:#C7BE5A;'>Potato Knights</span>], spend additional Potato Knights, for every 1 Potato Knight spent, deal bonus Nuke damage equal to 24.4%/26.9%/25.9%/28.4%% of Attack. This skill damage counts as an All-Out Attack damage. When YUI manually uses this skill, gain 2 points of [Mobilize Energy].\n\nPassive: When YUI has 7 or more [Mobilize Energy] points, spend all [Mobilize Energy] to deal the damage from [Vegetable Knights: Mobilize], distribute this damage between all foes, this doesn't count as Persona skill damage.\nIf YUI has [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] after using this skill, change to [<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>] state at the end of YUI's action."
         },
         "skill_highlight": {
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "description": "Deal Nuke damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack, and immediately activate [Vegetable Knights: Strike] on that foe based on specific rules."
         },
         "passive1": {
@@ -141,7 +141,7 @@ const enCharacterSkillsData = {
             "cool": 0,
             "description": "Deal Elec damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 2 turns.\nIf Katayama has [Super Limit], increase skill damage by 30%.\nUnlock [Secret Art: Lightning Legs]."
 
-      },
+        },
         "skill2": {
             "name": "Thunderous Judgement",
             "element": "전격광역",
@@ -268,7 +268,7 @@ const enCharacterSkillsData = {
             "description": "When Minami is on the field, increase allies' Attack by 12%. Increase Attack by 15% more for each Buff Item effect on allies."
         }
     },
-	"이치고": {
+    "이치고": {
         "name": "Ichigo Shikano",
         "skill1": {
             "name": "Butterfly Beheadment",
@@ -311,7 +311,7 @@ const enCharacterSkillsData = {
             "description": "When Ichigo is on the field, increase party's Damage Over Time Effect by 15%."
         }
     },
-	"사나다": {
+    "사나다": {
         "name": "Akihiko Sanada",
         "skill1": {
             "name": "Lightning Domain",
@@ -362,7 +362,7 @@ const enCharacterSkillsData = {
             "description": "After dealing critical damage, increase Attack by 13.5% for 3 turns. Stacks up to 3 times."
         }
     },
-"유카리": {
+    "유카리": {
         "name": "Yukari Takeba",
         "skill1": {
             "name": "Wind Burst",
@@ -415,7 +415,7 @@ const enCharacterSkillsData = {
             "description": "During battle, increase Yukari's max HP by 100 for every 60 Attack, up to 2700."
         }
     },
-	"유키 마코토": {
+    "유키 마코토": {
         "name": "Makoto Yuki",
         "skill1": {
             "name": "Melodic Blaze",
@@ -471,7 +471,7 @@ const enCharacterSkillsData = {
             "description": "When Makoto receives a buff/healing/shielding from allies, increase critical damage by 7.2% for 2 turns. Stacks up to 3 times."
         }
     },
-	"이케나미": {
+    "이케나미": {
         "name": "Shoki Ikenami",
         "skill1": {
             "name": "Spotlight Soliloquy",
@@ -513,7 +513,7 @@ const enCharacterSkillsData = {
             "description": "For every 1% EHR, increase ATK by 0.72%, up to 72.0%."
         }
     },
-	"마나카": {
+    "마나카": {
         "name": "Manaka Nagao",
         "skill1": {
             "name": "Choir of Doves",
@@ -552,7 +552,7 @@ const enCharacterSkillsData = {
             "description": "Based on gained [Holy Song] stacks, increase party's pierce rate by 1.0%. Stacks up to 12 times."
         }
     },
-	"마유미": {
+    "마유미": {
         "name": "Mayumi Hashimoto",
         "skill1": {
             "name": "Vortex Suppression",
@@ -594,12 +594,12 @@ const enCharacterSkillsData = {
             "description": "When Turbo is present, increase all allies' DMG Dealt to Downed enemies by 24.0%. Turbo will deal an additional 48.0% ATK as Phys DMG to the main target when she Downs an enemy."
         }
     },
-	"아케치": {
+    "아케치": {
         "name": "Goro Akechi",
         "skill1": {
             "name": "Vow of Justice",
             "element": "축복광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deals 93.2%/102.8%/98.9%/108.5% ATK as Bless DMG to all enemies, and restore 1561/1561/1657/1657 HP to all allies, then gives all allies 1 stack of Blessing. Crow gains [Truth], then gain [Clarity] for 2 turns. Under [Clarity], increase all allies' DMG Dealt by 19.5%/21.5%/20.7%/22.7%."
@@ -607,7 +607,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Unjust Hunting Ground",
             "element": "주원광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deals 116.5%/128.5%/123.7%/135.6% ATK as Curse DMG to all enemies, Crow gains [Truth], then gain [Chaos] for 2 turns. Under [Chaos], decrease all enemies' DEF by 25.4%/28.0%/26.9%/29.5%, adds 1 more shot to [Arrow of Chaos] and increase its DMG Dealt by 19.5%/21.5%/20.7%/22.7%."
@@ -615,14 +615,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Golden Arrow Rain - Annihilate",
             "element": "만능광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 24,
             "cool": 0,
             "description": "Unlock condition: When Crow has [Truth].\nConsumes all [Arrow of Clarity], deals 19.5%/21.5%/20.7%/22.7% of the recorded damage from [Arrow of Clarity] as fixed Almighty DMG (can't CRIT) to all enemies. Then randomly shoots 4 [Arrow of Chaos], each dealing 77.4%/85.3%/82.2%/90.1% ATK as Almighty DMG, prioritizing enemies that have not been attacked yet. Crow will only deal 15% DMG to the same target."
         },
         "skill_highlight": {
             "element": "만능",
-            "type":"광역피해",
+            "type": "광역피해",
             "description": "Deals 103.5%/114.1%/109.8%/120.4% ATK as Bless DMG and 103.5%/114.1%/109.8%/120.4% ATK as Curse DMG to all enemies, adds 2 more shots to [Arrow of Chaos] for 4 turns."
         },
         "passive1": {
@@ -634,37 +634,37 @@ const enCharacterSkillsData = {
             "name": "Desire",
             "element": "패시브",
             "description": "When dealing Almighty DMG, for every 1% DEF Down on the target, increase DMG Dealt by 0.5%. (Up to 120.0%)"
-        }    
+        }
     },
-	"미오": {
+    "미오": {
         "name": "Mio Natsukawa",
         "skill1": {
             "name": "Echoing Tides",
             "element": "빙결광역",
-            "type":"디버프", 
+            "type": "디버프",
             "sp": 20,
             "cool": 0,
             "description": "Gain 1 stack of [Extinguishing Power] and deals 97.6%/107.6%/103.6%/113.6% ATK as Ice DMG to all enemies, with a 50% base chance to inflict Freeze and decreases their DEF by 7.8%/8.6%/8.3%/9.1% (For every 5.47% EHR, additionally decreases DEF by 1%, up to 31.2%/34.4%/33.2%/36.4%) for 3 turns. When any Thieves attack foes with this effect, increase their TECHNICAL Mastery by 195/195/207/207. \nIf the target is inflicted with Burn, dispels their Burn then inflicts all enemies with [Fading Flame] ([Fading Flame] cannot trigger this effect). \n[Fading Flame]: Increases all Thieves's TECHNICAL Mastery by 976/1076/1036/1136 when attacking enemies with this effect. This effect is considered as Burn and lasts for 3 turns."
         },
         "skill2": {
             "name": "Binding Waves",
-            "element": "빙결",      
-            "type":"제어",
+            "element": "빙결",
+            "type": "제어",
             "sp": 20,
             "cool": 0,
             "description": "Deals 195.2%/215.2%/207.2%/227.2% ATK as Ice DMG to 1 enemy. Deals Ice TECHNICAL, then increases the base chance when triggering [Ice Seal] to 43.9%/48.4%/46.6%/51.1%."
-        },      
+        },
         "skill3": {
             "name": "Bursting Waterfall",
             "element": "빙결광역",
-            "type":"디버프",
+            "type": "디버프",
             "sp": 20,
             "cool": 0,
             "description": "Unlocks when Matoi has 2 stacks of [Extinguishing Power];\nConsumes 2 stacks of [Extinguishing Power], deals 109.8%/121.1%/116.5%/127.8% ATK as Ice DMG to all enemies and decreases their DEF by 7.3%/8.1%/7.7%/8.5% (For every 5.83% EHR, additionally decreases DEF by 1%, up to 29.3%/32.3%/31.1%/34.1%) for 2 turns. Deals Ice TECHNICAL, and when triggering [Ice Burn], upgrades to [Cold Shine].\n[Cold Shine]: Increase all enemies' DMG Taken by 9.8%/10.8%/10.4%/11.4% (For every 4.38% EHR, additionally increases DMG Taken by 1%, up to 39.0%/43.0%/41.4%/45.4%).\nWhen you have 4 stacks of [Extinguishing Power], upgrade this skill to [Bursting Waterfall·Tornado];\n[Bursting Waterfall·Tornado]: Consumes 4 stacks of [Extinguishing Power], deals 131.8%/145.3%/139.9%/153.4% ATK as Ice DMG to all enemies and decreases their DEF by 8.8%/9.7%/9.3%/10.2% (For every 4.86% EHR, additionally decreases DEF by 1%, up to 35.1%/38.7%/37.3%/40.9%) for 2 turns. Deals Ice TECHNICAL, and when triggering [Ice Burn], upgrades to [Cold Shine].\n[Cold Shine]: Increase all DMG Taken by 11.7%/12.9%/12.4%/13.6% (For every 3.65% EHR, additionally increases DMG Taken by 1%, up to 46.8%/51.6%/49.7%/54.5%)."
         },
         "skill_highlight": {
             "element": "빙결광역",
-            "type":"디버프",
+            "type": "디버프",
             "description": "Deals 39.0%/43.0%/41.4%/45.4% ATK as Ice DMG to all enemies and increases their DMG Taken (For every 5.83% EHR, increases DMG Taken by 1%, up to 29.3%/32.3%/31.1%/34.1%) for 2 turns. Deals Ice TECHNICAL, then increases the base chance when triggering [Ice Seal] to 28%, enemies with [Ice Seal] additionally increases DMG Taken (For every 17.5%, additionally increases DMG Taken by 1% up to 9.8%/10.8%/10.4%/11.4%). Then, deals 117.1%/129.1%/124.3%/136.3% ATK as Ice DMG to all enemies."
         },
         "passive1": {
@@ -683,7 +683,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Fiery Handshake",
             "element": "화염광역",
-            "type":"디버프",
+            "type": "디버프",
             "sp": 22,
             "cool": 0,
             "description": "Deals 73.2%/80.7%/77.7%/85.2% ATK as Fire DMG to all enemies, decreases the target's DEF based on 15.4% own EHR, up to 26.4%/29.2%/27.9%/30.7% for 2 turns, additionally decreases DEF by 26.4% when taking Fire DMG. There is a 50% base chance to inflict Burn. Howler gains [Warm Welcome]. (Cannot stack the DEF Down effect with [Intimidate Baddie].)"
@@ -691,7 +691,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Intimidate Baddie",
             "element": "화염",
-            "type":"디버프",
+            "type": "디버프",
             "sp": 22,
             "cool": 0,
             "description": "Deals 170.8%/188.3%/181.3%/198.8% ATK as Fire DMG to 1 enemy, decreases the target's DEF by 14.6%/14.6%/15.5%/15.5% + 31.4% of own EHR (up to 53.7%/59.3%/56.9%/62.5% DEF Down) for 2 turns. You gain [Furious Pursue]. (Cannot stack the DEF Down effect with [Fiery Handshake].)"
@@ -699,14 +699,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "GOGO WOOF WOOF RU!",
             "element": "화염광역",
-            "type":"디버프",
+            "type": "디버프",
             "sp": 24,
             "cool": 0,
             "description": "Requirement: You have [Warm Welcome] or [Furious Pursue]. When you have [Warm Welcome] or [Furious Pursue], triggers their corresponding effect. Only one effect can be triggered.\n- [Warm Welcome]: Deals 109.8%/109.8%/116.6%/116.6% ATK as Fire DMG to all enemies, increases the target's DMG Taken based on 24% of own EHR, up to 41.0%/45.2%/43.5%/47.7%, increases their Fire DMG Taken by 20.5%/22.7%/21.7%/23.9% for 2 turns.\n- [Furious Pursue]: Deals 219.6%/219.6%/233.1%/233.1% ATK as Fire DMG to 1 enemy, increases the target's DMG Taken based on 34.3% of own EHR, up to 58.6%/64.7%/62.1%/68.2%, increases their Follow Up DMG Taken by 29.3%/31.6%/31.8%/34.1% for 2 turns."
         },
         "skill_highlight": {
             "element": "화염광역",
-            "type":"디버프",
+            "type": "디버프",
             "description": "Deals 214.7%/236.7%/227.9%/249.9% ATK as Fire DMG to all enemies, inflicts all enemies with 2 stacks of [Big Bad]: Consumes 1 stack when any enemy take Follow Up DMG or Fire DMG to increase that damage based on 22.9% own EHR, up to 39.0%/43.0%/41.4%/45.4% for 2 turns."
         },
         "passive1": {
@@ -725,21 +725,21 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Scattered Plum Blossoms",
             "element": "버프광역",
-            "type":"디버프",
+            "type": "디버프",
             "cool": 4,
             "description": "Decrease all foes' Defense by 10.0%/10.0%/10.8%/10.8% for 2 turns.\nWhen Riko's Speed is at 100 or more, decrease Defense by 4.9% for every 10 points of Speed over 100, up to 29.4%/32.3%/31.8%/34.7%.\nAlso inflict Insight on the main target."
         },
         "skill2": {
             "name": "Dreams in the Mist ",
             "element": "버프광역",
-            "type":"디버프",
+            "type": "디버프",
             "cool": 8,
             "description": "Increase all foes' damage taken by 10.5%/11.6%/11.3%/12.4% for 2 turns.\nWhen an ally lowers a foe's Down Points or knocks down a foe, decrease cooldown time by 1. When cooldown time reaches 0, activate this skill."
         },
         "skill3": {
             "name": "Verngale Petals",
             "element": "버프광역",
-            "type":"버프",
+            "type": "버프",
             "cool": 8,
             "unlock": "『Intel』 stacks ≥ 5",
             "description": "Spend all Intel stacks to grant Fair Winds to party for 1 turn and restore targeted ally's HP by 12.7%/12.7%/13.7%/13.7%.\nFair Winds: Increase damage to foes by 12.6%/13.9%/13.6%/14.9%. Increase more based on Riko's Speed and the number of Intel stacks spent. If Riko's Speed is above 100, increase damage by 1.05% for every 10 points of Speed over 100, up to 6.3%/6.9%/6.8%/7.4%."
@@ -747,7 +747,7 @@ const enCharacterSkillsData = {
         "skill_highlight": {
             "name": "Attribute Boost",
             "element": "패시브",
-            "type":"패시브",
+            "type": "패시브",
             "description": "Increases all allies' corresponding attribute stats by 15% of the Revealed Phantom Thief's attributes."
         },
         "passive1": {
@@ -766,28 +766,28 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Wind of Vitality",
             "element": "질풍",
-            "type":"단일피해",
+            "type": "단일피해",
             "cool": 0,
             "description": "Deals 183.0%/201.7%/194.3%/213.0% ATK as Wind DMG to 1 enemy, with a 100% base chance to inflict Winded for 2 turns. Inflicts the target with [Wither]: When taking Wind DMG, increase that damage's ATK based on 18.3% of own CRIT DMG that's over 100%, up to 388.0%/418.0%/418.0%/448.0% CRIT DMG for 2 turns. Restores 16 SP to self."
         },
         "skill2": {
             "name": "Under the Umbrella",
             "element": "버프광역",
-            "type":"버프",
+            "type": "버프",
             "cool": 0,
             "description": "Increases all allies' ATK based on 12.8% own CRIT DMG that's over 100%, up to 388.0%/418.0%/418.0%/448.0% of own CRIT DMG for 2 turns, and restores 4 SP. During this effect when any ally deals damage with Persona Skill/Follow Up/[HIGHLIGHT], restores 12 SP to self once."
         },
         "skill3": {
             "name": "Fragrance of Time",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": "50 - 200",
             "cool": 0,
             "description": "Consumes all SP, increases 1 other ally's CRIT Rate by 16.0%/17.0%/17.0%/18.0%.\nFor every 2 SP consumed, additionally triggers the following effects by 1% for 2 turns, up to 388.0%/418.0%/418.0%/448.0% of own CRIT DMG:\n- Consumes 50 SP: Increases ATK by 2.4 for every 1% CRIT DMG that's over 100%;\n- Consumes 100 SP: Increases CRIT DMG for every 12% CRIT DMG that's over 100%;\n- Consumes 150 SP: Additionally increases CRIT DMG for every 6% CRIT DMG that's over 100%."
         },
         "skill_highlight": {
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "description": "Increases 1 other ally's ATK by 2.5 ATK for every 1% CRIT DMG that's over 100%, up to 388.0%/418.0%/418.0%/448.0% CRIT DMG. Increases their CRIT DMG by 24.4%/26.9%/25.9%/28.4% for 2 turns. Restores 20 SP to all other allies."
         },
         "passive1": {
@@ -806,7 +806,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Blessing of Compassion",
             "element": "빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 24,
             "cool": 0,
             "description": "Deals 149.2%/164.2%/158.4%/173.4% DEF as Ice DMG to the main target and 44.8%/50.3%/47.6%/53.1% DEF as Ice DMG to all other targets, with a 97.6% base chance to inflict Freeze to the main target; Restores 2 [Valour]. If you are in [Justice Oath], additionally increases the main target's DMG Taken by (1% for every 600 DEF you have, up to 9.8%/10.8%/10.4%/11.4%) for 2 turns; However, decreases [Valour] recovery to 1."
@@ -814,7 +814,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Honor Protection",
             "element": "버프",
-            "type":"실드",
+            "type": "실드",
             "sp": 26,
             "cool": 0,
             "description": "Gives 1 ally 1 stack of 22.8%/22.8%/24.2%/24.2% DEF + 650/790/799/939 Shield as [Upright Mark], then increases their DEF equal to 20% own DEF (Up to 1220/1345/1295/1420) for 2 turns; When gaining this effect, increases that ally's chance of attacked by 50% if their HP is above 60%; At the start of your next turn, gives that ally 1 stack of [Upright Mark]. If you are in [Justice Oath], increase the Shield from [Upright Mark] by 25%."
@@ -822,14 +822,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Prayers of Spirituality",
             "element": "버프광역",
-            "type":"실드",
+            "type": "실드",
             "sp": 30,
             "cool": 1,
             "description": "Gives all allies 1 stack of 12% DEF + 120/240/360 (At level 1, 50, 70) Shield as [Upright Mark] and 1 stack of 49.2%/49.2%/52.2%/52.2% DEF + 1400/1705/1721/2026 Shield as [Holy Protection], gives all allies 1 Down Gauge and increases their DMG Bonus by 1% (for every 300 DEF you have, up to 19.5%/21.5%/20.7%/22.7%) for 2 turns."
         },
         "skill_highlight": {
             "element": "버프광역",
-            "type":"실드",
+            "type": "실드",
             "description": "Immediately gives all allies 1 stack of 59.0%/59.0%/62.7%/62.7% DEF + 1681/2044/2066/2429 Shield as [Holy Protection], decreases all allies' DMG Taken by 31.9%/35.1%/33.9%/37.1% for 2 turns."
         },
         "passive1": {
@@ -848,7 +848,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Sanctioned Drift",
             "element": "핵열광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Nuclear damage to foes equal to 83.0%/91.5%/88.1%/96.6% of Attack (5 hits). From the second hit, prioritze new targets and change damage to 20% for hits on the same target. Also inflict a random elemental ailment on the target of each hit, prioritizing inflicting ones the target doesn't have.\nIf the target has an elemental ailment, activate a Techincal and deal bonus Nuclear damage equal to 29.3%/29.3%/31.1%/31.1% of Attack.\nInflict Radiation on the main target for 2 turns."
@@ -856,7 +856,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "President's Prowess",
             "element": "치료",
-            "type":"단일치료",
+            "type": "단일치료",
             "sp": 22,
             "cool": 0,
             "description": "Restore HP to 1 ally equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168, and increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nAlso gain 3 Tenacity stacks, and gain additional Tenacity stacks for each elemental ailment on foes."
@@ -864,14 +864,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Nuclear Fury",
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 21,
             "cool": 0,
             "description": "Deal Nuclear damage to 1 foe equal to 210.6%/232.2%/223.6%/245.1% of Attack, and gain 2 Tenacity stacks.\nIf the main target has an elemental ailment, activate a Technical, dealing bonus Nuclear damage equal to 39.0%/43.0%/41.4%/45.4% of Attack.\nWhen Crash Out is active, evolve this skill to Thermonuclear Fury.\nThermonuclear Fury: Deal Nuclear damage to 1 foe equal to 243.6%/268.6%/258.6%/283.5% of Attack. For each different elemental ailment the foe has, activate a Technical, dealing bonus Nuclear damage equal to 34.2%/37.7%/36.3%/39.8% of Attack (up to 3 hits)."
         },
         "skill_highlight": {
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "description": "Deal Nuclear damage to 1 foe equal to 468.5%/516.5%/497.3%/545.3% of Attack, gain 2 Frenzied Voltage stacks, and activate the following effects.\nSpend 1 Frenzied Voltage stack to inflict 1 random elemental ailment on foes, continuing until foes have 2 elemental ailments. Spend all remaining Frenzied Voltage stacks to increase the damage of this skill by 20% per stack."
         },
         "passive1": {
@@ -890,7 +890,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Blue Sunrise",
             "element": "축복광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Bless damage to all foes equal to 87.8%/96.8%/93.2%/102.2% of Attack. If Summer Hype is active, spend 10% of Motoha's max HP to deal bonus Bless damage to all foes equal to 29.3%/32.3%/31.1%/34.1% of Attack."
@@ -898,7 +898,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Summer 'Splosion",
             "element": "축복",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Bless damage to 1 foe equal to 136.6%/150.6%/145.0%/159.0% of Attack, and restore 20% of Motoha's max HP. If Summer Hype is active, deal bonus Bless damage to 1 foe equal to 34.2%/37.7%/36.3%/39.8% of Attack."
@@ -906,14 +906,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Surf 'n' Shine",
             "element": "축복광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 24,
             "cool": 1,
             "description": "Immediately enter the Summer Hype state, which lasts until the end of Tropical Motoha's next turn.\nSpend 15% of her max HP to deal Bless damage to all foes equal to 159.7%/176.0%/169.5%/185.8% of Attack.\nSummer Hype: Increase critical rate by 9.8%/9.8%/10.4%/10.4% and damage by 29.3%/29.3%/31.1%/31.1%."
         },
         "skill_highlight": {
             "element": "축복광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "description": "Deal Bless damage to all foes equal to 195.2%/215.2%/207.2%/227.2% of Attack, and restore 20% of Motoha's max HP.\nIf her HP is above 50%, increase Highlight damage by 25%."
         },
         "passive1": {
@@ -932,7 +932,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Storm Prelude/Piercing Chill",
             "element": "질풍빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 24,
             "cool": 0,
             "description": "[Mid-Spring Form]: Deals 65.9%/72.7%/69.9%/76.7% ATK as Wind DMG to 1 enemy 3 times, with a 30% base chance to inflict Winded; If you are in [Mid-Spring Domain], additionally inflict [Wind Injury] for 2 turns. Increase your CRIT DMG by 29.3%/29.3%/31.1%/31.1% when attacking enemies with [Wind Injury].\n\n[Winter Night Form]: Deals 122.2%/134.7%/129.7%/142.2% ATK as Ice DMG to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to inflict Freeze. If they are already inflicted with Freeze, inflict [Frostbite] for 2 turns. Enemies with [Frostbite] have their Ice DMG Taken increased by 13.7%/13.7%/14.5%/14.5% ."
@@ -940,7 +940,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Sweeping Wind/Falling Snowfield",
             "element": "질풍빙결광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 24,
             "cool": 0,
             "description": "[Mid-Spring Form]: Deals 31.3%/34.5%/33.3%/36.5% ATK as Wind DMG to all enemies 3 times; If you are in [Mid-Spring Domain], additionally gain 1 [Morning Dew Crystal].\n\n[Winter Night Form]: Deals 83.8%/92.4%/89.0%/97.6% ATK as Ice DMG to all enemies, with a 43.8% base chance to inflict Freeze. If Mont - Figure Skater is in [Winter Night Domain], increase the damage of this attack by 20%."
@@ -948,14 +948,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Approaching Spring/Cold Night Song",
             "element": "질풍빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 28,
             "cool": 0,
             "description": "[Mid-Spring Form]: Opens [Mid-Spring Domain] for 1 turn, then deals 82.9%/91.5%/87.9%/96.5% ATK as Wind DMG to 1 enemy 3 times. When [Mid-Spring Domain] is active, all allies when dealing Wind DMG with Persona skill, HIGHLIGHT, or Follow Up, you will deal 20% ATK as Wind DMG to the main target and gain 1 [Morning Dew Crystal]. When [Mid-Spring Domain] ends, consumes all [Morning Dew Crystal] and deals (3+[Morning Dew Crystal])*34.2%/37.7%/36.3%/39.8% ATK as Wind DMG to the main target, this damage is seen as a Follow-Up Action.\n\n[Winter Night Form]: Opens [Winter Night Domain] for 1 turn, then deals 183.2%/201.9%/194.5%/213.2% ATK as Ice DMG to 1 enemy. When [Winter Night Domain] is active, all allies gain [Condensed Shield] when attacked which gives 1301/1301/1381/1381 Shield, up to 2 times. When any ally deals Ice DMG with a Persona skill, HIGHLIGHT, or Follow Up, Mont - Figure Skater will gain 1 [Frost Crystal]. When [Winter Night Domain] ends, consume all [Frost Crystal] and deal (3+[Frost Crystal])*27.9%/30.8%/29.6%/32.5% ATK as Ice DMG to the main target. This damage is seen as a Follow-Up Action."
         },
         "skill_highlight": {
             "element": "질풍빙결",
-            "type":"단일피해",
+            "type": "단일피해",
             "description": "[Mid-Spring Form]: Deals 149.6% ATK to 1 enemy 3 times; If you are in [Mid-Spring Domain], additionally gain 1 [Morning Dew Crystal] that can exceed the cap. Otherwise deal 1 additional hit of Wind DMG to the target. 149.6%/165.0%/158.8%/174.2%.\n\n[Winter Night Form]: Deals 380.6%/419.6%/404.0%/443.0% ATK as Ice DMG to 1 enemy, with a 68.3%/68.3%/72.5%/72.5% base chance to inflict [Ice Seal] for 1 turn. If Mont - Figure Skater is in [Winter Night Domain], increase the base chance of [Ice Seal] by 29.3%/29.3%/31.1%/31.1%. Otherwise, the damage dealt by this attack is increased by 20%."
         },
         "passive1": {
@@ -974,7 +974,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Distortion",
             "element": "전격광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Electric damage to all foes equal to 85.4%/94.2%/90.6%/99.4% of Attack. 80% chance to inflict Shock on the main target for 2 turns.\nIf an ally has Costar, deal bonus Electric damage to the main target equal to 83.3%/91.8%/88.4%/96.9% of that ally's Attack (1 hit)."
@@ -982,7 +982,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Unison Notes",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 20,
             "cool": 0,
             "description": "Grant Costar to 1 ally, and increase their Attack by 24% of Ayaka's Attack (up to 1220/1345/1295/1420) for 3 turns.\nOnly 1 ally can be a Costar at a time."
@@ -990,14 +990,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Catchy Hook",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 25,
             "cool": 1,
             "description": "Immediately activate an ally's Highlight, and increase its damage by 78.1%/86.1%/82.9%/90.9%.\nThis skill does not affect the target's Highlight cooldown time, even if it activates a Highlight."
         },
         "skill_highlight": {
             "element": "버프광역",
-            "type":"버프",
+            "type": "버프",
             "description": "For 4 ally actions, increase party's damage by 45.5%/50.1%/48.3%/52.9%.\nWhile active, fill Highlight gauge by 10% after each ally action (up to 40%)."
         },
         "passive1": {
@@ -1016,7 +1016,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Abundant World",
             "element": "화염광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deals 120.4%/132.8%/127.8%/140.2% ATK as Fire DMG to all enemies and increases own CRIT Rate by 10% for 2 turns.\n[Fiery Shooting Star] Effect Boost: Additionally deals 72.8%/80.2%/77.3%/84.7% ATK as Fire DMG, effect boost lasts for 1 turn."
@@ -1024,7 +1024,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Crackling Firecrackers",
             "element": "화염광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deals 73.8%/81.4%/78.3%/85.9%  ATK as Fire DMG to all enemies, with a 75% chance to inflict Burn and [Year Fire] for 2 turns.\n[Fiery Shooting Star] Effect Boost: Inflicts the target with [Year Fire], effect boost lasts for 1 turn.\n[Year Fire]: Take Fire DMG based on 63.4%/69.9%/67.3%/73.8% ATK for 2 turns, up to 4 stacks."
@@ -1032,14 +1032,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Shooting Star Greetings",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 24,
             "cool": 1,
             "description": "Enchants Rin's sword with flame, enters [Iron Flower Dance]: Increase DMG Dealt by 34.3%/37.8%/36.4%/39.9%, upgrade Rin's Melee Attack to [Fiery Shooting Star] for 1 turn or until you use [Fiery Shooting Star].\n[Fiery Shooting Star]: Deals 127.4%/140.4%/135.2%/148.2% ATK as Fire DMG to all enemies and triggers Fire TECHNICAL, when triggering [Backdraft], increases the effects of TECHNICAL by 20%.\nStarts with a 1 turn cooldown. Rin can still use other skills after using this skill. This skill is not seen as a Persona skill."
         },
         "skill_highlight": {
             "element": "화염광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "description": "Deals 205.9%/227.0%/218.6%/239.7% ATK as Fire DMG to all enemies, increases own ATK by 19.5%/21.5%/20.7%/22.7% and [Fiery Shooting Star] DMG Dealt by 19.5%/21.5%/20.7%/22.7% for 2 turns."
         },
         "passive1": {
@@ -1058,21 +1058,21 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Tempting Build",
             "element": "버프광역",
-            "type":"버프",
+            "type": "버프",
             "cool": 6,
             "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. [Tailor-Made], [Standard], and [Basic] Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
         },
         "skill2": {
             "name": "Charming Gaze",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "cool": 4,
             "description": "Increase 1 ally's damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack) and their max HP by 13.0%/13.0%/14.6%/14.6% for 2 turns. When the target deals damage to a foe, restore the target's HP by 2% of damage dealt for 1 turn.\nWhen activating a skill, spend 1 Basic or Standard Cocktail to gain 1 Tailor-Made Cocktail."
         },
         "skill3": {
             "name": "Fragrant Wine",
             "element": "버프광역",
-            "type":"버프",
+            "type": "버프",
             "cool": 8,
             "unlock": "This skill requires Cocktails.",
             "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). [Tailor-Made], [Standard], and [Basic] Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more [Standard] or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
@@ -1080,7 +1080,7 @@ const enCharacterSkillsData = {
         "skill_highlight": {
             "name": "Attribute Boost",
             "element": "패시브",
-            "type":"패시브",
+            "type": "패시브",
             "description": "Increases the corresponding attribute values of all deployed allies by 20% of the Phantom Thieves’ respective attributes."
         },
         "passive1": {
@@ -1099,7 +1099,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Diving Ray",
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Nuclear damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack.\nFor 2 turns, decrease the target's Defense by 22.5% of Chizuko's ailment accuracy (up to 37.3%/37.3%/38.8%/38.8%) and inflict a random elemental ailment that the target does not already have."
@@ -1107,7 +1107,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Blunt Edge",
             "element": "핵열광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 22,
             "cool": 0,
             "description": "Deal Nuclear damage to all foes equal to 91.5%/100.9%/95.2%/104.6% of Attack. Has a 40% chance to inflict a random elemental ailment that the foe does not already have."
@@ -1115,14 +1115,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Bullseye Bomber",
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 24,
             "cool": 1,
             "description": "Deal Nuclear damage to 1 foe equal to 195.2%/215.2%/203.2%/223.2% of Attack.\nIncrease the target's damage taken by 11.3% of Chizuko's ailment accuracy (up to 18.7%/20.7%/19.5%/21.4%) for 2 turns, based on the number of unique elemental ailments they have."
         },
         "skill_highlight": {
             "element": "핵열",
-            "type":"단일피해",
+            "type": "단일피해",
             "description": "Deal Nuclear damage to 1 foe equal to 324.5%/357.8%/337.8%/371.1% of Attack. Has a 75% chance to inflict 2 random elemental ailments that the foe does not already have."
         },
         "passive1": {
@@ -1141,7 +1141,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Glimmer of Night",
             "element": "축복",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 23,
             "cool": 0,
             "description": "When you manually use this skill, deals 186.9%/206.1%/198.4%/217.5% ATK as Bless DMG to 1 enemy, and gains [Brave Step], up to a 3 stacks. When [Dance Partner] triggers this skill, deals 121.6%/134.1%/129.1%/141.5% ATK as Bless DMG to 1 enemy, and gains [Brave Step], up to 3 stacks."
@@ -1149,7 +1149,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Dancing in Hand",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 22,
             "cool": 0,
             "description": "Selects 1 ally to become the [Dance Partner] for 3 turn. Increases own and [Dance Partner]'s ATK by 32.4%/35.7%/34.4%/37.7% for 3 turns. Gains [Agile Step], up to 1 stack. After [Dance Partner] use a Persona skill, immediately use [Glimmer of Night] on 1 random enemy (If [Dance Partner] used a skill that target an enemy, change the main target of [Glimmer of Night] to that enemy). There can only be 1 [Dance Partner]."
@@ -1157,15 +1157,15 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Blooming Heart",
             "element": "축복",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 27,
             "cool": 0,
             "description": "Deals 214.7%/236.7%/227.9%/249.9% ATK as Bless DMG to 1 enemy. If you are in [Masquerade], additionally increases skill damage by 30% and CRIT DMG by 29.3%/29.3%/31.1%/31.1%."
         },
         "skill_highlight": {
             "element": "축복",
-            "type":"단일피해",
-            "unlock":"자신이 『가면무도회』 상태.",
+            "type": "단일피해",
+            "unlock": "자신이 『가면무도회』 상태.",
             "description": "[HIGHLIGHT] use condition: When you are in [Masquerade].\nDeals 243.8%/268.8%/258.8%/283.8% ATK as Bless DMG to 1 enemy. Based on own [Posture], gains the corresponding effects:\n- [Brave Step]: Each stack increases HIGHLIGHT skill damage by 15%. \n- [Agile Step]: Increases HIGHLIGHT CRIT Rate by 10% and CRIT DMG by 20%."
         },
         "passive1": {
@@ -1181,19 +1181,19 @@ const enCharacterSkillsData = {
     },
     "키라": {
         "name": "Kira Kitazato",
-        "skill1": {"name":"Moonlit Scalpel / Midnight Surgery","element":"물리","type":"단일피해","sp":21,"cool":0,"description":"Doctor mode: Deal Physical damage to 1 foe equal to 47.3%/52.2%/50.2%/55.1% of Attack (4 hits) and inflict 1 Bleed stack.  Ripper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack, then remove 2 Bleed stacks from the target (can activate Rending effects)."},
-        "skill2": {"name":"Crimson Operation / Pathology","element":"물리","type":"단일피해","sp":21,"cool":0,"description":"Doctor mode: Deal Physical damage to 1 foe equal to 84.2%/92.9%/89.4%/98.0% of Attack (2 hits). At the same time, activate Bleed damage and reset the turn duration of the target's Bleed stacks 1 time.\nRipper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack. For each Bleed stack on the target, increase the damage of Rending activated by them and this skill by 2%, then remove all Bleed stacks from the target (can activate Rending effects)."},
-        "skill3": {"name":"Nightfall","element":"버프","type":"버프","sp":15,"cool":0,"description":"Switch to Ripper mode and change Kitazato's skills (can be activated when any foe has 7 or more Bleed stacks).\nWhen using skills in this mode, for every 3 Bleed stacks on the target, inflict 1 Rending stack (Physical damage equal to 66.7%/73.5%/70.8%/77.6% of Attack).\nAfter using this skill, Kitazato can use other skills and switches to Doctor mode at the end of the turn."},
-        "skill_highlight": {"element":"물리","cool":4,"description":"Switch to Doctor mode and immediately inflict 5 Bleed stacks on 1 foe.\nThen, immediately switch to Ripper mode and deal Physical damage to the target equal to 492.8%/543.3%/523.1%/573.6% of Attack (can activate Rending effects)."},
-        "passive1": {"name":"Hideous Mask","element":"패시브","cool":0,"description":"For every 30% of the user's ailment accuracy, increase Physical damage dealt from Bleed by 4% of the user's Attack (up to 90% of ailment accuracy)."},
-        "passive2": {"name":"Drawn Blade","element":"패시브","cool":0,"description":"When in Doctor mode, increase ailment accuracy by 36%.\nWhen in Ripper mode, increase pierce rate by 21%."}
+        "skill1": { "name": "Moonlit Scalpel / Midnight Surgery", "element": "물리", "type": "단일피해", "sp": 21, "cool": 0, "description": "Doctor mode: Deal Physical damage to 1 foe equal to 47.3%/52.2%/50.2%/55.1% of Attack (4 hits) and inflict 1 Bleed stack.  Ripper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack, then remove 2 Bleed stacks from the target (can activate Rending effects)." },
+        "skill2": { "name": "Crimson Operation / Pathology", "element": "물리", "type": "단일피해", "sp": 21, "cool": 0, "description": "Doctor mode: Deal Physical damage to 1 foe equal to 84.2%/92.9%/89.4%/98.0% of Attack (2 hits). At the same time, activate Bleed damage and reset the turn duration of the target's Bleed stacks 1 time.\nRipper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack. For each Bleed stack on the target, increase the damage of Rending activated by them and this skill by 2%, then remove all Bleed stacks from the target (can activate Rending effects)." },
+        "skill3": { "name": "Nightfall", "element": "버프", "type": "버프", "sp": 15, "cool": 0, "description": "Switch to Ripper mode and change Kitazato's skills (can be activated when any foe has 7 or more Bleed stacks).\nWhen using skills in this mode, for every 3 Bleed stacks on the target, inflict 1 Rending stack (Physical damage equal to 66.7%/73.5%/70.8%/77.6% of Attack).\nAfter using this skill, Kitazato can use other skills and switches to Doctor mode at the end of the turn." },
+        "skill_highlight": { "element": "물리", "cool": 4, "description": "Switch to Doctor mode and immediately inflict 5 Bleed stacks on 1 foe.\nThen, immediately switch to Ripper mode and deal Physical damage to the target equal to 492.8%/543.3%/523.1%/573.6% of Attack (can activate Rending effects)." },
+        "passive1": { "name": "Hideous Mask", "element": "패시브", "cool": 0, "description": "For every 30% of the user's ailment accuracy, increase Physical damage dealt from Bleed by 4% of the user's Attack (up to 90% of ailment accuracy)." },
+        "passive2": { "name": "Drawn Blade", "element": "패시브", "cool": 0, "description": "When in Doctor mode, increase ailment accuracy by 36%.\nWhen in Ripper mode, increase pierce rate by 21%." }
     },
     "토모코·여름": {
         "name": "Seaside Tomoko",
         "skill1": {
             "name": "Have a Cold Drink",
             "element": "염동광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 23,
             "cool": 0,
             "description": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Deal 30% damage for hits on the same target.\n\nPassive: Increase [Summer Reminiscence] skill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%."
@@ -1201,7 +1201,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Hale Summer Days",
             "element": "치료",
-            "type":"치료",
+            "type": "치료",
             "sp": 27,
             "cool": 0,
             "description": "Restore 1 ally's HP by 22.4%/22.4%/23.8%/23.8% of Seaside Tomoko's Attack + 1437/1748/1767/2078. For 2 turns, increase the target's Attack by 14.6%/14.6%/15.5%/15.5%, ailment accuracy by 58.6%/58.6%/62.2%/62.2%, and damage by 30%; also, increase Attack (up to 22.5%) by 25% of the target's ailment accuracy (up to 90%). Inflict 1 [Sparks] stack for each time skill damage is dealt to a foe. [Sparks] from this effect can stack up to 5 times."
@@ -1209,14 +1209,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Sparkling Memories",
             "element": "염동광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 25,
             "cool": 0,
             "description": "Deal Psy damage to all foes equal to 61.0%/67.2%/64.8%/71.0% of Attack. For 2 turns, increase foes' damage taken by 19.5%/19.5%/20.7%/20.7% and inflict 1 [Sparks] stack when foes take skill damage. At the start of Seaside Tomoko's turn, decrease this effect's duration by 1. [Sparks] stacks up to 5 times and isn't inflicted by damage from this skill."
         },
         "skill_highlight": {
             "element": "염동",
-            "type":"광역피해",
+            "type": "광역피해",
             "description": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 [Sparks] stack per damage dealt. Repeated hits on the same target deal 30% damage."
         },
         "passive1": {
@@ -1235,7 +1235,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Fusion Aiming",
             "element": "염동광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deals 68.8%/75.9%/73.0%/80.1% ATK as Psy DMG to all enemies 2 times, there is a 97.6%/97.6%/103.6%/103.6% base chance to inflict the main target with [Sight] and a 53.7%/53.7%/57.0%/57.0% base chance to inflict all other enemies with [Sight]. Noir then converts all enemies' [Sight] into own [Sight] for 3 turns.\nGains [Thermal Customization]: When using Gun Attack, if you have [Sight], increases skill damage by 29.3%/32.3%/31.1%/34.1%, removes all own [Sight] after Gun Attack."
@@ -1243,7 +1243,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Suppressing Fire",
             "element": "총격",
-            "type":"단일피해",
+            "type": "단일피해",
             "hp": 12,
             "cool": 0,
             "description": "Deals 151.6%/167.1%/160.9%/176.4% ATK as Gun DMG to 1 enemy. Increases PEN by 19.5%/19.5%/20.7%/20.7% when Noir has [Sight]. \nGains [Piercing Customization]: Deals an additional 39.0%/43.0%/41.4%/45.4% ATK as Psy DMG to the main target when using Gun Attack. This can triggers the skill damage boosting effect of [Thermal Customization]."
@@ -1251,14 +1251,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Full Metal Explosion",
             "element": "염동광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 24,
             "cool": 0,
             "description": "Deals 129.2%/142.5%/137.2%/150.4% ATK as Psy DMG to all enemies, increases CRIT Rate by 19.5%/19.5%/20.7%/20.7% when Noir has [Sight].\nGains [Spreading Customization]: Deals an additional 29.3%/32.3%/31.1%/34.1% ATK as Psy DMG to all enemies. This can trigger the skill damage boosting effect of [Thermal Customization]."
         },
         "skill_highlight": {
             "element": "염동광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "description": "Deals 206.9%/228.1%/219.6%/240.8% ATK as Psy DMG to all enemies. \nGains [Overload Customization] if [Customization] is not full or if Noir doesn't have [Overload Customization]. \n[Overload Customization]: Increases Gun Attack CRIT Rate by 14.6%/14.6%/15.5%/15.5%. Otherwise, increases this attack’s skill damage by 14.6%/14.6%/15.5%/15.5%."
         },
         "passive1": {
@@ -1274,16 +1274,16 @@ const enCharacterSkillsData = {
     },
     "후타바": {
         "name": "Futaba Sakura",
-        "skill1": {"name":"Pentest Complete!","element":"버프","type":"버프","cool":0,"description":"For 3 turns, decrease all foes' Defense by 6%; decrease Defense by 0.53% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). When foes with this Defense decrease take weakness damage, multiply the effect by 2.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."},
-        "skill2": {"name":"Vulnerability Found!","element":"버프","type":"버프","cool":0,"description":"For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, or Highlight to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."},
-        "skill3": {"name":"Data Link Established!","element":"버프","type":"버프","cool":0,"unlock":"Ally must have 『Hack Complete』.","description":"Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.)"},
+        "skill1": { "name": "Pentest Complete!", "element": "버프", "type": "버프", "cool": 0, "description": "For 3 turns, decrease all foes' Defense by 6%; decrease Defense by 0.53% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). When foes with this Defense decrease take weakness damage, multiply the effect by 2.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns." },
+        "skill2": { "name": "Vulnerability Found!", "element": "버프", "type": "버프", "cool": 0, "description": "For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, or Highlight to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns." },
+        "skill3": { "name": "Data Link Established!", "element": "버프", "type": "버프", "cool": 0, "unlock": "Ally must have 『Hack Complete』.", "description": "Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.)" },
         "skill_highlight": {
             "name": "Attribute Improvement",
             "element": "패시브",
             "description": "Increase all allies' stats by 20% of Oracle's stats."
         },
-        "passive1": {"name":"Programming Pro","element":"패시브","description":"At the start of battle, Futaba gains 100% to her Analysis Progress.","cool":0},
-        "passive2": {"name":"Rootkit","element":"패시브","description":"When Data Storm is active, grant all allies a shield equal to 30.0% of Futaba's Attack for 3 turns.","cool":0}
+        "passive1": { "name": "Programming Pro", "element": "패시브", "description": "At the start of battle, Futaba gains 100% to her Analysis Progress.", "cool": 0 },
+        "passive2": { "name": "Rootkit", "element": "패시브", "description": "When Data Storm is active, grant all allies a shield equal to 30.0% of Futaba's Attack for 3 turns.", "cool": 0 }
     },
 
     "유스케": {
@@ -1328,13 +1328,13 @@ const enCharacterSkillsData = {
             "description": "Each time a shield is gained with Yusuke's skills, increase Yusuke's pierce rate by 20.0% for 1 turn."
         }
     },
-    
+
     "미나미": {
         "name": "Minami Miyashita",
         "skill1": {
             "name": "Nurse's Light",
             "element": "축복",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Bless damage to 1 foe equal to 56.9%/62.7%/60.4%/66.2% of Minami's max HP, and grant 1 Blessing stack to party. Also gain 1 Diagnosis stack."
@@ -1342,7 +1342,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Healing Grace",
             "element": "치료",
-            "type":"제거",
+            "type": "제거",
             "sp": 25,
             "cool": 0,
             "description": "Restore HP equal to 17.4%/17.4%/18.5%/18.5% of Minami's max HP + 1488/1810/1829/2151 to the ally with the lowest HP and 1 selected ally, and cure 2 debuffs.\nGrant 1 Blessing stack to allies healed, and grant Minami 1 Diagnosis stack.\nAt the start of each turn for 2 turns, restore HP of allies healed by this skill equal to 13.9%/13.9%/14.8%/14.8% of Minami's max HP + 1190/1446/1463/1719."
@@ -1350,14 +1350,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Compassionate Cure",
             "element": "치료광역",
-            "type":"광역치료",
+            "type": "광역치료",
             "sp": 32,
             "cool": 0,
             "description": "Spend all Diagnosis stacks, and restore HP to selected ally equal to 15.8%/15.8%/16.8%/16.8% of Minami's max HP + 1347/1665/1656/1974.\nAlso restore HP of the ally with the lowest HP with this effect 2 times.\nFor each Diagnosis stack, activate this effect 1 more time.\nFor each Diagnosis stack spent, increase the max HP of allies (other than Minami) by 7.5% of Minami's max HP for 2 turns (up to 1057/1057/1226/1226)."
         },
         "skill_highlight": {
             "element": "치료광역",
-            "type":"광역치료",
+            "type": "광역치료",
             "description": "Restore party's HP by 17.6%/17.6%/18.6%/18.6% of Minami's max HP + 1500/1824/1844/2168, and cure 1 debuff.\nIncrease party's max HP by 16.5% of Minami's max HP (up to 2326/2326/2697/2697) for 2 turns. At the end of an action, restore HP equal to 6.5%/6.5%/6.9%/6.9% of Minami's max HP + 556/676/683/803 for 1 turn."
         },
         "passive1": {
@@ -1377,7 +1377,7 @@ const enCharacterSkillsData = {
         "skill1": {
             "name": "Electric Bomb",
             "element": "전격",
-            "type":"단일피해",
+            "type": "단일피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Electric damage to 1 foe equal to 185.4%/204.4%/196.8%/215.8%of Attack. If the foe is not Shocked, there is a 68.3%/68.3%/72.5%/72.5% chance to inflict Shock for 2 turns. If the foe is already Shocked, increase damage by 30%."
@@ -1385,7 +1385,7 @@ const enCharacterSkillsData = {
         "skill2": {
             "name": "Meta Dynamite",
             "element": "전격광역",
-            "type":"광역피해",
+            "type": "광역피해",
             "sp": 20,
             "cool": 0,
             "description": "Deal Electric damage to all foes equal to 59.6%/65.7%/63.3%/69.4% of Attack. Increase damage to the main target by 25%."
@@ -1393,14 +1393,14 @@ const enCharacterSkillsData = {
         "skill3": {
             "name": "Sparky Surprise",
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "sp": 25,
             "cool": 1,
             "description": "Grant Player 2 to 1 ally for 2 turns, and increase YUI's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/137.2%/141.1%/145.4% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns."
         },
         "skill_highlight": {
             "element": "버프",
-            "type":"버프",
+            "type": "버프",
             "description": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and increase follow-up attack damage by 24.4%/25.9%/25.9%/27.4%  of Attack for 2 turns.\nActivate follow-up attacks after allies deal damage with skills for 2 turns."
         },
         "passive1": {
@@ -2210,5 +2210,5 @@ window.enCharacterSkillsData = enCharacterSkillsData;
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = characterSkillsData;
+    module.exports = enCharacterSkillsData;
 }

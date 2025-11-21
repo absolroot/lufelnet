@@ -781,9 +781,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
                 try {
                     const scripts = [
-                        { name: 'skills', src: basePath + 'character_skills.js?v=' + APP_VERSION },
-                        { name: 'ritual', src: basePath + 'character_ritual.js?v=' + APP_VERSION },
-                        { name: 'weapon', src: basePath + 'character_weapon.js?v=' + APP_VERSION }
+                        { name: 'skills', src: basePath + 'character_skills.js?v=' + APP_VERSION, varName: langPath + 'CharacterSkillsData' },
+                        { name: 'ritual', src: basePath + 'character_ritual.js?v=' + APP_VERSION, varName: langPath + 'CharacterRitualData' },
+                        { name: 'weapon', src: basePath + 'character_weapon.js?v=' + APP_VERSION, varName: langPath + 'CharacterWeaponData' }
                     ];
 
                     await new Promise((resolve) => {
@@ -795,15 +795,32 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         const timeoutId = setTimeout(() => {
                             console.warn('Language data loading timed out');
                             resolve();
-                        }, 5000);
+                        }, 10000);
 
                         scripts.forEach(scriptInfo => {
                             const script = document.createElement('script');
                             script.src = scriptInfo.src;
 
                             script.onload = () => {
-                                loadedCount++;
-                                checkCompletion();
+                                // 스크립트 로드 후 변수가 정의될 때까지 대기
+                                const checkInterval = setInterval(() => {
+                                    if (typeof window[scriptInfo.varName] !== 'undefined') {
+                                        clearInterval(checkInterval);
+                                        loadedCount++;
+                                        console.log('Loaded:', scriptInfo.varName);
+                                        checkCompletion();
+                                    }
+                                }, 50);
+
+                                // 최대 2초 대기
+                                setTimeout(() => {
+                                    clearInterval(checkInterval);
+                                    if (typeof window[scriptInfo.varName] === 'undefined') {
+                                        console.warn('Variable not defined after timeout:', scriptInfo.varName);
+                                        errorCount++;
+                                        checkCompletion();
+                                    }
+                                }, 2000);
                             };
 
                             script.onerror = (e) => {
@@ -818,17 +835,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         function checkCompletion() {
                             if (loadedCount + errorCount === totalScripts) {
                                 clearTimeout(timeoutId);
-
-                                // Assign data to window
-                                if (currentLang === 'en') {
-                                    if (typeof enCharacterSkillsData !== 'undefined') window.enCharacterSkillsData = enCharacterSkillsData;
-                                    if (typeof enCharacterRitualData !== 'undefined') window.enCharacterRitualData = enCharacterRitualData;
-                                    if (typeof enCharacterWeaponData !== 'undefined') window.enCharacterWeaponData = enCharacterWeaponData;
-                                } else if (currentLang === 'jp') {
-                                    if (typeof jpCharacterSkillsData !== 'undefined') window.jpCharacterSkillsData = jpCharacterSkillsData;
-                                    if (typeof jpCharacterRitualData !== 'undefined') window.jpCharacterRitualData = jpCharacterRitualData;
-                                    if (typeof jpCharacterWeaponData !== 'undefined') window.jpCharacterWeaponData = jpCharacterWeaponData;
-                                }
+                                console.log('All scripts loaded. Loaded:', loadedCount, 'Errors:', errorCount);
                                 resolve();
                             }
                         }

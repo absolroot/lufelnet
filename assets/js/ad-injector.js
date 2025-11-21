@@ -1,7 +1,7 @@
 // Ad Injector Utility (shared across pages/modals)
 // Provides shared round-robin rotation, 1-minute cooldown on unfilled slots,
 // parameterized size, safe push retries, and fallback across slots.
-(function(){
+(function () {
   const w = (typeof window !== 'undefined') ? window : globalThis;
 
   // init shared rotation and cooldown registries
@@ -16,7 +16,7 @@
     w.__adSlotCooldown = {};
   }
 
-  function now(){ return Date.now(); }
+  function now() { return Date.now(); }
 
   function nextUsableSlot() {
     const state = w.__modalAdRotation;
@@ -41,7 +41,7 @@
     w.__adSlotCooldown[slot] = now();
   }
 
-  function injectAdInto(containerEl, opts){
+  function injectAdInto(containerEl, opts) {
     // opts: { width, height, className, marginTop, tryWindows?: number[] (ms) }
     if (!containerEl) return null;
     // 뷰포트 1440px 이하면 광고 삽입 생략
@@ -53,7 +53,7 @@
         const vw = window.innerWidth || (document && document.documentElement && document.documentElement.clientWidth) || 0;
         if (vw && vw <= 1440) return null;
       }
-    } catch(_) { /* noop */ }
+    } catch (_) { /* noop */ }
     const width = (opts && opts.width) || 728;
     const height = (opts && opts.height) || 90;
     const cls = (opts && opts.className) || '';
@@ -87,15 +87,15 @@
         if (status === 'unfilled' && !hasFrame) {
           markUnfilled(currentSlot);
           if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
-          if (mo) { try { mo.disconnect(); } catch(_){} mo = null; }
+          if (mo) { try { mo.disconnect(); } catch (_) { } mo = null; }
         }
         if (hasFrame) {
           // 렌더 성공 시 감시 중단
-          if (mo) { try { mo.disconnect(); } catch(_){} mo = null; }
+          if (mo) { try { mo.disconnect(); } catch (_) { } mo = null; }
         }
       });
       mo.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'], childList: true, subtree: true });
-    } catch(_) { /* noop */ }
+    } catch (_) { /* noop */ }
 
     // 매우 빠른 초기 정리: 짧은 시간 내 iframe이 없으면 바로 제거해 공백 체감 최소화
     setTimeout(() => {
@@ -104,7 +104,7 @@
       if (!hasFrame) {
         markUnfilled(currentSlot);
         if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
-        if (mo) { try { mo.disconnect(); } catch(_){} mo = null; }
+        if (mo) { try { mo.disconnect(); } catch (_) { } mo = null; }
       }
     }, aggressiveRemoveMs);
 
@@ -112,11 +112,11 @@
       if (!ins || ins.dataset.pushed === '1') return;
       const isVisible = ins.offsetParent !== null; // fairly robust for modals
       const widthOk = ins.offsetWidth >= Math.min(300, width);
-      if (isVisible && widthOk){
-        try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch(_){ /* ignore */ }
+      if (isVisible && widthOk) {
+        try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch (_) { /* ignore */ }
       } else {
         if (!ins.__retryCount) ins.__retryCount = 0;
-        if (ins.__retryCount < 10){ ins.__retryCount++; setTimeout(tryPush, 120); }
+        if (ins.__retryCount < 10) { ins.__retryCount++; setTimeout(tryPush, 120); }
       }
     };
     setTimeout(tryPush, 80);
@@ -135,7 +135,7 @@
     const checkAndFallback = () => {
       const status = ins.getAttribute('data-ad-status');
       const hasFrame = !!ins.querySelector('iframe');
-      if (status === 'unfilled' || !hasFrame){
+      if (status === 'unfilled' || !hasFrame) {
         // No rotation: remove immediately
         switchSlot();
       }

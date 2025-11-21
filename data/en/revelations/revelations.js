@@ -102,47 +102,47 @@ const enRevelationData = {
         "획득": "Obtain"
     },
     "main": {
-        "Perseverance" : ["Sorrow","Transformation","Obtain"], //돌파
-        "Hope" : ["Labor","Fixation","Transformation"],
-        "Creation": ["Worry","Reconcilation"],
-        "Awareness": ["Truth","Control","Hindrance"],
-        "Departure": ["Control","Prosperity","Hindrance"],
-        "Growth": ["Opulence","Renewal","Power"],
-        "Wisdom": ["Oppression","Pleasure","Virtue"],
-        "Meditation": ["Opulence","Courage","Love"],
-        "Faith": ["Peace","Love","Futility"],
-        "Trust": ["Renewal","Power","Prosperity"],
-        "Harmony": ["Victory","Power","Truth"],
-        "Resolve": ["Virtue","Labor","Prudence"],
-        "Acceptance": ["Peace","Strife","Love"],
-        "Freedom": ["Success","Defeat","Despair"],
-        "Integrity": ["Pleasure","Labor","Fixation"],
+        "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
+        "Hope": ["Labor", "Fixation", "Transformation"],
+        "Creation": ["Worry", "Reconcilation"],
+        "Awareness": ["Truth", "Control", "Hindrance"],
+        "Departure": ["Control", "Prosperity", "Hindrance"],
+        "Growth": ["Opulence", "Renewal", "Power"],
+        "Wisdom": ["Oppression", "Pleasure", "Virtue"],
+        "Meditation": ["Opulence", "Courage", "Love"],
+        "Faith": ["Peace", "Love", "Futility"],
+        "Trust": ["Renewal", "Power", "Prosperity"],
+        "Harmony": ["Victory", "Power", "Truth"],
+        "Resolve": ["Virtue", "Labor", "Prudence"],
+        "Acceptance": ["Peace", "Strife", "Love"],
+        "Freedom": ["Success", "Defeat", "Despair"],
+        "Integrity": ["Pleasure", "Labor", "Fixation"],
         "Agility": ["Satiety"]
     },
     "sub": {
         "Sorrow": ["Perseverance"],
-        "Transformation": ["Perseverance","Hope"],
+        "Transformation": ["Perseverance", "Hope"],
         "Prudence": ["Resolve"],
-        "Fixation": ["Integrity","Hope"],
+        "Fixation": ["Integrity", "Hope"],
         "Futility": ["Faith"],
         "Despair": ["Freedom"],
         "Worry": ["Creation"],
         "Reconcilation": ["Creation"],
-        "Truth": ["Awareness","Harmony"],
-        "Control": ["Awareness","Departure"],
-        "Hindrance": ["Awareness","Departure"],
-        "Prosperity": ["Departure","Trust"],
-        "Opulence": ["Growth","Meditation"],
-        "Renewal": ["Growth","Trust"],
-        "Power": ["Growth","Trust","Harmony"],
+        "Truth": ["Awareness", "Harmony"],
+        "Control": ["Awareness", "Departure"],
+        "Hindrance": ["Awareness", "Departure"],
+        "Prosperity": ["Departure", "Trust"],
+        "Opulence": ["Growth", "Meditation"],
+        "Renewal": ["Growth", "Trust"],
+        "Power": ["Growth", "Trust", "Harmony"],
         "Oppression": ["Wisdom"],
-        "Pleasure": ["Wisdom","Integrity"],
-        "Virtue": ["Wisdom","Resolve"],
+        "Pleasure": ["Wisdom", "Integrity"],
+        "Virtue": ["Wisdom", "Resolve"],
         "Courage": ["Meditation"],
-        "Love": ["Meditation","Faith","Acceptance"],
-        "Peace": ["Faith","Acceptance"],
+        "Love": ["Meditation", "Faith", "Acceptance"],
+        "Peace": ["Faith", "Acceptance"],
         "Victory": ["Harmony"],
-        "Labor": ["Resolve","Integrity","Hope"],
+        "Labor": ["Resolve", "Integrity", "Hope"],
         "Strife": ["Acceptance"],
         "Success": ["Freedom"],
         "Defeat": ["Freedom"],
@@ -188,7 +188,7 @@ const enRevelationData = {
         "Worry": { // 우려
             "set2": "Increases SP Recovery by 80%.",
             "set4": "When entering battle immediately recovers 25% of HIGHLIGHT charge, doesn't stack.",
-            "type": ["HL 25%","미출시"]
+            "type": ["HL 25%", "미출시"]
         },
         "Defeat": { // 좌절
             "set2": "Increases Ailment Accuracy Rate by 15%.",
@@ -198,7 +198,7 @@ const enRevelationData = {
         "Opulence": { // 화려
             "set2": "Ice DMG increased by 10%.",
             "set4": "Follow-up attack damage is increased by 40%.",
-            "type": ["빙결","추가 효과"]
+            "type": ["빙결", "추가 효과"]
         },
         "Success": { // 개선
             "set2": "Increases Crit Rate by 7.5%.",
@@ -301,7 +301,7 @@ const enRevelationData = {
         "Hope": {
             "Labor": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
             "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%.",
-            "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack.", 
+            "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack.",
             "type": ["미출시"]
         },
         "Departure": {

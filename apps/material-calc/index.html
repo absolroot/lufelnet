@@ -22,7 +22,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
             <!-- Backup / Load buttons (hidden on <=768px) -->
             <button id="backupBtn" class="primary-btn desktop-only" style="padding: 8px 10px;">Backup</button>
             <button id="loadBtn" class="primary-btn desktop-only" style="padding: 8px 10px;">Load</button>
-            <button id="addCharacterBtn" class="primary-btn">+ <span data-lang-key="addCharacter">캐릭터 추가</span></button>     
+            <button id="addCharacterBtn" class="primary-btn">+ <span data-lang-key="addCharacter">캐릭터 추가</span></button>
             <!--
             <label class="spoiler-toggle" id="spoilerContainer" style="display:none;">
                 <input type="checkbox" id="spoilerToggle">
@@ -51,19 +51,25 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
             <!-- 정렬 드롭다운 -->
             <label style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-size:14px;">
                 <span id="sortLabel" data-lang-key="sort">정렬</span>
-                <select id="plannerSortSelect" style="background:#1f120e;border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 8px;border-radius:4px;">
+                <select id="plannerSortSelect"
+                    style="background:#1f120e;border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 8px;border-radius:4px;">
                     <option value="release_asc" data-lang-key="sort.releaseAsc">출시 순 ↑</option>
                     <option value="release_desc" data-lang-key="sort.releaseDesc">출시 순 ↓</option>
                     <option value="name_asc" data-lang-key="sort.nameAsc">이름 순 ↑</option>
                     <option value="name_desc" data-lang-key="sort.nameDesc">이름 순 ↓</option>
                     <option value="custom" data-lang-key="sort.custom">사용자 지정</option>
                 </select>
-                <button id="plannerSortCustomBtn" class="icon-btn" title="Custom order" style="display:none;padding:6px 6px;line-height:0;">
+                <button id="plannerSortCustomBtn" class="icon-btn" title="Custom order"
+                    style="display:none;padding:6px 6px;line-height:0;">
                     <!-- sliders icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="4" y1="6" x2="20" y2="6"/><circle cx="10" cy="6" r="2"/>
-                        <line x1="4" y1="12" x2="20" y2="12"/><circle cx="14" cy="12" r="2"/>
-                        <line x1="4" y1="18" x2="20" y2="18"/><circle cx="8" cy="18" r="2"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="6" x2="20" y2="6" />
+                        <circle cx="10" cy="6" r="2" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <circle cx="14" cy="12" r="2" />
+                        <line x1="4" y1="18" x2="20" y2="18" />
+                        <circle cx="8" cy="18" r="2" />
                     </svg>
                 </button>
             </label>
@@ -77,29 +83,47 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
             <div class="filter-group">
                 <h3 data-lang-key="filterGroup.element">속성</h3>
                 <div class="filter-options">
-                    <label><input type="checkbox" name="element" value="물리"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리"><span></span></label>
-                    <label><input type="checkbox" name="element" value="총격"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격"><span></span></label>
-                    <label><input type="checkbox" name="element" value="화염"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염"><span></span></label>
-                    <label><input type="checkbox" name="element" value="빙결"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결"><span></span></label>
-                    <label><input type="checkbox" name="element" value="전격"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격"><span></span></label>
-                    <label><input type="checkbox" name="element" value="질풍"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍"><span></span></label>
-                    <label><input type="checkbox" name="element" value="염동"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동"><span></span></label>
-                    <label><input type="checkbox" name="element" value="핵열"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열"><span></span></label>
-                    <label><input type="checkbox" name="element" value="축복"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복"><span></span></label>
-                    <label><input type="checkbox" name="element" value="주원"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원"><span></span></label>
-                    <label><input type="checkbox" name="element" value="만능"><img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능"><span></span></label>
+                    <label><input type="checkbox" name="element" value="물리"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리"><span></span></label>
+                    <label><input type="checkbox" name="element" value="총격"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격"><span></span></label>
+                    <label><input type="checkbox" name="element" value="화염"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염"><span></span></label>
+                    <label><input type="checkbox" name="element" value="빙결"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결"><span></span></label>
+                    <label><input type="checkbox" name="element" value="전격"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격"><span></span></label>
+                    <label><input type="checkbox" name="element" value="질풍"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍"><span></span></label>
+                    <label><input type="checkbox" name="element" value="염동"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동"><span></span></label>
+                    <label><input type="checkbox" name="element" value="핵열"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열"><span></span></label>
+                    <label><input type="checkbox" name="element" value="축복"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복"><span></span></label>
+                    <label><input type="checkbox" name="element" value="주원"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원"><span></span></label>
+                    <label><input type="checkbox" name="element" value="만능"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능"><span></span></label>
                 </div>
             </div>
             <div class="filter-group">
                 <h3 data-lang-key="filterGroup.position">직업</h3>
                 <div class="filter-options">
-                    <label><input type="checkbox" name="position" value="지배"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배"></label>
-                    <label><input type="checkbox" name="position" value="반항"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항"></label>
-                    <label><input type="checkbox" name="position" value="우월"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월"></label>
-                    <label><input type="checkbox" name="position" value="굴복"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복"></label>
-                    <label><input type="checkbox" name="position" value="방위"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위"></label>
-                    <label><input type="checkbox" name="position" value="구원"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원"></label>
-                    <label><input type="checkbox" name="position" value="해명"><img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명"></label>
+                    <label><input type="checkbox" name="position" value="지배"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배"></label>
+                    <label><input type="checkbox" name="position" value="반항"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항"></label>
+                    <label><input type="checkbox" name="position" value="우월"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월"></label>
+                    <label><input type="checkbox" name="position" value="굴복"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복"></label>
+                    <label><input type="checkbox" name="position" value="방위"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위"></label>
+                    <label><input type="checkbox" name="position" value="구원"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원"></label>
+                    <label><input type="checkbox" name="position" value="해명"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명"></label>
                 </div>
             </div>
             <div class="filter-group">
@@ -138,6 +162,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
     </div>
 
     <!-- 광고 -->
+    <!--
   <div class="ads-container responsive-padding">
     <ins class="adsbygoogle"
       style="display:block"
@@ -158,7 +183,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
-    <!---->
+   
     <style>
         /* Hide backup/load on mobile */
         .desktop-only { display:inline-flex; }
@@ -176,335 +201,408 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
+    -->
+    <!--
     <script>
-        
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => { // width가 900 이상인것만만
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            //console.log("google status", status);
-            //console.log("google adslot", adslot);
-            if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
-                el.style.display = "none";
-            }
-        });
-    }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
 
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
-                el.style.display = "none";
-            }
-        });
-    }, 4000);  // 광고 로딩 기다렸다가 4초 후 검사
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => { // width가 900 이상인것만만
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                //console.log("google status", status);
+                //console.log("google adslot", adslot);
+                if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
+                    el.style.display = "none";
+                }
+            });
+        }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
 
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
-                el.style.display = "none";
-            }
-        });
-    }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => {
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
+                    el.style.display = "none";
+                }
+            });
+        }, 4000);  // 광고 로딩 기다렸다가 4초 후 검사
+
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => {
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
+                    el.style.display = "none";
+                }
+            });
+        }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사
     </script>
-    </div>
+    -->
+</div>
 
-    <!-- 불러오기 확인 모달 -->
-    <div id="loadConfirmModal" class="modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <h3 id="loadConfirmTitle">Load Confirm</h3>
-                <button class="icon-btn close" data-close>✕</button>
-            </div>
-            <div class="modal-body">
-                <p id="loadConfirmMessage">Your current inventory will be replaced. Continue?</p>
-            </div>
-            <div class="modal-footer">
-                <button id="loadYesBtn" class="primary-btn">Yes</button>
-                <button id="loadNoBtn" class="secondary-btn">No</button>
-            </div>
+<!-- 불러오기 확인 모달 -->
+<div id="loadConfirmModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 id="loadConfirmTitle">Load Confirm</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <p id="loadConfirmMessage">Your current inventory will be replaced. Continue?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="loadYesBtn" class="primary-btn">Yes</button>
+            <button id="loadNoBtn" class="secondary-btn">No</button>
         </div>
     </div>
+</div>
 
-    <!-- 캐릭터 선택 모달 -->
-    <div id="characterSelectModal" class="modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <h3 data-lang-key="selectCharacter">캐릭터 선택</h3>
-                <button class="icon-btn close" data-close>✕</button>
+<!-- 캐릭터 선택 모달 -->
+<div id="characterSelectModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 data-lang-key="selectCharacter">캐릭터 선택</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="character-filter">
+                <input type="text" id="characterSearch" placeholder="Search" autocomplete="off">
             </div>
-            <div class="modal-body">
-                <div class="character-filter">
-                    <input type="text" id="characterSearch" placeholder="Search" autocomplete="off">
-                </div>
-                <div id="characterGrid" class="character-grid"></div>
-                <div id="ad-unit-bottom" class="AD-bottom" style="margin: 40px 0 20px 0; text-align: center; align-items: center; display: flex; justify-content: center;"> 
-                <ins class="adsbygoogle"
-                    style="display:inline-block;width:468px;height:60px"
-                    data-ad-client="ca-pub-5862324369257695"
-                    data-ad-slot="9244892982"></ins>
-                </div>
-                <script>
-                    // Push ad only when modal is opened (visible)
-                    (function() {
-                        const modal = document.getElementById('characterSelectModal');
-                        if (!modal) return;
-                        const ins = modal.querySelector('.adsbygoogle');
-                        if (!ins) return;
+            <div id="characterGrid" class="character-grid"></div>
+            <!--
+            <div id="ad-unit-bottom" class="AD-bottom"
+                style="margin: 40px 0 20px 0; text-align: center; align-items: center; display: flex; justify-content: center;">
+                <ins class="adsbygoogle" style="display:inline-block;width:468px;height:60px"
+                    data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
+            </div>
+            
+            <script>
+                // Push ad only when modal is opened (visible)
+                (function () {
+                    const modal = document.getElementById('characterSelectModal');
+                    if (!modal) return;
+                    const ins = modal.querySelector('.adsbygoogle');
+                    if (!ins) return;
 
-                        function tryPushOnce() {
-                            if (!ins || ins.dataset.pushed === '1') return;
-                            // Ensure the ad has layout (modal visible, width secured)
-                            const isVisible = modal.offsetParent !== null || modal.getAttribute('aria-hidden') === 'false';
-                            const widthOk = ins.offsetWidth >= 250; // minimal width gate
-                            if (isVisible && widthOk) {
-                                try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch(_) {}
-                            } else {
-                                // retry a few times shortly after open
-                                if (!ins.__retryCount) ins.__retryCount = 0;
-                                if (ins.__retryCount < 10) { ins.__retryCount++; setTimeout(tryPushOnce, 120); }
-                            }
+                    function tryPushOnce() {
+                        if (!ins || ins.dataset.pushed === '1') return;
+                        // Ensure the ad has layout (modal visible, width secured)
+                        const isVisible = modal.offsetParent !== null || modal.getAttribute('aria-hidden') === 'false';
+                        const widthOk = ins.offsetWidth >= 250; // minimal width gate
+                        if (isVisible && widthOk) {
+                            try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch (_) { }
+                        } else {
+                            // retry a few times shortly after open
+                            if (!ins.__retryCount) ins.__retryCount = 0;
+                            if (ins.__retryCount < 10) { ins.__retryCount++; setTimeout(tryPushOnce, 120); }
                         }
+                    }
 
-                        // Observe modal visibility changes via aria-hidden/class/style
-                        const obs = new MutationObserver(() => {
-                            const hidden = modal.getAttribute('aria-hidden');
-                            // Trigger when aria-hidden becomes 'false' or removed
-                            if (hidden === 'false' || hidden === null) {
-                                // small delay to allow layout
-                                setTimeout(tryPushOnce, 100);
-                                // schedule unfilled hide checks
-                                const hideIfUnfilled = () => {
-                                    const status = ins.getAttribute('data-ad-status');
-                                    if (status === 'unfilled' || !ins.querySelector('iframe')) {
-                                        ins.style.display = 'none';
-                                    }
-                                };
-                                setTimeout(hideIfUnfilled, 1000);
-                                setTimeout(hideIfUnfilled, 2000);
-                                setTimeout(hideIfUnfilled, 4000);
-                                setTimeout(hideIfUnfilled, 6000);
-                            }
-                        });
-                        try { obs.observe(modal, { attributes: true, attributeFilter: ['aria-hidden', 'style', 'class'] }); } catch(_) {}
+                    // Observe modal visibility changes via aria-hidden/class/style
+                    const obs = new MutationObserver(() => {
+                        const hidden = modal.getAttribute('aria-hidden');
+                        // Trigger when aria-hidden becomes 'false' or removed
+                        if (hidden === 'false' || hidden === null) {
+                            // small delay to allow layout
+                            setTimeout(tryPushOnce, 100);
+                            // schedule unfilled hide checks
+                            const hideIfUnfilled = () => {
+                                const status = ins.getAttribute('data-ad-status');
+                                if (status === 'unfilled' || !ins.querySelector('iframe')) {
+                                    ins.style.display = 'none';
+                                }
+                            };
+                            setTimeout(hideIfUnfilled, 1000);
+                            setTimeout(hideIfUnfilled, 2000);
+                            setTimeout(hideIfUnfilled, 4000);
+                            setTimeout(hideIfUnfilled, 6000);
+                        }
+                    });
+                    try { obs.observe(modal, { attributes: true, attributeFilter: ['aria-hidden', 'style', 'class'] }); } catch (_) { }
 
-                        // Also hook focus to ensure push on manual open flows
-                        modal.addEventListener('transitionend', tryPushOnce, { once: false });
-                        modal.addEventListener('mouseenter', tryPushOnce, { once: false });
-                    })();
-                </script>
-            </div>
+                    // Also hook focus to ensure push on manual open flows
+                    modal.addEventListener('transitionend', tryPushOnce, { once: false });
+                    modal.addEventListener('mouseenter', tryPushOnce, { once: false });
+                })();
+            </script>
+            -->
         </div>
     </div>
+</div>
 
-    <!-- 캐릭터 설정 모달 -->
-    <div id="characterSetupModal" class="modal" aria-hidden="true">
-        <div class="modal-dialog large">
-            <div class="modal-header">
-                <h3 id="setupModalTitle">Setup</h3>
-                <button class="icon-btn close" data-close>✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="setup-grid">
-                    <div class="setup-section">
-                        <h4 data-lang-key="level">레벨</h4>
-                        <div class="setting-row">
-                            <label><span data-lang-key="current">캐릭터</span> LV</label>
-                            <input id="lvFrom" type="number" min="1" max="80" value="1">
-                            <span class="arrow">→</span>
-                            <input id="lvTo" type="number" min="1" max="80" value="80">
-                        </div>
-                        <div class="setting-row">
-                            <label><span data-lang-key="weapon">무기</span> LV</label>
-                            <input id="wpFrom" type="number" min="1" max="80" value="1">
-                            <span class="arrow">→</span>
-                            <input id="wpTo" type="number" min="1" max="80" value="80">
-                        </div>
+<!-- 캐릭터 설정 모달 -->
+<div id="characterSetupModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog large">
+        <div class="modal-header">
+            <h3 id="setupModalTitle">Setup</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="setup-grid">
+                <div class="setup-section">
+                    <h4 data-lang-key="level">레벨</h4>
+                    <div class="setting-row">
+                        <label><span data-lang-key="current">캐릭터</span> LV</label>
+                        <input id="lvFrom" type="number" min="1" max="80" value="1">
+                        <span class="arrow">→</span>
+                        <input id="lvTo" type="number" min="1" max="80" value="80">
                     </div>
-
-                    <div class="setup-section">
-                        <h4 data-lang-key="skills">스킬</h4>
-                        <div class="skill-list">
-                            <div class="setting-row">
-                                <label>S1</label>
-                                <input id="s1From" type="number" min="1" max="10" value="1">
-                                <span class="arrow">→</span>
-                                <input id="s1To" type="number" min="1" max="10" value="10">
-                            </div>
-                            <div class="setting-row">
-                                <label>S2</label>
-                                <input id="s2From" type="number" min="1" max="10" value="1">
-                                <span class="arrow">→</span>
-                                <input id="s2To" type="number" min="1" max="10" value="10">
-                            </div>
-                            <div class="setting-row">
-                                <label>S3</label>
-                                <input id="s3From" type="number" min="1" max="10" value="1">
-                                <span class="arrow">→</span>
-                                <input id="s3To" type="number" min="1" max="10" value="10">
-                            </div>
-                            <div class="setting-row">
-                                <label>HL</label>
-                                <input id="s4From" type="number" min="1" max="10" value="1">
-                                <span class="arrow">→</span>
-                                <input id="s4To" type="number" min="1" max="10" value="10">
-                            </div>
-                        </div>
+                    <div class="setting-row">
+                        <label><span data-lang-key="weapon">무기</span> LV</label>
+                        <input id="wpFrom" type="number" min="1" max="80" value="1">
+                        <span class="arrow">→</span>
+                        <input id="wpTo" type="number" min="1" max="80" value="80">
                     </div>
+                </div>
 
-                    <div class="setup-section">
-                        <h4 data-lang-key="mind">심상</h4>
-                        <div class="setting-row align-center">
-                            <!--<label><input id="mindAllToggle" type="checkbox" checked> <span data-lang-key="enableAll">기본 12개 활성화</span></label>-->
-                        </div>
-                        <div id="mindBaseGrid" class="mind-grid"></div>
+                <div class="setup-section">
+                    <h4 data-lang-key="skills">스킬</h4>
+                    <div class="skill-list">
                         <div class="setting-row">
-                            <label data-lang-key="mindStat1">심상 스탯 1</label>
-                            <input id="mindStat1From" type="number" min="0" max="5" value="0">
+                            <label>S1</label>
+                            <input id="s1From" type="number" min="1" max="10" value="1">
                             <span class="arrow">→</span>
-                            <input id="mindStat1To" type="number" min="0" max="5" value="5">
+                            <input id="s1To" type="number" min="1" max="10" value="10">
                         </div>
                         <div class="setting-row">
-                            <label data-lang-key="mindStat2">심상 스탯 2</label>
-                            <input id="mindStat2From" type="number" min="0" max="5" value="0">
+                            <label>S2</label>
+                            <input id="s2From" type="number" min="1" max="10" value="1">
                             <span class="arrow">→</span>
-                            <input id="mindStat2To" type="number" min="0" max="5" value="5">
+                            <input id="s2To" type="number" min="1" max="10" value="10">
                         </div>
                         <div class="setting-row">
-                            <label data-lang-key="mindSkill1">심상 스킬 1</label>
-                            <input id="mindSkill1From" type="number" min="0" max="5" value="0">
+                            <label>S3</label>
+                            <input id="s3From" type="number" min="1" max="10" value="1">
                             <span class="arrow">→</span>
-                            <input id="mindSkill1To" type="number" min="0" max="5" value="5">
+                            <input id="s3To" type="number" min="1" max="10" value="10">
                         </div>
                         <div class="setting-row">
-                            <label data-lang-key="mindSkill2">심상 스킬 2</label>
-                            <input id="mindSkill2From" type="number" min="0" max="5" value="0">
+                            <label>HL</label>
+                            <input id="s4From" type="number" min="1" max="10" value="1">
                             <span class="arrow">→</span>
-                            <input id="mindSkill2To" type="number" min="0" max="5" value="5">
-                        </div>
-                        <div class="setting-row">
-                            <label data-lang-key="mindAttr">심상 속성 강화</label>
-                            <input id="mindAttrFrom" type="number" min="0" max="12" value="0">
-                            <span class="arrow">→</span>
-                            <input id="mindAttrTo" type="number" min="0" max="12" value="12">
+                            <input id="s4To" type="number" min="1" max="10" value="10">
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
-                <button id="savePlanBtn" class="primary-btn" data-lang-key="save">저장</button>
+
+                <div class="setup-section">
+                    <h4 data-lang-key="mind">심상</h4>
+                    <div class="setting-row align-center">
+                        <!--<label><input id="mindAllToggle" type="checkbox" checked> <span data-lang-key="enableAll">기본 12개 활성화</span></label>-->
+                    </div>
+                    <div id="mindBaseGrid" class="mind-grid"></div>
+                    <div class="setting-row">
+                        <label data-lang-key="mindStat1">심상 스탯 1</label>
+                        <input id="mindStat1From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindStat1To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-lang-key="mindStat2">심상 스탯 2</label>
+                        <input id="mindStat2From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindStat2To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-lang-key="mindSkill1">심상 스킬 1</label>
+                        <input id="mindSkill1From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindSkill1To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-lang-key="mindSkill2">심상 스킬 2</label>
+                        <input id="mindSkill2From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindSkill2To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-lang-key="mindAttr">심상 속성 강화</label>
+                        <input id="mindAttrFrom" type="number" min="0" max="12" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindAttrTo" type="number" min="0" max="12" value="12">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- 보유량 입력 모달 (EXP/한계돌파 그룹 편집) -->
-    <div id="inventoryModal" class="modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <h3 id="inventoryModalTitle">Inventory</h3>
-                <button class="icon-btn close" data-close>✕</button>
-            </div>
-            <div class="modal-body">
-                <div id="inventoryForm" class="setup-section"></div>
-                <p id="inventoryHint" style="opacity:.8;margin-top:8px;font-size:12px;"></p>
-            </div>
-            <div class="modal-footer">
-                <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
-                <button id="saveInventoryBtn" class="primary-btn" data-lang-key="save">저장</button>
-            </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
+            <button id="savePlanBtn" class="primary-btn" data-lang-key="save">저장</button>
         </div>
     </div>
+</div>
 
-    <!-- 커스텀 정렬(우선순위) 모달 -->
-    <div id="customOrderModal" class="modal" aria-hidden="true">
-        <div class="modal-dialog large">
-            <div class="modal-header">
-                <h3 id="customOrderTitle">Priority</h3>
-                <button class="icon-btn close" data-close>✕</button>
-            </div>
-            <div class="modal-body">
-                <div style="opacity:.8;margin-bottom:8px;" id="customOrderHint">Drag to change order</div>
-                <div id="customList" class="priority-col single"></div>
-            </div>
-            <div class="modal-footer">
-                <button id="customOrderCancel" class="secondary-btn" data-lang-key="cancel">취소</button>
-                <button id="customOrderSave" class="primary-btn" data-lang-key="save">저장</button>
-            </div>
+<!-- 보유량 입력 모달 (EXP/한계돌파 그룹 편집) -->
+<div id="inventoryModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 id="inventoryModalTitle">Inventory</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div id="inventoryForm" class="setup-section"></div>
+            <p id="inventoryHint" style="opacity:.8;margin-top:8px;font-size:12px;"></p>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
+            <button id="saveInventoryBtn" class="primary-btn" data-lang-key="save">저장</button>
         </div>
     </div>
+</div>
 
-    <style>
-        /* Priority modal layout */
-        .priority-col { background:#121015; border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:10px; max-height:70vh; overflow:auto; }
-        /*.priority-col.single { width:100%; max-width:none; }*/
-        .order-item { display:flex; align-items:center; gap:10px; background:#1a1720; border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:8px; margin-bottom:8px; cursor:grab; }
-        .order-item:active { cursor:grabbing; }
-        .order-num { width:28px; height:28px; display:flex; align-items:center; justify-content:center; background:#4b3b2c; color:#fff; border-radius:6px; font-weight:700; }
-        .order-avatar { width:30px; height:30px; object-fit:cover; border-radius:6px; }
-        .order-label { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .order-placeholder { border:2px dashed rgba(255,255,255,.3); border-radius:8px; height:46px; margin-bottom:8px; }
-        @media (max-width: 760px){ .priority-col.single { width:100%; } }
-        /* Limit scroll to the list only */
-        #customOrderModal .modal-body { max-height: 70vh; display:flex; flex-direction:column; overflow:hidden; }
-        #customOrderModal #customList { flex:1 1 auto; min-height:0; overflow:auto; }
-        #customOrderModal .priority-col { max-height: none; }
-    </style>
+<!-- 커스텀 정렬(우선순위) 모달 -->
+<div id="customOrderModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog large">
+        <div class="modal-header">
+            <h3 id="customOrderTitle">Priority</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div style="opacity:.8;margin-bottom:8px;" id="customOrderHint">Drag to change order</div>
+            <div id="customList" class="priority-col single"></div>
+        </div>
+        <div class="modal-footer">
+            <button id="customOrderCancel" class="secondary-btn" data-lang-key="cancel">취소</button>
+            <button id="customOrderSave" class="primary-btn" data-lang-key="save">저장</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Priority modal layout */
+    .priority-col {
+        background: #121015;
+        border: 1px solid rgba(255, 255, 255, .1);
+        border-radius: 8px;
+        padding: 10px;
+        max-height: 70vh;
+        overflow: auto;
+    }
+
+    /*.priority-col.single { width:100%; max-width:none; }*/
+    .order-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #1a1720;
+        border: 1px solid rgba(255, 255, 255, .1);
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 8px;
+        cursor: grab;
+    }
+
+    .order-item:active {
+        cursor: grabbing;
+    }
+
+    .order-num {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4b3b2c;
+        color: #fff;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    .order-avatar {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .order-label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .order-placeholder {
+        border: 2px dashed rgba(255, 255, 255, .3);
+        border-radius: 8px;
+        height: 46px;
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 760px) {
+        .priority-col.single {
+            width: 100%;
+        }
+    }
+
+    /* Limit scroll to the list only */
+    #customOrderModal .modal-body {
+        max-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #customOrderModal #customList {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: auto;
+    }
+
+    #customOrderModal .priority-col {
+        max-height: none;
+    }
+</style>
 
 <script>
-// 언어별 SEO 설정 함수
-function updateSEOContent() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'kr';
-    
-    const seoData = {
-        'kr': {
-            title: '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷',
-            description: '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)'
-        },
-        'en': {
-            title: 'Progression Calculator - Persona 5: The Phantom X LufelNet',
-            description: 'Persona 5: The Phantom X character progression material calculator (level/weapon/skill/mindscape)'
-        },
-        'jp': {
-            title: '育成計算機 - ペルソナ5 ザ・ファントムX LufelNet',
-            description: 'ペルソナ5 ザ・ファントムX キャラクター育成素材計算機（レベル／武器／スキル／イメジャリー）'
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
+
+        const seoData = {
+            'kr': {
+                title: '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷',
+                description: '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)'
+            },
+            'en': {
+                title: 'Progression Calculator - Persona 5: The Phantom X LufelNet',
+                description: 'Persona 5: The Phantom X character progression material calculator (level/weapon/skill/mindscape)'
+            },
+            'jp': {
+                title: '育成計算機 - ペルソナ5 ザ・ファントムX LufelNet',
+                description: 'ペルソナ5 ザ・ファントムX キャラクター育成素材計算機（レベル／武器／スキル／イメジャリー）'
+            }
+        };
+
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+
+        // 메타 태그 업데이트
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+            metaDescription = document.createElement('meta');
+            metaDescription.name = 'description';
+            document.head.appendChild(metaDescription);
         }
-    };
-    
-    const currentSEO = seoData[currentLang] || seoData['kr'];
-    
-    // 타이틀 업데이트
-    document.title = currentSEO.title;
-    
-    // 메타 태그 업데이트
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-        metaDescription = document.createElement('meta');
-        metaDescription.name = 'description';
-        document.head.appendChild(metaDescription);
+        metaDescription.setAttribute('content', currentSEO.description);
+
+        let ogTitle = document.querySelector('meta[property="og:title"]');
+        if (!ogTitle) {
+            ogTitle = document.createElement('meta');
+            ogTitle.setAttribute('property', 'og:title');
+            document.head.appendChild(ogTitle);
+        }
+        ogTitle.setAttribute('content', currentSEO.title);
+
+        let ogDescription = document.querySelector('meta[property="og:description"]');
+        if (!ogDescription) {
+            ogDescription = document.createElement('meta');
+            ogDescription.setAttribute('property', 'og:description');
+            document.head.appendChild(ogDescription);
+        }
+        ogDescription.setAttribute('content', currentSEO.description);
     }
-    metaDescription.setAttribute('content', currentSEO.description);
-    
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (!ogTitle) {
-        ogTitle = document.createElement('meta');
-        ogTitle.setAttribute('property', 'og:title');
-        document.head.appendChild(ogTitle);
-    }
-    ogTitle.setAttribute('content', currentSEO.title);
-    
-    let ogDescription = document.querySelector('meta[property="og:description"]');
-    if (!ogDescription) {
-        ogDescription = document.createElement('meta');
-        ogDescription.setAttribute('property', 'og:description');
-        document.head.appendChild(ogDescription);
-    }
-    ogDescription.setAttribute('content', currentSEO.description);
-}
 
 </script>
 
@@ -518,5 +616,3 @@ function updateSEOContent() {
     });
 
 </script>
-
-

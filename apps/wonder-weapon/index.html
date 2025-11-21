@@ -4,14 +4,14 @@ custom_css: [wonder-weapon]
 custom_js: []
 permalink: /wonder-weapon/
 redirect_from:
-  - /kr/wonder-weapon/
-  - /kr/wonder-weapon/index.html
+- /kr/wonder-weapon/
+- /kr/wonder-weapon/index.html
 language: kr
 title: 원더 무기 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X의 원더 무기 정보
 alternate_urls:
-  en: /wonder-weapon/?lang=en
-  jp: /wonder-weapon/?lang=jp
+en: /wonder-weapon/?lang=en
+jp: /wonder-weapon/?lang=jp
 ---
 
 {% if page.alternate_urls %}
@@ -39,7 +39,7 @@ alternate_urls:
 
   <div class="separator-line"></div>
 
-  
+
   <div class="sort-controls">
     <button id="sort-desc" class="sort-button active" type="button" aria-pressed="true">출시 순 ↓</button>
     <button id="sort-asc" class="sort-button" type="button" aria-pressed="false">출시 순 ↑</button>
@@ -47,13 +47,22 @@ alternate_urls:
 
   <!-- Cards -->
   <div class="weapon-cards drag-me" id="weaponCards"></div>
-  
-    <style>
-        .inline-ad { margin: 16px 0 0px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
-        @media (max-width: 1440px) {
-            .inline-ad { display: none !important; }
-        }
-    </style>
+
+  <style>
+    .inline-ad {
+      margin: 16px 0 0px 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 1440px) {
+      .inline-ad {
+        display: none !important;
+      }
+    }
+  </style>
 </div>
 
 <script>
@@ -301,6 +310,7 @@ alternate_urls:
       return { key: k, order: Number.isFinite(num) ? num : 0 };
     }) : [];
     baseArr.sort((a, b) => b.order - a.order); // fixed base: latest first
+    /*
     // Keys at indices 3,7,11,... (every 4th) will carry an inline ad in their info-container
     const adCarrierKeys = new Set(baseArr.filter((_, idx) => ((idx + 1) % 6 === 1)).map(x => x.key));
 
@@ -325,7 +335,7 @@ alternate_urls:
       ins.setAttribute('data-ad-slot', nextAdSlot());
       wrap.appendChild(ins);
       return wrap;
-    }
+    } */
 
     list.forEach((krName) => {
       const data = (typeof matchWeapons !== 'undefined') ? matchWeapons[krName] : null;
@@ -402,7 +412,7 @@ alternate_urls:
           btn.addEventListener('click', (e) => {
             e.stopPropagation();
             currentLevel = i;
-            levels.querySelectorAll('.level-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+            levels.querySelectorAll('.level-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
             btn.classList.add('active');
             btn.setAttribute('aria-pressed', 'true');
             effectBody.innerHTML = renderEffectHTML(effectText || '', currentLevel);
@@ -440,7 +450,7 @@ alternate_urls:
           a.className = 'character-link' + (isPriorityUser(u, krName) ? ' priority' : '');
           a.href = `/character.html?name=${encodeURIComponent(u)}`;
 
-          if(u==='원더'){
+          if (u === '원더') {
             // href 삭제
             a.removeAttribute('href');
           }
@@ -450,7 +460,7 @@ alternate_urls:
           cimg.src = `{{ site.baseurl }}/assets/img/tier/${u}.webp`;
           cimg.alt = u;
           cimg.loading = 'lazy';
-          cimg.onerror = function() { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
+          cimg.onerror = function () { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
 
           // Icons for position and element
           const icons = document.createElement('span');
@@ -526,7 +536,7 @@ alternate_urls:
           a.className = 'character-link';
           a.href = `/character.html?name=${encodeURIComponent(releaseVal)}`;
 
-          if(releaseVal==='원더'){
+          if (releaseVal === '원더') {
             a.removeAttribute('href');
           }
 
@@ -535,7 +545,7 @@ alternate_urls:
           cimg.src = `{{ site.baseurl }}/assets/img/tier/${releaseVal}.webp`;
           cimg.alt = releaseVal;
           cimg.loading = 'lazy';
-          cimg.onerror = function() { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${releaseVal}.webp`; };
+          cimg.onerror = function () { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${releaseVal}.webp`; };
 
           // Icons for position and element
           const icons = document.createElement('span');
@@ -595,14 +605,16 @@ alternate_urls:
       card.appendChild(imgContainer);
       card.appendChild(info);
       // If this card is designated as an ad carrier (every Nth in base order), attach ad to its info-container bottom
+      /*
       if (adCarrierKeys.has(krName)) {
         const ad = createInlineAd();
         info.appendChild(ad);
-      }
+      }*/
       cards.appendChild(card);
     });
 
     // Lazy-initialize ads: push slightly before entering viewport to reduce pop-in
+    /*
     const adInsList = cards.querySelectorAll('.inline-ad .adsbygoogle');
     if ('IntersectionObserver' in window && adInsList.length) {
       // Prewarm: immediately init ads within preloadMargin below viewport
@@ -637,7 +649,7 @@ alternate_urls:
     } else {
       // Fallback: initialize immediately
       adInsList.forEach(el => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {} });
-    }
+    }*/
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
@@ -688,35 +700,36 @@ alternate_urls:
   });
 
   // 광고 흰 박스 숨김
+  /*
   setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            //console.log("google status", status);
-            //console.log("google adslot", adslot);
-            if (status === "unfilled") {
-                el.style.display = "none";
-            }
-        });
-    }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
+    document.querySelectorAll(".adsbygoogle").forEach(el => {
+      const status = el.getAttribute("data-ad-status");
+      const adslot = el.getAttribute("data-ad-slot");
+      //console.log("google status", status);
+      //console.log("google adslot", adslot);
+      if (status === "unfilled") {
+        el.style.display = "none";
+      }
+    });
+  }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
 
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            if (status === "unfilled") {
-                el.style.display = "none";
-            }
-        });
-    }, 4000);  // 광고 로딩 기다렸다가 4초 후 검사
+  setTimeout(() => {
+    document.querySelectorAll(".adsbygoogle").forEach(el => {
+      const status = el.getAttribute("data-ad-status");
+      const adslot = el.getAttribute("data-ad-slot");
+      if (status === "unfilled") {
+        el.style.display = "none";
+      }
+    });
+  }, 4000);  // 광고 로딩 기다렸다가 4초 후 검사
 
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            if (status === "unfilled") {
-                el.style.display = "none";
-            }
-        });
-    }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사
+  setTimeout(() => {
+    document.querySelectorAll(".adsbygoogle").forEach(el => {
+      const status = el.getAttribute("data-ad-status");
+      const adslot = el.getAttribute("data-ad-slot");
+      if (status === "unfilled") {
+        el.style.display = "none";
+      }
+    });
+  }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사 */
 </script>

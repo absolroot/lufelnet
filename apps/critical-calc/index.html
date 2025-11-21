@@ -19,11 +19,13 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
     </div>
     <div class="header-container">
         <h1 id="page-title">크리티컬 확률 계산기</h1>
-        <label id="spoilerToggleWrap" style="display:flex; align-items:center; cursor:pointer; font-size:13px; opacity:0.85;">
-            <input type="checkbox" id="showSpoilerToggle"> <span id="showSpoilerLabel" style="margin-left: 4px; color:#ededed;">Show Spoilers</span>
+        <label id="spoilerToggleWrap"
+            style="display:flex; align-items:center; cursor:pointer; font-size:13px; opacity:0.85;">
+            <input type="checkbox" id="showSpoilerToggle"> <span id="showSpoilerLabel"
+                style="margin-left: 4px; color:#ededed;">Show Spoilers</span>
         </label>
     </div>
-    
+
     <!-- 상단 카드 컨테이너 -->
     <div class="top-cards">
         <!-- 크리티컬 확률 합계 카드 -->
@@ -59,7 +61,7 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
             <button class="tab-button active" data-tab="buff" id="tabBuff">버프</button>
             <button class="tab-button" data-tab="self" id="tabSelf">자신</button>
         </div>
-        
+
         <!-- 버프 테이블 -->
         <div class="tab-content active" id="buff-tab">
             <table class="critical-table">
@@ -103,6 +105,7 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
         </div>
     </div>
     <!-- 광고 -->
+    <!--
   <div class="ads-container responsive-padding">
     <ins class="adsbygoogle"
       style="display:block"
@@ -123,7 +126,6 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
-    <!---->
     <style>
         @media (max-width: 1440px) {
             .AD-bottom {
@@ -138,6 +140,7 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
         .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
+    -->
 </div>
 
 <script>
@@ -153,33 +156,33 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
                 window.history.replaceState({}, '', currentUrl);
             }
         }
-            // SEO (defense-calc 동작 복사)
-            function updateSEOContent() {
-                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-                const seoData = {
-                    kr: {
-                        title: '크리티컬 계산기 - 페르소나5 더 팬텀 X 루페르넷',
-                        description: '페르소나5 더 팬텀 X 크리티컬 확률 계산기'
-                    },
-                    en: {
-                        title: 'Critical Rate Calculator - Persona 5: The Phantom X LufelNet',
-                        description: 'Persona 5: The Phantom X Critical Rate Calculator'
-                    },
-                    jp: {
-                        title: 'クリ率計算機 - ペルソナ5 ザ・ファントム X LufelNet',
-                        description: 'ペルソナ5 ザ・ファントム X クリ率計算機'
-                    }
-                };
-                const currentSEO = seoData[currentLang] || seoData.kr;
-                document.title = currentSEO.title;
-                const metaDescription = document.querySelector('meta[name="description"]');
-                const ogTitle = document.querySelector('meta[property="og:title"]');
-                const ogDescription = document.querySelector('meta[property="og:description"]');
-                if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-                if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-                if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
-            }
-            updateSEOContent();
+        // SEO (defense-calc 동작 복사)
+        function updateSEOContent() {
+            const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+            const seoData = {
+                kr: {
+                    title: '크리티컬 계산기 - 페르소나5 더 팬텀 X 루페르넷',
+                    description: '페르소나5 더 팬텀 X 크리티컬 확률 계산기'
+                },
+                en: {
+                    title: 'Critical Rate Calculator - Persona 5: The Phantom X LufelNet',
+                    description: 'Persona 5: The Phantom X Critical Rate Calculator'
+                },
+                jp: {
+                    title: 'クリ率計算機 - ペルソナ5 ザ・ファントム X LufelNet',
+                    description: 'ペルソナ5 ザ・ファントム X クリ率計算機'
+                }
+            };
+            const currentSEO = seoData[currentLang] || seoData.kr;
+            document.title = currentSEO.title;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            const ogDescription = document.querySelector('meta[property="og:description"]');
+            if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+            if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+            if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+        }
+        updateSEOContent();
         new CriticalCalc();
     });
 </script>

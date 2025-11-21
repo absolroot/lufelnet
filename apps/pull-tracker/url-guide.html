@@ -19,138 +19,170 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     <h1 id="pageTitle">URL 가이드</h1>
   </div>
 
-  
-    <!-- 2) PC Windows 안내 -->
+
+  <!-- 2) PC Windows 안내 -->
+  <div class="step-row">
+
+    <div class="content guide-card" data-step="1">
+      <p class="guide-text" id="s2">현재는 PC Windows에서의 방법만 제공하고 있습니다.</p>
+    </div>
+  </div>
+
+
+  <!-- 1) FAQ -->
+  <div class="step-row">
+
+    <div class="content guide-card" data-step="2">
+      <p class="guide-text" id="s1">FAQ를 확인하세요.</p>
+      <button id="openFaq" class="btn-outline" data-i18n="btnFaq">FAQ</button>
+    </div>
+  </div>
+
+  <!-- OS 선택 -->
+  <div class="step-row">
+    <div class="content guide-card" data-step="3">
+      <p class="guide-text" id="s2"></p>
+      <div class="pill-row" style="margin-top:6px;">
+        <button class="pill active" id="osWin">Windows</button>
+        <button class="pill" id="osIOS">iOS</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 4) 방법 선택 (Windows 전용) -->
+  <div class="step-row" id="methodStep">
+
+    <div class="content guide-card" data-step="4">
+      <p class="guide-text" id="s3">원하는 방법을 선택하세요</p>
+      <div class="pill-row" id="methodPills">
+        <button class="pill active" id="m1">1</button>
+        <button class="pill" id="m2">2</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 방법1 블록 -->
+  <div id="m1block">
     <div class="step-row">
 
-        <div class="content guide-card" data-step="1"><p class="guide-text" id="s2">현재는 PC Windows에서의 방법만 제공하고 있습니다.</p></div>
-      </div> 
-
-
-    <!-- 1) FAQ -->
-    <div class="step-row">
-
-      <div class="content guide-card" data-step="2"><p class="guide-text" id="s1">FAQ를 확인하세요.</p>
-        <button id="openFaq" class="btn-outline" data-i18n="btnFaq">FAQ</button>
+      <div class="content guide-card" data-step="5">
+        <p class="guide-text" id="m1s1">PC에서 P5X을 실행하세요.</p>
       </div>
     </div>
 
-    <!-- OS 선택 -->
     <div class="step-row">
-      <div class="content guide-card" data-step="3"><p class="guide-text" id="s2"></p>
+
+      <div class="content guide-card" data-step="6">
+        <p class="guide-text" id="m1s2">다음 프로그램을 다운받아 실행하세요.</p>
+        <div class="pill-row">
+          <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank"
+            style="text-decoration: none;">프로그램 다운로드</a>
+          <button class="btn-outline" id="openProgInfo">프로그램에 대하여</button>
+          <button class="btn-outline" id="openTroubleshoot">문제 해결 방법</button>
+        </div>
+        <a class="guide-text" href="https://github.com/iantCode/P5X_Gacha_Link" target="_blank"
+          style="display:inline-block;margin-top:8px;">source code</a>
+      </div>
+    </div>
+
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="7">
+        <p class="guide-text" id="m1s3">계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="8">
+        <p class="guide-text" id="m1s4">지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.</p>
+        <img src="{{ site.baseurl }}/apps/pull-tracker/program.png" alt="program"
+          style="max-height:200px;object-fit:contain;border-radius:8px;margin-top:8px;">
+      </div>
+    </div>
+
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="9">
+        <p class="guide-text" id="m1s5">프로그램을 닫아주세요.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="content guide-card" data-step="10">
+        <p class="guide-text" id="m1s6">복사된 URL 입력하기</p>
+        <a class="pill" id="goInput1" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 방법2 블록 (Windows) -->
+  <div id="m2block" style="display:none;">
+    <div class="step-row">
+
+      <div class="content guide-card" data-step="5">
+        <p class="guide-text" id="m2s1">다음 링크에서 방법을 확인하세요.</p>
+        <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank"
+          style="text-decoration: none;">p5xsummons</a>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="content guide-card" data-step="6">
+        <p class="guide-text" id="m2s2">복사된 URL 입력하기</p>
+        <a class="pill" id="goInput2" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- iOS 블록 -->
+  <div id="iosBlock" style="display:none;">
+    <div class="step-row">
+      <div class="content guide-card" data-step="5">
+        <p class="guide-text" id="ios1">App Store에서 Stream 앱을 설치하세요.</p>
+        <a class="pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691" target="_blank"
+          style="text-decoration:none;">Stream 앱 설치 페이지</a>
         <div class="pill-row" style="margin-top:6px;">
-          <button class="pill active" id="osWin">Windows</button>
-          <button class="pill" id="osIOS">iOS</button>
+          <a class="pill" id="videoBtn" href="https://www.youtube.com/watch?v=m833g8ZNWVA" target="_blank"
+            style="text-decoration:none;">영상 도움말</a>
+          <span id="videoNote" class="guide-muted" style="margin-left:6px;">(영상 예시와 절차는 동일하며, URL 도메인만 다릅니다.)</span>
         </div>
       </div>
     </div>
-
-
-    <!-- 4) 방법 선택 (Windows 전용) -->
-    <div class="step-row" id="methodStep">
-
-      <div class="content guide-card" data-step="4"><p class="guide-text" id="s3">원하는 방법을 선택하세요</p>
-        <div class="pill-row" id="methodPills">
-          <button class="pill active" id="m1">1</button>
-          <button class="pill" id="m2">2</button>
-        </div>
+    <div class="step-row">
+      <div class="content guide-card" data-step="6">
+        <p class="guide-text" id="ios2">Stream 앱에서 Sniff Now를 눌러 VPN/CA 구성을 허용하고 신뢰하세요.</p>
       </div>
     </div>
-
-    <!-- 방법1 블록 -->
-    <div id="m1block">
-      <div class="step-row">
-  
-        <div class="content guide-card" data-step="5"><p class="guide-text" id="m1s1">PC에서 P5X을 실행하세요.</p></div>
-      </div>
-
-      <div class="step-row">
-
-        <div class="content guide-card" data-step="6"><p class="guide-text" id="m1s2">다음 프로그램을 다운받아 실행하세요.</p> 
-          <div class="pill-row">
-            <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank" style="text-decoration: none;">프로그램 다운로드</a>
-            <button class="btn-outline" id="openProgInfo">프로그램에 대하여</button>
-            <button class="btn-outline" id="openTroubleshoot">문제 해결 방법</button>
-          </div>
-          <a class="guide-text" href="https://github.com/iantCode/P5X_Gacha_Link" target="_blank" style="display:inline-block;margin-top:8px;">source code</a>
-        </div>
-      </div>
-
-      <div class="step-row">
-  
-        <div class="content guide-card" data-step="7"><p class="guide-text" id="m1s3">계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.</p></div>
-      </div>
-
-      <div class="step-row">
-  
-        <div class="content guide-card" data-step="8">
-          <p class="guide-text" id="m1s4">지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.</p>
-          <img src="{{ site.baseurl }}/apps/pull-tracker/program.png" alt="program" style="max-height:200px;object-fit:contain;border-radius:8px;margin-top:8px;">
-        </div>
-      </div>
-
-      <div class="step-row">
-  
-        <div class="content guide-card" data-step="9"><p class="guide-text" id="m1s5">프로그램을 닫아주세요.</p></div>
-      </div>
-
-      <div class="step-row">
-        <div class="content guide-card" data-step="10"><p class="guide-text" id="m1s6">복사된 URL 입력하기</p>
-          <a class="pill" id="goInput1" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
-        </div>
+    <div class="step-row">
+      <div class="content guide-card" data-step="7">
+        <p class="guide-text" id="ios3">P5X 실행 → 가챠 페이지 → 기록 보기로 이동하세요.</p>
       </div>
     </div>
-
-    <!-- 방법2 블록 (Windows) -->
-    <div id="m2block" style="display:none;">
-      <div class="step-row">
-  
-        <div class="content guide-card" data-step="5"><p class="guide-text" id="m2s1">다음 링크에서 방법을 확인하세요.</p>
-          <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank" style="text-decoration: none;">p5xsummons</a>
-        </div>
-      </div>
-
-      <div class="step-row">
-        <div class="content guide-card" data-step="6"><p class="guide-text" id="m2s2">복사된 URL 입력하기</p>
-          <a class="pill" id="goInput2" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
-        </div>
+    <div class="step-row">
+      <div class="content guide-card" data-step="8">
+        <p class="guide-text" id="ios4" style="white-space:pre-line;">다시 Stream으로 돌아가 Sniff History에서 요청을 확인합니다. 아래 서버에
+          맞는 URL이 포함된 요청을 찾아 길게 눌러 링크 전체를 복사하세요.
+          (KR) nsywl-krcard.wmupd.com
+          (CN) nsywl-gfcard.wmupd.com
+          (TW) wwwidcweb.p5x.com.tw
+          (JP) web.p5xjpupd.com
+          (EN) euweb.p5xjpupd.com
+          (SEA) web.p5x-sea.com</p>
       </div>
     </div>
-
-    <!-- iOS 블록 -->
-    <div id="iosBlock" style="display:none;">
-      <div class="step-row">
-        <div class="content guide-card" data-step="5"><p class="guide-text" id="ios1">App Store에서 Stream 앱을 설치하세요.</p>
-          <a class="pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691" target="_blank" style="text-decoration:none;">Stream 앱 설치 페이지</a>
-          <div class="pill-row" style="margin-top:6px;">
-            <a class="pill" id="videoBtn" href="https://www.youtube.com/watch?v=m833g8ZNWVA" target="_blank" style="text-decoration:none;">영상 도움말</a>
-            <span id="videoNote" class="guide-muted" style="margin-left:6px;">(영상 예시와 절차는 동일하며, URL 도메인만 다릅니다.)</span>
-          </div>
-        </div>
-      </div>
-      <div class="step-row">
-        <div class="content guide-card" data-step="6"><p class="guide-text" id="ios2">Stream 앱에서 Sniff Now를 눌러 VPN/CA 구성을 허용하고 신뢰하세요.</p></div>
-      </div>
-      <div class="step-row">
-        <div class="content guide-card" data-step="7"><p class="guide-text" id="ios3">P5X 실행 → 가챠 페이지 → 기록 보기로 이동하세요.</p></div>
-      </div>
-      <div class="step-row">
-        <div class="content guide-card" data-step="8"><p class="guide-text" id="ios4" style="white-space:pre-line;">다시 Stream으로 돌아가 Sniff History에서 요청을 확인합니다. 아래 서버에 맞는 URL이 포함된 요청을 찾아 길게 눌러 링크 전체를 복사하세요.
-(KR) nsywl-krcard.wmupd.com
-(CN) nsywl-gfcard.wmupd.com
-(TW) wwwidcweb.p5x.com.tw
-(JP) web.p5xjpupd.com
-(EN) euweb.p5xjpupd.com
-(SEA) web.p5x-sea.com</p></div>
-      </div>
-      <div class="step-row">
-        <div class="content guide-card" data-step="9"><p class="guide-text" id="ios5">복사된 URL 입력하기</p>
-          <a class="pill" id="goInputIOS" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go Back</a>
-        </div>
+    <div class="step-row">
+      <div class="content guide-card" data-step="9">
+        <p class="guide-text" id="ios5">복사된 URL 입력하기</p>
+        <a class="pill" id="goInputIOS" href="{{ site.baseurl }}/pull-tracker/" style="text-decoration: none;">Go
+          Back</a>
       </div>
     </div>
+  </div>
 
-<!-- 광고 -->
+  <!-- 광고 -->
+  <!--
 <div class="ads-container responsive-padding">
     <ins class="adsbygoogle"
     style="display:block"
@@ -171,7 +203,7 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <div style="height: 12px;"></div>
-<!---->
+
 <style>
     @media (max-width: 1200px) {
         .AD-bottom {
@@ -186,141 +218,379 @@ description: "가챠 기록 URL을 얻는 방법 안내"
     .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
     @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
 </style>
+-->
 </div>
 
-  </div>
+</div>
 
-  <style>
-    .guide-container { margin: 0 auto; }
-    .bg-background { background:#0e1627; border:1px solid rgba(255,255,255,.08); border-radius:12px; }
-    .bg-background-secondary { background:#132036; border-radius:12px; padding:8px; margin-top:8px; display:flex; align-items:center; }
-    .guide-text { color:#e6e9f2; font-size:14px; margin:4px 0; }
-    .guide-text.strong { font-weight:700; }
-    .guide-muted { color:#9fb0d0; font-size:13px; margin:4px 0; }
-    .guide-warning { color:#ffd166; font-size:13px; margin:0; }
-    @media (max-width: 768px){ .hero-img{ display:none;} .hero-img.small{ display:block;} .hero-note{ display:flex;} }
-    .step-row { display:flex; gap:12px; margin-bottom:12px; }
-    .step { display:flex; flex-direction:column; align-items:center; }
-    .step-number { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border:2px solid rgba(255,255,255,.4); border-radius:9999px; }
-    .step-number span { color:#fff; font-weight:700; }
-    .step-bar { width:4px; background:rgba(255,255,255,.35); margin-top:8px; border-radius:4px; flex:1; }
-    .content { padding:4px 0; }
-    .select-wrap { position:relative; width:256px; }
-    .select-btn { display:flex; align-items:center; justify-content:space-between; width:100%; padding:0 16px; height:56px; color:#fff; background:#0e1627; border:2px solid rgba(255,255,255,.18); border-radius:16px; cursor:pointer; }
-    .select-caret { width:24px; height:24px; fill:#fff; }
-    .pill-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-    .pill { display:inline-flex; align-items:center; gap:6px; border:2px solid rgba(255,255,255,.18); border-radius:999px; padding:8px 14px; color:#dbe3ff; background:#270e0e; transition: all .15s ease; }
-    .pill:hover { border-color:#ca6464; color:#fff; }
-    .pill.active { background:#5a1919; border-color:#903636; color:#fff; box-shadow:0 0 0 2px rgba(111,168,255,.15) inset; }
-    .btn-outline { color:#e6e9f2; background:transparent; border:2px solid rgba(255,255,255,.25); border-radius:12px; padding:8px 12px; cursor:pointer; transition:border-color .15s ease; }
-    .btn-outline:hover { border-color:#bb5858; }
-    .btn-outline.btn-success { color:#7ef29a; border-color:rgba(126,242,154,.4); }
-    .btn-group { display:flex; }
-    .btn-group .btn-outline:first-child { border-top-right-radius:0; border-bottom-right-radius:0; }
-    .btn-group .btn-outline:last-child { border-top-left-radius:0; border-bottom-left-radius:0; }
-    .btn-row { display:flex; align-items:center; gap:12px; }
-    .url-input-like { display:flex; align-items:center; height:56px; background:#0e1627; border:2px solid rgba(255,255,255,.18); border-radius:16px; padding:0 16px; color:#fff; }
-    .link { color:#6fa8ff; text-decoration:none; }
-    .link:hover { text-decoration:underline; }
-    #psScript { background:#0b1224; border:1px solid rgba(255,255,255,.18); }
-    #copyScript { display:flex; align-items:center; justify-content:center; border-radius:12px; border:1px solid rgba(255,255,255,.25); padding:6px 8px; color:#fff; background:#0b1224; }
-    #copyScript:hover { border-color:#6fa8ff; }
-    .script-row { display:flex; align-items:stretch; gap:8px; }
-    .form-block { width:50%; min-width:280px; }
-    .ad-row { margin-left:0; }
-    .guide-card { position:relative; background:#000000a9; border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px 12px 48px; width:100%; margin: 0 20px;}
-    .guide-card::before { content: attr(data-step); position:absolute; left:10px; top:10px; width:24px; height:24px; border-radius:999px; border:2px solid rgba(255,255,255,.35); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;}
-    .step .step-number, .step .step-bar { display:none; }
-  </style>
+<style>
+  .guide-container {
+    margin: 0 auto;
+  }
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      try { window.BASE_URL = '{{ site.baseurl }}'; } catch(_) {}
-      // init top nav like pull-tracker
-      try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pullTracker'); } } catch(_) {}
-      // FAQ 모달
-      const body = document.body;
-      const open = document.getElementById('openFaq');
-      if (open){
-        open.addEventListener('click', () => {
-          const overlay = document.createElement('div');
-          overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
-          const modal = document.createElement('div');
-          modal.style.maxWidth='720px'; modal.style.margin='10vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
-          modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff">FAQ</h3><button id="closeFaq" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="faqBody" style="color:#ddd;font-size:14px;line-height:1.9"></div>`;
-          overlay.appendChild(modal);
-          body.appendChild(overlay);
-          overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
-          modal.querySelector('#closeFaq').addEventListener('click', ()=> overlay.remove());
-          // load FAQ.json text1 by lang
-          try {
-            const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
-            fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r=>r.json()).then(j=>{
-              const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text1; 
-              const faqBox = document.getElementById('faqBody');
-              if (faqBox){
-                try {
-                  const esc = String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                  let html = esc.replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>');
-                  html = html.split('\n').map(line=>{
-                    const L = line.trim();
-                    if (/^Q[.:\s]/i.test(L)) return `<div class="faq-q"><strong>${L}<\/strong><\/div>`;
-                    return `<div class="faq-a" style="margin-bottom:8px">${L}<\/div>`;
-                  }).join('');
-                  faqBox.innerHTML = html;
-                } catch(_) { faqBox.textContent = t || ''; }
-              }
-            }).catch(()=>{});
-          } catch(_) {}
-        });
-      }
-      // 프로그램 안내 모달(방법1의 (5) 내용)
-      const progBtn = document.getElementById('openProgInfo');
-      if (progBtn){ progBtn.addEventListener('click', ()=>{
+  .bg-background {
+    background: #0e1627;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 12px;
+  }
+
+  .bg-background-secondary {
+    background: #132036;
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .guide-text {
+    color: #e6e9f2;
+    font-size: 14px;
+    margin: 4px 0;
+  }
+
+  .guide-text.strong {
+    font-weight: 700;
+  }
+
+  .guide-muted {
+    color: #9fb0d0;
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  .guide-warning {
+    color: #ffd166;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-img {
+      display: none;
+    }
+
+    .hero-img.small {
+      display: block;
+    }
+
+    .hero-note {
+      display: flex;
+    }
+  }
+
+  .step-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(255, 255, 255, .4);
+    border-radius: 9999px;
+  }
+
+  .step-number span {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .step-bar {
+    width: 4px;
+    background: rgba(255, 255, 255, .35);
+    margin-top: 8px;
+    border-radius: 4px;
+    flex: 1;
+  }
+
+  .content {
+    padding: 4px 0;
+  }
+
+  .select-wrap {
+    position: relative;
+    width: 256px;
+  }
+
+  .select-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 16px;
+    height: 56px;
+    color: #fff;
+    background: #0e1627;
+    border: 2px solid rgba(255, 255, 255, .18);
+    border-radius: 16px;
+    cursor: pointer;
+  }
+
+  .select-caret {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 2px solid rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    padding: 8px 14px;
+    color: #dbe3ff;
+    background: #270e0e;
+    transition: all .15s ease;
+  }
+
+  .pill:hover {
+    border-color: #ca6464;
+    color: #fff;
+  }
+
+  .pill.active {
+    background: #5a1919;
+    border-color: #903636;
+    color: #fff;
+    box-shadow: 0 0 0 2px rgba(111, 168, 255, .15) inset;
+  }
+
+  .btn-outline {
+    color: #e6e9f2;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .25);
+    border-radius: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: border-color .15s ease;
+  }
+
+  .btn-outline:hover {
+    border-color: #bb5858;
+  }
+
+  .btn-outline.btn-success {
+    color: #7ef29a;
+    border-color: rgba(126, 242, 154, .4);
+  }
+
+  .btn-group {
+    display: flex;
+  }
+
+  .btn-group .btn-outline:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn-group .btn-outline:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .btn-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .url-input-like {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    background: #0e1627;
+    border: 2px solid rgba(255, 255, 255, .18);
+    border-radius: 16px;
+    padding: 0 16px;
+    color: #fff;
+  }
+
+  .link {
+    color: #6fa8ff;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  #psScript {
+    background: #0b1224;
+    border: 1px solid rgba(255, 255, 255, .18);
+  }
+
+  #copyScript {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    padding: 6px 8px;
+    color: #fff;
+    background: #0b1224;
+  }
+
+  #copyScript:hover {
+    border-color: #6fa8ff;
+  }
+
+  .script-row {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .form-block {
+    width: 50%;
+    min-width: 280px;
+  }
+
+  .ad-row {
+    margin-left: 0;
+  }
+
+  .guide-card {
+    position: relative;
+    background: #000000a9;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 12px;
+    padding: 10px 12px 12px 48px;
+    width: 100%;
+    margin: 0 20px;
+  }
+
+  .guide-card::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, .35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .step .step-number,
+  .step .step-bar {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
+    // init top nav like pull-tracker
+    try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pullTracker'); } } catch (_) { }
+    // FAQ 모달
+    const body = document.body;
+    const open = document.getElementById('openFaq');
+    if (open) {
+      open.addEventListener('click', () => {
         const overlay = document.createElement('div');
-        overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
+        overlay.style.position = 'fixed'; overlay.style.inset = '0'; overlay.style.background = 'rgba(0,0,0,.6)'; overlay.style.zIndex = '1000';
         const modal = document.createElement('div');
-        modal.style.maxWidth='720px'; modal.style.margin='10vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
+        modal.style.maxWidth = '720px'; modal.style.margin = '10vh auto'; modal.style.background = '#0e0a08'; modal.style.border = '1px solid rgba(255,255,255,.12)'; modal.style.borderRadius = '10px'; modal.style.padding = '16px';
+        modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff">FAQ</h3><button id="closeFaq" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="faqBody" style="color:#ddd;font-size:14px;line-height:1.9"></div>`;
+        overlay.appendChild(modal);
+        body.appendChild(overlay);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+        modal.querySelector('#closeFaq').addEventListener('click', () => overlay.remove());
+        // load FAQ.json text1 by lang
+        try {
+          const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+          fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r => r.json()).then(j => {
+            const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text1;
+            const faqBox = document.getElementById('faqBody');
+            if (faqBox) {
+              try {
+                const esc = String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                let html = esc.replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>');
+                html = html.split('\n').map(line => {
+                  const L = line.trim();
+                  if (/^Q[.:\s]/i.test(L)) return `<div class="faq-q"><strong>${L}<\/strong><\/div>`;
+                  return `<div class="faq-a" style="margin-bottom:8px">${L}<\/div>`;
+                }).join('');
+                faqBox.innerHTML = html;
+              } catch (_) { faqBox.textContent = t || ''; }
+            }
+          }).catch(() => { });
+        } catch (_) { }
+      });
+    }
+    // 프로그램 안내 모달(방법1의 (5) 내용)
+    const progBtn = document.getElementById('openProgInfo');
+    if (progBtn) {
+      progBtn.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed'; overlay.style.inset = '0'; overlay.style.background = 'rgba(0,0,0,.6)'; overlay.style.zIndex = '1000';
+        const modal = document.createElement('div');
+        modal.style.maxWidth = '720px'; modal.style.margin = '10vh auto'; modal.style.background = '#0e0a08'; modal.style.border = '1px solid rgba(255,255,255,.12)'; modal.style.borderRadius = '10px'; modal.style.padding = '16px';
         modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff">프로그램에 대하여</h3><button id="closeProg" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="progBody" style="color:#ddd;white-space:pre-line;font-size:14px"></div>`;
         overlay.appendChild(modal);
         document.body.appendChild(overlay);
-        overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
-        modal.querySelector('#closeProg').addEventListener('click', ()=> overlay.remove());
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+        modal.querySelector('#closeProg').addEventListener('click', () => overlay.remove());
         try {
-          const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
-          fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r=>r.json()).then(j=>{
+          const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+          fetch(`${BASE_URL}/apps/pull-tracker/FAQ.json?v=${Date.now()}`).then(r => r.json()).then(j => {
             const t = j && j.FAQ && j.FAQ[lang] && j.FAQ[lang].text2;
             const el = document.getElementById('progBody');
             if (el) {
               try {
-                const esc = String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                const esc = String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                 const linkified = esc.replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>');
-                el.innerHTML = linkified.replace(/\n/g,'<br>');
-              } catch(_){ el.textContent = t || ''; }
+                el.innerHTML = linkified.replace(/\n/g, '<br>');
+              } catch (_) { el.textContent = t || ''; }
             }
-          }).catch(()=>{});
-        } catch(_) {}
-      }); }
-      // 문제 해결 방법 모달
-      const tsBtn = document.getElementById('openTroubleshoot');
-      if (tsBtn){ tsBtn.addEventListener('click', ()=>{
+          }).catch(() => { });
+        } catch (_) { }
+      });
+    }
+    // 문제 해결 방법 모달
+    const tsBtn = document.getElementById('openTroubleshoot');
+    if (tsBtn) {
+      tsBtn.addEventListener('click', () => {
         const overlay = document.createElement('div');
-        overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(0,0,0,.6)'; overlay.style.zIndex='1000';
+        overlay.style.position = 'fixed'; overlay.style.inset = '0'; overlay.style.background = 'rgba(0,0,0,.6)'; overlay.style.zIndex = '1000';
         const modal = document.createElement('div');
-        modal.style.maxWidth='800px'; modal.style.margin='8vh auto'; modal.style.background='#0e0a08'; modal.style.border='1px solid rgba(255,255,255,.12)'; modal.style.borderRadius='10px'; modal.style.padding='16px';
+        modal.style.maxWidth = '800px'; modal.style.margin = '8vh auto'; modal.style.background = '#0e0a08'; modal.style.border = '1px solid rgba(255,255,255,.12)'; modal.style.borderRadius = '10px'; modal.style.padding = '16px';
         modal.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 style="margin:0;color:#fff" id="tsTitle">문제 해결 방법</h3><button id="closeTS" style="color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 8px;background:transparent">닫기</button></div><div id="tsBody" style="color:#ddd;font-size:14px;white-space:pre-line"></div>`;
         overlay.appendChild(modal);
         document.body.appendChild(overlay);
-        overlay.addEventListener('click', (e)=>{ if (e.target===overlay) overlay.remove(); });
-        modal.querySelector('#closeTS').addEventListener('click', ()=> overlay.remove());
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+        modal.querySelector('#closeTS').addEventListener('click', () => overlay.remove());
         try {
-          const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+          const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
           const map = {
             kr: {
-              title:'문제 해결 방법',
-              btn:'문제 해결 방법',
+              title: '문제 해결 방법',
+              btn: '문제 해결 방법',
               body:
-`1. 프로그램이 실행하면 오류가 발생해요
+                `1. 프로그램이 실행하면 오류가 발생해요
 관리자 권한으로 실행해주세요.
 
 2. 프로그램을 실행해도 아무런 창이 나오질 않아요.
@@ -339,10 +609,10 @@ C:\\Windows\\System32\\drivers\\etc\\hosts 파일을 직접 열어 아래 내용
 127.0.0.1 web.p5x-sea.com`
             },
             en: {
-              title:'Troubleshooting',
-              btn:'Troubleshooting',
+              title: 'Troubleshooting',
+              btn: 'Troubleshooting',
               body:
-`1. An error occurs when the program starts.
+                `1. An error occurs when the program starts.
 Please run as Administrator.
 
 2. No window appears when I run the program.
@@ -361,10 +631,10 @@ C:\\Windows\\System32\\drivers\\etc\\hosts and delete the following entries, the
 127.0.0.1 web.p5x-sea.com`
             },
             jp: {
-              title:'トラブルシューティング',
-              btn:'トラブルシューティング',
+              title: 'トラブルシューティング',
+              btn: 'トラブルシューティング',
               body:
-`1. プログラムを起動するとエラーが発生します。
+                `1. プログラムを起動するとエラーが発生します。
 管理者権限で実行してください。
 
 2. プログラムを実行してもウィンドウが表示されません。
@@ -389,150 +659,149 @@ C:\\Windows\\System32\\drivers\\etc\\hosts を開き、以下の内容を削除�
           // 강조 및 코드 박스/경로 색상 적용
           const html = String(t.body)
             .replace(/(https?:\/\/[^\s]+)/g, '<a class="link" href="$1" target="_blank">$1<\/a>')
-            .replace(/(C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts)/g,'<span style="color:#ffcc88">$1<\/span>')
+            .replace(/(C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts)/g, '<span style="color:#ffcc88">$1<\/span>')
             .replace(/(127\.0\.0\.1[\s\S]*web\.p5x-sea\.com)/, '<pre style="background:#0b1224;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px;white-space:pre-line">$1<\/pre>');
           body.innerHTML = html;
-        } catch(_) {}
-      }); }
+        } catch (_) { }
+      });
+    }
 
-      // OS/방법 토글
-      const winWrap = document.getElementById('m1block').parentElement;
-      const iosBlock = document.getElementById('iosBlock');
-      const osWin = document.getElementById('osWin');
-      const osIOS = document.getElementById('osIOS');
-      // OS 전환은 setOSTab에서 일괄 처리 (중복 로직 제거)
+    // OS/방법 토글
+    const winWrap = document.getElementById('m1block').parentElement;
+    const iosBlock = document.getElementById('iosBlock');
+    const osWin = document.getElementById('osWin');
+    const osIOS = document.getElementById('osIOS');
+    // OS 전환은 setOSTab에서 일괄 처리 (중복 로직 제거)
 
-      // 버튼 다국어 (문제 해결 방법)
+    // 버튼 다국어 (문제 해결 방법)
+    try {
+      const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+      const txt = lang === 'en' ? 'Troubleshooting' : (lang === 'jp' ? 'トラブルシューティング' : '문제 해결 방법');
+      const b = document.getElementById('openTroubleshoot'); if (b) b.textContent = txt;
+    } catch (_) { }
+    // i18n for headings/nav + steps
+    try {
+      const params = new URLSearchParams(location.search); const lang = (params.get('lang') || 'kr').toLowerCase();
+      const map = {
+        kr: {
+          navhome: '홈', back: '계약 트래커', current: 'URL 가이드', title: 'URL 가이드',
+          s1: 'FAQ를 확인하세요.', s2: '사용 중인 운영체제를 선택하세요. (안드로이드 방법을 제보 받습니다)', s3: '원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
+          m1s1: 'PC에서 P5X을 실행하세요.', m1s2: '다음 링크에서 P5X_Gacha_Tools를 다운받아 압축을 풀고 실행하세요.', m1s3: 'P5X에서 계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4: '지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5: '프로그램을 닫아주세요.', m1s6: '복사된 URL을 아래 링크에서 입력해주세요.',
+          prog: '프로그램에 대하여', ts: '문제 해결 방법', dl: '프로그램 제공 링크', m2s1: '다음 링크에서 방법을 확인하세요.', m2s2: '복사된 URL을 아래 링크에서 입력해주세요.',
+          osWin: 'Windows', osIOS: 'iOS',
+          ios1: 'App Store에서 Stream 앱을 설치하세요.',
+          ios2: 'Stream에서 Sniff Now를 눌러 VPN/CA 설치 및 신뢰를 완료하세요.',
+          ios3: 'P5X에서 가챠 기록 화면을 엽니다.',
+          ios4: 'Stream → Sniff History에서 아래 서버에 맞는 URL이 포함된 요청을 찾아 길게 눌러 링크 전체를 복사하세요.\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
+          ios5: '복사된 URL을 아래 링크에서 입력해주세요.',
+          videoLabel: '영상 도움말', videoNote: '(영상 예시와 절차는 동일하며, URL 도메인만 다릅니다.)',
+          streamOpen: 'Stream 앱 설치 페이지'
+        },
+        en: {
+          navhome: 'Home', back: 'Pull Tracker', current: 'URL Guide', title: 'URL Guide',
+          s1: 'Check the FAQ.', s2: 'Choose your OS. (Android steps welcome)', s3: 'Choose a method. Use the program / Direct URL extraction',
+          m1s1: 'Run P5X on your PC.', m1s2: 'Download P5X_Gacha_Tools from the link, unzip, and run.', m1s3: 'Open the gacha history in P5X. Errors are expected.', m1s4: 'Select region → [Try Find URL] → Copy the URL.', m1s5: 'Close the program.', m1s6: 'Go to URL input',
+          prog: 'About the Program', ts: 'Troubleshooting', dl: 'Program Link', m2s1: 'See method 2 at the link below.', m2s2: 'Go to URL input',
+          osWin: 'Windows', osIOS: 'iOS',
+          ios1: 'Install the Stream app from the App Store.',
+          ios2: 'In Stream, tap Sniff Now and allow/install/trust the VPN/CA.',
+          ios3: 'Open P5X → Gacha → History.',
+          ios4: 'Back to Stream → Sniff History, find a request that contains the URL for your server below and long-press to copy the entire link.\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
+          ios5: 'Enter the copied URL via the link below.',
+          videoLabel: 'Video Help', videoNote: '(Same workflow; only the URL domain differs.)',
+          streamOpen: 'Open Stream Install Page'
+        },
+        jp: {
+          navhome: 'ホーム', back: 'ガチャ履歴', current: 'URL ガイド', title: 'URL ガイド',
+          s1: 'FAQ を確認してください。', s2: 'ご利用のOSを選択してください。（Android の方法の情報を募集しています）', s3: '次の2つからURL取得方法を選択: 専用プログラム / 直接抽出',
+          m1s1: 'PC で P5X を起動します。', m1s2: 'リンクから P5X_Gacha_Tools をダウンロード/解凍して起動。', m1s3: 'P5X でガチャ履歴を開きます。エラー表示は想定内です。', m1s4: '地域選択 → [Try Find URL] → Copy で URL を取得。', m1s5: 'プログラムを終了します。', m1s6: 'URL入力へ',
+          prog: 'プログラムについて', ts: 'トラブルシューティング', dl: 'プログラムをダウンロード', m2s1: '方法2は以下のリンクを参照。', m2s2: 'URL入力へ',
+          osWin: 'Windows', osIOS: 'iOS',
+          ios1: 'App Store から Stream アプリをインストール。',
+          ios2: 'Stream の「Sniff Now」を押して VPN/CA を許可・インストール・信頼します。',
+          ios3: 'P5X でガチャ履歴を開きます。',
+          ios4: 'Stream → Sniff History に戻り、下記のサーバーに合った URL を含むリクエストを見つけ、長押ししてリンク全体をコピーします。\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
+          ios5: '下のリンクからコピーした URL を入力してください。',
+          videoLabel: '動画ヘルプ', videoNote: '（手順は同じで、ドメインのみ地域により異なります。）',
+          streamOpen: 'Stream インストールページを開く'
+        }
+      };
+      const t = map[lang] || map.kr;
+      document.getElementById('navhome').textContent = t.navhome;
+      document.getElementById('navBack').textContent = t.back;
+      document.getElementById('guideCurrent').textContent = t.current;
+      const pt = document.getElementById('pageTitle'); if (pt) pt.textContent = t.title;
+      const el = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+      el('s1', t.s1); el('s2', t.s2); el('s3', t.s3);
+      el('m1s1', t.m1s1); el('m1s2', t.m1s2); el('m1s3', t.m1s3); el('m1s4', t.m1s4); el('m1s5', t.m1s5); el('m1s6', t.m1s6);
+      el('m2s1', t.m2s1); el('m2s2', t.m2s2);
+      const dbtn = document.getElementById('downloadBtn'); if (dbtn) dbtn.textContent = t.dl;
+      const pbtn = document.getElementById('openProgInfo'); if (pbtn) pbtn.textContent = t.prog;
+      const tsb = document.getElementById('openTroubleshoot'); if (tsb) tsb.textContent = t.ts;
+      const osw = document.getElementById('osWin'); if (osw) osw.textContent = t.osWin;
+      const osi = document.getElementById('osIOS'); if (osi) osi.textContent = t.osIOS;
+      const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+      set('ios1', t.ios1); set('ios2', t.ios2); set('ios3', t.ios3); set('ios4', t.ios4); set('ios5', t.ios5);
+      const vb = document.getElementById('videoBtn'); if (vb) vb.textContent = t.videoLabel;
+      const vn = document.getElementById('videoNote'); if (vn) vn.textContent = t.videoNote;
+      const sb = document.getElementById('streamBtn'); if (sb) sb.textContent = t.streamOpen;
+    } catch (_) { }
+    // 클립보드 복사
+    const copyBtn = document.getElementById('copyScript');
+    const pre = document.getElementById('psScript');
+    if (copyBtn && pre) {
+      copyBtn.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(pre.textContent); copyBtn.style.opacity = '0.7'; setTimeout(() => copyBtn.style.opacity = '1', 500); } catch (_) { }
+      });
+    }
+    // pill active 토글 (방법)
+    const b1 = document.getElementById('m1');
+    const b2 = document.getElementById('m2');
+    const blk1 = document.getElementById('m1block');
+    const blk2 = document.getElementById('m2block');
+    const blkIOS = document.getElementById('iosBlock');
+    function setTab(which) {
       try {
-        const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
-        const txt = lang==='en' ? 'Troubleshooting' : (lang==='jp' ? 'トラブルシューティング' : '문제 해결 방법');
-        const b = document.getElementById('openTroubleshoot'); if (b) b.textContent = txt;
-      } catch(_) {}
-      // i18n for headings/nav + steps
+        [b1, b2].forEach(b => b.classList.remove('active'));
+        if (which === 1) { b1.classList.add('active'); blk1.style.display = ''; blk2.style.display = 'none'; }
+        else { b2.classList.add('active'); blk1.style.display = 'none'; blk2.style.display = ''; }
+      } catch (_) { }
+    }
+    // OS 토글
+    function setOSTab(which) {
       try {
-        const params = new URLSearchParams(location.search); const lang = (params.get('lang')||'kr').toLowerCase();
-        const map = {
-          kr: {
-            navhome:'홈', back:'계약 트래커', current:'URL 가이드', title:'URL 가이드',
-            s1:'FAQ를 확인하세요.', s2:'사용 중인 운영체제를 선택하세요. (안드로이드 방법을 제보 받습니다)', s3:'원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
-            m1s1:'PC에서 P5X을 실행하세요.', m1s2:'다음 링크에서 P5X_Gacha_Tools를 다운받아 압축을 풀고 실행하세요.', m1s3:'P5X에서 계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.', m1s4:'지역을 선택한 후 [Try Find URL] 버튼을 클릭하고 Copy를 눌러 URL을 획득하세요.', m1s5:'프로그램을 닫아주세요.', m1s6:'복사된 URL을 아래 링크에서 입력해주세요.',
-            prog:'프로그램에 대하여', ts:'문제 해결 방법', dl:'프로그램 제공 링크', m2s1:'다음 링크에서 방법을 확인하세요.', m2s2:'복사된 URL을 아래 링크에서 입력해주세요.',
-            osWin:'Windows', osIOS:'iOS',
-            ios1:'App Store에서 Stream 앱을 설치하세요.',
-            ios2:'Stream에서 Sniff Now를 눌러 VPN/CA 설치 및 신뢰를 완료하세요.',
-            ios3:'P5X에서 가챠 기록 화면을 엽니다.',
-            ios4:'Stream → Sniff History에서 아래 서버에 맞는 URL이 포함된 요청을 찾아 길게 눌러 링크 전체를 복사하세요.\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
-            ios5:'복사된 URL을 아래 링크에서 입력해주세요.',
-            videoLabel:'영상 도움말', videoNote:'(영상 예시와 절차는 동일하며, URL 도메인만 다릅니다.)',
-            streamOpen:'Stream 앱 설치 페이지'
-          },
-          en: {
-            navhome:'Home', back:'Pull Tracker', current:'URL Guide', title:'URL Guide',
-            s1:'Check the FAQ.', s2:'Choose your OS. (Android steps welcome)', s3:'Choose a method. Use the program / Direct URL extraction',
-            m1s1:'Run P5X on your PC.', m1s2:'Download P5X_Gacha_Tools from the link, unzip, and run.', m1s3:'Open the gacha history in P5X. Errors are expected.', m1s4:'Select region → [Try Find URL] → Copy the URL.', m1s5:'Close the program.', m1s6:'Go to URL input',
-            prog:'About the Program', ts:'Troubleshooting', dl:'Program Link', m2s1:'See method 2 at the link below.', m2s2:'Go to URL input',
-            osWin:'Windows', osIOS:'iOS',
-            ios1:'Install the Stream app from the App Store.',
-            ios2:'In Stream, tap Sniff Now and allow/install/trust the VPN/CA.',
-            ios3:'Open P5X → Gacha → History.',
-            ios4:'Back to Stream → Sniff History, find a request that contains the URL for your server below and long-press to copy the entire link.\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
-            ios5:'Enter the copied URL via the link below.',
-            videoLabel:'Video Help', videoNote:'(Same workflow; only the URL domain differs.)',
-            streamOpen:'Open Stream Install Page'
-          },
-          jp: {
-            navhome:'ホーム', back:'ガチャ履歴', current:'URL ガイド', title:'URL ガイド',
-            s1:'FAQ を確認してください。', s2:'ご利用のOSを選択してください。（Android の方法の情報を募集しています）', s3:'次の2つからURL取得方法を選択: 専用プログラム / 直接抽出',
-            m1s1:'PC で P5X を起動します。', m1s2:'リンクから P5X_Gacha_Tools をダウンロード/解凍して起動。', m1s3:'P5X でガチャ履歴を開きます。エラー表示は想定内です。', m1s4:'地域選択 → [Try Find URL] → Copy で URL を取得。', m1s5:'プログラムを終了します。', m1s6:'URL入力へ',
-            prog:'プログラムについて', ts:'トラブルシューティング', dl:'プログラムをダウンロード', m2s1:'方法2は以下のリンクを参照。', m2s2:'URL入力へ',
-            osWin:'Windows', osIOS:'iOS',
-            ios1:'App Store から Stream アプリをインストール。',
-            ios2:'Stream の「Sniff Now」を押して VPN/CA を許可・インストール・信頼します。',
-            ios3:'P5X でガチャ履歴を開きます。',
-            ios4:'Stream → Sniff History に戻り、下記のサーバーに合った URL を含むリクエストを見つけ、長押ししてリンク全体をコピーします。\n(KR) nsywl-krcard.wmupd.com\n(CN) nsywl-gfcard.wmupd.com\n(TW) wwwidcweb.p5x.com.tw\n(JP) web.p5xjpupd.com\n(EN) euweb.p5xjpupd.com\n(SEA) web.p5x-sea.com',
-            ios5:'下のリンクからコピーした URL を入力してください。',
-            videoLabel:'動画ヘルプ', videoNote:'（手順は同じで、ドメインのみ地域により異なります。）',
-            streamOpen:'Stream インストールページを開く'
-          }
-        };
-        const t = map[lang]||map.kr;
-        document.getElementById('navhome').textContent = t.navhome;
-        document.getElementById('navBack').textContent = t.back;
-        document.getElementById('guideCurrent').textContent = t.current;
-        const pt = document.getElementById('pageTitle'); if (pt) pt.textContent = t.title;
-        const el = (id, val)=>{ const e=document.getElementById(id); if (e) e.textContent = val; };
-        el('s1', t.s1); el('s2', t.s2); el('s3', t.s3);
-        el('m1s1', t.m1s1); el('m1s2', t.m1s2); el('m1s3', t.m1s3); el('m1s4', t.m1s4); el('m1s5', t.m1s5); el('m1s6', t.m1s6);
-        el('m2s1', t.m2s1); el('m2s2', t.m2s2);
-        const dbtn = document.getElementById('downloadBtn'); if (dbtn) dbtn.textContent = t.dl;
-        const pbtn = document.getElementById('openProgInfo'); if (pbtn) pbtn.textContent = t.prog;
-        const tsb = document.getElementById('openTroubleshoot'); if (tsb) tsb.textContent = t.ts;
-        const osw = document.getElementById('osWin'); if (osw) osw.textContent = t.osWin;
-        const osi = document.getElementById('osIOS'); if (osi) osi.textContent = t.osIOS;
-        const set = (id,val)=>{ const e=document.getElementById(id); if (e) e.textContent = val; };
-        set('ios1', t.ios1); set('ios2', t.ios2); set('ios3', t.ios3); set('ios4', t.ios4); set('ios5', t.ios5);
-        const vb = document.getElementById('videoBtn'); if (vb) vb.textContent = t.videoLabel;
-        const vn = document.getElementById('videoNote'); if (vn) vn.textContent = t.videoNote;
-        const sb = document.getElementById('streamBtn'); if (sb) sb.textContent = t.streamOpen;
-      } catch(_) {}
-      // 클립보드 복사
-      const copyBtn = document.getElementById('copyScript');
-      const pre = document.getElementById('psScript');
-      if (copyBtn && pre){
-        copyBtn.addEventListener('click', async()=>{
-          try { await navigator.clipboard.writeText(pre.textContent); copyBtn.style.opacity='0.7'; setTimeout(()=> copyBtn.style.opacity='1', 500); } catch(_) {}
-        });
-      }
-      // pill active 토글 (방법)
-      const b1 = document.getElementById('m1');
-      const b2 = document.getElementById('m2');
-      const blk1 = document.getElementById('m1block');
-      const blk2 = document.getElementById('m2block');
-      const blkIOS = document.getElementById('iosBlock');
-      function setTab(which){
-        try {
-          [b1,b2].forEach(b=> b.classList.remove('active'));
-          if (which===1){ b1.classList.add('active'); blk1.style.display=''; blk2.style.display='none'; }
-          else { b2.classList.add('active'); blk1.style.display='none'; blk2.style.display=''; }
-        } catch(_) {}
-      }
-      // OS 토글
-      function setOSTab(which){
-        try {
-          [osWin, osIOS].forEach(b=> b.classList.remove('active'));
-          const method = document.getElementById('methodPills');
-          const methodStep = document.getElementById('methodStep');
-          if (which==='win'){
-            osWin.classList.add('active');
-            if (method) method.style.display='';
-            if (methodStep) methodStep.style.display='';
-            // Windows: 원래 번호 복구 (iOS 블록 5~9)
-            const steps = [5,6,7,8,9];
-            ['ios1','ios2','ios3','ios4','ios5'].forEach((id,idx)=>{
-              const el = document.getElementById(id); if (el){ const card = el.closest('.content'); if (card) card.setAttribute('data-step', String(steps[idx])); }
-            });
-            blk1.style.display=''; blk2.style.display=''; blkIOS.style.display='none';
-          } else {
-            osIOS.classList.add('active');
-            if (method) method.style.display='none';
-            if (methodStep) methodStep.style.display='none';
-            // iOS: 번호를 4~8로 재배치
-            const steps = [4,5,6,7,8];
-            ['ios1','ios2','ios3','ios4','ios5'].forEach((id,idx)=>{
-              const el = document.getElementById(id); if (el){ const card = el.closest('.content'); if (card) card.setAttribute('data-step', String(steps[idx])); }
-            });
-            blk1.style.display='none'; blk2.style.display='none'; blkIOS.style.display='';
-          }
-        } catch(_) {}
-      }
-      if (b1) b1.addEventListener('click', ()=> setTab(1));
-      if (b2) b2.addEventListener('click', ()=> setTab(2));
-      if (osWin) osWin.addEventListener('click', ()=> setOSTab('win'));
-      if (osIOS) osIOS.addEventListener('click', ()=> setOSTab('ios'));
-      setOSTab('win');
-      setTab(1);
-    });
-  </script>
+        [osWin, osIOS].forEach(b => b.classList.remove('active'));
+        const method = document.getElementById('methodPills');
+        const methodStep = document.getElementById('methodStep');
+        if (which === 'win') {
+          osWin.classList.add('active');
+          if (method) method.style.display = '';
+          if (methodStep) methodStep.style.display = '';
+          // Windows: 원래 번호 복구 (iOS 블록 5~9)
+          const steps = [5, 6, 7, 8, 9];
+          ['ios1', 'ios2', 'ios3', 'ios4', 'ios5'].forEach((id, idx) => {
+            const el = document.getElementById(id); if (el) { const card = el.closest('.content'); if (card) card.setAttribute('data-step', String(steps[idx])); }
+          });
+          blk1.style.display = ''; blk2.style.display = ''; blkIOS.style.display = 'none';
+        } else {
+          osIOS.classList.add('active');
+          if (method) method.style.display = 'none';
+          if (methodStep) methodStep.style.display = 'none';
+          // iOS: 번호를 4~8로 재배치
+          const steps = [4, 5, 6, 7, 8];
+          ['ios1', 'ios2', 'ios3', 'ios4', 'ios5'].forEach((id, idx) => {
+            const el = document.getElementById(id); if (el) { const card = el.closest('.content'); if (card) card.setAttribute('data-step', String(steps[idx])); }
+          });
+          blk1.style.display = 'none'; blk2.style.display = 'none'; blkIOS.style.display = '';
+        }
+      } catch (_) { }
+    }
+    if (b1) b1.addEventListener('click', () => setTab(1));
+    if (b2) b2.addEventListener('click', () => setTab(2));
+    if (osWin) osWin.addEventListener('click', () => setOSTab('win'));
+    if (osIOS) osIOS.addEventListener('click', () => setOSTab('ios'));
+    setOSTab('win');
+    setTab(1);
+  });
+</script>
 </div>
-
-

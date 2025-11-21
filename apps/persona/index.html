@@ -4,15 +4,15 @@ custom_css: [persona]
 custom_js: [tooltip]
 custom_data: [wonder/persona.js, tooltip.js, wonder/skills.js]
 permalink: /persona/
-redirect_from: 
-  - /kr/persona/
-  - /kr/persona/index.html
+redirect_from:
+- /kr/persona/
+- /kr/persona/index.html
 language: kr
 title : 주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X의 주요 페르소나 정보
 alternate_urls:
-  en: /persona/?lang=en
-  jp: /persona/?lang=jp
+en: /persona/?lang=en
+jp: /persona/?lang=jp
 ---
 
 {% if page.alternate_urls %}
@@ -52,7 +52,7 @@ alternate_urls:
                 <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
             </button>
         </div>
-        
+
         <div class="filter-content" style="display: none;">
             <!-- Element filter -->
             <div class="filter-group">
@@ -115,7 +115,7 @@ alternate_urls:
                     </label>
                 </div>
             </div>
-            
+
             <!-- Position filter -->
             <div class="filter-group">
                 <h3>직업</h3>
@@ -146,7 +146,7 @@ alternate_urls:
                     </label>
                 </div>
             </div>
-            
+
             <!-- Rarity filter -->
             <div class="filter-group">
                 <h3>희귀도</h3>
@@ -238,7 +238,9 @@ alternate_urls:
         <div class="search-container">
             <div class="search-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                    <path
+                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                        fill="rgba(255, 255, 255, 0.6)" />
                 </svg>
             </div>
             <input type="text" id="personaSearch" placeholder="페르소나 검색..." autocomplete="off">
@@ -284,7 +286,7 @@ alternate_urls:
                     </div>
                     <div class="priority-item">
                         <div class="priority-text medium" data-priority-text="normal">일반</div>
-                        
+
                     </div>
                     <div class="priority-item">
                         <div class="priority-text low" data-priority-text="low">낮음</div>
@@ -300,6 +302,7 @@ alternate_urls:
 
     <!-- 카드 리스트 위에 직접 삽입 -->
     <style>
+        /*
         .reveal-ad-button {
             background-color: #221c1c;
         }
@@ -319,7 +322,7 @@ alternate_urls:
                 padding-bottom: 0 !important;
                 background: transparent !important;
             }
-        }
+        }*/
 
         /* 성능 최적화 스타일 */
         .persona-detail-container {
@@ -327,28 +330,31 @@ alternate_urls:
             transform: translateZ(0);
             backface-visibility: hidden;
             will-change: auto;
-            
+
             /* 트랜지션 비활성화로 성능 향상 */
             transition: none !important;
             /* 화면 밖 콘텐츠 지연 렌더링 및 레이아웃 격리 */
             content-visibility: auto;
-            contain-intrinsic-size: 520px; /* 카드 대략 높이 힌트: 실제 렌더 후 교정됨 */
+            contain-intrinsic-size: 520px;
+            /* 카드 대략 높이 힌트: 실제 렌더 후 교정됨 */
             contain: content;
         }
-        
-        .persona-img, .card-background, .cover-star {
+
+        .persona-img,
+        .card-background,
+        .cover-star {
             /* 이미지 렌더링 최적화 */
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
         }
-        
+
         /* 숨김 처리된 요소들의 레이아웃 최적화 */
         .persona-detail-container[style*="position: absolute"] {
             left: -9999px !important;
             top: -9999px !important;
             z-index: -1;
         }
-        
+
         /* 스크롤 성능 최적화 */
         .persona-cards {
             contain: layout style paint;
@@ -364,43 +370,62 @@ alternate_urls:
 
         /* 반응형 열 수 조정 */
         @media (max-width: 1440px) {
-            .persona-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+            .persona-cards {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+            }
         }
+
         @media (max-width: 768px) {
-            .persona-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+            .persona-cards {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
         }
+
         @media (max-width: 660px) {
-            .persona-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .persona-cards {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
         }
+
         @media (max-width: 1440px) {
-            .persona-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .persona-cards {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
         }
+
         @media (max-width: 450px) {
-            .persona-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .persona-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         /* 카드 컨테이너: 기본은 1열 차지, 확장 시 전폭 차지 */
         .persona-detail-container {
             grid-column: span 1;
         }
+
         .persona-detail-container.expanded {
             grid-column: 1 / -1;
         }
+
         /* 확장 상태일 때 별도 패딩을 적용할 수 있도록 훅 제공 */
-        @media(min-width:1440px){
-            .persona-detail-container{
+        @media(min-width:1440px) {
+            .persona-detail-container {
                 padding: 0px;
                 background: rgba(0, 0, 0, 0.5)
             }
+
             .persona-detail-container.active {
                 padding: 20px;
                 background: rgba(0, 0, 0, 0.3)
             }
         }
-        @media(max-width:1440px){
-            .persona-detail-container{
+
+        @media(max-width:1440px) {
+            .persona-detail-container {
                 padding: 20px 0 0 0px;
             }
+
             .persona-detail-container.active {
                 padding: 20px 10px 10px 10px;
             }
@@ -410,12 +435,13 @@ alternate_urls:
         .persona-detail-container .persona-info-section {
             display: none;
         }
+
         .persona-detail-container.expanded .persona-info-section,
         .expand-all .persona-detail-container .persona-info-section {
             display: flex;
         }
 
-        
+
         .persona-detail-container .persona-header-info {
             margin-top: 8px;
         }
@@ -438,11 +464,30 @@ alternate_urls:
             grid-column: 1 / -1;
         }
 
-        .expand-all-toggle {display:flex;align-items:center;gap:8px;}
-        .expand-all-toggle input{width:auto;padding:0;border:0;background:transparent;color:inherit;appearance:auto}
-        .expand-all-toggle label{font-size:12px;opacity:.9}
+        .expand-all-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .expand-all-toggle input {
+            width: auto;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            appearance: auto
+        }
+
+        .expand-all-toggle label {
+            font-size: 12px;
+            opacity: .9
+        }
+
         @media screen and (max-width: 768px) {
-            .expand-all-toggle {display:none;}
+            .expand-all-toggle {
+                display: none;
+            }
         }
 
         /* 광고는 그리드에서 항상 전폭 사용 */
@@ -458,17 +503,76 @@ alternate_urls:
         }
 
         /* Acquisition (획득처) section */
-        .persona-acq-info { padding: 12px 16px 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; display: flex; gap: 16px; align-items: center; }
-        .persona-acq-info .acq-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-        .persona-acq-info .acq-header h3 { font-size: 13px; margin: 0; }
-        .persona-acq-info .acq-detail { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #ddd; border-radius: 6px; padding: 2px 6px; font-size: 11px; cursor: pointer; }
-        .persona-acq-info .acq-body { display:flex; flex-direction: column; gap:6px; }
-        .persona-acq-info .acq-row { display:flex; align-items:center; gap:6px; flex-wrap: wrap; }
-        .persona-acq-info .acq-icon { width: 22px; height: 22px; object-fit: contain; }
-        .persona-acq-info .acq-plus { opacity: .8; padding: 0 2px; }
-        .persona-acq-info .acq-text { font-size: 12px; opacity: .9; }
-        .persona-acq-info .acq-emblem { display:inline-flex; align-items:center; gap:4px; }
-        .persona-acq-info .acq-emblem-num { font-size: 12px; color: #ffd54f; }
+        .persona-acq-info {
+            padding: 12px 16px 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .persona-acq-info .acq-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .persona-acq-info .acq-header h3 {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .persona-acq-info .acq-detail {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ddd;
+            border-radius: 6px;
+            padding: 2px 6px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .persona-acq-info .acq-body {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .persona-acq-info .acq-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .persona-acq-info .acq-icon {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        .persona-acq-info .acq-plus {
+            opacity: .8;
+            padding: 0 2px;
+        }
+
+        .persona-acq-info .acq-text {
+            font-size: 12px;
+            opacity: .9;
+        }
+
+        .persona-acq-info .acq-emblem {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .persona-acq-info .acq-emblem-num {
+            font-size: 12px;
+            color: #ffd54f;
+        }
     </style>
 
     <!-- Persona card container -->
@@ -477,42 +581,50 @@ alternate_urls:
     </div>
 
     <!-- 광고 -->
+    <!--
     <div class="ads-container responsive-padding">
-        <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-format="fluid"
-        data-ad-layout-key="-gc+3n+7a-ag-4h"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="5373524213"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gc+3n+7a-ag-4h"
+            data-ad-client="ca-pub-5862324369257695" data-ad-slot="5373524213"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-        
-    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:970px;height:90px"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="9244892982"></ins>
+
+    <div id="ad-unit-bottom" class="AD-bottom"
+        style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;">
+        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
+            data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
     </div>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
-    <!---->
+    
     <style>
         @media (max-width: 1440px) {
             .AD-bottom {
                 display: none !important;
             }
         }
+
         @media (min-width: 1440px) {
             .ads-container {
                 display: none !important;
             }
         }
-        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
-        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+
+        .responsive-padding {
+            margin: 20px 20px 20px 0;
+            padding: 0 0;
+        }
+
+        @media (max-width: 1200px) {
+            .responsive-padding {
+                margin: 20px 0 0px 0;
+                padding: 0;
+            }
+        }
     </style>
-    </div>
+    -->
+</div>
 
 
 </div>
@@ -525,7 +637,7 @@ alternate_urls:
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 다국어 데이터 정의
         const i18nData = {
             kr: {
@@ -536,7 +648,7 @@ alternate_urls:
                 filtered_count: "전체",
                 search_placeholder: "페르소나 검색...",
                 filter_element: "속성",
-                filter_position: "직업", 
+                filter_position: "직업",
                 filter_rarity: "희귀도",
                 filter_grade: "등급",
                 count_unit: "개"
@@ -550,7 +662,7 @@ alternate_urls:
                 search_placeholder: "Search personas...",
                 filter_element: "Element",
                 filter_position: "Position",
-                filter_rarity: "Rarity", 
+                filter_rarity: "Rarity",
                 filter_grade: "Grade",
                 count_unit: ""
             },
@@ -564,14 +676,14 @@ alternate_urls:
                 filter_element: "属性",
                 filter_position: "職業",
                 filter_rarity: "タイプ",
-                filter_grade: "グレード", 
+                filter_grade: "グレード",
                 count_unit: ""
             }
         };
-        
+
         const data = i18nData[currentLang];
         if (!data) return;
-        
+
         // 언어 안내 메시지
         if (currentLang !== 'kr') {
             const notice = document.getElementById('language-notice');
@@ -581,25 +693,25 @@ alternate_urls:
                 notice.style.display = 'block';
             }
         }
-        
+
         // 네비게이션 및 제목 업데이트
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
         const searchInput = document.getElementById('personaSearch');
-        
+
         if (navHome) navHome.textContent = data.nav_home;
         if (navCurrent) navCurrent.textContent = data.nav_current;
         if (pageTitle) pageTitle.textContent = data.page_title;
         if (searchInput) searchInput.placeholder = data.search_placeholder;
-        
+
         // 필터 라벨 번역
         const filterLabels = document.querySelectorAll('.filter-group h3');
         if (filterLabels[0]) filterLabels[0].textContent = data.filter_element;
         if (filterLabels[1]) filterLabels[1].textContent = data.filter_position;
         if (filterLabels[2]) filterLabels[2].textContent = data.filter_rarity;
         if (filterLabels[3]) filterLabels[3].textContent = data.filter_grade;
-        
+
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
         window.i18nFilteredCount = data.filtered_count;
         window.i18nCountUnit = data.count_unit;
@@ -611,7 +723,7 @@ alternate_urls:
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         const seoData = {
             'kr': {
                 title: '주요 페르소나 - 페르소나5 더 팬텀 X',
@@ -626,23 +738,23 @@ alternate_urls:
                 description: 'ペルソナ5 ザ・ファントム Xの主要ペルソナ情報。本能、固有スキル、推奨スキル情報をご確認ください。'
             }
         };
-        
+
         const currentSEO = seoData[currentLang] || seoData['kr'];
-        
+
         // 타이틀 업데이트
         document.title = currentSEO.title;
-        
+
         // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
-        
+
         if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
         if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
 
-    
+
 
     // URL에서 검색 파라미터를 가져와서 검색을 실행하는 함수
     function handleSearchParam() {
@@ -691,7 +803,7 @@ alternate_urls:
                 const currentUrl = new URL(window.location);
                 currentUrl.searchParams.set('lang', 'kr');
                 window.history.replaceState({}, '', currentUrl);
-                
+
                 updateLanguageContent().then(() => {
                     initializePageContent().then(() => {
                         // 검색 파라미터 처리 (짧은 지연 추가)
@@ -711,13 +823,13 @@ alternate_urls:
 
     async function initializePageContent() {
         const cardsContainer = document.getElementById('personaCards');
-        
+
         // 현재 언어 확인
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 언어별 설명 박스 텍스트 업데이트
         updateExplainBoxTexts(currentLang);
-        
+
         // Update initial count
         const countText = window.i18nFilteredCount || '전체';
         const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
@@ -734,245 +846,245 @@ alternate_urls:
             while (processed < CHUNK_SIZE && currentIndex < sortedPersonas.length) {
                 const personaName = sortedPersonas[currentIndex];
                 const index = currentIndex;
-            const detailContainer = document.createElement('div');
-            detailContainer.className = 'persona-detail-container';
-            // Add data attributes for filtering
-            detailContainer.dataset.element = personaData[personaName].element;
-            detailContainer.dataset.position = personaData[personaName].position;
-            detailContainer.dataset.rarity = personaData[personaName].star;
-            detailContainer.dataset.name = personaName;  // Add data-name attribute for search
-            detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
-            detailContainer.dataset.event = personaData[personaName].event;
-            detailContainer.dataset.wild_emblem_rainbow = personaData[personaName].wild_emblem_rainbow;
-            // Preserve original order for restoring after collapse
-            detailContainer.dataset.order = String(index);
-            
-            // Left card image section
-            const cardSection = document.createElement('div');
-            cardSection.className = 'persona-card-section';
-            
-            // Insert existing card creation code here
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.dataset.element = personaData[personaName].element;
-            card.dataset.position = personaData[personaName].position;
-            card.dataset.rarity = personaData[personaName].star;
-            
-            // Add card background with optimization
-            const cardBg = document.createElement('img');
-            cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaData[personaName].element}.webp`;
-            cardBg.alt = "card background";
-            cardBg.className = 'card-background';
-            cardBg.loading = 'lazy';
-            cardBg.decoding = 'async';
-            
-            // Persona image with optimized lazy loading
-            const img = document.createElement('img');
-            img.src = `{{ site.baseurl }}/assets/img/persona/${personaName}.webp`;
-            img.alt = personaName;
-            img.className = 'persona-img';
-            img.loading = 'lazy';
-            img.decoding = 'async';  // 비동기 디코딩으로 렌더링 성능 향상
-            
-            // Add rarity cover
-            const coverStar = document.createElement('img');
-            coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaData[personaName].star}.webp`;
-            coverStar.alt = "rarity cover";
-            coverStar.className = 'cover-star';
-            coverStar.loading = 'lazy';
-            
-            // Add remaining elements
-            const positionContainer = document.createElement('div');
-            positionContainer.className = 'position-container';
-            
-            const positionIcon = document.createElement('img');
-            positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaData[personaName].position}.png`;
-            positionIcon.alt = personaData[personaName].position;
-            positionIcon.className = 'position-icon';
-            positionIcon.loading = 'lazy';
-            positionIcon.decoding = 'async';
-            
-            const elementIcon = document.createElement('img');
-            elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].element}.png`;
-            elementIcon.alt = personaData[personaName].element;
-            elementIcon.className = 'element-icon';
-            elementIcon.loading = 'lazy';
-            elementIcon.decoding = 'async';
+                const detailContainer = document.createElement('div');
+                detailContainer.className = 'persona-detail-container';
+                // Add data attributes for filtering
+                detailContainer.dataset.element = personaData[personaName].element;
+                detailContainer.dataset.position = personaData[personaName].position;
+                detailContainer.dataset.rarity = personaData[personaName].star;
+                detailContainer.dataset.name = personaName;  // Add data-name attribute for search
+                detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
+                detailContainer.dataset.event = personaData[personaName].event;
+                detailContainer.dataset.wild_emblem_rainbow = personaData[personaName].wild_emblem_rainbow;
+                // Preserve original order for restoring after collapse
+                detailContainer.dataset.order = String(index);
 
-            positionContainer.appendChild(positionIcon);
-            
-            // Wild Emblem
-            if(personaData[personaName].wild_emblem_rainbow){
-                const wildEmblem = document.createElement('img');
-                wildEmblem.src = `{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png`;
-                wildEmblem.alt = "wild emblem";
-                wildEmblem.className = 'wild-emblem';
-                wildEmblem.loading = 'lazy';
-                wildEmblem.decoding = 'async';
-                // attach to card so it can be absolutely positioned at top-right via CSS
-                card.appendChild(wildEmblem);
-            }
+                // Left card image section
+                const cardSection = document.createElement('div');
+                cardSection.className = 'persona-card-section';
 
-            
-            // Final assembly
-            card.appendChild(cardBg);
-            card.appendChild(img);
-            card.appendChild(coverStar);
-            card.appendChild(positionContainer);
-            card.appendChild(elementIcon);
-            
-            cardSection.appendChild(card);
-            
-            // Right info section
-            const infoSection = document.createElement('div');
-            infoSection.className = 'persona-info-section';
-            
-            // 언어별 데이터 가져오기
-            const persona = personaData[personaName];
-            let displayName = personaName;
-            let instinctName = persona.instinct.name;
-            let instinctEffects = persona.instinct.effects;
-            let uniqueSkillName = persona.uniqueSkill.name;
-            let uniqueSkillEffect = persona.uniqueSkill.effect;
-            let highlightEffect = persona.highlight.effect;
-            let comment = persona.comment;
-            
-            // 언어별 번역 적용
-            if (currentLang === 'en') {
-                displayName = persona.name_en || personaName;
-                instinctName = persona.instinct.name_en || persona.instinct.name;
-                instinctEffects = persona.instinct.effects_en || persona.instinct.effects;
-                uniqueSkillName = persona.uniqueSkill.name_en || persona.uniqueSkill.name;
-                uniqueSkillEffect = persona.uniqueSkill.effect_en || persona.uniqueSkill.effect;
-                highlightEffect = persona.highlight.effect_en || persona.highlight.effect;
-                comment = persona.comment_en || persona.comment;
-            } else if (currentLang === 'jp') {
-                displayName = persona.name_jp || personaName;
-                instinctName = persona.instinct.name_jp || persona.instinct.name;
-                instinctEffects = persona.instinct.effects_jp || persona.instinct.effects;
-                uniqueSkillName = persona.uniqueSkill.name_jp || persona.uniqueSkill.name;
-                uniqueSkillEffect = persona.uniqueSkill.effect_jp || persona.uniqueSkill.effect;
-                highlightEffect = persona.highlight.effect_jp || persona.highlight.effect;
-                comment = persona.comment_jp || persona.comment;
-            }
-            
-            // Collapsed-mode name caption under the card
-            const nameCaption = document.createElement('div');
-            nameCaption.className = 'persona-name';
-            nameCaption.textContent = displayName;
+                // Insert existing card creation code here
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.element = personaData[personaName].element;
+                card.dataset.position = personaData[personaName].position;
+                card.dataset.rarity = personaData[personaName].star;
 
-            // 만약 persona_best 값이 true 일경우 nameCaption에 color 적용
-            if(personaData[personaName].best_persona){
-                nameCaption.style.color = 'rgb(255 109 122)';
-            }
-            cardSection.appendChild(nameCaption);
+                // Add card background with optimization
+                const cardBg = document.createElement('img');
+                cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaData[personaName].element}.webp`;
+                cardBg.alt = "card background";
+                cardBg.className = 'card-background';
+                cardBg.loading = 'lazy';
+                cardBg.decoding = 'async';
 
-            // Name and grade
-            const headerInfo = document.createElement('div');
-            headerInfo.className = 'persona-header-info';
-            
-            headerInfo.innerHTML = `
+                // Persona image with optimized lazy loading
+                const img = document.createElement('img');
+                img.src = `{{ site.baseurl }}/assets/img/persona/${personaName}.webp`;
+                img.alt = personaName;
+                img.className = 'persona-img';
+                img.loading = 'lazy';
+                img.decoding = 'async';  // 비동기 디코딩으로 렌더링 성능 향상
+
+                // Add rarity cover
+                const coverStar = document.createElement('img');
+                coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaData[personaName].star}.webp`;
+                coverStar.alt = "rarity cover";
+                coverStar.className = 'cover-star';
+                coverStar.loading = 'lazy';
+
+                // Add remaining elements
+                const positionContainer = document.createElement('div');
+                positionContainer.className = 'position-container';
+
+                const positionIcon = document.createElement('img');
+                positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaData[personaName].position}.png`;
+                positionIcon.alt = personaData[personaName].position;
+                positionIcon.className = 'position-icon';
+                positionIcon.loading = 'lazy';
+                positionIcon.decoding = 'async';
+
+                const elementIcon = document.createElement('img');
+                elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].element}.png`;
+                elementIcon.alt = personaData[personaName].element;
+                elementIcon.className = 'element-icon';
+                elementIcon.loading = 'lazy';
+                elementIcon.decoding = 'async';
+
+                positionContainer.appendChild(positionIcon);
+
+                // Wild Emblem
+                if (personaData[personaName].wild_emblem_rainbow) {
+                    const wildEmblem = document.createElement('img');
+                    wildEmblem.src = `{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png`;
+                    wildEmblem.alt = "wild emblem";
+                    wildEmblem.className = 'wild-emblem';
+                    wildEmblem.loading = 'lazy';
+                    wildEmblem.decoding = 'async';
+                    // attach to card so it can be absolutely positioned at top-right via CSS
+                    card.appendChild(wildEmblem);
+                }
+
+
+                // Final assembly
+                card.appendChild(cardBg);
+                card.appendChild(img);
+                card.appendChild(coverStar);
+                card.appendChild(positionContainer);
+                card.appendChild(elementIcon);
+
+                cardSection.appendChild(card);
+
+                // Right info section
+                const infoSection = document.createElement('div');
+                infoSection.className = 'persona-info-section';
+
+                // 언어별 데이터 가져오기
+                const persona = personaData[personaName];
+                let displayName = personaName;
+                let instinctName = persona.instinct.name;
+                let instinctEffects = persona.instinct.effects;
+                let uniqueSkillName = persona.uniqueSkill.name;
+                let uniqueSkillEffect = persona.uniqueSkill.effect;
+                let highlightEffect = persona.highlight.effect;
+                let comment = persona.comment;
+
+                // 언어별 번역 적용
+                if (currentLang === 'en') {
+                    displayName = persona.name_en || personaName;
+                    instinctName = persona.instinct.name_en || persona.instinct.name;
+                    instinctEffects = persona.instinct.effects_en || persona.instinct.effects;
+                    uniqueSkillName = persona.uniqueSkill.name_en || persona.uniqueSkill.name;
+                    uniqueSkillEffect = persona.uniqueSkill.effect_en || persona.uniqueSkill.effect;
+                    highlightEffect = persona.highlight.effect_en || persona.highlight.effect;
+                    comment = persona.comment_en || persona.comment;
+                } else if (currentLang === 'jp') {
+                    displayName = persona.name_jp || personaName;
+                    instinctName = persona.instinct.name_jp || persona.instinct.name;
+                    instinctEffects = persona.instinct.effects_jp || persona.instinct.effects;
+                    uniqueSkillName = persona.uniqueSkill.name_jp || persona.uniqueSkill.name;
+                    uniqueSkillEffect = persona.uniqueSkill.effect_jp || persona.uniqueSkill.effect;
+                    highlightEffect = persona.highlight.effect_jp || persona.highlight.effect;
+                    comment = persona.comment_jp || persona.comment;
+                }
+
+                // Collapsed-mode name caption under the card
+                const nameCaption = document.createElement('div');
+                nameCaption.className = 'persona-name';
+                nameCaption.textContent = displayName;
+
+                // 만약 persona_best 값이 true 일경우 nameCaption에 color 적용
+                if (personaData[personaName].best_persona) {
+                    nameCaption.style.color = 'rgb(255 109 122)';
+                }
+                cardSection.appendChild(nameCaption);
+
+                // Name and grade
+                const headerInfo = document.createElement('div');
+                headerInfo.className = 'persona-header-info';
+
+                headerInfo.innerHTML = `
             <h2>${displayName}</h2>
             <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
             `;
 
-            
-            // Instinct
-            const instinctInfo = document.createElement('div');
-            instinctInfo.className = 'persona-instinct-info';
-            instinctInfo.dataset.priority = personaData[personaName].instinct.priority;
-            
-            // 배열인 경우 줄바꿈으로 연결, 문자열인 경우 그대로 사용
-            const effectsText = Array.isArray(instinctEffects) ? instinctEffects.join('\n') : instinctEffects;
-            instinctInfo.innerHTML = `
+
+                // Instinct
+                const instinctInfo = document.createElement('div');
+                instinctInfo.className = 'persona-instinct-info';
+                instinctInfo.dataset.priority = personaData[personaName].instinct.priority;
+
+                // 배열인 경우 줄바꿈으로 연결, 문자열인 경우 그대로 사용
+                const effectsText = Array.isArray(instinctEffects) ? instinctEffects.join('\n') : instinctEffects;
+                instinctInfo.innerHTML = `
                 <h3>${instinctName}</h3>
                 <p>${effectsText}</p>
             `;
-            
-            // Container for unique skill and highlight
-            const skillContainer = document.createElement('div');
-            skillContainer.className = 'skill-highlight-container';
 
-            // Unique skill
-            const uniqueSkillInfo = document.createElement('div');
-            uniqueSkillInfo.className = 'persona-unique-skill-info';
-            uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
-            // Use global icon when language is en/jp and icon_gl exists
-            const uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp')
-                ? (personaData[personaName].uniqueSkill.icon_gl || personaData[personaName].uniqueSkill.icon)
-                : personaData[personaName].uniqueSkill.icon;
-            uniqueSkillInfo.innerHTML = `
+                // Container for unique skill and highlight
+                const skillContainer = document.createElement('div');
+                skillContainer.className = 'skill-highlight-container';
+
+                // Unique skill
+                const uniqueSkillInfo = document.createElement('div');
+                uniqueSkillInfo.className = 'persona-unique-skill-info';
+                uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
+                // Use global icon when language is en/jp and icon_gl exists
+                const uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp')
+                    ? (personaData[personaName].uniqueSkill.icon_gl || personaData[personaName].uniqueSkill.icon)
+                    : personaData[personaName].uniqueSkill.icon;
+                uniqueSkillInfo.innerHTML = `
                 <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${uniqueSkillIconName}.png" alt="Skill Element" class="skill-type-icon"> ${uniqueSkillName}</h3>
                 <p>${uniqueSkillEffect}</p>
             `;
-            
-            // Highlight - 언어별 라벨 적용
-            const highlightLabels = {
-                'kr': 'HIGHLIGHT',
-                'en': 'HIGHLIGHT', 
-                'jp': 'HIGHLIGHT'
-            };
-            const highlightLabel = highlightLabels[currentLang] || 'HIGHLIGHT';
-            
-            const highlightInfo = document.createElement('div');
-            highlightInfo.className = 'persona-highlight-info';
-            highlightInfo.dataset.priority = personaData[personaName].highlight.priority;
-            highlightInfo.innerHTML = `
+
+                // Highlight - 언어별 라벨 적용
+                const highlightLabels = {
+                    'kr': 'HIGHLIGHT',
+                    'en': 'HIGHLIGHT',
+                    'jp': 'HIGHLIGHT'
+                };
+                const highlightLabel = highlightLabels[currentLang] || 'HIGHLIGHT';
+
+                const highlightInfo = document.createElement('div');
+                highlightInfo.className = 'persona-highlight-info';
+                highlightInfo.dataset.priority = personaData[personaName].highlight.priority;
+                highlightInfo.innerHTML = `
                 <h3>${highlightLabel}</h3>
                 <p>${highlightEffect}</p>
             `;
 
-            // Add to container
-            skillContainer.appendChild(uniqueSkillInfo);
-            skillContainer.appendChild(highlightInfo);
-            
-            // Add elements to info section
-            infoSection.appendChild(headerInfo);
-            // Insert Acquisition section between header and instinct (if script is loaded)
-            try {
-                if (window.Acquisition && typeof window.Acquisition.renderInto === 'function') {
-                    window.Acquisition.renderInto(infoSection, personaName);
-                }
-            } catch (e) { /* noop */ }
-            infoSection.appendChild(instinctInfo);
-            infoSection.appendChild(skillContainer);  // Add container instead of individual elements
+                // Add to container
+                skillContainer.appendChild(uniqueSkillInfo);
+                skillContainer.appendChild(highlightInfo);
 
-            // Recommended skill list - 언어별 라벨 적용
-            if (personaData[personaName].recommendSkill && personaData[personaName].recommendSkill.length > 0 && personaData[personaName].recommendSkill[0].name) {
-                const recommendedSkillLabels = {
-                    'kr': '추천 스킬',
-                    'en': 'Recommended Skills',
-                    'jp': '推奨スキル'
-                };
-                const recommendedSkillLabel = recommendedSkillLabels[currentLang] || '추천 스킬';
-                
-                const recommendedSkills = document.createElement('div');
-                recommendedSkills.className = 'persona-recommended-skills';
-                recommendedSkills.innerHTML = `
+                // Add elements to info section
+                infoSection.appendChild(headerInfo);
+                // Insert Acquisition section between header and instinct (if script is loaded)
+                try {
+                    if (window.Acquisition && typeof window.Acquisition.renderInto === 'function') {
+                        window.Acquisition.renderInto(infoSection, personaName);
+                    }
+                } catch (e) { /* noop */ }
+                infoSection.appendChild(instinctInfo);
+                infoSection.appendChild(skillContainer);  // Add container instead of individual elements
+
+                // Recommended skill list - 언어별 라벨 적용
+                if (personaData[personaName].recommendSkill && personaData[personaName].recommendSkill.length > 0 && personaData[personaName].recommendSkill[0].name) {
+                    const recommendedSkillLabels = {
+                        'kr': '추천 스킬',
+                        'en': 'Recommended Skills',
+                        'jp': '推奨スキル'
+                    };
+                    const recommendedSkillLabel = recommendedSkillLabels[currentLang] || '추천 스킬';
+
+                    const recommendedSkills = document.createElement('div');
+                    recommendedSkills.className = 'persona-recommended-skills';
+                    recommendedSkills.innerHTML = `
                     <h3>${recommendedSkillLabel}</h3>
                     <ul>
                         ${personaData[personaName].recommendSkill.map(skill => {
-                            const skillInfo = personaSkillList[skill.name];
-                            if (!skillInfo) return ''; // Skip if skill info not found
-                            
-                            // 스킬 이름과 설명도 언어별로 번역 (현재는 한국어만 있으므로 그대로 사용)
-                            let skillName = skill.name;
-                            let skillDescription = skillInfo.description;
-                            
-                            // 언어별 스킬 이름과 설명 적용
-                            if (currentLang === 'en') {
-                                skillName = skillInfo.name_en || skill.name;
-                                skillDescription = skillInfo.description_en || skillInfo.description;
-                            } else if (currentLang === 'jp') {
-                                skillName = skillInfo.name_jp || skill.name;
-                                skillDescription = skillInfo.description_jp || skillInfo.description;
-                            }
-                            // Choose icon based on language (use icon_gl for en/jp when available)
-                            const iconName = (currentLang === 'en' || currentLang === 'jp')
-                                ? (skillInfo.icon_gl || skillInfo.icon)
-                                : skillInfo.icon;
-                            
-                            return `
+                        const skillInfo = personaSkillList[skill.name];
+                        if (!skillInfo) return ''; // Skip if skill info not found
+
+                        // 스킬 이름과 설명도 언어별로 번역 (현재는 한국어만 있으므로 그대로 사용)
+                        let skillName = skill.name;
+                        let skillDescription = skillInfo.description;
+
+                        // 언어별 스킬 이름과 설명 적용
+                        if (currentLang === 'en') {
+                            skillName = skillInfo.name_en || skill.name;
+                            skillDescription = skillInfo.description_en || skillInfo.description;
+                        } else if (currentLang === 'jp') {
+                            skillName = skillInfo.name_jp || skill.name;
+                            skillDescription = skillInfo.description_jp || skillInfo.description;
+                        }
+                        // Choose icon based on language (use icon_gl for en/jp when available)
+                        const iconName = (currentLang === 'en' || currentLang === 'jp')
+                            ? (skillInfo.icon_gl || skillInfo.icon)
+                            : skillInfo.icon;
+
+                        return `
                                 <li data-priority="${skill.priority}">
                                     <div class="skill-info">
                                         <div class="skill-name-container">
@@ -983,36 +1095,36 @@ alternate_urls:
                                     </div>
                                 </li>
                             `;
-                        }).join('')}
+                    }).join('')}
                     </ul>
                 `;
-                infoSection.appendChild(recommendedSkills);
-            }
-            
-            // Comment
-            if (comment && comment.trim() !== '') {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'persona-comment';
-                commentDiv.innerHTML = `
+                    infoSection.appendChild(recommendedSkills);
+                }
+
+                // Comment
+                if (comment && comment.trim() !== '') {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.className = 'persona-comment';
+                    commentDiv.innerHTML = `
                     <div class="comment-container">
                         <span class="comment-icon">💬</span>
                         <p>${comment}</p>
                     </div>
                 `;
-                infoSection.appendChild(commentDiv);
-            }
-            
-            // Add sections to container
-            detailContainer.appendChild(cardSection);
-            detailContainer.appendChild(infoSection);
-            
-            fragment.appendChild(detailContainer);
+                    infoSection.appendChild(commentDiv);
+                }
+
+                // Add sections to container
+                detailContainer.appendChild(cardSection);
+                detailContainer.appendChild(infoSection);
+
+                fragment.appendChild(detailContainer);
                 currentIndex++;
                 processed++;
             }
             // 청크 단위로 DOM 삽입
             cardsContainer.appendChild(fragment);
-            
+
             if (currentIndex < sortedPersonas.length) {
                 if ('requestIdleCallback' in window) {
                     requestIdleCallback(renderChunk, { timeout: 100 });
@@ -1056,10 +1168,11 @@ alternate_urls:
 
         // 컨테이너 목록은 렌더 완료 후 할당됨
         let containers = null;
+        /*
         // 광고 삽입 카운터 (Expand All 비활성 상태에서 카드 열 때만 증가)
         let adOpenCount = 0;
 
-        function injectAdForContainer(container){
+        function injectAdForContainer(container) {
             try {
                 const infoSection = container.querySelector('.persona-info-section');
                 if (!infoSection) return;
@@ -1069,10 +1182,10 @@ alternate_urls:
                 adHost.className = 'dynamic-ad card-inline-ad';
                 infoSection.appendChild(adHost);
                 if (typeof ModalAdInjector !== 'undefined' && ModalAdInjector.injectAdInto) {
-                    try { ModalAdInjector.injectAdInto(adHost, { width: 970, height: 90, className: 'card-ad-wrap', marginTop: 12 }); } catch (_) {}
+                    try { ModalAdInjector.injectAdInto(adHost, { width: 970, height: 90, className: 'card-ad-wrap', marginTop: 12 }); } catch (_) { }
                 }
-            } catch(_) { /* noop */ }
-        }
+            } catch (_) {  }
+        }*/
 
         // 카드 클릭 확장 및 전체 펼치기 토글 연결
         function wireCardInteractions() {
@@ -1180,12 +1293,13 @@ alternate_urls:
                         container.classList.add('active');
 
                         // 광고 카운트 증가 및 1, 5, 9...번째 열 때 광고 삽입
+                        /*
                         adOpenCount += 1;
                         if (adOpenCount === 1 || ((adOpenCount - 1) % 4 === 0)) {
                             injectAdForContainer(container);
                             // 필터/검색 시 광고 가시성 규칙 적용
-                            try { manageAdVisibility(); } catch(_) {}
-                        }
+                            try { manageAdVisibility(); } catch (_) { }
+                        }*/
                     } else {
                         // 축소: 클래스 제거 후 원래 DOM 순서 복구
                         container.classList.remove('expanded');
@@ -1215,10 +1329,10 @@ alternate_urls:
         filterToggleBtn.addEventListener('click', () => {
             filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
         });
-        
+
         // 필터 디바운싱을 위한 타이머
         let filterDebounceTimer;
-        
+
         // Detect checkbox changes with debouncing
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
@@ -1228,52 +1342,53 @@ alternate_urls:
                     // Check if any filters are selected
                     const hasChecked = Array.from(checkboxes).some(cb => cb.checked);
                     //filterResetBtn.style.display = hasChecked ? 'block' : 'none';
-                    
+
                     // Apply filters
                     applyFilters();
                 }, 50); // 50ms 디바운싱
             });
         });
-        
+
         // Reset button
-        
+
         filterResetBtn.addEventListener('click', () => {
             // 배치로 체크박스 상태 변경
             requestAnimationFrame(() => {
                 checkboxes.forEach(cb => cb.checked = false);
                 filterResetBtn.style.display = 'none';
-                
+
                 // 캐시 초기화
                 filterCache = {
                     elements: new Set(),
-                    positions: new Set(), 
+                    positions: new Set(),
                     rarities: new Set(),
                     grades: new Set()
                 };
-                
+
                 applyFilters();
             });
         });
-        
+
         filterToggleBtn.style.display = 'none';
         filterResetBtn.style.display = 'none';
 
         // 필터 상태 캐싱을 위한 변수들
         let filterCache = {
             elements: new Set(),
-            positions: new Set(), 
+            positions: new Set(),
             rarities: new Set(),
             grades: new Set()
         };
-        
+
         // 광고 가시성 관리 함수
+        /*
         function manageAdVisibility() {
             const hasActiveFilters = Array.from(checkboxes).some(cb => cb.checked);
             const hasActiveSearch = searchInput && searchInput.value.trim() !== '';
             const isFilteringActive = hasActiveFilters || hasActiveSearch;
-            
+
             const dynamicAds = document.querySelectorAll('.dynamic-ad');
-            
+
             if (isFilteringActive) {
                 // 필터나 검색이 활성화된 경우: 마지막 광고만 남기고 나머지 숨김
                 dynamicAds.forEach((ad, index) => {
@@ -1291,8 +1406,8 @@ alternate_urls:
                     ad.style.display = 'block';
                 });
             }
-        }
-        
+        }*/
+
         // 성능 최적화된 필터 적용 함수
         function applyFilters() {
             if (!containers) return; // 아직 렌더링 중이면 무시
@@ -1301,9 +1416,9 @@ alternate_urls:
             filterCache.positions = new Set(Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value));
             filterCache.rarities = new Set(Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value)));
             filterCache.grades = new Set(Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value));
-            
+
             let visibleCount = 0;
-            
+
             // requestAnimationFrame으로 DOM 조작 배치 처리
             requestAnimationFrame(() => {
                 containers.forEach(container => {
@@ -1312,17 +1427,17 @@ alternate_urls:
                     const rarity = parseInt(container.dataset.rarity);
                     const grade = container.dataset.grade;
                     const personaName = container.dataset.name;
-                    
+
                     // Set.has()로 빠른 조회 (O(1))
                     const elementMatch = filterCache.elements.size === 0 || filterCache.elements.has(element);
                     const positionMatch = filterCache.positions.size === 0 || filterCache.positions.has(position);
                     const rarityMatch = filterCache.rarities.size === 0 || filterCache.rarities.has(rarity);
-                    const gradeMatch = filterCache.grades.size === 0 || 
-                        filterCache.grades.has(grade) || 
+                    const gradeMatch = filterCache.grades.size === 0 ||
+                        filterCache.grades.has(grade) ||
                         (personaName === '야노식' && filterCache.grades.has('1'));
-                    
+
                     const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
-                    
+
                     // display 대신 position으로 성능 개선 (레이아웃 재계산 방지)
                     if (isVisible) {
                         container.style.position = 'relative';
@@ -1335,14 +1450,14 @@ alternate_urls:
                         container.style.height = '0';
                     }
                 });
-                
+
                 // 카운트 업데이트
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
                 document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
-                
+
                 // 광고 가시성 관리
-                manageAdVisibility();
+                //manageAdVisibility();
             });
         }
 
@@ -1355,18 +1470,18 @@ alternate_urls:
         let lastConfirmedSearchValue = '';
         // Note: reuse cached NodeList from above to avoid redeclaration and extra DOM query
         // const containers = document.querySelectorAll('.persona-detail-container');
-        
+
         // 언어별 페르소나 이름 매핑 생성
         const personaNameMapping = {};
         Object.keys(personaData).forEach(koreanName => {
             const persona = personaData[koreanName];
             personaNameMapping[koreanName.toLowerCase()] = koreanName;
-            
+
             // 영어 이름 추가
             if (persona.name_en) {
                 personaNameMapping[persona.name_en.toLowerCase()] = koreanName;
             }
-            
+
             // 일본어 이름 추가
             if (persona.name_jp) {
                 personaNameMapping[persona.name_jp.toLowerCase()] = koreanName;
@@ -1375,11 +1490,11 @@ alternate_urls:
 
         // 디바운싱을 위한 타이머
         let searchDebounceTimer;
-        
+
         // 검색 핸들러 함수 분리
         function handleSearchInput(e) {
             const searchValue = e ? e.target.value.toLowerCase() : '';
-            
+
             // 사용자가 마지막 확정 검색어에서 변경을 시작하면 드롭다운 억제 해제
             if (searchValue !== lastConfirmedSearchValue) {
                 suppressDropdown = false;
@@ -1391,14 +1506,14 @@ alternate_urls:
             } else {
                 updateDropdown(searchValue);
             }
-            
+
             // 검색 필터링 (디바운싱 적용)
             clearTimeout(searchDebounceTimer);
             searchDebounceTimer = setTimeout(() => {
                 filterBySearch(searchValue);
             }, 100); // 100ms 디바운싱
         }
-        
+
         // 이벤트 리스너 등록
         searchInput.addEventListener('input', handleSearchInput);
         // Enter로 검색 확정 시 드롭다운 닫고 즉시 필터 적용
@@ -1411,7 +1526,7 @@ alternate_urls:
                 filterBySearch(value);
             }
         });
-        
+
         // 드롭다운 업데이트 함수 분리
         function updateDropdown(searchValue) {
             // URL 파라미터 검색 적용 중에는 드롭다운을 노출하지 않음
@@ -1424,22 +1539,22 @@ alternate_urls:
                 return;
             }
             dropdown.innerHTML = '';
-            
+
             if (searchValue.length > 0) {
-                const matches = Object.keys(personaNameMapping).filter(name => 
+                const matches = Object.keys(personaNameMapping).filter(name =>
                     name.includes(searchValue)
                 ).slice(0, 10); // 성능을 위해 최대 10개로 제한
 
                 if (matches.length > 0) {
                     dropdown.style.display = 'block';
-                    
+
                     // DocumentFragment로 배치 DOM 추가
                     const fragment = document.createDocumentFragment();
-                    
+
                     matches.forEach(matchedName => {
                         const koreanName = personaNameMapping[matchedName];
                         const persona = personaData[koreanName];
-                        
+
                         // 현재 언어에 맞는 표시 이름 가져오기
                         let displayName = koreanName;
                         if (currentLang === 'en' && persona.name_en) {
@@ -1447,7 +1562,7 @@ alternate_urls:
                         } else if (currentLang === 'jp' && persona.name_jp) {
                             displayName = persona.name_jp;
                         }
-                        
+
                         const div = document.createElement('div');
                         div.className = 'dropdown-item';
                         div.textContent = displayName;
@@ -1458,7 +1573,7 @@ alternate_urls:
                         });
                         fragment.appendChild(div);
                     });
-                    
+
                     dropdown.appendChild(fragment);
                 } else {
                     dropdown.style.display = 'none';
@@ -1470,7 +1585,7 @@ alternate_urls:
 
         // 검색 결과 캐싱
         let searchCache = new Map();
-        
+
         // 성능 최적화된 검색 필터링 함수
         function filterBySearch(searchValue) {
             // 캐시에서 결과 확인
@@ -1478,26 +1593,26 @@ alternate_urls:
                 applySearchResults(searchCache.get(searchValue));
                 return;
             }
-            
+
             let visibleCount = 0;
             const results = [];
             let firstVisibleIndex = -1;
-            
+
             // requestAnimationFrame으로 배치 처리
             requestAnimationFrame(() => {
                 containers.forEach(container => {
                     const koreanName = container.dataset.name;
                     const persona = personaData[koreanName];
-                    
+
                     // 모든 언어 이름으로 검색 가능하도록
                     const searchableNames = [
                         koreanName.toLowerCase(),
                         persona.name_en ? persona.name_en.toLowerCase() : '',
                         persona.name_jp ? persona.name_jp.toLowerCase() : ''
                     ].filter(name => name); // 빈 문자열 제거
-                    
+
                     const isVisible = searchValue === '' || searchableNames.some(name => name.includes(searchValue));
-                    
+
                     // display 대신 position으로 성능 개선
                     if (isVisible) {
                         container.style.position = 'relative';
@@ -1509,25 +1624,25 @@ alternate_urls:
                         container.style.visibility = 'hidden';
                         container.style.height = '0';
                     }
-                    
+
                     results.push(isVisible);
                     if (isVisible && firstVisibleIndex === -1) {
                         firstVisibleIndex = results.length - 1;
                     }
                 });
-                
+
                 // 결과 캐싱 (최대 50개까지만)
                 if (searchCache.size < 50) {
                     searchCache.set(searchValue, results);
                 }
-                
+
                 // 카운트 업데이트
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
                 document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
-                
+
                 // 광고 가시성 관리
-                manageAdVisibility();
+                //manageAdVisibility();
 
                 // URL 파라미터 검색일 때만 자동 확장/드롭다운 숨김 적용
                 if (window.isApplyingUrlSearch) {
@@ -1551,17 +1666,17 @@ alternate_urls:
                 }
             });
         }
-        
+
         // 캐시된 검색 결과 적용 함수
         function applySearchResults(results) {
             const containers = document.querySelectorAll('.persona-detail-container');
             let visibleCount = 0;
             let firstVisibleIndex = -1;
-            
+
             requestAnimationFrame(() => {
                 containers.forEach((container, index) => {
                     const isVisible = results[index];
-                    
+
                     if (isVisible) {
                         container.style.position = 'relative';
                         container.style.visibility = 'visible';
@@ -1574,14 +1689,14 @@ alternate_urls:
                         container.style.height = '0';
                     }
                 });
-                
+
                 // 카운트 업데이트
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
                 document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
-                
+
                 // 검색 후 광고 가시성 관리
-                manageAdVisibility();
+                //manageAdVisibility();
 
                 // URL 파라미터 검색일 때만 자동 확장/드롭다운 숨김 적용
                 if (window.isApplyingUrlSearch) {
@@ -1630,7 +1745,7 @@ alternate_urls:
             }
         }
     } // initializePageContent 함수 종료
-    
+
     // 언어별 설명 박스 텍스트 업데이트 함수
     function updateExplainBoxTexts(currentLang) {
         const explainTexts = {
@@ -1640,7 +1755,7 @@ alternate_urls:
                 priority_label: "중요도 :",
                 priority_label2: "우선순위 :",
                 priority_high: "상",
-                priority_medium: "중", 
+                priority_medium: "중",
                 priority_low: "하",
                 priority_normal: "중",
                 priority_very_low: "최하",
@@ -1648,12 +1763,12 @@ alternate_urls:
             },
             en: {
                 instinct_title: "Core Passive · Unique Skill · HIGHLIGHT",
-                skills_title: "Recommended Skills", 
+                skills_title: "Recommended Skills",
                 priority_label: "Importance :",
                 priority_label2: "Priority :",
                 priority_high: "High",
                 priority_medium: "Med",
-                priority_low: "Low", 
+                priority_low: "Low",
                 priority_normal: "Normal",
                 priority_very_low: "Very Low",
                 priority_highest: "High"
@@ -1666,28 +1781,28 @@ alternate_urls:
                 priority_high: "高",
                 priority_medium: "中",
                 priority_low: "低",
-                priority_normal: "一般", 
+                priority_normal: "一般",
                 priority_very_low: "非常に低い",
                 priority_highest: "高い"
             }
         };
-        
+
         const currentExplainTexts = explainTexts[currentLang] || explainTexts['kr'];
-        
+
         // 설명 박스 텍스트 업데이트
         const explainSections = document.querySelectorAll('.explain-section h4');
         if (explainSections[0]) explainSections[0].textContent = currentExplainTexts.instinct_title;
         if (explainSections[1]) explainSections[1].textContent = currentExplainTexts.skills_title;
-        
+
         const priorityLabels = document.querySelectorAll('.priority-label');
         if (priorityLabels[0]) priorityLabels[0].textContent = currentExplainTexts.priority_label;
         if (priorityLabels[1]) priorityLabels[1].textContent = currentExplainTexts.priority_label2;
-        
+
         // 우선순위 텍스트 업데이트
         const priorityTexts = document.querySelectorAll('[data-priority-text]');
         priorityTexts.forEach(element => {
             const type = element.dataset.priorityText;
-            switch(type) {
+            switch (type) {
                 case 'high':
                     element.textContent = currentExplainTexts.priority_highest;
                     break;
@@ -1702,7 +1817,7 @@ alternate_urls:
                     break;
             }
         });
-        
+
         // 기존 우선순위 아이템들 (설명 박스 첫 번째 섹션)
         const priorityItems = document.querySelectorAll('.priority-item span');
         if (priorityItems[0]) priorityItems[0].textContent = currentExplainTexts.priority_high;
@@ -1715,6 +1830,7 @@ alternate_urls:
     }
 
     // 광고 흰 박스 숨김
+    /*
     setTimeout(() => {
         document.querySelectorAll(".adsbygoogle").forEach(el => {
             const status = el.getAttribute("data-ad-status");
@@ -1725,7 +1841,7 @@ alternate_urls:
                 el.style.display = "none";
             }
         });
-    }, 1000);  // 광고 로딩 기다렸다가 1초 후 검사
+    }, 1000);  // 광고 로딩 기다렸다가 1초 후 검사*/
 </script>
 
 

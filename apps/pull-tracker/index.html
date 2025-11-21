@@ -21,7 +21,8 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
 
     <!-- User Bar -->
     <div id="ptUserBar" class="user-info-bar" style="display:none;">
-        <img src="{{ site.baseurl }}/apps/pull-tracker/Google_Drive_Logo.png" alt="Google Drive" class="google-drive-logo" style="height:18px;">
+        <img src="{{ site.baseurl }}/apps/pull-tracker/Google_Drive_Logo.png" alt="Google Drive"
+            class="google-drive-logo" style="height:18px;">
         <span class="user-label" id="ptUserSignedAs">로그인:</span>
         <span id="ptUserName"></span>
         <button id="ptLoginBtn" class="auth-btn">로그인</button>
@@ -33,7 +34,15 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
         <div style="display:flex; flex-direction:column; gap:12px; max-width:860px;">
             <div class="url-row" style="gap:8px;">
                 <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
-                    <button id="openGuideBtn" class="url-btn"><span class="help-icon"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/><path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/></svg></span><span style="margin-left:6px;">URL 획득방법</span></button>
+                    <button id="openGuideBtn" class="url-btn"><span class="help-icon"><svg viewBox="0 0 18 18"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                    fill="rgba(255,255,255,0.05)" />
+                                <path
+                                    d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-opacity="0.3" />
+                            </svg></span><span style="margin-left:6px;">URL 획득방법</span></button>
                 </div>
                 <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
                     <input id="sourceUrl" type="url" inputmode="url" placeholder="https://..." class="url-input">
@@ -76,7 +85,8 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
 
     <!-- Stats Cards Controls -->
     <section class="summary-cards" style="margin-top:12px;">
-        <label class="hide4-toggle"><input id="hide4Chk" type="checkbox" style="vertical-align:-2px; margin-right:6px;"> <span id="hide4Label">4★ 숨기기</span></label>
+        <label class="hide4-toggle"><input id="hide4Chk" type="checkbox" style="vertical-align:-2px; margin-right:6px;">
+            <span id="hide4Label">4★ 숨기기</span></label>
     </section>
 
     <!-- Stats Cards -->
@@ -90,7 +100,7 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
         <div id="ptHelpText" class="help-text"></div>
     </section>
 
-    
+
 
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
 
@@ -109,17 +119,17 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_individual'); } } catch(_) {}
-            try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch(_) {}
+            try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_individual'); } } catch (_) { }
+            try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
 
             // expose base url to JS
-            try { window.BASE_URL = '{{ site.baseurl }}'; } catch(_) {}
+            try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
             // init Google auth bar
-            try { if (window.pullTrackerInitAuth) window.pullTrackerInitAuth(); } catch(_) {}
+            try { if (window.pullTrackerInitAuth) window.pullTrackerInitAuth(); } catch (_) { }
             // SEO: 언어별 제목/설명/og 자동 설정
             try {
                 const params = new URLSearchParams(location.search);
-                const lang = (params.get('lang')||'kr').toLowerCase();
+                const lang = (params.get('lang') || 'kr').toLowerCase();
                 const meta = {
                     kr: { title: '계약 통계 - 페르소나5 더 팬텀 X', desc: 'P5X 가챠 계약 정보를 기록하고 통계를 확인하세요.' },
                     en: { title: 'Pull Tracker - Persona 5: The Phantom X', desc: 'P5X Gacha Pull Tracker' },
@@ -127,15 +137,15 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
                 };
                 const cur = meta[lang] || meta.kr;
                 document.title = cur.title;
-                const ensure = (sel, attr, prop)=>{
-                    let el = document.querySelector(sel); if (!el){ el = document.createElement('meta'); if (prop) el.setAttribute('property', prop); document.head.appendChild(el);} return el;
+                const ensure = (sel, attr, prop) => {
+                    let el = document.querySelector(sel); if (!el) { el = document.createElement('meta'); if (prop) el.setAttribute('property', prop); document.head.appendChild(el); } return el;
                 };
                 let d = document.querySelector('meta[name="description"]');
-                if (!d) { d = document.createElement('meta'); d.setAttribute('name','description'); document.head.appendChild(d); }
+                if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d); }
                 d.setAttribute('content', cur.desc);
-                let ogt = document.querySelector('meta[property="og:title"]'); if (!ogt){ ogt = document.createElement('meta'); ogt.setAttribute('property','og:title'); document.head.appendChild(ogt);} ogt.setAttribute('content', cur.title);
-                let ogd = document.querySelector('meta[property="og:description"]'); if (!ogd){ ogd = document.createElement('meta'); ogd.setAttribute('property','og:description'); document.head.appendChild(ogd);} ogd.setAttribute('content', cur.desc);
-            } catch(_) {}
+                let ogt = document.querySelector('meta[property="og:title"]'); if (!ogt) { ogt = document.createElement('meta'); ogt.setAttribute('property', 'og:title'); document.head.appendChild(ogt); } ogt.setAttribute('content', cur.title);
+                let ogd = document.querySelector('meta[property="og:description"]'); if (!ogd) { ogd = document.createElement('meta'); ogd.setAttribute('property', 'og:description'); document.head.appendChild(ogd); } ogd.setAttribute('content', cur.desc);
+            } catch (_) { }
             // Help text i18n
             try {
                 const el = document.getElementById('ptHelpText');
@@ -143,14 +153,15 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
                 const KR = `·  로컬 데이터는 개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\n·  구글 드라이브 로그인을 통해 여러분의 Google Drive에서 내용을 저장하고 동기화할 수 있습니다.\n·  URL을 통해 제출된 정보는 계정 정보를 비롯한 어떤 유저 식별자도 포함하지 않으며, 데이터는 통계(iant.kr/gacha)에 사용될 수 있습니다.\n·  Special Thanks To : Iant / TheROoNCo`;
                 const EN = `·  Local data is stored in your browser and will be deleted if you clear browsing data.\n·  By signing in with Google Drive, you can save and sync your data in your Google Drive.\n·  Data submitted via URL does not include account information; it may be used for statistics (iant.kr/gacha).\n·  Special Thanks To : Iant / TheROoNCo`;
                 const JP = `·  ローカルデータはお使いのブラウザに保存され、閲覧データをすべて削除すると消去されます。\n·  Google ドライブにログインすると、ご自身の Google Drive に保存・同期できます。\n·  URL で送信される情報にアカウント情報は含まれません。データは統計（iant.kr/gacha）に利用される場合があります。\n·  Special Thanks To : Iant / TheROoNCo`;
-                if (el) el.textContent = (lang==='en'?EN:(lang==='jp'?JP:KR));
-            } catch(_) {}
+                if (el) el.textContent = (lang === 'en' ? EN : (lang === 'jp' ? JP : KR));
+            } catch (_) { }
         });
     </script>
 
 
-    
+
     <!-- 광고 -->
+    <!--
     <div class="ads-container responsive-padding">
         <ins class="adsbygoogle"
         style="display:block"
@@ -171,7 +182,7 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
-    <!---->
+    
     <style>
         @media (max-width: 1200px) {
             .AD-bottom {
@@ -186,7 +197,6 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
         .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
-    </div>
+    -->
 </div>
-
-
+</div>

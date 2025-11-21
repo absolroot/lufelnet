@@ -3,18 +3,18 @@ layout: default
 custom_css: [character]
 custom_js: [translation-loader]
 
-redirect_from: 
-  - /kr/character/
-  - /kr/character/index.html
+redirect_from:
+- /kr/character/
+- /kr/character/index.html
 ---
 
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
-     <!--
+    <!--
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
     </div>-->
-    
+
     <div class="navigation-path">
         <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
         <span class="separator">/</span>
@@ -34,7 +34,7 @@ redirect_from:
                 <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
             </button>
         </div>
-        
+
         <div class="filter-content" style="display: none;">
             <!-- Element filter -->
             <div class="filter-group">
@@ -97,7 +97,7 @@ redirect_from:
                     </label>
                 </div>
             </div>
-            
+
             <!-- Position filter -->
             <div class="filter-group">
                 <h3>직업</h3>
@@ -132,7 +132,7 @@ redirect_from:
                     </label>
                 </div>
             </div>
-            
+
             <!-- Rarity filter -->
             <div class="filter-group">
                 <h3>유형</h3>
@@ -156,8 +156,10 @@ redirect_from:
                             <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
                         </div>
                     </label>
-                    <label><input type="checkbox" name="tag" value="한정"><img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
-                    <label><input type="checkbox" name="tag" value="통상"><img src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
+                    <label><input type="checkbox" name="tag" value="한정"><img
+                            src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
+                    <label><input type="checkbox" name="tag" value="통상"><img
+                            src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
                     <label><input type="checkbox" name="tag" value="페르소나3"><span>P3</span></label>
                     <label><input type="checkbox" name="tag" value="페르소나5"><span>P5</span></label>
                 </div>
@@ -192,7 +194,9 @@ redirect_from:
         <div class="search-container">
             <div class="search-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                    <path
+                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                        fill="rgba(255, 255, 255, 0.6)" />
                 </svg>
             </div>
             <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
@@ -212,7 +216,7 @@ redirect_from:
     </div>
 
     <!-- 광고 -->
-    
+    <!--
     <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 40px; margin-bottom:12px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
     <ins class="adsbygoogle"
         style="display:inline-block;width:970px;height:90px"
@@ -222,133 +226,133 @@ redirect_from:
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <!---->
+
     <style>
         @media (max-width: 1440px) {
             .AD-bottom {
                 display: none !important;
             }
         }
-    </style>
+    </style>-->
 </div>
 
 <style>
-/* 스포일러 토글 스타일 */
-.spoiler-toggle-container {
-    display: flex;
-    align-items: center;
-    margin-left: 12px;
-}
+    /* 스포일러 토글 스타일 */
+    .spoiler-toggle-container {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+    }
 
-.spoiler-toggle-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    user-select: none;
-    transition: color 0.2s ease;
-}
+    .spoiler-toggle-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        user-select: none;
+        transition: color 0.2s ease;
+    }
 
-.spoiler-toggle-label:hover {
-    color: rgba(255, 255, 255, 1);
-}
+    .spoiler-toggle-label:hover {
+        color: rgba(255, 255, 255, 1);
+    }
 
-.spoiler-toggle-checkbox {
-    appearance: none;
-    width: 20px !important;
-    height: 20px !important;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-    position: relative;
-    transition: all 0.2s ease;
-    background: transparent;
-    background-image: none !important;
-    margin-right: 4px !important;
-}
+    .spoiler-toggle-checkbox {
+        appearance: none;
+        width: 20px !important;
+        height: 20px !important;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        position: relative;
+        transition: all 0.2s ease;
+        background: transparent;
+        background-image: none !important;
+        margin-right: 4px !important;
+    }
 
-.spoiler-toggle-checkbox:checked {
-    background: #a90505b7;
-    border-color: #a90505b7;
-    background-image: none !important;
-    width: 20px !important;
-    height: 20px !important;
-    margin-right: 4px !important;
-}
+    .spoiler-toggle-checkbox:checked {
+        background: #a90505b7;
+        border-color: #a90505b7;
+        background-image: none !important;
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 4px !important;
+    }
 
-/* 체크 표시가 박스 가운데에 있을 수 있도록 */
-.spoiler-toggle-checkbox:checked::after {
-    content: '✓';
-    position: absolute;
-    top: -2px;
-    left: 1px;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 2px 0 0 2px;
-}
+    /* 체크 표시가 박스 가운데에 있을 수 있도록 */
+    .spoiler-toggle-checkbox:checked::after {
+        content: '✓';
+        position: absolute;
+        top: -2px;
+        left: 1px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 0 0 2px;
+    }
 
-.spoiler-toggle-checkbox:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-}
+    .spoiler-toggle-checkbox:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
 
-.spoiler-toggle-text {
-    font-weight: 500;
-}
+    .spoiler-toggle-text {
+        font-weight: 500;
+    }
 
-/* 검색 섹션 레이아웃 조정 */
-.search-section {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    margin-bottom: 20px;
-}
+    /* 검색 섹션 레이아웃 조정 */
+    .search-section {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
 
-.search-container {
-    flex: 1;
-    position: relative;
-}
+    .search-container {
+        flex: 1;
+        position: relative;
+    }
 
-.search-count {
-    white-space: nowrap;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-}
+    .search-count {
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+    }
 
-/* 미출시 캐릭터 태그 스타일 */
-.not-released-tag {
-    position: absolute;
-    top: 10px;
-    right: 0px;
-    background: #f6d933;
-    color: #000;
-    font-size: 8px;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 0px;
-    z-index: 10;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+    /* 미출시 캐릭터 태그 스타일 */
+    .not-released-tag {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        background: #f6d933;
+        color: #000;
+        font-size: 8px;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 0px;
+        z-index: 10;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 
-/* 캐릭터 카드에 relative position 추가 (태그 위치 기준) */
-.card {
-    position: relative;
-}
+    /* 캐릭터 카드에 relative position 추가 (태그 위치 기준) */
+    .card {
+        position: relative;
+    }
 
-.card a {
-    position: relative;
-    display: block;
-}
+    .card a {
+        position: relative;
+        display: block;
+    }
 </style>
 
 <script>
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // Jekyll 다국어 데이터 사용
         const i18nData = {
             kr: {
@@ -376,10 +380,10 @@ redirect_from:
                 search_placeholder: "{{ site.data.i18n.jp.character_search_placeholder | default: '怪盗検索...' }}"
             }
         };
-        
+
         const data = i18nData[currentLang];
         if (!data) return;
-        
+
         // 언어 안내 메시지
         if (currentLang !== 'kr') {
             const notice = document.getElementById('language-notice');
@@ -389,31 +393,31 @@ redirect_from:
                 notice.style.display = 'block';
             }
         }
-        
+
         // 네비게이션 및 제목 업데이트
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
         const searchInput = document.getElementById('characterSearch');
-        
+
         if (navHome) navHome.textContent = data.nav_home;
         if (navCurrent) navCurrent.textContent = data.nav_current;
         if (pageTitle) pageTitle.textContent = data.page_title;
         if (searchInput) searchInput.placeholder = data.search_placeholder;
-        
+
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
         window.i18nFilteredCount = data.filtered_count;
-        
+
         // 필터 제목 번역
         updateFilterTitles(currentLang);
     }
-    
+
     // 필터 제목 번역 함수
     function updateFilterTitles(currentLang) {
         const filterTitles = {
             kr: {
                 element: "속성",
-                position: "직업", 
+                position: "직업",
                 type: "유형",
                 tag: "태그",
                 count_unit: "명"
@@ -421,7 +425,7 @@ redirect_from:
             en: {
                 element: "Element",
                 position: "Position",
-                type: "Type", 
+                type: "Type",
                 tag: "Tag",
                 count_unit: " "
             },
@@ -433,10 +437,10 @@ redirect_from:
                 count_unit: "体"
             }
         };
-        
+
         const titles = filterTitles[currentLang];
         if (!titles) return;
-        
+
         // 필터 그룹 제목들 업데이트
         const filterGroups = document.querySelectorAll('.filter-group h3');
         if (filterGroups.length >= 4) {
@@ -445,7 +449,7 @@ redirect_from:
             filterGroups[2].textContent = titles.type; // 유형
             filterGroups[3].textContent = titles.tag; // 태그
         }
-        
+
         // 개수 단위 전역 변수 설정
         window.i18nCountUnit = titles.count_unit;
     }
@@ -453,7 +457,7 @@ redirect_from:
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         const seoData = {
             'kr': {
                 title: '괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷',
@@ -468,17 +472,17 @@ redirect_from:
                 description: 'ペルソナ5 ザ・ファントム Xの怪盗別育成ガイド。おすすめ設定、スキル、意識、専用武器情報をご確認ください。'
             }
         };
-        
+
         const currentSEO = seoData[currentLang] || seoData['kr'];
-        
+
         // 타이틀 업데이트
         document.title = currentSEO.title;
-        
+
         // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
-        
+
         if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
         if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
@@ -492,15 +496,15 @@ redirect_from:
         // characterData와 characterList를 추출하는 정규식
         const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
         const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
-        
+
         if (!characterDataMatch || !characterListMatch) {
             throw new Error('Failed to extract data from script');
         }
-        
+
         // JSON으로 파싱하기 위해 Function 생성자 사용
         const characterData = new Function('return ' + characterDataMatch[1])();
         const characterList = new Function('return ' + characterListMatch[1])();
-        
+
         return { characterData, characterList };
     }
 
@@ -513,17 +517,17 @@ redirect_from:
     async function loadCharacterData() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const spoilerEnabled = isSpoilerEnabled();
-        
+
         // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 언어별 캐릭터 리스트 저장
         let originalLangCharacterList = null;
-        
+
         try {
             // 1. 한국어 데이터 로딩 (기본 데이터)
             const krResponse = await fetch(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
             if (!krResponse.ok) {
                 throw new Error('Failed to load KR character data');
             }
-            
+
             const krScriptText = await krResponse.text();
             const { characterData: krCharacterData, characterList: krCharacterList } = extractDataFromScript(krScriptText);
 
@@ -532,27 +536,27 @@ redirect_from:
                 // 스포일러 모드에서도 원본 언어 리스트를 얻기 위해 언어별 데이터 로드
                 const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
                 const langResponse = await fetch(langUrl);
-                
+
                 if (langResponse.ok) {
                     const langScriptText = await langResponse.text();
                     const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
-                    
+
                     // 원본 언어별 캐릭터 리스트 저장 (스포일러 모드에서 비교용)
                     originalLangCharacterList = [...(langCharacterList?.mainParty || []), ...(langCharacterList?.supportParty || [])];
-                    
+
                     // 스포일러 모드가 비활성화된 경우에만 언어별 데이터 사용
                     if (!spoilerEnabled) {
-                        
+
                         // 3. 데이터 병합 (하이브리드 방식) - 언어별 캐릭터만 포함
                         //console.log('🔄 Starting data merge...');
                         const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
                         //console.log('✅ Data merge completed');
-                        
+
                         // 중요: 전역 변수를 완전히 교체
                         window.characterData = mergedData; // 병합된 데이터만 사용
                         window.characterList = langCharacterList; // 언어별 캐릭터 목록 사용
-                        
-                        
+
+
                     } else {
                         console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
                         // 언어별 데이터가 없으면 한국어 데이터 사용
@@ -575,40 +579,40 @@ redirect_from:
                 window.characterData = krCharacterData;
                 window.characterList = krCharacterList;
             }
-            
+
             // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 리스트를 전역 변수에 저장
             window.originalLangCharacterList = originalLangCharacterList;
-            
+
             return true;
-            
+
         } catch (error) {
             console.error('Failed to load character data:', error);
             return false;
         }
     }
-    
+
     // 캐릭터 데이터 병합 함수 (하이브리드 방식)
     function mergeCharacterData(krData, langData) {
         const mergedData = {};
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
-        
+
         // 샘플 데이터 확인
         const firstKrKey = Object.keys(krData)[0];
         const firstLangKey = Object.keys(langData)[0];
-        
+
         // 언어별 데이터에 있는 캐릭터만 포함 (langData 기준으로 필터링)
         for (const characterKey in langData) {
             //console.log('Merging character:', characterKey);
-            
+
             if (krData[characterKey]) {
                 //console.log(`✅ Found KR data for ${characterKey}`);
                 // 한국어 데이터를 기본으로 완전히 복사 (모든 속성 보존)
                 mergedData[characterKey] = { ...krData[characterKey] };
-                
+
                 const langChar = langData[characterKey];
                 const krChar = krData[characterKey];
-                
+
                 // name 처리: 현재 언어에 따라 적절한 이름 사용
                 if (currentLang === 'en') {
                     if (krChar.name_en) {
@@ -626,7 +630,7 @@ redirect_from:
                 } else {
                     // KR 언어일 때는 기본 KR 이름 사용
                 }
-                
+
                 // persona 처리: 현재 언어에 따라 적절한 페르소나 이름 사용
                 if (currentLang === 'en') {
                     if (krChar.persona_en) {
@@ -643,20 +647,20 @@ redirect_from:
                         //console.log(`Using Lang JP persona for ${characterKey}: ${langChar.persona}`);
                     }
                 }
-                
+
                 // 속성 번역 처리 (element 필드는 그대로 유지하되, 표시용 번역 추가)
                 if (currentLang !== 'kr' && typeof characterTranslations !== 'undefined' && characterTranslations.elements) {
                     const translatedElement = characterTranslations.elements[mergedData[characterKey].element];
                     if (translatedElement) {
                         mergedData[characterKey].element_display = translatedElement;
                     }
-                    
+
                     const translatedPosition = characterTranslations.positions[mergedData[characterKey].position];
                     if (translatedPosition) {
                         mergedData[characterKey].position_display = translatedPosition;
                     }
                 }
-                
+
                 // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
                 // 중요: element, position, rarity 등은 절대 덮어쓰지 않음 (한국어 데이터 유지)
                 if (langChar.role && langChar.role !== '') {
@@ -669,8 +673,8 @@ redirect_from:
                 if (langChar.release_order !== undefined) {
                     mergedData[characterKey].release_order = langChar.release_order;
                     //console.log(`Using Lang release_order for ${characterKey}: ${langChar.release_order}`);
-                } 
-                
+                }
+
                 // 중요한 속성들이 제대로 보존되었는지 확인
                 if (!mergedData[characterKey].element || !mergedData[characterKey].position || !mergedData[characterKey].rarity) {
                     console.warn(`Missing critical data for ${characterKey}:`, {
@@ -679,24 +683,24 @@ redirect_from:
                         rarity: mergedData[characterKey].rarity
                     });
                 }
-                
+
             } else {
                 console.warn(`❌ Character ${characterKey} not found in KR data`);
                 console.warn('Available KR characters:', Object.keys(krData).slice(0, 10), '... (showing first 10)');
             }
         }
-        
+
         return mergedData;
     }
-    
+
     // P3 필터 표시 여부 확인
     function shouldShowP3Filter() {
         if (!characterData) return false;
-        
+
         // 로딩된 캐릭터 중에 persona3=true인 캐릭터가 있는지 확인
         return Object.values(characterData).some(char => char.persona3 === true);
     }
-    
+
     // P3 필터 표시/숨김 처리
     function toggleP3Filter() {
         const p3Filter = document.querySelector('label input[value="페르소나3"]');
@@ -720,10 +724,10 @@ redirect_from:
             // console.log('initializePageContent already running or completed');
             return;
         }
-        
+
         isInitializing = true;
         // console.log('=== STARTING PAGE INITIALIZATION ===');
-        
+
         // 캐릭터 데이터 로딩
         const dataLoaded = await loadCharacterData();
         if (!dataLoaded || typeof window.characterData === 'undefined') {
@@ -731,20 +735,20 @@ redirect_from:
             isInitializing = false;
             return;
         }
-        
+
         // 지역 변수를 window.characterData로 설정
         const characterData = window.characterData;
         const characterList = window.characterList;
-        
+
         // P3 필터 표시 여부 처리
         toggleP3Filter();
 
         const cardsContainer = document.getElementById('characterCards');
         const searchCount = document.querySelector('.search-count');
-        
+
         // 기존 카드들 제거 (중복 방지)
         cardsContainer.innerHTML = '';
-        
+
         // Combine mainParty and supportParty from characterList (언어별 제한된 목록)
         let allCharacters = [
             ...characterList.mainParty,
@@ -753,7 +757,7 @@ redirect_from:
 
         // Exclude 'Wonder' from characters
         allCharacters = allCharacters.filter(character => character !== "원더");
-        
+
         // characterList에 있는 캐릭터만 사용하고, characterData에도 존재하는지 확인
         const availableCharacters = allCharacters.filter(characterName => {
             const exists = characterData[characterName] !== undefined;
@@ -762,39 +766,39 @@ redirect_from:
             }
             return exists;
         });
-        
+
         // Sort by release_order (descending), then by rarity
         const sortedCharacters = availableCharacters.sort((a, b) => {
             const aReleaseOrder = characterData[a].release_order || 0;
             const bReleaseOrder = characterData[b].release_order || 0;
             const releaseOrderDiff = bReleaseOrder - aReleaseOrder;
-            
+
             if (releaseOrderDiff !== 0) return releaseOrderDiff;
             return characterData[b].rarity - characterData[a].rarity;
         });
-        
 
-        
+
+
         // 초기 검색 결과 수 표시
         const countText = window.i18nFilteredCount || '전체';
         const countUnit = window.i18nCountUnit || '명';
         searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
-        
-        
+
+
         // Create card for each character
         sortedCharacters.forEach((characterName, index) => {
-            
+
             const charData = characterData[characterName];
             if (!charData) {
                 return;
             }
-            
-            
+
+
             // 속성 값 디버그
             const element = charData.element;
             const position = charData.position;
             const rarity = charData.rarity;
-            
+
             if (!element || !position || !rarity) {
                 console.warn(`Missing attributes for ${characterName}:`, {
                     element: element,
@@ -802,7 +806,7 @@ redirect_from:
                     rarity: rarity
                 });
             }
-            
+
             const card = document.createElement('div');
             card.className = 'card';
             card.dataset.element = element || 'undefined';
@@ -812,31 +816,31 @@ redirect_from:
             card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
             card.dataset.limit = charData.limit ? 'true' : 'false';
             card.dataset.tags = charData.tag || '';
-            
+
             // Create link wrapper - 언어 파라미터 추가
             const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
             const link = document.createElement('a');
             link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
-            
+
             // Position icon container
             const positionContainer = document.createElement('div');
             positionContainer.className = 'position-container';
-            
+
             // Position icon
             const positionIcon = document.createElement('img');
             const positionForIcon = position || 'undefined';
             positionIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${positionForIcon}.png`;
             positionIcon.alt = charData.position_display || position || 'undefined';
             positionIcon.className = 'position-icon';
-            
+
             // Character image
             const img = document.createElement('img');
             img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
             img.alt = characterName;
             img.className = 'character-img';
-            
+
             // 실제 이미지 로드
             const realImage = new Image();
             realImage.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
@@ -846,14 +850,14 @@ redirect_from:
                 img.src = realImage.src;
                 img.classList.add('loaded');
             };
-            
+
             // Element icon
             const elementIcon = document.createElement('img');
             const elementForIcon = element || 'undefined';
             elementIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${elementForIcon}.png`;
             elementIcon.alt = charData.element_display || element || 'undefined';
             elementIcon.className = 'element-icon';
-            
+
             // Add name
             const nameText = document.createElement('span');
             // 스포일러 모드와 언어에 따른 이름 표시 로직
@@ -870,15 +874,15 @@ redirect_from:
             nameText.dataset.persona3 = charData.persona3;
             nameText.dataset.persona4 = charData.persona4;
             nameText.dataset.persona5 = charData.persona5;
-            
+
             // 스포일러 모드에서 미출시 캐릭터 태그 추가
             if (spoilerEnabled && currentLang !== 'kr') {
                 // 원본 언어별 characterList에 없는 캐릭터를 미출시로 판단
                 const originalCharacterList = window.originalLangCharacterList || [];
                 const isUnreleased = !originalCharacterList.includes(characterName);
-                
+
                 console.log(`Checking ${characterName}: originalList includes = ${originalCharacterList.includes(characterName)}, isUnreleased = ${isUnreleased}`);
-                
+
                 if (isUnreleased) {
                     const notReleasedTag = document.createElement('div');
                     notReleasedTag.className = 'not-released-tag';
@@ -891,7 +895,7 @@ redirect_from:
                     console.log(`Added Not Released tag for ${characterName}`);
                 }
             }
-            
+
             positionContainer.appendChild(positionIcon);
             link.appendChild(positionContainer);
             link.appendChild(img);
@@ -903,19 +907,19 @@ redirect_from:
 
         // 필터 및 검색 기능 초기화
         initializeFiltersAndSearch(sortedCharacters);
-        
+
         // 번역 적용 (데이터 로딩 후)
         await applyTranslations();
-        
+
         // 초기화 완료
         isInitializing = false;
         isInitialized = true;
     } // initializePageContent 함수 종료
-    
+
     // 필터 및 검색 기능 초기화
     function initializeFiltersAndSearch(sortedCharacters) {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 영어/일본어일 때 태그 필터 숨기기
         /*
         if (currentLang === 'en' || currentLang === 'jp') {
@@ -937,7 +941,7 @@ redirect_from:
         const filterContent = document.querySelector('.filter-content');
         const filterResetBtn = document.querySelector('.filter-reset-btn');
         const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
-        
+
         if (filterContent) {
             filterContent.style.display = 'block';
         }
@@ -949,7 +953,7 @@ redirect_from:
             });
             filterToggleBtn.style.display = 'none';
         }
-        
+
         // Reset button
         if (filterResetBtn) {
             filterResetBtn.addEventListener('click', () => {
@@ -966,9 +970,9 @@ redirect_from:
             const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
             const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
             const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map(cb => cb.value);
-            
+
             let visibleCount = 0;
-            
+
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 const element = card.dataset.element;
@@ -978,16 +982,16 @@ redirect_from:
                 const isPersona3 = card.dataset.persona3 === 'true';
                 const isLimited = card.dataset.limit === 'true';
                 const characterTags = card.dataset.tags || '';
-                
-                const elementMatch = selectedElements.length === 0 || 
-                    selectedElements.includes(element) || 
+
+                const elementMatch = selectedElements.length === 0 ||
+                    selectedElements.includes(element) ||
                     (element === "질풍빙결" && (selectedElements.includes("질풍") || selectedElements.includes("빙결")));
-                    
+
                 const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
                 const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
-                
+
                 const tagMatch = selectedTags.every(tag => {
-                    switch(tag) {
+                    switch (tag) {
                         case '페르소나5': return isPersona5;
                         case '페르소나3': return isPersona3;
                         case '한정': return isLimited;
@@ -1006,12 +1010,12 @@ redirect_from:
                         default: return false;
                     }
                 });
-                
+
                 const shouldShow = elementMatch && positionMatch && rarityMatch && (selectedTags.length === 0 || tagMatch);
                 card.style.display = shouldShow ? 'block' : 'none';
                 if (shouldShow) visibleCount++;
             });
-            
+
             // Update search count
             if (searchCount) {
                 const countText = window.i18nFilteredCount || '전체';
@@ -1022,29 +1026,29 @@ redirect_from:
 
         // 별칭 매핑
         const nicknameMap = {
-            '유이' : 'YUI',
-            '라멘' : '카노 슌',
-            '욧샤' : '사카모토 류지',
-            '수모코' : '노게 토모코·여름',
-            '수토하' : '아라이 모토하·여름',
+            '유이': 'YUI',
+            '라멘': '카노 슌',
+            '욧샤': '사카모토 류지',
+            '수모코': '노게 토모코·여름',
+            '수토하': '아라이 모토하·여름',
             '왕왕루': '도겐자카 루우나',
             '얼탱': '아시야 마사키',
             '조커': '아마미야 렌',
-            '의사' : '키타자토 키라',
-            '와가하이' : '모르가나',
-            '수나미' : '미나미·여름',
-            '수미유' : '미유·여름',
-            '수유' : '미유·여름',
+            '의사': '키타자토 키라',
+            '와가하이': '모르가나',
+            '수나미': '미나미·여름',
+            '수미유': '미유·여름',
+            '수유': '미유·여름',
             '그새끼': '아케치 고로',
-            '선생' : '카타야마 쿠미',
-            '에우떼르빼' : '나가오 마나카',
-            '화오링' : '리 야오링·사자무',
-            '불오링' : '리 야오링·사자무',
-            '5리코' : '타네무라 리코·매화',
-            '풍리코' : '타네무라 리코·매화',
-            '풍타뉴' : '코토네 몽타뉴·백조',
-            '백타뉴' : '코토네 몽타뉴·백조',
-            '3주' : '유키 마코토',
+            '선생': '카타야마 쿠미',
+            '에우떼르빼': '나가오 마나카',
+            '화오링': '리 야오링·사자무',
+            '불오링': '리 야오링·사자무',
+            '5리코': '타네무라 리코·매화',
+            '풍리코': '타네무라 리코·매화',
+            '풍타뉴': '코토네 몽타뉴·백조',
+            '백타뉴': '코토네 몽타뉴·백조',
+            '3주': '유키 마코토',
             '센세': '카타야마 쿠미',
             '선생': '카타야마 쿠미'
         };
@@ -1058,7 +1062,7 @@ redirect_from:
                 const searchValue = e.target.value.toLowerCase();
                 if (dropdown) {
                     dropdown.innerHTML = '';
-                    
+
                     if (searchValue.length > 0) {
                         // characterData가 로드되었는지 확인
                         if (!window.characterData) {
@@ -1077,23 +1081,23 @@ redirect_from:
                             const displayName = charData.name ? charData.name.toLowerCase() : '';
                             const originalName = characterName.toLowerCase();
                             const codeName = charData.codename ? charData.codename.toLowerCase() : '';
-                            
+
                             // 별칭 매칭도 포함
-                            const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                            const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) =>
                                 nickname.toLowerCase().includes(searchValue) && realName === charData.name
                             );
 
-                            return displayName.includes(searchValue) || 
-                                   originalName.includes(searchValue) ||
-                                   codeName.includes(searchValue) ||
-                                   nicknameMatch !== undefined;
+                            return displayName.includes(searchValue) ||
+                                originalName.includes(searchValue) ||
+                                codeName.includes(searchValue) ||
+                                nicknameMatch !== undefined;
                         });
 
                         if (matches.length > 0) {
                             dropdown.style.display = 'block';
                             matches.forEach(name => {
                                 if (!window.characterData[name]) return;
-                                
+
                                 const div = document.createElement('div');
                                 div.className = 'dropdown-item';
                                 const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -1134,47 +1138,47 @@ redirect_from:
 
             let visibleCount = 0;
             const cards = document.querySelectorAll('.card');
-            
+
             cards.forEach(card => {
                 const nameText = card.querySelector('.name-text');
                 if (!nameText) return;
-                
+
                 const displayName = nameText.textContent;
                 if (!displayName) return;
-                
+
                 const displayNameLower = displayName.toLowerCase();
-                
+
                 // characterData에서 해당 캐릭터 찾기
-                const characterKey = sortedCharacters.find(name => 
-                    window.characterData[name] && 
-                    (window.characterData[name].name === displayName || 
-                     window.characterData[name].codename === displayName ||
-                     window.characterData[name].name_en === displayName ||
-                     window.characterData[name].name_jp === displayName)
+                const characterKey = sortedCharacters.find(name =>
+                    window.characterData[name] &&
+                    (window.characterData[name].name === displayName ||
+                        window.characterData[name].codename === displayName ||
+                        window.characterData[name].name_en === displayName ||
+                        window.characterData[name].name_jp === displayName)
                 );
 
                 // 별칭 매칭 확인
-                const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) => 
+                const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) =>
                     nickname.toLowerCase().includes(searchValue) && realName === displayName
                 );
-                
+
                 // 코드네임도 검색 대상에 포함
                 const charData = characterKey ? window.characterData[characterKey] : null;
-                const codeNameMatch = charData && charData.codename && 
+                const codeNameMatch = charData && charData.codename &&
                     charData.codename.toLowerCase().includes(searchValue) ||
                     charData.name_en && charData.name_en.toLowerCase().includes(searchValue) ||
                     charData.name_jp && charData.name_jp.toLowerCase().includes(searchValue);
-                
-                const shouldShow = searchValue === '' || 
-                    (characterKey && characterKey.toLowerCase().includes(searchValue)) || 
+
+                const shouldShow = searchValue === '' ||
+                    (characterKey && characterKey.toLowerCase().includes(searchValue)) ||
                     displayNameLower.includes(searchValue) ||
                     codeNameMatch ||
                     nicknameMatch !== undefined;
-                
+
                 card.style.display = shouldShow ? 'block' : 'none';
                 if (shouldShow) visibleCount++;
             });
-            
+
             // 검색 결과 수 업데이트
             if (searchCount) {
                 const countText = window.i18nFilteredCount || '전체';
@@ -1183,12 +1187,12 @@ redirect_from:
             }
         }
     } // initializePageContent 함수 종료
-    
+
     // 번역 시스템 적용
     async function applyTranslations() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         if (currentLang === 'kr') return;
-        
+
         try {
             // 번역 데이터 로드
             const translations = await TranslationLoader.loadTranslations('characters', currentLang);
@@ -1196,23 +1200,23 @@ redirect_from:
                 console.warn('No translations found for', currentLang);
                 return;
             }
-            
+
             // console.log('Applying translations for', currentLang, translations);
-            
+
             // 카드 업데이트
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 const nameElement = card.querySelector('.name-text');
                 if (!nameElement) return;
-                
+
                 const originalName = nameElement.textContent;
-                const characterKey = Object.keys(characterData).find(key => 
+                const characterKey = Object.keys(characterData).find(key =>
                     characterData[key].name === originalName
                 );
-                
+
                 if (characterKey && characterData[characterKey]) {
                     const char = characterData[characterKey];
-                    
+
                     // 영어일 때 코드네임 우선, 없으면 번역된 이름 사용
                     if (currentLang === 'en') {
                         if (char.codename) {
@@ -1223,7 +1227,7 @@ redirect_from:
                     } else if (currentLang === 'jp' && char.name_jp) {
                         nameElement.textContent = char.name_jp;
                     }
-                    
+
                     // 속성 아이콘 alt 텍스트 번역
                     const elementImg = card.querySelector('.element-icon');
                     if (elementImg && translations.elements && translations.elements[char.element]) {
@@ -1232,25 +1236,25 @@ redirect_from:
                     }
                 }
             });
-            
+
             // 필터 레이블 번역
             updateFilterLabels(translations, currentLang);
-            
+
             // 검색 플레이스홀더 번역
             updateSearchPlaceholder(currentLang);
-            
+
             // UI 텍스트 번역
             updateUITexts(currentLang);
-            
+
         } catch (error) {
             console.warn('Translation application failed:', error);
         }
     }
-    
+
     // 필터 레이블 번역
     function updateFilterLabels(translations, lang) {
         if (!translations) return;
-        
+
         // 속성 필터 번역
         if (translations.elements) {
             const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label span');
@@ -1261,7 +1265,7 @@ redirect_from:
                 }
             });
         }
-        
+
         // 직업 필터 번역 
         if (translations.positions) {
             const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
@@ -1276,7 +1280,7 @@ redirect_from:
                 }
             });
         }
-        
+
         // 태그 필터 번역
         if (translations.tags) {
             const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
@@ -1288,42 +1292,42 @@ redirect_from:
             });
         }
     }
-    
+
     // 검색 플레이스홀더 번역
     function updateSearchPlaceholder(lang) {
         const searchInput = document.getElementById('characterSearch');
         if (!searchInput) return;
-        
+
         const placeholders = {
             'en': 'Search characters...',
             'jp': '怪盗検索...'
         };
-        
+
         if (placeholders[lang]) {
             searchInput.placeholder = placeholders[lang];
         }
     }
-    
+
     // UI 텍스트 번역
     function updateUITexts(lang) {
         if (lang === 'kr') return;
-        
+
         // 기존 i18n 시스템 활용
         if (window.i18nData && window.i18nData[lang]) {
             const i18n = window.i18nData[lang];
-            
+
             // 페이지 제목
             const pageTitle = document.getElementById('page-title');
             if (pageTitle && i18n.character_title) {
                 pageTitle.textContent = i18n.character_title;
             }
-            
+
             // 브레드크럼
             const navHome = document.getElementById('nav-home');
             const navCurrent = document.getElementById('nav-current');
             if (navHome && i18n.nav_home) navHome.textContent = i18n.nav_home;
             if (navCurrent && i18n.nav_character) navCurrent.textContent = i18n.nav_character;
-            
+
             // 필터 그룹 제목들
             const filterGroups = document.querySelectorAll('.filter-group h3');
             const filterTitles = [i18n.filter_element, i18n.filter_position, i18n.filter_type, i18n.filter_tag];
@@ -1334,18 +1338,18 @@ redirect_from:
             });
         }
     }
-    
+
     // 스포일러 토글 초기화 함수
     function initializeSpoilerToggle() {
         const spoilerToggle = document.getElementById('spoilerToggle');
         const spoilerToggleText = document.getElementById('spoilerToggleText');
-        
+
         if (!spoilerToggle || !spoilerToggleText) return;
-        
+
         // 저장된 상태 복원
         const savedState = localStorage.getItem('spoilerToggle') === 'true';
         spoilerToggle.checked = savedState;
-        
+
         // 언어별 텍스트 설정
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const toggleTexts = {
@@ -1354,18 +1358,18 @@ redirect_from:
             jp: 'スポイラー表示'
         };
         spoilerToggleText.textContent = toggleTexts[currentLang] || toggleTexts.kr;
-        
+
         // 토글 이벤트 리스너
-        spoilerToggle.addEventListener('change', function() {
+        spoilerToggle.addEventListener('change', function () {
             const isEnabled = this.checked;
             localStorage.setItem('spoilerToggle', isEnabled.toString());
-            
+
             console.log('Spoiler toggle changed:', isEnabled);
-            
+
             // 페이지 새로고침
             window.location.reload();
         });
-        
+
         // EN/JP에서만 토글 표시 (KR에서는 숨김)
         const spoilerContainer = document.querySelector('.spoiler-toggle-container');
         if (spoilerContainer) {
@@ -1376,18 +1380,18 @@ redirect_from:
             }
         }
     }
-    
+
     // 페이지 로드 시 초기화 (통합된 초기화 함수)
     document.addEventListener('DOMContentLoaded', async () => {
         // console.log('DOMContentLoaded event fired');
-        
+
         // 기본 초기화 작업
         Navigation.load('character'); // nav active
         VersionChecker.check();
-        
+
         // SEO 설정 업데이트
         updateSEOContent();
-        
+
         // 언어 라우터 초기화 및 콘텐츠 업데이트
         if (typeof LanguageRouter !== 'undefined') {
             // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
@@ -1402,7 +1406,7 @@ redirect_from:
                 const currentUrl = new URL(window.location);
                 currentUrl.searchParams.set('lang', 'kr');
                 window.history.replaceState({}, '', currentUrl);
-                
+
                 updateLanguageContent().then(async () => {
                     await initializePageContent();
                 });
@@ -1411,11 +1415,11 @@ redirect_from:
             updateLanguageContent();
             await initializePageContent();
         }
-        
+
         // 스포일러 토글 초기화
         initializeSpoilerToggle();
     });
-    
+
     // 추가 안전장치: window.onload에서도 체크
     window.addEventListener('load', async () => {
         // console.log('Window load event fired');
@@ -1426,5 +1430,5 @@ redirect_from:
             // console.log('Page already initialized, skipping...');
         }
     });
-    
-</script> 
+
+</script>

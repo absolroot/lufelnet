@@ -3,15 +3,15 @@ layout: default
 custom_css: [revelations]
 custom_js: []
 permalink: /revelations/
-redirect_from: 
-  - /kr/revelations/
-  - /kr/revelations/index.html
+redirect_from:
+- /kr/revelations/
+- /kr/revelations/index.html
 language: kr
 title : 계시 - 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X의 계시 정보
 alternate_urls:
-  en: /revelations/?lang=en
-  jp: /revelations/?lang=jp
+en: /revelations/?lang=en
+jp: /revelations/?lang=jp
 ---
 
 {% if page.alternate_urls %}
@@ -28,7 +28,7 @@ alternate_urls:
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
     </div>
-    
+
     <!-- Navigation path -->
     <div class="navigation-path">
         <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
@@ -161,7 +161,9 @@ alternate_urls:
         <div class="search-container">
             <div class="search-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
+                    <path
+                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                        fill="rgba(255, 255, 255, 0.6)" />
                 </svg>
             </div>
             <input type="text" id="revelationSearch" placeholder="계시 검색..." autocomplete="off">
@@ -176,16 +178,29 @@ alternate_urls:
     <div id="revelation-stats" class="rev-stats-section">
         <button class="rev-accordion" id="rev-accordion-btn">
             <span id="rev-stats-title">계시 스탯</span>
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
         </button>
         <div class="rev-panel" id="rev-panel" style="display:none;">
             <!-- Tabs -->
             <div class="rev-tabs" role="tablist">
-                <button class="rev-tab active" data-tab="uni" role="tab"><img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주"/> <span class="tab-text-uni">주</span></button>
-                <button class="rev-tab" data-tab="sun" role="tab"><img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일"/> <span class="tab-text-sun">일</span></button>
-                <button class="rev-tab" data-tab="moon" role="tab"><img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월"/> <span class="tab-text-moon">월</span></button>
-                <button class="rev-tab" data-tab="star" role="tab"><img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성"/> <span class="tab-text-star">성</span></button>
-                <button class="rev-tab" data-tab="planet" role="tab"><img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진"/> <span class="tab-text-planet">진</span></button>
+                <button class="rev-tab active" data-tab="uni" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" /> <span
+                        class="tab-text-uni">주</span></button>
+                <button class="rev-tab" data-tab="sun" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" /> <span
+                        class="tab-text-sun">일</span></button>
+                <button class="rev-tab" data-tab="moon" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" /> <span
+                        class="tab-text-moon">월</span></button>
+                <button class="rev-tab" data-tab="star" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" /> <span
+                        class="tab-text-star">성</span></button>
+                <button class="rev-tab" data-tab="planet" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" /> <span
+                        class="tab-text-planet">진</span></button>
             </div>
 
             <!-- Tab panels -->
@@ -207,6 +222,7 @@ alternate_urls:
     </div>
 
     <!-- 광고 -->
+    <!--
   <div class="ads-container responsive-padding">
     <ins class="adsbygoogle"
       style="display:block"
@@ -227,7 +243,7 @@ alternate_urls:
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
-    <!---->
+    
     <style>
         @media (max-width: 1440px) {
             .AD-bottom {
@@ -242,6 +258,7 @@ alternate_urls:
         .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
+    -->
 </div>
 
 
@@ -250,25 +267,25 @@ alternate_urls:
     // 전역 변수 초기화
     if (window.revelationData) delete window.revelationData;
     if (window.tooltipData) delete window.tooltipData;
-    
+
     // 동적 데이터 로딩 함수
     async function loadLanguageData(lang) {
         return new Promise((resolve, reject) => {
             const dataFiles = {
                 'kr': '/data/kr/revelations/revelations.js',
-                'en': '/data/en/revelations/revelations.js', 
+                'en': '/data/en/revelations/revelations.js',
                 'jp': '/data/jp/revelations/revelations.js'
             };
 
             const scriptSrc = dataFiles[lang] || dataFiles['kr'];
-            
+
             // 기존 스크립트 제거 (중복 방지)
             const existingTooltip = document.querySelector('script[src="/data/kr/tooltip.js"]');
             if (existingTooltip) existingTooltip.remove();
-            
+
             // 모든 기존 revelation 스크립트 제거
             document.querySelectorAll('script[src*="revelations.js"]').forEach(script => script.remove());
-            
+
             // tooltip.js 로드
             const tooltipScript = document.createElement('script');
             tooltipScript.src = '/data/kr/tooltip.js';
@@ -290,9 +307,9 @@ alternate_urls:
                         } else {
                             console.warn('No revelation data found for language:', lang);
                         }
-                        
+
                         // 데이터 로드 후 addTooltips 함수 정의
-                        window.addTooltips = function() {
+                        window.addTooltips = function () {
                             const tooltips = document.querySelectorAll('[data-tooltip]');
                             tooltips.forEach(element => {
                                 const tooltipText = element.getAttribute('data-tooltip');
@@ -327,7 +344,7 @@ alternate_urls:
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 다국어 데이터 정의
         const i18nData = {
             kr: {
@@ -391,10 +408,10 @@ alternate_urls:
                 label_characters: "使用キャラ"
             }
         };
-        
+
         const data = i18nData[currentLang];
         if (!data) return;
-        
+
         // 언어 안내 메시지
         if (currentLang !== 'kr') {
             const notice = document.getElementById('language-notice');
@@ -404,40 +421,40 @@ alternate_urls:
                 notice.style.display = 'block';
             }
         }
-        
+
         // 네비게이션 및 제목 업데이트
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
         const searchInput = document.getElementById('revelationSearch');
-        
+
         if (navHome) navHome.textContent = data.nav_home;
         if (navCurrent) navCurrent.textContent = data.nav_current;
         if (pageTitle) pageTitle.textContent = data.page_title;
         if (searchInput) searchInput.placeholder = data.search_placeholder;
-        
+
         // 필터 라벨 업데이트
         const filterTypeLabel = document.getElementById('filter-type-label');
         const filterElementLabel = document.getElementById('filter-element-label');
         const filterEffectLabel = document.getElementById('filter-effect-label');
-        
+
         if (filterTypeLabel) filterTypeLabel.textContent = data.filter_type;
         if (filterElementLabel) filterElementLabel.textContent = data.filter_element;
         if (filterEffectLabel) filterEffectLabel.textContent = data.filter_effect;
-        
+
         // 효과 타입 라벨 업데이트
         const effectBuff = document.getElementById('effect-buff');
         const effectDebuff = document.getElementById('effect-debuff');
         const effectAdditional = document.getElementById('effect-additional');
         const effectHl = document.getElementById('effect-hl');
         const effectHeal = document.getElementById('effect-heal');
-        
+
         if (effectBuff) effectBuff.textContent = data.effect_buff;
         if (effectDebuff) effectDebuff.textContent = data.effect_debuff;
         if (effectAdditional) effectAdditional.textContent = data.effect_additional;
         if (effectHl) effectHl.textContent = data.effect_hl;
         if (effectHeal) effectHeal.textContent = data.effect_heal;
-        
+
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
         window.i18nFilteredCount = data.filtered_count;
         window.i18nCountUnit = data.count_unit;
@@ -448,7 +465,7 @@ alternate_urls:
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         const seoData = {
             'kr': {
                 title: '계시 - 페르소나5 더 팬텀 X 루페르넷',
@@ -463,17 +480,17 @@ alternate_urls:
                 description: 'ペルソナ5 ザ・ファントム Xの啓示情報。セット効果と追加効果をご確認ください。'
             }
         };
-        
+
         const currentSEO = seoData[currentLang] || seoData['kr'];
-        
+
         // 타이틀 업데이트
         document.title = currentSEO.title;
-        
+
         // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
-        
+
         if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
         if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
@@ -510,74 +527,74 @@ alternate_urls:
     // Sub stats values sourced from the article (KR/EN/JP identical numerically)
     let subStatsData = {
         universe: [
-            ['Crit Rate','2.6%','2.3%','2.1%','1.8%','1.6%'],
-            ['Crit Mult.','5.2%','4.7%','4.1%','3.6%','3.1%'],
-            ['Pierce Rate','2.7%','2.5%','2.2%','1.8%','1.6%'],
-            ['Attack Mult.','3.5%','3.1%','2.6%','2.2%','1.8%'],
-            ['Attack %','4.3%','3.9%','3.5%','3.1%','2.6%'],
-            ['Attack','/','/','/','/','/'],
-            ['HP %','4.4%','4.0%','3.5%','3.2%','2.7%'],
-            ['HP','175','157','140','123','105'],
-            ['Defense %','6.4%','5.8%','5.2%','4.5%','3.8%'],
-            ['Defense','/','/','/','/','/'],
-            ['Ailment Accuracy','5.2%','4.7%','4.1%','3.6%','3.1%'],
-            ['SP Recovery','12.5%','11.2%','10.0%','8.7%','7.5%'],
-            ['Speed','2.8','2.5','2.2','1.9','1.6'],
+            ['Crit Rate', '2.6%', '2.3%', '2.1%', '1.8%', '1.6%'],
+            ['Crit Mult.', '5.2%', '4.7%', '4.1%', '3.6%', '3.1%'],
+            ['Pierce Rate', '2.7%', '2.5%', '2.2%', '1.8%', '1.6%'],
+            ['Attack Mult.', '3.5%', '3.1%', '2.6%', '2.2%', '1.8%'],
+            ['Attack %', '4.3%', '3.9%', '3.5%', '3.1%', '2.6%'],
+            ['Attack', '/', '/', '/', '/', '/'],
+            ['HP %', '4.4%', '4.0%', '3.5%', '3.2%', '2.7%'],
+            ['HP', '175', '157', '140', '123', '105'],
+            ['Defense %', '6.4%', '5.8%', '5.2%', '4.5%', '3.8%'],
+            ['Defense', '/', '/', '/', '/', '/'],
+            ['Ailment Accuracy', '5.2%', '4.7%', '4.1%', '3.6%', '3.1%'],
+            ['SP Recovery', '12.5%', '11.2%', '10.0%', '8.7%', '7.5%'],
+            ['Speed', '2.8', '2.5', '2.2', '1.9', '1.6'],
         ],
         universal: [ // Sun/Moon/Star/Planet
-            ['Crit Rate','2%','1.8%','1.7%','1.4%','1.3%'],
-            ['Crit Mult.','4.1%','3.7%','3.4%','2.8%','2.5%'],
-            ['Pierce Rate','2.1%','1.9%','1.7%','1.4%','1.3%'],
-            ['Attack Mult.','2.8%','2.5%','2.1%','1.9%','1.7%'],
-            ['Attack %','3.5%','3.2%','2.8%','2.5%','2.0%'],
-            ['Attack','46','41','37','32','27'],
-            ['HP %','3.6%','3.3%','2.9%','2.6%','2.1%'],
-            ['HP','140','126','112','98','84'],
-            ['Defense %','5.2%','4.6%','4.1%','3.5%','3.0%'],
-            ['Defense','46','41','37','32','27'],
-            ['Ailment Accuracy','4.1%','3.7%','3.4%','2.8%','2.5%'],
-            ['SP Recovery','10.0%','9.0%','7.9%','7.0%','5.9%'],
-            ['Speed','2.2','2','1.8','1.5','1.3'],
+            ['Crit Rate', '2%', '1.8%', '1.7%', '1.4%', '1.3%'],
+            ['Crit Mult.', '4.1%', '3.7%', '3.4%', '2.8%', '2.5%'],
+            ['Pierce Rate', '2.1%', '1.9%', '1.7%', '1.4%', '1.3%'],
+            ['Attack Mult.', '2.8%', '2.5%', '2.1%', '1.9%', '1.7%'],
+            ['Attack %', '3.5%', '3.2%', '2.8%', '2.5%', '2.0%'],
+            ['Attack', '46', '41', '37', '32', '27'],
+            ['HP %', '3.6%', '3.3%', '2.9%', '2.6%', '2.1%'],
+            ['HP', '140', '126', '112', '98', '84'],
+            ['Defense %', '5.2%', '4.6%', '4.1%', '3.5%', '3.0%'],
+            ['Defense', '46', '41', '37', '32', '27'],
+            ['Ailment Accuracy', '4.1%', '3.7%', '3.4%', '2.8%', '2.5%'],
+            ['SP Recovery', '10.0%', '9.0%', '7.9%', '7.0%', '5.9%'],
+            ['Speed', '2.2', '2', '1.8', '1.5', '1.3'],
         ]
     };
 
     // Translation maps for sub stat names per language
     const subLabelMap = {
         kr: {
-            'Crit Rate':'크리티컬 확률','Crit Mult.':'크리티컬 효과','Pierce Rate':'관통','Attack Mult.':'대미지 보너스',
-            'Attack %':'공격력%','Attack':'공격력','HP %':'생명%','HP':'생명','Defense %':'방어력%','Defense':'방어력',
-            'Ailment Accuracy':'효과 명중','SP Recovery':'SP회복','Speed':'속도'
+            'Crit Rate': '크리티컬 확률', 'Crit Mult.': '크리티컬 효과', 'Pierce Rate': '관통', 'Attack Mult.': '대미지 보너스',
+            'Attack %': '공격력%', 'Attack': '공격력', 'HP %': '생명%', 'HP': '생명', 'Defense %': '방어력%', 'Defense': '방어력',
+            'Ailment Accuracy': '효과 명중', 'SP Recovery': 'SP회복', 'Speed': '속도'
         },
         en: {},
         jp: {
-            'Crit Rate':'CRT発生率','Crit Mult.':'CRT倍率','Pierce Rate':'貫通','Attack Mult.':'攻撃倍率+','Attack %':'攻撃力%',
-            'Attack':'攻撃力','HP %':'HP%','HP':'HP','Defense %':'防御力%','Defense':'防御力','Ailment Accuracy':'状態異常命中',
-            'SP Recovery':'SP回復','Speed':'速さ'
+            'Crit Rate': 'CRT発生率', 'Crit Mult.': 'CRT倍率', 'Pierce Rate': '貫通', 'Attack Mult.': '攻撃倍率+', 'Attack %': '攻撃力%',
+            'Attack': '攻撃力', 'HP %': 'HP%', 'HP': 'HP', 'Defense %': '防御力%', 'Defense': '防御力', 'Ailment Accuracy': '状態異常命中',
+            'SP Recovery': 'SP回復', 'Speed': '速さ'
         }
     };
 
     // Placeholder main stats ranges (fill exact values later from image)
     let mainStatsData = {
         kr: {
-            uni: [ ['공격력','—','—'], ['방어력','—','—'] ],
-            sun: [ ['생명','—','—'] ],
-            moon: [ ['공격력','—','—'], ['대미지 보너스','—','—'], ['생명','—','—'], ['방어력','—','—'], ['치료 효과','—','—'] ],
-            star: [ ['크리티컬 확률','—','—'], ['크리티컬 효과','—','—'], ['생명','—','—'], ['공격력','—','—'], ['방어력','—','—'], ['효과 명중','—','—'] ].slice(0,5),
-            planet: [ ['공격력','—','—'], ['방어력','—','—'], ['생명','—','—'], ['SP 회복','—','—'], ['속도','—','—'] ],
+            uni: [['공격력', '—', '—'], ['방어력', '—', '—']],
+            sun: [['생명', '—', '—']],
+            moon: [['공격력', '—', '—'], ['대미지 보너스', '—', '—'], ['생명', '—', '—'], ['방어력', '—', '—'], ['치료 효과', '—', '—']],
+            star: [['크리티컬 확률', '—', '—'], ['크리티컬 효과', '—', '—'], ['생명', '—', '—'], ['공격력', '—', '—'], ['방어력', '—', '—'], ['효과 명중', '—', '—']].slice(0, 5),
+            planet: [['공격력', '—', '—'], ['방어력', '—', '—'], ['생명', '—', '—'], ['SP 회복', '—', '—'], ['속도', '—', '—']],
         },
         en: {
-            uni: [ ['Attack','—','—'], ['Defense','—','—'] ],
-            sun: [ ['HP','—','—'] ],
-            moon: [ ['Attack','—','—'], ['Attack Mult.','—','—'], ['HP','—','—'], ['Defense','—','—'], ['Healing Effect','—','—'] ],
-            star: [ ['Crit Rate','—','—'], ['Crit Mult.','—','—'], ['HP','—','—'], ['Attack','—','—'], ['Defense','—','—'] ],
-            planet: [ ['Attack','—','—'], ['Defense','—','—'], ['HP','—','—'], ['SP Recovery','—','—'], ['Speed','—','—'] ],
+            uni: [['Attack', '—', '—'], ['Defense', '—', '—']],
+            sun: [['HP', '—', '—']],
+            moon: [['Attack', '—', '—'], ['Attack Mult.', '—', '—'], ['HP', '—', '—'], ['Defense', '—', '—'], ['Healing Effect', '—', '—']],
+            star: [['Crit Rate', '—', '—'], ['Crit Mult.', '—', '—'], ['HP', '—', '—'], ['Attack', '—', '—'], ['Defense', '—', '—']],
+            planet: [['Attack', '—', '—'], ['Defense', '—', '—'], ['HP', '—', '—'], ['SP Recovery', '—', '—'], ['Speed', '—', '—']],
         },
         jp: {
-            uni: [ ['攻撃力','—','—'], ['防御力','—','—'] ],
-            sun: [ ['HP','—','—'] ],
-            moon: [ ['攻撃力','—','—'], ['攻撃倍率+','—','—'], ['HP','—','—'], ['防御力','—','—'], ['HP回復量','—','—'] ],
-            star: [ ['CRT発生率','—','—'], ['CRT倍率','—','—'], ['HP','—','—'], ['攻撃力','—','—'], ['防御力','—','—'] ],
-            planet: [ ['攻撃力','—','—'], ['防御力','—','—'], ['HP','—','—'], ['SP回復','—','—'], ['速さ','—','—'] ],
+            uni: [['攻撃力', '—', '—'], ['防御力', '—', '—']],
+            sun: [['HP', '—', '—']],
+            moon: [['攻撃力', '—', '—'], ['攻撃倍率+', '—', '—'], ['HP', '—', '—'], ['防御力', '—', '—'], ['HP回復量', '—', '—']],
+            star: [['CRT発生率', '—', '—'], ['CRT倍率', '—', '—'], ['HP', '—', '—'], ['攻撃力', '—', '—'], ['防御力', '—', '—']],
+            planet: [['攻撃力', '—', '—'], ['防御力', '—', '—'], ['HP', '—', '—'], ['SP回復', '—', '—'], ['速さ', '—', '—']],
         }
     }
 
@@ -613,25 +630,25 @@ alternate_urls:
         const header = `<div class="rev-subsection-title">${i18n.main_title}</div>`;
         // Show bigger values first (Max -> Min)
         const table = [`<div class="rev-table-wrap"><table class="rev-table rev-table-main"><thead><tr><th>${i18n.col_option}</th><th>${i18n.col_max}</th><th>${i18n.col_min}</th></tr></thead><tbody>`,
-            ...rows.map(r=>{
-                const pink = isRevPinkLabel(lang, slotKey, r[0]);
-                const label = pink ? `<span class="rev-label-pink">${r[0]}</span>` : r[0];
-                return `<tr><td>${label}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`;
-            }),
+        ...rows.map(r => {
+            const pink = isRevPinkLabel(lang, slotKey, r[0]);
+            const label = pink ? `<span class="rev-label-pink">${r[0]}</span>` : r[0];
+            return `<tr><td>${label}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`;
+        }),
             `</tbody></table></div>`].join('');
         return header + table;
     }
 
     // Load stats JSON from same app folder
-    async function loadRevStatsData(){
+    async function loadRevStatsData() {
         const url = '/apps/revelations/revelation_stats.json';
-        try{
+        try {
             const res = await fetch(url, { cache: 'no-cache' });
-            if(!res.ok) throw new Error('HTTP '+res.status);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
             const json = await res.json();
             if (json && json.sub_stats) subStatsData = json.sub_stats;
             if (json && json.main_stats) mainStatsData = json.main_stats;
-        }catch(err){
+        } catch (err) {
             console.warn('Revelation stats JSON load failed, using fallback:', err);
         }
     }
@@ -642,15 +659,15 @@ alternate_urls:
         const map = subLabelMap[lang] || {};
         const header = `<div class="rev-subsection-title">${i18n.sub_title}</div>`;
         const head = `<thead><tr><th>${i18n.col_option}</th><th>${i18n.col_1st}</th><th>${i18n.col_2nd}</th><th>${i18n.col_3rd}</th><th>${i18n.col_4th}</th><th>${i18n.col_5th}</th></tr></thead>`;
-        const body = data.map(row=>{
+        const body = data.map(row => {
             const label = map[row[0]] || row[0];
             return `<tr><td>${label}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;
         }).join('');
         return header + `<div class="rev-table-wrap"><table class="rev-table rev-table-sub">${head}<tbody>${body}</tbody></table></div>`;
     }
 
-    function buildRevStatsUI(currentLang){
-        const lang = currentLang || (typeof LanguageRouter!== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr');
+    function buildRevStatsUI(currentLang) {
+        const lang = currentLang || (typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr');
         const i18n = revI18n[lang] || revI18n.kr;
 
         const titleEl = document.getElementById('rev-stats-title');
@@ -658,7 +675,7 @@ alternate_urls:
 
         // Update tab labels for i18n
         const tabMap = { uni: '.tab-text-uni', sun: '.tab-text-sun', moon: '.tab-text-moon', star: '.tab-text-star', planet: '.tab-text-planet' };
-        Object.entries(tabMap).forEach(([k, sel])=>{
+        Object.entries(tabMap).forEach(([k, sel]) => {
             const el = document.querySelector(sel);
             if (el) el.textContent = i18n.tabs[k];
         });
@@ -672,30 +689,30 @@ alternate_urls:
             planet: document.querySelector('.rev-tab-panel[data-panel="planet"]'),
         };
 
-        if (panels.uni) panels.uni.innerHTML = renderMainTable(lang,'uni') + renderSubTable(lang,'universe');
-        if (panels.sun) panels.sun.innerHTML = renderMainTable(lang,'sun') + renderSubTable(lang,'universal');
-        if (panels.moon) panels.moon.innerHTML = renderMainTable(lang,'moon') + renderSubTable(lang,'universal');
-        if (panels.star) panels.star.innerHTML = renderMainTable(lang,'star') + renderSubTable(lang,'universal');
-        if (panels.planet) panels.planet.innerHTML = renderMainTable(lang,'planet') + renderSubTable(lang,'universal');
+        if (panels.uni) panels.uni.innerHTML = renderMainTable(lang, 'uni') + renderSubTable(lang, 'universe');
+        if (panels.sun) panels.sun.innerHTML = renderMainTable(lang, 'sun') + renderSubTable(lang, 'universal');
+        if (panels.moon) panels.moon.innerHTML = renderMainTable(lang, 'moon') + renderSubTable(lang, 'universal');
+        if (panels.star) panels.star.innerHTML = renderMainTable(lang, 'star') + renderSubTable(lang, 'universal');
+        if (panels.planet) panels.planet.innerHTML = renderMainTable(lang, 'planet') + renderSubTable(lang, 'universal');
 
         // Events
         const accBtn = document.getElementById('rev-accordion-btn');
         const panel = document.getElementById('rev-panel');
-        if (accBtn && panel && !accBtn.dataset.bound){
-            accBtn.addEventListener('click',()=>{
+        if (accBtn && panel && !accBtn.dataset.bound) {
+            accBtn.addEventListener('click', () => {
                 const open = panel.style.display !== 'none';
                 panel.style.display = open ? 'none' : 'block';
                 accBtn.classList.toggle('open', !open);
             });
             accBtn.dataset.bound = '1';
         }
-        document.querySelectorAll('.rev-tab').forEach(btn=>{
+        document.querySelectorAll('.rev-tab').forEach(btn => {
             if (btn.dataset.bound) return;
-            btn.addEventListener('click',()=>{
-                document.querySelectorAll('.rev-tab').forEach(b=>b.classList.remove('active'));
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.rev-tab').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const key = btn.getAttribute('data-tab');
-                document.querySelectorAll('.rev-tab-panel').forEach(p=>p.style.display='none');
+                document.querySelectorAll('.rev-tab-panel').forEach(p => p.style.display = 'none');
                 const target = document.querySelector(`.rev-tab-panel[data-panel="${key}"]`);
                 if (target) target.style.display = 'block';
             });
@@ -708,34 +725,34 @@ alternate_urls:
         try {
             // 현재 언어 확인
             const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-            
+
             // 네비게이션 초기화
             if (typeof Navigation !== 'undefined') {
                 Navigation.load('revelations', 1);
             }
-            
+
             if (typeof VersionChecker !== 'undefined') {
                 VersionChecker.check();
             }
 
             // SEO 설정 업데이트
             updateSEOContent();
-            
+
             // 데이터 로드
             await loadLanguageData(currentLang);
             // 캐릭터 데이터 로드
             await loadCharacterData();
             // Load external stats JSON (non-blocking for rest of page build)
             await loadRevStatsData();
-            
+
             // 언어 콘텐츠 업데이트
             await updateLanguageContent();
-            
+
             // 페이지 초기화
             initializePageContent();
             // Build Revelation Stats UI (after language is ready)
             buildRevStatsUI(currentLang);
-            
+
         } catch (error) {
             console.error('Failed to load language data:', error);
             // 에러 메시지 표시
@@ -749,7 +766,7 @@ alternate_urls:
     // 현재 언어에 맞는 revelation 데이터 가져오기
     function getCurrentRevelationData() {
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         let data = null;
         switch (currentLang) {
             case 'en':
@@ -761,21 +778,21 @@ alternate_urls:
             default:
                 data = window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : null);
         }
-        
+
         // 데이터가 없으면 기본 revelationData 사용
-        return data || window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : {main: {}, sub: {}, sub_effects: {}, set_effects: {}});
+        return data || window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : { main: {}, sub: {}, sub_effects: {}, set_effects: {} });
     }
 
     function initializePageContent() {
         const cardsContainer = document.getElementById('revelationCards');
         const searchCount = document.querySelector('.search-count');
-        
+
         // 현재 언어 확인
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 현재 언어에 맞는 데이터 가져오기
         const currentRevelationData = getCurrentRevelationData();
-        
+
         // 데이터 유효성 검사
         if (!currentRevelationData || !currentRevelationData.main || !currentRevelationData.sub) {
             console.error('Revelation data not loaded properly:', currentRevelationData);
@@ -785,18 +802,18 @@ alternate_urls:
             cardsContainer.appendChild(errorDiv);
             return;
         }
-        
+
         // Build stats UI in case language finished after
-        try { buildRevStatsUI(); } catch(e) { /* noop */ }
+        try { buildRevStatsUI(); } catch (e) { /* noop */ }
 
         // Separate main revelations and sub revelations
         const mainRevelations = Object.keys(currentRevelationData.main);
         const subRevelations = Object.keys(currentRevelationData.sub);
-        
+
         // Function to check if a revelation is unreleased
         const isUnreleased = (revelation) => {
             if (currentLang === 'kr') return false;
-            
+
             if (revelation.type === 'sub') {
                 const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
                 return effects && effects.type && effects.type.includes('미출시');
@@ -830,44 +847,44 @@ alternate_urls:
                     return 0;
                 })
         ];
-        
+
         // 초기 검색 결과 수 표시
         const countText = window.i18nFilteredCount || '전체';
         const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
         searchCount.textContent = `${countText} ${allRevelations.length}${countUnit}`;
-        
+
         // Create card for each revelation
         allRevelations.forEach((revelation, index) => {
             const card = document.createElement('div');
             card.className = 'card';
             card.dataset.type = revelation.type;
             card.dataset.name = revelation.name;
-            
+
             // Get Korean name for image path (using reverse mapping)
             let koreanName = revelation.name;
-            
+
             // If not Korean, find Korean name from mapping
             if (currentLang !== 'kr') {
                 if (currentLang === 'jp' && currentRevelationData.mapping_jp) {
                     // Find Korean name from Japanese mapping
-                    const koreanKey = Object.keys(currentRevelationData.mapping_jp).find(key => 
+                    const koreanKey = Object.keys(currentRevelationData.mapping_jp).find(key =>
                         currentRevelationData.mapping_jp[key] === revelation.name
                     );
                     if (koreanKey) koreanName = koreanKey;
                 } else if (currentLang === 'en' && currentRevelationData.mapping_en) {
                     // Find Korean name from English mapping
-                    const koreanKey = Object.keys(currentRevelationData.mapping_en).find(key => 
+                    const koreanKey = Object.keys(currentRevelationData.mapping_en).find(key =>
                         currentRevelationData.mapping_en[key] === revelation.name
                     );
                     if (koreanKey) koreanName = koreanKey;
                 }
             }
             // If Korean, koreanName is already correct (revelation.name)
-            
+
             // Image container
             const imgContainer = document.createElement('div');
             imgContainer.className = 'img-container';
-            
+
             // Revelation image - use Korean name for file path
             const img = document.createElement('img');
             img.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.webp`;
@@ -879,33 +896,33 @@ alternate_urls:
             nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.png`;
             nameImg.alt = revelation.name;
             nameImg.className = 'name-img';
-            
+
             imgContainer.appendChild(img);
-            
-            if(currentLang == 'kr') {
+
+            if (currentLang == 'kr') {
                 imgContainer.appendChild(nameImg);
             }
-            
+
             // Info container
             const infoContainer = document.createElement('div');
             infoContainer.className = 'info-container';
-            
+
             // Type label
             const typeLabel = document.createElement('div');
             typeLabel.className = 'type-label';
-            
+
             // Container for text and icons
             const typeLabelContent = document.createElement('div');
             typeLabelContent.className = 'type-label-content';
-            
+
             // Add text
             const typeText = document.createElement('span');
             typeText.textContent = revelation.name;  // Changed to revelation name
-            
+
             // Icon container
             const iconContainer = document.createElement('div');
             iconContainer.className = 'type-icons';
-            
+
             if (revelation.type === 'main') {
                 // For main revelations
                 const mainIcon = document.createElement('img');
@@ -923,10 +940,10 @@ alternate_urls:
                     iconContainer.appendChild(icon);
                 });
             }
-            
+
             typeLabelContent.appendChild(typeText);
             typeLabelContent.appendChild(iconContainer);
-            
+
             // Add "not released" indicator for unreleased revelations in EN/JP
             if (currentLang !== 'kr' && isUnreleased(revelation)) {
                 const notReleasedLabel = document.createElement('div');
@@ -935,18 +952,18 @@ alternate_urls:
                 typeLabelContent.appendChild(notReleasedLabel);
             }
             typeLabel.appendChild(typeLabelContent);
-            
+
             // Effect description
             const effectsContainer = document.createElement('div');
             effectsContainer.className = 'effects-container';
-            
+
             if (revelation.type === 'sub') {
                 // For sub revelations, show 2-set and 4-set effects
                 const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
                 if (effects) {
                     const setLabel2 = window.i18nSetEffect2 || '2세트';
                     const setLabel4 = window.i18nSetEffect4 || '4세트';
-                    
+
                     effectsContainer.innerHTML = `
                         <div class="effect-set">
                             <div class="set-label">${setLabel2}</div>
@@ -975,13 +992,13 @@ alternate_urls:
                         }).join('');
                 }
             }
-            
+
             infoContainer.appendChild(typeLabel);
             infoContainer.appendChild(effectsContainer);
 
             // ---- Characters Accordion ----
             // i18n label
-            const tLabel = (function(){
+            const tLabel = (function () {
                 const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
                 const map = {
                     kr: '사용 캐릭터',
@@ -991,8 +1008,8 @@ alternate_urls:
                 // prefer i18nData if available
                 try {
                     const tdata = (window.i18nSetEffect2 !== undefined) ? null : null; // no-op, ensure no crash
-                } catch (e) {}
-                return (lang==='en'? 'Characters' : (lang==='jp'? '使用キャラ' : '사용 캐릭터'));
+                } catch (e) { }
+                return (lang === 'en' ? 'Characters' : (lang === 'jp' ? '使用キャラ' : '사용 캐릭터'));
             })();
 
             // Helpers
@@ -1014,7 +1031,7 @@ alternate_urls:
                     }
                 });
                 // sort by name
-                users.sort((a,b)=>a.localeCompare(b,'ko'));
+                users.sort((a, b) => a.localeCompare(b, 'ko'));
                 return users;
             }
 
@@ -1022,7 +1039,7 @@ alternate_urls:
             accordion.className = 'accordion';
             const header = document.createElement('div');
             header.className = 'accordion-header';
-            header.setAttribute('aria-expanded','false');
+            header.setAttribute('aria-expanded', 'false');
             header.innerHTML = `<span>${tLabel}</span><span>+</span>`;
             const content = document.createElement('div');
             content.className = 'accordion-content';
@@ -1042,7 +1059,7 @@ alternate_urls:
                     cimg.src = `{{ site.baseurl }}/assets/img/tier/${u}.webp`;
                     cimg.alt = u;
                     cimg.loading = 'lazy';
-                    cimg.onerror = function() { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
+                    cimg.onerror = function () { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
 
                     const icons = document.createElement('span');
                     icons.className = 'char-icons';
@@ -1102,17 +1119,17 @@ alternate_urls:
             accordion.appendChild(header);
             accordion.appendChild(content);
             infoContainer.appendChild(accordion);
-            
+
             card.appendChild(imgContainer);
             card.appendChild(infoContainer);
             cardsContainer.appendChild(card);
         });
-        
+
         addTooltips();
 
         // Add filtering functionality
         const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
-        
+
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 applyFilters();
@@ -1123,20 +1140,20 @@ alternate_urls:
             const selectedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
             const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
             const selectedEffects = Array.from(document.querySelectorAll('input[name="effect"]:checked')).map(cb => cb.value);
-            
+
             const cards = document.querySelectorAll('.card');
             let visibleCount = 0;
-            
+
             // 현재 언어에 맞는 데이터 가져오기
             const currentRevelationData = getCurrentRevelationData();
-            
+
             // List of filtered sub revelations
             let filteredSubRevelations = [];
             if (currentRevelationData.sub_effects) {
                 filteredSubRevelations = Object.entries(currentRevelationData.sub_effects).filter(([name, effects]) => {
-                    const elementMatch = selectedElements.length === 0 || 
+                    const elementMatch = selectedElements.length === 0 ||
                         (effects.type && selectedElements.some(element => effects.type.includes(element)));
-                    const effectMatch = selectedEffects.length === 0 || 
+                    const effectMatch = selectedEffects.length === 0 ||
                         (effects.type && selectedEffects.some(effect => effects.type.includes(effect)));
                     return elementMatch && effectMatch;
                 }).map(([name]) => name);
@@ -1155,12 +1172,12 @@ alternate_urls:
             cards.forEach(card => {
                 const type = card.dataset.type;
                 const name = card.dataset.name;
-                
+
                 const typeMatch = selectedTypes.length === 0 || selectedTypes.includes(type);
-                const nameMatch = type === 'sub' ? 
-                    filteredSubRevelations.includes(name) : 
+                const nameMatch = type === 'sub' ?
+                    filteredSubRevelations.includes(name) :
                     relatedMainRevelations.has(name);
-                
+
                 if (typeMatch && nameMatch) {
                     card.style.display = 'flex';
                     card.style.visibility = 'visible';
@@ -1172,7 +1189,7 @@ alternate_urls:
                     card.style.opacity = '0';
                 }
             });
-            
+
             // Update search count
             const countText = window.i18nFilteredCount || '전체';
             const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
@@ -1187,7 +1204,7 @@ alternate_urls:
         searchInput.addEventListener('input', (e) => {
             const searchValue = e.target.value.toLowerCase();
             dropdown.innerHTML = '';
-            
+
             // Dropdown autocomplete handling
             if (searchValue.length > 0) {
                 const matches = allRevelations.filter(revelation => {
@@ -1223,11 +1240,11 @@ alternate_urls:
         // Search filtering function
         function filterBySearch(searchValue) {
             let visibleCount = 0;
-            
+
             cards.forEach(card => {
                 const name = card.dataset.name;
                 const shouldShow = searchValue === '' || name.toLowerCase().includes(searchValue);
-                
+
                 if (shouldShow) {
                     card.style.display = 'flex';
                     card.style.visibility = 'visible';
@@ -1239,7 +1256,7 @@ alternate_urls:
                     card.style.opacity = '0';
                 }
             });
-            
+
             // Update search count
             const countText = window.i18nFilteredCount || '전체';
             const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
@@ -1329,18 +1346,18 @@ alternate_urls:
 
 
 <style>
-.not-released-label {
-    position: absolute;
-    top: 10px;
-    right: -1px;
-    background: #c62323;
-    color: #000;
-    font-size: 8px;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 0px;
-    z-index: 10;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+    .not-released-label {
+        position: absolute;
+        top: 10px;
+        right: -1px;
+        background: #c62323;
+        color: #000;
+        font-size: 8px;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 0px;
+        z-index: 10;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 </style>

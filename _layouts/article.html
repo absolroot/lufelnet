@@ -34,8 +34,10 @@ Article 페이지용 동적 메타 태그 설정
 
 <!-- 추가 메타 태그 -->
 <meta name="description" content="{{ page_description | strip_html | truncate: 160 }}">
-{% if page.author %}<meta name="author" content="{{ page.author }}">{% endif %}
-{% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+{% if page.author %}
+<meta name="author" content="{{ page.author }}">{% endif %}
+{% if page.date %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
 {% if page.categories %}
 {% for category in page.categories %}
 <meta property="article:section" content="{{ category }}">
@@ -52,7 +54,7 @@ Article 페이지용 동적 메타 태그 설정
 <script>
     document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
 </script>
-  
+
 
 <div class="main-wrapper">
     <div class="navigation-path">
@@ -60,14 +62,17 @@ Article 페이지용 동적 메타 태그 설정
         <span class="separator">/</span>
         <a href="/article/" data-kr="가이드" data-en="Guide" data-jp="ガイド">가이드</a>
         <span class="separator">/</span>
-        <span class="current-page" data-kr="{{ page.translations.kr.title }}" data-en="{{ page.translations.en.title }}" data-jp="{{ page.translations.jp.title }}">{{ page.title }}</span>
+        <span class="current-page" data-kr="{{ page.translations.kr.title }}" data-en="{{ page.translations.en.title }}"
+            data-jp="{{ page.translations.jp.title }}">{{ page.title }}</span>
     </div>
 
     <div class="header-container">
-        <h1 class="article-title" data-kr="{{ page.translations.kr.title }}" data-en="{{ page.translations.en.title }}" data-jp="{{ page.translations.jp.title }}">{{ page.title }}</h1>
+        <h1 class="article-title" data-kr="{{ page.translations.kr.title }}" data-en="{{ page.translations.en.title }}"
+            data-jp="{{ page.translations.jp.title }}">{{ page.title }}</h1>
     </div>
 
 
+    <!--
     <div style="height: 12px;" class="AD-top"></div>
     <div id="ad-unit-top" class="AD-top" style="text-align: center; align-items: center; display: flex; justify-content: center;"> 
         
@@ -88,6 +93,7 @@ Article 페이지용 동적 메타 태그 설정
             }
         }
     </style>
+    -->
 
     <div class="main-content">
         <article class="article-detail">
@@ -104,390 +110,426 @@ Article 페이지용 동적 메타 태그 설정
                 </span>
                 {% endif %}
             </div>
-            
+
             <div class="article-body">
                 {{ content }}
             </div>
         </article>
     </div>
 
+    <!--
     <div style="height: 24px;"></div>
-    
-    <div id="ad-unit-bottom" class="AD-bottom" style="text-align: center; align-items: center; display: flex; justify-content: center;"> 
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:970px;height:90px"
-        data-ad-client="ca-pub-5862324369257695"
-        data-ad-slot="9244892982"></ins>
+
+    <div id="ad-unit-bottom" class="AD-bottom"
+        style="text-align: center; align-items: center; display: flex; justify-content: center;">
+        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
+            data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
     </div>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
+    -->
 </div>
 
 <script>
-// 언어별 SEO 설정 함수 - 개선된 버전
-function updateSEOContent() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'kr';
-    
-    const pageTitle = document.querySelector('.article-title').textContent;
-    const baseTitle = 'LufelNet';
-    
-    // 언어별 기본 설명
-    const seoData = {
-        'kr': {
-            title: `${pageTitle} - ${baseTitle}`,
-            description: '페르소나5 더 팬텀 X 관련 가이드와 팁을 확인하세요.',
-            defaultDescription: '페르소나5 더 팬텀 X 관련 가이드와 팁을 확인하세요.'
-        },
-        'en': {
-            title: `${pageTitle} - ${baseTitle}`,
-            description: 'Check out guides and tips for Persona 5: The Phantom X.',
-            defaultDescription: 'Check out guides and tips for Persona 5: The Phantom X.'
-        },
-        'jp': {
-            title: `${pageTitle} - ${baseTitle}`,
-            description: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。',
-            defaultDescription: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。'
+    // 언어별 SEO 설정 함수 - 개선된 버전
+    function updateSEOContent() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
+
+        const pageTitle = document.querySelector('.article-title').textContent;
+        const baseTitle = 'LufelNet';
+
+        // 언어별 기본 설명
+        const seoData = {
+            'kr': {
+                title: `${pageTitle} - ${baseTitle}`,
+                description: '페르소나5 더 팬텀 X 관련 가이드와 팁을 확인하세요.',
+                defaultDescription: '페르소나5 더 팬텀 X 관련 가이드와 팁을 확인하세요.'
+            },
+            'en': {
+                title: `${pageTitle} - ${baseTitle}`,
+                description: 'Check out guides and tips for Persona 5: The Phantom X.',
+                defaultDescription: 'Check out guides and tips for Persona 5: The Phantom X.'
+            },
+            'jp': {
+                title: `${pageTitle} - ${baseTitle}`,
+                description: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。',
+                defaultDescription: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。'
+            }
+        };
+
+        const currentSEO = seoData[currentLang] || seoData['kr'];
+
+        // 타이틀 업데이트
+        document.title = currentSEO.title;
+
+        // 현재 페이지의 언어별 설명 가져오기 (front matter에서 설정된 경우)
+        const pageDescriptions = {
+            'kr': '{{ page.translations.kr.description | default: page.description }}',
+            'en': '{{ page.translations.en.description | default: page.description }}',
+            'jp': '{{ page.translations.jp.description | default: page.description }}'
+        };
+
+        // 실제 페이지 설명이 있으면 사용, 없으면 기본값 사용
+        const finalDescription = pageDescriptions[currentLang] && pageDescriptions[currentLang] !== ''
+            ? pageDescriptions[currentLang]
+            : currentSEO.defaultDescription;
+
+        // 메타 태그 업데이트 함수
+        function updateMetaTag(selector, property, content) {
+            let metaTag = document.querySelector(selector);
+            if (metaTag) {
+                metaTag.setAttribute(property, content);
+            }
         }
-    };
-    
-    const currentSEO = seoData[currentLang] || seoData['kr'];
-    
-    // 타이틀 업데이트
-    document.title = currentSEO.title;
-    
-    // 현재 페이지의 언어별 설명 가져오기 (front matter에서 설정된 경우)
-    const pageDescriptions = {
-        'kr': '{{ page.translations.kr.description | default: page.description }}',
-        'en': '{{ page.translations.en.description | default: page.description }}', 
-        'jp': '{{ page.translations.jp.description | default: page.description }}'
-    };
-    
-    // 실제 페이지 설명이 있으면 사용, 없으면 기본값 사용
-    const finalDescription = pageDescriptions[currentLang] && pageDescriptions[currentLang] !== '' 
-        ? pageDescriptions[currentLang] 
-        : currentSEO.defaultDescription;
-    
-    // 메타 태그 업데이트 함수
-    function updateMetaTag(selector, property, content) {
-        let metaTag = document.querySelector(selector);
-        if (metaTag) {
-            metaTag.setAttribute(property, content);
+
+        // 메타 태그들 업데이트
+        updateMetaTag('meta[name="description"]', 'content', finalDescription);
+        updateMetaTag('meta[property="og:title"]', 'content', currentSEO.title);
+        updateMetaTag('meta[property="og:description"]', 'content', finalDescription);
+        updateMetaTag('meta[name="twitter:title"]', 'content', currentSEO.title);
+        updateMetaTag('meta[name="twitter:description"]', 'content', finalDescription);
+
+        // 언어별 canonical URL 업데이트
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('lang', currentLang);
+
+        let canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+            canonicalLink.setAttribute('href', currentUrl.toString());
         }
     }
-    
-    // 메타 태그들 업데이트
-    updateMetaTag('meta[name="description"]', 'content', finalDescription);
-    updateMetaTag('meta[property="og:title"]', 'content', currentSEO.title);
-    updateMetaTag('meta[property="og:description"]', 'content', finalDescription);
-    updateMetaTag('meta[name="twitter:title"]', 'content', currentSEO.title);
-    updateMetaTag('meta[name="twitter:description"]', 'content', finalDescription);
-    
-    // 언어별 canonical URL 업데이트
-    const currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set('lang', currentLang);
-    
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) {
-        canonicalLink.setAttribute('href', currentUrl.toString());
-    }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    Navigation.load('article');
-    VersionChecker.check();
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('article');
+        VersionChecker.check();
 
-    // 현재 언어 가져오기
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'kr';
+        // 현재 언어 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'kr';
 
-    // 언어별 콘텐츠 표시/숨김
-    document.querySelectorAll('.content-kr, .content-en, .content-jp').forEach(el => {
-        el.style.display = 'none';
+        // 언어별 콘텐츠 표시/숨김
+        document.querySelectorAll('.content-kr, .content-en, .content-jp').forEach(el => {
+            el.style.display = 'none';
+        });
+        document.querySelector(`.content-${currentLang}`).style.display = 'block';
+
+        // 제목 업데이트
+        const title = document.querySelector('.article-title');
+        const titleContent = title.getAttribute(`data-${currentLang}`);
+        if (titleContent) {
+            title.textContent = titleContent;
+        }
+
+        // 내비게이션 경로의 제목도 업데이트
+        const navTitle = document.querySelector('.current-page');
+        const navTitleContent = navTitle.getAttribute(`data-${currentLang}`);
+        if (navTitleContent) {
+            navTitle.textContent = navTitleContent;
+        }
+
+        // 네비게이션 텍스트 업데이트
+        document.querySelectorAll('[data-kr]').forEach(el => {
+            const text = el.getAttribute(`data-${currentLang}`);
+            if (text) {
+                el.textContent = text;
+            }
+        });
+
+        // 날짜 형식 변경
+        const dateElement = document.querySelector('time');
+        const date = new Date(dateElement.getAttribute('datetime'));
+
+        switch (currentLang) {
+            case 'en':
+                dateElement.textContent = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                break;
+            case 'jp':
+                dateElement.textContent = date.toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                break;
+            default: // kr
+                dateElement.textContent = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+        }
+
+        // SEO 업데이트 (모든 언어별 콘텐츠 업데이트 후)
+        updateSEOContent();
     });
-    document.querySelector(`.content-${currentLang}`).style.display = 'block';
-
-    // 제목 업데이트
-    const title = document.querySelector('.article-title');
-    const titleContent = title.getAttribute(`data-${currentLang}`);
-    if (titleContent) {
-        title.textContent = titleContent;
-    }
-
-    // 내비게이션 경로의 제목도 업데이트
-    const navTitle = document.querySelector('.current-page');
-    const navTitleContent = navTitle.getAttribute(`data-${currentLang}`);
-    if (navTitleContent) {
-        navTitle.textContent = navTitleContent;
-    }
-
-    // 네비게이션 텍스트 업데이트
-    document.querySelectorAll('[data-kr]').forEach(el => {
-        const text = el.getAttribute(`data-${currentLang}`);
-        if (text) {
-            el.textContent = text;
-        }
-    });
-
-    // 날짜 형식 변경
-    const dateElement = document.querySelector('time');
-    const date = new Date(dateElement.getAttribute('datetime'));
-    
-    switch(currentLang) {
-        case 'en':
-            dateElement.textContent = date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            break;
-        case 'jp':
-            dateElement.textContent = date.toLocaleDateString('ja-JP', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            break;
-        default: // kr
-            dateElement.textContent = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
-    }
-    
-    // SEO 업데이트 (모든 언어별 콘텐츠 업데이트 후)
-    updateSEOContent();
-});
 </script>
 
 <style>
-.main-content {
-    margin: 0 20px;
-}
-
-@media (max-width: 1200px) {
-    .navigation-path, .header-container {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
     .main-content {
-        margin: 0 0px;
-        padding-left: 10px;
-        padding-right: 10px;
+        margin: 0 20px;
     }
 
-    .main-wrapper {
-        width: calc(100% - 32px);
-        padding-top: 60px;
+    @media (max-width: 1200px) {
+
+        .navigation-path,
+        .header-container {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .main-content {
+            margin: 0 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .main-wrapper {
+            width: calc(100% - 32px);
+            padding-top: 60px;
+        }
+
+        .article-detail {
+            padding: 0 0px;
+        }
+
+
     }
 
     .article-detail {
-        padding: 0 0px;
-    }
-
-
-}
-
-.article-detail {
-    color: rgba(255, 255, 255, 0.9);
-    padding: 0 10px;
-}
-
-.article-meta {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.article-body {
-    line-height: 1.6;
-    letter-spacing: -0.025em;
-    overflow-wrap: break-word;
-}
-
-.article-body h1, .article-body h2, .article-body h3,
-.article-body h4, .article-body h5, .article-body h6 {
-    line-height: 1.5;
-    letter-spacing: -0.025em;
-}
-
-.article-body h1 { font-size: 1.75em; color: #fff0ba; }
-.article-body h2 { font-size: 1.5em; }
-.article-body h3 { font-size: 1.25em; color: #ffccba; }
-.article-body h4 { font-size: 1em; }
-
-.article-body p {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    text-align: justify;
-}
-
-
-.article-body img {
-    max-width: calc(100% - 4em);
-    height: auto;
-    max-height: 400px;
-    margin: 2em 2em 4em 2em;
-    border-radius: 10px;
-    display: block;
-}
-
-@media (max-width: 1200px) {
-    .article-body img{
-        max-width: 100%;
-        max-height: 200px;
-        margin: 2em 0 4em 0;
-    }
-}
-
-.article-body code {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-size: 1.2em;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.article-body pre {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1rem;
-    border-radius: 4px;
-    overflow-x: auto;
-    margin: 1rem 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.article-body pre code {
-    background: none;
-    padding: 0;
-}
-
-.article-body blockquote {
-    margin: 1rem 0;
-    padding: 1rem;
-    border-left: 4px solid #d3bc8e;
-    background: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.8);
-    font-style: italic;
-}
-
-.article-body ul, .article-body ol {
-    margin: 1.5em 0;
-    padding-left: 2em;
-}
-
-.article-body li {
-    margin: 0.5em 0;
-    line-height: 1.7;
-}
-
-.article-body hr {
-    margin: 6em 0 3em 0;
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.category {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-right: 0.5rem;
-}
-
-
-
-.content-kr, .content-en, .content-jp {
-    display: none;
-}
-
-/* 마크다운 줄바꿈 처리 */
-.content-kr p, .content-en p, .content-jp p {
-    margin: 0;  /* 기본 마진 제거 */
-    white-space: pre-wrap;  /* 연속 줄바꿈 유지 */
-}
-
-/* 일반 단락 간격 */
-.content-kr > p + p,
-.content-en > p + p,
-.content-jp > p + p {
-    margin-top: 1.6em;  /* 단락 사이 간격 */
-}
-
-/* Markdown 내부의 테이블 스타일 */
-.content-kr table,
-.content-en table,
-.content-jp table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2em 0 4em 0;
-}
-
-.content-kr th,
-.content-kr td,
-.content-en th,
-.content-en td,
-.content-jp th,
-.content-jp td {
-    padding: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: left;
-    font-size: 0.75em;
-}
-
-.content-kr th,
-.content-en th,
-.content-jp th {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-
-@media (max-width: 1200px) {
-    .article-body p, .article-body pre code, .article-body li {
-        font-size: 13px;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0 10px;
     }
 
     .article-meta {
-        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .article-body h1 { font-size: 1.5em; }
-    .article-body h2 { font-size: 1.3em; }
-    .article-body h3 { font-size: 1.1em; }
+    .article-body {
+        line-height: 1.6;
+        letter-spacing: -0.025em;
+        overflow-wrap: break-word;
+    }
 
-    /* 모바일 환경에서 표가 화면을 넘어갈 경우 행 줄바꿈 */
+    .article-body h1,
+    .article-body h2,
+    .article-body h3,
+    .article-body h4,
+    .article-body h5,
+    .article-body h6 {
+        line-height: 1.5;
+        letter-spacing: -0.025em;
+    }
+
+    .article-body h1 {
+        font-size: 1.75em;
+        color: #fff0ba;
+    }
+
+    .article-body h2 {
+        font-size: 1.5em;
+    }
+
+    .article-body h3 {
+        font-size: 1.25em;
+        color: #ffccba;
+    }
+
+    .article-body h4 {
+        font-size: 1em;
+    }
+
+    .article-body p {
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.6;
+        text-align: justify;
+    }
+
+
+    .article-body img {
+        max-width: calc(100% - 4em);
+        height: auto;
+        max-height: 400px;
+        margin: 2em 2em 4em 2em;
+        border-radius: 10px;
+        display: block;
+    }
+
+    @media (max-width: 1200px) {
+        .article-body img {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 2em 0 4em 0;
+        }
+    }
+
+    .article-body code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 1.2em;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .article-body pre {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin: 1rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .article-body pre code {
+        background: none;
+        padding: 0;
+    }
+
+    .article-body blockquote {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-left: 4px solid #d3bc8e;
+        background: rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.8);
+        font-style: italic;
+    }
+
+    .article-body ul,
+    .article-body ol {
+        margin: 1.5em 0;
+        padding-left: 2em;
+    }
+
+    .article-body li {
+        margin: 0.5em 0;
+        line-height: 1.7;
+    }
+
+    .article-body hr {
+        margin: 6em 0 3em 0;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .category {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-right: 0.5rem;
+    }
+
+
+
+    .content-kr,
+    .content-en,
+    .content-jp {
+        display: none;
+    }
+
+    /* 마크다운 줄바꿈 처리 */
+    .content-kr p,
+    .content-en p,
+    .content-jp p {
+        margin: 0;
+        /* 기본 마진 제거 */
+        white-space: pre-wrap;
+        /* 연속 줄바꿈 유지 */
+    }
+
+    /* 일반 단락 간격 */
+    .content-kr>p+p,
+    .content-en>p+p,
+    .content-jp>p+p {
+        margin-top: 1.6em;
+        /* 단락 사이 간격 */
+    }
+
+    /* Markdown 내부의 테이블 스타일 */
     .content-kr table,
     .content-en table,
     .content-jp table {
         width: 100%;
-        overflow-x: auto;
-        table-layout: fixed;
-        word-break: break-all;
+        border-collapse: collapse;
+        margin: 2em 0 4em 0;
     }
 
-    /* 모바일 환경에서 코드 블록 줄바꿈 */
-    .content-kr pre,
-    .content-en pre,
-    .content-jp pre {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        word-break: break-all;
+    .content-kr th,
+    .content-kr td,
+    .content-en th,
+    .content-en td,
+    .content-jp th,
+    .content-jp td {
+        padding: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: left;
+        font-size: 0.75em;
     }
 
-    .content-kr code,
-    .content-en code,
-    .content-jp code {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        word-break: break-all;
+    .content-kr th,
+    .content-en th,
+    .content-jp th {
+        background: rgba(0, 0, 0, 0.2);
     }
-}
-
-</style> 
 
 
+    @media (max-width: 1200px) {
+
+        .article-body p,
+        .article-body pre code,
+        .article-body li {
+            font-size: 13px;
+        }
+
+        .article-meta {
+            gap: 0.5rem;
+        }
+
+        .article-body h1 {
+            font-size: 1.5em;
+        }
+
+        .article-body h2 {
+            font-size: 1.3em;
+        }
+
+        .article-body h3 {
+            font-size: 1.1em;
+        }
+
+        /* 모바일 환경에서 표가 화면을 넘어갈 경우 행 줄바꿈 */
+        .content-kr table,
+        .content-en table,
+        .content-jp table {
+            width: 100%;
+            overflow-x: auto;
+            table-layout: fixed;
+            word-break: break-all;
+        }
+
+        /* 모바일 환경에서 코드 블록 줄바꿈 */
+        .content-kr pre,
+        .content-en pre,
+        .content-jp pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .content-kr code,
+        .content-en code,
+        .content-jp code {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+    }
+</style>

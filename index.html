@@ -4,15 +4,15 @@ custom_css: [home, tactic-posts]
 custom_js: [tactic-posts-home, tactic-preview, /tactic/share, language-router]
 custom_data: [/characters/characters.js, /revelations/revelations.js]
 permalink: /
-redirect_from: 
-  - /kr/
-  - /kr/index.html
+redirect_from:
+- /kr/
+- /kr/index.html
 language: kr
 title: 페르소나5 더 팬텀 X 루페르넷
 description: 페르소나5 더 팬텀 X 공략 사이트. 괴도 육성, 페르소나, 계시, 전술 시뮬레이터 등 다양한 정보를 제공합니다.
 alternate_urls:
-  en: /?lang=en
-  jp: /?lang=jp
+en: /?lang=en
+jp: /?lang=jp
 ---
 
 {% if page.alternate_urls %}
@@ -34,13 +34,17 @@ alternate_urls:
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;  /* 추가 */
+        position: relative;
+        /* 추가 */
     }
 
     .header-container .language-selector-container .options-container {
-        top: 100%;  /* 상단에서 100% 위치에 배치 (아래로) */
-        bottom: auto;  /* 기존 bottom 속성 제거 */
-        margin-top: 5px;  /* 선택기와의 간격 */
+        top: 100%;
+        /* 상단에서 100% 위치에 배치 (아래로) */
+        bottom: auto;
+        /* 기존 bottom 속성 제거 */
+        margin-top: 5px;
+        /* 선택기와의 간격 */
     }
 
     /* Quick Grid styles moved to assets/js/home/quick-grid.js */
@@ -63,16 +67,19 @@ alternate_urls:
                     <span>한국어</span>
                 </div>
                 <div class="options-container">
-                    <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" role="button" tabindex="0" onclick="return false;">
+                    <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" role="button"
+                        tabindex="0" onclick="return false;">
                         <img src="{{ site.baseurl }}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
                         <span>한국어</span>
                     </div>
-                    
-                    <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
+
+                    <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button"
+                        tabindex="0" onclick="return false;">
                         <img src="{{ site.baseurl }}/assets/img/flags/en.png" alt="en" class="flag-icon">
                         <span>English</span>
                     </div>
-                    <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
+                    <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button"
+                        tabindex="0" onclick="return false;">
                         <img src="{{ site.baseurl }}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                         <span>日本語</span>
                     </div>
@@ -81,7 +88,7 @@ alternate_urls:
         </div>
     </div>
 
-    
+
 
     <!-- Carousel: inserted above menu-cards -->
     <div id="home-carousel-root" style="width: 100%;"></div>
@@ -101,35 +108,60 @@ alternate_urls:
             <h2 id="popular-characters-title">인기 괴도</h2>
             <div class="character-cards">
                 <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=후카&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/후카.webp" alt="후카"></a></div>
-                    <div class="character-card-text"><p>후카</p></div>
+                    <div class="character-card-img"><a href="./character.html?name=후카&v=' + APP_VERSION"
+                            style="text-decoration: none; color: inherit;"><img
+                                src="{{ site.baseurl }}/assets/img/tier/후카.webp" alt="후카"></a></div>
+                    <div class="character-card-text">
+                        <p>후카</p>
+                    </div>
                 </div>
                 <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=미츠루&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/미츠루.webp" alt="미츠루"></a></div>
-                    <div class="character-card-text"><p>미츠루</p></div>
+                    <div class="character-card-img"><a href="./character.html?name=미츠루&v=' + APP_VERSION"
+                            style="text-decoration: none; color: inherit;"><img
+                                src="{{ site.baseurl }}/assets/img/tier/미츠루.webp" alt="미츠루"></a></div>
+                    <div class="character-card-text">
+                        <p>미츠루</p>
+                    </div>
                 </div>
                 <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=YUI·스텔라&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/YUI·스텔라.webp" alt="YUI·스텔라"></a></div>
-                    <div class="character-card-text"><p>YUI·스텔라</p></div>
+                    <div class="character-card-img"><a href="./character.html?name=YUI·스텔라&v=' + APP_VERSION"
+                            style="text-decoration: none; color: inherit;"><img
+                                src="{{ site.baseurl }}/assets/img/tier/YUI·스텔라.webp" alt="YUI·스텔라"></a></div>
+                    <div class="character-card-text">
+                        <p>YUI·스텔라</p>
+                    </div>
                 </div>
                 <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=미유·여름&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/미유·여름.webp" alt="미유·여름"></a></div>
-                    <div class="character-card-text"><p>미유·여름</p></div>
+                    <div class="character-card-img"><a href="./character.html?name=미유·여름&v=' + APP_VERSION"
+                            style="text-decoration: none; color: inherit;"><img
+                                src="{{ site.baseurl }}/assets/img/tier/미유·여름.webp" alt="미유·여름"></a></div>
+                    <div class="character-card-text">
+                        <p>미유·여름</p>
+                    </div>
                 </div>
                 <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=마나카&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/마나카.webp" alt="마나카"></a></div>
-                    <div class="character-card-text"><p>나가오 마나카</p></div>
+                    <div class="character-card-img"><a href="./character.html?name=마나카&v=' + APP_VERSION"
+                            style="text-decoration: none; color: inherit;"><img
+                                src="{{ site.baseurl }}/assets/img/tier/마나카.webp" alt="마나카"></a></div>
+                    <div class="character-card-text">
+                        <p>나가오 마나카</p>
+                    </div>
                 </div>
                 <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=마유미&v=' + APP_VERSION" style="text-decoration: none; color: inherit;"><img src="{{ site.baseurl }}/assets/img/tier/마유미.webp" alt="마유미"></a></div>
-                    <div class="character-card-text"><p>하시모토 마유미</p></div>
+                    <div class="character-card-img"><a href="./character.html?name=마유미&v=' + APP_VERSION"
+                            style="text-decoration: none; color: inherit;"><img
+                                src="{{ site.baseurl }}/assets/img/tier/마유미.webp" alt="마유미"></a></div>
+                    <div class="character-card-text">
+                        <p>하시모토 마유미</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="recent-update-content">
             <h2 id="recent-updates-title">최신 업데이트</h2>
             <div id="recent-update-list"></div>
-            <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;" data-text-more="더보기">더보기</button>
+            <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;"
+                data-text-more="더보기">더보기</button>
         </div>
     </div>
     <div class="guides-container">
@@ -141,10 +173,16 @@ alternate_urls:
                     <h3 id="guide-city-title">도시 생활</h3>
                 </div>
                 <div class="guide-card-content">
-                    <div class="article"><a href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM" target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 선물 & 선택지</a></div>
-                    <div class="article"><a href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=158597" target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 우선순위 추천</a></div>
-                    <div class="article"><a href="https://gall.dcinside.com/m/persona5phantomx/191138" target="_blank" style="text-decoration: none; color: inherit;">∘ 이치가야 낚시</a></div>
-                    <div class="article"><a href="https://arca.live/b/persona5x/110240842" target="_blank" style="text-decoration: none; color: inherit;">∘ 요리 레시피 획득</a></div>
+                    <div class="article"><a
+                            href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM"
+                            target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 선물 & 선택지</a></div>
+                    <div class="article"><a
+                            href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=158597"
+                            target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 우선순위 추천</a></div>
+                    <div class="article"><a href="https://gall.dcinside.com/m/persona5phantomx/191138" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 이치가야 낚시</a></div>
+                    <div class="article"><a href="https://arca.live/b/persona5x/110240842" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 요리 레시피 획득</a></div>
                 </div>
             </div>
             <div class="guide-card">
@@ -153,10 +191,16 @@ alternate_urls:
                     <h3 id="guide-growth-title">육성 및 재화</h3>
                 </div>
                 <div class="guide-card-content">
-                    <div class="article"><a href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=170601" target="_blank" style="text-decoration: none; color: inherit;">∘ 계시에 대하여</a></div>
-                    <div class="article"><a href="https://arca.live/b/persona5x/115843217" target="_blank" style="text-decoration: none; color: inherit;">∘ 주 성위 계시 입수처</a></div>
-                    <div class="article"><a href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=175353" target="_blank" style="text-decoration: none; color: inherit;">∘ 교환상점 구매목록</a></div>
-                    <div class="article"><a href="https://lufel.net/pay-calc" target="_blank" style="text-decoration: none; color: inherit;">∘ 패키지 과금효율 계산</a></div>
+                    <div class="article"><a
+                            href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=170601"
+                            target="_blank" style="text-decoration: none; color: inherit;">∘ 계시에 대하여</a></div>
+                    <div class="article"><a href="https://arca.live/b/persona5x/115843217" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 주 성위 계시 입수처</a></div>
+                    <div class="article"><a
+                            href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=175353"
+                            target="_blank" style="text-decoration: none; color: inherit;">∘ 교환상점 구매목록</a></div>
+                    <div class="article"><a href="https://lufel.net/pay-calc" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 패키지 과금효율 계산</a></div>
                 </div>
             </div>
             <div class="guide-card">
@@ -165,10 +209,14 @@ alternate_urls:
                     <h3 id="guide-battle-title">전투 및 팰리스</h3>
                 </div>
                 <div class="guide-card-content">
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1xF4m1N7bZ" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 1장 100% 탐색도</a></div>
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1zD421n7jJ" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 2장 100% 탐색도</a></div>
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1kr421T7Wp" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 3장 100% 탐색도</a></div>
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1duUSYfEdY" target="_blank" style="text-decoration: none; color: inherit;">∘ 팰리스 4장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1xF4m1N7bZ" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 팰리스 1장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1zD421n7jJ" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 팰리스 2장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1kr421T7Wp" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 팰리스 3장 100% 탐색도</a></div>
+                    <div class="article"><a href="https://www.bilibili.com/video/BV1duUSYfEdY" target="_blank"
+                            style="text-decoration: none; color: inherit;">∘ 팰리스 4장 100% 탐색도</a></div>
                 </div>
             </div>
         </div>
@@ -176,13 +224,16 @@ alternate_urls:
 
     <div class="posts-container" id="posts-container">
         <div class="posts-header">
-            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱 도서관 NEW</a></h2>
-            <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;" id="show-more-posts-btn">더보기 ＋</a>
+            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
+                    도서관 NEW</a></h2>
+            <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;"
+                id="show-more-posts-btn">더보기 ＋</a>
         </div>
         <div class="posts-list" id="postsList"></div>
     </div>
 
     <!-- 광고 -->
+    <!--
     <div class="ads-container responsive-padding">
         <ins class="adsbygoogle"
         style="display:block"
@@ -191,9 +242,10 @@ alternate_urls:
         data-ad-client="ca-pub-5862324369257695"
         data-ad-slot="5373524213"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-        
+    </div>-->
+
     <!--광고-->
+    <!--    
     <div id="ad-unit-bottom" class="AD-bottom" style="width:100%; margin-top: 32px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
     <ins class="adsbygoogle"
         style="display:inline-block;width:970px;height:90px"
@@ -204,7 +256,7 @@ alternate_urls:
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 20px;"></div>
-    <!---->
+    
     <style>
         @media (max-width: 1440px) {
             .AD-bottom {
@@ -219,7 +271,8 @@ alternate_urls:
         .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
-    </div>
+    -->
+</div>
 </div>
 
 <!-- Carousel JS -->
@@ -237,24 +290,24 @@ alternate_urls:
 <!-- iframe -->
 <!-- <iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe> -->
 
-    <script>
+<script>
     // 다국어 데이터 로드
     window.i18nData = null;
-    
+
     // 오버레이 추가 함수
     function addComingSoonOverlay(cardId, text) {
         const card = document.getElementById(cardId);
         if (!card) return;
-        
+
         // 이미 오버레이가 있으면 제거
         const existingOverlay = card.querySelector('.coming-soon-overlay');
         if (existingOverlay) {
             existingOverlay.remove();
         }
-        
+
         // 카드를 상대 위치로 설정
         card.style.position = 'relative';
-        
+
         // 오버레이 생성
         const overlay = document.createElement('div');
         overlay.className = 'coming-soon-overlay';
@@ -276,34 +329,34 @@ alternate_urls:
             cursor: not-allowed;
         `;
         overlay.textContent = text;
-        
+
         // 링크 비활성화
         const link = card.querySelector('a');
         if (link) {
             link.style.pointerEvents = 'none';
         }
-        
+
         card.appendChild(overlay);
     }
-    
+
     // 오버레이 제거 함수
     function removeComingSoonOverlay(cardId) {
         const card = document.getElementById(cardId);
         if (!card) return;
-        
+
         // 오버레이 제거
         const overlay = card.querySelector('.coming-soon-overlay');
         if (overlay) {
             overlay.remove();
         }
-        
+
         // 링크 활성화
         const link = card.querySelector('a');
         if (link) {
             link.style.pointerEvents = 'auto';
         }
     }
-    
+
     // 모든 링크에 언어 파라미터 추가 함수
     function updateLinksWithLanguage(currentLang) {
         // 메뉴 카드 링크들 업데이트
@@ -313,7 +366,7 @@ alternate_urls:
             { selector: '.menu-card a[href*="./revelations/"]', path: './revelations/' },
             { selector: '.menu-card a[href*="./tactic"]', path: './tactic/tactics' }
         ];
-        
+
         menuLinks.forEach(linkInfo => {
             const link = document.querySelector(linkInfo.selector);
             if (link) {
@@ -321,7 +374,7 @@ alternate_urls:
                 link.href = url.pathname + url.search;
             }
         });
-        
+
         // 인기 캐릭터 링크들 업데이트
         const characterLinks = document.querySelectorAll('.character-card-img a[href*="./character/character.html"]');
         characterLinks.forEach(link => {
@@ -329,24 +382,24 @@ alternate_urls:
             url.searchParams.set('lang', currentLang);
             link.href = url.pathname + url.search;
         });
-        
+
         // 택틱 도서관 링크들 업데이트 (홈 목록 이동 버튼)
         const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactics"]');
         tacticLinks.forEach(link => {
             const url = new URL('./tactic/tactics' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
             link.href = url.pathname + url.search;
         });
-        
+
         // 과금효율 계산 링크 업데이트
         const payCalcLink = document.querySelector('a[href*="https://lufel.net/pay-calc"]');
         if (payCalcLink) {
             payCalcLink.href = `https://lufel.net/pay-calc/?lang=${currentLang}&v=${APP_VERSION}`;
         }
     }
-    
+
     async function loadI18nData() {
         if (window.i18nData) return window.i18nData;
-        
+
         try {
             // 다국어 데이터를 직접 정의 (Jekyll에서 빌드 시 생성)
             window.i18nData = {
@@ -354,7 +407,7 @@ alternate_urls:
                     language_notice: "",
                     site_title: "P5X 루페르넷",
                     menu_character: "괴도",
-                    menu_persona: "페르소나", 
+                    menu_persona: "페르소나",
                     menu_revelations: "계시",
                     menu_tactic: "택틱",
                     menu_character_desc_desktop: "보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요",
@@ -438,7 +491,7 @@ alternate_urls:
                     show_more: "{{ site.data.i18n.jp.show_more | default: 'もっと見る' }}"
                 }
             };
-            
+
             return window.i18nData;
         } catch (error) {
             console.error('Failed to load i18n data:', error);
@@ -451,9 +504,9 @@ alternate_urls:
         // URL 파라미터에서 직접 언어 확인 (우선순위)
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        
+
         let currentLang = 'kr'; // 기본값
-        
+
         if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             currentLang = urlLang;
         } else if (typeof LanguageRouter !== 'undefined') {
@@ -465,17 +518,17 @@ alternate_urls:
                 currentLang = savedLang;
             }
         }
-        
+
         //console.log('🌐 현재 언어 설정:', currentLang);
-        
+
         // 다국어 데이터 로드
         await loadI18nData();
         const i18n = window.i18nData;
-        
+
         if (!i18n || !i18n[currentLang]) return;
-        
+
         const data = i18n[currentLang];
-        
+
         // 언어 안내 메시지
         /*
         if (currentLang !== 'kr') {
@@ -486,13 +539,13 @@ alternate_urls:
                 notice.style.display = 'block';
             }
         }*/
-        
+
         // 사이트 제목
         const siteTitle = document.getElementById('site-title');
         if (siteTitle && data.site_title) {
             siteTitle.textContent = data.site_title;
         }
-        
+
         // 메뉴 카드 제목들
         const menuTitles = {
             'menu-character-title': data.menu_character,
@@ -502,7 +555,7 @@ alternate_urls:
             'menu-article-title': data.menu_article,
             'menu-tier-title': data.menu_tier
         };
-        
+
         Object.keys(menuTitles).forEach(id => {
             const element = document.getElementById(id);
             if (element && menuTitles[id]) {
@@ -511,7 +564,7 @@ alternate_urls:
                 if (icon) element.appendChild(icon);
             }
         });
-        
+
         // 메뉴 설명들
         const menuDescs = {
             'menu-character-desc-desktop': data.menu_character_desc_desktop,
@@ -527,14 +580,14 @@ alternate_urls:
             'menu-tier-desc-desktop': data.menu_tier_desc_desktop,
             'menu-tier-desc-mobile': data.menu_tier_desc_mobile
         };
-        
+
         Object.keys(menuDescs).forEach(id => {
             const element = document.getElementById(id);
             if (element && menuDescs[id]) {
                 element.innerHTML = menuDescs[id];
             }
         });
-        
+
         // 버튼 텍스트들
         const buttons = {
             'menu-character-btn': data.menu_goto,
@@ -544,97 +597,97 @@ alternate_urls:
             'menu-article-btn': data.menu_goto,
             'menu-tier-btn': data.menu_goto
         };
-        
+
         Object.keys(buttons).forEach(id => {
             const element = document.getElementById(id);
             if (element && buttons[id]) {
                 element.textContent = buttons[id] + ' →';
             }
         });
-        
+
         // 섹션 제목들
         const sectionTitles = {
             'popular-characters-title': data.popular_characters,
             'recent-updates-title': data.recent_updates,
             'guides-title': data.guides
         };
-        
+
         Object.keys(sectionTitles).forEach(id => {
             const element = document.getElementById(id);
             if (element && sectionTitles[id]) {
                 element.textContent = sectionTitles[id];
             }
         });
-        
+
         // 가이드 카드 제목들
         const guideTitles = {
             'guide-city-title': data.guide_city,
             'guide-growth-title': data.guide_growth,
             'guide-battle-title': data.guide_battle
         };
-        
+
         Object.keys(guideTitles).forEach(id => {
             const element = document.getElementById(id);
             if (element && guideTitles[id]) {
                 element.textContent = guideTitles[id];
             }
         });
-        
+
         // 택틱 관련 텍스트
         const tacticTitle = document.getElementById('tactic-workshop-title');
         if (tacticTitle && data.tactic_workshop) {
             tacticTitle.textContent = data.tactic_workshop;
         }
-        
+
         const showMoreBtn = document.getElementById('show-more-posts-btn');
         if (showMoreBtn && data.show_more) {
             showMoreBtn.textContent = data.show_more + ' ＋';
         }
-        
+
         // 더보기 버튼
         const moreUpdatesBtn = document.getElementById('show-more-updates-btn');
         if (moreUpdatesBtn && data.show_more) {
             moreUpdatesBtn.textContent = data.show_more;
             moreUpdatesBtn.setAttribute('data-text-more', data.show_more);
         }
-        
+
         // 모든 링크에 현재 언어 파라미터 추가
         updateLinksWithLanguage(currentLang);
-        
+
         // 언어별 메뉴 제한
         if (currentLang === 'en' || currentLang === 'jp') {
             // Persona 메뉴 활성화 (오버레이 제거)
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
             removeComingSoonOverlay('menu-tactic-card');
-            
+
             // 오버레이 추가 예시
             // const tacticOverlayText = currentLang === 'en' ? 'Coming Soon' : '準備中';
             // addComingSoonOverlay('menu-tactic-card', tacticOverlayText);
-            
+
             // main-content 아래 모든 섹션 숨기기
             const middleContainer = document.querySelector('.middle-container');
             const guidesContainer = document.querySelector('.guides-container');
-            
+
             if (middleContainer) {
                 middleContainer.style.display = 'none';
             }
             if (guidesContainer) {
                 guidesContainer.style.display = 'none';
             }
-            
+
         } else {
             // 한국어인 경우 모든 메뉴 활성화
             const tacticCard = document.getElementById('menu-tactic-card');
             if (tacticCard) {
                 tacticCard.style.display = 'block';
             }
-            
+
             // 오버레이 제거
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
             removeComingSoonOverlay('menu-tactic-card');
-            
+
             // 택틱 도서관 섹션 표시
             const postsContainer = document.getElementById('posts-container');
             if (postsContainer) {
@@ -650,11 +703,11 @@ alternate_urls:
                     link.style.pointerEvents = 'auto';
                 });
             }
-            
+
             // main-content 아래 모든 섹션 표시
             const middleContainer = document.querySelector('.middle-container');
             const guidesContainer = document.querySelector('.guides-container');
-            
+
             if (middleContainer) {
                 middleContainer.style.display = 'grid';
             }
@@ -669,9 +722,9 @@ alternate_urls:
         // URL 파라미터에서 직접 언어 확인 (우선순위)
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        
+
         let currentLang = 'kr'; // 기본값
-        
+
         if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             currentLang = urlLang;
         } else if (typeof LanguageRouter !== 'undefined') {
@@ -683,7 +736,7 @@ alternate_urls:
                 currentLang = savedLang;
             }
         }
-        
+
         const seoData = {
             'kr': {
                 title: '페르소나5 더 팬텀 X - 루페르넷',
@@ -698,17 +751,17 @@ alternate_urls:
                 description: 'ペルソナ5 ザ・ファントム Xの総合攻略サイト。怪盗、ペルソナ、スキル、戦略ガイドを一箇所で確認できます。'
             }
         };
-        
+
         const currentSEO = seoData[currentLang] || seoData['kr'];
-        
+
         // 타이틀 업데이트
         document.title = currentSEO.title;
-        
+
         // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
-        
+
         if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
         if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
@@ -720,33 +773,33 @@ alternate_urls:
         const hasLanguageDetected = localStorage.getItem('languageDetected');
         const urlParams = new URLSearchParams(window.location.search);
         const hasUrlLang = urlParams.get('lang');
-        
+
         // 첫 방문자이고 언어 설정이 없는 경우에만 감지
         if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
             //console.log('👋 첫 방문자 감지, IP 기반 언어 설정 시작...');
-            
+
             try {
                 const apis = [
                     'https://ipapi.co/json/',
                     'https://ipinfo.io/json'
                 ];
-                
+
                 let detectedLang = 'kr'; // 기본값
-                
+
                 for (const api of apis) {
                     try {
                         const controller = new AbortController();
                         const timeoutId = setTimeout(() => controller.abort(), 3000);
-                        
+
                         const response = await fetch(api, { signal: controller.signal });
                         clearTimeout(timeoutId);
-                        
+
                         if (response.ok) {
                             const data = await response.json();
                             const countryCode = data.country_code || data.country;
-                            
+
                             //console.log(`🌍 감지된 국가: ${countryCode}`);
-                            
+
                             if (countryCode === 'KR') {
                                 detectedLang = 'kr';
                                 //console.log('🇰🇷 한국 사용자 감지');
@@ -757,7 +810,7 @@ alternate_urls:
                                 detectedLang = 'en';
                                 //console.log('🌎 해외 사용자 감지');
                             }
-                            
+
                             break; // 첫 번째 성공한 API로 결정
                         }
                     } catch (error) {
@@ -765,13 +818,13 @@ alternate_urls:
                         continue;
                     }
                 }
-                
+
                 // 언어 설정 저장
                 localStorage.setItem('preferredLanguage', detectedLang);
                 localStorage.setItem('languageDetected', 'true');
-                
+
                 //console.log(`✅ 감지된 언어: ${detectedLang}`);
-                
+
                 // 한국어가 아닌 경우 리다이렉트
                 if (detectedLang !== 'kr') {
                     //console.log(`🔄 ${detectedLang} 언어로 리다이렉트...`);
@@ -780,22 +833,22 @@ alternate_urls:
                     window.location.replace(newUrl.toString());
                     return;
                 }
-                
+
             } catch (error) {
                 //console.log('❌ 언어 감지 실패:', error);
                 // 폴백: 브라우저 언어 확인
                 const browserLang = navigator.language.toLowerCase();
                 let fallbackLang = 'kr';
-                
+
                 if (browserLang.startsWith('ja')) {
                     fallbackLang = 'jp';
                 } else if (browserLang.startsWith('en')) {
                     fallbackLang = 'en';
                 }
-                
+
                 localStorage.setItem('preferredLanguage', fallbackLang);
                 localStorage.setItem('languageDetected', 'true');
-                
+
                 if (fallbackLang !== 'kr') {
                     const newUrl = new URL(window.location);
                     newUrl.searchParams.set('lang', fallbackLang);
@@ -808,16 +861,16 @@ alternate_urls:
     document.addEventListener('DOMContentLoaded', async () => {
         Navigation.load('home');
         VersionChecker.check();
-        
+
         // 첫 방문자 언어 감지 (홈페이지에서만)
         await checkAndDetectLanguage();
-        
+
         // 언어 콘텐츠 업데이트 (우선 실행)
         await updateLanguageContent();
-        
+
         // SEO 설정 업데이트
         updateSEOContent();
-        
+
         // 헤더의 언어 선택기 초기화
         const currentLang = getCurrentLanguage();
         const headerSelectedOption = document.querySelector('.header-container .selected-option');
@@ -827,11 +880,11 @@ alternate_urls:
             const langText = headerSelectedOption.querySelector('span');
             if (flagImg) flagImg.src = `${BASE_URL}/assets/img/flags/${currentLang}.png`;
             if (langText) {
-                langText.textContent = currentLang === 'kr' ? '한국어' : 
-                                     currentLang === 'en' ? 'English' : 
-                                     currentLang === 'jp' ? '日本語' : '中文';
+                langText.textContent = currentLang === 'kr' ? '한국어' :
+                    currentLang === 'en' ? 'English' :
+                        currentLang === 'jp' ? '日本語' : '中文';
             }
-            
+
             // 클릭 이벤트 추가
             headerSelectedOption.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -842,22 +895,22 @@ alternate_urls:
                 }
             });
         }
-        
+
         // 헤더의 언어 옵션 이벤트 처리
         document.querySelectorAll('.header-container .option').forEach(option => {
-            option.addEventListener('click', function(e) {
+            option.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 if (this.classList.contains('disabled')) {
                     return;
                 }
-                
+
                 const lang = this.getAttribute('data-value');
                 Navigation.selectLanguage(lang, e);
             });
         });
-        
+
         // 언어 라우터 초기화
         if (typeof LanguageRouter !== 'undefined') {
             LanguageRouter.init().then(async () => {
@@ -866,19 +919,19 @@ alternate_urls:
                 updateSEOContent();
             });
         }
-        
+
         // 홈 택틱 미리보기: tactic-posts-home.js의 공용 함수로 일원화
         const urlParams = new URLSearchParams(window.location.search);
         const currentLangFromUrl = urlParams.get('lang') || (typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr');
         if (typeof window.loadHomeTacticsFromSupabase === 'function') {
             window.loadHomeTacticsFromSupabase(currentLangFromUrl);
         }
-        
+
         // 클릭 이벤트 감지하여 언어 선택기 닫기
         document.addEventListener('click', (e) => {
             const optionsContainers = document.querySelectorAll('.options-container');
             optionsContainers.forEach(container => {
-                if (!container.contains(e.target) && 
+                if (!container.contains(e.target) &&
                     !e.target.closest('.selected-option')) {
                     container.classList.remove('active');
                 }
@@ -941,7 +994,7 @@ alternate_urls:
         try {
             const response = await fetch(`{{ site.baseurl }}/data/kr/updates.csv?v=${APP_VERSION}`);
             const data = await response.text();
-            
+
             // Parse CSV
             allUpdates = data.split('\n')
                 .slice(1) // Remove header
@@ -955,7 +1008,7 @@ alternate_urls:
 
             // Show initial updates
             showMoreUpdates();
-            
+
             // Set visibility of "more" button
             const showMoreBtn = document.getElementById('show-more-updates-btn');
             showMoreBtn.style.display = 'block';
@@ -972,13 +1025,13 @@ alternate_urls:
     function showAllUpdates() {
         const updateList = document.getElementById('recent-update-list');
         updateList.innerHTML = ''; // 기존 내용 초기화
-        
+
         allUpdates.forEach(update => {
             const updateElement = document.createElement('div');
             updateElement.className = 'recent-update-content-text';
-            
+
             const contentLines = update.content.split('\\n').join('<br>');
-            
+
             updateElement.innerHTML = `
                 <div class="date">${update.date}</div>
                 <div class="version">${update.version}</div>
@@ -993,19 +1046,19 @@ alternate_urls:
         const updateList = document.getElementById('recent-update-list');
         let totalLines = 0;
         let updatesShown = 0;
-        
+
         for (const update of allUpdates) {
             const lines = update.content.split('\\n');
-            
+
             if (totalLines + lines.length > MAX_TOTAL_LINES) {
                 // 남은 줄 수 계산
                 const remainingLines = MAX_TOTAL_LINES - totalLines;
                 if (remainingLines > 0) {
                     const updateElement = document.createElement('div');
                     updateElement.className = 'recent-update-content-text';
-                    
+
                     const visibleContent = lines.slice(0, remainingLines).join('<br>');
-                    
+
                     updateElement.innerHTML = `
                         <div class="date">${update.date}</div>
                         <div class="version">${update.version}</div>
@@ -1015,20 +1068,20 @@ alternate_urls:
                 }
                 break;
             }
-            
+
             const updateElement = document.createElement('div');
             updateElement.className = 'recent-update-content-text';
-            
+
             updateElement.innerHTML = `
                 <div class="date">${update.date}</div>
                 <div class="version">${update.version}</div>
                 <div class="content"><p>${lines.join('<br>')}</p></div>
             `;
             updateList.appendChild(updateElement);
-            
+
             totalLines += lines.length;
             updatesShown++;
-            
+
             if (totalLines >= MAX_TOTAL_LINES) break;
         }
     }
@@ -1054,8 +1107,8 @@ alternate_urls:
                 const saved = localStorage.getItem('preferredLanguage');
                 if (saved) lang = saved.toLowerCase();
             }
-        } catch(_) {}
-        if (!['kr','en','jp'].includes(lang)) lang = 'kr';
+        } catch (_) { }
+        if (!['kr', 'en', 'jp'].includes(lang)) lang = 'kr';
 
         const now = new Date();
         const diff = now.getTime() - date.getTime();
@@ -1093,4 +1146,4 @@ alternate_urls:
             }
         });
     }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
-    </script>
+</script>

@@ -26,19 +26,21 @@ custom_css: article
                 </div>
                 {% endif %}
                 <div class="article-content">
-                    <h3 class="article-title" style="font-size: 1.5rem; margin-top: 0px; margin-bottom: 4px; line-height: 1.4;"
-                        data-kr="{{ post.title }}" 
-                        data-en="{% if post.translations.en.title %}{{ post.translations.en.title }}{% else %}{{ post.title }}{% endif %}" 
+                    <h3 class="article-title"
+                        style="font-size: 1.5rem; margin-top: 0px; margin-bottom: 4px; line-height: 1.4;"
+                        data-kr="{{ post.title }}"
+                        data-en="{% if post.translations.en.title %}{{ post.translations.en.title }}{% else %}{{ post.title }}{% endif %}"
                         data-jp="{% if post.translations.jp.title %}{{ post.translations.jp.title }}{% else %}{{ post.title }}{% endif %}">
                         {{ post.title }}
                     </h3>
                     <div class="article-meta">
-                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %m월 %d일" }}</time>
+                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %m월 %d일"
+                            }}</time>
                         {% if post.author %}
                         <span class="author">by {{ post.author }}</span>
                         {% endif %}
                     </div>
-                    
+
                 </div>
             </article>
         </a>
@@ -46,36 +48,29 @@ custom_css: article
     </div>
 
     <!-- 외부 가이드 섹션 -->
-    <div class="external-guides" style="margin: 40px 20px 20px 20px; background: #3d3030; border-radius: 12px; padding: 20px;">
-        <h2 class="external-guides-title" 
-            data-kr="외부 링크" 
-            data-en="External Links" 
-            data-jp="外部リンク"
+    <div class="external-guides"
+        style="margin: 40px 20px 20px 20px; background: #3d3030; border-radius: 12px; padding: 20px;">
+        <h2 class="external-guides-title" data-kr="외부 링크" data-en="External Links" data-jp="外部リンク"
             style="font-size: 1.25rem; margin: 0 0 20px 0; color: #cdcdcd;">
             외부 링크
         </h2>
-        
-        <div class="external-guides-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+
+        <div class="external-guides-grid"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
             <!-- 협력자 시트 / Synergy Sheet -->
-            <a href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="external-guide-card"
+            <a href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM"
+                target="_blank" rel="noopener noreferrer" class="external-guide-card"
                 data-kr-url="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM"
                 data-en-url="https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs"
                 data-jp-url="https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs"
                 style="display: block; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: rgba(0, 0, 0, 0.2);">
                 <div class="external-guide-content">
-                    <h3 class="external-guide-title" 
-                        data-kr="협력자 시트↗" 
-                        data-en="Persona5:The Phantom X Synergy↗" 
-                        data-jp="ペルソナ5:ザ・ファントム X シナジー↗"
-                        style="font-size: 1.3rem; margin: 0 0 10px 0; color: #bababa;">
+                    <h3 class="external-guide-title" data-kr="협력자 시트↗" data-en="Persona5:The Phantom X Synergy↗"
+                        data-jp="ペルソナ5:ザ・ファントム X シナジー↗" style="font-size: 1.3rem; margin: 0 0 10px 0; color: #bababa;">
                         협력자 시트↗
                     </h3>
-                    <p class="external-guide-description" 
-                        data-kr="협력자들의 호감도와 선물 정보를 확인하세요." 
-                        data-en="Check synergy partner affinity and gift information." 
+                    <p class="external-guide-description" data-kr="협력자들의 호감도와 선물 정보를 확인하세요."
+                        data-en="Check synergy partner affinity and gift information."
                         data-jp="シナジーパートナーの好感度とギフト情報を確認できます。"
                         style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.4;">
                         협력자들의 호감도와 선물 정보를 확인하세요.
@@ -84,26 +79,17 @@ custom_css: article
             </a>
 
             <!-- 실시간 코드 / Redeem Code -->
-            <a href="https://iant.kr/code/?region=kr" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="external-guide-card"
-                data-kr-url="https://iant.kr/code/?region=kr"
-                data-en-url="https://iant.kr/code/?region=en"
-                data-jp-url="https://iant.kr/code/?region=jp"
+            <a href="https://iant.kr/code/?region=kr" target="_blank" rel="noopener noreferrer"
+                class="external-guide-card" data-kr-url="https://iant.kr/code/?region=kr"
+                data-en-url="https://iant.kr/code/?region=en" data-jp-url="https://iant.kr/code/?region=jp"
                 style="display: block; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: rgba(0, 0, 0, 0.2);">
                 <div class="external-guide-content">
-                    <h3 class="external-guide-title" 
-                        data-kr="실시간 코드↗" 
-                        data-en="Redeem Code↗" 
-                        data-jp="交換コード↗"
+                    <h3 class="external-guide-title" data-kr="실시간 코드↗" data-en="Redeem Code↗" data-jp="交換コード↗"
                         style="font-size: 1.3rem; margin: 0 0 10px 0; color: #bababa;">
                         실시간 코드↗
                     </h3>
-                    <p class="external-guide-description" 
-                        data-kr="최신 교환 코드를 확인하세요." 
-                        data-en="Check the latest redeem codes." 
-                        data-jp="最新の交換コードを確認できます。"
+                    <p class="external-guide-description" data-kr="최신 교환 코드를 확인하세요."
+                        data-en="Check the latest redeem codes." data-jp="最新の交換コードを確認できます。"
                         style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.4;">
                         최신 교환 코드를 확인하세요.
                     </p>
@@ -113,6 +99,7 @@ custom_css: article
     </div>
 
     <!-- 광고 -->
+    <!--    
   <div class="ads-container responsive-padding">
     <ins class="adsbygoogle"
       style="display:block"
@@ -133,7 +120,7 @@ custom_css: article
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <div style="height: 12px;"></div>
-    <!---->
+    
     <style>
         @media (max-width: 1440px) {
             .AD-bottom {
@@ -148,6 +135,7 @@ custom_css: article
         .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
+    -->
 </div>
 
 <script>
@@ -155,7 +143,7 @@ custom_css: article
     function updateSEOContent() {
         const urlParams = new URLSearchParams(window.location.search);
         const currentLang = urlParams.get('lang') || 'kr';
-        
+
         const seoData = {
             'kr': {
                 title: '가이드 - 페르소나5 더 팬텀 X 루페르넷',
@@ -170,12 +158,12 @@ custom_css: article
                 description: 'ペルソナ5 ザ・ファントム X関連のガイドとヒントをご確認ください。ダメージ計算、怪盗育成など様々な情報を提供します。'
             }
         };
-        
+
         const currentSEO = seoData[currentLang] || seoData['kr'];
-        
+
         // 타이틀 업데이트
         document.title = currentSEO.title;
-        
+
         // 메타 태그 업데이트
         let metaDescription = document.querySelector('meta[name="description"]');
         if (!metaDescription) {
@@ -184,7 +172,7 @@ custom_css: article
             document.head.appendChild(metaDescription);
         }
         metaDescription.setAttribute('content', currentSEO.description);
-        
+
         let ogTitle = document.querySelector('meta[property="og:title"]');
         if (!ogTitle) {
             ogTitle = document.createElement('meta');
@@ -192,7 +180,7 @@ custom_css: article
             document.head.appendChild(ogTitle);
         }
         ogTitle.setAttribute('content', currentSEO.title);
-        
+
         let ogDescription = document.querySelector('meta[property="og:description"]');
         if (!ogDescription) {
             ogDescription = document.createElement('meta');
@@ -206,7 +194,7 @@ custom_css: article
     function updateExternalGuideLinks() {
         const urlParams = new URLSearchParams(window.location.search);
         const currentLang = urlParams.get('lang') || 'kr';
-        
+
         // 외부 가이드 카드들의 링크 업데이트
         document.querySelectorAll('.external-guide-card').forEach(card => {
             const newUrl = card.getAttribute(`data-${currentLang}-url`);
@@ -221,11 +209,11 @@ custom_css: article
         VersionChecker.check();
         updateSEOContent();
         updateExternalGuideLinks();
-        
+
         // 현재 언어 가져오기
         const urlParams = new URLSearchParams(window.location.search);
         const currentLang = urlParams.get('lang') || 'kr';
-        
+
         // 모든 data-* 속성이 있는 요소들의 텍스트 업데이트
         document.querySelectorAll('[data-kr]').forEach(el => {
             const text = el.getAttribute(`data-${currentLang}`);
@@ -233,12 +221,12 @@ custom_css: article
                 el.textContent = text;
             }
         });
-        
+
         // 날짜 형식 변경
         document.querySelectorAll('time').forEach(dateElement => {
             const date = new Date(dateElement.getAttribute('datetime'));
-            
-            switch(currentLang) {
+
+            switch (currentLang) {
                 case 'en':
                     dateElement.textContent = date.toLocaleDateString('en-US', {
                         year: 'numeric',

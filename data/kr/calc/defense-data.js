@@ -196,6 +196,19 @@ const penetrateData = {
             value: 15.0,
             duration: "-",
             note: ""
+        },
+        {
+            id: "masaki2",
+            type: "의식1",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual1.png`,
+            skillName: "적을 두려워하지 마라(GLB)",
+            skillName_en: "(GLB only)",
+            skillName_jp: "(JPのみ)",
+            options: [],
+            value: 20.0,
+            duration: "-",
+            note: ""
         }
     ],
     "치즈코":[

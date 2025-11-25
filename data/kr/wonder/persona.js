@@ -138,32 +138,28 @@ const personaData = {
         },
         instinct: {
             name: "중생에 내리는 은혜 III",
-            name_en: "Blessing to All III",
-            name_jp: "衆生への恵み III",
+            name_en: "Goodwill to All III",
+            name_jp: "衆生への恩恵 III",
             effects: [
                 "크리티컬 확률이 17.5% 증가한다.",
                 "풍습의 효과 명중이 20% 증가하고, 풍습 상태인 적에게 주는 대미지가 20% 증가한다.",
                 "풍습 상태를 추가하거나 초기화될 때 적의 방어력이 48% 추가 감소하며 2턴 동안 지속된다."
             ],
             effects_en: [
-                "Increases CRIT Rate by 17.5%.",
-                "Increases Ailment Accuracy when inflicting Windswept by 20% and increase damage to foes with Windswept by 20%.",
-                "Decreases the foes' DEF by 48% when refreshing or inflicting Windswept for 2 turns."
+                "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease target's Defense by 48% for 2 turns."
             ],
             effects_jp: [
-                "クリティカル率が17.5%増加する。",
-                "風襲の状態異常命中が20%増加し、風襲状態の敵に与えるダメージが20%増加する。",
-                "風襲状態を追加または初期化する時、敵の防御力が48%追加減少し、2ターンの間持続する。"
+                "クリティカル率が１７.５%上昇する。風襲の命中率が２０%上昇し、風襲状態の敵への与ダメージが２０%上昇する。風襲を付与、または更新する時、２ターンの間、対象の防御力を４８%低下させる。"
             ],
             priority: 3
         },
         uniqueSkill: {
             name: "적을 멸하는 바람",
             name_en: "Winds of Nirvana",
-            name_jp: "敵を滅する風",
+            name_jp: "寂滅の風",
             effect: "1명의 적에게 공격력 192.0%의 질풍 속성 대미지를 주고, 75%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 적이 풍습 상태인 경우 지속 시간을 초기화하고, 이번 스킬이 주는 대미지가 27.0% 증가하며 적이 받는 질풍 대미지가 27.0% 심화된다. 효과는 2턴 동안 지속된다.",
-            effect_en: "Deals 192.0% ATK Wind dmg to 1 foe, with a 75% base chance to inflict Windswept; If foe is already inflicted with Windswept, refreshes its duration, increases this damage by 27.0% and increases their Wind dmg taken by 27.0% for 2 turns.",
-            effect_jp: "1体の敵に192.0% ATKの風属性ダメージを与え、75%の基本確率で敵を風襲状態にする。敵が既に風襲状態の場合、持続時間を初期化し、このスキルのダメージが27.0%増加し、敵が受ける風ダメージが27.0%深化する。効果は2ターンの間持続する。",
+            effect_en: "Deal Wind damage to 1 foe equal to 192.0% of Attack with a 75% chance to inflict Windswept.\nIf the target already has Windswept, reset effect duration and increase this skill's damage by 27.0%. Also, increase foes' Wind damage taken by 27.0% for 2 turns.",
+            effect_jp: "敵単体に攻撃力192.0%の疾風属性ダメージを与え、７５%の確率で風襲状態にする。\n対象がすでに風襲状態の場合、持続時間を更新し、このスキルの与ダメージが27.0%上昇する。さらに２ターンの間、敵の疾風属性の被ダメージが27.0%上昇する。",
             priority: 3,
             icon: "질풍"
         },
@@ -1052,7 +1048,7 @@ const personaData = {
         added: "KR v2.3.2",
         instinct: {
             name: "인과의 유전 III",
-            name_en: "Karma Reversal III",
+            name_en: "Karmic Alteration III",
             name_jp: "因果の遺伝 III",
             effects: [
                 "공격력이 29.1% 증가한다.",
@@ -1062,20 +1058,20 @@ const personaData = {
                 "3중첩 : 1턴 동안 목표가 염동 대미지를 받을 때 크리티컬 확률이 18% 증가한다."
             ],
             effects_en: [
-                "Increases ATK by 29.1%. Gains 1 stack of [Wisdom] at the start of turn, up to 3 stacks. Consumes all [Wisdom] when using the signature skill and triggers the following effects based on the amount consumed: 1 Stack: Increases this damage by 33%. 2 Stacks: Decreases all foes' DEF by 45% for 1 turn. 3 Stacks: Increases all foes' Psy DMG CRIT Rate taken by 18% for 1 turn."
+                "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3: Increase target's Psychokinesis critical taken rate by 18% for 1 turn."
             ],
             effects_jp: [
-                "攻撃力が29.1%増加する。ターンが始まるたびに『慧眼』を獲得する（3回重複可能）。固有スキルを使用して『慧眼』を消費し、消費量に応じて次の効果を得ることができる。1重複：今回の念動攻撃時ダメージが33%増加する。2重複：1ターンの間敵の防御力が45%減少する。3重複：1ターンの間ターゲットが念動ダメージを受ける時クリティカル率が18%増加する。"
+                "攻撃力が２９.１%上昇する。毎ターン開始時に『智慧』を付与し、最大で３つまで累積できる。固有スキルを使用して『智慧』を消費した時、消費した数に応じて以下の効果を付与する：\n『１：この念動属性の与ダメージが３３%上昇する』\n『２：１ターンの間、敵の防御力が４５%低下する\n『３：１ターンの間、対象の念動属性ダメージの被クリティカル率が１８%上昇する』"
             ],
             priority: 3
         },
         uniqueSkill: {
             name: "파멸의 춤",
             name_en: "Dance of Destruction",
-            name_jp: "破滅の踊り",
+            name_jp: "破滅の舞",
             effect: "모든 적에게 공격력 100%의 염동 속성 대미지를 1단계 입히고, 모든 『혜안』을 소모하여 본능 [인과의 유전] 효과를 발동한다.",
-            effect_en: "Deals 90.0% ATK Psy dmg to all foes and consumes all stacks of [Wisdom] and trigger the effects of [Karma Reversal].",
-            effect_jp: "全ての敵に100% ATKの念動属性ダメージを1段階与え、全ての『慧眼』を消費して本能[因果の遺伝]効果を発動する。",
+            effect_en: "Deal Psychokinesis damage to all foes equal to 100.0% of Attack. Spend all Wisdom stacks to activate Karmic Alteration effects.",
+            effect_jp: "敵全体に攻撃力100.0%の念動属性ダメージを与え、すべての『智慧』を消費して『因果の変転』のいくつかの効果を発動する。",
             priority: 1,
             icon: "염동광역"
         },
@@ -1799,27 +1795,27 @@ const personaData = {
         added: "KR v2.3.2",
         instinct: {
             name: "거대한 수호 III",
-            name_en: "Higher Protection III",
-            name_jp: "巨大な守護 III",
+            name_en: "Titan's Protection III",
+            name_jp: "巨人の守護 III",
             effects: [
                 "방어력이 43.6% 증가한다.",
                 "산달폰이 필드 에 있을 경우 실드를 보유하고 있는 동료의 방어력이 42% 증가한다. 백업 출전 시 버프 효과를 25% 획득한다."
             ],
             effects_en: [
-                "Increases DEF by 43.6%. When Sandalphon is present, increases all shielded allies' DEF by 42%, gains 25% of this effect when not present. Decreases the HP cost to 15% when using the signature skill."
+                "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 42%, and when not present, increase shielded allies' Defense by 25%. When using a unique skill, decrease HP cost to 15%."
             ],
             effects_jp: [
-                "防御力が43.6%増加する。サンダルフォンがフィールドにいる場合、シールドを保有している味方の防御力が42%増加する。バックアップ出戦時バフ効果を25%獲得する。"
+                "防御力が４３.６%上昇する。サンダルフォンが場にいる場合、シールド状態の味方の防御力が４２%上昇し、控えにいる場合、この上昇効果の２５%分になる。固有スキルを発動する時、ＨＰ消費量が１５%になる。"
             ],
             priority: 1
         },
         uniqueSkill: {
             name: "헌신의 비호",
-            name_en: "Devoted Protection",
-            name_jp: "献身の庇護",
+            name_en: "Devoted Guard",
+            name_jp: "献身の守り",
             effect: "모든 동료가 공격력 25.5%+771의 실드를 획득한다. 메인 목표 동료가 임의의 실드를 보유하고 있을 때 주는 대미지가 20.4% 증가하며, 2턴 동안 지속된다.",
-            effect_en: "Grants party's 25.5% ATK + 771 shield. Increases the main target's damage when they have shield by 20.4% for 2 turns.",
-            effect_jp: "全ての味方が25.5% ATK + 771のシールドを獲得する。メインターゲット味方が任意のシールドを保有している時、与えるダメージが20.4%増加し、2ターンの間持続する。",
+            effect_en: "Grant a shield to party equal to 25.5% of user's Attack + 771. While shielded, increase damage by 20.4% for 2 turns.",
+            effect_jp: "２ターンの間、味方全体に攻撃力25.5%＋771のシールドを付与し、シールド状態の間、与ダメージが20.4%上昇する。",
             priority: 1,
             icon: "버프광역"
         },

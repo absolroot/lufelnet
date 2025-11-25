@@ -2,154 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Ice attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
-              "Reflect": [],
-              "Resistant": [
-                "Psychokinesis"
-              ],
-              "Weak": [
-                "Ice"
-              ]
-            },
-            "level": "89",
-            "name": "Bishamonten",
-            "stat": {
-              "Accuracy": 1.0,
-              "Ailment Acc.": 0.445,
-              "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
-              "Attack Mult.": 1.088,
-              "Crit Mult.": 1.3,
-              "Crit Rate": 0.0,
-              "Damage Taken": 0,
-              "Defense": 567.249,
-              "Down Points": 0,
-              "HP": 1709773.52,
-              "Pierce Rate": 0,
-              "SP": 100.0,
-              "SP Recovery": 0,
-              "Speed": 85.0
-            }
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
-              "Reflect": [],
-              "Resistant": [
-                "Psychokinesis",
-                "Bless"
-              ],
-              "Weak": [
-                "Ice"
-              ]
-            },
-            "level": "89",
-            "name": "Koumokuten",
-            "stat": {
-              "Accuracy": 1.0,
-              "Ailment Acc.": 0.445,
-              "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
-              "Attack Mult.": 1.088,
-              "Crit Mult.": 1.3,
-              "Crit Rate": 0.0,
-              "Damage Taken": 0,
-              "Defense": 567.249,
-              "Down Points": 0,
-              "HP": 1709773.52,
-              "Pierce Rate": 0,
-              "SP": 100.0,
-              "SP Recovery": 0,
-              "Speed": 85.0
-            }
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
-              "Reflect": [],
-              "Resistant": [
-                "Psychokinesis",
-                "Bless"
-              ],
-              "Weak": [
-                "Ice"
-              ]
-            },
-            "level": "89",
-            "name": "Zouchouten",
-            "stat": {
-              "Accuracy": 1.0,
-              "Ailment Acc.": 0.445,
-              "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
-              "Attack Mult.": 1.088,
-              "Crit Mult.": 1.3,
-              "Crit Rate": 0.0,
-              "Damage Taken": 0,
-              "Defense": 567.249,
-              "Down Points": 0,
-              "HP": 1709773.52,
-              "Pierce Rate": 0,
-              "SP": 100.0,
-              "SP Recovery": 0,
-              "Speed": 85.0
-            }
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
-              "Reflect": [],
-              "Resistant": [
-                "Psychokinesis",
-                "Bless",
-                "Curse"
-              ],
-              "Weak": [
-                "Ice"
-              ]
-            },
-            "level": "89",
-            "name": "Jikokuten",
-            "stat": {
-              "Accuracy": 1.0,
-              "Ailment Acc.": 0.445,
-              "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
-              "Attack Mult.": 1.088,
-              "Crit Mult.": 1.3,
-              "Crit Rate": 0.0,
-              "Damage Taken": 0,
-              "Defense": 567.249,
-              "Down Points": 0,
-              "HP": 1709773.52,
-              "Pierce Rate": 0,
-              "SP": 100.0,
-              "SP Recovery": 0,
-              "Speed": 85.0
-            }
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": 168401
-      },
-      {
-        "bonusRule": "All ally Nuclear attack Score x 3",
+        "bonusRule": "All ally Phys attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -157,26 +10,29 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice"
+                "Nuclear",
+                "Bless",
+                "Curse"
               ],
               "Weak": [
-                "Nuclear"
+                "Phys",
+                "Psychokinesis"
               ]
             },
             "level": "89",
-            "name": "Seiryu",
+            "name": "ティターニア",
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.545,
-              "Attack": 4570.7881,
+              "Attack": 5223.7578,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
               "Damage Taken": 0,
-              "Defense": 213.7783,
+              "Defense": 855.113,
               "Down Points": 0,
-              "HP": 1045951.536,
+              "HP": 2510283.6864,
               "Pierce Rate": 0,
               "SP": 100.0,
               "SP Recovery": 0,
@@ -185,12 +41,153 @@
           }
         ],
         "scoreRatio": 2.0,
-        "sn": 168402
+        "sn": 158401
+      },
+      {
+        "bonusRule": "All ally Ice attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "level": "89",
+            "name": "ビシャモンテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 2415.9878,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1025864.112,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Bless"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "level": "89",
+            "name": "コウモクテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 2415.9878,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1025864.112,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys"
+              ],
+              "Weak": [
+                "Ice",
+                "Wind"
+              ]
+            },
+            "level": "89",
+            "name": "ゾウチョウテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 2415.9878,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1025864.112,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Bless"
+              ],
+              "Weak": [
+                "Ice",
+                "Curse"
+              ]
+            },
+            "level": "89",
+            "name": "ジコクテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 2415.9878,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1025864.112,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 158402
       }
     ],
-    "buff": "Chaotic Ambience: When an ally gains a shield or deals weakness damage, gain Charge Field.",
-    "endTime": "2025-12-06 10:30:00",
-    "startTime": "2025-11-25 11:30:00"
+    "buff": "音波探知: 『解明』ロールの味方の『ステータス上昇』効果が３０%になる。味方が弱点ダメージを与える時、自身は『震動増幅』を獲得する。『震動増幅』：３ターンの間、最終ダメージが４０%上昇する。",
+    "endTime": "2025-11-25 10:30:00",
+    "startTime": "2025-11-06 11:30:00"
   },
   "msg": "OK",
   "status": 0

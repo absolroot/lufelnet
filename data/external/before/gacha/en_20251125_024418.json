@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-11-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kira Kitazato",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Cynical Surgeon",
+        "startTime": "2025-10-23 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2025-12-06 10:59:59",
         "fiveStar": [
           {
@@ -28,58 +54,6 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Masaki Ashiya",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Motoha Arai",
-            "type": "thief"
-          },
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          }
-        ],
-        "name": "Swords and Roses",
-        "startTime": "2025-11-25 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Masaki Ashiya",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Motoha Arai",
-            "type": "thief"
-          },
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          }
-        ],
-        "name": "Swords and Roses",
-        "startTime": "2025-11-25 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
         "endTime": "2025-11-27 10:59:59",
         "fiveStar": [
           {
@@ -182,6 +156,32 @@
         "name": "Fist of the Phantom Star",
         "startTime": "2025-11-13 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-11-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kira Kitazato",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Cynical Surgeon",
+        "startTime": "2025-10-23 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
       },
       {
         "endTime": "2025-12-06 10:59:59",
@@ -211,6 +211,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-11-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Bloodletter",
+            "type": "weapon",
+            "user": "Kira"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Undying Embers",
+            "type": "weapon",
+            "user": "Kira"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-10-23 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-12-06 10:59:59",
         "fiveStar": [
@@ -244,41 +279,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-11-06 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Spina Sacramenti",
-            "type": "weapon",
-            "user": "Ashiya"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Crime and Punishment",
-            "type": "weapon",
-            "user": "Motoha"
-          },
-          {
-            "name": "Moonlight Needle",
-            "type": "weapon",
-            "user": "Riko"
-          },
-          {
-            "name": "Death Stinger",
-            "type": "weapon",
-            "user": "Kurotani"
-          },
-          {
-            "name": "Spina Caritatis",
-            "type": "weapon",
-            "user": "Ashiya"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-11-25 11:30:00",
         "type": "Arms Deals"
       },
       {

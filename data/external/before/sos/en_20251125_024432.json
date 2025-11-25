@@ -2,17 +2,59 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Phys attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Phys",
+                "Psychokinesis"
+              ]
+            },
+            "level": "89",
+            "name": "Titania",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 5223.7578,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 0,
+              "HP": 2510283.6864,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 158401
+      },
+      {
         "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
             "adapt": {
               "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
+              "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Psychokinesis"
+                "Fire",
+                "Bless",
+                "Curse"
               ],
               "Weak": [
                 "Ice"
@@ -24,14 +66,14 @@
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
+              "Attack": 2415.9878,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
               "Damage Taken": 0,
               "Defense": 567.249,
               "Down Points": 0,
-              "HP": 1709773.52,
+              "HP": 1025864.112,
               "Pierce Rate": 0,
               "SP": 100.0,
               "SP Recovery": 0,
@@ -41,12 +83,10 @@
           {
             "adapt": {
               "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
+              "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Psychokinesis",
+                "Phys",
                 "Bless"
               ],
               "Weak": [
@@ -59,14 +99,14 @@
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
+              "Attack": 2415.9878,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
               "Damage Taken": 0,
               "Defense": 567.249,
               "Down Points": 0,
-              "HP": 1709773.52,
+              "HP": 1025864.112,
               "Pierce Rate": 0,
               "SP": 100.0,
               "SP Recovery": 0,
@@ -76,16 +116,14 @@
           {
             "adapt": {
               "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
+              "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Psychokinesis",
-                "Bless"
+                "Phys"
               ],
               "Weak": [
-                "Ice"
+                "Ice",
+                "Wind"
               ]
             },
             "level": "89",
@@ -94,14 +132,14 @@
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
+              "Attack": 2415.9878,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
               "Damage Taken": 0,
               "Defense": 567.249,
               "Down Points": 0,
-              "HP": 1709773.52,
+              "HP": 1025864.112,
               "Pierce Rate": 0,
               "SP": 100.0,
               "SP Recovery": 0,
@@ -111,17 +149,15 @@
           {
             "adapt": {
               "Absorb": [],
-              "Nullify": [
-                "Phys"
-              ],
+              "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Psychokinesis",
-                "Bless",
-                "Curse"
+                "Phys",
+                "Bless"
               ],
               "Weak": [
-                "Ice"
+                "Ice",
+                "Curse"
               ]
             },
             "level": "89",
@@ -130,14 +166,14 @@
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.327,
-              "Attack": 5315.1732,
+              "Attack": 2415.9878,
               "Attack Mult.": 1.088,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
               "Damage Taken": 0,
               "Defense": 567.249,
               "Down Points": 0,
-              "HP": 1709773.52,
+              "HP": 1025864.112,
               "Pierce Rate": 0,
               "SP": 100.0,
               "SP Recovery": 0,
@@ -146,51 +182,12 @@
           }
         ],
         "scoreRatio": 1.0,
-        "sn": 168401
-      },
-      {
-        "bonusRule": "All ally Nuclear attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Ice"
-              ],
-              "Weak": [
-                "Nuclear"
-              ]
-            },
-            "level": "89",
-            "name": "Seiryu",
-            "stat": {
-              "Accuracy": 1.0,
-              "Ailment Acc.": 0.445,
-              "Ailment Resist.": 0.545,
-              "Attack": 4570.7881,
-              "Attack Mult.": 1.088,
-              "Crit Mult.": 1.3,
-              "Crit Rate": 0.0,
-              "Damage Taken": 0,
-              "Defense": 213.7783,
-              "Down Points": 0,
-              "HP": 1045951.536,
-              "Pierce Rate": 0,
-              "SP": 100.0,
-              "SP Recovery": 0,
-              "Speed": 90.0
-            }
-          }
-        ],
-        "scoreRatio": 2.0,
-        "sn": 168402
+        "sn": 158402
       }
     ],
-    "buff": "Chaotic Ambience: When an ally gains a shield or deals weakness damage, gain Charge Field.",
-    "endTime": "2025-12-06 10:30:00",
-    "startTime": "2025-11-25 11:30:00"
+    "buff": "Sonic Detection: Increase Elucidator's stat buff effects on allies to 30%. When an ally deals weakness damage, gain Tremor Amplification. Tremor Amplification: Increase final damage by 40% for 3 turns.",
+    "endTime": "2025-11-25 10:30:00",
+    "startTime": "2025-11-06 11:30:00"
   },
   "msg": "OK",
   "status": 0

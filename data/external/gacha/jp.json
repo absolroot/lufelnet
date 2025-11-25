@@ -2,32 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2025-11-25 10:59:59",
-        "fiveStar": [
-          {
-            "name": "北里 基良",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "藤川 雪実",
-            "type": "thief"
-          },
-          {
-            "name": "須見 俊也",
-            "type": "thief"
-          }
-        ],
-        "name": "シニカルジョーク",
-        "startTime": "2025-10-23 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
         "endTime": "2025-12-06 10:59:59",
         "fiveStar": [
           {
@@ -156,32 +130,6 @@
         "name": "世紀末の覇者",
         "startTime": "2025-11-13 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2025-11-25 10:59:59",
-        "fiveStar": [
-          {
-            "name": "北里 基良",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "藤川 雪実",
-            "type": "thief"
-          },
-          {
-            "name": "須見 俊也",
-            "type": "thief"
-          }
-        ],
-        "name": "シニカルジョーク",
-        "startTime": "2025-10-23 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
       },
       {
         "endTime": "2025-12-06 10:59:59",
@@ -211,41 +159,6 @@
       }
     ],
     "weapon": [
-      {
-        "endTime": "2025-11-25 10:59:59",
-        "fiveStar": [
-          {
-            "name": "ブラッド＆ブライド",
-            "type": "weapon",
-            "user": "基良"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "エメラルドチャーム",
-            "type": "weapon",
-            "user": "富山"
-          },
-          {
-            "name": "ヘビーメタルペイン",
-            "type": "weapon",
-            "user": "雪実"
-          },
-          {
-            "name": "スカーレットロッド",
-            "type": "weapon",
-            "user": "須見"
-          },
-          {
-            "name": "干将莫耶",
-            "type": "weapon",
-            "user": "基良"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2025-10-23 11:30:00",
-        "type": "武器補給"
-      },
       {
         "endTime": "2025-12-06 10:59:59",
         "fiveStar": [

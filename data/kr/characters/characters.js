@@ -1140,6 +1140,7 @@ const characterData = {
         "sub_option1": ["방어력"],
         "sub_option2": [],
         "sub_option3": [],
+
         "minimum_stats": {
             "LV10": "방어력 6100",
             "LV10+5": "방어력 6725",
@@ -1148,15 +1149,18 @@ const characterData = {
             "LV13": "방어력 6475",
             "LV13+5": "방어력 7100"
         },
+
         "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 마이팰리스 평점  / 패시브 24% ",
         "skill1_lv": "8",
-        "skill2_lv": "MAX!",
+        "skill2_lv": "MAX",
         "skill3_lv": "MAX",
         "skill4_lv": "8",
         "mind_stats1": "효과저항 24%×",
         "mind_stats2": "방어력 30%",
         "mind_skill1": "S1/S2",
-        "mind_skill2": "S3/HL"
+        "mind_skill2": "S3/HL",
+        "name_cn": "芦谷真咲",
+        "name_tw": "蘆谷真咲"
     },
     "마코토": {
         "limit": true,

@@ -373,22 +373,8 @@ const enCharacterWeaponData = {
     },
     "마사키": {
         "name": "Masaki Ashiya",
-        "weapon4-1": {
-            "name": "Undying Glory",
-            "health": 1870,
-            "attack": 443,
-            "defense": 429,
-            "skill_name": "Swords and Trials",
-            "description": "Shield Effect is increased by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. Shield Effect is additionally increased by 13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0% to allies below 60% HP."
-        },
-        "weapon5-1": {
-            "name": "Holy Vow",
-            "health": 2338,
-            "attack": 554,
-            "defense": 537,
-            "skill_name": "Medal of Honor",
-            "description": "DEF is increased by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. The Shield from [Upright Mark] is increased by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%, and each stack of [Upright Mark] would increase all allies' DMG Dealt by 8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5%, up to 2 stacks."
-        }
+        "weapon4-1": {"name":"Spina Caritatis","health":1870.83,"attack":443.81,"defense":429.53,"skill_name":"","description":"Increase shield by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%.\nAlso increase shield granted by Ashiya to allies with less than 60% HP by 13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0%."},
+        "weapon5-1": {"name":"Spina Sacramenti","health":2338.77,"attack":554.96,"defense":537.33,"skill_name":"","description":"Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%.\nIncrease Knight's Protection shield by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%.\nAlso increase the target's damage dealt by 8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5% for each Knight's Protection shield granted. This effect can stack up to 2 times."}
     },
     "마코토": {
         "name": "Makoto Niijima",

@@ -803,45 +803,12 @@ const enCharacterSkillsData = {
     },
     "마사키": {
         "name": "Masaki Ashiya",
-        "skill1": {
-            "name": "Blessing of Compassion",
-            "element": "빙결",
-            "type": "단일피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "Deals 149.2%/164.2%/158.4%/173.4% DEF as Ice DMG to the main target and 44.8%/50.3%/47.6%/53.1% DEF as Ice DMG to all other targets, with a 97.6% base chance to inflict Freeze to the main target; Restores 2 [Valour]. If you are in [Justice Oath], additionally increases the main target's DMG Taken by (1% for every 600 DEF you have, up to 9.8%/10.8%/10.4%/11.4%) for 2 turns; However, decreases [Valour] recovery to 1."
-        },
-        "skill2": {
-            "name": "Honor Protection",
-            "element": "버프",
-            "type": "실드",
-            "sp": 26,
-            "cool": 0,
-            "description": "Gives 1 ally 1 stack of 22.8%/22.8%/24.2%/24.2% DEF + 650/790/799/939 Shield as [Upright Mark], then increases their DEF equal to 20% own DEF (Up to 1220/1345/1295/1420) for 2 turns; When gaining this effect, increases that ally's chance of attacked by 50% if their HP is above 60%; At the start of your next turn, gives that ally 1 stack of [Upright Mark]. If you are in [Justice Oath], increase the Shield from [Upright Mark] by 25%."
-        },
-        "skill3": {
-            "name": "Prayers of Spirituality",
-            "element": "버프광역",
-            "type": "실드",
-            "sp": 30,
-            "cool": 1,
-            "description": "Gives all allies 1 stack of 12% DEF + 120/240/360 (At level 1, 50, 70) Shield as [Upright Mark] and 1 stack of 49.2%/49.2%/52.2%/52.2% DEF + 1400/1705/1721/2026 Shield as [Holy Protection], gives all allies 1 Down Gauge and increases their DMG Bonus by 1% (for every 300 DEF you have, up to 19.5%/21.5%/20.7%/22.7%) for 2 turns."
-        },
-        "skill_highlight": {
-            "element": "버프광역",
-            "type": "실드",
-            "description": "Immediately gives all allies 1 stack of 59.0%/59.0%/62.7%/62.7% DEF + 1681/2044/2066/2429 Shield as [Holy Protection], decreases all allies' DMG Taken by 31.9%/35.1%/33.9%/37.1% for 2 turns."
-        },
-        "passive1": {
-            "name": "Sacrifice",
-            "element": "패시브",
-            "description": "Allies Shielded by Cherish have their DEF increased by 24.0%."
-        },
-        "passive2": {
-            "name": "Humility",
-            "element": "패시브",
-            "description": "Allies Shielded by Cherish have their Effect RES increased by 48.0%."
-        }
+        "skill1": {"name":"Frost Vines","element":"빙결","type":"단일피해","sp":24,"cool":0,"description":"Deal Ice damage to the main target equal to 149.2%/164.5%/158.4%/173.7% of Ashiya's Defense, and deal Ice damage to other foes equal to 44.8%/49.4%/47.6%/52.1% of Ashiya's Defense.\n97.6%/97.6%/103.6%/103.6% chance to inflict Freeze on the main target, and gain 2 Heroism stacks.\nIf Garden of Promises is active, increase the main target's damage taken by 2% for every 600 points of Ashiya's Defense (up to 19.5%/21.5%/20.7%/22.7%), but gain only 1 Heroism stack."},
+        "skill2": {"name":"Hoarfrost Vow","element":"버프","type":"실드","sp":26,"cool":0,"description":"Grant 1 Knight's Protection shield equal to 22.8%/22.8%/24.2%/24.2% of Ashiya's Defense + 650/790/799/939 to 1 ally. Also increase the ally's Defense by 20% of Ashiya's Defense (up to 1220/1345/1295/1420) for 2 turns. If the target granted this effect has more than 60% HP, increase rate to take attacks from foes by 50%.\nAt the start of Ashiya's next turn, grant 1 Knight's Protection again to the same target. If Garden of Promises is active, increase shield granted from Knight's Protection by 25% for 2 turns."},
+        "skill3": {"name":"Winter Fortress","element":"버프광역","type":"실드","sp":30,"cool":1,"description":"Grant all allies 1 Knight's Protection shield equal to 12% of Ashiya's Defense + 120/240/360 (effect changes at Lv. 1/50/70, respectively) and Knight's Resolve shield equal to 49.2%/49.2%/52.2%/52.2% of Ashiya's Defense + 1400/1702/1721/2024.\nAlso increase all allies' Down Points by 1 and damage dealt by 2.9% for every 300 points of Ashiya's Defense (up to 56.6%/62.4%/60.1%/65.9%) for 2 turns."},
+        "skill_highlight": {"element":"버프광역","type":"실드","description":"Grant Knight's Resolve shield equal to 59.0%/59.0%/62.7%/62.7% of Ashiya's Defense + 1681/2044/2066/2429 to all allies and decrease damage taken by 31.9%/35.2%/33.9%/37.1% for 2 turns.","cool":4},
+        "passive1": {"name":"Flower Knight's Shield","element":"패시브","description":"When allies have a shield granted by Ashiya, increase Defense by 24.0% and ailment resistance by 48.0%.","cool":0},
+        "passive2": {"name":"Flower Knight's Devotion","element":"패시브","description":"While Ashiya is in battle, when an ally uses their ailment resistance to avoid a Curse, elemental ailment, or spiritual ailment, grant 1, 2, or 3 buff stacks, respectively.\nFor each buff stack, increase the targeted ally's damage dealt by 10.0% for 2 turns. This can stack up to 3 times. At 3 buff stacks, also increase critical damage by 20.0% for 2 turns.","cool":0}
     },
     "마코토": {
         "name": "Makoto Niijima",

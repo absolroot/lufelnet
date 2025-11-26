@@ -1,5 +1,197 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Ice attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [
+                "Phys"
+              ],
+              "Reflect": [],
+              "Resistant": [
+                "Psychokinesis"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "level": "89",
+            "name": "ビシャモンテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 5315.1732,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1709773.52,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [
+                "Phys"
+              ],
+              "Reflect": [],
+              "Resistant": [
+                "Psychokinesis",
+                "Bless"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "level": "89",
+            "name": "コウモクテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 5315.1732,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1709773.52,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [
+                "Phys"
+              ],
+              "Reflect": [],
+              "Resistant": [
+                "Psychokinesis",
+                "Bless"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "level": "89",
+            "name": "ゾウチョウテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 5315.1732,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1709773.52,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [
+                "Phys"
+              ],
+              "Reflect": [],
+              "Resistant": [
+                "Psychokinesis",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "level": "89",
+            "name": "ジコクテン",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.327,
+              "Attack": 5315.1732,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 567.249,
+              "Down Points": 0,
+              "HP": 1709773.52,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 85.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 168401
+      },
+      {
+        "bonusRule": "All ally Nuclear attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice"
+              ],
+              "Weak": [
+                "Nuclear"
+              ]
+            },
+            "level": "89",
+            "name": "セイリュウ",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 4570.7881,
+              "Attack Mult.": 1.088,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Taken": 0,
+              "Defense": 213.7783,
+              "Down Points": 0,
+              "HP": 1045951.536,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 168402
+      }
+    ],
+    "buff": "混沌磁場: 味方がシールドを獲得した時、『チャージフィールド』を獲得する。また味方が弱点ダメージを与えた時、『チャージフィールド』を獲得する。",
+    "endTime": "2025-12-06 10:30:00",
+    "startTime": "2025-11-25 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

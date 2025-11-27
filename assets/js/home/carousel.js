@@ -677,7 +677,7 @@
           // 3 images: center(front), left(back), right(back)
           if (posIdx === 0) { img.classList.add('front', 'middle'); img.style.right = '16%'; }
           else if (posIdx === 1) { img.classList.add('back'); img.style.right = '36%'; }
-          else { img.classList.add('back'); img.style.right = '4%'; }
+          else { img.classList.add('back'); img.style.right = '10%'; }
         } else {
           // mobile 2 images spacing
           if (posIdx === 0) { img.classList.add('back'); img.style.right = '18%'; }

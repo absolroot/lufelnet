@@ -19,6 +19,18 @@ const recommendParty = {
             }
         ]
     },
+    "쇼키·암야": {
+        "weapon": [],
+        "persona": [],
+        "party": [
+            {
+                members: ["쇼키·암야", "미나미·여름", "카타야마", "마나카"],
+                comment: "",
+                comment_en: "",
+                comment_jp: ""
+            }
+        ]
+    },
     "후카": {
         "weapon": [],
         "persona": [],
@@ -30,7 +42,7 @@ const recommendParty = {
                 comment_jp: "A0~A1 バックアップ推奨: A1 ゆかり, A6 琉七, A6 嶺央, A1 澪"
             },
             {
-                members: ["레오", "미오", "유카리", "이케나미"],
+                members: ["레오", "미오", "유카리", "쇼키"],
                 comment: "의식2 백업 추천 : 의식6 레오, 의식1 미오, 의식1 유카리, 의식6 쇼키",
                 comment_en: "A2 Backup Recommendation: A6 Leo, A1 Mio, A1 Yukari, A6 Shoki",
                 comment_jp: "A2 バックアップ推奨: A6 嶺央, A1 澪, A1 ゆかり, A6 星輝"

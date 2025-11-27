@@ -13,6 +13,7 @@ const criticalBuffData = {
               { id: "wonder5", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "단일", target_en: "Single", target_jp: "単体", skillIcon: "/assets/img/tactic-persona/서큐버스.webp", skillName: "서큐버스 - 본능", skillName_en: "Succubus - Passive", skillName_jp: "サキュバス - 本能", options: [], value: 11.7, duration: "1턴", note: "동료를 목표로 스킬 시전 시", note_en: "targeting an ally", note_jp: "仲間を対象にする時" },
               { id: "wonder6", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/tactic-persona/시바.webp", skillName: "시바 - 본능", skillName_en: "Shiva - Passive", skillName_jp: "シヴァ - 本能", options: [], value: 18, duration: "1턴", note: "3중첩 / 목표가 염동 대미지를 받을 때", note_en: "3 hits / target takes PSY damage", note_jp: "3重 / 目標が念動ダメージを受けた時" }
     ],
+
     "후카": [
               { id: "fuka1", type: "의식1", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "내가 있을 곳", skillName_en: "", skillName_jp: "", options: [], value: 12, duration: "2턴", note: "2중첩", note_en: "2Stack", note_jp: "2重" }
     ],
@@ -52,6 +53,13 @@ const criticalBuffData = {
               { id: "자유", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/자유.webp", skillName: "자유-실망", skillName_en: "Freedom-Despair", skillName_jp: "自由-失望", options: [], value: 12, duration: "-", note: "만능 속성 한정", note_en: "Only Allmighty", note_jp: "万能属性" },
               { id: "희망", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/희망.webp", skillName: "희망-고집", skillName_en: "Hope-Fixation", skillName_jp: "希望-固執", options: [], value: 6, duration: "3턴", note: "스킬로 대미지 8회 중첩 시 효력 발생", note_en: "Skill damage 8 consecutive hits", note_jp: "スキルで8回連続ダメージ" }
     ],
+
+
+    "쇼키·암야": [
+        { id: "shoki-darkest1", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/쇼키·암야-5-01.png", skillName: "왕의 의지", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0", "개조1&2", "개조3&4", "개조5&6"], values: { "개조0": 16.4, "개조1&2": 21.4, "개조3&4": 26.4, "개조5&6": 31.4 }, defaultOption: "개조5&6", value: 31.4, duration: "", note: "" },
+        { id: "shoki-darkest2", type: "의식1", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "2턴", note: "5중첩", note_en: "5 Stack", note_jp: "5 重" }
+    ],
+
     "미츠루": [
               { id: "mitsuru2", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/미츠루-5-01.png", skillName: "성창 롱기누스", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0&1", "개조2&3", "개조4&5", "개조6"], values: { "개조0&1": 18.1, "개조2&3": 23.5, "개조4&5": 28.9, "개조6": 34.3 }, defaultOption: "개조6", value: 34.3, duration: "", note: "" },
               { id: "mitsuru3", type: "스킬3", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/skill-element/빙결.png", skillName: "얼음의 무도", skillName_en: "Skill 3", skillName_jp: "スキル3", options: [], values: {}, value: 15, duration: "2턴", note: "『서리 결정』 5중첩", note_en: "5 Stack", note_jp: "5 重" }

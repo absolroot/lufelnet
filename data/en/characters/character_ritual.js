@@ -173,7 +173,7 @@ const enCharacterRitualData = {
         "r6": "The Promise",
         "r6_detail": "When Makoto uses any Theurgy, activate the other Theurgy. When spending [Special Moon Phase] to deal damage with [Scarlet: Devouring Blaze], increase the skill damage by 20%. \nWhen Makoto first receives fatal damage, his HP cannot drop below 1 until the end of his next turn, then enter near death, Makoto will faint when his next turn ends. If Makoto's HP is restored above 25% max HP during near death, remove near death."
     },
-    "이케나미": {
+    "쇼키": {
         "name": "Shoki Ikenami",
         "r0": "Four Acts of Life",
         "r0_detail": "Luce has 4 types of Improvs: [Improv·Osmosis], [Improv·Subversion],[Improv·Empathy], [Improv·Resonance], and he can freely change during his turn. \nWhen dealing damage with a Persona skill, there is a 75% base chance to inflict all enemies with the current [Improv] corresponding Elemental Ailment (In order of Burn, Freeze, Shock, Winded).",

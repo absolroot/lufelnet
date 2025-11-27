@@ -203,7 +203,7 @@ const enCharacterWeaponData = {
             "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. \nWhen user gains 3 [Moon Phase] stacks or [Special Moon Phase], increase critical rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When user deals 4 or more hits of damage with a Persona skill/Theurgy, increase damage 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
         }
     },
-    "이케나미": {
+    "쇼키": {
         "name": "Shoki Ikenami",
         "weapon4-1": {
             "name": "Vowed Coronation",

@@ -148,7 +148,7 @@ const penetrateData = {
             note_jp: "スキル3 追加ターン メイン ターゲット"
         }
     ],
-    "이케나미":[
+    "쇼키":[
         {
             id: "ikenami0",
             type: "스킬3",

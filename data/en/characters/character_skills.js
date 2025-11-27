@@ -471,7 +471,7 @@ const enCharacterSkillsData = {
             "description": "When Makoto receives a buff/healing/shielding from allies, increase critical damage by 7.2% for 2 turns. Stacks up to 3 times."
         }
     },
-    "이케나미": {
+    "쇼키": {
         "name": "Shoki Ikenami",
         "skill1": {
             "name": "Spotlight Soliloquy",

@@ -109,7 +109,7 @@ const operationData = {
             "· A2以上の場合はスキル2のレベルMAX"
         ]
     },
-    "이케나미": {
+    "쇼키": {
         basic: [
             { label: "의식 0", value: "1 › 3 › 1 › 3 › 1 › 3" },
         ],

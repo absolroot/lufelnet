@@ -2,6 +2,12 @@ const characterReview = {
     "원더": { name_en: "Wonder", name_jp: "主人公", codename: "WONDER",
         review: ``
     },
+
+    "쇼키·암야": { name_en: "Shoki Ikenami·Darkest", name_jp: "池波 星輝·永夜", codename: "LUCE·Darkest",
+        review: `P5X 최초로 99,999,999 대미지를 달성한 딜러`,
+        review_en: `The first dealer to achieve 99,999,999 damage in P5X.`,
+        review_jp: `P5X 初の99,999,999ダメージを達成したダメージディーラーです。`
+    },
 "후카": { name_en: "Fuka Yamagishi", name_jp: "山岸 風花", codename: "FUKA",
         review: `
 야마기시 후카는 『오라클 전환』을 통해 아군과 교대할 수 있는 고유 능력을 지닌 해명 괴도다.
@@ -10,7 +16,7 @@ const characterReview = {
 
 
 **교체 메커니즘 요약**
-- 후카는 전투 시작 시 1명의 후보 캐릭터를 지정하고, 『오라클 전환』으로 교체를 수행한다.
+- 후카는 전투 시작 전 1명의 후보 캐릭터를 지정하고, 『오라클 전환』으로 교체를 수행한다.
 - 『오라클 전환』 시, 현재 캐릭터는 잠시 퇴장하고, 후보 캐릭터가 등장하여 1회 행동 후 퇴장한다. 이후 원래 캐릭터가 복귀해 남은 행동을 이어간다.
 
 <br>
@@ -995,7 +1001,7 @@ review_jp: `
     "유키 마코토": { name_en: "Makoto Yuki", name_jp: "結城 理", codename: "MAKOTO",
         review: ``
     },
-    "이케나미": { name_en: "Shoki Ikenami", name_jp: "池波 星輝", codename: "LUCE",
+    "쇼키": { name_en: "Shoki Ikenami", name_jp: "池波 星輝", codename: "LUCE",
         review: ``
     },
     "마나카": { name_en: "Manaka Nagao", name_jp: "長尾 愛歌", codename: "ANGE",

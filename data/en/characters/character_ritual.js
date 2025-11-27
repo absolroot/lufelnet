@@ -2,6 +2,23 @@ const enCharacterRitualData = {
     "원더": {
         "name": "Wonder"
     },
+    "쇼키·암야": {
+        "name": "Shoki Ikenami·Notte",
+        "r0": "Star in the Night",
+        "r0_detail": "When Shoki gains Blessing, convert it into [Night's Blessing]: This counts as Blessing, at the end of turn, gain a Shield equal to 2% of max HP for 2 turns. Stacks up to 10 times. Shield from this effect lasts for 2 turns.",
+        "r1": "Shooting Star's Guidance",
+        "r1_detail": "At the start of battle, Shoki gains [Eternal Star Shine]: Survive fatal damage 1 time and spend [Eternal Star Shine] to restore 63% of Shoki's max HP (at least restore to 1 HP). Also, increase Attack by 30% for 1 turn.\nWhen Shoki has [Eternal Star Shine], he can spend HP to below 0 by using [Giuramento Incrollabile], after spending [Eternal Star Shine] from this method, gain 2 [Night's Contract] stacks above the maximum limit for this turn.\nWhen Shoki gains [Night's Contract], increase critical rate by 5% for 2 turns. Stacks up to 3 times.",
+        "r2": "With My Flesh and Bone",
+        "r2_detail": "Decrease the HP cost of [Giuramento Incrollabile] by 25%. Increase the maximum number of [Night's Contract] stacks by 3.",
+        "r3": "Fight against Fate",
+        "r3_detail": "Increase the skill levels of [Giuramento Incrollabile] and [Ti Inciderò il Nome Mio] by 3.",
+        "r4": "Commitment to Honesty",
+        "r4_detail": "Highlight Enhanced: Increase user's Attack by 35% for 4 turns.",
+        "r5": "GIUSTIZIA",
+        "r5_detail": "Increase the skill levels of [Spada dell'Alba] and [Thief Tactics] by 3.",
+        "r6": "Illuminating Passion for Life",
+        "r6_detail": "Shoki will not faint when his HP is below 0 and can decrease it to negative HP (up to 100% max HP); After Shoki's HP is negative, gain [Night's Monarch] state: Increase damage by 30% and critical damage by 30%. Increase [Night's Contract]'s skill damage increase to 120% of the the original effect.\n		Increase the maximum number of [Night's Contract] stacks by 3. At the start of battle, Shoki gains 5 bonus [NIght's Blessing] stacks above the maximum limit. This effect is permanent."
+	},
     "후카": {
         "name": "야마기시 후카",
         "r0": "Steadfast Supporter",

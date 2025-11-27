@@ -3,7 +3,7 @@ const characterReview = {
         review: ``
     },
 
-    "쇼키·암야": { name_en: "Shoki Ikenami·Darkest", name_jp: "池波 星輝·永夜", codename: "LUCE·Darkest",
+    "쇼키·암야": { name_en: "Shoki Ikenami·Notte", name_jp: "池波 星輝·永夜", codename: "LUCE·Notte",
         review: `P5X 최초로 99,999,999 대미지를 달성한 딜러`,
         review_en: `The first dealer to achieve 99,999,999 damage in P5X.`,
         review_jp: `P5X 初の99,999,999ダメージを達成したダメージディーラーです。`

@@ -2,6 +2,49 @@ const enCharacterSkillsData = {
     "원더": {
         "name": "Wonder"
     },
+    "쇼키·암야": {
+        "name": "Shoki Ikenami·Notte",
+        "skill1": {
+            "name": "Spada dell'Alba",
+            "element": "축복광역",
+            "type": "광역피해",
+            "sp": 20,
+            "cool": 0,
+            "description": "Deal Bless damage to all foes equal to 104.2%/114.9%/110.6%/121.3% of Attack, and increase Shoki's critical damage by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nGrant Shoki 2 [Night's Blessing] stacks, if he is below 40% max HP, grant 3 bonus [Night's Blessing] stacks."
+            },
+        "skill2": {
+            "name": "Giuramento Incrollabile",
+            "element": "버프",
+            "type": "보조",
+            "sp": 0,
+            "cool": 0,
+            "description": "Gain a Shield equal to 9.8%/10.8%/10.4%/11.4% of Attack + 1875/2472/2305/2933 for 2 turns (up to 40% of Shoki's max HP per skill). Gain 1 [Night's Contract] stack.\n[Night's Contract]: Increase damage by 9.8%/10.8%/10.4%/11.4%, when using [Ti Inciderò il Nome Mio], spend all [Night's Contract] to increase skill damage. Stacks up to 8 times.\nAfter using this skill, Shoki can use other skills, this doesn't count as a Persona skill."
+            },
+        "skill3": {
+            "name": "Ti Inciderò il Nome Mio",
+            "element": "축복광역",
+            "type": "광역피해",
+            "sp": 24,
+            "cool": 1,
+            "description": "Deal Bless damage to all foes equal to 256.7%/283.0%/272.5%/298.8% of Attack. If Shoki has 5 [Night's Blessing] stacks, deal bonus Bless damage to all foes equal to 45.3%/49.9%/48.1%/52.7% of Attack. Increase skill damage by 10% per [Night's Contract] stack.\nLose all [Night's Contract] after using this skill, and restore HP by 20% of Shoki's max HP per [Night's Blessing] stack."
+            },
+        "skill_highlight": {
+            "element": "축복광역",
+            "type": "광역피해",
+            "cool": 0,
+            "description": "Deal Bless damage to all foes equal to 228.8%/252.2%/242.8%/266.3% of Attack, increase damage based on missing HP (up to 60% damage at 40% HP)."
+            },
+        "passive1": {
+            "name": "Grace",
+            "element": "패시브",
+            "description": "Increase Attack by 6.0% based on the number of [Night's Blessing] stacks."
+            },
+        "passive2": {
+            "name": "Nirvana",
+            "element": "패시브",
+            "description": "Increase pierce rate based on missing HP (up to 15.0% pierce rate at 40% HP)."
+            }
+    },
     "후카": {
         "name": "Fuuka Yamagishi",
         "skill1": {

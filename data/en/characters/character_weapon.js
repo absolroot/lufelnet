@@ -2,6 +2,25 @@ const enCharacterWeaponData = {
     "원더": {
         "name": "Wonder"
     },
+    "쇼키·암야": {
+        "name": "Shoki Ikenami·Notte",
+        "weapon4-1": {
+            "name": "Emperor's Will",
+            "health": 1918,
+            "attack": 602,
+            "defense": 303,
+            "skill_name": "Chaos Ender",
+            "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.When user gains [Night's Blessing], increase user's damage by 3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5% for 2 turns. Stacks up to 5 times."
+        },
+        "weapon5-1": {
+            "name": "Pantheon Court",
+            "health": 2398,
+            "attack": 753,
+            "defense": 379,
+            "skill_name": "Eternal Praise",
+            "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.When user has [Night's Contract], increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%.When spending HP to use skills, increase user's critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% for 2 turns."
+        }
+    },
     "후카": {
         "name": "야마기시 후카",
         "weapon4-1": {

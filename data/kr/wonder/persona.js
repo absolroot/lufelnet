@@ -475,6 +475,167 @@ const personaData = {
         comment_en: "Provides consistent ATK buffs to allies, especially effective for low HP allies.",
         comment_jp: "味方に一貫したATKバフを提供し、特に低HPの味方に効果的である。"
     },
+    "서큐버스": {
+        name_en: "Succubus",
+        name_jp: "サキュバス",
+        grade: "1",
+        star: "4",
+        position: "우월",
+        element: "주원",
+        best_persona: true,
+        cost : {
+            blue: true,
+            purple: 0,
+            rainbow: 0,
+            coin : 100
+        },
+        instinct: {
+            name: "황홀한 속삭임 I",
+            name_en: "Intoxicated Whisper I",
+            name_jp: "酩酊のささやき I",
+            effects: [
+                "공격력이 3.5% 증가한다.",
+                "동료를 목표로 스킬 시전 시 1턴 동안 동료의 크리티컬 확률이 11.7% 증가한다."
+            ],
+            effects_en: [
+                "Increases ATK by 3.5%. When using a skill on an ally, increases their CRIT Rate by 11.7% for 1 turn."
+            ],
+            effects_jp: [
+                "攻撃力が3.5%上昇する。味方にスキルを使用した時、1ターンの間、対象のクリティカル率を11.7%上昇させる。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "리벨리온",
+            name_en: "Rebellion",
+            name_jp: "リベリオン",
+            effect: "동료 1명의 크리티컬 확률이 9.3% 증가하고, 자신의 크리티컬 확률 10%마다 1.6% 추가 증가한다. 상한은 6.4%이며, 효과는 3턴 동안 지속된다.",
+            effect_en: "Increase 1 ally's CRIT by 9.3% + 1.6% for every 10% CRIT Wonder has to a maximum of 6.4% for 3 turns.",
+            effect_jp: "3ターンの間、味方単体のクリティカル率が9.3%上昇する。自身のクリティカル率が10%ごとに、味方のクリティカル率がさらに1.6%上昇する（最大6.4%まで）。",
+            priority: 1,
+            icon: "버프"
+        },
+        highlight: {
+            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
+            priority: 1
+        },
+        recommendSkill : [
+             {name : "어드바이스", priority: 3 },
+             {name : "타루카쟈", priority: 3 },
+             {name : "라쿠카쟈", priority: 2 },
+        ],
+        comment : "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
+        comment_en: "Take the maximum effect of Rebellion by taking the core passive critical rate increase. The description is in 10% units, but the effect is applied in 0.1% units.",
+        comment_jp: "リベリオンの最大効果を得るために、クリティカル確率のパッシブを取る。説明は10%単位ですが、効果は0.1%単位で適用されます。"
+    },
+    "유룽": {
+        name_en: "Yurlungur",
+        name_jp: "ユルング",
+        grade: "5",
+        star: "3",
+        position: "굴복",
+        element: "전격",
+        best_persona: true,
+        instinct: {
+            name: "성천에 잠든 뱀 II",
+            name_en: "Rainbow Snake's Thunder II",
+            name_jp: "虹蛇の雷声 II",
+            effects: [
+                "크리티컬 효과가 17.4% 증가한다.",
+                "필드의 적이 받는 크리티컬 효과가 18% 증가한다. 대상이 감전 상태일 경우 11% 추가 증가한다."
+            ],
+            effects_en: [
+                "Increases CRIT DMG by 17.4%. Increases all foes' CRIT DMG taken by 14%, if they are inflicted with Shock, additionally increases the effect by 9%."
+            ],
+            effects_jp: [
+                "クリティカルダメージが17.4%上昇する。敵の被クリティカルダメージが16%上昇する。敵が感電状態の時、さらに11%上昇する。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "전격 내성 제거",
+            name_en: "Elec Break",
+            name_jp: "電撃ガードキル",
+            effect: "2턴 동안 적 1명의 전격 내성을 제거한다.",
+            effect_en: "Suppress innate Electric resistances of 1 foe for 2 turns.",
+            effect_jp: "2ターンの間、敵単体の電撃耐性を打ち消す。",
+            priority: 3,
+            icon: "디버프",
+            icon_gl : "버프"
+        },
+        highlight: {
+            effect: "모든 적에게 공격력 90.0%의 전격 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
+            effect_en: "Deals 90.0% ATK as Elec dmg to all foes and increase their DMG Taken by 19.6% for 2 turns.",
+            effect_jp: "全ての敵に90.0% ATKの電撃属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "라쿤다", priority: 3 },
+            {name : "타루카쟈", priority: 3 },
+            {name : "마하타루카쟈", priority: 3 },
+            {name : "리벨리온", priority: 3 },
+            {name : "지오다인", priority: 3 },
+            {name : "감전율 UP", priority: 3 },
+            {name : "명중 강화", priority: 3 },
+            {name : "우중충한 하늘", priority: 3},
+        ],
+        comment: "감전 효과를 주지 않아도 필드에 존재하는 것만으로도 크리티컬 효과 18%를 올릴 수 있다.",
+        comment_en: "Even without applying the Shock effect, simply being present on the field can increase Crit Mult by 18%.",
+        comment_jp: "感電効果を与えなくても、フィールドに存在するだけでCRT倍率を上昇させることができる。"
+    },
+    "트론": {
+        name_en: "Throne",
+        name_jp: "ソロネ",
+        grade: "7",
+        star: "5",
+        position: "우월",
+        element: "화염",
+        wild_emblem_rainbow : true,
+        added: "KR v3.4.2",
+        best_persona: true,
+        instinct: {
+            name: "세속을 초월한 성인 III",
+            name_en: "Otherworldly Saint III",
+            name_jp: "世俗を超越した聖人 III",
+            effects: [
+                "공격력이 29.1% 증가한다.\n전투 시작 시 『불씨』를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 『불씨』 1중첩을 획득한다. 만약 화상일 경우 『불씨』를 추가로 1중첩 획득하며 3턴 동안 지속된다 (10회 중첩 가능).\n매회 스킬은 『불씨』를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시『불씨』가 4중첩 이상이면 모든 『불씨』를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1.5% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다."
+            ],
+            effects_en: [
+                "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
+            ],
+            effects_jp: [
+                "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "정화의 불",
+            name_en: "Fire of Purification",
+            name_jp: "浄化の火",
+            effect: "3턴 동안 모든 아군 캐릭터의 공격력이 12.0% 증가하고, 자신의 공격력 500마다 0.8% 추가 증가한다(최대 6%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
+            effect_en: "Increases party's ATK by 12% + 0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
+            effect_jp: "3ターンの間全ての味方怪盗の攻撃力が12.0%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍怪盗にペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
+            priority: 2,
+            icon: "버프광역"
+        },
+        highlight: {
+            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
+            effect_en: "Increase party's damage by 29.5% for 2 turns.",
+            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
+            priority: 1
+        },
+        recommendSkill : [
+            {name : "화상률 UP", priority: 3 },
+            {name : "명중 강화", priority: 3 },
+            {name : "우중충한 하늘", priority: 3},
+            {name : "무한 알고리즘", priority: 0},
+        ],
+        comment : "화상이 필수적인 캐릭터(ex. 미오)에게 사용하는 형태로 채용된다.",
+        comment_en: "Adopted in a form used for characters who require burn effects (e.g., Mio).",
+        comment_jp: "火傷が必須的な怪盗（例：ミオ）に使用する形で採用される。"
+    },
     "수르트": {
         name_en: "Surt",
         name_jp: "スルト",
@@ -577,115 +738,7 @@ const personaData = {
         comment_en: "Through area-wide shock, you can aim for a total of 20% critical rate increase with 10% from the core passive following the critical rate increase from shock.",
         comment_jp: "感電によるCRT率上昇と『昂揚の神楽』による10%で計20%のCRT率上昇を狙うことができる。"
     },
-    "서큐버스": {
-        name_en: "Succubus",
-        name_jp: "サキュバス",
-        grade: "1",
-        star: "4",
-        position: "우월",
-        element: "주원",
-        best_persona: true,
-        cost : {
-            blue: true,
-            purple: 0,
-            rainbow: 0,
-            coin : 100
-        },
-        instinct: {
-            name: "황홀한 속삭임 I",
-            name_en: "Intoxicated Whisper I",
-            name_jp: "酩酊のささやき I",
-            effects: [
-                "공격력이 3.5% 증가한다.",
-                "동료를 목표로 스킬 시전 시 1턴 동안 동료의 크리티컬 확률이 11.7% 증가한다."
-            ],
-            effects_en: [
-                "Increases ATK by 3.5%. When using a skill on an ally, increases their CRIT Rate by 11.7% for 1 turn."
-            ],
-            effects_jp: [
-                "攻撃力が3.5%上昇する。味方にスキルを使用した時、1ターンの間、対象のクリティカル率を11.7%上昇させる。"
-            ],
-            priority: 3
-        },
-        uniqueSkill: {
-            name: "리벨리온",
-            name_en: "Rebellion",
-            name_jp: "リベリオン",
-            effect: "동료 1명의 크리티컬 확률이 9.3% 증가하고, 자신의 크리티컬 확률 10%마다 1.6% 추가 증가한다. 상한은 6.4%이며, 효과는 3턴 동안 지속된다.",
-            effect_en: "Increase 1 ally's CRIT by 9.3% + 1.6% for every 10% CRIT Wonder has to a maximum of 6.4% for 3 turns.",
-            effect_jp: "3ターンの間、味方単体のクリティカル率が9.3%上昇する。自身のクリティカル率が10%ごとに、味方のクリティカル率がさらに1.6%上昇する（最大6.4%まで）。",
-            priority: 1,
-            icon: "버프"
-        },
-        highlight: {
-            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase party's damage by 29.5% for 2 turns.",
-            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
-            priority: 1
-        },
-        recommendSkill : [
-             {name : "어드바이스", priority: 3 },
-             {name : "타루카쟈", priority: 3 },
-             {name : "라쿠카쟈", priority: 2 },
-        ],
-        comment : "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
-        comment_en: "Take the maximum effect of Rebellion by taking the core passive critical rate increase. The description is in 10% units, but the effect is applied in 0.1% units.",
-        comment_jp: "リベリオンの最大効果を得るために、クリティカル確率のパッシブを取る。説明は10%単位ですが、効果は0.1%単位で適用されます。"
-    },
-    "유룽": {
-        name_en: "Yurlungur",
-        name_jp: "ユルング",
-        grade: "5",
-        star: "3",
-        position: "굴복",
-        element: "전격",
-        best_persona: true,
-        instinct: {
-            name: "성천에 잠든 뱀 II",
-            name_en: "Rainbow Snake's Thunder II",
-            name_jp: "虹蛇の雷声 II",
-            effects: [
-                "크리티컬 효과가 17.4% 증가한다.",
-                "필드의 적이 받는 크리티컬 효과가 18% 증가한다. 대상이 감전 상태일 경우 11% 추가 증가한다."
-            ],
-            effects_en: [
-                "Increases CRIT DMG by 17.4%. Increases all foes' CRIT DMG taken by 14%, if they are inflicted with Shock, additionally increases the effect by 9%."
-            ],
-            effects_jp: [
-                "クリティカルダメージが17.4%上昇する。敵の被クリティカルダメージが16%上昇する。敵が感電状態の時、さらに11%上昇する。"
-            ],
-            priority: 3
-        },
-        uniqueSkill: {
-            name: "전격 내성 제거",
-            name_en: "Elec Break",
-            name_jp: "電撃ガードキル",
-            effect: "2턴 동안 적 1명의 전격 내성을 제거한다.",
-            effect_en: "Suppress innate Electric resistances of 1 foe for 2 turns.",
-            effect_jp: "2ターンの間、敵単体の電撃耐性を打ち消す。",
-            priority: 3,
-            icon: "디버프",
-            icon_gl : "버프"
-        },
-        highlight: {
-            effect: "모든 적에게 공격력 90.0%의 전격 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가한다. 효과는 2턴동안 지속된다.",
-            effect_en: "Deals 90.0% ATK as Elec dmg to all foes and increase their DMG Taken by 19.6% for 2 turns.",
-            effect_jp: "全ての敵に90.0% ATKの電撃属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
-            priority: 1
-        },
-        recommendSkill : [
-            {name : "라쿤다", priority: 3 },
-            {name : "타루카쟈", priority: 3 },
-            {name : "리벨리온", priority: 3 },
-            {name : "지오다인", priority: 3 },
-            {name : "감전율 UP", priority: 3 },
-            {name : "명중 강화", priority: 3 },
-            {name : "우중충한 하늘", priority: 3},
-        ],
-        comment: "감전 효과를 주지 않아도 필드에 존재하는 것만으로도 크리티컬 효과 18%를 올릴 수 있다.",
-        comment_en: "Even without applying the Shock effect, simply being present on the field can increase Crit Mult by 18%.",
-        comment_jp: "感電効果を与えなくても、フィールドに存在するだけでCRT倍率を上昇させることができる。"
-    },
+
     "나르키소스": {
         name_en: "Narcissus",
         name_jp: "ナルキッソス",
@@ -809,7 +862,7 @@ const personaData = {
             effects_jp: [
                 "攻撃力が29.1%上昇する。戦闘開始時に『寒鱗』を5スタック獲得する。味方がペルソナスキルを発動すると、自身が『寒鱗』を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、『鋭い寒鱗』を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の『寒鱗』が5スタックに達している場合、『寒鱗』と『鋭い寒鱗』をすべて消費し、スタック1つにつき敵が受けるダメージを1.5%増加させる（持続2ターン）。"
             ],
-            priority: 1
+            priority: 3
         },
         uniqueSkill: {
             name: "한 줄기 냉기",
@@ -1033,6 +1086,7 @@ const personaData = {
         },
         recommendSkill : [
             {name : "라쿤다", priority: 3},
+            {name : "해체 역장", priority: 0},
             {name : "전의 공명", priority: 0},
         ]
     },
@@ -1292,6 +1346,7 @@ const personaData = {
             {name : "라쿤다", priority: 3 },
             {name : "마하타루카 오토", priority: 2},
             {name : "민첩의 마음가짐", priority: 1},
+            {name : "해체 역장", priority: 0},
             {name : "전의 공명", priority: 0},
         ],
         comment : "라쿤다를 사용해도 본능 효과가 적용된다.",
@@ -1396,55 +1451,7 @@ const personaData = {
             {name : "전의 공명", priority: 0},
         ]
     },
-    "트론": {
-        name_en: "Throne",
-        name_jp: "ソロネ",
-        grade: "7",
-        star: "5",
-        position: "우월",
-        element: "화염",
-        wild_emblem_rainbow : true,
-        added: "KR v3.4.2",
-        instinct: {
-            name: "세속을 초월한 성인 III",
-            name_en: "Otherworldly Saint III",
-            name_jp: "世俗を超越した聖人 III",
-            effects: [
-                "공격력이 29.1% 증가한다.\n전투 시작 시 『불씨』를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 『불씨』 1중첩을 획득한다. 만약 화상일 경우 『불씨』를 추가로 1중첩 획득하며 3턴 동안 지속된다 (10회 중첩 가능).\n매회 스킬은 『불씨』를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시『불씨』가 4중첩 이상이면 모든 『불씨』를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1.5% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다."
-            ],
-            effects_en: [
-                "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn."
-            ],
-            effects_jp: [
-                "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
-            ],
-            priority: 2
-        },
-        uniqueSkill: {
-            name: "정화의 불",
-            name_en: "Fire of Purification",
-            name_jp: "浄化の火",
-            effect: "3턴 동안 모든 아군 캐릭터의 공격력이 12.0% 증가하고, 자신의 공격력 500마다 0.8% 추가 증가한다(최대 6%). 또한 3턴 동안 스킬 메인 목표가 『정화의 불』을 획득한다. 『정화의 불』: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-            effect_en: "Increases party's ATK by 12% + 0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
-            effect_jp: "3ターンの間全ての味方怪盗の攻撃力が12.0%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍怪盗にペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
-            priority: 3,
-            icon: "버프광역"
-        },
-        highlight: {
-            effect: "모든 동료의 주는 대미지가 29.5% 증가하며 2턴 동안 지속된다.",
-            effect_en: "Increase party's damage by 29.5% for 2 turns.",
-            effect_jp: "2ターンの間、味方全体の与ダメージが29.5%上昇する。",
-            priority: 1
-        },
-        recommendSkill : [
-            {name : "화상률 UP", priority: 3 },
-            {name : "명중 강화", priority: 3 },
-            {name : "우중충한 하늘", priority: 3},
-        ],
-        comment : "화상이 필수적인 캐릭터(ex. 미오)에게 사용하는 형태로 채용된다.",
-        comment_en: "Adopted in a form used for characters who require burn effects (e.g., Mio).",
-        comment_jp: "火傷が必須的な怪盗（例：ミオ）に使用する形で採用される。"
-    },
+    
     "라미아": {
         name_en: "Lamia",
         name_jp: "ラミア",

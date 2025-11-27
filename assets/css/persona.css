@@ -204,6 +204,8 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .persona-img[src*="트론.webp"] {position: relative; scale: 1; bottom: 16px; left: 4px;}
 
+.persona-img[src*="마카브르.webp"] {  transform: translateX(-9%) scale(1.05) translateY(3%);}
+
 .persona-detail-container { display: flex; flex-wrap: wrap; gap: 24px; padding: 20px; margin-bottom: 32px; background: rgba(0, 0, 0, 0.3); border-radius: 12px; /* 오프스크린 영역 생략으로 스크롤 페인트 비용 절감 */
     content-visibility: auto; contain: content; contain-intrinsic-size: 520px; justify-content: center; }
 

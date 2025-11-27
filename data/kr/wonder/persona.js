@@ -2,7 +2,7 @@ const personaData = {
     "야노식": {
         name_en: "Janosik",
         name_jp: "ヤノシーク",
-        grade: "8",
+        grade: "9",
         star: "5",
         position: "반항",
         element: "총격",
@@ -121,68 +121,57 @@ const personaData = {
         comment_en: "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
         comment_jp: "メディアラハンによる治療にも本能CRT倍率30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。"
     },
-    "비슈누": {
-        name_en: "Vishnu",
-        name_jp: "ヴィシュヌ",
-        wild_emblem_rainbow : true,
-        grade: "8",
+    "마카브르": {
+        name_en: "Macabre",
+        name_jp: "マカーブル",
+        grade: "9",
         star: "5",
-        position: "반항",
-        element: "질풍",
+        position: "굴복",
+        element: "주원",
         best_persona: true,
-        added: "KR v2.3.2",
+        wild_emblem_rainbow : true,
+        added: "KR v4.7.1",
         cost: {
             blue : 0,
             purple: 0,
-            rainbow: 400,
+            rainbow: 4000
         },
         instinct: {
-            name: "중생에 내리는 은혜 III",
-            name_en: "Goodwill to All III",
-            name_jp: "衆生への恩恵 III",
+            name: "메멘토 모리 I",
+            name_en: "Memento Mori I",
+            name_jp: "メメント・モリ I",
             effects: [
-                "크리티컬 확률이 17.5% 증가한다.",
-                "풍습의 효과 명중이 20% 증가하고, 풍습 상태인 적에게 주는 대미지가 20% 증가한다.",
-                "풍습 상태를 추가하거나 초기화될 때 적의 방어력이 48% 추가 감소하며 2턴 동안 지속된다."
+                "공격력이 29.1% 증가한다. ",
+                "전투 시작 시 『죽음의 춤』을 3중첩 획득한다. 동료가 페르소나 스킬 사용 시 『죽음의 춤』을 1중첩 획득한다(최대 3중첩).",
+                "자신이 페르소나 스킬 사용 시 적 전체가 받는 크리티컬 효과를 15% 증가시키고, 3중첩 보유 시 『죽음의 춤』을 3중첩 소모하여 스킬 목표가 지배 괴도로부터 받는 총 대미지 증가율을 1.5%/3% 증가시킨다.",
             ],
             effects_en: [
-                "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease target's Defense by 48% for 2 turns."
+                "Increase Attack by 29.1%. At the start of battle, user gains 3 [Dance of Death] stacks. After allies deal damage with a Persona skill, user gains 1 [Dance of Death] stack. Stacks up to 3 times.\nAfter user uses a Persona skill on foes, increase all foe's critical damage taken by 15% for 3 turns.\nIf user has 3 [Dance of Death] stacks, spend all [Dance of Death] stacks and increase target's Sweeper total damage taken amp by 1.5%/3% for 3 turns.",
             ],
             effects_jp: [
-                "クリティカル率が１７.５%上昇する。風襲の命中率が２０%上昇し、風襲状態の敵への与ダメージが２０%上昇する。風襲を付与、または更新する時、２ターンの間、対象の防御力を４８%低下させる。"
+                "攻撃力が29.1%上昇する。戦闘開始時、ユーザーは3つの『死の踊り』スタックを獲得する。味方がペルソナスキルでダメージを与えた後、ユーザーは1つの『死の踊り』スタックを獲得する。最大3つまでスタックできる。\nユーザーがペルソナスキルで敵に使用した後、敵のクリティカルダメージを15%増加させる。\nユーザーが3つの『死の踊り』スタックを持っている場合、全ての『死の踊り』スタックを消費し、ターゲットのスウィーパーの総ダメージ増加率を1.5%/3%増加させる。",
             ],
             priority: 3
         },
         uniqueSkill: {
-            name: "적을 멸하는 바람",
-            name_en: "Winds of Nirvana",
-            name_jp: "寂滅の風",
-            effect: "1명의 적에게 공격력 192.0%의 질풍 속성 대미지를 주고, 75%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 적이 풍습 상태인 경우 지속 시간을 초기화하고, 이번 스킬이 주는 대미지가 27.0% 증가하며 적이 받는 질풍 대미지가 27.0% 심화된다. 효과는 2턴 동안 지속된다.",
-            effect_en: "Deal Wind damage to 1 foe equal to 192.0% of Attack with a 75% chance to inflict Windswept.\nIf the target already has Windswept, reset effect duration and increase this skill's damage by 27.0%. Also, increase foes' Wind damage taken by 27.0% for 2 turns.",
-            effect_jp: "敵単体に攻撃力192.0%の疾風属性ダメージを与え、７５%の確率で風襲状態にする。\n対象がすでに風襲状態の場合、持続時間を更新し、このスキルの与ダメージが27.0%上昇する。さらに２ターンの間、敵の疾風属性の被ダメージが27.0%上昇する。",
+            name: "죽음의 자비",
+            name_en: "Death's Mercy",
+            name_jp: "死の慈悲",
+            effect: "모든 적에게 공격력 150.0%의 주원 속성 대미지를 주고, 적이 받는 대미지가 12.0% 증가하며, 지배 괴도에게 공격 받을 시 받는 크리티컬 효과가 10.0% 증가한다. 효과는 3턴 동안 지속된다.",
+            effect_en: "Deal Curse damage to all foes equal to 150.0% of Attack. Increase all foes' damage taken by 12.0%. Also, when attacked by a Sweeper, increase critical taken rate by 10.0%. Lasts for 3 turns.",
+            effect_jp: "全ての敵に攻撃力150.0%の呪怨属性ダメージを与え、敵が受けるダメージを12.0%増加させる。また、『支配』アーケタイプによって攻撃を受けた場合、クリティカルダメージを10.0%増加させる。効果は3ターンの間持続する。",
             priority: 3,
-            icon: "질풍"
+            icon: "주원광역"
         },
         highlight: {
-            effect: "1명의 적에게 공격력 360.0%의 질풍 속성 대미지를 준다.",
-            effect_en: "Deal 360% ATK as Wind dmg to 1 foe.",
-            effect_jp: "1体の敵に360.0% ATKの風属性ダメージを与える。",
-            priority: 0
+            effect: "모든 적에게 공격력 180.0%의 주원 속성 대미지를 주며, 적이 받는 대미지가 19.6% 증가하고, 받는 크리티컬 효과가 14.7% 증가한다. 효과는 2턴 동안 지속된다.",
+            effect_en: "Deal Curse damage to all foes equal to 180.0% of Attack. Increase all foes' damage taken by 19.6% and critical damage taken by 14.7% for 2 turns.",
+            effect_jp: "全ての敵に攻撃力180.0%の呪怨属性ダメージを与え、敵が受けるダメージが19.6%増加し、クリティカルダメージが14.7%増加する。効果は2ターンの間持続する。",
+            priority: 3
         },
         recommendSkill : [
-             {name : "명중 강화", priority: 3},
-             {name : "질풍률 UP", priority: 3},
-             {name : "우중충한 하늘", priority: 3},
-             {name : "마하갈다인", priority: 3},
-             {name : "질풍 강화", priority: 1},
-             {name : "마도의 재능", priority: 1},
-             {name : "공격 강화", priority: 1},
-             {name : "민첩의 마음가짐", priority: 0},
-             {name : "전의 공명", priority: 0},
-        ],
-        comment : "강력한 방어력 감소 효과를 지닌 페르소나, 마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
-        comment_en: "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
-        comment_jp: "強力な防御力低下効果を持つペルソナ。マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
+             {name : "전의 공명", priority: 3}
+        ]
     },
     "도미니온": {
         name_en: "Dominion",
@@ -312,6 +301,69 @@ const personaData = {
         comment : "음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다로 대체 가능하다.",
         comment_en: "Melodic Infiltration is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
         comment_jp: "音律の侵入は課金イベントを通じて配布されたスキルカードでマハラクンダで代替可能である。"
+    },
+    "비슈누": {
+        name_en: "Vishnu",
+        name_jp: "ヴィシュヌ",
+        wild_emblem_rainbow : true,
+        grade: "8",
+        star: "5",
+        position: "반항",
+        element: "질풍",
+        best_persona: true,
+        added: "KR v2.3.2",
+        cost: {
+            blue : 0,
+            purple: 0,
+            rainbow: 400,
+        },
+        instinct: {
+            name: "중생에 내리는 은혜 III",
+            name_en: "Goodwill to All III",
+            name_jp: "衆生への恩恵 III",
+            effects: [
+                "크리티컬 확률이 17.5% 증가한다.",
+                "풍습의 효과 명중이 20% 증가하고, 풍습 상태인 적에게 주는 대미지가 20% 증가한다.",
+                "풍습 상태를 추가하거나 초기화될 때 적의 방어력이 48% 추가 감소하며 2턴 동안 지속된다."
+            ],
+            effects_en: [
+                "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease target's Defense by 48% for 2 turns."
+            ],
+            effects_jp: [
+                "クリティカル率が１７.５%上昇する。風襲の命中率が２０%上昇し、風襲状態の敵への与ダメージが２０%上昇する。風襲を付与、または更新する時、２ターンの間、対象の防御力を４８%低下させる。"
+            ],
+            priority: 3
+        },
+        uniqueSkill: {
+            name: "적을 멸하는 바람",
+            name_en: "Winds of Nirvana",
+            name_jp: "寂滅の風",
+            effect: "1명의 적에게 공격력 192.0%의 질풍 속성 대미지를 주고, 75%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 적이 풍습 상태인 경우 지속 시간을 초기화하고, 이번 스킬이 주는 대미지가 27.0% 증가하며 적이 받는 질풍 대미지가 27.0% 심화된다. 효과는 2턴 동안 지속된다.",
+            effect_en: "Deal Wind damage to 1 foe equal to 192.0% of Attack with a 75% chance to inflict Windswept.\nIf the target already has Windswept, reset effect duration and increase this skill's damage by 27.0%. Also, increase foes' Wind damage taken by 27.0% for 2 turns.",
+            effect_jp: "敵単体に攻撃力192.0%の疾風属性ダメージを与え、７５%の確率で風襲状態にする。\n対象がすでに風襲状態の場合、持続時間を更新し、このスキルの与ダメージが27.0%上昇する。さらに２ターンの間、敵の疾風属性の被ダメージが27.0%上昇する。",
+            priority: 3,
+            icon: "질풍"
+        },
+        highlight: {
+            effect: "1명의 적에게 공격력 360.0%의 질풍 속성 대미지를 준다.",
+            effect_en: "Deal 360% ATK as Wind dmg to 1 foe.",
+            effect_jp: "1体の敵に360.0% ATKの風属性ダメージを与える。",
+            priority: 0
+        },
+        recommendSkill : [
+             {name : "명중 강화", priority: 3},
+             {name : "질풍률 UP", priority: 3},
+             {name : "우중충한 하늘", priority: 3},
+             {name : "마하갈다인", priority: 3},
+             {name : "질풍 강화", priority: 1},
+             {name : "마도의 재능", priority: 1},
+             {name : "공격 강화", priority: 1},
+             {name : "민첩의 마음가짐", priority: 0},
+             {name : "전의 공명", priority: 0},
+        ],
+        comment : "강력한 방어력 감소 효과를 지닌 페르소나, 마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
+        comment_en: "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
+        comment_jp: "強力な防御力低下効果を持つペルソナ。マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。"
     },
     "광목천": {
         name_en: "Koumokuten",

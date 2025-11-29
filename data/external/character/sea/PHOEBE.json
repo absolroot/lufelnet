@@ -1,0 +1,204 @@
+{
+  "data": {
+    "name": "Yumi Shiina",
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When an ally deals damage with a skill, Resonance, or Highlight, Yumi gains 1 Mixer stack of the corresponding attribute.\nAfter gaining 3 Mixer stacks, change them to a Cocktail (max 3).\nIf the 3 Mixers have the same attribute, create a Tailor-Made Cocktail. If 2 are the same, create a Standard Cocktail. If all 3 are different, create a Basic Cocktail.\nWhen Yumi uses a skill, spend Cocktail stacks to activate various effects for the party and restore all allies' SP by 8.",
+          "level": "1",
+          "name": "Expert Bartender",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When gaining a Cocktail, randomly gain 1 Mixer stack of the attributes spent.\nWhen activating Tempting Build or Invigorating Blend, spend 1 Basic or Standard Cocktail to gain 1 Standard or Tailor-Made Cocktail.",
+          "level": "1",
+          "name": "Mojito",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When gaining a Cocktail, increase the party's damage by 16% for 2 turns.",
+          "level": "1",
+          "name": "Screwdriver",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill levels of Enchanting Stir and Invigorating Blend by 3.",
+          "level": "1",
+          "name": "Martini",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When an ally uses Highlight, increase their Attack by 10% for 1 turn.\nGain 1 Tailor-Made Cocktail.",
+          "level": "1",
+          "name": "Bloody Mary",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill level of Tempting Build by 3.",
+          "level": "1",
+          "name": "Old Fashioned",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "The maximum number of Cocktail stacks increases to 4.\nAt the start of battle, gain 1 Tailor-Made Cocktail. After every 3 Cocktails gained, gain 1 more Tailor-Made Cocktail.\nWhen spending a Tailor-Made, Standard, or Basic Cocktail to activate a skill, increase the skill effect from 120%/100%/50% up to 135%/120%/75% (includes Tempting Build, Invigorating Blend, and Moonlit Banquet).",
+          "level": "1",
+          "name": "XYZ",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": null,
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440 of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. Tailor-Made, Standard, and Basic Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions.",
+          "level": "10/10/13/13",
+          "name": "Tempting Build",
+          "nature": null,
+          "tags": [
+            "Buff"
+          ],
+          "target": "All Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "AICondition (Based on HPcur/HP)",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase 1 ally's damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440 of Attack) and their max HP by 13.0%/13.0%/14.6%/14.6% for 2 turns. When the target deals damage to a foe, restore the target's HP by 2% of damage dealt for 1 turn.\nWhen activating a skill, spend 1 Basic or Standard Cocktail to gain 1 Tailor-Made Cocktail.\nCooldown Time: 4 ally actions.",
+          "level": "10/10/13/13",
+          "name": "Enchanting Stir",
+          "nature": null,
+          "tags": [
+            "Buff"
+          ],
+          "target": "1 Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Spend all Cocktails to increase the party's attribute damage based on the targeted ally's attribute for 2 turns.\nAttribute damage will increase by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440 of Attack). Each Tailor-Made, Standard, and Basic Cocktail spent will change this effect by 120%, 100%, and 50% respectively.\nIncrease these effects for the targeted ally by 1.2 times. If 2+ Standard or better Cocktails are spent, also increase the targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%.\nCooldown Time: 8 ally actions. (This skill requires Cocktails.)",
+          "level": "10/10/13/13",
+          "name": "Invigorating Blend",
+          "nature": null,
+          "tags": [
+            "Buff"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase party's attribute damage by 4% based on main attributes of party members.",
+          "level": "3",
+          "name": "Cocktail Party",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "All All Allies"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "At the start of battle, gain 3 Mixers, based on the most common attribute among allies in the battle.",
+          "level": "3",
+          "name": "Taking Orders",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "All All Allies"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1109.97 / 1129.97 / 1149.97 / 1169.97 / 1189.97 / 1209.97 / 1229.97",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Attack Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "606.64 / 617.84 / 628.24 / 639.44 / 650.64 / 661.04 / 672.24",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

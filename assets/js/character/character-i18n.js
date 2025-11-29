@@ -6,7 +6,7 @@
         getLang() { try { return (typeof getCurrentLanguage==='function') ? getCurrentLanguage() : 'kr'; } catch(_) { return 'kr'; } },
 
         labels: {
-            review: { kr: '요약', en: 'Summary', jp: '要約' },
+            review: { kr: '캐릭터 리뷰', en: 'Character Review', jp: 'キャラクター レビュー' },
             recommendedSetup: { kr: '추천 세팅', en: 'Recommended Setup', jp: 'おすすめ設定' },
             skills: { kr: '스킬', en: 'Skills', jp: 'スキル' },
             ritual: { kr: '의식', en: 'Awareness', jp: '意識' },
@@ -20,7 +20,7 @@
             recommendedOperation: { kr: '추천 운영', en: 'Skill Rotation', jp: 'スキル利用順' },
             notes: { kr: '참고사항', en: 'Notes', jp: '参考事項' },
             skillLevels: {
-                kr: ['스킬 1', '스킬 2', '스킬 3', '하이라이트'],
+                kr: ['스킬 1', '스킬 2', '스킬 3', '전투기술'],
                 en: ['Skill 1', 'Skill 2', 'Skill 3', 'Highlight'],
                 jp: ['スキル 1', 'スキル 2', 'スキル 3', 'ハイライト']
             },

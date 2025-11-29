@@ -226,6 +226,21 @@ const penetrateData = {
             note_jp: "極熱 + 원소 이상 3"
         }
     ],
+    "쇼키·암야":[
+        {
+            id: "showki-notte1",
+            type: "패시브",
+            target: "자신",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            skillName: "-",
+            options: [],
+            value: 15.0,
+            duration: "-",
+            note: "HP 40%",
+            note_en: "HP 40%",
+            note_jp: "HP 40%"
+        }
+    ],
     "이치고":[
         {
             id: "ichigo1",
@@ -791,9 +806,9 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 34.1,
             duration: "-",
-            note: "이후 적 다운 시킬 경우",
-            note_en: "Down enemy",
-            note_jp: "다운 敵"
+            note: "",
+            note_en: "",
+            note_jp: ""
         },
         {
             id: "katayama4",

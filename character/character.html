@@ -117,7 +117,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     <!-- 리뷰 섹션 -->
     <div class="review-card card-style">
-        <h2>요약</h2>
+        <h2>리뷰</h2>
         <div class="review-content" id="character-review">
             <!-- 리뷰 내용이 여기에 동적으로 로드됩니다 -->
         </div>
@@ -1106,8 +1106,50 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
 
         // 스킬 설정은 cha_detail.js에서 자동 처리됨
-
-
+        // 스킬 우선순위 뱃지 적용
+        function applySkillPriorityBadges() {
+            try {
+                const data = characterData && characterData[characterName];
+                if (!data || !data.skill_priority) return;
+                // 기존 뱃지 제거(중복 방지)
+                document.querySelectorAll('.skill-level .label .priority-badge').forEach(function (el) {
+                    if (el && el.parentNode) el.parentNode.removeChild(el);
+                });
+                // "3>1>2>4" 형태 파싱
+                const order = String(data.skill_priority)
+                    .split('>')
+                    .map(function (s) { return parseInt((s || '').trim(), 10); })
+                    .filter(function (n) { return n >= 1 && n <= 4; });
+                if (!order.length) return;
+                // 역매핑: skillNumber(1~4) -> rank(1~4)
+                const skillToRank = {};
+                order.forEach(function (skillNum, idx) { skillToRank[skillNum] = idx + 1; });
+                // 라벨
+                const getBadgeText = function (rank) {
+                    var suffix = rank === 1 ? 'st' : rank === 2 ? 'nd' : rank === 3 ? 'rd' : 'th';
+                    return rank + suffix; 
+                };
+                const labels = document.querySelectorAll('.skill-level .label');
+                if (!labels || labels.length === 0) return;
+                labels.forEach(function (labelEl, idx) {
+                    const skillNum = idx + 1; // 1~4 (4는 하이라이트)
+                    const rank = skillToRank[skillNum];
+                    if (!rank) return;
+                    const badge = document.createElement('span');
+                    badge.className = 'priority-badge';
+                    badge.classList.add('rank-' + rank);
+                    badge.textContent = getBadgeText(rank);
+                    labelEl.appendChild(badge);
+                });
+            } catch (e) {
+                console.warn('[SAFE:skill-priority-badges]', e);
+            }
+        }
+        try { applySkillPriorityBadges(); } catch (e) { console.warn('[SAFE:applySkillPriorityBadges:init]', e); }
+        // 비동기 데이터 로드/번역 이후도 한번 더 보정
+        setTimeout(function () {
+            try { applySkillPriorityBadges(); } catch (e) { console.warn('[SAFE:applySkillPriorityBadges:timeout]', e); }
+        }, 300);
         // 의식 정보 설정
         const ritualItems = document.querySelectorAll('.ritual-item');
 
@@ -2301,5 +2343,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     .party-images-container {
         justify-content: right;
         margin-right: 16px;
+        min-width: 20px;
+    }
+    /* 순위별(1~4)로 점차 어두워지도록 색상 농도 조절 */
+    .priority-badge.rank-1 {
+        color: #ffffff;
+    }
+    .priority-badge.rank-2 {
+        color: #e8e8e8;
+    }
+    .priority-badge.rank-3 {
+        color: #cfcfcf;
+    }
+    .priority-badge.rank-4 {
+        color: #a8a8a8;
     }
 </style>

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (e) { console.warn(`[SAFE:addEvent:${name}]`, e); }
     };
-    
+
     // 현재 언어 가져오기 함수
     function getCurrentLanguage() {
         // 먼저 쿼리 파라미터 확인
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const langParam = urlParams.get('lang');
         if (langParam === 'en') return 'en';
         if (langParam === 'jp') return 'jp';
-        
+
         // 쿼리 파라미터가 없으면 경로 확인
         const path = window.location.pathname;
         if (path.includes('/en/')) return 'en';
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 현재 언어별 계시 이름 번역 함수
     function translateRevelationName(koreanName, isMainRevelation = false) {
         const currentLang = getCurrentLanguage();
-        
+
         if (currentLang === 'en' && typeof window.enRevelationData !== 'undefined') {
             if (isMainRevelation && window.enRevelationData.mainTranslated && window.enRevelationData.mainTranslated[koreanName]) {
                 return window.enRevelationData.mainTranslated[koreanName];
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return window.jpRevelationData.subTranslated[koreanName];
             }
         }
-        
+
         return koreanName; // 번역이 없으면 원본 반환
     }
 
@@ -53,16 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function fillSettingsInfo(character) {
         // 요구 스탯
         const statLevels = document.querySelectorAll('.stat-level');
-        const levels = character.rarity === 4 
+        const levels = character.rarity === 4
             ? ['LV12', 'LV12+5']  // 4성 캐릭터
             : ['LV10', 'LV10+5', 'LV13', 'LV13+5']; // 5성 캐릭터
-        
+
 
 
         const validStats = [
-            '공격력', '방어력', '효과 명중', '효과명중', '생명', 
-            '크리티컬 확률', '크리티컬 확률', '크리티컬 효과', '크리티컬 효과', 
-            '속도', '대미지보너스', '데미지보너스', '대미지 보너스', '데미지 보너스', 
+            '공격력', '방어력', '효과 명중', '효과명중', '생명',
+            '크리티컬 확률', '크리티컬 확률', '크리티컬 효과', '크리티컬 효과',
+            '속도', '대미지보너스', '데미지보너스', '대미지 보너스', '데미지 보너스',
             '관통', '치료효과', '치료 효과', 'SP회복', 'SP 회복'
         ];
 
@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const valueElement = level.querySelector('.value');
                 let statValue = character.minimum_stats[levels[index]] || '-';
-                if(character.minimum_stats_glb && currentLang != 'kr'){
+                if (character.minimum_stats_glb && currentLang != 'kr') {
                     statValue = character.minimum_stats_glb[levels[index]] || '-';
                 }
-                
+
                 if (statValue !== '-') {
                     // 콤마로 구분된 여러 스탯을 처리
                     const stats = statValue.split(',').map(stat => stat.trim());
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
                         return processed;
                     }).join('<br>');
-                    
+
                     valueElement.innerHTML = highlightedText;
                 } else {
                     valueElement.textContent = '-';
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statsReq = document.querySelector('.stats-requirements');
                 if (statsReq) statsReq.style.display = 'none';
             }
-        } catch (_) {}
+        } catch (_) { }
 
         // battle-plus stats는 character.html에서 처리
 
@@ -184,29 +184,29 @@ document.addEventListener('DOMContentLoaded', () => {
             let value = skillLevels[index] || '-';
             if (value.endsWith('!')) {
                 value = value.slice(0, -1);
-                
+
                 // 컨테이너 생성
                 const container = document.createElement('div');
                 container.style.display = 'flex';
                 container.style.alignItems = 'center';
                 container.style.gap = '8px';
-                
+
                 // 텍스트 요소
                 const textSpan = document.createElement('span');
                 textSpan.textContent = value;
                 textSpan.style.color = '#d3bc8e';
-                
+
                 // 마크 이미지
                 const markImg = document.createElement('img');
                 markImg.src = `${BASE_URL}/assets/img/character-detail/mark.png`;
                 markImg.alt = '추천';
                 markImg.style.width = '16px';
                 markImg.style.height = '16px';
-                
+
                 // 요소들을 컨테이너에 추가
                 container.appendChild(textSpan);
                 container.appendChild(markImg);
-                
+
                 // 기존 element의 내용을 새 컨테이너로 교체
                 element.textContent = '';
                 element.appendChild(container);
@@ -223,6 +223,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Helper function for English ordinals
+        function getOrdinalSuffix(i) {
+            var j = i % 10,
+                k = i % 100;
+            if (j == 1 && k != 11) {
+                return "st";
+            }
+            if (j == 2 && k != 12) {
+                return "nd";
+            }
+            if (j == 3 && k != 13) {
+                return "rd";
+            }
+            return "th";
+        }
+
+        // 스킬 우선순위 표시 (기존 스킬 목록에 통합)
+        if (character.skill_priority) {
+            const priorities = character.skill_priority.split('>').map(s => s.trim());
+
+            const skillRows = document.querySelectorAll('.skill-levels .skill-level');
+            const currentLang = getCurrentLanguage();
+
+            skillRows.forEach((row, index) => {
+                const skillId = (index + 1).toString();
+                const priorityIndex = priorities.indexOf(skillId);
+
+                if (priorityIndex !== -1) {
+                    const rank = priorityIndex + 1;
+                    const label = row.querySelector('.label');
+
+                    const oldBadge = label.querySelector('.priority-badge');
+                    if (oldBadge) oldBadge.remove();
+
+                    const badge = document.createElement('span');
+                    badge.className = 'priority-badge';
+
+                    if (rank === 1) badge.classList.add('top-priority');
+
+                    const rankText = {
+                        'kr': `${rank}순위`,
+                        'en': `${rank}${getOrdinalSuffix(rank)}`,
+                        'jp': `${rank}位`
+                    };
+
+                    badge.textContent = rankText[currentLang] || `${rank}`;
+                    label.appendChild(badge);
+                }
+            });
+
+            const skillSection = document.querySelector('.skill-mind-settings .setting-section:first-child');
+            if (skillSection) {
+                const oldContainer = skillSection.querySelector('.skill-priority-container');
+                if (oldContainer) oldContainer.remove();
+            }
+        }
+
         // 심상
         const mindFields = [
             { element: '.mind-stats .stat-row:nth-child(1) .value', value: character.mind_stats1 },
@@ -234,33 +291,33 @@ document.addEventListener('DOMContentLoaded', () => {
         mindFields.forEach(field => {
             const element = document.querySelector(field.element);
             let value = field.value || '-';
-            
+
             if (value.endsWith('!')) {
                 value = value.slice(0, -1);
                 element.style.color = '#d3bc8e';
-                
+
                 // 컨테이너 생성
                 const container = document.createElement('div');
                 container.style.display = 'flex';
                 container.style.alignItems = 'center';
                 container.style.gap = '8px';
-                
+
                 // 텍스트 요소
                 const textSpan = document.createElement('span');
                 textSpan.textContent = value;
                 textSpan.style.color = '#d3bc8e';
-                
+
                 // 마크 이미지
                 const markImg = document.createElement('img');
                 markImg.src = `${BASE_URL}/assets/img/character-detail/mark.png`;
                 markImg.alt = '추천';
                 markImg.style.width = '16px';
                 markImg.style.height = '16px';
-                
+
                 // 요소들을 컨테이너에 추가
                 container.appendChild(textSpan);
                 container.appendChild(markImg);
-                
+
                 // 기존 element의 내용을 새 컨테이너로 교체
                 element.textContent = '';
                 element.appendChild(container);
@@ -283,13 +340,13 @@ document.addEventListener('DOMContentLoaded', () => {
             raritySection.style.display = 'flex';
             raritySection.style.gap = '2px';
             raritySection.style.alignItems = 'center'; // 세로 가운데 정렬
-            
+
             const starCount = character.rarity;
             const starType = character.rarity === 4 ? 'star4.png' : 'star5.png';
-            
+
             // 기존 내용 제거
             raritySection.innerHTML = '';
-            
+
             // 별 이미지 추가
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('img');
@@ -314,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 limitImg.style.margin = '4px 0 0 6px';
 
                 raritySection.appendChild(limitImg);
-            } catch(_) {}
+            } catch (_) { }
         }
 
         // 속성 위치 계산
@@ -362,21 +419,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (resistanceIcon) resistanceIcon.style.display = 'none';
             if (weaknessIcon) weaknessIcon.style.display = 'none';
             if (parentEl) {
-                try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch(_) {}
+                try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch (_) { }
                 // 기준 top 읽기 (아이콘 top과 정렬 시도)
                 let baseTop = '36px';
                 try {
                     const ref = (resistanceIcon && window.getComputedStyle(resistanceIcon).top) || (weaknessIcon && window.getComputedStyle(weaknessIcon).top) || '';
                     if (ref && ref !== 'auto') baseTop = ref;
-                } catch(_) {}
+                } catch (_) { }
                 // 라벨 텍스트
                 const RES_TXT = (langForEl === 'en') ? 'Res' : (langForEl === 'jp' ? '耐' : '내');
-                const WK_TXT  = (langForEl === 'en') ? 'Wk'  : (langForEl === 'jp' ? '弱' : '약');
+                const WK_TXT = (langForEl === 'en') ? 'Wk' : (langForEl === 'jp' ? '弱' : '약');
                 if (character.element_resistance) {
                     const el = document.createElement('span');
                     el.className = 'char-el-badge res';
                     el.textContent = RES_TXT;
-                    el.style.left = (setElementPositions(character.element_resistance)+ 10) + 'px'; // + 10px
+                    el.style.left = (setElementPositions(character.element_resistance) + 10) + 'px'; // + 10px
                     el.style.top = baseTop;
                     parentEl.appendChild(el);
                 }
@@ -384,14 +441,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const el = document.createElement('span');
                     el.className = 'char-el-badge weak';
                     el.textContent = WK_TXT;
-                    el.style.left = (setElementPositions(character.element_weakness)+ 10) + 'px'; // + 10px
+                    el.style.left = (setElementPositions(character.element_weakness) + 10) + 'px'; // + 10px
                     el.style.top = baseTop;
                     parentEl.appendChild(el);
                 }
             }
         } else {
             // 한국어: 기존 아이콘 사용, 텍스트 배지 제거
-            if (parentEl) { try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch(_) {} }
+            if (parentEl) { try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch (_) { } }
             if (resistanceIcon && character.element_resistance) {
                 resistanceIcon.style.display = 'block';
                 resistanceIcon.style.left = setElementPositions(character.element_resistance) + 'px';
@@ -418,10 +475,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // URL에서 캐릭터 이름을 가져와서 현재 페이지 표시
     const urlParams = new URLSearchParams(window.location.search);
     const characterName = urlParams.get('name');
-    
+
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
-        
+
         // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
         safeRun('persona3-css-and-text', () => {
             if (character.persona3) {
@@ -459,39 +516,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentPage = document.querySelector('.current-page');
         const currentLang = getCurrentLanguage();
         let characterDisplayName = characterData[characterName].name;
-        
+
         // 언어별 캐릭터명 설정
         if (currentLang === 'en' && characterData[characterName].name_en) {
             characterDisplayName = characterData[characterName].name_en;
         } else if (currentLang === 'jp' && characterData[characterName].name_jp) {
             characterDisplayName = characterData[characterName].name_jp;
         }
-        
+
         currentPage.textContent = characterDisplayName;
 
         // role과 tag 정보 채우기
         const roleElement = document.querySelector('.chracter-role');
         const tagElement = document.querySelector('.chracter-tag');
-    
 
 
-        if(currentLang === 'en' && character.role_en)
-        {
+
+        if (currentLang === 'en' && character.role_en) {
             roleElement.textContent = character.role_en;
         }
-        else if(currentLang === 'jp' && character.role_jp)
-        {
+        else if (currentLang === 'jp' && character.role_jp) {
             roleElement.textContent = character.role_jp;
         }
 
         tagElement.textContent = character.tag;
 
-        if (currentLang === 'en' && character.tag_en)
-        {
+        if (currentLang === 'en' && character.tag_en) {
             tagElement.textContent = character.tag_en;
         }
-        else if(currentLang === 'jp' && character.tag_jp)
-        {
+        else if (currentLang === 'jp' && character.tag_jp) {
             tagElement.textContent = character.tag_jp;
         }
 
@@ -516,7 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-    
+
 
     // 의식 탭 기능
     safeRun('ritual-tab-events', () => {
@@ -536,8 +589,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 스킬레벨 아이템 개수 표시
     function updateSkillLevelItems() {
-        const skillLevels = document.querySelectorAll('.skill-levels .skill-level .value');        
-        
+        const skillLevels = document.querySelectorAll('.skill-levels .skill-level .value');
+
         const maxCount = Array.from(skillLevels).filter(el => {
             // span 요소가 있는지 확인
             const span = el.querySelector('span');
@@ -550,31 +603,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }).length;
 
         const skillHeader = document.querySelector('.skill-mind-settings .setting-section:first-child h3');
-        
+
         if (!skillHeader) return;
-        
+
         const itemContainer = document.createElement('div');
         itemContainer.className = 'item-count';
-        
+
         // 욕망의 나무 이미지와 개수 추가
         const goldenRoseCount = maxCount * 2;
-        
+
         if (goldenRoseCount > 0) {
             const itemWithCount = document.createElement('div');
             itemWithCount.className = 'item-with-count';
-            
+
             const itemImg = document.createElement('img');
             itemImg.src = `${BASE_URL}/assets/img/character-detail/item-goldenrose.png`;
             itemImg.alt = '욕망의 나무';
-            
+
             const itemCount = document.createElement('span');
             itemCount.textContent = `${goldenRoseCount}`;
-            
+
             itemWithCount.appendChild(itemImg);
             itemWithCount.appendChild(itemCount);
             itemContainer.appendChild(itemWithCount);
         }
-        
+
         skillHeader.appendChild(itemContainer);
     }
 
@@ -585,31 +638,31 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.mind-skills .skill-row:nth-child(1) .value'),
             document.querySelector('.mind-skills .skill-row:nth-child(2) .value')
         ];
-        
+
         const mindStats = [
             document.querySelector('.mind-stats .stat-row:nth-child(1) .value'),
             document.querySelector('.mind-stats .stat-row:nth-child(2) .value')
         ];
 
-        const skillCount = mindSkills.filter(el => 
-            el && 
-            el.textContent !== '-' && 
+        const skillCount = mindSkills.filter(el =>
+            el &&
+            el.textContent !== '-' &&
             (el.textContent.includes('!') || el.style.color === 'rgb(211, 188, 142)')
         ).length;
-        
-        const statCount = mindStats.filter(el => 
-            el && 
-            el.textContent !== '-' && 
+
+        const statCount = mindStats.filter(el =>
+            el &&
+            el.textContent !== '-' &&
             (el.textContent.includes('!') || el.style.color === 'rgb(211, 188, 142)')
         ).length;
-        
+
         const mindHeader = document.querySelector('.skill-mind-settings .setting-section:last-child h3');
-        
+
         if (!mindHeader) return;
-        
+
         const itemContainer = document.createElement('div');
         itemContainer.className = 'item-count';
-        
+
         // 스킬 아이템 추가
         if (skillCount > 0) {
             const skillItem1 = createItemElement('item-mind_skill1.png', skillCount * 155);
@@ -617,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
             itemContainer.appendChild(skillItem1);
             itemContainer.appendChild(skillItem2);
         }
-        
+
         // 스탯 아이템 추가
         if (statCount > 0) {
             const statItem1 = createItemElement('item-mind_stat1.png', statCount * 220);
@@ -625,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
             itemContainer.appendChild(statItem1);
             itemContainer.appendChild(statItem2);
         }
-        
+
         mindHeader.appendChild(itemContainer);
     }
 
@@ -633,14 +686,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function createItemElement(imageName, count) {
         const container = document.createElement('div');
         container.className = 'item-with-count';
-        
+
         const img = document.createElement('img');
         img.src = `${BASE_URL}/assets/img/character-detail/${imageName}`;
         img.alt = '아이템';
-        
+
         const countSpan = document.createElement('span');
         countSpan.textContent = `${count}`;
-        
+
         container.appendChild(img);
         container.appendChild(countSpan);
         return container;
@@ -649,14 +702,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 계시 값을 분리하고 각각에 아이콘을 추가하도록 수정
     function createRevelationValue(revelations, isMainRevelation = false) {
         if (!revelations || revelations.length === 0) return '-';
-        
+
         const container = document.createElement('div');
         container.className = 'revelation-values';
-        
+
         revelations.forEach(revelation => {
             const item = document.createElement('div');
             item.className = 'revelation-value-item tooltip-text';
-            
+
             const text = document.createElement('span');
             // 번역된 이름으로 표시
             let translatedName = translateRevelationName(revelation, isMainRevelation);
@@ -665,18 +718,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 translatedName = translatedName.substring(0, 4) + '..';
             }
             text.textContent = translatedName;
-            
+
             const icon = document.createElement('img');
             // 아이콘은 항상 한국어 이름(원본)으로 경로 설정
             icon.src = `${BASE_URL}/assets/img/character-detail/revel/${revelation}.webp`;
             icon.alt = revelation;
             icon.className = 'revelation-icon';
-            
+
             if (!isMainRevelation) {
                 // 일월성진 효과 데이터
                 const currentLang = getCurrentLanguage();
                 let effectData, set2Text, set4Text;
-                
+
                 // 언어별 효과 데이터 사용
                 // 현재 언어에 맞는 번역 데이터 가져오기
                 let translationData = null;
@@ -685,19 +738,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (currentLang === 'jp' && window.jpRevelationData) {
                     translationData = window.jpRevelationData;
                 }
-                
+
                 /* console.log('일월성진 효과 디버깅:', {
                     revelation: revelation,
                     currentLang: currentLang,
                     hasTranslationData: !!translationData,
                     translationDataKeys: translationData ? Object.keys(translationData.sub_effects || {}) : []
                 });*/
-                
+
                 if (currentLang === 'en' && translationData && translationData.sub_effects) {
                     // 한국어 키를 영어 키로 변환
                     const englishKey = translateRevelationName(revelation, false);
                     // console.log('영어 키 변환:', revelation, '→', englishKey);
-                    
+
                     if (translationData.sub_effects[englishKey]) {
                         effectData = translationData.sub_effects[englishKey];
                         set2Text = effectData.set2;
@@ -712,7 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 한국어 키를 일본어 키로 변환
                     const japaneseKey = translateRevelationName(revelation, false);
                     // console.log('일본어 키 변환:', revelation, '→', japaneseKey);
-                    
+
                     if (translationData.sub_effects[japaneseKey]) {
                         effectData = translationData.sub_effects[japaneseKey];
                         set2Text = effectData.set2;
@@ -728,12 +781,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     set2Text = effectData.set2;
                     set4Text = effectData.set4;
                     setTypes = effectData.type;
-                   // console.log('한국어 효과 데이터 사용:', effectData);
+                    // console.log('한국어 효과 데이터 사용:', effectData);
                 }
-                
+
                 if (effectData) {
                     const translatedTitle = translateRevelationName(revelation, false);
-                    
+
                     // 언어별 세트 텍스트
                     const setTexts = {
                         kr: { set2: '2세트', set4: '4세트' },
@@ -741,18 +794,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         jp: { set2: '2セット', set4: '4セット' }
                     };
                     const setText = setTexts[currentLang] || setTexts.kr;
-                    
+
                     let tooltipText = `[${translatedTitle}]\n${setText.set2}: ${set2Text}\n${setText.set4}: ${set4Text}`;
 
                     // setTypes 에 '미출시'가 있는 경우
-                    if (setTypes && setTypes.includes('미출시'))
-                    {
-                        if(currentLang === 'en')
-                        {
+                    if (setTypes && setTypes.includes('미출시')) {
+                        if (currentLang === 'en') {
                             tooltipText += `\n\n#NOT RELEASED IN GLOBAL SERVER#`;
                         }
-                        else if(currentLang === 'jp')
-                        {
+                        else if (currentLang === 'jp') {
                             tooltipText += `\n\n#グローバルサーバーで未発表#`;
                         }
                     }
@@ -763,7 +813,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 주 성위 효과 데이터
                 const currentLang = getCurrentLanguage();
                 let setEffectsData;
-                
+
                 // 현재 언어에 맞는 번역 데이터 가져오기
                 let translationData = null;
                 if (currentLang === 'en' && window.enRevelationData) {
@@ -771,7 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (currentLang === 'jp' && window.jpRevelationData) {
                     translationData = window.jpRevelationData;
                 }
-                
+
                 // 언어별 세트 효과 데이터 사용
                 if (currentLang === 'en' && translationData && translationData.set_effects) {
                     // 한국어 키를 영어 키로 변환
@@ -788,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (revelationData.set_effects && revelationData.set_effects[revelation]) {
                     setEffectsData = revelationData.set_effects[revelation];
                 }
-                
+
                 if (setEffectsData) {
                     // 현재 선택된 일월성진 계시들 가져오기
                     const subRevelationContainer = document.querySelector('.sub-revelation .revelation-values');
@@ -797,14 +847,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         .filter(text => text); // 빈 문자열 제거
 
                     // console.log(currentSubRevs);
-                    
+
                     // 현재 선택된 일월성진에 대한 세트 효과만 필터링
                     let tooltipText = '';
-                    
+
                     if (currentSubRevs.length > 0) {
                         // 표시된 번역 텍스트를 원본 키로 역매핑해서 매칭
                         let subRevKeys;
-                        
+
                         //console.log(subRevKeys);
                         if (currentLang === 'en' && translationData) {
                             // 영어 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
@@ -826,7 +876,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         tooltipText = subRevKeys.map(subRevKey => {
                             const effect = setEffectsData[subRevKey];
                             const mainTitle = translateRevelationName(revelation, true);
-                            
+
                             let subTitle;
                             if (currentLang === 'en' && translationData) {
                                 // 영어 키를 그대로 사용
@@ -838,15 +888,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // 한국어 키를 번역
                                 subTitle = translateRevelationName(subRevKey, false);
                             }
-                            if (currentLang === 'en' && subTitle=='type')
-                            {
+                            if (currentLang === 'en' && subTitle == 'type') {
                                 return '#NOT RELEASED IN GLOBAL SERVER#';
                             }
-                            else if (currentLang === 'jp' && subTitle=='type')
-                            {
+                            else if (currentLang === 'jp' && subTitle == 'type') {
                                 return '#グローバルサーバーで未発表#';
                             }
-                            
+
                             return `[${mainTitle} - ${subTitle}]\n${effect}`;
                         }).join('\n\n');
                     }
@@ -870,12 +918,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                     // 한국어 키를 번역
                                     subTitle = translateRevelationName(subRevKey, false);
                                 }
-                                if (currentLang === 'en' && subTitle=='type')
-                                {
+                                if (currentLang === 'en' && subTitle == 'type') {
                                     return '#NOT RELEASED IN GLOBAL SERVER#';
                                 }
-                                else if (currentLang === 'jp' && subTitle=='type')
-                                {
+                                else if (currentLang === 'jp' && subTitle == 'type') {
                                     return '#グローバルサーバーで未発表#';
                                 }
                                 return `[${mainTitle} - ${subTitle}]\n${effect}`;
@@ -885,12 +931,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-            
+
             item.appendChild(text);
             item.appendChild(icon);
             container.appendChild(item);
         });
-        
+
         return container;
     }
 
@@ -899,11 +945,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.translateRevelationName = translateRevelationName;
 
     // 스킬 정보 채우기 (전역 함수로 설정)
-    window.fillSkillsInfo = function(characterName) {
+    window.fillSkillsInfo = function (characterName) {
         // console.log('fillSkillsInfo 호출됨:', characterName);
-        
+
         const skillsGrid = document.querySelector('.skills-grid');
-        
+
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
         // console.log('현재 언어:', currentLang);
@@ -912,7 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let character;
         if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
             character = window.enCharacterSkillsData[characterName];
-           // console.log('영어 스킬 데이터 사용:', character);
+            // console.log('영어 스킬 데이터 사용:', character);
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
             // console.log('일본어 스킬 데이터 사용:', character);
@@ -920,14 +966,14 @@ document.addEventListener('DOMContentLoaded', () => {
             character = characterSkillsData[characterName];
             // console.log('한국어 스킬 데이터 사용:', character);
         }
-        
+
         if (!character) return;
-        
+
         // 스킬 1,2,3의 이름이 모두 비어있는지 확인
-        const hasActiveSkills = ['skill1', 'skill2', 'skill3'].some(skillType => 
+        const hasActiveSkills = ['skill1', 'skill2', 'skill3'].some(skillType =>
             character[skillType] && character[skillType].name
         );
-        
+
 
         // 스킬이 모두 비어있으면 스킬 섹션 전체를 숨김
         const skillSection = skillsGrid.closest('.skills-card');
@@ -937,30 +983,30 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             skillSection.style.display = ''; // 스킬이 있으면 보이게
         }
-        
+
         // 스킬 레벨 버튼 추가
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'skill-level-buttons';
-        
+
         // characterData에서 rarity 확인
         const characterInfo = characterData[characterName];
         if (!characterInfo) return;
 
         //console.log(characterInfo);
-        
+
         // 언어별 레벨 텍스트
         const levelTexts = {
-            kr: characterInfo.rarity === 4 
-            ? ['전체', '10레벨', '10레벨+심상5', '12레벨', '12레벨+심상5']
+            kr: characterInfo.rarity === 4
+                ? ['전체', '10레벨', '10레벨+심상5', '12레벨', '12레벨+심상5']
                 : ['전체', '10레벨', '10레벨+심상5', '13레벨', '13레벨+심상5'],
-            en: characterInfo.rarity === 4 
+            en: characterInfo.rarity === 4
                 ? ['All', 'LV10', 'LV10+Minds.5', 'LV12', 'LV12+Minds.5']
                 : ['All', 'LV10', 'LV10+Minds.5', 'LV13', 'LV13+Minds.5'],
-            jp: characterInfo.rarity === 4 
+            jp: characterInfo.rarity === 4
                 ? ['全体', 'LV10', 'LV10+イメジャリー5', 'LV12', 'LV12+イメジャリー5']
                 : ['全体', 'LV10', 'LV10+イメジャリー5', 'LV13', 'LV13+イメジャリー5']
         };
-        
+
         const levels = levelTexts[currentLang] || levelTexts.kr;
 
         levels.forEach((level, index) => {
@@ -973,32 +1019,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         skillsGrid.parentElement.insertBefore(buttonContainer, skillsGrid);
-        
+
         // 스킬 순서 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
-        
+
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
         if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
 
-        else if (characterInfo.persona3 ) {
+        else if (characterInfo.persona3) {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_support', 'passive1', 'passive2'];
         }
 
         // console.log(skillTypes);
-        
+
         skillsGrid.innerHTML = ''; // 기존 내용 초기화
-        
+
         skillTypes.forEach(type => {
             const skill = character[type];
             if (!skill) return;
-            
+
             const skillCard = document.createElement('div');
             skillCard.className = 'skill-card';
-            
+
             const iconPath = skill.element ? `${BASE_URL}/assets/img/skill-element/${skill.element}.png` : '';
-            
+
             let costText = '';
             const costParts = [];
 
@@ -1013,20 +1059,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // 직업에 따라 기본 라벨 세트 선택
             const labelSet = (characterInfo.position === '해명')
                 ? { kr: '행동', en: ' Action', jp: '行動' }
-                : { kr: '턴',   en: ' Turn',   jp: 'ターン' };
+                : { kr: '턴', en: ' Turn', jp: 'ターン' };
             if (skill.cool && skill.cool > 0) {
                 const label = labelSet[currentLang] || labelSet.kr;
                 costParts.push(`${skill.cool}${label}`);
             }
             costText = costParts.join(' / ');
-            
+
             // highlight 스킬의 경우 name이 없을 경우 "HIGHLIGHT"로 이름 표시
             let skillName = type === 'skill_highlight' && !skill.name ? 'HIGHLIGHT' : (skill.name || '');
-            
+
             // console.log(skill);
             // 각 스킬의 고유한 description 사용
             let description = skill.description || '';
-            
+
             // 초기 설명에도 숫자 패턴에 skill-level-values 클래스 적용
             description = description.replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
                 const values = match.split('/');
@@ -1057,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             skillsGrid.appendChild(skillCard);
         });
-        
+
         // 툴팁 적용
         window.updateSkillDescriptions('0', characterName);
         if (typeof addTooltips === 'function') {
@@ -1072,15 +1118,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.updateSkillDescriptions = function(levelIndex, characterName) {
+    window.updateSkillDescriptions = function (levelIndex, characterName) {
         // 버튼 상태 업데이트
         document.querySelectorAll('.skill-level-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.level === levelIndex.toString());
         });
-        
+
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
-        
+
         // 언어별 데이터 사용
         let character;
         if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
@@ -1090,16 +1136,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             character = characterSkillsData[characterName];
         }
-        
+
         if (!character) return;
 
         // characterData에서 캐릭터 정보 가져오기
         const characterInfo = characterData[characterName];
         if (!characterInfo) return;
-        
+
         // 스킬 타입 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
-        
+
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
         if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
@@ -1110,14 +1156,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (characterInfo.persona3) {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_support', 'passive1', 'passive2'];
         }
-        
+
         // 모든 스킬 설명 업데이트
         document.querySelectorAll('.skill-description').forEach((descElement, index) => {
             const skill = character[skillTypes[index]];
-            
+
             if (skill && skill.description) {
                 let description = skill.description;
-                
+
                 if (levelIndex === '-1') { // '전체' 선택 시
                     // 슬래시로 구분된 수치를 모두 표시 (4개 수치 지원)
                     description = description.replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
@@ -1140,11 +1186,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         return `<span class="skill-level-values">${selectedValue}</span>`;
                     });
                 }
-                
+
                 descElement.innerHTML = description;
             }
         });
-        
+
         // 툴팁 다시 적용
         if (typeof addTooltips === 'function') {
             addTooltips();
@@ -1178,22 +1224,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // basic 배열이 비어있거나 모든 항목이 빈 값인 경우
-        const hasBasicContent = basicArray.some(item => 
+        const hasBasicContent = basicArray.some(item =>
             item.label && item.value && item.label.trim() !== '' && item.value.trim() !== ''
         );
 
-        
+
         // 현재 언어에 따른 note 배열 선택
         let noteArray = operationData[characterName].note; // 기본값은 한국어
-        
+
         if (currentLang === 'en' && operationData[characterName].note_en) {
             noteArray = operationData[characterName].note_en;
         } else if (currentLang === 'jp' && operationData[characterName].note_jp) {
             noteArray = operationData[characterName].note_jp;
         }
-        
+
         // note 배열이 비어있거나 모든 항목이 빈 값인 경우
-        const hasNoteContent = noteArray && noteArray.some(note => 
+        const hasNoteContent = noteArray && noteArray.some(note =>
             note && note.trim() !== ''
         );
 
@@ -1203,7 +1249,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .filter(item => item.label && item.value && item.label.trim() !== '' && item.value.trim() !== '')
                 .map(item => {
                     const skills = item.value.split(' › ');
-                    const skillSteps = skills.map(skill => 
+                    const skillSteps = skills.map(skill =>
                         `<div class="skill-step">${skill}</div>`
                     ).join('<div class="skill-arrow">›</div>');
 
@@ -1235,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             noteContent.innerHTML = noteArray
                 .filter(note => note && note.trim() !== '')
                 .map(note => `<div class="operation-note">${note}</div>`)
-                .join('');    
+                .join('');
         } else {
             noteContent.innerHTML = ''; // 내용만 비우기
         }
@@ -1251,20 +1297,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 임시로 flex-wrap: nowrap을 적용하여 한 줄에 표시되는지 확인
                 const originalStyle = sequence.style.cssText;
                 sequence.style.flexWrap = 'nowrap';
-                
+
                 // 실제 내용의 너비 계산 (자식 요소들의 너비 + 간격)
                 const contentWidth = Array.from(sequence.children).reduce((width, child, index) => {
                     const childWidth = child.offsetWidth;
                     const gap = index < sequence.children.length - 1 ? 8 : 0; // gap이 8px로 설정되어 있음
                     return width + childWidth + gap;
                 }, 0);
-                
+
                 // 컨테이너의 실제 너비 (operation-value의 너비)
                 const containerWidth = sequence.parentElement.offsetWidth;
-                
+
                 // 원래 스타일로 복원
                 sequence.style.cssText = originalStyle;
-                
+
                 // 내용이 컨테이너보다 넓으면 줄바꿈이 필요한 것으로 판단
                 if (contentWidth > containerWidth) {
                     needsSingleColumn = true;
@@ -1286,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 operationSettings.querySelectorAll('.skill-step').forEach(step => {
                     step.style.minWidth = '100px';
                 });
-            }  else {
+            } else {
                 operationSettings.style.display = 'grid';
                 operationSettings.style.gridTemplateColumns = 'repeat(2, 1fr)';
                 operationSettings.style.gap = '2vw';
@@ -1295,7 +1341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             operationSettings.style.display = 'none';
         }
-        
+
     }
 
 

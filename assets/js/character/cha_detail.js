@@ -524,7 +524,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 주요 데이터 렌더링 호출들을 안전 실행으로 래핑
-        safeRun('fillSettingsInfo', () => fillSettingsInfo(character));
+        // 계시 이름 번역 데이터(en/jp)가 준비된 이후에 fillSettingsInfo 를 실행하도록 대기
+        safeRun('fillSettingsInfo', () => {
+            const lang = getCurrentLanguage();
+
+            // 한국어는 바로 실행
+            if (lang === 'kr') {
+                fillSettingsInfo(character);
+                return;
+            }
+
+            const isReady = () => {
+                if (lang === 'en') return typeof window.enRevelationData !== 'undefined';
+                if (lang === 'jp') return typeof window.jpRevelationData !== 'undefined';
+                return true;
+            };
+
+            if (isReady()) {
+                fillSettingsInfo(character);
+                return;
+            }
+
+            // EN/JP 이지만 아직 번역 데이터가 안 들어온 경우: 최대 2초까지 재시도
+            let attempts = 0;
+            const maxAttempts = 40; // 40 * 50ms = 2000ms
+
+            const tick = () => {
+                if (isReady() || attempts++ >= maxAttempts) {
+                    // 준비되었거나 타임아웃이면 일단 렌더 (타임아웃이면 한국어 이름일 수 있음)
+                    fillSettingsInfo(character);
+                } else {
+                    setTimeout(tick, 50);
+                }
+            };
+
+            tick();
+        });
         safeRun('fillOperationInfo', () => fillOperationInfo(characterName));
         safeRun('updateSkillLevelItems', updateSkillLevelItems);
         safeRun('updateMindItems', updateMindItems);

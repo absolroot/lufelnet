@@ -790,7 +790,24 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 window[globalVarName] = window[globalVarName] || {};
                 const _BASE = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
                 const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?v=${APP_VERSION}`;
-                const baseJson = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.json?v=${APP_VERSION}`;
+
+                // party.js 는 없는 캐릭터가 많으므로, <script> 삽입 대신 fetch로 조용히 시도
+                if (fileBase === 'party') {
+                    try {
+                        const resp = await fetch(baseJs, { cache: 'no-store' });
+                        if (!resp || !resp.ok) {
+                            // 파일이 없으면 조용히 실패 처리 (404 등 콘솔 에러 최소화)
+                            return false;
+                        }
+                        const scriptText = await resp.text();
+                        // 전역 컨텍스트에서 실행 (window.recommendParty[...] 채움)
+                        new Function(scriptText)();
+                        return !!(window[globalVarName] && window[globalVarName][name]);
+                    } catch (e) {
+                        console.warn(`[SAFE:loadPerCharacterResource:${fileBase}:fetch]`, e);
+                        return false;
+                    }
+                }
                 const loadJs = () => new Promise((resolve) => {
                     try {
                         const s = document.createElement('script');
@@ -825,19 +842,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 });
                 const ok = await loadJs();
                 if (ok) return true;
-                // JSON 폴백
-                try {
-                    const resp = await fetch(baseJson, { cache: 'no-store' });
-                    if (resp && resp.ok) {
-                        const data = await resp.json();
-                        if (data && typeof data === 'object') {
-                            window[globalVarName][name] = data;
-                            return true;
-                        }
-                    }
-                } catch (e) {
-                    console.warn(`[SAFE:loadPerCharacterResource:${fileBase}:json]`, e);
-                }
+                
             } catch (e) {
                 console.warn('[SAFE:loadPerCharacterResource]', e);
                                     }
@@ -863,10 +868,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
                 loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
                 loadPerCharacterResource(name, { fileBase: 'ritual', globalVarName: 'ritualData' }),
-                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' }),
-                // J&C 전용 아이콘 스크립트 (필요 시만 로드)
-                loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' })
+                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' })
             ];
+
+            // J&C 전용 아이콘 스크립트는 해당 캐릭터일 때만 로드
+            if (name === 'J&C' || name === '쥐스틴 & 카롤린') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' }));
+            }
+
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
         }
 
@@ -1856,7 +1865,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         };
     } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
     // 추천 페르소나와 파티 로드 함수
-    function loadRecommendations(characterName) {
+    async function loadRecommendations(characterName) {
+        // 추천 파티 이름이 항상 동일한 기준(KR 메타)으로 동작하도록 보장
+        await ensureKrNameData();
         if (!characterName || !(window.recommendParty && window.recommendParty[characterName])) {
             document.getElementById('recommended-sections').style.display = 'none';
             return;
@@ -1948,19 +1959,65 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         return personaName;
     }
 
+    // KR 캐릭터 이름 메타 (추천 파티 이름용) - 비동기 로드 1회
+    let krNameData = null;
+    let krNameDataLoaded = false;
+
+    async function ensureKrNameData() {
+        if (krNameDataLoaded) return krNameData || {};
+        krNameDataLoaded = true;
+        try {
+            const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+            const url = `${base}/data/kr/characters/characters.js?v=${APP_VERSION}`;
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const text = await res.text();
+            const parsed = extractDataFromScript(text);
+            krNameData = (parsed && parsed.characterData) ? parsed.characterData : {};
+        } catch (e) {
+            console.warn('[SAFE:ensureKrNameData]', e);
+            krNameData = {};
+        }
+        // 전역에서도 접근 가능하도록 노출 (필요 시 디버그용)
+        window.krNameData = krNameData;
+        return krNameData;
+    }
+
     // 캐릭터 이름 다국어 지원
     function getLocalizedCharacterName(characterName) {
         const currentLang = getCurrentLanguage();
-        if (!characterData || !characterData[characterName]) {
+        const base = (krNameData && krNameData[characterName])
+            || (characterData && characterData[characterName])
+            || null;
+        if (!base) return characterName;
+
+        const c = (characterData && characterData[characterName]) || base;
+
+        // 영어: 우선 코드네임, 없으면 영어 이름, 그래도 없으면 원본
+        if (currentLang === 'en') {
+            if (c.codename) return c.codename;
+            if (c.name_en) return c.name_en;
+            if (base.codename) return base.codename;
+            if (base.name_en) return base.name_en;
             return characterName;
         }
 
-        if (currentLang === 'en' && characterData[characterName].codename) {
-            return characterData[characterName].codename;
-        } else if (currentLang === 'jp' && characterData[characterName].name_jp) {
-            return characterData[characterName].name_jp;
+        // 일본어: 우선 일본어 이름, 없으면 영어 이름, 그래도 없으면 원본
+        if (currentLang === 'jp') {
+            if (c.name_jp) return c.name_jp;
+            if (c.name_en) return c.name_en;
+            if (base.name_jp) return base.name_jp;
+            if (base.name_en) return base.name_en;
+            return characterName;
         }
-        return characterName;
+
+        // 한국어: 객체 키(원래 캐릭터 이름)를 그대로 사용
+        if (currentLang === 'kr') {
+            return characterName;
+        }
+
+        // 기타(방어적): KR 이름이 있으면 그걸 사용
+        return base.name || characterName;
     }
 
     function loadRecommendedPersona(personaData) {

@@ -20,11 +20,11 @@ review_jp: `
 
 TECHNICALを所持していますが、後から追加された数値であるSKILL MASTER効果の影響は現時点では受けていません。`,
         pros: ["강력한 단일 대미지를 반복해서 줄 수 있다."],
-        pros_en: [""],
-        pros_jp: [""],
+        pros_en: ["Can deal powerful single-target damage repeatedly."],
+        pros_jp: ["強力な単体ターゲットダメージを繰り返し与えられます。"],
         cons: ["원소 이상을 지속적으로 부여해야 한다."],
-        cons_en: [""],
-        cons_jp: [""],
+        cons_en: ["Need to continuously apply elemental ailments."],
+        cons_jp: ["属性異常を継続的に適用する必要があります。"],
     };
 })();
 

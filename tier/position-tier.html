@@ -623,29 +623,46 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         });
     }
 
+    // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
+    async function fetchCharactersData(url) {
+        try {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            const sandbox = {};
+            const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+            const list = win.characterList || { mainParty: [], supportParty: [] };
+            const data = win.characterData || {};
+            return { characterList: list, characterData: data };
+        } catch (e) {
+            return null;
+        }
+    }
+
     // 언어별 캐릭터 데이터 로딩 및 병합
     // listLangOverride: 'kr'를 전달하면 캐릭터 리스트는 KR 기준 사용 (표시 이름은 현재 언어 우선)
     async function loadCharacterData(listLangOverride) {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
         try {
-            // 1) KR 스크립트 로드 후 전역에서 추출
-            await loadScriptOnce(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
-            const krCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
-            const krCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
+            // 1) KR 데이터 샌드박스 로드
+            const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+            if (!kr) throw new Error('Failed to load KR character data');
+            const krCharacterData = kr.characterData || {};
+            const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
 
 
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
             if (currentLang !== 'kr') {
                 try {
-                    const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
-                    await loadScriptOnce(langUrl);
-                    const langCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
-                    const langCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
+                    const lang = await fetchCharactersData(`/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`);
+                    if (!lang) throw new Error('lang load failed');
+                    const langCharacterData = lang.characterData || {};
+                    const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
 
                     const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
                     window.characterData = mergedData;
-                    window.characterList = (listLangOverride === 'kr') ? krCharacterList : (langCharacterList || krCharacterList);
+                    window.characterList = (listLangOverride === 'kr') ? krCharacterList : langCharacterList;
                 } catch (e) {
                     window.characterData = krCharacterData;
                     window.characterList = krCharacterList;
@@ -844,6 +861,15 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         if (btnGlobal && btnKR && btnKRSpoiler) {
             // 기본값: Global 활성화
             setActive('global');
+            // 초기 로딩 시에도 실제 소스를 Global로 전환
+            if (typeof window.setTierSource === 'function') {
+                await window.setTierSource('global');
+            } else {
+                // 로더 지연 대비 재시도
+                setTimeout(() => {
+                    try { if (typeof window.setTierSource === 'function') window.setTierSource('global'); } catch (_) {}
+                }, 100);
+            }
             btnGlobal.addEventListener('click', async () => {
                 setActive('global');
                 if (typeof window.setTierSource === 'function') await window.setTierSource('global');

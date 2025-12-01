@@ -840,7 +840,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }
             } catch (e) {
                 console.warn('[SAFE:loadPerCharacterResource]', e);
-            }
+                                    }
             return false;
         }
 
@@ -899,9 +899,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     const key = labelEl.textContent.trim();
                     if (Object.prototype.hasOwnProperty.call(values, key)) {
                         valueEl.textContent = values[key];
-                    }
+                        }
                 });
-            } catch (e) {
+                } catch (e) {
                 console.warn('[SAFE:fillBasicStats]', e);
             }
         }
@@ -2165,9 +2165,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
 
         if (characterDataMatch && characterListMatch) {
-            // JSON으로 파싱하기 위해 Function 생성자 사용
-            const characterData = new Function('return ' + characterDataMatch[1])();
-            const characterList = new Function('return ' + characterListMatch[1])();
+        // JSON으로 파싱하기 위해 Function 생성자 사용
+        const characterData = new Function('return ' + characterDataMatch[1])();
+        const characterList = new Function('return ' + characterListMatch[1])();
             return { characterData, characterList };
         }
 
@@ -2178,7 +2178,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const characterList = resultWin.characterList || resultWin.enCharacterList || resultWin.jpCharacterList || { mainParty: [], supportParty: [] };
             const characterData = resultWin.characterData || resultWin.enCharacterData || resultWin.jpCharacterData || {};
             if (!characterList || !characterData) throw new Error('missing keys');
-            return { characterData, characterList };
+        return { characterData, characterList };
         } catch (e) {
             throw new Error('Failed to extract data from script');
         }

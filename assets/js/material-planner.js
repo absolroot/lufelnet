@@ -137,20 +137,50 @@
         }
     }
 
-    // 데이터 로드 (언어별 목록 + 스포일러 처리)
+    // 데이터 로드 (언어별 목록 + 스포일러 처리, window.* 포맷 대응)
     async function loadCharacterData(){
         const lang = STATE.lang;
         const useKrFull = (lang !== 'kr' && STATE.spoiler);
-        const listPath = useKrFull ? '/data/kr/characters/characters.js' : `/data/${lang}/characters/characters.js`;
-        const [res, krRes] = await Promise.all([
-            fetch(`${BASE_URL}${listPath}?v=${APP_VERSION}`).then(r=>r.text()),
-            fetch(`${BASE_URL}/data/kr/characters/characters.js?v=${APP_VERSION}`).then(r=>r.text()).catch(()=>''),
+        const primaryLang = useKrFull ? 'kr' : lang;
+        const primaryUrl = `${BASE_URL}/data/${primaryLang}/characters/characters.js?v=${APP_VERSION}`;
+        const krUrl = `${BASE_URL}/data/kr/characters/characters.js?v=${APP_VERSION}`;
+
+        async function evalCharacters(text){
+            if(!text) return { characterList:{ mainParty:[], supportParty:[] }, characterData:{} };
+            // window.characterList / window.characterData 패턴을 샌드박스에서 평가
+            const sandbox = {};
+            try{
+                const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+                return {
+                    characterList: (win && win.characterList) || { mainParty:[], supportParty:[] },
+                    characterData: (win && win.characterData) || {}
+                };
+            }catch(e){
+                // 구형 포맷(const characterList = ...) 폴백
+                const out = {};
+                try{
+                    new Function('out', `${text};
+                        out.characterList = (typeof characterList!=='undefined') ? characterList : { mainParty:[], supportParty:[] };
+                        out.characterData = (typeof characterData!=='undefined') ? characterData : {};
+                    `)(out);
+                }catch(_){}
+                return {
+                    characterList: out.characterList || { mainParty:[], supportParty:[] },
+                    characterData: out.characterData || {}
+                };
+            }
+        }
+
+        const [primaryText, krText] = await Promise.all([
+            fetch(primaryUrl).then(r => r.ok ? r.text() : '').catch(()=> ''),
+            fetch(krUrl).then(r => r.ok ? r.text() : '').catch(()=> '')
         ]);
-        const tmp = {};
-        new Function('out', `${res}; out.characterList = (typeof characterList!=='undefined')?characterList:[]; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(tmp);
-        const krBox = {};
-        if(krRes) new Function('out', `${krRes}; out.characterList = (typeof characterList!=='undefined')?characterList:[]; out.characterData = typeof characterData!=='undefined'?characterData:{};`)(krBox);
-        STATE.characterList = tmp.characterList || [];
+
+        const tmp = await evalCharacters(primaryText);
+        const krBox = await evalCharacters(krText);
+
+        STATE.characterList = tmp.characterList || { mainParty:[], supportParty:[] };
+
         // 캐릭터 메타 병합: 키별로 KR 메타가 우선(특히 name_en/name_jp), 언어별 메타의 필드가 있으면 보조로 유지
         const merged = { ...(tmp.characterData||{}) };
         const krMap = krBox.characterData || {};
@@ -160,7 +190,7 @@
         }
         STATE.characterData = merged;
         // KR 전용 캐릭터 리스트(특히 support_party)를 보관
-        STATE.krCharacterList = krBox.characterList || null;
+        STATE.krCharacterList = krBox.characterList || { mainParty:[], supportParty:[] };
     }
 
     // 모달 유틸

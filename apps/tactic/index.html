@@ -387,6 +387,72 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         return 'kr';
       }
 
+      // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
+      async function fetchCharactersData(url) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const text = await res.text();
+          const sandbox = {};
+          const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+          const list = win.characterList || { mainParty: [], supportParty: [] };
+          const data = win.characterData || {};
+          return { characterList: list, characterData: data };
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // KR 데이터를 기본으로, 언어 데이터가 제공하는 표시용 필드만 덮어씀
+      function mergeCharacterData(krData, langData) {
+        const mergedData = {};
+        const currentLang = getCurrentLanguage();
+        Object.keys(krData || {}).forEach(key => { mergedData[key] = { ...krData[key] }; });
+        Object.keys(langData || {}).forEach(key => {
+          const krChar = krData[key];
+          const langChar = langData[key];
+          if (!krChar) return;
+          if (currentLang === 'en') {
+            if (krChar.name_en) mergedData[key].name = krChar.name_en;
+            else if (langChar?.name) mergedData[key].name = langChar.name;
+          } else if (currentLang === 'jp') {
+            if (krChar.name_jp) mergedData[key].name = krChar.name_jp;
+            else if (langChar?.name) mergedData[key].name = langChar.name;
+          }
+          if (langChar?.role) mergedData[key].role = langChar.role;
+          if (langChar?.tag) mergedData[key].tag = langChar.tag;
+          if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
+            mergedData[key].release_order = langChar.release_order;
+          }
+        });
+        return mergedData;
+      }
+
+      // 전역 window.characterData/window.characterList를 언어/토글에 맞게 준비
+      async function ensureCharacterDataLoaded() {
+        const lang = getCurrentLanguage();
+        let forceKR = false;
+        try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch (_) {}
+        const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+        if (!kr) return false;
+        if (lang === 'kr') {
+          window.characterData = kr.characterData || {};
+          window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+          return true;
+        }
+        const lg = await fetchCharactersData(`/data/${lang}/characters/characters.js?v=${APP_VERSION}`);
+        if (!lg) {
+          window.characterData = kr.characterData || {};
+          window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+          return true;
+        }
+        const merged = mergeCharacterData(kr.characterData || {}, lg.characterData || {});
+        window.characterData = merged;
+        window.characterList = forceKR ? (kr.characterList || { mainParty: [], supportParty: [] })
+                                       : (lg.characterList || { mainParty: [], supportParty: [] });
+        return true;
+      }
+
             // UI 번역 함수
       function translateUI() {
         const currentLang = getCurrentLanguage();
@@ -643,8 +709,10 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
       }
 
       // DOM is loaded, initialize initial settings
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", async () => {
 
+        // 언어별 캐릭터 데이터 준비 (전역 주입)
+        await ensureCharacterDataLoaded();
         // 번역 적용
         translateUI();
         updateToggleUILabels();
@@ -688,7 +756,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             if (ml) ml.textContent = 'KRキャラクター一覧を使用';
           }
 
-          function applyChange(val){
+          async function applyChange(val){
             try { localStorage.setItem('forceKRList', String(val)); } catch(_) {}
             // Close any open dropdowns by blurring focused input to refresh on next open
             if (document.activeElement && document.activeElement.blur) {
@@ -696,6 +764,8 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             }
             // Live refresh party dropdowns: ensure translations ready first
             try {
+              // 전역 characterList를 토글 상태에 맞춰 갱신
+              await ensureCharacterDataLoaded();
               if (typeof setupTranslations === 'function') {
                 setupTranslations()
                   .then(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} })

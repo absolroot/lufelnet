@@ -940,6 +940,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
+        // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
+        await safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
 
         const character = characterData[characterName];
 
@@ -1761,7 +1763,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         return new Promise((resolve) => {
             if (currentLang === 'en') {
                 // 영어 계시 데이터 로드
-                fetch(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
+                fetch(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`, { cache: 'no-store' })
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 enRevelationData로 변경해서 실행
@@ -1776,7 +1778,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     });
             } else if (currentLang === 'jp') {
                 // 일본어 계시 데이터는 영어 데이터와 동일하게 사용
-                fetch(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`)
+                fetch(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`, { cache: 'no-store' })
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 jpRevelationData로 변경해서 실행
@@ -1800,12 +1802,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const urlParams = new URLSearchParams(window.location.search);
         const characterName = urlParams.get('name');
 
-        if (characterName && characterData[characterName]) {
+        if (!characterName) return;
+
+        // characterData 준비 전이면 재시도
+        if (typeof characterData === 'undefined' || !characterData[characterName]) {
+            setTimeout(refreshRevelationDisplay, 100);
+            return;
+        }
+
+        // cha_detail.js 의 createRevelationValue 준비 전이면 재시도
             if (typeof window.createRevelationValue !== 'function') {
-                // cha_detail.js 로딩 지연 시 한 번 더 시도
                 setTimeout(refreshRevelationDisplay, 100);
                 return;
             }
+
             const character = characterData[characterName];
 
             // 계시 부분만 다시 렌더링
@@ -1822,7 +1832,6 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             if (character.sub_revelation && Array.isArray(character.sub_revelation)) {
                 subRevelationValue.textContent = '';
                 subRevelationValue.appendChild(window.createRevelationValue(character.sub_revelation, false));
-            }
         }
     }
 

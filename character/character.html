@@ -877,8 +877,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 if (!data) return;
                 const pick = (obj) => {
                     if (!obj || typeof obj !== 'object') return null;
-                    // 우선순위: a0_lv80 -> a1_lv80 -> a0_lv1 -> 최상위
-                    const candidate = obj.a0_lv80 || obj.a1_lv80 || obj.a0_lv1 || obj;
+                    // 우선순위: a0_lv1 -> a0_lv80 -> a1_lv80 -> 최상위
+                    const candidate = obj.a0_lv1 || obj.a0_lv80 || obj.a1_lv80 || obj;
                     const map = {
                         '생명': candidate.HP ?? candidate.hp ?? 0,
                         '공격력': candidate.attack ?? 0,
@@ -1959,8 +1959,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             weaponSection.className = 'persona-attribute-section';
 
             const title = document.createElement('h3');
-            title.textContent = currentLang === 'en' ? 'WEAPONS' :
-                (currentLang === 'jp' ? 'ウェポン' : 'WEAPONS');
+            title.textContent = currentLang === 'en' ? 'WONDER WEAPONS' :
+                (currentLang === 'jp' ? 'ウェポン' : 'WONDER WEAPONS');
             weaponSection.appendChild(title);
 
             const weaponList = document.createElement('div');
@@ -2117,7 +2117,46 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 console.log('Error loading recommended persona');
             }
         });
+
+        // 레이아웃 보정: 홀수개 시 첫 섹션 전체 너비
+        try { adjustRecommendedPersonaLayout(); } catch (e) { console.warn('[SAFE:adjustRecommendedPersonaLayout]', e); }
     }
+
+    // 추천 페르소나 레이아웃 보정 (PC에서 항목 수 홀수면 첫 항목 전체 너비)
+    function adjustRecommendedPersonaLayout() {
+        try {
+            const container = document.getElementById('recommended-persona-content');
+            if (!container) return;
+
+            // PC 화면(>1200px)에서만 적용
+            const isPC = window.innerWidth > 1200;
+
+            // 직계 자식 중 .persona-attribute-section만 카운트
+            const items = Array.from(container.children).filter(function (el) {
+                return el && el.classList && el.classList.contains('persona-attribute-section');
+            });
+
+            // 기존 상태 초기화
+            items.forEach(function (el) { el.classList.remove('span-full'); });
+
+            if (!isPC) return;
+            if (items.length === 0) return;
+
+            // 홀수개면 첫 항목을 가로 전체로
+            if (items.length % 2 === 1) {
+                items[0].classList.add('span-full');
+            }
+        } catch (e) {
+            console.warn('[SAFE:adjustRecommendedPersonaLayout]', e);
+        }
+    }
+
+    // 리사이즈 시에도 레이아웃 재보정
+    try {
+        window.addEventListener('resize', function () {
+            try { adjustRecommendedPersonaLayout(); } catch (_) {}
+        });
+    } catch (e) { console.warn('[SAFE:resize-listener]', e); }
 
     // Extract data from script text (same as index.html)
     function extractDataFromScript(scriptText) {
@@ -2545,6 +2584,19 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     @media (max-width: 1200px) {
         .pros-cons-group {
             grid-template-columns: 1fr;
+        }
+    }
+
+    /* 추천 조합 레이아웃: PC에서 2열 + 홀수 시 첫 항목 전체 너비 */
+    @media (min-width: 1201px) {
+        #recommended-persona-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            row-gap: 0px;
+        }
+        #recommended-persona-content > .persona-attribute-section.span-full {
+            grid-column: 1 / -1;
         }
     }
 </style>

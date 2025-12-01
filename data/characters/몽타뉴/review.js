@@ -1,7 +1,15 @@
 (function () {
     window.characterReview = window.characterReview || {};
     window.characterReview["몽타뉴"] = { name_en: "Montagne Kotone", name_jp: "琴音 モンターニュ", codename: "MONT",
-        review: ``
+        review: ``,
+        review_en: ``,
+        review_jp: ``,
+        pros: [""],
+        pros_en: [""],
+        pros_jp: [""],
+        cons: [""],
+        cons_en: [""],
+        cons_jp: [""],
     };
 })();
 

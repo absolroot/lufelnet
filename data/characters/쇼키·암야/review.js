@@ -8,14 +8,14 @@
 
 스킬2는 턴을 소모하지 않고 반복 사용 가능하며 자체적으로 체력을 감소시키고, 실드를 획득한다. 
 
-체력을 40% 이하로 유지해야 최고의 성능을 유지할 수 있기 때문에 스킬2를 최대치로 사용하는 것이 좋다. 
+**체력을 40% 이하로 유지해야 최고의 성능을 유지**할 수 있기 때문에 스킬2를 최대치로 사용하는 것이 좋다. 
 
-특이사항으로 풀풀 파티 기준으로 마음의 바다 대미지 계산 메커니즘이 변경되며 P5X 최초로 99,999,999 대미지를 달성한 딜러가 됐다.`,
+특이사항으로 풀풀 파티 기준으로 마음의 바다 대미지 계산 매커니즘이 변경되며 P5X 최초로 99,999,999 대미지를 달성한 딜러가 됐다.`,
         review_en: `He is a high-damage AoE dealer whose performance relies on maintaining low HP.
 
 Skill 1 and Skill 2 enhance Skill 3, and **when these enhancements reach their maximum, he can unleash explosive damage** in that turn.
 
-Through Skill 2, he can consume his own HP without consuming a turn, and keep his HP below 40% to achieve optimal performance.
+Through Skill 2, he can consume his own HP without consuming a turn, and **keep his HP below 40% to achieve optimal performance**.
 
 Because of this, receiving healing at an unexpected timing can disrupt his damage cycle.
 
@@ -24,7 +24,7 @@ Notably, with a A6R6 party setup, the Sea of Hearts damage calculation mechanics
 
 スキル1とスキル2でスキル3を強化し、その強化が**最大に達したターンに爆発的なダメージ**を与えることができる。
 
-また、スキル2で自身のHPを消費せずに使用でき、HPを40％以下に保つことで最高の性能を発揮する。
+また、スキル2で自身のHPを消費せずに使用でき、**HPを40％以下に保つことで最高の性能を発揮**する。
 
 特筆すべき点として、A6R6では心の海のダメージ計算メカニクスが変化し、P5Xで初めて 99,999,999 ダメージを達成したアタッカーとなった。`,
         pros: [

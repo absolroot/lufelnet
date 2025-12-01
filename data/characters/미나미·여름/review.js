@@ -58,7 +58,13 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - 味方単体のONE MORE／総攻撃ダメージを1ターンの間10%上昇
 - 味方単体のHIGHLIGHT／テウルギアダメージを1ターンの間10%上昇
 - 味方単体のスキルマスターを1ターンの間600上昇
-`
+`,
+        pros: [""],
+        pros_en: [""],
+        pros_jp: [""],
+        cons: [""],
+        cons_en: [""],
+        cons_jp: [""],
     };
 })();
 

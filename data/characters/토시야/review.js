@@ -11,8 +11,6 @@
 스킬1이 부여하는 [증오 시]는 30%의 확률로 적에게 주원 효과를 부여하고, 30%는 효과 명중 수치에 따라 증가할 수 있다.
 
 스킬1을 반복해 최대한 많은 주원 효과를 적에게 부여하고, 페르소나 **파즈스**의 패시브를 통해 주원 효과를 결산시키면 큰 대미지를 적에게 부여할 수 있다.
-
-참고사항으로 절대 다수의 **경쟁 콘텐츠 보스는 체력 비례 대미지 대폭 감소 패시브를 지니고 있다.**
 `,
         review_en: `
 A damage dealer that uses Curse Effects to deal % damage to enemies.
@@ -24,8 +22,6 @@ Therefore, buffs should be structured to **increase Damage Bonus(Atk Mult)** or 
 **[Verse of Hate]** applied by Skill 1 has a 30% chance to inflict Curse Effects on the enemy, and this 30% can increase depending on Ailment Accuracy Rate.
 
 By repeating Skill 1 to inflict as many Curse Effects as possible, and using Persona **Pazuzu**’s passive to finalize those effects, you can deal great damage to enemies.
-
-As a side note, **most competitive content bosses have passives that greatly reduce HP-percentage-based damage.**
 `,
 review_jp: `
 呪怨効果を基に敵に％ダメージを与えるアタッカーです。
@@ -37,9 +33,13 @@ review_jp: `
 スキル1で付与される憎文は30%の確率で敵に呪怨効果を付与し、この30%は状態異常命中により上昇する可能性があります。
 
 スキル1を繰り返してできるだけ多くの敵に呪怨効果を付与し、ペルソナ**パズズ**のパッシブでこれを清算することで、大きなダメージを与えることができます。
-
-参考までに、**ほとんどの競争コンテンツのボスはHP比例ダメージを大きく軽減するパッシブを持っています。**
-`
+`,
+        pros: ["주원 효과의 체력 비례 대미지를 통해 대량의 대미지를 줄 수 있다."],
+        pros_en: ["It can deal a large amount of damage through HP-scaling damage from Curse Effects."],
+        pros_jp: ["呪怨効果によるHP割合ダメージを活用して大きなダメージを与えることができます。"],
+        cons: ["절대 다수의 보스가 체력 비례 대미지 감소 효과를 가지고 있어 토시야의 도트 대미지의 효율이 급감한다."],
+        cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Toshiya's Bleed damage."],
+        cons_jp: ["大多数のボスはHP割合ダメージ軽減効果を持っており、そのためトシヤの持続ダメージ（ドット）効率は大幅に低下します。"],
     };
 })();
 

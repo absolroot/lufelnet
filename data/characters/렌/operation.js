@@ -3,11 +3,11 @@ window.operationData["렌"] = {
     "basic": [
         {
             "label": "의식 0",
-            "value": "1 › 1 › 1 + 3 › 1 › 1 › 1 + 3"
+            "value": "1 › 1 › 1+3 › 1 › 1 › 1+3"
         },
         {
             "label": "의식 5",
-            "value": "1 › HL + 1 + 3 › 1 + 3 › 1 › 1 › HL + 3 + 3"
+            "value": "1 › HL+1+3 › 1 + 3 › 1 › 1 › HL+3+3"
         }
     ],
     "note": [

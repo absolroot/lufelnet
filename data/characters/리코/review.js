@@ -33,7 +33,13 @@ Ver2.0で登場した理子は、ストーリーを進めることで加入す�
 パッシブも**ONE MOREと総攻撃を強化**する構成となっており、ベルベットルームの試練攻略に大きく貢献します。
 
 さらに、スキル1によるデバフ、スキル3による味方回復とダメージバフ、自動発動するスキル2と、いずれも優秀な性能を持っています。
-`
+`,
+        pros: ["약점이 아닌 공격으로도 DOWN 수치를 감소시킬 수 있다.", "총공격과 ONE MORE을 강화한다.", "중요 수치인 방어력 감소 효과를 가지고 있다."],
+        pros_en: ["You can reduce the DOWN status even with a non-weakness attack.","Enhances the All-Out Attack and ONE MORE.","Has a defense reduction effect on important stats."],
+        pros_jp: ["弱点以外の攻撃でもDOWN数値を減少させることができます。","総攻撃と1Moreを強化します。","重要なステータスの防御力減少効果を持っています。"],
+        cons: ["속도가 메인 스탯이라 속성 증가 스킬의 효과가 떨어진다."],
+        cons_en: ["Since speed is the main stat, the effect of Attribute Boost skills is reduced."],
+        cons_jp: ["スピードがメインステータスなので、ステータス強化スキルの効果が低下します。"],
     };
 })();
 

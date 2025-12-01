@@ -4,7 +4,7 @@
         review: `
 단일 대상에 특화된 물리 딜러로, **『사냥꾼』 ↔ 『집행관』** 상태를 전환하며 『유혈』 중첩을 쌓고 『절개』로 폭발시키는 구조를 가진다.
 
-A0~A1에서는 『유혈』을 누적하고 유지하는 “출혈형”, A6에서는 『절개』를 연쇄로 터뜨리는 “폭발형”으로 운용 방식이 달라진다. A1부터도 “폭발형” 운영은 가능하다. 
+A0~A1에서는 『유혈』을 누적하고 유지하는 “출혈형”, A6에서는 『절개』를 연쇄로 터뜨리는 “폭발형”으로 운용 방식이 달라진다. 
 
 <br>
 
@@ -16,13 +16,7 @@ A0~A1에서는 『유혈』을 누적하고 유지하는 “출혈형”, A6에�
 
 **A6 (폭발형)**  
   『집행관』 폼을 위주로 『절개』를 반복.  
-  - 출혈 13스택 누적 이후 『밤의 장막』 진입 → S1/S2 연계로 『절개』발동.
-
----
-  
-키라를 위한 보스를 제외하고서는 절대 다수의 보스가 체력 비례형 대미지 감소 효과를 가지고 있어 키라의 도트 대미지의 효율이 급감한다.
-
-도트 대미지에는 크리티컬이 적용되지 않지만, 물리 속성 타격에는 크리티컬이 적용돼 크리티컬 관련 스탯이 낮은 의식 레벨에서는 유효하다는 연구 결과가 있다.`,
+  - 출혈 13스택 누적 이후 『밤의 장막』 진입 → S1/S2 연계로 『절개』발동.`,
 review_en: `
 A single-target Physical attacker who switches between **Hunter** and **Executioner** forms, stacking **Bleed** and detonating it through **Rend** damage.
 
@@ -42,11 +36,6 @@ Burst-oriented play becomes viable starting from Awareness 1.
   Focus on repeatedly triggering **Rend** in **Executioner Form**.  
   - After reaching 13 **Bleed** stacks, activate **Night Veil** → chain S1/S2 to trigger **Rend** bursts.
 
----
-
-Aside from bosses designed specifically for Kira, most bosses possess **HP-scaling damage reduction**, which drastically decreases the effectiveness of Kira’s Bleed damage.  
-While **Bleed** damage cannot crit, his **Physical hits can**,  
-making Critical-related stats still valuable at lower Awareness levels according to player analysis.
 `,
  
 review_jp: `
@@ -68,15 +57,13 @@ A1からでも「爆発型」の運用は十分可能。
   『執行官』フォームを主体に『裂傷』を連続発動。  
   - 『ユーレット』を13スタックまで貯めた後、『夜の帳』を発動 → S1/S2連携で『裂傷』を誘発。
 
----
-
-キラ専用ボスを除き、大多数のボスは**HP割合による被ダメージ軽減効果**を持っており、  
-そのためキラの**持続ダメージ（ドット）**効率は大幅に低下する。
-
-ドットダメージ自体にはクリティカルが適用されないが、  
-**物理属性攻撃にはクリティカルが適用される**ため、  
-低覚醒段階ではクリティカル系ステータスが有効であるという検証結果がある。
-`
+`,
+        pros: ["체력 비례 대미지를 통해 스토리 모드를 효율적으로 클리어할 수 있다."],
+        pros_en: ["It can efficiently clear story mode through HP-scaling damage."],
+        pros_jp: ["HP割合ダメージを活用してストーリーモードを効率的にクリアできます。"],
+        cons: ["대부분의 보스가 체력 비례 대미지 감소 효과를 가지고 있어 키라의 도트 대미지의 효율이 급감한다."],
+        cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Kira's Bleed damage."],
+        cons_jp: ["大多数のボスはHP割合ダメージ軽減効果を持っており、そのためキラの持続ダメージ（ドット）効率は大幅に低下します。"],
     };
 })();
 

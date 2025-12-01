@@ -1260,11 +1260,11 @@ h2 {
 
 .persona-attribute-section h3 {
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-size: 1em;
     font-weight: 500;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0px;
+    border-bottom: 0px solid rgba(255, 255, 255, 0.2);
 }
 
 /* 페르소나 리스트 */

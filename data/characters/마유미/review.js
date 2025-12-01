@@ -13,7 +13,9 @@
 
 단순 관통 수치 뿐 아니라 공격력과 대미지 보너스 버프, HIGHLIGHT까지 유용한 버프를 제공해서 **범용적이고 강력한 성능**을 발휘한다.
 
-**제대로 활용하기 위해서는 속도 스탯을 상당히 높게** 올려야하는데 그 난이도가 쉽지 않다.`,
+**제대로 활용하기 위해서는 속도 스탯을 상당히 높게** 올려야하는데 그 난이도가 쉽지 않다. 
+
+또한 스킬1의 크리티컬을 통해 DOWN 수치를 감소시키는 효과를 활용하려면 크리티컬 확률 또한 신경써주는 것이 중요하다.`,
         review_en: `A Physical-support buffer specialized in Pierce. He gains Velocity stacks whenever any Phantom Thief finishes their action.
 
 When enough Velocity stacks are accumulated, he enters an Extra Action. After entering an Extra Action, his buffs become enhanced: Skill 1 gains guaranteed Critical hits, Skill 2 grants a shield, and Skill 3 provides amplified Piercing effects.
@@ -24,7 +26,9 @@ Although he was released before the Pierce mechanic rework, the attribute receiv
 
 Beyond Pierce itself, he provides highly useful buffs such as Attack, Damage Bonus, and even HIGHLIGHT, giving him **excellent versatility and strong overall performance**.
 
-To make full use of his kit, **his Speed stat must be raised significantly**, which can be challenging to achieve.
+To make full use of his kit, **his Speed stat must be raised significantly**, which can be challenging to achieve. 
+
+Additionally, to utilize the effect of reducing DOWN values through Skill 1's Critical, it is important to pay attention to Critical Rate as well.
 `,
         review_jp: `貫通属性に特化した物理属性のサポートバッファー。怪盗が行動を終えるたびに「時速」スタックを獲得する。
 
@@ -37,6 +41,8 @@ To make full use of his kit, **his Speed stat must be raised significantly**, wh
 貫通だけでなく、攻撃力バフ・ダメージボーナス・HIGHLIGHTなど有用なバフも揃っており、**汎用性が高く非常に強力な性能**を発揮する。
 
 真価を発揮するには**速度ステータスを大幅に盛る必要があり**, そのハードルは決して低くない。
+
+また、スキル1のクリティカルによるDOWN値減少効果を活用するには、クリティカル率にも注意を払う必要がある。
 `,
         pros: ["높은 수치의 관통 효과를 제공한다.", "추가 턴 진입이 가능하다."],
         pros_en: [

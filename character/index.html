@@ -511,6 +511,24 @@ redirect_from:
         });
     }
 
+    // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
+    async function fetchCharactersData(url) {
+        try {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            const sandbox = {};
+            // 파일 내에서 window.characterList / window.characterData에 병합하도록 되어 있어도
+            // 이 샌드박스 window는 비어 있으므로 순수 언어 데이터만 담긴다.
+            const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+            const list = win.characterList || { mainParty: [], supportParty: [] };
+            const data = win.characterData || {};
+            return { characterList: list, characterData: data };
+        } catch (e) {
+            return null;
+        }
+    }
+
     // 스포일러 토글 상태 확인 함수
     function isSpoilerEnabled() {
         return localStorage.getItem('spoilerToggle') === 'true';
@@ -530,16 +548,14 @@ redirect_from:
             const krCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
             const krCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
 
-            // 2) 언어 스크립트 로드 및 병합
+            // 2) 언어 데이터 로드 및 병합(샌드박스 평가로 전역 오염 방지)
             if (currentLang !== 'kr') {
                 const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
-                try {
-                    await loadScriptOnce(langUrl);
-                    const langCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
-                    const langCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
-
-                    originalLangCharacterList = [...(langCharacterList?.mainParty || []), ...(langCharacterList?.supportParty || [])];
-
+                const lang = await fetchCharactersData(langUrl);
+                if (lang) {
+                    const langCharacterData = lang.characterData || {};
+                    const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
+                    originalLangCharacterList = [...(langCharacterList.mainParty || []), ...(langCharacterList.supportParty || [])];
                     if (!spoilerEnabled) {
                         const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
                         window.characterData = mergedData;
@@ -548,7 +564,7 @@ redirect_from:
                         window.characterData = krCharacterData;
                         window.characterList = krCharacterList;
                     }
-                } catch (e) {
+                } else {
                     // 언어별 데이터 로드 실패 시 KR 사용
                     originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
                     window.characterData = krCharacterData;

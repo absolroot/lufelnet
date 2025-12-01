@@ -1,0 +1,60 @@
+window.WeaponData = window.WeaponData || {};
+window.enCharacterWeaponData = window.enCharacterWeaponData || {};
+window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.WeaponData["마사키"] = {
+  "name": "아시야 마사키",
+  "weapon4-1": {
+    "name": "불멸의 영광",
+    "health": 1870,
+    "attack": 443,
+    "defense": 429,
+    "skill_name": "검의 시련",
+    "description": "실드 효과가 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5% 증가한다. 생명이 60% 미만인 아군 유닛에게 아시야 마사키의 실드 효과가 추가로 13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0% 증가한다."
+  },
+  "weapon5-1": {
+    "name": "신성한 맹세",
+    "health": 2338,
+    "attack": 554,
+    "defense": 537,
+    "skill_name": "영광의 훈장",
+    "description": "방어력이 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0% 증가한다. 『정직의 성인』의 실드량이 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0% 증가하며 『정직의 성인』1중첩마다 동료에게 8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5%의 대미지 증가 효과를 추가 제공한다 (최대 2중첩)."
+  }
+};
+window.enCharacterWeaponData["마사키"] = {
+  "name": "Masaki Ashiya",
+  "weapon4-1": {
+    "name": "Spina Caritatis",
+    "health": 1870.83,
+    "attack": 443.81,
+    "defense": 429.53,
+    "skill_name": "",
+    "description": "Increase shield by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%.\nAlso increase shield granted by Ashiya to allies with less than 60% HP by 13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0%."
+  },
+  "weapon5-1": {
+    "name": "Spina Sacramenti",
+    "health": 2338.77,
+    "attack": 554.96,
+    "defense": 537.33,
+    "skill_name": "",
+    "description": "Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%.\nIncrease Knight's Protection shield by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%.\nAlso increase the target's damage dealt by 8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5% for each Knight's Protection shield granted. This effect can stack up to 2 times."
+  }
+};
+window.jpCharacterWeaponData["마사키"] = {
+  "name": "芦谷 真咲",
+  "weapon4-1": {
+    "name": "不滅の栄光",
+    "health": 1870,
+    "attack": 443,
+    "defense": 429,
+    "skill_name": "剣の試練",
+    "description": "シールド効果が8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%増加する。HPが60%未満の味方ユニットに対して、蘆谷真咲のシールド効果がさらに13.7%/17.8%/17.8%/21.9%/21.9%/26.0%/26.0%増加する。"
+  },
+  "weapon5-1": {
+    "name": "神聖なる誓い",
+    "health": 2338,
+    "attack": 554,
+    "defense": 537,
+    "skill_name": "栄光の勲章",
+    "description": "防御力が45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%増加する。『誠実の聖人』のシールド量が30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%増加し、『誠実の聖人』1スタックごとに味方に8.0%/10.5%/10.5%/13.0%/13.0%/15.5%/15.5%のダメージ増加効果を追加付与する（最大2スタック）。"
+  }
+};

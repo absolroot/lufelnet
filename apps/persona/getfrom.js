@@ -60,8 +60,8 @@
       if (!s) return false;
       const v = s.trim();
       if (!v) return false;
-      // Heuristics: contains '+', emblem/merope pattern, or single EVENT
-      return v.includes('+') || /^(white|blue|purple|rainbow|merope)\+/i.test(v) || /^event$/i.test(v);
+      // Heuristics: contains '+', emblem/merope/gacha pattern, or single EVENT
+      return v.includes('+') || /^(white|blue|purple|rainbow|merope|gacha)\+/i.test(v) || /^event$/i.test(v);
     };
     for (let i = start; i < lines.length; i++){
       const cols = lines[i].split(',').map(s=>s.trim());
@@ -123,6 +123,34 @@
     const numEl = document.createElement('span');
     numEl.className = 'acq-emblem-num';
     // Rule 1-2: show number without '+'
+    numEl.textContent = `${num}`;
+    wrap.appendChild(img);
+    wrap.appendChild(numEl);
+    return wrap;
+  }
+
+  // Build GACHA ticket icon with amount, e.g., GACHA+20 -> persona_ticket.png + "20"
+  function buildIconForGacha(token){
+    const m = token.match(/^gacha\+(\d+)$/i);
+    if (!m) return null;
+    const num = m[1];
+    const lang = getCurrentLang();
+    const label = (function(){
+      if (lang === 'en') return 'Persona Gacha Ticket';
+      if (lang === 'jp') return 'ペルソナ ガチャチケット';
+      return '페르소나 가챠 티켓';
+    })();
+    const wrap = document.createElement('span');
+    wrap.className = 'acq-emblem';
+    wrap.title = label;
+    const img = document.createElement('img');
+    img.className = 'acq-icon';
+    img.src = `${BASE()}/apps/persona/persona_icon/persona_ticket.png`;
+    img.alt = label;
+    img.title = label;
+    img.loading = 'lazy';
+    const numEl = document.createElement('span');
+    numEl.className = 'acq-emblem-num';
     numEl.textContent = `${num}`;
     wrap.appendChild(img);
     wrap.appendChild(numEl);
@@ -213,6 +241,15 @@
       container.appendChild(wrap);
       return container;
     }
+    // Special: gacha+N -> ticket icon + number
+    const mGacha = v.match(/^gacha\+(\d+)$/i);
+    if (mGacha){
+      const ticket = buildIconForGacha(v);
+      if (ticket){
+        container.appendChild(ticket);
+        return container;
+      }
+    }
     if (/^event$/i.test(v)){
       const wrap = document.createElement('span');
       wrap.className = 'acq-item';
@@ -230,7 +267,7 @@
       return container;
     }
 
-    const emblem = buildIconForEmblem(v);
+    const emblem = buildIconForEmblem(v) || buildIconForGacha(v);
     if (emblem){
       container.appendChild(emblem);
       return container;
@@ -247,6 +284,9 @@
       } else if (/^merope$/i.test(t) && i+1<rawParts.length && /^\d+$/.test(rawParts[i+1])){
         parts.push(`merope+${rawParts[i+1]}`);
         i++;
+      } else if (/^gacha$/i.test(t) && i+1<rawParts.length && /^\d+$/.test(rawParts[i+1])){
+        parts.push(`gacha+${rawParts[i+1]}`);
+        i++;
       } else {
         parts.push(t);
       }
@@ -258,7 +298,7 @@
         return; // do not append; also do not add separator for this part
       }
       // If this part is an emblem token after merging, render emblem
-      const em2 = buildIconForEmblem(name);
+      const em2 = buildIconForEmblem(name) || buildIconForGacha(name);
       if (em2){
         container.appendChild(em2);
         appended++;
@@ -314,13 +354,16 @@
         } else if (/^merope$/i.test(t) && i+1<list.length && /^\d+$/.test(list[i+1])){
           out.push(`merope+${list[i+1]}`);
           i++;
+        } else if (/^gacha$/i.test(t) && i+1<list.length && /^\d+$/.test(list[i+1])){
+          out.push(`gacha+${list[i+1]}`);
+          i++;
         } else {
           out.push(t);
         }
       }
       return out;
     })(raw);
-    return parts.some(p => p && !/^\d+$/.test(p) && !parseEmblemToken(p) && !isMeropeToken(p) && !isEventToken(p));
+    return parts.some(p => p && !/^\d+$/.test(p) && !parseEmblemToken(p) && !isMeropeToken(p) && !isEventToken(p) && !isGachaToken(p));
   }
 
   // Persona label with icon + localized name
@@ -470,6 +513,7 @@
 
   function isMeropeToken(token){ return /^merope\+\d+$/i.test(token.trim()); }
   function isEventToken(token){ return /^event$/i.test(token.trim()); }
+  function isGachaToken(token){ return /^gacha\+\d+$/i.test(token.trim()); }
 
   function splitTokens(combo){
     return (combo || '')
@@ -504,6 +548,9 @@
         } else if (/^merope$/i.test(t) && i+1<list.length && /^\d+$/.test(list[i+1])){
           out.push(`merope+${list[i+1]}`);
           i++;
+        } else if (/^gacha$/i.test(t) && i+1<list.length && /^\d+$/.test(list[i+1])){
+          out.push(`gacha+${list[i+1]}`);
+          i++;
         } else {
           out.push(t);
         }
@@ -525,7 +572,7 @@
         node.totals[em.color] = (node.totals[em.color] || 0) + em.amount;
         continue;
       }
-      if (isMeropeToken(tk) || isEventToken(tk)){
+      if (isMeropeToken(tk) || isEventToken(tk) || isGachaToken(tk)){
         // leaf stop (no emblem accumulation)
         continue;
       }
@@ -552,6 +599,7 @@
         for (let i=0;i<r.length;i++){
           const t=r[i];
           if (/^(white|blue|purple|purlple|rainbow)$/i.test(t) && i+1<r.length && /^\d+$/.test(r[i+1])){ out.push(`${normalizeColorName(t)}+${r[i+1]}`); i++; }
+          else if (/^gacha$/i.test(t) && i+1<r.length && /^\d+$/.test(r[i+1])){ out.push(`gacha+${r[i+1]}`); i++; }
           else out.push(t);
         }
         return out;
@@ -600,6 +648,7 @@
         if (em) return `${em.color.charAt(0).toUpperCase()+em.color.slice(1)}+${em.amount}`;
         if (isMeropeToken(n)) return 'Merope';
         if (isEventToken(n)) return 'EVENT';
+        if (isGachaToken(n)) return 'GACHA';
         return getLocalizedName(n);
       }).join(' + ');
       lines.push(`${indent}ㄴ ${name} : ${comboText}`);

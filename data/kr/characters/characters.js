@@ -1,6 +1,6 @@
       
 // 캐릭터 목록 데이터
-const characterList = {
+window.characterList = window.characterList || {
     mainParty: [
         "렌", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
@@ -44,7 +44,8 @@ const characterList = {
     mind_skill2 : 심상 스킬 2
 */
 
-const characterData = {
+window.characterData = window.characterData || {};
+Object.assign(window.characterData, {
     "원더": {
         "limit": true,
         "role": "",
@@ -53,6 +54,52 @@ const characterData = {
         "codename": "WONDER",
         "name_en": "Wonder",
         "name_jp": "主人公"
+    },
+    "슌·프론티어": {
+        "limit": true,
+        "role": "",
+        "tag": "",
+        "color": "#700404",
+        "main_revelation": [""],
+        "sub_revelation": [""],
+        "element": "총격",
+        "element_weakness": "",
+        "element_resistance": "총격",
+        "rarity": 5,
+        "position": "방위",
+        "release_order": 38,
+        "persona": "만돌란",
+        "persona_en": "Mandrin",
+        "persona_jp": "マンドラン",
+        "name": "카노 슌",
+        "name_en": "Shun Kano",
+        "name_jp": "加納 駿·フロンティア",
+        "codename": "SOY·Frontier",
+        "skill_item": 5,
+        "sub_revel2": [""],
+        "sub_revel3": [""],
+        "sub_revel4": [""],
+        "sub_option1": [""],
+        "sub_option2": [""],
+        "sub_option3": [""],
+        "minimum_stats": {
+            "LV10": false,
+            "LV10+5": false,
+            "LV12": false,
+            "LV12+5": false,
+            "LV13": false,
+            "LV13+5": false,
+        },
+        "battle_plus_stats": "",
+        "skill1_lv": "-",
+        "skill2_lv": "-",
+        "skill3_lv": "-",
+        "skill4_lv": "-",
+        "skill_priority": "",
+        "mind_stats1": "-",
+        "mind_stats2": "-",
+        "mind_skill1": "-",
+        "mind_skill2": "-"
     },
     "쇼키·암야": {
         "limit": true,
@@ -79,7 +126,7 @@ const characterData = {
         "name_jp": "池波 星輝·永夜",
         "name_cn": "池波星辉·永夜",
         "codename": "LUCE·Notte",
-        "skill_item": 3,
+        "skill_item": 5,
         "sub_revel2": ["공격력, 대미지 보너스"],
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
@@ -2603,4 +2650,4 @@ const characterData = {
         "mind_skill2": "S3!",
         "name_tw": "佐倉雙葉"
     }
-};
+});

@@ -1134,7 +1134,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
         } else {
-            character = characterSkillsData[characterName];
+            character = (typeof window.characterSkillsData !== 'undefined' && window.characterSkillsData[characterName])
+                ? window.characterSkillsData[characterName]
+                : null;
         }
 
         if (!character) return;
@@ -1208,7 +1210,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function fillOperationInfo(characterName) {
         const currentLang = getCurrentLanguage();
         const operationSettings = document.querySelector('.operation-settings');
-        if (!operationSettings || !operationData[characterName]) return;
+        const opData = (typeof window.operationData !== 'undefined') ? window.operationData : {};
+        if (!operationSettings || !opData[characterName]) return;
 
         const basicSection = operationSettings.querySelector('.setting-section:first-child');
         const noteSection = operationSettings.querySelector('.setting-section:last-child');
@@ -1216,11 +1219,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const noteContent = operationSettings.querySelector('.operation-notes');
 
         // 현재 언어에 따른 basic 배열 선택
-        let basicArray = operationData[characterName].basic; // 기본값은 한국어
-        if (currentLang === 'en' && operationData[characterName].basic_en) {
-            basicArray = operationData[characterName].basic_en;
-        } else if (currentLang === 'jp' && operationData[characterName].basic_jp) {
-            basicArray = operationData[characterName].basic_jp;
+        let basicArray = opData[characterName].basic; // 기본값은 한국어
+        if (currentLang === 'en' && opData[characterName].basic_en) {
+            basicArray = opData[characterName].basic_en;
+        } else if (currentLang === 'jp' && opData[characterName].basic_jp) {
+            basicArray = opData[characterName].basic_jp;
         }
 
         // basic 배열이 비어있거나 모든 항목이 빈 값인 경우
@@ -1230,12 +1233,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // 현재 언어에 따른 note 배열 선택
-        let noteArray = operationData[characterName].note; // 기본값은 한국어
+        let noteArray = opData[characterName].note; // 기본값은 한국어
 
-        if (currentLang === 'en' && operationData[characterName].note_en) {
-            noteArray = operationData[characterName].note_en;
-        } else if (currentLang === 'jp' && operationData[characterName].note_jp) {
-            noteArray = operationData[characterName].note_jp;
+        if (currentLang === 'en' && opData[characterName].note_en) {
+            noteArray = opData[characterName].note_en;
+        } else if (currentLang === 'jp' && opData[characterName].note_jp) {
+            noteArray = opData[characterName].note_jp;
         }
 
         // note 배열이 비어있거나 모든 항목이 빈 값인 경우
@@ -1343,6 +1346,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }
+    // 전역 노출: 외부에서 재호출 가능하도록
+    window.fillOperationInfo = fillOperationInfo;
 
 
 

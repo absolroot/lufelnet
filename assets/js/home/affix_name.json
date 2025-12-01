@@ -86,5 +86,9 @@
     {
         "description": "Party's Resonance damage is increased by 50%.",
         "name": "Resonance +"
+    },
+    {
+        "description": "Shielded allies deal 20% increased damage.",
+        "name": "Shield +"
     }
 ]

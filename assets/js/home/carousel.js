@@ -299,6 +299,12 @@
     return true;
   }
 
+  function toNumberOrNull(v) {
+    if (v == null) return null;
+    const n = parseFloat(String(v));
+    return Number.isFinite(n) ? n : null;
+  }
+
   function mapCustomSlides(rawList, currentRegion) {
     const lang = detectLang();
     return (rawList || [])
@@ -315,6 +321,20 @@
         const bgImage = item.background_image ? toAbsUrl(item.background_image) : null;
         const link = pickLinkByLang(item, lang) ? toAbsUrl(pickLinkByLang(item, lang)) : '';
         const order = Number.isFinite(item.order) ? Number(item.order) : null;
+        const bgOffsetCandidate = {
+          top: toNumberOrNull(item.background_top),
+          right: toNumberOrNull(item.background_right),
+          bottom: toNumberOrNull(item.background_bottom),
+          left: toNumberOrNull(item.background_left),
+        };
+        const hasBgOffset = Object.values(bgOffsetCandidate).some(v => Number.isFinite(v));
+        const imgOffsetCandidate = {
+          top: toNumberOrNull(item.image_top),
+          right: toNumberOrNull(item.image_right),
+          bottom: toNumberOrNull(item.image_bottom),
+          left: toNumberOrNull(item.image_left),
+        };
+        const hasImgOffset = Object.values(imgOffsetCandidate).some(v => Number.isFinite(v));
         return {
           kind: 'custom',
           name: title || '',
@@ -323,6 +343,8 @@
           customColor: color,
           customImage: image,
           customBgImage: bgImage,
+          customBgOffset: hasBgOffset ? bgOffsetCandidate : null,
+          customImgOffset: hasImgOffset ? imgOffsetCandidate : null,
           customLink: link,
           order,
         };
@@ -439,12 +461,12 @@
       .carousel-track { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; transition: transform 450ms ease; }
       .carousel-slide { position: relative; min-width: 100%; height: 100%; display: flex; align-items: stretch; color: #fff; overflow: hidden; }
       .slide-left { flex: 1 1 58%; min-width: 0; padding: 64px; display: flex; flex-direction: column; gap: 10px; z-index: 2; justify-content: center; }
-      .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.8); }
+      .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
       .slide-fivestar { font-size: 0.95rem; opacity: 0.95; }
       .slide-subtitle { font-size: 1.0rem; font-weight: 600; opacity: 0.95; }
-      .slide-body { font-size: 0.9rem; opacity: 0.9; }
+      .slide-body { font-size: 0.9rem; opacity: 0.9; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       .slide-time { font-size: 0.9rem; opacity: 0.6; }
       .slide-countdown { font-size: 1rem; font-weight: 700; color: #ffd166; }
       .slide-right { position: relative; flex: 0 0 42%; min-width: 220px; max-width: 520px; display: block; z-index: 1; justify-content: center;}
@@ -565,7 +587,25 @@
     bg.className = 'slide-bg';
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
-      bg.style.background = `url(${slide.customBgImage}) center/cover no-repeat`;
+      bg.style.backgroundImage = `url(${slide.customBgImage})`;
+      bg.style.backgroundRepeat = 'no-repeat';
+      bg.style.backgroundSize = 'cover';
+      // Support JSON-driven bg offset with top/right/bottom/left (px)
+      let offsetX = 0, offsetY = 0;
+      if (slide.customBgOffset) {
+        const o = slide.customBgOffset;
+        const r = Number.isFinite(o.right) ? o.right : 0;
+        const l = Number.isFinite(o.left) ? o.left : 0;
+        const b = Number.isFinite(o.bottom) ? o.bottom : 0;
+        const t = Number.isFinite(o.top) ? o.top : 0;
+        // Positive right pushes to the right, positive bottom pushes downward
+        offsetX = r - l;
+        offsetY = b - t;
+      }
+      bg.style.backgroundPosition = `calc(50% + ${offsetX}px) calc(50% + ${offsetY}px)`;
+      // Set axis-specific properties as well for broader browser consistency
+      bg.style.backgroundPositionX = `calc(50% + ${offsetX}px)`;
+      bg.style.backgroundPositionY = `calc(50% + ${offsetY}px)`;
     } else {
       // color-based gradient if available
       const baseColor = getSlideBaseColor(slide);
@@ -651,6 +691,14 @@
         img.alt = slide.name || 'banner';
         img.src = slide.customImage;
         img.className = 'char-img front middle';
+        // Apply JSON-driven image offset if provided (px)
+        if (slide.customImgOffset) {
+          const o = slide.customImgOffset;
+          if (Number.isFinite(o.top)) img.style.top = `${o.top}px`;
+          if (Number.isFinite(o.bottom)) { img.style.bottom = `${o.bottom}px`; if (!Number.isFinite(o.top)) img.style.top = 'auto'; }
+          if (Number.isFinite(o.right)) img.style.right = `${o.right}px`;
+          if (Number.isFinite(o.left)) { img.style.left = `${o.left}px`; if (!Number.isFinite(o.right)) img.style.right = 'auto'; }
+        }
         img.onerror = function () { this.style.display = 'none'; };
         right.appendChild(img);
       }

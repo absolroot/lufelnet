@@ -40,7 +40,7 @@ class TranslationLoader {
                     throw new Error('Failed to extract translation data');
                 }
                 
-                console.log(`Translation loaded for ${category}/${lang}:`, translations);
+                // console.log(`Translation loaded for ${category}/${lang}:`, translations);
                 
                 this.translationCache[cacheKey] = translations;
                 return translations;

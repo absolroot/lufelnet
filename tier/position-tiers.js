@@ -1881,15 +1881,17 @@ const handleShareClick = () => {
 
 // Ritual Modal Functionality
 let currentRitualImage = null;
-const ritualModal = document.querySelector('.ritual-modal');
+function getRitualModal() { return document.querySelector('.ritual-modal'); }
 
 // Open ritual modal for character image
-const openRitualModal = (img) => {
+function openRitualModal(img) {
   currentRitualImage = img;
   
   // Show current ritual selection
   const currentRitual = img.dataset.ritual || 'none';
-  const ritualOptions = ritualModal.querySelectorAll('.ritual-option');
+  const modal = getRitualModal();
+  if (!modal) return;
+  const ritualOptions = modal.querySelectorAll('.ritual-option');
   ritualOptions.forEach(option => {
     option.classList.remove('selected');
     if (option.dataset.ritual === currentRitual) {
@@ -1897,17 +1899,18 @@ const openRitualModal = (img) => {
     }
   });
   
-  ritualModal.showModal();
-};
+  modal.showModal();
+}
 
 // Close ritual modal
-const closeRitualModal = () => {
-  ritualModal.close();
+function closeRitualModal() {
+  const modal = getRitualModal();
+  if (modal) modal.close();
   currentRitualImage = null;
-};
+}
 
 // Set ritual for character
-const setCharacterRitual = (ritualType) => {
+function setCharacterRitual(ritualType) {
   if (!currentRitualImage) return;
   
   // Check if image is already in a wrapper
@@ -1975,10 +1978,11 @@ const setCharacterRitual = (ritualType) => {
   }
   
   closeRitualModal();
-};
+}
 
 // Initialize ritual modal event listeners
-const initRitualModal = () => {
+function initRitualModal() {
+  const ritualModal = getRitualModal();
   if (!ritualModal) return;
   
   // Close button

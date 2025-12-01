@@ -15,30 +15,62 @@
       return p.get('name');
     }
   
-    // basicStatsData 로더 (fetch → 전역 바인딩으로 변환 주입)
+    // basicStatsData 로더
     function ensureBasicStatsLoaded() {
       return new Promise((resolve) => {
         if (window.basicStatsData) return resolve(true);
 
         const ver = (typeof APP_VERSION !== 'undefined') ? APP_VERSION : Date.now();
-        const url = `${window.BASE_URL || ''}/data/kr/characters/character_base_stats.js?v=${ver}`;
+        const charName = getCharacterNameFromURL();
+        const basePath = `${window.BASE_URL || ''}/data/characters/${encodeURIComponent(charName)}`;
 
-        fetch(url)
-          .then(r => {
-            if (!r.ok) throw new Error(`HTTP ${r.status}`);
-            return r.text();
-          })
-          .then(text => {
-            // const basicStatsData → window.basicStatsData 로 치환하여 전역에 노출
-            const patched = text.replace(/const\s+basicStatsData\s*=\s*/, 'window.basicStatsData = ');
-            // eslint-disable-next-line no-eval
-            eval(patched);
-            if (window.basicStatsData) resolve(true); else resolve(false);
-          })
-          .catch(err => {
-            console.error('[cha_stats] Failed to load character_base_stats.js', err);
-            resolve(false);
-          });
+        // 1) per-character JS 우선 시도
+        const tryPerCharacterJs = () => new Promise((res) => {
+          try {
+            const s = document.createElement('script');
+            s.src = `${basePath}/base_stats.js?v=${ver}`;
+            s.onload = () => {
+              try {
+                if (window.basicStatsData && window.basicStatsData[charName]) return res(true);
+                // 레거시 변수명 스캔 (basicStats_* 형태)
+                const keys = Object.keys(window).filter(k => /^basicStats_/.test(k));
+                for (const k of keys) {
+                  const val = window[k];
+                  if (val && typeof val === 'object') {
+                    window.basicStatsData = window.basicStatsData || {};
+                    window.basicStatsData[charName] = val;
+                    break;
+                  }
+                }
+                res(!!(window.basicStatsData && window.basicStatsData[charName]));
+              } catch(_) { res(false); }
+            };
+            s.onerror = () => res(false);
+            document.head.appendChild(s);
+          } catch(_) { res(false); }
+        });
+
+        // 2) per-character JSON 폴백
+        const tryPerCharacterJson = async () => {
+          try {
+            const r = await fetch(`${basePath}/base_stats.json?v=${ver}`, { cache: 'no-store' });
+            if (!r.ok) return false;
+            const data = await r.json();
+            if (data && typeof data === 'object') {
+              window.basicStatsData = window.basicStatsData || {};
+              window.basicStatsData[charName] = data;
+              return true;
+            }
+          } catch(_) {}
+          return false;
+        };
+
+        (async () => {
+          if (await tryPerCharacterJs()) return resolve(true);
+          if (await tryPerCharacterJson()) return resolve(true);
+          console.warn('[cha_stats] basicStats per-character missing (skipping)');
+          resolve(!!window.basicStatsData);
+        })();
       });
     }
   

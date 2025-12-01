@@ -3,9 +3,8 @@ layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
 custom_js: [character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/cha_stats,
 character/character-i18n, character/helpmodal]
-custom_data: [characters/characters.js, revelations/revelations.js, characters/character_ritual.js,
-characters/character_skills.js, characters/character_weapon.js, characters/character_operation.js,
-characters/character_party.js, tooltip.js, wonder/persona.js, wonder/weapons.js, characters/character_review.js]
+custom_data: [characters/characters.js, revelations/revelations.js,
+tooltip.js, wonder/persona.js, wonder/weapons.js]
 permalink: /character.html
 language: kr
 title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
@@ -507,7 +506,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     <div id="recommended-sections" style="display: none;">
         <!-- 추천 페르소나 -->
         <div class="recommended-persona-card card-style">
-            <h2>추천 페르소나</h2>
+            <h2>추천 조합</h2>
             <div id="recommended-persona-content" class="recommended-persona-content">
                 <!-- 페르소나 내용이 여기에 동적으로 추가됨 -->
             </div>
@@ -779,85 +778,135 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         } catch (_) { }
 
         // 언어별 데이터 파일 동적 로드
-        async function loadLanguageData() {
-            if (currentLang !== 'kr') {
-                const langPath = currentLang === 'en' ? 'en' : 'jp';
-                const basePath = '{{ site.baseurl }}/data/' + langPath + '/characters/';
-
-                try {
-                    const scripts = [
-                        { name: 'skills', src: basePath + 'character_skills.js?v=' + APP_VERSION, varName: langPath + 'CharacterSkillsData' },
-                        { name: 'ritual', src: basePath + 'character_ritual.js?v=' + APP_VERSION, varName: langPath + 'CharacterRitualData' },
-                        { name: 'weapon', src: basePath + 'character_weapon.js?v=' + APP_VERSION, varName: langPath + 'CharacterWeaponData' }
-                    ];
-
-                    await new Promise((resolve) => {
-                        let loadedCount = 0;
-                        let errorCount = 0;
-                        const totalScripts = scripts.length;
-
-                        // Timeout fallback to prevent hanging
-                        const timeoutId = setTimeout(() => {
-                            console.warn('Language data loading timed out');
-                            resolve();
-                        }, 10000);
-
-                        scripts.forEach(scriptInfo => {
-                            const script = document.createElement('script');
-                            script.src = scriptInfo.src;
-
-                            script.onload = () => {
-                                // 스크립트 로드 후 변수가 정의될 때까지 대기
-                                const checkInterval = setInterval(() => {
-                                    if (typeof window[scriptInfo.varName] !== 'undefined') {
-                                        clearInterval(checkInterval);
-                                        loadedCount++;
-                                        console.log('Loaded:', scriptInfo.varName);
-                                        checkCompletion();
-                                    }
-                                }, 50);
-
-                                // 최대 2초 대기
-                                setTimeout(() => {
-                                    clearInterval(checkInterval);
-                                    if (typeof window[scriptInfo.varName] === 'undefined') {
-                                        console.warn('Variable not defined after timeout:', scriptInfo.varName);
-                                        errorCount++;
-                                        checkCompletion();
-                                    }
-                                }, 2000);
-                            };
-
-                            script.onerror = (e) => {
-                                console.error('Failed to load script:', scriptInfo.src, e);
-                                errorCount++;
-                                checkCompletion();
-                            };
-
-                            document.head.appendChild(script);
-                        });
-
-                        function checkCompletion() {
-                            if (loadedCount + errorCount === totalScripts) {
-                                clearTimeout(timeoutId);
-                                console.log('All scripts loaded. Loaded:', loadedCount, 'Errors:', errorCount);
-                                resolve();
+        // 통합 per-character 로더 (review / base_stats / operation / party)
+        async function loadPerCharacterResource(name, opts) {
+            const {
+                fileBase,          // 'review' | 'base_stats' | 'operation' | 'party'
+                globalVarName,     // 'characterReview' | 'basicStatsData' | 'operationData' | 'recommendParty'
+                scanPrefixes = []  // e.g., ['characterReview_']
+            } = opts || {};
+            if (!name || !fileBase || !globalVarName) return false;
+            try {
+                window[globalVarName] = window[globalVarName] || {};
+                const _BASE = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
+                const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?v=${APP_VERSION}`;
+                const baseJson = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.json?v=${APP_VERSION}`;
+                const loadJs = () => new Promise((resolve) => {
+                    try {
+                        const s = document.createElement('script');
+                        s.src = baseJs;
+                        s.onload = () => {
+                            // 표준 경로 체크
+                            if (window[globalVarName] && window[globalVarName][name]) {
+                                resolve(true);
+                                return;
                             }
+                            // 변수명 프리픽스 스캔 (레거시 파일 지원)
+                            try {
+                                if (Array.isArray(scanPrefixes) && scanPrefixes.length > 0) {
+                                    const keys = Object.keys(window).filter(k => scanPrefixes.some(p => k.startsWith(p)));
+                                    for (const k of keys) {
+                                        const val = window[k];
+                                        if (val && typeof val === 'object') {
+                                            window[globalVarName][name] = val;
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (_) {}
+                            resolve(!!(window[globalVarName] && window[globalVarName][name]));
+                        };
+                        s.onerror = () => resolve(false);
+                        document.head.appendChild(s);
+                    } catch (e) {
+                        console.warn(`[SAFE:loadPerCharacterResource:${fileBase}:script]`, e);
+                        resolve(false);
+                    }
+                });
+                const ok = await loadJs();
+                if (ok) return true;
+                // JSON 폴백
+                try {
+                    const resp = await fetch(baseJson, { cache: 'no-store' });
+                    if (resp && resp.ok) {
+                        const data = await resp.json();
+                        if (data && typeof data === 'object') {
+                            window[globalVarName][name] = data;
+                            return true;
                         }
-                    });
-
-                    // After loading, call fillSkillsInfo
-                    setTimeout(() => {
-                        if (typeof fillSkillsInfo === 'function') {
-                            fillSkillsInfo(characterName);
-                        }
-                    }, 100);
-
+                    }
                 } catch (e) {
-                    console.error('Error in loadLanguageData:', e);
+                    console.warn(`[SAFE:loadPerCharacterResource:${fileBase}:json]`, e);
                 }
+            } catch (e) {
+                console.warn('[SAFE:loadPerCharacterResource]', e);
+            }
+            return false;
+        }
+
+        // 전역 스텁 보장(초기 실행 시 참조 오류 방지)
+        try {
+            window.characterReview = window.characterReview || {};
+            window.basicStatsData = window.basicStatsData || {};
+            window.operationData = window.operationData || {};
+            window.recommendParty = window.recommendParty || {};
+            window.characterSkillsData = window.characterSkillsData || {};
+            window.ritualData = window.ritualData || {};
+            window.WeaponData = window.WeaponData || {};
+        } catch (e) { console.warn('[SAFE:init-globals]', e); }
+
+        async function loadCharacterDataAll(name) {
+            const tasks = [
+                loadPerCharacterResource(name, { fileBase: 'review', globalVarName: 'characterReview', scanPrefixes: ['characterReview_'] }),
+                loadPerCharacterResource(name, { fileBase: 'base_stats', globalVarName: 'basicStatsData' }),
+                loadPerCharacterResource(name, { fileBase: 'operation', globalVarName: 'operationData' }),
+                loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
+                loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
+                loadPerCharacterResource(name, { fileBase: 'ritual', globalVarName: 'ritualData' }),
+                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' })
+            ];
+            await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
+        }
+
+        // 기본 스탯 렌더러 ('.stats-main .stats-grid' 채움)
+        function fillBasicStats(name) {
+            try {
+                const grid = document.querySelector('.stats-main .stats-grid');
+                if (!grid) return;
+                const data = (window.basicStatsData && window.basicStatsData[name]) ? window.basicStatsData[name] : null;
+                if (!data) return;
+                const pick = (obj) => {
+                    if (!obj || typeof obj !== 'object') return null;
+                    // 우선순위: a0_lv80 -> a1_lv80 -> a0_lv1 -> 최상위
+                    const candidate = obj.a0_lv80 || obj.a1_lv80 || obj.a0_lv1 || obj;
+                    const map = {
+                        '생명': candidate.HP ?? candidate.hp ?? 0,
+                        '공격력': candidate.attack ?? 0,
+                        '방어력': candidate.defense ?? 0,
+                        '속도': candidate.speed ?? 0,
+                        'SP': candidate.SP ?? candidate.sp ?? 0
+                    };
+                    return map;
+                };
+                const values = pick(data);
+                if (!values) return;
+                // 라벨별 값 주입
+                const rows = grid.querySelectorAll('.stat-row');
+                rows.forEach((row) => {
+                    const labelEl = row.querySelector('.label');
+                    const valueEl = row.querySelector('.value');
+                    if (!labelEl || !valueEl) return;
+                    const key = labelEl.textContent.trim();
+                    if (Object.prototype.hasOwnProperty.call(values, key)) {
+                        valueEl.textContent = values[key];
+                    }
+                });
+            } catch (e) {
+                console.warn('[SAFE:fillBasicStats]', e);
             }
         }
+
+        async function loadLanguageData() { return; }
 
         if (!characterName || !characterData[characterName]) {
             console.error('Character not found');
@@ -890,15 +939,25 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
 
-        // 한국어인 경우 바로 스킬 정보 로드
-        if (currentLang === 'kr') {
-            safeRun('fillSkillsInfo-kr', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
-        }
-
         const character = characterData[characterName];
-        const ritual = ritualData[characterName];
 
         // 언어별 데이터 로드 (영어/일본어가 있는 경우 우선 사용)
+        // per-character 데이터 선 로드 (review/base_stats/operation/party)
+        await safeAwait('loadCharacterDataAll', loadCharacterDataAll(characterName));
+        // 기본 스탯 렌더
+        safeRun('fillBasicStats', () => fillBasicStats(characterName));
+        // 운영 즉시 렌더 (함수 노출 이후 재호출 가능)
+        safeRun('fillOperationInfo-immediate', () => {
+            if (typeof window.fillOperationInfo === 'function') {
+                window.fillOperationInfo(characterName);
+            }
+        });
+        // 스킬 정보 렌더는 per-character skill 로드 이후에 호출 (언어별 분기 포함)
+        safeRun('fillSkillsInfo', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
+
+        // per-character 의식/스킬/무기(기본 KR) 준비
+        const ritual = (window.ritualData && window.ritualData[characterName]) ? window.ritualData[characterName] : {};
+
         let localizedSkills = null;
         let localizedRitual = null;
         let localizedWeapon = null;
@@ -943,42 +1002,123 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 캐릭터 리뷰 렌더링 함수
 
-        // 안전하게 리뷰 렌더링
+        // 안전하게 리뷰 + Pros/Cons 렌더링
         try {
             const reviewContainer = document.getElementById('character-review');
             if (!reviewContainer) throw new Error('reviewContainer not found');
-            const characterReviewData = characterReview[characterName];
             const ReviewCard = document.querySelector('.review-card');
-            if (!characterReviewData || !characterReviewData.review) {
-                reviewContainer.innerHTML = '<p style="color: #888; font-style: italic;"></p>';
-                reviewContainer.style.display = 'none';
-                if (ReviewCard) ReviewCard.style.display = 'none';
-            } else {
-                let currentReview = characterReviewData.review;
-                if (currentLang === 'en' && characterReviewData.review_en) {
-                    currentReview = characterReviewData.review_en;
-                } else if (currentLang === 'jp' && characterReviewData.review_jp) {
-                    currentReview = characterReviewData.review_jp;
+            const characterReviewData = characterReview[characterName] || {};
+            const getLocalizedField = (baseKey) => {
+                if (currentLang === 'en' && typeof characterReviewData[`${baseKey}_en`] !== 'undefined') {
+                    return characterReviewData[`${baseKey}_en`];
+                } else if (currentLang === 'jp' && typeof characterReviewData[`${baseKey}_jp`] !== 'undefined') {
+                    return characterReviewData[`${baseKey}_jp`];
                 }
-                // 변환: 전각/유사 별표 → ASCII *, 제로폭/비가시/방향 제어/소프트하이픈/NBSP 제거 (언어 선택 이후 적용)
-                const normalized = currentReview
-                    .replace(/\uFF0A/g, '*')    // 전각 별표 ＊ → *
-                    .replace(/\u2217/g, '*')    // ∗ → *
-                    .replace(/[\u200B-\u200D\uFEFF]/g, '') // ZWSP/ZWNJ/ZWJ/ZWNBSP 제거
-                    .replace(/[\u200E\u200F]/g, '')          // LRM/RLM 제거
-                    .replace(/[\u202A-\u202E]/g, '')         // 방향 제어 문자 제거
-                    .replace(/\u00AD/g, '')                   // Soft hyphen 제거
-                    .replace(/\u2060/g, '')                   // WORD JOINER 제거
-                    .replace(/\u00A0/g, ' ');                 // NBSP → 공백
+                return characterReviewData[baseKey];
+            };
+
+            // 리뷰 본문 처리
+            let currentReview = getLocalizedField('review');
+            let hasReview = !!(currentReview && String(currentReview).trim().length > 0);
+            if (hasReview) {
+                const normalized = String(currentReview)
+                    .replace(/\uFF0A/g, '*')
+                    .replace(/\u2217/g, '*')
+                    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+                    .replace(/[\u200E\u200F]/g, '')
+                    .replace(/[\u202A-\u202E]/g, '')
+                    .replace(/\u00AD/g, '')
+                    .replace(/\u2060/g, '')
+                    .replace(/\u00A0/g, ' ');
 
                 let htmlContent = marked.parse(normalized);
-                // 폴백: 파싱 후에도 **...**가 그대로 남았으면 강제 <strong> 치환 (이미 파싱된 경우엔 영향 없음)
                 if (htmlContent.includes('**')) {
                     htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
                 }
                 reviewContainer.innerHTML = htmlContent;
+                reviewContainer.style.display = '';
+            } else {
+                reviewContainer.innerHTML = '';
+                reviewContainer.style.display = 'none';
             }
-        } catch (e) { console.warn('[SAFE:render-review]', e); }
+
+            // Pros/Cons 처리
+            const rawPros = getLocalizedField('pros');
+            const rawCons = getLocalizedField('cons');
+            const normalizeListItems = (val) => {
+                if (!val) return [];
+                if (Array.isArray(val)) {
+                    return val.map((s) => String(s).trim()).filter((s) => s.length > 0);
+                }
+                return String(val)
+                    .split(/\r?\n/)
+                    .map((line) => line.trim().replace(/^[-*•]\s*/, ''))
+                    .filter((line) => line.length > 0);
+            };
+            const prosItems = normalizeListItems(rawPros);
+            const consItems = normalizeListItems(rawCons);
+            const hasProsOrCons = prosItems.length > 0 || consItems.length > 0;
+
+            // 라벨 (다국어)
+            const labelMap = {
+                'kr': { pros: '장점', cons: '단점' },
+                'en': { pros: 'Pros', cons: 'Cons' },
+                'jp': { pros: '長所', cons: '短所' }
+            };
+            const labels = labelMap[currentLang] || labelMap['kr'];
+
+            // 기존 Pros/Cons 섹션 제거 후 다시 생성 (중복 방지)
+            const existingPC = document.querySelector('.pros-cons-group');
+            if (existingPC && existingPC.parentNode) {
+                existingPC.parentNode.removeChild(existingPC);
+            }
+
+            if (hasProsOrCons && ReviewCard) {
+                const pcGroup = document.createElement('div');
+                pcGroup.className = 'setting-group pros-cons-group';
+
+                const makeSection = (title, items, type) => {
+                    const sec = document.createElement('div');
+                    sec.className = 'setting-section pros-cons-section';
+
+                    const h3 = document.createElement('h3');
+                    h3.className = `pros-cons-title ${type === 'pros' ? 'pros-title' : 'cons-title'}`;
+                    h3.textContent = title;
+                    sec.appendChild(h3);
+
+                    const listWrap = document.createElement('div');
+                    listWrap.className = 'pros-cons-list';
+                    const ul = document.createElement('ul');
+                    items.forEach((it) => {
+                        const li = document.createElement('li');
+                        li.textContent = it;
+                        ul.appendChild(li);
+                    });
+                    listWrap.appendChild(ul);
+                    sec.appendChild(listWrap);
+                    return sec;
+                };
+
+                if (prosItems.length > 0) {
+                    pcGroup.appendChild(makeSection(labels.pros, prosItems, 'pros'));
+                }
+                if (consItems.length > 0) {
+                    pcGroup.appendChild(makeSection(labels.cons, consItems, 'cons'));
+                }
+
+                // 리뷰 유무에 따라 pros/cons 상단 여백 조정
+                try {
+                    pcGroup.style.marginTop = hasReview ? '24px' : '0px';
+                } catch (_) {}
+
+                ReviewCard.appendChild(pcGroup);
+                ReviewCard.style.display = '';
+            } else {
+                if (!hasReview && ReviewCard) {
+                    ReviewCard.style.display = 'none';
+                }
+            }
+        } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
 
 
         // 이미지 설정
@@ -1284,7 +1424,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             weaponsContainer.innerHTML = '';
 
             // 언어별 무기 데이터 우선 사용
-            const weaponDataToUse = localizedWeapon || WeaponData[characterName];
+            const weaponDataToUse = localizedWeapon || (window.WeaponData && window.WeaponData[characterName]) || {};
             if (!weaponDataToUse) return;
 
             const characterWeapons = weaponDataToUse;
@@ -1301,7 +1441,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // 무기 데이터 가져오기 (현재 언어 데이터 우선)
                 const weaponData = characterWeapons[weapon.key];
                 // 한국어 원본 데이터의 highlight도 병합해서 사용
-                const krWeaponData = (WeaponData && WeaponData[characterName] && WeaponData[characterName][weapon.key]) || null;
+                const krWeaponData = (window.WeaponData && window.WeaponData[characterName] && window.WeaponData[characterName][weapon.key]) || null;
 
                 // weaponData가 없으면 건너뛰기
                 if (!weaponData) continue;
@@ -1651,6 +1791,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const characterName = urlParams.get('name');
 
         if (characterName && characterData[characterName]) {
+            if (typeof window.createRevelationValue !== 'function') {
+                // cha_detail.js 로딩 지연 시 한 번 더 시도
+                setTimeout(refreshRevelationDisplay, 100);
+                return;
+            }
             const character = characterData[characterName];
 
             // 계시 부분만 다시 렌더링
@@ -1693,12 +1838,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
     // 추천 페르소나와 파티 로드 함수
     function loadRecommendations(characterName) {
-        if (!characterName || !recommendParty[characterName]) {
+        if (!characterName || !(window.recommendParty && window.recommendParty[characterName])) {
             document.getElementById('recommended-sections').style.display = 'none';
             return;
         }
 
-        const data = recommendParty[characterName];
+        const data = window.recommendParty[characterName];
         document.getElementById('recommended-sections').style.display = 'block';
 
         // 추천 페르소나/무기 표시 여부 결정
@@ -1758,13 +1903,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const partyTitle = document.querySelector('.recommended-party-card h2');
 
         if (currentLang === 'en') {
-            if (personaTitle) personaTitle.textContent = 'Recommended Personas';
+            if (personaTitle) personaTitle.textContent = 'Recommended Combination';
             if (partyTitle) partyTitle.textContent = 'Recommended Parties Example';
         } else if (currentLang === 'jp') {
-            if (personaTitle) personaTitle.textContent = '推奨ペルソナ';
+            if (personaTitle) personaTitle.textContent = '推奨コンビネーション';
             if (partyTitle) partyTitle.textContent = '推奨パーティ例';
         } else {
-            if (personaTitle) personaTitle.textContent = '추천 페르소나';
+            if (personaTitle) personaTitle.textContent = '추천 조합';
             if (partyTitle) partyTitle.textContent = '추천 파티 예시';
         }
     }
@@ -1809,7 +1954,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const currentLang = getCurrentLanguage();
 
         // Add Wonder Weapons section if character has weapons
-        if (characterName && recommendParty[characterName]?.weapon?.length > 0) {
+        if (characterName && window.recommendParty && window.recommendParty[characterName]?.weapon?.length > 0) {
             const weaponSection = document.createElement('div');
             weaponSection.className = 'persona-attribute-section';
 
@@ -1821,7 +1966,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const weaponList = document.createElement('div');
             weaponList.className = 'persona-list';
 
-            recommendParty[characterName].weapon.forEach(weaponName => {
+            (window.recommendParty && window.recommendParty[characterName]?.weapon || []).forEach(weaponName => {
                 const weaponItem = document.createElement('div');
                 weaponItem.className = 'persona-item';
                 // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
@@ -1980,15 +2125,24 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
         const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
 
-        if (!characterDataMatch || !characterListMatch) {
-            throw new Error('Failed to extract data from script');
+        if (characterDataMatch && characterListMatch) {
+            // JSON으로 파싱하기 위해 Function 생성자 사용
+            const characterData = new Function('return ' + characterDataMatch[1])();
+            const characterList = new Function('return ' + characterListMatch[1])();
+            return { characterData, characterList };
         }
 
-        // JSON으로 파싱하기 위해 Function 생성자 사용
-        const characterData = new Function('return ' + characterDataMatch[1])();
-        const characterList = new Function('return ' + characterListMatch[1])();
-
-        return { characterData, characterList };
+        // 신규 포맷(window.characterList / window.characterData 병합형) 폴백
+        try {
+            const sandbox = {};
+            const resultWin = (new Function('window', `${scriptText}\n; return window;`))(sandbox);
+            const characterList = resultWin.characterList || resultWin.enCharacterList || resultWin.jpCharacterList || { mainParty: [], supportParty: [] };
+            const characterData = resultWin.characterData || resultWin.enCharacterData || resultWin.jpCharacterData || {};
+            if (!characterList || !characterData) throw new Error('missing keys');
+            return { characterData, characterList };
+        } catch (e) {
+            throw new Error('Failed to extract data from script');
+        }
     }
 
     // Load character list for the current language
@@ -2357,5 +2511,40 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     }
     .priority-badge.rank-4 {
         color: #a8a8a8;
+    }
+    /* Pros / Cons */
+    .pros-cons-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+    }
+    .pros-cons-section {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        padding: 20px 16px 12px 16px;
+    }
+    .pros-cons-section h3.pros-cons-title {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+    .pros-title { color: #3aa0ff !important; font-weight: 700; } /* 파랑: 장점 */
+    .cons-title { color: #ff6b6b !important; font-weight: 700; } /* 빨강: 단점 */
+    .pros-cons-list ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+    .pros-cons-list li {
+        font-size: 14px;
+        color: #cdcdcd;
+        margin: 4px 0;
+        line-height: 1.5;
+    }
+    @media (max-width: 1200px) {
+        .pros-cons-group {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

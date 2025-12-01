@@ -193,6 +193,18 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
     <!-- Tier Criteria Section (only shown in Tier List mode) -->
     <div id="tier-criteria-section" class="tier-criteria-section" style="display: none;">
+        <!-- Disclaimer above Criteria -->
+        <div id="tier-disclaimer" class="tier-disclaimer" style="margin-bottom: 8px; padding: 0px 16px; font-size: 12px; color: rgba(255,255,255,0.8);">
+            <p class="kr-text" style="font-weight: 700;">
+                주의: 본 티어는 주관적이며 참고 및 재미로만 봐주세요. 또한 P5X는 적의 속성 약점과 기믹에 따라 활용 가능한 파티가 크게 제한됩니다.
+            </p>
+            <p class="en-text" style="display:none; font-weight: 700;">
+                Note: This tier list is subjective; please use it for reference and entertainment only. In addition, in P5X, available parties can be heavily limited by enemy attribute weaknesses and mechanics.
+            </p>
+            <p class="jp-text" style="display:none; font-weight: 700;">
+                注意：本ティアリストは主観的なものであり、参考・娯楽目的でご覧ください。さらに、P5Xでは敵の属性弱点やギミックによって活用できるパーティが大きく制限される場合があります。
+            </p>
+        </div>
         <div class="tier-criteria-toggle">
             <button id="tier-criteria-btn" class="tier-criteria-button">
                 <span id="tier-criteria-title">티어 기준</span>
@@ -203,7 +215,6 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             <!-- Korean -->
             <div class="tier-criteria-text kr-text">
                 <ul>
-                    <li>lufel.net 제작자가 작성한 티어입니다. 개인 별로 기준은 다를 수 있으므로, 참고 및 재미로만 봐주세요.</li>
                     <li>LV80, 모든 스킬 레벨 등 의식을 제외한 모든 값이 기본적으로 세팅돼있는 경우를 말합니다.</li>
                     <li>경쟁 콘텐츠를 중심으로 작성됐으며, 버전 업데이트에 따라 티어는 지속적으로 변동될 수 있습니다.</li>
                 </ul>
@@ -211,8 +222,6 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             <!-- English -->
             <div class="tier-criteria-text en-text" style="display: none;">
                 <ul>
-                    <li>This tier list is created by the lufel.net. Individual standards may vary, so please use it for
-                        reference and entertainment only.</li>
                     <li>Assumes LV80, all skill levels, and all values are basically set except for Awareness.</li>
                     <li>Written with competitive content in mind, tiers may continuously change with version updates.
                     </li>
@@ -222,7 +231,6 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             <!-- Japanese -->
             <div class="tier-criteria-text jp-text" style="display: none;">
                 <ul>
-                    <li>このティアリストはlufel.netが作成したものです。個人によって基準は異なる場合がありますので、参考と娯楽としてのみご覧ください。</li>
                     <li>LV80、すべてのスキルレベルなど、意識（Awareness）を除くすべての値が基本的に設定されている場合を指します。</li>
                     <li>競争コンテンツを中心に作成されており、バージョンアップデートによってティアは継続的に変動する可能性があります。</li>
                     <li>グローバルサーバーは怪盗がバフされているため、KRティアとは異なる場合があります。</li>
@@ -511,6 +519,14 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         if (krText) krText.style.display = currentLang === 'kr' ? 'block' : 'none';
         if (enText) enText.style.display = currentLang === 'en' ? 'block' : 'none';
         if (jpText) jpText.style.display = currentLang === 'jp' ? 'block' : 'none';
+
+        // 상단 디스클레이머 언어 표시/숨김
+        const disclaimerKR = document.querySelector('#tier-disclaimer .kr-text');
+        const disclaimerEN = document.querySelector('#tier-disclaimer .en-text');
+        const disclaimerJP = document.querySelector('#tier-disclaimer .jp-text');
+        if (disclaimerKR) disclaimerKR.style.display = currentLang === 'kr' ? 'block' : 'none';
+        if (disclaimerEN) disclaimerEN.style.display = currentLang === 'en' ? 'block' : 'none';
+        if (disclaimerJP) disclaimerJP.style.display = currentLang === 'jp' ? 'block' : 'none';
     }
 
     // 티어 기준 토글 기능 초기화
@@ -590,19 +606,21 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
     // 스크립트에서 데이터 추출하는 함수
     function extractDataFromScript(scriptText) {
-        // characterData와 characterList를 추출하는 정규식
-        const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
-        const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
+        // 더 이상 정규식 파싱을 사용하지 않습니다.
+        throw new Error('Failed to extract data from script');
+    }
 
-        if (!characterDataMatch || !characterListMatch) {
-            throw new Error('Failed to extract data from script');
-        }
-
-        // JSON으로 파싱하기 위해 Function 생성자 사용
-        const characterData = new Function('return ' + characterDataMatch[1])();
-        const characterList = new Function('return ' + characterListMatch[1])();
-
-        return { characterData, characterList };
+    // 안전한 스크립트 로더
+    function loadScriptOnce(src) {
+        return new Promise((resolve, reject) => {
+            const exists = Array.from(document.scripts).some(s => s.src && s.src.includes(src));
+            if (exists) return resolve();
+            const s = document.createElement('script');
+            s.src = src;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('Failed to load ' + src));
+            document.head.appendChild(s);
+        });
     }
 
     // 언어별 캐릭터 데이터 로딩 및 병합
@@ -611,39 +629,24 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
         try {
-            // 1. 한국어 데이터 로딩 (기본 데이터)
-            const krResponse = await fetch(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
-            if (!krResponse.ok) {
-                throw new Error('Failed to load KR character data');
-            }
-
-            const krScriptText = await krResponse.text();
-            const { characterData: krCharacterData, characterList: krCharacterList } = extractDataFromScript(krScriptText);
+            // 1) KR 스크립트 로드 후 전역에서 추출
+            await loadScriptOnce(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+            const krCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
+            const krCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
 
 
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
             if (currentLang !== 'kr') {
-                const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
+                try {
+                    const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
+                    await loadScriptOnce(langUrl);
+                    const langCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
+                    const langCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
 
-                const langResponse = await fetch(langUrl);
-
-                if (langResponse.ok) {
-                    const langScriptText = await langResponse.text();
-
-                    const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
-
-                    // 3. 데이터 병합 (KR 전체 키 기준으로 병합, 언어 데이터 있으면 덮어쓰기)
                     const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
-
-                    // 전역 변수 설정:
-                    // - kr_spoiler(override='kr'): KR 리스트 강제 사용
-                    // - 그렇지 않으면 현재 언어 리스트 사용, 없으면 KR 리스트
                     window.characterData = mergedData;
                     window.characterList = (listLangOverride === 'kr') ? krCharacterList : (langCharacterList || krCharacterList);
-
-                } else {
-                    //console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
-                    // 언어별 데이터가 없으면 한국어 데이터 사용
+                } catch (e) {
                     window.characterData = krCharacterData;
                     window.characterList = krCharacterList;
                 }

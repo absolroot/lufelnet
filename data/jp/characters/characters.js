@@ -1,4 +1,4 @@
-const characterList = {
+window.characterList = window.characterList || {
     mainParty: [
         "렌", "루페르", "레오", "류지", "마코토", "마사키", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "미나미", "슌",
@@ -15,7 +15,8 @@ const characterList = {
 };
 
 // Character data (basic info only - detailed info will be merged from KR data)
-const characterData = {
+window.characterData = window.characterData || {};
+Object.assign(window.characterData, {
     "원더": {
         "role": "",
         "tag": "",
@@ -195,4 +196,4 @@ const characterData = {
         "release_order": 0,
         "name": "遠山 香代"
     }
-}; 
+});

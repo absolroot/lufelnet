@@ -195,7 +195,7 @@ redirect_from:
             <div class="search-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5c0-3.59-2.91-6.5-6.5-6.5S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.27v.79L19 20.49 20.49 19 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
                         fill="rgba(255, 255, 255, 0.6)" />
                 </svg>
             </div>
@@ -493,19 +493,22 @@ redirect_from:
 
     // 스크립트에서 데이터 추출하는 함수
     function extractDataFromScript(scriptText) {
-        // characterData와 characterList를 추출하는 정규식
-        const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
-        const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
+        // 레거시 정규식 경로는 더 이상 사용하지 않음.
+        // 호출 호환성 유지용 더미 구현.
+        throw new Error('Failed to extract data from script');
+    }
 
-        if (!characterDataMatch || !characterListMatch) {
-            throw new Error('Failed to extract data from script');
-        }
-
-        // JSON으로 파싱하기 위해 Function 생성자 사용
-        const characterData = new Function('return ' + characterDataMatch[1])();
-        const characterList = new Function('return ' + characterListMatch[1])();
-
-        return { characterData, characterList };
+    // 안전한 스크립트 로더
+    function loadScriptOnce(src) {
+        return new Promise((resolve, reject) => {
+            const exists = Array.from(document.scripts).some(s => s.src && s.src.includes(src));
+            if (exists) return resolve();
+            const s = document.createElement('script');
+            s.src = src;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('Failed to load ' + src));
+            document.head.appendChild(s);
+        });
     }
 
     // 스포일러 토글 상태 확인 함수
@@ -522,60 +525,36 @@ redirect_from:
         let originalLangCharacterList = null;
 
         try {
-            // 1. 한국어 데이터 로딩 (기본 데이터)
-            const krResponse = await fetch(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
-            if (!krResponse.ok) {
-                throw new Error('Failed to load KR character data');
-            }
+            // 1) KR 스크립트 로드 후 전역에서 추출
+            await loadScriptOnce(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+            const krCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
+            const krCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
 
-            const krScriptText = await krResponse.text();
-            const { characterData: krCharacterData, characterList: krCharacterList } = extractDataFromScript(krScriptText);
-
-            // 2. 언어별 데이터 로딩 및 원본 리스트 저장
+            // 2) 언어 스크립트 로드 및 병합
             if (currentLang !== 'kr') {
-                // 스포일러 모드에서도 원본 언어 리스트를 얻기 위해 언어별 데이터 로드
                 const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
-                const langResponse = await fetch(langUrl);
+                try {
+                    await loadScriptOnce(langUrl);
+                    const langCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
+                    const langCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
 
-                if (langResponse.ok) {
-                    const langScriptText = await langResponse.text();
-                    const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
-
-                    // 원본 언어별 캐릭터 리스트 저장 (스포일러 모드에서 비교용)
                     originalLangCharacterList = [...(langCharacterList?.mainParty || []), ...(langCharacterList?.supportParty || [])];
 
-                    // 스포일러 모드가 비활성화된 경우에만 언어별 데이터 사용
                     if (!spoilerEnabled) {
-
-                        // 3. 데이터 병합 (하이브리드 방식) - 언어별 캐릭터만 포함
-                        //console.log('🔄 Starting data merge...');
                         const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
-                        //console.log('✅ Data merge completed');
-
-                        // 중요: 전역 변수를 완전히 교체
-                        window.characterData = mergedData; // 병합된 데이터만 사용
-                        window.characterList = langCharacterList; // 언어별 캐릭터 목록 사용
-
-
+                        window.characterData = mergedData;
+                        window.characterList = langCharacterList;
                     } else {
-                        console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
-                        // 언어별 데이터가 없으면 한국어 데이터 사용
                         window.characterData = krCharacterData;
                         window.characterList = krCharacterList;
                     }
-                } else {
-                    // 언어별 데이터가 없으면 KR 리스트를 원본으로 사용
+                } catch (e) {
+                    // 언어별 데이터 로드 실패 시 KR 사용
                     originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
+                    window.characterData = krCharacterData;
+                    window.characterList = krCharacterList;
                 }
             } else {
-                if (spoilerEnabled && currentLang !== 'kr') {
-                    console.log('🔓 Spoiler mode enabled, using KR data for', currentLang);
-                    // 스포일러 모드에서는 KR 리스트를 원본으로 사용
-                    originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
-                } else {
-                    // console.log('Using KR data directly');
-                }
-                // 한국어인 경우 또는 스포일러 토글이 활성화된 경우 KR 데이터 사용
                 window.characterData = krCharacterData;
                 window.characterList = krCharacterList;
             }
@@ -759,13 +738,7 @@ redirect_from:
         allCharacters = allCharacters.filter(character => character !== "원더");
 
         // characterList에 있는 캐릭터만 사용하고, characterData에도 존재하는지 확인
-        const availableCharacters = allCharacters.filter(characterName => {
-            const exists = characterData[characterName] !== undefined;
-            if (!exists) {
-                console.warn(`Character ${characterName} not found in characterData`);
-            }
-            return exists;
-        });
+        const availableCharacters = allCharacters.filter(characterName => characterData[characterName] !== undefined);
 
         // Sort by release_order (descending), then by rarity
         const sortedCharacters = availableCharacters.sort((a, b) => {
@@ -881,7 +854,7 @@ redirect_from:
                 const originalCharacterList = window.originalLangCharacterList || [];
                 const isUnreleased = !originalCharacterList.includes(characterName);
 
-                console.log(`Checking ${characterName}: originalList includes = ${originalCharacterList.includes(characterName)}, isUnreleased = ${isUnreleased}`);
+                // console.log(`Checking ${characterName}: originalList includes = ${originalCharacterList.includes(characterName)}, isUnreleased = ${isUnreleased}`);
 
                 if (isUnreleased) {
                     const notReleasedTag = document.createElement('div');

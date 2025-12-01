@@ -387,6 +387,69 @@ function updateWeapons(lang, charKey, externalWeapon) {
   writeFile(targetPath, output);
 }
 
+// ---------- Per-character unified writers (ritual/skill/weapon) ----------
+function readLangEntry(filePath, varName, charKey) {
+  if (!fs.existsSync(filePath)) return {};
+  const code = readText(filePath);
+  const ast = parseAst(code);
+  const holder = findObjectByVarName(ast, varName) || findTopObject(ast);
+  if (!holder) return {};
+  const prop = getProperty(holder.obj, charKey);
+  if (!prop || !prop.value) return {};
+  const val = astLiteralToValue(prop.value);
+  return (val && typeof val === 'object') ? val : {};
+}
+
+function writePerCharacterUnified(charKey) {
+  const root = path.join('data', 'characters', charKey);
+  fs.mkdirSync(root, { recursive: true });
+
+  const krRitual = readLangEntry(path.join('data', 'kr', 'characters', 'character_ritual.js'), 'ritualData', charKey);
+  const enRitual = readLangEntry(path.join('data', 'en', 'characters', 'character_ritual.js'), 'enCharacterRitualData', charKey);
+  const jpRitual = readLangEntry(path.join('data', 'jp', 'characters', 'character_ritual.js'), 'jpCharacterRitualData', charKey);
+
+  const krSkills = readLangEntry(path.join('data', 'kr', 'characters', 'character_skills.js'), 'characterSkillsData', charKey);
+  const enSkills = readLangEntry(path.join('data', 'en', 'characters', 'character_skills.js'), 'enCharacterSkillsData', charKey);
+  const jpSkills = readLangEntry(path.join('data', 'jp', 'characters', 'character_skills.js'), 'jpCharacterSkillsData', charKey);
+
+  const krWeapon = readLangEntry(path.join('data', 'kr', 'characters', 'character_weapon.js'), 'WeaponData', charKey);
+  const enWeapon = readLangEntry(path.join('data', 'en', 'characters', 'character_weapon.js'), 'enCharacterWeaponData', charKey);
+  const jpWeapon = readLangEntry(path.join('data', 'jp', 'characters', 'character_weapon.js'), 'jpCharacterWeaponData', charKey);
+
+  // ritual.js
+  const ritualJs =
+`window.ritualData = window.ritualData || {};
+window.enCharacterRitualData = window.enCharacterRitualData || {};
+window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.ritualData[${JSON.stringify(charKey)}] = ${JSON.stringify(krRitual || {}, null, 2)};
+window.enCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(enRitual || {}).length ? enRitual : krRitual) || {}, null, 2)};
+window.jpCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(jpRitual || {}).length ? jpRitual : krRitual) || {}, null, 2)};
+`;
+  writeFile(path.join(root, 'ritual.js'), ritualJs);
+
+  // skill.js
+  const skillJs =
+`window.characterSkillsData = window.characterSkillsData || {};
+window.enCharacterSkillsData = window.enCharacterSkillsData || {};
+window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.characterSkillsData[${JSON.stringify(charKey)}] = ${JSON.stringify(krSkills || {}, null, 2)};
+window.enCharacterSkillsData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(enSkills || {}).length ? enSkills : krSkills) || {}, null, 2)};
+window.jpCharacterSkillsData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(jpSkills || {}).length ? jpSkills : krSkills) || {}, null, 2)};
+`;
+  writeFile(path.join(root, 'skill.js'), skillJs);
+
+  // weapon.js
+  const weaponJs =
+`window.WeaponData = window.WeaponData || {};
+window.enCharacterWeaponData = window.enCharacterWeaponData || {};
+window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.WeaponData[${JSON.stringify(charKey)}] = ${JSON.stringify(krWeapon || {}, null, 2)};
+window.enCharacterWeaponData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(enWeapon || {}).length ? enWeapon : krWeapon) || {}, null, 2)};
+window.jpCharacterWeaponData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(jpWeapon || {}).length ? jpWeapon : krWeapon) || {}, null, 2)};
+`;
+  writeFile(path.join(root, 'weapon.js'), weaponJs);
+}
+
 function updateRitual(lang, charKey, external) {
   const ritualPath = path.join('data', lang, 'characters', 'character_ritual.js');
   if (!fs.existsSync(ritualPath)) return;
@@ -581,6 +644,28 @@ function updateBaseStatsKR(charKey, external) {
         setObjectProp(v, 'attack', atk[i]);
         setObjectProp(v, 'defense', def[i]);
       }
+      // 신규 구조: data/characters/<캐릭터명>/base_stats.js 생성/갱신
+      try {
+        const outObj = {};
+        for (let i = 0; i < 7; i++) {
+          outObj[`a${i}_lv80`] = {
+            HP: hp[i],
+            attack: atk[i],
+            defense: def[i]
+          };
+        }
+        const destDir = path.join('data', 'characters', charKey);
+        fs.mkdirSync(destDir, { recursive: true });
+        const destFile = path.join(destDir, 'base_stats.js');
+        const content =
+`window.basicStatsData = window.basicStatsData || {};
+window.basicStatsData[${JSON.stringify(charKey)}] = ${JSON.stringify(outObj, null, 2)};
+`;
+        fs.writeFileSync(destFile, content, 'utf8');
+        console.error(`::notice::[base_stats] wrote per-character stats → ${destFile}`);
+      } catch (e) {
+        console.error(`::warning::[base_stats] failed to write per-character stats for ${charKey}:`, e?.message || e);
+      }
     }
   }
   const output = recast.print(ast).code;
@@ -658,6 +743,14 @@ async function main() {
     tw: extTW?.data?.name || null
   };
   updateNamesKR(local, key, nameMap);
+
+  // Per-character unified ritual/skill/weapon files
+  try {
+    writePerCharacterUnified(key);
+    console.error(`::notice::[per-character] wrote ritual/skill/weapon for '${key}'`);
+  } catch (e) {
+    console.error(`::warning::[per-character] failed to write unified files for ${key}:`, e?.message || e);
+  }
 
   console.log(`Sync completed for ${lang}:${local} (key='${key}')`);
 }

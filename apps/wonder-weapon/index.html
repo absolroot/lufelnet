@@ -74,12 +74,10 @@ jp: /wonder-weapon/?lang=jp
     return new Promise((resolve, reject) => {
       // Remove any previous scripts to avoid duplication
       document.querySelectorAll('script[src*="/data/kr/wonder/weapons.js"]').forEach(s => s.remove());
-      document.querySelectorAll('script[src*="/data/kr/characters/character_party.js"]').forEach(s => s.remove());
       document.querySelectorAll('script[src*="/data/kr/characters/characters.js"]').forEach(s => s.remove());
 
       const scripts = [
         '/data/kr/wonder/weapons.js',
-        '/data/kr/characters/character_party.js',
         '/data/kr/characters/characters.js',
       ];
 
@@ -97,6 +95,50 @@ jp: /wonder-weapon/?lang=jp
         document.head.appendChild(s);
       });
     });
+  }
+
+  // Per-character party loader (new structure)
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const exists = Array.from(document.scripts).some(s => s.src && s.src.includes(src));
+      if (exists) return resolve();
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('Failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function loadJSON(src) {
+    const res = await fetch(src, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  }
+
+  async function loadPerCharacterParty(name) {
+    try {
+      window.recommendParty = window.recommendParty || {};
+      const folder = encodeURIComponent(name);
+      const base = `/data/characters/${folder}/party`;
+      // Try JS first
+      await loadScript(`${base}.js?v=${APP_VERSION}`);
+      if (window.recommendParty && window.recommendParty[name]) return;
+      // Fallback to JSON
+      const data = await loadJSON(`${base}.json?v=${APP_VERSION}`);
+      window.recommendParty[name] = data || {};
+    } catch (e) {
+      // Silent: some characters might not have party data
+    }
+  }
+
+  async function loadAllPartyData() {
+    window.recommendParty = window.recommendParty || {};
+    const list = (typeof characterList !== 'undefined' && characterList)
+      ? [...(characterList.mainParty || []), ...(characterList.supportParty || [])]
+      : [];
+    if (!list.length) return;
+    await Promise.all(list.map(loadPerCharacterParty));
   }
 
   // i18n labels
@@ -667,6 +709,7 @@ jp: /wonder-weapon/?lang=jp
       updateSEO();
       await loadDataFiles();
       updateStaticTexts();
+      await loadAllPartyData();
       // Sort controls events
       const btnDesc = document.getElementById('sort-desc');
       const btnAsc = document.getElementById('sort-asc');

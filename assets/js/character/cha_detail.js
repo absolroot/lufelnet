@@ -32,21 +32,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function translateRevelationName(koreanName, isMainRevelation = false) {
         const currentLang = getCurrentLanguage();
 
+        // EN: enRevelationData → main/subTranslated → mapping_en
         if (currentLang === 'en' && typeof window.enRevelationData !== 'undefined') {
-            if (isMainRevelation && window.enRevelationData.mainTranslated && window.enRevelationData.mainTranslated[koreanName]) {
-                return window.enRevelationData.mainTranslated[koreanName];
-            } else if (!isMainRevelation && window.enRevelationData.subTranslated && window.enRevelationData.subTranslated[koreanName]) {
-                return window.enRevelationData.subTranslated[koreanName];
+            const data = window.enRevelationData;
+            if (isMainRevelation && data.mainTranslated && data.mainTranslated[koreanName]) {
+                return data.mainTranslated[koreanName];
             }
-        } else if (currentLang === 'jp' && typeof window.jpRevelationData !== 'undefined') {
-            if (isMainRevelation && window.jpRevelationData.mainTranslated && window.jpRevelationData.mainTranslated[koreanName]) {
-                return window.jpRevelationData.mainTranslated[koreanName];
-            } else if (!isMainRevelation && window.jpRevelationData.subTranslated && window.jpRevelationData.subTranslated[koreanName]) {
-                return window.jpRevelationData.subTranslated[koreanName];
+            if (!isMainRevelation && data.subTranslated && data.subTranslated[koreanName]) {
+                return data.subTranslated[koreanName];
+            }
+            if (data.mapping_en && data.mapping_en[koreanName]) {
+                return data.mapping_en[koreanName];
             }
         }
 
-        return koreanName; // 번역이 없으면 원본 반환
+        // JP: jpRevelationData → main/subTranslated → mapping_jp
+        if (currentLang === 'jp' && typeof window.jpRevelationData !== 'undefined') {
+            const data = window.jpRevelationData;
+            if (isMainRevelation && data.mainTranslated && data.mainTranslated[koreanName]) {
+                return data.mainTranslated[koreanName];
+            }
+            if (!isMainRevelation && data.subTranslated && data.subTranslated[koreanName]) {
+                return data.subTranslated[koreanName];
+            }
+            if (data.mapping_jp && data.mapping_jp[koreanName]) {
+                return data.mapping_jp[koreanName];
+            }
+        }
+
+        // 기본: 한국어 그대로
+        return koreanName;
     }
 
     // 세팅 정보 채우기
@@ -776,7 +791,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         //console.log('일본어 효과 데이터 없음:', japaneseKey);
                         //console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
                     }
-                } else if (revelationData.sub_effects && revelationData.sub_effects[revelation]) {
+                } else if (currentLang === 'kr'
+                    && typeof revelationData !== 'undefined'
+                    && revelationData.sub_effects
+                    && revelationData.sub_effects[revelation]) {
+                    // 한국어 페이지에서만 기본 데이터셋 사용
                     effectData = revelationData.sub_effects[revelation];
                     set2Text = effectData.set2;
                     set4Text = effectData.set4;
@@ -835,7 +854,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (translationData.set_effects[japaneseMainKey]) {
                         setEffectsData = translationData.set_effects[japaneseMainKey];
                     }
-                } else if (revelationData.set_effects && revelationData.set_effects[revelation]) {
+                } else if (currentLang === 'kr'
+                    && typeof revelationData !== 'undefined'
+                    && revelationData.set_effects
+                    && revelationData.set_effects[revelation]) {
+                    // 한국어 페이지에서만 기본 데이터셋 사용
                     setEffectsData = revelationData.set_effects[revelation];
                 }
 
@@ -1023,6 +1046,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스킬 순서 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
+        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린") {
+            skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
+        }
+
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
         if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
@@ -1148,6 +1175,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스킬 타입 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
+        // 쥐스틴 & 카롤린 (J&C) 전용: skill4, skill5 포함
+        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린") {
+            skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
+        }
+
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
         if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
@@ -1203,6 +1235,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     addTooltips();
                 }
             }, 100);
+        }
+
+        // J&C 전용 아이콘 적용
+        try {
+            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린') &&
+                typeof window.applyJCIcons === 'function') {
+                window.applyJCIcons();
+            }
+        } catch (e) {
+            console.warn('[SAFE:applyJCIcons]', e);
         }
     };
 

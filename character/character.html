@@ -863,7 +863,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
                 loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
                 loadPerCharacterResource(name, { fileBase: 'ritual', globalVarName: 'ritualData' }),
-                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' })
+                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' }),
+                // J&C 전용 아이콘 스크립트 (필요 시만 로드)
+                loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' })
             ];
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
         }
@@ -1310,6 +1312,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 초기 의식 내용 설정
         try { updateAllRitualContent(); } catch (e) { console.warn('[SAFE:updateAllRitualContent]', e); }
+
+        // J&C 의식 설명에도 아이콘 적용
+        try {
+            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린') &&
+                typeof window.applyJCIcons === 'function') {
+                window.applyJCIcons();
+            }
+        } catch (e) { console.warn('[SAFE:applyJCIcons:ritual]', e); }
 
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');

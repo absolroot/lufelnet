@@ -328,6 +328,14 @@
           left: toNumberOrNull(item.background_left),
         };
         const hasBgOffset = Object.values(bgOffsetCandidate).some(v => Number.isFinite(v));
+        // 모바일 전용 배경 오프셋 (존재하면 모바일 뷰에서만 우선 사용)
+        const bgOffsetMobileCandidate = {
+          top: toNumberOrNull(item.background_top_mobile),
+          right: toNumberOrNull(item.background_right_mobile),
+          bottom: toNumberOrNull(item.background_bottom_mobile),
+          left: toNumberOrNull(item.background_left_mobile),
+        };
+        const hasBgOffsetMobile = Object.values(bgOffsetMobileCandidate).some(v => Number.isFinite(v));
         const imgOffsetCandidate = {
           top: toNumberOrNull(item.image_top),
           right: toNumberOrNull(item.image_right),
@@ -344,6 +352,7 @@
           customImage: image,
           customBgImage: bgImage,
           customBgOffset: hasBgOffset ? bgOffsetCandidate : null,
+          customBgOffsetMobile: hasBgOffsetMobile ? bgOffsetMobileCandidate : null,
           customImgOffset: hasImgOffset ? imgOffsetCandidate : null,
           customLink: link,
           order,
@@ -460,7 +469,7 @@
       @media (min-width: 1200px) { .carousel-viewport { height: 280px; } }
       .carousel-track { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; transition: transform 450ms ease; }
       .carousel-slide { position: relative; min-width: 100%; height: 100%; display: flex; align-items: stretch; color: #fff; overflow: hidden; }
-      .slide-left { flex: 1 1 58%; min-width: 0; padding: 64px; display: flex; flex-direction: column; gap: 10px; z-index: 2; justify-content: center; }
+      .slide-left { flex: 1 1 58%; min-width: 0; padding: 64px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
       .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
@@ -583,17 +592,27 @@
     const el = document.createElement('div');
     el.className = 'carousel-slide';
 
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
+
     const bg = document.createElement('div');
     bg.className = 'slide-bg';
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
-      bg.style.backgroundImage = `url(${slide.customBgImage})`;
+      const isMobileBg = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      let bgImageCss = `url(${slide.customBgImage})`;
+      // 모바일 커스텀 슬라이드에는 반투명 그라디언트 오버레이 추가
+      if (isMobileBg) {
+        // 상단 50% 정도까지만 그라디언트가 보이도록 중간에 투명 처리
+        bgImageCss = `linear-gradient(180deg, #1111118c 0%, transparent 50%), ${bgImageCss}`;
+      }
+      bg.style.backgroundImage = bgImageCss;
       bg.style.backgroundRepeat = 'no-repeat';
       bg.style.backgroundSize = 'cover';
       // Support JSON-driven bg offset with top/right/bottom/left (px)
       let offsetX = 0, offsetY = 0;
-      if (slide.customBgOffset) {
-        const o = slide.customBgOffset;
+      const offsetSource = (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset;
+      if (offsetSource) {
+        const o = offsetSource;
         const r = Number.isFinite(o.right) ? o.right : 0;
         const l = Number.isFinite(o.left) ? o.left : 0;
         const b = Number.isFinite(o.bottom) ? o.bottom : 0;
@@ -683,7 +702,6 @@
     right.className = 'slide-right';
 
     // Limit images on mobile to 2
-    const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
     if (slide.kind === 'custom') {
       if (slide.customImage) {
         const img = document.createElement('img');

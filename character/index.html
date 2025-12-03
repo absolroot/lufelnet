@@ -180,7 +180,7 @@ redirect_from:
                     <label><input type="checkbox" name="tag" value="풍습"><span>풍습</span></label>
                     <label><input type="checkbox" name="tag" value="감전"><span>감전</span></label>
                     <label><input type="checkbox" name="tag" value="동결"><span>동결</span></label>
-                    <label><input type="checkbox" name="tag" value="HP소모"><span>HP 소모</span></label>
+                    <label><input type="checkbox" name="tag" value="HP 소모"><span>HP 소모</span></label>
                 </div>
             </div>
         </div>
@@ -992,6 +992,7 @@ redirect_from:
                         case '풍습': return characterTags.includes('풍습') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
                         case '감전': return characterTags.includes('감전') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
                         case '동결': return characterTags.includes('동결') || (characterTags.includes('원소 이상') && !characterTags.includes('원소 이상 제거'));
+                        case 'HP 소모': return characterTags.includes('HP 소모');
                         case '실드': return characterTags.includes('실드');
                         case '효과명중': return characterTags.includes('효과 명중');
                         case '방어력감소': return characterTags.includes('방어력 감소');

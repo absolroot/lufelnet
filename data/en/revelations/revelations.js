@@ -197,12 +197,12 @@ const enRevelationData = {
         },
         "Opulence": { // 화려
             "set2": "Ice DMG increased by 10%.",
-            "set4": "Follow-up attack damage is increased by 40%.",
+            "set4": "Resonance attack damage is increased by 40%.",
             "type": ["빙결", "추가 효과"]
         },
         "Success": { // 개선
             "set2": "Increases Crit Rate by 7.5%.",
-            "set4": "Follow Up Attack Damage is increased by 40%.",
+            "set4": "Resonance Attack Damage is increased by 40%.",
             "type": ["추가 효과", "미출시"]
         },
         "Oppression": { // 억압

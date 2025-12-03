@@ -131,9 +131,9 @@ SP회복에 큰 영향을 받는 캐릭터지만 **기본 188.5%** SP회복과 �
 
 - 스킬2 중첩 당 대미지 증가 계산 방식 : 스킬 계수 × (100% + 10% × 중첩 개수)`,
         review_en: `
-Within [Sea’s Domain], the character continuously attacks enemies with a **Follow-up that grows stronger with each attack** at the end of each ally’s turn.  
+Within [Sea’s Domain], the character continuously attacks enemies with a **Resonance that grows stronger with each attack** at the end of each ally’s turn.  
 
-Since the SP cost increases the more the Follow-up is repeated, the kit is designed to **deal heavy damage with Skill 2 and reset the stacks**.  
+Since the SP cost increases the more the Resonance is repeated, the kit is designed to **deal heavy damage with Skill 2 and reset the stacks**.  
 
 **Recovers SP at the start of an ally’s turn**, and it is important to use the SP as much as possible to trigger as many additional effects as possible.
 
@@ -152,7 +152,7 @@ Recommended SP recovery requirements based on the suggested operation cycle are 
     <th>Party Member</th>
     <th>Required SP Recovery</th>
     <th>+ RIKO 5★</th>
-    <th>Follow-up Count (6 turns)</th>
+    <th>Resonance Count (6 turns)</th>
   </tr>
   <tr>
     <td rowspan="6">0</td>
@@ -253,7 +253,7 @@ Recommended SP recovery requirements based on the suggested operation cycle are 
 
 ---
 
-- Follow-up stack DMG increase calculation: Skill coefficient × (100% + 5% × stack count)  
+- Resonance stack DMG increase calculation: Skill coefficient × (100% + 5% × stack count)  
 - Skill 2 stack DMG increase calculation: Skill coefficient × (100% + 10% × stack count)  `,
         review_jp: `
 『海の領域』の中で、味方ターン終了時に**攻撃するたびに強化される意識奏功**で敵を継続的に攻撃する。  
@@ -380,12 +380,12 @@ SP回復の影響を大きく受ける怪盗だが、**基礎188.5%**のSP回復
 
 - 意識奏功スタックごとのダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)  
 - スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)  `,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["자동 추가 공격이 반복돼 모든 컨텐츠에 유용하다."],
+        pros_en: ["Automatic Resonance repeat and are useful for all content."],
+        pros_jp: ["意識奏功が繰り返されるため、すべてのコンテンツで有用です。"],
+        cons: ["SP 수치를 신경써야한다."],
+        cons_en: ["Need to pay attention to SP values."],
+        cons_jp: ["SPの数値に注意する必要があります。"],
     };
 })();
 

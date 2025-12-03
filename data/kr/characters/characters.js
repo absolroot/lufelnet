@@ -407,7 +407,7 @@ Object.assign(window.characterData, {
     "미유·여름": {
         "limit": true,
         "role": "광역 빙결 추가효과 딜러",
-        "role_en": "AOE Freeze Follow-up Dealer",
+        "role_en": "AOE Freeze Resonance Dealer",
         "role_jp": "範囲凍結意識奏功ディーラー",
         "tag": "동결, 추가 효과",
         "color": "#69c0ff",

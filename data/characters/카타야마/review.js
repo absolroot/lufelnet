@@ -55,12 +55,12 @@ It enables fast Downs and buffs the **independent bucket: [Downed Damage Taken]*
 - 防御力低下がHLに紐づくため、実質的に**HLを強要**されます。早期に効果を出すには2ターン目にHLを使う必要があり、その場合は通常のHL機会（2・6ターン）を手放すことになります。
 - 4★武器は**ダウンを取ったときのみ発動**。**意識1未満**では効率が大きく下がるため、**★3武器**が代替案になり得ます。
       `,
-      pros: [""],
-      pros_en: [""],
-      pros_jp: [""],
-      cons: [""],
-      cons_en: [""],
-      cons_jp: [""],
+      pros: ["적의 약점에 무관하게 다운 시킬 수 있다.", "다운 약화 효과를 강화시킨다."],
+      pros_en: ["Can down enemies regardless of their weaknesses.", "Enhances the DOWN debuff."],
+      pros_jp: ["弱点に関係なく敵をDOWNさせることができます。", "DOWN弱体効果を強化します。"],
+      cons: ["적이 다운되지 않으면 효율이 급감한다.", "자신을 강화시키는 효과가 의미가 없을 정도로 대미지가 약하다."],
+      cons_en: ["The efficiency drops sharply if the enemy doesn't get Down.", "The damage is too weak to be meaningful for self-buffing."],
+      cons_jp: ["敵がDOWNしないと効率が大きく下がります。", "自分を強化する効果が意味がなく、ダメージが弱すぎます。"],
     };
 })();
 

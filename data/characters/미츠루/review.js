@@ -8,7 +8,7 @@
 
 - **스킬3**은 일정 수치(3%)의 해명 괴도의 속성 증가를 포함하고 있으며, 높은 수치의 빙결 속성 대미지를 준다. 
 
-- **핵심은 테우르기아**로 높은 수치의 빙결 속성 대미지와 함께 **2턴** 동안 아군이 페르소나 스킬을 사용해 피해를 주면 해당 **아군의 속성과 스테이터스를 그대로 복제한 추가 피해**를 미츠루가 준다.\n**스킬 계수 증가 버프**로 이해하는 것이 편하다. 해당 피해 계수는 『서리 결정』의 중첩 수 × 20.0%/22.0%/22.4%/24.4%다.
+- **핵심은 테우르기아**로 높은 수치의 빙결 속성 대미지와 함께 **2턴** 동안 아군이 페르소나 스킬을 사용해 피해를 주면 해당 **아군의 속성과 스테이터스를 그대로 복제한 추가 피해**를 미츠루가 준다.\n**스킬 계수 증가 버프**로 이해하는 것이 편하다.
 
 <br>
 
@@ -51,9 +51,7 @@
   </tbody>
 </table>
 
-**방어력 감소 수치가 상당히 높은 편**으로 남은 한 자리를 우월 괴도로 채울 수 있다.
 
----
 계시 선택지가 상당히 자유로운 편이다. 상황에 맞게 선택하면 된다. 
 
 - 미츠루의 대미지와 아군 버프의 밸런스를 고려할 경우에는 [진정성]+[고집]
@@ -71,7 +69,7 @@ Her **skill 2** can permanently decrease 1 foe's Defense and increase their dama
 
 Her **skill 3** can increase party's stats by Elucidator's stats (3%), and deal heavy Ice damage.
 
-Her **Theurgy** can deal heavy Ice damage. For the next 2 turns, when allies deal Persona skill damage, Mitsuru will deal damage **equal to that ally's stats and skill attribute**. This can be seen as a skill multiplier buff. The multiplier is [Frost] stacks x 20.0%/22.0%/22.4%/24.4%.
+Her **Theurgy** can deal heavy Ice damage. For the next 2 turns, when allies deal Persona skill damage, Mitsuru will deal damage **equal to that ally's stats and skill attribute**. This can be seen as a skill multiplier buff. 
 
 <br>
 
@@ -115,9 +113,6 @@ However, since the exact stats Mitsuru replicates are unclear, it is uncertain w
   </tbody>
 </table>
 
-Mitsuru can inflict **heavy Defense down**, so the remaining party member can be a Strategist.
-
----
 
 Mitsuru can use many revelation cards. You can choose according to the situation.
 
@@ -136,7 +131,7 @@ review_jp: `
 
 - **スキル3**には解明系怪盗の各属性値を3%上昇させる効果が含まれており、さらに高威力の氷結属性ダメージを与える。
 
-- **核心はテウルギア**。高倍率の氷結属性ダメージを与えた後、**2ターン**の間、味方がペルソナスキルでダメージを与えるたびに、**その味方の属性とステータスを複製した追加ダメージ**を美鶴自身が与える。\nこれは**スキル係数バフ**として理解すると分かりやすい。追加ダメージの係数は『霜結』スタック数 × 20.0%/22.0%/22.4%/24.4%。
+- **核心はテウルギア**。高倍率の氷結属性ダメージを与えた後、**2ターン**の間、味方がペルソナスキルでダメージを与えるたびに、**その味方の属性とステータスを複製した追加ダメージ**を美鶴自身が与える。\nこれは**スキル係数バフ**として理解すると分かりやすい。
 
 <br>
 
@@ -180,9 +175,6 @@ review_jp: `
   </tbody>
 </table>
 
-**防御力減少値が非常に高い**ため、残りの1枠には『優越』タイプの怪盗を編成するのも良い。
-
----
 
 啓示カードの選択肢は非常に自由度が高く、状況に応じて選べる。
 
@@ -191,12 +183,12 @@ review_jp: `
 - 味方のバフ支援に重点を置きたい場合：[創造]＋[和解]
 - （オプション）防御力減少が不足する場合：[支配]＋[旅立]`,
 dump:``,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["아군의 스탯을 활용한 추가 공격을 제공한다.", "높은 방어력 감소를 적용한다."],
+        pros_en: ["Provides high damage and Defense down."],
+        pros_jp: ["高威力のダメージと防御力低下を提供します。"],
+        cons: ["단독 딜러로 활용하기에는 다른 메인 딜러 대비 부족한 대미지를 보유하고 있다."],
+        cons_en: ["Has a relatively low damage output when used as a solo damage dealer compared to other main damage dealers."],
+        cons_jp: ["単独でダメージディーラーとして使用する場合、他のメインダメージディーラーと比較してダメージが不足しています。"],
     };
 })();
 

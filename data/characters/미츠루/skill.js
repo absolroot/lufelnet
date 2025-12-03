@@ -31,7 +31,7 @@ window.characterSkillsData["미츠루"] = {
     "name": "블리자드 에지",
     "element": "빙결",
     "cool": 0,
-    "description": "시전 조건: 테우르기아 에너지 70포인트\n1명의 적에게 공격력 371.2%/408.3%/415.7%/452.9%의 빙결 속성 대미지를 주고, 2턴 내에 목표의 『서리 결정』을 『혹한 결정』으로 강화한다. 아군이 페르소나 스킬로 『혹한 결정』 상태의 적 공격 시, 키리조 미츠루의 『냉혈의 칼날』이 발동되어 목표에게 공격력 20.0%/22.0%/22.4%/24.4%*『서리 결정』 중첩 수에 해당하는 추가 대미지를 1회 준다."
+    "description": "시전 조건: 테우르기아 에너지 70포인트\n1명의 적에게 공격력 362.3%/399.4%/384.6%/421.7%의 빙결 속성 대미지를 주고, 2턴 내에 목표의 『서리 결정』을 『혹한 결정』으로 강화한다. 아군이 페르소나 스킬로 『혹한 결정』 상태의 적 공격 시, 키리조 미츠루의 『냉혈의 칼날』이 발동되어 목표에게 공격력 19.5%/21.5%/20.7%/22.7%*『서리 결정』 중첩 수에 해당하는 추가 대미지를 1회 준다."
   },
   "skill_support": {
     "name": "지원 스킬",
@@ -81,7 +81,7 @@ window.enCharacterSkillsData["미츠루"] = {
     "name": "Theurgy - Blizzard Edge",
     "element": "빙결",
     "type": "단일피해",
-    "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 371.2%/408.3%/415.7%/452.9% of Attack. Upgrade target's [Frost] to [Rime] for 2 turns. When allies use a Persona skill to attack foes with [Rime], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frost] stacks * 20.0%/22.0%/22.4%/24.4% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
+    "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 362.3%/399.4%/384.6%/421.7% of Attack. Upgrade target's [Frost] to [Rime] for 2 turns. When allies use a Persona skill to attack foes with [Rime], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frost] stacks * 19.5%/21.5%/20.7%/22.7% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
   },
   "skill_support": {
     "name": "Assist Skill",
@@ -130,7 +130,7 @@ window.jpCharacterSkillsData["미츠루"] = {
     "name": "テウルギア：ブリザードブレード",
     "element": "빙결",
     "type": "단일피해",
-    "description": "発動条件：神通法エネルギー70点\n敵1体に攻撃力371.2%/408.3%/415.7%/452.9%の氷結属性ダメージを与え、2ターンの間『霜結』を『寒霜結』に強化する。味方がペルソナスキルで『寒霜結』状態の敵を攻撃した時、『冷血の刃』を発動し、対象に『霜結』層数×20.0%/22.0%/22.4%/24.4%の追加ダメージを与える。"
+    "description": "発動条件：神通法エネルギー70点\n敵1体に攻撃力362.3%/399.4%/384.6%/421.7%の氷結属性ダメージを与え、2ターンの間『霜結』を『寒霜結』に強化する。味方がペルソナスキルで『寒霜結』状態の敵を攻撃した時、『冷血の刃』を発動し、対象に『霜結』層数×19.5%/21.5%/20.7%/22.7%の追加ダメージを与える。"
   },
   "skill_support": {
     "name": "サポートスキル",

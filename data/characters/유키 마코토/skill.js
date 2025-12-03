@@ -31,7 +31,7 @@ window.characterSkillsData["유키 마코토"] = {
     "name": "테우르기아 - 알다나",
     "element": "화염",
     "type": "",
-    "description": "발동 조건: 테우르기아 에너지 100포인트\n1명의 적에게 공격력 151.1%/162.6%/160.5%/171.6%의 화염 속성 대미지를 4회 준다. 자신이 『특수 월상』을 1중첩 획득하며 2턴 동안 지속된다(4회 중첩 가능)."
+    "description": "발동 조건: 테우르기아 에너지 100포인트\n1명의 적에게 공격력 147.5%/162.6%/156.5%/171.6%의 화염 속성 대미지를 4회 준다. 자신이 『특수 월상』을 1중첩 획득하며 2턴 동안 지속된다(4회 중첩 가능)."
   },
   "skill_highlight2": {
     "name": "테우르기아 - 카덴차",
@@ -86,7 +86,7 @@ window.enCharacterSkillsData["유키 마코토"] = {
     "name": "Theurgy - Ardhanari",
     "element": "화염",
     "type": "",
-    "description": "Use condition: When Makoto has 100 Theurgy Energy. \nDeal Fire damage to 1 foe equal to 151.1%/162.6%/160.5%/171.6% of Attack (4 hits), and gain 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
+    "description": "Use condition: When Makoto has 100 Theurgy Energy. \nDeal Fire damage to 1 foe equal to 147.5%/162.6%/156.5%/171.6% of Attack (4 hits), and gain 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
   },
   "skill_highlight2": {
     "name": "Theurgy - Cadenza",
@@ -141,7 +141,7 @@ window.jpCharacterSkillsData["유키 마코토"] = {
     "name": "テウルギア - アルダナ",
     "element": "화염",
     "type": "",
-    "description": "発動条件：テウルギアエネルギー100\n敵1体に攻撃力151.1%/162.6%/160.5%/171.6%の火炎属性ダメージを4回与える。『特殊月相』を1スタック獲得し2ターン持続（最大4スタック）。"
+    "description": "発動条件：テウルギアエネルギー100\n敵1体に攻撃力147.5%/162.6%/156.5%/171.6%の火炎属性ダメージを4回与える。『特殊月相』を1スタック獲得し2ターン持続（最大4スタック）。"
   },
   "skill_highlight2": {
     "name": "テウルギア - カデンツァ",

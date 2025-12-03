@@ -33,7 +33,7 @@ window.characterSkillsData["사나다"] = {
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "발동 조건 : 테우르기아 에너지 140\n모든 적에게 공격력 261.7%/287.9%/293.1%/319.3%의 전격 속성 대미지를 주고, 해당 스킬은 『반드시 크리티컬을 발동』한다. 크리티컬 효과는 200%로 고정된다."
+    "description": "발동 조건 : 테우르기아 에너지 140\n모든 적에게 공격력 255.4%/281.6%/271.1%/297.3%의 전격 속성 대미지를 주고, 해당 스킬은 『반드시 크리티컬을 발동』한다. 크리티컬 효과는 200%로 고정된다."
   },
   "skill_support": {
     "name": "지원 기술",
@@ -84,7 +84,7 @@ window.enCharacterSkillsData["사나다"] = {
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "Use condition: When Akihiko has 140 Theurgy Energy\nDeal Elec damage to all foes equal to 261.7%/287.9%/293.1%/319.3% of Attack, this skill is guaranteed to be a critical hit, and has 200% critical damage."
+    "description": "Use condition: When Akihiko has 140 Theurgy Energy\nDeal Elec damage to all foes equal to 255.4%/281.6%/271.1%/297.3% of Attack, this skill is guaranteed to be a critical hit, and has 200% critical damage."
   },
   "skill_support": {
     "name": "Assist Skill",
@@ -135,7 +135,7 @@ window.jpCharacterSkillsData["사나다"] = {
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "発動条件：テウルギアエネルギー140\n全ての敵に攻撃力261.7%/287.9%/293.1%/319.3%の電撃属性ダメージを与え、このスキルは『必ずクリティカルが発動』する。CRT倍率は200%で固定される。"
+    "description": "発動条件：テウルギアエネルギー140\n全ての敵に攻撃力255.4%/281.6%/271.1%/297.3%の電撃属性ダメージを与え、このスキルは『必ずクリティカルが発動』する。CRT倍率は200%で固定される。"
   },
   "skill_support": {
     "name": "サポートスキル",

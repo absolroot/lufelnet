@@ -31,7 +31,7 @@ window.characterSkillsData["유카리"] = {
     "name": "테우르기아 - 사이클론 애로",
     "element": "질풍",
     "type": "",
-    "description": "발동 조건: 테우르기아 에너지 70포인트\n1명의 적에게 공격력 416.0%/457.6%/465.9%/507.5%의 질풍 속성 대미지를 주고, 자신의 공격력 100포인트마다 아군 전체의 주는 대미지가 0.48% 증가한다(상한 20.0%/22.0%/22.4%/24.4%).\n목표의 버프 효과 2개를 제거하고, 100%의 기본 확률로 목표가 풍습 상태에 빠지며, 목표가 『바람의 흔적』을 획득한다. 효과는 2턴 동안 지속된다."
+    "description": "발동 조건: 테우르기아 에너지 70포인트\n1명의 적에게 공격력 406.0%/447.6%/431.0%/472.6%의 질풍 속성 대미지를 주고, 자신의 공격력 100포인트마다 아군 전체의 주는 대미지가 0.48% 증가한다(상한 19.5%/21.5%/20.7%/22.7%).\n목표의 버프 효과 2개를 제거하고, 100%의 기본 확률로 목표가 풍습 상태에 빠지며, 목표가 『바람의 흔적』을 획득한다. 효과는 2턴 동안 지속된다."
   },
   "skill_support": {
     "name": "지원 기술",
@@ -80,7 +80,7 @@ window.enCharacterSkillsData["유카리"] = {
     "name": "Theurgy - Cyclone Arrow",
     "element": "질풍",
     "type": "",
-    "description": "Use condition: When Yukari has 70 Theurgy Energy\nDeal Wind damage to 1 foe equal to 416.0%/457.6%/465.9%/507.5% of Attack. Increase party's damage by 0.48% for every 100 Attack, up to 20.0%/22.0%/22.4%/24.4%; Remove 2 buffs on the target, with a 100% base chance to inflict Windswept, then inflict the target with [Wind Erosion] for 2 turns."
+    "description": "Use condition: When Yukari has 70 Theurgy Energy\nDeal Wind damage to 1 foe equal to 406.0%/447.6%/431.0%/472.6% of Attack. Increase party's damage by 0.48% for every 100 Attack, up to 19.5%/21.5%/20.7%/22.7%; Remove 2 buffs on the target, with a 100% base chance to inflict Windswept, then inflict the target with [Wind Erosion] for 2 turns."
   },
   "skill_support": {
     "name": "Assist Skill",
@@ -129,7 +129,7 @@ window.jpCharacterSkillsData["유카리"] = {
     "name": "テウルギア - サイクロンアロー",
     "element": "질풍",
     "type": "",
-    "description": "発動条件：テウルギアエネルギー70\n敵1体に攻撃力416.0%/457.6%/465.9%/507.5%の疾風属性ダメージを与え、岳羽 ゆかりの攻撃力100ごとに味方全体の与ダメージが0.48%増加する（上限20.0%/22.0%/22.4%/24.4%）。対象のバフを2つ解除し、100%の基本確率で風纏い状態にし、『風の痕跡』を付与する。効果は2ターン持続。"
+    "description": "発動条件：テウルギアエネルギー70\n敵1体に攻撃力406.0%/447.6%/431.0%/472.6%の疾風属性ダメージを与え、岳羽 ゆかりの攻撃力100ごとに味方全体の与ダメージが0.48%増加する（上限19.5%/21.5%/20.7%/22.7%）。対象のバフを2つ解除し、100%の基本確率で風纏い状態にし、『風の痕跡』を付与する。効果は2ターン持続。"
   },
   "skill_support": {
     "name": "サポートスキル",

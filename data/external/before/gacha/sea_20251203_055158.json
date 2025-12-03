@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-12-03 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Kira Kitazato",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Cynical Surgeon",
+        "startTime": "2025-10-31 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2025-12-14 09:59:59",
         "fiveStar": [
           {
@@ -130,6 +156,32 @@
         "name": "Fist of the Phantom Star",
         "startTime": "2025-11-21 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-03 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Kira Kitazato",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Cynical Surgeon",
+        "startTime": "2025-10-31 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
       },
       {
         "endTime": "2025-12-14 09:59:59",
@@ -159,6 +211,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-12-03 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Bloodletter",
+            "type": "weapon",
+            "user": "Kira"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Undying Embers",
+            "type": "weapon",
+            "user": "Kira"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-10-31 10:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-12-14 09:59:59",
         "fiveStar": [

@@ -25,7 +25,7 @@ window.WeaponData["카타야마"] = {
     "attack": 706,
     "defense": 396,
     "skill_name": "",
-    "description": "속도가 15.0/15.0/20.0/20.0/25.0/25.0/30.0 증가한다.\n자신이 『오의·섬광 다리』를 시전한 후, 2턴 동안 크리티컬 확률이 9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0% 증가한다.\n자신이 적을 다운시킨 후, 1턴 동안 목표의 받는 크리티컬 효과가 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% 추가 증가한다."
+    "description": "속도가 15.0/15.0/20.0/20.0/25.0/25.0/30.0 증가한다.\n자신이 『오의·섬광 다리』를 시전한 후, 2턴 동안 크리티컬 확률이 9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0% 증가한다.\n카타야마 쿠미가 필드에 있을 때 임의의 적이 다운되면, 1턴 동안 목표의 받는 크리티컬 효과가 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% 추가 증가한다."
   }
 };
 window.enCharacterWeaponData["카타야마"] = {
@@ -52,7 +52,7 @@ window.enCharacterWeaponData["카타야마"] = {
     "attack": 706,
     "defense": 396,
     "skill_name": "Demon Unleashed",
-    "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nAfter user knocks down a foe, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+    "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nWhen a random foe is knocked down while Katayama is on the field, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
   }
 };
 window.jpCharacterWeaponData["카타야마"] = {
@@ -77,6 +77,6 @@ window.jpCharacterWeaponData["카타야마"] = {
     "health": 2239,
     "attack": 706,
     "defense": 396,
-    "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0。『奥義・閃光脚』使用時、CRT発生率+9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%（2ターン）。さらに敵をダウンさせると、その敵が受けるCRT倍率が30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%増加（1ターン）。"
+    "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0。『奥義・閃光脚』使用時、CRT発生率+9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%（2ターン）。さらにフィールドにいる任意の敵がダウンすると、その敵が受けるCRT倍率が30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%増加（1ターン）。"
   }
 };

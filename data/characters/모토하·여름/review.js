@@ -29,12 +29,12 @@ review_jp: `
 
 ただし**HPが16000**を超えてもメリットはないため、味方のバフを考慮して適度に確保し、**残りのステータスは攻撃的な要素に投資**するのが望ましい。
 `,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["생존성이 높다.", "운영 난이도가 쉽다."],
+        pros_en: ["The survival is high.", "The operation difficulty is low."],
+        pros_jp: ["生存力が高い。", "運用難易度が低い。"],
+        cons: ["안정적이지만 극적인 대미지를 기대하기 어렵다."],
+        cons_en: ["It is stable, but it is difficult to expect dramatic damage."],
+        cons_jp: ["安定していますが、大胆なダメージを期待するのは難しいです。"],
     };
 })();
 

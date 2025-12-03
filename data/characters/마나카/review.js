@@ -43,20 +43,22 @@ When Manaka has **Awakening 1 or higher**, she can use Skill 3 on turn 1 and Ski
 
 真中は**覚醒1以上なら**、1ターン目にスキル3、2ターン目にスキル1を使用し、**わずか2ターンで全バフを付与することが可能となる。
 `,
-        pros: ["턴 회귀라는 특수 기술을 가지고 있다.", "높은 관통 버프를 제공한다."],
+        pros: ["턴 회귀라는 특수 기술을 가지고 있다.", "높은 관통 버프를 제공한다.", "해명 괴도로 스탯을 지원할 수 있다."],
         pros_en: [
             "Possesses the unique Elucidator ability Turn Revert.",
-            "Provides a strong Piercing buff."
+            "Provides a strong Piercing buff.",
+            "Can support stats as an Elucidator."
           ]
           ,
         pros_jp: [
             "特殊な解明能力であるターン回帰を持っている。",
-            "高い貫通バフを付与できる。"
+            "高い貫通バフを付与できる。",
+            "解明怪盗としてステータスをサポートできる。"
           ]
           ,
-        cons: ["없음"],
-        cons_en: ["None"],
-        cons_jp: ["なし"],
+        cons: ["-"],
+        cons_en: ["-"],
+        cons_jp: ["-"],
     };
 })();
 

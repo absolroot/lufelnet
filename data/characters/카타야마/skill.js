@@ -9,7 +9,7 @@ window.characterSkillsData["카타야마"] = {
     "type": "광역피해",
     "sp": 22,
     "cool": 0,
-    "description": "모든 적에게 공격력 101.7%/112.1%/108.0%/118.4%의 전격 속성 대미지를 주고, 목표가 『중상』을 획득한다. 『중상』: 방어력 9.8%/10.8%/10.4%/11.4% 감소+카타야마 쿠미가 속도를 10포인트 보유할 때마다 2.22% 감소하며(상한 39.0%/43.0%/41.4%/45.4%), 받는 대미지 7.8%/8.6%/8.3%/9.1% 증가+카타야마 쿠미가 속도를 10포인트 보유할 때마다 1.78% 증가한다(상한 31.2%/34.4%/33.2%/36.4%). 효과는 2턴 동안 지속된다.\n자신이 『초극한』을 보유하고 있는 경우, 이번 스킬의 스킬 대미지가 추가로 30% 증가한다.\n스킬 『오의·섬광 다리』를 해제한다."
+    "description": "모든 적에게 공격력 101.7%/112.1%/108.0%/118.4%의 전격 속성 대미지를 주고, 목표가 『중상』을 획득한다. 『중상』: 방어력 9.8%/10.8%/10.4%/11.4% 감소+카타야마 쿠미가 속도를 10포인트 보유할 때마다 2.22% 감소하며(상한 39.0%/43.0%/41.4%/45.4%), 받는 대미지 7.8%/8.6%/8.3%/9.1% 증가+카타야마 쿠미가 속도를 10포인트 보유할 때마다 1.78% 증가한다(상한 31.2%/34.4%/33.2%/36.4%). 효과는 3턴 동안 지속된다.\n자신이 『초극한』을 보유하고 있는 경우, 이번 스킬의 스킬 대미지가 추가로 30% 증가한다.\n스킬 『오의·섬광 다리』를 해제한다."
   },
   "skill2": {
     "name": "선생님의 심판",
@@ -33,7 +33,7 @@ window.characterSkillsData["카타야마"] = {
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "모든 적에게 공격력 317.6%/350.1%/337.1%/369.7%의 전격 속성 대미지를 주고, 1턴 동안 50% 기본 확률로 적을 『기절』 상태에 빠뜨린다. HIGHLIGHT 시전 후 자신이 다음에 적을 다운시킬 때 적의 방어력이 29.3%/32.3%/31.1%/34.1% 영구 감소한다. 해당 효과는 중첩될 수 없다."
+    "description": "모든 적에게 공격력 317.6%/350.1%/337.1%/369.7%의 전격 속성 대미지를 주고, 1턴 동안 50% 기본 확률로 적을 『기절』 상태에 빠뜨린다. HIGHLIGHT 시전 후 자신이 다음에 적을 다운시킬 때 적의 방어력이 29.3%/32.3%/31.1%/34.1% 영구 감소한다. 해당 효과는 중첩될 수 없다. 추가로 3턴 동안 적이 받는 대미지를 19.5%/21.5%/20.7%/22.7% 증가시킨다."
   },
   "passive1": {
     "name": "훈계",
@@ -54,7 +54,7 @@ window.enCharacterSkillsData["카타야마"] = {
     "type": "AoE DMG",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 2 turns.\nIf Katayama has [Super Limit], increase skill damage by 30%.\nUnlock [Secret Art: Lightning Legs]."
+    "description": "Deal Elec damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 3 turns.\nIf Katayama has [Super Limit], increase skill damage by 30%.\nUnlock [Secret Art: Lightning Legs]."
   },
   "skill2": {
     "name": "Thunderous Judgement",
@@ -78,7 +78,7 @@ window.enCharacterSkillsData["카타야마"] = {
     "type": "AoE DMG",
     "sp": 0,
     "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, with a 50% base chance to inflict Dizzy for 1 turn. After using Highlight, when Katayama knocks down a foe, decrease target's Defense by 29.3%/32.3%/31.1%/34.1%. This effect is permanent and cannot stack."
+    "description": "Deal Elec damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, with a 50% base chance to inflict Dizzy for 1 turn. After using Highlight, when Katayama knocks down a foe, decrease target's Defense by 29.3%/32.3%/31.1%/34.1%. This effect is permanent and cannot stack. Additionally, increase target's damage taken by 19.5%/21.5%/20.7%/22.7% for 3 turns."
   },
   "passive1": {
     "name": "Admonition",
@@ -99,7 +99,7 @@ window.jpCharacterSkillsData["카타야마"] = {
     "type": "全体ダメージ",
     "sp": 22,
     "cool": 0,
-    "description": "敵全体に101.7%/112.1%/108.0%/118.4%の攻撃力で電撃属性ダメージを与え、『重傷』を2ターン付与する。\n『重傷』：防御力-9.8%/-10.8%/-10.4%/-11.4%に加え、SPD10ごとに-2.22%（最大-39.0%/-43.0%/-41.4%/-45.4%）。被ダメージ+7.8%/8.6%/8.3%/9.1%、さらにSPD10ごとに+1.78%（最大31.2%/34.4%/33.2%/36.4%）。\n自身が『超極限』状態なら、このスキルのダメージ+30%。\n使用後、『奥義・閃光脚』が解放される。"
+    "description": "敵全体に101.7%/112.1%/108.0%/118.4%の攻撃力で電撃属性ダメージを与え、『重傷』を3ターン付与する。\n『重傷』：防御力-9.8%/-10.8%/-10.4%/-11.4%に加え、SPD10ごとに-2.22%（最大-39.0%/-43.0%/-41.4%/-45.4%）。被ダメージ+7.8%/8.6%/8.3%/9.1%、さらにSPD10ごとに+1.78%（最大31.2%/34.4%/33.2%/36.4%）。\n自身が『超極限』状態なら、このスキルのダメージ+30%。\n使用後、『奥義・閃光脚』が解放される。"
   },
   "skill2": {
     "name": "審判雷撃",
@@ -123,7 +123,7 @@ window.jpCharacterSkillsData["카타야마"] = {
     "type": "全体ダメージ",
     "sp": 0,
     "cool": 0,
-    "description": "敵全体に317.6%/350.1%/337.1%/369.7%の攻撃力で電撃属性ダメージを与え、50%の基礎確率で感電状態にする（1ターン）。\nHIGHLIGHT発動後、次に敵をダウンさせると、その敵の防御力を永続的に29.3%/32.3%/31.1%/34.1%減少（重複不可）。"
+    "description": "敵全体に317.6%/350.1%/337.1%/369.7%の攻撃力で電撃属性ダメージを与え、50%の基礎確率で感電状態にする（1ターン）。\nHIGHLIGHT発動後、次に敵をダウンさせると、その敵の防御力を永続的に29.3%/32.3%/31.1%/34.1%減少（重複不可）。さらに、その敵が3ターンの間、被ダメージが19.5%/21.5%/20.7%/22.7%増加する。"
   },
   "passive1": {
     "name": "訓戒",

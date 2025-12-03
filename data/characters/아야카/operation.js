@@ -2,16 +2,24 @@ window.operationData = window.operationData || {};
 window.operationData["아야카"] = {
     "basic": [
         {
-            "label": "의식 0",
+            "label": "의식0",
             "value": "2 › 1 › 3 › 2 › 1 › 3"
         },
         {
-            "label": "의식 1",
+            "label": "의식1",
             "value": "1 › 1 › 3 › 2 › 1 › 3"
         },
         {
-            "label": "의식 6",
+            "label": "의식6",
             "value": "3 › 1 › 3 › 2 › 1 › 3"
+        },
+        {
+            "label": "의식6",
+            "value": "3 › 1 › 3 › 2 › 3 › 1"
+        },
+        {
+            "label": "의식6",
+            "value": "1 › 3 › 2 › 3 › 2 › 3"
         }
     ],
     "basic_en": [

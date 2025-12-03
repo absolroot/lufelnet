@@ -9,7 +9,7 @@ window.characterSkillsData["사나다"] = {
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "자신이 『투지』를 1중첩 획득하고, 모든 적에게 공격력 122.8%/135.4%/130.3%/142.9%의 전격 속성 대미지를 주며, 3턴 동안 자신의 크리티컬 효과가 11.7%/12.9%/12.4%/13.6% 증가한다."
+    "description": "자신이 『투지』를 1중첩 획득하고, 모든 적에게 공격력 122.8%/135.4%/130.3%/142.9%의 전격 속성 대미지를 주며, 3턴 동안 자신의 크리티컬 효과가 23.4%/25.8%/24.9%/27.3% 증가한다."
   },
   "skill2": {
     "name": "썬더 크래쉬",
@@ -60,7 +60,7 @@ window.enCharacterSkillsData["사나다"] = {
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Grant Akihiko 1 [Fighting Spirit] stack. Deal Elec damage to all foes equal to 122.8%/135.4%/130.3%/142.9% of Attack, increase Akihiko's critical damage by 11.7%/12.9%/12.4%/13.6% for 3 turns."
+    "description": "Grant Akihiko 1 [Fighting Spirit] stack. Deal Elec damage to all foes equal to 122.8%/135.4%/130.3%/142.9% of Attack, increase Akihiko's critical damage by 23.4%/25.8%/24.9%/27.3% for 3 turns."
   },
   "skill2": {
     "name": "Lightning Impact",
@@ -111,7 +111,7 @@ window.jpCharacterSkillsData["사나다"] = {
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "『闘志』を1スタック獲得し、全ての敵に攻撃力122.8%/135.4%/130.3%/142.9%の電撃属性ダメージを与え、3ターンの間、真田 明彦のCRT倍率が11.7%/12.9%/12.4%/13.6%上昇する。"
+    "description": "『闘志』を1スタック獲得し、全ての敵に攻撃力122.8%/135.4%/130.3%/142.9%の電撃属性ダメージを与え、3ターンの間、真田 明彦のCRT倍率が23.4%/25.8%/24.9%/27.3%上昇する。"
   },
   "skill2": {
     "name": "サンダークラッシュ",

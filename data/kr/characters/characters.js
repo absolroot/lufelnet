@@ -159,7 +159,7 @@ Object.assign(window.characterData, {
         "main_revelation": ["돌파"],
         "sub_revelation": ["획득"],
         "element": "축복",
-        "element_weakness": "",
+        "element_weakness": "핵열",
         "element_resistance": "축복",
         "rarity": 5,
         "position": "지배",
@@ -2061,12 +2061,12 @@ Object.assign(window.characterData, {
         "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
         "sub_option3": ["대미지보너스", "관통"],
         "minimum_stats": {
-            "LV10": "공격력 5000",
-            "LV10+5": "공격력 5500",
+            "LV10": "공격력 4600",
+            "LV10+5": "공격력 5060",
             "LV12": false,
             "LV12+5": false,
-            "LV13": "공격력 6500",
-            "LV13+5": "공격력 7000"
+            "LV13": "공격력 5980",
+            "LV13+5": "공격력 6440"
         },
         "minimum_stats_glb": {
             "LV10": "공격력 4600",

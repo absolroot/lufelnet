@@ -59,12 +59,12 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - 味方単体のHIGHLIGHT／テウルギアダメージを1ターンの間10%上昇
 - 味方単体のスキルマスターを1ターンの間600上昇
 `,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["독립적인 대미지 버킷을 가지고 있다.", "모든 주력 딜러를 보조 가능하다."],
+        pros_en: ["Has independent damage buckets.", "Can support all primary damage dealers."],
+        pros_jp: ["独立したダメージバケットを持っている。", "すべての主力アタッカーを支援可能。"],
+        cons: ["-"],
+        cons_en: ["-"],
+        cons_jp: ["-"],
     };
 })();
 

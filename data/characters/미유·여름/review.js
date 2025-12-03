@@ -125,8 +125,6 @@ SP회복에 큰 영향을 받는 캐릭터지만 **기본 188.5%** SP회복과 �
   </tr>
 </table>
 
----
-
 - 추가효과 중첩 당 5% 대미지 증가 계산 방식 : 스킬 계수 × (100% + 5% × 중첩 개수)
 
 - 스킬2 중첩 당 대미지 증가 계산 방식 : 스킬 계수 × (100% + 10% × 중첩 개수)`,
@@ -251,7 +249,6 @@ Recommended SP recovery requirements based on the suggested operation cycle are 
   </tr>
 </table>
 
----
 
 - Resonance stack DMG increase calculation: Skill coefficient × (100% + 5% × stack count)  
 - Skill 2 stack DMG increase calculation: Skill coefficient × (100% + 10% × stack count)  `,
@@ -376,13 +373,12 @@ SP回復の影響を大きく受ける怪盗だが、**基礎188.5%**のSP回復
   </tr>
 </table>
 
----
 
 - 意識奏功スタックごとのダメージ増加計算式：スキル係数 × (100% + 5% × スタック数)  
 - スキル2スタックごとのダメージ増加計算式：スキル係数 × (100% + 10% × スタック数)  `,
-        pros: ["자동 추가 공격이 반복돼 모든 컨텐츠에 유용하다."],
-        pros_en: ["Automatic Resonance repeat and are useful for all content."],
-        pros_jp: ["意識奏功が繰り返されるため、すべてのコンテンツで有用です。"],
+        pros: ["자동 추가 공격이 반복돼 모든 컨텐츠에 유용하다.", "버프 1턴 연장 효과라는 강력한 효과를 가지고 있다."],
+        pros_en: ["Automatic Resonance repeat and are useful for all content.", "Has a 1-turn buff extension effect which is a powerful effect."],
+        pros_jp: ["意識奏功が繰り返されるため、すべてのコンテンツで有用です。", "1ターンのバフ延長効果という、強力な効果を持っています。"],
         cons: ["SP 수치를 신경써야한다."],
         cons_en: ["Need to pay attention to SP values."],
         cons_jp: ["SPの数値に注意する必要があります。"],

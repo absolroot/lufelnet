@@ -51,17 +51,6 @@
   </tbody>
 </table>
 
-
-계시 선택지가 상당히 자유로운 편이다. 상황에 맞게 선택하면 된다. 
-
-- 미츠루의 대미지와 아군 버프의 밸런스를 고려할 경우에는 [진정성]+[고집]
-
-- 미츠루의 대미지에 집중할 경우에는 [결심]+[신중]
-
-- 아군의 버프에 집중할 경우에는 [창조]+[화해]
-
-- (옵션) 방어력 감소 수치가 부족할 경우에는 [주권]+[여정] 
-
         `,
 review_en: `Although Mitsuru's role is Assassin, her actual role is that of a **Saboteur**. She functions as an improved, single-target DPS version of Crow.
 
@@ -113,16 +102,6 @@ However, since the exact stats Mitsuru replicates are unclear, it is uncertain w
   </tbody>
 </table>
 
-
-Mitsuru can use many revelation cards. You can choose according to the situation.
-
-- Use [Integrity] + [Fixation] if you want to balance between Mitsuru's damage and ally buffs
-
-- Use [Resolve] + [Prudence] if you want to focus on Mitsuru's damage
-
-- Use [Creation] + [Reconciliation] if you want to focus on ally buffs
-
-- (Option) Use [Departure] + [Control] if you do not cap Defense down
 `,
 review_jp: `
 桐条美鶴は『反抗』ポジションに属しているが、実際の役割は**サポーター**寄りのP3コラボキャラクター。以前の『支配』タイプで味方サポートを担当していた明智の改良版とも言える存在。
@@ -174,14 +153,7 @@ review_jp: `
     </tr>
   </tbody>
 </table>
-
-
-啓示カードの選択肢は非常に自由度が高く、状況に応じて選べる。
-
-- 美鶴のダメージと味方バフのバランスを取りたい場合：[誠実]＋[固執]
-- 美鶴自身の火力に集中したい場合：[決心]＋[慎重]
-- 味方のバフ支援に重点を置きたい場合：[創造]＋[和解]
-- （オプション）防御力減少が不足する場合：[支配]＋[旅立]`,
+`,
 dump:``,
         pros: ["아군의 스탯을 활용한 추가 공격을 제공한다.", "높은 방어력 감소를 적용한다."],
         pros_en: ["Provides high damage and Defense down."],

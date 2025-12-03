@@ -4,7 +4,7 @@
         review: `
 대미지를 높이는 수치에 대한 거의 모든 버프를 보유하고 있고 수치 또한 높은 편으로 **모든 주력 딜러를 보조 가능**한 서포터.
 
-첫 3가지의 약품은 무제한으로 사용 할 수 있고, 나머지 **아이템은 구매해야 하지만 모두 독립적인 대미지 버킷으로 계산**된다. 따라서 **약품 효과 증가**의 가치가 높다.
+첫 3가지의 약품은 무제한으로 사용 할 수 있고, 나머지 **아이템은 구매해야 하지만 모두 독립적인 대미지 버킷으로 계산**된다. 따라서 **약품 효과 증가**의 가치가 무척 높다.
 
 스킬3을 사용한 후 자신의 턴에 버프를 소모해 행동을 소모하지 않고 아이템을 사용할 수 있고, 해당 버프를 통해 사용된 아이템은 지속시간이 1턴 늘어난다.
 
@@ -59,9 +59,9 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - 味方単体のHIGHLIGHT／テウルギアダメージを1ターンの間10%上昇
 - 味方単体のスキルマスターを1ターンの間600上昇
 `,
-        pros: ["독립적인 대미지 버킷을 가지고 있다.", "모든 주력 딜러를 보조 가능하다."],
-        pros_en: ["Has independent damage buckets.", "Can support all primary damage dealers."],
-        pros_jp: ["独立したダメージバケットを持っている。", "すべての主力アタッカーを支援可能。"],
+        pros: ["독립적인 대미지 버킷 버프를 물약으로 추가 할 수 있다.", "모든 주력 딜러를 보조 가능하다.", "방어력 감소 효과와 축복을 제공한다."],
+        pros_en: ["Can add independent damage bucket buffs through drugs.", "Can support all primary damage dealers.", "Can provide DEF Down and Blessing."],
+        pros_jp: ["ドラッグを通じて独立したダメージバケットバフを追加できる。", "すべての主力アタッカーを支援可能。", "DEF Downと祝福バフを提供できる。"],
         cons: ["-"],
         cons_en: ["-"],
         cons_jp: ["-"],

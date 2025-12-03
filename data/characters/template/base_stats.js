@@ -1,5 +1,5 @@
 window.basicStatsData = window.basicStatsData || {};
-window.basicStatsData["쇼키·암야"] = {
+window.basicStatsData["J&C"] = {
     "a0_lv1": {
         "HP": 0,
         "SP": 0,

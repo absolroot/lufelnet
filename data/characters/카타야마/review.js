@@ -2,65 +2,60 @@
     window.characterReview = window.characterReview || {};
     window.characterReview["카타야마"] = { name_en: "Kumi Katayama", name_jp: "片山 久未", codename: "BLITZ",
       review: `
-다운 수치를 크게 깎아 **다운**을 유도하고, 다운된 적이 받는 대미지를 늘리는 디버퍼.
+**적의 약점과 무관하게 다운 수치를 크게 깎고, 다운된 적이 받는 대미지를 늘리는 디버퍼**다.
 
-1) **1스킬**로 적에게 [방어력 감소]와 [받는 대미지 증가]를 2턴 부여하고, 3스킬을 해금한다.
+- 스킬1 : 적에게 [방어력 감소]와 [받는 대미지 증가]를 2턴 부여하고, 3스킬을 해금한다.
 
-2) **3스킬**은 **다운 수치 5 감소** + 1턴 동안 **『다운 특수 공격』**과 [받는 대미지 증가]를 강화하며, **다음 2스킬을 강화**하는 흐름이다.
+- 스킬3 : **다운 수치 5 감소** + 1턴 동안 **『다운 특수 공격』**과 [받는 대미지 증가]를 강화하며, **다음 스킬2을 강화**하는 흐름이다.
 
-3) **강화된 2스킬**로 **다운 수치 4 감소** + 1스킬/3스킬과 동일한 디버프를 1턴 부여한다. 상황에 따라 2스킬 대신 1스킬을 연계해도 된다.
+- 스킬2 : 강화된 상태에서 다운 수치를 4 감소시키고 디버프를 1턴 부여한다. 
 
 <br>
 
-다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화한다.
+다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화하지만 의식0만으로는 부족한 모습을 보인다.
 
-- **광역 보스**는 기본 **다운 수치가 5**라서 **의식1** 미만이면 2스킬의 다운이 확정되지 않는다. **단일 보스**는 다운치가 더 높아 효용이 더 낮다.
-- 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, **적 턴 종료 시 다수 디버프가 사라져** 정작 본인이 그 효과를 활용하기 어렵다.
-- 방어력 감소가 HL에 묶여 **HL 강제**가 발생한다. 빠른 효율을 위해 2턴에 HL을 쓰면, 일반적인 2·6턴 2회 HL 기회를 포기하게 된다.
+- 광역 보스의 기본 다운 수치는 5라서 의식1 미만이면 2스킬의 다운을 확정시킬 수 없다. 단일 보스는 다운치가 더 높아 효용성이 더 떨어진다.
+- 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, 적 턴 종료 시에 다운에서 일어나기 때문에 디버프가 사라져 본인이 그 효과를 활용하기 어렵다.
+- 방어력 감소가 HL에 묶여 **HL 강제 사용**이 필요한 상황이 생긴다.
 - 4성 무기는 적을 다운시 발동한다. 의식1 미만이면 효율이 급감하므로 **3성 무기**가 대안이 될 수 있다.
       `,
-      review_en: `
-A debuffer that sharply reduces **Down Value** to force a **Down**, then makes the target **take more damage** while Down.
+      review_en: `Debuffer who can **greatly reduce Down Points regardless of enemy weaknesses and increase the damage taken by Downed enemies**.
 
-1) **Skill 1** applies [DEF Down] and [DMG Taken Up] for 2 turns and unlocks Skill 3.
-
-2) **Skill 3** **reduces Down Value by 5**, strengthens **[Downed Damage Taken]** and [DMG Taken Up] for 1 turn, and **empowers your next Skill 2**.
-
-3) The **empowered Skill 2** **reduces Down Value by 4** and applies the same debuffs as Skills 1/3 for 1 turn. Depending on the situation, you can chain back into Skill 1 instead of using Skill 2.
+- Skill 1: Applies [DEF Down] and [Damage Taken Up] for 2 turns, and unlocks Skill 3.
+- Skill 3: **Reduces Down Points by 5**, strengthens “Down Special Attack” and [Damage Taken Up] for 1 turn, and also **enhances the next Skill 2**.
+- Skill 2: When enhanced, reduces Down Points by 4 and applies a 1-turn debuff.
 
 <br>
 
-It enables fast Downs and buffs the **independent bucket: [Downed Damage Taken]**.
+Capable of quickly forcing Down and enhancing the **independent bucket “Down Special Attack”**, but shows noticeable limitations at A0.
 
-- **AoE bosses** typically start with **5 Down Value**, so without **A1**, Skill 2 won’t guarantee a Down. **Single-target bosses** often have even higher Down Value, lowering effectiveness further.
-- Katayama has multiple self-buffs (passives/skills), but **most of her applied debuffs expire at the end of the enemy’s turn**, so **she can’t fully exploit them herself**.
-- Since DEF Down is tied to HL, you’re effectively **forced to use HL**. To see results early you’d use HL on turn 2, which sacrifices the usual HL windows (turns 2 & 6).
-- Her 4★ weapons **trigger only when she causes a Down**. Below A1 the efficiency drops sharply, so a **3★ weapon** can be a viable alternative.
+- AoE bosses have a base Down value of 5, making Skill 2 unable to guarantee Down before A1. Single-target bosses have even higher Down values, lowering her effectiveness further.  
+- Although she has multiple self-buffs (passives/skills), enemies stand up at the end of their turn, removing the debuffs—making it difficult for her to benefit from them.  
+- DEF Down is tied to HL, causing **forced HL usage**.  
+- Her 4★ weapon activates when enemies are Downed, but without A1 the efficiency drops sharply—making the **3★ weapon** a reasonable alternative.
+
       `,
-      review_jp: `
-**ダウン値**を大きく削って**ダウン**を取り、ダウン中の敵が**より多くのダメージ**を受けるようにするデバッファーです。
+      review_jp: `敵の弱点に依存せずダウン値を大きく削り、ダウン中の敵が受けるダメージを増加させるデバッファー。
 
-1) **スキル1**で[防御力低下]と[被ダメージ増加]を2ターン付与し、スキル3を解放します。
-
-2) **スキル3**は**ダウン値を5削減**し、1ターンのあいだ**『ダウン特効』**と[被ダメージ増加]を強化、さらに**次のスキル2を強化**します。
-
-3) **強化されたスキル2**で**ダウン値を4削減**し、スキル1/3と同じデバフを1ターン付与します。状況次第では、スキル2ではなくスキル1へつなぐ選択も可。
+- スキル1：［防御力ダウン］と［被ダメージ増加］を2ターン付与し、スキル3を解放する。
+- スキル3：**ダウン値5減少**、1ターンのあいだ『ダウン特殊攻撃』と［被ダメ増加］を強化し、**次のスキル2を強化**する。
+- スキル2：強化状態でダウン値を4減少させ、1ターンのデバフを付与。
 
 <br>
 
-素早くダウンを取り、**独立バケットの『ダウン特効』**を強化できます。
+素早くダウンを狙え、**独立計算の『ダウン特殊攻撃』**も強化できるが、A0では力不足が目立つ。
 
-- **全体ボス**は初期ダウン値が**5**のため、**意識1**（A1）未満ではスキル2のダウンが確定しません。**単体ボス**はさらにダウン値が高く、効果が薄れます。
-- 久未は自己強化（パッシブ/スキル）を複数持ちますが、**敵ターンの終了で大半のデバフが切れる**ため、**本人が十分に活かしにくい**側面があります。
-- 防御力低下がHLに紐づくため、実質的に**HLを強要**されます。早期に効果を出すには2ターン目にHLを使う必要があり、その場合は通常のHL機会（2・6ターン）を手放すことになります。
-- 4★武器は**ダウンを取ったときのみ発動**。**意識1未満**では効率が大きく下がるため、**★3武器**が代替案になり得ます。
+- 全体ボスの基本ダウン値は5のため、A1未満ではスキル2で確定ダウンを取れない。単体ボスはさらにダウン値が高く、効率がさらに低下する。  
+- 自己バフ（パッシブ／スキル）は多いものの、敵はターン終了時にダウンから立ち上がるためデバフが消え、効果を活かしにくい。  
+- 防御力ダウンがHLに紐づくため、**HLの強制発動**が起こりやすい。  
+- ★4武器は敵がダウンした際に発動するが、A1未満では発動率が低くなるため、**★3武器**が代替となる場合がある。
       `,
       pros: ["적의 약점에 무관하게 다운 시킬 수 있다.", "다운 약화 효과를 강화시킨다."],
       pros_en: ["Can down enemies regardless of their weaknesses.", "Enhances the DOWN debuff."],
       pros_jp: ["弱点に関係なく敵をDOWNさせることができます。", "DOWN弱体効果を強化します。"],
-      cons: ["적이 다운되지 않으면 효율이 급감한다.", "자신을 강화시키는 효과가 의미가 없을 정도로 대미지가 약하다."],
-      cons_en: ["The efficiency drops sharply if the enemy doesn't get Down.", "The damage is too weak to be meaningful for self-buffing."],
-      cons_jp: ["敵がDOWNしないと効率が大きく下がります。", "自分を強化する効果が意味がなく、ダメージが弱すぎます。"],
+      cons: ["적이 다운되지 않으면 효율이 급감한다.", "자신을 강화시키는 효과에 무관하게 자체 대미지는 약하다."],
+      cons_en: ["The efficiency drops sharply if the enemy doesn't get Down.", "The damage is too weak to be meaningful regardless of self-buffing."],
+      cons_jp: ["敵がDOWNしないと効率が大きく下がります。", "自分を強化する効果に関係なく、ダメージが弱すぎます。"],
     };
 })();
 

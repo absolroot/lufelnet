@@ -2,9 +2,9 @@
     window.characterReview = window.characterReview || {};
     window.characterReview["리코"] = { name_en: "Riko Tanemura", name_jp: "多祢村 理子", codename: "WIND",
         review: `
-2.0에서 등장한 **괴도단 멤버로 스토리를 진행하면 획득**할 수 있으며, 캐릭터 계약에서는 해금과 관계없이 바로 획득할 수 있다.
+2.0에서 등장한 괴도단 멤버로 스토리를 진행하면 획득할 수 있으며, 캐릭터 계약에서는 해금과 관계없이 바로 획득할 수 있다.
 
-적에게 **표식**을 남겨 **일반 또는 약점 공격을 통해 표식을 제거**할 경우, **가드 수치를 추가로 떨어뜨려 DOWN을 발생**시킨다.
+적에게 표식을 남겨 **일반 또는 약점 공격을 통해 표식을 제거할 경우, 가드 수치를 추가로 떨어뜨려 DOWN을 발생**시킨다.
 
 **약점이 아닌 공격으로도 DOWN을 유발**할 수 있다는 점에서 ONE MORE와 총공격을 적극 활용할 수 있다.
 
@@ -13,9 +13,9 @@
 이외에도 스킬1을 통한 디버프, 스킬3을 통한 아군 회복 및 대미지 버프, 자동으로 발동되는 스킬 2 모두 준수한 성능을 지니고 있다.
 `,
 review_en: `
-Introduced in version 2.0, Riko is a **Phantom Thief member obtainable through the story**, and can also be acquired immediately via character contracts regardless of unlock progression.
+Introduced in version 2.0, Riko is a Phantom Thief member obtainable through the story, and can also be acquired immediately via character contracts regardless of unlock progression.
 
-She can apply a **Mark** on enemies, and when the mark is removed through a normal or weakness attack, it **further reduces Guard and triggers DOWN**.
+She can apply a Mark on enemies, and when the mark is removed through a normal or weakness attack, it **further reduces Guard and triggers DOWN**.
 
 Because **DOWN can be triggered even without a weakness hit**, she enables more frequent use of **ONE MORE and All-Out Attacks**.
 
@@ -26,7 +26,7 @@ Additionally, she has solid utility through her kit: a debuff from Skill 1, ally
     review_jp: `
 Ver2.0で登場した理子は、ストーリーを進めることで加入する怪盗団メンバーですが、怪ドル契約からはストーリーの進行状況に関係なく取得できます。
 
-敵に**マーク**を付与し、通常攻撃または弱点攻撃でマークを解除すると、**ダウン値を追加で減少させてDOWNを発生**させることができます。
+敵にマークを付与し、通常攻撃または弱点攻撃でマークを解除すると、**ダウン値を追加で減少させてDOWNを発生**させることができます。
 
 **弱点以外の攻撃でもDOWNを誘発できる**ため、**ONE MOREや総攻撃**を積極的に活用できます。
 

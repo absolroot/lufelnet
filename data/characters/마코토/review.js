@@ -6,19 +6,25 @@
 
 원소 이상에 큰 영향을 받는 만큼 **치즈코와의 파티 구성이 효율적**이다.
 
-TECHNICAL을 지니고 있지만, 이후 추가된 수치인 스킬 마스터 효과에는 현재 영향을 받지 않는다.`,
+TECHNICAL을 지니고 있지만, 이후 추가된 수치인 스킬 마스터 효과에는 현재 영향을 받지 않는다.
+
+원소 이상 요소를 제외하면 스킬3만 발동하면 되기 때문에 운영이 무척 간단하다.`,
 review_en: `
 As a powerful single-target damage dealer, this character benefits from the introduction of the Nuclear attribute starting from P5, giving her a **distinct elemental advantage**.
 
 Since she is heavily reliant on elemental ailments, forming a **party with VINO is efficient**.
 
-Although the character possesses TECHNICAL, they are currently not affected by the later-added SKILL MASTER effect.`,
+Although the character possesses TECHNICAL, they are currently not affected by the later-added SKILL MASTER effect.
+
+Since she only needs to activate Skill 3 to deal damage after excluding elemental ailments, her operation is extremely simple.`,
 review_jp: `
 強力な単体ターゲットアタッカーであり、P5から登場した核熱属性を活かせるため、属性面で有利な怪盗です。
 
 属性異常の影響を大きく受けるため、**VINOとの編成は効率的**です。
 
-TECHNICALを所持していますが、後から追加された数値であるSKILL MASTER効果の影響は現時点では受けていません。`,
+TECHNICALを所持していますが、後から追加された数値であるSKILL MASTER効果の影響は現時点では受けていません。
+
+属性異常を除外した後はスキル3を発動するだけでダメージを与えられるため、運用が非常にシンプルです。`,
         pros: ["강력한 단일 대미지를 반복해서 줄 수 있다."],
         pros_en: ["Can deal powerful single-target damage repeatedly."],
         pros_jp: ["強力な単体ターゲットダメージを繰り返し与えられます。"],

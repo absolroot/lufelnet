@@ -315,11 +315,41 @@ jp: /wonder-weapon/?lang=jp
   function getSortedWeaponKeys() {
     const keys = (typeof matchWeapons !== 'undefined') ? Object.keys(matchWeapons) : [];
     const arr = keys.map(k => {
-      const raw = matchWeapons[k] ? matchWeapons[k].order : 0;
-      const num = Number(raw);
-      return { key: k, order: Number.isFinite(num) ? num : 0 };
+      const w = matchWeapons[k] || {};
+      const rawOrder = w.order;
+      const baseOrder = Number.isFinite(Number(rawOrder)) ? Number(rawOrder) : 0;
+
+      const stamps = Array.isArray(w.lightning_stamp) ? w.lightning_stamp : [];
+      const hasStamp = stamps.length > 0;
+      const stampOrder = hasStamp
+        ? stamps.reduce((max, s) => {
+            const so = Number(s && s.order);
+            return Number.isFinite(so) ? Math.max(max, so) : max;
+          }, 0)
+        : 0;
+
+      return {
+        key: k,
+        order: baseOrder,
+        hasStamp,
+        stampOrder
+      };
     });
-    arr.sort((a, b) => sortOrder === 'asc' ? (a.order - b.order) : (b.order - a.order));
+
+    arr.sort((a, b) => {
+      // 1) lightning_stamp 보유 무기 우선
+      if (a.hasStamp && !b.hasStamp) return -1;
+      if (!a.hasStamp && b.hasStamp) return 1;
+
+      // 2) 둘 다 lightning_stamp가 있으면 stamp order 내림차순
+      if (a.hasStamp && b.hasStamp && a.stampOrder !== b.stampOrder) {
+        return b.stampOrder - a.stampOrder;
+      }
+
+      // 3) 그 외에는 기존 출시 순 정렬 유지
+      return sortOrder === 'asc' ? (a.order - b.order) : (b.order - a.order);
+    });
+
     return arr.map(x => x.key);
   }
 
@@ -627,6 +657,94 @@ jp: /wonder-weapon/?lang=jp
         relContent.textContent = '-';
       }
 
+      // lightning_stamp에 release가 있는 경우: 출시 시점에 추가 표기
+      if (data && Array.isArray(data.lightning_stamp)) {
+        const stampReleases = data.lightning_stamp.filter(s => s && s.release);
+        if (stampReleases.length) {
+          const stampList = document.createElement('div');
+          stampList.className = 'stamp-release-list';
+
+          stampReleases.forEach((stamp, idx) => {
+            const charName = String(stamp.release);
+
+            const row = document.createElement('div');
+            row.className = 'stamp-release-row';
+
+            // lightning_stamp 아이콘 + 번호
+            const tag = document.createElement('div');
+            tag.className = 'stamp-release-tag';
+            const sIcon = document.createElement('img');
+            sIcon.className = 'stamp-release-icon';
+            sIcon.src = `{{ site.baseurl }}/assets/img/wonder-weapon/lightning_stamp.png`;
+            sIcon.alt = 'Lightning Stamp';
+            sIcon.loading = 'lazy';
+            const sNum = document.createElement('span');
+            sNum.className = 'stamp-release-num';
+            const stampNameLabel =
+              (lang === 'en' && stamp.name_en) ? stamp.name_en :
+              (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
+              stamp.name || '';
+            sNum.textContent = stampNameLabel;
+            tag.appendChild(sIcon);
+            tag.appendChild(sNum);
+
+            // 캐릭터 아이콘(기존 출시 시점/캐릭터 블록과 동일 스타일)
+            const a = document.createElement('a');
+            a.className = 'character-link';
+            a.href = `/character.html?name=${encodeURIComponent(charName)}`;
+            if (charName === '원더') {
+              a.removeAttribute('href');
+            }
+
+            const cimg = document.createElement('img');
+            cimg.className = 'character-img';
+            cimg.src = `{{ site.baseurl }}/assets/img/tier/${charName}.webp`;
+            cimg.alt = charName;
+            cimg.loading = 'lazy';
+            cimg.onerror = function () {
+              this.onerror = null;
+              this.src = `{{ site.baseurl }}/assets/img/character-half/${charName}.webp`;
+            };
+
+            const icons = document.createElement('span');
+            icons.className = 'char-icons';
+            const cdata = (typeof characterData !== 'undefined') ? characterData[charName] : null;
+            const pos = cdata && cdata.position ? cdata.position : '';
+            const ele = cdata && cdata.element ? cdata.element : '';
+            if (pos) {
+              const pi = document.createElement('img');
+              pi.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${pos}.png`;
+              pi.alt = pos;
+              pi.loading = 'lazy';
+              pi.className = 'char-icon';
+              icons.appendChild(pi);
+            }
+            if (ele) {
+              const ei = document.createElement('img');
+              ei.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${ele}.png`;
+              ei.alt = ele;
+              ei.loading = 'lazy';
+              ei.className = 'char-icon';
+              icons.appendChild(ei);
+            }
+
+            const label = document.createElement('span');
+            label.className = 'character-name';
+            label.textContent = getCharacterLabel(charName, lang);
+
+            a.appendChild(cimg);
+            a.appendChild(icons);
+            a.appendChild(label);
+
+            row.appendChild(tag);
+            row.appendChild(a);
+            stampList.appendChild(row);
+          });
+
+          relContent.appendChild(stampList);
+        }
+      }
+
       // Toggle only when clicking the release header
       relHeader.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -642,6 +760,101 @@ jp: /wonder-weapon/?lang=jp
       info.appendChild(titleRow);
       info.appendChild(levelBlock);
       info.appendChild(effectBlock);
+      // lightning_stamp 효과 블록 (기존 효과 바로 아래에 추가)
+      if (data && Array.isArray(data.lightning_stamp) && data.lightning_stamp.length) {
+        const stamps = data.lightning_stamp.slice().sort((a, b) => {
+          const ao = Number(a && a.order);
+          const bo = Number(b && b.order);
+          return (Number.isFinite(bo) ? bo : 0) - (Number.isFinite(ao) ? ao : 0);
+        });
+
+        // 4레벨 분할 효과용 헬퍼
+        const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
+        function renderLightningStampHTML(src, idx) {
+          const replaced = src.replace(fourSplitReplace, (match) => {
+            const parts = match.split('/').map(x => x.trim());
+            const i = Math.min(Math.max(idx, 0), 3);
+            return parts[i] || parts[0];
+          });
+          const numberRegex = /(\d+(?:\.\d+)?%?)/g;
+          return replaced.replace(numberRegex, '<span class="num">$1<\/span>');
+        }
+
+        stamps.forEach(stamp => {
+          if (!stamp) return;
+
+          const stampName =
+            (lang === 'en' && stamp.name_en) ? stamp.name_en :
+            (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
+            stamp.name || '';
+          const stampEffect =
+            (lang === 'en' && stamp.effect_en) ? stamp.effect_en :
+            (lang === 'jp' && stamp.effect_jp) ? stamp.effect_jp :
+            stamp.effect || '';
+
+          const lsLevelBlock = document.createElement('div');
+          lsLevelBlock.className = 'lightning-stamp-block';
+
+          const lsHeader = document.createElement('div');
+          lsHeader.className = 'lightning-stamp-header';
+
+          const lsName = document.createElement('div');
+          lsName.className = 'lightning-stamp-name';
+          lsName.textContent = stampName;
+
+          const lsIcon = document.createElement('img');
+          lsIcon.className = 'lightning-stamp-icon';
+          lsIcon.src = `{{ site.baseurl }}/assets/img/wonder-weapon/lightning_stamp.png`;
+          lsIcon.alt = 'Lightning Stamp';
+          lsIcon.loading = 'lazy';
+
+          lsHeader.appendChild(lsName);
+          lsHeader.appendChild(lsIcon);
+          lsLevelBlock.appendChild(lsHeader);
+
+          const lsLevels = document.createElement('div');
+          lsLevels.className = 'levels-controls';
+
+          const lsEffectBlock = document.createElement('div');
+          lsEffectBlock.className = 'effect-block lightning-stamp-effect';
+          const lsEffectLabel = document.createElement('div');
+          lsEffectLabel.className = 'effect-label';
+          lsEffectLabel.textContent = t.label_effect;
+          const lsEffectBody = document.createElement('div');
+          lsEffectBody.className = 'effect-text';
+
+          let currentStampLevel = 3; // 0~3 (레벨 1~4), 기본은 4레벨
+
+          for (let i = 0; i < 4; i++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'level-btn' + (i === currentStampLevel ? ' active' : '');
+            btn.textContent = String(i + 1);
+            btn.setAttribute('aria-pressed', i === currentStampLevel ? 'true' : 'false');
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              currentStampLevel = i;
+              lsLevels.querySelectorAll('.level-btn').forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+              });
+              btn.classList.add('active');
+              btn.setAttribute('aria-pressed', 'true');
+              lsEffectBody.innerHTML = renderLightningStampHTML(stampEffect || '', currentStampLevel);
+            });
+            lsLevels.appendChild(btn);
+          }
+
+          lsLevelBlock.appendChild(lsLevels);
+
+          lsEffectBody.innerHTML = renderLightningStampHTML(stampEffect || '', currentStampLevel);
+          lsEffectBlock.appendChild(lsEffectLabel);
+          lsEffectBlock.appendChild(lsEffectBody);
+
+          info.appendChild(lsLevelBlock);
+          info.appendChild(lsEffectBlock);
+        });
+      }
       info.appendChild(accordion);
       info.appendChild(relAccordion);
 

@@ -664,7 +664,7 @@ function parseSevenNumbers(s) {
 }
 
 function updateBaseStatsKR(charKey, external) {
-  const basePath = path.join('data', 'kr', 'characters', 'character_base_stats.js');
+  const basePath = resolveCharacterFile('kr', 'base_stats');
   if (!fs.existsSync(basePath)) return;
   const code = readText(basePath);
   const ast = parseAst(code);
@@ -693,14 +693,10 @@ function updateBaseStatsKR(charKey, external) {
       }
       // 신규 구조: data/characters/<캐릭터명>/base_stats.js 생성/갱신
       try {
-        const outObj = {};
-        for (let i = 0; i < 7; i++) {
-          outObj[`a${i}_lv80`] = {
-            HP: hp[i],
-            attack: atk[i],
-            defense: def[i]
-          };
-        }
+        // KR 통합 파일에 존재하는 구조(a0_lv1, awake7 등)는 그대로 두고,
+        // a0_lv80~a6_lv80 값만 외부 스탯으로 갱신한 뒤 그대로 per-character로 복사한다.
+        const outObjRaw = astLiteralToValue(charObj);
+        const outObj = (outObjRaw && typeof outObjRaw === 'object') ? outObjRaw : {};
         const destDir = path.join('data', 'characters', charKey);
         fs.mkdirSync(destDir, { recursive: true });
         const destFile = path.join(destDir, 'base_stats.js');

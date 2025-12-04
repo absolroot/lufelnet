@@ -65,7 +65,7 @@
 .level-btn.active { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); }
 
 @media (max-width: 768px) { .levels-block { margin-top: 4px }
-  .levels-controls { margin-bottom: 4px }
+  .levels-controls { margin-bottom: 0px }
 }
 
 
@@ -95,5 +95,24 @@
 /* Priority character */
 .character-link.priority .character-img { border: 1px solid #000; border-color: #ffcc00; box-shadow: 0 0 0 1px rgba(255, 204, 0, 0.5); }
 
-
 .effect-text .num { color: #ffda82; font-weight: 400; }
+
+/* Lightning Stamp */
+.lightning-stamp-block { margin-top: 8px; }
+.lightning-stamp-header { display: flex; align-items: center; justify-content: flex-start; gap: 6px; margin-bottom: 6px; margin-top: 20px; }
+.lightning-stamp-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.95); }
+.lightning-stamp-icon { width: 20px; height: 20px; object-fit: contain; }
+.lightning-stamp-effect { background: rgba(0,0,0,0.25); }
+
+@media (max-width: 768px) {
+  .lightning-stamp-header { margin-top: 4px; }
+  .lightning-stamp-block { grid-column: 1 / -1; padding: 0 4px;}
+  .lightning-stamp-effect { grid-column: 1 / -1; margin-top: 4px; }
+}
+
+/* lightning_stamp 출시 시점 표시 */
+.stamp-release-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.stamp-release-row { display: flex; align-items: center; gap: 8px; }
+.stamp-release-tag { display: inline-flex; align-items: center; gap: 4px; background: rgba(0,0,0,0.35); border-radius: 999px; padding: 4px 12px 4px 8px; font-size: 11px; color: rgba(255,255,255,0.9); }
+.stamp-release-icon { width: 16px; height: 16px; object-fit: contain; }
+.stamp-release-num { font-weight: 400; }

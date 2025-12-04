@@ -470,6 +470,7 @@
       .carousel-track { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; transition: transform 450ms ease; }
       .carousel-slide { position: relative; min-width: 100%; height: 100%; display: flex; align-items: stretch; color: #fff; overflow: hidden; }
       .slide-left { flex: 1 1 58%; min-width: 0; padding: 64px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
+      .slide-left.slide-left-center-fivestar { justify-content: center; }
       .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
@@ -689,10 +690,9 @@
       countdown.setAttribute('data-countdown-index', String(index));
     }
 
+    // 제목/텍스트 스택
     left.appendChild(name);
     // if (types.textContent) left.appendChild(types);
-    // Stack title and fiveStar (no inline)
-    left.appendChild(name);
     if (fivestarText.textContent) left.appendChild(fivestarText);
     if (bodyLine) left.appendChild(bodyLine);
     if (time) left.appendChild(time);
@@ -810,6 +810,36 @@
     return wrap;
   }
 
+  // slide-fivestar가 3줄을 넘는 경우에만 해당 슬라이드의 텍스트를 수직 가운데 정렬
+  function adjustSlidesForFiveStarLines() {
+    const root = document.getElementById(ROOT_ID);
+    if (!root || !window.getComputedStyle) return;
+    const slides = root.querySelectorAll('.carousel-slide');
+    slides.forEach(slideEl => {
+      const left = slideEl.querySelector('.slide-left');
+      const fs = slideEl.querySelector('.slide-fivestar');
+      if (!left || !fs) return;
+      // 자식이 없거나 내용이 없으면 스킵
+      if (!fs.textContent.trim()) {
+        left.classList.remove('slide-left-center-fivestar');
+        return;
+      }
+      const style = window.getComputedStyle(fs);
+      let lineHeight = parseFloat(style.lineHeight);
+      if (!Number.isFinite(lineHeight) || lineHeight <= 0) {
+        const fontSize = parseFloat(style.fontSize);
+        lineHeight = Number.isFinite(fontSize) ? fontSize * 1.2 : 16;
+      }
+      if (lineHeight <= 0) return;
+      const lines = fs.offsetHeight / lineHeight;
+      if (lines > 3.1) {
+        left.classList.add('slide-left-center-fivestar');
+      } else {
+        left.classList.remove('slide-left-center-fivestar');
+      }
+    });
+  }
+
   function enableDrag(track) {
     let isDown = false;
     let startX = 0;
@@ -893,6 +923,13 @@
 
     // Drag/swipe
     enableDrag(track);
+
+    // slide-fivestar 줄 수 기반 정렬 조정 (DOM에 추가된 뒤 한 번 계산)
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(adjustSlidesForFiveStarLines);
+    } else {
+      setTimeout(adjustSlidesForFiveStarLines, 0);
+    }
   }
 
   function updateTrackPosition(track) {

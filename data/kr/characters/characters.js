@@ -172,7 +172,7 @@ Object.assign(window.characterData, {
         "name_jp": "池波 星輝·永夜",
         "name_cn": "池波星辉·永夜",
         "codename": "LUCE·Notte",
-        "skill_item": 5,
+        "skill_item": 6,
         "sub_revel2": ["공격력, 대미지 보너스"],
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
@@ -193,10 +193,10 @@ Object.assign(window.characterData, {
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
         "skill_priority": "3>1>2>4",
-        "mind_stats1": "-",
-        "mind_stats2": "-",
-        "mind_skill1": "-",
-        "mind_skill2": "-"
+        "mind_stats1": "대미지 보너스 16%",
+        "mind_stats2": "크리티컬 효과 24%!",
+        "mind_skill1": "S1/HL!",
+        "mind_skill2": "S2/S3!"
     },
     "후카": {
         "limit": true,

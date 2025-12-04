@@ -109,6 +109,15 @@ function loadExternal(lang, local) {
   return json;
 }
 
+// 보조 용도(다른 언어 이름만 참고 등)로 사용할 때는 경고를 찍지 않는 버전
+function loadExternalSilent(lang, local) {
+  const p = path.join('data', 'external', 'character', lang, `${local}.json`);
+  const json = readJSON(p);
+  if (!json) return null;
+  if (!json.data || json.status !== 0) return { data: null };
+  return json;
+}
+
 function loadExternalWeapon(lang, local) {
   const p = path.join('data', 'external', 'weapon', lang, `${local}.json`);
   const json = readJSON(p);
@@ -158,6 +167,32 @@ function findTopObject(ast) {
       ) {
         obj = { path: p, obj: expr.right };
         return false;
+      }
+      this.traverse(p);
+    }
+    ,
+    // Support patterns like: Object.assign(window.characterData, { ... })
+    visitCallExpression(p) {
+      if (obj) return false;
+      const call = p.node;
+      const callee = call.callee;
+      if (
+        callee &&
+        callee.type === 'MemberExpression' &&
+        callee.object &&
+        callee.object.type === 'Identifier' &&
+        callee.object.name === 'Object' &&
+        callee.property &&
+        (
+          (callee.property.type === 'Identifier' && callee.property.name === 'assign') ||
+          (callee.property.type === 'StringLiteral' && callee.property.value === 'assign')
+        )
+      ) {
+        const args = call.arguments || [];
+        if (args.length >= 2 && args[1] && args[1].type === 'ObjectExpression') {
+          obj = { path: p, obj: args[1] };
+          return false;
+        }
       }
       this.traverse(p);
     }
@@ -299,6 +334,18 @@ function setMergedObjectProp(objExpr, keyName, updates, deleteKeys = []) {
   }
 }
 
+// ---------- Helpers for language character files ----------
+function resolveCharacterFile(lang, kind) {
+  // kind: 'ritual' | 'skills' | 'weapon' | 'base_stats'
+  const dir = path.join('data', lang, 'characters');
+  const primary = path.join(dir, `character_${kind}.js`);
+  const alt = path.join(dir, `_character_${kind}.js`);
+  if (fs.existsSync(primary)) return primary;
+  if (fs.existsSync(alt)) return alt;
+  // 기본 경로(없으면 이후 fs.existsSync에서 필터됨)
+  return primary;
+}
+
 function findCharacterKeyByCodename(filePath, localCodename) {
   const code = readText(filePath);
   const ast = parseAst(code);
@@ -326,7 +373,7 @@ function toNumberOrKeep(x) {
 }
 
 function updateWeapons(lang, charKey, externalWeapon) {
-  const targetPath = path.join('data', lang, 'characters', 'character_weapon.js');
+  const targetPath = resolveCharacterFile(lang, 'weapon');
   if (!fs.existsSync(targetPath)) return;
   const code = readText(targetPath);
   const ast = parseAst(code);
@@ -404,17 +451,17 @@ function writePerCharacterUnified(charKey) {
   const root = path.join('data', 'characters', charKey);
   fs.mkdirSync(root, { recursive: true });
 
-  const krRitual = readLangEntry(path.join('data', 'kr', 'characters', 'character_ritual.js'), 'ritualData', charKey);
-  const enRitual = readLangEntry(path.join('data', 'en', 'characters', 'character_ritual.js'), 'enCharacterRitualData', charKey);
-  const jpRitual = readLangEntry(path.join('data', 'jp', 'characters', 'character_ritual.js'), 'jpCharacterRitualData', charKey);
+  const krRitual = readLangEntry(resolveCharacterFile('kr', 'ritual'), 'ritualData', charKey);
+  const enRitual = readLangEntry(resolveCharacterFile('en', 'ritual'), 'enCharacterRitualData', charKey);
+  const jpRitual = readLangEntry(resolveCharacterFile('jp', 'ritual'), 'jpCharacterRitualData', charKey);
 
-  const krSkills = readLangEntry(path.join('data', 'kr', 'characters', 'character_skills.js'), 'characterSkillsData', charKey);
-  const enSkills = readLangEntry(path.join('data', 'en', 'characters', 'character_skills.js'), 'enCharacterSkillsData', charKey);
-  const jpSkills = readLangEntry(path.join('data', 'jp', 'characters', 'character_skills.js'), 'jpCharacterSkillsData', charKey);
+  const krSkills = readLangEntry(resolveCharacterFile('kr', 'skills'), 'characterSkillsData', charKey);
+  const enSkills = readLangEntry(resolveCharacterFile('en', 'skills'), 'enCharacterSkillsData', charKey);
+  const jpSkills = readLangEntry(resolveCharacterFile('jp', 'skills'), 'jpCharacterSkillsData', charKey);
 
-  const krWeapon = readLangEntry(path.join('data', 'kr', 'characters', 'character_weapon.js'), 'WeaponData', charKey);
-  const enWeapon = readLangEntry(path.join('data', 'en', 'characters', 'character_weapon.js'), 'enCharacterWeaponData', charKey);
-  const jpWeapon = readLangEntry(path.join('data', 'jp', 'characters', 'character_weapon.js'), 'jpCharacterWeaponData', charKey);
+  const krWeapon = readLangEntry(resolveCharacterFile('kr', 'weapon'), 'WeaponData', charKey);
+  const enWeapon = readLangEntry(resolveCharacterFile('en', 'weapon'), 'enCharacterWeaponData', charKey);
+  const jpWeapon = readLangEntry(resolveCharacterFile('jp', 'weapon'), 'jpCharacterWeaponData', charKey);
 
   // ritual.js
   const ritualJs =
@@ -732,10 +779,10 @@ async function main() {
   }
 
   // Names enrichment from multiple languages (best-effort)
-  const extEN = loadExternal('en', local);
-  const extJP = loadExternal('jp', local);
-  const extCN = loadExternal('cn', local);
-  const extTW = loadExternal('tw', local);
+  const extEN = loadExternalSilent('en', local);
+  const extJP = loadExternalSilent('jp', local);
+  const extCN = loadExternalSilent('cn', local);
+  const extTW = loadExternalSilent('tw', local);
   const nameMap = {
     en: extEN?.data?.name || null,
     jp: extJP?.data?.name || null,

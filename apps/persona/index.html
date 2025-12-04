@@ -948,26 +948,52 @@ jp: /persona/?lang=jp
                 // 언어별 데이터 가져오기
                 const persona = personaData[personaName];
                 let displayName = personaName;
-                let instinctName = persona.instinct.name;
-                let instinctEffects = persona.instinct.effects;
                 let uniqueSkillName = persona.uniqueSkill.name;
                 let uniqueSkillEffect = persona.uniqueSkill.effect;
                 let highlightEffect = persona.highlight.effect;
                 let comment = persona.comment;
 
-                // 언어별 번역 적용
+                // Instinct 변형(예: instinct, instinct2 ...) 지원을 위한 배열
+                const instinctVariants = [];
+                function pushInstinctVariant(src) {
+                    if (!src) return;
+                    let name = src.name;
+                    let effects = src.effects;
+                    let priority = src.priority;
+
+                    if (currentLang === 'en') {
+                        name = src.name_en || name;
+                        effects = src.effects_en || effects;
+                    } else if (currentLang === 'jp') {
+                        name = src.name_jp || name;
+                        effects = src.effects_jp || effects;
+                    }
+
+                    // 이름 끝의 로마자 분리 (예: "잔당의 수확 IV")
+                    let baseName = name;
+                    let roman = '';
+                    const m = name && name.match(/\s+([IVX]+)$/);
+                    if (m) {
+                        roman = m[1];
+                        baseName = name.slice(0, m.index).trim();
+                    }
+
+                    instinctVariants.push({ name, baseName, roman, effects, priority });
+                }
+
+                // 기본 instinct + instinct2 (있다면) 수집
+                pushInstinctVariant(persona.instinct);
+                if (persona.instinct2) pushInstinctVariant(persona.instinct2);
+
+                // 언어별 이름/기타 텍스트 번역
                 if (currentLang === 'en') {
                     displayName = persona.name_en || personaName;
-                    instinctName = persona.instinct.name_en || persona.instinct.name;
-                    instinctEffects = persona.instinct.effects_en || persona.instinct.effects;
                     uniqueSkillName = persona.uniqueSkill.name_en || persona.uniqueSkill.name;
                     uniqueSkillEffect = persona.uniqueSkill.effect_en || persona.uniqueSkill.effect;
                     highlightEffect = persona.highlight.effect_en || persona.highlight.effect;
                     comment = persona.comment_en || persona.comment;
                 } else if (currentLang === 'jp') {
                     displayName = persona.name_jp || personaName;
-                    instinctName = persona.instinct.name_jp || persona.instinct.name;
-                    instinctEffects = persona.instinct.effects_jp || persona.instinct.effects;
                     uniqueSkillName = persona.uniqueSkill.name_jp || persona.uniqueSkill.name;
                     uniqueSkillEffect = persona.uniqueSkill.effect_jp || persona.uniqueSkill.effect;
                     highlightEffect = persona.highlight.effect_jp || persona.highlight.effect;
@@ -995,17 +1021,102 @@ jp: /persona/?lang=jp
             `;
 
 
-                // Instinct
+                // Instinct (복수 변형 지원: instinct, instinct2 ...)
                 const instinctInfo = document.createElement('div');
                 instinctInfo.className = 'persona-instinct-info';
-                instinctInfo.dataset.priority = personaData[personaName].instinct.priority;
+                // 기본 priority는 첫 번째 변형 사용
+                instinctInfo.dataset.priority = instinctVariants[0] ? instinctVariants[0].priority : (persona.instinct ? persona.instinct.priority : 0);
 
-                // 배열인 경우 줄바꿈으로 연결, 문자열인 경우 그대로 사용
-                const effectsText = Array.isArray(instinctEffects) ? instinctEffects.join('\n') : instinctEffects;
-                instinctInfo.innerHTML = `
-                <h3>${instinctName}</h3>
-                <p>${effectsText}</p>
-            `;
+                // 헤더: 이름 + 로마자 버튼
+                const instinctHeader = document.createElement('div');
+                instinctHeader.className = 'persona-instinct-header';
+
+                const instinctTitle = document.createElement('h3');
+                const baseTitle = instinctVariants[0]
+                    ? (instinctVariants[0].baseName || instinctVariants[0].name)
+                    : (persona.instinct && persona.instinct.name) || '';
+                instinctTitle.textContent = baseTitle;
+                instinctHeader.appendChild(instinctTitle);
+
+                // 기본 활성 인스팅트 인덱스 (로마자 값이 가장 높은 변형을 선택)
+                function romanToInt(r) {
+                    if (!r) return 0;
+                    const map = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+                    let total = 0;
+                    for (let i = 0; i < r.length; i++) {
+                        const v = map[r[i]] || 0;
+                        const next = map[r[i + 1]] || 0;
+                        if (next > v) {
+                            total -= v;
+                        } else {
+                            total += v;
+                        }
+                    }
+                    return total;
+                }
+
+                let activeInstinctIndex = 0;
+                if (instinctVariants.length > 1) {
+                    let maxVal = -Infinity;
+                    instinctVariants.forEach((variant, idx) => {
+                        const val = romanToInt(variant.roman);
+                        if (val > maxVal) {
+                            maxVal = val;
+                            activeInstinctIndex = idx;
+                        }
+                    });
+                }
+                let instinctButtonsWrap = null;
+
+                if (instinctVariants.length > 1) {
+                    instinctButtonsWrap = document.createElement('div');
+                    instinctButtonsWrap.className = 'instinct-variant-buttons';
+
+                    instinctVariants.forEach((variant, idx) => {
+                        const btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'instinct-variant-btn' + (idx === activeInstinctIndex ? ' active' : '');
+                        // 로마자가 있으면 로마자, 없으면 1,2,3...
+                        btn.textContent = variant.roman || String(idx + 1);
+                        btn.setAttribute('aria-pressed', idx === activeInstinctIndex ? 'true' : 'false');
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (activeInstinctIndex === idx) return;
+                            activeInstinctIndex = idx;
+                            // 버튼 active 상태 갱신
+                            instinctButtonsWrap.querySelectorAll('.instinct-variant-btn').forEach((b, i) => {
+                                const isActive = i === activeInstinctIndex;
+                                b.classList.toggle('active', isActive);
+                                b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                            });
+                            // 효과 텍스트 및 priority 갱신
+                            updateInstinctEffect();
+                        });
+                        instinctButtonsWrap.appendChild(btn);
+                    });
+
+                    instinctHeader.appendChild(instinctButtonsWrap);
+                }
+
+                instinctInfo.appendChild(instinctHeader);
+
+                // 효과 텍스트 영역
+                const instinctEffectP = document.createElement('p');
+                instinctEffectP.className = 'instinct-text';
+
+                function updateInstinctEffect() {
+                    const current = instinctVariants[activeInstinctIndex] || instinctVariants[0];
+                    if (!current) return;
+                    const text = Array.isArray(current.effects) ? current.effects.join('\n') : current.effects;
+                    instinctEffectP.textContent = text || '';
+                    if (typeof current.priority !== 'undefined') {
+                        instinctInfo.dataset.priority = current.priority;
+                    }
+                }
+
+                // 초기 효과 렌더링
+                updateInstinctEffect();
+                instinctInfo.appendChild(instinctEffectP);
 
                 // Container for unique skill and highlight
                 const skillContainer = document.createElement('div');

@@ -219,6 +219,40 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .persona-instinct-info ul { margin: 8px 0; padding-left: 20px; }
 
+/* Instinct variant header & buttons */
+.persona-instinct-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.instinct-variant-buttons {
+    display: inline-flex;
+    margin: 0px 0px 8px 4px;
+    gap: 4px;
+}
+
+.instinct-variant-btn {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+}
+
+.instinct-variant-btn.active {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Instinct 제목과 버튼 정렬 보정 */
+.persona-instinct-header h3 {
+    margin-bottom: 0;
+}
+
 /* 나머지 섹션들의 기본 스타일 */
 .persona-instinct-info,
 .persona-unique-skill-info,

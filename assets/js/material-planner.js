@@ -16,7 +16,7 @@
             wp_exp1: 0, wp_exp2: 0, wp_exp3: 0,
             wp_limit1: 0, wp_limit2: 0, wp_limit3: 0,
             skill_lv_1: 0, skill_lv_2: 0, skill_lv_3: 0, skill_rose: 0,
-            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0
+            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0, skill_item6: 0
         }
     };
 
@@ -56,7 +56,8 @@
         skill_item2: '/apps/material-calc/img/skill_item2.png',
         skill_item3: '/apps/material-calc/img/skill_item3.png',
         skill_item4: '/apps/material-calc/img/skill_item4.png',
-        skill_item5: '/apps/material-calc/img/skill_item5.png'
+        skill_item5: '/apps/material-calc/img/skill_item5.png',
+        skill_item6: '/apps/material-calc/img/skill_item6.png'
     };
 
     // 다국어 텍스트
@@ -772,7 +773,7 @@
         // SKILLS (각 스킬별)
         const resolvedKey = resolveCharacterKey(characterName || (inputs && inputs.name) || '');
         const charMeta = (STATE.characterData?.[resolvedKey]) || {};
-        const skillItemIndex = Math.max(1, Math.min(5, Number(charMeta.skill_item || 1)));
+        const skillItemIndex = Math.max(1, Math.min(6, Number(charMeta.skill_item || 1)));
         ['s1','s2','s3','s4'].forEach((sk)=>{
             for(let lv=inputs[`${sk}From`]+1; lv<=inputs[`${sk}To`]; lv++){
                 let row = costs.skills?.[lv];
@@ -1538,7 +1539,8 @@
                 { key:'skill_item2', label:materialInfoFor('skill_item2').name, icon:MATERIAL_ICONS.skill_item2 },
                 { key:'skill_item3', label:materialInfoFor('skill_item3').name, icon:MATERIAL_ICONS.skill_item3 },
                 { key:'skill_item4', label:materialInfoFor('skill_item4').name, icon:MATERIAL_ICONS.skill_item4 },
-                { key:'skill_item5', label:materialInfoFor('skill_item5').name, icon:MATERIAL_ICONS.skill_item5 }
+                { key:'skill_item5', label:materialInfoFor('skill_item5').name, icon:MATERIAL_ICONS.skill_item5 },
+                { key:'skill_item6', label:materialInfoFor('skill_item6').name, icon:MATERIAL_ICONS.skill_item6 }
             ];
         } else if(type==='gem'){
             title.textContent = 'Konpaku Gem'; hint.textContent='';
@@ -1807,6 +1809,7 @@
         if(key==='skill_item3') return 404;
         if(key==='skill_item4') return 405;
         if(key==='skill_item5') return 406;
+        if(key==='skill_item6') return 407;
         if(key==='skill_rose') return 401;
         // mind base / lv / stat / skill
         if(key==='md_mercury') return 106; // mind base(기초 재화)

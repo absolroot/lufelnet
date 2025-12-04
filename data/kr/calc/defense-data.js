@@ -232,7 +232,7 @@ const penetrateData = {
             type: "패시브",
             target: "자신",
             skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
-            skillName: "-",
+            skillName: "열반",
             options: [],
             value: 15.0,
             duration: "-",

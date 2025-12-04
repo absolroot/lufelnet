@@ -27,6 +27,26 @@ const personaData = {
             ],
             priority: 3
         },
+        instinct2: {
+            name: "잔당의 수확 IV",
+            name_en: "Reaper IV",
+            name_jp: "ハンティング IV",
+            effects: [
+                "공격력이 29.1% 증가한다.",
+                "전투 중 1회, 야노식으로 턴을 종료할 때 임의의 적 1명이 『조준』을 획득합니다. 모든 동료가 『조준』을 보유한 적 공격 시 공격력이 20% 증가하고, 크리티컬 확률과 크리티컬 효과가 4.5% 증가한다.",
+                "『조준』을 보유한 적의 방어력이 12% 추가 감소한다. 자신이 『조준』을 가진 적 공격시 공격력 18%의 총격 속성 대미지를 1회 준다.",
+                "『조준』 : 2턴 동안 적의 방어력이 29.6% 감소한다."
+            ],
+            effects_en: [
+                "Increases ATK by 29.1%. At the start of battle, inflicts 1 foe with [Marked]. When allies attack foes with [Marked], increases ATK by 20% and increases Critical Rate and Critical Damage by 4.5%. Additionally decreases DEF by 12% for foes with [Marked]. When you attack foes with [Marked], deal an additional 18% ATK as Gun DMG to them.",
+                "[Marked]: Reduce enemy defense by 29.6% for 2 turns."
+            ],            
+            effects_jp: [
+                "攻撃力が29.1%上昇。戦闘開始時、敵単体に『標的』を付与。味方が『標的』に攻撃した時、攻撃力が20%上昇し、クリティカル率とクリティカル効果が4.5%上昇。『標的』の防御力がさらに12%低下。自身が『標的』を攻撃した時、追加で攻撃力18%の銃撃属性ダメージを与える。",
+                "『標的』：2ターンの間、敵の防御力が29.6%減少する。"
+            ],            
+            priority: 3
+        },
         uniqueSkill: {
             name: "궁지 반격",
             name_en: "Tatra Shot",
@@ -137,13 +157,13 @@ const personaData = {
             rainbow: 4000
         },
         instinct: {
-            name: "메멘토 모리 I",
+            name: "죽음은 누구에게나 찾아옴을 기억하라 I",
             name_en: "Memento Mori I",
             name_jp: "メメント・モリ I",
             effects: [
                 "공격력이 29.1% 증가한다. ",
-                "전투 시작 시 『죽음의 춤』을 3중첩 획득한다. 동료가 페르소나 스킬 사용 시 『죽음의 춤』을 1중첩 획득한다(최대 3중첩).",
-                "자신이 페르소나 스킬 사용 시 적 전체가 받는 크리티컬 효과를 15% 증가시키고, 3중첩 보유 시 『죽음의 춤』을 3중첩 소모하여 스킬 목표가 지배 괴도로부터 받는 총 대미지 증가율을 1.5%/3% 증가시킨다.",
+                "전투 시작 시 자신에게 『망령의 춤』을 3중첩 추가한다. 아군 동료가 페르소나 스킬 사용 시 『망령의 춤』을 1중첩 획득한다(최대 3중첩).",
+                "자신이 적에게 페르소나 스킬 사용 시 3턴 동안 적 전체가 받는 크리티컬 효과가 15% 증가한다.  『망령의 춤』이 3중첩이 되면 모든 『망령의 춤』을 소모하여 목표가 지배 캐릭터에게 공격받을 때 받는 총 대미지 증폭을 3% 증가시킨다.",
             ],
             effects_en: [
                 "Increase Attack by 29.1%. At the start of battle, user gains 3 [Dance of Death] stacks. After allies deal damage with a Persona skill, user gains 1 [Dance of Death] stack. Stacks up to 3 times.\nAfter user uses a Persona skill on foes, increase all foe's critical damage taken by 15% for 3 turns.\nIf user has 3 [Dance of Death] stacks, spend all [Dance of Death] stacks and increase target's Sweeper total damage taken amp by 1.5%/3% for 3 turns.",
@@ -154,12 +174,12 @@ const personaData = {
             priority: 3
         },
         uniqueSkill: {
-            name: "죽음의 자비",
+            name: "죽은 자에게 고하는 자비",
             name_en: "Death's Mercy",
             name_jp: "死の慈悲",
-            effect: "모든 적에게 공격력 150.0%의 주원 속성 대미지를 주고, 적이 받는 대미지가 12.0% 증가하며, 지배 괴도에게 공격 받을 시 받는 크리티컬 효과가 10.0% 증가한다. 효과는 3턴 동안 지속된다.",
+            effect: "적 전체에게 공격력 150.0%의 주원 속성 대미지를 주고, 3턴 동안 적 전체가 받는 대미지가 12.0% 증가하며, 지배 캐릭터에게 공격 받을 때 받는 크리티컬 확률이 추가로 10.0% 증가한다.",
             effect_en: "Deal Curse damage to all foes equal to 150.0% of Attack. Increase all foes' damage taken by 12.0%. Also, when attacked by a Sweeper, increase critical taken rate by 10.0%. Lasts for 3 turns.",
-            effect_jp: "全ての敵に攻撃力150.0%の呪怨属性ダメージを与え、敵が受けるダメージを12.0%増加させる。また、『支配』アーケタイプによって攻撃を受けた場合、クリティカルダメージを10.0%増加させる。効果は3ターンの間持続する。",
+            effect_jp: "敵全体に攻撃力150.0%の呪怨属性ダメージを与え、3ターンのあいだ敵全体の被ダメージを12.0%増加させる。さらに、支配ロールのキャラクターから攻撃を受けた場合、被クリティカル率が追加で10.0%上昇する。",
             priority: 3,
             icon: "주원광역"
         },

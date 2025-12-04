@@ -11,7 +11,9 @@ const criticalBuffData = {
               { id: "wonder3", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "단일", target_en: "Single", target_jp: "単体", skillIcon: "/assets/img/tactic-persona/광목천.webp", skillName: "광목천 - 본능", skillName_en: "Koumokuten - Passive", skillName_jp: "コウモクテン - 本能", options: [], value: 6, duration: "3턴", note: "전투 시작 시", note_en: "start of the battle", note_jp: "戦闘開始時" },
               { id: "wonder4", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/tactic-persona/아메노우즈메.webp", skillName: "아메노우즈메 - 본능", skillName_en: "Ame-no-Uzume - Passive", skillName_jp: "アメノウズメ - 本能", options: [], value: 10, duration: "2턴", note: "감전 효과 부여 시", note_en: "When shocked", note_jp: "感電効果付与時" },
               { id: "wonder5", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "단일", target_en: "Single", target_jp: "単体", skillIcon: "/assets/img/tactic-persona/서큐버스.webp", skillName: "서큐버스 - 본능", skillName_en: "Succubus - Passive", skillName_jp: "サキュバス - 本能", options: [], value: 11.7, duration: "1턴", note: "동료를 목표로 스킬 시전 시", note_en: "targeting an ally", note_jp: "仲間を対象にする時" },
-              { id: "wonder6", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/tactic-persona/시바.webp", skillName: "시바 - 본능", skillName_en: "Shiva - Passive", skillName_jp: "シヴァ - 本能", options: [], value: 18, duration: "1턴", note: "3중첩 / 목표가 염동 대미지를 받을 때", note_en: "3 hits / target takes PSY damage", note_jp: "3重 / 目標が念動ダメージを受けた時" }
+              { id: "wonder6", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/tactic-persona/시바.webp", skillName: "시바 - 본능", skillName_en: "Shiva - Passive", skillName_jp: "シヴァ - 本能", options: [], value: 18, duration: "1턴", note: "3중첩 / 목표가 염동 대미지를 받을 때", note_en: "3 hits / target takes PSY damage", note_jp: "3重 / 目標が念動ダメージを受けた時" },
+              { id: "wonder7", type: "페르소나", type_en: "Persona", type_jp: "ペルソナ", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/tactic-persona/야노식.webp", skillName: "야노식 - 본능", skillName_en: "anosik - Passive", skillName_jp: "ヤノシーク - 本能", options: [], value: 4.5, duration: "2턴", note: "본능4", note_en: "Unique Passive LV4", note_jp: "本能 LV4" }
+
     ],
 
     "후카": [
@@ -56,8 +58,8 @@ const criticalBuffData = {
 
 
     "쇼키·암야": [
-        { id: "shoki-darkest1", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/쇼키·암야-5-01.png", skillName: "왕의 의지", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0", "개조1&2", "개조3&4", "개조5&6"], values: { "개조0": 16.4, "개조1&2": 21.4, "개조3&4": 26.4, "개조5&6": 31.4 }, defaultOption: "개조5&6", value: 31.4, duration: "", note: "" },
-        { id: "shoki-darkest2", type: "의식1", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "2턴", note: "5중첩", note_en: "5 Stack", note_jp: "5 重" }
+        { id: "shoki-darkest1", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/쇼키·암야-5-01.png", skillName: "신들의 왕정", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0", "개조1&2", "개조3&4", "개조5&6"], values: { "개조0": 16.4, "개조1&2": 21.4, "개조3&4": 26.4, "개조5&6": 31.4 }, defaultOption: "개조5&6", value: 31.4, duration: "", note: "" },
+        { id: "shoki-darkest2", type: "의식1", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "유성의 인도", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "2턴", note: "5중첩", note_en: "5 Stack", note_jp: "5 重" }
     ],
 
     "미츠루": [

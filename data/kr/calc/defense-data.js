@@ -1083,13 +1083,13 @@ const defenseCalcData = {
             type: "전용무기",
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/character-weapon/토모코·여름-5-01.png`,
-            skillName: "오션구슬 완드(글로벌)",
-            skillName_en: "(GLB only)",
-            skillName_jp: "(JPのみ)",
+            skillName: "오션구슬 완드",
+            skillName_en: "",
+            skillName_jp: "",
             options: [],
             value: 12.0,
             duration: "3턴",
-            note: "글로벌 서버 기준",
+            note: "",
             note_en: "-",
             note_jp: "-"
         }

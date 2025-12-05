@@ -59,7 +59,7 @@ window.enCharacterSkillsData["야오링"] = {
     "type": "제어",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Curse damage to 1 foe equal to 97.6%/107.6%/103.6%/113.6% of Attack. If foe has a debuff, increase damage by 20%. When spending Meng Po Soup, inflict Forget on target for 2 turns. If foe is inflicted with Forget or another spiritual ailment, increase their damage taken by 2% for every 10 points of Yaoling's Speed (up to 32.3%/32.3%/34.3%/34.3%) for 1 turn."
+    "description": "Deal Curse damage to 1 foe equal to 97.6%/107.6%/103.6%/113.6% of Attack. If foe has a debuff, increase damage by 20%. When spending [Meng Po Soup], inflict Forget on target for 2 turns. If foe is inflicted with Forget or another spiritual ailment, increase their damage taken by 2% for every 10 points of Yaoling's Speed (up to 32.3%/32.3%/34.3%/34.3%) for 1 turn."
   },
   "skill3": {
     "name": "Lion Dance of Oblivion",
@@ -67,7 +67,7 @@ window.enCharacterSkillsData["야오링"] = {
     "type": "디버프",
     "sp": 24,
     "cool": 0,
-    "description": "Deal Curse damage to all foes equal to 78.1%/86.1%/82.9%/90.9% of Attack, and inflict Red Spider Lily for 2 turns. When spending Meng Po Soup, the damage increase effect of Red Spider Lily is doubled. Red Spider Lily: Increase damage taken by foes by 3% for every 10 points of Yaoling's Speed (up to 48.5%/53.5%/52.3%/57.3%). Lasts for 2 turns, or until damage is taken 2 times."
+    "description": "Deal Curse damage to all foes equal to 78.1%/86.1%/82.9%/90.9% of Attack, and inflict Red Spider Lily for 2 turns. When spending [Meng Po Soup], the damage increase effect of Red Spider Lily is doubled. Red Spider Lily: Increase damage taken by foes by 3% for every 10 points of Yaoling's Speed (up to 48.5%/53.5%/52.3%/57.3%). Lasts for 2 turns, or until damage is taken 2 times."
   },
   "skill_highlight": {
     "name": "Highlight",

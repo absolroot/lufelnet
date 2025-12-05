@@ -23,7 +23,8 @@
 
 .character-images img[src*="하루 - 밀라디.webp"],
 .character-images img[src*="모토하 - 아르빌다.webp"],
-.character-images img[src*="카요 - 클레오도라.webp"]{ scale: 1.15; }
+.character-images img[src*="카요 - 클레오도라.webp"],
+.character-images img[src*="쇼키·암야 - 기노.webp"]{ scale: 1.15; }
 
 .character-images img[src*="모토하·여름.webp"],
 .character-images img[src*="토모코·여름.webp"],
@@ -33,14 +34,20 @@
 .character-images img[src*="안 - 카르멘.webp"],
 .character-images img[src*="몽타뉴 - 테르프시코레.webp"],
 .character-images img[src*="세이지 - 레우코테아.webp"],
-.character-images img[src*="미유·여름.webp"]{ scale: 1.1; }
+.character-images img[src*="미유·여름.webp"],
+.character-images img[src*="미츠루.webp"]{ scale: 1.1; }
 
 .character-images img[src*="유키 마코토.webp"],
 .character-images img[src*="유스케.webp"],
 .character-images img[src*="YUI.webp"],
 .character-images img[src*="레오.webp"],
 .character-images img[src*="모토하.webp"],
-.character-images img[src*="유키미.webp"]{ scale: 1.05; }
+.character-images img[src*="유키미.webp"],
+.character-images img[src*="쇼키·암야.webp"]{ scale: 1.05; }
+
+.character-images img[src*="후카.webp"]{ scale: 1.03; }
+
+.character-images img[src*="후카 - 루키아.webp"]{ scale: 1.1; position: relative; bottom: 15px;}
 
 .character-images img[src*="미나미·여름.webp"],
 .character-images img[src*="미나미·여름 - 탈리아.webp"]{ position: relative; right: 20px; bottom: 20px; scale: 1.05; }

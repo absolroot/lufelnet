@@ -201,9 +201,9 @@ Object.assign(window.characterData, {
     "후카": {
         "limit": true,
         "persona3": true,
-        "role": "아군 교체",
-        "role_en": "Ally Swap",
-        "role_jp": "アリー・スワップ",
+        "role": "아군 교체 투입 해명",
+        "role_en": "Ally Swap Elucidator",
+        "role_jp": "アリー・スワップ 解明",
         "tag": "아군 교체, 크리티컬 효과, 공격력, 디버프 제거",
         "tag_en": "Ally Swap, 크리티컬 효과, 공격력, 디버프 제거",
         "tag_jp": "アリー・スワップ、크리티컬 효과, 공격력, 디버프 제거",
@@ -749,9 +749,9 @@ Object.assign(window.characterData, {
 
     "마나카": {
         "limit": true,
-        "role": "행동 리턴",
-        "role_en": "Action Return",
-        "role_jp": "行動リターン",
+        "role": "턴 회귀 해명",
+        "role_en": "Turn Revert Elucidator",
+        "role_jp": "ターンリバート 解明",
         "tag": "추가 턴, 디버프 제거, 관통, 대미지 보너스, 공격력",
         "color": "#000000",
         "main_revelation": ["희망","진정성"],
@@ -1815,6 +1815,7 @@ Object.assign(window.characterData, {
         "name_jp": "坂井 綾香",
         "name_cn": "坂井绫香",
         "codename": "CHORD",
+        "skill_item": 2,
         "sub_revel2": ["공격력","생명","치료효과"],
         "sub_revel3": ["크리티컬 확률", "공격력"],
         "sub_revel4": ["공격력","생명"],

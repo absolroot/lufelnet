@@ -190,7 +190,12 @@ const personaData = {
             priority: 3
         },
         recommendSkill : [
-             {name : "전의 공명", priority: 3}
+             {name : "전의 공명", priority: 0},
+             {name : "공격 강화", priority: 0 },
+             {name : "주원 강화", priority: 0 },
+             {name : "어드바이스", priority: 0 },
+             {name : "정교한 타격", priority: 0 },
+             {name : "마도의 재능", priority: 0 }
         ]
     },
     "도미니온": {

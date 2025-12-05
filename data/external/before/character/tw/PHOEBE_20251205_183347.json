@@ -1,0 +1,207 @@
+{
+  "data": {
+    "name": "椎名悠美",
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "同伴使用人格面具技能/追加效果/HIGHLIGHT/降神造成傷害時，會使椎名悠美獲得一個對應屬性的『風味』，『風味』達到3時椎名悠美會進行調製，依據『風味』的不同調製出不同的『雞尾酒』，上限3杯。（每名同伴在下一回合開始前最多使椎名悠美獲得1個『風味』）\n3個相同屬性的『風味』調製出『精調·DELUXE』；\n2個相同屬性的『風味』調製出『精調』；\n3個不同屬性的『風味』調製出『粗調』。\n椎名悠美釋放技能時會消耗『雞尾酒』並使技能效果得到強化，消耗『雞尾酒』時會使所有同伴回復6點精力值。",
+          "level": "1",
+          "name": "王牌酒保",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "椎名悠美調製出『雞尾酒』時，有100%固定機率隨機返還其中1個『風味』。",
+          "level": "1",
+          "name": "莫希托",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『繽紛的輔料』、『風味絕倫的美酒』的技能等級提升3級，至多提升至15級。",
+          "level": "1",
+          "name": "瑪格莉特",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "椎名悠美調製出『雞尾酒』時，使所有同伴造成傷害提升16%，效果持續1回合。",
+          "level": "1",
+          "name": "龍舌蘭日出",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『撩人的醉意』的技能等級提升3級，至多提升至15級。",
+          "level": "1",
+          "name": "血腥瑪麗",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "任意同伴釋放HIGHLIGHT/降神時，該同伴攻擊力提升10%，效果持續1回合，且椎名悠美獲得1杯『精調·DELUXE』。",
+          "level": "1",
+          "name": "螺絲起子",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『雞尾酒』的上限提升至4。戰鬥開始時，椎名悠美獲得1杯『精調·DELUXE』；椎名悠美每調製出3杯『雞尾酒』時，額外獲得1杯『精調·DELUXE』。",
+          "level": "1",
+          "name": "經典馬丁尼",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": null,
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "準備時間：6次行動\n使所有同伴攻擊力提升，數值相當於椎名悠美攻擊力的8%（最多計入4600/5060/5980/6440點攻擊力），效果持續3回合。釋放技能時，若椎名悠美擁有『雞尾酒』，則會消耗1杯『雞尾酒』使技能效果得到強化（優先消耗高品質的『雞尾酒』）。消耗『精調·DELUXE/精調/粗調』分別使技能效果提高120%/100%/50%。",
+          "level": "10/10/13/13",
+          "name": "撩人的醉意",
+          "nature": null,
+          "tags": [
+            "主動",
+            "增益"
+          ],
+          "target": "All Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "AICondition (Based on HPcur/HP)",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "準備時間：4次行動\n使1名同伴造成傷害提升（每250點椎名悠美的攻擊力提供1%傷害加成，最多計入4600/5060/5980/6440點攻擊力），最大生命值提升13.0%/13.0%/14.6%/14.6%，效果持續2回合，並使其造成傷害時恢復相當於該傷害量2%的生命值，效果持續1回合。釋放該技能時，椎名悠美會消耗1杯『粗調/精調』並獲得1杯『精調·DELUXE』。",
+          "level": "10/10/13/13",
+          "name": "繽紛的輔料",
+          "nature": null,
+          "tags": [
+            "主動",
+            "增益"
+          ],
+          "target": "1 Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "準備時間：8次行動（沒有『雞尾酒』時不能使用）\n消耗所有『雞尾酒』，對指定同伴的適應性屬性進行特調。每消耗1杯『精調·DELUXE/精調/粗調』會觸發120%/100%/50%強度的下述效果：使所有同伴的特調屬性傷害提升（每250點椎名悠美的攻擊力提供1%傷害加成，最多計入4600/5060/5980/6440點攻擊力），指定同伴的特調屬性傷害提升效果提高至1.2倍，效果持續2回合。",
+          "level": "10/10/13/13",
+          "name": "風味絕倫的美酒",
+          "nature": null,
+          "tags": [
+            "主動",
+            "增益"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "隊伍中每編入一名怪盜，使全體怪盜對應屬性傷害增加4%。",
+          "level": "3",
+          "name": "攪拌",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All All Allies"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "戰鬥開始時，椎名悠美根據隊伍中怪盜的屬性，隨機獲得3個『風味』。",
+          "level": "3",
+          "name": "搖晃",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All All Allies"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1109.97 / 1129.97 / 1149.97 / 1169.97 / 1189.97 / 1209.97 / 1229.97",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Attack Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "606.64 / 617.84 / 628.24 / 639.44 / 650.64 / 661.04 / 672.24",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

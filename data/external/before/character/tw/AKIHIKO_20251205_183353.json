@@ -1,0 +1,236 @@
+{
+  "data": {
+    "name": "真田明彥",
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "真田明彥使用人格面具技能/降神造成電擊屬性傷害後獲得1層『執念』。進入戰鬥時獲得2層『執念』，上限12層。自身回合開始時，可以消耗6層『執念』釋放1次『無敵鋼拳』：自身獲得1層『鬥志』，對所有敵人造成55.9%攻擊力的物理屬性傷害。該技能視為追加效果。『鬥志』：自身穿透提升4%，上限3層。",
+          "level": "1",
+          "name": "戰鬥的理由",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "真田明彥擁有『鬥志』時暴擊率提升20%。\n進入戰鬥時自身獲得70點降神能量。",
+          "level": "1",
+          "name": "拳擊部主將",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "消耗『執念』釋放『無敵鋼拳』後，自身傷害提升30%，持續3回合。\n對倒地單位造成傷害時，自身『倒地特攻』提升10%。",
+          "level": "1",
+          "name": "笨拙的情感",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『電光衝擊』、『雷拳一閃』的技能等級提升3級，至多提升至15級。",
+          "level": "1",
+          "name": "克己之心",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "釋放降神時，暴擊效果提升20%。",
+          "level": "1",
+          "name": "鍛煉的成果",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『電光陣』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+          "level": "1",
+          "name": "秘藏的心意",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "真田明彥進入戰鬥時額外獲得6層『執念』，『執念』上限提升至18層。『鬥志』上限提升至4層，自身每擁有1層『鬥志』傷害提升8%。\n真田明彥釋放『雷拳一閃』後追加釋放1次『絕殺破壞拳』。\n『絕殺破壞拳』：基於本回合消耗的『鬥志』層數，每層對所有敵人造成13.5%攻擊力的『必定暴擊』且『無視防禦』的電擊屬性傷害，並獲得1層『鬥志』；該技能視為追加效果。",
+          "level": "1",
+          "name": "力量的追求者",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使1名同伴暴擊效果提升20%，持續1回合。",
+          "level": "10/10/13/13",
+          "name": "援助技能",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "1 Alive Ally"
+        }
+      ],
+      "highlight_skill": null,
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "自身獲得1層『鬥志』，對所有敵人造成122.8%/135.4%/130.3%/142.9%攻擊力的電擊屬性傷害，自身暴擊效果提高23.4%/25.8%/24.9%/27.3%，持續3回合。",
+          "level": "10/10/13/13",
+          "name": "電光陣",
+          "nature": "Electric",
+          "tags": [
+            "主動",
+            "群傷"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "自身獲得1層『鬥志』，對所有敵人造成92.1%/101.6%/97.8%/107.2%攻擊力的電擊屬性傷害，自身獲得2層『執念』。",
+          "level": "10/10/13/13",
+          "name": "電光衝擊",
+          "nature": "Electric",
+          "tags": [
+            "主動",
+            "群傷"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 2,
+          "cost": "SP 24",
+          "desc": "對所有敵人造成136.4%/150.4%/144.8%/158.8%攻擊力的電擊屬性傷害，若自身存在2層及以上的『鬥志』則消耗所有『鬥志』，每消耗1層『鬥志』使該技能倍率提升40.9%/45.1%/43.4%/47.6%。",
+          "level": "10/10/13/13",
+          "name": "雷拳一閃",
+          "nature": "Electric",
+          "tags": [
+            "主動",
+            "群傷"
+          ],
+          "target": "All Alive Enemy"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身對處於倒地狀態的敵人造成傷害時，造成傷害提升30.0%。",
+          "level": "3",
+          "name": "熱血",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身造成暴擊後，攻擊力提升13.5%，持續3回合，上限3層。",
+          "level": "3",
+          "name": "貫徹",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "AICondition (Based on AAAAAA==)",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "釋放條件：140點降神能量\n對所有敵人造成255.4%/281.6%/271.1%/297.3%攻擊力的電擊屬性傷害，該技能『必定暴擊』，暴擊效果固定為200%。",
+          "level": "10/10/13/13",
+          "name": "雷電圓球",
+          "nature": "Electric",
+          "tags": [
+            null
+          ],
+          "target": "All Alive Enemy"
+        }
+      ]
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Attack Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1242,45 +1242,12 @@ const enCharacterSkillsData = {
     },
     "하루": {
         "name": "Haru Okumura",
-        "skill1": {
-            "name": "Fusion Aiming",
-            "element": "염동광역",
-            "type": "광역피해",
-            "sp": 20,
-            "cool": 0,
-            "description": "Deals 68.8%/75.9%/73.0%/80.1% ATK as Psy DMG to all enemies 2 times, there is a 97.6%/97.6%/103.6%/103.6% base chance to inflict the main target with [Sight] and a 53.7%/53.7%/57.0%/57.0% base chance to inflict all other enemies with [Sight]. Noir then converts all enemies' [Sight] into own [Sight] for 3 turns.\nGains [Thermal Customization]: When using Gun Attack, if you have [Sight], increases skill damage by 29.3%/32.3%/31.1%/34.1%, removes all own [Sight] after Gun Attack."
-        },
-        "skill2": {
-            "name": "Suppressing Fire",
-            "element": "총격",
-            "type": "단일피해",
-            "hp": 12,
-            "cool": 0,
-            "description": "Deals 151.6%/167.1%/160.9%/176.4% ATK as Gun DMG to 1 enemy. Increases PEN by 19.5%/19.5%/20.7%/20.7% when Noir has [Sight]. \nGains [Piercing Customization]: Deals an additional 39.0%/43.0%/41.4%/45.4% ATK as Psy DMG to the main target when using Gun Attack. This can triggers the skill damage boosting effect of [Thermal Customization]."
-        },
-        "skill3": {
-            "name": "Full Metal Explosion",
-            "element": "염동광역",
-            "type": "광역피해",
-            "sp": 24,
-            "cool": 0,
-            "description": "Deals 129.2%/142.5%/137.2%/150.4% ATK as Psy DMG to all enemies, increases CRIT Rate by 19.5%/19.5%/20.7%/20.7% when Noir has [Sight].\nGains [Spreading Customization]: Deals an additional 29.3%/32.3%/31.1%/34.1% ATK as Psy DMG to all enemies. This can trigger the skill damage boosting effect of [Thermal Customization]."
-        },
-        "skill_highlight": {
-            "element": "염동광역",
-            "type": "광역피해",
-            "description": "Deals 206.9%/228.1%/219.6%/240.8% ATK as Psy DMG to all enemies. \nGains [Overload Customization] if [Customization] is not full or if Noir doesn't have [Overload Customization]. \n[Overload Customization]: Increases Gun Attack CRIT Rate by 14.6%/14.6%/15.5%/15.5%. Otherwise, increases this attack’s skill damage by 14.6%/14.6%/15.5%/15.5%."
-        },
-        "passive1": {
-            "name": "Launch",
-            "element": "패시브",
-            "description": "In battle, for every 1.45% EHR, increase ATK by 1%, up to 165% ATK. For every 50% EHR, additionally gain 1 stack of 20% CRIT DMG, up to 3 stacks."
-        },
-        "passive2": {
-            "name": "Instigate",
-            "element": "패시브",
-            "description": "Everytime you gain 1 [Customization], permanently gain 1 stack of [Barrel Heat]. Increase own stats when [Barrel Heat] reach certain stacks:\n- 1 stack: Increase EHR by 18.0%, Effect RES by 18.0%;\n- 2 stacks: Increase ATK by 18.0%, DEF by 18.0%;\n- 3 stacks: Increase CRIT DMG by 18.0%."
-        }
+        "skill1": {"name":"Extrasensory Aim","element":"염동광역","type":"광역피해","sp":26,"cool":0,"description":"Deal Psychokinesis damage to all foes equal to 75.8%/83.6%/80.5%/88.3% of Attack (2 hits). 97.6%/97.6%/103.6%/103.6% chance to inflict 1 Target Audience stack on the main target and 53.7%/53.7%/57.0%/57.0% chance to inflict 1 Target Audience stack on other foes. Then, change Target Audience stacks on foes to Target Audience stacks on Haru and Target Audience's duration to 3 turns. Also gain 1 Focused Shot stack.\nFocused Round: When using a ranged attack with Target Audience, increase skill damage by 29.3%/32.3%/31.1%/34.1%. After the ranged attack, remove all Target Audience stacks granted to Haru."},
+        "skill2": {"name":"Precise Volley","element":"총격","type":"단일피해","hp":12,"cool":0,"description":"Deal Gun damage to 1 foe equal to 151.6%/167.1%/160.9%/176.4% of Attack. When Haru has Target Audience, increase this skill's pierce rate by 19.5%/19.5%/20.7%/20.7% and gain 1 Painpoint Round.\nPainpoint Round: When using a ranged attack, also deal Psychokinesis damage to the main target equal to 39.0%/43.0%/41.4%/45.4% of Attack (can gain skill damage increases from Focused Round)."},
+        "skill3": {"name":"Mindful Release","element":"염동광역","type":"광역피해","sp":26,"cool":0,"description":"Deal Psychokinesis damage to all foes equal to 142.1%/156.7%/150.8%/165.4% of Attack. When Haru has Target Audience, increase this skill's critical rate by 19.5%/19.5%/20.7%/20.7% and gain 1 Spillover Round stack.\nSpillover Round: When using a ranged attack, also deal Psychokinesis damage to all foes equal to 29.3%/32.3%/31.1%/34.1% of Attack (can gain skill damage increases from Focused Round)."},
+        "skill_highlight": {"element":"염동광역","type":"광역피해","description":"Deal Psychokinesis damage to all foes equal to 206.9%/228.1%/219.6%/240.8% of Attack. Gain 1 Overload Round if Haru doesn't have any Overload Round stacks and is below maximum Thoughtful Round stacks.\nOverload Round: When using a ranged attack, increase critical rate by 14.6%/14.6%/15.5%/15.5%.\nIf Haru hasn't gained any Overload Round stacks, increase this skill damage by 14.6%/16.1%/15.5%/17.0%.","cool":4},
+        "passive1": {"name":"Heiress's Leadership","element":"패시브","description":"During battle, increase Attack by 1% for every 1.45% of ailment accuracy (up to 165.0% of Attack). Also increase critical damage by 20% for every 50% of ailment accuracy (stacks up to 3 times).","cool":0},
+        "passive2": {"name":"Helping Others","element":"패시브","description":"Permanently gain 1 Area to Improve stack for each Thoughtful Round stack gained. Gain the following effects based on the number of Area to Improve stacks:\n1. Increase ailment accuracy by 18.0% and ailment resistance by 18.0%.\n2. Increase Attack by 18.0% and Defense by 18.0%.\n3. Increase critical damage by 18.0%.","cool":0}
     },
     "후타바": {
         "name": "Futaba Sakura",

@@ -125,12 +125,24 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 **持続ダメージ増加**というバフは、既存のダメージ増加とは異なり、別のバケットで計算される。  
 
 参考までに、苺登場前に実装された年獣の持続ダメージ増加は、通常のダメージ増加バケットで計算される。`,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["체력 비례 대미지가 아닌 공격력 기반 지속 대미지로 모든 보스에게 유의미한 대미지를 줄 수 있다.", "3스킬과 HIGHLIGHT가 강력하다."],
+        pros_en: [
+          "Deals meaningful damage to all bosses thanks to ATK-based DoT instead of HP-based scaling.",
+          "Has powerful Skill 3 and HIGHLIGHT."
+        ]
+        ,
+        pros_jp: [
+          "HP比例ではなく攻撃力依存の継続ダメージにより、すべてのボスに有効なダメージを与えられる。",
+          "スキル3とHIGHLIGHTが強力。"
+        ]
+        ,
+        cons: ["1스킬을 통해 다수의 적을 공격할 수 없는 경우 예열시간이 길어진다."],
+        cons_en: [
+          "Takes longer to set up when Skill 1 cannot hit multiple enemies."
+        ],
+        cons_jp: [
+          "スキル1で複数の敵を攻撃できない場合、予熱時間が長くなる。"
+        ],
     };
 })();
 

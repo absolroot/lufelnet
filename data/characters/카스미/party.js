@@ -2,7 +2,7 @@ window.recommendParty = window.recommendParty || {};
 window.recommendParty["카스미"] = {
     "weapon": [
         "태고의 역장!",
-        "크리스탈 트레저",
+        "크리스탈 트레저!",
         "메커니컬 심판자"
     ],
     "persona": [

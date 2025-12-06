@@ -27,7 +27,7 @@ As the first character to introduce TECHNICAL-type effects, she uses the Ice TEC
 Because of this, **inflicting Burn on at least one enemy is crucial**, leading players to frequently rely on Fire Item Charms or the Persona **Throne**.
 
 Skill Master: Influences the potency of additional TECHNICAL effects. For every 100 points gained (values below 100 scale proportionally):  
-- “Explosive Combustion”: Skill damage bonus increases by 10%.  
+- “Backdraft”: Skill damage bonus increases by 10%.  
 - “Cold Thunder”: Skill damage bonus increases by 10%.  
 - “Flames of Ice”: Weakness effect for Fire/Ice increases by 5%.  
 - “Flame Tempest”: Additional damage increases by 6%.  

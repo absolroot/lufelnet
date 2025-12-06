@@ -21,7 +21,7 @@ window.ritualData["야오링·사자무"] = {
 window.enCharacterRitualData["야오링·사자무"] = {
   "name": "Yaoling Li·Lion Dance",
   "r0": "Year Fire Farewell",
-  "r0_detail": "Rin - Lion Dance can enchant your sword with flame, turning Melee Attack into [Fiery Shooting Star], dealing severe Fire TECHNICAL DMG. When triggering [Backdraft], increases TECHNICAL effects by 20%.",
+  "r0_detail": "Rin - Lion Dance can enchant your sword with flame, turning Melee Attack into [Fiery Shooting Star], dealing severe Fire TECHNICAL DMG. When triggering [Backdraft], increases TECHNICAL effects by 20%.\n\nFire TECHNICAL: Some Fire-type skills gain additional effects against enemies in certain conditions.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Burn, it activates Backdraft, increasing skill damage by 2%.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Freeze, it activates Flames of Ice, causing the target to take 5% increased Fire/Ice damage for 2 turns with a base probability of 50%.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Wind Shear, it activates Flame Tempest, dealing additional Fire damage equal to 1% of the target’s max HP once.",
   "r1": "Booming Firecrackers",
   "r1_detail": "Decrease the initial cooldown of [Shooting Star Greetings] by 1 turn, extends the duration of [Iron Flower Dance] by 1 turn, under [Iron Flower Dance]:\n- [Abundant World]: Increases [Fiery Shooting Star] CRIT DMG by 40.0%.\n- [Crackling Firecrackers]: Additionally inflicts the target with 1 stack of [Year Fire].",
   "r2": "Joyous Lanterns",
@@ -38,7 +38,7 @@ window.enCharacterRitualData["야오링·사자무"] = {
 window.jpCharacterRitualData["야오링·사자무"] = {
   "name": "李瑤鈴·獅子舞",
   "r0": "一路順風",
-  "r0_detail": "李瑤鈴・獅子舞は槍を燃やし、近接攻撃を『花火流星』に強化し、強力な火炎属性ダメージと火炎属性TECHNICALを与える。『爆発燃焼』発動時、TECHNICAL効果が最大20％まで増加する。",
+  "r0_detail": "李瑤鈴・獅子舞は槍を燃やし、近接攻撃を『花火流星』に強化し、強力な火炎属性ダメージと火炎属性TECHNICALを与える。『爆発燃焼』発動時、TECHNICAL効果が最大20％まで増加する。\n\n火炎属性TECHNICAL: 一部の火炎属性スキルは、特定の状態異常の敵に対して追加効果を発動する。\n火炎属性スキルが燃焼状態の敵にTECHNICALを与えると『爆発燃焼』が発動し、スキルダメージが2%上昇する。\n火炎属性スキルが氷結状態の敵にTECHNICALを与えると『氷の焔』が発動し、2ターンのあいだ基礎確率50%で対象が受ける火炎／氷結属性ダメージが5%増加する。\n火炎属性スキルが風襲状態の敵にTECHNICALを与えると『火炎旋風』が発動し、対象の最大HP1%に相当する火炎属性ダメージを1回追加で与える。",
   "r1": "楽しい爆竹の音",
   "r1_detail": "『流星の炎』の初期クールタイムが1ターン短縮され、『鉄花の舞』状態の持続時間が1ターン延長、または『花火流星』が2回発動するまで持続する。『鉄花の舞』状態中、ペルソナスキルが強化される。\n『新年の祝福』：『花火流星』がさらに強化され、CRT倍率が40％増加する。\n『爆竹の歌』：『花火流星』がさらに強化され、ターゲットに追加で『歳月の炎』1スタックを付与する。",
   "r2": "灯籠の喜び",

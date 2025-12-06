@@ -545,7 +545,7 @@ h2 {
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 4px;
 }
 
 .skill-step {

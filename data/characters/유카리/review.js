@@ -28,12 +28,30 @@ review_jp: `
 
 この**追加回復は「YUKARIの行動開始前」までに1回のみ発動**します。
 `,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["테우르기아 게이지를 채워준다.", "높은 치유량을 보유하고 있다.", "아군의 상태이상을 해제할 수 있다."],
+        pros_en: [
+            "Fills Theurgia gauge.",
+            "Has strong healing output.",
+            "Can cleanse allies' status ailments."
+          ]
+          ,
+        pros_jp: [
+            "テウルギアゲージを増加させる。",
+            "高い回復量を持っている。",
+            "味方の状態異常を解除できる。"
+          ]
+          ,
+        cons: ["아군이 S.E.E.S 멤버가 아닐 경우 효율이 급감한다.", "버퍼에 비하면 버프 효과는 부족하다."],
+        cons_en: [
+            "Shows significantly reduced performance if the ally is not a S.E.E.S member.",
+            "Provides weaker buff effects compared to dedicated buffers."
+          ]
+          ,
+        cons_jp: [
+            "味方がS.E.E.Sメンバーでない場合、効率が大きく低下する。",
+            "純粋なバッファーと比べるとバフ効果が物足りない。"
+          ]
+          ,
     };
 })();
 

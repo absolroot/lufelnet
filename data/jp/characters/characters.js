@@ -4,7 +4,7 @@ window.characterList = window.characterList || {
         "모토하", "모토하·여름", "몽타뉴", "미나미", "슌",
         "세이지", "아야카", "안",  "야오링", 
         "원더", "유스케", "유키미", "YUI",
-        "키요시", "키라", "치즈코", "토모코", "토모코·여름", "토시야",
+        "키요시", "키라", "치즈코", "토모코", "토모코·여름", "토시야", "하루",
         "하루나"
         // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
     ],
@@ -22,6 +22,9 @@ Object.assign(window.characterData, {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "하루": {
+        "release_order": 15
     },
     "마사키": {
         "release_order": 14

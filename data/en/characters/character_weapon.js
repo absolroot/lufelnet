@@ -571,22 +571,8 @@ const enCharacterWeaponData = {
     },
     "하루": {
         "name": "Haru Okumura",
-        "weapon4-1": {
-            "name": "Gilgamesh Axe",
-            "health": 1712,
-            "attack": 607,
-            "defense": 341,
-            "skill_name": "Ambush Advantage",
-            "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For every enemy under a debuff or an ailment, ATK and EHR are increased by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%, up to 9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%."
-        },
-        "weapon5-1": {
-            "name": "Holy Paean",
-            "health": 2140,
-            "attack": 759,
-            "defense": 427,
-            "skill_name": "Precisely Honed",
-            "description": "EHR is increased by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. When possessing [Sight], increase Psy DMG Dealt by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Each time after obtaining [Customization], increase ATK by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."
-        }
+        "weapon4-1": {"name":"Gilgamesh Axe","health":1712.28,"attack":607.79,"defense":341.44,"skill_name":"","description":"Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nIncrease Attack and ailment accuracy by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for each foe with a debuff (up to 9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%)."},
+        "weapon5-1": {"name":"Last Quarter","health":2140.53,"attack":759.73,"defense":427.25,"skill_name":"","description":"Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%.\nWhen dealing Psychokinesis damage, if Haru has Target Audience, increase Psychokinesis damage by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Also, for each Thoughtful Round gained, increase Attack by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."}
     },
     "후타바": {
         "name": "Futaba Sakura",

@@ -59,6 +59,7 @@ Object.assign(window.characterData, {
         "limit": true,
         "role": "",
         "tag": "",
+        "persona5": true,
         "color": "#2958c5",
         "main_revelation": [""],
         "sub_revelation": [""],
@@ -532,9 +533,9 @@ Object.assign(window.characterData, {
         "sub_revel2": ["공격력", "대미지 보너스"],
         "sub_revel3": ["크리티컬 효과"],
         "sub_revel4": ["공격력"],
-        "sub_option1": ["크리티컬 효과", "관통"],
+        "sub_option1": ["크리티컬 효과"],
         "sub_option2": ["대미지 보너스", "공격력"],
-        "sub_option3": ["크리티컬 확률"],
+        "sub_option3": ["크리티컬 확률", "관통"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -582,8 +583,8 @@ Object.assign(window.characterData, {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
-        "sub_option2": ["공격력", "대미지 보너스"],
-        "sub_option3": ["관통"],
+        "sub_option2": ["관통", "공격력", "대미지 보너스"],
+        "sub_option3": [""],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -683,8 +684,8 @@ Object.assign(window.characterData, {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
-        "sub_option2": ["공격력", "대미지 보너스"],
-        "sub_option3": ["관통"],
+        "sub_option2": ["공격력", "대미지 보너스", "관통"],
+        "sub_option3": [],
         "minimum_stats": {},
         "battle_plus_stats": "",
         "skill1_lv": "MAX",
@@ -873,8 +874,8 @@ Object.assign(window.characterData, {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option2": ["공격력", "대미지보너스"],
-        "sub_option3": ["관통"],
+        "sub_option2": ["관통", "공격력", "대미지보너스"],
+        "sub_option3": [""],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -1966,8 +1967,8 @@ Object.assign(window.characterData, {
         "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과"],
-        "sub_option2": ["크리티컬 확률"],
-        "sub_option3": ["공격력", "대미지보너스", "관통"],
+        "sub_option2": ["크리티컬 확률", "관통"],
+        "sub_option3": ["공격력", "대미지보너스"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -2251,11 +2252,11 @@ Object.assign(window.characterData, {
         "codename": "VIOLET",
         "skill_item": 3,
         "sub_revel2": ["공격력", "대미지보너스"],
-        "sub_revel3": ["크리티컬 효과"],
+        "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["크리티컬 효과"],
-        "sub_option2": ["크리티컬 확률"],
-        "sub_option3": ["공격력", "대미지보너스", "관통"],
+        "sub_option2": ["관통", "크리티컬 확률"],
+        "sub_option3": ["공격력", "대미지보너스"],
         "minimum_stats": {
             "LV10": false,
             "LV10+5": false,
@@ -2576,12 +2577,13 @@ Object.assign(window.characterData, {
         "name_cn": "奥村春",
         "codename": "NOIR",
         "skill_item": 3,
-        "sub_revel2": ["대미지보너스"],
+        "sub_revel2": ["대미지 보너스"],
         "sub_revel3": ["크리티컬 확률", "효과명중"],
         "sub_revel4": ["공격력"],
         "sub_option1": ["효과명중"],
-        "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option3": ["공격력", "대미지보너스", "관통"],
+        "sub_option2": ["관통", "크리티컬 확률", "크리티컬 효과"],
+        "sub_option3": ["공격력", "대미지보너스"],
+
         "minimum_stats": {
             "LV10": "효과명중 150%",
             "LV10+5": "효과명중 150%",
@@ -2590,6 +2592,7 @@ Object.assign(window.characterData, {
             "LV13": "효과명중 150%",
             "LV13+5": "효과명중 150%"
         },
+
         "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점",
         "skill1_lv": "MAX!",
         "skill2_lv": "8",
@@ -2599,7 +2602,8 @@ Object.assign(window.characterData, {
         "mind_stats1": "공격력 20%",
         "mind_stats2": "크리티컬 효과 24%!",
         "mind_skill1": "S3/HL!",
-        "mind_skill2": "S1/S2"
+        "mind_skill2": "S1/S2",
+        "name_tw": "奧村春"
     },
     "하루나": {
         "limit": false,
@@ -2674,7 +2678,7 @@ Object.assign(window.characterData, {
         "sub_revel4": ["공격력"],
         "sub_option1": ["공격력"],
         "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
-        "sub_option3": ["대미지보너스"],
+        "sub_option3": ["관통", "대미지보너스"],
 
         "minimum_stats": {
             "LV10": "공격력 4600",

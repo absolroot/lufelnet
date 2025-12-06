@@ -21,7 +21,7 @@ window.ritualData["이치고"] = {
 window.enCharacterRitualData["이치고"] = {
   "name": "Ichigo Shikano",
   "r0": "If I Take the Poison of Love",
-  "r0_detail": "When Ichigo uses [Butterfly Beheadment] for the first time, gain 1 [Obsessive Love] stack. When using Highlight, gain 1 [Obsessive Love] stack. Stacks up to 3 times. Gain the following boost effects based on [Obsessive Love] stacks:\n1 stack: For every [Resentment] stack on foes, increase their damage taken by 2.5%;\n2 stacks: Increase critical rate by 15%, Ichigo's Persona skill damage counts as Damage Over Time Effect;\n3 stacks: Increase Damage Over Time Effect by 25%.",
+  "r0_detail": "When Ichigo uses [Butterfly Beheadment] for the first time, gain 1 [Obsessive Love] stack. When using Highlight, gain 1 [Obsessive Love] stack. Stacks up to 3 times. Gain the following boost effects based on [Obsessive Love] stacks:\n1 stack: For every [Resentment] stack on foes, increase their damage taken by 2.5%;\n2 stacks: Increase critical rate by 15%, Ichigo's Persona skill damage counts as Damage Over Time Effect;\n3 stacks: Increase Damage Over Time Effect by 25%.\n\nResentment: For 4 turns, the target takes Curse damage each turn equal to 18% of Ichigo Shikano’s ATK (can stack up to 10 times). When an enemy affected by Resentment dies, it transfers to the enemy with the highest HP (does not transfer to enemies who Null/Drain/Repel Curse).",
   "r1": "If I'm Broken",
   "r1_detail": "Decrease foes' Defense by 3% for each [Resentment] stack; When using a Persona skill, inflict 1 [Resentment] stack on the target more.",
   "r2": "If I Allow Delusions to Run Rampant",
@@ -38,7 +38,7 @@ window.enCharacterRitualData["이치고"] = {
 window.jpCharacterRitualData["이치고"] = {
   "name": "鹿野 イチゴ",
   "r0": "中毒の愛",
-  "r0_detail": "鹿野イチゴが初めて『深紅の蝶』を発動すると、『執着』を1スタック獲得する。HIGHLIGHTを発動するたびに『執着』を1スタック獲得する。『執着』は最大3スタックまで獲得可能で、スタック数に応じて以下の強化効果を得る。\n· 1スタック: 『怨念』1スタックごとに敵が受けるダメージが2.5%増加する。\n· 2スタック: クリティカル率が15%上昇し、自身のペルソナスキルによる全ダメージが持続ダメージとして扱われる。\n· 3スタック: 持続ダメージ効果が25%上昇する。",
+  "r0_detail": "鹿野イチゴが初めて『深紅の蝶』を発動すると、『執着』を1スタック獲得する。HIGHLIGHTを発動するたびに『執着』を1スタック獲得する。『執着』は最大3スタックまで獲得可能で、スタック数に応じて以下の強化効果を得る。\n· 1スタック: 『怨念』1スタックごとに敵が受けるダメージが2.5%増加する。\n· 2スタック: クリティカル率が15%上昇し、自身のペルソナスキルによる全ダメージが持続ダメージとして扱われる。\n· 3スタック: 持続ダメージ効果が25%上昇する。\n\n怨念：4ターンのあいだ、鹿野 苺の攻撃力18%分の呪怨属性ダメージを毎ターン受ける（最大10スタック）。『怨念』を持つ敵が倒れた場合、最もHPが多い敵に移動する（呪怨属性を無効・吸収・反射する敵には移動しない）。",
   "r1": "壊れるなら",
   "r1_detail": "『怨念』1スタックごとに敵の防御力が3%減少し、ペルソナスキルを使用するたびに目標に『怨念』を1スタック付与する。",
   "r2": "堕ちるなら",

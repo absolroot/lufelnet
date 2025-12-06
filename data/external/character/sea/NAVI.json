@@ -18,7 +18,7 @@
           "autoSelect": "Default",
           "cooldown": 0,
           "cost": "",
-          "desc": "After an ally uses a skill, Futaba gains 5% to her Analysis Progress. Also when an ally deals weakness damage with a skill, Resonance or Highlight, Futaba gains 20% more to her Analysis Progress.\nWhen Data Storm is active, increase the party's damage by 10%/15%/20% based on Futaba's level (effect increases at Lv. 1/50/70, respectively); if dealing weakness damage, double this damage increase.",
+          "desc": "After an ally uses a skill, Futaba gains 5% to her Analysis Progress. Also when an ally deals weakness damage with a skill, Resonance or Highlight, Futaba gains 20% more to her Analysis Progress.\nWhen Data Storm is active, increase the party's damage by 10%/15%/20% based on Futaba's level (effect changes at Lv. 1/50/70, respectively); if dealing weakness damage, double this damage increase.",
           "level": "1",
           "name": "Data Scan",
           "nature": null,

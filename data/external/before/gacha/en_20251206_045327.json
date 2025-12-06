@@ -2,6 +2,32 @@
   "data": {
     "thief": [
       {
+        "endTime": "2025-12-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Futaba Sakura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Flawless Hacker",
+        "startTime": "2025-11-06 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2025-12-25 07:59:59",
         "fiveStar": [
           {
@@ -54,59 +80,68 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-25 07:59:59",
+        "endTime": "2025-12-06 10:59:59",
         "fiveStar": [
           {
-            "name": "Haru Okumura",
+            "name": "Futaba Sakura",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Shun Kano",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Leo Kamiyama",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Kotone Montagne",
             "type": "thief"
           }
         ],
-        "name": "Le Rouge et le Noir",
-        "startTime": "2025-12-06 11:30:00",
+        "name": "Flawless Hacker",
+        "startTime": "2025-11-06 11:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Haru Okumura",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Tomoko Noge",
-            "type": "thief"
-          },
-          {
-            "name": "Miyu Sahara",
-            "type": "thief"
-          }
-        ],
-        "name": "Le Rouge et le Noir",
-        "startTime": "2025-12-06 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-12-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Technomage Ultra FS",
+            "type": "weapon",
+            "user": "Futaba"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Cyberdeck Pro",
+            "type": "weapon",
+            "user": "Futaba"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-11-06 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-12-25 07:59:59",
         "fiveStar": [
@@ -140,41 +175,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-11-25 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Last Quarter",
-            "type": "weapon",
-            "user": "Haru"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Shadow Crowns",
-            "type": "weapon",
-            "user": "Tomoko"
-          },
-          {
-            "name": "Gilgamesh Axe",
-            "type": "weapon",
-            "user": "Haru"
-          },
-          {
-            "name": "Submarine Sonar",
-            "type": "weapon",
-            "user": "Miyu"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-12-06 11:30:00",
         "type": "Arms Deals"
       }
     ]

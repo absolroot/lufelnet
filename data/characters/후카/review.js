@@ -97,12 +97,12 @@ review_jp: `
 3. ただし、候補キャラクターの**デバフ状態を参照する能力**は正常に機能する。
    - 例: 桐条 美鶴の『寒霜結』状態の敵が受けるクリティカル効果上昇は維持される。`,
         dump:``,
-        pros: [""],
-        pros_en: [""],
-        pros_jp: [""],
-        cons: [""],
-        cons_en: [""],
-        cons_jp: [""],
+        pros: ["한 명의 아군을 더 편성해 임시로 참전시킬 수 있다.", "아군의 각종 스테이터스를 올려준다."],
+        pros_en: ["Can temporarily add one more ally to the party.", "Can increase allies' various stats."],
+        pros_jp: ["味方に一人を追加できる。", "味方の各種ステータスを上昇させる。"],
+        cons: ["별도의 방어력 감소나 관통 버프가 없다."],
+        cons_en: ["No separate Defense down or Pierce rate buffs."],
+        cons_jp: ["防御力低下や貫通率バフがない。"],
     };
 })();
 

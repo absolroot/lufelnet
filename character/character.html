@@ -1876,9 +1876,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const data = window.recommendParty[characterName];
         document.getElementById('recommended-sections').style.display = 'block';
 
+        // friends 유무 확인 (name이 하나라도 있을 때만 사용)
+        const hasFriends = Array.isArray(data.friends) && data.friends.some(function (f) {
+            return f && typeof f.name === 'string' && f.name.trim().length > 0;
+        });
+
         // 추천 페르소나/무기 표시 여부 결정
         const personaCardEl = document.querySelector('.recommended-persona-card');
         const personaContentEl = document.getElementById('recommended-persona-content');
+        const partyCardEl = document.querySelector('.recommended-party-card');
         const hasWeapon = Array.isArray(data.weapon) && data.weapon.some(function (w) { return typeof w === 'string' && w.trim().length > 0; });
         const hasPersona = Array.isArray(data.persona) && data.persona.some(function (category) {
             return Array.isArray(category.list) && category.list.some(function (p) { return typeof p === 'string' && p.trim().length > 0; });
@@ -1922,8 +1928,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             if (existingNote && existingNote.parentNode) existingNote.parentNode.removeChild(existingNote);
         }
 
+        // friends 라인업 로드 (있을 때만)
+        try { loadFriendsLineup(data.friends, partyCardEl, hasFriends); } catch (e) { console.warn('[SAFE:loadFriendsLineup]', e); }
+
         // 추천 파티 로드
-        loadRecommendedParty(data.party);
+        loadRecommendedParty(data.party, hasFriends);
     }
 
     // 섹션 제목 다국어 지원
@@ -2392,9 +2401,168 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         });
     });
 
-    function loadRecommendedParty(partyData) {
+    function loadFriendsLineup(friendsData, partyCardEl, hasFriends) {
+        try {
+            if (!partyCardEl) return;
+            // 기존 라인업 제거
+            const existing = partyCardEl.querySelector('.friends-lineup');
+            if (existing && existing.parentNode) {
+                existing.parentNode.removeChild(existing);
+            }
+            if (!hasFriends || !Array.isArray(friendsData)) return;
+
+            const lineupSection = document.createElement('div');
+            lineupSection.className = 'friends-lineup';
+
+            const title = document.createElement('h3');
+            title.className = 'friends-title';
+            // 라인업 제목 다국어 처리
+            const lang = getCurrentLanguage();
+            if (lang === 'en') {
+                title.textContent = 'Lineup';
+            } else if (lang === 'jp') {
+                title.textContent = 'ラインナップ';
+            } else {
+                title.textContent = '라인업';
+            }
+            lineupSection.appendChild(title);
+
+            const list = document.createElement('div');
+            list.className = 'friends-list';
+
+            const currentLang = getCurrentLanguage();
+
+            friendsData.forEach(function (friend) {
+                if (!friend || typeof friend.name !== 'string' || !friend.name.trim()) return;
+
+                const item = document.createElement('div');
+                item.className = 'friend-item';
+
+                const imgWrap = document.createElement('div');
+                imgWrap.className = 'friend-image-wrapper';
+
+                const img = document.createElement('img');
+                img.src = `../assets/img/tier/${friend.name}.webp`;
+                img.alt = friend.name;
+                img.onerror = function () { this.style.display = 'none'; };
+                imgWrap.appendChild(img);
+
+                const textWrap = document.createElement('div');
+                textWrap.className = 'friend-text';
+
+                // 이름 + 역할 아이콘 행
+                const nameRow = document.createElement('div');
+                nameRow.className = 'friend-name-row';
+
+                const nameEl = document.createElement('div');
+                nameEl.className = 'friend-name';
+                nameEl.textContent = getLocalizedCharacterName(friend.name);
+                nameRow.appendChild(nameEl);
+
+                // 속성/역할 아이콘
+                try {
+                    const friendChar = (typeof characterData !== 'undefined') ? characterData[friend.name] : null;
+                    if (friendChar) {
+                        // 속성 아이콘
+                        if (friendChar.element) {
+                            const elemIcon = document.createElement('img');
+                            elemIcon.className = 'friend-element-icon';
+                            elemIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${friendChar.element}.png`;
+                            elemIcon.alt = friendChar.element;
+                            elemIcon.loading = 'lazy';
+                            nameRow.appendChild(elemIcon);
+                        }
+                        // 역할(포지션) 아이콘
+                        if (friendChar.position) {
+                            const roleIcon = document.createElement('img');
+                            roleIcon.className = 'friend-role-icon';
+                            roleIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${friendChar.position}.png`;
+                            roleIcon.alt = friendChar.position;
+                            roleIcon.loading = 'lazy';
+                            nameRow.appendChild(roleIcon);
+                        }
+                    }
+                } catch (e) { console.warn('[SAFE:friend-role-icon]', e); }
+
+                const commentEl = document.createElement('div');
+                commentEl.className = 'friend-comment';
+                let commentText = '';
+                if (currentLang === 'en' && friend.comment_en) {
+                    commentText = friend.comment_en;
+                } else if (currentLang === 'jp' && friend.comment_jp) {
+                    commentText = friend.comment_jp;
+                } else if (friend.comment) {
+                    commentText = friend.comment;
+                }
+
+                textWrap.appendChild(nameRow);
+                if (commentText) {
+                    commentEl.textContent = commentText;
+                    textWrap.appendChild(commentEl);
+                }
+
+                // 이미지/이름 클릭 시 캐릭터 페이지로 이동
+                try {
+                    const targetUrl = `character.html?name=${encodeURIComponent(friend.name)}`;
+                    const go = (e) => {
+                        try {
+                            if (e) { e.preventDefault(); }
+                            window.location.href = targetUrl;
+                        } catch (_) { window.location.assign(targetUrl); }
+                    };
+                    imgWrap.style.cursor = 'pointer';
+                    nameEl.style.cursor = 'pointer';
+                    imgWrap.addEventListener('click', go);
+                    nameEl.addEventListener('click', go);
+                } catch (e) { console.warn('[SAFE:friend-click]', e); }
+
+                item.appendChild(imgWrap);
+                item.appendChild(textWrap);
+                list.appendChild(item);
+            });
+
+            if (!list.children.length) return;
+
+            lineupSection.appendChild(list);
+
+            const partyContent = partyCardEl.querySelector('#recommended-party-content');
+            if (partyContent && partyContent.parentNode === partyCardEl) {
+                partyCardEl.insertBefore(lineupSection, partyContent);
+            } else if (partyContent) {
+                partyContent.parentNode.insertBefore(lineupSection, partyContent);
+            } else {
+                partyCardEl.appendChild(lineupSection);
+            }
+        } catch (e) {
+            console.warn('[SAFE:loadFriendsLineup-inner]', e);
+        }
+    }
+
+    function loadRecommendedParty(partyData, hasFriends) {
         const container = document.getElementById('recommended-party-content');
         container.innerHTML = '';
+
+        // friends 여부에 따라 레이아웃 클래스 토글 (PC에서는 항상 2열, 모바일 1열)
+        if (hasFriends) {
+            container.classList.add('party-grid-layout');
+        } else {
+            container.classList.remove('party-grid-layout');
+        }
+
+        // friends가 있을 경우 파티 리스트 위에 '파티' 라벨 추가 (다국어)
+        if (hasFriends) {
+            const partyLabel = document.createElement('h3');
+            partyLabel.className = 'party-label';
+            const lang = getCurrentLanguage();
+            if (lang === 'en') {
+                partyLabel.textContent = 'Parties';
+            } else if (lang === 'jp') {
+                partyLabel.textContent = 'パーティー';
+            } else {
+                partyLabel.textContent = '파티';
+            }
+            container.appendChild(partyLabel);
+        }
 
         partyData.forEach((party, index) => {
             const partySection = document.createElement('div');
@@ -2418,6 +2586,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             const partyList = document.createElement('div');
             partyList.className = 'party-list';
+            // 코멘트가 없는 파티는 멤버 카드가 가로 폭을 꽉 채우도록 별도 레이아웃 클래스 부여
+            if (!commentEl) {
+                partyList.classList.add('no-comment');
+            }
 
             // Process each member asynchronously
             const processMembers = async () => {
@@ -2471,8 +2643,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             partySection.appendChild(partyList);
 
-            // 파티 리스트 아래에 코멘트 추가
-            if (commentEl) {
+            // 파티 리스트 아래에 코멘트 추가 (friends가 없는 경우에만 표시)
+            if (commentEl && !hasFriends) {
                 const commentContainer = document.createElement('div');
                 commentContainer.className = 'comment-container';
                 commentContainer.appendChild(commentEl);
@@ -2584,95 +2756,3 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     </div>
 </div>
 
-
-
-<style>
-    @media screen and (max-width: 1200px) {
-        .post-item {
-            width: calc(100% - 40px);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: left;
-            gap: 0 !important;
-        }
-
-        .tactic-preview-container {
-            margin-left: 16px !important;
-        }
-
-        .post-footer {
-            display: none;
-        }
-    }
-
-    .posts-list {
-        margin-bottom: 20px;
-    }
-
-    .party-images-container {
-        justify-content: right;
-        margin-right: 16px;
-        min-width: 20px;
-    }
-    /* 순위별(1~4)로 점차 어두워지도록 색상 농도 조절 */
-    .priority-badge.rank-1 {
-        color: #ffffff;
-    }
-    .priority-badge.rank-2 {
-        color: #e8e8e8;
-    }
-    .priority-badge.rank-3 {
-        color: #cfcfcf;
-    }
-    .priority-badge.rank-4 {
-        color: #a8a8a8;
-    }
-    /* Pros / Cons */
-    .pros-cons-group {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        margin-top: 24px;
-    }
-    .pros-cons-section {
-        background: rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
-        padding: 20px 16px 12px 16px;
-    }
-    .pros-cons-section h3.pros-cons-title {
-        margin-top: 0;
-        margin-bottom: 8px;
-        font-size: 16px;
-        line-height: 1.2;
-    }
-    .pros-title { color: #3aa0ff !important; font-weight: 700; } /* 파랑: 장점 */
-    .cons-title { color: #ff6b6b !important; font-weight: 700; } /* 빨강: 단점 */
-    .pros-cons-list ul {
-        margin: 0;
-        padding-left: 18px;
-    }
-    .pros-cons-list li {
-        font-size: 14px;
-        color: #cdcdcd;
-        margin: 4px 0;
-        line-height: 1.5;
-    }
-    @media (max-width: 1200px) {
-        .pros-cons-group {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* 추천 조합 레이아웃: PC에서 2열 + 홀수 시 첫 항목 전체 너비 */
-    @media (min-width: 1201px) {
-        #recommended-persona-content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            row-gap: 0px;
-        }
-        #recommended-persona-content > .persona-attribute-section.span-full {
-            grid-column: 1 / -1;
-        }
-    }
-</style>

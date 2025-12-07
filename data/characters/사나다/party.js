@@ -63,5 +63,13 @@ window.recommendParty["사나다"] = {
             "comment_en": "",
             "comment_jp": ""
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

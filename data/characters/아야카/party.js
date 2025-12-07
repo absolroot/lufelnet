@@ -34,5 +34,13 @@ window.recommendParty["아야카"] = {
             "comment_en": "Calculate all DOT stacks through Highlight use.",
             "comment_jp": "HIGHLIGHT使用によりDOTスタックをすべて計算する。"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

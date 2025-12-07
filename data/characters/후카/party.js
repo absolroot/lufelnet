@@ -36,5 +36,13 @@ window.recommendParty["후카"] = {
             "comment_en": "A6 Backup Recommendation: A6 Ichigo, A6 Mio, A6 Minami·Summer",
             "comment_jp": "A6 バックアップ推奨: A6 苺, A6 澪, A6 美波 夏"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

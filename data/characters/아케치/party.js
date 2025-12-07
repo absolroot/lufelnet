@@ -44,5 +44,13 @@ window.recommendParty["아케치"] = {
             "comment_en": "",
             "comment_jp": ""
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

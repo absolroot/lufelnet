@@ -32,5 +32,13 @@ window.recommendParty["J&C"] = {
             "comment_en": "",
             "comment_jp": ""
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

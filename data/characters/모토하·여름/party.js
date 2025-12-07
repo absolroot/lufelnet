@@ -55,5 +55,13 @@ window.recommendParty["모토하·여름"] = {
             "comment_en": "Through the fireworks of MOKO Peach Summer, you can repeatedly provide the heel.",
             "comment_jp": "「MOKO ピーチサマー」の花火を通じて、ヒールを繰り返し提供できる。"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

@@ -16,5 +16,13 @@ window.recommendParty["마사키"] = {
             "comment_en": "Enhances FOX's defense and increases damage.",
             "comment_jp": "FOXの防御力を強化し、ダメージを増加させる。"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

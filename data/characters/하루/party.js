@@ -47,17 +47,6 @@ window.recommendParty["하루"] = {
             "members": [
                 "하루",
                 "토모코·여름",
-                "렌",
-                "후타바"
-            ],
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
-        },
-        {
-            "members": [
-                "하루",
-                "토모코·여름",
                 "아케치",
                 "후타바"
             ],
@@ -86,6 +75,20 @@ window.recommendParty["하루"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        }
+    ],
+    "friends": [
+        {
+            "name": "토모코·여름",
+            "comment": "하루의 효과명중 수치를 올리면서 광역 디버프를 부여한다.",
+            "comment_en": "Increases Haru’s Ailment Accuracy while applying a wide-area debuff.",
+            "comment_jp": "春の状態異常命中を上げつつ、広範囲にデバフを付与する。",
+        },
+        {
+            "name": "후타바",
+            "comment": "하루의 스킬 사이클과 동일한 3턴마다 강력한 디버프를 부여한다.",
+            "comment_en": "Applies a powerful debuff every 3 turns, matching Haru’s skill cycle.",
+            "comment_jp": "春のスキルサイクルと同じく、3ターンごとに強力なデバフを付与する。",
         }
     ]
 };

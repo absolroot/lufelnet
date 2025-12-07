@@ -69,5 +69,13 @@ window.recommendParty["유스케"] = {
             "comment_en": "Utilize CHORD's skill 3 HIGHLIGHT to raise counter rate to 100%",
             "comment_jp": "CHORDのスキル3 HIGHLIGHTを活用して反撃確率を100%にするパーティ"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

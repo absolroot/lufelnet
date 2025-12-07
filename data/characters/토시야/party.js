@@ -36,5 +36,13 @@ window.recommendParty["토시야"] = {
             "comment_en": "Increase the chance of applying Curse by OKYANN, who increases Ailment Accuracy Rate.",
             "comment_jp": "OKYANNを活用して呪怨効果付与確率を上げる。"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

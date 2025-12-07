@@ -1261,6 +1261,7 @@ h2 {
 .persona-attribute-section h3 {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 8px;
+    margin-top: 0px;
     font-size: 1em;
     font-weight: 500;
     padding-bottom: 0px;
@@ -1337,9 +1338,8 @@ h2 {
 .party-section {
     margin-bottom: 20px;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1463,6 +1463,7 @@ h2 {
     text-align: center;
     word-break: keep-all;
     margin-top: 2px;
+    margin-bottom: 0px;
     transition: filter 0.3s ease;
     word-wrap: break-word;
 }
@@ -1818,4 +1819,202 @@ h2 {
     background: rgba(211, 188, 142, 0.15);
     border: 1px solid rgba(211, 188, 142, 0.3);
     font-weight: 600;
+}
+
+/* ---- character.html inline styles migrated ---- */
+@media screen and (max-width: 1200px) {
+    .post-item {
+        width: calc(100% - 40px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        gap: 0 !important;
+    }
+
+    .tactic-preview-container {
+        margin-left: 16px !important;
+    }
+
+    .post-footer {
+        display: none;
+    }
+}
+
+.posts-list {
+    margin-bottom: 20px;
+}
+
+.party-images-container {
+    justify-content: right;
+    margin-right: 16px;
+    min-width: 20px;
+}
+/* 순위별(1~4)로 점차 어두워지도록 색상 농도 조절 */
+.priority-badge.rank-1 {
+    color: #ffffff;
+}
+.priority-badge.rank-2 {
+    color: #e8e8e8;
+}
+.priority-badge.rank-3 {
+    color: #cfcfcf;
+}
+.priority-badge.rank-4 {
+    color: #a8a8a8;
+}
+/* Pros / Cons */
+.pros-cons-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+.pros-cons-section {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 20px 16px 12px 16px;
+}
+.pros-cons-section h3.pros-cons-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.2;
+}
+.pros-title { color: #3aa0ff !important; font-weight: 700; } /* 파랑: 장점 */
+.cons-title { color: #ff6b6b !important; font-weight: 700; } /* 빨강: 단점 */
+.pros-cons-list ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.pros-cons-list li {
+    font-size: 14px;
+    color: #cdcdcd;
+    margin: 4px 0;
+    line-height: 1.5;
+}
+@media (max-width: 1200px) {
+    .pros-cons-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 추천 조합 레이아웃: PC에서 2열 + 홀수 시 첫 항목 전체 너비 */
+@media (min-width: 1201px) {
+    #recommended-persona-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        row-gap: 0px;
+    }
+    #recommended-persona-content > .persona-attribute-section.span-full {
+        grid-column: 1 / -1;
+    }
+}
+
+/* 라인업(friends) 레이아웃: PC 2열, 모바일 1열 */
+.friends-lineup {
+    margin-bottom: 40px;
+}
+.friends-title {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+.friends-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+.friend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+.friend-image-wrapper {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.friend-image-wrapper img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.friend-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.friend-name-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.friend-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 4px;
+}
+.friend-element-icon,
+.friend-role-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    opacity: 1;
+}
+.friend-comment {
+    font-size: 13px;
+    color: #cdcdcd;
+    line-height: 1.4;
+}
+.party-label {
+    margin: 0 0 0px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+@media (min-width: 1201px) {
+    .friends-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* friends가 있는 경우 파티 카드 레이아웃: 모바일 1열, PC 2열 */
+#recommended-party-content.party-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+#recommended-party-content.party-grid-layout .party-label {
+    grid-column: 1 / -1;
+}
+#recommended-party-content.party-grid-layout .party-section {
+    width: calc(100% - 20px);
+}
+/* 파티 리스트 폭을 카드 폭에 맞추기 (기존 min-width: 440px 무시) */
+#recommended-party-content .party-list {
+    min-width: 0;
+    width: 100%;
+}
+/* 코멘트가 없는 파티: 간격은 동일, 카드 가로 폭만 늘리기 (2열 모드에서만) */
+#recommended-party-content.party-grid-layout .party-list.no-comment {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;            /* 기존과 동일한 간격 유지 */
+    justify-content: center;
+}
+#recommended-party-content.party-grid-layout .party-list.no-comment .party-member {
+    width: auto;          /* 기본 80px 폭 사용 */
+    flex: 1 1 0;          /* 행 안에서 가로 공간을 균등하게 나눠 차지 */
+    max-width: 200px;     /* 너무 넓어지지 않도록 상한선 */
+}
+@media (min-width: 1201px) {
+    #recommended-party-content.party-grid-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }

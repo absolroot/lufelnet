@@ -51,5 +51,13 @@ window.recommendParty["유키 마코토"] = {
             "comment_en": "",
             "comment_jp": ""
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

@@ -48,5 +48,13 @@ window.recommendParty["YUI·스텔라"] = {
             "comment_en": "The A6 cycle aligns with Katayama's Down reduction cycle.",
             "comment_jp": "A6サイクルが片山のダウン減少サイクルと連動する。"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

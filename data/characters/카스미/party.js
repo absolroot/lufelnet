@@ -62,5 +62,13 @@ window.recommendParty["카스미"] = {
             "comment_en": "",
             "comment_jp": ""
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

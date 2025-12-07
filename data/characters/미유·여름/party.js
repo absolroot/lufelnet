@@ -42,5 +42,13 @@ window.recommendParty["미유·여름"] = {
             "comment_en": "Riko can recover SP for allies, making it easier to manage Miyu's SP.",
             "comment_jp": "リコはアライアンスのSP回復が可能なため、ミユのSP管理が容易になる。"
         }
+    ],
+    "friends": [
+        {
+            "name": "",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        }
     ]
 };

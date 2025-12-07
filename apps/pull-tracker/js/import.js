@@ -80,8 +80,26 @@
             const text = await file.text();
             const incoming = parseIncoming(text);
             const shaped = ensureTsOrderInPayload(incoming);
-            // mergeWithCache로 기존 로컬 캐시와 병합
-            const merged = (typeof window.mergeWithCache === 'function') ? window.mergeWithCache(shaped) : shaped;
+
+            // 기존 데이터가 있을 경우: 커스텀 다이얼로그로 병합/덮어쓰기 선택
+            let merged;
+            const existing = localStorage.getItem('pull-tracker:merged');
+            if (existing && typeof window.pullTrackerChooseMergeMode === 'function') {
+                const mode = await window.pullTrackerChooseMergeMode('file');
+                if (mode === null) {
+                    // 사용자가 취소한 경우 아무 것도 하지 않음
+                    return;
+                } else if (mode === 'merge' && typeof window.mergeWithCache === 'function') {
+                    merged = window.mergeWithCache(shaped);
+                } else {
+                    merged = shaped;
+                }
+            } else if (existing && typeof window.mergeWithCache === 'function') {
+                // 헬퍼가 없으면 기존 동작(병합) 유지
+                merged = window.mergeWithCache(shaped);
+            } else {
+                merged = shaped;
+            }
             localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
             if (window.renderCardsFromExample) window.renderCardsFromExample(merged);
             // 상태 메시지

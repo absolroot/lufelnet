@@ -21,14 +21,14 @@
             invalidUrl: '유효한 URL을 입력하세요.',
             done: (bytes) => `완료 (응답 바이트: ${bytes})`,
             failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
-            confirmReset: '정말 초기화할까요?\n이 작업은 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.',
+            confirmReset: '정말 초기화할까요?\n이 작업은 이 브라우저에 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.\n※ Google Drive 백업은 영향을 받지 않습니다.',
             loadedDrive: '클라우드(Drive)에서 불러왔습니다.',
             loadedLocal: '로컬 브라우저에서 불러왔습니다.',
             savedDrive: '클라우드(Drive)에 저장되었습니다.',
             savedLocal: '로컬 브라우저에 저장되었습니다.',
             deletedDrive: '클라우드(Drive)에서 삭제했습니다.',
             deleteDriveFailed: '클라우드(Drive) 삭제에 실패했습니다.',
-            allDeleted: '저장된 모든 데이터를 삭제했습니다.',
+            allDeleted: '브라우저에 저장된 데이터를 삭제했습니다.',
             driveForbidden: 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.',
             driveNeedConsent: '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.',
             driveNoData: '드라이브에 저장된 데이터가 없습니다.',
@@ -54,14 +54,14 @@
             invalidUrl: 'Please enter a valid URL.',
             done: (bytes) => `Done (response bytes: ${bytes})`,
             failed: 'Something went wrong. Please try again later.',
-            confirmReset: 'Are you sure you want to reset?\nThis will delete all stored gacha data (including last URL/response).',
+            confirmReset: 'Are you sure you want to reset?\nThis will delete all gacha data stored in this browser (including last URL/response).\n※ Google Drive backups are not affected.',
             loadedDrive: 'Loaded from Drive.',
             loadedLocal: 'Loaded from local cache.',
             savedDrive: 'Saved to Drive.',
             savedLocal: 'Saved locally.',
             deletedDrive: 'Deleted from Drive.',
             deleteDriveFailed: 'Failed to delete from Drive.',
-            allDeleted: 'All saved data has been deleted.',
+            allDeleted: 'All browser-stored data has been deleted.',
             driveForbidden: 'Google Drive access forbidden (403). Please review permissions/settings.',
             driveNeedConsent: 'Drive permission is required. Click Login to grant access.',
             driveNoData: 'No saved data found on Drive.',
@@ -87,14 +87,14 @@
             invalidUrl: '有効なURLを入力してください。',
             done: (bytes) => `完了（応答バイト数: ${bytes}）`,
             failed: 'エラーが発生しました。時間をおいて再度お試しください。',
-            confirmReset: '本当に初期化しますか？\nこの操作により、保存されたガチャデータ(最後のURL/レスポンスを含む)がすべて削除されます。',
+            confirmReset: '本当に初期化しますか？\nこの操作により、このブラウザに保存されたガチャデータ(最後のURL/レスポンスを含む)がすべて削除されます。\n※ Google Drive のバックアップには影響しません。',
             loadedDrive: 'Drive から読み込みました。',
             loadedLocal: 'ローカルから読み込みました。',
             savedDrive: 'Drive に保存しました。',
             savedLocal: 'ローカルに保存しました。',
             deletedDrive: 'Drive から削除しました。',
             deleteDriveFailed: 'Drive の削除に失敗しました。',
-            allDeleted: '保存されたすべてのデータを削除しました。',
+            allDeleted: 'ブラウザに保存されたすべてのデータを削除しました。',
             driveForbidden: 'Google Drive へのアクセスが拒否されました（403）。権限や設定をご確認ください。',
             driveNeedConsent: 'Drive へのアクセス許可が必要です。上部のログインを押して許可してください。',
             driveNoData: 'Drive に保存されたデータがありません。',
@@ -192,10 +192,8 @@
                         const merged = ensureTsOrderInPayload(mergeWithCache(incoming));
                         localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
                         renderCardsFromExample(merged);
-                        const beforeAuthed = __googleAuthed;
-                        await syncMergedToCloud();
-                        if (__googleAuthed) { __dataSource = 'drive'; setStatus(`${t.savedDrive} ${nowStamp()}\n✅ 완료`); }
-                        else { __dataSource = 'local'; setStatus(`${t.savedLocal} ${nowStamp()}\n✅ 완료`); }
+                        __dataSource = 'local';
+                        setStatus(`${t.savedLocal} ${nowStamp()}\n✅ 완료`);
                     } catch(e){ setStatus('예시 적용 실패'); }
                 });
             }
@@ -494,16 +492,9 @@
             window.__pt_allowInteractive = true;
             try {
                 await gapiInit();
-                const resp = await googleSignIn();
-                const cloud = await driveLoadMerged(false);
-                if (cloud && cloud.data) {
-                    __dataSource = 'drive'; setStatus(t.loadedDrive);
-                    // 클라우드에는 이미 병합된 구조가 저장되어 있으므로 추가 병합 없이 그대로 사용
-                    localStorage.setItem('pull-tracker:merged', JSON.stringify(cloud));
-                    renderCardsFromExample(cloud);
-                } else {
-                    setStatus(t.driveNoData);
-                }
+                await googleSignIn();
+                // 로그인만 수행하고, Drive에서의 실제 데이터 불러오기는 사용자가 별도 버튼으로 실행
+                setStatus('');
             } finally {
                 window.__pt_allowInteractive = prev;
             }
@@ -511,21 +502,58 @@
         if (logoutBtn) logoutBtn.onclick = () => { googleSignOut(); };
     }
 
-    // 병합 완료 시 Google Drive 저장
+    // 병합 완료 시 Google Drive 저장 (수동 호출용)
     async function syncMergedToCloud(){
         try {
-            if (!__googleAuthed) return;
+            if (!__googleAuthed) return 'AUTH';
             const ok = await ensureTokenSilent();
-            if (!ok) return;
+            if (!ok) return 'AUTH';
             const s = localStorage.getItem('pull-tracker:merged');
-            if (!s) return;
+            if (!s) return 'EMPTY';
             const merged = JSON.parse(s);
-            await driveSaveMerged(merged, true);
-        } catch(_) {}
+            const res = await driveSaveMerged(merged, true);
+            return !!res;
+        } catch(_) {
+            return false;
+        }
     }
 
-    // expose init for index.html
+    // 수동 Drive 로드용 헬퍼 (drive-sync.js에서 호출)
+    // opts: { interactive: boolean, merge: boolean }
+    async function loadFromCloud(opts){
+        try {
+            const interactive = !!(opts && opts.interactive);
+            const doMerge = !!(opts && opts.merge);
+            if (!__googleAuthed || !__googleToken) return 'AUTH';
+            const cloud = await driveLoadMerged(interactive);
+            if (!cloud || !cloud.data) return 'EMPTY';
+            const fixed = ensureTsOrderInPayload(cloud);
+
+            let finalPayload;
+            const existing = localStorage.getItem('pull-tracker:merged');
+            if (doMerge && existing && typeof mergeWithCache === 'function') {
+                finalPayload = mergeWithCache(fixed);
+            } else {
+                finalPayload = fixed;
+            }
+
+            localStorage.setItem('pull-tracker:merged', JSON.stringify(finalPayload));
+            renderCardsFromExample(finalPayload);
+            setMergedDebug(finalPayload);
+            setHide4Visible(true);
+            return true;
+        } catch(_) {
+            return false;
+        }
+    }
+
+    // expose helpers for other scripts
     window.pullTrackerInitAuth = initAuthBar;
+    try {
+        window.pullTrackerSyncToCloud = syncMergedToCloud;
+        window.pullTrackerLoadFromCloud = loadFromCloud;
+        window.pullTrackerChooseMergeMode = chooseMergeMode;
+    } catch(_) {}
 
     function renderOverview(payload){
         try {
@@ -940,12 +968,7 @@
                 try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
                 renderCardsFromExample(merged);
                 setMergedDebug(merged);
-                // Google Drive 동기화
-                try {
-                    await syncMergedToCloud();
-                    if (__googleAuthed) setStatus(`${t.savedDrive} ${nowStamp()}`);
-                    else setStatus(`${t.savedLocal} ${nowStamp()}`);
-                } catch(_) {}
+                setStatus(`${t.savedLocal} ${nowStamp()}`);
             } catch(_) {
                 // ignore parse error; keep raw text only
             }
@@ -976,14 +999,7 @@
         __dataSource = null;
         // hide4 설정은 사용자 환경 설정이므로 유지
 
-        // Google Drive(AppDataFolder)에도 저장된 병합본 삭제 시도 (무팝업 갱신 후 삭제를 보장)
-        try {
-            if (__googleToken) {
-                await ensureTokenSilent();
-                await driveDeleteMerged(true);
-            }
-        } catch(_) {}
-        // 최종 안내: 모든 저장 데이터 삭제
+        // Drive 데이터는 별도 버튼(Drive 저장/불러오기)로만 조작하며, 초기화 시에는 건드리지 않는다.
         setStatus(`${t.allDeleted} ${nowStamp()}`);
         setHide4Visible(false);
     }
@@ -1376,6 +1392,100 @@
         return dict[lang] || '';
     }
 
+    // 병합 / 덮어쓰기 선택용 간단 다이얼로그
+    async function chooseMergeMode(source){
+        try {
+            return await new Promise((resolve) => {
+                const l = lang;
+                const isFile = source === 'file';
+                const title = (l==='en')
+                    ? (isFile ? 'Import from file' : 'Load from Drive')
+                    : (l==='jp'
+                        ? (isFile ? 'ファイルから読み込み' : 'Drive から読み込み')
+                        : (isFile ? '파일 가져오기' : 'Drive 불러오기'));
+                const msg = (l==='en')
+                    ? 'How do you want to apply the new data?\n\nMerge: Combine with existing records\nOverwrite: Replace current records with new data'
+                    : (l==='jp'
+                        ? '新しいデータをどのように適用しますか？\n\nマージ: 既存の記録と結合\n上書き: 現在の記録を新しいデータで置き換え'
+                        : '새 데이터 적용 방식 선택:\n\n병합: 기존 기록에 새 데이터를 합치기\n덮어쓰기: 현재 기록을 새 데이터로 교체하기');
+                const backdrop = document.createElement('div');
+                backdrop.style.position = 'fixed';
+                backdrop.style.inset = '0';
+                backdrop.style.background = 'rgba(0,0,0,0.45)';
+                backdrop.style.zIndex = '9999';
+                backdrop.style.display = 'flex';
+                backdrop.style.alignItems = 'center';
+                backdrop.style.justifyContent = 'center';
+
+                const box = document.createElement('div');
+                box.style.background = 'rgba(25,25,25,0.98)';
+                box.style.border = '1px solid rgba(255,255,255,0.1)';
+                box.style.borderRadius = '8px';
+                box.style.padding = '16px 18px 14px';
+                box.style.maxWidth = '360px';
+                box.style.width = '100%';
+                box.style.boxShadow = '0 18px 40px rgba(0,0,0,0.6)';
+                box.style.color = '#fff';
+                box.style.fontSize = '13px';
+                box.style.lineHeight = '1.5';
+
+                const h = document.createElement('div');
+                h.textContent = title;
+                h.style.fontWeight = '600';
+                h.style.marginBottom = '8px';
+
+                const p = document.createElement('div');
+                p.textContent = msg;
+                p.style.whiteSpace = 'pre-line';
+                p.style.marginBottom = '12px';
+
+                const btnRow = document.createElement('div');
+                btnRow.style.display = 'flex';
+                btnRow.style.justifyContent = 'flex-end';
+                btnRow.style.gap = '8px';
+
+                const cancelLabel = (l==='en') ? 'Cancel' : (l==='jp' ? 'キャンセル' : '취소');
+                const mergeLabel  = (l==='en') ? 'Merge'  : (l==='jp' ? 'マージ' : '병합');
+                const overwriteLabel = (l==='en') ? 'Overwrite' : (l==='jp' ? '上書き' : '덮어쓰기');
+
+                function close(val){
+                    try { document.body.removeChild(backdrop); } catch(_) {}
+                    resolve(val);
+                }
+
+                const cancelBtn = document.createElement('button');
+                cancelBtn.textContent = cancelLabel;
+                cancelBtn.className = 'url-btn secondary';
+                cancelBtn.onclick = () => close(null);
+
+                const mergeBtn = document.createElement('button');
+                mergeBtn.textContent = mergeLabel;
+                mergeBtn.className = 'url-btn secondary';
+                mergeBtn.onclick = () => close('merge');
+
+                const overwriteBtn = document.createElement('button');
+                overwriteBtn.textContent = overwriteLabel;
+                overwriteBtn.className = 'url-btn primary';
+                overwriteBtn.onclick = () => close('overwrite');
+
+                btnRow.appendChild(cancelBtn);
+                btnRow.appendChild(mergeBtn);
+                btnRow.appendChild(overwriteBtn);
+
+                box.appendChild(h);
+                box.appendChild(p);
+                box.appendChild(btnRow);
+                backdrop.appendChild(box);
+                backdrop.addEventListener('click', (e) => {
+                    if (e.target === backdrop) close(null);
+                });
+                document.body.appendChild(backdrop);
+            });
+        } catch(_) {
+            return null;
+        }
+    }
+
     function pityRuleAvgFor(label) {
         // 규칙: Confirmed(확정)=110, Fortune(운명)=80, Gold(골드)=80, Weapon(무기)=70, Newcomer(뉴커머)=50
         // 4★은 전 타입 10
@@ -1755,45 +1865,27 @@
        const exampleAttr = null;
        const exampleUrl = exampleAttr;
 
-        // 캐릭터 메타 → 무기 데이터 순으로 로드
+        // 캐릭터 메타 → 무기 데이터 순으로 로드 후, 로컬 캐시/마지막 응답만 사용
         (async () => {
             await loadCharacters();
             await loadWeapons();
-            // Google Drive 병합본 우선 로드 (무팝업 토큰 갱신만 시도, 팝업 재인증은 하지 않음)
-            try { await gapiInit(); } catch(_) {}
-            let cloud = null;
             try {
-                cloud = await driveLoadMerged(false);
-                if (cloud && cloud.data) {
-                    __dataSource = 'drive'; setStatus(`${t.loadedDrive} ${nowStamp()}`);
-                    // 유저바가 비로그인 상태라면 저장 이메일로 표시 보정
-                    try {
-                        const email = localStorage.getItem('pull-tracker:google-email')||'';
-                        if (email) renderAuthBarUI({ email });
-                    } catch(_) {}
-                } else {
-                    setStatus(t.noData);
-                    setHide4Visible(false);
-                }
-            } catch(e) {
-                // fetch 예외에서는 status가 없을 수 있으니 응답 본문으로 403 추정
-                setStatus(t.driveForbidden);
-                __needDriveConsent = true;
-            }
-            try {
-                if (cloud && cloud.data) { const fixed=ensureTsOrderInPayload(cloud); localStorage.setItem('pull-tracker:merged', JSON.stringify(fixed)); renderCardsFromExample(fixed); setMergedDebug(fixed); setHide4Visible(true); return; }
-                // if (DEBUG) { setStatus(t.driveNeedConsent); return; }
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) {
                     const json = ensureTsOrderInPayload(JSON.parse(mergedCached));
                     try { console.log('[pull-tracker][merged-local]', json); } catch(_) {}
                     __dataSource = 'local';
-                    if (__needDriveConsent) setStatus(`${t.loadedLocal} ${nowStamp()}\n${t.driveNeedConsent}`);
-                    else setStatus(`${t.loadedLocal} ${nowStamp()}`);
+                    setStatus(`${t.loadedLocal} ${nowStamp()}`);
                     renderCardsFromExample(json); setMergedDebug(json); setHide4Visible(true); return;
                 }
                 const cached = localStorage.getItem('pull-tracker:last-response');
-                if (cached) { const json = parseIncoming(cached); try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}; const m = ensureTsOrderInPayload(mergeWithCache(json)); try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}; renderCardsFromExample(m); setMergedDebug(m); setHide4Visible(true); return; }
+                if (cached) {
+                    const json = parseIncoming(cached);
+                    try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}
+                    const m = ensureTsOrderInPayload(mergeWithCache(json));
+                    try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}
+                    renderCardsFromExample(m); setMergedDebug(m); setHide4Visible(true); return;
+                }
                 setStatus(t.noData);
                 setHide4Visible(false);
             } catch(_) {}

@@ -63,9 +63,11 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
                 </select>
                 <button id="applyExampleBtn" class="url-btn">예시 적용</button>
             </div>
-            <!-- Import / Export Row -->
+            <!-- Drive / Import / Export Row -->
             <div class="url-row" style="gap:8px;">
                 <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
+                    <button id="driveSaveBtn" class="url-btn secondary"></button>
+                    <button id="driveLoadBtn" class="url-btn secondary"></button>
                     <button id="exportBtn" class="url-btn secondary"></button>
                     <button id="importBtn" class="url-btn secondary"></button>
                     <input id="importFile" type="file" accept="application/json" style="display:none;" />
@@ -116,6 +118,7 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/export.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/import.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/pull-tracker.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/drive-sync.js?v={{ site.time | date: '%s' }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 

@@ -710,14 +710,14 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
       // DOM is loaded, initialize initial settings
       document.addEventListener("DOMContentLoaded", async () => {
-
-        // 언어별 캐릭터 데이터 준비 (전역 주입)
-        await ensureCharacterDataLoaded();
-        // 번역 적용
+        // 먼저 UI 텍스트/레이블을 현재 언어에 맞게 번역 (데이터 로딩과 분리)
         translateUI();
         updateToggleUILabels();
         // CSS에서 언어별 스타일 분기를 위해 <html>에 data-lang 설정
         try { document.documentElement.setAttribute('data-lang', getCurrentLanguage()); } catch(_) {}
+
+        // 언어별 캐릭터 데이터 준비 (전역 주입)
+        await ensureCharacterDataLoaded();
 
         // Initialize KR list toggle UI (desktop + mobile)
         (function initKRListToggle(){

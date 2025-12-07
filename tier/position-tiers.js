@@ -836,6 +836,23 @@ const loadCharacterImages = () => {
   });
 };
 
+// 티어 메이커용: 스포일러 토글에 따라 카드 풀만 다시 로드 (티어 행은 건드리지 않음)
+window.reloadPositionTierCharacterPool = async function (useKROverride) {
+  try {
+    // 캐릭터 데이터 다시 로드 (listLangOverride: 'kr' 사용 시 KR 전체 리스트)
+    if (typeof window.loadCharacterDataForTierSource === 'function') {
+      const override = useKROverride ? 'kr' : undefined;
+      await window.loadCharacterDataForTierSource(override);
+    }
+    // 카드 풀만 초기화 후 재구성
+    cardsContainer.innerHTML = '';
+    loadCharacterImages();
+    initDraggables();
+  } catch (e) {
+    console.error('Failed to reload character pool for spoiler toggle:', e);
+  }
+};
+
 // 주어진 캐릭터 이름들이 DOM에 없으면 카드 풀에 보강 생성
 const ensurePoolHasCharacters = (characterNames) => {
   if (!Array.isArray(characterNames) || characterNames.length === 0) return;
@@ -1593,22 +1610,9 @@ window.initPositionTierMaker = () => {
   //console.log('  exportTierList() - Show tier data in console');
 };
 
-// 페이지 로드 시 초기화 시도 (데이터가 없으면 대기)
-const tryInitialize = () => {
-  if (window.characterData && window.characterList) {
-    window.initPositionTierMaker();
-  } else {
-    console.log('Character data not ready, waiting...');
-    setTimeout(tryInitialize, 100);
-  }
-};
-
-// 데이터가 준비되면 초기화 시작
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', tryInitialize);
-} else {
-  tryInitialize();
-}
+// position-tier.html 에서 characterData 로딩 이후
+// 명시적으로 window.initPositionTierMaker()를 호출하므로
+// 여기서는 자동 초기화를 수행하지 않는다.
 
 // Event listeners
 

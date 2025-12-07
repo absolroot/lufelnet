@@ -264,6 +264,13 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     </div>
 
     <!-- Character Pool -->
+    <!-- Spoiler toggle (tier maker 전용, EN/JP에서만 표시) -->
+    <div class="spoiler-toggle-container" id="position-spoiler-container" style="display:none;">
+        <label class="spoiler-toggle-label">
+            <input type="checkbox" id="position-spoiler-toggle" class="spoiler-toggle-checkbox">
+            <span class="spoiler-toggle-text" id="position-spoiler-text">Show Spoilers</span>
+        </label>
+    </div>
     <div class="cards container">
     </div>
 
@@ -322,6 +329,70 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             </div>
         </div>
     </dialog>
+
+    <style>
+        /* 티어 메이커 전용 스포일러 토글 (character 페이지 스타일 재사용) */
+        .spoiler-toggle-container {
+            display: flex;
+            align-items: center;
+            margin: 8px 0 4px 0;
+        }
+
+        .spoiler-toggle-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+
+        .spoiler-toggle-label:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .spoiler-toggle-checkbox {
+            appearance: none;
+            width: 20px !important;
+            height: 20px !important;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            position: relative;
+            transition: all 0.2s ease;
+            background: transparent;
+            background-image: none !important;
+            margin-right: 4px !important;
+        }
+
+        .spoiler-toggle-checkbox:checked {
+            background: #a90505b7;
+            border-color: #a90505b7;
+            background-image: none !important;
+            width: 20px !important;
+            height: 20px !important;
+            margin-right: 4px !important;
+        }
+
+        .spoiler-toggle-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            left: 1px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 0 0 2px;
+        }
+
+        .spoiler-toggle-checkbox:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .spoiler-toggle-text {
+            font-weight: 500;
+        }
+    </style>
 
     <!--
     <div style="height: 24px;"></div>
@@ -651,6 +722,23 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             const krCharacterData = kr.characterData || {};
             const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
 
+            // helper: 주어진 characterList 에 포함된 캐릭터만 남기도록 데이터 필터링
+            const filterCharacterDataByList = (baseData, list) => {
+                if (!baseData || !list) return baseData || {};
+                const allowed = new Set([
+                    ...(Array.isArray(list.mainParty) ? list.mainParty : []),
+                    ...(Array.isArray(list.supportParty) ? list.supportParty : []),
+                ]);
+                // 리스트가 비어있으면 그대로 반환 (KR 전체 등)
+                if (!allowed.size) return baseData;
+                const filtered = {};
+                Object.keys(baseData).forEach(key => {
+                    if (allowed.has(key)) {
+                        filtered[key] = baseData[key];
+                    }
+                });
+                return filtered;
+            };
 
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
             if (currentLang !== 'kr') {
@@ -661,8 +749,15 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
                     const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
 
                     const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
+                    // 기본 머지 데이터
                     window.characterData = mergedData;
+                    // GLB on KR 모드 및 티어 메이커 스포일러 설정에 따라 리스트 선택
                     window.characterList = (listLangOverride === 'kr') ? krCharacterList : langCharacterList;
+
+                    // 언어별 리스트만 사용해야 하는 경우(스포일러 OFF)에는 캐릭터 풀을 해당 리스트로 제한
+                    if (listLangOverride !== 'kr') {
+                        window.characterData = filterCharacterDataByList(window.characterData, window.characterList);
+                    }
                 } catch (e) {
                     window.characterData = krCharacterData;
                     window.characterList = krCharacterList;
@@ -779,6 +874,52 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     let isInitializing = false;
     let isInitialized = false;
 
+    // 티어 메이커용 스포일러 토글 초기화
+    function initPositionSpoilerToggle() {
+        const container = document.getElementById('position-spoiler-container');
+        const checkbox = document.getElementById('position-spoiler-toggle');
+        const label = document.getElementById('position-spoiler-text');
+        if (!container || !checkbox || !label) return;
+
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        // list 파라미터 확인 (티어 메이커 전용)
+        const urlParams = new URLSearchParams(window.location.search);
+        const isListMode = urlParams.get('list') !== 'false';
+
+        // KR 이거나 리스트 모드면 숨김
+        if (currentLang === 'kr' || isListMode) {
+            container.style.display = 'none';
+            return;
+        }
+
+        // 언어별 라벨
+        if (currentLang === 'en') {
+            label.textContent = 'Show Spoilers';
+        } else if (currentLang === 'jp') {
+            label.textContent = 'スポイラー表示';
+        } else {
+            label.textContent = '스포일러 보기';
+        }
+
+        // 기본 상태: 체크 해제 (현재 페이지 세션에서만 유지)
+        checkbox.checked = false;
+
+        // 토글 표시
+        container.style.display = 'flex';
+
+        // 변경 시 현재 세션에서만 스포일러 상태 반영 (페이지 리로드 없음)
+        checkbox.addEventListener('change', function () {
+            const useKR = this.checked;
+            // 전역 플래그 (필요 시 다른 스크립트에서도 참고 가능)
+            try { window.positionTierSpoiler = useKR; } catch (_) { }
+            // 카드 풀만 다시 로드 (티어 행은 유지)
+            if (typeof window.reloadPositionTierCharacterPool === 'function') {
+                window.reloadPositionTierCharacterPool(useKR);
+            }
+        });
+    }
+
     async function initializePageContent() {
         // 중복 실행 방지
         if (isInitializing || isInitialized) {
@@ -788,7 +929,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
         isInitializing = true;
 
-        // 캐릭터 데이터 로딩
+        // 캐릭터 데이터 로딩 (기본은 언어별 리스트 기준; 스포일러 토글은 런타임에 풀만 다시 로드)
         const dataLoaded = await loadCharacterData();
         if (!dataLoaded || typeof window.characterData === 'undefined') {
             console.error('characterData is not loaded');
@@ -829,6 +970,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             if (hasLangParam) {
                 // 언어 파라미터가 있으면 바로 콘텐츠 로드
                 await updateLanguageContent();
+                initPositionSpoilerToggle();
                 await initializePageContent();
             } else {
                 // 언어 파라미터가 없으면 기본 한국어로 설정
@@ -837,10 +979,12 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
                 window.history.replaceState({}, '', currentUrl);
 
                 await updateLanguageContent();
+                initPositionSpoilerToggle();
                 await initializePageContent();
             }
         } else {
             await updateLanguageContent();
+            initPositionSpoilerToggle();
             await initializePageContent();
         }
 

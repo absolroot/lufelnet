@@ -496,9 +496,28 @@ function openPortal(type, inputEl, ctx = {}) {
   const currentLang = getCurrentLanguage();
   search.placeholder = currentLang === 'jp' ? '検索' : (currentLang === 'en' ? 'Search' : '검색');
   search.value = '';
-  renderPortalList('');
-  // 패널 내부 검색창에만 포커스 이동 (메인 입력은 readonly 유지)
-  setTimeout(() => search.focus(), 0);
+  // 캐릭터/계시 목록은 데이터 로딩 후 렌더링해야 EN/JP에서 한글 이름이 먼저 보이는 현상을 방지할 수 있음
+  if (type === 'character') {
+    (async () => {
+      try {
+        // 전역 캐릭터 데이터(merge된 characterData/characterList) 보장
+        if (typeof ensureCharacterDataLoaded === 'function') {
+          await ensureCharacterDataLoaded();
+        }
+        // 언어별 characterList / 계시 매핑 준비 (window.languageData[lang].characterList 등)
+        if (typeof setupTranslations === 'function') {
+          await setupTranslations();
+        }
+      } catch (_) { /* 로딩 실패 시에도 KR 폴백으로 동작 */ }
+      renderPortalList('');
+      // 패널 내부 검색창에만 포커스 이동 (메인 입력은 readonly 유지)
+      setTimeout(() => search.focus(), 0);
+    })();
+  } else {
+    renderPortalList('');
+    // 패널 내부 검색창에만 포커스 이동 (메인 입력은 readonly 유지)
+    setTimeout(() => search.focus(), 0);
+  }
 }
 
 // 전역 접근을 위해 노출 (setparty.js, index.html 등에서 사용)

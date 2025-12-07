@@ -722,6 +722,36 @@
     dailyRenderCache = { labels, values, padL, padR, padT, padB, width, height };
   }
 
+  // --- Weapon data loader: /data/characters/<캐릭터>/weapon.js 에서만 참조 ---
+  let __weaponAllPromise = null;
+  function ensureWeaponsLoaded(){
+    if (__weaponAllPromise) return __weaponAllPromise;
+    __weaponAllPromise = (async () => {
+      try {
+        window.WeaponData = window.WeaponData || {};
+        window.enCharacterWeaponData = window.enCharacterWeaponData || {};
+        window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+        const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+        const ver = (typeof window.APP_VERSION !== 'undefined') ? window.APP_VERSION : Date.now();
+        const chars = (typeof characterData !== 'undefined' && characterData)
+          ? Object.keys(characterData)
+          : (window.characterData ? Object.keys(window.characterData) : []);
+        if (!chars.length) return;
+        const tasks = chars.map((name) => new Promise((res) => {
+          try {
+            const s = document.createElement('script');
+            s.src = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
+            s.onload = () => res();
+            s.onerror = () => res();
+            document.head.appendChild(s);
+          } catch(_) { res(); }
+        }));
+        await Promise.all(tasks);
+      } catch(_) {}
+    })();
+    return __weaponAllPromise;
+  }
+
   async function refreshAll(){
     try {
       const region = regionEl ? regionEl.value : 'KR';
@@ -729,6 +759,7 @@
       renderInfoCards(summary);
       drawDailyChart(daily);
       renderCards(summary);
+      await ensureWeaponsLoaded();
       await renderThreeLists(region);
     } catch(err){
       if (cardsWrap) cardsWrap.innerHTML = '<div class="global-card">Load failed</div>';

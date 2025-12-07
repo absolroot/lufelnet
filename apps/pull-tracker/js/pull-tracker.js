@@ -709,37 +709,34 @@
         }*/
     }
 
+    // 무기 데이터는 이제 /data/characters/<캐릭터>/weapon.js 에서만 관리
     let __weaponsLoading = null;
     async function loadWeapons() {
         if (__weaponsLoading) return __weaponsLoading;
-        __weaponsLoading = new Promise((resolve) => {
-            const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-            const tasks = [];
+        __weaponsLoading = (async () => {
             try {
-                if (!getWeaponData()) {
-                    tasks.push(new Promise((res) => {
+                // 글로벌 컨테이너 보장
+                window.WeaponData = window.WeaponData || {};
+                window.enCharacterWeaponData = window.enCharacterWeaponData || {};
+                window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+
+                const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                const ver = (typeof window.APP_VERSION !== 'undefined') ? window.APP_VERSION : Date.now();
+                const chars = Object.keys(getCharData() || {});
+                if (!chars.length) return;
+
+                const tasks = chars.map((name) => new Promise((res) => {
+                    try {
                         const s = document.createElement('script');
-                        s.src = `${base}/data/kr/characters/character_weapon.js?v=${Date.now()}`;
-                        s.onload = () => res(); s.onerror = () => res(); document.head.appendChild(s);
-                    }));
-                }
-                if (!window.enCharacterWeaponData) {
-                    tasks.push(new Promise((res) => {
-                        const s = document.createElement('script');
-                        s.src = `${base}/data/en/characters/character_weapon.js?v=${Date.now()}`;
-                        s.onload = () => res(); s.onerror = () => res(); document.head.appendChild(s);
-                    }));
-                }
-                if (!window.jpCharacterWeaponData) {
-                    tasks.push(new Promise((res) => {
-                        const s = document.createElement('script');
-                        s.src = `${base}/data/jp/characters/character_weapon.js?v=${Date.now()}`;
-                        s.onload = () => res(); s.onerror = () => res(); document.head.appendChild(s);
-                    }));
-                }
-            } catch(_) {}
-            Promise.all(tasks).then(() => resolve());
-        });
+                        s.src = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
+                        s.onload = () => res();
+                        s.onerror = () => res();
+                        document.head.appendChild(s);
+                    } catch (_) { res(); }
+                }));
+                await Promise.all(tasks);
+            } catch (_) {}
+        })();
         return __weaponsLoading;
     }
 
@@ -925,7 +922,8 @@
         setResult('');
         const stop = startLoadingUI();
         try {
-            await Promise.all([loadCharacters(), loadWeapons()]);
+            await loadCharacters();
+            await loadWeapons();
             const text = await fetchRecords(userUrl);
             // if (DEBUG) { try { console.log('[pull-tracker][raw-response]', text.slice(0, 1000)); } catch(_) {} }
             stop();
@@ -1757,7 +1755,10 @@
        const exampleAttr = null;
        const exampleUrl = exampleAttr;
 
-        Promise.all([loadCharacters(), loadWeapons()]).then(async () => {
+        // 캐릭터 메타 → 무기 데이터 순으로 로드
+        (async () => {
+            await loadCharacters();
+            await loadWeapons();
             // Google Drive 병합본 우선 로드 (무팝업 토큰 갱신만 시도, 팝업 재인증은 하지 않음)
             try { await gapiInit(); } catch(_) {}
             let cloud = null;
@@ -1796,7 +1797,7 @@
                 setStatus(t.noData);
                 setHide4Visible(false);
             } catch(_) {}
-        });
+        })();
     } catch(_) {}
 })();
 

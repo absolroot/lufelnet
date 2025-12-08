@@ -47,10 +47,28 @@ window.recommendParty["아케치"] = {
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "렌",
+            "comment": "광역 대미지를 기록하고 스킬3을 통해 공격해 전체 대미지를 향상시킨다.",
+            "comment_en": "Can record and attack with Skill 3 to boost overall damage.",
+            "comment_jp": "Skill 3を使用して、全体ダメージを増加させる。"
+        },
+        {
+            "name": "하루",
+            "comment": "광역 대미지를 기록하고 스킬3을 통해 공격해 전체 대미지를 향상시킨다.",
+            "comment_en": "Can record and attack with Skill 3 to boost overall damage.",
+            "comment_jp": "Skill 3を使用して、全体ダメージを増加させる。"
+        },
+        {
+            "name": "야오링·사자무",
+            "comment": "광역 대미지를 기록하고 스킬3을 통해 공격해 전체 대미지를 향상시킨다.",
+            "comment_en": "Can record and attack with Skill 3 to boost overall damage.",
+            "comment_jp": "Skill 3を使用して、全体ダメージを増加させる。"
+        },
+        {
+            "name": "사나다",
+            "comment": "광역 대미지를 기록하고 스킬3을 통해 공격해 전체 대미지를 향상시킨다.",
+            "comment_en": "Can record and attack with Skill 3 to boost overall damage.",
+            "comment_jp": "Skill 3を使用して、全体ダメージを増加させる。"
         }
     ]
 };

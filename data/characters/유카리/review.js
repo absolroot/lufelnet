@@ -41,14 +41,14 @@ review_jp: `
             "味方の状態異常を解除できる。"
           ]
           ,
-        cons: ["아군이 S.E.E.S 멤버가 아닐 경우 효율이 급감한다.", "버퍼에 비하면 버프 효과는 부족하다."],
+        cons: ["아군이 S.E.E.S. 멤버가 아닐 경우 효율이 급감한다.", "버퍼에 비하면 버프 효과는 부족하다."],
         cons_en: [
-            "Shows significantly reduced performance if the ally is not a S.E.E.S member.",
+            "Shows significantly reduced performance if the ally is not a S.E.E.S. member.",
             "Provides weaker buff effects compared to dedicated buffers."
           ]
           ,
         cons_jp: [
-            "味方がS.E.E.Sメンバーでない場合、効率が大きく低下する。",
+            "味方がS.E.E.S.メンバーでない場合、効率が大きく低下する。",
             "純粋なバッファーと比べるとバフ効果が物足りない。"
           ]
           ,

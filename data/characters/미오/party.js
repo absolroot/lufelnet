@@ -44,9 +44,9 @@ window.recommendParty["미오"] = {
     "friends": [
         {
             "name": "야오링·사자무",
-            "comment": "TECHINCAL 효과를 강화하고 화상 상태인 적이 필요한 메커니즘을 공유한다.",
-            "comment_en": "Enhances TECHNICAL effects and shares the mechanism that requires Burned enemies.",
-            "comment_jp": "TECHNICAL効果を強化し、火傷状態の敵が必要なメカニズムを共有する。"
+            "comment": "미오는 TECHINCAL 효과를 강화하고 화상 상태인 적이 필요한 메커니즘을 공유한다.",
+            "comment_en": "Mio enhances TECHNICAL effects and shares the mechanism that requires Burned enemies.",
+            "comment_jp": "澪はTECHNICAL効果を強化し、火傷状態の敵が必要なメカニズムを共有する。"
         },
         {
             "name": "YUI",

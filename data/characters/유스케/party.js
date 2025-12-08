@@ -28,24 +28,10 @@ window.recommendParty["유스케"] = {
         {
             "members": [
                 "유스케",
-                "미나미",
-                "유키미",
-                "미유"
-            ],
-            "comment": "미나미 의식1의 관통 20%를 활용하기 위한 조합",
-            "comment_en": "Utilize MARIAN's Awareness 1's 20% penetration",
-            "comment_jp": "MARIANの意識1の20%貫通を活用するためのパーティ"
-        },
-        {
-            "members": [
-                "유스케",
                 "야오링",
                 "유키미",
                 "미유"
-            ],
-            "comment": "야오링 광역 디버프를 활용",
-            "comment_en": "Utilize RIN's area debuff",
-            "comment_jp": "RINのエリアデバフを活用するパーティ"
+            ]
         },
         {
             "members": [
@@ -53,10 +39,7 @@ window.recommendParty["유스케"] = {
                 "마사키",
                 "유키미",
                 "유우미"
-            ],
-            "comment": "실드를 빠르게 올려 유스케의 패시브를 활성화",
-            "comment_en": "Increase shield to activate FOX's passive",
-            "comment_jp": "FOXのパッシブを活用するためのパーティ"
+            ]
         },
         {
             "members": [
@@ -64,18 +47,39 @@ window.recommendParty["유스케"] = {
                 "마사키",
                 "아야카",
                 "유우미"
-            ],
-            "comment": "아야카의 스킬3 HIGHLIGHT를 통해 상시 반격 확률 100% 달성",
-            "comment_en": "Utilize CHORD's skill 3 HIGHLIGHT to raise counter rate to 100%",
-            "comment_jp": "CHORDのスキル3 HIGHLIGHTを活用して反撃確率を100%にするパーティ"
+            ]
         }
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "유키미",
+            "comment": "실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
+            "comment_en": "Provides Shield and DEF buffs that align well with Yusuke’s damage mechanism.",
+            "comment_jp": "シールドと防御力上昇バフを付与でき、祐介のダメージメカニズムと噛み合う。",
+        },
+        {
+            "name": "미유",
+            "comment": "실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
+            "comment_en": "Provides Shield and DEF buffs that align well with Yusuke’s damage mechanism.",
+            "comment_jp": "シールドと防御力上昇バフを付与でき、祐介のダメージメカニズムと噛み合う。",
+        },
+        {
+            "name": "야오링",
+            "comment": "광역 방어력 감소 효과를 부여해 전체 대미지를 향상시킨다.",
+            "comment_en": "Applies an AoE DEF reduction to increase overall team damage.",
+            "comment_jp": "広範囲に防御力低下を付与し、全体の与ダメージを引き上げる。",
+        },
+        {
+            "name": "아야카",
+            "comment": "HIGHLIGHT를 발동시켜, 반격 확률을 100%로 올릴 수 있다.",
+            "comment_en": "Activates HIGHLIGHT to raise Counter rate to 100%.",
+            "comment_jp": "HIGHLIGHTを発動し、反撃確率を100%まで引き上げることができる。",
+        },
+        {
+            "name": "마사키",
+            "comment": "높은 수치의 실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
+            "comment_en": "Provides strong Shield and DEF buffs that synergize with Yusuke’s damage mechanism.",
+            "comment_jp": "高数値のシールドと防御力上昇バフを付与でき、祐介のダメージメカニズムとより強く噛み合う。",
         }
     ]
 };

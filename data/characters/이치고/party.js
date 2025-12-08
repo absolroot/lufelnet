@@ -69,9 +69,9 @@ window.recommendParty["이치고"] = {
     "friends": [
         {
             "name": "아야카",
-            "comment": "이치고의 핵심 딜링 메커니즘인 HIGHLIGHT를 자주 사용할 수 있게 한다.",
-            "comment_en": "Allows Ichigo's core damage mechanism, HIGHLIGHT, to be used frequently.",
-            "comment_jp": "苺の核心ダメージメカニズム、HIGHLIGHTを頻繁に使用できるようにする。"
+            "comment": "이치고는 HIGHLIGHT를 최대한 빨리 3회 사용해야 의식0의 효과를 모두 얻을 수 있고, 아야카는 이치고의 HIGHLIGHT를 자주 사용할 수 있게 한다.",
+            "comment_en": "Ichigo needs to use HIGHLIGHT as soon as possible to get all the effects of A0, and Ayaka allows Ichigo's HIGHLIGHT to be used frequently.",
+            "comment_jp": "苺はHIGHLIGHTをできるだけ早く3回使用してA0の効果をすべて得る必要があり、綾香は苺のHIGHLIGHTを頻繁に使用できるようにする。"
         },
         {
             "name": "미나미·여름",

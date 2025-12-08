@@ -5,7 +5,7 @@
 
 4가지의 공연 모드를 자유롭게 전환해 각각의 모드마다 1스킬을 통해 대미지 버프와 공연에 내장된 고유한 상태이상(화상, 빙결, 풍습, 감전) 부여하고, 3스킬의 추가 버프 효과를 변화시킬 수 있다.
 
-**4가지 공연 버프의 특성이 모두 다르기 때문에 범용적으로 다양한 캐릭터와 어울리게 사용 가능하다.**`,
+**4가지 공연 버프의 특성이 모두 다르기 때문에 범용적으로 다양한 캐릭터와 활용이 가능하다.**`,
         review_en: `A member of the Phantom Thieves and a 4★ Bless-type buffer who can be obtained for free by progressing through Chapter 4, where you receive his first character card.
 
 He can freely switch between four different performance modes. Each mode changes the effect of Skill 1—granting a damage buff along with a unique built-in ailment (Burn, Freeze, Wind Shear, or Shock)—and also alters the additional buff provided by Skill 3.

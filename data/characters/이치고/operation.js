@@ -3,15 +3,15 @@ window.operationData["이치고"] = {
     "basic": [
         {
             "label": "의식 0",
-            "value": "1 › 2 › 2 › 3 › 3 › 3"
+            "value": "1 › HL+2 › 2 › 3 › 3 › HL+3"
         },
         {
             "label": "의식 1",
-            "value": "1 › 2 › 1 › 3 › 3 › 3"
+            "value": "1 › HL+2 › 1 › 3 › 3 › HL+3"
         },
         {
             "label": "의식 6",
-            "value": "2+2 › 1+1 › 3 › 3 › 3 › 3+3"
+            "value": "2+2 › HL+1+1 › 3 › 3 › 3+3 › 3+HL+HL"
         }
     ],
     "note": [

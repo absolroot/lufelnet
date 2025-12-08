@@ -12,17 +12,17 @@ window.recommendParty["마사키"] = {
                 "유키미",
                 "유우미"
             ],
-            "comment": "유스케의 방어력을 강화시키고 대미지를 증가시킨다.",
-            "comment_en": "Enhances FOX's defense and increases damage.",
-            "comment_jp": "FOXの防御力を強化し、ダメージを増加させる。"
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
         }
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "유스케",
+            "comment": "유스케의 방어력을 강화시키고 실드를 부여해 대미지를 증가시킨다.",
+            "comment_en": "Enhances FOX's defense and shields, increasing damage.",
+            "comment_jp": "FOXの防御力を強化し、シールドを付与し、ダメージを増加させる。"
         }
     ]
 };

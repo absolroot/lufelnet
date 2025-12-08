@@ -81,10 +81,16 @@ window.recommendParty["키라"] = {
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "아야카",
+            "comment": "핵심 스택인 유혈을 HIGHLIGHT를 발동시켜 5중첩시킬 수 있다.",
+            "comment_en": "Can stack Bleed by using Highlight to activate 5 stacks.",
+            "comment_jp": "HIGHLIGHTを使用して5スタックを積むことができる。" 
+        },
+        {
+            "name": "토모코·여름",
+            "comment": "효과명중 수치와 공격력을 올려주고, 치료 효과를 제공한다.",
+            "comment_en": "Increases Ailment Accuracy and Attack, while also providing Healing Effect.",
+            "comment_jp": "状態異常命中を上げつつ、攻撃力を上げ、回復効果を付与する。",
         }
     ]
 };

@@ -1430,6 +1430,36 @@ h2 {
     pointer-events: none;
 }
 
+/* 라인업용 스포일러 스타일 (파티와 동일한 연출) */
+.friend-item.spoiler {
+    position: relative;
+    cursor: pointer;
+}
+.friend-item.spoiler img,
+.friend-item.spoiler .friend-name,
+.friend-item.spoiler .friend-element-icon,
+.friend-item.spoiler .friend-role-icon,
+.friend-item.spoiler .friend-comment {
+    filter: blur(4px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+.friend-item.spoiler::after {
+    content: 'SPOILER';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 2;
+    pointer-events: none;
+}
+
 /* spoiler style for tactic examples preview characters */
 .character-container.spoiler {
     position: relative;
@@ -1935,6 +1965,7 @@ h2 {
     border-radius: 6px;
 }
 .friend-image-wrapper {
+    position: relative;
     height: 40px;
     display: flex;
     align-items: center;
@@ -1944,6 +1975,15 @@ h2 {
     height: 40px;
     object-fit: cover;
     border-radius: 4px;
+}
+.friend-ritual-icon {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    pointer-events: none;
 }
 .friend-text {
     display: flex;

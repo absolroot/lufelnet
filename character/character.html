@@ -1881,6 +1881,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             return f && typeof f.name === 'string' && f.name.trim().length > 0;
         });
 
+        // 파티 유무 확인 (멤버가 하나라도 있는 경우만 사용)
+        const hasParty = Array.isArray(data.party) && data.party.some(function (p) {
+            return p && Array.isArray(p.members) && p.members.some(function (m) {
+                return typeof m === 'string' && m.trim().length > 0;
+            });
+        });
+
         // 추천 페르소나/무기 표시 여부 결정
         const personaCardEl = document.querySelector('.recommended-persona-card');
         const personaContentEl = document.getElementById('recommended-persona-content');
@@ -1893,8 +1900,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 섹션 제목 다국어 지원
         updateSectionTitles();
 
-        // persona 또는 weapon 둘 중 하나라도 없으면 카드 비표시
-        if (hasWeapon && hasPersona) {
+        // persona 또는 weapon 중 하나라도 있으면 카드 표시
+        if (hasWeapon || hasPersona) {
             if (personaCardEl) personaCardEl.style.display = '';
 
             // 다국어 안내 노트 (비한국어) - 페르소나 카드가 표시될 때만 추가
@@ -1931,8 +1938,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // friends 라인업 로드 (있을 때만)
         try { loadFriendsLineup(data.friends, partyCardEl, hasFriends); } catch (e) { console.warn('[SAFE:loadFriendsLineup]', e); }
 
-        // 추천 파티 로드
-        loadRecommendedParty(data.party, hasFriends);
+        // 추천 파티 로드 (실제 파티 데이터가 있을 때만)
+        if (hasParty) {
+            loadRecommendedParty(data.party, hasFriends);
+        } else {
+            const container = document.getElementById('recommended-party-content');
+            if (container) container.innerHTML = '';
+        }
     }
 
     // 섹션 제목 다국어 지원
@@ -2312,9 +2324,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     }
 
     // Check if a character exists in the current language's character list
+    let spoilerDisabled = false;
+
     async function isCharacterReleased(koreanName) {
         const currentLang = getCurrentLanguage();
         if (currentLang === 'kr') return true; // Always show all characters in Korean
+
+        // 현재 페이지가 미출시 캐릭터면 스포일러 기능 전체 비활성화
+        if (spoilerDisabled) return true;
 
         // If we haven't loaded the character list yet, assume it's not released
         // The actual check will happen when the list is loaded
@@ -2384,19 +2401,27 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     // Load character list when the page loads
     document.addEventListener('DOMContentLoaded', () => {
-        loadCharacterList().then(() => {
+        loadCharacterList().then(async () => {
             // If we have recommendations to show, refresh them after loading the character list
             const recommendations = document.getElementById('recommended-sections');
             const characterName = new URLSearchParams(window.location.search).get('name');
+
+            // 현재 캐릭터가 미출시라면 스포일러 비활성화 플래그 설정
+            try {
+                const currentLang = getCurrentLanguage();
+                if (characterName && currentLang !== 'kr') {
+                    const selfReleased = await isCharacterReleased(characterName);
+                    if (!selfReleased) {
+                        spoilerDisabled = true;
+                    }
+                }
+            } catch (e) { console.warn('[SAFE:check-self-released]', e); }
+
             if (characterName) {
-                // Update ads based on character's persona3, persona5 property
-                //updateAdsForPersona5(characterName);
-                //pushAdUnitsForCharacter(characterName);
                 // Load recommendations if the section is visible
                 if (recommendations && recommendations.style.display !== 'none') {
                     loadRecommendations(characterName);
                 }
-
             }
         });
     });
@@ -2432,6 +2457,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             const currentLang = getCurrentLanguage();
 
+            const currentPageChar = new URLSearchParams(window.location.search).get('name') || '';
+
             friendsData.forEach(function (friend) {
                 if (!friend || typeof friend.name !== 'string' || !friend.name.trim()) return;
 
@@ -2447,6 +2474,17 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 img.onerror = function () { this.style.display = 'none'; };
                 imgWrap.appendChild(img);
 
+                // A 값(의식 레벨)이 있는 경우 하단에 의식 아이콘 표시
+                if (friend.A !== undefined && friend.A !== null && String(friend.A).trim() !== '') {
+                    const ritualIndex = String(friend.A).trim();
+                    const ritualIcon = document.createElement('img');
+                    ritualIcon.className = 'friend-ritual-icon';
+                    ritualIcon.src = `{{ site.baseurl }}/assets/img/character-detail/ritual${ritualIndex}.png`;
+                    ritualIcon.alt = `A${ritualIndex}`;
+                    ritualIcon.loading = 'lazy';
+                    imgWrap.appendChild(ritualIcon);
+                }
+
                 const textWrap = document.createElement('div');
                 textWrap.className = 'friend-text';
 
@@ -2461,7 +2499,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
                 // 속성/역할 아이콘
                 try {
-                    const friendChar = (typeof characterData !== 'undefined') ? characterData[friend.name] : null;
+                    // KR 기준 메타 데이터 우선 사용 (언어별 characterData가 덮어쓴 경우 대비)
+                    const friendChar =
+                        (typeof krNameData !== 'undefined' && krNameData && krNameData[friend.name]) ||
+                        (typeof characterData !== 'undefined' && characterData && characterData[friend.name]) ||
+                        null;
                     if (friendChar) {
                         // 속성 아이콘
                         if (friendChar.element) {
@@ -2501,20 +2543,45 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     textWrap.appendChild(commentEl);
                 }
 
-                // 이미지/이름 클릭 시 캐릭터 페이지로 이동
+                // 카드 클릭 시 캐릭터 페이지로 이동 + 스포일러 처리
                 try {
                     const targetUrl = `character.html?name=${encodeURIComponent(friend.name)}`;
-                    const go = (e) => {
+
+                    const handleClick = (e) => {
                         try {
+                            // 코멘트 영역 클릭은 아무 동작도 하지 않음
+                            if (e && e.target && e.target.closest('.friend-comment')) {
+                                return;
+                            }
+                            // 스포일러가 걸려 있으면 첫 클릭에서만 해제
+                            if (item.classList.contains('spoiler')) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                item.classList.remove('spoiler');
+                                item.dataset.spoilerRevealed = '1';
+                                return;
+                            }
                             if (e) { e.preventDefault(); }
                             window.location.href = targetUrl;
                         } catch (_) { window.location.assign(targetUrl); }
                     };
-                    imgWrap.style.cursor = 'pointer';
-                    nameEl.style.cursor = 'pointer';
-                    imgWrap.addEventListener('click', go);
-                    nameEl.addEventListener('click', go);
+
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', handleClick);
                 } catch (e) { console.warn('[SAFE:friend-click]', e); }
+
+                // 라인업 스포일러 처리 (언어별 출시 여부 기준)
+                try {
+                    if (typeof isCharacterReleased === 'function' && friend.name !== currentPageChar) {
+                        isCharacterReleased(friend.name).then((released) => {
+                            try {
+                                if (!released && !item.dataset.spoilerRevealed) {
+                                    item.classList.add('spoiler');
+                                }
+                            } catch (_) { }
+                        }).catch(() => { });
+                    }
+                } catch (e) { console.warn('[SAFE:friend-spoiler]', e); }
 
                 item.appendChild(imgWrap);
                 item.appendChild(textWrap);

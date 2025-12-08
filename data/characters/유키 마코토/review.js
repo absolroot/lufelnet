@@ -10,11 +10,11 @@
 일반적으로 1개의 테우르기아를 지닌 것에 비해 원작의 와일드 속성이 고려돼 2개의 테우르기아 사용이 가능하다.`,
         review_en: `The original protagonist from P3 and serves as a single-target Fire dealer.
 
-Through Skill 1, ally buffs, and Theurgia, he builds stacks, **then consumes all accumulated stacks with Skill 3 to deliver powerful damage.**
+Through Skill 1, ally buffs, and Theurgy, he builds stacks, **then consumes all accumulated stacks with Skill 3 to deliver powerful damage.**
 
 He demonstrates **very high damage even at A0**, and because he has no mandatory party requirements, he fits into a wide range of team compositions.
 
-Unlike most characters who possess only one Theurgia, he has access to two, reflecting the Wild ability from the original game.
+Unlike most characters who possess only one Theurgy, he has access to two, reflecting the Wild ability from the original game.
 `,
         review_jp: `P3のオリジナルキャラクターであり主人公で、火炎単体アタッカーとして活躍する。
 
@@ -39,7 +39,7 @@ Unlike most characters who possess only one Theurgia, he has access to two, refl
           ,
         cons: ["의식6이 아닌 경우 2개의 테우르기아 중 1개만 사용하게 된다."],
         cons_en: [
-            "If not at Awareness 6 (A6), he can use only one of his two Theurgias."
+            "If not at Awareness 6 (A6), he can use only one of his two Theurgies."
           ]
           ,
         cons_jp: [

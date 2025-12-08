@@ -30,7 +30,7 @@ review_jp: `
 `,
         pros: ["테우르기아 게이지를 채워준다.", "높은 치유량을 보유하고 있다.", "아군의 상태이상을 해제할 수 있다."],
         pros_en: [
-            "Fills Theurgia gauge.",
+            "Fills Theurgy gauge.",
             "Has strong healing output.",
             "Can cleanse allies' status ailments."
           ]

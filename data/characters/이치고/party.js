@@ -68,10 +68,16 @@ window.recommendParty["이치고"] = {
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "아야카",
+            "comment": "이치고의 핵심 딜링 메커니즘인 HIGHLIGHT를 자주 사용할 수 있게 한다.",
+            "comment_en": "Allows Ichigo's core damage mechanism, HIGHLIGHT, to be used frequently.",
+            "comment_jp": "苺の核心ダメージメカニズム、HIGHLIGHTを頻繁に使用できるようにする。"
+        },
+        {
+            "name": "미나미·여름",
+            "comment": "미나미는 아이템을 통해 독립 버킷의 지속 대미지 강화를 줄 수 있다.",
+            "comment_en": "Can grant an independent bucket DOT damage boost through item use.",
+            "comment_jp": "アイテム使用によって、独立バケットの持続ダメージ強化効果を付与できる。",
         }
     ]
 };

@@ -51,10 +51,17 @@ window.recommendParty["YUI·스텔라"] = {
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "미나미·여름",
+            "comment": "미나미는 아이템을 통해 독립 버킷의 총공격 대미지 강화 효과를 줄 수 있다.",
+            "comment_en": "Can grant an independent bucket All-Out Attack damage boost through item use.",
+            "comment_jp": "アイテム使用によって、独立バケットの総攻撃ダメージ強化効果を付与できる。",
+        },
+        {
+            "name": "카타야마",
+            "A": 6,
+            "comment": "YUI의 의식6는 턴이 끝날 때마다 공격하면서 다운 수치를 감소시키기 때문에 카타야마의 다운 감소 사이클과 맞물린다.",
+            "comment_en": "YUI’s A6 attacks at the end of each turn and reduces Down, aligning with Katayama’s Down reduction cycle.",
+            "comment_jp": "YUIの意識6はターン終了時に攻撃してダウン値を減少させるため、片山のダウン減少サイクルと噛み合う。",
         }
     ]
 };

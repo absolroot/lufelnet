@@ -32,10 +32,7 @@ window.recommendParty["YUI·스텔라"] = {
                 "미나미·여름",
                 "마유미",
                 "마나카"
-            ],
-            "comment": "물약을 통해 총공격을 강화한다.",
-            "comment_en": "Use the potion effect to boost All-Out Attacks.",
-            "comment_jp": "ポーション効果を活用して総攻撃を強化する。"
+            ]
         },
         {
             "members": [
@@ -43,10 +40,15 @@ window.recommendParty["YUI·스텔라"] = {
                 "미나미·여름",
                 "카타야마",
                 "마나카"
-            ],
-            "comment": "의식6 사이클이 카타야마의 다운 감소 사이클과 맞물린다.",
-            "comment_en": "The A6 cycle aligns with Katayama's Down reduction cycle.",
-            "comment_jp": "A6サイクルが片山のダウン減少サイクルと連動する。"
+            ]
+        },
+        {
+            "members": [
+                "YUI·스텔라",
+                "미나미·여름",
+                "미츠루",
+                "마나카"
+            ]
         }
     ],
     "friends": [
@@ -62,6 +64,12 @@ window.recommendParty["YUI·스텔라"] = {
             "comment": "YUI의 의식6는 턴이 끝날 때마다 공격하면서 다운 수치를 감소시키기 때문에 카타야마의 다운 감소 사이클과 맞물린다.",
             "comment_en": "YUI’s A6 attacks at the end of each turn and reduces Down, aligning with Katayama’s Down reduction cycle.",
             "comment_jp": "YUIの意識6はターン終了時に攻撃してダウン値を減少させるため、片山のダウン減少サイクルと噛み合う。",
+        },
+        {
+            "name": "미츠루",
+            "comment": "미츠루는 높은 수치의 방어력 감소와 추가적인 대미지를 부여할 수 있다.",
+            "comment_en": "Provides high DEF reduction and additional damage.",
+            "comment_jp": "高い防御力低下と追加ダメージを付与できる。",
         }
     ]
 };

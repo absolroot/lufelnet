@@ -2011,6 +2011,7 @@ h2 {
     font-size: 13px;
     color: #cdcdcd;
     line-height: 1.6;
+    cursor: text; /* 클릭 불가 느낌을 주고, 텍스트 드래그는 가능하게 */
 }
 .party-label {
     margin: 0 0 0px;

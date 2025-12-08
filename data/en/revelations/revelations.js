@@ -102,52 +102,53 @@ const enRevelationData = {
         "획득": "Obtain"
     },
     "main": {
+        "Agility": ["Satiety"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
-        "Hope": ["Labor", "Fixation", "Transformation"],
-        "Creation": ["Worry", "Reconcilation"],
-        "Awareness": ["Truth", "Control", "Hindrance"],
-        "Departure": ["Control", "Prosperity", "Hindrance"],
-        "Growth": ["Opulence", "Renewal", "Power"],
-        "Wisdom": ["Oppression", "Pleasure", "Virtue"],
-        "Meditation": ["Opulence", "Courage", "Love"],
-        "Faith": ["Peace", "Love", "Futility"],
-        "Trust": ["Renewal", "Power", "Prosperity"],
-        "Harmony": ["Victory", "Power", "Truth"],
-        "Resolve": ["Virtue", "Labor", "Prudence"],
-        "Acceptance": ["Peace", "Strife", "Love"],
-        "Freedom": ["Success", "Defeat", "Despair"],
-        "Integrity": ["Pleasure", "Labor", "Fixation"],
-        "Agility": ["Satiety"]
+        "Hope": ["Labor", "Fixation", "Transformation"], // 희망
+        "Creation": ["Worry", "Reconcilation"], // 창조 
+        "Integrity": ["Pleasure", "Labor", "Fixation"], // 진정성
+        "Resolve": ["Virtue", "Labor", "Prudence"], // 결심
+        "Awareness": ["Truth", "Control", "Hindrance"], // 깨달음
+        "Departure": ["Control", "Prosperity", "Hindrance"], // 여정
+        "Growth": ["Opulence", "Renewal", "Power"], // 성장
+        "Wisdom": ["Oppression", "Pleasure", "Virtue"], // 지혜
+        "Meditation": ["Opulence", "Courage", "Love"], // 전념
+        "Faith": ["Peace", "Love", "Futility"], // 신념
+        "Trust": ["Renewal", "Power", "Prosperity"], // 신뢰
+        "Harmony": ["Victory", "Power", "Truth"], // 조화
+        "Acceptance": ["Peace", "Strife", "Love"], // 수락
+        "Freedom": ["Success", "Defeat", "Despair"], // 자유
     },
     "sub": {
-        "Sorrow": ["Perseverance"],
-        "Transformation": ["Perseverance", "Hope"],
-        "Prudence": ["Resolve"],
-        "Fixation": ["Integrity", "Hope"],
-        "Futility": ["Faith"],
-        "Despair": ["Freedom"],
-        "Worry": ["Creation"],
-        "Reconcilation": ["Creation"],
-        "Truth": ["Awareness", "Harmony"],
-        "Control": ["Awareness", "Departure"],
-        "Hindrance": ["Awareness", "Departure"],
-        "Prosperity": ["Departure", "Trust"],
-        "Opulence": ["Growth", "Meditation"],
-        "Renewal": ["Growth", "Trust"],
-        "Power": ["Growth", "Trust", "Harmony"],
-        "Oppression": ["Wisdom"],
-        "Pleasure": ["Wisdom", "Integrity"],
-        "Virtue": ["Wisdom", "Resolve"],
-        "Courage": ["Meditation"],
-        "Love": ["Meditation", "Faith", "Acceptance"],
-        "Peace": ["Faith", "Acceptance"],
-        "Victory": ["Harmony"],
-        "Labor": ["Resolve", "Integrity", "Hope"],
-        "Strife": ["Acceptance"],
-        "Success": ["Freedom"],
-        "Defeat": ["Freedom"],
-        "Satiety": ["Agility"],
-        "Obtain": ["Perseverance"]
+        
+        "Satiety": ["Agility"], // 풍족
+        "Obtain": ["Perseverance"], // 획득
+        "Sorrow": ["Perseverance"], // 슬픔
+        "Transformation": ["Perseverance", "Hope"], // 변화
+        "Prudence": ["Resolve"], // 신중
+        "Fixation": ["Integrity", "Hope"], // 고집
+        "Futility": ["Faith"], // 헛수고
+        "Despair": ["Freedom"], // 실망
+        "Success": ["Freedom"], // 개선
+        "Defeat": ["Freedom"], // 좌절
+        "Worry": ["Creation"], // 우려
+        "Reconcilation": ["Creation"], // 화해
+        "Virtue": ["Wisdom", "Resolve"], // 미덕
+        "Oppression": ["Wisdom"], // 억압
+        "Pleasure": ["Wisdom", "Integrity"], // 환희
+        "Labor": ["Resolve", "Integrity", "Hope"], // 직책
+        "Peace": ["Faith", "Acceptance"], // 평화
+        "Hindrance": ["Awareness", "Departure"], // 방해
+        "Control": ["Awareness", "Departure"], // 주권
+        "Renewal": ["Growth", "Trust"], // 변환
+        "Courage": ["Meditation"], // 용맹
+        "Strife": ["Acceptance"], // 분쟁
+        "Love": ["Meditation", "Faith", "Acceptance"], // 사랑
+        "Opulence": ["Growth", "Meditation"], // 화려
+        "Power": ["Growth", "Trust", "Harmony"], // 힘
+        "Victory": ["Harmony"], // 승리
+        "Truth": ["Awareness", "Harmony"], // 진리
+        "Prosperity": ["Departure", "Trust"], // 풍요
     },
     "sub_effects": {
         "Control": { // 주권
@@ -374,7 +375,8 @@ const enRevelationData = {
             // "type": ["미출시"]
         },
         "Agility": {
-            "Satiety": "Increase All-Out Attack DMG by 16%."
+            "Satiety": "Increase All-Out Attack DMG by 16%.",
+            "type": ["미출시"]
         }
 
     }

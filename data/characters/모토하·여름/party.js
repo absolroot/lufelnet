@@ -63,6 +63,5 @@ window.recommendParty["모토하·여름"] = {
             "comment_en": "Provides repeated Healing through Bless effects and Fireworks, preventing Skill 3 from entering cooldown.",
             "comment_jp": "祝福効果と「花火」によって継続的に治癒を供給し、スキル3がクール状態に入らないようにする。",
         }
-
     ]
 };

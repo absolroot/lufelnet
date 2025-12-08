@@ -83,10 +83,22 @@ window.recommendParty["안"] = {
     ],
     "friends": [
         {
-            "name": "",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+            "name": "키요시",
+            "comment": "적에게 화상 효과를 부여하고 받는 화염 대미지를 증가시킨다.",
+            "comment_en": "Inflicts Burn on enemies and increases Fire damage taken.",
+            "comment_jp": "敵に火傷状態を付与し、受ける火炎ダメージを増加させる。"
+        },
+        {
+            "name": "루우나",
+            "comment": "루우나는 광역 방어력 감소와 더불어 적을 화상 상태에 빠뜨리고, 받는 화염 속성 대미지를 증가시킨다.",
+            "comment_en": "Applies an AoE DEF reduction, inflicts Burn, and increases enemies’ Fire damage taken.",
+            "comment_jp": "広範囲に防御力を低下させ、敵を炎上状態にし、受ける火炎ダメージを増加させる。"
+        },
+        {
+            "name": "미오",
+            "comment": "미오는 광역 방어력 감소와 화상 상태인 적이 받는 대미지를 증가시킨다.",
+            "comment_en": "Applies an AoE DEF reduction and increases Fire damage taken by Burned enemies.",
+            "comment_jp": "広範囲に防御力を低下させ、火傷状態の敵が受ける火炎ダメージを増加させる。"
         }
     ]
 };

@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["토모코·여름"] = { name_en: "Seaside Tomoko", name_jp: "朋子・ピーチサマー", codename: "MOKO·Summer",
+    window.characterReview["토모코·여름"] = { name_en: "Seaside Tomoko", name_jp: "朋子・ピーチサマー", codename: "MOKO·Seaside",
         review: `
 아군 딜러에게는 **효과명중**과 공격력을 올려주고, 적은 받는 대미지를 증가시키는 힐러다.
 

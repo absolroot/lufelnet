@@ -42,19 +42,19 @@ window.recommendParty["미나미·여름"] = {
         },
         {
             "name": "YUI·스텔라",
-            "comment": "아이템을 통해 독립 버킷의 총공격 대미지 강화 효과를 줄 수 있다.",
+            "comment": "아이템을 통해 독립 버킷의 총공격 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket All-Out Attack damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの総攻撃ダメージ強化効果を付与できる。",
         },
         {
             "name": "미유·여름",
-            "comment": "아이템을 통해 독립 버킷의 추가 효과 대미지 강화를 줄 수 있다.",
+            "comment": "아이템을 통해 독립 버킷의 추가 효과 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket Resonance damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの意識奏功ダメージ強化効果を付与できる。",
         },
         {
             "name": "이치고",
-            "comment": "아이템을 통해 독립 버킷의 지속 대미지 강화를 줄 수 있다.",
+            "comment": "아이템을 통해 독립 버킷의 지속 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket DOT damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの持続ダメージ強化効果を付与できる。",
         }

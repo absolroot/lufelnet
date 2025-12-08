@@ -54,7 +54,7 @@ window.recommendParty["YUI·스텔라"] = {
     "friends": [
         {
             "name": "미나미·여름",
-            "comment": "미나미는 아이템을 통해 독립 버킷의 총공격 대미지 강화 효과를 줄 수 있다.",
+            "comment": "미나미는 아이템을 통해 독립 버킷의 총공격 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket All-Out Attack damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの総攻撃ダメージ強化効果を付与できる。",
         },

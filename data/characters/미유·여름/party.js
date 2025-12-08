@@ -58,7 +58,7 @@ window.recommendParty["미유·여름"] = {
         },
         {
             "name": "미나미·여름",
-            "comment": "미나미는 아이템을 통해 독립 버킷의 추가 효과 대미지 강화를 줄 수 있다.",
+            "comment": "미나미는 아이템을 통해 독립 버킷의 추가 효과 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket Resonance damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの意識奏功ダメージ強化効果を付与できる。",
         },

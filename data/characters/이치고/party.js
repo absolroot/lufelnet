@@ -75,7 +75,7 @@ window.recommendParty["이치고"] = {
         },
         {
             "name": "미나미·여름",
-            "comment": "미나미는 아이템을 통해 독립 버킷의 지속 대미지 강화를 줄 수 있다.",
+            "comment": "미나미는 아이템을 통해 독립 버킷의 지속 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket DOT damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの持続ダメージ強化効果を付与できる。",
         }

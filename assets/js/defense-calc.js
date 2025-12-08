@@ -8,6 +8,7 @@ class DefenseCalc {
         this.revelationPenetrateInput = document.getElementById('revelationPenetrate');
         this.explanationPowerInput = document.getElementById('explanationPower');
         this.otherReduceInput = document.getElementById('otherReduce');
+        this.windsweptCheckbox = document.getElementById('windsweptCheckbox');
         this.baseDefenseInput = document.getElementById('baseDefenseInput');
         this.defenseCoefInput = document.getElementById('defenseCoefInput');
         this.reduceSecondLine = document.getElementById('reduceSecondLine');
@@ -758,7 +759,11 @@ class DefenseCalc {
         }
 
         // 최종 방어 계수 표기 (새 카드)
-        if (this.finalDefenseCoefValue) this.finalDefenseCoefValue.textContent = `${finalCoef.toFixed(1)}%`;
+        let displayFinalCoef = finalCoef;
+        if (this.windsweptCheckbox && this.windsweptCheckbox.checked) {
+            displayFinalCoef = finalCoef * 0.88;
+        }
+        if (this.finalDefenseCoefValue) this.finalDefenseCoefValue.textContent = `${displayFinalCoef.toFixed(1)}%`;
 
         // 대미지 계산
         const noReduceDamage = 1 - this.calculateDamage(baseDefense, defenseCoef);
@@ -880,6 +885,7 @@ class DefenseCalc {
         this.revelationPenetrateInput.addEventListener('input', () => this.updatePenetrateTotal());
         this.explanationPowerInput.addEventListener('input', () => this.updatePenetrateTotal());
         if (this.otherReduceInput) this.otherReduceInput.addEventListener('input', () => this.updateTotal());
+        if (this.windsweptCheckbox) this.windsweptCheckbox.addEventListener('change', () => this.updateDamageCalculation());
     }
 
     applyOrderUI() {

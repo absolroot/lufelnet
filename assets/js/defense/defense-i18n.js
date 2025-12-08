@@ -91,7 +91,8 @@
                     tooltip_formula: '대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]',
                     base_final_damage: '· 방어력에 의한 최종 대미지 배수:', with_def_reduce: '· 방어력 감소 최종 대미지 배수:',
                     tab_pierce: '관통', tab_defense: '방어력 감소', revelation_penetrate: '계시 관통 합계', explanation_power: '해명의 힘',
-                    th_select: '선택', th_thief: '괴도', th_type: '분류', th_target: '목표', th_name: '이름', th_option: '옵션', th_value: '수치', th_duration: '지속시간', th_note: '비고'
+                    th_select: '선택', th_thief: '괴도', th_type: '분류', th_target: '목표', th_name: '이름', th_option: '옵션', th_value: '수치', th_duration: '지속시간', th_note: '비고',
+                    windswept: '풍습', windswept_tip: '최종 방어력 계수 * 88%. 항상 마지막에 적용됩니다. 따라서 계수 0을 달성하기 위해서는 풍습을 제외하고 남은 수치 만큼 실제 감소가 필요합니다.'
                 },
                 en: {
                     nav_home: 'Home', nav_current: 'Defense Calc', page_title: 'Defense Reduction Calculator',
@@ -103,7 +104,8 @@
                     tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
                     base_final_damage: '· Base final damage mult.:', with_def_reduce: '· With defense reduction mult.:',
                     tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', explanation_power: 'Elucidation Power', other_reduce: 'Other Defense Reduction',
-                    th_select: 'Select', th_thief: 'Thief', th_type: 'Type', th_target: 'Target', th_name: 'Name', th_option: 'Option', th_value: 'Value', th_duration: 'Duration', th_note: 'Note'
+                    th_select: 'Select', th_thief: 'Thief', th_type: 'Type', th_target: 'Target', th_name: 'Name', th_option: 'Option', th_value: 'Value', th_duration: 'Duration', th_note: 'Note',
+                    windswept: 'Windswept', windswept_tip: 'Final Defense Coef. * 88%. Always applied at the very end. Therefore, to reach a final coefficient of 0, you need enough actual reduction from other sources excluding Windswept.'
                 },
                 jp: {
                     nav_home: 'ホーム', nav_current: '防御力計算', page_title: '防御力減少計算機',
@@ -115,7 +117,8 @@
                     tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
                     base_final_damage: '・ 基本 最終ダメージ倍率:', with_def_reduce: '・ 防御力減少あり 最終ダメージ倍率:',
                     tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', explanation_power: '解明の力', other_reduce: 'その他 防御力減少',
-                    th_select: '選択', th_thief: '怪盗', th_type: '分類', th_target: '対象', th_name: '名前', th_option: 'オプション', th_value: '数値', th_duration: '持続時間', th_note: '備考'
+                    th_select: '選択', th_thief: '怪盗', th_type: '分類', th_target: '対象', th_name: '名前', th_option: 'オプション', th_value: '数値', th_duration: '持続時間', th_note: '備考',
+                    windswept: '風襲', windswept_tip: '最終防御係数 * 88%。常に最後に適用されます。そのため、最終係数0を達成するには、風襲を除いた残りの分を実際の減少で満たす必要があります。'
                 }
             };
 
@@ -197,9 +200,13 @@
             const revelationPenetrateLabel = document.getElementById('revelationPenetrateLabel');
             const explanationPowerLabel = document.getElementById('explanationPowerLabel');
             const otherReduceLabel = document.getElementById('otherReduceLabel');
+            const windsweptText = document.getElementById('windsweptText');
+            const windsweptTooltip = document.getElementById('windsweptTooltip');
             if (revelationPenetrateLabel) revelationPenetrateLabel.textContent = t.revelation_penetrate;
             if (explanationPowerLabel) explanationPowerLabel.textContent = t.explanation_power;
             if (otherReduceLabel) otherReduceLabel.textContent = (currentLang==='kr'?'기타 방어력 감소': t.other_reduce);
+            if (windsweptText && t.windswept) windsweptText.textContent = t.windswept;
+            if (windsweptTooltip && t.windswept_tip) windsweptTooltip.setAttribute('data-tooltip', t.windswept_tip);
 
             this.setTextAll('.check-column', t.th_select);
             this.setTextAll('.char-img-column', t.th_thief);
@@ -214,7 +221,7 @@
             // 툴팁 재바인딩
             try {
                 if (typeof bindTooltipElement === 'function') {
-                    ['bossInfoTooltip','penetrateTooltip','defenseReduceTooltip','finalDamageTooltip']
+                    ['bossInfoTooltip','penetrateTooltip','defenseReduceTooltip','finalDamageTooltip','windsweptTooltip']
                         .map(id => document.getElementById(id))
                         .forEach(el => { if (el) bindTooltipElement(el); });
                 }

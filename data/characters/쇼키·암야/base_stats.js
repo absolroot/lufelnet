@@ -7,7 +7,7 @@ window.basicStatsData["쇼키·암야"] = {
     defense: 51,
     crit_rate: 5,
     crit_mult: 150,
-    speed: 0
+    speed: 96
   },
   awake7: {
       attack_per: 29

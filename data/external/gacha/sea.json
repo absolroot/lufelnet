@@ -2,7 +2,7 @@
   "data": {
     "thief": [
       {
-        "endTime": "2025-12-14 09:59:59",
+        "endTime": "2025-12-15 09:59:59",
         "fiveStar": [
           {
             "name": "Futaba Sakura",
@@ -28,7 +28,59 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-14 09:59:59",
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Masaki Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Swords and Roses",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Masaki Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Swords and Roses",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-15 09:59:59",
         "fiveStar": [
           {
             "name": "Futaba Sakura",
@@ -56,7 +108,7 @@
     ],
     "weapon": [
       {
-        "endTime": "2025-12-14 09:59:59",
+        "endTime": "2025-12-15 09:59:59",
         "fiveStar": [
           {
             "name": "Technomage Ultra FS",
@@ -88,6 +140,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-11-14 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Spina Sacramenti",
+            "type": "weapon",
+            "user": "Ashiya"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Spina Caritatis",
+            "type": "weapon",
+            "user": "Ashiya"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-12-03 10:30:00",
         "type": "Arms Deals"
       }
     ]

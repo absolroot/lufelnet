@@ -1,0 +1,214 @@
+{
+  "data": {
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "name": "Kayo Tomiyama",
+    "rating": {
+      "Attack": 2740.0,
+      "Defense": 1900.0,
+      "HP": 7980.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When using a skill, gain Beat stacks. When Beat stacks reach 4 or more, Resonance activates, spending 4 Beat stacks to grant 1 Pulsating Rhythm stack to the party. When allies have Pulsating Rhythm, increase Attack by 10%/15%/20%, Defense by 10%/15%/20% and ailment accuracy by 5%/7.5%/10% based on Tomiyama's level (effect increases at level 1/50/70). Lasts for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
+          "level": "1",
+          "name": "Fever Time",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "At the start of battle, gain 2 Beat stacks, and increase party's ailment accuracy by 35% for 1 turn.",
+          "level": "1",
+          "name": "Finish with a Smile",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "After granting Pulsating Rhythm, 20% chance to gain 1 Beat stack.",
+          "level": "1",
+          "name": "Disco Ball",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill levels of Club Okyann and Intermission by 2.",
+          "level": "1",
+          "name": "Pop and Show It",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When an ally uses a Highlight, 67% chance to gain 1 Beat stack.",
+          "level": "1",
+          "name": "Queen of the Stage",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill level of Retro Dance Number by 2.",
+          "level": "1",
+          "name": "Raise the Roof",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "After activating Pulsating Rhythm, 25% chance to activate Encore, granting 1 additional Pulsating Rhythm.\nEncore will not activate consecutively.",
+          "level": "1",
+          "name": "Hey, DJ!",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": null,
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase party's Attack by 12% of Tomiyama's Attack for 1 turn (up to 4500/4950/5400/5850 of Attack), increase ailment accuracy by 35.0%/38.5%/37.8%/41.3%, and gain 1 Beat stack.\nCooldown Time: 4 ally actions.",
+          "level": "10/10/13/13",
+          "name": "Club Okyann",
+          "nature": null,
+          "tags": [
+            "Buff"
+          ],
+          "target": "All Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Restore party's SP by 22/27/26/31, and grant 3 Beat stacks.\nCooldown Time: 8 ally actions.",
+          "level": "10/10/13/13",
+          "name": "Intermission",
+          "nature": null,
+          "tags": [
+            "Support"
+          ],
+          "target": "All Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase party's damage by 10.0%/11.0%/10.8%/11.8% for 3 turns. Increase damage by 1% for every 225 of Tomiyama's Attack (up to 4500/4950/5400/5850 of Attack).\nAlso increase damage dealt to foes with an elemental ailment by 1.5 times and gain 2 Beat stacks.\nCooldown Time: 8 ally actions.",
+          "level": "10/10/13/13",
+          "name": "Retro Dance Number",
+          "nature": null,
+          "tags": [
+            "Buff"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "For every 4 Beat stacks gained, inflict 1 random elemental ailment on the foe with the highest remaining HP.",
+          "level": "3",
+          "name": "Toe-Tapping",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When an ally inflicts an elemental ailment on a foe, increase that ally's damage by 15% for 2 turns. Also, 21% chance to grant 1 Beat stack.",
+          "level": "3",
+          "name": "Outdated Slang",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "479.97 / 485.57 / 491.17 / 496.77 / 502.37 / 507.97 / 513.57",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

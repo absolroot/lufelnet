@@ -1,0 +1,230 @@
+{
+  "data": {
+    "innate": {
+      "Damage Mult.": "0.16",
+      "Pierce Rate": "0.075"
+    },
+    "name": "鹿野莓",
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "鹿野莓首次释放『红蝶断颈』时可获得1层『贪恋』。自身每次释放HIGHLIGHT时可获得1层『贪恋』。『贪恋』最多可获得3层，根据『贪恋』层数获得如下强化效果：\n1层：每层『怨念』使敌人受到的伤害提升2.5%；\n2层：暴击率提升15%，自身释放人格面具技能造成的伤害均视为持续伤害效果；\n3层：持续伤害效果提升25%。",
+          "level": "1",
+          "name": "如果摄入爱的毒药",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "每层『怨念』使敌人防御降低3%；每次使用人格面具技能时，额外为目标添加1层『怨念』。",
+          "level": "1",
+          "name": "如果坏掉的话",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "进入战斗时，获得1层『贪恋』。『贪恋』叠加上限提升至5层。根据『贪恋』层数额外获得如下强化效果：\n4层：暴击效果提升36%；\n5层：自身首次受到致命伤害时，进入濒死状态并获得4层『疯狂妄想』，濒死状态期间生命值不会低于1点，友方每个回合结束时消耗1层『疯狂妄想』，『疯狂妄想』耗尽后死亡。",
+          "level": "1",
+          "name": "如果任由妄念丛生",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『嘘！行刑时间到』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+          "level": "1",
+          "name": "如果求饶有用",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "每次释放HIGHLIGHT后，角色的攻击力永久提升6%，可叠加5层。",
+          "level": "1",
+          "name": "如果爱意不断累积",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『红蝶断颈』、『血蔷薇之吻』的技能等级提升3级，至多提升至15级。",
+          "level": "1",
+          "name": "如果危险逼近",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『怨念』叠加上限提升至15层。\n『贪恋』达到指定层数时，获得如下效果：\n1层：可以在释放『红蝶断颈』后额外对目标释放1次『红蝶断颈』（每场战斗限1次）；\n2层：可以在释放『血蔷薇之吻』后额外对目标释放1次『血蔷薇之吻』（每场战斗限1次）；\n3层：可以在释放『嘘！行刑时间到』后额外对目标释放1次『嘘！行刑时间到』（每场战斗限1次）；\n4层：可以在自己回合对指定目标释放1次『HIGHLIGHT』（每场战斗限1次，不消耗HIGHLIGHT能量，不影响HIGHLIGHT的冷却时间）。",
+          "level": "1",
+          "name": "如果你发现了另一个我",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on AAAAAA==)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "对1名敌人造成457.1%/503.9%/485.2%/532.0%攻击力的诅咒属性伤害，使『怨念』可触发暴击，持续3回合。立即结算1次目标身上所有类型的持续伤害效果并额外结算2次『怨念』效果。",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Curse",
+        "tags": [
+          null
+        ],
+        "target": "1 Alive Enemy"
+      },
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 1,
+          "cost": "SP 20",
+          "desc": "对1名敌人造成129.0%/142.2%/137.0%/150.2%攻击力的诅咒属性伤害，并对其添加2层『怨念』。当目标当前生命值高于70%时，技能伤害提升200%。若技能击杀了目标，则额外触发一次技能效果（可连续触发）。",
+          "level": "10/10/13/13",
+          "name": "红蝶断颈",
+          "nature": "Curse",
+          "tags": [
+            "主动",
+            "单伤"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "对1名敌人造成92.9%/102.4%/98.6%/108.1%攻击力的诅咒属性伤害，并对其添加4层『怨念』。",
+          "level": "10/10/13/13",
+          "name": "血蔷薇之吻",
+          "nature": "Curse",
+          "tags": [
+            "主动",
+            "单伤"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 22",
+          "desc": "对1名敌人造成221.6%/244.3%/235.2%/257.9%+『怨念』层数*11.7%/12.9%/12.4%/13.6%攻击力的诅咒属性伤害，『怨念』层数达到10层时，额外造成103.3%/113.8%/109.6%/120.2%攻击力的诅咒属性伤害；同时刷新『怨念』的持续时间。",
+          "level": "10/10/13/13",
+          "name": "嘘！行刑时间到",
+          "nature": "Curse",
+          "tags": [
+            "主动",
+            "单伤"
+          ],
+          "target": "1 Alive Enemy"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "每有1层『贪恋』，自身攻击力提升15.0%。",
+          "level": "3",
+          "name": "执念",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "鹿野莓在场时，所有友方的持续伤害效果提升15.0%。",
+          "level": "3",
+          "name": "依恋",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3600.02 / 3664.82 / 3729.62 / 3794.42 / 3859.22 / 3924.02 / 3988.82",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

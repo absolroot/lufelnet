@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Shadowkiller",
+        "quality": 5,
+        "skill": "Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. At the start of battle, increase counterattack damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. After gaining a shield, gain 1 Blade Spirit stack. Increase counterattack damage by 2% per stack. At 6 stacks, increase counterattack damage by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%. This effect is permanent.",
+        "stat": {
+          "attack": 541.75,
+          "defense": 528.55,
+          "hp": 2457.7
+        },
+        "user": "Yusuke"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Jagato",
+        "quality": 4,
+        "skill": "Increase Defense by 18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%. Each time a counterattack is activated, increase Ice damage by 7.4%/9.6%/9.6%/11.8%/11.8%/14.0%/14.0% for 2 turns. Stacks up to 2 times.",
+        "stat": {
+          "attack": 433.75,
+          "defense": 422.82,
+          "hp": 1966.49
+        },
+        "user": "Yusuke"
+      }
+    ],
+    "name": "Yusuke"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,226 @@
+{
+  "data": {
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "name": "Yaoling Li",
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Attack": 3780.0,
+      "Speed": 157.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "On Yaoling's action, gain 1 Memory stack for every 10 points of Speed (up to 18 stacks per turn). When Memory reaches 40 stacks, spend all stacks to gain 1 Meng Po Soup stack.\nWhen using a skill, spend 1 Meng Po Soup stack for a 50% chance to inflict Forget on 1 foe for 1 turn, and enhance effects of Flowers of Naihe and Lion Dance of Oblivion.",
+          "level": "1",
+          "name": "Goddess of Oblivion",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "At the start of battle, gain 1 Meng Po Soup stack.",
+          "level": "1",
+          "name": "Road to Rebirth",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase Attack by 10% for each debuff inflicted on foes for 2 turns. Stacks up to 5 times.",
+          "level": "1",
+          "name": "Soul Reaper",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill levels of Lion Dance of Oblivion and Thief Tactics by 3.",
+          "level": "1",
+          "name": "Beyond the Bend",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Highlight Enhanced: Increase damage taken effect by 20%. Inflict Curse on all foes for 2 turns.",
+          "level": "1",
+          "name": "Training Results",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill levels of Underworld Ferry and Flowers of Naihe by 3.",
+          "level": "1",
+          "name": "Meng Po's Medicine",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When spending Meng Po Soup, increase party's Curse damage by 20% for 1 turn. Also, 60% chance to gain 1 Meng Po Soup stack. This effect won't activate again on the next turn.",
+          "level": "1",
+          "name": "Wisps of Crimson",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "Weak",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "Deal Curse damage to all foes equal to 146.4%/161.4%/155.4%/170.4% of Attack, and increase target's damage taken by 48.8%/53.8%/51.8%/56.8%. 30% chance to inflict Forget on foes for 2 turns.",
+        "level": "10/10/13/13",
+        "name": "Highlight",
+        "nature": "Curse",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Enemy"
+      },
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "Deal Curse damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack. Decrease foes' Defense by 3% for every 10 points of Yaoling's Speed for 2 turns (up to 49.7%/54.8%/53.5%/58.6%). Also gain 4 Memory stacks for each foe attacked.",
+          "level": "10/10/13/13",
+          "name": "Underworld Ferry",
+          "nature": "Curse",
+          "tags": [
+            "Debuff"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 22",
+          "desc": "Deal Curse damage to 1 foe equal to 97.6%/107.6%/103.6%/113.6% of Attack. If foe has a debuff, increase damage by 20%. When spending Meng Po Soup, inflict Forget on the main target for 2 turns.\nIf foe is inflicted with Forget or another spiritual ailment, increase their damage taken by 2% for every 10 points of Yaoling's Speed (up to 32.3%/32.3%/34.3%/34.3%) for 1 turn.",
+          "level": "10/10/13/13",
+          "name": "Flowers of Naihe",
+          "nature": "Curse",
+          "tags": [
+            "Control"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 24",
+          "desc": "Deal Curse damage to all foes equal to 78.1%/86.1%/82.9%/90.9% of Attack, and inflict Red Spider Lily for 2 turns. When spending Meng Po Soup, double Red Spider Lily's damage increase.\nRed Spider Lily: Increase foes' damage taken by 3% for every 10 points of Yaoling's Speed (up to 48.5%/53.5%/52.2%/57.2%). Lasts for 2 turns, or until damage is taken 2 times.",
+          "level": "10/10/13/13",
+          "name": "Lion Dance of Oblivion",
+          "nature": "Curse",
+          "tags": [
+            "Debuff"
+          ],
+          "target": "All Alive Enemy"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase Attack by 1% for every 2 points of Yaoling's Speed (up to 90.0%).",
+          "level": "3",
+          "name": "Kung Fu Mastery",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When attacking a foe with more than 50% HP, increase foe's Curse damage taken by 30.0%.",
+          "level": "3",
+          "name": "Up to Chance",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "All Alive Enemy"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1089.98 / 1109.98 / 1129.18 / 1149.18 / 1168.38 / 1188.38 / 1207.58",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "633.37 / 644.57 / 656.57 / 667.77 / 678.97 / 690.17 / 702.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3180.02 / 3237.62 / 3294.42 / 3352.02 / 3408.82 / 3466.42 / 3523.22",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "124.89 / 124.89 / 124.89 / 124.89 / 124.89 / 124.89 / 124.89"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

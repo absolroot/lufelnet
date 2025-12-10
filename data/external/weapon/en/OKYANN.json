@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Retro Disco Style",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After granting Pulsating Rhythm, 41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0% chance to gain 1 Beat stack. Increase buffs from Pulsating Rhythm by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more.",
+        "stat": {
+          "attack": 693.7,
+          "defense": 422.82,
+          "hp": 2338.77
+        },
+        "user": "Tomiyama"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Emerald Charmer",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After using a support skill, 43.0%/56.0%/56.0%/69.0%/69.0%/82.0%/82.0% chance to gain 1 Beat stack.",
+        "stat": {
+          "attack": 554.96,
+          "defense": 338.09,
+          "hp": 1870.83
+        },
+        "user": "Tomiyama"
+      }
+    ],
+    "name": "Tomiyama"
+  },
+  "msg": "OK",
+  "status": 0
+}

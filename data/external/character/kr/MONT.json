@@ -1,0 +1,230 @@
+{
+  "data": {
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "name": "코토네 몽타뉴",
+    "rating": {
+      "Attack": 2620.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "동료 행동 시 『얼음 결정』 1개를 획득하며, 최대 12개의 『얼음 결정』을 획득할 수 있다. 『얼음 결정』 수량이 10개일 시 자신이 스킬을 사용한 후 『얼음 결정』을 10개 소모해 목표 적에게 공격력 65%의 빙결 속성 추가 효과를 1회 주며, 이번 공격에 반드시 크리티컬이 발동된다. 『피어나는 얼음』, 『매서운 겨울』 사용 후 추가 효과 발동 시, 『서리 표식』이 1중첩 추가된다. 『서리 표식』은 『차가운 칼날』 대미지 증가에 사용할 수 있다.",
+          "level": "1",
+          "name": "칼끝의 댄서",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "턴 종료 시 1턴 동안 공격력 15%의 실드를 획득한다.",
+          "level": "1",
+          "name": "자연스러움",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『피어나는 얼음』, 『매서운 겨울』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+          "level": "1",
+          "name": "약속",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "추가 효과는 공격 목표가 잃은 생명에 따라 스킬 대미지가 증가하며, 최대 50%의 스킬 대미지가 증가한다.",
+          "level": "1",
+          "name": "공중의 나선",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『차가운 칼날』, 『전투 기술』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+          "level": "1",
+          "name": "열정적인 춤",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 스킬 대미지 증가 효과가 최대 60% 증가한다.",
+          "level": "1",
+          "name": "피겨의 스텝",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "전투 시작 시 『얼음 결정』 4개를 획득하고, 『얼음 결정』은 최대 15개까지 획득 가능하다.",
+          "level": "1",
+          "name": "시공간의 법칙",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on AAAAAA==)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "1명의 적에게 공격력 292.8%/322.8%/304.8%/334.8%의 빙결 속성 대미지를 준다. 적의 생명이 낮을수록 받는 대미지가 높아진다. 적의 생명이 20% 미만일 때 최고 30%의 대미지 보너스를 획득한다.",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Ice",
+        "tags": [
+          null
+        ],
+        "target": "1 Alive Enemy"
+      },
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "모든 적에게 공격력 87.1%/96.0%/90.6%/99.5%의 빙결 속성 대미지를 주고, 29.3%/29.3%/30.5%/30.5%의 기본 확률로 적을 동결 상태에 빠뜨린다.",
+          "level": "10/10/13/13",
+          "name": "피어나는 얼음",
+          "nature": "Ice",
+          "tags": [
+            "액티브",
+            "광역피해"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "1명의 적에게 공격력 160.4%/176.8%/166.9%/183.4%의 빙결 속성 대미지를 주고, 『얼음 결정』 4개를 획득한다.",
+          "level": "10/10/13/13",
+          "name": "매서운 겨울",
+          "nature": "Ice",
+          "tags": [
+            "액티브",
+            "단일피해"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 24",
+          "desc": "1명의 적에게 공격력 179.7%/198.1%/187.0%/205.5%의 빙결 속성 대미지를 주고, 이때 『얼음 결정』 10개 또는 『서리 표식』 보유 시 해당 스킬에 추가 대미지가 증가한다. 적의 생명이 낮을수록 대미지 증가가 높아지고 최대 29.3%/29.3%/30.5%/30.5% 증가한다.\n패시브: 『칼끝의 댄서』가 추가 대미지 증가를 획득한다. 적의 생명이 낮을수록 대미지 증가가 높아지고 최대 29.3%/29.3%/30.5%/30.5% 증가한다.",
+          "level": "10/10/13/13",
+          "name": "차가운 칼날",
+          "nature": "Ice",
+          "tags": [
+            "액티브",
+            "단일피해"
+          ],
+          "target": "1 Alive Enemy"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『칼끝의 댄서』 발동 시 100.0%의 기본 확률로 적을 동결 상태에 빠뜨린다.",
+          "level": "3",
+          "name": "무아",
+          "nature": null,
+          "tags": [
+            "잠재력"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "적 처치 시 『얼음 결정』 4개를 획득한다.",
+          "level": "3",
+          "name": "무경",
+          "nature": null,
+          "tags": [
+            "잠재력"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "862.28 / 871.88 / 882.28 / 891.88 / 902.28 / 911.88 / 922.28",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "465.43 / 471.03 / 475.83 / 481.43 / 487.03 / 492.63 / 497.43",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2452.29 / 2480.29 / 2509.09 / 2537.09 / 2565.09 / 2593.89 / 2621.89",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

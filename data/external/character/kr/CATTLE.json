@@ -1,0 +1,228 @@
+{
+  "data": {
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.16"
+    },
+    "name": "루페르",
+    "rating": {
+      "Attack": 3730.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "치료 스킬을 사용하면 목표 동료가 『별의 불꽃』 효과를 획득하며 모든 동료는 『별의 불꽃』 관련 효과를 최대 1개 보유할 수 있다.\n『별의 불꽃I』: 1턴 동안 공격력이 루페르 공격력의 4%(최대 160 공격력)만큼 증가하며 효과 종료 후 『별의 불꽃II』로 승급한다.\n『별의 불꽃II』: 1턴 동안 공격력이 루페르 공격력의 8%(최대 320 공격력)만큼 증가한다.",
+          "level": "1",
+          "name": "뒤바뀐 밤낮",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "전투 시작 시 100%의 기본 확률로 생명이 가장 높은 적을 화상 상태에 빠뜨린다.\n임의의 『별의 불꽃』 상태의 동료가 원소 이상을 줄 경우 효과 명중이 33% 증가한다.",
+          "level": "1",
+          "name": "270° 회전",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『타오르는 불길』, 『희망의 빔』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+          "level": "1",
+          "name": "떨리는 깃",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『별의 불꽃II』이 추가 효과를 획득한다. 해당 상태의 동료가 받는 치료 효과가 10% 증가한다.",
+          "level": "1",
+          "name": "사냥감 출현",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『천사의 연민』, 『전투 기술』 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+          "level": "1",
+          "name": "소리 없는 기습",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT 효과 증가: 1턴 동안 모든 동료가 주는 화염 속성 대미지가 32% 증가한다.",
+          "level": "1",
+          "name": "발톱의 돌격",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『별의 불꽃II』 종료 시 목표에게 『별의 불꽃III』을 부여한다.\n『별의 불꽃III』: 1턴 동안 공격력이 루페르 공격력의 8%만큼 증가하고 화염 대미지는 20% 증가하며, 받는 치료 효과는 10% 증가한다.",
+          "level": "1",
+          "name": "만선",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on HPcur/HP)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "모든 동료가 공격력의 59.7%/59.7%/62.2%/62.2%+1700/2067/1956/2323의 생명을 회복하고, 1턴 동안 모든 동료의 공격력이 33.2%/33.2%/34.5%/34.5% 증가한다.",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Heal",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Ally"
+      },
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 22",
+          "desc": "1명의 적에게 공격력 113.2%/124.8%/117.9%/129.5%의 화염 속성 대미지를 주고, 100%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨리고 적이 받는 치료 효과가 30% 감소한다.",
+          "level": "10/10/13/13",
+          "name": "타오르는 불길",
+          "nature": "Fire",
+          "tags": [
+            "액티브",
+            "단일피해"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "AICondition (Based on HPcur/HP)",
+          "cooldown": 0,
+          "cost": "SP 24",
+          "desc": "동료 1명이 공격력 67.4%/67.4%/70.2%/70.2%+1920/2334/2209/2623의 생명을 회복한다. 목표의 생명이 50% 미만일 경우, 치료 효과가 19%/19%/20%/20% 증가한다.",
+          "level": "10/10/13/13",
+          "name": "희망의 빔",
+          "nature": "Heal",
+          "tags": [
+            "액티브",
+            "단일치료"
+          ],
+          "target": "1 Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 31",
+          "desc": "모든 동료가 공격력의 42.1%/42.1%/43.8%/43.8%+1197/1456/1378/1636의 생명을 회복하고, 메인 목표 동료에 대한 치료 효과가 24%/24%/25%/25% 증가한다.",
+          "level": "10/10/13/13",
+          "name": "천사의 연민",
+          "nature": "Heal",
+          "tags": [
+            "액티브",
+            "광역치료"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "페르소나 스킬을 사용해 적 공격 시, 임의의 동료 3명이 『별의 불꽃』 효과를 획득한다.",
+          "level": "3",
+          "name": "광명",
+          "nature": null,
+          "tags": [
+            "잠재력"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "자신의 최대 생명이 치료 효과로 전환되며, 최대 12000의 생명으로 치료 효과를 42.0% 증가시킬 수 있다.",
+          "level": "3",
+          "name": "희망",
+          "nature": null,
+          "tags": [
+            "잠재력"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "475.39 / 480.99 / 486.59 / 492.19 / 496.99 / 502.59 / 508.19",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2812.32 / 2845.12 / 2877.12 / 2909.92 / 2941.92 / 2974.72 / 3006.72",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

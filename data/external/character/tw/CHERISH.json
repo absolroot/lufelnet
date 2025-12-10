@@ -1,5 +1,6 @@
 {
   "data": {
+    "final_innate": null,
     "innate": {
       "Ailment Resist.": "0.24",
       "Defense": "0.3"
@@ -126,6 +127,7 @@
         ],
         "target": "All Alive Ally"
       },
+      "innate_awake_skill": [],
       "normal_skill": [
         {
           "ascend": "0/5/0/5",

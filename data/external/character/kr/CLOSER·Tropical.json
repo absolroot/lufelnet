@@ -1,5 +1,6 @@
 {
   "data": {
+    "final_innate": null,
     "innate": {
       "Attack": "0.2",
       "Crit Mult.": "0.24"
@@ -127,6 +128,7 @@
         ],
         "target": "All Alive Enemy"
       },
+      "innate_awake_skill": [],
       "normal_skill": [
         {
           "ascend": "0/5/0/5",

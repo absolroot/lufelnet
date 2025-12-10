@@ -1,0 +1,229 @@
+{
+  "data": {
+    "final_innate": null,
+    "innate": {
+      "Ailment Resist.": "0.24",
+      "HP": "0.2"
+    },
+    "name": "宮下美波",
+    "rating": {
+      "HP": 13630.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "進入戰鬥時，獲得1層甘露效果；回合開始時，若有任意怪盜低於70%生命值則自身有100%固定機率獲得1層甘露效果；最多可擁有2層甘露效果。",
+          "level": "1",
+          "name": "護理評估",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "溢出治療時，使怪盜獲得20%的穿透，持續2回合。",
+          "level": "1",
+          "name": "疼痛管理",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『癒合祝福』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+          "level": "1",
+          "name": "護理計畫",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『癒合祝福』額外治療一名同伴，並且生命值低於50%的怪盜受到該技能的治療效果提升20%。",
+          "level": "1",
+          "name": "護理診斷",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『鈴蘭啟示』、『春之恩賜』的技能等級提升3級，至多提升至15級。",
+          "level": "1",
+          "name": "護理干預",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT效果提升：HIGHLIGHT技能添加的恢復生命值效果、最大生命值提升效果持續時間延長1回合。",
+          "level": "1",
+          "name": "術後護理",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "當同伴死亡時立即使其復活並恢復等同於宮下美波40%最大生命值+1200的生命值，每場戰鬥觸發1次。",
+          "level": "1",
+          "name": "心肺復甦",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on HPcur/HP)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "立即為所有友方怪盜恢復等同於宮下美波17.6%/17.6%/18.6%/18.6%最大生命值+1500/1824/1844/2168的生命值、淨化1種負面狀態並使目標獲得等同於宮下美波16.5%最大生命值（最多2326/2326/2697/2697點）的最大生命值提升效果，持續2回合；同時目標行動後恢復等同於宮下美波6.5%/6.5%/6.9%/6.9%最大生命值+556/676/683/803的生命值，持續1回合。",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Heal",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Ally"
+      },
+      "innate_awake_skill": [],
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "對1名敵人造成56.9%/62.7%/60.4%/66.2%最大生命值的祝福屬性傷害，使所有同伴獲得1層祝福效果；同時自身獲得1層甘露效果。",
+          "level": "10/10/13/13",
+          "name": "鈴蘭啟示",
+          "nature": "Bless",
+          "tags": [
+            "主動",
+            "單傷"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 25",
+          "desc": "立即為指定我方單體及另一名當前生命值最低的怪盜恢復等同於宮下美波17.4%/17.4%/18.5%/18.5%最大生命值+1488/1809/1829/2151的生命值並為其淨化2種負面狀態，同時使受治療怪盜獲得1層祝福效果並在其回合開始時為其恢復等同於宮下美波13.9%/13.9%/14.8%/14.8%最大生命值+1190/1447/1463/1720的生命值，持續2回合。 \n自身獲得1層甘露效果。",
+          "level": "10/10/13/13",
+          "name": "癒合祝福",
+          "nature": "Heal",
+          "tags": [
+            "主動",
+            "淨化"
+          ],
+          "target": "1 Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 32",
+          "desc": "消耗所有甘露層數，立即為指定我方單體恢復等同於宮下美波15.8%/15.8%/16.8%/16.8%最大生命值+1347/1638/1656/1947的生命值並以相同的治療效果治療當前生命值最低的怪盜2次，每消耗1層甘露效果額外治療1次。同時每消耗1層甘露效果使除自身外的其他怪盜獲得1層等同於宮下美波7.5%最大生命值（最多1057/1057/1226/1226點）的最大生命值提升效果，持續2回合。",
+          "level": "10/10/13/13",
+          "name": "春之恩賜",
+          "nature": "Heal",
+          "tags": [
+            "主動",
+            "群療"
+          ],
+          "target": "1 Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "受到治療的單位根據自身祝福效果層數獲得傷害提升，提升值為（15.0%+3.0%*祝福效果層數，最多30.0%），持續1回合。",
+          "level": "3",
+          "name": "賜福",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All Alive Ally"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "戰鬥開始時，根據美波最大生命值的10.0%提升所有怪盜的最大生命值（最多1500點）。",
+          "level": "3",
+          "name": "慈心",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "910.0 / 926.0 / 942.8 / 958.8 / 975.6 / 991.6 / 1008.4",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "673.35 / 685.35 / 697.35 / 709.35 / 722.15 / 734.15 / 746.15",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "4140.03 / 4214.43 / 4288.83 / 4363.23 / 4438.43 / 4512.83 / 4587.23",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

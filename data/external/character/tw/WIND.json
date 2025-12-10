@@ -1,0 +1,218 @@
+{
+  "data": {
+    "final_innate": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "name": "多禰村理子",
+    "rating": {
+      "Attack": 3380.0,
+      "HP": 5660.0,
+      "Speed": 161.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "同伴每行動3次，使倒地值最高的敵人暴露『破綻』；\n『破綻』：受到的傷害提升6%，在受到1次攻擊後被擊破；被擊破時，理子獲得2份『情報』，若目標受到的是弱點傷害/普通傷害，則倒地值額外降低1點，每額外降低1點倒地值，理子額外獲得1份『情報』，『情報』最多可疊加8層。",
+          "level": "1",
+          "name": "螢火",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "進入戰鬥時，使倒地值最高的敵人暴露『破綻』。",
+          "level": "1",
+          "name": "薄寒",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『霞影之術』、『梅幻之術』的技能等級提升2級，至多提升至15級。",
+          "level": "1",
+          "name": "素淨",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "釋放『暗香細語』後，立刻使倒地值最高的敵人暴露『破綻』。",
+          "level": "1",
+          "name": "微雪",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『暗香細語』的技能等級提升2級，至多提升至15級。",
+          "level": "1",
+          "name": "清寂",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "任意同伴釋放HIGHLIGHT/降神後，立刻使倒地值最高的敵人暴露『破綻』。",
+          "level": "1",
+          "name": "佳月",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "釋放『暗香細語』後，若多禰村理子速度大於100點，每超過15點，解明怪盜的準備時間減少1次行動，最多可減少4次行動。",
+          "level": "1",
+          "name": "獨秀",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": null,
+      "innate_awake_skill": [],
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "準備時間：4次行動\n使所有敵人防禦力降低10.0%/10.0%/10.8%/10.8%，若理子速度大於100點，每超過10點，防禦力額外降低4.9%，最多額外降低29.4%/32.3%/31.8%/34.7%，持續2回合；同時使主目標暴露『破綻』。",
+          "level": "10/10/13/13",
+          "name": "霞影之術",
+          "nature": null,
+          "tags": [
+            "主動",
+            "減益"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "準備時間：8次行動\n使所有敵人受到的傷害提升10.5%/11.6%/11.3%/12.4%，持續2回合。\n友方怪盜削減倒地值或完成擊倒時，釋放該技能後所需的準備時間減少1次行動；所需的準備時間減至0次行動時，理子立即自動釋放一次該技能。",
+          "level": "10/10/13/13",
+          "name": "梅幻之術",
+          "nature": null,
+          "tags": [
+            "主動",
+            "減益"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "準備時間：8次行動（『情報』數量低於5層時不能使用）\n消耗所有『情報』使所有同伴獲得『傲放』並使主目標恢復12.7%/12.7%/13.7%/13.7%的生命值。『傲放』：造成傷害提升12.6%/13.9%/13.6%/14.9%，消耗的每份『情報』提供額外的傷害提升（若理子速度大於100點，每超過10點，造成傷害提升1.05%，最多提升6.3%/6.9%/6.8%/7.4%），持續1回合。",
+          "level": "10/10/13/13",
+          "name": "暗香細語",
+          "nature": null,
+          "tags": [
+            "主動",
+            "增益"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "進入戰鬥時，若理子速度大於100點，每超過1點使所有怪盜獲得6點生命值、2點攻擊力、2點防禦力的提升，最多可提升360點生命值、120點攻擊力、120點防禦力。",
+          "level": "3",
+          "name": "蝶夢",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All All Allies"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使所有敵人受到的ONEMORE及總攻擊傷害提升60.0%。",
+          "level": "3",
+          "name": "雀歌",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All Alive Enemy"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "780.03 / 788.83 / 797.63 / 807.23 / 816.03 / 824.83 / 833.63",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "455.4 / 461.0 / 465.8 / 471.4 / 476.2 / 481.8 / 486.6",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2609.99 / 2640.39 / 2669.99 / 2700.39 / 2730.79 / 2760.39 / 2790.79",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "119.16 / 119.16 / 119.16 / 119.16 / 119.16 / 119.16 / 119.16"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

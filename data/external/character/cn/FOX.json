@@ -1,0 +1,232 @@
+{
+  "data": {
+    "final_innate": null,
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "name": "喜多川祐介",
+    "rating": {
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43,
+      "Defense": 2320.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "受到技能伤害时，有65%固定概率进行反击，对敌人造成88%防御力的冰冻属性伤害的追加效果。通过技能可以将该效果强化为『墨见龙吟』。",
+          "level": "1",
+          "name": "游龙展布",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "每使用2次『银华残心』额外获得一次『墨见龙吟』的机会，这次额外的反击造成70%伤害。",
+          "level": "1",
+          "name": "流线勾刻",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『银华残心』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+          "level": "1",
+          "name": "色盘调谐",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身生命值不低于70%时，追加效果造成伤害提升35%。",
+          "level": "1",
+          "name": "彩墨泼洒",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『寒气破击』、『拟霜流连斩』的技能等级提升3级，至多提升至15级。",
+          "level": "1",
+          "name": "光影交界",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT效果提升：使用技能后，反击攻击时伤害提升30%，3回合。",
+          "level": "1",
+          "name": "识一见著",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『游龙展布』、『墨见龙吟』效果进化为『痴绝·游龙展布』、『痴绝·墨见龙吟』——\n对敌人造成的反击攻击提升为连续的2次伤害，每次伤害为原本的90%，且反击时获得30%穿透。",
+          "level": "1",
+          "name": "笔落如生",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on AAAAAA==)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "对全体敌人造成178.1%/196.4%/189.1%/207.3%防御力的冰冻属性伤害，并使游龙展布触发概率提升35%，持续3回合。",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Ice",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Enemy"
+      },
+      "innate_awake_skill": [],
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "对所有敌人造成72.1%/79.5%/76.6%/84.0%防御力的冰冻属性伤害，有100%基础概率使主目标敌人陷入冻结状态，效果持续2回合。",
+          "level": "10/10/13/13",
+          "name": "寒气破击",
+          "nature": "Ice",
+          "tags": [
+            "主动",
+            "群伤"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "对随机敌人造成5次92.9%/102.4%/98.6%/108.1%防御力的冰冻属性伤害，优先攻击未受到该技能攻击的敌人。若自身处于护盾状态，则额外造成30%技能伤害。多次伤害命中同一目标伤害衰减60%，最低造成20%的伤害。",
+          "level": "10/10/13/13",
+          "name": "拟霜流连斩",
+          "nature": "Ice",
+          "tags": [
+            "主动",
+            "群伤"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 1,
+          "cost": "SP 24",
+          "desc": "接下来1次『游龙展布』攻击强化为『墨见龙吟』。攻击触发概率提升至100%、技能倍率提升相当于祐介78.1%/86.1%/82.9%/90.9%的防御力并且以群体为目标攻击。若1回合内未触发『墨见龙吟』强化反击，则自动触发。\n此外自身获得19.5%/19.5%/20.7%/20.7%防御力+555/555/683/683的护盾，效果持续2回合。将自身弱点暂时变为默认耐性、免疫任何精神异常并使所有敌人获得嘲讽状态，效果持续2回合。\n冷却时间：1回合。",
+          "level": "10/10/13/13",
+          "name": "银华残心",
+          "nature": "Support",
+          "tags": [
+            "主动",
+            "强化反击"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "获得护盾时伤害提升7.5%，持续2回合，可叠6层。",
+          "level": "3",
+          "name": "创造",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用技能提供护盾时，增加自身的穿透20.0%，持续1回合。",
+          "level": "3",
+          "name": "雕琢",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "820.01 / 834.41 / 849.61 / 864.01 / 879.21 / 893.61 / 908.81",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "800.02 / 814.42 / 828.82 / 843.22 / 857.62 / 872.02 / 886.42",
+      "Defense Increase": "43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3720.03 / 3787.23 / 3853.63 / 3920.83 / 3988.03 / 4055.23 / 4121.63",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

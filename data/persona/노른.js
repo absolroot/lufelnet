@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["노른"] = {
   "id": "175",

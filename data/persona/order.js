@@ -1,5 +1,4 @@
-// 기존 data/kr/wonder/persona.js 의 key 순서를 그대로 사용
-// window.personaOrder 배열에 KR 이름을 넣어서 정렬 기준으로 사용한다.
+
 
 window.personaOrder = [
     "야노식",

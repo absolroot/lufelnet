@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["오로바스"] = {
   "id": "184",

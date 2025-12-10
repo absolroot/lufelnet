@@ -2,7 +2,7 @@
 layout: default
 custom_css: [persona]
 custom_js: [tooltip]
-custom_data: [wonder/persona.js, tooltip.js, wonder/skills.js]
+custom_data: [tooltip.js, wonder/skills.js]
 permalink: /persona/
 redirect_from:
 - /kr/persona/
@@ -26,10 +26,10 @@ jp: /persona/?lang=jp
 <div class="main-wrapper">
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/skillfrom.css?v={{ site.time | date: '%s' }}">
     <script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/apps/persona/getfrom.js?v={{ site.time | date: '%s' }}"></script>
-    <!-- 새 페르소나 데이터 번들 (window.personaFiles) -->
-    <script src="{{ site.baseurl }}/data/persona/bundle.persona.js?v={{ site.time | date: '%s' }}"></script>
+    <!-- 페르소나 순서 및 로더 -->
     <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/persona/getfrom.js?v={{ site.time | date: '%s' }}"></script>
     <!-- 언어 안내 메시지 -->
     <!--
     <div id="language-notice" class="language-notice" style="display: none;">
@@ -263,8 +263,8 @@ jp: /persona/?lang=jp
             <input type="checkbox" id="expandAllToggle">
             <label for="expandAllToggle" id="expandAllLabel">전체 펼치기</label>
         </div>
+        <!--
         <span class="skill-level-separator">|</span>
-        <!-- Global skill level selector -->
         <div class="skill-level-toggle">
             <span class="skill-level-label">스킬 레벨 :</span>
             <div class="skill-level-buttons skill-level-buttons-global">
@@ -274,6 +274,7 @@ jp: /persona/?lang=jp
                 <button type="button" class="skill-level-btn" data-level="ALL">ALL</button>
             </div>
         </div>
+        -->
     </div>
 
     <!-- Explain Container -->
@@ -822,12 +823,19 @@ jp: /persona/?lang=jp
             if (hasLangParam) {
                 // 언어 파라미터가 있으면 바로 콘텐츠 로드
                 updateLanguageContent().then(() => {
-                    initializePageContent().then(() => {
-                        // 검색 파라미터 처리 (짧은 지연 추가)
-                        setTimeout(handleSearchParam, 100);
-                        // 전역 스킬 레벨 선택기 초기화
-                        setupGlobalSkillLevelSelector();
-                    });
+                    const runInit = () => {
+                        initializePageContent().then(() => {
+                            // 검색 파라미터 처리 (짧은 지연 추가)
+                            setTimeout(handleSearchParam, 100);
+                            // 전역 스킬 레벨 선택기 초기화
+                            setupGlobalSkillLevelSelector();
+                        });
+                    };
+                    if (typeof ensurePersonaFilesLoaded === 'function') {
+                        ensurePersonaFilesLoaded(runInit);
+                    } else {
+                        runInit();
+                    }
                 });
             } else {
                 // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
@@ -836,22 +844,36 @@ jp: /persona/?lang=jp
                 window.history.replaceState({}, '', currentUrl);
 
                 updateLanguageContent().then(() => {
+                    const runInit = () => {
+                        initializePageContent().then(() => {
+                            // 검색 파라미터 처리 (짧은 지연 추가)
+                            setTimeout(handleSearchParam, 100);
+                            // 전역 스킬 레벨 선택기 초기화
+                            setupGlobalSkillLevelSelector();
+                        });
+                    };
+                    if (typeof ensurePersonaFilesLoaded === 'function') {
+                        ensurePersonaFilesLoaded(runInit);
+                    } else {
+                        runInit();
+                    }
+                });
+            }
+        } else {
+            updateLanguageContent().then(() => {
+                const runInit = () => {
                     initializePageContent().then(() => {
                         // 검색 파라미터 처리 (짧은 지연 추가)
                         setTimeout(handleSearchParam, 100);
                         // 전역 스킬 레벨 선택기 초기화
                         setupGlobalSkillLevelSelector();
                     });
-                });
-            }
-        } else {
-            updateLanguageContent().then(() => {
-                initializePageContent().then(() => {
-                    // 검색 파라미터 처리 (짧은 지연 추가)
-                    setTimeout(handleSearchParam, 100);
-                    // 전역 스킬 레벨 선택기 초기화
-                    setupGlobalSkillLevelSelector();
-                });
+                };
+                if (typeof ensurePersonaFilesLoaded === 'function') {
+                    ensurePersonaFilesLoaded(runInit);
+                } else {
+                    runInit();
+                }
             });
         }
     });
@@ -1706,8 +1728,7 @@ jp: /persona/?lang=jp
                     const positionMatch = filterCache.positions.size === 0 || filterCache.positions.has(position);
                     const rarityMatch = filterCache.rarities.size === 0 || filterCache.rarities.has(rarity);
                     const gradeMatch = filterCache.grades.size === 0 ||
-                        filterCache.grades.has(grade) ||
-                        (personaName === '야노식' && filterCache.grades.has('1'));
+                        filterCache.grades.has(grade);
 
                     const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
 

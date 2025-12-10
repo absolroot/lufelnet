@@ -195,11 +195,11 @@
           if (Array.isArray(personaObj.passive_skill) && personaObj.passive_skill.length > 0) {
             const arr = personaObj.passive_skill;
             let selected = [];
-            if (persona === '야노식') {
-              selected = arr.slice(-2); // 마지막 2개
-            } else {
-              selected = [arr[arr.length - 1]]; // 마지막 1개
-            }
+            //if (persona === '야노식') {
+            //  selected = arr.slice(-2); // 마지막 2개
+            //} else {
+            selected = [arr[arr.length - 1]]; // 마지막 1개
+            //}
 
             const names = [];
             const effectLines = [];

@@ -28,8 +28,6 @@ class DefenseCalc {
         // CSV 기반 이름 매핑 프리로드
         this._csvNameMap = null; // { krName: { en, jp } }
         this._csvLoadPromise = null;
-        // 원더 번역 주입을 렌더 전에 보장
-        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.enrichDefenseDataWithWonderNames) { DefenseI18N.enrichDefenseDataWithWonderNames(); } } catch(_) {}
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
         this.initializeTable(); // 그 다음 테이블 초기화
         this.initializePenetrateTable(); // 관통 테이블 초기화
@@ -959,5 +957,20 @@ class DefenseCalc {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
-    new DefenseCalc();
-}); 
+    const start = () => {
+        // 원더 번역 주입을 페르소나 데이터 로드 이후에 보장
+        try {
+            if (typeof DefenseI18N !== 'undefined' &&
+                DefenseI18N.enrichDefenseDataWithWonderNames) {
+                DefenseI18N.enrichDefenseDataWithWonderNames();
+            }
+        } catch (_) {}
+        new DefenseCalc();
+    };
+
+    if (typeof ensurePersonaFilesLoaded === 'function') {
+        ensurePersonaFilesLoaded(start);
+    } else {
+        start();
+    }
+});

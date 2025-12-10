@@ -1,0 +1,228 @@
+{
+  "data": {
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.16"
+    },
+    "name": "路菲爾",
+    "rating": {
+      "Attack": 3730.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用治療技能時，使目標同伴獲得『星之火』效果，每個同伴至多擁有一個『星之火』相關效果。\n『星之火I』：攻擊力提升，相當於路菲爾攻擊力的4%（最多提升160攻擊力），效果持續1回合，效果結束時升級為『星之火II』。\n『星之火II』：攻擊力提升，相當於路菲爾攻擊力的8%（最多提升320攻擊力），效果持續1回合。",
+          "level": "1",
+          "name": "晝夜顛倒",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "戰鬥開始時有100%基礎機率使生命值最高的敵人陷入燃燒狀態。\n處於任意『星之火』狀態下的同伴，造成元素異常時，效果命中提升33%。",
+          "level": "1",
+          "name": "270°旋轉",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『雀躍火梟』、『希望光束』的技能等級提升2級，至多提升至15級。",
+          "level": "1",
+          "name": "耳羽輕顫",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『星之火II』獲得額外效果，處於該狀態下的同伴受到治療效果提升10%。",
+          "level": "1",
+          "name": "獵物現身",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『天使的憐憫』、『戰鬥技巧』的技能等級提升2級，至多提升至15級。",
+          "level": "1",
+          "name": "無聲偷襲",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT效果提升：使所有同伴造成的火焰屬性傷害提升32%，效果持續1回合",
+          "level": "1",
+          "name": "利爪突擊",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『星之火II』結束時賦予目標『星之火III』。\n『星之火III』：攻擊力提升，相當於路菲爾攻擊力的8%，火焰傷害提升20%，受到治療效果提升10%，效果持續1回合。",
+          "level": "1",
+          "name": "滿載而歸",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on HPcur/HP)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "使所有同伴恢復59.7%/59.7%/62.2%/62.2%攻擊力+1700/2067/1956/2323的生命值，並且使所有同伴的攻擊力提升33.2%/33.2%/34.5%/34.5%，1回合。",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Heal",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Ally"
+      },
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 22",
+          "desc": "對1名敵人造成113.2%/124.8%/117.9%/129.5%攻擊力的火焰屬性傷害，有100%基礎機率使敵人陷入燃燒狀態並使使敵人受到治療效果降低30%，效果持續2回合。",
+          "level": "10/10/13/13",
+          "name": "雀躍火梟",
+          "nature": "Fire",
+          "tags": [
+            "主動",
+            "單傷"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "AICondition (Based on HPcur/HP)",
+          "cooldown": 0,
+          "cost": "SP 24",
+          "desc": "使1名同伴恢復67.4%/67.4%/70.2%/70.2%攻擊力+1920/2334/2209/2623的生命值。目標生命值低於50%時，治療效果提升19%/19%/20%/20%。",
+          "level": "10/10/13/13",
+          "name": "希望光束",
+          "nature": "Heal",
+          "tags": [
+            "主動",
+            "單療"
+          ],
+          "target": "1 Alive Ally"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 31",
+          "desc": "使所有同伴恢復42.1%/42.1%/43.8%/43.8%攻擊力+1197/1456/1378/1636的生命值，對主要目標同伴的治療效果提升24%/24%/25%/25%。",
+          "level": "10/10/13/13",
+          "name": "天使的憐憫",
+          "nature": "Heal",
+          "tags": [
+            "主動",
+            "群療"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用人格面具技能攻擊敵人時，使隨機3個同伴獲得『星之火』效果。",
+          "level": "3",
+          "name": "光明",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身最大生命值轉化為治療效果，最多12000生命值可以使治療效果提升42.0%。",
+          "level": "3",
+          "name": "希望",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "475.39 / 480.99 / 486.59 / 492.19 / 496.99 / 502.59 / 508.19",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2812.32 / 2845.12 / 2877.12 / 2909.92 / 2941.92 / 2974.72 / 3006.72",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

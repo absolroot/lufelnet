@@ -1,0 +1,227 @@
+{
+  "data": {
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "HP": "0.2"
+    },
+    "name": "Kiyoshi Kurotani",
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Damage Mult.": 0.52,
+      "HP": 11930.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "When using a skill, gain 1 Chosen One stack.\nChosen One: Increase the party's Fire damage by 5%. When Kurotani uses a skill, deal damage to Kurotani equal to 4% of his current HP. Lasts 2 turns and stacks up to 5 times.\nThe duration of Chosen One is handled individually for each stack.\nWhile active, change Kurotani's ranged attacks to Fire.",
+          "level": "1",
+          "name": "Make Sparks Fly",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "On Kurotani's action, for each stack of Chosen One, 12% chance to inflict Burn on 1 random foe.",
+          "level": "1",
+          "name": "Uncontrollable Power",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "On Kurotani's action, for each Burning foe, increase Kurotani's damage by 8% for 1 turn. Counts up to 3 foes.",
+          "level": "1",
+          "name": "Flaming Phenomenon",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill levels of Ring of Fire and Cleansing Flame by 2.",
+          "level": "1",
+          "name": "Repent, Sinner",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Highlight Enhanced: Increase all foes' Fire damage taken by 30.8%.",
+          "level": "1",
+          "name": "Untold Story",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the skill levels of Crimson Summon and Thief Tactics by 2.",
+          "level": "1",
+          "name": "Exorcism",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase the party's Fire damage by 30% for every 10 Chosen One stacks gained for 2 turns.",
+          "level": "1",
+          "name": "Contagious Passion",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "Weak",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "Increase all foes' Fire damage taken by 30.1%/33.1%/31.3%/34.4%, and deal Fire damage equal to 41.5%/45.7%/43.2%/47.4% of Kurotani's max HP. Also inflict Burn on the foes for 2 turns.",
+        "level": "10/10/13/13",
+        "name": "Highlight",
+        "nature": "Fire",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Enemy"
+      },
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 18",
+          "desc": "Deal Fire damage to 1 foe equal to 26.2%/28.8%/27.2%/29.9% of Kurotani's max HP and inflict Burn.\nIf the target is Burning, gain 1 Chosen One stack, change target to all foes, decrease damage dealt by half, and inflict Burn.",
+          "level": "10/10/13/13",
+          "name": "Ring of Fire",
+          "nature": "Fire",
+          "tags": [
+            "Debuff"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 22",
+          "desc": "Deal Fire damage to all foes equal to 20.2%/22.3%/21.0%/23.1% of Kurotani's max HP, and activate a Fire Technical. After the attack, based on the number of foes that were inflicted with Burn, gain 2 Chosen One stacks.\nInflict Sacred Flame on Burning foes for 2 turns.\nSacred Flame: When a foe takes an action, deal Fire damage equal to 24.8%/27.3%/25.8%/28.3% of Kurotani's max HP.",
+          "level": "10/10/13/13",
+          "name": "Crimson Summon",
+          "nature": "Fire",
+          "tags": [
+            "Multi-Target"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 22",
+          "desc": "Deal Fire damage to 1 foe equal to 58.6%/64.6%/61.0%/67.0% of Kurotani's max HP and activate Fire Technical. When main target has Sacred Flame, activate a Technical and increase damage by 30%.",
+          "level": "10/10/13/13",
+          "name": "Cleansing Flame",
+          "nature": "Fire",
+          "tags": [
+            "Single-Target"
+          ],
+          "target": "1 Alive Enemy"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase Fire damage and elemental ailment damage dealt to foes with Sacred Flame by 6.0%, based on the number of Chosen One stacks.",
+          "level": "3",
+          "name": "Uplifting Embers",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "Increase Fire damage based on max HP. Increase by 1% for every 300 HP (up to 9000).",
+          "level": "3",
+          "name": "Hot to the Touch",
+          "nature": null,
+          "tags": [
+            "Talent"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "675.43 / 683.43 / 690.63 / 698.63 / 706.63 / 714.63 / 721.83",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "450.02 / 454.82 / 460.42 / 465.22 / 470.82 / 475.62 / 481.22",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "3195.43 / 3232.23 / 3269.03 / 3305.83 / 3342.63 / 3379.43 / 3416.23",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

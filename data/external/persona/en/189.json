@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Mothman",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 8.0%",
+        "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 3.4/3.6/3.7% chance to inflict Dizzy for 2 turns.",
+        "level": "6/7/8",
+        "name": "Flash Bomb"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Mazionga"
+        },
+        {
+          "cost": "",
+          "desc": "Increase ailment accuracy by 13% when it rains.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Ambient Aid II"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "32.6/34.2/35.9% chance to inflict Forget on all foes for 2 turns.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Makajamaon"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Forget accuracy by 12.5%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Forget Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 14%. After inflicting a spritual ailment, restore user's HP by 20% of Attack.",
+          "name": "Vampiric Cryptid"
+        },
+        {
+          "desc": "Increase ailment accuracy by 14%. After inflicting a spiritual ailment, restore user's HP by 23% of Attack.",
+          "name": "Vampiric Cryptid I"
+        },
+        {
+          "desc": "Increase ailment accuracy by 14%. After inflicting a spiritual ailment, restore user's HP by 26% of Attack.",
+          "name": "Vampiric Cryptid II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

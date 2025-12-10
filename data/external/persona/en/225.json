@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Slime",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Decrease 1 foe's Attack by 25.8%/27.1%/28.4% for 3 turns.",
+        "level": "6/7/8",
+        "name": "Tarunda"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Decrease Speed by 6. Increase HP by 15%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Ironclad Resolve I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase ailment resistance by 7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Resistance Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment resistance by 3.5% and debuff resistance by 30%.",
+          "name": "Putrid Stagnation"
+        },
+        {
+          "desc": "Increase ailment resistance by 3.5% and debuff resistance by 35%.",
+          "name": "Putrid Stagnation I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

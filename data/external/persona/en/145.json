@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Neko Shogun",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Increase 1 ally's damage by 18.0/18.9/19.8%. For every 20% of the target's ailment accuracy, increase damage by 1.0/1.0/1.1% more, up to 6.0/6.3/6.6%. Lasts for 2 turns.",
+        "level": "6/7/8",
+        "name": "Hunter's Instincts"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Psy damage to 1 foe equal to 122.0/126.9/131.8% of Attack. Deal a Technical and increase damage by 40% for foes with a spiritual ailment.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Psio"
+        },
+        {
+          "cost": "",
+          "desc": "Increase SP recovery rate by 4.4%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Nurture II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Psychokinesis damage by 6.7%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Psy Boost II"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Increase party's ailment accuracy and ailment resistance by 6.5%/6.8%/7.2%, and Speed by 3 for 3 turns. For every 25% of the user's ailment accuracy, increase party's ailment accuracy by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Masukukaja"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 15%. At the start of battle, increase party's ailment accuracy by 9% and by 12% for the ally with the highest ailment accuracy for 2 turns.",
+          "name": "Stockfish"
+        },
+        {
+          "desc": "Increase ailment accuracy by 15%. At the start of battle, increase party's ailment accuracy by 10% and by 14% for the ally with the highest ailment accuracy for 2 turns.",
+          "name": "Stockfish I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

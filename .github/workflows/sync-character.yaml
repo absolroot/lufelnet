@@ -68,9 +68,8 @@ jobs:
         run: |
           set -euo pipefail
           echo "Changed files:"; git status -s || true
-          echo "Diff (skills & weapons for selected lang):"
-          git --no-pager diff -- "data/${{ inputs.lang }}/characters/character_skills.js" || true
-          git --no-pager diff -- "data/${{ inputs.lang }}/characters/character_weapon.js" || true
+          echo "Diff (per-character files under data/characters):"
+          git --no-pager diff -- "data/characters" || true
 
       - name: Commit & push if changed
         run: |

@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Barong",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 21",
+        "desc": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
+        "level": "6/7/8",
+        "name": "Ziodyne"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 22",
+          "desc": "16.3/17.1/17.9% chance to inflict Dizzy on all foes for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Nocturnal Flash"
+        },
+        {
+          "cost": "",
+          "desc": "Restores 6.0% of max HP and 8 SP when ambushing.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Heat Up III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase SP recovery rate by 5.7%.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Nurture III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase damage by 8.7%.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "Battle Acumen III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 37% of Attack.",
+          "name": "Wrathful Thunder"
+        },
+        {
+          "desc": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 42% of Attack.",
+          "name": "Wrathful Thunder I"
+        },
+        {
+          "desc": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 47% of Attack.",
+          "name": "Wrathful Thunder II"
+        },
+        {
+          "desc": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 51% of Attack.",
+          "name": "Wrathful Thunder III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

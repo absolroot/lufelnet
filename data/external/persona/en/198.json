@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Sandman",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "43.6/45.8/48.0% chance to inflict Sleep on 1 foe for 2 turns.",
+        "level": "6/7/8",
+        "name": "Dormina"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase ailment resistance by 10%.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Resistance Boost II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Wind damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Windswept for 2 turns.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Garula"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Sleep resistance by 12.5%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Resist Sleep II"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 4.5/4.7/5.0% chance to inflict Sleep for 2 turns.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Dormin Rush"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 10.5%. Increase accuracy of Sleep by 45%.",
+          "name": "A Good Night's Sleep"
+        },
+        {
+          "desc": "Increase ailment accuracy by 10.5%. Increase accuracy of Sleep by 50%.",
+          "name": "A Good Night's Sleep I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

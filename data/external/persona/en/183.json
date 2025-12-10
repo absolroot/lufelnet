@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Ippon-Datara",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 7.0%",
+        "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 9.3/9.8/10.2% chance to inflict Dizzy for 2 turns.",
+        "level": "6/7/8",
+        "name": "Sledgehammer"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "At the start of battle, increase party's Attack by 4.2% for 2 turns or until user changes Personas.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Auto-Mataru I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Dizzy resistance by 8.8%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Resist Dizzy I"
+        },
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to all foes equal to 30.0/31.5/33.0% of Attack (1 to 3 hits).",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Rampage"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical damage by 7%. Increase critical rate on Dizzy foes by 21%.",
+          "name": "Hopping Cyclops"
+        },
+        {
+          "desc": "Increase critical damage by 7%. Increase critical rate on Dizzy foes by 24%.",
+          "name": "Hopping Cyclops I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

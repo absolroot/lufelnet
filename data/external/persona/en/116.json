@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Agathion",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 23",
+        "desc": "Restore 1 ally's HP by 33.1/34.8/36.4% of Attack + 1001/1239/1495.",
+        "level": "6/7/8",
+        "name": "Dia"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 19",
+          "desc": "Deal Electric damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Shock for 2 turns.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Zio"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Defense by 8.8%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Protect Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Defense by 4.4%. When receiving healing, increase healing by 27%.",
+          "name": "Gratitude in a Bottle"
+        },
+        {
+          "desc": "Increase Defense by 4.4%. When receiving healing, increase healing by 31%.",
+          "name": "Gratitude in a Bottle I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

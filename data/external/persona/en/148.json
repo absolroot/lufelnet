@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Okuninushi",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Psychokinesis damage to all foes equal to 88.0%/92.4%/96.8% of Attack. If foes have a spiritual ailment, increase damage by 20%. If foes are weak to Psychokinesis, increase damage by 15% more.",
+        "level": "6/7/8",
+        "name": "Spirit Wave"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 7.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 36.9/38.7/40.6% of Attack (3 to 5 hits).",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Tempest Slash"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Attack by 10.8%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Attack Boost III"
+        },
+        {
+          "cost": "SP 21",
+          "desc": "Deal Psy damage to all foes equal to 72.3/75.3/78.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Mapsiodyne"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Psychokinesis damage taken by 8.7%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Psy Reduction III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical rate by 12.5%. After using a skill, increase foe's Psychokinesis damage taken by 7.5% for 3 turns. Stacks up to 3 times.",
+          "name": "Ruler's Majesty"
+        },
+        {
+          "desc": "Increase critical rate by 12.5%. After using a skill, increase foe's Psychokinesis damage taken by 8.5% for 3 turns. Stacks up to 3 times.",
+          "name": "Ruler's Majesty I"
+        },
+        {
+          "desc": "Increase critical rate by 12.5%. After using a skill, increase foe's Psychokinesis damage taken by 8.5% for 3 turns. Stacks up to 3 times. When attacking a foe affected by this skill, increase Psychokinesis damage dealt by 10% more.",
+          "name": "Ruler's Majesty II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Psychokinesis damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

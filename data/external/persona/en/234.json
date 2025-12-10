@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "White Rider",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Curse damage to all foes equal to 77.9%/83.4%/88.9% of Attack. Inflict 1-2 Curse stacks.",
+        "level": "6/7/8",
+        "name": "Wicked Brand"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase ailment accuracy by 10%.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Accuracy Boost II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Curse damage to all foes equal to 61.8/65.5/69.2% of Attack. Chance to inflict 1 Curse stack on foes.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Maeiga"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 1.7/1.8/1.9% chance to inflict Brainwash for 2 turns.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Brain Buster"
+        },
+        {
+          "cost": "체력 9.0%",
+          "desc": "Decrease this skill's accuracy by 15%, increase critical rate by 16%, and deal Gun damage to all foes equal to 14.9/15.6/16.4% of Attack (3 hits).",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Triple Down"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 20%. After using a skill on a foe, increase its Curse damage taken by 5.3% for each Curse stack on target for 1 turn. Stacks up to 4 times.",
+          "name": "Herald of Conquest"
+        },
+        {
+          "desc": "Increase ailment accuracy by 20%. After using a skill on a foe, increase its Curse damage taken by 6% for each Curse stack on target for 1 turn. Stacks up to 4 times.",
+          "name": "Herald of Conquest I"
+        },
+        {
+          "desc": "Increase ailment accuracy by 20%. After using a skill on a foe, increase its Curse damage taken by 6.7% for each Curse stack on target for 1 turn. Stacks up to 4 times.",
+          "name": "Herald of Conquest II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

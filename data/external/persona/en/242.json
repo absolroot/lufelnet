@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Koumokuten",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase party's critical rate by 6.5%/6.8%/7.2%. For every 10% of the user's critical rate, increase party's critical rate by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Revolution"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "At the start of battle, increase party's Attack by 7.9% for 2 turns or until user changes Personas.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Auto-Mataru III"
+        },
+        {
+          "cost": "",
+          "desc": "Restores 3.5% of max HP at the start of each turn.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Regenerate III"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Speed by 12. Increase HP by 29%.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Ironclad Resolve III"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease critical taken rate by 6.5%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Sharp Student III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 21.2%. At the start of battle, increase the Attack of the ally with the highest Attack by 10% and their critical rate by 4% for 3 turns (prioritize Assassins and Sweepers).",
+          "name": "Heavenly King's Eyes"
+        },
+        {
+          "desc": "Increase ailment accuracy by 21.2%. At the start of battle, increase the Attack of the ally with the highest Attack by 12% and their critical rate by 5% for 3 turns (prioritize Assassins and Sweepers).",
+          "name": "Heavenly King's Eyes I"
+        },
+        {
+          "desc": "Increase ailment accuracy by 21.2%. At the start of battle, increase the Attack of the ally with the highest Attack by 14% and their critical rate by 6% for 3 turns (prioritize Assassins and Sweepers).",
+          "name": "Heavenly King's Eyes II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

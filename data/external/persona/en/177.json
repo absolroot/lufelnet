@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Silky",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 25",
+        "desc": "Cure Dizzy, Sleep, or Forget on 1 ally.",
+        "level": "6/7/8",
+        "name": "Patra"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 23",
+          "desc": "Restore 1 ally's HP by 33.1/34.8/36.4% of Attack + 1001/1239/1495.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Dia"
+        },
+        {
+          "cost": "SP 19",
+          "desc": "Deal Ice damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Freeze for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Bufu"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase max HP by 3.5%. After removing a spiritual ailment, restore target's HP by 12.5% of Attack.",
+          "name": "Benevolent Guardian"
+        },
+        {
+          "desc": "Increase max HP by 3.5%. After removing a spiritual ailment, retore target's HP by 14.5% of Attack.",
+          "name": "Benevolent Guardian I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

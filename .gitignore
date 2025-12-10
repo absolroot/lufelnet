@@ -64,7 +64,10 @@ node_modules
 node_modules/**
 명령어
 
-
+fetch-api.sh
+fetch-api.mjs
+fetch-persona.mjs
+/data/external/persona/*
 
 # J&C
 data/characters/J&C/

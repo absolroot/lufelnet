@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Sudama",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 19",
+        "desc": "Deal Wind damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Windswept for 2 turns.",
+        "level": "6/7/8",
+        "name": "Magaru"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 108.3/113.7/119.1%  of Attack. Increase critical rate by 20%, and decrease accuracy by 20%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Lucky Punch"
+        },
+        {
+          "cost": "",
+          "desc": "Increase SP recovery rate by 3.1%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Nurture I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase ailment accuracy by 9.1% when it rains.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Ambient Aid I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 5.8%. Decrease SP cost of Wind skills by 22%.",
+          "name": "Wind Bloodline"
+        },
+        {
+          "desc": "Increase Attack by 5.8%. Decrease SP cost of Wind skills by 26%.",
+          "name": "Wind Bloodline I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

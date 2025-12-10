@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Hua Po",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 19",
+        "desc": "Deal Fire damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Burn for 2 turns.",
+        "level": "6/7/8",
+        "name": "Agi"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Burn accuracy by 8.8%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Burn Boost I"
+        },
+        {
+          "cost": "SP 19",
+          "desc": "Deal Fire damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Burn for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Maragi"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 2.9%. When attacking a Burning foe, increase Attack by 25%.",
+          "name": "Kindling Whip"
+        },
+        {
+          "desc": "Increase Attack by 2.9%. When attacking a Burning foe, increase Attack by 28%.",
+          "name": "Kindling Whip I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

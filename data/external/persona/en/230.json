@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Black Ooze",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "16.3/17.1/17.9% chance to inflict Dizzy on all foes for 2 turns.",
+        "level": "6/7/8",
+        "name": "Nocturnal Flash"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase ailment accuracy by 10%.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Accuracy Boost II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase ailment resistance by 10%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Resistance Boost II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Curse damage to 1 foe equal to 124.2/131.7/139.2% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Eiga"
+        },
+        {
+          "cost": "체력 7.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 18.7/19.6/20.6% chance to inflict Forget for 2 turns.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Headbutt"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment resistance by 10.5% and debuff resistance by 25%. Increase debuff accuracy by 25%.",
+          "name": "Suffocating Plague"
+        },
+        {
+          "desc": "Increase ailment resistance by 10.5% and debuff resistance by 28%. Increase debuff accuracy by 28%.",
+          "name": "Suffocating Plague I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

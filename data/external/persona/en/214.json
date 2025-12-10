@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Baphomet",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Fire damage equal to 67.5%/70.9%/74.2% of Attack to all foes. Inflict Burn on main target.",
+        "level": "6/7/8",
+        "name": "Red-Hot"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Burn accuracy by 16.3%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Burn Boost III"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Decrease 1 foe's Attack by 25.8%/27.1%/28.4% for 3 turns.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Tarunda"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Increase 1 ally's ailment accuracy and ailment resistance by 9.3%/9.8%/10.2%, and Speed by 5. For every 25% of the user's ailment accuracy, increase the target's ailment accuracy by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Sukukaja"
+        },
+        {
+          "cost": "SP 21",
+          "desc": "Deal Fire damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Burn for 2 turns.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "Agidyne"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 24.9%. After dealing skill damage to a Burning foe, increase all foes' Fire damage taken by 20% for 1 turn.",
+          "name": "Devil's Deliquescence"
+        },
+        {
+          "desc": "Increase Attack by 24.9%. After dealing skill damage to a Burning foe, increase all foes' Fire damage taken by 23% for 1 turn.",
+          "name": "Devil's Deliquescence I"
+        },
+        {
+          "desc": "Increase Attack by 24.9%. After dealing skill damage to a Burning foe, increase all foes' Fire damage taken by 26% for 1 turn.",
+          "name": "Devil's Deliquescence II"
+        },
+        {
+          "desc": "Increase Attack by 24.9%. After dealing skill damage to a Burning foe, increase all foes' Fire damage taken by 29% for 1 turn.",
+          "name": "Devil's Deliquescence III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

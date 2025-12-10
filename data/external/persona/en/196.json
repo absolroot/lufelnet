@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Sui-Ki",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 20",
+        "desc": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
+        "level": "6/7/8",
+        "name": "Bufula"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Ice damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Freeze for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Mabufula"
+        },
+        {
+          "cost": "체력 7.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 18.7/19.6/20.6% chance to inflict Forget for 2 turns.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Headbutt"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Fire damage taken by 6.7%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Fire Reduction II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Nuclear damage taken by 6.7%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Nuclear Reduction II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 8.7%. Decrease SP cost of Ice skills by 26%.",
+          "name": "Frigid Bloodline"
+        },
+        {
+          "desc": "Increase Attack by 8.7%. Decrease SP cost of Ice skills by 30%.",
+          "name": "Frigid Bloodline I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

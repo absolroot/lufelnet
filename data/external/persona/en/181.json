@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Angel",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Restore 1 ally's HP by 25.7/27.0/28.3% of Attack + 777/962/1161. Cure 1 elemental ailment.",
+        "level": "6/7/8",
+        "name": "Elemental Conversion"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 19",
+          "desc": "Deal Bless damage to 1 foe equal to 115.8/122.5/129.2% of Attack. Gain 0 to 1 Blessing stacks.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Kouha"
+        },
+        {
+          "cost": "",
+          "desc": "Increase healing received by 2.3%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Divine Grace I"
+        },
+        {
+          "cost": "SP 23",
+          "desc": "Restore party's HP by 16.6/17.4/18.3% of Attack + 502/621/749.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Media"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase HP by 7%. After removing an elemental ailment, restore target's HP by 9% of Attack.",
+          "name": "Lesser Divine Messenger"
+        },
+        {
+          "desc": "Increase max HP by 7%. After removing an elemental ailment, restore target's HP by 11% of Attack.",
+          "name": "Lesser Divine Messenger I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

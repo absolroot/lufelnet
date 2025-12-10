@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Raja Naga",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 21",
+        "desc": "Deal Electric damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Shock for 2 turns.",
+        "level": "6/7/8",
+        "name": "Maziodyne"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Shock accuracy by 16.3%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Shock Boost III"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Electric damage taken by 8.7%.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Electric Reduction III"
+        },
+        {
+          "cost": "",
+          "desc": "Decreases damage taken by 11.3% when it rains.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Raindrop Barrier III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Speed by 12. Decrease Defense by 8%.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "Agility Master III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 31%.",
+          "name": "Electric Bloodline"
+        },
+        {
+          "desc": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 35%.",
+          "name": "Electric Bloodline I"
+        },
+        {
+          "desc": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 39%.",
+          "name": "Electric Bloodline II"
+        },
+        {
+          "desc": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 43%.",
+          "name": "Electric Bloodline III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

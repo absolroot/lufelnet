@@ -1965,17 +1965,21 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
     }
 
-    // 페르소나 이름 다국어 지원
+    // 페르소나 이름 다국어 지원 (data/persona 기반)
     function getLocalizedPersonaName(personaName) {
         const currentLang = getCurrentLanguage();
-        if (!personaData || !personaData[personaName]) {
+        const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+            ? window.personaFiles
+            : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+        if (!store || !store[personaName]) {
             return personaName;
         }
 
-        if (currentLang === 'en' && personaData[personaName].name_en) {
-            return personaData[personaName].name_en;
-        } else if (currentLang === 'jp' && personaData[personaName].name_jp) {
-            return personaData[personaName].name_jp;
+        const p = store[personaName];
+        if (currentLang === 'en' && p.name_en) {
+            return p.name_en;
+        } else if (currentLang === 'jp' && p.name_jp) {
+            return p.name_jp;
         }
         return personaName;
     }

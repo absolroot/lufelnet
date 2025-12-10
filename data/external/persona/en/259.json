@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Lilith",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Almighty damage to all foes equal to 25.0%/26.2%/27.5% of Attack, then deal Curse damage equal to 37.5%/39.4%/41.2% of Attack. This skill can evolve to Frostbite, Tempest, or Malice: Deal Almighty damage to all foes equal to 25.0%/26.2%/27.5% of Attack, then deal Ice, Wind, or Curse damage equal to 101.0%/106.0%/111.1% of Attack.",
+        "level": "6/7/8",
+        "name": "Killer Allure"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 21",
+          "desc": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Mabufudyne"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Mudoon"
+        },
+        {
+          "cost": "SP 21",
+          "desc": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
+          "learn_level": "30",
+          "level": "6/7/8",
+          "name": "Magarudyne"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease SP cost of skills by 6%.",
+          "learn_level": "40",
+          "level": "6/7/8",
+          "name": "Spell Master IV"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 29.1%. When using an Ice, Wind, or Curse skill, increase damage dealt by 20% and decrease damage taken by 7% for 2 turns. Also evolve Lilith's unique skill to deal bonus damage for that attribute, greatly increase this skill's damage dealt, and temporarily increase pierce rate by 10%.",
+          "name": "Allure of the Night"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. When using an Ice, Wind, or Curse skill, increase damage dealt by 30% and decrease damage taken by 7% for 2 turns. Also evolve Lilith's unique skill to deal bonus damage for that attribute, greatly increase this skill's damage dealt, and temporarily increase pierce rate by 10%.",
+          "name": "Allure of the Night I"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. When using an Ice, Wind, or Curse skill, increase damage dealt by 30% and decrease damage taken by 10% for 2 turns. Also evolve Lilith's unique skill to deal bonus damage for that attribute, greatly increase this skill's damage dealt, and temporarily increase pierce rate by 10%.",
+          "name": "Allure of the Night II"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. When using an Ice, Wind, or Curse skill, increase damage dealt by 30% and decrease damage taken by 10% for 2 turns. Also evolve Lilith's unique skill to deal bonus damage for that attribute, greatly increase this skill's damage dealt, and temporarily increase pierce rate by 15%.",
+          "name": "Allure of the Night III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Almighty damage to all foes equal to 90.0%/96.3%/102.6% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

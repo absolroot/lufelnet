@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Lachesis",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Restore party's HP by 12.9/13.5/14.2% of Attack + 390/483/582. Cure 1 elemental ailment.",
+        "level": "6/7/8",
+        "name": "Elemental Restoration"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Bufula"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Ice damage by 6.7%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Ice Boost II"
+        },
+        {
+          "cost": "",
+          "desc": "At the start of battle, increase party's Defense by 9.1% for 2 turns or until user changes Personas.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Auto-Maraku II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Defense by 12.5%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Protect Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase max HP by 14.1%. After healing, increase target's max HP by 10.6% for 2 turns.",
+          "name": "Discretion of Life"
+        },
+        {
+          "desc": "Increase max HP by 14.1%. After healing, increase target's max HP by 12% for 2 turns.",
+          "name": "Discretion of Life I"
+        },
+        {
+          "desc": "Increase max HP by 14.1%. After healing, increase target's max HP by 13.4% for 2 turns.",
+          "name": "Discretion of Life II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

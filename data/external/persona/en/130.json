@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Oni",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 6.0%",
+        "desc": "Deal Physical damage to all foes equal to 30.0/31.5/33.0% of Attack (1 to 3 hits).",
+        "level": "6/7/8",
+        "name": "Rampage"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Speed by 6.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Agility Master I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Physical damage by 4.7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Phys Boost I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 4.2% when ambushing.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Fortified Moxy I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical rate by 4.2%. After a Baton Pass, increase damage by 28% for 1 turn.",
+          "name": "Skillful Combo"
+        },
+        {
+          "desc": "Increase critical rate by 4.2%. After a Baton Pass, increase damage by 33% for 1 turn.",
+          "name": "Skillful Combo I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

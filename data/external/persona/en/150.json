@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Horus",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 21",
+        "desc": "Deal Bless damage to all foes equal to 65.8/70.0/74.2% of Attack. Gain 1 to 2 Blessing stacks.",
+        "level": "6/7/8",
+        "name": "Makougaon"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 19",
+          "desc": "Deal Almighty damage to all foes equal to 40.7/42.7/44.8% of Attack, ignoring their defense.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Megidola"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Bless damage taken by 8.7%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Bless Reduction III"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Increase party's ailment accuracy and ailment resistance by 6.5%/6.8%/7.2%, and Speed by 3 for 3 turns. For every 25% of the user's ailment accuracy, increase party's ailment accuracy by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Masukukaja"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Almighty damage by 8.7%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Almighty Boost III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 17.7%. For each foe present, increase user's Bless damage by 7.6%. Stacks up to 5 times.",
+          "name": "Guardian God's Kingship"
+        },
+        {
+          "desc": "Increase Attack by 17.7%. For each foe present, increase user's Bless damage by 8.6%. Stacks up to 5 times.",
+          "name": "Guardian God's Kingship"
+        },
+        {
+          "desc": "Increase Attack by 17.7%. For each foe present, increase user's Bless damage by 9.7%. Stacks up to 5 times.",
+          "name": "Guardian God's Kingship II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Bless damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

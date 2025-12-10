@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "High Pixie",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 23",
+        "desc": "Restore party's HP by 16.6/17.4/18.3% of Attack + 502/621/749.",
+        "level": "6/7/8",
+        "name": "Media"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 19",
+          "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Garu"
+        },
+        {
+          "cost": "SP 23",
+          "desc": "Restore 1 ally's HP by 33.1/34.8/36.4% of Attack + 1001/1239/1495.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Dia"
+        },
+        {
+          "cost": "",
+          "desc": "Increase healing by 4.2%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Healing Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase healing effect by 4.2%. Increase healing to allies with less than 50% HP by 19%.",
+          "name": "Fairy Ruler's Favor"
+        },
+        {
+          "desc": "Increase healing effect by 4.2%. Increase healing to allies with less than 50% HP by 22%.",
+          "name": "Fairy Ruler's Favor I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

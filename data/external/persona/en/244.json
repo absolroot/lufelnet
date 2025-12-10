@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Dakini",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 8.0%",
+        "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 1.5/1.6/1.6% chance to inflict Despair for 3 turns.",
+        "level": "6/7/8",
+        "name": "Bad Beat"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Speed by 12. Decrease Defense by 8%.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Agility Master III"
+        },
+        {
+          "cost": "체력 7.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 36.9/38.7/40.6% of Attack (3 to 5 hits).",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Tempest Slash"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Increase 1 ally's critical rate by 9.3%/9.8%/10.2%. For every 10% of the user's critical rate, increase the target's critical rate by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Rebellion"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Physical damage by 8.7%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Phys Boost III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 17.7%. After inflicting a spiritual ailment, permanently increase target's Physical damage taken by 5.7%.",
+          "name": "Corpse Grove Demoness"
+        },
+        {
+          "desc": "Increase Attack by 17.7%. After inflicting a spiritual ailment, permanently increase target's Physical damage taken by 6.5%.",
+          "name": "Corpse Grove Demoness I"
+        },
+        {
+          "desc": "Increase Attack by 17.7%. After inflicting a spiritual ailment, permanently increase target's Physical damage taken by 7.3%.",
+          "name": "Corpse Grove Demoness II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

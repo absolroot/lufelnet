@@ -22,7 +22,9 @@
       typeof supabase !== 'undefined' &&
       typeof window.applyImportedData === 'function' &&
       typeof characterData !== 'undefined' &&
-      typeof personaData !== 'undefined' &&
+      // personaFiles(신규) 또는 personaData(레거시) 둘 중 하나만 있어도 진행
+      ( (typeof window.personaFiles !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length) ||
+        (typeof personaData !== 'undefined') ) &&
       typeof matchWeapons !== 'undefined' &&
       typeof revelationData !== 'undefined'
     ), 8000, 50);

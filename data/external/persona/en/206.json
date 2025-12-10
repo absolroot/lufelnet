@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Hecatoncheires",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase party's Defense by 16.3%/17.1%/17.9%. For every 500 of the user's Defense, increase party's Defense by 2.7%/2.8%/3.0% more, up to 10.8%/11.3%/11.9%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Marakukaja"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Defense by 16.3%.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Protect Boost III"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease damage taken by 8.7%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Reduction Boost III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase shield effect by 7.8%.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Shield Boost III"
+        },
+        {
+          "cost": "SP skillLv*-1+28",
+          "desc": "Remove 1 stat buff from all foes.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Dekaja"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase HP by 14.5%. When all allies' HP is below 50%, decrease damage taken by 19%.",
+          "name": "Hundred-Arms Defense"
+        },
+        {
+          "desc": "Increase HP by 14.5%. When all allies' HP is below 50%, decrease damage taken by 21%.",
+          "name": "Hundred-Arms Defense I"
+        },
+        {
+          "desc": "Increase HP by 14.5%. When all allies' HP is below 50%, decrease damage taken by 23%.",
+          "name": "Hundred-Arms Defense II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Orobas",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP skillLv*-1+28",
+        "desc": "Remove Fire resistance from 1 target for 2 turns.",
+        "level": "6/7/8",
+        "name": "Fire Break"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Decrease SP cost of skills by 2.4%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Spell Master I"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Wind damage taken by 4.7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Wind Reduction I"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Increase 1 ally's ailment accuracy and ailment resistance by 9.3%/9.8%/10.2%, and Speed by 5. For every 25% of the user's ailment accuracy, increase the target's ailment accuracy by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Sukukaja"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 7%. After using a skill on a foe, increase Fire damage taken by 7.1% for 2 turns.",
+          "name": "Fanatical Prophet"
+        },
+        {
+          "desc": "Increase ailment accuracy by 7%. After using a skill on a foe, increase Fire damage taken by 8.2% for 2 turns.",
+          "name": "Fanatical Prophet I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

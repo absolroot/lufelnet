@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Anzu",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 20",
+        "desc": "Deal Wind damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Windswept for 2 turns.",
+        "level": "6/7/8",
+        "name": "Magarula"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 141.8/148.9/156.0% of Attack.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Assault Dive"
+        },
+        {
+          "cost": "",
+          "desc": "Restores 5.0% of max HP and 6 SP when ambushing.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Heat Up II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Speed by 9. Decrease Defense by 4%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Agility Master II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase HP by 8.3%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "HP Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 10.6%. When inflicting Windswept, increase accuracy by 45% to main target.",
+          "name": "Divebomb"
+        },
+        {
+          "desc": "Increase Attack by 10.6%. When inflicting Windswept, increase accuracy by 50% to main target.",
+          "name": "Divebomb I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

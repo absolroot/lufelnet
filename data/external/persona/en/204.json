@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Hariti",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 20",
+        "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
+        "level": "6/7/8",
+        "name": "Mazionga"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Shock accuracy by 12.5%.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Shock Boost II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Zionga"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Restore 1 ally's HP by 25.7/27.0/28.3% of Attack + 777/962/1161. Cure 1 elemental ailment.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Elemental Conversion"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 6% when ambushing.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Fortified Moxy II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 14.1%. Increase Electric damage taken by Shocked foes by 9%.",
+          "name": "Demonic Motherhood"
+        },
+        {
+          "desc": "Increase Attack by 14.1%. Increase Electric damage taken by Shocked foes by 10%.",
+          "name": "Demonic Motherhood I"
+        },
+        {
+          "desc": "Increase Attack by 14.1%. Increase Electric damage taken by Shocked foes by 11%.",
+          "name": "Demonic Motherhood II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

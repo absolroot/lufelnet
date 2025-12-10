@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Surt",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Decrease all foes' Defense by 27.1%/28.5%/29.8% for 3 turns.",
+        "level": "6/7/8",
+        "name": "Marakunda"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Fire damage by 8.7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Fire Boost III"
+        },
+        {
+          "cost": "SP 21",
+          "desc": "Deal Fire damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Burn for 2 turns.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Agidyne"
+        },
+        {
+          "cost": "체력 9.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Brave Blade"
+        },
+        {
+          "cost": "",
+          "desc": "Increase ailment resistance by 13%.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "Resistance Boost III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 20.9%. Increase Burn accuracy by 35%. If foe's HP is 50% or more, increase effect by 30% more.",
+          "name": "Lord of Flames"
+        },
+        {
+          "desc": "Increase ailment accuracy by 20.9%. Increase Burn accuracy by 40%. If foe's HP is 50% or more, increase effect by 30% more.",
+          "name": "Lord of Flames I"
+        },
+        {
+          "desc": "Increase ailment accuracy by 20.9%. Increase Burn accuracy by 45%. If foe's HP is 50% or more, increase effect by 30% more.",
+          "name": "Lord of Flames II"
+        },
+        {
+          "desc": "Increase ailment accuracy by 20.9%. Increase Burn accuracy by 50%. If foe's HP is 50% or more, increase effect by 30% more.",
+          "name": "Lord of Flames III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -27,6 +27,9 @@ jp: /persona/?lang=jp
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/skillfrom.css?v={{ site.time | date: '%s' }}">
     <script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/persona/getfrom.js?v={{ site.time | date: '%s' }}"></script>
+    <!-- 새 페르소나 데이터 번들 (window.personaFiles) -->
+    <script src="{{ site.baseurl }}/data/persona/bundle.persona.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
     <!-- 언어 안내 메시지 -->
     <!--
     <div id="language-notice" class="language-notice" style="display: none;">
@@ -259,6 +262,17 @@ jp: /persona/?lang=jp
         <div class="expand-all-toggle">
             <input type="checkbox" id="expandAllToggle">
             <label for="expandAllToggle" id="expandAllLabel">전체 펼치기</label>
+        </div>
+        <span class="skill-level-separator">|</span>
+        <!-- Global skill level selector -->
+        <div class="skill-level-toggle">
+            <span class="skill-level-label">스킬 레벨 :</span>
+            <div class="skill-level-buttons skill-level-buttons-global">
+                <button type="button" class="skill-level-btn active" data-level="0">LV6</button>
+                <button type="button" class="skill-level-btn" data-level="1">LV7</button>
+                <button type="button" class="skill-level-btn" data-level="2">LV8</button>
+                <button type="button" class="skill-level-btn" data-level="ALL">ALL</button>
+            </div>
         </div>
     </div>
 
@@ -657,7 +671,8 @@ jp: /persona/?lang=jp
                 filter_position: "직업",
                 filter_rarity: "희귀도",
                 filter_grade: "등급",
-                count_unit: "개"
+                count_unit: "개",
+                skill_level_label: "스킬 레벨 :"
             },
             en: {
                 language_notice: "🌍 Please let me know if you find an accurate translation.\nIt may contain content that hasn't been released yet.",
@@ -670,7 +685,8 @@ jp: /persona/?lang=jp
                 filter_position: "Position",
                 filter_rarity: "Rarity",
                 filter_grade: "Grade",
-                count_unit: ""
+                count_unit: "",
+                skill_level_label: "Skill Level :"
             },
             jp: {
                 language_notice: "🌍 正確な翻訳が見つかった場合は、お知らせください。\nまだリリースされていないコンテンツが含まれている可能性があります。",
@@ -683,7 +699,8 @@ jp: /persona/?lang=jp
                 filter_position: "職業",
                 filter_rarity: "タイプ",
                 filter_grade: "グレード",
-                count_unit: ""
+                count_unit: "",
+                skill_level_label: "スキルレベル :"
             }
         };
 
@@ -717,6 +734,12 @@ jp: /persona/?lang=jp
         if (filterLabels[1]) filterLabels[1].textContent = data.filter_position;
         if (filterLabels[2]) filterLabels[2].textContent = data.filter_rarity;
         if (filterLabels[3]) filterLabels[3].textContent = data.filter_grade;
+
+        // 스킬 레벨 라벨 번역
+        const skillLevelLabel = document.querySelector('.skill-level-label');
+        if (skillLevelLabel && data.skill_level_label) {
+            skillLevelLabel.textContent = data.skill_level_label;
+        }
 
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
         window.i18nFilteredCount = data.filtered_count;
@@ -802,6 +825,8 @@ jp: /persona/?lang=jp
                     initializePageContent().then(() => {
                         // 검색 파라미터 처리 (짧은 지연 추가)
                         setTimeout(handleSearchParam, 100);
+                        // 전역 스킬 레벨 선택기 초기화
+                        setupGlobalSkillLevelSelector();
                     });
                 });
             } else {
@@ -814,6 +839,8 @@ jp: /persona/?lang=jp
                     initializePageContent().then(() => {
                         // 검색 파라미터 처리 (짧은 지연 추가)
                         setTimeout(handleSearchParam, 100);
+                        // 전역 스킬 레벨 선택기 초기화
+                        setupGlobalSkillLevelSelector();
                     });
                 });
             }
@@ -822,10 +849,23 @@ jp: /persona/?lang=jp
                 initializePageContent().then(() => {
                     // 검색 파라미터 처리 (짧은 지연 추가)
                     setTimeout(handleSearchParam, 100);
+                    // 전역 스킬 레벨 선택기 초기화
+                    setupGlobalSkillLevelSelector();
                 });
             });
         }
     });
+
+    // 공용: LV6/LV7/LV8/ALL 버튼으로 "/" 구분 3단 수치를 필터링하는 헬퍼
+    function filterDescByLevel(originalText, levelIndex) {
+        if (levelIndex === null || levelIndex === undefined) return originalText;
+        // "150.0%/157.5%/165.0%" 또는 "1471/1854/2275" 형태를 개별 값으로 치환
+        const tripleRegex = /(\d+(?:\.\d+)?)(%?)\/(\d+(?:\.\d+)?)(%?)\/(\d+(?:\.\d+)?)(%?)/g;
+        return originalText.replace(tripleRegex, (match, n1, u1, n2, u2, n3, u3) => {
+            const variants = [`${n1}${u1}`, `${n2}${u2}`, `${n3}${u3}`];
+            return variants[levelIndex] || variants[0];
+        });
+    }
 
     async function initializePageContent() {
         const cardsContainer = document.getElementById('personaCards');
@@ -833,15 +873,40 @@ jp: /persona/?lang=jp
         // 현재 언어 확인
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
+        // 새 데이터(window.personaFiles)만 사용 (기존 persona.js 는 더 이상 참조하지 않음)
+        const personaSource = (typeof window !== 'undefined' && window.personaFiles)
+            ? window.personaFiles
+            : {};
+
+        // order.js 에서 로드된 순서 정보
+        const orderList = (typeof window !== 'undefined' && window.personaOrder)
+            ? window.personaOrder
+            : [];
+
+        // 전역 스킬 레벨 (0: LV6, 1: LV7, 2: LV8, null: ALL)
+        let globalSkillLevel = 0;
+
         // 언어별 설명 박스 텍스트 업데이트
         updateExplainBoxTexts(currentLang);
 
-        // Update initial count
+        // 정렬된 페르소나 이름 목록 구성
+        const allNames = Object.keys(personaSource);
+        const inOrder = [];
+        const remaining = new Set(allNames);
+
+        orderList.forEach(name => {
+            if (remaining.has(name)) {
+                inOrder.push(name);
+                remaining.delete(name);
+            }
+        });
+        const tail = Array.from(remaining).sort(); // 남은 애들은 이름순으로 뒤에
+        const sortedPersonas = inOrder.concat(tail);
+
+        // Update initial count (정렬된 목록 길이 기준)
         const countText = window.i18nFilteredCount || '전체';
         const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-        document.getElementById('filteredCount').textContent = `${countText} ${Object.keys(personaData).length}${countUnit}`;
-
-        const sortedPersonas = Object.keys(personaData);
+        document.getElementById('filteredCount').textContent = `${countText} ${sortedPersonas.length}${countUnit}`;
         // 대량 렌더링 최적화: 청크 단위로 분할 렌더링하여 메인 스레드 점유를 줄임
         const CHUNK_SIZE = 10;
         let currentIndex = 0;
@@ -855,13 +920,13 @@ jp: /persona/?lang=jp
                 const detailContainer = document.createElement('div');
                 detailContainer.className = 'persona-detail-container';
                 // Add data attributes for filtering
-                detailContainer.dataset.element = personaData[personaName].element;
-                detailContainer.dataset.position = personaData[personaName].position;
-                detailContainer.dataset.rarity = personaData[personaName].star;
+                detailContainer.dataset.element = personaSource[personaName].element;
+                detailContainer.dataset.position = personaSource[personaName].position;
+                detailContainer.dataset.rarity = personaSource[personaName].star;
                 detailContainer.dataset.name = personaName;  // Add data-name attribute for search
-                detailContainer.dataset.grade = personaData[personaName].grade;  // Add data-grade attribute for grade
-                detailContainer.dataset.event = personaData[personaName].event;
-                detailContainer.dataset.wild_emblem_rainbow = personaData[personaName].wild_emblem_rainbow;
+                detailContainer.dataset.grade = personaSource[personaName].grade;  // Add data-grade attribute for grade
+                detailContainer.dataset.event = personaSource[personaName].event;
+                detailContainer.dataset.wild_emblem_rainbow = personaSource[personaName].wild_emblem_rainbow;
                 // Preserve original order for restoring after collapse
                 detailContainer.dataset.order = String(index);
 
@@ -872,13 +937,13 @@ jp: /persona/?lang=jp
                 // Insert existing card creation code here
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.dataset.element = personaData[personaName].element;
-                card.dataset.position = personaData[personaName].position;
-                card.dataset.rarity = personaData[personaName].star;
+                card.dataset.element = personaSource[personaName].element;
+                card.dataset.position = personaSource[personaName].position;
+                card.dataset.rarity = personaSource[personaName].star;
 
                 // Add card background with optimization
                 const cardBg = document.createElement('img');
-                cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaData[personaName].element}.webp`;
+                cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaSource[personaName].element}.webp`;
                 cardBg.alt = "card background";
                 cardBg.className = 'card-background';
                 cardBg.loading = 'lazy';
@@ -894,7 +959,7 @@ jp: /persona/?lang=jp
 
                 // Add rarity cover
                 const coverStar = document.createElement('img');
-                coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaData[personaName].star}.webp`;
+                coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaSource[personaName].star}.webp`;
                 coverStar.alt = "rarity cover";
                 coverStar.className = 'cover-star';
                 coverStar.loading = 'lazy';
@@ -904,15 +969,15 @@ jp: /persona/?lang=jp
                 positionContainer.className = 'position-container';
 
                 const positionIcon = document.createElement('img');
-                positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaData[personaName].position}.png`;
-                positionIcon.alt = personaData[personaName].position;
+                positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaSource[personaName].position}.png`;
+                positionIcon.alt = personaSource[personaName].position;
                 positionIcon.className = 'position-icon';
                 positionIcon.loading = 'lazy';
                 positionIcon.decoding = 'async';
 
                 const elementIcon = document.createElement('img');
-                elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaData[personaName].element}.png`;
-                elementIcon.alt = personaData[personaName].element;
+                elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaSource[personaName].element}.png`;
+                elementIcon.alt = personaSource[personaName].element;
                 elementIcon.className = 'element-icon';
                 elementIcon.loading = 'lazy';
                 elementIcon.decoding = 'async';
@@ -920,7 +985,7 @@ jp: /persona/?lang=jp
                 positionContainer.appendChild(positionIcon);
 
                 // Wild Emblem
-                if (personaData[personaName].wild_emblem_rainbow) {
+                if (personaSource[personaName].wild_emblem_rainbow) {
                     const wildEmblem = document.createElement('img');
                     wildEmblem.src = `{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png`;
                     wildEmblem.alt = "wild emblem";
@@ -945,58 +1010,107 @@ jp: /persona/?lang=jp
                 const infoSection = document.createElement('div');
                 infoSection.className = 'persona-info-section';
 
-                // 언어별 데이터 가져오기
-                const persona = personaData[personaName];
+                // 언어별 데이터 가져오기 (새 data/persona/* 구조 우선)
+                const persona = personaSource[personaName];
                 let displayName = personaName;
-                let uniqueSkillName = persona.uniqueSkill.name;
-                let uniqueSkillEffect = persona.uniqueSkill.effect;
-                let highlightEffect = persona.highlight.effect;
+                let uniqueSkillName = persona.uniqueSkill?.name || '';
+                // 새 구조(desc/desc_en/desc_jp) 우선, 없으면 구 구조(effect/effect_en/effect_jp) 사용
+                let uniqueSkillEffect = persona.uniqueSkill?.desc || persona.uniqueSkill?.effect || '';
+                let highlightEffect = persona.highlight?.desc || persona.highlight?.effect || '';
                 let comment = persona.comment;
 
-                // Instinct 변형(예: instinct, instinct2 ...) 지원을 위한 배열
+                // Instinct / Passive Skill 변형(예: 여러 단계) 지원을 위한 배열
                 const instinctVariants = [];
-                function pushInstinctVariant(src) {
-                    if (!src) return;
-                    let name = src.name;
-                    let effects = src.effects;
-                    let priority = src.priority;
 
-                    if (currentLang === 'en') {
-                        name = src.name_en || name;
-                        effects = src.effects_en || effects;
-                    } else if (currentLang === 'jp') {
-                        name = src.name_jp || name;
-                        effects = src.effects_jp || effects;
+                // 새 구조: passive_skill 배열 기반
+                if (Array.isArray(persona.passive_skill) && persona.passive_skill.length > 0) {
+                    persona.passive_skill.forEach((p) => {
+                        if (!p) return;
+                        let name = p.name;
+                        let effects = p.desc;
+                        const priority = typeof persona.passive_priority === 'number' ? persona.passive_priority : 0;
+
+                        if (currentLang === 'en') {
+                            name = p.name_en || name;
+                            effects = p.desc_en || effects;
+                        } else if (currentLang === 'jp') {
+                            name = p.name_jp || name;
+                            effects = p.desc_jp || effects;
+                        }
+
+                        let baseName = name;
+                        let roman = '';
+                        const m = name && name.match(/\s+([IVX]+)$/);
+                        if (m) {
+                            roman = m[1];
+                            baseName = name.slice(0, m.index).trim();
+                        }
+
+                        instinctVariants.push({ name, baseName, roman, effects, priority });
+                    });
+                } else {
+                    // 구 구조: instinct / instinct2 기반 (fallback)
+                    function pushLegacyInstinctVariant(src) {
+                        if (!src) return;
+                        let name = src.name;
+                        let effects = src.effects;
+                        let priority = src.priority;
+
+                        if (currentLang === 'en') {
+                            name = src.name_en || name;
+                            effects = src.effects_en || effects;
+                        } else if (currentLang === 'jp') {
+                            name = src.name_jp || name;
+                            effects = src.effects_jp || effects;
+                        }
+
+                        let baseName = name;
+                        let roman = '';
+                        const m = name && name.match(/\s+([IVX]+)$/);
+                        if (m) {
+                            roman = m[1];
+                            baseName = name.slice(0, m.index).trim();
+                        }
+
+                        instinctVariants.push({ name, baseName, roman, effects, priority });
                     }
 
-                    // 이름 끝의 로마자 분리 (예: "잔당의 수확 IV")
-                    let baseName = name;
-                    let roman = '';
-                    const m = name && name.match(/\s+([IVX]+)$/);
-                    if (m) {
-                        roman = m[1];
-                        baseName = name.slice(0, m.index).trim();
-                    }
-
-                    instinctVariants.push({ name, baseName, roman, effects, priority });
+                    pushLegacyInstinctVariant(persona.instinct);
+                    if (persona.instinct2) pushLegacyInstinctVariant(persona.instinct2);
                 }
-
-                // 기본 instinct + instinct2 (있다면) 수집
-                pushInstinctVariant(persona.instinct);
-                if (persona.instinct2) pushInstinctVariant(persona.instinct2);
 
                 // 언어별 이름/기타 텍스트 번역
                 if (currentLang === 'en') {
                     displayName = persona.name_en || personaName;
-                    uniqueSkillName = persona.uniqueSkill.name_en || persona.uniqueSkill.name;
-                    uniqueSkillEffect = persona.uniqueSkill.effect_en || persona.uniqueSkill.effect;
-                    highlightEffect = persona.highlight.effect_en || persona.highlight.effect;
+                    uniqueSkillName = persona.uniqueSkill?.name_en || persona.uniqueSkill?.name || uniqueSkillName;
+                    uniqueSkillEffect =
+                        persona.uniqueSkill?.desc_en ||
+                        persona.uniqueSkill?.desc ||
+                        persona.uniqueSkill?.effect_en ||
+                        persona.uniqueSkill?.effect ||
+                        uniqueSkillEffect;
+                    highlightEffect =
+                        persona.highlight?.desc_en ||
+                        persona.highlight?.desc ||
+                        persona.highlight?.effect_en ||
+                        persona.highlight?.effect ||
+                        highlightEffect;
                     comment = persona.comment_en || persona.comment;
                 } else if (currentLang === 'jp') {
                     displayName = persona.name_jp || personaName;
-                    uniqueSkillName = persona.uniqueSkill.name_jp || persona.uniqueSkill.name;
-                    uniqueSkillEffect = persona.uniqueSkill.effect_jp || persona.uniqueSkill.effect;
-                    highlightEffect = persona.highlight.effect_jp || persona.highlight.effect;
+                    uniqueSkillName = persona.uniqueSkill?.name_jp || persona.uniqueSkill?.name || uniqueSkillName;
+                    uniqueSkillEffect =
+                        persona.uniqueSkill?.desc_jp ||
+                        persona.uniqueSkill?.desc ||
+                        persona.uniqueSkill?.effect_jp ||
+                        persona.uniqueSkill?.effect ||
+                        uniqueSkillEffect;
+                    highlightEffect =
+                        persona.highlight?.desc_jp ||
+                        persona.highlight?.desc ||
+                        persona.highlight?.effect_jp ||
+                        persona.highlight?.effect ||
+                        highlightEffect;
                     comment = persona.comment_jp || persona.comment;
                 }
 
@@ -1006,7 +1120,7 @@ jp: /persona/?lang=jp
                 nameCaption.textContent = displayName;
 
                 // 만약 persona_best 값이 true 일경우 nameCaption에 color 적용
-                if (personaData[personaName].best_persona) {
+                if (personaSource[personaName].best_persona) {
                     nameCaption.style.color = 'rgb(255 109 122)';
                 }
                 cardSection.appendChild(nameCaption);
@@ -1017,15 +1131,18 @@ jp: /persona/?lang=jp
 
                 headerInfo.innerHTML = `
             <h2>${displayName}</h2>
-            <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaData[personaName].grade}.webp" alt="Grade ${personaData[personaName].grade}">
+            <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaSource[personaName].grade}.webp" alt="Grade ${personaSource[personaName].grade}">
             `;
 
 
-                // Instinct (복수 변형 지원: instinct, instinct2 ...)
+                // Instinct / Passive Skill (복수 변형 지원)
                 const instinctInfo = document.createElement('div');
                 instinctInfo.className = 'persona-instinct-info';
-                // 기본 priority는 첫 번째 변형 사용
-                instinctInfo.dataset.priority = instinctVariants[0] ? instinctVariants[0].priority : (persona.instinct ? persona.instinct.priority : 0);
+                // 기본 priority: 새 구조의 passive_priority 우선, 없으면 legacy instinct.priority 사용
+                instinctInfo.dataset.priority =
+                    typeof persona.passive_priority === 'number'
+                        ? persona.passive_priority
+                        : (persona.instinct ? (persona.instinct.priority || 0) : 0);
 
                 // 헤더: 이름 + 로마자 버튼
                 const instinctHeader = document.createElement('div');
@@ -1038,34 +1155,8 @@ jp: /persona/?lang=jp
                 instinctTitle.textContent = baseTitle;
                 instinctHeader.appendChild(instinctTitle);
 
-                // 기본 활성 인스팅트 인덱스 (로마자 값이 가장 높은 변형을 선택)
-                function romanToInt(r) {
-                    if (!r) return 0;
-                    const map = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
-                    let total = 0;
-                    for (let i = 0; i < r.length; i++) {
-                        const v = map[r[i]] || 0;
-                        const next = map[r[i + 1]] || 0;
-                        if (next > v) {
-                            total -= v;
-                        } else {
-                            total += v;
-                        }
-                    }
-                    return total;
-                }
-
-                let activeInstinctIndex = 0;
-                if (instinctVariants.length > 1) {
-                    let maxVal = -Infinity;
-                    instinctVariants.forEach((variant, idx) => {
-                        const val = romanToInt(variant.roman);
-                        if (val > maxVal) {
-                            maxVal = val;
-                            activeInstinctIndex = idx;
-                        }
-                    });
-                }
+                // 기본 활성 인스팅트 인덱스: 가장 마지막(최고 단계) 변형
+                let activeInstinctIndex = instinctVariants.length > 0 ? (instinctVariants.length - 1) : 0;
                 let instinctButtonsWrap = null;
 
                 if (instinctVariants.length > 1) {
@@ -1076,8 +1167,32 @@ jp: /persona/?lang=jp
                         const btn = document.createElement('button');
                         btn.type = 'button';
                         btn.className = 'instinct-variant-btn' + (idx === activeInstinctIndex ? ' active' : '');
-                        // 로마자가 있으면 로마자, 없으면 1,2,3...
-                        btn.textContent = variant.roman || String(idx + 1);
+                        // 0 단계는 "0", 이후는 로마자(I, II, III ...) 혹은 숫자
+                        if (idx === 0) {
+                            btn.textContent = '0';
+                        } else if (variant.roman) {
+                            btn.textContent = variant.roman;
+                        } else {
+                            // 간단한 로마자 변환 (1~9 범위 가정)
+                            const intToRoman = (n) => {
+                                const map = [
+                                    ['IX', 9],
+                                    ['V', 5],
+                                    ['IV', 4],
+                                    ['I', 1],
+                                ];
+                                let remain = n;
+                                let out = '';
+                                for (const [sym, val] of map) {
+                                    while (remain >= val) {
+                                        out += sym;
+                                        remain -= val;
+                                    }
+                                }
+                                return out || String(n);
+                            };
+                            btn.textContent = intToRoman(idx);
+                        }
                         btn.setAttribute('aria-pressed', idx === activeInstinctIndex ? 'true' : 'false');
                         btn.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1109,8 +1224,14 @@ jp: /persona/?lang=jp
                     if (!current) return;
                     const text = Array.isArray(current.effects) ? current.effects.join('\n') : current.effects;
                     instinctEffectP.textContent = text || '';
+                    // 제목도 현재 변형의 이름으로 갱신
+                    instinctTitle.textContent = current.baseName || current.name || instinctTitle.textContent;
                     if (typeof current.priority !== 'undefined') {
                         instinctInfo.dataset.priority = current.priority;
+                    }
+                    // 숫자 하이라이트 및 툴팁 재적용
+                    if (typeof addTooltips === 'function') {
+                        try { addTooltips(); } catch (_) { /* noop */ }
                     }
                 }
 
@@ -1125,15 +1246,35 @@ jp: /persona/?lang=jp
                 // Unique skill
                 const uniqueSkillInfo = document.createElement('div');
                 uniqueSkillInfo.className = 'persona-unique-skill-info';
-                uniqueSkillInfo.dataset.priority = personaData[personaName].uniqueSkill.priority;
+                uniqueSkillInfo.dataset.priority = personaSource[personaName].uniqueSkill.priority;
                 // Use global icon when language is en/jp and icon_gl exists
                 const uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp')
-                    ? (personaData[personaName].uniqueSkill.icon_gl || personaData[personaName].uniqueSkill.icon)
-                    : personaData[personaName].uniqueSkill.icon;
-                uniqueSkillInfo.innerHTML = `
-                <h3><img src="{{ site.baseurl }}/assets/img/persona/속성_${uniqueSkillIconName}.png" alt="Skill Element" class="skill-type-icon"> ${uniqueSkillName}</h3>
-                <p>${uniqueSkillEffect}</p>
-            `;
+                    ? (personaSource[personaName].uniqueSkill.icon_gl || personaSource[personaName].uniqueSkill.icon)
+                    : personaSource[personaName].uniqueSkill.icon;
+
+                const uniqueHeader = document.createElement('div');
+                uniqueHeader.className = 'persona-unique-header';
+                const uniqueTitle = document.createElement('h3');
+                const uniqueIcon = document.createElement('img');
+                uniqueIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${uniqueSkillIconName}.png`;
+                uniqueIcon.alt = "Skill Element";
+                uniqueIcon.className = 'skill-type-icon';
+                uniqueTitle.appendChild(uniqueIcon);
+                uniqueTitle.appendChild(document.createTextNode(` ${uniqueSkillName}`));
+                uniqueHeader.appendChild(uniqueTitle);
+
+                const uniqueDescP = document.createElement('p');
+                // 원문 저장
+                uniqueDescP.dataset.originalText = uniqueSkillEffect;
+                // 전역 스킬 레벨이 설정되어 있으면 초기 렌더에서도 바로 필터 적용
+                if (typeof globalSkillLevel === 'number') {
+                    uniqueDescP.textContent = filterDescByLevel(uniqueSkillEffect, globalSkillLevel);
+                } else {
+                    uniqueDescP.textContent = uniqueSkillEffect;
+                }
+
+                uniqueSkillInfo.appendChild(uniqueHeader);
+                uniqueSkillInfo.appendChild(uniqueDescP);
 
                 // Highlight - 언어별 라벨 적용
                 const highlightLabels = {
@@ -1145,11 +1286,26 @@ jp: /persona/?lang=jp
 
                 const highlightInfo = document.createElement('div');
                 highlightInfo.className = 'persona-highlight-info';
-                highlightInfo.dataset.priority = personaData[personaName].highlight.priority;
-                highlightInfo.innerHTML = `
-                <h3>${highlightLabel}</h3>
-                <p>${highlightEffect}</p>
-            `;
+                highlightInfo.dataset.priority = personaSource[personaName].highlight.priority;
+
+                const highlightHeader = document.createElement('div');
+                highlightHeader.className = 'persona-highlight-header';
+                const highlightTitle = document.createElement('h3');
+                highlightTitle.textContent = highlightLabel;
+                highlightHeader.appendChild(highlightTitle);
+
+                const highlightDescP = document.createElement('p');
+                // 원문 저장
+                highlightDescP.dataset.originalText = highlightEffect;
+                // 전역 스킬 레벨이 설정되어 있으면 초기 렌더에서도 바로 필터 적용
+                if (typeof globalSkillLevel === 'number') {
+                    highlightDescP.textContent = filterDescByLevel(highlightEffect, globalSkillLevel);
+                } else {
+                    highlightDescP.textContent = highlightEffect;
+                }
+
+                highlightInfo.appendChild(highlightHeader);
+                highlightInfo.appendChild(highlightDescP);
 
                 // Add to container
                 skillContainer.appendChild(uniqueSkillInfo);
@@ -1167,7 +1323,7 @@ jp: /persona/?lang=jp
                 infoSection.appendChild(skillContainer);  // Add container instead of individual elements
 
                 // Recommended skill list - 언어별 라벨 적용
-                if (personaData[personaName].recommendSkill && personaData[personaName].recommendSkill.length > 0 && personaData[personaName].recommendSkill[0].name) {
+                if (personaSource[personaName].recommendSkill && personaSource[personaName].recommendSkill.length > 0 && personaSource[personaName].recommendSkill[0].name) {
                     const recommendedSkillLabels = {
                         'kr': '추천 스킬',
                         'en': 'Recommended Skills',
@@ -1180,7 +1336,7 @@ jp: /persona/?lang=jp
                     recommendedSkills.innerHTML = `
                     <h3>${recommendedSkillLabel}</h3>
                     <ul>
-                        ${personaData[personaName].recommendSkill.map(skill => {
+                        ${personaSource[personaName].recommendSkill.map(skill => {
                         const skillInfo = personaSkillList[skill.name];
                         if (!skillInfo) return ''; // Skip if skill info not found
 
@@ -1590,8 +1746,11 @@ jp: /persona/?lang=jp
 
         // 언어별 페르소나 이름 매핑 생성
         const personaNameMapping = {};
-        Object.keys(personaData).forEach(koreanName => {
-            const persona = personaData[koreanName];
+        const nameSource = (typeof window !== 'undefined' && window.personaFiles)
+            ? window.personaFiles
+            : {};
+        Object.keys(nameSource).forEach(koreanName => {
+            const persona = nameSource[koreanName];
             personaNameMapping[koreanName.toLowerCase()] = koreanName;
 
             // 영어 이름 추가
@@ -1670,7 +1829,7 @@ jp: /persona/?lang=jp
 
                     matches.forEach(matchedName => {
                         const koreanName = personaNameMapping[matchedName];
-                        const persona = personaData[koreanName];
+                const persona = nameSource[koreanName];
 
                         // 현재 언어에 맞는 표시 이름 가져오기
                         let displayName = koreanName;
@@ -1719,7 +1878,7 @@ jp: /persona/?lang=jp
             requestAnimationFrame(() => {
                 containers.forEach(container => {
                     const koreanName = container.dataset.name;
-                    const persona = personaData[koreanName];
+                    const persona = nameSource[koreanName];
 
                     // 모든 언어 이름으로 검색 가능하도록
                     const searchableNames = [
@@ -1862,6 +2021,53 @@ jp: /persona/?lang=jp
             }
         }
     } // initializePageContent 함수 종료
+
+    // ----------------------------------------------------
+    // Global skill level selector (LV6 / LV7 / LV8 / ALL)
+    // ----------------------------------------------------
+
+    function setupGlobalSkillLevelSelector() {
+        const buttons = document.querySelectorAll('.skill-level-buttons-global .skill-level-btn');
+        if (!buttons.length) return;
+
+        function applyGlobalSkillLevel(level) {
+            globalSkillLevel = level;
+            const applyTo = (p) => {
+                const original = p.dataset.originalText || p.textContent || '';
+                if (level === null) {
+                    p.textContent = original;
+                } else {
+                    p.textContent = filterDescByLevel(original, level);
+                }
+            };
+            const uniqueParas = document.querySelectorAll('.persona-unique-skill-info p');
+            const highlightParas = document.querySelectorAll('.persona-highlight-info p');
+            uniqueParas.forEach(applyTo);
+            highlightParas.forEach(applyTo);
+            if (typeof addTooltips === 'function') {
+                try { addTooltips(); } catch (_) { /* noop */ }
+            }
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const levelAttr = btn.dataset.level;
+                const level = levelAttr === 'ALL' ? null : parseInt(levelAttr, 10);
+
+                buttons.forEach(b => {
+                    const isActive = b === btn;
+                    b.classList.toggle('active', isActive);
+                    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                });
+
+                applyGlobalSkillLevel(level);
+            });
+        });
+
+        // 초기 상태(LV6) 전역 적용
+        applyGlobalSkillLevel(0);
+    }
 
     // 언어별 설명 박스 텍스트 업데이트 함수
     function updateExplainBoxTexts(currentLang) {

@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Jikokuten",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Matarukaja"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "At the start of battle, increase Defense by 18.1% for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Defense Master II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Speed by 9. Increase HP by 22%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Ironclad Resolve II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 6.5% when surrounded by enemies.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Adverse Resolve II"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 6.7/7.0/7.4% chance to inflict Forget for 2 turns.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Memory Blow"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Defense by 15.9%. After using a skill on an ally, increase main target's Attack by 13.5% for 2 turns. When target's HP is below 60%, increase effect by 30% more.",
+          "name": "Wisdom of the East"
+        },
+        {
+          "desc": "Increase Defense by 15.9%. After using a skill on an ally, increase main target's Attack by 15.5% for 2 turns. When target's HP is below 60%, increase effect by 30% more.",
+          "name": "Wisdom of the East I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

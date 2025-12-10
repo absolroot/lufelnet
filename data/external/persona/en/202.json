@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Kaiwan",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 20",
+        "desc": "Deal Psy damage to 1 foe equal to 122.0/126.9/131.8% of Attack. Deal a Technical and increase damage by 40% for foes with a spiritual ailment.",
+        "level": "6/7/8",
+        "name": "Psio"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 22",
+          "desc": "65.1/68.4/71.6% chance to inflict Forget on 1 foe for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Makajama"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Speed by 9. Decrease Defense by 4%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Agility Master II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Gun damage taken by 6.7%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Gun Reduction II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Psy damage to all foes equal to 66.4/68.8/71.2% of Attack. Deal a Technical and increase damage by 40% for foes with a spiritual ailment.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Mapsio"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 11.6%. Decrease SP cost of Psychokinesis skills by 27%.",
+          "name": "Psychic Bloodline"
+        },
+        {
+          "desc": "Increase Attack by 11.6%. Decrease SP cost of Psychokinesis skills by 31%.",
+          "name": "Psychic Bloodline I"
+        },
+        {
+          "desc": "Increase Attack by 11.6%. Decrease SP cost of Psychokinesis skills by 35%.",
+          "name": "Psychic Bloodline II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

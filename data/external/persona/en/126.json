@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Black Frost",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Ice damage to 1 foe equal to 187.5%/196.9%/206.3% of Attack. 25% chance to knock down target. If knocked down with this skill, deal bonus Ice damage equal to 42.5%/44.6%/46.8% of Attack.",
+        "level": "6/7/8",
+        "name": "Avalanche"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 21",
+          "desc": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
+          "learn_level": "9",
+          "level": "6/7/8",
+          "name": "Mabufudyne"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Increase this skill's critical rate by 20%, and deal Gun damage to 1 foe equal to 107.5/112.9/118.3% of Attack.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "One-shot Kill"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 127.9/134.3/140.7%  of Attack. Increase critical rate by 30%, and decrease accuracy by 20%.",
+          "learn_level": "27",
+          "level": "6/7/8",
+          "name": "Miracle Punch"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 8.1%.",
+          "learn_level": "36",
+          "level": "6/7/8",
+          "name": "Apt Pupil IV"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 15% and Ice damage by 15%. Lasts for 2 turns. Stacks up to 2 times.",
+          "name": "Nice Try"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 15%. Lasts for 2 turns. Stacks up to 2 times.",
+          "name": "Nice Try I"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 25%. Lasts for 2 turns. Stacks up to 2 times.",
+          "name": "Nice Try II"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 25%. Lasts for 3 turns. Stacks up to 2 times.",
+          "name": "Nice Try III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -10,6 +10,8 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 ---
 {% include supabase-config.html %}
 
+  <!-- 새 페르소나 데이터 번들 (window.personaFiles) -->
+  <script src="{{ site.baseurl }}/data/persona/bundle.persona.js?v={{ site.time | date: '%s' }}"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 
@@ -864,11 +866,16 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                   if (index % 3 === 0) {
                       const personaIndex = Math.floor(index / 3);
                       const selectedPersona = decodedData.w[personaIndex];
-                      if (selectedPersona && personaData[selectedPersona]) {
-                          input.value = personaData[selectedPersona].uniqueSkill.name;
-                          input.disabled = true;
-                          input.classList.add('unique-skill');
-                      }
+                      try {
+                          const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+                            ? window.personaFiles
+                            : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+                          if (selectedPersona && store[selectedPersona] && store[selectedPersona].uniqueSkill) {
+                              input.value = store[selectedPersona].uniqueSkill.name;
+                              input.disabled = true;
+                              input.classList.add('unique-skill');
+                          }
+                      } catch (_) { /* noop */ }
                   } 
                   // Normal skill slot
                   else {
@@ -974,13 +981,17 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                   if (index % 3 === 0 && input.value) { // 고유 스킬 슬롯
                     const personaIndex = Math.floor(index / 3);
                     const selectedPersona = decodedData.w[personaIndex];
-                    if (selectedPersona && personaData[selectedPersona]) {
-                      const persona = personaData[selectedPersona];
+                    const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+                      ? window.personaFiles
+                      : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+                    if (selectedPersona && store[selectedPersona]) {
+                      const persona = store[selectedPersona];
+                      const u = persona.uniqueSkill || {};
                       let displayName = input.value;
-                      if (currentLang === 'en' && persona.uniqueSkill.name_en) {
-                        displayName = persona.uniqueSkill.name_en;
-                      } else if (currentLang === 'jp' && persona.uniqueSkill.name_jp) {
-                        displayName = persona.uniqueSkill.name_jp;
+                      if (currentLang === 'en' && u.name_en) {
+                        displayName = u.name_en;
+                      } else if (currentLang === 'jp' && u.name_jp) {
+                        displayName = u.name_jp;
                       }
                       const inputContainer = input.closest('.input-container');
                       if (inputContainer) {

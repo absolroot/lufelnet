@@ -447,6 +447,34 @@ function readLangEntry(filePath, varName, charKey) {
   return (val && typeof val === 'object') ? val : {};
 }
 
+// per-character ritual.js 에 기존 KR 데이터가 있으면, 이후 동기화에서 덮어쓰지 않기 위해 읽어온다
+function readExistingPerCharacterRitualKR(charKey) {
+  const targetDir = path.join('data', 'characters', charKey);
+  const filePath = path.join(targetDir, 'ritual.js');
+  if (!fs.existsSync(filePath)) return null;
+  try {
+    const code = readText(filePath);
+    const keyLiteral = JSON.stringify(charKey);
+    const escapedKey = keyLiteral.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(
+      String.raw`window\.ritualData\s*\[\s*${escapedKey}\s*]\s*=\s*([\\s\\S]*?);`
+    );
+    const m = code.match(re);
+    if (!m || !m[1]) return null;
+    const objSource = m[1].trim();
+    const parsed = JSON.parse(objSource);
+    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+      return parsed;
+    }
+  } catch (e) {
+    console.error(
+      `::warning::[per-character] failed to read existing KR ritual for ${charKey}:`,
+      e?.message || e
+    );
+  }
+  return null;
+}
+
 function writePerCharacterUnified(charKey) {
   const root = path.join('data', 'characters', charKey);
   fs.mkdirSync(root, { recursive: true });
@@ -463,14 +491,20 @@ function writePerCharacterUnified(charKey) {
   const enWeapon = readLangEntry(resolveCharacterFile('en', 'weapon'), 'enCharacterWeaponData', charKey);
   const jpWeapon = readLangEntry(resolveCharacterFile('jp', 'weapon'), 'jpCharacterWeaponData', charKey);
 
+  // ritual: 기존 per-character KR 데이터가 존재하면 그것을 우선 사용
+  const existingKrRitual = readExistingPerCharacterRitualKR(charKey);
+  const finalKrRitual = (existingKrRitual && Object.keys(existingKrRitual).length)
+    ? existingKrRitual
+    : (krRitual || {});
+
   // ritual.js
   const ritualJs =
 `window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
-window.ritualData[${JSON.stringify(charKey)}] = ${JSON.stringify(krRitual || {}, null, 2)};
-window.enCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(enRitual || {}).length ? enRitual : krRitual) || {}, null, 2)};
-window.jpCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(jpRitual || {}).length ? jpRitual : krRitual) || {}, null, 2)};
+window.ritualData[${JSON.stringify(charKey)}] = ${JSON.stringify(finalKrRitual, null, 2)};
+window.enCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(enRitual || {}).length ? enRitual : finalKrRitual) || {}, null, 2)};
+window.jpCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Object.keys(jpRitual || {}).length ? jpRitual : finalKrRitual) || {}, null, 2)};
 `;
   writeFile(path.join(root, 'ritual.js'), ritualJs);
 
@@ -733,13 +767,255 @@ function updateNamesKR(local, key, nameMap) {
   writeFile(krCharsPath, output);
 }
 
+// ---------- Per-character updaters (ritual/skill/weapon/base_stats) ----------
+
+function readPerCharacterBlock(filePath, windowName, charKey) {
+  if (!fs.existsSync(filePath)) return {};
+  try {
+    const code = readText(filePath);
+    const keyLiteral = JSON.stringify(charKey);
+    const escapedKey = keyLiteral.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(
+      String.raw`window\.${windowName}\s*\[\s*${escapedKey}\s*]\s*=\s*([\s\S]*?);`
+    );
+    const m = code.match(re);
+    if (!m || !m[1]) return {};
+    const objSource = m[1].trim();
+    const parsed = JSON.parse(objSource);
+    return (parsed && typeof parsed === 'object') ? parsed : {};
+  } catch (e) {
+    console.error(
+      `::warning::[per-character] failed to read ${windowName}[${charKey}] from ${filePath}:`,
+      e?.message || e
+    );
+    return {};
+  }
+}
+
+function createPerCharacterSkeleton(kind) {
+  if (kind === 'ritual') {
+    return (
+`window.ritualData = window.ritualData || {};
+window.enCharacterRitualData = window.enCharacterRitualData || {};
+window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+`
+    );
+  }
+  if (kind === 'skill') {
+    return (
+`window.characterSkillsData = window.characterSkillsData || {};
+window.enCharacterSkillsData = window.enCharacterSkillsData || {};
+window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+`
+    );
+  }
+  if (kind === 'weapon') {
+    return (
+`window.WeaponData = window.WeaponData || {};
+window.enCharacterWeaponData = window.enCharacterWeaponData || {};
+window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+`
+    );
+  }
+  if (kind === 'base_stats') {
+    return (
+`window.basicStatsData = window.basicStatsData || {};
+`
+    );
+  }
+  return '';
+}
+
+function writePerCharacterBlock(filePath, kind, windowName, charKey, newObj) {
+  let code;
+  if (fs.existsSync(filePath)) {
+    code = readText(filePath);
+  } else {
+    const dir = path.dirname(filePath);
+    fs.mkdirSync(dir, { recursive: true });
+    code = createPerCharacterSkeleton(kind);
+  }
+
+  const keyLiteral = JSON.stringify(charKey);
+  const escapedKey = keyLiteral.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const assignRe = new RegExp(
+    `(window\\.${windowName}\\s*\\[\\s*${escapedKey}\\s*]\\s*=\\s*)([\\s\\S]*?);`
+  );
+  const replacement = `$1${JSON.stringify(newObj, null, 2)};`;
+
+  if (assignRe.test(code)) {
+    code = code.replace(assignRe, replacement);
+  } else {
+    if (!code.endsWith('\n')) code += '\n';
+    code += `window.${windowName}[${keyLiteral}] = ${JSON.stringify(newObj, null, 2)};\n`;
+  }
+
+  writeFile(filePath, code);
+}
+
+function buildRitualObjectFromExternal(external) {
+  const out = {};
+  if (external?.data?.name) out.name = external.data.name;
+  const asc = external?.data?.skill?.ascend_skill || [];
+  for (let i = 0; i < asc.length && i < 7; i++) {
+    const item = asc[i];
+    if (!item) continue;
+    out[`r${i}`] = item.name || '';
+    out[`r${i}_detail`] = item.desc || '';
+  }
+  return out;
+}
+
+function updatePerCharacterRitual(lang, charKey, external) {
+  const map = {
+    kr: 'ritualData',
+    en: 'enCharacterRitualData',
+    jp: 'jpCharacterRitualData'
+  };
+  const windowName = map[lang];
+  if (!windowName) {
+    console.warn(`Unsupported lang for ritual update: ${lang}`);
+    return;
+  }
+  const targetPath = path.join('data', 'characters', charKey, 'ritual.js');
+  const payload = buildRitualObjectFromExternal(external);
+  writePerCharacterBlock(targetPath, 'ritual', windowName, charKey, payload);
+}
+
+function buildSkillsObjectFromExternal(external) {
+  const res = {};
+  const skills = external?.data?.skill || {};
+  const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
+  const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
+  const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
+  const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
+  const highlightRaw = skills.highlight_skill;
+  const highlight = Array.isArray(highlightRaw)
+    ? highlightRaw
+    : (highlightRaw && typeof highlightRaw === 'object' ? [highlightRaw] : null);
+
+  if (normal[0]) res.skill1 = transformSkill(normal[0], { group: 'normal' });
+  if (normal[1]) res.skill2 = transformSkill(normal[1], { group: 'normal' });
+  if (normal[2]) res.skill3 = transformSkill(normal[2], { group: 'normal' });
+
+  if (assist[0]) res.skill_support = transformSkill(assist[0], { group: 'assist' });
+
+  if (passive[0]) res.passive1 = transformSkill(passive[0], { group: 'passive' });
+  if (passive[1]) res.passive2 = transformSkill(passive[1], { group: 'passive' });
+
+  if (highlight && highlight[0]) {
+    const hl = transformSkill(highlight[0], { group: 'highlight', removeName: true });
+    res.skill_highlight = hl;
+  }
+
+  if (theurgia[0]) res.skill_highlight = transformSkill(theurgia[0], { group: 'theurgia', keepName: true });
+  if (theurgia[1]) res.skill_highlight2 = transformSkill(theurgia[1], { group: 'theurgia', keepName: true });
+
+  return res;
+}
+
+function updatePerCharacterSkills(lang, charKey, external) {
+  const map = {
+    kr: 'characterSkillsData',
+    en: 'enCharacterSkillsData',
+    jp: 'jpCharacterSkillsData'
+  };
+  const windowName = map[lang];
+  if (!windowName) {
+    console.warn(`Unsupported lang for skills update: ${lang}`);
+    return;
+  }
+  const targetPath = path.join('data', 'characters', charKey, 'skill.js');
+  const payload = buildSkillsObjectFromExternal(external);
+  writePerCharacterBlock(targetPath, 'skill', windowName, charKey, payload);
+}
+
+function buildWeaponObjectFromExternal(externalWeapon) {
+  const out = {};
+  const wdata = externalWeapon?.data || {};
+  const five = Array.isArray(wdata.fiveStar) ? wdata.fiveStar : [];
+  const four = Array.isArray(wdata.fourStar) ? wdata.fourStar : [];
+
+  if (five.length > 0) {
+    five.forEach((w, idx) => {
+      const keyName = `weapon5-${idx + 1}`;
+      out[keyName] = {
+        name: w?.name ?? '',
+        health: w?.stat?.hp ?? undefined,
+        attack: w?.stat?.attack ?? undefined,
+        defense: w?.stat?.defense ?? undefined,
+        skill_name: '',
+        description: w?.skill ?? ''
+      };
+    });
+  }
+
+  if (four.length > 0) {
+    four.forEach((w, idx) => {
+      const keyName = `weapon4-${idx + 1}`;
+      out[keyName] = {
+        name: w?.name ?? '',
+        health: w?.stat?.hp ?? undefined,
+        attack: w?.stat?.attack ?? undefined,
+        defense: w?.stat?.defense ?? undefined,
+        skill_name: '',
+        description: w?.skill ?? ''
+      };
+    });
+  }
+
+  return out;
+}
+
+function updatePerCharacterWeapon(lang, charKey, externalWeapon) {
+  const map = {
+    kr: 'WeaponData',
+    en: 'enCharacterWeaponData',
+    jp: 'jpCharacterWeaponData'
+  };
+  const windowName = map[lang];
+  if (!windowName) {
+    console.warn(`Unsupported lang for weapon update: ${lang}`);
+    return;
+  }
+  const targetPath = path.join('data', 'characters', charKey, 'weapon.js');
+  const payload = buildWeaponObjectFromExternal(externalWeapon);
+  writePerCharacterBlock(targetPath, 'weapon', windowName, charKey, payload);
+}
+
+function buildBaseStatsObjectFromExternal(external, existing) {
+  const out = (existing && typeof existing === 'object') ? { ...existing } : {};
+  const stats = external?.data?.stats || null;
+  if (!stats) return out;
+  const atk = parseSevenNumbers(stats['Attack']);
+  const def = parseSevenNumbers(stats['Defense']);
+  const hp = parseSevenNumbers(stats['HP']);
+  if (!atk || !def || !hp) return out;
+
+  for (let i = 0; i < 7; i++) {
+    const key = `a${i}_lv80`;
+    const cur = (out[key] && typeof out[key] === 'object') ? { ...out[key] } : {};
+    cur.HP = hp[i];
+    cur.attack = atk[i];
+    cur.defense = def[i];
+    out[key] = cur;
+  }
+  return out;
+}
+
+function updatePerCharacterBaseStats(charKey, external) {
+  const targetPath = path.join('data', 'characters', charKey, 'base_stats.js');
+  const existing = readPerCharacterBlock(targetPath, 'basicStatsData', charKey);
+  const payload = buildBaseStatsObjectFromExternal(external, existing);
+  writePerCharacterBlock(targetPath, 'base_stats', 'basicStatsData', charKey, payload);
+}
+
 async function main() {
   await ensureDepsLoaded();
   const { lang, code } = parseArgs();
   const mapping = loadCodenameMapping();
   const local = resolveLocalCodename(code, mapping);
 
-  // external per language
   const extTarget = loadExternal(lang, local);
 
   // find character key via codename in target language characters.js (fallback to KR)
@@ -757,42 +1033,20 @@ async function main() {
     process.exit(2);
   }
 
-  // Update ritual/skills/base for requested language if data exists
+  // per-character 파일 4종만 갱신: ritual / skill / weapon / base_stats
   if (extTarget && extTarget.data) {
-    updateRitual(lang, key, extTarget);
-    updateSkills(lang, key, extTarget);
-    if (lang === 'kr') updateBaseStatsKR(key, extTarget);
+    updatePerCharacterRitual(lang, key, extTarget);
+    updatePerCharacterSkills(lang, key, extTarget);
+    updatePerCharacterBaseStats(key, extTarget);
   } else {
-    console.warn(`[warn] Skip skills/stats update for ${lang}:${local} due to null data`);
+    console.warn(`[warn] External character data missing or invalid for ${lang}:${local}`);
   }
 
-  // Update weapon (best-effort, independant of character data)
   const extWeapon = loadExternalWeapon(lang, local);
   if (extWeapon && extWeapon.data) {
-    updateWeapons(lang, key, extWeapon);
+    updatePerCharacterWeapon(lang, key, extWeapon);
   } else {
-    console.warn(`[warn] Skip weapon update for ${lang}:${local} due to null data`);
-  }
-
-  // Names enrichment from multiple languages (best-effort)
-  const extEN = loadExternalSilent('en', local);
-  const extJP = loadExternalSilent('jp', local);
-  const extCN = loadExternalSilent('cn', local);
-  const extTW = loadExternalSilent('tw', local);
-  const nameMap = {
-    en: extEN?.data?.name || null,
-    jp: extJP?.data?.name || null,
-    cn: extCN?.data?.name || null,
-    tw: extTW?.data?.name || null
-  };
-  updateNamesKR(local, key, nameMap);
-
-  // Per-character unified ritual/skill/weapon files
-  try {
-    writePerCharacterUnified(key);
-    console.error(`::notice::[per-character] wrote ritual/skill/weapon for '${key}'`);
-  } catch (e) {
-    console.error(`::warning::[per-character] failed to write unified files for ${key}:`, e?.message || e);
+    console.warn(`[warn] External weapon data missing or invalid for ${lang}:${local}`);
   }
 
   console.log(`Sync completed for ${lang}:${local} (key='${key}')`);

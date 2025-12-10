@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Berith",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Tarukaja"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 116.4/122.2/128.0% of Attack.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Cleave"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Fire damage taken by 4.7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Fire Reduction I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Defense by 5.3%. Decrease weakness damage by 24%.",
+          "name": "Duke's Intimidation"
+        },
+        {
+          "desc": "Increase Defense by 5.3%. Decrease weakness damage by 28%.",
+          "name": "Duke's Intimidation I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Bishamonten",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Nuclear damage to 1 foe equal to 180.0%/189.0%/198.0% of Attack. If foe has an elemental ailment, increase this skill's damage by 25%. Increase nuclear allies' Attack by 20.0%/21.0%/22.0% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Imperial Purge"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Nuclear damage by 10.8%.",
+          "learn_level": "9",
+          "level": "6/7/8",
+          "name": "Nuke Boost IV"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "Deal Nuclear damage to all foes equal to 71.1/74.6/78.1% of Attack. Deal a Technical and increase damage by 22% for foes with an elemental ailment.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Cosmic Flare"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 10.5% when surrounded by enemies.",
+          "learn_level": "27",
+          "level": "6/7/8",
+          "name": "Adverse Resolve IV"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Nuclear damage taken by 10.8%.",
+          "learn_level": "36",
+          "level": "6/7/8",
+          "name": "Nuclear Reduction IV"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical rate by 17.5%. When using a skill on a foe, for each elemental ailment on the main target, increase Nuclear damage taken by 8% for 2 turns. Stacks up to 3 times.",
+          "name": "Tower of Purification"
+        },
+        {
+          "desc": "Increase critical rate by 17.5%. When using a skill on a foe, for each elemental ailment on the main target, increase Nuclear damage taken by 10% for 2 turns. Stacks up to 3 times.",
+          "name": "Tower of Purification I"
+        },
+        {
+          "desc": "Increase critical rate by 17.5%. When using a skill on a foe, for each elemental ailment on the main target, increase Nuclear damage taken by 10% for 2 turns. Stacks up to 3 times. All other foes take 20% of this effect.",
+          "name": "Tower of Purification II"
+        },
+        {
+          "desc": "Increase critical rate by 17.5%. When using a skill on a foe, for each elemental ailment on the main target, increase Nuclear damage taken by 10% for 2 turns. Stacks up to 3 times. All other foes take 40% of this effect.",
+          "name": "Tower of Purification III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

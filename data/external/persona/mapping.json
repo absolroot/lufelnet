@@ -1,0 +1,1282 @@
+{
+  "101": {
+    "name_kr": "야노식",
+    "name_en": "Jánošík",
+    "name_jp": "ヤノシーク",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "111": {
+    "name_kr": "잭 오 랜턴",
+    "name_en": "Jack-o'-Lantern",
+    "name_jp": "ジャックランタン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "112": {
+    "name_kr": "엘리고르",
+    "name_en": "Eligor",
+    "name_jp": "エリゴール",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "113": {
+    "name_kr": "몰록",
+    "name_en": "Moloch",
+    "name_jp": "モロク",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "114": {
+    "name_kr": "잭 프로스트",
+    "name_en": "Jack Frost",
+    "name_jp": "ジャックフロスト",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "115": {
+    "name_kr": "토르",
+    "name_en": "Thor",
+    "name_jp": "トール",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "116": {
+    "name_kr": "아가시온",
+    "name_en": "Agathion",
+    "name_jp": "アガシオン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "117": {
+    "name_kr": "바이콘",
+    "name_en": "Bicorn",
+    "name_jp": "バイコーン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "118": {
+    "name_kr": "티타니아",
+    "name_en": "Titania",
+    "name_jp": "ティターニア",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "119": {
+    "name_kr": "이시스",
+    "name_en": "Isis",
+    "name_jp": "イシス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "120": {
+    "name_kr": "라미아",
+    "name_en": "Lamia",
+    "name_jp": "ラミア",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "121": {
+    "name_kr": "오베론",
+    "name_en": "Oberon",
+    "name_jp": "オベロン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "122": {
+    "name_kr": "서큐버스",
+    "name_en": "Succubus",
+    "name_jp": "サキュバス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "123": {
+    "name_kr": "쿠 훌린",
+    "name_en": "Cu Chulainn",
+    "name_jp": "クー・フーリン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "124": {
+    "name_kr": "도미니온",
+    "name_en": "Dominion",
+    "name_jp": "ドミニオン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "125": {
+    "name_kr": "가브리엘",
+    "name_en": "Gabriel",
+    "name_jp": "ガブリエル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "126": {
+    "name_kr": "사악한 프로스트",
+    "name_en": "Black Frost",
+    "name_jp": "ジャアクフロスト",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "127": {
+    "name_kr": "킹 프로스트",
+    "name_en": "King Frost",
+    "name_jp": "キングフロスト",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "128": {
+    "name_kr": "미카엘",
+    "name_en": "Michael",
+    "name_jp": "ミカエル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "129": {
+    "name_kr": "모코이",
+    "name_en": "Mokoi",
+    "name_jp": "モコイ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "130": {
+    "name_kr": "오니",
+    "name_en": "Oni",
+    "name_jp": "オニ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "131": {
+    "name_kr": "오르트로스",
+    "name_en": "Orthrus",
+    "name_jp": "オルトロス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "132": {
+    "name_kr": "파르바티",
+    "name_en": "Parvati",
+    "name_jp": "パールヴァティ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "133": {
+    "name_kr": "가짜 랑다",
+    "name_en": "Error: tnxotb-[133]",
+    "name_jp": "エラー：tnxotb-[133] \nテキストデータに問題があります\n運営にお問い合わせください",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "134": {
+    "name_kr": "릴림",
+    "name_en": "Lilim",
+    "name_jp": "リリム",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "135": {
+    "name_kr": "산달폰",
+    "name_en": "Sandalphon",
+    "name_jp": "サンダルフォン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "136": {
+    "name_kr": "사라스바티",
+    "name_en": "Sarasvati",
+    "name_jp": "サラスヴァティ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "137": {
+    "name_kr": "앨리스",
+    "name_en": "Alice",
+    "name_jp": "アリス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "138": {
+    "name_kr": "유니콘",
+    "name_en": "Unicorn",
+    "name_jp": "ユニコーン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "139": {
+    "name_kr": "요시츠네",
+    "name_en": "Yoshitsune",
+    "name_jp": "ヨシツネ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "140": {
+    "name_kr": "쿠라마텐구",
+    "name_en": "Kurama Tengu",
+    "name_jp": "クラマテング",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "141": {
+    "name_kr": "자타유",
+    "name_en": "Jatayu",
+    "name_jp": "ジャターユ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "142": {
+    "name_kr": "아크엔젤",
+    "name_en": "Archangel",
+    "name_jp": "アークエンジェル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "143": {
+    "name_kr": "주작",
+    "name_en": "Suzaku",
+    "name_jp": "スザク",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "144": {
+    "name_kr": "클로토",
+    "name_en": "Clotho",
+    "name_jp": "クロト",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "145": {
+    "name_kr": "네코쇼군",
+    "name_en": "Neko Shogun",
+    "name_jp": "ネコショウグン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "146": {
+    "name_kr": "아누비스",
+    "name_en": "Anubis",
+    "name_jp": "アヌビス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "147": {
+    "name_kr": "파즈스",
+    "name_en": "Pazuzu",
+    "name_jp": "パズス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "148": {
+    "name_kr": "오오쿠니누시",
+    "name_en": "Okuninushi",
+    "name_jp": "オオクニヌシ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "149": {
+    "name_kr": "백호",
+    "name_en": "Byakko",
+    "name_jp": "ビャッコ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "150": {
+    "name_kr": "호루스",
+    "name_en": "Horus",
+    "name_jp": "ホルス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "151": {
+    "name_kr": "락슈미",
+    "name_en": "Lakshmi",
+    "name_jp": "ラクシュミ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "152": {
+    "name_kr": "황룡",
+    "name_en": "Kohryu",
+    "name_jp": "コウリュウ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "153": {
+    "name_kr": "세트",
+    "name_en": "Seth",
+    "name_jp": "セト",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "154": {
+    "name_kr": "스다마",
+    "name_en": "Sudama",
+    "name_jp": "スダマ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "155": {
+    "name_kr": "오바리욘",
+    "name_en": "Obariyon",
+    "name_jp": "オバリヨン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "156": {
+    "name_kr": "픽시",
+    "name_en": "Pixie",
+    "name_jp": "ピクシー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "157": {
+    "name_kr": "이누가미",
+    "name_en": "Inugami",
+    "name_jp": "イヌガミ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "158": {
+    "name_kr": "시키오우지",
+    "name_en": "Shiki-Ouji",
+    "name_jp": "シキオウジ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "159": {
+    "name_kr": "벅스",
+    "name_en": "Bugs",
+    "name_jp": "バグス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "160": {
+    "name_kr": "야마타노오로치",
+    "name_en": "Yamata-no-Orochi",
+    "name_jp": "ヤマタノオロチ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "161": {
+    "name_kr": "비슈누",
+    "name_en": "Vishnu",
+    "name_jp": "ヴィシュヌ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "162": {
+    "name_kr": "마다",
+    "name_en": "Mada",
+    "name_jp": "マダ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "163": {
+    "name_kr": "맨드레이크",
+    "name_en": "Mandrake",
+    "name_jp": "マンドレイク",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "164": {
+    "name_kr": "인큐버스",
+    "name_en": "Incubus",
+    "name_jp": "インキュバス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "165": {
+    "name_kr": "마카미",
+    "name_en": "Makami",
+    "name_jp": "マカミ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "166": {
+    "name_kr": "하이픽시",
+    "name_en": "High Pixie",
+    "name_jp": "ハイピクシー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "167": {
+    "name_kr": "랴난시",
+    "name_en": "Leanan Sidhe",
+    "name_jp": "リャナンシー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "168": {
+    "name_kr": "봉황",
+    "name_en": "Phoenix",
+    "name_jp": "ホウオウ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "169": {
+    "name_kr": "지국천",
+    "name_en": "Jikokuten",
+    "name_jp": "ジコクテン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "170": {
+    "name_kr": "아메노우즈메",
+    "name_en": "Ame-no-Uzume",
+    "name_jp": "アメノウズメ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "171": {
+    "name_kr": "라케시스",
+    "name_en": "Lachesis",
+    "name_jp": "ラケシス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "172": {
+    "name_kr": "증장천",
+    "name_en": "Zouchouten",
+    "name_jp": "ゾウチョウテン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "173": {
+    "name_kr": "아라하바키",
+    "name_en": "Arahabaki",
+    "name_jp": "アラハバキ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "174": {
+    "name_kr": "헬즈 엔젤",
+    "name_en": "Hell Biker",
+    "name_jp": "ヘルズエンジェル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "175": {
+    "name_kr": "노른",
+    "name_en": "Norn",
+    "name_jp": "ノルン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "176": {
+    "name_kr": "가네샤",
+    "name_en": "Ganesha",
+    "name_jp": "ガネーシャ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "177": {
+    "name_kr": "실키",
+    "name_en": "Silky",
+    "name_jp": "シルキー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "178": {
+    "name_kr": "화백",
+    "name_en": "Hua Po",
+    "name_jp": "カハク",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "179": {
+    "name_kr": "코로포클",
+    "name_en": "Koropokguru",
+    "name_jp": "コロポックル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "180": {
+    "name_kr": "콧파텐구",
+    "name_en": "Koppa Tengu",
+    "name_jp": "コッパテング",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "181": {
+    "name_kr": "엔젤",
+    "name_en": "Angel",
+    "name_jp": "エンジェル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "182": {
+    "name_kr": "온모라키",
+    "name_en": "Onmoraki",
+    "name_jp": "オンモラキ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "183": {
+    "name_kr": "잇폰다타라",
+    "name_en": "Ippon-Datara",
+    "name_jp": "イッポンダタラ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "184": {
+    "name_kr": "오로바스",
+    "name_en": "Orobas",
+    "name_jp": "オロバス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "185": {
+    "name_kr": "네코마타",
+    "name_en": "Nekomata",
+    "name_jp": "ネコマタ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "186": {
+    "name_kr": "누에",
+    "name_en": "Nue",
+    "name_jp": "ヌエ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "187": {
+    "name_kr": "킨키",
+    "name_en": "Kin-Ki",
+    "name_jp": "キンキ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "188": {
+    "name_kr": "데카라비아",
+    "name_en": "Decarabia",
+    "name_jp": "デカラビア",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "189": {
+    "name_kr": "모스맨",
+    "name_en": "Mothman",
+    "name_jp": "モスマン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "190": {
+    "name_kr": "벨페고르",
+    "name_en": "Belphegor",
+    "name_jp": "ベルフェゴール",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "191": {
+    "name_kr": "케르베로스",
+    "name_en": "Cerberus",
+    "name_jp": "ケルベロス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "192": {
+    "name_kr": "아프사라스",
+    "name_en": "Apsaras",
+    "name_jp": "アプサラス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "193": {
+    "name_kr": "코다마",
+    "name_en": "Kodama",
+    "name_jp": "コダマ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "194": {
+    "name_kr": "시사",
+    "name_en": "Shiisaa",
+    "name_jp": "シーサー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "195": {
+    "name_kr": "야크시니",
+    "name_en": "Yaksini",
+    "name_jp": "ヤクシニー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "196": {
+    "name_kr": "스이키",
+    "name_en": "Sui-Ki",
+    "name_jp": "スイキ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "197": {
+    "name_kr": "락샤사",
+    "name_en": "Rakshasa",
+    "name_jp": "ラクシャーサ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "198": {
+    "name_kr": "샌드맨",
+    "name_en": "Sandman",
+    "name_jp": "ザントマン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "199": {
+    "name_kr": "나가",
+    "name_en": "Naga",
+    "name_jp": "ナーガ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "200": {
+    "name_kr": "안즈",
+    "name_en": "Anzu",
+    "name_jp": "アンズー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "201": {
+    "name_kr": "토트",
+    "name_en": "Thoth",
+    "name_jp": "トート",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "202": {
+    "name_kr": "케완",
+    "name_en": "Kaiwan",
+    "name_jp": "キウン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "203": {
+    "name_kr": "아트로포스",
+    "name_en": "Atropos",
+    "name_jp": "アトロポス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "204": {
+    "name_kr": "하리티",
+    "name_en": "Hariti",
+    "name_jp": "ハリティー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "205": {
+    "name_kr": "파워",
+    "name_en": "Power",
+    "name_jp": "パワー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "206": {
+    "name_kr": "헤카톤케일",
+    "name_en": "Hecatoncheires",
+    "name_jp": "ヘカトンケイル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "207": {
+    "name_kr": "유룽",
+    "name_en": "Yurlungur",
+    "name_jp": "ユルング",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "208": {
+    "name_kr": "기리메칼라",
+    "name_en": "Girimehkala",
+    "name_jp": "ギリメカラ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "209": {
+    "name_kr": "마라",
+    "name_en": "Mara",
+    "name_jp": "マーラ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "210": {
+    "name_kr": "쿠반다",
+    "name_en": "Kumbhanda",
+    "name_jp": "クヴァンダ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "211": {
+    "name_kr": "마타도르",
+    "name_en": "Matador",
+    "name_jp": "マタドール",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "212": {
+    "name_kr": "케찰코아틀",
+    "name_en": "Quetzalcoatl",
+    "name_jp": "ケツアルカトル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "213": {
+    "name_kr": "수르트",
+    "name_en": "Surt",
+    "name_jp": "スルト",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "214": {
+    "name_kr": "바포멧",
+    "name_en": "Baphomet",
+    "name_jp": "バフォメット",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "215": {
+    "name_kr": "나가라자",
+    "name_en": "Raja Naga",
+    "name_jp": "ナーガラジャ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "216": {
+    "name_kr": "바롱",
+    "name_en": "Barong",
+    "name_jp": "バロン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "217": {
+    "name_kr": "가루다",
+    "name_en": "Garuda",
+    "name_jp": "ガルーダ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "218": {
+    "name_kr": "대승정",
+    "name_en": "Daisoujou",
+    "name_jp": "だいそうじょう",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "219": {
+    "name_kr": "오세",
+    "name_en": "Ose",
+    "name_jp": "オセ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "220": {
+    "name_kr": "켈피",
+    "name_en": "Kelpie",
+    "name_jp": "ケルピー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "221": {
+    "name_kr": "사키미타마",
+    "name_en": "Saki Mitama",
+    "name_jp": "サキミタマ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "222": {
+    "name_kr": "현무",
+    "name_en": "Genbu",
+    "name_jp": "ゲンブ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "223": {
+    "name_kr": "베리스",
+    "name_en": "Berith",
+    "name_jp": "ベリス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "224": {
+    "name_kr": "안드라스",
+    "name_en": "Andras",
+    "name_jp": "アンドラス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "225": {
+    "name_kr": "슬라임",
+    "name_en": "Slime",
+    "name_jp": "スライム",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "226": {
+    "name_kr": "니기미타마",
+    "name_en": "Nigi Mitama",
+    "name_jp": "ニギミタマ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "227": {
+    "name_kr": "후우키",
+    "name_en": "Fuu-Ki",
+    "name_jp": "フウキ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "228": {
+    "name_kr": "플라로우스",
+    "name_en": "Flauros",
+    "name_jp": "フラロウス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "229": {
+    "name_kr": "세탄타",
+    "name_en": "Setanta",
+    "name_jp": "セタンタ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "230": {
+    "name_kr": "블랙 우즈",
+    "name_en": "Black Ooze",
+    "name_jp": "ブラックウーズ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "231": {
+    "name_kr": "아라미타마",
+    "name_en": "Ara Mitama",
+    "name_jp": "アラミタマ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "232": {
+    "name_kr": "미트라",
+    "name_en": "Mitra",
+    "name_jp": "ミトラ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "233": {
+    "name_kr": "프린시펄리티",
+    "name_en": "Principality",
+    "name_jp": "プリンシパリティ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "234": {
+    "name_kr": "화이트 라이더",
+    "name_en": "White Rider",
+    "name_jp": "ホワイトライダー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "235": {
+    "name_kr": "키쿠리히메",
+    "name_en": "Kikuri-Hime",
+    "name_jp": "キクリヒメ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "236": {
+    "name_kr": "레드 라이더",
+    "name_en": "Red Rider",
+    "name_jp": "レッドライダー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "237": {
+    "name_kr": "쿠시나다히메",
+    "name_en": "Kushinada",
+    "name_jp": "クシナダヒメ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "238": {
+    "name_kr": "퀸 메이브",
+    "name_en": "Queen Mab",
+    "name_jp": "クイーンメイブ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "239": {
+    "name_kr": "발키리",
+    "name_en": "Valkyrie",
+    "name_jp": "ヴァルキリー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "240": {
+    "name_kr": "스카아하",
+    "name_en": "Scathach",
+    "name_jp": "スカアハ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "241": {
+    "name_kr": "랑다",
+    "name_en": "Rangda",
+    "name_jp": "ランダ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "242": {
+    "name_kr": "광목천",
+    "name_en": "Koumokuten",
+    "name_jp": "コウモクテン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "243": {
+    "name_kr": "나르키소스",
+    "name_en": "Narcissus",
+    "name_jp": "ナルキッソス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "244": {
+    "name_kr": "다키니",
+    "name_en": "Dakini",
+    "name_jp": "ダーキニー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "245": {
+    "name_kr": "페일 라이더",
+    "name_en": "Pale Rider",
+    "name_jp": "ペイルライダー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "246": {
+    "name_kr": "야타가라스",
+    "name_en": "Yatagarasu",
+    "name_jp": "ヤタガラス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "247": {
+    "name_kr": "블랙 라이더",
+    "name_en": "Black Rider",
+    "name_jp": "ブラックライダー",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "248": {
+    "name_kr": "청룡",
+    "name_en": "Seiryu",
+    "name_jp": "セイリュウ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "249": {
+    "name_kr": "미트라스",
+    "name_en": "Mithras",
+    "name_jp": "ミトラス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "250": {
+    "name_kr": "쿠시미타마",
+    "name_en": "Kushi Mitama",
+    "name_jp": "クシミタマ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "251": {
+    "name_kr": "벨리알",
+    "name_en": "Belial",
+    "name_jp": "ベリアル",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "252": {
+    "name_kr": "비사문천",
+    "name_en": "Bishamonten",
+    "name_jp": "ビシャモンテン",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "253": {
+    "name_kr": "네비로스",
+    "name_en": "Nebiros",
+    "name_jp": "ネビロス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "254": {
+    "name_kr": "디오니소스",
+    "name_en": "Dionysus",
+    "name_jp": "ディオニュソス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "255": {
+    "name_kr": "멜키세덱",
+    "name_en": "Melchizedek",
+    "name_jp": "メルキセデク",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "256": {
+    "name_kr": "트럼페터",
+    "name_en": "Trumpeter",
+    "name_jp": "トランペッター",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "257": {
+    "name_kr": "스카디",
+    "name_en": "Skadi",
+    "name_jp": "スカディ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "258": {
+    "name_kr": "체르노보그",
+    "name_en": "Chernobog",
+    "name_jp": "チェルノボグ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "259": {
+    "name_kr": "릴리스",
+    "name_en": "Lilith",
+    "name_jp": "リリス",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "260": {
+    "name_kr": "시바",
+    "name_en": "Shiva",
+    "name_jp": "シヴァ",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "261": {
+    "name_kr": "스라오샤",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "262": {
+    "name_kr": "트론",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "263": {
+    "name_kr": "자오우곤겐",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "264": {
+    "name_kr": "지크프리트",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "265": {
+    "name_kr": "년수",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "266": {
+    "name_kr": "바스키",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "267": {
+    "name_kr": "사히모치노카미",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "268": {
+    "name_kr": "마카브르",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  },
+  "269": {
+    "name_kr": "???",
+    "name_en": "",
+    "name_jp": "",
+    "name_cn": "",
+    "name_tw": "",
+    "name_sea": ""
+  }
+}

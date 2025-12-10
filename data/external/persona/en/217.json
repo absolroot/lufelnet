@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Garuda",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Decrease 1 foe's Defense by 38.8%/40.7%/42.7% for 3 turns.",
+        "level": "6/7/8",
+        "name": "Rakunda"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 21",
+          "desc": "Deal Wind damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Windswept for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Garudyne"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Bless damage taken by 8.7%.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Bless Reduction III"
+        },
+        {
+          "cost": "SP 22",
+          "desc": "43.6/45.8/48.0% chance to inflict Sleep on 1 foe for 2 turns.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Dormina"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Sleep accuracy by 16.3%.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "Sleep Boost III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 17.5%. After using a Wind skill on a foe, increase main target's Wind damage taken by 14% for 2 turns.",
+          "name": "Immortal Bird's Gaze"
+        },
+        {
+          "desc": "Increase Attack by 17.5%. After using a Wind skill on a foe, increase main target's Wind damage taken by 15.8% for 2 turns.",
+          "name": "Immortal Bird's Gaze I"
+        },
+        {
+          "desc": "Increase Attack by 17.5%. After using a Wind skill on a foe, increase main target's Wind damage taken by 17.6% for 2 turns.",
+          "name": "Immortal Bird's Gaze II"
+        },
+        {
+          "desc": "Increase Attack by 17.5%. After using a Wind skill on a foe, increase main target's Wind damage taken by 19.4% for 2 turns.",
+          "name": "Immortal Bird's Gaze III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

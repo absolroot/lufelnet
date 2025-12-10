@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Anubis",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Curse damage to 1 foe equal to 165.0%/173.2%/181.5% of Attack. When the skill is used, for each Blessing stack on the user or Curse stack on the target, increase damage by 10%. Stacks up to 4 times.",
+        "level": "6/7/8",
+        "name": "Underworld Judgment"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Bless damage to 1 foe equal to 123.2/130.7/138.2% of Attack. Gain 1 to 2 Blessing stacks.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Kouga"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Curse damage to 1 foe equal to 124.2/131.7/139.2% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Eiga"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Bless damage by 6.7%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Bless Boost II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Curse damage by 6.7%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Curse Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 16.6%. After dealing Bless damage, gain 1-2 Blessing stacks. After dealing Curse damage, inflict 1-2 Curse stacks on the main target. When attacking an foe inflicted with Curse, increase Attack by 20%.",
+          "name": "Arbiter of Souls"
+        },
+        {
+          "desc": "Increase Attack by 16.6%. After dealing Bless damage, gain 2 Blessing stacks. After dealing Curse damage, inflict 2 Curse stacks on the main target. When attacking a foe inflicted with Curse, increase Attack by 23.5%.",
+          "name": "Arbiter of Souls I"
+        },
+        {
+          "desc": "Increase Attack by 16.6%. After dealing Bless damage, gain 2 Blessing stacks, and 50% chance to inflict 1 Curse stack on the target. After dealing Curse damage, inflict 2 Curse stacks on the main target, and 50% chance to gain 1 Blessing stack. When attacking a foe inflicted with Curse, increase Attack by 27%.",
+          "name": "Arbiter of Souls II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

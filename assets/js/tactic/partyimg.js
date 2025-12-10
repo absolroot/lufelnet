@@ -154,14 +154,25 @@
           return 'kr';
         }
 
+        // 공통 페르소나 데이터 소스 (window.personaFiles 우선)
+        function getPersonaStore() {
+          const w = (typeof window !== 'undefined') ? window : globalThis;
+          if (w.personaFiles && Object.keys(w.personaFiles).length) return w.personaFiles;
+          if (typeof personaData !== 'undefined' && personaData) return personaData;
+          if (w.persona && w.persona.personaData) return w.persona.personaData;
+          return {};
+        }
+        const personaStore = getPersonaStore();
+
         // 페르소나 이름 번역 함수
         function getPersonaDisplayName(personaName) {
           const currentLang = getCurrentLanguage();
-          if (currentLang === 'kr' || !personaData[personaName]) {
+          const store = personaStore || {};
+          if (currentLang === 'kr' || !store[personaName]) {
             return personaName;
           }
           
-          const personaObj = personaData[personaName];
+          const personaObj = store[personaName];
           if (currentLang === 'en' && personaObj.name_en) {
             return personaObj.name_en;
           } else if (currentLang === 'jp' && personaObj.name_jp) {
@@ -172,24 +183,71 @@
         
         // 툴팁 내용 구성 (번역 적용)
         const currentLang = getCurrentLanguage();
-        const instinct = personaData[persona]?.instinct;
+        const store = personaStore || {};
+        const personaObj = store[persona];
         const displayPersonaName = getPersonaDisplayName(persona);
-        
-        let instinctName = instinct?.name || "";
-        let instinctEffects = instinct?.effects || [];
-        
-        // 본능 이름 번역
-        if (currentLang === 'en' && instinct?.name_en) {
-          instinctName = instinct.name_en;
-        } else if (currentLang === 'jp' && instinct?.name_jp) {
-          instinctName = instinct.name_jp;
-        }
-        
-        // 본능 효과 번역
-        if (currentLang === 'en' && instinct?.effects_en) {
-          instinctEffects = instinct.effects_en;
-        } else if (currentLang === 'jp' && instinct?.effects_jp) {
-          instinctEffects = instinct.effects_jp;
+
+        let instinctName = "";
+        let instinctEffects = [];
+
+        if (personaObj) {
+          // 새 구조: passive_skill 배열에서 마지막 1개(야노식은 마지막 2개)만 사용
+          if (Array.isArray(personaObj.passive_skill) && personaObj.passive_skill.length > 0) {
+            const arr = personaObj.passive_skill;
+            let selected = [];
+            if (persona === '야노식') {
+              selected = arr.slice(-2); // 마지막 2개
+            } else {
+              selected = [arr[arr.length - 1]]; // 마지막 1개
+            }
+
+            const names = [];
+            const effectLines = [];
+
+            selected.forEach(ps => {
+              if (!ps) return;
+              let n = ps.name;
+              let d = ps.desc;
+              if (currentLang === 'en') {
+                n = ps.name_en || n;
+                d = ps.desc_en || d;
+              } else if (currentLang === 'jp') {
+                n = ps.name_jp || n;
+                d = ps.desc_jp || d;
+              }
+              if (n) names.push(n);
+              if (d) {
+                if (Array.isArray(d)) {
+                  effectLines.push(...d);
+                } else {
+                  effectLines.push(...String(d).split('\n'));
+                }
+              }
+            });
+
+            instinctName = names.join(' / ');
+            instinctEffects = effectLines;
+          }
+          // 구 구조 fallback: persona.instinct 사용
+          else if (personaObj.instinct) {
+            const instinct = personaObj.instinct;
+            instinctName = instinct.name || "";
+            instinctEffects = Array.isArray(instinct.effects) ? instinct.effects.slice() : (instinct.effects ? [instinct.effects] : []);
+
+            // 본능 이름 번역
+            if (currentLang === 'en' && instinct.name_en) {
+              instinctName = instinct.name_en;
+            } else if (currentLang === 'jp' && instinct.name_jp) {
+              instinctName = instinct.name_jp;
+            }
+
+            // 본능 효과 번역
+            if (currentLang === 'en' && instinct.effects_en) {
+              instinctEffects = Array.isArray(instinct.effects_en) ? instinct.effects_en.slice() : [instinct.effects_en];
+            } else if (currentLang === 'jp' && instinct.effects_jp) {
+              instinctEffects = Array.isArray(instinct.effects_jp) ? instinct.effects_jp.slice() : [instinct.effects_jp];
+            }
+          }
         }
         
         let tooltipText = `${displayPersonaName}\n${instinctName}\n`;

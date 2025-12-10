@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Atropos",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase next magic damage by 52.1%/54.7%/57.3%. Lasts for 1 turn.",
+        "level": "6/7/8",
+        "name": "Concentrate"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Zionga"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Fire damage taken by 6.7%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Fire Reduction II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Electric damage by 6.7%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Elec Boost II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Mazionga"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 17%. After using a skill on user, increase Attack by 40% for 1 turn.",
+          "name": "Cut the Threads of Fate"
+        },
+        {
+          "desc": "Increase ailment accuracy by 17%. After using a skill on user, increase Attack by 46% for 1 turn.",
+          "name": "Cut the Threads of Fate I"
+        },
+        {
+          "desc": "Increase ailment accuracy by 17%. After using a skill on user, increase Attack by 52% for 1 turn.",
+          "name": "Cut the Threads of Fate II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

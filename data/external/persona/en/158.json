@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Shiki-Ouji",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "45.0/47.2/49.5% chance to inflict Rage on 1 foe for 2 turns. Increase user's Defense by 45.0/47.2/49.5%.",
+        "level": "6/7/8",
+        "name": "Raging Malediction"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 6.0%",
+          "desc": "Increase this skill's critical rate by 16%, and deal Gun damage to 1 foe equal to 92.2/96.8/101.4% of Attack.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Snap"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Physical damage taken by 6.7%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Physical Reduction II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Gun damage taken by 6.7%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Gun Reduction II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease damage taken by 6.7%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Reduction Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Defense by 18.6%. After taking damage, permanently increase Defense by 19%. Stacks up to 4 times.",
+          "name": "Origami Familiar"
+        },
+        {
+          "desc": "Increase Defense by 18.6%. After taking damage, permanently increase Defense by 22%. Stacks up to 4 times.",
+          "name": "Origami Familiar I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

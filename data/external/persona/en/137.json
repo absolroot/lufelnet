@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Alice",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Increase all foes' Curse damage taken by 17.5%/18.4%/19.2%. Increase by 2.0%/2.1%/2.2% more for every 30% of user's ailment accuracy (up to 10%) for 2 turns. If foe's HP is below 50%, chance to insta-kill.",
+        "level": "6/7/8",
+        "name": "Die For Me!"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase the success rate of insta-kill skills by 6.8%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Call of the Abyss IV"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Curse damage taken by 10.8%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Curse Reduction IV"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Speed by 15. Decrease Defense by 12%.",
+          "learn_level": "30",
+          "level": "6/7/8",
+          "name": "Agility Master IV"
+        },
+        {
+          "cost": "SP 21",
+          "desc": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
+          "learn_level": "40",
+          "level": "6/7/8",
+          "name": "Maeigaon"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 34.9%. Increase all foes' Curse damage taken by 12%. Each time an ally uses a Curse skill, increase Alice's ailment accuracy and Attack by 9.1% for 2 turns. Stacks up to 3 times.",
+          "name": "Undying Curse"
+        },
+        {
+          "desc": "Increase ailment accuracy by 34.9%. Increase all foes' Curse damage taken by 14%. Each time an ally uses a Curse skill, Alice's ailment accuracy and Attack increase by 10.3%. Stacks up to 3 times. Lasts for 2 turns.",
+          "name": "Undying Curse I"
+        },
+        {
+          "desc": "Increase ailment accuracy by 34.9%. Increase all foes' Curse damage taken by 16%. Each time an ally uses a Curse skill, Alice's ailment accuracy and Attack increase by 11.5%. Stacks up to 3 times. Lasts for 2 turns.",
+          "name": "Undying Curse II"
+        },
+        {
+          "desc": "Increase ailment accuracy by 34.9%. Increase all foes' Curse damage taken by 18%. Each time an ally uses a Curse skill, Alice's ailment accuracy and Attack increase by 12.6%. Stacks up to 3 times. Lasts for 2 turns.",
+          "name": "Undying Curse III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

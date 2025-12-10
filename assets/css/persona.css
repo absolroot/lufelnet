@@ -268,6 +268,36 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .skill-type-icon { width: 24px; height: 24px; object-fit: contain; }
 
+/* Unique / Highlight LV 버튼 (LV6 / LV7 / LV8 / ALL) */
+.persona-unique-header,
+.persona-highlight-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.skill-level-buttons {
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 6px;
+}
+
+.skill-level-btn {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.skill-level-btn.active {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
 .persona-grade-img { height: 16px; width: auto; object-fit: contain; }
 
 .persona-info-section p { white-space: pre-line; margin: 0; font-size: 13px; color: rgb(255, 255, 255, 0.8); line-height: 1.5; }
@@ -413,6 +443,24 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 .search-dropdown::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
 
 .search-dropdown::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
+
+/* Global skill level selector (next to expand-all) */
+.skill-level-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.skill-level-label {
+    opacity: 0.9;
+}
+
+.skill-level-separator {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+}
 
 
 .explain-container { margin: 20px 0 0 0; padding: 0 20px; }

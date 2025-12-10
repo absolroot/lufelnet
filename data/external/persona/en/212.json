@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Quetzalcoatl",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Deal Wind damage to all foes equal to 64.8/68.0/71.3% of Attack. 36.0/37.8/39.6% chance to inflict Windswept for 2 turns.",
+        "level": "6/7/8",
+        "name": "Vacuum Wave"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Wind damage by 10.8%.",
+          "learn_level": "9",
+          "level": "6/7/8",
+          "name": "Wind Boost IV"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical damage by 16.2%.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Pinpoint IV"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 6.7/7.0/7.4% chance to inflict Forget for 2 turns.",
+          "learn_level": "27",
+          "level": "6/7/8",
+          "name": "Memory Blow"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Fire damage taken by 10.8%.",
+          "learn_level": "36",
+          "level": "6/7/8",
+          "name": "Fire Reduction IV"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 20.4%. Increase Wind damage to foes with 50% or more HP by 38%.",
+          "name": "Windstorm Wings"
+        },
+        {
+          "desc": "Increase Attack by 20.4%. Increase Wind damage dealt to foes with 50% or more HP by 43%.",
+          "name": "Windstorm Wings I"
+        },
+        {
+          "desc": "Increase Attack by 20.4%. Increase Wind damage to foes with 50% or more HP by 48%.",
+          "name": "Windstorm Wings II"
+        },
+        {
+          "desc": "Increase Attack by 20.4%. Increase Wind damage to foes with 50% or more HP by 53%.",
+          "name": "Windstorm Wings III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

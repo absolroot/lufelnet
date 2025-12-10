@@ -2,6 +2,16 @@
 function setupWonderConfig() {
 const wonderConfigDiv = document.getElementById("wonder-config");
 
+// 공통 페르소나 데이터 소스 (window.personaFiles 우선)
+function getPersonaStore() {
+  const w = (typeof window !== 'undefined') ? window : globalThis;
+  if (w.personaFiles && Object.keys(w.personaFiles).length) return w.personaFiles;
+  if (typeof personaData !== 'undefined' && personaData) return personaData;
+  if (w.persona && w.persona.personaData) return w.persona.personaData;
+  return {};
+}
+const personaStore = getPersonaStore();
+
 // 현재 언어 감지 함수
 function getCurrentLanguage() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -22,11 +32,11 @@ function getCurrentLanguage() {
 // 페르소나 이름 번역 함수
 function getPersonaDisplayName(personaName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !personaData[personaName]) {
+  if (currentLang === 'kr' || !personaStore[personaName]) {
     return personaName;
   }
   
-  const persona = personaData[personaName];
+  const persona = personaStore[personaName];
   if (currentLang === 'en' && persona.name_en) {
     return persona.name_en;
   } else if (currentLang === 'jp' && persona.name_jp) {
@@ -97,11 +107,11 @@ function getPlaceholderText(type) {
 // 고유스킬 이름 번역 함수 (페르소나 데이터에서)
 function getUniqueSkillDisplayName(personaName, skillName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !personaData[personaName]) {
+  if (currentLang === 'kr' || !personaStore[personaName]) {
     return skillName;
   }
   
-  const persona = personaData[personaName];
+  const persona = personaStore[personaName];
   if (persona.uniqueSkill) {
     if (currentLang === 'en' && persona.uniqueSkill.name_en) {
       return persona.uniqueSkill.name_en;
@@ -549,7 +559,7 @@ function renderPortalList(filter) {
 
   if (type === 'persona') {
     // 페르소나 목록
-    let items = Object.keys(personaData);
+    let items = Object.keys(personaStore);
     if (filter) {
       const f = filter.toLowerCase();
       items = items.filter(p => {
@@ -1010,15 +1020,15 @@ inputs.forEach((input, idx) => {
         `.persona-skill-input[data-persona-index="${idx}"][data-skill-slot="0"]`
     );
     
-    if (newPersona && personaData[newPersona]) {
+    if (newPersona && personaStore[newPersona]) {
         // 고유 스킬 설정 및 비활성화 (번역된 이름으로 표시)
-        const uniqueSkillName = personaData[newPersona].uniqueSkill.name;
+        const uniqueSkillName = (personaStore[newPersona] && personaStore[newPersona].uniqueSkill && personaStore[newPersona].uniqueSkill.name) || '';
         uniqueSkillInput.value = uniqueSkillName;
         uniqueSkillInput.disabled = true;
         uniqueSkillInput.classList.add('unique-skill');
         // 고유 스킬 아이콘 표시 (언어에 따라 icon_gl 우선)
         const lang = getCurrentLanguage();
-        const u = personaData[newPersona]?.uniqueSkill || {};
+        const u = personaStore[newPersona]?.uniqueSkill || {};
         const uniqueIconKey = (lang === 'en' || lang === 'jp') ? (u.icon_gl || u.icon || '') : (u.icon || '');
         setSkillIconOnInputWithElement(uniqueSkillInput, uniqueIconKey);
         
@@ -1083,7 +1093,7 @@ function initializeTranslations() {
   inputs.forEach((input) => {
     const inputContainer = input.closest('.input-container');
     if (!inputContainer) return;
-    if (input.value && personaData[input.value]) {
+    if (input.value && personaStore[input.value]) {
       const displayName = getPersonaDisplayName(input.value);
       input.setAttribute('data-display-value', displayName);
       if (currentLang !== 'kr') {
@@ -1141,7 +1151,7 @@ window.wonderApplySkillInputDecor = function() {
           personaKey = wonderPersonas[pi];
         }
       }
-      const uData = personaKey ? (personaData[personaKey]?.uniqueSkill || {}) : {};
+      const uData = personaKey ? (personaStore[personaKey]?.uniqueSkill || {}) : {};
       const uIcon = (currentLang === 'en' || currentLang === 'jp') ? (uData.icon_gl || uData.icon || '') : (uData.icon || '');
       setSkillIconOnInputWithElement(input, uIcon || '');
     } else {

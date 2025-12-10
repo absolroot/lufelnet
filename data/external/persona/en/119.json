@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Isis",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
+        "level": "6/7/8",
+        "name": "Diarama"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase healing by 6%.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Healing Boost II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Defense by 12.5%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Protect Boost II"
+        },
+        {
+          "cost": "SP 23",
+          "desc": "Restore party's HP by 16.6/17.4/18.3% of Attack + 502/621/749.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Media"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Zionga"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase HP by 8.7%. After healing, restore target's HP by 4.3% of Attack for 2 turns.",
+          "name": "Ankh of Abundance"
+        },
+        {
+          "desc": "Increase HP by 8.7%. After healing, restore target's HP by 5% of Attack for 2 turns.",
+          "name": "Ankh of Abundance I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

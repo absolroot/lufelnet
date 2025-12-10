@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Obariyon",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 6.0%",
+        "desc": "Increase this skill's critical rate by 16%, and deal Gun damage to 1 foe equal to 92.2/96.8/101.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Snap"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 108.3/113.7/119.1%  of Attack. Increase critical rate by 20%, and decrease accuracy by 20%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Lucky Punch"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical damage by 7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Pinpoint I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical rate by 2.1%. After dealing Gun damage, increase critical rate by 14%.",
+          "name": "Spirit Shooter"
+        },
+        {
+          "desc": "Increase critical rate by 2.1%. After dealing Gun damage, increase critical rate by 16%.",
+          "name": "Spirit Shooter I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Gun damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

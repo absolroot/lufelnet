@@ -1,0 +1,74 @@
+{
+  "data": {
+    "name": "Gabriel",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 27",
+        "desc": "Deal Ice damage to 1 foe. When defeating a foe with this skill, deal Ice damage equal to 200% of Attack to other foes.",
+        "level": "6/7/8",
+        "name": "Horn of Judgment"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase Attack by 5.8%.",
+          "learn_level": "1",
+          "level": "6/7/8",
+          "name": "Attack Boost I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical damage by 7%.",
+          "learn_level": "30",
+          "level": "6/7/8",
+          "name": "Pinpoint I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Physical damage by 4.7%.",
+          "learn_level": "50",
+          "level": "6/7/8",
+          "name": "Phys Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase skill damage to foes below 50% HP by 10%.",
+          "name": "Gabriel's Trait 0"
+        },
+        {
+          "desc": "Increase skill damage to foes below 50% HP by 20%.",
+          "name": "Gabriel's Trait 1"
+        },
+        {
+          "desc": "Increase Ice damage.",
+          "name": "Gabriel's Trait 2"
+        },
+        {
+          "desc": "After dealing Ice damage, insta-kill foe if the foe's HP is below 5%.",
+          "name": "Gabriel's Trait 3"
+        },
+        {
+          "desc": "Decrease Curse damage taken.",
+          "name": "Gabriel's Trait 4"
+        },
+        {
+          "desc": "After knocking down a foe, increase user's Freeze damage by 10% for 2 turns.",
+          "name": "Gabriel's Trait 5"
+        },
+        {
+          "desc": "After dealing Ice damage, insta-kill foe if the foe's HP is below 10%.",
+          "name": "Gabriel's Trait 6"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Makami",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 19",
+        "desc": "Deal Nuclear damage to 1 foe equal to 114.8/118.7/122.6% of Attack. Deal a Technical and increase damage by 16% for foes with an elemental ailment.",
+        "level": "6/7/8",
+        "name": "Frei"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 58.2/61.1/64.0% of Attack (2 hits).",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Double Fangs"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Nuclear damage by 4.7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Nuke Boost I"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 4.6% when surrounded by enemies.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Adverse Resolve I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack 5.8%. After a Baton Pass, increase Nuclear damage by 23% for 1 turn.",
+          "name": "Relentless Pursuit"
+        },
+        {
+          "desc": "Increase Attack 5.8%. After a Baton Pass, increase Nuclear damage by 27% for 1 turn.",
+          "name": "Relentless Pursuit I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

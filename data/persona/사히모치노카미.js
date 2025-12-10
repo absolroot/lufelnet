@@ -1,0 +1,103 @@
+// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
+window.personaFiles = window.personaFiles || {};
+window.personaFiles["사히모치노카미"] = {
+  "id": "267",
+  "key": "사히모치노카미",
+  "name": "사히모치노카미",
+  "name_en": "Sahimochi-no-kami",
+  "name_jp": "サヒモチノカミ",
+  "grade": "8",
+  "star": "5",
+  "position": "지배",
+  "element": "빙결",
+  "event": true,
+  "wild_emblem_rainbow": true,
+  "best_persona": false,
+  "added": "KR v4.3.2",
+  "cost": null,
+  "combination": null,
+  "recommendSkill": [
+    {
+      "name": "공격 강화",
+      "priority": 0
+    },
+    {
+      "name": "빙결 강화",
+      "priority": 0
+    },
+    {
+      "name": "어드바이스",
+      "priority": 0
+    },
+    {
+      "name": "정교한 타격",
+      "priority": 0
+    },
+    {
+      "name": "마도의 재능",
+      "priority": 0
+    },
+    {
+      "name": "전의 공명",
+      "priority": 0
+    }
+  ],
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
+  "passive_priority": 3,
+  "passive_skill": [
+    {
+      "name": "신속한 귀환자",
+      "name_en": "Swift Returner",
+      "name_jp": "迅速なる送還者",
+      "desc": "공격력이 29.1% 증가한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 1턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1% 증가시킨다.",
+      "desc_en": "Increases ATK by 29.1%. After an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1% per stack for 1 turn.",
+      "desc_jp": "攻撃力が29.1%上昇する。味方がペルソナスキルを発動すると、自身が『寒鱗』を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、『鋭い寒鱗』を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の『寒鱗』が5スタックに達している場合、『寒鱗』と『鋭い寒鱗』をすべて消費し、スタック1つにつき敵が受けるダメージを1%増加させる（持続1ターン）。"
+    },
+    {
+      "name": "신속한 귀환자 Ⅰ",
+      "name_en": "Swift Returner I",
+      "name_jp": "迅速なる送還者 I",
+      "desc": "공격력이 29.1% 증가한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 2턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1% 증가시킨다.",
+      "desc_en": "Increases ATK by 29.1%. After an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1% per stack for 2 turns.",
+      "desc_jp": "攻撃力が29.1%上昇する。味方がペルソナスキルを発動すると、自身が『寒鱗』を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、『鋭い寒鱗』を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の『寒鱗』が5スタックに達している場合、『寒鱗』と『鋭い寒鱗』をすべて消費し、スタック1つにつき敵が受けるダメージを1%増加させる（持続2ターン）。"
+    },
+    {
+      "name": "신속한 귀환자 Ⅱ",
+      "name_en": "Swift Returner II",
+      "name_jp": "迅速なる送還者 II",
+      "desc": "공격력이 29.1% 증가한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 2턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1.5% 증가시킨다.",
+      "desc_en": "Increases ATK by 29.1%. After an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1.5% per stack for 2 turns.",
+      "desc_jp": "攻撃力が29.1%上昇する。戦闘開始時に『寒鱗』を3スタック獲得する。味方がペルソナスキルを発動すると、自身が『寒鱗』を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、『鋭い寒鱗』を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の『寒鱗』が5スタックに達している場合、『寒鱗』と『鋭い寒鱗』をすべて消費し、スタック1つにつき敵が受けるダメージを1.5%増加させる（持続2ターン）。"
+    },
+    {
+      "name": "신속한 귀환자 Ⅲ",
+      "name_en": "Swift Returner III",
+      "name_jp": "迅速なる送還者 III",
+      "desc": "공격력이 29.1% 증가한다. 전투 시작 시 「차가운 비늘」을 5중첩 획득한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 2턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1.5% 증가시킨다.",
+      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 5 stacks of [Cold Scales]. When an ally uses a Persona skill, gain 1 stack of [Cold Scales], up to a maximum of 5 stacks. When triggering an additional effect, gain 1 stack of [Sharp Cold Scales], up to 5 stacks. After using a Persona skill on an enemy, if you have 5 stacks of [Cold Scales], consume all [Cold Scales] and [Sharp Cold Scales] to increase the enemy’s DMG taken by 1.5% per stack for 2 turns.",
+      "desc_jp": "攻撃力が29.1%上昇する。戦闘開始時に『寒鱗』を5スタック獲得する。味方がペルソナスキルを発動すると、自身が『寒鱗』を1スタック獲得し、最大5スタックまで可能。追加効果を発動すると、『鋭い寒鱗』を1スタック獲得し、最大5スタックまで可能。敵にペルソナスキルを使用した後、自身の『寒鱗』が5スタックに達している場合、『寒鱗』と『鋭い寒鱗』をすべて消費し、スタック1つにつき敵が受けるダメージを1.5%増加させる（持続2ターン）。"
+    }
+  ],
+  "uniqueSkill": {
+    "name": "한 줄기 냉기",
+    "name_en": "Chilling Depth",
+    "name_jp": "深淵の冷気",
+    "desc": "적 전체에 공격력 100.0%/105.0%/110.0%의 빙결 속성 대미지를 주고, 2턴 동안 적이 받는 추가 효과 대미지 증폭을 8.0%/8.4%/8.8% 증가시키며, 받는 빙결 속성 대미지가 8.0%/8.4%/8.8% 증가한다.",
+    "desc_en": "Deals 100.0%/105.0%/110.0% ATK Ice dmg to all foes. For 2 turns, increases all foes' additional dmg taken by 8.0%/8.4%/8.8%, and increases all foes' Ice dmg taken by 8.0%/8.4%/8.8%.",
+    "desc_jp": "敵全体に攻撃力100.0%/105.0%/110.0%の氷結属性ダメージを与える。2ターンの間、敵が受ける追加ダメージが8.0%/8.4%/8.8%増加、敵が受ける氷結属性ダメージが8.0%/8.4%/8.8%増加する。",
+    "priority": 2,
+    "icon": "빙결광역",
+    "icon_gl": ""
+  },
+  "highlight": {
+    "name": "HIGHLIGHT",
+    "name_en": "Highlight",
+    "name_jp": "ハイライト",
+    "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 빙결 속성 대미지를 준다.",
+    "desc_en": "Deals 180.0%/192.6%/205.2% ATK as Ice dmg to all foes.",
+    "desc_jp": "全ての敵に180.0%/192.6%/205.2% ATKの氷結属性ダメージを与える。",
+    "priority": 0
+  }
+};

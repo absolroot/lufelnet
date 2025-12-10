@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Moloch",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase party's Defense by 16.3%/17.1%/17.9%. For every 500 of the user's Defense, increase party's Defense by 2.7%/2.8%/3.0% more, up to 10.8%/11.3%/11.9%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Marakukaja"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 21",
+          "desc": "Deal Fire damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Burn for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Agidyne"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Fire damage taken by 8.7%.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Fire Reduction III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase healing received by 4.3%.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Divine Grace III"
+        },
+        {
+          "cost": "SP 21",
+          "desc": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "Maragidyne"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 25%.",
+          "name": "Flame's Protection"
+        },
+        {
+          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 28.5%.",
+          "name": "Flame's Protection I"
+        },
+        {
+          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 31.5%.",
+          "name": "Flame's Protection II"
+        },
+        {
+          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 35%.",
+          "name": "Flame's Protection III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -859,17 +859,19 @@
 
   function findAddedText(personaKrName){
     try{
-      if (typeof personaData === 'object' && personaData){
-        // Direct key
-        if (personaData[personaKrName] && personaData[personaKrName].added){
-          return String(personaData[personaKrName].added);
-        }
-        // Normalized lookup
-        const norm = normalizeName(personaKrName);
-        const key = Object.keys(personaData).find(k => normalizeName(k) === norm);
-        if (key && personaData[key] && personaData[key].added){
-          return String(personaData[key].added);
-        }
+      const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+        ? window.personaFiles
+        : (typeof personaData === 'object' && personaData ? personaData : null);
+      if (!store) return '';
+      // Direct key
+      if (store[personaKrName] && store[personaKrName].added){
+        return String(store[personaKrName].added);
+      }
+      // Normalized lookup
+      const norm = normalizeName(personaKrName);
+      const key = Object.keys(store).find(k => normalizeName(k) === norm);
+      if (key && store[key] && store[key].added){
+        return String(store[key].added);
       }
     }catch(_){ /* ignore */ }
     return '';

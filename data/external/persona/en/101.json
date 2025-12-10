@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Jánošík",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 8.0%",
+        "desc": "Deal Gun damage to 1 foe equal to 203.3%/221.6%/239.9% of Attack. 75% chance to inflict Marked for 2 turns.\nMarked: Decrease Defense by 29.6%/32.3%/34.9%.",
+        "level": "6/7/8",
+        "name": "Tatra Shot"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Gun damage to all foes equal to 23.4%/25.5%/27.7% of Attack (3 hits). If a foe is Marked, increase damage by 30.0%/32.7%/35.4% and critical damage by 36.0%/39.2%/42.5%.",
+          "learn_level": "2",
+          "level": "6/7/8",
+          "name": "Bullet Time"
+        },
+        {
+          "cost": "SP 24",
+          "desc": "Deal Bless damage to all foes equal to 78.8%/85.9%/93.0% of Attack. Restore HP of the ally with the lowest remaining HP, equal to 15.8%/17.2%/18.6% of Attack + 478/614/765.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Seize the Day"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Attack by 5.8%.",
+          "learn_level": "7",
+          "level": "6/7/8",
+          "name": "Attack Boost I"
+        },
+        {
+          "cost": "",
+          "desc": "Restore 2.5% of max HP and SP after winning a battle.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Life Aid I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 4.2%. When any ally attacks a Marked foe, increase Attack by 20%.",
+          "name": "Hunting"
+        },
+        {
+          "desc": "Increase Attack by 12.5%. At the start of battle, Mark a foe. When any ally attacks a Marked foe, increase Attack by 20%.",
+          "name": "Hunting I"
+        },
+        {
+          "desc": "Increase Attack by 20.8%. At the start of battle, Mark a foe. When any ally attacks a Marked foe, increase Attack by 20%. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+          "name": "Hunting II"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. At the start of battle, Mark a foe. When all allies attack a Marked foe, increase Attack by 20%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+          "name": "Hunting III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Gun damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

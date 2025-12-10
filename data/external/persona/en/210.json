@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Kumbhanda",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 8.0%",
+        "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
+        "level": "6/7/8",
+        "name": "Bloodbath"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 7.0%",
+          "desc": "Deal Physical damage to all foes equal to 60.8/63.8/66.9% of Attack.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Heat Wave"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Sleep resistance by 16.3%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Resist Sleep III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Forget resistance by 16.3%.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Resist Forget III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Dizzy resistance by 16.3%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Resist Dizzy III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment resistance by 17.4%. Increase spiritual ailment resistance by 60%.",
+          "name": "Vessel of Souls"
+        },
+        {
+          "desc": "Increase ailment resistance by 17.4%. Increase spiritual ailment resistance by 70%.",
+          "name": "Vessel of Souls I"
+        },
+        {
+          "desc": "Increase ailment resistance by 17.4%. Increase spiritual ailment resistance by 80%.",
+          "name": "Vessel of Souls II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

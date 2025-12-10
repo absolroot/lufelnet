@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Power",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 21",
+        "desc": "Deal Bless damage to 1 foe equal to 130.8/139.1/147.4% of Attack. Gain 1 to 2 Blessing stacks.",
+        "level": "6/7/8",
+        "name": "Kougaon"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "At the start of battle, increase Attack by 15.7% for 2 turns.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Attack Master III"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Wind damage taken by 8.7%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Wind Reduction III"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Hamaon"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical damage by 13%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Pinpoint III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 14.5%. Increase Bless damage to foes below 50% HP by 32%. When only 1 foe is present, increase effect by 50% more.",
+          "name": "Scales of Harmony"
+        },
+        {
+          "desc": "Increase Attack by 14.5%. Increase Bless damage dealt to foes below 50% HP by 37%. When only 1 foe is present, increase effect by 50% more.",
+          "name": "Scales of Harmony I"
+        },
+        {
+          "desc": "Increase Attack by 14.5%. Increase Bless damage to foes below 50% HP by 41%. When only 1 foe is present, increase effect by 50% more.",
+          "name": "Scales of Harmony II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Bless damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

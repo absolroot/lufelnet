@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Kohryu",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal Psychokinesis damage to all foes equal to 101.4%/106.5%/111.5% of Attack.",
+        "level": "6/7/8",
+        "name": "Spirit Strike"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 22",
+          "desc": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Psycho Blast"
+        },
+        {
+          "cost": "",
+          "desc": "Increase damage by 10.8%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Battle Acumen IV"
+        },
+        {
+          "cost": "",
+          "desc": "Restore 6.5% of max HP and SP after winning a battle.",
+          "learn_level": "30",
+          "level": "6/7/8",
+          "name": "Life Aid IV"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease SP cost of skills by 6%.",
+          "learn_level": "40",
+          "level": "6/7/8",
+          "name": "Spell Master IV"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 1 turn. Change Kohryu's skills.",
+          "name": "Auspicious Sign"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
+          "name": "Auspicious Sign I"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. Activates even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
+          "name": "Auspicious Sign II"
+        },
+        {
+          "desc": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase other allies' Attack by 15% for 2 turns. Change Kohryu's skills.",
+          "name": "Auspicious Sign III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Psychokinesis damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

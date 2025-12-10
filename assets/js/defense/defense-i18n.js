@@ -69,7 +69,10 @@
                     const source = (typeof personaSkillList !== 'undefined') ? personaSkillList : (window.personaSkillList || (window.skills && window.skills.personaSkillList));
                     return tryGet(source, nameKr);
                 } else if (kind === 'persona') {
-                    const source = (typeof personaData !== 'undefined') ? personaData : (window.personaData || (window.persona && window.persona.personaData));
+                    const source =
+                        (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+                            ? window.personaFiles
+                            : ((typeof personaData !== 'undefined') ? personaData : (window.personaData || (window.persona && window.persona.personaData)));
                     return tryGet(source, nameKr);
                 }
             } catch(_) { return null; }

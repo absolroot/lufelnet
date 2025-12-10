@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Kushi Mitama",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 19",
+        "desc": "Deal Ice damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Freeze for 2 turns.",
+        "level": "6/7/8",
+        "name": "Bufu"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Decrease Speed by 6. Increase HP by 15%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Ironclad Resolve I"
+        },
+        {
+          "cost": "SP 19",
+          "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Mabufu"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Attack by 5.8%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Attack Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 5.8%. Increase single-target Ice skill damage by 21%.",
+          "name": "Essence of Prosperity"
+        },
+        {
+          "desc": "Increase Attack by 5.8%. Increase single-target Ice skill damage by 25%.",
+          "name": "Essence of Prosperity I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

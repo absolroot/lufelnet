@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Inugami",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 7.0%",
+        "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 12.5/13.1/13.8% chance to inflict Sleep for 2 turns.",
+        "level": "6/7/8",
+        "name": "Dream Needle"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 7.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 129.1/135.6/142.0% of Attack.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Power Slash"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease HP cost of skills by 3.2%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Arms Master I"
+        },
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 108.3/113.7/119.1%  of Attack. Increase critical rate by 20%, and decrease accuracy by 20%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Lucky Punch"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 7%. After inflicting a spiritual ailment, decrease target's Defense by 10.5% for 2 turns.",
+          "name": "Possessed by Madness"
+        },
+        {
+          "desc": "Increase ailment accuracy by 7%. After inflicting a spiritual ailment, decrease target's Defense by 12.3% for 2 turns.",
+          "name": "Possessed by Madness I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

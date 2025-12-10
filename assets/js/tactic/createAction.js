@@ -29,14 +29,25 @@
         return charName;
       }
 
+      // 공통 페르소나 데이터 소스 (window.personaFiles 우선)
+      function getPersonaStore() {
+        const w = (typeof window !== 'undefined') ? window : globalThis;
+        if (w.personaFiles && Object.keys(w.personaFiles).length) return w.personaFiles;
+        if (typeof personaData !== 'undefined' && personaData) return personaData;
+        if (w.persona && w.persona.personaData) return w.persona.personaData;
+        return {};
+      }
+      const personaStore = getPersonaStore();
+
       // 페르소나 이름 번역 함수
       function getPersonaDisplayName(personaName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr' || !personaData[personaName]) {
+        const store = personaStore || {};
+        if (currentLang === 'kr' || !store[personaName]) {
           return personaName;
         }
         
-        const persona = personaData[personaName];
+        const persona = store[personaName];
         if (currentLang === 'en' && persona.name_en) {
           return persona.name_en;
         } else if (currentLang === 'jp' && persona.name_jp) {
@@ -91,11 +102,12 @@
       // 고유스킬 이름 번역 함수 (페르소나 데이터에서)
       function getUniqueSkillDisplayName(personaName, skillName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr' || !personaData[personaName]) {
+        const store = personaStore || {};
+        if (currentLang === 'kr' || !store[personaName]) {
           return skillName;
         }
         
-        const persona = personaData[personaName];
+        const persona = store[personaName];
         if (persona.uniqueSkill) {
           if (currentLang === 'en' && persona.uniqueSkill.name_en) {
             return persona.uniqueSkill.name_en;
@@ -161,8 +173,9 @@
         }
         
         // 페르소나별 고유스킬인지 확인
-        for (const personaName in personaData) {
-          const persona = personaData[personaName];
+        const store = personaStore || {};
+        for (const personaName in store) {
+          const persona = store[personaName];
           if (persona.uniqueSkill && persona.uniqueSkill.name === memoText) {
             return getUniqueSkillDisplayName(personaName, memoText);
           }

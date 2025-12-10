@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Byakko",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 9.0%",
+        "desc": "Deal Physical damage to 1 foe equal to 148.0%/155.4%/162.8% of Attack. If target's HP is below 50%, increase damage by 40%.",
+        "level": "6/7/8",
+        "name": "Sharp Claws"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 21",
+          "desc": "Deal Ice damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Freeze for 2 turns.",
+          "learn_level": "6",
+          "level": "6/7/8",
+          "name": "Bufudyne"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Ice damage by 8.7%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Ice Boost III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Physical damage by 8.7%.",
+          "learn_level": "18",
+          "level": "6/7/8",
+          "name": "Phys Boost III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 6.5%.",
+          "learn_level": "25",
+          "level": "6/7/8",
+          "name": "Apt Pupil III"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical rate by 12.5%. At the end of the turn, gain Fighting Spirit, increasing Attack by 10%. After defeating a foe, gain 2 Fighting Spirit stacks. Stacks up to 6 times.",
+          "name": "Raise Morale"
+        },
+        {
+          "desc": "Increase critical rate by 12.5%. At the end of the turn, gain Fighting Spirit, increasing Attack by 11.5%. After defeating a foe, gain 2 Fighting Spirit stacks. Stacks up to 6 times.",
+          "name": "Raise Morale I"
+        },
+        {
+          "desc": "Increase critical rate by 12.5%. At the end of the turn, gain Fighting Spirit, increasing Attack by 11.5% and critical rate by 1.2%. After defeating a foe, gain 2 Fighting Spirit stacks. Stacks up to 6 times.",
+          "name": "Raise Morale II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

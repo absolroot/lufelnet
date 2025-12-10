@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Kin-Ki",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 6.0%",
+        "desc": "Deal Physical damage to all foes equal to 53.1/55.8/58.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Vajra Blast"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 22",
+          "desc": "Increase 1 ally's Defense by 23.3%/24.5%/25.6%. For every 500 of the user's Defense, increase the target's Defense by 3.9%/4.1%/4.3% more, up to 15.6%/16.4%/17.2%. Lasts for 3 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Rakukaja"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical rate by 5%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Apt Pupil II"
+        },
+        {
+          "cost": "",
+          "desc": "Restores 2.7% of max HP at the start of each turn.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Regenerate II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Psychokinesis damage taken by 6.7%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Psy Reduction II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Defense by 15.9%. After knocking down a foe, restore user's HP by 15% of Attack.",
+          "name": "Iron Fortress"
+        },
+        {
+          "desc": "Increase Defense by 15.9%. After knocking down a foe, restore user's HP by 18% of Attack.",
+          "name": "Iron Fortress I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

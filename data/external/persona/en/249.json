@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Mithras",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase party's Defense by 16.3%/17.1%/17.9%. For every 500 of the user's Defense, increase party's Defense by 2.7%/2.8%/3.0% more, up to 10.8%/11.3%/11.9%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Marakukaja"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "At the start of battle, increase party's Defense by 9.1% for 2 turns or until user changes Personas.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Auto-Maraku II"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Nuclear damage to 1 foe equal to 124.2/129.1/134.0% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Freila"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease Speed by 9. Increase HP by 22%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Ironclad Resolve II"
+        },
+        {
+          "cost": "",
+          "desc": "Decrease damage taken by 6.7%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Reduction Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase max HP by 11.6%. After using a skill on an ally, increase target's Defense by 11.5%. If HP is over 50%, increase Defense by 50% more. Lasts for 2 turns.",
+          "name": "Sun's Protection"
+        },
+        {
+          "desc": "Increase max HP by 11.6%. After using a skill on an ally, increase target's Defense by 13%. If HP is over 50%, increase Defense by 50% more. Lasts for 2 turns.",
+          "name": "Sun's Protection I"
+        },
+        {
+          "desc": "Increase max HP by 11.6%. After using a skill on an ally, increase target's Defense by 14.5%. If HP is over 50%, increase Defense by 50% more. Lasts for 2 turns.",
+          "name": "Sun's Protection II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

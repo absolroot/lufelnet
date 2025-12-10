@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "Succubus",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 22",
+        "desc": "Increase 1 ally's critical rate by 9.3%/9.8%/10.2%. For every 10% of the user's critical rate, increase the target's critical rate by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
+        "level": "6/7/8",
+        "name": "Rebellion"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 19",
+          "desc": "Deal Curse damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Mudo"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Curse damage by 4.7%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Curse Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase Attack by 3.5%. After an ally uses a skill, increase their critical rate by 10.2% for 1 turn.",
+          "name": "Intoxicated Whisper"
+        },
+        {
+          "desc": "Increase Attack by 3.5%. After an ally uses a skill, increase their critical rate by 11.7% for 1 turn.",
+          "name": "Intoxicated Whisper I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -42,10 +42,15 @@ window.applyImportedData = function(payload, options = {}) {
         if (idx % 3 === 0) {
           const personaIndex = Math.floor(idx / 3);
           const selectedPersona = wonderPersonas[personaIndex];
-          if (selectedPersona && personaData[selectedPersona]) {
-            input.disabled = true;
-            input.classList.add('unique-skill');
-          }
+          try {
+            const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+              ? window.personaFiles
+              : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+            if (selectedPersona && store[selectedPersona]) {
+              input.disabled = true;
+              input.classList.add('unique-skill');
+            }
+          } catch (_) { /* noop */ }
         }
       });
     }
@@ -308,12 +313,15 @@ window.applyImportedData = function(payload, options = {}) {
 
           // 페르소나 고유스킬 표시 (입력값은 KR 유지, 표시 텍스트만 번역)
           const skillInputs = document.querySelectorAll('.persona-skill-input');
+          const personaStore = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+            ? window.personaFiles
+            : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
           skillInputs.forEach((input, index) => {
             if (index % 3 !== 0) return; // 고유 스킬 슬롯만
             const personaIndex = Math.floor(index / 3);
             const selectedPersona = wonderPersonas[personaIndex];
-            if (selectedPersona && typeof personaData !== 'undefined' && personaData[selectedPersona]) {
-              const unique = personaData[selectedPersona].uniqueSkill || {};
+            if (selectedPersona && personaStore && personaStore[selectedPersona]) {
+              const unique = personaStore[selectedPersona].uniqueSkill || {};
               let displayName = input.value;
               if (currentLang === 'en' && unique.name_en) displayName = unique.name_en;
               else if (currentLang === 'jp' && unique.name_jp) displayName = unique.name_jp;

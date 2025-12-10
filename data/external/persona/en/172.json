@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Zouchouten",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 7.0%",
+        "desc": "Deal Physical damage to 1 foe equal to 129.1/135.6/142.0% of Attack.",
+        "level": "6/7/8",
+        "name": "Power Slash"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 20",
+          "desc": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Zionga"
+        },
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to all foes equal to 15.2/16.0/16.7% of Attack (3 to 4 hits).",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Swift Strike"
+        },
+        {
+          "cost": "",
+          "desc": "Increase critical damage by 10%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Pinpoint II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Physical damage by 6.7%.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Phys Boost II"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical damage by 14%. When using a Physical skill, if target's HP is below 50%, increase critical rate by 25%.",
+          "name": "Southern Doctrine"
+        },
+        {
+          "desc": "Increase critical damage by 14%. When using a Physical skill, if target's HP is below 50%, increase critical rate by 27.5%.",
+          "name": "Southern Doctrine I"
+        },
+        {
+          "desc": "Increase critical damage by 14%. When using a Physical skill, if target's HP is below 50%, increase critical rate by 30%.",
+          "name": "Southern Doctrine II"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

@@ -1,0 +1,61 @@
+{
+  "data": {
+    "name": "Clotho",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 20",
+        "desc": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+        "level": "6/7/8",
+        "name": "Hamaon"
+      },
+      "innate_skill": [
+        {
+          "cost": "SP 25",
+          "desc": "Cure Dizzy, Sleep, or Forget on 1 ally.",
+          "learn_level": "5",
+          "level": "6/7/8",
+          "name": "Patra"
+        },
+        {
+          "cost": "",
+          "desc": "Increase SP recovery rate by 4.4%.",
+          "learn_level": "10",
+          "level": "6/7/8",
+          "name": "Nurture II"
+        },
+        {
+          "cost": "",
+          "desc": "Increase the success rate of insta-kill skills by 2.9%.",
+          "learn_level": "15",
+          "level": "6/7/8",
+          "name": "Divine Guidance I"
+        },
+        {
+          "cost": "SP 20",
+          "desc": "Deal Bless damage to all foes equal to 61.3/65.0/68.7% of Attack. Gain 1 to 2 Blessing stacks.",
+          "learn_level": "20",
+          "level": "6/7/8",
+          "name": "Makouga"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase ailment accuracy by 10.5%. After defeating a foe, gain 1 Blessing stack. 50% chance to gain 1 more Blessing.",
+          "name": "Boon"
+        },
+        {
+          "desc": "Increase ailment accuracy by 10.5%. After defeating a foe, gain 2 Blessing stacks.",
+          "name": "Boon I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Bless damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

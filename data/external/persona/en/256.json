@@ -1,0 +1,62 @@
+{
+  "data": {
+    "name": "Trumpeter",
+    "skill": {
+      "fixed_skill": {
+        "cost": "SP 24",
+        "desc": "Deal X% Curse damage to 1 foe. Decrease Defense by X% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Bewitching Sound"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Decrease Speed by 6. Increase HP by 15%.",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Ironclad Resolve I"
+        },
+        {
+          "cost": "SP 19",
+          "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Mabufu"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Attack by 5.8%.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Attack Boost I"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "When any ally attacks a Marked foe, increase Attack by 15%.",
+          "name": "Hunting"
+        },
+        {
+          "desc": "AAAAAA==",
+          "name": "Hunting I"
+        },
+        {
+          "desc": "AAAAAA==",
+          "name": "Hunting II"
+        },
+        {
+          "desc": "AAAAAA==",
+          "name": "Hunting III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Almighty damage to all foes equal to 36.0%/38.5%/41.0% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

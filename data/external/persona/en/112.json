@@ -1,0 +1,54 @@
+{
+  "data": {
+    "name": "Eligor",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 8.0%",
+        "desc": "Deal Physical damage to 1 foe equal to 152.0%/159.6%/167.2% of Attack. If only 1 foe is on the field, increase this skill's damage by 25%.",
+        "level": "6/7/8",
+        "name": "Glorious Impact"
+      },
+      "innate_skill": [
+        {
+          "cost": "체력 6.0%",
+          "desc": "Deal Physical damage to 1 foe equal to 58.2/61.1/64.0% of Attack (2 hits).",
+          "learn_level": "4",
+          "level": "6/7/8",
+          "name": "Double Fangs"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Forget accuracy by 8.8%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Forget Boost I"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 6.7/7.0/7.4% chance to inflict Forget for 2 turns.",
+          "learn_level": "12",
+          "level": "6/7/8",
+          "name": "Memory Blow"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical damage by 10%. When dealing Physical damage to 1 foe, increase Attack by 17% and increase critical rate by 10%.",
+          "name": "Knight's Glare"
+        },
+        {
+          "desc": "Increase critical damage by 10%. When dealing Physical damage to 1 foe, increase Attack by 20% and increase critical rate by 12%.",
+          "name": "Knight's Glare I"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

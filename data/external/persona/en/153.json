@@ -1,0 +1,69 @@
+{
+  "data": {
+    "name": "Seth",
+    "skill": {
+      "fixed_skill": {
+        "cost": "체력 20.0%",
+        "desc": "Deal Gun damage to 1 foe equal to 150.3%/157.8%/165.3% of Attack. On a critical hit, remove 1 more Down Point.",
+        "level": "6/7/8",
+        "name": "Salvo"
+      },
+      "innate_skill": [
+        {
+          "cost": "",
+          "desc": "Increase critical damage by 13%.",
+          "learn_level": "8",
+          "level": "6/7/8",
+          "name": "Pinpoint III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase healing received by 4.3%.",
+          "learn_level": "16",
+          "level": "6/7/8",
+          "name": "Divine Grace III"
+        },
+        {
+          "cost": "",
+          "desc": "Increase Gun damage by 8.7%.",
+          "learn_level": "24",
+          "level": "6/7/8",
+          "name": "Gun Boost III"
+        },
+        {
+          "cost": "체력 8.0%",
+          "desc": "Increase this skill's critical rate by 20%, and deal Gun damage to 1 foe equal to 107.5/112.9/118.3% of Attack.",
+          "learn_level": "32",
+          "level": "6/7/8",
+          "name": "One-shot Kill"
+        }
+      ],
+      "passive_skill": [
+        {
+          "desc": "Increase critical damage by 29.9%. After knocking down a foe, increase Attack by 31% for 2 turns. Increase party's damage by 8% for 1 turn.",
+          "name": "Schemes of a Wicked God"
+        },
+        {
+          "desc": "Increase critical damage by 29.9%. After knocking down a foe, increase Attack by 35% for 2 turns. Increase party's damage by 9% for 1 turn.",
+          "name": "Schemes of a Wicked God I"
+        },
+        {
+          "desc": "Increase critical damage by 29.9%. After knocking down a foe, increase Attack by 39% for 2 turns. Increase party's damage by 10% for 1 turn.",
+          "name": "Schemes of a Wicked God II"
+        },
+        {
+          "desc": "Increase critical damage by 29.9%. After knocking down a foe, increase Attack by 43% for 2 turns. Increase party's damage by 11% for 1 turn.",
+          "name": "Schemes of a Wicked God III"
+        }
+      ],
+      "showtime_skill": {
+        "cost": "",
+        "desc": "Deal Gun damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+        "level": "6/7/8",
+        "name": "Highlight"
+      }
+    }
+  },
+  "msg": "TESTING",
+  "status": 0
+}

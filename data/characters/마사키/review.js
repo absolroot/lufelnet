@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["마사키"] = { name_en: "Masaki Ashiya", name_jp: "芦谷 真咲", codename: "ChisISH",
+    window.characterReview["마사키"] = { name_en: "Masaki Ashiya", name_jp: "芦谷 真咲", codename: "CHERISH",
         review: `최초로 등장한 5성 방위 괴도로 **상시 캐릭터 중 높은 평가를 받고 있다**.
 
 대량의 실드를 아군에게 제공해 **절대적인 안정성을 구성**하여 높은 난이도의 콘텐츠를 클리어하는데 혁혁한 공헌을 한다.

@@ -1180,6 +1180,164 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // 심상 코어(innate) 정보 채우기
+    window.fillInnateInfo = function (characterName) {
+        try {
+            const card = document.querySelector('.innate-card');
+            if (!card) return;
+
+            const data = (window.innateData && window.innateData[characterName]) ? window.innateData[characterName] : null;
+            if (!data) {
+                card.style.display = 'none';
+                return;
+            }
+
+            // 언어별 제목
+            const currentLang = getCurrentLanguage();
+            const titleEl = card.querySelector('h2');
+            const titleMap = {
+                kr: '심상 코어',
+                en: 'Mindscape Core',
+                jp: 'イメジャリー・コア'
+            };
+            if (titleEl) {
+                titleEl.textContent = titleMap[currentLang] || titleMap.kr;
+            }
+
+            const grid = card.querySelector('.innate-grid') || card.querySelector('.skills-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            // 공통: 아이콘 경로 계산
+            const BASE = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+            const getIconPath = (type) => {
+                const key = type || '패시브';
+                return `${BASE}/assets/img/skill-element/${key}.png`;
+            };
+            // 심상 전용 아이템 아이콘 경로
+            const INNATE_ITEM1 = `${BASE}/assets/img/character-detail/innate/inaate_item1.png`;
+            const INNATE_ITEM2 = `${BASE}/assets/img/character-detail/innate/inaate_item2.png`;
+
+            // 공통: 언어별 desc/name 선택
+            const pickDesc = (entry) => {
+                if (!entry) return '';
+                if (currentLang === 'en' && entry.desc_en) return entry.desc_en;
+                if (currentLang === 'jp' && entry.desc_jp) return entry.desc_jp;
+                return entry.desc || '';
+            };
+            const pickName = (entry) => {
+                if (!entry) return '';
+                if (currentLang === 'en' && entry.name_en) return entry.name_en;
+                if (currentLang === 'jp' && entry.name_jp) return entry.name_jp;
+                return entry.name || '';
+            };
+
+            // 공통: 값 → 퍼센트 문자열
+            const formatPercent = (valueStr) => {
+                const num = Number(valueStr);
+                if (!isFinite(num) || num === 0) return '0%';
+                const pct = num * 100;
+                // 한 자리 소수로 고정 (기존 스킬 데이터와 유사한 형태)
+                const fixed = Math.round(pct * 10) / 10;
+                return `${fixed}%`;
+            };
+
+            // 1) final_innate → "심상 강화" 카드들
+            const finalInnate = Array.isArray(data.final_innate) ? data.final_innate : [];
+            if (finalInnate.length > 0) {
+                const boostNameMap = {
+                    kr: '심상 강화',
+                    en: 'Mindscape Amplification',
+                    jp: 'イメジャリー強化'
+                };
+                const boostName = boostNameMap[currentLang] || boostNameMap.kr;
+
+                finalInnate.forEach((group) => {
+                    if (!Array.isArray(group) || group.length === 0) return;
+                    const main = group[0];
+
+                    const cardEl = document.createElement('div');
+                    cardEl.className = 'skill-card';
+
+                    const iconPath = getIconPath(main.type);
+                    const lines = group.map((entry) => {
+                        const descText = pickDesc(entry);
+                        const valText = formatPercent(entry.value);
+                        return `${descText}: ${valText}`;
+                    }).join('<br>');
+
+                    cardEl.innerHTML = `
+                        <img src="${iconPath}" alt="${main.type || ''}" class="skill-icon">
+                        <div class="skill-info">
+                            <div class="skill-header">
+                                <span class="skill-name">${boostName}</span>
+                                <div class="innate-item inline-item" style="display: flex; align-items: center; gap: 0px;">
+                                    <img src="${INNATE_ITEM1}" alt="innate item 1" class="innate-item-icon" style="height: 12px; object-fit: contain;">
+                                    <span class="innate-item-count" style="font-size: 12px; color: rgba(255, 255, 255, 0.5);">×200</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">${lines}</p>
+                        </div>
+                    `;
+
+                    grid.appendChild(cardEl);
+                });
+            }
+
+            // 2) innate_awake_skill → 각 패시브 스킬 카드
+            const awakeSkills = Array.isArray(data.innate_awake_skill) ? data.innate_awake_skill : [];
+            if (awakeSkills.length > 0) {
+                awakeSkills.forEach((skill) => {
+                    if (!skill) return;
+                    const name = pickName(skill);
+                    let desc = pickDesc(skill);
+                    // 줄바꿈 보존
+                    desc = (desc || '').replace(/\n/g, '<br>');
+
+                    const iconPath = getIconPath(skill.type);
+
+                    const cardEl = document.createElement('div');
+                    cardEl.className = 'skill-card';
+
+                    const isPassive = skill.type === '패시브';
+                    const passiveItemHtml = isPassive
+                        ? `<div class="innate-item inline-item" style="display: flex; align-items: center; gap: 0px;">
+                                <img src="${INNATE_ITEM2}" alt="innate item 2" class="innate-item-icon" style="height: 12px; object-fit: contain;">
+                                <span class="innate-item-count" style="font-size: 12px; color: rgba(255, 255, 255, 0.5);">×24</span>
+                           </div>`
+                        : '';
+
+                    cardEl.innerHTML = `
+                        <img src="${iconPath}" alt="${skill.type || ''}" class="skill-icon">
+                        <div class="skill-info">
+                            <div class="skill-header">
+                                <span class="skill-name">${name}</span>
+                                ${passiveItemHtml}
+                            </div>
+                            <p class="skill-description">${desc}</p>
+                        </div>
+                    `;
+
+                    grid.appendChild(cardEl);
+                });
+            }
+
+            // 데이터가 하나라도 렌더되었다면 카드 표시, 아니면 숨김
+            if (grid.children.length > 0) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+
+            // 툴팁/숫자 강조 적용
+            if (typeof addTooltips === 'function') {
+                try { addTooltips(); } catch (_) { /* noop */ }
+            }
+        } catch (e) {
+            console.warn('[SAFE:fillInnateInfo]', e);
+        }
+    };
+
     window.updateSkillDescriptions = function (levelIndex, characterName) {
         // 버튼 상태 업데이트
         document.querySelectorAll('.skill-level-btn').forEach(btn => {

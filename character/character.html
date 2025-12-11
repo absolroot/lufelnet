@@ -508,6 +508,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <div style="height: 10px;"></div>-->
     </div>
 
+    <!-- 심상 코어 섹션 (innate.js 존재 캐릭터 전용, 기본 숨김) -->
+    <div class="innate-card card-style drag-me" style="display:none;">
+        <h2>심상 코어</h2>
+        <div class="skills-grid innate-grid">
+            <!-- 심상 코어 카드들이 동적으로 추가됨 -->
+        </div>
+    </div>
 
 
     <!-- 추천 페르소나와 파티 섹션 -->
@@ -866,6 +873,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             window.characterSkillsData = window.characterSkillsData || {};
             window.ritualData = window.ritualData || {};
             window.WeaponData = window.WeaponData || {};
+            // 심상 코어(innate) 데이터 전역 스텁
+            window.innateData = window.innateData || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -876,7 +885,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
                 loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
                 loadPerCharacterResource(name, { fileBase: 'ritual', globalVarName: 'ritualData' }),
-                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' })
+                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' }),
+                // 심상 코어(innate) 데이터 로드
+                loadPerCharacterResource(name, { fileBase: 'innate', globalVarName: 'innateData' })
             ];
 
             // J&C 전용 아이콘 스크립트는 해당 캐릭터일 때만 로드
@@ -975,6 +986,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         });
         // 스킬 정보 렌더는 per-character skill 로드 이후에 호출 (언어별 분기 포함)
         safeRun('fillSkillsInfo', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
+        // 심상 코어(innate) 정보 렌더
+        safeRun('fillInnateInfo', () => { if (typeof fillInnateInfo === 'function') { fillInnateInfo(characterName); } });
 
         // per-character 의식/스킬/무기(기본 KR) 준비
         const ritual = (window.ritualData && window.ritualData[characterName]) ? window.ritualData[characterName] : {};

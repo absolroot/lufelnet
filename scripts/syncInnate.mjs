@@ -292,11 +292,22 @@ function readInnateFile(filePath, charKey) {
     const code = fs.readFileSync(filePath, 'utf8');
     const keyLiteral = JSON.stringify(charKey);
     const escapedKey = keyLiteral.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp(
+
+    // 1차 시도: ';' 로 끝나는 패턴
+    let re = new RegExp(
       String.raw`window\.innateData\s*\[\s*${escapedKey}\s*]\s*=\s*([\s\S]*?);`
     );
-    const m = code.match(re);
-    if (!m || !m[1]) return {};
+    let m = code.match(re);
+
+    // 2차 시도: 세미콜론 없이 파일 끝까지 매칭
+    if (!m || !m[1]) {
+      re = new RegExp(
+        String.raw`window\.innateData\s*\[\s*${escapedKey}\s*]\s*=\s*([\s\S]*?)\s*$`
+      );
+      m = code.match(re);
+      if (!m || !m[1]) return {};
+    }
+
     const objSource = m[1].trim();
     // 평가 가능한 JS 객체로 처리 (기존 파일 구조 유지)
     // eslint-disable-next-line no-new-func
@@ -360,8 +371,8 @@ const NATURE_TO_ELEMENT_KR = {
   Almighty: '만능'
 };
 
-function resolveElementLabels(nature, elementKR) {
-  const kr = elementKR || NATURE_TO_ELEMENT_KR[nature] || null;
+function resolveElementLabels(nature, elementKR, entryType) {
+  const kr = entryType || elementKR || NATURE_TO_ELEMENT_KR[nature] || null;
   if (!kr) return null;
   const base = ELEMENT_TABLE[kr] || {};
   const en = base.en || nature || '';
@@ -396,10 +407,14 @@ function updateInnateAwake(existing, externalArr, lang) {
     }
 
     // 언어별 name/desc 덮어쓰기
+    // - ext.name/desc 가 있을 때만 현재 언어 필드를 갱신
+    // - 이미 존재하는 값이 있을 경우, 빈 문자열로 덮어쓰지 않도록 한다
     if (ext.name != null) {
       cur[nameField] = ext.name;
-    } else if (!(nameField in cur)) {
-      cur[nameField] = '';
+    }
+
+    if (ext.desc != null) {
+      cur[descField] = ext.desc;
     }
 
     // 모든 언어 필드가 존재하도록 보정 (없으면 공백으로 생성)
@@ -408,12 +423,6 @@ function updateInnateAwake(existing, externalArr, lang) {
     }
     for (const k of allDescKeys) {
       if (!(k in cur)) cur[k] = '';
-    }
-
-    if (ext.desc != null) {
-      cur[descField] = ext.desc;
-    } else if (!(descField in cur)) {
-      cur[descField] = '';
     }
 
     out[i] = cur;
@@ -443,23 +452,23 @@ function normalizeFinalInnate(finalArr, element) {
 
     if (kind === 'finalDamage') {
       return {
-        desc: `모든 아군의 ${kr} 최종 대미지 증가`,
-        desc_en: `All allies' ${en} Final Damage Increase`,
-        desc_jp: `味方全員の${jp}最終ダメージ上昇`
+      desc: `모든 ${kr} 속성 아군의 최종 대미지 증가`,
+      desc_en: `All ${en} Attribute Allies' Final Damage Increase`,
+      desc_jp: `${jp}属性の味方全員の最終ダメージ上昇`
       };
     }
     if (kind === 'damageBoost') {
       return {
-        desc: `모든 아군의 ${kr} 대미지 보너스 증가`,
-        desc_en: `All allies' ${en} DMG Bonus(ATK Mult) Increase`,
-        desc_jp: `味方全員の${jp}攻撃倍率+上昇`
+      desc: `모든 ${kr} 속성 아군의 ${kr} 속성 대미지 보너스 증가`,
+      desc_en: `All ${en} Attribute Allies' ${en} Attribute DMG Bonus(ATK Mult) Increase`,
+      desc_jp: `${jp}属性の味方全員の${jp}属性ダメージ攻撃倍率+上昇`
       };
     }
     if (kind === 'damageTaken') {
       return {
-        desc: `모든 아군의 ${kr} 받는 대미지 감소`,
-        desc_en: `All allies' ${en} DMG Taken Decrease`,
-        desc_jp: `味方全員の${jp}ダメージ受ける減少`
+      desc: `모든 ${kr} 속성 아군의 ${kr} 속성 받는 대미지 감소`,
+      desc_en: `All ${en} Attribute Allies' ${en} Attribute DMG Taken Decrease`,
+      desc_jp: `${jp}属性の味方全員の${jp}属性ダメージ受ける減少`
       };
     }
     return null;
@@ -477,7 +486,7 @@ function normalizeFinalInnate(finalArr, element) {
     }
 
     // 템플릿으로 desc/desc_en/desc_jp 자동 채우기 (해당 필드가 비어 있을 때만)
-    const labels = resolveElementLabels(e.nature, element);
+    const labels = resolveElementLabels(e.nature, element, e.type);
     const auto = buildAutoDesc(e.attr, e.nature, labels);
     if (auto) {
       if (!e.desc) e.desc = auto.desc;
@@ -549,9 +558,18 @@ async function main() {
   const current = readInnateFile(innatePath, charKey);
   const next = current && typeof current === 'object' ? { ...current } : {};
 
-  // 1) final_innate 는 외부 데이터로 덮어쓰되,
-  //    desc/desc_en/desc_jp/desc_cn 필드를 모두 보정하고 type 은 캐릭터 element 로 자동 설정
-  next.final_innate = normalizeFinalInnate(finalInnateExt, element);
+  // 1) final_innate
+  //    - 우선순위: 기존 innate.js 의 final_innate 를 먼저 사용
+  //      (이미 수동으로 수정해둔 값이 있으면 그것을 우선 유지)
+  //      없을 때만 외부 데이터(finalInnateExt)를 사용
+  //    - 그리고 desc/desc_en/desc_jp/desc_cn 필드를 모두 보정하고,
+  //      type 은 캐릭터 element 로 자동 설정, 템플릿으로 비어 있는 desc* 는 자동 채움
+  const existingFinal = Array.isArray(current.final_innate) ? current.final_innate : [];
+  const baseFinal =
+    Array.isArray(existingFinal) && existingFinal.length > 0
+      ? existingFinal
+      : (Array.isArray(finalInnateExt) && finalInnateExt.length > 0 ? finalInnateExt : []);
+  next.final_innate = normalizeFinalInnate(baseFinal, element);
 
   // 2) innate_awake_skill 은 언어별 name/desc만 덮어쓰기
   next.innate_awake_skill = updateInnateAwake(next.innate_awake_skill, innateAwakeExt, lang);

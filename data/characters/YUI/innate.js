@@ -2,35 +2,38 @@ window.innateData = window.innateData || {};
 window.innateData["YUI"] = {
     "final_innate": [
         [
-        {
-            "attr": "Final Damage Mult.",
-            "nature": "Electric",
-            "desc": "모든 아군의 전격 최종 대미지 증가",
-            "desc_en": "All allies' Electric Final Damage Increase",
-            "desc_jp": "味方全員の電撃最終ダメージ上昇",
-            "value": "0.02",
-            "type": "전격"
-        }
+            {
+                "attr": "Final Damage Mult.",
+                "nature": "Electric",
+                "value": "0.02",
+                "desc": "모든 전격 속성 아군의 최종 대미지 증가",
+                "desc_en": "All Electric Attribute Allies' Final Damage Increase",
+                "desc_jp": "電撃属性の味方全員の最終ダメージ上昇",
+                "desc_cn": "",
+                "type": "전격"
+            }
         ],
         [
-        {
-            "attr": "Electric Boost",
-            "nature": "Electric",
-            "desc": "모든 아군의 전격 대미지 보너스 증가",
-            "desc_en": "All allies' Electric DMG Bonus(ATK Mult) Increase",
-            "desc_jp": "味方全員の電撃攻撃倍率+上昇",
-            "value": "0.08",
-            "type": "전격"
-        },
-        {
-            "attr": "Electric Damage Taken",
-            "nature": "Electric",
-            "desc": "모든 아군의 전격 받는 대미지 감소",
-            "desc_en": "All allies' Electric DMG Taken Decrease",
-            "desc_jp": "味方全員の電撃ダメージ受ける減少",
-            "value": "-0.1",
-            "type": "전격"
-        }
+            {
+                "attr": "Electric Boost",
+                "nature": "Electric",
+                "value": "0.08",
+                "desc": "모든 전격 속성 아군의 전격 속성 대미지 보너스 증가",
+                "desc_en": "All Electric Attribute Allies' Electric Attribute DMG Bonus(ATK Mult) Increase",
+                "desc_jp": "電撃属性の味方全員の電撃属性ダメージ攻撃倍率+上昇",
+                "desc_cn": "",
+                "type": "전격"
+            },
+            {
+                "attr": "Electric Damage Taken",
+                "nature": "Electric",
+                "value": "-0.1",
+                "desc": "모든 전격 속성 아군의 전격 속성 받는 대미지 감소",
+                "desc_en": "All Electric Attribute Allies' Electric Attribute DMG Taken Decrease",
+                "desc_jp": "電撃属性の味方全員の電撃属性ダメージ受ける減少",
+                "desc_cn": "",
+                "type": "전격"
+            }
         ]
     ],
     "innate_awake_skill": [
@@ -39,7 +42,7 @@ window.innateData["YUI"] = {
             "autoSelect": "Default",
             "cooldown": 0,
             "cost": "",
-            "desc" : "YUI의 추격 발동 고정 확률이 55.0% 상승하며, 추격 발동 시 크리티컬 효과가 20.0% 증가합니다.\n『초희귀 보상』이 제공하는 강화 추격 횟수가 3회로 증가합니다.",
+            "desc": "YUI의 추격 발동 고정 확률이 55.0% 상승하며, 추격 발동 시 크리티컬 효과가 20.0% 증가합니다.\n『초희귀 보상』이 제공하는 강화 추격 횟수가 3회로 증가합니다.",
             "desc_en": "The fixed probability of YUI's Follow-up increases by 55.0%. When the Follow-up is triggered, the CRIT Mult increases by 20.0%. The number of Follow-up times increased by 3 times by the 'Sparky Surprise'.",
             "desc_jp": "YUIの追撃発生確率が55.0%上昇し、追撃発生時にCRT倍率が20.0%上昇します。\n『サプライズプレゼント』により追撃回数が3回増加します。",
             "desc_cn": "YUI发动追击的固定概率提升55.0%，触发追击时，暴击效果提升20.0%。\n『超稀有奖励』提供的强化追击次数提升为3次。",
@@ -69,4 +72,4 @@ window.innateData["YUI"] = {
             "type": "패시브"
         }
     ]
-}
+};

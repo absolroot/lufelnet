@@ -6,10 +6,9 @@ window.innateData["토모코·여름"] = {
                 "attr": "Final Damage Mult.",
                 "nature": "Psychokinesis",
                 "value": "0.02",
-                "desc": "모든 아군의 염동 최종 대미지 증가",
-                "desc_en": "All allies' Psychokinesis Final Damage Increase",
-                "desc_jp": "味方全員の念動最終ダメージ上昇",
-                "desc_cn": "",
+                "desc": "모든 염동 속성 아군의 최종 대미지 증가",
+                "desc_en": "All Psychokinesis Attribute Allies' Final Damage Increase",
+                "desc_jp": "念動属性の味方全員の最終ダメージ上昇",
                 "type": "염동"
             }
         ],
@@ -18,9 +17,9 @@ window.innateData["토모코·여름"] = {
                 "attr": "Psychokinesis Boost",
                 "nature": "Psychokinesis",
                 "value": "0.08",
-                "desc": "모든 아군의 염동 대미지 보너스 증가",
-                "desc_en": "All allies' Psychokinesis DMG Bonus(ATK Mult) Increase",
-                "desc_jp": "味方全員の念動攻撃倍率+上昇",
+                "desc": "모든 염동 속성 아군의 염동 속성 대미지 보너스 증가",
+                "desc_en": "All Psychokinesis Attribute Allies' Psychokinesis Attribute DMG Bonus(ATK Mult) Increase",
+                "desc_jp": "念動属性の味方全員の念動属性ダメージ攻撃倍率+上昇",
                 "desc_cn": "",
                 "type": "염동"
             },
@@ -28,9 +27,9 @@ window.innateData["토모코·여름"] = {
                 "attr": "Psychokinesis Damage Taken",
                 "nature": "Psychokinesis",
                 "value": "-0.1",
-                "desc": "모든 아군의 염동 받는 대미지 감소",
-                "desc_en": "All allies' Psychokinesis DMG Taken Decrease",
-                "desc_jp": "味方全員の念動ダメージ受ける減少",
+                "desc": "모든 염동 속성 아군의 염동 속성 받는 대미지 감소",
+                "desc_en": "All Psychokinesis Attribute Allies' Psychokinesis Attribute DMG Taken Decrease",
+                "desc_jp": "念動属性の味方全員の念動属性ダメージ受ける減少",
                 "desc_cn": "",
                 "type": "염동"
             }

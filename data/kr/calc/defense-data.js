@@ -690,6 +690,40 @@ const defenseCalcData = {
             note_jp: "축복"
         },
     ],
+    "슌·프론티어":[
+        {
+            id: "shun-frontier-1",
+            type: "의식0",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
+            skillName: "총격",
+            options: [],
+            value: 40.0,
+            duration: "-",
+            note: "생명 20000 기준",
+            note_en: "20000 Max HP",
+            note_jp: "20000 Max HP",
+            note_cn: "20000 Max HP"
+        },
+        {
+            id: "shun-frontier-2",
+            type: "전용무기",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/character-weapon/슌·프론티어-5-01.png`,
+            skillName: "성마각 신표",
+            options: ["개조0","개조1&2","개조3&4","개조5&6"],
+            values: {
+                "개조0": 15.8,
+                "개조1&2": 20.6,
+                "개조3&4": 25.4,
+                "개조5&6": 30.2
+            },
+            defaultOption: "개조5&6",
+            value: 30.2,
+            duration: "2턴",
+            note: ""
+        }
+    ],
     "미츠루":[
         {
             id: "mitsuru1",

@@ -38,6 +38,17 @@ window.recommendParty["쇼키·암야"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        },
+        {
+            "members": [
+                "쇼키·암야",
+                "슌·프론티어",
+                "미나미·여름",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
         }
     ],
     "friends": [

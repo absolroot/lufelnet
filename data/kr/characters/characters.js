@@ -130,7 +130,7 @@ Object.assign(window.characterData, {
         "sub_option2": ["크리티컬 효과", "관통", "대미지 보너스"],
         "sub_option3": [""],
         "minimum_stats": {
-            "LV10": "생명 19520",
+            "LV10": "생명 20000",
             "LV10+5": "생명 21520",
             "LV12": false,
             "LV12+5": false,

@@ -1,26 +1,6 @@
 {
   "data": {
-    "final_innate": [
-      [
-        {
-          "attr": "Final Damage Mult.",
-          "nature": "Electric",
-          "value": "0.02"
-        }
-      ],
-      [
-        {
-          "attr": "Electric Boost",
-          "nature": "Electric",
-          "value": "0.08"
-        },
-        {
-          "attr": "Electric Damage Taken",
-          "nature": "Electric",
-          "value": "-0.1"
-        }
-      ]
-    ],
+    "final_innate": null,
     "innate": {
       "Attack": "0.2",
       "Crit Mult.": "0.24"
@@ -148,36 +128,7 @@
         ],
         "target": "All Alive Ally"
       },
-      "innate_awake_skill": [
-        {
-          "ascend": "0",
-          "autoSelect": "Default",
-          "cooldown": 0,
-          "cost": "",
-          "desc": "YUI发动追击的固定概率提升55.0%，触发追击时，暴击效果提升20.0%。\n『超稀有奖励』提供的强化追击次数提升为3次。",
-          "level": "3",
-          "name": "追光",
-          "nature": null,
-          "tags": [
-            "潜能"
-          ],
-          "target": "Myself"
-        },
-        {
-          "ascend": "0",
-          "autoSelect": "Default",
-          "cooldown": 0,
-          "cost": "",
-          "desc": "自身追加效果增幅提升自身意识等级*3%。YUI在场时，所有其他同伴获得该效果的25%增益。强化追击的技能伤害额外提升2.0%+自身意识等级*6%。",
-          "level": "3",
-          "name": "惊喜",
-          "nature": null,
-          "tags": [
-            "潜能"
-          ],
-          "target": "Myself"
-        }
-      ],
+      "innate_awake_skill": [],
       "normal_skill": [
         {
           "ascend": "0/5/0/5",

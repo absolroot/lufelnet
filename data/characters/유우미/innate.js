@@ -6,9 +6,9 @@ window.innateData["유우미"] = {
                 "attr": "Attack",
                 "nature": "Support",
                 "value": "0.1",
-                "desc": "모든 아군의 공격력 증가",
-                "desc_en": "All allies' Attack Increase",
-                "desc_jp": "味方全員の攻撃力上昇",
+                "desc": "모든 해명 괴도의 공격력 증가",
+                "desc_en": "All Elucidator Phantom Thieves' Attack Increase",
+                "desc_jp": "解明者ゴーストシーフ全員の攻撃力上昇",
                 "type": "버프"
             }
         ],
@@ -17,9 +17,9 @@ window.innateData["유우미"] = {
                 "attr": "Crit Mult.",
                 "nature": "Support",
                 "value": "0.12",
-                "desc": "모든 아군의 크리티컬 효과 증가",
-                "desc_en": "All allies' CRIT Mult Increase",
-                "desc_jp": "味方全員のCRT倍率上昇",
+                "desc": "모든 해명 괴도의 크리티컬 효과 증가",
+                "desc_en": "All Elucidator Phantom Thieves' CRIT Mult Increase",
+                "desc_jp": "解明者ゴーストシーフ全員のCRT倍率上昇",
                 "type": "버프"
             }
         ]

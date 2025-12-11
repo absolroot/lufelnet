@@ -7,7 +7,7 @@ window.operationData["슌·프론티어"] = {
         },
         {
             "label": "의식 2",
-            "value": "총격+3 › 총격+2+1 › 총격+3 › 총격+2+1 › 총격+3 › 총격+2+1"
+            "value": "총격+3 › 2+총격+1 › 총격+3 › 2+총격+1 › 총격+3 › 2+총격+1"
         }
     ],
     "basic_en": [
@@ -17,7 +17,7 @@ window.operationData["슌·프론티어"] = {
         },
         {
             "label": "A2",
-            "value": "Gun+3 › Gun+2+1 › Gun+3 › Gun+2+1 › Gun+3 › Gun+2+1"
+            "value": "Gun+3 › 2+Gun+1 › Gun+3 › 2+Gun+1 › Gun+3 › 2+Gun+1"
         }
     ],
     "basic_jp": [
@@ -27,7 +27,7 @@ window.operationData["슌·프론티어"] = {
         },
         {
             "label": "意識 2",
-            "value": "銃撃+3 › 銃撃+2+1 › 銃撃+3 › 銃撃+2+1 › 銃撃+3 › 銃撃+2+1"
+            "value": "銃撃+3 › 2+銃撃+1 › 銃撃+3 › 2+銃撃+1 › 銃撃+3 › 2+銃撃+1"
         }
     ],
     "note": [

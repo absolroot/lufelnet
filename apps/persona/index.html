@@ -275,6 +275,7 @@ jp: /persona/?lang=jp
             </div>
         </div>
         -->
+        
     </div>
 
     <!-- Explain Container -->
@@ -1379,6 +1380,8 @@ jp: /persona/?lang=jp
                             ? (skillInfo.icon_gl || skillInfo.icon)
                             : skillInfo.icon;
 
+                        const isPassive = skillInfo.type === "패시브";
+
                         return `
                                 <li data-priority="${skill.priority}">
                                     <div class="skill-info">
@@ -1386,7 +1389,7 @@ jp: /persona/?lang=jp
                                             <img src="{{ site.baseurl }}/assets/img/persona/속성_${iconName}.png" alt="${iconName}" class="skill-icon">
                                             <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
                                         </div>
-                                        <span class="skill-description">${skillDescription}</span>
+                                        <span class="skill-description" ${isPassive ? 'data-passive="true"' : ''}>${skillDescription}</span>
                                     </div>
                                 </li>
                             `;
@@ -1394,6 +1397,20 @@ jp: /persona/?lang=jp
                     </ul>
                 `;
                     infoSection.appendChild(recommendedSkills);
+
+                    // 추천 스킬 설명에도 스킬 레벨 토글(6/7/8/ALL) 적용을 위해
+                    // 원본 텍스트를 data-original-text 로 저장하고,
+                    // 초기 렌더 시 현재 globalSkillLevel 이 숫자라면 필터를 한 번 적용한다.
+                    const recommendedDescSpans = recommendedSkills.querySelectorAll('.skill-description');
+                    recommendedDescSpans.forEach((span) => {
+                        // type 이 "패시브" 인 스킬은 스킬 레벨 토글의 영향을 받지 않는다.
+                        if (span.dataset.passive === 'true') return;
+                        const original = span.textContent || '';
+                        span.dataset.originalText = original;
+                        if (typeof globalSkillLevel === 'number') {
+                            span.textContent = filterDescByLevel(original, globalSkillLevel);
+                        }
+                    });
                 }
 
                 // Comment
@@ -2065,6 +2082,13 @@ jp: /persona/?lang=jp
             const highlightParas = document.querySelectorAll('.persona-highlight-info p');
             uniqueParas.forEach(applyTo);
             highlightParas.forEach(applyTo);
+            // 추천 스킬(description)에도 동일한 스킬 레벨 필터 적용
+            const recommendedParas = document.querySelectorAll('.persona-recommended-skills .skill-description');
+            recommendedParas.forEach((p) => {
+                // type 이 "패시브" 인 추천 스킬은 스킬 레벨 토글의 영향을 받지 않는다.
+                if (p.dataset.passive === 'true') return;
+                applyTo(p);
+            });
             if (typeof addTooltips === 'function') {
                 try { addTooltips(); } catch (_) { /* noop */ }
             }

@@ -54,8 +54,8 @@ window.personaFiles["야노식"] = {
     }
   ],
   "comment": "선봉으로 사용하지 않고 교체 후 페르소나 스킬 사용 시 '전투 시작 시 『조준』 획득' 이 발동 돼 『조준』이 적용된다 (최초 1회). 버프도 동일하게 『조준』이 발동된다.",
-  "comment_en": "If you don't use Janosik as the vanguard, when you use the Persona skill after replacing, the '『Marked』 is obtained at the start of battle' is triggered, and the '『Marked』' is applied (only once). The buff also triggers '『Marked』'.",
-  "comment_jp": "ヤノシークを先頭にしないで戦闘を開始して、戦闘中にヤノシークでスキル（バフスキルでも可）を利用すると、『ハンティング』の効果で『標的』が付与されます（1回のみ）。",
+  "comment_en": "If you don't use Janosik as the vanguard, when you use the Persona skill after replacing, the '『Marked』 is obtained at the start of battle' is triggered, and the '『Marked』' is applied (only once). The buff also triggers '『Marked』'.\n※ IV Enhancement was released in KR v4.7",
+  "comment_jp": "ヤノシークを先頭にしないで戦闘を開始して、戦闘中にヤノシークでスキル（バフスキルでも可）を利用すると、『ハンティング』の効果で『標的』が付与されます（1回のみ）。\n※ IV Enhancement was released in KR v4.7",
   "passive_priority": 3,
   "passive_skill": [
     {

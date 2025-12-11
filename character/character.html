@@ -1520,10 +1520,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const _healthLabel = _label('생명');
                 const _attackLabel = _label('공격력');
                 const _defenseLabel = _label('방어력');
+
+                // 소숫점 스탯을 모두 정수로 반올림하여 표시
+                const _roundStat = (val) => {
+                    if (val === null || val === undefined || isNaN(val)) return 0;
+                    return Math.round(Number(val));
+                };
+                const _healthValue = _roundStat(weaponData.health);
+                const _attackValue = _roundStat(weaponData.attack);
+                const _defenseValue = _roundStat(weaponData.defense);
+
                 weaponStats.innerHTML = `
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="${_healthLabel}"><p>${_healthLabel} ${weaponData.health || 0}</p>
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="${_attackLabel}"><p>${_attackLabel} ${weaponData.attack || 0}</p>
-                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="${_defenseLabel}"><p>${_defenseLabel} ${weaponData.defense || 0}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="${_healthLabel}"><p>${_healthLabel} ${_healthValue}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="${_attackLabel}"><p>${_attackLabel} ${_attackValue}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="${_defenseLabel}"><p>${_defenseLabel} ${_defenseValue}</p>
                 `;
 
                 // 별 표시

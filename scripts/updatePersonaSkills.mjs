@@ -42,8 +42,19 @@ async function buildInnateSkillEntries() {
     /** @type {Array<{name_kr:string,name_en:string,name_jp:string,desc_kr:string,desc_en:string,desc_jp:string}>} */
     const result = [];
 
+    // 예: "77.1/80.6/84.1%의" 처럼 마지막 값에만 %가 붙어있으면
+    // 앞의 두 값에도 %를 붙여 "77.1%/80.6%/84.1%의" 로 보정한다.
+    const fixTriplePercent = (text) => {
+        if (typeof text !== 'string') return text;
+        return text.replace(
+            /(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)%/g,
+            '$1%/$2%/$3%'
+        );
+    };
+
     for (const id of ids) {
         const perLangInnate = {};
+        const perLangFixed = {};
         let skip = false;
 
         for (const lang of LANGS) {
@@ -53,36 +64,51 @@ async function buildInnateSkillEntries() {
                 skip = true;
                 break;
             }
-            const innate = json.data.skill.innate_skill || [];
+            const skillBlock = json.data.skill;
+            const innate = skillBlock.innate_skill || [];
             perLangInnate[lang] = innate;
+            perLangFixed[lang] = skillBlock.fixed_skill || null;
         }
 
         if (skip) continue;
 
+        // 1) innate_skill 배열 매핑 (길이 맞는 경우에만)
         const lenKr = perLangInnate.kr.length;
         const lenEn = perLangInnate.en.length;
         const lenJp = perLangInnate.jp.length;
-        if (!lenKr || lenKr !== lenEn || lenKr !== lenJp) {
-            // 길이가 안 맞으면 해당 페르소나는 스킵
-            continue;
+        if (lenKr && lenKr === lenEn && lenKr === lenJp) {
+            for (let i = 0; i < lenKr; i++) {
+                const k = perLangInnate.kr[i];
+                const e = perLangInnate.en[i];
+                const j = perLangInnate.jp[i];
+                if (!k || !e || !j) continue;
+
+                // name/desc 가 모두 있는 것만 사용
+                if (!k.name || !e.name || !j.name || !k.desc || !e.desc || !j.desc) continue;
+
+                result.push({
+                    name_kr: k.name.trim(),
+                    name_en: e.name.trim(),
+                    name_jp: j.name.trim(),
+                    desc_kr: fixTriplePercent(k.desc.trim()),
+                    desc_en: fixTriplePercent(e.desc.trim()),
+                    desc_jp: fixTriplePercent(j.desc.trim())
+                });
+            }
         }
 
-        for (let i = 0; i < lenKr; i++) {
-            const k = perLangInnate.kr[i];
-            const e = perLangInnate.en[i];
-            const j = perLangInnate.jp[i];
-            if (!k || !e || !j) continue;
-
-            // name/desc 가 모두 있는 것만 사용
-            if (!k.name || !e.name || !j.name || !k.desc || !e.desc || !j.desc) continue;
-
+        // 2) fixed_skill 도 추가로 매핑
+        const fk = perLangFixed.kr;
+        const fe = perLangFixed.en;
+        const fj = perLangFixed.jp;
+        if (fk && fe && fj && fk.name && fe.name && fj.name && fk.desc && fe.desc && fj.desc) {
             result.push({
-                name_kr: k.name.trim(),
-                name_en: e.name.trim(),
-                name_jp: j.name.trim(),
-                desc_kr: k.desc.trim(),
-                desc_en: e.desc.trim(),
-                desc_jp: j.desc.trim()
+                name_kr: fk.name.trim(),
+                name_en: fe.name.trim(),
+                name_jp: fj.name.trim(),
+                desc_kr: fixTriplePercent(fk.desc.trim()),
+                desc_en: fixTriplePercent(fe.desc.trim()),
+                desc_jp: fixTriplePercent(fj.desc.trim())
             });
         }
     }
@@ -114,24 +140,38 @@ function findMatchingEntry(skillNameKr, skillObj, entries) {
 async function loadPersonaSkillList() {
     const src = await fs.readFile(SKILLS_FILE, 'utf8');
 
-    const regex = /const\s+personaSkillList\s*=\s*({[\s\S]*})\s*$/m;
-    const match = src.match(regex);
-    if (!match) {
-        throw new Error('skills copy.js 에서 personaSkillList 오브젝트를 찾지 못했습니다.');
+    const declIndex = src.indexOf('const personaSkillList');
+    if (declIndex === -1) {
+        throw new Error('skills copy.js 에서 personaSkillList 선언을 찾지 못했습니다.');
     }
 
-    const objLiteral = match[1];
+    const openBraceIndex = src.indexOf('{', declIndex);
+    const closeSeqIndex = src.lastIndexOf('};');
+    if (openBraceIndex === -1 || closeSeqIndex === -1 || closeSeqIndex <= openBraceIndex) {
+        throw new Error('skills copy.js 에서 personaSkillList 오브젝트의 범위를 계산하지 못했습니다.');
+    }
+
+    const objLiteral = src.slice(openBraceIndex, closeSeqIndex + 1);
+
     const sandbox = {};
     vm.createContext(sandbox);
     vm.runInContext(`result = ${objLiteral}`, sandbox);
     const personaSkillList = sandbox.result;
 
-    return { src, match, personaSkillList };
+    return {
+        src,
+        range: {
+            declIndex,
+            openBraceIndex,
+            closeSeqIndex
+        },
+        personaSkillList
+    };
 }
 
-async function savePersonaSkillList(src, match, personaSkillList) {
-    const before = src.slice(0, match.index);
-    const after = src.slice(match.index + match[0].length);
+async function savePersonaSkillList(src, range, personaSkillList) {
+    const before = src.slice(0, range.declIndex);
+    const after = src.slice(range.closeSeqIndex + 2); // '};' 이후부터
 
     const newObjCode =
         'const personaSkillList = ' +
@@ -148,10 +188,12 @@ async function main() {
     console.log(`   → 수집된 innate_skill 개수: ${entries.length}`);
 
     console.log('2) personaSkillList 로딩 중...');
-    const { src, match, personaSkillList } = await loadPersonaSkillList();
+    const { src, range, personaSkillList } = await loadPersonaSkillList();
 
     console.log('3) description 교체 및 effects 제거 중...');
     let replacedCount = 0;
+    const matchedSkills = [];
+    const unmatchedSkills = [];
 
     for (const [skillKey, skill] of Object.entries(personaSkillList)) {
         if (!skill || typeof skill !== 'object') continue;
@@ -164,7 +206,10 @@ async function main() {
             skill.description = entry.desc_kr;
             skill.description_en = entry.desc_en;
             skill.description_jp = entry.desc_jp;
+            matchedSkills.push(skillKey);
             replacedCount++;
+        } else if (!entry && !isPassive) {
+            unmatchedSkills.push(skillKey);
         }
 
         // 3. effects 는 전부 제거
@@ -174,9 +219,16 @@ async function main() {
     }
 
     console.log(`   → description 교체된 스킬 수: ${replacedCount}`);
+    console.log(`   → 매칭 실패(비패시브 스킬) 수: ${unmatchedSkills.length}`);
+    if (unmatchedSkills.length) {
+        console.log('   → 매칭 실패 스킬 목록:');
+        for (const name of unmatchedSkills) {
+            console.log(`      - ${name}`);
+        }
+    }
 
     console.log('4) skills copy.js 저장 중...');
-    await savePersonaSkillList(src, match, personaSkillList);
+    await savePersonaSkillList(src, range, personaSkillList);
 
     console.log('완료: skills copy.js 의 personaSkillList 가 업데이트되었습니다.');
 }

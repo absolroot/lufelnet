@@ -1,26 +1,6 @@
 {
   "data": {
-    "final_innate": [
-      [
-        {
-          "attr": "Final Damage Mult.",
-          "nature": "Psychokinesis",
-          "value": "0.02"
-        }
-      ],
-      [
-        {
-          "attr": "Psychokinesis Boost",
-          "nature": "Psychokinesis",
-          "value": "0.08"
-        },
-        {
-          "attr": "Psychokinesis Damage Taken",
-          "nature": "Psychokinesis",
-          "value": "-0.1"
-        }
-      ]
-    ],
+    "final_innate": null,
     "innate": {
       "Attack": "0.2",
       "SP Recovery": "1.25"
@@ -147,36 +127,7 @@
         ],
         "target": "All Alive Enemy"
       },
-      "innate_awake_skill": [
-        {
-          "ascend": "0",
-          "autoSelect": "Default",
-          "cooldown": 0,
-          "cost": "",
-          "desc": "『午夜的心动回忆』额外使敌人受到暴击效果提升20.0%，持续2回合。『请好好享用』额外使我方全体攻击力提升15.0%，持续2回合。\n野毛朋子·夏日在场时，所有同伴提升相当于自身效果命中的50%的攻击力，上限20.0%。",
-          "level": "3",
-          "name": "浪漫",
-          "nature": null,
-          "tags": [
-            "潜能"
-          ],
-          "target": "Myself"
-        },
-        {
-          "ascend": "0",
-          "autoSelect": "Default",
-          "cooldown": 0,
-          "cost": "",
-          "desc": "『绚烂烟火』额外使敌人受到伤害提升5.0%+自身意识等级*2.5%，持续2回合。『绚烂烟火』的技能伤害提升5.0%+自身意识等级*2.5%。",
-          "level": "3",
-          "name": "迷离",
-          "nature": null,
-          "tags": [
-            "潜能"
-          ],
-          "target": "Myself"
-        }
-      ],
+      "innate_awake_skill": [],
       "normal_skill": [
         {
           "ascend": "0/5/0/5",

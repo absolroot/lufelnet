@@ -1273,7 +1273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="skill-name">${boostName}</span>
                                 <div class="innate-item inline-item" style="display: flex; align-items: center; gap: 0px;">
                                     <img src="${INNATE_ITEM1}" alt="innate item 1" class="innate-item-icon" style="height: 12px; object-fit: contain;">
-                                    <span class="innate-item-count" style="font-size: 12px; color: rgba(255, 255, 255, 0.5);">×200</span>
+                                    <span class="innate-item-count" style="font-size: 12px; color: rgba(255, 255, 255, 0.5);">×100</span>
                                 </div>
                             </div>
                             <p class="skill-description">${lines}</p>
@@ -1325,6 +1325,30 @@ document.addEventListener('DOMContentLoaded', () => {
             // 데이터가 하나라도 렌더되었다면 카드 표시, 아니면 숨김
             if (grid.children.length > 0) {
                 card.style.display = '';
+
+                // EN/JP에서는 하단에 안내 문구 추가 (언어별 번역 포함)
+                if (currentLang === 'en' || currentLang === 'jp') {
+                    let note = card.querySelector('.innate-global-note');
+                    const noteTexts = {
+                        kr: '※ KR V4.7에 출시된 기능입니다.',
+                        en: '※ This feature was first released in KR V4.7.',
+                        jp: '※ この機能はKR版V4.7で実装されました。'
+                    };
+                    const noteText = noteTexts[currentLang] || noteTexts.kr;
+
+                    if (!note) {
+                        note = document.createElement('div');
+                        note.className = 'innate-global-note';
+                        note.style.fontSize = '11px';
+                        note.style.opacity = '0.4';
+                        note.style.marginTop = '-4px';
+                        note.style.textAlign = 'left';
+                        note.textContent = noteText;
+                        card.appendChild(note);
+                    } else {
+                        note.textContent = noteText;
+                    }
+                }
             } else {
                 card.style.display = 'none';
             }

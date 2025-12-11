@@ -26,28 +26,28 @@ window.ritualData["슌·프론티어"] = {
 };
 
 window.enCharacterRitualData["슌·프론티어"] = {
-  "name": "Shun Kano·Frontier",
+  "name": "Shun Kano·Pioneer",
   
-  "r0": "Devotion at the Brink",
-  "r0_detail": "Shun Kano·Frontier can grant an ally the 『Tin Star Emblem』 during battle.\n『Tin Star Emblem』: The ally with this emblem becomes immune to Down. When they would take lethal damage or attempt to use a skill without sufficient HP, Shun Kano·Frontier instead bears the HP loss/consumption on their behalf, up to 80% of that ally’s Max HP.\nIn addition, Shun Kano·Frontier’s firearm attack deals 『Guaranteed Critical』 damage equal to 27.4% of his Max HP to all enemies, ignores Adaptation reduction, reduces Down Points by 1, and decreases enemy Defense by 8%. (Calculated up to 20,000 Max HP; total Defense reduction can reach up to 40%) After using a firearm attack, he may still use other skills on the same turn, and using a Persona skill reloads his bullets.",
+  "r0": "Adverse Sacrifice",
+  "r0_detail": "In battle, Shun can grant allies [Sheriff Badge].\n[Sheriff Badge]: Ally with [Sheriff Badge] have Null Down, if that ally would take fatal damage or lacks HP to use a skill, Shun will take that HP loss or spend that HP cost instead, up to 80% of that ally's max HP.\nShun's Ranged Attack will deal Gun damage equal to 27.4% of Shun's max HP and is guaranteed to be a critical hit. When dealing damage, ignore all affinites and decrease Down Points by 1. Also, decrease target's Defense by 8% for 2 turns (up to 40% Defense Down at 20000 max HP). Stacks up to 2 times. After using a Ranged Attack, Shun can use other skills. Reload after Shun manually uses a Persona skill.",
   
-  "r1": "Abundant Support",
-  "r1_detail": "While an ally with the 『Tin Star Emblem』 is present in battle, all allies gain +30% Critical Effect.\nAdditionally, the maximum HP amount that the 『Tin Star Emblem』 can substitute on behalf of an ally is increased by an additional 80%.",
+  "r1": "Generous Support",
+  "r1_detail": "In battle, when an ally has [Sheriff Badge], increase party's critical damage by 30%.\nIncrease the HP loss or HP cost that Shun can take from [Sheriff Badge] by 80%.",
   
-  "r2": "Bond Between Companions",
-  "r2_detail": "At the start of Shun Kano·Frontier’s turn, if an ally currently holds the 『Tin Star Emblem』, 『Banner of Final Battle』 is automatically activated. This effect has a cooldown of 1 turn.\nEach hit of 『Righteous Shot』 grants 5 additional stacks of the “Damage Taken Up” debuff on the target.\nThe bonus damage increase from 『Banner of Final Battle』 is no longer limited by the number of enemies, and all allies additionally gain +45% Attack for 2 turns.",
+  "r2": "Bonds between Friends",
+  "r2_detail": "At the start of Shun's turn, if an ally has [Sheriff Badge], automatically use [High Noon Flag]. This effect has a 1 turn cooldown.\nEach hit from [Justice Shot] inflicts 5 bonus stacks of damage taken debuff.\n[High Noon Flag]'s bonus damage buff is no longer limited by the number of foes. Also increase party's Attack by 45% more for 2 turns.",
   
-  "r3": "Burning Spirit of Cuisine",
-  "r3_detail": "The skill levels of 『Banner of Final Battle』 and 『Shot that Dispels the Darkness』 increase by 3, up to a maximum of Level 15.",
+  "r3": "Chef's Scorching Soul",
+  "r3_detail": "Increase the skill levels of [High Noon Flag] and [Daybreak Shot] by 3.",
   
-  "r4": "Even More Abundant Support",
-  "r4_detail": "HIGHLIGHT Enhancement: After using HIGHLIGHT, all allies gain a permanent +25% Attack (this effect cannot stack).",
+  "r4": "Super-Generous Support",
+  "r4_detail": "HIGHLIGHT Enhanced: After using HIGHLIGHT, increase party's Attack by 25%. This effect is permanent and cannot stack.",
   
-  "r5": "Blazing Chivalry",
-  "r5_detail": "The skill levels of 『Righteous Shot』 and 『Combat Technique』 increase by 3, up to a maximum of Level 15.",
+  "r5": "Chivalry's Burning Heart",
+  "r5_detail": "Increase the skill levels of [Justice Shot] and [Thief Tactics] by 3.",
   
-  "r6": "In This Glory We Stand",
-  "r6_detail": "Each time Shun Kano·Frontier consumes 1 normal bullet, he gains 1 Special Reserve Bullet. When he has 2 or more Reserve Bullets, he enters the 『Suppressor Mode』 and converts Reserve Bullets into Special Bullets usable only during that turn (up to 3 bullets).\nSpecial Bullet Effect: When hitting an enemy with a Special Bullet, that enemy’s Down Vulnerability increases by 8%, Damage Taken increases by 15%, and Critical Effect Taken increases by 10% (1 turn, up to 3 stacks).\nThe 3rd Special Bullet fired in 『Suppressor Mode』 deals fixed damage equal to 3333% of Max HP."
+  "r6": "Stand with Honor",
+  "r6_detail": "Gain 1 Reserve Round stack when Shun spends 1 Ammo. When Shun has 2 or more Reserve Round stacks, he can enter [Suppressive Fire] mode and convert all Reserve Round into Special Ammo for this turn, convert up to 3 Reserve Round stacks.\nSpecial Ammo: When using a Ranged Attack on foes, increase target's downed damage taken by 8%, damage taken by 15%, and critcal damage taken by 10% for 1 turns. Stacks up to 3 times. Under [Suppressive Fire], the third Special Ammo will deal fixed damage equal to 3333% of Shun's max HP."
 };
 window.jpCharacterRitualData["슌·프론티어"] = {
   "name": "加納 駿・フロンティア",

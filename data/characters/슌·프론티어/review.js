@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["슌·프론티어"] = { name_en: "Shun Kano·Frontier", name_jp: "加納 駿·フロンティア", codename: "SOY·FRONTIER",
+    window.characterReview["슌·프론티어"] = { name_en: "Shun Kano·Pioneer", name_jp: "加納 駿·フロンティア", codename: "SOY·Pioneer",
         review: ``,
         review_en: ``,
         review_jp: ``,

@@ -45,47 +45,47 @@ window.characterSkillsData["슌·프론티어"] = {
     }  
 };
 window.enCharacterSkillsData["슌·프론티어"] = {
-  "name": "Shun Kano · Frontier",
+  "name": "Shun Kano·Pioneer",
 
   "skill1": {
-    "name": "Righteous Shot",
+    "name": "Justice Shot",
     "element": "총격광역",
     "type": "광역피해",
     "hp": 8,
     "cool": 0,
-    "description": "Deals 6 hits of 『Guaranteed Critical』 Gun damage equal to 41.5%/45.7%/44.0%/48.3% of Max HP to random enemies, prioritizing those who have not yet been hit by this skill.\nEach hit increases the target’s Damage Taken by up to 4.9%/5.4%/5.2%/5.7% (based on Shun Kano · Frontier’s Max HP up to 19520/21520/20720/22720). This effect lasts 2 turns and can stack up to 6 times.\nSubsequent hits against the same target deal only 20% damage."
+    "description": "Deal Gun damage to random foes equal to 41.5%/45.7%/44.0%/48.3% of Shun's max HP (6 hits), this is guaranteed to be a critical hit. Each hit increases target's damage taken for 2 turns (based on Shun's max HP, up to 4.9%/5.4%/5.2%/5.7% at 19520/21520/20720/22720 max HP). Prioritze new targets and change damage to 20% for hits on the same target."
   },
   "skill2": {
-    "name": "Banner of Final Battle",
+    "name": "High Noon Flag",
     "element": "버프",
     "type": "보조",
     "sp": 23,
     "cool": 0,
-    "description": "Increases all allies’ Damage Dealt by up to 19.5%/21.5%/20.7%/22.7% (based on Shun Kano · Frontier’s Max HP up to 19520/21520/20720/22720) for 2 turns.\nIf there are 2 or more enemies, the same Damage Dealt increase is applied again for 2 turns."
+    "description": "Increase party's damage for 2 turns (based on Shun's max HP, up to 19.5%/21.5%/20.7%/22.7% at 19520/21520/20720/22720 max HP). If there are 2 or more foes, additonally increase party's damage for 2 turns (based on Shun's max HP, up to 19.5%/21.5%/20.7%/22.7% at 19520/21520/20720/22720 max HP)."
   },
   "skill3": {
-    "name": "Gunshot that Pierces the Darkness",
+    "name": "Daybreak Shot",
     "element": "버프",
     "type": "보조",
     "sp": 26,
     "cool": 1,
-    "description": "Grants 1 ally (excluding self) a 『Tin Star Emblem』 for 2 turns. Only one 『Tin Star Emblem』 may exist on the field at a time.\nIncreases all allies’ Attack by up to 29.3%/32.3%/31.1%/34.1% (based on Shun Kano · Frontier’s Max HP up to 19520/21520/20720/22720) and grants them a Shield equal to 24.8%/24.8%/26.3%/26.3% of Max HP + 705/858/867/1020.\nShun Kano · Frontier gains an additional Shield of the same amount. Effects last 2 turns."
+    "description": "Grant 1 ally (other than Shun) [Sheriff Badge] for 2 turns. Only 1 ally can have [Sheriff Badge] at a time.\nIncrease party's Attack (based on Shun's max HP, up to 29.3%/32.3%/31.1%/34.1% at 19520/21520/20720/22720 max HP). Also grant a shield to party equal to 24.8%/24.8%/26.3%/26.3% of Shun's max HP + 705/858/867/1020 and grant Shun a bonus shield equal to 24.8%/24.8%/26.3%/26.3% of Shun's max HP + 705/858/867/1020 for 2 turns."
   },
   "skill_highlight": {
     "element": "총격광역",
     "type": "광역피해",
     "cool": 4,
-    "description": "Deals Gun damage equal to 73.2%/80.7%/77.7%/85.2% of Max HP to all enemies and increases all allies’ Damage Dealt by up to 34.2%/37.7%/36.3%/39.8% (based on Shun Kano · Frontier’s Max HP up to 19520/21520/20720/22720) for 4 turns."
+    "description": "Deal Gun damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Shun's max HP. Increase party's damage for 4 turns (based on Shun's max HP, up to 34.2%/37.7%/36.3%/39.8% at 19520/21520/20720/22720 max HP)."
   },
   "passive1": {
-    "name": "Guard",
+    "name": "Sentry",
     "element": "패시브",
-    "description": "Increases Shield strength by 9.0%.\nWhen Shun Kano · Frontier’s self-applied Shield expires, he restores HP equal to 500% of the remaining Shield value."
+    "description": "Increase shield by 9.0%.\nAfter a shield Shun granted to himself ends, restore Shun's HP by 500% of remaining shield."
   },
   "passive2": {
     "name": "Valor",
     "element": "패시브",
-    "description": "When dealing Gun damage, increases the target’s Damage Taken by 24.0% and Gun Damage Taken by an additional 12.0% for 2 turns."
+    "description": "When dealing damage with a Ranged Attack, increase target's damage taken by 24.0% and Gun damage taken by 12.0% for 2 turns."
   }
 };
 

@@ -13,6 +13,7 @@ window.WeaponData["슌·프론티어"] = {
   },
   "weapon5-1": {
     "name": "성마각 신표",
+    "highlight": true,
     "health": 2873.92,
     "attack": 561.56,
     "defense": 383.2,
@@ -21,22 +22,24 @@ window.WeaponData["슌·프론티어"] = {
   }
 };
 window.enCharacterWeaponData["슌·프론티어"] = {
-  "name": "Shun Kano · Frontier",
+  "name": "Shun Kano·Pioneer",
 
   "weapon4-1": {
-    "name": "Execution in the Wasteland",
+    "name": "Wild Execution",
     "health": 2299.15,
     "attack": 449.24,
     "defense": 306.25,
-    "description": "Shield strength increases by 8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%.When Shun Kano·Frontier gains a Shield, his Max HP increases by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
+	"skill_name": "Flesh Monument",
+    "description": "Increase shield by 8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%.When Shun gains a shield, increase user's max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
   },
 
   "weapon5-1": {
-    "name": "Saint Horn Beacon",
+    "name": "Unicorn Beacon",
     "health": 2873.92,
     "attack": 561.56,
     "defense": 383.2,
-    "description": "Max HP increases by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.When Shun Kano·Frontier gains a Shield, all allies' Critical Effect increases by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.When Shun Kano·Frontier deals Gun damage, the target’s Defense is reduced by 15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2% for 2 turns."
+	"skill_name": "High Noon",
+    "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.When Shun gains a shield, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.When Shun deals Gun damage, decrease target’s Defense by 15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2% for 2 turns."
   }
 };
 

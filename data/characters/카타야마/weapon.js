@@ -52,7 +52,7 @@ window.enCharacterWeaponData["카타야마"] = {
     "attack": 706,
     "defense": 396,
     "skill_name": "Demon Unleashed",
-    "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nWhen a random foe is knocked down while Katayama is on the field, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+    "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nWhen a foe is knocked down while Katayama is on the field, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
   }
 };
 window.jpCharacterWeaponData["카타야마"] = {

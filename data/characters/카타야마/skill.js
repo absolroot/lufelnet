@@ -33,7 +33,7 @@ window.characterSkillsData["카타야마"] = {
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "모든 적에게 공격력 317.6%/350.1%/337.1%/369.7%의 전격 속성 대미지를 주고, 1턴 동안 50% 기본 확률로 적을 『기절』 상태에 빠뜨린다. HIGHLIGHT 시전 후 자신이 다음에 적을 다운시킬 때 적의 방어력이 29.3%/32.3%/31.1%/34.1% 영구 감소한다. 해당 효과는 중첩될 수 없다. 추가로 3턴 동안 적이 받는 대미지를 19.5%/21.5%/20.7%/22.7% 증가시킨다."
+    "description": "적 전체에 공격력 317.6%/350.1%/337.1%/369.7%의 전격 속성 대미지를 주고 50%의 기본 확률로 적을 1턴 동안 『기절』 상태에 빠뜨리며, 방어력을 영구적으로 29.3%/32.3%/31.1%/34.1% 감소시킨다. 해당 효과는 중첩될 수 없다. 또한 3턴 동안 받는 대미지가 19.5%/21.5%/20.7%/22.7% 증가한다."
   },
   "passive1": {
     "name": "훈계",
@@ -78,7 +78,7 @@ window.enCharacterSkillsData["카타야마"] = {
     "type": "AoE DMG",
     "sp": 0,
     "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, with a 50% base chance to inflict Dizzy for 1 turn. After using Highlight, when Katayama knocks down a foe, decrease target's Defense by 29.3%/32.3%/31.1%/34.1%. This effect is permanent and cannot stack. Additionally, increase target's damage taken by 19.5%/21.5%/20.7%/22.7% for 3 turns."
+    "description": "Deal Elec damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, with a 50% base chance to inflict Dizzy for 1 turn. After using Highlight, decrease target's Defense by 29.3%/32.3%/31.1%/34.1%. This effect is permanent and cannot stack. Additionally, increase target's damage taken by 19.5%/21.5%/20.7%/22.7% for 3 turns."
   },
   "passive1": {
     "name": "Admonition",
@@ -123,7 +123,7 @@ window.jpCharacterSkillsData["카타야마"] = {
     "type": "全体ダメージ",
     "sp": 0,
     "cool": 0,
-    "description": "敵全体に317.6%/350.1%/337.1%/369.7%の攻撃力で電撃属性ダメージを与え、50%の基礎確率で感電状態にする（1ターン）。\nHIGHLIGHT発動後、次に敵をダウンさせると、その敵の防御力を永続的に29.3%/32.3%/31.1%/34.1%減少（重複不可）。さらに、その敵が3ターンの間、被ダメージが19.5%/21.5%/20.7%/22.7%増加する。"
+    "description": "敵全体に317.6%/350.1%/337.1%/369.7%の攻撃力で電撃属性ダメージを与え、50%の基礎確率で感電状態にする（1ターン）。\nHIGHLIGHT発動後、その敵の防御力を永続的に29.3%/32.3%/31.1%/34.1%減少（重複不可）。さらに、その敵が3ターンの間、被ダメージが19.5%/21.5%/20.7%/22.7%増加する。"
   },
   "passive1": {
     "name": "訓戒",

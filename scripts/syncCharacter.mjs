@@ -70,7 +70,7 @@ function parseArgs() {
     console.error('Missing --code');
     process.exit(1);
   }
-  if (!['kr', 'jp', 'en'].includes(out.lang)) {
+  if (!['kr', 'jp', 'en', 'cn'].includes(out.lang)) {
     console.error('Invalid --lang (kr/jp/en)');
     process.exit(1);
   }

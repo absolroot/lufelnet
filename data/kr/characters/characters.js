@@ -110,7 +110,7 @@ Object.assign(window.characterData, {
         "main_revelation": ["창조", "신뢰", "여정"],
         "sub_revelation": ["화해", "풍요", "주권"],
         "element": "총격",
-        "element_weakness": "",
+        "element_weakness": "축복",
         "element_resistance": "총격",
         "rarity": 5,
         "position": "방위",
@@ -147,8 +147,8 @@ Object.assign(window.characterData, {
         "skill_priority": "3>2>4>1",
         "mind_stats1": "생명 20%",
         "mind_stats2": "실드효과 14%",
-        "mind_skill1": "-",
-        "mind_skill2": "-"
+        "mind_skill1": "S2/S3 (Checking)",
+        "mind_skill2": "S1/HL (Checking)"
     },
     "쇼키·암야": {
         "limit": true,

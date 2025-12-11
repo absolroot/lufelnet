@@ -1,7 +1,7 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
-window.characterSkillsData["J&C"] = {
+window.characterSkillsData[""] = {
   "name": "",
   "skill1": {
     "name": "-",
@@ -44,7 +44,7 @@ window.characterSkillsData["J&C"] = {
     "description": ""
   }
 };
-window.enCharacterSkillsData["쇼키·암야"] = {
+window.enCharacterSkillsData[""] = {
   "name": "",
   "skill1": {
     "name": "",
@@ -87,7 +87,7 @@ window.enCharacterSkillsData["쇼키·암야"] = {
     "description": ""
   }
 };
-window.jpCharacterSkillsData["J&C"] = {
+window.jpCharacterSkillsData[""] = {
   "name": "",
   "skill1": {
     "name": "",

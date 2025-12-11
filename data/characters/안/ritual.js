@@ -21,7 +21,7 @@ window.ritualData["안"] = {
 window.enCharacterRitualData["안"] = {
   "name": "Ann Takamaki",
   "r0": "Passion",
-  "r0_detail": "When dealing Fire damage with skills, gain 1 [Passion] stack. Gain up to 4 stacks of [Passion] with 1 skill. When [Passion] reaches 4 stacks during Ann's action, gain La Vie en Rose for 1 turn.\n[La Vie en Rose]: Increase Ann's Attack by 30%/40%/50% (effect increases at level 1/50/70). When La Vie en Rose ends, all stacks of [Passion] will be lost at the beginning of the next action. *Cannot gain [La Vie en Rose] consecutively on Ann's next action.",
+  "r0_detail": "When dealing Fire damage with skills, gain 1 [Passion] stack. Gain up to 4 stacks of [Passion] with 1 skill. If [Passion] is at 4 or more stacks at the start of the user's turn, spend all [Passion] stacks to gain [La Vie en Rose] for 1 turn.\n[La Vie en Rose]: Increase Ann's Attack by 30%/40%/50% (effect increases at level 1/50/70). When La Vie en Rose ends, all stacks of [Passion] will be lost at the beginning of the next action. *Cannot gain [La Vie en Rose] consecutively on Ann's next action.",
   "r1": "Seguidilla",
   "r1_detail": "When [La Vie en Rose] is active, increase party's Attack by 25% for 1 turn.",
   "r2": "Beautiful Sins",
@@ -33,7 +33,7 @@ window.enCharacterRitualData["안"] = {
   "r5": "Hearts on Fire",
   "r5_detail": "Increase the skill levels of [Crimson Rose] and [Trifire] by 3.",
   "r6": "Time for Punishment",
-  "r6_detail": "When attacking foes with Fire skills, 60% chance to gain 1 [Passion] stack. When Ann has [La Vie en Rose], increase Fire damage by 11% per [Passion] stack (up to 110%)."
+  "r6_detail": "When attacking foes with Fire skills, 60% chance to gain 1 [Passion] stack. When [La Vie en Rose] is active, increase Fire damage by 11% per [Passion] stack spent (up to 110%)."
 };
 window.jpCharacterRitualData["안"] = {
   "name": "高巻 杏",

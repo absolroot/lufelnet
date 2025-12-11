@@ -1,5 +1,5 @@
 window.operationData = window.operationData || {};
-window.operationData["J&C"] = {
+window.operationData[""] = {
     "basic": [
         {
             "label": "의식 0",

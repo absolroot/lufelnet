@@ -1,7 +1,7 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
-window.WeaponData["J&C"] = {
+window.WeaponData[""] = {
   "weapon4-1": {
     "name": "",
     "health": 0,
@@ -19,7 +19,7 @@ window.WeaponData["J&C"] = {
     "description": ""
   }
 };
-window.enCharacterWeaponData["J&C"] = {
+window.enCharacterWeaponData[""] = {
   "name": "",
   "weapon4-1": {
     "name": "",
@@ -38,7 +38,7 @@ window.enCharacterWeaponData["J&C"] = {
     "description": ""
   }
 };
-window.jpCharacterWeaponData["J&C"] = {
+window.jpCharacterWeaponData[""] = {
   "name": "",
   "weapon4-1": {
     "name": "",

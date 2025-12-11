@@ -1,7 +1,7 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
-window.ritualData["J&C"] = {
+window.ritualData[""] = {
   "name": "",
   "r0": "",
   "r0_detail": "",
@@ -18,7 +18,7 @@ window.ritualData["J&C"] = {
   "r6": "",
   "r6_detail": ""
 };
-window.enCharacterRitualData["J&C"] = {
+window.enCharacterRitualData[""] = {
   "name": "",
   "r0": "",
   "r0_detail": "",
@@ -35,7 +35,7 @@ window.enCharacterRitualData["J&C"] = {
   "r6": "",
   "r6_detail": ""
 };
-window.jpCharacterRitualData["J&C"] = {
+window.jpCharacterRitualData[""] = {
   "r0": "",
   "r0_detail": "",
   "r1": "",

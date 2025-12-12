@@ -1772,7 +1772,7 @@ Object.assign(window.characterData, {
         "name_en": "Shun Kano",
         "name_jp": "加納 駿",
         "codename": "SOY",
-        "sub_revel2": ["생명"],
+        "sub_revel2": ["생명", "치료효과"],
         "sub_revel3": ["생명"],
         "sub_revel4": ["생명"],
         "sub_option1": ["생명"],

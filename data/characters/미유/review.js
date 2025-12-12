@@ -9,11 +9,11 @@
 
 단기전에 적의 대미지가 너무 높아 버티기 어려울 경우에는 활용할 여지는 남아있다.
 `,
-        review_en: `A **Clarifier Phantom Thief who provides shields and increases Defense**.
+        review_en: `A **Elucidator Phantom Thief who provides shields and increases Defense**.
 
 Because her main stat is Defense, she is effective at improving overall team stability. However, **the current environment heavily favors high-damage playstyles**, which leads to a low usage rate.
 
-Separately, if **Yusuke Kitagawa** is used as the main damage dealer, he synergizes very well with both shielding and Defense boosts, making her a good Clarifier partner for him.
+Separately, if **Yusuke Kitagawa** is used as the main damage dealer, he synergizes very well with both shielding and Defense boosts, making her a good Elucidator partner for him.
 
 She can still see use in short battles where enemy damage is too high to survive without additional defensive support.
 `,

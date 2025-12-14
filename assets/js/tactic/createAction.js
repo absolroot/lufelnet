@@ -30,6 +30,7 @@
       }
 
       // 공통 페르소나 데이터 소스 (window.personaFiles 우선)
+      // ※ 캐시는 두지 않고, 호출 시점마다 최신 window.personaFiles를 읽어온다.
       function getPersonaStore() {
         const w = (typeof window !== 'undefined') ? window : globalThis;
         if (w.personaFiles && Object.keys(w.personaFiles).length) return w.personaFiles;
@@ -37,12 +38,11 @@
         if (w.persona && w.persona.personaData) return w.persona.personaData;
         return {};
       }
-      const personaStore = getPersonaStore();
 
       // 페르소나 이름 번역 함수
       function getPersonaDisplayName(personaName) {
         const currentLang = getCurrentLanguage();
-        const store = personaStore || {};
+        const store = getPersonaStore() || {};
         if (currentLang === 'kr' || !store[personaName]) {
           return personaName;
         }
@@ -102,7 +102,7 @@
       // 고유스킬 이름 번역 함수 (페르소나 데이터에서)
       function getUniqueSkillDisplayName(personaName, skillName) {
         const currentLang = getCurrentLanguage();
-        const store = personaStore || {};
+        const store = getPersonaStore() || {};
         if (currentLang === 'kr' || !store[personaName]) {
           return skillName;
         }
@@ -173,7 +173,7 @@
         }
         
         // 페르소나별 고유스킬인지 확인
-        const store = personaStore || {};
+        const store = getPersonaStore() || {};
         for (const personaName in store) {
           const persona = store[personaName];
           if (persona.uniqueSkill && persona.uniqueSkill.name === memoText) {

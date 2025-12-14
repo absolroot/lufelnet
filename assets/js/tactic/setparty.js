@@ -251,9 +251,6 @@ function setupPartySelection() {
             max-width: calc(100% - 36px);
         }
         
-        .input-container.party-name-container.show-translation:has(input:focus)::before {
-            display: none;
-        }
       `;
     document.head.appendChild(styleElement);
   }

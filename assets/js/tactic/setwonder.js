@@ -2,6 +2,16 @@
 function setupWonderConfig() {
 const wonderConfigDiv = document.getElementById("wonder-config");
 
+// 중복 초기화 방지: 페이지 로드 시 1회만 구조/이벤트를 설정하고,
+// 이후(importData 등에서 재호출되더라도) 값만 변경되도록 한다.
+if (!wonderConfigDiv) return;
+if (wonderConfigDiv.__WONDER_CONFIG_INITIALIZED) {
+  // 이미 설정된 상태에서는 import가 wonderPersonas 값과 인풋 value만 갱신하므로
+  // 여기서 추가 DOM 래핑이나 이벤트 바인딩을 다시 할 필요가 없다.
+  return;
+}
+wonderConfigDiv.__WONDER_CONFIG_INITIALIZED = true;
+
 // 공통 페르소나 데이터 소스 (window.personaFiles 우선)
 // ※ 캐시는 두지 않고, 호출 시점마다 최신 window.personaFiles를 읽어온다.
 function getPersonaStore() {

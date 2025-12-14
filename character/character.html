@@ -2579,30 +2579,37 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 }
 
                 // 카드 클릭 시 캐릭터 페이지로 이동 + 스포일러 처리
+                // 단, 친구가 '원더'인 경우에는 클릭 링크를 만들지 않음
                 try {
-                    const targetUrl = `character.html?name=${encodeURIComponent(friend.name)}`;
+                    const isWonderFriend = (friend.name === '원더' || friend.name === 'Wonder');
+                    if (!isWonderFriend) {
+                        const targetUrl = `character.html?name=${encodeURIComponent(friend.name)}`;
 
-                    const handleClick = (e) => {
-                        try {
-                            // 코멘트 영역 클릭은 아무 동작도 하지 않음
-                            if (e && e.target && e.target.closest('.friend-comment')) {
-                                return;
-                            }
-                            // 스포일러가 걸려 있으면 첫 클릭에서만 해제
-                            if (item.classList.contains('spoiler')) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                item.classList.remove('spoiler');
-                                item.dataset.spoilerRevealed = '1';
-                                return;
-                            }
-                            if (e) { e.preventDefault(); }
-                            window.location.href = targetUrl;
-                        } catch (_) { window.location.assign(targetUrl); }
-                    };
+                        const handleClick = (e) => {
+                            try {
+                                // 코멘트 영역 클릭은 아무 동작도 하지 않음
+                                if (e && e.target && e.target.closest('.friend-comment')) {
+                                    return;
+                                }
+                                // 스포일러가 걸려 있으면 첫 클릭에서만 해제
+                                if (item.classList.contains('spoiler')) {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    item.classList.remove('spoiler');
+                                    item.dataset.spoilerRevealed = '1';
+                                    return;
+                                }
+                                if (e) { e.preventDefault(); }
+                                window.location.href = targetUrl;
+                            } catch (_) { window.location.assign(targetUrl); }
+                        };
 
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', handleClick);
+                        item.style.cursor = 'pointer';
+                        item.addEventListener('click', handleClick);
+                    } else {
+                        // 원더는 클릭 불가 표시
+                        item.style.cursor = 'default';
+                    }
                 } catch (e) { console.warn('[SAFE:friend-click]', e); }
 
                 // 라인업 스포일러 처리 (언어별 출시 여부 기준)

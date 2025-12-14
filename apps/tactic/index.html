@@ -1167,12 +1167,35 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           try {
             if (typeof setupTranslations === 'function') {
               setupTranslations()
-                .then(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} })
-                .catch(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} });
+                .then(() => {
+                  try {
+                    if (typeof setupPartySelection === 'function') setupPartySelection();
+                  } catch(_) {}
+                  // 캐릭터/계시 번역 데이터가 준비된 이후 파티 이름 번역을 한 번 더 적용
+                  try {
+                    if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+                  } catch(_) {}
+                })
+                .catch(() => {
+                  try {
+                    if (typeof setupPartySelection === 'function') setupPartySelection();
+                  } catch(_) {}
+                  try {
+                    if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+                  } catch(_) {}
+                });
             } else {
               if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+              try {
+                if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+              } catch(_) {}
             }
-          } catch(_) { if (typeof setupPartySelection === 'function') { setupPartySelection(); } }
+          } catch(_) {
+            if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+            try {
+              if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+            } catch(_) {}
+          }
           updateAutoActions();
           updatePartyImages();
           renderTurns();

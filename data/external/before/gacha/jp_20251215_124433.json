@@ -1,0 +1,184 @@
+{
+  "data": {
+    "thief": [
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "芦谷 真咲",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "新井 素羽",
+            "type": "thief"
+          },
+          {
+            "name": "多祢村 理子",
+            "type": "thief"
+          },
+          {
+            "name": "黒谷 清",
+            "type": "thief"
+          }
+        ],
+        "name": "咲き誇る友情",
+        "startTime": "2025-11-25 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "芦谷 真咲",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "新井 素羽",
+            "type": "thief"
+          },
+          {
+            "name": "多祢村 理子",
+            "type": "thief"
+          },
+          {
+            "name": "黒谷 清",
+            "type": "thief"
+          }
+        ],
+        "name": "咲き誇る友情",
+        "startTime": "2025-11-25 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "奥村 春",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "加納 駿",
+            "type": "thief"
+          },
+          {
+            "name": "野毛 朋子",
+            "type": "thief"
+          },
+          {
+            "name": "佐原 海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "美少女怪盗、推参！",
+        "startTime": "2025-12-06 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "奥村 春",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "加納 駿",
+            "type": "thief"
+          },
+          {
+            "name": "野毛 朋子",
+            "type": "thief"
+          },
+          {
+            "name": "佐原 海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "美少女怪盗、推参！",
+        "startTime": "2025-12-06 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "スピナサクラメンティ",
+            "type": "weapon",
+            "user": "芦谷"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "罪と罰",
+            "type": "weapon",
+            "user": "素羽"
+          },
+          {
+            "name": "銀月の鉤",
+            "type": "weapon",
+            "user": "理子"
+          },
+          {
+            "name": "デススティンガー",
+            "type": "weapon",
+            "user": "黒谷"
+          },
+          {
+            "name": "スピナカリタティス",
+            "type": "weapon",
+            "user": "芦谷"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2025-11-25 11:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "ラストクォーター",
+            "type": "weapon",
+            "user": "春"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "デーモンバイト",
+            "type": "weapon",
+            "user": "駿"
+          },
+          {
+            "name": "シャドークラウン",
+            "type": "weapon",
+            "user": "朋子"
+          },
+          {
+            "name": "ギルガメスアクス",
+            "type": "weapon",
+            "user": "春"
+          },
+          {
+            "name": "サブマリンソナー",
+            "type": "weapon",
+            "user": "海夕"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2025-12-06 11:30:00",
+        "type": "武器補給"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

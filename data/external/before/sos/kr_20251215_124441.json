@@ -1,0 +1,95 @@
+{
+  "data": {
+    "boss": [
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Gun",
+                "Ice",
+                "Electric",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire",
+                "Bless"
+              ]
+            },
+            "level": "89",
+            "name": "조종당하는 체르노보그",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.436,
+              "Attack": 3428.0918,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Mult.": 1.088,
+              "Damage Taken": 0,
+              "Defense": 697.701,
+              "Down Points": 4.0,
+              "HP": 1845674.208,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Psychokinesis",
+                "Bless"
+              ],
+              "Weak": [
+                "Nuclear"
+              ]
+            },
+            "level": "89",
+            "name": "조종당하는 황룡",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Attack": 4897.2729,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Damage Mult.": 1.088,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 6.0,
+              "HP": 1568927.304,
+              "Pierce Rate": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Speed": 90.0
+            }
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78402
+      }
+    ],
+    "buff": "지열의 균열: 생명을 소모하여 스킬을 발동하거나 추가 효과를 줄 때, 자신이『용암 증기』를 1중첩 획득한다. 『용암 증기』: 1턴 동안 중첩당 20%의 최종 대미지 보너스를 제공한다(2회 중첩 가능).",
+    "endTime": "2025-12-18 07:30:00",
+    "startTime": "2025-12-04 08:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

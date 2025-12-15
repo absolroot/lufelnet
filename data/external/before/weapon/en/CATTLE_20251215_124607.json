@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Fallen Angel Wing",
+        "quality": 5,
+        "skill": "Increase healing effect by 22.0%/22.0%/28.5%/28.5%/35.0%/35.0%/41.5%. For each Starfire stack on allies, increase healing received by 4.5%/5.9%/5.9%/7.3%/7.3%/8.7%/8.7%, and increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%.",
+        "stat": {
+          "attack": 693.7,
+          "defense": 418.4,
+          "hp": 2477.51
+        },
+        "user": "Lufel"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Lava Flame",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. If Starfire is active, increase healing effect by 6.9%/9.0%/9.0%/11.1%/11.1%/13.2%/13.2% per stack of Starfire.",
+        "stat": {
+          "attack": 554.96,
+          "defense": 334.73,
+          "hp": 1981.98
+        },
+        "user": "Lufel"
+      }
+    ],
+    "name": "Lufel"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -10,34 +10,60 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Gun",
+                "Phys",
+                "Fire",
                 "Ice",
-                "Electric",
-                "Curse"
+                "Bless"
               ],
               "Weak": [
-                "Fire",
-                "Bless"
+                "Gun",
+                "Nuclear"
               ]
             },
             "level": "89",
             "name": "조종당하는 체르노보그",
+            "skill": "1016,1026",
+            "sn": 538101,
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.436,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
               "Attack": 3428.0918,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
               "Damage Mult.": 1.088,
               "Damage Taken": 0,
               "Defense": 697.701,
               "Down Points": 4.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
               "HP": 1845674.208,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
               "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
               "SP": 100.0,
               "SP Recovery": 0,
-              "Speed": 90.0
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
             }
           }
         ],
@@ -53,32 +79,58 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Electric",
-                "Psychokinesis",
-                "Bless"
+                "Ice",
+                "Wind",
+                "Nuclear"
               ],
               "Weak": [
-                "Nuclear"
+                "Psychokinesis"
               ]
             },
             "level": "89",
             "name": "조종당하는 황룡",
+            "skill": "504,507",
+            "sn": 538111,
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.545,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
               "Attack": 4897.2729,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
               "Crit Mult.": 1.3,
               "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
               "Damage Mult.": 1.088,
               "Damage Taken": 0,
               "Defense": 855.113,
               "Down Points": 6.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
               "HP": 1568927.304,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
               "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
               "SP": 100.0,
               "SP Recovery": 0,
-              "Speed": 90.0
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
             }
           }
         ],

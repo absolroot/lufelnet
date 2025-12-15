@@ -26,35 +26,59 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
+              null,
               "Phys",
-              "Gun",
-              "Electric",
-              "Bless"
+              "Ice",
+              "Nuclear"
             ],
             "Weak": [
-              "Psychokinesis"
+              "Wind"
             ]
           },
           "level": "78",
           "name": "Kartikeya",
           "skill": "2454,357,1016,1404,253",
-          "sn": 740111,
+          "sn": "740111",
           "stat": {
             "Accuracy": 1.0,
             "Ailment Acc.": 0.39,
             "Ailment Resist.": 0.392,
+            "Almighty Boost": 0,
+            "Almighty Damage Taken": 0,
             "Attack": 2299.0167,
+            "Bless Boost": 0,
+            "Bless Damage Taken": 0,
             "Crit Mult.": 1.3,
             "Crit Rate": 0.0,
+            "Curse Boost": 0,
+            "Curse Damage Taken": 0,
             "Damage Mult.": 1.037,
             "Damage Taken": 0,
             "Defense": 652.061,
             "Down Points": 0,
+            "Electric Boost": 0,
+            "Electric Damage Taken": 0,
+            "Final Damage Mult.": 0,
+            "Fire Boost": 0,
+            "Fire Damage Taken": 0,
+            "Gun Boost": 0,
+            "Gun Damage Taken": 0,
             "HP": 209244.384,
+            "Ice Boost": 0,
+            "Ice Damage Taken": 0,
+            "Nuclear Boost": 0,
+            "Nuclear Damage Taken": 0,
+            "Phys Boost": 0,
+            "Phys Damage Taken": 0,
             "Pierce Rate": 0,
+            "Psychokinesis Boost": 0,
+            "Psychokinesis Damage Taken": 0,
             "SP": 100.0,
             "SP Recovery": 0,
-            "Speed": 89.4
+            "Shield Effect": 0,
+            "Speed": 89.4,
+            "Wind Boost": 0,
+            "Wind Damage Taken": 0
           }
         }
       },
@@ -83,34 +107,58 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
+              "Phys",
               "Gun",
-              "Fire",
-              "Nuclear"
+              "Psychokinesis"
             ],
             "Weak": [
-              "Ice"
+              "Fire"
             ]
           },
           "level": "78",
           "name": "Surt",
           "skill": "108,103,1023,1008",
-          "sn": 733111,
+          "sn": "733111",
           "stat": {
             "Accuracy": 1.0,
             "Ailment Acc.": 0.39,
             "Ailment Resist.": 0.49,
+            "Almighty Boost": 0,
+            "Almighty Damage Taken": 0,
             "Attack": 4926.4653,
+            "Bless Boost": 0,
+            "Bless Damage Taken": 0,
             "Crit Mult.": 1.3,
             "Crit Rate": 0.0,
+            "Curse Boost": 0,
+            "Curse Damage Taken": 0,
             "Damage Mult.": 1.037,
             "Damage Taken": 0,
             "Defense": 800.521,
             "Down Points": 0,
+            "Electric Boost": 0,
+            "Electric Damage Taken": 0,
+            "Final Damage Mult.": 0,
+            "Fire Boost": 0,
+            "Fire Damage Taken": 0,
+            "Gun Boost": 0,
+            "Gun Damage Taken": 0,
             "HP": 178437.4272,
+            "Ice Boost": 0,
+            "Ice Damage Taken": 0,
+            "Nuclear Boost": 0,
+            "Nuclear Damage Taken": 0,
+            "Phys Boost": 0,
+            "Phys Damage Taken": 0,
             "Pierce Rate": 0,
+            "Psychokinesis Boost": 0,
+            "Psychokinesis Damage Taken": 0,
             "SP": 100.0,
             "SP Recovery": 0,
-            "Speed": 89.4
+            "Shield Effect": 0,
+            "Speed": 89.4,
+            "Wind Boost": 0,
+            "Wind Damage Taken": 0
           }
         }
       }

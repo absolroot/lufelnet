@@ -1,33 +1,3 @@
 {
-  "data": {
-    "fiveStar": [
-      {
-        "name": "Jolting Pulse",
-        "quality": 5,
-        "skill": "Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. After inflicting an elemental ailment on a foe, decrease the target's Defense by 33.0%/43.0%/43.0%/53.0%/53.0%/63.0%/63.0% for 2 turns. This effect does not stack. Every 2 turns, at the start of Chizuko's action, 80.0%/95.0%/95.0%/110.0%/110.0%/125.0%/125.0% base chance to inflict 1 foe with a random elemental ailment that it does not have.",
-        "stat": {
-          "attack": 693.7,
-          "defense": 444.88,
-          "hp": 2180.22
-        },
-        "user": "Chizuko"
-      }
-    ],
-    "fourStar": [
-      {
-        "name": "Gravitational Force",
-        "quality": 4,
-        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When a foe with an elemental ailment is present, decrease that foe's Defense by 9.6%/12.4%/12.4%/15.2%/15.2%/18.0%/18.0%. Also, when inflicted with Radiation, decrease Defense by 9.6%/12.4%/12.4%/15.2%/15.2%/18.0%/18.0% more.",
-        "stat": {
-          "attack": 554.96,
-          "defense": 355.72,
-          "hp": 1744.19
-        },
-        "user": "Chizuko"
-      }
-    ],
-    "name": "Chizuko"
-  },
-  "msg": "OK",
-  "status": 0
+  "error": "Weapon not found."
 }

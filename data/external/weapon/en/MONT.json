@@ -1,33 +1,3 @@
 {
-  "data": {
-    "fiveStar": [
-      {
-        "name": "Queen of Winter",
-        "quality": 5,
-        "skill": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Activate Blade Dancer at 8+ Ice Crystal stacks and increase its damage by 46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%. Increase the power of Durandal of Ice at 8+ Ice Crystal stacks.",
-        "stat": {
-          "attack": 759.73,
-          "defense": 409.62,
-          "hp": 2160.41
-        },
-        "user": "Kotone"
-      }
-    ],
-    "fourStar": [
-      {
-        "name": "Edelweiss",
-        "quality": 4,
-        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time Kotone gains Ice Crystal stacks, increase Ice damage by 2.4%/3.1%/3.1%/3.8%/3.8%/4.5%/4.5% for 1 turn. Stacks up to 10 times.",
-        "stat": {
-          "attack": 607.79,
-          "defense": 328.02,
-          "hp": 1728.63
-        },
-        "user": "Kotone"
-      }
-    ],
-    "name": "Kotone"
-  },
-  "msg": "OK",
-  "status": 0
+  "error": "Weapon not found."
 }

@@ -1,5 +1,266 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意怪盜釋放人格面具技能造成傷害後，YUI有35%的固定機率立刻追擊技能主目標，造成80%攻擊力的電擊屬性傷害，這次追擊視作追加效果。並使該敵人受到的下1次電屬性傷害提升15%，效果持續2回合。",
+        "name": "★大工程！啟動★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "YUI的追擊的暴擊率提升20%，追擊處於觸電狀態下的敵人時暴擊率提升10%。",
+        "name": "★播種之日★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『超稀有獎勵』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "★快快萌芽的咒語★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對敵人釋放追擊後，使自身和玩伴攻擊力提升10%，效果持續2回合，可疊加3層。",
+        "name": "★彩虹製造機★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『劈啪驚奇箱』、『爆炸磚塊』的技能等級提升3級，至多提升至15級。",
+        "name": "★向蟲蟲宣戰★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HighLight效果提升：追擊暴擊效果提升40%，效果持續2回合。",
+        "name": "★狡猾的草叢舞★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "場上只有1個敵人時，YUI的追擊基礎技能倍率提升至110%攻擊力；YUI的追擊對其他所有敵人造成25%的濺射傷害。",
+        "name": "★愉悅的豐收之時★",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "desc": "使YUI的攻擊力提升34.2%/37.7%/36.3%/39.8%，追擊造成的傷害提升相當於YUI攻擊力的24.4%/26.9%/25.9%/28.4%，效果持續2回合。並使得任何同伴釋放技能造成傷害後都會觸發YUI的追擊，效果持續2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Support",
+      "skill_lv": "10/10/13/13",
+      "sn": 111152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "YUI",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對1名敵人造成185.4%/204.4%/196.8%/215.8%攻擊力的電擊屬性傷害。若敵人未處於觸電狀態，則有68.3%/68.3%/72.5%/72.5%的基礎機率使其陷入觸電狀態，效果持續2回合。若敵人已處於觸電狀態，則傷害提升30%。",
+        "name": "劈啪驚奇箱",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 111111,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成59.6%/65.7%/63.3%/69.4%攻擊力的電擊屬性傷害，對技能主目標造成的傷害提升25%。",
+        "name": "爆炸磚塊",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 111112,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 1,
+        "desc": "使自身的攻擊力提升39.0%/43.0%/41.4%/45.4%。並選擇1名同伴作為YUI的『玩伴』，『玩伴』對敵人釋放人格面具技能造成傷害後，YUI立刻追擊，並使得YUI下2次追擊造成132.9%/146.6%/141.1%/154.7%攻擊力的電擊屬性傷害，效果持續2回合。同時使『★大工程！啟動★』觸發的固定機率提升10%，持續2回合。",
+        "name": "超稀有獎勵",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 111113,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "YUI的追擊對處於觸電狀態下的敵人造成的傷害提升36.0%。",
+        "name": "靈動",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『玩伴』存在時，YUI和玩伴的暴擊率提升12.0%，攻擊力提升12.0%。",
+        "name": "閃耀",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2970.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.5,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "566.66 / 577.06 / 587.46 / 597.06 / 607.46 / 617.86 / 628.26",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3419.97 / 3481.57 / 3543.17 / 3604.77 / 3666.37 / 3727.97 / 3789.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

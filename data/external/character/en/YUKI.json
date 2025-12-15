@@ -1,5 +1,262 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "At the start of battle, grant Oath to 1 random ally.\nAt the end of Yukimi's action, grant a shield equal to 24% of Yukimi's Defense to an ally with Oath.\n*Only 1 ally can have Oath at a time.",
+        "name": "Scales of Fairness",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally has Oath, increase their Defense by 15%.",
+        "name": "Legal Proceedings",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally with Oath takes an action, gain 1 Blessing stack.",
+        "name": "Law-Abiding Spirit",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Sword of Condemnation and Sacral Glow by 2.",
+        "name": "Right Person Right Place",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Highlight Enhanced: Grant 2 Blessing stacks to all allies.",
+        "name": "Legal Qualifications",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Absolute Judgment and Thief Tactics by 2.",
+        "name": "Execution of Justice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase damage by 10% for Yukimi and allies with Oath. Increase Bless damage by 2% for each Blessing stack on Yukimi and allies with Oath (up to 20%).",
+        "name": "Extenuating Circumstances",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "Deal Bless damage to 1 foe equal to 284.1%/313.2%/295.8%/324.9% of Yukimi's Defense. Also increase party's Defense by 20% of Yukimi's Defense (up to 657/725/684/752) for 2 turns.",
+      "name": "Highlight",
+      "nature": "Bless",
+      "skill_lv": "10/10/12/12",
+      "sn": 113152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Defense": "0.3",
+      "Shield Effect": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "Yukimi Fujikawa",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Bless damage to all foes equal to 88.0%/97.1%/91.6%/100.7% of Yukimi's Defense. Grant 1 Blessing stack to Yukimi and allies with Oath.",
+        "name": "Sword of Condemnation",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 113111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on AAAAAA==)",
+        "cooldown": 0,
+        "desc": "Grant a shield to 1 ally besides self equal to 47.2%/47.2%/49.2%/49.2% of Yukimi's Defense + 1344/1635/1547/1838, and increase target's Defense by 35% of Yukimi's Defense (up to 1112/1226/1158/1272).\nAlso, decrease target's damage taken by 20% once. Lasts for 2 turns. Grant 2 Blessing stacks, and grant target Oath for 2 turns.",
+        "name": "Sacral Glow",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 113112,
+        "tags": [
+          "Shield"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Bless damage to 1 foe equal to 117.1%/129.1%/121.9%/133.9% of Yukimi's defense.\nWhen Yukimi or an ally with an Oath gain Blessing stacks, gain 1 Gavel stack.\nWhen this skill is used after Gavel reaches 2 stacks, spend all Gavel stacks. For each Gavel stack spent, increase party's damage by 4.9%/5.4%/5.1%/5.6% for 1 turn, and grant a shield to party equal to 14.9%/16.5%/15.5%/17.1% of Yukimi's Defense for 2 turns.",
+        "name": "Absolute Judgment",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 113113,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally has Oath, increase their damage by 7% for every 1500 of Yukimi's Defense (up to 21.0%).\n(If Defense is less than 1500, increase damage by a percentage).",
+        "name": "Cross-Examination",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "At the end of Yukimi's action, grant a shield equal to 69.0% of Yukimi's Defense to allies below 30% HP, and grant 1 Blessing stack. Blessing lasts 2 turns. This effect activates once per battle.",
+        "name": "Urgent Matter",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Conditional Target",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Defense": 4170.0,
+      "Speed": 109.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "637.67 / 644.87 / 652.07 / 660.07 / 667.27 / 674.47 / 681.67",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "595.4 / 602.6 / 609.0 / 616.2 / 622.6 / 629.8 / 637.0",
+      "Defense Increase": "32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -1,5 +1,284 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "사나다 아키히코가 페르소나 스킬/테우르기아를 사용해 전격 속성 대미지를 준 후 『집념』을 1중첩 획득한다. 전투 진입 시 『집념』을 2중첩 획득한다(12회 중첩 가능). 자신의 턴 시작 시 『집념』을 6중첩 소모하여 『무적의 주먹』을 1회 시전할 수 있다. 『무적의 주먹』: 자신이 『투지』를 1중첩 획득하며, 적 전체에 공격력 55.9%의 물리 속성 대미지를 준다. 해당 스킬은 추가 효과로 간주된다. 『투지』: 자신의 관통이 4% 증가한다(3회 중첩 가능).",
+        "name": "전투의 이유",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "사나다 아키히코가 『투지』를 보유하고 있는 경우 크리티컬 확률이 20% 증가한다.\n전투 진입 시 자신이 테우르기아 에너지를 70포인트 획득한다.",
+        "name": "복싱부 주장",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『집념』을 소모해 『무적의 주먹』을 시전하면 3턴 동안 자신의 대미지가 30% 증가한다.\n다운 상태 유닛에게 대미지를 줄 시 자신의 『다운 특수 공격』이 10% 증가한다.",
+        "name": "서툰 감정",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『썬더 크래쉬』, 『스파크 피스트』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "절제력",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "테우르기아 시전 시 크리티컬 효과가 20% 증가한다.",
+        "name": "훈련 성과",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『라이트닝 필드』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "숨겨진 진심",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "사나다 아키히코 전투 진입 시 『집념』 6중첩을 추가로 획득하며, 『집념』의 상한이 18중첩으로 증가한다. 『투지』 상한이 4중첩으로 증가하고, 자신이 『투지』를 1중첩 보유할 때마다 대미지가 8% 증가한다.\n사나다 아키히코가 『스파크 피스트』 시전 후 『극·일격필살』을 1회 추가로 시전한다.\n『극·일격필살』: 이번 턴에 소모한 『투지』 중첩 수에 따라, 중첩당 적 전체에 공격력 13.5%의 『반드시 크리티컬 발동』 및 『방어를 무시』하는 전격 속성 대미지를 주며, 『투지』를 1중첩 획득한다. 해당 스킬은 추가 효과로 간주된다.",
+        "name": "힘을 추구하는 자",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1턴 동안 동료 1명의 크리티컬 효과가 20% 증가한다.",
+        "name": "지원 스킬",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 141171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "사나다 아키히코",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "자신이 『투지』를 1중첩 획득하고, 모든 적에게 공격력 122.8%/135.4%/130.3%/142.9%의 전격 속성 대미지를 주며, 3턴 동안 자신의 크리티컬 효과가 23.4%/25.8%/24.9%/27.3% 증가한다.",
+        "name": "라이트닝 필드",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141111,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "자신이 『투지』를 1중첩 획득하고, 모든 적에게 공격력 92.1%/101.6%/97.8%/107.2%의 전격 속성 대미지를 주며, 자신이 『집념』을 2중첩 획득한다.",
+        "name": "썬더 크래쉬",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141112,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "desc": "모든 적에게 공격력 136.4%/150.4%/144.8%/158.8%의 전격 속성 대미지를 준다. 자신에게 『투지』가 2중첩 이상 있을 경우 모든 『투지』를 소모하며, 『투지』를 1중첩 소모할 때마다 해당 스킬 배율이 40.9%/45.1%/43.4%/47.6% 증가한다.",
+        "name": "스파크 피스트",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141113,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "자신이 다운 상태인 적에게 대미지를 줄 때, 주는 대미지가 30.0% 증가한다.",
+        "name": "열혈",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "자신이 크리티컬을 줄 때마다 3턴 동안 공격력이 13.5% 증가한다(3회 중첩 가능).",
+        "name": "관철",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.45,
+      "Crit Rate": 0.5,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on AAAAAA==)",
+        "cooldown": 0,
+        "desc": "시전 조건: 테우르기아 에너지 140포인트\n적 전체에 공격력 255.4%/281.6%/271.1%/297.3%의 전격 속성 대미지를 주고, 해당 스킬은 『반드시 크리티컬』이 된다. 크리티컬 효과는 200%로 고정된다.",
+        "name": "라이트닝 스피어",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
 }

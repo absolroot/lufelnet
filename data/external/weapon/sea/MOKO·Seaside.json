@@ -1,3 +1,33 @@
 {
-  "error": "Weapon not found."
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Bubble Babies",
+        "quality": 5,
+        "skill": "Increase healing by 22.0%/22.0%/28.5%/28.5%/35.0%/35.0%/41.5%. Increase multiplier for skill damage from Summer Reminiscence and its healing by 18.5%/24.0%/24.0%/29.5%/29.5%/35.0%/35.0%. When activating Summer Reminiscence, increase the target's damage taken by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0% for 3 turns. This effect can stack up to 2 times.\nAlso decrease the target's Defense and ailment resistance by 12% for 3 turns.",
+        "stat": {
+          "attack": 720.11,
+          "defense": 383.2,
+          "hp": 2338.77
+        },
+        "user": "Tomoko"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Ocean's Tidings",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When activating Summer Reminiscence, increase Tomoko's healing by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8% for 2 turns.",
+        "stat": {
+          "attack": 575.95,
+          "defense": 306.25,
+          "hp": 1870.83
+        },
+        "user": "Tomoko"
+      }
+    ],
+    "name": "Tomoko"
+  },
+  "msg": "OK",
+  "status": 0
 }

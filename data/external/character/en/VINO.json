@@ -1,5 +1,262 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Inflict Radiation on foes with elemental ailments for 2 turns.\nRadiation: Increase damage taken by 15%. Radiation counts as an elemental ailment.",
+        "name": "Veteran Technique",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When foes with Radiation are also inflicted with Burn, Shock, Freeze, or Windswept, increase corresponding Fire, Electric, Ice, or Wind damage taken by 15%.",
+        "name": "Grandmotherly Care",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally inflicts an elemental ailment, increase Chizuko's ailment accuracy by 10% for 2 turns. Stacks up to 3 times.",
+        "name": "From Now On",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Diving Ray and Blunt Edge by 2.",
+        "name": "Jazz Session",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Highlight Enhanced: Increase foes' Nuclear damage taken by 35.2% for 2 turns.",
+        "name": "The Older, the Wiser",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Bullseye Bomber and Thief Tactics by 2.",
+        "name": "Long-time Player",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally attacks a foe with Radiation, activate the following effects based on the number of unique elemental ailments on the foe. (Effects will stack.)\n1 or more: Increase Attack by 10%.\n2 or more: Increase Nuclear damage by 10%.\n3 or more: Increase pierce rate by 8%.",
+        "name": "Unending",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "Deal Nuclear damage to 1 foe equal to 324.5%/357.8%/337.8%/371.1% of Attack. Has a 75% chance to inflict 2 random elemental ailments that the foe does not already have.",
+      "name": "Highlight",
+      "nature": "Nuclear",
+      "skill_lv": "10/10/12/12",
+      "sn": 130152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "Chizuko Nagao",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Nuclear damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack.\nFor 2 turns, decrease the target's Defense by 22.5% of Chizuko's ailment accuracy (up to 37.3%/37.3%/38.8%/38.8%) and inflict a random elemental ailment that the target does not already have.",
+        "name": "Diving Ray",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Nuclear damage to all foes equal to 91.5%/100.9%/95.2%/104.6% of Attack. Has a 40% chance to inflict a random elemental ailment that the foe does not already have.",
+        "name": "Blunt Edge",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130112,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "Deal Nuclear damage to 1 foe equal to 195.2%/215.2%/203.2%/223.2% of Attack.\nIncrease the target's damage taken by 11.3% of Chizuko's ailment accuracy (up to 18.7%/20.7%/19.5%/21.4%) for 2 turns, based on the number of unique elemental ailments they have.",
+        "name": "Bullseye Bomber",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130113,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase Nuclear damage taken by foes with Radiation by 15.0%. Lasts for 2 turns.",
+        "name": "Eagle Eye",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase Attack by 45.0% of ailment accuracy.",
+        "name": "Perfect Timing",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3450.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "505.41 / 511.01 / 517.41 / 523.01 / 528.61 / 534.21 / 540.61",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2475.37 / 2504.17 / 2532.17 / 2560.97 / 2589.77 / 2617.77 / 2646.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

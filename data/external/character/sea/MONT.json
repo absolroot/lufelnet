@@ -1,5 +1,263 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "On ally's action, gain 1 Ice Crystal stack. Stacks up to 12 times. After using a skill, when Ice Crystal reaches 10 stacks, activate Resonance, spending 10 Ice Crystal stacks to deal 65% follow-up Ice damage to the main target. This Resonance is guaranteed to be a critical hit.\nWhen using Frost Lily or Winter Storm, if the Resonance is activated, gain Parhelion.\nParhelion is used to strengthen Durandal of Ice.",
+        "name": "Blade Dancer",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "At the end of Kotone's action, gain a shield equal to 15% of Attack for 1 turn.",
+        "name": "Camel Spin",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase Resonance damage based on foe's missing HP (up to 50%).",
+        "name": "Ice Princess",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Frost Lily and Winter Storm by 2.",
+        "name": "Heart of Ice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Highlight Enhanced: Increase Highlight damage up to 60%.",
+        "name": "Resilience",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Durandal of Ice and Thief Tactics by 2.",
+        "name": "Axel Jump",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "At the start of battle, gain 4 Ice Crystal stacks. Increase the maximum number of Ice Crystal stacks to 15.",
+        "name": "Opening Ceremony",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "Deal Ice damage to 1 foe equal to 292.8%/322.8%/304.8%/334.8% of Attack. Increase damage based on foe's missing HP. When foe's HP is below 20%, increase by up to 30%.",
+      "name": "Highlight",
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 121152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "Kotone Montagne",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Ice damage to all foes equal to 87.1%/96.0%/90.6%/99.5% of Attack. 29.3%/29.3%/30.5%/30.5% chance to inflict Freeze.",
+        "name": "Frost Lily",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Ice damage to 1 foe equal to 160.4%/176.8%/166.9%/183.4% of Attack. Gain 4 Ice Crystal stacks.",
+        "name": "Winter Storm",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121112,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Ice damage to 1 foe equal to 179.7%/198.1%/187.0%/205.5% of Attack. When Kotone has Parhelion or 10+ Ice Crystal stacks, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%).\nWhen Blade Dancer is activated, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%).",
+        "name": "Durandal of Ice",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121113,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When damaging foes with Blade Dancer, 100.0% chance to inflict Freeze.",
+        "name": "Frozen in Time",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When Kotone defeats a foe, gain 4 Ice Crystal stacks.",
+        "name": "State of Selflessness",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2620.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "862.28 / 871.88 / 882.28 / 891.88 / 902.28 / 911.88 / 922.28",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "465.43 / 471.03 / 475.83 / 481.43 / 487.03 / 492.63 / 497.43",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2452.29 / 2480.29 / 2509.09 / 2537.09 / 2565.09 / 2593.89 / 2621.89",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

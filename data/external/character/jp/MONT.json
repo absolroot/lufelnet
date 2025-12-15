@@ -1,5 +1,263 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方の行動時、『氷晶』を１つ獲得し、最大１２まで累積する。スキル使用後、『氷晶』の累積が１０以上の時、意識奏功の効果により、『氷晶』を１０消費して選択した対象に攻撃力６５%の氷結属性ダメージを追加で与える。この追加攻撃は必ずクリティカルが発生する。\n『凍てつく氷華』や『冬の嵐』を使用した時、追加攻撃が発動すると『幻日』を獲得する。\n『幻日』は、『氷塊のデュランダル』のダメージ上昇に使用される。",
+        "name": "氷上の舞姫",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身の行動が終了した時、１ターンの間、攻撃力１５%分のシールドを付与する。",
+        "name": "キャメルスピン",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵の残りのＨＰが少ないほど意識奏功の与ダメージが上昇し、最大５０%まで上昇する。",
+        "name": "キスアンドクライ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『凍てつく氷華』『冬の嵐』のスキルレベルが２上昇する。",
+        "name": "氷細工の心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "ハイライト能力追加：ハイライトによる与ダメージ上昇効果が最大６０%になる。",
+        "name": "再起と復帰",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『氷塊のデュランダル』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "アクセルジャンプ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戦闘開始時、『氷晶』を４つ獲得する。『氷晶』が最大１５まで累積できるようになる。",
+        "name": "オープニングセレモニー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "敵単体に攻撃力292.8%/322.8%/304.8%/334.8%の氷結属性ダメージを与える。敵の残りのＨＰが少ないほど与ダメージが上昇し、敵のＨＰが２０%未満の状態で、最大３０%まで上昇する。",
+      "name": "ハイライト",
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 121152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "琴音・モンターニュ",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵全体に攻撃力87.1%/96.0%/90.6%/99.5%の氷結属性ダメージを与え、29.3%/29.3%/30.5%/30.5%の確率で凍結状態にする。",
+        "name": "凍てつく氷華",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵単体に攻撃力160.4%/176.8%/166.9%/183.4%の氷結属性ダメージを与え、『氷晶』を４つ獲得する。",
+        "name": "冬の嵐",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121112,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵単体に攻撃力179.7%/198.1%/187.0%/205.5%の氷結属性ダメージを与える。『氷晶』の累積が１０以上の時、もしくは『幻日』状態の時、敵の残りのＨＰが少ないほど与ダメージが上昇し、最大29.3%/29.3%/30.5%/30.5%まで上昇する。\nさらに、『氷上の舞姫』の与ダメージが、敵の残りのＨＰが少ないほど上昇し、最大29.3%/29.3%/30.5%/30.5%まで上昇する。",
+        "name": "氷塊のデュランダル",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121113,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『氷上の舞姫』で敵にダメージを与えた時、100.0%の確率で凍結状態にする。",
+        "name": "瞬間凍結",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身が敵を倒した時、『氷晶』を4つ獲得する。",
+        "name": "忘我の境地",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2620.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "862.28 / 871.88 / 882.28 / 891.88 / 902.28 / 911.88 / 922.28",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "465.43 / 471.03 / 475.83 / 481.43 / 487.03 / 492.63 / 497.43",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2452.29 / 2480.29 / 2509.09 / 2537.09 / 2565.09 / 2593.89 / 2621.89",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

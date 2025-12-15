@@ -1,3 +1,33 @@
 {
-  "error": "Weapon not found."
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Dream and Nightmare",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Increase chance to inflict Sleep by 41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0%. When using a skill on an ally, increase target's Attack by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns.",
+        "stat": {
+          "attack": 660.68,
+          "defense": 427.25,
+          "hp": 2358.58
+        },
+        "user": "Tomoko"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Shadow Crowns",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After spending Greenleaf, increase Attack by 19.0%/24.0%/24.0%/29.0%/29.0%/34.0%/34.0% for 2 turns.",
+        "stat": {
+          "attack": 528.55,
+          "defense": 341.44,
+          "hp": 1887.18
+        },
+        "user": "Tomoko"
+      }
+    ],
+    "name": "Tomoko"
+  },
+  "msg": "OK",
+  "status": 0
 }

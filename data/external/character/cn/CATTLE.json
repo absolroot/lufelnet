@@ -1,5 +1,265 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用治疗技能时，使目标同伴获得『星之火』效果，每个同伴至多拥有一个『星之火』相关效果。\n『星之火I』：攻击力提升，相当于路菲尔攻击力的4%（最多提升160攻击力），效果持续1回合，效果结束时升级为『星之火II』。\n『星之火II』：攻击力提升，相当于路菲尔攻击力的8%（最多提升320攻击力），效果持续1回合。",
+        "name": "昼夜颠倒",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗开始时有100%基础概率使生命值最高的敌人陷入燃烧状态。\n处于任意『星之火』状态下的同伴，造成元素异常时，效果命中提升33%。",
+        "name": "270°旋转",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『雀跃火枭』、『希望光束』的技能等级提升2级，至多提升至15级。",
+        "name": "耳羽轻颤",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『星之火II』获得额外效果，处于该状态下的同伴受到治疗效果提升10%。",
+        "name": "猎物现身",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『天使的怜悯』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "无声偷袭",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使所有同伴造成的火焰属性伤害提升32%，效果持续1回合",
+        "name": "利爪突击",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『星之火II』结束时赋予目标『星之火III』。\n『星之火III』：攻击力提升，相当于路菲尔攻击力的8%，火焰伤害提升20%，受到治疗效果提升10%，效果持续1回合。",
+        "name": "满载而归",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on HPcur/HP)",
+      "cooldown": 4,
+      "desc": "使所有同伴恢复59.7%/59.7%/62.2%/62.2%攻击力+1700/2067/1956/2323的生命值，并且使所有同伴的攻击力提升33.2%/33.2%/34.5%/34.5%，1回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Heal",
+      "skill_lv": "10/10/12/12",
+      "sn": 104152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "路菲尔",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成113.2%/124.8%/117.9%/129.5%攻击力的火焰属性伤害，有100%基础概率使敌人陷入燃烧状态并使使敌人受到治疗效果降低30%，效果持续2回合。",
+        "name": "雀跃火枭",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 104112,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on HPcur/HP)",
+        "cooldown": 0,
+        "desc": "使1名同伴恢复67.4%/67.4%/70.2%/70.2%攻击力+1920/2334/2209/2623的生命值。目标生命值低于50%时，治疗效果提升19%/19%/20%/20%。",
+        "name": "希望光束",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 104111,
+        "tags": [
+          "主动",
+          "单疗"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使所有同伴恢复42.1%/42.1%/43.8%/43.8%攻击力+1197/1456/1378/1636的生命值，对主要目标同伴的治疗效果提升24%/24%/25%/25%。",
+        "name": "天使的怜悯",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 104113,
+        "tags": [
+          "主动",
+          "群疗"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用人格面具技能攻击敌人时，使随机3个同伴获得『星之火』效果。",
+        "name": "光明",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身最大生命值转化为治疗效果，最多12000生命值可以使治疗效果提升42.0%。",
+        "name": "希望",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3730.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "475.39 / 480.99 / 486.59 / 492.19 / 496.99 / 502.59 / 508.19",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2812.32 / 2845.12 / 2877.12 / 2909.92 / 2941.92 / 2974.72 / 3006.72",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

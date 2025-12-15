@@ -1,5 +1,252 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "選擇陣容階段，山岸風花可以選擇1名友方角色作為『後備角色』。戰鬥中山岸風花可以消耗『願望聆聽』，釋放特殊技能『神諭轉換』使『後備角色』登場並行動。每經過1個『戰鬥輪次』可以使用1次『神諭轉換』。\n戰鬥開始時，自身獲得1/2/3層『願望聆聽』（達到1、50、70級時變化），上限4層。\n『神諭轉換』：\n消耗4層『願望聆聽』，使當前回合所屬的友方角色（後稱『當前角色』）暫時退場並使『後備角色』登場並進行1次行動，『後備角色』行動後退場並重新替換為『當前角色』，『當前角色』繼續行動。\n『後備角色』登場時，會複製『當前角色』非自身添加的所有狀態（『後備角色』退場時會清除這些狀態）。『後備角色』初次登場時，會觸發所有\"戰鬥開始時\"的效果。『後備角色』退場後，所有狀態的持續時間不會減少。『後備角色』初次登場後，技能冷卻時間會隨『戰鬥輪次』正常減少。",
+        "name": "值得信賴的支援者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時，山岸風花額外獲得2層『願望聆聽』，『願望聆聽』上限提升為8層。\n自身釋放技能後，使所有同伴暴擊率提升6%，持續2回合，上限2層。",
+        "name": "我的容身之處",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "山岸風花釋放『神諭轉換』使『後備角色』登場時，立刻使其釋放1次降神或HIGHLIGHT。(該效果每經過3個『戰鬥輪次』後可以發動1次）\n釋放『神諭轉換』後，使所有同伴總傷害增幅提升6%，持續1回合。\n任意同伴生命值低於最大生命值的40%時，使其立刻恢復最大生命值20%的生命值，並使其每回合回復最大生命值15%的生命值，持續2回合，此效果每場戰鬥僅能觸發1次。",
+        "name": "擅長與不擅長",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『神聖祈禱』、『心念的波動』的技能等級提升3級，至多提升至15級。",
+        "name": "維繫者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴釋放HIGHLIGHT或降神時，使其HIGHLIGHT或降神傷害傷害提升25%。",
+        "name": "塔之引導者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『光輝之力』的技能等級提升3級，至多提升至15級。",
+        "name": "連結之能",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "釋放『神諭轉換』消耗的『願望聆聽』減少至3層。\n釋放『神聖祈禱』時，額外獲得2層『願望聆聽』。",
+        "name": "自我的價值",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "山岸風花",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使所有同伴攻擊力提升10.0%/11.0%/11.2%/12.2%+山岸風花每有100點攻擊力提升1.143%，上限40.0%/44.0%/44.8%/48.8%、傷害提升8.0%/8.8%/9.0%/9.8%+山岸風花每有100點攻擊力提升0.914%，上限32.0%/35.2%/35.8%/39.0%，持續2回合，自身獲得1層『願望聆聽』。",
+        "name": "光輝之力",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 145111,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 16,
+        "desc": "初始準備時間：16次行動\n使所有同伴攻擊力提升6.0%/6.6%/6.7%/7.3%+山岸風花每有100點攻擊力提升0.686%，上限24.0%/26.4%/26.9%/29.3%，持續3回合。若技能主目標是S.E.E.S.成員，則為其恢復35點降神能量，並使其降神傷害提高6.0%/6.6%/6.7%/7.3%+山岸風花每有100點攻擊力提升0.686%，上限24.0%/26.4%/26.9%/29.3%，持續3回合。若技能主目標為非S.E.E.S.成員，則恢復35點HIGHLIGHT能量，並使其HIGHLIHGT傷害提高6.0%/6.6%/6.7%/7.3%+山岸風花每有100點攻擊力提升0.686%，上限24.0%/26.4%/26.9%/29.3%，持續3回合。\n該技能的準備時間獨立計算，釋放該技能後不會影響其他解明技能的準備時間。該技能在戰鬥中顯示的準備時間為剩餘準備時間。",
+        "name": "神聖祈禱",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 145112,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使所有同伴暴擊效果提升10.0%/11.0%/11.2%/12.2%+山岸風花每有1%暴擊效果提升0.625%，上限40.0%/44.0%/44.8%/48.8%，持續2回合，自身獲得1層『願望聆聽』。\n任意同伴滿足以下對應條件時，按照優先順序觸發以下效果中的1個。（不滿足任何條件時，則隨機觸發其中1個效果）\n1、任意同伴處於精神異常狀態，解除目標1個異常狀態。\n2、任意同伴的生命值低於最大生命值的25%，恢復生命值百分比最低的同伴15%最大生命值。\n3、任意同伴的精力值低於30點，恢復精力值最低的同伴30點精力值。",
+        "name": "心念的波動",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 145113,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴釋放降神或HIGHLIGHT後，使全體同伴暴擊效果提升24.0%，持續2回合。",
+        "name": "慈悲",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時根據『後備角色』各屬性的4.5%，提升在場的所有同伴的相應屬性值。",
+        "name": "深情",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 145132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3500.0,
+      "Crit Mult.": 0.64,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1120.0 / 1140.0 / 1160.0 / 1180.8 / 1200.8 / 1220.8 / 1240.8",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "586.65 / 597.05 / 607.45 / 618.65 / 629.05 / 639.45 / 649.85",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3480.01 / 3542.41 / 3605.61 / 3668.01 / 3730.41 / 3793.61 / 3856.01",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

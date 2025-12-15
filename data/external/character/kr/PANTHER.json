@@ -1,5 +1,267 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "모든 적이 화염 속성 대미지를 4회 입으면 『몰두』 상태에 진입하고, 1턴 동안 공격력이 30%/40%/50%(1/50/70레벨) 증가한다. 다음 턴에서는 다시 『몰두』 상태에 진입하지 않는다. 각 행동 시 타카마키 안은 최대 적 4명을 카운트한다.",
+        "name": "매력 육성",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『몰두』 상태일 경우 1턴 동안 모든 동료의 공격력이 25% 증가한다.",
+        "name": "요염한 몸짓",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『화염의 침식』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "아름다운 시작",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『몰두』 상태 종료 시 적을 공격하면 화염 폭발을 2회 주고, 각각 임의의 적에게 공격력 66%의 화염 대미지를 준다.",
+        "name": "붉은 기적",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『만발한 꽃』, 『매화술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "빛나는 순간",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 스킬 시전 시 자신의 공격력이 1턴 동안 100% 증가한다.",
+        "name": "무아지경",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "적 공격 시 60%의 확률로 『몰두』가 추가 카운트 1을 획득한다. 『몰두』 상태에서는 카운트가 1 추가될 때마다 화염 대미지가 11% 증가하고, 최대 110% 증가한다.",
+        "name": "완벽한 끝",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "모든 적에게 공격력 195.2%/215.2%/207.2%/227.2%의 화염 속성 대미지를 주며, 1턴 동안 자신이 주는 화염 대미지가 78.1%/86.1%/82.9%/90.9% 증가한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Fire",
+      "skill_lv": "10/10/13/13",
+      "sn": 119152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "타카마키 안",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "모든 적에게 공격력 94.8%/104.5%/100.6%/110.3%의 화염 속성 대미지를 주고, 2턴 동안 자신의 공격력이 20% 증가한다. 『몰두』 상태에서 2턴 동안 타카마키 안의 공격력을 기반으로 적의 공격력이 8% 감소하고, 자신의 공격력은 해당하는 만큼 추가로 증가한다.",
+        "name": "만발한 꽃",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119113,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1명의 적에게 공격력 134.2%/148.0%/142.5%/156.2%의 화염 속성 대미지를 주고, 75%의 기본 확률로 적을 화상 상태에 빠뜨린다. 『몰두』 상태에서 적의 생명이 50% 미만일 경우, 추가로 30% 대미지를 준다.",
+        "name": "매화술",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119112,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "모든 적에게 공격력 96.3%/106.2%/102.3%/112.1%의 화염 속성 대미지를 주고, 30%의 기본 확률로 적을 화상 상태에 빠뜨린다. 『몰두』 상태에서의 스킬 대미지가 30% 증가한다.",
+        "name": "화염의 침식",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119111,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "페르소나 스킬, HIGHLIGHT로 화염 속성 TECHNICAL을 주며, 폭발 연소 발동 시 주는 대미지가 30.0% 증가한다.",
+        "name": "정열",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『몰두』 상태 종료 시 생명 백분율이 가장 낮은 동료가 공격력 45.0%의 생명을 회복한다.",
+        "name": "위로",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3010.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.67
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1209.99 / 1231.59 / 1253.19 / 1275.59 / 1297.19 / 1318.79 / 1340.39",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "619.97 / 631.17 / 642.37 / 653.57 / 664.77 / 675.97 / 687.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3239.99 / 3298.39 / 3356.79 / 3415.19 / 3473.59 / 3531.99 / 3589.59",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

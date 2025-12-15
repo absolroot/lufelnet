@@ -1,3 +1,33 @@
 {
-  "error": "Weapon not found."
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Technomage Ultra FS",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen an ally deals weakness damage, increase the ally's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.\nAfter Futaba inflicts a debuff with a skill, increase the foe's critical damage taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns. This effect can stack up to 2 times.",
+        "stat": {
+          "attack": 753.13,
+          "defense": 396.41,
+          "hp": 2239.65
+        },
+        "user": "Futaba"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Cyberdeck Pro",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter inflicting Virus on a foe, increase the target's damage taken by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.",
+        "stat": {
+          "attack": 602.36,
+          "defense": 317.1,
+          "hp": 1791.59
+        },
+        "user": "Futaba"
+      }
+    ],
+    "name": "Futaba"
+  },
+  "msg": "OK",
+  "status": 0
 }

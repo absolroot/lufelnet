@@ -1,3 +1,33 @@
 {
-  "error": "Weapon not found."
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Cyber Jammers",
+        "quality": 5,
+        "skill": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. Increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. When a follow-up attack is activated by an ally with Player 2, or by an ally dealing Electric damage with a skill, increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more.",
+        "stat": {
+          "attack": 759.73,
+          "defense": 374.35,
+          "hp": 2259.46
+        },
+        "user": "Yui"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Meta Directors",
+        "quality": 4,
+        "skill": "Increase critical rate by 7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%. When performing a follow-up attack, increase Electric damage by 9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4% for 1 turn. Stacks up to 2 times.",
+        "stat": {
+          "attack": 607.79,
+          "defense": 299.47,
+          "hp": 1807.87
+        },
+        "user": "Yui"
+      }
+    ],
+    "name": "Yui"
+  },
+  "msg": "OK",
+  "status": 0
 }

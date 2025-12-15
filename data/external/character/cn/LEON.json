@@ -1,5 +1,266 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "当任意同伴的生命值不高于75%时，使其获得『激活』：基于神山岭央攻击力的6%获得攻击力提升（最多提升120/180/240攻击力，达到1、50、70级时变化），效果持续1回合，『激活』上限2层。",
+        "name": "有机改造士",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使身上有『激活』的同伴的防御力提升10%。",
+        "name": "城市守望者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『核热幻想』、『生命提炼』的技能等级提升2级，至多提升至15级。",
+        "name": "嚯！决一死战",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "以同伴为目标释放人格面具技能时，自身攻击力提升25%。",
+        "name": "边缘救世主",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『英勇转化』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "成长与羁绊",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使目标同伴暴击效果提升25%，效果持续2回合。",
+        "name": "英雄归途",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "以同伴为目标释放人格面具技能时，若其生命值不高于60%，则使其暴击效果提升25%，效果持续1回合。",
+        "name": "世界永不终结",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "desc": "使1名同伴获得满层『激活』，效果持续2回合，若目标生命值低于60%，则使其生命值恢复至60%，恢复的生命值上限为神山岭央攻击力的200%。并基于神山岭央攻击力的15%提升其攻击力，上限585.6/645.6/609.6/669.6点，效果持续2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Support",
+      "skill_lv": "10/10/12/12",
+      "sn": 107152,
+      "tags": [
+        null
+      ],
+      "target": "Ally excluding myself",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "神山岭央",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成170.8%/188.3%/177.8%/195.3%攻击力的核热属性伤害。释放该技能时，所有同伴身上每有1层『激活』，则该技能的伤害提升10%。",
+        "name": "核热幻想",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 107111,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 0,
+        "desc": "将1名同伴当前生命值的30%按照80%的比例置换为护盾，并额外附加相当于神山岭央31.6%/31.6%/32.9%/32.9%+900/1095/1035/1230攻击力的护盾，护盾持续2回合。并使其获得1层『激活』。",
+        "name": "生命提炼",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 107112,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 0,
+        "desc": "使1名同伴的攻击力提升19.5%/19.5%/20.3%/20.3%，效果持续2回合。效果持续时间，目标身上每有1层『激活』，则基于神山岭央攻击力的20%获得攻击力提升，通过这种方式获得的攻击力上限为1516.7/1672.1/1578.9/1734.3。",
+        "name": "英勇转化",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 107113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『生命提炼』技能持续时间结束后，根据护盾的剩余值的100.0%恢复生命值。",
+        "name": "抗争",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "若有同伴身上具有两层『激活』效果，则额外提升其45.0%暴击效果。",
+        "name": "陪伴",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4520.0,
+      "Speed": 105.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "780.03 / 788.83 / 797.63 / 807.23 / 816.03 / 824.83 / 833.63",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "490.0 / 495.6 / 501.2 / 506.8 / 512.4 / 518.0 / 523.6",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2609.99 / 2640.39 / 2669.99 / 2700.39 / 2730.79 / 2760.39 / 2790.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

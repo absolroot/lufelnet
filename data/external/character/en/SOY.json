@@ -1,5 +1,262 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase chance of being targeted by attacks, and when attacked, activate Desperado.\nAt the end of Shun's action, Desperado ends, and he restores 30% HP.",
+        "name": "Wild Runner",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When Desperado is active, decrease damage taken by 8%.",
+        "name": "Steely Endurance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When remaining HP is below 50%, increase healing effect by 25%.",
+        "name": "Bloodspray",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Icicle Hatchet and Smash Hit by 2.",
+        "name": "Man of Integrity",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Highlight Enhanced: Decrease party's damage taken by 16% for 2 turns.",
+        "name": "A Man's Back",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Icy Defense and Thief Tactics by 2.",
+        "name": "Masterful Cutting Skills",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When attacking a foe while Desperado is active, deal bonus damage equal to 10% of Shun's max HP, and restore HP equal to damage dealt.",
+        "name": "Robbing and Smuggling",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "Increase party's max HP by 10.3% of Shun's max HP for 2 turns (up to 14100/14100/15600/15600) and restore party's HP by 10.1%/11.1%/10.5%/11.5% of Shun's max HP.\nDeal Ice damage to 1 foe equal to 75.3%/83.1%/78.4%/86.2% of Shun's max HP.",
+      "name": "Highlight",
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 106152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Defense": "0.3",
+      "Unknown Attr": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "Shun Kano",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "desc": "Deal Ice damage to 1 foe equal to 55.6%/61.3%/57.9%/63.6% of Shun's max HP. 70% chance to inflict Freeze.",
+        "name": "Icicle Hatchet",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 106111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "desc": "Deal Physical damage to 1 foe equal to 56.9%/62.7%/59.2%/65.1% of Shun's max HP. Decrease Defense by 30.0%/30.0%/31.2%/31.2% for 2 turns.When Desperado is active, increase effect by 59.9%/59.9%/62.4%/62.4%.",
+        "name": "Smash Hit",
+        "nature": "Phys",
+        "skill_lv": "10/10/12/12",
+        "sn": 106112,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "Increase party's max HP by 15% of Shun's max HP (up to 14100/14100/15600/15600) for 2 turns.\nAlso, restore party's HP by 16.5%/18.2%/17.2%/18.9% of Shun's max HP.\nGreatly increase Shun's chance of being targeted by attacks for 2 turns.\nCooldown Time: 1 turn.",
+        "name": "Icy Defense",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 106113,
+        "tags": [
+          "Support"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase ammo for ranged attacks by 18. When attacking foes with ranged attacks, 10.0% chance to deal bonus damage equal to 9% of Shun's max HP, and decrease foe's Defense by 35% for 3 turns. Consecutive ranged attacks against the same foe will deal decreased damage.",
+        "name": "Daunting Firepower",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When Shun is attacked while Icy Defense is active, 30.0% chance to activate Desperado.",
+        "name": "For Your Benefit",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Defense": 1010.0,
+      "HP": 15300.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "637.67 / 644.87 / 652.07 / 660.07 / 667.27 / 674.47 / 681.67",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "435.41 / 440.21 / 445.81 / 450.61 / 455.41 / 460.21 / 465.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3262.27 / 3299.87 / 3337.47 / 3375.07 / 3412.67 / 3450.27 / 3487.87",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

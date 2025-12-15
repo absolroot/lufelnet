@@ -1,5 +1,266 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对敌人造成元素异常状态时，使敌人获得『辐射』状态，持续2回合，『辐射』使敌人受到的伤害提升15%，『辐射』被视为一种元素异常。",
+        "name": "嘿！我这暴脾气",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『辐射』效果存在时，使处于燃烧、触电、冻结、风袭状态的敌人受到我方全体对应的火焰、电击、冰冻、疾风属性伤害提升15%。",
+        "name": "一个顶俩",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『标志炸弹』、『地毯式轰炸』的技能等级提升2级，至多提升至15级。",
+        "name": "那就…对轰吧！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "所有同伴每造成一次元素异常效果，则使自身效果命中提升10%，持续2回合，可叠加3层。",
+        "name": "大战略家",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『对地集中火力』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "咆哮的发动机",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：受到核热伤害提升35.2%，持续2回合。",
+        "name": "驾驶老手",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "同伴攻击带有『辐射』的敌人时，根据敌人身上的元素异常数量，最多激活下列3个效果：\n大于等于1个时，攻击力提升10%；\n大于等于2个时，核热伤害提升10%；\n大于等于3个时，穿透提升8%。",
+        "name": "BOOM！BOOM！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "对1名敌人造成324.5%/357.8%/337.8%/371.1%攻击力的核热属性伤害，使敌人有75%的基础概率陷入2种他身上没有的随机元素异常状态。",
+      "name": "HIGHLIGHT",
+      "nature": "Nuclear",
+      "skill_lv": "10/10/12/12",
+      "sn": 130152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "长尾千津子",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成170.8%/188.3%/177.8%/195.3%攻击力的核热属性伤害，降低目标的防御力，数值相当于自身效果命中的22.5%，最多降低37.3%/37.3%/38.8%/38.8%防御，持续2回合。并有100%基础概率使敌人陷入某种他身上没有的随机元素异常状态。",
+        "name": "标志炸弹",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130111,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对所有敌人造成91.5%/100.9%/95.2%/104.6%攻击力的核热属性伤害。有40%基础概率使敌人陷入某种他身上没有的随机元素异常状态。",
+        "name": "地毯式轰炸",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130112,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "对1名敌人造成195.2%/215.2%/203.2%/223.2%攻击力的核热属性伤害。目标身上每有一种元素异常，给予目标1层受到伤害提升效果，数值相当于自身效果命中的11.3%，最多提升18.7%/20.7%/19.5%/21.4%受到伤害，持续2回合，上限3层。",
+        "name": "对地集中火力",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130113,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "拥有『辐射』的敌人受到的核热属性伤害提升15.0%。",
+        "name": "歼灭",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗中，自身获得等同于自身效果命中45.0%的攻击力加成。",
+        "name": "战术",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3450.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "505.41 / 511.01 / 517.41 / 523.01 / 528.61 / 534.21 / 540.61",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2475.37 / 2504.17 / 2532.17 / 2560.97 / 2589.77 / 2617.77 / 2646.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

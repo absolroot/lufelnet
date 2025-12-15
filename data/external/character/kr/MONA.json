@@ -1,5 +1,265 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "이전 턴과 다른 스킬 사용 시마다 『직감』을 1회 획득한다(3회 중첩 가능).\n『직감』: 동료가 스킬을 사용해 적 공격 시 임의의 동료 HP가 70% 미만일 경우 모르가나가 추가 효과를 부여해 즉시 아군 전체의 공격력 10%+150/225/300(1, 50, 70레벨 도달 시 변화)의 생명을 회복시킨다.",
+        "name": "예민한 후각",
+        "nature": "Heal",
+        "skill_lv": "3",
+        "sn": 102140,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『직감』 효과는 생명이 50% 이하인 동료에게 공격력 30%만큼 추가로 회복시킨다.",
+        "name": "왕성한 힘",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『치유술』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "살랑대는 꼬리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『치료술』은 메인 목표에 대한 치료량이 33% 증가한다.",
+        "name": "방해 금지",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『질풍 강습』, 『젠틀 펀치』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "민첩한 반격",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT 효과 증가: 동료 부활 시 공격력 60.0%+800의 생명을 추가로 회복한다.",
+        "name": "사냥감 이동",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『젠틀 펀치』의 명중률이 더 낮아지지 않고, 크리티컬 공격 후 적에게 주는 대미지가 2턴 동안 15% 증가한다.",
+        "name": "호기심쟁이",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "1명의 적에게 공격력 227.8%/251.1%/241.8%/265.1%의 질풍 속성 대미지를 주고, 동료 1명을 최대 생명의 20% 상태로 부활시킨다.",
+      "name": "HIGHLIGHT",
+      "nature": "Wind",
+      "skill_lv": "10/10/13/13",
+      "sn": 102152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "모르가나",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1명의 적에게 공격력 146.4%/161.4%/155.4%/170.4%의 질풍 속성 대미지를 주고, 100%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다. 풍습 효과를 추가하면 고정 확률로 『직감』을 획득한다(획득하는 고정 확률은 현재 크리티컬 확률과 동일).",
+        "name": "질풍 강습",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 102111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "아군 전체가 공격력 37.6%/37.6%/39.9%/39.9%+1069/1300/1315/1546의 생명을 회복하고, 아군 전체의 원소 이상 상태 1개를 정화한다. 정화에 성공하면 즉시 『직감』을 1중첩 획득한다.",
+        "name": "치유술",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 102113,
+        "tags": [
+          "액티브",
+          "광역치료"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1명의 적에게 공격력 128.9%/142.1%/136.9%/150.1%의 물리 속성 대미지를 준다. 해당 스킬의 명중률이 20% 감소하고 크리티컬 확률이 30% 증가한다. 해당 스킬 크리티컬 발동 즉시 『직감』을 1개 획득한다.",
+        "name": "젠틀 펀치",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 102112,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『직감』의 치료 효과는 크리티컬이 적용될 수 있으며, 추가로 30.0%의 크리티컬 확률을 획득한다. 크리티컬 시 『직감』의 회복량은 공격력 24.0%+720만큼 추가로 증가한다.",
+        "name": "자신",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "빛의 고리: 모든 동료의 SP 소모가 15.0% 감소한다.",
+        "name": "속박",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3530.0,
+      "Crit Rate": 0.89,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "646.69 / 658.69 / 669.89 / 681.89 / 693.09 / 705.09 / 716.29",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -1,5 +1,248 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方が３回行動するごとに、ダウン値が最も高い敵を『看破』状態にする。『看破』状態の敵を攻撃すると『看破』を消費し、理子は『情報』を獲得する。\n『看破』状態：次に受けるダメージが６%上昇する。攻撃時に理子は『情報』を２つ獲得し、弱点/通常相性属性のダメージを与えるとダウン値を１減少させる。ダウン値を減少させたとき追加で１つ『情報』を獲得する。『情報』は８つまで累積する。",
+        "name": "雪裏清香",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戦闘開始時、ダウン値が最も高い敵を『看破』状態にする。",
+        "name": "春風迅雷",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『春風来りて梅が花咲く』を使用した時、ダウン値が最も高い敵を『看破』状態にする。",
+        "name": "暗香疎影",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『散り乱ひたる梅花』『霞立つ梅の花夢』のスキルレベルが２上昇する。",
+        "name": "和気香風",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方がハイライトを使用した時、ダウン値が最も高い敵を『看破』状態にする。",
+        "name": "桜梅桃李",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『春風来りて梅が花咲く』のスキルレベルが２上昇する。",
+        "name": "和羹塩梅",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身の速さが１００以上の状態で『春風来りて梅が花咲く』を使用した時、１００を超えた分の速さ１５ごとにクールタイムが減少する（最大４行動分まで）。",
+        "name": "威風凜々",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "多祢村 理子",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "２ターンの間、敵全体の防御力を10.0%/10.0%/10.8%/10.8%低下させる。\nさらに自身の速さが１００以上の時、１００を超えた分の速さ１０ごとに防御力を４.９%ずつ低下させる（最大29.4%/32.3%/31.8%/34.7%まで）。\nまた、選択した対象を『看破』状態にする。\nクールタイム：味方の行動４回",
+        "name": "散り乱ひたる梅花",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 105111,
+        "tags": [
+          "弱体"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "２ターンの間、敵全体の被ダメージを10.5%/11.6%/11.3%/12.4%上昇させる。\n味方が敵のダウン値を減少させるか、敵をダウンさせた時、クールタイムが１減少する。クールタイムが０になると、このスキルは自動で発動する。\nクールタイム：味方の行動８回",
+        "name": "霞立つ梅の花夢",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 105112,
+        "tags": [
+          "弱体"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『情報』を全て消費して、１ターンの間、味方全体を『追風』状態にする。さらに、選択した味方のＨＰを12.7%/12.7%/13.7%/13.7%回復する。\n『追風』状態：敵に与えるダメージが12.6%/13.9%/13.6%/14.9%上昇し、消費した『情報』の数と理子の速さに応じてさらにダメージが上昇する。理子の速さが１００以上の時、１００を超えた分の速さ１０ごとにダメージが１.０５%上昇する（最大6.3%/6.9%/6.8%/7.4%まで）。\nクールタイム：味方の行動８回（『情報』が５つ未満の時はこのスキルを使用できない）",
+        "name": "春風来りて梅が花咲く",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 105113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戦闘開始時、自身の速さが１００以上の時、１００を超えた分の速さ１ごとに味方全体のＨＰが６ずつ、攻撃力を２ずつ、防御力を２ずつ上昇させる。\nＨＰは最大360まで、攻撃力は最大120まで、防御力は最大120まで上昇する。",
+        "name": "春風怒涛",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "１ＭＯＲＥおよび総攻撃による与ダメージが60.0%上昇する。",
+        "name": "梅花爛漫",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3380.0,
+      "HP": 5660.0,
+      "Speed": 161.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "780.03 / 788.83 / 797.63 / 807.23 / 816.03 / 824.83 / 833.63",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "455.4 / 461.0 / 465.8 / 471.4 / 476.2 / 481.8 / 486.6",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2609.99 / 2640.39 / 2669.99 / 2700.39 / 2730.79 / 2760.39 / 2790.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "119.16 / 119.16 / 119.16 / 119.16 / 119.16 / 119.16 / 119.16",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

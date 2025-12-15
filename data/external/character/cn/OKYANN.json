@@ -1,5 +1,253 @@
 {
-  "data": null,
-  "msg": "Character not found.",
-  "status": 100
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "富山佳代使用支援技能后会获得数量不等的『节拍』。『节拍』数量达到4时，富山佳代消耗4个『节拍』并立刻释放追加效果『劲歌热舞』。\n『劲歌热舞』：使所有同伴获得增益（达到1、50、70级时变化），攻击力提升10%/15%/20%；防御力提升10%/15%/20%；效果命中提升5%/7.5%/10%，效果持续2回合，最多叠加3层。",
+        "name": "通往♪自由世界",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗开始时，富山佳代获得2个『节拍』，并使所有同伴效果命中提升35%，效果持续1回合。",
+        "name": "放肆♪大笑跳舞",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『派对狂欢』、『华丽摇摆』的技能等级提升2级，至多提升至15级。",
+        "name": "描绘♪绚烂色彩",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "富山佳代释放『劲歌热舞』后，有20%的固定概率返还1个『节拍』。",
+        "name": "晃动♪镭射灯球",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『热辣变奏曲』的技能等级提升2级，至多提升至15级。",
+        "name": "碰撞♪躁动温度",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴释放HIGHLIGHT/神通法技能后，富山佳代有67%的固定概率获得1个『节拍』。",
+        "name": "变身♪舞台女王",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "富山佳代释放『劲歌热舞』后，有25%的固定概率触发『安可』：额外释放1次『劲歌热舞』。额外释放的『劲歌热舞』无法再次触发『安可』。",
+        "name": "安可♪热烈回响",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "富山佳代",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：4次行动\n基于自身攻击力的12%，提升所有同伴的攻击力（最多计入4500/4950/5400/5850点攻击力），并提升所有同伴35.0%/38.5%/37.8%/41.3%效果命中，效果持续1回合。获得1个『节拍』。",
+        "name": "派对狂欢",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108111,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：8次行动\n使所有同伴恢复22/27/26/31精力值。获得3个『节拍』。",
+        "name": "华丽摇摆",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108112,
+        "tags": [
+          "主动",
+          "恢复"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：8次行动\n使所有同伴造成伤害提升10.0%/11.0%/10.8%/11.8%，效果持续3回合，每225点富山佳代的攻击力额外提供1%伤害提升（最多计入4500/4950/5400/5850点攻击力）。对处于元素异常状态的敌人造成伤害时，伤害加成效果提升至1.5倍。获得2个『节拍』。",
+        "name": "热辣变奏曲",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每获得4个『节拍』，使当前生命值最高的敌人陷入随机1种元素异常效果。",
+        "name": "活力",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴释放技能造成元素异常时，该同伴获得15%伤害加成，效果持续2回合，并且有21%的固定概率使自身获得1个『节拍』。",
+        "name": "热忱",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2740.0,
+      "Defense": 1900.0,
+      "HP": 7980.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "479.97 / 485.57 / 491.17 / 496.77 / 502.37 / 507.97 / 513.57",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
 }

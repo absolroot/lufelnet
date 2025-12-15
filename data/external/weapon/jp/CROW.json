@@ -1,3 +1,33 @@
 {
-  "error": "Weapon not found."
+  "data": {
+    "fiveStar": [
+      {
+        "name": "(SB)天火の神心",
+        "quality": 5,
+        "skill": "tdxct-[Skill_desc_51552]",
+        "stat": {
+          "attack": 720.11,
+          "defense": 391.98,
+          "hp": 2259.46
+        },
+        "user": "明智"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "(SB)ブルーサーベル",
+        "quality": 4,
+        "skill": "tdxct-[Skill_desc_51541]",
+        "stat": {
+          "attack": 575.95,
+          "defense": 313.75,
+          "hp": 1807.87
+        },
+        "user": "明智"
+      }
+    ],
+    "name": "明智"
+  },
+  "msg": "OK",
+  "status": 0
 }

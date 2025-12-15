@@ -1,0 +1,184 @@
+{
+  "data": {
+    "thief": [
+      {
+        "endTime": "2025-12-15 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Futaba Sakura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Flawless Hacker",
+        "startTime": "2025-11-14 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Masaki Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Swords and Roses",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Masaki Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Swords and Roses",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-15 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Futaba Sakura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Flawless Hacker",
+        "startTime": "2025-11-14 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2025-12-15 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Technomage Ultra FS",
+            "type": "weapon",
+            "user": "Futaba"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Cyberdeck Pro",
+            "type": "weapon",
+            "user": "Futaba"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-11-14 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Spina Sacramenti",
+            "type": "weapon",
+            "user": "Ashiya"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Spina Caritatis",
+            "type": "weapon",
+            "user": "Ashiya"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Arms Deals"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

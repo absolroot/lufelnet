@@ -1,0 +1,215 @@
+{
+  "data": {
+    "final_innate": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "name": "多祢村 理子",
+    "rating": {
+      "Attack": 3380.0,
+      "HP": 5660.0,
+      "Speed": 161.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "味方が３回行動するごとに、ダウン値が最も高い敵を『看破』状態にする。『看破』状態の敵を攻撃すると『看破』を消費し、理子は『情報』を獲得する。\n『看破』状態：次に受けるダメージが６%上昇する。攻撃時に理子は『情報』を２つ獲得し、弱点/通常相性属性のダメージを与えるとダウン値を１減少させる。ダウン値を減少させたとき追加で１つ『情報』を獲得する。『情報』は８つまで累積する。",
+          "level": "1",
+          "name": "雪裏清香",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "戦闘開始時、ダウン値が最も高い敵を『看破』状態にする。",
+          "level": "1",
+          "name": "春風迅雷",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『春風来りて梅が花咲く』を使用した時、ダウン値が最も高い敵を『看破』状態にする。",
+          "level": "1",
+          "name": "暗香疎影",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『散り乱ひたる梅花』『霞立つ梅の花夢』のスキルレベルが２上昇する。",
+          "level": "1",
+          "name": "和気香風",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "味方がハイライトを使用した時、ダウン値が最も高い敵を『看破』状態にする。",
+          "level": "1",
+          "name": "桜梅桃李",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『春風来りて梅が花咲く』のスキルレベルが２上昇する。",
+          "level": "1",
+          "name": "和羹塩梅",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身の速さが１００以上の状態で『春風来りて梅が花咲く』を使用した時、１００を超えた分の速さ１５ごとにクールタイムが減少する（最大４行動分まで）。",
+          "level": "1",
+          "name": "威風凜々",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Elucidator"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": null,
+      "innate_awake_skill": [],
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "２ターンの間、敵全体の防御力を10.0%/10.0%/10.8%/10.8%低下させる。\nさらに自身の速さが１００以上の時、１００を超えた分の速さ１０ごとに防御力を４.９%ずつ低下させる（最大29.4%/32.3%/31.8%/34.7%まで）。\nまた、選択した対象を『看破』状態にする。\nクールタイム：味方の行動４回",
+          "level": "10/10/13/13",
+          "name": "散り乱ひたる梅花",
+          "nature": null,
+          "tags": [
+            "弱体"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "２ターンの間、敵全体の被ダメージを10.5%/11.6%/11.3%/12.4%上昇させる。\n味方が敵のダウン値を減少させるか、敵をダウンさせた時、クールタイムが１減少する。クールタイムが０になると、このスキルは自動で発動する。\nクールタイム：味方の行動８回",
+          "level": "10/10/13/13",
+          "name": "霞立つ梅の花夢",
+          "nature": null,
+          "tags": [
+            "弱体"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『情報』を全て消費して、１ターンの間、味方全体を『追風』状態にする。さらに、選択した味方のＨＰを12.7%/12.7%/13.7%/13.7%回復する。\n『追風』状態：敵に与えるダメージが12.6%/13.9%/13.6%/14.9%上昇し、消費した『情報』の数と理子の速さに応じてさらにダメージが上昇する。理子の速さが１００以上の時、１００を超えた分の速さ１０ごとにダメージが１.０５%上昇する（最大6.3%/6.9%/6.8%/7.4%まで）。\nクールタイム：味方の行動８回（『情報』が５つ未満の時はこのスキルを使用できない）",
+          "level": "10/10/13/13",
+          "name": "春風来りて梅が花咲く",
+          "nature": null,
+          "tags": [
+            "強化"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "戦闘開始時、自身の速さが１００以上の時、１００を超えた分の速さ１ごとに味方全体のＨＰが６ずつ、攻撃力を２ずつ、防御力を２ずつ上昇させる。\nＨＰは最大360まで、攻撃力は最大120まで、防御力は最大120まで上昇する。",
+          "level": "3",
+          "name": "春風怒涛",
+          "nature": null,
+          "tags": [
+            "潜在能力"
+          ],
+          "target": "All All Allies"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "１ＭＯＲＥおよび総攻撃による与ダメージが60.0%上昇する。",
+          "level": "3",
+          "name": "梅花爛漫",
+          "nature": null,
+          "tags": [
+            "潜在能力"
+          ],
+          "target": "All Alive Enemy"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "780.03 / 788.83 / 797.63 / 807.23 / 816.03 / 824.83 / 833.63",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "455.4 / 461.0 / 465.8 / 471.4 / 476.2 / 481.8 / 486.6",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2609.99 / 2640.39 / 2669.99 / 2700.39 / 2730.79 / 2760.39 / 2790.79",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "119.16 / 119.16 / 119.16 / 119.16 / 119.16 / 119.16 / 119.16"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

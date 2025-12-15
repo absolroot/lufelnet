@@ -2,10 +2,10 @@
   "data": {
     "thief": [
       {
-        "endTime": "2025-12-15 09:59:59",
+        "endTime": "30",
         "fiveStar": [
           {
-            "name": "Futaba Sakura",
+            "name": "Ren",
             "type": "thief"
           }
         ],
@@ -15,37 +15,37 @@
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Tomoko",
             "type": "thief"
           },
           {
-            "name": "Kotone Montagne",
+            "name": "Shiratori",
             "type": "thief"
           }
         ],
-        "name": "Flawless Hacker",
-        "startTime": "2025-11-14 10:30:00",
+        "name": "The Phantom Magician",
+        "startTime": "-1",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
         "endTime": "2025-12-25 06:59:59",
         "fiveStar": [
           {
-            "name": "Masaki Ashiya",
+            "name": "Ashiya",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Motoha",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Riko",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Kurotani",
             "type": "thief"
           }
         ],
@@ -57,21 +57,21 @@
         "endTime": "2025-12-25 06:59:59",
         "fiveStar": [
           {
-            "name": "Masaki Ashiya",
+            "name": "Ashiya",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Motoha",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Riko",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Kurotani",
             "type": "thief"
           }
         ],
@@ -80,66 +80,92 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-15 09:59:59",
+        "endTime": "2025-12-25 06:59:59",
         "fiveStar": [
           {
-            "name": "Futaba Sakura",
+            "name": "Haru",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Lufel",
+            "name": "Shun",
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Tomoko",
             "type": "thief"
           },
           {
-            "name": "Kotone Montagne",
+            "name": "Miyu",
             "type": "thief"
           }
         ],
-        "name": "Flawless Hacker",
-        "startTime": "2025-11-14 10:30:00",
+        "name": "Le Rouge et le Noir",
+        "startTime": "2025-12-15 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Haru",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu",
+            "type": "thief"
+          }
+        ],
+        "name": "Le Rouge et le Noir",
+        "startTime": "2025-12-15 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
       {
-        "endTime": "2025-12-15 09:59:59",
+        "endTime": "30",
         "fiveStar": [
           {
-            "name": "Technomage Ultra FS",
+            "name": "Phoenix Dagger",
             "type": "weapon",
-            "user": "Futaba"
+            "user": "Ren"
           }
         ],
         "fourStar": [
+          {
+            "name": "Machete",
+            "type": "weapon",
+            "user": "Ren"
+          },
           {
             "name": "Lava Flame",
             "type": "weapon",
             "user": "Lufel"
           },
           {
-            "name": "Justice Lance",
+            "name": "Shadow Crowns",
             "type": "weapon",
-            "user": "Kamiyama"
+            "user": "Tomoko"
           },
           {
-            "name": "Cyberdeck Pro",
+            "name": "Knight's Reward",
             "type": "weapon",
-            "user": "Futaba"
-          },
-          {
-            "name": "Edelweiss",
-            "type": "weapon",
-            "user": "Kotone"
+            "user": "Shiratori"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2025-11-14 10:30:00",
+        "startTime": "-1",
         "type": "Arms Deals"
       },
       {
@@ -175,6 +201,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2025-12-03 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Last Quarter",
+            "type": "weapon",
+            "user": "Haru"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Gilgamesh Axe",
+            "type": "weapon",
+            "user": "Haru"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-12-15 10:30:00",
         "type": "Arms Deals"
       }
     ]

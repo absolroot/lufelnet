@@ -1,0 +1,231 @@
+{
+  "data": {
+    "final_innate": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Rate": "0.12"
+    },
+    "name": "白鸟诚司",
+    "rating": {
+      "Attack": 2590.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.68,
+      "Damage Mult.": 0.18
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "释放技能每段造成伤害时，有40%固定概率获得『激励』1层，攻击力提升7%，速度提升4，效果持续2回合。『激励』最多可叠加3层，每层持续时间独立计算。",
+          "level": "1",
+          "name": "格挡防守",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『激励』的最多层数提升至5。每层『激励』额外使自身暴击率提升4%。",
+          "level": "1",
+          "name": "缠剑还击",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『风之呼啸』、『优雅暴风』的技能等级提升2级，至多提升至15级。",
+          "level": "1",
+          "name": "见招拆招",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "受到敌人攻击时有12%的固定概率回避此次攻击。",
+          "level": "1",
+          "name": "轻盈换步",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『无影直刺』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+          "level": "1",
+          "name": "破绽瞄定",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT效果提升：『激励』达到3层及以上时，额外增加1次伤害且有100%基础概率使敌人陷入风袭状态。",
+          "level": "1",
+          "name": "隐秘进攻",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "获得『激励』的初始固定概率提升20%，『激励』达到最高层数后，技能『风之呼啸』、『优雅暴风』以及『无影直刺』的伤害次数增加1次。",
+          "level": "1",
+          "name": "一击而中",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on AAAAAA==)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "对1名敌人造成4次58.6%/64.6%/61.0%/67.0%攻击力的疾风属性伤害，释放该技能时，若自身持有三层及以上『激励』状态，则伤害次数增加1次。",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Wind",
+        "tags": [
+          null
+        ],
+        "target": "1 Alive Enemy"
+      },
+      "innate_awake_skill": [],
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 16",
+          "desc": "对1名敌人造成4次42.9%/47.3%/44.7%/49.0%攻击力的疾风属性伤害，有19.2%/19.2%/20.0%/20.0%基础概率使敌人陷入风袭状态，效果持续两回合。",
+          "level": "10/10/13/13",
+          "name": "风之呼啸",
+          "nature": "Wind",
+          "tags": [
+            "主动",
+            "单伤"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 19",
+          "desc": "对所有敌人造成3次24.2%/26.6%/25.2%/27.6%攻击力的疾风属性伤害。根据攻击时敌人数量有（敌人数量*48.8%/48.8%/50.8%/50.8%）基础概率获得『激励』状态。",
+          "level": "10/10/13/13",
+          "name": "优雅暴风",
+          "nature": "Wind",
+          "tags": [
+            "主动",
+            "群伤"
+          ],
+          "target": "All Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 18",
+          "desc": "对1名敌人造成3次53.2%/58.6%/55.4%/60.8%攻击力的疾风属性伤害，『激励』状态不少于3层时该技能造成额外1次伤害，且暴击率提升20%。",
+          "level": "10/10/13/13",
+          "name": "无影直刺",
+          "nature": "Wind",
+          "tags": [
+            "主动",
+            "单伤"
+          ],
+          "target": "1 Alive Enemy"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用技能『无影直刺』对处于风袭状态下敌人造成伤害时有100.0%固定概率造成额外1次伤害。",
+          "level": "3",
+          "name": "焦点",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "回合结束时，有60.0%固定概率使自己获得1层『激励』。",
+          "level": "3",
+          "name": "沉抑",
+          "nature": null,
+          "tags": [
+            "潜能"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "847.67 / 857.27 / 866.87 / 877.27 / 886.87 / 896.47 / 906.07",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "18.0% / 18.0% / 18.0% / 18.0% / 18.0% / 18.0% / 18.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "465.43 / 471.03 / 475.83 / 481.43 / 487.03 / 492.63 / 497.43",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2475.37 / 2504.17 / 2532.17 / 2560.97 / 2589.77 / 2617.77 / 2646.57",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

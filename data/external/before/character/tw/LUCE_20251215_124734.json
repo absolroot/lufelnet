@@ -1,0 +1,230 @@
+{
+  "data": {
+    "final_innate": null,
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "name": "池波星輝",
+    "rating": {
+      "Ailment Acc.": 1.0,
+      "Attack": 4500.0,
+      "Unknown Attr": 0.0
+    },
+    "skill": {
+      "ascend_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身擁有『即興·滲透』、『即興·顛覆』、『即興·共情』、『即興·感應』4種『即興表演』狀態，回合開始時可以進行切換。自身使用人格面具技能造成傷害時，有75%的基礎機率為敵方全體添加當前『即興表演』狀態對應的元素異常效果（依次為燃燒、凍結、觸電、風襲效果）。",
+          "level": "1",
+          "name": "浮生四幕間",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "對同伴使用人格面具技能後，若目標擁有祝福效果，每層祝福使其傷害提升3%，上限15%，持續2回合。",
+          "level": "1",
+          "name": "再會，再會！記著我",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用『間離之所』時，額外使目標受到下次技能傷害時，獲得35%的最終傷害減免，持續1回合。",
+          "level": "1",
+          "name": "忍受命運暴虐的毒箭",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『聚光獨白』、『間離之所』的技能等級提升2級，至多提升至15級。",
+          "level": "1",
+          "name": "挺身反抗無涯的苦難",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "HIGHLIGHT效果提升：使技能主目標攻擊力提升10%，並使所有同伴額外獲得2層祝福。",
+          "level": "1",
+          "name": "稻稈之微，亦慷慨力爭",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "『繁星共演』、『戰鬥技巧』的技能等級提升2級，至多提升至15級。",
+          "level": "1",
+          "name": "雀子的生死由命運註定",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "使用『繁星共演』觸發『即興表演』的額外效果時，效果持續時間延長至4回合。",
+          "level": "1",
+          "name": "此外，沉默之餘另有星光",
+          "nature": null,
+          "tags": [
+            null
+          ],
+          "target": "Myself"
+        }
+      ],
+      "assist_skill": [],
+      "highlight_skill": {
+        "ascend": "0/5/0/5",
+        "autoSelect": "AICondition (Based on GJ)",
+        "cooldown": 4,
+        "cost": "",
+        "desc": "使所有同伴攻擊力提升(數值相當於自身攻擊力的6.5%，上限284/314/296/325），效果抵抗提升82.0%/90.4%/85.3%/93.7%，持續2回合，並使所有同伴獲得1層祝福效果。",
+        "level": "10/10/13/13",
+        "name": "HIGHLIGHT",
+        "nature": "Heal",
+        "tags": [
+          null
+        ],
+        "target": "All Alive Ally"
+      },
+      "innate_awake_skill": [],
+      "normal_skill": [
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 20",
+          "desc": "對1名敵人造成151.8%/167.3%/158.0%/173.5%攻擊力的祝福屬性傷害，使所有同伴獲得2層祝福效果，並使所有同伴傷害提升（每100點池波星輝的攻擊力提供0.8%傷害加成，上限35.1%/38.7%/36.6%/40.2%），持續2回合。",
+          "level": "10/10/13/13",
+          "name": "聚光獨白",
+          "nature": "Bless",
+          "tags": [
+            "主動",
+            "單傷"
+          ],
+          "target": "1 Alive Enemy"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 2,
+          "cost": "SP 24",
+          "desc": "使除自身以外的1名同伴防禦力提升（每100點池波星輝的攻擊力提供0.83%防禦力加成，上限36.6%/40.4%/38.1%/41.8%），並使目標免疫部分精神異常效果（眩暈、睡眠、混亂、遺忘），持續2回合。\n冷卻時間：2回合。",
+          "level": "10/10/13/13",
+          "name": "間離之所",
+          "nature": "Heal",
+          "tags": [
+            "主動",
+            "增益"
+          ],
+          "target": "1 Ally excluding myself"
+        },
+        {
+          "ascend": "0/5/0/5",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "SP 24",
+          "desc": "使所有同伴攻擊力提升（數值相當於自身攻擊力的15%，上限569/627/592/650），持續2回合。\n根據自身當前的『即興表演』狀態，使技能主目標獲得額外效果。\n『即興·滲透』：使技能主目標持續傷害效果提升14.0%/15.4%/14.5%/16.0%，效果命中提升30%，持續2回合。\n『即興·顛覆』：使技能主目標技巧精通提升655/723/682/749，造成TECHNICAL時攻擊力提升20%，持續2回合。\n『即興·共情』：使技能主目標暴擊效果提升24.4%/26.9%/25.4%/27.9%，持續2回合。\n『即興·感應』：使技能主目標穿透提升12.0%/13.2%/12.5%/13.7%，持續2回合。",
+          "level": "10/10/13/13",
+          "name": "繁星共演",
+          "nature": "Heal",
+          "tags": [
+            "主動",
+            "增益"
+          ],
+          "target": "All Alive Ally"
+        }
+      ],
+      "passive_skill": [
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "擁有祝福效果的友方同伴，每層祝福使其傷害提升5%，上限25.0%。",
+          "level": "3",
+          "name": "本色",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "All Alive Ally"
+        },
+        {
+          "ascend": "0",
+          "autoSelect": "Default",
+          "cooldown": 0,
+          "cost": "",
+          "desc": "自身每有1%的效果命中，攻擊力提升0.72%，上限72.0%。",
+          "level": "3",
+          "name": "反轉",
+          "nature": null,
+          "tags": [
+            "潛能"
+          ],
+          "target": "Myself"
+        }
+      ],
+      "theurgia_skill": []
+    },
+    "stats": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "765.42 / 774.22 / 783.02 / 791.82 / 800.62 / 809.42 / 818.22",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "495.38 / 500.98 / 506.58 / 512.18 / 518.58 / 524.18 / 529.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "HP": "2587.71 / 2617.31 / 2647.71 / 2677.31 / 2706.91 / 2737.31 / 2766.91",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0"
+    }
+  },
+  "msg": "OK",
+  "status": 0
+}

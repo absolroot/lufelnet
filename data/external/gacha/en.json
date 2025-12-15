@@ -2,24 +2,50 @@
   "data": {
     "thief": [
       {
-        "endTime": "2025-12-25 07:59:59",
+        "endTime": "30",
         "fiveStar": [
           {
-            "name": "Masaki Ashiya",
+            "name": "Ren",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Tomoko",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "The Phantom Magician",
+        "startTime": "-1",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 07:59:59",
+        "fiveStar": [
+          {
+            "name": "Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha",
+            "type": "thief"
+          },
+          {
+            "name": "Riko",
+            "type": "thief"
+          },
+          {
+            "name": "Kurotani",
             "type": "thief"
           }
         ],
@@ -31,21 +57,21 @@
         "endTime": "2025-12-25 07:59:59",
         "fiveStar": [
           {
-            "name": "Masaki Ashiya",
+            "name": "Ashiya",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Motoha",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Riko",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Kurotani",
             "type": "thief"
           }
         ],
@@ -57,21 +83,21 @@
         "endTime": "2025-12-25 07:59:59",
         "fiveStar": [
           {
-            "name": "Haru Okumura",
+            "name": "Haru",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Shun Kano",
+            "name": "Shun",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Tomoko",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Miyu",
             "type": "thief"
           }
         ],
@@ -83,21 +109,21 @@
         "endTime": "2025-12-25 07:59:59",
         "fiveStar": [
           {
-            "name": "Haru Okumura",
+            "name": "Haru",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Shun Kano",
+            "name": "Shun",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Tomoko",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Miyu",
             "type": "thief"
           }
         ],
@@ -107,6 +133,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "30",
+        "fiveStar": [
+          {
+            "name": "Phoenix Dagger",
+            "type": "weapon",
+            "user": "Ren"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Machete",
+            "type": "weapon",
+            "user": "Ren"
+          },
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "-1",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2025-12-25 07:59:59",
         "fiveStar": [

@@ -25,12 +25,12 @@ She can still see use in short battles where enemy damage is too high to survive
 
 短期戦で敵のダメージが高すぎて耐えきれない場面では、依然として活躍の余地がある。
 `,
-        pros: ["실드를 제공한다.", "방어력을 높여준다."],
-        pros_en: ["Provides shields.", "Increases Defense."],
-        pros_jp: ["シールドを付与できる。", "防御力を上昇させる。"],
-        cons: ["아군의 대미지 증가 효과가 낮다."],
-        cons_en: ["Allies receive low offensive buffs."],
-        cons_jp: ["味方への火力支援が乏しい。"],
+        pros: ["실드를 제공하고 방어력을 높여준다.", "아군의 DOWN 포인트를 증가시킬 수 있다."],
+        pros_en: ["Provides sustain and survivability through Defense up and shields.", "Can increase Down Points for allies"],
+        pros_jp: ["シールドを付与し、防御力を上昇させる。", "アライアンスのDOWNポイントを増やすことができる。"],
+        cons: ["아군의 대미지 증가 효과가 낮다.", "스킬의 쿨다운이 길다."],
+        cons_en: ["Allies receive low offensive buffs.", "Skill cooldowns are longer."],
+        cons_jp: ["味方への火力支援が乏しい。", "スキルのクールダウンが長い。"],
     };
 })();
 

@@ -59,24 +59,24 @@ window.personaFiles["스라오샤"] = {
       "name_en": "Listener of Sin",
       "name_jp": "罪悪の傾聴者",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 3턴 동안 「신의 귀」를 1중첩 획득한다(3회 중첩 가능). 아군이 HIGHLIGHT를 사용하면 「신의 귀」를 1중첩 획득한다. 축복 속성 괴도가 HIGHLIGHT를 사용하면 추가로 「신의 귀」를 1중첩 획득한다. 고유 스킬 사용 시 「신의 귀」가 모두 소모되며, 중첩마다 적이 받는 축복 속성 대미지가 2턴 동안 4% 증가한다. 「신의 귀」가 3중첩에 도달하면 축복 속성 대미지를 받는 적의 방어력이 추가로 16% 감소한다.",
-      "desc_en": "",
-      "desc_jp": ""
+      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 1 stack of [God's Ear] for 3 turns, up to 3 stacks. When allies use [HIGHLIGHT], gains 1 stack of [God's Ear], additionally gains 1 stack of [God's Ears] when Bless allies use [HIGHLIGHT]. When using the signature skill, consumes all [God's Ear], each stack increases Bless dmg taken by 4% for 2 turns. If [God's Ear] reaches 3 stacks, additionally decreases foes' DEF when taking Bless damage by 16%.",
+      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時、3ターンの間『神の耳』を1重複獲得する（3回重複可能）。味方がHIGHLIGHTを使用すると『神の耳』を1重複獲得する。祝福属性怪盗がHIGHLIGHTを使用すると追加で『神の耳』を1重複獲得する。固有スキル使用時『神の耳』が全て消費され、重複ごとに敵が受ける祝福属性ダメージが2ターンの間4%増加する。『神の耳』が3重複に達すると祝福属性ダメージを受ける敵の防御力が追加で16%減少する。"
     },
     {
       "name": "죄악의 경청자Ⅰ",
       "name_en": "Listener of Sin I",
       "name_jp": "罪悪の傾聴者 I",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 3턴 동안 「신의 귀」 중첩을 2회 획득한다(3회 중첩 가능). 아군이 HIGHLIGHT를 사용하면 「신의 귀」를 1중첩 획득한다. 축복 속성 괴도가 HIGHLIGHT를 사용하면 「신의 귀」를 1중첩 획득한다. 고유 스킬 사용 시 「신의 귀」가 모두 소모되며, 각 중첩당 적이 받는 축복 속성 대미지가 2턴 동안 4% 증가한다. 「신의 귀」가 3중첩에 도달하면 축복 속성 대미지를 받는 적의 방어력이 추가로 16% 감소한다.",
-      "desc_en": "",
-      "desc_jp": ""
+      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 2 stacks of [God's Ear] for 3 turns, up to 3 stacks. When allies use [HIGHLIGHT], gains 1 stack of [God's Ear], additionally gains 1 stack of [God's Ears] when Bless allies use [HIGHLIGHT]. When using the signature skill, consumes all [God's Ear], each stack increases Bless dmg taken by 4% for 2 turns. If [God's Ear] reaches 3 stacks, additionally decreases foes' DEF when taking Bless damage by 16%.",
+      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時、3ターンの間『神の耳』を2重複獲得する（3回重複可能）。味方がHIGHLIGHTを使用すると『神の耳』を1重複獲得する。祝福属性怪盗がHIGHLIGHTを使用すると追加で『神の耳』を1重複獲得する。固有スキル使用時『神の耳』が全て消費され、重複ごとに敵が受ける祝福属性ダメージが2ターンの間4%増加する。『神の耳』が3重複に達すると祝福属性ダメージを受ける敵の防御力が追加で16%減少する。"
     },
     {
       "name": "죄악의 경청자Ⅱ",
       "name_en": "Listener of Sin II",
       "name_jp": "罪悪の傾聴者 II",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 3턴 동안 「신의 귀」를 2중첩 획득한다(3회 중첩 가능). 아군이 HIGHLIGHT를 사용하면 「신의 귀」를 1중첩 획득한다. 축복 속성 괴도가 HIGHLIGHT를 사용하면 추가로 「신의 귀」를 1중첩 획득한다. 고유 스킬 사용 시 「신의 귀」가 모두 소모되며, 중첩마다 적이 받는 축복 속성 대미지가 2턴 동안 6% 증가한다. 「신의 귀」가 3중첩에 도달하면 축복 속성 대미지를 받는 적의 방어력이 추가로 16% 감소한다.",
-      "desc_en": "",
-      "desc_jp": ""
+      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 2 stacks of [God's Ear] for 3 turns, up to 3 stacks. When allies use [HIGHLIGHT], gains 1 stack of [God's Ear], additionally gains 1 stack of [God's Ears] when Bless allies use [HIGHLIGHT]. When using the signature skill, consumes all [God's Ear], each stack increases Bless dmg taken by 6% for 2 turns. If [God's Ear] reaches 3 stacks, additionally decreases foes' DEF when taking Bless damage by 16%.",
+      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時、3ターンの間『神の耳』を2重複獲得する（3回重複可能）。味方がHIGHLIGHTを使用すると『神の耳』を1重複獲得する。祝福属性怪盗がHIGHLIGHTを使用すると追加で『神の耳』を1重複獲得する。固有スキル使用時『神の耳』が全て消費され、重複ごとに敵が受ける祝福属性ダメージが2ターンの間6%増加する。『神の耳』が3重複に達すると祝福属性ダメージを受ける敵の防御力が追加で16%減少する。"
     },
     {
       "name": "죄악의 경청자Ⅲ",

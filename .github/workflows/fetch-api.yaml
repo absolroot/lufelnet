@@ -98,6 +98,18 @@ jobs:
             tmp_new="$(mktemp)"
             curl -sS "$url" -o "$tmp_new"
             jq . "$tmp_new" > /dev/null
+
+            # API에서 캐릭터를 찾지 못한 에러(JSON 예: { "data": null, "msg": "Character not found.", "status": 100 })
+            # 가 내려온 경우, 기존 파일이 있으면 유지하고 덮어쓰지 않는다.
+            if jq -e '.status == 100 and .data == null' "$tmp_new" > /dev/null 2>&1; then
+              if [ -f "$out" ]; then
+                echo "   Error response (character not found). Keep existing: character/${region}/${local_codename}.json"
+              else
+                echo "   Error response (character not found) and no existing file. Skip create: character/${region}/${local_codename}.json"
+              fi
+              return
+            fi
+
             jq -S . "$tmp_new" > "${tmp_new}.sorted"
 
             mkdir -p "$(dirname "$out")"
@@ -137,6 +149,18 @@ jobs:
             tmp_new="$(mktemp)"
             curl -sS "$url" -o "$tmp_new"
             jq . "$tmp_new" > /dev/null
+
+            # 무기 에러(JSON 예: { "error": "Weapon not found." })가 내려온 경우
+            # 기존 파일이 있으면 유지하고 덮어쓰지 않는다.
+            if jq -e 'has("error")' "$tmp_new" > /dev/null 2>&1; then
+              if [ -f "$out" ]; then
+                echo "   Error response (weapon not found). Keep existing: weapon/${region}/${local_codename}.json"
+              else
+                echo "   Error response (weapon not found) and no existing file. Skip create: weapon/${region}/${local_codename}.json"
+              fi
+              return
+            fi
+
             jq -S . "$tmp_new" > "${tmp_new}.sorted"
 
             mkdir -p "$(dirname "$out")"

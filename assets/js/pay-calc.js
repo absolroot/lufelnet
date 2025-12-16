@@ -33,7 +33,8 @@ class PayCalculator {
             amber: 0,
             destiny: 0,
             destinyCoins: 0,
-            futureDestiny: 0
+            futureDestiny: 0,
+            cognition: 0
         };
 
         try {
@@ -46,7 +47,8 @@ class PayCalculator {
                 amber: Number.isFinite(Number(data.amber)) ? Number(data.amber) : 0,
                 destiny: Number.isFinite(Number(data.destiny)) ? Number(data.destiny) : 0,
                 destinyCoins: Number.isFinite(Number(data.destinyCoins)) ? Number(data.destinyCoins) : 0,
-                futureDestiny: Number.isFinite(Number(data.futureDestiny)) ? Number(data.futureDestiny) : 0
+                futureDestiny: Number.isFinite(Number(data.futureDestiny)) ? Number(data.futureDestiny) : 0,
+                cognition: Number.isFinite(Number(data.cognition)) ? Number(data.cognition) : 0
             };
         } catch (e) {
             return defaultValues;
@@ -67,7 +69,8 @@ class PayCalculator {
             { id: 'baseAmber', key: 'amber' },
             { id: 'baseDestiny', key: 'destiny' },
             { id: 'baseDestinyCoins', key: 'destinyCoins' },
-            { id: 'baseFutureDestiny', key: 'futureDestiny' }
+            { id: 'baseFutureDestiny', key: 'futureDestiny' },
+            { id: 'baseCognition', key: 'cognition' }
         ];
 
         config.forEach(({ id, key }) => {
@@ -295,8 +298,20 @@ class PayCalculator {
             amber: 0,
             destiny: 0,
             destinyCoins: 0,
-            futureDestiny: 0
+            futureDestiny: 0,
+            cognition: 0
         };
+
+        // 인지 단면은 입력 필드 값을 한 번 더 직접 읽어서 동기화 (이벤트 누락 대비)
+        const baseCognitionInput = document.getElementById('baseCognition');
+        if (baseCognitionInput) {
+            let cognitionValue = parseInt(baseCognitionInput.value, 10);
+            if (isNaN(cognitionValue) || cognitionValue < 0) cognitionValue = 0;
+            base.cognition = cognitionValue;
+            if (this.baseResources) {
+                this.baseResources.cognition = cognitionValue;
+            }
+        }
 
         // 총 보유 재화 (기존 + 획득) - ALL 변환의 기준 값
         let totalCrystal = base.crystal + gainedCrystal;
@@ -304,45 +319,60 @@ class PayCalculator {
         let totalDestiny = base.destiny + gainedDestiny;
         let totalDestinyCoins = base.destinyCoins + gainedDestinyCoins;
         const totalFutureDestiny = base.futureDestiny + gainedFutureDestiny;
+        let totalCognition = base.cognition; // 현재 패키지에서 인지 단면을 얻지 않으므로 보유 값만 사용
 
-        // 정해진 운명 ALL 변환 (총 획득 재화 기준)
+        // 정해진 운명 ALL 변환
         if (document.getElementById('destinyAllCheckbox').checked) {
-            const totalValue = totalCrystal + totalAmber;
-            const convertedDestiny = Math.floor(totalValue / 150);
-            const remainder = totalValue % 150;
+            // 1) 이계 수정 / 이계 엠버 -> 정해진 운명 (150 비율 유지)
+            const totalValueCA = totalCrystal + totalAmber;
+            const convertedDestinyFromCA = Math.floor(totalValueCA / 150);
+            const remainderCA = totalValueCA % 150;
 
-            totalDestiny += convertedDestiny;
-            if (remainder > 0) {
-                if (totalCrystal >= remainder) {
-                    totalCrystal = remainder;
+            totalDestiny += convertedDestinyFromCA;
+            if (remainderCA > 0) {
+                if (totalCrystal >= remainderCA) {
+                    totalCrystal = remainderCA;
                     totalAmber = 0;
                 } else {
-                    totalAmber = remainder - totalCrystal;
+                    totalAmber = remainderCA - totalCrystal;
                 }
             } else {
                 totalCrystal = 0;
                 totalAmber = 0;
             }
+
+            // 2) 인지 단면 -> 정해진 운명 (15 비율)
+            const convertedDestinyFromCog = Math.floor(totalCognition / 15);
+            const remainderCog = totalCognition % 15;
+            totalDestiny += convertedDestinyFromCog;
+            totalCognition = remainderCog;
         }
 
-        // 정해진 코인 ALL 변환 (총 획득 재화 기준)
+        // 정해진 코인 ALL 변환
         if (document.getElementById('coinsAllCheckbox').checked) {
-            const totalValue = totalCrystal + totalAmber;
-            const convertedCoins = Math.floor(totalValue / 100);
-            const remainder = totalValue % 100;
+            // 1) 이계 수정 / 이계 엠버 -> 정해진 코인 (100 비율 유지)
+            const totalValueCA = totalCrystal + totalAmber;
+            const convertedCoinsFromCA = Math.floor(totalValueCA / 100);
+            const remainderCA = totalValueCA % 100;
 
-            totalDestinyCoins += convertedCoins;
-            if (remainder > 0) {
-                if (totalCrystal >= remainder) {
-                    totalCrystal = remainder;
+            totalDestinyCoins += convertedCoinsFromCA;
+            if (remainderCA > 0) {
+                if (totalCrystal >= remainderCA) {
+                    totalCrystal = remainderCA;
                     totalAmber = 0;
                 } else {
-                    totalAmber = remainder - totalCrystal;
+                    totalAmber = remainderCA - totalCrystal;
                 }
             } else {
                 totalCrystal = 0;
                 totalAmber = 0;
             }
+
+            // 2) 인지 단면 -> 정해진 코인 (10 비율)
+            const convertedCoinsFromCog = Math.floor(totalCognition / 10);
+            const remainderCog = totalCognition % 10;
+            totalDestinyCoins += convertedCoinsFromCog;
+            totalCognition = remainderCog;
         }
 
         document.getElementById('totalCrystal').textContent = this.formatPrice(totalCrystal) + '개';
@@ -350,6 +380,8 @@ class PayCalculator {
         document.getElementById('totalDestiny').textContent = totalDestiny + '개';
         document.getElementById('totalDestinyCoins').textContent = totalDestinyCoins + '개';
         document.getElementById('totalFutureDestiny').textContent = totalFutureDestiny + '개';
+        const totalCognitionEl = document.getElementById('totalCognition');
+        if (totalCognitionEl) totalCognitionEl.textContent = this.formatPrice(totalCognition) + '개';
         
         // 엠버 1개당 가격 표시
         document.getElementById('pricePerAmber').textContent = this.formatPrice(Math.round(pricePerAmber * 100) / 100) + '원';

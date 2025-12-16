@@ -1,8 +1,29 @@
 [
+  {
+    "kind": "custom",
+    "order": 0,
+    "title": "12월 20일 PV 공개 예정",
+    "title_en": "PV to be released on December 20th",
+    "title_jp": "12月20日PV公開予定",
+    "subtitle": "",
+    "body": "쥐스틴 & 카롤린 (루머)",
+    "body_en": "Justin & Carolin (Rumor)",
+    "body_jp": "ジュスティーヌ＆カロリーヌ (噂)",
+    "image": "/assets/img/home/banner/P5DSN_-_Caroline_and_Justine.webp",
+    "background_image": "/assets/img/home/banner/JC.jpg",
+    "background_bottom": 80,
+    "background_bottom_mobile": 0,
+    "background_right": 0,
+    "color": "#e91e63",
+    "link": "https://www.youtube.com/watch?v=Wulo8Bz00wA",
+    "visible_langs": ["kr","en","jp"],
+    "regions": ["kr","cn","tw","sea","en","jp"]  
+},
+
 
   {
       "kind": "custom",
-      "order": 0,
+      "order": 1,
       "title": "오만의 팰리스 - 가면 배우의 피날레",
       "title_en": "The Masked Actor's Finale",
       "title_jp": "仮面バレイのフィナーレ",

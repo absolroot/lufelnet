@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [pay-calc]
-custom_js: [pay-calc]
+custom_js: [tooltip, pay-calc]
 custom_data: [calc/pay-data.js]
 permalink: /pay-calc/
 language: kr
@@ -164,6 +164,64 @@ description: 페르소나5 더 팬텀 X 과금 계산기
                     <span id="totalCognition">0개</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 기대값 요약 -->
+    <div class="expectation-row card-style">
+        <h2 class="expectation-main-title">기댓값</h2>
+        <div class="expectation-grid">
+        <div class="expectation-item">
+            <div class="expectation-header">
+                <span class="expectation-title">
+                    한정 캐릭터
+                    <span class="tooltip-icon tooltip-text"
+                          data-tooltip="현재 정해진 운명과 인지 단면(15개당 운명 1개 환급), 5성 1.2%·4성 13.12%에서 발생하는 인지 단면 환급을 무한 반복한다고 가정했을 때의 기대 횟수입니다. 4성은 모두 의식6 이상이며, 첫 5성 획득은 인지 단면 환급이 없어 이를 제외한 값입니다. 확률이므로 실제로는 더 많거나 적은 횟수가 필요할 수 있습니다.">?</span>
+                </span>
+            </div>
+            <div class="expectation-value">
+                <span id="expectedLimitedChar">0회</span>
+                <span class="expectation-separator"> / </span>
+                <span class="expectation-currency">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="expectation-icon">
+                    <span id="expectedLimitedCharDestiny">0개</span>
+                </span> 
+            </div>
+        </div>
+        <div class="expectation-item">
+            <div class="expectation-header">
+                <span class="expectation-title">
+                    전체 무기 
+                    <span class="tooltip-icon tooltip-text"
+                          data-tooltip="현재 정해진 코인과 인지 단면(10개당 코인 1개 환급), 5성 1.2%·4성 14.14%에서 발생하는 인지 단면 환급을 무한 반복한다고 가정했을 때의 기대 횟수입니다. 확률이므로 실제로는 더 많거나 적은 횟수가 필요할 수 있습니다.">?</span>
+                </span>
+            </div>
+            <div class="expectation-value">
+                <span id="expectedAllWeapon">0회</span>
+                <span class="expectation-separator"> / </span>
+                <span class="expectation-currency">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="expectation-icon">
+                    <span id="expectedAllWeaponCoins">0개</span>
+                </span>
+            </div>
+        </div>
+        <div class="expectation-item">
+            <div class="expectation-header">
+                <span class="expectation-title">
+                    한정 무기
+                    <span class="tooltip-icon tooltip-text"
+                          data-tooltip="전체 무기 기대 횟수 × (반천장 2/3)을 적용한 값입니다. 확률이므로 실제로는 더 많거나 적은 횟수가 필요할 수 있습니다.">?</span>
+                </span>
+            </div>
+            <div class="expectation-value">
+                <span id="expectedLimitedWeapon">0회</span>
+                <span class="expectation-separator"> / </span>
+                <span class="expectation-currency">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="expectation-icon">
+                    <span id="expectedLimitedWeaponCoins">0개</span>
+                </span>
+            </div>
+        </div>
         </div>
     </div>
 

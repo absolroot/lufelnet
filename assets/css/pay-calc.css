@@ -89,6 +89,108 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 
 .resource-item img { width: 24px; height: 24px; object-fit: contain; }
 
+/* 기대값 요약 영역 */
+.expectation-row {
+    margin: 0 20px 20px 20px;
+    background-color: #3d3030;
+    border-radius: 10px;
+}
+
+.expectation-main-title {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0 0 10px 0;
+    margin: 0 0 4px 0;
+}
+
+.expectation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.expectation-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.expectation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.expectation-title {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.expectation-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #dd8484;
+}
+
+.expectation-separator {
+    margin: 0 6px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: normal;
+}
+
+.expectation-currency {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.expectation-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: help;
+}
+
+@media (max-width: 768px) {
+    .top-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .total-card:last-child {
+        grid-column: span 1;
+    }
+
+    .expectation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .expectation-row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
 /* 보유 재화 입력 필드 */
 .resource-input { 
     width: 100%;
@@ -162,7 +264,10 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 
     .top-cards { grid-template-columns: repeat(2, 1fr); }
 
-    .total-card:last-child { grid-column: span 2; }
+    /* 모바일/태블릿에서 특정 카드들은 한 줄 전체를 사용 */
+    .top-cards .total-card:nth-child(4),
+    .top-cards .total-card:nth-child(5),
+    .top-cards .total-card:last-child { grid-column: span 2; }
 
     .package-table-container { background-color: transparent; padding: 0; margin: 0; }
 

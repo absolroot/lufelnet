@@ -6,7 +6,18 @@ class PayCalculator {
         this.bindEvents();
         this.initializeCheckboxes();
         this.initializeBaseResourcesInputs();
+        this.bindExpectationTooltips();
         this.updateTotals();
+    }
+
+    bindExpectationTooltips() {
+        try {
+            if (typeof bindTooltipElement === 'function') {
+                document.querySelectorAll('.expectation-row .tooltip-icon').forEach(el => {
+                    if (el) bindTooltipElement(el);
+                });
+            }
+        } catch (_) {}
     }
 
     initializeTabs() {
@@ -386,6 +397,101 @@ class PayCalculator {
         // 엠버 1개당 가격 표시
         document.getElementById('pricePerAmber').textContent = this.formatPrice(Math.round(pricePerAmber * 100) / 100) + '원';
         document.getElementById('pricePerAmberExcludeFuture').textContent = this.formatPrice(Math.round(pricePerAmberExcludeFuture * 100) / 100) + '원';
+
+        // 기대값 계산 (정해진 운명 / 정해진 코인 + 인지 단면 환급 재귀 포함)
+        const expectedLimitedCharEl = document.getElementById('expectedLimitedChar');
+        const expectedAllWeaponEl = document.getElementById('expectedAllWeapon');
+        const expectedLimitedWeaponEl = document.getElementById('expectedLimitedWeapon');
+        const expectedLimitedCharDestinyEl = document.getElementById('expectedLimitedCharDestiny');
+        const expectedAllWeaponCoinsEl = document.getElementById('expectedAllWeaponCoins');
+        const expectedLimitedWeaponCoinsEl = document.getElementById('expectedLimitedWeaponCoins');
+
+        if (expectedLimitedCharEl || expectedAllWeaponEl || expectedLimitedWeaponEl ||
+            expectedLimitedCharDestinyEl || expectedAllWeaponCoinsEl || expectedLimitedWeaponCoinsEl) {
+            // 현재 총 재화 기준 (운명/코인만 사용, 보유 인지 단면은 시작 재화에서 제외)
+            const currentDestiny = totalDestiny;
+            const currentCoins = totalDestinyCoins;
+
+            // 한정 캐릭터 기대값 계산
+            let expectedLimitedChar = 0;
+            let expectedLimitedCharDestiny = 0;
+            {
+                // 시작 운명은 현재 보유 운명만 사용 (보유 인지 단면은 제외)
+                let startDestiny = currentDestiny;
+                // 캐릭터 배너 최초 1회는 인지 단면 30개(=운명 2개 환급)가 없다고 보고 보정
+                startDestiny = Math.max(0, startDestiny - 2);
+                const CHAR_P5 = 0.012;   // 5성 확률 1.2%
+                const CHAR_P4 = 0.1312;  // 4성 확률 13.12%
+                const CHAR_SHARD_PER_PULL =
+                    CHAR_P5 * 30 +      // 5성 시 인지 단면 30개 (단순화)
+                    CHAR_P4 * 15;       // 4성 시 인지 단면 15개
+                const destinyRefundPerPull = CHAR_SHARD_PER_PULL / 15; // 15개당 운명 1개
+
+                if (startDestiny > 0 && destinyRefundPerPull < 1) {
+                    const totalPulls = startDestiny / (1 - destinyRefundPerPull);
+                    expectedLimitedChar = totalPulls * (CHAR_P5); // 1.2% 픽업 확률
+                    expectedLimitedCharDestiny = totalPulls;      // 운명 1개당 1뽑
+                }
+            }
+
+            // 무기 기대값 계산
+            let expectedAllWeapon = 0;
+            let expectedLimitedWeapon = 0;
+            let expectedAllWeaponCoins = 0;
+            {
+                // 시작 코인은 현재 보유 코인만 사용 (보유 인지 단면은 제외)
+                const startCoins = currentCoins;
+                const WEAPON_P5 = 0.012;   // 5성 획득 확률 1.2%
+                const WEAPON_P4 = 0.1414;  // 4성 확률 14.14%
+                const WEAPON_SHARD_PER_PULL =
+                    WEAPON_P5 * 20 +     // 5성 시 인지 단면 20개
+                    WEAPON_P4 * 4;       // 4성 시 인지 단면 4개
+                const coinRefundPerPull = WEAPON_SHARD_PER_PULL / 10; // 10개당 코인 1개
+
+                if (startCoins > 0 && coinRefundPerPull < 1) {
+                    const totalPullsWeapon = startCoins / (1 - coinRefundPerPull);
+
+                    const PICKUP_TOTAL_RATE = 0.02; // 픽업 5성 종합 확률 2.0%
+                    expectedAllWeapon = totalPullsWeapon * PICKUP_TOTAL_RATE;
+                    // 한정 무기 2 / 총 픽업 3
+                    expectedLimitedWeapon = expectedAllWeapon * (2 / 3);
+                    expectedAllWeaponCoins = totalPullsWeapon; // 코인 1개당 1뽑
+                }
+            }
+
+            const formatExpectation = (value) => {
+                if (!isFinite(value) || value <= 0) return '0회';
+                if (value < 0.01) return '0회';
+                return `${(Math.round(value * 100) / 100).toFixed(2)}회`;
+            };
+
+            if (expectedLimitedCharEl) {
+                expectedLimitedCharEl.textContent = formatExpectation(expectedLimitedChar);
+            }
+            if (expectedAllWeaponEl) {
+                expectedAllWeaponEl.textContent = formatExpectation(expectedAllWeapon);
+            }
+            if (expectedLimitedWeaponEl) {
+                expectedLimitedWeaponEl.textContent = formatExpectation(expectedLimitedWeapon);
+            }
+
+            const formatCurrencyExpectation = (value) => {
+                if (!isFinite(value) || value <= 0) return '0개';
+                const rounded = Math.round(value);
+                return this.formatPrice(rounded) + '개';
+            };
+
+            if (expectedLimitedCharDestinyEl) {
+                expectedLimitedCharDestinyEl.textContent = formatCurrencyExpectation(expectedLimitedCharDestiny);
+            }
+            if (expectedAllWeaponCoinsEl) {
+                expectedAllWeaponCoinsEl.textContent = formatCurrencyExpectation(expectedAllWeaponCoins);
+            }
+            if (expectedLimitedWeaponCoinsEl) {
+                // 한정 무기도 같은 코인 풀에서 나오므로 사용 코인은 전체 무기와 동일하게 표기
+                expectedLimitedWeaponCoinsEl.textContent = formatCurrencyExpectation(expectedAllWeaponCoins);
+            }
+        }
     }
 
     bindEvents() {

@@ -1,0 +1,262 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "属性異常にした敵を２ターンの間、『極熱』状態にする。\n『極熱』状態：被ダメージを１５%上昇させる。『極熱』状態は、属性異常として扱われる。",
+        "name": "老練の技",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵が『極熱』状態で、かつ炎上、感電、凍結、風襲状態の時、対応する火炎、電撃、氷結、疾風属性の被ダメージが１５%上昇する。",
+        "name": "老婆心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方が、属性異常を付与した時、２ターンの間、自身の状態異常命中が１０%上昇する。この効果は最大３回まで累積できる。",
+        "name": "人生これから",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『ダイビングレイ』『ブラストエッジ』のスキルレベルが２上昇する。",
+        "name": "ジャズセッション",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "ハイライト能力追加：２ターンの間、敵が受ける核熱属性ダメージを３５.２%上昇させる。",
+        "name": "亀の甲より年の劫",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『ブルズアイボマー』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "ベテランプレイヤー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方が『極熱』状態の敵を攻撃する時、対象の異なる属性異常の数に応じて以下の効果が発動する。（それぞれの効果は、重複して発動する）\n１つ以上：攻撃力が１０%上昇する。\n２つ以上：核熱属性の与ダメージが１０%上昇する。\n３つ以上：貫通力が８%上昇する。",
+        "name": "まだまだ終われない",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "敵単体に攻撃力324.5%/357.8%/337.8%/371.1%の核熱属性ダメージを与え、７５%の確率で対象を付与されていないランダムな２種類の属性異常にする。",
+      "name": "ハイライト",
+      "nature": "Nuclear",
+      "skill_lv": "10/10/12/12",
+      "sn": 130152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "長尾 チヅ子",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵単体に攻撃力170.8%/188.3%/177.8%/195.3%の核熱属性ダメージを与える。\nさらに２ターンの間、対象の防御力を自身の状態異常命中の２２.５%分（最大37.3%/37.3%/38.8%/38.8%分まで）低下させ、付与されていないランダムな属性異常にする。",
+        "name": "ダイビングレイ",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵全体に攻撃力91.5%/100.9%/95.2%/104.6%の核熱属性ダメージを与え、４０%の確率で付与されていないランダムな属性異常にする。",
+        "name": "ブラストエッジ",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130112,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "敵単体に攻撃力195.2%/215.2%/203.2%/223.2%の核熱属性ダメージを与える。\n対象の被ダメージを、異なる属性異常の数（最大３つまで）に応じて、２ターンの間、チヅ子の状態異常命中の１１.３%分（最大18.7%/20.7%/19.5%/21.4%まで）上昇させる。",
+        "name": "ブルズアイボマー",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130113,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵が『極熱』状態になった時、２ターンの間、その敵の核熱属性の被ダメージを15.0%上昇させる。",
+        "name": "虎視眈々",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身の攻撃力が、状態異常命中の45.0%分上昇する。",
+        "name": "ベストタイミング",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3450.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "505.41 / 511.01 / 517.41 / 523.01 / 528.61 / 534.21 / 540.61",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2475.37 / 2504.17 / 2532.17 / 2560.97 / 2589.77 / 2617.77 / 2646.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

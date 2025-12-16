@@ -1,10 +1,12 @@
 class PayCalculator {
     constructor() {
+        this.baseResources = this.loadBaseResources();
         this.initializeTabs();
         this.initializeTable();
         this.bindEvents();
-        this.updateTotals();
         this.initializeCheckboxes();
+        this.initializeBaseResourcesInputs();
+        this.updateTotals();
     }
 
     initializeTabs() {
@@ -21,6 +23,66 @@ class PayCalculator {
                 button.classList.add('active');
                 const tabId = button.getAttribute('data-tab') + '-tab';
                 document.getElementById(tabId).classList.add('active');
+            });
+        });
+    }
+
+    loadBaseResources() {
+        const defaultValues = {
+            crystal: 0,
+            amber: 0,
+            destiny: 0,
+            destinyCoins: 0,
+            futureDestiny: 0
+        };
+
+        try {
+            const stored = localStorage.getItem('payCalcBaseResources');
+            if (!stored) return defaultValues;
+
+            const data = JSON.parse(stored);
+            return {
+                crystal: Number.isFinite(Number(data.crystal)) ? Number(data.crystal) : 0,
+                amber: Number.isFinite(Number(data.amber)) ? Number(data.amber) : 0,
+                destiny: Number.isFinite(Number(data.destiny)) ? Number(data.destiny) : 0,
+                destinyCoins: Number.isFinite(Number(data.destinyCoins)) ? Number(data.destinyCoins) : 0,
+                futureDestiny: Number.isFinite(Number(data.futureDestiny)) ? Number(data.futureDestiny) : 0
+            };
+        } catch (e) {
+            return defaultValues;
+        }
+    }
+
+    saveBaseResources() {
+        try {
+            localStorage.setItem('payCalcBaseResources', JSON.stringify(this.baseResources));
+        } catch (e) {
+            // 로컬 스토리지 에러는 무시
+        }
+    }
+
+    initializeBaseResourcesInputs() {
+        const config = [
+            { id: 'baseCrystal', key: 'crystal' },
+            { id: 'baseAmber', key: 'amber' },
+            { id: 'baseDestiny', key: 'destiny' },
+            { id: 'baseDestinyCoins', key: 'destinyCoins' },
+            { id: 'baseFutureDestiny', key: 'futureDestiny' }
+        ];
+
+        config.forEach(({ id, key }) => {
+            const input = document.getElementById(id);
+            if (!input) return;
+
+            input.value = this.baseResources[key] || 0;
+
+            input.addEventListener('input', () => {
+                let value = parseInt(input.value, 10);
+                if (isNaN(value) || value < 0) value = 0;
+                this.baseResources[key] = value;
+                input.value = value;
+                this.saveBaseResources();
+                this.updateTotals();
             });
         });
     }
@@ -167,11 +229,11 @@ class PayCalculator {
 
     updateTotals() {
         let totalPrice = 0;
-        let totalCrystal = 0;
-        let totalAmber = 0;
-        let totalDestiny = 0;
-        let totalDestinyCoins = 0;
-        let totalFutureDestiny = 0;
+        let gainedCrystal = 0;
+        let gainedAmber = 0;
+        let gainedDestiny = 0;
+        let gainedDestinyCoins = 0;
+        let gainedFutureDestiny = 0;
 
         document.querySelectorAll('.checkbox-img[data-index]').forEach((checkbox) => {
             const isChecked = checkbox.src.includes('check-on.png');
@@ -191,11 +253,11 @@ class PayCalculator {
                 const price = this.calculateDiscount(pkg.price, discountOption);
                 totalPrice += price * count;
                 
-                if (pkg.crystal) totalCrystal += pkg.crystal * count;
-                if (pkg.amber) totalAmber += pkg.amber * count;
-                if (pkg.destiny) totalDestiny += pkg.destiny * count;
-                if (pkg.destinyCoins) totalDestinyCoins += pkg.destinyCoins * count;
-                if (pkg.destiny_future) totalFutureDestiny += pkg.destiny_future * count;
+                if (pkg.crystal) gainedCrystal += pkg.crystal * count;
+                if (pkg.amber) gainedAmber += pkg.amber * count;
+                if (pkg.destiny) gainedDestiny += pkg.destiny * count;
+                if (pkg.destinyCoins) gainedDestinyCoins += pkg.destinyCoins * count;
+                if (pkg.destiny_future) gainedFutureDestiny += pkg.destiny_future * count;
             }
             
             tr.classList.toggle('selected', isChecked);
@@ -203,41 +265,41 @@ class PayCalculator {
 
         // 정해진 운명 ALL 변환
         if (document.getElementById('destinyAllCheckbox').checked) {
-            const totalValue = totalCrystal + totalAmber;
+            const totalValue = gainedCrystal + gainedAmber;
             const convertedDestiny = Math.floor(totalValue / 150);
             const remainder = totalValue % 150;
             
-            totalDestiny += convertedDestiny;
+            gainedDestiny += convertedDestiny;
             if (remainder > 0) {
-                if (totalCrystal >= remainder) {
-                    totalCrystal = remainder;
-                    totalAmber = 0;
+                if (gainedCrystal >= remainder) {
+                    gainedCrystal = remainder;
+                    gainedAmber = 0;
                 } else {
-                    totalAmber = remainder - totalCrystal;
+                    gainedAmber = remainder - gainedCrystal;
                 }
             } else {
-                totalCrystal = 0;
-                totalAmber = 0;
+                gainedCrystal = 0;
+                gainedAmber = 0;
             }
         }
 
         // 정해진 코인 ALL 변환
         if (document.getElementById('coinsAllCheckbox').checked) {
-            const totalValue = totalCrystal + totalAmber;
+            const totalValue = gainedCrystal + gainedAmber;
             const convertedCoins = Math.floor(totalValue / 100);
             const remainder = totalValue % 100;
             
-            totalDestinyCoins += convertedCoins;
+            gainedDestinyCoins += convertedCoins;
             if (remainder > 0) {
-                if (totalCrystal >= remainder) {
-                    totalCrystal = remainder;
-                    totalAmber = 0;
+                if (gainedCrystal >= remainder) {
+                    gainedCrystal = remainder;
+                    gainedAmber = 0;
                 } else {
-                    totalAmber = remainder - totalCrystal;
+                    gainedAmber = remainder - gainedCrystal;
                 }
             } else {
-                totalCrystal = 0;
-                totalAmber = 0;
+                gainedCrystal = 0;
+                gainedAmber = 0;
             }
         }
 
@@ -246,14 +308,43 @@ class PayCalculator {
             Math.round(totalPrice * 0.7) : totalPrice;
 
         // 총 엠버 환산 값 계산
-        const totalAmberValue = totalCrystal + totalAmber + (totalDestiny * 150) + (totalDestinyCoins * 100) + (totalFutureDestiny * 150);
-        const totalAmberValueExcludeFuture = totalCrystal + totalAmber + (totalDestiny * 150) + (totalDestinyCoins * 100);
+        const totalAmberValue = gainedCrystal + gainedAmber + (gainedDestiny * 150) + (gainedDestinyCoins * 100) + (gainedFutureDestiny * 150);
+        const totalAmberValueExcludeFuture = gainedCrystal + gainedAmber + (gainedDestiny * 150) + (gainedDestinyCoins * 100);
 
         // 엠버 1개당 가격 계산
         const pricePerAmber = totalAmberValue > 0 ? finalPrice / totalAmberValue : 0;
         const pricePerAmberExcludeFuture = totalAmberValueExcludeFuture > 0 ? finalPrice / totalAmberValueExcludeFuture : 0;
 
         document.getElementById('totalPrice').textContent = this.formatPrice(finalPrice) + '원';
+        // 획득 재화 표시
+        const gainedCrystalEl = document.getElementById('gainedCrystal');
+        const gainedAmberEl = document.getElementById('gainedAmber');
+        const gainedDestinyEl = document.getElementById('gainedDestiny');
+        const gainedDestinyCoinsEl = document.getElementById('gainedDestinyCoins');
+        const gainedFutureDestinyEl = document.getElementById('gainedFutureDestiny');
+
+        if (gainedCrystalEl) gainedCrystalEl.textContent = this.formatPrice(gainedCrystal) + '개';
+        if (gainedAmberEl) gainedAmberEl.textContent = this.formatPrice(gainedAmber) + '개';
+        if (gainedDestinyEl) gainedDestinyEl.textContent = gainedDestiny + '개';
+        if (gainedDestinyCoinsEl) gainedDestinyCoinsEl.textContent = gainedDestinyCoins + '개';
+        if (gainedFutureDestinyEl) gainedFutureDestinyEl.textContent = gainedFutureDestiny + '개';
+
+        // 기존 보유 재화
+        const base = this.baseResources || {
+            crystal: 0,
+            amber: 0,
+            destiny: 0,
+            destinyCoins: 0,
+            futureDestiny: 0
+        };
+
+        // 총 보유 재화 (기존 + 획득)
+        const totalCrystal = base.crystal + gainedCrystal;
+        const totalAmber = base.amber + gainedAmber;
+        const totalDestiny = base.destiny + gainedDestiny;
+        const totalDestinyCoins = base.destinyCoins + gainedDestinyCoins;
+        const totalFutureDestiny = base.futureDestiny + gainedFutureDestiny;
+
         document.getElementById('totalCrystal').textContent = this.formatPrice(totalCrystal) + '개';
         document.getElementById('totalAmber').textContent = this.formatPrice(totalAmber) + '개';
         document.getElementById('totalDestiny').textContent = totalDestiny + '개';

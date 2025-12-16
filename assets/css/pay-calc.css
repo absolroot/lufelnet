@@ -2,7 +2,7 @@
 .card-style { background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px; }
 
 /* 상단 카드 컨테이너 */
-.top-cards { display: grid; grid-template-columns: 1fr 1fr 1fr 2fr; gap: 20px; margin-bottom: 20px; padding: 0px 20px 0px 20px; }
+.top-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; padding: 0px 20px 0px 20px; }
 
 .total-card:last-child { grid-column: span 1; }
 
@@ -88,6 +88,35 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 .resource-item { display: flex; align-items: center; gap: 8px; color: #dd8484; font-size: 16px; }
 
 .resource-item img { width: 24px; height: 24px; object-fit: contain; }
+
+/* 보유 재화 입력 필드 */
+.resource-input { 
+    width: 100%;
+    max-width: 100px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.resource-input::-webkit-outer-spin-button,
+.resource-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.resource-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.resource-unit {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
 
 /* 테이블 헤더 아이콘 */
 .resource-icon { width: 24px; height: 24px; object-fit: contain; display: block; margin: 0 auto; }

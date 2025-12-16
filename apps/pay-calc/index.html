@@ -55,6 +55,65 @@ description: 페르소나5 더 팬텀 X 과금 계산기
             </div>
         </div>
 
+        <!-- 기존 보유 재화 -->
+        <div class="total-card card-style">
+            <h2>기존 보유 재화</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">
+                    <input type="number" id="baseCrystal" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버">
+                    <input type="number" id="baseAmber" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명">
+                    <input type="number" id="baseDestiny" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인">
+                    <input type="number" id="baseDestinyCoins" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명">
+                    <input type="number" id="baseFutureDestiny" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 획득 재화 -->
+        <div class="total-card card-style">
+            <h2>획득 재화</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">
+                    <span id="gainedCrystal">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버">
+                    <span id="gainedAmber">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명">
+                    <span id="gainedDestiny">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인">
+                    <span id="gainedDestinyCoins">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명">
+                    <span id="gainedFutureDestiny">0개</span>
+                </div>
+            </div>
+        </div>
+
         <!-- 총 재화 -->
         <div class="total-card card-style">
             <div class="card-header">

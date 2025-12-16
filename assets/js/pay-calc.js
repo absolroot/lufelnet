@@ -263,46 +263,6 @@ class PayCalculator {
             tr.classList.toggle('selected', isChecked);
         });
 
-        // 정해진 운명 ALL 변환
-        if (document.getElementById('destinyAllCheckbox').checked) {
-            const totalValue = gainedCrystal + gainedAmber;
-            const convertedDestiny = Math.floor(totalValue / 150);
-            const remainder = totalValue % 150;
-            
-            gainedDestiny += convertedDestiny;
-            if (remainder > 0) {
-                if (gainedCrystal >= remainder) {
-                    gainedCrystal = remainder;
-                    gainedAmber = 0;
-                } else {
-                    gainedAmber = remainder - gainedCrystal;
-                }
-            } else {
-                gainedCrystal = 0;
-                gainedAmber = 0;
-            }
-        }
-
-        // 정해진 코인 ALL 변환
-        if (document.getElementById('coinsAllCheckbox').checked) {
-            const totalValue = gainedCrystal + gainedAmber;
-            const convertedCoins = Math.floor(totalValue / 100);
-            const remainder = totalValue % 100;
-            
-            gainedDestinyCoins += convertedCoins;
-            if (remainder > 0) {
-                if (gainedCrystal >= remainder) {
-                    gainedCrystal = remainder;
-                    gainedAmber = 0;
-                } else {
-                    gainedAmber = remainder - gainedCrystal;
-                }
-            } else {
-                gainedCrystal = 0;
-                gainedAmber = 0;
-            }
-        }
-
         // 페이백 적용
         const finalPrice = document.getElementById('paybackCheckbox').checked ? 
             Math.round(totalPrice * 0.7) : totalPrice;
@@ -338,12 +298,52 @@ class PayCalculator {
             futureDestiny: 0
         };
 
-        // 총 보유 재화 (기존 + 획득)
-        const totalCrystal = base.crystal + gainedCrystal;
-        const totalAmber = base.amber + gainedAmber;
-        const totalDestiny = base.destiny + gainedDestiny;
-        const totalDestinyCoins = base.destinyCoins + gainedDestinyCoins;
+        // 총 보유 재화 (기존 + 획득) - ALL 변환의 기준 값
+        let totalCrystal = base.crystal + gainedCrystal;
+        let totalAmber = base.amber + gainedAmber;
+        let totalDestiny = base.destiny + gainedDestiny;
+        let totalDestinyCoins = base.destinyCoins + gainedDestinyCoins;
         const totalFutureDestiny = base.futureDestiny + gainedFutureDestiny;
+
+        // 정해진 운명 ALL 변환 (총 획득 재화 기준)
+        if (document.getElementById('destinyAllCheckbox').checked) {
+            const totalValue = totalCrystal + totalAmber;
+            const convertedDestiny = Math.floor(totalValue / 150);
+            const remainder = totalValue % 150;
+
+            totalDestiny += convertedDestiny;
+            if (remainder > 0) {
+                if (totalCrystal >= remainder) {
+                    totalCrystal = remainder;
+                    totalAmber = 0;
+                } else {
+                    totalAmber = remainder - totalCrystal;
+                }
+            } else {
+                totalCrystal = 0;
+                totalAmber = 0;
+            }
+        }
+
+        // 정해진 코인 ALL 변환 (총 획득 재화 기준)
+        if (document.getElementById('coinsAllCheckbox').checked) {
+            const totalValue = totalCrystal + totalAmber;
+            const convertedCoins = Math.floor(totalValue / 100);
+            const remainder = totalValue % 100;
+
+            totalDestinyCoins += convertedCoins;
+            if (remainder > 0) {
+                if (totalCrystal >= remainder) {
+                    totalCrystal = remainder;
+                    totalAmber = 0;
+                } else {
+                    totalAmber = remainder - totalCrystal;
+                }
+            } else {
+                totalCrystal = 0;
+                totalAmber = 0;
+            }
+        }
 
         document.getElementById('totalCrystal').textContent = this.formatPrice(totalCrystal) + '개';
         document.getElementById('totalAmber').textContent = this.formatPrice(totalAmber) + '개';
@@ -357,12 +357,15 @@ class PayCalculator {
     }
 
     bindEvents() {
-        document.querySelectorAll('.checkbox-img').forEach(checkbox => {
+        // 패키지/이계 수정 행 선택용 체크 이미지에만 클릭 이벤트 바인딩
+        document.querySelectorAll('.checkbox-img[data-index]').forEach(checkbox => {
             checkbox.addEventListener('click', () => {
                 const isChecked = checkbox.src.includes('check-on.png');
                 checkbox.src = `/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
                 const tr = checkbox.closest('tr');
-                tr.classList.toggle('selected', !isChecked);
+                if (tr) {
+                    tr.classList.toggle('selected', !isChecked);
+                }
                 this.updateTotals();
             });
         });

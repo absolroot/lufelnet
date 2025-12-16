@@ -10,12 +10,17 @@
     "body_en": "Justin & Carolin (Rumor)",
     "body_jp": "ジュスティーヌ＆カロリーヌ (噂)",
     "image": "/assets/img/home/banner/P5DSN_-_Caroline_and_Justine.webp",
+
     "background_image": "/assets/img/home/banner/JC.jpg",
+    "background_image_jp": "/assets/img/home/banner/JC-jp.jpg",
+    "background_image_en": "/assets/img/home/banner/JC-en.jpg",
     "background_bottom": 80,
     "background_bottom_mobile": 0,
     "background_right": 0,
     "color": "#e91e63",
-    "link": "https://www.youtube.com/watch?v=Wulo8Bz00wA",
+    "link": "https://www.youtube.com/@p5x-official/featured",
+    "link_jp": "https://www.youtube.com/watch?v=F3_7JnVGcgs",
+    "link_en": "https://www.youtube.com/watch?v=Wulo8Bz00wA",
     "visible_langs": ["kr","en","jp"],
     "regions": ["kr","cn","tw","sea","en","jp"]  
 },

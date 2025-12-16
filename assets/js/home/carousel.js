@@ -318,7 +318,10 @@
         const body = pickByLang(item, 'body', lang);
         const color = item.color || null;
         const image = item.image ? toAbsUrl(item.image) : null;
-        const bgImage = item.background_image ? toAbsUrl(item.background_image) : null;
+        // 언어별 배경 이미지 선택: background_image, background_image_en, background_image_jp 지원
+        const bgImagePath = pickByLang(item, 'background_image', lang);
+        const bgImage = bgImagePath ? toAbsUrl(bgImagePath) : null;
+        // 언어별 링크 선택: link, link_en, link_jp 지원
         const link = pickLinkByLang(item, lang) ? toAbsUrl(pickLinkByLang(item, lang)) : '';
         const order = Number.isFinite(item.order) ? Number(item.order) : null;
         const bgOffsetCandidate = {

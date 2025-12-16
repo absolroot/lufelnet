@@ -136,6 +136,12 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     color: #dd8484;
 }
 
+.expectation-median {
+    margin-left: 4px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
 .expectation-separator {
     margin: 0 6px;
     color: rgba(255, 255, 255, 0.4);

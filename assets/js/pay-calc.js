@@ -1,5 +1,13 @@
+// P5X 가챠 트래커 pity 데이터 (kr/tw/cn 실시간 로드용)
+const PITY_LANGS = ['kr', 'tw', 'cn'];
+const PITY_BASE_URL = 'https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/pity/pity_';
+
 class PayCalculator {
     constructor() {
+        // pity 분포 기본값 (로드 실패 시 0으로 남음)
+        this.charPityStats = { mean: 0, median: 0, total: 0 };
+        this.weaponPityStats = { mean: 0, median: 0, total: 0 };
+
         this.baseResources = this.loadBaseResources();
         this.initializeTabs();
         this.initializeTable();
@@ -7,6 +15,84 @@ class PayCalculator {
         this.initializeCheckboxes();
         this.initializeBaseResourcesInputs();
         this.bindExpectationTooltips();
+        this.updateTotals();
+
+        // pity 분포 비동기 로드 (kr/tw/cn 합산)
+        this.initializePityDistributions();
+    }
+
+    computeHistogramStats(histObj) {
+        if (!histObj) return { mean: 0, median: 0, total: 0 };
+        const entries = Object.entries(histObj)
+            .map(([k, v]) => [Number(k), Number(v)])
+            .filter(([k, v]) => Number.isFinite(k) && v > 0)
+            .sort((a, b) => a[0] - b[0]);
+
+        let total = 0;
+        let sum = 0;
+        entries.forEach(([pull, count]) => {
+            total += count;
+            sum += pull * count;
+        });
+
+        let median = 0;
+        if (total > 0) {
+            const half = total / 2;
+            let acc = 0;
+            for (const [pull, count] of entries) {
+                acc += count;
+                if (acc >= half) {
+                    median = pull;
+                    break;
+                }
+            }
+        }
+
+        const mean = total > 0 ? sum / total : 0;
+        return { mean, median, total };
+    }
+
+    async initializePityDistributions() {
+        const combinedConfirmed = {};
+        const combinedWeapon = {};
+
+        const merge = (target, source) => {
+            if (!source) return;
+            Object.entries(source).forEach(([k, v]) => {
+                const key = Number(k);
+                const val = Number(v);
+                if (!Number.isFinite(key) || !Number.isFinite(val) || val <= 0) return;
+                target[key] = (target[key] || 0) + val;
+            });
+        };
+
+        for (const lang of PITY_LANGS) {
+            try {
+                const res = await fetch(`${PITY_BASE_URL}${lang}.json`, { cache: 'no-store' });
+                if (!res.ok) continue;
+                const data = await res.json();
+                if (data.Confirmed) merge(combinedConfirmed, data.Confirmed);
+                if (data.Weapon) merge(combinedWeapon, data.Weapon);
+            } catch (_) {
+                // 개별 언어 실패는 무시하고 나머지로 계산
+            }
+        }
+
+        // 분포가 없을 경우 기본 중간값/평균을 사용 (캐릭 90회, 무기 60회)
+        if (Object.keys(combinedConfirmed).length > 0) {
+            this.charPityStats = this.computeHistogramStats(combinedConfirmed);
+        } else {
+            this.charPityStats = { mean: 90, median: 90, total: 0 };
+        }
+
+        if (Object.keys(combinedWeapon).length > 0) {
+            this.weaponPityStats = this.computeHistogramStats(combinedWeapon);
+        } else {
+            this.weaponPityStats = { mean: 60, median: 60, total: 0 };
+        }
+
+        this.updatePityMedianLabels();
+        this.updatePityTooltipSources();
         this.updateTotals();
     }
 
@@ -16,6 +102,70 @@ class PayCalculator {
                 document.querySelectorAll('.expectation-row .tooltip-icon').forEach(el => {
                     if (el) bindTooltipElement(el);
                 });
+            }
+        } catch (_) {}
+    }
+
+    updatePityMedianLabels() {
+        try {
+            if (this.charPityStats && this.charPityStats.median) {
+                const el = document.getElementById('limitedCharMedianLabel');
+                if (el) el.textContent = ` (중간값 ${this.charPityStats.median}회/확률 평균 83.3회)`;
+            }
+            if (this.weaponPityStats && this.weaponPityStats.median) {
+                const allEl = document.getElementById('allWeaponMedianLabel');
+                const limitedEl = document.getElementById('limitedWeaponMedianLabel');
+                const txt = ` (중간값 ${this.weaponPityStats.median}회/확률 평균 50회)`;
+                if (allEl) allEl.textContent = txt;
+                //if (limitedEl) limitedEl.textContent = txt;
+            }
+        } catch (_) {}
+    }
+
+    updatePityTooltipSources() {
+        try {
+            const formatN = (n) => this.formatPrice ? this.formatPrice(n) : n.toString();
+
+            // 한정 캐릭터 툴팁
+            const charTooltip = document.querySelector('.expectation-row .expectation-item:nth-child(1) .tooltip-icon');
+            if (charTooltip) {
+                const baseText = (charTooltip.getAttribute('data-tooltip') || '').split('중간값은 루페르넷에 제출된')[0].trim();
+                let suffix;
+                if (this.charPityStats && this.charPityStats.total > 0) {
+                    const n = formatN(this.charPityStats.total);
+                    suffix = `중간값은 루페르넷에 제출된 ${n}회의 한국, 대만, 중국 서버의 가챠 통계 데이터를 기반으로 산정됐습니다.`;
+                } else {
+                    suffix = '중간값은 루페르넷에 제출된 한국, 대만, 중국 서버의 가챠 통계 데이터를 기반으로 산정됐습니다.';
+                }
+                charTooltip.setAttribute('data-tooltip', `${baseText}\n\n${suffix}`.trim());
+            }
+
+            // 전체 무기 툴팁
+            const allWeaponTooltip = document.querySelector('.expectation-row .expectation-item:nth-child(2) .tooltip-icon');
+            if (allWeaponTooltip) {
+                const baseText = (allWeaponTooltip.getAttribute('data-tooltip') || '').split('중간값은 루페르넷에 제출된')[0].trim();
+                let suffix;
+                if (this.weaponPityStats && this.weaponPityStats.total > 0) {
+                    const n = formatN(this.weaponPityStats.total);
+                    suffix = `중간값은 루페르넷에 제출된 ${n}회의 한국, 대만, 중국 서버의 가챠 통계 데이터를 기반으로 산정됐습니다.`;
+                } else {
+                    suffix = '중간값은 루페르넷에 제출된 한국, 대만, 중국 서버의 가챠 통계 데이터를 기반으로 산정됐습니다.';
+                }
+                allWeaponTooltip.setAttribute('data-tooltip', `${baseText}\n\n${suffix}`.trim());
+            }
+
+            // 한정 무기 툴팁 (전체 무기와 같은 분포 사용)
+            const limitedWeaponTooltip = document.querySelector('.expectation-row .expectation-item:nth-child(3) .tooltip-icon');
+            if (limitedWeaponTooltip) {
+                const baseText = (limitedWeaponTooltip.getAttribute('data-tooltip') || '').split('중간값은 루페르넷에 제출된')[0].trim();
+                let suffix;
+                if (this.weaponPityStats && this.weaponPityStats.total > 0) {
+                    const n = formatN(this.weaponPityStats.total);
+                    suffix = `중간값은 루페르넷에 제출된 ${n}회의 한국, 대만, 중국 서버의 가챠 통계 데이터를 기반으로 산정됐습니다.`;
+                } else {
+                    suffix = '중간값은 루페르넷에 제출된 한국, 대만, 중국 서버의 가챠 통계 데이터를 기반으로 산정됐습니다.';
+                }
+                limitedWeaponTooltip.setAttribute('data-tooltip', `${baseText}\n\n${suffix}`.trim());
             }
         } catch (_) {}
     }
@@ -412,37 +562,43 @@ class PayCalculator {
             const currentDestiny = totalDestiny;
             const currentCoins = totalDestinyCoins;
 
-            // 한정 캐릭터 기대값 계산
+            // 한정 캐릭터 기대값 계산 (p5는 중간값 기반, 환급 재귀 유지)
             let expectedLimitedChar = 0;
             let expectedLimitedCharDestiny = 0;
             {
-                // 시작 운명은 현재 보유 운명만 사용 (보유 인지 단면은 제외)
                 let startDestiny = currentDestiny;
                 // 캐릭터 배너 최초 1회는 인지 단면 30개(=운명 2개 환급)가 없다고 보고 보정
-                startDestiny = Math.max(0, startDestiny - 2);
-                const CHAR_P5 = 0.012;   // 5성 확률 1.2%
-                const CHAR_P4 = 0.1312;  // 4성 확률 13.12%
+                if (startDestiny > 0) {
+                    startDestiny = Math.max(0, startDestiny - 2);
+                }
+
+                const charMedian = (this.charPityStats && this.charPityStats.median) ? this.charPityStats.median : 0;
+                const CHAR_P5 = charMedian > 0 ? 1 / charMedian : 0.012; // 기존 0.012 대신 1/중간값
+                const CHAR_P4 = 0.1312; // 4성 확률은 고정
+
                 const CHAR_SHARD_PER_PULL =
-                    CHAR_P5 * 30 +      // 5성 시 인지 단면 30개 (단순화)
+                    CHAR_P5 * 30 +      // 5성 시 인지 단면 30개
                     CHAR_P4 * 15;       // 4성 시 인지 단면 15개
                 const destinyRefundPerPull = CHAR_SHARD_PER_PULL / 15; // 15개당 운명 1개
 
                 if (startDestiny > 0 && destinyRefundPerPull < 1) {
                     const totalPulls = startDestiny / (1 - destinyRefundPerPull);
-                    expectedLimitedChar = totalPulls * (CHAR_P5); // 1.2% 픽업 확률
-                    expectedLimitedCharDestiny = totalPulls;      // 운명 1개당 1뽑
+                    expectedLimitedChar = totalPulls * CHAR_P5; // 한정 캐릭터는 5성=픽업
+                    expectedLimitedCharDestiny = totalPulls;    // 운명 1개당 1뽑
                 }
             }
 
-            // 무기 기대값 계산
+            // 무기 기대값 계산 (p5는 중간값 기반, 환급 재귀 유지)
             let expectedAllWeapon = 0;
             let expectedLimitedWeapon = 0;
             let expectedAllWeaponCoins = 0;
             {
-                // 시작 코인은 현재 보유 코인만 사용 (보유 인지 단면은 제외)
                 const startCoins = currentCoins;
-                const WEAPON_P5 = 0.012;   // 5성 획득 확률 1.2%
-                const WEAPON_P4 = 0.1414;  // 4성 확률 14.14%
+
+                const weaponMedian = (this.weaponPityStats && this.weaponPityStats.median) ? this.weaponPityStats.median : 0;
+                const WEAPON_P5 = weaponMedian > 0 ? 1 / weaponMedian : 0.012; // 기존 0.012 대신 1/중간값
+                const WEAPON_P4 = 0.1414; // 4성 확률은 고정
+
                 const WEAPON_SHARD_PER_PULL =
                     WEAPON_P5 * 20 +     // 5성 시 인지 단면 20개
                     WEAPON_P4 * 4;       // 4성 시 인지 단면 4개
@@ -451,9 +607,11 @@ class PayCalculator {
                 if (startCoins > 0 && coinRefundPerPull < 1) {
                     const totalPullsWeapon = startCoins / (1 - coinRefundPerPull);
 
-                    const PICKUP_TOTAL_RATE = 0.02; // 픽업 5성 종합 확률 2.0%
+                    // 픽업 5성 종합 확률: 분포 중간값 기반 (기존 0.02 대체)
+                    const PICKUP_TOTAL_RATE = weaponMedian > 0 ? 1 / weaponMedian : 0.02;
+
                     expectedAllWeapon = totalPullsWeapon * PICKUP_TOTAL_RATE;
-                    // 한정 무기 2 / 총 픽업 3
+                    // 한정 무기 2 / 총 픽업 3 (반천장)
                     expectedLimitedWeapon = expectedAllWeapon * (2 / 3);
                     expectedAllWeaponCoins = totalPullsWeapon; // 코인 1개당 1뽑
                 }

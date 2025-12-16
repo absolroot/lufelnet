@@ -1,0 +1,249 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When Miyu grants a shield, grant 1 Seashell stack to that ally, up to 6.\nWhen gaining a Seashell stack, increase shield received by 1% for each stack.\nWhenever reaching a set number of Seashell stacks, activate the following effects, based on Miyu's level (1/50/70+).\n2 stacks: Increase Defense by 8%/12%/16%.\n4 stacks: Increase Attack by 8%/12%/16%.\n6 stacks: Increase Defense by 12%/18%/24%.",
+        "name": "Guardian of the Sea",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "At the start of battle, grant party 1 Seashell stack.",
+        "name": "Marionette Dance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally's remaining HP is below 30%, grant them a shield equal to 28% of Miyu's Defense + 660 for 2 turns. This effect can be activated once per battle.",
+        "name": "For My Big Bro!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Little Mermaid's Song and Poseidon's Blessing by 2.",
+        "name": "Self-Reliance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When an ally uses a Highlight, grant that ally a shield equal to 16% of Miyu's Defense + 480 for 2 turns.",
+        "name": "Chasing Dreams",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill level of Tide of Dreams increase by 2.",
+        "name": "Street Performer",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase maximum number of Seashell stacks to 8.\nWhen Seashell reaches 8 stacks, increase damage by 20%.",
+        "name": "Runaway",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Defense": "0.3",
+      "Shield Effect": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "Miyu Sahara",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Grant a shield to party equal to 29.3%/29.3%/31.6%/31.6% of Miyu's Defense + 1110/1330/1437/1657 for 2 turns, and restore 4 SP.\nWhen an ally's shield is broken, decrease cooldown by 1 action.\nCooldown Time: 8 ally actions",
+        "name": "Little Mermaid's Song",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127111,
+        "tags": [
+          "Shield"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on HPcur/HP)",
+        "cooldown": 0,
+        "desc": "For 2 turns, grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 and decrease weakness damage taken by 20%/20%/20%/20%. Grant 2 Down Points and 2 Seashell stacks.\nCooldown Time: 8 ally actions.",
+        "name": "Poseidon's Blessing",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127112,
+        "tags": [
+          "Shield"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Grant a shield to all allies equal to 33.2%/33.2%/35.9%/35.9% of Miyu's Defense + 1259/1509/1629/1879 + number of Seashell stacks on party x (6.9%/6.9%/7.5%/7.5% of Miyu's Defense + 260/260/336/336) for 3 turns.\nAlso, if an ally has 4 or more Seashell stacks, increase damage by 2.0%/2.0%/2.2%/2.2% for each stack.\nThe damage increase effect lasts for 3 turns or until shield is broken, and then lose 2 Seashell stacks.\nCooldown Time: 12 ally actions",
+        "name": "Tide of Dreams",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase shield effect by number of party's Seashell stacks x 1.0%.",
+        "name": "Whispering Waves",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase ally's Defense by 3.6% for each Seashell stack.",
+        "name": "I'll Protect You!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2360.0,
+      "Defense": 2280.0,
+      "HP": 7980.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "727.73 / 735.73 / 744.53 / 752.53 / 761.33 / 769.33 / 778.13",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "540.01 / 546.41 / 552.81 / 558.41 / 564.81 / 571.21 / 577.61",
+      "Defense Increase": "32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -29,6 +29,17 @@ window.recommendParty["토시야"] = {
             "members": [
                 "토시야",
                 "토모코·여름",
+                "세이지",
+                "카요"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "토시야",
+                "토모코·여름",
                 "미나미·여름",
                 "카요"
             ],

@@ -37,9 +37,9 @@ review_jp: `
         pros: ["주원 효과의 체력 비례 대미지를 통해 대량의 대미지를 줄 수 있다."],
         pros_en: ["It can deal a large amount of damage through HP-scaling damage from Curse Effects."],
         pros_jp: ["呪怨効果によるHP割合ダメージを活用して大きなダメージを与えることができます。"],
-        cons: ["절대 다수의 보스가 체력 비례 대미지 감소 효과를 가지고 있어 토시야의 도트 대미지의 효율이 급감한다."],
-        cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Toshiya's Bleed damage."],
-        cons_jp: ["大多数のボスはHP割合ダメージ軽減効果を持っており、そのためトシヤの持続ダメージ（ドット）効率は大幅に低下します。"],
+        cons: ["절대 다수의 보스가 체력 비례 대미지 감소 효과를 가지고 있어 토시야의 도트 대미지의 효율이 급감한다.", "주원 부여 확률이 생각보다 낮다.", "운명의 십사행시 발동을 위해선 여러 타수를 공격하는 팀 구성이 필요하다."],
+        cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Toshiya's Bleed damage.", "The probability of applying Curse is lower than expected.","Sonnet of Fate requires team compositions that facilitate multi-hits."],
+        cons_jp: ["大多数のボスはHP割合ダメージ軽減効果を持っており、そのためトシヤの持続ダメージ（ドット）効率は大幅に低下します。", "呪怨効果付与確率は想像より低いです。", "。"],
     };
 })();
 

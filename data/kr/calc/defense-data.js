@@ -434,7 +434,9 @@ const penetrateData = {
             options: [],
             value: 12.0,
             duration: "-",
-            note: ""
+            note: "스킬2",
+            note_en: "Skill2",
+            note_jp: "スキル2"
         }
     ],
     "몽타뉴·백조":[

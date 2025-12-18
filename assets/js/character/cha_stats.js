@@ -171,12 +171,23 @@
     function localizeLv80Title(lang) {
       return lang === 'en' ? 'Base Stats (LV 80)' : (lang === 'jp' ? '基礎ステータス (LV 80)' : '기초 스탯 (LV 80)');
     }
-
+  
     // a0_lv80 ~ a7_lv80 중 하나라도 데이터가 있는지 확인
     function hasAnyLv80(statObj) {
       if (!statObj) return false;
       for (let i = 0; i <= 7; i++) {
         const key = `a${i}_lv80`;
+        const v = statObj[key];
+        if (v && (v.HP != null || v.attack != null || v.defense != null)) return true;
+      }
+      return false;
+    }
+  
+    // a0_lv100 ~ a7_lv100 중 하나라도 데이터가 있는지 확인
+    function hasAnyLv100(statObj) {
+      if (!statObj) return false;
+      for (let i = 0; i <= 7; i++) {
+        const key = `a${i}_lv100`;
         const v = statObj[key];
         if (v && (v.HP != null || v.attack != null || v.defense != null)) return true;
       }
@@ -333,6 +344,158 @@
         console.warn('[cha_stats] renderLv80BaseStats error', e);
       }
     }
+
+    // 외부(예: cha_detail.js)에서 호출할 수 있는 LV100 스탯 카드 렌더러
+    window.renderLv100BaseStatsFromBasicStats = async function () {
+      try {
+        // 이미 카드가 있다면 중복 생성 방지
+        const existing = document.querySelector('.lv100-stats-card');
+        if (existing) return;
+
+        const statsCard = document.querySelector('.stats-card');
+        const lv80Card = document.querySelector('.lv80-stats-card');
+        if (!statsCard || !lv80Card) return;
+
+        const lang = getLang();
+        const urlName = getCharacterNameFromURL();
+        const krKey = toKoreanKey(urlName, lang);
+
+        const ok = await ensureBasicStatsLoaded();
+        if (!ok || !window.basicStatsData) return;
+        const statObj = window.basicStatsData[krKey];
+        if (!statObj || !hasAnyLv100(statObj)) return;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'lv100-stats-card setting-section';
+        wrap.style.padding = '20px 0 30px 0';
+        wrap.style.borderTop = '1px solid rgba(255, 255, 255, 0.1)';
+
+        const title = document.createElement('h3');
+        title.className = 'lv80-title';
+        title.textContent =
+          lang === 'en'
+            ? 'Base Stats (LV 100)'
+            : (lang === 'jp' ? '基礎ステータス (LV 100)' : '기초 스탯 (LV 100)');
+        wrap.appendChild(title);
+
+        const grid = document.createElement('div');
+        grid.className = 'lv80-grid';
+        grid.style.fontSize = '14px';
+        wrap.appendChild(grid);
+
+        const items = [];
+        for (let i = 0; i <= 7; i++) {
+          const key = `a${i}_lv100`;
+          const v = statObj[key];
+          if (v && (v.HP != null || v.attack != null || v.defense != null)) {
+            items.push({ idx: i, data: v });
+          }
+        }
+        if (items.length === 0) return;
+
+        const L_HP  = (lang === 'en' ? 'HP'  : (lang === 'jp' ? 'HP' : '생명'));
+        const L_ATK = (lang === 'en' ? 'ATK' : (lang === 'jp' ? '攻撃力' : '공격력'));
+        const L_DEF = (lang === 'en' ? 'DEF' : (lang === 'jp' ? '防御力' : '방어력'));
+
+        function fmt1(v) {
+          if (v === undefined || v === null || isNaN(v)) return '';
+          const n = Math.round(Number(v) * 10) / 10;
+          return n.toFixed(1);
+        }
+
+        function headerLabel(idx, lang) {
+          if (lang === 'kr') return `의식${idx}`;
+          if (lang === 'jp') return `意識${idx}`;
+          return `A${idx}`;
+        }
+
+        function renderWide() {
+          grid.innerHTML = '';
+          const cols = items.length + 1;
+          grid.style.display = 'grid';
+          grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+          grid.style.gap = '6px';
+
+          const headBlank = document.createElement('div');
+          headBlank.className = 'lv80-cell label';
+          grid.appendChild(headBlank);
+          items.forEach(({ idx }) => {
+            const h = document.createElement('div');
+            h.className = 'lv80-cell label';
+            h.textContent = headerLabel(idx, lang);
+            grid.appendChild(h);
+          });
+
+          const hpLabel = document.createElement('div');
+          hpLabel.className = 'lv80-cell label';
+          hpLabel.textContent = L_HP;
+          grid.appendChild(hpLabel);
+          items.forEach(({ data }) => {
+            const c = document.createElement('div');
+            c.className = 'lv80-cell value';
+            c.textContent = fmt1(data.HP);
+            grid.appendChild(c);
+          });
+
+          const atkLabel = document.createElement('div');
+          atkLabel.className = 'lv80-cell label';
+          atkLabel.textContent = L_ATK;
+          grid.appendChild(atkLabel);
+          items.forEach(({ data }) => {
+            const c = document.createElement('div');
+            c.className = 'lv80-cell value';
+            c.textContent = fmt1(data.attack);
+            grid.appendChild(c);
+          });
+
+          const defLabel = document.createElement('div');
+          defLabel.className = 'lv80-cell label';
+          defLabel.textContent = L_DEF;
+          grid.appendChild(defLabel);
+          items.forEach(({ data }) => {
+            const c = document.createElement('div');
+            c.className = 'lv80-cell value';
+            c.textContent = fmt1(data.defense);
+            grid.appendChild(c);
+          });
+        }
+
+        function renderNarrow() {
+          grid.innerHTML = '';
+          const cols = 4;
+          grid.style.display = 'grid';
+          grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+          grid.style.gap = '6px';
+
+          const blank = document.createElement('div'); blank.className = 'lv80-cell label'; grid.appendChild(blank);
+          const h1 = document.createElement('div'); h1.className = 'lv80-cell label'; h1.textContent = L_HP; grid.appendChild(h1);
+          const h2 = document.createElement('div'); h2.className = 'lv80-cell label'; h2.textContent = L_ATK; grid.appendChild(h2);
+          const h3 = document.createElement('div'); h3.className = 'lv80-cell label'; h3.textContent = L_DEF; grid.appendChild(h3);
+
+          items.forEach(({ idx, data }) => {
+            const r0 = document.createElement('div'); r0.className = 'lv80-cell label'; r0.textContent = headerLabel(idx, lang); grid.appendChild(r0);
+            const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt1(data.HP); grid.appendChild(r1);
+            const r2 = document.createElement('div'); r2.className = 'lv80-cell value'; r2.textContent = fmt1(data.attack); grid.appendChild(r2);
+            const r3 = document.createElement('div'); r3.className = 'lv80-cell value'; r3.textContent = fmt1(data.defense); grid.appendChild(r3);
+          });
+        }
+
+        function applyLayout() {
+          const wide = window.innerWidth >= 1200;
+          if (wide) renderWide(); else renderNarrow();
+        }
+
+        if (lv80Card.nextSibling) {
+          statsCard.insertBefore(wrap, lv80Card.nextSibling);
+        } else {
+          statsCard.appendChild(wrap);
+        }
+        applyLayout();
+        window.addEventListener('resize', applyLayout);
+      } catch (e) {
+        console.warn('[cha_stats] renderLv100BaseStatsFromBasicStats error', e);
+      }
+    };
 
     async function init() {
       // DOM 준비

@@ -2,20 +2,17 @@ window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
 window.characterSkillsData["YUI"] = {
-  "name": "YUI",
   "skill1": {
     "name": "타닥 깜짝상자",
     "element": "전격",
     "type": "단일피해",
-    "sp": 20,
     "cool": 0,
     "description": "1명의 적에게 공격력 185.4%/204.4%/196.8%/215.8%의 전격 속성 대미지를 준다. 적이 감전 상태가 아닌 경우 2턴 동안 68.3%/68.3%/72.5%/72.5%의 기본 확률로 감전 상태에 빠뜨린다. 적이 이미 감전 상태인 경우 대미지가 30% 증가한다."
   },
   "skill2": {
     "name": "폭발 벽돌",
-    "element": "전격광역",
+    "element": "전격",
     "type": "광역피해",
-    "sp": 20,
     "cool": 0,
     "description": "모든 적에게 공격력 59.6%/65.7%/63.3%/69.4%의 전격 속성 대미지를 주고, 스킬의 메인 목표에게 주는 대미지가 25% 증가한다."
   },
@@ -23,24 +20,25 @@ window.characterSkillsData["YUI"] = {
     "name": "초희귀 보상",
     "element": "버프",
     "type": "버프",
-    "sp": 25,
     "cool": 1,
-    "description": "자신의 공격력이 39.0%/43.0%/41.4%/45.4% 증가한다. 동료 1명을 YUI의 『놀이 친구』로 선택하며, 『놀이 친구』가 적에게 페르소나 스킬로 대미지를 주면 YUI가 바로 『추격』한다. 또한 YUI 다음 2회 추격은 공격력 132.9%/137.2%/141.1%/145.4%의 전격 속성 대미지를 주며 2턴 동안 지속된다. 동시에 『★프로젝트! 가동★』이 발동하는 고정 확률이 2턴 동안 10% 증가한다."
-  },
-  "skill_highlight": {
-    "element": "버프",
-    "type": "버프",
-    "description": "YUI의 공격력이 34.2%/37.7%/36.3%/39.8% 증가하고, 『추격』으로 주는 대미지가 YUI 공격력의 24.4%/25.9%/25.9%/27.4%까지 증가한다. 효과는 2턴 동안 지속된다. 또한 임의의 동료가 스킬을 시전해 대미지를 주면 YUI의 『추격』이 발동하며 2턴 동안 지속된다."
+    "description": "자신의 공격력이 39.0%/43.0%/41.4%/45.4% 증가한다. 동료 1명을 YUI의 『놀이 친구』로 선택하며, 『놀이 친구』가 적에게 페르소나 스킬로 대미지를 주면 YUI가 바로 추격한다. 또한 YUI 다음 2회 추격은 공격력 132.9%/146.6%/141.1%/154.7%의 전격 속성 대미지를 주며 2턴 동안 지속된다. 동시에 『★프로젝트! 가동★』이 발동하는 고정 확률이 2턴 동안 10% 증가한다."
   },
   "passive1": {
     "name": "역동",
     "element": "패시브",
-    "description": "YUI의 『추격』이 감전 상태인 적에게 주는 대미지가 36.0% 증가한다."
+    "cool": 0,
+    "description": "YUI의 추격이 감전 상태인 적에게 주는 대미지가 36.0% 증가한다."
   },
   "passive2": {
     "name": "반짝",
     "element": "패시브",
+    "cool": 0,
     "description": "『놀이 친구』가 있을 때, YUI와 놀이 친구의 크리티컬 확률이 12.0% 증가하고, 공격력이 12.0% 증가한다."
+  },
+  "skill_highlight": {
+    "element": "버프",
+    "cool": 4,
+    "description": "YUI의 공격력이 34.2%/37.7%/36.3%/39.8% 증가하고, 추격으로 주는 대미지가 YUI 공격력의 24.4%/26.9%/25.9%/28.4%까지 증가한다. 효과는 2턴 동안 지속된다. 또한 임의의 동료가 스킬을 시전해 대미지를 주면 YUI의 추격이 발동하며 2턴 동안 지속된다."
   }
 };
 window.enCharacterSkillsData["YUI"] = {

@@ -715,6 +715,7 @@ function updateBaseStatsKR(charKey, external) {
     top.obj.properties.push(charProp);
   }
   const charObj = charProp.value;
+
   const stats = external?.data?.stats || null;
   if (stats) {
     const atk = parseSevenNumbers(stats['Attack']);
@@ -730,25 +731,45 @@ function updateBaseStatsKR(charKey, external) {
         setObjectProp(v, 'attack', atk[i]);
         setObjectProp(v, 'defense', def[i]);
       }
-      // 신규 구조: data/characters/<캐릭터명>/base_stats.js 생성/갱신
-      try {
-        // KR 통합 파일에 존재하는 구조(a0_lv1, awake7 등)는 그대로 두고,
-        // a0_lv80~a6_lv80 값만 외부 스탯으로 갱신한 뒤 그대로 per-character로 복사한다.
-        const outObjRaw = astLiteralToValue(charObj);
-        const outObj = (outObjRaw && typeof outObjRaw === 'object') ? outObjRaw : {};
-        const destDir = path.join('data', 'characters', charKey);
-        fs.mkdirSync(destDir, { recursive: true });
-        const destFile = path.join(destDir, 'base_stats.js');
-        const content =
+    }
+  }
+
+  // stat_100 → a0_lv100 ~ a6_lv100
+  const stat100 = external?.data?.stat_100 || external?.data?.stat100 || null;
+  if (stat100) {
+    const atk100 = parseSevenNumbers(stat100['Attack']);
+    const def100 = parseSevenNumbers(stat100['Defense']);
+    const hp100 = parseSevenNumbers(stat100['HP']);
+    if (atk100 && def100 && hp100) {
+      for (let i = 0; i < 7; i++) {
+        const key = `a${i}_lv100`;
+        const objProp = ensureObjectProperty(charObj, key);
+        const v = objProp.value && objProp.value.type === 'ObjectExpression' ? objProp.value : b.objectExpression([]);
+        objProp.value = v;
+        setObjectProp(v, 'HP', hp100[i]);
+        setObjectProp(v, 'attack', atk100[i]);
+        setObjectProp(v, 'defense', def100[i]);
+      }
+    }
+  }
+
+  // 신규 구조: data/characters/<캐릭터명>/base_stats.js 생성/갱신
+  try {
+    // KR 통합 파일에 존재하는 구조(a0_lv1, awake7 등)는 그대로 두고,
+    // a0_lv80~a6_lv80 및 a0_lv100~a6_lv100 값을 외부 스탯으로 갱신한 뒤 그대로 per-character로 복사한다.
+    const outObjRaw = astLiteralToValue(charObj);
+    const outObj = (outObjRaw && typeof outObjRaw === 'object') ? outObjRaw : {};
+    const destDir = path.join('data', 'characters', charKey);
+    fs.mkdirSync(destDir, { recursive: true });
+    const destFile = path.join(destDir, 'base_stats.js');
+    const content =
 `window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData[${JSON.stringify(charKey)}] = ${JSON.stringify(outObj, null, 2)};
 `;
-        fs.writeFileSync(destFile, content, 'utf8');
-        console.error(`::notice::[base_stats] wrote per-character stats → ${destFile}`);
-      } catch (e) {
-        console.error(`::warning::[base_stats] failed to write per-character stats for ${charKey}:`, e?.message || e);
-      }
-    }
+    fs.writeFileSync(destFile, content, 'utf8');
+    console.error(`::notice::[base_stats] wrote per-character stats → ${destFile}`);
+  } catch (e) {
+    console.error(`::warning::[base_stats] failed to write per-character stats for ${charKey}:`, e?.message || e);
   }
   const output = recast.print(ast).code;
   writeFile(basePath, output);
@@ -1012,6 +1033,25 @@ function buildBaseStatsObjectFromExternal(external, existing) {
     cur.defense = def[i];
     out[key] = cur;
   }
+
+  // stat_100 → a0_lv100 ~ a6_lv100
+  const stat100 = data.stat_100 || data.stat100 || null;
+  if (stat100) {
+    const atk100 = parseSevenNumbers(stat100['Attack']);
+    const def100 = parseSevenNumbers(stat100['Defense']);
+    const hp100 = parseSevenNumbers(stat100['HP']);
+    if (atk100 && def100 && hp100) {
+      for (let i = 0; i < 7; i++) {
+        const key100 = `a${i}_lv100`;
+        const cur100 = (out[key100] && typeof out[key100] === 'object') ? { ...out[key100] } : {};
+        cur100.HP = hp100[i];
+        cur100.attack = atk100[i];
+        cur100.defense = def100[i];
+        out[key100] = cur100;
+      }
+    }
+  }
+
   return out;
 }
 

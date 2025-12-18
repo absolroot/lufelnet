@@ -1349,6 +1349,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         note.textContent = noteText;
                     }
                 }
+
+                // innate 카드가 정상 렌더된 경우에만 LV100 스탯 카드 생성 시도
+                try {
+                    if (window.renderLv100BaseStatsFromBasicStats) {
+                        window.renderLv100BaseStatsFromBasicStats();
+                    }
+                } catch (_) { /* noop */ }
             } else {
                 card.style.display = 'none';
             }

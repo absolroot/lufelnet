@@ -1,0 +1,268 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "池波星輝·永夜可以在戰鬥中主動消耗自身生命值獲得『暗夜契約』，提升『以吾之名刻於汝身』的技能傷害。\n池波星輝·永夜獲得祝福效果時，會將其轉化為特殊的『暗夜祝福』：視為祝福效果，每回合結束獲得相當於最大生命值2%的護盾，上限10層，持續2回合，透過這種方式獲得的護盾效果持續2回合。",
+        "name": "黑夜中的星芒",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "池波星輝·永夜在戰鬥開始時獲得『不滅星輝』：自身首次陷入瀕死狀態時，消耗『不滅星輝』恢復自身相當於最大生命值63%的生命值（至少恢復至1點生命值），並獲得30%攻擊力加成，持續1回合。\n擁有『不滅星輝』時，釋放『堅守的誓言』可將生命值減少至0以下主動陷入瀕死狀態，透過這種方式消耗『不滅星輝』後，當回合獲得的後續2層『暗夜契約』可突破上限。\n獲得『暗夜契約』時，額外使暴擊率提高5%，持續2回合，可疊加3層。",
+        "name": "流星的指引",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "釋放『堅守的誓言』時，技能消耗降低25%，『暗夜契約』的可疊加上限提升3層。",
+        "name": "拼上血肉之軀",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『堅守的誓言』、『以吾之名刻於汝身』的技能等級提升3級，至多提升至15級。",
+        "name": "向命運抗爭",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：額外使自身攻擊力提升35%，持續4回合。",
+        "name": "誠實的覺悟",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『破曉之劍』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "GIUSTIZIA",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "池波星輝·永夜的生命值降低為0時不會死亡，且可以繼續降低為負值，最多額外降低自身最大生命值的100%；生命值降低為負值後，池波星輝進入『暗夜君王』狀態：造成傷害提升30%，暴擊效果提升30%，『暗夜契約』對『以吾之名刻於汝身』的技能傷害提升效果提升至原本的120%。\n『暗夜契約』的可疊加上限額外提升3層。戰鬥開始時，池波星輝獲得5層可突破上限的『暗夜祝福』，持續時間永久。",
+        "name": "照亮黑夜的生命慾",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "對所有敵人造成228.8%/252.2%/242.8%/266.3%攻擊力的祝福屬性傷害，當前生命值越低，HIGHLIGHT造成傷害越高，40%生命值時獲得最大傷害加成60%。",
+      "name": "HIGHLIGHT",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 122252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "池波星輝·永夜",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成104.2%/114.9%/110.6%/121.3%攻擊力的祝福屬性傷害，自身暴擊效果提升48.8%/53.8%/51.8%/56.8%，效果持續2回合。\n獲得2層『暗夜祝福』，釋放該技能時若自身生命值低於40%，則額外獲得3層『暗夜祝福』。",
+        "name": "破曉之劍",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 122211,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使自身獲得9.8%/10.8%/10.4%/11.4%攻擊力+1875/2472/2305/2933的護盾（單次技能上限為自身最大生命值的40%），效果持續2回合，並獲得1層『暗夜契約』。\n『暗夜契約』：造成傷害提升9.8%/10.8%/10.4%/11.4%，釋放『以吾之名刻於汝身』時，消耗所有『暗夜契約』並使技能傷害得到提升，可疊加8層。\n使用該技能後本回合仍可使用其他技能，該技能不視為人格面具技能。",
+        "name": "堅守的誓言",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 122212,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "對所有敵人造成1次256.7%/283.0%/272.5%/298.8%攻擊力的祝福屬性傷害，若自身存在5層及以上的『暗夜祝福』則額外造成1次45.3%/49.9%/48.1%/52.7%攻擊力的祝福屬性傷害，每層『暗夜契約』使該技能傷害提升10%。\n釋放該技能後清空『暗夜契約』，並恢復自身20%最大生命值×『暗夜祝福』層數的生命值。",
+        "name": "以吾之名刻於汝身",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 122213,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每擁有1層『暗夜祝福』，池波星輝·永夜攻擊力提升6.0%。",
+        "name": "恩典",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122231,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "當前生命值越低，池波星輝·永夜穿透越高，40%生命值時獲得最大穿透加成15.0%。",
+        "name": "涅槃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122232,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2890.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1139.99 / 1160.79 / 1180.79 / 1201.59 / 1222.39 / 1242.39 / 1263.19",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "573.33 / 583.73 / 594.13 / 604.53 / 614.93 / 625.33 / 634.93",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3629.97 / 3695.57 / 3760.37 / 3825.97 / 3891.57 / 3956.37 / 4021.97",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,265 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "전투 시작 시 암리타 효과를 1중첩 획득한다. 턴 시작 시 임의의 괴도의 생명이 70% 미만이면 자신이 100%의 고정 확률로 암리타 효과를 1중첩 획득한다. 암리타 효과는 최대 2중첩 보유할 수 있다.",
+        "name": "건강 체크",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "치료량 초과 시 2턴 동안 괴도가 관통 20%를 획득한다.",
+        "name": "통증 관리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『치유의 축복』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "관리 계획",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『치유의 축복』이 동료 1명을 추가 치료하고 생명이 50% 미만인 괴도가 받는 해당 스킬의 치료 효과가 20% 증가한다.",
+        "name": "관리 진단",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『은방울꽃 계시』, 『봄의 은혜』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "관리 관여",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 스킬이 부여하는 생명 회복 효과와 최대 생명 증가 효과 지속 시간이 1턴 연장된다.",
+        "name": "수술 후 관리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "동료가 사망하면 즉시 부활시키고 미야시타 미나미의 최대 생명 40%+1,200의 생명을 회복시킨다. 전투마다 1회 발동된다.",
+        "name": "양심 부활",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on HPcur/HP)",
+      "cooldown": 4,
+      "desc": "즉시 모든 아군 괴도의 생명을 미야시타 미나미의 최대 생명 17.6%/17.6%/18.6%/18.6%+1500/1824/1844/2168만큼 회복시키고 디버프 상태 1종을 정화하며, 2턴 동안 목표는 미야시타 미나미의 최대 생명 16.5%(최대 2326/2326/2697/2697포인트)의 최대 생명 증가 효과를 획득한다. 동시에 목표 행동 후 1턴 동안 미야시타 미나미의 최대 생명 6.5%/6.5%/6.9%/6.9%+556/676/683/803만큼의 생명을 회복한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Heal",
+      "skill_lv": "10/10/13/13",
+      "sn": 123152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Resist.": "0.24",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "미야시타 미나미",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1명의 적에게 최대 생명 56.9%/62.7%/60.4%/66.2%의 축복 속성 대미지를 주고, 모든 동료가 축복 효과 1중첩을 획득한다. 동시에 자신은 암리타 효과 1중첩을 획득한다.",
+        "name": "은방울꽃 계시",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 123111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "즉시 지정 아군 유닛과 현재 생명이 가장 적은 괴도 1명의 생명을 미야시타 미나미의 최대 생명 17.4%/17.4%/18.5%/18.5%+1488/1809/1829/2151만큼 회복시키고, 디버프 상태 2종을 정화한다. 동시에 치료를 받은 괴도는 축복 효과를 1중첩 획득하며, 해당 괴도의 턴 시작 시 미야시타 미나미 최대 생명 13.9%/13.9%/14.8%/14.8%+1190/1447/1463/1720만큼의 생명을 회복시킨다. 효과는 2턴 동안 지속된다.\n자신이 암리타 효과를 1중첩 획득한다.",
+        "name": "치유의 축복",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 123112,
+        "tags": [
+          "액티브",
+          "정화"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "모든 암리타 중첩수를 소모해 지정한 아군 유닛의 생명을 미야시타 미나미의 최대 생명 15.8%/15.8%/16.8%/16.8%+1347/1638/1656/1947만큼 회복시키고, 같은 치료 효과로 현재 생명이 가장 적은 괴도를 2회 치료한다. 암리타 효과를 1중첩 소모할 때마다 1회 추가 치료한다. 동시에 암리타 효과를 1중첩 소모할 때마다 자신을 제외한 기타 괴도는 야마시타 미나미의 최대 생명 7.5%(최대 1057/1057/1226/1226포인트)만큼의 최대 생명 증가 효과를 1중첩 획득하며 2턴 동안 지속된다.",
+        "name": "봄의 은혜",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 123113,
+        "tags": [
+          "액티브",
+          "광역치료"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "치료를 받은 유닛은 자신의 축복 효과 중첩수에 따라 1턴 동안 대미지 증가를 획득하며, 증가값은 (15.0%+3.0%*축복 효과 중첩수, 최대 30.0%)이다.",
+        "name": "축복",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "전투 시작 시 미나미의 최대 생명의 10.0%에 따라 모든 괴도의 최대 생명이 증가한다(최대 1500포인트).",
+        "name": "자비심",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "HP": 13630.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "910.0 / 926.0 / 942.8 / 958.8 / 975.6 / 991.6 / 1008.4",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "673.35 / 685.35 / 697.35 / 709.35 / 722.15 / 734.15 / 746.15",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4140.03 / 4214.43 / 4288.83 / 4363.23 / 4438.43 / 4512.83 / 4587.23",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "加纳骏受到敌方攻击的概率提高，受到攻击后会获得『荒野救星』。\n加纳骏的回合结束时，会消耗『荒野救星』并恢复自身已损生命值的30%。",
+        "name": "勇敢者的游戏",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "加纳骏处于『荒野救星』状态时，受到伤害降低8%。",
+        "name": "下战书",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『冰山撼动』、『先锋突击』的技能等级提升2级，至多提升至15级。",
+        "name": "危险对峙",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "加纳骏的生命值低于50%时，受到的治疗效果提升25%。",
+        "name": "热血的硝烟",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『零度治愈』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "一决胜负",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使所有同伴受到伤害降低16%，效果持续2回合。",
+        "name": "暴力处决",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "加纳骏处于『荒野救星』状态下攻击敌人时，会额外附带基于加纳骏最大生命值10%的伤害并恢复等量生命值。",
+        "name": "胜利者荣光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on HPcur/HP)",
+      "cooldown": 4,
+      "desc": "使所有同伴的最大生命值提升，数值相当于加纳骏最大生命值的10.3%（最多计入14100/14100/15600/15600点最大生命值）。恢复所有同伴生命值，数值相当于加纳骏最大生命值的10.1%/11.1%/10.5%/11.5%。同时对1名敌人造成75.3%/83.1%/78.4%/86.2%最大生命值的冰冻属性伤害。",
+      "name": "HIGHLIGHT",
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 106152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "HP": "0.2",
+      "Unknown Attr": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "加纳骏",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "desc": "对1名敌人造成55.6%/61.3%/57.9%/63.6%最大生命值的冰冻属性伤害，并有70%的基础概率使敌人陷入冻结状态。",
+        "name": "冰山撼动",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 106111,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "desc": "对1名敌人造成56.9%/62.7%/59.2%/65.1%最大生命值的物理属性伤害，并使目标敌人的防御力降低30.0%/30.0%/31.2%/31.2%，效果持续2回合。处于『荒野救星』状态下时，防御力降低值提升至59.9%/59.9%/62.4%/62.4%。",
+        "name": "先锋突击",
+        "nature": "Phys",
+        "skill_lv": "10/10/12/12",
+        "sn": 106112,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "使所有同伴的最大生命值提升，数值相当于加纳骏最大生命值的15%（最多计入14100/14100/15600/15600点最大生命值），同时自身受到攻击的概率大幅提升，效果持续2回合。恢复所有同伴生命值，数值相当于加纳骏最大生命值的16.5%/18.2%/17.2%/18.9%。\n冷却时间：1回合。",
+        "name": "零度治愈",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 106113,
+        "tags": [
+          "主动",
+          "生存"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "枪械子弹数量提升18，并且枪械射击每发子弹有10.0%固定概率附带自身9%最大生命值伤害且使敌人防御降低35%，效果持续3回合。枪械伤害对同一目标有衰减。",
+        "name": "狂野",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "释放『零度治愈』技能后每次受到攻击，有30.0%固定概率触发『荒野救星』的恢复效果，效果持续2回合。",
+        "name": "勇谋",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Defense": 1010.0,
+      "HP": 15300.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "637.67 / 644.87 / 652.07 / 660.07 / 667.27 / 674.47 / 681.67",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "435.41 / 440.21 / 445.81 / 450.61 / 455.41 / 460.21 / 465.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3262.27 / 3299.87 / 3337.47 / 3375.07 / 3412.67 / 3450.27 / 3487.87",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

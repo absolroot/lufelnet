@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身拥有『热烈欢迎』或『穷追猛打』时，解锁『GOGO汪汪噜！』。使用『GOGO汪汪噜！』后，有60%基础概率使目标受治疗量降低30%/40%/50%，防御降低6%/12%/18%（达到1、50、70级时变化），持续2回合。",
+        "name": "每个拥抱与温暖",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用『GOGO汪汪噜！』时，触发『热烈欢迎』状态下的效果时，敌人受到的火属性伤害额外提升36%，持续2回合。触发『穷追猛打』状态下的效果时，敌人受到的追击伤害额外提升40%，持续2回合。",
+        "name": "柔软的安全感",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "拥有道玄坂琉七负面效果的目标，受到暴击效果提升36%，受治疗量降低20%。",
+        "name": "懂得所有的心事",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『GOGO汪汪噜！』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "默默支持的勇气",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：给予敌人的『大坏蛋』提升至4层。",
+        "name": "不会背弃的信任",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『炽热握手礼』、『对破坏者的威吓』的技能等级提升3级，至多提升至15级。",
+        "name": "阳光与快乐的源泉",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗开始时，获得『热烈欢迎』和『穷追猛打』；『炽热握手礼』、『对破坏者的威吓』、『GOGO汪汪噜！』的异常效果持续时间延长1回合。当自身同时拥有『热烈欢迎』和『穷追猛打』时，『GOGO汪汪噜！』会使全体敌人受到火焰属性伤害提升18%，使主目标追加效果伤害提升25%，并同时触发『热烈欢迎』和『穷追猛打』的效果（『热烈欢迎』和『穷追猛打』的伤害提高效果不可叠加，同时触发时取效果最高值生效。）",
+        "name": "永远陪在我身边",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "对所有敌人造成214.7%/236.7%/227.9%/249.9%攻击力的火焰属性伤害，使敌方阵营获得2层『大坏蛋』：敌方阵营任意目标受到追击技能或火属性技能时消耗1层，使伤害提升（数值相当于自身效果命中的22.9%，上限39.0%/43.0%/41.4%/45.4%），持续2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Fire",
+      "skill_lv": "10/10/13/13",
+      "sn": 134152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "道玄坂琉七",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对所有敌人造成73.2%/80.7%/77.7%/85.2%攻击力的火焰属性伤害，使目标防御降低（数值相当于自身效果命中的15.4%，上限26.4%/29.1%/28.0%/30.7%），受到火属性技能时防御额外降低26.4%/26.4%/28.0%/28.0%，持续2回合，并有50%基础概率为目标附加燃烧状态。自身获得『热烈欢迎』。（防御降低效果和『对破坏者的威吓』无法叠加。）",
+        "name": "炽热握手礼",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 134111,
+        "tags": [
+          "主动",
+          "减益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成170.8%/188.3%/181.3%/198.8%攻击力的火焰属性伤害，使目标防御降低14.6%/14.6%/15.5%/15.5%+（数值相当于自身效果命中的31.4%，上限53.7%/59.2%/57.0%/62.5%），持续2回合。自身获得『穷追猛打』。（防御降低效果和『炽热握手礼』无法叠加。）",
+        "name": "对破坏者的威吓",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 134112,
+        "tags": [
+          "主动",
+          "减益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "开启条件：自身拥有『热烈欢迎』或『穷追猛打』\n根据自身拥有的『热烈欢迎』或『穷追猛打』时，该技能会分别产生不同的效果，同时只能触发一种效果。\n『热烈欢迎』： 对所有敌人造成109.8%/109.8%/116.6%/116.6%攻击力的火焰属性伤害，使目标受到伤害提升（数值相当于自身效果命中的24%，上限41.0%/45.2%/43.5%/47.7%），受到火属性伤害提升20.5%/22.6%/21.8%/23.9%，持续2回合。\n『穷追猛打』： 对1名敌人造成219.6%/219.6%/233.1%/233.1%攻击力的火焰属性伤害，使目标受到伤害提升（数值相当于自身效果命中的34.3%，上限58.6%/64.6%/62.2%/68.2%），受到追加效果伤害增加29.3%/32.3%/31.1%/34.1%，持续2回合。",
+        "name": "GOGO汪汪噜！",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 134116,
+        "tags": [
+          "主动",
+          "减益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗中，自身获得等同于自身效果命中60.0%的攻击力加成。",
+        "name": "忠诚",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用技能为敌人添加负面效果后，自身攻击力提升33.0%。同伴造成火焰属性伤害或追加效果伤害时候获得相同的攻击力提升效果，持续1回合。",
+        "name": "热情",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 134132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3730.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1060.03 / 1079.23 / 1098.43 / 1117.63 / 1136.03 / 1155.23 / 1174.43",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "653.36 / 665.36 / 676.56 / 688.56 / 700.56 / 712.56 / 723.76",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3239.99 / 3298.39 / 3356.79 / 3415.19 / 3473.59 / 3531.99 / 3589.59",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

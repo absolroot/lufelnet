@@ -1,0 +1,263 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Grant 1 Power of Friendship stack to allies when their HP falls 75% or less. This can stack up to 2 times.\nWhen allies have Power of Friendship, increase Attack by 6% of Kamiyama's Attack (up to 120/180/240, increasing at Lv. 1/50/70) for 1 turn.",
+        "name": "Hyper Hero Time!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase allies' Defense by 10% when they have Power of Friendship.",
+        "name": "Intense Link",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "After using skills on allies, increase own Attack by 25%.",
+        "name": "Undying Justice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Atomic Smash and Justice Barrier by 2.",
+        "name": "Serious Action",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Highlight Enhanced: Increase target's critical damage by 25% for 2 turns.",
+        "name": "Hero's Journey Home",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Ultima Booster and Thief Tactics by 2.",
+        "name": "Self-Discipline",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When using a skill on an ally with HP below 60%, increase critical damage by 25% for 1 turn.",
+        "name": "Turning the Tables",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on GJ)",
+      "cooldown": 4,
+      "desc": "Grant the maximum number of Power of Friendship stacks to 1 ally (other than Kamiyama) for 2 turns. If the target's remaining HP is below 60%, restore their HP up to 60% (healing is limited to 200% of Kamiyama's Attack). Increase Attack by 15% of Kamiyama's Attack (up to 585.6/645.6/609.6/669.6) for 2 turns.",
+      "name": "Highlight",
+      "nature": null,
+      "skill_lv": "10/10/12/12",
+      "sn": 107152,
+      "tags": [
+        null
+      ],
+      "target": "Ally excluding myself",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "Leo Kamiyama",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Deal Nuclear damage to 1 foe equal to 170.8%/188.3%/177.8%/195.3% of Attack. For each stack of Power of Friendship the party has, increase damage by 10%.",
+        "name": "Atomic Smash",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 107111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 0,
+        "desc": "Spend 30% of 1 other ally's remaining HP to grant them a shield equal to 80% of HP spent + 31.6%/31.6%/32.9%/32.9% of Kamiyama's Attack + 900/1095/1035/1230 for 2 turns.\nAlso grant 1 Power of Friendship stack.",
+        "name": "Justice Barrier",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 107112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 0,
+        "desc": "Increase 1 ally's Attack by 19.5%/19.5%/20.3%/20.3% for 2 turns (other than Kamiyama).\nFor each stack of Power of Friendship the target has, increase Attack by 20% of Kamiyama's Attack more (up to 1516.7/1672.1/1578.9/1734.3).",
+        "name": "Ultima Booster",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 107113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When Justice Barrier ends, restore HP equal to 100.0% of remaining shield.",
+        "name": "Energy Recharge",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase allies' critical damage by 45.0% when they have 2 Power of Friendship stacks.",
+        "name": "Full Power: Start!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4520.0,
+      "Speed": 105.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "780.03 / 788.83 / 797.63 / 807.23 / 816.03 / 824.83 / 833.63",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "490.0 / 495.6 / 501.2 / 506.8 / 512.4 / 518.0 / 523.6",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2609.99 / 2640.39 / 2669.99 / 2700.39 / 2730.79 / 2760.39 / 2790.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

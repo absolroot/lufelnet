@@ -1,0 +1,268 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "进入战斗，『终曲：音域全开』有1回合冷却时间。每次使用『终曲：音域全开』，永久使得自身攻击力提升20%，最多可叠加2层，此后『终曲：音域全开』永久增加1回合冷却时间，最多不会超过3回合。",
+        "name": "♪我的光芒♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗开始选择一个同伴成为『忠实听众』，优先选择反抗、支配职业攻击力最高的同伴，并且『忠实听众』获得额外效果：暴击率提升15%。",
+        "name": "♪迎接黎明♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『激情鸣奏』，『终曲：音域全开』的技能等级提升3级，至多提升至15级。",
+        "name": "♪夜幕微光♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用『终曲：音域全开』触发同伴HIGHLIGHT技能时，该同伴伤害立刻提升30%，持续2回合。",
+        "name": "♪启明之星♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『即兴独奏』，『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "♪梦想轮廓♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：伤害加成持续时间提升至6个怪盗行动，HIGHLIGHT能量回复效果上限提升至60%，并且使其他怪盗的HIGHLIGHT冷却时间减少1回合。",
+        "name": "♪改变自己♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "进入战斗立刻解锁『终曲：音域全开』。『终曲：音域全开』的冷却时间固定为1回合，冷却时间不再增加。每次使用『终曲：音域全开』后，使所有怪盗伤害提升20%，最多可叠加2层。",
+        "name": "♪我的天命先生♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "desc": "所有同伴获得45.5%/50.1%/48.3%/52.9%伤害加成，持续4个怪盗行动。期间我方怪盗行动后回复10%HIGHLIGHT能量，最多回复40%。",
+      "name": "HIGHLIGHT",
+      "nature": "Support",
+      "skill_lv": "10/10/13/13",
+      "sn": 132152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "坂井绫香",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对所有敌人造成85.4%/94.2%/90.6%/99.4%攻击力的电击属性伤害，有80%的基础概率使主目标陷入触电状态。若存在『忠实听众』，则『忠实听众』对技能主目标额外造成1次基于『忠实听众』83.3%/91.8%/88.4%/96.9%攻击力的电击属性附加伤害。",
+        "name": "激情鸣奏",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 132111,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "选择1名同伴成为『忠实听众』，『忠实听众』的攻击力提升相当于坂井绫香攻击力的24%，上限1220/1345/1295/1420，持续3回合。同时只能拥有1个『忠实听众』。",
+        "name": "即兴独奏",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 132112,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "选择1名同伴，立刻释放其HIGHLIGHT技能，同时提升78.1%/86.1%/82.9%/90.9%本次HIGHLIGHT的伤害。通过该技能使用的HIGHLIGHT不会计入角色的HIGHLIGHT冷却时间。若目标为S.E.E.S.成员，则改为使其下一次神通法获得19.5%/19.5%/20.7%/20.7%最终伤害增幅。",
+        "name": "终曲：音域全开",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 132113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "友方怪盗使用HIGHLIGHT/神通法时，立刻提升其24.0%攻击力，持续1回合；如果此人是忠实听众则效果提升为1.5倍。",
+        "name": "重音",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "友方怪盗使用HIGHLIGHT/神通法后，坂井绫香立刻对生命值百分比最低的同伴恢复相当于坂井15.0%攻击力+1350的生命值。",
+        "name": "扫弦",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 4850.0,
+      "Defense": 980.0,
+      "HP": 6310.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1080.02 / 1099.22 / 1119.22 / 1138.42 / 1157.62 / 1177.62 / 1196.82",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "586.65 / 597.05 / 607.45 / 618.65 / 629.05 / 639.45 / 649.85",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

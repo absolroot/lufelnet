@@ -1,0 +1,268 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "同伴行動時，自身獲得『冰晶』1顆，最多可獲得12顆『冰晶』。當『冰晶』數量為10時，自身使用技能後消耗10顆『冰晶』，對目標敵人造成1次65%攻擊力的冰凍屬性追加效果，本次攻擊必定暴擊。使用『冰之綻放』、『凜冬撕裂』後觸發追加效果時，自身額外獲得1層『寒霜印記』，『寒霜印記』可用來提升『寒冰之刃』造成的傷害。",
+        "name": "刀尖上的舞者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "回合結束時，獲得15%攻擊力的護盾，效果持續1回合。",
+        "name": "行雲流水",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『冰之綻放』、『凜冬撕裂』的技能等級提升2級，至多提升至15級。",
+        "name": "勾手一躍",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "追加效果根據受攻擊目標已損失生命值增加技能傷害，最高增加50%的技能傷害。",
+        "name": "空中螺旋",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『寒冰之刃』、『戰鬥技巧』的技能等級提升2級，至多提升至15級。",
+        "name": "熱烈舞動",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：HIGHLIGHT技能的傷害提升效果最高提升至60%。",
+        "name": "花樣接續步",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時，獲得『冰晶』4顆，『冰晶』最大數量提升至15。",
+        "name": "時空定格",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "對1名敵人造成292.8%/322.8%/304.8%/334.8%攻擊力的冰凍屬性傷害。敵人的生命值越低，所受到的傷害越高，當敵人的生命值低於20%時，最高可獲得30%的傷害加成。",
+      "name": "HIGHLIGHT",
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 121152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "琴音·蒙塔涅",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成87.1%/96.0%/90.6%/99.5%攻擊力的冰凍屬性傷害，有29.3%/29.3%/30.5%/30.5%基礎機率使敵人陷入凍結狀態。",
+        "name": "冰之綻放",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121111,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對1名敵人造成160.4%/176.8%/166.9%/183.4%攻擊力的冰凍屬性傷害，並獲得『冰晶』4顆。",
+        "name": "凜冬撕裂",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121112,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對1名敵人造成179.7%/198.1%/187.0%/205.5%攻擊力的冰凍屬性傷害，如果此時『冰晶』數量為10或自身擁有『寒霜印記』則該技能獲得額外傷害提升。敵人生命值越低，則傷害提升越高，最多提升29.3%/29.3%/30.5%/30.5%。\n被動：『刀尖上的舞者』獲得額外傷害提升。敵人生命值越低，則傷害提升越高，最多提升29.3%/29.3%/30.5%/30.5%。",
+        "name": "寒冰之刃",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121113,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『刀尖上的舞者』發動時，有100.0%基礎機率使敵人陷入凍結狀態。",
+        "name": "忘我",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "擊敗敵人時，獲得『冰晶』4顆。",
+        "name": "無境",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2620.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "862.28 / 871.88 / 882.28 / 891.88 / 902.28 / 911.88 / 922.28",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "465.43 / 471.03 / 475.83 / 481.43 / 487.03 / 492.63 / 497.43",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2452.29 / 2480.29 / 2509.09 / 2537.09 / 2565.09 / 2593.89 / 2621.89",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

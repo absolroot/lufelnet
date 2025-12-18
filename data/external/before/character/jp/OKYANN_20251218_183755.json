@@ -1,0 +1,250 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身がスキルを使用した時、『ビートＢＯＸ』を獲得する。『ビートＢＯＸ』が４つ以上になった時、それを４つ消費し、意識奏功の効果により、味方全体に『パーリィナイト』を１つ付与する。『パーリィナイト』を獲得した味方は２ターンの間、富山のレベル（レベル１／５０／７０以上の時）に応じて、攻撃力が１０%／１５%／２０%、防御力が１０%／１５%／２０%、状態異常命中が５%／７．５%／１０%上昇する。さらに、『パーリィナイト』は３つまで累積し、その累積数に応じてそれぞれの効果が上昇する。",
+        "name": "フィーバータイム",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戦闘開始時、『ビートＢＯＸ』を２つ獲得し、１ターンの間、味方全体の状態異常命中を３５%上昇させる。",
+        "name": "笑顔でキメッ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『パーリィナイト』を付与した時、２０%の確率で『ビートＢＯＸ』を１つ獲得する。",
+        "name": "ミラーボール",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『クラブ・オキャン』『インターミッション』のスキルレベルが２上昇する。",
+        "name": "デコってアピール",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方がハイライトを使用した時、６７%の確率で『ビートＢＯＸ』を１つ獲得する。",
+        "name": "♪ to be the queen of the stage ♪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『レトロダンスナンバー』のスキルレベルが２上昇する。",
+        "name": "盛り上がってるぅ？",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『パーリィナイト』が発動した時、２５%の確率でアンコールが発生し、『パーリィナイト』を１つ付与する。\n※アンコールは連続で発動しない。",
+        "name": "Ｈｅｙ　ＤＪ！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "富山 佳代",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "１ターンの間、味方全体の攻撃力を富山の攻撃力１２%分（最大で攻撃力4500/4950/5400/5850分まで）、状態異常命中を35.0%/38.5%/37.8%/41.3%上昇させ、『ビートＢＯＸ』を１つ獲得する。\nクールタイム：味方の行動４回",
+        "name": "クラブ・オキャン",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108111,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方全体のＳＰを22/27/26/31回復し、『ビートＢＯＸ』を３つ獲得する。\nクールタイム：味方の行動８回",
+        "name": "インターミッション",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108112,
+        "tags": [
+          "補助"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "３ターンの間、味方全体の与ダメージを10.0%/11.0%/10.8%/11.8%上昇させる。さらに、与ダメージ上昇効果は、富山の攻撃力２２５ごとに１%ずつ（最大で攻撃力4500/4950/5400/5850分まで）得られる。\nまた、属性異常の敵に攻撃する時、この与ダメージ上昇効果が１．５倍になり、『ビートＢＯＸ』を２つ獲得する。\nクールタイム：味方の行動８回",
+        "name": "レトロダンスナンバー",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『ビートＢＯＸ』を4つ獲得するごとに、残りのＨＰが一番多い敵単体をランダムな属性異常にする。",
+        "name": "ダンサブル",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方が敵を属性異常にした時、２ターンの間、その味方の与ダメージ上昇効果が15%上昇する。さらに、21%の確率で『ビートＢＯＸ』を１つ獲得する。",
+        "name": "これってもう死語？",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2740.0,
+      "Defense": 1900.0,
+      "HP": 7980.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "479.97 / 485.57 / 491.17 / 496.77 / 502.37 / 507.97 / 513.57",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

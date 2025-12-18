@@ -1,0 +1,263 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戦闘開始時、自身が『青葉』を４つ獲得し、最大５つまで累積する。２ターンごとに、『青葉』を１つ獲得する。",
+        "name": "新たな自分探し",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身が『青葉』を消費した時、残りＨＰの割合が一番低い味方のＨＰを朋子の攻撃力１５%分回復する。",
+        "name": "ナイスカバー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『新たな自分探し』の効果で、１ターンごとに『青葉』を１つ獲得できるようになる。",
+        "name": "シフト変更",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『サイケメロディ』『君への応援ソング』のスキルレベルが２上昇する。",
+        "name": "ファイト一発",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "ハイライト能力追加：対象の次の被ダメージが２４%上昇する。",
+        "name": "子守唄を歌って",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『精霊のララバイ』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "日替わりチャレンジ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『応歌』状態の味方の与ダメージが２０%、状態異常命中が１５%上昇する。",
+        "name": "祝いの音色",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "敵単体を１ターンの間、睡眠状態にし、対象の次の被ダメージが32.8%/36.2%/34.1%/37.5%上昇する。",
+      "name": "ハイライト",
+      "nature": null,
+      "skill_lv": "10/10/12/12",
+      "sn": 110152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "野毛 朋子",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵全体に攻撃力91.5%/100.9%/95.3%/104.7%の念動属性ダメージを与え、自身が『青葉』を２つ獲得する。",
+        "name": "サイケメロディ",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/12/12",
+        "sn": 110111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『青葉』を２つ消費して自身以外の味方単体を２ターンの間、『応歌』状態にする。\n『応歌』状態：攻撃力が３０%上昇し、追加で朋子の攻撃力３０%分（最大1171/1291/1219/1339まで）上昇する。さらに状態異常命中が１５%上昇する。",
+        "name": "君への応援ソング",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 110112,
+        "tags": [
+          "強化"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『青葉』を２つ消費して、敵単体を78.1%/86.1%/81.3%/89.3%の確率で１ターンの間、睡眠状態にする。敵を睡眠状態にした時、１ターンの間、次の攻撃の被ダメージが29.3%/32.3%/30.5%/33.5%上昇する。睡眠状態にならなかった時は、１ターンの間、次の被ダメージが14.6%/16.1%/15.2%/16.7%上昇する。",
+        "name": "精霊のララバイ",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 110113,
+        "tags": [
+          "制御"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方にスキルを使用した時、２ターンの間、対象の与ダメージが6.0%上昇する。",
+        "name": "助け合い精神",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "味方全体が行動異常の敵への与ダメージが36.0%上昇する。",
+        "name": "泣きっ面にハチ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Attack": 4460.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "750.01 / 758.81 / 767.61 / 775.61 / 784.41 / 793.21 / 802.01",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "485.42 / 491.02 / 496.62 / 502.22 / 507.82 / 513.42 / 519.02",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2677.7 / 2708.9 / 2739.3 / 2770.5 / 2800.9 / 2832.1 / 2863.3",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,268 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "受到技能傷害時，有65%固定機率進行反擊，對敵人造成88%防禦力的冰凍屬性傷害的追加效果。透過技能可以將該效果強化為『墨見龍吟』。",
+        "name": "遊龍展布",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每使用2次『銀華殘心』額外獲得一次『墨見龍吟』的機會，這次額外的反擊造成70%傷害。",
+        "name": "流線勾刻",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『銀華殘心』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "色盤調諧",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身生命值不低於70%時，追加效果造成傷害提升35%。",
+        "name": "彩墨潑灑",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『寒氣破擊』、『擬霜流連斬』的技能等級提升3級，至多提升至15級。",
+        "name": "光影交界",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使用技能後，反擊攻擊時傷害提升30%，3回合。",
+        "name": "識一見著",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『遊龍展布』、『墨見龍吟』效果進化為『癡絕·遊龍展布』、『癡絕·墨見龍吟』——\n對敵人造成的反擊攻擊提升為連續的2次傷害，每次傷害為原本的90%，且反擊時獲得30%穿透。",
+        "name": "筆落如生",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "對全體敵人造成178.1%/196.4%/189.1%/207.3%防禦力的冰凍屬性傷害，並使遊龍展布觸發機率提升35%，持續3回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Ice",
+      "skill_lv": "10/10/13/13",
+      "sn": 116152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "喜多川祐介",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成72.1%/79.5%/76.6%/84.0%防禦力的冰凍屬性傷害，有100%基礎機率使主目標敵人陷入凍結狀態，效果持續2回合。",
+        "name": "寒氣破擊",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 116111,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對隨機敵人造成5次92.9%/102.4%/98.6%/108.1%防禦力的冰凍屬性傷害，優先攻擊未受到該技能攻擊的敵人。若自身處於護盾狀態，則額外造成30%技能傷害。多次傷害命中同一目標傷害衰減60%，最低造成20%的傷害。",
+        "name": "擬霜流連斬",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 116112,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "desc": "接下來1次『遊龍展布』攻擊強化為『墨見龍吟』。攻擊觸發機率提升至100%、技能倍率提升相當於祐介78.1%/86.1%/82.9%/90.9%的防禦力並且以群體為目標攻擊。若1回合內未觸發『墨見龍吟』強化反擊，則自動觸發。\n此外自身獲得19.5%/19.5%/20.7%/20.7%防禦力+555/555/683/683的護盾，效果持續2回合。將自身弱點暫時變為默認耐性、免疫任何精神異常並使所有敵人獲得嘲諷狀態，效果持續2回合。\n冷卻時間：1回合。",
+        "name": "銀華殘心",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 116113,
+        "tags": [
+          "主動",
+          "強化反擊"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "獲得護盾時傷害提升7.5%，持續2回合，可疊6層。",
+        "name": "創造",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用技能提供護盾時，增加自身的穿透20.0%，持續1回合。",
+        "name": "雕琢",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43,
+      "Defense": 2320.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "820.01 / 834.41 / 849.61 / 864.01 / 879.21 / 893.61 / 908.81",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "800.02 / 814.42 / 828.82 / 843.22 / 857.62 / 872.02 / 886.42",
+      "Defense Increase": "43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3720.03 / 3787.23 / 3853.63 / 3920.83 / 3988.03 / 4055.23 / 4121.63",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

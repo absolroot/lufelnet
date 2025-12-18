@@ -699,8 +699,13 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/character-detail/ritual0.png`,
             skillName: "총격",
-            options: [],
-            value: 40.0,
+            options: ["1중첩","2중첩"],
+            values: {
+                "1중첩": 40.0,
+                "2중첩": 80.0
+            },
+            defaultOption: "2중첩",
+            value: 80.0,
             duration: "-",
             note: "생명 20000 기준",
             note_en: "20000 Max HP",

@@ -108,27 +108,7 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [
-      [
-        {
-          "attr": "Final Damage Mult.",
-          "nature": "Electric",
-          "value": "0.02"
-        }
-      ],
-      [
-        {
-          "attr": "Electric Boost",
-          "nature": "Electric",
-          "value": "0.08"
-        },
-        {
-          "attr": "Electric Damage Taken",
-          "nature": "Electric",
-          "value": "-0.1"
-        }
-      ]
-    ],
+    "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on Unknown)",
@@ -148,38 +128,7 @@
       "Attack": "0.2",
       "Crit Mult.": "0.24"
     },
-    "innate_awake_skill": [
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "desc": "YUI發動追擊的固定機率提升45.0%，觸發追擊時，暴擊效果提升15.0%。\n『超稀有獎勵』提供的強化追擊次數提升為3次。",
-        "name": "追光",
-        "nature": null,
-        "skill_lv": "2",
-        "sn": 111171,
-        "tags": [
-          "潛能"
-        ],
-        "target": "Myself",
-        "target_count": 1
-      },
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "desc": "自身追加效果增幅提升自身意識等級*3%。YUI在場時，所有其他同伴獲得該效果的25%增益。強化追擊的技能傷害額外提升1.0%+自身意識等級*6%。",
-        "name": "驚喜",
-        "nature": null,
-        "skill_lv": "1",
-        "sn": 111172,
-        "tags": [
-          "潛能"
-        ],
-        "target": "Myself",
-        "target_count": 1
-      }
-    ],
+    "innate_awake_skill": [],
     "name": "YUI",
     "normal_skill": [
       {

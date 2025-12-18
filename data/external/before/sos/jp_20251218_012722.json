@@ -10,11 +10,11 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire",
-                "Wind"
+                "Gun",
+                "Electric"
               ],
               "Weak": [
-                "Psychokinesis"
+                "Wind"
               ]
             },
             "level": "89",
@@ -76,13 +76,13 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Psychokinesis",
                 "Nuclear",
-                "Bless",
-                "Curse"
+                "Bless"
               ],
               "Weak": [
-                "Phys",
-                "Psychokinesis"
+                null,
+                "Wind"
               ]
             },
             "level": "89",

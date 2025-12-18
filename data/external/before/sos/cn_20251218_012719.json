@@ -2,7 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Psychokinesis attack Score x 3",
+        "bonusRule": null,
         "enemy": [
           {
             "adapt": {
@@ -11,23 +11,25 @@
               "Reflect": [],
               "Resistant": [
                 "Fire",
-                "Wind"
+                "Ice",
+                "Bless"
               ],
               "Weak": [
-                "Psychokinesis"
+                "Gun",
+                "Nuclear"
               ]
             },
             "level": "89",
-            "name": "ケツアルカトル",
-            "skill": "406,403",
-            "sn": "515101",
+            "name": "被操控的切尔诺伯格",
+            "skill": "1016,1026",
+            "sn": 540101,
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
-              "Ailment Resist.": 0.327,
+              "Ailment Resist.": 0.436,
               "Almighty Boost": 0,
               "Almighty Damage Taken": 0,
-              "Attack": 2415.9878,
+              "Attack": 3428.0918,
               "Bless Boost": 0,
               "Bless Damage Taken": 0,
               "Crit Mult.": 1.3,
@@ -36,8 +38,8 @@
               "Curse Damage Taken": 0,
               "Damage Mult.": 1.088,
               "Damage Taken": 0,
-              "Defense": 567.249,
-              "Down Points": 0,
+              "Defense": 697.701,
+              "Down Points": 4.0,
               "Electric Boost": 0,
               "Electric Damage Taken": 0,
               "Final Damage Mult.": 0,
@@ -45,7 +47,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1538796.168,
+              "HP": 1845674.208,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -58,17 +60,17 @@
               "SP": 100.0,
               "SP Recovery": 0,
               "Shield Effect": 0,
-              "Speed": 85.0,
+              "Speed": 90.0,
               "Wind Boost": 0,
               "Wind Damage Taken": 0
             }
           }
         ],
         "scoreRatio": 1.0,
-        "sn": "178401"
+        "sn": 78401
       },
       {
-        "bonusRule": "All ally Phys attack Score x 3",
+        "bonusRule": null,
         "enemy": [
           {
             "adapt": {
@@ -76,26 +78,25 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Nuclear",
-                "Bless",
-                "Curse"
+                "Ice",
+                "Wind",
+                "Nuclear"
               ],
               "Weak": [
-                "Phys",
                 "Psychokinesis"
               ]
             },
             "level": "89",
-            "name": "ティターニア",
-            "skill": "307,607",
-            "sn": "515111",
+            "name": "被操控的黄龙",
+            "skill": "504,507",
+            "sn": 540111,
             "stat": {
               "Accuracy": 1.0,
               "Ailment Acc.": 0.445,
               "Ailment Resist.": 0.545,
               "Almighty Boost": 0,
               "Almighty Damage Taken": 0,
-              "Attack": 5223.7578,
+              "Attack": 4897.2729,
               "Bless Boost": 0,
               "Bless Damage Taken": 0,
               "Crit Mult.": 1.3,
@@ -105,7 +106,7 @@
               "Damage Mult.": 1.088,
               "Damage Taken": 0,
               "Defense": 855.113,
-              "Down Points": 0,
+              "Down Points": 6.0,
               "Electric Boost": 0,
               "Electric Damage Taken": 0,
               "Final Damage Mult.": 0,
@@ -133,12 +134,12 @@
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "178402"
+        "sn": 78402
       }
     ],
-    "buff": "位相干渉: 味方が弱点ダメージを与えた時、自身は『チャージフィールド』を４つ獲得する。",
-    "endTime": "2025-12-25 07:30:00",
-    "startTime": "2025-12-06 11:30:00"
+    "buff": "岩心脉动: 使用枪械技能或追加效果造成伤害后，为目标添加1层『震频激荡』。『震频激荡』：受到的最终伤害提升20%，持续2回合，最多可叠加2层。",
+    "endTime": "2025-12-25 06:30:00",
+    "startTime": "2025-12-11 07:30:00"
   },
   "msg": "OK",
   "status": 0

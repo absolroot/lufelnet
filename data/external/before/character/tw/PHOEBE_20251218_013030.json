@@ -108,59 +108,13 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [
-      [
-        {
-          "attr": "Attack",
-          "nature": "Support",
-          "value": "0.1"
-        }
-      ],
-      [
-        {
-          "attr": "Crit Mult.",
-          "nature": "Support",
-          "value": "0.12"
-        }
-      ]
-    ],
+    "final_innate": [],
     "highlight_skill": null,
     "innate": {
       "Attack": "0.2",
       "HP": "0.2"
     },
-    "innate_awake_skill": [
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "desc": "戰鬥開始時，每有一名WONDER以外的同屬性角色，對應屬性的角色攻擊力提升52.5%。若同屬性角色達到3名/2名，對應屬性角色的穿透額外提升35.0%/14.0%。\n椎名悠美獲得『雞尾酒』時，根據獲得的『雞尾酒』使我方全體獲得對應的增益效果，持續2回合，上限3層。\n『精調·DELUXE』：傷害提升17.5%。\n『精調』：傷害提升8.8%。\n『粗調』：傷害提升4.4%。",
-        "name": "兌和",
-        "nature": null,
-        "skill_lv": "6",
-        "sn": 131171,
-        "tags": [
-          "潛能"
-        ],
-        "target": "All Allies",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "desc": "消耗『精調·DELUXE』時的技能強度額外提升1.5%+自身意識等級*3%。",
-        "name": "發酵",
-        "nature": null,
-        "skill_lv": "1",
-        "sn": 131172,
-        "tags": [
-          "潛能"
-        ],
-        "target": "Elucidator",
-        "target_count": 1
-      }
-    ],
+    "innate_awake_skill": [],
     "name": "椎名悠美",
     "normal_skill": [
       {

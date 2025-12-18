@@ -1,0 +1,253 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "佐原海夕每为同伴添加一次护盾，该同伴会永久获得1层『海之守护』，每层提高1%受到的护盾效果，上限6层。\n同伴的『海之守护』达到不同层数时会获得额外效果（达到1、50、70级时变化）：\n达到2层：防御力提升8%/12%/16%。\n达到4层：攻击力提升8%/12%/16%。\n达到6层：防御力提升12%/18%/24%。",
+        "name": "幕后筹备",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗开始时，所有同伴获得1层『海之守护』。",
+        "name": "开演之时",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『无忧之歌』、『交汇之舞』的技能等级提升2级，至多提升至15级。",
+        "name": "提线之人",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴生命值首次低于30%时，佐原海夕会立刻为其添加一个相当于自身28%防御力+660的护盾，效果持续2回合，每场战斗限1次。",
+        "name": "打光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『黎明的泡沫』的技能等级提升2级，至多提升至15级。",
+        "name": "主演的从容",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴释放HIGHLIGHT/神通法后，佐原海夕为该同伴添加一个相当于佐原海夕16%防御力+480的护盾，效果持续2回合。",
+        "name": "追光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『海之守护』的最大层数提升至8层，达到8层时获得额外效果：造成伤害提高20%。",
+        "name": "永不谢幕",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Defense": "0.3",
+      "Shield Effect": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "佐原海夕",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：8次行动\n使所有同伴获得29.3%/29.3%/31.6%/31.6%防御力+1110/1330/1437/1657的护盾，效果持续2回合，并恢复4点精力值。护盾被击破时，使解明怪盗的准备时间减少1次行动。",
+        "name": "无忧之歌",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127111,
+        "tags": [
+          "主动",
+          "护盾"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on HPcur/HP)",
+        "cooldown": 0,
+        "desc": "准备时间：8次行动\n使1名同伴获得67.2%/67.2%/72.6%/72.6%防御力+2542/3042/3290/3790的护盾，并使其受到弱点伤害降低20%/20%/20%/20%，效果持续2回合。技能目标立刻获得2点倒地值与2层『海之守护』。",
+        "name": "交汇之舞",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127112,
+        "tags": [
+          "主动",
+          "护盾"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：12次行动\n使所有同伴获得相当于33.2%/33.2%/35.9%/35.9%防御力+1259/1509/1629/1879+目标『海之守护』层数*（6.9%/6.9%/7.5%/7.5%防御力+260/260/336/336）的护盾，持续3回合；『海之守护』层数≥4时，每层『海之守护』会使同伴造成伤害提高2.0%/2.0%/2.2%/2.2%，持续3回合；护盾持续时间结束或被击破后。同伴身上的增伤效果消失，并失去2层『海之守护』。",
+        "name": "黎明的泡沫",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "海夕提供的护盾量提升，相当于（场上总『海之守护』层数）*1.0%。",
+        "name": "牵绊",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每层『海之守护』获得额外效果，使同伴的防御力提升3.6%。",
+        "name": "憧憬",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2360.0,
+      "Defense": 2280.0,
+      "HP": 7980.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "727.73 / 735.73 / 744.53 / 752.53 / 761.33 / 769.33 / 778.13",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "540.01 / 546.41 / 552.81 / 558.41 / 564.81 / 571.21 / 577.61",
+      "Defense Increase": "32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴造成每次傷害時，激發須見俊也的靈感，獲得『詩句』。\n獲得任意14『詩句』後完成劇章，對當前受到攻擊的主目標造成一次65/98/130%（達到1、50、70級時變化）攻擊力的單體詛咒傷害追加效果。",
+        "name": "命運的十四行詩",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每次使用主動技能後，下一次『命運的十四行詩』的傷害提升40%。",
+        "name": "靈感迸發",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『哀痛悲劇』、『荒誕喜劇』的技能等級提升2級，至多提升至15級。",
+        "name": "狂熱",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『命運的十四行詩』有100%基礎機率為敵人添加詛咒異常狀態；\n技能傷害提升相當於自身50%的攻擊力。",
+        "name": "死亡的詠歎調",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『浪漫正劇』、『戰鬥技巧』的技能等級提升2級，至多提升至15級。",
+        "name": "迷幻",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：\n使接下來4次『命運的十四行詩』傷害提升。",
+        "name": "靈魂的讚美詩",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使用主動技能後，相應特殊『詩句』可以在下一回合額外觸發3次。\n當『命運的十四行詩』中有至少2種特殊『詩句』，本次『命運的十四行詩』傷害增加67%。",
+        "name": "以污穢救贖神明",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "對1名敵人造成3次96.8%/106.7%/100.8%/110.7%攻擊力的詛咒傷害，使得接下來2次『命運的十四行詩』額外造成50.6%/55.7%/52.6%/57.8%攻擊力的傷害。",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/12/12",
+      "sn": 118152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "須見俊也",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對1名敵人造成3次58.6%/64.6%/61.0%/67.0%攻擊力的詛咒傷害並且本次攻擊獲得3個『憎恨詩句』，\n接下來獲得『詩句』時25%的固定機率轉變為『憎恨詩句』，最多觸發2次\n每層『憎恨詩句』使得『命運的十四行詩』以30%的基礎機率附著詛咒效果。",
+        "name": "哀痛悲劇",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118111,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成2次35.7%/39.3%/37.1%/40.8%攻擊力的詛咒傷害並且本次攻擊獲得2個『療癒詩句』，\n接下來獲得『詩句』時25%的固定機率轉變為『療癒詩句』，最多觸發2次\n每層『療癒詩句』使得『命運的十四行詩』恢復生命值最低的同伴7.5%攻擊力的生命值。",
+        "name": "荒誕喜劇",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118112,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對1名敵人造成5次41.5%/45.7%/43.2%/47.4%攻擊力的詛咒傷害並且本次攻擊獲得5個『熱情詩句』，\n接下來獲得『詩句』時25%的固定機率轉變為『熱情詩句』，最多觸發2次\n每層『熱情詩句』使得『命運的十四行詩』附加7%攻擊力的萬能傷害。",
+        "name": "浪漫正劇",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118113,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『命運的十四行詩』對詛咒異常狀態下敵人傷害提升50.0%。",
+        "name": "喪鐘",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『命運的十四行詩』中每有一個特殊『詩句』，增加本次傷害10.0%。",
+        "name": "咒言",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2580.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "840.0 / 849.6 / 859.2 / 868.8 / 878.4 / 888.8 / 898.4",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "470.01 / 475.61 / 481.21 / 486.01 / 491.61 / 497.21 / 502.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2565.43 / 2595.03 / 2624.63 / 2654.23 / 2683.83 / 2713.43 / 2743.03",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

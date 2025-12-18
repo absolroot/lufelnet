@@ -1,0 +1,265 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每次使用与上回合不相同技能时获得一层『直觉』，可叠加3层。\n『直觉』：同伴使用技能攻击敌人时，若任意同伴血量低于70%则摩尔加纳造成追加效果，立刻恢复所有同伴10%攻击力+150/225/300（达到1、50、70级时变化）的生命值。",
+        "name": "灵敏嗅觉",
+        "nature": "Heal",
+        "skill_lv": "3",
+        "sn": 102140,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『直觉』效果对50%生命值以下的队友造成30%攻击力的额外治疗。",
+        "name": "精力旺盛",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『疗愈之术』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "尾尖轻摇",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『疗愈之术』对主要目标治疗量提升33%。",
+        "name": "请勿打扰",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『疾风强袭』、『吾辈之拳』的技能等级提升3级，至多提升至15级。",
+        "name": "敏捷反扑",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使同伴复活时，额外恢复其60.0%攻击力+800的生命值。",
+        "name": "猎物转移",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『吾辈之拳』的命中率不再降低，并且造成暴击后使敌人受到伤害提升15%，2回合。",
+        "name": "好奇宝宝",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "对1名敌人造成227.8%/251.1%/241.8%/265.1%攻击力的疾风属性伤害，并且使1名同伴以20%的最大生命值复活。",
+      "name": "HIGHLIGHT",
+      "nature": "Wind",
+      "skill_lv": "10/10/13/13",
+      "sn": 102152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "摩尔加纳",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成146.4%/161.4%/155.4%/170.4%攻击力的疾风属性伤害，有100%基础概率使敌人陷入风袭状态，效果持续2回合。成功添加风袭效果后，有固定概率获得『直觉』（获取的固定概率等同于当前的暴击率）。",
+        "name": "疾风强袭",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 102111,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使所有同伴恢复37.6%/37.6%/39.9%/39.9%攻击力+1069/1300/1315/1546的生命值，净化所有同伴的1个元素异常状态。若成功净化，则立刻获得一层『直觉』。",
+        "name": "疗愈之术",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 102113,
+        "tags": [
+          "主动",
+          "群疗"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成128.9%/142.1%/136.9%/150.1%攻击力的物理属性伤害，该技能命中率降低20%，暴击率提升30%。若该技能暴击，则立刻获得一层『直觉』。",
+        "name": "吾辈之拳",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 102112,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『直觉』的治疗效果可以暴击，获得额外暴击率30.0%。暴击使得『直觉』的恢复量额外提升24.0%攻击力+720。",
+        "name": "自信",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "光环：所有同伴的精力值消耗减少15.0%。",
+        "name": "羁绊",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 102132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3530.0,
+      "Crit Rate": 0.89,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "646.69 / 658.69 / 669.89 / 681.89 / 693.09 / 705.09 / 716.29",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

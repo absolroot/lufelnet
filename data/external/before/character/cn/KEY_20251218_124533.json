@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "释放技能时，黑谷清会获得1层『献祭者』状态。\n『献祭者』：使所有同伴造成的火焰属性伤害提升5%；释放技能时，会使黑谷清流失4%当前生命值，持续2回合，最多可叠加5层，每层『献祭者』状态的持续时间独立计算。",
+        "name": "献祭的决心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身回合开始时，每有1层『献祭者』，就有12%的固定概率，使随机1名敌人陷入燃烧状态。",
+        "name": "层层恐惧",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『爆炎』、『火焰净化』的技能等级提升2级，至多提升至15级。",
+        "name": "忏悔吧，罪者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身回合开始时，每名处于燃烧状态下的敌人会使自身造成伤害提升8%，持续1回合，最多计入3名敌人。",
+        "name": "灵异事件",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『烛火焚心』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "恶魔驱逐",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使目标受到火焰伤害提高的效果额外提升30.8%。",
+        "name": "神圣的故事",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每获得10层『献祭者』时，就会使所有同伴造成的火焰属性伤害提高30%，效果持续2回合。",
+        "name": "救赎",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "使全体敌人受到火焰伤害提升30.1%/33.1%/31.3%/34.4%，并造成41.5%/45.7%/43.2%/47.4%最大生命值的火焰属性伤害，有100%的基础概率使全体敌人附着燃烧状态，持续2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Fire",
+      "skill_lv": "10/10/12/12",
+      "sn": 112152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "黑谷清",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成26.2%/28.8%/27.2%/29.9%最大生命值的火焰属性伤害，并有100%的基础概率使敌人陷入燃烧状态；若目标敌人处于燃烧状态，黑谷清会额外获得1层『献祭者』状态并改变技能效果：对全体敌人造成一半的伤害，并有100%的基础概率使敌人陷入燃烧状态。",
+        "name": "爆炎",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 112111,
+        "tags": [
+          "主动",
+          "燃烧"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对所有敌人造成20.2%/22.3%/21.0%/23.1%最大生命值的火焰属性伤害；若有敌人处于燃烧状态，黑谷清会获得2层『献祭者』并使处于燃烧状态的敌人陷入『圣火』状态，该技能造成火焰属性TECHNICAL。\n『圣火』：回合开始时受到相当于黑谷清24.8%/27.3%/25.8%/28.3%最大生命值的火焰属性伤害，持续2回合。",
+        "name": "烛火焚心",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 112112,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "对1名敌人造成58.6%/64.6%/61.0%/67.0%最大生命值的火焰属性伤害，造成火焰属性TECHNICAL，若敌人处于『圣火』状态，额外造成TECHNICAL，使该技能伤害提升30%。",
+        "name": "火焰净化",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 112113,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "黑谷清每拥有1层『献祭者』，使处于『圣火』状态的敌人受到的火焰属性伤害和元素异常伤害提升6.0%。",
+        "name": "恩赐",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "基于自身的最大生命值，提高自身造成的火焰属性伤害。每300点最大生命值提高1%火焰属性伤害，最多计入9000点最大生命值。",
+        "name": "神迹",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Damage Mult.": 0.52,
+      "HP": 11930.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "675.43 / 683.43 / 690.63 / 698.63 / 706.63 / 714.63 / 721.83",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "450.02 / 454.82 / 460.42 / 465.22 / 470.82 / 475.62 / 481.22",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3195.43 / 3232.23 / 3269.03 / 3305.83 / 3342.63 / 3379.43 / 3416.23",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

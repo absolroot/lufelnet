@@ -1,0 +1,299 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "同伴使用人格面具技能/追加效果/HIGHLIGHT/降神造成傷害時，會使椎名悠美獲得一個對應屬性的『風味』，『風味』達到3時椎名悠美會進行調製，依據『風味』的不同調製出不同的『雞尾酒』，上限3杯。\n3個相同屬性的『風味』調製出『精調·DELUXE』；\n2個相同屬性的『風味』調製出『精調』；\n3個不同屬性的『風味』調製出『粗調』。\n椎名悠美釋放技能時會消耗『雞尾酒』並使技能效果得到強化，消耗『雞尾酒』時會使所有同伴回復8點精力值。",
+        "name": "王牌酒保",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "椎名悠美調製出『雞尾酒』時，有100%固定機率隨機返還其中1個『風味』。\n釋放『撩人的醉意』/『風味絕倫的美酒』時，會先消耗1杯『粗調/精調』並獲得1杯『精調/精調·DELUXE』。",
+        "name": "莫希托",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『繽紛的輔料』、『風味絕倫的美酒』的技能等級提升3級，至多提升至15級。",
+        "name": "瑪格莉特",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "椎名悠美調製出『雞尾酒』時，使所有同伴造成傷害提升16%，效果持續2回合。",
+        "name": "龍舌蘭日出",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『撩人的醉意』的技能等級提升3級，至多提升至15級。",
+        "name": "血腥瑪麗",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意同伴釋放HIGHLIGHT/降神時，該同伴攻擊力提升10%，效果持續1回合，且椎名悠美獲得1杯『精調·DELUXE』。",
+        "name": "螺絲起子",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『雞尾酒』的上限提升至4。戰鬥開始時，椎名悠美獲得1杯『精調·DELUXE』；椎名悠美每調製出3杯『雞尾酒』時，額外獲得1杯『精調·DELUXE』。\n椎名悠美消耗『精調·DELUXE/精調/粗調』觸發的所有技能效果從120%/100%/50%提升至135%/120%/75%（包括『撩人的醉意』、『風味絕倫的美酒』、『酣歌醉舞』）。",
+        "name": "經典馬丁尼",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Attack",
+          "nature": "Support",
+          "value": "0.1"
+        }
+      ],
+      [
+        {
+          "attr": "Crit Mult.",
+          "nature": "Support",
+          "value": "0.12"
+        }
+      ]
+    ],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時，每有一名WONDER以外的同屬性角色，對應屬性的角色攻擊力提升52.5%。若同屬性角色達到3名/2名，對應屬性角色的穿透額外提升35.0%/14.0%。\n椎名悠美獲得『雞尾酒』時，根據獲得的『雞尾酒』使我方全體獲得對應的增益效果，持續2回合，上限3層。\n『精調·DELUXE』：傷害提升17.5%。\n『精調』：傷害提升8.8%。\n『粗調』：傷害提升4.4%。",
+        "name": "兌和",
+        "nature": null,
+        "skill_lv": "6",
+        "sn": 131171,
+        "tags": [
+          "潛能"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "消耗『精調·DELUXE』時的技能強度額外提升1.5%+自身意識等級*3%。",
+        "name": "發酵",
+        "nature": null,
+        "skill_lv": "1",
+        "sn": 131172,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "name": "椎名悠美",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "準備時間：6次行動\n使所有同伴攻擊力提升，數值相當於椎名悠美攻擊力的8.7%（最多計入4600/5060/5980/6440點攻擊力），效果持續3回合。釋放技能時，若椎名悠美擁有『雞尾酒』，則會消耗1杯『雞尾酒』使技能效果得到強化（優先消耗高品質的『雞尾酒』）。消耗『精調·DELUXE/精調/粗調』分別使技能效果提高120%/100%/50%。",
+        "name": "撩人的醉意",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 131111,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on HPcur/HP)",
+        "cooldown": 0,
+        "desc": "準備時間：4次行動\n使1名同伴造成傷害提升（每230點椎名悠美的攻擊力提供1%傷害加成，最多計入4600/5060/5980/6440點攻擊力），最大生命值提升13.0%/13.0%/14.6%/14.6%，效果持續2回合，並使其造成傷害時恢復相當於該傷害量2%的生命值，效果持續1回合。釋放該技能時，椎名悠美會消耗1杯『粗調/精調』並獲得1杯『精調·DELUXE』。",
+        "name": "繽紛的輔料",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 131112,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "準備時間：8次行動（沒有『雞尾酒』時不能使用）\n消耗所有『雞尾酒』，對指定同伴的適應性屬性進行特調。每消耗1杯『精調·DELUXE/精調/粗調』會觸發120%/100%/50%強度的下述效果：使所有同伴的特調屬性傷害提升（每230點椎名悠美的攻擊力提供1%傷害加成，最多計入4600/5060/5980/6440點攻擊力），指定同伴的特調屬性傷害提升效果提高至1.2倍；若至少消耗2杯『精調·DELUXE/精調』時，指定同伴的暴擊效果額外提升20.0%/22.0%/22.4%/24.4%，效果持續2回合。",
+        "name": "風味絕倫的美酒",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 131113,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "隊伍中每編入一名怪盜，使全體怪盜對應屬性傷害增加4%。",
+        "name": "攪拌",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時，椎名悠美根據隊伍中怪盜的屬性，隨機獲得3個『風味』。",
+        "name": "搖晃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 131132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3110.0,
+      "Defense": 2000.0,
+      "HP": 8720.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1109.97 / 1129.97 / 1149.97 / 1169.97 / 1189.97 / 1209.97 / 1229.97",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "606.64 / 617.84 / 628.24 / 639.44 / 650.64 / 661.04 / 672.24",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

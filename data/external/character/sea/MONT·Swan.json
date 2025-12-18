@@ -1,0 +1,224 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Frostgale Kotone has 2 modes: Spring and Winter. During battle, when Spring's Edge / Winter's Edge is not active, she can freely change between modes. When changing modes, the attributes of her skills and Highlight change. At the start of battle, she will be in Spring mode, but if more allies in the party have the Ice attribute than Wind attribute, she will be in Winter mode.",
+        "name": "Swan on the Ice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Spring: Each time Spring's Edge is activated, gain 1 Spring's Vestige stack. When Spring's Edge ends, increase Resonance damage by 8% for each Spring's Vestige stack (up to 40%).\nWinter: Each time Winter's Edge is activated, gain 1 Winter's Vestige stack. When Winter's Edge ends, increase Resonance damage by 8% for each Winter's Vestige stack (up to 40%).",
+        "name": "Flurry of Grooves Etched in Ice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Spring: While Spring's Edge is active, decrease all foes' Defense by 40%, and decrease party's SP costs for Persona skills by 25%.\nWinter: While Winter's Edge is active, increase party's Ice damage by 30%, and decrease SP costs for Persona skills by 25%.",
+        "name": "Glaring Phoenix",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Zephyr / Sapphire Storm and Ailes au Vent / Frozen Wings by 3.",
+        "name": "Triple Axel",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Spring: When activating a Highlight, if Spring's Edge is active, gain 1 more Spring's Vestige stack. (Can gain more stacks than the maximum limit). Otherwise, increase Highlight damage by 25%.\nWinter: When activating a Highlight, if Winter's Edge is active, gain 1 more Winter's Vestige stack above the maximum limit. Otherwise, increase Highlight damage by 25%.",
+        "name": "Queen of Ice and Wind",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Éclat de Vent / Iceburst and Thief Tactics by 3.",
+        "name": "Season Highlight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Spring: When Spring's Edge ends, after activating Resonance, extend the duration of Spring's Edge by 1 turn and gain 2 Spring's Vestige stacks. Afterwards, can activate Resonance again. Also, when Spring's Edge ends, increase Resonance pierce rate by 4% for each Spring's Vestige stack (up to 20%).\nWinter: When Winter's Edge ends, after activating Resonance, extend the duration of Winter's Edge by 1 turn and gain 2 Winter's Vestige stacks. Afterwards, can activate Resonance again. Also, when Winter's Edge ends, increase Resonance pierce rate by 4% for each Winter's Vestige stack (up to 20%).",
+        "name": "Interpretive Dance of Love",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Default",
+      "cooldown": 4,
+      "desc": "Spring: Deal Wind damage to 1 foe equal to 149.6%/165.0%/158.8%/174.1% of Attack (3 hits). When Spring's Edge is active, gain 1 more Spring's Vestige stack (Can gain more stacks than the maximum limit). Otherwise, deal 1 more hit of Wind damage to selected target.\nWinter: Deal Ice damage to 1 foe equal to 380.6%/419.6%/404.0%/443.0% of Attack, with a 68.3%/68.3%/72.5%/72.5% chance to inflict Icebound. When Winter's Edge is active, increase chance to inflict Icebound by 29.3%/29.3%/31.1%/31.1%. Otherwise, increase Highlight damage by 20%.",
+      "name": "Highlight",
+      "nature": "Wind",
+      "skill_lv": "10/10/13/13",
+      "sn": 121252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Rate": "0.12"
+    },
+    "innate_awake_skill": [],
+    "name": "Frostgale Kotone",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "desc": "Spring: Deal Wind damage to 1 foe equal to 65.9%/72.6%/69.9%/76.7% of Attack (3 hits), with a 30% chance to inflict Windswept. When Spring's Edge is active, also inflict Attack Sequence for 2 turns. When Ice Storm Kotone attacks a foe with Attack Sequence, increase critical damage by 29.3%/29.3%/31.1%/31.1%.\nWinter: Deal Ice damage to 1 foe equal to 122.2%/134.7%/129.7%/142.2% of Attack, with a 97.6%/97.6%/103.6%/103.6% chance to inflict Freeze. If the target is already frozen, inflict On Ice for 2 turns. Increase Ice damage taken by 13.7%/13.7%/14.5%/14.5% for foes with On Ice.",
+        "name": "Éclat de Vent / Iceburst",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 121211,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "desc": "Spring: Deal Wind damage to all foes equal to 31.3%/34.5%/33.3%/36.5% of Attack (3 hits). When Spring's Edge is active, also gain 1 Spring's Vestige.\nWinter: Deal Ice damage to all foes equal to 83.8%/92.4%/89.0%/97.6% of Attack, with a 48.8%/48.8%/51.8%/51.8% chance to inflict Freeze. When Winter's Edge is active, increase this skill's damage by 20%.",
+        "name": "Zephyr / Sapphire Storm",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 121212,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "desc": "Spring: For 1 turn, activate Spring's Edge, and deal Wind damage to 1 foe equal to 82.9%/91.4%/88.0%/96.4% of Attack (3 hits). While Spring's Edge is active, when allies deal Wind damage with a skill, Highlight, or Resonance, deal Wind damage to the selected target equal to 20% of Frostgale Kotone's Attack, and gain 1 Spring's Vestige stack. When Spring's Edge ends, spend all Spring's Vestige stacks, and deal Wind damage to the target selected that turn equal to (number of Spring's Vestige stacks + 2) x 34.2%/37.7%/36.3%/39.8% of Attack. This damage is counted as a Resonance.\nWinter: For 1 turn, activate Winter's Edge, and deal Ice damage to 1 foe equal to 183.2%/202.0%/194.5%/213.2% of Attack. While Winter's Edge is active, when an ally takes an attack, grant Glacial Heart to all allies, protecting them from up to 1301/1301/1380/1380 damage. This effect can be activated up to 2 times. Also, when allies deal Ice damage with a skill, Highlight, or Resonance, gain 1 Winter's Vestige stack. When Winter's Edge ends, spend all Winter's Vestige stacks, and deal Ice damage to the target selected that turn equal to (number of Winter's Vestige stacks + 2) x 27.9%/30.8%/29.6%/32.5% of Attack. This damage is counted as a Resonance.",
+        "name": "Ailes au Vent / Frozen Wings",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 121213,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When a Wind ally is in the party, increase own Wind damage by 33.0%.\nWhen an Ice ally is in the party, increase own Ice damage by 33.0%.",
+        "name": "Performance Scoring",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "While in Spring mode, when an ally attacks with the Wind attribute, increase party's Attack by 8.1% for 2 turns. Stacks up to 5 times.\nWhile in Winter mode, when gaining a shield, increase party's Defense by 9.0% for 2 turns. Stacks up to 4 times.",
+        "name": "Technical Score",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2910.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.43
+    },
+    "stat": {},
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

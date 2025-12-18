@@ -6,7 +6,7 @@ window.innateData["YUI"] = {
                 "attr": "Final Damage Mult.",
                 "nature": "Electric",
                 "value": "0.02",
-                "desc": "모든 전격 속성 아군의 최종 대미지 증가",
+                "desc": "모든 전격 속성 아군의 총 대미지 증폭",
                 "desc_en": "All Electric Attribute Allies' Final Damage Increase",
                 "desc_jp": "電撃属性の味方全員の最終ダメージ上昇",
                 "desc_cn": "",

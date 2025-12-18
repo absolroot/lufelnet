@@ -452,7 +452,7 @@ function normalizeFinalInnate(finalArr, element) {
 
     if (kind === 'finalDamage') {
       return {
-      desc: `모든 ${kr} 속성 아군의 최종 대미지 증가`,
+      desc: `모든 ${kr} 속성 아군의 총 대미지 증폭`,
       desc_en: `All ${en} Attribute Allies' Final Damage Increase`,
       desc_jp: `${jp}属性の味方全員の最終ダメージ上昇`
       };

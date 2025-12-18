@@ -6,7 +6,7 @@ window.innateData["토모코·여름"] = {
                 "attr": "Final Damage Mult.",
                 "nature": "Psychokinesis",
                 "value": "0.02",
-                "desc": "모든 염동 속성 아군의 최종 대미지 증가",
+                "desc": "모든 염동 속성 아군의 총 대미지 증폭",
                 "desc_en": "All Psychokinesis Attribute Allies' Final Damage Increase",
                 "desc_jp": "念動属性の味方全員の最終ダメージ上昇",
                 "type": "염동"

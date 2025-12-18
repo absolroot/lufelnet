@@ -1,0 +1,263 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Kitazato has 2 modes, Doctor and Ripper, and the properties of his skills change depending on the mode. He starts in Doctor mode.\nDoctor: Each time Kitazato deals damage with a skill, there is a 70% chance to inflict 1 Bleed stack on the target. When a foe with Bleed is defeated, its Bleed stacks are passed on to the foe with the highest HP. He can also spend SP to use Physical skills.\nRipper: When Kitazato uses a skill, inflict 1 Rending stack for every 3 Bleed stacks on the target.\nBleed: Each turn, deal Almighty damage equal to 1% of the target's max HP + Physical damage equal to 4% of Kitazato's Attack. This effect lasts for 4 turns and stacks up to 10 times.\nRending: Deal Physical damage based on Kitazato's Attack and Nightfall's skill level (this damage cannot deal critical hits or Down Point damage).",
+        "name": "Mortal Responsibility",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "In Doctor mode, the first time skill damage is dealt to each foe, inflict 5 more Bleed stacks on the target.\nIn Ripper mode, when using a skill on a foe, increase that skill's damage based on the number of debuffs on the target. When they are inflicted with 10 or more debuffs, maximize this effect and increase skill damage up to 80%.\nAlso, multiply Bleed's Almighty damage by 1.5.",
+        "name": "Abdominal Incisions",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the Attack multiplier of Rending by 35% of Kitazato's Attack. Restore Kitazato's HP by 2% of Rending damage dealt (up to Kitazato's Lv. × 15 + 300 each turn).",
+        "name": "Forbidden Transfusion",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Moonlit Scalpel / Midnight Surgery and Thief Tactics by 3.",
+        "name": "Master of the Scalpel",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Highlight Enhanced: Increase Highlight damage by 8% for each Bleed stack inflicted on the target.",
+        "name": "Bloody Bacchanal",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the skill levels of Crimson Operation / Pathology and Nightfall by 3.",
+        "name": "Razor-Sharp Focus",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Increase the maximum stacks of Bleed to 13. Also, each foe will always be inflicted with 3 stacks of Bleed.\nWhen using Midnight Surgery in Ripper mode, do not remove the target's Bleed stacks. Also evolve Rending effects to Killing Frenzy, increase damage by 100%, and deal 50% damage to all other foes. Killing Frenzy can activate effects from Rending with all skills.",
+        "name": "Great Doctor",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "Switch to Doctor mode and immediately inflict 5 Bleed stacks on 1 foe.\nThen, immediately switch to Ripper mode and deal Physical damage to the target equal to 492.8%/543.3%/523.1%/573.6% of Attack (can activate Rending effects).",
+      "name": "Highlight",
+      "nature": "Phys",
+      "skill_lv": "10/10/13/13",
+      "sn": 129152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Pierce Rate": "0.075"
+    },
+    "innate_awake_skill": [],
+    "name": "Kira Kitazato",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Doctor mode: Deal Physical damage to 1 foe equal to 47.3%/52.2%/50.2%/55.1% of Attack (4 hits) and inflict 1 Bleed stack.  Ripper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack, then remove 2 Bleed stacks from the target (can activate Rending effects).",
+        "name": "Moonlit Scalpel / Midnight Surgery",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 129111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Doctor mode: Deal Physical damage to 1 foe equal to 84.2%/92.9%/89.4%/98.0% of Attack (2 hits). At the same time, activate Bleed damage and reset the turn duration of the target's Bleed stacks 1 time.\nRipper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack. For each Bleed stack on the target, increase the damage of Rending activated by them and this skill by 2%, then remove all Bleed stacks from the target (can activate Rending effects).",
+        "name": "Crimson Operation / Pathology",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 129112,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "Switch to Ripper mode and change Kitazato's skills (can be activated when any foe has 7 or more Bleed stacks).\nWhen using skills in this mode, for every 3 Bleed stacks on the target, inflict 1 Rending stack (Physical damage equal to 66.7%/73.5%/70.8%/77.6% of Attack).\nAfter using this skill, Kitazato can use other skills and switches to Doctor mode at the end of the turn.",
+        "name": "Nightfall",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 129113,
+        "tags": [
+          "Support"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "For every 30% of Kitazato's ailment accuracy, increase Physical damage from Bleed by 4% of Attack (up to 90% of ailment accuracy).",
+        "name": "Hideous Mask",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "When in Doctor mode, increase ailment accuracy by 36%.\nWhen in Ripper mode, increase pierce rate by 21%.",
+        "name": "Drawn Blade",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.6,
+      "Attack": 3160.0,
+      "Damage Mult.": 0.47,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1130.03 / 1150.03 / 1170.83 / 1190.83 / 1211.63 / 1231.63 / 1252.43",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3720.03 / 3787.23 / 3853.63 / 3920.83 / 3988.03 / 4055.23 / 4121.63",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "97.0 / 97.0 / 97.0 / 97.0 / 97.0 / 97.0 / 97.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

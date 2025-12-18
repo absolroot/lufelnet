@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時，使攻擊力最高的同伴成為『偵探夥伴』（優先支配或反抗怪盜），回合開始時可以重新選擇『偵探夥伴』（同時只能存在1名『偵探夥伴』，重新選擇後有1回合的冷卻時間）。自身獲得『偵探夥伴』25%的攻擊力，上限500/750/1000（1/50/70級時升級）。『偵探夥伴』釋放群體人格面具技能/HIGHLIGHT/降神/追加效果造成傷害時，記錄其對敵方單位造成的平均傷害（若為單體技能，則記錄其對主目標傷害的40%）。明智吾郎回合開始時，根據記錄的總傷害獲得1層『清晰之矢』並清空所記錄的傷害，『清晰之矢』持續2回合。",
+        "name": "行走於迷霧之中",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時獲得『清晰』狀態，『清晰』狀態和『混沌』狀態的持續時間延長至4回合。『清晰』狀態和『混沌』狀態共存時，自身暴擊率提升16%，並使自身和『偵探夥伴』的傷害提升25%。",
+        "name": "嫌疑偵查",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身釋放人格面具技能造成傷害後，若技能的適應性屬性與上次釋放的技能不相同，則使自身和『偵探夥伴』的攻擊力提升25%、暴擊效果提升30%，持續1回合。",
+        "name": "蛛絲馬跡",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『黃金箭雨·湮滅』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "迷影追蹤",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：額外使自身『混沌之箭』的傷害提高10%，持續4回合。",
+        "name": "真假難辨",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『正義之約』、『不公的狩獵場』的技能等級提升3級，至多提升至15級。",
+        "name": "異路同行",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "釋放『黃金箭雨·湮滅』時『清晰之矢』的記錄傷害提升50%。明智吾郎會視所有同伴為『偵探夥伴』。戰鬥中，明智吾郎會額外獲得暴擊率、暴擊效果提升，提升值基於所有『偵探夥伴』中暴擊率、暴擊效果（超過100%的部分）最高值的40%(上限20%、40%）。",
+        "name": "塵埃落定",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "對所有敵人造成1次103.5%/114.1%/109.8%/120.4%攻擊力的祝福屬性傷害和1次103.5%/114.1%/109.8%/120.4%攻擊力詛咒屬性傷害，自身『混沌之箭』觸發次數增加2次，持續4回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 115152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "明智吾郎",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成93.2%/102.8%/98.9%/108.5%攻擊力的祝福屬性傷害，為所有同伴恢復1561/1561/1657/1657點生命值，並使所有同伴獲得1層祝福。自身獲得『真相』，並獲得『清晰』狀態，持續2回合。『清晰』狀態下，所有同伴造成傷害提升19.5%/21.5%/20.7%/22.7%。",
+        "name": "正義之約",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 115111,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成116.5%/128.5%/123.7%/135.6%攻擊力的詛咒屬性傷害，自身獲得『真相』，並獲得『混沌』狀態，持續2回合。『混沌』狀態下，所有敵人防禦降低25.4%/28.0%/26.9%/29.5%、自身『混沌之箭』觸發次數增加1次、造成傷害提升19.5%/21.5%/20.7%/22.7%。",
+        "name": "不公的狩獵場",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 115112,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "開啟條件：自身擁有『真相』\n消耗所有『清晰之矢』，對所有敵人造成19.5%/21.5%/20.7%/22.7%『清晰之矢』記錄傷害的固定值萬能屬性傷害。之後，對隨機敵人發射4次『混沌之箭』，每次造成77.4%/85.3%/82.2%/90.1%攻擊力的萬能屬性傷害，優先攻擊未受到該效果攻擊的敵人。多次傷害命中同一目標時只會造成15%的傷害。",
+        "name": "黃金箭雨·湮滅",
+        "nature": "Almighty",
+        "skill_lv": "10/10/13/13",
+        "sn": 115113,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "明智吾郎編入隊伍時，可以觸發任意屬性的慾望奏鳴。戰鬥開始時，每觸發1種慾望奏鳴使自身造成傷害提升15.0%。",
+        "name": "法度",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "造成萬能傷害時，目標每有1%的百分比防禦降低效果，自身傷害增加0.5%。（上限120.0%）",
+        "name": "渴望",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 115132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2860.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1120.0 / 1140.0 / 1160.0 / 1180.8 / 1200.8 / 1220.8 / 1240.8",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "619.97 / 631.17 / 642.37 / 653.57 / 664.77 / 675.97 / 687.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

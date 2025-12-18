@@ -1,0 +1,263 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身の行動が終了した時、残りのＨＰが６０%未満の敵１体ごとに『反逆の意志』を１つ獲得し、最大５つまで累積する。\n『反逆の意志』の合計が３つ以上の時、追加行動ができるようになる。\nなお、追加行動中にさらに追加行動は発生しない。追加行動は、ターン制限のある効果のターン数に影響しない。\n追加行動終了後、『反逆の意志』を３つ消費する。\n※戦闘中、敵１体につき『反逆の意志』は１つしか獲得できない。",
+        "name": "反逆の再動",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "選択した敵に与えるスキルダメージが３０%上昇し、選択した敵以外に与えるスキルダメージが１０%上昇する。",
+        "name": "怪盗団の予告状",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "追加行動時、使用するスキルのＳＰ消費量が８０%減少する。自身の残りのＳＰが６０%以上の場合、自身の攻撃力が５０%上昇する。",
+        "name": "瞑想",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『アルセーヌチェイン』『怪盗戦技』のスキルレベルが３上昇する。",
+        "name": "隠密活動",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "ハイライト能力追加：『反逆の意志』の獲得量が３つになる。",
+        "name": "根こそぎ奪う",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『斬魔の強奪』『忍び寄る忌影』のスキルレベルが３上昇する。",
+        "name": "今宵、月の下で",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身の行動後に残りのＨＰが２５%未満の敵がいる時、その敵に最大で自身の攻撃力２５０%のダメージを与える。（バトル中、同じ敵にこの効果は発動しない）\nさらに、追加行動でスキル使用後、敵全体に攻撃力５０%の呪怨属性ダメージを与える。",
+        "name": "無情の追撃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "desc": "敵全体に攻撃力205.0%/226.0%/217.6%/238.6%の呪怨属性ダメージを与え、『反逆の意志』を１つ獲得する。",
+      "name": "ハイライト",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 126152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "雨宮 蓮",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵全体に攻撃力83.0%/91.5%/88.1%/96.6%の呪怨属性ダメージを与え、２０%の確率で、呪印状態にする。さらに『反逆の意志』を１つ獲得する。",
+        "name": "斬魔の強奪",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵単体に攻撃力97.6%/107.6%/103.6%/113.6%の呪怨属性ダメージを与える。さらに敵が１体しかいない場合、『反逆の意志』を２つ獲得する。",
+        "name": "忍び寄る忌影",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126112,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "敵全体に攻撃力74.2%/81.8%/78.7%/86.3%の呪怨属性ダメージを与える。追加行動時に使用すると、ダメージが２５%上昇する。敵が弱体状態の時は、さらにダメージが２５%上昇する。",
+        "name": "アルセーヌチェイン",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126113,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "所持している『反逆の意志』１つにつき自身の攻撃力が18.0%上昇する。",
+        "name": "抗う力",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "追加行動時の与ダメージが72.0%上昇する。",
+        "name": "逆境の覚悟",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2960.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1179.97 / 1201.57 / 1222.37 / 1243.97 / 1264.77 / 1286.37 / 1307.17",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "560.0 / 570.4 / 580.0 / 590.4 / 600.0 / 610.4 / 620.8",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3270.01 / 3329.21 / 3387.61 / 3446.81 / 3505.21 / 3564.41 / 3622.81",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

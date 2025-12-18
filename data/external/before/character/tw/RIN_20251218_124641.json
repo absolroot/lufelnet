@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "自身回合開始時，每有10點速度，就獲得1點『回憶』，透過這種方式每回合最多獲得18點『回憶』。『回憶』到達40點時會消耗所有『回憶』使自身獲得『孟婆湯』。釋放技能時，若自己持有『孟婆湯』則使部分技能獲得強化。並有50%的基礎機率使技能主目標陷入遺忘狀態，效果持續1回合。",
+        "name": "忘川水悠悠",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "戰鬥開始時，獲得『孟婆湯』。",
+        "name": "魂斷無回頭",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『頑獅鬧』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "奈何橋寂寂",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每對1個目標造成1次減益效果，就使李瑤鈴的攻擊力提升10%，持續2回合，上限5層。",
+        "name": "離別惹漣漪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『擺渡者』、『彼岸之叢』的技能等級提升3級，至多提升至15級。",
+        "name": "孟婆湯濃濃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT效果提升：使敵人受到的傷害額外提升20%，並使所有敵人獲得一個詛咒效果。",
+        "name": "往事如煙空",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "釋放技能消耗『孟婆湯』後，所有同伴詛咒傷害提升20%，持續1回合，並有60%固定機率返還『孟婆湯』，該效果有1回合冷卻時間。",
+        "name": "曼珠如煙紅",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "對所有敵人造成146.4%/161.4%/155.4%/170.4%攻擊力的詛咒屬性傷害，並使所有敵人下一次受到的傷害提升48.8%/53.8%/51.8%/56.8%。有30%的基礎機率使得所有敵人陷入遺忘狀態，效果持續2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 109152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "李瑤鈴",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成73.2%/80.7%/77.7%/85.2%攻擊力的詛咒屬性傷害，自身每有10點速度，就使目標敵人的防禦力降低3%，上限49.7%/54.8%/53.5%/58.6%，效果持續2回合。該技能每命中一個敵人，就使自身獲得4點『回憶』。",
+        "name": "擺渡者",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 109111,
+        "tags": [
+          "主動",
+          "減益",
+          "疊層"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對1名敵人造成97.6%/107.6%/103.6%/113.6%攻擊力的詛咒屬性傷害。若敵人帶有任意減益效果，則使該技能造成的傷害提升20%。『孟婆湯』額外效果：使主目標有100%的基礎機率陷入遺忘狀態，效果持續2回合。若成功為添加遺忘狀態或目標處於精神異常狀態，則使其受到傷害提升，自身每有10點速度使敵人受到傷害提升2%，上限32.3%/32.3%/34.3%/34.3%，持續1回合。",
+        "name": "彼岸之叢",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 109112,
+        "tags": [
+          "主動",
+          "控制"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "對所有敵人造成78.1%/86.1%/82.9%/90.9%攻擊力的詛咒屬性傷害，並使所有敵人獲得『彼岸花』效果：自身每有10點速度，使敵人受到的傷害提升3%，上限48.5%/53.5%/52.2%/57.2%。該效果在受到2次傷害或2回合後清除。『孟婆湯』額外效果：『彼岸花』的增傷效果翻倍。",
+        "name": "頑獅鬧",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 109113,
+        "tags": [
+          "主動",
+          "減益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每有2點速度，則提升自身1%攻擊力，透過這種方式最多提升90.0%攻擊力。",
+        "name": "嬉鬧",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "使場上生命值高於50%的敵人受到的詛咒傷害提升30.0%。",
+        "name": "怒放",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 109132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Attack": 3780.0,
+      "Speed": 157.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1089.98 / 1109.98 / 1129.18 / 1149.18 / 1168.38 / 1188.38 / 1207.58",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "633.37 / 644.57 / 656.57 / 667.77 / 678.97 / 690.17 / 702.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3180.02 / 3237.62 / 3294.42 / 3352.02 / 3408.82 / 3466.42 / 3523.22",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "124.89 / 124.89 / 124.89 / 124.89 / 124.89 / 124.89 / 124.89",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

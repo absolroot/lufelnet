@@ -1,0 +1,253 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "每个怪盗回合开始时，长尾爱歌获得1层『圣歌』，可叠加12层。\n长尾爱歌可以在任意怪盗行动前释放『千籁重歌』，每场战斗初始仅可释放1次『千籁重歌』。使用『千籁重歌』后，经过7个WONDER的非额外回合，『千籁重歌』恢复1次使用次数，该效果每场战斗仅可触发1次。\n『千籁重歌』：为1名同伴净化1种负面状态，并使其在自身回合结束后，进入特殊的额外回合『千籁重歌』。进入『千籁重歌』时，将该同伴的状态回溯至其上回合释放技能前一刻。回溯内容包括：人格面具技能冷却时间、当前状态、当前生命值、当前精力值。",
+        "name": "重新开始的希冀",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "战斗开始时，长尾爱歌获得满层『圣歌』，并使解明怪盗的初始准备时间减少4次行动。\n释放『贯穿时空的轮转』时，额外使所有同伴暴击率提高12%，效果持续2回合。",
+        "name": "初愿的序曲",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "处于『千籁重歌』的同伴，获得12%总伤害增幅。\n当同伴死亡时，立即使其复活并恢复等同于长尾爱歌20%攻击力+2000的生命值，该效果每场战斗仅可触发1次。",
+        "name": "憧憬的启程",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『华光下的治愈诗』、『贯穿时空的轮转』的技能等级提升3级，至多提升至15级。",
+        "name": "悸动的华舞",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "任意怪盗释放HIGHLIGHT/神通法及战斗开始时，长尾爱歌获得2层可突破上限的『圣歌』，可叠加2层。",
+        "name": "静谧的涟漪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『群鸽于圣堂和鸣』的技能等级提升3级，至多提升至15级。",
+        "name": "守望的余音",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "长尾爱歌初始可额外释放一次『千籁重歌』。",
+        "name": "永恒的天使之声",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "长尾爱歌",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：4次行动\n使所有同伴造成伤害提升7.0%/7.7%/7.8%/8.5%+（每164点长尾爱歌的攻击力额外提供1%伤害加成，最多额外提供28.0%/30.8%/31.4%/34.2%伤害加成），效果持续2回合。自身获得4层『圣歌』。",
+        "name": "群鸽于圣堂和鸣",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138111,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition",
+        "cooldown": 0,
+        "desc": "准备时间：8次行动\n使所有同伴恢复10.0%/10.0%/11.2%/11.2%攻击力+681/816/989/1124的生命值，并为所有同伴净化1种负面状态。拥有『圣歌』时，会消耗1层『圣歌』使释放该技能后所需的准备时间减少1次行动，通过这种方式最多使准备时间减少4次行动。主动释放该技能时，治疗量提升50%。\n被动：战斗中，长尾爱歌每获得12层『圣歌』，会自动释放一次该技能的治疗效果。",
+        "name": "华光下的治愈诗",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138112,
+        "tags": [
+          "主动",
+          "净化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "准备时间：4次行动\n使所有同伴攻击力提升，数值相当于长尾爱歌攻击力的11%+128/140/143/156。消耗所有『圣歌』，每消耗1层『圣歌』，使所有同伴穿透提升（每460点长尾爱歌的攻击力提供0.1%穿透），攻击力提升（每460点长尾爱歌的攻击力提供0.1%攻击力），效果持续2回合。（该技能最多计入长尾爱歌4600/5060/5980/6440点攻击力）",
+        "name": "贯穿时空的轮转",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "处于『千籁重歌』的同伴，攻击力提升37.5%。",
+        "name": "翩然",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "根据累积获得的『圣歌』层数，每层使所有同伴穿透提升1.0%，最多计入12层。",
+        "name": "韧心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4600.0,
+      "Defense": 1000.0,
+      "HP": 6160.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3360.0 / 3420.8 / 3480.8 / 3541.6 / 3601.6 / 3662.4 / 3723.2",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

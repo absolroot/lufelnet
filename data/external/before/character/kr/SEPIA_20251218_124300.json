@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "임의의 동료가 대미지를 줄 때마다 스미 토시야의 영감이 발동해 『시』를 획득한다.\n임의의 14개 『시』를 획득해 챕터를 완료하면, 현재 공격을 받은 메인 목표에게 공격력 65/98/130%(1/50/70레벨)의 단일 주원 대미지 추가 효과를 준다.",
+        "name": "운명의 십사행시",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "액티브 스킬을 사용할 때마다 다음 『운명의 십사행시』의 대미지가 40% 증가한다.",
+        "name": "영감 폭발",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『애통한 비극』, 『허황된 희극』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "열광",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『운명의 십사행시』는 100%의 기본 확률로 적에게 주원 이상 상태를 추가한다.\n스킬 대미지는 자신의 공격력 50%만큼 증가한다.",
+        "name": "죽음의 아리아",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『낭만적인 정극』, 『전투 기술』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "환각",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "HIGHLIGHT 효과 증가: 다음 4회의 『운명의 십사행시』 대미지가 증가한다.",
+        "name": "영혼의 찬미가",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "액티브 스킬 사용 후 다음 턴에 상응하는 『시』를 3회 추가 발동시킬 수 있다.\n『운명의 십사행시』 중에 최소 2종류의 특수 『시』가 있을 시 이번 『운명의 십사행시』 대미지가 67% 증가한다.",
+        "name": "불결로 구원한 신명",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "desc": "1명의 적에게 공격력 96.8%/106.7%/100.8%/110.7%의 주원 대미지를 3회 주며, 다음 2회의 『운명의 십사행시』는 추가로 공격력 50.6%/55.7%/52.6%/57.8%의 대미지를 준다.",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/12/12",
+      "sn": 118152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "스미 토시야",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1명의 적에게 공격력 58.6%/64.6%/61.0%/67.0%의 주원 대미지를 3회 주고, 이번 공격으로 『증오 시』 3개를 획득한다.\n이후에 『시』를 획득하면 25%의 고정 확률로 『증오 시』로 전환되며, 최대 2회 발동된다.\n『증오 시』 매 중첩마다 『운명의 십사행시』는 30%의 기본 확률로 주원 효과를 부여한다.",
+        "name": "애통한 비극",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "모든 적에게 공격력 35.7%/39.3%/37.1%/40.8%의 주원 대미지를 2회 주고, 이번 공격으로 『치유 시』 2개를 획득한다.\n이후에 『시』를 획득하면 25%의 고정 확률로 『치유 시』로 전환되며, 최대 2회 발동된다.\n『치유 시』 매 중첩마다 『운명의 십사행시』는 생명이 가장 적은 동료의 생명을 공격력 7.5%만큼 회복한다.",
+        "name": "허황된 희극",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118112,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "1명의 적에게 공격력 41.5%/45.7%/43.2%/47.4%의 주원 대미지를 5회 주고, 이번 공격으로 『열정 시』 5개를 획득하게 한다.\n이후에 『시』 획득 시 25%의 고정 확률로 『열정 시』로 전환되며, 최대 2회 발동된다.\n『열정 시』마다 『운명의 십사행시』에 공격력 7%의 만능 대미지를 추가한다.",
+        "name": "낭만적인 정극",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118113,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『운명의 십사행시』로 주원 이상 상태에 걸린 적에게 주는 대미지가 50.0% 증가한다.",
+        "name": "조종",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『운명의 십사행시』에 특수 『시』가 1개 있을 때마다 이번 대미지가 10.0% 증가한다.",
+        "name": "주언",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2580.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "840.0 / 849.6 / 859.2 / 868.8 / 878.4 / 888.8 / 898.4",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "470.01 / 475.61 / 481.21 / 486.01 / 491.61 / 497.21 / 502.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2565.43 / 2595.03 / 2624.63 / 2654.23 / 2683.83 / 2713.43 / 2743.03",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

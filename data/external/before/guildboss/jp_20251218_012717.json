@@ -4,20 +4,20 @@
       {
         "affixs": [
           {
-            "detail": "All allies' final damage is increased based on their ailment accuracy. Final damage is increased by a maximum of 15% at 150% ailment accuracy.",
-            "name": "Special Effect"
+            "detail": "全ての味方は状態異常命中に基づいて最終ダメージが上昇する。最大１５０%の状態異常命中で、最終ダメージが１５%上昇する。",
+            "name": "特殊効果"
           },
           {
-            "detail": "Sweeper allies' damage is increased by 20%.",
-            "name": "Special Effect"
+            "detail": "『支配』ロールの味方の与ダメージが２０%上昇する。",
+            "name": "特殊効果"
           },
           {
-            "detail": "Party's Psy damage is increased by 20%.",
-            "name": "Special Effect"
+            "detail": "味方全体の念動属性の与ダメージが２０%上昇する。",
+            "name": "特殊効果"
           },
           {
-            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
-            "name": "Special Effect"
+            "detail": "味方全体はクリティカルを出せないが、スキル/意識奏功による最終ダメージが上昇する。上昇量はクリティカル率×（クリティカルダメージから１００%を引いた値）で決まる。（ただしクリティカル率は、最大で１００%までが計算に含まれる）",
+            "name": "特殊効果"
           }
         ],
         "enemy": {
@@ -26,17 +26,17 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
+              null,
               "Phys",
-              "Gun",
-              "Electric",
-              "Bless"
+              "Ice",
+              "Nuclear"
             ],
             "Weak": [
-              "Psychokinesis"
+              "Wind"
             ]
           },
           "level": "78",
-          "name": "Kartikeya",
+          "name": "カルティケーヤ",
           "skill": "2454,357,1016,1404,253",
           "sn": "740111",
           "stat": {
@@ -85,20 +85,20 @@
       {
         "affixs": [
           {
-            "detail": "After all allies gain a shield, their final Resonance damage is increased by 8%. Lasts for 3 turns. Stacks up to 8 times.",
-            "name": "Special Effect"
+            "detail": "全ての味方はシールドを獲得した後、意識奏功による最終ダメージが８%上昇する。この効果は３ターン持続する。最大８つまで累積できる。",
+            "name": "特殊効果"
           },
           {
-            "detail": "Party's Resonance damage is increased by 50%.",
-            "name": "Special Effect"
+            "detail": "全ての味方の意識奏功の与ダメージが５０%上昇する。",
+            "name": "特殊効果"
           },
           {
-            "detail": "Party's Ice damage is increased by 20%.",
-            "name": "Special Effect"
+            "detail": "味方全体の氷結属性の与ダメージが２０%上昇する。",
+            "name": "特殊効果"
           },
           {
-            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
-            "name": "Special Effect"
+            "detail": "味方全体はクリティカルを出せないが、スキル/意識奏功による最終ダメージが上昇する。上昇量はクリティカル率×（クリティカルダメージから１００%を引いた値）で決まる。（ただしクリティカル率は、最大で１００%までが計算に含まれる）",
+            "name": "特殊効果"
           }
         ],
         "enemy": {
@@ -107,16 +107,16 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
+              "Phys",
               "Gun",
-              "Fire",
-              "Nuclear"
+              "Psychokinesis"
             ],
             "Weak": [
-              "Ice"
+              "Fire"
             ]
           },
           "level": "78",
-          "name": "Surt",
+          "name": "スルト",
           "skill": "108,103,1023,1008",
           "sn": "733111",
           "stat": {
@@ -165,8 +165,8 @@
     ],
     "endTime": "2025-12-25 07:30:00",
     "mode": {
-      "detail": "Deal damage to make the boss Weakened and gain more points!",
-      "name": "Devourer of Dreams"
+      "detail": "ボスは一定のダメージを受けると『虚弱』状態になり、状態中はポイント獲得効率が上昇する。",
+      "name": "悪喰の夢境"
     },
     "startTime": "2025-12-15 11:30:00"
   },

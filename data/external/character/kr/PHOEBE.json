@@ -108,13 +108,59 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Attack",
+          "nature": "Support",
+          "value": "0.1"
+        }
+      ],
+      [
+        {
+          "attr": "Crit Mult.",
+          "nature": "Support",
+          "value": "0.12"
+        }
+      ]
+    ],
     "highlight_skill": null,
     "innate": {
       "Attack": "0.2",
       "HP": "0.2"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "전투 시작 시 원더 이외의 같은 속성 캐릭터가 1명 있을 때마다 속성에 대응하는 캐릭터의 공격력이 52.5% 증가한다. 같은 속성 캐릭터가 3명/2명이 되면 속성에 대응하는 캐릭터의 관통이 추가로 35.0%/14.0% 증가한다.\n시이나 유우미가 『칵테일』 획득 시 획득한 『칵테일』에 따라 아군 전체가 2턴 동안 그에 대응하는 버프 효과를 획득한다(3회 중첩 가능).\n『믹스·DELUXE』: 대미지가 17.5% 증가한다.\n『믹스』: 대미지가 8.8% 증가한다.\n『러프』: 대미지가 4.4% 증가한다.",
+        "name": "타기",
+        "nature": null,
+        "skill_lv": "6",
+        "sn": 131171,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "desc": "『믹스·DELUXE』 소모 시의 스킬 강도가 추가로 1.5%+자신의 의식 레벨*3%만큼 증가한다.",
+        "name": "발효",
+        "nature": null,
+        "skill_lv": "1",
+        "sn": 131172,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
     "name": "시이나 유우미",
     "normal_skill": [
       {

@@ -234,6 +234,58 @@
         "type": "推荐自选契约·精准"
       },
       {
+        "endTime": "2025-12-18 07:00:00",
+        "fiveStar": [
+          {
+            "name": "池波星辉·永夜",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "野毛朋子",
+            "type": "thief"
+          },
+          {
+            "name": "黑谷清",
+            "type": "thief"
+          },
+          {
+            "name": "琴音·蒙塔涅",
+            "type": "thief"
+          }
+        ],
+        "name": "生存或毁灭",
+        "startTime": "2025-11-27 07:00:00",
+        "type": "角色活动契约·精准"
+      },
+      {
+        "endTime": "2025-12-18 07:00:00",
+        "fiveStar": [
+          {
+            "name": "池波星辉·永夜",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "野毛朋子",
+            "type": "thief"
+          },
+          {
+            "name": "黑谷清",
+            "type": "thief"
+          },
+          {
+            "name": "琴音·蒙塔涅",
+            "type": "thief"
+          }
+        ],
+        "name": "生存或毁灭",
+        "startTime": "2025-11-27 07:00:00",
+        "type": "角色活动契约·随机"
+      },
+      {
         "endTime": "2026-01-01 07:00:00",
         "fiveStar": [
           {
@@ -479,6 +531,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2025-12-18 07:00:00",
+        "fiveStar": [
+          {
+            "name": "诸神王庭",
+            "type": "weapon",
+            "user": "池波星辉"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "影舞双冠",
+            "type": "weapon",
+            "user": "野毛朋子"
+          },
+          {
+            "name": "摇曳流火",
+            "type": "weapon",
+            "user": "黑谷清"
+          },
+          {
+            "name": "鸣空长歌",
+            "type": "weapon",
+            "user": "琴音·蒙塔涅"
+          },
+          {
+            "name": "众王之意志",
+            "type": "weapon",
+            "user": "池波星辉"
+          }
+        ],
+        "name": "无声硝烟",
+        "startTime": "2025-11-27 07:00:00",
+        "type": "武器活动补给"
+      },
       {
         "endTime": "2026-01-01 07:00:00",
         "fiveStar": [

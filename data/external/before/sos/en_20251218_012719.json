@@ -10,15 +10,15 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire",
-                "Wind"
+                "Electric",
+                "Nuclear"
               ],
               "Weak": [
-                "Psychokinesis"
+                "Wind"
               ]
             },
             "level": "89",
-            "name": "ケツアルカトル",
+            "name": "Quetzalcoatl",
             "skill": "406,403",
             "sn": "515101",
             "stat": {
@@ -76,17 +76,17 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Psychokinesis",
                 "Nuclear",
-                "Bless",
-                "Curse"
+                "Bless"
               ],
               "Weak": [
-                "Phys",
-                "Psychokinesis"
+                null,
+                "Wind"
               ]
             },
             "level": "89",
-            "name": "ティターニア",
+            "name": "Titania",
             "skill": "307,607",
             "sn": "515111",
             "stat": {
@@ -136,7 +136,7 @@
         "sn": "178402"
       }
     ],
-    "buff": "位相干渉: 味方が弱点ダメージを与えた時、自身は『チャージフィールド』を４つ獲得する。",
+    "buff": "Phase Interference: When an ally deals weakness damage, they gain 4 Charge Field stacks.",
     "endTime": "2025-12-25 07:30:00",
     "startTime": "2025-12-06 11:30:00"
   },

@@ -1,16 +1,31 @@
-<!-- Supabase 클라이언트 라이브러리 -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Supabase 클라이언트 라이브러리 (버전 고정 & UMD 빌드) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.48.0/dist/umd/supabase.min.js"></script>
 
 <!-- Supabase 초기화 -->
 <script>
-  const supabaseUrl = 'https://ipdkvuybgxczqwwmrqsw.supabase.co'
-  const supabaseKey = 'sb_publishable_Hk_7I7kkgaAKrPLQz_sdUA_XvrKoJbI'
+  (function () {
+    const supabaseUrl = 'https://ipdkvuybgxczqwwmrqsw.supabase.co';
+    const supabaseKey = 'sb_publishable_Hk_7I7kkgaAKrPLQz_sdUA_XvrKoJbI';
 
-  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey, {
-    auth: {
-      persistSession: true,            // 세션을 브라우저 로컬스토리지에 저장
-      autoRefreshToken: true,          // 액세스 토큰 자동 갱신
-      detectSessionInUrl: true         // URL 해시에서 세션 토큰 자동 추출
+    const supaGlobal = window.supabase;
+    const createClient = supaGlobal && typeof supaGlobal.createClient === 'function'
+      ? supaGlobal.createClient
+      : null;
+
+    if (!createClient) {
+      console.error('[Supabase] createClient 를 찾을 수 없습니다. 전역 supabase 구조가 예상과 다릅니다.', supaGlobal);
+      return;
     }
-  });
+
+    const client = createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: true,            // 세션을 브라우저 로컬스토리지에 저장
+        autoRefreshToken: true,          // 액세스 토큰 자동 갱신
+        detectSessionInUrl: true         // URL 해시에서 세션 토큰 자동 추출
+      }
+    });
+
+    // 전역에서 사용하는 supabase 를 "클라이언트 인스턴스"로 고정
+    window.supabase = client;
+  })();
 </script>

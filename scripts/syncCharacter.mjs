@@ -544,8 +544,11 @@ function updateRitual(lang, charKey, external) {
     top.obj.properties.push(charProp);
   }
   const charObj = charProp.value;
-  if (external?.data?.name) setStringProp(charObj, 'name', external.data.name);
-  const asc = external?.data?.skill?.ascend_skill || [];
+  const data = external?.data || {};
+  if (data.name) setStringProp(charObj, 'name', data.name);
+  // 외부 스키마가 data.skill.ascend_skill 또는 data.ascend_skill 둘 다 올 수 있으므로 둘 다 지원
+  const skillRoot = data.skill || data;
+  const asc = skillRoot.ascend_skill || [];
   for (let i = 0; i < asc.length && i < 7; i++) {
     const item = asc[i];
     if (!item) continue;
@@ -654,7 +657,9 @@ function updateSkills(lang, charKey, external) {
   }
   const charObj = charProp.value;
 
-  const skills = external?.data?.skill || {};
+  const data = external?.data || {};
+  // 외부 스키마가 data.skill.* 또는 data.* 형태 둘 다 올 수 있으므로 통합 처리
+  const skills = data.skill || data;
   const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
@@ -855,8 +860,11 @@ function writePerCharacterBlock(filePath, kind, windowName, charKey, newObj) {
 
 function buildRitualObjectFromExternal(external) {
   const out = {};
-  if (external?.data?.name) out.name = external.data.name;
-  const asc = external?.data?.skill?.ascend_skill || [];
+  const data = external?.data || {};
+  if (data.name) out.name = data.name;
+  // 외부 스키마가 data.skill.ascend_skill 또는 data.ascend_skill 둘 다 올 수 있으므로 둘 다 지원
+  const skillRoot = data.skill || data;
+  const asc = skillRoot.ascend_skill || [];
   for (let i = 0; i < asc.length && i < 7; i++) {
     const item = asc[i];
     if (!item) continue;
@@ -884,7 +892,9 @@ function updatePerCharacterRitual(lang, charKey, external) {
 
 function buildSkillsObjectFromExternal(external) {
   const res = {};
-  const skills = external?.data?.skill || {};
+  const data = external?.data || {};
+  // 외부 스키마가 data.skill.* 또는 data.* 형태 둘 다 올 수 있으므로 통합 처리
+  const skills = data.skill || data;
   const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
@@ -985,7 +995,9 @@ function updatePerCharacterWeapon(lang, charKey, externalWeapon) {
 
 function buildBaseStatsObjectFromExternal(external, existing) {
   const out = (existing && typeof existing === 'object') ? { ...existing } : {};
-  const stats = external?.data?.stats || null;
+  const data = external?.data || {};
+  // API가 stats 또는 stat 이름 중 하나를 쓸 수 있으므로 둘 다 지원
+  const stats = data.stats || data.stat || null;
   if (!stats) return out;
   const atk = parseSevenNumbers(stats['Attack']);
   const def = parseSevenNumbers(stats['Defense']);

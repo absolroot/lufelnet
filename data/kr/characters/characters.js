@@ -147,8 +147,8 @@ Object.assign(window.characterData, {
         "skill_priority": "3>2>4>1",
         "mind_stats1": "생명 20%",
         "mind_stats2": "실드효과 14%",
-        "mind_skill1": "S2/S3 (Checking)",
-        "mind_skill2": "S1/HL (Checking)"
+        "mind_skill1": "S1/HL",
+        "mind_skill2": "S2/S3!"
     },
     "쇼키·암야": {
         "limit": true,

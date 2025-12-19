@@ -68,7 +68,7 @@ Object.assign(window.characterData, {
         "element_resistance": "",
         "rarity": 5,
         "position": "",
-        "release_order": 39,
+        "release_order": -1,
         "persona": "와일드",
         "persona_en": "",
         "persona_jp": "",

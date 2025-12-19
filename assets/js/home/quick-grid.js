@@ -43,7 +43,7 @@
 
     const texts = {
         kr: {
-            character: '괴도', persona: '페르소나', revelations: '계시', wonderweapon: '원더 무기',
+            character: '캐릭터', persona: '페르소나', revelations: '계시', wonderweapon: '원더 무기',
             pullTracker: '계약 트래커', pullTracker_global: '계약 통계',
             materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
             tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',

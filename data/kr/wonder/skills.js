@@ -1033,9 +1033,19 @@ const personaSkillList = {
     "무한 알고리즘": {
         "name_jp": "無限アルゴリズム",
         "name_en": "Infinite Algorithm",
-        "description": "2턴 동안 모든 아군 캐릭터의 공격력이 30.0% 증가하고, 메인 목표의 대미지가 추가로 20.0% 증가한다.",
-        "description_en": "Increase all allies' ATK by 30% and damage to main target by 20% for 2 turns.",
-        "description_jp": "2ターンの間、味方全体の攻撃力が30.0%上昇し、メインターゲットへのダメージがさらに20.0%増加する。",
+        "description": "2턴 동안 모든 아군 캐릭터의 공격력이 30.0%/31.5%/33.0% 증가하고, 메인 목표의 대미지가 추가로 20.0%/21.0%/22.0% 증가한다.",
+        "description_en": "Increase all allies' ATK by 30.0%/31.5%/33.0% and damage to main target by 20.0%/21.0%/22.0% for 2 turns.",
+        "description_jp": "2ターンの間、味方全体の攻撃力が30.0%/31.5%/33.0%上昇し、メインターゲットへのダメージがさらに20.0%/21.0%/22.0%増加する。",
+        "type": "지원",
+        "target": "전체",
+        "icon": "버프광역"
+    },
+    "응집": {
+        "name_jp": "凝結",
+        "name_en": "Cohesion",
+        "description": "모든 동료의 공격력이 15.0%/15.8%/16.5% 증가하고, 자신의 공격력 500포인트마다 1.25%/1.31%/1.38%가 추가 증가한다. 상한은 10%이며 효과는 2턴 동안 지속된다. 또한 스킬의 메인 목표가 주는 대미지가 8.0%/8.4%/8.8% 추가 증가하고, 자신의 공격력 500포인트마다 1.0%/1.05%/1.1%가 추가 증가한다. 상한은 8%이며 효과는 1턴 동안 지속된다.",
+        "description_en": "Increase party's Attack by 15.0%/15.8%/16.5% for 2 turns. For every 500 of the user's Attack, increase party's Attack by 1.25%/1.31%/1.38% more (up to 10%). Increase main target's damage by 8.0%/8.4%/8.8% and increase damage by 1.0%/1.05%/1.1% more for every 500 of the user's Attack (up to 8%) for 1 turn.",
+        "description_jp": "２ターンの間、味方全体の攻撃力が15.0%/15.8%/16.5%上昇し、自身の攻撃力５００ごとに追加で攻撃力が1.25%/1.31%/1.38%上昇する（最大１０%）。さらに１ターンの間、選択した対象の与ダメージが8.0%/8.4%/8.8%上昇し、自身の攻撃力５００ごとに追加で与ダメージが1.0%/1.05%/1.1%上昇する（最大８%）。",
         "type": "지원",
         "target": "전체",
         "icon": "버프광역"
@@ -1094,9 +1104,9 @@ const personaSkillList = {
     "해체 역장": {
         "name_jp": "解体フィールド",
         "name_en": "Abyssal Field",
-        "description": "3턴 동안 1명의 적이 받는 대미지가 24% 증가하고, 받는 크리티컬 효과가 18% 증가한다.",
-        "description_en": "Increase 1 foe's DMG taken by 24% and CRIT DMG taken by 18% for 3 turns.",
-        "description_jp": "3ターンの間、敵1体が受けるダメージが24%増加し、受けるCRT倍率が18%増加する。",
+        "description": "3턴 동안 1명의 적이 받는 대미지가 24%/25.2%/26.4% 증가하고, 받는 크리티컬 효과가 18%/18.9%/19.8% 증가한다.",
+        "description_en": "Increase 1 foe's DMG taken by 24%/25.2%/26.4% and CRIT DMG taken by 18%/18.9%/19.8% for 3 turns.",
+        "description_jp": "3ターンの間、敵1体が受けるダメージが24%/25.2%/26.4%増加し、受けるCRT倍率が18%/18.9%/19.8%増加する。",
         "type": "지원",
         "target": "단일",
         "icon": "디버프",
@@ -1116,9 +1126,9 @@ const personaSkillList = {
     "음률의 침입": {
         "name_jp": "音律の侵入",
         "name_en": "Melodic Infiltration",
-        "description": "3턴 동안 모든 적의 방어력이 32.0% 감소하고, 받는 대미지를 10% 증가시킨다.",
-        "description_en": "Decrease all foes' DEF by 32% and increase damage taken by 10% for 3 turns.",
-        "description_jp": "3ターンの間、敵全体の防御力を32.0%低下させ、受けるダメージを10%増加させる。",
+        "description": "3턴 동안 모든 적의 방어력이 32.0%/33.6%/35.2% 감소하고, 받는 대미지를 10%/10.5%/11.0% 증가시킨다.",
+        "description_en": "Decrease all foes' DEF by 32.0%/33.6%/35.2% and increase damage taken by 10.0%/10.5%/11.0% for 3 turns.",
+        "description_jp": "3ターンの間、敵全体の防御力を32.0%/33.6%/35.2%低下させ、受けるダメージを10.0%/10.5%/11.0%増加させる。",
         "type": "지원",
         "target": "전체",
         "icon": "디버프광역",

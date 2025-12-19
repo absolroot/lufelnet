@@ -282,251 +282,267 @@ alternate_urls:
                 }
             });
         </script>
-    </div>
-</div>
 
-<!-- 후원 모달 -->
-<div id="donateModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <p id="donation-message-kr" class="donation-message korean-content">
-            감사합니다. P5X를 분석하길 좋아하는 유저로서 지속적으로 업데이트하고 있습니다. 
-            <br>
-            응원해주신다면 사이트를 보다 발전시키는 좋은 원동력으로 삼겠습니다.
-            <br>
-            진심으로 감사드립니다.
-        </p>
-        <p id="donation-message-en" class="donation-message english-content" style="display: none;">
-            As a user who truly loves P5X, I am continuously managing lufel.net.<br>
-            Your donation will be a great driving force for improving the site. Thank you sincerely.
-        </p>
-        <p id="donation-message-jp" class="donation-message japanese-content" style="display: none;">
-            P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>
-            あなたの寄付はサイトを改善する大きな原動力になります。心から感謝いたします。
-        </p>
-        
-        <div class="donation-methods">
-            <div class="kofi-container">
-                <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'S6S11F0PUN');kofiwidget2.draw();</script>
-            </div>
-            
-            <!--
-            <div class="bmc-container">
-                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="absol" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
-            </div>-->
-            
-            <div class="kakao-pay-container" id="kakao-pay-container">
-                <button id="kakaoPayButton" class="kakao-pay-button">Kakaopay</button>
-            </div>
+        <div class="about-section recent-update-content drag-me">
+            <h2 id="recent-updates-title">최신 업데이트</h2>
+            <div id="recent-update-list"></div>
+            <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;" data-text-more="더보기">더보기</button>
         </div>
     </div>
 </div>
 
-<!-- 카카오페이 QR 모달 -->
-<div id="kakaoPayModal" class="modal">
-    <div class="modal-content kakao-modal">
-        <span class="close-button">&times;</span>
-        <div class="kakao-qr-container">
-            <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR" class="kakao-qr">
-        </div>
-    </div>
-</div>
-
-<!-- 교환코드 모달 -->
-<div id="exchangeCodeModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h3>KR 교환코드 (v4.4.1)</h3>
-        <p class="exchange-notice">
-            한국 서버 크리에이터 프로그램을 통해 제공되는 교환코드입니다. 비정기적으로 업데이트 될 수 있습니다.
-        </p>
-        <div class="exchange-codes" id="exchangeCodesContainer">
-            <!-- 코드들이 JavaScript로 동적 생성됩니다 -->
-        </div>
-    </div>
-</div>
-
-<script>
-    // 다국어 지원 함수
-    async function updateLanguageContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
-        // 다국어 데이터 정의
-        const i18nData = {
-            kr: {
-                language_notice: "",
-                site_title: "루페르넷 lufel.net",
-                contact_title: "문의 및 피드백",
-                thanks_title: "Thanks To",
-                donate_button: "서포트 | Support"
-            },
-            en: {
-                language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
-                site_title: "Lufelnet lufel.net",
-                contact_title: "Contact & Feedback",
-                thanks_title: "Thanks To",
-                donate_button: "Support | Donate"
-            },
-            jp: {
-                language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
-                site_title: "Lufelnet lufel.net",
-                contact_title: "お問い合わせ・フィードバック",
-                thanks_title: "Thanks To",
-                donate_button: "サポート | 寄付"
-            }
-        };
-        
-        const data = i18nData[currentLang];
-        if (!data) return;
-        
-        // 언어 안내 메시지
-        /*
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
-        }*/
-        
-        // 제목 업데이트
-        const siteTitle = document.getElementById('site-title');
-        const contactTitle = document.getElementById('contact-title');
-        const thanksTitle = document.getElementById('thanks-title');
-        const donateButton = document.getElementById('donateButton');
-        
-        if (siteTitle) siteTitle.textContent = data.site_title;
-        if (contactTitle) contactTitle.textContent = data.contact_title;
-        if (thanksTitle) thanksTitle.textContent = data.thanks_title;
-        if (donateButton) donateButton.textContent = data.donate_button;
-        
-        // 언어별 콘텐츠 표시/숨김
-        const koreanContent = document.querySelectorAll('.korean-content');
-        const englishContent = document.querySelectorAll('.english-content');
-        const japaneseContent = document.querySelectorAll('.japanese-content');
-        
-        // 모든 언어 콘텐츠 숨김
-        koreanContent.forEach(el => el.style.display = 'none');
-        englishContent.forEach(el => el.style.display = 'none');
-        japaneseContent.forEach(el => el.style.display = 'none');
-        
-        // 현재 언어 콘텐츠만 표시
-        if (currentLang === 'kr') {
-            koreanContent.forEach(el => el.style.display = 'block');
-        } else if (currentLang === 'en') {
-            englishContent.forEach(el => el.style.display = 'block');
-        } else if (currentLang === 'jp') {
-            japaneseContent.forEach(el => el.style.display = 'block');
-        }
-        
-        // 외국어 사용자에게는 KR 교환코드, 카카오페이, 모달형 후원 숨김, 인라인 Ko-fi 표시
-        if (currentLang !== 'kr') {
-            const exchangeCodeSection = document.getElementById('exchange-code-section');
-            const kakaoPayContainer = document.getElementById('kakao-pay-container');
-            const donateInline = document.getElementById('donate-inline');
-            const donateButton = document.getElementById('donateButton');
-            const inlineText = document.getElementById('donation-inline-text');
-            const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
-            
-            if (exchangeCodeSection) {
-                exchangeCodeSection.style.display = 'none';
-            }
-            if (kakaoPayContainer) {
-                kakaoPayContainer.style.display = 'none';
-            }
-            if (donateInline) {
-                donateInline.style.display = 'block';
-            }
-            if (donateButton) {
-                donateButton.style.display = 'none';
-            }
-            if (donateButtonSection) {
-                donateButtonSection.style.display = 'none';
-            }
-
-            // 기존 모달의 EN/JP 문구를 그대로 재사용하여 인라인에 삽입
-            if (inlineText) {
-                let srcEl = null;
-                if (currentLang === 'en') srcEl = document.getElementById('donation-message-en');
-                else if (currentLang === 'jp') srcEl = document.getElementById('donation-message-jp');
-                if (srcEl) inlineText.innerHTML = srcEl.outerHTML;
-            }
-        }
-    }
-    
-    // 언어별 SEO 설정 함수
-    function updateSEOContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
-        const seoData = {
-            'kr': {
-                title: 'About - 페르소나5 더 팬텀 X 루페르넷',
-                description: '루페르넷은 페르소나5 더 팬텀 X 플레이어를 위한 비공식 정보 사이트입니다. 사이트 소개 및 문의 정보를 확인하세요.'
-            },
-            'en': {
-                title: 'About - Persona 5: The Phantom X LufelNet',
-                description: 'Lufelnet is an unofficial information site for Persona 5: The Phantom X players. Check site introduction and contact information.'
-            },
-            'jp': {
-                title: 'About - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'Lufelnetはペルソナ5 ザ・ファントム Xプレイヤーのための非公式情報サイトです。サイト紹介とお問い合わせ情報をご確認ください。'
-            }
-        };
-        
-        const currentSEO = seoData[currentLang] || seoData['kr'];
-        
-        // 타이틀 업데이트
-        document.title = currentSEO.title;
-        
-        // 메타 태그 업데이트
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        Navigation.load('about');
-        
-        // SEO 설정 업데이트
-        updateSEOContent();
-        
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
-            const hasLangParam = window.location.search.includes('lang=');
-            if (hasLangParam) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                updateLanguageContent().then(() => {
-                    // 언어 변경 후 SEO 다시 업데이트
-                    updateSEOContent();
-                    initializePageContent();
-                });
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
+        <!-- 후원 모달 -->
+        <div id="donateModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <p id="donation-message-kr" class="donation-message korean-content">
+                    감사합니다. P5X를 분석하길 좋아하는 유저로서 지속적으로 업데이트하고 있습니다. 
+                    <br>
+                    응원해주신다면 사이트를 보다 발전시키는 좋은 원동력으로 삼겠습니다.
+                    <br>
+                    진심으로 감사드립니다.
+                </p>
+                <p id="donation-message-en" class="donation-message english-content" style="display: none;">
+                    As a user who truly loves P5X, I am continuously managing lufel.net.<br>
+                    Your donation will be a great driving force for improving the site. Thank you sincerely.
+                </p>
+                <p id="donation-message-jp" class="donation-message japanese-content" style="display: none;">
+                    P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>
+                    あなたの寄付はサイトを改善する大きな原動力になります。心から感謝いたします。
+                </p>
                 
-                updateLanguageContent().then(() => {
-                    updateSEOContent();
-                    initializePageContent();
-                });
-            }
-        } else {
-            updateLanguageContent();
-            initializePageContent();
-        }
-    });
+                <div class="donation-methods">
+                    <div class="kofi-container">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'S6S11F0PUN');kofiwidget2.draw();</script>
+                    </div>
+                    
+                    <!--
+                    <div class="bmc-container">
+                        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="absol" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+                    </div>-->
+                    
+                    <div class="kakao-pay-container" id="kakao-pay-container">
+                        <button id="kakaoPayButton" class="kakao-pay-button">Kakaopay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    function initializePageContent() {
-        
-        // 교환코드 목록 (새로운 코드로 업데이트하려면 이 문자열만 수정하면 됩니다)
-        const exchangeCodes = `14304377KZKKCHVG
+        <!-- 카카오페이 QR 모달 -->
+        <div id="kakaoPayModal" class="modal">
+            <div class="modal-content kakao-modal">
+                <span class="close-button">&times;</span>
+                <div class="kakao-qr-container">
+                    <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR" class="kakao-qr">
+                </div>
+            </div>
+        </div>
+
+        <!-- 교환코드 모달 -->
+        <div id="exchangeCodeModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>KR 교환코드 (v4.4.1)</h3>
+                <p class="exchange-notice">
+                    한국 서버 크리에이터 프로그램을 통해 제공되는 교환코드입니다. 비정기적으로 업데이트 될 수 있습니다.
+                </p>
+                <div class="exchange-codes" id="exchangeCodesContainer">
+                    <!-- 코드들이 JavaScript로 동적 생성됩니다 -->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 다국어 지원 함수
+            async function updateLanguageContent() {
+                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                
+                // 다국어 데이터 정의
+                const i18nData = {
+                    kr: {
+                        language_notice: "",
+                        site_title: "루페르넷 lufel.net",
+                        contact_title: "문의 및 피드백",
+                        thanks_title: "Thanks To",
+                        donate_button: "서포트 | Support",
+                        recent_updates_title: "최신 업데이트",
+                        recent_updates_more: "더보기"
+                    },
+                    en: {
+                        language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
+                        site_title: "Lufelnet lufel.net",
+                        contact_title: "Contact & Feedback",
+                        thanks_title: "Thanks To",
+                        donate_button: "Support | Donate",
+                        recent_updates_title: "Recent Updates",
+                        recent_updates_more: "More"
+                    },
+                    jp: {
+                        language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
+                        site_title: "Lufelnet lufel.net",
+                        contact_title: "お問い合わせ・フィードバック",
+                        thanks_title: "Thanks To",
+                        donate_button: "サポート | 寄付",
+                        recent_updates_title: "最新アップデート",
+                        recent_updates_more: "もっと見る"
+                    }
+                };
+                
+                const data = i18nData[currentLang];
+                if (!data) return;
+                
+                // 언어 안내 메시지
+                /*
+                if (currentLang !== 'kr') {
+                    const notice = document.getElementById('language-notice');
+                    const noticeText = document.getElementById('language-notice-text');
+                    if (notice && noticeText && data.language_notice) {
+                        noticeText.textContent = data.language_notice;
+                        notice.style.display = 'block';
+                    }
+                }*/
+                
+                // 제목 업데이트
+                const siteTitle = document.getElementById('site-title');
+                const contactTitle = document.getElementById('contact-title');
+                const thanksTitle = document.getElementById('thanks-title');
+                const donateButton = document.getElementById('donateButton');
+                const recentUpdatesTitle = document.getElementById('recent-updates-title');
+                const showMoreUpdatesBtn = document.getElementById('show-more-updates-btn');
+                
+                if (siteTitle) siteTitle.textContent = data.site_title;
+                if (contactTitle) contactTitle.textContent = data.contact_title;
+                if (thanksTitle) thanksTitle.textContent = data.thanks_title;
+                if (donateButton) donateButton.textContent = data.donate_button;
+                if (recentUpdatesTitle) recentUpdatesTitle.textContent = data.recent_updates_title;
+                if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = data.recent_updates_more;
+                
+                // 언어별 콘텐츠 표시/숨김
+                const koreanContent = document.querySelectorAll('.korean-content');
+                const englishContent = document.querySelectorAll('.english-content');
+                const japaneseContent = document.querySelectorAll('.japanese-content');
+                
+                // 모든 언어 콘텐츠 숨김
+                koreanContent.forEach(el => el.style.display = 'none');
+                englishContent.forEach(el => el.style.display = 'none');
+                japaneseContent.forEach(el => el.style.display = 'none');
+                
+                // 현재 언어 콘텐츠만 표시
+                if (currentLang === 'kr') {
+                    koreanContent.forEach(el => el.style.display = 'block');
+                } else if (currentLang === 'en') {
+                    englishContent.forEach(el => el.style.display = 'block');
+                } else if (currentLang === 'jp') {
+                    japaneseContent.forEach(el => el.style.display = 'block');
+                }
+                
+                // 외국어 사용자에게는 KR 교환코드, 카카오페이, 모달형 후원 숨김, 인라인 Ko-fi 표시
+                if (currentLang !== 'kr') {
+                    const exchangeCodeSection = document.getElementById('exchange-code-section');
+                    const kakaoPayContainer = document.getElementById('kakao-pay-container');
+                    const donateInline = document.getElementById('donate-inline');
+                    const donateButton = document.getElementById('donateButton');
+                    const inlineText = document.getElementById('donation-inline-text');
+                    const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
+                    
+                    if (exchangeCodeSection) {
+                        exchangeCodeSection.style.display = 'none';
+                    }
+                    if (kakaoPayContainer) {
+                        kakaoPayContainer.style.display = 'none';
+                    }
+                    if (donateInline) {
+                        donateInline.style.display = 'block';
+                    }
+                    if (donateButton) {
+                        donateButton.style.display = 'none';
+                    }
+                    if (donateButtonSection) {
+                        donateButtonSection.style.display = 'none';
+                    }
+
+                    // 기존 모달의 EN/JP 문구를 그대로 재사용하여 인라인에 삽입
+                    if (inlineText) {
+                        let srcEl = null;
+                        if (currentLang === 'en') srcEl = document.getElementById('donation-message-en');
+                        else if (currentLang === 'jp') srcEl = document.getElementById('donation-message-jp');
+                        if (srcEl) inlineText.innerHTML = srcEl.outerHTML;
+                    }
+                }
+            }
+            
+            // 언어별 SEO 설정 함수
+            function updateSEOContent() {
+                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                
+                const seoData = {
+                    'kr': {
+                        title: 'About - 페르소나5 더 팬텀 X 루페르넷',
+                        description: '루페르넷은 페르소나5 더 팬텀 X 플레이어를 위한 비공식 정보 사이트입니다. 사이트 소개 및 문의 정보를 확인하세요.'
+                    },
+                    'en': {
+                        title: 'About - Persona 5: The Phantom X LufelNet',
+                        description: 'Lufelnet is an unofficial information site for Persona 5: The Phantom X players. Check site introduction and contact information.'
+                    },
+                    'jp': {
+                        title: 'About - ペルソナ5 ザ・ファントム X LufelNet',
+                        description: 'Lufelnetはペルソナ5 ザ・ファントム Xプレイヤーのための非公式情報サイトです。サイト紹介とお問い合わせ情報をご確認ください。'
+                    }
+                };
+                
+                const currentSEO = seoData[currentLang] || seoData['kr'];
+                
+                // 타이틀 업데이트
+                document.title = currentSEO.title;
+                
+                // 메타 태그 업데이트
+                const metaDescription = document.querySelector('meta[name="description"]');
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDescription = document.querySelector('meta[property="og:description"]');
+                
+                if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
+                if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
+                if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                Navigation.load('about');
+                
+                // SEO 설정 업데이트
+                updateSEOContent();
+                
+                // 언어 라우터 초기화 및 콘텐츠 업데이트
+                if (typeof LanguageRouter !== 'undefined') {
+                    // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
+                    const hasLangParam = window.location.search.includes('lang=');
+                    if (hasLangParam) {
+                        // 언어 파라미터가 있으면 바로 콘텐츠 로드
+                        updateLanguageContent().then(() => {
+                            // 언어 변경 후 SEO 다시 업데이트
+                            updateSEOContent();
+                            initializePageContent();
+                        });
+                    } else {
+                        // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
+                        const currentUrl = new URL(window.location);
+                        currentUrl.searchParams.set('lang', 'kr');
+                        window.history.replaceState({}, '', currentUrl);
+                        
+                        updateLanguageContent().then(() => {
+                            updateSEOContent();
+                            initializePageContent();
+                        });
+                    }
+                } else {
+                    updateLanguageContent();
+                    initializePageContent();
+                }
+            });
+
+            function initializePageContent() {
+                
+                // 교환코드 목록 (새로운 코드로 업데이트하려면 이 문자열만 수정하면 됩니다)
+                const exchangeCodes = `14304377KZKKCHVG
 23200694UEZZUPWC
 83755731UGJITCAY
 47051430UAYXCNRY
@@ -557,145 +573,244 @@ alternate_urls:
 27935360VUYIRBEQ
 03003539VWHXXISH`;
 
-        // 교환코드 동적 생성 함수
-        function generateExchangeCodes() {
-            const container = document.getElementById('exchangeCodesContainer');
-            const codes = exchangeCodes.trim().split('\n').filter(code => code.trim() !== '');
-            
-            // 한 번에 모든 HTML을 생성하여 DOM 조작 최소화
-            const codeItemsHTML = codes.map(code => 
-                `<div class="code-item" data-code="${code.trim()}">${code.trim()}</div>`
-            ).join('');
-            
-            container.innerHTML = codeItemsHTML;
-        }
-
-        // 클립보드 복사 함수
-        function copyToClipboard(element, code) {
-            navigator.clipboard.writeText(code).then(() => {
-                // 복사 완료 피드백
-                const originalText = element.textContent;
-                
-                element.classList.add('copied');
-                element.textContent = '복사됨!';
-                
-                setTimeout(() => {
-                    element.classList.remove('copied');
-                    element.textContent = originalText;
-                }, 800);
-            }).catch(err => {
-                console.error('복사 실패:', err);
-                // 복사 실패 시 폴백
-                element.classList.add('copy-failed');
-                element.textContent = '복사 실패';
-                setTimeout(() => {
-                    element.classList.remove('copy-failed');
-                    element.textContent = code;
-                }, 800);
-            });
-        }
-
-        // 이벤트 위임을 사용한 클릭 이벤트 처리
-        function setupCodeClickHandler() {
-            const container = document.getElementById('exchangeCodesContainer');
-            container.addEventListener('click', function(e) {
-                if (e.target.classList.contains('code-item')) {
-                    const code = e.target.dataset.code;
-                    copyToClipboard(e.target, code);
+                // 교환코드 동적 생성 함수
+                function generateExchangeCodes() {
+                    const container = document.getElementById('exchangeCodesContainer');
+                    const codes = exchangeCodes.trim().split('\n').filter(code => code.trim() !== '');
+                    
+                    // 한 번에 모든 HTML을 생성하여 DOM 조작 최소화
+                    const codeItemsHTML = codes.map(code => 
+                        `<div class="code-item" data-code="${code.trim()}">${code.trim()}</div>`
+                    ).join('');
+                    
+                    container.innerHTML = codeItemsHTML;
                 }
-            });
-        }
-        
-        // 모달 관련 기능 (KR 전용)
-        const donateModal = document.getElementById('donateModal');
-        const donateBtn = document.getElementById('donateButton');
-        const donateCloseButton = document.querySelector('#donateModal .close-button');
-        
-        // 카카오페이 모달 관련 기능
-        const kakaoPayModal = document.getElementById('kakaoPayModal');
-        const kakaoPayBtn = document.getElementById('kakaoPayButton');
-        const kakaoCloseButton = document.querySelector('#kakaoPayModal .close-button');
-        
-        // 교환코드 모달 관련 기능
-        const exchangeCodeModal = document.getElementById('exchangeCodeModal');
-        const exchangeCodeBtn = document.getElementById('exchangeCodeButton');
-        const exchangeCloseButton = document.querySelector('#exchangeCodeModal .close-button');
-        
-        // 이벤트 핸들러 초기화 (한 번만 실행)
-        let isCodeHandlerSetup = false;
-        
-        // 언어에 따라 후원 방식 분기
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        if (currentLang === 'kr') {
-            donateBtn.onclick = function() {
-                donateModal.style.display = 'block';
-            }
-        } else {
-            // EN/JP: 인라인 Ko-fi 렌더링 (필요 시 스크롤)
-            renderKoFiInline();
-            if (donateBtn) {
-                donateBtn.onclick = function() {
-                    const inline = document.getElementById('donate-inline');
-                    if (inline) inline.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // 클립보드 복사 함수
+                function copyToClipboard(element, code) {
+                    navigator.clipboard.writeText(code).then(() => {
+                        // 복사 완료 피드백
+                        const originalText = element.textContent;
+                        
+                        element.classList.add('copied');
+                        element.textContent = '복사됨!';
+                        
+                        setTimeout(() => {
+                            element.classList.remove('copied');
+                            element.textContent = originalText;
+                        }, 800);
+                    }).catch(err => {
+                        console.error('복사 실패:', err);
+                        // 복사 실패 시 폴백
+                        element.classList.add('copy-failed');
+                        element.textContent = '복사 실패';
+                        setTimeout(() => {
+                            element.classList.remove('copy-failed');
+                            element.textContent = code;
+                        }, 800);
+                    });
                 }
-            }
-        }
-        
-        donateCloseButton.onclick = function() {
-            donateModal.style.display = 'none';
-        }
-        
-        kakaoPayBtn.onclick = function() {
-            donateModal.style.display = 'none';
-            kakaoPayModal.style.display = 'block';
-        }
-        
-        kakaoCloseButton.onclick = function() {
-            kakaoPayModal.style.display = 'none';
-        }
-        
-        exchangeCodeBtn.onclick = function() {
-            exchangeCodeModal.style.display = 'block';
-            // 모달이 열릴 때 코드 생성
-            generateExchangeCodes();
-            
-            // 이벤트 핸들러는 한 번만 설정
-            if (!isCodeHandlerSetup) {
-                setupCodeClickHandler();
-                isCodeHandlerSetup = true;
-            }
-        }
-        
-        exchangeCloseButton.onclick = function() {
-            exchangeCodeModal.style.display = 'none';
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == donateModal) {
-                donateModal.style.display = 'none';
-            }
-            if (event.target == kakaoPayModal) {
-                kakaoPayModal.style.display = 'none';
-            }
-            if (event.target == exchangeCodeModal) {
-                exchangeCodeModal.style.display = 'none';
-            }
-        }
-        
-        // Ko-fi 인라인 렌더링 (스크립트 로드 금지: body 덮어쓰는 문제 방지)
-        function renderKoFiInline() {
-            const container = document.getElementById('kofiInline');
-            if (!container) return;
-            container.innerHTML = `
-                <div class="btn-container">
-                    <a title="Support me on ko-fi.com" class="kofi-button" style="background-color:#72a4f2; display:inline-block; padding:8px 12px; border-radius:6px; color:#fff; text-decoration:none; font-weight:600;"
-                       href="https://ko-fi.com/S6S11F0PUN" target="_blank" rel="noopener">
-                        <span class="kofitext" style="display:inline-flex; align-items:center; gap:6px;">
-                            <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg" style="height:18px; vertical-align:middle;">
-                            Support me on Ko-fi
-                        </span>
-                    </a>
-                </div>`;
-        }
-    } // initializePageContent 함수 종료
-</script>
+
+                // 이벤트 위임을 사용한 클릭 이벤트 처리
+                function setupCodeClickHandler() {
+                    const container = document.getElementById('exchangeCodesContainer');
+                    container.addEventListener('click', function(e) {
+                        if (e.target.classList.contains('code-item')) {
+                            const code = e.target.dataset.code;
+                            copyToClipboard(e.target, code);
+                        }
+                    });
+                }
+                
+                // 모달 관련 기능 (KR 전용)
+                const donateModal = document.getElementById('donateModal');
+                const donateBtn = document.getElementById('donateButton');
+                const donateCloseButton = document.querySelector('#donateModal .close-button');
+                
+                // 카카오페이 모달 관련 기능
+                const kakaoPayModal = document.getElementById('kakaoPayModal');
+                const kakaoPayBtn = document.getElementById('kakaoPayButton');
+                const kakaoCloseButton = document.querySelector('#kakaoPayModal .close-button');
+                
+                // 교환코드 모달 관련 기능
+                const exchangeCodeModal = document.getElementById('exchangeCodeModal');
+                const exchangeCodeBtn = document.getElementById('exchangeCodeButton');
+                const exchangeCloseButton = document.querySelector('#exchangeCodeModal .close-button');
+                
+                // 이벤트 핸들러 초기화 (한 번만 실행)
+                let isCodeHandlerSetup = false;
+                
+                // 언어에 따라 후원 방식 분기
+                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                if (currentLang === 'kr') {
+                    if (donateBtn && donateModal) {
+                        donateBtn.onclick = function() {
+                            donateModal.style.display = 'block';
+                        }
+                    }
+                } else {
+                    // EN/JP: 인라인 Ko-fi 렌더링 (필요 시 스크롤)
+                    renderKoFiInline();
+                    if (donateBtn) {
+                        donateBtn.onclick = function() {
+                            const inline = document.getElementById('donate-inline');
+                            if (inline) inline.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                }
+                
+                if (donateCloseButton && donateModal) {
+                    donateCloseButton.onclick = function() {
+                        donateModal.style.display = 'none';
+                    }
+                }
+                
+                if (kakaoPayBtn && donateModal && kakaoPayModal) {
+                    kakaoPayBtn.onclick = function() {
+                        donateModal.style.display = 'none';
+                        kakaoPayModal.style.display = 'block';
+                    }
+                }
+                
+                if (kakaoCloseButton && kakaoPayModal) {
+                    kakaoCloseButton.onclick = function() {
+                        kakaoPayModal.style.display = 'none';
+                    }
+                }
+                
+                if (exchangeCodeBtn && exchangeCodeModal) {
+                    exchangeCodeBtn.onclick = function() {
+                        exchangeCodeModal.style.display = 'block';
+                        generateExchangeCodes();
+                        if (!isCodeHandlerSetup) {
+                            setupCodeClickHandler();
+                            isCodeHandlerSetup = true;
+                        }
+                    }
+                }
+                
+                if (exchangeCloseButton && exchangeCodeModal) {
+                    exchangeCloseButton.onclick = function() {
+                        exchangeCodeModal.style.display = 'none';
+                    }
+                }
+                
+                window.onclick = function(event) {
+                    if (donateModal && event.target == donateModal) {
+                        donateModal.style.display = 'none';
+                    }
+                    if (kakaoPayModal && event.target == kakaoPayModal) {
+                        kakaoPayModal.style.display = 'none';
+                    }
+                    if (exchangeCodeModal && event.target == exchangeCodeModal) {
+                        exchangeCodeModal.style.display = 'none';
+                    }
+                }
+                
+                // Ko-fi 인라인 렌더링 (스크립트 로드 금지: body 덮어쓰는 문제 방지)
+                function renderKoFiInline() {
+                    const container = document.getElementById('kofiInline');
+                    if (!container) return;
+                    container.innerHTML = `
+                        <div class="btn-container">
+                            <a title="Support me on ko-fi.com" class="kofi-button" style="background-color:#72a4f2; display:inline-block; padding:8px 12px; border-radius:6px; color:#fff; text-decoration:none; font-weight:600;"
+                               href="https://ko-fi.com/S6S11F0PUN" target="_blank" rel="noopener">
+                                <span class="kofitext" style="display:inline-flex; align-items:center; gap:6px;">
+                                    <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg" style="height:18px; vertical-align:middle;">
+                                    Support me on Ko-fi
+                                </span>
+                            </a>
+                        </div>`;
+                }
+
+                let allUpdates = [];
+                const MAX_TOTAL_LINES = 10;
+
+                async function loadUpdates() {
+                    const updateList = document.getElementById('recent-update-list');
+                    const showMoreBtn = document.getElementById('show-more-updates-btn');
+                    if (!updateList || !showMoreBtn) return;
+
+                    try {
+                        const response = await fetch(`${BASE_URL}/data/kr/updates.csv?v=${APP_VERSION}`);
+                        const data = await response.text();
+                        allUpdates = data.split('\n')
+                            .slice(1)
+                            .filter(line => line.trim())
+                            .map(line => {
+                                const [date, version, content] = line.split(',');
+                                const formattedDate = date.replace(/^20/, '');
+                                return { date: formattedDate, version, content: content.replace('|', ', ') };
+                            });
+
+                        showMoreUpdates();
+
+                        showMoreBtn.style.display = 'block';
+                        showMoreBtn.addEventListener('click', () => {
+                            showMoreBtn.style.display = 'none';
+                            showAllUpdates();
+                        });
+                    } catch (error) {
+                        console.error('Failed to load update history:', error);
+                    }
+                }
+
+                function showAllUpdates() {
+                    const updateList = document.getElementById('recent-update-list');
+                    if (!updateList) return;
+                    updateList.innerHTML = '';
+
+                    allUpdates.forEach(update => {
+                        const updateElement = document.createElement('div');
+                        updateElement.className = 'recent-update-content-text';
+
+                        const contentLines = update.content.split('\\n').join('<br>');
+                        updateElement.innerHTML = `
+                            <div class="date">${update.date}</div>
+                            <div class="version">${update.version}</div>
+                            <div class="content"><p>${contentLines}</p></div>
+                        `;
+                        updateList.appendChild(updateElement);
+                    });
+                }
+
+                function showMoreUpdates() {
+                    const updateList = document.getElementById('recent-update-list');
+                    if (!updateList) return;
+                    updateList.innerHTML = '';
+                    let totalLines = 0;
+
+                    for (const update of allUpdates) {
+                        const lines = update.content.split('\\n');
+                        if (totalLines + lines.length > MAX_TOTAL_LINES) {
+                            const remainingLines = MAX_TOTAL_LINES - totalLines;
+                            if (remainingLines > 0) {
+                                const updateElement = document.createElement('div');
+                                updateElement.className = 'recent-update-content-text';
+                                const visibleContent = lines.slice(0, remainingLines).join('<br>');
+                                updateElement.innerHTML = `
+                                    <div class="date">${update.date}</div>
+                                    <div class="version">${update.version}</div>
+                                    <div class="content"><p>${visibleContent} ...</p></div>
+                                `;
+                                updateList.appendChild(updateElement);
+                            }
+                            break;
+                        }
+
+                        const updateElement = document.createElement('div');
+                        updateElement.className = 'recent-update-content-text';
+                        updateElement.innerHTML = `
+                            <div class="date">${update.date}</div>
+                            <div class="version">${update.version}</div>
+                            <div class="content"><p>${lines.join('<br>')}</p></div>
+                        `;
+                        updateList.appendChild(updateElement);
+                        totalLines += lines.length;
+                        if (totalLines >= MAX_TOTAL_LINES) break;
+                    }
+                }
+
+                loadUpdates();
+            } // initializePageContent 함수 종료
+        </script>

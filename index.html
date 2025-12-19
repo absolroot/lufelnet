@@ -1,8 +1,8 @@
 ---
 layout: default
 custom_css: [home, tactic-posts]
-custom_js: [tactic-posts-home, tactic-preview, /tactic/share, language-router]
-custom_data: [/characters/characters.js, /revelations/revelations.js]
+custom_js: [tactic-posts-home, tactic-preview, /tactic/share, home/popular-characters]
+custom_data: [/characters/characters.js]
 permalink: /
 redirect_from:
 - /kr/
@@ -100,70 +100,16 @@ jp: /?lang=jp
         <div class="quick-grid" id="quick-grid"></div>
         <div class="update-notice"></div>
     </div>
+    <div class="separator-line"></div>
+    <div class="popular-content" data-max-count="10">
+        <div class="bosses-header">
+            <div class="bosses-title" id="popular-characters-title">인기 괴도</div>
+        </div>
+        <div class="character-cards" id="popular-character-cards"></div>
+    </div>
     <!-- Guild Bosses Section -->
     <div id="home-bosses-root"></div>
     <div class="separator-line"></div>
-    <div class="middle-container">
-        <div class="popular-content">
-            <h2 id="popular-characters-title">인기 괴도</h2>
-            <div class="character-cards">
-                <div class="character-card new">
-                    <div class="character-card-img"><a href="./character.html?name=슌·프론티어&v=' + APP_VERSION"
-                            style="text-decoration: none; color: inherit;"><img
-                                src="{{ site.baseurl }}/assets/img/tier/슌·프론티어.webp" alt="슌·프론티어"></a></div>
-                    <div class="character-card-text">
-                        <p>카노 슌·프론티어</p>
-                    </div>
-                </div>
-                <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=쇼키·암야&v=' + APP_VERSION"
-                            style="text-decoration: none; color: inherit;"><img
-                                src="{{ site.baseurl }}/assets/img/tier/쇼키·암야.webp" alt="쇼키·암야"></a></div>
-                    <div class="character-card-text">
-                        <p>이케나미 쇼키·암야</p>
-                    </div>
-                </div>
-                <div class="character-card new">
-                    <div class="character-card-img"><a href="./character.html?name=YUI&v=' + APP_VERSION"
-                            style="text-decoration: none; color: inherit;"><img
-                                src="{{ site.baseurl }}/assets/img/tier/YUI.webp" alt="YUI"></a></div>
-                    <div class="character-card-text">
-                        <p>YUI</p>
-                    </div>
-                </div>
-                <div class="character-card new">
-                    <div class="character-card-img"><a href="./character.html?name=유우미&v=' + APP_VERSION"
-                            style="text-decoration: none; color: inherit;"><img
-                                src="{{ site.baseurl }}/assets/img/tier/유우미.webp" alt="유우미"></a></div>
-                    <div class="character-card-text">
-                        <p>시이나 유우미</p>
-                    </div>
-                </div>
-                <div class="character-card new">
-                    <div class="character-card-img"><a href="./character.html?name=토모코·여름&v=' + APP_VERSION"
-                            style="text-decoration: none; color: inherit;"><img
-                                src="{{ site.baseurl }}/assets/img/tier/토모코·여름.webp" alt="토모코·여름"></a></div>
-                    <div class="character-card-text">
-                        <p>노게 토모코·여름</p>
-                    </div>
-                </div>
-                <div class="character-card">
-                    <div class="character-card-img"><a href="./character.html?name=후카&v=' + APP_VERSION"
-                            style="text-decoration: none; color: inherit;"><img
-                                src="{{ site.baseurl }}/assets/img/tier/후카.webp" alt="후카"></a></div>
-                    <div class="character-card-text">
-                        <p>야마기시 후카</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="recent-update-content drag-me">
-            <h2 id="recent-updates-title">최신 업데이트</h2>
-            <div id="recent-update-list"></div>
-            <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;"
-                data-text-more="더보기">더보기</button>
-        </div>
-    </div>
     <div class="guides-container">
         <h2 id="guides-title">가이드</h2>
         <div class="guide-cards">
@@ -376,7 +322,7 @@ jp: /?lang=jp
         });
 
         // 인기 캐릭터 링크들 업데이트
-        const characterLinks = document.querySelectorAll('.character-card-img a[href*="./character/character.html"]');
+        const characterLinks = document.querySelectorAll('.character-card-img a[href*="/character/character.html"]');
         characterLinks.forEach(link => {
             const url = new URL(link.href);
             url.searchParams.set('lang', currentLang);
@@ -406,7 +352,7 @@ jp: /?lang=jp
                 kr: {
                     language_notice: "",
                     site_title: "P5X 루페르넷",
-                    menu_character: "괴도",
+                    menu_character: "캐릭터",
                     menu_persona: "페르소나",
                     menu_revelations: "계시",
                     menu_tactic: "택틱",
@@ -948,146 +894,21 @@ jp: /?lang=jp
             //console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
         }, 100);
 
+
+        // 광고 흰 박스 숨김
         /*
-        const musicPlayer = document.getElementById('music-player');
-        const musicControl = document.getElementById('musicControl');
-        const musicIcon = document.getElementById('musicIcon');
-        let isPlaying = false;
-
-        // Music control button click event
-        musicControl.addEventListener('click', () => {
-            if (!isPlaying) {
-                musicPlayer.contentWindow.postMessage('play', '*');
-                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-on.png';
-                musicIcon.alt = '음악 중지';
-            } else {
-                musicPlayer.contentWindow.postMessage('pause', '*');
-                musicIcon.src = '{{ site.baseurl }}/assets/img/ui/music-off.png';
-                musicIcon.alt = '음악 재생';
-            }
-            isPlaying = !isPlaying;
-        });
-
-        // Receive music state
-        window.addEventListener('message', (event) => {
-            if (event.data === 'playing' || event.data === 'paused') {
-                sessionStorage.setItem('musicState', event.data);
-                isPlaying = event.data === 'playing';
-                musicIcon.src = isPlaying ? '{{ site.baseurl }}/assets/img/ui/music-on.png' : '{{ site.baseurl }}/assets/img/ui/music-off.png';
-                musicIcon.alt = isPlaying ? '음악 중지' : '음악 재생';
-            }
-        });
-
-        // Save current state before page unload
-        window.addEventListener('beforeunload', () => {
-            sessionStorage.setItem('musicState', isPlaying ? 'playing' : 'paused');
-        });*/
-    });
-
-    // Load update history
-    let allUpdates = []; // Store all updates
-    const MAX_TOTAL_LINES = 6; // 전체 표시할 최대 줄 수
-    const LOAD_MORE_COUNT = 10; // Number of updates to load when "more" button is clicked
-    let currentlyShown = 0;
-
-    async function loadUpdates() {
-        try {
-            const response = await fetch(`{{ site.baseurl }}/data/kr/updates.csv?v=${APP_VERSION}`);
-            const data = await response.text();
-
-            // Parse CSV
-            allUpdates = data.split('\n')
-                .slice(1) // Remove header
-                .filter(line => line.trim()) // Remove empty lines
-                .map(line => {
-                    const [date, version, content] = line.split(',');
-                    // Remove '20' prefix from date
-                    const formattedDate = date.replace(/^20/, '');
-                    return { date: formattedDate, version, content: content.replace('|', ', ') };
-                });
-
-            // Show initial updates
-            showMoreUpdates();
-
-            // Set visibility of "more" button
-            const showMoreBtn = document.getElementById('show-more-updates-btn');
-            showMoreBtn.style.display = 'block';
-            showMoreBtn.addEventListener('click', () => {
-                showMoreBtn.style.display = 'none';
-                showAllUpdates();
-            });
-        } catch (error) {
-            console.error('Failed to load update history:', error);
-        }
-    }
-
-    // 모든 업데이트를 표시하는 함수
-    function showAllUpdates() {
-        const updateList = document.getElementById('recent-update-list');
-        updateList.innerHTML = ''; // 기존 내용 초기화
-
-        allUpdates.forEach(update => {
-            const updateElement = document.createElement('div');
-            updateElement.className = 'recent-update-content-text';
-
-            const contentLines = update.content.split('\\n').join('<br>');
-
-            updateElement.innerHTML = `
-                <div class="date">${update.date}</div>
-                <div class="version">${update.version}</div>
-                <div class="content"><p>${contentLines}</p></div>
-            `;
-            updateList.appendChild(updateElement);
-        });
-    }
-
-    // 초기 5줄만 표시하는 함수
-    function showMoreUpdates() {
-        const updateList = document.getElementById('recent-update-list');
-        let totalLines = 0;
-        let updatesShown = 0;
-
-        for (const update of allUpdates) {
-            const lines = update.content.split('\\n');
-
-            if (totalLines + lines.length > MAX_TOTAL_LINES) {
-                // 남은 줄 수 계산
-                const remainingLines = MAX_TOTAL_LINES - totalLines;
-                if (remainingLines > 0) {
-                    const updateElement = document.createElement('div');
-                    updateElement.className = 'recent-update-content-text';
-
-                    const visibleContent = lines.slice(0, remainingLines).join('<br>');
-
-                    updateElement.innerHTML = `
-                        <div class="date">${update.date}</div>
-                        <div class="version">${update.version}</div>
-                        <div class="content"><p>${visibleContent} ...</p></div>
-                    `;
-                    updateList.appendChild(updateElement);
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => {
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                //console.log("google status", status);
+                //console.log("google adslot", adslot);
+                if (status === "unfilled" || el.querySelector("iframe") === null) {
+                    el.style.display = "none";
                 }
-                break;
-            }
-
-            const updateElement = document.createElement('div');
-            updateElement.className = 'recent-update-content-text';
-
-            updateElement.innerHTML = `
-                <div class="date">${update.date}</div>
-                <div class="version">${update.version}</div>
-                <div class="content"><p>${lines.join('<br>')}</p></div>
-            `;
-            updateList.appendChild(updateElement);
-
-            totalLines += lines.length;
-            updatesShown++;
-
-            if (totalLines >= MAX_TOTAL_LINES) break;
-        }
-    }
-
-    // Load update history on page load
-    document.addEventListener('DOMContentLoaded', loadUpdates);
+            });
+        }, 2000); */ // 광고 로딩 기다렸다가 2초 후 검사
+    });
 
     // 유틸
     function escapeHtml(text) {
@@ -1133,17 +954,4 @@ jp: /?lang=jp
             return date.toLocaleDateString(locale);
         }
     }
-
-    // 광고 흰 박스 숨김
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            //console.log("google status", status);
-            //console.log("google adslot", adslot);
-            if (status === "unfilled" || el.querySelector("iframe") === null) {
-                el.style.display = "none";
-            }
-        });
-    }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
 </script>

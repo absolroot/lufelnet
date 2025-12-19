@@ -807,7 +807,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?v=${APP_VERSION}`;
 
                 // party.js 는 없는 캐릭터가 많으므로, <script> 삽입 대신 fetch로 조용히 시도
-                if (fileBase === 'party') {
+                if (fileBase === 'party' || fileBase === 'innate') {
                     try {
                         const resp = await fetch(baseJs, { cache: 'no-store' });
                         if (!resp || !resp.ok) {
@@ -1162,8 +1162,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const thiefFile = `${characterName}.webp`;
             if (thiefImgEl) thiefImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaImgEl = document.querySelector('.persona-image');
-            const personaFile = `${characterName} - ${character.persona}.webp`;
-            if (personaImgEl) personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
+            const personaFile = (character && character.persona) ? `${characterName} - ${character.persona}.webp` : '';
+            if (personaImgEl) {
+                if (personaFile) {
+                    personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
+                } else {
+                    personaImgEl.removeAttribute('src');
+                }
+            }
         } catch (e) { console.warn('[SAFE:set-images]', e); }
 
         // Set character name (en에서는 로딩 전에 skeleton 사용)

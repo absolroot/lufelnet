@@ -78,7 +78,7 @@
  .character-card.new::after{
    content: 'NEW';
    position: absolute;
-   top: 6px;
+   top: 8px;
    right: 0px;
    padding: 2px 6px;
    font-size: 8px;
@@ -93,7 +93,7 @@
  .character-card.hot::after{
    content: 'HOT';
    position: absolute;
-   top: 6px;
+   top: 8px;
    right: 0px;
    padding: 2px 6px;
    font-size: 8px;

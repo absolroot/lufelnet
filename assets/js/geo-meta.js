@@ -178,10 +178,14 @@
     function loadLanguageData(lang) {
         // 현재 페이지에 필요한 데이터 파일들 체크
         const currentPath = window.location.pathname;
+        const urlParams = new URLSearchParams(window.location.search);
+        const isCharacterDetailPage = (currentPath.endsWith('/character.html') && !!urlParams.get('name'));
         let dataFiles = [];
         
         if (currentPath.includes('/character') || currentPath === '/' || currentPath.includes('/index')) {
-            dataFiles.push('/characters/characters.js');
+            if (!(isCharacterDetailPage && lang !== 'kr')) {
+                dataFiles.push('/characters/characters.js');
+            }
         }
         if (currentPath.includes('/revelations') || currentPath === '/' || currentPath.includes('/index')) {
             dataFiles.push('/revelations/revelations.js');

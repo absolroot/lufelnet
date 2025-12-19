@@ -564,24 +564,74 @@ document.addEventListener('DOMContentLoaded', () => {
         safeRun('updateSkillLevelItems', updateSkillLevelItems);
         safeRun('updateMindItems', updateMindItems);
         const currentPage = document.querySelector('.current-page');
-        const currentLang = getCurrentLanguage();
-        let characterDisplayName = characterData[characterName].name;
+        const headerNameEl = document.querySelector('.character-name');
 
-        // 언어별 캐릭터명 설정
-        if (currentLang === 'en' && characterData[characterName].name_en) {
-            characterDisplayName = characterData[characterName].name_en;
-        } else if (currentLang === 'jp' && characterData[characterName].name_jp) {
-            characterDisplayName = characterData[characterName].name_jp;
-        }
+        const getLocalizedCharacterDisplayName = () => {
+            const lang = getCurrentLanguage();
+            const c = (typeof characterData !== 'undefined' && characterData && characterData[characterName]) ? characterData[characterName] : null;
+            if (!c) return characterName || '';
 
-        currentPage.textContent = characterDisplayName;
+            if (lang === 'en') {
+                return c.name_en || characterName || c.name || '';
+            }
+            if (lang === 'jp') {
+                return c.name_jp || c.name_en || characterName || c.name || '';
+            }
+            return c.name || characterName || '';
+        };
+
+        const applyHeaderNames = () => {
+            const name = getLocalizedCharacterDisplayName();
+            try { if (currentPage) currentPage.textContent = name; } catch (_) { }
+            try { if (headerNameEl) headerNameEl.textContent = name; } catch (_) { }
+        };
+
+        const waitForLocalizedNameAndApply = () => {
+            const lang = getCurrentLanguage();
+            if (lang === 'kr') {
+                applyHeaderNames();
+                return;
+            }
+
+            const isReady = () => {
+                const c = (typeof characterData !== 'undefined' && characterData && characterData[characterName]) ? characterData[characterName] : null;
+                if (!c) return false;
+                if (lang === 'en') return !!c.name_en;
+                if (lang === 'jp') return !!c.name_jp;
+                return true;
+            };
+
+            if (isReady()) {
+                applyHeaderNames();
+                return;
+            }
+
+            applyHeaderNames();
+
+            let attempts = 0;
+            const maxAttempts = 120; // 120 * 50ms = 6000ms
+            const tick = () => {
+                if (isReady() || attempts++ >= maxAttempts) {
+                    applyHeaderNames();
+                } else {
+                    setTimeout(tick, 50);
+                }
+            };
+            tick();
+        };
+
+        safeRun('applyHeaderNames:init', waitForLocalizedNameAndApply);
+        safeRun('applyHeaderNames:languageDetected', () => {
+            window.addEventListener('languageDetected', () => {
+                waitForLocalizedNameAndApply();
+            });
+        });
 
         // role과 tag 정보 채우기
         const roleElement = document.querySelector('.chracter-role');
         const tagElement = document.querySelector('.chracter-tag');
 
-
-
+        const currentLang = getCurrentLanguage();
         if (currentLang === 'en' && character.role_en) {
             roleElement.textContent = character.role_en;
         }

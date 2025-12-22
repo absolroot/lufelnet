@@ -763,9 +763,9 @@ class DefenseCalc {
         }
         if (this.finalDefenseCoefValue) this.finalDefenseCoefValue.textContent = `${displayFinalCoef.toFixed(1)}%`;
 
-        // 대미지 계산
+        // 대미지 계산 (windswept 적용)
         const noReduceDamage = 1 - this.calculateDamage(baseDefense, defenseCoef);
-        const withReduceDamage = 1 - this.calculateDamage(baseDefense, finalCoef);
+        const withReduceDamage = 1 - this.calculateDamage(baseDefense, displayFinalCoef);
         const damageIncrease = ((withReduceDamage / noReduceDamage) - 1) * 100;
 
         // 화면 업데이트

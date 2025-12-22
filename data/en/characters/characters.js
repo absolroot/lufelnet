@@ -5,7 +5,7 @@ window.characterList = window.characterList || {
         "세이지", "아야카", "안",  "야오링", 
         "원더", "유스케", "유키미", "YUI",
         "키요시", "키라", "치즈코", "토모코", "토모코·여름", "토시야", "하루",
-        "하루나"
+        "하루나","J&C"
         // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
     ],
     supportParty: [
@@ -22,6 +22,9 @@ Object.assign(window.characterData, {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "J&C": {
+        "release_order": 16
     },
     "하루": {
         "release_order": 15

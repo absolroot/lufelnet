@@ -55,12 +55,16 @@
             if (pattern && pattern[turnIndex]) {
               const hasOrder0 = pattern[turnIndex].some(action => action.order === 0);
               if (hasOrder0) {
-                const autoAction = updatedActions.find(
+                const autoActions = updatedActions.filter(
                   action => action.type === 'auto' && action.character === member.name
                 );
-                if (autoAction && !processedActions.has(autoAction)) {
-                  finalActions.unshift(autoAction);
-                  processedActions.add(autoAction); // 처리된 액션 기록
+                // unshift는 역순으로 넣어야 원래 순서가 유지됨
+                for (let i = autoActions.length - 1; i >= 0; i--) {
+                  const autoAction = autoActions[i];
+                  if (autoAction && !processedActions.has(autoAction)) {
+                    finalActions.unshift(autoAction);
+                    processedActions.add(autoAction); // 처리된 액션 기록
+                  }
                 }
               }
             }
@@ -68,13 +72,15 @@
           
           // 나머지 자동 액션 추가
           sortedParty.forEach(member => {
-            const autoAction = updatedActions.find(
+            const autoActions = updatedActions.filter(
               action => action.type === 'auto' && action.character === member.name
             );
-            if (autoAction && !processedActions.has(autoAction)) {
-              finalActions.push(autoAction);
-              processedActions.add(autoAction); // 처리된 액션 기록
-            }
+            autoActions.forEach(autoAction => {
+              if (autoAction && !processedActions.has(autoAction)) {
+                finalActions.push(autoAction);
+                processedActions.add(autoAction); // 처리된 액션 기록
+              }
+            });
           });
           
           // 수동 액션 추가

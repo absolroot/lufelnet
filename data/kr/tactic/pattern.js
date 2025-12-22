@@ -1,15 +1,39 @@
 // 캐릭터별 의식 레벨에 따른 행동 패턴 정의
 const ritualPatterns = {
+    "슌·프론티어": [
+        {
+        level: "0-1",  
+        pattern: [
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬2" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬2" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬2" }]
+        ]
+        },
+        {
+        level: "2-6",  
+        pattern: [
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "총격" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "총격" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "총격" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "총격" },{ order: 1, type: "스킬1" }],
+        ]
+        }
+    ],
     "쇼키·암야": [
         {
         level: "0-6",  
         pattern: [
-            [{ type: "스킬1" }],
-            [{ type: "스킬3" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬3" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬3" }]
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬3" }]
         ]
         }
     ],
@@ -17,7 +41,7 @@ const ritualPatterns = {
         {
         level: "0-6",  
         pattern: [
-            [{ type: "스킬1" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬1" }],
             [{ type: "스킬3" }],
             [{ type: "스킬1" }],
             [{ type: "스킬3" }],
@@ -101,7 +125,7 @@ const ritualPatterns = {
     ],
     "미나미·여름": [
         {
-        level: "0-6",  
+        level: "0-5",  
         pattern: [
             [{ type: "스킬3" }],
             [{ type: "스킬1" }],
@@ -109,6 +133,17 @@ const ritualPatterns = {
             [{ type: "스킬3" }],
             [{ type: "스킬1" }],
             [{ type: "스킬2" }]
+        ]
+        },
+        {
+        level: "6",  
+        pattern: [
+            [{ type: "스킬3" }],
+            [{ type: "스킬1" }],
+            [{ order: 1, type: "아이템" },{ order: 1, type: "스킬2" }],
+            [{ order: 1, type: "아이템" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "아이템" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "아이템" },{ order: 1, type: "스킬2" }]
         ]
         }
     ],
@@ -193,7 +228,7 @@ const ritualPatterns = {
             [{ order: 0, type: "스킬3" }],
             [{ order: 0, type: "스킬1" }],
             [{ order: 0, type: "스킬3" }],
-            [{ order: 0, type: "스킬1" }]
+            [{ order: 0, type: "스킬1" },{order: 1, type: "특수 스킬"}]
         ]
         }
     ],

@@ -26,7 +26,8 @@ const characterTranslations = {
         "방위": "Defense",
         "우월": "Strategist",
         "지배": "Sweeper",
-        "해명": "Elucidator"
+        "해명": "Elucidator",
+        "자율": "Virtuoso"
     },
     
     // 태그 번역

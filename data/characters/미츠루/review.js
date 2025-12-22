@@ -4,11 +4,11 @@
         review: `
 포지션은 '반항'으로 단일 딜러지만 **'서포터'**의 역할이 강한 P3 콜라보 캐릭터다.
 
-- **스킬2**로 방어력 감소와 받는 대미지 증가를 적 1명에게 영구 지속시키고, **스킬1**로 **『서리 결정』3스택**과 함께 방어력 감소를 부여한다.
+- 스킬2로 방어력 감소와 받는 대미지 증가를 적 1명에게 영구 지속시키고, 스킬1로 『서리 결정』3스택과 함께 방어력 감소를 부여한다.
 
-- **스킬3**은 일정 수치(3%)의 해명 괴도의 속성 증가를 포함하고 있으며, 높은 수치의 빙결 속성 대미지를 준다. 
+- 스킬3은 일정 수치(3%)의 해명 괴도의 속성 증가를 포함하고 있으며, 높은 수치의 빙결 속성 대미지를 준다. 
 
-- **핵심은 테우르기아**로 높은 수치의 빙결 속성 대미지와 함께 **2턴** 동안 아군이 페르소나 스킬을 사용해 피해를 주면 해당 **아군의 속성과 스테이터스를 그대로 복제한 추가 피해**를 미츠루가 준다.\n**스킬 계수 증가 버프**로 이해하는 것이 편하다.
+- **핵심은 테우르기아**로 높은 수치의 빙결 속성 대미지와 함께 2턴 동안 아군이 페르소나 스킬을 사용해 피해를 주면 해당 **아군의 속성과 스테이터스를 그대로 복제한 추가 피해**를 미츠루가 준다.\n**스킬 계수 증가 버프**로 이해하는 것이 편하다.
 
 <br>
 
@@ -54,9 +54,9 @@
         `,
 review_en: `Although Mitsuru's role is Assassin, her actual role is that of a **Saboteur**. She functions as an improved, single-target DPS version of Crow.
 
-Her **skill 2** can permanently decrease 1 foe's Defense and increase their damage taken, her **skill 1** can inflict 3 [Frost] stacks and decrease Defense.
+Her skill 2 can permanently decrease 1 foe's Defense and increase their damage taken, her skill 1 can inflict 3 [Frost] stacks and decrease Defense.
 
-Her **skill 3** can increase party's stats by Elucidator's stats (3%), and deal heavy Ice damage.
+Her skill 3 can increase party's stats by Elucidator's stats (3%), and deal heavy Ice damage.
 
 Her **Theurgy** can deal heavy Ice damage. For the next 2 turns, when allies deal Persona skill damage, Mitsuru will deal damage **equal to that ally's stats and skill attribute**. This can be seen as a skill multiplier buff. 
 
@@ -106,11 +106,11 @@ However, since the exact stats Mitsuru replicates are unclear, it is uncertain w
 review_jp: `
 桐条美鶴は『反抗』ポジションに属しているが、実際の役割は**サポーター**寄りのP3コラボキャラクター。以前の『支配』タイプで味方サポートを担当していた明智の改良版とも言える存在。
 
-- **スキル2**で敵単体の防御力を永続的に減少させ、被ダメージを増加させる。**スキル1**では**『霜結』3スタック**を付与しつつ防御力を低下させる。
+- スキル2で敵単体の防御力を永続的に減少させ、被ダメージを増加させる。スキル1では『霜結』3スタックを付与しつつ防御力を低下させる。
 
-- **スキル3**には解明系怪盗の各属性値を3%上昇させる効果が含まれており、さらに高威力の氷結属性ダメージを与える。
+- スキル3には解明系怪盗の各属性値を3%上昇させる効果が含まれており、さらに高威力の氷結属性ダメージを与える。
 
-- **核心はテウルギア**。高倍率の氷結属性ダメージを与えた後、**2ターン**の間、味方がペルソナスキルでダメージを与えるたびに、**その味方の属性とステータスを複製した追加ダメージ**を美鶴自身が与える。\nこれは**スキル係数バフ**として理解すると分かりやすい。
+- **核心はテウルギア**。高倍率の氷結属性ダメージを与えた後、2ターンの間、味方がペルソナスキルでダメージを与えるたびに、**その味方の属性とステータスを複製した追加ダメージ**を美鶴自身が与える。\nこれは**スキル係数バフ**として理解すると分かりやすい。
 
 <br>
 

@@ -29,6 +29,38 @@ const penetrateData = {
             note_jp: "2중첩 추가효과"
         }
     ],
+    "J&C":[
+        {
+            id: "jc1",
+            type: "스킬2",
+            target: "단일",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/염동핵열.png`,
+            skillName: "부조리와 비합리의 페르소나",
+            options: ["LV10(100)","LV10+심상5(100)","LV13(100)","LV13+심상5(100)","LV10(105)","LV10+심상5(105)","LV13(105)","LV13+심상5(105)","LV10(115)","LV10+심상5(115)","LV13(135)","LV13+심상5(135)","LV13(144)","LV13+심상5(144)"],
+            values: {
+                "LV10(100)": 9.8,
+                "LV10+심상5(100)": 10.8,
+                "LV13(100)": 10.4,
+                "LV13+심상5(100)": 11.4,
+                "LV10(105)": 10.05,
+                "LV10+심상5(105)": 11.07,
+                "LV13(105)": 10.66,
+                "LV13+심상5(105)": 11.69,
+                "LV10(115)": 10.54,
+                "LV10+심상5(115)": 11.61,
+                "LV13(135)": 12.22,
+                "LV13+심상5(135)": 13.40,
+                "LV13(144)": 12.69,
+                "LV13+심상5(144)": 13.91,
+            },
+            defaultOption: "LV13+심상5(144)",
+            value: 13.91,
+            duration: "2턴",
+            note: "우월/방위/반항",
+            note_en: "Mask of Absurdity & Nonsense",
+            note_jp: "不条理と非合理の仮面"
+        }
+    ],
     "마나카":[
         {
             id: "manaka1",
@@ -575,8 +607,14 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/skill-element/디버프.png`,
             skillName: "라쿤다",
-            options: [],
-            value: 38.8,
+            options: ["LV6","LV7","LV8"],
+            values: {
+                "LV6": 38.8,
+                "LV7": 40.7,
+                "LV8": 42.7
+            },
+            defaultOption: "LV8",
+            value: 42.7,
             duration: "3턴",
             note: ""
         },
@@ -586,8 +624,14 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/디버프광역.png`,
             skillName: "음률의 침입",
-            options: [],
-            value: 32.0,
+            options: ["LV6","LV7","LV8"],
+            values: {
+                "LV6": 32.0,
+                "LV7": 33.6,
+                "LV8": 35.2
+            },
+            defaultOption: "LV8",
+            value: 35.2,
             duration: "3턴",
             note: "",
             note_en: "[KR] Payment Event Only",
@@ -599,8 +643,14 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/디버프광역.png`,
             skillName: "마하라쿤다",
-            options: [],
-            value: 27.1,
+            options: ["LV6","LV7","LV8"],
+            values: {
+                "LV6": 27.1,
+                "LV7": 28.5,
+                "LV8": 29.8
+            },
+            defaultOption: "LV8",
+            value: 29.8,
             duration: "3턴",
             note: ""
         },
@@ -636,8 +686,14 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/야노식.webp`,
             skillName: "야노식",
-            options: [],
-            value: 41.6,
+            options: ["LV6","LV7","LV8"],
+            values: {
+                "LV6": 41.6,
+                "LV7": 44.3,
+                "LV8": 46.9
+            },
+            defaultOption: "LV8",
+            value: 46.9,
             duration: "2턴",
             note: "[조준]",
             note_en: "Marked",
@@ -660,8 +716,14 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/년수.webp`,
             skillName: "년수 - 고유스킬",
-            options: [],
-            value: 10.0,
+            options: ["LV6","LV7","LV8"],
+            values: {
+                "LV6": 10.0,
+                "LV7": 10.5,
+                "LV8": 11.0
+            },
+            defaultOption: "LV8",
+            value: 11.0,
             duration: "2턴",
             note: ""
         },
@@ -691,6 +753,38 @@ const defenseCalcData = {
             note_en: "축복",
             note_jp: "축복"
         },
+    ],
+    "J&C":[
+        {
+            id: "jc2",
+            type: "스킬3",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/만능.png`,
+            skillName: "둘이 하나 되는 페르소나",
+            options: ["LV10(100)","LV10+심상5(100)","LV13(100)","LV13+심상5(100)","LV10(105)","LV10+심상5(105)","LV13(105)","LV13+심상5(105)","LV10(115)","LV10+심상5(115)","LV13(135)","LV13+심상5(135)","LV13(144)","LV13+심상5(144)"],
+            values: {
+                "LV10(100)": 40.8,
+                "LV10+심상5(100)": 56.0,
+                "LV13(100)": 57.8,
+                "LV13+심상5(100)": 59.0,
+                "LV10(105)": 41.82,
+                "LV10+심상5(105)": 57.40,
+                "LV13(105)": 59.25,
+                "LV13+심상5(105)": 60.48,
+                "LV10(115)": 43.86,
+                "LV10+심상5(115)": 60.20,
+                "LV13(135)": 67.92,
+                "LV13+심상5(135)": 69.33,
+                "LV13(144)": 70.52,
+                "LV13+심상5(144)": 71.98,
+            },
+            defaultOption: "LV13+심상5(144)",
+            value: 71.98,
+            duration: "2턴",
+            note: "굴복『가르침』+『인과』",
+            note_en: "Saboteur/Service & Admonition + Luck & Loss",
+            note_jp: "屈服"
+        }
     ],
     "슌·프론티어":[
         {

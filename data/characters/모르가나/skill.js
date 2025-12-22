@@ -85,7 +85,7 @@ window.enCharacterSkillsData["모르가나"] = {
   "passive2": {
     "name": "Morgana's Method",
     "element": "패시브",
-    "description": "Decrease party's healing skill SP cost by 15.0%."
+    "description": "Decrease party's skill SP cost by 15.0%."
   }
 };
 window.jpCharacterSkillsData["모르가나"] = {

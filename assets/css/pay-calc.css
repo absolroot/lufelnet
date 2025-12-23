@@ -6,7 +6,7 @@
 
 .total-card:last-child { grid-column: span 1; }
 
-.total-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #3d3030; border-radius: 10px; }
+.total-card { padding: 10px 20px 10px 20px; text-align: left; background-color: var(--card-background); border-radius: 10px; }
 
 .top-cards h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); padding: 10px 0px 10px 0px; margin: 0px; }
 
@@ -17,7 +17,7 @@
 .description-icon { width: 16px; height: 16px; object-fit: contain; }
 
 /* 패키지 테이블 */
-.package-table-container { overflow-x: auto; margin: 0 20px; padding: 20px 20px 30px 20px; border-radius: 10px; background-color: #3d3030; }
+.package-table-container { overflow-x: auto; margin: 0 20px; padding: 20px 20px 30px 20px; border-radius: 10px; background-color: var(--card-background); }
 
 .package-table { width: 100%; border-collapse: collapse; text-align: left; }
 
@@ -43,7 +43,7 @@ img[src*="check-on.png"] { width: 24px !important; height: 24px !important; obje
 .discount-select { font-size: 12px; background-color: rgb(0, 0, 0, 0.1); color: rgb(255, 255, 255, 0.4); border: none; border-radius: 4px; cursor: pointer; width: auto; min-width: fit-content; padding: 8px 4px !important; }
 
 /* 옵션 스타일링 */
-select option { background-color: #3d3030; color: rgb(255, 255, 255, 0.8); }
+select option { background-color: var(--card-background); color: rgb(255, 255, 255, 0.8); }
 
 /* 선택된 옵션 스타일링 */
 select option:checked { background-color: #4d3e3e; }
@@ -92,8 +92,9 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 /* 기대값 요약 영역 */
 .expectation-row {
     margin: 0 20px 20px 20px;
-    background-color: #3d3030;
+    background-color: var(--card-background);
     border-radius: 10px;
+    border-bottom: 3px solid var(--border-red);
 }
 
 .expectation-main-title {
@@ -204,7 +205,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     padding: 4px 6px;
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.9);
     font-size: 14px;
     text-align: right;
@@ -421,7 +422,7 @@ img[src*="check-on.png"].checkbox-img { width: 24px; height: 24px; padding: 0; }
 
 .dropdown-item.active { background: rgba(255, 255, 255, 0.2); }
 
-.table-tabs { margin: 0 20px; padding: 0; background-color: #3d3030; border-radius: 10px; }
+.table-tabs { margin: 0 20px; padding: 0; background-color: var(--card-background); border-radius: 10px; }
 
 .tab-buttons { display: flex; padding: 0 20px; }
 

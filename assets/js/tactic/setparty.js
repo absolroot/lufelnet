@@ -166,12 +166,12 @@ function setupPartySelection() {
             position: absolute;
             max-height: 300px; /* 약 20개 항목 표시 가능한 높이 */
             overflow-y: auto;
-            background: #3d3030;
+            background: var(--card-background);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 3px;
             z-index: 1000;
             width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
             left: 0;
             top: 100%;
         }

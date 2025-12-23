@@ -19,7 +19,7 @@
     rgba(132, 50, 255, 0.6) 50%,
     transparent 54%); filter: brightness(1.1) opacity(0); mix-blend-mode: color-dodge; background-size: 150% 150%; background-position: 100%; transition: all 0.1s; pointer-events: none; z-index: 2; }
 
-.card img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+.card img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05); outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
 
 .character-img { width: 100%; height: 100%; object-fit: cover; transition: all 0.7s ease-in-out; position: relative; }
 
@@ -49,7 +49,7 @@
 .card:hover { filter: brightness(1.1); transform: rotate(-1deg) translateY(0px); z-index: 1; } 
 
 /* 카드 호버 시 이름표 배경색 변경 */
-.card:hover .name-text { background: linear-gradient(to bottom, #4e030b, #4e0a10);  /* 빨간색 그라데이션으로 변경 */
+.card:hover .name-text { background: linear-gradient(to bottom, #8e222d, #841f28);  /* 빨간색 그라데이션으로 변경 */
     transition: background 0.5s;  /* 부드러운 전환 효과 */
 }
 
@@ -63,7 +63,7 @@
 
 
 /* 페르소나5 호버 시 스타일 */
-.card:hover .name-text[data-persona5="true"] { background: linear-gradient(to bottom, #a41010, #951d1d); transition: background 0.5s; }
+.card:hover .name-text[data-persona5="true"] { background: linear-gradient(to bottom, #8c0b0b, #8d1919); transition: background 0.5s; }
 
 
 
@@ -71,7 +71,7 @@
 .name-img { position: absolute; bottom: 30px !important; 
     left: 50% !important; transform: translateX(-50%) !important; width: 50% !important; height: auto !important; object-fit: contain !important; z-index: 1 !important; }
 
-.name-text { position: absolute; display: block; font-size: 13px; color: #eee; bottom: -25px; left: 50%; transform: translateX(-50%); width: calc(100% - 20px); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: linear-gradient(to bottom, #110f0f, #1b1919); padding: 5px 10px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); transition: background 0.5s;  /* 배경색 전환 효과 추가 */
+.name-text { position: absolute; display: block; font-size: 13px; color: #fff; bottom: -18px; left: 50%; transform: translateX(-50%); width: calc(100% - 20px); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: linear-gradient(to bottom, #610000, #5a0000); padding: 5px 10px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); transition: background 0.5s;  /* 배경색 전환 효과 추가 */
 }
 
 /* 필터 섹션 스타일 */
@@ -99,10 +99,10 @@
 
 .filter-group h3 { width: 60px; color: rgb(255, 255, 255, 0.8); margin-bottom: 12px; font-size: 13px; font-weight: 400; outline: none; }
 
-.filter-options { display: flex; flex-wrap: wrap; gap: .5rem; margin-right: 0px; padding-right: 0px; }
+.filter-options { display: flex; flex-wrap: wrap; gap: .6rem; margin-right: 0px; padding-right: 0px; }
 
 .filter-options label { height: 32px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; border-radius: 32px; padding: 0px 6px 0px 6px; transition: all 0s;  /* background-color만이 아닌 모든 속성에 transition 적용 */
-    background-color: rgba(0, 0, 0, 0.6); outline: none; }
+    background-color: var(--card-background); outline: none; }
 
 .filter-options label:hover { filter: brightness(1.1); background-color: rgb(255, 255, 255, 0.4); }
 
@@ -111,7 +111,10 @@
 .filter-options input[type="checkbox"]:checked + .star-container { filter: brightness(1.2); }
 
 .filter-options input[type="checkbox"]:checked ~ label,
-.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.8); border: 1px solid rgb(211, 188, 142, 0.8); height: 30px; padding: 0px 5px 0px 5px; }
+.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.15);
+    height: 32px;
+    padding: 0px 6px 0px 6px;
+    box-shadow: 0 0 0 1px #ff00007c inset; }
 
 .filter-options img { width: 20px; height: 20px; object-fit: contain; }
 
@@ -186,7 +189,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-45%); pointer-events: none; }
 
-#characterSearch { width: 100%; padding: 10px 16px 10px 44px; border: none; border-radius: 32px; background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 14px; box-sizing: border-box; }
+#characterSearch { width: 100%; padding: 10px 16px 10px 44px; border: none; border-radius: 32px; background: var(--card-background); color: #fff; font-size: 14px; box-sizing: border-box; }
 
 #characterSearch:focus { outline: none; border-color: rgba(255, 255, 255, 0.3); }
 
@@ -199,7 +202,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 /* 스크롤바 스타일링 */
 .search-dropdown::-webkit-scrollbar { width: 8px; }
 
-.search-dropdown::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+.search-dropdown::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
 
 .search-dropdown::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
 

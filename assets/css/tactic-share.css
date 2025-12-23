@@ -14,7 +14,7 @@
 
 .filters-top-row{ display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; row-gap: 16px; }
 
-.upload-btn{ background: rgb(139 3 3 / 40%); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 999px; padding: 8px 14px; font-size: 13px; text-decoration: none; white-space: nowrap; }
+.upload-btn{ background: var(--border-red); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 999px; padding: 8px 14px; font-size: 13px; text-decoration: none; white-space: nowrap; }
 
 .upload-btn:hover{ background: rgba(255, 255, 255, 0.2); }
 
@@ -32,7 +32,7 @@
 
 .filter-divider{ width: 1px; height: 18px; background: rgba(255,255,255,0.3); display: inline-block; }
 
-.post-form { width: calc(100% - 320px); min-height: 290px; margin-right: 320px; margin: 0 0 32px 0; padding: 20px; box-sizing: border-box; background: #3d3030; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid rgba(255, 255, 255, 0.5); }
+.post-form { width: calc(100% - 320px); min-height: 290px; margin-right: 320px; margin: 0 0 32px 0; padding: 20px; box-sizing: border-box; background: var(--card-background); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid rgba(255, 255, 255, 0.5); }
 
 .post-form form { display: flex; flex-direction: column; gap: 1rem; }
 
@@ -43,7 +43,7 @@
 .tacticUrl p, .tacticTitle p, .tacticAuthor p, .tacticComment p { color: rgb(255, 255, 255, 0.8); font-size: 14px; font-weight: 400; padding: 0px; margin: 0px; }
 
 .post-form input { padding: 10px 20px 10px 20px; 
-    background: rgb(0, 0, 0, 0.2); border-radius: 4px; font-size: 14px; }
+    background: rgba(255, 255, 255, 0.05); border-radius: 4px; font-size: 14px; }
 
 .submit-container { display: flex; justify-content: flex-end; align-items: center; padding : 0 20px; }
 
@@ -56,13 +56,13 @@
 
 /* Ranking */
 
-.ranking-container { top: 0; right: 0; width: 300px; height: 100%; min-height: 280px; box-sizing: border-box; background: #3d3030; border-radius: 8px; padding: 20px; margin : 0px; border: 1px solid rgba(255, 255, 255, 0.5); }
+.ranking-container { top: 0; right: 0; width: 300px; height: 100%; min-height: 280px; box-sizing: border-box; background: var(--card-background); border-radius: 8px; padding: 20px; margin : 0px; border-bottom: 3px solid var(--border-red); }
 
 @media screen and (max-width: 1200px) { .ranking-container{ min-height: 0; }
 }
 
 /* 캐릭터 필터 카드 (랭킹과 통일) */
-.character-filter-card{ width: 100%; max-width: 820px; box-sizing: border-box; background: #3d3030; border-radius: 8px; padding: 20px; margin: 0px; border: 1px solid rgba(255, 255, 255, 0.5); }
+.character-filter-card{ width: 100%; max-width: 820px; box-sizing: border-box; background: var(--card-background); border-radius: 8px; padding: 20px; margin: 0px; border-bottom: 3px solid var(--border-red); }
 
 /* 모바일 접기/펼치기 */
 .collapsible.collapsed .ranking-list,
@@ -85,7 +85,7 @@
 
 .ranking-tabs { display: flex; gap: 8px; }
 
-.ranking-tab { flex: 1; padding: 4px 8px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; color: rgba(255, 255, 255, 0.8); cursor: pointer; font-size: 13px; }
+.ranking-tab { flex: 1; padding: 4px 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; color: rgba(255, 255, 255, 0.8); cursor: pointer; font-size: 13px; }
 
 .ranking-tab.active { background: rgba(255, 255, 255, 0.2); color: white; }
 
@@ -124,7 +124,7 @@
 .search-section { position: relative; display: flex; align-items: center; width: 100%; }
 
 #searchInput { width: 100%; padding: 10px 16px 10px 20px; border: none; 
-    border-radius: 32px; background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 13px; box-sizing: border-box; }
+    border-radius: 32px; background: var(--card-background); color: #fff; font-size: 13px; box-sizing: border-box; }
 
 #searchInput:focus { outline: none; border-color: rgba(255, 255, 255, 0.3); }
 
@@ -151,7 +151,7 @@
 
 .posts-list { display: flex; flex-direction: column; gap: 1rem; }
 
-.post-item { display: grid; grid-template-columns: 1fr 1fr 80px; padding: 16px 20px; background: rgb(0, 0, 0, 0.3); border: 1px solid rgb(255, 255, 255, 0.1); border-radius: 8px; }
+.post-item { display: grid; grid-template-columns: 1fr 1fr 80px; padding: 16px 20px; background: var(--card-background); border: 1px solid rgb(255, 255, 255, 0.1); border-radius: 8px; }
 
 .post-header{ display: flex; flex-direction: column; justify-content: center; transform: translateY(-2px); }
 
@@ -225,7 +225,7 @@
 
 .pagination button { font-size: 12px; padding: 0.5rem 1rem; background: #720f0f; color: white; border: none; border-radius: 24px; cursor: pointer; }
 
-.pagination button:disabled { color: rgba(255, 255, 255, 0.5); background: rgba(0, 0, 0, 0.2); cursor: not-allowed; }
+.pagination button:disabled { color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.05); cursor: not-allowed; }
 
 #currentPage{ font-size: 13px; color: rgb(255, 255, 255, 0.8); }
 

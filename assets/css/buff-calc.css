@@ -18,9 +18,9 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 /* 카드 스타일 */
 .top-cards { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; width: 100%; }
 
-.card-style { background: #1a1a1a; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); padding: 15px; color: #fff; }
+.card-style { background: #1a1a1a; border-radius: 8px; box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); padding: 15px; color: #fff; }
 
-.target-section { flex: 1; min-width: 230px; max-width: none; background: rgba(0, 0, 0, 0.2); border-radius: 10px; padding: 10px 8px; }
+.target-section { flex: 1; min-width: 230px; max-width: none; background: rgba(255, 255, 255, 0.05); border-radius: 10px; padding: 10px 8px; }
 
 .target-section h3 { color: #fff; margin: 0 0 6px 0; font-size: 1em; text-align: center; padding-bottom: 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 
@@ -35,7 +35,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 
-.stat-item { background: rgba(0, 0, 0, 0.2); border-radius: 6px; padding: 6px; text-align: center; }
+.stat-item { background: rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 6px; text-align: center; }
 
 .stat-label { font-size: 11px; color: #ccc; margin-bottom: 3px; white-space: nowrap; }
 
@@ -48,7 +48,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .main-tab-button { padding: 10px 20px; border: none; background: none; cursor: pointer; color: #fff; font-size: 16px; border-radius: 4px; transition: all 0.3s ease; border : 1px solid rgba(255, 255, 255, 0.2); }
 
-.main-tab-button.active { background-color: rgba(0, 0, 0, 0.2); color: #ffd700; }
+.main-tab-button.active { background-color: rgba(255, 255, 255, 0.05); color: #ffd700; }
 
 .main-tab-content { display: none; }
 
@@ -140,7 +140,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .condition-tab:hover { background: var(--hover-color); opacity: 0.9; }
 
-.condition-tab.active { background: var(--primary-color); color: white; border-color: var(--primary-color); opacity: 1; font-weight: bold; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+.condition-tab.active { background: var(--primary-color); color: white; border-color: var(--primary-color); opacity: 1; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); }
 
 .condition-column { width: 120px; text-align: center; font-size: 0.9em; color: var(--text-secondary); }
 
@@ -152,7 +152,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .crit-input-container { display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.6); font-size: 14px; }
 
-.crit-input { width: 40px; padding: 4px 8px; background-color: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #fff; font-size: 14px; text-align: right; line-height: 1; height: 24px; box-sizing: border-box; }
+.crit-input { width: 40px; padding: 4px 8px; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #fff; font-size: 14px; text-align: right; line-height: 1; height: 24px; box-sizing: border-box; }
 
 /* Chrome, Safari, Edge, Opera */
 .crit-input::-webkit-outer-spin-button,
@@ -242,7 +242,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .skill-type-select .radio-group span { font-size: 14px; color: #999; }
 
 /* 커스텀 버프 입력 필드 스타일 */
-.custom-buff-input { width: 70px; padding: 3px 5px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 3px; color: #ffd700; font-size: 12px; text-align: right; line-height: 1; height: 22px; box-sizing: border-box; }
+.custom-buff-input { width: 70px; padding: 3px 5px; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 3px; color: #ffd700; font-size: 12px; text-align: right; line-height: 1; height: 22px; box-sizing: border-box; }
 
 .custom-buff-input:focus { outline: none; border-color: #ffd700; }
 
@@ -260,7 +260,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .custom-buff-input[type=number] { -moz-appearance: textfield; }
 
 /* 대미지 계산기 스타일 */
-.damage-calculator { margin: 0px 0 20px 0; padding: 15px 35px; background-color: rgba(0, 0, 0, 0.2); }
+.damage-calculator { margin: 0px 0 20px 0; padding: 15px 35px; background-color: rgba(255, 255, 255, 0.05); }
 
 .damage-calculator h3 { margin-top: 0; margin-bottom: 15px; color: #ffd700; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px; }
 
@@ -272,9 +272,9 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .input-group label { font-size: 13px; color: #ccc; margin-bottom: 5px; }
 
-.input-group input { width: 100% - 16px; padding: 6px 8px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #fff; font-size: 14px; }
+.input-group input { width: 100% - 16px; padding: 6px 8px; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #fff; font-size: 14px; }
 
-.formula-result { width: 35%; display: flex; flex-direction: row; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 10px; }
+.formula-result { width: 35%; display: flex; flex-direction: row; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 10px; }
 
 .formula-result span { font-size: 14px; color: #ccc; line-height: 1; margin-right: 12px; }
 
@@ -285,7 +285,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .formula-details { margin-top: 15px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
 
 
-.formula-step { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 4px; background-color: rgba(0, 0, 0, 0.2); border-radius: 6px; padding: 8px; text-align: center; }
+.formula-step { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 4px; background-color: rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 8px; text-align: center; }
 
 .formula-step span:first-child { font-size: 13px; color: #ccc; display: block; }
 

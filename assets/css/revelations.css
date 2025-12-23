@@ -5,7 +5,7 @@
 .revelation-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 20px; 
     justify-content: left; padding: 20px; }
 
-.card { position: relative; width: 100%; cursor: pointer; background: #3d3030; border-radius: 10px; padding: 18px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; box-sizing: border-box; border: 2px solid transparent; transition: border-color 0.2s ease; }
+.card { position: relative; width: 100%; cursor: pointer; background: var(--card-background); border-radius: 10px; padding: 18px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; box-sizing: border-box; border: 2px solid transparent; transition: border-color 0.2s ease; border-bottom: 3px solid var(--border-red);}
 
 .img-container { position: relative; flex: 0 0 90px; }
 
@@ -73,10 +73,10 @@
 
 .filter-group h3 { width: 60px; color: rgb(255, 255, 255, 0.8); margin-bottom: 12px; font-size: 13px; font-weight: 400; outline: none; }
 
-.filter-options { display: flex; flex-wrap: wrap; gap: .5rem; margin-right: 0px; padding-right: 0px; }
+.filter-options { display: flex; flex-wrap: wrap; gap: .6rem; margin-right: 0px; padding-right: 0px; }
 
 .filter-options label { height: 32px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; border-radius: 32px; padding: 0px 6px 0px 6px; transition: all 0s;  /* background-color만이 아닌 모든 속성에 transition 적용 */
-    background-color: rgba(0, 0, 0, 0.6); outline: none; }
+    background-color: var(--card-background); outline: none; }
 
 .filter-options label:hover { filter: brightness(1.1); background-color: rgb(255, 255, 255, 0.4); }
 
@@ -85,7 +85,10 @@
 .filter-options input[type="checkbox"]:checked + .star-container { filter: brightness(1.2); }
 
 .filter-options input[type="checkbox"]:checked ~ label,
-.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.8); border: 1px solid rgb(211, 188, 142, 0.8); height: 30px; padding: 0px 5px 0px 5px; }
+.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.15);
+    height: 32px;
+    padding: 0px 6px 0px 6px;
+    box-shadow: 0 0 0 1px #ff00007c inset; }
 
 .filter-options img { width: 20px; height: 20px; object-fit: contain; }
 
@@ -139,7 +142,7 @@
 
 .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-45%); pointer-events: none; }
 
-#revelationSearch { width: 100%; padding: 10px 16px 10px 44px; border: none; border-radius: 32px; background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 14px; box-sizing: border-box; }
+#revelationSearch { width: 100%; padding: 10px 16px 10px 44px; border: none; border-radius: 32px; background: var(--card-background); color: #fff; font-size: 14px; box-sizing: border-box; }
 
 #revelationSearch:focus { outline: none; border-color: rgba(255, 255, 255, 0.3); }
 
@@ -154,7 +157,7 @@
 /* Scrollbar styles for the dropdown */
 .search-dropdown::-webkit-scrollbar { width: 8px; }
 
-.search-dropdown::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+.search-dropdown::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
 
 .search-dropdown::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
 
@@ -185,16 +188,16 @@
 .char-icon { width: 16px; height: 16px; object-fit: contain; }
 
 /* Priority highlight parity with wonder-weapon */
-.character-link.priority .character-img { border: 1px solid #000; border-color: #ffcc00; box-shadow: 0 0 0 1px rgba(255, 204, 0, 0.5); }
+.character-link.priority .character-img { border: 1px solid #000; border-color: #ff0000; box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5); }
 
 /* Revelation Stats Accordion */
 .rev-stats-section { margin: 16px 0 10px; padding: 0 20px;}
 @media (max-width: 1200px) { .rev-stats-section { padding: 0px; } }
-.rev-accordion { width: 100%; background: #221919; color: #fff; border: 0px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; display: flex; align-items:center; justify-content: space-between; cursor: pointer; }
+.rev-accordion { width: 100%; background: #3c3c3c; color: #fff; border: 0px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; display: flex; align-items:center; justify-content: space-between; cursor: pointer; }
 .rev-accordion .chev { transition: transform .2s ease; }
 .rev-accordion.open { border-radius: 8px 8px 0 0; }
 .rev-accordion.open .chev { transform: rotate(180deg); }
-.rev-panel { border: 0px solid rgba(255,255,255,0.08); border-top: none; border-radius: 0 0 8px 8px; padding: 16px 12px 20px 12px; background: #3d3030; }
+.rev-panel { border: 0px solid rgba(255,255,255,0.08); border-top: none; border-radius: 0 0 8px 8px; padding: 16px 12px 20px 12px; background: var(--card-background); }
 .rev-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
 .rev-tab { background: rgba(255,255,255,0.04); color:#fff; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; display:flex; align-items:center; gap:6px; cursor:pointer; }
 .rev-tab.active { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.18); }
@@ -233,5 +236,5 @@ table.rev-table-sub td:nth-child(2) { color: #ffcc33; }
 table.rev-table-main th:nth-child(2),
 table.rev-table-main td:nth-child(2) { color: #ffcc33; }
 
-/* Pink-highlight for specific option labels (moon/star/planet main stats) */
+/* Pink-highlight for specific option labels (moon/star/sky main stats) */
 .rev-label-pink { color: #ffd1d1;}

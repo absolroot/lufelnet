@@ -23,10 +23,14 @@ window.personaFiles["년수"] = {
     {
       "name": "음률의 침입",
       "priority": 3
-    },
+    }, 
     {
       "name": "마하라쿤다",
       "priority": 3
+    },
+    {
+      "name": "해체 역장",
+      "priority": 1
     },
     {
       "name": "대미지 면역",

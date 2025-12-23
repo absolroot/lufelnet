@@ -1,6 +1,7 @@
 
 
 /* PC 환경의 배경 스타일 - 성능 최적화 */
+/*
 @media screen and (min-width: 769px) { .container { background: 
     linear-gradient(to bottom, rgba(113, 0, 0, 0.3), rgba(34, 0, 0, 0.3)),
     linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
@@ -33,11 +34,11 @@
 
 .nav-link.active span{ color: #fffabb; }
 
-.mobile-header { background-color: #422e2e; }
+.mobile-header { background-color: #1e1e1e; }
 
-.options-container { background-color: #422e2e; }
+.options-container { background-color: #1e1e1e; }
 
 .selected-option, .nav-sub-item { background-color: rgb(0,0,0,0.1); }
 
 .selected-option:hover { background-color:  rgb(0,0,0,0.1); border-color: rgba(255, 255, 255, 0.4); }
-    
+    */

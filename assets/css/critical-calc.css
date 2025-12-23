@@ -9,7 +9,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .header-container { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
 #spoilerToggleWrap { display: flex; gap: 4px; margin-left: auto; }
 
-.stat-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #3d3030; border-radius: 10px; }
+.stat-card { padding: 10px 20px 10px 20px; text-align: left; background-color: var(--card-background); border-radius: 10px; border-bottom: 3px solid var(--border-red); }
 
 .top-cards h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); padding: 10px 0px 10px 0px; margin: 0px; }
 
@@ -17,7 +17,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .total-value-description { margin-top: 14px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
 
-.boss-select-container select { font-size: 13px; background-color: #3d3030; color: rgb(255, 255, 255, 0.8); border: none; border-radius: 4px; cursor: pointer; width: 100%; padding: 8px 4px !important; margin: 5px 0px 0px 0px; background-color: rgb(0, 0, 0, 0.2); }
+.boss-select-container select { font-size: 13px; background-color: var(--card-background); color: rgb(255, 255, 255, 0.8); border: none; border-radius: 4px; cursor: pointer; width: 100%; padding: 8px 4px !important; margin: 5px 0px 0px 0px; background-color: rgba(255, 255, 255, 0.05); }
 
 .boss-stats { display: flex; flex-direction: column; margin: 0px; }
 
@@ -25,7 +25,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .damage-increase { font-size: 24px; font-weight: bold; color: #dd8484; }
 
-.critical-table-container { overflow-x: auto; margin : 0 20px; padding : 20px 20px 30px 20px; border-radius: 10px; background-color: #3d3030; }
+.critical-table-container { overflow-x: auto; margin : 0 20px; padding : 20px 20px 30px 20px; border-radius: 10px; background-color: var(--card-background); }
 
 .critical-table { width: 100%; border-collapse: collapse; text-align: left; }
 
@@ -60,7 +60,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .option-column select { font-size: 12px; background-color: rgb(0, 0, 0, 0.1); color: rgb(255, 255, 255, 0.4); border: none; border-radius: 4px; cursor: pointer; width: fit-content; padding: 8px 4px !important; }
 
 /* 옵션 스타일링 */
-select option { background-color: #3d3030; color: rgb(255, 255, 255, 0.8); }
+select option { background-color: var(--card-background); color: rgb(255, 255, 255, 0.8); }
 
 /* 선택된 옵션 스타일링 */
 select option:checked { background-color: #4d3e3e; }
@@ -112,7 +112,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 .critical-input-group span { margin-left: 5px; color: rgba(255, 255, 255, 0.6); font-size: 14px; }
 
 /* 탭 스타일 */
-.table-tabs { margin: 0 20px; background-color: #3d3030; border-radius: 10px; }
+.table-tabs { margin: 0 20px; background-color: var(--card-background); border-radius: 10px; }
 
 .tab-buttons { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0 20px; }
 

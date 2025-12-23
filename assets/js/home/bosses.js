@@ -180,20 +180,20 @@
     s.id = 'bosses-style';
     s.textContent = `
       #${ROOT_ID} { margin: 24px 0 0px; color: #eee; width: 100%; }
-      .bosses-card { background:#3d3030; border-radius:10px; padding:20px; }
+      .bosses-card { background:var(--card-background); border-radius:10px; padding:20px; border-bottom: solid 3px var(--border-red); }
       .bosses-list { margin-top: 8px; }
       .bosses-list.grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
       .bosses-list.grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
       @media (max-width: 768px) { .bosses-list.grid-3, .bosses-list.grid-2 { grid-template-columns: 1fr; } }
       .bosses-header { display:flex; gap:8px; align-items:baseline; margin-bottom:0px; grid-column: 1 / -1; }
-      .bosses-title { font-weight:700; font-size: 18px; color: rgb(240, 214, 170); }
-      .bosses-countdown { font-weight:700; color:#ffd166; margin-left:auto; }
+      .bosses-title { font-weight:700; font-size: 18px; color: white; }
+      .bosses-countdown { font-weight:700; color:#ff4444; margin-left:auto; }
       .bosses-countdown.local { margin-left: 0; }
       .bosses-mode { margin:6px 0 12px; opacity:.95; display:grid; grid-template-columns: 1fr; grid-auto-rows: auto; grid-row-gap: 2px; align-items: center; justify-items: start; }
       .bosses-mode-name { font-weight:700; grid-column: 1; }
       .bosses-countdown.local { grid-column: 1; justify-self: end; }
       .bosses-mode-detail { font-size:.9rem; opacity:.75; margin-top:10px; grid-column: 1 / -1; }
-      .boss-item { padding:12px; background:rgba(0, 0, 0, 0.3); border:1px solid #2a2a2a; border-radius:8px; }
+      .boss-item { padding:12px; background:rgba(255, 255, 255, 0.05); border:1px solid #2a2a2a; border-radius:8px; }
       .boss-row { display:flex; flex-direction:column; gap:8px; }
       .boss-left { display:flex; align-items:center; flex-direction:column;}
       @media (min-width:1200px) { .boss-row { display:grid; grid-template-columns: 1fr; align-items:center; } .boss-left { gap:10px;} .boss-affix-list { margin:0; } .bosses-mode { grid-template-columns: minmax(0,1fr) auto; grid-row-gap: 0; } .bosses-countdown.local { grid-column: 2; align-self: center; } }
@@ -202,7 +202,7 @@
       .boss-name .boss-lv { opacity:.65; font-weight:600; }
       .boss-affix { font-size:.92rem; opacity:.95; margin-bottom:0px; }
       .boss-affix-list { display:flex; gap:2px; flex-wrap:wrap; margin: 2px 0 0px; }
-      .affix-chip { display:inline-flex; align-items:center; padding:2px 6px; border:1px solid #333; border-radius:6px; background: rgba(0, 0, 0, 0.3); font-size:.65rem; }
+      .affix-chip { display:inline-flex; align-items:center; padding:2px 6px; border:1px solid #333; border-radius:6px; background: rgba(0, 0, 0, 0.5); font-size:.65rem; }
       .boss-elements { margin-top:0px; display:flex; justify-content:center; }
       .elements-line { position: relative; display:inline-block; height: 40px; }
       .elements-line img.elements-sprite { height: 32px; display:block; }

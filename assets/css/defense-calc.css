@@ -15,8 +15,9 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 #spoilerToggleWrap { margin-left: auto; }
 @media (max-width: 1200px) { .header-container { flex-wrap: wrap; gap: 8px; } #spoilerToggleWrap { width: 100%; order: 2; display: flex; justify-content: flex-end; } }
 
-.boss-card, .damage-card, .defense-coef-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #4b3c3c; border-radius: 10px; }
-.stat-card { padding: 10px 20px 10px 20px; text-align: left; background-color: #3d3030; border-radius: 10px; }
+.boss-card { padding: 10px 20px 10px 20px; text-align: left; background-color: var(--card-background); border-radius: 10px;  }
+.damage-card, .defense-coef-card { padding: 10px 20px 10px 20px; text-align: left; background-color: var(--card-background); border-radius: 10px; border-bottom: 3px solid var(--border-red); }
+.stat-card { padding: 10px 20px 10px 20px; text-align: left; background-color: var(--card-background); border-radius: 10px; border-bottom: 3px solid var(--border-red); }
 
 .top-cards h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); padding : 10px 0px 10px 0px; margin : 0px; }
 
@@ -28,7 +29,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .total-value-description, .penetrate-value-description, .defense-reduce-value-description { margin-top: 14px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
 
 
-.boss-select-container select { font-size: 13px; background-color: #3d3030; color: rgb(255, 255, 255, 0.8); border: none; border-radius: 4px; cursor: pointer; width: 100%; padding: 8px 4px !important; margin: 5px 0px 0px 0px; background-color: rgb(0, 0, 0, 0.2); }
+.boss-select-container select { font-size: 13px; background-color: var(--card-background); color: rgb(255, 255, 255, 0.8); border: none; border-radius: 4px; cursor: pointer; width: 100%; padding: 8px 4px !important; margin: 5px 0px 0px 0px; background-color: rgba(255, 255, 255, 0.05); }
 
 .boss-stats { display: flex; flex-direction: column; margin: 0px; }
 
@@ -49,8 +50,8 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .boss-custom-inputs .unit { color: rgba(255, 255, 255, 0.6); font-size: 12px; }
 
 /* Order switch button */
-.order-switch { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0; width: 60px; height: 60px; cursor: pointer; transition: all 0.2s ease; }
-.order-switch:hover { background: rgba(255, 255, 255, 0.2); }
+.order-switch { background: var(--card-background); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0; width: 60px; height: 60px; cursor: pointer; transition: all 0.2s ease; }
+.order-switch:hover { background: #444444; }
 .order-switch-cell { grid-area: switch; display: flex; align-items: center; justify-content: center; }
 
 /* Second step line (합계 / 목표) */
@@ -100,7 +101,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 
 
-.defense-table-container, .penetrate-table-container { overflow-x: auto; margin : 0 20px; padding : 20px 20px 30px 20px; border-radius: 10px; background-color: #3d3030; }
+.defense-table-container, .penetrate-table-container { overflow-x: auto; margin : 0 20px; padding : 20px 20px 30px 20px; border-radius: 10px; background-color: var(--card-background); }
 
 .defense-table, .penetrate-table { width: 100%; border-collapse: collapse; text-align: left; }
 
@@ -141,7 +142,7 @@ img[src*="check-on.png"] { width: 20px !important; height: 20px !important; obje
 .option-column select { font-size: 12px; background-color: rgb(0, 0, 0, 0.1); color: rgb(255, 255, 255, 0.4); border: none; border-radius: 4px; cursor: pointer; width: fit-content; padding: 8px 4px !important; }
 
 /* 옵션 스타일링 */
-select option { background-color: #3d3030; color: rgb(255, 255, 255, 0.8); }
+select option { background-color: var(--card-background); color: rgb(255, 255, 255, 0.8); }
 
 /* 선택된 옵션 스타일링 */
 select option:checked { background-color: #4d3e3e; }
@@ -225,7 +226,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .defense-table, .penetrate-table, #defenseTableBody, #penetrateTableBody{ background-color: none; }
 
     /* 모바일 헤더 스타일 */
-    .mobile-table-header { display: none; grid-template-columns: auto auto auto auto; gap: 8px; padding: 12px; background: #3d3030; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; color: rgba(255, 255, 255, 0.6); }
+    .mobile-table-header { display: none; grid-template-columns: auto auto auto auto; gap: 8px; padding: 12px; background: var(--card-background); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; color: rgba(255, 255, 255, 0.6); }
 
     .mobile-header-group { display: flex; flex-direction: column; gap: 4px; }
 
@@ -265,7 +266,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .note-column:not(:empty)::before { content: "💬 "; }
 
     /* 그룹 헤더를 모바일에서 고정 */
-    .defense-table tr.group-header, .penetrate-table tr.group-header { display: flex; align-items: center; gap: 8px; padding: 12px; margin: 10px 0 6px 0; background: #3d3030; border-radius: 10px; position: sticky; top: 0; z-index: 2; }
+    .defense-table tr.group-header, .penetrate-table tr.group-header { display: flex; align-items: center; gap: 8px; padding: 12px; margin: 10px 0 6px 0; background: var(--card-background); border-radius: 10px; position: sticky; top: 0; z-index: 2; }
     .defense-table tr.group-header td, .penetrate-table tr.group-header td { padding: 0; }
 
     /* 아이콘/텍스트 크기 조정 */
@@ -304,7 +305,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 .penetrate-table-container .value-column, .penetrate-value{ color: #5384d8 !important; }
 
 /* 탭 스타일 */
-.table-tabs { margin: 0 20px; padding: 0; background-color: #3d3030; border-radius: 10px; }
+.table-tabs { margin: 0 20px; padding: 0; background-color: var(--card-background); border-radius: 10px; }
 
 .tab-buttons { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0 20px; }
 

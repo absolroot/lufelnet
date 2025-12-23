@@ -199,9 +199,9 @@ jp: /revelations/?lang=jp
                 <button class="rev-tab" data-tab="star" role="tab"><img
                         src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" /> <span
                         class="tab-text-star">성</span></button>
-                <button class="rev-tab" data-tab="planet" role="tab"><img
+                <button class="rev-tab" data-tab="sky" role="tab"><img
                         src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" /> <span
-                        class="tab-text-planet">진</span></button>
+                        class="tab-text-sky">진</span></button>
             </div>
 
             <!-- Tab panels -->
@@ -210,7 +210,7 @@ jp: /revelations/?lang=jp
                 <div class="rev-tab-panel" data-panel="sun" style="display:none;"></div>
                 <div class="rev-tab-panel" data-panel="moon" style="display:none;"></div>
                 <div class="rev-tab-panel" data-panel="star" style="display:none;"></div>
-                <div class="rev-tab-panel" data-panel="planet" style="display:none;"></div>
+                <div class="rev-tab-panel" data-panel="sky" style="display:none;"></div>
             </div>
         </div>
     </div>
@@ -505,7 +505,7 @@ jp: /revelations/?lang=jp
             sub_title: '부 스탯',
             col_option: '옵션', col_min: '최소 (LV1)', col_max: '최대 (LV25)',
             col_1st: '1st', col_2nd: '2nd', col_3rd: '3rd', col_4th: '4th', col_5th: '5th',
-            tabs: { uni: '주', sun: '일', moon: '월', star: '성', planet: '진' },
+            tabs: { uni: '주', sun: '일', moon: '월', star: '성', sky: '진' },
         },
         en: {
             stats_title: 'Revelation Stats',
@@ -513,7 +513,7 @@ jp: /revelations/?lang=jp
             sub_title: 'Sub Stats',
             col_option: 'Option', col_min: 'Min (LV1)', col_max: 'Max (LV25)',
             col_1st: '1st', col_2nd: '2nd', col_3rd: '3rd', col_4th: '4th', col_5th: '5th',
-            tabs: { uni: 'Universe', sun: 'Sun', moon: 'Moon', star: 'Star', planet: 'Planet' },
+            tabs: { uni: 'Universe', sun: 'Sun', moon: 'Moon', star: 'Star', sky: 'Sky' },
         },
         jp: {
             stats_title: '啓示ステータス',
@@ -521,7 +521,7 @@ jp: /revelations/?lang=jp
             sub_title: 'サブステータス',
             col_option: 'オプション', col_min: '最小 (LV1)', col_max: '最大 (LV25)',
             col_1st: '1st', col_2nd: '2nd', col_3rd: '3rd', col_4th: '4th', col_5th: '5th',
-            tabs: { uni: '宙', sun: '旭', moon: '月', star: '星', planet: '天' },
+            tabs: { uni: '宙', sun: '旭', moon: '月', star: '星', sky: '天' },
         }
     };
 
@@ -542,7 +542,7 @@ jp: /revelations/?lang=jp
             ['SP Recovery', '12.5%', '11.2%', '10.0%', '8.7%', '7.5%'],
             ['Speed', '2.8', '2.5', '2.2', '1.9', '1.6'],
         ],
-        universal: [ // Sun/Moon/Star/Planet
+        universal: [ // Sun/Moon/Star/Sky
             ['Crit Rate', '2%', '1.8%', '1.7%', '1.4%', '1.3%'],
             ['Crit Mult.', '4.1%', '3.7%', '3.4%', '2.8%', '2.5%'],
             ['Pierce Rate', '2.1%', '1.9%', '1.7%', '1.4%', '1.3%'],
@@ -581,21 +581,21 @@ jp: /revelations/?lang=jp
             sun: [['생명', '—', '—']],
             moon: [['공격력', '—', '—'], ['대미지 보너스', '—', '—'], ['생명', '—', '—'], ['방어력', '—', '—'], ['치료 효과', '—', '—']],
             star: [['크리티컬 확률', '—', '—'], ['크리티컬 효과', '—', '—'], ['생명', '—', '—'], ['공격력', '—', '—'], ['방어력', '—', '—'], ['효과 명중', '—', '—']].slice(0, 5),
-            planet: [['공격력', '—', '—'], ['방어력', '—', '—'], ['생명', '—', '—'], ['SP 회복', '—', '—'], ['속도', '—', '—']],
+            sky: [['공격력', '—', '—'], ['방어력', '—', '—'], ['생명', '—', '—'], ['SP 회복', '—', '—'], ['속도', '—', '—']],
         },
         en: {
             uni: [['Attack', '—', '—'], ['Defense', '—', '—']],
             sun: [['HP', '—', '—']],
             moon: [['Attack', '—', '—'], ['Attack Mult.', '—', '—'], ['HP', '—', '—'], ['Defense', '—', '—'], ['Healing Effect', '—', '—']],
             star: [['Crit Rate', '—', '—'], ['Crit Mult.', '—', '—'], ['HP', '—', '—'], ['Attack', '—', '—'], ['Defense', '—', '—']],
-            planet: [['Attack', '—', '—'], ['Defense', '—', '—'], ['HP', '—', '—'], ['SP Recovery', '—', '—'], ['Speed', '—', '—']],
+            sky: [['Attack', '—', '—'], ['Defense', '—', '—'], ['HP', '—', '—'], ['SP Recovery', '—', '—'], ['Speed', '—', '—']],
         },
         jp: {
             uni: [['攻撃力', '—', '—'], ['防御力', '—', '—']],
             sun: [['HP', '—', '—']],
             moon: [['攻撃力', '—', '—'], ['攻撃倍率+', '—', '—'], ['HP', '—', '—'], ['防御力', '—', '—'], ['HP回復量', '—', '—']],
             star: [['CRT発生率', '—', '—'], ['CRT倍率', '—', '—'], ['HP', '—', '—'], ['攻撃力', '—', '—'], ['防御力', '—', '—']],
-            planet: [['攻撃力', '—', '—'], ['防御力', '—', '—'], ['HP', '—', '—'], ['SP回復', '—', '—'], ['速さ', '—', '—']],
+            sky: [['攻撃力', '—', '—'], ['防御力', '—', '—'], ['HP', '—', '—'], ['SP回復', '—', '—'], ['速さ', '—', '—']],
         }
     }
 
@@ -607,17 +607,17 @@ jp: /revelations/?lang=jp
             kr: {
                 moon: new Set(['대미지 보너스', '치료 효과']),
                 star: new Set(['크리티컬 확률', '크리티컬 효과', '효과 명중']),
-                planet: new Set(['SP 회복', '속도'])
+                sky: new Set(['SP 회복', '속도'])
             },
             en: {
                 moon: new Set(['Attack Mult.', 'Healing Effect']),
                 star: new Set(['Crit Rate', 'Crit Mult.', 'Ailment Accuracy']),
-                planet: new Set(['SP Recovery', 'Speed'])
+                sky: new Set(['SP Recovery', 'Speed'])
             },
             jp: {
                 moon: new Set(['攻撃倍率+', 'HP回復量']),
                 star: new Set(['CRT発生率', 'CRT倍率', '状態異常命中']),
-                planet: new Set(['SP回復', '速さ'])
+                sky: new Set(['SP回復', '速さ'])
             }
         };
         const dict = maps[L] || maps.kr;
@@ -675,7 +675,7 @@ jp: /revelations/?lang=jp
         if (titleEl) titleEl.textContent = i18n.stats_title;
 
         // Update tab labels for i18n
-        const tabMap = { uni: '.tab-text-uni', sun: '.tab-text-sun', moon: '.tab-text-moon', star: '.tab-text-star', planet: '.tab-text-planet' };
+        const tabMap = { uni: '.tab-text-uni', sun: '.tab-text-sun', moon: '.tab-text-moon', star: '.tab-text-star', sky: '.tab-text-sky' };
         Object.entries(tabMap).forEach(([k, sel]) => {
             const el = document.querySelector(sel);
             if (el) el.textContent = i18n.tabs[k];
@@ -687,14 +687,14 @@ jp: /revelations/?lang=jp
             sun: document.querySelector('.rev-tab-panel[data-panel="sun"]'),
             moon: document.querySelector('.rev-tab-panel[data-panel="moon"]'),
             star: document.querySelector('.rev-tab-panel[data-panel="star"]'),
-            planet: document.querySelector('.rev-tab-panel[data-panel="planet"]'),
+            sky: document.querySelector('.rev-tab-panel[data-panel="sky"]'),
         };
 
         if (panels.uni) panels.uni.innerHTML = renderMainTable(lang, 'uni') + renderSubTable(lang, 'universe');
         if (panels.sun) panels.sun.innerHTML = renderMainTable(lang, 'sun') + renderSubTable(lang, 'universal');
         if (panels.moon) panels.moon.innerHTML = renderMainTable(lang, 'moon') + renderSubTable(lang, 'universal');
         if (panels.star) panels.star.innerHTML = renderMainTable(lang, 'star') + renderSubTable(lang, 'universal');
-        if (panels.planet) panels.planet.innerHTML = renderMainTable(lang, 'planet') + renderSubTable(lang, 'universal');
+        if (panels.sky) panels.sky.innerHTML = renderMainTable(lang, 'sky') + renderSubTable(lang, 'universal');
 
         // Events
         const accBtn = document.getElementById('rev-accordion-btn');

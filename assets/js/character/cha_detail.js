@@ -639,13 +639,33 @@ document.addEventListener('DOMContentLoaded', () => {
             roleElement.textContent = character.role_jp;
         }
 
-        tagElement.textContent = character.tag;
+        const hasAnyVideoId = (val) => {
+            if (!val) return false;
+            if (Array.isArray(val)) return val.some(v => typeof v === 'string' && v.trim());
+            if (typeof val === 'string') return !!val.trim();
+            return false;
+        };
 
-        if (currentLang === 'en' && character.tag_en) {
-            tagElement.textContent = character.tag_en;
-        }
-        else if (currentLang === 'jp' && character.tag_jp) {
-            tagElement.textContent = character.tag_jp;
+        const hasVideoForLang = (() => {
+            if (currentLang === 'en') {
+                if (hasAnyVideoId(character.video_en)) return true;
+                return hasAnyVideoId(character.video);
+            }
+            return hasAnyVideoId(character.video);
+        })();
+
+        if (!hasVideoForLang) {
+            tagElement.textContent = character.tag;
+
+            if (currentLang === 'en' && character.tag_en) {
+                tagElement.textContent = character.tag_en;
+            }
+            else if (currentLang === 'jp' && character.tag_jp) {
+                tagElement.textContent = character.tag_jp;
+            }
+        } else {
+            tagElement.textContent = '';
+            tagElement.innerHTML = '';
         }
 
         // role 정보 채우기
@@ -654,13 +674,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // tag 정보 채우기
-        if (tagElement.textContent) {
+        if (!hasVideoForLang && tagElement.textContent) {
 
             // 콤마로 분리하여 각각의 태그를 생성
             const tags = tagElement.textContent.split(',').map(tag => tag.trim());
             tagElement.innerHTML = '';
             tags.forEach(tag => {
-                if (tag) {  // 빈 문자열이 아닌 경우에만 추가
+                if (tag) {
                     const tagDiv = document.createElement('div');
                     tagDiv.className = 'tag-item';
                     tagDiv.textContent = tag;
@@ -668,6 +688,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        safeRun('applyCharacterVideo', () => {
+            if (typeof window.applyCharacterVideo === 'function') {
+                window.applyCharacterVideo(characterName, character);
+            }
+        });
+
     }
 
 
@@ -696,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const span = el.querySelector('span');
             if (span) {
                 const computedStyle = window.getComputedStyle(span);
-                return computedStyle.color === 'rgb(211, 188, 142)';
+                return computedStyle.color === 'rgb(211, 142, 142)';
             }
             // 직접적인 텍스트 내용 확인
             return el.textContent !== '-' && el.textContent.includes('!');
@@ -747,13 +774,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const skillCount = mindSkills.filter(el =>
             el &&
             el.textContent !== '-' &&
-            (el.textContent.includes('!') || el.style.color === 'rgb(211, 188, 142)')
+            (el.textContent.includes('!') || el.style.color === 'rgb(211, 142, 142)')
         ).length;
 
         const statCount = mindStats.filter(el =>
             el &&
             el.textContent !== '-' &&
-            (el.textContent.includes('!') || el.style.color === 'rgb(211, 188, 142)')
+            (el.textContent.includes('!') || el.style.color === 'rgb(211, 142, 142)')
         ).length;
 
         const mindHeader = document.querySelector('.skill-mind-settings .setting-section:last-child h3');

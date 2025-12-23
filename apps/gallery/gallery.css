@@ -12,7 +12,7 @@
 .gallery-toolbar .filters { display: flex; gap: 10px; flex-wrap: wrap; }
 .gallery-toolbar input[type="text"],
 .gallery-toolbar select {
-  background: #1e1e1e;
+  background: var(--card-background);
   border: 0px solid rgba(255,255,255,0.12);
   color: rgba(255,255,255,0.9);
   padding: 8px 10px 8px 16px;
@@ -100,7 +100,7 @@
   padding: 10px 16px 10px 16px;
   border: none;
   border-radius: 32px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.05);
   color: #fff;
   font-size: 14px;
   box-sizing: border-box;  

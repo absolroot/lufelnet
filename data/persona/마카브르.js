@@ -22,7 +22,11 @@ window.personaFiles["마카브르"] = {
   "recommendSkill": [
     {
       "name": "전의 공명",
-      "priority": 0
+      "priority": 3
+    },
+    {
+      "name": "마하타루카 오토",
+      "priority": 1
     },
     {
       "name": "공격 강화",

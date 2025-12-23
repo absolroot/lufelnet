@@ -1,6 +1,7 @@
 // Korean → English mapping
 const mapping_en = {
     // Main revelations
+    "탄생": "Birth",
     "돌파": "Perseverance",
     "희망": "Hope",
     "창조": "Creation",
@@ -54,6 +55,7 @@ const enRevelationData = {
     "mapping_en": mapping_en,
     // Korean -> English translation mapping
     "mainTranslated": {
+        "탄생": "Birth",
         "돌파": "Perseverance",
         "희망": "Hope",
         "창조": "Creation",
@@ -102,6 +104,7 @@ const enRevelationData = {
         "획득": "Obtain"
     },
     "main": {
+        "Birth": ["Power"], // 탄생
         "Agility": ["Satiety"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
         "Hope": ["Labor", "Fixation", "Transformation"], // 희망
@@ -145,7 +148,7 @@ const enRevelationData = {
         "Strife": ["Acceptance"], // 분쟁
         "Love": ["Meditation", "Faith", "Acceptance"], // 사랑
         "Opulence": ["Growth", "Meditation"], // 화려
-        "Power": ["Growth", "Trust", "Harmony"], // 힘
+        "Power": ["Growth", "Trust", "Harmony", "Birth"], // 힘
         "Victory": ["Harmony"], // 승리
         "Truth": ["Awareness", "Harmony"], // 진리
         "Prosperity": ["Departure", "Trust"], // 풍요
@@ -377,7 +380,9 @@ const enRevelationData = {
         "Agility": {
             "Satiety": "Increase All-Out Attack DMG by 16%.",
             "type": ["미출시"]
+        },
+        "Birth": { // 탄생
+            "Power": "When equipped by Justine & Caroline: Increase Warden's Duty by  5.0%."
         }
-
     }
 };

@@ -137,7 +137,7 @@ Since the SP cost increases the more the Resonance is repeated, the kit is desig
 
 <br>
 
-Although greatly influenced by SP recovery, the character can easily reach **283.9% SP recovery** even with just the base **188.5%** SP recovery, the **SP Recovery main stat of Revelation Card Planet (90.4%)**, and My Palace’s 5%.  
+Although greatly influenced by SP recovery, the character can easily reach **283.9% SP recovery** even with just the base **188.5%** SP recovery, the **SP Recovery main stat of Revelation Card Sky (90.4%)**, and My Palace’s 5%.  
 
 Recommended SP recovery requirements based on the suggested operation cycle are as follows. Extra turns are not included in the count.  
 

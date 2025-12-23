@@ -67,10 +67,10 @@
 
 .filter-group h3 { width: 60px; color: rgb(255, 255, 255, 0.8); margin-bottom: 12px; font-size: 13px; font-weight: 400; outline: none; }
 
-.filter-options { display: flex; flex-wrap: wrap; gap: .5rem; margin-right: 0px; padding-right: 0px; }
+.filter-options { display: flex; flex-wrap: wrap; gap: .6rem; margin-right: 0px; padding-right: 0px; }
 
 .filter-options label { height: 32px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; border-radius: 32px; padding: 0px 6px 0px 6px; transition: all 0s;  /* background-color만이 아닌 모든 속성에 transition 적용 */
-    background-color: rgba(0, 0, 0, 0.6); outline: none; }
+    background-color: var(--card-background); outline: none; }
 
 .filter-options label:hover { filter: brightness(1.1); background-color: rgb(255, 255, 255, 0.4); }
 
@@ -79,7 +79,10 @@
 .filter-options input[type="checkbox"]:checked + .star-container { filter: brightness(1.2); }
 
 .filter-options input[type="checkbox"]:checked ~ label,
-.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.8); border: 1px solid rgb(211, 188, 142, 0.8); height: 30px; padding: 0px 5px 0px 5px; }
+.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.15);
+    height: 32px;
+    padding: 0px 6px 0px 6px;
+    box-shadow: 0 0 0 1px #ff00007c inset; }
 
 .filter-options img { width: 20px; height: 20px; object-fit: contain; }
 
@@ -206,7 +209,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .persona-img[src*="마카브르.webp"] {  transform: translateX(-9%) scale(1.05) translateY(3%);}
 
-.persona-detail-container { display: flex; flex-wrap: wrap; gap: 24px; padding: 20px; margin-bottom: 32px; background: rgba(0, 0, 0, 0.3); border-radius: 12px; /* 오프스크린 영역 생략으로 스크롤 페인트 비용 절감 */
+.persona-detail-container { display: flex; flex-wrap: wrap; gap: 24px; padding: 20px; margin-bottom: 32px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;/* 오프스크린 영역 생략으로 스크롤 페인트 비용 절감 */
     content-visibility: auto; contain: content; contain-intrinsic-size: 520px; justify-content: center; }
 
 .persona-card-section { flex-direction: column; display: flex; flex: 0 0 auto; align-items: center; }
@@ -234,8 +237,8 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 }
 
 .instinct-variant-btn {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
     border-radius: 999px;
     padding: 2px 8px;
     font-size: 11px;
@@ -245,7 +248,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .instinct-variant-btn.active {
     background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 1px #ffffff inset;
 }
 
 /* Instinct 제목과 버튼 정렬 보정 */
@@ -258,7 +261,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 .persona-unique-skill-info,
 .persona-highlight-info,
 .persona-recommended-skills,
-.persona-comment { background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 8px; }
+.persona-comment { background: rgba(0, 0, 0, 0.15); padding: 16px; border-radius: 8px; }
 
 .persona-info-section h3 { margin: 0 0 8px 0; font-size: 13px; color: rgb(255, 255, 255, 0.9); }
 
@@ -279,23 +282,23 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 
 .skill-level-buttons {
     display: inline-flex;
-    gap: 4px;
+    gap: 8px;
     margin-left: 6px;
 }
 
 .skill-level-btn {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
     border-radius: 999px;
-    padding: 2px 8px;
+    padding: 4px 8px;
     font-size: 10px;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
 }
 
 .skill-level-btn.active {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 1px #ffffff inset;
+    background: rgba(255, 0, 0, 0.3);
 }
 
 .persona-grade-img { height: 16px; width: auto; object-fit: contain; }
@@ -319,7 +322,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 .persona-instinct-info[data-priority="3"],
 .persona-unique-skill-info[data-priority="3"],
 .persona-highlight-info[data-priority="3"],
-.priority-box.high { position: relative; background: #2E201D; border: 1px solid transparent; background-clip: padding-box; }
+.priority-box.high { position: relative; background: rgba(0, 0, 0, 0.15); border: 1px solid transparent; background-clip: padding-box; }
 
 .persona-instinct-info[data-priority="3"]::before,
 .persona-unique-skill-info[data-priority="3"]::before,
@@ -384,7 +387,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 .persona-recommended-skills .skill-name-container {
     padding: 2px 6px;
     /* border: 1px solid rgba(255, 255, 255, 0.1); */
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
     cursor: pointer;
     transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
@@ -423,7 +426,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 #personaSearch { width: 100%; padding: 10px 16px 10px 44px;  /* 왼쪽 패딩을 늘려서 아이콘 공간 확보 */
     /* border: 1px solid rgba(255, 255, 255, 0.1); */
     border : none; 
-    border-radius: 32px; background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 14px; box-sizing: border-box;
+    border-radius: 32px; background: var(--card-background); color: #fff; font-size: 14px; box-sizing: border-box;
 
 }
 
@@ -440,7 +443,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 /* 스크롤바 스타일링 */
 .search-dropdown::-webkit-scrollbar { width: 8px; }
 
-.search-dropdown::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+.search-dropdown::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
 
 .search-dropdown::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
 
@@ -466,7 +469,7 @@ input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: aut
 .explain-container { margin: 20px 0 0 0; padding: 0 20px; }
 @media (max-width: 1200px) { .explain-container { padding: 0 0px; }}
 
-.explain-box { width: 100%; box-sizing: border-box; display: flex; flex-direction: row; gap: 48px; flex-wrap: wrap; background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 20px; color: #fff; }
+.explain-box { width: 100%; box-sizing: border-box; display: flex; flex-direction: row; gap: 48px; flex-wrap: wrap; background: var(--card-background); border-radius: 12px; padding: 20px; color: #fff; border-bottom: solid 3px rgb(115 0 0); margin-bottom: 10px;}
 
 .explain-section h4 { margin: 0 0 16px 0; font-size: 14px; color: rgba(255, 255, 255, 0.8); }
 

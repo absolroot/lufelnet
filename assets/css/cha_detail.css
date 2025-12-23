@@ -42,7 +42,7 @@
     background-position: center;
     background-position-y: 30%;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.15;
 }
 
 .carousel-inner {
@@ -86,13 +86,13 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #666;
+    background-color: #ffffff75;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .dot.active {
-    background-color: #fff;
+    background-color: #ff0000;
 }
 
 /* 캐릭터 상단 */
@@ -214,7 +214,7 @@
     color: rgba(255, 255, 255, 0.8);
     padding: 8px 16px;
     border-radius: 999px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #222222;
     width: fit-content;
     height: fit-content;
     font-weight: 600;
@@ -231,12 +231,164 @@
     margin-bottom: 20px;
 }
 
+.character-video {
+    width: 360px;
+    aspect-ratio: 16 / 9;
+    border: 4px solid #101010;
+    background-color: #000;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+}
+
+.character-video-stage {
+    width: 100%;
+    height: 100%;
+    touch-action: pan-y;
+}
+
+.character-video-poster {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #000;
+}
+
+.character-video-poster img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.character-video-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.character-video-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border: none;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.character-video-play svg {
+    display: block;
+}
+
+.character-video-play-img {
+    width: 64px !important; 
+    height: 64px !important;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .character-video-play {
+        width: 64px !important;
+        height: 64px !important;
+    }
+    .character-video-play-img {
+        width: 64px !important;
+        height: 64px !important;
+    }
+}
+
+.character-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.character-video-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.character-video-nav svg {
+    display: block;
+}
+
+.character-video-nav.prev {
+    left: 8px;
+}
+
+.character-video-nav.next {
+    right: 8px;
+}
+
+.character-video-dots {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+.character-video-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.35);
+    padding: 0;
+    cursor: pointer;
+}
+
+.character-video-dot.active {
+    background: rgba(255,255,255,0.95);
+}
+
+@media (max-width: 768px) {
+    .character-video {
+        width: calc(100% - 32px);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        max-width: 520px;
+    }
+}
+
 .tag-item {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.8);
     padding: 8px 16px;
     border-radius: 999px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--card-background);
 }
 
 .basic-info {
@@ -531,7 +683,7 @@ h2 {
 }
 
 .skill-card {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
     padding: 20px 16px 12px 16px;
     border-radius: 8px;
     display: flex;
@@ -584,11 +736,6 @@ h2 {
 
 
 
-/* first 4 skills (skill1, skill2, skill3, highlight) background color */
-
-.skill-card:nth-child(-n+4) {
-    background: rgba(0, 0, 0, 0.15);
-}
 
 .skill-icon {
     width: 32px;
@@ -631,7 +778,7 @@ h2 {
     margin-top: 8px;
     font-size: 14px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
     white-space: pre-line;
 }
 
@@ -706,7 +853,8 @@ h2 {
 
 
 .card-style {
-    background: #3d3030;
+    background: var(--card-background);
+    border-bottom: 3px solid var(--border-red);
     border-radius: 16px;
     padding: 10px 35px 20px 35px;
     margin: 20px 0;
@@ -855,8 +1003,8 @@ h2 {
     font-size: 14px;
     font-weight: 400;
     letter-spacing: -0.02em;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
     margin: 8px 0px 0px 0px;
     white-space: pre-line;
 
@@ -899,7 +1047,7 @@ h2 {
     display: flex;
     gap: 20px;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 8px;
 }
 
@@ -923,11 +1071,11 @@ h2 {
 .weapon-name {
     font-size: 16px;
     font-weight: 400;
-    color: #d3bc8e;
+    color: #ffe5b2;
 }
 
 .weapon-name.five-star {
-    color: #d1e7e7;
+    color: #9effff;
 }
 
 .weapon-stars {
@@ -1020,7 +1168,7 @@ h2 {
 .enhancement-btn,
 .skill-level-btn {
     padding: 0.5rem 1rem;
-    background: rgb(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
     border: 0px;
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
@@ -1029,15 +1177,14 @@ h2 {
 
 .enhancement-btn:hover,
 .skill-level-btn:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .enhancement-btn.active,
 .skill-level-btn.active {
-    padding: calc(0.5rem - 1px) calc(1rem - 1px);
-    border: 1px solid #d3bc8e;
-    background: rgb(0, 0, 0, 0.1);
-    color: #d3bc8e;
+    box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5) inset;
+    background: rgba(0, 0, 0, 0.1);
+    color: #ffffff;
 }
 
 
@@ -1625,7 +1772,7 @@ h2 {
 
 .weapon-effect-modal-content {
     background-color: #1a1a1a;
-    border: 1px solid #d3bc8e;
+    border: 1px solid #e5e5e5;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
@@ -1634,7 +1781,7 @@ h2 {
     position: relative;
     padding: 20px;
     color: #fff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
     transform: scale(0.95);
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;
@@ -1653,7 +1800,7 @@ h2 {
     position: absolute;
     right: 15px;
     top: 10px;
-    color: #d3bc8e;
+    color: #dedede;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -1687,7 +1834,7 @@ h2 {
 .weapon-effect-header h3 {
     margin: 0;
     font-size: 18px;
-    color: #d3bc8e;
+    color: #f0f0f0;
 }
 
 .weapon-effect-description {
@@ -1774,7 +1921,7 @@ h2 {
 }
 
 .review-content pre {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
     padding: 12px;
     border-radius: 6px;
     overflow-x: auto;
@@ -1845,9 +1992,9 @@ h2 {
 }
 
 .priority-badge.top-priority {
-    color: #d3bc8e;
-    background: rgba(211, 188, 142, 0.15);
-    border: 1px solid rgba(211, 188, 142, 0.3);
+    color: #d38e8e;
+    background: rgba(211, 142, 142, 0.15);
+    border: 1px solid rgba(211, 142, 142, 0.3);
     font-weight: 600;
 }
 
@@ -2058,4 +2205,44 @@ h2 {
     #recommended-party-content.party-grid-layout {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
+
+
+.p5-layer-box {
+    /* --- 1. 맨 위: 메인 텍스트 (검은색) --- */
+    position: relative;
+    z-index: 1; /* 제일 위로 */
+    
+    /* 폰트 설정 (두꺼울수록 효과가 좋음) */
+    font-weight: 700;
+    color: #ffffff;        /* 글자색 검정 */
+    
+    /* transform: skew(-10deg) rotate(-5deg);  */
+
+}
+
+/* --- 2. 중간: 굵은 흰색 테두리 --- */
+.p5-layer-box::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    z-index: -1; /* 글자 바로 뒤 */
+    
+    /* 텍스트 속은 투명하게, 테두리는 흰색으로 */
+    color: transparent; 
+    -webkit-text-stroke: 10px black;
+}
+
+/* --- 3. 맨 아래: 빨간색 배경/그림자 --- */
+.p5-layer-box::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    z-index: -2; /* 맨 뒤 */
+    
+    color: transparent;
+    -webkit-text-stroke: 12px white;
+    
+    /* 위치를 살짝 옮겨서 보라색 그림자처럼 보이게 */
+    transform: translate(6px, 5px);
 }

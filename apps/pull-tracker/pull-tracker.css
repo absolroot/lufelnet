@@ -1,24 +1,24 @@
 /* Shared layout */
-.card-style { background:#3d3030; border:1px solid rgba(255,255,255,.08); border-radius:12px; margin:0 20px; }
+.card-style { background:var(--card-background); border:1px solid rgba(255,255,255,.08); border-radius:12px; margin:0 20px; }
 .summary-cards { margin:0 20px; }
 .section-divider { height:1px; background:rgba(255,255,255,.08); margin:16px 20px; }
 .header-container {padding-bottom: 0px;}
 
 /* Top URL row */
 .url-row { display:flex; gap:8px; flex-wrap: wrap; flex-direction: column; }
-.url-input { flex:1; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#1a110e; color:#fff; outline:none; transition:border-color .15s ease; }
-.url-input:focus { border-color:#b38b6d; }
-.url-btn { align-items:center; display:flex; padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#231510; color:#fff; cursor:pointer; }
-.url-btn.primary { background:#4e2e20; border-color:#6d4a37; }
-.url-btn.primary:hover { background:#5a3727; }
-.url-btn.secondary:hover { background:#2a1a13; }
-.url-btn:hover { background:#2a1a13; }
+.url-input { flex:1; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#151515; color:#fff; outline:none; transition:border-color .15s ease; }
+.url-input:focus { border-color:#c7c7c7; }
+.url-btn { align-items:center; display:flex; padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background: rgba(0, 0, 0, 0.15); color:#fff; cursor:pointer; }
+.url-btn.primary { background: rgba(0, 0, 0, 0.15); border-color:#6d4a37; }
+.url-btn.primary:hover { background: rgba(0, 0, 0, 0.2); }
+.url-btn.secondary:hover { background: rgba(0, 0, 0, 0.2); }
+.url-btn:hover { background: rgba(0, 0, 0, 0.2); }
 .url-info { opacity:.85; font-size:14px; white-space:pre-line; padding:12px 14px; background:#00000020; border-radius:10px; color:#ffffff8f}
 .url-status { line-height:1.6; font-size:14px; color:#ffe0e0; margin-left:4px }
 
 /* Overview */
 .overview-grid { display:grid; grid-template-columns: repeat(3, minmax(220px,1fr)); gap:12px; }
-.overview-card { background:#3d3030; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px; }
+.overview-card { background:var(--card-background); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px; }
 .overview-card h3 { margin:0 0 0px 0; font-size:16px; display:flex; align-items:center; gap:8px; }
 .overview-chart { width:100%; height:140px; display:block; margin-top:8px; }
 .jewel { object-fit:cover; height:16px; vertical-align:-3px; margin-right:0px; }
@@ -27,7 +27,7 @@
 
 /* Stat cards */
 .cards-grid { display:grid; grid-template-columns: repeat(3, minmax(220px,1fr)); gap:12px; }
-.stat-card { background:#3f3135; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px 16px 24px 16px; }
+.stat-card { background:#303030; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px 16px 24px 16px; }
 .stat-card h3 { margin:0 0 0px 0; font-size:16px; }
 .stat { display:flex; justify-content:space-between; margin:4px 0; opacity:.95; font-size:14px; }
 .stat-table { width:100%; margin-top:6px; border-top:1px solid rgba(255,255,255,.08); }
@@ -41,7 +41,7 @@
 .tr.fifty .td { color:#8fd9ff; }
 .tr.four .td, .tr.four .star { color:#ffc17c; }
 .pills { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; }
-.pill { position:relative; background:#140d0a70; border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:4px 8px; font-size:12px; opacity:.95; }
+.pill { position:relative; background:#00000070; border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:4px 8px; font-size:12px; opacity:.95; }
 .card-title-icon { object-fit:cover; height:18px; }
 .inprogress { opacity:.7; font-size:12px; }
 /* Fancy grade borders */
@@ -55,7 +55,7 @@
 .five-row { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-top:1px solid rgba(255,255,255,.06); }
 .five-left { display:inline-flex; align-items:center; gap:8px; font-size:12px; }
 .five-right { display:inline-flex; align-items:center; gap:12px; opacity:.85; font-size:12px; }
-details { margin-top:20px; background:#0c080691; border:1px solid rgba(255,255,255,.06); border-radius:8px; padding:6px 10px; }
+details { margin-top:20px; background:#10101091; border:1px solid rgba(255,255,255,.06); border-radius:8px; padding:6px 10px; }
 details > summary { cursor:pointer; list-style:none; font-size:13px; color:#ededed; }
 details > summary::marker { display:none; }
 details > summary::before { content:'+'; display:inline-block; width:16px; margin-right:6px; opacity:.8; }
@@ -83,13 +83,13 @@ details[open] > summary::before { content:'-'; }
 
 /* Global info 4-col */
 .info-cards-grid { display:grid; grid-template-columns: repeat(6, minmax(160px,1fr)); gap:12px; margin: 8px 0px; }
-.info-card { background:#3d3030; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:12px 16px; display:flex; flex-wrap: wrap; flex-direction: column; justify-content:space-between; }
+.info-card { background:var(--card-background); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:12px 16px; display:flex; flex-wrap: wrap; flex-direction: column; justify-content:space-between; }
 .info-card h4 { margin:0; font-size:13px; opacity:.9; }
 .info-card .val { font-size:32px; font-weight:700; }
 
 /* Global 5-col */
 .global-cards { display:grid; grid-template-columns: repeat(5, minmax(160px,1fr)); gap:12px; margin: 8px 0px; }
-.global-card { background:#3f3135; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px; }
+.global-card { background:var(--card-background); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px; }
 .global-card .big { font-size:28px; font-weight:700; margin:0; }
 .global-card .sub { margin-top:6px; font-size:12px; opacity:.9; }
 
@@ -98,7 +98,7 @@ details[open] > summary::before { content:'-'; }
 .val-weapon, .big.weapon { color:#acffd3; } /* 색2: 하늘 */
 
 /* Rank list (3-column lists) */
-.rank-card { background:#3f3135; border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:16px; }
+.rank-card { background:var(--card-background); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:16px; }
 .rank-card h3 { margin:0 0 10px 0; font-size:13px; display:flex; align-items:center; gap:8px; }
 .rank-table { width:100%; border-collapse: collapse; }
 .rank-head { opacity:.85; font-weight:600; font-size:13px; border-bottom:1px solid rgba(255,255,255,.12); padding-left: 48px !important;}
@@ -148,8 +148,8 @@ details[open] > summary::before { content:'-'; }
 .gs-lists > .rank-card { flex: 1 1 calc((100% - 24px)/3); min-width:260px; }
 /* 각 카드(열)는 동일 폭, 내부 내용 높이에 따라 개별로 커지도록 함 */
 .gs-tabs { display:flex; gap:8px; margin: 0 0 10px 0; flex-wrap: wrap; }
-.gs-tab { padding:6px 10px; border-radius:999px; background:#2a1a13; color:#fff; font-size:12px; border:1px solid rgba(255,255,255,.2); cursor:pointer; }
-.gs-tab.active { background:#4e2e20; border-color:#6d4a37; }
+.gs-tab { padding:6px 10px; border-radius:999px; background:#1f1f1f; color:#fff; font-size:12px; border:1px solid rgba(255,255,255,.2); cursor:pointer; }
+.gs-tab.active { background: var(--card-background); border-color:#ffeaea; }
 
 /* Plain tabs (text with separators) used inside chart */
 .gs-tabs.plain { gap:0; }

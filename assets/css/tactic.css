@@ -31,7 +31,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   #top-container { display: grid; grid-template-columns: 400px 776px; /* 두 칼럼으로 분할 */
     align-items: stretch; gap: 24px; margin-bottom: 24px; width: 100%; max-width: 100%; }
   
-  .card { background: linear-gradient(to bottom, rgb(109, 30, 37) 40px, #3d3030 24px); border-radius: 2px; box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25); padding: 16px 24px 20px 24px; /* 상우하좌 */
+  .card { background: linear-gradient(to bottom, rgb(109, 30, 37) 40px, var(--card-background) 24px); border-radius: 2px; box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25); padding: 16px 24px 20px 24px; /* 상우하좌 */
     height: 100%; /* 내용물 높이에 맞춤 */
   }
 
@@ -46,7 +46,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   
   #turns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; grid-auto-flow: row; }
 
-  .turn-container { background: linear-gradient(to top, rgb(109, 30, 37) 2px, #3d3030 2px); border-radius: 2px; box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25); padding: 12px 16px 0px 16px; margin-bottom: 0px; position: relative; width: 560px; }
+  .turn-container { background: linear-gradient(to top, rgb(109, 30, 37) 2px, var(--card-background) 2px); border-radius: 2px; box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25); padding: 12px 16px 0px 16px; margin-bottom: 0px; position: relative; width: 560px; }
   
   .turn-header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0px; }
   
@@ -136,14 +136,14 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   }
   .rev-display {
     display: flex; align-items: center; gap: 8px; width: 100%;
-    background: #2e2626; color: #eee; /* border removed to blend with UI */
+    background: rgba(0, 0, 0, 0.15); color: #eee; /* border removed to blend with UI */
     padding: 8px 8px; border-radius: 3px; cursor: pointer; user-select: none;
   }
   .rev-display img { width: 20px; height: 20px; object-fit: cover; border-radius: 2px; }
   .rev-display span { font-size: 13px; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .rev-options {
     display: none; position: absolute; left: 0; right: 0; top: calc(100% + 4px); width: 100%;
-    max-height: 240px; overflow-y: auto; background: #3d3030; z-index: 1000;
+    max-height: 240px; overflow-y: auto; background: var(--card-background); z-index: 1000;
     border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; box-shadow: 0 6px 12px rgba(0,0,0,0.3);
   }
   .rev-options.active { display: block; }
@@ -158,12 +158,12 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
     position: absolute;
     max-height: 300px; /* about 20 items tall */
     overflow-y: auto;
-    background: #3d3030;
+    background: var(--card-background);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 3px;
     z-index: 1000;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
     left: 0;
     top: 100%;
   }
@@ -236,7 +236,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
 
   .persona-container { position: relative; display: grid; }
 
-  .persona-tooltip { display: none; position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); padding: 8px 12px; background: rgba(0, 0, 0, 0.9); color: white; border-radius: 3px; font-size: 14px; white-space: pre-line; z-index: 1000; width: max-content; max-width: 320px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); line-height: 1.4; pointer-events: none; }
+  .persona-tooltip { display: none; position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); padding: 8px 12px; background: rgba(0, 0, 0, 0.9); color: white; border-radius: 3px; font-size: 14px; white-space: pre-line; z-index: 1000; width: max-content; max-width: 320px; box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); line-height: 1.4; pointer-events: none; }
 
   .persona-tooltip::before { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: rgba(0, 0, 0, 0.9); }
 
@@ -352,7 +352,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   #characterFilterGrid img.char-face.selected::after { content: attr(data-order); position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #ffc640; color: #1a1a1a; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
 
   /* 비활성화된 드롭다운 스타일 */
-  select:disabled { background-color: rgba(255, 255, 255, 0.3); cursor: not-allowed; }
+  select:disabled { background-color: rgba(255, 255, 255, 0.05); cursor: not-allowed; }
 
   .action-memo { background-color: transparent; border: none !important; padding: 8px; font-size: 13px; color: inherit; padding-right: 24px; }
 
@@ -603,7 +603,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   /* 툴팁 스타일 개선 (토글 스위치는 제외) */
   [title]:not(.toggle-ui-btn) { position: relative; transition: all 0.1s ease; }
 
-  [title]:not(.toggle-ui-btn):hover::after { content: attr(title); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 8px 12px; background: rgba(0, 0, 0, 0.9); color: white; border-radius: 6px; font-size: 14px; white-space: pre-line; z-index: 100; width: max-content; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); line-height: 1.4; margin-bottom: 5px; }
+  [title]:not(.toggle-ui-btn):hover::after { content: attr(title); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 8px 12px; background: rgba(0, 0, 0, 0.9); color: white; border-radius: 6px; font-size: 14px; white-space: pre-line; z-index: 100; width: max-content; max-width: 300px; box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); line-height: 1.4; margin-bottom: 5px; }
 
   /* 툴팁 화살표 */
   [title]:not(.toggle-ui-btn):hover::before { content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: rgba(0, 0, 0, 0.9); margin-bottom: -1px; }
@@ -634,7 +634,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
     .action-item {   cursor: default !important; }
     
     /* 메모 입력 필드를 포함하는 액션 아이템에 대한 특별 처리 */
-    .action-item:has(.action-memo:focus) {   cursor: default !important;   pointer-events: auto !important;   background-color: rgba(0, 0, 0, 0.2) !important; }
+    .action-item:has(.action-memo:focus) {   cursor: default !important;   pointer-events: auto !important;   background-color: rgba(255, 255, 255, 0.05) !important; }
     
     #top-container {   width: 100% !important;   display: flex;   flex-direction: column;   gap: 24px;   margin-bottom: 24px;   min-width: auto !important; }
 
@@ -791,7 +791,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   }
 
   /* 드롭다운 옵션 스타일 수정 */
-  select option { background-color: #3d3030 !important; color: rgba(255, 255, 255, 0.9) !important; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+  select option { background-color: var(--card-background) !important; color: rgba(255, 255, 255, 0.9) !important; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
 
   /* iOS에서 선택된 옵션 스타일 */
   select:active, 
@@ -818,7 +818,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .hide-ui .action-memo-display.placeholder { color: transparent; }
 
   /* 모달 스타일 - 기존 테마와 일치하도록 */
-  .memo-edit-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 300px; background-color: #3d3030; border: 1px solid rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); z-index: 1000; display: flex; flex-direction: column; gap: 16px; }
+  .memo-edit-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 300px; background-color: var(--card-background); border: 1px solid rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); z-index: 1000; display: flex; flex-direction: column; gap: 16px; }
 
   .modal-memo-input { padding: 10px 12px; border: none; border-radius: 3px; font-size: 14px; background-color: rgba(0, 0, 0, 0.15); color: rgba(255, 255, 255, 0.9); }
 

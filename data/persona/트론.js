@@ -31,7 +31,7 @@ window.personaFiles["트론"] = {
     },
     {
       "name": "무한 알고리즘",
-      "priority": 0
+      "priority": 2
     }
   ],
   "comment": "화상이 필수적인 캐릭터(ex. 미오)에게 사용하는 형태로 채용된다.",

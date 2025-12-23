@@ -324,6 +324,7 @@ const personaData = {
         recommendSkill : [
              {name : "음률의 침입", priority: 3},
              {name : "마하라쿤다", priority: 3},
+             {name : "해체 역장", priority: 1},
              {name : "대미지 면역", priority: 0},
              {name : "방어 강화", priority: 0},
              {name : "전의 공명", priority: 0},

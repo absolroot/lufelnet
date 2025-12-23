@@ -211,13 +211,19 @@ jobs:
           fi
 
           # 변경이 있으면 커밋
-          if [ "$changed" -eq 1 ]; then
+          # 이중 가드: 변수 플래그 + 실제 git diff 확인
+          if [ "$changed" -eq 1 ] || ! git diff --quiet; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "chore(data): update /data/external JSONs [skip ci]"
-            git push
-            echo "✅ Changes committed."
+            git add -A || true
+            # 변경이 없으면 commit이 실패(exit 1)하므로, 실패 시에도 정상 진행
+            git commit -m "chore(data): update /data/external JSONs [skip ci]" || echo "ℹ️ No new commits created."
+            # push 실패가 전체 스텝 실패로 이어지지 않도록 보호
+            git push || echo "ℹ️ Nothing to push or push skipped."
+            echo "✅ Commit/push step completed."
           else
             echo "✅ No changes to commit."
           fi
+
+          # 어떤 경우에도 스텝이 실패하지 않도록 명시적으로 성공 종료
+          exit 0

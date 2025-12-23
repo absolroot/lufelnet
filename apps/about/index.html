@@ -85,6 +85,11 @@ alternate_urls:
 
         <div class="about-section">
             <button id="donateButton" class="donate-button" data-kr="서포트 | Donate" data-en="Support | Donate" data-jp="サポート | 寄付">서포트 | Donate</button>
+            <p id="donate-description" class="korean-content">
+                루페르넷은 오로지 여러분의 지원을 통해서만 운영됩니다.
+            </p>
+            <p id="donate-description-en" class="english-content" style="display: none;">LufelNet is made possible entirely by your support.</p>
+            <p id="donate-description-jp" class="japanese-content" style="display: none;">ルフェルネットは、皆様のご支援によってのみ運営されています。</p>
         </div>
 
         <!-- Inline donate (EN/JP only) -->
@@ -148,7 +153,7 @@ alternate_urls:
 
         <style>
             .show-supporters-btn {
-                background-color: #3d3030;
+                background-color: var(--card-background);
                 color: rgba(255, 255, 255, 0.9);
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 padding: 5px 10px;
@@ -306,11 +311,13 @@ alternate_urls:
                 </p>
                 <p id="donation-message-en" class="donation-message english-content" style="display: none;">
                     As a user who truly loves P5X, I am continuously managing lufel.net.<br>
-                    Your donation will be a great driving force for improving the site. Thank you sincerely.
+                    Your donation will be a great driving force for improving the site.<br>
+                    LufelNet is made possible entirely by your support. Thank you sincerely.
                 </p>
                 <p id="donation-message-jp" class="donation-message japanese-content" style="display: none;">
                     P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>
-                    あなたの寄付はサイトを改善する大きな原動力になります。心から感謝いたします。
+                    あなたの寄付はサイトを改善する大きな原動力になります。<br>
+                    ルフェルネットは、皆様のご支援によってのみ運営されています。心から感謝いたします。
                 </p>
                 
                 <div class="donation-methods">

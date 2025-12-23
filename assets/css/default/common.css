@@ -1,10 +1,19 @@
 * { font-family: 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; letter-spacing: -0.02em; }
 
+/* 색 전역 선언 */
+
+:root {
+    --bg-color: #111111;
+    --card-background: #232323;
+    --border-red: rgba(115, 0, 0);
+    --label-red: #ff7777;
+}
+
 /* html{ scrollbar-gutter: stable both-edges; }*/ /* 초기 폭 변화 방지 */
 
 .adsbygoogle-noablate { right: 86px !important; }
 
-body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-height: 1.5; min-height: 100vh; opacity: 1; transition: opacity 0.3s ease; /*letter-spacing: -0.025em; */  
+body { background-color: #222222; color: #ffffff; margin: 0; padding: 0; line-height: 1.5; min-height: 100vh; opacity: 1; transition: opacity 0.3s ease; /*letter-spacing: -0.025em; */  
 }
 
 
@@ -28,42 +37,21 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
     background-size: 150% auto; /*animation: gradient 4s linear infinite; */ animation:none}
 
 /* PC 환경의 배경 스타일 - 스크롤 성능 최적화 */
-@media screen and (min-width: 769px) { .container { background: 
-            linear-gradient(to bottom, rgba(255, 100, 50, 0.13), rgba(255, 100, 50, 0.13)),
-            /*linear-gradient(to bottom, rgba(41, 37, 37, 0.3), rgba(29, 26, 25, 0.3)),*/
-            linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
-            linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
-            radial-gradient(circle at 40% 40%, rgba(255, 100, 50, 0.08), transparent 50%),
-            #111; background-size: 
-            100% 100%,
-            30px 30px,
-            30px 30px,
-            100% 100%; background-attachment: 
-            scroll,
-            scroll,
-            scroll,
-            scroll; background-position: 
-            0 0,
-            0 0,
-            0 0,
-            center center; }
+@media screen and (min-width: 769px) { .container {
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)),  linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #111;
+    background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
+    background-attachment: scroll, scroll, scroll, scroll;
+    background-position: 0 0, 0 0, 0 0, center center;
+}
 }
 
 /* 모바일 환경의 단순화된 배경 스타일 */
-@media screen and (max-width: 1200px) { .container { background: 
-            linear-gradient(to bottom, rgba(83, 45, 45, 0.3), rgba(29, 26, 25, 0.3)),
-            linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
-            linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
-            #111; background-size: 
-            100% 100%,
-            30px 30px,
-            30px 30px; background-attachment: 
-            scroll,
-            scroll,
-            scroll; background-position: 
-            0 0,
-            0 0,
-            0 0; }
+@media screen and (max-width: 1200px) {.container {
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)),  linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #111;
+    background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
+    background-attachment: scroll, scroll, scroll, scroll;
+    background-position: 0 0, 0 0, 0 0, center center;
+}
 }
 
 
@@ -78,7 +66,7 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 
 .header-container h1 { font-size: 28px; color: rgb(255, 255, 255, 0.9); margin: 0 0 10px 0; }
 
-.main-content { background: #3d3030; border-radius: 12px; padding: 24px; }
+.main-content { background: var(--card-background); border-radius: 12px; padding: 24px; }
 
 .main-content h1 { font-size: 24px; margin: 0 0 16px 0; }
 
@@ -118,7 +106,7 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 
 
 /* 모바일 헤더 */
-.mobile-header { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 50px; background-color: rgb(49, 33, 33, 0.8); z-index: 1001; transition: transform 0.3s ease; }
+.mobile-header { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 50px; background-color: #151515; z-index: 1001; transition: transform 0.3s ease; }
 
 .mobile-header.hide { transform: translateY(-100%); }
 
@@ -147,7 +135,7 @@ body { background-color: #1f1f1f; color: #ffffff; margin: 0; padding: 0; line-he
 .hamburger-btn.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
 /* 맨 위로 가기 버튼 */
-.floating-top-btn { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.2); cursor: pointer; display: none; /* 초기에는 숨김 */
+.floating-top-btn { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); cursor: pointer; display: none; /* 초기에는 숨김 */
     z-index: 1000; transition: all 0.3s ease; }
 
 .floating-top-btn img { width: 24px; height: 24px; }
@@ -268,11 +256,11 @@ body { overflow-x: hidden !important;  /* 가로 스크롤 숨김 */
 @media (hover: hover) and (pointer: fine) { .filter-options label:hover { filter: brightness(1.1); background-color: rgb(255, 255, 255, 0.4); }}
 
 /* 모바일 환경에서는 호버 효과 제거 */
-@media (hover: none) and (pointer: coarse){ .filter-options label:hover { filter: none; background-color: rgba(0, 0, 0, 0.6); }}
+@media (hover: none) and (pointer: coarse){ .filter-options label:hover { filter: none; background-color: rgba(255, 255, 255, 0.1); }}
 
 /* 480px 미만에서는 필터 옵션의 호버 효과만 제거 */
 @media screen and (max-width: 479px) { 
-    .filter-options label:hover { filter: none !important; transform: none !important; opacity: 1 !important; background-color: rgba(0, 0, 0, 0.6) !important; }
+    .filter-options label:hover { filter: none !important; transform: none !important; opacity: 1 !important; background-color: rgba(255, 255, 255, 0.1) !important; }
     /* 체크박스 선택 상태는 유지 */
     .filter-options input[type="checkbox"]:checked + label { background-color: rgba(255, 255, 255, 0.4) !important; }
 }

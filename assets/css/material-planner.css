@@ -3,12 +3,12 @@
 }
 
 .planner-toolbar{display:flex;gap:12px;align-items:center;padding:0 0px}
-.planner-toolbar .primary-btn,.planner-toolbar .secondary-btn{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;padding:8px 14px 8px 10px;cursor:pointer}
+.planner-toolbar .primary-btn,.planner-toolbar .secondary-btn{background:#232323;border:none;color:#fff;border-radius:8px;padding:8px 14px 8px 10px;cursor:pointer}
 .planner-toolbar .secondary-btn{background:transparent}
 .spoiler-toggle{display:flex;gap:8px;align-items:center;color:rgba(255,255,255,.8)}
 
 
-.summary-card{padding:16px 20px 16px 20px;margin:0px 20px 20px 20px;border-radius:10px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25)}
+.summary-card{padding:16px 20px 16px 20px;margin:0px 20px 20px 20px;border-radius:10px;background:var(--card-background);border-bottom:3px solid var(--border-red)}
 .summary-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .summary-header h2{margin:0; font-size:16px}
 .icon-btn{background:transparent;border:0px solid rgba(255,255,255,.2);color:#fff;border-radius:6px;padding:2px 8px;cursor:pointer}
@@ -59,7 +59,7 @@
 .cnt span.own.bad{color:#ff6d6d}
 
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;padding:0 20px 40px}
-.plan-card{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 12px 20px 12px}
+.plan-card{background:var(--card-background);border-radius:12px;padding:16px 16px 20px 16px;border-bottom:3px solid var(--border-red)}
 .plan-header{display:flex;align-items:flex-start;justify-content:space-between;margin:4px 0px 16px 0px}
 .plan-title{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px}
 .plan-title .plan-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover}

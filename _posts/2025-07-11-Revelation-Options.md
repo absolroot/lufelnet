@@ -31,7 +31,7 @@ translations:
 | 일 (Sun) | 생명 |
 | 월 (Moon) | 공격력, 대미지 보너스, 생명, 방어력, 치료 효과 |
 | 성 (Star) | 크리티컬 확률, 크리티컬 효과, 생명, 공격력, 방어력, 효과 명중 |
-| 진 (Planet) | 공격력, 방어력, 생명, SP 회복, 속도 |
+| 진 (Sky) | 공격력, 방어력, 생명, SP 회복, 속도 |
 
 일반적으로 메인 스탯의 최댓값이 높은 관계로, 메인 스탯을 챙긴 이후 부 옵션을 고려하는 편이 좋다.
 
@@ -85,7 +85,7 @@ translations:
 
 <br>
 
-### 일월성진 (Sun/Moon/Star/Planet)
+### 일월성진 (Sun/Moon/Star/Sky)
 
 | 옵션 | 1st | 2nd | 3rd | 4th | 5th |
 | --- | --- | --- | --- | --- | --- | 
@@ -129,7 +129,7 @@ Each revelation position has fixed main stats that can appear.
 | Sun | HP |
 | Moon | Attack, Attack Mult., HP, Defense, Healing Effect |
 | Star | Crit Rate, Crit Mult., HP, Attack, Defense, Ailment Accuracy |
-| Planet | Attack, Defense, HP, SP Recovery, Speed |
+| Sky | Attack, Defense, HP, SP Recovery, Speed |
 
 Generally, since main stats have higher maximum values, it's better to prioritize main stats before considering sub stats.
 
@@ -174,7 +174,7 @@ Below are the sub stat values that can appear on each revelation:
 
 <br>
 
-### Sun/Moon/Star/Planet
+### Sun/Moon/Star/Sky
 
 | Option | 1st | 2nd | 3rd | 4th | 5th |
 | --- | --- | --- | --- | --- | --- | 
@@ -218,7 +218,7 @@ There are more decimal values, but they are displayed according to values proces
 | 旭 (Sun) | HP |
 | 月 (Moon) | 攻撃力、攻撃倍率+、HP、防御力、HP回復量 |
 | 星 (Star) | CRT発生率、CRT倍率、HP、攻撃力、防御力、状態異常命中 |
-| 天 (Planet) | 攻撃力、防御力、HP、SP回復、速さ |
+| 天 (Sky) | 攻撃力、防御力、HP、SP回復、速さ |
 
 一般的にメインステータスの最大値が高いため、メインステータスを確保した後にサブオプションを考慮するのが良いでしょう。
 

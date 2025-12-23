@@ -41,7 +41,7 @@
             },
             sunMoonStar: {
                 kr: ['일', '월', '성', '진'],
-                en: ['Sun', 'Moon', 'Star', 'Planet'],
+                en: ['Sun', 'Moon', 'Star', 'Sky'],
                 jp: ['旭', '月', '星', '天']
             },
             sunMoonStarEarth: { kr: '일월성진', en: 'S/M/S/P', jp: '旭月星天' },

@@ -35,6 +35,7 @@ jp: /?lang=jp
         align-items: center;
         justify-content: center;
         position: relative;
+        border:none;
         /* 추가 */
     }
 
@@ -102,8 +103,11 @@ jp: /?lang=jp
     </div>
     <div class="separator-line"></div>
     <div class="popular-content" data-max-count="10">
-        <div class="bosses-header">
-            <div class="bosses-title" id="popular-characters-title">인기 괴도</div>
+        <div class="posts-header">
+            <h2><a href="/character" style="text-decoration: none; color: inherit;" id="popular-characters-title">인기 괴도</a></h2>
+            <a href="/character" class="show-more-characters-btn" style="text-decoration: none; color: inherit;" id="show-more-characters-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo" style="
+                max-height: 11px; opacity: 0.75;
+            "></a>
         </div>
         <div class="character-cards" id="popular-character-cards"></div>
     </div>
@@ -173,7 +177,9 @@ jp: /?lang=jp
             <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
                     도서관 NEW</a></h2>
             <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;"
-                id="show-more-posts-btn">더보기 ＋</a>
+                id="show-more-posts-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo" style="
+                max-height: 11px; opacity: 0.75;
+            "></a>
         </div>
         <div class="posts-list" id="postsList"></div>
     </div>
@@ -237,8 +243,10 @@ jp: /?lang=jp
 <!-- <iframe id="music-player" src="{{ site.baseurl }}/music.html" style="display: none;"></iframe> -->
 
 <script>
+
     // 다국어 데이터 로드
     window.i18nData = null;
+
 
     // 오버레이 추가 함수
     function addComingSoonOverlay(cardId, text) {
@@ -585,17 +593,19 @@ jp: /?lang=jp
             tacticTitle.textContent = data.tactic_workshop;
         }
 
+        /*
         const showMoreBtn = document.getElementById('show-more-posts-btn');
         if (showMoreBtn && data.show_more) {
             showMoreBtn.textContent = data.show_more + ' ＋';
         }
 
         // 더보기 버튼
+        
         const moreUpdatesBtn = document.getElementById('show-more-updates-btn');
         if (moreUpdatesBtn && data.show_more) {
             moreUpdatesBtn.textContent = data.show_more;
             moreUpdatesBtn.setAttribute('data-text-more', data.show_more);
-        }
+        }*/
 
         // 모든 링크에 현재 언어 파라미터 추가
         updateLinksWithLanguage(currentLang);
@@ -955,3 +965,4 @@ jp: /?lang=jp
         }
     }
 </script>
+

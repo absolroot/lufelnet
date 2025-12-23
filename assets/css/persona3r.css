@@ -1,4 +1,5 @@
 /* PC 환경의 배경 스타일 - 성능 최적화 */
+
 @media screen and (min-width: 769px) { .container { background: 
     linear-gradient(to bottom, rgb(90, 173, 237, 0.3), rgb(5, 21, 166, 0.3)),
     linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%),
@@ -24,7 +25,7 @@
 
 .rh { background-color: #393f4b !important; }
 
-.card-style { background: #393f4b; }
+.card-style { background: #393f4b; border-bottom: 3px solid rgb(40 48 77);  }
 
 .main-nav { background-color: #2e3142; }
 
@@ -37,3 +38,7 @@
 .selected-option, .nav-sub-item { background-color: rgb(0,0,0,0.1); }
 
 .selected-option:hover { background-color:  rgb(0,0,0,0.1); border-color: rgba(255, 255, 255, 0.4); }
+
+.nav-link.active {background-color: rgba(0, 0, 0, 0.3);}
+
+.enhancement-btn.active, .skill-level-btn.active { box-shadow: 0 0 0 1px rgba(0, 102, 255, 0.5) inset; }

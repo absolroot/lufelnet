@@ -5,7 +5,7 @@
 /* One-column grid at all widths */
 .weapon-cards { display: grid; grid-template-columns: 1fr; gap: 20px; justify-content: left; padding: 20px; }
 
-.card { position: relative; width: 100%; background: #3d3030; border-radius: 10px; padding: 18px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; box-sizing: border-box; border: 2px solid transparent; transition: border-color 0.2s ease; }
+.card { position: relative; width: 100%; background: var(--card-background); border-radius: 10px; padding: 18px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; box-sizing: border-box; border: 2px solid transparent; transition: border-color 0.2s ease; border-bottom: 3px solid var(--border-red); }
 
 .card:hover { filter: brightness(1.1); z-index: 1; }
 .card.active { border-color: rgba(255,255,255,0.5); filter: brightness(1.1); z-index: 2; }
@@ -60,9 +60,9 @@
 /* Effect levels and highlighting */
 /* .levels-block {grid-column: 1 / -1;}*/
 .levels-controls { display: flex; gap: 8px; margin-bottom: 12px; }
-.level-btn { background: rgba(0, 0, 0, 0.08); color: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; padding: 4px 10px; font-size: 12px; cursor: pointer; webkit-user-select: none; }
+.level-btn { background: rgba(0, 0, 0, 0.15); color: rgba(255, 255, 255, 0.9); border: none; border-radius: 9999px; padding: 4px 10px; font-size: 12px; cursor: pointer; webkit-user-select: none; }
 .level-btn:focus { outline: none; }
-.level-btn.active { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); }
+.level-btn.active { background: rgba(255,255,255,0.05); box-shadow: 0 0 0 1px #ffffff inset; }
 
 @media (max-width: 768px) { .levels-block { margin-top: 4px }
   .levels-controls { margin-bottom: 0px }
@@ -89,11 +89,11 @@
 @media (max-width: 1200px) { .sort-controls { padding: 0; }
 }
 
-.sort-button { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
-.sort-button.active { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
+.sort-button { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); border: none; border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+.sort-button.active { background: rgba(255,255,255,0.2); box-shadow: 0 0 0 1px #ffffff inset; }
 
 /* Priority character */
-.character-link.priority .character-img { border: 1px solid #000; border-color: #ffcc00; box-shadow: 0 0 0 1px rgba(255, 204, 0, 0.5); }
+.character-link.priority .character-img { border: 1px solid #000; border-color: #ff0000; box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5); }
 
 .effect-text .num { color: #ffda82; font-weight: 400; }
 

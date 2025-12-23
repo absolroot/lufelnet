@@ -466,8 +466,43 @@
     const style = document.createElement('style');
     style.textContent = `
       .carousel-container { position: relative; width: 100%; margin: 0px 0 0px 0; overflow: hidden; border-radius: 10px 10px 0 0; background: #0e0e0e; }
-      .carousel-toolbar { position: relative; display: flex; gap: 8px; padding: 8px 12px; justify-content: flex-end; align-items: center; background: rgb(42,33,33); }
-      .carousel-toolbar select { background:rgba(31, 31, 31, 0.5); color: #fff; border: 1px solid #333; border-radius: 6px; padding: 6px 8px; font-size: 11px; }
+      .carousel-toolbar { position: relative; display: flex; gap: 8px; padding: 8px 12px; justify-content: flex-end; align-items: center; background:var(--border-red); }
+
+      .carousel-toolbar {
+          position: relative;
+          display: flex;
+          gap: 8px;
+          padding: 8px 12px;
+          padding-bottom: 24px; 
+          justify-content: flex-end;
+          align-items: center;
+          background: var(--border-red);
+          
+          clip-path: polygon(
+              0 0,       /* 좌측 상단 */
+              100% 0,    /* 우측 상단 */
+              100% 70%,  /* 우측 하단 (높이의 70% 지점까지만 그림 -> 짧아짐) */
+              0 100%     /* 좌측 하단 (높이의 100% 지점까지 그림 -> 길어짐) */
+          );
+      }
+
+    .carousel-toolbar::before {
+        content: ''; 
+        position: absolute;
+        top: 0;
+        left: -26%;
+        bottom: 0; 
+        width: 50%; 
+        background-image: url('/assets/img/character-detail/character_bg.png');
+        background-repeat: no-repeat;
+        background-position: right center; 
+        background-size: cover; 
+        opacity: 0.2; 
+        z-index: -1; 
+        filter: invert(1);
+    }
+
+      .carousel-toolbar select { background:rgba(31, 31, 31, 0.5); color: #fff; border: none; border-radius: 6px; padding: 6px 8px; font-size: 11px; }
       .carousel-viewport { position: relative; width: 100%; height: 300px; }
       @media (min-width: 1200px) { .carousel-viewport { height: 280px; } }
       .carousel-track { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; transition: transform 450ms ease; }
@@ -488,10 +523,10 @@
       .char-img.back { opacity: 0.85; transform: translateY(-50%) scale(1.02); z-index: 1; }
       .char-img.front { z-index: 3; transform: translateY(-40%) scale(1.16); }
       .char-img.middle { z-index: 2; transform: translateX(-8%) translateY(-50%) scale(1.08) }
-      .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
+      .carousel-nav { position: absolute; top: 50%; transform: translateY(-100%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
       .carousel-btn { pointer-events: auto; background: rgba(0,0,0,0.35); color: #fff; border: 1px solid #444; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-      .carousel-dots { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 6px; justify-content: center; z-index: 2; }
-      .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #666; cursor: pointer; }
+      .carousel-dots { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 6px; justify-content: center; z-index: 2; }
+      .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; }
       .carousel-dot.active { background: #fff; }
       .slide-bg { position: absolute; inset: 0; background: radial-gradient(120% 120% at 80% 100%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, rgba(0,0,0,0) 100%); }
       .slide-link { position: absolute; inset: 0; z-index: 6; text-decoration: none; pointer-events: auto; }
@@ -635,7 +670,7 @@
       if (baseColor) {
         const cStrong = rgba(baseColor, 0.6);
         const cSoft = rgba(baseColor, 0.18);
-        bg.style.background = `radial-gradient(120% 120% at 80% 100%, ${cStrong}, ${cSoft} 60%, rgba(0,0,0,0) 100%)`;
+        bg.style.background = `radial-gradient(120% 120% at 80% 100%, ${cStrong}, ${cSoft} 60%)`;
       }
     }
     el.appendChild(bg);
@@ -904,11 +939,9 @@
     dots.style.position = 'absolute';
     const mobileQuery = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
     if (mobileQuery) {
-      dots.style.top = '50%';
       dots.style.left = '12px';
       dots.style.transform = 'translateY(-50%)';
     } else {
-      dots.style.top = '50%';
       dots.style.left = '50%';
       dots.style.transform = 'translate(-50%, -50%)';
     }

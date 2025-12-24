@@ -242,6 +242,13 @@
           return n.toFixed(1);
         }
 
+        // 수치 포맷: 정수 표시, 소숫점 첫째자리에서 반올림
+        function fmt0(v) {
+          if (v === undefined || v === null || isNaN(v)) return '';
+          const n = Math.round(Number(v));
+          return n.toFixed(0);
+        }
+
         // 헤더 라벨 지역화: KR: 의식0~6, JP: 意識0~6, 그 외: A0~6
         function lv80HeaderLabel(idx, lang) {
           if (lang === 'kr') return `의식${idx}`;
@@ -276,7 +283,7 @@
           items.forEach(({ data }) => {
             const c = document.createElement('div');
             c.className = 'lv80-cell value';
-            c.textContent = fmt1(data.HP);
+            c.textContent = fmt0(data.HP);
             grid.appendChild(c);
           });
 
@@ -288,7 +295,7 @@
           items.forEach(({ data }) => {
             const c = document.createElement('div');
             c.className = 'lv80-cell value';
-            c.textContent = fmt1(data.attack);
+            c.textContent = fmt0(data.attack);
             grid.appendChild(c);
           });
 
@@ -300,7 +307,7 @@
           items.forEach(({ data }) => {
             const c = document.createElement('div');
             c.className = 'lv80-cell value';
-            c.textContent = fmt1(data.defense);
+            c.textContent = fmt0(data.defense);
             grid.appendChild(c);
           });
         }
@@ -321,9 +328,9 @@
           // 데이터 행들: [A#/의식#, hp, atk, def]
           items.forEach(({ idx, data }) => {
             const r0 = document.createElement('div'); r0.className = 'lv80-cell label'; r0.textContent = lv80HeaderLabel(idx, lang); grid.appendChild(r0);
-            const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt1(data.HP); grid.appendChild(r1);
-            const r2 = document.createElement('div'); r2.className = 'lv80-cell value'; r2.textContent = fmt1(data.attack); grid.appendChild(r2);
-            const r3 = document.createElement('div'); r3.className = 'lv80-cell value'; r3.textContent = fmt1(data.defense); grid.appendChild(r3);
+            const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt0(data.HP); grid.appendChild(r1);
+            const r2 = document.createElement('div'); r2.className = 'lv80-cell value'; r2.textContent = fmt0(data.attack); grid.appendChild(r2);
+            const r3 = document.createElement('div'); r3.className = 'lv80-cell value'; r3.textContent = fmt0(data.defense); grid.appendChild(r3);
           });
         }
 
@@ -402,6 +409,11 @@
           const n = Math.round(Number(v) * 10) / 10;
           return n.toFixed(1);
         }
+        function fmt0(v) {
+          if (v === undefined || v === null || isNaN(v)) return '';
+          const n = Math.round(Number(v));
+          return n.toFixed(0);
+        }
 
         function headerLabel(idx, lang) {
           if (lang === 'kr') return `의식${idx}`;
@@ -433,7 +445,7 @@
           items.forEach(({ data }) => {
             const c = document.createElement('div');
             c.className = 'lv80-cell value';
-            c.textContent = fmt1(data.HP);
+            c.textContent = fmt0(data.HP);
             grid.appendChild(c);
           });
 
@@ -444,7 +456,7 @@
           items.forEach(({ data }) => {
             const c = document.createElement('div');
             c.className = 'lv80-cell value';
-            c.textContent = fmt1(data.attack);
+            c.textContent = fmt0(data.attack);
             grid.appendChild(c);
           });
 
@@ -455,7 +467,7 @@
           items.forEach(({ data }) => {
             const c = document.createElement('div');
             c.className = 'lv80-cell value';
-            c.textContent = fmt1(data.defense);
+            c.textContent = fmt0(data.defense);
             grid.appendChild(c);
           });
         }
@@ -474,9 +486,9 @@
 
           items.forEach(({ idx, data }) => {
             const r0 = document.createElement('div'); r0.className = 'lv80-cell label'; r0.textContent = headerLabel(idx, lang); grid.appendChild(r0);
-            const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt1(data.HP); grid.appendChild(r1);
-            const r2 = document.createElement('div'); r2.className = 'lv80-cell value'; r2.textContent = fmt1(data.attack); grid.appendChild(r2);
-            const r3 = document.createElement('div'); r3.className = 'lv80-cell value'; r3.textContent = fmt1(data.defense); grid.appendChild(r3);
+            const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt0(data.HP); grid.appendChild(r1);
+            const r2 = document.createElement('div'); r2.className = 'lv80-cell value'; r2.textContent = fmt0(data.attack); grid.appendChild(r2);
+            const r3 = document.createElement('div'); r3.className = 'lv80-cell value'; r3.textContent = fmt0(data.defense); grid.appendChild(r3);
           });
         }
 

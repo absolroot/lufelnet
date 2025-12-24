@@ -42,3 +42,5 @@
 .nav-link.active {background-color: rgba(0, 0, 0, 0.3);}
 
 .enhancement-btn.active, .skill-level-btn.active { box-shadow: 0 0 0 1px rgba(0, 102, 255, 0.5) inset; }
+
+h1.character-name::before { background-color: #2e71a1; }

@@ -26,7 +26,8 @@ window.characterSkillsData["유우미"] = {
   "skill_highlight": {
     "name": "속성 증가",
     "element": "패시브",
-    "description": "해명 괴도 각 속성의 20%만큼 출전 중인 모든 동료의 상응한 속성 수치가 증가한다."
+    "type": "패시브",
+    "description": "해명 괴도 각 속성의 20%만큼 출전 중인 모든 동료의 상응하는 속성 수치가 증가한다."
   },
   "passive1": {
     "name": "스터",

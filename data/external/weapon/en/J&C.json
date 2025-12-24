@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Warden's Judgement",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Two Masks As One is activated, increase Desire Level by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%.\nWhen a Facade is gained, increase party's critical damage by 13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0% and damage dealt by 13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0% for 2 turns. Stacks up to 2 times.",
+        "stat": {
+          "attack": 660.68,
+          "defense": 440.46,
+          "hp": 2378.39
+        },
+        "user": "Justine & Caroline"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Deliverance of Strength",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Two Masks As One is activated, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns.",
+        "stat": {
+          "attack": 528.55,
+          "defense": 352.36,
+          "hp": 1902.74
+        },
+        "user": "Justine & Caroline"
+      }
+    ],
+    "name": "Justine & Caroline"
+  },
+  "msg": "TESTING",
+  "status": 0
+}

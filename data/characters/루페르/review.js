@@ -10,9 +10,9 @@
 그러나 회복 수치가 동시에 발매된 모르가나의 회복 수치랑 비교했을 때 **훨씬 안정적으로 힐을 넣을 수 있다**는 점에서 초기 힐러로서의 활용은 나쁘지 않다는 평가를 받는다.`,
         review_en: `A healer with the Fire attribute who also happens to be the first ally to join the Phantom Thieves.
 
-When she heals an ally with a skill, she grants them a **unique buff that strengthens over three stages as turns pass**.
+When he heals an ally with a skill, he grants them a **unique buff that strengthens over three stages as turns pass**.
 
-Once the buff is sufficiently enhanced, she can apply it to the entire party at the start of battle, though the actual values are underwhelming and the impact is limited.
+Once the buff is sufficiently enhanced, he can apply it to the entire party at the start of battle, though the actual values are underwhelming and the impact is limited.
 
 However, compared to MORGANA’s healing released at the same time, his **recovery numbers are much more stable**, making him a reasonably viable early-game healer.`,
         review_jp: `怪盗団に最初に加入する仲間であり、炎属性のヒーラー。

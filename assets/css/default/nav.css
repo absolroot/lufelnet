@@ -39,7 +39,7 @@
 .nav-link img { margin-right: 10px; width: 28px; height: 28px; object-fit: contain; }
 .nav-link span, .nav-main-item span { margin-left: 6px; font-size: 14px; }
 .nav-link:hover { background-color: rgba(255, 255, 255, 0.05); }
-.nav-link.active { background-color: rgba(255, 0, 0, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 24px; clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);}
+.nav-link.active { background-color: #800000; border-top: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 24px; clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);}
 .nav-link.active span { color: #ffffff; font-weight: 600; }
 .nav-link.active::after { content: ''; position: absolute; align-items: center; margin-bottom: 4px; right: 16px; width: 32px; height: 32px; background-image: url('/assets/img/nav/select.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
 
@@ -63,15 +63,23 @@
   }
 }
 
+@keyframes subtle-liquid {
+  0% { clip-path: polygon(0% 2%, 99% 9%, 94% 99%, 4% 94%);}
+  10% { clip-path: polygon(1% 1%, 98% 7%, 93% 100%, 5% 95%);}
+  20% { clip-path: polygon(-1% 3%, 100% 5%, 95% 98%, 3% 93%);}
+  30% { clip-path: polygon(0% 3%, 98% 2%, 93% 96%, 5% 95%);}
+  40% { clip-path: polygon(1% 1%, 99% -1%, 95% 98%, 4% 93%);}
+  50% { clip-path: polygon(0% 0%, 100% 2%, 93% 100%, 3% 95%);}
+  60% { clip-path: polygon(-1% 3%, 98% 1%, 94% 98%, 5% 94%);}
+  70% { clip-path: polygon(1% 2%, 99% -1%, 95% 96%, 4% 95%);}
+  80% { clip-path: polygon(0% 1%, 100% 2%, 93% 98%, 3% 93%);}
+  90% { clip-path: polygon(-1% 3%, 98% 4%, 94% 100%, 5% 95%);}
+  100% { clip-path: polygon(0% 2%, 99% 7%, 94% 99%, 4% 94%);}
+}
+
 /* 2. 호버 시 애니메이션 실행 */
-.nav-link.active:hover {
-  /* 0.2s: 속도 (숫자가 작을수록 정신없이 흔들림) */
-  /* infinite: 무한 반복 */
-  /* linear: 끊김 없이 부드럽게 (딱딱하게 하려면 steps(2) 사용) */
-  animation: jitter-shape 0.75s infinite linear;
-  
-  /* 호버 시 색상도 살짝 바꾸고 싶다면 */
-  background-color: rgba(255, 0, 0, 0.5); 
+.nav-link.active:hover, .nav-sub-item.active:hover {
+  animation: subtle-liquid 2s infinite linear;
 }
 
 
@@ -97,7 +105,7 @@
 .nav-sub-item { display: flex; align-items: center; padding: 12px 24px 12px 48px; color: #ffffff; text-decoration: none; transition: all 0.3s ease; width: 100%; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; background-color: #121212; border-top: 1px solid transparent; border-bottom: 1px solid transparent; }
 .nav-sub-item:hover { background-color: rgba(255, 255, 255, 0.05); }
 .nav-sub-item span { margin-left: 0 !important; font-size: 13px; }
-.nav-sub-item.active { background-color: rgba(255, 0, 0, 0.3); border-top-color: rgba(255, 255, 255, 0.1); border-bottom-color: rgba(255, 255, 255, 0.1); clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);}
+.nav-sub-item.active { background-color: #800000; border-top-color: rgba(255, 255, 255, 0.1); border-bottom-color: rgba(255, 255, 255, 0.1); clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);}
 .nav-sub-item.active span { color: #ffffff; font-weight: 600; }
 .nav-sub-item.active::after { content: ''; position: absolute; align-items: center; margin-bottom: 4px; right: 16px; width: 32px; height: 32px; background-image: url('/assets/img/nav/select.png'); background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0; transition: opacity 0.3s ease; }
 .has-submenu.active .nav-sub-item.active::after { opacity: 1; }

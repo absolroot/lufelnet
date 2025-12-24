@@ -382,7 +382,7 @@ const enRevelationData = {
             "type": ["미출시"]
         },
         "Birth": { // 탄생
-            "Power": "When equipped by Justine & Caroline: Increase Warden's Duty by  5.0%."
+            "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%."
         }
     }
 };

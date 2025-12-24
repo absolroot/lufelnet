@@ -63,6 +63,7 @@ function parseArgs() {
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--lang' && i + 1 < args.length) out.lang = args[++i];
     else if (args[i] === '--code' && i + 1 < args.length) out.code = args[++i];
+    else if (args[i] === '--only' && i + 1 < args.length) out.only = args[++i]; // ritual | skill | weapon | base_stats
   }
   out.lang = out.lang || process.env.INPUT_LANG || 'kr';
   out.code = out.code || process.env.INPUT_CODE;
@@ -73,6 +74,9 @@ function parseArgs() {
   if (!['kr', 'jp', 'en', 'cn'].includes(out.lang)) {
     console.error('Invalid --lang (kr/jp/en)');
     process.exit(1);
+  }
+  if (out.only) {
+    out.only = String(out.only).toLowerCase();
   }
   return out;
 }
@@ -1064,7 +1068,7 @@ function updatePerCharacterBaseStats(charKey, external) {
 
 async function main() {
   await ensureDepsLoaded();
-  const { lang, code } = parseArgs();
+  const { lang, code, only } = parseArgs();
   const mapping = loadCodenameMapping();
   const local = resolveLocalCodename(code, mapping);
 
@@ -1087,18 +1091,34 @@ async function main() {
 
   // per-character 파일 4종만 갱신: ritual / skill / weapon / base_stats
   if (extTarget && extTarget.data) {
-    updatePerCharacterRitual(lang, key, extTarget);
-    updatePerCharacterSkills(lang, key, extTarget);
-    updatePerCharacterBaseStats(key, extTarget);
+    // --only 가 없으면 전부, 있으면 해당 타입만 갱신
+    const onlyBase =
+      only === 'base_stats' || only === 'stat' || only === 'stats' || only === 'base';
+    const onlySkill = only === 'skill' || only === 'skills';
+    const onlyRitual = only === 'ritual';
+    const onlyWeapon = only === 'weapon' || only === 'weapons';
+
+    if (!only || onlyRitual) {
+      updatePerCharacterRitual(lang, key, extTarget);
+    }
+    if (!only || onlySkill) {
+      updatePerCharacterSkills(lang, key, extTarget);
+    }
+    if (!only || onlyBase) {
+      updatePerCharacterBaseStats(key, extTarget);
+    }
   } else {
     console.warn(`[warn] External character data missing or invalid for ${lang}:${local}`);
   }
 
-  const extWeapon = loadExternalWeapon(lang, local);
-  if (extWeapon && extWeapon.data) {
-    updatePerCharacterWeapon(lang, key, extWeapon);
-  } else {
-    console.warn(`[warn] External weapon data missing or invalid for ${lang}:${local}`);
+  // 무기도 마찬가지로 --only 가 weapon(류)일 때만 갱신
+  if (!only || only === 'weapon' || only === 'weapons') {
+    const extWeapon = loadExternalWeapon(lang, local);
+    if (extWeapon && extWeapon.data) {
+      updatePerCharacterWeapon(lang, key, extWeapon);
+    } else {
+      console.warn(`[warn] External weapon data missing or invalid for ${lang}:${local}`);
+    }
   }
 
   console.log(`Sync completed for ${lang}:${local} (key='${key}')`);

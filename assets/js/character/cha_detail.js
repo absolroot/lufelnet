@@ -1407,9 +1407,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentLang === 'en' || currentLang === 'jp') {
                     let note = card.querySelector('.innate-global-note');
                     const noteTexts = {
-                        kr: '※ KR V4.7에 출시된 기능입니다.',
-                        en: '※ This feature was first released in KR V4.7.',
-                        jp: '※ この機能はKR版V4.7で実装されました。'
+                        kr: '※ KR V4.7에 출시된 기능입니다. LV100은 해당 기능을 해금해야 달성할 수 있습니다.',
+                        en: '※ This feature was first released in KR V4.7. LV100 requires unlocking this feature to achieve.',
+                        jp: '※ この機能はKR版V4.7で実装されました。LV100はこの機能を解鎖しないと達成できません。'
                     };
                     const noteText = noteTexts[currentLang] || noteTexts.kr;
 

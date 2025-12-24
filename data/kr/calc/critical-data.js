@@ -57,6 +57,10 @@ const criticalBuffData = {
               { id: "희망", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/희망.webp", skillName: "희망-고집", skillName_en: "Hope-Fixation", skillName_jp: "希望-固執", options: [], value: 6, duration: "3턴", note: "스킬로 대미지 8회 중첩 시 효력 발생", note_en: "Skill damage 8 consecutive hits", note_jp: "スキルで8回連続ダメージ" }
     ],
 
+    "J&C": [
+      { id: "jc1", type: "스킬2", target: "자신", target_en: "자신", target_jp: "自分", skillIcon: "/assets/img/skill-element/축복주원.png", skillName: "복과와 화근의 페르소나", skillName_en: "Skill 2", skillName_jp: "スキル2", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 19.6, "LV10+심상5": 21.6, "LV13": 20.8, "LV13+심상5": 22.8 }, defaultOption: "LV13+심상5", value: 22.8, duration: "3턴", note: "지배/굴복/반항", note_en: "Mask of Luck & Loss", note_jp: "福果と禍因の仮面" },
+      { id: "jc2", type: "패시브", target: "자신", target_en: "자신", target_jp: "自分", skillIcon: "/assets/img/skill-element/패시브.png", skillName: "모순", skillName_en: "", skillName_jp: "", options: [], value: 15.0, duration: "", note: "지배", note_en: "Sweeper", note_jp: "支配" }
+    ],
 
     "쇼키·암야": [
         { id: "shoki-darkest1", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/쇼키·암야-5-01.png", skillName: "신들의 왕정", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0", "개조1&2", "개조3&4", "개조5&6"], values: { "개조0": 16.4, "개조1&2": 21.4, "개조3&4": 26.4, "개조5&6": 31.4 }, defaultOption: "개조5&6", value: 31.4, duration: "", note: "" },

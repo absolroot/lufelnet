@@ -64,6 +64,9 @@ class DefenseCalc {
 
         // 캐릭터 이름 번역이 늦게 로드되는 경우 대비해 후처리 스케줄링
         this.scheduleTranslateCharacterNames();
+
+        // J&C 전용 추가 계산 스크립트가 분리되어 있으므로, 동적으로 로드 후 헤더에 컨트롤 부착
+        try { this.ensureJCCalcLoadedAndAttach(); } catch(_) {}
     }
 
     getCurrentLang() {
@@ -213,6 +216,43 @@ class DefenseCalc {
         tryTranslate();
     }
 
+    ensureJCCalcLoadedAndAttach() {
+        // 이미 로드된 경우: 바로 헤더에 컨트롤 부착
+        if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
+            try {
+                document.querySelectorAll('tr.group-header[data-group="J&C"]').forEach(tr => {
+                    JCCalc.attachDesireControl(tr, this);
+                });
+            } catch(_) {}
+            return;
+        }
+
+        if (this._jcCalcLoadPromise) return this._jcCalcLoadPromise;
+        const url = `${BASE_URL}/data/characters/J&C/JC_calc.js?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
+        this._jcCalcLoadPromise = new Promise((resolve) => {
+            try {
+                const script = document.createElement('script');
+                script.src = url;
+                script.async = true;
+                script.onload = () => {
+                    try {
+                        if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
+                            document.querySelectorAll('tr.group-header[data-group="J&C"]').forEach(tr => {
+                                JCCalc.attachDesireControl(tr, this);
+                            });
+                        }
+                    } catch(_) {}
+                    resolve();
+                };
+                script.onerror = () => resolve();
+                document.head.appendChild(script);
+            } catch(_) {
+                resolve();
+            }
+        });
+        return this._jcCalcLoadPromise;
+    }
+
     // 새 데이터 포맷(객체) 지원: 그룹 오브젝트, 플랫 배열, id 인덱스 구성
     buildDatasets() {
         // 전역 상수 penetrateData / defenseCalcData 가 객체라고 가정 (키=그룹명, 값=아이템 배열)
@@ -334,6 +374,13 @@ class DefenseCalc {
             inner.appendChild(infoWrap);
             fullTd.appendChild(inner);
             headerTr.appendChild(fullTd);
+
+            // J&C 전용 Desire 레벨 입력 컨트롤 추가 (DOM 구조 구성 후)
+            try {
+                if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.attachDesireControl) {
+                    JCCalc.attachDesireControl(headerTr, this);
+                }
+            } catch(_) {}
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
@@ -545,6 +592,15 @@ class DefenseCalc {
                     nextValue = valuesBase[selectedBase];
                 }
                 if (nextValue !== null && nextValue !== undefined) {
+                    // J&C 전용: 기본값을 갱신한 뒤 Desire 보정 적용
+                    if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged) {
+                        try {
+                            data.__jcBaseValue = nextValue;
+                            data.value = nextValue;
+                            JCCalc.onOptionChanged(data, valueCell, isPenetrate, this);
+                            return;
+                        } catch(_) {}
+                    }
                     data.value = nextValue;
                     valueCell.textContent = `${data.value}%`;
                     if (isPenetrate) {
@@ -563,7 +619,16 @@ class DefenseCalc {
         // 수치 열
         const valueCell = document.createElement('td');
         valueCell.className = 'value-column';
-        valueCell.textContent = `${data.value}%`;
+        // J&C 전용 페르소나 강도 보정
+        if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
+            try {
+                JCCalc.registerItem(data, valueCell, isPenetrate, this);
+            } catch(_) {
+                valueCell.textContent = `${data.value}%`;
+            }
+        } else {
+            valueCell.textContent = `${data.value}%`;
+        }
         row.appendChild(valueCell);
         
         // 지속시간 열

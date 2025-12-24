@@ -271,3 +271,47 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
     .critical-table .duration-column { width: 60px; box-sizing: border-box; }
     .critical-table .note-column { min-width: 270px; box-sizing: border-box; }
 }
+
+
+/* J&C Desire Level Control Styling */
+.jc-desire-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px; /* 이름 옆 간격 */
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.jc-desire-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.jc-desire-input {
+    width: 60px; /* 소수점 입력을 위해 너비 확보 */
+    padding: 4px 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: rgb(255, 255, 255, 0.8); 
+    font-size: 13px;
+    text-align: right;
+}
+
+.jc-desire-input:focus {
+    outline: none;
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 모바일 대응: 줄바꿈 처리 */
+@media (max-width: 768px) {
+    .jc-desire-container {
+        margin-left: 0;
+        margin-top: 4px;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: space-between;
+    }
+}

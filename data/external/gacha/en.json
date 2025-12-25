@@ -28,107 +28,55 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-25 07:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "Masaki Ashiya",
+            "name": "Justine & Caroline",
             "type": "thief"
           }
         ],
         "fourStar": [
-          {
-            "name": "Motoha Arai",
-            "type": "thief"
-          },
           {
             "name": "Riko Tanemura",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Swords and Roses",
-        "startTime": "2025-11-25 11:30:00",
+        "name": "Road to Rehabilitation",
+        "startTime": "2025-12-25 08:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2025-12-25 07:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "Masaki Ashiya",
+            "name": "Justine & Caroline",
             "type": "thief"
           }
         ],
         "fourStar": [
-          {
-            "name": "Motoha Arai",
-            "type": "thief"
-          },
           {
             "name": "Riko Tanemura",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          }
-        ],
-        "name": "Swords and Roses",
-        "startTime": "2025-11-25 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Haru Okumura",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
+            "name": "Yukimi Fujikawa",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
-            "type": "thief"
-          },
-          {
-            "name": "Miyu Sahara",
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Le Rouge et le Noir",
-        "startTime": "2025-12-06 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Haru Okumura",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Tomoko Noge",
-            "type": "thief"
-          },
-          {
-            "name": "Miyu Sahara",
-            "type": "thief"
-          }
-        ],
-        "name": "Le Rouge et le Noir",
-        "startTime": "2025-12-06 11:30:00",
+        "name": "Road to Rehabilitation",
+        "startTime": "2025-12-25 08:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
@@ -169,73 +117,38 @@
         "type": "Arms Deals"
       },
       {
-        "endTime": "2025-12-25 07:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "Spina Sacramenti",
+            "name": "Warden's Judgement",
             "type": "weapon",
-            "user": "Ashiya"
+            "user": "Justine & Caroline"
           }
         ],
         "fourStar": [
-          {
-            "name": "Crime and Punishment",
-            "type": "weapon",
-            "user": "Motoha"
-          },
           {
             "name": "Moonlight Needle",
             "type": "weapon",
             "user": "Riko"
           },
           {
-            "name": "Death Stinger",
+            "name": "Heavy Metal Pain",
             "type": "weapon",
-            "user": "Kurotani"
+            "user": "Yukimi"
           },
           {
-            "name": "Spina Caritatis",
+            "name": "Scarlet Scepter",
             "type": "weapon",
-            "user": "Ashiya"
+            "user": "Sumi"
+          },
+          {
+            "name": "Deliverance of Strength",
+            "type": "weapon",
+            "user": "Justine & Caroline"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2025-11-25 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2025-12-25 07:59:59",
-        "fiveStar": [
-          {
-            "name": "Last Quarter",
-            "type": "weapon",
-            "user": "Haru"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Shadow Crowns",
-            "type": "weapon",
-            "user": "Tomoko"
-          },
-          {
-            "name": "Gilgamesh Axe",
-            "type": "weapon",
-            "user": "Haru"
-          },
-          {
-            "name": "Submarine Sonar",
-            "type": "weapon",
-            "user": "Miyu"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2025-12-06 11:30:00",
+        "startTime": "2025-12-25 08:30:00",
         "type": "Arms Deals"
       }
     ]

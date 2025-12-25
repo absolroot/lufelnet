@@ -1,0 +1,245 @@
+{
+  "data": {
+    "thief": [
+      {
+        "endTime": "30",
+        "fiveStar": [
+          {
+            "name": "Ren Amamiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "The Phantom Magician",
+        "startTime": "-1",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Masaki Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Swords and Roses",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Masaki Ashiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Swords and Roses",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Haru Okumura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Le Rouge et le Noir",
+        "startTime": "2025-12-15 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Haru Okumura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Le Rouge et le Noir",
+        "startTime": "2025-12-15 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "30",
+        "fiveStar": [
+          {
+            "name": "Phoenix Dagger",
+            "type": "weapon",
+            "user": "Ren"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Machete",
+            "type": "weapon",
+            "user": "Ren"
+          },
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "-1",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Spina Sacramenti",
+            "type": "weapon",
+            "user": "Ashiya"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Spina Caritatis",
+            "type": "weapon",
+            "user": "Ashiya"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-12-03 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2025-12-25 06:59:59",
+        "fiveStar": [
+          {
+            "name": "Last Quarter",
+            "type": "weapon",
+            "user": "Haru"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Gilgamesh Axe",
+            "type": "weapon",
+            "user": "Haru"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-12-15 10:30:00",
+        "type": "Arms Deals"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

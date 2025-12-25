@@ -4,6 +4,10 @@
       {
         "affixs": [
           {
+            "detail": "적이 턴 종료 시마다 『광폭』을 1회 획득한다.\n『광폭』: 일정 총 대미지 증폭을 획득한다(3회 중첩 가능).",
+            "name": "광폭 영역"
+          },
+          {
             "detail": "모든 캐릭터의 현재 생명이 낮을수록 주는 대미지가 증가하며, 생명이 40%일 때 최대 대미지 보너스 50%를 획득한다.",
             "name": "인내의 영역"
           },
@@ -12,8 +16,8 @@
             "name": "축복 특화"
           },
           {
-            "detail": "모든 캐릭터가 만능 대미지를 줄 시, 2턴 동안 아군 전체 공격력이 30% 증가하고, 주는 대미지가 20% 증가한다.",
-            "name": "만능 영역 II"
+            "detail": "라인업에 방위, 구원 직업의 팀원 편성 시, 모든 적이 주는 최종 대미지가 60% 감소하고 받는 최종 대미지가 20% 증가한다. 아닌 경우 모든 적이 주는 최종 대미지가 60% 증가한다.",
+            "name": "비호의 영역"
           },
           {
             "detail": "모든 괴도는 크리티컬이 불가능하며, 페르소나 스킬/추가 효과로 인한 최종 대미지가 증가한다. 증가값 = 크리티컬 확률*(크리티컬 효과-100%) (최대 크리티컬 확률 100%)",
@@ -36,26 +40,26 @@
               "Bless"
             ]
           },
-          "level": "78",
+          "level": "82",
           "name": "사악한 니드호그",
           "skill": "1021,905,1404,860",
-          "sn": 738111,
+          "sn": 738611,
           "stat": {
             "Accuracy": 1.0,
-            "Ailment Acc.": 0.39,
-            "Ailment Resist.": 0.392,
+            "Ailment Acc.": 0.41,
+            "Ailment Resist.": 0.408,
             "Almighty Boost": 0,
             "Almighty Damage Taken": 0,
-            "Attack": 2299.0167,
+            "Attack": 9226.882,
             "Bless Boost": 0,
             "Bless Damage Taken": 0,
             "Crit Mult.": 1.3,
             "Crit Rate": 0.0,
             "Curse Boost": 0,
             "Curse Damage Taken": 0,
-            "Damage Mult.": 1.037,
+            "Damage Mult.": 1.056,
             "Damage Taken": 0,
-            "Defense": 652.061,
+            "Defense": 668.935,
             "Down Points": 4.0,
             "Electric Boost": 0,
             "Electric Damage Taken": 0,
@@ -64,7 +68,7 @@
             "Fire Damage Taken": 0,
             "Gun Boost": 0,
             "Gun Damage Taken": 0,
-            "HP": 209244.384,
+            "HP": 148441.4976,
             "Ice Boost": 0,
             "Ice Damage Taken": 0,
             "Nuclear Boost": 0,
@@ -77,7 +81,7 @@
             "SP": 100.0,
             "SP Recovery": 0,
             "Shield Effect": 0,
-            "Speed": 89.4,
+            "Speed": 90.0,
             "Wind Boost": 0,
             "Wind Damage Taken": 0
           }
@@ -86,16 +90,20 @@
       {
         "affixs": [
           {
-            "detail": "모든 캐릭터가 지속 대미지를 줄 시 대미지 30% 증가",
-            "name": "지속 영역"
+            "detail": "적이 턴 종료 시마다 『광폭』을 1회 획득한다.\n『광폭』: 일정 총 대미지 증폭을 획득한다(3회 중첩 가능).",
+            "name": "광폭 영역"
+          },
+          {
+            "detail": "모든 괴도는 추가 턴에 크리티컬 확률이 20% 증가하고, 크리티컬 효과가 20% 증가한다.",
+            "name": "재가동 특화"
           },
           {
             "detail": "모든 괴도의 주원 대미지가 20% 증가한다.",
             "name": "주원 특화"
           },
           {
-            "detail": "모든 캐릭터가 만능 대미지를 줄 시, 2턴 동안 아군 전체 공격력이 30% 증가하고, 주는 대미지가 20% 증가한다.",
-            "name": "만능 영역 II"
+            "detail": "라인업에 방위, 구원 직업의 팀원 편성 시, 모든 적이 주는 최종 대미지가 60% 감소하고 받는 최종 대미지가 20% 증가한다. 아닌 경우 모든 적이 주는 최종 대미지가 60% 증가한다.",
+            "name": "비호의 영역"
           },
           {
             "detail": "모든 괴도는 크리티컬이 불가능하며, 페르소나 스킬/추가 효과로 인한 최종 대미지가 증가한다. 증가값 = 크리티컬 확률*(크리티컬 효과-100%) (최대 크리티컬 확률 100%)",
@@ -108,35 +116,119 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
-              "Fire",
-              "Ice",
               "Electric",
-              "Nuclear"
+              "Nuclear",
+              "Bless"
             ],
             "Weak": [
               "Curse"
             ]
           },
-          "level": "78",
-          "name": "숭고한 하치만신",
-          "skill": "905,755,762,1404,763,761",
-          "sn": 745111,
+          "level": "82",
+          "name": "성결한 도미니온",
+          "skill": "905,902",
+          "sn": 730611,
           "stat": {
             "Accuracy": 1.0,
-            "Ailment Acc.": 0.39,
-            "Ailment Resist.": 0.49,
+            "Ailment Acc.": 0.41,
+            "Ailment Resist.": 0.204,
             "Almighty Boost": 0,
             "Almighty Damage Taken": 0,
-            "Attack": 3941.1721,
+            "Attack": 7381.5056,
             "Bless Boost": 0,
             "Bless Damage Taken": 0,
             "Crit Mult.": 1.3,
             "Crit Rate": 0.0,
             "Curse Boost": 0,
             "Curse Damage Taken": 0,
-            "Damage Mult.": 1.037,
+            "Damage Mult.": 1.056,
             "Damage Taken": 0,
-            "Defense": 1242.02,
+            "Defense": 363.958,
+            "Down Points": 4.0,
+            "Electric Boost": 0,
+            "Electric Damage Taken": 0,
+            "Final Damage Mult.": 0,
+            "Fire Boost": 0,
+            "Fire Damage Taken": 0,
+            "Gun Boost": 0,
+            "Gun Damage Taken": 0,
+            "HP": 158000.2304,
+            "Ice Boost": 0,
+            "Ice Damage Taken": 0,
+            "Nuclear Boost": 0,
+            "Nuclear Damage Taken": 0,
+            "Phys Boost": 0,
+            "Phys Damage Taken": 0,
+            "Pierce Rate": 0,
+            "Psychokinesis Boost": 0,
+            "Psychokinesis Damage Taken": 0,
+            "SP": 100.0,
+            "SP Recovery": 0,
+            "Shield Effect": 0,
+            "Speed": 80.0,
+            "Wind Boost": 0,
+            "Wind Damage Taken": 0
+          }
+        }
+      },
+      {
+        "affixs": [
+          {
+            "detail": "적이 턴 종료 시마다 『광폭』을 1회 획득한다.\n『광폭』: 일정 총 대미지 증폭을 획득한다(3회 중첩 가능).",
+            "name": "광폭 영역"
+          },
+          {
+            "detail": "모든 괴도의 추가 효과로 주는 대미지가 50% 증가한다.",
+            "name": "추가 특화"
+          },
+          {
+            "detail": "모든 괴도의 전격 대미지가 20% 증가한다.",
+            "name": "전격 특화"
+          },
+          {
+            "detail": "라인업에 방위, 구원 직업의 팀원 편성 시, 모든 적이 주는 최종 대미지가 60% 감소하고 받는 최종 대미지가 20% 증가한다. 아닌 경우 모든 적이 주는 최종 대미지가 60% 증가한다.",
+            "name": "비호의 영역"
+          },
+          {
+            "detail": "모든 괴도는 크리티컬이 불가능하며, 페르소나 스킬/추가 효과로 인한 최종 대미지가 증가한다. 증가값 = 크리티컬 확률*(크리티컬 효과-100%) (최대 크리티컬 확률 100%)",
+            "name": "안정 영역"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Phys",
+              "Gun",
+              "Fire",
+              "Curse"
+            ],
+            "Weak": [
+              "Electric"
+            ]
+          },
+          "level": "82",
+          "name": "용감한 아타바크",
+          "skill": "2444,107,1008",
+          "sn": 735611,
+          "stat": {
+            "Accuracy": 1.0,
+            "Ailment Acc.": 0.41,
+            "Ailment Resist.": 0.5,
+            "Almighty Boost": 0,
+            "Almighty Damage Taken": 0,
+            "Attack": 18981.0123,
+            "Bless Boost": 0,
+            "Bless Damage Taken": 0,
+            "Crit Mult.": 1.3,
+            "Crit Rate": 0.0,
+            "Curse Boost": 0,
+            "Curse Damage Taken": 0,
+            "Damage Mult.": 1.056,
+            "Damage Taken": 0,
+            "Defense": 1279.851,
             "Down Points": 6.0,
             "Electric Boost": 0,
             "Electric Damage Taken": 0,
@@ -145,7 +237,7 @@
             "Fire Damage Taken": 0,
             "Gun Boost": 0,
             "Gun Damage Taken": 0,
-            "HP": 405500.7096,
+            "HP": 190289.8944,
             "Ice Boost": 0,
             "Ice Damage Taken": 0,
             "Nuclear Boost": 0,
@@ -158,99 +250,19 @@
             "SP": 100.0,
             "SP Recovery": 0,
             "Shield Effect": 0,
-            "Speed": 94.367,
-            "Wind Boost": 0,
-            "Wind Damage Taken": 0
-          }
-        }
-      },
-      {
-        "affixs": [
-          {
-            "detail": "모든 괴도 추가 효과의 크리티컬 효과 25% 증가, 공격력 25% 증가",
-            "name": "추가 특화"
-          },
-          {
-            "detail": "모든 괴도의 빙결 대미지가 20% 증가한다.",
-            "name": "빙결 특화"
-          },
-          {
-            "detail": "모든 캐릭터가 만능 대미지를 줄 시, 2턴 동안 아군 전체 공격력이 30% 증가하고, 주는 대미지가 20% 증가한다.",
-            "name": "만능 영역 II"
-          },
-          {
-            "detail": "모든 괴도는 크리티컬이 불가능하며, 페르소나 스킬/추가 효과로 인한 최종 대미지가 증가한다. 증가값 = 크리티컬 확률*(크리티컬 효과-100%) (최대 크리티컬 확률 100%)",
-            "name": "안정 영역"
-          }
-        ],
-        "enemy": {
-          "adapt": {
-            "Absorb": [],
-            "Nullify": [],
-            "Reflect": [],
-            "Resistant": [
-              "Gun",
-              "Fire",
-              "Nuclear"
-            ],
-            "Weak": [
-              "Ice"
-            ]
-          },
-          "level": "78",
-          "name": "열렬한 수르트",
-          "skill": "108,103,1023,1008",
-          "sn": 733111,
-          "stat": {
-            "Accuracy": 1.0,
-            "Ailment Acc.": 0.39,
-            "Ailment Resist.": 0.49,
-            "Almighty Boost": 0,
-            "Almighty Damage Taken": 0,
-            "Attack": 3284.3102,
-            "Bless Boost": 0,
-            "Bless Damage Taken": 0,
-            "Crit Mult.": 1.3,
-            "Crit Rate": 0.0,
-            "Curse Boost": 0,
-            "Curse Damage Taken": 0,
-            "Damage Mult.": 1.037,
-            "Damage Taken": 0,
-            "Defense": 800.521,
-            "Down Points": 4.0,
-            "Electric Boost": 0,
-            "Electric Damage Taken": 0,
-            "Final Damage Mult.": 0,
-            "Fire Boost": 0,
-            "Fire Damage Taken": 0,
-            "Gun Boost": 0,
-            "Gun Damage Taken": 0,
-            "HP": 178437.4272,
-            "Ice Boost": 0,
-            "Ice Damage Taken": 0,
-            "Nuclear Boost": 0,
-            "Nuclear Damage Taken": 0,
-            "Phys Boost": 0,
-            "Phys Damage Taken": 0,
-            "Pierce Rate": 0,
-            "Psychokinesis Boost": 0,
-            "Psychokinesis Damage Taken": 0,
-            "SP": 100.0,
-            "SP Recovery": 0,
-            "Shield Effect": 0,
-            "Speed": 89.4,
+            "Speed": 95.0,
             "Wind Boost": 0,
             "Wind Damage Taken": 0
           }
         }
       }
     ],
-    "endTime": "2026-01-22 07:30:00",
+    "endTime": "2025-12-25 07:30:00",
     "mode": {
-      "detail": "보스는 어느 정도 부상을 입으면 허약 상태가 되며, 허약 상태일 경우 전력으로 많은 피해를 입혀 많은 전투 포인트를 획득할 수 있습니다.",
-      "name": "침식의 꿈"
+      "detail": "턴 수가 늘어날수록 보스가 주는 생존 압력은 높아지지만 그만큼 턴 당 포인트 획득 효율도 높아집니다.",
+      "name": "첩첩의 꿈"
     },
-    "startTime": "2025-12-25 08:00:00"
+    "startTime": "2025-12-18 08:00:00"
   },
   "msg": "OK",
   "status": 0

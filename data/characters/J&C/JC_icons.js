@@ -88,6 +88,30 @@
     }
   ];
 
+  // 직업 목록 순서 정의 (표시용)
+  const JC_ROLES_ORDER = ['반항', '지배', '우월', '굴복', '방위', '구원'];
+
+  // J&C는 특정 스타일 변경
+  (function changeJCStyle() {
+    const carousel = document.querySelector('.carousel');
+    if (!carousel) return;
+    document.querySelector('.container').classList.add('is-jc');
+    document.querySelector('.character-name').classList.add('is-jc');
+    // 모든 카드 스타일에 is-jc 클래스 추가
+    document.querySelectorAll('.card-style').forEach(card => {
+      card.classList.add('is-jc');
+    });
+    document.querySelectorAll('.dot').forEach(dot => {
+      dot.classList.add('is-jc');
+    });
+    if (window.innerWidth >= 1200) {
+      carousel.classList.add('is-jc');
+    }
+
+
+  })();
+
+
   // 조합 텍스트 필터링용 유틸
   function escapeRegex(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -164,7 +188,6 @@
 
   // 선택된 페르소나 상태 (선택 모드: all / pair)
   // 초기값은 pair + 선택 0개(아이콘은 전부 비활성화, 스킬/조합은 전체 표시)
-  let jcSelectionMode = 'pair'; // 'all'이면 전체 조합 표시
   let jcSelectedOrder = [];    // 최근 선택 순서 (pair 모드일 때 최대 2개)
 
   function getCurrentLanguage() {
@@ -194,15 +217,12 @@
       .jc-persona-card h2 {
         font-size: 20px;
       }
-      .jc-persona-subtext {
-        font-size: 12px;
-        opacity: 0.8;
-      }
       .jc-persona-grid {
         margin-top: 10px;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 8px;
+        margin-bottom: 10px; /* 아래 직업 그리드와 간격 */
       }
       .jc-persona-button {
         position: relative;
@@ -240,23 +260,67 @@
       }
       .jc-persona-button.selected {
         box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5) inset;
+        background: rgba(255, 64, 64, 0.2);
+        border-color: rgba(255, 64, 64, 0.4);
       }
       .jc-persona-button.dim {
         opacity: 0.35;
       }
-      .jc-role-container {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        margin-left: 6px;
-        font-size: 11px;
-        color: rgb(255 64 64 / 70%);
+
+      /* 직업 아이콘 그리드 스타일 */
+      .jc-role-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        padding-top: 10px;
+        border-top: 1px dashed rgba(255,255,255,0.15);
+        margin-bottom: 20px;
       }
-      .jc-role-container img {
-        width: 16px;
-        height: 16px;
+      .jc-role-button {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid transparent;
+        border-radius: 6px;
+        cursor: pointer;
+        padding: 6px 2px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        transition: all 0.2s;
+        opacity: 0.5; /* 기본 비활성 상태 */
+      }
+      .jc-role-button:hover {
+        background: rgba(255,255,255,0.05);
+        opacity: 0.8;
+      }
+      .jc-role-button.active {
+        opacity: 1;
+        background: rgba(255, 215, 0, 0.15); /* 골드 틴트 */
+        border-color: rgba(255, 215, 0, 0.5);
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+        transform: translateY(-2px);
+      }
+      .jc-role-button img {
+        width: 28px;
+        height: 28px;
         object-fit: contain;
-        filter: drop-shadow(0 0 2px rgba(0,0,0,0.7));
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+      }
+      .jc-role-label {
+        font-size: 10px;
+        color: #ccc;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .jc-role-button.active .jc-role-label {
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .jc-role-container {
+         /* 기존 헤더용 스타일 - 이제 사용 안 할 수도 있지만 호환성 위해 남김 */
+        display: none; 
       }
       .jc-ritual-role-extra {
         display: block;
@@ -264,20 +328,13 @@
         font-size: 12px;
         color: rgb(255 64 64 / 70%);
       }
-      .jc-select-all {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 11px;
-        cursor: pointer;
-      }
-      .jc-select-all input[type="checkbox"] {
-        cursor: pointer;
-        accent-color:rgb(255, 107, 107);
-      }
+
       @media (max-width: 768px) {
         .jc-persona-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .jc-role-grid {
+          grid-template-columns: repeat(3, 1fr); /* 모바일은 3열 2행 */
         }
         .jc-persona-card h2 {
           font-size: 18px;
@@ -294,6 +351,16 @@
     return p.label;
   }
 
+  // 직업 키(예: '반항')를 통해 구성하는 페르소나 ID 2개를 찾는 함수
+  function getIdsFromRoleKey(roleKey) {
+    for (const [pairKey, roleName] of Object.entries(JC_PAIR_ROLE_MAP)) {
+      if (roleName === roleKey) {
+        return pairKey.split('+');
+      }
+    }
+    return null;
+  }
+
   function ensureJCSelectorCard() {
     ensureJCStyles();
 
@@ -305,6 +372,7 @@
       card = document.createElement('div');
       card.className = 'jc-persona-card';
 
+      // 1. 페르소나(가면) 선택 그리드
       const grid = document.createElement('div');
       grid.className = 'jc-persona-grid';
       grid.setAttribute('data-jc-persona-grid', 'true');
@@ -335,12 +403,70 @@
         btn.appendChild(imgWrap);
         btn.appendChild(label);
 
+        // 가면 클릭 이벤트
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.personaId;
+          const idx = jcSelectedOrder.indexOf(id);
+
+          if (idx !== -1) {
+            // 이미 선택된 거면 해제
+            jcSelectedOrder.splice(idx, 1);
+          } else {
+            // 새로 선택
+            if (jcSelectedOrder.length >= 2) {
+              // 2개가 꽉 찼으면, 가장 오래된거(0번) 버리고 [이전최신, 새거]로 갱신
+              jcSelectedOrder = [jcSelectedOrder[jcSelectedOrder.length - 1], id];
+            } else {
+              jcSelectedOrder.push(id);
+            }
+          }
+          triggerUpdate();
+        });
+
         grid.appendChild(btn);
       });
 
       card.appendChild(grid);
 
-      // skill-level-buttons 바로 위에 삽입 (없으면 skills-grid 위, 그것도 없으면 카드 맨 아래)
+      // 2. 직업(Role) 선택 그리드 추가
+      const roleGrid = document.createElement('div');
+      roleGrid.className = 'jc-role-grid';
+      
+      JC_ROLES_ORDER.forEach(roleKey => {
+         const roleBtn = document.createElement('div');
+         roleBtn.className = 'jc-role-button';
+         roleBtn.dataset.roleKey = roleKey;
+         
+         const roleLabel = getLocalizedRoleLabel(roleKey);
+         roleBtn.title = roleLabel || roleKey;
+
+         const icon = document.createElement('img');
+         icon.src = `${baseUrl}/assets/img/persona/직업_${roleKey}.png`;
+         icon.alt = roleKey;
+
+         const labelSpan = document.createElement('span');
+         labelSpan.className = 'jc-role-label';
+         labelSpan.textContent = roleLabel;
+
+         roleBtn.appendChild(icon);
+         roleBtn.appendChild(labelSpan);
+
+         // 직업 아이콘 클릭 이벤트
+         roleBtn.addEventListener('click', () => {
+             const pairIds = getIdsFromRoleKey(roleKey);
+             if (pairIds && pairIds.length === 2) {
+                 // 해당 직업의 페르소나 2개로 즉시 교체
+                 jcSelectedOrder = [...pairIds];
+                 triggerUpdate();
+             }
+         });
+
+         roleGrid.appendChild(roleBtn);
+      });
+
+      card.appendChild(roleGrid);
+
+      // DOM 삽입 위치 결정
       const levelButtons = skillsCard.querySelector('.skill-level-buttons');
       const skillsGrid = skillsCard.querySelector('.skills-grid');
       if (levelButtons) {
@@ -351,66 +477,60 @@
         skillsCard.appendChild(card);
       }
 
-      // 초기 상태: 4개 모두 비활성 아이콘 + 전체 조합/스킬 표시
+      // 초기화
       jcSelectionMode = 'pair';
       jcSelectedOrder = [];
-
-      // 아이콘 클릭 이벤트 설정 (pair 모드에서 선택/해제만 관리)
-      grid.querySelectorAll('.jc-persona-button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const id = btn.dataset.personaId;
-
-          const idx = jcSelectedOrder.indexOf(id);
-          if (idx !== -1) {
-            // 선택 해제
-            jcSelectedOrder.splice(idx, 1);
-          } else {
-            // 새 선택
-            if (jcSelectedOrder.length >= 2) {
-              // 가장 최근 선택 1개 + 새 아이콘으로 2개 유지
-              jcSelectedOrder = [jcSelectedOrder[jcSelectedOrder.length - 1], id];
-            } else {
-              jcSelectedOrder.push(id);
-            }
-          }
-
-          updateJCSelectorVisual();
-
-          try {
-            if (typeof window.applyJCIcons === 'function') {
-              window.applyJCIcons();
-            }
-          } catch (e) {
-            console.warn('[JC_icons] persona click applyJCIcons error', e);
-          }
-        });
-      });
     }
 
-    updateJCSelectorVisual();
+    updateJCVisuals();
     return card;
   }
 
-  function updateJCSelectorVisual() {
-    const grid = document.querySelector('[data-jc-persona-grid="true"]');
-    if (!grid) return;
-
-    const buttons = Array.from(grid.querySelectorAll('.jc-persona-button'));
-    const selectedSet = new Set(jcSelectedOrder);
-    buttons.forEach(btn => {
-      const id = btn.dataset.personaId;
-      if (selectedSet.has(id)) {
-        btn.classList.add('selected');
-        btn.classList.remove('dim');
-      } else {
-        btn.classList.remove('selected');
-        btn.classList.add('dim');
+  function triggerUpdate() {
+      updateJCVisuals();
+      try {
+        if (typeof window.applyJCIcons === 'function') {
+          window.applyJCIcons();
+        }
+      } catch (e) {
+        console.warn('[JC_icons] applyJCIcons error', e);
       }
-    });
+  }
+
+  function updateJCVisuals() {
+    // 1. 가면 버튼 상태 업데이트
+    const grid = document.querySelector('[data-jc-persona-grid="true"]');
+    if (grid) {
+        const buttons = Array.from(grid.querySelectorAll('.jc-persona-button'));
+        const selectedSet = new Set(jcSelectedOrder);
+        buttons.forEach(btn => {
+          const id = btn.dataset.personaId;
+          if (selectedSet.has(id)) {
+            btn.classList.add('selected');
+            btn.classList.remove('dim');
+          } else {
+            btn.classList.remove('selected');
+            btn.classList.add('dim');
+          }
+        });
+    }
+
+    // 2. 직업 아이콘 상태 업데이트
+    const currentRoleKey = getSelectedRoleKeyFromIds(jcSelectedOrder);
+    const roleGrid = document.querySelector('.jc-role-grid');
+    if (roleGrid) {
+        const roleBtns = Array.from(roleGrid.querySelectorAll('.jc-role-button'));
+        roleBtns.forEach(btn => {
+            if (btn.dataset.roleKey === currentRoleKey) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
   }
 
   function getSelectedPersonaIds() {
-    // pair 모드에서는 최대 2개까지만 의미 있게 사용
     const uniq = [];
     jcSelectedOrder.forEach(id => {
       if (!uniq.includes(id)) uniq.push(id);
@@ -423,22 +543,18 @@
     const total = JC_PERSONAS.length;
     const uniq = Array.from(new Set(selectedIds || []));
 
-    // 선택 없거나(전체 모드) 3개 이상이면 필터링 없이 전체 표시
     if (uniq.length === 0 || uniq.length >= total) return baseHtml;
 
     let idsToKeep;
     if (uniq.length === 1) {
       idsToKeep = new Set(uniq);
     } else {
-      // 2개 이상이면 앞의 2개만 유지
       idsToKeep = new Set(uniq.slice(0, 2));
     }
 
     const lang = getCurrentLanguage();
     let headers;
     if (lang === 'en') {
-      // EN: "Mask of Mischief & Innocence:"
-      // HTML 엔티티 변환 고려하여 각 페르소나마다 원본과 변환 버전 모두 생성
       headers = JC_PERSONAS.map(p => {
         const maskLabel = p.maskLabel_en || ('Mask of ' + p.label_en);
         return [
@@ -447,28 +563,21 @@
         ];
       }).flat();
     } else if (lang === 'jp') {
-      // JP: 『悪戯と無邪気の仮面』：
       headers = JC_PERSONAS.map(p => `『${p.maskLabel_jp}』：`);
     } else {
-      // KR 기본: 『장난과 천진의 페르소나』:
       headers = JC_PERSONAS.map(p => `『${p.maskLabel}』:`);
     }
     const allHeadersPattern = headers.map(h => escapeRegex(h)).join('|');
 
     let html = baseHtml;
     JC_PERSONAS.forEach((p, idx) => {
-      if (idsToKeep.has(p.id)) return; // 유지할 헤더
-
-      // 영어의 경우 각 페르소나마다 원본과 HTML 엔티티 버전 모두 처리
+      if (idsToKeep.has(p.id)) return;
       const maskLabel = lang === 'en' 
         ? (p.maskLabel_en || ('Mask of ' + p.label_en))
         : (lang === 'jp' ? p.maskLabel_jp : p.maskLabel);
       
       const headerVariants = lang === 'en' 
-        ? [
-            `${maskLabel}:`,
-            `${maskLabel.replace(/&/g, '&amp;')}:`
-          ]
+        ? [ `${maskLabel}:`, `${maskLabel.replace(/&/g, '&amp;')}:` ]
         : lang === 'jp'
         ? [`『${maskLabel}』：`]
         : [`『${maskLabel}』:`];
@@ -492,14 +601,11 @@
 
     let combosToKeep;
     if (uniq.length === 0 || uniq.length >= total) {
-      // 전체 모드: 모든 조합 유지
       combosToKeep = combos;
     } else if (uniq.length === 1) {
-      // 1개만 선택: 그 가면이 포함된 조합만
       const id = uniq[0];
       combosToKeep = combos.filter(c => c.personaIds.includes(id));
     } else {
-      // 2개 이상: 앞의 2개를 한 쌍으로 고정
       const pairId = uniq.slice(0, 2).sort().join('+');
       combosToKeep = combos.filter(c => {
         const comboId = c.personaIds.slice().sort().join('+');
@@ -514,10 +620,7 @@
     function makeHeader(a, b) {
       if (!a || !b) return '';
       if (type === 'skill5') {
-        // skill5 조합 헤더
         if (lang === 'en') {
-          // EN: "Facade of Mischief & Innocence + Facade of Service & Admonition:"
-          // HTML 엔티티 변환 및 순서 변형 고려
           const labelA = a.label_en;
           const labelB = b.label_en;
           return [
@@ -527,10 +630,8 @@
             `Facade of ${labelB.replace(/&/g, '&amp;')} + Facade of ${labelA.replace(/&/g, '&amp;')}:`
           ];
         } else if (lang === 'jp') {
-          // JP: 『相貌・悪戯と無邪気』＋『相貌・奉仕と警告』：
           return `『相貌・${a.label_jp}』＋『相貌・${b.label_jp}』：`;
         } else {
-          // KR: 최신(『어설픔』 등) / 구버전(가면명) 표기 모두 지원
           const fa = a.facadeLabel || a.maskLabel;
           const fb = b.facadeLabel || b.maskLabel;
           return [
@@ -541,12 +642,9 @@
           ];
         }
       } else {
-        // passive2 조합 헤더
         if (lang === 'en') {
-          // EN: "Mask of Mischief & Innocence + Mask of Service & Admonition:"
           const ma = a.maskLabel_en || `Mask of ${a.label_en}`;
           const mb = b.maskLabel_en || `Mask of ${b.label_en}`;
-          // HTML 엔티티 변환 및 순서 변형 고려
           return [
             `${ma} + ${mb}:`,
             `${mb} + ${ma}:`,
@@ -554,10 +652,8 @@
             `${mb.replace(/&/g, '&amp;')} + ${ma.replace(/&/g, '&amp;')}:`
           ];
         } else if (lang === 'jp') {
-          // JP: 『悪戯と無邪気の仮面』＋『奉仕と警告の仮面』：
           return `『${a.maskLabel_jp}』＋『${b.maskLabel_jp}』：`;
         } else {
-          // KR: 『장난과 천진의 페르소나』＋『헌신과 경고의 페르소나』:
           return [`『${a.maskLabel}』＋『${b.maskLabel}』:`, `『${b.maskLabel}』＋『${a.maskLabel}』:`, `『${a.maskLabel}』+『${b.maskLabel}』:`, `『${b.maskLabel}』+『${a.maskLabel}』:`];
         }
       }
@@ -627,56 +723,22 @@
       }
     } catch (_) { }
 
-    // 로컬 폴백 매핑
     const local = JC_ROLE_TRANSLATIONS[lang];
     if (local && local[roleKey]) {
       return local[roleKey];
     }
-
     return roleKey;
   }
 
+  // 기존 헤더에 텍스트 넣는 로직을 제거함
   function updateJCSkillRoleDisplay(roleKey) {
-    const skillsCard = document.querySelector('.skills-card.card-style');
-    if (!skillsCard) return;
-
-    const title = skillsCard.querySelector('h2');
-    if (!title) return;
-
-    // 기존에 남아 있을 수 있는 모든 jc-role-container 제거
-    document.querySelectorAll('.jc-role-container').forEach(el => el.remove());
-
-    if (!roleKey) return;
-
-    const baseUrl = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-    const labelText = getLocalizedRoleLabel(roleKey);
-
-    let container = document.createElement('span');
-    container.className = 'jc-role-container';
-
-    const slash = document.createElement('span');
-    slash.textContent = '/';
-
-    const icon = document.createElement('img');
-    icon.src = `${baseUrl}/assets/img/persona/직업_${roleKey}.png`;
-    icon.alt = roleKey;
-
-    const text = document.createElement('span');
-    text.className = 'jc-role-text';
-    text.textContent = labelText || roleKey;
-
-    container.appendChild(slash);
-    container.appendChild(icon);
-    container.appendChild(text);
-
-    title.appendChild(container);
+     // 헤더에 표시하지 않음 (빈 함수로 둠)
   }
 
   function updateJCRitualDetails(selectedIds, roleKey) {
     try {
       const lang = getCurrentLanguage();
       const ritual0 = document.querySelector('.ritual-item[data-ritual="0"] .ritual-description');
-      const ritual1 = document.querySelector('.ritual-item[data-ritual="1"] .ritual-description');
       const ritual2 = document.querySelector('.ritual-item[data-ritual="2"] .ritual-description');
 
       const hasValidPair = !!(roleKey && selectedIds && selectedIds.length === 2);
@@ -768,13 +830,10 @@
       const params = new URLSearchParams(window.location.search);
       const name = params.get('name');
 
-      // J&C 페이지에서만 동작
       if (name !== 'J&C' && name !== '쥐스틴 & 카롤린') return;
 
-      // 페르소나 선택 카드 UI 보장
       ensureJCSelectorCard();
 
-      // 현재 스킬 레벨 index (skill-level-btn.active 의 data-level 사용)
       let currentLevelIndex = '-1';
       try {
         const activeBtn = document.querySelector('.skill-level-btn.active');
@@ -783,7 +842,6 @@
         }
       } catch (_) { }
 
-      // 선택된 페르소나 기준으로 J&C 전용 스킬 설명 필터링
       const skillsGrid = document.querySelector('.skills-grid');
       const selectedIds = getSelectedPersonaIds();
 
@@ -814,15 +872,15 @@
         });
       })(selectedIds);
 
-      // 선택된 두 가면 조합에 따른 직업 라벨/아이콘 표시
       const roleKey = getSelectedRoleKeyFromIds(selectedIds);
-      updateJCSkillRoleDisplay(roleKey);
       updateJCRitualDetails(selectedIds, roleKey);
+      
+      // 여기에서만 Visual 업데이트 한 번 더 확실히
+      updateJCVisuals();
 
       if (skillsGrid) {
         const descElements = skillsGrid.querySelectorAll('.skill-description');
 
-        // J&C는 스킬 순서가 skill1,2,3,4,5,highlight,passive1,passive2 로 고정
         const targetMap = [
           { index: 4, type: 'skill5' },
           { index: 5, type: 'highlight' },
@@ -838,7 +896,6 @@
 
           const prevLevel = el.getAttribute('data-' + levelAttr);
           if (!prevLevel || prevLevel !== currentLevelIndex || !el.getAttribute('data-' + baseAttr)) {
-            // 현재 스킬 레벨에 대한 원본 HTML 저장 (아이콘 치환 전 상태)
             el.setAttribute('data-' + baseAttr, el.innerHTML);
             el.setAttribute('data-' + levelAttr, currentLevelIndex);
           }
@@ -861,7 +918,6 @@
       const elements = document.querySelectorAll('.skill-name, .skill-description, .ritual-description');
       if (!elements || !elements.length) return;
 
-      // 스킬 5 이름 앞에 고정 아이콘(J&C 알더) 추가
       (function addSkill5AlderIcon() {
         if (!skillsGrid) return;
         const cards = skillsGrid.querySelectorAll('.skill-card');
@@ -870,8 +926,6 @@
 
         const nameEl = skill5Card.querySelector('.skill-name');
         if (!nameEl) return;
-
-        // 이미 아이콘이 붙어 있다면 중복 추가 방지
         if (nameEl.querySelector('.jc-skill5-alder-icon')) return;
 
         const img = document.createElement('img');
@@ -889,14 +943,12 @@
 
       elements.forEach(el => {
         if (!el || !el.innerHTML) return;
-        // 이미 아이콘이 있으면 재적용하지 않음(중첩 방지)
         if (el.querySelector('.jc-persona-icon')) return;
 
         let html = el.innerHTML;
         let changed = false;
 
         Object.entries(LABEL_ICON_MAP).forEach(([label, fileName]) => {
-          // 텍스트를 아이콘 + 텍스트 조합으로 치환
           const imgHtml =
             `<span class="jc-icon-label">` +
             `<img src="${baseUrl}/assets/img/character-detail/J&C/${fileName}" ` +
@@ -904,7 +956,6 @@
             `style="width:24px;height:24px;object-fit:contain;vertical-align:middle;margin-right:4px;">` +
             `${label}</span>`;
 
-          // 1) 원본 텍스트 그대로 매칭 (정규식 이스케이프)
           const rawRe = new RegExp(escapeRegex(label), 'g');
           if (rawRe.test(html)) {
             html = html.replace(rawRe, imgHtml);
@@ -912,7 +963,6 @@
             return;
           }
 
-          // 2) HTML 렌더링 과정에서 & -> &amp; 로 바뀐 케이스도 함께 처리
           const encodedLabel = label.replace(/&/g, '&amp;');
           if (encodedLabel !== label) {
             const encodedRe = new RegExp(escapeRegex(encodedLabel), 'g');
@@ -932,6 +982,133 @@
     }
   }
 
+ 
+
+
+// =========================================================
+  // J&C 전용 배경음악 (BGM) 플레이어 기능 추가
+  // =========================================================
+  (function initJCBGM() {
+    const BASE = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+    
+    const BGM_PLAYLIST = [
+        `${BASE}/assets/music/JC_login.mp3`,
+    ];
+
+    const ICON_ON = `${BASE}/assets/img/music/btn_music_on.png`;
+    const ICON_OFF = `${BASE}/assets/img/music/btn_music_off.png`;
+
+    const nameRow2 = document.querySelector('.name-row2');
+    if (!nameRow2 || BGM_PLAYLIST.length === 0) return;
+
+    const audio = new Audio();
+    audio.volume = 1;
+    let currentTrackIndex = 0;
+    let isPlaying = false;
+    let userInteracted = false; 
+
+    const musicBtnContainer = document.createElement('div');
+    musicBtnContainer.className = 'jc-music-btn-container';
+    musicBtnContainer.style.cssText = `
+        display: inline-flex;
+        align-items: center;
+        margin-left: 0px;
+        cursor: pointer;
+        vertical-align: middle;
+    `;
+
+    const musicIcon = document.createElement('img');
+    musicIcon.src = ICON_OFF;
+    musicIcon.alt = 'BGM Toggle';
+    musicIcon.style.cssText = `
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        transition: transform 0.1s ease;
+    `;
+    
+    musicBtnContainer.onmouseenter = () => musicIcon.style.transform = 'scale(1.1)';
+    musicBtnContainer.onmouseleave = () => musicIcon.style.transform = 'scale(1.0)';
+
+    musicBtnContainer.appendChild(musicIcon);
+    nameRow2.appendChild(musicBtnContainer);
+
+    function loadAndPlayTrack(index) {
+        if (index >= BGM_PLAYLIST.length) index = 0; 
+        currentTrackIndex = index;
+        
+        audio.src = BGM_PLAYLIST[currentTrackIndex];
+        audio.load();
+        
+        const playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                updateIconState();
+            }).catch(error => {
+                console.log('J&C BGM Autoplay blocked. Waiting for interaction.');
+                isPlaying = false;
+                updateIconState();
+                
+                if (!userInteracted) {
+                    addInteractionFallback();
+                }
+            });
+        }
+    }
+
+    function updateIconState() {
+        musicIcon.src = isPlaying ? ICON_ON : ICON_OFF;
+    }
+
+    function addInteractionFallback() {
+        const fallbackHandler = () => {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    userInteracted = true;
+                    updateIconState();
+                }).catch(e => console.warn('Interaction play failed', e));
+            }
+            document.removeEventListener('click', fallbackHandler);
+            document.removeEventListener('keydown', fallbackHandler);
+            document.removeEventListener('touchstart', fallbackHandler);
+        };
+
+        document.addEventListener('click', fallbackHandler, { once: true });
+        document.addEventListener('keydown', fallbackHandler, { once: true });
+        document.addEventListener('touchstart', fallbackHandler, { once: true });
+    }
+
+    audio.addEventListener('ended', () => {
+        loadAndPlayTrack(currentTrackIndex + 1);
+    });
+
+    musicBtnContainer.addEventListener('click', (e) => {
+        e.stopPropagation();
+        userInteracted = true;
+
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+        } else {
+            if (!audio.src) {
+                loadAndPlayTrack(currentTrackIndex);
+            } else {
+                audio.play();
+                isPlaying = true;
+            }
+        }
+        updateIconState();
+    });
+
+    setTimeout(() => {
+        loadAndPlayTrack(0);
+    }, 500);
+
+  })();
+
   // 전역에서 호출 가능하도록 노출
   window.applyJCIcons = applyJCIcons;
-})(); 
+})();

@@ -35,13 +35,13 @@ window.innateData["J&C"] = {
             "nature": null,
             "type": "패시브",
             "name_cn": "刑务",
-            "desc_cn": "自身『面具强度』提升25点。",
-            "name": "형무",
-            "desc": "자신의 『페르소나 강도』가 25 증가한다.",
+            "desc_cn": "自身『面具强度』提升50点。",
+            "name": "형벌",
+            "desc": "자신의 『페르소나 성능』이 50 증가한다.",
             "name_en": "Incarceration",
-            "desc_en": "Increases own Desire Level by 25.",
+            "desc_en": "Increases own Desire Level by 50.",
             "name_jp": "刑務",
-            "desc_jp": "自身の『看守の責務』が25増加する。"
+            "desc_jp": "自身の『看守の責務』が50増加する。"
           },
           {
             "ascend": "0",
@@ -56,9 +56,9 @@ window.innateData["J&C"] = {
             "name": "집행",
             "name_en": "Execution",
             "name_jp": "執行",
-            "desc": "쥐스틴&카롤린이 필드에 있을 때, 직업에 따라 다음 효과가 발동된다.\n- 구원: 모든 아군은 턴 시작 시 HP 1750 회복\n- 우월: 모든 아군의 대미지가 87.5% 증가\n- 지배: 자신의 크리티컬 효과가 70.0% 증가\n- 방위: 자신의 턴 시작 시 모든 아군에게 1750의 실드 부여\n- 굴복: 모든 적이 받는 대미지가 87.5% 증가\n- 반항: 자신의 크리티컬 효과가 70.0% 증가",
-            "desc_en": "When Justine & Caroline are on the field, different effects are activated based on role.\n- Medic: All allies recover 1750 HP at the start of their turn.\n- Strategist: All allies' damage is increased by 87.5%.\n- Sweeper: Own Critical Damage is increased by 70.0%.\n- Defense: At the start of own turn, grants all allies a 1750 shield.\n- Saboteur: All enemies take 87.5% increased damage.\n- Assassin: Own Critical Damage is increased by 70.0%.",
-            "desc_jp": "ジュスティーヌ＆カロリーヌがフィールドにいる場合、ロールに応じて以下の効果が発動する。\n- 救済：味方全体はターン開始時にHPを1750回復する。\n- 優越：味方全体の与ダメージが87.5%上昇する。\n- 支配：自身のクリティカルダメージが70.0%上昇する。\n- 防衛：自身のターン開始時、味方全体に1750のシールドを付与する。\n- 屈服：敵全体が受けるダメージが87.5%増加する。\n- 反抗：自身のクリティカルダメージが70.0%上昇する。"
+            "desc": "쥐스틴&카롤린이 필드에 있을 때, 전체 아군 대미지가 30.0% 증가한다. 자신의 직업 포지션에 따라 상응한 추가 효과를 획득한다.\n구원: 전체 동료의 관통이 10.0% 증가하며, 턴 종료 시 1500포인트의 생명을 회복한다.\n우월: 전체 동료의 대미지가 20.0% 증가한다.\n지배: 자신의 페르소나 스킬의 스킬 대미지가 35.0% 증가한다.\n방어: 전체 동료의 관통이 10.0% 증가한다. 자신의 턴 시작 시, 전체 동료에게 1500포인트의 실드를 추가하며 2턴 동안 지속된다.\n굴복:  전체 적이 받는 대미지가 20.0% 증가한다.\n반항: 자신의 페르소나 스킬의 스킬 대미지가  35.0% 증가한다.",
+            "desc_en": "While Justine & Caroline are on the field, all allies’ damage is increased by 30.0%. Additional effects are granted based on the user’s role position.\nMedic: All allies’ Pierce increases by 10.0%, and at the end of each turn, recover 1500 HP.\nStrategist: All allies’ damage increases by 20.0%.\nSweeper: Your Persona skill damage increases by 35.0%.\nDefense: All allies’ Pierce increases by 10.0%. At the start of your turn, grant all allies a 1500-point shield that lasts for 2 turns.\nSaboteur: All enemies’ damage taken increases by 20.0%.\nAssassin: Your Persona skill damage increases by 35.0%.",
+            "desc_jp": "ジュスティーヌ＆カロリーヌがフィールドにいる間、味方全体の与ダメージが30.0%上昇する。自身の職業ポジションに応じて、以下の追加効果を獲得する。\n救済：味方全体の貫通が10.0%上昇し、ターン終了時にHPを1500回復する。\n優越：味方全体の与ダメージが20.0%上昇する。\n支配：自身のペルソナスキルのスキルダメージが35.0%上昇する。\n防衛：味方全体の貫通が10.0%上昇する。自身のターン開始時、味方全体に1500ポイントのシールドを付与し、2ターン持続する。\n屈服：敵全体の被ダメージが20.0%上昇する。\n反抗：自身のペルソナスキルのスキルダメージが35.0%上昇する。"
         }
     ]
 };

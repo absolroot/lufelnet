@@ -1,13 +1,15 @@
 (function () {
     window.characterReview = window.characterReview || {};
     window.characterReview["J&C"] = { name_en: "", name_jp: "", codename: "",
-        review: `페르소나 시리즈 최초의 벨벳룸 플레이어블 캐릭터이자 최초의 전체 서버 동시 출시 캐릭터다.
+        review: `**페이지 업데이트 중**
+        
+페르소나 시리즈 최초의 벨벳룸 플레이어블 캐릭터이자 최초의 전체 서버 동시 출시 캐릭터다.
 
 전투 시작 전 4개의 페르소나 그룹 중 2개의 페르소나 그룹을 선택하여 **해명을 제외한 6가지 모든 포지션의 역할을 수행 가능**하다.
 
 사전에 선택한 2개의 스킬을 모두 사용하고 이후에 스킬3을 사용하는 방식으로 운영되며, 의식1 이상은 스킬3의 자동 발동으로 3턴에서 2턴 사이클로 감소하게 된다.
 
-『페르소나 강도』수치는 쌍둥이의 모든 스킬 위력을 결정하는 핵심 수치로 높을수록 모든 스킬 위력이 증가한다.
+『페르소나 성능』수치는 쌍둥이의 모든 스킬 위력을 결정하는 핵심 수치로 높을수록 모든 스킬 위력이 증가한다.
 
 기본값 25에 일정 스탯 조건만 만족(권장 육성 스탯 참조)시키면 100의 수치로 시작할 수 있고, 카드 세트 효과와 전용 무기, 그리고 의식6에서 추가로 획득이 가능하다.
 
@@ -15,7 +17,9 @@
 
 (캐릭터 출시 초기 시점으로 추천 및 육성 방향성이 변경될 수 있습니다.)
 `,
-        review_en: `The first playable Velvet Room character in the Persona series and the first character to be released simultaneously across all servers.
+        review_en: `**Page under construction**
+
+The first playable Velvet Room character in the Persona series and the first character to be released simultaneously across all servers.
 
 Before battle, two Persona groups can be selected out of four, allowing them to perform **all six roles except Elucidator**.
 
@@ -29,7 +33,9 @@ Because their base ATK is relatively low compared to other 5★ characters, thei
 
 (As this is still in the early stages of release, related details are subject to change.)
 `,
-        review_jp: `ペルソナシリーズ初のプレイアブルなベルベットルーム所属キャラクターであり、全サーバー同時実装となった初のキャラクター。
+        review_jp: `**ページ作成中**
+
+ペルソナシリーズ初のプレイアブルなベルベットルーム所属キャラクターであり、全サーバー同時実装となった初のキャラクター。
 
 戦闘開始前に4つのペルソナグループの中から2つを選択でき、**解明を除く6つすべてのロールを担うことが可能。**
 

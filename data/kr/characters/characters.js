@@ -82,7 +82,7 @@ Object.assign(window.characterData, {
         "name_en": "Justine & Caroline",
         "name_jp": "ジュスティーヌ＆カロリーヌ",
         "codename": "J&C",
-        "skill_item": 6,
+        "skill_item": 3,
         "sub_revel2": ["대미지 보너스", "공격력"],
         "sub_revel3": ["크리티컬 확률", "크리티컬 효과"],
         "sub_revel4": ["공격력"],
@@ -105,10 +105,10 @@ Object.assign(window.characterData, {
         "skill3_lv": "MAX!",
         "skill4_lv": "MAX",
         "skill_priority": "3>2>1>4",
-        "mind_stats1": "크리티컬 효과 24% (test)",
-        "mind_stats2": "대미지 보너스 16% (test)",
-        "mind_skill1": "S1/S2 (test)",
-        "mind_skill2": "S3/HL (test)"
+        "mind_stats1": "대미지 보너스 16%",
+        "mind_stats2": "크리티컬 효과 24%!",
+        "mind_skill1": "S1/S2!",
+        "mind_skill2": "S3/HL!"
     },
     "슌·프론티어": {
         "limit": true,

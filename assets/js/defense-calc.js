@@ -619,7 +619,7 @@ class DefenseCalc {
         // 수치 열
         const valueCell = document.createElement('td');
         valueCell.className = 'value-column';
-        // J&C 전용 페르소나 강도 보정
+        // J&C 전용 페르소나 성능 보정
         if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
             try {
                 JCCalc.registerItem(data, valueCell, isPenetrate, this);

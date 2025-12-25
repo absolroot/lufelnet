@@ -30,7 +30,7 @@ window.JCCalc = (function () {
         const lang = getLang();
         if (lang === 'en') return 'Desire level';
         if (lang === 'jp') return 'デザイアレベル';
-        return '페르소나 강도';
+        return '페르소나 성능';
     }
 
     function getFactor() {

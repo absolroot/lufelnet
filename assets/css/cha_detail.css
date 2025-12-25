@@ -45,6 +45,33 @@
     opacity: 0.15;
 }
 
+
+/* J&C 전용 스타일 */
+
+.carousel.is-jc::before {
+    background-image: url('/data/characters/J&C/chain4.png') !important;
+    height: 114%;
+    top: -9%;
+    left: -7%;
+    
+    transform: rotate(10deg);
+    opacity: 1;
+}
+
+.container.is-jc {
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #171940;;
+    background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
+    background-attachment: scroll, scroll, scroll, scroll;
+    background-position: 0 0, 0 0, 0 0, center center;
+}
+
+.character-name.is-jc::before { background: #000000 !important;}
+.character-name.is-jc { color: #fffe79 !important;}
+.dot.active.is-jc { background-color: #fffd00 !important;}
+.card-style.is-jc {border-bottom: 3px solid #fffe79 !important;}
+
+
+
 .carousel-inner {
     display: flex;
     transition: transform 0.3s ease;

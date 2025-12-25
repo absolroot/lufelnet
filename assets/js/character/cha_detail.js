@@ -1477,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
         // 쥐스틴 & 카롤린 (J&C) 전용: skill4, skill5 포함
-        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린") {
+        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린" || characterInfo.name === "쥐스틴&카롤린") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
         }
 

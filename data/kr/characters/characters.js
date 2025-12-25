@@ -78,7 +78,7 @@ Object.assign(window.characterData, {
         "persona_en": "Multiple Personas",
         "persona_cn": "复数人格面具",
         "persona_jp": "複数ペルソナ",
-        "name": "쥐스틴 & 카롤린",
+        "name": "쥐스틴&카롤린",
         "name_en": "Justine & Caroline",
         "name_jp": "ジュスティーヌ＆カロリーヌ",
         "codename": "J&C",

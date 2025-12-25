@@ -891,7 +891,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             ];
 
             // J&C 전용 아이콘 스크립트는 해당 캐릭터일 때만 로드
-            if (name === 'J&C' || name === '쥐스틴 & 카롤린') {
+            if (name === 'J&C' || name === '쥐스틴 & 카롤린' || name === '쥐스틴&카롤린') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' }));
             }
 
@@ -1353,7 +1353,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // J&C 의식 설명에도 아이콘 적용
         try {
-            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린') &&
+            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린' || characterName === '쥐스틴&카롤린') &&
                 typeof window.applyJCIcons === 'function') {
                 window.applyJCIcons();
             }

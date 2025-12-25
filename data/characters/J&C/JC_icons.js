@@ -830,7 +830,7 @@
       const params = new URLSearchParams(window.location.search);
       const name = params.get('name');
 
-      if (name !== 'J&C' && name !== '쥐스틴 & 카롤린') return;
+      if (name !== 'J&C' && name !== '쥐스틴 & 카롤린' && name !== '쥐스틴&카롤린') return;
 
       ensureJCSelectorCard();
 

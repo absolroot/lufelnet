@@ -986,128 +986,118 @@
 
 
 // =========================================================
-  // J&C 전용 배경음악 (BGM) 플레이어 기능 추가
-  // =========================================================
-  (function initJCBGM() {
-    const BASE = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-    
-    const BGM_PLAYLIST = [
-        `${BASE}/assets/music/JC_login.mp3`,
-    ];
+// J&C 전용 배경음악 (BGM) 플레이어 (수동 재생 버전)
+// =========================================================
+(function initJCBGM() {
+  const BASE = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+  
+  const BGM_PLAYLIST = [
+      `${BASE}/assets/music/JC_login.mp3`,
+  ];
 
-    const ICON_ON = `${BASE}/assets/img/music/btn_music_on.png`;
-    const ICON_OFF = `${BASE}/assets/img/music/btn_music_off.png`;
+  const ICON_ON = `${BASE}/assets/img/music/btn_music_on.png`;
+  const ICON_OFF = `${BASE}/assets/img/music/btn_music_off.png`;
 
-    const nameRow2 = document.querySelector('.name-row2');
-    if (!nameRow2 || BGM_PLAYLIST.length === 0) return;
+  const nameRow2 = document.querySelector('.name-row2');
+  if (!nameRow2 || BGM_PLAYLIST.length === 0) return;
 
-    const audio = new Audio();
-    audio.volume = 1;
-    let currentTrackIndex = 0;
-    let isPlaying = false;
-    let userInteracted = false; 
+  const audio = new Audio();
+  audio.volume = 1;
+  let currentTrackIndex = 0;
+  let isPlaying = false;
 
-    const musicBtnContainer = document.createElement('div');
-    musicBtnContainer.className = 'jc-music-btn-container';
-    musicBtnContainer.style.cssText = `
-        display: inline-flex;
-        align-items: center;
-        margin-left: 0px;
-        cursor: pointer;
-        vertical-align: middle;
-    `;
+  // 초기 음원 설정 (재생은 하지 않음)
+  audio.src = BGM_PLAYLIST[0];
 
-    const musicIcon = document.createElement('img');
-    musicIcon.src = ICON_OFF;
-    musicIcon.alt = 'BGM Toggle';
-    musicIcon.style.cssText = `
-        width: 24px;
-        height: 24px;
-        object-fit: contain;
-        transition: transform 0.1s ease;
-    `;
-    
-    musicBtnContainer.onmouseenter = () => musicIcon.style.transform = 'scale(1.1)';
-    musicBtnContainer.onmouseleave = () => musicIcon.style.transform = 'scale(1.0)';
+  const musicBtnContainer = document.createElement('div');
+  musicBtnContainer.className = 'jc-music-btn-container';
+  musicBtnContainer.style.cssText = `
+      display: inline-flex;
+      align-items: center;
+      margin-left: 0px;
+      cursor: pointer;
+      vertical-align: middle;
+  `;
 
-    musicBtnContainer.appendChild(musicIcon);
-    nameRow2.appendChild(musicBtnContainer);
+  const musicIcon = document.createElement('img');
+  musicIcon.src = ICON_OFF; // 기본 상태 OFF
+  musicIcon.alt = 'BGM Toggle';
+  musicIcon.style.cssText = `
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      transition: transform 0.1s ease;
+  `;
+  
+  musicBtnContainer.onmouseenter = () => musicIcon.style.transform = 'scale(1.1)';
+  musicBtnContainer.onmouseleave = () => musicIcon.style.transform = 'scale(1.0)';
 
-    function loadAndPlayTrack(index) {
-        if (index >= BGM_PLAYLIST.length) index = 0; 
-        currentTrackIndex = index;
-        
-        audio.src = BGM_PLAYLIST[currentTrackIndex];
-        audio.load();
-        
-        const playPromise = audio.play();
+  musicBtnContainer.appendChild(musicIcon);
+  nameRow2.appendChild(musicBtnContainer);
 
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                isPlaying = true;
-                updateIconState();
-            }).catch(error => {
-                console.log('J&C BGM Autoplay blocked. Waiting for interaction.');
-                isPlaying = false;
-                updateIconState();
-                
-                if (!userInteracted) {
-                    addInteractionFallback();
-                }
-            });
-        }
-    }
+  // 트랙 로드 및 재생 함수 (트랙 변경 시 사용)
+  function loadAndPlayTrack(index) {
+      if (index >= BGM_PLAYLIST.length) index = 0; 
+      currentTrackIndex = index;
+      
+      audio.src = BGM_PLAYLIST[currentTrackIndex];
+      audio.load();
+      
+      const playPromise = audio.play();
 
-    function updateIconState() {
-        musicIcon.src = isPlaying ? ICON_ON : ICON_OFF;
-    }
+      if (playPromise !== undefined) {
+          playPromise.then(() => {
+              isPlaying = true;
+              updateIconState();
+          }).catch(error => {
+              console.warn('Playback failed or blocked:', error);
+              isPlaying = false;
+              updateIconState();
+          });
+      }
+  }
 
-    function addInteractionFallback() {
-        const fallbackHandler = () => {
-            if (!isPlaying) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    userInteracted = true;
-                    updateIconState();
-                }).catch(e => console.warn('Interaction play failed', e));
-            }
-            document.removeEventListener('click', fallbackHandler);
-            document.removeEventListener('keydown', fallbackHandler);
-            document.removeEventListener('touchstart', fallbackHandler);
-        };
+  function updateIconState() {
+      musicIcon.src = isPlaying ? ICON_ON : ICON_OFF;
+  }
 
-        document.addEventListener('click', fallbackHandler, { once: true });
-        document.addEventListener('keydown', fallbackHandler, { once: true });
-        document.addEventListener('touchstart', fallbackHandler, { once: true });
-    }
+  // 한 곡이 끝나면 다음 곡 자동 재생
+  audio.addEventListener('ended', () => {
+      loadAndPlayTrack(currentTrackIndex + 1);
+  });
 
-    audio.addEventListener('ended', () => {
-        loadAndPlayTrack(currentTrackIndex + 1);
-    });
+  // 버튼 클릭 이벤트 (여기서만 재생/일시정지 제어)
+  musicBtnContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
 
-    musicBtnContainer.addEventListener('click', (e) => {
-        e.stopPropagation();
-        userInteracted = true;
+      if (isPlaying) {
+          audio.pause();
+          isPlaying = false;
+      } else {
+          // 재생 중이 아닐 때 클릭하면 재생 시작
+          // 만약 src가 비어있거나 로드되지 않은 경우를 대비해 loadAndPlayTrack 호출
+          // 이미 src가 있고 일시정지 상태라면 그대로 play()
+          if (!audio.src || audio.src === '') {
+              loadAndPlayTrack(currentTrackIndex);
+          } else {
+              const playPromise = audio.play();
+              if (playPromise !== undefined) {
+                  playPromise.then(() => {
+                      isPlaying = true;
+                      updateIconState();
+                  }).catch(e => {
+                      // 혹시 모를 에러 시 다시 로드 후 재생 시도
+                      loadAndPlayTrack(currentTrackIndex);
+                  });
+              }
+          }
+      }
+      updateIconState();
+  });
 
-        if (isPlaying) {
-            audio.pause();
-            isPlaying = false;
-        } else {
-            if (!audio.src) {
-                loadAndPlayTrack(currentTrackIndex);
-            } else {
-                audio.play();
-                isPlaying = true;
-            }
-        }
-        updateIconState();
-    });
+  // 자동 재생(setTimeout) 부분 삭제됨
 
-    setTimeout(() => {
-        loadAndPlayTrack(0);
-    }, 500);
-
-  })();
+})();
 
   // 전역에서 호출 가능하도록 노출
   window.applyJCIcons = applyJCIcons;

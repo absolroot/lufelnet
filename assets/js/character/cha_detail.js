@@ -1158,7 +1158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스킬 순서 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
-        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린") {
+        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린" || characterInfo.name === "쥐스틴&카롤린") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
         }
 

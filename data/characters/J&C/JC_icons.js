@@ -9,35 +9,35 @@
     // KR
     '장난과 천진': 'J&C 잭프로스트&잭오랜턴.png',
     '헌신과 경고': 'J&C 아가시온&스다마.png',
-    '부조리와 비합리': 'J&C 시사&벅스.png',
-    '복과와 화근': 'J&C 맨드레이크&온모라키.png',
+    '부조리와 비합리': 'J&C 맨드레이크&온모라키.png',
+    '복과와 화근': 'J&C 시사&벅스.png',
     // KR (최신 Facade/모습 라벨)
     '어설픔': 'J&C 잭프로스트&잭오랜턴.png',
     '가르침': 'J&C 아가시온&스다마.png',
-    '무질서': 'J&C 시사&벅스.png',
-    '인과': 'J&C 맨드레이크&온모라키.png',
+    '무질서': 'J&C 맨드레이크&온모라키.png',
+    '인과': 'J&C 시사&벅스.png',
 
     // EN (skill.js / 외부 JSON 기준)
     'Mask of Mischief & Innocence': 'J&C 잭프로스트&잭오랜턴.png',
     'Mask of Service & Admonition': 'J&C 아가시온&스다마.png',
-    'Mask of Absurdity & Nonsense': 'J&C 시사&벅스.png',
-    'Mask of Luck & Loss': 'J&C 맨드레이크&온모라키.png',
+    'Mask of Absurdity & Nonsense': 'J&C 맨드레이크&온모라키.png',
+    'Mask of Luck & Loss': 'J&C 시사&벅스.png',
     // EN Facade 라인 전용 (조합 설명부에서만 사용)
     'Facade of Mischief & Innocence': 'J&C 잭프로스트&잭오랜턴.png',
     'Facade of Service & Admonition': 'J&C 아가시온&스다마.png',
-    'Facade of Absurdity & Nonsense': 'J&C 시사&벅스.png',
-    'Facade of Luck & Loss': 'J&C 맨드레이크&온모라키.png',
+    'Facade of Absurdity & Nonsense': 'J&C 맨드레이크&온모라키.png',
+    'Facade of Luck & Loss': 'J&C 시사&벅스.png',
 
     // JP (skill.js / 외부 JSON 기준)
     '悪戯と無邪気の仮面': 'J&C 잭프로스트&잭오랜턴.png',
     '奉仕と警告の仮面': 'J&C 아가시온&스다마.png',
-    '不条理と非合理の仮面': 'J&C 시사&벅스.png',
-    '福果と禍因の仮面': 'J&C 맨드레이크&온모라키.png',
+    '不条理と非合理の仮面': 'J&C 맨드레이크&온모라키.png',
+    '福果と禍因の仮面': 'J&C 시사&벅스.png',
     // JP 조합/Facade 라인 전용
     '相貌・悪戯と無邪気': 'J&C 잭프로스트&잭오랜턴.png',
     '相貌・奉仕と警告': 'J&C 아가시온&스다마.png',
-    '相貌・不条理と非合理': 'J&C 시사&벅스.png',
-    '相貌・福果と禍因': 'J&C 맨드레이크&온모라키.png'
+    '相貌・不条理と非合理': 'J&C 맨드레이크&온모라키.png',
+    '相貌・福果と禍因': 'J&C 시사&벅스.png'
   };
 
   // J&C 전용 페르소나(가면) 정의
@@ -69,7 +69,7 @@
       label: '부조리와 비합리',
       label_en: 'Absurdity & Nonsense',
       label_jp: '不条理と非合理',
-      iconFile: 'J&C 시사&벅스.png',
+      iconFile: 'J&C 맨드레이크&온모라키.png',
       maskLabel: '부조리와 비합리의 페르소나',
       facadeLabel: '무질서',
       maskLabel_en: 'Mask of Absurdity & Nonsense',
@@ -80,7 +80,7 @@
       label: '복과와 화근',
       label_en: 'Luck & Loss',
       label_jp: '福果と禍因',
-      iconFile: 'J&C 맨드레이크&온모라키.png',
+      iconFile: 'J&C 시사&벅스.png',
       maskLabel: '복과와 화근의 페르소나',
       facadeLabel: '인과',
       maskLabel_en: 'Mask of Luck & Loss',

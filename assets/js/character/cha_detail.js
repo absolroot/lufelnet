@@ -1540,7 +1540,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // J&C 전용 아이콘 적용
         try {
-            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린') &&
+            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린' || characterName === '쥐스틴&카롤린') &&
                 typeof window.applyJCIcons === 'function') {
                 window.applyJCIcons();
             }

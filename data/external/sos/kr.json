@@ -1,0 +1,146 @@
+{
+  "data": {
+    "boss": [
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "level": "89",
+            "name": "조종당하는 비슈누",
+            "skill": "407,905,408,1104",
+            "sn": 539101,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.436,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2742.4735,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Mult.": 1.088,
+              "Damage Taken": 0,
+              "Defense": 697.701,
+              "Down Points": 4.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1845674.208,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Electric",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire",
+                "Bless"
+              ]
+            },
+            "level": "89",
+            "name": "조종당하는 체르노보그",
+            "skill": "1016,1026",
+            "sn": 539111,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.436,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3428.0918,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Mult.": 1.088,
+              "Damage Taken": 0,
+              "Defense": 697.701,
+              "Down Points": 4.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1845674.208,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78402
+      }
+    ],
+    "buff": "벌레 떼의 습격: 한 가지 속성의 대미지를 줄 때마다 자신이 『사고의 보금자리』를 1중첩 획득한다. 『사고의 보금자리』: 2턴 동안 중첩당 10%의 최종 대미지 보너스를 제공한다(4회 중첩 가능).",
+    "endTime": "2026-01-22 07:30:00",
+    "startTime": "2025-12-25 08:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

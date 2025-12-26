@@ -365,6 +365,7 @@ h1.character-name::before {
     .character-video-play-img {
         width: 64px !important;
         height: 64px !important;
+        margin-bottom: 4px;
     }
 }
 

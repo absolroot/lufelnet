@@ -3,7 +3,7 @@
     window.characterReview["J&C"] = { name_en: "", name_jp: "", codename: "",
         review: `**페이지 업데이트 중**
         
-페르소나 시리즈 최초의 벨벳룸 플레이어블 캐릭터이자 최초의 전체 서버 동시 출시 캐릭터다.
+페르소나5 시리즈 최초의 벨벳룸 플레이어블 캐릭터이자 최초의 전체 서버 동시 출시 캐릭터다.
 
 전투 시작 전 4개의 페르소나 그룹 중 2개의 페르소나 그룹을 선택하여 **해명을 제외한 6가지 모든 포지션의 역할을 수행 가능**하다.
 
@@ -19,7 +19,7 @@
 `,
         review_en: `**Page under construction**
 
-The first playable Velvet Room character in the Persona series and the first character to be released simultaneously across all servers.
+The first playable Velvet Room character in the Persona5 series and the first character to be released simultaneously across all servers.
 
 Before battle, two Persona groups can be selected out of four, allowing them to perform **all six roles except Elucidator**.
 
@@ -35,7 +35,7 @@ Because their base ATK is relatively low compared to other 5★ characters, thei
 `,
         review_jp: `**ページ作成中**
 
-ペルソナシリーズ初のプレイアブルなベルベットルーム所属キャラクターであり、全サーバー同時実装となった初のキャラクター。
+ペルソナ5シリーズ初のプレイアブルなベルベットルーム所属キャラクターであり、全サーバー同時実装となった初のキャラクター。
 
 戦闘開始前に4つのペルソナグループの中から2つを選択でき、**解明を除く6つすべてのロールを担うことが可能。**
 

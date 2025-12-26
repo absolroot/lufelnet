@@ -178,7 +178,7 @@ class CriticalCalc {
                     try {
                         if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
                             document.querySelectorAll('tr.group-header[data-group="J&C"]').forEach(tr => {
-                                JCCalc.attachDesireControl(tr, this);
+                                JCCalc.attachDesireControl(tr, this, 'crit');
                             });
                             if (typeof this.initializeTables === 'function') {
                                 this.initializeTables();
@@ -321,7 +321,7 @@ class CriticalCalc {
 
             // J&C 전용 Desire 레벨 컨트롤 추가 (renderAccordion 실행 시점에 JCCalc가 있으면 자동 부착)
             if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.attachDesireControl) {
-                JCCalc.attachDesireControl(headerTr, this);
+                JCCalc.attachDesireControl(headerTr, this, 'crit');
             }
 
             headerTr.addEventListener('click', () => {
@@ -472,7 +472,7 @@ class CriticalCalc {
         
         const isJCRegistered = groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem;
         if (isJCRegistered && data.id !== 'jc2') {
-            JCCalc.registerItem(data, valueCell, false, this);
+            JCCalc.registerItem(data, valueCell, 'crit', this);
         } else {
             valueCell.textContent = `${data.value}%`;
         }

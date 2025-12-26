@@ -49,6 +49,26 @@ const penetrateData = {
             note: "우월/방위/반항",
             note_en: "Mask of Absurdity & Nonsense",
             note_jp: "不条理と非合理の仮面"
+        },
+        {
+            id: "jc3",
+            type: "패시브",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            skillName: "집행",
+            skillName_en: "(ASIA only)",
+            skillName_jp: "(ASIA only)",
+            options: ["LV1","LV2"],
+            values: {
+                "LV1": 5.0,
+                "LV2": 10.0
+            },
+            defaultOption: "LV2",
+            value: 10.0,
+            duration: "-",
+            note: "심상 코어 - 구원",
+            note_en: "Mindscape Core - Medic",
+            note_jp: "イメジャリー・コア - 救済"
         }
     ],
     "마나카":[

@@ -217,17 +217,14 @@ class DefenseCalc {
     }
 
     ensureJCCalcLoadedAndAttach() {
-        // 이미 로드된 경우: 바로 헤더에 컨트롤 부착
+        // 이미 로드된 경우 바로 부착
         if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
-            try {
-                document.querySelectorAll('tr.group-header[data-group="J&C"]').forEach(tr => {
-                    JCCalc.attachDesireControl(tr, this);
-                });
-            } catch(_) {}
+            // 이미 로드되어 있다면 initializeTable 등은 생성자에서 실행되었을 것이므로 헤더만 붙이면 됨 (renderAccordion 내부에서 자동 수행됨)
             return;
         }
-
+    
         if (this._jcCalcLoadPromise) return this._jcCalcLoadPromise;
+        
         const url = `${BASE_URL}/data/characters/J&C/JC_calc.js?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
         this._jcCalcLoadPromise = new Promise((resolve) => {
             try {
@@ -235,12 +232,11 @@ class DefenseCalc {
                 script.src = url;
                 script.async = true;
                 script.onload = () => {
-                    try {
-                        if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
-                            document.querySelectorAll('tr.group-header[data-group="J&C"]').forEach(tr => {
-                                JCCalc.attachDesireControl(tr, this);
-                            });
-                        }
+                    // [중요] 스크립트 로드 완료 시 테이블을 강제로 다시 그려야
+                    // J&C 아이템들이 registerItem을 통해 등록됩니다.
+                    try { 
+                        if (typeof this.initializeTable === 'function') this.initializeTable(); 
+                        if (typeof this.initializePenetrateTable === 'function') this.initializePenetrateTable();
                     } catch(_) {}
                     resolve();
                 };
@@ -275,7 +271,6 @@ class DefenseCalc {
                     if (!item) return;
                     // 주입: 그룹명 보관(행 렌더링/이미지 추론용)
                     // if (!item.charName) item.charName = groupName !== '계시' && groupName !== '원더' ? groupName : '';
-                    console.log(item.charName);
                     if (!item.charImage && item.charName) item.charImage = `${item.charName}.webp`;
                     flat.push(item);
                     if (item.id !== undefined) idMap.set(item.id, item);
@@ -378,7 +373,9 @@ class DefenseCalc {
             // J&C 전용 Desire 레벨 입력 컨트롤 추가 (DOM 구조 구성 후)
             try {
                 if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.attachDesireControl) {
-                    JCCalc.attachDesireControl(headerTr, this);
+                    // isPenetrate가 true면 'penetrate', 아니면 'def' 타입을 전달
+                    const type = isPenetrate ? 'penetrate' : 'def'; 
+                    JCCalc.attachDesireControl(headerTr, this, type);
                 }
             } catch(_) {}
 
@@ -593,7 +590,10 @@ class DefenseCalc {
                 }
                 if (nextValue !== null && nextValue !== undefined) {
                     // J&C 전용: 기본값을 갱신한 뒤 Desire 보정 적용
-                    if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged) {
+                    // 예외 아이템은 Desire 보정 제외
+                    const isExcluded = (String(data.id) === 'jc3');
+                    
+                    if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged) {
                         try {
                             data.__jcBaseValue = nextValue;
                             data.value = nextValue;
@@ -619,10 +619,16 @@ class DefenseCalc {
         // 수치 열
         const valueCell = document.createElement('td');
         valueCell.className = 'value-column';
+        
         // J&C 전용 페르소나 성능 보정
-        if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
+        // id가 'jc3' 인 경우는 보정 제외 
+        const isExcluded = (String(data.id) === 'jc3');
+        
+        if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
             try {
-                JCCalc.registerItem(data, valueCell, isPenetrate, this);
+                // 타입 명시: isPenetrate가 true면 'penetrate', 아니면 'def'
+                const type = isPenetrate ? 'penetrate' : 'def';
+                JCCalc.registerItem(data, valueCell, type, this);
             } catch(_) {
                 valueCell.textContent = `${data.value}%`;
             }

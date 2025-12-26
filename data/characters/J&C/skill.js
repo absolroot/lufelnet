@@ -67,7 +67,7 @@ window.enCharacterSkillsData["J&C"] = {
     "element": "화염빙결",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Fire damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Ice damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each). Increase this effect by 1% for every 1 point of Desire Level. Also, increase party's Attack by 39.0%/43.0%/41.4%/45.4% for every 100 points of Desire Level for 3 turns.\nGain Facade of Mischief & Innocence."
+    "description": "Deal Fire damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Ice damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every 1 point of Desire Level). Also, increase party's Attack by 39.0%/43.0%/41.4%/45.4% × Desire Level points / 100 for 3 turns.\nGain Facade of Mischief & Innocence."
   },
   "skill2": {
     "name": "Mask of Service & Admonition",
@@ -75,7 +75,7 @@ window.enCharacterSkillsData["J&C"] = {
     "element": "전격질풍",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Electric damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Wind damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each). Increase this effect by 1% for every 1 point of Desire Level. Also, decrease party's damage taken by 9.8%/10.8%/10.4%/11.4% and 9.8%/10.8%/10.4%/11.4% more for every 100 points of Desire Level for 3 turns. Also, restore party's HP by 34.7%/38.3%/36.9%/40.4% of Justine & Caroline's Attack + 2225/2934/2735/3480.\nGain Facade of Service & Admonition."
+    "description": "Deal Electric damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Wind damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every 1 point of Desire Level). Also, decrease party's damage taken by 9.8%/10.8%/10.4%/11.4%, plus 9.8%/10.8%/10.4%/11.4% × Desire Level points / 100 more for 3 turns. Also, restore party's HP by 34.7%/38.3%/36.9%/40.4% of Justine & Caroline's Attack + 2225/2934/2735/3480.\nGain Facade of Service & Admonition."
   },
   "skill3": {
     "name": "Mask of Absurdity & Nonsense",
@@ -83,7 +83,7 @@ window.enCharacterSkillsData["J&C"] = {
     "element": "염동핵열",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Psychokinesis damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Nuclear damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each). Increase this effect by 1% for every 1 point of Desire Level. Also, increase pierce rate for Justine & Caroline and the Assassin or Sweeper ally with the highest Attack by 4.9%/5.4%/5.2%/5.7% and 4.9%/5.4%/5.2%/5.7% more for every 100 points of Desire Level for 3 turns.\nGain Facade of Absurdity & Nonsense."
+    "description": "Deal Psychokinesis damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Nuclear damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every 1 point of Desire Level). Also, increase pierce rate for Justine & Caroline and the Sweeper or Assassin ally with the highest Attack by 4.9%/5.4%/5.2%/5.7%, plus 4.9%/5.4%/5.2%/5.7% x Desire Level points / 100 more for 3 turns.\nGain Facade of Absurdity & Nonsense."
   },
   "skill4": {
     "name": "Mask of Luck & Loss",
@@ -91,7 +91,7 @@ window.enCharacterSkillsData["J&C"] = {
     "element": "축복주원",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Bless damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Curse damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each). Increase this effect by 1% for every point of Desire Level.\nAlso, increase Justine & Caroline's Attack by 14.6%/16.1%/15.5%/17.0% + 14.6%/16.1%/15.5%/17.0% for every 100 points of Desire Level, damage dealt by 9.8%/10.8%/10.4%/11.4% + 9.8%/10.8%/10.4%/11.4% for every 100 points of Desire Level, and critical rate by 4.9%/5.4%/5.2%/5.7% + 4.9%/5.4%/5.2%/5.7% for every 100 points of Desire Level for 3 turns.\nGain Facade of Luck & Loss."
+    "description": "Deal Bless damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Curse damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every point of Desire Level).\nAlso, increase Justine & Caroline's Attack by 14.6%/16.1%/15.5%/17.0%, plus 14.6%/16.1%/15.5%/17.0% × Desire Level points / 100 more; damage dealt by 9.8%/10.8%/10.4%/11.4%, 9.8%/10.8%/10.4%/11.4% × Desire Level points / 100 more; and critical rate by 4.9%/5.4%/5.2%/5.7% 4.9%/5.4%/5.2%/5.7% × Desire Level points / 100 more for 3 turns.\nGain Facade of Luck & Loss."
   },
   "skill5":{
     "name": "Two Masks As One",
@@ -99,7 +99,7 @@ window.enCharacterSkillsData["J&C"] = {
     "element": "만능",
     "sp": 25,
     "cool": 1,
-    "description": "Usable when any 2 types of Facade have been gained. Deal Almighty damage to 1 foe equal to 126.9%/139.9%/134.7%/147.7% of Attack. Increase this effect by 1% for every 1 point of Desire Level. Also, spend all Facades, and based on the combination, activate the following effects:\n\nFacade of Mischief & Innocence + Facade of Service & Admonition: Restore party's HP equal to 52.2%/57.6%/55.4%/60.8% of Attack + 3344/4409/4111/5230. Also, increase party's damage dealt by 43.9%/48.4%/46.6%/51.1% for every 100 points of Desire Level for 2 turns.\n\nFacade of Mischief & Innocence + Facade of Absurdity & Nonsense: Grant other allies 14.6%/16.1%/15.5%/17.0% of Skill Amplification for 2 turns. Also, increase other allies' critical damage by 19.5%/21.5%/20.7%/22.7% for every 100 points of Desire Level.\nSkill Amplification: Increase the effects of skills and Thief Tactics that are increased when leveled up. This effect is calculated separately from other effects.\n\nFacade of Mischief & Innocence + Facade of Luck & Loss: Change this skill's target to all foes.\n\nFacade of Service & Admonition + Facade of Absurdity & Nonsense: Grant all allies a shield equal to 41.8%/46.1%/44.3%/48.6% of Justine & Caroline's Attack + 2675/3527/3289/4184, and 1 Down Point for 2 turns. Also, increase party's Defense by 48.8%/53.8%/51.8%/56.8% for every 100 points of Desire Level.\n\nFacade of Service & Admonition + Facade of Luck & Loss: Inflict Shocked, Windswept and 2 Curse stacks on the main target, and gain 2 Blessing stacks. These effects last for 2 turns. Also, decrease all foes' Defense by 25.4%/28.0%/26.9%/29.5% and 25.4%/28.0%/26.9%/29.5% more for every 100 points of Desire Level for 2 turns.\n\nFacade of Absurdity & Nonsense + Facade of Luck & Loss: This skill deals 1 more hit of Almighty damage. Also, gain Rebel Surveillance for 2 turns.\nRebel Surveillance: When using skills, temporarily grant 4.9%/5.4%/5.2%/5.7% of Effect Enhancement to the Assassin or Sweeper ally with the highest Attack (excluding Justine & Caroline)."
+    "description": "Usable when any 2 types of Facade have been gained. Deal Almighty damage to 1 foe equal to 126.9%/139.9%/134.7%/147.7% of Attack (increase this effect by 1% for every 1 point of Desire Level). Also, spend all Facades to activate the following effects based on their combination.\n\nFacade of Mischief & Innocence + Facade of Service & Admonition: Restore party's HP equal to 52.2%/57.6%/55.4%/60.8% of Attack + 3344/4409/4111/5230. Also, increase party's damage dealt by 43.9%/48.4%/46.6%/51.1% x Desire Level points / 100 for 2 turns.\n\nFacade of Mischief & Innocence + Facade of Absurdity & Nonsense: Grant other allies 14.6%/16.1%/15.5%/17.0% of Skill Amplification for 2 turns. Also, increase party's critical damage by 19.5%/21.5%/20.7%/22.7% x Desire Level points / 100.\nSkill Amplification: Increase the values of skills and Thief Tactics that are increased when leveled up. This effect is calculated separately from other effects.\n\nFacade of Mischief & Innocence + Facade of Luck & Loss: Change this skill's target to all foes.\n\nFacade of Service & Admonition + Facade of Absurdity & Nonsense: Grant all allies a shield equal to 41.8%/46.1%/44.3%/48.6% of Justine & Caroline's Attack + 2675/3527/3289/4184 and 1 Down Point for 2 turns. Also, increase party's Defense by 48.8%/53.8%/51.8%/56.8% x Desire Level points / 100.\n\nFacade of Service & Admonition + Facade of Luck & Loss: Inflict Shock, Windswept and 2 Curse stacks on the main target, and gain 2 Blessing stacks. These effects last for 2 turns. Also, decrease all foes' Defense by 25.4%/28.0%/26.9%/29.5% plus 25.4%/28.0%/26.9%/29.5% x Desire Level points / 100 for 2 turns.\n\nFacade of Absurdity & Nonsense + Facade of Luck & Loss: This skill deals 1 more hit of Almighty damage. Also, gain Rebel Surveillance for 2 turns.\nRebel Surveillance: When using a skill, temporarily gain 4.9%/5.4%/5.2%/5.7% of Effects stats from the Sweeper or Assassin ally with the highest Attack (excluding Justine & Caroline)."
   },
   "passive1": {
     "name": "Overseer of Rehabilitation",

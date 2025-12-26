@@ -1,5 +1,176 @@
 {
-  "data": null,
-  "msg": "Guild boss not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "affixs": [
+          {
+            "detail": "When allies are on an extra action, critical rate is increased by 20%, and critical damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Foes' damage taken is increased by 6% for each debuff they are inflicted with, up to 30%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Party's Curse damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Electric",
+              "Nuclear",
+              "Bless"
+            ],
+            "Weak": [
+              "Curse"
+            ]
+          },
+          "level": "78",
+          "name": "Dominion",
+          "skill": "905,902",
+          "sn": "730111",
+          "stat": {
+            "Accuracy": 1.0,
+            "Ailment Acc.": 0.39,
+            "Ailment Resist.": 0.196,
+            "Almighty Boost": 0,
+            "Almighty Damage Taken": 0,
+            "Attack": 2299.0167,
+            "Bless Boost": 0,
+            "Bless Damage Taken": 0,
+            "Crit Mult.": 1.3,
+            "Crit Rate": 0.0,
+            "Curse Boost": 0,
+            "Curse Damage Taken": 0,
+            "Damage Mult.": 1.037,
+            "Damage Taken": 0,
+            "Defense": 356.596,
+            "Down Points": 0,
+            "Electric Boost": 0,
+            "Electric Damage Taken": 0,
+            "Final Damage Mult.": 0,
+            "Fire Boost": 0,
+            "Fire Damage Taken": 0,
+            "Gun Boost": 0,
+            "Gun Damage Taken": 0,
+            "HP": 221264.7408,
+            "Ice Boost": 0,
+            "Ice Damage Taken": 0,
+            "Nuclear Boost": 0,
+            "Nuclear Damage Taken": 0,
+            "Phys Boost": 0,
+            "Phys Damage Taken": 0,
+            "Pierce Rate": 0,
+            "Psychokinesis Boost": 0,
+            "Psychokinesis Damage Taken": 0,
+            "SP": 100.0,
+            "SP Recovery": 0,
+            "Shield Effect": 0,
+            "Speed": 79.467,
+            "Wind Boost": 0,
+            "Wind Damage Taken": 0
+          }
+        }
+      },
+      {
+        "affixs": [
+          {
+            "detail": "When any ally receives healing, their final damage is increased by 8%. Lasts for 2 turns. Stacks up to 4 times.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Party's Bless damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Sweeper allies' damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Gun",
+              "Ice",
+              "Electric",
+              "Nuclear",
+              "Curse"
+            ],
+            "Weak": [
+              "Bless"
+            ]
+          },
+          "level": "78",
+          "name": "Nidhoggr",
+          "skill": "1021,905,1404,810",
+          "sn": "738111",
+          "stat": {
+            "Accuracy": 1.0,
+            "Ailment Acc.": 0.39,
+            "Ailment Resist.": 0.392,
+            "Almighty Boost": 0,
+            "Almighty Damage Taken": 0,
+            "Attack": 2299.0167,
+            "Bless Boost": 0,
+            "Bless Damage Taken": 0,
+            "Crit Mult.": 1.3,
+            "Crit Rate": 0.0,
+            "Curse Boost": 0,
+            "Curse Damage Taken": 0,
+            "Damage Mult.": 1.037,
+            "Damage Taken": 0,
+            "Defense": 652.061,
+            "Down Points": 0,
+            "Electric Boost": 0,
+            "Electric Damage Taken": 0,
+            "Final Damage Mult.": 0,
+            "Fire Boost": 0,
+            "Fire Damage Taken": 0,
+            "Gun Boost": 0,
+            "Gun Damage Taken": 0,
+            "HP": 209244.384,
+            "Ice Boost": 0,
+            "Ice Damage Taken": 0,
+            "Nuclear Boost": 0,
+            "Nuclear Damage Taken": 0,
+            "Phys Boost": 0,
+            "Phys Damage Taken": 0,
+            "Pierce Rate": 0,
+            "Psychokinesis Boost": 0,
+            "Psychokinesis Damage Taken": 0,
+            "SP": 100.0,
+            "SP Recovery": 0,
+            "Shield Effect": 0,
+            "Speed": 89.4,
+            "Wind Boost": 0,
+            "Wind Damage Taken": 0
+          }
+        }
+      }
+    ],
+    "endTime": "2026-01-01 09:30:00",
+    "mode": {
+      "detail": "Deal damage to make the boss Weakened and gain more points!",
+      "name": "Devourer of Dreams"
+    },
+    "startTime": "2025-12-25 07:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

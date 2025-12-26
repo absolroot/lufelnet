@@ -58,7 +58,7 @@ const criticalBuffData = {
     ],
 
     "J&C": [
-      { id: "jc1", type: "스킬2", target: "자신", target_en: "자신", target_jp: "自分", skillIcon: "/assets/img/skill-element/축복주원.png", skillName: "복과와 화근의 페르소나", skillName_en: "Skill 2", skillName_jp: "スキル2", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 19.6, "LV10+심상5": 21.6, "LV13": 20.8, "LV13+심상5": 22.8 }, defaultOption: "LV13+심상5", value: 22.8, duration: "3턴", note: "지배/굴복/반항", note_en: "Mask of Luck & Loss", note_jp: "福果と禍因の仮面" },
+      { id: "jc1", type: "스킬2", target: "자신", target_en: "자신", target_jp: "自分", skillIcon: "/assets/img/skill-element/축복주원.png", skillName: "복과와 화근의 페르소나", skillName_en: "Skill 2", skillName_jp: "スキル2", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 9.8, "LV10+심상5": 10.8, "LV13": 10.4, "LV13+심상5": 11.4 }, defaultOption: "LV13+심상5", value: 11.4, duration: "3턴", note: "지배/굴복/반항", note_en: "Mask of Luck & Loss", note_jp: "福果と禍因の仮面" },
       { id: "jc2", type: "패시브", target: "자신", target_en: "자신", target_jp: "自分", skillIcon: "/assets/img/skill-element/패시브.png", skillName: "모순", skillName_en: "", skillName_jp: "", options: [], value: 15.0, duration: "", note: "지배", note_en: "Sweeper", note_jp: "支配" }
     ],
 

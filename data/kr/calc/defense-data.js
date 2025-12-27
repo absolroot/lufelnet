@@ -773,7 +773,7 @@ const defenseCalcData = {
             skillName: "둘이 하나 되는 페르소나",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
             values: {
-                "LV10": 40.8,
+                "LV10": 50.8,
                 "LV10+심상5": 56.0,
                 "LV13": 57.8,
                 "LV13+심상5": 59.0,

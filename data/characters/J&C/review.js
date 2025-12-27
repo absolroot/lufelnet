@@ -1,9 +1,7 @@
 (function () {
     window.characterReview = window.characterReview || {};
     window.characterReview["J&C"] = { name_en: "", name_jp: "", codename: "",
-        review: `**페이지 업데이트 중**
-        
-페르소나5 시리즈 최초의 벨벳룸 플레이어블 캐릭터이자 최초의 전체 서버 동시 출시 캐릭터다.
+        review: `페르소나5 시리즈 최초의 벨벳룸 플레이어블 캐릭터이자 최초의 전체 서버 동시 출시 캐릭터다.
 
 전투 시작 전 4개의 페르소나 그룹 중 2개의 페르소나 그룹을 선택하여 **해명을 제외한 6가지 모든 포지션의 역할을 수행 가능**하다.
 
@@ -13,13 +11,9 @@
 
 기본값 25에 일정 스탯 조건만 만족(권장 육성 스탯 참조)시키면 100의 수치로 시작할 수 있고, 카드 세트 효과와 전용 무기, 그리고 의식6에서 추가로 획득이 가능하다.
 
-기본 공격력이 5성 중에서는 낮은 편에 속하기 때문에 주로 활용될 것으로 추측되는 우월 포지션의 경우, 자체 크리티컬 확률 확보가 없어 육성에 이를 고려해야 한다. 
-
-(캐릭터 출시 초기 시점으로 추천 및 육성 방향성이 변경될 수 있습니다.)
+기본 공격력이 5성 중에서는 낮은 편에 속하고, 자체 크리티컬 확률 확보가 반항/지배를 제외하면 없기 때문에 육성에 이를 고려해야 한다. 
 `,
-        review_en: `**Page under construction**
-
-The first playable Velvet Room character in the Persona5 series and the first character to be released simultaneously across all servers.
+        review_en: `The first playable Velvet Room character in the Persona5 series and the first character to be released simultaneously across all servers.
 
 Before battle, two Persona groups can be selected out of four, allowing them to perform **all six roles except Elucidator**.
 
@@ -29,13 +23,9 @@ Warden’s Duty is the core stat that determines the power of all Twin skills, a
 
 With a base value of 25, meeting certain stat requirements (see recommended build) allows them to start at 100. Additional Warden’s Duty can be obtained through card set effects, their signature weapon, and Awareness 6 (A6).
 
-Because their base ATK is relatively low compared to other 5★ characters, their most commonly expected role, Strategist, lacks innate Critical Rate, which must be considered during character building. 
-
-(As this is still in the early stages of release, related details are subject to change.)
+Because their base ATK is relatively low compared to other 5★ characters, their most commonly used role, Strategist, lacks innate Critical Rate, which must be considered during character building. 
 `,
-        review_jp: `**ページ作成中**
-
-ペルソナ5シリーズ初のプレイアブルなベルベットルーム所属キャラクターであり、全サーバー同時実装となった初のキャラクター。
+        review_jp: `ペルソナ5シリーズ初のプレイアブルなベルベットルーム所属キャラクターであり、全サーバー同時実装となった初のキャラクター。
 
 戦闘開始前に4つのペルソナグループの中から2つを選択でき、**解明を除く6つすべてのロールを担うことが可能。**
 
@@ -45,7 +35,7 @@ Because their base ATK is relatively low compared to other 5★ characters, thei
 
 基本値は25だが、一定のステータス条件（推奨育成ステータス参照）を満たすことで、戦闘開始時から100でスタート可能。さらにカードセット効果、専用武器、そして凸6で追加獲得ができる。
 
-5★の中では基礎攻撃力が低めな部類に入るため、主な運用が想定される優越ロールではクリティカル率を自前で確保できず、育成時に考慮が必要となる。（実装初期のため変更の可能性あり）
+5★の中では基礎攻撃力が低めな部類に入るため、主な運用が想定される戦略家ロールではクリティカル率を自前で確保できず、育成時に考慮が必要となる。
 `,
         pros: [
           "전투 시작 전 6가지 직업 중 하나를 자유롭게 선택할 수 있다.",

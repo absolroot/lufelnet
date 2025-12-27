@@ -56,8 +56,8 @@ const penetrateData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
             skillName: "집행",
-            skillName_en: "(ASIA only)",
-            skillName_jp: "(ASIA only)",
+            skillName_en: "Mindscape Core (ASIA only)",
+            skillName_jp: "イメジャリー・コア (ASIA only)",
             options: ["LV1","LV2"],
             values: {
                 "LV1": 5.0,
@@ -66,9 +66,9 @@ const penetrateData = {
             defaultOption: "LV2",
             value: 10.0,
             duration: "-",
-            note: "심상 코어 - 구원",
-            note_en: "Mindscape Core - Medic",
-            note_jp: "イメジャリー・コア - 救済"
+            note: "심상 코어 - 구원/방위",
+            note_en: "Medic/Defense",
+            note_jp: "救済/防御"
         }
     ],
     "마나카":[

@@ -31,7 +31,7 @@ window.WeaponData["리코"] = {
 window.enCharacterWeaponData["리코"] = {
   "name": "Riko Tanemura",
   "weapon4-1": {
-    "name": "Limpid Moonlight, Silver Needles",
+    "name": "Moonlight Needle",
     "health": 1838,
     "attack": 549,
     "defense": 320,
@@ -39,7 +39,7 @@ window.enCharacterWeaponData["리코"] = {
     "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When a [Insight] is broken, increase all allies' ATK permanently by 3.5%/4.6%/4.6%/5.7%/5.7%/6.8%/6.8%, up to 5 stacks."
   },
   "weapon4-2": {
-    "name": "Blossom View, Crimson Plum",
+    "name": "Red Plum Blossom",
     "health": 1981,
     "attack": 554,
     "defense": 334,
@@ -47,7 +47,7 @@ window.enCharacterWeaponData["리코"] = {
     "description": "SPD is increased by 4.6/4.6/5.9/5.9/7.2/7.2/8.5. When breaking a [Insight], grant all allies one of the effects: ATK is increased by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0%;DEF is increased by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0%; HP is increased by 7.0%/9.0%/9.0%/11.0%/11.0%/13.0%/13.0% for 2 turns. Additionally, there is a 5.0%/6.7%/6.7%/8.3%/8.3%/10.0%/10.0% fixed chance to gain 1 additional [Intel]."
   },
   "weapon5-1": {
-    "name": "Kunoichi: Sky's Edge, Blade’s Wings",
+    "name": "Kunoichi: Sky's Edge",
     "health": 2299,
     "attack": 687,
     "defense": 400,

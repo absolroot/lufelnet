@@ -63,7 +63,7 @@ Object.assign(window.characterData, {
         "tag_jp": "ウォンダー ペルソナ 強化, 공격력, 대미지 보너스, 크리티컬 효과, 관통, 방어력 감소, 치료, 실드, 감전, 풍습, 축복, 주원",
         "video": ["A5eX8ipPqtE", "nEtIbMs9wf8"],
         "video_en": ["Wulo8Bz00wA", "Oe6celXfnYQ", "DYgC5fleSaw"],
-        "video_jp": ["F3_7JnVGcgs","XZ7Mb_zUrk0","NoeIyxXOFts"],
+        "video_jp": ["F3_7JnVGcgs","XZ7Mb_zUrk0","NoeIyxXOFts","Jsd7kxEiHPw"],
         "persona5": true,
         "color": "#293bc5",
         "main_revelation": ["탄생","자유"],

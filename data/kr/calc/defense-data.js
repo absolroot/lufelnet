@@ -775,7 +775,7 @@ const defenseCalcData = {
             values: {
                 "LV10": 50.8,
                 "LV10+심상5": 56.0,
-                "LV13": 57.8,
+                "LV13": 53.8,
                 "LV13+심상5": 59.0,
             },
             defaultOption: "LV13+심상5",

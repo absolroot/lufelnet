@@ -54,7 +54,10 @@ _site/
 data/kr/wonder/*source*.html
 data/kr/wonder/persona_skills_en_source.json
 _index_backup.html
-
+*/dmg-calc/
+*/dmg-calc/*
+/assets/js/dmg-calc/
+/assets/js/dmg-calc/*
 # OS
 .DS_Store
 Thumbs.db 

@@ -288,28 +288,59 @@ button { cursor: pointer; border: none; transition: 0.5s; }
   .navigation-path, .header-container, .filter-content { padding-left: 10px; padding-right: 10px; }
 }
 
-/* 4성 황금색 테두리 */
-.character-img.star4, .star4 { border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; position: relative; z-index: 1; /* 그래디언트별 범위 설정 */  
-    background: linear-gradient(
-  -45deg, 
-  transparent 0%,
-  transparent 88%,
-  #d0b208 88%,
-  #d0b208 100%
-    ) padding-box, border-box; background-size: cover; background-repeat: no-repeat; }
+/* 4성 하단 노란색 라인 */
+.character-img.star4, .star4, 
+.position-cell .character-img.star4, 
+.position-cell img.star4 { 
+  border: 1px solid transparent; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  position: relative !important; 
+  z-index: 1; 
+}
+.star4::after, .character-img.star4::after,
+.position-cell .star4::after,
+.position-cell .character-img.star4::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(to right, #f2d231 0%, #f2d231 100%);
+}
 
-/* 5성 그래디언트 테두리 */
-.character-img.star5, .star5 { border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; position: relative; z-index: 1; background: linear-gradient(
-    -45deg,
-    transparent 0%,
-    transparent 88%,
-    #218FFF 88%,
-    #80E1F8 90%,
-    #7A1199 92%,
-    #DB2FF7 93%,
-    #96A0F9 94%,
+/* 5성 하단 그라데이션 라인 */
+.character-img.star5, .star5,
+.position-cell .character-img.star5,
+.position-cell img.star5 { 
+  border: 1px solid transparent; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  position: relative !important; 
+  z-index: 1; 
+}
+.star5::after, .character-img.star5::after,
+.position-cell .star5::after,
+.position-cell .character-img.star5::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    #218FFF 0%, 
+    #80E1F8 20%, 
+    #7A1199 40%, 
+    #DB2FF7 60%, 
+    #96A0F9 80%, 
     #7FDDF5 100%
-  ) padding-box, border-box; background-size: cover; background-repeat: no-repeat; }
+  );
+}
 
 /* 5성 이미지가 position: relative일 때 outline 효과 보정 */
 .star5 { outline: 2.5px solid transparent; outline-offset: -2.5px; }
@@ -357,9 +388,22 @@ button { cursor: pointer; border: none; transition: 0.5s; }
 }
 
 /* Wrapper for character images with ritual icons */
-.character-wrapper { position: relative; display: inline-block; }
+.character-wrapper { 
+  position: relative; 
+  display: inline-block; 
+  width: var(--card-size);
+  height: var(--card-size);
+  flex-shrink: 0;
+}
 
-.character-wrapper img:first-child { display: block; position: relative; z-index: 1; }
+.character-wrapper img:first-child { 
+  display: block; 
+  position: relative; 
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Ensure character images have relative positioning for ritual icon */
 .main-wrapper img { position: relative; }
@@ -386,7 +430,7 @@ button { cursor: pointer; border: none; transition: 0.5s; }
 .tier-criteria-text li:last-child { margin-bottom: 0; }
 
 /* Q&A Section */
-.tier-qa-section { width: min(1400px, 100%); margin: 20px auto; padding: 16px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; }
+.tier-qa-section { margin: 20px auto; padding: 16px; background: rgba(33,33,33); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; }
 
 .tier-qa-title { margin: 0 0 12px 0; color: rgba(255, 255, 255, 0.9); font-size: 16px; font-weight: 600; }
 
@@ -404,9 +448,9 @@ button { cursor: pointer; border: none; transition: 0.5s; }
 
 .tier-qa-item[open] summary::after { content: "-"; }
 
-.tier-qa-answer { margin-top: 8px; color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6; }
+.tier-qa-answer { margin-top: 12px; color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6; }
 
-.tier-qa-answer p { margin: 0 0 6px 0; }
+.tier-qa-answer p { margin: 0 0 6px 0; color: #aaa}
 
 .tier-qa-answer p:last-child { margin-bottom: 0; }
 

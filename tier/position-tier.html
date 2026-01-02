@@ -12,7 +12,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
 <script type="module" src="../position-tiers.js?v=${APP_VERSION}"></script>
-<script type="module" src="./position-tier-qa.js?v=${APP_VERSION}"></script>
+<script type="module" src="../position-tier-qa.js?v=${APP_VERSION}"></script>
 
 <!-- Main content -->
 <div class="main-wrapper">
@@ -531,6 +531,10 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         // 도움말 메시지 업데이트
         const helpMessage = document.getElementById('help-message');
         if (helpMessage) helpMessage.textContent = data.help_message;
+        const helpText = document.querySelector('.help-text');
+        if (helpText) {
+            helpText.style.display = isListMode ? 'none' : 'block';
+        }
 
         // 리추얼 모달 복사 버튼 라벨
         const ritualCopyBtn = document.querySelector('.ritual-copy-button');

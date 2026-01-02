@@ -875,7 +875,7 @@ const defenseCalcData = {
             type: "스킬1",
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
-            skillName: "열혈 회전베기",
+            skillName: "회전 칼날",
             options: [
                 "LV10",
                 "LV10+심상5",
@@ -890,7 +890,7 @@ const defenseCalcData = {
             },
             defaultOption: "LV13+심상5",
             value: 56.8,
-            duration: "2턴",
+            duration: "3턴",
             note: "스킬2와 중복 불가",
             note_en: "Skill 2 overlap not allowed",
             note_jp: "スキル2と重複不可"
@@ -900,7 +900,7 @@ const defenseCalcData = {
             type: "스킬2",
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/전격광역.png`,
-            skillName: "심판의 뇌격",
+            skillName: "선생님의 심판",
             options: [
                 "LV10",
                 "LV10+심상5",

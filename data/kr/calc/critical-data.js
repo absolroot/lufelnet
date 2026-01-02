@@ -198,7 +198,7 @@ const criticalBuffData = {
                 target: "자신",
                 skillIcon: "/assets/img/tier/세이지.webp",
                 skillName: "LV80", skillName_en:"Default LV80", skillName_jp:"LV80",
-                value: 18.0, duration: "-", note: ""
+                value: 13.0, duration: "-", note: ""
               }
     ]
   };

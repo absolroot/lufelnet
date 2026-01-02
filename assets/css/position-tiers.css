@@ -385,6 +385,31 @@ button { cursor: pointer; border: none; transition: 0.5s; }
 
 .tier-criteria-text li:last-child { margin-bottom: 0; }
 
+/* Q&A Section */
+.tier-qa-section { width: min(1400px, 100%); margin: 20px auto; padding: 16px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; }
+
+.tier-qa-title { margin: 0 0 12px 0; color: rgba(255, 255, 255, 0.9); font-size: 16px; font-weight: 600; }
+
+.tier-qa-list { display: grid; gap: 8px; }
+
+.tier-qa-item { padding: 8px 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; }
+
+.tier-qa-item[open] { background: rgba(255, 255, 255, 0.06); }
+
+.tier-qa-item summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; color: rgba(255, 255, 255, 0.9); font-size: 14px; }
+
+.tier-qa-item summary::-webkit-details-marker { display: none; }
+
+.tier-qa-item summary::after { content: "+"; color: rgba(255, 255, 255, 0.6); font-size: 14px; }
+
+.tier-qa-item[open] summary::after { content: "-"; }
+
+.tier-qa-answer { margin-top: 8px; color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6; }
+
+.tier-qa-answer p { margin: 0 0 6px 0; }
+
+.tier-qa-answer p:last-child { margin-bottom: 0; }
+
 /* Mobile responsiveness */
 @media (max-width: 1200px) { .tier-criteria-section { margin: 15px 8px; width: calc(100% - 16px); }
   
@@ -393,6 +418,14 @@ button { cursor: pointer; border: none; transition: 0.5s; }
   .tier-criteria-content { padding: 12px; }
   
   .tier-criteria-text { font-size: 12px; }
+
+  .tier-qa-section { margin: 15px 8px; width: calc(100% - 16px); padding: 12px; }
+
+  .tier-qa-title { font-size: 14px; }
+
+  .tier-qa-item summary { font-size: 13px; }
+
+  .tier-qa-answer { font-size: 12px; }
 
   .tier-source-toggle{ margin: 0 8px; }
 }

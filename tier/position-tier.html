@@ -12,6 +12,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
 <script type="module" src="../position-tiers.js?v=${APP_VERSION}"></script>
+<script type="module" src="./position-tier-qa.js?v=${APP_VERSION}"></script>
 
 <!-- Main content -->
 <div class="main-wrapper">
@@ -206,12 +207,12 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             </p>
         </div>
         <div class="tier-criteria-toggle">
-            <button id="tier-criteria-btn" class="tier-criteria-button">
+            <button id="tier-criteria-btn" class="tier-criteria-button" aria-expanded="true">
                 <span id="tier-criteria-title">티어 기준</span>
-                <span class="tier-criteria-arrow">▼</span>
+                <span class="tier-criteria-arrow" aria-hidden="true"><i class="bi bi-chevron-up"></i></span>
             </button>
         </div>
-        <div id="tier-criteria-content" class="tier-criteria-content" style="display: none;">
+        <div id="tier-criteria-content" class="tier-criteria-content" style="display: block;">
             <!-- Korean -->
             <div class="tier-criteria-text kr-text">
                 <ul>
@@ -224,9 +225,9 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             <div class="tier-criteria-text en-text" style="display: none;">
                 <ul>
                     <li>Assumes LV80, all skill levels, and all values are basically set except for Awareness.</li>
-                    <li>Written with competitive content in mind, tiers may continuously change with version updates.
-                    </li>
+                    <li>Written with competitive content in mind, tiers may continuously change with version updates.</li>
                     <li>Global servers may differ from KR tiers because characters are buffed.</li>
+                    <li>When some characters are labeled only as A1, it indicates that their operating mechanism or value changes significantly starting from A1, gaining versatility.</li>
                     <li>J&C was created based solely on A1. J&C KR Tier is a tier with Mindscape Core(V4.7) effect applied in Korea servers.</li>
                 </ul>
             </div>
@@ -275,6 +276,12 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         </label>
     </div>
     <div class="cards container">
+    </div>
+
+    <!-- Q&A (tier list mode only) -->
+    <div id="tier-qa-section" class="tier-qa-section" style="display: none;">
+        <h2 id="tier-qa-title" class="tier-qa-title">Q&A</h2>
+        <div id="tier-qa-list" class="tier-qa-list"></div>
     </div>
 
     <!-- Help Text -->
@@ -569,6 +576,10 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
         // 태그 필터 번역
         await updateTagFilterTranslations(currentLang);
+
+        if (typeof window.renderTierQa === 'function') {
+            window.renderTierQa();
+        }
     }
 
     // 티어 기준 언어 업데이트 함수
@@ -607,19 +618,23 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     function initTierCriteriaToggle() {
         const tierCriteriaBtn = document.getElementById('tier-criteria-btn');
         const tierCriteriaContent = document.getElementById('tier-criteria-content');
-        const tierCriteriaArrow = document.querySelector('.tier-criteria-arrow');
+        const tierCriteriaArrowIcon = document.querySelector('.tier-criteria-arrow i');
 
         if (tierCriteriaBtn && tierCriteriaContent) {
+            const setTierCriteriaState = (isOpen) => {
+                tierCriteriaContent.style.display = isOpen ? 'block' : 'none';
+                if (tierCriteriaArrowIcon) {
+                    tierCriteriaArrowIcon.classList.toggle('bi-chevron-up', isOpen);
+                    tierCriteriaArrowIcon.classList.toggle('bi-chevron-down', !isOpen);
+                }
+                tierCriteriaBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            };
+
+            setTierCriteriaState(tierCriteriaContent.style.display !== 'none');
+
             tierCriteriaBtn.addEventListener('click', function () {
                 const isVisible = tierCriteriaContent.style.display !== 'none';
-
-                if (isVisible) {
-                    tierCriteriaContent.style.display = 'none';
-                    if (tierCriteriaArrow) tierCriteriaArrow.textContent = '▼';
-                } else {
-                    tierCriteriaContent.style.display = 'block';
-                    if (tierCriteriaArrow) tierCriteriaArrow.textContent = '▲';
-                }
+                setTierCriteriaState(!isVisible);
             });
         }
     }

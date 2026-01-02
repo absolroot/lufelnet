@@ -11,11 +11,11 @@
 `,
         review_en: `A healer who provides **automatic AoE healing** when allies drop below 70% HP by consuming stacks.
 
-Because her healing can critically strike, her base healing amount is not very high, making **Critical Rate an important stat to raise**.
+Because his healing can critically strike, his base healing amount is not very high, making **Critical Rate an important stat to raise**.
 
 Skill 3 is a Physical attribute skill and can reduce DOWN value when it critically hits.
 
-Aside from the period immediately after her release, her usability dropped sharply as superior healers—such as MARIAN—were introduced soon after.
+Aside from the period immediately after his release, his usability dropped sharply as superior healers—such as MARIAN—were introduced soon after.
 `,
         review_jp: `味方のHPが70％未満になった時、スタックを消費して**自動で全体回復**を行うヒーラー。
 

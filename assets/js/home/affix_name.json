@@ -90,5 +90,9 @@
     {
         "description": "Shielded allies deal 20% increased damage.",
         "name": "Shield +"
+    },
+    {
+        "description": "All allies' final damage is increased based on their ailment accuracy. Final damage is increased by a maximum of 15% at 150% ailment accuracy.",
+        "name": "Ailment Accuracy +"
     }
 ]

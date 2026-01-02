@@ -1,22 +1,20 @@
 window.recommendParty = window.recommendParty || {};
 window.recommendParty["J&C"] = {
     "weapon": [
-        ""
+        "플라스마 섬멸자"
     ],
     "persona": [
         {
             "type": "ATK",
             "list": [
-                "",
-                "",
-                ""
+                "도미니온",
+                "마카브르"
             ]
         },
         {
             "type": "CRITICAL",
             "list": [
-                "",
-                ""
+                "디오니소스"
             ]
         }
     ],

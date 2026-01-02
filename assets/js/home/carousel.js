@@ -121,7 +121,7 @@
     try { data = (typeof characterData !== 'undefined') ? characterData : (window.characterData || {}); } catch (_) { data = window.characterData || {}; }
     Object.keys(data || {}).forEach(topKey => {
       const item = data[topKey] || {};
-      const aliases = [topKey, item.name, item.name_en, item.name_jp, item.name_cn];
+      const aliases = [topKey, item.name, item.name_en, item.name_jp, item.name_cn, item.name_tw];
       aliases.forEach(alias => {
         if (!alias) return;
         index.set(normalizeName(alias), topKey);
@@ -151,7 +151,7 @@
       if (lang === 'en') return item.name_en || item.name || topKey;
       if (lang === 'jp') return item.name_jp || item.name || topKey;
       // default kr
-      return item.name || item.name_en || item.name_jp || item.name_cn || topKey;
+      return item.name || item.name_en || item.name_jp || item.name_cn || item.name_tw || topKey;
     } catch (_) {
       return topKey;
     }
@@ -521,6 +521,10 @@
       @media (max-width: 768px) { .slide-right { flex-basis: 42%; min-width: 160px; } .slide-left { padding: 16px; } .slide-fivestar { font-size: 0.8rem; } .slide-time { font-size: 0.75rem; } .slide-countdown { font-size: 0.8rem; } .slide-name { font-size: 1.4rem !important; } }
       .char-img { position: absolute; top: 50%; right: 4%; height: auto; width: auto; max-height: 100%; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6)); transform: translateY(-50%); transition: transform 300ms ease, opacity 300ms ease; }
       .char-img.back { opacity: 0.85; transform: translateY(-50%) scale(1.02); z-index: 1; }
+      /* 특정 이미지 예외처리 */
+      .char-img.back[src*="YUI"] { right: -6% !important; }
+      .char-img.front[src*="렌"], .char-img.front[alt*="Ren"], .char-img.middle[src*="렌"], .char-img.middle[alt*="Ren"] { right: 20% !important; }
+
       .char-img.front { z-index: 3; transform: translateY(-40%) scale(1.16); }
       .char-img.middle { z-index: 2; transform: translateX(-8%) translateY(-50%) scale(1.08) }
       .carousel-nav { position: absolute; top: 50%; transform: translateY(-100%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
@@ -1067,11 +1071,29 @@
       }).filter(x => x.startUTC && x.endUTC);
 
       // Order by most recent start time first; keep original order when equal
+      // Multiple-character banners always go after single-character banners
       slides.sort((a, b) => {
+        // Compare start times (newer first)
         const ta = a.startUTC.getTime();
         const tb = b.startUTC.getTime();
-        if (tb !== ta) return tb - ta; // newer first
-        return a.__origIndex - b.__origIndex; // stable for equal times
+        if (tb !== ta) return tb - ta;
+        
+        // Compare end times (later end time first)
+        const ea = a.endUTC ? a.endUTC.getTime() : 0;
+        const eb = b.endUTC ? b.endUTC.getTime() : 0;
+        if (eb !== ea) return eb - ea;
+        
+        // All times equal: compare character counts (single comes first)
+        const aCount = Array.isArray(a.fiveStar) ? a.fiveStar.length : 0;
+        const bCount = Array.isArray(b.fiveStar) ? b.fiveStar.length : 0;
+        const aIsMultiple = aCount > 1;
+        const bIsMultiple = bCount > 1;
+        
+        if (aIsMultiple && !bIsMultiple) return 1; // a (multiple) goes after b (single)
+        if (!aIsMultiple && bIsMultiple) return -1; // b (multiple) goes after a (single)
+        
+        // All equal: keep original order
+        return a.__origIndex - b.__origIndex;
       });
 
       // Merge custom slides by order

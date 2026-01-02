@@ -62,6 +62,92 @@ h2{
     margin-top: 0px;
 }
 
+.sum-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16.6px;
+}
+
+.sum-header h2 {
+    margin: 0;
+}
+
+.receipt-target-toggle {
+    display: inline-flex;
+    align-items: center;
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.receipt-target-toggle .toggle-label {
+    display: inline-block;
+    padding: 0 8px;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.receipt-target-toggle .toggle-label-left {
+    order: 0;
+}
+
+.receipt-target-toggle .toggle-label-right {
+    order: 2;
+}
+
+.receipt-target-toggle.is-aoe .toggle-label-left {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.receipt-target-toggle.is-aoe .toggle-label-right {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.receipt-target-toggle:not(.is-aoe) .toggle-label-right {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.receipt-target-toggle:not(.is-aoe) .toggle-label-left {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.receipt-target-toggle .toggle-track {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    order: 1;
+}
+
+.receipt-target-toggle .toggle-track::after {
+    content: "";
+}
+
+.receipt-target-toggle .toggle-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(20px);
+    transition: transform 0.2s ease;
+    z-index: 1;
+}
+
+.receipt-target-toggle.is-aoe .toggle-knob {
+    transform: translateX(0);
+}
+
 
 .form-grid {
     display: grid;
@@ -408,8 +494,8 @@ h2{
 }
 
 .meta-icon {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     object-fit: contain;
 }
 
@@ -584,7 +670,7 @@ h2{
     height: 18px;
     border-radius: 4px;
     object-fit: cover;
-    margin-right: 6px;
+    margin-right: 0px;
     vertical-align: middle;
 }
 

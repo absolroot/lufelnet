@@ -8,7 +8,8 @@ window.recommendParty["J&C"] = {
             "type": "ATK",
             "list": [
                 "도미니온",
-                "마카브르"
+                "마카브르",
+                "황룡"
             ]
         },
         {

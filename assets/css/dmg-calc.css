@@ -7,7 +7,7 @@
 .sheet-status {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     font-size: 13px;
     opacity: 0.9;
 }
@@ -72,6 +72,10 @@ h2{
 
 .sum-header h2 {
     margin: 0;
+}
+
+.slot-empty {
+    font-size: 13px;
 }
 
 .receipt-target-toggle {
@@ -405,14 +409,11 @@ h2{
 .roster-slots {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(5, minmax(120px, 1fr));
-}
-
-.roster-slots.has-extra {
     grid-template-columns: repeat(6, minmax(120px, 1fr));
 }
 
-.slot-card {
+.slot-card,
+.dealer-card {
     border: 1px dashed rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     padding: 10px 12px;
@@ -429,6 +430,17 @@ h2{
     background: rgba(255, 0, 0, 0.08);
 }
 
+.slot-card.slot-allowed {
+    border-color: rgba(120, 220, 150, 0.6);
+    background: rgba(80, 200, 120, 0.08);
+}
+
+.slot-card.slot-inactive {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 0.5;
+}
+
 .slot-header {
     display: flex;
     justify-content: space-between;
@@ -436,11 +448,37 @@ h2{
     font-size: 13px;
 }
 
+.slot-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .slot-actions button {
     border: none;
     background: transparent;
-    color: #ff8c8c;
     cursor: pointer;
+}
+
+.slot-action-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0;
+}
+
+.slot-action-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+.slot-action-icon:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
 }
 
 .preset-select {
@@ -451,6 +489,88 @@ h2{
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
+}
+
+.revelation-selects {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.revelation-selects.disabled {
+    opacity: 0.5;
+}
+
+.revelation-select {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.revelation-dropdown {
+    position: relative;
+}
+
+.revelation-button {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.revelation-button:disabled {
+    cursor: not-allowed;
+}
+
+.revelation-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    background: #1b1b1b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 6px;
+    z-index: 20;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.revelation-dropdown.open .revelation-menu {
+    display: grid;
+    gap: 4px;
+}
+
+.revelation-option {
+    border: none;
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.revelation-option:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.revelation-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
 }
 
 .slot-body {
@@ -750,6 +870,102 @@ h2{
     font-size: 11px;
     color: rgba(255, 255, 255, 0.6);
 }
+
+.elucidator-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.elucidator-modal[hidden] {
+    display: none;
+}
+
+.elucidator-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.elucidator-modal-dialog {
+    position: relative;
+    width: min(900px, 92vw);
+    max-height: 92vh;
+    overflow: auto;
+    background: var(--card-background);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 16px 20px 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.elucidator-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.elucidator-modal-header h2 {
+    margin: 0;
+}
+
+.elucidator-modal-close {
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elucidator-modal-close svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.elucidator-modal .elucidator-card {
+    border-bottom: none;
+    padding: 0;
+}
+
+.elucidator-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.elucidator-modal-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.elucidator-modal-btn.primary {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
 .buff-compare-memo {
     color: rgba(255, 255, 255, 0.65);
 }

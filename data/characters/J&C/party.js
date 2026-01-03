@@ -1,7 +1,7 @@
 window.recommendParty = window.recommendParty || {};
 window.recommendParty["J&C"] = {
     "weapon": [
-        "플라스마 섬멸자"
+        "플라스마 섬멸자", "메커니컬 심판자"
     ],
     "persona": [
         {

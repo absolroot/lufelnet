@@ -784,7 +784,7 @@ Object.assign(window.characterData, {
             "LV10": false,
             "LV10+5": false,
             "LV12": "공격력 4591, 효과 명중 100%",
-            "LV12+5": "공격력 , 효과 명중 100%",
+            "LV12+5": "공격력 4868, 효과 명중 100%",
             "LV13": false,
             "LV13+5": false,
         },

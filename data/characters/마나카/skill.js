@@ -66,7 +66,7 @@ window.enCharacterSkillsData["마나카"] = {
   "skill_highlight": {
     "name": "Stat Buff",
     "element": "패시브",
-    "description": "Increase party's stats by 15% of Manaka's stats."
+    "description": "Increase party's stats by 20% of Manaka's stats."
   },
   "passive1": {
     "name": "Grace",

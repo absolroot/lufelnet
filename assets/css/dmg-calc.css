@@ -329,6 +329,12 @@ h2{
     opacity: 0.85;
 }
 
+.receipt-value-suffix {
+    margin-left: 4px;
+    font-size: 11px;
+    opacity: 0.55;
+}
+
 .damage-output {
     display: grid;
     gap: 12px;

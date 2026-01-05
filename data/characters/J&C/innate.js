@@ -36,7 +36,7 @@ window.innateData["J&C"] = {
             "type": "패시브",
             "name_cn": "刑务",
             "desc_cn": "自身『面具强度』提升50点。",
-            "name": "형벌",
+            "name": "형무",
             "desc": "자신의 『페르소나 성능』이 50 증가한다.",
             "name_en": "Incarceration",
             "desc_en": "Increases own Desire Level by 50.",

@@ -424,7 +424,7 @@ const jpCharacterWeaponData = {
         }
     },
     "몽타뉴·백조": { 
-        "name": "琴音 モンターニュ・スワン",
+        "name": "琴音・アイスストーム",
         "weapon4-1": {
             "name": "北風の淑女",
             "health": 1838,

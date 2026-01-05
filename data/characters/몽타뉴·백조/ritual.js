@@ -19,8 +19,8 @@ window.ritualData["몽타뉴·백조"] = {
   "r6_detail": "『봄 형태』: 『봄의 결계』 종료 시 추가 효과가 발동하면, 『봄의 결계』는 1턴 동안 추가 지속되며 『아침 이슬 결정』 2개를 반환하고 상한을 돌파할 수 있는 특수 『아침 이슬 결정』을 2개 획득한다. 이후 추가 효과를 다시 발동할 수 있다. 『봄의 결계』 종료 시 『아침 이슬 결정』 1개당 관통이 4% 증가하는 추가 효과를 획득한다(최대 20% 증가).\n『겨울밤 형태』: 『겨울밤의 결계』 종료 시 추가 효과가 발동하면, 『겨울밤의 결계』는 1턴 동안 추가 지속되며 『겨울 서리 결정』 2개를 반환하고 상한을 돌파할 수 있는 특수 『겨울 서리 결정』을 2개 획득한다. 이후 추가 효과를 다시 발동할 수 있다. 『겨울밤의 결계』 종료 시 『겨울 서리 결정』 1개당 관통이 4% 증가하는 추가 효과를 획득한다(최대 20% 증가)."
 };
 window.enCharacterRitualData["몽타뉴·백조"] = {
-  "name": "Montagne Kotone·Swan",
-  "r0": "Spring Pond and the Idle Swan",
+  "name": "Kotone·Frostgale",
+  "r0": "Spring Pond and the Idle Frostgale",
   "r0_detail": "Mont - Figure Skater has two Forms: [Mid-Spring Form] and [Winter Night Form]. You can freely change Form when [Mid-Spring Domain]/[Winter Night Domain] is not opened. Gain the respective skills when changing Form. At the start of battle, start in [Mid-Spring Form], but if there are more Ice Thieves than Wind Thieves, start in [Winter Night Form].",
   "r1": "Elegy of Water",
   "r1_detail": "Gain 1 [Morning Dew Crystal]/[Frost Crystal] every time you open [Mid-Spring Domain]/[Winter Night Domain]. Increase Follow Up DMG by 8% for every [Morning Dew Crystal]/[Frost Crystal] when [Mid-Spring Domain]/[Winter Night Domain] ends (Up to 40%)",
@@ -36,7 +36,7 @@ window.enCharacterRitualData["몽타뉴·백조"] = {
   "r6_detail": "[Mid-Spring Form]: After triggering the Follow Up when [Mid-Spring Domain] ends, extend [Mid-Spring Domain] by 1 turn and refund 2 [Morning Dew Crystal] that can exceed the cap, and Kotone can trigger the Follow Up again. When [Mid-Spring Domain] ends, for every [Morning Dew Crystal], increase the PEN of Follow Ups by 4% (Up to 20%). [Winter Night Form]: After triggering the Follow Up when [Winter Night Domain] ends, extend [Winter Night Domain] by 1 turn and refund 2 [Frost Crystal] that can exceed the cap, and Kotone can trigger the Follow Up again. When [Winter Night Domain] ends, for every [Frost Crystal], increase the PEN of Follow Ups by 4% (Up to 20%)."
 };
 window.jpCharacterRitualData["몽타뉴·백조"] = {
-  "name": "琴音 モンターニュ・スワン",
+  "name": "琴音・アイスストーム",
   "r0": "春の池と退屈な白鳥",
   "r0_detail": "琴音モンターニュ・スワンは2つの形態を持つ：『春の形態』と『冬夜の形態』。戦闘中、『春の結界』／『冬夜の結界』を使用する前であれば自由に形態を切り替えられる。形態を切り替えると、琴音モンターニュ・スワンは対応する属性スキルセットを獲得する。戦闘開始時、基本は『春の形態』だが、チームに氷結属性が疾風属性より多い場合、基本は『冬夜の形態』となる。",
   "r1": "池に響く哀歌",

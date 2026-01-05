@@ -22,7 +22,7 @@ window.WeaponData["몽타뉴·백조"] = {
   }
 };
 window.enCharacterWeaponData["몽타뉴·백조"] = {
-  "name": "Montagne Kotone·Swan",
+  "name": "Kotone·Frostgale",
   "weapon4-1": {
     "name": "Fille de Borée",
     "health": 1838,
@@ -41,7 +41,7 @@ window.enCharacterWeaponData["몽타뉴·백조"] = {
   }
 };
 window.jpCharacterWeaponData["몽타뉴·백조"] = {
-  "name": "琴音 モンターニュ・スワン",
+  "name": "琴音・アイスストーム",
   "weapon4-1": {
     "name": "北風の淑女",
     "health": 1838,

@@ -960,7 +960,7 @@ const enCharacterSkillsData = {
     },
 
     "몽타뉴·백조": {
-        "name": "Montagne Kotone·Swan",
+        "name": "Kotone·Frostgale",
         "skill1": {
             "name": "Storm Prelude/Piercing Chill",
             "element": "질풍빙결",

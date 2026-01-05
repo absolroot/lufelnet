@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["몽타뉴·백조"] = { name_en: "Montagne Kotone·Swan", name_jp: "琴音 モンターニュ・スワン", codename: "MONT·Swan",
+    window.characterReview["몽타뉴·백조"] = { name_en: "Kotone·Frostgale", name_jp: "琴音・アイスストーム", codename: "MONT·Frostgale",
         review: `**최초의 듀얼 속성** 괴도 아이돌로 질풍/빙결 속성의 단일 딜러다. 듀얼 속성이지만 **실질적으로 활용되는 것은 질풍** 단일 속성이다. 
 
 3스킬로 필드를 전개하고, **아군의 동일 속성 공격을 통해 스택을 쌓고 다음 턴에 자신의 공격과 함께 스택을 터뜨려 강력한 딜을 넣는 메커니즘**이다.

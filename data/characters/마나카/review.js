@@ -56,9 +56,9 @@ When Manaka has **Awakening 1 or higher**, she can use Skill 3 on turn 1 and Ski
             "解明怪盗としてステータスをサポートできる。"
           ]
           ,
-        cons: ["-"],
-        cons_en: ["-"],
-        cons_jp: ["-"],
+        cons: ["목소리가 상당히 크다."],
+        cons_en: ["The voice is quite loud."],
+        cons_jp: ["声がかなり大きい。"],
     };
 })();
 

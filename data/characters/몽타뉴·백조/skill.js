@@ -44,7 +44,7 @@ window.characterSkillsData["몽타뉴·백조"] = {
   }
 };
 window.enCharacterSkillsData["몽타뉴·백조"] = {
-  "name": "Kotone·Frostgale",
+  "name": "Frostgale Kotone",
   "skill1": {
     "name": "Storm Prelude/Piercing Chill",
     "element": "질풍빙결",

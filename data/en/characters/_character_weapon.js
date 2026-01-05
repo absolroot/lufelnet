@@ -434,7 +434,7 @@ const enCharacterWeaponData = {
         }
     },
     "몽타뉴·백조": {
-        "name": "Montagne Kotone·Frostgale",
+        "name": "Montagne Frostgale Kotone",
         "weapon4-1": {
             "name": "Fille de Borée",
             "health": 1838,

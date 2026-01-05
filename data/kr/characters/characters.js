@@ -1784,7 +1784,7 @@ Object.assign(window.characterData, {
         "persona_en": "Terpsichore",
         "persona_jp": "テルプシコレー",
         "name": "코토네 몽타뉴·백조",
-        "name_en": "Kotone·Frostgale",
+        "name_en": "Frostgale Kotone",
         "name_jp": "琴音・アイスストーム",
         "name_cn": "琴音 蒙塔涅·漫舞",
         "codename": "MONT·Frostgale",

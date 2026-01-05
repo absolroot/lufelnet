@@ -19,7 +19,7 @@ window.ritualData["몽타뉴·백조"] = {
   "r6_detail": "『봄 형태』: 『봄의 결계』 종료 시 추가 효과가 발동하면, 『봄의 결계』는 1턴 동안 추가 지속되며 『아침 이슬 결정』 2개를 반환하고 상한을 돌파할 수 있는 특수 『아침 이슬 결정』을 2개 획득한다. 이후 추가 효과를 다시 발동할 수 있다. 『봄의 결계』 종료 시 『아침 이슬 결정』 1개당 관통이 4% 증가하는 추가 효과를 획득한다(최대 20% 증가).\n『겨울밤 형태』: 『겨울밤의 결계』 종료 시 추가 효과가 발동하면, 『겨울밤의 결계』는 1턴 동안 추가 지속되며 『겨울 서리 결정』 2개를 반환하고 상한을 돌파할 수 있는 특수 『겨울 서리 결정』을 2개 획득한다. 이후 추가 효과를 다시 발동할 수 있다. 『겨울밤의 결계』 종료 시 『겨울 서리 결정』 1개당 관통이 4% 증가하는 추가 효과를 획득한다(최대 20% 증가)."
 };
 window.enCharacterRitualData["몽타뉴·백조"] = {
-  "name": "Kotone·Frostgale",
+  "name": "Frostgale Kotone",
   "r0": "Spring Pond and the Idle Frostgale",
   "r0_detail": "Mont - Figure Skater has two Forms: [Mid-Spring Form] and [Winter Night Form]. You can freely change Form when [Mid-Spring Domain]/[Winter Night Domain] is not opened. Gain the respective skills when changing Form. At the start of battle, start in [Mid-Spring Form], but if there are more Ice Thieves than Wind Thieves, start in [Winter Night Form].",
   "r1": "Elegy of Water",

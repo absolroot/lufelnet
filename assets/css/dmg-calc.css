@@ -36,6 +36,17 @@
         "options damage sum";
 }
 
+.top-cards.top-grid.receipt-expanded {
+    grid-template-areas:
+        "sum sum sum"
+        "base manual options"
+        "damage . .";
+}
+
+.top-cards.top-grid.receipt-expanded .grid-sum {
+    grid-row: span 1;
+}
+
 .span-rows {
     grid-row: span 2;
 }
@@ -70,12 +81,37 @@ h2{
     margin-bottom: 16.6px;
 }
 
+.receipt-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.receipt-expand-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.receipt-expand-btn svg {
+    display: block;
+}
+
 .sum-header h2 {
     margin: 0;
 }
 
 .slot-empty {
-    font-size: 13px;
+    font-size: 12px;
+    color: #ddd;
 }
 
 .receipt-target-toggle {
@@ -235,8 +271,16 @@ h2{
 }
 
 .sum-receipt {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grid-sum.receipt-expanded .sum-receipt {
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    align-items: start;
 }
 
 .receipt-item {
@@ -268,6 +312,19 @@ h2{
     color: #fff;
 }
 
+.receipt-character-toggle {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    color: #fff;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
 .receipt-value {
     color: #ffd166;
     font-weight: 600;
@@ -293,12 +350,12 @@ h2{
 }
 
 .receipt-primary {
-    font-weight: 600;
-    color: #fff;
+    font-weight: 400;
+    color: #ffa0a0;
 }
 
 .receipt-subtitle {
-    padding-left: 16px;
+    padding-left: 0px;
     font-weight: 600;
 }
 
@@ -319,7 +376,37 @@ h2{
 }
 
 .receipt-row.indent {
-    padding-left: 16px;
+    padding-left: 16px !important;
+}
+
+.receipt-row.indent:not(.receipt-row-summary) .receipt-label,
+.receipt-row.indent:not(.receipt-row-summary) .receipt-value {
+    opacity: 0.7;
+}
+
+.receipt-row.receipt-row-summary {
+    padding: 6px 0;
+    margin-bottom: 2px;
+    padding-left: 16px !important;
+    position: relative;
+    opacity: 0.9;
+}
+
+.receipt-row.receipt-row-summary .receipt-value {
+    font-weight: 400;
+}
+
+.receipt-row.receipt-row-summary::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.receipt-character-icon {
+    flex-shrink: 0;
 }
 
 .receipt-label {
@@ -361,6 +448,47 @@ h2{
 .damage-row strong {
     font-size: 22px;
     color: #ff6b6b;
+}
+
+.damage-row.damage-range {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.damage-range-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.damage-range-label {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.damage-range .damage-value {
+    justify-content: flex-end;
+}
+
+.damage-value-small {
+    font-size: 14px;
+}
+
+.damage-value-small strong {
+    font-size: 16px;
+    color: #ff6b6b;
+}
+
+.damage-row.damage-target {
+    font-size: 15px;
+}
+
+.damage-row.damage-target strong {
+    font-size: 20px;
+    color: #4ecdc4;
 }
 
 .damage-row.damage-sub {
@@ -418,6 +546,10 @@ h2{
     grid-template-columns: repeat(6, minmax(120px, 1fr));
 }
 
+.roster-slots.backup-hidden {
+    grid-template-columns: repeat(5, minmax(120px, 1fr));
+}
+
 .slot-card,
 .dealer-card {
     border: 1px dashed rgba(255, 255, 255, 0.2);
@@ -426,7 +558,8 @@ h2{
     background: rgba(0, 0, 0, 0.2);
 }
 
-.slot-card.active {
+.slot-card.active,
+.dealer-card.active {
     border-style: solid;
     background: rgba(255, 255, 255, 0.08);
 }
@@ -462,8 +595,42 @@ h2{
 
 .slot-actions button {
     border: none;
-    background: transparent;
+    background: none;
+    background-color: transparent;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.dealer-select-wrap,
+.dealer-select {
+    width: 100%;
+}
+
+.dealer-select-wrap {
+    margin-top: 6px;
+}
+
+.dealer-select .revelation-button {
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 34px;
+}
+
+.dealer-select .dealer-chevron {
+    margin-left: auto;
+    opacity: 0.65;
+    display: inline-flex;
+}
+
+.dealer-select .dealer-chevron svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .slot-action-icon {
@@ -561,7 +728,7 @@ h2{
     background: rgba(255, 255, 255, 0.04);
     color: #fff;
     border-radius: 6px;
-    padding: 6px 8px;
+    padding: 6px 2px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -950,6 +1117,134 @@ h2{
     padding: 0;
 }
 
+.dealer-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.dealer-modal[hidden] {
+    display: none;
+}
+
+.dealer-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.dealer-modal-dialog {
+    position: relative;
+    width: min(720px, 92vw);
+    max-height: 92vh;
+    overflow: auto;
+    background: var(--card-background);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 16px 20px 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.dealer-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.dealer-modal-header h2 {
+    margin: 0;
+}
+
+.dealer-modal-close {
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dealer-modal-close::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: currentColor;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.3 5.71 12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71 4.29 4.29l6.3 6.3 6.3-6.3z'/></svg>") center / contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.3 5.71 12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71 4.29 4.29l6.3 6.3 6.3-6.3z'/></svg>") center / contain no-repeat;
+}
+
+.dealer-modal-card {
+    border-bottom: none;
+    padding: 0;
+}
+
+.dealer-modal-section {
+    margin-bottom: 16px;
+}
+
+.dealer-modal-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    color: #ffcb00;
+}
+
+.dealer-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 8px 12px;
+    align-items: center;
+}
+
+.dealer-modal-grid label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.dealer-modal-grid input {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.dealer-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dealer-modal-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.dealer-modal-btn.primary {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
 .elucidator-modal-actions {
     display: flex;
     justify-content: flex-end;
@@ -1009,5 +1304,246 @@ h2{
     }
     .span-rows {
         grid-row: auto;
+    }
+}
+
+/* Persona Modal Styles */
+.persona-select-btn {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.persona-select-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.persona-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.persona-modal[hidden] {
+    display: none;
+}
+
+.persona-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.persona-modal-content {
+    position: relative;
+    width: min(90vw, 1200px);
+    max-height: 90vh;
+    background: var(--card-background);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.persona-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.persona-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.persona-modal-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.persona-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.persona-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.persona-selection-section h3,
+.persona-effects-section h3,
+.persona-common-section h3 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: #ffd54f;
+}
+
+.persona-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    justify-items: center;
+}
+
+.persona-modal-card {
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    position: relative;
+    width: 100%;
+    max-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.persona-modal-card:hover {
+    transform: translateY(-2px);
+}
+
+.persona-modal-card.selected {
+    opacity: 1;
+}
+
+.persona-modal-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.persona-modal-card .card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.persona-modal-card .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.persona-modal-card .persona-name {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.persona-effects-table-wrap {
+    max-height: 500px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.persona-effects-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.persona-effects-table thead {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.persona-effects-table th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    color: #ffd54f;
+}
+
+.persona-effects-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.persona-effects-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.persona-char-row {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.persona-char-row .effects-char-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.persona-char-row .effects-char-checkbox {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.persona-effects-table input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .persona-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .persona-modal-content {
+        width: 95vw;
+        max-height: 95vh;
     }
 }

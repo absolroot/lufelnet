@@ -60,7 +60,7 @@ window.enCharacterSkillsData["카스미"] = {
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "Selects 1 ally to become the [Dance Partner] for 3 turn. Increases own and [Dance Partner]'s ATK by 32.4%/35.7%/34.4%/37.7% for 3 turns. Gains [Agile Step], up to 1 stack. After [Dance Partner] use a Persona skill, immediately use [Glimmer of Night] on 1 random enemy (If [Dance Partner] used a skill that target an enemy, change the main target of [Glimmer of Night] to that enemy). There can only be 1 [Dance Partner]."
+    "description": "Selects 1 ally to become the [Dance Partner] for 1 turn. Increases own and [Dance Partner]'s ATK by 32.4%/35.7%/34.4%/37.7% for 3 turns. Gains [Agile Step], up to 1 stack. After [Dance Partner] use a Persona skill, immediately use [Glimmer of Night] on 1 random enemy (If [Dance Partner] used a skill that target an enemy, change the main target of [Glimmer of Night] to that enemy). There can only be 1 [Dance Partner]."
   },
   "skill3": {
     "name": "Blooming Heart",

@@ -116,7 +116,7 @@ body { background-color: #222222; color: #ffffff; margin: 0; padding: 0; line-he
 
 .mobile-logo-container { width: fit-content; display: flex; flex-direction: row; align-items: center; gap: 10px; height : 50px; padding: 10px; box-sizing: border-box; cursor: pointer; transition: all 0.3s ease; }
 
-.mobile-logo-container img[src*="lufel.webp"] { height: 24px; width: auto; filter: grayscale(100%) contrast(1.5); filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9)); }
+.mobile-logo-container img[src*="lufel.webp"] { height: 30px; width: auto; filter: grayscale(100%) contrast(1.5); filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9)); }
 
 .mobile-logo-container img[src*="lufelnet.png"] { height: 16px; object-fit: contain; filter: drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.9)) invert(1); opacity: 0.85; }
 

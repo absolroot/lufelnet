@@ -10,6 +10,7 @@
              { name: '유우미', badge: 'NEW' },
              { name: '토모코·여름', badge: 'NEW' },
              { name: '마나카', badge: 'HOT' },
+             { name: '미나미·여름', badge: 'HOT' },
              { name: '리코·매화', badge: 'HOT' },
          ],
          en: [

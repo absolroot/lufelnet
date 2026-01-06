@@ -150,52 +150,33 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 프로덕션 환경: 캐시 우선, 네트워크 폴백
+  // 프로덕션 환경: 네트워크 우선 (항상 최신 버전), 오프라인일 때만 캐시 사용
+  // STATIC_CACHE_URLS와 images는 이미 위에서 처리됨
   event.respondWith(
-    caches.match(request)
-      .then((cachedResponse) => {
-        // 캐시에 있으면 먼저 반환하고, 백그라운드에서 업데이트
-        if (cachedResponse) {
-          // 백그라운드에서 네트워크 요청으로 캐시 업데이트
-          fetch(request)
-            .then((response) => {
-              if (response && response.status === 200 && response.type === 'basic') {
-                const responseToCache = response.clone();
-                caches.open(RUNTIME_CACHE)
-                  .then((cache) => {
-                    cache.put(request, responseToCache);
-                  });
-              }
-            })
-            .catch(() => {
-              // 네트워크 실패는 무시 (캐시된 버전 사용)
+    fetch(request)
+      .then((response) => {
+        // 네트워크에서 성공적으로 가져왔으면 캐시에 저장 (오프라인 대비)
+        if (response && response.status === 200 && response.type === 'basic') {
+          const responseToCache = response.clone();
+          caches.open(RUNTIME_CACHE)
+            .then((cache) => {
+              cache.put(request, responseToCache);
             });
-          
-          return cachedResponse;
         }
-
-        // 캐시에 없으면 네트워크에서 가져오기
-        return fetch(request)
-          .then((response) => {
-            // 유효한 응답만 캐싱
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
+        return response;
+      })
+      .catch(() => {
+        // 네트워크 실패 시 (오프라인) 캐시에서 가져오기
+        return caches.match(request)
+          .then((cachedResponse) => {
+            if (cachedResponse) {
+              return cachedResponse;
             }
-
-            const responseToCache = response.clone();
-
-            caches.open(RUNTIME_CACHE)
-              .then((cache) => {
-                cache.put(request, responseToCache);
-              });
-
-            return response;
-          })
-          .catch(() => {
-            // 오프라인일 때 기본 페이지 반환
+            // 캐시에도 없으면 기본 페이지 반환 (페이지 네비게이션인 경우)
             if (request.mode === 'navigate') {
               return caches.match('/');
             }
+            return null;
           });
       })
   );

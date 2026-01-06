@@ -1,11 +1,11 @@
 // Service Worker for PWA
 const CACHE_NAME = 'lufelnet-v1';
 const RUNTIME_CACHE = 'lufelnet-runtime-v1';
+const IMAGE_CACHE = 'lufelnet-images-v1';
 
-// 캐시할 정적 리소스 목록
+// 캐시할 정적 리소스 목록 (핵심 파일만)
 const STATIC_CACHE_URLS = [
   '/',
-  '/about.html',
   '/assets/css/default/common.css',
   '/assets/css/default/nav.css',
   '/assets/js/nav.js',
@@ -13,6 +13,15 @@ const STATIC_CACHE_URLS = [
   '/assets/img/favicon/favicon.ico',
   '/assets/img/favicon/apple-touch-icon.png'
 ];
+
+// 이미지 파일 확장자 목록
+const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico'];
+
+// assets/img 경로인지 확인
+function isImageAsset(url) {
+  return url.pathname.startsWith('/assets/img/') && 
+         IMAGE_EXTENSIONS.some(ext => url.pathname.toLowerCase().endsWith(ext));
+}
 
 // 설치 이벤트 - 정적 리소스 캐싱
 self.addEventListener('install', (event) => {
@@ -35,7 +44,10 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames
           .filter((cacheName) => {
-            return cacheName !== CACHE_NAME && cacheName !== RUNTIME_CACHE;
+            // 현재 사용 중인 캐시는 유지
+            return cacheName !== CACHE_NAME && 
+                   cacheName !== RUNTIME_CACHE && 
+                   cacheName !== IMAGE_CACHE;
           })
           .map((cacheName) => {
             console.log('[Service Worker] Deleting old cache:', cacheName);
@@ -78,6 +90,38 @@ self.addEventListener('fetch', (event) => {
       fetch(request)
         .catch(() => {
           return caches.match(request);
+        })
+    );
+    return;
+  }
+
+  // assets/img 이미지는 자동 캐싱 (캐시 우선, 네트워크 폴백)
+  if (isImageAsset(url)) {
+    event.respondWith(
+      caches.open(IMAGE_CACHE)
+        .then((cache) => {
+          return cache.match(request)
+            .then((cachedResponse) => {
+              if (cachedResponse) {
+                // 캐시에 있으면 즉시 반환
+                return cachedResponse;
+              }
+
+              // 캐시에 없으면 네트워크에서 가져와서 캐시에 저장
+              return fetch(request)
+                .then((response) => {
+                  // 유효한 응답만 캐싱
+                  if (response && response.status === 200 && response.type === 'basic') {
+                    const responseToCache = response.clone();
+                    cache.put(request, responseToCache);
+                  }
+                  return response;
+                })
+                .catch(() => {
+                  // 네트워크 실패 시 null 반환
+                  return null;
+                });
+            });
         })
     );
     return;
@@ -204,7 +248,7 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'VERSION_UPDATE') {
     const newVersion = event.data.version;
     console.log('[Service Worker] 버전 업데이트 요청:', newVersion);
-    // 버전이 바뀌었으므로 모든 캐시 삭제
+    // 버전이 바뀌었으므로 모든 캐시 삭제 (이미지 캐시 포함)
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
@@ -218,6 +262,13 @@ self.addEventListener('message', (event) => {
       if (event.ports && event.ports[0]) {
         event.ports[0].postMessage({ type: 'VERSION_UPDATED' });
       }
+    });
+  }
+
+  if (event.data && event.data.type === 'CLEAR_IMAGE_CACHE') {
+    console.log('[Service Worker] 이미지 캐시만 삭제 요청');
+    caches.delete(IMAGE_CACHE).then(() => {
+      console.log('[Service Worker] 이미지 캐시 삭제 완료');
     });
   }
 });

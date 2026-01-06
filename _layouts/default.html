@@ -236,6 +236,230 @@
     </div>
 
   </div>
+
+  <!-- PWA 설치 프롬프트 -->
+  <div id="pwa-install-prompt" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #7e1919; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 10000; max-width: 90%; text-align: center;">
+    <p id="pwa-install-message" style="margin: 0 0 12px 0; font-size: 14px;">Add to home screen for faster access</p>
+    <div style="display: flex; gap: 8px; justify-content: center;">
+      <button id="pwa-install-btn" style="background: white; color: #7e1919; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">Install</button>
+      <button id="pwa-dismiss-btn" style="background: transparent; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Later</button>
+    </div>
+  </div>
+
+  <!-- Service Worker 등록 및 PWA 설치 프롬프트 -->
+  <script>
+    // Service Worker 등록
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js')
+          .then((registration) => {
+            console.log('[PWA] Service Worker 등록 성공:', registration.scope);
+            
+            // 주기적으로 업데이트 확인 (개발 중)
+            setInterval(() => {
+              registration.update();
+            }, 60000); // 1분마다 확인
+            
+            // 업데이트 확인
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('[PWA] 새 버전이 사용 가능합니다. 페이지를 새로고침하세요.');
+                  // 개발 환경에서는 자동 새로고침
+                  if (window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1') {
+                    window.location.reload();
+                  }
+                }
+              });
+            });
+          })
+          .catch((error) => {
+            console.log('[PWA] Service Worker 등록 실패:', error);
+          });
+      });
+
+      // Service Worker 업데이트 확인
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        window.location.reload();
+      });
+
+      // 강력 새로고침 시 Service Worker 캐시 우회
+      window.addEventListener('beforeunload', () => {
+        if (navigator.serviceWorker.controller) {
+          // 강력 새로고침 감지를 위해 메시지 전송
+          navigator.serviceWorker.controller.postMessage({ type: 'SKIP_CACHE' });
+        }
+      });
+    }
+
+    // PWA 설치 프롬프트
+    let deferredPrompt;
+    const installPrompt = document.getElementById('pwa-install-prompt');
+    const installMessage = document.getElementById('pwa-install-message');
+    const installBtn = document.getElementById('pwa-install-btn');
+    const dismissBtn = document.getElementById('pwa-dismiss-btn');
+
+    // 현재 언어 감지 함수
+    function getCurrentLanguage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      
+      if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
+        return urlLang;
+      } else if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+        return LanguageRouter.getCurrentLanguage();
+      } else {
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
+          return savedLang;
+        }
+      }
+      return 'en'; // 기본값은 영어
+    }
+
+    // PWA 설치 프롬프트 다국어 텍스트
+    const pwaInstallTexts = {
+      kr: {
+        message: '홈 화면에 추가하여 더 빠르게 접속하세요',
+        install: '설치',
+        later: '나중에',
+        alert: '주소창 오른쪽의 설치 아이콘(➕)을 클릭하거나, Chrome 메뉴(⋮) → "앱 설치"를 선택하세요.'
+      },
+      en: {
+        message: 'Add to home screen for faster access!',
+        install: 'Install',
+        later: 'Later',
+        alert: 'Click the install icon (➕) in the address bar, or select Chrome menu (⋮) → "Install app".'
+      },
+      jp: {
+        message: 'ホーム画面に追加して、より速くアクセスしましょう',
+        install: 'インストール',
+        later: '後で',
+        alert: 'アドレスバー右側のインストールアイコン(➕)をクリックするか、Chromeメニュー(⋮) → "アプリをインストール"を選択してください。'
+      },
+      cn: {
+        message: '添加到主屏幕以更快访问',
+        install: '安装',
+        later: '稍后',
+        alert: '点击地址栏右侧的安装图标(➕)，或选择Chrome菜单(⋮) → "安装应用"。'
+      }
+    };
+
+    // 프롬프트 텍스트 업데이트
+    function updatePWAInstallTexts() {
+      const lang = getCurrentLanguage();
+      const texts = pwaInstallTexts[lang] || pwaInstallTexts.en;
+      
+      if (installMessage) {
+        installMessage.textContent = texts.message;
+      }
+      if (installBtn) {
+        installBtn.textContent = texts.install;
+      }
+      if (dismissBtn) {
+        dismissBtn.textContent = texts.later;
+      }
+    }
+
+    // 초기 텍스트 설정
+    updatePWAInstallTexts();
+
+    // 언어 변경 감지 (URL 파라미터 변경 등)
+    let lastLang = getCurrentLanguage();
+    setInterval(() => {
+      const currentLang = getCurrentLanguage();
+      if (currentLang !== lastLang) {
+        lastLang = currentLang;
+        updatePWAInstallTexts();
+      }
+    }, 1000);
+
+    // 설치 프롬프트가 표시되었는지 확인
+    const installPromptShown = localStorage.getItem('pwa-install-prompt-shown');
+    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || 
+                        window.navigator.standalone || 
+                        document.referrer.includes('android-app://');
+
+    // 이미 설치되어 있으면 프롬프트 숨김
+    if (isInstalled && installPrompt) {
+      installPrompt.style.display = 'none';
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // 기본 프롬프트 방지
+      e.preventDefault();
+      deferredPrompt = e;
+
+      // 이전에 표시한 적이 없고, 설치되지 않은 경우에만 표시
+      if (!installPromptShown && !isInstalled && installPrompt) {
+        // 텍스트 업데이트
+        updatePWAInstallTexts();
+        // 데스크톱에서는 약간의 지연 후 표시 (사용자가 페이지를 확인한 후)
+        setTimeout(() => {
+          if (deferredPrompt && !isInstalled) {
+            installPrompt.style.display = 'block';
+          }
+        }, 3000);
+      }
+    });
+
+    // 설치 버튼 클릭
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          try {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('[PWA] 사용자 선택:', outcome);
+            
+            if (outcome === 'accepted') {
+              console.log('[PWA] 사용자가 설치를 수락했습니다.');
+            } else {
+              console.log('[PWA] 사용자가 설치를 거부했습니다.');
+            }
+            
+            deferredPrompt = null;
+            if (installPrompt) {
+              installPrompt.style.display = 'none';
+            }
+            localStorage.setItem('pwa-install-prompt-shown', 'true');
+          } catch (error) {
+            console.error('[PWA] 설치 프롬프트 오류:', error);
+            // 프롬프트가 실패하면 주소창 아이콘 사용 안내
+            const lang = getCurrentLanguage();
+            const texts = pwaInstallTexts[lang] || pwaInstallTexts.en;
+            alert(texts.alert);
+          }
+        } else {
+          // deferredPrompt가 없으면 수동 설치 안내
+          const lang = getCurrentLanguage();
+          const texts = pwaInstallTexts[lang] || pwaInstallTexts.en;
+          alert(texts.alert);
+        }
+      });
+    }
+
+    // 나중에 버튼 클릭
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', () => {
+        if (installPrompt) {
+          installPrompt.style.display = 'none';
+        }
+        localStorage.setItem('pwa-install-prompt-shown', 'true');
+      });
+    }
+
+    // 앱이 설치되었는지 확인
+    window.addEventListener('appinstalled', () => {
+      console.log('[PWA] 앱이 설치되었습니다.');
+      if (installPrompt) {
+        installPrompt.style.display = 'none';
+      }
+      deferredPrompt = null;
+    });
+  </script>
 </body>
 
 

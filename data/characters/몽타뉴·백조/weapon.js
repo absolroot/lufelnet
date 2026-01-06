@@ -22,7 +22,7 @@ window.WeaponData["몽타뉴·백조"] = {
   }
 };
 window.enCharacterWeaponData["몽타뉴·백조"] = {
-  "name": "Kotone·Frostgale",
+  "name": "Frostgale Kotone",
   "weapon4-1": {
     "name": "Fille de Borée",
     "health": 1838,

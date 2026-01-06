@@ -465,8 +465,10 @@
     root.__carouselStylesInjected = true;
     const style = document.createElement('style');
     style.textContent = `
-      .carousel-container { position: relative; width: 100%; margin: 0px 0 0px 0; overflow: hidden; border-radius: 10px 10px 0 0; background: #0e0e0e; }
+      .carousel-container { position: relative; width: 100%; max-width: 1200px; margin: 0px 0 0px 0; overflow: hidden; border-radius: 10px 10px 0 0; background: #0e0e0e; }
       .carousel-toolbar { position: relative; display: flex; gap: 8px; padding: 8px 12px; justify-content: flex-end; align-items: center; background:var(--border-red); }
+      /* 1440px 이하일 때는 .carousel-container 최대 가로 1200px, 좌우 margin auto*/
+      @media (max-width: 1440px) { .carousel-container { max-width: 1200px; margin: 0 auto; } }
 
       .carousel-toolbar {
           position: relative;

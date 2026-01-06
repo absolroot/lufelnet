@@ -1,6 +1,6 @@
 {
-  "name": "LufelNet",
-  "short_name": "LufelNet",
+  "name": "lufel.net",
+  "short_name": "lufel.net",
   "icons": [
     {
       "src": "/assets/img/favicon/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#7e1919",
+  "theme_color": "#dd0000",
+  "background_color": "#111",
   "display": "standalone"
 }

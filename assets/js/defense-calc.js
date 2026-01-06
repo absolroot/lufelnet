@@ -800,6 +800,54 @@ class DefenseCalc {
         const penetrateTotal = Math.max(0, this.penetrateTotal || 0);
         const reduceTotalRaw = Math.max(0, this.reduceTotal || 0);
 
+        /**
+         * DEFENSE CALCULATION FORMULA EXPLANATION
+         * 
+         * The defense calculation follows a specific order to determine the final defense coefficient,
+         * which is then used to calculate the damage multiplier. The order of operations ensures
+         * consistent results regardless of the order in which penetration and defense reduction are applied.
+         * 
+         * STEP 1: Apply Penetration (Pierce)
+         * ------------------------------------
+         * Penetration reduces the defense coefficient multiplicatively.
+         * Formula: afterPierceCoef = defenseCoef × (100 - penetrateTotal) / 100
+         * 
+         * - If penetration is 100% or higher, the defense coefficient becomes 0 (complete penetration)
+         * - Otherwise, the defense coefficient is reduced proportionally
+         * - Example: If defenseCoef = 200% and penetrateTotal = 50%, then afterPierceCoef = 200% × 50% = 100%
+         * 
+         * STEP 2: Apply Defense Reduction
+         * ---------------------------------
+         * Defense reduction subtracts a flat percentage from the defense coefficient.
+         * Formula: finalCoef = max(0, afterPierceCoef - reduceTotalRaw)
+         * 
+         * - This is a flat subtraction, not multiplicative
+         * - The result cannot go below 0 (floor at 0)
+         * - Example: If afterPierceCoef = 100% and reduceTotalRaw = 30%, then finalCoef = 70%
+         * 
+         * STEP 3: Apply Windswept (Optional)
+         * -----------------------------------
+         * Windswept is a special debuff that further reduces defense by 12%.
+         * Formula: displayFinalCoef = finalCoef × 0.88 (if Windswept is active)
+         * 
+         * - This is applied multiplicatively after all other calculations
+         * - Example: If finalCoef = 70% and Windswept is active, then displayFinalCoef = 70% × 0.88 = 61.6%
+         * 
+         * STEP 4: Calculate Damage Multiplier
+         * -------------------------------------
+         * The damage multiplier is calculated using the following formula:
+         * Formula: damageMultiplier = 1 - (baseDefense × defenseCoef / 100) / (baseDefense × defenseCoef / 100 + 1400)
+         * 
+         * - This formula uses a hyperbolic curve where 1400 is a constant divisor
+         * - Lower defense coefficient results in higher damage multiplier
+         * - The damage multiplier represents what percentage of damage actually goes through
+         * 
+         * IMPORTANT NOTES:
+         * - The order of penetration and defense reduction application does not affect the final result
+         * - The UI may display different intermediate values based on the selected order, but the final calculation is the same
+         * - All percentages are stored as whole numbers (e.g., 200 means 200%, not 2.0)
+         */
+
         // 계산은 순서와 무관하게 동일한 결과가 나오도록 정의
         // 1) 관통 적용
         const afterPierceCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
@@ -856,6 +904,38 @@ class DefenseCalc {
         // 하단 중복 표기는 제거됨 (위에서 UI표기를 이미 처리함)
     }
 
+    /**
+     * Calculates the damage reduction factor based on base defense and defense coefficient.
+     * 
+     * This function implements the core damage reduction formula used in Persona 5X:
+     * 
+     * Formula: damageReduction = (baseDefense × defenseCoef / 100) / (baseDefense × defenseCoef / 100 + 1400)
+     * 
+     * Where:
+     * - baseDefense: The enemy's base defense stat (raw number)
+     * - defenseCoef: The defense coefficient as a percentage (e.g., 200 means 200%)
+     * - 1400: A constant divisor that determines the curve of damage reduction
+     * 
+     * The result represents what percentage of damage is REDUCED (blocked).
+     * To get the damage multiplier (what percentage goes through), use: 1 - damageReduction
+     * 
+     * Examples:
+     * - If baseDefense = 1000, defenseCoef = 200%:
+     *   numerator = 1000 × 2.0 = 2000
+     *   denominator = 2000 + 1400 = 3400
+     *   damageReduction = 2000 / 3400 ≈ 0.588 (58.8% damage reduction)
+     *   damageMultiplier = 1 - 0.588 = 0.412 (41.2% damage goes through)
+     * 
+     * - If baseDefense = 1000, defenseCoef = 0% (fully penetrated/reduced):
+     *   numerator = 1000 × 0 = 0
+     *   denominator = 0 + 1400 = 1400
+     *   damageReduction = 0 / 1400 = 0 (0% damage reduction)
+     *   damageMultiplier = 1 - 0 = 1.0 (100% damage goes through)
+     * 
+     * @param {number} baseDefense - The enemy's base defense value
+     * @param {number} defenseCoef - The defense coefficient as a percentage (e.g., 200 for 200%)
+     * @returns {number} The damage reduction factor (0 to 1, where 1 means 100% reduction)
+     */
     calculateDamage(baseDefense, defenseCoef) {
         const numerator = baseDefense * (defenseCoef / 100);
         const denominator = numerator + 1400;

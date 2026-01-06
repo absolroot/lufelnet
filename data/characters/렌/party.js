@@ -114,7 +114,7 @@ window.recommendParty["렌"] = {
         {
             "name": "리코·매화",
             "comment": "리코는 높은 크리티컬 효과 버프를 제공한다. 리코의 패시브 효과를 최대로 얻기 위해서는 2턴 동안 5번 이상의 타격이 필요하므로 렌에게 [여정]+[주권] 세트를 착용해 타수를 늘리는 형태가 있다.",
-            "comment_en": "Riko provides a strong CRIT Multiplier buff. Since Riko’s passive requires landing 5 or more hits within 2 turns to activate, one approach is to equip Ren with the [Departure] + [Control] sets to increase his total number of hits.",
+            "comment_en": "Riko provides a strong CRIT DMG buff. Since Riko’s passive requires landing 5 or more hits within 2 turns to activate, one approach is to equip Ren with the [Departure] + [Control] sets to increase his total number of hits.",
             "comment_jp": "理子は高いCRT倍率バフを提供する。理子のパッシブ効果を発動させるには2ターン以内に5回以上の攻撃が必要なため、蓮には[旅立]＋[支配]セットを装備させてヒット数を増やす構成が考えられる。",
         }
     ]

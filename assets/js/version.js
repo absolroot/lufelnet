@@ -19,7 +19,21 @@ class VersionChecker {
 
     static async clearCache() {
         try {
-            // 모든 캐시 삭제
+            // Service Worker에 버전 업데이트 메시지 전송 (캐시 삭제 요청)
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                try {
+                    // Service Worker에 버전 업데이트 알림
+                    navigator.serviceWorker.controller.postMessage({
+                        type: 'VERSION_UPDATE',
+                        version: APP_VERSION
+                    });
+                    console.log('[VersionChecker] Service Worker에 버전 업데이트 알림:', APP_VERSION);
+                } catch (e) {
+                    console.warn('[VersionChecker] Service Worker 메시지 전송 실패:', e);
+                }
+            }
+
+            // 모든 캐시 삭제 (Service Worker 캐시 포함)
             const cacheNames = await caches.keys();
             await Promise.all(
                 cacheNames.map(name => caches.delete(name))
@@ -45,13 +59,15 @@ class VersionChecker {
                 }
             });
 
-            // 서비스 워커 해제
+            // Service Worker는 해제하지 않음 (PWA 기능 유지)
+            // 대신 업데이트만 요청
             if ('serviceWorker' in navigator) {
                 const registrations = await navigator.serviceWorker.getRegistrations();
+                // 각 Service Worker 업데이트 요청
                 await Promise.all(
-                    registrations.map(registration => registration.unregister())
+                    registrations.map(registration => registration.update())
                 );
-                //console.log('Service workers unregistered');
+                //console.log('Service workers updated');
             }
 
             // 브라우저 캐시 강제 무효화

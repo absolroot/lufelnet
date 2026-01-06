@@ -181,6 +181,7 @@
     s.textContent = `
       #${ROOT_ID} { margin: 24px 0 0px; color: #eee; width: 100%; }
       .bosses-card { background:var(--card-background); border-radius:10px; padding:20px; border-bottom: solid 3px var(--border-red); }
+      @media (max-width: 1440px) { .bosses-card {box-sizing: border-box; max-width: 1200px; margin: 0 auto; } }
       .bosses-list { margin-top: 8px; }
       .bosses-list.grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
       .bosses-list.grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }

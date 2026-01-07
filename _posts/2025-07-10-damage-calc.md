@@ -16,6 +16,15 @@ translations:
 ---
 
 <div class="content-kr" markdown="1">
+
+> **⚠️ 주의사항**
+> 
+> 본 문서는 게임 초기 중국 Q&A 내용을 기반으로 작성되었습니다. 대미지 계산의 방향성과 구조를 이해하는 데 참고하시되, 정확한 수치는 실제 게임과 차이가 발생할 수 있습니다.
+> 
+> 또한 정확한 대미지 계산을 시도하는 것은 권장하지 않습니다. 대부분의 값과 요소는 서버에 숨겨져 있어 데이터마이닝이 불가능하며, 대미지에 영향을 미치는 스탯만 100가지 이상으로 알려져 있습니다.
+> 
+> 따라서 본 문서의 대미지 계산 공식은 완벽한 정확도를 추구하기보다는 **참고용**으로 활용하시기 바랍니다. 또한 스킬 대미지의 작동 방식은 캐릭터마다 다르게 적용될 수 있습니다 (예: "+20% 대미지 증가"가 때로는 "×1.2"를 또는 "+20%"를 의미할 수 있음).
+
 페르소나5X는 정말 복합적인 요소의 곱셈을 통해 대미지가 결정된다.
 
 ![damage.gif](/apps/article/asset/damage.gif)
@@ -463,6 +472,15 @@ translations:
 </div>
 
 <div class="content-en" markdown="1">
+
+> **⚠️ Important Notice**
+> 
+> This document is based on early Chinese Q&A content from the game. While it provides reference for understanding the direction and structure of damage calculation, the exact values may differ from the actual game.
+> 
+> We do not recommend attempting to calculate accurate damage. Most values and factors are hidden on the server and cannot be datamined. It is known that there are over 100 different stats that affect damage.
+> 
+> Therefore, the damage calculation formulas in this document should be used **for reference purposes** rather than seeking perfect accuracy. Additionally, how skill damage works varies by each character (e.g., "+20% damage increase" may sometimes mean "×1.2" or "+20%").
+
 Persona 5X determines damage through a complex multiplication of various factors.
 
 ![damage.gif](/apps/article/asset/damage.gif)
@@ -889,6 +907,15 @@ The following are the results assuming each summed value:
 </div>
 
 <div class="content-jp" markdown="1">
+
+> **⚠️ 注意事項**
+> 
+> 本ドキュメントは、ゲーム初期の中国Q&Aの内容に基づいて作成されました。ダメージ計算の方向性と構造を理解するための参考としてご利用ください。正確な数値は実際のゲームと差異が生じる可能性があります。
+> 
+> また、正確なダメージ計算を試みることは推奨されません。ほとんどの値と要素はサーバーに隠されており、データマイニングが不可能です。ダメージに影響を与えるステータスだけでも100種類以上あることが知られています。
+> 
+> したがって、本ドキュメントのダメージ計算式は完璧な正確さを追求するのではなく、**参考用**としてご活用ください。また、スキルダメージの動作方法はキャラクターごとに異なる場合があります（例：「+20%ダメージ増加」が時には「×1.2」または「+20%」を意味する場合があります）。
+
 ペルソナ5Xは、複雑な要素の乗算によってダメージが決定されます。
 
 ![damage.gif](/apps/article/asset/damage.gif)

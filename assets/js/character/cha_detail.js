@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = mainOptions[index];
             const valueElement = row.querySelector('.value');
             if (Array.isArray(option.values)) {
-                valueElement.textContent = option.values.length > 0 ? option.values.join(', ') : '-';
+                valueElement.textContent = option.values.length > 0 ? option.values.join(' / ') : '-';
             } else {
                 valueElement.textContent = option.value || '-';
             }
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const subOptionRows = document.querySelectorAll('.sub-options .option-row');
         [character.sub_option1, character.sub_option2, character.sub_option3].forEach((option, index) => {
             const valueElement = subOptionRows[index].querySelector('.value');
-            valueElement.textContent = Array.isArray(option) && option.length > 0 ? option.join(', ') : '-';
+            valueElement.textContent = Array.isArray(option) && option.length > 0 ? option.join(' / ') : '-';
         });
 
         // 스킬 레벨

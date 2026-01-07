@@ -1,18 +1,5 @@
 // Service Worker for PWA
-const CACHE_NAME = 'lufelnet-v1';
-const RUNTIME_CACHE = 'lufelnet-runtime-v1';
 const IMAGE_CACHE = 'lufelnet-images-v1';
-
-// 캐시할 정적 리소스 목록 (핵심 파일만)
-const STATIC_CACHE_URLS = [
-  '/',
-  '/assets/css/default/common.css',
-  '/assets/css/default/nav.css',
-  '/assets/js/nav.js',
-  '/assets/js/language-router.js',
-  '/assets/img/favicon/favicon.ico',
-  '/assets/img/favicon/apple-touch-icon.png'
-];
 
 // 이미지 파일 확장자 목록
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico'];
@@ -23,20 +10,15 @@ function isImageAsset(url) {
          IMAGE_EXTENSIONS.some(ext => url.pathname.toLowerCase().endsWith(ext));
 }
 
-// 설치 이벤트 - 정적 리소스 캐싱
+// 설치 이벤트
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] Installing...');
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('[Service Worker] Caching static assets');
-        return cache.addAll(STATIC_CACHE_URLS);
-      })
-      .then(() => self.skipWaiting()) // 즉시 활성화
+    Promise.resolve().then(() => self.skipWaiting()) // 즉시 활성화
   );
 });
 
-// 활성화 이벤트 - 오래된 캐시 정리
+// 활성화 이벤트 - 오래된 캐시 정리 (이미지 캐시만 유지)
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] Activating...');
   event.waitUntil(
@@ -44,10 +26,8 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames
           .filter((cacheName) => {
-            // 현재 사용 중인 캐시는 유지
-            return cacheName !== CACHE_NAME && 
-                   cacheName !== RUNTIME_CACHE && 
-                   cacheName !== IMAGE_CACHE;
+            // 이미지 캐시만 유지, 나머지는 모두 삭제
+            return cacheName !== IMAGE_CACHE;
           })
           .map((cacheName) => {
             console.log('[Service Worker] Deleting old cache:', cacheName);
@@ -84,18 +64,7 @@ self.addEventListener('fetch', (event) => {
                        request.cache === 'no-cache' ||
                        request.headers.get('Cache-Control') === 'no-cache';
 
-  // API, data 요청은 네트워크 우선
-  if (url.pathname.includes('/api/') || url.pathname.includes('/data/') || url.pathname.includes('/auth/')) {
-    event.respondWith(
-      fetch(request)
-        .catch(() => {
-          return caches.match(request);
-        })
-    );
-    return;
-  }
-
-  // assets/img 이미지는 자동 캐싱 (캐시 우선, 네트워크 폴백)
+  // 이미지만 캐싱 (assets/img 경로의 이미지 파일)
   if (isImageAsset(url)) {
     event.respondWith(
       caches.open(IMAGE_CACHE)
@@ -127,59 +96,8 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 개발 환경이거나 강력 새로고침인 경우 네트워크 우선
-  if (isDevelopment || isHardReload) {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          // 네트워크에서 가져온 응답을 캐시에 업데이트
-          if (response && response.status === 200 && response.type === 'basic') {
-            const responseToCache = response.clone();
-            caches.open(RUNTIME_CACHE)
-              .then((cache) => {
-                cache.put(request, responseToCache);
-              });
-          }
-          return response;
-        })
-        .catch(() => {
-          // 네트워크 실패 시 캐시에서 가져오기
-          return caches.match(request);
-        })
-    );
-    return;
-  }
-
-  // 프로덕션 환경: 네트워크 우선 (항상 최신 버전), 오프라인일 때만 캐시 사용
-  // STATIC_CACHE_URLS와 images는 이미 위에서 처리됨
-  event.respondWith(
-    fetch(request)
-      .then((response) => {
-        // 네트워크에서 성공적으로 가져왔으면 캐시에 저장 (오프라인 대비)
-        if (response && response.status === 200 && response.type === 'basic') {
-          const responseToCache = response.clone();
-          caches.open(RUNTIME_CACHE)
-            .then((cache) => {
-              cache.put(request, responseToCache);
-            });
-        }
-        return response;
-      })
-      .catch(() => {
-        // 네트워크 실패 시 (오프라인) 캐시에서 가져오기
-        return caches.match(request)
-          .then((cachedResponse) => {
-            if (cachedResponse) {
-              return cachedResponse;
-            }
-            // 캐시에도 없으면 기본 페이지 반환 (페이지 네비게이션인 경우)
-            if (request.mode === 'navigate') {
-              return caches.match('/');
-            }
-            return null;
-          });
-      })
-  );
+  // 이미지가 아닌 모든 요청은 네트워크에서만 가져오기 (캐싱 안 함)
+  event.respondWith(fetch(request));
 });
 
 // 백그라운드 동기화 (선택사항)

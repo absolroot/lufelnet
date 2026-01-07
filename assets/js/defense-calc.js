@@ -729,6 +729,7 @@ class DefenseCalc {
         this.damageIncreaseDiv = document.querySelector('.damage-increase');
         this.noDefReduceSpan = document.getElementById('noDefReduce');
         this.withDefReduceSpan = document.getElementById('withDefReduce');
+        this.damageArrowSpan = document.getElementById('damageArrow');
         this.damageCard = document.querySelector('.top-row-2-damage');
 
         // 보스 선택 옵션 추가
@@ -896,7 +897,14 @@ class DefenseCalc {
         if (this.noDefReduceSpan) {
             this.noDefReduceSpan.textContent = isFinite(noReduceDamage) ? noReduceDamage.toFixed(3) : '-';
         }
+        
+        // 최종 방어력 계수가 기존 방어력 계수와 다를 때만 → withDefReduce 표시
+        const hasDefenseChange = displayFinalCoef !== defenseCoef;
+        if (this.damageArrowSpan) {
+            this.damageArrowSpan.style.display = hasDefenseChange ? '' : 'none';
+        }
         if (this.withDefReduceSpan) {
+            this.withDefReduceSpan.style.display = hasDefenseChange ? '' : 'none';
             this.withDefReduceSpan.textContent = isFinite(withReduceDamage) ? withReduceDamage.toFixed(3) : '-';
         }
         if (this.damageCard) this.damageCard.style.display = '';
@@ -944,10 +952,15 @@ class DefenseCalc {
 
     resetDamageDisplay() {
         this.damageIncreaseDiv.textContent = '-';
-        this.noDefReduceSpan.textContent = '-';
-        this.withDefReduceSpan.textContent = '-';
-        this.finalDefenseCoefSpan.textContent = '-';
-        document.getElementById('finalDefenseCoef2').textContent = '-';
+        if (this.noDefReduceSpan) this.noDefReduceSpan.textContent = '-';
+        if (this.withDefReduceSpan) {
+            this.withDefReduceSpan.textContent = '-';
+            this.withDefReduceSpan.style.display = 'none';
+        }
+        if (this.damageArrowSpan) this.damageArrowSpan.style.display = 'none';
+        if (this.finalDefenseCoefSpan) this.finalDefenseCoefSpan.textContent = '-';
+        const coef2 = document.getElementById('finalDefenseCoef2');
+        if (coef2) coef2.textContent = '-';
         if (this.reduceSecondLine) this.reduceSecondLine.style.display = 'none';
         if (this.pierceSecondLine) this.pierceSecondLine.style.display = 'none';
     }

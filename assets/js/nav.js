@@ -257,7 +257,7 @@ class Navigation {
                 </div>
                 ` : ''}
                 ${currentMenus.includes('gallery') ? `
-                    <a href="${BASE_URL}/gallery?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
+                    <a href="${BASE_URL}/gallery/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
                         <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 32px; height: 32px; object-fit: contain;" />
                         <span data-text="${texts.gallery}">${texts.gallery}</span>
                     </a>

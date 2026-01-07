@@ -241,7 +241,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .defense-table tr, .penetrate-table tr { display: grid; grid-template-areas:
     "check skill-icon skill-name value"
     "check target option duration"
-    "none note note note"; grid-template-columns: 48px 60px 1fr auto; gap: 8px; padding: 12px 12px 0 12px; margin: 0 0 8px 0px; background: rgb(75 48 48); border-radius: 8px; }
+    "none note note note"; grid-template-columns: 48px 60px 1fr auto; gap: 8px; padding: 12px 12px 0 12px; margin: 0 0 8px 0px; background: rgb(62 62 62); border-radius: 8px; }
 
     .defense-table td, .penetrate-table td { padding: 0px; border: none !important; }
 

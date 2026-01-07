@@ -1,4 +1,6 @@
 // Service Worker for PWA
+// 버전 변경 시 브라우저가 새 Service Worker를 감지하여 업데이트
+const SW_VERSION = 'v3-js-css-no-cache';
 const IMAGE_CACHE = 'lufelnet-images-v1';
 
 // 이미지 파일 확장자 목록
@@ -20,13 +22,14 @@ self.addEventListener('install', (event) => {
 
 // 활성화 이벤트 - 오래된 캐시 정리 (이미지 캐시만 유지)
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activating...');
+  console.log('[Service Worker] Activating...', SW_VERSION);
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
           .filter((cacheName) => {
             // 이미지 캐시만 유지, 나머지는 모두 삭제
+            // 이전 버전의 모든 캐시도 삭제 (RUNTIME_CACHE, CACHE_NAME 등)
             return cacheName !== IMAGE_CACHE;
           })
           .map((cacheName) => {
@@ -35,7 +38,18 @@ self.addEventListener('activate', (event) => {
           })
       );
     })
-    .then(() => self.clients.claim()) // 모든 클라이언트 제어
+    .then(() => {
+      // 모든 클라이언트에 즉시 제어권 부여
+      return self.clients.claim();
+    })
+    .then(() => {
+      // 모든 클라이언트에 새 버전 알림
+      return self.clients.matchAll().then((clients) => {
+        clients.forEach((client) => {
+          client.postMessage({ type: 'SW_UPDATED', version: SW_VERSION });
+        });
+      });
+    })
   );
 });
 
@@ -97,6 +111,29 @@ self.addEventListener('fetch', (event) => {
   }
 
   // 이미지가 아닌 모든 요청은 네트워크에서만 가져오기 (캐싱 안 함)
+  // JS, CSS, 데이터 파일은 명시적으로 캐시 헤더를 추가하여 브라우저 캐시도 우회
+  const isJSOrCSSOrData = url.pathname.endsWith('.js') || 
+                          url.pathname.endsWith('.css') ||
+                          url.pathname.includes('/data/') || 
+                          url.pathname.includes('/assets/js/') ||
+                          url.pathname.includes('/assets/css/');
+  
+  if (isJSOrCSSOrData) {
+    // 캐시 헤더를 추가한 새로운 요청 생성
+    const newHeaders = new Headers(request.headers);
+    newHeaders.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    newHeaders.set('Pragma', 'no-cache');
+    newHeaders.set('Expires', '0');
+    
+    const newRequest = new Request(request, {
+      headers: newHeaders,
+      cache: 'no-store'
+    });
+    
+    event.respondWith(fetch(newRequest));
+    return;
+  }
+  
   event.respondWith(fetch(request));
 });
 

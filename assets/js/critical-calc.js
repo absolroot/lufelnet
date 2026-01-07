@@ -288,7 +288,12 @@ class CriticalCalc {
             inner.className = 'group-header-inner';
 
             const caret = document.createElement('span');
-            const initiallyOpen = !isSelf ? true : (groupName === '계시' || groupName === '원더' || groupName === '공통');
+            const isMobile = window.innerWidth <= 1200;
+            // 모바일: 버프 탭은 '공통'만, 자신 탭은 '계시/원더/공통'만 열림
+            // PC: 버프 탭은 모두 열림, 자신 탭은 '계시/원더/공통'만 열림
+            const initiallyOpen = !isSelf 
+                ? (isMobile ? groupName === '공통' : true)
+                : (groupName === '계시' || groupName === '원더' || groupName === '공통');
             caret.className = `accordion-caret ${initiallyOpen ? 'open' : ''}`;
             caret.textContent = initiallyOpen ? '▾' : '▸';
             inner.appendChild(caret);

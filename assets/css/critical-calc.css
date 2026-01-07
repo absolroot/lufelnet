@@ -161,7 +161,8 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
 .target-column[data-target="자신"] { min-width: 40px; } 
 
 /* 모바일 대응 */
-@media (max-width: 1200px) { .main-wrapper { box-sizing: border-box; }
+@media (max-width: 1200px) { 
+    .main-wrapper { box-sizing: border-box; }
     
     .navigation-path, .header-container, .top-cards { padding-left: 0px; padding-right: 0px; }
 
@@ -181,69 +182,181 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
 
     .critical-table tbody { display: block; }
 
-    .critical-table tr { display: grid; grid-template-areas:
-    "check skill-icon skill-name value"
-    "check target option duration"
-    "none note note note"; grid-template-columns: 48px 60px 1fr auto; gap: 8px; padding: 12px; margin: 0 0 8px 0px; background: rgba(221, 132, 132, 0.1); border-radius: 8px; }
+    /* 모바일 카드 레이아웃 */
+    .critical-table tr { 
+        display: grid; 
+        grid-template-areas:
+            "check icon name name value"
+            "check icon target option duration"
+            ". note note note note"; 
+        grid-template-columns: 32px 44px auto 1fr auto; 
+        grid-template-rows: auto auto auto;
+        gap: 4px 10px; 
+        padding: 12px 14px; 
+        margin: 0 0 8px 0; 
+        background: var(--card-background);
+        border-radius: 8px; 
+    }
 
     .critical-table td { padding: 0; border: none !important; }
 
-    /* 각 열의 그리드 영역 지정 */
+    /* 체크박스 */
     .check-column { 
-    grid-area: check; 
-    display: flex; align-items: center; }
+        grid-area: check; 
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 스킬 아이콘 */
     .skill-icon-column { 
-    grid-area: skill-icon; display: flex; align-items: center; }
+        grid-area: icon; 
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    .skill-icon-column img { 
+        height: 36px; 
+        width: 36px; 
+    }
+
+    /* 스킬 이름 */
     .skill-name-column { 
-    grid-area: skill-name; display: flex; align-items: center; }
+        grid-area: name; 
+        display: flex; 
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    /* 수치 */
     .value-column { 
-    grid-area: value; display: flex; align-items: center; justify-content: flex-end; }
-    .type-column { 
-    display: none; grid-area: type; font-size: 12px; }
+        grid-area: value; 
+        display: flex; 
+        align-items: center; 
+        justify-content: flex-end;
+        font-size: 16px !important;
+        font-weight: bold;
+    }
+
+    /* 타겟 (광역/단일) */
     .target-column { 
-    grid-area: target; font-size: 12px; }
+        grid-area: target; 
+        display: flex;
+        align-items: center;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        width: fit-content;
+    }
+
+    /* 옵션 드롭다운 */
     .option-column { 
-    grid-area: option; font-size: 12px; }
+        grid-area: option; 
+        display: flex;
+        align-items: center;
+    }
+
+    .option-column select { 
+        font-size: 11px;
+        padding: 4px 6px !important;
+        background: rgba(0, 0, 0, 0.2);
+        border: none;
+        border-radius: 4px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* 지속시간 */
     .duration-column { 
-    grid-area: duration; font-size: 12px; text-align: right; }
+        grid-area: duration; 
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* 비고 */
     .note-column { 
-    grid-area: note; font-size: 12px; height: fit-content; min-height: 36px; color: rgba(255, 255, 255, 0.5); }
-    .note-column:not(:empty)::before { content: "💬 "; }
+        grid-area: note; 
+        font-size: 11px; 
+        color: rgba(255, 255, 255, 0.4);
+        padding-top: 4px;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+    }
 
-    /* 이미지 크기 조정 */
-    .char-img-column img { height: 32px; width: 32px; }
+    .note-column:empty {
+        display: none;
+    }
 
-    .skill-icon-column img { height: 24px; width: 24px; }
-
-    /* 모바일 정보 숨김 (JS에서 추가한 부분) */
-    .critical-table td.mobile-info { display: none; }
-
-    .option-column select { width: 100%; }
-
-    /* 선택된 행 스타일 */
-    .critical-table tr.selected { background: rgba(221, 132, 132, 0.2); border: 1px solid rgba(255, 255, 255, 0.5); }
-
-    /* 모바일 헤더 숨김 */
-    .mobile-table-header { display: none; }
+    .note-column:not(:empty)::before { 
+        content: "● ";
+        color: rgba(255, 255, 255, 0.3);
+        margin-right: 4px;
+    }
 
     /* type 컬럼 숨김 */
-    .critical-table td.type-column { display: none; }
+    .type-column { display: none; }
+
+    /* 선택된 행 스타일 */
+    .critical-table tr.selected { 
+        background: #3d2e2e;
+        border: 1px solid rgba(255, 255, 255, 0.5); 
+    }
+
+    .critical-table tr.selected .skill-name-column {
+        color: #fff !important;
+    }
+
+    .critical-table tr.selected .value-column {
+        color: #ff9999 !important;
+    }
 
     /* 체크박스 이미지 크기 */
     img[src*="check-off.png"],
-    img[src*="check-on.png"] { width: 20px !important; height: 20px !important; }
+    img[src*="check-on.png"] { 
+        width: 20px !important; 
+        height: 20px !important; 
+    }
 
-    .critical-table td.skill-name-column { font-size: 13px; }
+    /* 모바일 헤더/정보 숨김 */
+    .mobile-table-header { display: none; }
+    .critical-table td.mobile-info { display: none; }
 
-    .critical-table td.value-column { font-size: 14px; font-weight: bold; }
+    /* 그룹 헤더 모바일 스타일 */
+    .critical-table tr.group-header {
+        display: flex !important;
+        padding: 10px 12px;
+        background: var(--card-background) !important;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        overflow: hidden;
+    }
 
-    .critical-table td.option-column,
-    .critical-table td.duration-column,
-    .critical-table td.note-column { font-size: 12px; }
-}
+    .critical-table tr.group-header td {
+        background: transparent !important;
+        border: none !important;
+    }
 
-/* 모바일 비고 아이콘 */
-@media screen and (max-width: 1200px) { .note-column:not(:empty)::before { content: "💬 "; }
+    .critical-table tr.group-header .group-header-cell {
+        overflow: hidden;
+    }
+
+    .critical-table tr.group-header .group-header-inner {
+        padding: 0;
+    }
+
+    .critical-table tr.group-header .group-info {
+        overflow: hidden;
+    }
+
+    .critical-table tr.group-header .group-avatar {
+        flex-shrink: 0;
+    }
 }
 
 /* 그룹 헤더(디펜스 패턴과 통일) */

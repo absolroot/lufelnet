@@ -356,6 +356,7 @@ class PayCalculator {
                     ${this.generateDiscountOptions()}
                 </select>
             </td>
+            <td class="note-column">${pkg.note || '-'}</td>
             <td class="resources-mobile">${resourcesHtml}</td>
         `;
         return tr;

@@ -94,5 +94,11 @@ window.recommendParty["리코·매화"] = {
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
             "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
         },
+        {
+            "name": "J&C",
+            "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
+            "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+        },
     ]
 };

@@ -18,14 +18,14 @@
                 'jp': { title: '啓示', content: '推奨される啓示リスト。パーティ構成や敵によって推奨啓示は変わる可能性があるため、各啓示をクリックして効果を読み、適切な啓示を選択してください。' }
             },
             'main-option': {
-                'kr': { title: '주 옵션', content: '각 계시 위치별 추천하는 옵션, 의식(Awareness) 및 무기에 따라 우선 순위가 바뀔 수 있습니다.' },
-                'en': { title: 'Main Options', content: 'Recommended options for each revelation position. Priority may change depending on Awareness and weapons.' },
-                'jp': { title: '主属性', content: '各啓示位置別の推奨オプション。意識(Awareness)や武器によって優先順位が変わる場合があります。' }
+                'kr': { title: '주 옵션', content: '각 계시 위치별 추천하는 옵션, 의식(Awareness) 및 무기, 파티 구성에 따라 우선 순위가 바뀔 수 있습니다.' },
+                'en': { title: 'Main Options', content: 'Recommended options for each revelation position. Priority may change depending on Awareness and weapons, party composition.' },
+                'jp': { title: '主属性', content: '各啓示位置別の推奨オプション。意識や武器, パーティ構成によって優先順位が変わる場合があります。' }
             },
             'sub-option': {
-                'kr': { title: '부 옵션', content: `캐릭터 별 계시에서 우선되는 부 옵션을 의미합니다. 부 옵션의 범위는 다음 링크(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)를 참고하세요.` },
-                'en': { title: 'Sub Options', content: `Refers to the sub-options that are prioritized in revelations for each character. Please refer to the following link for the range of sub-options: <a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>.` },
-                'jp': { title: '副属性', content: `怪盗別啓示で優先される副属性を意味します。副属性の範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。` }
+                'kr': { title: '부 옵션', content: `캐릭터 별 계시에서 우선되는 부 옵션을 의미합니다. 부 옵션의 범위는 다음 링크(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)를 참고하세요. 의식 및 무기, 파티 구성에 따라 우선 순위가 바뀔 수 있습니다.` },
+                'en': { title: 'Sub Options', content: `Refers to the sub-options that are prioritized in revelations for each character. Please refer to the following link for the range of sub-options: <a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>. Priority may change depending on Awareness and weapons, party composition.` },
+                'jp': { title: '副属性', content: `怪盗別啓示で優先される副属性を意味します。副属性の範囲は次のリンク(<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>)を参考にしてください。意識や武器, パーティ構成によって優先順位が変わる場合があります。` }
             },
             'recommended-stats': {
                 'kr': { title: '권장 육성 스탯', content: '캐릭터의 스킬에 스탯의 영향도를 받는 형태가 있을 경우 최대 효과를 보기 위한 스테이터스. 가능하면 충족하는 것을 추천드립니다. (전투 기준)' },

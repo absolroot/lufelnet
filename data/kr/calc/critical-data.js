@@ -32,6 +32,10 @@ const criticalBuffData = {
     "리코·매화": [
               { id: "rico-flower", type: "스킬3", target: "단일/광역", target_en: "Single/Multi", target_jp: "単体/複数対象", skillIcon: "/assets/img/skill-element/버프.png", skillName: "매화의 잔향", skillName_en: "Skill 3", skillName_jp: "スキル3", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 16, "LV10+심상5": 17, "LV13": 17, "LV13+심상5": 18 }, defaultOption: "LV13+심상5", value: 18, duration: "2턴", note: "의식6 → 광역으로 변경", note_en: "Skill 6 → Multi", note_jp: "スキル6→複数対象" }
     ],
+    "카스미": [
+      { id: "kasmi2", type: "의식1", target: "단일/자신", target_en: "Single/Self", target_jp: "単体/自分", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "찢어진 치마와 그녀의 그림자", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "3턴", note: "『함께 추는 춤』스킬 2 사용 시", note_en: "Skill2", note_jp: "スキル2" },
+    ]
+    ,
     "아야카": [
               { id: "ayaka", type: "의식1", target: "단일", target_en: "Single", target_jp: "単体", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "♩새벽 맞이♪", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "2턴", note: "『열성 관객』", note_en: "Skill2", note_jp: "スキル2" }
     ],
@@ -122,7 +126,6 @@ const criticalBuffData = {
     "카스미": [
               { id: "kasmi3", type: "HIGHLIGHT", type_en: "HIGHLIGHT", type_jp: "ハイライト", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/skill-element/버프.png", skillName: "HIGHLIGHT", skillName_en: "HIGHLIGHT", skillName_jp: "ハイライト", options: [], values: {}, value: 10, duration: "-", note: "『스위프트 스텝』 보유 시 하이라이트 한정", note_en: "HIGHLIGHT", note_jp: "ハイライト" },
               { id: "kasmi1", type: "의식0", type_en: "A0", type_jp: "意識0", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual0.png", skillName: "12시의 종소리", skillName_en: "A0", skillName_jp: "意識0", options: ["1중첩", "2중첩", "3중첩", "4중첩"], values: { "1중첩": 3, "2중첩": 6, "3중첩": 9, "4중첩": 12 }, defaultOption: "4중첩", value: 12, duration: "-", note: "『춤사위』", note_en: " ", note_jp: " " },
-              { id: "kasmi2", type: "의식1", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "찢어진 치마와 그녀의 그림자", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "3턴", note: "『함께 추는 춤』스킬 2 사용 시", note_en: "Skill2", note_jp: "スキル2" },
               { id: "kasmi3", type: "심상", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/item-mind_stat2.png", skillName: "진급강화", skillName_en: "Mindscape", skillName_jp: "イメジャリー", options: [], value: 12, duration: "-", note: "" }
     ],
     "몽타뉴·백조": [

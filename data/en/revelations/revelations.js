@@ -207,7 +207,7 @@ const enRevelationData = {
         "Triumph": { // 개선
             "set2": "Increases Crit Rate by 7.5%.",
             "set4": "Resonance Attack Damage is increased by 40%.",
-            "type": ["추가 효과", "미출시"]
+            "type": ["추가 효과"]
         },
         "Oppression": { // 억압
             "set2": "Increase Physical DMG by 10%.",
@@ -364,7 +364,7 @@ const enRevelationData = {
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
             "Triumph": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
             "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%.",
-            "type": ["미출시"]
+            //"type": ["미출시"]
         },
         "Meditation": {
             "Opulence": "Increase Follow Up CRIT DMG by 50%.",

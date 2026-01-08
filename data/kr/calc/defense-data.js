@@ -674,7 +674,7 @@ const defenseCalcData = {
             value: 48.0,
             duration: "2턴",
             note: "풍습 부여 시",
-            note_en: "풍습 Triumph",
+            note_en: "풍습",
             note_jp: "풍습 成功"
         },
         {
@@ -687,7 +687,7 @@ const defenseCalcData = {
             value: 31.5,
             duration: "2턴",
             note: "풍습 부여 시",
-            note_en: "풍습 Triumph",
+            note_en: "풍습",
             note_jp: "풍습 成功"
         },
         {

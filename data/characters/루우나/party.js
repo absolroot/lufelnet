@@ -18,12 +18,6 @@ window.recommendParty["루우나"] = {
             "comment": "루우나는 광역 방어력 감소와 더불어 적을 화상 상태에 빠뜨리고, 받는 화염 속성 대미지를 증가시킨다.",
             "comment_en": "Runa applies an AoE DEF reduction, inflicts Burn, and increases enemies’ Fire damage taken.",
             "comment_jp": "ルウナは広範囲に防御力を低下させ、敵を炎上状態にし、受ける火炎ダメージを増加させる。",
-        },
-        {
-            "name": "아야카",
-            "comment": "루우나는 광역 방어력 감소와 더불어 적을 화상 상태에 빠뜨리고, 받는 화염 속성 대미지를 증가시킨다.",
-            "comment_en": "Runa applies an AoE DEF reduction, inflicts Burn, and increases enemies’ Fire damage taken.",
-            "comment_jp": "ルウナは広範囲に防御力を低下させ、敵を炎上状態にし、受ける火炎ダメージを増加させる。",
         }
     ],
     "party":

@@ -133,7 +133,7 @@
                 '직책': 'Labor',
                 '결심': 'Resolve',
                 '자유': 'Freedom',
-                '개선': 'Success',
+                '개선': 'Triumph',
                 '희망': 'Hope',
                 '황야의 구세주': 'Desperado',
                 '(강화)': '(Enhanced)'

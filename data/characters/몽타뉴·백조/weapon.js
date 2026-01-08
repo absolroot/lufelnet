@@ -22,40 +22,38 @@ window.WeaponData["몽타뉴·백조"] = {
   }
 };
 window.enCharacterWeaponData["몽타뉴·백조"] = {
-  "name": "Frostgale Kotone",
-  "weapon4-1": {
-    "name": "Fille de Borée",
-    "health": 1838,
-    "attack": 607,
-    "defense": 299,
-    "skill_name": "Vie Perpétuelle",
-    "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When obtaining [Morning Dew Crystal]/[Frost Crystal], permanently increase ATK by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%, up to 10 stacks."
-  },
   "weapon5-1": {
-    "name": "Rêve de Cygnes",
-    "health": 2299,
-    "attack": 759,
-    "defense": 374,
-    "skill_name": "Cycles Saisonniers",
-    "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When obtaining [Morning Dew Crystal]/[Frost Crystal], CRIT Rate is increased by 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% for 2 turns and up to 3 stacks. When opening [Mid-Spring Domain]/[Winter Night Domain], Wind/Ice DMG Dealt is increased by 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% for 2 turns."
+    "name": "Lame de l'Amour",
+    "health": 2299.15,
+    "attack": 759.73,
+    "defense": 374.35,
+    "skill_name": "",
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Each time Ice Storm Kotone gains a Spring's Vestige or Winter's Vestige stack, increase critical rate by 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% for 2 turns. This effect can stack up to 3 times. When activating Spring's Edge or Winter's Edge, increase Wind or Ice damage by 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% for 2 turns."
+  },
+  "weapon4-1": {
+    "name": "Lame de l'Aube",
+    "health": 1838.99,
+    "attack": 607.79,
+    "defense": 299.47,
+    "skill_name": "",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time Ice Storm Kotone gains a Spring's Vestige or Winter's Vestige stack, permanently increase Attack by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%. This effect can stack up to 10 times."
   }
 };
 window.jpCharacterWeaponData["몽타뉴·백조"] = {
-  "name": "琴音・アイスストーム",
-  "weapon4-1": {
-    "name": "北風の淑女",
-    "health": 1838,
-    "attack": 607,
-    "defense": 299,
-    "skill_name": "繁栄する命",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。『朝露の結晶』または『冬霜の結晶』を獲得するたびに攻撃力が永続的に1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%増加する（最大10回まで重複可能）。"
-  },
   "weapon5-1": {
-    "name": "白鳥の夢",
-    "health": 2299,
-    "attack": 759,
-    "defense": 374,
-    "skill_name": "季節の変化",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。『朝露の結晶』または『冬霜の結晶』を獲得するたびにクリティカル率が5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2%増加し、2ターン持続する（最大3回重複可能）。『春の結界』/『冬夜の結界』を展開すると、2ターンの間、疾風ダメージ/氷結ダメージが27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0%増加する。"
+    "name": "ラムドゥラムール",
+    "health": 2299.15,
+    "attack": 759.73,
+    "defense": 374.35,
+    "skill_name": "",
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。『旋風の刻線』か『銀盤の刻線』を獲得するごとに、２ターンの間、クリティカル率が5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2%上昇する。この効果は最大３つまで累積できる。『旋風結界』／『銀盤結界』が発動する時、２ターンの間、疾風属性ダメージ／氷結属性ダメージが27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0%上昇する。"
+  },
+  "weapon4-1": {
+    "name": "ラムドゥルーベ",
+    "health": 1838.99,
+    "attack": 607.79,
+    "defense": 299.47,
+    "skill_name": "",
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。『旋風の刻線』か『銀盤の刻線』を獲得するごとに、永続的に攻撃力が1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%上昇する。この効果は最大１０個まで累積できる。"
   }
 };

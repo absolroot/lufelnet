@@ -44,86 +44,84 @@ window.characterSkillsData["몽타뉴·백조"] = {
   }
 };
 window.enCharacterSkillsData["몽타뉴·백조"] = {
-  "name": "Frostgale Kotone",
   "skill1": {
-    "name": "Storm Prelude/Piercing Chill",
-    "element": "질풍빙결",
+    "name": "Éclat de Vent / Iceburst",
+    "element": "질풍",
     "type": "단일피해",
     "sp": 24,
     "cool": 0,
-    "description": "[Mid-Spring Form]: Deals 65.9%/72.7%/69.9%/76.7% ATK as Wind DMG to 1 enemy 3 times, with a 30% base chance to inflict Winded; If you are in [Mid-Spring Domain], additionally inflict [Wind Injury] for 2 turns. Increase your CRIT DMG by 29.3%/29.3%/31.1%/31.1% when attacking enemies with [Wind Injury].\n\n[Winter Night Form]: Deals 122.2%/134.7%/129.7%/142.2% ATK as Ice DMG to 1 enemy, with a 97.6%/97.6%/103.6%/103.6% base chance to inflict Freeze. If they are already inflicted with Freeze, inflict [Frostbite] for 2 turns. Enemies with [Frostbite] have their Ice DMG Taken increased by 13.7%/13.7%/14.5%/14.5% ."
+    "description": "Spring: Deal Wind damage to 1 foe equal to 65.9%/72.6%/69.9%/76.7% of Attack (3 hits), with a 30% chance to inflict Windswept. When Spring's Edge is active, also inflict Attack Sequence for 2 turns. When Ice Storm Kotone attacks a foe with Attack Sequence, increase critical damage by 29.3%/29.3%/31.1%/31.1%.\nWinter: Deal Ice damage to 1 foe equal to 122.2%/134.7%/129.7%/142.2% of Attack, with a 97.6%/97.6%/103.6%/103.6% chance to inflict Freeze. If the target is already frozen, inflict On Ice for 2 turns. Increase Ice damage taken by 13.7%/13.7%/14.5%/14.5% for foes with On Ice."
   },
   "skill2": {
-    "name": "Sweeping Wind/Falling Snowfield",
-    "element": "질풍빙결광역",
-    "type": "광역피해",
+    "name": "Zephyr / Sapphire Storm",
+    "element": "질풍",
     "sp": 24,
     "cool": 0,
-    "description": "[Mid-Spring Form]: Deals 31.3%/34.5%/33.3%/36.5% ATK as Wind DMG to all enemies 3 times; If you are in [Mid-Spring Domain], additionally gain 1 [Morning Dew Crystal].\n\n[Winter Night Form]: Deals 83.8%/92.4%/89.0%/97.6% ATK as Ice DMG to all enemies, with a 43.8% base chance to inflict Freeze. If Mont - Figure Skater is in [Winter Night Domain], increase the damage of this attack by 20%."
+    "description": "Spring: Deal Wind damage to all foes equal to 31.3%/34.5%/33.3%/36.5% of Attack (3 hits). When Spring's Edge is active, also gain 1 Spring's Vestige.\nWinter: Deal Ice damage to all foes equal to 83.8%/92.4%/89.0%/97.6% of Attack, with a 48.8%/48.8%/51.8%/51.8% chance to inflict Freeze. When Winter's Edge is active, increase this skill's damage by 20%."
   },
   "skill3": {
-    "name": "Approaching Spring/Cold Night Song",
-    "element": "질풍빙결",
+    "name": "Ailes au Vent / Frozen Wings",
+    "element": "질풍",
     "type": "단일피해",
     "sp": 28,
     "cool": 0,
-    "description": "[Mid-Spring Form]: Opens [Mid-Spring Domain] for 1 turn, then deals 82.9%/91.5%/87.9%/96.5% ATK as Wind DMG to 1 enemy 3 times. When [Mid-Spring Domain] is active, all allies when dealing Wind DMG with Persona skill, HIGHLIGHT, or Follow Up, you will deal 20% ATK as Wind DMG to the main target and gain 1 [Morning Dew Crystal]. When [Mid-Spring Domain] ends, consumes all [Morning Dew Crystal] and deals (3+[Morning Dew Crystal])*34.2%/37.7%/36.3%/39.8% ATK as Wind DMG to the main target, this damage is seen as a Follow-Up Action.\n\n[Winter Night Form]: Opens [Winter Night Domain] for 1 turn, then deals 183.2%/201.9%/194.5%/213.2% ATK as Ice DMG to 1 enemy. When [Winter Night Domain] is active, all allies gain [Condensed Shield] when attacked which gives 1301/1301/1381/1381 Shield, up to 2 times. When any ally deals Ice DMG with a Persona skill, HIGHLIGHT, or Follow Up, Mont - Figure Skater will gain 1 [Frost Crystal]. When [Winter Night Domain] ends, consume all [Frost Crystal] and deal (3+[Frost Crystal])*27.9%/30.8%/29.6%/32.5% ATK as Ice DMG to the main target. This damage is seen as a Follow-Up Action."
-  },
-  "skill_highlight": {
-    "element": "질풍빙결",
-    "type": "단일피해",
-    "description": "[Mid-Spring Form]: Deals 149.6% ATK to 1 enemy 3 times; If you are in [Mid-Spring Domain], additionally gain 1 [Morning Dew Crystal] that can exceed the cap. Otherwise deal 1 additional hit of Wind DMG to the target. 149.6%/165.0%/158.8%/174.2%.\n\n[Winter Night Form]: Deals 380.6%/419.6%/404.0%/443.0% ATK as Ice DMG to 1 enemy, with a 68.3%/68.3%/72.5%/72.5% base chance to inflict [Ice Seal] for 1 turn. If Mont - Figure Skater is in [Winter Night Domain], increase the base chance of [Ice Seal] by 29.3%/29.3%/31.1%/31.1%. Otherwise, the damage dealt by this attack is increased by 20%."
+    "description": "Spring: For 1 turn, activate Spring's Edge, and deal Wind damage to 1 foe equal to 82.9%/91.4%/88.0%/96.4% of Attack (3 hits). While Spring's Edge is active, when allies deal Wind damage with a skill, Highlight, or Resonance, deal Wind damage to the selected target equal to 20% of Frostgale Kotone's Attack, and gain 1 Spring's Vestige stack. When Spring's Edge ends, spend all Spring's Vestige stacks, and deal Wind damage to the target selected that turn equal to (number of Spring's Vestige stacks + 2) x 34.2%/37.7%/36.3%/39.8% of Attack. This damage is counted as a Resonance.\nWinter: For 1 turn, activate Winter's Edge, and deal Ice damage to 1 foe equal to 183.2%/202.0%/194.5%/213.2% of Attack. While Winter's Edge is active, when an ally takes an attack, grant Glacial Heart to all allies, protecting them from up to 1301/1301/1380/1380 damage. This effect can be activated up to 2 times. Also, when allies deal Ice damage with a skill, Highlight, or Resonance, gain 1 Winter's Vestige stack. When Winter's Edge ends, spend all Winter's Vestige stacks, and deal Ice damage to the target selected that turn equal to (number of Winter's Vestige stacks + 2) x 27.9%/30.8%/29.6%/32.5% of Attack. This damage is counted as a Resonance."
   },
   "passive1": {
-    "name": "Cherish",
+    "name": "Performance Scoring",
     "element": "패시브",
-    "description": "Increase your Ice DMG by 33.0% when your team has other Ice Thieves.\nIncrease your Wind DMG by 33.0% when your team has other Wind Thieves."
+    "cool": 0,
+    "description": "When a Wind ally is in the party, increase own Wind damage by 33.0%.\nWhen an Ice ally is in the party, increase own Ice damage by 33.0%."
   },
   "passive2": {
-    "name": "Longing",
+    "name": "Technical Score",
     "element": "패시브",
-    "description": "[Mid-Spring Form]: When allies deal 1 hit of Wind DMG, increase the ATK for all allies by 8.1% for 2 turns, up to 5 stacks. [Winter Night Form]: When Mont - Figure Skater gains Shield, increase the DEF for all allies by 9.0% for 2 turns, up to 4 stacks."
+    "cool": 0,
+    "description": "While in Spring mode, when an ally attacks with the Wind attribute, increase party's Attack by 8.1% for 2 turns. Stacks up to 5 times.\nWhile in Winter mode, when gaining a shield, increase party's Defense by 9.0% for 2 turns. Stacks up to 4 times."
+  },
+  "skill_highlight": {
+    "element": "질풍",
+    "cool": 4,
+    "description": "Spring: Deal Wind damage to 1 foe equal to 149.6%/165.0%/158.8%/174.1% of Attack (3 hits). When Spring's Edge is active, gain 1 more Spring's Vestige stack (Can gain more stacks than the maximum limit). Otherwise, deal 1 more hit of Wind damage to selected target.\nWinter: Deal Ice damage to 1 foe equal to 380.6%/419.6%/404.0%/443.0% of Attack, with a 68.3%/68.3%/72.5%/72.5% chance to inflict Icebound. When Winter's Edge is active, increase chance to inflict Icebound by 29.3%/29.3%/31.1%/31.1%. Otherwise, increase Highlight damage by 20%."
   }
 };
 window.jpCharacterSkillsData["몽타뉴·백조"] = {
-  "name": "琴音・アイスストーム",
   "skill1": {
-    "name": "嵐の前奏曲/冷たい風",
-    "element": "질풍빙결",
-    "type": "単体ダメージ",
+    "name": "エクラドヴァン／氷垂",
+    "element": "질풍",
     "sp": 24,
     "cool": 0,
-    "description": "『春の形態』: 敵1体に琴音・アイスストームの攻撃力の65.9%/72.7%/69.9%/76.7%の疾風属性ダメージを3回与え、30%の基本確率で風溜まり状態にする。琴音・アイスストームが『春の結界』内にいる場合、追加で2ターンの間敵を『風傷』状態にする。『風傷』状態の敵を攻撃するとCRT倍率が29.3%/29.3%/31.1%/31.1%増加する。\n\n『冬の形態』: 敵1体に琴音・アイスストームの攻撃力の122.2%/134.7%/129.7%/142.2%の氷結属性ダメージを与え、97.6%/97.6%/103.6%/103.6%の基本確率で凍結状態にする。既に凍結状態の場合、2ターンの間『凍破』状態にする。『凍破』状態の敵は氷結属性ダメージが13.7%/13.7%/14.5%/14.5%増加する。"
+    "description": "『旋風』状態：敵単体に攻撃力65.9%/72.6%/69.9%/76.7%の疾風属性ダメージを３回与え、３０%の確率で風襲状態にする。『旋風結界』展開中の時、２ターンの間、追加で『アタックシークェンス』状態にする。自身が『アタックシークェンス』状態の敵を攻撃する時、クリティカルダメージが29.3%/29.3%/31.1%/31.1%上昇する。\n『銀盤』状態：敵単体に攻撃力122.2%/134.7%/129.7%/142.2%の氷結属性ダメージを与え、97.6%/97.6%/103.6%/103.6%の確率で凍結状態にする。対象がすでに凍結状態の場合、２ターンの間『オン・アイス』状態にする。『オン・アイス』状態の敵は氷結属性の被ダメージが13.7%/13.7%/14.5%/14.5%上昇する。"
   },
   "skill2": {
-    "name": "舞い散る雲/雪降る雪原",
-    "element": "질풍빙결광역",
-    "type": "広範囲ダメージ",
+    "name": "ゼフィール／蒼の嵐",
+    "element": "질풍",
     "sp": 24,
     "cool": 0,
-    "description": "『春の形態』: 全ての敵に琴音・アイスストームの攻撃力の31.3%/34.5%/33.3%/36.5%の疾風属性ダメージを3回与える。『春の結界』内にいる場合、追加で『朝露の結晶』を1個獲得する。\n\n『冬の形態』: 全ての敵に琴音・アイスストームの攻撃力の83.8%/92.4%/89.0%/97.6%の氷結属性ダメージを与え、48.8%/48.8%/51.8%/51.8%の基本確率で凍結状態にする。『冬の結界』内にいる場合、この攻撃のダメージが20%増加する。"
+    "description": "『旋風』状態：敵全体に攻撃力31.3%/34.5%/33.3%/36.5%の疾風属性ダメージを３回与える。『旋風結界』展開中の時、『旋風の刻線』を追加で１つ獲得する。\n『銀盤』状態：敵全体に攻撃力83.8%/92.4%/89.0%/97.6%の氷結属性ダメージを与え、48.8%/48.8%/51.8%/51.8%の確率で凍結状態にする。『銀盤結界』展開中の時、このスキルダメージが２０%上昇する。"
   },
   "skill3": {
-    "name": "近づく春/冬夜の舞曲",
-    "element": "질풍빙결",
-    "type": "単体ダメージ",
+    "name": "エルオヴァン／氷翼",
+    "element": "질풍",
     "sp": 28,
     "cool": 0,
-    "description": "『春の形態』: 1ターン持続する『春の結界』を展開し、敵1体に琴音・アイスストームの攻撃力の82.9%/91.5%/87.9%/96.5%の疾風属性ダメージを3回与える。『春の結界』の間、怪盗がペルソナスキル、HIGHLIGHT、追加効果で疾風属性ダメージを与えると、メインターゲットに琴音・アイスストームの攻撃力20%の疾風属性ダメージを追加で与え、琴音・アイスストームは『朝露の結晶』を1個得る。『春の結界』終了時、全ての『朝露の結晶』を消費し、(3+結晶数) * 34.2%/37.7%/36.3%/39.8%の疾風属性ダメージをメインターゲットに与える。このダメージは追加効果として計算される。\n\n『冬の形態』: 1ターン持続する『冬夜の結界』を展開し、敵1体に琴音・アイスストームの攻撃力の183.2%/201.9%/194.5%/213.2%の氷結属性ダメージを与える。『冬夜の結界』の間、怪盗が攻撃を受けると、全味方は1301/1301/1381/1381ダメージを防ぐ『雪玉シールド』を得る。この効果は最大2回発動する。怪盗がペルソナスキル、HIGHLIGHT、追加効果で氷結属性ダメージを与えると、琴音・アイスストームは『冬霜の結晶』を1個得る。『冬夜の結界』終了時、全ての『冬霜の結晶』を消費し、(3+結晶数) * 27.9%/30.8%/29.6%/32.5%の氷結属性ダメージをメインターゲットに与える。このダメージは追加効果として計算される。"
-  },
-  "skill_highlight": {
-    "element": "질풍빙결",
-    "type": "単体ダメージ",
-    "description": "『春の形態』: 敵1体に琴音・アイスストームの攻撃力の149.6%/165.0%/158.8%/174.2%の疾風属性ダメージを3回与える。『春の結界』内にいる場合、上限を突破する『朝露の結晶』を1個追加で得る。そうでない場合、対象に疾風属性ダメージを1回追加で与える。\n\n『冬の形態』: 敵1体に琴音・アイスストームの攻撃力の380.6%/419.6%/404.0%/443.0%の氷結属性ダメージを与え、68.3%/68.3%/72.5%/72.5%の基本確率で1ターン『氷封』状態にする。『冬夜の結界』内にいる場合、『氷封』の基本確率が29.3%/29.3%/31.1%/31.1%上昇する。そうでない場合、この攻撃のダメージが20%増加する。"
+    "description": "『旋風』状態：１ターンの間、『旋風結界』を展開し、敵単体に攻撃力82.9%/91.4%/88.0%/96.4%の疾風属性ダメージを３回与える。『旋風結界』展開中は、味方全体がスキル／ハイライト／意識奏功で疾風属性ダメージを与えた時、選択した対象に琴音・アイスストームの攻撃力２０%の疾風属性ダメージを与え、『旋風の刻線』を１つ獲得する。『旋風結界』終了時、所持している全ての『旋風の刻線』を消費し、そのターンで選択した対象に（２＋『旋風の刻線』の数）×攻撃力34.2%/37.7%/36.3%/39.8%の疾風属性ダメージを与える。このダメージは意識奏功として扱う。\n『銀盤』状態：１ターンの間、『銀盤結界』を展開し、敵単体に攻撃力183.2%/202.0%/194.5%/213.2%の氷結属性ダメージを与える。『銀盤結界』展開中、味方が攻撃を受けた時、味方全体に1301/1301/1380/1380までのダメージを防ぐ『グレイシャルメンタル』を付与する。この効果は最大２回まで発動する。さらに味方全体がスキル／ハイライト／意識奏功で氷結属性ダメージを与えた時、自身は『銀盤の刻線』を１つ獲得する。『銀盤結界』終了時、所持している全ての『銀盤の刻線』を消費し、そのターンで選択した対象に（２＋『銀盤の刻線』の数）×攻撃力27.9%/30.8%/29.6%/32.5%の氷結属性ダメージを与える。このダメージは意識奏功として扱う。"
   },
   "passive1": {
-    "name": "大切さ",
+    "name": "演技構成点",
     "element": "패시브",
-    "description": "チームに他の疾風属性怪盗がいる場合、琴音・アイスストームの疾風ダメージが33.0%増加する。チームに他の氷結属性怪盗がいる場合、琴音・アイスストームの氷結ダメージが33.0%増加する。"
+    "cool": 0,
+    "description": "パーティに疾風属性の味方がいると、自身の疾風属性ダメージが33.0%上昇する。\nパーティに氷結属性の味方がいると、自身の氷結属性ダメージが33.0%上昇する。"
   },
   "passive2": {
-    "name": "懐かしさ",
+    "name": "技術点",
     "element": "패시브",
-    "description": "『春の形態』: 怪盗が疾風属性攻撃を1回行うごとに、全怪盗の攻撃力が2ターンの間8.1%上昇する(最大5回重複)。『冬夜の形態』: 琴音・アイスストームがシールドを得るごとに、全怪盗の防御力が2ターンの間9.0%上昇する(最大4回重複)。"
+    "cool": 0,
+    "description": "『旋風』状態の時、味方が疾風属性で攻撃するごとに、２ターンの間、味方全体の攻撃力が8.1%上昇する。最大５つまで累積できる。\n『銀盤』状態の時、自身がシールドを獲得するごとに、２ターンの間、味方全体の防御力が9.0%上昇する。最大４つまで累積できる。"
+  },
+  "skill_highlight": {
+    "element": "질풍",
+    "cool": 4,
+    "description": "『旋風』状態：敵単体に攻撃力149.6%/165.0%/158.8%/174.1%の疾風属性ダメージを３回与える。『旋風結界』展開中の時、『旋風の刻線』を追加で１つ獲得する。（追加獲得分は上限を超えて所持することができる。）それ以外の場合、選択した対象に追加で疾風属性ダメージを１回与える。\n『銀盤』状態：敵単体に攻撃力380.6%/419.6%/404.0%/443.0%の氷結属性ダメージを与え、68.3%/68.3%/72.5%/72.5%の確率で『氷漬け』状態にする。『銀盤結界』展開中の時、『氷漬け』の確率が29.3%/29.3%/31.1%/31.1%上昇する。それ以外の場合、ハイライトのダメージが２０%上昇する。"
   }
 };

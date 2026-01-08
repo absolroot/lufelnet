@@ -52,7 +52,7 @@ const criticalBuffData = {
   const criticalSelfData = {
     "계시": [
               { id: "미덕", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/미덕.webp", skillName: "미덕", skillName_en: "Virtue", skillName_jp: "美徳", options: [], value: 12, duration: "-", note: "생명 백분율 50% 이상", note_en: "Health percentage 50% or above", note_jp: "HP 50%以上" },
-              { id: "개선", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/개선.webp", skillName: "개선", skillName_en: "Success", skillName_jp: "改善", options: [], value: 7.5, duration: "-", note: "" },
+              { id: "개선", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/개선.webp", skillName: "개선", skillName_en: "Triumph", skillName_jp: "改善", options: [], value: 7.5, duration: "-", note: "" },
               { id: "자유", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/자유.webp", skillName: "자유-실망", skillName_en: "Freedom-Despair", skillName_jp: "自由-失望", options: [], value: 12, duration: "-", note: "만능 속성 한정", note_en: "Only Allmighty", note_jp: "万能属性" },
               { id: "희망", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/희망.webp", skillName: "희망-고집", skillName_en: "Hope-Fixation", skillName_jp: "希望-固執", options: [], value: 6, duration: "3턴", note: "스킬로 대미지 8회 중첩 시 효력 발생", note_en: "Skill damage 8 consecutive hits", note_jp: "スキルで8回連続ダメージ" }
     ],

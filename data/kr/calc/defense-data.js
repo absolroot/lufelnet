@@ -19,7 +19,7 @@ const penetrateData = {
             target: "자신",
             skillIcon: `${BASE_URL}/assets/img/revelation/자유.webp`,
             skillName: "자유 + 개선",
-            skillName_en: "Freedom + Success",
+            skillName_en: "Freedom + Triumph",
             skillName_jp: "自由 + 改善",
             options: [],
             value: 16.0,
@@ -674,7 +674,7 @@ const defenseCalcData = {
             value: 48.0,
             duration: "2턴",
             note: "풍습 부여 시",
-            note_en: "풍습 Success",
+            note_en: "풍습 Triumph",
             note_jp: "풍습 成功"
         },
         {
@@ -687,7 +687,7 @@ const defenseCalcData = {
             value: 31.5,
             duration: "2턴",
             note: "풍습 부여 시",
-            note_en: "풍습 Success",
+            note_en: "풍습 Triumph",
             note_jp: "풍습 成功"
         },
         {

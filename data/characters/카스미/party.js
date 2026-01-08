@@ -43,7 +43,7 @@ window.recommendParty["카스미"] = {
         {
             "members": [
                 "카스미",
-                "미나미",
+                "J&C",
                 "아야카",
                 "후타바"
             ],

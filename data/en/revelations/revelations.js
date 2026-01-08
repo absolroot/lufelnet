@@ -43,7 +43,7 @@ const mapping_en = {
     "승리": "Victory",
     "직책": "Labor",
     "분쟁": "Strife",
-    "개선": "Success",
+    "개선": "Triumph",
     "좌절": "Defeat",
     "풍족": "Satiety",
     "획득": "Obtain"
@@ -98,7 +98,7 @@ const enRevelationData = {
         "승리": "Victory",
         "직책": "Labor",
         "분쟁": "Strife",
-        "개선": "Success",
+        "개선": "Triumph",
         "좌절": "Defeat",
         "풍족": "Satiety",
         "획득": "Obtain"
@@ -120,7 +120,7 @@ const enRevelationData = {
         "Trust": ["Renewal", "Power", "Prosperity"], // 신뢰
         "Harmony": ["Victory", "Power", "Truth"], // 조화
         "Acceptance": ["Peace", "Strife", "Love"], // 수락
-        "Freedom": ["Success", "Defeat", "Despair"], // 자유
+        "Freedom": ["Triumph", "Defeat", "Despair"], // 자유
     },
     "sub": {
         
@@ -132,7 +132,7 @@ const enRevelationData = {
         "Fixation": ["Integrity", "Hope"], // 고집
         "Futility": ["Faith"], // 헛수고
         "Despair": ["Freedom"], // 실망
-        "Success": ["Freedom"], // 개선
+        "Triumph": ["Freedom"], // 개선
         "Defeat": ["Freedom"], // 좌절
         "Worry": ["Creation"], // 우려
         "Reconcilation": ["Creation"], // 화해
@@ -204,7 +204,7 @@ const enRevelationData = {
             "set4": "Resonance attack damage is increased by 40%.",
             "type": ["빙결", "추가 효과"]
         },
-        "Success": { // 개선
+        "Triumph": { // 개선
             "set2": "Increases Crit Rate by 7.5%.",
             "set4": "Resonance Attack Damage is increased by 40%.",
             "type": ["추가 효과", "미출시"]
@@ -362,7 +362,7 @@ const enRevelationData = {
         },
         "Freedom": { // 자유
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
-            "Success": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
+            "Triumph": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
             "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%.",
             "type": ["미출시"]
         },

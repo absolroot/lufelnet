@@ -84,58 +84,6 @@
         "type": "PICKUP怪ドル契約・TARGET"
       },
       {
-        "endTime": "2026-02-05 10:59:59",
-        "fiveStar": [
-          {
-            "name": "琴音・アイスストーム",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "長尾 チヅ子",
-            "type": "thief"
-          }
-        ],
-        "name": "キス・アンド・クライ",
-        "startTime": "2026-01-08 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2026-02-05 10:59:59",
-        "fiveStar": [
-          {
-            "name": "琴音・アイスストーム",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "長尾 チヅ子",
-            "type": "thief"
-          }
-        ],
-        "name": "キス・アンド・クライ",
-        "startTime": "2026-01-08 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
         "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
@@ -277,41 +225,6 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2025-12-29 11:30:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2026-02-05 10:59:59",
-        "fiveStar": [
-          {
-            "name": "ラムドゥラムール",
-            "type": "weapon",
-            "user": "琴音"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "エメラルドチャーム",
-            "type": "weapon",
-            "user": "富山"
-          },
-          {
-            "name": "ラムドゥルーベ",
-            "type": "weapon",
-            "user": "琴音"
-          },
-          {
-            "name": "グラビティフォース",
-            "type": "weapon",
-            "user": "チヅ子"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-01-08 11:30:00",
         "type": "武器補給"
       },
       {

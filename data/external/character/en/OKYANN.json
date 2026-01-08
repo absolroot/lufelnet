@@ -6,7 +6,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using a skill, gain Beat stacks. When Beat stacks reach 4 or more, Resonance activates, spending 4 Beat stacks to grant 1 Pulsating Rhythm stack to the party. When allies have Pulsating Rhythm, increase Attack by 10%/15%/20%, Defense by 10%/15%/20% and ailment accuracy by 5%/7.5%/10% based on Tomiyama's level (effect increases at level 1/50/70). Lasts for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
+        "desc": "When using a skill, gain Beat stacks. When Beat stacks reach 4 or more, activate a Resonance, spending 4 Beat stacks to grant 1 Pulsating Rhythm stack to all allies. When allies have Pulsating Rhythm, increase Attack by 10%/15%/20%, Defense by 10%/15%/20% and ailment accuracy by 5%/7.5%/10% based on Tomiyama's level (effect increases at level 1/50/70). Lasts for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
         "name": "Fever Time",
         "nature": null,
         "skill_lv": "3",

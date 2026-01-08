@@ -6,7 +6,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate a Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
+        "desc": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
         "name": "Morgana's Favor",
         "nature": "Heal",
         "skill_lv": "3",

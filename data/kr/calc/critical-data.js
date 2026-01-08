@@ -30,7 +30,7 @@ const criticalBuffData = {
               { id: "manaka1", type: "의식1", target: "광역", target_en: "Multi", target_jp: "複数対象", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "시작의 멜로디", skillName_en: "A1", skillName_jp: "意識1", options: [], value: 12, duration: "2턴", note: "『시공의 윤회』사용 시", note_en: "When using Skill3", note_jp: "スキル3使用時" }
     ],
     "리코·매화": [
-              { id: "rico-flower", type: "스킬3", target: "단일/광역", target_en: "Single/Multi", target_jp: "単体/複数対象", skillIcon: "/assets/img/skill-element/버프.png", skillName: "매화의 잔향", skillName_en: "Skill 3", skillName_jp: "スキル3", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 16, "LV10+심상5": 17, "LV13": 17, "LV13+심상5": 18 }, defaultOption: "LV13+심상5", value: 18, duration: "2턴", note: "의식6 → 광역으로 변경", note_en: "Skill 6 → Multi", note_jp: "スキル6→複数対象" }
+              { id: "rico-flower", type: "스킬3", target: "단일/광역", target_en: "Single/Multi", target_jp: "単体/複数対象", skillIcon: "/assets/img/skill-element/버프.png", skillName: "매화의 잔향", skillName_en: "Skill 3", skillName_jp: "スキル3", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 16, "LV10+심상5": 17, "LV13": 17, "LV13+심상5": 18 }, defaultOption: "LV13+심상5", value: 18, duration: "2턴", note: "의식6 → 광역으로 변경", note_en: "A6 → Multi", note_jp: "凸6→複数対象" }
     ],
     "카스미": [
       { id: "kasmi2", type: "의식1", target: "단일/자신", target_en: "Single/Self", target_jp: "単体/自分", skillIcon: "/assets/img/character-detail/ritual1.png", skillName: "찢어진 치마와 그녀의 그림자", skillName_en: "A1", skillName_jp: "意識1", options: [], values: {}, value: 15, duration: "3턴", note: "『함께 추는 춤』스킬 2 사용 시", note_en: "Skill2", note_jp: "スキル2" },

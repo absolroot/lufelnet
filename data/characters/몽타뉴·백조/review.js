@@ -7,14 +7,14 @@
 
 아군의 동일 속성 공격의 타수는 중요하지 않다. 질풍 속성 공격으로 한번에 아군이 5번의 대미지를 부여해도 스택은 1중첩만 쌓이게 된다.
         `,
-        review_en: `The first dual-attribute Phantom Thief, functioning as a single-target Wind/Ice dealer.
+        review_en: `Dual-attribute Phantom Thief, functioning as a single-target Wind/Ice dealer.
 Although she has dual attributes, Wind is effectively the only attribute that sees practical use.
 
 Her third skill sets up a field, and when **allies use attacks of the same attribute, she stores stacks, then detonates them on her next turn together with her own attack to deal heavy damage**.
 
 The number of hits from allies' same-attribute moves does not matter. 
 Even if an ally deals five Wind hits at once, it still counts as only one stack.`,
-        review_jp: `怪盗としては初のデュアル属性であり、疾風／氷結の単体アタッカー。
+        review_jp: `デュアル属性の怪盗で、疾風／氷結の単体アタッカー。
 デュアル属性ではあるものの、実際に活用されるのはほぼ疾風属性のみである。
 
 3スキルでフィールドを展開し、**味方が同属性攻撃を行うたびにスタックを溜め、次の自身のターンに攻撃と同時にスタックを爆発させて大ダメージを与えるメカニクス**を持つ。

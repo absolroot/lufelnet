@@ -1769,7 +1769,7 @@ Object.assign(window.characterData, {
         "role": "질풍/빙결 단일 딜러",
         "tag":"폼 체인지, 추가 효과, 풍습, 동결, 관통",
         "video": ["3KRF2yYXtNs","EAjvUE4zwI4"],
-        "video_en" : [""],
+        "video_en" : ["k6KIc0MogGg"],
         "video_jp" : ["k6KIc0MogGg"],
         "color": "#483d8b",
         "main_revelation": ["전념", "자유"],

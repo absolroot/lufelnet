@@ -11,9 +11,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121240,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -27,9 +25,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121241,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -43,9 +39,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121242,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -59,9 +53,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121243,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -75,9 +67,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121244,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -91,9 +81,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121245,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -107,9 +95,7 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 121246,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -126,9 +112,7 @@
       "nature": "Wind",
       "skill_lv": "10/10/13/13",
       "sn": 121252,
-      "tags": [
-        null
-      ],
+      "tags": [null],
       "target": "Alive Enemy",
       "target_count": 1
     },
@@ -223,7 +207,7 @@
       }
     ],
     "rating": {
-      "Attack": 2910.0,
+      "Attack": 2910,
       "Crit Mult.": 1.77,
       "Crit Rate": 0.55,
       "Damage Mult.": 0.43

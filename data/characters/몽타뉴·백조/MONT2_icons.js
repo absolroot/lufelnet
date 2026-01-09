@@ -28,12 +28,12 @@
   // 각 언어별 모드 구분 패턴 (skill1, skill2, skill3, highlight, passive2, ritual)
   const MODE_PATTERNS = {
     kr: {
-      spring: ['『봄 형태』:', '『봄 형태』에서는', '『봄 형태』:'],
+      spring: ['『봄 형태』:', '『봄 형태』에서는', '『봄 형태』 :'],
       winter: ['『겨울 형태』:', '『겨울밤 형태』에서는', '『겨울밤 형태』:', '『겨울밤 형태』 :']
     },
     en: {
-      spring: ['Spring:', 'While in Spring mode,'],
-      winter: ['Winter:', 'While in Winter mode,']
+      spring: ['Spring mode:', 'While in Spring mode,'],
+      winter: ['Winter mode:', 'While in Winter mode,']
     },
     jp: {
       spring: ['『旋風』状態：', '『旋風』状態:', '『旋風』状態の時'],
@@ -48,8 +48,8 @@
       winter: ['빙결 속성 괴도를 편성하면', '빙결 대미지가']
     },
     en: {
-      spring: ['Wind ally', 'Wind damage'],
-      winter: ['Ice ally', 'Ice damage']
+      spring: ['Wind ally', 'Wind damage', 'Frostgale Kotone\'s Wind damage'],
+      winter: ['Ice ally', 'Ice damage', 'Frostgale Kotone\'s Ice damage']
     },
     jp: {
       spring: ['疾風属性の味方', '疾風属性ダメージ'],

@@ -15,7 +15,9 @@
 
 **제대로 활용하기 위해서는 속도 스탯을 상당히 높게** 올려야하는데 그 난이도가 쉽지 않다. 
 
-또한 스킬1의 크리티컬을 통해 DOWN 수치를 감소시키는 효과를 활용하려면 크리티컬 확률 또한 신경써주는 것이 중요하다.`,
+또한 스킬1의 크리티컬을 통해 DOWN 수치를 감소시키는 효과를 활용하려면 크리티컬 확률 또한 신경써주는 것이 중요하다.
+
+특이사항으로 하이라이트는 3턴으로 명시돼있지만 실질적으로는 3.1턴 지속시간으로, HL을 사용하는 시점에 행동을 대기하던 캐릭터는 해당 턴을 포함 총 4턴간 버프가 지속된다.`,
         review_en: `A Physical-support buffer specialized in Pierce. He gains Velocity stacks whenever any Phantom Thief finishes their action.
 
 When enough Velocity stacks are accumulated, he enters an Extra Action. After entering an Extra Action, his buffs become enhanced: Skill 1 gains guaranteed Critical hits, Skill 2 grants a shield, and Skill 3 provides amplified Piercing effects.
@@ -29,6 +31,8 @@ Beyond Pierce itself, he provides highly useful buffs such as Attack, Damage Bon
 To make full use of his kit, **his Speed stat must be raised significantly**, which can be challenging to achieve. 
 
 Additionally, to utilize the effect of reducing DOWN values through Skill 1's Critical, it is important to pay attention to Critical Rate as well.
+
+As a special note, the Highlight effect is specified as lasting 3 turns, but its actual duration is 3.1 turns. Characters who were waiting to act when the Highlight was used will have the buff last for a total of 4 turns, including that turn.
 `,
         review_jp: `貫通属性に特化した物理属性のサポートバッファー。怪盗が行動を終えるたびに「時速」スタックを獲得する。
 
@@ -43,6 +47,8 @@ Additionally, to utilize the effect of reducing DOWN values through Skill 1's Cr
 真価を発揮するには**速度ステータスを大幅に盛る必要があり**, そのハードルは決して低くない。
 
 また、スキル1のクリティカルによるDOWN値減少効果を活用するには、クリティカル率にも注意を払う必要がある。
+
+特徴的には、ハイライトは3ターンと明示されていますが、実際は3.1ターンの持続時間で、ハイライトを使用したターンに行動を待機していたキャラクターは、そのターンを含めて合計4ターン間、バフが継続されます。
 `,
         pros: ["높은 수치의 관통 효과를 제공한다.", "추가 턴 진입이 가능하다."],
         pros_en: [

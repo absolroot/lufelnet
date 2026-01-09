@@ -895,6 +895,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' }));
             }
 
+            // 몽타뉴·백조 전용 모드 선택 스크립트 로드
+            if (name === '몽타뉴·백조' || name === '코토네 몽타뉴·백조') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'MONT2_icons', globalVarName: 'MONT2Icons' }));
+            }
+
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
         }
 
@@ -1358,6 +1363,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 window.applyJCIcons();
             }
         } catch (e) { console.warn('[SAFE:applyJCIcons:ritual]', e); }
+
+        // 몽타뉴·백조 모드 선택 UI 적용
+        try {
+            if ((characterName === '몽타뉴·백조' || characterName === '코토네 몽타뉴·백조') &&
+                typeof window.applyMONT2Filter === 'function') {
+                window.applyMONT2Filter();
+            }
+        } catch (e) { console.warn('[SAFE:applyMONT2Filter]', e); }
 
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');

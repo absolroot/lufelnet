@@ -10,6 +10,10 @@
 생명 소모를 대신하는 능력은 동시에 각성한 쇼키의 메커니즘을 겨냥하여 나온 형태로, 쇼키의 2스킬을 통한 생명 소모를 대신하여 3스킬의 강화 수치를 높인다. 
 
 모든 공격 기술들은 확정 크리티컬로 크리티컬 확률을 옵션에서 제외하고 다른 형태로 채우고, 대미지들은 생명을 기반하므로 공격력 수치 또한 옵션에서 제외한다.
+
+<br>
+
+특이사항으로 하이라이트는 4턴으로 명시돼있지만 실질적으로는 4.1턴 지속시간으로, HL을 사용하는 시점에 행동을 대기하던 캐릭터는 해당 턴을 포함 총 5턴간 버프가 지속된다.
 `,
         review_en: `An awakened form of a Phantom Thief member. **A tank who provides shields to allies and designates one ally to take HP consumption and damage on their behalf.**
 
@@ -20,6 +24,8 @@ When his HP is 20,000 or higher, every Persona skill used each turn loads his Gu
 His ability to take HP consumption on behalf of allies is designed to synergize with the simultaneously awakened Shoki Ikenami, replacing the HP cost of Shoki’s Skill 2 and increasing the enhancement value of Skill 3.
 
 All attack skills are guaranteed critical hits, allowing Critical Rate to be excluded from stat options. Since his damage scales based on HP, ATK can also be excluded from stat investment.
+
+As a special note, the Highlight effect is specified as lasting 4 turns, but its actual duration is 4.1 turns. Characters who were waiting to act when the Highlight was used will have the buff last for a total of 5 turns, including that turn.
 `,
         review_jp: `怪盗団メンバーの覚醒形態。**味方にシールドを付与し、特定の味方1人を指定してHP消費およびダメージを肩代わりするタンクである。**
 
@@ -30,6 +36,8 @@ HPが20,000以上の場合、毎ターンのペルソナスキル使用時に装
 HP消費を肩代わりする能力は、同時に覚醒した池波 星輝（ショキ）のメカニズムを想定した設計で、ショキのスキル2によるHP消費を代替し、スキル3の強化値を高める。
 
 すべての攻撃スキルは確定クリティカルとなっており、クリティカル率をステータスから除外できる。また、ダメージはHP依存のため、攻撃力もビルド対象から外せる。
+
+特徴的には、ハイライトは4ターンと明示されていますが、実際は4.1ターンの持続時間で、ハイライトを使用したターンに行動を待機していたキャラクターは、そのターンを含めて合計5ターン間、バフが継続されます。
 `,
         pros: [
           "아군 전체 실드를 제공한다.", "총격으로 다운 수치를 감소시킬 수 있다.", "각종 버프와 적에 대한 디버프를 복합적으로 제공한다."

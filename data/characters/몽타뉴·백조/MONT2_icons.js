@@ -25,11 +25,11 @@
     }
   ];
 
-  // 각 언어별 모드 구분 패턴 (skill1, skill2, skill3, highlight, passive2)
+  // 각 언어별 모드 구분 패턴 (skill1, skill2, skill3, highlight, passive2, ritual)
   const MODE_PATTERNS = {
     kr: {
-      spring: ['『봄 형태』:', '『봄 형태』에서는'],
-      winter: ['『겨울 형태』:', '『겨울밤 형태』에서는']
+      spring: ['『봄 형태』:', '『봄 형태』에서는', '『봄 형태』:'],
+      winter: ['『겨울 형태』:', '『겨울밤 형태』에서는', '『겨울밤 형태』:', '『겨울밤 형태』 :']
     },
     en: {
       spring: ['Spring:', 'While in Spring mode,'],
@@ -156,6 +156,11 @@
         opacity: 0.4;
       }
 
+      /* 의식 카드용 버튼 */
+      .mont2-ritual-mode-card {
+        margin-bottom: 16px;
+      }
+
       @media (max-width: 768px) {
         .mont2-mode-button {
           padding: 10px 6px;
@@ -176,58 +181,58 @@
     return mode.label;
   }
 
+  // 버튼 그리드 생성 함수 (공통)
+  function createModeButtonGrid(gridClass) {
+    const grid = document.createElement('div');
+    grid.className = 'mont2-mode-grid';
+    grid.setAttribute('data-mont2-mode-grid', 'true');
+
+    MONT2_MODES.forEach(m => {
+      const uiLabel = getLocalizedModeLabel(m);
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mont2-mode-button';
+      btn.dataset.mode = m.id;
+      btn.title = uiLabel;
+
+      const icon = document.createElement('span');
+      icon.className = 'mont2-mode-icon';
+      icon.textContent = m.icon;
+
+      const label = document.createElement('span');
+      label.className = 'mont2-mode-label';
+      label.textContent = uiLabel;
+
+      btn.appendChild(icon);
+      btn.appendChild(label);
+
+      btn.addEventListener('click', () => {
+        const modeId = btn.dataset.mode;
+        if (selectedMode === modeId) {
+          selectedMode = null;
+        } else {
+          selectedMode = modeId;
+        }
+        triggerUpdate();
+      });
+
+      grid.appendChild(btn);
+    });
+
+    return grid;
+  }
+
   function ensureMONT2SelectorCard() {
     ensureMONT2Styles();
 
+    // 스킬 카드에 버튼 추가
     const skillsCard = document.querySelector('.skills-card.card-style');
-    if (!skillsCard) return null;
-
-    let card = document.querySelector('.mont2-mode-card');
-    if (!card) {
-      card = document.createElement('div');
+    if (skillsCard && !document.querySelector('.mont2-mode-card')) {
+      const card = document.createElement('div');
       card.className = 'mont2-mode-card';
+      card.appendChild(createModeButtonGrid('skill'));
 
-      const grid = document.createElement('div');
-      grid.className = 'mont2-mode-grid';
-      grid.setAttribute('data-mont2-mode-grid', 'true');
-
-      MONT2_MODES.forEach(m => {
-        const uiLabel = getLocalizedModeLabel(m);
-
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'mont2-mode-button';
-        btn.dataset.mode = m.id;
-        btn.title = uiLabel;
-
-        const icon = document.createElement('span');
-        icon.className = 'mont2-mode-icon';
-        icon.textContent = m.icon;
-
-        const label = document.createElement('span');
-        label.className = 'mont2-mode-label';
-        label.textContent = uiLabel;
-
-        btn.appendChild(icon);
-        btn.appendChild(label);
-
-        btn.addEventListener('click', () => {
-          const modeId = btn.dataset.mode;
-          if (selectedMode === modeId) {
-            // 이미 선택된 것 클릭하면 해제 (전체 표시)
-            selectedMode = null;
-          } else {
-            selectedMode = modeId;
-          }
-          triggerUpdate();
-        });
-
-        grid.appendChild(btn);
-      });
-
-      card.appendChild(grid);
-
-      // DOM 삽입 위치 결정
       const levelButtons = skillsCard.querySelector('.skill-level-buttons');
       const skillsGrid = skillsCard.querySelector('.skills-grid');
       if (levelButtons) {
@@ -239,8 +244,25 @@
       }
     }
 
+    // 의식 카드에 버튼 추가
+    const ritualCard = document.querySelector('.ritual-card.card-style');
+    if (ritualCard && !document.querySelector('.mont2-ritual-mode-card')) {
+      const ritualModeCard = document.createElement('div');
+      ritualModeCard.className = 'mont2-ritual-mode-card';
+      ritualModeCard.appendChild(createModeButtonGrid('ritual'));
+
+      const ritualHeader = ritualCard.querySelector('.ritual-header');
+      const ritualGrid = ritualCard.querySelector('.ritual-grid');
+      if (ritualHeader && ritualHeader.nextSibling) {
+        ritualCard.insertBefore(ritualModeCard, ritualHeader.nextSibling);
+      } else if (ritualGrid) {
+        ritualCard.insertBefore(ritualModeCard, ritualGrid);
+      } else {
+        ritualCard.appendChild(ritualModeCard);
+      }
+    }
+
     updateMONT2Visuals();
-    return card;
   }
 
   function triggerUpdate() {
@@ -255,49 +277,45 @@
   }
 
   function updateMONT2Visuals() {
-    const grid = document.querySelector('[data-mont2-mode-grid="true"]');
-    if (!grid) return;
-
-    const buttons = Array.from(grid.querySelectorAll('.mont2-mode-button'));
-    buttons.forEach(btn => {
-      const modeId = btn.dataset.mode;
-      if (selectedMode === null) {
-        // 전체 표시 모드: 모든 버튼 비활성화 표시
-        btn.classList.remove('selected');
-        btn.classList.remove('dim');
-      } else if (selectedMode === modeId) {
-        btn.classList.add('selected');
-        btn.classList.remove('dim');
-      } else {
-        btn.classList.remove('selected');
-        btn.classList.add('dim');
-      }
+    // 모든 모드 그리드의 버튼 상태 업데이트 (스킬 + 의식)
+    const grids = document.querySelectorAll('[data-mont2-mode-grid="true"]');
+    grids.forEach(grid => {
+      const buttons = Array.from(grid.querySelectorAll('.mont2-mode-button'));
+      buttons.forEach(btn => {
+        const modeId = btn.dataset.mode;
+        if (selectedMode === null) {
+          btn.classList.remove('selected');
+          btn.classList.remove('dim');
+        } else if (selectedMode === modeId) {
+          btn.classList.add('selected');
+          btn.classList.remove('dim');
+        } else {
+          btn.classList.remove('selected');
+          btn.classList.add('dim');
+        }
+      });
     });
   }
 
-  // 일반 스킬 설명 필터링 (skill1, skill2, skill3, highlight, passive2)
+  // 일반 스킬/의식 설명 필터링 (skill1, skill2, skill3, highlight, passive2, ritual)
   function filterModeDescription(baseHtml, mode) {
     if (!baseHtml || !mode) return baseHtml;
 
     const lang = getCurrentLanguage();
     const patterns = MODE_PATTERNS[lang] || MODE_PATTERNS.kr;
 
-    // 유지할 모드와 제거할 모드 결정
     const keepMode = mode;
     const removeMode = mode === 'spring' ? 'winter' : 'spring';
 
     const keepPatterns = patterns[keepMode] || [];
     const removePatterns = patterns[removeMode] || [];
 
-    // 모든 헤더 패턴 (다음 섹션 탐지용)
     const allPatterns = [...keepPatterns, ...removePatterns];
     const allHeadersPattern = allPatterns.map(h => escapeRegex(h)).join('|');
 
     let html = baseHtml;
 
-    // 제거할 모드 섹션 삭제
     removePatterns.forEach(header => {
-      // 줄바꿈 전의 패턴도 함께 제거 (\n\n 포함)
       const patternWithNewline = new RegExp(
         '\\n*' + escapeRegex(header) + '[\\s\\S]*?(?=(' + allHeadersPattern + '|$))',
         'g'
@@ -317,28 +335,22 @@
 
     const keepPatterns = patterns[mode] || [];
 
-    // 각 언어별 문장 구분자 처리
     let sentences;
     let joinChar;
     
     if (lang === 'jp') {
-      // 일본어: \n으로 분리
       sentences = baseHtml.split(/\n/);
       joinChar = '\n';
     } else if (lang === 'en') {
-      // 영어: \n으로 분리
       sentences = baseHtml.split(/\n/);
       joinChar = '\n';
     } else {
-      // 한국어: 마침표+공백(. )으로 분리 (한 줄에 두 문장이 있음)
       sentences = baseHtml.split(/(?<=다)\.\s*/);
       joinChar = '. ';
     }
 
-    // 유지할 패턴이 포함된 문장만 유지
     const filteredSentences = sentences.filter(sentence => {
       if (!sentence.trim()) return false;
-      // 유지할 패턴 중 하나라도 포함되어 있으면 유지
       for (const pattern of keepPatterns) {
         if (sentence.includes(pattern)) {
           return true;
@@ -347,7 +359,6 @@
       return false;
     });
 
-    // 한국어의 경우 마지막에 마침표 추가
     let result = filteredSentences.join(joinChar).trim();
     if (lang === 'kr' && result && !result.endsWith('.') && !result.endsWith('다')) {
       result += '.';
@@ -364,13 +375,11 @@
     const skillCards = skillsGrid.querySelectorAll('.skill-card');
     const baseUrl = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
 
-    // 스킬 인덱스별 원본/모드별 속성
-    // 0: skill1 (single), 1: skill2 (aoe), 2: skill3 (single), 3: highlight (single)
     const skillIconMapping = [
-      { index: 0, type: 'single' },  // skill1
-      { index: 1, type: 'aoe' },     // skill2
-      { index: 2, type: 'single' },  // skill3
-      { index: 3, type: 'single' }   // highlight
+      { index: 0, type: 'single' },
+      { index: 1, type: 'aoe' },
+      { index: 2, type: 'single' },
+      { index: 3, type: 'single' }
     ];
 
     skillIconMapping.forEach(({ index, type }) => {
@@ -380,21 +389,49 @@
       const iconImg = card.querySelector('.skill-icon');
       if (!iconImg) return;
 
-      // 원본 src 저장
       if (!iconImg.dataset.originalSrc) {
         iconImg.dataset.originalSrc = iconImg.src;
       }
 
       let newElement;
       if (mode === null) {
-        // 비활성화 → 원본으로
         newElement = ELEMENT_MAP.original[type];
       } else {
-        // 봄 또는 겨울
         newElement = ELEMENT_MAP[mode][type];
       }
 
       iconImg.src = `${baseUrl}/assets/img/skill-element/${newElement}.png`;
+    });
+  }
+
+  // 의식 설명 필터링
+  function applyRitualFilter() {
+    const ritualIndices = [1, 2, 4, 6]; // r1, r2, r4, r6만 필터링
+
+    ritualIndices.forEach(index => {
+      const ritualItem = document.querySelector(`.ritual-item[data-ritual="${index}"]`);
+      if (!ritualItem) return;
+
+      const descEl = ritualItem.querySelector('.ritual-description');
+      if (!descEl) return;
+
+      const baseAttr = 'mont2RitualBaseHtml_' + index;
+
+      // 원본 저장
+      if (!descEl.getAttribute('data-' + baseAttr)) {
+        descEl.setAttribute('data-' + baseAttr, descEl.innerHTML);
+      }
+
+      const baseHtml = descEl.getAttribute('data-' + baseAttr) || '';
+
+      if (selectedMode === null) {
+        // 모드 미선택 시 원본 복원
+        descEl.innerHTML = baseHtml;
+      } else {
+        // 모드 선택 시 필터링 적용
+        const filtered = filterModeDescription(baseHtml, selectedMode);
+        descEl.innerHTML = filtered;
+      }
     });
   }
 
@@ -416,10 +453,14 @@
       } catch (_) { }
 
       const skillsGrid = document.querySelector('.skills-grid');
-      if (!skillsGrid) return;
-
+      
       // 아이콘 업데이트
       updateSkillIcons(selectedMode);
+
+      // 의식 필터링 적용
+      applyRitualFilter();
+
+      if (!skillsGrid) return;
 
       // 모드가 선택되지 않으면 원본 표시
       if (selectedMode === null) {
@@ -429,9 +470,6 @@
 
       const descElements = skillsGrid.querySelectorAll('.skill-description');
 
-      // skill1(0), skill2(1), skill3(2), highlight(3) - 일반 필터링
-      // passive1(4) - 패시브1 전용 필터링
-      // passive2(5) - 일반 필터링
       const generalIndices = [0, 1, 2, 3, 5];
       const passive1Index = 4;
 

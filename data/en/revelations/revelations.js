@@ -172,7 +172,7 @@ const enRevelationData = {
         "Reconcilation": { // 화해
             "set2": "Increases Speed by 6.",
             "set4": "During combat your HP, ATK, DEF increase by 15%.",
-            "type": ["버프", "미출시"]
+            "type": ["버프"]
         },
         "Labor": { // 직책
             "set2": "Increase HP by 12%.",
@@ -269,7 +269,7 @@ const enRevelationData = {
             "set4": "Increase DMG Dealt by 16%.",
             "type": ["버프", "미출시"]
         },
-        "Fixation": { // 고집집
+        "Fixation": { // 고집
             "set2": "Increase ATK by 12%.",
             "set4": "Increase ATK by 25% for 3 turns; Gain this effect again when you use Theurgy.",
             "type": ["버프", "미출시"]
@@ -336,7 +336,7 @@ const enRevelationData = {
         "Creation": {
             "Reconcilation": "At the start of battle, increases the DMG Dealt of the ally with the lowest SPD by 12%, doesn't stack.",
             "Worry": "Increases CRIT DMG by 15%/ 30%/ 45% when you have 100%/ 150%/ 200% SP Recovery.",
-            "type": ["미출시"]
+            //"type": ["미출시"]
         },
         "Integrity": { // 진정성
             "Labor": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",

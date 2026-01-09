@@ -192,7 +192,7 @@ const MATERIAL_INFO = {
       }
     },
     md_bell: {
-      name: { kr: '별자리 방울', en: 'Zodiac Bell', jp: '星座の鈴' },
+      name: { kr: '별자리 방울', en: 'Zodiac Bell', jp: '星屑の鈴' },
       desc: {
         kr: '『괴도 심상·속성 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -200,7 +200,7 @@ const MATERIAL_INFO = {
       }
     },
     md_stat1: {
-      name: { kr: '명성 수정구·하급', en: 'Blue Fame Crystal', jp: '星名クリスタル・下級' },
+      name: { kr: '명성 수정구·하급', en: 'Blue Fame Crystal', jp: '星屑のボトル' },
       desc: {
         kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -208,7 +208,7 @@ const MATERIAL_INFO = {
       }
     },
     md_stat2: {
-      name: { kr: '명성 수정구·고급', en: 'Purple Fame Crystal', jp: '星名クリスタル・上級' },
+      name: { kr: '명성 수정구·고급', en: 'Purple Fame Crystal', jp: '明星のボトル' },
       desc: {
         kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -216,7 +216,7 @@ const MATERIAL_INFO = {
       }
     },
     md_skill1: {
-      name: { kr: '별가루 병·하급', en: 'Blue Star Dust Vial', jp: '星屑瓶・下級' },
+      name: { kr: '별가루 병·하급', en: 'Blue Star Dust Vial', jp: '星屑晶珠' },
       desc: {
         kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
         en: '',
@@ -224,7 +224,7 @@ const MATERIAL_INFO = {
       }
     },
     md_skill2: {
-      name: { kr: '별가루 병·고급', en: 'Purple Star Dust Vial', jp: '星屑瓶・上級' },
+      name: { kr: '별가루 병·고급', en: 'Purple Star Dust Vial', jp: '明星晶珠' },
       desc: {
         kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
         en: '',

@@ -1770,7 +1770,7 @@ Object.assign(window.characterData, {
         "tag":"폼 체인지, 추가 효과, 풍습, 동결, 관통",
         "video": ["3KRF2yYXtNs","EAjvUE4zwI4"],
         "video_en" : ["k6KIc0MogGg"],
-        "video_jp" : ["k6KIc0MogGg"],
+        "video_jp" : ["k6KIc0MogGg","JvtXPM693JM"],
         "color": "#483d8b",
         "main_revelation": ["자유", "전념"],
         "sub_revelation": ["개선", "화려"],

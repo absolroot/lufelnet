@@ -197,7 +197,7 @@ const enRevelationData = {
         "Defeat": { // 좌절
             "set2": "Increases Ailment Accuracy Rate by 15%.",
             "set4": "Increases fire damage to enemies affected by ailments by 20%.",
-            "type": ["화염", "디버프", "미출시"]
+            "type": ["화염", "디버프"]
         },
         "Opulence": { // 화려
             "set2": "Ice DMG increased by 10%.",

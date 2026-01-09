@@ -21,34 +21,34 @@ window.ritualData["몽타뉴·백조"] = {
 window.enCharacterRitualData["몽타뉴·백조"] = {
   "name": "Frostgale Kotone",
   "r0": "Swan on the Ice",
-  "r0_detail": "Frostgale Kotone has 2 modes: Spring and Winter. During battle, when Spring's Edge / Winter's Edge is not active, she can freely change between modes. When changing modes, the attributes of her skills and Highlight change. At the start of battle, she will be in Spring mode, but if more allies in the party have the Ice attribute than Wind attribute, she will be in Winter mode.",
-  "r1": "Flurry of Grooves Etched in Ice",
-  "r1_detail": "Spring: Each time Spring's Edge is activated, gain 1 Spring's Vestige stack. When Spring's Edge ends, increase Resonance damage by 8% for each Spring's Vestige stack (up to 40%).\nWinter: Each time Winter's Edge is activated, gain 1 Winter's Vestige stack. When Winter's Edge ends, increase Resonance damage by 8% for each Winter's Vestige stack (up to 40%).",
-  "r2": "Glaring Phoenix",
-  "r2_detail": "Spring: While Spring's Edge is active, decrease all foes' Defense by 40%, and decrease party's SP costs for Persona skills by 25%.\nWinter: While Winter's Edge is active, increase party's Ice damage by 30%, and decrease SP costs for Persona skills by 25%.",
+  "r0_detail": "Frostgale Kotone has 2 modes: Spring and Winter. During battle, she can freely change between modes while Spring's Edge / Winter's Edge is not active. When changing modes, the attributes of her skills and Highlight change. At the start of battle, she will be in Spring mode, but if there are more allies in the party that have the Ice attribute than the Wind attribute, she will be in Winter mode.\nFor every 1 Spring's Vestige or Winter's Vestige stack she gains, permanently increase Attack by 5% (stacks up to 7 times).",
+  "r1": "Etched in Ice",
+  "r1_detail": "Spring mode: Each time Spring's Edge is activated, gain 1 Spring's Vestige stack. When Spring's Edge ends, increase Resonance damage by 8% for each Spring's Vestige stack (up to 40%).\nWinter mode: Each time Winter's Edge is activated, gain 1 Winter's Vestige stack. When Winter's Edge ends, increase Resonance damage by 8% for each Winter's Vestige stack (up to 40%).",
+  "r2": "Swan's Gaze",
+  "r2_detail": "Spring mode: While Spring's Edge is active, decrease all foes' Defense by 40%, and decrease party's SP costs for skills by 25%.\nWinter mode: While Winter's Edge is active, increase party's Ice damage by 30%, and decrease SP costs for skills by 25%.",
   "r3": "Triple Axel",
   "r3_detail": "Increase the skill levels of Zephyr / Sapphire Storm and Ailes au Vent / Frozen Wings by 3.",
   "r4": "Queen of Ice and Wind",
-  "r4_detail": "Spring: When activating a Highlight, if Spring's Edge is active, gain 1 more Spring's Vestige stack. (Can gain more stacks than the maximum limit). Otherwise, increase Highlight damage by 25%.\nWinter: When activating a Highlight, if Winter's Edge is active, gain 1 more Winter's Vestige stack above the maximum limit. Otherwise, increase Highlight damage by 25%.",
-  "r5": "Season Highlight",
+  "r4_detail": "Spring mode: When activating a Highlight, if Spring's Edge is active, gain 1 more Spring's Vestige stack (this additional stack can exceed the maximum limit). If Spring's Edge is not active, increase Highlight damage by 35%.\nWinter mode: When activating a Highlight, if Winter's Edge is active, gain 1 more Winter's Vestige stack (this additional stack can exceed the maximum limit). If Winter's Edge is not active, increase Highlight damage by 35%.",
+  "r5": "Seasonal Highlight",
   "r5_detail": "Increase the skill levels of Éclat de Vent / Iceburst and Thief Tactics by 3.",
-  "r6": "Interpretive Dance of Love",
-  "r6_detail": "Spring: When Spring's Edge ends, after activating Resonance, extend the duration of Spring's Edge by 1 turn and gain 2 Spring's Vestige stacks. Afterwards, can activate Resonance again. Also, when Spring's Edge ends, increase Resonance pierce rate by 4% for each Spring's Vestige stack (up to 20%).\nWinter: When Winter's Edge ends, after activating Resonance, extend the duration of Winter's Edge by 1 turn and gain 2 Winter's Vestige stacks. Afterwards, can activate Resonance again. Also, when Winter's Edge ends, increase Resonance pierce rate by 4% for each Winter's Vestige stack (up to 20%)."
+  "r6": "Dance of Love",
+  "r6_detail": "Spring mode: After activating the Resonance when Spring's Edge ends, extend the duration of Spring's Edge by 1 turn. Regain up to 2 spent Spring's Vestige stacks, and regain up to 2 stacks that exceeded the maximum limit. Afterwards, the Resonance can be activated again (the duration cannot be extended again). Also increase Resonance pierce rate by 4% for each Spring's Vestige stack (up to 20%).\nWinter mode: After activating the Resonance when Winter's Edge ends, extend the duration of Winter's Edge by 1 turn. Regain up to 2 spent Winter's Vestige stacks, and regain up to 2 stacks that exceeded the maximum limit. Afterwards, the Resonance can be activated again (the duration cannot be extended again). Also increase Resonance pierce rate by 4% for each Winter's Vestige stack (up to 20%)."
 };
 window.jpCharacterRitualData["몽타뉴·백조"] = {
   "name": "琴音・アイスストーム",
   "r0": "水鏡の天鵝",
-  "r0_detail": "琴音・アイスストームは『旋風』と『銀盤』の２つの状態を持つ。戦闘中、『旋風結界』／『銀盤結界』が展開されていない時、自由に状態を切り替えることができる。状態を切り替えると、それぞれの属性に対応するスキル、ハイライトに変化する。戦闘開始時の状態は『旋風』状態だが、パーティの味方の属性が疾風属性より氷結属性の方が多い場合は『銀盤』状態になる。",
+  "r0_detail": "琴音・アイスストームは『旋風』と『銀盤』の２つの状態を持つ。戦闘中、『旋風結界』／『銀盤結界』が展開されていない時、自由に状態を切り替えることができる。状態を切り替えると、それぞれの属性に対応するスキル、ハイライトに変化する。戦闘開始時の状態は『旋風』状態だが、パーティの味方の属性が疾風属性より氷結属性の方が多い場合は『銀盤』状態になる。\n『旋風の刻線』または『銀盤の刻線』を１つ獲得するたび、永続的に攻撃力が５%上昇し、最大７つまで累積できる。",
   "r1": "銀盤に刻む旋風の軌跡",
   "r1_detail": "『旋風』状態：『旋風結界』を展開するごとに『旋風の刻線』を１つ獲得する。『旋風結界』の終了時、『旋風の刻線』１つごとに意識奏功によるダメージが８%上昇する（最大４０%まで）。\n『銀盤』状態：『銀盤結界』を展開するごとに『銀盤の刻線』を１つ獲得する。『銀盤結界』の終了時、『銀盤の刻線』１つごとに意識奏功によるダメージが８%上昇する（最大４０%まで）。",
   "r2": "まなざし浚う鵬翼",
-  "r2_detail": "『旋風』状態：『旋風結界』展開中の時、敵全体の防御力が４０%低下し、味方全体のペルソナスキル発動時のＳＰ消費量が２５%低下する。\n『銀盤』状態：『銀盤結界』展開中の時、味方全体の氷結属性ダメージが３０%上昇し、ペルソナスキル発動時のＳＰ消費量が２５%低下する。",
+  "r2_detail": "『旋風』状態：『旋風結界』展開中の時、敵全体の防御力が４０%低下し、味方全体のスキル発動時のＳＰ消費量が２５%低下する。\n『銀盤』状態：『銀盤結界』展開中の時、味方全体の氷結属性ダメージが３０%上昇し、スキル発動時のＳＰ消費量が２５%低下する。",
   "r3": "トリプルアクセル",
   "r3_detail": "『ゼフィール／蒼の嵐』『エルオヴァン／氷翼』のスキルレベルが３上昇する。",
   "r4": "風と氷の女王",
-  "r4_detail": "『旋風』状態：ハイライト発動時、『旋風結界』展開中であれば、『旋風の刻線』を追加で１つ獲得する。（追加獲得分は上限を超えて所持することができる。）それ以外の場合、ハイライトのダメージが２５%上昇する。\n『銀盤』状態：ハイライト発動時、『銀盤結界』展開中であれば、『銀盤の刻線』を上限を超えて追加で１つ獲得する。それ以外の場合、ハイライトのダメージが２５%上昇する。",
+  "r4_detail": "『旋風』状態：ハイライト発動時、『旋風結界』展開中であれば、『旋風の刻線』をさらに追加で１つ獲得する（この追加獲得分は上限を超えて所持することができる）。『旋風結界』が展開されていない場合、ハイライトのダメージが３５%上昇する。\n『銀盤』状態：ハイライト発動時、『銀盤結界』展開中であれば、『銀盤の刻線』を追加で１つ獲得する（この追加獲得分は上限を超えて所持することができる）。『銀盤結界』が展開されていない場合、さらにハイライトのダメージが３５%上昇する。",
   "r5": "シーズンハイライト",
   "r5_detail": "『エクラドヴァン／氷垂』『怪盗戦技』のスキルレベルが３上昇する。",
   "r6": "これが私の愛の踊り",
-  "r6_detail": "『旋風』状態：『旋風結界』終了時、意識奏功発動後、『旋風結界』が１ターン延長され、『旋風の刻線』を２つ獲得する。その後、意識奏功が再度発動可能になる。さらに『旋風結界』終了時、『旋風の刻線』１つごとに意識奏功の貫通力が４%上昇する（最大２０%まで）。\n『銀盤』状態：『銀盤結界』終了時、意識奏功発動後、『銀盤結界』が１ターン延長され、『銀盤の刻線』を２つ獲得する。その後、意識奏功が再度発動可能になる。さらに『銀盤結界』終了時、『銀盤の刻線』１つごとに意識奏功の貫通力が４%上昇する（最大２０%まで）。"
+  "r6_detail": "『旋風』状態：『旋風結界』終了時の意識奏功が発動後、『旋風結界』が１ターン延長される。また消費した『旋風の刻線』が２つまで返還され、上限を超えた追加獲得分も２つまで返還される。その後、再び意識奏功が発動できるようになる（延長と返還はされない）。さらに『旋風の刻線』１つごとに意識奏功の貫通力が４%上昇する（最大２０%まで）。\n『銀盤』状態：『銀盤結界』終了時の意識奏功が発動後、『銀盤結界』が１ターン延長される。また消費した『銀盤の刻線』が２つまで返還され、上限を超えた追加獲得分も２つまで返還される。その後、再び意識奏功が発動できるようになる（延長と返還はされない）。さらに『銀盤の刻線』１つごとに意識奏功の貫通力が４%上昇する（最大２０%まで）。"
 };

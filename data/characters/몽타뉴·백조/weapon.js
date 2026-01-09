@@ -28,7 +28,7 @@ window.enCharacterWeaponData["몽타뉴·백조"] = {
     "attack": 759.73,
     "defense": 374.35,
     "skill_name": "",
-    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Each time Ice Storm Kotone gains a Spring's Vestige or Winter's Vestige stack, increase critical rate by 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% for 2 turns. This effect can stack up to 3 times. When activating Spring's Edge or Winter's Edge, increase Wind or Ice damage by 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% for 2 turns."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. Each time Frostgale Kotone gains a Spring's Vestige or Winter's Vestige stack, increase critical rate by 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% for 2 turns. This effect can stack up to 3 times. When activating Spring's Edge or Winter's Edge, increase Wind or Ice damage by 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% for 2 turns."
   },
   "weapon4-1": {
     "name": "Lame de l'Aube",
@@ -36,7 +36,7 @@ window.enCharacterWeaponData["몽타뉴·백조"] = {
     "attack": 607.79,
     "defense": 299.47,
     "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time Ice Storm Kotone gains a Spring's Vestige or Winter's Vestige stack, permanently increase Attack by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%. This effect can stack up to 10 times."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time Frostgale Kotone gains a Spring's Vestige or Winter's Vestige stack, permanently increase Attack by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%. This effect can stack up to 10 times."
   }
 };
 window.jpCharacterWeaponData["몽타뉴·백조"] = {

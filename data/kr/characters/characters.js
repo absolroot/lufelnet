@@ -1233,7 +1233,7 @@ Object.assign(window.characterData, {
         "video": ["Dv_rI-K7UnY","gh3HhqBiBbQ"],
         "video_en" : [""],
         "video_jp" : [""],
-        "color": "#ff69b4",
+        "color": "#ffce5b",
         "main_revelation": ["자유", "여정"],
         "sub_revelation": ["좌절", "주권"],
         "element": "화염",

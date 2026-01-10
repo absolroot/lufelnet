@@ -54,14 +54,14 @@
             pullTracker: 'Pull Tracker', pullTracker_global: 'Pull Global Stats',
             materialCalc: 'Progression Calc', defenseCalc: 'Defense Calc', criticalCalc: 'Critical Calc',
             tacticLibrary: 'Tactics Library', tacticMaker: 'Tactic Maker',
-            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', synergy: 'Synergy', support: 'Support'
+            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', support: 'Support'
         },
         jp: {
             character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
             materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', synergy: 'シナジー', support: 'サポート'
+            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート'
         }
     };
 
@@ -80,6 +80,7 @@
         tier: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/tier.png`,
         guide: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/article.png`,
         gallery: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/gallery.png`,
+        schedule: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/schedule.png`,
         synergy: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/synergy.png`,
         support: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/support.png`
     };
@@ -99,6 +100,7 @@
         tier: '/tier/position-tier/',
         guide: '/article',
         gallery: '/gallery',
+        schedule: '/schedule',
         synergy: '/synergy',
         support: '/about'
     };
@@ -130,7 +132,7 @@
             return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','synergy','support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','synergy','support'];
+            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','synergy','support'];
         }
         // default to KR set
         return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','synergy','support'];
@@ -161,6 +163,10 @@
             img.alt = key;
             img.loading = 'lazy';
             img.src = iconMap[key] || `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/home.png`;
+            // schedule 아이콘 스케일 0.9 적용
+            if (key === 'schedule') {
+                img.style.transform = 'scale(0.9)';
+            }
             iconWrap.appendChild(img);
 
             const label = document.createElement('div');

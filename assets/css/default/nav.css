@@ -229,3 +229,7 @@
   .nav-item { padding: 14px 24px; }
   .nav-sub-item { padding: 14px 24px 14px 48px; }
 }
+
+/* schedule icon scale 0.9 */
+.nav-link[data-nav="schedule"] img { transform: scale(0.9); }
+

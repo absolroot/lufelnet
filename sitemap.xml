@@ -111,6 +111,18 @@ sitemap:
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/wonder-weapon/" />
   </url>
 
+  <!-- Release Schedule -->
+  <url>
+    <loc>{{ site.url }}/schedule/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/schedule/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/schedule/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/schedule/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/schedule/" />
+  </url>
+
   <!-- Tactics Library -->
   <url>
     <loc>{{ site.url }}/tactic/tactics.html</loc>

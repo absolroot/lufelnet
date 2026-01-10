@@ -21,7 +21,7 @@ window.ReleaseScheduleData = {
     manualReleases: [
         // ===== 2025년 =====
         { version: "0.0", date: "2025-06-25", characters: ["안" ,"류지", "모르가나", "야오링", "하루나", "루페르", "레오", "모토하", "몽타뉴", "슌", "세이지","유키미", "키요시", "토모코", "토시야", "미유", "카요"], note: "Global Launch" },
-        { version: "1.0", date: "2025-06-25", characters: ["렌"], "main-story": "1/2" },
+        { version: "1.0", date: "2025-06-25", characters: ["렌"], "main-story": "1&2" },
         { version: "1.1", date: "2025-07-10", characters: ["YUI", "미나미"] },
         { version: "1.2", date: "2025-07-24", characters: ["유스케"] },
         { version: "1.3", date: "2025-08-07", characters: ["마코토", "치즈코"] },

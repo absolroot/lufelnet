@@ -9,8 +9,20 @@ redirect_from:
 - /jp/schedule/
 language: en
 title: Release Schedule - Persona 5 The Phantom X | lufel.net
-description: EN/JP Server release schedule for Persona 5 The Phantom X characters
+description: GLB Server Release schedule for Persona 5 The Phantom X characters
+alternate_urls:
+  en: /schedule/?lang=en
+  jp: /schedule/?lang=jp
+  kr: /schedule/?lang=kr
 ---
+
+<!-- SEO Meta Tags -->
+{% if page.alternate_urls %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}/schedule/?lang=en" />
+<link rel="alternate" hreflang="ja" href="{{ site.url }}/schedule/?lang=jp" />
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/schedule/?lang=kr" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/schedule/?lang=en" />
+{% endif %}
 
 <!-- Schedule Page CSS -->
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/schedule/schedule.css?v={{ site.time | date: '%s' }}">
@@ -32,19 +44,22 @@ description: EN/JP Server release schedule for Persona 5 The Phantom X character
     <!-- Notice Banner -->
     <div class="schedule-notice" id="schedule-notice">
         <p class="notice-text" id="notice-text-en">
-            This schedule is for GLB/JP servers. For SEA server, add +1 week to each date.<br>
+            Be careful with spoilers.<br>
+            This schedule is for GLB/JP servers. For SEA server, add 8 days to each date.<br>
             Until version 4.0, new characters release every 2 weeks; after 4.0, the interval changes to 3 weeks. 
             Schedule may vary due to events/holidays. Character release order is subject to change.<br>
             For detailed patch history, see <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>.
         </p>
         <p class="notice-text" id="notice-text-jp" style="display: none;">
-            このスケジュールはGLB/JPサーバー用です。SEAサーバーは各日付に+1週間を追加してください。<br>
+            スポイラーに注意してください。<br>
+            このスケジュールはGLB/JPサーバー用です。SEAサーバーは各日付に8日を追加してください。<br>
             バージョン4.0までは2週間ごと、4.0以降は3週間ごとのリリースです。
             イベント・祝日により変更される場合があります。<br>
             詳細なパッチ履歴は<a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>をご覧ください。
         </p>
         <p class="notice-text" id="notice-text-kr" style="display: none;">
-            이 스케줄은 GLB/JP 서버 기준입니다. SEA 서버는 각 날짜에 +1주를 더해주세요.<br>
+            스포일러에 주의하세요.<br>
+            이 스케줄은 GLB/JP 서버 기준입니다. SEA 서버는 각 날짜에 8일을 더해주세요.<br>
             4.0 버전까지는 2주 간격, 이후는 3주 간격으로 출시됩니다.
             이벤트/휴일에 따라 변경될 수 있으며, 출시 순서도 변경될 수 있습니다.<br>
             자세한 패치 히스토리는 <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>를 참고하세요.
@@ -120,9 +135,107 @@ description: EN/JP Server release schedule for Persona 5 The Phantom X character
         return urlParams.get('lang') || 'en';
     }
 
+    // SEO Meta Data
+    const seoData = {
+        en: {
+            title: 'Release Schedule - Persona 5 The Phantom X | lufel.net',
+            description: 'Release schedule for Persona 5 The Phantom X characters. Track upcoming character releases, current banners, and patch history.',
+            keywords: 'P5X, Persona 5X, Release Schedule, Character Release, Banner Schedule, P5X Schedule, GLB Server, JP Server',
+            ogLocale: 'en_US'
+        },
+        jp: {
+            title: 'リリーススケジュール - ペルソナ5 ザ・ファントム X | lufel.net',
+            description: 'ペルソナ5 ザ・ファントム Xキャラクターリリーススケジュール。今後のキャラクターリリース、現在のバナー、パッチ履歴を追跡できます。',
+            keywords: 'P5X, ペルソナ5X, リリーススケジュール, キャラクターリリース, バナースケジュール, P5Xスケジュール, GLBサーバー, JPサーバー',
+            ogLocale: 'ja_JP'
+        },
+        kr: {
+            title: '출시 스케줄 - 페르소나5 더 팬텀 X | lufel.net',
+            description: '페르소나5 더 팬텀 X 캐릭터 출시 스케줄. 향후 캐릭터 출시, 현재 배너, 패치 히스토리를 추적할 수 있습니다.',
+            keywords: 'P5X, 페르소나5X, 출시 스케줄, 캐릭터 출시, 배너 스케줄, P5X 스케줄, GLB 서버, JP 서버',
+            ogLocale: 'ko_KR'
+        }
+    };
+
+    function updateSEOTags(lang) {
+        const seo = seoData[lang] || seoData.en;
+        const baseUrl = 'https://lufel.net';
+        const currentUrl = `${baseUrl}/schedule/?lang=${lang}`;
+
+        // Update document title
+        document.title = seo.title;
+
+        // Update meta description
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (!metaDesc) {
+            metaDesc = document.createElement('meta');
+            metaDesc.setAttribute('name', 'description');
+            document.head.appendChild(metaDesc);
+        }
+        metaDesc.setAttribute('content', seo.description);
+
+        // Update meta keywords
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+            metaKeywords = document.createElement('meta');
+            metaKeywords.setAttribute('name', 'keywords');
+            document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.setAttribute('content', seo.keywords);
+
+        // Update Open Graph tags
+        function updateOGTag(property, content) {
+            let tag = document.querySelector(`meta[property="${property}"]`);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute('property', property);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        }
+
+        updateOGTag('og:title', seo.title);
+        updateOGTag('og:description', seo.description);
+        updateOGTag('og:url', currentUrl);
+        updateOGTag('og:locale', seo.ogLocale);
+        updateOGTag('og:type', 'website');
+        updateOGTag('og:image', `${baseUrl}/assets/img/home/seo.png`);
+
+        // Update Twitter Card tags
+        function updateTwitterTag(name, content) {
+            let tag = document.querySelector(`meta[name="${name}"]`);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute('name', name);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        }
+
+        updateTwitterTag('twitter:card', 'summary_large_image');
+        updateTwitterTag('twitter:title', seo.title);
+        updateTwitterTag('twitter:description', seo.description);
+        updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
+
+        // Update canonical URL
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.setAttribute('rel', 'canonical');
+            document.head.appendChild(canonical);
+        }
+        canonical.setAttribute('href', currentUrl);
+
+        // Update HTML lang attribute
+        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang);
+    }
+
     function applyTranslations() {
         const lang = detectLang();
         const t = translations[lang] || translations.en;
+
+        // Update SEO tags
+        updateSEOTags(lang);
 
         // Navigation
         const navHome = document.getElementById('nav-home');

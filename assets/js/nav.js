@@ -49,7 +49,7 @@ class Navigation {
                 pullTracker: '계약 트래커',
                 pullTracker_individual: '개인 통계',
                 pullTracker_global: '전체 통계',
-                // schedule: '스케줄',
+                schedule: '스케줄',
                 article: '가이드',
                 gallery: '갤러리',
                 about: 'about'
@@ -75,7 +75,7 @@ class Navigation {
                 pullTracker: 'Pull Tracker',
                 pullTracker_individual: 'Individual Stats',
                 pullTracker_global: 'Global Stats',
-                // schedule: 'Schedule',
+                schedule: 'Schedule',
                 article: 'Guides',
                 gallery: 'Gallery',
                 about: 'About'
@@ -101,7 +101,7 @@ class Navigation {
                 pullTracker: 'ガチャ履歴',
                 pullTracker_individual: '個人統計',
                 pullTracker_global: '全体統計',
-                // schedule: 'スケジュール',
+                schedule: 'スケジュール',
                 article: 'ガイド',
                 gallery: 'ギャラリー',
                 about: '紹介'
@@ -129,11 +129,10 @@ class Navigation {
         const texts = i18n[currentLang] || i18n.kr;
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
-        // KR/CN/TW는 별도 출시 데이터가 있어서 schedule 메뉴 숨김
         const availableMenus = {
             kr: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
-            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', /* 'schedule', */ 'gallery', 'about'],
-            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', /* 'schedule', */ 'gallery', 'about'],
+            en: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
+            jp: ['character', 'persona', 'revelations', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -260,13 +259,13 @@ class Navigation {
                     </div>
                 </div>
                 ` : ''}
-                ${/* SCHEDULE MENU DISABLED - uncomment to enable
+                ${ 
                 currentMenus.includes('schedule') ? `
                 <a href="${BASE_URL}/schedule/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="schedule">
                     <img src="${BASE_URL}/assets/img/nav/schedule.png" alt="schedule" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.schedule}">${texts.schedule}</span>
                 </a>
-                ` : '' */ ''}
+                ` : '' }
                 ${currentMenus.includes('gallery') ? `
                     <a href="${BASE_URL}/gallery/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
                         <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 32px; height: 32px; object-fit: contain;" />

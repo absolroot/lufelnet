@@ -64,7 +64,6 @@ Object.assign(window.characterData, {
         "video": [""],
         "video_en": [""],
         "video_jp": [""],
-        "persona3": true,
         "color": "#d03b3b",
         "main_revelation": [""],
         "sub_revelation": [""],

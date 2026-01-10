@@ -43,77 +43,63 @@
 /* Current Info Banner */
 .current-banner {
     background: var(--card-background, #232323);
-    border: 1px solid rgba(100, 149, 237, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: 16px 20px;
     margin: 0 20px 24px 20px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
 }
 
-.current-info,
-.next-release {
+/* Banner Item - 동일한 구조 */
+.banner-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
-.current-label {
+.banner-label {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.5);
 }
 
-.current-character {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+.banner-character {
     display: flex;
     align-items: center;
-    margin-top: 8px;
     gap: 10px;
+    margin-top: 4px;
 }
 
-.current-char-avatar {
+.banner-char-avatar {
     width: 40px;
     height: 40px;
     border-radius: 6px;
     object-fit: cover;
 }
 
+.banner-char-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.banner-countdown {
+    font-size: 12px;
+    color: rgba(255, 193, 7, 0.85);
+    margin-top: 2px;
+}
+
+/* Next Release - 오른쪽 정렬 */
 .next-release {
     text-align: right;
 }
 
-.next-release .countdown {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.next-character {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: flex-end;
-}
-
-.next-char-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    object-fit: cover;
-}
-
-.banner-end-date {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-    margin-top: 2px;
+.next-release .banner-character {
+    flex-direction: row-reverse;
 }
 
 @media (max-width: 768px) {
@@ -122,14 +108,19 @@
         text-align: center;
         margin: 0 0 20px 0;
         padding: 14px;
+        gap: 16px;
+    }
+    
+    .banner-item {
+        align-items: center;
     }
     
     .next-release {
         text-align: center;
     }
     
-    .next-character {
-        justify-content: center;
+    .next-release .banner-character {
+        flex-direction: row;
     }
 }
 
@@ -324,7 +315,7 @@
 
 @media (max-width: 768px) {
     .timeline-node {
-        left: -23px;
+        left: -26.5px;
         top: 18px;
         width: 10px;
         height: 10px;
@@ -364,6 +355,32 @@
     font-size: 1rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
+}
+
+/* Content Badge (콜라보, 메인 스토리 등) */
+.content-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    margin-left: 8px;
+}
+
+.content-icon {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.content-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
 }
 
 .release-date {
@@ -408,12 +425,22 @@
     }
 }
 
+/* Character List Wrapper - 콜라보 아이콘 포함 */
+.character-list-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 /* Character List */
 .character-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
+
+/* Collaboration Icon - release card 레벨 */
 
 .character-item {
     display: flex;
@@ -457,6 +484,15 @@
     text-overflow: ellipsis;
 }
 
+.character-codename {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: -2px;
+}
+
 .character-meta {
     display: flex;
     align-items: center;
@@ -479,6 +515,7 @@
     height: 14px;
     object-fit: contain;
 }
+
 
 /* Rarity Stars */
 .rarity-star {
@@ -548,6 +585,26 @@
     .character-item {
         width: 100%;
         min-width: unset;
+    }
+    
+    /* 모바일에서 배지들이 화면을 뚫고 나가지 않도록 */
+    .character-list-wrapper {
+        gap: 8px;
+    }
+    
+    .content-badge {
+        margin-left: 0;
+        margin-top: 8px;
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .content-icon {
+        height: 20px;
+    }
+    
+    .content-label {
+        font-size: 11px;
     }
 }
 

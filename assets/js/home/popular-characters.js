@@ -9,15 +9,18 @@
              { name: 'YUI', badge: 'NEW' },
              { name: '유우미', badge: 'NEW' },
              { name: '토모코·여름', badge: 'NEW' },
+             { name: 'J&C', badge: 'HOT' },
              { name: '마나카', badge: 'HOT' },
              { name: '미나미·여름', badge: 'HOT' },
              { name: '리코·매화', badge: 'HOT' },
          ],
          en: [
+            { name: 'J&C', badge: 'HOT' },
             { name: '아야카', badge: 'HOT' },
             { name: '후타바', badge: 'HOT' },
          ],
          jp: [
+            { name: 'J&C', badge: 'HOT' },
             { name: '아야카', badge: 'HOT' },
             { name: '후타바', badge: 'HOT' },
          ],

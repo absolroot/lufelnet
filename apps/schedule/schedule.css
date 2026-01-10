@@ -1,0 +1,583 @@
+/* ========================================
+   P5X Release Schedule - Stylesheet
+   EN/JP Server Schedule Page
+   ======================================== */
+
+/* Schedule Page */
+.schedule-page {
+    padding-bottom: 40px;
+}
+
+/* Notice Banner */
+.schedule-notice {
+    background: var(--card-background, #232323);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 0 20px 20px 20px;
+}
+
+.schedule-notice a {
+    color: rgba(120, 200, 255, 0.9);
+    text-decoration: none;
+}
+
+.schedule-notice a:hover {
+    text-decoration: underline;
+}
+
+.notice-text {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+}
+
+@media (max-width: 1200px) {
+    .schedule-notice {
+        margin: 0 0 16px 0;
+    }
+}
+
+/* Current Info Banner */
+.current-banner {
+    background: var(--card-background, #232323);
+    border: 1px solid rgba(100, 149, 237, 0.3);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 0 20px 24px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.current-info,
+.next-release {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.current-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.current-character {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 10px;
+}
+
+.current-char-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.next-release {
+    text-align: right;
+}
+
+.next-release .countdown {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.next-character {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.next-char-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.banner-end-date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .current-banner {
+        flex-direction: column;
+        text-align: center;
+        margin: 0 0 20px 0;
+        padding: 14px;
+    }
+    
+    .next-release {
+        text-align: center;
+    }
+    
+    .next-character {
+        justify-content: center;
+    }
+}
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    gap: 8px;
+    margin: 0 20px 20px 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: var(--card-background, #232323);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-family: inherit;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-btn.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 768px) {
+    .filter-section {
+        margin: 0 0 16px 0;
+    }
+    
+    .filter-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Timeline Container */
+.timeline-container {
+    margin: 0 20px;
+    position: relative;
+    padding-left: 32px;
+}
+
+/* Timeline Line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+    .timeline-container {
+        margin: 0;
+        padding-left: 28px;
+    }
+    
+    .timeline-container::before {
+        left: 7px;
+    }
+}
+
+/* Released Section - Simple Toggle Button */
+.released-section {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.released-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 12px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.released-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.released-toggle-btn.expanded {
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 16px;
+}
+
+.toggle-text {
+    flex: 1;
+    text-align: left;
+}
+
+.toggle-count {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 12px;
+}
+
+.toggle-icon {
+    font-size: 16px;
+    font-weight: 300;
+    width: 20px;
+    text-align: center;
+}
+
+.released-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.released-content.expanded {
+    max-height: 50000px;
+    transition: max-height 0.6s ease-in;
+}
+
+/* Release Card */
+.release-card {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+/* Timeline Node - 카드 상단 기준 고정 위치 */
+.timeline-node {
+    position: absolute;
+    left: -30px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    z-index: 2;
+}
+
+/* Current */
+.release-card.status-current .timeline-node {
+    border-color: rgba(120, 200, 255, 0.9);
+    background: #1a1a1a;
+    box-shadow: 0 0 8px rgba(120, 200, 255, 0.5);
+}
+
+.release-card.status-current .card-content {
+    background: linear-gradient(135deg, #2a3a4a 0%, #1e2a35 100%);
+    border-color: rgba(120, 200, 255, 0.5);
+    box-shadow: 0 0 0 1px rgba(120, 200, 255, 0.2), 0 4px 16px rgba(120, 200, 255, 0.15);
+}
+
+/* Upcoming */
+.release-card.status-upcoming .timeline-node {
+    border-color: rgba(255, 193, 7, 0.8);
+    background: #1a1a1a;
+}
+
+.release-card.status-upcoming .card-content {
+    background: linear-gradient(135deg, #3a3520 0%, #2a2818 100%);
+    border-color: rgba(255, 193, 7, 0.45);
+    box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.15), 0 4px 12px rgba(255, 193, 7, 0.1);
+}
+
+/* Future */
+.release-card.status-future .timeline-node {
+    border-color: rgba(100, 149, 237, 0.6);
+    background: #1a1a1a;
+}
+
+/* Released */
+.release-card.status-released .timeline-node {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+    .timeline-node {
+        left: -23px;
+        top: 18px;
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Card Content */
+.card-content {
+    background: var(--card-background, #232323);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+}
+
+.release-card:hover .card-content {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.version-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.version-badge {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.release-date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.released {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.status-badge.current {
+    background: rgba(120, 200, 255, 0.2);
+    color: rgba(120, 200, 255, 1);
+}
+
+.status-badge.upcoming {
+    background: rgba(255, 193, 7, 0.15);
+    color: rgba(255, 193, 7, 0.9);
+}
+
+.status-badge.future {
+    background: rgba(100, 149, 237, 0.15);
+    color: rgba(100, 149, 237, 0.9);
+}
+
+@media (max-width: 768px) {
+    .card-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Character List */
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.character-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    min-width: 180px;
+    cursor: pointer;
+}
+
+.character-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Character Avatar */
+.character-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+
+.character-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.character-name {
+    font-weight: 500;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.character-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Position Icon */
+.position-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+/* Element Icon */
+.element-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+/* Rarity Stars */
+.rarity-star {
+    color: #ffd700;
+    font-size: 9px;
+    letter-spacing: -1px;
+}
+
+/* 5성 한정 - 그래디언트 */
+.rarity-star.star5-limit {
+    background: linear-gradient(45deg, #b1c0ec, #c4ffff, #e4c2d3, #c6a9f9, #ba7f96, #c4ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 150% auto;
+}
+
+/* Release Note */
+.release-note {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Year Divider */
+.year-divider {
+    text-align: center;
+    margin: 28px 0 20px 0;
+    position: relative;
+    margin-left: -32px;
+}
+
+.year-divider::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.year-label {
+    display: inline-block;
+    background: var(--bg-color, #111111);
+    padding: 4px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .year-divider {
+        margin-left: -28px;
+    }
+    
+    .year-divider::before {
+        left: 28px;
+    }
+    
+    .character-item {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+/* Loading State */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+}

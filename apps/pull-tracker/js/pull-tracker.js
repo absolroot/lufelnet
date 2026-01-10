@@ -1064,16 +1064,27 @@
             const total4 = getNumber(block, ['summary', 'total4Star']);
             const win5050 = getNumber(block, ['summary', 'win5050']);
 
+            // 보정값 가져오기 (먼저 정의해야 함)
+            let adjustedTotal = total;
+            let adjustedProgress = inProgress;
+            if (window.RecordManager && window.RecordManager.getAdjustedTotal) {
+                adjustedTotal = window.RecordManager.getAdjustedTotal(key, total);
+                adjustedProgress = window.RecordManager.getAdjustedProgress(key, inProgress);
+            }
+
+            // 보정된 유효 뽑기 수 계산
+            const adjustedEffectiveTotal = Math.max(0, adjustedTotal - adjustedProgress);
+
             // 확률(비율): 전체 뽑기 대비 해당 등급 출현 비율
             // 5★ 확률만 (총-진행중) 기준, 4★는 총 뽑기 기준
-            const fiveRate = effectiveTotal > 0 && total5 >= 0 ? ((total5 / effectiveTotal) * 100) : null;
-            const fourRate = total > 0 && total4 >= 0 ? ((total4 / total) * 100) : null;
+            const fiveRate = adjustedEffectiveTotal > 0 && total5 >= 0 ? ((total5 / adjustedEffectiveTotal) * 100) : null;
+            const fourRate = adjustedTotal > 0 && total4 >= 0 ? ((total4 / adjustedTotal) * 100) : null;
             // 평균 뽑기 횟수: 데이터 기반 근사치 (총 뽑기 / 등급 개수). 5★은 avgPity 우선 사용
-            const fiveAvg = (total5 > 0 ? (effectiveTotal / total5) : null);
-            const fourAvg = total4 > 0 ? (total / total4) : null;
+            const fiveAvg = (total5 > 0 ? (adjustedEffectiveTotal / total5) : null);
+            const fourAvg = total4 > 0 ? (adjustedTotal / total4) : null;
             // 50:50 승리 비율: 5★ 중 win5050 개수 비율
             const win5050Rate = (total5 > 0 && win5050 != null) ? ((win5050 / total5) * 100) : null;
-            const win5050Avg = (win5050 && win5050 > 0) ? (effectiveTotal / win5050) : null;
+            const win5050Avg = (win5050 && win5050 > 0) ? (adjustedEffectiveTotal / win5050) : null;
 
             const card = document.createElement('div');
             card.className = 'stat-card';
@@ -1107,16 +1118,47 @@
                 titleWrap.appendChild(icon);
             }
             titleWrap.appendChild(help);
+
+            // + 버튼 (수동 추가) - 가장 오른쪽에 배치
+            if (window.ManualEditor && window.ManualEditor.createAddButton) {
+                const addBtn = window.ManualEditor.createAddButton(key, (grade) => {
+                    window.ManualEditor.openAddModal(key, grade, (record, panelKey) => {
+                        if (window.RecordManager && window.RecordManager.addRecord) {
+                            const success = window.RecordManager.addRecord(record, panelKey);
+                            if (success) {
+                                window.RecordManager.triggerRerender();
+                                setStatus((lang==='en'?'Record added.':(lang==='jp'?'記録を追加しました。':'기록이 추가되었습니다.')) + ' ' + nowStamp());
+                            }
+                        }
+                    });
+                });
+                titleWrap.appendChild(addBtn);
+            }
+
             card.appendChild(titleWrap);
             // bind cursor-follow tooltip
             ensureTooltipLib().then(() => { try { if (window.bindTooltipElement) window.bindTooltipElement(help); } catch(_) {} });
 
             // 상단 총계: 총 뽑기 / 진행 중 (진행중은 작고 연해)
-            const totalPair = (total != null) ? `${numberFmt(total)} / ` : '-';
+            const totalPair = (adjustedTotal != null) ? `${numberFmt(adjustedTotal)} / ` : '-';
             const rowTop = makeStatRow(textFor('totalInProgress'), totalPair);
-            if (total != null) {
-                const ip = document.createElement('span'); ip.className='inprogress'; ip.textContent=numberFmt(inProgress);
+            if (adjustedTotal != null) {
+                const ip = document.createElement('span'); ip.className='inprogress'; ip.textContent=numberFmt(adjustedProgress);
                 rowTop.lastChild.appendChild(ip);
+
+                // 수정 아이콘 추가
+                if (window.ManualEditor && window.ManualEditor.createEditIcon) {
+                    const editIcon = window.ManualEditor.createEditIcon(() => {
+                        window.ManualEditor.openAdjustModal(key, total, inProgress, (additionalPulls, progressAdjust) => {
+                            if (window.RecordManager && window.RecordManager.setAdjustment) {
+                                window.RecordManager.setAdjustment(key, additionalPulls, progressAdjust);
+                                window.RecordManager.triggerRerender();
+                                setStatus((lang==='en'?'Adjustment saved.':(lang==='jp'?'補正を保存しました。':'보정값이 저장되었습니다.')) + ' ' + nowStamp());
+                            }
+                        });
+                    });
+                    rowTop.lastChild.appendChild(editIcon);
+                }
             }
             card.appendChild(rowTop);
 
@@ -1165,7 +1207,7 @@
             const pills = document.createElement('div');
             pills.className = 'pills';
             // if (DEBUG) console.log('[pull-tracker] render pills for', label);
-            renderNamePills(block, pills, label, hide4);
+            renderNamePills(block, pills, label, hide4, key);
             card.appendChild(pills);
 
             // 아코디언: 5★ 상세 기록 (이미지/이름/시간/천장)
@@ -1176,16 +1218,25 @@
                 accordion.appendChild(summary);
                 const listWrap = document.createElement('div');
                 listWrap.className = 'five-list';
-                const fiveRecords = collectFiveStarRecords(block).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
+
+                // RecordManager에서 pity 포함 5★ 기록 가져오기
+                let fiveRecords;
+                if (window.RecordManager && window.RecordManager.collectFiveStarWithPity) {
+                    fiveRecords = window.RecordManager.collectFiveStarWithPity(key).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
+                } else {
+                    fiveRecords = collectFiveStarRecords(block).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
+                }
+
                 for (const rec of fiveRecords) {
                     const row = document.createElement('div');
-                    row.className = 'five-row';
+                    row.className = 'five-row five-row-clickable';
+                    row.style.cursor = 'pointer';
                     const left = document.createElement('div');
                     left.className = 'five-left';
                     const avatar = (label === 'weapon') ? weaponThumbFor(rec.name) : characterThumbFor(rec.name);
                     if (avatar) left.appendChild(avatar);
                     const nameEl = document.createElement('span');
-                    nameEl.textContent = rec.name;
+                    nameEl.textContent = resolveDisplayName(rec.name, label);
                     // 운명/무기: 승(lose list에 없는 id)을 노란색으로 강조
                     try {
                         if (label==='fortune' || label==='weapon'){
@@ -1197,16 +1248,52 @@
                         }
                     } catch(_) {}
                     left.appendChild(nameEl);
+
+                    // 수동 태그 표시 (수동 입력된 기록만)
+                    const isManual = window.RecordManager && window.RecordManager.isManualRecord && window.RecordManager.isManualRecord(rec);
+                    if (isManual) {
+                        const tag = document.createElement('span');
+                        tag.className = 'five-manual-tag';
+                        tag.textContent = lang==='en'?'Manual':(lang==='jp'?'手動':'수동');
+                        tag.style.cssText = 'font-size:10px; padding:2px 6px; background:rgba(100,200,100,0.2); color:#8f8; border-radius:4px; margin-left:6px;';
+                        left.appendChild(tag);
+                    }
+
                     const right = document.createElement('div');
                     right.className = 'five-right';
                     const timeEl = document.createElement('span');
                     timeEl.textContent = tsToLocal(rec.timestamp);
                     const pityEl = document.createElement('span');
-                    pityEl.textContent = `${rec.pity} ${textFor('timesSuffix')}`;
+                    // manualPity 또는 계산된 pity 사용
+                    const displayPity = rec._displayPity || rec.pity || rec.manualPity || '-';
+                    pityEl.textContent = `${displayPity} ${textFor('timesSuffix')}`;
                     right.appendChild(timeEl);
                     right.appendChild(pityEl);
                     row.appendChild(left);
                     row.appendChild(right);
+
+                    // 클릭 이벤트: 수정 모달 열기
+                    row.addEventListener('click', () => {
+                        if (window.ManualEditor && window.ManualEditor.openEditModal) {
+                            window.ManualEditor.openEditModal(rec, key,
+                                // onSave
+                                (updated, pk) => {
+                                    if (window.RecordManager && window.RecordManager.updateRecord(updated, pk)) {
+                                        window.RecordManager.triggerRerender();
+                                        setStatus((lang==='en'?'Record updated.':(lang==='jp'?'記録を更新しました。':'기록이 수정되었습니다.')) + ' ' + nowStamp());
+                                    }
+                                },
+                                // onDelete
+                                (deleted, pk) => {
+                                    if (window.RecordManager && window.RecordManager.deleteRecord(deleted, pk)) {
+                                        window.RecordManager.triggerRerender();
+                                        setStatus((lang==='en'?'Record deleted.':(lang==='jp'?'記録を削除しました。':'기록이 삭제되었습니다.')) + ' ' + nowStamp());
+                                    }
+                                }
+                            );
+                        }
+                    });
+
                     listWrap.appendChild(row);
                 }
                 accordion.appendChild(listWrap);
@@ -1373,7 +1460,17 @@
     }
 
     function tsToLocal(ts){
-        try { const d = new Date(Number(ts)); if (!isNaN(d)) return d.toLocaleString(); } catch(_) {}
+        try {
+            const d = new Date(Number(ts));
+            if (isNaN(d)) return '';
+            const pad = n => String(n).padStart(2, '0');
+            const yy = String(d.getFullYear()).slice(-2);
+            const mm = pad(d.getMonth() + 1);
+            const dd = pad(d.getDate());
+            const hh = pad(d.getHours());
+            const mi = pad(d.getMinutes());
+            return `${yy}-${mm}-${dd} ${hh}:${mi}`;
+        } catch(_) {}
         return '';
     }
 
@@ -1500,7 +1597,7 @@
         return `5★ ${five}, 4★ ${four}`;
     }
 
-    function renderNamePills(block, container, label, hide4) {
+    function renderNamePills(block, container, label, hide4, panelKey) {
         try {
             const list = [];
             const records = (block.records || []).flatMap(r => Array.isArray(r.record) ? r.record : []);
@@ -1524,7 +1621,7 @@
                 const arr = Array.from(m.entries()).sort((a,b) => b[1]-a[1]);
                 for (const [name, cnt] of arr) {
                     const pill = document.createElement('span');
-                    pill.className = 'pill';
+                    pill.className = 'pill pill-clickable';
                     if (g === 5) pill.classList.add('grade-5');
                     else if (g === 4) pill.classList.add('grade-4');
                     // 이미지: 무기 카드는 무기 이미지, 그 외는 캐릭터 이미지
@@ -1546,6 +1643,34 @@
                         } catch(_) {}
                     }
                     pill.appendChild(text);
+
+                    // 클릭 이벤트: 해당 캐릭터/무기의 히스토리 패널 열기
+                    pill.style.cursor = 'pointer';
+                    pill.addEventListener('click', () => {
+                        if (window.RecordManager && window.ManualEditor) {
+                            const historyRecords = window.RecordManager.collectRecordsByName(name, panelKey);
+                            window.ManualEditor.openHistoryPanel(disp, historyRecords, panelKey, (rec) => {
+                                // 개별 레코드 수정 모달 열기
+                                window.ManualEditor.openEditModal(rec, panelKey, 
+                                    // onSave
+                                    (updated, pk) => {
+                                        if (window.RecordManager.updateRecord(updated, pk)) {
+                                            window.RecordManager.triggerRerender();
+                                            setStatus((lang==='en'?'Record updated.':(lang==='jp'?'記録を更新しました。':'기록이 수정되었습니다.')) + ' ' + nowStamp());
+                                        }
+                                    },
+                                    // onDelete
+                                    (deleted, pk) => {
+                                        if (window.RecordManager.deleteRecord(deleted, pk)) {
+                                            window.RecordManager.triggerRerender();
+                                            setStatus((lang==='en'?'Record deleted.':(lang==='jp'?'記録を削除しました。':'기록이 삭제되었습니다.')) + ' ' + nowStamp());
+                                        }
+                                    }
+                                );
+                            });
+                        }
+                    });
+
                     container.appendChild(pill);
                 }
             }

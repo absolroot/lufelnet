@@ -4,7 +4,7 @@ window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
 window.WeaponData["유스케"] = {
   "name": "키타가와 유스케",
   "weapon4-1": {
-    "name": "기합도",
+    "name": "거합도",
     "health": 1966,
     "attack": 433,
     "defense": 422,

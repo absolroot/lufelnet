@@ -4,7 +4,7 @@ window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
 window.WeaponData["미츠루"] = {
   "name": "키리조 미츠루",
   "weapon4-1": {
-    "name": "장미의 불꽃검",
+    "name": "플람베르크",
     "health": 1823,
     "attack": 581,
     "defense": 323,

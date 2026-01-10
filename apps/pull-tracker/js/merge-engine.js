@@ -31,7 +31,17 @@
         for (const seg of segments){
             for (const r of (seg.record||[])){
                 pity++;
-                if (Number(r.grade)===5){ pitySum += pity; pityCnt++; pity=0; }
+                if (Number(r.grade)===5){
+                    // manualPity가 있고 수동 추가 레코드면 그 값 사용
+                    const isManual = String(r?.gachaId || '').startsWith('manual-');
+                    if (r.manualPity != null && isManual) {
+                        pitySum += r.manualPity;
+                    } else {
+                        pitySum += pity;
+                    }
+                    pityCnt++;
+                    pity=0;
+                }
             }
         }
         const avgPity = pityCnt>0 ? (pitySum/pityCnt) : null;

@@ -192,7 +192,7 @@ const enRevelationData = {
         "Worry": { // 우려
             "set2": "Increases SP Recovery by 80%.",
             "set4": "When entering battle immediately recovers 25% of HIGHLIGHT charge, doesn't stack.",
-            "type": ["HL 25%", "미출시"]
+            "type": ["HL 25%"]
         },
         "Defeat": { // 좌절
             "set2": "Increases Ailment Accuracy Rate by 15%.",

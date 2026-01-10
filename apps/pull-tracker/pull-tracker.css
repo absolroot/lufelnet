@@ -42,6 +42,8 @@
 .tr.four .td, .tr.four .star { color:#ffc17c; }
 .pills { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; }
 .pill { position:relative; background:#00000070; border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:4px 8px; font-size:12px; opacity:.95; }
+.pill.pill-clickable { cursor:pointer; transition: background 0.15s, border-color 0.15s; }
+.pill.pill-clickable:hover { background:#00000090; border-color:rgba(255,255,255,.25); }
 .card-title-icon { object-fit:cover; height:18px; }
 .inprogress { opacity:.7; font-size:12px; }
 /* Fancy grade borders */
@@ -53,6 +55,8 @@
 /* Five list + accordion */
 .five-list { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
 .five-row { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-top:1px solid rgba(255,255,255,.06); }
+.five-row.five-row-clickable { cursor:pointer; padding:8px 6px; margin:0 -6px; border-radius:6px; transition: background 0.15s; }
+.five-row.five-row-clickable:hover { background:rgba(255,255,255,.06); }
 .five-left { display:inline-flex; align-items:center; gap:8px; font-size:12px; }
 .five-right { display:inline-flex; align-items:center; gap:12px; opacity:.85; font-size:12px; }
 details { margin-top:20px; background:#10101091; border:1px solid rgba(255,255,255,.06); border-radius:8px; padding:6px 10px; }
@@ -62,7 +66,8 @@ details > summary::before { content:'+'; display:inline-block; width:16px; margi
 details[open] > summary::before { content:'-'; }
 
 /* Help */
-.h3-row { display:flex; align-items:center; gap:8px; margin-bottom: 12px; }
+.h3-row { display:flex; align-items:center; gap:8px; margin-bottom: 12px; position:relative; }
+.h3-row .me-add-btn { margin-left:auto; }
 .help-icon { position:relative; display:inline-flex; width:18px; height:18px; color:#fff; opacity:.8; cursor:help; }
 .help-icon svg { width:18px; height:18px; }
 .help-icon .help-tip { position:absolute; top:120%; right:0; white-space:nowrap; background:#181212; color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:6px; padding:8px 10px; font-size:12px; opacity:0; pointer-events:none; transform:translateY(-4px); transition:opacity .15s ease, transform .15s ease; z-index:50; filter:none; backdrop-filter:none; }

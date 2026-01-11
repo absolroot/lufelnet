@@ -42,6 +42,190 @@
     let personaCsvMap = null;
     let personaCsvLoading = null;
     
+    // Weapons data cache
+    let weaponsData = null;
+    let weaponsLoading = null;
+    
+    // Revelation data cache
+    let revelationDataCache = null;
+    let revelationDataLoading = null;
+    
+    // Load revelation data for translation
+    // Always load Korean data first for mapping, then current language data
+    async function loadRevelationData() {
+        if (revelationDataCache) return revelationDataCache;
+        if (revelationDataLoading) return revelationDataLoading;
+        
+        revelationDataLoading = new Promise((resolve) => {
+            const lang = getLang();
+            
+            // Always load Korean data first for mapping
+            let krDataLoaded = false;
+            let currentLangDataLoaded = false;
+            const loadedData = {};
+            
+            const loadScript = (src, isKorean) => {
+                return new Promise((res) => {
+                    // Check if already loaded
+                    if (isKorean && typeof revelationData !== 'undefined' && revelationData) {
+                        loadedData.kr = revelationData;
+                        krDataLoaded = true;
+                        res();
+                        return;
+                    } else if (!isKorean && lang === 'en' && typeof enRevelationData !== 'undefined' && enRevelationData) {
+                        loadedData.current = enRevelationData;
+                        currentLangDataLoaded = true;
+                        res();
+                        return;
+                    } else if (!isKorean && lang === 'jp' && typeof jpRevelationData !== 'undefined' && jpRevelationData) {
+                        loadedData.current = jpRevelationData;
+                        currentLangDataLoaded = true;
+                        res();
+                        return;
+                    } else if (!isKorean && lang === 'kr') {
+                        // Korean is already loaded
+                        currentLangDataLoaded = true;
+                        res();
+                        return;
+                    }
+                    
+                    const script = document.createElement('script');
+                    script.src = `${BASE_URL}${src}`;
+                    script.onload = () => {
+                        setTimeout(() => {
+                            if (isKorean && typeof revelationData !== 'undefined') {
+                                loadedData.kr = revelationData;
+                            } else if (!isKorean && lang === 'en' && typeof enRevelationData !== 'undefined') {
+                                loadedData.current = enRevelationData;
+                            } else if (!isKorean && lang === 'jp' && typeof jpRevelationData !== 'undefined') {
+                                loadedData.current = jpRevelationData;
+                            }
+                            res();
+                        }, 100);
+                    };
+                    script.onerror = () => res();
+                    document.head.appendChild(script);
+                });
+            };
+            
+            // Load Korean data first (for mapping)
+            loadScript('/data/kr/revelations/revelations.js', true).then(() => {
+                // Then load current language data if not Korean
+                if (lang === 'kr') {
+                    revelationDataCache = loadedData.kr || {};
+                    resolve(revelationDataCache);
+                } else {
+                    loadScript(`/data/${lang}/revelations/revelations.js`, false).then(() => {
+                        // Use current language data for translation
+                        // Current language data has mainTranslated and subTranslated
+                        revelationDataCache = loadedData.current || {};
+                        resolve(revelationDataCache);
+                    });
+                }
+            });
+        });
+        
+        return revelationDataLoading;
+    }
+    
+    // Get localized revelation name
+    // revelationName is always in Korean (from data.js)
+    function getLocalizedRevelationName(revelationName) {
+        const lang = getLang();
+        
+        // If Korean, return as is
+        if (lang === 'kr') {
+            return revelationName;
+        }
+        
+        // Get translated data from cache
+        if (!revelationDataCache) {
+            return revelationName;
+        }
+        
+        // Try to find in mainTranslated or subTranslated
+        if (lang === 'en') {
+            if (revelationDataCache.mainTranslated && revelationDataCache.mainTranslated[revelationName]) {
+                return revelationDataCache.mainTranslated[revelationName];
+            }
+            if (revelationDataCache.subTranslated && revelationDataCache.subTranslated[revelationName]) {
+                return revelationDataCache.subTranslated[revelationName];
+            }
+            // Fallback to mapping_en
+            if (revelationDataCache.mapping_en && revelationDataCache.mapping_en[revelationName]) {
+                return revelationDataCache.mapping_en[revelationName];
+            }
+        } else if (lang === 'jp') {
+            if (revelationDataCache.mainTranslated && revelationDataCache.mainTranslated[revelationName]) {
+                return revelationDataCache.mainTranslated[revelationName];
+            }
+            if (revelationDataCache.subTranslated && revelationDataCache.subTranslated[revelationName]) {
+                return revelationDataCache.subTranslated[revelationName];
+            }
+            // Fallback to mapping_jp
+            if (revelationDataCache.mapping_jp && revelationDataCache.mapping_jp[revelationName]) {
+                return revelationDataCache.mapping_jp[revelationName];
+            }
+        }
+        
+        // If not found, return as is
+        return revelationName;
+    }
+    
+    // Get Korean revelation name for image path
+    // revelationName is always in Korean (from data.js), so just return it
+    function getKoreanRevelationName(revelationName) {
+        // data.js의 revelation은 항상 한국어 이름이므로 그대로 반환
+        return revelationName;
+    }
+    
+    // Load weapons.js for translation
+    async function loadWeaponsData() {
+        if (weaponsData) return weaponsData;
+        if (weaponsLoading) return weaponsLoading;
+        
+        weaponsLoading = new Promise((resolve) => {
+            // Check if matchWeapons is already loaded
+            if (typeof matchWeapons !== 'undefined' && matchWeapons) {
+                weaponsData = matchWeapons;
+                resolve(matchWeapons);
+                return;
+            }
+            
+            // Load weapons.js script
+            const script = document.createElement('script');
+            script.src = `${BASE_URL}/data/kr/wonder/weapons.js`;
+            script.onload = () => {
+                if (typeof matchWeapons !== 'undefined' && matchWeapons) {
+                    weaponsData = matchWeapons;
+                } else {
+                    weaponsData = {};
+                }
+                resolve(weaponsData);
+            };
+            script.onerror = () => {
+                weaponsData = {};
+                resolve(weaponsData);
+            };
+            document.head.appendChild(script);
+        });
+        
+        return weaponsLoading;
+    }
+    
+    // Get localized weapon name
+    function getLocalizedWeaponName(weaponName) {
+        const lang = getLang();
+        if (!weaponsData || !weaponsData[weaponName]) {
+            return weaponName;
+        }
+        
+        const weapon = weaponsData[weaponName];
+        if (lang === 'en' && weapon.name_en) return weapon.name_en;
+        if (lang === 'jp' && weapon.name_jp) return weapon.name_jp;
+        return weaponName;
+    }
+    
     // Load persona CSV for translation
     async function loadPersonaCsv() {
         if (personaCsvMap) return personaCsvMap;
@@ -231,6 +415,10 @@
                     'main-story': item['main-story'],
                     summer: item.summer,
                     persona: item.persona,
+                    weapon: item.weapon,
+                    weapon_stamp: item.weapon_stamp,
+                    goldTicketUnlocks: item.goldTicketUnlocks,
+                    revelation: item.revelation,
                     autoGenerated: true
                 });
                 
@@ -610,6 +798,51 @@
             `;
         }
         
+        // Weapon 표시 (weapon 필드 사용)
+        let weaponHtml = '';
+        if (release.weapon && Array.isArray(release.weapon) && release.weapon.length > 0) {
+            const weaponListHtml = release.weapon.map(weaponName => {
+                const localizedName = getLocalizedWeaponName(weaponName);
+                const hasStamp = release.weapon_stamp && Array.isArray(release.weapon_stamp) && release.weapon_stamp.includes(weaponName);
+                
+                return `
+                    <div class="weapon-item">
+                        <img class="weapon-icon" src="${BASE_URL}/assets/img/wonder-weapon/${weaponName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
+                        ${hasStamp ? `<img class="weapon-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" title="Lightning Stamp">` : ''}
+                        <span class="weapon-name">${localizedName}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            weaponHtml = `
+                <div class="weapon-list">
+                    ${weaponListHtml}
+                </div>
+            `;
+        }
+        
+        // Revelation 표시 (revelation 필드 사용)
+        let revelationHtml = '';
+        if (release.revelation && Array.isArray(release.revelation) && release.revelation.length > 0) {
+            const revelationListHtml = release.revelation.map(revelationName => {
+                const koreanName = getKoreanRevelationName(revelationName);
+                const localizedName = getLocalizedRevelationName(revelationName);
+                
+                return `
+                    <div class="revelation-item">
+                        <img class="revelation-icon" src="${BASE_URL}/assets/img/revelation/${koreanName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
+                        <span class="revelation-name">${localizedName}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            revelationHtml = `
+                <div class="revelation-list">
+                    ${revelationListHtml}
+                </div>
+            `;
+        }
+        
         // 페르소나 표시 (persona 필드 사용) - character-list와 뱃지 사이에 배치
         let personaHtml = '';
         if (release.persona && Array.isArray(release.persona) && release.persona.length > 0) {
@@ -710,10 +943,14 @@
                             ${charactersHtml}
                         </div>
                         ${personaHtml}
-                        ${collaboIconHtml}
-                        ${mainStoryHtml}
-                        ${summerHtml}
-                        ${goldTicketHtml}
+                        <div class="badges-group">
+                            ${collaboIconHtml}
+                            ${mainStoryHtml}
+                            ${summerHtml}
+                            ${goldTicketHtml}
+                            ${weaponHtml}
+                            ${revelationHtml}
+                        </div>
                     </div>
                     ${noteHtml}
                 </div>
@@ -916,10 +1153,12 @@
     // Main initialization
     async function init() {
         try {
-            // Wait for character data and load persona CSV
+            // Wait for character data and load persona CSV, weapons data, and revelation data
             await Promise.all([
                 waitForCharacterData(),
-                loadPersonaCsv()
+                loadPersonaCsv(),
+                loadWeaponsData(),
+                loadRevelationData()
             ]);
             
             // Generate full schedule

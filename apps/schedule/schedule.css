@@ -428,12 +428,6 @@
     height: 16px;
     object-fit: contain;
     flex-shrink: 0;
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-    padding: 2px;
 }
 
 .weapon-name {

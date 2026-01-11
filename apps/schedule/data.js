@@ -61,8 +61,8 @@ window.ReleaseScheduleData = {
         { version: "4.5", characters: ["YUI·스텔라"], "main-story": "5-3", weapon: ["엔트로피·제로"], revelation:["예리", "풍족", "획득"] },
         { version: "4.6.1", characters: ["미츠루"] },
         { version: "4.6.2", characters: ["후카"] },
-        { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], note: "MINDSCAPE CORE - MARIAN / YUI / PHOEBE", weapon_stamp: ["크리스탈 트레저"] },
-        { version: "4.7.1", characters: ["슌·프론티어"], note: "MINDSCAPE CORE - J&C, Desire Gallery Mission Open" },
+        { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], note: "Mindscape Core - MARIAN / YUI / PHOEBE", weapon_stamp: ["크리스탈 트레저"] },
+        { version: "4.7.1", characters: ["슌·프론티어"], note: "Mindscape Core - J&C, Desire Gallery Mission Open" },
         { version: "4.8", characters: ["준페이"] },
         { version: "4.9", characters: ["나루루"] },
         // 이후 캐릭터들은 release_order 기반으로 자동 추가됨

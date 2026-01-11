@@ -800,15 +800,20 @@
         
         // Weapon 표시 (weapon 필드 사용)
         let weaponHtml = '';
-        if (release.weapon && Array.isArray(release.weapon) && release.weapon.length > 0) {
-            const weaponListHtml = release.weapon.map(weaponName => {
+        const hasWeapons = release.weapon && Array.isArray(release.weapon) && release.weapon.length > 0;
+        const hasWeaponStamps = release.weapon_stamp && Array.isArray(release.weapon_stamp) && release.weapon_stamp.length > 0;
+        
+        if (hasWeapons || hasWeaponStamps) {
+            // weapon 필드가 있으면 weapon 목록 사용, 없으면 weapon_stamp만 사용
+            const weaponsToShow = hasWeapons ? release.weapon : release.weapon_stamp;
+            const weaponListHtml = weaponsToShow.map(weaponName => {
                 const localizedName = getLocalizedWeaponName(weaponName);
-                const hasStamp = release.weapon_stamp && Array.isArray(release.weapon_stamp) && release.weapon_stamp.includes(weaponName);
+                const hasStamp = hasWeaponStamps && release.weapon_stamp.includes(weaponName);
                 
                 return `
                     <div class="weapon-item">
-                        <img class="weapon-icon" src="${BASE_URL}/assets/img/wonder-weapon/${weaponName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
                         ${hasStamp ? `<img class="weapon-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" title="Lightning Stamp">` : ''}
+                        <img class="weapon-icon" src="${BASE_URL}/assets/img/wonder-weapon/${weaponName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
                         <span class="weapon-name">${localizedName}</span>
                     </div>
                 `;

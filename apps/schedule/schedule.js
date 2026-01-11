@@ -266,6 +266,78 @@
             });
         }
         
+        // 3. Auto-add Gold Ticket Unlocks for 5-star non-limited characters
+        // 5성 limit: false 캐릭터는 출시 6개월 후 Gold Ticket Unlock
+        // 단, release_order 0 또는 1인 캐릭터는 예외
+        const GOLD_TICKET_DELAY_DAYS = 180; // 6개월 (약 180일)
+        
+        // 이미 메뉴얼로 작성된 goldTicketUnlocks가 있는 release와 codename 추적
+        const manualGoldTicketReleases = new Set();
+        const manualGoldTicketCodenames = new Set();
+        releases.forEach((r) => {
+            if (r.goldTicketUnlocks && Array.isArray(r.goldTicketUnlocks) && r.goldTicketUnlocks.length > 0) {
+                // 메뉴얼로 작성된 것으로 간주 (data.js에서 직접 추가된 경우)
+                manualGoldTicketReleases.add(r);
+                // 메뉴얼로 작성된 codename들도 추적
+                r.goldTicketUnlocks.forEach(codename => {
+                    manualGoldTicketCodenames.add(codename);
+                });
+            }
+        });
+        
+        // 각 release의 characters를 순회하며 5성 limit: false 캐릭터 찾기
+        releases.forEach((release) => {
+            release.characters.forEach((charName) => {
+                const charInfo = charData[charName];
+                if (!charInfo) return;
+                
+                // 5성이고 limit: false이고 release_order가 0 또는 1이 아닌 경우만
+                if (charInfo.rarity === 5 && charInfo.limit === false && charInfo.release_order !== 1 && charInfo.release_order !== 0) {
+                    const codename = charInfo.codename || charName;
+                    
+                    // 이미 메뉴얼로 작성된 codename은 건너뛰기
+                    if (manualGoldTicketCodenames.has(codename)) return;
+                    
+                    const releaseDate = parseDate(release.date);
+                    const unlockDate = new Date(releaseDate);
+                    unlockDate.setDate(unlockDate.getDate() + GOLD_TICKET_DELAY_DAYS);
+                    
+                    // unlockDate에 가장 가까운 release 찾기
+                    let closestRelease = null;
+                    let minDiff = Infinity;
+                    
+                    releases.forEach((r) => {
+                        // 메뉴얼로 작성된 release는 건너뛰기
+                        if (manualGoldTicketReleases.has(r)) return;
+                        
+                        const rDate = parseDate(r.date);
+                        const diff = Math.abs(rDate.getTime() - unlockDate.getTime());
+                        if (diff < minDiff && rDate >= releaseDate) {
+                            minDiff = diff;
+                            closestRelease = r;
+                        }
+                    });
+                    
+                    if (closestRelease && closestRelease !== release) {
+                        // goldTicketUnlocks 배열 초기화
+                        if (!closestRelease.goldTicketUnlocks) {
+                            closestRelease.goldTicketUnlocks = [];
+                        }
+                        
+                        // 중복 체크 및 메뉴얼 작성 여부 재확인
+                        if (!closestRelease.goldTicketUnlocks.includes(codename) && !manualGoldTicketCodenames.has(codename)) {
+                            closestRelease.goldTicketUnlocks.push(codename);
+                            // 자동 추가된 것임을 표시
+                            if (!closestRelease.goldTicketUnlocksAuto) {
+                                closestRelease.goldTicketUnlocksAuto = [];
+                            }
+                            closestRelease.goldTicketUnlocksAuto.push(codename);
+                        }
+                    }
+                }
+            });
+        });
+        
         return releases;
     }
     
@@ -482,6 +554,62 @@
             `;
         }
         
+        // Gold Ticket Unlock 표시 (goldTicketUnlocks 필드 사용)
+        let goldTicketHtml = '';
+        if (release.goldTicketUnlocks && Array.isArray(release.goldTicketUnlocks) && release.goldTicketUnlocks.length > 0) {
+            const lang = getLang();
+            const goldTicketLabels = {
+                en: { 
+                    title: 'Gold Ticket Unlock',
+                    desc: 'Unlock',
+                    predict: 'Unlock (Predict)'
+                },
+                jp: { 
+                    title: 'ゴールドチケット解放',
+                    desc: '解放',
+                    predict: '解放 (予測)'
+                },
+                kr: { 
+                    title: '골드 티켓 해제',
+                    desc: '해제',
+                    predict: '해제 (예상)'
+                }
+            };
+            const labels = goldTicketLabels[lang] || goldTicketLabels.en;
+            
+            // 자동 추가된 것인지 확인 (모든 항목이 자동 추가된 경우에만 Predict 표시)
+            const autoUnlocks = release.goldTicketUnlocksAuto && Array.isArray(release.goldTicketUnlocksAuto) ? release.goldTicketUnlocksAuto : [];
+            const allAuto = autoUnlocks.length > 0 && autoUnlocks.length === release.goldTicketUnlocks.length && 
+                           release.goldTicketUnlocks.every(codename => autoUnlocks.includes(codename));
+            const labelText = allAuto ? labels.predict : labels.desc;
+            
+            // codename으로 캐릭터 찾기
+            const charData = window.characterData || {};
+            const characterIcons = release.goldTicketUnlocks.map(codename => {
+                // codename으로 캐릭터 찾기
+                let charName = null;
+                for (const [name, info] of Object.entries(charData)) {
+                    if (info.codename === codename) {
+                        charName = name;
+                        break;
+                    }
+                }
+                
+                if (charName) {
+                    return `<img class="gold-ticket-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${codename}" title="${codename}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">`;
+                }
+                return '';
+            }).filter(icon => icon).join('');
+            
+            goldTicketHtml = `
+                <div class="content-badge gold-ticket-badge">
+                    <img class="gold-ticket-icon" src="${BASE_URL}/assets/img/character-detail/limit_non.png" alt="Gold Ticket Unlock" title="${labels.title}">
+                    ${characterIcons}
+                    <span class="content-label">${labelText}</span>
+                </div>
+            `;
+        }
+        
         // 페르소나 표시 (persona 필드 사용) - character-list와 뱃지 사이에 배치
         let personaHtml = '';
         if (release.persona && Array.isArray(release.persona) && release.persona.length > 0) {
@@ -585,6 +713,7 @@
                         ${collaboIconHtml}
                         ${mainStoryHtml}
                         ${summerHtml}
+                        ${goldTicketHtml}
                     </div>
                     ${noteHtml}
                 </div>

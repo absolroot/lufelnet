@@ -365,9 +365,8 @@
     flex-shrink: 0;
     padding: 6px 10px;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* border: 1px solid rgba(255, 255, 255, 0.1);*/
     border-radius: 6px;
-    margin-left: 8px;
 }
 
 .content-icon {
@@ -381,6 +380,22 @@
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
     white-space: nowrap;
+}
+
+/* Gold Ticket Badge - 골드 티켓 해제 뱃지 */
+.gold-ticket-icon {
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.gold-ticket-character-icon {
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
 }
 
 .release-date {
@@ -447,6 +462,7 @@
     align-items: center;
     gap: 10px;
     background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 8px 12px;
     border-radius: 6px;
     transition: all 0.2s ease;

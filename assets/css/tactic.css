@@ -728,6 +728,11 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
     /* 액션 아이템 레이아웃 수정 */
     .action-item {   grid-template-columns: 1fr 1fr;   gap: 8px;   padding: 8px; }
 
+    /* 참고사항일 때 모바일에서도 grid-template-columns 조정 */
+    .action-item.reference-only {
+      grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.6fr) auto !important;
+    }
+
     .action-buttons {   justify-content: flex-end; }
 
     /* 파티 멤버 레이아웃 수정 */

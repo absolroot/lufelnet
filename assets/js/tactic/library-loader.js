@@ -47,6 +47,28 @@
     // 공통 적용 함수 호출 (URL은 유지). 번역 표시가 즉시 적용되도록 약간 딜레이 후 한 번 더 번역 적용을 트리거
     window.applyImportedData(payload, { keepUrl: true, titleOverride: data.title });
 
+    // library 로드 후 번역 적용
+    const applyTranslationsAfterLibrary = () => {
+      try {
+        if (typeof window.initializeTranslations === 'function') window.initializeTranslations();
+        if (typeof window.initializePartyTranslations === 'function') window.initializePartyTranslations();
+        if (typeof window.updatePartyImages === 'function') window.updatePartyImages();
+        if (typeof window.wonderApplySkillInputDecor === 'function') window.wonderApplySkillInputDecor();
+        return true;
+      } catch (e) {
+        console.error('Translation error:', e);
+        return false;
+      }
+    };
+    
+    // characterData 준비 후 실행
+    if (typeof window.whenCharacterDataReady === 'function') {
+      window.whenCharacterDataReady(applyTranslationsAfterLibrary);
+    } else {
+      // translation-manager가 아직 로드되지 않았으면 직접 실행
+      setTimeout(applyTranslationsAfterLibrary, 500);
+    }
+
     // 모바일 기본 잠금 적용 (library 파라미터로 진입 시)
     try {
       if (window.innerWidth < 1200) {

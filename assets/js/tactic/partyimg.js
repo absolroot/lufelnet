@@ -1,7 +1,51 @@
   // 파티 이미지 업데이트 함수
   function updatePartyImages() {
     const partyImagesContainer = document.querySelector(".party-images-container");
+    if (!partyImagesContainer) return;
     partyImagesContainer.innerHTML = "";
+
+    // 현재 언어 감지 함수
+    function getCurrentLanguage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        return urlLang;
+      }
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+        return savedLang;
+      }
+      return 'kr';
+    }
+
+    // 캐릭터 이름 번역 함수
+    function getCharacterDisplayName(charName) {
+      // 전역 함수가 있으면 사용, 없으면 로컬 구현
+      if (typeof window.getCharacterDisplayName === 'function') {
+        return window.getCharacterDisplayName(charName);
+      }
+      const currentLang = getCurrentLanguage();
+      if (currentLang === 'kr' || !charName) {
+        return charName;
+      }
+      
+      // window.characterData 우선 확인 (characters.js가 여기에 할당)
+      const charData = (typeof window !== 'undefined' && window.characterData) 
+        ? window.characterData 
+        : (typeof characterData !== 'undefined' ? characterData : null);
+      
+      if (!charData || !charData[charName]) {
+        return charName;
+      }
+      
+      const char = charData[charName];
+      if (currentLang === 'en' && char.name_en) {
+        return char.name_en;
+      } else if (currentLang === 'jp' && char.name_jp) {
+        return char.name_jp;
+      }
+      return charName;
+    }
 
     // 파티 이미지 컨테이너
     const partyImagesDiv = document.createElement("div");
@@ -25,8 +69,10 @@
         charImg.className = "character-img";
         const imagePath = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
         charImg.src = imagePath;
-        charImg.alt = member.name;
-        charImg.title = member.name;
+        // 언어별 번역된 이름 사용
+        const displayName = getCharacterDisplayName(member.name);
+        charImg.alt = displayName;
+        charImg.title = displayName;
         
         // 원더가 아닌 경우에만 클릭 이벤트 추가
         if (member.name !== "원더") {
@@ -57,8 +103,9 @@
         // 이미지가 없는 경우 텍스트 원형으로 대체
         const textCircle = document.createElement("div");
         textCircle.className = "character-text-circle";
-        textCircle.textContent = member.name;
-        textCircle.title = member.name;
+        const displayName = getCharacterDisplayName(member.name);
+        textCircle.textContent = displayName;
+        textCircle.title = displayName;
         container.appendChild(textCircle);
       }
       
@@ -134,7 +181,10 @@
         const personaImg = document.createElement("img");
         personaImg.className = "persona-img";
         personaImg.src = `${BASE_URL}/assets/img/tactic-persona/${persona}.webp`;
-        personaImg.alt = persona;
+        // 언어별 번역된 이름 사용
+        const displayPersonaNameForAlt = getPersonaDisplayName(persona);
+        personaImg.alt = displayPersonaNameForAlt;
+        personaImg.title = displayPersonaNameForAlt;
         
         // 커스텀 툴팁 div 생성
         const tooltip = document.createElement("div");
@@ -264,5 +314,13 @@
 
     // 항상 추가 (비어있어도 유지)
     partyImagesContainer.appendChild(personaImagesDiv);
+  }
+
+  // 전역 노출 (library-loader, import.js에서 호출 가능하도록)
+  window.updatePartyImages = updatePartyImages;
+
+  // characterData 준비 후 자동 실행
+  if (typeof window.whenCharacterDataReady === 'function') {
+    window.whenCharacterDataReady(updatePartyImages);
   }
 

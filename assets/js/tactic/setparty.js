@@ -14,11 +14,25 @@ function getCurrentLanguage() {
 
 function getCharacterDisplayName(charName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !characterData[charName]) {
+  if (currentLang === 'kr' || !charName) {
+    return charName;
+  }
+  
+  // window.characterData만 사용 (병합된 데이터)
+  const charData = window.characterData;
+  
+  // window.characterData가 없으면 원본 반환 (나중에 initializePartyTranslations에서 업데이트됨)
+  if (!charData || !charData[charName]) {
     return charName;
   }
 
-  const char = characterData[charName];
+  const char = charData[charName];
+  // 병합된 데이터의 name 필드 우선 사용 (이미 언어별로 설정됨)
+  if (char.name && char.name !== charName) {
+    return char.name;
+  }
+  
+  // 폴백: name 필드가 없거나 원본과 같으면 name_en/name_jp 확인
   if (currentLang === 'en' && char.name_en) {
     return char.name_en;
   } else if (currentLang === 'jp' && char.name_jp) {
@@ -26,6 +40,9 @@ function getCharacterDisplayName(charName) {
   }
   return charName;
 }
+
+// 전역 노출 (partyimg.js에서 사용)
+window.getCharacterDisplayName = getCharacterDisplayName;
 
 function getRevelationDisplayName(revName) {
   const currentLang = getCurrentLanguage();
@@ -152,7 +169,19 @@ function translateSelectOptions(selectElement) {
   }
 }
 
-function setupPartySelection() {
+async function setupPartySelection() {
+  const currentLang = getCurrentLanguage();
+  
+  // window.characterData가 준비될 때까지 대기 (한국어가 아닐 때만)
+  if (currentLang !== 'kr') {
+    let retryCount = 0;
+    const maxRetries = 50; // 최대 5초 대기 (100ms * 50)
+    while (!window.characterData && retryCount < maxRetries) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      retryCount++;
+    }
+  }
+  
   const partyDivs = document.querySelectorAll(".party-member");
 
   // 드롭다운 스타일이 아직 추가되지 않았다면 추가
@@ -292,9 +321,16 @@ function setupPartySelection() {
             memo: ''
           });
         });
-        if (typeof updateAutoActions === 'function') updateAutoActions();
-        if (typeof updatePartyImages === 'function') updatePartyImages();
-        if (typeof renderTurns === 'function') renderTurns();
+        // window.characterData가 준비된 후에만 렌더링 (한국어가 아닐 때)
+        const ensureDataBeforeRender = async () => {
+          if (getCurrentLanguage() !== 'kr' && typeof window.ensureCharacterDataLoaded === 'function') {
+            await window.ensureCharacterDataLoaded();
+          }
+          if (typeof updateAutoActions === 'function') updateAutoActions();
+          if (typeof updatePartyImages === 'function') updatePartyImages();
+          if (typeof renderTurns === 'function') renderTurns();
+        };
+        ensureDataBeforeRender();
       }
     }
 
@@ -314,9 +350,15 @@ function setupPartySelection() {
         if (!window.__IS_APPLYING_IMPORT) {
           // 괴도5는 자동 패턴/빈 자동 액션 생성 비활성화
           if (index === 5) {
-            if (typeof updateAutoActions === 'function') updateAutoActions();
-            if (typeof updatePartyImages === 'function') updatePartyImages();
-            if (typeof renderTurns === 'function') renderTurns();
+            const ensureDataBeforeRender = async () => {
+              if (getCurrentLanguage() !== 'kr' && typeof window.ensureCharacterDataLoaded === 'function') {
+                await window.ensureCharacterDataLoaded();
+              }
+              if (typeof updateAutoActions === 'function') updateAutoActions();
+              if (typeof updatePartyImages === 'function') updatePartyImages();
+              if (typeof renderTurns === 'function') renderTurns();
+            };
+            ensureDataBeforeRender();
             return;
           }
           // 캐릭터 의식 패턴 재적용
@@ -354,9 +396,15 @@ function setupPartySelection() {
           });
 
           // 자동 액션 정합성 보정 및 UI 갱신
-          if (typeof updateAutoActions === 'function') updateAutoActions();
-          if (typeof updatePartyImages === 'function') updatePartyImages();
-          if (typeof renderTurns === 'function') renderTurns();
+          const ensureDataBeforeRender = async () => {
+            if (getCurrentLanguage() !== 'kr' && typeof window.ensureCharacterDataLoaded === 'function') {
+              await window.ensureCharacterDataLoaded();
+            }
+            if (typeof updateAutoActions === 'function') updateAutoActions();
+            if (typeof updatePartyImages === 'function') updatePartyImages();
+            if (typeof renderTurns === 'function') renderTurns();
+          };
+          ensureDataBeforeRender();
         }
       });
     }
@@ -524,7 +572,8 @@ function setupPartySelection() {
       // 초기 값 기준으로 아이콘 표시
       setCharacterIconOnInputWithElement(input, partyMembers[index].name);
       // 초기 표시 시 EN/JP에서는 번역된 표시명을 보여주도록 처리 (값은 KR 고정)
-      if (getCurrentLanguage() !== 'kr' && input.value) {
+      // window.characterData가 준비된 후에만 번역 표시 (나중에 initializePartyTranslations에서 처리)
+      if (getCurrentLanguage() !== 'kr' && input.value && window.characterData) {
         const displayName = getCharacterDisplayName(input.value);
         inputContainer.setAttribute('data-display-text', displayName);
         inputContainer.classList.add('show-translation');
@@ -562,8 +611,8 @@ function setupPartySelection() {
             partyIndex: index,
             onSelect: (charKR, displayName) => {
               input.value = charKR;
-              // 번역 표시
-              if (getCurrentLanguage() !== 'kr') {
+              // 번역 표시 (window.characterData가 준비된 경우에만)
+              if (getCurrentLanguage() !== 'kr' && window.characterData) {
                 inputContainer.setAttribute('data-display-text', displayName || getCharacterDisplayName(charKR));
                 inputContainer.classList.add('show-translation');
               } else {
@@ -735,9 +784,15 @@ function setupPartySelection() {
         }
         // 임포트 중에는 렌더/이미지 갱신 스킵 (import.js에서 수행)
         if (!window.__IS_APPLYING_IMPORT) {
-          updatePartyImages();
-          renderTurns();
-          try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch (_) { }
+          const ensureDataBeforeRender = async () => {
+            if (getCurrentLanguage() !== 'kr' && typeof window.ensureCharacterDataLoaded === 'function') {
+              await window.ensureCharacterDataLoaded();
+            }
+            updatePartyImages();
+            renderTurns();
+            try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch (_) { }
+          };
+          ensureDataBeforeRender();
         }
       });
 
@@ -816,10 +871,16 @@ function setupPartySelection() {
         }
 
         if (!window.__IS_APPLYING_IMPORT) {
-          updateAutoActions();
-          updatePartyImages();
-          renderTurns();
-          try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch (_) { }
+          const ensureDataBeforeRender = async () => {
+            if (getCurrentLanguage() !== 'kr' && typeof window.ensureCharacterDataLoaded === 'function') {
+              await window.ensureCharacterDataLoaded();
+            }
+            updateAutoActions();
+            updatePartyImages();
+            renderTurns();
+            try { if (typeof refreshExtraSlotVisibility === 'function') refreshExtraSlotVisibility(); } catch (_) { }
+          };
+          ensureDataBeforeRender();
         }
       });
     }
@@ -891,8 +952,14 @@ function setupPartySelection() {
           turn.actions = finalActions;
         });
 
-        updatePartyImages();
-        renderTurns();
+        const ensureDataBeforeRender = async () => {
+          if (getCurrentLanguage() !== 'kr' && typeof window.ensureCharacterDataLoaded === 'function') {
+            await window.ensureCharacterDataLoaded();
+          }
+          updatePartyImages();
+          renderTurns();
+        };
+        ensureDataBeforeRender();
       }
     });
   }); // end of partyDivs.forEach
@@ -1157,7 +1224,7 @@ function enhanceRevSelectSimple(select) {
 }
 
 // 번역 초기화 최상위 함수
-function initializePartyTranslations() {
+async function initializePartyTranslations() {
   const currentLang = getCurrentLanguage();
 
   // 한국어 모드일 경우, 번역 표시 제거 및 원본 값으로 복원
@@ -1176,15 +1243,40 @@ function initializePartyTranslations() {
     return;
   }
 
+  // ensureCharacterDataLoaded가 완료될 때까지 대기
+  // window.characterData가 있어도 아직 이전 데이터일 수 있으므로, ensureCharacterDataLoaded 완료를 보장
+  if (typeof ensureCharacterDataLoaded === 'function') {
+    await ensureCharacterDataLoaded();
+  } else {
+    // ensureCharacterDataLoaded가 없으면 window.characterData가 준비될 때까지 대기
+    let retryCount = 0;
+    const maxRetries = 50;
+    while (!window.characterData && retryCount < maxRetries) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      retryCount++;
+    }
+  }
+
   document.querySelectorAll(".party-member").forEach(div => {
-    // 캐릭터 이름 번역
+    // 캐릭터 이름 번역 (input)
     const nameInput = div.querySelector(".party-name-input");
     if (nameInput && nameInput.value) {
-      const displayName = getCharacterDisplayName(nameInput.value);
+      const charName = nameInput.value;
+      const displayName = getCharacterDisplayName(charName);
       const inputContainer = nameInput.closest('.input-container');
       if (inputContainer) {
         inputContainer.setAttribute('data-display-text', displayName);
         inputContainer.classList.add('show-translation');
+      }
+    }
+
+    // 캐릭터 이름 번역 (select - party-name)
+    const nameSelect = div.querySelector(".party-name");
+    if (nameSelect) {
+      for (const option of nameSelect.options) {
+        if (option.value) {
+          option.textContent = getCharacterDisplayName(option.value);
+        }
       }
     }
 
@@ -1208,8 +1300,58 @@ function initializePartyTranslations() {
   });
 }
 
+// 전역 노출 (library-loader, import.js에서 호출 가능하도록)
+window.initializePartyTranslations = initializePartyTranslations;
+
+// characterData 준비 후 자동 실행
+if (typeof window.whenCharacterDataReady === 'function') {
+  window.whenCharacterDataReady(initializePartyTranslations);
+} else {
+  // translation-manager가 로드되기 전이면 DOMContentLoaded 후 실행
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof window.whenCharacterDataReady === 'function') {
+      window.whenCharacterDataReady(initializePartyTranslations);
+    } else {
+      initializePartyTranslations();
+    }
+  });
+}
+
+// 번역 강제 적용 함수 (모든 번역 함수 실행)
+function forceApplyTranslations() {
+  try {
+    if (typeof window.initializePartyTranslations === 'function') {
+      window.initializePartyTranslations();
+    }
+    if (typeof window.initializeTranslations === 'function') {
+      window.initializeTranslations();
+    }
+    if (typeof window.updatePartyImages === 'function') {
+      window.updatePartyImages();
+    }
+    if (typeof window.wonderApplySkillInputDecor === 'function') {
+      window.wonderApplySkillInputDecor();
+    }
+    return true;
+  } catch (e) {
+    console.error('Translation apply error:', e);
+    return false;
+  }
+}
+
+// characterData 준비 후 자동 실행
+if (typeof window.whenCharacterDataReady === 'function') {
+  window.whenCharacterDataReady(forceApplyTranslations);
+}
+
 // DOMContentLoaded 이후에 번역 초기화 함수를 호출
 document.addEventListener('DOMContentLoaded', async () => {
   try { await setupTranslations(); } catch (_) { }
-  initializePartyTranslations();
+  // characterData 준비 후 실행되도록 설정
+  if (typeof window.whenCharacterDataReady === 'function') {
+    window.whenCharacterDataReady(forceApplyTranslations);
+  } else {
+    // translation-manager가 아직 로드되지 않았으면 직접 실행
+    forceApplyTranslations();
+  }
 });

@@ -1,6 +1,7 @@
       /* ========== 전체 렌더링 ========== */
 function renderTurns() {
   const turnsContainer = document.getElementById("turns");
+  if (!turnsContainer) return;
   const isLocked = turnsContainer.classList.contains('turns-locked');
   turnsContainer.innerHTML = "";
 

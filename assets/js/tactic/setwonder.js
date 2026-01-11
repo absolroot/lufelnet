@@ -42,8 +42,12 @@ function getCurrentLanguage() {
 // 페르소나 이름 번역 함수
 function getPersonaDisplayName(personaName) {
   const currentLang = getCurrentLanguage();
+  if (currentLang === 'kr' || !personaName) {
+    return personaName;
+  }
+  
   const personaStore = getPersonaStore() || {};
-  if (currentLang === 'kr' || !personaStore[personaName]) {
+  if (!personaStore || !personaStore[personaName]) {
     return personaName;
   }
   
@@ -55,6 +59,9 @@ function getPersonaDisplayName(personaName) {
   }
   return personaName;
 }
+
+// 전역 노출 (partyimg.js에서 사용)
+window.getPersonaDisplayName = getPersonaDisplayName;
 
 // 무기 이름 번역 함수
 function getWeaponDisplayName(weaponName) {
@@ -1103,8 +1110,11 @@ inputs.forEach((input, idx) => {
 function initializeTranslations() {
   const currentLang = getCurrentLanguage();
   
+  // inputs가 아직 준비되지 않았을 수 있으므로 다시 쿼리
+  const personaInputs = document.querySelectorAll(".wonder-persona-input");
+  
   // 페르소나 입력 필드들: 번역 오버레이는 비-KR만
-  inputs.forEach((input) => {
+  personaInputs.forEach((input) => {
     const inputContainer = input.closest('.input-container');
     if (!inputContainer) return;
     const store = getPersonaStore() || {};
@@ -1147,6 +1157,9 @@ function initializeTranslations() {
     setSkillIconOnInput(input, baseKey || '');
   });
 }
+
+// 전역 노출 (library-loader, import.js에서 호출 가능하도록)
+window.initializeTranslations = initializeTranslations;
 
 // 아이콘/오버레이 적용을 외부에서도 호출할 수 있게 전역 노출
 window.wonderApplySkillInputDecor = function() {

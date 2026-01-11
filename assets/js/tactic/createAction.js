@@ -13,20 +13,87 @@
         return 'kr';
       }
 
-      // 캐릭터 이름 번역 함수
-      function getCharacterDisplayName(charName) {
+      // 캐릭터 이름 번역 함수 (동기 버전 - 즉시 반환)
+      function getCharacterDisplayNameSync(charName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr' || !characterData[charName]) {
+        if (currentLang === 'kr' || !charName) {
+          return charName;
+        }
+        
+        const charData = window.characterData;
+        if (!charData || !charData[charName]) {
+          console.warn('[DEBUG createAction] getCharacterDisplayNameSync - 데이터 없음', { charName, hasData: !!charData });
           return charName;
         }
 
-        const char = characterData[charName];
+        const char = charData[charName];
+        // 병합된 데이터의 name 필드 우선 사용
+        if (char.name && char.name !== charName) {
+          return char.name;
+        }
+        
+        // 폴백: name 필드가 없거나 원본과 같으면 name_en/name_jp 확인
         if (currentLang === 'en' && char.name_en) {
-          return char.codename;
+          const result = char.codename || char.name_en;
+          console.warn('[DEBUG createAction] getCharacterDisplayNameSync - name_en 폴백', { 
+            charName, 
+            result, 
+            name: char.name, 
+            nameEqualsOriginal: char.name === charName,
+            codename: char.codename,
+            name_en: char.name_en
+          });
+          return result;
         } else if (currentLang === 'jp' && char.name_jp) {
+          console.warn('[DEBUG createAction] getCharacterDisplayNameSync - name_jp 폴백', { 
+            charName, 
+            name_jp: char.name_jp, 
+            name: char.name,
+            nameEqualsOriginal: char.name === charName
+          });
           return char.name_jp;
         }
+        console.warn('[DEBUG createAction] getCharacterDisplayNameSync - 원본 반환', { 
+          charName, 
+          currentLang, 
+          char: { 
+            name: char.name, 
+            name_en: char.name_en, 
+            name_jp: char.name_jp,
+            codename: char.codename
+          },
+          nameEqualsOriginal: char.name === charName
+        });
         return charName;
+      }
+
+      // 캐릭터 이름 번역 함수 (비동기 버전 - 데이터 준비 대기)
+      async function getCharacterDisplayNameAsync(charName) {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr' || !charName) {
+          return charName;
+        }
+        
+        // ensureCharacterDataLoaded가 완료될 때까지 대기
+        if (typeof window.ensureCharacterDataLoaded === 'function') {
+          await window.ensureCharacterDataLoaded();
+        } else {
+          // 폴백: window.characterData가 준비될 때까지 대기
+          let retryCount = 0;
+          const maxRetries = 50;
+          while (!window.characterData && retryCount < maxRetries) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            retryCount++;
+          }
+        }
+        
+        return getCharacterDisplayNameSync(charName);
+      }
+
+      // 기본적으로 동기 버전 사용 (성능을 위해)
+      // 하지만 window.characterData가 없으면 원본 반환 (나중에 업데이트됨)
+      function getCharacterDisplayName(charName) {
+        return getCharacterDisplayNameSync(charName);
       }
 
       // 공통 페르소나 데이터 소스 (window.personaFiles 우선)
@@ -192,8 +259,9 @@
         li.setAttribute("data-action-index", actionIndex);
         
         // 캐릭터에 해당하는 배경색 적용
-        if (action.character && characterData[action.character]) {
-          li.style.backgroundColor = characterData[action.character].color + "30"; // 20은 투명도
+        const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
+        if (action.character && charData && charData[action.character] && charData[action.character].color) {
+          li.style.backgroundColor = charData[action.character].color + "30"; // 30은 투명도
         }
         
         // (1) 캐릭터 드롭다운

@@ -2,7 +2,7 @@
 layout: default
 custom_css: [tactic]
 custom_js: [tooltip, tactic/share, tactic/library-loader, tactic/import, tactic/export,  tactic/setwonder, tactic/setparty, tactic/partyimg, tactic/createAction, tactic/renderTurns, tactic/updateAuto, tactic/findPattern, tactic/capture]
-custom_data: [tooltip.js, tactic/pattern.js, characters/characters.js, revelations/revelations.js, wonder/weapons.js, wonder/skills.js]
+custom_data: [characters/characters.js, tooltip.js, tactic/pattern.js,  revelations/revelations.js, wonder/weapons.js, wonder/skills.js]
 permalink: /tactic/
 language: kr
 title : 택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷
@@ -415,51 +415,76 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
       function mergeCharacterData(krData, langData) {
         const mergedData = {};
         const currentLang = getCurrentLanguage();
-        Object.keys(krData || {}).forEach(key => { mergedData[key] = { ...krData[key] }; });
-        Object.keys(langData || {}).forEach(key => {
+        
+        // KR 데이터의 모든 키를 먼저 복사하고, 언어별 name 설정
+        Object.keys(krData || {}).forEach(key => {
+          mergedData[key] = { ...krData[key] };
           const krChar = krData[key];
-          const langChar = langData[key];
-          if (!krChar) return;
-          if (currentLang === 'en') {
-            if (krChar.name_en) mergedData[key].name = krChar.name_en;
-            else if (langChar?.name) mergedData[key].name = langChar.name;
-          } else if (currentLang === 'jp') {
-            if (krChar.name_jp) mergedData[key].name = krChar.name_jp;
-            else if (langChar?.name) mergedData[key].name = langChar.name;
+          // 언어별 name 필드 설정 (kr 데이터의 name_en/name_jp 사용)
+          if (currentLang === 'en' && krChar.name_en) {
+            mergedData[key].name = krChar.name_en;
+          } else if (currentLang === 'jp' && krChar.name_jp) {
+            mergedData[key].name = krChar.name_jp;
           }
+          // kr일 때는 원본 name 유지 (이미 복사됨)
+        });
+        
+        // langData의 키로 추가 필드 업데이트 (role, tag, release_order 등)
+        Object.keys(langData || {}).forEach(key => {
+          const langChar = langData[key];
+          if (!mergedData[key]) return; // krData에 없는 캐릭터는 무시
           if (langChar?.role) mergedData[key].role = langChar.role;
           if (langChar?.tag) mergedData[key].tag = langChar.tag;
           if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
             mergedData[key].release_order = langChar.release_order;
           }
         });
+        
+        
         return mergedData;
       }
 
       // 전역 window.characterData/window.characterList를 언어/토글에 맞게 준비
-      async function ensureCharacterDataLoaded() {
-        const lang = getCurrentLanguage();
-        let forceKR = false;
-        try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch (_) {}
-        const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
-        if (!kr) return false;
-        if (lang === 'kr') {
-          window.characterData = kr.characterData || {};
-          window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
-          return true;
+      // setparty.js에서 접근 가능하도록 전역 노출
+      let __ensureCharacterDataLoadedPromise = null;
+      window.ensureCharacterDataLoaded = async function ensureCharacterDataLoaded() {
+        // 이미 실행 중이면 기다림
+        if (__ensureCharacterDataLoadedPromise) {
+          return await __ensureCharacterDataLoadedPromise;
         }
-        const lg = await fetchCharactersData(`/data/${lang}/characters/characters.js?v=${APP_VERSION}`);
-        if (!lg) {
-          window.characterData = kr.characterData || {};
-          window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+        
+        __ensureCharacterDataLoadedPromise = (async () => {
+          const lang = getCurrentLanguage();
+          let forceKR = false;
+          try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch (_) {}
+          const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+          if (!kr) {
+            __ensureCharacterDataLoadedPromise = null;
+            return false;
+          }
+          if (lang === 'kr') {
+            window.characterData = kr.characterData || {};
+            window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+            __ensureCharacterDataLoadedPromise = null;
+            return true;
+          }
+          const lg = await fetchCharactersData(`/data/${lang}/characters/characters.js?v=${APP_VERSION}`);
+          if (!lg) {
+            window.characterData = kr.characterData || {};
+            window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+            __ensureCharacterDataLoadedPromise = null;
+            return true;
+          }
+          const merged = mergeCharacterData(kr.characterData || {}, lg.characterData || {});
+          window.characterData = merged;
+          window.characterList = forceKR ? (kr.characterList || { mainParty: [], supportParty: [] })
+                                         : (lg.characterList || { mainParty: [], supportParty: [] });
+          __ensureCharacterDataLoadedPromise = null;
           return true;
-        }
-        const merged = mergeCharacterData(kr.characterData || {}, lg.characterData || {});
-        window.characterData = merged;
-        window.characterList = forceKR ? (kr.characterList || { mainParty: [], supportParty: [] })
-                                       : (lg.characterList || { mainParty: [], supportParty: [] });
-        return true;
-      }
+        })();
+        
+        return await __ensureCharacterDataLoadedPromise;
+      };
 
             // UI 번역 함수
       function translateUI() {
@@ -774,6 +799,10 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             try {
               // 전역 characterList를 토글 상태에 맞춰 갱신
               await ensureCharacterDataLoaded();
+              // characterData 준비 완료 알림
+              if (typeof window.notifyCharacterDataReady === 'function') {
+                window.notifyCharacterDataReady();
+              }
               if (typeof setupTranslations === 'function') {
                 setupTranslations()
                   .then(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} })
@@ -817,7 +846,6 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             // setparty.js의 setupTranslations 함수가 있으면 호출
             if (typeof setupTranslations === 'function') {
               await setupTranslations();
-              //console.log(`[DEBUG] 번역 데이터 로드 완료 - currentLang: ${currentLang}`);
             }
           }
         }
@@ -1013,13 +1041,19 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                   if (input.value) {
                     const charName = input.value;
                     const inputContainer = input.closest('.input-container');
-                    if (inputContainer && characterData[charName]) {
-                      const char = characterData[charName];
-                      let displayName = charName;
-                      if (currentLang === 'en' && char.name_en) {
-                        displayName = char.name_en;
-                      } else if (currentLang === 'jp' && char.name_jp) {
-                        displayName = char.name_jp;
+                    // window.characterData만 사용 (병합된 데이터, 전역 characterData는 사용하지 않음)
+                    const charData = (typeof window !== 'undefined' && window.characterData) ? window.characterData : null;
+                    if (inputContainer && charData && charData[charName]) {
+                      const char = charData[charName];
+                      // 병합된 데이터의 name 필드 우선 사용 (이미 언어별로 설정됨)
+                      let displayName = (char.name && char.name !== charName) ? char.name : charName;
+                      // 폴백: name 필드가 없거나 원본과 같으면 name_en/name_jp 확인
+                      if (displayName === charName) {
+                        if (currentLang === 'en' && char.name_en) {
+                          displayName = char.name_en;
+                        } else if (currentLang === 'jp' && char.name_jp) {
+                          displayName = char.name_jp;
+                        }
                       }
                       inputContainer.setAttribute('data-display-text', displayName);
                       inputContainer.classList.add('show-translation');
@@ -1073,7 +1107,6 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                 // 계시 번역 함수
                 function getRevelationDisplayName(revName) {
                   if (!window.languageData || !window.languageData[currentLang] || !window.languageData[currentLang].revelationMapping) {
-                    //console.log(`[DEBUG] 계시 번역 데이터 없음 - currentLang: ${currentLang}, window.languageData:`, window.languageData);
                     return revName;
                   }
                   const translated = window.languageData[currentLang].revelationMapping[revName] || revName;
@@ -1083,12 +1116,9 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                 
                 // 계시 번역 데이터가 없으면 강제로 로드 시도
                 if (!window.languageData || !window.languageData[currentLang] || !window.languageData[currentLang].revelationMapping) {
-                  //console.log(`[DEBUG] 계시 번역 데이터 없음 - 강제 로드 시도`);
-                  
                   // setparty.js의 setupTranslations 함수 호출
                   if (typeof setupTranslations === 'function') {
                     setupTranslations().then(() => {
-                      //console.log(`[DEBUG] setupTranslations 완료 후 계시 번역 재시도`);
                       // 번역 데이터 로드 후 다시 시도
                       document.querySelectorAll('.main-revelation, .sub-revelation').forEach(select => {
                         for (const option of select.options) {
@@ -1098,8 +1128,6 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                         }
                       });
                     });
-                  } else {
-                    //console.log(`[DEBUG] setupTranslations 함수를 찾을 수 없음`);
                   }
                 } else {
                   // 모든 계시 선택기의 옵션 텍스트 번역
@@ -1113,10 +1141,19 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                 }
               }
 
-              updatePartyImages();
-              
-              // Render turns (before updating auto actions)
-              renderTurns();
+              // characterData 준비 후 렌더링
+              const renderAfterDataReady = () => {
+                const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
+                const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+                if (currentLang === 'kr' || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
+                  updatePartyImages();
+                  renderTurns();
+                } else {
+                  // characterData 대기 후 재시도
+                  setTimeout(renderAfterDataReady, 200);
+                }
+              };
+              renderAfterDataReady();
               
               // Restore action data for each turn
               turns.forEach((turn, turnIndex) => {
@@ -1167,38 +1204,49 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           try {
             if (typeof setupTranslations === 'function') {
               setupTranslations()
-                .then(() => {
+                .then(async () => {
                   try {
                     if (typeof setupPartySelection === 'function') setupPartySelection();
                   } catch(_) {}
                   // 캐릭터/계시 번역 데이터가 준비된 이후 파티 이름 번역을 한 번 더 적용
                   try {
-                    if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+                    if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
                   } catch(_) {}
                 })
-                .catch(() => {
+                .catch(async () => {
                   try {
                     if (typeof setupPartySelection === 'function') setupPartySelection();
                   } catch(_) {}
                   try {
-                    if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+                    if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
                   } catch(_) {}
                 });
             } else {
               if (typeof setupPartySelection === 'function') { setupPartySelection(); }
               try {
-                if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+                if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
               } catch(_) {}
             }
           } catch(_) {
             if (typeof setupPartySelection === 'function') { setupPartySelection(); }
             try {
-              if (typeof initializePartyTranslations === 'function') initializePartyTranslations();
+              if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
             } catch(_) {}
           }
           updateAutoActions();
-          updatePartyImages();
-          renderTurns();
+          // characterData 준비 후 렌더링
+          const renderAfterDataReady = () => {
+            const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
+            const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+            if (currentLang === 'kr' || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
+              updatePartyImages();
+              renderTurns();
+            } else {
+              // characterData 대기 후 재시도
+              setTimeout(renderAfterDataReady, 200);
+            }
+          };
+          renderAfterDataReady();
 
           // 데이터도 라이브러리도 없는 순수 진입 시, 편집 UI를 기본으로 보이고 토글 버튼 비활성화
           if (!libraryParam) {

@@ -143,6 +143,93 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
 </div>
 
 <script>
+    // 언어별 캐릭터 데이터 동적 로딩 함수들 (index.html과 동일한 로직)
+    function getCurrentLanguage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+            return urlLang;
+        }
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+            return savedLang;
+        }
+        if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+            return LanguageRouter.getCurrentLanguage();
+        }
+        return 'kr';
+    }
+
+    async function fetchCharactersData(url) {
+        try {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            const sandbox = {};
+            const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+            const list = win.characterList || { mainParty: [], supportParty: [] };
+            const data = win.characterData || {};
+            return { characterList: list, characterData: data };
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function mergeCharacterData(krData, langData) {
+        const mergedData = {};
+        const currentLang = getCurrentLanguage();
+        
+        // KR 데이터의 모든 키를 먼저 복사하고, 언어별 name 설정
+        Object.keys(krData || {}).forEach(key => {
+            mergedData[key] = { ...krData[key] };
+            const krChar = krData[key];
+            // 언어별 name 필드 설정 (kr 데이터의 name_en/name_jp 사용)
+            if (currentLang === 'en' && krChar.name_en) {
+                mergedData[key].name = krChar.name_en;
+            } else if (currentLang === 'jp' && krChar.name_jp) {
+                mergedData[key].name = krChar.name_jp;
+            }
+            // kr일 때는 원본 name 유지 (이미 복사됨)
+        });
+        
+        // langData의 키로 추가 필드 업데이트 (role, tag, release_order 등)
+        Object.keys(langData || {}).forEach(key => {
+            const langChar = langData[key];
+            if (!mergedData[key]) return; // krData에 없는 캐릭터는 무시
+            if (langChar?.role) mergedData[key].role = langChar.role;
+            if (langChar?.tag) mergedData[key].tag = langChar.tag;
+            if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
+                mergedData[key].release_order = langChar.release_order;
+            }
+        });
+        
+        return mergedData;
+    }
+
+    async function ensureCharacterDataLoaded() {
+        const lang = getCurrentLanguage();
+        let forceKR = false;
+        try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch (_) {}
+        const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+        if (!kr) return false;
+        if (lang === 'kr') {
+            window.characterData = kr.characterData || {};
+            window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+            return true;
+        }
+        const lg = await fetchCharactersData(`/data/${lang}/characters/characters.js?v=${APP_VERSION}`);
+        if (!lg) {
+            window.characterData = kr.characterData || {};
+            window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+            return true;
+        }
+        const merged = mergeCharacterData(kr.characterData || {}, lg.characterData || {});
+        window.characterData = merged;
+        window.characterList = forceKR ? (kr.characterList || { mainParty: [], supportParty: [] })
+                                       : (lg.characterList || { mainParty: [], supportParty: [] });
+        return true;
+    }
+
     class TacticsViewer {
         constructor() {
             this.currentPage = 1;
@@ -156,7 +243,7 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
             this.currentRegion = 'ALL';
             this.currentType = 'ALL';
             this.userIP = '';
-            this.currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
+            this.currentLang = getCurrentLanguage();
             this.currentUser = null;
             this.selectedCharacters = [];
 
@@ -164,6 +251,8 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
         }
 
         async init() {
+            // 캐릭터 데이터를 먼저 로드 (언어별 병합 포함)
+            await ensureCharacterDataLoaded();
             await this.getUserIP();
             await this.checkAuth();
             this.initRegionFilters();
@@ -529,6 +618,13 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
         createTacticPreview(tacticData) {
             if (!tacticData || !tacticData.party) return null;
 
+            // window.characterData 사용 (언어별 병합된 데이터)
+            const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : {});
+            if (!charData || Object.keys(charData).length === 0) {
+                // 데이터가 아직 로드되지 않았으면 빈 div 반환
+                return null;
+            }
+
             const previewDiv = document.createElement('div');
             previewDiv.className = 'tactic-preview';
 
@@ -553,14 +649,20 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
                 if (member.name === "원더") return;
 
                 const container = document.createElement('div');
-                if (characterData[member.name]) {
+                if (charData[member.name]) {
                     container.className = 'character-container';
 
                     const charImg = document.createElement('img');
                     charImg.className = 'character-img';
                     charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
-                    charImg.alt = member.name;
-                    charImg.title = member.name;
+                    
+                    // 언어별 번역된 이름 사용 (window.characterData는 이미 병합되어 name 필드에 올바른 언어가 들어있음)
+                    const ch = charData[member.name];
+                    // 병합된 데이터의 name 필드 사용 (이미 언어별로 설정됨)
+                    const displayName = ch?.name || member.name;
+                    
+                    charImg.alt = displayName;
+                    charImg.title = displayName;
                     container.appendChild(charImg);
                 }
 
@@ -705,13 +807,17 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
             const grid = document.getElementById('characterFilterGrid');
             if (!grid) return;
 
+            // window.characterData와 window.characterList 사용 (언어별 병합된 데이터)
+            const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : {});
+            const charList = window.characterList || (typeof characterList !== 'undefined' ? characterList : { mainParty: [], supportParty: [] });
+
             // release_order 기준 내림차순 정렬, '원더' 제외
-            const allNames = [...(characterList?.mainParty || []), ...(characterList?.supportParty || [])];
+            const allNames = [...(charList?.mainParty || []), ...(charList?.supportParty || [])];
             const sortedNames = allNames
                 .filter(n => n !== '원더')
                 .sort((a, b) => {
-                    const ra = (characterData?.[a]?.release_order ?? -Infinity);
-                    const rb = (characterData?.[b]?.release_order ?? -Infinity);
+                    const ra = (charData?.[a]?.release_order ?? -Infinity);
+                    const rb = (charData?.[b]?.release_order ?? -Infinity);
                     return rb - ra; // 내림차순
                 });
             // 중복 제거 (메인/서포트에 중복 존재 시 한 번만 표시)
@@ -722,13 +828,11 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
             uniqueNames.forEach(name => {
                 const img = document.createElement('img');
                 img.src = `${BASE_URL}/assets/img/tier/${name}.webp`;
-                // 언어에 따른 타이틀/대체 텍스트
-                let displayTitle = name;
-                if (this.currentLang === 'en') {
-                    displayTitle = characterData?.[name]?.name_en || name;
-                } else if (this.currentLang === 'jp') {
-                    displayTitle = characterData?.[name]?.name_jp || name;
-                }
+                // 언어에 따른 타이틀/대체 텍스트 (병합된 데이터의 name 필드 사용)
+                const ch = charData?.[name];
+                // 병합된 데이터의 name 필드 사용 (이미 언어별로 설정됨)
+                const displayTitle = ch?.name || name;
+                
                 img.alt = displayTitle;
                 img.title = displayTitle;
                 img.className = 'char-face';

@@ -253,7 +253,14 @@ window.applyImportedData = function(payload, options = {}) {
           const has = Array.from(nameSelect.options).some(o => o.value === name);
           if (!has) {
             const opt = document.createElement('option');
-            opt.value = name; opt.textContent = name; nameSelect.appendChild(opt);
+            opt.value = name;
+            // 번역된 이름으로 설정 (characterData 준비 여부 확인)
+            if (typeof window.getCharacterDisplayName === 'function') {
+              opt.textContent = window.getCharacterDisplayName(name);
+            } else {
+              opt.textContent = name; // 폴백
+            }
+            nameSelect.appendChild(opt);
           }
         }
         nameSelect.value = name || '';
@@ -277,22 +284,32 @@ window.applyImportedData = function(payload, options = {}) {
       }
     });
 
-    updatePartyImages();
-    renderTurns();
-
-    // characterData 지연 로딩 시 아이콘만 안전하게 보정 (이벤트 재디스패치 없이 UI만 갱신)
-    try {
-      setTimeout(() => {
-        if (typeof updatePartyImages === 'function') {
-          updatePartyImages();
-        }
-      }, 300);
-    } catch (_) {}
-
-    // 다국어 적용 (무기/고유스킬/파티명/계시 표시 텍스트) - 로딩 후에도 재시도
-    (function applyI18nAfterLoad() {
+    // 다국어 적용 (무기/고유스킬/파티명/계시 표시 텍스트)
+    const applyI18nAfterLoad = () => {
       try {
         const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : ((typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr');
+        const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
+        
+        // characterData 준비 확인
+        if (currentLang !== 'kr' && (!charData || !charData['원더'] && !charData['렌'] && !charData['레오'])) {
+          // 준비되지 않았으면 재시도 (최대 5초)
+          if (!window.__importRetryCount__) window.__importRetryCount__ = 0;
+          if (window.__importRetryCount__ < 50) {
+            window.__importRetryCount__++;
+            setTimeout(applyI18nAfterLoad, 100);
+            return;
+          }
+        }
+        window.__importRetryCount__ = 0;
+        
+        // 번역 함수 실행
+        if (typeof window.initializeTranslations === 'function') window.initializeTranslations();
+        if (typeof window.wonderApplySkillInputDecor === 'function') window.wonderApplySkillInputDecor();
+        if (typeof window.initializePartyTranslations === 'function') window.initializePartyTranslations();
+        if (typeof window.updatePartyImages === 'function') window.updatePartyImages();
+        // renderTurns는 characterData 준비 후 실행
+        if (typeof renderTurns === 'function') renderTurns();
+        
         if (currentLang !== 'kr') {
           // 무기 표시 (입력값은 KR 유지, 표시 텍스트만 번역)
           const weaponInput = document.querySelector('.wonder-weapon-input');
@@ -333,18 +350,33 @@ window.applyImportedData = function(payload, options = {}) {
             }
           });
 
-          // 파티원 이름 표시: 선택된 옵션의 텍스트만 번역 적용 (값은 KR 유지)
+          // 파티원 이름 표시: 모든 옵션의 텍스트 번역 적용 (값은 KR 유지)
           document.querySelectorAll('.party-member').forEach(member => {
             const sel = member.querySelector('.party-name');
-            if (!sel || !sel.value) return;
-            const origin = sel.value;
-            if (typeof characterData !== 'undefined' && characterData[origin]) {
-              const ch = characterData[origin];
-              let display = origin;
-              if (currentLang === 'en' && ch.name_en) display = ch.name_en;
-              else if (currentLang === 'jp' && ch.name_jp) display = ch.name_jp;
-              const opt = sel.querySelector(`option[value="${CSS.escape(origin)}"]`);
-              if (opt) opt.textContent = display;
+            if (!sel) return;
+            // 모든 옵션 번역
+            for (const option of sel.options) {
+              if (option.value) {
+                if (typeof window.getCharacterDisplayName === 'function') {
+                  option.textContent = window.getCharacterDisplayName(option.value);
+                } else {
+                  // window.characterData만 사용 (병합된 데이터, 전역 characterData는 사용하지 않음)
+                  const charData = (typeof window !== 'undefined' && window.characterData) ? window.characterData : null;
+                  if (charData && charData[option.value]) {
+                    const ch = charData[option.value];
+                    // 병합된 데이터의 name 필드 우선 사용
+                    let display = (ch.name && ch.name !== option.value) ? ch.name : option.value;
+                    // 폴백: name 필드가 없거나 원본과 같으면 name_en/name_jp 확인
+                    if (display === option.value) {
+                      if (currentLang === 'en' && ch.name_en) display = ch.name_en;
+                      else if (currentLang === 'jp' && ch.name_jp) display = ch.name_jp;
+                    }
+                    option.textContent = display;
+                  } else {
+                    option.textContent = option.value;
+                  }
+                }
+              }
             }
           });
 
@@ -361,13 +393,15 @@ window.applyImportedData = function(payload, options = {}) {
           }
         }
       } catch (_) {}
-
-      // languageData가 아직 준비 전일 수 있으므로 짧게 재시도
-      if (!window.__APPLY_I18N_TRIED__) {
-        window.__APPLY_I18N_TRIED__ = 1;
-        setTimeout(applyI18nAfterLoad, 400);
-      }
-    })();
+    };
+    
+    // characterData 준비 후 실행
+    if (typeof window.whenCharacterDataReady === 'function') {
+      window.whenCharacterDataReady(applyI18nAfterLoad);
+    } else {
+      // translation-manager가 아직 로드되지 않았으면 직접 실행
+      setTimeout(applyI18nAfterLoad, 500);
+    }
 
     // URL 파라미터 정리
     if (!keepUrl && typeof getBaseUrl === 'function') {

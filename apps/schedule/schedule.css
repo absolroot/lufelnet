@@ -423,6 +423,15 @@
     transform: translateY(-1px);
 }
 
+.weapon-item-no-hover {
+    cursor: default;
+}
+
+.weapon-item-no-hover:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: none;
+}
+
 .weapon-icon {
     width: 24px;
     height: 24px;
@@ -482,6 +491,45 @@
 }
 
 .revelation-name {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+}
+
+/* Mindscape Core List - 마인드스케이프 코어 뱃지 */
+.mindscape-core-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.mindscape-core-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    position: relative;
+}
+
+.mindscape-core-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.mindscape-core-character-icon {
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.mindscape-core-label {
     font-size: 11px;
     color: rgba(255, 255, 255, 0.8);
     white-space: nowrap;
@@ -684,6 +732,16 @@
 .persona-item:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.15);
+}
+
+.persona-item-no-hover {
+    cursor: default;
+}
+
+.persona-item-no-hover:hover {
+    background: rgb(255 116 116 / 5%);
+    border-color: transparent;
+    transform: none;
 }
 
 

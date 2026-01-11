@@ -544,6 +544,129 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Persona List - character-item과 뱃지 사이에 배치 */
+.persona-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.persona-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 8px 12px 8px 8px;
+    border-radius: 6px;
+    background: rgb(255 116 116 / 5%);
+    height: 70.5px;
+    box-sizing: border-box;
+}
+
+.persona-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+
+.persona-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 6px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.persona-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.persona-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.persona-item .persona-name {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.persona-grade-img {
+    width: 16px !important;
+    height: 16px !important;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.persona-extra-info {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+}
+
+.persona-event-label {
+    font-size: 10px;
+    color: rgba(255, 193, 7, 0.9);
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+.persona-emblem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.persona-emblem-icon {
+    width: 16px !important;
+    height: 16px !important;
+    object-fit: contain;
+}
+
+.persona-emblem-num {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+/* Super highlight for important personas */
+.persona-item.super-highlight {
+    position: relative;
+    border-radius: 10px;
+}
+
+.persona-item.super-highlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(135deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: borderGlow 2s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
 /* Year Divider */
 .year-divider {
     text-align: center;
@@ -605,6 +728,48 @@
     
     .content-label {
         font-size: 11px;
+    }
+    
+    .persona-list {
+        gap: 6px;
+    }
+    
+    .persona-item {
+        height: 56px;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+    
+    .persona-item img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .persona-item .persona-name {
+        font-size: 11px;
+        max-width: 80px;
+    }
+    
+    .persona-grade-img {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    
+    .persona-extra-info {
+        gap: 3px;
+    }
+    
+    .persona-event-label {
+        font-size: 9px;
+    }
+    
+    .persona-emblem-icon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .persona-emblem-num {
+        font-size: 9px;
     }
 }
 

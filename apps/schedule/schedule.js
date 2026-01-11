@@ -74,11 +74,15 @@
                         return;
                     } else if (!isKorean && lang === 'en' && typeof enRevelationData !== 'undefined' && enRevelationData) {
                         loadedData.current = enRevelationData;
+                        // Set window.enRevelationData for tooltip access
+                        window.enRevelationData = enRevelationData;
                         currentLangDataLoaded = true;
                         res();
                         return;
                     } else if (!isKorean && lang === 'jp' && typeof jpRevelationData !== 'undefined' && jpRevelationData) {
                         loadedData.current = jpRevelationData;
+                        // Set window.jpRevelationData for tooltip access
+                        window.jpRevelationData = jpRevelationData;
                         currentLangDataLoaded = true;
                         res();
                         return;
@@ -97,8 +101,12 @@
                                 loadedData.kr = revelationData;
                             } else if (!isKorean && lang === 'en' && typeof enRevelationData !== 'undefined') {
                                 loadedData.current = enRevelationData;
+                                // Set window.enRevelationData for tooltip access
+                                window.enRevelationData = enRevelationData;
                             } else if (!isKorean && lang === 'jp' && typeof jpRevelationData !== 'undefined') {
                                 loadedData.current = jpRevelationData;
+                                // Set window.jpRevelationData for tooltip access
+                                window.jpRevelationData = jpRevelationData;
                             }
                             res();
                         }, 100);
@@ -119,6 +127,14 @@
                         // Use current language data for translation
                         // Current language data has mainTranslated and subTranslated
                         revelationDataCache = loadedData.current || {};
+                        
+                        // Also set window.enRevelationData or window.jpRevelationData for tooltip access
+                        if (lang === 'en' && loadedData.current) {
+                            window.enRevelationData = loadedData.current;
+                        } else if (lang === 'jp' && loadedData.current) {
+                            window.jpRevelationData = loadedData.current;
+                        }
+                        
                         resolve(revelationDataCache);
                     });
                 }
@@ -177,6 +193,212 @@
     function getKoreanRevelationName(revelationName) {
         // data.js의 revelation은 항상 한국어 이름이므로 그대로 반환
         return revelationName;
+    }
+    
+    // Get revelation tooltip data
+    function getRevelationTooltipData(revelationName) {
+        const lang = getLang();
+        const koreanName = getKoreanRevelationName(revelationName);
+        
+        // Check if it's main or sub revelation
+        let krData = null;
+        if (revelationDataCache) {
+            if (typeof revelationData !== 'undefined' && revelationData) {
+                krData = revelationData;
+            } else if (revelationDataCache.main || revelationDataCache.sub) {
+                krData = revelationDataCache;
+            }
+        }
+        
+        const isMain = krData && krData.main && krData.main.hasOwnProperty(koreanName);
+        const isSub = krData && krData.sub && krData.sub.hasOwnProperty(koreanName);
+        
+        if (isSub) {
+            // Sub revelation: show set2 and set4 effects
+            const currentLang = lang;
+            let effectData, set2Text, set4Text, setTypes;
+            
+            let translationData = null;
+            if (currentLang === 'en' && window.enRevelationData) {
+                translationData = window.enRevelationData;
+            } else if (currentLang === 'jp' && window.jpRevelationData) {
+                translationData = window.jpRevelationData;
+            }
+            
+            if (currentLang === 'en' && translationData && translationData.sub_effects) {
+                const englishKey = getLocalizedRevelationName(koreanName);
+                if (translationData.sub_effects[englishKey]) {
+                    effectData = translationData.sub_effects[englishKey];
+                    set2Text = effectData.set2;
+                    set4Text = effectData.set4;
+                    setTypes = effectData.type;
+                }
+            } else if (currentLang === 'jp' && translationData && translationData.sub_effects) {
+                const japaneseKey = getLocalizedRevelationName(koreanName);
+                if (translationData.sub_effects[japaneseKey]) {
+                    effectData = translationData.sub_effects[japaneseKey];
+                    set2Text = effectData.set2;
+                    set4Text = effectData.set4;
+                    setTypes = effectData.type;
+                }
+            } else if (currentLang === 'kr' && typeof revelationData !== 'undefined' && revelationData.sub_effects && revelationData.sub_effects[koreanName]) {
+                effectData = revelationData.sub_effects[koreanName];
+                set2Text = effectData.set2;
+                set4Text = effectData.set4;
+                setTypes = effectData.type;
+            }
+            
+            if (effectData) {
+                const translatedTitle = getLocalizedRevelationName(koreanName);
+                const setTexts = {
+                    kr: { set2: '2세트', set4: '4세트' },
+                    en: { set2: '2-Set', set4: '4-Set' },
+                    jp: { set2: '2セット', set4: '4セット' }
+                };
+                const setText = setTexts[currentLang] || setTexts.kr;
+                
+                let tooltipText = `[${translatedTitle}]\n${setText.set2}: ${set2Text}\n${setText.set4}: ${set4Text}`;
+                
+                if (setTypes && setTypes.includes('미출시')) {
+                    if (currentLang === 'en') {
+                        tooltipText += `\n\n#NOT RELEASED IN GLOBAL SERVER#`;
+                    } else if (currentLang === 'jp') {
+                        tooltipText += `\n\n#グローバルサーバーで未発表#`;
+                    }
+                }
+                
+                return tooltipText.replace(/"/g, '&quot;');
+            }
+        } else if (isMain) {
+            // Main revelation: show set effects (simplified - show all combinations)
+            const currentLang = lang;
+            let setEffectsData;
+            
+            let translationData = null;
+            if (currentLang === 'en' && window.enRevelationData) {
+                translationData = window.enRevelationData;
+            } else if (currentLang === 'jp' && window.jpRevelationData) {
+                translationData = window.jpRevelationData;
+            }
+            
+            if (currentLang === 'en' && translationData && translationData.set_effects) {
+                const englishMainKey = getLocalizedRevelationName(koreanName);
+                if (translationData.set_effects[englishMainKey]) {
+                    setEffectsData = translationData.set_effects[englishMainKey];
+                }
+            } else if (currentLang === 'jp' && translationData && translationData.set_effects) {
+                const japaneseMainKey = getLocalizedRevelationName(koreanName);
+                if (translationData.set_effects[japaneseMainKey]) {
+                    setEffectsData = translationData.set_effects[japaneseMainKey];
+                }
+            } else if (currentLang === 'kr' && typeof revelationData !== 'undefined' && revelationData.set_effects && revelationData.set_effects[koreanName]) {
+                setEffectsData = revelationData.set_effects[koreanName];
+            }
+            
+            if (setEffectsData) {
+                const mainTitle = getLocalizedRevelationName(koreanName);
+                const allEffectsText = Object.entries(setEffectsData)
+                    .filter(([key]) => key !== 'type')
+                    .map(([subRevKey, effect]) => {
+                        let subTitle;
+                        if (currentLang === 'en' && translationData) {
+                            subTitle = subRevKey;
+                        } else if (currentLang === 'jp' && translationData) {
+                            subTitle = subRevKey;
+                        } else {
+                            subTitle = getLocalizedRevelationName(subRevKey);
+                        }
+                        if (currentLang === 'en' && subTitle === 'type') {
+                            return '#NOT RELEASED IN GLOBAL SERVER#';
+                        } else if (currentLang === 'jp' && subTitle === 'type') {
+                            return '#グローバルサーバーで未発表#';
+                        }
+                        return `[${mainTitle} - ${subTitle}]\n${effect}`;
+                    })
+                    .join('\n\n');
+                
+                if (allEffectsText) {
+                    return allEffectsText.replace(/"/g, '&quot;');
+                }
+            }
+        }
+        
+        return null;
+    }
+    
+    // Weapon Effect Modal Functions
+    function showWeaponEffect(weaponId, imageUrl, weaponName) {
+        const modal = document.getElementById('weapon-effect-modal');
+        if (!modal) return;
+        
+        const modalImage = document.getElementById('weapon-effect-image');
+        const modalTitle = document.getElementById('weapon-effect-title');
+        const modalDescription = document.getElementById('weapon-effect-description');
+        
+        // Set the weapon image and name
+        if (modalImage) modalImage.src = imageUrl;
+        if (modalTitle) modalTitle.textContent = weaponName;
+        
+        // Get the effect text based on current language
+        let effectText = 'No effect information available.';
+        const lang = getLang();
+        
+        if (weaponsData && weaponsData[weaponId]) {
+            const weapon = weaponsData[weaponId];
+            if (lang === 'en' && weapon.effect_en) {
+                effectText = weapon.effect_en;
+            } else if (lang === 'jp' && weapon.effect_jp) {
+                effectText = weapon.effect_jp;
+            } else if (weapon.effect) {
+                effectText = weapon.effect; // Default to Korean
+            }
+        }
+        
+        // Check for lightning_stamp data
+        if (weaponsData && weaponsData[weaponId] && weaponsData[weaponId].lightning_stamp && Array.isArray(weaponsData[weaponId].lightning_stamp) && weaponsData[weaponId].lightning_stamp.length > 0) {
+            const stampData = weaponsData[weaponId].lightning_stamp[0]; // Use first stamp
+            let stampEffectText = '';
+            
+            if (lang === 'en' && stampData.effect_en) {
+                stampEffectText = stampData.effect_en;
+            } else if (lang === 'jp' && stampData.effect_jp) {
+                stampEffectText = stampData.effect_jp;
+            } else if (stampData.effect) {
+                stampEffectText = stampData.effect;
+            }
+            
+            if (stampEffectText) {
+                const stampName = lang === 'en' ? stampData.name_en : (lang === 'jp' ? stampData.name_jp : stampData.name);
+                effectText += `\n\n---\n[${stampName}]\n${stampEffectText}`;
+            }
+        }
+        
+        // Set the effect text with proper line breaks
+        if (modalDescription) {
+            modalDescription.innerHTML = effectText.replace(/\n/g, '<br>');
+            
+            // Add Detail link
+            const br = document.createElement('br');
+            modalDescription.appendChild(br);
+            
+            const detailLink = document.createElement('a');
+            detailLink.href = `${BASE_URL}/wonder-weapon/`;
+            detailLink.textContent = 'Detail →';
+            detailLink.target = '_blank';
+            modalDescription.appendChild(detailLink);
+        }
+        
+        // Show the modal
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeWeaponEffectModal() {
+        const modal = document.getElementById('weapon-effect-modal');
+        if (modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
     }
     
     // Load weapons.js for translation
@@ -810,10 +1032,11 @@
                 const localizedName = getLocalizedWeaponName(weaponName);
                 const hasStamp = hasWeaponStamps && release.weapon_stamp.includes(weaponName);
                 
+                const weaponImageUrl = `${BASE_URL}/assets/img/wonder-weapon/${weaponName}.webp`;
                 return `
-                    <div class="weapon-item">
+                    <div class="weapon-item" data-weapon-id="${weaponName}" data-weapon-image="${weaponImageUrl}" data-weapon-name="${localizedName}" style="cursor: pointer;">
                         ${hasStamp ? `<img class="weapon-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" title="Lightning Stamp">` : ''}
-                        <img class="weapon-icon" src="${BASE_URL}/assets/img/wonder-weapon/${weaponName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
+                        <img class="weapon-icon" src="${weaponImageUrl}" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
                         <span class="weapon-name">${localizedName}</span>
                     </div>
                 `;
@@ -833,8 +1056,13 @@
                 const koreanName = getKoreanRevelationName(revelationName);
                 const localizedName = getLocalizedRevelationName(revelationName);
                 
+                // Get tooltip data for revelation
+                const tooltipData = getRevelationTooltipData(revelationName);
+                const tooltipAttr = tooltipData ? `data-tooltip="${tooltipData}"` : '';
+                const tooltipClass = tooltipData ? 'tooltip-text' : '';
+                
                 return `
-                    <div class="revelation-item">
+                    <div class="revelation-item ${tooltipClass}" ${tooltipAttr}>
                         <img class="revelation-icon" src="${BASE_URL}/assets/img/revelation/${koreanName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
                         <span class="revelation-name">${localizedName}</span>
                     </div>
@@ -1116,6 +1344,25 @@
         }
         
         container.innerHTML = html;
+        
+        // Re-initialize tooltips after rendering
+        setTimeout(() => {
+            // Manually bind tooltips for revelation items
+            document.querySelectorAll('.revelation-item.tooltip-text').forEach(el => {
+                if (typeof bindTooltipElement === 'function') {
+                    bindTooltipElement(el);
+                } else if (window.bindTooltipElement) {
+                    window.bindTooltipElement(el);
+                }
+            });
+            
+            // Also call addTooltips if available
+            if (typeof addTooltips === 'function') {
+                addTooltips();
+            } else if (window.addTooltips) {
+                window.addTooltips();
+            }
+        }, 100);
     }
     
     // Toggle released section
@@ -1178,6 +1425,18 @@
             // Initialize filters
             initFilters(releases);
             
+            // Initialize weapon modal and tooltip events
+            initWeaponModalEvents();
+            
+            // Initialize tooltips after rendering (wait for tooltip.js to be ready)
+            setTimeout(() => {
+                if (typeof addTooltips === 'function') {
+                    addTooltips();
+                } else if (window.addTooltips) {
+                    window.addTooltips();
+                }
+            }, 500);
+            
         } catch (error) {
             console.error('Schedule initialization failed:', error);
             const container = document.getElementById('timeline-container');
@@ -1185,6 +1444,41 @@
                 container.innerHTML = '<div class="empty-state">Failed to load schedule data.</div>';
             }
         }
+    }
+    
+    // Initialize weapon modal events
+    function initWeaponModalEvents() {
+        // Weapon item click events (delegated) - click on entire weapon-item
+        document.addEventListener('click', function(e) {
+            const weaponItem = e.target.closest('.weapon-item[data-weapon-id]');
+            if (weaponItem) {
+                const weaponId = weaponItem.getAttribute('data-weapon-id');
+                const imageUrl = weaponItem.getAttribute('data-weapon-image');
+                const weaponName = weaponItem.getAttribute('data-weapon-name');
+                showWeaponEffect(weaponId, imageUrl, weaponName);
+                return;
+            }
+            
+            // Close modal when clicking close button
+            if (e.target.closest('.weapon-effect-close')) {
+                closeWeaponEffectModal();
+                return;
+            }
+            
+            // Close modal when clicking outside the modal content
+            const modal = document.getElementById('weapon-effect-modal');
+            if (modal && modal.classList.contains('show') && !e.target.closest('.weapon-effect-modal-content') && !e.target.closest('.weapon-item')) {
+                closeWeaponEffectModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('weapon-effect-modal');
+            if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
+                closeWeaponEffectModal();
+            }
+        });
     }
     
     // Start initialization when DOM is ready

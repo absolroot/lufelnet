@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: []
-custom_js: []
+custom_js: [tooltip]
 custom_data: [characters/characters.js]
 permalink: /schedule/
 redirect_from:
@@ -87,6 +87,18 @@ alternate_urls:
         <div class="loading">
             <div class="loading-spinner"></div>
         </div>
+    </div>
+</div>
+
+<!-- Weapon Effect Modal -->
+<div id="weapon-effect-modal" class="weapon-effect-modal">
+    <div class="weapon-effect-modal-content">
+        <span class="weapon-effect-close">&times;</span>
+        <div class="weapon-effect-header">
+            <img id="weapon-effect-image" src="" alt="Weapon" class="weapon-effect-image">
+            <h3 id="weapon-effect-title"></h3>
+        </div>
+        <div id="weapon-effect-description" class="weapon-effect-description"></div>
     </div>
 </div>
 

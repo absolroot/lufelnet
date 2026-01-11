@@ -290,6 +290,11 @@
         });
         li.appendChild(charSelect);
         
+        // 참고사항일 때 클래스 추가
+        if (!action.character || action.character === "") {
+          li.classList.add("reference-only");
+        }
+        
         // (2) 원더일 경우 페르소나 선택, 아닐 경우 스킬 드롭다운으로 변경
         if (action.character === "원더") {
           const personaSelect = document.createElement("select");

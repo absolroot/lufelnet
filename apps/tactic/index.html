@@ -1170,7 +1170,17 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                   // Select character
                   const charSelect = actionItem.querySelector('.action-character');
                   if (charSelect) {
-                    charSelect.value = action.character;
+                    // 참고사항 옵션이 없으면 추가
+                    const hasReferenceOption = Array.from(charSelect.options).some(opt => opt.value === '');
+                    if (!hasReferenceOption) {
+                      const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+                      const referenceText = currentLang === 'en' ? 'Reference' : (currentLang === 'jp' ? '参考事項' : '참고사항');
+                      const refOption = document.createElement('option');
+                      refOption.value = '';
+                      refOption.textContent = referenceText;
+                      charSelect.insertBefore(refOption, charSelect.firstChild);
+                    }
+                    charSelect.value = action.character || '';
                   }
 
                   // Select Wonder persona or skill

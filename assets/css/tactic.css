@@ -64,6 +64,11 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .action-item { cursor: grab; padding: 2px; border: 1px solid rgb(255, 255, 255, 0); border-radius: 3px; margin-bottom: 4px; display: grid; grid-template-columns: 0.6fr 0.6fr minmax(0, 1fr) auto; gap: 16px; align-items: center; background: rgba(255, 255, 255, 0.1); margin-left: 0; min-width: 0; 
   }
 
+  /* 참고사항일 때 (캐릭터만 선택되고 스킬/페르소나가 없을 때) grid-template-columns 조정 */
+  .action-item.reference-only {
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.6fr) auto;
+  }
+
   .action-item .hide-ui{ grid-template-columns: 0.6fr 0.6fr 1fr; }
   
   .action-item:hover { background: rgb(0, 0, 0,0.5); }
@@ -357,7 +362,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   .action-memo { background-color: transparent; border: none !important; padding: 8px; font-size: 13px; color: inherit; padding-right: 24px; }
 
   /* 액션 아이템 내의 드롭다운 스타일 */
-  .action-character, .action-skill, .wonder-persona-select { background-color: transparent; border: none !important; padding: 8px; font-size: 13px; color: inherit; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 8px center; background-size: 16px; padding-right: 24px; }
+  .action-character, .action-skill, .wonder-persona-select { background-color: transparent; border: none !important; padding: 8px; font-size: 13px; color: inherit; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 8px center; background-size: 16px; padding-right: 24px; min-width: 0; overflow-wrap: break-word; word-wrap: break-word; }
 
   /* 로고와 버튼을 포함하는 헤더 영역 */
   .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
@@ -808,7 +813,7 @@ body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-re
   /* 메모 표시 영역 스타일 - 기존 action-memo와 유사하게 */
   .memo-wrapper { flex: 1; position: relative; }
 
-  .action-memo-display { padding: 8px 12px; border-radius: 3px; font-size: 13px; transition: all 0.2s ease; color: rgba(255, 255, 255, 0.9); cursor: text; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .action-memo-display { padding: 8px 12px; border-radius: 3px; font-size: 13px; transition: all 0.2s ease; color: rgba(255, 255, 255, 0.9); cursor: text; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; }
 
   .action-memo-display.placeholder { color: rgba(255, 255, 255, 0.5); }
 

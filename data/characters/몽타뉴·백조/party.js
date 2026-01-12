@@ -45,6 +45,17 @@ window.recommendParty["몽타뉴·백조"] = {
         {
             "members": [
                 "몽타뉴·백조",
+                "마사키",
+                "유스케",
+                "유우미"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "몽타뉴·백조",
                 "J&C",
                 "아야카",
                 "후타바"

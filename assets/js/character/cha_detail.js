@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setValueWithFormatting(element, field.value);
         });
 
-        // GLB 버전 처리
+        // GLB 버전 처리 - 기존 GLB 행 제거 후 추가
         const glbFields = [
             { 
                 container: '.mind-stats', 
@@ -408,6 +408,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 rowClass: 'skill-row'
             }
         ];
+
+        // 기존 GLB 행 제거 (중복 방지)
+        document.querySelectorAll('.label[data-glb-index]').forEach(labelEl => {
+            const row = labelEl.closest('.stat-row, .skill-row');
+            if (row && row.parentNode) {
+                row.parentNode.removeChild(row);
+            }
+        });
 
         glbFields.forEach(field => {
             if (!field.value) return; // 값이 없으면 건너뛰기

@@ -4,7 +4,7 @@ title: "페르소나5X 대미지 계산 공식에 대해"
 date: 2025-07-10 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
-author: Root
+author: AbsolRoot
 thumbnail: /apps/article/asset/damage.gif
 translations:
   kr:

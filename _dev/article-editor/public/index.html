@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Article Editor (KR/EN/JP)</title>
+
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  <link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Lufel Article Editor</div>
+    <div class="actions">
+      <button id="btnSave" class="btn primary">Save & Preview</button>
+    </div>
+  </header>
+
+  <main class="container split">
+    <div class="left">
+    <section class="meta card">
+      <h2>Meta</h2>
+
+      <div class="grid">
+        <label class="span-2">
+          <div class="label">Load Post</div>
+          <div class="row">
+            <select id="postSelect"></select>
+            <button id="btnReloadPosts" class="btn">Reload</button>
+            <button id="btnLoadPost" class="btn">Load</button>
+          </div>
+          <div class="hint">Select a post from <code>_posts</code>.</div>
+        </label>
+        <label>
+          <div class="label">Slug (파일명)</div>
+          <div class="row">
+            <input id="slug" placeholder="highlight-charge-mechanism" />
+            <button id="btnSlugFromTitle" class="btn">From KR Title</button>
+          </div>
+          <div class="hint">저장 시 파일명: <code>YYYY-MM-DD-&lt;slug&gt;.md</code></div>
+        </label>
+
+        <label>
+          <div class="label">Date</div>
+          <input id="date" type="datetime-local" />
+          <div class="hint">Front matter: <code>YYYY-MM-DD HH:MM:SS +0900</code></div>
+        </label>
+
+        <label>
+          <div class="label">Author</div>
+          <input id="author" placeholder="AbsolRoot" />
+        </label>
+
+        <label>
+          <div class="label">Categories (comma)</div>
+          <input id="categories" placeholder="Guide" />
+        </label>
+
+        <label>
+          <div class="label">Tags (comma)</div>
+          <input id="tags" placeholder="guide, mechanic" />
+        </label>
+
+        <label>
+          <div class="label">Description (SEO/OG)</div>
+          <input id="description" placeholder="요약 설명 (선택)" />
+          <div class="hint">article layout에서 <code>page.description</code>을 메타 태그로 사용합니다.:contentReference[oaicite:5]{index=5}</div>
+        </label>
+
+        <label>
+          <div class="label">Thumbnail URL (선택)</div>
+          <input id="thumbnail" placeholder="/apps/article/asset/&lt;slug&gt;/thumb.png" />
+          <div class="row">
+            <input id="thumbnailFile" type="file" accept="image/*" />
+          </div>
+        </label>
+
+        <label>
+          <div class="label">OG Image URL (선택)</div>
+          <input id="image" placeholder="비우면 thumbnail 사용" />
+        </label>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="grid3">
+        <label>
+          <div class="label">KR Title</div>
+          <input id="titleKr" placeholder="한국어 제목" />
+        </label>
+        <label>
+          <div class="label">EN Title</div>
+          <input id="titleEn" placeholder="English title" />
+        </label>
+        <label>
+          <div class="label">JP Title</div>
+          <input id="titleJp" placeholder="日本語タイトル" />
+        </label>
+      </div>
+    </section>
+
+    <section class="editors card">
+      <div class="tabs">
+        <button class="tab active" data-tab="kr">KR</button>
+        <button class="tab" data-tab="en">EN</button>
+        <button class="tab" data-tab="jp">JP</button>
+      </div>
+
+      <div class="panels">
+        <div class="panel active" id="panel-kr">
+          <div class="panel-title">KR Content</div>
+          <div id="editorKr" class="editor"></div>
+        </div>
+        <div class="panel" id="panel-en">
+          <div class="panel-title">EN Content</div>
+          <div id="editorEn" class="editor"></div>
+        </div>
+        <div class="panel" id="panel-jp">
+          <div class="panel-title">JP Content</div>
+          <div id="editorJp" class="editor"></div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        이미지 붙여넣기/드래그앤드롭 → 자동 업로드 → 마크다운에 URL 자동 삽입
+      </div>
+
+      <div class="image-panel">
+        <div class="panel-title">Image Size</div>
+        <div class="image-panel-row">
+          <select id="imageSelect"></select>
+          <input id="imageWidth" type="number" min="1" placeholder="width px" />
+          <button id="btnApplyImageWidth" class="btn">Apply</button>
+          <button id="btnResetImageWidth" class="btn">Reset</button>
+          <button id="btnRefreshImages" class="btn">Refresh</button>
+        </div>
+        <div class="hint">Uses current tab content.</div>
+      </div>
+    </section>
+
+    <section class="result card">
+      <h2>Result</h2>
+      <pre id="resultLog" class="log">Not saved yet.</pre>
+    </section>
+    </div>
+
+    <section class="preview card" style="left:100px; position:relative;">
+      <h2>Preview</h2>
+      <div class="preview-controls">
+        <label>
+          <div class="label">Preview Base URL</div>
+          <input id="previewBase" placeholder="http://localhost:4000" />
+        </label>
+        <div class="row">
+          <button id="btnPreview" class="btn">Update Preview</button>
+          <label class="toggle">
+            <input id="autoPreview" type="checkbox" />
+            <span>Auto Preview</span>
+          </label>
+        </div>
+      </div>
+      <div class="preview-frame" id="previewFrameWrap">
+        <div class="preview-loading" id="previewLoading">Loading preview...</div>
+        <iframe id="previewFrame" title="Article preview" loading="lazy"></iframe>
+      </div>
+      <div class="hint">Start Jekyll with <code>bundle exec jekyll serve</code> and click Save.</div>
+    </section>
+  </main>
+
+  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -424,14 +424,25 @@
           const modal = document.createElement("div");
           modal.className = "memo-edit-modal";
           
-          // 모달 내부 입력 필드
-          const modalInput = document.createElement("input");
-          modalInput.type = "text";
+          // 모달 내부 입력 필드 (textarea로 변경)
+          const modalInput = document.createElement("textarea");
           modalInput.className = "modal-memo-input";
-          // 영어나 일본어 모드에서는 메모 수정 시 내용 초기화
-          const currentLang = getCurrentLanguage();
-          modalInput.value = currentLang === 'kr' ? hiddenInput.value : '';
+          modalInput.rows = 3; // 초기 높이
+          // 기존 메모 내용 불러오기 (언어와 관계없이 항상 불러옴)
+          modalInput.value = action.memo || hiddenInput.value || '';
           modalInput.placeholder = getUIText('enterDetails'); // 번역된 세부사항 입력
+          
+          // 자동 높이 조절 기능
+          const adjustHeight = () => {
+            modalInput.style.height = 'auto';
+            modalInput.style.height = modalInput.scrollHeight + 'px';
+          };
+          
+          // 초기 높이 설정
+          adjustHeight();
+          
+          // 입력 시 높이 자동 조절
+          modalInput.addEventListener('input', adjustHeight);
           
           // 확인 버튼
           const confirmBtn = document.createElement("button");

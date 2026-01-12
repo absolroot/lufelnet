@@ -608,8 +608,8 @@ const defenseCalcData = {
             value: 20.0,
             duration: "2턴",
             note: "적에게 상태이상 부여 시",
-            note_en: "(ASIA ONLY) Debuff applied to enemy",
-            note_jp: "(ASIA ONLY) 敵にデバフ適用"
+            note_en: "Debuff applied to enemy",
+            note_jp: "敵にデバフ適用"
         },
         {
             id: 4,

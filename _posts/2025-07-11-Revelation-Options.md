@@ -4,7 +4,7 @@ title: "페르소나5X 계시 옵션에 대해"
 date: 2025-07-11 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
-author: Root
+author: AbsolRoot
 thumbnail: /apps/article/asset/damage4-1.png
 translations:
   kr:

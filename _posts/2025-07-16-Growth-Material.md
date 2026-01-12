@@ -4,7 +4,7 @@ title: "육성 재료 요구량 총정리"
 date: 2025-07-15 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
-author: Root
+author: AbsolRoot
 thumbnail: /apps/article/asset/growth_material/1.webp
 translations:
   kr:

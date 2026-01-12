@@ -4,7 +4,7 @@ title: "원더 레벨별 EXP 필요량"
 date: 2025-07-15 12:00:00 +0900
 categories: [Guide]
 tags: [guide]
-author: Root
+author: AbsolRoot
 thumbnail: /apps/article/asset/wonder_levelup.gif
 translations:
   kr:

@@ -2,7 +2,7 @@
 layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
 custom_js: [character/cha_video, character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/cha_stats,
-character/character-i18n, character/helpmodal]
+character/character-i18n, character/helpmodal, character/QEVEL]
 custom_data: [characters/characters.js, revelations/revelations.js,
 tooltip.js, wonder/weapons.js]
 permalink: /character.html
@@ -1447,13 +1447,65 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 battlePlusStats.style.gridTemplateColumns = 'repeat(2, 1fr)';
                 battlePlusStats.style.gap = '20px';
 
+                // 마이팰리스 평점 버튼 추가를 위한 텍스트 정의
+                const ratingTexts = {
+                    kr: '마이팰리스 평점',
+                    en: 'MyPalace Rating',
+                    jp: 'マイパレス評価'
+                };
+                const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
+                
                 // <b> 태그로 분할하여 각 섹션을 div로 래핑
                 const sections = battlePlusStats.textContent.split(/<b>/).filter(Boolean);
                 battlePlusStats.innerHTML = sections.map(section => {
                     const processedSection = section.trim().replace(/\s*\/\s*/g, '<br>·');
                     const finalSection = processedSection.replace(/<<br>·b><br>/, '</b>');
-                    return `<div class="battle-stat-section"><b>${finalSection}</div>`;
+                    // 마이팰리스 평점 텍스트가 있으면 버튼 추가 (섹션 스타일은 변경하지 않음)
+                    let sectionWithBtn = finalSection;
+                    if (finalSection.includes(ratingText)) {
+                        const btnHTML = `<button type="button" class="qevel-btn" onclick="if(typeof window.showQEVELModal==='function'){window.showQEVELModal();}else{console.warn('QEVEL.js not loaded');}" style="display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;" title="${currentLang === 'en' ? 'Open QEVEL Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기')}"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle><path d="M5 9 L13 9 M9 5 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path></svg></button>`;
+                        // ·와 텍스트를 함께 찾아서 span으로 감싸기 (뒤의 <br>는 제거)
+                        const escapedRatingText = ratingText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                        // 패턴: <br>·MyPalace Rating<br> 또는 <br>·MyPalace Rating (끝)
+                        sectionWithBtn = finalSection.replace(new RegExp(`(<br>)(·${escapedRatingText})(<br>|$)`, 'g'), `$1<span style="display: inline; white-space: nowrap;">$2${btnHTML}</span>`);
+                    }
+                    return `<div class="battle-stat-section"><b>${sectionWithBtn}</div>`;
                 }).join('');
+                
+                // 이벤트 위임을 사용하여 버튼 클릭 처리 (2열 레이아웃)
+                // 즉시 이벤트 리스너 등록 (QEVEL.js는 나중에 로드될 수 있음)
+                // 중복 등록 방지를 위해 한 번만 등록
+                if (!battlePlusStats.hasAttribute('data-qevel-listener')) {
+                    battlePlusStats.setAttribute('data-qevel-listener', 'true');
+                    battlePlusStats.addEventListener('click', function(e) {
+                        const btn = e.target.closest('.qevel-btn');
+                        if (btn) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (typeof window.showQEVELModal === 'function') {
+                                try {
+                                    window.showQEVELModal();
+                                } catch(err) {
+                                    console.error('showQEVELModal 실행 오류:', err);
+                                }
+                            } else {
+                                console.warn('QEVEL.js가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+                                // 재시도 로직
+                                let retries = 0;
+                                const checkAndOpen = setInterval(() => {
+                                    retries++;
+                                    if (typeof window.showQEVELModal === 'function') {
+                                        clearInterval(checkAndOpen);
+                                        window.showQEVELModal();
+                                    } else if (retries >= 50) {
+                                        clearInterval(checkAndOpen);
+                                        console.error('QEVEL.js 로드 실패');
+                                    }
+                                }, 100);
+                            }
+                        }
+                    });
+                }
             } else {
                 // 기존 방식대로 한 열로 표시
                 let rawContent = battlePlusStats.textContent.trim();
@@ -1490,12 +1542,116 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         // 심상 번역 처리
                         processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
                         processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
-                        div.textContent = processedItem;
+                        
+                        // 마이팰리스 평점 텍스트 확인 및 버튼 추가
+                        const ratingTexts = {
+                            kr: '마이팰리스 평점',
+                            en: 'MyPalace Rating',
+                            jp: 'マイパレス評価'
+                        };
+                        const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
+                        
+                        // 모든 언어의 텍스트를 확인 (원본 텍스트가 다른 언어일 수 있음)
+                        const allRatingTexts = Object.values(ratingTexts);
+                        let hasRating = false;
+                        let displayItem = processedItem;
+                        
+                        for (const text of allRatingTexts) {
+                            if (processedItem.includes(text) || processedItem.includes('· ' + text) || processedItem.includes('·' + text)) {
+                                hasRating = true;
+                                // 다른 언어의 텍스트를 현재 언어의 텍스트로 교체
+                                if (text !== ratingText) {
+                                    displayItem = processedItem.replace(text, ratingText);
+                                    displayItem = displayItem.replace('· ' + text, '· ' + ratingText);
+                                    displayItem = displayItem.replace('·' + text, '·' + ratingText);
+                                }
+                                break;
+                            }
+                        }
+                        
+                        if (hasRating) {
+                            // 텍스트와 버튼을 span으로 감싸서 같은 줄에 유지
+                            const wrapper = document.createElement('span');
+                            wrapper.style.display = 'inline';
+                            wrapper.style.whiteSpace = 'nowrap';
+                            
+                            const textNode = document.createTextNode(displayItem);
+                            wrapper.appendChild(textNode);
+                            
+                            const qevelBtn = document.createElement('button');
+                            qevelBtn.type = 'button';
+                            qevelBtn.className = 'qevel-btn';
+                            qevelBtn.style.cssText = 'display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;';
+                            qevelBtn.title = currentLang === 'en' ? 'Open QEVEL Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기');
+                            
+                            // SVG 생성
+                            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                            svg.setAttribute('width', '18'); svg.setAttribute('height', '18'); svg.setAttribute('viewBox', '0 0 18 18'); svg.setAttribute('fill', 'none'); svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                            
+                            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                            circle.setAttribute('cx', '9'); circle.setAttribute('cy', '9'); circle.setAttribute('r', '8.5'); circle.setAttribute('stroke', 'currentColor'); circle.setAttribute('stroke-opacity', '0.1'); circle.setAttribute('fill', 'rgba(255,255,255,0.05)');
+                            
+                            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                            path.setAttribute('d', 'M5 9 L13 9 M9 5 L9 13'); path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '1.2'); path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round'); path.setAttribute('stroke-opacity', '0.3');
+                            
+                            svg.appendChild(circle); svg.appendChild(path); qevelBtn.appendChild(svg);
+                            
+                            // 직접 onclick 이벤트도 추가 (이중 보험)
+                            qevelBtn.onclick = function(e) {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                if (typeof window.showQEVELModal === 'function') {
+                                    window.showQEVELModal();
+                                } else {
+                                    console.warn('QEVEL.js not loaded yet');
+                                }
+                            };
+                            
+                            wrapper.appendChild(qevelBtn);
+                            div.appendChild(wrapper);
+                        } else {
+                            div.textContent = processedItem;
+                        }
                         battlePlusStats.appendChild(div);
                     }
                 });
 
                 // console.log('Final items:', items);
+                
+                // 이벤트 위임을 사용하여 버튼 클릭 처리 (1열 레이아웃)
+                // 즉시 이벤트 리스너 등록 (QEVEL.js는 나중에 로드될 수 있음)
+                // 중복 등록 방지를 위해 한 번만 등록
+                if (!battlePlusStats.hasAttribute('data-qevel-listener')) {
+                    battlePlusStats.setAttribute('data-qevel-listener', 'true');
+                    battlePlusStats.addEventListener('click', function(e) {
+                        const btn = e.target.closest('.qevel-btn');
+                        if (btn) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (typeof window.showQEVELModal === 'function') {
+                                try {
+                                    window.showQEVELModal();
+                                } catch(err) {
+                                    console.error('showQEVELModal 실행 오류:', err);
+                                }
+                            } else {
+                                console.warn('QEVEL.js가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+                                // 재시도 로직
+                                let retries = 0;
+                                const checkAndOpen = setInterval(() => {
+                                    retries++;
+                                    if (typeof window.showQEVELModal === 'function') {
+                                        clearInterval(checkAndOpen);
+                                        window.showQEVELModal();
+                                    } else if (retries >= 50) {
+                                        clearInterval(checkAndOpen);
+                                        console.error('QEVEL.js 로드 실패');
+                                    }
+                                }, 100);
+                            }
+                        }
+                    });
+                }
             }
         } else if (battlePlusStats) {
             battlePlusStats.textContent = '-';

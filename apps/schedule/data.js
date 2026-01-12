@@ -61,7 +61,7 @@ window.ReleaseScheduleData = {
         { version: "4.5", characters: ["YUI·스텔라"], "main-story": "5-3", weapon: ["엔트로피·제로"], revelation:["예리", "풍족", "획득"] },
         { version: "4.6.1", characters: ["미츠루"] },
         { version: "4.6.2", characters: ["후카"] },
-        { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["미나미", "YUI", "유우미"], note: "Janosik IV" },
+        { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["토모코·여름", "유우미", "YUI"], note: "Janosik IV" },
         { version: "4.7.1", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", mindscape_core: ["J&C"] },
         { version: "4.8", characters: ["준페이"] },
         { version: "4.9", characters: ["나루루"] },

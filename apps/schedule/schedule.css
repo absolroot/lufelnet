@@ -1012,7 +1012,7 @@
 
 .weapon-effect-modal-content {
     background-color: #1a1a1a;
-    border: 1px solid #e5e5e5;
+    border: 1px solid #e5e5e56b;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
@@ -1021,7 +1021,7 @@
     position: relative;
     padding: 20px;
     color: #fff;
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 10px rgb(0 0 0 / 30%);
     transform: scale(0.95);
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;

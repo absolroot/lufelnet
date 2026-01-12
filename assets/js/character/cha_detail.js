@@ -69,7 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // characterSetting에서 데이터 병합
         const urlParams = new URLSearchParams(window.location.search);
         const characterName = urlParams.get('name');
-        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+        
+        // characterSetting에서 데이터 찾기 (정확한 키 매칭 시도)
+        let setting = {};
+        if (characterName && window.characterSetting) {
+            // 정확한 키로 먼저 시도
+            if (window.characterSetting[characterName]) {
+                setting = window.characterSetting[characterName];
+            } else {
+                // 키를 찾지 못한 경우, 모든 키를 확인하여 유사한 키 찾기
+                const keys = Object.keys(window.characterSetting);
+                const matchedKey = keys.find(key => key === characterName || key.trim() === characterName.trim());
+                if (matchedKey) {
+                    setting = window.characterSetting[matchedKey];
+                }
+            }
+        }
+        
         // characterSetting의 데이터로 병합 (우선순위: characterSetting > character)
         const mergedCharacter = { ...character, ...setting };
         
@@ -97,14 +113,15 @@ document.addEventListener('DOMContentLoaded', () => {
             '관통', '치료효과', '치료 효과', 'SP회복', 'SP 회복'
         ];
 
-        // minimum_stats가 없으면 전체 섹션 숨김
+        // minimum_stats가 없으면 전체 섹션 숨김 (하지만 함수는 계속 진행)
         const statsReq = document.querySelector('.stats-requirements');
         if (!hasAnyMinimumStats) {
             if (statsReq) statsReq.style.display = 'none';
-            return;
+            // return 제거 - minimum_stats가 없어도 다른 정보는 표시해야 함
+        } else {
+            // minimum_stats가 있으면 섹션 표시
+            if (statsReq) statsReq.style.display = '';
         }
-        // minimum_stats가 있으면 섹션 표시
-        if (statsReq) statsReq.style.display = '';
 
         // 불필요한 레벨 요소 숨기기
         statLevels.forEach((level, index) => {

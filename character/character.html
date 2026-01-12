@@ -833,6 +833,32 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 resolve(true);
                                 return;
                             }
+                            
+                            // setting.js의 경우, characterSetting 객체의 모든 키를 확인하여 일치하는 키 찾기
+                            if (fileBase === 'setting' && globalVarName === 'characterSetting') {
+                                if (window.characterSetting) {
+                                    // 정확한 키로 확인
+                                    if (window.characterSetting[name]) {
+                                        resolve(true);
+                                        return;
+                                    }
+                                    // 모든 키를 확인하여 공백이나 특수문자 차이 무시하고 매칭
+                                    const keys = Object.keys(window.characterSetting);
+                                    const matchedKey = keys.find(key => {
+                                        // 정확히 일치하거나, 공백 정규화 후 일치
+                                        return key === name || 
+                                               key.trim() === name.trim() ||
+                                               key.replace(/\s+/g, ' ') === name.replace(/\s+/g, ' ');
+                                    });
+                                    if (matchedKey) {
+                                        // 매칭된 키로 데이터 복사 (원본 키는 유지)
+                                        window.characterSetting[name] = window.characterSetting[matchedKey];
+                                        resolve(true);
+                                        return;
+                                    }
+                                }
+                            }
+                            
                             // 변수명 프리픽스 스캔 (레거시 파일 지원)
                             try {
                                 if (Array.isArray(scanPrefixes) && scanPrefixes.length > 0) {

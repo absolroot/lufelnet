@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["토모코·여름"] = {
+    "role": "광역 힐러/디버퍼",
+    "video": ["PAnqjTqD_88", "m6K-1g-KDXs"],
+    "video_en": ["maf_A2zkNlg", "PAnqjTqD_88"],
+    "video_jp": ["Wrc8mxZ-FyA", "PAnqjTqD_88"],
+    "main_revelation": ["창조", "조화", "신뢰"],
+    "sub_revelation": ["화해", "승리", "풍요"],
+    "sub_revel2": ["치료효과"],
+    "sub_revel3": ["공격력", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["공격력", "대미지보너스"],
+    "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_option3": ["SP회복"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "주원",
+    "element_resistance": "염동",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "8",
+    "skill_priority": "2>3>1>4",
+    "mind_stats1": "SP회복 125%",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S1/S2",
+    "mind_skill2": "S3/HL"
+};

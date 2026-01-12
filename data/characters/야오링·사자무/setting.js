@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["야오링·사자무"] = {
+    "role": "화염 광역 딜러",
+    "video": ["0FCv7kZyfpE", "XVkekmUVS4Y"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["수락"],
+    "sub_revelation": ["분쟁"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과"],
+    "sub_option2": ["크리티컬 확률", "관통"],
+    "sub_option3": ["공격력", "대미지보너스"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "질풍",
+    "element_resistance": "화염",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S1/HL!",
+    "mind_skill2": "S2/S3!"
+};

@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["카요"] = {
+    "role": "공격력/효과 명중 서포터",
+    "video": ["0zbaVMyy0is"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["진정성", "신뢰"],
+    "sub_revelation": ["직책", "힘"],
+    "sub_revel2": ["공격력"],
+    "sub_revel3": ["공격력", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["공격력"],
+    "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_option3": ["대미지보너스", "관통"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": "공격력 5400",
+        "LV12+5": "공격력 5850",
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "-",
+    "skill_priority": "3>1>2",
+    "mind_stats1": "효과명중 28%",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S2/S3",
+    "mind_skill2": "S1"
+};

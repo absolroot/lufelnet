@@ -1,0 +1,36 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["마사키"] = {
+    "role": "단일/광역 실드",
+    "video": ["Za_sQ_nsXMI", "2LN27m-Zxv4"],
+    "video_en": ["v-Kyyurmi88", "WAVPjK49B8Y"],
+    "video_jp": ["DMh7ChitPnE", "qYZtjEtnY78"],
+    "main_revelation": ["신념", "신뢰"],
+    "sub_revelation": ["평화", "풍요"],
+    "sub_revel2": ["방어력"],
+    "sub_revel3": ["방어력"],
+    "sub_revel4": ["방어력"],
+    "sub_option1": ["방어력"],
+    "sub_option2": [],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": "방어력 6100",
+        "LV10+5": "방어력 6725",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "방어력 6475",
+        "LV13+5": "방어력 7100"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 마이팰리스 평점  / 패시브 24% ",
+    "element_weakness": "축복",
+    "element_resistance": "빙결",
+    "skill1_lv": "8",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX",
+    "skill4_lv": "8",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "효과저항 24%×",
+    "mind_stats2": "방어력 30%",
+    "mind_stats2_glb": "생명 20%",
+    "mind_skill1": "S1/S2",
+    "mind_skill2": "S3/HL"
+};

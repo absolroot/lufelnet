@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["야오링"] = {
+    "role": "광역 디버퍼",
+    "video": ["M3F8vZqNPtQ", "Ok3JbZUeUGg"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["여정", "여정"],
+    "sub_revelation": ["주권", "풍요"],
+    "sub_revel2": ["-"],
+    "sub_revel3": ["-"],
+    "sub_revel4": ["속도"],
+    "sub_option1": ["속도"],
+    "sub_option2": [],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": "속도 180",
+        "LV10+5": "속도 183",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "속도 180",
+        "LV13+5": "속도 200"
+    },
+    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점 / 전용무기",
+    "element_weakness": "전격",
+    "element_resistance": "주원",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "효과명중 24%×",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S1/HL",
+    "mind_skill2": "S2/S3"
+};

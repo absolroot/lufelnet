@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["하루"] = {
+    "role": "염동 광역 딜러",
+    "video": ["YVCUzXdvD6E", "dBUktg0nRuw"],
+    "video_en": ["Yy3glHRq1ow", "dBUktg0nRuw"],
+    "video_jp": ["ptUU2aWKuRs", "dBUktg0nRuw"],
+    "main_revelation": ["지혜"],
+    "sub_revelation": ["환희"],
+    "sub_revel2": ["대미지 보너스"],
+    "sub_revel3": ["크리티컬 확률", "효과명중"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["효과명중"],
+    "sub_option2": ["관통", "크리티컬 확률", "크리티컬 효과"],
+    "sub_option3": ["공격력", "대미지보너스"],
+    "minimum_stats": {
+        "LV10": "효과명중 150%",
+        "LV10+5": "효과명중 150%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "효과명중 150%",
+        "LV13+5": "효과명중 150%"
+    },
+    "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점",
+    "element_weakness": "핵열",
+    "element_resistance": "염동",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>4>1>2",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S3/HL!",
+    "mind_skill2": "S1/S2"
+};

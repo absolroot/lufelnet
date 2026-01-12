@@ -88,7 +88,18 @@
             // 진급강화/스킬깨달음 라벨
             const mindStatsArr = L.mindStats[lang] || L.mindStats.kr;
             document.querySelectorAll('.mind-stats .stat-row .label, .mind-skills .skill-row .label').forEach((el, idx) => {
+                // GLB 행은 건너뛰기 (별도 처리)
+                if (el.hasAttribute('data-glb-index')) return;
                 if (mindStatsArr[idx]) el.textContent = mindStatsArr[idx];
+            });
+            
+            // GLB 라벨 처리
+            const glbSuffix = { kr: ' (GLB)', en: ' (GLB)', jp: ' (GLB)' };
+            document.querySelectorAll('.label[data-glb-index]').forEach(el => {
+                const baseIndex = parseInt(el.getAttribute('data-glb-index'), 10);
+                if (mindStatsArr[baseIndex]) {
+                    el.textContent = mindStatsArr[baseIndex] + (glbSuffix[lang] || glbSuffix.kr);
+                }
             });
             const mainLabelEl = document.querySelector('.main-revelation .label');
             if (mainLabelEl) {

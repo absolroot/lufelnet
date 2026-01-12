@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["하루나"] = {
+    "role": "광역 버퍼",
+    "video": ["pb-7aqPOcqo"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["창조", "신뢰"],
+    "sub_revelation": ["화해", "풍요"],
+    "sub_revel2": ["공격력", "생명"],
+    "sub_revel3": ["공격력", "생명"],
+    "sub_revel4": ["공격력", "생명"],
+    "sub_option1": ["공격력"],
+    "sub_option2": [],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": "공격력 4880",
+        "LV10+5": "공격력 5380",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 5180",
+        "LV13+5": "공격력 5680"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 / 의식1 / 전용무기",
+    "element_weakness": "주원",
+    "element_resistance": "염동",
+    "skill1_lv": "8",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>4>1>2",
+    "mind_stats1": "대미지보너스 16%",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S1/HL",
+    "mind_skill2": "S2/S3"
+};

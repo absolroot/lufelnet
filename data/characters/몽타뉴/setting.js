@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["몽타뉴"] = {
+    "role": "빙결 단일 딜러",
+    "video": ["Ui2l2VxkW3E"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["전념", "성장"],
+    "sub_revelation": ["화려", "화려"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_option2": ["공격력", "대미지보너스"],
+    "sub_option3": ["관통"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "염동",
+    "element_resistance": "빙결",
+    "skill1_lv": "8",
+    "skill2_lv": "8",
+    "skill3_lv": "8",
+    "skill4_lv": "8",
+    "skill_priority": "2>3>4>1",
+    "mind_stats1": "-",
+    "mind_stats2": "-",
+    "mind_skill1": "-",
+    "mind_skill2": "-"
+};

@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["미츠루"] = {
+    "role": "단일 서포팅 딜러",
+    "video": ["0S7z8bCKhqw", "dIwbDecrOJ0"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["진정성", "창조", "여정"],
+    "sub_revelation": ["고집", "화해", "주권"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_option2": ["공격력", "대미지보너스", "관통"],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": "공격력 2928",
+        "LV10+5": "공격력 3228",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 3108",
+        "LV13+5": "공격력 3408"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
+    "element_weakness": "화염",
+    "element_resistance": "빙결",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "4>2>3>1",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/TH!"
+};

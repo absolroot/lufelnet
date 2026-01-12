@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["아야카"] = {
+    "role": "HIGHLIGHT 버퍼",
+    "video": ["ZvVitJAFWy4", "gfi7ZcXqQO0", "VmjCLNLIRgg", "imv0gAzWcRM"],
+    "video_en": ["wdM5rhduyq0", "pLdgp2uOp1g", "ZvVitJAFWy4", "gfi7ZcXqQO0"],
+    "video_jp": ["GLI6zFVb5QU", "1xrqWE4dNYw", "ZvVitJAFWy4", "gfi7ZcXqQO0"],
+    "main_revelation": ["창조", "여정", "신뢰"],
+    "sub_revelation": ["화해", "주권", "풍요"],
+    "sub_revel2": ["공격력", "생명", "치료효과"],
+    "sub_revel3": ["크리티컬 확률", "공격력"],
+    "sub_revel4": ["공격력", "생명"],
+    "sub_option1": ["공격력"],
+    "sub_option2": ["크리티컬 확률", "크리티컬 효과", "대미지 보너스"],
+    "sub_option3": ["생명", "방어력"],
+    "minimum_stats": {
+        "LV10": "공격력 4067",
+        "LV10+5": "공격력 4484",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 4317",
+        "LV13+5": "공격력 4733"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110  / 마이팰리스 평점 ",
+    "element_weakness": "빙결",
+    "element_resistance": "전격",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>2>4>1",
+    "mind_stats1": "대미지감면 16%",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S1/HL!",
+    "mind_skill2": "S2/S3!"
+};

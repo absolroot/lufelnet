@@ -40,40 +40,48 @@
         return [];
     }
 
-    function resolveVideoId(character) {
+    function resolveVideoId(character, characterName) {
         if (!character) return '';
+        
+        // characterSetting에서 video 데이터 병합
+        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+        const mergedCharacter = { ...character, ...setting };
 
         const lang = getCurrentLanguage();
         if (lang === 'en') {
-            const enId = pickFirstYoutubeId(character.video_en);
+            const enId = pickFirstYoutubeId(mergedCharacter.video_en);
             if (enId) return enId;
-            return pickFirstYoutubeId(character.video);
+            return pickFirstYoutubeId(mergedCharacter.video);
         }
         else if(lang === 'jp') {
-            const jpId = pickFirstYoutubeId(character.video_jp);
+            const jpId = pickFirstYoutubeId(mergedCharacter.video_jp);
             if (jpId) return jpId;
-            return pickFirstYoutubeId(character.video);
+            return pickFirstYoutubeId(mergedCharacter.video);
         }
 
-        return pickFirstYoutubeId(character.video);
+        return pickFirstYoutubeId(mergedCharacter.video);
     }
 
-    function resolveVideoIds(character) {
+    function resolveVideoIds(character, characterName) {
         if (!character) return [];
+        
+        // characterSetting에서 video 데이터 병합
+        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+        const mergedCharacter = { ...character, ...setting };
 
         const lang = getCurrentLanguage();
         if (lang === 'en') {
-            const enList = normalizeYoutubeIdList(character.video_en);
+            const enList = normalizeYoutubeIdList(mergedCharacter.video_en);
             if (enList.length > 0) return enList;
-            return normalizeYoutubeIdList(character.video);
+            return normalizeYoutubeIdList(mergedCharacter.video);
         }
         else if(lang === 'jp') {
-            const jpList = normalizeYoutubeIdList(character.video_jp);
+            const jpList = normalizeYoutubeIdList(mergedCharacter.video_jp);
             if (jpList.length > 0) return jpList;
-            return normalizeYoutubeIdList(character.video);
+            return normalizeYoutubeIdList(mergedCharacter.video);
         }
 
-        return normalizeYoutubeIdList(character.video);
+        return normalizeYoutubeIdList(mergedCharacter.video);
     }
 
     function removeExistingVideo(tagEl) {
@@ -118,7 +126,7 @@
 
         removeExistingVideo(tagEl);
 
-        const videoIds = resolveVideoIds(character);
+        const videoIds = resolveVideoIds(character, characterName);
         if (!videoIds || videoIds.length === 0) {
             tagEl.style.display = '';
             return;
@@ -300,7 +308,10 @@
         const params = new URLSearchParams(window.location.search);
         const name = params.get('name');
         const character = (name && window.characterData) ? window.characterData[name] : null;
-        return { name, character };
+        // characterSetting에서 video 데이터 병합
+        const setting = (name && window.characterSetting && window.characterSetting[name]) ? window.characterSetting[name] : {};
+        const mergedCharacter = character ? { ...character, ...setting } : null;
+        return { name, character: mergedCharacter };
     }
 
     window.applyCharacterVideo = function applyCharacterVideo(characterName, character) {

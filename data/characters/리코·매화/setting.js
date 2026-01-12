@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["리코·매화"] = {
+    "role": "단일/광역 버퍼",
+    "video": ["csjd73u9dLA"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["창조", "여정"],
+    "sub_revelation": ["우려", "주권"],
+    "sub_revel2": ["-"],
+    "sub_revel3": ["크리티컬 효과"],
+    "sub_revel4": ["SP회복"],
+    "sub_option1": ["SP회복", "크리티컬 효과"],
+    "sub_option2": ["생명", "방어력"],
+    "sub_option3": ["공격력", "크리티컬 확률"],
+    "minimum_stats": {
+        "LV10": "SP회복 450.1% , 크리티컬 효과 388%",
+        "LV10+5": "SP회복 450.1% , 크리티컬 효과 418%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "SP회복 450.1% , 크리티컬 효과 418%",
+        "LV13+5": "SP회복 450.1% , 크리티컬 효과 448%"
+    },
+    "battle_plus_stats": "<b>SP회복</b>/ 기본 스탯: 188.5% / 의식 0: 60% / 마이팰리스: 5% / 마이팰리스 평점 <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45% / 마이팰리스: 2%",
+    "battle_plus_stats_en": "<b>SP recovery</b>/ Base Stat: 188.5% / Awareness 0: 60% / MyPalace: 5% / MyPalace Rating <b>Crit Mult</b>/ Navi Power / Passive: 84% / Creation+Worry: 45% / MyPalace: 2%",
+    "battle_plus_stats_jp": "<b>SP回復</b>/ 基本スタット: 188.5% / 意識 0: 60% / マイパレス: 5% / マイパレス 評価 <b>CRT倍率</b>/ 解明の力 / パッシブ: 84% / 結造+憂慮: 45% / マイパレス: 2%",
+    "element_weakness": "염동",
+    "element_resistance": "질풍",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S1/HL!",
+    "mind_skill2": "S2/S3!"
+};

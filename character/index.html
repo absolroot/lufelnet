@@ -662,9 +662,7 @@ redirect_from:
 
                 // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
                 // 중요: element, position, rarity 등은 절대 덮어쓰지 않음 (한국어 데이터 유지)
-                if (langChar.role && langChar.role !== '') {
-                    mergedData[characterKey].role = langChar.role;
-                }
+                // role은 characterSetting으로 이동했으므로 여기서는 처리하지 않음
                 if (langChar.tag && langChar.tag !== '') {
                     mergedData[characterKey].tag = langChar.tag;
                 }

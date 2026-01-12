@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["이치고"] = {
+    "role": "하이라이트 지속 대미지 딜러",
+    "video": ["qZo778THxVI", "Wf3H5gs2iPY"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["돌파"],
+    "sub_revelation": ["슬픔"],
+    "sub_revel2": ["공격력", "대미지 보너스"],
+    "sub_revel3": ["크리티컬 효과"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과"],
+    "sub_option2": ["대미지 보너스", "공격력"],
+    "sub_option3": ["크리티컬 확률", "관통"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "",
+    "element_weakness": "전격",
+    "element_resistance": "주원",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>4>1>2",
+    "mind_stats1": "대미지 보너스 16%",
+    "mind_stats2": "관통 7.5%!",
+    "mind_skill1": "S1/S2",
+    "mind_skill2": "S3/HL!"
+};

@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["미나미"] = {
+    "role": "광역 힐러",
+    "video": ["oVPZ5M3Yw_U", "oRAG6_PmfKw"],
+    "video_en": [""],
+    "video_jp": ["YoXGAVUB-KQ", "5WRAmpkfe8s"],
+    "main_revelation": ["신뢰", "여정"],
+    "sub_revelation": ["풍요", "주권"],
+    "sub_revel2": ["생명", "치료효과"],
+    "sub_revel3": ["생명"],
+    "sub_revel4": ["생명"],
+    "sub_option1": ["생명"],
+    "sub_option2": ["방어"],
+    "sub_option3": ["SP회복"],
+    "minimum_stats": {
+        "LV10": "생명 15000",
+        "LV10+5": "생명 15000",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "생명 15000",
+        "LV13+5": "생명 15000"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560",
+    "element_weakness": "핵열",
+    "element_resistance": "축복",
+    "skill1_lv": "8",
+    "skill2_lv": "8",
+    "skill3_lv": "8",
+    "skill4_lv": "8",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "효과저항 24%×",
+    "mind_stats2": "생명 20%×",
+    "mind_skill1": "2/HL×",
+    "mind_skill2": "S1/S3×"
+};

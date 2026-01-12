@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["카스미"] = {
+    "role": "축복 단일 딜러",
+    "video": ["zu8O2gSQrQE", "lWHaLYD1lb4"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["지혜", "여정"],
+    "sub_revelation": ["미덕", "주권"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과"],
+    "sub_option2": ["관통", "크리티컬 확률"],
+    "sub_option3": ["공격력", "대미지보너스"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "주원",
+    "element_resistance": "축복",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "4>3>2>1",
+    "mind_stats1": "대미지보너스 16%",
+    "mind_stats2": "크리티컬 확률 12%!",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/HL!"
+};

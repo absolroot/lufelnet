@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["카타야마"] = {
+    "role": "다운 광역 디버퍼",
+    "video": ["57SfYmK-wac", "bDyJLsMk6wY"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["희망", "창조"],
+    "sub_revelation": ["변화", "화해"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["속도"],
+    "sub_option1": ["속도"],
+    "sub_option2": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_option3": ["공격력", "대미지보너스"],
+    "minimum_stats": {
+        "LV10": "속도 180.2",
+        "LV10+5": "속도 194.0",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "속도 187.3",
+        "LV13+5": "속도 205.3"
+    },
+    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
+    "element_weakness": "빙결",
+    "element_resistance": "전격",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "속도 10!",
+    "mind_stats2": "크리티컬 확률 12%",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/HL!"
+};

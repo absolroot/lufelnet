@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["리코"] = {
+    "role": "ONE MORE/총공격 서포터",
+    "video": ["JwjBMt9KxhI", "kb8GqVkHyUY", "Jaf-PMD_8O4"],
+    "video_en": ["8B0NJyEu2k0", "ZVevRsWS_Zk"],
+    "video_jp": ["8os7-8nBZJA", "jZU1XdgkRHw"],
+    "main_revelation": ["결심", "진정성"],
+    "sub_revelation": ["직책", "직책"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["속도"],
+    "sub_option1": ["속도"],
+    "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_option3": ["공격력", "대미지보너스"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": "속도 170",
+        "LV12+5": "속도 180",
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "-",
+    "skill_priority": "3>1>2",
+    "mind_stats1": "생명 20%",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3!"
+};

@@ -1,0 +1,28 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["유키 마코토"] = {
+    "role": "아군 버프 화염 단일 딜러",
+    "video": ["etterGepdkQ", "NNXAdUF8lxY", "r9_USx-h-_I", "dBUktg0nRuw"],
+    "video_en": ["dBUktg0nRuw"],
+    "video_jp": ["dBUktg0nRuw"],
+    "main_revelation": ["희망"],
+    "sub_revelation": ["고집"],
+    "sub_revel2": ["공격력", "대미지 보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_option2": ["공격력", "대미지 보너스", "관통"],
+    "sub_option3": [],
+    "minimum_stats": {},
+    "battle_plus_stats": "",
+    "element_weakness": "주원",
+    "element_resistance": "화염",
+    "skill1_lv": "MAX",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "대미지 보너스 16%",
+    "mind_stats2": "관통 7.5%",
+    "mind_skill1": "S1/S2",
+    "mind_skill2": "S3/TH!"
+};

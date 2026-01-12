@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["유키미"] = {
+    "role": "단일 실드",
+    "video": ["xT0p6n7fXok"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["신뢰", "창조"],
+    "sub_revelation": ["풍요", "화해"],
+    "sub_revel2": ["방어력"],
+    "sub_revel3": ["방어력"],
+    "sub_revel4": ["방어력"],
+    "sub_option1": ["-"],
+    "sub_option2": [],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": "방어력 4500",
+        "LV12+5": "방어력 4500",
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 50 / 마이팰리스 70LV 95 / 마이팰리스 평점 / 전용무기 ",
+    "element_weakness": "핵열",
+    "element_resistance": "축복",
+    "skill1_lv": "8",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "2>3>4>1",
+    "mind_stats1": "실드효과 14%×",
+    "mind_stats2": "방어력 30%",
+    "mind_skill1": "S1/S3",
+    "mind_skill2": "S2/HL"
+};

@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["루우나"] = {
+    "role": "화염 디버퍼",
+    "video": ["Dv_rI-K7UnY", "gh3HhqBiBbQ"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["자유", "여정"],
+    "sub_revelation": ["좌절", "주권"],
+    "sub_revel2": ["-"],
+    "sub_revel3": ["효과명중"],
+    "sub_revel4": ["-"],
+    "sub_option1": ["효과명중"],
+    "sub_option2": ["공격력", "대미지보너스", "크리티컬 확률"],
+    "sub_option3": ["생명", "방어력"],
+    "minimum_stats": {
+        "LV10": "효과명중 170%",
+        "LV10+5": "효과명중 190%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "효과명중 182%",
+        "LV13+5": "효과명중 199%"
+    },
+    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% / 마이팰리스 평점 ",
+    "element_weakness": "질풍",
+    "element_resistance": "화염",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>1>2>4",
+    "mind_stats1": "대미지보너스 16%",
+    "mind_stats2": "효과명중 24%",
+    "mind_skill1": "S3/HL!",
+    "mind_skill2": "S1/S2!"
+};

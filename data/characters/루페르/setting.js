@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["루페르"] = {
+    "role": "힐러",
+    "video": ["FDn7YSSB0pE", "Jaf-PMD_8O4"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["수락"],
+    "sub_revelation": ["사랑"],
+    "sub_revel2": ["치료효과"],
+    "sub_revel3": ["공격력"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["-"],
+    "sub_option2": [],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "질풍",
+    "element_resistance": "화염",
+    "skill1_lv": "8",
+    "skill2_lv": "8",
+    "skill3_lv": "8",
+    "skill4_lv": "8",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "-",
+    "mind_stats2": "-",
+    "mind_skill1": "-",
+    "mind_skill2": "-"
+};

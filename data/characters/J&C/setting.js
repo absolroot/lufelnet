@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["J&C"] = {
+    "role": "자율 직업 선택",
+    "video": ["A5eX8ipPqtE", "nEtIbMs9wf8"],
+    "video_en": ["Wulo8Bz00wA", "Oe6celXfnYQ", "DYgC5fleSaw"],
+    "video_jp": ["F3_7JnVGcgs", "XZ7Mb_zUrk0", "NoeIyxXOFts", "Jsd7kxEiHPw"],
+    "main_revelation": ["탄생", "자유"],
+    "sub_revelation": ["힘", "실망"],
+    "sub_revel2": ["대미지 보너스", "공격력"],
+    "sub_revel3": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 확률"],
+    "sub_option2": ["크리티컬 효과"],
+    "sub_option3": ["대미지 보너스", "공격력", "관통"],
+    "minimum_stats": {
+        "LV10": "공격력 4500, 크리티컬 효과 190%, 대미지 보너스 30%",
+        "LV10+5": "공격력 4500, 크리티컬 효과 190%, 대미지 보너스 30%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 4500, 크리티컬 효과 190%, 대미지 보너스 30%",
+        "LV13+5": "공격력 4500, 크리티컬 효과 190%, 대미지 보너스 30%"
+    },
+    "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 / 해명의힘 <b>크리티컬 효과</b>/ 마이팰리스 2% / 해명의힘 <b>대미지 보너스</b>/ 마이팰리스 / 해명의힘",
+    "battle_plus_stats_en": "<b>Attack</b>/ MyPalace 50LV 65 / MyPalace 70LV 110 / MyPalace Rating / Navi Power <b>크리티컬 효과</b>/ MyPalace 2% / Navi Power <b>대미지 보너스</b>/ MyPalace / Navi Power",
+    "battle_plus_stats_jp": "<b>공격력</b>/ マイパレス 50LV 65 / マイパレス 70LV 110 / マイパレス 評価 / 解明の力 <b>크리티컬 효과</b>/ マイパレス 2% / 解明の力 <b>대미지 보너스</b>/ マイパレス / 解明の力",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "대미지 보너스 16%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/HL!"
+};

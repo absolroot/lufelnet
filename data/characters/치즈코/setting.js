@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["치즈코"] = {
+    "role": "단일 디버퍼",
+    "video": [""],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["여정", "여정", "조화"],
+    "sub_revelation": ["주권", "풍요", "진리"],
+    "sub_revel2": ["-"],
+    "sub_revel3": ["효과명중"],
+    "sub_revel4": ["-"],
+    "sub_option1": ["효과명중"],
+    "sub_option2": ["생명", "방어력"],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": "효과명중 173%",
+        "LV12+5": "효과명중 191%",
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 의식3 : 동료가 원소이상 부여 시 2턴 10% 증가 (3중첩)",
+    "battle_plus_stats_en": "· MyPalace 2.3% / MyPalace Rating / Awareness 3: 30%",
+    "battle_plus_stats_jp": "· マイパレス 2.3% / マイパレス評価 / 意識3: 30%",
+    "element_weakness": "화염",
+    "element_resistance": "핵열",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "8",
+    "skill_priority": "1>3>4>2",
+    "mind_stats1": "효과명중 24%!",
+    "mind_stats2": "공격력 20%",
+    "mind_skill1": "S1/HL",
+    "mind_skill2": "S2/S3!"
+};

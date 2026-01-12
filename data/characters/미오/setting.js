@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["미오"] = {
+    "role": "광역 디버퍼",
+    "video": ["62-u95gz60Y", "7sitIWOr_zc"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["신념"],
+    "sub_revelation": ["헛수고"],
+    "sub_revel2": ["공격력/대미지보너스"],
+    "sub_revel3": ["효과명중/크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["효과명중"],
+    "sub_option2": ["크리티컬 확률/크리티컬 효과"],
+    "sub_option3": ["공격력, 대미지보너스"],
+    "minimum_stats": {
+        "LV10": "효과명중 171%",
+        "LV10+5": "효과명중 189%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "효과명중 182%",
+        "LV13+5": "효과명중 200%"
+    },
+    "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 헛수고 : 2턴 동안 30% 효과명중 증가",
+    "battle_plus_stats_en": "MyPalace 2.3% / MyPalace Rating / Futility : 2 turns of 30% Ailment Accuracy increase",
+    "battle_plus_stats_jp": "マイパレス 2.3% / マイパレス評価 / 徒労 : 2ターン分 30% 状態異常命中増加",
+    "element_weakness": "축복",
+    "element_resistance": "빙결",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "대미지보너스 16%",
+    "mind_stats2": "효과명중 24%!",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/HL!"
+};

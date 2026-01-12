@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["슌·프론티어"] = {
+    "role": "생명 대리 부담 탱커",
+    "video": ["s7mkM21mF8M"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["창조", "신뢰", "여정"],
+    "sub_revelation": ["화해", "풍요", "주권"],
+    "sub_revel2": ["생명", "대미지 보너스"],
+    "sub_revel3": ["생명", "크리티컬 효과"],
+    "sub_revel4": ["생명"],
+    "sub_option1": ["생명"],
+    "sub_option2": ["크리티컬 효과", "관통", "대미지 보너스"],
+    "sub_option3": [""],
+    "minimum_stats": {
+        "LV10": "생명 20000",
+        "LV10+5": "생명 21520",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "생명 20720",
+        "LV13+5": "생명 22720"
+    },
+    "battle_plus_stats": "해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560",
+    "battle_plus_stats_en": "Navi Power / Card-Labor 8% / MyPalace 260",
+    "battle_plus_stats_jp": "解明の力 / 職責 8% / マイパレス 260",
+    "element_weakness": "축복",
+    "element_resistance": "총격",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>2>4>1",
+    "mind_stats1": "생명 20%",
+    "mind_stats2": "실드효과 14%",
+    "mind_skill1": "S1/HL",
+    "mind_skill2": "S2/S3!"
+};

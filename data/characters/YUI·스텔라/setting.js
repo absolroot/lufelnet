@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["YUI·스텔라"] = {
+    "role": "총공격 핵열 딜러",
+    "video": ["Gcqc90CyN3w", "zGUg8akGCRk"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["예리"],
+    "sub_revelation": ["풍족"],
+    "sub_revel2": ["대미지보너스", "공격력"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_option2": ["관통", "대미지보너스", "공격력"],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "화염",
+    "element_resistance": "핵열",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>1>2>4",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S1/HL!",
+    "mind_skill2": "S2/S3!"
+};

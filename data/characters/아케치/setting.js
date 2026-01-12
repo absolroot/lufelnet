@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["아케치"] = {
+    "role": "만능 광역 딜러 (서브)",
+    "video": ["vf8BbijxPYg", "9xW_MiGs0FA"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["여정", "자유", "신뢰"],
+    "sub_revelation": ["풍요", "실망", "힘"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_option2": ["관통", "공격력", "대미지보너스"],
+    "sub_option3": [""],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "주원",
+    "element_resistance": "축복",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "대미지보너스 16%",
+    "mind_stats2": "크리티컬 확률 12%!",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/HL!"
+};

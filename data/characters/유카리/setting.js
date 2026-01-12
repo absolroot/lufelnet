@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["유카리"] = {
+    "role": "테우르기아 충전 버퍼",
+    "video": ["pi4PpABMZDQ", "KW2Xg1If2iY"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["창조", "진정성"],
+    "sub_revelation": ["화해", "고집"],
+    "sub_revel2": ["공격력", "대미지 보너스", "치료 효과"],
+    "sub_revel3": ["공격력"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["공격력"],
+    "sub_option2": ["대미지 보너스"],
+    "sub_option3": ["관통"],
+    "minimum_stats": {
+        "LV10": "공격력 4500",
+        "LV10+5": "공격력 4584",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 4667",
+        "LV13+5": "공격력 5084"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
+    "element_weakness": "전격",
+    "element_resistance": "질풍",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>2>4>1",
+    "mind_stats1": "SP 회복",
+    "mind_stats2": "공격력",
+    "mind_skill1": "S1/S3!",
+    "mind_skill2": "S2/TH!"
+};

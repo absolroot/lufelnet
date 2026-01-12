@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["사나다"] = {
+    "role": "다운 광역 전격 딜러",
+    "video": ["Wd7BYGJUr4U", "mQFpIXh6s-I"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["돌파", "결심"],
+    "sub_revelation": ["변화", "신중"],
+    "sub_revel2": ["공격력", "대미지 보너스"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_option2": ["관통", "공격력", "대미지 보너스"],
+    "sub_option3": [""],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "",
+    "element_weakness": "빙결",
+    "element_resistance": "전격",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%!",
+    "mind_skill1": "S1/S3!",
+    "mind_skill2": "S2/TH!"
+};

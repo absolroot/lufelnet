@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["키라"] = {
+    "role": "물리 단일 딜러",
+    "video": ["4XbS6ur79J4", "j5xC7UT1E-o"],
+    "video_en": ["50by8UDtwb0", "Y_4cCcu5kUU"],
+    "video_jp": ["tUxzP4LCkQA", "QBig0DG_s5w"],
+    "main_revelation": ["지혜", "지혜", "돌파"],
+    "sub_revelation": ["억압", "환희", "슬픔"],
+    "sub_revel2": ["공격력", "대미지보너스"],
+    "sub_revel3": ["공격력"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["관통"],
+    "sub_option2": ["공격력", "대미지보너스", "효과명중"],
+    "sub_option3": ["크리티컬 효과", "크리티컬 확률"],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "관통 31.5% (A6)",
+        "LV13+5": "관통 31.5% (A6)"
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "총격",
+    "element_resistance": "물리",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX",
+    "skill4_lv": "MAX",
+    "skill_priority": "2>1>3>4",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "관통 7.5%!",
+    "mind_skill1": "S1/HL!",
+    "mind_skill2": "S2/S3!"
+};

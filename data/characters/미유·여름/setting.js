@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["미유·여름"] = {
+    "role": "광역 빙결 추가효과 딜러",
+    "video": ["fZzquAemH08", "DfMX3zOm7KQ"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["전념"],
+    "sub_revelation": ["화려"],
+    "sub_revel2": ["공격력", "대미지 보너스"],
+    "sub_revel3": ["크리티컬 효과"],
+    "sub_revel4": ["SP 회복", "공격력"],
+    "sub_option1": ["크리티컬 효과", "관통"],
+    "sub_option2": ["크리티컬 확률", "SP 회복"],
+    "sub_option3": ["공격력", "대미지 보너스"],
+    "minimum_stats": {
+        "LV10": "SP 회복 286.7%",
+        "LV10+5": "SP 회복 286.7%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "SP 회복 300.1%",
+        "LV13+5": "SP 회복 300.1%"
+    },
+    "battle_plus_stats": "· 기본 스탯: 188.5% / 마이팰리스: 5%",
+    "battle_plus_stats_en": "· Base Stat: 188.5% / MyPalace: 5%",
+    "battle_plus_stats_jp": "· 基本ステータス: 188.5% / マイパレス: 5%",
+    "element_weakness": "축복",
+    "element_resistance": "빙결",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "공격력 20%!",
+    "mind_stats2": "크리티컬 확률 12%!",
+    "mind_skill1": "S1/S2!",
+    "mind_skill2": "S3/HL!"
+};

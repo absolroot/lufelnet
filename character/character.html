@@ -875,12 +875,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             window.WeaponData = window.WeaponData || {};
             // 심상 코어(innate) 데이터 전역 스텁
             window.innateData = window.innateData || {};
+            // 캐릭터 세팅 데이터 전역 스텁
+            window.characterSetting = window.characterSetting || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
             const tasks = [
                 loadPerCharacterResource(name, { fileBase: 'review', globalVarName: 'characterReview', scanPrefixes: ['characterReview_'] }),
                 loadPerCharacterResource(name, { fileBase: 'base_stats', globalVarName: 'basicStatsData' }),
+                loadPerCharacterResource(name, { fileBase: 'setting', globalVarName: 'characterSetting' }),
                 loadPerCharacterResource(name, { fileBase: 'operation', globalVarName: 'operationData' }),
                 loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
                 loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
@@ -981,6 +984,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 언어별 데이터 로드 (영어/일본어가 있는 경우 우선 사용)
         // per-character 데이터 선 로드 (review/base_stats/operation/party)
         await safeAwait('loadCharacterDataAll', loadCharacterDataAll(characterName));
+        // characterSetting 로드 후 fillSettingsInfo, fillRoleAndTag, applySkillPriorityBadges 재호출
+        safeRun('fillSettingsInfo-after-load', () => {
+            if (typeof window.fillSettingsInfo === 'function' && character) {
+                window.fillSettingsInfo(character);
+            }
+            if (typeof window.fillRoleAndTag === 'function') {
+                window.fillRoleAndTag();
+            }
+            if (typeof applySkillPriorityBadges === 'function') {
+                applySkillPriorityBadges();
+            }
+        });
         // 기본 스탯 렌더
         safeRun('fillBasicStats', () => fillBasicStats(characterName));
         // 운영 즉시 렌더 (함수 노출 이후 재호출 가능)
@@ -1294,7 +1309,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 스킬 우선순위 뱃지 적용
         function applySkillPriorityBadges() {
             try {
-                const data = characterData && characterData[characterName];
+                const baseData = characterData && characterData[characterName];
+                if (!baseData) return;
+                // characterSetting에서 skill_priority 병합
+                const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+                const data = { ...baseData, ...setting };
                 if (!data || !data.skill_priority) return;
                 // 기존 뱃지 제거(중복 방지)
                 document.querySelectorAll('.skill-level .label .priority-badge').forEach(function (el) {
@@ -1376,13 +1395,16 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const battlePlusStats = document.querySelector('.battle-plus-stats');
         try {
             if (!battlePlusStats) throw new Error('battlePlusStats not found');
+            // characterSetting에서 battle_plus_stats 데이터 병합
+            const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+            const mergedCharacter = { ...character, ...setting };
             // 언어 별 battle-plus-stats
-            if (currentLang === 'en' && character.battle_plus_stats_en) {
-                battlePlusStats.textContent = character.battle_plus_stats_en;
-            } else if (currentLang === 'jp' && character.battle_plus_stats_jp) {
-                battlePlusStats.textContent = character.battle_plus_stats_jp;
+            if (currentLang === 'en' && mergedCharacter.battle_plus_stats_en) {
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_en;
+            } else if (currentLang === 'jp' && mergedCharacter.battle_plus_stats_jp) {
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_jp;
             } else {
-                battlePlusStats.textContent = character.battle_plus_stats;
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats;
             }
         } catch (e) { console.warn('[SAFE:battlePlus-init]', e); }
 
@@ -1881,16 +1903,20 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const mainRevelationValue = document.querySelector('.main-revelation .value');
             const subRevelationValue = document.querySelector('.sub-revelation .value');
 
+            // characterSetting에서 계시 데이터 병합
+            const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+            const mergedCharacter = { ...character, ...setting };
+            
             // 메인 계시 설정
-            if (character.main_revelation && Array.isArray(character.main_revelation)) {
+            if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
                 mainRevelationValue.textContent = '';
-                mainRevelationValue.appendChild(window.createRevelationValue(character.main_revelation, true));
+                mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
             }
 
             // 서브 계시 설정
-            if (character.sub_revelation && Array.isArray(character.sub_revelation)) {
+            if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
                 subRevelationValue.textContent = '';
-                subRevelationValue.appendChild(window.createRevelationValue(character.sub_revelation, false));
+                subRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.sub_revelation, false));
         }
     }
 

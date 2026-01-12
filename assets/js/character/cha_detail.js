@@ -66,13 +66,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 세팅 정보 채우기
     function fillSettingsInfo(character) {
+        // characterSetting에서 데이터 병합
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name');
+        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+        // characterSetting의 데이터로 병합 (우선순위: characterSetting > character)
+        const mergedCharacter = { ...character, ...setting };
+        
         // 요구 스탯
         const statLevels = document.querySelectorAll('.stat-level');
-        const levels = character.rarity === 4
+        const levels = mergedCharacter.rarity === 4
             ? ['LV12', 'LV12+5']  // 4성 캐릭터
             : ['LV10', 'LV10+5', 'LV13', 'LV13+5']; // 5성 캐릭터
 
+        const currentLang = getCurrentLanguage();
 
+        // minimum_stats가 있는지 확인 (빈 객체가 아닌지도 확인)
+        const hasMinimumStats = mergedCharacter.minimum_stats && 
+            typeof mergedCharacter.minimum_stats === 'object' && 
+            Object.keys(mergedCharacter.minimum_stats).length > 0;
+        const hasMinimumStatsGlb = mergedCharacter.minimum_stats_glb && 
+            typeof mergedCharacter.minimum_stats_glb === 'object' && 
+            Object.keys(mergedCharacter.minimum_stats_glb).length > 0;
+        const hasAnyMinimumStats = hasMinimumStats || hasMinimumStatsGlb;
 
         const validStats = [
             '공격력', '방어력', '효과 명중', '효과명중', '생명',
@@ -80,6 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
             '속도', '대미지보너스', '데미지보너스', '대미지 보너스', '데미지 보너스',
             '관통', '치료효과', '치료 효과', 'SP회복', 'SP 회복'
         ];
+
+        // minimum_stats가 없으면 전체 섹션 숨김
+        const statsReq = document.querySelector('.stats-requirements');
+        if (!hasAnyMinimumStats) {
+            if (statsReq) statsReq.style.display = 'none';
+            return;
+        }
+        // minimum_stats가 있으면 섹션 표시
+        if (statsReq) statsReq.style.display = '';
 
         // 불필요한 레벨 요소 숨기기
         statLevels.forEach((level, index) => {
@@ -89,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // +5 → +5심상 (언어별 번역)
                 if (levels[index].endsWith('+5')) {
-                    const currentLang = getCurrentLanguage();
                     const mindTexts = {
                         'kr': '심상 5',
                         'en': 'Minds 5',
@@ -98,9 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     level.querySelector('.label').textContent = levels[index].slice(0, -1) + (mindTexts[currentLang] || '심상 5');
                 }
                 const valueElement = level.querySelector('.value');
-                let statValue = character.minimum_stats[levels[index]] || '-';
-                if (character.minimum_stats_glb && currentLang != 'kr') {
-                    statValue = character.minimum_stats_glb[levels[index]] || '-';
+                let statValue = mergedCharacter.minimum_stats && mergedCharacter.minimum_stats[levels[index]] ? mergedCharacter.minimum_stats[levels[index]] : '-';
+                if (mergedCharacter.minimum_stats_glb && currentLang != 'kr') {
+                    statValue = mergedCharacter.minimum_stats_glb[levels[index]] || '-';
                 }
 
                 if (statValue !== '-') {
@@ -148,17 +172,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const subRevelationValue = document.querySelector('.sub-revelation .value');
 
         // 메인 계시 설정
-        if (character.main_revelation && Array.isArray(character.main_revelation)) {
+        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
             mainRevelationValue.textContent = '';
-            mainRevelationValue.appendChild(createRevelationValue(character.main_revelation, true));
+            mainRevelationValue.appendChild(createRevelationValue(mergedCharacter.main_revelation, true));
         } else {
             mainRevelationValue.textContent = '-';
         }
 
         // 서브 계시 설정
-        if (character.sub_revelation && Array.isArray(character.sub_revelation)) {
+        if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
             subRevelationValue.textContent = '';
-            subRevelationValue.appendChild(createRevelationValue(character.sub_revelation, false));
+            subRevelationValue.appendChild(createRevelationValue(mergedCharacter.sub_revelation, false));
         } else {
             subRevelationValue.textContent = '-';
         }
@@ -166,9 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // 계시 주옵션
         const mainOptions = [
             { label: '일', value: '생명' },
-            { label: '월', values: character.sub_revel2 },
-            { label: '성', values: character.sub_revel3 },
-            { label: '진', values: character.sub_revel4 }
+            { label: '월', values: mergedCharacter.sub_revel2 },
+            { label: '성', values: mergedCharacter.sub_revel3 },
+            { label: '진', values: mergedCharacter.sub_revel4 }
         ];
 
         document.querySelectorAll('.main-options .option-row').forEach((row, index) => {
@@ -183,17 +207,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 계시 부옵션
         const subOptionRows = document.querySelectorAll('.sub-options .option-row');
-        [character.sub_option1, character.sub_option2, character.sub_option3].forEach((option, index) => {
+        [mergedCharacter.sub_option1, mergedCharacter.sub_option2, mergedCharacter.sub_option3].forEach((option, index) => {
             const valueElement = subOptionRows[index].querySelector('.value');
             valueElement.textContent = Array.isArray(option) && option.length > 0 ? option.join(' / ') : '-';
         });
 
         // 스킬 레벨
         const skillLevels = [
-            character.skill1_lv,
-            character.skill2_lv,
-            character.skill3_lv,
-            character.skill4_lv
+            mergedCharacter.skill1_lv,
+            mergedCharacter.skill2_lv,
+            mergedCharacter.skill3_lv,
+            mergedCharacter.skill4_lv
         ];
         document.querySelectorAll('.skill-levels .skill-level .value').forEach((element, index) => {
             let value = skillLevels[index] || '-';
@@ -255,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 스킬 우선순위 표시 (기존 스킬 목록에 통합)
-        if (character.skill_priority) {
-            const priorities = character.skill_priority.split('>').map(s => s.trim());
+        if (mergedCharacter.skill_priority) {
+            const priorities = mergedCharacter.skill_priority.split('>').map(s => s.trim());
 
             const skillRows = document.querySelectorAll('.skill-levels .skill-level');
             const currentLang = getCurrentLanguage();
@@ -297,18 +321,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 심상
         const mindFields = [
-            { element: '.mind-stats .stat-row:nth-child(1) .value', value: character.mind_stats1 },
-            { element: '.mind-stats .stat-row:nth-child(2) .value', value: character.mind_stats2 },
-            { element: '.mind-skills .skill-row:nth-child(1) .value', value: character.mind_skill1 },
-            { element: '.mind-skills .skill-row:nth-child(2) .value', value: character.mind_skill2 }
+            { element: '.mind-stats .stat-row:nth-child(1) .value', value: mergedCharacter.mind_stats1, label: '진급강화 1' },
+            { element: '.mind-stats .stat-row:nth-child(2) .value', value: mergedCharacter.mind_stats2, label: '진급강화 2' },
+            { element: '.mind-skills .skill-row:nth-child(1) .value', value: mergedCharacter.mind_skill1, label: '스킬깨달음 1' },
+            { element: '.mind-skills .skill-row:nth-child(2) .value', value: mergedCharacter.mind_skill2, label: '스킬깨달음 2' }
         ];
 
-        mindFields.forEach(field => {
-            const element = document.querySelector(field.element);
-            let value = field.value || '-';
+        // 값 설정 헬퍼 함수
+        const setValueWithFormatting = (element, value) => {
+            if (!element) return;
+            
+            let processedValue = value || '-';
 
-            if (value.endsWith('!')) {
-                value = value.slice(0, -1);
+            if (processedValue.endsWith('!')) {
+                processedValue = processedValue.slice(0, -1);
                 element.style.color = '#d3bc8e';
 
                 // 컨테이너 생성
@@ -319,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // 텍스트 요소
                 const textSpan = document.createElement('span');
-                textSpan.textContent = value;
+                textSpan.textContent = processedValue;
                 textSpan.style.color = '#d3bc8e';
 
                 // 마크 이미지
@@ -337,16 +363,81 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.textContent = '';
                 element.appendChild(container);
             }
-            else if (value.endsWith('×')) {
-                value = value.slice(0, -1);
+            else if (processedValue.endsWith('×')) {
+                processedValue = processedValue.slice(0, -1);
                 element.style.textDecoration = 'line-through';
                 element.style.color = '#777';
-                element.textContent = value;
+                element.textContent = processedValue;
             }
             else {
                 element.style.color = ''; // 기본 색상으로 복원
-                element.textContent = value;
+                element.textContent = processedValue;
             }
+        };
+
+        // 기본 필드 처리
+        mindFields.forEach(field => {
+            const element = document.querySelector(field.element);
+            setValueWithFormatting(element, field.value);
+        });
+
+        // GLB 버전 처리
+        const glbFields = [
+            { 
+                container: '.mind-stats', 
+                value: mergedCharacter.mind_stats1_glb, 
+                baseIndex: 0, // 진급강화 1
+                rowClass: 'stat-row'
+            },
+            { 
+                container: '.mind-stats', 
+                value: mergedCharacter.mind_stats2_glb, 
+                baseIndex: 1, // 진급강화 2
+                rowClass: 'stat-row'
+            },
+            { 
+                container: '.mind-skills', 
+                value: mergedCharacter.mind_skill1_glb, 
+                baseIndex: 2, // 스킬깨달음 1
+                rowClass: 'skill-row'
+            },
+            { 
+                container: '.mind-skills', 
+                value: mergedCharacter.mind_skill2_glb, 
+                baseIndex: 3, // 스킬깨달음 2
+                rowClass: 'skill-row'
+            }
+        ];
+
+        glbFields.forEach(field => {
+            if (!field.value) return; // 값이 없으면 건너뛰기
+
+            const container = document.querySelector(field.container);
+            if (!container) return;
+
+            // 새 행 생성
+            const newRow = document.createElement('div');
+            newRow.className = field.rowClass;
+
+            const labelSpan = document.createElement('span');
+            labelSpan.className = 'label';
+            labelSpan.setAttribute('data-glb-index', field.baseIndex); // 번역 후 GLB 추가를 위한 인덱스 저장
+
+            const valueSpan = document.createElement('span');
+            valueSpan.className = 'value';
+
+            const skillItemSpan = document.createElement('span');
+            skillItemSpan.className = 'skill-item';
+
+            newRow.appendChild(labelSpan);
+            newRow.appendChild(valueSpan);
+            newRow.appendChild(skillItemSpan);
+
+            // 컨테이너에 추가
+            container.appendChild(newRow);
+
+            // 값 설정
+            setValueWithFormatting(valueSpan, field.value);
         });
 
         // 레어도 섹션 설정
@@ -444,19 +535,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 라벨 텍스트
                 const RES_TXT = (langForEl === 'en') ? 'Res' : (langForEl === 'jp' ? '耐' : '내');
                 const WK_TXT = (langForEl === 'en') ? 'Wk' : (langForEl === 'jp' ? '弱' : '약');
-                if (character.element_resistance) {
+                const mergedChar = { ...character, ...(characterName && window.characterSetting && window.characterSetting[characterName] ? window.characterSetting[characterName] : {}) };
+                if (mergedChar.element_resistance) {
                     const el = document.createElement('span');
                     el.className = 'char-el-badge res';
                     el.textContent = RES_TXT;
-                    el.style.left = (setElementPositions(character.element_resistance) + 10) + 'px'; // + 10px
+                    el.style.left = (setElementPositions(mergedChar.element_resistance) + 10) + 'px'; // + 10px
                     el.style.top = baseTop;
                     parentEl.appendChild(el);
                 }
-                if (character.element_weakness) {
+                if (mergedChar.element_weakness) {
                     const el = document.createElement('span');
                     el.className = 'char-el-badge weak';
                     el.textContent = WK_TXT;
-                    el.style.left = (setElementPositions(character.element_weakness) + 10) + 'px'; // + 10px
+                    el.style.left = (setElementPositions(mergedChar.element_weakness) + 10) + 'px'; // + 10px
                     el.style.top = baseTop;
                     parentEl.appendChild(el);
                 }
@@ -464,13 +556,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // 한국어: 기존 아이콘 사용, 텍스트 배지 제거
             if (parentEl) { try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch (_) { } }
-            if (resistanceIcon && character.element_resistance) {
+            const urlParams3 = new URLSearchParams(window.location.search);
+            const characterName3 = urlParams3.get('name');
+            const setting3 = (characterName3 && window.characterSetting && window.characterSetting[characterName3]) ? window.characterSetting[characterName3] : {};
+            const mergedChar3 = { ...character, ...setting3 };
+            if (resistanceIcon && mergedChar3.element_resistance) {
                 resistanceIcon.style.display = 'block';
-                resistanceIcon.style.left = setElementPositions(character.element_resistance) + 'px';
+                resistanceIcon.style.left = setElementPositions(mergedChar3.element_resistance) + 'px';
             }
-            if (weaknessIcon && character.element_weakness) {
+            if (weaknessIcon && mergedChar3.element_weakness) {
                 weaknessIcon.style.display = 'block';
-                weaknessIcon.style.left = setElementPositions(character.element_weakness) + 'px';
+                weaknessIcon.style.left = setElementPositions(mergedChar3.element_weakness) + 'px';
             }
         }
 
@@ -627,67 +723,81 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // role과 tag 정보 채우기
-        const roleElement = document.querySelector('.chracter-role');
-        const tagElement = document.querySelector('.chracter-tag');
+        // role과 tag 정보 채우기 함수
+        function fillRoleAndTag() {
+            const roleElement = document.querySelector('.chracter-role');
+            const tagElement = document.querySelector('.chracter-tag');
+            if (!roleElement || !tagElement) return;
 
-        const currentLang = getCurrentLanguage();
-        if (currentLang === 'en' && character.role_en) {
-            roleElement.textContent = character.role_en;
-        }
-        else if (currentLang === 'jp' && character.role_jp) {
-            roleElement.textContent = character.role_jp;
-        }
-
-        const hasAnyVideoId = (val) => {
-            if (!val) return false;
-            if (Array.isArray(val)) return val.some(v => typeof v === 'string' && v.trim());
-            if (typeof val === 'string') return !!val.trim();
-            return false;
-        };
-
-        const hasVideoForLang = (() => {
-            if (currentLang === 'en') {
-                if (hasAnyVideoId(character.video_en)) return true;
-                return hasAnyVideoId(character.video);
+            const currentLang = getCurrentLanguage();
+            const urlParams2 = new URLSearchParams(window.location.search);
+            const characterName2 = urlParams2.get('name');
+            if (!characterName2 || !characterData || !characterData[characterName2]) return;
+            
+            const characterData2 = characterData[characterName2];
+            const setting2 = (characterName2 && window.characterSetting && window.characterSetting[characterName2]) ? window.characterSetting[characterName2] : {};
+            const mergedCharacter2 = { ...characterData2, ...setting2 };
+            
+            // role 정보 채우기 (언어별)
+            if (currentLang === 'en' && mergedCharacter2.role_en) {
+                roleElement.textContent = mergedCharacter2.role_en;
             }
-            return hasAnyVideoId(character.video);
-        })();
-
-        if (!hasVideoForLang) {
-            tagElement.textContent = character.tag;
-
-            if (currentLang === 'en' && character.tag_en) {
-                tagElement.textContent = character.tag_en;
+            else if (currentLang === 'jp' && mergedCharacter2.role_jp) {
+                roleElement.textContent = mergedCharacter2.role_jp;
             }
-            else if (currentLang === 'jp' && character.tag_jp) {
-                tagElement.textContent = character.tag_jp;
+            else if (mergedCharacter2.role && currentLang === 'kr') {
+                roleElement.textContent = mergedCharacter2.role;
             }
-        } else {
-            tagElement.textContent = '';
-            tagElement.innerHTML = '';
-        }
 
-        // role 정보 채우기
-        if (character.role && currentLang === 'kr') {
-            roleElement.textContent = character.role;
-        }
+            const hasAnyVideoId = (val) => {
+                if (!val) return false;
+                if (Array.isArray(val)) return val.some(v => typeof v === 'string' && v.trim());
+                if (typeof val === 'string') return !!val.trim();
+                return false;
+            };
 
-        // tag 정보 채우기
-        if (!hasVideoForLang && tagElement.textContent) {
-
-            // 콤마로 분리하여 각각의 태그를 생성
-            const tags = tagElement.textContent.split(',').map(tag => tag.trim());
-            tagElement.innerHTML = '';
-            tags.forEach(tag => {
-                if (tag) {
-                    const tagDiv = document.createElement('div');
-                    tagDiv.className = 'tag-item';
-                    tagDiv.textContent = tag;
-                    tagElement.appendChild(tagDiv);
+            const hasVideoForLang = (() => {
+                if (currentLang === 'en') {
+                    if (hasAnyVideoId(mergedCharacter2.video_en)) return true;
+                    return hasAnyVideoId(mergedCharacter2.video);
                 }
-            });
+                return hasAnyVideoId(mergedCharacter2.video);
+            })();
+
+            if (!hasVideoForLang) {
+                tagElement.textContent = characterData2.tag;
+
+                if (currentLang === 'en' && characterData2.tag_en) {
+                    tagElement.textContent = characterData2.tag_en;
+                }
+                else if (currentLang === 'jp' && characterData2.tag_jp) {
+                    tagElement.textContent = characterData2.tag_jp;
+                }
+                
+                // tag 정보 채우기 (콤마로 분리하여 각각의 태그를 생성)
+                if (tagElement.textContent) {
+                    const tags = tagElement.textContent.split(',').map(tag => tag.trim());
+                    tagElement.innerHTML = '';
+                    tags.forEach(tag => {
+                        if (tag) {
+                            const tagDiv = document.createElement('div');
+                            tagDiv.className = 'tag-item';
+                            tagDiv.textContent = tag;
+                            tagElement.appendChild(tagDiv);
+                        }
+                    });
+                }
+            } else {
+                tagElement.textContent = '';
+                tagElement.innerHTML = '';
+            }
         }
+
+        // 초기 실행
+        fillRoleAndTag();
+        
+        // 전역 노출: characterSetting 로드 후 재호출 가능하도록
+        window.fillRoleAndTag = fillRoleAndTag;
 
         safeRun('applyCharacterVideo', () => {
             if (typeof window.applyCharacterVideo === 'function') {
@@ -1691,6 +1801,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // 전역 노출: 외부에서 재호출 가능하도록
     window.fillOperationInfo = fillOperationInfo;
+    window.fillSettingsInfo = fillSettingsInfo;
 
 
 

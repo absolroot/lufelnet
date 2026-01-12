@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["쇼키"] = {
+    "role": "범용 서포터",
+    "video": ["a22KxjFDxbo"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["신뢰", "창조"],
+    "sub_revelation": ["풍요", "화해"],
+    "sub_revel2": ["공격력, 생명"],
+    "sub_revel3": ["효과 명중"],
+    "sub_revel4": ["공격력, 생명"],
+    "sub_option1": ["효과 명중"],
+    "sub_option2": ["공격력"],
+    "sub_option3": [""],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": "공격력 4591, 효과 명중 100%",
+        "LV12+5": "공격력 4868, 효과 명중 100%",
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "· 마이팰리스 공격력 65 / 마이팰리스 효과명중 2.3% / 마이팰리스 평점 / 4성 무기 : 효과 명중 40% / 해명의 힘",
+    "element_weakness": "핵열",
+    "element_resistance": "축복",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "8",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "효과 명중 24%",
+    "mind_skill1": "S1/S2",
+    "mind_skill2": "S3/HL!"
+};

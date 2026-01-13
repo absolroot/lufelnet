@@ -6,27 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate a Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
-        "name": "Morgana's Favor",
-        "nature": "Heal",
-        "skill_lv": "3",
-        "sn": 102140,
-        "tags": [
-          null
-        ],
-        "target": "Alive Ally",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "",
-        "desc": "Add the following effect to Chivalry: Restore HP of allies with less than 50% HP remaining by 30% of Morgana's Attack.",
-        "name": "Marvelous Pride",
+        "desc": "When an ally deals damage with a skill, there is a 35% chance to activate Resonance , dealing Electric damage equal to 80% of Attack as a follow-up attack. After a follow-up, increase target's next Electric damage taken by 15% for 2 turns.",
+        "name": "Jolly Cooperation",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102141,
+        "sn": 111140,
         "tags": [
           null
         ],
@@ -38,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using Healing Breeze, increase HP recovery for main target by 33%.",
-        "name": "Black Cat Charm",
+        "desc": "Increase critical rate of follow-up attacks by 20%. Increase critical rate by 10% after landing a follow-up attack on Shocked foes.",
+        "name": "Payappa",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102142,
+        "sn": 111141,
         "tags": [
           null
         ],
@@ -54,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Healing Breeze and Thief Tactics by 3.",
-        "name": "Grooming",
+        "desc": "After performing a follow-up attack on a foe, increase Attack of Yui and allies with Player 2 by 10% for 2 turns. Stacks up to 3 times.",
+        "name": "Welcome Rain",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102143,
+        "sn": 111142,
         "tags": [
           null
         ],
@@ -70,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: When KO'd allies are revived, restore bonus HP equal to 60% of Morgana's Attack + 800.",
-        "name": "Aftercare",
+        "desc": "Increase the skill levels of Sparky Surprise and Thief Tactics by 3.",
+        "name": "Rainbow Maker",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102144,
+        "sn": 111143,
         "tags": [
           null
         ],
@@ -86,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Missile Whirlwind and Gentle Fist by 3.",
-        "name": "Airplane Ears Mode",
+        "desc": "Highlight Enhanced: Increase critical damage of follow-up attacks by 40% for 2 turns.",
+        "name": "Virtual Fertilizer",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102145,
+        "sn": 111144,
         "tags": [
           null
         ],
@@ -102,11 +86,27 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Remove Gentle Fist's decreased accuracy effect. Increase target's damage taken by 15% for 2 turns.",
-        "name": "Look, Treasure!",
+        "desc": "Increase the skill levels of Electric Bomb and Meta Dynamite by 3.",
+        "name": "Flower Garden",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102146,
+        "sn": 111145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "If only 1 foe is present, increase Yui's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes.",
+        "name": "Humongously Huge Harvest",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111146,
         "tags": [
           null
         ],
@@ -121,34 +121,34 @@
       "auto_select": "Weak",
       "cooldown": 4,
       "cost": "",
-      "desc": "Deal Wind damage to 1 foe equal to 227.8%/251.1%/241.8%/265.1% of Attack, and revive 1 KO'd ally with 20% HP.",
+      "desc": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and follow-up damage by 24.4%/26.9%/25.9%/28.4% of Attack for 2 turns.\nActivate follow-up when allies deal damage to foes with skills for 2 turns.",
       "name": "Highlight",
-      "nature": "Wind",
+      "nature": null,
       "skill_lv": "10/10/13/13",
-      "sn": 102152,
+      "sn": 111152,
       "tags": [
         null
       ],
-      "target": "Alive Enemy",
-      "target_count": 1
+      "target": "Alive Ally",
+      "target_count": "All"
     },
     "innate": {
       "Attack": "0.2",
-      "Unknown Attr": "0.144"
+      "Crit Mult.": "0.24"
     },
     "innate_awake_skill": [],
-    "name": "Morgana",
+    "name": "Yui",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 22",
-        "desc": "Deal Wind damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack. Inflict Windswept on the foe for 2 turns. Chance to gain 1 Chivalry stack (chance is equal to current critical rate).",
-        "name": "Missile Whirlwind",
-        "nature": "Wind",
+        "cost": "SP 20",
+        "desc": "Deal Electric damage to 1 foe equal to 185.4%/204.4%/196.8%/215.8% of Attack. If the foe is not Shocked, there is a 68.3%/68.3%/72.5%/72.5% chance to inflict Shock for 2 turns. If the foe is already Shocked, increase damage by 30%.",
+        "name": "Electric Bomb",
+        "nature": "Electric",
         "skill_lv": "10/10/13/13",
-        "sn": 102111,
+        "sn": 111111,
         "tags": [
           "Single-Target"
         ],
@@ -159,32 +159,32 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 33",
-        "desc": "Restore party's HP by 37.6%/37.6%/39.9%/39.9% of Morgana's Attack + 1069/1300/1315/1546, and heal 1 elemental ailment. When healing an elemental ailment, gain 1 Chivalry stack.",
-        "name": "Healing Breeze",
-        "nature": "Heal",
+        "cost": "SP 20",
+        "desc": "Deal Electric damage to all foes equal to 59.6%/65.7%/63.3%/69.4% of Attack. Increase damage to the main target by 25%.",
+        "name": "Meta Dynamite",
+        "nature": "Electric",
         "skill_lv": "10/10/13/13",
-        "sn": 102113,
+        "sn": 111112,
         "tags": [
-          "Multi-Heal"
+          "Multi-Target"
         ],
-        "target": "Alive Ally",
+        "target": "Alive Enemy",
         "target_count": "All"
       },
       {
         "ascend": "0/5/0/5",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "체력 12.0%",
-        "desc": "Decrease this skill's accuracy by 20%, increase critical rate by 30%, and deal Physical damage to 1 foe equal to 128.9%/142.1%/136.9%/150.1% of Attack. On a critical hit, gain 1 Chivalry stack.",
-        "name": "Gentle Fist",
-        "nature": "Phys",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 1,
+        "cost": "SP 25",
+        "desc": "Grant Player 2 to 1 ally for 2 turns, and increase Yui's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/146.6%/141.1%/154.7% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns.",
+        "name": "Sparky Surprise",
+        "nature": null,
         "skill_lv": "10/10/13/13",
-        "sn": 102112,
+        "sn": 111113,
         "tags": [
-          "Single-Target"
+          "Buff"
         ],
-        "target": "Alive Enemy",
+        "target": "Ally excluding myself",
         "target_count": 1
       }
     ],
@@ -194,11 +194,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When healing with Chivalry, increase critical rate by 30.0%.\nWhen inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720.",
-        "name": "Masked Gentleman",
+        "desc": "Increase follow-up damage to Shocked foes by 36.0%.",
+        "name": "Virtual Landowner",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102131,
+        "sn": 111131,
         "tags": [
           "Talent"
         ],
@@ -210,22 +210,23 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Decrease party's SP cost by 15.0%.",
-        "name": "Morgana's Method",
+        "desc": "When an ally has Player 2, increase that ally and Yui's critical rate by 12.0% and Attack by 12.0%.",
+        "name": "Let's Go Together",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102132,
+        "sn": 111132,
         "tags": [
           "Talent"
         ],
-        "target": "Alive Ally",
-        "target_count": "All"
+        "target": "Myself",
+        "target_count": 1
       }
     ],
     "rating": {
-      "Attack": 3530.0,
-      "Crit Rate": 0.89,
-      "Unknown Attr": 0.0
+      "Attack": 2970.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.5,
+      "Damage Mult.": 0.18
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -233,7 +234,7 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
@@ -242,7 +243,7 @@
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "646.69 / 658.69 / 669.89 / 681.89 / 693.09 / 705.09 / 716.29",
+      "Defense": "566.66 / 577.06 / 587.46 / 597.06 / 607.46 / 617.86 / 628.26",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -250,7 +251,7 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "HP": "3419.97 / 3481.57 / 3543.17 / 3604.77 / 3666.37 / 3727.97 / 3789.57",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -263,7 +264,7 @@
       "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
       "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },

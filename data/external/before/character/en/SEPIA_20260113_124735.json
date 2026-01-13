@@ -6,27 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
-        "name": "Morgana's Favor",
-        "nature": "Heal",
-        "skill_lv": "3",
-        "sn": 102140,
-        "tags": [
-          null
-        ],
-        "target": "Alive Ally",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "",
-        "desc": "Add the following effect to Chivalry: Restore HP of allies with less than 50% HP remaining by 30% of Morgana's Attack.",
-        "name": "Marvelous Pride",
+        "desc": "Each time an ally deals damage, gain 1 Verse stack.\nAt 14+ Verse stacks, activate a Resonance and spend 14 Verse stacks to deal follow-up Curse damage to the last foe Sumi targeted, equal to 65%/98%/130% of Attack (effect changes at Lv. 1/50/70, respectively).\n*Verse of Hate, Verse of Healing, and Verse of Passion all also count as Verse stacks.",
+        "name": "Sonnet of Fate",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102141,
+        "sn": 118140,
         "tags": [
           null
         ],
@@ -38,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using Healing Breeze, increase HP recovery for main target by 33%.",
-        "name": "Black Cat Charm",
+        "desc": "After using a skill, increase damage of the next Sonnet of Fate by 40%.",
+        "name": "Fishing Pond Master",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102142,
+        "sn": 118141,
         "tags": [
           null
         ],
@@ -54,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Healing Breeze and Thief Tactics by 3.",
-        "name": "Grooming",
+        "desc": "Increase Attack of Sonnet of Fate by 50%, and inflict Curse on foes hit.",
+        "name": "Flight and Conflict",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102143,
+        "sn": 118142,
         "tags": [
           null
         ],
@@ -70,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: When KO'd allies are revived, restore bonus HP equal to 60% of Morgana's Attack + 800.",
-        "name": "Aftercare",
+        "desc": "Increase the skill levels of Unexpected Tragedy and Absurd Comedy by 2.",
+        "name": "Passion for Creation",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102144,
+        "sn": 118143,
         "tags": [
           null
         ],
@@ -86,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Missile Whirlwind and Gentle Fist by 3.",
-        "name": "Airplane Ears Mode",
+        "desc": "Highlight Enhanced: Increase damage of Sonnet of Fate the next 4 times.",
+        "name": "Scream from the Soul",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102145,
+        "sn": 118144,
         "tags": [
           null
         ],
@@ -102,11 +86,27 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Remove Gentle Fist's decreased accuracy effect. Increase target's damage taken by 15% for 2 turns.",
-        "name": "Look, Treasure!",
+        "desc": "Increase the skill levels of Tragicomedy of Love and Thief Tactics by 2.",
+        "name": "Throes of Creation",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102146,
+        "sn": 118145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "After using a skill, the Verse of Hate, Verse of Healing, or Verse of Passion gained activates 3 more times next turn.\nIf 2 or more different types of Verses are stacked, increase Sonnet of Fate damage by 67%.",
+        "name": "Life Advice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 118146,
         "tags": [
           null
         ],
@@ -121,11 +121,11 @@
       "auto_select": "Weak",
       "cooldown": 4,
       "cost": "",
-      "desc": "Deal Wind damage to 1 foe equal to 227.8%/251.1%/241.8%/265.1% of Attack, and revive 1 KO'd ally with 20% HP.",
+      "desc": "Deal Curse damage to 1 foe equal to 96.8%/106.7%/100.8%/110.7% of Attack (3 hits). Increase Sumi's Attack for Sonnet of Fate by 50.6%/55.7%/52.6%/57.8% up to 2 times.",
       "name": "Highlight",
-      "nature": "Wind",
-      "skill_lv": "10/10/13/13",
-      "sn": 102152,
+      "nature": "Curse",
+      "skill_lv": "10/10/12/12",
+      "sn": 118152,
       "tags": [
         null
       ],
@@ -133,22 +133,22 @@
       "target_count": 1
     },
     "innate": {
-      "Attack": "0.2",
-      "Unknown Attr": "0.144"
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
     },
     "innate_awake_skill": [],
-    "name": "Morgana",
+    "name": "Toshiya Sumi",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 22",
-        "desc": "Deal Wind damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack. Inflict Windswept on the foe for 2 turns. Chance to gain 1 Chivalry stack (chance is equal to current critical rate).",
-        "name": "Missile Whirlwind",
-        "nature": "Wind",
-        "skill_lv": "10/10/13/13",
-        "sn": 102111,
+        "desc": "Deal Curse damage to 1 foe equal to 58.6%/64.6%/61.0%/67.0% of Attack (3 hits), and gain 3 Verse of Hate stacks.\nThe next time Verse stacks are gained, 25% chance to change to Verse of Hate (max 2).\nWhen spending Verse of Hate stacks to deal damage with Sonnet of Fate, 30% chance to inflict Curse for each Verse of Hate spent.",
+        "name": "Unexpected Tragedy",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118111,
         "tags": [
           "Single-Target"
         ],
@@ -159,28 +159,28 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 33",
-        "desc": "Restore party's HP by 37.6%/37.6%/39.9%/39.9% of Morgana's Attack + 1069/1300/1315/1546, and heal 1 elemental ailment. When healing an elemental ailment, gain 1 Chivalry stack.",
-        "name": "Healing Breeze",
-        "nature": "Heal",
-        "skill_lv": "10/10/13/13",
-        "sn": 102113,
+        "cost": "SP 20",
+        "desc": "Deal Curse damage to all foes equal to 35.7%/39.3%/37.1%/40.8% of Attack (2 hits), and gain 2 Verse of Healing stacks.\nThe next time Verse stacks are gained, 25% chance to change to Verse of Healing (max 2).\nWhen spending Verse of Healing stacks to deal damage with Sonnet of Fate, restore HP to the ally with the lowest remaining HP by 7.5% of Sumi's Attack for each Verse of Healing spent.",
+        "name": "Absurd Comedy",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118112,
         "tags": [
-          "Multi-Heal"
+          "Multi-Target"
         ],
-        "target": "Alive Ally",
+        "target": "Alive Enemy",
         "target_count": "All"
       },
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "체력 12.0%",
-        "desc": "Decrease this skill's accuracy by 20%, increase critical rate by 30%, and deal Physical damage to 1 foe equal to 128.9%/142.1%/136.9%/150.1% of Attack. On a critical hit, gain 1 Chivalry stack.",
-        "name": "Gentle Fist",
-        "nature": "Phys",
-        "skill_lv": "10/10/13/13",
-        "sn": 102112,
+        "cost": "SP 22",
+        "desc": "Deal Curse damage to 1 foe equal to 41.5%/45.7%/43.2%/47.4% of Attack (5 hits), and gain 5 Verse of Passion stacks.\nThe next time Verse stacks are gained, 25% chance to change to Verse of Passion (max 2).\nWhen spending Verse of Passion stacks to deal damage with Sonnet of Fate, deal bonus Almighty damage equal to 7% of Attack for each Verse of Passion spent.",
+        "name": "Tragicomedy of Love",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118113,
         "tags": [
           "Single-Target"
         ],
@@ -194,11 +194,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When healing with Chivalry, increase critical rate by 30.0%.\nWhen inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720.",
-        "name": "Masked Gentleman",
+        "desc": "Increase damage of Sonnet of Fate on foes with Curse by 50.0%.",
+        "name": "The Other Prison",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102131,
+        "sn": 118131,
         "tags": [
           "Talent"
         ],
@@ -210,22 +210,23 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Decrease party's SP cost by 15.0%.",
-        "name": "Morgana's Method",
+        "desc": "For each Verse of Hate, Verse of Healing, or Verse of Passion stack spent, increase damage of Sonnet of Fate by 10.0%.",
+        "name": "This Beautiful Woman",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102132,
+        "sn": 118132,
         "tags": [
           "Talent"
         ],
-        "target": "Alive Ally",
-        "target_count": "All"
+        "target": "Myself",
+        "target_count": 1
       }
     ],
     "rating": {
-      "Attack": 3530.0,
-      "Crit Rate": 0.89,
-      "Unknown Attr": 0.0
+      "Attack": 2580.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -233,16 +234,17 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack": "840.0 / 849.6 / 859.2 / 868.8 / 878.4 / 888.8 / 898.4",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
-      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
       "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "646.69 / 658.69 / 669.89 / 681.89 / 693.09 / 705.09 / 716.29",
+      "Defense": "470.01 / 475.61 / 481.21 / 486.01 / 491.61 / 497.21 / 502.81",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -250,7 +252,7 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "HP": "2565.43 / 2595.03 / 2624.63 / 2654.23 / 2683.83 / 2713.43 / 2743.03",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -263,7 +265,7 @@
       "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
       "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },

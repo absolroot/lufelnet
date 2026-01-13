@@ -6,31 +6,15 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
-        "name": "Morgana's Favor",
-        "nature": "Heal",
-        "skill_lv": "3",
-        "sn": 102140,
-        "tags": [
-          null
-        ],
-        "target": "Alive Ally",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "",
-        "desc": "Add the following effect to Chivalry: Restore HP of allies with less than 50% HP remaining by 30% of Morgana's Attack.",
-        "name": "Marvelous Pride",
+        "desc": "When using a skill, gain Beat stacks. When Beat stacks reach 4 or more, activate a Resonance, spending 4 Beat stacks to grant 1 Pulsating Rhythm stack to all allies. When allies have Pulsating Rhythm, increase Attack by 10%/15%/20%, Defense by 10%/15%/20% and ailment accuracy by 5%/7.5%/10% based on Tomiyama's level (effect increases at level 1/50/70). Lasts for 2 turns. Stacks up to 3 times, and effects increase based on number of stacks.",
+        "name": "Fever Time",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102141,
+        "sn": 108140,
         "tags": [
           null
         ],
-        "target": "Myself",
+        "target": "Elucidator",
         "target_count": 1
       },
       {
@@ -38,15 +22,15 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using Healing Breeze, increase HP recovery for main target by 33%.",
-        "name": "Black Cat Charm",
+        "desc": "At the start of battle, gain 2 Beat stacks, and increase party's ailment accuracy by 35% for 1 turn.",
+        "name": "Finish with a Smile",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102142,
+        "sn": 108141,
         "tags": [
           null
         ],
-        "target": "Myself",
+        "target": "Elucidator",
         "target_count": 1
       },
       {
@@ -54,15 +38,15 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Healing Breeze and Thief Tactics by 3.",
-        "name": "Grooming",
+        "desc": "After granting Pulsating Rhythm, 20% chance to gain 1 Beat stack.",
+        "name": "Disco Ball",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102143,
+        "sn": 108142,
         "tags": [
           null
         ],
-        "target": "Myself",
+        "target": "Elucidator",
         "target_count": 1
       },
       {
@@ -70,15 +54,15 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: When KO'd allies are revived, restore bonus HP equal to 60% of Morgana's Attack + 800.",
-        "name": "Aftercare",
+        "desc": "Increase the skill levels of Club Okyann and Intermission by 2.",
+        "name": "Pop and Show It",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102144,
+        "sn": 108143,
         "tags": [
           null
         ],
-        "target": "Myself",
+        "target": "Elucidator",
         "target_count": 1
       },
       {
@@ -86,15 +70,15 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Missile Whirlwind and Gentle Fist by 3.",
-        "name": "Airplane Ears Mode",
+        "desc": "When an ally uses a Highlight, 67% chance to gain 1 Beat stack.",
+        "name": "Queen of the Stage",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102145,
+        "sn": 108144,
         "tags": [
           null
         ],
-        "target": "Myself",
+        "target": "Elucidator",
         "target_count": 1
       },
       {
@@ -102,71 +86,56 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Remove Gentle Fist's decreased accuracy effect. Increase target's damage taken by 15% for 2 turns.",
-        "name": "Look, Treasure!",
+        "desc": "Increase the skill level of Retro Dance Number by 2.",
+        "name": "Raise the Roof",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102146,
+        "sn": 108145,
         "tags": [
           null
         ],
-        "target": "Myself",
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "After activating Pulsating Rhythm, 25% chance to activate Encore, granting 1 additional Pulsating Rhythm.\nEncore will not activate consecutively.",
+        "name": "Hey, DJ!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 108146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
         "target_count": 1
       }
     ],
     "assist_skill": [],
     "final_innate": [],
-    "highlight_skill": {
-      "ascend": "0/5/0/5",
-      "auto_select": "Weak",
-      "cooldown": 4,
-      "cost": "",
-      "desc": "Deal Wind damage to 1 foe equal to 227.8%/251.1%/241.8%/265.1% of Attack, and revive 1 KO'd ally with 20% HP.",
-      "name": "Highlight",
-      "nature": "Wind",
-      "skill_lv": "10/10/13/13",
-      "sn": 102152,
-      "tags": [
-        null
-      ],
-      "target": "Alive Enemy",
-      "target_count": 1
-    },
+    "highlight_skill": null,
     "innate": {
-      "Attack": "0.2",
-      "Unknown Attr": "0.144"
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
     },
     "innate_awake_skill": [],
-    "name": "Morgana",
+    "name": "Kayo Tomiyama",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 22",
-        "desc": "Deal Wind damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack. Inflict Windswept on the foe for 2 turns. Chance to gain 1 Chivalry stack (chance is equal to current critical rate).",
-        "name": "Missile Whirlwind",
-        "nature": "Wind",
-        "skill_lv": "10/10/13/13",
-        "sn": 102111,
+        "cost": "",
+        "desc": "Increase party's Attack by 12% of Tomiyama's Attack for 1 turn (up to 4500/4950/5400/5850 of Attack), increase ailment accuracy by 35.0%/38.5%/37.8%/41.3%, and gain 1 Beat stack.\nCooldown Time: 4 ally actions.",
+        "name": "Club Okyann",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108111,
         "tags": [
-          "Single-Target"
-        ],
-        "target": "Alive Enemy",
-        "target_count": 1
-      },
-      {
-        "ascend": "0/5/0/5",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "SP 33",
-        "desc": "Restore party's HP by 37.6%/37.6%/39.9%/39.9% of Morgana's Attack + 1069/1300/1315/1546, and heal 1 elemental ailment. When healing an elemental ailment, gain 1 Chivalry stack.",
-        "name": "Healing Breeze",
-        "nature": "Heal",
-        "skill_lv": "10/10/13/13",
-        "sn": 102113,
-        "tags": [
-          "Multi-Heal"
+          "Buff"
         ],
         "target": "Alive Ally",
         "target_count": "All"
@@ -175,17 +144,33 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "체력 12.0%",
-        "desc": "Decrease this skill's accuracy by 20%, increase critical rate by 30%, and deal Physical damage to 1 foe equal to 128.9%/142.1%/136.9%/150.1% of Attack. On a critical hit, gain 1 Chivalry stack.",
-        "name": "Gentle Fist",
-        "nature": "Phys",
-        "skill_lv": "10/10/13/13",
-        "sn": 102112,
+        "cost": "",
+        "desc": "Restore party's SP by 22/27/26/31, and grant 3 Beat stacks.\nCooldown Time: 8 ally actions.",
+        "name": "Intermission",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108112,
         "tags": [
-          "Single-Target"
+          "Support"
         ],
-        "target": "Alive Enemy",
-        "target_count": 1
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase party's damage by 10.0%/11.0%/10.8%/11.8% for 3 turns. Increase damage by 1% for every 225 of Tomiyama's Attack (up to 4500/4950/5400/5850 of Attack).\nAlso increase damage dealt to foes with an elemental ailment by 1.5 times and gain 2 Beat stacks.\nCooldown Time: 8 ally actions.",
+        "name": "Retro Dance Number",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 108113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
       }
     ],
     "passive_skill": [
@@ -194,15 +179,15 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When healing with Chivalry, increase critical rate by 30.0%.\nWhen inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720.",
-        "name": "Masked Gentleman",
+        "desc": "For every 4 Beat stacks gained, inflict 1 random elemental ailment on the foe with the highest remaining HP.",
+        "name": "Toe-Tapping",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102131,
+        "sn": 108131,
         "tags": [
           "Talent"
         ],
-        "target": "Myself",
+        "target": "Elucidator",
         "target_count": 1
       },
       {
@@ -210,21 +195,22 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Decrease party's SP cost by 15.0%.",
-        "name": "Morgana's Method",
+        "desc": "When an ally inflicts an elemental ailment on a foe, increase that ally's damage by 15% for 2 turns. Also, 21% chance to grant 1 Beat stack.",
+        "name": "Outdated Slang",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102132,
+        "sn": 108132,
         "tags": [
           "Talent"
         ],
-        "target": "Alive Ally",
-        "target_count": "All"
+        "target": "Elucidator",
+        "target_count": 1
       }
     ],
     "rating": {
-      "Attack": 3530.0,
-      "Crit Rate": 0.89,
+      "Attack": 2740.0,
+      "Defense": 1900.0,
+      "HP": 7980.0,
       "Unknown Attr": 0.0
     },
     "stat": {
@@ -233,16 +219,17 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
-      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
       "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "646.69 / 658.69 / 669.89 / 681.89 / 693.09 / 705.09 / 716.29",
+      "Defense": "479.97 / 485.57 / 491.17 / 496.77 / 502.37 / 507.97 / 513.57",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -250,7 +237,7 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",

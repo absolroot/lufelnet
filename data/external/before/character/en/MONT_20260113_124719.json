@@ -6,27 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
-        "name": "Morgana's Favor",
-        "nature": "Heal",
-        "skill_lv": "3",
-        "sn": 102140,
-        "tags": [
-          null
-        ],
-        "target": "Alive Ally",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "",
-        "desc": "Add the following effect to Chivalry: Restore HP of allies with less than 50% HP remaining by 30% of Morgana's Attack.",
-        "name": "Marvelous Pride",
+        "desc": "On ally's action, gain 1 Ice Crystal stack. Stacks up to 12 times. After using a skill, when Ice Crystal reaches 10 stacks, activate a Resonance, spending 10 Ice Crystal stacks to deal 65% follow-up Ice damage to the main target. This Resonance is guaranteed to be a critical hit.\nWhen using Frost Lily or Winter Storm, if the Resonance is activated, gain Parhelion.\nParhelion is used to strengthen Durandal of Ice.",
+        "name": "Blade Dancer",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102141,
+        "sn": 121140,
         "tags": [
           null
         ],
@@ -38,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When using Healing Breeze, increase HP recovery for main target by 33%.",
-        "name": "Black Cat Charm",
+        "desc": "At the end of Kotone's action, gain a shield equal to 15% of Attack for 1 turn.",
+        "name": "Camel Spin",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102142,
+        "sn": 121141,
         "tags": [
           null
         ],
@@ -54,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Healing Breeze and Thief Tactics by 3.",
-        "name": "Grooming",
+        "desc": "Increase Resonance damage based on foe's missing HP (up to 50%).",
+        "name": "Ice Princess",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102143,
+        "sn": 121142,
         "tags": [
           null
         ],
@@ -70,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: When KO'd allies are revived, restore bonus HP equal to 60% of Morgana's Attack + 800.",
-        "name": "Aftercare",
+        "desc": "Increase the skill levels of Frost Lily and Winter Storm by 2.",
+        "name": "Heart of Ice",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102144,
+        "sn": 121143,
         "tags": [
           null
         ],
@@ -86,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Missile Whirlwind and Gentle Fist by 3.",
-        "name": "Airplane Ears Mode",
+        "desc": "Highlight Enhanced: Increase Highlight damage up to 60%.",
+        "name": "Resilience",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102145,
+        "sn": 121144,
         "tags": [
           null
         ],
@@ -102,11 +86,27 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Remove Gentle Fist's decreased accuracy effect. Increase target's damage taken by 15% for 2 turns.",
-        "name": "Look, Treasure!",
+        "desc": "Increase the skill levels of Durandal of Ice and Thief Tactics by 2.",
+        "name": "Axel Jump",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102146,
+        "sn": 121145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain 4 Ice Crystal stacks. Increase the maximum number of Ice Crystal stacks to 15.",
+        "name": "Opening Ceremony",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 121146,
         "tags": [
           null
         ],
@@ -121,11 +121,11 @@
       "auto_select": "Weak",
       "cooldown": 4,
       "cost": "",
-      "desc": "Deal Wind damage to 1 foe equal to 227.8%/251.1%/241.8%/265.1% of Attack, and revive 1 KO'd ally with 20% HP.",
+      "desc": "Deal Ice damage to 1 foe equal to 292.8%/322.8%/304.8%/334.8% of Attack. Increase damage based on foe's missing HP. When foe's HP is below 20%, increase by up to 30%.",
       "name": "Highlight",
-      "nature": "Wind",
-      "skill_lv": "10/10/13/13",
-      "sn": 102152,
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 121152,
       "tags": [
         null
       ],
@@ -134,21 +134,37 @@
     },
     "innate": {
       "Attack": "0.2",
-      "Unknown Attr": "0.144"
+      "Crit Mult.": "0.24"
     },
     "innate_awake_skill": [],
-    "name": "Morgana",
+    "name": "Kotone Montagne",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 22",
-        "desc": "Deal Wind damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack. Inflict Windswept on the foe for 2 turns. Chance to gain 1 Chivalry stack (chance is equal to current critical rate).",
-        "name": "Missile Whirlwind",
-        "nature": "Wind",
-        "skill_lv": "10/10/13/13",
-        "sn": 102111,
+        "cost": "SP 20",
+        "desc": "Deal Ice damage to all foes equal to 87.1%/96.0%/90.6%/99.5% of Attack. 29.3%/29.3%/30.5%/30.5% chance to inflict Freeze.",
+        "name": "Frost Lily",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Ice damage to 1 foe equal to 160.4%/176.8%/166.9%/183.4% of Attack. Gain 4 Ice Crystal stacks.",
+        "name": "Winter Storm",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121112,
         "tags": [
           "Single-Target"
         ],
@@ -159,28 +175,12 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 33",
-        "desc": "Restore party's HP by 37.6%/37.6%/39.9%/39.9% of Morgana's Attack + 1069/1300/1315/1546, and heal 1 elemental ailment. When healing an elemental ailment, gain 1 Chivalry stack.",
-        "name": "Healing Breeze",
-        "nature": "Heal",
-        "skill_lv": "10/10/13/13",
-        "sn": 102113,
-        "tags": [
-          "Multi-Heal"
-        ],
-        "target": "Alive Ally",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0/5/0/5",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "체력 12.0%",
-        "desc": "Decrease this skill's accuracy by 20%, increase critical rate by 30%, and deal Physical damage to 1 foe equal to 128.9%/142.1%/136.9%/150.1% of Attack. On a critical hit, gain 1 Chivalry stack.",
-        "name": "Gentle Fist",
-        "nature": "Phys",
-        "skill_lv": "10/10/13/13",
-        "sn": 102112,
+        "cost": "SP 24",
+        "desc": "Deal Ice damage to 1 foe equal to 179.7%/198.1%/187.0%/205.5% of Attack. When Kotone has Parhelion or 10+ Ice Crystal stacks, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%).\nWhen Blade Dancer is activated, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%).",
+        "name": "Durandal of Ice",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 121113,
         "tags": [
           "Single-Target"
         ],
@@ -194,11 +194,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When healing with Chivalry, increase critical rate by 30.0%.\nWhen inflicting a critical hit, increase Chivalry's healing effect by 24.0% of Morgana's Attack + 720.",
-        "name": "Masked Gentleman",
+        "desc": "When damaging foes with Blade Dancer, 100.0% chance to inflict Freeze.",
+        "name": "Frozen in Time",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102131,
+        "sn": 121131,
         "tags": [
           "Talent"
         ],
@@ -210,22 +210,23 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Decrease party's SP cost by 15.0%.",
-        "name": "Morgana's Method",
+        "desc": "When Kotone defeats a foe, gain 4 Ice Crystal stacks.",
+        "name": "State of Selflessness",
         "nature": null,
         "skill_lv": "3",
-        "sn": 102132,
+        "sn": 121132,
         "tags": [
           "Talent"
         ],
-        "target": "Alive Ally",
-        "target_count": "All"
+        "target": "Myself",
+        "target_count": 1
       }
     ],
     "rating": {
-      "Attack": 3530.0,
-      "Crit Rate": 0.89,
-      "Unknown Attr": 0.0
+      "Attack": 2620.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -233,16 +234,17 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack": "862.28 / 871.88 / 882.28 / 891.88 / 902.28 / 911.88 / 922.28",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
-      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
       "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "646.69 / 658.69 / 669.89 / 681.89 / 693.09 / 705.09 / 716.29",
+      "Defense": "465.43 / 471.03 / 475.83 / 481.43 / 487.03 / 492.63 / 497.43",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -250,7 +252,7 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "HP": "2452.29 / 2480.29 / 2509.09 / 2537.09 / 2565.09 / 2593.89 / 2621.89",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -263,7 +265,7 @@
       "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
       "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0",
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },

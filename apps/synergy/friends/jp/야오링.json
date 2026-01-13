@@ -1,0 +1,668 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "色々経験してみるのは？",
+              "reward": 60
+            },
+            {
+              "content": "シリアスな相談だな…",
+              "reward": 40
+            },
+            {
+              "content": "焦らなくていいのでは",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "瑤鈴から道具を受け取り\nレシピを教わった…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "知識 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そうかもしれない",
+              "reward": 40
+            },
+            {
+              "content": "瑤鈴はどうなんだ？",
+              "reward": 60
+            },
+            {
+              "content": "きっと勉強以外に熱心",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "知識 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "瑤鈴も頑張ろう",
+              "reward": 60
+            },
+            {
+              "content": "焦らずマイペースで",
+              "reward": 50
+            },
+            {
+              "content": "まずは楽しむことが大事",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "瑤鈴からレシピを受け取った…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "知識 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "なんとかしないと",
+              "reward": 60
+            },
+            {
+              "content": "余所の家庭の事情は…",
+              "reward": 50
+            },
+            {
+              "content": "まだよくわからない",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "知識 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "それは良い機会",
+              "reward": 60
+            },
+            {
+              "content": "また色々話したい",
+              "reward": 50
+            },
+            {
+              "content": "勉強になりそう",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "次回もぜひ、よろしくデス！",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "知識 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "抹茶にも詳しい？",
+              "reward": 60
+            },
+            {
+              "content": "食欲は偉大だな",
+              "reward": 40
+            },
+            {
+              "content": "違いのわかる淑女だ",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "知識 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "思いはぶつけていい",
+              "reward": 60
+            },
+            {
+              "content": "丁寧に話をしよう",
+              "reward": 40
+            },
+            {
+              "content": "言いたいことを言うしか",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "瑤鈴から道具を受け取り\nレシピを教わった…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "知識 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "きっと伝わった",
+              "reward": 50
+            },
+            {
+              "content": "わからない",
+              "reward": 40
+            },
+            {
+              "content": "信じよう",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "瑤鈴からレシピを受け取った…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "知識 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "ベストな回答だ",
+              "reward": 50
+            },
+            {
+              "content": "考えすぎかも？",
+              "reward": 40
+            },
+            {
+              "content": "お父さんの深謀遠慮だ…",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "知識 Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "image": "item-303075.png",
+        "name": "アイドル生写真セット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "personalityLimit": "魅力 LV.3",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 55,
+        "image": "item-303201.png",
+        "name": "心霊ビデオ",
+        "new_gift_synergy": 110,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "度胸 LV.10",
+            "price": 32000,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303202.png",
+        "name": "黒縁メガネ",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "personalityLimit": "度胸 LV.3",
+            "price": 3560,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303217.png",
+        "name": "ミックスナッツ",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "所持金",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303220.png",
+        "name": "大人の知恵の輪",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 4700,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 64,
+        "image": "item-303241.png",
+        "name": "最先端デジカメ",
+        "new_gift_synergy": 128,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 39800,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 64
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303244.png",
+        "name": "和菓子セット",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 6,
+        "image": "item-303245.png",
+        "name": "けん玉",
+        "new_gift_synergy": 12,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 6,
+            "moneyName": "所持金",
+            "price": 2400,
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "synergy": 6
+      },
+      {
+        "bonus_synergy": 52,
+        "image": "item-303252.png",
+        "name": "最新電動歯ブラシ",
+        "new_gift_synergy": 104,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 29800,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-305943.png",
+        "name": "ジャスミン茶",
+        "new_gift_synergy": 18,
+        "shop": [],
+        "synergy": 9
+      }
+    ],
+    "name": "李瑤鈴",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "綺麗だな…",
+              "reward": 60
+            },
+            {
+              "content": "不思議だな…",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "作成できる『バトルアイテム』が増える",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "文化の共有",
+        "rank": 1
+      },
+      {
+        "description": "中華料理のレシピが増える",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "オススメの中華料理",
+        "rank": 5
+      },
+      {
+        "description": "作成できる『バトルアイテム』がさらに増える",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "努力が形になる",
+        "rank": 9
+      },
+      {
+        "description": "バトルアイテム作成時、一定の確率で一部の材料が返還される",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "ちょっとしたコツ",
+        "rank": 13
+      },
+      {
+        "description": "中華料理のレシピがさらに増える",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "魅惑の中華料理",
+        "rank": 17
+      }
+    ],
+    "time": "夕方",
+    "visit_dialog": [
+      {
+        "destination": "神田",
+        "good_answers": [
+          [
+            {
+              "content": "聞いたことがある",
+              "reward": 60
+            },
+            {
+              "content": "いや、全然知らない",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "月島",
+        "good_answers": [
+          [
+            {
+              "content": "そうかも",
+              "reward": 60
+            },
+            {
+              "content": "そうかな？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "浅草",
+        "good_answers": [
+          [
+            {
+              "content": "水上バスに乗る？",
+              "reward": 60
+            },
+            {
+              "content": "水族館を見る？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "雑司ヶ谷",
+        "good_answers": [
+          [
+            {
+              "content": "おごろう",
+              "reward": 60
+            },
+            {
+              "content": "おごって",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "下北沢",
+        "good_answers": [
+          [
+            {
+              "content": "大事なの、そこ？",
+              "reward": 50
+            },
+            {
+              "content": "瑤鈴らしい着眼点だ",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

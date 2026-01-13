@@ -1,0 +1,66 @@
+/* Soulmate/Friend Indicator Styles */
+.soulmate-notice {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 12px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.soulmate-indicator {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    height: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.soulmate-block {
+    flex: 1;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.soulmate-block-left {
+    background: linear-gradient(135deg, 
+        rgba(255, 64, 129, 0.25) 0%, 
+        rgba(255, 64, 129, 0.15) 50%,
+        rgba(255, 64, 129, 0.05) 100%);
+    border: 1px solid rgba(255, 64, 129, 0.4);
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    /* 오른쪽 위에서 왼쪽 아래로 대각선 - 가운데가 닿도록 */
+    /* clip-path: polygon(0 0, calc(100% - 18px) 0, calc(100% - 18px) 100%, 0 100%);*/
+}
+
+.soulmate-block-right {
+    background: linear-gradient(315deg, 
+        rgba(33, 150, 243, 0.25) 0%, 
+        rgba(33, 150, 243, 0.15) 50%,
+        rgba(33, 150, 243, 0.05) 100%);
+    border: 1px solid rgba(33, 150, 243, 0.4);
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    /* 왼쪽 위에서 오른쪽 아래로 대각선 - 가운데가 닿도록 */
+    /* clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%);*/
+    justify-content: flex-end;
+}
+
+.soulmate-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+}
+
+.soulmate-text {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}

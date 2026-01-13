@@ -1,0 +1,156 @@
+{
+    "루페르" : {
+        "img": "touxiang-liaotian-new-cattle.png",
+        "inactive": true,
+        "num": 4
+    },
+    "나루루" : {
+        "img": "touxiang-liaotian-new-liben.png",
+        "inactive": true,
+        "num": 0
+    },
+    "아란" : {
+        "img": "touxiang-liaotian-new-polter.png",
+        "img_color": "Tongyong-touxiang-changfu-polter.png",
+        "inactive": true,
+        "num": 0
+    },
+    "모토하" : {
+        "img": "touxiang-liaotian-new-closer.png",
+        "img_color": "Tongyong-touxiang-changfu-closer.png",
+        "num": 2
+    },
+    "토모코" : {
+        "img": "touxiang-liaotian-new-kotomo.png",
+        "img_color": "Tongyong-touxiang-changfu-kotomo.png",
+        "num": 8,
+        "recommend": true,
+        "recommend_num": [5, 7, 13, 17]
+    },
+    "키요시" : {
+        "img": "touxiang-liaotian-new-kii.png",
+        "img_color": "Tongyong-touxiang-changfu-kii.png",
+        "num": 6
+    },
+    "아야카" : {
+        "img": "touxiang-liaotian-new-chord.png",
+        "img_color": "Tongyong-touxiang-changfu-chord.png",
+        "num": 12
+    },
+    "마사키" : {
+        "img": "touxiang-liaotian-npc12.png",
+        "img_color": "Tongyong-touxiang-changfu-cherish.png",
+        "num": 16
+    },
+    "리코" : {
+        "img": "touxiang-liaotian-new-riko.png",
+        "img_color": "Tongyong-touxiang-changfu-wind.png",
+        "num": 3,
+        "recommend": true,
+        "recommend_num": [7, 17]
+    },
+    "마유미" : {
+        "img": "touxiang-liaotian-new-turbo.png",
+        "img_color": "Tongyong-touxiang-changfu-turbo.png",
+        "num": 19
+    },
+    "마나카" : {
+        "img": "touxiang-liaotian-new-ange.png",
+        "img_color": "Tongyong-touxiang-changfu-ange.png",
+        "num": 21
+    },
+    "카타야마" : {
+        "img": "touxiang-liaotian-new-pianshan.png",
+        "img_color": "Tongyong-touxiang-changfu-blitz.png",
+        "num": 30,
+        "recommend": true,
+        "recommend_num": [13]
+    },
+    "쇼키" : {
+        "img": "touxiang-liaotian-new-luce.png",
+        "img_color": "Tongyong-touxiang-changfu-luce.png",
+        "num": 32
+    },
+    "슌" : {
+        "img": "touxiang-liaotian-new-soy.png",
+        "img_color": "Tongyong-touxiang-changfu-soy.png",
+        "num": 5
+    },
+    "메로페": {
+        "img": "touxiang-liaotian-new-meiluopo.png",
+        "img_color": "Tongyong-touxiang-changfu-meiluopu.png",
+        "num": 1,
+        "recommend": true,
+        "recommend_num": [13, 15, 20]
+    },
+    "야오링": {
+        "img": "touxiang-liaotian-new-rin.png",
+        "img_color": "Tongyong-touxiang-changfu-rin.png",
+        "num": 7
+    },
+    "카요": {
+        "img": "touxiang-liaotian-new-okyann.png",
+        "img_color": "Tongyong-touxiang-changfu-okyann.png",
+        "num": 9
+    },
+    "미유": {
+        "img": "touxiang-liaotian-new-puppet.png",
+        "img_color": "Tongyong-touxiang-changfu-puppet.png",
+        "num": 14,
+        "recommend": true,
+        "recommend_num": [5, 13, 17]
+    },
+    "몽타뉴": {
+        "img": "touxiang-liaotian-new-mont.png",
+        "img_color": "Tongyong-touxiang-changfu-mont.png",
+        "num": 17,
+        "recommend": true,
+        "recommend_num": [1, 5, 9, 13, 17]
+    },
+    "미오": {
+        "img": "touxiang-liaotian-matoi.png",
+        "img_color": "Tongyong-touxiang-changfu-matoi.png",
+        "num": 20,
+        "recommend": true,
+        "recommend_num": [1, 5, 7, 11, 13, 17]
+    },
+    "미나미": {
+        "img": "touxiang-liaotian-new-marian.png",
+        "img_color": "Tongyong-touxiang-changfu-marian.png",
+        "num": 29
+    },
+    "YUI" : {
+        "img": "touxiang-liaotian-new-yui.png",
+        "img_color": "Tongyong-touxiang-changfu-bui.png",
+        "num": 11
+    },
+    "유우미" : {
+        "img": "touxiang-liaotian-new-phoebe.png",
+        "img_color": "Tongyong-touxiang-changfu-phoebe.png",
+        "recommend": true,
+        "recommend_num": [5, 9, 13, 17],
+        "num": 13
+    },
+    "키라" : {
+        "img": "touxiang-liaotian-new-doctor.png",
+        "img_color": "Tongyong-touxiang-changfu-doctor.png",
+        "num": 15
+    },
+    "루우나" : {
+        "img": "touxiang-liaotian-new-howler.png",
+        "img_color": "Tongyong-touxiang-changfu-howler.png",
+        "num": 18
+    },
+    "이치고" : {
+        "img": "touxiang-liaotian-berry.png",
+        "img_color": "Tongyong-touxiang-changfu-berry.png",
+        "num": 28
+    },
+    "무스비" : {
+        "img": "touxiang-liaotian-npc10.png",
+        "img_color": "Tongyong-touxiang-changfu-yui.png",
+        "name_en": "Musubi",
+        "name_jp": "むすび",
+        "num": 31
+    }
+}

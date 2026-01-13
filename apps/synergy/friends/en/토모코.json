@@ -1,0 +1,651 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Good job.",
+              "reward": 60
+            },
+            {
+              "content": "How is that exactly?",
+              "reward": 40
+            },
+            {
+              "content": "Nice pitching.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "We left the beef bowl\nshop with some extra\npay in our pockets.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Kindness Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "We left the convenience\nstore, with some extra\npay in our pockets.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Kindness Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Why not suggest it to the manager?",
+              "reward": 40
+            },
+            {
+              "content": "Put together a plan first.",
+              "reward": 60
+            },
+            {
+              "content": "It's worth a shot.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "We left the drugstore with\nsome extra pay in our pockets.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Kindness Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Glad I could help.",
+              "reward": 60
+            },
+            {
+              "content": "I haven't done anything.",
+              "reward": 50
+            },
+            {
+              "content": "I know you'll find your confidence.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "We left the accessory shop\nwith some extra pay.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Kindness Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Let's help her out.",
+              "reward": 60
+            },
+            {
+              "content": "Can we even do it?",
+              "reward": 40
+            },
+            {
+              "content": "We're florists, we'll get it done.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "We left with some extra\npay in our pockets.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Kindness Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "That's major progress!",
+              "reward": 50
+            },
+            {
+              "content": "Aw, without me?",
+              "reward": 60
+            },
+            {
+              "content": "What's the special today?",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "We just got paid and all, so I thought we\ncould stop somewhere on the way home...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Kindness Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "We should hang out more.",
+              "reward": 50
+            },
+            {
+              "content": "It is?",
+              "reward": 40
+            },
+            {
+              "content": "Glad it's a nice day.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Kindness Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "We left the bookstore with\nsome extra pay in our pockets.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Kindness Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Of course I will.",
+              "reward": 50
+            },
+            {
+              "content": "I'm still a bit worried.",
+              "reward": 40
+            },
+            {
+              "content": "Let's do it!",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Kindness Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 2,
+        "image": "item-303203.png",
+        "name": "Part-time Job Magazine",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 20,
+        "image": "item-303210.png",
+        "name": "Shichi-kun Doll",
+        "new_gift_synergy": 40,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 7800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 20
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303211.png",
+        "name": "ChocoStick Value Pack",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4890,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303213.png",
+        "name": "Cat Hairpin",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 125,
+        "image": "item-303214.png",
+        "name": "Heart Ring",
+        "new_gift_synergy": 250,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.10",
+            "price": 88000,
+            "resetType": "주간",
+            "shopName": "Tsurukame Diamond"
+          }
+        ],
+        "synergy": 125
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303216.png",
+        "name": "Strawberry Bento Box",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303227.png",
+        "name": "Uji Matcha Flan Set",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.13",
+            "price": 12000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 18,
+        "image": "item-303235.png",
+        "name": "Super Loud Alarm Clock",
+        "new_gift_synergy": 36,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 7000,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 18
+      },
+      {
+        "bonus_synergy": 3,
+        "image": "item-303260.png",
+        "name": "Heart-Shaped Hand Mirror",
+        "new_gift_synergy": 6,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "Money",
+            "price": 1200,
+            "resetType": "주간",
+            "shopName": "Kyouryuu Jewelry"
+          }
+        ],
+        "synergy": 3
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-305942.png",
+        "name": "Sunflower Seeds",
+        "new_gift_synergy": 18,
+        "shop": [],
+        "synergy": 9
+      }
+    ],
+    "name": "Tomoko Noge",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "We're the only ones here, you know.",
+              "reward": 50
+            },
+            {
+              "content": "Actually, my parents are on a trip.",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Unlock work at the crêpe shop in Shibuya.",
+        "icon": "xielizhe-icon-pengzi-01.png",
+        "name": "Part-Time Debut",
+        "rank": 1
+      },
+      {
+        "description": "You may get a boost to a social stat when working part-time.",
+        "icon": "xielizhe-icon-pengzi-02-i18n.png",
+        "name": "Basics of Hospitality",
+        "rank": 5
+      },
+      {
+        "description": "Unlock work at the drugstore in Shibuya.",
+        "icon": "xielizhe-icon-pengzi-03.png",
+        "name": "Part-Time Warrior",
+        "rank": 7
+      },
+      {
+        "description": "Get a bigger social stat boost when working part-time.",
+        "icon": "xielizhe-icon-pengzi-04-i18n.png",
+        "name": "Customer Service Mastery",
+        "rank": 13
+      },
+      {
+        "description": "Unlock work at the bookstore in Shinjuku.",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "Part-Time Pro",
+        "rank": 17
+      }
+    ],
+    "time": "After School",
+    "visit_dialog": [
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "Let's make her a wonderful bouquet.",
+              "reward": 60
+            },
+            {
+              "content": "It's the thought that counts.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinjuku",
+        "good_answers": [
+          [
+            {
+              "content": "Don't sweat it.",
+              "reward": 60
+            },
+            {
+              "content": "Just the two of us is kinda...",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Suidobashi",
+        "good_answers": [
+          [
+            {
+              "content": "I feel bad for putting you out...",
+              "reward": 50
+            },
+            {
+              "content": "Well, if you insist!",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Seaside Park",
+        "good_answers": [
+          [
+            {
+              "content": "Seriously, don't sweat it.",
+              "reward": 60
+            },
+            {
+              "content": "Hey, it's fine.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Inokashira Park",
+        "good_answers": [
+          [
+            {
+              "content": "You're amazing for doing this.",
+              "reward": 60
+            },
+            {
+              "content": "Volunteering? On top of work?",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

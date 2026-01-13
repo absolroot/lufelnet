@@ -1,0 +1,684 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "すごい分析力だ",
+              "reward": 50
+            },
+            {
+              "content": "そろそろラーメンを…",
+              "reward": 60
+            },
+            {
+              "content": "もんじゃを追加するか？",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "度胸 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "これからだ",
+              "reward": 50
+            },
+            {
+              "content": "成長したな",
+              "reward": 60
+            },
+            {
+              "content": "負けたってこと？",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "ちょっと茶ぁ買ってくる…ああ、その前に…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "度胸 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "何を？",
+              "reward": 40
+            },
+            {
+              "content": "いきなりだな…",
+              "reward": 60
+            },
+            {
+              "content": "たぶん知ってる",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "度胸 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "駿はどうしたい？",
+              "reward": 60
+            },
+            {
+              "content": "こっちに振られても…",
+              "reward": 50
+            },
+            {
+              "content": "謝礼も大切",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "料理のレシピを聞いた後、\n駿と別れてファミレスを出た…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "度胸 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "見た目かな",
+              "reward": 40
+            },
+            {
+              "content": "客層の想定かな",
+              "reward": 50
+            },
+            {
+              "content": "コンペのお題かな",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "度胸 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そうだな",
+              "reward": 40
+            },
+            {
+              "content": "煽られやすいタイプ？",
+              "reward": 50
+            },
+            {
+              "content": "面白くなってきた",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 11,
+          "to": 12
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "チャーハン、いいな",
+              "reward": 60
+            },
+            {
+              "content": "とりあえず同じモノ",
+              "reward": 40
+            },
+            {
+              "content": "駿がラーメン以外を頼むとは",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "料理のレシピを聞いた後、駿と別れた。\n次に駿が作るラーメンが楽しみだ…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "度胸 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そう来たか",
+              "reward": 50
+            },
+            {
+              "content": "大将に感謝だな",
+              "reward": 60
+            },
+            {
+              "content": "食べたい…",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "度胸 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "付き合おう",
+              "reward": 60
+            },
+            {
+              "content": "たまにはラーメン以外も",
+              "reward": 50
+            },
+            {
+              "content": "おごりなら",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "料理のレシピを聞いてから、\n２人で次の味探しの予定を立てた…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "度胸 Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 112,
+        "image": "item-303207.png",
+        "name": "シルバーバングル",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 78000,
+            "resetType": "주간",
+            "shopName": "ツルカメダイアモンド"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303217.png",
+        "name": "ミックスナッツ",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "所持金",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 50,
+        "image": "item-303223.png",
+        "name": "最新式ロボット掃除機",
+        "new_gift_synergy": 100,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "知識 LV.5",
+            "price": 28000,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303225.png",
+        "name": "バスケットフラワー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "花屋助兵衛"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303226.png",
+        "name": "健康ドリンクセット",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 1680,
+            "resetType": "주간",
+            "shopName": "自動販売機"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303230.png",
+        "name": "限定復刻版万年筆",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "知識 LV.10",
+            "price": 10000,
+            "resetType": "없음",
+            "shopName": "ロシナンテ"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "resetType": "월간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303244.png",
+        "name": "和菓子セット",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303251.png",
+        "name": "キッチン用品セット",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 4900,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303254.png",
+        "name": "世界のカップ麺セット",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3480,
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303255.png",
+        "name": "キャラクターエプロン",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 1600,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "加納駿",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "楽しみにしている",
+              "reward": 60
+            },
+            {
+              "content": "なぜ急にスイーツ作りを？",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "作れるレシピが増える",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "簡単な自炊レシピ",
+        "rank": 1
+      },
+      {
+        "description": "料理をした時、一定の確率で一部の食材が返還される",
+        "icon": "xielizhe-icon-jianajun-02.png",
+        "name": "食材は大切に！",
+        "rank": 5
+      },
+      {
+        "description": "美味しい料理を作る確率がアップ",
+        "icon": "xielizhe-icon-jianajun-03.png",
+        "name": "プロの味のレシピ",
+        "rank": 9
+      },
+      {
+        "description": "料理を作った時、一定の確率で追加でもう１つ獲得する",
+        "icon": "xielizhe-icon-jianajun-02.png",
+        "name": "料理は心！",
+        "rank": 12
+      },
+      {
+        "description": "作れるレシピがさらに増える",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "スペシャル料理のレシピ",
+        "rank": 15
+      }
+    ],
+    "time": "放課後",
+    "visit_dialog": [
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "期待してる",
+              "reward": 60
+            },
+            {
+              "content": "値段相応だと思う",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "下北沢",
+        "good_answers": [
+          [
+            {
+              "content": "購買で買ってる",
+              "reward": 60
+            },
+            {
+              "content": "日による",
+              "reward": 50
+            },
+            {
+              "content": "昼飯は食べない",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "原宿",
+        "good_answers": [
+          [
+            {
+              "content": "服を見る",
+              "reward": 60
+            },
+            {
+              "content": "キャラクターショップ",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "浅草",
+        "good_answers": [
+          [
+            {
+              "content": "老舗のせんべい",
+              "reward": 60
+            },
+            {
+              "content": "映えそうなフルーツティー",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "上野",
+        "good_answers": [
+          [
+            {
+              "content": "試す価値はあると思う",
+              "reward": 60
+            },
+            {
+              "content": "駿、食はアートだ",
+              "reward": 40
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

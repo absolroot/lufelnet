@@ -1,0 +1,666 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Fair enough.",
+              "reward": 60
+            },
+            {
+              "content": "That's a bit of a reach...",
+              "reward": 40
+            },
+            {
+              "content": "You don't mind the stares?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Knowledge Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "This is moving too fast.",
+              "reward": 50
+            },
+            {
+              "content": "What's the point of all this?",
+              "reward": 60
+            },
+            {
+              "content": "And if I refuse?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Knowledge Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "She sounds nice.",
+              "reward": 60
+            },
+            {
+              "content": "Do you hate her?",
+              "reward": 40
+            },
+            {
+              "content": "I'd like to meet her.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Knowledge Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Leave it to me.",
+              "reward": 60
+            },
+            {
+              "content": "Let's switch roles.",
+              "reward": 50
+            },
+            {
+              "content": "We don't need a plan.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Knowledge Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "It's their choice.",
+              "reward": 50
+            },
+            {
+              "content": "I understand how you feel.",
+              "reward": 60
+            },
+            {
+              "content": "Can I order more?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Knowledge Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You're giving up already?",
+              "reward": 50
+            },
+            {
+              "content": "C'mon, fight!",
+              "reward": 40
+            },
+            {
+              "content": "You should try opening up to them.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Knowledge Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You're overthinking it.",
+              "reward": 40
+            },
+            {
+              "content": "You should trust him.",
+              "reward": 50
+            },
+            {
+              "content": "Trap or not, this is your chance.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Knowledge Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Are you running away?",
+              "reward": 50
+            },
+            {
+              "content": "You need to take a breather.",
+              "reward": 60
+            },
+            {
+              "content": "It's too late to turn back.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Knowledge Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You leave me no choice.",
+              "reward": 40
+            },
+            {
+              "content": "Can I even say no?",
+              "reward": 50
+            },
+            {
+              "content": "Our deal is still valid.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Knowledge Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "image": "item-303068.png",
+        "name": "Sports Towel",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Batting Points",
+            "price": 500,
+            "resetType": "없음",
+            "shopName": "Batting Point Exchange"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "Money",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 16,
+        "image": "item-303206.png",
+        "name": "Fluffy Cushion",
+        "new_gift_synergy": 32,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.12",
+            "price": 6500,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 16
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303209.png",
+        "name": "48-Sided 3D Puzzle",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.3",
+            "price": 5800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 37,
+        "image": "item-303232.png",
+        "name": "Designer Shades",
+        "new_gift_synergy": 74,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 18000,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 37
+      },
+      {
+        "bonus_synergy": 18,
+        "image": "item-303235.png",
+        "name": "Super Loud Alarm Clock",
+        "new_gift_synergy": 36,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 7000,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 18
+      },
+      {
+        "bonus_synergy": 11,
+        "image": "item-303277.png",
+        "name": "Sharpshooter's Secrets",
+        "new_gift_synergy": 22,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4500,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 11
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303278.png",
+        "name": "High-Capacity Thermos",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 40,
+        "image": "item-303279.png",
+        "name": "Soldier Figure",
+        "new_gift_synergy": 80,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 20000,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 40
+      },
+      {
+        "bonus_synergy": 20,
+        "image": "item-303280.png",
+        "name": "Eyestrain Eyedrops",
+        "new_gift_synergy": 40,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 8000,
+            "resetType": "주간",
+            "shopName": "Aohige"
+          }
+        ],
+        "synergy": 20
+      },
+      {
+        "bonus_synergy": 52,
+        "image": "item-303281.png",
+        "name": "Gag Glasses",
+        "new_gift_synergy": 104,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 30000,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "Kira Kitazato",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I clean it myself.",
+              "reward": 60
+            },
+            {
+              "content": "My pet tidies up.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "That's another joke, right?",
+              "reward": 50
+            },
+            {
+              "content": "You can stay for free.",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "When allies use ranged attacks, damage increases by 10%.",
+        "icon": "xielizhe-icon-doctor-01.png",
+        "name": "Switching to Guns!",
+        "rank": 1
+      },
+      {
+        "description": "When allies run out of ammo, fully reload after 2 turns.",
+        "icon": "xielizhe-icon-doctor-02.png",
+        "name": "Changing Mags!",
+        "rank": 5
+      },
+      {
+        "description": "When allies use ranged attacks, Gun damage increases by 10%.",
+        "icon": "xielizhe-icon-doctor-01.png",
+        "name": "Eyes on Target!",
+        "rank": 9
+      },
+      {
+        "description": "When allies use ranged attacks, Gun damage increases by an additional 10%.",
+        "icon": "xielizhe-icon-doctor-01.png",
+        "name": "Weapons Free!",
+        "rank": 13
+      },
+      {
+        "description": "When allies run out of ammo, fully reload after 1 turn.",
+        "icon": "xielizhe-icon-doctor-02.png",
+        "name": "Light 'Em Up!",
+        "rank": 17
+      }
+    ],
+    "time": "Night",
+    "visit_dialog": [
+      {
+        "destination": "Kanda",
+        "good_answers": [
+          [
+            {
+              "content": "Sounds plausible.",
+              "reward": 50
+            },
+            {
+              "content": "Surely it's down to the doctor?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinjuku",
+        "good_answers": [
+          [
+            {
+              "content": "What are you looking for?",
+              "reward": 50
+            },
+            {
+              "content": "The cool stuff's further inside...",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Kichijoji",
+        "good_answers": [
+          [
+            {
+              "content": "I want to be popular.",
+              "reward": 40
+            },
+            {
+              "content": "What about you?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "I check the price.",
+              "reward": 40
+            },
+            {
+              "content": "Nothing in particular.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Zoshigaya",
+        "good_answers": [
+          [
+            {
+              "content": "It's what you'd expect.",
+              "reward": 40
+            },
+            {
+              "content": "We have a few fun surprises.",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

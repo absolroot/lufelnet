@@ -63,7 +63,7 @@ window.personaFiles["디오니소스"] = {
     }
   ],
   "comment": "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 본능을 통해 크리티컬 확률을 확보하고 해명 괴도를 통해 추가로 받으므로 리벨리온을 위한 별도 어드바이스 패시브가 필요하지 않다.",
-  "comment_en": "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
+  "comment_en": "The talent critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
   "comment_jp": "メディアラハンによる治療にも本能CRT倍率30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。",
   "passive_priority": 3,
   "passive_skill": [

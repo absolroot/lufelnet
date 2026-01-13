@@ -1,0 +1,684 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Great analysis.",
+              "reward": 50
+            },
+            {
+              "content": "Is it ramen time yet?",
+              "reward": 60
+            },
+            {
+              "content": "Want more monjayaki?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Guts Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "This is only the beginning.",
+              "reward": 50
+            },
+            {
+              "content": "You've grown so much.",
+              "reward": 60
+            },
+            {
+              "content": "Is that a bad thing?",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "I need some tea... But before that...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Guts Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "How to what?",
+              "reward": 40
+            },
+            {
+              "content": "You're really psyched up, huh?",
+              "reward": 60
+            },
+            {
+              "content": "Probably?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Guts Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "What do YOU want to do?",
+              "reward": 60
+            },
+            {
+              "content": "Don't ask me...",
+              "reward": 50
+            },
+            {
+              "content": "That reward might be nice.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "After Shun shared a recipe\nwith me, we left the diner and\nparted ways.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Guts Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "The appearance.",
+              "reward": 40
+            },
+            {
+              "content": "Your target customers.",
+              "reward": 50
+            },
+            {
+              "content": "Is it on-theme?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Guts Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Exactly.",
+              "reward": 40
+            },
+            {
+              "content": "She swayed you just like that?",
+              "reward": 50
+            },
+            {
+              "content": "Now you're talking.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 11,
+          "to": 12
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Fried rice sounds good.",
+              "reward": 60
+            },
+            {
+              "content": "I guess I'll have the same.",
+              "reward": 40
+            },
+            {
+              "content": "Really? Not ramen this time?",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "After getting a recipe,\nI parted ways with Shun,\nexcited for his next creation.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Guts Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "So that's what you meant.",
+              "reward": 50
+            },
+            {
+              "content": "A page from Pops's book.",
+              "reward": 60
+            },
+            {
+              "content": "I wanna try some...",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Guts Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Anytime.",
+              "reward": 60
+            },
+            {
+              "content": "Let's try something besides ramen.",
+              "reward": 50
+            },
+            {
+              "content": "So long as you're paying.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "Shun gave me a recipe,\nand we discussed what our next\nculinary experience will be...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Guts Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 112,
+        "image": "item-303207.png",
+        "name": "Silver Bangle",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 78000,
+            "resetType": "주간",
+            "shopName": "Tsurukame Diamond"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303217.png",
+        "name": "Mixed Nuts",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "Money",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 50,
+        "image": "item-303223.png",
+        "name": "Robot Vacuum",
+        "new_gift_synergy": 100,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.5",
+            "price": 28000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303225.png",
+        "name": "Flower Basket",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "Flower Shop Sukebe"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303226.png",
+        "name": "Vitamin Drink Set",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 1680,
+            "resetType": "주간",
+            "shopName": "Vending Machine"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303230.png",
+        "name": "Exclusive Fountain Pen",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.10",
+            "price": 10000,
+            "resetType": "없음",
+            "shopName": "Rocinante"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "resetType": "월간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303244.png",
+        "name": "Japanese Sweets Set",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303251.png",
+        "name": "Kitchen Goods Set",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4900,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303254.png",
+        "name": "Worldly Cup Noodle Set",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3480,
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303255.png",
+        "name": "Character Apron",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 1600,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "Shun Kano",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I can't wait to taste-test.",
+              "reward": 60
+            },
+            {
+              "content": "Why the sudden sweet tooth?",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Unlock more recipes.",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "Simple Solo Cooking",
+        "rank": 1
+      },
+      {
+        "description": "Some ingredients may be returned after cooking.",
+        "icon": "xielizhe-icon-jianajun-02.png",
+        "name": "Every Ingredient Counts!",
+        "rank": 5
+      },
+      {
+        "description": "Your chance of cooking superb dishes increases.",
+        "icon": "xielizhe-icon-jianajun-03.png",
+        "name": "Pro-Level Chef",
+        "rank": 9
+      },
+      {
+        "description": "You may produce an extra serving after cooking.",
+        "icon": "xielizhe-icon-jianajun-02.png",
+        "name": "Cooking from the Heart",
+        "rank": 12
+      },
+      {
+        "description": "Unlock even more recipes.",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "Chef's Special Recipes",
+        "rank": 15
+      }
+    ],
+    "time": "After School",
+    "visit_dialog": [
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "I have high hopes for this.",
+              "reward": 60
+            },
+            {
+              "content": "You get what you pay for.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shimo-Kitazawa",
+        "good_answers": [
+          [
+            {
+              "content": "I buy it from the school store.",
+              "reward": 60
+            },
+            {
+              "content": "Depends on the day.",
+              "reward": 50
+            },
+            {
+              "content": "I don't eat lunch.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Harajuku",
+        "good_answers": [
+          [
+            {
+              "content": "Clothes.",
+              "reward": 60
+            },
+            {
+              "content": "Character shops.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Asakusa",
+        "good_answers": [
+          [
+            {
+              "content": "A traditional rice cracker.",
+              "reward": 60
+            },
+            {
+              "content": "A social media-worthy fruit tea.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Ueno",
+        "good_answers": [
+          [
+            {
+              "content": "It's worth a try.",
+              "reward": 60
+            },
+            {
+              "content": "Food is art!",
+              "reward": 40
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

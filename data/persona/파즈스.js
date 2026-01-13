@@ -47,7 +47,7 @@ window.personaFiles["파즈스"] = {
     }
   ],
   "comment": "아기다인을 통한 화상 효과 + 본능에 의한 주원 대미지 결산 형태로 운영된다. 주원 효과 대미지는 만능 대미지에 영향을 받는다.",
-  "comment_en": "Operated with burn effects through Agidyne + Curse damage settlement through core passive. Curse effect damage is affected by Almighty damage.",
+  "comment_en": "Operated with burn effects through Agidyne + Curse damage settlement through talent. Curse effect damage is affected by Almighty damage.",
   "comment_jp": "アギダインによる炎上＋本能による呪印ダメージの即時発生を利用して運用する。呪印ダメージは万能属性ダメージとして扱われる。",
   "passive_priority": 1,
   "passive_skill": [

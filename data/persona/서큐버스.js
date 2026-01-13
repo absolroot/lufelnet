@@ -35,7 +35,7 @@ window.personaFiles["서큐버스"] = {
     }
   ],
   "comment": "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
-  "comment_en": "Take the maximum effect of Rebellion by taking the core passive critical rate increase. The description is in 10% units, but the effect is applied in 0.1% units.",
+  "comment_en": "Take the maximum effect of Rebellion by taking the talent critical rate increase. The description is in 10% units, but the effect is applied in 0.1% units.",
   "comment_jp": "リベリオンの最大効果を得るために、クリティカル確率のパッシブを取る。説明は10%単位ですが、効果は0.1%単位で適用されます。",
   "passive_priority": 3,
   "passive_skill": [

@@ -1,0 +1,677 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Could you let me go now?",
+              "reward": 40
+            },
+            {
+              "content": "You planning to stay like that?",
+              "reward": 50
+            },
+            {
+              "content": "You're stronger than I thought.",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "I received a rare book\nfrom Kurotani and left\nthe Harrowed Grounds.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Guts Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I won't abandon you.",
+              "reward": 60
+            },
+            {
+              "content": "Okay, bye then!",
+              "reward": 50
+            },
+            {
+              "content": "What promise?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Guts Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Is it okay to let him go?",
+              "reward": 60
+            },
+            {
+              "content": "What now?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Guts Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Watch my back.",
+              "reward": 60
+            },
+            {
+              "content": "What do you want to do?",
+              "reward": 40
+            },
+            {
+              "content": "Let's stop them.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Guts Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I understand.",
+              "reward": 40
+            },
+            {
+              "content": "Isn't this rude to the girl?",
+              "reward": 60
+            },
+            {
+              "content": "This case is unusually complex.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "I received a rare book\nfrom Kurotani...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Guts Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "That was harsh.",
+              "reward": 40
+            },
+            {
+              "content": "He's had a lot on his mind.",
+              "reward": 50
+            },
+            {
+              "content": "Did he strike a nerve?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Guts Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You were pretty forceful with me.",
+              "reward": 50
+            },
+            {
+              "content": "Hence the kindred spirit thing?",
+              "reward": 60
+            },
+            {
+              "content": "That explains things.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "I received a rare book\nfrom Kurotani...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Guts Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Tap me in.",
+              "reward": 50
+            },
+            {
+              "content": "Guess it can't be helped...",
+              "reward": 40
+            },
+            {
+              "content": "We're kindred spirits, after all.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Guts Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "What have you learned?",
+              "reward": 40
+            },
+            {
+              "content": "So what is friendship, really?",
+              "reward": 60
+            },
+            {
+              "content": "All thanks to Take.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "I received a rare book\nfrom Kurotani...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Guts Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 55,
+        "image": "item-303201.png",
+        "name": "Paranormal VHS",
+        "new_gift_synergy": 110,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.10",
+            "price": 32000,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303202.png",
+        "name": "Black-Framed Glasses",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.3",
+            "price": 3560,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 112,
+        "image": "item-303207.png",
+        "name": "Silver Bangle",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 78000,
+            "resetType": "주간",
+            "shopName": "Tsurukame Diamond"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303209.png",
+        "name": "48-Sided 3D Puzzle",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.3",
+            "price": 5800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303212.png",
+        "name": "Handmade Book Cover",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303218.png",
+        "name": "Leather Pen Case",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303219.png",
+        "name": "Black Mug",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 1800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303220.png",
+        "name": "Puzzle Rings",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4700,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303233.png",
+        "name": "Men's Sun Hat",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 8,
+            "moneyName": "Money",
+            "price": 1600,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 1,
+        "image": "item-303250.png",
+        "name": "Shonen Manga Weekly",
+        "new_gift_synergy": 2,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 480,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "Kiyoshi Kurotani",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Reading manga or playing games.",
+              "reward": 50
+            },
+            {
+              "content": "Just sleep.",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Get the book \"Quick Relaxation Methods.\"",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "Hero's Rest",
+        "rank": 1
+      },
+      {
+        "description": "Get the book \"All About First Aid.\"",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "Angel of Healing",
+        "rank": 3
+      },
+      {
+        "description": "Get the book \"MUSCLES!\"",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "Perfect Armor",
+        "rank": 11
+      },
+      {
+        "description": "Get the book \"Secret Librarian Skills.\"",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "Tome of Forbidden Knowledge",
+        "rank": 15
+      },
+      {
+        "description": "Get the book \"Analysis of Film.\"",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "Blue Eye of Prophecy",
+        "rank": 20
+      }
+    ],
+    "time": "After School",
+    "visit_dialog": [
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "My thoughts exactly.",
+              "reward": 60
+            },
+            {
+              "content": "Speak for yourself.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Asakusa",
+        "good_answers": [
+          [
+            {
+              "content": "Don't worry about it.",
+              "reward": 60
+            },
+            {
+              "content": "Should we hold hands?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinjuku",
+        "good_answers": [
+          [
+            {
+              "content": "This place gives me the creeps.",
+              "reward": 60
+            },
+            {
+              "content": "It's really not that dangerous.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Suidobashi",
+        "good_answers": [
+          [
+            {
+              "content": "Someone's excited.",
+              "reward": 50
+            },
+            {
+              "content": "To the rollercoaster!",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Ogikubo",
+        "good_answers": [
+          [
+            {
+              "content": "You're a genius!",
+              "reward": 60
+            },
+            {
+              "content": "I'm hungry...",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

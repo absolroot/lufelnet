@@ -38,7 +38,7 @@ window.personaFiles["바포멧"] = {
     }
   ],
   "comment": "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
-  "comment_en": "Triggers core passive effect on enemies already in Burn state with [Red-Hot: Fire damage or Wild Thunder: Shock addition].",
+  "comment_en": "Triggers talent effect on enemies already in Burn state with [Red-Hot: Fire damage or Wild Thunder: Shock addition].",
   "comment_jp": "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。",
   "passive_priority": 2,
   "passive_skill": [

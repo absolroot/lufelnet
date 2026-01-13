@@ -1,0 +1,690 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I like it.",
+              "reward": 60
+            },
+            {
+              "content": "It's embarrassing.",
+              "reward": 40
+            },
+            {
+              "content": "I wanna be a more luxurious potato.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Kindness Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Let's talk a lot from now on.",
+              "reward": 60
+            },
+            {
+              "content": "If you want someone to talk to...",
+              "reward": 40
+            },
+            {
+              "content": "You sure you're fine with me?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Kindness Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "That looks fun.",
+              "reward": 60
+            },
+            {
+              "content": "What are you doing?",
+              "reward": 40
+            },
+            {
+              "content": "Is that a bazooka?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Kindness Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Yui-san?",
+              "reward": 40
+            },
+            {
+              "content": "Are you a french fry fan?",
+              "reward": 60
+            },
+            {
+              "content": "I'm Russet.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Kindness Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Do they need more water?",
+              "reward": 50
+            },
+            {
+              "content": "Is it the wrong fertilizer?",
+              "reward": 40
+            },
+            {
+              "content": "Is it pests?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Kindness Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Let's work on it together.",
+              "reward": 60
+            },
+            {
+              "content": "I dunno about every day...",
+              "reward": 40
+            },
+            {
+              "content": "We might have trouble again.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Kindness Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Makes sense.",
+              "reward": 50
+            },
+            {
+              "content": "I don't think that's...",
+              "reward": 40
+            },
+            {
+              "content": "Classic Yui.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Kindness Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Get something low effort.",
+              "reward": 60
+            },
+            {
+              "content": "Take sunlight into account.",
+              "reward": 50
+            },
+            {
+              "content": "Pick something that speaks to you.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 17,
+          "to": 18
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You've worked really hard.",
+              "reward": 40
+            },
+            {
+              "content": "I just gave you a push.",
+              "reward": 60
+            },
+            {
+              "content": "Call me Yukon Gold from now on.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Kindness Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 12,
+        "image": "item-303084.png",
+        "name": "Idol Trading Card",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4990,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303208.png",
+        "name": "Magnetic Necklace",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4800,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4800,
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303221.png",
+        "name": "Mini Cactus",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 1500,
+            "resetType": "주간",
+            "shopName": "Rafflesia"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 1,
+        "image": "item-303222.png",
+        "name": "Planter Cover",
+        "new_gift_synergy": 2,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 500,
+            "resetType": "주간",
+            "shopName": "Rafflesia"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Band Badge",
+            "price": 20,
+            "resetType": "주간",
+            "shopName": "Band Point Exchange"
+          }
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 50,
+        "image": "item-303223.png",
+        "name": "Robot Vacuum",
+        "new_gift_synergy": 100,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.5",
+            "price": 28000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303224.png",
+        "name": "Glass Vase",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.4",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303225.png",
+        "name": "Flower Basket",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "Flower Shop Sukebe"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303228.png",
+        "name": "Truffles",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.8",
+            "price": 12000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 112,
+        "image": "item-303229.png",
+        "name": "Designer Perfume",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.13",
+            "price": 78000,
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 2,
+        "image": "item-303234.png",
+        "name": "Watercolor Postcard",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "Yui",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Too busy with farming...",
+              "reward": 60
+            },
+            {
+              "content": "There are some decorative plants...",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "Are you going to live here?",
+              "reward": 60
+            },
+            {
+              "content": "Do I get a say in this?",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "You need less time to grow plants.",
+        "icon": "xielizhe-icon-yui-01.png",
+        "name": "Green Thumb",
+        "rank": 1
+      },
+      {
+        "description": "You can use more flower pots and planters.",
+        "icon": "xielizhe-icon-yui-05.png",
+        "name": "Gardening Sense",
+        "rank": 5
+      },
+      {
+        "description": "You may obtain seeds when harvesting plants.",
+        "icon": "xielizhe-icon-yui-06.png",
+        "name": "Gift from the Earth",
+        "rank": 9
+      },
+      {
+        "description": "You may get extra when harvesting plants.",
+        "icon": "xielizhe-icon-yui-06.png",
+        "name": "Bountiful Harvest",
+        "rank": 13
+      },
+      {
+        "description": "You need much less time to grow plants.",
+        "icon": "xielizhe-icon-yui-01.png",
+        "name": "Gardening Guru",
+        "rank": 17
+      }
+    ],
+    "time": "Night",
+    "visit_dialog": [
+      {
+        "destination": "Wilderness",
+        "good_answers": [
+          [
+            {
+              "content": "It's huge.",
+              "reward": 60
+            },
+            {
+              "content": "Is this really for beginners?",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Nearby Town",
+        "good_answers": [
+          [
+            {
+              "content": "We can give it a shot.",
+              "reward": 60
+            },
+            {
+              "content": "Sorry, not my kind of thing.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Distant Town",
+        "good_answers": [
+          [
+            {
+              "content": "Wanna buy some?",
+              "reward": 60
+            },
+            {
+              "content": "They look hard to grow.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Snowfield",
+        "good_answers": [
+          [
+            {
+              "content": "Ride a snowmobile.",
+              "reward": 60
+            },
+            {
+              "content": "Winter sports.",
+              "reward": 50
+            },
+            {
+              "content": "Let's build a snow fort!",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Admin's Farm",
+        "good_answers": [
+          [
+            {
+              "content": "Full steam ahead!",
+              "reward": 60
+            },
+            {
+              "content": "We're working for free?",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

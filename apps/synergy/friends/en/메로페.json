@@ -1,0 +1,670 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "College or work?",
+              "reward": 40
+            },
+            {
+              "content": "Never thought about it.",
+              "reward": 50
+            },
+            {
+              "content": "A reasonable degree of happiness.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Idols again?",
+              "reward": 50
+            },
+            {
+              "content": "Not even once.",
+              "reward": 40
+            },
+            {
+              "content": "So do you just like idols then?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Jack Frost - Lucky Punch"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Do I have to?",
+              "reward": 40
+            },
+            {
+              "content": "Absolutely not.",
+              "reward": 50
+            },
+            {
+              "content": "Care to explain?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Neko Shogun - Tarukaja"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Let's calm down.",
+              "reward": 50
+            },
+            {
+              "content": "You're scaring her.",
+              "reward": 60
+            },
+            {
+              "content": "Miss, your time's up.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Lilim - Attack Boost I"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "That's deep.",
+              "reward": 40
+            },
+            {
+              "content": "What's the point?",
+              "reward": 50
+            },
+            {
+              "content": "You just want to order more.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Unicorn - Healing Boost II"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Sounds complicated.",
+              "reward": 50
+            },
+            {
+              "content": "Let's do our best.",
+              "reward": 40
+            },
+            {
+              "content": "You take the lead.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Byakko - Bufudyne"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I had no idea.",
+              "reward": 50
+            },
+            {
+              "content": "That's rough.",
+              "reward": 40
+            },
+            {
+              "content": "You're so strong.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Daisoujou - Spirit Drain"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I'd love it if you both came!",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "I'm with you all the way.",
+              "reward": 50
+            },
+            {
+              "content": "If I have to.",
+              "reward": 40
+            },
+            {
+              "content": "Of course!",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "A lot has happened.",
+              "reward": 40
+            },
+            {
+              "content": "This is surreal...",
+              "reward": 50
+            },
+            {
+              "content": "All hail Naruru.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Dominion - Matarukaja"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 38,
+        "image": "item-303073.png",
+        "name": "Premiere CD",
+        "new_gift_synergy": 76,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.5",
+            "price": 18600,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 38
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303077.png",
+        "name": "Idol Coaster",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 10,
+            "moneyName": "Money",
+            "price": 1500,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 6,
+        "image": "item-303079.png",
+        "name": "Pen Light",
+        "new_gift_synergy": 12,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 2400,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Band Badge",
+            "price": 100,
+            "resetType": "주간",
+            "shopName": "Band Point Exchange"
+          }
+        ],
+        "synergy": 6
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303080.png",
+        "name": "Idol Keychain",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 2000,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 34,
+        "image": "item-303081.png",
+        "name": "Maid Figurine",
+        "new_gift_synergy": 68,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.8",
+            "price": 15800,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 34
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303213.png",
+        "name": "Cat Hairpin",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 37,
+        "image": "item-303232.png",
+        "name": "Designer Shades",
+        "new_gift_synergy": 74,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 18000,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 37
+      },
+      {
+        "bonus_synergy": 64,
+        "image": "item-303241.png",
+        "name": "Digital Camera",
+        "new_gift_synergy": 128,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 39800,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 64
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303253.png",
+        "name": "Wrist Weights",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 6800,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 16,
+        "image": "item-305947.png",
+        "name": "Violet Bouquet",
+        "new_gift_synergy": 32,
+        "shop": [],
+        "synergy": 16
+      }
+    ],
+    "name": "Merope",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Sleeping, pretty much.",
+              "reward": 50
+            },
+            {
+              "content": "I don't want to say...",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "You can sign contracts to recruit more Phantom Idols.",
+        "icon": "xielizhe-icon-meiluopu-06.png",
+        "name": "The Road to Stardom",
+        "rank": 1
+      },
+      {
+        "description": "You can fuse Archangel.",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "Platinum Ticket",
+        "rank": 5
+      },
+      {
+        "description": "You can fuse Setanta.",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "The Idol Ideal",
+        "rank": 7
+      },
+      {
+        "description": "You can fuse Anubis.",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "VIP Access",
+        "rank": 9
+      },
+      {
+        "description": "You can fuse Okuninushi.",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "My Fave Is Justice",
+        "rank": 11
+      },
+      {
+        "description": "You can fuse Narcissus.",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "You're in the Spotlight",
+        "rank": 13
+      },
+      {
+        "description": "You may receive an extra seal when fusing a 2★ or 3★ Persona of Rank 4 or lower.",
+        "icon": "xielizhe-icon-meiluopu-07.png",
+        "name": "Full-Power Support",
+        "rank": 15
+      },
+      {
+        "description": "You can fuse Kohryu.",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "Dancing with Shadows",
+        "rank": 20
+      }
+    ],
+    "time": "Evening",
+    "visit_dialog": [
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "That's a little melodramatic.",
+              "reward": 50
+            },
+            {
+              "content": "I never thought of it that way.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shimo-Kitazawa",
+        "good_answers": [
+          [
+            {
+              "content": "What do you mean?",
+              "reward": 50
+            },
+            {
+              "content": "I'll keep that in mind.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Jinbocho",
+        "good_answers": [
+          [
+            {
+              "content": "I only read manga.",
+              "reward": 50
+            },
+            {
+              "content": "Total bookworm.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Seaside Park",
+        "good_answers": [
+          [
+            {
+              "content": "My heart's racing.",
+              "reward": 60
+            },
+            {
+              "content": "Only with the right person.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Ikebukuro",
+        "good_answers": [
+          [
+            {
+              "content": "You mean hold hands?",
+              "reward": 60
+            },
+            {
+              "content": "That's too early for us.",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

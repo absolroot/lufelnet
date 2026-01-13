@@ -1,0 +1,646 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "綺麗な色だ…",
+              "reward": 50
+            },
+            {
+              "content": "美味しそう",
+              "reward": 40
+            },
+            {
+              "content": "写真撮っていい？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "魅力 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "ステップが軽やかだ",
+              "reward": 50
+            },
+            {
+              "content": "衣装が綺麗だ",
+              "reward": 40
+            },
+            {
+              "content": "表情が格好いい",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "魅力 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そうでもなかった",
+              "reward": 60
+            },
+            {
+              "content": "実は重かった",
+              "reward": 40
+            },
+            {
+              "content": "羽のように軽かった",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "魅力 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "教わった事を活かしたくて",
+              "reward": 40
+            },
+            {
+              "content": "椎名さんが心配で",
+              "reward": 50
+            },
+            {
+              "content": "リラックスしてほしくて",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "魅力 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "話してくれてありがとう",
+              "reward": 60
+            },
+            {
+              "content": "辛いことを思い出させた",
+              "reward": 50
+            },
+            {
+              "content": "椎名さんは悪くない",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "魅力 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "自分は大丈夫",
+              "reward": 60
+            },
+            {
+              "content": "椎名さんの方こそ",
+              "reward": 50
+            },
+            {
+              "content": "迷惑な奴だった",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "魅力 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "していない",
+              "reward": 50
+            },
+            {
+              "content": "ちょっとだけ",
+              "reward": 60
+            },
+            {
+              "content": "椎名さんのためならする",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "魅力 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "負けないよ",
+              "reward": 50
+            },
+            {
+              "content": "十分頑張ってるのに",
+              "reward": 60
+            },
+            {
+              "content": "自分はまだまだ",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "魅力 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そうなんだ…",
+              "reward": 40
+            },
+            {
+              "content": "お疲れ様！",
+              "reward": 50
+            },
+            {
+              "content": "楽しかった？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "魅力 Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 14,
+        "image": "item-303082.png",
+        "name": "シンプルメイクポーチ",
+        "new_gift_synergy": 28,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 5500,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 14
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303219.png",
+        "name": "ブラックマグカップ",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 1800,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303228.png",
+        "name": "トリュフチョコ",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "優しさ LV.8",
+            "price": 12000,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 2,
+        "image": "item-303234.png",
+        "name": "水彩絵ハガキ",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303262.png",
+        "name": "懐かしラムネセット",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 1480,
+            "resetType": "주간",
+            "shopName": "自動販売機"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303263.png",
+        "name": "アンティークのトレイ",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303264.png",
+        "name": "フワモッコくん人形",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 6800,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 38,
+        "image": "item-303265.png",
+        "name": "月明りブローチ",
+        "new_gift_synergy": 76,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 18800,
+            "resetType": "주간",
+            "shopName": "キョウリュウ"
+          }
+        ],
+        "synergy": 38
+      },
+      {
+        "bonus_synergy": 110,
+        "image": "item-303266.png",
+        "name": "バニラ香水",
+        "new_gift_synergy": 220,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "魅力 LV.13",
+            "price": 76000,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 110
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-305941.png",
+        "name": "デイジーのポプリ",
+        "new_gift_synergy": 10,
+        "shop": [],
+        "synergy": 5
+      }
+    ],
+    "name": "椎名悠美",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "誤解してもいいけど？",
+              "reward": 50
+            },
+            {
+              "content": "本当に『来てみたかった』だけ？",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "ドリンクのレシピが増える",
+        "icon": "xielizhe-icon-zhuimingyoumei-01.png",
+        "name": "シェイク",
+        "rank": 1
+      },
+      {
+        "description": "ドリンクのレシピが増える",
+        "icon": "xielizhe-icon-zhuimingyoumei-01.png",
+        "name": "ビルド",
+        "rank": 5
+      },
+      {
+        "description": "新宿のコンビニで『アッサムティー』の購入上限が増える",
+        "icon": "xielizhe-icon-zhuimingyoumei-02.png",
+        "name": "アペリティフ",
+        "rank": 9
+      },
+      {
+        "description": "特定のドリンクを作る確率が上昇する",
+        "icon": "xielizhe-icon-zhuimingyoumei-02.png",
+        "name": "ブレンド",
+        "rank": 13
+      },
+      {
+        "description": "５０%の確率で出来上がる特定のドリンクが２つになる",
+        "icon": "xielizhe-icon-zhuimingyoumei-03.png",
+        "name": "オリジナルカクテル",
+        "rank": 17
+      }
+    ],
+    "time": "夜",
+    "visit_dialog": [
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "案内なら任せて",
+              "reward": 50
+            },
+            {
+              "content": "一緒に遊ぼう",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "新宿",
+        "good_answers": [
+          [
+            {
+              "content": "残念…",
+              "reward": 50
+            },
+            {
+              "content": "大人になったら",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "お台場海浜公園",
+        "good_answers": [
+          [
+            {
+              "content": "光栄です",
+              "reward": 50
+            },
+            {
+              "content": "ぜひ２回目もお願いします",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "池袋",
+        "good_answers": [
+          [
+            {
+              "content": "星型の氷を入れる",
+              "reward": 50
+            },
+            {
+              "content": "色で夜空を表現する",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "月島",
+        "good_answers": [
+          [
+            {
+              "content": "匠と呼んでくれ",
+              "reward": 50
+            },
+            {
+              "content": "椎名さんのために頑張った",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

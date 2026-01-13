@@ -53,7 +53,7 @@ window.personaFiles["광목천"] = {
     }
   ],
   "comment": "전투 시작 시 가장 맨 앞에 배치해야 한다. 본능 버프는 페르소나 전환 후에도 지속된다. ",
-  "comment_en": "Must be placed in the front row at the start of battle. The core passive buff continues even after persona switching.",
+  "comment_en": "Must be placed in the front row at the start of battle. The talent buff continues even after persona switching.",
   "comment_jp": "戦闘開始時、1体目のペルソナにしておくべきである。『天王の眼力』はペルソナチェンジした後も持続する。",
   "passive_priority": 3,
   "passive_skill": [

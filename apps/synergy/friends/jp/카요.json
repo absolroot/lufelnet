@@ -1,0 +1,643 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "同じ現実で生きている",
+              "reward": 50
+            },
+            {
+              "content": "諦めたらそこで終わり",
+              "reward": 60
+            },
+            {
+              "content": "ちなみに何歳差？",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "１度自宅に戻って着替えて来よう…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "魅力 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "１０代の気持ち",
+              "reward": 50
+            },
+            {
+              "content": "キャッシュレス",
+              "reward": 40
+            },
+            {
+              "content": "不便でも楽しかった思い出",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "魅力 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "少し寂しい",
+              "reward": 50
+            },
+            {
+              "content": "別にケンカしなくても",
+              "reward": 40
+            },
+            {
+              "content": "遠慮してるのかも",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "魅力 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "具だくさんだ",
+              "reward": 50
+            },
+            {
+              "content": "高カロリーだな",
+              "reward": 40
+            },
+            {
+              "content": "『敵に勝つ』ってこと？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "魅力 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "好物に絞って",
+              "reward": 50
+            },
+            {
+              "content": "特別なことはしない",
+              "reward": 60
+            },
+            {
+              "content": "カレー…とか？",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "魅力 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "それが今の１０代",
+              "reward": 40
+            },
+            {
+              "content": "それは違う",
+              "reward": 60
+            },
+            {
+              "content": "世話焼きおばさんはどうした？",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "魅力 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "一体何が？",
+              "reward": 40
+            },
+            {
+              "content": "まずは落ち着いて",
+              "reward": 50
+            },
+            {
+              "content": "神山さんのこと？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "魅力 Lv.13"
+      },
+      {
+        "good_answers": [],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "魅力 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "でも頑張ってた",
+              "reward": 60
+            },
+            {
+              "content": "今日は反省会？",
+              "reward": 50
+            },
+            {
+              "content": "結果はそう悪くなかった",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "なんだかこういう格好も悪くないと思えてきた…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "魅力 Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 14,
+        "image": "item-303082.png",
+        "name": "シンプルメイクポーチ",
+        "new_gift_synergy": 28,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 5500,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 14
+      },
+      {
+        "bonus_synergy": 1,
+        "image": "item-303205.png",
+        "name": "ゴシップ週刊誌",
+        "new_gift_synergy": 2,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 500,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 112,
+        "image": "item-303229.png",
+        "name": "ブランド香水",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "魅力 LV.13",
+            "price": 78000,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303243.png",
+        "name": "真紅のルージュ",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 6000,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303246.png",
+        "name": "最先端美顔器",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 9800,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303247.png",
+        "name": "ローズバスセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "所持金",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 1,
+        "image": "item-303248.png",
+        "name": "ファッション誌",
+        "new_gift_synergy": 2,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 500,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 35,
+        "image": "item-303249.png",
+        "name": "着せ替え人形",
+        "new_gift_synergy": 70,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 16000,
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "synergy": 35
+      },
+      {
+        "bonus_synergy": 11,
+        "image": "item-303256.png",
+        "name": "全能ビタミン剤",
+        "new_gift_synergy": 22,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 4500,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 11
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303258.png",
+        "name": "豪華アロマセット",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "富山佳代",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "姑か？",
+              "reward": 50
+            },
+            {
+              "content": "すみません、お義母様",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "『カジュアルコーデ』のプレゼント",
+        "icon": "xielizhe-icon-fushanjiadai-01.png",
+        "name": "ご近所スタイリスト",
+        "rank": 1
+      },
+      {
+        "description": "『カジュアルコーデＧＲ』のプレゼント",
+        "icon": "xielizhe-icon-fushanjiadai-01.png",
+        "name": "最旬トレンド",
+        "rank": 3
+      },
+      {
+        "description": "『渋谷駅地下モール・洋服屋』で新しい服を買えるようになる",
+        "icon": "xielizhe-icon-fushanjiadai-01.png",
+        "name": "渋カジファッション",
+        "rank": 9
+      },
+      {
+        "description": "『渋谷駅地下モール・アパレルショップ』で新しい服を買えるようになる",
+        "icon": "xielizhe-icon-fushanjiadai-01.png",
+        "name": "きれいめスタイル",
+        "rank": 13
+      },
+      {
+        "description": "『スクールコーデ』のプレゼント",
+        "icon": "xielizhe-icon-fushanjiadai-01.png",
+        "name": "専属スタイリスト",
+        "rank": 20
+      }
+    ],
+    "time": "夕方",
+    "visit_dialog": [
+      {
+        "destination": "池袋",
+        "good_answers": [
+          [
+            {
+              "content": "デートの下見ということで",
+              "reward": 50
+            },
+            {
+              "content": "旦那が嫉妬しない？",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "聞いたことある",
+              "reward": 60
+            },
+            {
+              "content": "黄色はどこに？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "下北沢",
+        "good_answers": [
+          [
+            {
+              "content": "どんな匂い？",
+              "reward": 60
+            },
+            {
+              "content": "汗臭い？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "原宿",
+        "good_answers": [
+          [
+            {
+              "content": "原宿の老舗、か",
+              "reward": 60
+            },
+            {
+              "content": "何時代の話？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "お台場海浜公園",
+        "good_answers": [
+          [
+            {
+              "content": "確かに大人っぽくない",
+              "reward": 50
+            },
+            {
+              "content": "お姉ちゃんって感じ？",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

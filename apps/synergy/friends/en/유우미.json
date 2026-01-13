@@ -1,0 +1,646 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "The colors are so beautiful.",
+              "reward": 50
+            },
+            {
+              "content": "Looks delicious.",
+              "reward": 40
+            },
+            {
+              "content": "Can I take a picture?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Charm Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Such light footwork.",
+              "reward": 50
+            },
+            {
+              "content": "The outfit is beautiful.",
+              "reward": 40
+            },
+            {
+              "content": "You look like a pro.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Charm Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Not really.",
+              "reward": 60
+            },
+            {
+              "content": "A little, yeah.",
+              "reward": 40
+            },
+            {
+              "content": "It was light as a feather.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Charm Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Just like you taught me.",
+              "reward": 40
+            },
+            {
+              "content": "I was worried about you.",
+              "reward": 50
+            },
+            {
+              "content": "I wanted you to relax.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Charm Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Thanks for telling me all that.",
+              "reward": 60
+            },
+            {
+              "content": "Sorry to dredge that up.",
+              "reward": 50
+            },
+            {
+              "content": "It wasn't your fault.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Charm Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I'm fine.",
+              "reward": 60
+            },
+            {
+              "content": "Are you okay?",
+              "reward": 50
+            },
+            {
+              "content": "That guy's a pain.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Charm Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I didn't.",
+              "reward": 50
+            },
+            {
+              "content": "Just a little.",
+              "reward": 60
+            },
+            {
+              "content": "I'd risk it for you.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Charm Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You're not beating me.",
+              "reward": 50
+            },
+            {
+              "content": "You're doing plenty.",
+              "reward": 60
+            },
+            {
+              "content": "I still have a ways to go.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Charm Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Oh...",
+              "reward": 40
+            },
+            {
+              "content": "You tried, though!",
+              "reward": 50
+            },
+            {
+              "content": "Did you have fun?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Charm Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 14,
+        "image": "item-303082.png",
+        "name": "Simple Makeup Pouch",
+        "new_gift_synergy": 28,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 5500,
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 14
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303219.png",
+        "name": "Black Mug",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 1800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303228.png",
+        "name": "Truffles",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.8",
+            "price": 12000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 2,
+        "image": "item-303234.png",
+        "name": "Watercolor Postcard",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303262.png",
+        "name": "Retro Ramune Set",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 1480,
+            "resetType": "주간",
+            "shopName": "Vending Machine"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303263.png",
+        "name": "Antique Tray",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303264.png",
+        "name": "Fuwamokko-kun Doll",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 6800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 38,
+        "image": "item-303265.png",
+        "name": "Moonlight Brooch",
+        "new_gift_synergy": 76,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 18800,
+            "resetType": "주간",
+            "shopName": "Kyouryuu Jewelry"
+          }
+        ],
+        "synergy": 38
+      },
+      {
+        "bonus_synergy": 110,
+        "image": "item-303266.png",
+        "name": "Vanilla Perfume",
+        "new_gift_synergy": 220,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.13",
+            "price": 76000,
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 110
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-305941.png",
+        "name": "Daisy Potpourri",
+        "new_gift_synergy": 10,
+        "shop": [],
+        "synergy": 5
+      }
+    ],
+    "name": "Yumi Shiina",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Would that idea have been so wrong?",
+              "reward": 50
+            },
+            {
+              "content": "Was that really all you wanted?",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Learn more drink recipes.",
+        "icon": "xielizhe-icon-zhuimingyoumei-01.png",
+        "name": "Shake",
+        "rank": 1
+      },
+      {
+        "description": "Learn more drink recipes.",
+        "icon": "xielizhe-icon-zhuimingyoumei-01.png",
+        "name": "Build",
+        "rank": 5
+      },
+      {
+        "description": "You can buy more Assam Tea at the Shinjuku Convenience Store.",
+        "icon": "xielizhe-icon-zhuimingyoumei-02.png",
+        "name": "Apéritif",
+        "rank": 9
+      },
+      {
+        "description": "Your chance of making certain drinks is increased.",
+        "icon": "xielizhe-icon-zhuimingyoumei-02.png",
+        "name": "Blend",
+        "rank": 13
+      },
+      {
+        "description": "When making certain drinks, 50% chance to make a second.",
+        "icon": "xielizhe-icon-zhuimingyoumei-03.png",
+        "name": "Original Cocktail",
+        "rank": 17
+      }
+    ],
+    "time": "Night",
+    "visit_dialog": [
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "I'll show you around.",
+              "reward": 50
+            },
+            {
+              "content": "We're together, so it'll be fun.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinjuku",
+        "good_answers": [
+          [
+            {
+              "content": "That's too bad.",
+              "reward": 50
+            },
+            {
+              "content": "I can wait.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Seaside Park",
+        "good_answers": [
+          [
+            {
+              "content": "I'm honored.",
+              "reward": 50
+            },
+            {
+              "content": "I'd love to do this again.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Ikebukuro",
+        "good_answers": [
+          [
+            {
+              "content": "Star-shaped ice cubes.",
+              "reward": 50
+            },
+            {
+              "content": "Colors like the night sky.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Tsukishima",
+        "good_answers": [
+          [
+            {
+              "content": "I'm your monja mentor.",
+              "reward": 50
+            },
+            {
+              "content": "Nothing but the best for you.",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

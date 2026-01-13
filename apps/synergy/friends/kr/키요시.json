@@ -1,0 +1,718 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "떨어져 주지 않겠어?",
+              "reward": 40
+            },
+            {
+              "content": "언제까지 그러고 있을 거야?",
+              "reward": 50
+            },
+            {
+              "content": "의외로 힘이 세네…",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "쿠로타니에게 『희귀한 책』을 받고\n멸망의 대지를 나왔다…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "배짱 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "쿠로타니를 두고 갈 수는 없어",
+              "reward": 60
+            },
+            {
+              "content": "그럼, 사양 않고",
+              "reward": 50
+            },
+            {
+              "content": "무슨 약속이었더라?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "배짱 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "보내줘도 돼?",
+              "reward": 60
+            },
+            {
+              "content": "이제 어떻게 할 거야?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "배짱 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "등 뒤를 맡길게",
+              "reward": 60
+            },
+            {
+              "content": "쿠로타니는 어떻게 하고 싶어?",
+              "reward": 40
+            },
+            {
+              "content": "각오는 됐어",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "배짱 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "사정은 이해했어",
+              "reward": 40
+            },
+            {
+              "content": "그 여학생한테 미안한데? ",
+              "reward": 60
+            },
+            {
+              "content": "이번에는 정보량이 많네",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "쿠로타니에게 『희귀한 책』을\n받았다…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "배짱 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그렇게까지 말할 줄은",
+              "reward": 40
+            },
+            {
+              "content": "본인도 여러 생각을 하고 있네",
+              "reward": 50
+            },
+            {
+              "content": "아픈 곳을 찔렸나?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "배짱 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "나한테는 꽤 강압적이었어",
+              "reward": 50
+            },
+            {
+              "content": "그래서 소울메이트인가? ",
+              "reward": 60
+            },
+            {
+              "content": "많은 걸 이해했어",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "쿠로타니에게 『희귀한 책』을\n받았다…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "배짱 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "도와줄게",
+              "reward": 50
+            },
+            {
+              "content": "어쩔 수 없네",
+              "reward": 40
+            },
+            {
+              "content": "소울메이트니까",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "배짱 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "무엇을 배웠지? ",
+              "reward": 40
+            },
+            {
+              "content": "친구란? ",
+              "reward": 60
+            },
+            {
+              "content": "타케한테도 감사해야지",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "쿠로타니에게 『희귀한 책』을\n받았다…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "배짱 Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 55,
+        "image": "item-303201.png",
+        "name": "심령 비디오",
+        "new_gift_synergy": 110,
+        "shop": [
+          {
+            "discountPrice": 31000,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "personalityLimit": "배짱 LV.10",
+            "price": 32000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "할인 상점"
+          }
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303202.png",
+        "name": "불가사의 안경",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "discountPrice": 3390,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "personalityLimit": "배짱 LV.3",
+            "price": 3560,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "할인 상점"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 112,
+        "image": "item-303207.png",
+        "name": "실버 뱅글",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "discountPrice": 77000,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 78000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "보석 가게"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303209.png",
+        "name": "48면 큐브",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 5510,
+            "isHidden": 0,
+            "mapName": "신주쿠",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "personalityLimit": "지식 LV.3",
+            "price": 5800,
+            "reducePriceCond": "도겐자카 루우나 LV.7",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303212.png",
+        "name": "수제 책 표지 세트",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303218.png",
+        "name": "소가죽 펜 케이스",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": "조시가야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 2800,
+            "reducePriceCond": "도겐자카 루우나 LV.9",
+            "resetType": "주간",
+            "shopName": "슈퍼마켓"
+          },
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 2800,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "문구점"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303219.png",
+        "name": "흑칠 머그컵",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "discountPrice": 1710,
+            "isHidden": 0,
+            "mapName": "신주쿠",
+            "maxBuy": 5,
+            "moneyName": "현금",
+            "price": 1800,
+            "reducePriceCond": "도겐자카 루우나 LV.7",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303220.png",
+        "name": "지혜의 고리",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "discountPrice": 4470,
+            "isHidden": 0,
+            "mapName": "신주쿠",
+            "maxBuy": 2,
+            "moneyName": "현금",
+            "price": 4700,
+            "reducePriceCond": "도겐자카 루우나 LV.7",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303233.png",
+        "name": "남자 차양 모자",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "discountPrice": 1520,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 8,
+            "moneyName": "현금",
+            "price": 1600,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 1,
+        "image": "item-303250.png",
+        "name": "유행 만화 월간지",
+        "new_gift_synergy": 2,
+        "shop": [
+          {
+            "discountPrice": 460,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 5,
+            "moneyName": "현금",
+            "price": 480,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "한정판 키링",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "에너지 스톤 전문점"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "아키하바라",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.5",
+            "resetType": "주간",
+            "shopName": "굿즈샵"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "막과자 패키지",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "욘겐자야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.9",
+            "resetType": "주간",
+            "shopName": "슈퍼마켓"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "프리미엄 에센스 세트",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 2,
+            "moneyName": "현금",
+            "price": 7700,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "뷰티 살롱"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "마롱 케이크",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 6000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "뮤직 스노글로브",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 10000,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "문구점"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "탁상용 아로마 기계",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 12000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "뷰티 살롱"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 49,
+        "image": "item-303298.png",
+        "name": "마음의 초콜릿",
+        "new_gift_synergy": 0,
+        "shop": [],
+        "synergy": 50
+      }
+    ],
+    "name": "쿠로타니 키요시",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "만화를 보거나 게임을 해",
+              "reward": 50
+            },
+            {
+              "content": "주로 잠만 자",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "『효율적인 휴식 방법』 책을 획득합니다.",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "휴식도 전투의 일환",
+        "rank": 1
+      },
+      {
+        "description": "『관심과 보살핌』 책울 획득합니다.",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "치유 천사",
+        "rank": 3
+      },
+      {
+        "description": "『근육, GO!』 책을 획득합니다.",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "인체 한계 돌파",
+        "rank": 11
+      },
+      {
+        "description": "『사서의 비법!』 책을 획득합니다.",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "알고 있어",
+        "rank": 15
+      },
+      {
+        "description": "『영화와 영화 평론가』 책을 획득합니다.",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "꿰뚫는 시선",
+        "rank": 20
+      }
+    ],
+    "time": "방과 후",
+    "visit_dialog": [
+      {
+        "destination": "시부야",
+        "good_answers": [
+          [
+            {
+              "content": "어떤 기분인지 알겠다",
+              "reward": 60
+            },
+            {
+              "content": "난 너와 다르다",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "아사쿠사",
+        "good_answers": [
+          [
+            {
+              "content": "괜찮아",
+              "reward": 60
+            },
+            {
+              "content": "손잡을래?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "신주쿠",
+        "good_answers": [
+          [
+            {
+              "content": "무서운 곳이다",
+              "reward": 60
+            },
+            {
+              "content": "그렇게 위험하지 않다",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "스이도바시",
+        "good_answers": [
+          [
+            {
+              "content": "즐거워 보인다",
+              "reward": 50
+            },
+            {
+              "content": "물론 롤러코스터부터!",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "오기쿠보",
+        "good_answers": [
+          [
+            {
+              "content": "좋은 생각이다",
+              "reward": 60
+            },
+            {
+              "content": "배고파...",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

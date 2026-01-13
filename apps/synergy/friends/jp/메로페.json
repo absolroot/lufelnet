@@ -1,0 +1,670 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "進学か就職…？",
+              "reward": 40
+            },
+            {
+              "content": "考えたことない",
+              "reward": 50
+            },
+            {
+              "content": "ほどほど幸せに",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "またアイドル？",
+              "reward": 50
+            },
+            {
+              "content": "思ったことない…",
+              "reward": 40
+            },
+            {
+              "content": "アイドルが好きなのか？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "ジャックフロスト - ラッキーパンチ"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "やらなきゃダメ？",
+              "reward": 40
+            },
+            {
+              "content": "断固拒否する",
+              "reward": 50
+            },
+            {
+              "content": "説明してほしい…",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "ネコショウグン - タルカジャ"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "一旦落ち着こう",
+              "reward": 50
+            },
+            {
+              "content": "相手が困ってる",
+              "reward": 60
+            },
+            {
+              "content": "お客さん、お時間です",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "リリム - アタックブースタⅠ"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "奥が深いな…",
+              "reward": 40
+            },
+            {
+              "content": "本当に意味ある？",
+              "reward": 50
+            },
+            {
+              "content": "メロペが頼みたいだけでは？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "ユニコーン - 治療ブースタⅡ"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "なかなか難しいな",
+              "reward": 50
+            },
+            {
+              "content": "頑張ろう",
+              "reward": 40
+            },
+            {
+              "content": "手腕に期待してる",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "ビャッコ - ブフダイン"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そんな事情があったのか",
+              "reward": 50
+            },
+            {
+              "content": "大変なんだな…",
+              "reward": 40
+            },
+            {
+              "content": "頑張ってるんだな",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "だいそうじょう - 吸魔"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "メロペちゃんとお兄さんには\n絶対に来てほしいから！",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "乗り掛かった舟だ",
+              "reward": 50
+            },
+            {
+              "content": "仕方ない",
+              "reward": 40
+            },
+            {
+              "content": "もちろん！",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": null
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "今日まで色々あった",
+              "reward": 40
+            },
+            {
+              "content": "まさかこんなことになるとは…",
+              "reward": 50
+            },
+            {
+              "content": "ナルルの存在に感謝",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "ドミニオン - マハタルカジャ"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 38,
+        "image": "item-303073.png",
+        "name": "プレミアＣＤ",
+        "new_gift_synergy": 76,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "度胸 LV.5",
+            "price": 18600,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 38
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303077.png",
+        "name": "コースター",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 10,
+            "moneyName": "所持金",
+            "price": 1500,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 6,
+        "image": "item-303079.png",
+        "name": "ペンライト",
+        "new_gift_synergy": 12,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 2400,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "軽音部バッジ",
+            "price": 100,
+            "resetType": "주간",
+            "shopName": "軽音部ポイント交換"
+          }
+        ],
+        "synergy": 6
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303080.png",
+        "name": "アイドルのアクキー",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 2000,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 34,
+        "image": "item-303081.png",
+        "name": "メイドフィギュア",
+        "new_gift_synergy": 68,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "度胸 LV.8",
+            "price": 15800,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 34
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303213.png",
+        "name": "猫ヘアピン",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "３７℃"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 37,
+        "image": "item-303232.png",
+        "name": "高級サングラス",
+        "new_gift_synergy": 74,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 18000,
+            "resetType": "주간",
+            "shopName": "３７℃"
+          }
+        ],
+        "synergy": 37
+      },
+      {
+        "bonus_synergy": 64,
+        "image": "item-303241.png",
+        "name": "最先端デジカメ",
+        "new_gift_synergy": 128,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 39800,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 64
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303253.png",
+        "name": "ウェイトバンド",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 6800,
+            "resetType": "주간",
+            "shopName": "３７℃"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 16,
+        "image": "item-305947.png",
+        "name": "スミレの花束",
+        "new_gift_synergy": 32,
+        "shop": [],
+        "synergy": 16
+      }
+    ],
+    "name": "メロペ",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "主に寝るだけ",
+              "reward": 50
+            },
+            {
+              "content": "言うの恥ずかしい…",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "『契約』すると、より多くの怪ドルを獲得できる",
+        "icon": "xielizhe-icon-meiluopu-06.png",
+        "name": "アイドルへの道",
+        "rank": 1
+      },
+      {
+        "description": "アークエンジェルの合体ができるようになる",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "プラチナチケット",
+        "rank": 5
+      },
+      {
+        "description": "セタンタの合体ができるようになる",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "理想のアイドル",
+        "rank": 7
+      },
+      {
+        "description": "アヌビスの合体ができるようになる",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "ＶＩＰ席への誘い",
+        "rank": 9
+      },
+      {
+        "description": "オオクニヌシの合体ができるようになる",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "推しは正義",
+        "rank": 11
+      },
+      {
+        "description": "ナルキッソスの合体ができるようになる",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "君がセンター",
+        "rank": 13
+      },
+      {
+        "description": "Ｒａｎｋ４以下の★２、★３ペルソナ合体時、一定の確率で印章をもう１つ獲得",
+        "icon": "xielizhe-icon-meiluopu-07.png",
+        "name": "全力応援",
+        "rank": 15
+      },
+      {
+        "description": "コウリュウの合体ができるようになる",
+        "icon": "xielizhe-icon-meiluopu-02.png",
+        "name": "振りコピダンス",
+        "rank": 20
+      }
+    ],
+    "time": "夕方",
+    "visit_dialog": [
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "大げさすぎる…",
+              "reward": 50
+            },
+            {
+              "content": "そういう解釈もあるか",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "下北沢",
+        "good_answers": [
+          [
+            {
+              "content": "どういう意味？",
+              "reward": 50
+            },
+            {
+              "content": "心得ておく",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "神保町",
+        "good_answers": [
+          [
+            {
+              "content": "漫画しか読まない",
+              "reward": 50
+            },
+            {
+              "content": "読書は趣味だ",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "お台場海浜公園",
+        "good_answers": [
+          [
+            {
+              "content": "ドキドキしてきた",
+              "reward": 60
+            },
+            {
+              "content": "相手による",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "池袋",
+        "good_answers": [
+          [
+            {
+              "content": "手を繋ぐの？",
+              "reward": 60
+            },
+            {
+              "content": "自分たちにはまだ早い",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

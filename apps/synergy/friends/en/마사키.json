@@ -1,0 +1,594 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Let's try your usual spot next time.",
+              "reward": 50
+            },
+            {
+              "content": "How about a diner next time?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Kindness Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You've got me.",
+              "reward": 60
+            },
+            {
+              "content": "I've been waiting for you to text.",
+              "reward": 50
+            },
+            {
+              "content": "Temperance is key.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Kindness Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Let's go.",
+              "reward": 40
+            },
+            {
+              "content": "Yeah, that's enough fancy sushi.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Kindness Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You really care about your family.",
+              "reward": 40
+            },
+            {
+              "content": "You didn't look pathetic.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Kindness Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I knew it was nothing serious.",
+              "reward": 40
+            },
+            {
+              "content": "It's only a little fatigue.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Kindness Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "That does seem to be the case.",
+              "reward": 40
+            },
+            {
+              "content": "I appreciate the concern.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Kindness Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Okay.",
+              "reward": 50
+            },
+            {
+              "content": "You asked for it.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Kindness Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Even so, let's go eat.",
+              "reward": 50
+            },
+            {
+              "content": "I will. Anyway, you hungry?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Kindness Lv.15"
+      },
+      {
+        "good_answers": [],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Kindness Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "image": "item-303212.png",
+        "name": "Handmade Book Cover",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303224.png",
+        "name": "Glass Vase",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.4",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303253.png",
+        "name": "Wrist Weights",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 6800,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 42,
+        "image": "item-303267.png",
+        "name": "Harmonica",
+        "new_gift_synergy": 84,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Proficiency LV.10",
+            "price": 21800,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 42
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303288.png",
+        "name": "Anime Character Pin",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3500,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 14,
+        "image": "item-303289.png",
+        "name": "Stylish Plant Guide",
+        "new_gift_synergy": 28,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 5500,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 14
+      },
+      {
+        "bonus_synergy": 22,
+        "image": "item-303290.png",
+        "name": "Smart Planter",
+        "new_gift_synergy": 44,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 8800,
+            "resetType": "주간",
+            "shopName": "Flower Shop Sukebe"
+          }
+        ],
+        "synergy": 22
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303291.png",
+        "name": "3D Cactus Puzzle",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 10000,
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 67,
+        "image": "item-303292.png",
+        "name": "Popular Board Game",
+        "new_gift_synergy": 134,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 42000,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 67
+      },
+      {
+        "bonus_synergy": 16,
+        "image": "item-305948.png",
+        "name": "Osmanthus Bouquet",
+        "new_gift_synergy": 32,
+        "shop": [],
+        "synergy": 16
+      }
+    ],
+    "name": "Masaki Ashiya",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I'm used to it now.",
+              "reward": 40
+            },
+            {
+              "content": "Not today; you're here.",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Unlock the hint feature.",
+        "icon": "xielizhe-icon-cherish01.png",
+        "name": "Moon on the Water",
+        "rank": 1
+      },
+      {
+        "description": "You can use Ashiya in Tycoon.",
+        "icon": "xielizhe-icon-cherish02.png",
+        "name": "Budding Knight",
+        "rank": 5
+      },
+      {
+        "description": "Unlock the custom Ashiya ♦6 card.",
+        "icon": "xielizhe-icon-cherish03.png",
+        "name": "Blossom Whirlwind",
+        "rank": 9
+      },
+      {
+        "description": "Unlock the card counter feature.",
+        "icon": "xielizhe-icon-cherish04.png",
+        "name": "Spring Scenery",
+        "rank": 13
+      },
+      {
+        "description": "Unlock more items at the Tycoon exchange shop.",
+        "icon": "xielizhe-icon-cherish05.png",
+        "name": "A Hundred Flowers Blooming",
+        "rank": 17
+      }
+    ],
+    "time": "After School",
+    "visit_dialog": [
+      {
+        "destination": "Shimo-Kitazawa",
+        "good_answers": [
+          [
+            {
+              "content": "Sometimes.",
+              "reward": 40
+            },
+            {
+              "content": "Why, do you?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Kichijoji",
+        "good_answers": [
+          [
+            {
+              "content": "What did it look like?",
+              "reward": 50
+            },
+            {
+              "content": "Was it expensive?",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Inokashira Park",
+        "good_answers": [
+          [
+            {
+              "content": "You know a lot about trees too?",
+              "reward": 50
+            },
+            {
+              "content": "What about the winter?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Asakusa",
+        "good_answers": [
+          [
+            {
+              "content": "Something sweet.",
+              "reward": 50
+            },
+            {
+              "content": "Something savory.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinjuku",
+        "good_answers": [
+          [
+            {
+              "content": "The manager's tastes?",
+              "reward": 50
+            },
+            {
+              "content": "Different customer base?",
+              "reward": 40
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

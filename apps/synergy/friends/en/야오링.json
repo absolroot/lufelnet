@@ -1,0 +1,668 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Try a bunch of things.",
+              "reward": 60
+            },
+            {
+              "content": "That's a toughie.",
+              "reward": 40
+            },
+            {
+              "content": "Can't you just take things easy?",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "Yaoling Li gave me a tool\nand taught me a recipe.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Knowledge Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You may be right.",
+              "reward": 40
+            },
+            {
+              "content": "What about you?",
+              "reward": 60
+            },
+            {
+              "content": "Their passions lie elsewhere.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Knowledge Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Just do your best, Yaoling.",
+              "reward": 60
+            },
+            {
+              "content": "Take things at your own pace.",
+              "reward": 50
+            },
+            {
+              "content": "Gotta stop and smell the roses.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "Yaoling Li taught me\na recipe...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Knowledge Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "We've got to help somehow.",
+              "reward": 60
+            },
+            {
+              "content": "Her family is her business.",
+              "reward": 50
+            },
+            {
+              "content": "I don't get what's going on.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Knowledge Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Sounds like a great opportunity.",
+              "reward": 60
+            },
+            {
+              "content": "We have much more to talk about!",
+              "reward": 50
+            },
+            {
+              "content": "I'm sure it'll be enlightening.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "See you!",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Knowledge Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You're a matcha expert too?",
+              "reward": 60
+            },
+            {
+              "content": "That's some appetite.",
+              "reward": 40
+            },
+            {
+              "content": "A lady of refined tastes.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Knowledge Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Hit her with the truth!",
+              "reward": 60
+            },
+            {
+              "content": "Choose your words carefully.",
+              "reward": 40
+            },
+            {
+              "content": "You have to say what you feel.",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "Yaoling gave me a tool\nand taught me a recipe.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Knowledge Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I know you did.",
+              "reward": 50
+            },
+            {
+              "content": "Can't say for sure.",
+              "reward": 40
+            },
+            {
+              "content": "Let's have faith.",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "Yaoling taught me a recipe...",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Knowledge Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "That's the best kind of answer.",
+              "reward": 50
+            },
+            {
+              "content": "Aren't you overthinking it?",
+              "reward": 40
+            },
+            {
+              "content": "Your dad's one smart cookie.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Knowledge Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "image": "item-303075.png",
+        "name": "Idol Photo Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.3",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 55,
+        "image": "item-303201.png",
+        "name": "Paranormal VHS",
+        "new_gift_synergy": 110,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.10",
+            "price": 32000,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303202.png",
+        "name": "Black-Framed Glasses",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.3",
+            "price": 3560,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303217.png",
+        "name": "Mixed Nuts",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "Money",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303220.png",
+        "name": "Puzzle Rings",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4700,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 64,
+        "image": "item-303241.png",
+        "name": "Digital Camera",
+        "new_gift_synergy": 128,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 39800,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 64
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303244.png",
+        "name": "Japanese Sweets Set",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 6,
+        "image": "item-303245.png",
+        "name": "Kendama",
+        "new_gift_synergy": 12,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 6,
+            "moneyName": "Money",
+            "price": 2400,
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "synergy": 6
+      },
+      {
+        "bonus_synergy": 52,
+        "image": "item-303252.png",
+        "name": "Electric Toothbrush",
+        "new_gift_synergy": 104,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 29800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-305943.png",
+        "name": "Jasmine Tea",
+        "new_gift_synergy": 18,
+        "shop": [],
+        "synergy": 9
+      }
+    ],
+    "name": "Yaoling Li",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "It's beautiful...",
+              "reward": 60
+            },
+            {
+              "content": "It's fascinating...",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "You can craft more battle items.",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "Cultural Exchange",
+        "rank": 1
+      },
+      {
+        "description": "Unlock more Chinese recipes.",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "The Best Chinese Cuisine",
+        "rank": 5
+      },
+      {
+        "description": "You can craft even more battle items.",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "Fruits of Our Labor",
+        "rank": 9
+      },
+      {
+        "description": "You may get back some materials after crafting battle items",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "A Trick or Two",
+        "rank": 13
+      },
+      {
+        "description": "Unlock even more Chinese recipes.",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "Irresistible Chinese Cuisine",
+        "rank": 17
+      }
+    ],
+    "time": "Evening",
+    "visit_dialog": [
+      {
+        "destination": "Kanda",
+        "good_answers": [
+          [
+            {
+              "content": "I know the rumor.",
+              "reward": 60
+            },
+            {
+              "content": "First I've heard of it.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Tsukishima",
+        "good_answers": [
+          [
+            {
+              "content": "You might be right.",
+              "reward": 60
+            },
+            {
+              "content": "You really think so?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Asakusa",
+        "good_answers": [
+          [
+            {
+              "content": "Wanna ride the aqua bus?",
+              "reward": 60
+            },
+            {
+              "content": "How about the aquarium?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Zoshigaya",
+        "good_answers": [
+          [
+            {
+              "content": "Sure, my treat.",
+              "reward": 60
+            },
+            {
+              "content": "Your treat!",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shimo-Kitazawa",
+        "good_answers": [
+          [
+            {
+              "content": "That's what caught your eye?",
+              "reward": 50
+            },
+            {
+              "content": "Always thinking about food...",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

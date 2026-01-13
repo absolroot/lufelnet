@@ -1,0 +1,613 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Your health is more important.",
+              "reward": 60
+            },
+            {
+              "content": "There's always tomorrow.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Proficiency Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "There's no rush.",
+              "reward": 50
+            },
+            {
+              "content": "I'm happy to help anytime.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Proficiency Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Your voice is beautiful.",
+              "reward": 40
+            },
+            {
+              "content": "Were you nervous?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Proficiency Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "It was a good song.",
+              "reward": 60
+            },
+            {
+              "content": "You really did!",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Proficiency Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "What do you want to say most?",
+              "reward": 50
+            },
+            {
+              "content": "Just keep trying stuff out.",
+              "reward": 40
+            },
+            {
+              "content": "Who are your songs for?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Proficiency Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You didn't do anything wrong.",
+              "reward": 40
+            },
+            {
+              "content": "Is that all you want to say to her?",
+              "reward": 60
+            },
+            {
+              "content": "What do you want to do?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Proficiency Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I wanna hear you play at your best.",
+              "reward": 50
+            },
+            {
+              "content": "You must be imagining things.",
+              "reward": 40
+            },
+            {
+              "content": "I just want to cheer you up.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Proficiency Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Congrats!",
+              "reward": 50
+            },
+            {
+              "content": "I wanna hear!",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Proficiency Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Go ahead.",
+              "reward": 60
+            },
+            {
+              "content": "I'm sure she'll understand.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Proficiency Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 38,
+        "image": "item-303073.png",
+        "name": "Premiere CD",
+        "new_gift_synergy": 76,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Guts LV.5",
+            "price": 18600,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 38
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303211.png",
+        "name": "ChocoStick Value Pack",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4890,
+            "resetType": "주간",
+            "shopName": "Zoshigaya Mart"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 52,
+        "image": "item-303252.png",
+        "name": "Electric Toothbrush",
+        "new_gift_synergy": 104,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 29800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 3,
+        "image": "item-303260.png",
+        "name": "Heart-Shaped Hand Mirror",
+        "new_gift_synergy": 6,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "Money",
+            "price": 1200,
+            "resetType": "주간",
+            "shopName": "Kyouryuu Jewelry"
+          }
+        ],
+        "synergy": 3
+      },
+      {
+        "bonus_synergy": 42,
+        "image": "item-303267.png",
+        "name": "Harmonica",
+        "new_gift_synergy": 84,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Proficiency LV.10",
+            "price": 21800,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 42
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303268.png",
+        "name": "Music Box",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4800,
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303269.png",
+        "name": "Guitar Care Set",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 2,
+        "image": "item-303270.png",
+        "name": "Weathered Teru Teru Bozu",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 7,
+            "moneyName": "Money",
+            "price": 800,
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 37,
+        "image": "item-303271.png",
+        "name": "Choker",
+        "new_gift_synergy": 74,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 18000,
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 37
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 13,
+        "image": "item-305945.png",
+        "name": "Osmanthus Tea",
+        "new_gift_synergy": 26,
+        "shop": [],
+        "synergy": 13
+      }
+    ],
+    "name": "Ayaka Sakai",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Feel free to stay the night.",
+              "reward": 60
+            },
+            {
+              "content": "Let's play till dark.",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "It will be easier to get Perfect or Great notes.",
+        "icon": "xielizhe-icon-banjinglingxiang-01.png",
+        "name": "Solo Revolution",
+        "rank": 1
+      },
+      {
+        "description": "A Miss will become a Perfect once every 10 seconds.",
+        "icon": "xielizhe-icon-banjinglingxiang-02.png",
+        "name": "Savior on Stage",
+        "rank": 5
+      },
+      {
+        "description": "Unlock the song \"Seize the Light.\"",
+        "icon": "xielizhe-icon-banjinglingxiang-03.png",
+        "name": "Solo Rock",
+        "rank": 9
+      },
+      {
+        "description": "You can complete long notes without lifting your finger.",
+        "icon": "xielizhe-icon-banjinglingxiang-04.png",
+        "name": "Twelve-String Sunset",
+        "rank": 13
+      },
+      {
+        "description": "Unlock the song \"Wonder Light.\"",
+        "icon": "xielizhe-icon-banjinglingxiang-03.png",
+        "name": "With the Daybreak",
+        "rank": 20
+      }
+    ],
+    "time": "After School",
+    "visit_dialog": [
+      {
+        "destination": "Inokashira Park",
+        "good_answers": [
+          [
+            {
+              "content": "Breaks are important.",
+              "reward": 60
+            },
+            {
+              "content": "Would you prefer to be alone?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Miura Beach",
+        "good_answers": [
+          [
+            {
+              "content": "Thanks for inviting me.",
+              "reward": 60
+            },
+            {
+              "content": "I'm kinda hungry...",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Suidobashi",
+        "good_answers": [
+          [
+            {
+              "content": "How about the Ferris wheel?",
+              "reward": 60
+            },
+            {
+              "content": "Give the roller coaster a go!",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Yongen-Jaya",
+        "good_answers": [
+          [
+            {
+              "content": "Can't beat golden age movies.",
+              "reward": 60
+            },
+            {
+              "content": "I prefer modern flicks.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Seaside Park",
+        "good_answers": [
+          [
+            {
+              "content": "It's a wonderful place.",
+              "reward": 60
+            },
+            {
+              "content": "I think it's a great spot.",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

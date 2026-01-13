@@ -1,0 +1,714 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "쇼키도 똑같잖아?",
+              "reward": 50
+            },
+            {
+              "content": "졌다고 생각하는 거야?",
+              "reward": 60
+            },
+            {
+              "content": "게다가 미유는 귀엽잖아",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "매력 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그걸로 만족할 수 있겠어?",
+              "reward": 60
+            },
+            {
+              "content": "난 네가 프로로 계속했으면 좋겠어",
+              "reward": 50
+            },
+            {
+              "content": "나는 아무 말도 할 수 없어…",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "매력 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "신경 안 써",
+              "reward": 50
+            },
+            {
+              "content": "투샷이라면 갖고 싶었어",
+              "reward": 60
+            },
+            {
+              "content": "인기 있는 사람은 힘들겠어",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "매력 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "쇼키는 부모님을 정말 좋아해",
+              "reward": 50
+            },
+            {
+              "content": "힘든 시기를 함께 이겨낸 가족이야",
+              "reward": 60
+            },
+            {
+              "content": "남의 집 일에 끼어들지 마",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "매력 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그런 건 아니지 않을까?",
+              "reward": 40
+            },
+            {
+              "content": "쇼키의 연기에 대한 열정은 진짜야",
+              "reward": 60
+            },
+            {
+              "content": "지금은 다르지 않을까?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "매력 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "고민은 해결됐어?",
+              "reward": 50
+            },
+            {
+              "content": "그냥 피겨를 보여주고 싶었을 뿐이야",
+              "reward": 60
+            },
+            {
+              "content": "그냥 피겨를 보고 싶었을 뿐이야",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "매력 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "쇼키의 설명은 재미있어",
+              "reward": 50
+            },
+            {
+              "content": "쇼키가 하는 『연기』의 힘이야",
+              "reward": 60
+            },
+            {
+              "content": "쇼키의 영화에 대한 사랑이 전해졌어",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "매력 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그 말을 기다렸어",
+              "reward": 60
+            },
+            {
+              "content": "쇼키라면 할 수 있어",
+              "reward": 50
+            },
+            {
+              "content": "응원할게",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "매력 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "당연하지",
+              "reward": 60
+            },
+            {
+              "content": "가족이나 동료들도 다 똑같아",
+              "reward": 50
+            },
+            {
+              "content": "글쎄?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "매력 Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "image": "item-303068.png",
+        "name": "GOAT 흡수 타월",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "야구 포인트",
+            "price": 500,
+            "resetType": "없음",
+            "shopName": "야구 포인트 교환"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 4,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 55,
+        "image": "item-303201.png",
+        "name": "심령 비디오",
+        "new_gift_synergy": 110,
+        "shop": [
+          {
+            "discountPrice": 31000,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "personalityLimit": "배짱 LV.10",
+            "price": 32000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "할인 상점"
+          }
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303233.png",
+        "name": "남자 차양 모자",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "discountPrice": 1520,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 8,
+            "moneyName": "현금",
+            "price": 1600,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303259.png",
+        "name": "라쿠고 특선 전집",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "신주쿠",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.7",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303278.png",
+        "name": "가정용 텀블러",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "조시가야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.9",
+            "resetType": "주간",
+            "shopName": "슈퍼마켓"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "한정판 키링",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "에너지 스톤 전문점"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "아키하바라",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.5",
+            "resetType": "주간",
+            "shopName": "굿즈샵"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "막과자 패키지",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "욘겐자야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.9",
+            "resetType": "주간",
+            "shopName": "슈퍼마켓"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "프리미엄 에센스 세트",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 2,
+            "moneyName": "현금",
+            "price": 7700,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "뷰티 살롱"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "마롱 케이크",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 6000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "뮤직 스노글로브",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 10000,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "문구점"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "탁상용 아로마 기계",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 12000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "뷰티 살롱"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 38,
+        "image": "item-303296.png",
+        "name": "스포츠용 헤드폰",
+        "new_gift_synergy": 76,
+        "shop": [
+          {
+            "discountPrice": 17860,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 18800,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "문구점"
+          },
+          {
+            "discountPrice": 17860,
+            "isHidden": 0,
+            "mapName": "아키하바라",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 18800,
+            "reducePriceCond": "도겐자카 루우나 LV.5",
+            "resetType": "주간",
+            "shopName": "전자제품 매장"
+          }
+        ],
+        "synergy": 38
+      },
+      {
+        "bonus_synergy": 29,
+        "image": "item-317007.png",
+        "name": "페더맨 전대 오브제 세트",
+        "new_gift_synergy": 58,
+        "shop": [
+          {
+            "discountPrice": 11970,
+            "isHidden": 0,
+            "mapName": "아키하바라",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 12600,
+            "reducePriceCond": "도겐자카 루우나 LV.5",
+            "resetType": "주간",
+            "shopName": "굿즈샵"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "게임 센터 교환권",
+            "price": 2520,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "synergy": 29
+      },
+      {
+        "bonus_synergy": 23,
+        "image": "item-317023.png",
+        "name": "클래식 희곡 문집 소장판",
+        "new_gift_synergy": 46,
+        "shop": [
+          {
+            "discountPrice": 9120,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 9600,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "문구점"
+          }
+        ],
+        "synergy": 23
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-317024.png",
+        "name": "상비용 목캔디 세트",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "discountPrice": 1710,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 5,
+            "moneyName": "현금",
+            "price": 1800,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 48,
+        "image": "item-317025.png",
+        "name": "패션 숄더 크로스백",
+        "new_gift_synergy": 96,
+        "shop": [
+          {
+            "discountPrice": 25800,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 26800,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "할인 상점"
+          }
+        ],
+        "synergy": 48
+      },
+      {
+        "bonus_synergy": 49,
+        "image": "item-303298.png",
+        "name": "마음의 초콜릿",
+        "new_gift_synergy": 0,
+        "shop": [],
+        "synergy": 50
+      }
+    ],
+    "name": "이케나미 쇼키",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "청소를 잘해",
+              "reward": 60
+            },
+            {
+              "content": "쇼키는 잘하고 있어?",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "「의상 도감」 기능 사용 가능",
+        "icon": "xielizhe-icon-chiboxinghui-01.png",
+        "name": "스포트라이트 1초 전",
+        "rank": 1
+      },
+      {
+        "description": "「의상 프리셋」을 진행할 수 있으며, 특정 날씨/시간대에 진입하면 자동으로 전환",
+        "icon": "xielizhe-icon-chiboxinghui-02.png",
+        "name": "모드를 전환하여 공연 준비",
+        "rank": 5
+      },
+      {
+        "description": "「의상 도감」의 진행도 보상 상한 증가",
+        "icon": "xielizhe-icon-chiboxinghui-03.png",
+        "name": "숨겨진 행운",
+        "rank": 9
+      },
+      {
+        "description": "「의상 프리셋」의 설정 상한 증가",
+        "icon": "xielizhe-icon-chiboxinghui-04.png",
+        "name": "흐름을 놓치지 않도록",
+        "rank": 13
+      },
+      {
+        "description": "「의상 도감」의 진행도 보상 상한 추가 증가",
+        "icon": "xielizhe-icon-chiboxinghui-03.png",
+        "name": "앙코르, 한 번 더!",
+        "rank": 17
+      }
+    ],
+    "time": "방과 후",
+    "visit_dialog": [
+      {
+        "destination": "츠키시마",
+        "good_answers": [
+          [
+            {
+              "content": "나만 믿어",
+              "reward": 60
+            },
+            {
+              "content": "점원한테 부탁하자…",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "우에노",
+        "good_answers": [
+          [
+            {
+              "content": "미술 감상을 좋아해",
+              "reward": 60
+            },
+            {
+              "content": "다른 친구는 없어?",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "신주쿠",
+        "good_answers": [
+          [
+            {
+              "content": "팝콘",
+              "reward": 60
+            },
+            {
+              "content": "팸플릿",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "시부야",
+        "good_answers": [
+          [
+            {
+              "content": "크레이프라면 기꺼이",
+              "reward": 60
+            },
+            {
+              "content": "사준다고 하면 갈게",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "이노카시라 공원",
+        "good_answers": [
+          [
+            {
+              "content": "재미있을 것 같아",
+              "reward": 60
+            },
+            {
+              "content": "어쩔 수 없지",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -43,7 +43,7 @@ window.personaFiles["비사문천"] = {
     }
   ],
   "comment": "라쿤다를 사용해도 본능 효과가 적용된다.",
-  "comment_en": "The core passive effect is applied even when using Rakunda.",
+  "comment_en": "The talent effect is applied even when using Rakunda.",
   "comment_jp": "ラクンダを使用しても本能効果が適用される。",
   "passive_priority": 2,
   "passive_skill": [

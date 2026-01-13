@@ -1,0 +1,655 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "It won't.",
+              "reward": 50
+            },
+            {
+              "content": "It'll be okay.",
+              "reward": 60
+            },
+            {
+              "content": "Take your time.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Proficiency Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You can count on it.",
+              "reward": 60
+            },
+            {
+              "content": "Sure thing.",
+              "reward": 40
+            },
+            {
+              "content": "Let's lift 200 lbs together.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Proficiency Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "It's true.",
+              "reward": 50
+            },
+            {
+              "content": "Aren't you eating too much?",
+              "reward": 40
+            },
+            {
+              "content": "Let's work hard together.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Proficiency Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You can win.",
+              "reward": 60
+            },
+            {
+              "content": "As long as you train...",
+              "reward": 50
+            },
+            {
+              "content": "You're an ace all-rounder.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Proficiency Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Yeah.",
+              "reward": 40
+            },
+            {
+              "content": "I'm not sure.",
+              "reward": 50
+            },
+            {
+              "content": "......",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Proficiency Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Yay, juice! Thanks, I'm gonna drink this,\nthen practice some more.",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Proficiency Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Do you hate baseball?",
+              "reward": 40
+            },
+            {
+              "content": "Do you want to continue baseball?",
+              "reward": 60
+            },
+            {
+              "content": "Are the Phantom Thieves important?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Proficiency Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You did your best.",
+              "reward": 50
+            },
+            {
+              "content": "That was so cool.",
+              "reward": 60
+            },
+            {
+              "content": "No regrets?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Proficiency Lv.15"
+      },
+      {
+        "good_answers": [],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Proficiency Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 26,
+        "image": "item-303062.png",
+        "name": "Alloy Baseball Bat",
+        "new_gift_synergy": 52,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "personalityLimit": "Proficiency LV.13",
+            "price": 11000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 26
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303064.png",
+        "name": "Protective Sports Gear",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Soccer Badge",
+            "price": 60,
+            "resetType": "주간",
+            "shopName": "Soccer Point Exchange"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303068.png",
+        "name": "Sports Towel",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Batting Points",
+            "price": 500,
+            "resetType": "없음",
+            "shopName": "Batting Point Exchange"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "Money",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303071.png",
+        "name": "Baseball Gloves",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Batting Points",
+            "price": 1000,
+            "resetType": "없음",
+            "shopName": "Batting Point Exchange"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Proficiency LV.5",
+            "price": 6900,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 22,
+        "image": "item-303072.png",
+        "name": "GOAT Uniform",
+        "new_gift_synergy": 44,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Batting Points",
+            "price": 1500,
+            "resetType": "없음",
+            "shopName": "Batting Point Exchange"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Proficiency LV.10",
+            "price": 8900,
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 22
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303213.png",
+        "name": "Cat Hairpin",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "37 Degrees Celsius"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 125,
+        "image": "item-303214.png",
+        "name": "Heart Ring",
+        "new_gift_synergy": 250,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.10",
+            "price": 88000,
+            "resetType": "주간",
+            "shopName": "Tsurukame Diamond"
+          }
+        ],
+        "synergy": 125
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303237.png",
+        "name": "Sumo Wrestler Stickers",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 1600,
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 2,
+        "image": "item-303242.png",
+        "name": "Gourmet Food Tour Guide",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 700,
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 13,
+        "image": "item-305946.png",
+        "name": "Preserved Flower",
+        "new_gift_synergy": 26,
+        "shop": [],
+        "synergy": 13
+      }
+    ],
+    "name": "Motoha Arai",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Nuh-uh.",
+              "reward": 40
+            },
+            {
+              "content": "You sure you don't mean you?",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "It's OK, I'll be there too.",
+              "reward": 40
+            },
+            {
+              "content": "You could always grab my arm.",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "You can use your Third Eye during Batting Practice.",
+        "icon": "xielizhe-icon-suyu-01.png",
+        "name": "Watch Close!",
+        "rank": 1
+      },
+      {
+        "description": "All allies' HP will be fully restored when a battle ends with an All-Out Attack (only effective in a Palace or Mementos against Wandering Shadows).",
+        "icon": "xielizhe-icon-suyu-04.png",
+        "name": "Teamwork!",
+        "rank": 5
+      },
+      {
+        "description": "You can take on a new difficulty level and trade for new items at the Batting Cages.",
+        "icon": "xielizhe-icon-suyu-03.png",
+        "name": "One More Rep!",
+        "rank": 9
+      },
+      {
+        "description": "The Highlight gauge will be refilled to 30% after resting in a safe room (only effective in a Palace or Mementos against Wandering Shadows).",
+        "icon": "xielizhe-icon-suyu-05.png",
+        "name": "We're All Set!",
+        "rank": 13
+      },
+      {
+        "description": "You can take on an even higher difficulty level and trade for more new items at the Batting Cages.",
+        "icon": "xielizhe-icon-suyu-03.png",
+        "name": "Bring It On!",
+        "rank": 17
+      }
+    ],
+    "time": "After School",
+    "visit_dialog": [
+      {
+        "destination": "Inokashira Park",
+        "good_answers": [
+          [
+            {
+              "content": "Cocoa.",
+              "reward": 60
+            },
+            {
+              "content": "Fruit Blend.",
+              "reward": 50
+            },
+            {
+              "content": "Custard.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shimo-Kitazawa",
+        "good_answers": [
+          [
+            {
+              "content": "Squats.",
+              "reward": 60
+            },
+            {
+              "content": "Sit-ups.",
+              "reward": 50
+            },
+            {
+              "content": "Wall sits.",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Tsukishima",
+        "good_answers": [
+          [
+            {
+              "content": "A topping or two can't hurt.",
+              "reward": 50
+            },
+            {
+              "content": "How about cheese instead?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "Let's do it.",
+              "reward": 50
+            },
+            {
+              "content": "I challenge you!",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

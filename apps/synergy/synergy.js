@@ -1,0 +1,1667 @@
+// Synergy Page JavaScript
+
+(function() {
+    'use strict';
+
+    const BASE_URL = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
+    const APP_VERSION = (typeof window !== 'undefined' && window.APP_VERSION) ? window.APP_VERSION : Date.now().toString();
+
+    let characterList = {};
+    let characterData = {};
+    let mapNameTranslations = {};
+    let currentLanguage = 'kr';
+    let selectedCharacter = null;
+    let currentTimeFilter = 'all';
+    let currentSearchQuery = '';
+    let showSpoiler = false;
+    let hasKrFallback = false; // 한국어 폴백 사용 여부
+
+    // 현재 언어 감지
+    function getCurrentLanguage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+            return urlLang;
+        }
+        try {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+                return savedLang;
+            }
+        } catch (e) {}
+        return 'kr';
+    }
+
+    // UI 번역 함수
+    function translateUI() {
+        if (currentLanguage === 'kr') {
+            // 한국어에서는 spoiler 체크박스 숨기기
+            const spoilerContainer = document.querySelector('.spoiler-checkbox-container');
+            if (spoilerContainer) {
+                spoilerContainer.style.display = 'none';
+            }
+            return;
+        }
+        
+        const translations = window.synergyTranslations?.[currentLanguage];
+        if (!translations) return;
+
+        // 텍스트 번역
+        function translateText(element, originalText) {
+            if (element && translations[originalText]) {
+                element.textContent = translations[originalText];
+            }
+        }
+
+        // placeholder 번역
+        function translatePlaceholder(element, originalText) {
+            if (element && translations[originalText]) {
+                element.placeholder = translations[originalText];
+            }
+        }
+
+        // 네비게이션
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        translateText(navHome, '홈');
+        translateText(navCurrent, '협력자');
+        translateText(pageTitle, '협력자');
+
+        // 필터 버튼
+        document.querySelectorAll('.time-filter-btn').forEach(btn => {
+            const text = btn.textContent.trim();
+            if (translations[text]) {
+                btn.textContent = translations[text];
+            }
+        });
+
+        // 검색창
+        const searchInput = document.getElementById('characterSearch');
+        translatePlaceholder(searchInput, '캐릭터 검색...');
+
+        // Spoiler 체크박스
+        const spoilerLabel = document.getElementById('spoiler-label-text');
+        translateText(spoilerLabel, 'Show Spoiler');
+    }
+
+    // friend_num.json 로드
+    async function loadCharacterList() {
+        try {
+            const response = await fetch(`${BASE_URL}/apps/synergy/friends/friend_num.json?v=${APP_VERSION}`);
+            if (!response.ok) throw new Error('Failed to load character list');
+            characterList = await response.json();
+            return true;
+        } catch (error) {
+            console.error('Error loading character list:', error);
+            return false;
+        }
+    }
+
+    // map_name.json 로드
+    async function loadMapNameTranslations() {
+        try {
+            const response = await fetch(`${BASE_URL}/apps/synergy/friends/map_name.json?v=${APP_VERSION}`);
+            if (!response.ok) throw new Error('Failed to load map name translations');
+            mapNameTranslations = await response.json();
+            return true;
+        } catch (error) {
+            console.error('Error loading map name translations:', error);
+            return false;
+        }
+    }
+
+    // mapName 번역
+    function translateMapName(mapNameKr) {
+        if (!mapNameKr || currentLanguage === 'kr') return mapNameKr;
+        const translation = mapNameTranslations[mapNameKr];
+        if (!translation) return mapNameKr;
+        return translation[currentLanguage] || mapNameKr;
+    }
+    
+    // mapName의 이미지 경로 가져오기
+    function getMapImage(mapName) {
+        if (!mapName) return null;
+        
+        // 한국어인 경우 직접 키로 찾기
+        if (currentLanguage === 'kr') {
+            const translation = mapNameTranslations[mapName];
+            if (!translation || !translation.img) return null;
+            return `${BASE_URL}/assets/img/synergy/place/${translation.img}`;
+        }
+        
+        // 영어/일본어인 경우 역으로 검색 (번역된 값으로 한국어 키 찾기)
+        for (const [krKey, translation] of Object.entries(mapNameTranslations)) {
+            if (translation && translation[currentLanguage] === mapName) {
+                if (translation.img) {
+                    return `${BASE_URL}/assets/img/synergy/place/${translation.img}`;
+                }
+            }
+        }
+        
+        // 역 검색 실패 시 한국어 키로도 시도 (폴백)
+        const translation = mapNameTranslations[mapName];
+        if (translation && translation.img) {
+            return `${BASE_URL}/assets/img/synergy/place/${translation.img}`;
+        }
+        
+        return null;
+    }
+
+    // resetType 번역
+    function translateResetType(resetType) {
+        if (!resetType || resetType === '없음') return '-';
+        if (currentLanguage === 'kr') return resetType;
+        
+        const translations = {
+            '주간': { en: 'Weekly', jp: '週間' },
+            '월간': { en: 'Monthly', jp: '月間' },
+            '일간': { en: 'Daily', jp: '日間' }
+        };
+        
+        const translation = translations[resetType];
+        if (!translation) return resetType;
+        return translation[currentLanguage] || resetType;
+    }
+
+    // moneyName을 아이콘으로 변환하는 함수
+    function getMoneyIcon(moneyName, shop) {
+        if (!moneyName) return '';
+        
+        let iconFile = '';
+        let tooltip = moneyName;
+        
+        // 게임 센터 관련 (게임 센터, Game, ゲームセンター 등)
+        if (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+            moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター')) {
+            iconFile = 'item-huobi-1038.png';
+        }
+        // 현금/Money/所持金
+        else if (moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金') {
+            iconFile = 'item-huobi-22.png';
+        }
+        // 야구 포인트/Batting Points/バッティングポイント
+        else if (moneyName === '야구 포인트' || moneyName === 'Batting Points' || moneyName === 'バッティングポイント') {
+            iconFile = 'item-huobi-16.png';
+        }
+        // 축구부 배지/Soccer Badge/サッカー部バッジ
+        else if (moneyName === '축구부 배지' || moneyName === 'Soccer Badge' || moneyName === 'サッカー部バッジ') {
+            iconFile = 'item-huobi-53.png';
+        }
+        
+        if (iconFile) {
+            const iconSrc = `${BASE_URL}/assets/img/item-little-icon/${iconFile}`;
+            return `<img src="${iconSrc}" alt="${tooltip}" class="money-icon" title="${tooltip}" onerror="this.onerror=null; this.style.display='none';">`;
+        }
+        
+        return '';
+    }
+
+    // 개별 캐릭터 데이터 로드
+    async function loadCharacterData(characterName) {
+        const cacheKey = `${characterName}_${currentLanguage}`;
+        if (characterData[cacheKey]) {
+            return characterData[cacheKey];
+        }
+
+        try {
+            const lang = currentLanguage;
+            const fileName = encodeURIComponent(characterName);
+            let response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`);
+            let data = null;
+            let krData = null;
+            
+            if (response.ok) {
+                const jsonData = await response.json();
+                data = jsonData.data || jsonData;
+            }
+            
+            // mapName이 없으면 kr 데이터를 폴백으로 로드
+            if (lang !== 'kr' && (!data || !hasMapName(data))) {
+                const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                if (krResponse.ok) {
+                    const krJsonData = await krResponse.json();
+                    krData = krJsonData.data || krJsonData;
+                    // kr 데이터의 mapName을 현재 데이터에 병합
+                    if (data && krData) {
+                        mergeMapNames(data, krData);
+                    } else if (krData) {
+                        data = krData;
+                        hasKrFallback = true; // 한국어 폴백 사용
+                    }
+                }
+            }
+            
+            if (!data) {
+                // 언어별 파일이 없으면 kr로 폴백
+                if (lang !== 'kr') {
+                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                    if (krResponse.ok) {
+                        const krJsonData = await krResponse.json();
+                        data = krJsonData.data || krJsonData;
+                        hasKrFallback = true; // 한국어 폴백 사용
+                    }
+                }
+                if (!data) return null;
+            }
+            
+            // en/jp인 경우 kr 데이터를 로드하여 병합
+            if (lang !== 'kr' && data) {
+                if (!krData) {
+                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                    if (krResponse.ok) {
+                        const krJsonData = await krResponse.json();
+                        krData = krJsonData.data || krJsonData;
+                    }
+                }
+                
+                // kr 데이터가 있으면 dialog 병합
+                if (krData) {
+                    mergeKrFallbackDialogs(data, krData, lang);
+                }
+            }
+
+            characterData[cacheKey] = data;
+            return characterData[cacheKey];
+        } catch (error) {
+            console.error(`Error loading data for ${characterName}:`, error);
+            return null;
+        }
+    }
+
+    // item에 mapName이 있는지 확인
+    function hasMapName(data) {
+        if (!data || !data.item) return false;
+        return data.item.some(item => item.shop && item.shop.mapName);
+    }
+
+    // kr 데이터의 mapName을 현재 데이터에 병합
+    function mergeMapNames(data, krData) {
+        if (!data.item || !krData.item) return;
+        data.item.forEach((item, index) => {
+            if (item.shop && krData.item[index] && krData.item[index].shop && krData.item[index].shop.mapName) {
+                if (!item.shop.mapName) {
+                    item.shop.mapName = krData.item[index].shop.mapName;
+                }
+            }
+        });
+    }
+
+    // kr 데이터의 dialog를 en/jp 데이터에 병합하고 "(패치 예정)" 추가
+    function mergeKrFallbackDialogs(data, krData, lang) {
+        if (!data || !krData) return;
+        
+        const patchPendingText = lang === 'en' ? '(Patch Pending)' : '(パッチ予定)';
+        
+        // 1. advance_dialog 병합
+        if (krData.advance_dialog && Array.isArray(krData.advance_dialog)) {
+            if (!data.advance_dialog || !Array.isArray(data.advance_dialog)) {
+                // advance_dialog가 없으면 kr 데이터 복사
+                data.advance_dialog = JSON.parse(JSON.stringify(krData.advance_dialog));
+                addPatchPendingToDialog(data.advance_dialog, patchPendingText);
+            } else {
+                // 일부만 있는 경우, kr에서 추가
+                krData.advance_dialog.forEach((krDialog, index) => {
+                    if (!data.advance_dialog[index]) {
+                        // 해당 인덱스의 dialog가 없으면 kr에서 복사
+                        data.advance_dialog[index] = JSON.parse(JSON.stringify(krDialog));
+                        addPatchPendingToDialog([data.advance_dialog[index]], patchPendingText);
+                    } else if (!data.advance_dialog[index].good_answers || 
+                               !Array.isArray(data.advance_dialog[index].good_answers) || 
+                               data.advance_dialog[index].good_answers.length === 0) {
+                        // good_answers가 없거나 비어있으면 kr에서 복사
+                        if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
+                            data.advance_dialog[index].good_answers = JSON.parse(JSON.stringify(krDialog.good_answers));
+                            addPatchPendingToDialog([data.advance_dialog[index]], patchPendingText);
+                        }
+                    } else {
+                        // good_answers가 있지만 일부 choiceGroup이 비어있을 수 있음
+                        if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
+                            krDialog.good_answers.forEach((krChoiceGroup, groupIndex) => {
+                                if (!data.advance_dialog[index].good_answers[groupIndex] || 
+                                    !Array.isArray(data.advance_dialog[index].good_answers[groupIndex]) ||
+                                    data.advance_dialog[index].good_answers[groupIndex].length === 0) {
+                                    // 해당 choiceGroup이 없거나 비어있으면 kr에서 복사
+                                    if (!data.advance_dialog[index].good_answers[groupIndex]) {
+                                        data.advance_dialog[index].good_answers[groupIndex] = [];
+                                    }
+                                    data.advance_dialog[index].good_answers[groupIndex] = JSON.parse(JSON.stringify(krChoiceGroup));
+                                    addPatchPendingToChoices(data.advance_dialog[index].good_answers[groupIndex], patchPendingText);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        }
+        
+        // 2. visit_dialog 병합
+        if (krData.visit_dialog && Array.isArray(krData.visit_dialog)) {
+            if (!data.visit_dialog || !Array.isArray(data.visit_dialog)) {
+                // visit_dialog가 없으면 kr 데이터 복사
+                data.visit_dialog = JSON.parse(JSON.stringify(krData.visit_dialog));
+                addPatchPendingToVisitDialog(data.visit_dialog, patchPendingText);
+            } else {
+                // 일부만 있는 경우, kr에서 추가
+                krData.visit_dialog.forEach((krVisit, index) => {
+                    if (!data.visit_dialog[index]) {
+                        // 해당 인덱스의 visit이 없으면 kr에서 복사
+                        data.visit_dialog[index] = JSON.parse(JSON.stringify(krVisit));
+                        addPatchPendingToVisitDialog([data.visit_dialog[index]], patchPendingText);
+                    } else if (!data.visit_dialog[index].good_answers || 
+                               !Array.isArray(data.visit_dialog[index].good_answers) || 
+                               data.visit_dialog[index].good_answers.length === 0) {
+                        // good_answers가 없거나 비어있으면 kr에서 복사
+                        if (krVisit.good_answers && Array.isArray(krVisit.good_answers)) {
+                            data.visit_dialog[index].good_answers = JSON.parse(JSON.stringify(krVisit.good_answers));
+                            addPatchPendingToVisitDialog([data.visit_dialog[index]], patchPendingText);
+                        }
+                    } else {
+                        // good_answers가 있지만 일부 choiceGroup이 비어있을 수 있음
+                        if (krVisit.good_answers && Array.isArray(krVisit.good_answers)) {
+                            krVisit.good_answers.forEach((krChoiceGroup, groupIndex) => {
+                                if (!data.visit_dialog[index].good_answers[groupIndex] || 
+                                    !Array.isArray(data.visit_dialog[index].good_answers[groupIndex]) ||
+                                    data.visit_dialog[index].good_answers[groupIndex].length === 0) {
+                                    // 해당 choiceGroup이 없거나 비어있으면 kr에서 복사
+                                    if (!data.visit_dialog[index].good_answers[groupIndex]) {
+                                        data.visit_dialog[index].good_answers[groupIndex] = [];
+                                    }
+                                    data.visit_dialog[index].good_answers[groupIndex] = JSON.parse(JSON.stringify(krChoiceGroup));
+                                    addPatchPendingToChoices(data.visit_dialog[index].good_answers[groupIndex], patchPendingText);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        }
+        
+        // 3. romance_dialog 병합
+        if (krData.romance_dialog && Array.isArray(krData.romance_dialog)) {
+            if (!data.romance_dialog || !Array.isArray(data.romance_dialog)) {
+                // romance_dialog가 없으면 kr 데이터 복사
+                data.romance_dialog = JSON.parse(JSON.stringify(krData.romance_dialog));
+                addPatchPendingToDialog(data.romance_dialog, patchPendingText);
+            } else {
+                // 일부만 있는 경우, kr에서 추가
+                krData.romance_dialog.forEach((krDialog, index) => {
+                    if (!data.romance_dialog[index]) {
+                        // 해당 인덱스의 dialog가 없으면 kr에서 복사
+                        data.romance_dialog[index] = JSON.parse(JSON.stringify(krDialog));
+                        addPatchPendingToDialog([data.romance_dialog[index]], patchPendingText);
+                    } else if (!data.romance_dialog[index].good_answers || 
+                               !Array.isArray(data.romance_dialog[index].good_answers) || 
+                               data.romance_dialog[index].good_answers.length === 0) {
+                        // good_answers가 없거나 비어있으면 kr에서 복사
+                        if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
+                            data.romance_dialog[index].good_answers = JSON.parse(JSON.stringify(krDialog.good_answers));
+                            addPatchPendingToDialog([data.romance_dialog[index]], patchPendingText);
+                        }
+                    } else {
+                        // good_answers가 있지만 일부 choiceGroup이 비어있을 수 있음
+                        if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
+                            krDialog.good_answers.forEach((krChoiceGroup, groupIndex) => {
+                                if (!data.romance_dialog[index].good_answers[groupIndex] || 
+                                    !Array.isArray(data.romance_dialog[index].good_answers[groupIndex]) ||
+                                    data.romance_dialog[index].good_answers[groupIndex].length === 0) {
+                                    // 해당 choiceGroup이 없거나 비어있으면 kr에서 복사
+                                    if (!data.romance_dialog[index].good_answers[groupIndex]) {
+                                        data.romance_dialog[index].good_answers[groupIndex] = [];
+                                    }
+                                    data.romance_dialog[index].good_answers[groupIndex] = JSON.parse(JSON.stringify(krChoiceGroup));
+                                    addPatchPendingToChoices(data.romance_dialog[index].good_answers[groupIndex], patchPendingText);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        }
+    }
+    
+    // dialog의 모든 선택지에 "(패치 예정)" 추가
+    function addPatchPendingToDialog(dialogs, patchPendingText) {
+        if (!dialogs || !Array.isArray(dialogs)) return;
+        dialogs.forEach(dialog => {
+            if (dialog.good_answers && Array.isArray(dialog.good_answers)) {
+                dialog.good_answers.forEach(choiceGroup => {
+                    if (Array.isArray(choiceGroup)) {
+                        addPatchPendingToChoices(choiceGroup, patchPendingText);
+                    }
+                });
+            }
+        });
+    }
+    
+    // visit_dialog의 모든 선택지에 "(패치 예정)" 추가
+    function addPatchPendingToVisitDialog(visits, patchPendingText) {
+        if (!visits || !Array.isArray(visits)) return;
+        visits.forEach(visit => {
+            if (visit.good_answers && Array.isArray(visit.good_answers)) {
+                visit.good_answers.forEach(choiceGroup => {
+                    if (Array.isArray(choiceGroup)) {
+                        addPatchPendingToChoices(choiceGroup, patchPendingText);
+                    }
+                });
+            }
+        });
+    }
+    
+    // 선택지 배열에 "(패치 예정)" 추가
+    function addPatchPendingToChoices(choices, patchPendingText) {
+        if (!choices || !Array.isArray(choices)) return;
+        choices.forEach(choice => {
+            if (choice.content) {
+                choice.content = choice.content + ' ' + patchPendingText;
+            }
+        });
+    }
+
+    // 시간대 필터링
+    function filterByTime(characterName) {
+        const char = characterList[characterName];
+        if (!char) return false;
+        // inactive가 true인 경우 필터링 (탭에 표시하지 않음)
+        if (char.inactive === true) return false;
+        if (currentTimeFilter === 'all') return true;
+        // time 필드 사용 (없으면 appear로 폴백)
+        const time = char.time || char.appear;
+        if (!time) return false;
+        return time === currentTimeFilter;
+    }
+
+    // 검색 필터링
+    function filterBySearch(characterName) {
+        if (!currentSearchQuery) return true;
+        const query = currentSearchQuery.toLowerCase();
+        return characterName.toLowerCase().includes(query);
+    }
+
+    // 언어 파일 존재 여부 확인
+    async function hasLanguageFile(characterName, lang) {
+        if (lang === 'kr') return true; // 한국어는 항상 true
+        try {
+            const fileName = encodeURIComponent(characterName);
+            const response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`, { method: 'HEAD' });
+            return response.ok;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    // 언어 필터링
+    async function filterByLanguage(characterName) {
+        if (currentLanguage === 'kr') return true; // 한국어는 모든 캐릭터 표시
+        if (showSpoiler) return true; // spoiler 체크 시 모든 캐릭터 표시
+        // 해당 언어 파일이 있는지 확인
+        return await hasLanguageFile(characterName, currentLanguage);
+    }
+
+    // 탭 생성
+    async function createTabs() {
+        const tabsContainer = document.getElementById('characterTabs');
+        if (!tabsContainer) return;
+
+        tabsContainer.innerHTML = '';
+
+        // 언어 필터링을 포함한 필터링
+        const filteredCharacters = [];
+        for (const name of Object.keys(characterList)) {
+            if (filterByTime(name) && filterBySearch(name) && await filterByLanguage(name)) {
+                filteredCharacters.push(name);
+            }
+        }
+
+        const sortedCharacters = filteredCharacters.sort((a, b) => {
+            // num 기준 내림차순, 같으면 이름순
+            const numA = characterList[a].num || 0;
+            const numB = characterList[b].num || 0;
+            if (numB !== numA) return numB - numA;
+            return a.localeCompare(b);
+        });
+
+        if (sortedCharacters.length === 0) {
+            tabsContainer.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">검색 결과가 없습니다</div>';
+            // 검색 결과가 없으면 선택된 캐릭터도 초기화
+            selectedCharacter = null;
+            return;
+        }
+
+        const wasFirstLoad = !selectedCharacter;
+        const previousSelected = selectedCharacter;
+
+        // 각 캐릭터의 JSON을 로드해서 name 가져오기
+        const characterNamesPromises = sortedCharacters.map(async (characterName) => {
+            const char = characterList[characterName];
+            let displayName = characterName;
+            let nameAlreadySet = false; // 이름이 이미 설정되었는지 추적
+            
+            // friend_num.json에 name_en, name_jp가 있는 경우 예외처리 (최우선)
+            if (char) {
+                if (currentLanguage === 'en' && char.name_en) {
+                    displayName = char.name_en;
+                    nameAlreadySet = true;
+                } else if (currentLanguage === 'jp' && char.name_jp) {
+                    displayName = char.name_jp;
+                    nameAlreadySet = true;
+                }
+            }
+            
+            // friend_num.json에 없으면 characters.js에서 name_en, name_jp 사용
+            if (!nameAlreadySet && window.characterData && window.characterData[characterName]) {
+                const charData = window.characterData[characterName];
+                if (currentLanguage === 'en' && charData.name_en) {
+                    displayName = charData.name_en;
+                    nameAlreadySet = true;
+                } else if (currentLanguage === 'jp' && charData.name_jp) {
+                    displayName = charData.name_jp;
+                    nameAlreadySet = true;
+                }
+            }
+            
+            let characterTime = null;
+            
+            try {
+                const fileName = encodeURIComponent(characterName);
+                // 이름이 아직 설정되지 않았으면 JSON 파일에서 가져오기
+                if (!nameAlreadySet) {
+                    const response = await fetch(`${BASE_URL}/apps/synergy/friends/${currentLanguage}/${fileName}.json?v=${APP_VERSION}`);
+                    if (response.ok) {
+                        const jsonData = await response.json();
+                        const data = jsonData.data || jsonData;
+                        if (data.name) {
+                            displayName = data.name;
+                        }
+                        if (data.time) {
+                            characterTime = data.time;
+                        }
+                    } else if (currentLanguage !== 'kr') {
+                        // 현재 언어 파일이 없으면 kr로 폴백 (하지만 name은 가져오지 않음, friend_num.json 우선)
+                        const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                        if (krResponse.ok) {
+                            const krJsonData = await krResponse.json();
+                            const krData = krJsonData.data || krJsonData;
+                            // name은 가져오지 않음 (friend_num.json의 name_en/name_jp 우선)
+                            if (krData.time) {
+                                characterTime = krData.time;
+                            }
+                        }
+                    }
+                } else {
+                    // 이름은 이미 설정되었으니 time만 JSON에서 가져오기
+                    const response = await fetch(`${BASE_URL}/apps/synergy/friends/${currentLanguage}/${fileName}.json?v=${APP_VERSION}`);
+                    if (response.ok) {
+                        const jsonData = await response.json();
+                        const data = jsonData.data || jsonData;
+                        if (data.time) {
+                            characterTime = data.time;
+                        }
+                    } else if (currentLanguage !== 'kr') {
+                        const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                        if (krResponse.ok) {
+                            const krJsonData = await krResponse.json();
+                            const krData = krJsonData.data || krJsonData;
+                            if (krData.time) {
+                                characterTime = krData.time;
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                // 에러 발생 시 기본 이름 사용
+            }
+            
+            // 영어일 경우 띄어쓰기 기준 앞 단어만 표시
+            if (currentLanguage === 'en' && displayName.includes(' ')) {
+                displayName = displayName.split(' ')[0];
+            }
+            // 한국어일 경우 띄어쓰기 기준 뒤 단어만 표시
+            if (currentLanguage === 'kr' && displayName.includes(' ')) {
+                const parts = displayName.split(' ');
+                displayName = parts[parts.length - 1];
+            }
+            
+            return { characterName, displayName, char, characterTime };
+        });
+
+        const characterNamesData = await Promise.all(characterNamesPromises);
+
+        characterNamesData.forEach(({ characterName, displayName, char, characterTime }, index) => {
+            const tab = document.createElement('div');
+            tab.className = 'character-tab';
+            tab.dataset.character = characterName;
+            
+            if (index === 0 && wasFirstLoad) {
+                tab.classList.add('active');
+            } else if (previousSelected === characterName) {
+                tab.classList.add('active');
+            }
+
+            // img_color가 있으면 face 경로, 없으면 face_black 경로
+            const imgFileName = char.img_color || char.img;
+            const imgPath = char.img_color ? 'face' : 'face_black';
+            const imgSrc = `${BASE_URL}/assets/img/synergy/${imgPath}/${imgFileName}`;
+            
+            // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
+            const timeValue = characterTime || char.time || char.appear || '';
+            let timeLabel = timeValue;
+            if (timeValue === 'After School') timeLabel = '방과 후';
+            else if (timeValue === 'Evening') timeLabel = '저녁';
+            else if (timeValue === 'Night') timeLabel = '밤';
+            else if (timeValue === 'Afternoon') timeLabel = '오후';
+            
+            // 번역 적용
+            if (currentLanguage !== 'kr' && window.synergyTranslations?.[currentLanguage]?.[timeLabel]) {
+                timeLabel = window.synergyTranslations[currentLanguage][timeLabel];
+            }
+            
+            // recommend 아이콘 추가
+            const recommendIconSvg = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="recommend-icon"><path d="M7 0L8.618 4.764L14 5.528L10 9.236L11.236 14L7 11.236L2.764 14L4 9.236L0 5.528L5.382 4.764L7 0Z" fill="currentColor"/></svg>`;
+            const recommendTitle = currentLanguage === 'kr' ? '추천' : currentLanguage === 'en' ? 'Recommended' : '推奨';
+            
+            tab.innerHTML = `
+                <div class="character-tab-image-wrapper">
+                    <img src="${imgSrc}" alt="${characterName}" class="character-tab-image" onerror="this.onerror=null; this.style.display='none';">
+                    ${char.recommend ? `<span class="character-tab-recommend character-tab-recommend-mobile" title="${recommendTitle}">${recommendIconSvg}</span>` : ''}
+                </div>
+                <div class="character-tab-info">
+                    <div class="character-tab-name" title="${displayName}">${displayName}</div>
+                    <div class="character-tab-time-wrapper">
+                        <div class="character-tab-time">${timeLabel}</div>
+                        ${char.recommend ? `<span class="character-tab-recommend character-tab-recommend-desktop" title="${recommendTitle}">${recommendIconSvg}</span>` : ''}
+                    </div>
+                </div>
+            `;
+
+            tab.addEventListener('click', () => {
+                selectCharacter(characterName);
+            });
+
+            tabsContainer.appendChild(tab);
+        });
+
+        // 첫 번째 탭이 있고, 이전에 선택된 캐릭터가 없거나 필터링으로 사라진 경우 자동 선택
+        if (sortedCharacters.length > 0) {
+            if (wasFirstLoad || !previousSelected || !sortedCharacters.includes(previousSelected)) {
+                const firstCharacter = sortedCharacters[0];
+                // 탭이 모두 DOM에 추가된 후에 데이터 로드 (여러 단계로 확실하게)
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        selectCharacter(firstCharacter, true); // forceLoad = true로 강제 로드
+                    });
+                });
+            } else if (previousSelected && sortedCharacters.includes(previousSelected)) {
+                // 이전에 선택된 캐릭터가 여전히 리스트에 있으면 다시 렌더링
+                requestAnimationFrame(() => {
+                    selectCharacter(previousSelected, true);
+                });
+            }
+        }
+    }
+
+    // 캐릭터 선택
+    async function selectCharacter(characterName, forceLoad = false) {
+        if (!forceLoad && selectedCharacter === characterName) return;
+
+        selectedCharacter = characterName;
+        hasKrFallback = false; // 초기화
+
+        // 탭 활성화
+        document.querySelectorAll('.character-tab').forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.character === characterName);
+        });
+
+        // URL 파라미터 및 타이틀 업데이트
+        await updateURLAndTitle(characterName);
+
+        // 상세 정보 로드 및 표시
+        const detailContainer = document.getElementById('characterDetail');
+        if (!detailContainer) return;
+
+        const loadingText = currentLanguage === 'kr' ? '로딩 중...' : 
+                           currentLanguage === 'en' ? 'Loading...' : '読み込み中...';
+        detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadingText}</div>`;
+
+        const data = await loadCharacterData(characterName);
+        if (!data) {
+            const errorText = currentLanguage === 'kr' ? '데이터를 불러올 수 없습니다' : 
+                             currentLanguage === 'en' ? 'Failed to load data' : 'データの読み込みに失敗しました';
+            detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${errorText}</div>`;
+            return;
+        }
+
+        renderCharacterDetail(characterName, data);
+    }
+
+    // URL 파라미터 및 타이틀 업데이트
+    async function updateURLAndTitle(characterName) {
+        // 캐릭터의 코드네임 가져오기 (characters.js에서)
+        let charCodeName = characterName.toLowerCase();
+        if (characterName === '메로페') {
+            charCodeName = 'merope';
+        } else if (window.characterData && window.characterData[characterName] && window.characterData[characterName].codename) {
+            charCodeName = window.characterData[characterName].codename.toLowerCase();
+        }
+        
+        // 캐릭터의 영어 이름 가져오기 (타이틀용, JSON 파일에서)
+        let charNameEn = characterName;
+        try {
+            const fileName = encodeURIComponent(characterName);
+            const response = await fetch(`${BASE_URL}/apps/synergy/friends/en/${fileName}.json?v=${APP_VERSION}`);
+            if (response.ok) {
+                const jsonData = await response.json();
+                const data = jsonData.data || jsonData;
+                if (data.name) {
+                    charNameEn = data.name;
+                }
+            } else {
+                // 영어 파일이 없으면 kr에서 가져오기
+                const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                if (krResponse.ok) {
+                    const krJsonData = await krResponse.json();
+                    const krData = krJsonData.data || krJsonData;
+                    if (krData.name) {
+                        charNameEn = krData.name;
+                    }
+                }
+            }
+        } catch (e) {
+            // 에러 발생 시 기본 이름 사용
+        }
+
+        // URL 파라미터 업데이트 (코드네임 사용)
+        const url = new URL(window.location);
+        url.searchParams.set('character', charCodeName);
+        window.history.pushState({ character: characterName }, '', url);
+
+        // 타이틀 업데이트 (영어 이름 사용)
+        const baseTitle = currentLanguage === 'kr' ? '협력자' : 
+                         currentLanguage === 'en' ? 'Synergy' : 'シナジー';
+        const titlePrefix = currentLanguage === 'kr' ? 'P5X 협력자 가이드' :
+                           currentLanguage === 'en' ? 'P5X Synergy guide' :
+                           'P5X シナジーガイド';
+        document.title = `${titlePrefix} ${charNameEn} | 페르소나5 더 팬텀 X 루페르넷`;
+    }
+
+    // 상세 정보 렌더링
+    function renderCharacterDetail(characterName, data) {
+        const detailContainer = document.getElementById('characterDetail');
+        if (!detailContainer) return;
+
+        const char = characterList[characterName];
+        // img_color가 있으면 face 경로, 없으면 face_black 경로
+        const imgFileName = char.img_color || char.img;
+        const imgPath = char.img_color ? 'face' : 'face_black';
+        const imgSrc = `${BASE_URL}/assets/img/synergy/${imgPath}/${imgFileName}`;
+        
+        // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
+        const timeValue = data.time || char.time || char.appear || '';
+        let timeLabel = timeValue;
+        if (timeValue === 'After School') timeLabel = '방과 후';
+        else if (timeValue === 'Evening') timeLabel = '저녁';
+        else if (timeValue === 'Night') timeLabel = '밤';
+        else if (timeValue === 'Afternoon') timeLabel = '오후';
+        
+        // 번역 적용
+        if (currentLanguage !== 'kr' && window.synergyTranslations?.[currentLanguage]?.[timeLabel]) {
+            timeLabel = window.synergyTranslations[currentLanguage][timeLabel];
+        }
+        
+        // can_romance 아이콘
+        let romanceIcons = '';
+        if (data.can_romance !== undefined) {
+            if (characterName === '메로페') {
+                romanceIcons = `<img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-MLP.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">`;
+            } else if (data.can_romance === true) {
+                romanceIcons = `<img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-GF.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">
+                                <img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-BF.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">`;
+            } else {
+                romanceIcons = `<img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-BF.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">`;
+            }
+        }
+
+        // 한국어 폴백 안내문
+        const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback) ? `
+            <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; border-radius: 4px; user-select: text;">
+                ${currentLanguage === 'en' 
+                    ? 'Content that has not been updated or released by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.'
+                    : '管理者が更新・公開していないコンテンツは韓国語で表示される場合があります。別途の翻訳作業は予定されておらず、ご不便をおかけしますが、翻訳機のご利用をお願いします。'}
+            </div>
+        ` : '';
+
+        let html = `
+            ${fallbackNotice}
+            <div class="detail-header">
+                <img src="${imgSrc}" alt="${characterName}" class="detail-header-image" onerror="this.onerror=null; this.style.display='none';">
+                <div class="detail-header-info">
+                    <h2>${data.name || characterName}</h2>
+                    <div class="detail-time-wrapper">
+                        <div class="detail-time">${timeLabel}</div>
+                        ${romanceIcons}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // 번역 함수
+        const t = (key) => {
+            if (currentLanguage === 'kr') return key;
+            return window.synergyTranslations?.[currentLanguage]?.[key] || key;
+        };
+        
+        // unlock_cond에 아이콘 추가하는 함수 (텍스트를 아이콘으로 치환)
+        function processUnlockCond(unlockCond) {
+            if (!unlockCond) return '';
+            
+            // 능력치 아이콘 매핑
+            const statIcons = {
+                '재주': { icon: 'wuwei2-lingqiao.png', en: 'Proficiency', jp: '器用さ' },
+                '친절': { icon: 'wuwei2-titie.png', en: 'Kindness', jp: '優しさ' },
+                '배짱': { icon: 'wuwei2-yongqi.png', en: 'Guts', jp: '度胸' },
+                '매력': { icon: 'wuwei2-meili.png', en: 'Charm', jp: '魅力' },
+                '지식': { icon: 'wuwei2-zhishi.png', en: 'Knowledge', jp: '知識' }
+            };
+            
+            let processedText = unlockCond;
+            
+            // 각 능력치에 대해 텍스트를 아이콘으로 치환
+            for (const [krText, statData] of Object.entries(statIcons)) {
+                const searchText = currentLanguage === 'kr' ? krText : 
+                                 currentLanguage === 'en' ? statData.en : statData.jp;
+                // alt 텍스트는 현재 언어에 맞게 설정
+                const altText = currentLanguage === 'kr' ? krText : 
+                               currentLanguage === 'en' ? statData.en : statData.jp;
+                const iconHtml = `<img src="${BASE_URL}/assets/img/synergy/${statData.icon}" alt="${altText}" title="${altText}" class="unlock-stat-icon" onerror="this.onerror=null; this.style.display='none';">`;
+                
+                // 텍스트를 아이콘으로 치환 (텍스트는 제거)
+                const escapedText = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`(^|\\s|>)${escapedText}(?=\\s|$|<)`, 'g');
+                processedText = processedText.replace(regex, `$1${iconHtml}`);
+            }
+            
+            return processedText;
+        }
+
+        // 1. 협력 보상 (Special Award)
+        if (data.special_award && data.special_award.length > 0) {
+            // recommend_num 가져오기
+            const char = characterList[characterName];
+            const recommendNums = char && char.recommend_num ? char.recommend_num : [];
+            
+            html += `
+                <div class="detail-section">
+                    <h3 class="detail-section-title">${t('협력 보상')}</h3>
+                    <table class="award-table">
+                        <thead>
+                            <tr>
+                                <th>${t('랭크')}</th>
+                                <th class="award-name-header">${t('이름')}</th>
+                                <th class="award-reward-header">${t('보상')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            data.special_award.forEach(award => {
+                // recommend_num에 해당하는 랭크인지 확인
+                const isRecommended = recommendNums.includes(award.rank);
+                const nameClass = isRecommended ? 'award-name-recommended' : '';
+                
+                // 아이콘 이미지 추가
+                let nameHtml = award.name;
+                if (award.icon) {
+                    const iconSrc = `${BASE_URL}/assets/img/synergy/reward/${award.icon}`;
+                    nameHtml = `<img src="${iconSrc}" alt="${award.name}" class="award-icon" onerror="this.onerror=null; this.style.display='none';">${award.name}`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>${award.rank}</td>
+                        <td>
+                            <div class="award-name-desktop ${nameClass}">${nameHtml}</div>
+                            <div class="award-name-cell">
+                                <div class="award-name ${nameClass}">${nameHtml}</div>
+                                <div class="award-description">${award.description || '-'}</div>
+                            </div>
+                        </td>
+                        <td class="award-description-desktop">${award.description || '-'}</td>
+                    </tr>
+                `;
+            });
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // 2. 협력 이벤트 (Advance Dialog)
+        if (data.advance_dialog && data.advance_dialog.length > 0) {
+            html += `
+                <div class="detail-section">
+                    <h3 class="detail-section-title">${t('협력 이벤트')}</h3>
+                    <div class="dialog-events-container">
+            `;
+            data.advance_dialog.forEach(dialog => {
+                const rankFrom = dialog.rank_up?.from || 0;
+                const rankTo = dialog.rank_up?.to || 0;
+                const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rank-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+                const rankText = rankFrom > 0 && rankTo > 0 ? `<span class="rank-label">Rank ${rankFrom}</span>${chevronSvg}<span class="rank-target">${rankTo}</span>` : '';
+                const unlockCond = dialog.unlock_cond ? `<div class="dialog-unlock">${t('UNLOCK :')} ${processUnlockCond(dialog.unlock_cond)}</div>` : '';
+                const hasChoices = dialog.good_answers && Array.isArray(dialog.good_answers) && dialog.good_answers.length > 0;
+                const noChoicesClass = !hasChoices ? 'no-choices' : '';
+                html += `
+                    <div class="dialog-event">
+                        <div class="dialog-rank-header ${noChoicesClass}">
+                            ${rankText ? `<div class="dialog-rank">${rankText}</div>` : ''}
+                            ${unlockCond}
+                        </div>
+                        <div class="dialog-choices">
+                `;
+                if (hasChoices) {
+                    dialog.good_answers.forEach((choiceGroup, groupIndex) => {
+                        // 해당 그룹의 최대 reward 값 찾기
+                        const rewards = choiceGroup.map(choice => choice.reward || 0);
+                        const maxReward = Math.max(...rewards);
+                        // 최대값이 유일한지 확인 (모든 값이 같으면 노란색 표시 안함)
+                        // 단일 선택지인 경우(choiceGroup.length === 1) 노란색 표시 안함
+                        const maxRewardCount = rewards.filter(r => r === maxReward).length;
+                        const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
+                        
+                        if (dialog.good_answers.length > 1) {
+                            html += `<div class="dialog-choice-group" style="margin-bottom: 8px;">`;
+                            html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('선택')} ${groupIndex + 1}</div>`;
+                        }
+                        choiceGroup.forEach((choice, choiceIndex) => {
+                            const reward = choice.reward || 0;
+                            const isMaxReward = hasUniqueMax && reward === maxReward;
+                            const choiceClass = isMaxReward ? 'dialog-choice' : 'dialog-choice low-reward';
+                            const choiceNumber = choiceIndex + 1;
+                            html += `
+                                <div class="${choiceClass}">
+                                    <div class="dialog-choice-number ${isMaxReward ? 'max-reward' : ''}">${choiceNumber}.</div>
+                                    <div class="dialog-choice-content ${isMaxReward ? 'max-reward' : ''}">${choice.content.replace(/\n/g, '<br>')}</div>
+                                    <div class="dialog-choice-reward ${isMaxReward ? 'max-reward' : ''}">${reward}</div>
+                                </div>
+                            `;
+                        });
+                        if (dialog.good_answers.length > 1) {
+                            html += `</div>`;
+                        }
+                    });
+                }
+                
+                // RANK 14→15이고 can_romance가 true인 경우 소울 메이트/절친 표시 추가
+                if (rankFrom === 14 && rankTo === 15 && data.can_romance === true) {
+                    html += `<div class="soulmate-indicator-placeholder" data-rank="14-15"></div>`;
+                }
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            html += `</div></div>`;
+        }
+
+        // 3. 도시 이벤트 (Visit Dialog)
+        if (data.visit_dialog && data.visit_dialog.length > 0) {
+            html += `
+                <div class="detail-section">
+                    <h3 class="detail-section-title">${t('도시 이벤트')}</h3>
+                    <div class="dialog-events-container">
+            `;
+            data.visit_dialog.forEach(visit => {
+                // destination 번역
+                const destinationText = translateMapName(visit.destination);
+                // destination 이미지 가져오기
+                const destinationImage = getMapImage(visit.destination);
+                const destinationImageHtml = destinationImage ? 
+                    `<img src="${destinationImage}" alt="${destinationText}" class="visit-destination-image" onerror="this.onerror=null; this.style.display='none';">` : '';
+                
+                html += `
+                    <div class="visit-dialog">
+                        <div class="visit-destination">
+                            ${destinationImageHtml}
+                            <span>${destinationText}</span>
+                        </div>
+                        <div class="dialog-choices">
+                `;
+                if (visit.good_answers && Array.isArray(visit.good_answers)) {
+                    visit.good_answers.forEach(choiceGroup => {
+                        // 해당 그룹의 최대 reward 값 찾기
+                        const rewards = choiceGroup.map(choice => choice.reward || 0);
+                        const maxReward = Math.max(...rewards);
+                        // 최대값이 유일한지 확인 (모든 값이 같으면 노란색 표시 안함)
+                        // 단일 선택지인 경우(choiceGroup.length === 1) 노란색 표시 안함
+                        const maxRewardCount = rewards.filter(r => r === maxReward).length;
+                        const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
+                        
+                        choiceGroup.forEach((choice, choiceIndex) => {
+                            const reward = choice.reward || 0;
+                            const isMaxReward = hasUniqueMax && reward === maxReward;
+                            const choiceClass = isMaxReward ? 'dialog-choice' : 'dialog-choice low-reward';
+                            const choiceNumber = choiceIndex + 1;
+                            html += `
+                                <div class="${choiceClass}">
+                                    <div class="dialog-choice-number ${isMaxReward ? 'max-reward' : ''}">${choiceNumber}.</div>
+                                    <div class="dialog-choice-content ${isMaxReward ? 'max-reward' : ''}">${choice.content.replace(/\n/g, '<br>')}</div>
+                                    <div class="dialog-choice-reward ${isMaxReward ? 'max-reward' : ''}">${reward}</div>
+                                </div>
+                            `;
+                        });
+                    });
+                }
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            html += `</div></div>`;
+        }
+
+        // 4. 기타 이벤트 (Romance Dialog)
+        if (data.romance_dialog && data.romance_dialog.length > 0) {
+            html += `
+                <div class="detail-section">
+                    <h3 class="detail-section-title">${t('기타 이벤트 (15랭크 이후)')}</h3>
+                    <div class="dialog-events-container">
+            `;
+            data.romance_dialog.forEach(dialog => {
+                html += `
+                    <div class="dialog-event">
+                        <div class="dialog-choices">
+                `;
+                if (dialog.good_answers && Array.isArray(dialog.good_answers)) {
+                    dialog.good_answers.forEach((choiceGroup, groupIndex) => {
+                        // 해당 그룹의 최대 reward 값 찾기
+                        const rewards = choiceGroup.map(choice => choice.reward || 0);
+                        const maxReward = Math.max(...rewards);
+                        // 최대값이 유일한지 확인 (모든 값이 같으면 노란색 표시 안함)
+                        // 단일 선택지인 경우(choiceGroup.length === 1) 노란색 표시 안함
+                        const maxRewardCount = rewards.filter(r => r === maxReward).length;
+                        const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
+                        
+                        if (dialog.good_answers.length > 1) {
+                            html += `<div class="dialog-choice-group" style="margin-bottom: 8px;">`;
+                            html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('선택')} ${groupIndex + 1}</div>`;
+                        }
+                        choiceGroup.forEach((choice, choiceIndex) => {
+                            const reward = choice.reward || 0;
+                            const isMaxReward = hasUniqueMax && reward === maxReward;
+                            const choiceClass = isMaxReward ? 'dialog-choice' : 'dialog-choice low-reward';
+                            const choiceNumber = choiceIndex + 1;
+                            html += `
+                                <div class="${choiceClass}">
+                                    <div class="dialog-choice-number ${isMaxReward ? 'max-reward' : ''}">${choiceNumber}.</div>
+                                    <div class="dialog-choice-content ${isMaxReward ? 'max-reward' : ''}">${choice.content.replace(/\n/g, '<br>')}</div>
+                                    <div class="dialog-choice-reward ${isMaxReward ? 'max-reward' : ''}">${reward}</div>
+                                </div>
+                            `;
+                        });
+                        if (dialog.good_answers.length > 1) {
+                            html += `</div>`;
+                        }
+                    });
+                }
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            html += `</div></div>`;
+        }
+
+        // 5. 선호 선물 (Item)
+        if (data.item && data.item.length > 0) {
+            // 원본 데이터 저장 (정렬 전)
+            const originalItems = [...data.item];
+            
+            // shop이 배열인 경우 각 shop을 별도 항목으로 확장
+            const expandedItems = [];
+            data.item.forEach((item, index) => {
+                const synergy = item.synergy || 0;
+                const bonusSynergy = item.bonus_synergy || 0;
+                const totalSynergy = synergy + bonusSynergy;
+                
+                // shop이 배열인지 확인
+                if (Array.isArray(item.shop) && item.shop.length > 0) {
+                    // shop 배열의 각 항목에 대해 별도 항목 생성
+                    item.shop.forEach((shop, shopIndex) => {
+                        const price = shop.price || 0;
+                        const moneyName = shop.moneyName || '';
+                        const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
+                        const efficiency = (isCash && totalSynergy > 0) ? Math.round(price / totalSynergy) : null;
+                        
+                        expandedItems.push({
+                            ...item,
+                            shop: shop, // 단일 shop 객체로 교체
+                            _originalIndex: index,
+                            _shopIndex: shopIndex,
+                            _totalSynergy: totalSynergy,
+                            _price: price,
+                            _discountPrice: shop.discountPrice || price,
+                            _efficiency: efficiency
+                        });
+                    });
+                } else {
+                    // shop이 객체이거나 없는 경우 기존 로직
+                    const shop = item.shop || {};
+                    const price = shop.price || 0;
+                    const moneyName = shop.moneyName || '';
+                    const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
+                    const efficiency = (isCash && totalSynergy > 0) ? Math.round(price / totalSynergy) : null;
+                    
+                    expandedItems.push({
+                        ...item,
+                        _originalIndex: index,
+                        _shopIndex: 0,
+                        _totalSynergy: totalSynergy,
+                        _price: price,
+                        _discountPrice: shop.discountPrice || price,
+                        _efficiency: efficiency
+                    });
+                }
+            });
+            
+            // 호감도 기준 내림차순 정렬 (기본 정렬)
+            const itemsWithEfficiency = expandedItems.sort((a, b) => {
+                return b._totalSynergy - a._totalSynergy;
+            });
+            
+            // 효율과 호감도 값 수집 (색상 계산용)
+            const efficiencyValues = [];
+            const synergyValues = [];
+            
+            itemsWithEfficiency.forEach((item) => {
+                if (item._efficiency !== null && item._efficiency !== -1) {
+                    efficiencyValues.push(item._efficiency);
+                }
+                const synergy = item.synergy || 0;
+                const bonusSynergy = item.bonus_synergy || 0;
+                const totalSynergy = synergy + bonusSynergy;
+                if (totalSynergy > 0) {
+                    synergyValues.push(totalSynergy);
+                }
+            });
+            
+            // 사분위수 계산 함수
+            function getQuartiles(values) {
+                if (values.length === 0) return { q1: 0, q3: 0, min: 0, max: 0 };
+                
+                const sorted = [...values].sort((a, b) => a - b);
+                const min = sorted[0];
+                const max = sorted[sorted.length - 1];
+                
+                const q1Index = Math.floor(sorted.length * 0.25);
+                const q3Index = Math.floor(sorted.length * 0.75);
+                const q1 = sorted[q1Index] || min;
+                const q3 = sorted[q3Index] || max;
+                
+                return { q1, q3, min, max };
+            }
+            
+            const efficiencyQuartiles = getQuartiles(efficiencyValues);
+            const synergyQuartiles = getQuartiles(synergyValues);
+            
+            // 효율 색상 계산 함수 (낮을수록 진하게, 사분위수 기반)
+            function getEfficiencyColor(efficiency, quartiles) {
+                if (efficiency === null || efficiency === -1) {
+                    return '#999'; // 기본 회색
+                }
+                
+                const { q1, q3, min, max } = quartiles;
+                if (min === max) return '#4caf50'; // 모두 같으면 초록
+                
+                let normalized;
+                if (efficiency <= q1) {
+                    // 하위 25%: 0.75 ~ 1.0 (진한 초록)
+                    normalized = 0.75 + 0.25 * (1 - (efficiency - min) / (q1 - min || 1));
+                } else if (efficiency <= q3) {
+                    // 중간 50%: 0.25 ~ 0.75 (중간 색)
+                    normalized = 0.25 + 0.5 * (1 - (efficiency - q1) / (q3 - q1 || 1));
+                } else {
+                    // 상위 25%: 0.0 ~ 0.25 (연한 회색)
+                    normalized = 0.25 * (1 - (efficiency - q3) / (max - q3 || 1));
+                }
+                
+                // 초록색(#4caf50)에서 회색(#999)으로 그라데이션
+                const r1 = 0x4c, g1 = 0xaf, b1 = 0x50; // 초록
+                const r2 = 0x99, g2 = 0x99, b2 = 0x99; // 회색
+                
+                const r = Math.round(r1 + (r2 - r1) * (1 - normalized));
+                const g = Math.round(g1 + (g2 - g1) * (1 - normalized));
+                const b = Math.round(b1 + (b2 - b1) * (1 - normalized));
+                
+                return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+            }
+            
+            // 호감도 색상 계산 함수 (높을수록 진하게, 사분위수 기반)
+            function getSynergyColor(synergy, quartiles) {
+                if (synergy <= 0) {
+                    return '#999'; // 기본 회색
+                }
+                
+                const { q1, q3, min, max } = quartiles;
+                if (min === max) return '#4caf50'; // 모두 같으면 초록
+                
+                let normalized;
+                if (synergy >= q3) {
+                    // 상위 25%: 0.75 ~ 1.0 (진한 초록)
+                    normalized = 0.75 + 0.25 * ((synergy - q3) / (max - q3 || 1));
+                } else if (synergy >= q1) {
+                    // 중간 50%: 0.25 ~ 0.75 (중간 색)
+                    normalized = 0.25 + 0.5 * ((synergy - q1) / (q3 - q1 || 1));
+                } else {
+                    // 하위 25%: 0.0 ~ 0.25 (연한 회색)
+                    normalized = 0.25 * ((synergy - min) / (q1 - min || 1));
+                }
+                
+                // 회색(#999)에서 초록색(#4caf50)으로 그라데이션
+                const r1 = 0x99, g1 = 0x99, b1 = 0x99; // 회색
+                const r2 = 0x4c, g2 = 0xaf, b2 = 0x50; // 초록
+                
+                const r = Math.round(r1 + (r2 - r1) * normalized);
+                const g = Math.round(g1 + (g2 - g1) * normalized);
+                const b = Math.round(b1 + (b2 - b1) * normalized);
+                
+                return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+            }
+            
+            html += `
+                <div class="detail-section">
+                    <h3 class="detail-section-title">${t('선호 선물')}</h3>
+                    <table class="item-table">
+                        <thead>
+                            <tr>
+                                <th class="item-name-header">${t('이름')}</th>
+                                <th class="sortable" data-sort="synergy">${t('호감도')} <span class="sort-indicator"></span></th>
+                                <th class="sortable item-price-header" data-sort="price">${t('가격')} <span class="sort-indicator"></span></th>
+                                <th class="sortable" data-sort="efficiency">${t('효율')} <span class="sort-indicator"></span></th>
+                                <th class="sortable" data-sort="discount">${t('할인가')} <span class="sort-indicator"></span></th>
+                                <th>${t('할인 조건')}</th>
+                                <th class="item-source-header">${t('획득처')}</th>
+                                <th>${t('최대')}</th>
+                                <th>${t('갱신')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            itemsWithEfficiency.forEach((item) => {
+                const synergy = item.synergy || 0;
+                const bonusSynergy = item.bonus_synergy || 0;
+                const totalSynergy = item._totalSynergy || synergy + bonusSynergy;
+                
+                // shop 정보 처리
+                const shop = item.shop || {};
+                const price = item._price !== undefined ? item._price : (shop.price || 0);
+                const discountPrice = item._discountPrice !== undefined ? item._discountPrice : (shop.discountPrice || price);
+                const moneyName = shop.moneyName || '';
+                const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
+                const efficiency = item._efficiency !== null ? item._efficiency : (isCash && totalSynergy > 0 ? Math.round(price / totalSynergy) : null);
+                const efficiencyText = efficiency !== null ? efficiency : '-';
+                const efficiencyColor = getEfficiencyColor(efficiency !== null ? efficiency : -1, efficiencyQuartiles);
+                const synergyColor = getSynergyColor(totalSynergy, synergyQuartiles);
+                
+                // moneyName 아이콘 가져오기
+                const moneyIcon = getMoneyIcon(moneyName, shop);
+                
+                // 가격 표시 (moneyName을 아이콘으로 대체, 아이콘을 숫자 앞에)
+                let priceText = '-';
+                if (price > 0) {
+                    if (moneyIcon) {
+                        priceText = `${moneyIcon} ${price.toLocaleString()}`;
+                    } else {
+                        priceText = `${price.toLocaleString()} ${moneyName}`;
+                    }
+                }
+                
+                // 할인가 표시 (moneyName을 아이콘으로 대체, 아이콘을 숫자 앞에)
+                let discountText = '-';
+                if (discountPrice < price && discountPrice > 0) {
+                    if (moneyIcon) {
+                        discountText = `${moneyIcon} ${discountPrice.toLocaleString()}`;
+                    } else {
+                        discountText = `${discountPrice.toLocaleString()} ${moneyName}`;
+                    }
+                }
+                
+                // 할인 조건 (캐릭터 이름은 아이콘으로, LV 정보만 텍스트)
+                let discountCondHtml = '-';
+                if (shop.reducePriceCond) {
+                    // "도겐자카 루우나 LV.1" 같은 형식에서 LV 부분만 추출
+                    const lvMatch = shop.reducePriceCond.match(/LV\.?\s*\d+/i);
+                    const lvText = lvMatch ? lvMatch[0] : shop.reducePriceCond;
+                    discountCondHtml = `<span class="item-condition-wrapper"><img src="${BASE_URL}/assets/img/synergy/item-500218.png" alt="할인 조건" class="item-condition-icon" onerror="this.onerror=null; this.style.display='none';">${lvText}</span>`;
+                }
+                
+                // 획득처 (mapName + shopName)
+                // 게임 센터 관련 moneyName인 경우 mapName을 "아키하바라 게임 센터"로 오버라이드
+                let sourceText = '-';
+                if (shop.mapName || shop.shopName) {
+                    const parts = [];
+                    // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
+                    if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+                        moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
+                        parts.push('아키하바라 게임 센터');
+                    } else if (shop.mapName) {
+                        parts.push(translateMapName(shop.mapName));
+                    }
+                    if (shop.shopName) {
+                        // 'AAAAAA==' 제거
+                        let shopName = shop.shopName.replace(/AAAAAA==/g, '').trim();
+                        if (shopName) {
+                            parts.push(shopName);
+                        }
+                    }
+                    sourceText = parts.join(' ').trim();
+                    if (!sourceText) sourceText = '-';
+                }
+                
+                // 최대 개수 (-1이면 '-'로 표시)
+                const maxBuyText = (shop.maxBuy !== undefined && shop.maxBuy !== null && shop.maxBuy !== -1) ? shop.maxBuy : '-';
+                
+                // 갱신 (resetType 번역)
+                const resetTypeText = translateResetType(shop.resetType);
+                
+                // 아이템 이미지
+                const itemImage = item.image ? `<img src="${BASE_URL}/assets/img/synergy/item/${item.image}" alt="${item.name}" class="item-image" onerror="this.onerror=null; this.style.display='none';">` : '';
+                
+                // 모바일용 이름 셀 (이름 + 가격 · 획득처)
+                const itemNameMobileHtml = `
+                    <div class="item-name-cell">
+                        <div class="item-name-row">${itemImage}${item.name}</div>
+                        <div class="item-meta-row">
+                            <span class="item-price-meta">${priceText}</span>
+                            <span class="item-meta-separator">·</span>
+                            <span class="item-source-meta">${sourceText}</span>
+                        </div>
+                    </div>
+                `;
+                
+                html += `
+                    <tr data-original-index="${item._originalIndex}" data-shop-index="${item._shopIndex || 0}">
+                        <td>
+                            <div class="item-name-desktop">${itemImage}${item.name}</div>
+                            ${itemNameMobileHtml}
+                        </td>
+                        <td style="color: ${synergyColor};">${totalSynergy}</td>
+                        <td class="item-price-desktop">${priceText}</td>
+                        <td class="item-efficiency" style="color: ${efficiencyColor};">${efficiencyText}</td>
+                        <td>${discountText}</td>
+                        <td>${discountCondHtml}</td>
+                        <td class="item-source-desktop">${sourceText}</td>
+                        <td>${maxBuyText}</td>
+                        <td>${resetTypeText}</td>
+                    </tr>
+                `;
+            });
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            // 정렬 기능 초기화
+            setTimeout(() => {
+                setupItemTableSorting();
+            }, 0);
+        }
+
+        detailContainer.innerHTML = html;
+        
+        // 소울 메이트 표시 추가 (soulmate.js가 로드된 경우)
+        if (window.addSoulmateIndicator) {
+            setTimeout(() => {
+                window.addSoulmateIndicator();
+            }, 0);
+        }
+        
+        // 모바일에서 헤더 텍스트 변경
+        if (window.innerWidth <= 768) {
+            const awardNameHeader = detailContainer.querySelector('.award-name-header');
+            if (awardNameHeader) {
+                awardNameHeader.textContent = t('이름/보상');
+            }
+            
+            const itemNameHeader = detailContainer.querySelector('.item-name-header');
+            if (itemNameHeader) {
+                itemNameHeader.textContent = t('이름/가격/획득처');
+            }
+        }
+    }
+
+    // 아이템 테이블 정렬 기능
+    function setupItemTableSorting() {
+        const table = document.querySelector('.item-table');
+        if (!table) return;
+        
+        const sortableHeaders = table.querySelectorAll('th.sortable');
+        const tbody = table.querySelector('tbody');
+        if (!tbody) return;
+        
+        let currentSort = {
+            column: 'synergy',
+            direction: 'desc' // 기본값: 호감도 내림차순 (인디케이터 표시 안 함)
+        };
+        
+        // 정렬 인디케이터 업데이트
+        function updateSortIndicators() {
+            sortableHeaders.forEach(header => {
+                const indicator = header.querySelector('.sort-indicator');
+                const sortType = header.dataset.sort;
+                if (sortType === currentSort.column) {
+                    indicator.textContent = currentSort.direction === 'asc' ? ' ↑' : ' ↓';
+                    header.classList.add('sorted');
+                } else {
+                    indicator.textContent = '';
+                    header.classList.remove('sorted');
+                }
+            });
+        }
+        
+        // 초기 정렬 인디케이터 설정 (기본 정렬은 표시 안 함)
+        // updateSortIndicators(); // 기본 정렬이므로 인디케이터 표시 안 함
+        
+            // 정렬 함수
+        function sortTable(sortType) {
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            // 같은 컬럼 클릭 시 방향 토글, 다른 컬럼 클릭 시 내림차순으로 시작
+            if (currentSort.column === sortType) {
+                if (currentSort.direction === 'desc') {
+                    currentSort.direction = 'asc';
+                } else if (currentSort.direction === 'asc') {
+                    currentSort.direction = 'original';
+                } else {
+                    currentSort.direction = 'desc';
+                }
+            } else {
+                currentSort.column = sortType;
+                currentSort.direction = 'desc';
+            }
+            
+            if (currentSort.direction === 'original') {
+                // 원래 순서로 복원 (data-original-index와 data-shop-index 기준)
+                rows.sort((a, b) => {
+                    const aOriginalIdx = parseInt(a.dataset.originalIndex || '0');
+                    const bOriginalIdx = parseInt(b.dataset.originalIndex || '0');
+                    if (aOriginalIdx !== bOriginalIdx) {
+                        return aOriginalIdx - bOriginalIdx;
+                    }
+                    const aShopIdx = parseInt(a.dataset.shopIndex || '0');
+                    const bShopIdx = parseInt(b.dataset.shopIndex || '0');
+                    return aShopIdx - bShopIdx;
+                });
+                rows.forEach(row => tbody.appendChild(row));
+            } else {
+                // 정렬 수행 (rowspan이 있는 경우를 고려)
+                rows.sort((a, b) => {
+                    let aVal, bVal;
+                    
+                    // rowspan이 있는 경우 첫 번째 셀의 값을 사용
+                    const getCellValue = (row, cellIndex) => {
+                        const cell = row.cells[cellIndex];
+                        if (!cell) return '';
+                        // rowspan이 있는 경우 해당 셀의 값을 반환
+                        return cell.textContent?.trim() || '';
+                    };
+                    
+                    if (sortType === 'synergy') {
+                        const aText = getCellValue(a, 1);
+                        const bText = getCellValue(b, 1);
+                        aVal = aText === '-' ? -1 : parseFloat(aText) || -1;
+                        bVal = bText === '-' ? -1 : parseFloat(bText) || -1;
+                    } else if (sortType === 'efficiency') {
+                        const aCell = a.querySelector('.item-efficiency');
+                        const bCell = b.querySelector('.item-efficiency');
+                        const aText = aCell?.textContent?.trim() || '';
+                        const bText = bCell?.textContent?.trim() || '';
+                        aVal = aText === '-' ? -1 : parseFloat(aText) || -1;
+                        bVal = bText === '-' ? -1 : parseFloat(bText) || -1;
+                    } else if (sortType === 'price') {
+                        const aText = getCellValue(a, 2);
+                        const bText = getCellValue(b, 2);
+                        aVal = aText === '-' ? -1 : parseFloat(aText.replace(/[^\d.]/g, '')) || -1;
+                        bVal = bText === '-' ? -1 : parseFloat(bText.replace(/[^\d.]/g, '')) || -1;
+                    } else if (sortType === 'discount') {
+                        const aText = getCellValue(a, 4);
+                        const bText = getCellValue(b, 4);
+                        aVal = aText === '-' ? -1 : parseFloat(aText.replace(/[^\d.]/g, '')) || -1;
+                        bVal = bText === '-' ? -1 : parseFloat(bText.replace(/[^\d.]/g, '')) || -1;
+                    }
+                    
+                    if (currentSort.direction === 'asc') {
+                        return aVal - bVal;
+                    } else {
+                        return bVal - aVal;
+                    }
+                });
+                
+                rows.forEach(row => tbody.appendChild(row));
+            }
+            
+            updateSortIndicators();
+        }
+        
+        // 헤더 클릭 이벤트
+        sortableHeaders.forEach(header => {
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', () => {
+                const sortType = header.dataset.sort;
+                sortTable(sortType);
+            });
+        });
+    }
+
+    // 필터 이벤트 핸들러
+    function setupFilters() {
+        // 시간대 필터
+        document.querySelectorAll('.time-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.time-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTimeFilter = btn.dataset.time;
+                createTabs();
+            });
+        });
+
+        // 검색 필터
+        const searchInput = document.getElementById('characterSearch');
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    currentSearchQuery = e.target.value.trim();
+                    createTabs();
+                }, 300);
+            });
+        }
+
+        // Spoiler 체크박스
+        const spoilerCheckbox = document.getElementById('showSpoiler');
+        if (spoilerCheckbox) {
+            spoilerCheckbox.addEventListener('change', (e) => {
+                showSpoiler = e.target.checked;
+                createTabs();
+            });
+        }
+    }
+
+    // 초기화
+    async function init() {
+        currentLanguage = getCurrentLanguage();
+        
+        // Navigation 초기화
+        try {
+            if (typeof Navigation !== 'undefined' && Navigation.load) {
+                Navigation.load('synergy');
+            }
+        } catch (e) {}
+
+        // Version 체크
+        try {
+            if (typeof VersionChecker !== 'undefined' && VersionChecker.check) {
+                VersionChecker.check();
+            }
+        } catch (e) {}
+
+        // 캐릭터 목록 로드
+        const loaded = await loadCharacterList();
+        if (!loaded) {
+            document.getElementById('characterDetail').innerHTML = 
+                '<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">데이터를 불러올 수 없습니다</div>';
+            return;
+        }
+
+        // mapName 번역 데이터 로드
+        await loadMapNameTranslations();
+
+        // 필터 설정
+        setupFilters();
+
+        // UI 번역
+        translateUI();
+
+        // URL 파라미터에서 캐릭터 읽기 (코드네임으로 찾기)
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlCharacter = urlParams.get('character');
+        if (urlCharacter) {
+            const decodedChar = urlCharacter.toLowerCase();
+            let foundCharacter = null;
+            
+            // 각 캐릭터의 코드네임과 비교
+            for (const name of Object.keys(characterList)) {
+                let codeName = null;
+                
+                // 메로페 예외 처리
+                if (name === '메로페') {
+                    codeName = 'merope';
+                } else if (window.characterData && window.characterData[name] && window.characterData[name].codename) {
+                    codeName = window.characterData[name].codename.toLowerCase();
+                }
+                
+                if (codeName && codeName === decodedChar) {
+                    foundCharacter = name;
+                    break;
+                }
+            }
+            
+            if (foundCharacter && characterList[foundCharacter]) {
+                selectedCharacter = foundCharacter;
+            }
+        }
+
+        // 탭 생성
+        await createTabs();
+    }
+
+    // DOM 로드 완료 시 초기화
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+

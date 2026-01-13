@@ -1,0 +1,619 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そろそろ事情を教えてくれる？",
+              "reward": 50
+            },
+            {
+              "content": "海夕の人魚姫を観たいだけ",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "優しさ Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そうだね",
+              "reward": 60
+            },
+            {
+              "content": "そ、そう…",
+              "reward": 40
+            },
+            {
+              "content": "頑張ってね",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "優しさ Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そう思う",
+              "reward": 40
+            },
+            {
+              "content": "そうは思わない",
+              "reward": 50
+            },
+            {
+              "content": "自分と重なる？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "優しさ Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "構わない",
+              "reward": 60
+            },
+            {
+              "content": "お、お兄様…？",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "優しさ Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "自分の心配をしてほしい",
+              "reward": 60
+            },
+            {
+              "content": "隠し事は無しで頼む",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "優しさ Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "いつでも構わない",
+              "reward": 50
+            },
+            {
+              "content": "手伝いはもういいの？",
+              "reward": 40
+            },
+            {
+              "content": "楽しみに待っている",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "優しさ Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "海夕の努力の成果だ",
+              "reward": 60
+            },
+            {
+              "content": "大したことはしていない",
+              "reward": 40
+            },
+            {
+              "content": "海夕なら当然の結果だ",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "優しさ Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "一緒に行こう",
+              "reward": 60
+            },
+            {
+              "content": "大丈夫なのか…？",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "優しさ Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "心配無用だ",
+              "reward": 40
+            },
+            {
+              "content": "何もしてない",
+              "reward": 50
+            },
+            {
+              "content": "海夕の夢のためだから",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "優しさ Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 10,
+        "image": "item-303240.png",
+        "name": "有名童話集愛蔵版",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 4,
+            "moneyName": "所持金",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 35,
+        "image": "item-303249.png",
+        "name": "着せ替え人形",
+        "new_gift_synergy": 70,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 16000,
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "synergy": 35
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303255.png",
+        "name": "キャラクターエプロン",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 1600,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303258.png",
+        "name": "豪華アロマセット",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3800,
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 11,
+        "image": "item-303272.png",
+        "name": "心理学古典叢書",
+        "new_gift_synergy": 22,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 4500,
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 11
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303273.png",
+        "name": "キッズアニメの抱き枕",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 4000,
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 22,
+        "image": "item-303274.png",
+        "name": "高級ドールハウス",
+        "new_gift_synergy": 44,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 9000,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 22
+      },
+      {
+        "bonus_synergy": 56,
+        "image": "item-303275.png",
+        "name": "最新型ドローン",
+        "new_gift_synergy": 112,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 33000,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 56
+      },
+      {
+        "bonus_synergy": 60,
+        "image": "item-303276.png",
+        "name": "ミニスピーカー",
+        "new_gift_synergy": 120,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 36000,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 60
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-305944.png",
+        "name": "サザンカの花茶",
+        "new_gift_synergy": 18,
+        "shop": [],
+        "synergy": 9
+      }
+    ],
+    "name": "佐原海夕",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "自分だってドキドキしてる",
+              "reward": 60
+            },
+            {
+              "content": "お、落ち着いて…",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "『吉祥寺・パワーストーン専門店』で限定版キーホルダーを、『四軒茶屋・スーパー』でお菓子袋詰めセットを買えるようになる",
+        "icon": "xielizhe-icon-puppet03.png",
+        "name": "愛され力",
+        "rank": 1
+      },
+      {
+        "description": "プレゼントを贈る際、好みのギフトで好感度が１５％上昇する",
+        "icon": "xielizhe-icon-puppet01.png",
+        "name": "温かい包容力",
+        "rank": 5
+      },
+      {
+        "description": "『渋谷駅地下モール・コスメショップ』でエッセンシャルオイルを、『渋谷駅地下モール・高級スーパー』でモンブランを買えるようになる",
+        "icon": "xielizhe-icon-puppet03.png",
+        "name": "おねだり力",
+        "rank": 9
+      },
+      {
+        "description": "『吉祥寺・文房具屋』でスノードームを、『渋谷駅地下モール・コスメショップ』でアロマディフューザーを買えるようになる",
+        "icon": "xielizhe-icon-puppet03.png",
+        "name": "甘え力",
+        "rank": 13
+      },
+      {
+        "description": "プレゼントを贈る際、基本好感度が１５％上昇する",
+        "icon": "xielizhe-icon-puppet02.png",
+        "name": "特大愛され力",
+        "rank": 17
+      }
+    ],
+    "time": "夕方",
+    "visit_dialog": [
+      {
+        "destination": "新宿",
+        "good_answers": [
+          [
+            {
+              "content": "あまり離れないように",
+              "reward": 60
+            },
+            {
+              "content": "まずは用事を済ませた方が…",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "お台場海浜公園",
+        "good_answers": [
+          [
+            {
+              "content": "光栄だ",
+              "reward": 60
+            },
+            {
+              "content": "なぜ…？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "三浦海岸",
+        "good_answers": [
+          [
+            {
+              "content": "聞かせてほしい",
+              "reward": 60
+            },
+            {
+              "content": "力になれるかわからない",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "任せてほしい",
+              "reward": 60
+            },
+            {
+              "content": "期待にそえるだろうか…",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "神保町",
+        "good_answers": [
+          [
+            {
+              "content": "楽しみだな",
+              "reward": 60
+            },
+            {
+              "content": "残ってるかな…？",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,677 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "離してくれないか？",
+              "reward": 40
+            },
+            {
+              "content": "いつまでそうしている？",
+              "reward": 50
+            },
+            {
+              "content": "意外と力が強い…",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "黒谷から『レアな本』をもらって\n『滅びの大地』を後にした…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "度胸 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "黒谷を置いて行けない",
+              "reward": 60
+            },
+            {
+              "content": "じゃあ遠慮なく",
+              "reward": 50
+            },
+            {
+              "content": "どんな約束だったっけ？",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "度胸 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "行かせてよかったのか？",
+              "reward": 60
+            },
+            {
+              "content": "これからどうする？",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "度胸 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "背中は預ける",
+              "reward": 60
+            },
+            {
+              "content": "黒谷はどうしたい？",
+              "reward": 40
+            },
+            {
+              "content": "覚悟はできている",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "度胸 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "事情は理解した",
+              "reward": 40
+            },
+            {
+              "content": "その女の子に悪いのでは？",
+              "reward": 60
+            },
+            {
+              "content": "今回は情報量が多いな",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "黒谷から『レアな本』をもらった…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "度胸 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "あそこまで言われるとは",
+              "reward": 40
+            },
+            {
+              "content": "彼なりに色々考えていた",
+              "reward": 50
+            },
+            {
+              "content": "痛いところを突かれた？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "度胸 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "自分のときはかなり強引だった",
+              "reward": 50
+            },
+            {
+              "content": "だからソウルメイト？",
+              "reward": 60
+            },
+            {
+              "content": "色々理解できた",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "黒谷から『レアな本』をもらった…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "度胸 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "自分も付き合う",
+              "reward": 50
+            },
+            {
+              "content": "仕方ないなあ…",
+              "reward": 40
+            },
+            {
+              "content": "ソウルメイトだろ？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "度胸 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "何を学べた？",
+              "reward": 40
+            },
+            {
+              "content": "ズバリ友達とは？",
+              "reward": 60
+            },
+            {
+              "content": "武にも感謝だな",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "黒谷から『レアな本』を\nもらった…",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "度胸 Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 55,
+        "image": "item-303201.png",
+        "name": "心霊ビデオ",
+        "new_gift_synergy": 110,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "度胸 LV.10",
+            "price": 32000,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303202.png",
+        "name": "黒縁メガネ",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "personalityLimit": "度胸 LV.3",
+            "price": 3560,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 112,
+        "image": "item-303207.png",
+        "name": "シルバーバングル",
+        "new_gift_synergy": 224,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 78000,
+            "resetType": "주간",
+            "shopName": "ツルカメダイアモンド"
+          }
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303209.png",
+        "name": "多面立方体パズル",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "知識 LV.3",
+            "price": 5800,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303212.png",
+        "name": "手作りブックカバー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303218.png",
+        "name": "革製ペンケース",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "雑司ヶ谷マート"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 2800,
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 5,
+        "image": "item-303219.png",
+        "name": "ブラックマグカップ",
+        "new_gift_synergy": 10,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 1800,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 5
+      },
+      {
+        "bonus_synergy": 12,
+        "image": "item-303220.png",
+        "name": "大人の知恵の輪",
+        "new_gift_synergy": 24,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 4700,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303233.png",
+        "name": "メンズ日除け帽子",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 8,
+            "moneyName": "所持金",
+            "price": 1600,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 1,
+        "image": "item-303250.png",
+        "name": "週刊少年漫画雑誌",
+        "new_gift_synergy": 2,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 480,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      }
+    ],
+    "name": "黒谷清",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "漫画やゲーム",
+              "reward": 50
+            },
+            {
+              "content": "主に寝るだけ",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "本『速攻リラックス法』を獲得する",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "英雄の休息時間",
+        "rank": 1
+      },
+      {
+        "description": "本『応急手当のすべて』を獲得する",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "ヒーリングエンジェル",
+        "rank": 3
+      },
+      {
+        "description": "本『筋肉でＧＯ！』を獲得する",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "パーフェクトアーマー",
+        "rank": 11
+      },
+      {
+        "description": "本『司書のマル秘スゴ技！』を獲得する",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "禁書秘術",
+        "rank": 15
+      },
+      {
+        "description": "本『映画と映画評論家』を獲得する",
+        "icon": "xielizhe-icon-heiguqing-01.png",
+        "name": "蒼の千里眼",
+        "rank": 20
+      }
+    ],
+    "time": "放課後",
+    "visit_dialog": [
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "気持ちはわかる",
+              "reward": 60
+            },
+            {
+              "content": "一緒にしないで",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "浅草",
+        "good_answers": [
+          [
+            {
+              "content": "気にするな",
+              "reward": 60
+            },
+            {
+              "content": "手でも繋ぐ？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "新宿",
+        "good_answers": [
+          [
+            {
+              "content": "怖いところだ",
+              "reward": 60
+            },
+            {
+              "content": "そこまで危険じゃない",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "水道橋",
+        "good_answers": [
+          [
+            {
+              "content": "楽しそうだ",
+              "reward": 50
+            },
+            {
+              "content": "やっぱりジェットコースター！",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "荻窪",
+        "good_answers": [
+          [
+            {
+              "content": "妙案だな",
+              "reward": 60
+            },
+            {
+              "content": "腹が減った…",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

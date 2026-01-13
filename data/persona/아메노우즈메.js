@@ -34,7 +34,7 @@ window.personaFiles["아메노우즈메"] = {
     }
   ],
   "comment": "광역 감전을 통해 감전에 의한 크리티컬 확률 증가에 이어 본능을 통한 10%로 총 20%의 크리티컬 확률 증가를 노릴 수 있다.",
-  "comment_en": "Through area-wide shock, you can aim for a total of 20% critical rate increase with 10% from the core passive following the critical rate increase from shock.",
+  "comment_en": "Through area-wide shock, you can aim for a total of 20% critical rate increase with 10% from the talent following the critical rate increase from shock.",
   "comment_jp": "感電によるCRT率上昇と『昂揚の神楽』による10%で計20%のCRT率上昇を狙うことができる。",
   "passive_priority": 3,
   "passive_skill": [

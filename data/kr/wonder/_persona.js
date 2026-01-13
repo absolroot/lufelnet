@@ -140,7 +140,7 @@ const personaData = {
              {name : "방어 강화", priority: 0},
         ],
         comment : "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다. 본능을 통해 크리티컬 확률을 확보하고 해명 괴도를 통해 추가로 받으므로 리벨리온을 위한 별도 어드바이스 패시브가 필요하지 않다.",
-        comment_en: "The core passive critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
+        comment_en: "The talent critical effect 30% increase also applies to healing through Mediarahan. Infinite Algorithm is a skill card distributed through paid events(KR).",
         comment_jp: "メディアラハンによる治療にも本能CRT倍率30%増加が適用される。無限アルゴリズムは課金イベントを通じて配布されたスキルカード。"
     },
     "마카브르": {
@@ -456,7 +456,7 @@ const personaData = {
              {name : "치료 촉진", priority: 1 },
         ],
         comment : "전투 시작 시 가장 맨 앞에 배치해야 한다. 본능 버프는 페르소나 전환 후에도 지속된다. ",
-        comment_en: "Must be placed in the front row at the start of battle. The core passive buff continues even after persona switching.",
+        comment_en: "Must be placed in the front row at the start of battle. The talent buff continues even after persona switching.",
         comment_jp: "戦闘開始時、1体目のペルソナにしておくべきである。『天王の眼力』はペルソナチェンジした後も持続する。"
     },
     "지국천": {
@@ -774,7 +774,7 @@ const personaData = {
              {name : "우중충한 하늘", priority: 3},
         ],
         comment : "광역 감전을 통해 감전에 의한 크리티컬 확률 증가에 이어 본능을 통한 10%로 총 20%의 크리티컬 확률 증가를 노릴 수 있다.",
-        comment_en: "Through area-wide shock, you can aim for a total of 20% critical rate increase with 10% from the core passive following the critical rate increase from shock.",
+        comment_en: "Through area-wide shock, you can aim for a total of 20% critical rate increase with 10% from the talent following the critical rate increase from shock.",
         comment_jp: "感電によるCRT率上昇と『昂揚の神楽』による10%で計20%のCRT率上昇を狙うことができる。"
     },
 
@@ -1340,7 +1340,7 @@ const personaData = {
              {name : "우중충한 하늘", priority: 3 },
         ],
         comment : "기본 명중 80% + 명중 강화 IV 16.2% + 우중충한 하늘 16.9% + 본능 34.9% + 마이팰리스 2.3% = 150.3% 로 \'죽어 줄래?\' 상한 10%를 채울 수 있다. (우중충한 하늘 적용 여부 미확인)",
-        comment_en: "Base accuracy 80% + Accuracy Enhancement IV 16.2% + Gloomy Sky 16.9% + Core Passive 34.9% + My Palace 2.3% = 150.3%, which can reach the 'Die For Me!' upper limit of 10%. (Gloomy Sky application unconfirmed)",
+        comment_en: "Base accuracy 80% + Accuracy Enhancement IV 16.2% + Gloomy Sky 16.9% + Talent 34.9% + My Palace 2.3% = 150.3%, which can reach the 'Die For Me!' upper limit of 10%. (Gloomy Sky application unconfirmed)",
         comment_jp: "基本命中率80%+異常命中ブースタIV 16.2% + 浮かない空 16.9% + 再生の呪い 34.9% + マイパレス効果 2.3% = 150.3%で、『死んでくれる？』の最大効果10%を満たすことができる（浮かない空の適用可否は未確認）"
     },
     "비사문천": {
@@ -1400,7 +1400,7 @@ const personaData = {
             {name : "전의 공명", priority: 0},
         ],
         comment : "라쿤다를 사용해도 본능 효과가 적용된다.",
-        comment_en: "The core passive effect is applied even when using Rakunda.",
+        comment_en: "The talent effect is applied even when using Rakunda.",
         comment_jp: "ラクンダを使用しても本能効果が適用される。"
     },
     "토르": {
@@ -1598,7 +1598,7 @@ const personaData = {
             {name : "어드바이스", priority: 0},
         ],
         comment : "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
-        comment_en: "Triggers core passive effect on enemies already in Burn state with [Red-Hot: Fire damage or Wild Thunder: Shock addition].",
+        comment_en: "Triggers talent effect on enemies already in Burn state with [Red-Hot: Fire damage or Wild Thunder: Shock addition].",
         comment_jp: "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。"
     },
     "요시츠네": {
@@ -2157,7 +2157,7 @@ const personaData = {
             {name : "치료 촉진", priority: 0 },
         ],
         comment : "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
-        comment_en: "Core passive effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
+        comment_en: "Talent effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
         comment_jp: "ハイライトによる治療にも本能効果が発動する。アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）"
     },
     "사라스바티": {
@@ -2569,7 +2569,7 @@ const personaData = {
             {name : "우중충한 하늘", priority: 2},
         ],
         comment : "아기다인을 통한 화상 효과 + 본능에 의한 주원 대미지 결산 형태로 운영된다. 주원 효과 대미지는 만능 대미지에 영향을 받는다.",
-        comment_en: "Operated with burn effects through Agidyne + Curse damage settlement through core passive. Curse effect damage is affected by Almighty damage.",
+        comment_en: "Operated with burn effects through Agidyne + Curse damage settlement through talent. Curse effect damage is affected by Almighty damage.",
         comment_jp: "アギダインによる炎上＋本能による呪印ダメージの即時発生を利用して運用する。呪印ダメージは万能属性ダメージとして扱われる。"
     },
     "벨페고르": {

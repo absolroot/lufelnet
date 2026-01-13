@@ -1,0 +1,594 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "次は先輩が普段行く店がいい",
+              "reward": 50
+            },
+            {
+              "content": "次はファミレスにしよう",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "優しさ Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "自分がいる",
+              "reward": 60
+            },
+            {
+              "content": "先輩からのメッセージ待ってる",
+              "reward": 50
+            },
+            {
+              "content": "たまになら…",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "優しさ Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "行こう",
+              "reward": 40
+            },
+            {
+              "content": "ファミレスで安心した",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "優しさ Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "家族を大切にしてるんだな",
+              "reward": 40
+            },
+            {
+              "content": "情けないとは思わない",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "優しさ Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "大したことないと思っていた",
+              "reward": 40
+            },
+            {
+              "content": "ちょっと疲れが出ただけ",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "優しさ Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "そうだな",
+              "reward": 40
+            },
+            {
+              "content": "心配してくれて嬉しい",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "優しさ Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "わかった",
+              "reward": 50
+            },
+            {
+              "content": "本当に遠慮しないぞ",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "優しさ Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "それはそれとして一緒にご飯に",
+              "reward": 50
+            },
+            {
+              "content": "その通り、ところでお腹空いてる？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "優しさ Lv.15"
+      },
+      {
+        "good_answers": [],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "優しさ Lv.17"
+      }
+    ],
+    "can_romance": false,
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "image": "item-303212.png",
+        "name": "手作りブックカバー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303224.png",
+        "name": "ガラスの花瓶",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "personalityLimit": "優しさ LV.4",
+            "price": 3200,
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303253.png",
+        "name": "ウェイトバンド",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 6800,
+            "resetType": "주간",
+            "shopName": "３７℃"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 42,
+        "image": "item-303267.png",
+        "name": "ブルースハープ",
+        "new_gift_synergy": 84,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "器用さ LV.10",
+            "price": 21800,
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 42
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 3000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 6000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 10000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 12000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "image": "item-303288.png",
+        "name": "アニメキャラ缶バッジ",
+        "new_gift_synergy": 18,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3500,
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 14,
+        "image": "item-303289.png",
+        "name": "オシャレな植物図鑑",
+        "new_gift_synergy": 28,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 5500,
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 14
+      },
+      {
+        "bonus_synergy": 22,
+        "image": "item-303290.png",
+        "name": "スマートプランター",
+        "new_gift_synergy": 44,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 8800,
+            "resetType": "주간",
+            "shopName": "花屋助兵衛"
+          }
+        ],
+        "synergy": 22
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303291.png",
+        "name": "サボテン３Ｄパズル",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 10000,
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 67,
+        "image": "item-303292.png",
+        "name": "人気ボードゲーム",
+        "new_gift_synergy": 134,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 42000,
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "synergy": 67
+      },
+      {
+        "bonus_synergy": 16,
+        "image": "item-305948.png",
+        "name": "キンモクセイの花束",
+        "new_gift_synergy": 32,
+        "shop": [],
+        "synergy": 16
+      }
+    ],
+    "name": "芦谷真咲",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "慣れた",
+              "reward": 40
+            },
+            {
+              "content": "今日は先輩がいるから寂しくない",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "ヒント機能が使えるようになる",
+        "icon": "xielizhe-icon-cherish01.png",
+        "name": "鏡花水月",
+        "rank": 1
+      },
+      {
+        "description": "大富豪で芦谷が使用可能になる",
+        "icon": "xielizhe-icon-cherish02.png",
+        "name": "咲花騎士",
+        "rank": 5
+      },
+      {
+        "description": "６のカードで芦谷のスキンが開放される",
+        "icon": "xielizhe-icon-cherish03.png",
+        "name": "飛花落葉",
+        "rank": 9
+      },
+      {
+        "description": "カードカウンター機能が使えるようになる",
+        "icon": "xielizhe-icon-cherish04.png",
+        "name": "尋花問柳",
+        "rank": 13
+      },
+      {
+        "description": "大富豪の交換所で交換できるアイテムが増える",
+        "icon": "xielizhe-icon-cherish05.png",
+        "name": "百花繚乱",
+        "rank": 17
+      }
+    ],
+    "time": "放課後",
+    "visit_dialog": [
+      {
+        "destination": "下北沢",
+        "good_answers": [
+          [
+            {
+              "content": "たまに",
+              "reward": 40
+            },
+            {
+              "content": "先輩は？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "吉祥寺",
+        "good_answers": [
+          [
+            {
+              "content": "どんな形のプランター？",
+              "reward": 50
+            },
+            {
+              "content": "高かったのか？",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "井の頭公園",
+        "good_answers": [
+          [
+            {
+              "content": "樹木にも詳しいのか",
+              "reward": 50
+            },
+            {
+              "content": "冬は？",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "浅草",
+        "good_answers": [
+          [
+            {
+              "content": "甘い物が食べたい",
+              "reward": 50
+            },
+            {
+              "content": "辛い物が食べたい",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "新宿",
+        "good_answers": [
+          [
+            {
+              "content": "店長の趣味",
+              "reward": 50
+            },
+            {
+              "content": "客層の違い",
+              "reward": 40
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

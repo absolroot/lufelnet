@@ -725,12 +725,12 @@ Of course, Pierce exceeding 100% is not applied.
 
 After the Pierce value is applied, the defense reduction value is applied.
 
-Janosik's passive can reduce enemy defense by 41.6% for 2 turns, and through the Rakunda skill, it can reduce it by 38.8%.
+Janosik's talen can reduce enemy defense by 41.6% for 2 turns, and through the Rakunda skill, it can reduce it by 38.8%.
 
-If we apply Janosik's passive and Rakunda to the defense coefficient of 129.2% that we got through Pierce, the defense coefficient becomes:
+If we apply Janosik's talent and Rakunda to the defense coefficient of 129.2% that we got through Pierce, the defense coefficient becomes:
 
 ```markdown
-129.2% - 41.6% (Janosik Passive) - 38.8% (Rakunda) = 48.8%
+129.2% - 41.6% (Janosik talent) - 38.8% (Rakunda) = 48.8%
 ```
 
 ![damage.png](/apps/article/asset/damage9.png)

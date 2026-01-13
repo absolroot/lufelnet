@@ -160,7 +160,7 @@ Like the enemy DEF stat mentioned in the past damage formula, **this value is no
 If we assume the enemy’s Ailment Resistance is 10%, Narcissus’s “Vertigo” skill in the above situation would have the following chance to inflict it:
 
 - Vertigo Base Chance: 32.6%  
-- Narcissus passive + Wonder Ailment Accuracy: 122.9%  
+- Narcissus talent + Wonder Ailment Accuracy: 122.9%  
 - Ailment Resistance: 10%
 
 ```

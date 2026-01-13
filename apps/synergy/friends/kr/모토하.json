@@ -1,0 +1,708 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그럴 일은 없어",
+              "reward": 50
+            },
+            {
+              "content": "괜찮아",
+              "reward": 60
+            },
+            {
+              "content": "무리하지 않아도 돼",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "재주 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "의지하고 있어",
+              "reward": 60
+            },
+            {
+              "content": "알았어",
+              "reward": 40
+            },
+            {
+              "content": "같이 100kg을 들자",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "재주 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그렇군",
+              "reward": 50
+            },
+            {
+              "content": "너무 많이 먹는 거 아니야?",
+              "reward": 40
+            },
+            {
+              "content": "같이 힘내자",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "재주 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "이길 수 있어",
+              "reward": 60
+            },
+            {
+              "content": "훈련한다면",
+              "reward": 50
+            },
+            {
+              "content": "4번, 투수…",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "재주 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "그래",
+              "reward": 40
+            },
+            {
+              "content": "글쎄",
+              "reward": 50
+            },
+            {
+              "content": "…",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "재주 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "와, 주스네!\n고마워. 이거 마시고 더 힘낼게!",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "재주 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "야구는 싫어?",
+              "reward": 40
+            },
+            {
+              "content": "야구를 계속하고 싶어?",
+              "reward": 60
+            },
+            {
+              "content": "괴도단이 중요해?",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "재주 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "고생했어",
+              "reward": 50
+            },
+            {
+              "content": "멋있었어",
+              "reward": 60
+            },
+            {
+              "content": "후회는 없어?",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "재주 Lv.15"
+      },
+      {
+        "good_answers": [],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "재주 Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "item": [
+      {
+        "bonus_synergy": 26,
+        "image": "item-303062.png",
+        "name": "GOAT 야구 배트",
+        "new_gift_synergy": 52,
+        "shop": [
+          {
+            "discountPrice": 10450,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 2,
+            "moneyName": "현금",
+            "personalityLimit": "재주 LV.13",
+            "price": 11000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 26
+      },
+      {
+        "bonus_synergy": 7,
+        "image": "item-303064.png",
+        "name": "스포츠 보호 장비",
+        "new_gift_synergy": 14,
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 2800,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "축구부 배지",
+            "price": 60,
+            "resetType": "주간",
+            "shopName": "축구부 포인트 교환"
+          }
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303068.png",
+        "name": "GOAT 흡수 타월",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "야구 포인트",
+            "price": 500,
+            "resetType": "없음",
+            "shopName": "야구 포인트 교환"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 4,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-303071.png",
+        "name": "GOAT 야구 글러브",
+        "new_gift_synergy": 34,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "야구 포인트",
+            "price": 1000,
+            "resetType": "없음",
+            "shopName": "야구 포인트 교환"
+          },
+          {
+            "discountPrice": 6560,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "personalityLimit": "재주 LV.5",
+            "price": 6900,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 22,
+        "image": "item-303072.png",
+        "name": "GOAT 야구 유니폼",
+        "new_gift_synergy": 44,
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "야구 포인트",
+            "price": 1500,
+            "resetType": "없음",
+            "shopName": "야구 포인트 교환"
+          },
+          {
+            "discountPrice": 8460,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "personalityLimit": "재주 LV.10",
+            "price": 8900,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 22
+      },
+      {
+        "bonus_synergy": 10,
+        "image": "item-303213.png",
+        "name": "고양이 헤어핀",
+        "new_gift_synergy": 20,
+        "shop": [
+          {
+            "discountPrice": 3800,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 4000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "액세서리 상점"
+          }
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 125,
+        "image": "item-303214.png",
+        "name": "하트 링",
+        "new_gift_synergy": 250,
+        "shop": [
+          {
+            "discountPrice": 87000,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "personalityLimit": "매력 LV.10",
+            "price": 88000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "보석 가게"
+          }
+        ],
+        "synergy": 125
+      },
+      {
+        "bonus_synergy": 4,
+        "image": "item-303237.png",
+        "name": "스모 아저씨 스티커",
+        "new_gift_synergy": 8,
+        "shop": [
+          {
+            "discountPrice": 1520,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 5,
+            "moneyName": "현금",
+            "price": 1600,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "할인 상점"
+          }
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 2,
+        "image": "item-303242.png",
+        "name": "길거리 음식 가이드",
+        "new_gift_synergy": 4,
+        "shop": [
+          {
+            "discountPrice": 670,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 5,
+            "moneyName": "현금",
+            "price": 700,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "777 편의점"
+          }
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303282.png",
+        "name": "한정판 키링",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "에너지 스톤 전문점"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "아키하바라",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.5",
+            "resetType": "주간",
+            "shopName": "굿즈샵"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "image": "item-303283.png",
+        "name": "막과자 패키지",
+        "new_gift_synergy": 16,
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "욘겐자야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 3000,
+            "reducePriceCond": "도겐자카 루우나 LV.9",
+            "resetType": "주간",
+            "shopName": "슈퍼마켓"
+          }
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "image": "item-303284.png",
+        "name": "프리미엄 에센스 세트",
+        "new_gift_synergy": 38,
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 2,
+            "moneyName": "현금",
+            "price": 7700,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "뷰티 살롱"
+          }
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "image": "item-303285.png",
+        "name": "마롱 케이크",
+        "new_gift_synergy": 30,
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 3,
+            "moneyName": "현금",
+            "price": 6000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "프리미엄 마켓"
+          }
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "image": "item-303286.png",
+        "name": "뮤직 스노글로브",
+        "new_gift_synergy": 48,
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": "기치조지",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 10000,
+            "reducePriceCond": "도겐자카 루우나 LV.13",
+            "resetType": "주간",
+            "shopName": "문구점"
+          }
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "image": "item-303287.png",
+        "name": "탁상용 아로마 기계",
+        "new_gift_synergy": 56,
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": "시부야",
+            "maxBuy": 1,
+            "moneyName": "현금",
+            "price": 12000,
+            "reducePriceCond": "도겐자카 루우나 LV.1",
+            "resetType": "주간",
+            "shopName": "뷰티 살롱"
+          }
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 13,
+        "image": "item-305946.png",
+        "name": "프리저브드 백합",
+        "new_gift_synergy": 26,
+        "shop": [],
+        "synergy": 13
+      },
+      {
+        "bonus_synergy": 17,
+        "image": "item-305950.png",
+        "name": "바질 향주머니",
+        "new_gift_synergy": 0,
+        "shop": [],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 49,
+        "image": "item-303298.png",
+        "name": "마음의 초콜릿",
+        "new_gift_synergy": 0,
+        "shop": [],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 1000,
+        "image": "item-305966.png",
+        "name": "영원한 사랑",
+        "new_gift_synergy": 0,
+        "shop": [],
+        "synergy": 999
+      }
+    ],
+    "name": "아라이 모토하",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "무섭지 않아",
+              "reward": 40
+            },
+            {
+              "content": "모토하가 무서워할 것 같은데",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "내가 옆에 있으니까 괜찮아",
+              "reward": 40
+            },
+            {
+              "content": "내 팔을 잡아",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "야구 연습 시 관찰 모드에 진입할 수 있습니다.",
+        "icon": "xielizhe-icon-suyu-01.png",
+        "name": "매의 눈",
+        "rank": 1
+      },
+      {
+        "description": "총공격으로 전투 종료 시 멤버 전원의 HP가 최대로 회복됩니다.\n(팰리스 및 메멘토스 배회 섀도 한정 유효)",
+        "icon": "xielizhe-icon-suyu-04.png",
+        "name": "같이 힘내자",
+        "rank": 5
+      },
+      {
+        "description": "야구 연습에서 새로운 난이도에 도전할 수 있습니다. 야구 연습장 교환처에서 교환 가능한 상품 종류가 증가합니다.",
+        "icon": "xielizhe-icon-suyu-03.png",
+        "name": "운동량 늘리기",
+        "rank": 9
+      },
+      {
+        "description": "세이프 룸에서 재정비 후 HL 에너지가 30% 미만일 경우 30%로 회복됩니다.\n(팰리스 및 메멘토스 배회 섀도 한정 유효)",
+        "icon": "xielizhe-icon-suyu-05.png",
+        "name": "준비됐어",
+        "rank": 13
+      },
+      {
+        "description": "야구 연습에서 더 높은 난이도에 도전할 수 있습니다. 야구 연습장 교환처에서 교환 가능한 상품 종류가 한층 더 증가합니다.",
+        "icon": "xielizhe-icon-suyu-03.png",
+        "name": "얼마든지 해봐",
+        "rank": 17
+      }
+    ],
+    "time": "방과 후",
+    "visit_dialog": [
+      {
+        "destination": "이노카시라 공원",
+        "good_answers": [
+          [
+            {
+              "content": "코코아 맛",
+              "reward": 60
+            },
+            {
+              "content": "혼합 과일 맛",
+              "reward": 50
+            },
+            {
+              "content": "푸딩 맛",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "시모키타자와",
+        "good_answers": [
+          [
+            {
+              "content": "굴신 운동",
+              "reward": 60
+            },
+            {
+              "content": "복근",
+              "reward": 50
+            },
+            {
+              "content": "투명 의자",
+              "reward": 40
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "츠키시마",
+        "good_answers": [
+          [
+            {
+              "content": "토핑이니까 괜찮아",
+              "reward": 50
+            },
+            {
+              "content": "치즈를 시킬까?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "시부야",
+        "good_answers": [
+          [
+            {
+              "content": "해 보자",
+              "reward": 50
+            },
+            {
+              "content": "시합할래?",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

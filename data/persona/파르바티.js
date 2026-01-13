@@ -38,7 +38,7 @@ window.personaFiles["파르바티"] = {
     }
   ],
   "comment": "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
-  "comment_en": "Core passive effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
+  "comment_en": "Talent effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
   "comment_jp": "ハイライトによる治療にも本能効果が発動する。アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "passive_priority": 2,
   "passive_skill": [

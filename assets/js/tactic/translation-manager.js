@@ -72,3 +72,4 @@ window.whenCharacterDataReady = whenCharacterDataReady;
 window.notifyCharacterDataReady = notifyCharacterDataReady;
 
 
+

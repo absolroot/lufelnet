@@ -1450,7 +1450,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // 마이팰리스 평점 버튼 추가를 위한 텍스트 정의
                 const ratingTexts = {
                     kr: '마이팰리스 평점',
-                    en: 'MyPalace Rating',
+                    en: 'Thieves Den Rating',
                     jp: 'マイパレス評価'
                 };
                 const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
@@ -1463,10 +1463,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     // 마이팰리스 평점 텍스트가 있으면 버튼 추가 (섹션 스타일은 변경하지 않음)
                     let sectionWithBtn = finalSection;
                     if (finalSection.includes(ratingText)) {
-                        const btnHTML = `<button type="button" class="qevel-btn" onclick="if(typeof window.showQEVELModal==='function'){window.showQEVELModal();}else{console.warn('QEVEL.js not loaded');}" style="display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;" title="${currentLang === 'en' ? 'Open QEVEL Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기')}"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle><path d="M5 9 L13 9 M9 5 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path></svg></button>`;
+                        const btnHTML = `<button type="button" class="qevel-btn" onclick="if(typeof window.showQEVELModal==='function'){window.showQEVELModal();}else{console.warn('QEVEL.js not loaded');}" style="display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;" title="${currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기')}"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle><path d="M5 9 L13 9 M9 5 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path></svg></button>`;
                         // ·와 텍스트를 함께 찾아서 span으로 감싸기 (뒤의 <br>는 제거)
                         const escapedRatingText = ratingText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                        // 패턴: <br>·MyPalace Rating<br> 또는 <br>·MyPalace Rating (끝)
+                        // 패턴: <br>·Thieves Den Rating<br> 또는 <br>·Thieves Den Rating (끝)
                         sectionWithBtn = finalSection.replace(new RegExp(`(<br>)(·${escapedRatingText})(<br>|$)`, 'g'), `$1<span style="display: inline; white-space: nowrap;">$2${btnHTML}</span>`);
                     }
                     return `<div class="battle-stat-section"><b>${sectionWithBtn}</div>`;
@@ -1546,7 +1546,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         // 마이팰리스 평점 텍스트 확인 및 버튼 추가
                         const ratingTexts = {
                             kr: '마이팰리스 평점',
-                            en: 'MyPalace Rating',
+                            en: 'Thieves Den Rating',
                             jp: 'マイパレス評価'
                         };
                         const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
@@ -1582,7 +1582,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                             qevelBtn.type = 'button';
                             qevelBtn.className = 'qevel-btn';
                             qevelBtn.style.cssText = 'display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;';
-                            qevelBtn.title = currentLang === 'en' ? 'Open QEVEL Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기');
+                            qevelBtn.title = currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기');
                             
                             // SVG 생성
                             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

@@ -21,7 +21,7 @@ window.characterSetting["J&C"] = {
         "LV13+5": "공격력 4500, 크리티컬 효과 190%, 대미지 보너스 30%"
     },
     "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 / 해명의힘 <b>크리티컬 효과</b>/ 마이팰리스 2% / 해명의힘 <b>대미지 보너스</b>/ 마이팰리스 / 해명의힘",
-    "battle_plus_stats_en": "<b>Attack</b>/ MyPalace 50LV 65 / MyPalace 70LV 110 / MyPalace Rating / Navi Power <b>크리티컬 효과</b>/ MyPalace 2% / Navi Power <b>대미지 보너스</b>/ MyPalace / Navi Power",
+    "battle_plus_stats_en": "<b>Attack</b>/ Thieves Den 50LV 65 / Thieves Den 70LV 110 / Thieves Den Rating / Navi Power <b>크리티컬 효과</b>/ Thieves Den 2% / Navi Power <b>대미지 보너스</b>/ Thieves Den / Navi Power",
     "battle_plus_stats_jp": "<b>공격력</b>/ マイパレス 50LV 65 / マイパレス 70LV 110 / マイパレス 評価 / 解明の力 <b>크리티컬 효과</b>/ マイパレス 2% / 解明の力 <b>대미지 보너스</b>/ マイパレス / 解明の力",
     "element_weakness": "",
     "element_resistance": "",

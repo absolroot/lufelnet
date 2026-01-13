@@ -2,7 +2,7 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["몽타뉴·백조"] = {
     "role": "질풍/빙결 단일 딜러",
     "video": ["3KRF2yYXtNs", "EAjvUE4zwI4"],
-    "video_en": ["k6KIc0MogGg"],
+    "video_en": ["fMyHydppGbk", "Q26LetmkD-Q"],
     "video_jp": ["k6KIc0MogGg", "JvtXPM693JM"],
     "main_revelation": ["자유", "전념"],
     "sub_revelation": ["개선", "화려"],

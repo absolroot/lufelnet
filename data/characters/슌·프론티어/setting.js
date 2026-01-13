@@ -21,7 +21,7 @@ window.characterSetting["슌·프론티어"] = {
         "LV13+5": "생명 22720"
     },
     "battle_plus_stats": "해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560",
-    "battle_plus_stats_en": "Navi Power / Card-Labor 8% / MyPalace 260",
+    "battle_plus_stats_en": "Navi Power / Card-Labor 8% / Thieves Den 260",
     "battle_plus_stats_jp": "解明の力 / 職責 8% / マイパレス 260",
     "element_weakness": "축복",
     "element_resistance": "총격",

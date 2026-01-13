@@ -21,7 +21,7 @@ window.characterSetting["치즈코"] = {
         "LV13+5": false
     },
     "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 의식3 : 동료가 원소이상 부여 시 2턴 10% 증가 (3중첩)",
-    "battle_plus_stats_en": "· MyPalace 2.3% / MyPalace Rating / Awareness 3: 30%",
+    "battle_plus_stats_en": "· Thieves Den 2.3% / Thieves Den Rating / Awareness 3: 30%",
     "battle_plus_stats_jp": "· マイパレス 2.3% / マイパレス評価 / 意識3: 30%",
     "element_weakness": "화염",
     "element_resistance": "핵열",

@@ -21,7 +21,7 @@ window.characterSetting["미유·여름"] = {
         "LV13+5": "SP 회복 300.1%"
     },
     "battle_plus_stats": "· 기본 스탯: 188.5% / 마이팰리스: 5%",
-    "battle_plus_stats_en": "· Base Stat: 188.5% / MyPalace: 5%",
+    "battle_plus_stats_en": "· Base Stat: 188.5% / Thieves Den: 5%",
     "battle_plus_stats_jp": "· 基本ステータス: 188.5% / マイパレス: 5%",
     "element_weakness": "축복",
     "element_resistance": "빙결",

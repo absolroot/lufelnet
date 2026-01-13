@@ -70,7 +70,7 @@
         {
             id: 6,
             kr: '마이 팰리스 레벨 경험치 150 증가',
-            en: 'Increases My Palace level experience by 150',
+            en: 'Increases Thieves Den level experience by 150',
             jp: 'マイパレスレベル経験値150増加',
             type: 'exp',
             value: 150
@@ -156,7 +156,7 @@
         {
             id: 16,
             kr: '마이 팰리스 레벨 경험치 150 증가',
-            en: 'Increases My Palace level experience by 150',
+            en: 'Increases Thieves Den level experience by 150',
             jp: 'マイパレスレベル経験値150増加',
             type: 'exp',
             value: 150
@@ -445,7 +445,7 @@
         if (buffs.exp > 0) {
             const expText = {
                 kr: `마이 팰리스 레벨 경험치 ${Math.floor(buffs.exp)} 증가`,
-                en: `Increases My Palace level experience by ${Math.floor(buffs.exp)}`,
+                en: `Increases Thieves Den level experience by ${Math.floor(buffs.exp)}`,
                 jp: `マイパレスレベル経験値${Math.floor(buffs.exp)}増加`
             };
             lines.push(expText[currentLang] || expText.kr);
@@ -488,13 +488,13 @@
 
         const titleText = {
             kr: '마이팰리스 평점 (QEVEL)',
-            en: 'My Palace Rating (QEVEL)',
+            en: 'Thieves Den Rating (Qualia Lv)',
             jp: 'マイパレス評価 (QEVEL)'
         };
 
         const inputLabelText = {
             kr: 'QEVEL 입력:',
-            en: 'Enter QEVEL:',
+            en: 'Enter Qualia Lv:',
             jp: 'QEVEL入力:'
         };
 
@@ -533,7 +533,7 @@
                         />
                     </div>
                     <div id="qevel-result" style="min-height: 100px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; color: #fff; line-height: 2.0; margin-top: 15px; font-size: 13px;">
-                        <div style="opacity: 0.6; text-align: center;">${lang === 'en' ? 'Enter QEVEL to see buffs' : (lang === 'jp' ? 'QEVELを入力してバフを確認' : 'QEVEL을 입력하면 버프를 확인할 수 있습니다')}</div>
+                        <div style="opacity: 0.6; text-align: center;">${lang === 'en' ? 'Enter Qualia Lv to see buffs' : (lang === 'jp' ? 'QEVELを入力してバフを確認' : 'QEVEL을 입력하면 버프를 확인할 수 있습니다')}</div>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 const criticalBuffData = {
     "공통": [
               { id: "default", type: "기본값", type_en: "Default", type_jp: "基本", target: "-", skillIcon: "/assets/img/skill-element/패시브.png", skillName: "기본 크리티컬 확률", skillName_en: "Default Critical Rate", skillName_jp: "基本CRT発生率", options: [], value: 5, duration: "-", note: "" },
-              { id: "myPalace", type: "마이팰리스", type_en: "My Palace", type_jp: "マイパレス", target: "광역", skillIcon: "/assets/img/etc/MyPalace-level-10.webp", skillName: "마이팰리스", skillName_en: "My Palace", skillName_jp: "マイパレス", options: [], value: 1, duration: "-", note: "" },
+              { id: "myPalace", type: "마이팰리스", type_en: "Thieves Den", type_jp: "マイパレス", target: "광역", skillIcon: "/assets/img/etc/MyPalace-level-10.webp", skillName: "마이팰리스", skillName_en: "Thieves Den", skillName_jp: "マイパレス", options: [], value: 1, duration: "-", note: "" },
               { id: "elec", type: "원소이상", type_en: "Elemental Exceed", type_jp: "元素超凡", target: "단일/광역", skillIcon: "/assets/img/skill-element/전격광역.png", skillName: "감전", skillName_en: "Shock", skillName_jp: "感電", options: [], value: 10, duration: "-", note: "" }
     ],
     "원더": [

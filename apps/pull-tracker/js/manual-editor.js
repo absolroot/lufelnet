@@ -231,26 +231,53 @@
         const l = lang();
         const enWeaponData = window.enCharacterWeaponData || {};
         const jpWeaponData = window.jpCharacterWeaponData || {};
+        const charData = getCharData();
+        
+        // 캐릭터 이름 가져오기 헬퍼
+        const getCharName = (ownerKey) => {
+            if (!ownerKey) return '';
+            const charInfo = charData[ownerKey];
+            if (!charInfo) return ownerKey; // 캐릭터 데이터가 없으면 키 그대로
+            if (l === 'en') return charInfo.name_en || charInfo.codename || charInfo.name || ownerKey;
+            if (l === 'jp') return charInfo.name_jp || charInfo.name || ownerKey;
+            return charInfo.name || ownerKey;
+        };
+        
         for (const [ownerKey, weapons] of Object.entries(data)) {
             if (!weapons) continue;
+            const charName = getCharName(ownerKey);
             for (const [wKey, wInfo] of Object.entries(weapons)) {
                 if (!wKey.startsWith('weapon')) continue;
                 if (!wInfo) continue;
-                const rarity = Number(wInfo.rarity || wInfo.grade || 0);
+                // weapon4-1, weapon5-1 형식에서 등급 추출
+                const rarityMatch = wKey.match(/weapon(\d+)/);
+                const rarity = rarityMatch ? Number(rarityMatch[1]) : (Number(wInfo.rarity || wInfo.grade || 0));
                 if (grade === 5 && rarity !== 5) continue;
                 if (grade === 4 && rarity !== 4) continue;
+                
                 // 언어별 무기 이름
-                let displayName = wInfo.name || wKey;
+                let weaponName = wInfo.name || '';
                 if (l === 'en' && enWeaponData[ownerKey] && enWeaponData[ownerKey][wKey]) {
-                    displayName = enWeaponData[ownerKey][wKey].name || displayName;
+                    weaponName = enWeaponData[ownerKey][wKey].name || weaponName;
                 } else if (l === 'jp' && jpWeaponData[ownerKey] && jpWeaponData[ownerKey][wKey]) {
-                    displayName = jpWeaponData[ownerKey][wKey].name || displayName;
+                    weaponName = jpWeaponData[ownerKey][wKey].name || weaponName;
                 }
+                
+                // 무기 이름이 없으면 건너뛰기 (weapon5-1 같은 키 이름 표시 방지)
+                if (!weaponName || weaponName.trim() === '') continue;
+                
+                // 표시 이름: 무기 이름 (캐릭터 이름)
+
+                //const displayName = `${weaponName} (${charName})`;
+                const displayName = `${weaponName}`;
+                
                 list.push({
                     key: `${ownerKey}/${wKey}`,
                     ownerKey,
                     weaponKey: wKey,
                     name: displayName,
+                    weaponName: weaponName, // 무기 이름만 (검색용)
+                    charName: charName, // 캐릭터 이름 (검색용)
                     krName: wInfo.name || wKey, // 원본 한국어 이름 (데이터 저장용)
                     id: wInfo.id || null,
                     rarity
@@ -684,9 +711,18 @@
 
             function renderList(filter = '') {
                 list.innerHTML = '';
-                const filtered = items.filter(it =>
-                    it.name.toLowerCase().includes(filter.toLowerCase())
-                );
+                const filterLower = filter.toLowerCase();
+                const filtered = items.filter(it => {
+                    // 무기 이름으로 검색
+                    if (it.name && it.name.toLowerCase().includes(filterLower)) return true;
+                    // 무기 이름만으로 검색 (무기인 경우)
+                    if (it.weaponName && it.weaponName.toLowerCase().includes(filterLower)) return true;
+                    // 캐릭터 이름으로 검색 (무기인 경우)
+                    if (it.charName && it.charName.toLowerCase().includes(filterLower)) return true;
+                    // ownerKey로도 검색 (무기인 경우)
+                    if (it.ownerKey && it.ownerKey.toLowerCase().includes(filterLower)) return true;
+                    return false;
+                });
                 if (filtered.length === 0) {
                     list.innerHTML = `<div class="me-selector-empty">${t('noResults')}</div>`;
                     return;
@@ -744,12 +780,61 @@
     // ─────────────────────────────────────────────────────────────
     // 추가 모달
     // ─────────────────────────────────────────────────────────────
-    function openAddModal(panelKey, grade, onSave) {
+    async function openAddModal(panelKey, grade, onSave) {
         ensureStyles();
         closeModal();
 
         const isWeapon = panelKey === 'Weapon' || panelKey === 'Weapon_Confirmed';
+        
+        // 무기인 경우 데이터 로드 대기
+        if (isWeapon) {
+            try {
+                // 캐릭터 데이터 먼저 로드 (무기 로드에 필요)
+                if (typeof window.loadCharacters === 'function') {
+                    await window.loadCharacters();
+                }
+                // 무기 데이터 로드
+                if (typeof window.loadWeapons === 'function') {
+                    await window.loadWeapons();
+                }
+                // 데이터가 로드되었는지 확인 (최대 5번 재시도, 더 긴 대기)
+                let retries = 0;
+                while (retries < 5) {
+                    const weaponData = getWeaponData();
+                    if (weaponData && Object.keys(weaponData).length > 0) {
+                        // 실제 무기 항목이 있는지 확인
+                        let hasWeapons = false;
+                        for (const [ownerKey, weapons] of Object.entries(weaponData)) {
+                            if (weapons && typeof weapons === 'object') {
+                                for (const wKey of Object.keys(weapons)) {
+                                    if (wKey.startsWith('weapon')) {
+                                        hasWeapons = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (hasWeapons) break;
+                        }
+                        if (hasWeapons) break; // 무기 데이터가 있으면 중단
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                    retries++;
+                }
+            } catch(e) {
+                console.warn('[manual-editor] 무기 데이터 로드 중 오류:', e);
+            }
+        }
+        
         const items = isWeapon ? getWeaponList(grade) : getCharacterList(grade);
+        
+        // 디버깅: 무기 리스트가 비어있으면 로그 출력
+        if (isWeapon && items.length === 0) {
+            console.warn('[manual-editor] 무기 리스트가 비어있습니다.', {
+                weaponData: getWeaponData(),
+                grade,
+                weaponDataKeys: Object.keys(getWeaponData() || {})
+            });
+        }
         const maxPity = MAX_PITY[panelKey] || 80;
 
         let selectedItem = null;
@@ -890,14 +975,63 @@
     // ─────────────────────────────────────────────────────────────
     // 수정 모달
     // ─────────────────────────────────────────────────────────────
-    function openEditModal(record, panelKey, onSave, onDelete) {
+    async function openEditModal(record, panelKey, onSave, onDelete) {
         ensureStyles();
         closeModal();
 
         const isManual = isManualRecord(record);
         const isWeapon = panelKey === 'Weapon' || panelKey === 'Weapon_Confirmed';
         const grade = Number(record.grade || 5);
+        
+        // 무기인 경우 데이터 로드 대기
+        if (isWeapon) {
+            try {
+                // 캐릭터 데이터 먼저 로드 (무기 로드에 필요)
+                if (typeof window.loadCharacters === 'function') {
+                    await window.loadCharacters();
+                }
+                // 무기 데이터 로드
+                if (typeof window.loadWeapons === 'function') {
+                    await window.loadWeapons();
+                }
+                // 데이터가 로드되었는지 확인 (최대 5번 재시도, 더 긴 대기)
+                let retries = 0;
+                while (retries < 5) {
+                    const weaponData = getWeaponData();
+                    if (weaponData && Object.keys(weaponData).length > 0) {
+                        // 실제 무기 항목이 있는지 확인
+                        let hasWeapons = false;
+                        for (const [ownerKey, weapons] of Object.entries(weaponData)) {
+                            if (weapons && typeof weapons === 'object') {
+                                for (const wKey of Object.keys(weapons)) {
+                                    if (wKey.startsWith('weapon')) {
+                                        hasWeapons = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (hasWeapons) break;
+                        }
+                        if (hasWeapons) break; // 무기 데이터가 있으면 중단
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                    retries++;
+                }
+            } catch(e) {
+                console.warn('[manual-editor] 무기 데이터 로드 중 오류:', e);
+            }
+        }
+        
         const items = isWeapon ? getWeaponList(grade) : getCharacterList(grade);
+        
+        // 디버깅: 무기 리스트가 비어있으면 로그 출력
+        if (isWeapon && items.length === 0) {
+            console.warn('[manual-editor] 무기 리스트가 비어있습니다.', {
+                weaponData: getWeaponData(),
+                grade,
+                weaponDataKeys: Object.keys(getWeaponData() || {})
+            });
+        }
         const maxPity = MAX_PITY[panelKey] || 80;
 
         let selectedItem = items.find(it => it.name === record.name) || { name: record.name };

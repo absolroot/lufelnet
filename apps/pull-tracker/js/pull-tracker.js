@@ -759,15 +759,27 @@
                         const s = document.createElement('script');
                         s.src = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
                         s.onload = () => res();
+                        // 404 등 에러는 무시하고 계속 진행 (콘솔 에러는 브라우저가 표시하지만 프로세스는 계속됨)
                         s.onerror = () => res();
                         document.head.appendChild(s);
-                    } catch (_) { res(); }
+                    } catch (_) { 
+                        // 에러 발생해도 계속 진행
+                        res(); 
+                    }
                 }));
                 await Promise.all(tasks);
+                // 스크립트 로드 후 데이터가 설정될 시간을 약간 대기
+                await new Promise(resolve => setTimeout(resolve, 100));
             } catch (_) {}
         })();
         return __weaponsLoading;
     }
+    
+    // manual-editor에서 사용할 수 있도록 window에 노출
+    try {
+        window.loadWeapons = loadWeapons;
+        window.loadCharacters = loadCharacters;
+    } catch(_) {}
 
     // Persist last URL (자동 입력은 비활성화)
     const STORAGE_KEY = 'pull-tracker:last-url';

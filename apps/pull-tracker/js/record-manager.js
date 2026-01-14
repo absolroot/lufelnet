@@ -6,6 +6,28 @@
     'use strict';
 
     // ─────────────────────────────────────────────────────────────
+    // 스키마 보정 (신규 타입 추가 대응)
+    // ─────────────────────────────────────────────────────────────
+    const PANEL_KEYS = ['Confirmed', 'Fortune', 'Weapon', 'Weapon_Confirmed', 'Gold', 'Newcomer'];
+    function emptyBlock(){
+        return { summary: { pulledSum: 0, total5Star: 0, total4Star: 0, win5050: 0, avgPity: null, inProgressCount: 0, effectivePulled: 0 }, records: [] };
+    }
+    function normalizePayload(raw){
+        try {
+            if (!raw) return null;
+            // legacy: { Confirmed:..., ... } 형태일 수 있음
+            const payload = (raw && raw.data) ? raw : { version: 1, updatedAt: Date.now(), data: raw };
+            payload.data = payload.data || {};
+            for (const k of PANEL_KEYS){
+                if (!payload.data[k]) payload.data[k] = emptyBlock();
+                if (!payload.data[k].summary) payload.data[k].summary = emptyBlock().summary;
+                if (!Array.isArray(payload.data[k].records)) payload.data[k].records = [];
+            }
+            return payload;
+        } catch(_) { return raw; }
+    }
+
+    // ─────────────────────────────────────────────────────────────
     // 유틸리티 (merge-engine.js 의존)
     // ─────────────────────────────────────────────────────────────
 
@@ -118,14 +140,15 @@
         try {
             const s = localStorage.getItem('pull-tracker:merged');
             if (!s) return null;
-            return JSON.parse(s);
+            return normalizePayload(JSON.parse(s));
         } catch (_) { return null; }
     }
 
     function savePayload(payload) {
         try {
-            payload.updatedAt = Date.now();
-            localStorage.setItem('pull-tracker:merged', JSON.stringify(payload));
+            const fixed = normalizePayload(payload) || payload;
+            fixed.updatedAt = Date.now();
+            localStorage.setItem('pull-tracker:merged', JSON.stringify(fixed));
             return true;
         } catch (_) { return false; }
     }

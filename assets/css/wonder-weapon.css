@@ -210,10 +210,16 @@
 .detail-header-info h2 {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     margin: 0 0 8px 0;
     font-size: 24px;
     color: #fff;
+}
+
+@media (max-width: 768px) {
+    .detail-header-info h2 {
+        font-size: 18px;
+    }
 }
 
 .detail-header-element-icon {
@@ -510,15 +516,15 @@
 .weapon-tab-source {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     font-size: 11px;
     color: #999;
     text-align: center;
 }
 
 .weapon-tab-element-icon {
-    width: 16px;
-    height: 16px;
+    width: auto;
+    height: 12px;
     object-fit: contain;
     flex-shrink: 0;
 }

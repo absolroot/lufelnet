@@ -25,17 +25,26 @@
         "img_color": "Tongyong-touxiang-changfu-kotomo.png",
         "num": 8,
         "recommend": true,
-        "recommend_num": [5, 7, 13, 17]
+        "recommend_num": [5, 7, 13, 17],
+        "tip_kr": "13레벨을 달성하면 아르바이트에서 얻는 파라미터가 5로 증가한다.",
+        "tip_en": "From Rank 13, the parameter obtained from the part-time job increases by 5.",
+        "tip_jp": "Rank 13から、アルバイトで得られるパラメータが5増加します。"
     },
     "키요시" : {
         "img": "touxiang-liaotian-new-kii.png",
         "img_color": "Tongyong-touxiang-changfu-kii.png",
+        "tip_kr": "- 1랭크: 읽으면 매력 +10, 목욕 이벤트에 매력 +3 추가 획득\n- 3랭크: 읽으면 친절 +10, 드러그 스토어 알바 진행 시 1120엔 추가 획득\n- 11랭크: 읽으면 재주 +10, 헬스장에서 운동 시 배짱 +3 추가 획득\n- 15랭크: 읽으면 지식 +10, 서점 알바 진행 시 1170엔 추가 획득\n- 20랭크: 읽으면 지식 +10, 영화 관람 시 파라미터 +3 추가 획득",
+        "tip_en": "- Rank 1: Reading increases Charm +10, and Charm +3 is added when taking a bath event.\n- Rank 3: Reading increases Kindness +10, and 1120 yen is added when performing a drag store part-time job.\n- Rank 11: Reading increases Proficiency +10, and Guts +3 is added when exercising at the gym.\n- Rank 15: Reading increases Knowledge +10, and 1170 yen is added when performing a bookstore part-time job.\n- Rank 20: Reading increases Knowledge +10, and +3 parameter is added when watching a movie.",
+        "tip_jp": "- ランク1: 読書で魅力+10、入浴イベントでさらに魅力+3獲得\n- ランク3: 読書で優しさ+10、ドラッグストアのアルバイト時に1120円追加獲得\n- ランク11: 読書で器用さ+10、ジムで運動時に度胸+3追加獲得\n- ランク15: 読書で知識+10、本屋のアルバイト時に1170円追加獲得\n- ランク20: 読書で知識+10、映画鑑賞時にパラメータ+3追加獲得",
         "num": 6
     },
     "아야카" : {
         "img": "touxiang-liaotian-new-chord.png",
         "img_color": "Tongyong-touxiang-changfu-chord.png",
-        "num": 12
+        "num": 12,
+        "tip_kr": "20랭크 Wonder Light을 음악부에서 클리어하면 Easy, Hard에서 각각 300 엠버를 획득할 수 있다.",
+        "tip_en": "By clearing Wonder Light in the music department at Rank 20, you can earn meta jewels in Easy and Hard modes respectively.",
+        "tip_jp": "ランク20で音楽部でワンダーライトをクリアすると、それぞれEasyとHardで自在結晶を獲得できます。"
     },
     "마사키" : {
         "img": "touxiang-liaotian-npc12.png",
@@ -57,14 +66,22 @@
     "마나카" : {
         "img": "touxiang-liaotian-new-ange.png",
         "img_color": "Tongyong-touxiang-changfu-ange.png",
-        "num": 21
+        "num": 21,
+        "recommend": true,
+        "recommend_num": [9],
+        "tip_kr": "20랭크의 효과는 소급 적용되므로 급하게 달성할 필요가 없다.",
+        "tip_en": "The effect of Rank 20 is retroactively applied, so there is no need to rush to achieve it.",
+        "tip_jp": "ランク20の効果は後付け適用されるため、急いで達成する必要はありません。"
     },
     "카타야마" : {
         "img": "touxiang-liaotian-new-pianshan.png",
         "img_color": "Tongyong-touxiang-changfu-blitz.png",
         "num": 30,
         "recommend": true,
-        "recommend_num": [13]
+        "recommend_num": [13],
+        "tip_kr": "13랭크 보상으로 행동력 2, 체력 5 둘 중 하나를 얻게 된다.",
+        "tip_en": "By Rank 13 reward, you can get either Action Points +2 or Stamina +5.",
+        "tip_jp": "ランク13の報酬で、行動力+2か体力+5のどちらかを獲得できます。"
     },
     "쇼키" : {
         "img": "touxiang-liaotian-new-luce.png",
@@ -74,6 +91,7 @@
     "슌" : {
         "img": "touxiang-liaotian-new-soy.png",
         "img_color": "Tongyong-touxiang-changfu-soy.png",
+        "tip-kr": "- 1랭크: 카레라이스, 말차 아이스크림\n- 5랭크: 크림 브륄레\n- 9랭크: 미소 라멘\n- 13랭크: 오므라이스\n- 15랭크: 장어덮밥, 행인 두부\n- 20랭크: 연어 회",
         "num": 5
     },
     "메로페": {
@@ -81,12 +99,16 @@
         "img_color": "Tongyong-touxiang-changfu-meiluopu.png",
         "num": 1,
         "recommend": true,
-        "recommend_num": [13, 15, 20]
+        "recommend_num": [13, 15, 20],
+        "tip_kr": "랭크 해제조건에서 공격강화I 릴림을 제외하면 모든 페르소나는 레벨업을 통해 스킬 조건을 달성할 수 있다.",
+        "tip_en": "Except Lilim - Attack Boost I, all Persona can achieve skill conditions through level up.",
+        "tip_jp": "リリム - アタックブースタⅠを除く、すべてのペルソナはレベルアップを通じてスキル条件を達成できます。"
     },
     "야오링": {
         "img": "touxiang-liaotian-new-rin.png",
         "img_color": "Tongyong-touxiang-changfu-rin.png",
-        "num": 7
+        "num": 7,
+        "tip_kr": "- 3랭크: 만두\n- 5랭크: 콩물, 취두부, 유린기, 떡\n- 7랭크: 서호 생선 탕수\n- 15랭크: 리치 새우볼\n- 17랭크: 용정 새우, 마라 생선찜, 마라 소고기찜, 마파두부, 마라 닭 냉채"
     },
     "카요": {
         "img": "touxiang-liaotian-new-okyann.png",
@@ -122,19 +144,28 @@
     "YUI" : {
         "img": "touxiang-liaotian-new-yui.png",
         "img_color": "Tongyong-touxiang-changfu-bui.png",
-        "num": 11
+        "num": 11,
+        "tip_kr": "13랭크부터 15랭크까지 모습을 보이지 않아 선물이 불가능하다. 따라서 12랭크에서 13랭크로 진입하기 직전에 가치가 높은 선물을 주는 것이 좋다.",
+        "tip_en": "From Rank 13 to 15, the character does not appear and gifts are not possible. Therefore, it is recommended to give a valuable gift before entering Rank 12 to Rank 13.",
+        "tip_jp": "Rank 13からRank 15までキャラクターが表示されないため、ギフトが不可能です。そのため、Rank 12からRank 13に移行する直前に、価値の高いギフトを贈ることをお勧めします。"
     },
     "유우미" : {
         "img": "touxiang-liaotian-new-phoebe.png",
         "img_color": "Tongyong-touxiang-changfu-phoebe.png",
         "recommend": true,
         "recommend_num": [5, 9, 13, 17],
-        "num": 13
+        "num": 13,
+        "tip_kr": "아삼 홍차는 행동력을 올려주는 칵테일을 제조할 수 있다. 17랭크에 추가 획득 효과가 있으므로 17랭크 이후에 칵테일 제조를 추천한다.\n아삼 홍차는 매주 초기화되므로, 매주 꾸준한 구매가 필요하다.",
+        "tip_en": "Assam tea can produce a cocktail that increases action points. Since there is an additional effect at Rank 17, it is recommended to produce cocktails after Rank 17.\nSince Assam tea is reset every week, regular purchases are required every week.",
+        "tip_jp": "アッサムティーは、行動力を上げるカクテルを作ることができます。ランク17に追加獲得効果があるため、ランク17以降でカクテル製造をお勧めします。\nアッサムティーは毎週リセットされるため、毎週の定期的な購入が必要です。"
     },
     "키라" : {
         "img": "touxiang-liaotian-new-doctor.png",
         "img_color": "Tongyong-touxiang-changfu-doctor.png",
-        "num": 15
+        "num": 15,
+        "tip_kr": "하루의 총격은 랭크1의 효과만 받으며, 하루의 스킬2를 통한 총격은 랭크9, 13의 효과를 모두 받는다.",
+        "tip_en": "Haru's ranged attack only receives the effect of Rank 1, and Haru's skill 2-based ranged attack receives the effects of Rank 9 and Rank 13.",
+        "tip_jp": "奥村 春の遠距離攻撃はランク1の効果のみを受け、奥村 春のスキル2による遠距離攻撃はランク9、ランク13の効果を両方受けます。"
     },
     "루우나" : {
         "img": "touxiang-liaotian-new-howler.png",

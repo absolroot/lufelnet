@@ -76,12 +76,13 @@ jp: /synergy/?lang=jp
         <!-- Detail section -->
         <div class="character-detail" id="characterDetail">
             <div class="detail-placeholder">
-                <p>왼쪽에서 캐릭터를 선택하세요</p>
+                <div class="loading-spinner"></div>
             </div>
         </div>
     </div>
 </div>
 
+    <script src="{{ site.baseurl }}/apps/synergy/synergy_search.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/synergy/synergy.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/synergy/soulmate.js?v={{ site.time | date: '%s' }}"></script>
 

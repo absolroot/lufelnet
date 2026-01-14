@@ -342,6 +342,64 @@ jp: /revelations/?lang=jp
         });
     }
 
+    // 모든 캐릭터의 setting.js 파일 로드
+    async function loadAllCharacterSettings() {
+        if (typeof characterData === 'undefined') {
+            console.warn('characterData not loaded yet');
+            return;
+        }
+
+        // characterSetting 초기화
+        if (!window.characterSetting) {
+            window.characterSetting = {};
+        }
+
+        // 모든 캐릭터 이름 가져오기
+        const characterNames = Object.keys(characterData);
+        
+        // 각 캐릭터의 setting.js 로드 (병렬 처리)
+        const loadPromises = characterNames.map(charName => {
+            return new Promise((resolve) => {
+                // 이미 로드된 경우 스킵
+                if (window.characterSetting[charName]) {
+                    resolve();
+                    return;
+                }
+
+                // setting.js 파일 경로
+                const scriptSrc = `/data/characters/${encodeURIComponent(charName)}/setting.js`;
+                
+                // 중복 로딩 방지: 이미 같은 스크립트가 로드 중이거나 로드된 경우
+                const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
+                if (existingScript) {
+                    resolve();
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = scriptSrc;
+                script.onload = () => {
+                    // characterSetting에 데이터가 로드되었는지 확인
+                    if (window.characterSetting && window.characterSetting[charName]) {
+                        resolve();
+                    } else {
+                        // 로드 실패해도 계속 진행 (해당 캐릭터만 스킵)
+                        console.warn(`Failed to load setting for ${charName}`);
+                        resolve();
+                    }
+                };
+                script.onerror = () => {
+                    // 로드 실패해도 계속 진행
+                    console.warn(`Setting file not found for ${charName}`);
+                    resolve();
+                };
+                document.head.appendChild(script);
+            });
+        });
+
+        await Promise.all(loadPromises);
+    }
+
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -743,6 +801,8 @@ jp: /revelations/?lang=jp
             await loadLanguageData(currentLang);
             // 캐릭터 데이터 로드
             await loadCharacterData();
+            // 모든 캐릭터의 setting.js 로드
+            await loadAllCharacterSettings();
             // Load external stats JSON (non-blocking for rest of page build)
             await loadRevStatsData();
 
@@ -1024,13 +1084,22 @@ jp: /revelations/?lang=jp
             function findUsersOfRevelation(koreanRevName) {
                 if (typeof characterData === 'undefined') return [];
                 const users = [];
-                Object.entries(characterData).forEach(([charName, c]) => {
-                    const mains = Array.isArray(c.main_revelation) ? c.main_revelation : [];
-                    const subs = Array.isArray(c.sub_revelation) ? c.sub_revelation : [];
-                    if (mains.includes(koreanRevName) || subs.includes(koreanRevName)) {
-                        users.push(charName);
+                
+                // characterData의 모든 캐릭터를 순회
+                Object.keys(characterData).forEach((charName) => {
+                    // characterSetting에서 해당 캐릭터의 설정 가져오기
+                    const setting = (window.characterSetting && window.characterSetting[charName]) ? window.characterSetting[charName] : null;
+                    
+                    if (setting) {
+                        const mains = Array.isArray(setting.main_revelation) ? setting.main_revelation : [];
+                        const subs = Array.isArray(setting.sub_revelation) ? setting.sub_revelation : [];
+                        
+                        if (mains.includes(koreanRevName) || subs.includes(koreanRevName)) {
+                            users.push(charName);
+                        }
                     }
                 });
+                
                 // sort by name
                 users.sort((a, b) => a.localeCompare(b, 'ko'));
                 return users;

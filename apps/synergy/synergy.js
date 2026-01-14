@@ -11,12 +11,13 @@
     let mapNameTranslations = {};
     let currentLanguage = 'kr';
     let selectedCharacter = null;
-    let currentTimeFilter = 'all';
-    let currentSearchQuery = '';
-    let showSpoiler = false;
+    // 필터 변수는 synergy_search.js로 이동
     let hasKrFallback = false; // 한국어 폴백 사용 여부
 
-    // 현재 언어 감지
+    // characterList를 전역으로 노출 (synergy_search.js에서 사용)
+    window.characterList = characterList;
+
+    // 현재 언어 감지 (전역으로 노출 - synergy_search.js에서 사용)
     function getCurrentLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
@@ -31,6 +32,9 @@
         } catch (e) {}
         return 'kr';
     }
+    
+    // 전역으로 노출
+    window.getCurrentLanguage = getCurrentLanguage;
 
     // UI 번역 함수
     function translateUI() {
@@ -91,6 +95,8 @@
             const response = await fetch(`${BASE_URL}/apps/synergy/friends/friend_num.json?v=${APP_VERSION}`);
             if (!response.ok) throw new Error('Failed to load character list');
             characterList = await response.json();
+            // 전역으로 업데이트 (synergy_search.js에서 사용)
+            window.characterList = characterList;
             return true;
         } catch (error) {
             console.error('Error loading character list:', error);
@@ -458,62 +464,116 @@
         });
     }
 
-    // 시간대 필터링
-    function filterByTime(characterName) {
-        const char = characterList[characterName];
-        if (!char) return false;
-        // inactive가 true인 경우 필터링 (탭에 표시하지 않음)
-        if (char.inactive === true) return false;
-        if (currentTimeFilter === 'all') return true;
-        // time 필드 사용 (없으면 appear로 폴백)
-        const time = char.time || char.appear;
-        if (!time) return false;
-        return time === currentTimeFilter;
-    }
+    // 필터 함수들은 synergy_search.js로 이동
+    // window.synergySearch를 통해 접근
 
-    // 검색 필터링
-    function filterBySearch(characterName) {
-        if (!currentSearchQuery) return true;
-        const query = currentSearchQuery.toLowerCase();
-        return characterName.toLowerCase().includes(query);
-    }
-
-    // 언어 파일 존재 여부 확인
-    async function hasLanguageFile(characterName, lang) {
-        if (lang === 'kr') return true; // 한국어는 항상 true
-        try {
-            const fileName = encodeURIComponent(characterName);
-            const response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`, { method: 'HEAD' });
-            return response.ok;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    // 언어 필터링
-    async function filterByLanguage(characterName) {
-        if (currentLanguage === 'kr') return true; // 한국어는 모든 캐릭터 표시
-        if (showSpoiler) return true; // spoiler 체크 시 모든 캐릭터 표시
-        // 해당 언어 파일이 있는지 확인
-        return await hasLanguageFile(characterName, currentLanguage);
-    }
-
-    // 탭 생성
+    // 탭 생성 (전역으로 노출 - synergy_search.js에서 사용)
     async function createTabs() {
         const tabsContainer = document.getElementById('characterTabs');
         if (!tabsContainer) return;
 
         tabsContainer.innerHTML = '';
 
-        // 언어 필터링을 포함한 필터링
-        const filteredCharacters = [];
-        for (const name of Object.keys(characterList)) {
-            if (filterByTime(name) && filterBySearch(name) && await filterByLanguage(name)) {
-                filteredCharacters.push(name);
+        // 먼저 각 캐릭터의 time 값을 가져오기
+        const characterTimeMap = {};
+        const timePromises = Object.keys(characterList).map(async (characterName) => {
+            const char = characterList[characterName];
+            let characterTime = null;
+            
+            try {
+                const fileName = encodeURIComponent(characterName);
+                // 현재 언어 파일에서 time 가져오기
+                const response = await fetch(`${BASE_URL}/apps/synergy/friends/${currentLanguage}/${fileName}.json?v=${APP_VERSION}`);
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    const data = jsonData.data || jsonData;
+                    if (data.time) {
+                        characterTime = data.time;
+                    }
+                } else if (currentLanguage !== 'kr') {
+                    // 현재 언어 파일이 없으면 kr로 폴백
+                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                    if (krResponse.ok) {
+                        const krJsonData = await krResponse.json();
+                        const krData = krJsonData.data || krJsonData;
+                        if (krData.time) {
+                            characterTime = krData.time;
+                        }
+                    }
+                }
+            } catch (e) {
+                // 에러 발생 시 무시
             }
-        }
+            
+            // 캐릭터 JSON 파일의 time이 없으면 friend_num.json의 time/appear로 폴백
+            characterTimeMap[characterName] = characterTime || char.time || char.appear || null;
+        });
+        
+        await Promise.all(timePromises);
 
-        const sortedCharacters = filteredCharacters.sort((a, b) => {
+        // 각 캐릭터의 이름 정보 수집 (검색용)
+        const characterNamesMap = {};
+        const namePromises = Object.keys(characterList).map(async (characterName) => {
+            const char = characterList[characterName];
+            let nameEn = null;
+            let nameJp = null;
+            let displayName = characterName;
+            
+            // friend_num.json에서 가져오기
+            if (char) {
+                if (char.name_en) nameEn = char.name_en;
+                if (char.name_jp) nameJp = char.name_jp;
+            }
+            
+            // characters.js에서 가져오기
+            if (window.characterData && window.characterData[characterName]) {
+                const charData = window.characterData[characterName];
+                if (!nameEn && charData.name_en) nameEn = charData.name_en;
+                if (!nameJp && charData.name_jp) nameJp = charData.name_jp;
+            }
+            
+            // JSON 파일에서 가져오기 (현재 언어)
+            try {
+                const fileName = encodeURIComponent(characterName);
+                const response = await fetch(`${BASE_URL}/apps/synergy/friends/${currentLanguage}/${fileName}.json?v=${APP_VERSION}`);
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    const data = jsonData.data || jsonData;
+                    if (data.name) {
+                        displayName = data.name;
+                    }
+                } else if (currentLanguage !== 'kr') {
+                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                    if (krResponse.ok) {
+                        const krJsonData = await krResponse.json();
+                        const krData = krJsonData.data || krJsonData;
+                        if (krData.name && !displayName) {
+                            displayName = krData.name;
+                        }
+                    }
+                }
+            } catch (e) {
+                // 에러 무시
+            }
+            
+            characterNamesMap[characterName] = {
+                nameEn: nameEn,
+                nameJp: nameJp,
+                displayName: displayName
+            };
+        });
+        
+        await Promise.all(namePromises);
+
+        // 처음 로드 시에는 모든 캐릭터를 생성 (필터링 없이)
+        // 필터는 나중에 applyFilters()로 적용
+        const allCharacters = Object.keys(characterList).filter(name => {
+            const char = characterList[name];
+            // inactive만 제외
+            return !char.inactive;
+        });
+
+        const sortedCharacters = allCharacters.sort((a, b) => {
             // num 기준 내림차순, 같으면 이름순
             const numA = characterList[a].num || 0;
             const numB = characterList[b].num || 0;
@@ -522,7 +582,13 @@
         });
 
         if (sortedCharacters.length === 0) {
-            tabsContainer.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">검색 결과가 없습니다</div>';
+            // 번역 함수
+            const t = (key) => {
+                if (currentLanguage === 'kr') return key;
+                return window.synergyTranslations?.[currentLanguage]?.[key] || key;
+            };
+            const noResultsText = t('검색 결과가 없습니다');
+            tabsContainer.innerHTML = `<div style="padding: 20px; text-align: center; color: #999;">${noResultsText}</div>`;
             // 검색 결과가 없으면 선택된 캐릭터도 초기화
             selectedCharacter = null;
             return;
@@ -632,6 +698,19 @@
             tab.className = 'character-tab';
             tab.dataset.character = characterName;
             
+            // 필터링용 데이터 속성 추가
+            const timeValue = characterTime || char.time || char.appear || '';
+            tab.dataset.characterTime = timeValue;
+            tab.dataset.characterNameKr = characterName;
+            // characterNamesMap에서 이름 정보 가져오기
+            const nameInfo = characterNamesMap[characterName] || {};
+            tab.dataset.characterNameEn = nameInfo.nameEn || '';
+            tab.dataset.characterNameJp = nameInfo.nameJp || '';
+            tab.dataset.displayName = displayName;
+            
+            // 언어 파일 존재 여부 저장 (나중에 사용)
+            tab.dataset.hasLanguageFile = 'pending'; // 나중에 확인
+            
             if (index === 0 && wasFirstLoad) {
                 tab.classList.add('active');
             } else if (previousSelected === characterName) {
@@ -644,7 +723,7 @@
             const imgSrc = `${BASE_URL}/assets/img/synergy/${imgPath}/${imgFileName}`;
             
             // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
-            const timeValue = characterTime || char.time || char.appear || '';
+            // timeValue는 위에서 이미 선언됨
             let timeLabel = timeValue;
             if (timeValue === 'After School') timeLabel = '방과 후';
             else if (timeValue === 'Evening') timeLabel = '저녁';
@@ -681,26 +760,155 @@
             tabsContainer.appendChild(tab);
         });
 
+        // 언어 파일 존재 여부 확인 (비동기, 필터링에 사용)
+        const languageCheckPromises = sortedCharacters.map(async (characterName) => {
+            const tab = document.querySelector(`.character-tab[data-character="${characterName}"]`);
+            if (!tab) return;
+            
+            const currentLanguage = getCurrentLanguage();
+            if (currentLanguage === 'kr') {
+                tab.dataset.hasLanguageFile = 'true';
+            } else {
+                const hasFile = await window.synergySearch?.hasLanguageFile(characterName, currentLanguage) || false;
+                tab.dataset.hasLanguageFile = hasFile ? 'true' : 'false';
+            }
+        });
+        await Promise.all(languageCheckPromises);
+
+        // 필터 적용
+        applyFilters();
+
         // 첫 번째 탭이 있고, 이전에 선택된 캐릭터가 없거나 필터링으로 사라진 경우 자동 선택
-        if (sortedCharacters.length > 0) {
-            if (wasFirstLoad || !previousSelected || !sortedCharacters.includes(previousSelected)) {
-                const firstCharacter = sortedCharacters[0];
+        const visibleTabs = Array.from(document.querySelectorAll('.character-tab:not([style*="display: none"])'));
+        if (visibleTabs.length > 0) {
+            if (wasFirstLoad || !previousSelected) {
+                const firstTab = visibleTabs[0];
+                const firstCharacter = firstTab.dataset.character;
                 // 탭이 모두 DOM에 추가된 후에 데이터 로드 (여러 단계로 확실하게)
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         selectCharacter(firstCharacter, true); // forceLoad = true로 강제 로드
                     });
                 });
-            } else if (previousSelected && sortedCharacters.includes(previousSelected)) {
-                // 이전에 선택된 캐릭터가 여전히 리스트에 있으면 다시 렌더링
-                requestAnimationFrame(() => {
-                    selectCharacter(previousSelected, true);
-                });
+            } else if (previousSelected) {
+                const previousTab = document.querySelector(`.character-tab[data-character="${previousSelected}"]`);
+                if (previousTab && (!previousTab.style.display || previousTab.style.display !== 'none')) {
+                    // 이전에 선택된 캐릭터가 여전히 보이면 다시 렌더링
+                    requestAnimationFrame(() => {
+                        selectCharacter(previousSelected, true);
+                    });
+                } else {
+                    // 이전 선택이 필터링으로 사라졌으면 첫 번째로
+                    const firstTab = visibleTabs[0];
+                    const firstCharacter = firstTab.dataset.character;
+                    requestAnimationFrame(() => {
+                        selectCharacter(firstCharacter, true);
+                    });
+                }
             }
         }
     }
 
-    // 캐릭터 선택
+    // 필터 적용 (DOM에서 숨기기/보이기만)
+    function applyFilters() {
+        const tabs = document.querySelectorAll('.character-tab');
+        if (tabs.length === 0) return;
+
+        const currentLanguage = getCurrentLanguage();
+        const timeFilter = window.synergySearch?.getCurrentTimeFilter() || 'all';
+        const searchQuery = (window.synergySearch?.getCurrentSearchQuery() || '').toLowerCase().trim();
+        const showSpoiler = window.synergySearch?.getShowSpoiler() || false;
+
+        // 언어별 time 매핑
+        const timeMapping = {
+            'kr': {
+                '방과 후': 'After School',
+                '저녁': 'Evening',
+                '밤': 'Night',
+                '오후': 'Afternoon'
+            },
+            'en': {
+                'After School': 'After School',
+                'Evening': 'Evening',
+                'Night': 'Night',
+                'Afternoon': 'Afternoon'
+            },
+            'jp': {
+                '放課後': 'After School',
+                '夕方': 'Evening',
+                '夜': 'Night',
+                '午後': 'Afternoon'
+            }
+        };
+
+        tabs.forEach(tab => {
+            let shouldShow = true;
+
+            // 1. 시간 필터
+            if (timeFilter !== 'all') {
+                const tabTime = tab.dataset.characterTime || '';
+                const mapping = timeMapping[currentLanguage] || timeMapping['en'];
+                const normalizedTime = mapping[tabTime] || tabTime;
+                if (normalizedTime !== timeFilter) {
+                    shouldShow = false;
+                }
+            }
+
+            // 2. 검색 필터
+            if (shouldShow && searchQuery) {
+                const nameKr = (tab.dataset.characterNameKr || '').toLowerCase();
+                const nameEn = (tab.dataset.characterNameEn || '').toLowerCase();
+                const nameJp = (tab.dataset.characterNameJp || '').toLowerCase();
+                const displayName = (tab.dataset.displayName || '').toLowerCase();
+                
+                if (!nameKr.includes(searchQuery) && 
+                    !nameEn.includes(searchQuery) && 
+                    !nameJp.includes(searchQuery) && 
+                    !displayName.includes(searchQuery)) {
+                    shouldShow = false;
+                }
+            }
+
+            // 3. 언어 필터
+            if (shouldShow && currentLanguage !== 'kr' && !showSpoiler) {
+                const hasLanguageFile = tab.dataset.hasLanguageFile === 'true';
+                if (!hasLanguageFile) {
+                    shouldShow = false;
+                }
+            }
+
+            // 표시/숨김 적용
+            tab.style.display = shouldShow ? '' : 'none';
+        });
+
+        // 검색 결과가 없을 때 메시지 표시
+        const visibleTabs = Array.from(document.querySelectorAll('.character-tab:not([style*="display: none"])'));
+        const tabsContainer = document.getElementById('characterTabs');
+        if (visibleTabs.length === 0 && tabsContainer) {
+            const noResultsDiv = document.createElement('div');
+            noResultsDiv.style.cssText = 'padding: 20px; text-align: center; color: #999; grid-column: 1 / -1;';
+            const t = (key) => {
+                if (currentLanguage === 'kr') return key;
+                return window.synergyTranslations?.[currentLanguage]?.[key] || key;
+            };
+            noResultsDiv.textContent = t('검색 결과가 없습니다');
+            
+            // 기존 메시지 제거
+            const existingMessage = tabsContainer.querySelector('div[style*="padding: 20px"]');
+            if (existingMessage) existingMessage.remove();
+            
+            tabsContainer.appendChild(noResultsDiv);
+        } else {
+            // 메시지 제거
+            const existingMessage = tabsContainer?.querySelector('div[style*="padding: 20px"]');
+            if (existingMessage) existingMessage.remove();
+        }
+    }
+
+    // applyFilters를 전역으로 노출
+    window.applyFilters = applyFilters;
+
+    // 캐릭터 선택 (전역으로 노출)
     async function selectCharacter(characterName, forceLoad = false) {
         if (!forceLoad && selectedCharacter === characterName) return;
 
@@ -733,6 +941,9 @@
 
         renderCharacterDetail(characterName, data);
     }
+    
+    // selectCharacter를 전역으로 노출
+    window.selectCharacter = selectCharacter;
 
     // URL 파라미터 및 타이틀 업데이트
     async function updateURLAndTitle(characterName) {
@@ -825,10 +1036,50 @@
         const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback) ? `
             <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; border-radius: 4px; user-select: text;">
                 ${currentLanguage === 'en' 
-                    ? 'Content that has not been updated or released by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.'
+                    ? 'Content that has not been released or updated by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.'
                     : '管理者が更新・公開していないコンテンツは韓国語で表示される場合があります。別途の翻訳作業は予定されておらず、ご不便をおかけしますが、翻訳機のご利用をお願いします。'}
             </div>
         ` : '';
+
+        // 팁 가져오기 (현재 언어에 맞는 팁만, Show Spoiler로 kr 불러올 때도 현재 언어 팁 우선)
+        let tipHtml = '';
+        if (char) {
+            // 현재 언어에 맞는 팁 키
+            const tipKey = currentLanguage === 'kr' ? 'tip_kr' : 
+                          currentLanguage === 'en' ? 'tip_en' : 'tip_jp';
+            const tip = char[tipKey];
+            if (tip) {
+                // \n과 줄 맨 앞 -를 리스트로 변환
+                let processedTip = tip;
+                // 실제 줄바꿈 문자와 \n 문자열 모두 처리
+                const lines = tip.split(/\n|\\n/).filter(line => line.trim());
+                if (lines.length > 0 && lines.some(line => line.trim().startsWith('-'))) {
+                    // 리스트 형식으로 변환
+                    const listItems = lines
+                        .map(line => {
+                            const trimmed = line.trim();
+                            if (trimmed.startsWith('-')) {
+                                return trimmed.substring(1).trim(); // - 제거
+                            }
+                            return trimmed;
+                        })
+                        .filter(item => item.length > 0)
+                        .map(item => `<li style="margin-bottom: 4px;">${item}</li>`)
+                        .join('');
+                    
+                    processedTip = `<ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: rgba(255, 255, 255, 0.7);">${listItems}</ul>`;
+                } else {
+                    // 리스트 형식이 아니면 그대로 표시 (기존 \n을 <br>로 변환)
+                    processedTip = tip.replace(/\n|\\n/g, '<br>');
+                }
+                
+                tipHtml = `
+                    <div class="character-tip" style="padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #730000; margin: 0px 0 32px 0; border-radius: 4px; line-height: 1.6; font-size:13px; color: rgba(255, 255, 255, 0.7);">
+                        ${processedTip}
+                    </div>
+                `;
+            }
+        }
 
         let html = `
             ${fallbackNotice}
@@ -883,16 +1134,29 @@
             return processedText;
         }
 
+        // 섹션 chevron SVG
+        const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
         // 1. 협력 보상 (Special Award)
         if (data.special_award && data.special_award.length > 0) {
             // recommend_num 가져오기
             const char = characterList[characterName];
             const recommendNums = char && char.recommend_num ? char.recommend_num : [];
             
+            // 팁이 있으면 margin-bottom을 16px로 설정
+            const tipKey = currentLanguage === 'kr' ? 'tip_kr' : 
+                          currentLanguage === 'en' ? 'tip_en' : 'tip_jp';
+            const hasTip = char && char[tipKey];
+            const sectionStyle = hasTip ? 'style="margin-bottom: 16px;"' : '';
+            
             html += `
-                <div class="detail-section">
-                    <h3 class="detail-section-title">${t('협력 보상')}</h3>
-                    <table class="award-table">
+                <div class="detail-section" ${sectionStyle}>
+                    <h3 class="detail-section-title collapsible">
+                        <span>${t('협력 보상')}</span>
+                        ${chevronSvg}
+                    </h3>
+                    <div class="section-content">
+                        <table class="award-table">
                         <thead>
                             <tr>
                                 <th>${t('랭크')}</th>
@@ -931,16 +1195,26 @@
             html += `
                         </tbody>
                     </table>
+                    </div>
                 </div>
             `;
+        }
+
+        // 팁 표시 (협력 보상 아래, 협력 이벤트 위)
+        if (tipHtml) {
+            html += tipHtml;
         }
 
         // 2. 협력 이벤트 (Advance Dialog)
         if (data.advance_dialog && data.advance_dialog.length > 0) {
             html += `
                 <div class="detail-section">
-                    <h3 class="detail-section-title">${t('협력 이벤트')}</h3>
-                    <div class="dialog-events-container">
+                    <h3 class="detail-section-title collapsible">
+                        <span>${t('협력 이벤트')}</span>
+                        ${chevronSvg}
+                    </h3>
+                    <div class="section-content">
+                        <div class="dialog-events-container">
             `;
             data.advance_dialog.forEach(dialog => {
                 const rankFrom = dialog.rank_up?.from || 0;
@@ -991,8 +1265,8 @@
                     });
                 }
                 
-                // RANK 14→15이고 can_romance가 true인 경우 소울 메이트/절친 표시 추가
-                if (rankFrom === 14 && rankTo === 15 && data.can_romance === true) {
+                // RANK 14→15이고 can_romance가 true인 경우 소울 메이트/절친 표시 추가 (메로페 제외)
+                if (rankFrom === 14 && rankTo === 15 && data.can_romance === true && characterName !== '메로페') {
                     html += `<div class="soulmate-indicator-placeholder" data-rank="14-15"></div>`;
                 }
                 
@@ -1001,15 +1275,19 @@
                     </div>
                 `;
             });
-            html += `</div></div>`;
+            html += `</div></div></div>`;
         }
 
         // 3. 도시 이벤트 (Visit Dialog)
         if (data.visit_dialog && data.visit_dialog.length > 0) {
             html += `
                 <div class="detail-section">
-                    <h3 class="detail-section-title">${t('도시 이벤트')}</h3>
-                    <div class="dialog-events-container">
+                    <h3 class="detail-section-title collapsible">
+                        <span>${t('도시 이벤트')}</span>
+                        ${chevronSvg}
+                    </h3>
+                    <div class="section-content">
+                        <div class="dialog-events-container">
             `;
             data.visit_dialog.forEach(visit => {
                 // destination 번역
@@ -1057,15 +1335,19 @@
                     </div>
                 `;
             });
-            html += `</div></div>`;
+            html += `</div></div></div>`;
         }
 
         // 4. 기타 이벤트 (Romance Dialog)
         if (data.romance_dialog && data.romance_dialog.length > 0) {
             html += `
                 <div class="detail-section">
-                    <h3 class="detail-section-title">${t('기타 이벤트 (15랭크 이후)')}</h3>
-                    <div class="dialog-events-container">
+                    <h3 class="detail-section-title collapsible">
+                        <span>${t('기타 이벤트 (15랭크 이후)')}</span>
+                        ${chevronSvg}
+                    </h3>
+                    <div class="section-content">
+                        <div class="dialog-events-container">
             `;
             data.romance_dialog.forEach(dialog => {
                 html += `
@@ -1109,7 +1391,7 @@
                     </div>
                 `;
             });
-            html += `</div></div>`;
+            html += `</div></div></div>`;
         }
 
         // 5. 선호 선물 (Item)
@@ -1270,8 +1552,12 @@
             
             html += `
                 <div class="detail-section">
-                    <h3 class="detail-section-title">${t('선호 선물')}</h3>
-                    <table class="item-table">
+                    <h3 class="detail-section-title collapsible">
+                        <span>${t('선호 선물')}</span>
+                        ${chevronSvg}
+                    </h3>
+                    <div class="section-content">
+                        <table class="item-table">
                         <thead>
                             <tr>
                                 <th class="item-name-header">${t('이름')}</th>
@@ -1399,6 +1685,7 @@
             html += `
                         </tbody>
                     </table>
+                    </div>
                 </div>
             `;
             
@@ -1417,6 +1704,9 @@
             }, 0);
         }
         
+        // 섹션 접기/펼치기 기능 초기화
+        setupSectionCollapse();
+        
         // 모바일에서 헤더 텍스트 변경
         if (window.innerWidth <= 768) {
             const awardNameHeader = detailContainer.querySelector('.award-name-header');
@@ -1429,6 +1719,83 @@
                 itemNameHeader.textContent = t('이름/가격/획득처');
             }
         }
+    }
+    
+    // 전역으로 노출 (synergy_search.js에서 사용)
+    window.createTabs = createTabs;
+
+    // 섹션 접기/펼치기 기능
+    function setupSectionCollapse() {
+        const detailContainer = document.getElementById('characterDetail');
+        if (!detailContainer) return;
+        
+        // 이미 리스너가 추가되었는지 확인
+        if (detailContainer.dataset.collapseListenerAdded === 'true') {
+            // 리스너는 이미 추가되어 있으므로, 새로 생성된 제목들에만 커서 스타일 적용
+            const collapsibleTitles = detailContainer.querySelectorAll('.detail-section-title.collapsible');
+            collapsibleTitles.forEach(title => {
+                title.style.cursor = 'pointer';
+            });
+            return;
+        }
+        
+        detailContainer.dataset.collapseListenerAdded = 'true';
+        
+        // 이벤트 위임 사용: detailContainer에 한 번만 리스너 추가
+        detailContainer.addEventListener('click', (e) => {
+            // 클릭된 요소가 collapsible 제목이나 그 자식 요소인지 확인
+            let title = e.target.closest('.detail-section-title.collapsible');
+            
+            // chevron SVG나 span을 클릭한 경우도 처리
+            if (!title && (e.target.classList.contains('section-chevron') || e.target.closest('.section-chevron'))) {
+                title = e.target.closest('.section-chevron')?.closest('.detail-section-title.collapsible');
+            }
+            
+            if (!title) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // 해당 제목이 속한 섹션만 찾기 (직접 부모만)
+            const section = title.parentElement;
+            if (!section || !section.classList.contains('detail-section')) {
+                // parentElement가 detail-section이 아니면 closest 사용
+                const foundSection = title.closest('.detail-section');
+                if (!foundSection) return;
+                toggleSection(foundSection, title);
+                return;
+            }
+            
+            toggleSection(section, title);
+        });
+        
+        // 섹션 토글 함수 (재사용)
+        function toggleSection(section, title) {
+            const content = section.querySelector(':scope > .section-content');
+            if (!content) return;
+            
+            const chevron = title.querySelector('.section-chevron');
+            const isCollapsed = section.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                section.classList.remove('collapsed');
+                if (chevron) {
+                    chevron.style.transform = 'rotate(90deg)'; // 아래 방향 (펼침)
+                }
+            } else {
+                section.classList.add('collapsed');
+                if (chevron) {
+                    chevron.style.transform = 'rotate(-90deg)'; // 위 방향 (접힘)
+                }
+            }
+        }
+        
+        // 모든 collapsible 제목에 커서 스타일 적용
+        const collapsibleTitles = detailContainer.querySelectorAll('.detail-section-title.collapsible');
+        collapsibleTitles.forEach(title => {
+            title.style.cursor = 'pointer';
+        });
     }
 
     // 아이템 테이블 정렬 기능
@@ -1554,38 +1921,10 @@
         });
     }
 
-    // 필터 이벤트 핸들러
+    // 필터 이벤트 핸들러는 synergy_search.js로 이동
     function setupFilters() {
-        // 시간대 필터
-        document.querySelectorAll('.time-filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.time-filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentTimeFilter = btn.dataset.time;
-                createTabs();
-            });
-        });
-
-        // 검색 필터
-        const searchInput = document.getElementById('characterSearch');
-        if (searchInput) {
-            let searchTimeout;
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    currentSearchQuery = e.target.value.trim();
-                    createTabs();
-                }, 300);
-            });
-        }
-
-        // Spoiler 체크박스
-        const spoilerCheckbox = document.getElementById('showSpoiler');
-        if (spoilerCheckbox) {
-            spoilerCheckbox.addEventListener('change', (e) => {
-                showSpoiler = e.target.checked;
-                createTabs();
-            });
+        if (window.synergySearch && window.synergySearch.setupFilters) {
+            window.synergySearch.setupFilters();
         }
     }
 

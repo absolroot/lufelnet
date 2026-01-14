@@ -1024,10 +1024,15 @@
         
         // can_romance 아이콘
         let romanceIcons = '';
-        if (data.can_romance !== undefined) {
+        // 쇼키와 카타야마는 can_romance가 true여도 false로 취급
+        let canRomance = data.can_romance;
+        if (characterName === '쇼키' || characterName === '카타야마') {
+            canRomance = false;
+        }
+        if (canRomance !== undefined) {
             if (characterName === '메로페') {
                 romanceIcons = `<img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-MLP.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">`;
-            } else if (data.can_romance === true) {
+            } else if (canRomance === true) {
                 romanceIcons = `<img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-GF.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">
                                 <img src="${BASE_URL}/assets/img/synergy/dushi-jiangli-coop-BF.png" alt="romance" class="romance-icon" onerror="this.onerror=null; this.style.display='none';">`;
             } else {

@@ -187,6 +187,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "동료를 위해서",
+        "is_romance": false
+      },
+      {
+        "content": "모토하가 소중하니까",
+        "is_romance": true
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 26,
@@ -631,6 +641,7 @@
                     13,
                     10
                   ],
+                  "count": "random(1,6)",
                   "rate": "100%",
                   "seed": {
                     "box": [],

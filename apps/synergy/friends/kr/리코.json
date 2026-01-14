@@ -195,6 +195,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "친구로서 함께 갈게",
+        "is_romance": false
+      },
+      {
+        "content": "연인으로서 함께 갈게",
+        "is_romance": true
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 15,

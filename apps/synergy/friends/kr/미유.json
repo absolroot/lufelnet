@@ -194,6 +194,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "천천히 생각하게 해줘",
+        "is_romance": false
+      },
+      {
+        "content": "앞으로도 같이 있고 싶어",
+        "is_romance": true
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 10,
@@ -658,6 +668,7 @@
                     9,
                     7
                   ],
+                  "count": "random(1,6)",
                   "rate": "100%",
                   "seed": {
                     "box": [],

@@ -210,6 +210,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "소중한 사람이에요",
+        "is_romance": true
+      },
+      {
+        "content": "시이나 씨의 실력에 반했어요",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 14,
@@ -636,6 +646,7 @@
                     4,
                     3
                   ],
+                  "count": "random(2,6)",
                   "rate": "100%",
                   "seed": {
                     "box": [],
@@ -670,6 +681,7 @@
                     13,
                     10
                   ],
+                  "count": "random(2,6)",
                   "rate": "30.0%",
                   "seed": {
                     "box": [],

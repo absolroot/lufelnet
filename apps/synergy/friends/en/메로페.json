@@ -215,7 +215,8 @@
         "unlock_cond": "Dominion - Matarukaja"
       }
     ],
-    "can_romance": true,
+    "can_romance": false,
+    "friend_lover_dialog": [],
     "item": [
       {
         "bonus_synergy": 38,
@@ -602,6 +603,7 @@
                     13,
                     10
                   ],
+                  "count": "1",
                   "rate": "70.0%",
                   "seed": {
                     "box": [],
@@ -653,6 +655,7 @@
                     13,
                     10
                   ],
+                  "count": "random(1,6)",
                   "rate": "100%",
                   "seed": {
                     "box": [],

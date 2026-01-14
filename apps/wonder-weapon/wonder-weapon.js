@@ -436,7 +436,7 @@
       tab.appendChild(info);
 
       tab.addEventListener('click', () => {
-        selectWeapon(krName);
+        selectWeapon(krName, true); // 사용자 클릭으로 표시
       });
 
       tabsContainer.appendChild(tab);
@@ -470,7 +470,7 @@
   }
 
   // 무기 선택 함수
-  async function selectWeapon(krName) {
+  async function selectWeapon(krName, userInitiated = false) {
     if (selectedWeapon === krName) return;
 
     selectedWeapon = krName;
@@ -483,8 +483,8 @@
     // 상세 정보 렌더링
     renderWeaponDetail(krName);
 
-    // 모바일에서 detail까지 자동 스크롤
-    if (window.innerWidth <= 768) {
+    // 모바일에서 detail까지 자동 스크롤 (사용자 클릭 시에만)
+    if (userInitiated && window.innerWidth <= 768) {
       setTimeout(() => {
         const detailElement = document.getElementById('weaponDetail');
         if (detailElement) {

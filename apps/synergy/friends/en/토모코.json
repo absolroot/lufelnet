@@ -224,6 +224,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "Until you get your strength back.",
+        "is_romance": false
+      },
+      {
+        "content": "I'll stay with you forever, Tomoko.",
+        "is_romance": true
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 2,
@@ -601,6 +611,7 @@
                     9,
                     7
                   ],
+                  "count": "random(2,6)",
                   "rate": "100%",
                   "seed": {
                     "box": [],

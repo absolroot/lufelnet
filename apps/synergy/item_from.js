@@ -81,11 +81,16 @@
                 const seed = seedData.seed;
                 if (!seed) return;
                 
+                const materialTree = buildItemTree(seed, depth + 1, maxDepth);
+                // material에 seedCount 정보 추가 (가격 표시용)
+                materialTree.seedCount = seedData.count || '1';
+                
                 tree.sources.push({
                     type: 'seed',
                     label: seedData.rate || '100%',
+                    count: seedData.count || '1', // count 정보 저장
                     consume_ap: seedData.consume_ap || [],
-                    material: buildItemTree(seed, depth + 1, maxDepth)
+                    material: materialTree
                 });
             });
         }
@@ -147,8 +152,25 @@
                     const rateStr = seedSource.label || '100%';
                     const rateMatch = rateStr.match(/(\d+(?:\.\d+)?)/);
                     const rate = rateMatch ? parseFloat(rateMatch[1]) / 100 : 1.0;
-                    // 확률을 곱해서 계산 (예: 30% 확률이면 1640 * 0.3 = 492원)
-                    const finalPrice = seedPrice * rate;
+                    
+                    // count 처리: random(a,b)인 경우 (a+b)/2로 나눔 (개당 가격 계산)
+                    let countDivisor = 1;
+                    const countStr = seedSource.count || '1';
+                    const randomMatch = countStr.match(/random\((\d+),(\d+)\)/);
+                    if (randomMatch) {
+                        const a = parseInt(randomMatch[1], 10);
+                        const b = parseInt(randomMatch[2], 10);
+                        countDivisor = (a + b) / 2; // 평균값 사용
+                    } else {
+                        // 숫자인 경우 그대로 사용
+                        const numMatch = countStr.match(/(\d+)/);
+                        if (numMatch) {
+                            countDivisor = parseFloat(numMatch[1]);
+                        }
+                    }
+                    
+                    // 확률을 곱하고 개수로 나눠서 계산 (예: 100% 확률, random(1,6)이면 820 * 1.0 / 3.5 = 234원)
+                    const finalPrice = (seedPrice * rate) / countDivisor;
                     prices.push(finalPrice);
                 }
             }
@@ -196,8 +218,21 @@
             
             // 가격 정보 생성 (계산된 가격 사용)
             let priceInfo = '';
+            let countSuffix = ''; // random count 표시용
+            
+            // seedCount 정보 확인 (seed로부터 얻어진 아이템인 경우)
+            if (node.seedCount) {
+                const countStr = node.seedCount;
+                const randomMatch = countStr.match(/random\((\d+),(\d+)\)/);
+                if (randomMatch) {
+                    const a = parseInt(randomMatch[1], 10);
+                    const b = parseInt(randomMatch[2], 10);
+                    countSuffix = ` (${a}~${b})`;
+                }
+            }
+            
             if (node.price !== null && node.price !== undefined) {
-                priceInfo = `<span class="item-tree-price">${Math.round(node.price).toLocaleString()} ${t('현금')}</span>`;
+                priceInfo = `<span class="item-tree-price">${Math.round(node.price).toLocaleString()} ${t('현금')}${countSuffix}</span>`;
             } else if (node.sources) {
                 // 계산된 가격이 없으면 shop에서 직접 가져오기
                 const shopSource = node.sources.find(s => s.type === 'shop');
@@ -207,9 +242,9 @@
                     // 현금인 경우만 표시
                     if (moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金') {
                         if (shop.discountPrice && shop.discountPrice < shop.price) {
-                            priceInfo = `<span class="item-tree-price">${shop.discountPrice.toLocaleString()} ${moneyName}</span>`;
+                            priceInfo = `<span class="item-tree-price">${shop.discountPrice.toLocaleString()} ${moneyName}${countSuffix}</span>`;
                         } else if (shop.price) {
-                            priceInfo = `<span class="item-tree-price">${shop.price.toLocaleString()} ${moneyName}</span>`;
+                            priceInfo = `<span class="item-tree-price">${shop.price.toLocaleString()} ${moneyName}${countSuffix}</span>`;
                         }
                     }
                 }

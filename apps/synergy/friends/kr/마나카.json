@@ -210,6 +210,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "나는…",
+        "is_romance": true
+      },
+      {
+        "content": "마나카는 소중하지만…",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 5,

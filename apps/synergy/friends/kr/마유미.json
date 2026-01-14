@@ -202,6 +202,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "물론 마음이 있었지",
+        "is_romance": true
+      },
+      {
+        "content": "그런 생각은 없어",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 38,

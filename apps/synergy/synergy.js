@@ -757,7 +757,7 @@
             `;
 
             tab.addEventListener('click', () => {
-                selectCharacter(characterName);
+                selectCharacter(characterName, false); // 사용자 클릭 (forceLoad = false)
             });
 
             tabsContainer.appendChild(tab);
@@ -943,6 +943,20 @@
         }
 
         renderCharacterDetail(characterName, data);
+
+        // 모바일에서 detail까지 자동 스크롤 (초기 로드가 아닐 때만, 즉 사용자 클릭 시에만)
+        if (!forceLoad && window.innerWidth <= 768) {
+            setTimeout(() => {
+                const detailElement = document.getElementById('characterDetail');
+                if (detailElement) {
+                    detailElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }
+            }, 100); // 렌더링 완료를 위한 약간의 지연
+        }
     }
     
     // selectCharacter를 전역으로 노출
@@ -1294,7 +1308,7 @@
                 
                 // RANK 14→15이고 can_romance가 true인 경우 소울 메이트/절친 표시 추가 (메로페 제외)
                 if (rankFrom === 14 && rankTo === 15 && data.can_romance === true && characterName !== '메로페') {
-                    html += `<div class="soulmate-indicator-placeholder" data-rank="14-15"></div>`;
+                    html += `<div class="soulmate-indicator-placeholder" data-rank="14-15" data-character="${characterName}"></div>`;
                 }
                 
                 html += `

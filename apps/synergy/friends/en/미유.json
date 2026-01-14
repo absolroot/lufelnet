@@ -194,6 +194,16 @@
       }
     ],
     "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "Let's take things slow, as friends.",
+        "is_romance": false
+      },
+      {
+        "content": "I want to stay by your side, too.",
+        "is_romance": true
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 10,
@@ -569,6 +579,7 @@
                     9,
                     7
                   ],
+                  "count": "random(1,6)",
                   "rate": "100%",
                   "seed": {
                     "box": [],

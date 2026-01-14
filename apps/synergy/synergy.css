@@ -740,6 +740,16 @@
     vertical-align: middle;
 }
 
+/* Affection 열 (호감도, 최초 선물) 너비 제한 */
+.item-table th:nth-child(2),
+.item-table td:nth-child(2),
+.item-table th:nth-child(3),
+.item-table td:nth-child(3) {
+    width: 1%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
 .item-table td {
     font-size: 13px;
 }
@@ -801,6 +811,13 @@
     padding: 8px 12px;
 }
 
+@media (max-width: 768px) {
+    .item-table td:first-child {
+        max-width: 0;
+        overflow: hidden;
+    }
+}
+
 /* 선호 선물 모바일 레이아웃 */
 .item-name-desktop {
     display: inline-flex;
@@ -853,20 +870,43 @@
         font-size: 11px;
         color: #999;
         margin-left: 34px;
+        max-width: 100%;
+        overflow: hidden;
     }
     
     .item-price-meta {
         display: flex;
         align-items: center;
         gap: 4px;
+        flex-shrink: 0;
     }
     
     .item-meta-separator {
         color: #666;
+        flex-shrink: 0;
     }
     
     .item-source-meta {
         color: #999;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        min-width: 0;
+        flex: 1;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    
+    .item-source-meta > *:not(.item-source-icon) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+        flex: 1;
+    }
+    
+    .item-source-meta .item-source-icon {
+        flex-shrink: 0;
     }
     
     .item-price-desktop,

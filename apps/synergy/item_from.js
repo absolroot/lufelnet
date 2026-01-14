@@ -119,18 +119,40 @@
             return null;
         }
 
+        const prices = [];
+
         // shop에서 현금 가격 찾기
         const shopSource = tree.sources.find(s => s.type === 'shop');
         if (shopSource && shopSource.shops && shopSource.shops.length > 0) {
             const shop = shopSource.shops[0];
-            // 현금인 경우만 가격 반환
+            // 현금인 경우만 가격 추가
             const moneyName = shop.moneyName || '';
             if (moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金') {
-                return shop.discountPrice && shop.discountPrice < shop.price 
+                const shopPrice = shop.discountPrice && shop.discountPrice < shop.price 
                     ? shop.discountPrice 
                     : shop.price;
+                if (shopPrice) {
+                    prices.push(shopPrice);
+                }
             }
         }
+
+        // seed가 여러 개인 경우, 각각의 가격을 계산하고 가장 싼 것을 선택
+        const seedSources = tree.sources.filter(s => s.type === 'seed');
+        seedSources.forEach(seedSource => {
+            if (seedSource.material) {
+                const seedPrice = calculateItemPrice(seedSource.material);
+                if (seedPrice !== null) {
+                    // 확률 파싱 (예: "100%" -> 1.0, "30.0%" -> 0.3)
+                    const rateStr = seedSource.label || '100%';
+                    const rateMatch = rateStr.match(/(\d+(?:\.\d+)?)/);
+                    const rate = rateMatch ? parseFloat(rateMatch[1]) / 100 : 1.0;
+                    // 확률을 곱해서 계산 (예: 30% 확률이면 1640 * 0.3 = 492원)
+                    const finalPrice = seedPrice * rate;
+                    prices.push(finalPrice);
+                }
+            }
+        });
 
         // compound인 경우 재료들의 가격 합산
         const compoundSource = tree.sources.find(s => s.type === 'compound');
@@ -148,20 +170,14 @@
                 }
             });
             
-            return allHavePrice ? totalPrice : null;
+            if (allHavePrice) {
+                prices.push(totalPrice);
+            }
         }
 
-        // seed인 경우 확률을 곱해서 계산
-        const seedSource = tree.sources.find(s => s.type === 'seed');
-        if (seedSource && seedSource.material) {
-            const seedPrice = calculateItemPrice(seedSource.material);
-            if (seedPrice !== null) {
-                // 확률 파싱 (예: "100%" -> 1.0, "70.0%" -> 0.7)
-                const rateStr = seedSource.label || '100%';
-                const rateMatch = rateStr.match(/(\d+(?:\.\d+)?)/);
-                const rate = rateMatch ? parseFloat(rateMatch[1]) / 100 : 1.0;
-                return seedPrice * rate;
-            }
+        // 모든 가능한 가격 중 가장 싼 것을 반환
+        if (prices.length > 0) {
+            return Math.min(...prices);
         }
 
         return null;

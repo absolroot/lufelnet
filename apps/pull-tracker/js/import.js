@@ -32,7 +32,7 @@
     function ensureTsOrderInPayload(payload){
         try {
             if (!payload || !payload.data) return payload;
-            const KEYS = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+            const KEYS = ['Confirmed','Fortune','Weapon','Weapon_Confirmed','Gold','Newcomer'];
             for (const k of KEYS){
                 const block = payload.data[k];
                 if (!block || !Array.isArray(block.records)) continue;

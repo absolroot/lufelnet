@@ -203,7 +203,7 @@
             const base = ensureSchema(getMergedCache()) || null;
             const next = ensureSchema(incoming);
             const out = { version: 1, updatedAt: Date.now(), data: {} };
-            const keys = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+            const keys = ['Confirmed','Fortune','Weapon','Weapon_Confirmed','Gold','Newcomer'];
             for (const k of keys){ out.data[k] = mergeTypeBlock((base?base.data[k]:null), next.data[k]); }
             return out;
         } catch(_) { return incoming; }

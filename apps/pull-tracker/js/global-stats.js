@@ -17,12 +17,12 @@
   };
 
   const NAME = {
-    kr: { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' },
-    en: { Confirmed:'Target', Fortune:'Chance', Gold:'Gold', Weapon:'Weapon', Newcomer:'Newcomer' },
-    jp: { Confirmed:'TARGET', Fortune:'CHANCE', Gold:'通常', Weapon:'武器', Newcomer:'新米怪盗サポート' }
-  }[lang] || { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Newcomer:'신규' };
+    kr: { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Weapon_Confirmed:'무기 확정', Newcomer:'신규' },
+    en: { Confirmed:'Target', Fortune:'Chance', Gold:'Gold', Weapon:'Weapon', Weapon_Confirmed:'Weapon Confirmed', Newcomer:'Newcomer' },
+    jp: { Confirmed:'TARGET', Fortune:'CHANCE', Gold:'通常', Weapon:'武器', Weapon_Confirmed:'武器確定', Newcomer:'新米怪盗サポート' }
+  }[lang] || { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Weapon_Confirmed:'무기 확정', Newcomer:'신규' };
 
-  const ICONS = { Confirmed:'정해진 운명.png', Fortune:'정해진 운명.png', Gold:'미래의 운명.png', Weapon:'정해진 코인.png', Newcomer:'미래의 운명.png' };
+  const ICONS = { Confirmed:'정해진 운명.png', Fortune:'정해진 운명.png', Gold:'미래의 운명.png', Weapon:'정해진 코인.png', Weapon_Confirmed:'정해진 코인.png', Newcomer:'미래의 운명.png' };
 
   const homeEl = qs('#navhome');
   const regionEl = qs('#globalRegion');
@@ -140,7 +140,7 @@
       return n || null;
     } catch(_) { return null; }
   }
-  function resolveDisplayName(name, label){ try { const fixed = applyNameFixups(name); if (label==='weapon'){ const meta = resolveWeaponMeta(fixed); const alt = meta ? weaponNameByLang(meta.ownerKey, meta.weaponKey) : null; return alt || name; } const cls = resolveCharacterClass(fixed); if(!cls) return name; const info=(getCharData()||{})[cls]; const alt=charNameByLang(info); return alt || name; } catch(_) { return name; } }
+  function resolveDisplayName(name, label){ try { const fixed = applyNameFixups(name); if (label==='weapon' || label==='weapon_confirmed'){ const meta = resolveWeaponMeta(fixed); const alt = meta ? weaponNameByLang(meta.ownerKey, meta.weaponKey) : null; return alt || name; } const cls = resolveCharacterClass(fixed); if(!cls) return name; const info=(getCharData()||{})[cls]; const alt=charNameByLang(info); return alt || name; } catch(_) { return name; } }
 
   async function fetchSummary(region){
     const key = String(region||'KR').toLowerCase();
@@ -185,7 +185,7 @@
 
   function mergePeriodSummaries(periodJson){
     // periodJson: { data: [ { summary: {...} }, ... ] }
-    const acc = { Confirmed:{}, Fortune:{}, Gold:{}, Newcomer:{}, Weapon:{} };
+    const acc = { Confirmed:{}, Fortune:{}, Gold:{}, Newcomer:{}, Weapon:{}, Weapon_Confirmed:{} };
     try {
       const arr = periodJson ? periodJson : [];
       for (const row of arr){
@@ -211,7 +211,9 @@
     const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map(v=>Number(v))) : new Set();
     const limited = []; const standard = [];
     for (const v of byId.values()) { (loseSet.has(Number(v.id)) ? standard : limited).push({ name:v.name, count:v.count }); }
-    const weapons = new Map(); for (const [name, meta] of Object.entries(data.Weapon||{})){ const c = Number(meta.count||0); if (!Number.isFinite(c)) continue; weapons.set(name, (weapons.get(name)||0)+c); }
+    const weapons = new Map(); 
+    for (const [name, meta] of Object.entries(data.Weapon||{})){ const c = Number(meta.count||0); if (!Number.isFinite(c)) continue; weapons.set(name, (weapons.get(name)||0)+c); }
+    for (const [name, meta] of Object.entries(data.Weapon_Confirmed||{})){ const c = Number(meta.count||0); if (!Number.isFinite(c)) continue; weapons.set(name, (weapons.get(name)||0)+c); }
     const toEntries = (arrOrMap)=> Array.isArray(arrOrMap) ? arrOrMap.sort((a,b)=> b.count-a.count) : Array.from(arrOrMap.entries()).map(([name,count])=>({ name, count })).sort((a,b)=> b.count-a.count);
     return { limited: toEntries(limited), standard: toEntries(standard), weapon: toEntries(weapons) };
   }
@@ -308,7 +310,7 @@
   // Pity distribution chart
   const pityCanvas = qs('#pityChart');
   const pityTabs = qs('#pityTabs');
-  const PITY_MAX = { Confirmed:110, Fortune:80, Gold:80, Weapon:70, Newcomer:50 };
+  const PITY_MAX = { Confirmed:110, Fortune:80, Gold:80, Weapon:70, Weapon_Confirmed:95, Newcomer:50 };
   let pityDataCache = null; // region별 최근 가져온 원본 JSON 캐시
   const pityTipEl = pityCanvas ? makeTooltipHost(pityCanvas) : null;
   let pityRenderCache = null; // { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH }
@@ -316,7 +318,7 @@
   function renderPityTabs(){
     if (!pityTabs) return;
     pityTabs.innerHTML=''; pityTabs.classList.add('plain');
-    const kinds = ['Fortune','Confirmed','Gold','Weapon','Newcomer'];
+    const kinds = ['Fortune','Confirmed','Gold','Weapon','Weapon_Confirmed','Newcomer'];
     kinds.forEach((k,idx)=>{
       const b=document.createElement('button'); b.className='gs-tab'; b.textContent=(NAME[k]||k); b.dataset.kind=k;
       if (k==='Fortune') b.classList.add('active');
@@ -539,7 +541,7 @@
     if (!cardsWrap) return;
     cardsWrap.innerHTML = '';
     const data = (summary) || {};
-    const order = ['Fortune','Confirmed','Gold','Weapon','Newcomer'];
+    const order = ['Fortune','Confirmed','Gold','Weapon','Weapon_Confirmed','Newcomer'];
     for (const k of order){ cardsWrap.appendChild(makeGlobalCard(k, data[k] || null)); }
   }
 
@@ -547,7 +549,7 @@
     if (!infoWrap) return;
     const data = (summary) || {};
     const charKeys = ['Fortune','Confirmed','Gold','Newcomer'];
-    const weapKeys = ['Weapon'];
+    const weapKeys = ['Weapon','Weapon_Confirmed'];
     const pick = (keys, field)=> keys.reduce((s,k)=> s + (Number((data[k]||{})[field]||0)||0), 0);
     const weightedAvg = (keys)=>{
       let num = 0, den = 0;

@@ -4,7 +4,7 @@
             const ctx = canvas.getContext('2d');
             const nowReal = new Date();
             const msDay = 24*60*60*1000;
-            const arr = (key==='pickup') ? [blocks.pickup[0], blocks.pickup[1]] : (key==='weapon' ? [blocks.weapon[0]] : [blocks.standard[0], blocks.standard[1]]);
+            const arr = (key==='pickup') ? [blocks.pickup[0], blocks.pickup[1]] : (key==='weapon' ? blocks.weapon : [blocks.standard[0], blocks.standard[1]]);
             const allRecords = arr.flatMap(b => (b && Array.isArray(b.records)) ? b.records.flatMap(s => Array.isArray(s.record)? s.record:[]) : []);
             const maxTs = allRecords.reduce((m,r)=> Math.max(m, Number(r.timestamp||0)), 0);
             const end = new Date(Math.max(0, Math.min(Number(nowReal), maxTs || Number(nowReal))));

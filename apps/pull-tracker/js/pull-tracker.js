@@ -562,7 +562,7 @@
             const get = (key) => payload.data[key];
             const blocks = {
                 pickup: [get('Confirmed'), get('Fortune')],
-                weapon: [get('Weapon')],
+                weapon: [get('Weapon'), get('Weapon_Confirmed')],
                 standard: [get('Gold'), get('Newcomer')]
             };
             const inProgressOf = (b) => {
@@ -665,8 +665,9 @@
             const pickupLabel = `  └ ${lang==='en'?'5★ Limited':(lang==='jp'?'★5 限定':'5성 한정')}`; 
             const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate!=null?numberFmt(pickupRate,2)+'%':'-'}</div><div class=\"td\">${pickupAvg!=null?numberFmt(pickupAvg,2):'-'}</div></div>`;
 
+            // Weapon만 50:50 계산, Weapon_Confirmed는 제외
             const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050)||0);
-            const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star)||0);
+            const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star)||0) + (Number(blocks.weapon[1]?.summary?.total5Star)||0);
             const weaponLabel = `  └ ${lang==='en'?'5★ Limited':(lang==='jp'?'★5 限定':'5성 한정')}`;
             const weaponAvg = weaponWin>0 ? (weapon.effTotal/weaponWin) : null;
             const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5>0?numberFmt(weaponWin/weaponTotal5*100,2)+'%':'-'}</div><div class=\"td\">${weaponAvg!=null?numberFmt(weaponAvg,2):'-'}</div></div>`;
@@ -826,7 +827,7 @@
     function ensureTsOrderInPayload(payload){
         try {
             if (!payload || !payload.data) return payload;
-            const KEYS = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+            const KEYS = ['Confirmed','Fortune','Weapon','Weapon_Confirmed','Gold','Newcomer'];
             for (const k of KEYS){
                 const block = payload.data[k];
                 if (!block || !Array.isArray(block.records)) continue;
@@ -1010,11 +1011,12 @@
     // Build stat cards from example.json-like structure
     function renderCardsFromExample(payload) {
         if (!payload || !payload.data || !els.cards) return;
-        // 카드 순서/행 구성: 1행(확정/운명/일반), 2행(무기/신규)
+        // 카드 순서/행 구성: 1행(확정/운명/일반), 2행(무기/무기확정/신규)
         const types = [
             ['Fortune', 'fortune'],
             ['Confirmed', 'confirmed'],
             ['Weapon', 'weapon'],
+            ['Weapon_Confirmed', 'weapon_confirmed'],
             ['Gold', 'gold'],
             ['Newcomer', 'newcomer']
         ];
@@ -1033,14 +1035,17 @@
 
         for (const [key, label] of types) {
             const block = payload.data[key];
-            if (!block) continue;
+            // Weapon_Confirmed는 데이터가 없어도 카드 표시
+            if (!block && key !== 'Weapon_Confirmed') continue;
+            // Weapon_Confirmed가 없으면 빈 블록 생성
+            const actualBlock = block || { summary: { pulledSum: 0, total5Star: 0, total4Star: 0, win5050: 0, avgPity: null }, records: [] };
 
             // 총 뽑기: summary.pulledSum
-            const total = getNumber(block, ['summary', 'pulledSum']);
+            const total = getNumber(actualBlock, ['summary', 'pulledSum']);
             // 진행 중(현재 5★ 미확정 구간) 계산: fivestar === null 인 섹션들의 record 길이 합
             let inProgress = (() => {
                 try {
-                    const list = Array.isArray(block.records) ? block.records : [];
+                    const list = Array.isArray(actualBlock.records) ? actualBlock.records : [];
                     if (list.length===0) return 0;
                     // 이 블록의 모든 진행 중 세그먼트 길이 합산 (overview 규칙과 동일화)
                     let s = 0; 
@@ -1054,15 +1059,15 @@
                 } catch(_) { return 0; }
             })();
             // 엔진 summary 값이 있으면 우선 사용
-            const inProgressFromSummary = getNumber(block, ['summary', 'inProgressCount']);
+            const inProgressFromSummary = getNumber(actualBlock, ['summary', 'inProgressCount']);
             if (Number.isFinite(inProgressFromSummary)) inProgress = inProgressFromSummary;
             const effectiveSummary = getNumber(block, ['summary', 'effectivePulled']);
             const effectiveTotal = Number.isFinite(effectiveSummary) ? effectiveSummary : Math.max(0, (Number.isFinite(total) ? total : 0) - inProgress);
 
-            const avgPity = getNumber(block, ['summary', 'avgPity']);
-            const total5 = getNumber(block, ['summary', 'total5Star']);
-            const total4 = getNumber(block, ['summary', 'total4Star']);
-            const win5050 = getNumber(block, ['summary', 'win5050']);
+            const avgPity = getNumber(actualBlock, ['summary', 'avgPity']);
+            const total5 = getNumber(actualBlock, ['summary', 'total5Star']);
+            const total4 = getNumber(actualBlock, ['summary', 'total4Star']);
+            const win5050 = getNumber(actualBlock, ['summary', 'win5050']);
 
             // 보정값 가져오기 (먼저 정의해야 함)
             let adjustedTotal = total;
@@ -1108,7 +1113,8 @@
                 fortune: '정해진 운명.png',
                 gold: '미래의 운명.png',
                 newcomer: '미래의 운명.png',
-                weapon: '정해진 코인.png'
+                weapon: '정해진 코인.png',
+                weapon_confirmed: '정해진 코인.png'
             };
             const iconName = iconMap[label];
             if (iconName) {
@@ -1177,7 +1183,7 @@
             fiveRow.classList.add('five');
             table.appendChild(fiveRow);
 
-            //  ㄴ 50:50 (Fortune/Weapon) - 평균도 표시
+            //  ㄴ 50:50 (Fortune/Weapon) - 평균도 표시 (Weapon_Confirmed는 제외)
             if (label === 'fortune' || label === 'weapon') {
                 const fiftyRow = makeTableRow([
                     '  └ 50% '+textFor('win'),
@@ -1207,7 +1213,7 @@
             const pills = document.createElement('div');
             pills.className = 'pills';
             // if (DEBUG) console.log('[pull-tracker] render pills for', label);
-            renderNamePills(block, pills, label, hide4, key);
+            renderNamePills(actualBlock, pills, label, hide4, key);
             card.appendChild(pills);
 
             // 아코디언: 5★ 상세 기록 (이미지/이름/시간/천장)
@@ -1224,7 +1230,7 @@
                 if (window.RecordManager && window.RecordManager.collectFiveStarWithPity) {
                     fiveRecords = window.RecordManager.collectFiveStarWithPity(key).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
                 } else {
-                    fiveRecords = collectFiveStarRecords(block).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
+                    fiveRecords = collectFiveStarRecords(actualBlock).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
                 }
 
                 for (const rec of fiveRecords) {
@@ -1233,7 +1239,7 @@
                     row.style.cursor = 'pointer';
                     const left = document.createElement('div');
                     left.className = 'five-left';
-                    const avatar = (label === 'weapon') ? weaponThumbFor(rec.name) : characterThumbFor(rec.name);
+                    const avatar = (label === 'weapon' || label === 'weapon_confirmed') ? weaponThumbFor(rec.name) : characterThumbFor(rec.name);
                     if (avatar) left.appendChild(avatar);
                     const nameEl = document.createElement('span');
                     nameEl.textContent = resolveDisplayName(rec.name, label);
@@ -1351,9 +1357,9 @@
 
     function toDisplayName(key) {
         const map = {
-            kr: { gold: '일반', fortune: '운명', weapon: '무기', confirmed: '확정', newcomer: '신규' },
-            en: { gold: 'Gold', fortune: 'Chance', weapon: 'Weapon', confirmed: 'Target', newcomer: 'Newcomer' },
-            jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', confirmed: '確定', newcomer: '新米怪盗サポート' }
+            kr: { gold: '일반', fortune: '운명', weapon: '무기', weapon_confirmed: '무기 확정', confirmed: '확정', newcomer: '신규' },
+            en: { gold: 'Gold', fortune: 'Chance', weapon: 'Weapon', weapon_confirmed: 'Weapon Confirmed', confirmed: 'Target', newcomer: 'Newcomer' },
+            jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', weapon_confirmed: '武器確定', confirmed: '確定', newcomer: '新米怪盗サポート' }
         };
         const dict = map[lang] || map.kr;
         return dict[key] || key;
@@ -1375,6 +1381,7 @@
                 tooltip_fortune: '운명: 5★ 80회 보장, 4★ 10회 보장 (50% 규칙).\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.\n\n50% 성공 여부는 현재 게임 서버에서 제공되지 않아 한정 캐릭터 여부를 통해 성공 여부를 판정합니다. 따라서 특정 상황에 따라 정확도가 떨어집니다.\n\n50%에 실패할 경우 다음은 무조건 성공하므로, 횟수가 많아지면 기댓값은 66.6%입니다.',
                 tooltip_gold: '일반: 5★ 80회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
                 tooltip_weapon: '무기: 5★ 70회 보장, 4★ 10회 보장 (50% 규칙).\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.\n\n50% 성공 여부는 현재 게임 서버에서 제공되지 않아 한정 캐릭터 여부를 통해 성공 여부를 판정합니다. 따라서 특정 상황에 따라 정확도가 떨어집니다.\n\n50%에 실패할 경우 다음은 무조건 성공하므로, 횟수가 많아지면 기댓값은 66.6%입니다.',
+                tooltip_weapon_confirmed: '무기 확정: 5★ 95회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
                 tooltip_newcomer: '신규: 5★ 50회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
                 fiveTotal: '5★ 총 횟수',
                 fivePityRate: '5★ 확률',
@@ -1399,6 +1406,7 @@
                 tooltip_fortune: 'Fortune: 5★ at 80, 4★ at 10 (50:50 rule).\n5★Rates and 50:50 use (Total - In Progress).\n50:50 success is not provided by the game server; we infer it using featured/limited status, so accuracy may be reduced in some situations.\n\nIf it loses 50% of the time, the next time it will always win, so the expectation is 66.6% as the number of times increases.',
                 tooltip_gold: 'Standard: 5★ at 80, 4★ at 10.\n5★ Rates use (Total - In Progress).',
                 tooltip_weapon: 'Weapon: 5★ at 70, 4★ at 10 (50:50 rule).\n5★ Rates and 50:50 use (Total - In Progress).\n50:50 success is not provided by the game server; we infer it using featured/limited status, so accuracy may be reduced in some situations.\n\nIf it loses 50% of the time, the next time it will always win, so the expectation is 66.6% as the number of times increases.',
+                tooltip_weapon_confirmed: 'Weapon Confirmed: 5★ at 95, 4★ at 10.\n5★ Rates are calculated using (Total - In Progress).',
                 tooltip_newcomer: 'Newcomer: 5★ at 50, 4★ at 10.\n5★ Rates use (Total - In Progress).',
                 fiveTotal: '5★ Count',
                 fivePityRate: '5★ Rate',
@@ -1423,6 +1431,7 @@
                 tooltip_fortune: 'フォーチュン: 5★ 80回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。\n\n50%に失敗した場合、次は無条件で成功するので、回数が増えると期待値は66.6%になります。',
                 tooltip_gold: '通常: 5★ 80回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
                 tooltip_weapon: '武器: 5★ 70回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。\n\n50%に失敗した場合、次は無条件で成功するので、回数が増えると期待値は66.6%になります。',
+                tooltip_weapon_confirmed: '武器確定: 5★ 95回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算します。',
                 tooltip_newcomer: '新米怪盗サポート: 5★ 50回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
                 fiveTotal: '5★ 回数',
                 fivePityRate: '5★ 率',
@@ -1479,6 +1488,7 @@
                  : label === 'fortune' ? 'tooltip_fortune'
                  : label === 'gold' ? 'tooltip_gold'
                  : label === 'weapon' ? 'tooltip_weapon'
+                 : label === 'weapon_confirmed' ? 'tooltip_weapon_confirmed'
                  : label === 'newcomer' ? 'tooltip_newcomer'
                  : null;
         const dict = {
@@ -1584,12 +1594,13 @@
     }
 
     function pityRuleAvgFor(label) {
-        // 규칙: Confirmed(확정)=110, Fortune(운명)=80, Gold(골드)=80, Weapon(무기)=70, Newcomer(뉴커머)=50
+        // 규칙: Confirmed(확정)=110, Fortune(운명)=80, Gold(골드)=80, Weapon(무기)=70, Weapon_Confirmed(무기확정)=95, Newcomer(뉴커머)=50
         // 4★은 전 타입 10
         const five = (label === 'confirmed') ? 110
                   : (label === 'fortune') ? 80
                   : (label === 'gold') ? 80
                   : (label === 'weapon') ? 70
+                  : (label === 'weapon_confirmed') ? 95
                   : (label === 'newcomer') ? 50
                   : null;
         const four = 10;
@@ -1625,7 +1636,7 @@
                     if (g === 5) pill.classList.add('grade-5');
                     else if (g === 4) pill.classList.add('grade-4');
                     // 이미지: 무기 카드는 무기 이미지, 그 외는 캐릭터 이미지
-                    const img = (label === 'weapon') ? weaponThumbFor(name) : characterThumbFor(name);
+                    const img = (label === 'weapon' || label === 'weapon_confirmed') ? weaponThumbFor(name) : characterThumbFor(name);
                     if (img) {
                         pill.style.display = 'inline-flex';
                         pill.style.alignItems = 'center';
@@ -1940,7 +1951,7 @@
     function resolveDisplayName(name, label){
         try {
             const fixed = applyNameFixups(name);
-            if (label === 'weapon') {
+            if (label === 'weapon' || label === 'weapon_confirmed') {
                 const meta = resolveWeaponMeta(fixed);
                 const alt = meta ? weaponNameByLang(meta.ownerKey, meta.weaponKey) : null;
                 return alt || name;
@@ -1955,7 +1966,7 @@
 
     // Supabase rows → merged payload 형태로 변환
     function shapeCloudRows(rows){
-        const keys = ['Confirmed','Fortune','Weapon','Gold','Newcomer'];
+        const keys = ['Confirmed','Fortune','Weapon','Weapon_Confirmed','Gold','Newcomer'];
         const data = {}; for (const k of keys) data[k] = { summary:{ pulledSum:0,total5Star:0,total4Star:0,win5050:0,avgPity:null }, records:[] };
         const byType = new Map();
         for (const r of rows){

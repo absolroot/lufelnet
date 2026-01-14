@@ -104,6 +104,7 @@
         Confirmed: 110,
         Fortune: 80,
         Weapon: 70,
+        Weapon_Confirmed: 95,
         Gold: 80,
         Newcomer: 50
     };
@@ -747,7 +748,7 @@
         ensureStyles();
         closeModal();
 
-        const isWeapon = panelKey === 'Weapon';
+        const isWeapon = panelKey === 'Weapon' || panelKey === 'Weapon_Confirmed';
         const items = isWeapon ? getWeaponList(grade) : getCharacterList(grade);
         const maxPity = MAX_PITY[panelKey] || 80;
 
@@ -894,7 +895,7 @@
         closeModal();
 
         const isManual = isManualRecord(record);
-        const isWeapon = panelKey === 'Weapon';
+        const isWeapon = panelKey === 'Weapon' || panelKey === 'Weapon_Confirmed';
         const grade = Number(record.grade || 5);
         const items = isWeapon ? getWeaponList(grade) : getCharacterList(grade);
         const maxPity = MAX_PITY[panelKey] || 80;

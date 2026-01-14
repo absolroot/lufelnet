@@ -93,7 +93,7 @@ details[open] > summary::before { content:'-'; }
 .info-card .val { font-size:32px; font-weight:700; }
 
 /* Global 5-col */
-.global-cards { display:grid; grid-template-columns: repeat(5, minmax(160px,1fr)); gap:12px; margin: 8px 0px; }
+.global-cards { display:grid; grid-template-columns: repeat(6, minmax(120px,1fr)); gap:12px; margin: 8px 0px; }
 .global-card { background:var(--card-background); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:16px; }
 .global-card .big { font-size:28px; font-weight:700; margin:0; }
 .global-card .sub { margin-top:6px; font-size:12px; opacity:.9; }

@@ -808,7 +808,7 @@
 }
 
 .item-table td:first-child {
-    padding: 8px 12px;
+    padding: 8px 12px 8px 4px;
 }
 
 @media (max-width: 768px) {

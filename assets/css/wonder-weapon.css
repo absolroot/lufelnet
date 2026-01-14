@@ -1,5 +1,9 @@
 /* Wonder Weapon Page Styles - based on revelations.css */
 
+
+.header-container { padding: 0px; }
+.navigation-path { padding: 0px; }
+
 .main-content { background-color: transparent; width: 100%; }
 
 /* One-column grid at all widths */
@@ -25,10 +29,10 @@
 .source { font-size: 12px; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.15); padding: 4.5px 10px; border-radius: 8px; }
 
 
-.effect-block { display: grid; grid-template-columns: 70px 1fr; 
+/* Legacy effect-block styles (for old card structure) */
+.effect-block { display: grid; 
   gap: 8px; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 10px; }
 .effect-label { color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 500; }
-.effect-text { color: rgba(255,255,255,0.75); font-size: 13px; white-space: pre-line; }
 
 /* Accordion */
 .accordion { width: 100%; margin-top: 10px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.15); }
@@ -37,35 +41,132 @@
 .accordion-content { display: none; padding: 10px 12px; color: rgba(255,255,255,0.85); font-size: 13px; }
 .accordion-content.open { display: block; }
 
-.user-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.user-list { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 12px; 
+}
 .user-tag { background: rgba(0,0,0,0.35); color: rgba(255,255,255,0.9); padding: 4px 8px; border-radius: 999px; font-size: 12px; }
 
-/* Character link items inside accordion */
-.character-link { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.35); color: rgba(255,255,255,0.95); padding: 0px 12px 0px 0px; border-radius: 999px; font-size: 12px; text-decoration: none; }
-.character-link:hover { filter: brightness(1.1); }
-.character-img { width: 32px; height: 32px; object-fit: cover; border-radius: 50%; background: #222; }
-.character-name { line-height: 1; }
+/* Character link items inside accordion - Modern style */
+.character-link { 
+    display: inline-flex; 
+    align-items: flex-start; 
+    gap: 10px; 
+    background: rgba(0, 0, 0, 0.4); 
+    color: rgba(255,255,255,0.95); 
+    padding: 12px; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    min-width: 182px;
+    box-sizing: border-box;
+}
+.character-link:hover { 
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+.character-img { 
+    width: 40px; 
+    height: 40px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    background: #222;
+    border: 0px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+.character-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+.character-name { 
+    line-height: 1.4;
+    font-weight: 400;
+}
 
 /* Character icons (position/element) */
-.char-icons { display: inline-flex; gap: 4px; align-items: center; }
-.char-icon { width: 16px; height: 16px; object-fit: contain; }
+.char-icons { 
+    display: inline-flex; 
+    gap: 4px; 
+    align-items: center;
+    flex-shrink: 0;
+}
+.char-icon { 
+    width: 18px; 
+    height: 18px; 
+    object-fit: contain;
+}
 
 /* Utilities */
-.separator-line { padding: 0 20px; width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 90%, transparent); margin: 0 0 24px 0; box-sizing: border-box; }
+.separator-line {
+    height: 1px;
+    background: #333;
+    margin: 20px 0;
+}
 
 @media (max-width: 1200px) { .navigation-path, .header-container, .weapon-cards { padding-left: 0; padding-right: 0; }
   .header-container h1 { margin-bottom: 0; }
 }
 
-/* Effect levels and highlighting */
-/* .levels-block {grid-column: 1 / -1;}*/
-.levels-controls { display: flex; gap: 8px; margin-bottom: 12px; }
-.level-btn { background: rgba(0, 0, 0, 0.15); color: rgba(255, 255, 255, 0.9); border: none; border-radius: 9999px; padding: 4px 10px; font-size: 12px; cursor: pointer; webkit-user-select: none; }
-.level-btn:focus { outline: none; }
-.level-btn.active { background: rgba(255,255,255,0.05); box-shadow: 0 0 0 1px #ffffff inset; }
+/* Effect levels and highlighting - Modern style */
+.levels-controls { 
+    display: flex; 
+    gap: 6px; 
+    margin-bottom: 16px; 
+    flex-wrap: wrap;
+}
+.level-btn { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.05); 
+    color: rgba(255, 255, 255, 0.7); 
+    border: 0px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 4px; 
+    padding: 6px 12px; 
+    font-size: 13px; 
+    font-weight: 500;
+    cursor: pointer; 
+    transition: all 0.2s ease;
+    user-select: none;
+    min-width: 60px;
+}
+.level-btn-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+.level-btn-roman {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+}
+.level-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+}
+.level-btn:focus { 
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(115, 0, 0, 0.3);
+}
+.level-btn.active { 
+    
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
 
 @media (max-width: 768px) { .levels-block { margin-top: 4px }
-  .levels-controls { margin-bottom: 0px }
 }
 
 
@@ -83,36 +184,611 @@
   .effect-label { display: none }
 }
 
-/* Sort controls */
-.sort-controls { display: flex; gap: 8px; padding: 0 20px 8px 20px; }
-
-@media (max-width: 1200px) { .sort-controls { padding: 0; }
+/* Detail Header (synergy style) */
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #333;
 }
 
-.sort-button { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); border: none; border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
-.sort-button.active { background: rgba(255,255,255,0.2); box-shadow: 0 0 0 1px #ffffff inset; }
+@media (max-width: 768px) {
+    .detail-header {
+        gap: 8px;
+    }
+}
+
+.detail-header-image {
+    width: 80px;
+    height: 120px;
+    border-radius: 0px;
+    object-fit: contain;
+}
+
+.detail-header-info h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    color: #fff;
+}
+
+.detail-header-element-icon {
+    width: auto;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.detail-source-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-source {
+    font-size: 14px;
+    color: #999;
+}
+
+/* Detail Sections (synergy style) */
+.detail-section {
+    margin-bottom: 32px;
+}
+
+.detail-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #730000;
+}
+
+.detail-section-title.collapsible {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.detail-section-title.collapsible:hover {
+    opacity: 0.8;
+}
+
+.detail-section-title.collapsible span {
+    flex: 1;
+}
+
+.section-chevron {
+    width: 12px;
+    height: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease, color 0.2s ease;
+    flex-shrink: 0;
+    transform: rotate(90deg); /* 초기 상태: 아래 방향 (펼침) */
+}
+
+.detail-section-title.collapsible:hover .section-chevron {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 10000px;
+    opacity: 1;
+    padding-top: 8px;
+}
+
+/* Effect text wrapper - 상자 스타일 */
+.effect-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-top: 0;
+}
+
+/* Effect text styling for detail sections */
+.detail-section .effect-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-line;
+    word-break: break-word;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-section .effect-text .num {
+    font-weight: 600;
+}
+
+.detail-section.collapsed .section-content {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+/* Filter Section */
+.filter-section {
+    margin: 20px 0;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.source-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.source-filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #333;
+    background: var(--card-background);
+    color: #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.source-filter-btn:hover {
+    filter: brightness(1.1);
+    border-color: #555;
+}
+
+.source-filter-btn.active {
+    background: #730000;
+    border-color: #730000;
+    color: #fff;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 8px 16px 8px 40px;
+    border: 1px solid #333;
+    background: var(--card-background);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    height: 36px;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #730000;
+    background: #1a1a1a;
+}
+
+.search-container input::placeholder {
+    color: #666;
+}
+
+/* Main Container */
+.weapon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Weapon Tabs */
+.weapon-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    gap: 8px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .weapon-tabs {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 6px;
+    }
+}
+
+.weapon-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border: 1px solid #333;
+    background: var(--card-background);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+    .weapon-tab {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        text-align: left;
+    }
+}
+
+.weapon-tab:hover {
+    filter: brightness(1.1);
+    border-color: #555;
+}
+
+.weapon-tab.active {
+    background: #2a1a1a;
+    border-color: #730000;
+}
+
+.weapon-tab-image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@media (min-width: 769px) {
+    .weapon-tab-image {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+.weapon-tab-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .weapon-tab-info {
+        width: auto;
+    }
+}
+
+.weapon-tab-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #eee;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .weapon-tab-name {
+        text-align: left;
+        white-space: normal;
+        line-height: 1.4;
+    }
+}
+
+.weapon-tab-source {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+}
+
+.weapon-tab-element-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@media (min-width: 769px) {
+    .weapon-tab-source {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .weapon-tab {
+        padding: 8px 6px;
+        gap: 6px;
+    }
+    
+    .weapon-tab-image {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .weapon-tab-name {
+        font-size: 12px;
+    }
+    
+    .weapon-tab-source {
+        
+        justify-content: center;
+        font-size: 10px;
+    }
+    
+    .weapon-tab-source-text {
+        display: none;
+    }
+    
+    .weapon-tab-element-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Weapon Detail */
+.weapon-detail {
+    flex: 1;
+    min-width: 0;
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 24px;
+    user-select: text;
+}
+
+.detail-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #730000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* Priority character */
-.character-link.priority .character-img { border: 1px solid #000; border-color: #ff0000; box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5); }
+.character-link.priority {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+.character-name.priority {
+    color: #ff6c6c;
+}
 
 .effect-text .num { color: #ffda82; font-weight: 400; }
 
-/* Lightning Stamp */
-.lightning-stamp-block { margin-top: 8px; }
-.lightning-stamp-header { display: flex; align-items: center; justify-content: flex-start; gap: 6px; margin-bottom: 6px; margin-top: 20px; }
-.lightning-stamp-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.95); }
-.lightning-stamp-icon { width: 20px; height: 20px; object-fit: contain; }
-.lightning-stamp-effect { background: rgba(0,0,0,0.25); }
-
-@media (max-width: 768px) {
-  .lightning-stamp-header { margin-top: 4px; }
-  .lightning-stamp-block { grid-column: 1 / -1; padding: 0 4px;}
-  .lightning-stamp-effect { grid-column: 1 / -1; margin-top: 4px; }
+/* Lightning Stamp - Modern style */
+.lightning-stamp-block {
+    margin-bottom: 24px;
+    padding: 16px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border: 0px solid rgba(255, 255, 255, 0.08);
 }
 
-/* lightning_stamp 출시 시점 표시 */
-.stamp-release-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-.stamp-release-row { display: flex; align-items: center; gap: 8px; }
-.stamp-release-tag { display: inline-flex; align-items: center; gap: 4px; background: rgba(0,0,0,0.35); border-radius: 999px; padding: 4px 12px 4px 8px; font-size: 11px; color: rgba(255,255,255,0.9); }
-.stamp-release-icon { width: 16px; height: 16px; object-fit: contain; }
-.stamp-release-num { font-weight: 400; }
+.lightning-stamp-block:last-child {
+    margin-bottom: 0;
+}
+
+.lightning-stamp-header { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
+}
+
+.lightning-stamp-name { 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px; 
+    font-weight: 600; 
+    color: rgba(255,255,255,0.95); 
+}
+
+.lightning-stamp-icon { 
+    width: 20px; 
+    height: 20px; 
+    object-fit: contain; 
+    flex-shrink: 0;
+}
+
+.lightning-stamp-block .effect-text {
+    margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .weapon-detail {
+    padding: 16px;
+  }
+  
+  .user-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .character-link{
+    min-width: 0;
+  }
+
+  .character-name{
+    font-size: 13px;
+  }
+  
+  .detail-section .effect-text {
+    font-size: 13px;
+  }
+  
+  .lightning-stamp-header { 
+    margin-top: 4px; 
+  }
+  
+  .lightning-stamp-block { 
+    padding: 16px;
+  }
+}
+
+/* 출시 시점 컨테이너 - 두 열 레이아웃 */
+.release-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+}
+
+.release-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 0;
+    padding: 16px;
+    background: #1a1a1a;
+    border-radius: 8px;
+}
+
+.release-column-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
+}
+
+.detail-section-title .detail-section-icon {
+    width: auto;
+    height: 16px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+/* Dialog choices 스타일 (synergy와 동일) */
+.dialog-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dialog-choice-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dialog-choice {
+    padding: 10px 12px;
+    background: #0f0f0f;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s ease;
+}
+
+.dialog-choice:hover {
+    background: #1a1a1a;
+}
+
+.dialog-choice-content {
+    flex: 1;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.character-img-small {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #222;
+    border: 0px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.stamp-release-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 4px;
+}
+
+/* Lightning Stamp 설명 */
+.lightning-stamp-description {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    border-left: 3px solid rgba(115, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .release-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stamp-release-grid {
+        grid-template-columns: 1fr;
+    }
+}

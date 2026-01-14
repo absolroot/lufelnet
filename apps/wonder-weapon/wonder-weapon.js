@@ -1,0 +1,982 @@
+// Wonder Weapon Page JavaScript
+
+(function() {
+  'use strict';
+
+  const BASE_URL = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
+  const APP_VERSION = (typeof window !== 'undefined' && window.APP_VERSION) ? window.APP_VERSION : Date.now().toString();
+
+  // No-op: do not delete data globals; they are provided by data files
+
+  // Load data files
+  async function loadDataFiles() {
+    return new Promise((resolve, reject) => {
+      // Remove any previous scripts to avoid duplication
+      document.querySelectorAll('script[src*="/data/kr/wonder/weapons.js"]').forEach(s => s.remove());
+      document.querySelectorAll('script[src*="/data/kr/characters/characters.js"]').forEach(s => s.remove());
+
+      const scripts = [
+        '/data/kr/wonder/weapons.js',
+        '/data/kr/characters/characters.js',
+      ];
+
+      let loaded = 0;
+      scripts.forEach(src => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = () => {
+          loaded++;
+          if (loaded === scripts.length) {
+            resolve();
+          }
+        };
+        s.onerror = () => reject(new Error('Failed to load ' + src));
+        document.head.appendChild(s);
+      });
+    });
+  }
+
+  // Per-character party loader (new structure)
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const exists = Array.from(document.scripts).some(s => s.src && s.src.includes(src));
+      if (exists) return resolve();
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('Failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function loadJSON(src) {
+    const res = await fetch(src, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  }
+
+  async function loadPerCharacterParty(name) {
+    try {
+      window.recommendParty = window.recommendParty || {};
+      const folder = encodeURIComponent(name);
+      const base = `/data/characters/${folder}/party`;
+      // Try JS first
+      await loadScript(`${base}.js?v=${APP_VERSION}`);
+      if (window.recommendParty && window.recommendParty[name]) return;
+      // Fallback to JSON
+      const data = await loadJSON(`${base}.json?v=${APP_VERSION}`);
+      window.recommendParty[name] = data || {};
+    } catch (e) {
+      // Silent: some characters might not have party data
+    }
+  }
+
+  async function loadAllPartyData() {
+    window.recommendParty = window.recommendParty || {};
+    const list = (typeof characterList !== 'undefined' && characterList)
+      ? [...(characterList.mainParty || []), ...(characterList.supportParty || [])]
+      : [];
+    if (!list.length) return;
+    await Promise.all(list.map(loadPerCharacterParty));
+  }
+
+  // i18n labels
+  const i18n = {
+    kr: {
+      language_notice: "",
+      nav_home: "홈",
+      nav_current: "원더 무기",
+      page_title: "원더 무기",
+      label_source: "획득처",
+      label_effect: "개조 설명",
+      label_characters: "주요 괴도",
+      label_release: "출시 시점",
+      label_lightning_stamp: "빛의 각인",
+      label_weapon_release: "무기",
+      label_stamp_release: "빛의 각인",
+      sort_release_desc: "출시 순 ↓",
+      sort_release_asc: "출시 순 ↑",
+      filter_all: "전체",
+      filter_shop: "교환",
+      filter_story: "스토리",
+      search_placeholder: "무기 검색...",
+      source_map: {
+        "Shop": "교환",
+        "Palace 1": "팰리스 1",
+        "Palace 2": "팰리스 2",
+        "Palace 3": "팰리스 3",
+        "Palace 3-2": "팰리스 3-2",
+        "Palace 4": "팰리스 4"
+      }
+    },
+    en: {
+      language_notice: "Please let me know if you find an accurate translation.\nIt may contain content that hasn't been released yet.",
+      nav_home: "Home",
+      nav_current: "Wonder Daggers",
+      page_title: "Wonder Daggers",
+      label_source: "Source",
+      label_effect: "Weapon Effect",
+      label_characters: "Characters",
+      label_release: "Released with",
+      label_lightning_stamp: "Lightning Stamp",
+      label_lightning_stamp_desc: "Feature released in Korean server v4.7.1 that further enhances weapons.",
+      label_weapon_release: "Weapon",
+      label_stamp_release: "Lightning Stamp",
+      sort_release_desc: "Release ↓",
+      sort_release_asc: "Release ↑",
+      filter_all: "All",
+      filter_shop: "Shop",
+      filter_story: "Story",
+      search_placeholder: "Search weapons...",
+      source_map: {
+        "Shop": "Shop",
+        "Palace 1": "Palace 1",
+        "Palace 2": "Palace 2",
+        "Palace 3": "Palace 3",
+        "Palace 3-2": "Palace 3-2",
+        "Palace 4": "Palace 4"
+      }
+    },
+    jp: {
+      language_notice: "正確な翻訳が見つかった場合は、お知らせください。\nまだリリースされていないコンテンツが含まれている可能性があります。",
+      nav_home: "ホーム",
+      nav_current: "ワンダー武器",
+      page_title: "ワンダー武器",
+      label_source: "入手",
+      label_effect: "武器効果",
+      label_characters: "使用キャラ",
+      label_release: "実装時期",
+      label_lightning_stamp: "Lightning Stamp",
+      label_lightning_stamp_desc: "韓国サーバーv4.7.1基準で実装された機能で、武器をさらに強化します。",
+      label_weapon_release: "武器",
+      label_stamp_release: "Lightning Stamp",
+      sort_release_desc: "発売順 ↓",
+      sort_release_asc: "発売順 ↑",
+      filter_all: "全体",
+      filter_shop: "交換",
+      filter_story: "ストーリー",
+      search_placeholder: "武器検索...",
+      source_map: {
+        "Shop": "ショップ",
+        "Palace 1": "パレス1",
+        "Palace 2": "パレス2",
+        "Palace 3": "パレス3",
+        "Palace 3-2": "パレス3-2",
+        "Palace 4": "パレス4"
+      }
+    }
+  };
+
+  // SEO per language
+  function updateSEO() {
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const seo = {
+      kr: {
+        title: '원더 무기 - 페르소나5 더 팬텀 X 루페르넷',
+        description: '페르소나5 더 팬텀 X의 원더 무기 정보. 획득처, 효과, 사용 캐릭터를 확인하세요.'
+      },
+      en: {
+        title: 'Wonder Weapons - Persona 5: The Phantom X LufelNet',
+        description: 'Wonder weapon information for Persona 5: The Phantom X. See source, effect, and characters.'
+      },
+      jp: {
+        title: 'ワンダー武器 - ペルソナ5 ザ・ファントム X LufelNet',
+        description: 'P5Xのワンダー武器情報。入手方法・効果・使用キャラを確認。'
+      }
+    }[lang] || null;
+
+    if (!seo) return;
+    document.title = seo.title;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (metaDescription) metaDescription.setAttribute('content', seo.description);
+    if (ogTitle) ogTitle.setAttribute('content', seo.title);
+    if (ogDescription) ogDescription.setAttribute('content', seo.description);
+  }
+
+  // Update static labels per language
+  function updateStaticTexts() {
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const t = i18n[lang] || i18n.kr;
+
+    if (lang !== 'kr' && t.language_notice) {
+      const notice = document.getElementById('language-notice');
+      const noticeText = document.getElementById('language-notice-text');
+      if (notice && noticeText) {
+        noticeText.textContent = t.language_notice;
+        notice.style.display = 'block';
+      }
+    }
+
+    const navHome = document.getElementById('nav-home');
+    const navCurrent = document.getElementById('nav-current');
+    const pageTitle = document.getElementById('page-title');
+
+    if (navHome) navHome.textContent = t.nav_home;
+    if (navCurrent) navCurrent.textContent = t.nav_current;
+    if (pageTitle) pageTitle.textContent = t.page_title;
+
+    // 필터 버튼
+    const filterAll = document.getElementById('filter-all');
+    const filterShop = document.getElementById('filter-shop');
+    const filterStory = document.getElementById('filter-story');
+    if (filterAll) filterAll.textContent = t.filter_all || '전체';
+    if (filterShop) filterShop.textContent = t.filter_shop || '교환';
+    if (filterStory) filterStory.textContent = t.filter_story || '스토리';
+
+    // 검색창 placeholder
+    const searchInput = document.getElementById('weaponSearch');
+    if (searchInput) searchInput.placeholder = t.search_placeholder || '무기 검색...';
+  }
+
+  function normWeaponName(name) {
+    if (!name) return '';
+    return String(name).replace(/!/g, '').trim();
+  }
+
+  function getLocalizedName(koreanName, lang) {
+    const data = (typeof matchWeapons !== 'undefined') && matchWeapons[koreanName];
+    if (!data) return koreanName;
+    if (lang === 'en' && data.name_en) return data.name_en;
+    if (lang === 'jp' && data.name_jp) return data.name_jp;
+    return koreanName;
+  }
+
+  function getLocalizedEffect(koreanName, lang) {
+    const data = (typeof matchWeapons !== 'undefined') && matchWeapons[koreanName];
+    if (!data) return '';
+    if (lang === 'en' && data.effect_en) return data.effect_en;
+    if (lang === 'jp' && data.effect_jp) return data.effect_jp;
+    return data.effect || '';
+  }
+
+  function getLocalizedSource(koreanName, lang) {
+    const data = (typeof matchWeapons !== 'undefined') && matchWeapons[koreanName];
+    const raw = (data && data.where_to_get) ? data.where_to_get : '';
+    const t = i18n[lang] || i18n.kr;
+    const map = t.source_map || {};
+    // Map only known keys; otherwise show raw
+    return map[raw] || raw;
+  }
+
+  // Character helpers
+  function getCharacterLabel(koreanCharName, lang) {
+    const c = (typeof characterData !== 'undefined') ? characterData[koreanCharName] : null;
+    if (!c) return koreanCharName;
+    if (lang === 'en' && c.codename) return c.codename;
+    if (lang === 'jp' && c.name_jp) return c.name_jp;
+    return koreanCharName; // default KR label
+  }
+
+  function isPriorityUser(koreanCharName, koreanWeaponName) {
+    if (typeof recommendParty === 'undefined') return false;
+    const cfg = recommendParty[koreanCharName];
+    if (!cfg || !Array.isArray(cfg.weapon)) return false;
+    const target = normWeaponName(koreanWeaponName);
+    return cfg.weapon.some(w => normWeaponName(w) === target && /!/.test(w));
+  }
+
+  // Sorting state
+  let sortOrder = 'desc'; // default: latest first
+  let selectedWeapon = null;
+  let currentSourceFilter = 'all';
+  let currentSearchQuery = '';
+
+  function getSortedWeaponKeys() {
+    const keys = (typeof matchWeapons !== 'undefined') ? Object.keys(matchWeapons) : [];
+    const arr = keys.map(k => {
+      const w = matchWeapons[k] || {};
+      const rawOrder = w.order;
+      const baseOrder = Number.isFinite(Number(rawOrder)) ? Number(rawOrder) : 0;
+
+      const stamps = Array.isArray(w.lightning_stamp) ? w.lightning_stamp : [];
+      const hasStamp = stamps.length > 0;
+      const stampOrder = hasStamp
+        ? stamps.reduce((max, s) => {
+            const so = Number(s && s.order);
+            return Number.isFinite(so) ? Math.max(max, so) : max;
+          }, 0)
+        : 0;
+
+      return {
+        key: k,
+        order: baseOrder,
+        hasStamp,
+        stampOrder
+      };
+    });
+
+    arr.sort((a, b) => {
+      // 1) lightning_stamp 보유 무기 우선
+      if (a.hasStamp && !b.hasStamp) return -1;
+      if (!a.hasStamp && b.hasStamp) return 1;
+
+      // 2) 둘 다 lightning_stamp가 있으면 stamp order 내림차순
+      if (a.hasStamp && b.hasStamp && a.stampOrder !== b.stampOrder) {
+        return b.stampOrder - a.stampOrder;
+      }
+
+      // 3) 그 외에는 기존 출시 순 정렬 유지
+      return sortOrder === 'asc' ? (a.order - b.order) : (b.order - a.order);
+    });
+
+    return arr.map(x => x.key);
+  }
+
+  function findUsersOfWeapon(koreanName) {
+    const users = [];
+    if (typeof recommendParty === 'undefined') return users;
+
+    const target = normWeaponName(koreanName);
+    Object.entries(recommendParty).forEach(([charName, cfg]) => {
+      if (!cfg || !Array.isArray(cfg.weapon)) return;
+      const has = cfg.weapon.some(w => normWeaponName(w) === target);
+      if (has) users.push(charName);
+    });
+    return users;
+  }
+
+  // 탭 생성 함수
+  async function createTabs() {
+    const tabsContainer = document.getElementById('weaponTabs');
+    if (!tabsContainer) return;
+
+    tabsContainer.innerHTML = '';
+
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const t = i18n[lang] || i18n.kr;
+
+    // 정렬된 무기 목록 가져오기
+    const sortedKeys = getSortedWeaponKeys();
+
+    sortedKeys.forEach((krName, index) => {
+      const data = (typeof matchWeapons !== 'undefined') ? matchWeapons[krName] : null;
+      if (!data) return;
+
+      const displayName = getLocalizedName(krName, lang);
+      const whereToGet = data.where_to_get || '';
+
+      // 필터링: 전체, 교환(Shop), 스토리(Palace)
+      let shouldShow = true;
+      if (currentSourceFilter === 'Shop' && whereToGet !== 'Shop') {
+        shouldShow = false;
+      } else if (currentSourceFilter === 'story' && whereToGet === 'Shop') {
+        shouldShow = false;
+      }
+
+      // 검색 필터링
+      if (shouldShow && currentSearchQuery) {
+        const query = currentSearchQuery.toLowerCase().trim();
+        const nameKr = krName.toLowerCase();
+        const nameEn = (data.name_en || '').toLowerCase();
+        const nameJp = (data.name_jp || '').toLowerCase();
+        const displayNameLower = displayName.toLowerCase();
+        
+        if (!nameKr.includes(query) && 
+            !nameEn.includes(query) && 
+            !nameJp.includes(query) && 
+            !displayNameLower.includes(query)) {
+          shouldShow = false;
+        }
+      }
+
+      const tab = document.createElement('div');
+      tab.className = 'weapon-tab';
+      tab.dataset.weapon = krName;
+      tab.dataset.weaponNameKr = krName;
+      tab.dataset.weaponNameEn = data.name_en || '';
+      tab.dataset.weaponNameJp = data.name_jp || '';
+      tab.dataset.displayName = displayName;
+      tab.dataset.whereToGet = whereToGet;
+      
+      if (!shouldShow) {
+        tab.style.display = 'none';
+      }
+
+      const img = document.createElement('img');
+      img.className = 'weapon-tab-image';
+      img.src = `${BASE_URL}/assets/img/wonder-weapon/${krName}.webp`;
+      img.alt = displayName;
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = `${BASE_URL}/assets/img/placeholder.png`;
+      };
+
+      const info = document.createElement('div');
+      info.className = 'weapon-tab-info';
+
+      const name = document.createElement('div');
+      name.className = 'weapon-tab-name';
+      name.textContent = displayName;
+
+      const source = document.createElement('div');
+      source.className = 'weapon-tab-source';
+      
+      // 속성 아이콘 추가 (왼쪽에 배치)
+      if (data.element) {
+        const elementIcon = document.createElement('img');
+        elementIcon.className = 'weapon-tab-element-icon';
+        elementIcon.src = `${BASE_URL}/assets/img/skill-element/${data.element}.png`;
+        elementIcon.alt = data.element;
+        elementIcon.loading = 'lazy';
+        source.appendChild(elementIcon);
+      }
+      
+      const sourceText = document.createElement('span');
+      sourceText.className = 'weapon-tab-source-text';
+      sourceText.textContent = getLocalizedSource(krName, lang);
+      source.appendChild(sourceText);
+
+      info.appendChild(name);
+      info.appendChild(source);
+
+      tab.appendChild(img);
+      tab.appendChild(info);
+
+      tab.addEventListener('click', () => {
+        selectWeapon(krName);
+      });
+
+      tabsContainer.appendChild(tab);
+    });
+
+    // 첫 번째 보이는 탭 선택 (비동기 처리로 탭이 완전히 렌더링된 후 선택)
+    setTimeout(() => {
+      const visibleTabs = Array.from(document.querySelectorAll('.weapon-tab:not([style*="display: none"])'));
+      if (visibleTabs.length > 0 && !selectedWeapon) {
+        const firstTab = visibleTabs[0];
+        const firstWeapon = firstTab.dataset.weapon;
+        if (firstWeapon) {
+          selectedWeapon = firstWeapon;
+          firstTab.classList.add('active');
+          renderWeaponDetail(firstWeapon);
+        }
+      } else if (selectedWeapon) {
+        const selectedTab = visibleTabs.find(tab => tab.dataset.weapon === selectedWeapon);
+        if (selectedTab) {
+          selectedTab.classList.add('active');
+          renderWeaponDetail(selectedWeapon);
+        } else if (visibleTabs.length > 0) {
+          const firstTab = visibleTabs[0];
+          const firstWeapon = firstTab.dataset.weapon;
+          selectedWeapon = firstWeapon;
+          firstTab.classList.add('active');
+          renderWeaponDetail(firstWeapon);
+        }
+      }
+    }, 0);
+  }
+
+  // 무기 선택 함수
+  async function selectWeapon(krName) {
+    if (selectedWeapon === krName) return;
+
+    selectedWeapon = krName;
+
+    // 탭 활성화
+    document.querySelectorAll('.weapon-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.weapon === krName);
+    });
+
+    // 상세 정보 렌더링
+    renderWeaponDetail(krName);
+
+    // 모바일에서 detail까지 자동 스크롤
+    if (window.innerWidth <= 768) {
+      setTimeout(() => {
+        const detailElement = document.getElementById('weaponDetail');
+        if (detailElement) {
+          detailElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest'
+          });
+        }
+      }, 100); // 렌더링 완료를 위한 약간의 지연
+    }
+  }
+
+  // 필터 적용 함수
+  function applyFilters() {
+    const tabs = document.querySelectorAll('.weapon-tab');
+    if (tabs.length === 0) return;
+
+    tabs.forEach(tab => {
+      let shouldShow = true;
+      const whereToGet = tab.dataset.whereToGet || '';
+
+      // 소스 필터
+      if (currentSourceFilter === 'Shop' && whereToGet !== 'Shop') {
+        shouldShow = false;
+      } else if (currentSourceFilter === 'story' && whereToGet === 'Shop') {
+        shouldShow = false;
+      }
+
+      // 검색 필터
+      if (shouldShow && currentSearchQuery) {
+        const query = currentSearchQuery.toLowerCase().trim();
+        const nameKr = (tab.dataset.weaponNameKr || '').toLowerCase();
+        const nameEn = (tab.dataset.weaponNameEn || '').toLowerCase();
+        const nameJp = (tab.dataset.weaponNameJp || '').toLowerCase();
+        const displayName = (tab.dataset.displayName || '').toLowerCase();
+        
+        if (!nameKr.includes(query) && 
+            !nameEn.includes(query) && 
+            !nameJp.includes(query) && 
+            !displayName.includes(query)) {
+          shouldShow = false;
+        }
+      }
+
+      tab.style.display = shouldShow ? '' : 'none';
+    });
+
+    // 검색 결과가 없을 때 메시지 표시
+    const visibleTabs = Array.from(document.querySelectorAll('.weapon-tab:not([style*="display: none"])'));
+    const tabsContainer = document.getElementById('weaponTabs');
+    if (visibleTabs.length === 0 && tabsContainer) {
+      const noResultsDiv = document.createElement('div');
+      noResultsDiv.style.cssText = 'padding: 20px; text-align: center; color: #999; grid-column: 1 / -1;';
+      const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+      noResultsDiv.textContent = lang === 'kr' ? '검색 결과가 없습니다' : 
+                                 lang === 'en' ? 'No results found' : '検索結果がありません';
+      
+      const existingMessage = tabsContainer.querySelector('div[style*="padding: 20px"]');
+      if (existingMessage) existingMessage.remove();
+      
+      tabsContainer.appendChild(noResultsDiv);
+    } else {
+      const existingMessage = tabsContainer?.querySelector('div[style*="padding: 20px"]');
+      if (existingMessage) existingMessage.remove();
+    }
+
+    // 필터링 후 첫 번째 보이는 탭 선택
+    if (visibleTabs.length > 0) {
+      const firstTab = visibleTabs[0];
+      const firstWeapon = firstTab.dataset.weapon;
+      if (selectedWeapon !== firstWeapon) {
+        selectWeapon(firstWeapon);
+      }
+    }
+  }
+
+  // 무기 상세 정보 렌더링 함수 (synergy 스타일 - 완전히 HTML 문자열 방식)
+  function renderWeaponDetail(krName) {
+    const detailContainer = document.getElementById('weaponDetail');
+    if (!detailContainer) return;
+
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+    const t = i18n[lang] || i18n.kr;
+
+    const data = (typeof matchWeapons !== 'undefined') ? matchWeapons[krName] : null;
+    if (!data) {
+      detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${lang === 'kr' ? '데이터를 불러올 수 없습니다' : lang === 'en' ? 'Failed to load data' : 'データの読み込みに失敗しました'}</div>`;
+      return;
+    }
+
+    const displayName = getLocalizedName(krName, lang);
+    const effectText = getLocalizedEffect(krName, lang);
+    const sourceText = getLocalizedSource(krName, lang);
+
+    // 섹션 chevron SVG
+    const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+    // 효과 렌더링 헬퍼 함수
+    const sevenSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/g;
+    function renderEffectHTML(src, idx) {
+      const replaced = src.replace(sevenSplitReplace, (match) => {
+        const parts = match.split('/').map(x => x.trim());
+        return parts[Math.min(Math.max(idx, 0), 6)] || parts[0];
+      });
+      const numberRegex = /(\d+(?:\.\d+)?%?)/g;
+      return replaced.replace(numberRegex, '<span class="num">$1</span>');
+    }
+
+    const needsLevels = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/.test(effectText || '');
+
+    // HTML 시작: 헤더
+    const elementIcon = data.element ? `<img src="${BASE_URL}/assets/img/skill-element/${data.element}.png" alt="${data.element}" class="detail-header-element-icon" loading="lazy">` : '';
+    let html = `
+      <div class="detail-header">
+        <img src="${BASE_URL}/assets/img/wonder-weapon/${krName}.webp" alt="${displayName}" class="detail-header-image" onerror="this.onerror=null; this.style.display='none';">
+        <div class="detail-header-info">
+          <h2>${displayName}${elementIcon}</h2>
+          <div class="detail-source-wrapper">
+            <div class="detail-source">${t.label_source}: ${sourceText}</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // 1. 효과 섹션 (collapsible)
+    html += `
+      <div class="detail-section">
+        <h3 class="detail-section-title collapsible">
+          <span>${t.label_effect}</span>
+          ${chevronSvg}
+        </h3>
+        <div class="section-content">
+    `;
+
+    // 레벨 컨트롤 (7레벨 분할이 있는 경우) - 상자 밖에 배치
+    if (needsLevels) {
+      html += `<div class="levels-controls" id="effect-levels">`;
+      for (let i = 0; i < 7; i++) {
+        html += `<button type="button" class="level-btn${i === 6 ? ' active' : ''}" data-level="${i}" aria-pressed="${i === 6 ? 'true' : 'false'}"><img src="${BASE_URL}/assets/img/character-weapon/r${i}.png" alt="A${i}" class="level-btn-icon" loading="lazy"></button>`;
+      }
+      html += `</div>`;
+    }
+
+    // 효과 텍스트 (상자 안에)
+    html += `<div class="effect-text-wrapper"><div class="effect-text" id="effect-text">${renderEffectHTML(effectText || '', 6)}</div></div>`;
+    html += `</div></div>`; // section-content, detail-section 닫기
+
+    // lightning_stamp 효과 블록
+    if (data && Array.isArray(data.lightning_stamp) && data.lightning_stamp.length) {
+      const stamps = data.lightning_stamp.slice().sort((a, b) => {
+        const ao = Number(a && a.order);
+        const bo = Number(b && b.order);
+        return (Number.isFinite(bo) ? bo : 0) - (Number.isFinite(ao) ? ao : 0);
+      });
+
+      const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
+      function renderLightningStampHTML(src, idx) {
+        const replaced = src.replace(fourSplitReplace, (match) => {
+          const parts = match.split('/').map(x => x.trim());
+          const i = Math.min(Math.max(idx, 0), 3);
+          return parts[i] || parts[0];
+        });
+        const numberRegex = /(\d+(?:\.\d+)?%?)/g;
+        return replaced.replace(numberRegex, '<span class="num">$1<\/span>');
+      }
+
+      const lightningStampTitle = lang === 'kr' ? t.label_lightning_stamp : 'Lightning Stamp';
+      const lightningStampDesc = lang === 'kr' ? '' : (t.label_lightning_stamp_desc || '');
+      
+      html += `
+        <div class="detail-section">
+          <h3 class="detail-section-title collapsible">
+            <span>${lightningStampTitle} <img src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" class="detail-section-icon" loading="lazy"></span>
+            ${chevronSvg}
+          </h3>
+          <div class="section-content">
+            ${lightningStampDesc ? `<div class="lightning-stamp-description">${lightningStampDesc}</div>` : ''}
+      `;
+
+      stamps.forEach((stamp, stampIndex) => {
+        if (!stamp) return;
+
+        const stampName =
+          (lang === 'en' && stamp.name_en) ? stamp.name_en :
+          (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
+          stamp.name || '';
+        const stampEffect =
+          (lang === 'en' && stamp.effect_en) ? stamp.effect_en :
+          (lang === 'jp' && stamp.effect_jp) ? stamp.effect_jp :
+          stamp.effect || '';
+
+        html += `
+          <div class="lightning-stamp-block" data-stamp-index="${stampIndex}">
+            <div class="lightning-stamp-header">
+              <div class="lightning-stamp-name">${stampName}</div>
+            </div>
+            <div class="levels-controls" data-stamp-index="${stampIndex}">
+        `;
+
+        const romanNumerals = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
+        for (let i = 0; i < 4; i++) {
+          html += `<button type="button" class="level-btn ${i === 3 ? 'active' : ''}" data-level="${i}" data-stamp-index="${stampIndex}" aria-pressed="${i === 3 ? 'true' : 'false'}"><img src="${BASE_URL}/assets/img/character-weapon/weaponEngraving-icon-1.png" alt="${i + 1}" class="level-btn-icon" loading="lazy"><span class="level-btn-roman">${romanNumerals[i]}</span></button>`;
+        }
+
+        html += `
+            </div>
+            <div class="effect-text" data-stamp-index="${stampIndex}">${renderLightningStampHTML(stampEffect || '', 3)}</div>
+          </div>
+        `;
+      });
+
+      html += `
+          </div>
+        </div>
+      `;
+    }
+
+    // 3. 주요 괴도 섹션 (collapsible)
+    const users = findUsersOfWeapon(krName);
+    html += `
+      <div class="detail-section">
+        <h3 class="detail-section-title collapsible">
+          <span>${t.label_characters}</span>
+          ${chevronSvg}
+        </h3>
+        <div class="section-content">
+    `;
+
+    if (users.length) {
+      html += `<div class="user-list">`;
+      const sortedUsers = users.slice().sort((a, b) => {
+        const pa = isPriorityUser(a, krName) ? 1 : 0;
+        const pb = isPriorityUser(b, krName) ? 1 : 0;
+        return pb - pa;
+      });
+
+      sortedUsers.forEach(u => {
+        const isPriority = isPriorityUser(u, krName);
+        const cdata = (typeof characterData !== 'undefined') ? characterData[u] : null;
+        const pos = cdata && cdata.position ? cdata.position : '';
+        const ele = cdata && cdata.element ? cdata.element : '';
+        const charLabel = getCharacterLabel(u, lang);
+        const href = u === '원더' ? '#' : `/character.html?name=${encodeURIComponent(u)}`;
+
+        html += `
+          <a href="${href}" class="character-link${isPriority ? ' priority' : ''}">
+            <img src="${BASE_URL}/assets/img/tier/${u}.webp" alt="${u}" class="character-img" loading="lazy" onerror="this.onerror=null; this.src='${BASE_URL}/assets/img/character-half/${u}.webp';">
+            <div class="character-info">
+              <span class="character-name${isPriority ? ' priority' : ''}">${charLabel}</span>
+              <span class="char-icons">
+                ${pos ? `<img src="${BASE_URL}/assets/img/character-cards/직업_${pos}.png" alt="${pos}" loading="lazy" class="char-icon">` : ''}
+                ${ele ? `<img src="${BASE_URL}/assets/img/character-cards/속성_${ele}.png" alt="${ele}" loading="lazy" class="char-icon">` : ''}
+              </span>
+            </div>
+          </a>
+        `;
+      });
+
+      html += `</div>`;
+    } else {
+      html += `-`;
+    }
+
+    html += `</div></div>`; // section-content, detail-section 닫기
+
+    // 4. 출시 시점 섹션 (collapsible) - dialog-choice 스타일
+    html += `
+      <div class="detail-section">
+        <h3 class="detail-section-title collapsible">
+          <span>${t.label_release || '출시 시점'}</span>
+          ${chevronSvg}
+        </h3>
+        <div class="section-content">
+          <div class="release-container">
+            <div class="release-column">
+              <div class="release-column-title">${t.label_weapon_release || '무기'}</div>
+              <div class="dialog-choices">
+    `;
+
+    const releaseVal = data && data.release ? String(data.release) : '';
+    if (releaseVal) {
+      if (/palace/i.test(releaseVal)) {
+        const mapped = (t.source_map && t.source_map[releaseVal]) ? t.source_map[releaseVal] : releaseVal;
+        html += `
+          <div class="dialog-choice">
+            <div class="dialog-choice-content">${mapped}</div>
+          </div>
+        `;
+      } else {
+        const charLabel = getCharacterLabel(releaseVal, lang);
+        const href = releaseVal === '원더' ? '#' : `/character.html?name=${encodeURIComponent(releaseVal)}`;
+
+        html += `
+          <a href="${href}" class="dialog-choice">
+            <div class="dialog-choice-content">
+              <img src="${BASE_URL}/assets/img/tier/${releaseVal}.webp" alt="${releaseVal}" class="character-img-small" loading="lazy" onerror="this.onerror=null; this.src='${BASE_URL}/assets/img/character-half/${releaseVal}.webp';">
+              <span>${charLabel}</span>
+            </div>
+          </a>
+        `;
+      }
+    } else {
+      html += `
+        <div class="dialog-choice">
+          <div class="dialog-choice-content">-</div>
+        </div>
+      `;
+    }
+
+    html += `
+              </div>
+            </div>
+            <div class="release-column">
+              <div class="release-column-title">${t.label_stamp_release || '빛의 각인'}</div>
+              <div class="dialog-choices">
+    `;
+
+    // Lightning Stamp 출시 정보
+    if (data && Array.isArray(data.lightning_stamp)) {
+      const stampReleases = data.lightning_stamp.filter(s => s && s.release);
+      if (stampReleases.length) {
+        stampReleases.forEach((stamp) => {
+          const charName = String(stamp.release);
+          const stampNameLabel =
+            (lang === 'en' && stamp.name_en) ? stamp.name_en :
+            (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
+            stamp.name || '';
+          const charLabel = getCharacterLabel(charName, lang);
+          const href = charName === '원더' ? '#' : `/character.html?name=${encodeURIComponent(charName)}`;
+
+          html += `
+            <div class="dialog-choice-group">
+              <div class="stamp-release-name">${stampNameLabel}</div>
+              <a href="${href}" class="dialog-choice">
+                <div class="dialog-choice-content">
+                  <img src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${charName}" class="character-img-small" loading="lazy" onerror="this.onerror=null; this.src='${BASE_URL}/assets/img/character-half/${charName}.webp';">
+                  <span>${charLabel}</span>
+                </div>
+              </a>
+            </div>
+          `;
+        });
+      } else {
+        html += `
+          <div class="dialog-choice">
+            <div class="dialog-choice-content">-</div>
+          </div>
+        `;
+      }
+    } else {
+      html += `
+        <div class="dialog-choice">
+          <div class="dialog-choice-content">-</div>
+        </div>
+      `;
+    }
+
+    html += `
+              </div>
+            </div>
+          </div>
+    `;
+
+    html += `</div></div>`; // section-content, detail-section 닫기
+
+    detailContainer.innerHTML = html;
+
+    // Collapsible 섹션 초기화 (라이브러리 사용)
+    if (typeof setupCollapsibleSections === 'function') {
+      setupCollapsibleSections('weaponDetail');
+    }
+
+    // Lightning Stamp 레벨 버튼 이벤트 핸들러
+    detailContainer.querySelectorAll('.levels-controls[data-stamp-index] button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const stampIndex = btn.dataset.stampIndex;
+        const level = parseInt(btn.dataset.level);
+        const stamps = data.lightning_stamp.slice().sort((a, b) => {
+          const ao = Number(a && a.order);
+          const bo = Number(b && b.order);
+          return (Number.isFinite(bo) ? bo : 0) - (Number.isFinite(ao) ? ao : 0);
+        });
+        const stamp = stamps[parseInt(stampIndex)];
+        if (!stamp) return;
+
+        const stampEffect =
+          (lang === 'en' && stamp.effect_en) ? stamp.effect_en :
+          (lang === 'jp' && stamp.effect_jp) ? stamp.effect_jp :
+          stamp.effect || '';
+
+        const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
+        function renderLightningStampHTML(src, idx) {
+          const replaced = src.replace(fourSplitReplace, (match) => {
+            const parts = match.split('/').map(x => x.trim());
+            const i = Math.min(Math.max(idx, 0), 3);
+            return parts[i] || parts[0];
+          });
+          const numberRegex = /(\d+(?:\.\d+)?%?)/g;
+          return replaced.replace(numberRegex, '<span class="num">$1<\/span>');
+        }
+
+        // 버튼 활성화 상태 업데이트
+        const controls = detailContainer.querySelector(`.levels-controls[data-stamp-index="${stampIndex}"]`);
+        controls.querySelectorAll('button').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // 효과 텍스트 업데이트
+        const effectTextEl = detailContainer.querySelector(`.effect-text[data-stamp-index="${stampIndex}"]`);
+        if (effectTextEl) {
+          effectTextEl.innerHTML = renderLightningStampHTML(stampEffect || '', level);
+        }
+      });
+    });
+
+    // 효과 레벨 버튼 이벤트 핸들러
+    if (needsLevels) {
+      const effectLevelsContainer = detailContainer.querySelector('#effect-levels');
+      const effectTextContainer = detailContainer.querySelector('#effect-text');
+      if (effectLevelsContainer && effectTextContainer) {
+        effectLevelsContainer.querySelectorAll('.level-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const level = parseInt(btn.dataset.level);
+            effectLevelsContainer.querySelectorAll('.level-btn').forEach(b => {
+              b.classList.remove('active');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            effectTextContainer.innerHTML = renderEffectHTML(effectText || '', level);
+          });
+        });
+      }
+    }
+  }
+
+  // DOMContentLoaded 이벤트 핸들러
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+      if (typeof Navigation !== 'undefined') {
+        Navigation.load('wonderweapon', 1);
+      }
+      if (typeof VersionChecker !== 'undefined') {
+        VersionChecker.check();
+      }
+
+      updateSEO();
+      await loadDataFiles();
+      updateStaticTexts();
+      await loadAllPartyData();
+
+      // 필터 이벤트 핸들러
+      document.querySelectorAll('.source-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.source-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentSourceFilter = btn.dataset.source;
+          applyFilters();
+        });
+      });
+
+      // 검색 이벤트 핸들러
+      const searchInput = document.getElementById('weaponSearch');
+      if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(() => {
+            currentSearchQuery = e.target.value.trim();
+            applyFilters();
+          }, 300);
+        });
+      }
+
+      // 탭 생성 및 초기 선택
+      await createTabs();
+    } catch (e) {
+      console.error(e);
+      const wrapper = document.querySelector('.main-wrapper');
+      const div = document.createElement('div');
+      div.className = 'error-message';
+      div.textContent = '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+      wrapper.prepend(div);
+    }
+  });
+})();
+

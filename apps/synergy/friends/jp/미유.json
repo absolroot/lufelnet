@@ -197,9 +197,11 @@
     "item": [
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303240.png",
         "name": "有名童話集愛蔵版",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -211,13 +213,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 35,
+        "compound": [],
         "image": "item-303249.png",
         "name": "着せ替え人形",
         "new_gift_synergy": 70,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -229,13 +236,18 @@
             "shopName": "ハイセンス"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 35
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303255.png",
         "name": "キャラクターエプロン",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -247,13 +259,18 @@
             "shopName": "雑司ヶ谷マート"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303258.png",
         "name": "豪華アロマセット",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -265,13 +282,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 11,
+        "compound": [],
         "image": "item-303272.png",
         "name": "心理学古典叢書",
         "new_gift_synergy": 22,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -283,13 +305,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 11
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303273.png",
         "name": "キッズアニメの抱き枕",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -301,13 +328,18 @@
             "shopName": "ハイセンス"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 22,
+        "compound": [],
         "image": "item-303274.png",
         "name": "高級ドールハウス",
         "new_gift_synergy": 44,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -319,13 +351,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 22
       },
       {
         "bonus_synergy": 56,
+        "compound": [],
         "image": "item-303275.png",
         "name": "最新型ドローン",
         "new_gift_synergy": 112,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -337,13 +374,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 56
       },
       {
         "bonus_synergy": 60,
+        "compound": [],
         "image": "item-303276.png",
         "name": "ミニスピーカー",
         "new_gift_synergy": 120,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -355,13 +397,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 60
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -375,13 +422,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -395,13 +447,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -415,13 +472,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -435,13 +497,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -455,13 +522,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -475,14 +547,112 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 9,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306120.png",
+              "name": "サザンカ",
+              "seed": [
+                {
+                  "consume_ap": [
+                    10,
+                    9,
+                    7
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306104.png",
+                    "name": "サザンカの種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "personalityLimit": "優しさ LV.5",
+                        "price": 780,
+                        "resetType": "일간",
+                        "shopName": "花屋助兵衛"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "自宅で栽培すると『サザンカ』を咲かせることができる。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                }
+              ],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 1680,
+                  "resetType": "일간",
+                  "shopName": "花屋助兵衛"
+                }
+              ],
+              "source": [
+                "shop",
+                "seed"
+              ],
+              "tips": "【サザンカ】\n作業台で『サザンカの花茶』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 4
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305932.png",
+              "name": "ゴージャスな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 500,
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "作業台で『サザンカの花茶』『キンモクセイの花茶』『プリザーブドフラワー』『スミレの花束』『キンモクセイの花束』の作成に使用する。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305944.png",
         "name": "サザンカの花茶",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 9
       }
     ],
@@ -536,6 +706,10 @@
       }
     ],
     "time": "夕方",
+    "unlock_quest": {
+      "details": "吉祥寺に到着した。\n理子先輩に連絡しよう。",
+      "name": "無償の愛"
+    },
     "visit_dialog": [
       {
         "destination": "新宿",

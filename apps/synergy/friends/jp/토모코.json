@@ -227,9 +227,11 @@
     "item": [
       {
         "bonus_synergy": 2,
+        "compound": [],
         "image": "item-303203.png",
         "name": "バイトマガジン",
         "new_gift_synergy": 4,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -241,13 +243,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 2
       },
       {
         "bonus_synergy": 20,
+        "compound": [],
         "image": "item-303210.png",
         "name": "シチくん人形",
         "new_gift_synergy": 40,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -259,13 +266,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 20
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303211.png",
         "name": "チョコん棒お徳用",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -277,13 +289,18 @@
             "shopName": "雑司ヶ谷マート"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303213.png",
         "name": "猫ヘアピン",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -295,13 +312,18 @@
             "shopName": "３７℃"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 125,
+        "compound": [],
         "image": "item-303214.png",
         "name": "ハートリング",
         "new_gift_synergy": 250,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -314,13 +336,18 @@
             "shopName": "ツルカメダイアモンド"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 125
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303216.png",
         "name": "イチゴ柄の弁当箱",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -332,13 +359,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303227.png",
         "name": "宇治抹茶プリンセット",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -351,13 +383,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 18,
+        "compound": [],
         "image": "item-303235.png",
         "name": "超爆音目覚まし時計",
         "new_gift_synergy": 36,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -369,13 +406,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 18
       },
       {
         "bonus_synergy": 3,
+        "compound": [],
         "image": "item-303260.png",
         "name": "ハート型の手鏡",
         "new_gift_synergy": 6,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -387,13 +429,18 @@
             "shopName": "キョウリュウ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 3
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -407,13 +454,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -427,13 +479,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -447,13 +504,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -467,13 +529,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -487,13 +554,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -507,14 +579,100 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 9,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306118.png",
+              "name": "ヒマワリ",
+              "seed": [
+                {
+                  "consume_ap": [
+                    10,
+                    9,
+                    7
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306105.png",
+                    "name": "ヒマワリの種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "price": 500,
+                        "resetType": "일간",
+                        "shopName": "ラフレシ屋"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "自宅で栽培すると『ヒマワリ』を咲かせることができる。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "【ヒマワリ】\n作業台で『ヒマワリの種』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "シンプルな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 300,
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『デイジーのポプリ』『ヒマワリの種』『ジャスミン茶』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305942.png",
         "name": "ヒマワリの種",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 9
       }
     ],
@@ -568,6 +726,10 @@
       }
     ],
     "time": "放課後",
+    "unlock_quest": {
+      "details": "新しい一日が始まった。\n学校に行こう。",
+      "name": "誇りの行方"
+    },
     "visit_dialog": [
       {
         "destination": "渋谷",

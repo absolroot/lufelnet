@@ -889,13 +889,214 @@
     vertical-align: middle;
 }
 
+/* 할인가 셀 스타일 */
+.discount-cell {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 할인 조건 툴팁 아이콘 */
+.discount-tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+.discount-tooltip-icon svg {
+    width: 12px;
+    height: 12px;
+    transition: opacity 0.2s;
+}
+
+.discount-tooltip-icon:hover svg {
+    opacity: 0.8;
+}
+
+.discount-tooltip-icon.js-tooltip-active svg circle {
+    stroke: rgba(255, 255, 255, 0.8);
+}
+
+.discount-tooltip-icon.js-tooltip-active svg text {
+    fill: rgba(255, 255, 255, 0.8);
+}
+
 .item-source {
     font-size: 13px;
     line-height: 1.5;
 }
 
+.item-source-text {
+    display: inline;
+}
+
+.item-source-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 4px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.item-source-icon:hover {
+    opacity: 1;
+}
+
+.item-source-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
 .item-efficiency {
     font-weight: 600;
+}
+
+/* Item From Modal Styles */
+.item-from-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.item-from-modal {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    max-width: 600px;
+    max-height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.item-from-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.item-from-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.item-from-modal-close {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.item-from-modal-close:hover {
+    color: #fff;
+}
+
+.item-from-modal-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.item-tree-node {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 4px;
+    padding: 4px 0;
+}
+
+.item-tree-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.item-tree-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-tree-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.item-tree-name {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.item-tree-type {
+    color: #999;
+    font-size: 12px;
+}
+
+.item-tree-price {
+    color: #04f7ec;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.item-tree-content-bg {
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 2px;
+    font-style: italic;
+}
+
+.item-tree-compound,
+.item-tree-seed,
+.item-tree-shop {
+    margin: 0px 0 8px 0;
+    padding-left: 8px;
+    border-left: 2px solid #333;
+}
+
+.item-tree-label {
+    color: #d0d0d0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.item-tree-shop-name {
+    color: #ccc;
+    font-size: 13px;
+    margin-left: 4px;
 }
 
 /* Responsive */
@@ -942,10 +1143,10 @@
         padding: 8px;
     }
     
-    /* 모바일에서 아이템 테이블: 이름(1), 호감도(2), 가격(3), 획득처(7)만 표시 */
-    /* 효율(4), 할인가(5), 할인 조건(6), 최대(8), 갱신(9) 숨기기 */
-    .item-table th:nth-child(4),
-    .item-table td:nth-child(4),
+    /* 모바일에서 아이템 테이블: 이름(1), 호감도(2), 가격(4), 획득처(7)만 표시 */
+    /* 최초 선물(3), 효율(5), 할인가(6), 최대(8), 갱신(9) 숨기기 */
+    .item-table th:nth-child(3),
+    .item-table td:nth-child(3),
     .item-table th:nth-child(5),
     .item-table td:nth-child(5),
     .item-table th:nth-child(6),
@@ -956,6 +1157,35 @@
     .item-table td:nth-child(9) {
         display: none;
     }
+}
+
+/* Unlock Quest Spoiler Styling */
+.unlock-quest-content.spoiler {
+    position: relative;
+    cursor: pointer;
+}
+
+.unlock-quest-content.spoiler .unlock-quest-name,
+.unlock-quest-content.spoiler .unlock-quest-details {
+    filter: blur(4px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.unlock-quest-content.spoiler::after {
+    content: 'SPOILER';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* Scrollbar Styling */
@@ -985,4 +1215,17 @@
     .spoiler-checkbox-container{
         margin-left: 0px !important;
     }
+}
+
+/* 특정 이미지 파일들은 scale 1.1 적용 */
+.character-tab-image[src*="Tongyong-touxiang-changfu-matoi.png"],
+.character-tab-image[src*="Tongyong-touxiang-changfu-bui.png"],
+.detail-header-image[src*="Tongyong-touxiang-changfu-matoi.png"],
+.detail-header-image[src*="Tongyong-touxiang-changfu-bui.png"]{
+    scale: 1.1;
+}
+
+.character-tab-image[src*="Tongyong-touxiang-changfu-turbo.png"],
+.detail-header-image[src*="Tongyong-touxiang-changfu-turbo.png"]{
+    scale: 1.15;
 }

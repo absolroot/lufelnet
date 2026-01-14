@@ -190,9 +190,11 @@
     "item": [
       {
         "bonus_synergy": 26,
+        "compound": [],
         "image": "item-303062.png",
         "name": "Alloy Baseball Bat",
         "new_gift_synergy": 52,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -205,13 +207,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 26
       },
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303064.png",
         "name": "Protective Sports Gear",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -232,13 +239,18 @@
             "shopName": "Soccer Point Exchange"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303068.png",
         "name": "Sports Towel",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -259,13 +271,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 17,
+        "compound": [],
         "image": "item-303071.png",
         "name": "Baseball Gloves",
         "new_gift_synergy": 34,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -287,13 +304,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 17
       },
       {
         "bonus_synergy": 22,
+        "compound": [],
         "image": "item-303072.png",
         "name": "GOAT Uniform",
         "new_gift_synergy": 44,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -315,13 +337,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 22
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303213.png",
         "name": "Cat Hairpin",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -333,13 +360,18 @@
             "shopName": "37 Degrees Celsius"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 125,
+        "compound": [],
         "image": "item-303214.png",
         "name": "Heart Ring",
         "new_gift_synergy": 250,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -352,13 +384,18 @@
             "shopName": "Tsurukame Diamond"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 125
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303237.png",
         "name": "Sumo Wrestler Stickers",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -370,13 +407,18 @@
             "shopName": "Rocinante"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 2,
+        "compound": [],
         "image": "item-303242.png",
         "name": "Gourmet Food Tour Guide",
         "new_gift_synergy": 4,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -388,13 +430,18 @@
             "shopName": "Triple Seven"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 2
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "Limited-Edition Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -408,13 +455,18 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "Candy Set",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -428,13 +480,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "Essential Oils",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -448,13 +505,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "Mont Blanc",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -468,13 +530,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "Snow Globe",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -488,13 +555,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "Aroma Diffuser",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -508,14 +580,101 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 13,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306122.png",
+              "name": "Lilies",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306102.png",
+                    "name": "Lily Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "personalityLimit": "Kindness LV.9",
+                        "price": 840,
+                        "resetType": "일간",
+                        "shopName": "Flower Shop Sukebe"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "Can be planted in your home garden to bloom into lilies. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "[Lily]\nCan be crafted at the workbench into a Preserved Flower and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 4
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305932.png",
+              "name": "Gorgeous Packaging",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 500,
+                  "resetType": "일간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "Used to craft Camellia Tea, Osmanthus Tea, Preserved Flowers, Violet Bouquets, and Osmanthus Bouquets at the workbench.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305946.png",
         "name": "Preserved Flower",
         "new_gift_synergy": 26,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 13
       }
     ],
@@ -579,6 +738,10 @@
       }
     ],
     "time": "After School",
+    "unlock_quest": {
+      "details": "Looks like Motoha wants to talk about something.\nI should go and meet her in classroom 2-C.",
+      "name": "The Day the Pearl Flies"
+    },
     "visit_dialog": [
       {
         "destination": "Inokashira Park",

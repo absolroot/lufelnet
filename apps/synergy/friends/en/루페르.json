@@ -1,0 +1,55 @@
+{
+  "data": {
+    "advance_dialog": [],
+    "can_romance": false,
+    "item": [],
+    "name": "Lufel",
+    "romance_dialog": [],
+    "special_award": [
+      {
+        "description": "Lufel's \"Business\" Plan will update occasionally.",
+        "icon": "xielizhe-icon-lufeier-06.png",
+        "name": "It's a Deal",
+        "rank": 1
+      },
+      {
+        "description": "You can craft infiltration tools.",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "Infiltration Prep",
+        "rank": 2
+      },
+      {
+        "description": "You can insta-kill low-level Shadows in Palaces or Mementos.",
+        "icon": "xielizhe-icon-lufeier-07.png",
+        "name": "Infiltration Know-How",
+        "rank": 3
+      },
+      {
+        "description": "You can craft more Treasure Detectors, infiltration tools, and gifts.",
+        "icon": "xielizhe-icon-lufeier-02.png",
+        "name": "Intermediate Crafting",
+        "rank": 4
+      },
+      {
+        "description": "Some materials may be returned after crafting gifts.",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "Efficient Prep",
+        "rank": 5
+      },
+      {
+        "description": "You may produce an extra item when crafting gifts.",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "Crafting Technique",
+        "rank": 7
+      }
+    ],
+    "time": null,
+    "unlock_quest": {
+      "details": "It's late. Time for bed.",
+      "name": "Awakening of Desire"
+    },
+    "visit_dialog": []
+  },
+  "msg": "OK",
+  "status": 0
+}

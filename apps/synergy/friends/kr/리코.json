@@ -198,9 +198,11 @@
     "item": [
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303069.png",
         "name": "야구 유니폼 인형",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -232,13 +234,18 @@
             "shopName": "AAAAAA=="
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 50,
+        "compound": [],
         "image": "item-303083.png",
         "name": "진주 귀걸이",
         "new_gift_synergy": 100,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 27000,
@@ -264,13 +271,18 @@
             "shopName": "에너지 스톤 전문점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 50
       },
       {
         "bonus_synergy": 20,
+        "compound": [],
         "image": "item-303210.png",
         "name": "마스코트 인형",
         "new_gift_synergy": 40,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7410,
@@ -293,13 +305,18 @@
             "shopName": "AAAAAA=="
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 20
       },
       {
         "bonus_synergy": 29,
+        "compound": [],
         "image": "item-303215.png",
         "name": "벚꽃 부채",
         "new_gift_synergy": 58,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12160,
@@ -314,13 +331,18 @@
             "shopName": "일본풍 잡화점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 29
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303227.png",
         "name": "우지 말차 푸딩",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 11400,
@@ -335,13 +357,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303236.png",
         "name": "일본풍 북 커버",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -355,13 +382,18 @@
             "shopName": "일본풍 잡화점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 20,
+        "compound": [],
         "image": "item-303238.png",
         "name": "한정판 햄버거 장난감",
         "new_gift_synergy": 40,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7600,
@@ -395,13 +427,18 @@
             "shopName": "AAAAAA=="
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 20
       },
       {
         "bonus_synergy": 36,
+        "compound": [],
         "image": "item-303239.png",
         "name": "우아한 나무 빗",
         "new_gift_synergy": 72,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 16150,
@@ -415,13 +452,18 @@
             "shopName": "일본풍 잡화점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 36
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303240.png",
         "name": "동화 이야기 디럭스",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3610,
@@ -435,13 +477,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303257.png",
         "name": "바이크 피규어",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 4560,
@@ -466,13 +513,18 @@
             "shopName": "굿즈샵"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "한정판 키링",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -497,13 +549,18 @@
             "shopName": "굿즈샵"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "막과자 패키지",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -517,13 +574,18 @@
             "shopName": "슈퍼마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "프리미엄 에센스 세트",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7320,
@@ -537,13 +599,18 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "마롱 케이크",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 5700,
@@ -557,13 +624,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "뮤직 스노글로브",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 9500,
@@ -577,13 +649,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "탁상용 아로마 기계",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 11400,
@@ -597,30 +674,150 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "색이 선명하고 꽃잎이 여러 층 겹쳐 마치 하늘하늘한 치맛자락 같다. 한여름에 만개하며, 정원과 길가에서 흔히 볼 수 있는 장식이다.",
+              "icon": "item-306218.png",
+              "name": "봉선화",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": "시부야",
+                  "maxBuy": 3,
+                  "moneyName": "현금",
+                  "price": 1200,
+                  "reducePriceCond": "도겐자카 루우나 LV.1",
+                  "resetType": "주간",
+                  "shopName": "꽃집"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "『봉선화』, 부드러운 향기가 나는 화초. 작업대를 이용하여 『봉선화 염색 손수건』으로 제작해 협력자에게 선물할 수 있다.",
+              "type": "화초"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "흰색 면으로 만든 정사각형 원단으로, 가볍고 부드럽다. 간단한 염색 가공이 가능하다.",
+              "icon": "item-305969.png",
+              "name": "흰색 손수건",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 380,
+                  "isHidden": 0,
+                  "mapName": "시부야",
+                  "maxBuy": 10,
+                  "moneyName": "현금",
+                  "price": 400,
+                  "reducePriceCond": "도겐자카 루우나 LV.1",
+                  "resetType": "주간",
+                  "shopName": "프리미엄 마켓"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "일반적인 제작 재료.\n작업대에서 협력자 선물 『봉선화 염색 손수건』을 제작할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305951.png",
         "name": "봉선화 염색 손수건",
         "new_gift_synergy": 0,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 17
       },
       {
         "bonus_synergy": 49,
+        "compound": [],
         "image": "item-303298.png",
         "name": "마음의 초콜릿",
         "new_gift_synergy": 0,
+        "seed": [],
         "shop": [],
+        "source": [],
         "synergy": 50
       },
       {
         "bonus_synergy": 1000,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+              "icon": "item-305965.png",
+              "name": "붉은 장미",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "밸런타인데이 한정 패키지에서 획득하며, 작업대에서 협력자 선물인 『영원한 사랑』을 제작할 수 있다. 꽃다발을 협력자에게 선물하면 친밀도가 크게 증가한다.",
+              "type": "재료"
+            },
+            "itemCount": 999
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "화려한 스타일의 포장지. 귀한 선물에 적합하다.",
+              "icon": "item-305932.png",
+              "name": "화려한 포장",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": "시부야",
+                  "maxBuy": 10,
+                  "moneyName": "현금",
+                  "price": 500,
+                  "reducePriceCond": "도겐자카 루우나 LV.1",
+                  "resetType": "일간",
+                  "shopName": "꽃집"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "일반적인 제작 재료.\n작업대에서 협력자 선물인 『동백차』·『금목서차』·『프리저브드 백합』·『빌리트』·『민속 시』·『영원한 사랑』을 제작할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305966.png",
         "name": "영원한 사랑",
         "new_gift_synergy": 0,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 999
       }
     ],
@@ -684,6 +881,10 @@
       }
     ],
     "time": "방과 후",
+    "unlock_quest": {
+      "details": "어떤 방에서 한 남자가 아케시에게 전화를 걸었다.",
+      "name": "폭식자의 피날레"
+    },
     "visit_dialog": [
       {
         "destination": "시부야",

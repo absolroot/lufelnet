@@ -1,0 +1,55 @@
+{
+  "data": {
+    "advance_dialog": [],
+    "can_romance": false,
+    "item": [],
+    "name": "루페르",
+    "romance_dialog": [],
+    "special_award": [
+      {
+        "description": "비정기적으로 루페르의 「비즈니스」 목표를 발표합니다.",
+        "icon": "xielizhe-icon-lufeier-06.png",
+        "name": "「거래」 성립",
+        "rank": 1
+      },
+      {
+        "description": "잠입 아이템을 제작할 수 있습니다(작업대 해제 필요).",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "잠입 아이템 제작",
+        "rank": 2
+      },
+      {
+        "description": "팰리스와 메멘토스에 있는 낮은 레벨의 섀도를 순식간에 제거합니다.",
+        "icon": "xielizhe-icon-lufeier-07.png",
+        "name": "잠입 행동 요령",
+        "rank": 3
+      },
+      {
+        "description": "보물 탐지기, 잠입 아이템 및 선물 제작이 증가합니다.",
+        "icon": "xielizhe-icon-lufeier-02.png",
+        "name": "중급 제작 레시피",
+        "rank": 4
+      },
+      {
+        "description": "선물을 제작할 때 일정 확률로 일부 재료를 반환합니다.",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "재료 절약 노하우",
+        "rank": 5
+      },
+      {
+        "description": "선물을 제작할 때 일정 확률로 1개를 추가 획득할 수 있습니다.",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "제작 기술",
+        "rank": 7
+      }
+    ],
+    "time": null,
+    "unlock_quest": {
+      "details": "시간이 늦었으니 침대에 누워서 쉬자.",
+      "name": "숨겨진 세계의 증명"
+    },
+    "visit_dialog": []
+  },
+  "msg": "OK",
+  "status": 0
+}

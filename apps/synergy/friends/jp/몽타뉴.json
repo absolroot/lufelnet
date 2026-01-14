@@ -140,7 +140,18 @@
         "unlock_cond": "器用さ Lv.11"
       },
       {
-        "good_answers": [],
+        "good_answers": [
+          [
+            {
+              "content": "言いたいことは伝わった",
+              "reward": 60
+            },
+            {
+              "content": "魅力的だと思う",
+              "reward": 50
+            }
+          ]
+        ],
         "rank_up": {
           "from": 14,
           "to": 15
@@ -148,7 +159,22 @@
         "unlock_cond": "器用さ Lv.13"
       },
       {
-        "good_answers": [],
+        "good_answers": [
+          [
+            {
+              "content": "お疲れ様",
+              "reward": 40
+            },
+            {
+              "content": "平気だった？",
+              "reward": 50
+            },
+            {
+              "content": "素敵な滑りだった",
+              "reward": 60
+            }
+          ]
+        ],
         "rank_up": {
           "from": 16,
           "to": 17
@@ -168,9 +194,11 @@
     "item": [
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303064.png",
         "name": "運動用プロテクター",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -191,13 +219,18 @@
             "shopName": "サッカー部ポイント交換"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 34,
+        "compound": [],
         "image": "item-303081.png",
         "name": "メイドフィギュア",
         "new_gift_synergy": 68,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -210,13 +243,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 34
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303236.png",
         "name": "和風のブックカバー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -228,13 +266,18 @@
             "shopName": "ハイセンス"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 36,
+        "compound": [],
         "image": "item-303239.png",
         "name": "花櫛",
         "new_gift_synergy": 72,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -246,13 +289,18 @@
             "shopName": "ハイセンス"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 36
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -266,13 +314,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -286,13 +339,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -306,13 +364,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -326,13 +389,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -346,13 +414,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -366,13 +439,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303293.png",
         "name": "雪の結晶キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -384,13 +462,18 @@
             "shopName": "３７℃"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 14,
+        "compound": [],
         "image": "item-303294.png",
         "name": "クラシックのレコード",
         "new_gift_synergy": 28,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -402,13 +485,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 14
       },
       {
         "bonus_synergy": 18,
+        "compound": [],
         "image": "item-303295.png",
         "name": "高品質ヨガマット",
         "new_gift_synergy": 36,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -420,13 +508,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 18
       },
       {
         "bonus_synergy": 38,
+        "compound": [],
         "image": "item-303296.png",
         "name": "スポーツイヤホン",
         "new_gift_synergy": 76,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -438,13 +531,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 38
       },
       {
         "bonus_synergy": 61,
+        "compound": [],
         "image": "item-303297.png",
         "name": "高級スポーツウォッチ",
         "new_gift_synergy": 122,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -456,21 +554,180 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 61
       },
       {
         "bonus_synergy": 16,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306124.png",
+              "name": "コスモス",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "70.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306107.png",
+                    "name": "未知の種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "personalityLimit": "優しさ LV.5",
+                        "price": 1720,
+                        "resetType": "일간",
+                        "shopName": "花屋助兵衛"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "ラベルが破れていて何の花の種か分からない。『デイジー』か『コスモス』の種に似ている。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "【コスモス】\n作業台で『キンモクセイの花束』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 1
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306121.png",
+              "name": "キンモクセイ",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306106.png",
+                    "name": "キンモクセイの種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "personalityLimit": "優しさ LV.6",
+                        "price": 860,
+                        "resetType": "일간",
+                        "shopName": "花屋助兵衛"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "自宅で栽培すると『キンモクセイ』を咲かせることができる。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "【キンモクセイ】\n作業台で『キンモクセイの花茶』や『キンモクセイの花束』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 2
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305932.png",
+              "name": "ゴージャスな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 500,
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "作業台で『サザンカの花茶』『キンモクセイの花茶』『プリザーブドフラワー』『スミレの花束』『キンモクセイの花束』の作成に使用する。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305948.png",
         "name": "キンモクセイの花束",
         "new_gift_synergy": 32,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 16
       }
     ],
     "name": "琴音・モンターニュ",
     "romance_dialog": [
       {
-        "good_answers": []
+        "good_answers": [
+          [
+            {
+              "content": "琴音さんのために作ったから",
+              "reward": 40
+            },
+            {
+              "content": "料理は愛情",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "好きにするといい",
+              "reward": 60
+            },
+            {
+              "content": "記事にされたら大変だ",
+              "reward": 50
+            }
+          ]
+        ]
       }
     ],
     "special_award": [
@@ -506,6 +763,10 @@
       }
     ],
     "time": "夕方",
+    "unlock_quest": {
+      "details": "新しい一日が始まった。\n学校に行こう。",
+      "name": "誇りの行方"
+    },
     "visit_dialog": [
       {
         "destination": "渋谷",

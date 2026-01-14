@@ -169,6 +169,9 @@
         if (!translation) return resetType;
         return translation[currentLanguage] || resetType;
     }
+    
+    // 전역으로 노출 (item_from.js에서 사용)
+    window.translateResetType = translateResetType;
 
     // moneyName을 아이콘으로 변환하는 함수
     function getMoneyIcon(moneyName, shop) {
@@ -1137,20 +1140,39 @@
         // 섹션 chevron SVG
         const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+        // 0. 사전 퀘스트 (Unlock Quest) - 협력 보상 위에 표시
+        if (data.unlock_quest) {
+            // localStorage에서 스포일러 해제 여부 확인
+            const spoilerKey = `unlockQuestSpoiler_${characterName}`;
+            const isSpoilerRevealed = localStorage.getItem(spoilerKey) === '1';
+            const spoilerClass = isSpoilerRevealed ? '' : 'spoiler';
+            
+            html += `
+                <div class="detail-section">
+                    <h3 class="detail-section-title">
+                        <span>${t('사전 퀘스트')}</span>
+                    </h3>
+                    <div class="section-content">
+                        <div class="unlock-quest-content ${spoilerClass}" data-character="${characterName}" style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-radius: 4px; margin-bottom: 12px; position: relative; cursor: pointer;">
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <div class="unlock-quest-name" style="font-weight: 600; color: rgb(255 245 181 / 95%); font-size:14px;">${data.unlock_quest.name || ''}</div>
+                                <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${data.unlock_quest.details || ''}</div>
+                            </div>
+                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6); font-style: italic;">${t('해당 퀘스트 클리어 이후 이벤트 퀘스트가 해금됩니다.')}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // 1. 협력 보상 (Special Award)
         if (data.special_award && data.special_award.length > 0) {
             // recommend_num 가져오기
             const char = characterList[characterName];
             const recommendNums = char && char.recommend_num ? char.recommend_num : [];
             
-            // 팁이 있으면 margin-bottom을 16px로 설정
-            const tipKey = currentLanguage === 'kr' ? 'tip_kr' : 
-                          currentLanguage === 'en' ? 'tip_en' : 'tip_jp';
-            const hasTip = char && char[tipKey];
-            const sectionStyle = hasTip ? 'style="margin-bottom: 16px;"' : '';
-            
             html += `
-                <div class="detail-section" ${sectionStyle}>
+                <div class="detail-section">
                     <h3 class="detail-section-title collapsible">
                         <span>${t('협력 보상')}</span>
                         ${chevronSvg}
@@ -1446,6 +1468,28 @@
                 }
             });
             
+            // 재귀적으로 계산한 가격으로 효율 재계산
+            if (window.buildItemTree && window.calculateItemPrice) {
+                expandedItems.forEach((item) => {
+                    try {
+                        const itemTree = window.buildItemTree(item);
+                        const calculatedPrice = window.calculateItemPrice(itemTree);
+                        
+                        // 계산된 가격이 있고 호감도가 있으면 효율 재계산
+                        if (calculatedPrice !== null && calculatedPrice > 0) {
+                            const synergy = item.synergy || 0;
+                            const bonusSynergy = item.bonus_synergy || 0;
+                            const totalSynergy = item._totalSynergy || synergy + bonusSynergy;
+                            if (totalSynergy > 0) {
+                                item._efficiency = Math.round(calculatedPrice / totalSynergy);
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('효율 재계산 중 오류:', e);
+                    }
+                });
+            }
+            
             // 호감도 기준 내림차순 정렬 (기본 정렬)
             const itemsWithEfficiency = expandedItems.sort((a, b) => {
                 return b._totalSynergy - a._totalSynergy;
@@ -1561,11 +1605,11 @@
                         <thead>
                             <tr>
                                 <th class="item-name-header">${t('이름')}</th>
-                                <th class="sortable" data-sort="synergy">${t('호감도')} <span class="sort-indicator"></span></th>
-                                <th class="sortable item-price-header" data-sort="price">${t('가격')} <span class="sort-indicator"></span></th>
-                                <th class="sortable" data-sort="efficiency">${t('효율')} <span class="sort-indicator"></span></th>
-                                <th class="sortable" data-sort="discount">${t('할인가')} <span class="sort-indicator"></span></th>
-                                <th>${t('할인 조건')}</th>
+                                <th>${t('호감도')}</th>
+                                <th>${t('최초 선물')}</th>
+                                <th class="item-price-header">${t('가격')}</th>
+                                <th>${t('효율')}</th>
+                                <th>${t('할인가')}</th>
                                 <th class="item-source-header">${t('획득처')}</th>
                                 <th>${t('최대')}</th>
                                 <th>${t('갱신')}</th>
@@ -1576,15 +1620,44 @@
             itemsWithEfficiency.forEach((item) => {
                 const synergy = item.synergy || 0;
                 const bonusSynergy = item.bonus_synergy || 0;
+                const newGiftSynergy = item.new_gift_synergy || 0;
                 const totalSynergy = item._totalSynergy || synergy + bonusSynergy;
+                const firstGiftSynergy = synergy + bonusSynergy + newGiftSynergy;
                 
                 // shop 정보 처리
                 const shop = item.shop || {};
-                const price = item._price !== undefined ? item._price : (shop.price || 0);
+                let price = item._price !== undefined ? item._price : (shop.price || 0);
                 const discountPrice = item._discountPrice !== undefined ? item._discountPrice : (shop.discountPrice || price);
                 const moneyName = shop.moneyName || '';
                 const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
-                const efficiency = item._efficiency !== null ? item._efficiency : (isCash && totalSynergy > 0 ? Math.round(price / totalSynergy) : null);
+                
+                // 재귀적으로 계산한 가격 (현금 가치)
+                let calculatedPrice = null;
+                if (window.buildItemTree && window.calculateItemPrice) {
+                    try {
+                        const itemTree = window.buildItemTree(item);
+                        calculatedPrice = window.calculateItemPrice(itemTree);
+                        // 계산된 가격이 있으면 그 가격 사용
+                        if (calculatedPrice !== null && calculatedPrice > 0) {
+                            price = calculatedPrice;
+                        }
+                    } catch (e) {
+                        console.warn('가격 계산 중 오류:', e);
+                    }
+                }
+                
+                // 효율 계산 (계산된 가격이 있으면 그 가격으로, 없으면 기존 로직)
+                let efficiency = item._efficiency !== null ? item._efficiency : null;
+                if (efficiency === null) {
+                    if (calculatedPrice !== null && calculatedPrice > 0 && totalSynergy > 0) {
+                        // 재귀적으로 계산한 가격으로 효율 계산
+                        efficiency = Math.round(calculatedPrice / totalSynergy);
+                    } else if (isCash && totalSynergy > 0) {
+                        // 기존 로직: 현금이고 호감도가 있으면 효율 계산
+                        efficiency = Math.round(price / totalSynergy);
+                    }
+                }
+                
                 const efficiencyText = efficiency !== null ? efficiency : '-';
                 const efficiencyColor = getEfficiencyColor(efficiency !== null ? efficiency : -1, efficiencyQuartiles);
                 const synergyColor = getSynergyColor(totalSynergy, synergyQuartiles);
@@ -1593,55 +1666,115 @@
                 const moneyIcon = getMoneyIcon(moneyName, shop);
                 
                 // 가격 표시 (moneyName을 아이콘으로 대체, 아이콘을 숫자 앞에)
+                // 계산된 가격이 있으면 그 가격 표시, 없으면 shop 가격 표시
                 let priceText = '-';
-                if (price > 0) {
-                    if (moneyIcon) {
-                        priceText = `${moneyIcon} ${price.toLocaleString()}`;
+                let displayPrice = calculatedPrice !== null && calculatedPrice > 0 ? calculatedPrice : price;
+                if (displayPrice > 0) {
+                    // 계산된 가격인 경우 현금 아이콘 사용
+                    if (calculatedPrice !== null && calculatedPrice > 0) {
+                        const cashIcon = `<img src="${BASE_URL}/assets/img/item-little-icon/item-huobi-22.png" alt="현금" class="money-icon" style="height: 16px; width: auto; vertical-align: middle;" onerror="this.onerror=null; this.style.display='none';">`;
+                        priceText = `${cashIcon} ${Math.round(displayPrice).toLocaleString()}`;
+                    } else if (moneyIcon) {
+                        priceText = `${moneyIcon} ${displayPrice.toLocaleString()}`;
                     } else {
-                        priceText = `${price.toLocaleString()} ${moneyName}`;
+                        priceText = `${displayPrice.toLocaleString()} ${moneyName}`;
                     }
                 }
                 
                 // 할인가 표시 (moneyName을 아이콘으로 대체, 아이콘을 숫자 앞에)
                 let discountText = '-';
+                let discountTooltipHtml = null; // 할인 조건 툴팁 HTML (아이콘 포함)
                 if (discountPrice < price && discountPrice > 0) {
                     if (moneyIcon) {
                         discountText = `${moneyIcon} ${discountPrice.toLocaleString()}`;
                     } else {
                         discountText = `${discountPrice.toLocaleString()} ${moneyName}`;
                     }
-                }
-                
-                // 할인 조건 (캐릭터 이름은 아이콘으로, LV 정보만 텍스트)
-                let discountCondHtml = '-';
-                if (shop.reducePriceCond) {
-                    // "도겐자카 루우나 LV.1" 같은 형식에서 LV 부분만 추출
-                    const lvMatch = shop.reducePriceCond.match(/LV\.?\s*\d+/i);
-                    const lvText = lvMatch ? lvMatch[0] : shop.reducePriceCond;
-                    discountCondHtml = `<span class="item-condition-wrapper"><img src="${BASE_URL}/assets/img/synergy/item-500218.png" alt="할인 조건" class="item-condition-icon" onerror="this.onerror=null; this.style.display='none';">${lvText}</span>`;
-                }
-                
-                // 획득처 (mapName + shopName)
-                // 게임 센터 관련 moneyName인 경우 mapName을 "아키하바라 게임 센터"로 오버라이드
-                let sourceText = '-';
-                if (shop.mapName || shop.shopName) {
-                    const parts = [];
-                    // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
-                    if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
-                        moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
-                        parts.push('아키하바라 게임 센터');
-                    } else if (shop.mapName) {
-                        parts.push(translateMapName(shop.mapName));
+                    
+                    // 할인 조건이 있으면 툴팁 HTML 생성 (아이콘 포함)
+                    if (shop.reducePriceCond) {
+                        // "도겐자카 루우나 LV.1" 같은 형식에서 LV 부분만 추출
+                        const lvMatch = shop.reducePriceCond.match(/LV\.?\s*\d+/i);
+                        const lvText = lvMatch ? lvMatch[0] : shop.reducePriceCond;
+                        discountTooltipHtml = `<span class="item-condition-wrapper"><img src="${BASE_URL}/assets/img/synergy/item-500218.png" alt="할인 조건" class="item-condition-icon" onerror="this.onerror=null; this.style.display='none';">${lvText}</span>`;
                     }
-                    if (shop.shopName) {
-                        // 'AAAAAA==' 제거
-                        let shopName = shop.shopName.replace(/AAAAAA==/g, '').trim();
-                        if (shopName) {
-                            parts.push(shopName);
+                }
+                
+                // 할인가 옆에 ? 아이콘 추가 (할인 조건이 있을 때만)
+                let discountIconHtml = '';
+                if (discountTooltipHtml) {
+                    discountIconHtml = `
+                        <span class="discount-tooltip-icon" data-discount-tooltip-html="${discountTooltipHtml.replace(/"/g, '&quot;').replace(/'/g, '&#39;')}">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="6" cy="6" r="5.5" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.2" fill="none"/>
+                                <text x="6" y="8.5" text-anchor="middle" font-size="8" font-weight="bold" fill="rgba(255, 255, 255, 0.3)">?</text>
+                            </svg>
+                        </span>
+                    `;
+                }
+                
+                // 획득처 (item_from.js 사용, compound 우선)
+                let sourceText = '-';
+                let sourceIconHtml = '';
+                
+                // item_from.js의 generateSourceText 함수 사용
+                if (window.generateSourceText) {
+                    const generatedText = window.generateSourceText(item);
+                    if (generatedText && generatedText !== '-') {
+                        sourceText = generatedText;
+                        // compound나 seed인 경우 아이콘 추가
+                        if (item.source && (item.source.includes('compound') || item.source.includes('seed'))) {
+                            sourceIconHtml = `
+                                <span class="item-source-icon" data-item-source='${JSON.stringify(item).replace(/'/g, '&#39;')}'>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7 1L9 5L13 6L9 7L7 11L5 7L1 6L5 5L7 1Z" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.2" fill="none"/>
+                                    </svg>
+                                </span>
+                            `;
+                        }
+                    } else if (generatedText === null) {
+                        // null이면 기존 shop 로직 사용
+                        if (shop.mapName || shop.shopName) {
+                            const parts = [];
+                            // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
+                            if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+                                moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
+                                parts.push('아키하바라 게임 센터');
+                            } else if (shop.mapName) {
+                                parts.push(translateMapName(shop.mapName));
+                            }
+                            if (shop.shopName) {
+                                // 'AAAAAA==' 제거
+                                let shopName = shop.shopName.replace(/AAAAAA==/g, '').trim();
+                                if (shopName) {
+                                    parts.push(shopName);
+                                }
+                            }
+                            sourceText = parts.join(' ').trim();
+                            if (!sourceText) sourceText = '-';
                         }
                     }
-                    sourceText = parts.join(' ').trim();
-                    if (!sourceText) sourceText = '-';
+                } else {
+                    // item_from.js가 로드되지 않은 경우 기존 로직 사용
+                    if (shop.mapName || shop.shopName) {
+                        const parts = [];
+                        // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
+                        if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+                            moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
+                            parts.push('아키하바라 게임 센터');
+                        } else if (shop.mapName) {
+                            parts.push(translateMapName(shop.mapName));
+                        }
+                        if (shop.shopName) {
+                            // 'AAAAAA==' 제거
+                            let shopName = shop.shopName.replace(/AAAAAA==/g, '').trim();
+                            if (shopName) {
+                                parts.push(shopName);
+                            }
+                        }
+                        sourceText = parts.join(' ').trim();
+                        if (!sourceText) sourceText = '-';
+                    }
                 }
                 
                 // 최대 개수 (-1이면 '-'로 표시)
@@ -1660,7 +1793,7 @@
                         <div class="item-meta-row">
                             <span class="item-price-meta">${priceText}</span>
                             <span class="item-meta-separator">·</span>
-                            <span class="item-source-meta">${sourceText}</span>
+                            <span class="item-source-meta">${sourceText}${sourceIconHtml}</span>
                         </div>
                     </div>
                 `;
@@ -1672,11 +1805,15 @@
                             ${itemNameMobileHtml}
                         </td>
                         <td style="color: ${synergyColor};">${totalSynergy}</td>
+                        <td style="color: ${synergyColor};">${firstGiftSynergy}</td>
                         <td class="item-price-desktop">${priceText}</td>
                         <td class="item-efficiency" style="color: ${efficiencyColor};">${efficiencyText}</td>
-                        <td>${discountText}</td>
-                        <td>${discountCondHtml}</td>
-                        <td class="item-source-desktop">${sourceText}</td>
+                        <td>
+                            <div class="discount-cell">${discountText}${discountIconHtml}</div>
+                        </td>
+                        <td class="item-source-desktop">
+                            <span class="item-source-text">${sourceText}</span>${sourceIconHtml}
+                        </td>
                         <td>${maxBuyText}</td>
                         <td>${resetTypeText}</td>
                     </tr>
@@ -1689,9 +1826,16 @@
                 </div>
             `;
             
-            // 정렬 기능 초기화
+            // 할인 조건 툴팁 초기화
+            if (window.initDiscountTooltips) {
+                setTimeout(() => {
+                    window.initDiscountTooltips();
+                }, 0);
+            }
+            
+            // 획득처 아이콘 클릭 이벤트 초기화
             setTimeout(() => {
-                setupItemTableSorting();
+                setupItemSourceIcons();
             }, 0);
         }
 
@@ -1706,6 +1850,9 @@
         
         // 섹션 접기/펼치기 기능 초기화
         setupSectionCollapse();
+        
+        // 사전 퀘스트 스포일러 클릭 이벤트 설정
+        setupUnlockQuestSpoiler();
         
         // 모바일에서 헤더 텍스트 변경
         if (window.innerWidth <= 768) {
@@ -1723,6 +1870,54 @@
     
     // 전역으로 노출 (synergy_search.js에서 사용)
     window.createTabs = createTabs;
+
+    // 획득처 아이콘 클릭 이벤트 설정
+    function setupItemSourceIcons() {
+        const detailContainer = document.getElementById('characterDetail');
+        if (!detailContainer) return;
+
+        // 이벤트 위임 사용
+        detailContainer.addEventListener('click', (e) => {
+            const icon = e.target.closest('.item-source-icon');
+            if (!icon) return;
+
+            try {
+                const itemDataStr = icon.getAttribute('data-item-source');
+                if (!itemDataStr) return;
+
+                // HTML 엔티티 디코딩
+                const decodedStr = itemDataStr.replace(/&#39;/g, "'");
+                const item = JSON.parse(decodedStr);
+
+                if (window.showItemFromModal) {
+                    window.showItemFromModal(item);
+                }
+            } catch (error) {
+                console.error('획득처 모달 표시 중 오류:', error);
+            }
+        });
+    }
+
+    // 사전 퀘스트 스포일러 클릭 이벤트
+    function setupUnlockQuestSpoiler() {
+        const unlockQuestContent = document.querySelector('.unlock-quest-content.spoiler');
+        if (!unlockQuestContent) return;
+        
+        unlockQuestContent.addEventListener('click', function(e) {
+            if (this.classList.contains('spoiler')) {
+                e.preventDefault();
+                e.stopPropagation();
+                const characterName = this.dataset.character;
+                if (characterName) {
+                    // localStorage에 해제 상태 저장
+                    const spoilerKey = `unlockQuestSpoiler_${characterName}`;
+                    localStorage.setItem(spoilerKey, '1');
+                }
+                this.classList.remove('spoiler');
+                this.dataset.spoilerRevealed = '1';
+            }
+        });
+    }
 
     // 섹션 접기/펼치기 기능
     function setupSectionCollapse() {
@@ -1743,6 +1938,22 @@
         
         // 이벤트 위임 사용: detailContainer에 한 번만 리스너 추가
         detailContainer.addEventListener('click', (e) => {
+            // 사전 퀘스트 스포일러 클릭 처리 (먼저 처리)
+            const spoilerContent = e.target.closest('.unlock-quest-content.spoiler');
+            if (spoilerContent) {
+                e.preventDefault();
+                e.stopPropagation();
+                const characterName = spoilerContent.dataset.character;
+                if (characterName) {
+                    // localStorage에 해제 상태 저장
+                    const spoilerKey = `unlockQuestSpoiler_${characterName}`;
+                    localStorage.setItem(spoilerKey, '1');
+                }
+                spoilerContent.classList.remove('spoiler');
+                spoilerContent.dataset.spoilerRevealed = '1';
+                return;
+            }
+            
             // 클릭된 요소가 collapsible 제목이나 그 자식 요소인지 확인
             let title = e.target.closest('.detail-section-title.collapsible');
             
@@ -1892,8 +2103,14 @@
                         aVal = aText === '-' ? -1 : parseFloat(aText.replace(/[^\d.]/g, '')) || -1;
                         bVal = bText === '-' ? -1 : parseFloat(bText.replace(/[^\d.]/g, '')) || -1;
                     } else if (sortType === 'discount') {
-                        const aText = getCellValue(a, 4);
-                        const bText = getCellValue(b, 4);
+                        // 할인가 셀의 .discount-cell 내부 텍스트를 가져옴 (아이콘 제외)
+                        const aCell = a.querySelector('.discount-cell');
+                        const bCell = b.querySelector('.discount-cell');
+                        let aText = aCell?.textContent?.trim() || '';
+                        let bText = bCell?.textContent?.trim() || '';
+                        // 툴팁 아이콘이 있으면 제거
+                        aText = aText.replace(/\?/g, '').trim();
+                        bText = bText.replace(/\?/g, '').trim();
                         aVal = aText === '-' ? -1 : parseFloat(aText.replace(/[^\d.]/g, '')) || -1;
                         bVal = bText === '-' ? -1 : parseFloat(bText.replace(/[^\d.]/g, '')) || -1;
                     }

@@ -197,9 +197,11 @@
     "item": [
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303240.png",
         "name": "Classic Fairy Tales",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -211,13 +213,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 35,
+        "compound": [],
         "image": "item-303249.png",
         "name": "Dress-up Doll",
         "new_gift_synergy": 70,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -229,13 +236,18 @@
             "shopName": "High Sense"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 35
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303255.png",
         "name": "Character Apron",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -247,13 +259,18 @@
             "shopName": "Zoshigaya Mart"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303258.png",
         "name": "Luxury Aroma Set",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -265,13 +282,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 11,
+        "compound": [],
         "image": "item-303272.png",
         "name": "Classic Psychology Series",
         "new_gift_synergy": 22,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -283,13 +305,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 11
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303273.png",
         "name": "Kids' Character Pillow",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -301,13 +328,18 @@
             "shopName": "High Sense"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 22,
+        "compound": [],
         "image": "item-303274.png",
         "name": "Luxury Dollhouse",
         "new_gift_synergy": 44,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -319,13 +351,18 @@
             "shopName": "Rocinante"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 22
       },
       {
         "bonus_synergy": 56,
+        "compound": [],
         "image": "item-303275.png",
         "name": "Deluxe Camera Drone",
         "new_gift_synergy": 112,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -337,13 +374,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 56
       },
       {
         "bonus_synergy": 60,
+        "compound": [],
         "image": "item-303276.png",
         "name": "Mini Speaker",
         "new_gift_synergy": 120,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -355,13 +397,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 60
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "Limited-Edition Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -375,13 +422,18 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "Candy Set",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -395,13 +447,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "Essential Oils",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -415,13 +472,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "Mont Blanc",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -435,13 +497,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "Snow Globe",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -455,13 +522,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "Aroma Diffuser",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -475,14 +547,112 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 9,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306120.png",
+              "name": "Camellias",
+              "seed": [
+                {
+                  "consume_ap": [
+                    10,
+                    9,
+                    7
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306104.png",
+                    "name": "Camellia Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "personalityLimit": "Kindness LV.5",
+                        "price": 780,
+                        "resetType": "일간",
+                        "shopName": "Flower Shop Sukebe"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "Can be planted in your home garden to bloom into camellias. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                }
+              ],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 1680,
+                  "resetType": "일간",
+                  "shopName": "Flower Shop Sukebe"
+                }
+              ],
+              "source": [
+                "shop",
+                "seed"
+              ],
+              "tips": "[Camellia]\nCan be crafted at the workbench into Camellia Tea and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 4
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305932.png",
+              "name": "Gorgeous Packaging",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 500,
+                  "resetType": "일간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "Used to craft Camellia Tea, Osmanthus Tea, Preserved Flowers, Violet Bouquets, and Osmanthus Bouquets at the workbench.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305944.png",
         "name": "Camellia Tea",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 9
       }
     ],
@@ -536,6 +706,10 @@
       }
     ],
     "time": "Evening",
+    "unlock_quest": {
+      "details": "We arrived at Kichijoji.\nLet's get in touch with Riko-senpai.",
+      "name": "Unconditional Love"
+    },
     "visit_dialog": [
       {
         "destination": "Shinjuku",

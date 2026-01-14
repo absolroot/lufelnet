@@ -1,0 +1,55 @@
+{
+  "data": {
+    "advance_dialog": [],
+    "can_romance": false,
+    "item": [],
+    "name": "ルフェル",
+    "romance_dialog": [],
+    "special_award": [
+      {
+        "description": "不定期にルフェルの『ビジネス』プランが更新される",
+        "icon": "xielizhe-icon-lufeier-06.png",
+        "name": "『取引』成立",
+        "rank": 1
+      },
+      {
+        "description": "潜入道具の作成ができる",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "潜入道具作成",
+        "rank": 2
+      },
+      {
+        "description": "パレスとメメントスで格下のシャドウを瞬殺できる",
+        "icon": "xielizhe-icon-lufeier-07.png",
+        "name": "潜入の心得",
+        "rank": 3
+      },
+      {
+        "description": "作成できる『残宝センサー』『潜入道具』『プレゼント』が増える",
+        "icon": "xielizhe-icon-lufeier-02.png",
+        "name": "中級作成レシピ",
+        "rank": 4
+      },
+      {
+        "description": "プレゼント作成時に、一定の確率で材料の一部が返還される",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "材料節約の心得",
+        "rank": 5
+      },
+      {
+        "description": "プレゼント作成時に、一定の確率で作成物が増加する",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "作成テクニック",
+        "rank": 7
+      }
+    ],
+    "time": null,
+    "unlock_quest": {
+      "details": "もう遅い。ベッドで休もう。",
+      "name": "欲望の目覚め"
+    },
+    "visit_dialog": []
+  },
+  "msg": "OK",
+  "status": 0
+}

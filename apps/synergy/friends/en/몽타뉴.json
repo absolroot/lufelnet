@@ -194,9 +194,11 @@
     "item": [
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303064.png",
         "name": "Protective Sports Gear",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -217,13 +219,18 @@
             "shopName": "Soccer Point Exchange"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 34,
+        "compound": [],
         "image": "item-303081.png",
         "name": "Maid Figurine",
         "new_gift_synergy": 68,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -236,13 +243,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 34
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303236.png",
         "name": "Japanese Book Cover",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -254,13 +266,18 @@
             "shopName": "High Sense"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 36,
+        "compound": [],
         "image": "item-303239.png",
         "name": "Flowery Comb",
         "new_gift_synergy": 72,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -272,13 +289,18 @@
             "shopName": "High Sense"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 36
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "Limited-Edition Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -292,13 +314,18 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "Candy Set",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -312,13 +339,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "Essential Oils",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -332,13 +364,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "Mont Blanc",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -352,13 +389,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "Snow Globe",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -372,13 +414,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "Aroma Diffuser",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -392,13 +439,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303293.png",
         "name": "Snowflake Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -410,13 +462,18 @@
             "shopName": "37 Degrees Celsius"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 14,
+        "compound": [],
         "image": "item-303294.png",
         "name": "Classic Record",
         "new_gift_synergy": 28,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -428,13 +485,18 @@
             "shopName": "Rocinante"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 14
       },
       {
         "bonus_synergy": 18,
+        "compound": [],
         "image": "item-303295.png",
         "name": "High-Quality Yoga Mat",
         "new_gift_synergy": 36,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -446,13 +508,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 18
       },
       {
         "bonus_synergy": 38,
+        "compound": [],
         "image": "item-303296.png",
         "name": "Sports Earphones",
         "new_gift_synergy": 76,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -464,13 +531,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 38
       },
       {
         "bonus_synergy": 61,
+        "compound": [],
         "image": "item-303297.png",
         "name": "Luxury Sports Watch",
         "new_gift_synergy": 122,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -482,14 +554,152 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 61
       },
       {
         "bonus_synergy": 16,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306124.png",
+              "name": "Cosmos",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "70.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306107.png",
+                    "name": "Unknown Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "personalityLimit": "Kindness LV.5",
+                        "price": 1720,
+                        "resetType": "일간",
+                        "shopName": "Flower Shop Sukebe"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "A bag of seeds for an unknown kind of flower. The label is torn, but they look like daisy or cosmos seeds. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "[Cosmos]\nCan be crafted at the workbench into a Cosmos Bouquet and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 1
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306121.png",
+              "name": "Osmanthuses",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306106.png",
+                    "name": "Osmanthus Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "personalityLimit": "Kindness LV.6",
+                        "price": 860,
+                        "resetType": "일간",
+                        "shopName": "Flower Shop Sukebe"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "Can be planted in your home garden to bloom into osmanthus. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "[Osmanthus]\nCan be crafted at the workbench into an Osmanthus Bouquet and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 2
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305932.png",
+              "name": "Gorgeous Packaging",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 500,
+                  "resetType": "일간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "Used to craft Camellia Tea, Osmanthus Tea, Preserved Flowers, Violet Bouquets, and Osmanthus Bouquets at the workbench.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305948.png",
         "name": "Osmanthus Bouquet",
         "new_gift_synergy": 32,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 16
       }
     ],
@@ -553,6 +763,10 @@
       }
     ],
     "time": "Evening",
+    "unlock_quest": {
+      "details": "A new day begins.\nTime for school.",
+      "name": "Outcome of Pride"
+    },
     "visit_dialog": [
       {
         "destination": "Shibuya",

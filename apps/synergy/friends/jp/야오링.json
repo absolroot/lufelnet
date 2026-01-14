@@ -243,9 +243,11 @@
     "item": [
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303075.png",
         "name": "アイドル生写真セット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -258,13 +260,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 55,
+        "compound": [],
         "image": "item-303201.png",
         "name": "心霊ビデオ",
         "new_gift_synergy": 110,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -277,13 +284,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 55
       },
       {
         "bonus_synergy": 9,
+        "compound": [],
         "image": "item-303202.png",
         "name": "黒縁メガネ",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -296,13 +308,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 9
       },
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303217.png",
         "name": "ミックスナッツ",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -314,13 +331,18 @@
             "shopName": "雑司ヶ谷マート"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303220.png",
         "name": "大人の知恵の輪",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -332,13 +354,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 64,
+        "compound": [],
         "image": "item-303241.png",
         "name": "最先端デジカメ",
         "new_gift_synergy": 128,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -350,13 +377,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 64
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303244.png",
         "name": "和菓子セット",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -368,13 +400,18 @@
             "shopName": "雑司ヶ谷マート"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 6,
+        "compound": [],
         "image": "item-303245.png",
         "name": "けん玉",
         "new_gift_synergy": 12,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -386,13 +423,18 @@
             "shopName": "ハイセンス"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 6
       },
       {
         "bonus_synergy": 52,
+        "compound": [],
         "image": "item-303252.png",
         "name": "最新電動歯ブラシ",
         "new_gift_synergy": 104,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -404,13 +446,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 52
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -424,13 +471,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -444,13 +496,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -464,13 +521,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -484,13 +546,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -504,13 +571,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -524,14 +596,134 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 9,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306119.png",
+              "name": "ジャスミン",
+              "seed": [
+                {
+                  "consume_ap": [
+                    10,
+                    9,
+                    7
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306103.png",
+                    "name": "ジャスミンの種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "personalityLimit": "優しさ LV.3",
+                        "price": 510,
+                        "resetType": "일간",
+                        "shopName": "ラフレシ屋"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "自宅で栽培すると『ジャスミン』を咲かせることができる。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                },
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "30.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306108.png",
+                    "name": "不思議な種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "personalityLimit": "優しさ LV.9",
+                        "price": 1730,
+                        "resetType": "일간",
+                        "shopName": "ラフレシ屋"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "ラベルが破れていて何の花の種か分からない。『スミレ』か『ジャスミン』の種に似ている。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "【ジャスミン】\n作業台で『ジャスミン茶』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "シンプルな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 300,
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『デイジーのポプリ』『ヒマワリの種』『ジャスミン茶』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305943.png",
         "name": "ジャスミン茶",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 9
       }
     ],
@@ -585,6 +777,10 @@
       }
     ],
     "time": "夕方",
+    "unlock_quest": {
+      "details": "疲れる一日だった。\n早く部屋に戻って寝よう。",
+      "name": "夢の跡"
+    },
     "visit_dialog": [
       {
         "destination": "神田",

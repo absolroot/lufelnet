@@ -209,13 +209,15 @@
         "unlock_cond": "매력 Lv.17"
       }
     ],
-    "can_romance": false,
+    "can_romance": true,
     "item": [
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303068.png",
         "name": "GOAT 흡수 타월",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -238,13 +240,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 55,
+        "compound": [],
         "image": "item-303201.png",
         "name": "심령 비디오",
         "new_gift_synergy": 110,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 31000,
@@ -259,13 +266,18 @@
             "shopName": "할인 상점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 55
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303233.png",
         "name": "남자 차양 모자",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 1520,
@@ -279,13 +291,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303259.png",
         "name": "라쿠고 특선 전집",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -299,13 +316,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303278.png",
         "name": "가정용 텀블러",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -319,13 +341,18 @@
             "shopName": "슈퍼마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "한정판 키링",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -350,13 +377,18 @@
             "shopName": "굿즈샵"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "막과자 패키지",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -370,13 +402,18 @@
             "shopName": "슈퍼마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "프리미엄 에센스 세트",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7320,
@@ -390,13 +427,18 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "마롱 케이크",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 5700,
@@ -410,13 +452,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "뮤직 스노글로브",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 9500,
@@ -430,13 +477,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "탁상용 아로마 기계",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 11400,
@@ -450,13 +502,18 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 38,
+        "compound": [],
         "image": "item-303296.png",
         "name": "스포츠용 헤드폰",
         "new_gift_synergy": 76,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 17860,
@@ -481,13 +538,18 @@
             "shopName": "전자제품 매장"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 38
       },
       {
         "bonus_synergy": 29,
+        "compound": [],
         "image": "item-317007.png",
         "name": "페더맨 전대 오브제 세트",
         "new_gift_synergy": 58,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 11970,
@@ -510,13 +572,18 @@
             "shopName": "AAAAAA=="
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 29
       },
       {
         "bonus_synergy": 23,
+        "compound": [],
         "image": "item-317023.png",
         "name": "클래식 희곡 문집 소장판",
         "new_gift_synergy": 46,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 9120,
@@ -530,13 +597,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 23
       },
       {
         "bonus_synergy": 5,
+        "compound": [],
         "image": "item-317024.png",
         "name": "상비용 목캔디 세트",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 1710,
@@ -550,13 +622,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 5
       },
       {
         "bonus_synergy": 48,
+        "compound": [],
         "image": "item-317025.png",
         "name": "패션 숄더 크로스백",
         "new_gift_synergy": 96,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 25800,
@@ -570,14 +647,20 @@
             "shopName": "할인 상점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 48
       },
       {
         "bonus_synergy": 49,
+        "compound": [],
         "image": "item-303298.png",
         "name": "마음의 초콜릿",
         "new_gift_synergy": 0,
+        "seed": [],
         "shop": [],
+        "source": [],
         "synergy": 50
       }
     ],
@@ -631,6 +714,10 @@
       }
     ],
     "time": "방과 후",
+    "unlock_quest": {
+      "details": "이때의 아란은...",
+      "name": "가면 배우의 커튼콜"
+    },
     "visit_dialog": [
       {
         "destination": "츠키시마",

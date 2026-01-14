@@ -47,7 +47,7 @@
             pullTracker: '계약 트래커', pullTracker_global: '계약 통계',
             materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
             tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',
-            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력', support: '서포트'
+            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', support: '서포트'
         },
         en: {
             character: 'Character', persona: 'Persona', revelations: 'Revelations', wonderweapon: 'Wonder Daggers',
@@ -111,17 +111,6 @@
         const path = pathMap[key] || '/';
         const url = new URL(base + path, window.location.origin);
 
-        // 새 창으로 띄우게
-        if (key === 'synergy' && lang === 'kr') {
-            return 'https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM/'
-        }
-    else if (key === 'synergy' && lang === 'en') {
-            return 'https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs'
-        }
-        else if (key === 'synergy' && lang === 'jp') {
-            return 'https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs'
-        }
-
         url.searchParams.set('lang', lang);
         url.searchParams.set('v', ver);
         return url.pathname + url.search;
@@ -129,13 +118,13 @@
 
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','synergy','support'];
+            return ['character','persona','revelations','synergy','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','synergy','support'];
+            return ['character','persona','revelations','synergy','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','support'];
         }
         // default to KR set
-        return ['character','persona','revelations','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','synergy','support'];
+        return ['character','persona','revelations','synergy','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','support'];
     };
 
     const render = () => {
@@ -150,9 +139,6 @@
             const a = document.createElement('a');
             a.className = 'quick-link';
             a.href = buildHref(key, lang);
-            if (key === 'synergy') {
-                a.target = '_blank';
-            }
             a.setAttribute('data-key', key);
             a.setAttribute('aria-label', dict[key] || key);
 

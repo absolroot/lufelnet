@@ -213,9 +213,11 @@
     "item": [
       {
         "bonus_synergy": 14,
+        "compound": [],
         "image": "item-303082.png",
         "name": "シンプルメイクポーチ",
         "new_gift_synergy": 28,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -227,13 +229,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 14
       },
       {
         "bonus_synergy": 5,
+        "compound": [],
         "image": "item-303219.png",
         "name": "ブラックマグカップ",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -245,13 +252,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 5
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303228.png",
         "name": "トリュフチョコ",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -264,13 +276,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 2,
+        "compound": [],
         "image": "item-303234.png",
         "name": "水彩絵ハガキ",
         "new_gift_synergy": 4,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -291,13 +308,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 2
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303262.png",
         "name": "懐かしラムネセット",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -309,13 +331,18 @@
             "shopName": "自動販売機"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303263.png",
         "name": "アンティークのトレイ",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -327,13 +354,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 17,
+        "compound": [],
         "image": "item-303264.png",
         "name": "フワモッコくん人形",
         "new_gift_synergy": 34,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -345,13 +377,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 17
       },
       {
         "bonus_synergy": 38,
+        "compound": [],
         "image": "item-303265.png",
         "name": "月明りブローチ",
         "new_gift_synergy": 76,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -363,13 +400,18 @@
             "shopName": "キョウリュウ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 38
       },
       {
         "bonus_synergy": 110,
+        "compound": [],
         "image": "item-303266.png",
         "name": "バニラ香水",
         "new_gift_synergy": 220,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -382,13 +424,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 110
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -402,13 +449,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -422,13 +474,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -442,13 +499,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -462,13 +524,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -482,13 +549,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -502,14 +574,144 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 5,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306117.png",
+              "name": "デイジー",
+              "seed": [
+                {
+                  "consume_ap": [
+                    5,
+                    4,
+                    3
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306101.png",
+                    "name": "デイジーの種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "price": 480,
+                        "resetType": "일간",
+                        "shopName": "ラフレシ屋"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "自宅で栽培すると『デイジー』を咲かせることができる。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                },
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "30.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306107.png",
+                    "name": "未知の種",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "所持金",
+                        "personalityLimit": "優しさ LV.5",
+                        "price": 1720,
+                        "resetType": "일간",
+                        "shopName": "花屋助兵衛"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "ラベルが破れていて何の花の種か分からない。『デイジー』か『コスモス』の種に似ている。初収穫時のみ優しさが上昇する。",
+                    "type": "種"
+                  }
+                }
+              ],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 930,
+                  "resetType": "일간",
+                  "shopName": "花屋助兵衛"
+                }
+              ],
+              "source": [
+                "shop",
+                "seed"
+              ],
+              "tips": "【デイジー】\n作業台で『デイジーのポプリ』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "シンプルな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 300,
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『デイジーのポプリ』『ヒマワリの種』『ジャスミン茶』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305941.png",
         "name": "デイジーのポプリ",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 5
       }
     ],
@@ -563,6 +765,10 @@
       }
     ],
     "time": "夜",
+    "unlock_quest": {
+      "details": "前方に異変が発生している場所がある。\n調査しに行こう。",
+      "name": "在りし日の認知の間"
+    },
     "visit_dialog": [
       {
         "destination": "渋谷",

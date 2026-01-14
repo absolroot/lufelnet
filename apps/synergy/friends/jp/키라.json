@@ -213,9 +213,11 @@
     "item": [
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303068.png",
         "name": "スポーツ用吸水タオル",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -236,13 +238,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 16,
+        "compound": [],
         "image": "item-303206.png",
         "name": "もっちもちクッション",
         "new_gift_synergy": 32,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -255,13 +262,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 16
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303209.png",
         "name": "多面立方体パズル",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -274,13 +286,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 37,
+        "compound": [],
         "image": "item-303232.png",
         "name": "高級サングラス",
         "new_gift_synergy": 74,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -292,13 +309,18 @@
             "shopName": "３７℃"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 37
       },
       {
         "bonus_synergy": 18,
+        "compound": [],
         "image": "item-303235.png",
         "name": "超爆音目覚まし時計",
         "new_gift_synergy": 36,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -310,13 +332,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 18
       },
       {
         "bonus_synergy": 11,
+        "compound": [],
         "image": "item-303277.png",
         "name": "エイム上達法",
         "new_gift_synergy": 22,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -328,13 +355,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 11
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303278.png",
         "name": "大容量魔法瓶",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -346,13 +378,18 @@
             "shopName": "雑司ヶ谷マート"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 40,
+        "compound": [],
         "image": "item-303279.png",
         "name": "ソルジャーフィギュア",
         "new_gift_synergy": 80,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -364,13 +401,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 40
       },
       {
         "bonus_synergy": 20,
+        "compound": [],
         "image": "item-303280.png",
         "name": "眼精疲労用目薬",
         "new_gift_synergy": 40,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -382,13 +424,18 @@
             "shopName": "ＡＯＨＩＧＥ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 20
       },
       {
         "bonus_synergy": 52,
+        "compound": [],
         "image": "item-303281.png",
         "name": "ひげメガネ",
         "new_gift_synergy": 104,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -400,13 +447,18 @@
             "shopName": "３７℃"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 52
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -420,13 +472,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -440,13 +497,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -460,13 +522,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -480,13 +547,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -500,13 +572,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -519,6 +596,9 @@
             "resetType": "주간",
             "shopName": "ボディチョップ"
           }
+        ],
+        "source": [
+          "shop"
         ],
         "synergy": 28
       }
@@ -583,6 +663,10 @@
       }
     ],
     "time": "夜",
+    "unlock_quest": {
+      "details": "前方に異変が発生している場所がある。\n調査しに行こう。",
+      "name": "在りし日の認知の間"
+    },
     "visit_dialog": [
       {
         "destination": "神田",

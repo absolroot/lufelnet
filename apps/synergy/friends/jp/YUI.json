@@ -213,9 +213,11 @@
     "item": [
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303084.png",
         "name": "アイドルトレカ",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -227,13 +229,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303208.png",
         "name": "磁気ネックレス",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -254,13 +261,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303221.png",
         "name": "卓上用ミニサボテン",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -272,13 +284,18 @@
             "shopName": "ラフレシ屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 1,
+        "compound": [],
         "image": "item-303222.png",
         "name": "プランターカバー",
         "new_gift_synergy": 2,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -299,13 +316,18 @@
             "shopName": "軽音部ポイント交換"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 1
       },
       {
         "bonus_synergy": 50,
+        "compound": [],
         "image": "item-303223.png",
         "name": "最新式ロボット掃除機",
         "new_gift_synergy": 100,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -318,13 +340,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 50
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303224.png",
         "name": "ガラスの花瓶",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -337,13 +364,18 @@
             "shopName": "ハイセンス"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303225.png",
         "name": "バスケットフラワー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -355,13 +387,18 @@
             "shopName": "花屋助兵衛"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303228.png",
         "name": "トリュフチョコ",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -374,13 +411,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 112,
+        "compound": [],
         "image": "item-303229.png",
         "name": "ブランド香水",
         "new_gift_synergy": 224,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -393,13 +435,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 112
       },
       {
         "bonus_synergy": 2,
+        "compound": [],
         "image": "item-303234.png",
         "name": "水彩絵ハガキ",
         "new_gift_synergy": 4,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -420,13 +467,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 2
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -440,13 +492,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -460,13 +517,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -480,13 +542,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -500,13 +567,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -520,13 +592,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -539,6 +616,9 @@
             "resetType": "주간",
             "shopName": "ボディチョップ"
           }
+        ],
+        "source": [
+          "shop"
         ],
         "synergy": 28
       }
@@ -603,6 +683,10 @@
       }
     ],
     "time": "夜",
+    "unlock_quest": {
+      "details": "作戦がうまくいくように、キウチ・パレス内部を慎重に探ろう。",
+      "name": "夢の跡"
+    },
     "visit_dialog": [
       {
         "destination": "荒野",

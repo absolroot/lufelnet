@@ -227,9 +227,11 @@
     "item": [
       {
         "bonus_synergy": 2,
+        "compound": [],
         "image": "item-303203.png",
         "name": "Part-time Job Magazine",
         "new_gift_synergy": 4,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -241,13 +243,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 2
       },
       {
         "bonus_synergy": 20,
+        "compound": [],
         "image": "item-303210.png",
         "name": "Shichi-kun Doll",
         "new_gift_synergy": 40,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -259,13 +266,18 @@
             "shopName": "Triple Seven"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 20
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303211.png",
         "name": "ChocoStick Value Pack",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -277,13 +289,18 @@
             "shopName": "Zoshigaya Mart"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303213.png",
         "name": "Cat Hairpin",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -295,13 +312,18 @@
             "shopName": "37 Degrees Celsius"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 125,
+        "compound": [],
         "image": "item-303214.png",
         "name": "Heart Ring",
         "new_gift_synergy": 250,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -314,13 +336,18 @@
             "shopName": "Tsurukame Diamond"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 125
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303216.png",
         "name": "Strawberry Bento Box",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -332,13 +359,18 @@
             "shopName": "Triple Seven"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303227.png",
         "name": "Uji Matcha Flan Set",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -351,13 +383,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 18,
+        "compound": [],
         "image": "item-303235.png",
         "name": "Super Loud Alarm Clock",
         "new_gift_synergy": 36,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -369,13 +406,18 @@
             "shopName": "Rocinante"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 18
       },
       {
         "bonus_synergy": 3,
+        "compound": [],
         "image": "item-303260.png",
         "name": "Heart-Shaped Hand Mirror",
         "new_gift_synergy": 6,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -387,13 +429,18 @@
             "shopName": "Kyouryuu Jewelry"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 3
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "Limited-Edition Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -407,13 +454,18 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "Candy Set",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -427,13 +479,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "Essential Oils",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -447,13 +504,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "Mont Blanc",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -467,13 +529,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "Snow Globe",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -487,13 +554,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "Aroma Diffuser",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -507,14 +579,100 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 9,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306118.png",
+              "name": "Sunflowers",
+              "seed": [
+                {
+                  "consume_ap": [
+                    10,
+                    9,
+                    7
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306105.png",
+                    "name": "Sunflower Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "price": 500,
+                        "resetType": "일간",
+                        "shopName": "Rafflesia"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "Can be planted in your home garden to bloom into sunflowers. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "[Sunflower]\nCan be crafted at the workbench into Sunflower Seeds and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "Simple Packaging",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 300,
+                  "resetType": "일간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "A common material.\nCan be used at the workbench to craft these gifts for accomplices: Daisy Potpourri, Sunflower Seeds, and Jasmine Tea.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305942.png",
         "name": "Sunflower Seeds",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 9
       }
     ],
@@ -568,6 +726,10 @@
       }
     ],
     "time": "After School",
+    "unlock_quest": {
+      "details": "A new day begins.\nTime for school.",
+      "name": "Outcome of Pride"
+    },
     "visit_dialog": [
       {
         "destination": "Shibuya",

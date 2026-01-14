@@ -213,9 +213,11 @@
     "item": [
       {
         "bonus_synergy": 14,
+        "compound": [],
         "image": "item-303082.png",
         "name": "Simple Makeup Pouch",
         "new_gift_synergy": 28,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -227,13 +229,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 14
       },
       {
         "bonus_synergy": 5,
+        "compound": [],
         "image": "item-303219.png",
         "name": "Black Mug",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -245,13 +252,18 @@
             "shopName": "Triple Seven"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 5
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303228.png",
         "name": "Truffles",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -264,13 +276,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 2,
+        "compound": [],
         "image": "item-303234.png",
         "name": "Watercolor Postcard",
         "new_gift_synergy": 4,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -291,13 +308,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 2
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303262.png",
         "name": "Retro Ramune Set",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -309,13 +331,18 @@
             "shopName": "Vending Machine"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303263.png",
         "name": "Antique Tray",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -327,13 +354,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 17,
+        "compound": [],
         "image": "item-303264.png",
         "name": "Fuwamokko-kun Doll",
         "new_gift_synergy": 34,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -345,13 +377,18 @@
             "shopName": "Triple Seven"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 17
       },
       {
         "bonus_synergy": 38,
+        "compound": [],
         "image": "item-303265.png",
         "name": "Moonlight Brooch",
         "new_gift_synergy": 76,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -363,13 +400,18 @@
             "shopName": "Kyouryuu Jewelry"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 38
       },
       {
         "bonus_synergy": 110,
+        "compound": [],
         "image": "item-303266.png",
         "name": "Vanilla Perfume",
         "new_gift_synergy": 220,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -382,13 +424,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 110
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "Limited-Edition Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -402,13 +449,18 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "Candy Set",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -422,13 +474,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "Essential Oils",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -442,13 +499,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "Mont Blanc",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -462,13 +524,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "Snow Globe",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -482,13 +549,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "Aroma Diffuser",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -502,14 +574,144 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 5,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306117.png",
+              "name": "Daisies",
+              "seed": [
+                {
+                  "consume_ap": [
+                    5,
+                    4,
+                    3
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306101.png",
+                    "name": "Daisy Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "price": 480,
+                        "resetType": "일간",
+                        "shopName": "Rafflesia"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "Can be planted in your home garden to bloom into daisies. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                },
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "30.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "<color=#ffffff>  </color>",
+                    "icon": "item-306107.png",
+                    "name": "Unknown Seeds",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 10,
+                        "moneyName": "Money",
+                        "personalityLimit": "Kindness LV.5",
+                        "price": 1720,
+                        "resetType": "일간",
+                        "shopName": "Flower Shop Sukebe"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "A bag of seeds for an unknown kind of flower. The label is torn, but they look like daisy or cosmos seeds. Increases your Kindness when first harvested.",
+                    "type": "Seeds"
+                  }
+                }
+              ],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 930,
+                  "resetType": "일간",
+                  "shopName": "Flower Shop Sukebe"
+                }
+              ],
+              "source": [
+                "shop",
+                "seed"
+              ],
+              "tips": "[Daisy]\nCan be crafted at the workbench into Daisy Potpourri and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "Simple Packaging",
+              "seed": [],
+              "shop": [
+                {
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 300,
+                  "resetType": "일간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "A common material.\nCan be used at the workbench to craft these gifts for accomplices: Daisy Potpourri, Sunflower Seeds, and Jasmine Tea.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305941.png",
         "name": "Daisy Potpourri",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 5
       }
     ],
@@ -563,6 +765,10 @@
       }
     ],
     "time": "Night",
+    "unlock_quest": {
+      "details": "Something strange is happening up ahead.\nWe should go check it out.",
+      "name": "Chamber of Recollections"
+    },
     "visit_dialog": [
       {
         "destination": "Shibuya",

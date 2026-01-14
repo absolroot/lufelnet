@@ -75,6 +75,54 @@ sitemap:
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/persona/" />
   </url>
 
+  <!-- Synergy -->
+  <url>
+    <loc>{{ site.url }}/synergy/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/synergy/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/synergy/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/synergy/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/synergy/" />
+  </url>
+
+  <!-- Synergy Character Pages -->
+  {% assign synergy_characters = "메로페,루페르,모토하,토모코,키요시,아야카,마사키,리코,마유미,마나카,카타야마,쇼키,슌,야오링,카요,미유,몽타뉴,미오,미나미,YUI,유우미,키라,루우나,이치고,무스비" | split: "," %}
+  {% assign synergy_codenames = "merope,cattle,closer,kotomo,kii,chord,cherish,wind,turbo,ange,blitz,luce,soy,rin,okyann,puppet,mont,matoi,marian,bui,phoebe,doctor,howler,berry,yui,무스비" | split: "," %}
+  {% assign languages = "kr,en,jp" | split: "," %}
+  
+  {% for character in synergy_characters %}
+    {% assign char_index = forloop.index0 %}
+    {% assign codename = synergy_codenames[char_index] %}
+    
+    <!-- Synergy Character: {{ character }} ({{ codename }}) -->
+    <url>
+      <loc>{{ site.url }}/synergy/?character={{ codename }}</loc>
+      <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      {% for lang in languages %}
+        <xhtml:link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}/synergy/?character={{ codename }}&amp;lang={{ lang }}" />
+      {% endfor %}
+      <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/synergy/?character={{ codename }}" />
+    </url>
+    
+    <!-- Synergy Character with explicit language parameters -->
+    {% for lang in languages %}
+      <url>
+        <loc>{{ site.url }}/synergy/?character={{ codename }}&amp;lang={{ lang }}</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        {% for alt_lang in languages %}
+          <xhtml:link rel="alternate" hreflang="{{ alt_lang }}" href="{{ site.url }}/synergy/?character={{ codename }}&amp;lang={{ alt_lang }}" />
+        {% endfor %}
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/synergy/?character={{ codename }}" />
+      </url>
+    {% endfor %}
+  {% endfor %}
+
   <!-- Pull Tracker: Global Stats -->
   <url>
     <loc>{{ site.url }}/pull-tracker/global-stats/</loc>

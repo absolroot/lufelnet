@@ -1,8 +1,9 @@
 {
     "루페르" : {
         "img": "touxiang-liaotian-new-cattle.png",
-        "inactive": true,
-        "num": 4
+        "img_color": "Tongyong-touxiang-changfu-cattle.png",
+        "num": 4,
+        "recommend_num": [3]
     },
     "나루루" : {
         "img": "touxiang-liaotian-new-liben.png",
@@ -34,17 +35,14 @@
         "img": "touxiang-liaotian-new-kii.png",
         "img_color": "Tongyong-touxiang-changfu-kii.png",
         "tip_kr": "- 1랭크: 읽으면 매력 +10, 목욕 이벤트에 매력 +3 추가 획득\n- 3랭크: 읽으면 친절 +10, 드러그 스토어 알바 진행 시 1120엔 추가 획득\n- 11랭크: 읽으면 재주 +10, 헬스장에서 운동 시 배짱 +3 추가 획득\n- 15랭크: 읽으면 지식 +10, 서점 알바 진행 시 1170엔 추가 획득\n- 20랭크: 읽으면 지식 +10, 영화 관람 시 파라미터 +3 추가 획득",
-        "tip_en": "- Rank 1: Reading increases Charm +10, and Charm +3 is added when taking a bath event.\n- Rank 3: Reading increases Kindness +10, and 1120 yen is added when performing a drag store part-time job.\n- Rank 11: Reading increases Proficiency +10, and Guts +3 is added when exercising at the gym.\n- Rank 15: Reading increases Knowledge +10, and 1170 yen is added when performing a bookstore part-time job.\n- Rank 20: Reading increases Knowledge +10, and +3 parameter is added when watching a movie.",
+        "tip_en": "- Rank 1: Reading increases Charm +10, and Charm +3 is added when taking a bath event.\n- Rank 3: Reading increases Kindness +10, and 1120 yen is added when performing a drug store part-time job.\n- Rank 11: Reading increases Proficiency +10, and Guts +3 is added when exercising at the gym.\n- Rank 15: Reading increases Knowledge +10, and 1170 yen is added when performing a bookstore part-time job.\n- Rank 20: Reading increases Knowledge +10, and +3 parameter is added when watching a movie.",
         "tip_jp": "- ランク1: 読書で魅力+10、入浴イベントでさらに魅力+3獲得\n- ランク3: 読書で優しさ+10、ドラッグストアのアルバイト時に1120円追加獲得\n- ランク11: 読書で器用さ+10、ジムで運動時に度胸+3追加獲得\n- ランク15: 読書で知識+10、本屋のアルバイト時に1170円追加獲得\n- ランク20: 読書で知識+10、映画鑑賞時にパラメータ+3追加獲得",
         "num": 6
     },
     "아야카" : {
         "img": "touxiang-liaotian-new-chord.png",
         "img_color": "Tongyong-touxiang-changfu-chord.png",
-        "num": 12,
-        "tip_kr": "20랭크 Wonder Light을 음악부에서 클리어하면 Easy, Hard에서 각각 300 엠버를 획득할 수 있다.",
-        "tip_en": "By clearing Wonder Light in the music department at Rank 20, you can earn meta jewels in Easy and Hard modes respectively.",
-        "tip_jp": "ランク20で音楽部でワンダーライトをクリアすると、それぞれEasyとHardで自在結晶を獲得できます。"
+        "num": 12
     },
     "마사키" : {
         "img": "touxiang-liaotian-npc12.png",
@@ -66,22 +64,14 @@
     "마나카" : {
         "img": "touxiang-liaotian-new-ange.png",
         "img_color": "Tongyong-touxiang-changfu-ange.png",
-        "num": 21,
-        "recommend": true,
-        "recommend_num": [9],
-        "tip_kr": "20랭크의 효과는 소급 적용되므로 급하게 달성할 필요가 없다.",
-        "tip_en": "The effect of Rank 20 is retroactively applied, so there is no need to rush to achieve it.",
-        "tip_jp": "ランク20の効果は後付け適用されるため、急いで達成する必要はありません。"
+        "num": 21
     },
     "카타야마" : {
         "img": "touxiang-liaotian-new-pianshan.png",
         "img_color": "Tongyong-touxiang-changfu-blitz.png",
         "num": 30,
         "recommend": true,
-        "recommend_num": [13],
-        "tip_kr": "13랭크 보상으로 행동력 2, 체력 5 둘 중 하나를 얻게 된다.",
-        "tip_en": "By Rank 13 reward, you can get either Action Points +2 or Stamina +5.",
-        "tip_jp": "ランク13の報酬で、行動力+2か体力+5のどちらかを獲得できます。"
+        "recommend_num": [13]
     },
     "쇼키" : {
         "img": "touxiang-liaotian-new-luce.png",
@@ -91,7 +81,7 @@
     "슌" : {
         "img": "touxiang-liaotian-new-soy.png",
         "img_color": "Tongyong-touxiang-changfu-soy.png",
-        "tip-kr": "- 1랭크: 카레라이스, 말차 아이스크림\n- 5랭크: 크림 브륄레\n- 9랭크: 미소 라멘\n- 13랭크: 오므라이스\n- 15랭크: 장어덮밥, 행인 두부\n- 20랭크: 연어 회",
+        "tip_kr": "- 1랭크: 카레라이스, 말차 아이스크림\n- 5랭크: 크림 브륄레\n- 9랭크: 미소 라멘\n- 13랭크: 오므라이스\n- 15랭크: 장어덮밥, 행인 두부\n- 20랭크: 연어 회",
         "num": 5
     },
     "메로페": {
@@ -162,10 +152,7 @@
     "키라" : {
         "img": "touxiang-liaotian-new-doctor.png",
         "img_color": "Tongyong-touxiang-changfu-doctor.png",
-        "num": 15,
-        "tip_kr": "하루의 총격은 랭크1의 효과만 받으며, 하루의 스킬2를 통한 총격은 랭크9, 13의 효과를 모두 받는다.",
-        "tip_en": "Haru's ranged attack only receives the effect of Rank 1, and Haru's skill 2-based ranged attack receives the effects of Rank 9 and Rank 13.",
-        "tip_jp": "奥村 春の遠距離攻撃はランク1の効果のみを受け、奥村 春のスキル2による遠距離攻撃はランク9、ランク13の効果を両方受けます。"
+        "num": 15
     },
     "루우나" : {
         "img": "touxiang-liaotian-new-howler.png",

@@ -237,9 +237,11 @@
     "item": [
       {
         "bonus_synergy": 112,
+        "compound": [],
         "image": "item-303207.png",
         "name": "Silver Bangle",
         "new_gift_synergy": 224,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -251,13 +253,18 @@
             "shopName": "Tsurukame Diamond"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 112
       },
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303217.png",
         "name": "Mixed Nuts",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -269,13 +276,18 @@
             "shopName": "Zoshigaya Mart"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 50,
+        "compound": [],
         "image": "item-303223.png",
         "name": "Robot Vacuum",
         "new_gift_synergy": 100,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -288,13 +300,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 50
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303225.png",
         "name": "Flower Basket",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -306,13 +323,18 @@
             "shopName": "Flower Shop Sukebe"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303226.png",
         "name": "Vitamin Drink Set",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -324,13 +346,18 @@
             "shopName": "Vending Machine"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303230.png",
         "name": "Exclusive Fountain Pen",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -352,13 +379,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 10,
+        "compound": [],
         "image": "item-303244.png",
         "name": "Japanese Sweets Set",
         "new_gift_synergy": 20,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -370,13 +402,18 @@
             "shopName": "Zoshigaya Mart"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 10
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303251.png",
         "name": "Kitchen Goods Set",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -388,13 +425,18 @@
             "shopName": "Zoshigaya Mart"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 9,
+        "compound": [],
         "image": "item-303254.png",
         "name": "Worldly Cup Noodle Set",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -406,13 +448,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 9
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303255.png",
         "name": "Character Apron",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -424,13 +471,18 @@
             "shopName": "Zoshigaya Mart"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "Limited-Edition Keychain",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -444,13 +496,18 @@
             "shopName": "Crystal Healing"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "Candy Set",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -464,13 +521,18 @@
             "shopName": "Super Muramasa"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "Essential Oils",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -484,13 +546,18 @@
             "shopName": "The Body Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "Mont Blanc",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -504,13 +571,18 @@
             "shopName": "Taisho Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "Snow Globe",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -524,13 +596,18 @@
             "shopName": "Stationery Store"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "Aroma Diffuser",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -543,6 +620,9 @@
             "resetType": "주간",
             "shopName": "The Body Store"
           }
+        ],
+        "source": [
+          "shop"
         ],
         "synergy": 28
       }
@@ -597,6 +677,10 @@
       }
     ],
     "time": "After School",
+    "unlock_quest": {
+      "details": "Miyazawa delivered a sincere public apology.\nHis heart has truly changed...",
+      "name": "Outcome of Pride"
+    },
     "visit_dialog": [
       {
         "destination": "Shibuya",

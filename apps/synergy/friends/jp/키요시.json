@@ -233,9 +233,11 @@
     "item": [
       {
         "bonus_synergy": 55,
+        "compound": [],
         "image": "item-303201.png",
         "name": "心霊ビデオ",
         "new_gift_synergy": 110,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -248,13 +250,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 55
       },
       {
         "bonus_synergy": 9,
+        "compound": [],
         "image": "item-303202.png",
         "name": "黒縁メガネ",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -267,13 +274,18 @@
             "shopName": "ロシナンテ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 9
       },
       {
         "bonus_synergy": 112,
+        "compound": [],
         "image": "item-303207.png",
         "name": "シルバーバングル",
         "new_gift_synergy": 224,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -285,13 +297,18 @@
             "shopName": "ツルカメダイアモンド"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 112
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303209.png",
         "name": "多面立方体パズル",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -304,13 +321,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303212.png",
         "name": "手作りブックカバー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -322,13 +344,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303218.png",
         "name": "革製ペンケース",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -349,13 +376,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 5,
+        "compound": [],
         "image": "item-303219.png",
         "name": "ブラックマグカップ",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -367,13 +399,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 5
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303220.png",
         "name": "大人の知恵の輪",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -385,13 +422,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303233.png",
         "name": "メンズ日除け帽子",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -403,13 +445,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 1,
+        "compound": [],
         "image": "item-303250.png",
         "name": "週刊少年漫画雑誌",
         "new_gift_synergy": 2,
+        "seed": [],
         "shop": [
           {
             "isHidden": 0,
@@ -421,13 +468,18 @@
             "shopName": "トリプルセブン"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 1
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "限定版キーホルダー",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -441,13 +493,18 @@
             "shopName": "パワーストーン専門店"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "お菓子袋詰めセット",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3000,
@@ -461,13 +518,18 @@
             "shopName": "スーパームラマサ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "エッセンシャルオイル",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7700,
@@ -481,13 +543,18 @@
             "shopName": "ボディチョップ"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "モンブラン",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6000,
@@ -501,13 +568,18 @@
             "shopName": "大正屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "スノードーム",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 10000,
@@ -521,13 +593,18 @@
             "shopName": "文房具屋"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "アロマディフューザー",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 12000,
@@ -540,6 +617,9 @@
             "resetType": "주간",
             "shopName": "ボディチョップ"
           }
+        ],
+        "source": [
+          "shop"
         ],
         "synergy": 28
       }
@@ -594,6 +674,10 @@
       }
     ],
     "time": "放課後",
+    "unlock_quest": {
+      "details": "ミヤザワ・パレスを慎重に探索しよう。",
+      "name": "誇りの行方"
+    },
     "visit_dialog": [
       {
         "destination": "渋谷",

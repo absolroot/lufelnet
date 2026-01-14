@@ -170,9 +170,11 @@
     "item": [
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303212.png",
         "name": "수제 책 표지 세트",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -186,13 +188,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303224.png",
         "name": "비드로 꽃병",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3040,
@@ -207,13 +214,18 @@
             "shopName": "일본풍 잡화점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 17,
+        "compound": [],
         "image": "item-303253.png",
         "name": "웨이트 리스트",
         "new_gift_synergy": 34,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 6460,
@@ -227,13 +239,18 @@
             "shopName": "액세서리 상점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 17
       },
       {
         "bonus_synergy": 42,
+        "compound": [],
         "image": "item-303267.png",
         "name": "모든 음계 하모니카",
         "new_gift_synergy": 84,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 20800,
@@ -248,13 +265,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 42
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "한정판 키링",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -279,13 +301,18 @@
             "shopName": "굿즈샵"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "막과자 패키지",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -299,13 +326,18 @@
             "shopName": "슈퍼마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "프리미엄 에센스 세트",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7320,
@@ -319,13 +351,18 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "마롱 케이크",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 5700,
@@ -339,13 +376,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "뮤직 스노글로브",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 9500,
@@ -359,13 +401,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "탁상용 아로마 기계",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 11400,
@@ -379,13 +426,18 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 9,
+        "compound": [],
         "image": "item-303288.png",
         "name": "추억 테마 캐릭터 배지",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3330,
@@ -419,13 +471,18 @@
             "shopName": "AAAAAA=="
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 9
       },
       {
         "bonus_synergy": 14,
+        "compound": [],
         "image": "item-303289.png",
         "name": "희귀 식물 도감",
         "new_gift_synergy": 28,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 5230,
@@ -439,13 +496,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 14
       },
       {
         "bonus_synergy": 22,
+        "compound": [],
         "image": "item-303290.png",
         "name": "음악 분재",
         "new_gift_synergy": 44,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 8360,
@@ -459,13 +521,18 @@
             "shopName": "꽃집"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 22
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303291.png",
         "name": "조립식 가정용 오브제",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 9500,
@@ -479,13 +546,18 @@
             "shopName": "일본풍 잡화점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 67,
+        "compound": [],
         "image": "item-303292.png",
         "name": "멀티 카드 보드게임 세트",
         "new_gift_synergy": 134,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 41000,
@@ -499,22 +571,169 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 67
       },
       {
         "bonus_synergy": 16,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "한 송이만 있으면 다소 단조로워 보일 수 있지만, 많이 있으면 장관을 이룬다.",
+              "icon": "item-306124.png",
+              "name": "코스모스",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "70.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "태그에서 국화의 일종이라는 것만 희미하게 식별할 수 있을 뿐, 정확히 무엇인지 알 수 없다.",
+                    "icon": "item-306107.png",
+                    "name": "미지의 씨앗",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "discountPrice": 1640,
+                        "isHidden": 0,
+                        "mapName": "신주쿠",
+                        "maxBuy": 10,
+                        "moneyName": "현금",
+                        "personalityLimit": "친절 LV.5",
+                        "price": 1720,
+                        "reducePriceCond": "도겐자카 루우나 LV.7",
+                        "resetType": "일간",
+                        "shopName": "꽃집"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "태그가 파손된 꽃 씨앗 봉지. 재배 시 『데이지』 또는 『코스모스』를 수확한다.",
+                    "type": "씨앗"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "『코스모스』. 열렬한 감정을 상징하는 꽃. 작업대를 이용하여 『민속 시』로 제작해 협력자에게 선물할 수 있다.",
+              "type": "화초"
+            },
+            "itemCount": 1
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "작은 황금빛 꽃들이 가을을 맞아 만개하고, 온통 물든 나무와 가득 퍼진 달콤한 향기가 가을이 왔음을 알린다.",
+              "icon": "item-306121.png",
+              "name": "금목서",
+              "seed": [
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "모종의 벼 모양을 닮아 누군가 그것들을 잘못 본 게 아닐지 하는 생각이 들게 한다.",
+                    "icon": "item-306106.png",
+                    "name": "금목서 씨앗",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "discountPrice": 820,
+                        "isHidden": 0,
+                        "mapName": "신주쿠",
+                        "maxBuy": 10,
+                        "moneyName": "현금",
+                        "personalityLimit": "친절 LV.6",
+                        "price": 860,
+                        "reducePriceCond": "도겐자카 루우나 LV.7",
+                        "resetType": "일간",
+                        "shopName": "꽃집"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "우량 품질의 꽃 씨앗 봉지. 재배 시 『금목서』를 수확한다.",
+                    "type": "씨앗"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "『금목서』, 따뜻해 보이는 꽃은 작업대를 이용하여 『금목서차』·『민속 시』로 제작해 협력자에게 선물할 수 있다.",
+              "type": "화초"
+            },
+            "itemCount": 2
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "화려한 스타일의 포장지. 귀한 선물에 적합하다.",
+              "icon": "item-305932.png",
+              "name": "화려한 포장",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": "시부야",
+                  "maxBuy": 10,
+                  "moneyName": "현금",
+                  "price": 500,
+                  "reducePriceCond": "도겐자카 루우나 LV.1",
+                  "resetType": "일간",
+                  "shopName": "꽃집"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "일반적인 제작 재료.\n작업대에서 협력자 선물인 『동백차』·『금목서차』·『프리저브드 백합』·『빌리트』·『민속 시』·『영원한 사랑』을 제작할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305948.png",
         "name": "민속 시",
         "new_gift_synergy": 32,
+        "seed": [],
         "shop": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 16
       },
       {
         "bonus_synergy": 49,
+        "compound": [],
         "image": "item-303298.png",
         "name": "마음의 초콜릿",
         "new_gift_synergy": 0,
+        "seed": [],
         "shop": [],
+        "source": [],
         "synergy": 50
       }
     ],
@@ -568,6 +787,10 @@
       }
     ],
     "time": "방과 후",
+    "unlock_quest": {
+      "details": "이상한 변화가 일어난 지점이 앞에 있다. 가서 조사하자.",
+      "name": "과거의 인지 공간"
+    },
     "visit_dialog": [
       {
         "destination": "시모키타자와",

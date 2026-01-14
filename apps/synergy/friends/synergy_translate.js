@@ -25,6 +25,7 @@ window.synergyTranslations = {
         '보상': 'Reward',
         '이름': 'Name',
         '호감도': 'Affection',
+        '최초 선물': 'First Gift',
         '가격': 'Price',
         '효율': 'Efficiency',
         '할인가': 'DC Price',
@@ -36,6 +37,8 @@ window.synergyTranslations = {
         '이름/보상': 'Name/Reward',
         '이름/가격/획득처': 'Name/Price/Source',
         '(패치 예정)': '(Patch Pending)',
+        '사전 퀘스트': 'Unlock Quest',
+        '해당 퀘스트 클리어 이후 이벤트 퀘스트가 해금됩니다.': 'After clearing this quest, the event quest will be unlocked.',
         // 캐릭터 이름 번역 (characters.js에 없는 경우)
         characters: {
             // 여기에 characters.js에 없는 캐릭터 이름 번역 추가
@@ -66,6 +69,7 @@ window.synergyTranslations = {
         '보상': '報酬',
         '이름': '名前',
         '호감도': '好感度',
+        '최초 선물': '初回プレゼント',
         '가격': '価格',
         '효율': '効率',
         '할인가': '割引価格',
@@ -77,6 +81,8 @@ window.synergyTranslations = {
         '이름/보상': '名前/報酬',
         '이름/가격/획득처': '名前/価格/入手先',
         '(패치 예정)': '(パッチ予定)',
+        '사전 퀘스트': 'アンロッククエスト',
+        '해당 퀘스트 클리어 이후 이벤트 퀘스트가 해금됩니다.': 'このクエストをクリアすると、イベントクエストが解放されます。',
         // 캐릭터 이름 번역 (characters.js에 없는 경우)
         characters: {
             // 여기에 characters.js에 없는 캐릭터 이름 번역 추가

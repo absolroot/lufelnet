@@ -233,9 +233,11 @@
     "item": [
       {
         "bonus_synergy": 55,
+        "compound": [],
         "image": "item-303201.png",
         "name": "심령 비디오",
         "new_gift_synergy": 110,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 31000,
@@ -250,13 +252,18 @@
             "shopName": "할인 상점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 55
       },
       {
         "bonus_synergy": 9,
+        "compound": [],
         "image": "item-303202.png",
         "name": "불가사의 안경",
         "new_gift_synergy": 18,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 3390,
@@ -271,13 +278,18 @@
             "shopName": "할인 상점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 9
       },
       {
         "bonus_synergy": 112,
+        "compound": [],
         "image": "item-303207.png",
         "name": "실버 뱅글",
         "new_gift_synergy": 224,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 77000,
@@ -291,13 +303,18 @@
             "shopName": "보석 가게"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 112
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303209.png",
         "name": "48면 큐브",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 5510,
@@ -312,13 +329,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303212.png",
         "name": "수제 책 표지 세트",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -332,13 +354,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 7,
+        "compound": [],
         "image": "item-303218.png",
         "name": "소가죽 펜 케이스",
         "new_gift_synergy": 14,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2660,
@@ -363,13 +390,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 7
       },
       {
         "bonus_synergy": 5,
+        "compound": [],
         "image": "item-303219.png",
         "name": "흑칠 머그컵",
         "new_gift_synergy": 10,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 1710,
@@ -383,13 +415,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 5
       },
       {
         "bonus_synergy": 12,
+        "compound": [],
         "image": "item-303220.png",
         "name": "지혜의 고리",
         "new_gift_synergy": 24,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 4470,
@@ -403,13 +440,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 12
       },
       {
         "bonus_synergy": 4,
+        "compound": [],
         "image": "item-303233.png",
         "name": "남자 차양 모자",
         "new_gift_synergy": 8,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 1520,
@@ -423,13 +465,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 4
       },
       {
         "bonus_synergy": 1,
+        "compound": [],
         "image": "item-303250.png",
         "name": "유행 만화 월간지",
         "new_gift_synergy": 2,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 460,
@@ -443,13 +490,18 @@
             "shopName": "777 편의점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 1
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303282.png",
         "name": "한정판 키링",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -474,13 +526,18 @@
             "shopName": "굿즈샵"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 8,
+        "compound": [],
         "image": "item-303283.png",
         "name": "막과자 패키지",
         "new_gift_synergy": 16,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 2850,
@@ -494,13 +551,18 @@
             "shopName": "슈퍼마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 8
       },
       {
         "bonus_synergy": 19,
+        "compound": [],
         "image": "item-303284.png",
         "name": "프리미엄 에센스 세트",
         "new_gift_synergy": 38,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 7320,
@@ -514,13 +576,18 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 19
       },
       {
         "bonus_synergy": 15,
+        "compound": [],
         "image": "item-303285.png",
         "name": "마롱 케이크",
         "new_gift_synergy": 30,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 5700,
@@ -534,13 +601,18 @@
             "shopName": "프리미엄 마켓"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 15
       },
       {
         "bonus_synergy": 24,
+        "compound": [],
         "image": "item-303286.png",
         "name": "뮤직 스노글로브",
         "new_gift_synergy": 48,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 9500,
@@ -554,13 +626,18 @@
             "shopName": "문구점"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 24
       },
       {
         "bonus_synergy": 28,
+        "compound": [],
         "image": "item-303287.png",
         "name": "탁상용 아로마 기계",
         "new_gift_synergy": 56,
+        "seed": [],
         "shop": [
           {
             "discountPrice": 11400,
@@ -574,14 +651,20 @@
             "shopName": "뷰티 살롱"
           }
         ],
+        "source": [
+          "shop"
+        ],
         "synergy": 28
       },
       {
         "bonus_synergy": 49,
+        "compound": [],
         "image": "item-303298.png",
         "name": "마음의 초콜릿",
         "new_gift_synergy": 0,
+        "seed": [],
         "shop": [],
+        "source": [],
         "synergy": 50
       }
     ],
@@ -635,6 +718,10 @@
       }
     ],
     "time": "방과 후",
+    "unlock_quest": {
+      "details": "조심스럽게 미야자와 히로무 팰리스를 조사해 보자.",
+      "name": "꿈의 맛을 위한 대결"
+    },
     "visit_dialog": [
       {
         "destination": "시부야",

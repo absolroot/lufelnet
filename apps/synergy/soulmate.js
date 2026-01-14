@@ -125,7 +125,6 @@
                     <div class="dialog-choice-content">${dialog.content.replace(/\n/g, '<br>')}</div>
                     <div class="dialog-choice-reward soulmate-reward">
                         <img src="${iconPath}" alt="${label}" class="soulmate-icon" onerror="this.onerror=null; this.style.display='none';">
-                        <span>${label}</span>
                     </div>
                 </div>
             `;

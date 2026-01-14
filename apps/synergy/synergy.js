@@ -1727,15 +1727,18 @@
                     const generatedText = window.generateSourceText(item);
                     if (generatedText && generatedText !== '-') {
                         sourceText = generatedText;
-                        // compound나 seed인 경우 아이콘 추가
+                        // compound나 seed인 경우 아이콘 추가 및 클릭 가능하게 설정
                         if (item.source && (item.source.includes('compound') || item.source.includes('seed'))) {
+                            const itemDataAttr = JSON.stringify(item).replace(/'/g, '&#39;');
                             sourceIconHtml = `
-                                <span class="item-source-icon" data-item-source='${JSON.stringify(item).replace(/'/g, '&#39;')}'>
+                                <span class="item-source-icon" data-item-source='${itemDataAttr}'>
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7 1L9 5L13 6L9 7L7 11L5 7L1 6L5 5L7 1Z" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.2" fill="none"/>
                                     </svg>
                                 </span>
                             `;
+                            // 조합식 텍스트도 클릭 가능하게 설정
+                            sourceText = `<span class="item-source-text-clickable" data-item-source='${itemDataAttr}'>${sourceText}</span>`;
                         }
                     } else if (generatedText === null) {
                         // null이면 기존 shop 로직 사용
@@ -1876,18 +1879,21 @@
     // 전역으로 노출 (synergy_search.js에서 사용)
     window.createTabs = createTabs;
 
-    // 획득처 아이콘 클릭 이벤트 설정
+    // 획득처 아이콘 및 텍스트 클릭 이벤트 설정
     function setupItemSourceIcons() {
         const detailContainer = document.getElementById('characterDetail');
         if (!detailContainer) return;
 
-        // 이벤트 위임 사용
+        // 이벤트 위임 사용 (아이콘과 텍스트 모두 처리)
         detailContainer.addEventListener('click', (e) => {
             const icon = e.target.closest('.item-source-icon');
-            if (!icon) return;
+            const text = e.target.closest('.item-source-text-clickable');
+            const clickableElement = icon || text;
+            
+            if (!clickableElement) return;
 
             try {
-                const itemDataStr = icon.getAttribute('data-item-source');
+                const itemDataStr = clickableElement.getAttribute('data-item-source');
                 if (!itemDataStr) return;
 
                 // HTML 엔티티 디코딩

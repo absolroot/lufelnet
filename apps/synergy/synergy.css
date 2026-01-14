@@ -933,6 +933,12 @@
     display: inline;
 }
 
+.item-source-text-clickable {
+    display: inline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
 .item-source-icon {
     display: inline-flex;
     align-items: center;
@@ -941,16 +947,38 @@
     vertical-align: middle;
     margin-left: 4px;
     opacity: 0.6;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, filter 0.2s;
 }
 
 .item-source-icon:hover {
     opacity: 1;
 }
 
+.item-source-text-clickable:hover {
+    color: #ffd700;
+}
+
 .item-source-icon svg {
     width: 14px;
     height: 14px;
+    transition: stroke 0.2s;
+}
+
+.item-source-icon:hover svg {
+    stroke: #ffd700;
+}
+
+/* 행 호버 시 조합식 텍스트와 아이콘 하이라이트 */
+tr:hover .item-source-text-clickable {
+    color: #ffd700;
+}
+
+tr:hover .item-source-icon {
+    opacity: 1;
+}
+
+tr:hover .item-source-icon svg {
+    stroke: #ffd700;
 }
 
 .item-efficiency {

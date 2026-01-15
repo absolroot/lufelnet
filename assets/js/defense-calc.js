@@ -602,7 +602,7 @@ class DefenseCalc {
             }
             if (localizedName) {
                 if (!shouldHideTypeLabel) {
-                    const sep = document.createTextNode(' · ');
+                    const sep = document.createTextNode('　');
                     skillNameCell.appendChild(sep);
                 }
                 skillNameCell.appendChild(nameSpan);
@@ -613,7 +613,7 @@ class DefenseCalc {
                 nameSpan.textContent = localizedName;
                 if (!shouldHideTypeLabel) {
                     skillNameCell.appendChild(typeSpan);
-                    const sep = document.createTextNode(' · ');
+                    const sep = document.createTextNode('　');
                     skillNameCell.appendChild(sep);
                 }
                 skillNameCell.appendChild(nameSpan);

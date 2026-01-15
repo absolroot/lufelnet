@@ -183,6 +183,12 @@
     position: relative;
 }
 
+@media (max-width: 768px) {
+    .character-name {
+        margin: 0px;
+    }
+}
+
 @keyframes subtle-liquid-name {
     0% { clip-path: polygon(0% 2%, 99% 2%, 94% 49%, 4% 54%);}
     10% { clip-path: polygon(1% 1%, 98% 4%, 93% 50%, 5% 55%);}

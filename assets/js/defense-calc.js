@@ -209,6 +209,7 @@ class DefenseCalc {
         // 이미 로드된 경우 바로 부착
         if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
             // 이미 로드되어 있다면 initializeTable 등은 생성자에서 실행되었을 것이므로 헤더만 붙이면 됨 (renderAccordion 내부에서 자동 수행됨)
+            // 중복 렌더링 방지: 이미 렌더링된 경우 재렌더링하지 않음
             return;
         }
     
@@ -224,8 +225,8 @@ class DefenseCalc {
                     // [중요] 스크립트 로드 완료 시 테이블을 강제로 다시 그려야
                     // J&C 아이템들이 registerItem을 통해 등록됩니다.
                     try { 
-                        if (typeof this.initializeTable === 'function') this.initializeTable(); 
-                        if (typeof this.initializePenetrateTable === 'function') this.initializePenetrateTable();
+                        // 중복 렌더링 방지: 이미 초기화된 경우 재렌더링하지 않음
+                        // initializeTable과 initializePenetrateTable은 생성자에서 이미 호출되었으므로 여기서는 호출하지 않음
                     } catch(_) {}
                     resolve();
                 };
@@ -393,37 +394,84 @@ class DefenseCalc {
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
                 const isOpen = caret.classList.contains('open');
-                caret.classList.toggle('open', !isOpen);
+                const newIsOpen = !isOpen;
+                caret.classList.toggle('open', newIsOpen);
+                
+                // 그룹 헤더의 열림/닫힘 상태 클래스 업데이트
+                if (newIsOpen) {
+                    headerTr.classList.add('group-open');
+                    headerTr.classList.remove('group-closed');
+                } else {
+                    headerTr.classList.add('group-closed');
+                    headerTr.classList.remove('group-open');
+                }
                 
                 // SVG chevron 업데이트
                 const svg = caret.querySelector('svg');
                 if (svg) {
                     const path = svg.querySelector('path');
                     if (path) {
-                        if (isOpen) {
-                            // 닫힘: 오른쪽을 보는 chevron
-                            path.setAttribute('d', 'M6 4L10 8L6 12');
-                        } else {
+                        if (newIsOpen) {
                             // 열림: 아래를 보는 chevron
                             path.setAttribute('d', 'M4 6L8 10L12 6');
+                        } else {
+                            // 닫힘: 오른쪽을 보는 chevron
+                            path.setAttribute('d', 'M6 4L10 8L6 12');
                         }
                     }
                 }
                 
                 items.forEach(it => {
-                    if (it.__rowEl) it.__rowEl.style.display = isOpen ? 'none' : '';
+                    if (it.__rowEl) {
+                        if (newIsOpen) {
+                            // 모바일에서는 grid, 데스크탑에서는 인라인 스타일 제거하여 CSS 적용
+                            const isMobile = window.innerWidth <= 1200;
+                            if (isMobile) {
+                                it.__rowEl.style.setProperty('display', 'grid', 'important');
+                            } else {
+                                // 데스크탑에서는 인라인 스타일 제거
+                                it.__rowEl.style.removeProperty('display');
+                            }
+                        } else {
+                            // 모바일 CSS의 !important를 덮어쓰기 위해 !important 사용
+                            it.__rowEl.style.setProperty('display', 'none', 'important');
+                        }
+                    }
                 });
             });
+            
+            // 초기 상태 클래스 설정
+            if (initiallyOpen) {
+                headerTr.classList.add('group-open');
+            } else {
+                headerTr.classList.add('group-closed');
+            }
 
             tbody.appendChild(headerTr);
 
             // 데이터 행들
-            items.forEach(item => {
+            items.forEach((item, index) => {
                 const row = this.createTableRow(item, isPenetrate, groupName);
                 // 초기 표시 상태 (모바일: '계시','원더'만 펼침, 데스크탑: 전체 펼침)
-                row.style.display = initiallyOpen ? '' : 'none';
+                if (initiallyOpen) {
+                    const isMobile = window.innerWidth <= 1200;
+                    if (isMobile) {
+                        row.style.setProperty('display', 'grid', 'important');
+                    } else {
+                        // 데스크탑에서는 인라인 스타일 제거
+                        row.style.removeProperty('display');
+                    }
+                } else {
+                    // 모바일 CSS의 !important를 덮어쓰기 위해 !important 사용
+                    row.style.setProperty('display', 'none', 'important');
+                }
                 row.classList.add('group-row');
                 row.setAttribute('data-group', groupName);
+                
+                // 각 그룹의 마지막 row에 클래스 추가
+                if (index === items.length - 1) {
+                    row.classList.add('group-last-row');
+                }
                 // 참조 저장해 토글에 사용
                 try {
                     if (!Object.prototype.hasOwnProperty.call(item, '__rowEl')) {
@@ -539,22 +587,35 @@ class DefenseCalc {
         const nameSpan = document.createElement('span');
         nameSpan.className = 'skill-name-text';
         
+        // 모바일에서 원더/계시 그룹이고 skill-name-text가 있을 경우 type-label과 구분자 제거
+        const isMobile = window.innerWidth <= 1200;
+        const isWonder = groupName === '원더';
+        const isRevelation = groupName === '계시';
+        const hasNameText = localizedName && localizedName.trim();
+        const shouldHideTypeLabel = isMobile && (isWonder || isRevelation) && hasNameText;
+        
         if (currentLang === 'kr') {
             // KR: 분류 + 이름 모두 표기
             nameSpan.textContent = localizedName;
-            skillNameCell.appendChild(typeSpan);
+            if (!shouldHideTypeLabel) {
+                skillNameCell.appendChild(typeSpan);
+            }
             if (localizedName) {
-                const sep = document.createTextNode(' · ');
-                skillNameCell.appendChild(sep);
+                if (!shouldHideTypeLabel) {
+                    const sep = document.createTextNode(' · ');
+                    skillNameCell.appendChild(sep);
+                }
                 skillNameCell.appendChild(nameSpan);
             }
         } else {
             // EN/JP: 번역된 이름이 존재하면 분류 + 이름, 없으면 분류만 강조
             if (localizedName && localizedName.trim()) {
                 nameSpan.textContent = localizedName;
-                skillNameCell.appendChild(typeSpan);
-                const sep = document.createTextNode(' · ');
-                skillNameCell.appendChild(sep);
+                if (!shouldHideTypeLabel) {
+                    skillNameCell.appendChild(typeSpan);
+                    const sep = document.createTextNode(' · ');
+                    skillNameCell.appendChild(sep);
+                }
                 skillNameCell.appendChild(nameSpan);
             } else {
                 // 분류만 강조
@@ -678,6 +739,12 @@ class DefenseCalc {
         if (lang === 'en' && data.note_en) noteText = data.note_en;
         else if (lang === 'jp' && data.note_jp) noteText = data.note_jp;
         noteCell.textContent = this.normalizeTextForLang(noteText);
+        
+        // note가 비어있으면 행에 클래스 추가 (모바일에서 3행 제거용)
+        if (!noteText || !noteText.trim()) {
+            row.classList.add('no-note');
+        }
+        
         row.appendChild(noteCell);
         
         return row;
@@ -1317,6 +1384,11 @@ class DefenseCalc {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
+    // 이미 초기화되었는지 확인
+    if (window.defenseCalcInstance) {
+        return;
+    }
+    
     const start = () => {
         // 원더 번역 주입을 페르소나 데이터 로드 이후에 보장
         try {
@@ -1325,7 +1397,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 DefenseI18N.enrichDefenseDataWithWonderNames();
             }
         } catch (_) {}
-        new DefenseCalc();
+        window.defenseCalcInstance = new DefenseCalc();
     };
 
     if (typeof ensurePersonaFilesLoaded === 'function') {

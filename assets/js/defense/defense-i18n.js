@@ -111,12 +111,12 @@
                     boss_info_tip: 'Values are based on the highest difficulty. Even with the same name, each boss can have different Defense values. This is reference data and may not be exact. The data is based on figures known at the time of initial release; there is currently no way to verify precise figures.',
                     tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
                     base_final_damage: '· Base final damage mult.:', with_def_reduce: '· With defense reduction mult.:',
-                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', explanation_power: 'Elucidation Power', other_reduce: 'Other Defense Reduction',
+                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', explanation_power: 'Elucidation Power', other_reduce: 'Other Def. Reduction',
                     th_select: 'Select', th_thief: 'Thief', th_type: 'Type', th_target: 'Target', th_name: 'Name', th_option: 'Option', th_value: 'Value', th_duration: 'Duration', th_note: 'Note',
                     windswept: 'Windswept', windswept_tip: 'Final Defense Coef. * 88%. Always applied at the very end. Therefore, to reach a final coefficient of 0, you need enough actual reduction from other sources excluding Windswept.',
                     stat_sum: 'Sum', stat_target: 'Target', stat_remaining: 'Remaining',
-                    stat_final_increase: 'Final Increase', stat_base_damage_mult: 'Base Damage Mult.', stat_final_damage_mult: 'Final Damage Mult.',
-                    stat_final_def_coef: 'Final Defense Coef.', stat_boss_def_coef: 'Boss Defense Coef.', stat_boss_base_def: 'Boss Base Defense'
+                    stat_final_increase: 'Final Increase', stat_base_damage_mult: 'Base DMG Mult.', stat_final_damage_mult: 'Final DMG Mult.',
+                    stat_final_def_coef: 'Final Def Coef.', stat_boss_def_coef: 'Boss Def Coef.', stat_boss_base_def: 'Boss Base Def'
                 },
                 jp: {
                     nav_home: 'ホーム', nav_current: '防御力計算', page_title: '防御力減少計算機',

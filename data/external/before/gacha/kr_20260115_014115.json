@@ -234,6 +234,58 @@
         "type": "추천 선택 계약·확정"
       },
       {
+        "endTime": "2026-01-15 08:00:00",
+        "fiveStar": [
+          {
+            "name": "쥐스틴&카롤린",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "타네무라 리코",
+            "type": "thief"
+          },
+          {
+            "name": "후지카와 유키미",
+            "type": "thief"
+          },
+          {
+            "name": "스미 토시야",
+            "type": "thief"
+          }
+        ],
+        "name": "감시자의 은총",
+        "startTime": "2025-12-25 07:00:00",
+        "type": "이벤트 계약·확정"
+      },
+      {
+        "endTime": "2026-01-15 08:00:00",
+        "fiveStar": [
+          {
+            "name": "쥐스틴&카롤린",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "타네무라 리코",
+            "type": "thief"
+          },
+          {
+            "name": "후지카와 유키미",
+            "type": "thief"
+          },
+          {
+            "name": "스미 토시야",
+            "type": "thief"
+          }
+        ],
+        "name": "감시자의 은총",
+        "startTime": "2025-12-25 07:00:00",
+        "type": "이벤트 계약·운명"
+      },
+      {
         "endTime": "2026-01-22 08:00:00",
         "fiveStar": [
           {
@@ -427,6 +479,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-01-15 08:00:00",
+        "fiveStar": [
+          {
+            "name": "군청의 심판",
+            "type": "weapon",
+            "user": "쥐스틴&카롤린"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "제월의 은고리",
+            "type": "weapon",
+            "user": "타네무라 리코"
+          },
+          {
+            "name": "메가 카운터",
+            "type": "weapon",
+            "user": "후지카와 유키미"
+          },
+          {
+            "name": "킬링 스칼렛",
+            "type": "weapon",
+            "user": "스미 토시야"
+          },
+          {
+            "name": "강인한 사자",
+            "type": "weapon",
+            "user": "쥐스틴&카롤린"
+          }
+        ],
+        "name": "소리 없는 전쟁",
+        "startTime": "2025-12-25 07:00:00",
+        "type": "무기 보급"
+      },
       {
         "endTime": "2026-01-22 08:00:00",
         "fiveStar": [

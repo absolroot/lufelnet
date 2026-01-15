@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "敵からスキルによるダメージを受けた時、意識奏功の効果により６５%の確率で反撃し、防御力８８%の氷結属性ダメージを与える。\nこの効果は、スキルの使用により『イマジネーション』に変化する。",
+        "name": "インスピレーション",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『審美眼』を２回使用するごとに、追加で『イマジネーション』の効果が１回発生するようになる。この追加効果による反撃は、元の効果の７０%のダメージとなる。",
+        "name": "天賦の画才",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身のＨＰが７０%以上の時、反撃による敵への与ダメージが３５%上昇する。",
+        "name": "美醜のいろは",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『審美眼』『怪盗戦技』のスキルレベルが３上昇する。",
+        "name": "絶景かな絶景かな",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：ハイライト使用後、３ターンの間、反撃によるダメージが３０%上昇する。",
+        "name": "モデルは動くな",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『凍てつく威気』『身を裂く冷気』のスキルレベルが３上昇する。",
+        "name": "一気呵成の筆さばき",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『インスピレーション』『イマジネーション』の効果が、『ビジョン＆エモーション』『クリエーション』に変化する。\nそれぞれの反撃が、２回連続攻撃となり、各ダメージは元の攻撃の９０%になる。さらに、反撃の貫通力が３０%上昇する。",
+        "name": "画竜点睛",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "敵全体に防御力178.1%/196.4%/189.1%/207.3%の氷結属性ダメージを与え、３ターンの間、『インスピレーション』による反撃の発生確率が３５%上昇する。",
+      "name": "ハイライト",
+      "nature": "Ice",
+      "skill_lv": "10/10/13/13",
+      "sn": 116152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "喜多川 祐介",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵全体に防御力72.1%/79.5%/76.6%/84.0%の氷結属性ダメージを与え、２ターンの間、選択した対象を凍結状態にする。",
+        "name": "凍てつく威気",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 116111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵に防御力92.9%/102.4%/98.6%/108.1%の氷結属性ダメージを５回与え、自身にシールドが付与されている時、与ダメージが３０%上昇する。２回目以降の攻撃は新たな対象が優先され、同一の対象に命中した時、与ダメージが６０%ずつ減少し、最低で２０%分まで減少する。",
+        "name": "身を裂く冷気",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 116112,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 24",
+        "desc": "次に発動する『インスピレーション』の効果が、『イマジネーション』に変化する。\n『イマジネーション』状態：反撃が１００%発生し、与ダメージが防御力78.1%/86.1%/82.9%/90.9%上昇し、全体攻撃になる。次の自身の行動開始までに効果が発動しなかった場合、自動的に発動する。\nさらに２ターンの間、自身に防御力19.5%/19.5%/20.7%/20.7%＋555/555/683/683のシールドを付与し、火炎属性の耐性が上昇し、行動異常を無効化する。\n加えて、敵全体を２ターンの間、挑発状態にする。\nクールタイム：１ターン",
+        "name": "審美眼",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 116113,
+        "tags": [
+          "補助"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "シールドが付与される毎に、２ターンの間、敵への与ダメージが7.5%上昇する。最大６つまで効果が累積する。",
+        "name": "画家の集中力",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身のスキルによってシールドを付与した時、１ターンの間、自身の貫通力が20.0%上昇する。",
+        "name": "芸術家の直感",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43,
+      "Defense": 2320.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "820.01 / 834.41 / 849.61 / 864.01 / 879.21 / 893.61 / 908.81",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "800.02 / 814.42 / 828.82 / 843.22 / 857.62 / 872.02 / 886.42",
+      "Defense Increase": "43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3720.03 / 3787.23 / 3853.63 / 3920.83 / 3988.03 / 4055.23 / 4121.63",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戰鬥開始時，與隨機1名同伴產生『誓約』。雪實的回合結束時使處於該狀態下的同伴獲得相當於雪實24%防禦力的護盾，同一時間最多與1名同伴產生『誓約』。",
+        "name": "人之蹈道",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『誓約』狀態額外使隊友防禦力提升15%。",
+        "name": "法之貫理",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『大義者裁決』、『正理之令』的技能等級提升2級，至多提升至15級。",
+        "name": "責之督實",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每回合開始時，使處於『誓約』的同伴獲得1層祝福效果。",
+        "name": "律之恪守",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『絕對審判』、『戰鬥技巧』的技能等級提升2級，至多提升至15級。",
+        "name": "義之踐諾",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：釋放HIGHLIGHT技能後，使所有同伴獲得2層祝福效果。",
+        "name": "斷之祓厄",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "使自身與處於『誓約』的同伴，獲得10%的傷害加成。根據雙方總祝福層數額外獲得每層2%的屬性傷害加成，最多可獲得20%的屬性傷害加成。",
+        "name": "仁之容情",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "對1名敵人造成284.1%/313.2%/295.8%/324.9%防禦力的祝福屬性傷害，並且使所有同伴基於藤川雪實防禦力20%提升防禦力（最多提升657/725/684/752點防禦力），效果持續2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Bless",
+      "skill_lv": "10/10/12/12",
+      "sn": 113152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Defense": "0.3",
+      "Shield Effect": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "藤川雪實",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 19",
+        "desc": "對所有敵人造成88.0%/97.1%/91.6%/100.7%防禦力的祝福屬性傷害，使自身獲得祝福效果1層，並使處於『誓約』的同伴獲得祝福效果1層。",
+        "name": "大義者裁決",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 113111,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on AAAAAA==)",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "使1名同伴獲得47.2%/47.2%/49.2%/49.2%防禦力+1344/1635/1547/1838的護盾並且獲得防禦力提升（相當於藤川雪實防禦力的35%，最多提升1112/1226/1158/1272點防禦力），效果持續2回合；同時使其獲得受到傷害降低20%的效果，該效果在受到1次傷害或2回合後清除。並且使該同伴獲得祝福效果2層，同時與同伴產生『誓約』，效果持續2回合。",
+        "name": "正理之令",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 113112,
+        "tags": [
+          "主動",
+          "護盾"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "自身獲得祝福效果時，會獲得『充能』。當『充能』不少於2層，釋放該技能時，會消耗全部『充能』，對1名敵人造成117.1%/129.1%/121.9%/133.9%防禦力的祝福屬性傷害，每消耗1層『充能』使所有同伴提升4.9%/5.4%/5.1%/5.6%的傷害，1回合；並使所有同伴獲得14.9%/16.5%/15.5%/17.1%防禦力的護盾，2回合。\n處於『誓約』狀態下的同伴獲得祝福效果時，額外使藤川雪實獲得『充能』。",
+        "name": "絕對審判",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 113113,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『誓約』狀態下夥伴根據其防禦力獲得傷害加成，每1500點防禦力獲得7%傷害加成（不足1500點防禦力部分轉化為等比的傷害加成），最高獲得21.0%傷害加成。",
+        "name": "憐心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身回合結束時，若任意同伴生命值低於30%，則使其獲得69.0%防禦力的護盾，並使其獲得祝福效果1層，效果持續2回合。每場戰鬥最多觸發1次。",
+        "name": "革志",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 113132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Conditional Target",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Defense": 4170.0,
+      "Speed": 109.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "637.67 / 644.87 / 652.07 / 660.07 / 667.27 / 674.47 / 681.67",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "595.4 / 602.6 / 609.0 / 616.2 / 622.6 / 629.8 / 637.0",
+      "Defense Increase": "32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

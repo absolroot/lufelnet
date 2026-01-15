@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自己的回合結束時，場上每有1個當前生命值低於60%的敵人，就獲得1個『煞氣』，上限5層。回合結束時若『煞氣』大於等於3層，且JOKER不處於自身額外回合，則獲得1個額外回合（進入額外回合時，角色身上的持續型效果不會扣除持續回合數），自身額外回合結束後清除3層『煞氣』。每個敵人在每場戰鬥中只能給予JOKER1個『煞氣』。",
+        "name": "拉開帷幕",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "主動技能對技能主目標造成的技能傷害提升30%，對非主目標的敵人造成技能傷害提升10%。",
+        "name": "飛舞的手牌",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『厄運追擊』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "秘密障眼法",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "處於額外回合時，技能消耗的精力值減少80%。若精力值不小於60%，則攻擊力提升50%。",
+        "name": "神秘莫測",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『無畏壓制』、『不祥的預兆』的技能等級提升3級，至多提升至15級。",
+        "name": "美夢編織",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：獲得3個『煞氣』。",
+        "name": "無中生有",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "若場上存在生命值低於25%的敵人，則直接斬殺該敵人，效果上限為JOKER攻擊力的250%。每名敵人每場戰鬥最多觸發1次。額外回合釋放人格面具技能後，對全體敵人觸發一次相同的攻擊，造成JOKER攻擊力50%的詛咒傷害。",
+        "name": "奇妙秀終章",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "對所有敵人造成205.0%/226.0%/217.6%/238.6%攻擊力的詛咒屬性傷害，並獲得一個『煞氣』。",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 126152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "雨宮蓮",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 19",
+        "desc": "對所有敵人造成83.0%/91.5%/88.1%/96.6%攻擊力的詛咒屬性傷害，並有20%基礎機率使其獲得1層詛咒效果。並獲得1個『煞氣』。",
+        "name": "無畏壓制",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126111,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 19",
+        "desc": "對1名敵人造成97.6%/107.6%/103.6%/113.6%攻擊力的詛咒屬性傷害。釋放該技能時，若場上只有1名敵人，則為JOKER恢復2個『煞氣』。",
+        "name": "不祥的預兆",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126112,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "對所有敵人造成74.2%/81.8%/78.7%/86.3%攻擊力的詛咒屬性傷害，處於額外回合時，該技能造成的傷害提升25%。若目標身上具有任意減益效果，則該技能造成的傷害額外提升25%。",
+        "name": "厄運追擊",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126113,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每持有1個『煞氣』，就提升18.0%攻擊力。",
+        "name": "復仇",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "處於額外回合時，造成的傷害提升72.0%。",
+        "name": "吞噬",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2960.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1179.97 / 1201.57 / 1222.37 / 1243.97 / 1264.77 / 1286.37 / 1307.17",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "560.0 / 570.4 / 580.0 / 590.4 / 600.0 / 610.4 / 620.8",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3270.01 / 3329.21 / 3387.61 / 3446.81 / 3505.21 / 3564.41 / 3622.81",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

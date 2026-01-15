@@ -133,8 +133,8 @@
       "target_count": 1
     },
     "innate": {
-      "Defense": "0.3",
-      "Unknown Attr": "0.16"
+      "Damage Down": "0.16",
+      "Defense": "0.3"
     },
     "innate_awake_skill": [],
     "name": "加納 駿",
@@ -240,6 +240,7 @@
       "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
       "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Defense": "435.41 / 440.21 / 445.81 / 450.61 / 455.41 / 460.21 / 465.81",

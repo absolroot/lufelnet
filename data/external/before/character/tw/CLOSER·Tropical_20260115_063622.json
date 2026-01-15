@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身受到治療效果後，傷害提升25%，持續2回合。累計受到5次治療效果後，自身獲得『躍動一夏』（受到祝福的治療效果時每回合視為1次治療）。\n使用技能『海浪追逐者』時，消耗『躍動一夏』，使『海浪追逐者』不進入技能冷卻狀態，此後再次獲得『躍動一夏』有1回合的冷卻時間。\n自身透過技能消耗生命值時不會使自身陷入死亡狀態。",
+        "name": "陽光與蔚藍海面",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『盛夏』狀態下額外增加10%暴擊率，25%暴擊效果。每回合開始時獲得1層祝福並且受到治療次數增加1次。",
+        "name": "浪花輕吻腳尖",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『悠閒假期』，『海浪追逐者』的技能等級提升3級，至多提升至15級。",
+        "name": "灑落的金色光輝",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身受到治療效果時，獲得20%暴擊效果加成，持續2回合，上限2層。自身最大生命值提升1200點。",
+        "name": "遠方的帆船搖曳",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『夏日清涼魔法』，『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "海風中的鹹香",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升，使自身下一次『海浪追逐者』傷害提高80%。",
+        "name": "豔陽於高空輕笑",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『躍動一夏』效果在使用技能『海浪追逐者』後不再消耗。\n『盛夏』效果強化為『真夏豔陽』。『真夏豔陽』狀態下，『夏日清涼魔法』的追加傷害會觸發3次；『悠閒假期』額外恢復自身最大生命值的20%血量；『海浪追逐者』技能倍率提升50%。",
+        "name": "牽手在夏日漫步",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "對所有敵人造成195.2%/215.2%/207.2%/227.2%攻擊力的祝福屬性傷害，恢復自身20%最大生命值的血量。若自身血量在50%以上，則HIGHLIGHT額外提升25%技能傷害。",
+      "name": "HIGHLIGHT",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 103252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "新井素羽·夏日",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "對所有敵人造成87.8%/96.8%/93.2%/102.2%攻擊力的祝福屬性傷害。若自身處於『盛夏』狀態，則消耗自身10%最大生命值的血量，額外對所有敵人造成1次29.3%/32.3%/31.1%/34.1%攻擊力的祝福屬性傷害。",
+        "name": "夏日清涼魔法",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 103211,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "對1名敵人造成136.6%/150.6%/145.0%/159.0%攻擊力的祝福屬性傷害，恢復自身最大生命值20%的血量。若自身處於『盛夏』狀態，則對目標額外造成一次34.2%/37.7%/36.3%/39.8%攻擊力的祝福屬性傷害。",
+        "name": "悠閒假期",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 103212,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 24",
+        "desc": "自身立刻獲得『盛夏』狀態，持續到下回合結束。消耗自身15%最大生命值的血量，對所有敵人造成159.7%/176.0%/169.5%/185.8%攻擊力祝福屬性傷害。『盛夏』狀態下，自身暴擊率提升9.8%/9.8%/10.4%/10.4%，傷害提高29.3%/29.3%/31.1%/31.1%。",
+        "name": "海浪追逐者",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 103213,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身受到治療時，傷害提升30.0%，持續2回合。",
+        "name": "蔭影",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103232,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戰鬥中自身最大生命值超過8000時，每額外擁有100點最大生命值，獲得24點攻擊力加成，上限1920。",
+        "name": "熱浪",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103231,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2770.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "HP": 12500.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1069.99 / 1089.19 / 1108.39 / 1127.59 / 1146.79 / 1165.99 / 1185.19",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3959.98 / 4031.18 / 4102.38 / 4173.58 / 4244.78 / 4316.78 / 4387.98",
+      "HP Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

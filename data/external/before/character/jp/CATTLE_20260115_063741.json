@@ -1,0 +1,275 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "回復スキル使用時に選択した味方を１ターンの間、『星火Ⅰ』状態にする。さらに『星火Ⅰ』状態が終了した時、１ターンの間『星火Ⅱ』状態にする。\n『星火Ⅰ』：攻撃力がルフェルの攻撃力４%分上昇する（最大１６０まで）。\n『星火Ⅱ』：攻撃力がルフェルの攻撃力８%分上昇する（最大３２０まで）。\n※『星火』は累積せず、１つのみ付与される。",
+        "name": "赤毛の英雄",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、残りのＨＰが一番高い敵を炎上状態にする。また、『星火』状態の味方の属性異常付着率が３３%上昇する。",
+        "name": "フクロウの視界",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『星火Ⅱ』状態の味方の被ＨＰ回復量が１０%上昇する。",
+        "name": "夜行性",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『オウルファイア』『オウルグリーン』のスキルレベルが２上昇する。",
+        "name": "猛禽の羽ばたき",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：１ターンの間、味方全体の火炎属性の与ダメージを３２%上昇させる。",
+        "name": "光翼の傘下",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ヒーリングサテライト』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "羽づくろい",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『星火Ⅱ』状態が終了した時、１ターンの間『星火Ⅲ』状態になる。\n『星火Ⅲ』状態：攻撃力がルフェルの攻撃力８%分、火炎属性の与ダメージを２０%、被ＨＰ回復量を１０%上昇する。",
+        "name": "闇夜のかがり火",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Default",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "味方全体のＨＰをルフェルの攻撃力59.7%/59.7%/62.2%/62.2%＋1700/2067/1956/2323で回復する。さらに１ターンの間、味方全体の攻撃力が33.2%/33.2%/34.5%/34.5%上昇する。",
+      "name": "ハイライト",
+      "nature": "Heal",
+      "skill_lv": "10/10/12/12",
+      "sn": 104152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Unknown Attr": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "ルフェル",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "敵単体に攻撃力113.2%/124.8%/117.9%/129.5%の火炎属性ダメージを与え、２ターンの間、炎上状態にし、その状態の敵の被回復量を３０%低下させる。",
+        "name": "オウルファイア",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 104112,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on HPcur/HP)",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "味方単体のＨＰをルフェルの攻撃力67.4%/67.4%/70.2%/70.2%+1920/2334/2209/2623分、回復する。対象の残りのＨＰが５０%未満の場合、回復量が19%/19%/20%/20%上昇する。",
+        "name": "オウルグリーン",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 104111,
+        "tags": [
+          "単体回復"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 31",
+        "desc": "味方全体のＨＰをルフェルの攻撃力42.1%/42.1%/43.8%/43.8%＋1197/1456/1378/1636で回復する。選択した対象は回復量が24%/24%/25%/25%上昇する。",
+        "name": "ヒーリングサテライト",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 104113,
+        "tags": [
+          "全体回復"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "スキルで敵を攻撃した時、最大3人の味方を『星火』状態にする。",
+        "name": "森の賢者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の最大ＨＰに応じて、自身のＨＰ回復量が上昇する。ＨＰ12000で効果が最大となり、回復量が42.0%上昇する。",
+        "name": "援護の飛び火",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 104131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3730.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "475.39 / 480.99 / 486.59 / 492.19 / 496.99 / 502.59 / 508.19",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2812.32 / 2845.12 / 2877.12 / 2909.92 / 2941.92 / 2974.72 / 3006.72",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

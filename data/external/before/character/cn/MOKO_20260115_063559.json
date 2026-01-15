@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "战斗开始时，朋子获得4个『青叶』。每2个回合，朋子回复1个『青叶』。『青叶』上限5层。",
+        "name": "密林的馈赠",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "消耗『青叶』时，使当前生命值百分比最低的同伴恢复15%攻击力的生命值。",
+        "name": "草色呼吸",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『叶笛赞歌』、『念之旋律』的技能等级提升2级，至多提升至15级。",
+        "name": "树影兽嗥",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "初始特性的『青叶』回复效果改为每回合回复1个。",
+        "name": "生生不息",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『晚安曲』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "山野合奏",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：使目标敌人受到的下1次伤害额外提升24%。",
+        "name": "吟诵安眠之谣",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "持有『叶鸣小调』的同伴，造成的伤害提升20%，效果命中提升15%。",
+        "name": "梦境陷阱",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "使1名敌人有100%的基础概率陷入睡眠状态，效果持续1回合，并使其下1次受到的伤害提升32.8%/36.2%/34.1%/37.5%,效果持续1回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Debuff",
+      "skill_lv": "10/10/12/12",
+      "sn": 110152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "野毛朋子",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "对所有敌人造成91.5%/100.9%/95.3%/104.7%攻击力的念动属性伤害，并获得2个『青叶』。",
+        "name": "念之旋律",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/12/12",
+        "sn": 110111,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "使1名同伴获得『叶鸣小调』：使其攻击力提升30%，并且额外提升相当于朋子攻击力30%的攻击力（上限为1171/1291/1219/1339点攻击力），同时使其效果命中提升15%，持续2回合。该技能消耗2个『青叶』。",
+        "name": "叶笛赞歌",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 110112,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "有78.1%/86.1%/81.3%/89.3%基础概率使1名敌人陷入睡眠状态，效果持续1回合。若命中，则使敌人受到的下1次伤害提升29.3%/32.3%/30.5%/33.5%。若未命中，则提升14.6%/16.1%/15.2%/16.7%。该技能消耗2个『青叶』。",
+        "name": "晚安曲",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 110113,
+        "tags": [
+          "主动",
+          "控制"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "以同伴为目标释放技能时，使其造成的伤害提升6.0%，效果持续2回合。",
+        "name": "幻想",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "使所有同伴对处于精神异常的敌人造成的伤害提升36.0%。",
+        "name": "追寻",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Attack": 4460.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "750.01 / 758.81 / 767.61 / 775.61 / 784.41 / 793.21 / 802.01",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "485.42 / 491.02 / 496.62 / 502.22 / 507.82 / 513.42 / 519.02",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2677.7 / 2708.9 / 2739.3 / 2770.5 / 2800.9 / 2832.1 / 2863.3",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "所有敵人受到火焰屬性傷害時進行計數，若計數達到4，則進入『潛心』狀態，提升30%/40%/50%攻擊力（達到1、50、70級時變化），效果持續1回合。下回合不會再次進入『潛心』狀態。每次行動高卷杏最多對4個敵人計數。",
+        "name": "魅力養成",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "處於『潛心』狀態時，所有同伴的攻擊力提升25%，效果持續1回合。",
+        "name": "熱舞身姿",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『火炎侵蝕』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "美妙開場",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『潛心』狀態結束時攻擊敵人，造成2次火焰爆發，分別對隨機敵人造成66%攻擊力的火焰傷害。",
+        "name": "火紅奇蹟",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『繁花熱烈』、『魅火術』的技能等級提升3級，至多提升至15級。",
+        "name": "閃耀時刻",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：釋放HIGHLIGHT技能後，自身攻擊力提升100%，效果持續1回合。",
+        "name": "忘我境界",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻擊敵人時，有60%機率額外使『潛心』獲得1次額外計數，『潛心』狀態下，每有1層計數，則火焰傷害提升11%，最多提升110%。",
+        "name": "完美謝幕",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "對所有敵人造成195.2%/215.2%/207.2%/227.2%攻擊力的火焰屬性傷害，並且使自身造成的火焰傷害提升78.1%/86.1%/82.9%/90.9%，效果持續1回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Fire",
+      "skill_lv": "10/10/13/13",
+      "sn": 119152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "高卷杏",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "對所有敵人造成94.8%/104.5%/100.6%/110.3%攻擊力的火焰屬性傷害，並且提升自身攻擊力20%，效果持續2回合。『潛心』狀態下，使敵人攻擊力基於高卷杏的攻擊力降低8%並使自身額外提升對應攻擊力，效果持續2回合。",
+        "name": "繁花熱烈",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119113,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "對1名敵人造成134.2%/148.0%/142.5%/156.2%攻擊力的火焰屬性傷害，有75%基礎機率使敵人陷入燃燒狀態。『潛心』狀態下，若敵人的生命值低於50%，則額外造成30%傷害。",
+        "name": "魅火術",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119112,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "對所有敵人造成96.3%/106.2%/102.3%/112.1%攻擊力的火焰屬性傷害，有30%基礎機率使敵人陷入燃燒狀態。『潛心』狀態下技能傷害提升30%。",
+        "name": "火炎侵蝕",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119111,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "人格面具技能、HIGHLIGHT造成火焰屬性TECHNICAL，觸發爆燃時，造成傷害提升30.0%。",
+        "name": "熱忱",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『潛心』狀態結束時，使生命值百分比最低的同伴恢復45.0%攻擊力的生命值。",
+        "name": "慰藉",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3010.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.67
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1209.99 / 1231.59 / 1253.19 / 1275.59 / 1297.19 / 1318.79 / 1340.39",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "619.97 / 631.17 / 642.37 / 653.57 / 664.77 / 675.97 / 687.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3239.99 / 3298.39 / 3356.79 / 3415.19 / 3473.59 / 3531.99 / 3589.59",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

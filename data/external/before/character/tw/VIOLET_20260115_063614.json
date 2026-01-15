@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "芳澤霞的HIGHLIGHT不消耗HIGHLIGHT能量且可以發生暴擊。我方任意怪盜回合，若芳澤霞的舞姿層數大於等於2層，可以變身進入『化裝舞會』狀態，並可以使用1次HIGHLIGHT（變身擁有3回合的冷卻時間），持續至進入『化裝舞會』狀態後芳澤霞的第二個回合開始。『化裝舞會』狀態下，每有一層舞姿，芳澤霞的攻擊力提升10%、暴擊率提升3%。『化裝舞會』狀態結束時清除自身所有舞姿。（若『化裝舞會』狀態結束時自身沒有釋放HIGHLIGHT，則會對隨機目標自動釋放HIGHLIGHT。）",
+        "name": "十二點的鐘聲",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『舞伴』的持續時間延長1回合。使用『攜手共舞』後，自身和『舞伴』的暴擊率額外提升15%，持續3回合。",
+        "name": "破碎的裙擺與她的影子",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身舞姿達到2層時，攻擊力提升33%，達到3層時，暴擊效果提升33%。",
+        "name": "對那場舞會的嚮往",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『戰鬥技巧』、『黑夜微光』的技能等級提升3級，至多提升至15級。",
+        "name": "仙女的輕聲吟唱",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "發動HIGHLIGHT時，獲得1層『黎明的面紗』：受到傷害時消耗1層，閃避本次傷害效果，對部分技能無效。自身舞姿達到4層時，HIGHLIGHT傷害提升50%。",
+        "name": "王子的目光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『攜手共舞』、『心緒綻放』的技能等級提升3級，至多提升至15級。",
+        "name": "被遺忘的水晶鞋",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身主動釋放HIGHLIGHT後，到『化裝舞會』狀態結束前，可以額外釋放1次HIGHLIGHT，傷害為固有HIGHLIGHT的70%。該效果每次『化裝舞會』狀態持續時間內僅能觸發1次。",
+        "name": "每個角落，每一扇門",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 0,
+      "cost": "",
+      "desc": "發動條件：自身處於『化裝舞會』狀態\n對1名敵人造成243.8%/268.8%/258.8%/283.8%攻擊力的祝福屬性傷害。自身擁有舞姿時，獲得對應的增益效果。『勇氣步伐』：每層提升HIGHLIGHT技能傷害15%。『靈巧步伐』：HIGHLIGHT提升10%暴擊率、20%暴擊效果。",
+      "name": "HIGHLIGHT",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 135152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "芳澤霞",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "主動使用該技能時，對1名敵人造成186.9%/206.1%/198.4%/217.5%攻擊力的祝福屬性傷害，自身獲得舞姿『勇氣步伐』，上限3層。舞伴觸發該技能時，技能效果為對1名敵人造成121.6%/134.1%/129.1%/141.5%攻擊力的祝福屬性傷害，自身獲得舞姿『勇氣步伐』，上限3層。",
+        "name": "黑夜微光",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 135111,
+        "tags": [
+          "主動",
+          "單攻"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "選擇1名同伴使其成為『舞伴』，持續1回合。自身和『舞伴』攻擊力提升32.4%/35.7%/34.4%/37.7%，持續3回合。自身獲得舞姿『靈巧步伐』，上限1層。『舞伴』使用人格面具技能後，自身立刻對隨機敵方目標釋放1次『黑夜微光』（若『舞伴』的技能目標為敵方，則改為對技能主目標釋放1次『黑夜微光』）。同時只能存在一個『舞伴』。",
+        "name": "攜手共舞",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 135112,
+        "tags": [
+          "主動",
+          "增益"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 27",
+        "desc": "對1名敵人造成214.7%/236.7%/227.9%/249.9%攻擊力的祝福屬性傷害。使用該技能時若自身處於『化裝舞會』狀態，則技能傷害提升30%、自身暴擊效果提升29.3%/29.3%/31.1%/31.1%。",
+        "name": "心緒綻放",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 135113,
+        "tags": [
+          "主動",
+          "單攻"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身每擁有一層舞姿，祝福屬性傷害提升10.0%，上限30.0%。",
+        "name": "信心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "友方同伴發動HIGHLIGHT/降神後，芳澤霞攻擊力提升45.0%，持續2回合，可疊加2層。",
+        "name": "決意",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2920.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1159.98 / 1180.78 / 1201.58 / 1222.38 / 1243.18 / 1264.78 / 1285.58",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "560.0 / 570.4 / 580.0 / 590.4 / 600.0 / 610.4 / 620.8",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3390.02 / 3450.82 / 3512.42 / 3573.22 / 3634.02 / 3694.82 / 3756.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

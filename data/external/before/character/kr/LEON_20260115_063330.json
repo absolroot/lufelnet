@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "임의의 동료의 생명이 75% 이하일 시 해당 동료가 『활성』을 획득한다. 『활성』을 획득한 동료는 1턴 동안 카미야마 레오 공격력의 6%만큼 공격력이 증가한다(공격력 상한 120/180/240, 레벨 1, 50 70 도달 시 변화)(최대 2회 중첩).",
+        "name": "유기 개량사",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『활성』을 지닌 동료의 방어력이 10% 증가한다.",
+        "name": "도시 감시자",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『핵열의 환상』, 『생명 추출』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "하! 사생결단",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "동료를 목표로 페르소나 스킬 시전 시 자신의 공격력이 25% 증가한다.",
+        "name": "변방의 구세주",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『용맹 전환』, 『전투 기술』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "성장과 속박",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: 2턴 동안 목표 동료의 크리티컬 효과가 25% 증가한다.",
+        "name": "영웅의 귀로",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "동료를 목표로 페르소나 스킬 시전 시 생명이 60% 이하일 경우 1턴 동안 크리티컬 효과가 25% 증가한다.",
+        "name": "끝나지 않는 세상",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "2턴 동안 동료 1명이 『활성』을 최대 횟수만큼 획득한다. 목표의 생명이 60% 미만일 시 생명을 60%까지 회복시키며, 생명 회복 상한은 카미야마 레오 공격력의 200%다. 2턴 동안 카미야마 레오 공격력의 15%만큼 공격력이 증가한다. 상한은 585.6/645.6/609.6/669.6포인트다.",
+      "name": "HIGHLIGHT",
+      "nature": "Support",
+      "skill_lv": "10/10/12/12",
+      "sn": 107152,
+      "tags": [
+        null
+      ],
+      "target": "Ally excluding myself",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "카미야마 레오",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "1명의 적에게 공격력 170.8%/188.3%/177.8%/195.3%의 핵열 속성 대미지를 준다. 스킬 시전 시 모든 동료가 『활성』을 1중첩 보유하고 있을 때마다 해당 스킬의 대미지가 10% 증가한다.",
+        "name": "핵열의 환상",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 107111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "동료 1명의 현재 생명의 30%를 80%의 비율로 실드로 전환하며, 추가로 카미야마 레오 공격력 31.6%/31.6%/32.9%/32.9%+900/1095/1035/1230의 실드를 부여한다. 실드는 2턴 동안 지속된다. 또한 『활성』 1중첩을 획득한다.",
+        "name": "생명 추출",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 107112,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on GJ)",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "동료 1명의 공격력이 2턴 동안 19.5%/19.5%/20.3%/20.3% 증가한다. 효과가 지속되는 동안 목표가 보유하고 있는 『활성』 1중첩당 카미야마 레오 공격력의 20%만큼 공격력이 증가한다. 최대 1516.7/1672.1/1578.9/1734.3 공격력이 증가한다.",
+        "name": "용맹 전환",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 107113,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『생명 추출』 스킬 지속시간이 끝난 후, 남은 실드값의 100.0%에 따라 생명을 회복한다.",
+        "name": "항쟁",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "동료가 『활성』 효과 2중첩을 보유할 경우 크리티컬 효과가 추가로 45.0% 증가한다.",
+        "name": "동행",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 107132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4520.0,
+      "Speed": 105.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "780.03 / 788.83 / 797.63 / 807.23 / 816.03 / 824.83 / 833.63",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "490.0 / 495.6 / 501.2 / 506.8 / 512.4 / 518.0 / 523.6",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2609.99 / 2640.39 / 2669.99 / 2700.39 / 2730.79 / 2760.39 / 2790.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -764,6 +764,48 @@ const defenseCalcData = {
             note_jp: "축복"
         },
     ],
+    "준페이":[
+        {
+            id: "junpei1",
+            type: "스킬1",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/화염.png`,
+            skillName: "스킬1",
+            options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+            values: {
+                "LV10": 39.0,
+                "LV10+심상5": 43.0,
+                "LV13": 41.5,
+                "LV13+심상5": 45.5,
+            },
+            defaultOption: "LV13+심상5",
+            value: 45.5,
+            duration: "2턴",
+            note: "",
+            note_en: "",
+            note_jp: ""
+        },
+        {
+            id: "junpei2",
+            type: "스킬2",
+            target: "단일",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/물리.png`,
+            skillName: "스킬2",
+            options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+            values: {
+                "LV10": 39.0,
+                "LV10+심상5": 43.0,
+                "LV13": 41.5,
+                "LV13+심상5": 45.5,
+            },
+            defaultOption: "LV13+심상5",
+            value: 45.5,
+            duration: "2턴",
+            note: "",
+            note_en: "",
+            note_jp: ""
+        },
+    ],
     "J&C":[
         {
             id: "jc2",

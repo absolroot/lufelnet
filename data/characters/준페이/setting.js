@@ -21,7 +21,7 @@ window.characterSetting["준페이"] = {
         "LV13+5": "생명 22720"
     },
     "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점",
-    "element_weakness": "",
+    "element_weakness": "질풍",
     "element_resistance": "화염",
     "skill1_lv": "MAX!",
     "skill2_lv": "8",

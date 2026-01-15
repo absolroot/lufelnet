@@ -9,8 +9,22 @@
 
 스킬3은 사이클상 상시 지속되는데, 적 전체를 도발하고 아군이 받는 광역 대미지도 일부를 대신 받아 탱커 역할 또한 준수하다.
 `,
-        review_en: ``,
-        review_jp: ``,
+        review_en: `An original P3 character, he’s a tank who supports Fire-attribute DPS units.
+
+His standout trait is that he sacrifices general-purpose utility and, **specifically for Fire teams, provides extremely powerful buffs that push past the usual limits of a Defense-role character**.
+
+Skill 2 exists mainly for flexibility, but it’s generally a weaker version of Skill 1. In most cases, the standard play becomes a 2-turn cycle that repeatedly uses Skill 3, Skill 1, and Theurgy.
+
+Skill 3 effectively stays active at all times within the cycle: it taunts all enemies and also takes on part of the AoE damage allies would receive, making him a very solid tank as well.
+`,
+        review_jp: `P3のオリジナルキャラクターで、火炎属性アタッカーを支えるタンク。
+
+特徴として汎用性を捨て、**火炎属性に限定して、防衛という既存ロールの限界を超える強力なバフを提供**できる。
+
+スキル2は汎用性のために存在するが、基本的にはスキル1の下位互換。一般的にはスキル3・スキル1・テウルギアを繰り返す2ターンサイクル運用が定石となる。
+
+スキル3はサイクル上ほぼ常時維持でき、敵全体を挑発しつつ、味方が受ける範囲ダメージの一部を肩代わりするため、タンクとしての役割も十分にこなせる。
+`,
         pros: [
           "화염 속성 반항/지배 딜러에게 매우 높은 수치의 버프를 제공한다.",
           "아군의 생존력을 높여준다.",

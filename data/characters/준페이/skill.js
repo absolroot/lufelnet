@@ -54,20 +54,20 @@ window.characterSkillsData["준페이"] = {
 window.enCharacterSkillsData["준페이"] = {
   "name": "Junpei Iori",
   "skill1": {
-    "name": "Radiant Sky",
+    "name": "Blazing Strike",
     "element": "화염",
     "type": "단일 피해",
     "sp": 23,
     "cool": 0,
-    "description": "Deal Fire damage equal to 77.1%/85.0%/81.8%/89.7% of max HP to 1 enemy.\nDetonate the target’s 『Fervor Orb』 to deal Fire damage equal to 38.6%/42.5%/40.9%/44.9% of max HP to all enemies, and reduce all enemies’ DEF by 7.8%/8.6%/8.3%/9.1% for 2 turns (the DEF reduction scales with Junpei Iori’s max HP, counting up to 19520/21520/20720/22720 max HP; this can further reduce DEF by up to an additional 31.2%/34.4%/33.2%/36.4%).\nAlso increases all allies’ dealt Fire damage by 15.6%/17.2%/16.6%/18.2% for 2 turns (the Fire damage increase scales with Junpei Iori’s max HP, counting up to 19520/21520/20720/22720 max HP; this can further increase Fire damage by up to an additional 62.5%/68.9%/66.3%/72.7%)."
+    "description": "Deal Fire damage to 1 foe equal to 77.1%/85.0%/81.8%/89.7% of Junpei's max HP.\nDetonate the target's [Fever Pitch] and deal bonus Fire damage to all foes equal to 38.6%/42.5%/40.9%/44.9% of Junpei's max HP. Also decrease all foes' Defense by 7.8%/8.6%/8.3%/9.1% (based on Junpei's max HP, up to 31.2%/34.4%/33.2%/36.4% bonus Defense Down at 19520/21520/20720/22720 max HP) and increase party's Fire damage dealt by 15.6%/17.2%/16.6%/18.2% (based on Junpei's max HP, up to 62.5%/68.9%/66.3%/72.7% bonus Fire damage dealt at 19520/21520/20720/22720 max HP). Lasts for 2 turns."
   },
   "skill2": {
-    "name": "Wing Breaker",
+    "name": "Sunder Strike",
     "element": "물리",
     "type": "단일 피해",
     "hp": 8.0,
     "cool": 0,
-    "description": "Deal Physical damage equal to 41.9%/46.2%/44.4%/48.7% of max HP to 1 enemy.\nIf the target has 『Fervor Orb』, detonate it to make this hit a 『Guaranteed Critical』.\nAlso reduces the target’s DEF by 7.8%/8.6%/8.3%/9.1% for 2 turns (the DEF reduction scales with Junpei Iori’s max HP, counting up to 19520/21520/20720/22720 max HP; this can further reduce DEF by up to an additional 31.2%/34.4%/33.2%/36.4%).\nAnd increases all allies’ dealt damage by 7.8%/8.6%/8.3%/9.1% for 2 turns (the damage increase scales with Junpei Iori’s max HP, counting up to 19520/21520/20720/22720 max HP; this can further increase damage by up to an additional 31.2%/34.4%/33.2%/36.4%)."
+    "description": "Deal Physical damage to 1 for equal to 41.9%/46.2%/44.4%/48.7% of Junpei's max HP.\nDetonate the target's [Fever Pitch] and make this damage guaranteed to be a critical hit. Also decrease target's Defense by 7.8%/8.6%/8.3%/9.1% (based on Junpei's max HP, up to 31.2%/34.4%/33.2%/36.4% bonus Defense Down at 19520/21520/20720/22720 max HP) and increase party's damage dealt by 7.8%/8.6%/8.3%/9.1% (based on Junpei's max HP, up to 31.2%/34.4%/33.2%/36.4% bonus damage dealt at 19520/21520/20720/22720 max HP). Lasts for 2 turns."
   },
   "skill3": {
     "name": "Hero Focus",
@@ -75,30 +75,30 @@ window.enCharacterSkillsData["준페이"] = {
     "type": "보조",
     "sp": 26,
     "cool": 0,
-    "description": "Gain 『Battlefield Focus』 and Taunt all enemies for 2 turns.\nAlso increases all allies’ Critical Damage by 5.9%/6.5%/6.2%/6.8% for 2 turns (the Critical Damage increase scales with Junpei Iori’s max HP, counting up to 19520/21520/20720/22720 max HP; this can further increase Critical Damage by up to an additional 23.4%/25.8%/24.9%/27.3%).\nFire-attribute Rebel or Ruler allies gain an additional 11.7%/12.9%/12.4%/13.6% Critical Damage (same max-HP scaling, counting up to 19520/21520/20720/22720; this can further increase Critical Damage by up to an additional 46.8%/51.6%/49.7%/54.5%).\n\n『Battlefield Focus』: Junpei Iori takes 40% of the damage allies receive. When taking non-DoT damage, the taken damage is reduced by a fixed ratio (when the number of allies whose damage is being taken is 1/2/3/4, the damage multiplier is 75%/55%/45%/40% respectively). Immune to Down and Mental Ailments. When taking non-DoT damage, has a 100% base chance to inflict Burn on the attacker.\nIf Junpei Iori takes no non-DoT damage within 1 turn and 『Power Swing』 is charged, he will unleash 『Power Swing』."
+    "description": "Junpei gains [Center Stage] and taunts all foes for 2 turns.\nIncrease party's critical damage by 5.9%/6.5%/6.2%/6.8% (based on Junpei's max HP, up to 23.4%/25.8%/24.9%/27.3% bonus critical damage at 19520/21520/20720/22720 max HP) and increase Fire Assassins or Sweepers' critical damage by 11.7%/12.9%/12.4%/13.6% more (based on Junpei's max HP, up to 46.8%/51.6%/49.7%/54.5% bonus critical damage at 19520/21520/20720/22720 max HP). Lasts for 2 turns.\n[Center Stage]: Junpei takes 40% damage for all allies, only take a certain percentage of damage when taking non Damage Over Time damage (when taking damage for 1/2/3/4 times, the damage multiplier is 75%/55%/45%/40% respectively).\nJunpei gains Null Down and Null Mental Ailments. When taking non Damage Over Time damage, 100% chance to inflict the attacker with Burn.\nIf Junpei didn't take non Damage Over Time damage for 1 turn and has Charge, activate [Power Swing]."
   },
   "skill_highlight": {
-    "name": "Theurgy - Explosive Blow",
+    "name": "Theurgy - Heck 'n Blast",
     "element": "물리",
     "type": "단일 피해",
     "cool": 0,
-    "description": "Activation Requirement: 140 Theurgy Energy\nDeal Physical damage equal to 138.3%/152.5%/146.8%/161.0% of max HP to 1 enemy.\nIgnores Adaptability and reduces the target’s Down value by 4; after knocking the target down, distributes any remaining Down reduction to other enemies.\nAll allies gain 『Heat Up』.\n『Heat Up』: Increases ATK (ATK increase scales with Junpei Iori’s max HP, counting up to 19520/21520/20720/22720 max HP; ATK increases by up to 19.5%/21.5%/20.7%/22.7%). Also increases Critical Damage (scales with max HP, counting up to 19520/21520/20720/22720; Critical Damage increases by up to 14.6%/16.1%/15.5%/17.0%).\nLasts 4 turns and stacks up to 2 times.\nAt the start of battle, if there is a Fire-attribute Rebel or Ruler ally in the party, Junpei Iori’s base Theurgy Energy recovery is doubled."
+    "description": "Use condition: 140 Theurgy Energy\nDeal Physical damage to 1 foe equal to 138.3%/152.5%/146.8%/161.0% of Junpei's max HP. Ignore all affinities and decrease Down Points by 4, after knocking down the target, spread the Down Points damage left to other foes.\nGrant the party [Fired Up]: Increase Attack (based on Junpei's max HP, up to 19.5%/21.5%/20.7%/22.7% Attack at 19520/21520/20720/22720 max HP) and critical damage (based on Junpei's max HP, up to 14.6%/16.1%/15.5%/17.0% critical damage at 19520/21520/20720/22720 max HP). Lasts for 4 turns. Stacks up to 2 times.\nAt the start of battle, if there is a Fire Assassin or Sweeper on the field, double Junpei's base Theurgy."
   },
   "skill_support": {
-    "name": "Support Skill",
+    "name": "Assist Skill",
     "element": "버프",
     "type": "버프",
-    "description": "Grants all allies a shield equal to 10% of their max HP for 3 turns."
+    "description": "Grant the party a Shield equal to 10% of Junpei's max HP. Lasts for 3 turns."
   },
   "passive1": {
-    "name": "For Real",
+    "name": "Serious",
     "element": "패시브",
-    "description": "While Junpei Iori is on the field, all allies’ ATK increases by 30.0%.\nAt the start of battle, if there is a Fire-attribute Rebel or Ruler ally in the party, all allies’ dealt damage additionally increases by 12.0%."
+    "description": "When Junpei is on the field, increase party's Attack by 30.0%.\nAt the start of battle, if there is a Fire Assassin or Sweeper on the field, increase party's damage dealt by 12.0%."
   },
   "passive2": {
-    "name": "High Spirits",
+    "name": "High-Spirited",
     "element": "패시브",
-    "description": "At the end of Junpei Iori’s turn, restores 6.0% of his HP.\nWhen any ally’s HP falls below 30%, restores HP to all allies equal to 6.0% of Junpei Iori’s max HP.\nEach use of 『Hero Focus』 charges this effect 1 time."
+    "description": "At the end of Junpei's turn, restore Junpei's HP by 6.0% of Junpei's max HP. \nAfter any ally is below 30% max HP, restore party's HP by 6.0% of Junpei's max HP. Recharge this effect when using [Hero Focus]."
   }
 };
 

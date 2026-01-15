@@ -20,20 +20,20 @@ window.ritualData["준페이"] = {
 };
 window.enCharacterRitualData["준페이"] = {
   "name": "Junpei Iori",
-  "r0": "A Hero’s Longing",
-  "r0_detail": "When any ally’s turn ends, Junpei Iori gains 1 stack of 『Competitive Spirit』 (max 15 stacks).\nWhen 『Competitive Spirit』 reaches 10 stacks, all allies’ ATK increases by 20%, and all allies’ dealt Fire damage increases by 20%.\nWhen 『Competitive Spirit』 reaches 15 stacks, Junpei Iori’s Damage Reduction increases by 5%, and all allies’ ATK additionally increases by 20%, while all allies’ dealt Fire damage additionally increases by 20%.\nEvery 2 turns, Junpei Iori gains 1 charge. When he takes non-DoT damage, he can unleash 『Power Swing』 on the attacker and gain 6 stacks of 『Competitive Spirit』.\n『Power Swing』: Deals Physical damage equal to 42.2% of max HP to 1 enemy as a 『Guaranteed Critical』, applies 『Fervor Orb』, and grants all allies a shield equal to 12% of Junpei Iori’s max HP for 3 turns.\nWhen attacking an enemy in the 『Fervor Orb』 state with 『Radiant Sky』/『Wing Breaker』, additional effects trigger depending on the skill used.\n『Power Swing』 is treated as an additional effect.",
-  "r1": "Vibe Maker",
-  "r1_detail": "At the start of battle, gain 15 stacks of 『Competitive Spirit』, and the max stacks of 『Competitive Spirit』 increase to 30.\nWhen 『Competitive Spirit』 reaches 25 stacks: All allies’ Critical Damage increases by 20%, and Fire-attribute Rebel or Ruler allies’ Critical Damage additionally increases by 20%.\nWhen 『Competitive Spirit』 reaches 30 stacks: All allies’ ATK increases by 20%, and Fire-attribute Rebel or Ruler allies’ ATK additionally increases by 20%.",
-  "r2": "The End of Inferiority",
-  "r2_detail": "When 『Power Swing』 is triggered, all allies’ dealt damage permanently increases by 15%. Stacks up to 3 times.",
-  "r3": "A Lively Partner",
-  "r3_detail": "Skill levels of 『Hero Focus』 and 『Combat Skill』 increase by 3, up to a maximum of Lv. 15.",
-  "r4": "The Weight of Life",
-  "r4_detail": "When using Theurgy, fully restores Junpei Iori’s HP.",
-  "r5": "I’ll Protect You at All Costs!",
-  "r5_detail": "Skill levels of 『Radiant Sky』 and 『Wing Breaker』 increase by 3, up to a maximum of Lv. 15.",
-  "r6": "Unknown Potential",
-  "r6_detail": "Whenever you gain 15 stacks of 『Competitive Spirit』, you can enhance your Normal Attack into 『Power Swing』. This 『Power Swing』 does not consume a turn.\nThis 『Power Swing』 can upgrade 『Fervor Orb』 into 『Fervor Orb·Modified』.\nWhen using 『Radiant Sky』/『Wing Breaker』 to attack an enemy in the 『Fervor Orb·Modified』 state, all enemies’ Down Vulnerability increases by 20%, Fire damage taken increases by 60%, and Fire-attribute Rebel or Ruler allies’ Down damage increases by 10% for 1 turn.\nRegardless of whether a Fire-attribute Rebel or Ruler ally is in the party at the start of battle, Junpei Iori’s base Theurgy Energy recovery is doubled."
+  "r0": "Wannabe Hero",
+  "r0_detail": "At the end of any ally's turn, Junpei gains 1 [Competitive Heart] stack. Stacks up to 15 times.\nWhen [Competitive Heart] reaches 10 stacks, increase party's Attack by 20% and Fire damage dealt by 20%.\nWhen [Competitive Heart] reaches 15 stacks, increase Junpei's damage down by 5%, increase party's Attack by 20% and Fire damage dealt by 20%.\nJunpei gains 1 Charge stack every 2 turns, when taking non Damage Over Time damage, use [Power Swing] on the attacker then gain 6 [Competitive Heart] stacks.\n[Power Swing]: Deal Physical damage to 1 foe equal to 43.2% of Junpei's max HP, this is guaranteed to be a critical hit. Also inflict [Fever Pitch], and grant the party a Shield equal to 12% of Junpei's max HP for 3 turns. When using [Blazing Strike]/[Sunder Strike] to attack foes with [Fever Pitch], activate bonus effects. [Power Swing] counts as a Resonance.",
+  "r1": "Mood Maker",
+  "r1_detail": "At the start of battle, gain 15 [Competitive Heart] stacks. Increase the maximum number of [Competitive Heart] stacks to 30.\nWhen [Competitive Heart] reaches 25 stacks, increase party's critical damage by 20%, increase Fire Assassins or Sweepers' critical damage by 20% more.\nWhen [Competitive Heart] reaches 30 stacks, increase party's Attack by 20%, increase Fire Assassins or Sweepers' Attack by 20% more.",
+  "r2": "End of Inferiority",
+  "r2_detail": "When activating [Power Swing], permanently increase party's damage by 15%. Stacks up to 3 times.",
+  "r3": "Energetic Partner",
+  "r3_detail": "Increase the skill levels of [Hero Focus] and [Thief Tactics] by 3.",
+  "r4": "Weight of Life",
+  "r4_detail": "When using Theurgy, fully restore user's HP.",
+  "r5": "On My Life!",
+  "r5_detail": "Increase the skill levels of [Blazing Strike] and [Sunder Strike] by 3.",
+  "r6": "Unknown Possibilities",
+  "r6_detail": "When gaining 15 [Competitive Heart] stacks, Junpei can upgrade his Melee Attack to [Power Swing], after using this [Power Swing], Junpei can use other skills.\nThis [Power Swing] will upgrade [Fever Pitch] to [Fever Pitch: Improved], when using [Blazing Strike]/[Sunder Strike] on foes with [Fever Pitch: Improved], increase all foes' downed damage taken by 20% and Fire damage taken by 60%. Also increase Fire Assassins or Sweepers' downed damage by 10%. Lasts for 1 turn.\nAt the start of battle, double Junpei's base Theurgy Energy recovery."
 };
 
 window.jpCharacterRitualData["준페이"] = {

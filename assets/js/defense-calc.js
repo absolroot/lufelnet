@@ -17,8 +17,8 @@ class DefenseCalc {
         this.pierceSecondLine = document.getElementById('pierceSecondLine');
         this.pierceSecondSum = document.getElementById('pierceSecondSum');
         this.pierceSecondTarget = document.getElementById('pierceSecondTarget');
-        this.orderSwitchBtn = document.getElementById('orderSwitchBtn');
-        this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소
+        // order-switch 제거됨
+        this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소 (계산용으로만 사용)
         this.reduceTotal = 0;
         this.penetrateTotal = 0;
         this.finalDefenseCoefValue = document.getElementById('finalDefenseCoefValue');
@@ -50,13 +50,7 @@ class DefenseCalc {
             }
         } catch(_) {}
 
-        if (this.orderSwitchBtn) {
-            this.orderSwitchBtn.addEventListener('click', () => {
-                this.isPierceFirst = !this.isPierceFirst;
-                this.applyOrderUI();
-                this.updateDamageCalculation();
-            });
-        }
+        // order-switch 제거됨
 
         // 초기 표시 강제: 합계/목표 라벨/구분자/목표를 항상 보이도록 설정
         this.applyOrderUI();
@@ -79,12 +73,7 @@ class DefenseCalc {
 
     getBossDisplayName(boss) {
         const lang = this.getCurrentLang();
-        const isSea = !!boss.isSea;
-        let prefix = '';
-        if (lang === 'en') prefix = isSea ? '[SoS] ' : '[NTMR] ';
-        else if (lang === 'jp') prefix = isSea ? '[心の海] ' : '[閼兇夢] ';
-        else prefix = isSea ? '[바다] ' : '[흉몽] ';
-
+        // 접두사 제거 (탭으로 분리하므로)
         let baseName = boss.name;
         if (lang === 'en' && boss.name_en) baseName = boss.name_en;
         else if (lang === 'jp' && boss.name_jp) baseName = boss.name_jp;
@@ -98,7 +87,7 @@ class DefenseCalc {
             }
         } catch(_) {}
 
-        return `${prefix}${baseName}`;
+        return baseName;
     }
 
     async ensureCsvNameMapLoaded() {
@@ -353,7 +342,29 @@ class DefenseCalc {
             const isMobile = window.innerWidth <= 1200;
             const initiallyOpen = !isMobile || groupName === '계시' || groupName === '원더';
             caret.classList.toggle('open', initiallyOpen);
-            caret.textContent = initiallyOpen ? '▾' : '▸';
+            
+            // SVG chevron 생성
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '16');
+            svg.setAttribute('height', '16');
+            svg.setAttribute('viewBox', '0 0 16 16');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            if (initiallyOpen) {
+                // 아래를 보는 chevron (열림)
+                path.setAttribute('d', 'M4 6L8 10L12 6');
+            } else {
+                // 오른쪽을 보는 chevron (닫힘)
+                path.setAttribute('d', 'M6 4L10 8L6 12');
+            }
+            path.setAttribute('stroke', 'currentColor');
+            path.setAttribute('stroke-width', '1.5');
+            path.setAttribute('stroke-linecap', 'round');
+            path.setAttribute('stroke-linejoin', 'round');
+            svg.appendChild(path);
+            caret.appendChild(svg);
             inner.appendChild(caret);
 
             const infoWrap = document.createElement('span');
@@ -383,7 +394,22 @@ class DefenseCalc {
             headerTr.addEventListener('click', () => {
                 const isOpen = caret.classList.contains('open');
                 caret.classList.toggle('open', !isOpen);
-                caret.textContent = isOpen ? '▸' : '▾';
+                
+                // SVG chevron 업데이트
+                const svg = caret.querySelector('svg');
+                if (svg) {
+                    const path = svg.querySelector('path');
+                    if (path) {
+                        if (isOpen) {
+                            // 닫힘: 오른쪽을 보는 chevron
+                            path.setAttribute('d', 'M6 4L10 8L6 12');
+                        } else {
+                            // 열림: 아래를 보는 chevron
+                            path.setAttribute('d', 'M4 6L8 10L12 6');
+                        }
+                    }
+                }
+                
                 items.forEach(it => {
                     if (it.__rowEl) it.__rowEl.style.display = isOpen ? 'none' : '';
                 });
@@ -725,46 +751,147 @@ class DefenseCalc {
     }
 
     initializeBossSelect() {
-        this.bossSelect = document.getElementById('bossSelect');
+        this.bossList = document.getElementById('bossList');
+        this.bossTypeSea = document.getElementById('bossTypeSea');
+        this.bossTypeNightmare = document.getElementById('bossTypeNightmare');
+        this.currentBossType = 'sea'; // 기본값
+        this.selectedBossId = null;
         this.damageIncreaseDiv = document.querySelector('.damage-increase');
         this.noDefReduceSpan = document.getElementById('noDefReduce');
         this.withDefReduceSpan = document.getElementById('withDefReduce');
-        this.damageArrowSpan = document.getElementById('damageArrow');
-        this.damageCard = document.querySelector('.top-row-2-damage');
 
-        // 보스 선택 옵션 추가
-        bossData.forEach(boss => {
-            const option = document.createElement('option');
-            option.value = boss.id;
-            option.textContent = this.getBossDisplayName(boss);
-            if (boss.id === 1) {  // id가 1인 보스를 기본 선택
-                option.selected = true;
+        // 바다/흉몽 탭 이벤트
+        if (this.bossTypeSea) {
+            this.bossTypeSea.addEventListener('click', () => {
+                this.currentBossType = 'sea';
+                this.bossTypeSea.classList.add('active');
+                this.bossTypeNightmare.classList.remove('active');
+                this.renderBossList();
+            });
+        }
+        if (this.bossTypeNightmare) {
+            this.bossTypeNightmare.addEventListener('click', () => {
+                this.currentBossType = 'nightmare';
+                this.bossTypeNightmare.classList.add('active');
+                this.bossTypeSea.classList.remove('active');
+                this.renderBossList();
+            });
+        }
+
+        // 초기: 기본 선택된 보스 확인 및 탭 설정
+        const initBoss = bossData.find(b => b.id === 1);
+        if (initBoss) {
+            const isSea = !!initBoss.isSea;
+            this.currentBossType = isSea ? 'sea' : 'nightmare';
+            if (this.bossTypeSea && this.bossTypeNightmare) {
+                if (isSea) {
+                    this.bossTypeSea.classList.add('active');
+                    this.bossTypeNightmare.classList.remove('active');
+                } else {
+                    this.bossTypeNightmare.classList.add('active');
+                    this.bossTypeSea.classList.remove('active');
+                }
             }
-            this.bossSelect.appendChild(option);
-        });
+        }
 
-        // CSV 이름 맵이 늦게 로드될 수 있으므로, 로드 완료 후 옵션 텍스트를 한 번 더 갱신
+        // 리스트 컨테이너에 드래그 스크롤 기능 추가
+        const bossListContainer = document.querySelector('.boss-list-container');
+        if (bossListContainer) {
+            let isDragging = false;
+            let startY = 0;
+            let scrollTop = 0;
+            let startTime = 0;
+            let startTarget = null;
+            
+            bossListContainer.addEventListener('mousedown', (e) => {
+                if (e.target.classList.contains('boss-list-item') || e.target.closest('.boss-list-item')) {
+                    startTarget = e.target.closest('.boss-list-item');
+                    startTime = Date.now();
+                    startY = e.clientY;
+                    scrollTop = bossListContainer.scrollTop;
+                    return;
+                }
+                isDragging = true;
+                startY = e.clientY;
+                scrollTop = bossListContainer.scrollTop;
+                bossListContainer.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+            
+            bossListContainer.addEventListener('touchstart', (e) => {
+                if (e.target.classList.contains('boss-list-item') || e.target.closest('.boss-list-item')) {
+                    startTarget = e.target.closest('.boss-list-item');
+                    startTime = Date.now();
+                    startY = e.touches[0].clientY;
+                    scrollTop = bossListContainer.scrollTop;
+                    return;
+                }
+                isDragging = true;
+                startY = e.touches[0].clientY;
+                scrollTop = bossListContainer.scrollTop;
+                e.preventDefault();
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (startTarget && Math.abs(e.clientY - startY) > 5) {
+                    // 드래그로 판단
+                    isDragging = true;
+                    startTarget = null;
+                }
+                if (isDragging && bossListContainer) {
+                    const deltaY = e.clientY - startY;
+                    bossListContainer.scrollTop = scrollTop - deltaY;
+                }
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (startTarget && Math.abs(e.touches[0].clientY - startY) > 5) {
+                    // 드래그로 판단
+                    isDragging = true;
+                    startTarget = null;
+                }
+                if (isDragging && bossListContainer) {
+                    const deltaY = e.touches[0].clientY - startY;
+                    bossListContainer.scrollTop = scrollTop - deltaY;
+                    e.preventDefault();
+                }
+            });
+            
+            document.addEventListener('mouseup', (e) => {
+                if (startTarget && !isDragging && Date.now() - startTime < 300) {
+                    // 클릭으로 판단
+                    const bossId = parseInt(startTarget.getAttribute('data-boss-id'));
+                    if (bossId) this.selectBoss(bossId);
+                }
+                if (isDragging) {
+                    isDragging = false;
+                    if (bossListContainer) bossListContainer.style.cursor = '';
+                }
+                startTarget = null;
+            });
+            
+            document.addEventListener('touchend', (e) => {
+                if (startTarget && !isDragging && Date.now() - startTime < 300) {
+                    // 클릭으로 판단
+                    const bossId = parseInt(startTarget.getAttribute('data-boss-id'));
+                    if (bossId) this.selectBoss(bossId);
+                }
+                if (isDragging) {
+                    isDragging = false;
+                }
+                startTarget = null;
+            });
+        }
+
+        // 초기 리스트 렌더링
+        this.renderBossList();
+
+        // CSV 이름 맵이 늦게 로드될 수 있으므로, 로드 완료 후 리스트를 다시 렌더링
         try {
             this.ensureCsvNameMapLoaded().then(() => {
-                Array.from(this.bossSelect.options).forEach(opt => {
-                    const boss = bossData.find(b => b.id === parseInt(opt.value));
-                    if (boss) opt.textContent = this.getBossDisplayName(boss);
-                });
+                this.renderBossList();
             });
         } catch(_) {}
-
-        this.bossSelect.addEventListener('change', () => {
-            const boss = bossData.find(b => b.id === parseInt(this.bossSelect.value));
-            if (boss) {
-                if (this.baseDefenseInput) {
-                    this.baseDefenseInput.value = boss.baseDefense === '-' ? '' : boss.baseDefense;
-                }
-                if (this.defenseCoefInput) {
-                    this.defenseCoefInput.value = boss.defenseCoef === '-' ? '' : boss.defenseCoef;
-                }
-            }
-            this.updateDamageCalculation();
-        });
         
         // 입력 변경 시 실시간 반영
         if (this.baseDefenseInput) {
@@ -774,18 +901,104 @@ class DefenseCalc {
             this.defenseCoefInput.addEventListener('input', () => this.updateDamageCalculation());
         }
 
-        // 초기: CSV 이름 맵 선로딩 후 기본 선택된 보스 값으로 입력 필드 채우기
-        const initBoss = bossData.find(b => b.id === parseInt(this.bossSelect.value));
+        // 초기: 기본 선택된 보스 값으로 입력 필드 채우기
         // 비동기 로딩 (백그라운드)
         try { this.ensureCsvNameMapLoaded(); } catch(_) {}
         if (initBoss) {
-            if (this.baseDefenseInput) this.baseDefenseInput.value = initBoss.baseDefense === '-' ? '' : initBoss.baseDefense;
-            if (this.defenseCoefInput) this.defenseCoefInput.value = initBoss.defenseCoef === '-' ? '' : initBoss.defenseCoef;
+            this.selectBoss(initBoss.id);
         }
 
         this.updateDamageCalculation();
         try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch(_) {}
         try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
+    }
+
+    renderBossList() {
+        if (!this.bossList) return;
+        
+        // 기존 리스트 비우기
+        this.bossList.innerHTML = '';
+
+        // 현재 타입에 맞는 보스 필터링
+        const filteredBosses = bossData.filter(boss => {
+            const isSea = !!boss.isSea;
+            return this.currentBossType === 'sea' ? isSea : !isSea;
+        });
+
+        // 리스트 아이템 생성
+        filteredBosses.forEach(boss => {
+            const listItem = document.createElement('div');
+            listItem.className = 'boss-list-item';
+            listItem.setAttribute('data-boss-id', boss.id);
+            if (this.selectedBossId === boss.id) {
+                listItem.classList.add('selected');
+            }
+            
+            // 보스 아이콘 추가
+            if (boss.img) {
+                const icon = document.createElement('img');
+                icon.src = `${BASE_URL}/assets/img/enemy/${boss.img}`;
+                icon.alt = this.getBossDisplayName(boss);
+                icon.className = 'boss-list-icon';
+                icon.onerror = function() {
+                    this.style.display = 'none';
+                };
+                listItem.appendChild(icon);
+            }
+            
+            // 보스 이름 추가
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'boss-list-name';
+            nameSpan.textContent = this.getBossDisplayName(boss);
+            listItem.appendChild(nameSpan);
+            
+            this.bossList.appendChild(listItem);
+        });
+    }
+
+    selectBoss(bossId) {
+        this.selectedBossId = bossId;
+        const boss = bossData.find(b => b.id === bossId);
+        if (!boss) return;
+
+        // 보스 타입에 맞는 탭으로 전환
+        const isSea = !!boss.isSea;
+        const bossType = isSea ? 'sea' : 'nightmare';
+        if (this.currentBossType !== bossType) {
+            this.currentBossType = bossType;
+            if (this.bossTypeSea && this.bossTypeNightmare) {
+                if (isSea) {
+                    this.bossTypeSea.classList.add('active');
+                    this.bossTypeNightmare.classList.remove('active');
+                } else {
+                    this.bossTypeNightmare.classList.add('active');
+                    this.bossTypeSea.classList.remove('active');
+                }
+            }
+            this.renderBossList();
+        }
+
+        // 선택 상태 업데이트
+        if (this.bossList) {
+            this.bossList.querySelectorAll('.boss-list-item').forEach(item => {
+                item.classList.remove('selected');
+                if (parseInt(item.getAttribute('data-boss-id')) === bossId) {
+                    item.classList.add('selected');
+                    // 선택된 항목이 보이도록 스크롤
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+        }
+
+        // 입력 필드 업데이트
+        if (this.baseDefenseInput) {
+            this.baseDefenseInput.value = boss.baseDefense === '-' ? '' : boss.baseDefense;
+        }
+        if (this.defenseCoefInput) {
+            this.defenseCoefInput.value = boss.defenseCoef === '-' ? '' : boss.defenseCoef;
+        }
+
+        this.updateDamageCalculation();
     }
 
     updateDamageCalculation() {
@@ -855,25 +1068,30 @@ class DefenseCalc {
         // 2) 방어력 감소 적용 (0 하한)
         const finalCoef = Math.max(0, afterPierceCoef - reduceTotalRaw);
 
-        // UI 표기만 순서 스위치에 맞춰 라벨/목표를 변경
-        const reduceLabel = document.getElementById('reduceSumTargetLabel');
-        const pierceLabel = document.getElementById('pierceSumTargetLabel');
-        if (reduceLabel) reduceLabel.style.visibility = 'visible';
-        if (pierceLabel) pierceLabel.style.visibility = 'visible';
-
-        if (this.isPierceFirst) {
-            // 방깎 카드가 두 번째이므로 목표는 "관통 적용 후 방어계수"
-            this.setSumTarget('reduce', reduceTotalRaw, afterPierceCoef);
-            this.setSumTarget('pierce', penetrateTotal, Number.NaN);
-        } else {
-            // 관통 카드가 두 번째일 때 목표 관통치(%)
-            let pierceTarget = 100;
-            if (isFinite(defenseCoef) && defenseCoef > 0) {
-                pierceTarget = 100 - (reduceTotalRaw / defenseCoef) * 100;
-                pierceTarget = Math.max(0, Math.min(100, pierceTarget));
-            }
-            this.setSumTarget('pierce', penetrateTotal, pierceTarget);
-            this.setSumTarget('reduce', reduceTotalRaw, Number.NaN);
+        // 항상 목표치 표시 (order-switch 없이)
+        // 관통 목표: 방어력 감소를 고려한 관통 필요치
+        let pierceTarget = 100;
+        if (isFinite(defenseCoef) && defenseCoef > 0) {
+            pierceTarget = 100 - (reduceTotalRaw / defenseCoef) * 100;
+            pierceTarget = Math.max(0, Math.min(100, pierceTarget));
+        }
+        this.setSumTarget('pierce', penetrateTotal, pierceTarget);
+        
+        // 관통 남은 수치 계산
+        const pierceRemaining = isFinite(pierceTarget) ? Math.max(0, pierceTarget - penetrateTotal) : 0;
+        const pierceRemainingEl = document.getElementById('pierceValueRemaining');
+        if (pierceRemainingEl) {
+            pierceRemainingEl.textContent = isFinite(pierceRemaining) ? `${pierceRemaining.toFixed(1)}%` : '-';
+        }
+        
+        // 방어력 감소 목표: 관통 적용 후 방어계수
+        this.setSumTarget('reduce', reduceTotalRaw, afterPierceCoef);
+        
+        // 방어력 감소 남은 수치 계산
+        const reduceRemaining = isFinite(afterPierceCoef) ? Math.max(0, afterPierceCoef - reduceTotalRaw) : 0;
+        const reduceRemainingEl = document.getElementById('reduceValueRemaining');
+        if (reduceRemainingEl) {
+            reduceRemainingEl.textContent = isFinite(reduceRemaining) ? `${reduceRemaining.toFixed(1)}%` : '-';
         }
 
         // 최종 방어 계수 표기 (새 카드)
@@ -888,26 +1106,20 @@ class DefenseCalc {
         const withReduceDamage = 1 - this.calculateDamage(baseDefense, displayFinalCoef);
         const damageIncrease = ((withReduceDamage / noReduceDamage) - 1) * 100;
 
-        // 화면 업데이트
+        // 화면 업데이트 (4행: 최종 대미지 증가)
+        const damageText = damageIncrease >= 0
+            ? `+${damageIncrease.toFixed(1)}%`
+            : `${damageIncrease.toFixed(1)}%`;
         if (this.damageIncreaseDiv) {
-            this.damageIncreaseDiv.textContent = damageIncrease >= 0
-                ? `+${damageIncrease.toFixed(1)}%`
-                : `${damageIncrease.toFixed(1)}%`;
+            this.damageIncreaseDiv.textContent = damageText;
         }
         if (this.noDefReduceSpan) {
             this.noDefReduceSpan.textContent = isFinite(noReduceDamage) ? noReduceDamage.toFixed(3) : '-';
         }
-        
-        // 최종 방어력 계수가 기존 방어력 계수와 다를 때만 → withDefReduce 표시
-        const hasDefenseChange = displayFinalCoef !== defenseCoef;
-        if (this.damageArrowSpan) {
-            this.damageArrowSpan.style.display = hasDefenseChange ? '' : 'none';
-        }
         if (this.withDefReduceSpan) {
-            this.withDefReduceSpan.style.display = hasDefenseChange ? '' : 'none';
             this.withDefReduceSpan.textContent = isFinite(withReduceDamage) ? withReduceDamage.toFixed(3) : '-';
         }
-        if (this.damageCard) this.damageCard.style.display = '';
+        // 통합 카드는 항상 표시
 
         // 하단 중복 표기는 제거됨 (위에서 UI표기를 이미 처리함)
     }
@@ -951,18 +1163,20 @@ class DefenseCalc {
     }
 
     resetDamageDisplay() {
-        this.damageIncreaseDiv.textContent = '-';
+        if (this.damageIncreaseDiv) this.damageIncreaseDiv.textContent = '-';
         if (this.noDefReduceSpan) this.noDefReduceSpan.textContent = '-';
         if (this.withDefReduceSpan) {
             this.withDefReduceSpan.textContent = '-';
-            this.withDefReduceSpan.style.display = 'none';
         }
-        if (this.damageArrowSpan) this.damageArrowSpan.style.display = 'none';
-        if (this.finalDefenseCoefSpan) this.finalDefenseCoefSpan.textContent = '-';
+        if (this.finalDefenseCoefValue) this.finalDefenseCoefValue.textContent = '-';
         const coef2 = document.getElementById('finalDefenseCoef2');
         if (coef2) coef2.textContent = '-';
         if (this.reduceSecondLine) this.reduceSecondLine.style.display = 'none';
         if (this.pierceSecondLine) this.pierceSecondLine.style.display = 'none';
+        const pierceRemainingEl = document.getElementById('pierceValueRemaining');
+        if (pierceRemainingEl) pierceRemainingEl.textContent = '-';
+        const reduceRemainingEl = document.getElementById('reduceValueRemaining');
+        if (reduceRemainingEl) reduceRemainingEl.textContent = '-';
     }
 
     initializeMobileHeader() {
@@ -1051,68 +1265,50 @@ class DefenseCalc {
     }
 
     applyOrderUI() {
-        // 항상 합계/목표 라벨과 구분자/목표를 표시 상태로 유지
-        const reduceLabel = document.getElementById('reduceSumTargetLabel');
-        const pierceLabel = document.getElementById('pierceSumTargetLabel');
-        const pierceSep = document.getElementById('pierceValueSep');
+        // 항상 목표를 표시 상태로 유지 (구조 변경으로 라벨/구분자 불필요)
         const pierceTarget = document.getElementById('pierceValueTarget');
-        const reduceSep = document.getElementById('reduceValueSep');
         const reduceTarget = document.getElementById('reduceValueTarget');
 
-        if (reduceLabel) reduceLabel.style.visibility = 'visible';
-        if (pierceLabel) pierceLabel.style.visibility = 'visible';
-        if (reduceSep) reduceSep.style.display = '';
-        if (reduceTarget) reduceTarget.style.display = '';
-        if (pierceSep) pierceSep.style.display = '';
         if (pierceTarget) pierceTarget.style.display = '';
+        if (reduceTarget) reduceTarget.style.display = '';
     }
 
     setSumOnly(type, sum) {
         if (type === 'pierce') {
             const vSum = document.getElementById('pierceValueSum');
-            const vSep = document.getElementById('pierceValueSep');
             const vTarget = document.getElementById('pierceValueTarget');
             if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
-            if (vSep) vSep.style.display = '';
-            if (vTarget) { vTarget.textContent = '-'; vTarget.style.display = ''; }
+            if (vTarget) { vTarget.textContent = '-'; }
         } else {
             const vSum = document.getElementById('reduceValueSum');
-            const vSep = document.getElementById('reduceValueSep');
             const vTarget = document.getElementById('reduceValueTarget');
             if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
-            if (vSep) vSep.style.display = '';
-            if (vTarget) { vTarget.textContent = '-'; vTarget.style.display = ''; }
+            if (vTarget) { vTarget.textContent = '-'; }
         }
     }
 
     setSumTarget(type, sum, target) {
         if (type === 'pierce') {
             const vSum = document.getElementById('pierceValueSum');
-            const vSep = document.getElementById('pierceValueSep');
             const vTarget = document.getElementById('pierceValueTarget');
             if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
-            if (vSep) vSep.style.display = '';
             if (vTarget) {
                 if (isFinite(target)) {
                     vTarget.textContent = `${target.toFixed(1)}%`;
                 } else {
                     vTarget.textContent = '-';
                 }
-                vTarget.style.display = '';
             }
         } else {
             const vSum = document.getElementById('reduceValueSum');
-            const vSep = document.getElementById('reduceValueSep');
             const vTarget = document.getElementById('reduceValueTarget');
             if (vSum) vSum.textContent = `${sum.toFixed(1)}%`;
-            if (vSep) vSep.style.display = '';
             if (vTarget) {
                 if (isFinite(target)) {
                     vTarget.textContent = `${target.toFixed(1)}%`;
                 } else {
                     vTarget.textContent = '-';
                 }
-                vTarget.style.display = '';
             }
         }
     }

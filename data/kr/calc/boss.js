@@ -73,7 +73,8 @@ const bossData = [
         resistances: {},
         baseDefense: "855",
         defenseCoef: "263.2",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-theReaper.png"
     },
     {
         id: 2,
@@ -86,7 +87,8 @@ const bossData = [
         resistances: {},
         baseDefense: "567",
         defenseCoef: "263.2",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-theReaper.png"
     },
     {
         id: 220,
@@ -99,7 +101,8 @@ const bossData = [
         resistances: {},
         baseDefense: "1280",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-theReaper.png"
     },
     {
         id: 221,
@@ -112,7 +115,8 @@ const bossData = [
         resistances: {},
         baseDefense: "821",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-theReaper.png"
     },
 
     {
@@ -124,7 +128,8 @@ const bossData = [
         resistances: {},
         baseDefense: "?",
         defenseCoef: "363.2",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-cerberus.png"
     },
     /*
     {
@@ -191,7 +196,8 @@ const bossData = [
         },
         baseDefense: 855,
         defenseCoef: 263.2,
-        comment: "미나미의 2스 / 쿤다킬을 통해 [악마의 주원] 제거 가능"
+        comment: "미나미의 2스 / 쿤다킬을 통해 [악마의 주원] 제거 가능",
+        img: "B-guaiwutouxiang-baphomet.png"
     },
     {
         id: 555,
@@ -199,6 +205,7 @@ const bossData = [
         name: "쿠 훌린",
         baseDefense: 855,
         defenseCoef: 263.2,
+        img: "B-guaiwutouxiang-cuchulainn.png"
     },
     {
         id: 556,
@@ -206,6 +213,7 @@ const bossData = [
         name: "오베론 / 티타니아",
         baseDefense: 860,
         defenseCoef: 263.2,
+        img: "B-guaiwutouxiang-oberon.png"
     },
     {
         id: 557,
@@ -213,6 +221,7 @@ const bossData = [
         name: "도미니온",
         baseDefense: 376,
         defenseCoef: 263.2,
+        img: "B-guaiwutouxiang-dominion.png"
     },
     {
         id: 558,
@@ -220,6 +229,7 @@ const bossData = [
         name: "수르트",
         baseDefense: 855,
         defenseCoef: 263.2,
+        img: "B-guaiwutouxiang-surtr.png"
     },
     {
         id: 559,
@@ -227,6 +237,7 @@ const bossData = [
         name: "비사문천 / 광목천 / 증장천 / 지국천",
         baseDefense: 567,
         defenseCoef: 263.2,
+        img: "B-guaiwutouxiang-bishamonten.png"
     },
     {
         id: 7,
@@ -248,10 +259,11 @@ const bossData = [
         },
         baseDefense: 1493,
         defenseCoef: 263.2,
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-melchizedek.png"
     },
     {
-        id: 1-1,
+        id: 111,
         isSea: true,
         name: "청룡",
         icon: "../img/boss/청룡.webp",
@@ -270,7 +282,8 @@ const bossData = [
         },
         baseDefense: 213,
         defenseCoef: 263.2,
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-seiryu.png"
     },
     {
         id: 8,
@@ -292,7 +305,8 @@ const bossData = [
         },
         baseDefense: "821",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-vishnu.png"
     },
     {
         id: 9,
@@ -316,7 +330,9 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-vishnu.png"
+
     },
     {
         id: 10,
@@ -340,7 +356,8 @@ const bossData = [
         },
         baseDefense: "1280",
         defenseCoef: "258.4",
-        comment: "아야카/리코/후타바 파티 구성이 가능할 경우 카스미 채용"
+        comment: "아야카/리코/후타바 파티 구성이 가능할 경우 카스미 채용",
+        img: "B-guaiwutouxiang-baal.png"
     },
     {
         id: 11,
@@ -364,7 +381,8 @@ const bossData = [
         },
         baseDefense: "669",
         defenseCoef: "258.4",
-        comment: "아야카/리코/후타바 파티 구성이 가능할 경우 조커 채용"
+        comment: "아야카/리코/후타바 파티 구성이 가능할 경우 조커 채용",
+        img: "B-guaiwutouxiang-kartikeya.png"
     },
     {
         id: 12,
@@ -388,7 +406,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-garuda.png"
     },
     {
         id: 13,
@@ -412,7 +431,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-jatayu.png"
     },
     {
         id: 14,
@@ -436,7 +456,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-horus.png"
     },
     {
         id: 15,
@@ -460,7 +481,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-yatagarasu.png"
     },
     {
         id: 16,
@@ -484,7 +506,8 @@ const bossData = [
         },
         baseDefense: "1280",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-oomitu.png"
     },
     {
         id: 17,
@@ -508,7 +531,8 @@ const bossData = [
         },
         baseDefense: "1280",
         defenseCoef: "305.9",
-        comment: "주원의 배반 36% +\n원더 [역장 36% + 비슈누 48% + 라쿤다 38.8%  + 스라오샤 25%] \n+ 주권여정 23%  + 후타바 [결심직책 10% + 1스 93.1%] \n= 방어력 감소 309.9% > 305.9%"
+        comment: "주원의 배반 36% +\n원더 [역장 36% + 비슈누 48% + 라쿤다 38.8%  + 스라오샤 25%] \n+ 주권여정 23%  + 후타바 [결심직책 10% + 1스 93.1%] \n= 방어력 감소 309.9% > 305.9%",
+        img: "B-guaiwutouxiang-fafnir.png"
     },
     {
         id: 18,
@@ -530,7 +554,8 @@ const bossData = [
         },
         baseDefense: "821",
         defenseCoef: "258.4",
-        comment: "페르소나 '요시츠네' 패시브 세팅 필요"
+        comment: "페르소나 '요시츠네' 패시브 세팅 필요",
+        img: "B-guaiwutouxiang-maara.png"
     },
     {
         id: 19,
@@ -552,7 +577,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-decarabia.png"
     },
     {
         id: 20,
@@ -576,7 +602,8 @@ const bossData = [
         },
         baseDefense: "1280",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-atabaku.png"
     },
     {
         id: 21,
@@ -600,7 +627,8 @@ const bossData = [
         },
         baseDefense: "1280",
         defenseCoef: "305.9",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-bafang.png"
     },
     {
         id: 22,
@@ -622,7 +650,8 @@ const bossData = [
         },
         baseDefense: "821",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-surtr.png"
     },
     {
         id: 23,
@@ -644,7 +673,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-rantan.png"
     },
     {
         id: 24,
@@ -666,7 +696,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: "야오링 1스 최대 58.5% + 마하라쿤다 27.1% + 천상의 별 22% = 107.6%\n\n다른 보스에 비해 기본 방어력이 낮아 방어 감소에 대한 DPS 증가량이 적은 편"
+        comment: "야오링 1스 최대 58.5% + 마하라쿤다 27.1% + 천상의 별 22% = 107.6%\n\n다른 보스에 비해 기본 방어력이 낮아 방어 감소에 대한 DPS 증가량이 적은 편",
+        img: "B-guaiwutouxiang-dominion.png"
     },
     {
         id: 25,
@@ -688,7 +719,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-archangel.png"
     },
     {
         id: 26,
@@ -710,7 +742,8 @@ const bossData = [
         },
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-principality.png"
     },
     {
         id: 27,
@@ -732,7 +765,8 @@ const bossData = [
         },
         baseDefense: "182",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-power.png"
     },
     {
         id: 28,
@@ -754,7 +788,8 @@ const bossData = [
         },
         baseDefense: "182",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-angel.png"
     },
     {
         id: 29,
@@ -778,7 +813,8 @@ const bossData = [
         },
         baseDefense: "669",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-nidhoggr.png"
     },
     {
         id: 30,
@@ -790,7 +826,8 @@ const bossData = [
         description: "-",
         baseDefense: "364",
         defenseCoef: "258.4",
-        comment: ""
+        comment: "",
+        img: "B-guaiwutouxiang-yurung.png"
     }
     /*
     {

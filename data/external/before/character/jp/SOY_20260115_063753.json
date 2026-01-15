@@ -1,0 +1,276 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身が攻撃を受ける確率が上昇し、攻撃を受けた時、『タフガイ』状態になる。\n自身の行動が終了した時、『タフガイ』状態も終了し、減っているＨＰの３０%を回復する。",
+        "name": "荒野を駆ける者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『タフガイ』状態の時、自身の被ダメージが８%減少する。",
+        "name": "鋼の忍耐力",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の残りのＨＰが５０%未満の時、自身の被ＨＰ回復量が２５%上昇する。",
+        "name": "血煙の最中",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『アイシクルハチェット』『スマッシュヒット』のスキルレベルが２上昇する。",
+        "name": "義理堅い男",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：２ターンの間、味方全体の被ダメージを１６%減少させる。",
+        "name": "漢の背中",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『守護の氷壁』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "華麗な包丁さばき",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『タフガイ』状態で敵を攻撃した時、自身の最大ＨＰ１０%のダメージを追加で与え、そのダメージ分自身のＨＰを回復する。",
+        "name": "略奪と密輸",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "２ターンの間、味方全体の最大ＨＰが駿の最大ＨＰ１０.３%分（最大で最大ＨＰ14100/14100/15600/15600分まで）上昇する。さらに味方全体のＨＰを駿の最大ＨＰ10.1%/11.1%/10.5%/11.5%で回復する。\n同時に、敵単体に最大ＨＰ75.3%/83.1%/78.4%/86.2%の氷結属性ダメージを与える。",
+      "name": "ハイライト",
+      "nature": "Ice",
+      "skill_lv": "10/10/12/12",
+      "sn": 106152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Defense": "0.3",
+      "Unknown Attr": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "加納 駿",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵単体に最大ＨＰ55.6%/61.3%/57.9%/63.6%の氷結属性ダメージを与え、７０%の確率で凍結状態にする。",
+        "name": "アイシクルハチェット",
+        "nature": "Ice",
+        "skill_lv": "10/10/12/12",
+        "sn": 106111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "체력 6.0%",
+        "desc": "敵単体に最大ＨＰ56.9%/62.7%/59.2%/65.1%の物理属性ダメージを与える。また２ターンの間、対象の防御力を30.0%/30.0%/31.2%/31.2%低下させる。この効果は『タフガイ』状態の時、59.9%/59.9%/62.4%/62.4%に上昇する。",
+        "name": "スマッシュヒット",
+        "nature": "Phys",
+        "skill_lv": "10/10/12/12",
+        "sn": 106112,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 24",
+        "desc": "２ターンの間、味方全体の最大ＨＰが駿の最大ＨＰ１５%分（最大で最大ＨＰ14100/14100/15600/15600分まで）上昇する。\nさらに味方全体のＨＰを、駿の最大ＨＰ16.5%/18.2%/17.2%/18.9%分、回復する。\n同時に、２ターンの間、駿が攻撃を受ける確率が大幅に上昇する。\nクールタイム：１ターン",
+        "name": "守護の氷壁",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 106113,
+        "tags": [
+          "補助"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の遠隔攻撃の残弾数が18増加する。遠隔攻撃で敵を攻撃した時、10.0%の確率で、自身の最大ＨＰ９%のダメージを追加で与え、敵の防御力を３ターンの間、３５%減少させる。遠隔攻撃を同一の敵に対して連続して使用すると、ダメージが減少する。",
+        "name": "威圧の弾撃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『守護の氷壁』の効果中に自身が攻撃を受けた時、30.0%の確率で『タフガイ』の回復効果が発動する。",
+        "name": "恩人のために",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Defense": 1010.0,
+      "HP": 15300.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "637.67 / 644.87 / 652.07 / 660.07 / 667.27 / 674.47 / 681.67",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "435.41 / 440.21 / 445.81 / 450.61 / 455.41 / 460.21 / 465.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3262.27 / 3299.87 / 3337.47 / 3375.07 / 3412.67 / 3450.27 / 3487.87",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

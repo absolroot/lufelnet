@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "전투 진입 시, 모든 동료에게 방어력 12%+120/240/360(1/50/70레벨)의 대미지를 막을 수 있는 『정직의 성인』을 추가한다. 『정직의 성인』 보호를 받는 동료가 공격을 받으면, 아시야 마사키가 『용맹』을 1포인트 획득한다. 턴마다 같은 방식으로 『용맹』을 최대 2포인트까지 획득할 수 있다. 턴 시작 시 『용맹』이 4포인트에 도달하면, 『용맹』을 4포인트 소모해 『정의 선언』 효과를 발동하며, 모든 동료에게 『정직의 성인』을 추가한다.",
+        "name": "약자를 존중하고, 항상 겸허하라",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "전투 진입 시 『용맹』을 3포인트 획득한다. 『정의 선언』 효과에 필요한 『용맹』 포인트가 3포인트로 낮아지며, 모든 괴도의 관통이 15% 증가한다.",
+        "name": "적을 두려워하지 마라",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『연민의 축복』, 『영혼의 기도』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "악에 맞서 싸워라",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『정직의 성인』 중첩마다 추가로 15%의 방어력 증가 효과를 제공한다(최대 2중첩). 『정직의 성인』이 제거될 때 남은 실드량의 20%만큼 동료의 생명을 회복한다.",
+        "name": "약자와 함께 싸워라",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『명예 수호』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "동료와 의기투합하라",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: 2턴 동안 모든 동료가 받는 실드 효과가 30% 증가한다.",
+        "name": "벗을 진심으로 대하라",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『정의 선언』 효과를 획득할 때 2턴 동안 지속되는 『정의 심판』을 추가로 획득한다. 『정의 심판』이 지속되는 동안 모든 동료의 크리티컬 확률이 15% 증가한다.",
+        "name": "진실한 사랑과 변치 않는 믿음",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on HPcur/HP)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "즉시 모든 동료에게 방어력 59.0%/59.0%/62.7%/62.7%+1681/2044/2066/2429의 대미지를 막을 수 있는 『성결의 가호』 1중첩을 추가한다. 동시에 모든 동료가 받는 대미지가 31.9%/35.2%/33.9%/37.1% 감소하며 2턴 동안 지속된다.",
+      "name": "HIGHLIGHT",
+      "nature": "Heal",
+      "skill_lv": "10/10/13/13",
+      "sn": 133152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Resist.": "0.24",
+      "Defense": "0.3"
+    },
+    "innate_awake_skill": [],
+    "name": "아시야 마사키",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "지정된 적 1명에게 방어력 149.2%/164.5%/158.4%/173.7%의 빙결 속성 대미지를 주고, 다른 적 유닛에게 방어력 44.8%/49.4%/47.6%/52.1%의 빙결 속성 대미지를 주며, 97.6%/97.6%/103.6%/103.6%의 기본 확률로 메인 목표를 동결 상태에 빠뜨린다. 동시에 아시야 마사키는 『용맹』을 2포인트 회복한다. 아시야 마사키가 『정의 선언』 상태일 경우, 2턴 동안 메인 목표가 받는 대미지가 추가 증가한다(아시야 마사키가 방어 600포인트를 보유할 때마다 메인 목표가 받는 대미지 1% 증가, 최대 9.8%/10.8%/10.4%/11.4% 증가). 하지만 『용맹』 회복량이 1포인트로 감소한다.",
+        "name": "연민의 축복",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 133111,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "동료 1명이 방어력 22.8%/22.8%/24.2%/24.2%+650/790/799/939의 대미지를 막을 수 있는 『정직의 성인』을 1중첩 획득하고, 아시야 마사키 방어력의 20%(최대 1220/1345/1295/1420포인트)만큼 방어력이 증가한다. 효과는 2턴 동안 지속된다. 해당 효과를 획득할 때 해당 동료의 생명이 60%보다 높으면, 공격받을 확률이 50% 증가한다. 아시야 마사키의 다음 턴이 시작되면, 해당 동료가 다시 『정직의 성인』 1중첩을 획득한다. 아시야 마사키가 『정의 선언』 상태일 경우, 2턴 동안 발동하는 『정직의 성인』 실드량이 추가로 25% 증가한다.",
+        "name": "명예 수호",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 133112,
+        "tags": [
+          "액티브",
+          "실드"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 30",
+        "desc": "즉시 모든 동료에게 방어력 12%+120/240/360(1/50/70레벨)의 대미지를 막을 수 있는 『정직의 성인』 1중첩과 방어력 49.2%/49.2%/52.2%/52.2%+1400/1702/1721/2024의 대미지를 막을 수 있는 『성결의 가호』 1중첩을 추가한다. 동시에 모든 동료가 다운 수치 1포인트와 주는 대미지 증가 효과(아시야 마사키가 방어력 300포인트를 보유할 때마다 주는 대미지 1% 증가, 최대 19.5%/21.5%/20.7%/22.7% 증가)를 획득하며 2턴 동안 지속된다.",
+        "name": "영혼의 기도",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 133113,
+        "tags": [
+          "액티브",
+          "실드"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "아시야 마사키의 실드 보호를 받는 동료의 방어력이 24.0% 증가한다.",
+        "name": "희생",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "아시야 마사키의 실드 보호를 받는 동료의 효과 저항이 48.0% 증가한다.",
+        "name": "겸손",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Defense": 4400.0,
+      "HP": 6440.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "840.0 / 855.2 / 870.4 / 885.6 / 900.8 / 916.0 / 930.4",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "813.35 / 827.75 / 842.95 / 857.35 / 871.75 / 886.95 / 901.35",
+      "Defense Increase": "43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

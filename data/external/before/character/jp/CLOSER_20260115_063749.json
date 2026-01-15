@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身が電撃属性ダメージを与えた時、１５%の確率で敵を感電状態にする。\nさらに感電状態の敵にダメージを与える時、攻撃力が３０%上昇する。",
+        "name": "稲妻リリーフ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『怒りの雷霆』の攻撃回数が１回増加する。同一の敵に命中した時は、与ダメージが１５%に減少する。",
+        "name": "電光ゲッツー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "感電状態の敵から、自身が受けるダメージを２０%減少する。",
+        "name": "攻守交代",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『怒りの雷霆』『ブリッツマイン』のスキルレベルが２上昇する。",
+        "name": "明るさと気遣い",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：２ターンの間、敵全体の電撃属性の被ダメージが２０%に上昇する。",
+        "name": "追加点！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ライトニングシャーク』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "いつか見た夢",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "感電状態の敵が受ける電撃属性ダメージが２０%上昇し、受ける電撃属性のクリティカルダメージが２０%上昇する。",
+        "name": "勝利の鍵",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "敵全体に攻撃力162.4%/179.0%/169.1%/185.7%の電撃属性ダメージを与え、選択した対象を２ターンの間、感電状態にし、電撃属性の被ダメージを１０%上昇させる。",
+      "name": "ハイライト",
+      "nature": "Electric",
+      "skill_lv": "10/10/12/12",
+      "sn": 103152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "新井 素羽",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "攻撃力76.7%/84.6%/79.9%/87.7%の電撃属性ダメージを４回与える。２回目以降の攻撃は新たな対象が優先され、同一の対象に命中した時、与ダメージが１０%に減少する。\n選択した対象には必ず攻撃を行い、２ターンの間、感電状態にする。",
+        "name": "怒りの雷霆",
+        "nature": "Electric",
+        "skill_lv": "10/10/12/12",
+        "sn": 103112,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 18",
+        "desc": "敵単体に攻撃力157.1%/173.2%/163.6%/179.7%の電撃属性ダメージを与え、味方全体の電撃属性の与ダメージが２ターンの間、11.7%/11.7%/12.2%/12.2%上昇する。",
+        "name": "ブリッツマイン",
+        "nature": "Electric",
+        "skill_lv": "10/10/12/12",
+        "sn": 103111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "敵全体に攻撃力79.3%/87.4%/82.5%/90.6%の電撃属性ダメージを与える。攻撃後に感電状態の敵がいる時、テクニカルが発生し、敵全体に攻撃力42.7%/47.1%/44.5%/48.9%の電撃属性ダメージを追加で与える。",
+        "name": "ライトニングシャーク",
+        "nature": "Electric",
+        "skill_lv": "10/10/12/12",
+        "sn": 103113,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "敵を感電状態にする時、66.0%の確率で効果時間を１ターン延長する。",
+        "name": "延長戦",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "２ターンの間、自身のスキルによる攻撃時に選択した敵の電撃属性による被ダメージが20.0%上昇する。（２回分まで重ねがけ可能）。",
+        "name": "ピッチャーライナー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2550.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.67
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "825.39 / 834.99 / 844.59 / 854.19 / 863.79 / 873.39 / 882.19",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "515.37 / 520.97 / 527.37 / 532.97 / 539.37 / 544.97 / 551.37",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2430.01 / 2458.01 / 2486.01 / 2514.01 / 2542.01 / 2570.01 / 2598.01",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

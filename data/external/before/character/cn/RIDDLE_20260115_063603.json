@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "西森释放人格面具技能时，消耗所有『童趣』，每消耗1层『童趣』使所有同伴攻击力提升8%，效果持续2回合。『童趣』上限5层。",
+        "name": "寻宝！出发！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "同伴释放技能造成伤害时，使西森攻击力提升20%，上限3层，下1回合释放技能后清除该效果。当攻击力提升效果达到2层时，所有同伴伤害提升15%，持续1回合。",
+        "name": "岔路！选择！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『旺盛童心』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "经验！获得！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "通过『追疑』获得『童趣』的固定概率提升20%。释放『旺盛童心』技能时，若『童趣』为满层，则额外提升所有同伴24%攻击力、24%暴击效果。",
+        "name": "助手！升级！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『笨笨的助手』、『聪明的探险家』的技能等级提升3级，至多提升至15级。",
+        "name": "装备！强化！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：伤害提升效果延长至2回合。",
+        "name": "怪物！打倒！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每获得5个『童趣』，则获得『好奇心爆炸』：以敌人为目标释放人格面具技能时，造成的伤害提升75%，造成伤害后清除。",
+        "name": "谜题！解开！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "西森获得『童趣』时，会获得1个『计数』，上限5层，持续2回合。释放HIGHLIGHT时，对1名敌人造成366.0%/403.5%/388.5%/426.0%攻击力的念动属性伤害，使所有同伴造成的伤害提升7.8%/8.6%/8.3%/9.1%*当前『计数』层数，效果持续1回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Psychokinesis",
+      "skill_lv": "10/10/13/13",
+      "sn": 128152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "西森阳菜",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "对1名敌人造成146.4%/161.4%/155.4%/170.4%攻击力的念动属性伤害，使所有同伴进入『宠爱』状态：释放人格面具技能造成伤害时，使西森获得1层『童趣』，效果持续1回合。",
+        "name": "笨笨的助手",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 128111,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "使所有同伴受到的治疗效果以及受到的护盾效果提升17.6%/19.4%/18.6%/20.4%，防御力提升34.2%/37.7%/36.3%/39.8%。效果持续2回合。释放该技能时若『童趣』层数为0，则在技能结束后获得2层『童趣』。",
+        "name": "聪明的探险家",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 128112,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "持有『童趣』时该技能开启，使所有同伴的攻击力提升10%，效果持续2回合。释放该技能时若『童趣』不少于2层，则使所有同伴造成的伤害提升（自身每有100点攻击力提升1%，上限48.8%/53.8%/51.8%/56.8%），效果持续2回合。",
+        "name": "旺盛童心",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 128113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "处于『宠爱』的同伴造成伤害时，每造成1段伤害，有40.0%固定概率使西森获得1层『童趣』。",
+        "name": "追疑",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "消耗『童趣』的层数大于等于3时，使得由『童趣』带来的攻击力提升效果提升24.0%。",
+        "name": "探究",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 4730.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1010.02 / 1028.42 / 1046.02 / 1064.42 / 1082.82 / 1101.22 / 1118.82",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "660.02 / 672.02 / 684.02 / 696.02 / 707.22 / 719.22 / 731.22",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "101.0 / 101.0 / 101.0 / 101.0 / 101.0 / 101.0 / 101.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

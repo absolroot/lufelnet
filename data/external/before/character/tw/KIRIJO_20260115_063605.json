@@ -1,0 +1,300 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "桐条美鶴釋放人格面具技能或降神造成傷害時，為目標添加1層『霜結』。『霜結』持續2回合，最多可疊加5層，桐条美鶴攻擊擁有『霜結』的目標時可獲得7%*『霜結』層數的攻擊力提升。『霜結』被強化為『寒霜結』後，友方單位可透過人格面具技能攻擊此狀態下的敵人觸發桐条美鶴的『冷血之刃』。",
+        "name": "部長的職責",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "進入戰鬥時，為所有敵人添加2層可突破疊加上限的『寒霜結』，上限2層，本場戰鬥永久生效。處於『寒霜結』狀態下的敵人受到暴擊率提升10%。",
+        "name": "Brilliant！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "處於『女王凝視』狀態下的敵人受到暴擊效果提升40%。『女王凝視』轉移時，會同時轉移所有異常狀態。",
+        "name": "劍舞的冰之女王",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『極寒風暴』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "處刑！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "降神造成的技能傷害提升20%，降神額外使目標受到傷害提升20%，持續2回合。",
+        "name": "謊言的背面",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『絢爛冰華』、『冰之舞刺擊』的技能等級提升3級，至多提升至15級。",
+        "name": "不諳世事的一面",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『霜結』疊加上限提升至6層。自身降神能量基礎回復量翻倍。釋放降神時，可在2回合內將目標的『寒霜結』進一步強化為『極寒霜結』。友方同伴使用人格面具技能攻擊處於『極寒霜結』狀態下的敵人，可額外觸發1次相當於原傷害200%的『冷血之刃』。自身攻擊處於『極寒霜結』狀態下的敵人時，獲得15%的總傷害增幅。",
+        "name": "鬥志熊熊燃燒",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "使1名敵人獲得持續2回合的『能量標記』。每名S.E.E.S.成員首次攻擊該名敵人時，自身回復35點降神能量；每名非S.E.E.S.成員首次攻擊該名敵人時，回復15%的HIGHLIGHT能量。",
+        "name": "援助技能",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 144171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "桐条美鶴",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "對1名敵人造成211.2%/232.8%/224.2%/245.8%攻擊力的冰凍屬性傷害，額外為其添加3層『霜結』，並使其防禦力降低（桐条美鶴每有300點攻擊力，防禦力降低1.2%*『霜結』層數，最多計入2928/3228/3108/3408點攻擊力），持續2回合。",
+        "name": "絢爛冰華",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 144111,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "使1名敵人陷入『女王凝視』狀態，防禦力降低7.8%/8.6%/8.3%/9.1%（桐条美鶴每有300點的攻擊力，防禦力額外降低3.2%，最多計入2928/3228/3108/3408點攻擊力），受到傷害提升（桐条美鶴每有300點的攻擊力，受到傷害提升2%，最多計入2928/3228/3108/3408點攻擊力），本場戰鬥永久生效。『女王凝視』全場唯一，選擇新目標釋放時，會將『女王凝視』轉移至新目標。若處於『女王凝視』狀態的敵人死亡時，『女王凝視』會自動轉移至當前場上生命值最高的敵人。『女王凝視』轉移時，會同時轉移桐条美鶴添加的所有異常狀態。使用該技能後本回合仍可使用其他技能，該技能不視為人格面具技能。",
+        "name": "極寒風暴",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 144112,
+        "tags": [
+          "主動",
+          "減益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "根據解明怪盜各屬性的3%，提升在場的所有同伴的相應屬性值，持續2回合。而後對1名敵人造成345.1%/380.5%/366.3%/401.7%攻擊力的冰凍屬性傷害，目標每有1層『霜結』，技能傷害提升10%，目標『霜結』達到5層時，技能額外獲得15%的暴擊率提升。",
+        "name": "冰之舞刺擊",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 144113,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "解明怪盜的初始準備時間減少4次行動。",
+        "name": "責任",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "桐条美鶴在場時，所有反抗或支配角色攻擊擁有『霜結』的單位獲得『霜結』層數*4.8%的傷害提升。",
+        "name": "秩序",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3000.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "613.31 / 624.51 / 635.71 / 646.11 / 657.31 / 668.51 / 679.71",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on Unknown)",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "釋放條件：70點降神能量\n對1名敵人造成362.3%/399.4%/384.6%/421.7%攻擊力的冰凍屬性傷害，在2回合內將目標的『霜結』強化為『寒霜結』。友方同伴使用人格面具技能攻擊處於『寒霜結』狀態下的敵人時，觸發桐条美鶴的『冷血之刃』，對目標額外造成1次『霜結』層數*19.5%/21.5%/20.7%/22.7%攻擊力的傷害。",
+        "name": "暴雪利刃",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 144152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

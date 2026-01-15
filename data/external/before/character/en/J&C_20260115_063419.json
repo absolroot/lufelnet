@@ -1,0 +1,309 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "After obtaining Justine & Caroline, during battle, increase Wonder's skill and Thief Tactics levels by 1 (takes effect even when Justine & Caroline are not in battle).\nBefore entering battle, Justine & Caroline can select 2 of their 4 sets of Personas, and their Skill 1 and Skill 2 will change accordingly. During battle, Justine & Caroline will receive the following role effect based on the selected sets:\nMask of Mischief & Innocence + Mask of Service & Admonition: Medic\nMask of Mischief & Innocence + Mask of Absurdity & Nonsense: Strategist\nMask of Mischief & Innocence + Mask of Luck & Loss: Sweeper\nMask of Service & Admonition + Mask of Absurdity & Nonsense: Guardian\nMask of Service & Admonition + Mask of Luck & Loss: Saboteur\nMask of Absurdity & Nonsense + Mask of Luck & Loss: Assassin\nSkill effects are affected by Desire Level. At the start of battle, increase Desire Level by 25.",
+        "name": "Twin Wardens",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, depending on the selected Personas, gain 2 types of Facade.\nAt the start or end of Justine & Caroline's turn, if they have 2 types of Facade, automatically activate Two Masks as One on a random target 1 time (prioritizing the target of the previous skill attack used).",
+        "name": "Strict Tolerance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When a Facade is gained, gain the following buff based on the type of Facade:\nFacade of Mischief & Innocence: Increase party's Attack by 30% for 2 turns.\nFacade of Service & Admonition: Decrease party's damage taken by 20% for 2 turns.\nFacade of Absurdity & Nonsense: Increase critical damage of the Assassin or Sweeper ally with the highest Attack by 20% for 2 turns.\nFacade of Luck & Loss: Increase Justine & Caroline's skill damage by 10% for 2 turns.",
+        "name": "Callous Kindness",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Selected Skill 1 and Two Masks as One by 3.",
+        "name": "Punitive Mercy",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Justine & Caroline activate their Highlight, increase their Attack by 40%, damage dealt by 20%, and grant 50% of these effects to other allies for 2 turns.",
+        "name": "Execution of Rebirth",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Selected Skill 2 and Thief Tactics by 3.",
+        "name": "Humane Prison",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When this Awareness is unlocked, during battle, increase Wonder's skill and Thief Tactics levels by 1 (takes effect even when Justine & Caroline are not in battle). Also, increase Desire Level by 20%.\nAt the start of battle, gain True Desire. Afterwards, regain True Desire every 8 turns if it has been spent.\nDuring Justine & Caroline's turn, they can spend 1 True Desire stack to enhance the next activated Two Masks as One.\nEnhanced effect: Activate all Facade effects for Two Masks as One. Also, deal bonus damage to the main target equal to 40% of Attack (8 hits. Increase this skill's effect by 1% for every 1 point of Desire Level. These bonus hits deal 1 hit of Fire, Ice, Electric, Wind, Psychokinesis, Nuclear, Bless, and Curse damage each.)",
+        "name": "Power to Resist Ruin",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "When activating a Highlight, choose 1 of the 2 selected Persona sets and activate its Highlight below (cooldown times for each Highlight are calculated independently).\nMask of Mischief & Innocence: Increase the party's Attack by 24.4%/26.9%/25.9%/28.4% and damage by 34.2%/37.7%/36.3%/39.8% for 2 turns.\nMask of Service & Admonition: Restore the party's HP by 43.4%/47.9%/46.1%/50.6% of Justine & Caroline's Attack + 2782/3667/3419/4350.\nIncrease the party's max HP by 9.8%/10.8%/10.4%/11.4% for 2 turns.\nMask of Absurdity & Nonsense: Deal Psychokinesis damage to 1 foe equal to 244.0%/269.0%/259.0%/284.0% of Attack, and Nuclear damage equal to 244.0%/269.0%/259.0%/284.0% of Attack (1 hit each, can inflict critical damage).\nIncrease Attack by 34.2%/37.7%/36.3%/39.8% for Justine & Caroline and the ally with the highest Attack (prioritizing Assassins or Sweepers).\nMask of Luck & Loss: Deal Bless damage to all foes equal to 122.0%/134.5%/129.5%/142.0% of Attack, and deal Curse damage equal to 122.0%/134.5%/129.5%/142.0% of Attack (1 hit each, can inflict critical damage).\nFor 2 turns, increase Justine & Caroline's Attack by 29.3%/32.3%/31.1%/34.1% and critical damage by 19.5%/21.5%/20.7%/22.7%.",
+      "name": "Highlight",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 146156,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "Justine & Caroline",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Fire damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Ice damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every 1 point of Desire Level). Also, increase party's Attack by 39.0%/43.0%/41.4%/45.4% for every 100 points of Desire Level for 3 turns.\nGain Facade of Mischief & Innocence.",
+        "name": "Mask of Mischief & Innocence",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 146111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Electric damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Wind damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every 1 point of Desire Level). Also, decrease party's damage taken by 9.8%/10.8%/10.4%/11.4% and 9.8%/10.8%/10.4%/11.4% more for every 100 points of Desire Level for 3 turns. Also, restore party's HP by 34.7%/38.3%/36.9%/40.4% of Justine & Caroline's Attack + 2225/2934/2735/3480.\nGain Facade of Service & Admonition.",
+        "name": "Mask of Service & Admonition",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 146211,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Psychokinesis damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Nuclear damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every 1 point of Desire Level). Also, increase pierce rate for Justine & Caroline and the Sweeper or Assassin ally with the highest Attack by 4.9%/5.4%/5.2%/5.7% and 4.9%/5.4%/5.2%/5.7% more for every 100 points of Desire Level for 3 turns.\nGain Facade of Absurdity & Nonsense.",
+        "name": "Mask of Absurdity & Nonsense",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 146311,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Bless damage to 1 foe equal to 74.5%/82.1%/79.0%/86.7% of Attack and Curse damage equal to 74.5%/82.1%/79.0%/86.7% of Attack (1 hit each; increase this effect by 1% for every point of Desire Level).\nAlso, increase Justine & Caroline's Attack by 14.6%/16.1%/15.5%/17.0% + 14.6%/16.1%/15.5%/17.0% for every 100 points of Desire Level, damage dealt by 9.8%/10.8%/10.4%/11.4% + 9.8%/10.8%/10.4%/11.4% for every 100 points of Desire Level, and critical rate by 4.9%/5.4%/5.2%/5.7% + 4.9%/5.4%/5.2%/5.7% for every 100 points of Desire Level for 3 turns.\nGain Facade of Luck & Loss.",
+        "name": "Mask of Luck & Loss",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 146411,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on Unknown)",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "Usable when any 2 types of Facade have been gained. Deal Almighty damage to 1 foe equal to 126.9%/139.9%/134.7%/147.7% of Attack (increase this effect by 1% for every 1 point of Desire Level). Also, spend all Facades to activate the following effects based on their combination.\nFacade of Mischief & Innocence + Facade of Service & Admonition: Restore party's HP equal to 52.2%/57.6%/55.4%/60.8% of Attack + 3344/4409/4111/5230. Also, increase party's damage dealt by 43.9%/48.4%/46.6%/51.1% for every 100 points of Desire Level for 2 turns.\nFacade of Mischief & Innocence + Facade of Absurdity & Nonsense: Grant other allies 14.6%/16.1%/15.5%/17.0% of Skill Amplification for 2 turns. Also, increase party's critical damage by 19.5%/21.5%/20.7%/22.7% for every 100 points of Desire Level.\nSkill Amplification: Increase the values of skills and Thief Tactics that are increased when leveled up. This effect is calculated separately from other effects.\nFacade of Mischief & Innocence + Facade of Luck & Loss: Change this skill's target to all foes.\nFacade of Service & Admonition + Facade of Absurdity & Nonsense: Grant all allies a shield equal to 41.8%/46.1%/44.3%/48.6% of Justine & Caroline's Attack + 2675/3527/3289/4184 and 1 Down Point for 2 turns. Also, increase party's Defense by 48.8%/53.8%/51.8%/56.8% for every 100 points of Desire Level.\nFacade of Service & Admonition + Facade of Luck & Loss: Inflict Shock, Windswept and 2 Curse stacks on the main target, and gain 2 Blessing stacks. These effects last for 2 turns. Also, decrease all foes' Defense by 25.4%/28.0%/26.9%/29.5% + 25.4%/28.0%/26.9%/29.5% for every 100 point of Desire Level for 2 turns.\nFacade of Absurdity & Nonsense + Facade of Luck & Loss: This skill deals 1 more hit of Almighty damage. Also, gain Rebel Surveillance for 2 turns.\nRebel Surveillance: When using a skill, temporarily gain 4.9%/5.4%/5.2%/5.7% of Effects stats from the Sweeper or Assassin ally with the highest Attack (excluding Justine & Caroline).",
+        "name": "Two Masks as One",
+        "nature": "Almighty",
+        "skill_lv": "10/10/13/13",
+        "sn": 146511,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, increase Desire Level based on Justine & Caroline's base stats.\nFor every 100 points of Attack, increase Desire Level by 1 (up to 45).\nFor every 2% of Damage Mult. +, increase Desire Level by 1 (up to 15).\nFor every 6% of Critical Multiplier above 100%, increase Desire Level by 1 (up to 15).",
+        "name": "Overseer of Rehabilitation",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Gain stat bonuses based on the selected Persona combinations:\nMask of Mischief & Innocence + Mask of Service & Admonition: Increase healing by 21.0%. Also, when on the field, increase party's damage dealt by 24.0%.\nMask of Mischief & Innocence + Mask of Absurdity & Nonsense: Increase Speed by 5. Also, when on the field, increase party's Attack by 30.0%.\nMask of Mischief & Innocence + Mask of Luck & Loss: Increase critical rate by 15.0%.\nMask of Service & Admonition + Mask of Absurdity & Nonsense: Increase Justine & Caroline's shield by 21.0%.\nMask of Service & Admonition + Mask of Luck & Loss: Increase Speed by 5. Also, when on the field, increase all foes' damage taken by 24.0%.\nMask of Absurdity & Nonsense + Mask of Luck & Loss: Increase critical damage by 30.0%.",
+        "name": "Oxymoron",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 146132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3700.0,
+      "Crit Mult.": 1.9,
+      "Damage Mult.": 0.3,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "999.99 / 1018.39 / 1035.99 / 1054.39 / 1071.99 / 1090.39 / 1107.99",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "666.68 / 678.68 / 690.68 / 702.68 / 714.68 / 726.68 / 738.68",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3600.02 / 3664.82 / 3729.62 / 3794.42 / 3859.22 / 3924.02 / 3988.82",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

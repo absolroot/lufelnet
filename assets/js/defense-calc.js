@@ -1180,11 +1180,12 @@ class DefenseCalc {
         if (this.damageIncreaseDiv) {
             this.damageIncreaseDiv.textContent = damageText;
         }
+        // × + 'noReduceDamage'
         if (this.noDefReduceSpan) {
-            this.noDefReduceSpan.textContent = isFinite(noReduceDamage) ? noReduceDamage.toFixed(3) : '-';
+            this.noDefReduceSpan.textContent = isFinite(noReduceDamage) ? `× ${noReduceDamage.toFixed(3)}` : '-';
         }
         if (this.withDefReduceSpan) {
-            this.withDefReduceSpan.textContent = isFinite(withReduceDamage) ? withReduceDamage.toFixed(3) : '-';
+            this.withDefReduceSpan.textContent = isFinite(withReduceDamage) ? `× ${withReduceDamage.toFixed(3)}` : '-';
         }
         // 통합 카드는 항상 표시
 

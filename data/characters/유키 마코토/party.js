@@ -55,6 +55,14 @@ window.recommendParty["유키 마코토"] = {
                 "미츠루",
                 "마나카"
             ]
+        },
+        {
+            "members": [
+                "유키 마코토",
+                "준페이",
+                "미츠루",
+                "마나카"
+            ]
         }
     ],
     "friends": [
@@ -81,6 +89,12 @@ window.recommendParty["유키 마코토"] = {
             "comment": "미츠루는 높은 수치의 방어력 감소와 추가적인 대미지를 부여할 수 있다.",
             "comment_en": "Provides high DEF reduction and additional damage.",
             "comment_jp": "高い防御力低下と追加ダメージを付与できる。",
-        }
+        },
+        {
+            "name": "준페이",
+            "comment": "준페이의 버프는 화염 속성 대미지와 크리티컬 효과를 크게 증가시킨다.",
+            "comment_en": "Junpei Iori’s buff increases Fire damage and critical damage significantly.",
+            "comment_jp": "伊織順平のバフは火炎属性ダメージとクリティカルダメージを大幅に増加させます。"
+        },
     ]
 };

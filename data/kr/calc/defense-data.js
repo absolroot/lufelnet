@@ -894,7 +894,7 @@ const defenseCalcData = {
             id: "mitsuru2",
             type: "스킬2",
             target: "단일",
-            skillIcon: `${BASE_URL}/assets/img/skill-element/빙결.png`,
+            skillIcon: `${BASE_URL}/assets/img/skill-element/디버프.png`,
             skillName: "극한의 폭풍",
             options: ["LV10","LV10+심상5","LV10+심상5(의식1)","LV13+심상5","LV13+심상5(의식6)"],
             values: {

@@ -101,12 +101,11 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 
 
-.defense-table-container, .penetrate-table-container { overflow-x: auto; margin : 0 20px; padding : 20px 20px 30px 20px; border-radius: 10px; background-color: var(--card-background); }
 
 .defense-table, .penetrate-table { width: 100%; border-collapse: collapse; text-align: left; }
 
 .defense-table th, .penetrate-table th,
-.defense-table td, .penetrate-table td { font-size: 13px; padding: 10px; color: rgb(255, 255, 255, 0.4); height: 30px;  /* 셀 높이도 지정 */
+.defense-table td, .penetrate-table td { font-size: 13px; padding: 6px; color: rgb(255, 255, 255, 0.4);
 }
 .defense-table tr.group-header .group-header-cell { padding: 0 !important; border-top: 2px solid #ffffff30 }
 .defense-table tr.group-header .group-header-cell > .group-info { flex: 1 1 auto; }
@@ -127,7 +126,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .char-img-column img { height: 36px; border-radius: 25px; object-fit: contain; }
 
-.skill-icon-column img { height: 32px; width: 32px; object-fit: contain; }
+.skill-icon-column img { height: 24px; width: 24px; object-fit: contain; }
 
 .skill-icon { width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important; object-fit: contain !important; }
 
@@ -156,7 +155,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 .defense-table td, .penetrate-table td { vertical-align: middle; padding: 8px; }
 
 /* 괴도 이름이 비어있는 행의 스타일 */
-/* .defense-table tr:not(:first-child) td, .penetrate-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.2); }*/
+.defense-table tr:not(:first-child) td, .penetrate-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.08); }
 .defense-table tr.group-header td, .penetrate-table tr.group-header td { background: rgba(255,255,255,0.05); }
 .group-header-cell { padding: 0; width: 100%; box-sizing: border-box; }
 .group-header-inner { display: flex; align-items: center; gap: 10px; padding: 8px 12px; }
@@ -164,16 +163,15 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 .group-header-inner .accordion-caret { flex: 0 0 auto; }
 .group-header .group-name { font-weight: 700; color: rgba(255,255,255,0.85); margin-left: 8px; }
 .group-header .group-info { display: flex; align-items: center; gap: 8px; }
-.group-header .group-avatar { height: 36px; border-radius: 25px; object-fit: contain; }
+.group-header .group-avatar { height: 28px; border-radius: 25px; object-fit: contain; }
 .accordion-caret { display: inline-block; width: 18px; text-align: center; color: rgba(255,255,255,0.7); cursor: pointer; }
 .group-row[data-group] { margin-left: 8px; }
 .group-header + .group-row { border-top-left-radius: 6px; }
 .group-row:last-child { border-bottom-left-radius: 6px; }
 
-.defense-table tr.empty-char td, .penetrate-table tr.empty-char td { border-top: none; }
 
 /* 첫 번째 행은 항상 테두리 표시 (제거) */
-.defense-table tr:last-child td, .penetrate-table tr:last-child td { border-bottom: 1px solid  rgb(255, 255, 255, 0.2); } 
+.defense-table tr:last-child td, .penetrate-table tr:last-child td { border-bottom: 1px solid  rgb(255, 255, 255, 0.1); } 
 
 /* 테이블 헤더 스타일 */
 .defense-table th, .penetrate-table th { padding: 10px 8px 15px 8px;  /* 상 우 하 좌 패딩 */
@@ -221,7 +219,6 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 /* 모바일 대응을 위한 테이블 스타일 수정 */
 @media (max-width: 1200px) { .navigation-path, .header-container, .filter-content, .top-cards{ padding-left: 0px; padding-right: 0px; }
 
-    .defense-table-container, .penetrate-table-container { background-color: transparent; padding: 0; margin: 0; }
 
     .defense-table, .penetrate-table, #defenseTableBody, #penetrateTableBody{ background-color: none; }
 
@@ -272,8 +269,6 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     /* 아이콘/텍스트 크기 조정 */
     .skill-icon-column img { height: 24px; width: 24px; }
 
-    /* 선택된 행 스타일 */
-    .defense-table tr.selected, .penetrate-table tr.selected { border : 1px solid rgba(255, 255, 255, 0.5); }
 
     /* 빈 캐릭터 행 스타일 */
     .defense-table tr.empty-char, .penetrate-table tr.empty-char { padding-top: 8px; }
@@ -284,13 +279,8 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     /* note-column에 텍스트가 없으면 display: none; */
     .note-column:empty { display: none; }
     
-
-    .group-header-cell {height: 36px !important;}
     .group-header-inner {padding: 0px !important;}
 
-    /* 체크박스 이미지 크기 */
-    img[src*="check-off.png"] { width: 20px !important; height: 20px !important; padding-left:0px;}
-    img[src*="check-on.png"] { width: 25px !important; height: 25px !important; padding-left:0px;}
 }
 
 @media screen and (max-width: 1200px) { .note-column:not(:empty)::before { content: "💬 "; }

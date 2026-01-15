@@ -30,12 +30,12 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 .critical-table { width: 100%; border-collapse: collapse; text-align: left; }
 
 .critical-table th,
-.critical-table td { font-size: 13px; padding: 10px; color: rgb(255, 255, 255, 0.4); height: 30px; }
+.critical-table td { font-size: 13px; padding: 6px; color: rgb(255, 255, 255, 0.4); }
 
 .critical-table thead th { padding: 10px 8px 15px 8px; border-bottom: 2px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.6); font-weight: 800; }
 
 /* 괴도 이름이 비어있는 행의 스타일 */
-.critical-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.2); }
+.critical-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.08); }
 
 .critical-table tr.empty-char td { border-top: none; }
 
@@ -52,7 +52,7 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .char-img-column img { height: 36px; border-radius: 25px; object-fit: contain; }
 
-.skill-icon-column img { height: 32px; width: 32px; object-fit: contain; }
+.skill-icon-column img { height: 24px; width: 24px; object-fit: contain; }
 
 .skill-icon { width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important; object-fit: contain !important; }
 
@@ -71,10 +71,7 @@ select option:hover { background-color: #4d3e3e; }
 /* Firefox에서 옵션 배경색 강제 적용 */
 select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255, 0.8); }
 
-.critical-table td { vertical-align: middle; padding: 8px; }
-
-/* 괴도 이름이 비어있는 행의 스타일 */
-.critical-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.2); }
+.critical-table td { vertical-align: middle; padding: 6px; }
 
 .critical-table tr.empty-char td { border-top: none; }
 
@@ -137,14 +134,13 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 
 .char-img-column img { height: 36px; border-radius: 25px; object-fit: contain; }
 
-.skill-icon-column img { height: 32px; width: 32px; object-fit: contain; }
 
 .skill-icon { width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important; object-fit: contain !important; }
 
 /* 체크박스 이미지 */
-img[src*="check-off.png"] { width: 20px !important; height: 20px !important; object-fit: contain !important; opacity: 0.6; cursor: pointer; }
+img[src*="check-off.png"] { width: 16px !important; height: 16px !important; object-fit: contain !important; opacity: 0.6; cursor: pointer; }
 
-img[src*="check-on.png"] { width: 25px !important; height: 25px !important; object-fit: contain !important; transform: translateX(-1px) translateY(-0.5px); cursor: pointer; }
+img[src*="check-on.png"] { width: 20px !important; height: 20px !important; object-fit: contain !important; transform: translateX(-1px) translateY(-0.5px); cursor: pointer; }
 
 
 .skill-icon-column { align-items: center; justify-content: center; }
@@ -305,7 +301,6 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
     /* 선택된 행 스타일 */
     .critical-table tr.selected { 
         background: #3d2e2e;
-        border: 1px solid rgba(255, 255, 255, 0.5); 
     }
 
     .critical-table tr.selected .skill-name-column {
@@ -314,13 +309,6 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
 
     .critical-table tr.selected .value-column {
         color: #ff9999 !important;
-    }
-
-    /* 체크박스 이미지 크기 */
-    img[src*="check-off.png"],
-    img[src*="check-on.png"] { 
-        width: 20px !important; 
-        height: 20px !important; 
     }
 
     /* 모바일 헤더/정보 숨김 */
@@ -364,12 +352,11 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
 .group-header-cell { padding: 0; width: 100%; box-sizing: border-box; }
 .group-header-inner { display: flex; align-items: center; gap: 10px; padding: 8px 12px; }
 .group-header-inner .group-info { display: inline-flex; align-items: center; gap: 8px; }
-.group-header .group-avatar { height: 36px; border-radius: 25px; object-fit: contain; }
+.group-header .group-avatar { height: 28px; border-radius: 25px; object-fit: contain; }
 .group-header .group-name { margin-left: 8px; }
 .accordion-caret { margin-right: 4px; }
 .group-header-inner .group-info { display: inline-flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; }
 .group-header .group-name { font-weight: 700; color: rgba(255,255,255,0.85); margin-left: 8px; }
-.group-avatar { height: 36px; border-radius: 25px; object-fit: contain; }
 .accordion-caret { display: inline-block; width: 18px; text-align: center; color: rgba(255,255,255,0.7); cursor: pointer; }
 .group-row[data-group] { margin-left: 8px; }
 .group-header td { padding: 0; }

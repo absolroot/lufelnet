@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["준페이"] = {
+    "role": "화염 전용 방위 버퍼",
+    "video": [""],
+    "video_en": [""],
+    "video_jp": ["", ""],
+    "main_revelation": ["창조","진정성"],
+    "sub_revelation": ["화해", "고집"],
+    "sub_revel2": ["생명", "대미지 보너스"],
+    "sub_revel3": ["크리티컬 효과", "생명"],
+    "sub_revel4": ["생명"],
+    "sub_option1": ["생명"],
+    "sub_option2": ["크리티컬 효과", "대미지 보너스", "관통"],
+    "sub_option3": ["크리티컬 확률"],
+    "minimum_stats": {
+        "LV10": "생명 19520",
+        "LV10+5": "생명 21520",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "생명 20720",
+        "LV13+5": "생명 22720"
+    },
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점",
+    "element_weakness": "",
+    "element_resistance": "화염",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX!",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "생명 20%",
+    "mind_stats2": "대미지감면 16%",
+    "mind_skill1": "S1/TH!",
+    "mind_skill2": "S2/S3!"
+};

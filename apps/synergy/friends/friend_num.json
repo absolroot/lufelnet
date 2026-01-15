@@ -37,7 +37,9 @@
         "tip_kr": "- 1랭크: 읽으면 매력 +10, 목욕 이벤트에 매력 +3 추가 획득\n- 3랭크: 읽으면 친절 +10, 드러그 스토어 알바 진행 시 1120엔 추가 획득\n- 11랭크: 읽으면 재주 +10, 헬스장에서 운동 시 배짱 +3 추가 획득\n- 15랭크: 읽으면 지식 +10, 서점 알바 진행 시 1170엔 추가 획득\n- 20랭크: 읽으면 지식 +10, 영화 관람 시 파라미터 +3 추가 획득",
         "tip_en": "- Rank 1: Reading increases Charm +10, and Charm +3 is added when taking a bath event.\n- Rank 3: Reading increases Kindness +10, and 1120 yen is added when performing a drug store part-time job.\n- Rank 11: Reading increases Proficiency +10, and Guts +3 is added when exercising at the gym.\n- Rank 15: Reading increases Knowledge +10, and 1170 yen is added when performing a bookstore part-time job.\n- Rank 20: Reading increases Knowledge +10, and +3 parameter is added when watching a movie.",
         "tip_jp": "- ランク1: 読書で魅力+10、入浴イベントでさらに魅力+3獲得\n- ランク3: 読書で優しさ+10、ドラッグストアのアルバイト時に1120円追加獲得\n- ランク11: 読書で器用さ+10、ジムで運動時に度胸+3追加獲得\n- ランク15: 読書で知識+10、本屋のアルバイト時に1170円追加獲得\n- ランク20: 読書で知識+10、映画鑑賞時にパラメータ+3追加獲得",
-        "num": 6
+        "num": 6,
+        "recommend": true,
+        "recommend_num": [3,15]
     },
     "아야카" : {
         "img": "touxiang-liaotian-new-chord.png",
@@ -152,7 +154,10 @@
     "키라" : {
         "img": "touxiang-liaotian-new-doctor.png",
         "img_color": "Tongyong-touxiang-changfu-doctor.png",
-        "num": 15
+        "num": 15,
+        "tip_kr": "1랭크의 효과는 하루의 총격에 적용되지만, 9&13랭크의 효과는 하루의 스킬2와 같이 총격 속성의 스킬인 경우에만 적용된다.",
+        "tip_en": "The effect of Rank 1 applies to Haru Okumura's Gun Shot attack, but the effects of Ranks 9 & 13 only apply if it is a Gun Shot attribute skill (such as Haru Okumura's Skill 2).",
+        "tip_jp": "ランク1の効果は奥村春の銃撃に適用されますが、ランク9とランク13の効果は銃撃属性スキル（奥村春のスキル2など）の場合にのみ適用されます。"
     },
     "루우나" : {
         "img": "touxiang-liaotian-new-howler.png",

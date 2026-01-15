@@ -20,7 +20,7 @@ window.characterSetting["미나미"] = {
         "LV13": "생명 15000",
         "LV13+5": "생명 15000"
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점",
     "element_weakness": "핵열",
     "element_resistance": "축복",
     "skill1_lv": "8",

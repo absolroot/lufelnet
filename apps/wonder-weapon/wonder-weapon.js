@@ -90,6 +90,7 @@
       label_source: "획득처",
       label_effect: "개조 설명",
       label_characters: "주요 괴도",
+      label_shard: "수정",
       label_release: "출시 시점",
       label_lightning_stamp: "빛의 각인",
       label_weapon_release: "무기",
@@ -117,6 +118,7 @@
       label_source: "Source",
       label_effect: "Weapon Effect",
       label_characters: "Characters",
+      label_shard: "Shard",
       label_release: "Released with",
       label_lightning_stamp: "Lightning Stamp",
       label_lightning_stamp_desc: "Feature released in Korean server v4.7.1 that further enhances weapons.",
@@ -145,6 +147,7 @@
       label_source: "入手",
       label_effect: "武器効果",
       label_characters: "使用キャラ",
+      label_shard: "破片",
       label_release: "実装時期",
       label_lightning_stamp: "Lightning Stamp",
       label_lightning_stamp_desc: "韓国サーバーv4.7.1基準で実装された機能で、武器をさらに強化します。",
@@ -233,6 +236,84 @@
   function normWeaponName(name) {
     if (!name) return '';
     return String(name).replace(/!/g, '').trim();
+  }
+
+  // Shard 체크 상태 관리 함수들
+  function getShardStorageKey(weaponName) {
+    return `wonder_weapon_shard_${weaponName}`;
+  }
+
+  function getShardCheckedState(weaponName) {
+    try {
+      const key = getShardStorageKey(weaponName);
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.error('Failed to load shard state:', e);
+    }
+    return {};
+  }
+
+  function saveShardCheckedState(weaponName, state) {
+    try {
+      const key = getShardStorageKey(weaponName);
+      localStorage.setItem(key, JSON.stringify(state));
+    } catch (e) {
+      console.error('Failed to save shard state:', e);
+    }
+  }
+
+  function isShardChecked(weaponName, shardIndex) {
+    const state = getShardCheckedState(weaponName);
+    return state[shardIndex] === true;
+  }
+
+  function toggleShardChecked(weaponName, shardIndex) {
+    const state = getShardCheckedState(weaponName);
+    state[shardIndex] = !state[shardIndex];
+    saveShardCheckedState(weaponName, state);
+    return state[shardIndex];
+  }
+
+  function getCheckedShardCount(weaponName) {
+    const state = getShardCheckedState(weaponName);
+    let count = 0;
+    for (let i = 1; i <= 6; i++) {
+      if (state[i] === true) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  function updateWeaponTabShardIcon(weaponName) {
+    const count = getCheckedShardCount(weaponName);
+    const tab = document.querySelector(`.weapon-tab[data-weapon="${weaponName}"]`);
+    if (!tab) return;
+
+    const imgWrapper = tab.querySelector('.weapon-tab-image-wrapper');
+    if (!imgWrapper) return;
+
+    // 기존 아이콘 제거
+    const existingIconWrapper = imgWrapper.querySelector('.weapon-tab-shard-icon-wrapper');
+    if (existingIconWrapper) {
+      existingIconWrapper.remove();
+    }
+
+    // 체크된 것이 있으면 아이콘 추가
+    if (count > 0) {
+      const iconWrapper = document.createElement('div');
+      iconWrapper.className = 'weapon-tab-shard-icon-wrapper';
+      const icon = document.createElement('img');
+      icon.className = 'weapon-tab-shard-icon';
+      icon.src = `${BASE_URL}/assets/img/ritual/r${count}.png`;
+      icon.alt = `r${count}`;
+      icon.loading = 'lazy';
+      iconWrapper.appendChild(icon);
+      imgWrapper.appendChild(iconWrapper);
+    }
   }
 
   function getLocalizedName(koreanName, lang) {
@@ -394,6 +475,9 @@
         tab.style.display = 'none';
       }
 
+      const imgWrapper = document.createElement('div');
+      imgWrapper.className = 'weapon-tab-image-wrapper';
+      
       const img = document.createElement('img');
       img.className = 'weapon-tab-image';
       img.src = `${BASE_URL}/assets/img/wonder-weapon/${krName}.webp`;
@@ -403,6 +487,8 @@
         this.onerror = null;
         this.src = `${BASE_URL}/assets/img/placeholder.png`;
       };
+      
+      imgWrapper.appendChild(img);
 
       const info = document.createElement('div');
       info.className = 'weapon-tab-info';
@@ -432,7 +518,7 @@
       info.appendChild(name);
       info.appendChild(source);
 
-      tab.appendChild(img);
+      tab.appendChild(imgWrapper);
       tab.appendChild(info);
 
       tab.addEventListener('click', () => {
@@ -440,6 +526,9 @@
       });
 
       tabsContainer.appendChild(tab);
+      
+      // 탭 생성 후 shard 아이콘 업데이트
+      updateWeaponTabShardIcon(krName);
     });
 
     // 첫 번째 보이는 탭 선택 (비동기 처리로 탭이 완전히 렌더링된 후 선택)
@@ -598,6 +687,12 @@
 
     // HTML 시작: 헤더
     const elementIcon = data.element ? `<img src="${BASE_URL}/assets/img/skill-element/${data.element}.png" alt="${data.element}" class="detail-header-element-icon" loading="lazy">` : '';
+    
+    // 교환 표시 처리
+    const isShop = data.where_to_get === 'Shop';
+    const shopIcon = isShop ? `<img src="${BASE_URL}/assets/img/item-little-icon/item-huobi-49.png" alt="huobi" class="detail-source-icon" loading="lazy">` : '';
+    const shopAmount = isShop ? '<span class="detail-source-amount">1,000</span>' : '';
+    
     let html = `
       <div class="detail-header">
         <img src="${BASE_URL}/assets/img/wonder-weapon/${krName}.webp" alt="${displayName}" class="detail-header-image" onerror="this.onerror=null; this.style.display='none';">
@@ -605,6 +700,7 @@
           <h2>${displayName}${elementIcon}</h2>
           <div class="detail-source-wrapper">
             <div class="detail-source">${t.label_source}: ${sourceText}</div>
+            ${isShop ? `<div class="detail-source-shop">${shopIcon}${shopAmount}</div>` : ''}
           </div>
         </div>
       </div>
@@ -750,6 +846,130 @@
     }
 
     html += `</div></div>`; // section-content, detail-section 닫기
+
+    // 3.5. 수정(Shard) 섹션 (collapsible)
+    if (data && Array.isArray(data.shard) && data.shard.length > 0) {
+      // desc 텍스트에서 {}로 묶인 이미지 처리 및 볼드 처리 함수
+      function renderShardDesc(desc) {
+        if (!desc) return '';
+        let result = desc;
+        
+        // 1. {item-huobi-49.png} 같은 패턴을 찾아서 이미지로 변환
+        result = result.replace(/\{([^}]+\.png)\}/g, (match, imgName) => {
+          return `<img src="${BASE_URL}/assets/img/item-little-icon/${imgName}" alt="${imgName}" class="shard-desc-icon" loading="lazy">`;
+        });
+        
+        // 2. 볼드 처리
+        // HTML 태그를 임시로 치환하여 보존
+        const tagPlaceholders = [];
+        let placeholderIndex = 0;
+        result = result.replace(/<[^>]+>/g, (tag) => {
+          const placeholder = `__TAG_${placeholderIndex}__`;
+          tagPlaceholders[placeholderIndex] = tag;
+          placeholderIndex++;
+          return placeholder;
+        });
+        
+        // 팰리스 또는 Palace로 시작하는 경우 (숫자와 하이픈 포함, 예: 팰리스3, Palace 3-2)
+        const hasPalace = /(팰리스|Palace)/i.test(result);
+        if (hasPalace) {
+          // 팰리스/Palace와 뒤의 숫자(하이픈 포함)를 볼드 처리 (공백 보존)
+          // \s+를 사용하여 공백을 명시적으로 포함
+          result = result.replace(/(팰리스|Palace)(\s+)(\d+(?:-\d+)?)/gi, (match, prefix, spaces, number) => {
+            return `<strong>${prefix}${spaces}${number}</strong>`;
+          });
+          // 공백이 없는 경우도 처리 (예: 팰리스3)
+          result = result.replace(/(팰리스|Palace)(\d+(?:-\d+)?)/gi, (match, prefix, number) => {
+            // 이미 <strong> 태그로 감싸진 경우 스킵
+            if (match.includes('<strong>')) {
+              return match;
+            }
+            return `<strong>${prefix}${number}</strong>`;
+          });
+        } else {
+          // '-' 이전까지 볼드 처리 (팰리스/Palace 패턴이 아닌 경우)
+          // 공백을 포함하여 하이픈 이전까지 매칭
+          result = result.replace(/([^-]+?)(\s*)(?=-)/g, (match, text, spaces) => {
+            // HTML 태그가 포함된 경우 스킵
+            if (text.includes('__TAG_') || match.includes('__TAG_')) {
+              return match;
+            }
+            const trimmed = text.trim();
+            // 공백만 있거나 빈 문자열이면 스킵
+            if (!trimmed) {
+              return match;
+            }
+            // 공백을 &nbsp;로 변환하여 strong 태그 안에 포함
+            const spacesHtml = spaces.replace(/ /g, '&nbsp;');
+            return `<strong>${text}${spacesHtml}</strong>`;
+          });
+        }
+        
+        // HTML 태그 복원
+        tagPlaceholders.forEach((tag, index) => {
+          result = result.replace(`__TAG_${index}__`, tag);
+        });
+        
+        return result;
+      }
+
+      // shard가 1개면 6개로 복제
+      let shardList = [...data.shard];
+      if (shardList.length === 1) {
+        shardList = Array(6).fill(null).map(() => ({ ...shardList[0] }));
+      }
+
+      html += `
+        <div class="detail-section">
+          <h3 class="detail-section-title collapsible">
+            <span>${t.label_shard || '수정'}</span>
+            ${chevronSvg}
+          </h3>
+          <div class="section-content">
+            <div class="shard-grid">
+      `;
+
+      shardList.forEach((shardItem, index) => {
+        if (!shardItem) return;
+        
+        const shardIndex = index + 1; // 1~6
+        
+        // 언어에 맞는 desc 가져오기
+        const shardDesc = 
+          (lang === 'en' && shardItem.desc_en) ? shardItem.desc_en :
+          (lang === 'jp' && (shardItem.desc_jp || shardItem.dsec_jp)) ? (shardItem.desc_jp || shardItem.dsec_jp) :
+          shardItem.desc || '';
+
+        // 체크 상태 확인
+        const checked = isShardChecked(krName, shardIndex);
+        const checkSvg = checked ? `
+          <svg class="shard-check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="#4caf50" stroke="#4caf50" stroke-width="2"/>
+            <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        ` : '';
+
+        html += `
+          <div class="shard-item">
+            <div class="shard-icon-cell">
+              <div class="shard-icon-wrapper" data-weapon="${krName}" data-shard-index="${shardIndex}">
+                <img src="${BASE_URL}/assets/img/wonder-weapon/${krName}_수정.png" alt="${displayName} 수정" class="shard-icon ${checked ? 'checked' : ''}" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
+                ${checkSvg}
+              </div>
+            </div>
+            <div class="shard-desc-cell">
+              ${renderShardDesc(shardDesc)}
+            </div>
+          </div>
+        `;
+      });
+
+      html += `
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
     // 4. 출시 시점 섹션 (collapsible) - dialog-choice 스타일
     html += `
@@ -905,11 +1125,38 @@
       });
     });
 
+    // 효과 레벨 버튼 자동 선택 함수
+    function updateEffectLevelFromShard() {
+      if (!needsLevels) return;
+      const effectLevelsContainer = detailContainer.querySelector('#effect-levels');
+      const effectTextContainer = detailContainer.querySelector('#effect-text');
+      if (!effectLevelsContainer || !effectTextContainer) return;
+
+      const shardCount = getCheckedShardCount(krName);
+      // shard 개수에 따라 레벨 결정 (0~6, 최대 6)
+      const targetLevel = Math.min(shardCount, 6);
+      
+      // 해당 레벨 버튼 찾기 및 활성화
+      const targetBtn = effectLevelsContainer.querySelector(`.level-btn[data-level="${targetLevel}"]`);
+      if (targetBtn) {
+        effectLevelsContainer.querySelectorAll('.level-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        targetBtn.classList.add('active');
+        targetBtn.setAttribute('aria-pressed', 'true');
+        effectTextContainer.innerHTML = renderEffectHTML(effectText || '', targetLevel);
+      }
+    }
+
     // 효과 레벨 버튼 이벤트 핸들러
     if (needsLevels) {
       const effectLevelsContainer = detailContainer.querySelector('#effect-levels');
       const effectTextContainer = detailContainer.querySelector('#effect-text');
       if (effectLevelsContainer && effectTextContainer) {
+        // 초기 로드 시 shard 개수에 따라 자동 선택
+        updateEffectLevelFromShard();
+
         effectLevelsContainer.querySelectorAll('.level-btn').forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -925,6 +1172,64 @@
         });
       }
     }
+
+    // Shard 아이콘 클릭 이벤트 핸들러
+    detailContainer.querySelectorAll('.shard-icon-wrapper').forEach(wrapper => {
+      wrapper.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const weaponName = wrapper.dataset.weapon;
+        const shardIndex = parseInt(wrapper.dataset.shardIndex);
+        
+        const isChecked = toggleShardChecked(weaponName, shardIndex);
+        const icon = wrapper.querySelector('.shard-icon');
+        const checkIcon = wrapper.querySelector('.shard-check-icon');
+        
+        if (isChecked) {
+          icon.classList.add('checked');
+          if (!checkIcon) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('class', 'shard-check-icon');
+            svg.setAttribute('width', '24');
+            svg.setAttribute('height', '24');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', '12');
+            circle.setAttribute('cy', '12');
+            circle.setAttribute('r', '10');
+            circle.setAttribute('fill', '#4caf50');
+            circle.setAttribute('stroke', '#4caf50');
+            circle.setAttribute('stroke-width', '2');
+            svg.appendChild(circle);
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M8 12L11 15L16 9');
+            path.setAttribute('stroke', 'white');
+            path.setAttribute('stroke-width', '2.5');
+            path.setAttribute('stroke-linecap', 'round');
+            path.setAttribute('stroke-linejoin', 'round');
+            svg.appendChild(path);
+            
+            wrapper.appendChild(svg);
+          }
+        } else {
+          icon.classList.remove('checked');
+          if (checkIcon) {
+            checkIcon.remove();
+          }
+        }
+        
+        // 탭 아이콘 업데이트
+        updateWeaponTabShardIcon(weaponName);
+        
+        // 효과 레벨 자동 업데이트 (현재 표시 중인 무기인 경우만)
+        if (weaponName === krName) {
+          updateEffectLevelFromShard();
+        }
+      });
+    });
   }
 
   // DOMContentLoaded 이벤트 핸들러

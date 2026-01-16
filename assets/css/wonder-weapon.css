@@ -240,9 +240,28 @@
     color: #999;
 }
 
+.detail-source-shop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.detail-source-icon {
+    width: auto;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.detail-source-amount {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+}
+
 /* Detail Sections (synergy style) */
 .detail-section {
-    margin-bottom: 32px;
+    margin-bottom: 60px;
 }
 
 .detail-section-title {
@@ -470,6 +489,27 @@
     height: 64px;
     object-fit: contain;
     flex-shrink: 0;
+}
+
+.weapon-tab-image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.weapon-tab-shard-icon-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(4px, 0px);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.weapon-tab-shard-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
 }
 
 @media (min-width: 769px) {
@@ -796,5 +836,131 @@
     
     .stamp-release-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* 수정(Shard) 섹션 스타일 */
+.shard-grid {
+    width: 100%;
+    margin-top: 8px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+}
+
+.shard-item {
+    display: flex;
+    border: none;
+}
+
+.shard-item:not(:nth-child(2n)) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shard-item:not(:nth-child(-n+2)) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shard-icon-cell {
+    width: 80px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.shard-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.shard-icon-wrapper:hover {
+    opacity: 0.8;
+}
+
+.shard-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.shard-icon.checked {
+    opacity: 0.5;
+    filter: brightness(0.5);
+}
+
+.shard-check-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shard-desc-cell {
+    padding: 12px 12px 12px 4px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.shard-desc-icon {
+    width: auto;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .shard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .shard-item {
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .shard-item:nth-child(n) {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .shard-item:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .shard-icon-cell {
+        width: 60px;
+        padding: 12px;
+    }
+    
+    .shard-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .shard-desc-cell {
+        padding: 12px 12px 12px 0;
+        font-size: 13px;
+    }
+    
+    .shard-desc-icon {
+        width: 18px;
+        height: 18px;
     }
 }

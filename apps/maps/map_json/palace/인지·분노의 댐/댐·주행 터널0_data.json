@@ -1,0 +1,127 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_shuichang_suidaonan01.png",
+            "position": [
+                399,
+                1616
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidaonan02.png",
+            "position": [
+                911,
+                1699
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidaozhong.png",
+            "position": [
+                106,
+                508
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidaobei.png",
+            "position": [
+                1031,
+                11
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL3b01.png",
+            "position": [
+                81,
+                1337
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL4b.png",
+            "position": [
+                1211,
+                1455
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL5b.png",
+            "position": [
+                181,
+                2204
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL3b02.png",
+            "position": [
+                1448,
+                862
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                366,
+                2306
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "map_size": [
+        1800,
+        2500
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "tiles": [
+        {
+            "image": "map_bqg_tiantai02.png",
+            "position": [
+                1,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [],
+    "map_size": [
+        706,
+        1024
+    ]
+}

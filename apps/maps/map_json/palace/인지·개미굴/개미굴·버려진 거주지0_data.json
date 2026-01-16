@@ -1,0 +1,829 @@
+{
+    "tiles": [
+        {
+            "image": "yx_final_srly_01.png",
+            "position": [
+                554,
+                1329
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_02.png",
+            "position": [
+                90,
+                1194
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_03.png",
+            "position": [
+                3,
+                783
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_04.png",
+            "position": [
+                354,
+                789
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_05.png",
+            "position": [
+                535,
+                861
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_06.png",
+            "position": [
+                573,
+                319
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_07.png",
+            "position": [
+                827,
+                295
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_08.png",
+            "position": [
+                428,
+                332
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_09.png",
+            "position": [
+                319,
+                568
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_10.png",
+            "position": [
+                1171,
+                519
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_11.png",
+            "position": [
+                1085,
+                286
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_12.png",
+            "position": [
+                1209,
+                132
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_13.png",
+            "position": [
+                1503,
+                117
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_14.png",
+            "position": [
+                1854,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_15.png",
+            "position": [
+                1387,
+                567
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_16.png",
+            "position": [
+                1659,
+                533
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_17.png",
+            "position": [
+                1811,
+                683
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_18.png",
+            "position": [
+                215,
+                1600
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_19.png",
+            "position": [
+                327,
+                1657
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_20.png",
+            "position": [
+                229,
+                1982
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_21.png",
+            "position": [
+                140,
+                2148
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_22.png",
+            "position": [
+                523,
+                2103
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_23.png",
+            "position": [
+                549,
+                2235
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_24.png",
+            "position": [
+                576,
+                1882
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_25.png",
+            "position": [
+                876,
+                1854
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_26.png",
+            "position": [
+                864,
+                2149
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_27.png",
+            "position": [
+                1359,
+                2399
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_28.png",
+            "position": [
+                1580,
+                2417
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_29.png",
+            "position": [
+                873,
+                1583
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_30.png",
+            "position": [
+                1331,
+                1748
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_31.png",
+            "position": [
+                1517,
+                1725
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_32.png",
+            "position": [
+                1330,
+                2026
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_33.png",
+            "position": [
+                1604,
+                2072
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_34.png",
+            "position": [
+                1771,
+                1759
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_35.png",
+            "position": [
+                2020,
+                1474
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_36.png",
+            "position": [
+                866,
+                1184
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_37.png",
+            "position": [
+                958,
+                1219
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_38.png",
+            "position": [
+                1437,
+                1206
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_39.png",
+            "position": [
+                1904,
+                1106
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_40.png",
+            "position": [
+                2004,
+                961
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_41.png",
+            "position": [
+                1591,
+                864
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_42.png",
+            "position": [
+                1390,
+                912
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_final_srly_43.png",
+            "position": [
+                1316,
+                952
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                186,
+                1525
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                27,
+                788
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                565,
+                1169
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                320,
+                604
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1774,
+                334
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                1957,
+                131
+            ],
+            "ratio": 1.0625,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1969,
+                702
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                161,
+                2138
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                662,
+                2261
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                931,
+                1819
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1737,
+                2433
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1200,
+                1586
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1700,
+                2126
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1163,
+                1500
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1273,
+                1206
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1578,
+                1537
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                1468,
+                1223
+            ],
+            "ratio": 1.0625,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1908,
+                911
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1651,
+                1058
+            ],
+            "ratio": 1.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                1407,
+                1137
+            ],
+            "ratio": 1.0625,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "map_size": [
+        2308,
+        2656
+    ]
+}

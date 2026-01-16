@@ -1,0 +1,22 @@
+{
+    "tiles": [
+        {
+            "image": "map_bqg_qiuyuantongdao.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [],
+    "map_size": [
+        1024,
+        329
+    ]
+}

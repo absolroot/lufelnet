@@ -1,0 +1,143 @@
+---
+layout: maps
+permalink: /maps/
+language: kr
+title: 지도 뷰어 - P5X 루페르넷
+description: P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.
+alternate_urls:
+  en: /maps/?lang=en
+  jp: /maps/?lang=jp
+---
+
+<div id="map-container">
+    <div id="loading">
+        <img id="loading-gif" src="" alt="로딩 중">
+        <div id="loading-text">지도를 불러오는 중...</div>
+    </div>
+    
+    <!-- 좌측: 오브젝트 필터 패널 -->
+    <div id="object-filter-panel" class="side-panel">
+        <h2 id="object-filter-title">오브젝트 필터</h2>
+        <div id="filter-container"></div>
+        <div class="control-group">
+            <label>줌</label>
+            <div class="zoom-controls">
+                <button class="zoom-btn" id="zoom-in">+</button>
+                <button class="zoom-btn" id="zoom-out">-</button>
+                <button class="zoom-btn" id="zoom-reset">리셋</button>
+            </div>
+        </div>
+        <div class="info-text">
+            마우스 드래그: 이동<br>
+            마우스 휠: 줌
+        </div>
+    </div>
+    
+    <!-- 우측: 맵 선택 패널 -->
+    <div id="map-select-panel" class="side-panel">
+        <!-- 탭 -->
+        <div id="map-tabs">
+            <button class="map-tab active" data-map-id="palace">팰리스</button>
+            <button class="map-tab" data-map-id="mementoes">메멘토스</button>
+        </div>
+        
+        <!-- 카테고리 드롭다운 -->
+        <div id="category-select-container">
+            <select id="category-select" class="category-select">
+                <option value="">카테고리를 선택하세요...</option>
+            </select>
+        </div>
+        
+        <!-- 맵 리스트 -->
+        <div id="map-list-container">
+            <div id="map-list"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://pixijs.download/release/pixi.min.js"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-core.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/object-filter-panel.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/map-select-panel.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    // 초기화
+    (async () => {
+        // 로딩 GIF 경로 설정
+        const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+        function normalizePath(base, path) {
+            const cleanBase = base.replace(/\/+$/, '');
+            const cleanPath = path.replace(/^\/+/, '');
+            return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
+        }
+        
+        const loadingGif = document.getElementById('loading-gif');
+        if (loadingGif) {
+            const gifPath = normalizePath(BASE_URL, 'apps/maps/p5xkr_walk_960.gif');
+            loadingGif.src = gifPath;
+        }
+
+        // UI 번역
+        if (window.ObjectFilterPanel) {
+            window.ObjectFilterPanel.translateUI();
+        }
+        if (window.MapSelectPanel) {
+            window.MapSelectPanel.translateUI();
+        }
+        
+        // 언어 변경 감지
+        let lastLang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+        setInterval(() => {
+            if (!window.MapsI18n) return;
+            const currentLang = window.MapsI18n.getCurrentLanguage();
+            if (currentLang !== lastLang) {
+                lastLang = currentLang;
+                if (window.ObjectFilterPanel) {
+                    window.ObjectFilterPanel.translateUI();
+                }
+                if (window.MapSelectPanel) {
+                    window.MapSelectPanel.translateUI();
+                    window.MapSelectPanel.updateCategoryDropdown();
+                    window.MapSelectPanel.updateMapList();
+                }
+            }
+        }, 100);
+
+        // PixiJS 초기화
+        const initSuccess = await window.MapsCore.initPixi();
+        if (initSuccess) {
+            // 오브젝트 필터 패널 초기화
+            if (window.ObjectFilterPanel) {
+                window.ObjectFilterPanel.init();
+            }
+            
+            // 맵 선택 패널 초기화
+            if (window.MapSelectPanel) {
+                window.MapSelectPanel.init();
+            }
+            
+            // 맵 목록 로드
+            try {
+                const paths = window.MapsCore.getPaths();
+                const response = await fetch(paths.MAPS_LIST_PATH);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const mapsListData = await response.json();
+                window.MapsCore.setMapsListData(mapsListData);
+                
+                // 맵 선택 패널 UI 구축
+                if (window.MapSelectPanel) {
+                    window.MapSelectPanel.buildMapUI();
+                    await window.MapSelectPanel.autoSelectFirstMap();
+                }
+            } catch (error) {
+                console.error('맵 목록 로드 실패:', error);
+                const loadingText = document.getElementById('loading-text');
+                if (loadingText) {
+                    loadingText.textContent = '맵 목록을 불러올 수 없습니다.';
+                }
+            }
+        }
+    })();
+</script>

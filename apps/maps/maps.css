@@ -1,0 +1,42 @@
+/* Maps Core Styles - 공통 스타일 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+#map-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* 로딩 */
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  text-align: center;
+}
+
+#loading img {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  height: auto;
+}
+
+#loading-text {
+  color: white;
+  font-size: 18px;
+  margin-top: 20px;
+}

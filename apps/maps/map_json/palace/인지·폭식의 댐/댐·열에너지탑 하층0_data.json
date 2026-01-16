@@ -1,0 +1,22 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita02-diceng-01.png",
+            "position": [
+                16,
+                -1
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [],
+    "map_size": [
+        928,
+        840
+    ]
+}

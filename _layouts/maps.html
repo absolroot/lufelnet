@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/img/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="LufelNet" />
+  <link rel="manifest" href="{{ site.baseurl }}/assets/img/favicon/site.webmanifest" />
+
+  <title>{% if page.title %}{{ page.title }}{% else %}지도 뷰어 - P5X 루페르넷{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.{% endif %}">
+
+  {% if page.alternate_urls %}
+  <link rel="alternate" hreflang="ko" href="{{ site.url }}/maps/" />
+  {% for lang in page.alternate_urls %}
+  <link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/maps/" />
+  {% endif %}
+
+  <script>
+    // BASE_URL을 전역으로 설정
+    window.BASE_URL = '{{ site.baseurl }}';
+  </script>
+
+  <link rel="stylesheet" href="{{ site.baseurl }}/apps/maps/maps.css?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ site.baseurl }}/apps/maps/object-filter-panel.css?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ site.baseurl }}/apps/maps/map-select-panel.css?v={{ site.time | date: '%s' }}">
+
+  {{ content }}
+
+</head>
+
+<body>
+</body>
+
+</html>

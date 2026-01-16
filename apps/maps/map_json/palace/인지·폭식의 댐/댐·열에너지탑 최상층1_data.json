@@ -1,0 +1,49 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita02-dingceng-01.png",
+            "position": [
+                76,
+                -1
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_qushuita02-dingceng-02.png",
+            "position": [
+                76,
+                -1
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                380,
+                120
+            ],
+            "ratio": 0.4166666666666667,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "map_size": [
+        928,
+        840
+    ]
+}

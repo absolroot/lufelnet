@@ -874,9 +874,11 @@
         const hasPalace = /(팰리스|Palace)/i.test(result);
         if (hasPalace) {
           // 팰리스/Palace와 뒤의 숫자(하이픈 포함)를 볼드 처리 (공백 보존)
-          // \s+를 사용하여 공백을 명시적으로 포함
-          result = result.replace(/(팰리스|Palace)(\s+)(\d+(?:-\d+)?)/gi, (match, prefix, spaces, number) => {
-            return `<strong>${prefix}${spaces}${number}</strong>`;
+          // \s+를 사용하여 공백을 명시적으로 포함하고 &nbsp;로 변환
+          result = result.replace(/(팰리스|Palace)(\s+)(\d+(?:-\d+)?)(\s*)/gi, (match, prefix, spacesBefore, number, spacesAfter) => {
+            const spacesBeforeHtml = spacesBefore.replace(/ /g, '&nbsp;');
+            const spacesAfterHtml = spacesAfter.replace(/ /g, '&nbsp;');
+            return `<strong>${prefix}${spacesBeforeHtml}${number}${spacesAfterHtml}</strong>`;
           });
           // 공백이 없는 경우도 처리 (예: 팰리스3)
           result = result.replace(/(팰리스|Palace)(\d+(?:-\d+)?)/gi, (match, prefix, number) => {

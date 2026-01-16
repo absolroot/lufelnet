@@ -88,6 +88,9 @@
 .character-name { 
     line-height: 1.4;
     font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* Character icons (position/element) */
@@ -334,6 +337,10 @@
 
 .detail-section .effect-text .num {
     font-weight: 600;
+}
+
+.detail-section.collapsed {
+    margin-bottom: 24px;
 }
 
 .detail-section.collapsed .section-content {

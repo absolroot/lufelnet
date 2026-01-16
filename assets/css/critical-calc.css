@@ -5,17 +5,38 @@ input[type="checkbox"]:focus { outline: none; } /* 체크박스 포커스 스타
 input[type="checkbox"]:hover { opacity: 0.8; }
 
 /* 상단 카드 컨테이너 */
-.top-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px; padding: 0px 20px 0px 20px; }
+.top-cards { 
+    display: grid !important; 
+    grid-template-columns: 0.5fr 1fr !important; 
+    gap: 20px; 
+    margin-bottom: 20px; 
+    padding: 0px 20px 0px 20px; 
+}
 .header-container { display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
 #spoilerToggleWrap { display: flex; gap: 4px; margin-left: auto; }
 
-.stat-card { padding: 10px 20px 10px 20px; text-align: left; background-color: var(--card-background); border-radius: 10px; border-bottom: 3px solid var(--border-red); }
+@media (max-width: 1200px) { .header-container { flex-wrap: wrap; gap: 8px; } #spoilerToggleWrap { width: 100%; order: 2; display: flex; margin-bottom: 20px; } }
+
+.stat-card { padding: 20px 24px; text-align: left; background-color: var(--card-background); border-radius: 10px; border-bottom: 3px solid var(--border-red); display:flex; align-items: center;}
 
 .top-cards h2 { font-size: 16px; color: rgba(255, 255, 255, 0.8); padding: 10px 0px 10px 0px; margin: 0px; }
 
-.total-value { font-size: 36px; font-weight: bold; color: #dd8484; }
-
 .total-value-description { margin-top: 14px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+
+/* 크리티컬 합계 통계 스타일 */
+.critical-sum-stats { display: grid; grid-template-columns: 1.5fr 1fr; gap: 32px; width: 100%; align-items: center; }
+.critical-sum-total { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background:#191919; padding:16px; border-radius: 12px;}
+.critical-sum-total-label { display: flex; align-items: center; gap: 6px; flex-direction: column; }
+.critical-sum-total-text { font-size: 16px; font-weight: bold; color: rgba(255, 255, 255, 0.8); }
+.critical-sum-icon { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
+.critical-sum-total .total-value { font-size: 32px; font-weight: bold; color: #d83b3b; line-height: 1; }
+.critical-sum-items { display: flex; flex-direction: column; gap: 16px; }
+.critical-sum-item { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+.critical-sum-label { font-size: 16px; font-weight: bold; color: rgba(255, 255, 255, 0.8); display: flex; align-items: center; }
+.critical-sum-label-text { flex: 1; }
+.critical-sum-value { font-size: 20px; font-weight: bold; color: #dd8484; line-height: 1; text-align: right; }
+.critical-sum-buff { color: #5384d8 !important; }
+.critical-sum-needed { color: rgba(255, 255, 255, 0.5) !important; }
 
 .boss-select-container select { font-size: 13px; background-color: var(--card-background); color: rgb(255, 255, 255, 0.8); border: none; border-radius: 4px; cursor: pointer; width: 100%; padding: 8px 4px !important; margin: 5px 0px 0px 0px; background-color: rgba(255, 255, 255, 0.05); }
 
@@ -37,16 +58,21 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 /* 괴도 이름이 비어있는 행의 스타일 */
 .critical-table tr:not(:first-child) td { border-top: 1px solid rgb(255, 255, 255, 0.08); }
 
-.critical-table tr.empty-char td { border-top: none; }
+.critical-table tr.group-header td { background: rgba(255,255,255,0.05); }
 
-/* 첫 번째 행은 항상 테두리 표시 */
-.critical-table tr:first-child td { border-top: 1px solid rgb(255, 255, 255, 0.5); } 
-
-.critical-table tr:last-child td { border-bottom: 1px solid rgb(255, 255, 255, 0.2); } 
+.critical-table tr:last-child td { border-bottom: 1px solid  rgb(255, 255, 255, 0.1); } 
 
 .skill-name-column { color: rgb(247, 243, 243) !important; }
+.skill-name-column .skill-type-label { color: rgba(255, 255, 255, 0.4); font-weight: 600; }
+.critical-table tr.selected .skill-name-column .skill-type-label { color: rgba(255, 255, 255, 0.4) !important; }
+.skill-name-column .type-only { color: rgb(247, 243, 243) !important; }
 
 .value-column { color: #dd8484 !important; font-weight: bold; }
+
+/* 버프 탭의 value-column은 파란색 */
+#buff-tab .value-column { color: #5384d8 !important; }
+
+#buff-tab .critical-table tr.selected .value-column { color: #5384d8 !important; }
 
 .check-column { width: 30px; }
 
@@ -96,13 +122,14 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 .critical-table tr.selected .value-column { color: rgba(221, 132, 132) !important; } 
 
 /* 크리티컬 입력 컨테이너 스타일 */
-.critical-input-container { padding: 10px 0px 20px 0px; flex-wrap: wrap; display: flex; column-gap: 40px; }
+.critical-input-container { padding: 10px; flex-wrap: wrap; display: flex; column-gap: 40px; flex-direction: column; gap: 20px; }
 
-.critical-input-group { display: flex; align-items: center; margin-bottom: 10px; }
+.critical-input-group { display: flex; align-items: center; }
 
-.critical-input-group label { width: 100px; color: rgba(255, 255, 255, 0.8); font-size: 14px; }
+.critical-input-group label { width: auto; min-width: 160px; color: rgba(255, 255, 255, 0.8); font-size: 14px; display: flex; align-items: center; gap: 6px; }
+.input-label-icon { width: 18px; height: 18px; object-fit: contain; }
 
-.critical-input-group input { width: 100px; padding: 5px 10px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #dd8484; font-size: 14px; text-align: right; }
+.critical-input-group input { width: 50px; padding: 5px 10px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #dd8484; font-size: 14px; text-align: right; }
 
 .critical-input-group input:focus { outline: none; border-color: #dd8484; }
 
@@ -111,9 +138,22 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 /* 탭 스타일 */
 .table-tabs { margin: 0 20px; background-color: var(--card-background); border-radius: 10px; }
 
-.tab-buttons { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0 20px; }
+.tab-buttons { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0 0px; }
 
-.tab-button { padding: 12px 20px; background: none; border: none; color: rgba(255, 255, 255, 0.6); font-size: 14px; cursor: pointer; position: relative; transition: all 0.3s ease; }
+.tab-button { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 16px 20px; 
+    background: none; 
+    border: none; 
+    color: rgba(255, 255, 255, 0.6); 
+    font-size: 14px; 
+    cursor: pointer; 
+    position: relative; 
+    transition: all 0.3s ease; 
+    width: 100%;
+}
 
 .tab-button:hover { color: rgba(255, 255, 255, 0.8); }
 
@@ -121,14 +161,14 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
 
 .tab-button.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #dd8484; }
 
+/* 버프 탭 활성화 시 파란색 */
+.tab-button[data-tab="buff"].active { color: #5384d8; font-weight: bold; }
+
+.tab-button[data-tab="buff"].active::after { background-color: #5384d8; }
+
 .tab-content { display: none; padding: 20px; }
 
 .tab-content.active { display: block; }
-
-
-.skill-name-column { color: rgb(247, 243, 243) !important; }
-
-.value-column { color: #dd8484 !important; font-weight: bold; }
 
 .check-column { width: 30px; }
 
@@ -162,7 +202,27 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
     
     .navigation-path, .header-container, .top-cards { padding-left: 0px; padding-right: 0px; }
 
-    .top-cards { grid-template-columns: 1fr; padding: 0; }
+    .header-container { flex-wrap: wrap; gap: 8px; }
+    #spoilerToggleWrap { width: 100%; order: 2; display: flex; margin-bottom: 20px; }
+
+    .top-cards { grid-template-columns: 1fr !important; padding: 0; }
+    
+    .critical-sum-stats { 
+        grid-template-columns: 1fr; 
+        gap: 16px; 
+    }
+    .critical-sum-total { 
+        order: -1; 
+    }
+    .critical-sum-total .total-value { font-size: 24px; }
+    .critical-sum-total-text { font-size: 14px; }
+    .critical-sum-icon { width: 16px; height: 16px; }
+    .critical-sum-items {
+        padding: 4px; 
+        gap: 12px; 
+    }
+    .critical-sum-value { font-size: 16px; }
+    .critical-sum-label { font-size: 11px; }
 
     .table-tabs { margin: 0; background-color: transparent; padding: 0; }
 
@@ -172,118 +232,68 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
 
     .tab-content { padding: 0; }
 
+    .input-label-icon { width: 16px; height: 16px; }
+
     .critical-table { display: block; padding-top: 8px; }
 
     .critical-table thead { display: none; }
 
     .critical-table tbody { display: block; }
 
-    /* 모바일 카드 레이아웃 */
-    .critical-table tr { 
-        display: grid; 
+    /* 모바일 카드 레이아웃 (defense-calc와 동일) */
+    .critical-table tr:not(.group-header) { 
+        display: grid !important; 
         grid-template-areas:
-            "check icon name name value"
-            "check icon target option duration"
-            ". note note note note"; 
-        grid-template-columns: 32px 44px auto 1fr auto; 
+            "check skill-icon skill-name skill-name value"
+            "check . target-option option-column duration"
+            ". . note note note"; 
+        grid-template-columns: 32px 32px 1fr 1fr auto; 
         grid-template-rows: auto auto auto;
-        gap: 4px 10px; 
-        padding: 12px 14px; 
-        margin: 0 0 8px 0; 
-        background: var(--card-background);
-        border-radius: 8px; 
+        gap: 8px; 
+        padding: 12px 12px 12px 12px; 
+        margin: 0 0 0px 0px; 
+        background: transparent; 
+        border-radius: 0; 
+    }
+    
+    /* 그룹 헤더가 아닌 일반 row는 배경색 유지 (그룹에 속하지 않은 경우) */
+    .critical-table tr:not(.group-header):not(.group-row) {
+        background: rgb(62 62 62);
+        border-radius: 8px;
+        margin: 0 0 8px 0px;
+    }
+    /* note가 비어있을 때 3행 숨김 및 gap 제거 */
+    .critical-table tr.no-note:not(.group-header) {
+        grid-template-areas:
+            "check skill-icon skill-name skill-name value"
+            "check . target-option option-column duration";
+        grid-template-rows: auto auto;
+    }
+    .critical-table tr.no-note .note-column {
+        display: none;
     }
 
-    .critical-table td { padding: 0; border: none !important; }
+    .critical-table td { padding: 0px; border: none !important; }
 
-    /* 체크박스 */
+    /* 각 열의 그리드 영역 지정 */
     .check-column { 
-        grid-area: check; 
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* 스킬 아이콘 */
+    grid-area: check; 
+    display: flex; margin-top: 4px; }
     .skill-icon-column { 
-        grid-area: icon; 
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-    }
-
-    .skill-icon-column img { 
-        height: 36px; 
-        width: 36px; 
-    }
-
-    /* 스킬 이름 */
+    grid-area: skill-icon; display: flex; align-items: center; }
     .skill-name-column { 
-        grid-area: name; 
-        display: flex; 
-        align-items: center;
-        font-size: 14px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.9) !important;
-    }
-
-    /* 수치 */
+    grid-area: skill-name; display: flex; align-items: center; }
     .value-column { 
-        grid-area: value; 
-        display: flex; 
-        align-items: center; 
-        justify-content: flex-end;
-        font-size: 16px !important;
-        font-weight: bold;
-    }
-
-    /* 타겟 (광역/단일) */
+    grid-area: value; display: flex; align-items: center; justify-content: flex-end; }
     .target-column { 
-        grid-area: target; 
-        display: flex;
-        align-items: center;
-        font-size: 11px;
-        padding: 2px 6px;
-        border-radius: 4px;
-        width: fit-content;
-    }
-
-    /* 옵션 드롭다운 */
+    grid-area: target-option; font-size: 12px; }
     .option-column { 
-        grid-area: option; 
-        display: flex;
-        align-items: center;
-    }
-
-    .option-column select { 
-        font-size: 11px;
-        padding: 4px 6px !important;
-        background: rgba(0, 0, 0, 0.2);
-        border: none;
-        border-radius: 4px;
-        color: rgba(255, 255, 255, 0.6);
-    }
-
-    /* 지속시간 */
+    grid-area: option-column; font-size: 12px; }
     .duration-column { 
-        grid-area: duration; 
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    /* 비고 */
+    grid-area: duration; font-size: 12px; text-align: right; }
     .note-column { 
-        grid-area: note; 
-        font-size: 11px; 
-        color: rgba(255, 255, 255, 0.4);
-        padding-top: 4px;
-        line-height: 1.4;
-        display: flex;
-        align-items: center;
-    }
+    grid-area: note; font-size: 12px; height: fit-content; color: rgba(255, 255, 255, 0.5); }
+    .note-column:not(:empty)::before { content: "💬 "; }
 
     .note-column:empty {
         display: none;
@@ -315,51 +325,115 @@ img[src*="item-mind_stat2.png"] { width: 24px !important; height: 24px !importan
     .mobile-table-header { display: none; }
     .critical-table td.mobile-info { display: none; }
 
-    /* 그룹 헤더 모바일 스타일 */
-    .critical-table tr.group-header {
-        display: flex !important;
-        padding: 10px 12px;
-        background: var(--card-background) !important;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        overflow: hidden;
+    /* 그룹 헤더와 row들을 하나의 카드로 묶기 (defense-calc와 동일) */
+    .critical-table tr.group-header { 
+        display: flex !important; 
+        align-items: center; 
+        gap: 8px; 
+        padding: 12px; 
+        margin: 10px 0 0 0; 
+        background: var(--card-background); 
+        border-radius: 10px; 
+        position: relative; 
+        z-index: 1; 
     }
+    /* 그룹 헤더가 닫혀있을 때는 전체 라운드 */
+    .critical-table tr.group-header.group-closed {
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    /* 그룹 헤더가 열려있을 때는 상단만 라운드 */
+    .critical-table tr.group-header.group-open {
+        border-radius: 10px 10px 0 0;
+        background: #292929;
+    }
+    .critical-table tr.group-header td { padding: 0; }
+    
+    /* 그룹 row들을 카드 내부로 */
+    .critical-table tr.group-row[data-group] { 
+        margin-left: 0; 
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        background: var(--card-background);
+    }
+    
+    /* 같은 그룹의 첫 번째 row는 헤더 바로 아래 */
+    .critical-table tr.group-header + tr.group-row[data-group] {
+        margin-top: 0;
+    }
+    
+    /* 같은 그룹의 마지막 row는 하단 라운드 처리 (표시 중인 경우만) */
+    .critical-table tr.group-row.group-last-row:not([style*="display: none"]) {
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 10px;
+        padding-bottom: 12px;
+    }
+    
+    /* 그룹 헤더 다음에 다른 그룹 헤더가 오는 경우 */
+    .critical-table tr.group-header + tr.group-header {
+        margin-top: 10px;
+    }
+    
+    /* 그룹 row들 사이의 간격 제거 */
+    .critical-table tr.group-row[data-group] + tr.group-row[data-group] {
+        margin-top: 0;
+    }
+
+    /* 아이콘/텍스트 크기 조정 */
+    .skill-icon-column img { height: 24px; width: 24px; }
+
+    /* 빈 캐릭터 행 스타일 */
+    .critical-table tr.empty-char { padding-top: 8px; }
+
+    /* 옵션 선택 스타일 */
+    .option-column select { width: 100%; padding: 4px !important; }
+
+    /* note-column에 텍스트가 없으면 display: none; */
+    .note-column:empty { display: none; }
+    
+    .group-header-inner {padding: 0px !important;}
 
     .critical-table tr.group-header td {
-        background: transparent !important;
-        border: none !important;
-    }
-
-    .critical-table tr.group-header .group-header-cell {
-        overflow: hidden;
-    }
-
-    .critical-table tr.group-header .group-header-inner {
-        padding: 0;
-    }
-
-    .critical-table tr.group-header .group-info {
-        overflow: hidden;
-    }
-
-    .critical-table tr.group-header .group-avatar {
-        flex-shrink: 0;
+        background: none !important; 
     }
 }
 
 /* 그룹 헤더(디펜스 패턴과 통일) */
-.critical-table tr.group-header td { background: rgba(255,255,255,0.05); border-top: 2px solid #ffffff30; }
+.critical-table tr.group-header td { background: rgba(255,255,255,0.05); }
 .group-header-cell { padding: 0; width: 100%; box-sizing: border-box; }
 .group-header-inner { display: flex; align-items: center; gap: 10px; padding: 8px 12px; }
-.group-header-inner .group-info { display: inline-flex; align-items: center; gap: 8px; }
+.group-header-inner .group-info { display: inline-flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.group-header-inner .accordion-caret { flex: 0 0 auto; }
+.group-header .group-name { font-weight: 700; color: rgba(255,255,255,0.85); margin-left: 8px; white-space: nowrap; }
+.group-header .group-info { display: flex; align-items: center; gap: 8px; }
 .group-header .group-avatar { height: 28px; border-radius: 25px; object-fit: contain; }
-.group-header .group-name { margin-left: 8px; }
-.accordion-caret { margin-right: 4px; }
-.group-header-inner .group-info { display: inline-flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; }
-.group-header .group-name { font-weight: 700; color: rgba(255,255,255,0.85); margin-left: 8px; }
-.accordion-caret { display: inline-block; width: 18px; text-align: center; color: rgba(255,255,255,0.7); cursor: pointer; }
-.group-row[data-group] { margin-left: 8px; }
-.group-header td { padding: 0; }
+.critical-table tr.group-header .group-header-cell { padding: 0 !important; border-top: 2px solid #ffffff30 }
+.critical-table tr.group-header .group-header-cell > .group-info { flex: 1 1 auto; }
+.critical-table tr.group-header .group-header-cell > .accordion-caret { flex: 0 0 auto; }
+
+.critical-table tr { min-height: 30px; }
+.accordion-caret { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 12px; 
+    height: 12px; 
+    color: rgba(255,255,255,0.7); 
+    cursor: pointer; 
+    flex-shrink: 0;
+}
+.accordion-caret svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+/* 데스크탑에서는 기존 indent 유지 */
+@media (min-width: 1201px) {
+    .group-row[data-group] { margin-left: 8px; }
+    .group-header + .group-row { border-top-left-radius: 6px; }
+    .group-row:last-child { border-bottom-left-radius: 6px; }
+}
 
 /* PC 열 별 크기 지정 (defense-calc와 동일) */
 @media (min-width: 1200px) {

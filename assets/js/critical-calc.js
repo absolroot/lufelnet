@@ -2,7 +2,10 @@ class CriticalCalc {
     constructor() {
         this.buffTableBody = document.getElementById('buffTableBody');
         this.selfTableBody = document.getElementById('selfTableBody');
-        this.totalValue = document.querySelector('.total-value');
+        this.totalValue = document.getElementById('totalValue');
+        this.buffSumValue = document.getElementById('buffSumValue');
+        this.selfSumValue = document.getElementById('selfSumValue');
+        this.neededValue = document.getElementById('neededValue');
         
         this.selectedBuffItems = new Set();
         this.selectedSelfItems = new Set();
@@ -29,32 +32,33 @@ class CriticalCalc {
             this.initializeTables();
         });
 
+        // defense-i18n.js가 revelationSumLabel과 explanationPowerLabel을 처리하므로
+        // applyHardcodedI18n()을 먼저 실행한 후 defense-i18n.js를 호출해야 아이콘이 보존됨
+        this.applyHardcodedI18n();
+        
         try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch(_) {}
         try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
         this.scheduleTranslateCharacterNames();
 
         // J&C 로드 (중복 렌더링 방지 로직 적용됨)
         try { this.ensureJCCalcLoadedAndAttach(); } catch(_) {}
-
-        this.applyHardcodedI18n();
     }
 
     applyHardcodedI18n() {
         try {
             const lang = this.getCurrentLang();
             const texts = {
-                kr: { navCurrent:'크리티컬 확률 계산기', page:'크리티컬 확률 계산기', total:'크리티컬 확률 합계', custom:'커스텀 크리티컬 확률', rev:'계시 합계', exp:'해명의 힘', buff:'버프', self:'자신', select:'선택', target:'목표', name:'이름', option:'옵션', value:'수치', duration:'지속시간', note:'비고', spoiler:'Show Spoilers' },
-                en: { navCurrent:'Critical Rate Calculator', page:'Critical Rate Calculator', total:'Total Critical Rate', custom:'Custom Critical Rate', rev:'Card Sum', exp:'Navi Power', buff:'Buff', self:'Self', select:'Select', target:'Target', name:'Name', option:'Option', value:'Value', duration:'Duration', note:'Note', spoiler:'Show Spoilers' },
-                jp: { navCurrent:'クリ率計算機', page:'クリ率計算機', total:'クリ率合計', custom:'カスタム クリ率', rev:'啓示 合計', exp:'ナビ力', buff:'バフ', self:'自分', select:'選択', target:'目標', name:'名前', option:'オプション', value:'数値', duration:'持続時間', note:'備考', spoiler:'ネタバレ表示' }
+                kr: { navCurrent:'크리티컬 확률 계산기', page:'크리티컬 확률 계산기', total:'크리티컬 확률 합계', custom:'커스텀 크리티컬 확률', rev:'계시 합계', exp:'해명의 힘', buff:'버프', self:'자신', select:'선택', target:'목표', name:'이름', option:'옵션', value:'수치', duration:'지속시간', note:'비고', spoiler:'Show Spoilers', buffSum:'버프 합계', selfSum:'자신 합계', needed:'필요 수치', totalLabel:'크리티컬 확률 합계' },
+                en: { navCurrent:'Critical Rate Calculator', page:'Critical Rate Calculator', total:'Total Critical Rate', custom:'Custom Critical Rate', rev:'Card Sum', exp:'Navi Power', buff:'Buff', self:'Self', select:'Select', target:'Target', name:'Name', option:'Option', value:'Value', duration:'Duration', note:'Note', spoiler:'Show Spoilers', buffSum:'Buff Sum', selfSum:'Self Sum', needed:'Needed', totalLabel:'Total Critical Rate' },
+                jp: { navCurrent:'クリ率計算機', page:'クリ率計算機', total:'クリ率合計', custom:'カスタム クリ率', rev:'啓示 合計', exp:'ナビ力', buff:'バフ', self:'自分', select:'選択', target:'目標', name:'名前', option:'オプション', value:'数値', duration:'持続時間', note:'備考', spoiler:'ネタバレ表示', buffSum:'バフ合計', selfSum:'自分合計', needed:'必要数値', totalLabel:'クリ率合計' }
             }[lang] || undefined;
             if (texts) {
                 const setText = (id, text) => { const el=document.getElementById(id); if (el) el.textContent = text; };
                 setText('navCurrent', texts.navCurrent);
                 setText('page-title', texts.page);
-                setText('total-title', texts.total);
-                setText('custom-title', texts.custom);
-                setText('revelationSumLabel', texts.rev);
-                setText('explanationPowerLabel', texts.exp);
+                // revelationSumLabel과 explanationPowerLabel은 defense-i18n.js에서 처리 (아이콘 보존)
+                // setText('revelationSumLabel', texts.rev); // 제거: defense-i18n.js에서 처리
+                // setText('explanationPowerLabel', texts.exp); // 제거: defense-i18n.js에서 처리
                 setText('tabBuff', texts.buff);
                 setText('tabSelf', texts.self);
                 setText('thSelect1', texts.select);
@@ -71,6 +75,32 @@ class CriticalCalc {
                 setText('thValue2', texts.value);
                 setText('thDuration2', texts.duration);
                 setText('thNote2', texts.note);
+                // critical-sum-label-text만 업데이트 (아이콘 보존)
+                const updateLabelText = (id, text) => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const textSpan = el.querySelector('.critical-sum-label-text');
+                        if (textSpan) {
+                            textSpan.textContent = text;
+                        } else {
+                            // fallback: 기존 텍스트 노드만 업데이트
+                            Array.from(el.childNodes).forEach(node => {
+                                if (node.nodeType === Node.TEXT_NODE) {
+                                    node.remove();
+                                }
+                            });
+                            el.appendChild(document.createTextNode(text));
+                        }
+                    }
+                };
+                // totalLabel 업데이트 (아이콘 보존)
+                const totalLabelEl = document.getElementById('totalLabel');
+                if (totalLabelEl) {
+                    totalLabelEl.textContent = texts.totalLabel;
+                }
+                updateLabelText('buffSumLabel', texts.buffSum);
+                updateLabelText('selfSumLabel', texts.selfSum);
+                updateLabelText('neededLabel', texts.needed);
                 const sp = document.getElementById('showSpoilerLabel'); if (sp) sp.textContent = texts.spoiler;
             }
         } catch(_) {}
@@ -288,29 +318,43 @@ class CriticalCalc {
             inner.className = 'group-header-inner';
 
             const caret = document.createElement('span');
+            caret.className = 'accordion-caret';
             const isMobile = window.innerWidth <= 1200;
             // 모바일: 버프 탭은 '공통'만, 자신 탭은 '계시/원더/공통'만 열림
             // PC: 버프 탭은 모두 열림, 자신 탭은 '계시/원더/공통'만 열림
             const initiallyOpen = !isSelf 
                 ? (isMobile ? groupName === '공통' : true)
                 : (groupName === '계시' || groupName === '원더' || groupName === '공통');
-            caret.className = `accordion-caret ${initiallyOpen ? 'open' : ''}`;
-            caret.textContent = initiallyOpen ? '▾' : '▸';
+            caret.classList.toggle('open', initiallyOpen);
+            
+            // SVG chevron 생성
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '16');
+            svg.setAttribute('height', '16');
+            svg.setAttribute('viewBox', '0 0 16 16');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            if (initiallyOpen) {
+                // 아래를 보는 chevron (열림)
+                path.setAttribute('d', 'M4 6L8 10L12 6');
+            } else {
+                // 오른쪽을 보는 chevron (닫힘)
+                path.setAttribute('d', 'M6 4L10 8L6 12');
+            }
+            path.setAttribute('stroke', 'currentColor');
+            path.setAttribute('stroke-width', '1.5');
+            path.setAttribute('stroke-linecap', 'round');
+            path.setAttribute('stroke-linejoin', 'round');
+            svg.appendChild(path);
+            caret.appendChild(svg);
             inner.appendChild(caret);
 
             const infoWrap = document.createElement('span');
             infoWrap.className = 'group-info';
-            if (groupName === '계시') {
-                const img = document.createElement('img');
-                img.src = `${BASE_URL}/assets/img/character-half/계시.webp`;
-                img.className = 'group-avatar';
-                infoWrap.appendChild(img);
-            } else if (groupName === '원더') {
-                const img = document.createElement('img');
-                img.src = `${BASE_URL}/assets/img/character-half/원더.webp`;
-                img.className = 'group-avatar';
-                infoWrap.appendChild(img);
-            } else if (groupName !== '공통') {
+            // 공통 그룹은 아이콘을 표시하지 않음
+            if (groupName !== '공통') {
                 const img = document.createElement('img');
                 img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
                 img.className = 'group-avatar';
@@ -329,21 +373,98 @@ class CriticalCalc {
                 JCCalc.attachDesireControl(headerTr, this, 'crit');
             }
 
+            // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
                 const isOpen = caret.classList.contains('open');
-                caret.classList.toggle('open', !isOpen);
-                caret.textContent = isOpen ? '▸' : '▾';
-                items.forEach(it => { if (it.__rowEl) it.__rowEl.style.display = isOpen ? 'none' : ''; });
+                const newIsOpen = !isOpen;
+                caret.classList.toggle('open', newIsOpen);
+                
+                // 그룹 헤더의 열림/닫힘 상태 클래스 업데이트
+                if (newIsOpen) {
+                    headerTr.classList.add('group-open');
+                    headerTr.classList.remove('group-closed');
+                } else {
+                    headerTr.classList.add('group-closed');
+                    headerTr.classList.remove('group-open');
+                }
+                
+                // SVG chevron 업데이트
+                const svg = caret.querySelector('svg');
+                if (svg) {
+                    const path = svg.querySelector('path');
+                    if (path) {
+                        if (newIsOpen) {
+                            // 열림: 아래를 보는 chevron
+                            path.setAttribute('d', 'M4 6L8 10L12 6');
+                        } else {
+                            // 닫힘: 오른쪽을 보는 chevron
+                            path.setAttribute('d', 'M6 4L10 8L6 12');
+                        }
+                    }
+                }
+                
+                items.forEach(it => {
+                    if (it.__rowEl) {
+                        if (newIsOpen) {
+                            // 모바일에서는 grid, 데스크탑에서는 인라인 스타일 제거하여 CSS 적용
+                            const isMobile = window.innerWidth <= 1200;
+                            if (isMobile) {
+                                it.__rowEl.style.setProperty('display', 'grid', 'important');
+                            } else {
+                                // 데스크탑에서는 인라인 스타일 제거
+                                it.__rowEl.style.removeProperty('display');
+                            }
+                        } else {
+                            // 모바일 CSS의 !important를 덮어쓰기 위해 !important 사용
+                            it.__rowEl.style.setProperty('display', 'none', 'important');
+                        }
+                    }
+                });
             });
+            
+            // 초기 상태 클래스 설정
+            if (initiallyOpen) {
+                headerTr.classList.add('group-open');
+            } else {
+                headerTr.classList.add('group-closed');
+            }
 
             tbody.appendChild(headerTr);
 
-            items.forEach(item => {
+            // 데이터 행들
+            items.forEach((item, index) => {
                 const row = this.createTableRow(item, isSelf, groupName);
+                // 초기 표시 상태 (모바일: 조건에 따라, 데스크탑: 조건에 따라)
+                if (initiallyOpen) {
+                    const isMobile = window.innerWidth <= 1200;
+                    if (isMobile) {
+                        row.style.setProperty('display', 'grid', 'important');
+                    } else {
+                        // 데스크탑에서는 인라인 스타일 제거
+                        row.style.removeProperty('display');
+                    }
+                } else {
+                    // 모바일 CSS의 !important를 덮어쓰기 위해 !important 사용
+                    row.style.setProperty('display', 'none', 'important');
+                }
                 row.classList.add('group-row');
-                row.style.display = initiallyOpen ? '' : 'none';
                 row.setAttribute('data-group', groupName);
-                try { Object.defineProperty(item, '__rowEl', { value: row, writable: true, configurable: true }); } catch(_) { item.__rowEl = row; }
+                
+                // 각 그룹의 마지막 row에 클래스 추가
+                if (index === items.length - 1) {
+                    row.classList.add('group-last-row');
+                }
+                
+                // 참조 저장해 토글에 사용
+                try {
+                    if (!Object.prototype.hasOwnProperty.call(item, '__rowEl')) {
+                        Object.defineProperty(item, '__rowEl', { value: row, writable: true, configurable: true });
+                    } else {
+                        item.__rowEl = row;
+                    }
+                } catch(_) {
+                    try { item.__rowEl = row; } catch(_) {}
+                }
                 tbody.appendChild(row);
             });
 
@@ -378,64 +499,108 @@ class CriticalCalc {
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
         
+        // 목표 열
         const targetCell = document.createElement('td');
         targetCell.className = 'target-column';
         targetCell.textContent = this.normalizeTextForLang(data.target || '');
         targetCell.setAttribute('data-target', data.target || '');
         row.appendChild(targetCell);
         
-        const iconCell = document.createElement('td');
-        iconCell.className = 'skill-icon-column';
+        // 스킬 아이콘 열
+        const skillIconCell = document.createElement('td');
+        skillIconCell.className = 'skill-icon-column';
         if (data.skillIcon) {
-            const icon = document.createElement('img');
-            icon.src = this.transformIconSrcForLang(data.skillIcon);
+            const skillIcon = document.createElement('img');
+            skillIcon.src = this.transformIconSrcForLang(data.skillIcon);
+            
+            // 스킬 관련 타입인 경우 skill-icon 클래스 추가
             const t = String(data.type || '');
-            if (t.includes('스킬') || t === '하이라이트' || t === '패시브' || t === '총격') icon.className = 'skill-icon';
-            iconCell.appendChild(icon);
+            if (t.includes('스킬') || t === '하이라이트' || t === '패시브' || t === '총격') {
+                skillIcon.className = 'skill-icon';
+            }
+            
+            skillIconCell.appendChild(skillIcon);
         }
-        row.appendChild(iconCell);
+        row.appendChild(skillIconCell);
 
-        const nameCell = document.createElement('td');
-        nameCell.className = 'skill-name-column';
-        const typeSpan = document.createElement('span');
-        typeSpan.className = 'skill-type-label';
-        typeSpan.textContent = this.normalizeTextForLang(data.type || '');
-        const nameSpan = document.createElement('span');
-        nameSpan.className = 'skill-name-text';
-        const currentLang = this.getCurrentLang();
+        // 스킬 이름 열 (분류 + 이름 결합)
+        const skillNameCell = document.createElement('td');
+        skillNameCell.className = 'skill-name-column';
+        const currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
         let localizedName = '';
-        if (currentLang === 'en') localizedName = (data.skillName_en && String(data.skillName_en).trim()) || '';
-        else if (currentLang === 'jp') localizedName = (data.skillName_jp && String(data.skillName_jp).trim()) || '';
+        // 기본: 현지화된 이름 우선
+        if (currentLang === 'en') {
+            localizedName = (data.skillName_en && String(data.skillName_en).trim()) ? data.skillName_en : '';
+        } else if (currentLang === 'jp') {
+            localizedName = (data.skillName_jp && String(data.skillName_jp).trim()) ? data.skillName_jp : '';
+        }
+        // 폴백 규칙: EN/JP에서도 원더 그룹의 전용무기/페르소나/스킬만 KR 이름으로 폴백 허용
         if (!localizedName) {
             const isWonder = groupName === '원더';
             const typeStr = String(data.type || '');
             const isWonderDisplayType = isWonder && (typeStr === '전용무기' || typeStr === '페르소나' || typeStr === '스킬');
-            if (currentLang !== 'kr' && isWonderDisplayType) localizedName = data.skillName || '';
-            else if (currentLang === 'kr') localizedName = data.skillName || '';
-            else localizedName = '';
+            if (currentLang !== 'kr' && isWonderDisplayType) {
+                localizedName = data.skillName || '';
+            } else if (currentLang === 'kr') {
+                localizedName = data.skillName || '';
+            } else {
+                // 그 외 언어/그룹은 폴백하지 않음 → 타입만 표시
+                localizedName = '';
+            }
         }
+
+        const typeSpan = document.createElement('span');
+        typeSpan.className = 'skill-type-label';
+        typeSpan.textContent = this.normalizeTextForLang(data.type || '');
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'skill-name-text';
+        
+        // 모바일에서 원더/계시 그룹이고 skill-name-text가 있을 경우 type-label과 구분자 제거
+        const isMobile = window.innerWidth <= 1200;
+        const isWonder = groupName === '원더';
+        const isRevelation = groupName === '계시';
+        const hasNameText = localizedName && localizedName.trim();
+        const shouldHideTypeLabel = isMobile && (isWonder || isRevelation) && hasNameText;
+        
         if (currentLang === 'kr') {
+            // KR: 분류 + 이름 모두 표기
             nameSpan.textContent = localizedName;
-            nameCell.appendChild(typeSpan);
-            if (localizedName) { nameCell.appendChild(document.createTextNode(' · ')); nameCell.appendChild(nameSpan); }
+            if (!shouldHideTypeLabel) {
+                skillNameCell.appendChild(typeSpan);
+            }
+            if (localizedName) {
+                if (!shouldHideTypeLabel) {
+                    const sep = document.createTextNode('　');
+                    skillNameCell.appendChild(sep);
+                }
+                skillNameCell.appendChild(nameSpan);
+            }
         } else {
+            // EN/JP: 번역된 이름이 존재하면 분류 + 이름, 없으면 분류만 강조
             if (localizedName && localizedName.trim()) {
                 const isSpecialGroup = (groupName === '원더' || groupName === '계시');
                 if (!isSpecialGroup) {
+                    // 원더/계시가 아닌 경우: 이름만 표시
                     nameSpan.textContent = localizedName;
-                    nameCell.appendChild(nameSpan);
+                    skillNameCell.appendChild(nameSpan);
                 } else {
+                    // 원더/계시 그룹: 분류 + 이름 표시
                     nameSpan.textContent = localizedName;
-                    nameCell.appendChild(typeSpan);
-                    nameCell.appendChild(document.createTextNode(' · '));
-                    nameCell.appendChild(nameSpan);
+                    if (!shouldHideTypeLabel) {
+                        skillNameCell.appendChild(typeSpan);
+                        const sep = document.createTextNode('　');
+                        skillNameCell.appendChild(sep);
+                    }
+                    skillNameCell.appendChild(nameSpan);
                 }
             } else {
+                // 분류만 강조
                 typeSpan.classList.add('type-only');
-                nameCell.appendChild(typeSpan);
+                skillNameCell.appendChild(typeSpan);
             }
         }
-        row.appendChild(nameCell);
+        row.appendChild(skillNameCell);
 
         // 값 표시 셀 생성
         const valueCell = document.createElement('td');
@@ -488,13 +653,21 @@ class CriticalCalc {
         durationCell.textContent = this.normalizeTextForLang(data.duration || '');
         row.appendChild(durationCell);
         
+        // 비고 열
         const noteCell = document.createElement('td');
         noteCell.className = 'note-column';
+        // note 다국어 지원
         let noteText = data.note || '';
         const lang = this.getCurrentLang();
         if (lang === 'en' && data.note_en) noteText = data.note_en;
         else if (lang === 'jp' && data.note_jp) noteText = data.note_jp;
         noteCell.textContent = this.normalizeTextForLang(noteText);
+        
+        // note가 비어있으면 행에 클래스 추가 (모바일에서 3행 제거용)
+        if (!noteText || !noteText.trim()) {
+            row.classList.add('no-note');
+        }
+        
         row.appendChild(noteCell);
         
         return row;
@@ -521,6 +694,11 @@ class CriticalCalc {
         const custom1 = parseFloat(this.revelationInput && this.revelationInput.value) || 0;
         const custom2 = parseFloat(this.explanationInput && this.explanationInput.value) || 0;
         const total = Math.max(0, buffSum + selfSum + custom1 + custom2);
+        const needed = Math.max(0, 100 - total);
+        
         if (this.totalValue) this.totalValue.textContent = `${total.toFixed(1)}%`;
+        if (this.buffSumValue) this.buffSumValue.textContent = `${buffSum.toFixed(1)}%`;
+        if (this.selfSumValue) this.selfSumValue.textContent = `${selfSum.toFixed(1)}%`;
+        if (this.neededValue) this.neededValue.textContent = `${needed.toFixed(1)}%`;
     }
 }

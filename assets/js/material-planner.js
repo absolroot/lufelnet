@@ -16,7 +16,8 @@
             wp_exp1: 0, wp_exp2: 0, wp_exp3: 0,
             wp_limit1: 0, wp_limit2: 0, wp_limit3: 0,
             skill_lv_1: 0, skill_lv_2: 0, skill_lv_3: 0, skill_rose: 0,
-            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0, skill_item6: 0
+            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0, skill_item6: 0,
+            mindscape_core: 0, emblem_5star: 0, innate_seed: 0
         }
     };
 
@@ -57,7 +58,10 @@
         skill_item3: '/apps/material-calc/img/skill_item3.png',
         skill_item4: '/apps/material-calc/img/skill_item4.png',
         skill_item5: '/apps/material-calc/img/skill_item5.png',
-        skill_item6: '/apps/material-calc/img/skill_item6.png'
+        skill_item6: '/apps/material-calc/img/skill_item6.png',
+        mindscape_core: '/assets/img/character-detail/innate/core.png',
+        emblem_5star: '/assets/img/character-detail/innate/emblem.png',
+        innate_seed: '/assets/img/character-detail/innate/innate_seed.png'
     };
 
     // 다국어 텍스트
@@ -68,6 +72,8 @@
             level: '레벨', current: '괴도', current2: '현재', target: '목표', weapon: '무기', skills: '스킬',
             mind: '심상', enableAll: '12개 전체 활성화', mindBase: '심상', mindStat1: '심상 스탯 1', mindStat2: '심상 스탯 2',
             mindSkill1: '심상 스킬 1', mindSkill2: '심상 스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
+            mindscapeCore: '심상 활성화', enableMindscape: '활성화', resonance1: '속성 공명 1', resonance2: '속성 공명 2',
+            mindscapeCoreItem: '심상 코어', emblem5StarItem: '엠블럼 ★5', innateSeedItem: '향기의 씨앗',
             remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
             confirm: '확인', deleteConfirmTitle: '삭제 확인', deleteConfirmMessage: '이 캐릭터의 플랜을 삭제합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
             helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\nP5X는 계정 정보 연동을 지원하지 않습니다. 보유 중인 재료는 수동으로 입력해주세요.',
@@ -88,6 +94,8 @@
             level: 'Level', current: 'Character', current2: 'Current', target: 'Target', weapon: 'Weapon', skills: 'Skills',
             mind: 'Mindscape', enableAll: 'Enable all 12', mindBase: 'Mind Base', mindStat1: 'Mind Stat 1', mindStat2: 'Mind Stat 2',
             mindSkill1: 'Mind Skill 1', mindSkill2: 'Mind Skill 2', mindAttr: 'Mind Attribute', cancel: 'Cancel', save: 'Save',
+            mindscapeCore: 'Mindscape Core', enableMindscape: 'Enable', resonance1: 'Attribute Resonance 1', resonance2: 'Attribute Resonance 2',
+            mindscapeCoreItem: 'Mindscape Core', emblem5StarItem: 'Emblem ★5', innateSeedItem: 'Fragrant Seed',
             remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
             confirm: 'Confirm', deleteConfirmTitle: 'Delete Plan', deleteConfirmMessage: 'This character plan will be deleted. This action cannot be undone. Continue?',
             helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.\nP5X does not support account information linking. Please enter your owned materials manually.',
@@ -108,6 +116,8 @@
             level: 'レベル', current: '怪盗', current2: '現在', target: '目標', weapon: '武器', skills: 'スキル',
             mind: 'イメジャリー', enableAll: '12個 全て有効', mindBase: 'イメジャリー 基本', mindStat1: 'ステ1', mindStat2: 'ステ2',
             mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
+            mindscapeCore: 'イメジャリー コア', enableMindscape: '有効化', resonance1: '属性共鳴 1', resonance2: '属性共鳴 2',
+            mindscapeCoreItem: 'イメジャリー コア', emblem5StarItem: 'エンブレム ★5', innateSeedItem: '香りの種',
             remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
             confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',
             helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。\nP5Xはアカウント情報の連携に対応していません。所持している素材は手動で入力してください。',
@@ -367,11 +377,45 @@
                 setVal('mindSkill1From',i.mindSkill1From); setVal('mindSkill1To',i.mindSkill1To);
                 setVal('mindSkill2From',i.mindSkill2From); setVal('mindSkill2To',i.mindSkill2To);
                 setVal('mindAttrFrom',i.mindAttrFrom); setVal('mindAttrTo',i.mindAttrTo);
+                const mindscapeEnabled = document.getElementById('mindscapeEnabled');
+                if(mindscapeEnabled) mindscapeEnabled.checked = i.mindscapeEnabled || false;
+                setVal('mindscapeLevelFrom',i.mindscapeLevelFrom || 80); setVal('mindscapeLevelTo',i.mindscapeLevelTo || 100);
+                setVal('resonance1From',i.resonance1From || 0); setVal('resonance1To',i.resonance1To || 2);
+                setVal('resonance2From',i.resonance2From || 0); setVal('resonance2To',i.resonance2To || 2);
                 // 심상 현재/목표 값 프리필 (과거 저장 호환: mindBase만 있을 수 있음)
                 const curCount = Array.isArray(i.mindBaseCurrent) ? i.mindBaseCurrent.filter(Boolean).length : 0;
                 const tarCount = Array.isArray(i.mindBaseTarget) ? i.mindBaseTarget.filter(Boolean).length
                                  : (Array.isArray(i.mindBase) ? i.mindBase.filter(Boolean).length : 12);
                 setMindBaseCounts(curCount, Math.max(curCount, tarCount));
+            }
+        }
+        // 심상 활성화 체크박스 이벤트 핸들러
+        const mindscapeEnabled = document.getElementById('mindscapeEnabled');
+        const mindscapeOptions = document.getElementById('mindscapeOptions');
+        if(mindscapeEnabled && mindscapeOptions){
+            const toggleMindscapeOptions = (enabled) => {
+                const inputs = mindscapeOptions.querySelectorAll('input');
+                inputs.forEach(input => {
+                    input.disabled = !enabled;
+                });
+                // 슬라이더도 활성화/비활성화
+                const sliders = mindscapeOptions.querySelectorAll('input[type="range"]');
+                sliders.forEach(slider => {
+                    slider.disabled = !enabled;
+                });
+                mindscapeOptions.style.display = enabled ? 'block' : 'none';
+            };
+            mindscapeEnabled.addEventListener('change', (e) => {
+                toggleMindscapeOptions(e.target.checked);
+            });
+            // 초기 상태 설정
+            if(editingId){
+                const plan = STATE.plans.find(pl=>pl.id===editingId);
+                const enabled = plan?.inputs?.mindscapeEnabled || false;
+                mindscapeEnabled.checked = enabled;
+                toggleMindscapeOptions(enabled);
+            } else {
+                toggleMindscapeOptions(false);
             }
         }
         // 슬라이더 부착
@@ -595,6 +639,9 @@
         makeDual(getRowByInput('mindSkill1From'), 'mindSkill1From','mindSkill1To', 0, 5);
         makeDual(getRowByInput('mindSkill2From'), 'mindSkill2From','mindSkill2To', 0, 5);
         makeDual(getRowByInput('mindAttrFrom'), 'mindAttrFrom','mindAttrTo', 0, 12);
+        makeDual(getRowByInput('mindscapeLevelFrom'), 'mindscapeLevelFrom','mindscapeLevelTo', 80, 100);
+        makeDual(getRowByInput('resonance1From'), 'resonance1From','resonance1To', 0, 2);
+        makeDual(getRowByInput('resonance2From'), 'resonance2From','resonance2To', 0, 2);
     }
 
     // 입력값 수집
@@ -623,7 +670,11 @@
             mindStat2From: val('mindStat2From',0,5), mindStat2To: val('mindStat2To',0,5),
             mindSkill1From: val('mindSkill1From',0,5), mindSkill1To: val('mindSkill1To',0,5),
             mindSkill2From: val('mindSkill2From',0,5), mindSkill2To: val('mindSkill2To',0,5),
-            mindAttrFrom: val('mindAttrFrom',0,12), mindAttrTo: val('mindAttrTo',0,12)
+            mindAttrFrom: val('mindAttrFrom',0,12), mindAttrTo: val('mindAttrTo',0,12),
+            mindscapeEnabled: document.getElementById('mindscapeEnabled')?.checked || false,
+            mindscapeLevelFrom: val('mindscapeLevelFrom',80,100), mindscapeLevelTo: val('mindscapeLevelTo',80,100),
+            resonance1From: val('resonance1From',0,2), resonance1To: val('resonance1To',0,2),
+            resonance2From: val('resonance2From',0,2), resonance2To: val('resonance2To',0,2)
         };
         // 범위 보정
         if(inputs.lvTo<inputs.lvFrom) inputs.lvTo = inputs.lvFrom;
@@ -634,6 +685,9 @@
         if(inputs.mindSkill1To<inputs.mindSkill1From) inputs.mindSkill1To = inputs.mindSkill1From;
         if(inputs.mindSkill2To<inputs.mindSkill2From) inputs.mindSkill2To = inputs.mindSkill2From;
         if(inputs.mindAttrTo<inputs.mindAttrFrom) inputs.mindAttrTo = inputs.mindAttrFrom;
+        if(inputs.mindscapeLevelTo<inputs.mindscapeLevelFrom) inputs.mindscapeLevelTo = inputs.mindscapeLevelFrom;
+        if(inputs.resonance1To<inputs.resonance1From) inputs.resonance1To = inputs.resonance1From;
+        if(inputs.resonance2To<inputs.resonance2From) inputs.resonance2To = inputs.resonance2From;
         return inputs;
     }
 
@@ -715,7 +769,7 @@
 
             // 레벨업 잼 소모량
             // c3 * 20 * 30 + c2 * 5 * 30 + c1 * 1 * 30
-            if(inputs.lvTo!==80){
+            if(inputs.lvTo!==100){
                 const gemCount = (c3 * 20 * 30) + (c2 * 5 * 30) + (c1 * 1 * 30);
                 if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
             }
@@ -820,6 +874,56 @@
         }
         for(let lv=inputs.mindAttrFrom+1; lv<=inputs.mindAttrTo; lv++){
             const row = costs.mind.attr?.[lv]; if(row) Object.entries(row).forEach(([k,v])=> addCount(mats,k, v||0));
+        }
+        // Mindscape Core: 활성화 체크 시에만 계산
+        if(inputs.mindscapeEnabled){
+            // 활성화 오픈에 코어 12개 필요
+            addCount(mats, 'mindscape_core', 12);
+            
+            // 레벨 80->100 구간 경험치 및 gem 계산
+            if(inputs.mindscapeLevelFrom < inputs.mindscapeLevelTo){
+                let mindscapeExpSum = 0;
+                for(let lv=inputs.mindscapeLevelFrom; lv<inputs.mindscapeLevelTo; lv++){
+                    mindscapeExpSum += (costs.__LEVEL_EXP?.[lv] || 0);
+                    // Mindscape Core: 레벨 80->81, 90->91에서 각각 6개씩 필요
+                    if(lv === 80 || lv === 90){
+                        addCount(mats, 'mindscape_core', 6);
+                    }
+                    // 향기의 씨앗: 레벨 81로 올리는데 36개, 91로 올리는데 48개
+                    if(lv === 80){
+                        addCount(mats, 'innate_seed', 36);
+                    } else if(lv === 90){
+                        addCount(mats, 'innate_seed', 48);
+                    }
+                }
+                if(mindscapeExpSum > 0){
+                    let mindscapeExpSumForGem = mindscapeExpSum;
+                    // greedy: 4000, 1000, 200
+                    const unit3 = 4000, unit2 = 1000, unit1 = 200;
+                    let remainingExp = mindscapeExpSum;
+                    const c3 = Math.floor(remainingExp / unit3); remainingExp -= c3*unit3; if(c3>0) addCount(mats,'lv_exp3', c3);
+                    const c2 = Math.floor(remainingExp / unit2); remainingExp -= c2*unit2; if(c2>0) addCount(mats,'lv_exp2', c2);
+                    let c1 = Math.ceil(remainingExp / unit1); if(c1>0) addCount(mats,'lv_exp1', c1);
+
+                    // 레벨업 잼 소모량
+                    if(inputs.mindscapeLevelTo !== 100){
+                        const gemCount = (c3 * 20 * 30) + (c2 * 5 * 30) + (c1 * 1 * 30);
+                        if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
+                    }
+                    else{
+                        const gemCount = Math.floor(mindscapeExpSumForGem * 0.15);
+                        if(gemCount > 0) addCount(mats,'konpaku_gem', gemCount);
+                    }
+                }
+            }
+            // 속성 공명 1: 레벨 1 올리는데 엠블럼 ★5 50개씩
+            for(let lv=inputs.resonance1From; lv<inputs.resonance1To; lv++){
+                addCount(mats, 'emblem_5star', 50);
+            }
+            // 속성 공명 2: 레벨 1 올리는데 엠블럼 ★5 50개씩
+            for(let lv=inputs.resonance2From; lv<inputs.resonance2To; lv++){
+                addCount(mats, 'emblem_5star', 50);
+            }
         }
         return mats;
     }
@@ -960,6 +1064,7 @@
                 else if(key.startsWith('skill_')) openInventoryModal('skill', key);
                 else if(key==='konpaku_gem') openInventoryModal('gem', key);
                 else if(key.startsWith('md_')) openInventoryModal('mind', key);
+                else if(key==='mindscape_core' || key==='emblem_5star' || key==='innate_seed') openInventoryModal('mindscape', key);
             });
             div.appendChild(img); div.appendChild(p); frag.appendChild(div);
         });
@@ -1038,7 +1143,12 @@
             }
         });
         sorted.forEach(p=>{
-            const card = document.createElement('div'); card.className='plan-card';
+            const card = document.createElement('div'); card.className='plan-card'; card.style.position='relative';
+            // 오버레이 요소 생성 (include가 false일 때 표시)
+            const overlay = document.createElement('div');
+            overlay.className = 'plan-overlay';
+            overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);pointer-events:none;z-index:10;border-radius:inherit;';
+            overlay.style.display = p.include === false ? 'block' : 'none';
             const header = document.createElement('div'); header.className='plan-header'; header.style.position='relative';
             const title = document.createElement('div'); title.className='plan-title';
             const starImg = (p.rarity>=5)? `${BASE_URL}/assets/img/character-detail/star5.png` : `${BASE_URL}/assets/img/character-detail/star4.png`;
@@ -1108,11 +1218,11 @@
             };
             editBtn.onclick = ()=>{ startSetupFor(p.name, p.id); };
 
-            // initial visual dim if excluded
-            if(p.include === false){ card.style.opacity = '0.6'; }
+            // initial visual dim if excluded - 오버레이 표시
+            // 오버레이는 이미 생성되어 있고 초기 상태가 설정되어 있음
             includeCb.onchange = ()=>{
                 p.include = includeCb.checked;
-                card.style.opacity = p.include === false ? '0.6' : '';
+                overlay.style.display = p.include === false ? 'block' : 'none';
                 recalcTotals();
                 renderSummary();
                 saveState();
@@ -1219,6 +1329,7 @@
                     else if(k.startsWith('skill_')) openInventoryModal('skill', k);
                     else if(k==='konpaku_gem') openInventoryModal('gem', k);
                     else if(k.startsWith('md_')) openInventoryModal('mind', k);
+                    else if(k==='mindscape_core' || k==='emblem_5star' || k==='innate_seed') openInventoryModal('mindscape', k);
                 });
                 div.appendChild(img); div.appendChild(txt); matGrid.appendChild(div);
             });
@@ -1248,6 +1359,11 @@
                 <div class="row"><label>${t('mindSkill1')}</label><div>${p.inputs.mindSkill1From}</div><div>→</div><div>${p.inputs.mindSkill1To}</div></div>
                 <div class="row"><label>${t('mindSkill2')}</label><div>${p.inputs.mindSkill2From}</div><div>→</div><div>${p.inputs.mindSkill2To}</div></div>
                 <div class="row"><label>${t('mindAttr')}</label><div>${p.inputs.mindAttrFrom}</div><div>→</div><div>${p.inputs.mindAttrTo}</div></div>
+                ${p.inputs.mindscapeEnabled ? `
+                <div class="row"><label>${t('mindscapeCore')}</label><div>${p.inputs.mindscapeLevelFrom || 80}</div><div>→</div><div>${p.inputs.mindscapeLevelTo || 100}</div></div>
+                <div class="row"><label>${t('resonance1')}</label><div>${p.inputs.resonance1From || 0}</div><div>→</div><div>${p.inputs.resonance1To || 2}</div></div>
+                <div class="row"><label>${t('resonance2')}</label><div>${p.inputs.resonance2From || 0}</div><div>→</div><div>${p.inputs.resonance2To || 2}</div></div>
+                ` : ''}
             `;
             detailBtn.onclick = ()=>{
                 // 모든 카드 상세를 동시에 토글
@@ -1259,6 +1375,7 @@
 
             card.appendChild(matGrid);
             card.appendChild(details);
+            card.appendChild(overlay);
             frag.appendChild(card);
         });
         root.innerHTML=''; root.appendChild(frag);
@@ -1554,6 +1671,13 @@
                 { key:'md_stat2', label:materialInfoFor('md_stat2').name, icon:MATERIAL_ICONS.md_stat2 },
                 { key:'md_skill1', label:materialInfoFor('md_skill1').name, icon:MATERIAL_ICONS.md_skill1 },
                 { key:'md_skill2', label:materialInfoFor('md_skill2').name, icon:MATERIAL_ICONS.md_skill2 }
+            ];
+        } else if(type==='mindscape'){
+            title.textContent = t('mindscapeCore'); hint.textContent='';
+            rows = [
+                { key:'mindscape_core', label:materialInfoFor('mindscape_core', t('mindscapeCoreItem')).name, icon:MATERIAL_ICONS.mindscape_core },
+                { key:'emblem_5star', label:materialInfoFor('emblem_5star', t('emblem5StarItem')).name, icon:MATERIAL_ICONS.emblem_5star },
+                { key:'innate_seed', label:materialInfoFor('innate_seed', t('innateSeedItem')).name, icon:MATERIAL_ICONS.innate_seed }
             ];
         }
         const frag = document.createDocumentFragment();

@@ -94,7 +94,7 @@
                     boss_info_tip: '최고 난이도 기준 값이며, 같은 이름이더라도 보스마다 방어력 값은 다를 수 있습니다. 참조용 데이터이며 정확한 수치는 아닐 수 있습니다. 출시 초기에 알려진 수치를 기반한 데이터로 현재는 명확한 수치를 확인할 방법이 없습니다.',
                     tooltip_formula: '대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]',
                     base_final_damage: '· 방어력에 의한 최종 대미지 배수:', with_def_reduce: '· 방어력 감소 최종 대미지 배수:',
-                    tab_pierce: '관통', tab_defense: '방어력 감소', revelation_penetrate: '계시 관통 합계', explanation_power: '해명의 힘',
+                    tab_pierce: '관통', tab_defense: '방어력 감소', revelation_penetrate: '계시 관통 합계', revelation_sum: '계시 합계', explanation_power: '해명의 힘',
                     th_select: '선택', th_thief: '괴도', th_type: '분류', th_target: '목표', th_name: '이름', th_option: '옵션', th_value: '수치', th_duration: '지속', th_note: '비고',
                     windswept: '풍습', windswept_tip: '최종 방어력 계수 * 88%. 항상 마지막에 적용됩니다. 따라서 계수 0을 달성하기 위해서는 풍습을 제외하고 남은 수치 만큼 실제 감소가 필요합니다.',
                     stat_sum: '합계', stat_target: '목표', stat_remaining: '남은 수치',
@@ -111,7 +111,7 @@
                     boss_info_tip: 'Values are based on the highest difficulty. Even with the same name, each boss can have different Defense values. This is reference data and may not be exact. The data is based on figures known at the time of initial release; there is currently no way to verify precise figures.',
                     tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
                     base_final_damage: '· Base final damage mult.:', with_def_reduce: '· With defense reduction mult.:',
-                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', explanation_power: 'Elucidation Power', other_reduce: 'Other Def. Reduction',
+                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', revelation_sum: 'Revelation Sum', explanation_power: 'Elucidation Power', other_reduce: 'Other Def. Reduction',
                     th_select: 'Select', th_thief: 'Thief', th_type: 'Type', th_target: 'Target', th_name: 'Name', th_option: 'Option', th_value: 'Value', th_duration: 'Duration', th_note: 'Note',
                     windswept: 'Windswept', windswept_tip: 'Final Defense Coef. * 88%. Always applied at the very end. Therefore, to reach a final coefficient of 0, you need enough actual reduction from other sources excluding Windswept.',
                     stat_sum: 'Sum', stat_target: 'Target', stat_remaining: 'Remaining',
@@ -128,7 +128,7 @@
                     boss_info_tip: '最高難易度を基準とした値です。同じ名前でもボスごとに防御力は異なる場合があります。参考用データであり、正確な数値ではありません。発売初期に知られていた数値に基づくデータであり、現在は明確な数値を確認する方法がありません。',
                     tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
                     base_final_damage: '・ 基本 最終ダメージ倍率:', with_def_reduce: '・ 防御力減少あり 最終ダメージ倍率:',
-                    tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', explanation_power: '解明の力', other_reduce: 'その他 防御力減少',
+                    tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', revelation_sum: '啓示 合計', explanation_power: '解明の力', other_reduce: 'その他 防御力減少',
                     th_select: '選択', th_thief: '怪盗', th_type: '分類', th_target: '対象', th_name: '名前', th_option: 'オプション', th_value: '数値', th_duration: '持続', th_note: '備考',
                     windswept: '風襲', windswept_tip: '最終防御係数 * 88%。常に最後に適用されます。そのため、最終係数0を達成するには、風襲を除いた残りの分を実際の減少で満たす必要があります。',
                     stat_sum: '合計', stat_target: '目標', stat_remaining: '残り数値',
@@ -144,7 +144,10 @@
             const pageTitle = root.getElementById ? root.getElementById('page-title') : document.getElementById('page-title');
             if (navHome) navHome.textContent = t.nav_home;
             if (navCurrent) navCurrent.textContent = t.nav_current;
-            if (pageTitle) pageTitle.textContent = t.page_title;
+            // defense-calc 페이지에서만 page-title 업데이트 (critical-calc는 critical-calc.js에서 처리)
+            if (pageTitle && (window.location.pathname.includes('/defense-calc') || window.location.pathname.includes('defense-calc'))) {
+                pageTitle.textContent = t.page_title;
+            }
 
             const bossSelectPlaceholder = document.getElementById('bossSelectPlaceholder');
             const baseDefenseLabel = document.getElementById('baseDefenseLabel');
@@ -351,6 +354,7 @@
             }
 
             const revelationPenetrateLabel = document.getElementById('revelationPenetrateLabel');
+            const revelationSumLabel = document.getElementById('revelationSumLabel');
             const explanationPowerLabel = document.getElementById('explanationPowerLabel');
             const otherReduceLabel = document.getElementById('otherReduceLabel');
             const windsweptText = document.getElementById('windsweptText');
@@ -376,16 +380,27 @@
                 }
             }
             if (explanationPowerLabel) {
-                const icon = explanationPowerLabel.querySelector('.input-label-icon');
-                // 기존 텍스트 노드 제거
+                let icon = explanationPowerLabel.querySelector('.input-label-icon');
+                // 아이콘이 없으면 먼저 생성 (critical-calc용)
+                if (!icon) {
+                    const img = document.createElement('img');
+                    const baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : (typeof window !== 'undefined' && window.SITE_BASEURL) ? window.SITE_BASEURL : '';
+                    img.src = `${baseUrl}/assets/img/character-cards/직업_해명.png`;
+                    img.alt = '해명';
+                    img.className = 'input-label-icon';
+                    explanationPowerLabel.insertBefore(img, explanationPowerLabel.firstChild);
+                    icon = img;
+                }
+                // 기존 텍스트 노드 제거 (아이콘은 유지)
                 Array.from(explanationPowerLabel.childNodes).forEach(node => {
                     if (node.nodeType === Node.TEXT_NODE) {
                         node.remove();
                     }
                 });
-                // 아이콘 뒤에 텍스트 추가
+                // 아이콘 다음에 텍스트 추가
                 if (icon) {
                     const text = document.createTextNode(t.explanation_power);
+                    // 아이콘 다음에 텍스트 추가
                     if (icon.nextSibling) {
                         explanationPowerLabel.insertBefore(text, icon.nextSibling);
                     } else {
@@ -393,6 +408,37 @@
                     }
                 } else {
                     explanationPowerLabel.textContent = t.explanation_power;
+                }
+            }
+            if (revelationSumLabel) {
+                let icon = revelationSumLabel.querySelector('.input-label-icon');
+                // 아이콘이 없으면 먼저 생성 (critical-calc용)
+                if (!icon) {
+                    const img = document.createElement('img');
+                    const baseUrl = (typeof BASE_URL !== 'undefined') ? BASE_URL : (typeof window !== 'undefined' && window.SITE_BASEURL) ? window.SITE_BASEURL : '';
+                    img.src = `${baseUrl}/assets/img/nav/qishi.png`;
+                    img.alt = '계시';
+                    img.className = 'input-label-icon';
+                    revelationSumLabel.insertBefore(img, revelationSumLabel.firstChild);
+                    icon = img;
+                }
+                // 기존 텍스트 노드 제거 (아이콘은 유지)
+                Array.from(revelationSumLabel.childNodes).forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        node.remove();
+                    }
+                });
+                // 아이콘 다음에 텍스트 추가
+                if (icon) {
+                    const text = document.createTextNode(t.revelation_sum);
+                    // 아이콘 다음에 텍스트 추가
+                    if (icon.nextSibling) {
+                        revelationSumLabel.insertBefore(text, icon.nextSibling);
+                    } else {
+                        revelationSumLabel.appendChild(text);
+                    }
+                } else {
+                    revelationSumLabel.textContent = t.revelation_sum;
                 }
             }
             if (otherReduceLabel) {

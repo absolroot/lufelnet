@@ -487,6 +487,7 @@ select:-moz-focusring { color: transparent; text-shadow: 0 0 0 rgb(255, 255, 255
     .defense-table tr.group-header.group-open,
     .penetrate-table tr.group-header.group-open {
         border-radius: 10px 10px 0 0;
+        background: #292929;
     }
     .defense-table tr.group-header td, .penetrate-table tr.group-header td { padding: 0; }
     

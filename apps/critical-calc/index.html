@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [critical-calc]
-custom_js: [tooltip, character/character-list, defense/defense-i18n, critical-calc]
+custom_js: [tooltip, character/character-list, defense/defense-i18n, calc/table-renderer, critical-calc]
 custom_data: [tooltip.js, calc/critical-data.js, characters/characters.js]
 permalink: /critical-calc/
 language: kr
@@ -28,29 +28,61 @@ description: 페르소나5 더 팬텀 X 크리티컬 확률 계산기
 
     <!-- 상단 카드 컨테이너 -->
     <div class="top-cards">
-        <!-- 크리티컬 확률 합계 카드 -->
-        <div class="stat-card card-style">
-            <h2 id="total-title">크리티컬 확률 합계</h2>
-            <div class="total-value">0%</div>
-            <div class="total-value-description">
-                <div></div>
-            </div>
-        </div>
-
         <!-- 크리티컬 입력 카드 -->
         <div class="stat-card card-style">
-            <h2 id="custom-title">커스텀 크리티컬 확률</h2>
             <div class="critical-input-container">
                 <div class="critical-input-group">
-                    <label id="revelationSumLabel">계시 합계</label>
+                    <label id="revelationSumLabel">
+                        <img src="{{ site.baseurl }}/assets/img/nav/qishi.png" alt="계시" class="input-label-icon">
+                        계시 합계
+                    </label>
                     <input type="number" id="revelationCritical" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
                 <div class="critical-input-group">
-                    <label id="explanationPowerLabel">해명의 힘</label>
+                    <label id="explanationPowerLabel">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명" class="input-label-icon">
+                        해명의 힘
+                    </label>
                     <input type="number" id="explanationPower" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
+            </div>
+        </div>
+
+        <!-- 크리티컬 확률 합계 카드 -->
+        <div class="stat-card card-style">
+            <div class="critical-sum-stats">
+                <div class="critical-sum-total">
+                    <div class="critical-sum-total-label">
+                        <img src="{{ site.baseurl }}/assets/img/stat-icon/크리티컬 확률.png" alt="크리티컬" class="critical-sum-icon">
+                        <span class="critical-sum-total-text" id="totalLabel">크리티컬 확률 합계</span>
+                    </div>
+                    <span class="total-value" id="totalValue">0%</span>
+                </div>
+                <div class="critical-sum-items">
+                    <div class="critical-sum-item">
+                        <div class="critical-sum-label" id="buffSumLabel">
+                            <span class="critical-sum-label-text">버프 합계</span>
+                        </div>
+                        <div class="critical-sum-value critical-sum-buff" id="buffSumValue">0%</div>
+                    </div>
+                    <div class="critical-sum-item">
+                        <div class="critical-sum-label" id="selfSumLabel">
+                            <span class="critical-sum-label-text">자신 합계</span>
+                        </div>
+                        <div class="critical-sum-value" id="selfSumValue">0%</div>
+                    </div>
+                    <div class="critical-sum-item">
+                        <div class="critical-sum-label" id="neededLabel">
+                            <span class="critical-sum-label-text">필요 수치</span>
+                        </div>
+                        <div class="critical-sum-value critical-sum-needed" id="neededValue">100%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="total-value-description">
+                <div></div>
             </div>
         </div>
     </div>

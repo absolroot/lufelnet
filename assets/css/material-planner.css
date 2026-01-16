@@ -164,7 +164,7 @@
 .inv-header-icon{width:48px;height:48px; border:1px solid rgba(255,255,255,.1);border-radius:6px;object-fit:contain;padding:8px}
 .inv-header-name{font-size:14px;font-weight:700;margin:0}
 
-.help-text { text-align: center; margin: 10px 20px 40px 20px; padding: 12px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 1.8; }
+.help-text { text-align: center; margin: 10px 20px 40px 20px; padding: 12px; background: #222; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 1.8; }
 
 #mindBaseCurCount, #mindBaseTarCount{ display: none; }
 

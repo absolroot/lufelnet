@@ -423,6 +423,36 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                     </div>
 
                 </div>
+
+                <div class="setup-section">
+                    <h4 data-lang-key="mindscapeCore">심상 활성화</h4>
+                    <div class="setting-row align-center">
+                        <label>
+                            <input id="mindscapeEnabled" type="checkbox">
+                            <span data-lang-key="enableMindscape">활성화</span>
+                        </label>
+                    </div>
+                    <div id="mindscapeOptions" style="display: none;">
+                        <div class="setting-row">
+                            <label data-lang-key="level">레벨</label>
+                            <input id="mindscapeLevelFrom" type="number" min="80" max="100" value="80" disabled>
+                            <span class="arrow">→</span>
+                            <input id="mindscapeLevelTo" type="number" min="80" max="100" value="100" disabled>
+                        </div>
+                        <div class="setting-row">
+                            <label data-lang-key="resonance1">속성 공명 1</label>
+                            <input id="resonance1From" type="number" min="0" max="2" value="0" disabled>
+                            <span class="arrow">→</span>
+                            <input id="resonance1To" type="number" min="0" max="2" value="2" disabled>
+                        </div>
+                        <div class="setting-row">
+                            <label data-lang-key="resonance2">속성 공명 2</label>
+                            <input id="resonance2From" type="number" min="0" max="2" value="0" disabled>
+                            <span class="arrow">→</span>
+                            <input id="resonance2To" type="number" min="0" max="2" value="2" disabled>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="modal-footer">

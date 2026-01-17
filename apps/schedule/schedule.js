@@ -1228,6 +1228,61 @@
         `;
     }
     
+    // Get all anniversary events (past and future)
+    function getAllAnniversaryEvents() {
+        return data.anniversaryEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+    
+    // Render anniversary event
+    function renderAnniversaryEvent(event) {
+        const lang = getLang();
+        const eventDate = parseDate(event.date);
+        const daysText = getDaysText(event.date);
+        
+        // Get localized event name
+        let localizedName = event.name;
+        if (lang === 'kr') {
+            if (event.type === 'debut') localizedName = event.server === 'global' ? '글로벌 데뷔' : 'CN 데뷔';
+            else if (event.type === 'half') localizedName = event.server === 'global' ? '글로벌 반주년' : 'CN 반주년';
+            else if (event.type === 'first') localizedName = event.server === 'global' ? '글로벌 1주년' : 'CN 1주년';
+            else if (event.type === 'onehalf') localizedName = event.server === 'global' ? '글로벌 1.5주년' : 'CN 1.5주년';
+            else if (event.type === 'second') localizedName = 'CN 2주년';
+            else if (event.type === 'twohalf') localizedName = 'CN 2.5주년';
+        } else if (lang === 'jp') {
+            if (event.type === 'debut') localizedName = event.server === 'global' ? 'グローバルデビュー' : 'CNデビュー';
+            else if (event.type === 'half') localizedName = event.server === 'global' ? 'グローバル半周年' : 'CN半周年';
+            else if (event.type === 'first') localizedName = event.server === 'global' ? 'グローバル1周年' : 'CN1周年';
+            else if (event.type === 'onehalf') localizedName = event.server === 'global' ? 'グローバル1.5周年' : 'CN1.5周年';
+            else if (event.type === 'second') localizedName = 'CN2周年';
+            else if (event.type === 'twohalf') localizedName = 'CN2.5周年';
+        }
+        
+        // Server icon
+        const serverIcon = `<img class="server-icon" src="${BASE_URL}/apps/schedule/aniver.png" alt="Anniversary" title="Anniversary">`;
+        
+        return `
+            <div class="release-card status-${getStatus(event.date)}" data-status="${getStatus(event.date)}">
+                <div class="timeline-node"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="version-info">
+                            <span class="release-date">${formatDate(event.date)} · ${daysText}</span>
+                        </div>
+                        <span class="status-badge ${getStatus(event.date)}">${t(getStatus(event.date))}</span>
+                    </div>
+                    <div class="character-list-wrapper">
+                        <div class="anniversary-event">
+                            <div class="anniversary-info">
+                                ${serverIcon}
+                                <span class="anniversary-name">${localizedName}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
     // Render year divider
     function renderYearDivider(year) {
         return `
@@ -1309,7 +1364,14 @@
         const container = document.getElementById('timeline-container');
         if (!container) return;
         
-        // Separate released and non-released
+        // Get all anniversary events
+        const anniversaryEvents = getAllAnniversaryEvents();
+        
+        // Separate anniversary events by status
+        const releasedAnniversaries = anniversaryEvents.filter(event => getStatus(event.date) === 'released');
+        const nonReleasedAnniversaries = anniversaryEvents.filter(event => getStatus(event.date) !== 'released');
+        
+        // Separate releases by status
         const releasedReleases = releases.filter(r => getStatus(r.date) === 'released');
         const nonReleasedReleases = releases.filter(r => getStatus(r.date) !== 'released');
         
@@ -1323,7 +1385,7 @@
             filteredReleases = releases.filter(r => getStatus(r.date) === filter);
         }
         
-        if (filteredReleases.length === 0) {
+        if (filteredReleases.length === 0 && anniversaryEvents.length === 0) {
             container.innerHTML = `<div class="empty-state">${t('noCharacters')}</div>`;
             return;
         }
@@ -1331,25 +1393,37 @@
         let html = '';
         
         // If showing all, render released as collapsible section
-        if (filter === 'all' && releasedReleases.length > 0) {
+        if (filter === 'all' && (releasedReleases.length > 0 || releasedAnniversaries.length > 0)) {
+            const totalReleasedCount = releasedReleases.length + releasedAnniversaries.length;
+            
             html += `
                 <div class="released-section">
                     <button class="released-toggle-btn" onclick="toggleReleasedSection(this)">
                         <span class="toggle-text">${t('showReleased')}</span>
-                        <span class="toggle-count">${releasedReleases.length}</span>
+                        <span class="toggle-count">${totalReleasedCount}</span>
                         <span class="toggle-icon">+</span>
                     </button>
                     <div class="released-content" id="released-content">
             `;
             
+            // Combine released releases and released anniversaries, sort by date
+            const allReleasedItems = [...releasedReleases, ...releasedAnniversaries];
+            allReleasedItems.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
             let currentYear = null;
-            releasedReleases.forEach(release => {
-                const releaseYear = release.date.split('-')[0];
-                if (releaseYear !== currentYear) {
-                    currentYear = releaseYear;
+            allReleasedItems.forEach(item => {
+                const itemYear = item.date.split('-')[0];
+                if (itemYear !== currentYear) {
+                    currentYear = itemYear;
                     html += renderYearDivider(currentYear);
                 }
-                html += renderReleaseCard(release);
+                
+                // Check if it's an anniversary event or regular release
+                if (item.server) { // Anniversary events have server property
+                    html += renderAnniversaryEvent(item);
+                } else {
+                    html += renderReleaseCard(item);
+                }
             });
             
             html += `
@@ -1357,26 +1431,55 @@
                 </div>
             `;
             
-            // Render non-released
+            // Render non-released and non-released anniversary events together
+            const allFutureEvents = [...nonReleasedReleases, ...nonReleasedAnniversaries];
+            allFutureEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
             let currentYear2 = null;
-            nonReleasedReleases.forEach(release => {
-                const releaseYear = release.date.split('-')[0];
-                if (releaseYear !== currentYear2) {
-                    currentYear2 = releaseYear;
+            allFutureEvents.forEach(event => {
+                const eventYear = event.date.split('-')[0];
+                if (eventYear !== currentYear2) {
+                    currentYear2 = eventYear;
                     html += renderYearDivider(currentYear2);
                 }
-                html += renderReleaseCard(release);
+                
+                // Check if it's an anniversary event or regular release
+                if (event.server) { // Anniversary events have server property
+                    html += renderAnniversaryEvent(event);
+                } else {
+                    html += renderReleaseCard(event);
+                }
             });
         } else {
-            // Standard rendering for filtered view
+            // Standard rendering for filtered view - include anniversary events for all filters
+            let allEvents = [...filteredReleases];
+            
+            // Add anniversary events based on filter
+            if (filter === 'released') {
+                allEvents = [...allEvents, ...releasedAnniversaries];
+            } else if (filter === 'upcoming' || filter === 'future' || filter === 'current') {
+                allEvents = [...allEvents, ...nonReleasedAnniversaries];
+            } else {
+                allEvents = [...allEvents, ...anniversaryEvents];
+            }
+            
+            // Sort by date
+            allEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
             let currentYear = null;
-            filteredReleases.forEach(release => {
-                const releaseYear = release.date.split('-')[0];
-                if (releaseYear !== currentYear) {
-                    currentYear = releaseYear;
+            allEvents.forEach(event => {
+                const eventYear = event.date.split('-')[0];
+                if (eventYear !== currentYear) {
+                    currentYear = eventYear;
                     html += renderYearDivider(currentYear);
                 }
-                html += renderReleaseCard(release);
+                
+                // Check if it's an anniversary event or regular release
+                if (event.server) { // Anniversary events have server property
+                    html += renderAnniversaryEvent(event);
+                } else {
+                    html += renderReleaseCard(event);
+                }
             });
         }
         

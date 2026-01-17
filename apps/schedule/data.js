@@ -17,6 +17,23 @@ window.ReleaseScheduleData = {
         afterV4: 21     // 4.0 이후: 3주(21일) 간격 (마나카부터)
     },
     
+    // Anniversary Events (자동 생성됨)
+    anniversaryEvents: [
+        // Global Server Events (UTC)
+        { type: "debut", date: "2025-06-26", name: "Global Debut", server: "global" },
+        { type: "half", date: "2025-12-26", name: "Global Half-Anniversary", server: "global" },
+        { type: "first", date: "2026-06-26", name: "Global 1st Anniversary", server: "global" },
+        { type: "onehalf", date: "2026-12-26", name: "Global 1.5 Anniversary", server: "global" },
+        
+        // CN Server Events (UTC)
+        { type: "debut", date: "2024-04-12", name: "CN Debut", server: "cn" },
+        { type: "half", date: "2024-10-12", name: "CN Half-Anniversary", server: "cn" },
+        { type: "first", date: "2025-04-12", name: "CN 1st Anniversary", server: "cn" },
+        { type: "onehalf", date: "2025-10-12", name: "CN 1.5 Anniversary", server: "cn" },
+        { type: "second", date: "2026-04-12", name: "CN 2nd Anniversary", server: "cn" },
+        { type: "twohalf", date: "2026-10-12", name: "CN 2.5 Anniversary", server: "cn" }
+    ],
+    
     // 수동 입력된 출시 일정 (확정된 날짜)
     manualReleases: [
         // ===== 2025년 =====
@@ -82,7 +99,14 @@ window.ReleaseScheduleData = {
             currentBanner: "Current Banner",
             noCharacters: "No characters in this period",
             showReleased: "Released",
-            hideReleased: "Hide"
+            hideReleased: "Hide",
+            anniversary: "Anniversary",
+            debut: "Debut",
+            halfAnniversary: "Half-Anniversary",
+            firstAnniversary: "1st Anniversary",
+            oneHalfAnniversary: "1.5 Anniversary",
+            secondAnniversary: "2nd Anniversary",
+            twoHalfAnniversary: "2.5 Anniversary"
         },
         jp: {
             released: "リリース済み",
@@ -96,7 +120,14 @@ window.ReleaseScheduleData = {
             currentBanner: "現在のバナー",
             noCharacters: "この期間にキャラクターはいません",
             showReleased: "リリース済み",
-            hideReleased: "隠す"
+            hideReleased: "隠す",
+            anniversary: "記念日",
+            debut: "デビュー",
+            halfAnniversary: "半周年",
+            firstAnniversary: "1周年",
+            oneHalfAnniversary: "1.5周年",
+            secondAnniversary: "2周年",
+            twoHalfAnniversary: "2.5周年"
         },
         kr: {
             released: "출시됨",
@@ -110,7 +141,14 @@ window.ReleaseScheduleData = {
             currentBanner: "현재 배너",
             noCharacters: "이 기간에 캐릭터가 없습니다",
             showReleased: "출시됨",
-            hideReleased: "숨기기"
+            hideReleased: "숨기기",
+            anniversary: "기념일",
+            debut: "데뷔",
+            halfAnniversary: "반주년",
+            firstAnniversary: "1주년",
+            oneHalfAnniversary: "1.5주년",
+            secondAnniversary: "2주년",
+            twoHalfAnniversary: "2.5주년"
         }
     }
 };

@@ -159,9 +159,9 @@
         window.downloadTileDebug = () => window.MapsDebug.downloadDebugInfo('tiles');
         window.clearDebug = () => window.MapsDebug.clear();
         
-        console.log('디버그 명령어:');
-        console.log('  downloadObjectDebug() - 오브젝트 디버그 정보 다운로드');
-        console.log('  downloadTileDebug() - 타일 디버그 정보 다운로드');
-        console.log('  clearDebug() - 디버그 정보 초기화');
+        // console.log('디버그 명령어:');
+        // console.log('  downloadObjectDebug() - 오브젝트 디버그 정보 다운로드');
+        // console.log('  downloadTileDebug() - 타일 디버그 정보 다운로드');
+        // console.log('  clearDebug() - 디버그 정보 초기화');
     }
 })();

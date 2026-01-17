@@ -17,7 +17,10 @@
             palace: '팰리스',
             mementoes: '메멘토스',
             selectAll: '전체 선택',
-            resetFilter: '초기화'
+            resetFilter: '초기화',
+            mapSelect: '맵 선택',
+            map: '맵',
+            filter: '필터'
         },
         en: {
             loading: 'Loading map...',
@@ -32,7 +35,10 @@
             palace: 'Palace',
             mementoes: 'Mementos',
             selectAll: 'Select All',
-            resetFilter: 'Reset'
+            resetFilter: 'Reset',
+            mapSelect: 'Map Select',
+            map: 'Map',
+            filter: 'Filter'
         },
         jp: {
             loading: 'マップを読み込み中...',
@@ -47,7 +53,10 @@
             palace: 'パレス',
             mementoes: 'メメントス',
             selectAll: 'すべて選択',
-            resetFilter: 'リセット'
+            resetFilter: 'リセット',
+            mapSelect: 'マップ選択',
+            map: 'マップ',
+            filter: 'フィルター'
         }
     };
 

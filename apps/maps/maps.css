@@ -86,3 +86,237 @@ body {
   padding: 0 4px;
   user-select: none;
 }
+
+/* ============================================
+   모바일 공통 스타일 (플로팅 버튼, 바텀시트, 오버레이)
+   ============================================ */
+
+/* 모바일 브레드크럼 네비게이션 */
+.mobile-breadcrumb {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 12px 16px;
+  font-size: 12px;
+  z-index: 1500;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-breadcrumb::-webkit-scrollbar {
+  display: none;
+}
+
+.breadcrumb-item {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.breadcrumb-item:last-of-type:not([style*="display:none"]),
+.breadcrumb-item:last-of-type:not([style*="display: none"]) {
+  color: #fff;
+  font-weight: 600;
+}
+
+.breadcrumb-item[data-level="submap"]:not([style*="display:none"]),
+.breadcrumb-item[data-level="submap"]:not([style*="display: none"]) {
+  color: #fff;
+  font-weight: 600;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 6px;
+  font-size: 14px;
+}
+
+/* 모바일 오버레이 (바텀시트 열릴 때 배경) */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+}
+
+/* 모바일 하단 플로팅 버튼 컨테이너 */
+.mobile-floating-buttons {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1500;
+  gap: 16px;
+}
+
+/* 모바일 플로팅 버튼 */
+.mobile-fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(128, 0, 0, 0.9);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  gap: 4px;
+}
+
+.mobile-fab:hover,
+.mobile-fab:active {
+  background: rgba(150, 0, 0, 0.95);
+  transform: scale(1.05);
+}
+
+.mobile-fab.active {
+  background: rgba(180, 0, 0, 1);
+}
+
+.mobile-fab svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-fab span {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* 바텀시트 공통 스타일 */
+.side-panel.mobile-bottomsheet {
+  position: fixed !important;
+  top: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 70vh;
+  border-radius: 20px 20px 0 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 2000 !important;
+  overflow: hidden;
+}
+
+.side-panel.mobile-bottomsheet.open {
+  transform: translateY(0);
+}
+
+/* 바텀시트 헤더 (드래그 핸들) */
+.bottomsheet-header {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px 8px;
+  cursor: grab;
+  background: inherit;
+}
+
+.bottomsheet-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.bottomsheet-title {
+  display: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-top: 8px;
+}
+
+/* 바텀시트 닫기 버튼 */
+.bottomsheet-close {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  z-index: 10;
+}
+
+.bottomsheet-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 모바일 반응형 - 768px 이하 */
+@media screen and (max-width: 768px) {
+  /* 브레드크럼 표시 */
+  .mobile-breadcrumb {
+    display: block;
+  }
+
+  /* 플로팅 버튼 표시 */
+  .mobile-floating-buttons {
+    display: flex;
+  }
+
+  /* 오버레이 표시 가능하게 */
+  .mobile-overlay {
+    display: block;
+    pointer-events: none;
+  }
+
+  .mobile-overlay.active {
+    pointer-events: auto;
+  }
+
+  /* 바텀시트 헤더 표시 */
+  .side-panel.mobile-bottomsheet .bottomsheet-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .side-panel.mobile-bottomsheet .bottomsheet-title {
+    display: block;
+  }
+
+  .side-panel.mobile-bottomsheet .bottomsheet-close {
+    display: flex;
+  }
+
+  /* 맵 버전 선택기 위치 조정 */
+  #map-version-selector {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+  }
+}

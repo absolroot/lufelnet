@@ -90,6 +90,38 @@ alternate_urls:
         </div>
     </div>
     
+    <!-- 모바일용 상단 브레드크럼 네비게이션 -->
+    <div id="mobile-breadcrumb" class="mobile-breadcrumb">
+        <span class="breadcrumb-item" data-level="tab">팰리스</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item" data-level="category">-</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item" data-level="map">-</span>
+        <span class="breadcrumb-separator breadcrumb-submap-sep" style="display:none;">›</span>
+        <span class="breadcrumb-item breadcrumb-submap" data-level="submap" style="display:none;">-</span>
+    </div>
+
+    <!-- 모바일용 바텀시트 오버레이 -->
+    <div id="mobile-overlay" class="mobile-overlay"></div>
+
+    <!-- 모바일용 하단 플로팅 버튼 -->
+    <div id="mobile-floating-buttons" class="mobile-floating-buttons">
+        <button id="mobile-filter-btn" class="mobile-fab" aria-label="오브젝트 필터">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
+            </svg>
+            <span>필터</span>
+        </button>
+        <button id="mobile-map-btn" class="mobile-fab" aria-label="맵 선택">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                <line x1="8" y1="2" x2="8" y2="18"></line>
+                <line x1="16" y1="6" x2="16" y2="22"></line>
+            </svg>
+            <span>맵</span>
+        </button>
+    </div>
+
     <!-- 우측: 맵 선택 패널 -->
     <div id="map-select-panel" class="side-panel">
         <!-- 탭 -->

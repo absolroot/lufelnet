@@ -343,12 +343,153 @@
             }
         },
 
+        // 모바일 감지
+        isMobile() {
+            return window.innerWidth <= 768;
+        },
+
+        // 모바일 바텀시트 초기화
+        initMobileBottomsheet() {
+            const panel = document.getElementById('object-filter-panel');
+            const filterBtn = document.getElementById('mobile-filter-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (!panel || !filterBtn) return;
+
+            // 바텀시트 헤더 추가 (한 번만)
+            if (!panel.querySelector('.bottomsheet-header')) {
+                const header = document.createElement('div');
+                header.className = 'bottomsheet-header';
+                header.innerHTML = `
+                    <div class="bottomsheet-handle"></div>
+                    <div class="bottomsheet-title" id="filter-panel-title">오브젝트 필터</div>
+                `;
+
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'bottomsheet-close';
+                closeBtn.innerHTML = '&times;';
+                closeBtn.addEventListener('click', () => this.closeMobilePanel());
+
+                panel.insertBefore(header, panel.firstChild);
+                panel.appendChild(closeBtn);
+            }
+
+            // 모바일 여부에 따라 클래스 토글
+            if (this.isMobile()) {
+                panel.classList.add('mobile-bottomsheet');
+            }
+
+            // 필터 버튼 클릭 이벤트
+            if (!filterBtn.dataset.eventBound) {
+                filterBtn.addEventListener('click', () => {
+                    this.toggleMobilePanel();
+                });
+                filterBtn.dataset.eventBound = 'true';
+            }
+
+            // 리사이즈 이벤트
+            if (!this._resizeHandler) {
+                this._resizeHandler = () => {
+                    const panel = document.getElementById('object-filter-panel');
+                    if (!panel) return;
+
+                    if (this.isMobile()) {
+                        panel.classList.add('mobile-bottomsheet');
+                    } else {
+                        panel.classList.remove('mobile-bottomsheet', 'open');
+                        const overlay = document.getElementById('mobile-overlay');
+                        if (overlay) overlay.classList.remove('active');
+                        const filterBtn = document.getElementById('mobile-filter-btn');
+                        if (filterBtn) filterBtn.classList.remove('active');
+                    }
+                };
+                window.addEventListener('resize', this._resizeHandler);
+            }
+        },
+
+        // 모바일 패널 토글
+        toggleMobilePanel() {
+            const panel = document.getElementById('object-filter-panel');
+            const filterBtn = document.getElementById('mobile-filter-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (!panel) return;
+
+            const isOpen = panel.classList.contains('open');
+
+            if (isOpen) {
+                this.closeMobilePanel();
+            } else {
+                // 다른 패널 닫기
+                if (window.MapSelectPanel) {
+                    window.MapSelectPanel.closeMobilePanel();
+                }
+
+                panel.classList.add('open');
+                if (filterBtn) filterBtn.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+            }
+        },
+
+        // 모바일 패널 닫기
+        closeMobilePanel() {
+            const panel = document.getElementById('object-filter-panel');
+            const filterBtn = document.getElementById('mobile-filter-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (panel) panel.classList.remove('open');
+            if (filterBtn) filterBtn.classList.remove('active');
+
+            // 맵 패널도 닫혀있으면 오버레이 숨김
+            const mapPanel = document.getElementById('map-select-panel');
+            if (mapPanel && !mapPanel.classList.contains('open')) {
+                if (overlay) overlay.classList.remove('active');
+            }
+        },
+
+        // 모바일 UI 번역
+        translateMobileUI() {
+            if (!window.MapsI18n) return;
+            const lang = window.MapsI18n.getCurrentLanguage();
+
+            const filterPanelTitle = document.getElementById('filter-panel-title');
+            if (filterPanelTitle) {
+                filterPanelTitle.textContent = window.MapsI18n.getText(lang, 'objectFilter') || '오브젝트 필터';
+            }
+
+            const filterBtnSpan = document.querySelector('#mobile-filter-btn span');
+            if (filterBtnSpan) {
+                filterBtnSpan.textContent = window.MapsI18n.getText(lang, 'filter') || '필터';
+            }
+        },
+
         // 초기화
         init() {
             this.initZoomControls();
             this.initFilterControls();
             this.translateUI();
             this.initLanguageSelector();
+            this.initMobileBottomsheet();
+            this.translateMobileUI();
+            this.initRandomPolygon();
+        },
+
+        // 랜덤 폴리곤 초기화
+        initRandomPolygon() {
+            const panel = document.getElementById('object-filter-panel');
+            if (!panel) return;
+
+            // 랜덤 CSS 변수 설정 (-1% ~ +1% 범위)
+            const randomValues = {};
+            for (let i = 1; i <= 4; i++) {
+                randomValues[`--random-x-${i}`] = (Math.random() * 2 - 1) + '%';
+                randomValues[`--random-y-${i}`] = (Math.random() * 2 - 1) + '%';
+            }
+
+            // CSS 변수 적용
+            Object.entries(randomValues).forEach(([key, value]) => {
+                panel.style.setProperty(key, value);
+            });
         }
     };
 })();

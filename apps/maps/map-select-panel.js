@@ -300,21 +300,24 @@
         updateMapList() {
             const container = document.getElementById('map-list');
             if (!container || !window.MapsCore || !window.MapsI18n) return;
-            
+
             // 빨간 폴리곤 레이어 제거
             document.querySelectorAll('.red-polygon-layer').forEach(layer => {
                 layer.remove();
             });
-            
+
             // 모든 active 클래스 제거
             document.querySelectorAll('.map-item.active, .map-sub-item.active').forEach(activeItem => {
                 activeItem.classList.remove('active');
             });
-            
+
             selectedMapItem = null;
-            
+
+            // 브레드크럼 업데이트 (맵 선택 전이므로 맵/서브맵은 "-"로 표시)
+            this.updateBreadcrumb();
+
             container.innerHTML = '';
-            
+
             if (!currentCategoryId) return;
             
             const mapsListData = window.MapsCore.getMapsListData();
@@ -716,17 +719,20 @@
             document.querySelectorAll('.map-item.active, .map-sub-item.active').forEach(activeItem => {
                 activeItem.classList.remove('active');
             });
-            
+
             item.classList.add('active');
             selectedMapItem = item;
-            
+
             // 빨간 폴리곤 레이어 표시
             this.showRedPolygonLayer(item);
-            
+
             // 맵 상태 저장 (배열인 경우 첫 번째 파일 저장)
             const fileToSave = Array.isArray(file) ? file[0] : file;
             this.saveMapState(currentMapId, currentCategoryId, fileToSave);
-            
+
+            // 브레드크럼 업데이트
+            this.updateBreadcrumb();
+
             if (window.MapsCore) {
                 // file이 배열이면 배열 전체를 전달, 아니면 단일 파일명 전달
                 window.MapsCore.loadMap(file);
@@ -820,11 +826,256 @@
             });
         },
 
+        // 모바일 감지
+        isMobile() {
+            return window.innerWidth <= 768;
+        },
+
+        // 모바일 바텀시트 초기화
+        initMobileBottomsheet() {
+            const panel = document.getElementById('map-select-panel');
+            const mapBtn = document.getElementById('mobile-map-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (!panel || !mapBtn) return;
+
+            // 바텀시트 헤더 추가 (한 번만)
+            if (!panel.querySelector('.bottomsheet-header')) {
+                const header = document.createElement('div');
+                header.className = 'bottomsheet-header';
+                header.innerHTML = `
+                    <div class="bottomsheet-handle"></div>
+                    <div class="bottomsheet-title" id="map-panel-title">맵 선택</div>
+                `;
+
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'bottomsheet-close';
+                closeBtn.innerHTML = '&times;';
+                closeBtn.addEventListener('click', () => this.closeMobilePanel());
+
+                panel.insertBefore(header, panel.firstChild);
+                panel.appendChild(closeBtn);
+            }
+
+            // 모바일 여부에 따라 클래스 토글
+            if (this.isMobile()) {
+                panel.classList.add('mobile-bottomsheet');
+            }
+
+            // 맵 버튼 클릭 이벤트
+            if (!mapBtn.dataset.eventBound) {
+                mapBtn.addEventListener('click', () => {
+                    this.toggleMobilePanel();
+                });
+                mapBtn.dataset.eventBound = 'true';
+            }
+
+            // 오버레이 클릭 시 닫기
+            if (overlay && !overlay.dataset.eventBound) {
+                overlay.addEventListener('click', () => {
+                    this.closeMobilePanel();
+                    if (window.ObjectFilterPanel) {
+                        window.ObjectFilterPanel.closeMobilePanel();
+                    }
+                });
+                overlay.dataset.eventBound = 'true';
+            }
+
+            // 리사이즈 이벤트
+            if (!this._resizeHandler) {
+                this._resizeHandler = () => {
+                    const panel = document.getElementById('map-select-panel');
+                    if (!panel) return;
+
+                    if (this.isMobile()) {
+                        panel.classList.add('mobile-bottomsheet');
+                    } else {
+                        panel.classList.remove('mobile-bottomsheet', 'open');
+                        const overlay = document.getElementById('mobile-overlay');
+                        if (overlay) overlay.classList.remove('active');
+                        const mapBtn = document.getElementById('mobile-map-btn');
+                        if (mapBtn) mapBtn.classList.remove('active');
+                    }
+                };
+                window.addEventListener('resize', this._resizeHandler);
+            }
+        },
+
+        // 모바일 패널 토글
+        toggleMobilePanel() {
+            const panel = document.getElementById('map-select-panel');
+            const mapBtn = document.getElementById('mobile-map-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (!panel) return;
+
+            const isOpen = panel.classList.contains('open');
+
+            if (isOpen) {
+                this.closeMobilePanel();
+            } else {
+                // 다른 패널 닫기
+                if (window.ObjectFilterPanel) {
+                    window.ObjectFilterPanel.closeMobilePanel();
+                }
+
+                panel.classList.add('open');
+                if (mapBtn) mapBtn.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+            }
+        },
+
+        // 모바일 패널 닫기
+        closeMobilePanel() {
+            const panel = document.getElementById('map-select-panel');
+            const mapBtn = document.getElementById('mobile-map-btn');
+            const overlay = document.getElementById('mobile-overlay');
+
+            if (panel) panel.classList.remove('open');
+            if (mapBtn) mapBtn.classList.remove('active');
+
+            // 필터 패널도 닫혀있으면 오버레이 숨김
+            const filterPanel = document.getElementById('object-filter-panel');
+            if (filterPanel && !filterPanel.classList.contains('open')) {
+                if (overlay) overlay.classList.remove('active');
+            }
+        },
+
+        // 모바일 UI 번역
+        translateMobileUI() {
+            if (!window.MapsI18n) return;
+            const lang = window.MapsI18n.getCurrentLanguage();
+
+            const mapPanelTitle = document.getElementById('map-panel-title');
+            if (mapPanelTitle) {
+                mapPanelTitle.textContent = window.MapsI18n.getText(lang, 'mapSelect') || '맵 선택';
+            }
+
+            const mapBtnSpan = document.querySelector('#mobile-map-btn span');
+            if (mapBtnSpan) {
+                mapBtnSpan.textContent = window.MapsI18n.getText(lang, 'map') || '맵';
+            }
+
+            // 브레드크럼도 업데이트
+            this.updateBreadcrumb();
+        },
+
+        // 브레드크럼 업데이트
+        updateBreadcrumb(submapName = null) {
+            const breadcrumb = document.getElementById('mobile-breadcrumb');
+            if (!breadcrumb || !window.MapsI18n || !window.MapsCore) return;
+
+            const lang = window.MapsI18n.getCurrentLanguage();
+            const mapsListData = window.MapsCore.getMapsListData();
+
+            // 탭 이름
+            const tabItem = breadcrumb.querySelector('[data-level="tab"]');
+            if (tabItem) {
+                tabItem.textContent = window.MapsI18n.getText(lang, currentMapId) || currentMapId;
+            }
+
+            // 카테고리 이름
+            const categoryItem = breadcrumb.querySelector('[data-level="category"]');
+            if (categoryItem) {
+                if (currentCategoryId && mapsListData && mapsListData.maps) {
+                    const currentMap = mapsListData.maps.find(m => m.id === currentMapId);
+                    if (currentMap && currentMap.categories) {
+                        const category = currentMap.categories.find(c => c.id === currentCategoryId);
+                        if (category) {
+                            categoryItem.textContent = window.MapsI18n.getMapName(category, lang);
+                        } else {
+                            categoryItem.textContent = '-';
+                        }
+                    } else {
+                        categoryItem.textContent = '-';
+                    }
+                } else {
+                    categoryItem.textContent = '-';
+                }
+            }
+
+            // 맵 이름 (선택된 아이템에서 가져오기)
+            const mapItem = breadcrumb.querySelector('[data-level="map"]');
+            const submapItem = breadcrumb.querySelector('[data-level="submap"]');
+            const submapSep = breadcrumb.querySelector('.breadcrumb-submap-sep');
+
+            if (mapItem) {
+                if (selectedMapItem) {
+                    // 선택된 아이템의 텍스트 가져오기
+                    const itemSpan = selectedMapItem.querySelector('span');
+                    const mapName = itemSpan ? itemSpan.textContent : '-';
+
+                    // 부모 맵이 있는지 확인 (서브맵인 경우)
+                    const parentSubList = selectedMapItem.closest('.map-sub-list');
+                    if (parentSubList) {
+                        // 부모 맵 아이템 찾기
+                        const parentMapItem = parentSubList.previousElementSibling;
+                        if (parentMapItem && (parentMapItem.classList.contains('map-item') || parentMapItem.classList.contains('map-sub-item'))) {
+                            const parentSpan = parentMapItem.querySelector('span');
+                            const parentName = parentSpan ? parentSpan.textContent : '';
+
+                            // 부모가 또 서브리스트 안에 있는지 확인 (2단계 깊이)
+                            const grandParentSubList = parentMapItem.closest('.map-sub-list');
+                            if (grandParentSubList) {
+                                const grandParentItem = grandParentSubList.previousElementSibling;
+                                if (grandParentItem) {
+                                    const grandParentSpan = grandParentItem.querySelector('span');
+                                    mapItem.textContent = grandParentSpan ? grandParentSpan.textContent : parentName;
+                                    // submapItem에 부모 + 현재 표시
+                                    if (submapItem && submapSep) {
+                                        submapItem.textContent = parentName + ' › ' + mapName;
+                                        submapItem.style.display = 'inline-block';
+                                        submapSep.style.display = 'inline';
+                                    }
+                                } else {
+                                    mapItem.textContent = parentName;
+                                    if (submapItem && submapSep) {
+                                        submapItem.textContent = mapName;
+                                        submapItem.style.display = 'inline-block';
+                                        submapSep.style.display = 'inline';
+                                    }
+                                }
+                            } else {
+                                // 1단계 서브맵
+                                mapItem.textContent = parentName;
+                                if (submapItem && submapSep) {
+                                    submapItem.textContent = mapName;
+                                    submapItem.style.display = 'inline-block';
+                                    submapSep.style.display = 'inline';
+                                }
+                            }
+                        } else {
+                            mapItem.textContent = mapName;
+                            if (submapItem && submapSep) {
+                                submapItem.style.display = 'none';
+                                submapSep.style.display = 'none';
+                            }
+                        }
+                    } else {
+                        // 최상위 맵 아이템
+                        mapItem.textContent = mapName;
+                        if (submapItem && submapSep) {
+                            submapItem.style.display = 'none';
+                            submapSep.style.display = 'none';
+                        }
+                    }
+                } else {
+                    mapItem.textContent = '-';
+                    if (submapItem && submapSep) {
+                        submapItem.style.display = 'none';
+                        submapSep.style.display = 'none';
+                    }
+                }
+            }
+        },
+
         // 초기화
         init() {
             this.setupTabs();
             this.setupCategorySelect();
             this.translateUI();
+            this.initMobileBottomsheet();
+            this.translateMobileUI();
         }
     };
 })();

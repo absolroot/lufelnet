@@ -496,12 +496,142 @@
 }
 
 @media screen and (max-width: 768px) {
+  /* 모바일에서 맵 선택 패널 숨김 (바텀시트로만 동작) */
   #map-select-panel {
-    width: 240px;
+    display: none;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 0;
   }
-  
-  .map-tab {
-    padding: 12px 15px;
+
+  /* 바텀시트 모드 */
+  #map-select-panel.mobile-bottomsheet {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .bottomsheet-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 16px;
+  }
+
+  /* 탭 스타일 조정 */
+  #map-select-panel.mobile-bottomsheet #map-tabs {
+    flex-direction: row;
+    padding: 0;
+    gap: 8px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-tab {
+    flex: 1;
+    aspect-ratio: 3 / 1;
     font-size: 14px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-tab[data-map-id="palace"] {
+    scale: 100%;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-tab[data-map-id="palace"] span {
+    transform: translate(-50%, calc(-50% + 5%)) rotate(-5deg);
+    font-size: 14px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-tab[data-map-id="mementoes"] {
+    background-size: 80%;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-tab[data-map-id="mementoes"] span {
+    transform: translate(calc(-50% - 20%), -50%) rotate(1deg);
+    font-size: 14px;
+  }
+
+  /* 카테고리 드롭다운 - 빨간 폴리곤보다 위에 */
+  #map-select-panel.mobile-bottomsheet #category-select-container {
+    padding: 12px 0;
+    border-bottom: none;
+    position: relative;
+    z-index: 2010;
+  }
+
+  #map-select-panel.mobile-bottomsheet .custom-category-select {
+    z-index: 2010;
+  }
+
+  #map-select-panel.mobile-bottomsheet .selected-category-option {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .selected-category-option .category-icon {
+    height: 36px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .category-options-container {
+    max-height: 200px;
+    z-index: 2011;
+  }
+
+  /* 맵 리스트 */
+  #map-select-panel.mobile-bottomsheet #map-list-container {
+    max-height: calc(70vh - 200px);
+    overflow-y: auto;
+    margin-top: 8px;
+    padding: 0;
+    padding-bottom: 100px; /* 하단 플로팅 버튼과 겹치지 않도록 */
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-item {
+    padding: 10px 16px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-item span {
+    font-size: 13px;
+    margin-left: 8px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-sub-item {
+    padding: 10px 16px 10px 40px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-sub-item span {
+    font-size: 12px;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-sub-list {
+    width: 92%;
+    margin-left: 4%;
+  }
+
+  /* 빨간 폴리곤 레이어 모바일 - 글씨 뒤로 */
+  #map-select-panel.mobile-bottomsheet .red-polygon-layer {
+    z-index: 1;
+  }
+
+  /* 맵 아이템 글씨가 빨간 폴리곤 위로 */
+  #map-select-panel.mobile-bottomsheet .map-item {
+    position: relative;
+    z-index: 2;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-item span {
+    position: relative;
+    z-index: 3;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-sub-item {
+    position: relative;
+    z-index: 2;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-sub-item span {
+    position: relative;
+    z-index: 3;
+  }
+
+  #map-select-panel.mobile-bottomsheet .map-item-toggle {
+    z-index: 3;
   }
 }

@@ -527,14 +527,14 @@
                 // BASE_URL 사용하여 정확한 경로 설정
                 const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
                 const response = await fetch(`${BASE}/apps/maps/non-interactive-icons.json`);
-                console.log('JSON 응답 상태:', response.status, response.ok);
+                // console.log('JSON 응답 상태:', response.status, response.ok);
                 if (response.ok) {
                     const data = await response.json();
                     console.log('JSON 데이터:', data);
                     this.nonInteractiveIcons = data.non_interactive_icons || [];
-                    console.log('비대화형 아이콘 목록 로드됨:', this.nonInteractiveIcons);
+                    // console.log('비대화형 아이콘 목록 로드됨:', this.nonInteractiveIcons);
                 } else {
-                    console.warn('비대화형 아이콘 JSON 로드 실패:', response.status);
+                    // console.warn('비대화형 아이콘 JSON 로드 실패:', response.status);
                 }
             } catch (error) {
                 console.warn('비대화형 아이콘 목록 로드 실패:', error);

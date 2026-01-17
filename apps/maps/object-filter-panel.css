@@ -12,6 +12,13 @@
   color: white;
   z-index: 1000;
   overflow-y: auto;
+  clip-path: polygon(
+    calc(-1% + var(--random-x-1)) calc(-1% + var(--random-y-1)),
+    calc(101% + var(--random-x-2)) calc(-1% + var(--random-y-2)),
+    calc(101% + var(--random-x-3)) calc(101% + var(--random-y-3)),
+    calc(-1% + var(--random-x-4)) calc(101% + var(--random-y-4))
+  );
+  box-shadow: -8px 8px 0px 0px rgba(220, 38, 38, 0.8);
 }
 
 #object-filter-panel h2 {
@@ -263,8 +270,98 @@
 }
 
 @media screen and (max-width: 768px) {
+  /* 모바일에서 필터 패널 숨김 (바텀시트로만 동작) */
   #object-filter-panel {
-    width: 200px;
-    padding: 15px;
+    display: none;
+    width: 100%;
+    max-height: 60vh;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 0;
+  }
+
+  /* 바텀시트 모드 */
+  #object-filter-panel.mobile-bottomsheet {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    padding-bottom: 100px; /* 하단 플로팅 버튼과 겹치지 않도록 */
+  }
+
+  #object-filter-panel.mobile-bottomsheet .bottomsheet-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 16px;
+  }
+
+  /* 타이틀 숨김 (바텀시트 헤더에서 표시) */
+  #object-filter-panel.mobile-bottomsheet h2 {
+    display: none;
+  }
+
+  /* 필터 컨트롤 */
+  #object-filter-panel.mobile-bottomsheet .filter-controls {
+    margin-bottom: 12px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .filter-control-btn {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  /* 필터 그리드 - 모바일에서 5열 */
+  #object-filter-panel.mobile-bottomsheet #filter-container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .filter-item {
+    padding: 6px;
+  }
+
+  /* 줌 컨트롤 표시 */
+  #object-filter-panel.mobile-bottomsheet .control-group {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .zoom-controls {
+    gap: 8px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .zoom-btn {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  /* 도움말 텍스트 */
+  #object-filter-panel.mobile-bottomsheet .info-text {
+    display: none;
+  }
+
+  /* 언어 선택기 */
+  #object-filter-panel.mobile-bottomsheet .language-selector-container {
+    margin-top: 16px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .selected-option {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .options-container {
+    bottom: auto;
+    top: 100%;
+    margin-top: 4px;
+    margin-bottom: 0;
+    border-radius: 0 0 4px 4px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .options-container.active {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
   }
 }

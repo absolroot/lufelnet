@@ -246,7 +246,7 @@
         openCategoryDropdown() {
             const optionsContainer = document.getElementById('category-options-container');
             if (optionsContainer) {
-                console.log('드롭다운 열기');
+                // console.log('드롭다운 열기');
                 optionsContainer.style.display = 'block';
             } else {
                 console.warn('optionsContainer를 찾을 수 없습니다.');
@@ -256,7 +256,7 @@
         closeCategoryDropdown() {
             const optionsContainer = document.getElementById('category-options-container');
             if (optionsContainer) {
-                console.log('드롭다운 닫기');
+                // console.log('드롭다운 닫기');
                 optionsContainer.style.display = 'none';
             }
         },

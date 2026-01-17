@@ -55,6 +55,12 @@
         // 공개 API
         getApp: () => app,
         getMapContainer: () => mapContainer,
+        
+        // 초기화 함수
+        async init() {
+            // 비대화형 아이콘 목록 로드
+            await this.loadNonInteractiveIcons();
+        },
         getTilesContainer: () => tilesContainer,
         getObjectsContainer: () => objectsContainer,
         getCurrentMapData: () => currentMapData,
@@ -512,6 +518,34 @@
             await Promise.all(promises);
         },
 
+        // 비대화형 아이콘 목록
+        nonInteractiveIcons: [],
+
+        // 비대화형 아이콘 목록 로드
+        async loadNonInteractiveIcons() {
+            try {
+                // BASE_URL 사용하여 정확한 경로 설정
+                const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
+                const response = await fetch(`${BASE}/apps/maps/non-interactive-icons.json`);
+                console.log('JSON 응답 상태:', response.status, response.ok);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('JSON 데이터:', data);
+                    this.nonInteractiveIcons = data.non_interactive_icons || [];
+                    console.log('비대화형 아이콘 목록 로드됨:', this.nonInteractiveIcons);
+                } else {
+                    console.warn('비대화형 아이콘 JSON 로드 실패:', response.status);
+                }
+            } catch (error) {
+                console.warn('비대화형 아이콘 목록 로드 실패:', error);
+            }
+        },
+
+        // 비대화형 아이콘인지 확인
+        isNonInteractiveIcon(imageName) {
+            return this.nonInteractiveIcons.includes(imageName);
+        },
+
         // Python _draw_entities 함수를 정확히 재현
         async loadObjects(objects) {
             const loadingText = document.getElementById('loading-text');
@@ -682,45 +716,56 @@
                         });
                     }
                     
-                    // 저장된 클릭 상태 확인 및 적용
-                    if (sprite.objectSn && window.ObjectClickHandler) {
+                    // 저장된 클릭 상태 확인 및 적용 (비대화형 아이콘 제외)
+                    const isNonInteractive = this.isNonInteractiveIcon(obj.image);
+                    console.log(`오브젝트: ${obj.image}, 비대화형: ${isNonInteractive}`);
+                    
+                    if (sprite.objectSn && window.ObjectClickHandler && !isNonInteractive) {
                         window.ObjectClickHandler.restoreClickedState(sprite);
                     }
                     
-                    // 클릭 이벤트 활성화
-                    sprite.eventMode = 'static';
-                    sprite.cursor = 'pointer';
-                    sprite.on('pointerdown', function() {
-                        if (this.objectSn && window.ObjectClickHandler) {
-                            window.ObjectClickHandler.toggleObjectClicked(this);
-                        }
-                        
-                        // 디버그: 파일 이름만 출력
-                        console.log('Object clicked:', this.debugInfo.image);
-                        
-                        // 상세 디버그 정보 (주석처리)
-                        // console.log('=== OBJECT DEBUG INFO (CLICKED) ===');
-                        // console.log('Index:', this.debugInfo.index);
-                        // console.log('Image:', this.debugInfo.image);
-                        // console.log('SN:', this.objectSn);
-                        // console.log('Original Position (JSON):', this.debugInfo.originalPosition);
-                        // console.log('Rotate:', this.debugInfo.rotate);
-                        // console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
-                        // console.log('Ratio:', this.debugInfo.ratio);
-                        // console.log('Texture Size:', this.debugInfo.textureSize);
-                        // console.log('Scaled Size:', this.debugInfo.scaledSize);
-                        // console.log('Computed:', this.debugInfo.computed);
-                        // console.log('Final Sprite Position:', [this.x, this.y]);
-                        // console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
-                        // console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
-                        // console.log('Sprite Anchor:', [this.anchor.x, this.anchor.y]);
-                        // console.log('=======================');
-                        
-                        // 화면에 디버그 패널 표시 (주석처리)
-                        // if (window.MapsDebug) {
-                        //     window.MapsDebug.showDebugPanel(this.debugInfo, this);
-                        // }
-                    });
+                    // 클릭 이벤트 활성화 (비대화형 아이콘 제외)
+                    if (!isNonInteractive) {
+                        sprite.eventMode = 'static';
+                        sprite.cursor = 'pointer';
+                        sprite.on('pointerdown', function() {
+                            if (this.objectSn && window.ObjectClickHandler) {
+                                window.ObjectClickHandler.toggleObjectClicked(this);
+                            }
+                            
+                            // 디버그: 파일 이름만 출력
+                            console.log('Object clicked:', this.debugInfo.image);
+                            
+                            // 상세 디버그 정보 (주석처리)
+                            // console.log('=== OBJECT DEBUG INFO (CLICKED) ===');
+                            // console.log('Index:', this.debugInfo.index);
+                            // console.log('Image:', this.debugInfo.image);
+                            // console.log('SN:', this.objectSn);
+                            // console.log('Original Position (JSON):', this.debugInfo.originalPosition);
+                            // console.log('Rotate:', this.debugInfo.rotate);
+                            // console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
+                            // console.log('Ratio:', this.debugInfo.ratio);
+                            // console.log('Texture Size:', this.debugInfo.textureSize);
+                            // console.log('Scaled Size:', this.debugInfo.scaledSize);
+                            // console.log('Computed:', this.debugInfo.computed);
+                            // console.log('Final Sprite Position:', [this.x, this.y]);
+                            // console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
+                            // console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
+                            // console.log('Sprite Anchor:', [this.anchor.x, this.anchor.y]);
+                            // console.log('Sprite Scale:', [this.scale.x, this.scale.y]);
+                            // console.log('=======================');
+                            
+                            // 화면에 디버그 패널 표시
+                            // if (window.MapsDebug) {
+                            //     window.MapsDebug.showDebugPanel(this.debugInfo, this);
+                            // }
+                        });
+                    } else {
+                        // 비대화형 아이콘은 클릭 이벤트 비활성화
+                        sprite.eventMode = 'none';
+                        sprite.cursor = 'default';
+                        //console.log(`비대화형 아이콘 처리: ${obj.image}`);
+                    }
                     
                     let objectType = obj.image;
                     if (objectType.startsWith('yishijie-icon-')) {
@@ -1047,4 +1092,7 @@
 
         // 디버그 패널 표시 (타일/오브젝트 공통)
     };
+
+    // 초기화 함수 호출
+    window.MapsCore.init();
 })();

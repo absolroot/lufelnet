@@ -17,6 +17,12 @@
             objects.forEach(obj => {
                 if (!obj || !obj.image) return;
                 
+                // 비대화형 아이콘은 필터에서 제외
+                if (window.MapsCore && window.MapsCore.isNonInteractiveIcon && 
+                    window.MapsCore.isNonInteractiveIcon(obj.image)) {
+                    return;
+                }
+                
                 // 오브젝트 타입 추출 (더 견고한 로직)
                 let type = obj.image;
                 // yishijie-icon- 접두사 제거

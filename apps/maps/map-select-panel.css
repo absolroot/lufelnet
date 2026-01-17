@@ -115,7 +115,7 @@
 
 /* 카테고리 드롭다운 */
 #category-select-container {
-  padding: 15px 20px;
+  padding: 15px 10px;
   border-bottom: 1px solid #333;
 }
 
@@ -130,7 +130,7 @@
 .selected-category-option {
   width: 100%;
   padding: 10px 0px;
-  padding-right: 30px; /* 화살표 공간 확보 */
+  padding-right: 10px; /* 화살표 공간 확보 */
   background: #1a1a1a;
   color: white;
   border: none;
@@ -151,7 +151,7 @@
 
 .selected-category-option .category-icon {
   width: auto;
-  height: 40px;
+  height: 48px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -396,8 +396,8 @@
   overflow: hidden;
   transition: max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out, padding 0.3s ease-in-out, background 0.3s ease-in-out;
   background: transparent;
-  width: 93%;
-  margin-left: 3%;
+  width: 89%;
+  margin-left: 5%;
   margin-top: 0;
   padding: 0;
   display: block;

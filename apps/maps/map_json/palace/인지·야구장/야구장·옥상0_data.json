@@ -14,7 +14,37 @@
             ]
         }
     ],
-    "objects": [],
+    "objects": [
+        {
+            "sn": 8351004,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                109,
+                35
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8351006,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                638,
+                899
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [],
     "map_size": [
         706,
         1024

@@ -4,7 +4,7 @@
             "image": "map_bqg_benlei1F.png",
             "position": [
                 892,
-                329
+                330
             ],
             "ratio": 1,
             "rotate": 0,
@@ -55,13 +55,58 @@
     ],
     "objects": [
         {
+            "sn": 8304006,
             "image": "yishijie-icon-box-suo-new.png",
             "position": [
                 1599,
-                785
+                786
             ],
             "ratio": 1.2916666666666667,
             "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8304020,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                1403,
+                944
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8304001,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1319,
+                850
+            ],
+            "ratio": 0.6888888888888889,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8304011,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                1701,
+                525
+            ],
+            "ratio": 1.0163934426229508,
+            "rotate": 0,
             "rotate_pivot": [
                 0.5,
                 0.5

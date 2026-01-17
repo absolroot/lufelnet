@@ -3,7 +3,7 @@
         {
             "image": "FDC_yiceng_zhuxian_02.png",
             "position": [
-                2043,
+                2044,
                 1744
             ],
             "ratio": 1,
@@ -133,7 +133,7 @@
         {
             "image": "FDC_yiceng_zhuxian_12.png",
             "position": [
-                1621,
+                1622,
                 962
             ],
             "ratio": 1,
@@ -250,7 +250,7 @@
         {
             "image": "FDC_yiceng_zhixian1_04.png",
             "position": [
-                417,
+                418,
                 526
             ],
             "ratio": 1,
@@ -536,7 +536,7 @@
         {
             "image": "FDC_yiceng_zhixian1_26.png",
             "position": [
-                823,
+                824,
                 1129
             ],
             "ratio": 1,
@@ -562,7 +562,7 @@
         {
             "image": "FDC_yiceng_zhixian1_28.png",
             "position": [
-                1023,
+                1024,
                 1507
             ],
             "ratio": 1,
@@ -614,8 +614,8 @@
         {
             "image": "FDC_yiceng_zhuxian_01.png",
             "position": [
-                849,
-                2071
+                850,
+                2072
             ],
             "ratio": 1,
             "rotate": 0,
@@ -640,7 +640,7 @@
         {
             "image": "FDC_yiceng_zhuxian_23.png",
             "position": [
-                1803,
+                1804,
                 2528
             ],
             "ratio": 1,
@@ -718,7 +718,7 @@
         {
             "image": "FDC_yiceng_zhixian2_05.png",
             "position": [
-                2293,
+                2294,
                 1320
             ],
             "ratio": 1,
@@ -822,7 +822,7 @@
         {
             "image": "FDC_yiceng_zhixian2_13.png",
             "position": [
-                3003,
+                3004,
                 1663
             ],
             "ratio": 1,
@@ -848,7 +848,7 @@
         {
             "image": "FDC_yiceng_zhixian2_15.png",
             "position": [
-                2827,
+                2828,
                 1632
             ],
             "ratio": 1,
@@ -874,7 +874,7 @@
         {
             "image": "FDC_yiceng_zhixian2_17.png",
             "position": [
-                2625,
+                2626,
                 1004
             ],
             "ratio": 1,
@@ -952,7 +952,7 @@
         {
             "image": "FDC_yiceng_zhixian2_23.png",
             "position": [
-                3083,
+                3084,
                 1028
             ],
             "ratio": 1,
@@ -991,7 +991,7 @@
         {
             "image": "FDC_yiceng_zhixian2_26.png",
             "position": [
-                2443,
+                2444,
                 1003
             ],
             "ratio": 1,
@@ -1069,7 +1069,7 @@
         {
             "image": "FDC_yiceng_zhixian2_32.png",
             "position": [
-                2481,
+                2482,
                 582
             ],
             "ratio": 1,
@@ -1225,7 +1225,7 @@
         {
             "image": "FDC_yiceng_zhuxian_17.png",
             "position": [
-                1377,
+                1378,
                 964
             ],
             "ratio": 1,
@@ -1238,10 +1238,11 @@
     ],
     "objects": [
         {
+            "sn": 8521107,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2146,
-                2206
+                2156,
+                2198
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1251,10 +1252,39 @@
             ]
         },
         {
+            "sn": 8521113,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2025,
+                1938
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521114,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2055,
+                2289
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521116,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2186,
-                2085
+                2196,
+                2078
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1264,10 +1294,11 @@
             ]
         },
         {
+            "sn": 8521154,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 1824,
-                1743
+                1737
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1277,10 +1308,39 @@
             ]
         },
         {
+            "sn": 8521174,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1471,
+                1788
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521175,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1471,
+                1590
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521203,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                1360,
-                1582
+                1361,
+                1587
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1290,10 +1350,109 @@
             ]
         },
         {
+            "sn": 8521222,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1491,
+                1374
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521223,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1461,
+                1359
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521225,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1572,
+                1487
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521243,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1280,
+                1194
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521244,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1491,
+                1207
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521249,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1421,
+                1117
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521273,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1824,
+                1073
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521275,
             "image": "yishijie-icon-box-hexin-new.png",
             "position": [
-                1743,
-                1268
+                1753,
+                1274
             ],
             "ratio": 1.625,
             "rotate": 0.0,
@@ -1303,10 +1462,11 @@
             ]
         },
         {
+            "sn": 8521277,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                1924,
-                1089
+                1934,
+                1096
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1316,10 +1476,53 @@
             ]
         },
         {
+            "sn": 8521282,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1814,
+                978
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521283,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1693,
+                1056
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521285,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1783,
+                926
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521305,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 1914,
-                818
+                825
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1329,10 +1532,11 @@
             ]
         },
         {
+            "sn": 8521354,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 1199,
-                455
+                454
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1342,9 +1546,10 @@
             ]
         },
         {
+            "sn": 8521372,
             "image": "yishijie-icon-box-teshu-new.png",
             "position": [
-                1199,
+                1209,
                 232
             ],
             "ratio": 1.625,
@@ -1355,10 +1560,81 @@
             ]
         },
         {
+            "sn": 8521425,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                565,
+                678
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521463,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                333,
+                465
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521484,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                615,
+                858
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521504,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                253,
+                953
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521509,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                293,
+                1087
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521552,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 605,
-                918
+                915
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1368,10 +1644,53 @@
             ]
         },
         {
+            "sn": 8521553,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                525,
+                946
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521571,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                223,
+                1134
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521575,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                152,
+                1207
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521592,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                1,
-                1089
+                11,
+                1096
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1381,12 +1700,41 @@
             ]
         },
         {
+            "sn": 8521602,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                787,
+                958
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521625,
             "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1038,
+                785
+            ],
+            "ratio": 1.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521677,
+            "image": "yishijie-icon-jiguan01-re-new.png",
             "position": [
                 1028,
-                787
+                1179
             ],
-            "ratio": 1.95,
+            "ratio": 1.9024390243902438,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -1394,10 +1742,11 @@
             ]
         },
         {
+            "sn": 8521702,
             "image": "yishijie-icon-box-hexin-new.png",
             "position": [
-                1088,
-                1178
+                1099,
+                1184
             ],
             "ratio": 1.625,
             "rotate": 0.0,
@@ -1407,10 +1756,39 @@
             ]
         },
         {
+            "sn": 8521771,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1069,
+                1494
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521772,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1008,
+                1645
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521773,
             "image": "yishijie-icon-box-teshu-new.png",
             "position": [
-                1199,
-                1580
+                1209,
+                1585
             ],
             "ratio": 1.625,
             "rotate": 0.0,
@@ -1420,10 +1798,39 @@
             ]
         },
         {
+            "sn": 8521832,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                555,
+                1454
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521834,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                716,
+                1645
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521838,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 746,
-                1753
+                1757
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1433,10 +1840,11 @@
             ]
         },
         {
+            "sn": 8521840,
             "image": "yishijie-icon-box-suo-new.png",
             "position": [
-                514,
-                1761
+                525,
+                1765
             ],
             "ratio": 1.625,
             "rotate": 0.0,
@@ -1446,10 +1854,39 @@
             ]
         },
         {
+            "sn": 8521848,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                545,
+                1748
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521906,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2549,
+                1427
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521952,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2126,
-                1522
+                2136,
+                1527
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1459,10 +1896,25 @@
             ]
         },
         {
+            "sn": 8521961,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2589,
+                1174
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521971,
             "image": "yishijie-icon-box-teshu-new.png",
             "position": [
                 2760,
-                1208
+                1204
             ],
             "ratio": 1.625,
             "rotate": 0.0,
@@ -1472,10 +1924,193 @@
             ]
         },
         {
+            "sn": 8521974,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2508,
+                1207
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521975,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                2518,
+                978
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521976,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2458,
+                1068
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521977,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2468,
+                1137
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521978,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2599,
+                1006
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521979,
+            "image": "yishijie-icon-suo-new.png",
+            "position": [
+                2498,
+                1147
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521980,
+            "image": "yishijie-icon-suo-new.png",
+            "position": [
+                2589,
+                996
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521985,
+            "image": "yishijie-icon-jiguan02-re-new.png",
+            "position": [
+                2770,
+                1001
+            ],
+            "ratio": 1.7727272727272727,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521986,
+            "image": "yishijie-icon-jiguan02-re-new.png",
+            "position": [
+                2680,
+                971
+            ],
+            "ratio": 1.7727272727272727,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521987,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2680,
+                1219
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211032,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2659,
+                866
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211033,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2720,
+                878
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211106,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                3193,
+                1033
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211108,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                3143,
-                1089
+                3153,
+                1086
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1485,10 +2120,67 @@
             ]
         },
         {
+            "sn": 85211115,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                3203,
+                956
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211116,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                3394,
+                1137
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211118,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                3274,
+                966
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211202,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                3193,
+                1585
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211208,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 3163,
-                1733
+                1727
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1498,10 +2190,53 @@
             ]
         },
         {
+            "sn": 85211215,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                3102,
+                1670
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211216,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                3253,
+                1748
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211291,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2186,
+                773
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211293,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2287,
-                787
+                2297,
+                795
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1511,10 +2246,11 @@
             ]
         },
         {
+            "sn": 85211322,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                1955,
-                677
+                1965,
+                685
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1524,10 +2260,25 @@
             ]
         },
         {
+            "sn": 85211361,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2438,
+                693
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211364,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2509,
-                586
+                2518,
+                584
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1537,10 +2288,11 @@
             ]
         },
         {
+            "sn": 85211408,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 2831,
-                647
+                645
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1550,10 +2302,123 @@
             ]
         },
         {
+            "sn": 85211416,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2841,
+                545
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211417,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2680,
+                605
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211419,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                2559,
+                527
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211420,
+            "image": "yishijie-icon-jiguan02-re-new.png",
+            "position": [
+                2891,
+                460
+            ],
+            "ratio": 1.7727272727272727,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211428,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2810,
+                297
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211431,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                2760,
+                497
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211451,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2438,
+                232
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 180.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211452,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2257,
+                242
+            ],
+            "ratio": 2.2941176470588234,
+            "rotate": 180.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211456,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2388,
-                3
+                2398,
+                13
             ],
             "ratio": 1.95,
             "rotate": 0.0,
@@ -1563,10 +2428,53 @@
             ]
         },
         {
+            "sn": 85211461,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2237,
+                154
+            ],
+            "ratio": 2.888888888888889,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211462,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2377,
+                186
+            ],
+            "ratio": 1.9024390243902438,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211465,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2549,
+                64
+            ],
+            "ratio": 2.0526315789473686,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 85211501,
             "image": "yishijie-icon-box-hexin-new.png",
             "position": [
-                2952,
-                534
+                2951,
+                532
             ],
             "ratio": 1.625,
             "rotate": 0.0,
@@ -1576,39 +2484,212 @@
             ]
         },
         {
+            "sn": 8524118,
             "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1501,
+                685
+            ],
+            "ratio": 1.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8524120,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1401,
+                1025
+            ],
+            "ratio": 1.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8524121,
+            "image": "yishijie-icon-box-hexin-new.png",
             "position": [
                 1491,
-                677
-            ],
-            "ratio": 1.95,
-            "rotate": 0.0,
-            "rotate_pivot": [
-                0.5,
-                0.5
-            ]
-        },
-        {
-            "image": "yishijie-icon-box-01-new.png",
-            "position": [
-                1391,
-                1019
-            ],
-            "ratio": 1.95,
-            "rotate": 0.0,
-            "rotate_pivot": [
-                0.5,
-                0.5
-            ]
-        },
-        {
-            "image": "yishijie-icon-box-hexin-new.png",
-            "position": [
-                1481,
-                966
+                963
             ],
             "ratio": 1.625,
             "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8521201,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                615,
+                392
+            ],
+            "ratio": 1.278688524590164,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521202,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                505,
+                1344
+            ],
+            "ratio": 1.278688524590164,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521203,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                2982,
+                1424
+            ],
+            "ratio": 1.278688524590164,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521701,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2035,
+                2537
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521702,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2035,
+                1705
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521703,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1854,
+                983
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521704,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1280,
+                472
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521705,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                827,
+                1164
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521706,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                404,
+                562
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521707,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2861,
+                803
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8521708,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2498,
+                1314
+            ],
+            "ratio": 0.8666666666666667,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8524013,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                1461,
+                923
+            ],
+            "ratio": 1.278688524590164,
+            "rotate": 0,
             "rotate_pivot": [
                 0.5,
                 0.5

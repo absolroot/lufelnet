@@ -31,6 +31,29 @@ alternate_urls:
             마우스 드래그: 이동<br>
             마우스 휠: 줌
         </div>
+        <!-- language selector -->
+        <div class="language-selector-container">
+            <div class="custom-select">
+                <div class="selected-option">
+                    <img src="" alt="" class="flag-icon">
+                    <span></span>
+                </div>
+                <div class="options-container">
+                    <div class="option" data-value="kr" role="button" tabindex="0">
+                        <img src="" alt="kr" class="flag-icon">
+                        <span>한국어</span>
+                    </div>
+                    <div class="option" data-value="en" role="button" tabindex="0">
+                        <img src="" alt="en" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                    <div class="option" data-value="jp" role="button" tabindex="0">
+                        <img src="" alt="jp" class="flag-icon">
+                        <span>日本語</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- 우측: 맵 선택 패널 -->
@@ -57,6 +80,7 @@ alternate_urls:
 
 <script src="https://pixijs.download/release/pixi.min.js"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-debug.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-core.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/object-filter-panel.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/map-select-panel.js?v={{ site.time | date: '%s' }}"></script>

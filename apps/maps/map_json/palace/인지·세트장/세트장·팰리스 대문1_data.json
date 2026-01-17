@@ -12,10 +12,11 @@
     ],
     "objects": [
         {
+            "sn": 8401004,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                228,
-                677
+                235,
+                670
             ],
             "ratio": 0.3,
             "rotate": 0.0,
@@ -25,10 +26,11 @@
             ]
         },
         {
+            "sn": 8401005,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                205,
-                392
+                213,
+                393
             ],
             "ratio": 0.3,
             "rotate": 0.0,
@@ -38,6 +40,7 @@
             ]
         }
     ],
+    "enemies": [],
     "map_size": [
         516,
         864

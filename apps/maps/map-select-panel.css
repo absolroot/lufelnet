@@ -4,47 +4,109 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 400px;
+  width: 320px;
   max-height: calc(100vh - 40px);
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 8px;
+  background: transparent;
+  border-radius: 0;
   color: white;
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
+  gap: 10px;
 }
 
 /* 탭 */
 #map-tabs {
   display: flex;
-  border-bottom: 2px solid #333;
+  flex-direction: column;
   padding: 0;
+  gap: 10px;
+  background: transparent;
 }
 
 .map-tab {
-  flex: 1;
-  padding: 15px 20px;
-  background: transparent;
-  color: #aaa;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
   border: none;
-  border-bottom: 2px solid transparent;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
+  display: block;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  /* 이미지 비율 유지 (가로로 긴 이미지) */
+  aspect-ratio: 4 / 1;
+  filter: brightness(0.5);
+}
+
+/* 배경 이미지는 JavaScript에서 동적으로 설정됨 */
+
+.map-tab span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .map-tab:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .map-tab.active {
-  color: #fff;
-  border-bottom-color: #800000;
-  background: rgba(128, 0, 0, 0.1);
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+/* active 상태가 아닐 때 호버 효과 */
+.map-tab:not(.active):hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* active 상태일 때 호버 효과 */
+.map-tab.active:hover {
+  transform: scale(1.08);
+  filter: brightness(1.3);
+}
+
+.map-tab[data-map-id="palace"] {
+  scale: 125%;
+}
+
+/* 메멘토스 탭 이미지 크기 조정 */
+.map-tab[data-map-id="mementoes"] {
+  background-size: 90%;
+}
+
+/* 팰리스 탭 글씨 위치 - 아래로 1% 이동 */
+.map-tab[data-map-id="palace"] span {
+  transform: translate(-50%, calc(-50% + 10%)) rotate(-5deg);
+  
+}
+
+/* 메멘토스 탭 글씨 위치 - 왼쪽으로 5% 이동 */
+.map-tab[data-map-id="mementoes"] span {
+  transform: translate(calc(-50% - 30%), -50%) rotate(1deg);
+  font-size: 20px;
+}
+
+/* 메멘토스 탭 호버 효과 */
+.map-tab[data-map-id="mementoes"]:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 /* 카테고리 드롭다운 */
@@ -58,10 +120,12 @@
   padding: 10px;
   background: #1a1a1a;
   color: white;
-  border: 1px solid #444;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 .category-select:focus {
@@ -73,14 +137,21 @@
 #map-list-container {
   flex: 1;
   overflow-y: auto;
-  padding: 10px 0;
+  overflow-x: hidden;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  margin-top: 10px;
 }
 
 #map-list {
-  padding: 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* 맵 아이템 스타일 */
+/* 맵 아이템 스타일 - 배경과 텍스트 분리 */
 .map-item {
   display: flex;
   align-items: center;
@@ -92,32 +163,108 @@
   box-sizing: border-box;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  background-color: #121212;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  background-color: transparent;
   cursor: pointer;
   position: relative;
+  margin-bottom: 0;
+  overflow: visible;
 }
 
-.map-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+
+/* 맵 아이템 배경 폴리곤 (검정) - 맨 뒤 */
+.map-item-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 각 맵 아이템 배경에 서로 다른 폴리곤 모양 적용 (0-2%, 98-100% 범위 내) */
+.map-item:nth-child(1) .map-item-bg {
+  clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 2% 94%);
+}
+
+.map-item:nth-child(2) .map-item-bg {
+  clip-path: polygon(1% 1%, 98% 10%, 96% 96%, 1% 95%);
+}
+
+.map-item:nth-child(3) .map-item-bg {
+  clip-path: polygon(0% 2%, 100% 9%, 98% 97%, 2% 94%);
+}
+
+.map-item:nth-child(4) .map-item-bg {
+  clip-path: polygon(2% 0%, 98% 11%, 96% 95%, 0% 96%);
+}
+
+.map-item:nth-child(5) .map-item-bg {
+  clip-path: polygon(0% 1%, 99% 8%, 97% 98%, 2% 99%);
+}
+
+.map-item:nth-child(6) .map-item-bg {
+  clip-path: polygon(1% 2%, 98% 10%, 95% 95%, 2% 97%);
+}
+
+.map-item:nth-child(7) .map-item-bg {
+  clip-path: polygon(0% 1%, 100% 11%, 96% 96%, 1% 94%);
+}
+
+.map-item:nth-child(8) .map-item-bg {
+  clip-path: polygon(2% 2%, 98% 9%, 98% 97%, 0% 95%);
+}
+
+.map-item:nth-child(9) .map-item-bg {
+  clip-path: polygon(0% 2%, 99% 8%, 95% 98%, 2% 95%);
+}
+
+.map-item:nth-child(10) .map-item-bg {
+  clip-path: polygon(1% 0%, 98% 12%, 96% 95%, 0% 96%);
+}
+
+/* 10개 이상인 경우 반복 */
+.map-item:nth-child(n+11) .map-item-bg {
+  clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 2% 94%);
+}
+
+.map-item:hover .map-item-bg {
+  background-color: rgb(33, 33, 33);
 }
 
 .map-item.active {
-  background-color: #800000;
-  border-top-color: rgba(255, 255, 255, 0.1);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* 활성화된 메뉴의 빨간 폴리곤 레이어 - map-select-panel 안에 추가됨 (JavaScript) */
+.red-polygon-layer {
+  position: absolute;
+  background-color: rgba(128, 0, 0, 0.75);
   animation: subtle-liquid 2s infinite linear;
+  z-index: 1001;
+  pointer-events: none;
+  /* clip-path 없이 배경을 벗어날 수 있도록 함 */
+  /* 검정 폴리곤(맨 뒤, z-index: 1000) < 빨간 폴리곤(중간, z-index: 1001) < 글씨(맨 앞, z-index: 1002) 순서 */
+  /* map-select-panel 안에 추가되어 같은 stacking context에 있음 */
+}
+
+
+.map-item span {
+  position: relative;
+  z-index: 1002;
+  color: #ffffff;
+  font-weight: normal;
 }
 
 .map-item.active span {
-  color: #ffffff;
   font-weight: 600;
+  /* 글씨가 빨간 폴리곤 위에 오도록 (z-index: 1002) */
 }
 
 .map-item span {
   font-size: 14px;
-  margin-left: 0;
+  margin-left: 10px;
 }
 
 .map-item.has-submaps {
@@ -135,62 +282,100 @@
   color: #aaa;
   font-size: 12px;
   transition: transform 0.3s ease;
+  z-index: 1003;
+  pointer-events: none;
 }
 
 .map-item.expanded .map-item-toggle {
   transform: rotate(90deg);
 }
 
+/* 하위 메뉴 리스트 - 하위 메뉴에 붙어있고 가로폭 3%~96% */
 .map-sub-list {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-  background-color: #0a0a0a;
-  width: 100%;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, margin-top 0.3s ease-in-out, padding 0.3s ease-in-out, background 0.3s ease-in-out;
+  background: transparent;
+  width: 93%;
+  margin-left: 3%;
+  margin-top: 0;
+  padding: 0;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+  position: relative;
 }
 
 .map-item.expanded + .map-sub-list,
 .map-sub-item.expanded + .map-sub-list {
-  max-height: 1000px;
+  max-height: 2000px;
+  margin-top: -20px;
+  background: rgb(188 188 188);
+  padding: 8px;
+  border-radius: 0px;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
 }
 
+/* 하위 맵 아이템 - 연한 회색 배경, 활성화 시 빨간 폴리곤 */
 .map-sub-item {
   display: flex;
   align-items: center;
   padding: 12px 20px 12px 48px;
-  color: #ffffff;
+  color: #1e1e1e;
   text-decoration: none;
   transition: all 0.3s ease;
   width: 100%;
   box-sizing: border-box;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  background-color: #0f0f0f;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  background-color: transparent;
   cursor: pointer;
   position: relative;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.map-sub-item:last-child {
+  margin-bottom: 0;
 }
 
 .map-sub-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .map-sub-item.active {
-  background-color: #800000;
-  border-top-color: rgba(255, 255, 255, 0.1);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-  animation: subtle-liquid 2s infinite linear;
+  background-color: transparent;
+  color: #ffffff;
+  position: relative;
+  z-index: 1002;
 }
 
+/* 활성화된 하위 메뉴의 빨간 폴리곤 레이어는 .red-polygon-layer 클래스로 공통 스타일 사용 */
+
 .map-sub-item.active span {
-  color: #ffffff;
+  position: relative;
+  z-index: 1002;
   font-weight: 600;
+  /* 글씨가 빨간 폴리곤 위에 오도록 - stacking context를 벗어나기 위해 */
+  transform: translateZ(0);
+  isolation: isolate;
 }
 
 .map-sub-item span {
+  position: relative;
+  z-index: 1002;
   font-size: 13px;
   margin-left: 0;
+  color: #111;
+}
+
+.map-sub-item.has-submaps {
+  padding-right: 50px;
 }
 
 /* 활성 애니메이션 */
@@ -211,13 +396,13 @@
 /* 반응형 */
 @media screen and (max-width: 1024px) {
   #map-select-panel {
-    width: 350px;
+    width: 280px;
   }
 }
 
 @media screen and (max-width: 768px) {
   #map-select-panel {
-    width: 300px;
+    width: 240px;
   }
   
   .map-tab {

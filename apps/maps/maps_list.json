@@ -21,7 +21,9 @@
               "name": "야구장 정문",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·야구장/야구장·정문0_data.json",
+              "file": [
+                "palace/인지·야구장/야구장·정문0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -31,7 +33,7 @@
               "name": "전시관",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -41,7 +43,9 @@
                   "name": "전시홀 1층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·야구장/야구장·전시관 동쪽_전시홀 1층_data.json",
+                  "file": [
+                    "palace/인지·야구장/야구장·전시관 동쪽_전시홀 1층_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -51,7 +55,9 @@
                   "name": "전시홀 2층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·야구장/야구장·전시관 동쪽_ 전시홀 2층_data.json",
+                  "file": [
+                    "palace/인지·야구장/야구장·전시관 동쪽_ 전시홀 2층_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -63,7 +69,9 @@
               "name": "훈련관",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·야구장/야구장·훈련관0_data.json",
+              "file": [
+                "palace/인지·야구장/야구장·훈련관0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -73,7 +81,9 @@
               "name": "옥상",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·야구장/야구장·옥상0_data.json",
+              "file": [
+                "palace/인지·야구장/야구장·옥상0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -83,7 +93,7 @@
               "name": "클럽",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -93,7 +103,9 @@
                   "name": "클럽 1층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·야구장/야구장·클럽 1층 01_클럽 1층_data.json",
+                  "file": [
+                    "palace/인지·야구장/야구장·클럽 1층 01_클럽 1층_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -103,7 +115,9 @@
                   "name": "클럽 2층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·야구장/야구장·클럽 1층 01_ 클럽 2층_data.json",
+                  "file": [
+                    "palace/인지·야구장/야구장·클럽 1층 01_ 클럽 2층_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -113,7 +127,9 @@
                   "name": "클럽 3층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·야구장/야구장·클럽 1층 01_ 클럽 3층_data.json",
+                  "file": [
+                    "palace/인지·야구장/야구장·클럽 1층 01_ 클럽 3층_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -125,7 +141,9 @@
               "name": "메인 필드",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·야구장/야구장·메인 필드0_data.json",
+              "file": [
+                "palace/인지·야구장/야구장·메인 필드0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -143,17 +161,9 @@
               "name": "도시 밖 숲",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·팰리스 밖 숲0_data.json",
-              "description": "",
-              "description_en": "",
-              "description_jp": ""
-            },
-            {
-              "id": "palace_main_gate",
-              "name": "팰리스 대문",
-              "name_en": "",
-              "name_jp": "",
-              "file": "palace/인지·세트장/세트장·팰리스 대문0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·팰리스 밖 숲0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -163,7 +173,9 @@
               "name": "스튜디오",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·스튜디오0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·스튜디오0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -173,7 +185,9 @@
               "name": "산노마루",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·산노마루0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·산노마루0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -183,7 +197,9 @@
               "name": "니노마루",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·니노마루0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·니노마루0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -193,7 +209,9 @@
               "name": "혼마루",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·혼마루0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·혼마루0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -203,7 +221,9 @@
               "name": "천수각 아래층",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·천수각 아래층0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·천수각 아래층0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -213,7 +233,9 @@
               "name": "천수각 중간층",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·천수각 중간층0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·천수각 중간층0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -223,7 +245,9 @@
               "name": "천수각 맨 위층",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·천수각 맨 위층0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·천수각 맨 위층0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -233,7 +257,9 @@
               "name": "서쪽 옥외",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·서쪽 옥외0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·서쪽 옥외0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -243,7 +269,22 @@
               "name": "동쪽 옥외",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·세트장/세트장·동쪽 옥외0_data.json",
+              "file": [
+                "palace/인지·세트장/세트장·동쪽 옥외0_data.json"
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            },
+            {
+              "id": "palace_main_gate",
+              "name": "팰리스 대문",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/인지·세트장/세트장·팰리스 대문0_data.json",
+                "palace/인지·세트장/세트장·팰리스 대문1_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -261,7 +302,9 @@
               "name": "댐 입구",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·분노의 댐/댐·입구0_data.json",
+              "file": [
+                "palace/인지·분노의 댐/댐·입구0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -271,7 +314,9 @@
               "name": "기념 광장",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·분노의 댐/댐·기념 광장0_data.json",
+              "file": [
+                "palace/인지·분노의 댐/댐·기념 광장0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -281,17 +326,9 @@
               "name": "댐 꼭대기",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·분노의 댐/댐·댐마루0_data.json",
-              "description": "",
-              "description_en": "",
-              "description_jp": ""
-            },
-            {
-              "id": "opposite_side",
-              "name": "건너편",
-              "name_en": "",
-              "name_jp": "",
-              "file": "palace/인지·분노의 댐/댐·건너편0_data.json",
+              "file": [
+                "palace/인지·분노의 댐/댐·댐마루0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -301,7 +338,7 @@
               "name": "수처리장",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·분노의 댐/댐·수처리장0_data.json",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -311,7 +348,9 @@
                   "name": "수처리장 저층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/댐·저층 생산 구역0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/댐·저층 생산 구역0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -321,7 +360,9 @@
                   "name": "수처리장 중층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/댐·중층 생산 구역0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/댐·중층 생산 구역0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -331,7 +372,9 @@
                   "name": "수처리장 상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/댐·고층 생산 구역0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/댐·고층 생산 구역0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -341,7 +384,9 @@
                   "name": "수처리장 터널",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/댐·주행 터널0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/댐·주행 터널0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -353,7 +398,7 @@
               "name": "발전소",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -363,7 +408,9 @@
                   "name": "발전소 1층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/3장 발전소 1층0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/3장 발전소 1층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -373,7 +420,9 @@
                   "name": "발전소 2층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/3장 발전소 2층0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/3장 발전소 2층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -383,12 +432,29 @@
                   "name": "발전소 3층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·분노의 댐/3장 발전소 3층0_data.json",
+                  "file": [
+                    "palace/인지·분노의 댐/3장 발전소 3층0_data.json",
+                    "palace/인지·분노의 댐/3장 발전소 3층1_data.json",
+                    "palace/인지·분노의 댐/3장 발전소 3층2_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
                 }
               ]
+            },
+            {
+              "id": "opposite_side",
+              "name": "건너편",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/인지·분노의 댐/댐·건너편0_data.json",
+                "palace/인지·분노의 댐/댐·건너편1_data.json"
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
             }
           ]
         },
@@ -403,7 +469,9 @@
               "name": "제어 중심",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·폭식의 댐/3장 컨트롤 센터 0_data.json",
+              "file": [
+                "palace/인지·폭식의 댐/3장 컨트롤 센터 0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -413,7 +481,9 @@
                   "name": "컨트롤 센터 하층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/3장 컨트롤 센터 하층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 하층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -423,17 +493,9 @@
                   "name": "컨트롤 센터 상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/3장 컨트롤 센터 상층0_data.json",
-                  "description": "",
-                  "description_en": "",
-                  "description_jp": ""
-                },
-                {
-                  "id": "courtyard_plaza",
-                  "name": "중정 광장",
-                  "name_en": "",
-                  "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/3장 컨트롤 센터 중정 광장0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 상층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -443,7 +505,23 @@
                   "name": "핵심 통제실",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/3장 컨트롤 센터 핵심 통제실0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 핵심 통제실0_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "courtyard_plaza",
+                  "name": "중정 광장",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 중정 광장0_data.json",
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 중정 광장1_data.json",
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 중정 광장2_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -455,17 +533,32 @@
               "name": "급수탑·정신 에너지",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
               "submaps": [
                 {
+                  "id": "spirit_tower_top",
+                  "name": "정신탑 최상층",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·정신 에너지탑 최상층0_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
                   "id": "spirit_tower_lower",
                   "name": "정신탑 하층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·정신 에너지탑 하층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·정신 에너지탑 하층0_data.json",
+                    "palace/인지·폭식의 댐/댐·정신 에너지탑 하층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -475,17 +568,24 @@
                   "name": "정신탑 중층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·정신 에너지탑 중층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·정신 에너지탑 중층0_data.json",
+                    "palace/인지·폭식의 댐/댐·정신 에너지탑 중층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
                 },
                 {
-                  "id": "spirit_tower_top",
-                  "name": "정신탑 최상층",
+                  "id": "spirit_tower_blocked",
+                  "name": "정신탑 봉쇄구역",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·정신 에너지탑 최상층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 _1층_data.json",
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 _2층_data.json",
+                    "palace/인지·폭식의 댐/3장 컨트롤 센터 _3층_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -497,17 +597,32 @@
               "name": "급수탑·열 에너지",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
               "submaps": [
                 {
+                  "id": "heat_tower_blocked",
+                  "name": "열에너지탑 구역",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·수처리장0_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
                   "id": "heat_tower_lower",
                   "name": "열에너지탑 하층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·열에너지탑 하층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·열에너지탑 하층0_data.json",
+                    "palace/인지·폭식의 댐/댐·열에너지탑 하층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -517,7 +632,10 @@
                   "name": "열에너지탑 중층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·열에너지탑 중층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·열에너지탑 중층0_data.json",
+                    "palace/인지·폭식의 댐/댐·열에너지탑 중층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -527,7 +645,10 @@
                   "name": "열에너지탑 최상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·열에너지탑 최상층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·열에너지탑 최상층0_data.json",
+                    "palace/인지·폭식의 댐/댐·열에너지탑 최상층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -539,7 +660,7 @@
               "name": "급수탑·전기 에너지",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -549,17 +670,9 @@
                   "name": "전기 에너지탑 최상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·전기 에너지탑 최상층0_data.json",
-                  "description": "",
-                  "description_en": "",
-                  "description_jp": ""
-                },
-                {
-                  "id": "electric_tower_middle",
-                  "name": "전기 에너지탑 중층",
-                  "name_en": "",
-                  "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·전기 에너지탑 중층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·전기 에너지탑 최상층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -569,7 +682,46 @@
                   "name": "전기 에너지탑 하층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·폭식의 댐/댐·전기 에너지탑 하층0_data.json",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·전기 에너지탑 하층0_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "electric_tower_high",
+                  "name": "전기 에너지탑 상",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·급수탑 전기탑 10_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "electric_tower_low",
+                  "name": "전기 에너지탑 하",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·급수탑 전기탑 20_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "electric_tower_middle",
+                  "name": "전기 에너지탑 중층",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·폭식의 댐/댐·전기 에너지탑 중층0_data.json",
+                    "palace/인지·폭식의 댐/댐·전기 에너지탑 중층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -581,7 +733,9 @@
               "name": "폐기된 급수탑",
               "name_en": "",
               "name_jp": "",
-              "file": "palace/인지·폭식의 댐/댐·폐기된 탑0_data.json",
+              "file": [
+                "palace/인지·폭식의 댐/댐·폐기된 탑0_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -599,7 +753,7 @@
               "name": "개미굴·저층",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -609,7 +763,9 @@
                   "name": "섀도 집결지",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·섀도 집결지0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·섀도 집결지0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -621,7 +777,7 @@
               "name": "빈민굴",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -631,7 +787,9 @@
                   "name": "빈민굴 B1",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·빈민굴 B10_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·빈민굴 B10_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -641,7 +799,9 @@
                   "name": "빈민굴 B2",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·빈민굴 B20_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·빈민굴 B20_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -653,7 +813,7 @@
               "name": "잡지사",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -663,7 +823,9 @@
                   "name": "사무실 하층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·사무실 하층0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·사무실 하층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -673,7 +835,9 @@
                   "name": "사무실 상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·사무실 상층0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·사무실 상층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -683,7 +847,9 @@
                   "name": "인쇄실 하층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·인쇄실 하층0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·인쇄실 하층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -693,7 +859,9 @@
                   "name": "인쇄실 상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·인쇄실 상층0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·인쇄실 상층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -705,17 +873,31 @@
               "name": "프라이빗",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
               "submaps": [
                 {
+                  "id": "private_lower",
+                  "name": "프라이빗 하층",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·프라이빗 클럽0_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
                   "id": "private_middle",
                   "name": "프라이빗 중층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·프라이빗 중층0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·프라이빗 중층0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -725,7 +907,9 @@
                   "name": "프라이빗 상층",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·프라이빗 상층0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·프라이빗 중층1_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -737,7 +921,7 @@
               "name": "개미굴·탑 꼭대기",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -747,7 +931,9 @@
                   "name": "탑 꼭대기 허브",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·탑 꼭대기 허브0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·탑 꼭대기 허브0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -757,7 +943,9 @@
                   "name": "사진 갤러리",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·사진 갤러리0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·사진 갤러리0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -767,7 +955,9 @@
                   "name": "오락실",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·오락실0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·오락실0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -779,7 +969,7 @@
               "name": "버려진 공간",
               "name_en": "",
               "name_jp": "",
-              "file": "",
+              "file": [],
               "description": "",
               "description_en": "",
               "description_jp": "",
@@ -789,7 +979,9 @@
                   "name": "버려진 동굴",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·버려진 동굴0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·버려진 동굴0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -799,7 +991,9 @@
                   "name": "폐기된 문서실",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·폐기된 문서실0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·폐기된 문서실0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -809,7 +1003,9 @@
                   "name": "버려진 거주지",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·버려진 거주지0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·버려진 거주지0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -819,7 +1015,9 @@
                   "name": "보물 수집실",
                   "name_en": "",
                   "name_jp": "",
-                  "file": "palace/인지·개미굴/개미굴·보물 수집실0_data.json",
+                  "file": [
+                    "palace/인지·개미굴/개미굴·보물 수집실0_data.json"
+                  ],
                   "description": "",
                   "description_en": "",
                   "description_jp": ""
@@ -851,7 +1049,9 @@
               "name": "에어리어1",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 1_data.json",
+              "file": [
+                "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 1_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -861,7 +1061,9 @@
               "name": "에어리어2",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 2_data.json",
+              "file": [
+                "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 2_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -871,7 +1073,9 @@
               "name": "에어리어3",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 3_data.json",
+              "file": [
+                "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 3_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -889,7 +1093,9 @@
               "name": "에어리어1",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 1_data.json",
+              "file": [
+                "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 1_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -899,7 +1105,9 @@
               "name": "에어리어2",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 2_data.json",
+              "file": [
+                "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 2_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -909,7 +1117,9 @@
               "name": "에어리어3",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 3_data.json",
+              "file": [
+                "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 3_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -919,7 +1129,9 @@
               "name": "에어리어4",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 4_data.json",
+              "file": [
+                "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 4_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -937,7 +1149,9 @@
               "name": "에어리어1",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 1_data.json",
+              "file": [
+                "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 1_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -947,7 +1161,9 @@
               "name": "에어리어2",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 2_data.json",
+              "file": [
+                "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 2_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -957,7 +1173,9 @@
               "name": "에어리어3",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 3_data.json",
+              "file": [
+                "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 3_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -967,7 +1185,9 @@
               "name": "에어리어4",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 4_data.json",
+              "file": [
+                "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 4_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -977,7 +1197,9 @@
               "name": "에어리어5",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 5_data.json",
+              "file": [
+                "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 5_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -987,7 +1209,9 @@
               "name": "에어리어6",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 6_data.json",
+              "file": [
+                "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 6_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -1005,7 +1229,9 @@
               "name": "에어리어1",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 1_data.json",
+              "file": [
+                "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 1_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -1015,7 +1241,9 @@
               "name": "에어리어2",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 2_data.json",
+              "file": [
+                "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 2_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -1025,7 +1253,9 @@
               "name": "에어리어3",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 3_data.json",
+              "file": [
+                "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 3_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -1035,7 +1265,9 @@
               "name": "에어리어4",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 4_data.json",
+              "file": [
+                "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 4_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -1045,7 +1277,9 @@
               "name": "에어리어5",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 5_data.json",
+              "file": [
+                "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 5_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""
@@ -1055,7 +1289,9 @@
               "name": "에어리어6",
               "name_en": "",
               "name_jp": "",
-              "file": "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 6_data.json",
+              "file": [
+                "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 6_data.json"
+              ],
               "description": "",
               "description_en": "",
               "description_jp": ""

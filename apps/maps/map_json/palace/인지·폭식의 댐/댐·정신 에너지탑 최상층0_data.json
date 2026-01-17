@@ -12,9 +12,10 @@
     ],
     "objects": [
         {
+            "sn": 8543151,
             "image": "yishijie-icon-box-hexin-new.png",
             "position": [
-                308,
+                311,
                 649
             ],
             "ratio": 0.4166666666666667,
@@ -23,10 +24,40 @@
                 0.5,
                 0.5
             ]
+        },
+        {
+            "sn": 8543162,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                445,
+                544
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8543101,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                445,
+                573
+            ],
+            "ratio": 0.32786885245901637,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
         }
     ],
     "map_size": [
-        788,
-        786
+        928,
+        840
     ]
 }

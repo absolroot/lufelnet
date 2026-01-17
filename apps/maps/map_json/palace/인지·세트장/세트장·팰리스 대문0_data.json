@@ -12,10 +12,11 @@
     ],
     "objects": [
         {
+            "sn": 8401001,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                389,
-                719
+                396,
+                712
             ],
             "ratio": 0.275,
             "rotate": 0.0,
@@ -25,9 +26,10 @@
             ]
         },
         {
+            "sn": 8401007,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                357,
+                364,
                 161
             ],
             "ratio": 0.275,
@@ -38,9 +40,10 @@
             ]
         },
         {
+            "sn": 8401009,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                311,
+                318,
                 140
             ],
             "ratio": 0.275,
@@ -51,6 +54,7 @@
             ]
         }
     ],
+    "enemies": [],
     "map_size": [
         516,
         864

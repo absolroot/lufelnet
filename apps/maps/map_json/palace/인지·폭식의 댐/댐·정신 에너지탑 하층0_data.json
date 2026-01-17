@@ -3,8 +3,8 @@
         {
             "image": "map_sb_qushuita01-diceng-01.png",
             "position": [
-                76,
-                -1
+                7,
+                -25
             ],
             "ratio": 1,
             "rotate": 0,
@@ -16,10 +16,11 @@
     ],
     "objects": [
         {
+            "sn": 8541153,
             "image": "yishijie-icon-box-hexin-new.png",
             "position": [
-                279,
-                148
+                266,
+                150
             ],
             "ratio": 0.4166666666666667,
             "rotate": 0.0,
@@ -29,6 +30,7 @@
             ]
         }
     ],
+    "enemies": [],
     "map_size": [
         928,
         840

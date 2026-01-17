@@ -4,60 +4,115 @@
     'use strict';
 
     let objectFilters = {};
+    let objectCounts = {}; // 타입별 { total: n, remaining: n, snList: [] }
 
     window.ObjectFilterPanel = {
+        // 비대화형 아이콘인지 확인
+        isNonInteractiveIcon(imageName) {
+            if (window.MapsCore && window.MapsCore.isNonInteractiveIcon) {
+                return window.MapsCore.isNonInteractiveIcon(imageName);
+            }
+            return false;
+        },
+
         // 필터 UI 업데이트
         updateFilterUI(objects) {
             const container = document.getElementById('filter-container');
             if (!container) return;
-            
+
             container.innerHTML = '';
 
-            const objectTypes = new Set();
+            // 타입별 오브젝트 수집 (비대화형 아이콘도 포함)
+            const objectsByType = {};
+            const nonInteractiveTypes = new Set(); // 비대화형 타입 추적
+
             objects.forEach(obj => {
                 if (!obj || !obj.image) return;
-                
-                // 비대화형 아이콘은 필터에서 제외
-                if (window.MapsCore && window.MapsCore.isNonInteractiveIcon && 
-                    window.MapsCore.isNonInteractiveIcon(obj.image)) {
-                    return;
-                }
-                
-                // 오브젝트 타입 추출 (더 견고한 로직)
+
+                // 비대화형 아이콘 여부 확인
+                const isNonInteractive = this.isNonInteractiveIcon(obj.image);
+
+                // 오브젝트 타입 추출
                 let type = obj.image;
-                // yishijie-icon- 접두사 제거
                 if (type.startsWith('yishijie-icon-')) {
                     type = type.replace('yishijie-icon-', '');
                 }
-                // .png 확장자 제거
+                if (type.startsWith('yishijie-')) {
+                    type = type.replace('yishijie-', '');
+                }
                 if (type.endsWith('.png')) {
                     type = type.replace('.png', '');
                 }
-                
+
                 if (type) {
-                    objectTypes.add(type);
+                    if (!objectsByType[type]) {
+                        objectsByType[type] = [];
+                    }
+                    // sn이 있으면 저장 (비대화형은 sn 저장하지 않음)
+                    if (obj.sn && !isNonInteractive) {
+                        objectsByType[type].push(obj.sn);
+                    }
+                    // 비대화형 타입 기록
+                    if (isNonInteractive) {
+                        nonInteractiveTypes.add(type);
+                    }
                 }
             });
 
+            // 타입별 개수 계산
             objectFilters = {};
-            objectTypes.forEach(type => {
+            objectCounts = {};
+
+            Object.keys(objectsByType).forEach(type => {
                 objectFilters[type] = true;
+                const snList = objectsByType[type];
+                const total = snList.length;
+                const isNonInteractive = nonInteractiveTypes.has(type);
+
+                // 비대화형이 아닌 경우에만 클릭 상태 계산
+                let clicked = 0;
+                if (!isNonInteractive && window.ObjectClickHandler) {
+                    snList.forEach(sn => {
+                        if (window.ObjectClickHandler.getObjectClickedState(sn)) {
+                            clicked++;
+                        }
+                    });
+                }
+
+                objectCounts[type] = {
+                    total: total,
+                    remaining: total - clicked,
+                    snList: snList,
+                    isNonInteractive: isNonInteractive
+                };
             });
 
             const ICON_PATH = window.MapsCore ? window.MapsCore.getPaths().ICON_PATH : '';
 
-            Array.from(objectTypes).sort().forEach(type => {
+            Array.from(Object.keys(objectsByType)).sort().forEach(type => {
                 const filterItem = document.createElement('div');
                 filterItem.className = 'filter-item';
                 filterItem.dataset.type = type;
                 filterItem.dataset.checked = 'true';
 
-                // 아이콘 이미지
+                const countInfo = objectCounts[type];
+                const isNonInteractive = countInfo.isNonInteractive;
+
+                // 비대화형은 padding-bottom 없이
+                if (isNonInteractive) {
+                    filterItem.style.paddingBottom = '8px';
+                }
+
+                // 아이콘 이미지 (yishijie-icon- 또는 yishijie- 접두사 시도)
                 const icon = document.createElement('img');
                 icon.className = 'filter-icon';
                 icon.src = `${ICON_PATH}yishijie-icon-${type}.png`;
                 icon.onerror = () => {
-                    icon.style.display = 'none';
+                    // yishijie-icon- 실패 시 yishijie- 시도
+                    icon.src = `${ICON_PATH}yishijie-${type}.png`;
+                    icon.onerror = () => {
+                        icon.style.display = 'none';
+                    };
                 };
 
                 // 체크 표시 SVG (우측 상단 라벨 형식)
@@ -66,8 +121,8 @@
                 checkMark.setAttribute('viewBox', '0 0 24 24');
                 checkMark.setAttribute('width', '12');
                 checkMark.setAttribute('height', '12');
-                checkMark.style.display = 'flex'; // 초기에는 모두 체크된 상태
-                
+                checkMark.style.display = 'flex';
+
                 const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 path.setAttribute('d', 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z');
                 path.setAttribute('fill', '#ffffff');
@@ -84,8 +139,58 @@
 
                 filterItem.appendChild(icon);
                 filterItem.appendChild(checkMark);
+
+                // 개수 표시 (비대화형 아이콘은 개수 표시 안 함)
+                if (!isNonInteractive && countInfo.total > 0) {
+                    const countDiv = document.createElement('div');
+                    countDiv.className = 'filter-count';
+                    countDiv.dataset.type = type;
+                    if (countInfo.remaining === 0) {
+                        countDiv.classList.add('all-collected');
+                    }
+                    countDiv.innerHTML = `<span class="remaining">${countInfo.remaining}</span>/${countInfo.total}`;
+                    filterItem.appendChild(countDiv);
+                }
+
                 container.appendChild(filterItem);
             });
+        },
+
+        // 특정 타입의 개수 업데이트 (오브젝트 클릭 시 호출)
+        updateTypeCount(type, sn, isClicked) {
+            if (!objectCounts[type]) return;
+
+            // remaining 업데이트
+            if (isClicked) {
+                objectCounts[type].remaining = Math.max(0, objectCounts[type].remaining - 1);
+            } else {
+                objectCounts[type].remaining = Math.min(objectCounts[type].total, objectCounts[type].remaining + 1);
+            }
+
+            // UI 업데이트
+            const countDiv = document.querySelector(`.filter-count[data-type="${type}"]`);
+            if (countDiv) {
+                const countInfo = objectCounts[type];
+                countDiv.innerHTML = `<span class="remaining">${countInfo.remaining}</span>/${countInfo.total}`;
+
+                if (countInfo.remaining === 0) {
+                    countDiv.classList.add('all-collected');
+                } else {
+                    countDiv.classList.remove('all-collected');
+                }
+            }
+        },
+
+        // SN으로 타입 찾기
+        getTypeBySnFromSprites(sn) {
+            if (!window.MapsCore) return null;
+            const sprites = window.MapsCore.getObjectSprites();
+            for (const sprite of sprites) {
+                if (sprite.objectSn === sn) {
+                    return sprite.objectType;
+                }
+            }
+            return null;
         },
 
         // 오브젝트 가시성 업데이트

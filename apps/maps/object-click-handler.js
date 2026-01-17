@@ -392,13 +392,18 @@
             // 기존 로직 (일반 오브젝트)
             const isClicked = this.getObjectClickedState(sprite.objectSn);
             const newState = !isClicked;
-            
+
             this.setObjectClickedState(sprite.objectSn, newState);
-            
+
             if (newState) {
                 this.applyClickedEffect(sprite);
             } else {
                 this.removeClickedEffect(sprite);
+            }
+
+            // 필터 패널 개수 업데이트
+            if (window.ObjectFilterPanel && sprite.objectType) {
+                window.ObjectFilterPanel.updateTypeCount(sprite.objectType, sprite.objectSn, newState);
             }
         },
 

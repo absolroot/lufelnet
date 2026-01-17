@@ -74,17 +74,41 @@
   position: relative;
   cursor: pointer;
   padding: 8px;
+  padding-bottom: 18px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.05);
   transition: background 0.2s;
   aspect-ratio: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .filter-item:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* 개수 표시 */
+.filter-count {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.filter-count.all-collected {
+  color: rgba(76, 175, 80, 0.9);
+}
+
+.filter-count .remaining {
+  color: #fff;
+  font-weight: 600;
 }
 
 .filter-icon {
@@ -318,6 +342,12 @@
 
   #object-filter-panel.mobile-bottomsheet .filter-item {
     padding: 6px;
+    padding-bottom: 16px;
+  }
+
+  #object-filter-panel.mobile-bottomsheet .filter-count {
+    font-size: 9px;
+    bottom: 1px;
   }
 
   /* 줌 컨트롤 표시 */

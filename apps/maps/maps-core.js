@@ -853,44 +853,40 @@
 
         // 특정 버전의 맵 로드
         async loadMapVersion(version) {
-            if (!currentMapFileName) return;
-            
-            // 현재 파일 배열이 저장되어 있는지 확인
-            const currentFileArray = window.currentMapFileArray;
-            if (Array.isArray(currentFileArray) && currentFileArray.length > 0) {
-                // 버전은 배열 인덱스이므로 직접 접근
-                if (version >= 0 && version < currentFileArray.length) {
-                    const versionFile = currentFileArray[version];
-                    // 해당 버전 파일을 첫 번째로 하여 배열 재정렬
-                    const reorderedArray = [versionFile, ...currentFileArray.filter(f => f !== versionFile)];
-                    currentMapVersion = version;
-                    
-                    // 버전 변경 시에는 강제로 스테이지 정리
-                    if (app && app.stage) {
-                        const tilesContainer = app.stage.getChildByName('tiles');
-                        const objectsContainer = app.stage.getChildByName('objects');
-                        
-                        if (tilesContainer) {
-                            tilesContainer.removeChildren();
-                        }
-                        if (objectsContainer) {
-                            objectsContainer.removeChildren();
-                        }
-                        objectSprites = [];
-                    }
-                    
-                    await this.loadMap(reorderedArray);
-                    
-                    // 버전 선택 UI 업데이트
-                    const versions = currentFileArray.map((file, index) => ({
-                        version: index,
-                        file: file,
-                        index: index
-                    }));
-                    this.createVersionSelectorFromArray(versions, version);
-                    return;
+            // 원본 파일 배열 사용 (재정렬되지 않은 원본)
+            const originalFileArray = window.originalMapFileArray;
+            if (!Array.isArray(originalFileArray) || originalFileArray.length === 0) return;
+
+            // 버전은 배열 인덱스이므로 직접 접근
+            if (version < 0 || version >= originalFileArray.length) return;
+
+            const versionFile = originalFileArray[version];
+            currentMapVersion = version;
+
+            // 버전 변경 시에는 강제로 스테이지 정리
+            if (app && app.stage) {
+                const tilesContainer = app.stage.getChildByName('tiles');
+                const objectsContainer = app.stage.getChildByName('objects');
+
+                if (tilesContainer) {
+                    tilesContainer.removeChildren();
                 }
+                if (objectsContainer) {
+                    objectsContainer.removeChildren();
+                }
+                objectSprites = [];
             }
+
+            // 단일 파일로 로드 (배열 재정렬 없이)
+            await this.loadMapInternal(versionFile, originalFileArray, version);
+
+            // 버전 선택 UI 업데이트
+            const versions = originalFileArray.map((file, index) => ({
+                version: index,
+                file: file,
+                index: index
+            }));
+            this.createVersionSelectorFromArray(versions, version);
         },
         
         // 배열 기반 버전 선택 UI 생성 (오브젝트 필터 패널 외부 오른쪽 상단)
@@ -938,59 +934,64 @@
             }
         },
 
-        // 맵 데이터 로드 (file 배열 또는 단일 파일명 지원)
+        // 맵 데이터 로드 (file 배열 또는 단일 파일명 지원) - 외부 호출용
         async loadMap(mapFileNameOrArray) {
+            // 배열인 경우 첫 번째 파일 사용
+            let mapFileName;
+            let fileArray = [];
+            if (Array.isArray(mapFileNameOrArray)) {
+                fileArray = mapFileNameOrArray.filter(f => f && f.trim() !== '');
+                if (fileArray.length === 0) {
+                    console.error('유효한 맵 파일이 없습니다.');
+                    return;
+                }
+                mapFileName = fileArray[0];
+            } else {
+                mapFileName = mapFileNameOrArray;
+                fileArray = [mapFileName];
+            }
+
+            // 원본 배열 저장 (버전 선택용 - 재정렬되지 않음)
+            window.originalMapFileArray = fileArray;
+            window.currentMapFileArray = fileArray;
+
+            // 내부 로드 함수 호출
+            await this.loadMapInternal(mapFileName, fileArray, 0);
+        },
+
+        // 맵 데이터 로드 (내부용 - 버전 전환 시에도 사용)
+        async loadMapInternal(mapFileName, fileArray, versionIndex) {
             try {
                 const loadingEl = document.getElementById('loading');
                 const loadingText = document.getElementById('loading-text');
                 loadingEl.style.display = 'block';
-                
+
                 if (window.MapsI18n) {
                     const lang = getCurrentLanguage();
                     loadingText.textContent = window.MapsI18n.getText(lang, 'loading');
                 }
-                
-                // 배열인 경우 첫 번째 파일 사용
-                let mapFileName;
-                let fileArray = [];
-                if (Array.isArray(mapFileNameOrArray)) {
-                    fileArray = mapFileNameOrArray.filter(f => f && f.trim() !== '');
-                    if (fileArray.length === 0) {
-                        throw new Error('유효한 맵 파일이 없습니다.');
-                    }
-                    mapFileName = fileArray[0];
-                } else {
-                    mapFileName = mapFileNameOrArray;
-                }
-                
+
                 let url;
                 if (mapFileName.includes('/')) {
                     url = `${MAP_DATA_PATH}${mapFileName}`;
                 } else {
                     url = `${MAP_DATA_PATH}${mapFileName}`;
                 }
-                
+
                 const response = await fetch(url);
-                
+
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
-                
+
                 const contentType = response.headers.get('content-type');
                 if (!contentType || !contentType.includes('application/json')) {
                     throw new Error('응답이 JSON 형식이 아닙니다.');
                 }
-                
+
                 const data = await response.json();
                 currentMapData = data;
                 currentMapFileName = mapFileName;
-                
-                // 파일 배열 저장 (버전 선택용)
-                if (fileArray.length > 0) {
-                    window.currentMapFileArray = fileArray;
-                } else {
-                    window.currentMapFileArray = [mapFileName];
-                }
 
                 tilesContainer.removeChildren();
                 objectsContainer.removeChildren();
@@ -1006,7 +1007,7 @@
                     const lang = getCurrentLanguage();
                     loadingText.textContent = window.MapsI18n.getText(lang, 'loadingObjects');
                 }
-                
+
                 // objects와 enemies 배열 모두 로드
                 const allObjects = [];
                 if (data.objects && Array.isArray(data.objects)) {
@@ -1015,7 +1016,7 @@
                 if (data.enemies && Array.isArray(data.enemies)) {
                     allObjects.push(...data.enemies);
                 }
-                
+
                 await this.loadObjects(allObjects);
 
                 this.centerMap(data.map_size);
@@ -1033,12 +1034,10 @@
                         file: file,
                         index: index
                     }));
-                    
-                    const currentIndex = fileArray.indexOf(mapFileName);
-                    const currentVersion = currentIndex >= 0 ? currentIndex : 0;
+
                     mapVersions = versions.map(v => v.version);
-                    currentMapVersion = currentVersion;
-                    this.createVersionSelectorFromArray(versions, currentVersion);
+                    currentMapVersion = versionIndex;
+                    this.createVersionSelectorFromArray(versions, versionIndex);
                 } else {
                     // 파일이 1개만 있으면 버전 선택 UI 제거
                     const existing = document.getElementById('map-version-selector');

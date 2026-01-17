@@ -41,32 +41,36 @@ body {
   margin-top: 20px;
 }
 
-/* 맵 버전 선택기 (오브젝트 필터 패널 외부 오른쪽 상단) */
+/* 맵 버전 선택기 (PC: 중앙 상단) */
 #map-version-selector {
   position: absolute;
   top: 20px;
-  left: 350px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1500;
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(0, 0, 0, 0.85);
-  padding: 8px 12px;
-  border: 1px solid #444;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 12px 20px;
+  border: 2px solid #800000;
+  border-radius: 8px;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .version-btn {
   background: transparent;
   border: none;
   color: #aaa;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 4px 8px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 16px;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-width: 24px;
+  min-width: 40px;
   text-align: center;
+  border-radius: 4px;
 }
 
 .version-btn:hover {
@@ -77,13 +81,13 @@ body {
 .version-btn.active {
   color: #fff;
   background: #800000;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .version-separator {
-  color: #666;
-  font-size: 14px;
-  padding: 0 4px;
+  color: #555;
+  font-size: 18px;
+  padding: 0 8px;
   user-select: none;
 }
 

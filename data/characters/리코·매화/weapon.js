@@ -22,7 +22,7 @@ window.WeaponData["리코·매화"] = {
   }
 };
 window.enCharacterWeaponData["리코·매화"] = {
-  "name": "Riko Tanemura·Vast",
+  "name": "Riko·Vast",
   "weapon4-1": {
     "name": "Sunny Day, Fleeting Sparrows",
     "health": 1918,

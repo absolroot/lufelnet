@@ -50,6 +50,10 @@
     let mapVersions = []; // 사용 가능한 맵 버전 목록
     let currentMapVersion = 0; // 현재 선택된 버전
 
+    // 텍스처 메모리 캐시 (세션 동안 유지)
+    const textureCache = new Map();
+    const textureCacheStats = { hits: 0, misses: 0 };
+
     // MapsCore 클래스
     window.MapsCore = {
         // 공개 API
@@ -233,21 +237,71 @@
         centerMap(mapSize) {
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
+            
+            // 맵의 가로세로 비율 확인
+            const mapAspectRatio = mapSize[0] / mapSize[1];
+            const isWideMap = mapAspectRatio >= 2.5; // 가로가 세로보다 2.5배 이상 큰 경우
+            
+            // 맵 이미지가 화면 세로의 최소 비율을 채우도록 최소 줌 레벨 계산
+            // 가로가 긴 맵(2.5배 이상)은 25%, 일반 맵은 50%
+            const minHeightRatio = isWideMap ? 0.25 : 0.7;
+            const screenHeight = window.innerHeight;
+            const minRequiredHeight = screenHeight * minHeightRatio;
+            const minZoomLevel = minRequiredHeight / mapSize[1];
+            
+            // 이전 줌 레벨과 최소 줌 레벨 중 더 큰 값을 사용 (이전 확대를 기반으로 하되, 최소 비율은 채워야 함)
+            if (zoomLevel < minZoomLevel) {
+                zoomLevel = minZoomLevel;
+                mapContainer.scale.set(zoomLevel);
+            }
+            
             mapContainer.x = centerX - (mapSize[0] / 2) * zoomLevel;
             mapContainer.y = centerY - (mapSize[1] / 2) * zoomLevel;
         },
 
-        // 텍스처 로드
+        // 텍스처 캐시 통계 조회
+        getTextureCacheStats() {
+            return {
+                ...textureCacheStats,
+                size: textureCache.size,
+                hitRate: textureCacheStats.hits + textureCacheStats.misses > 0
+                    ? (textureCacheStats.hits / (textureCacheStats.hits + textureCacheStats.misses) * 100).toFixed(1) + '%'
+                    : '0%'
+            };
+        },
+
+        // 텍스처 캐시 클리어 (메모리 부족 시 호출)
+        clearTextureCache() {
+            textureCache.clear();
+            textureCacheStats.hits = 0;
+            textureCacheStats.misses = 0;
+            console.log('텍스처 캐시 클리어됨');
+        },
+
+        // 텍스처 로드 (메모리 캐시 적용)
         async loadTexture(url) {
+            // 캐시에서 먼저 확인
+            if (textureCache.has(url)) {
+                textureCacheStats.hits++;
+                return textureCache.get(url);
+            }
+
+            textureCacheStats.misses++;
+
             try {
+                let texture;
                 if (typeof PIXI.Texture.fromURL === 'function') {
-                    return await PIXI.Texture.fromURL(url);
+                    texture = await PIXI.Texture.fromURL(url);
                 } else if (typeof PIXI.Assets !== 'undefined' && PIXI.Assets.load) {
-                    const texture = await PIXI.Assets.load(url);
-                    return texture instanceof PIXI.Texture ? texture : PIXI.Texture.from(texture);
+                    const loaded = await PIXI.Assets.load(url);
+                    texture = loaded instanceof PIXI.Texture ? loaded : PIXI.Texture.from(loaded);
                 } else {
-                    return PIXI.Texture.from(url);
+                    texture = PIXI.Texture.from(url);
                 }
+
+                // 캐시에 저장
+                textureCache.set(url, texture);
+                return texture;
             } catch (error) {
                 return new Promise((resolve, reject) => {
                     const img = new Image();
@@ -255,6 +309,8 @@
                     img.onload = () => {
                         try {
                             const texture = PIXI.Texture.from(img);
+                            // 캐시에 저장
+                            textureCache.set(url, texture);
                             resolve(texture);
                         } catch (e) {
                             reject(e);
@@ -683,6 +739,22 @@
                         adjustedRatio = 1.5;
                     }
                     
+                    // 최소 사이즈 16px 보장
+                    const minSize = 16;
+                    const scaledWidth = texture.width * adjustedRatio;
+                    const scaledHeight = texture.height * adjustedRatio;
+                    const minDimension = Math.min(scaledWidth, scaledHeight);
+                    
+                    if (minDimension < minSize) {
+                        // 최소 사이즈를 보장하기 위해 ratio 조정
+                        const minRatioForWidth = minSize / texture.width;
+                        const minRatioForHeight = minSize / texture.height;
+                        const requiredMinRatio = Math.max(minRatioForWidth, minRatioForHeight);
+                        
+                        // 기존 adjustedRatio와 requiredMinRatio 중 더 큰 값 사용
+                        adjustedRatio = Math.max(adjustedRatio, requiredMinRatio);
+                    }
+                    
                     sprite.scale.set(adjustedRatio);
                     
                     debugInfo.computed.finalPos = [sprite.x, sprite.y];
@@ -779,13 +851,23 @@
                     if (objectType.startsWith('yishijie-icon-')) {
                         objectType = objectType.replace('yishijie-icon-', '');
                     }
+                    if (objectType.startsWith('yishijie-')) {
+                        objectType = objectType.replace('yishijie-', '');
+                    }
                     if (objectType.endsWith('.png')) {
                         objectType = objectType.replace('.png', '');
                     }
+                    // 특수 케이스: jinzhi2를 jinzhi로 통일 (같은 이미지)
+                    if (objectType === 'jinzhi2') {
+                        objectType = 'jinzhi';
+                    }
                     sprite.objectType = objectType;
                     
-                    objectSprites.push(sprite);
-                    objectsContainer.addChild(sprite);
+                    // null이 아닌 경우에만 추가 (로드 실패한 오브젝트는 스프라이트 생성 안 함)
+                    if (sprite) {
+                        objectSprites.push(sprite);
+                        objectsContainer.addChild(sprite);
+                    }
                     
                     loaded++;
                     if (loadingText && window.MapsI18n) {
@@ -796,7 +878,7 @@
                     return sprite;
                 } catch (error) {
                     console.warn(`오브젝트 로드 실패: ${obj.image}`, error);
-                    return null;
+                    return null; // 실패한 오브젝트는 null 반환, 스프라이트 생성 안 함
                 }
             });
 
@@ -922,13 +1004,6 @@
                     this.loadMapVersion(v.version);
                 });
                 selector.appendChild(button);
-                
-                if (index < versions.length - 1) {
-                    const separator = document.createElement('span');
-                    separator.className = 'version-separator';
-                    separator.textContent = '|';
-                    selector.appendChild(separator);
-                }
             });
             
             // 오브젝트 필터 패널 외부 오른쪽 상단에 배치
@@ -1030,7 +1105,14 @@
                 this.centerMap(data.map_size);
 
                 if (window.ObjectFilterPanel) {
-                    window.ObjectFilterPanel.updateFilterUI(allObjects);
+                    // objectSprites에서 null이 아닌 유효한 스프라이트만 필터링
+                    const validSprites = objectSprites.filter(sprite => sprite !== null);
+                    const validObjectData = validSprites.map(sprite => ({
+                        image: sprite.objectImage,
+                        sn: sprite.objectSn,
+                        debugInfo: sprite.debugInfo
+                    }));
+                    window.ObjectFilterPanel.updateFilterUI(validObjectData);
                 }
 
                 // 맵 버전 UI

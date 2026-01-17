@@ -54,6 +54,10 @@ _site/
 data/kr/wonder/*source*.html
 data/kr/wonder/persona_skills_en_source.json
 _index_backup.html
+/backup/
+**/backup/
+***/backup/
+****/backup/
 
 # OS
 .DS_Store

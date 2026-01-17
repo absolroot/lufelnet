@@ -31,11 +31,14 @@
 
             container.innerHTML = '';
 
+            // 먼저 유효한 오브젝트만 필터링 (null이 아닌 것만)
+            const validObjects = objects.filter(obj => obj && obj.image);
+            
             // 타입별 오브젝트 수집 (비대화형 아이콘도 포함)
             const objectsByType = {};
             const nonInteractiveTypes = new Set(); // 비대화형 타입 추적
 
-            objects.forEach(obj => {
+            validObjects.forEach(obj => {
                 if (!obj || !obj.image) return;
 
                 // 비대화형 아이콘 여부 확인
@@ -52,6 +55,11 @@
                 }
                 if (type.endsWith('.png')) {
                     type = type.replace('.png', '');
+                }
+                
+                // 특수 케이스: jinzhi2를 jinzhi로 통일 (같은 이미지)
+                if (type === 'jinzhi2') {
+                    type = 'jinzhi';
                 }
 
                 if (type) {
@@ -73,6 +81,7 @@
             objectFilters = {};
             objectCounts = {};
 
+            // 유효한 타입만 순회
             Object.keys(objectsByType).forEach(type => {
                 objectFilters[type] = true;
                 const snList = objectsByType[type];
@@ -81,7 +90,7 @@
 
                 // 개수 세지 않는 아이콘인지 확인
                 let isNonCountable = false;
-                // 해당 타입의 첫 번째 오브젝트 이미지로 확인
+                // 해당 타입의 첫 번째 유효한 오브젝트 이미지로 확인
                 const firstObj = objects.find(obj => {
                     if (!obj || !obj.image) return false;
                     let objType = obj.image;
@@ -93,6 +102,10 @@
                     }
                     if (objType.endsWith('.png')) {
                         objType = objType.replace('.png', '');
+                    }
+                    // 특수 케이스: jinzhi2를 jinzhi로 통일
+                    if (objType === 'jinzhi2') {
+                        objType = 'jinzhi';
                     }
                     return objType === type;
                 });
@@ -122,7 +135,31 @@
 
             const ICON_PATH = window.MapsCore ? window.MapsCore.getPaths().ICON_PATH : '';
 
-            Array.from(Object.keys(objectsByType)).sort().forEach(type => {
+            // 유효한 타입만 순회하여 필터 아이템 생성
+            // 숫자가 있는 타입과 없는 타입으로 분리하여 정렬
+            const allTypes = Object.keys(objectsByType);
+            const typesWithCount = [];
+            const typesWithoutCount = [];
+            
+            allTypes.forEach(type => {
+                const countInfo = objectCounts[type];
+                const hasCount = !countInfo.isNonInteractive && !countInfo.isNonCountable && countInfo.total > 0;
+                
+                if (hasCount) {
+                    typesWithCount.push(type);
+                } else {
+                    typesWithoutCount.push(type);
+                }
+            });
+            
+            // 각 그룹 내에서 알파벳 순으로 정렬
+            typesWithCount.sort();
+            typesWithoutCount.sort();
+            
+            // 숫자가 있는 타입을 먼저, 그 다음 숫자가 없는 타입
+            const sortedTypes = [...typesWithCount, ...typesWithoutCount];
+            
+            sortedTypes.forEach(type => {
                 const filterItem = document.createElement('div');
                 filterItem.className = 'filter-item';
                 filterItem.dataset.type = type;
@@ -602,8 +639,54 @@
             }
         },
 
+        // 로고 컨테이너 초기화
+        initLogoContainer() {
+            const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+            const APP_VERSION = typeof window.APP_VERSION !== 'undefined' ? window.APP_VERSION : '';
+            const currentLang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+
+            // PC 로고 컨테이너 초기화
+            const logoContainer = document.querySelector('.maps-logo-container');
+            if (logoContainer) {
+                // 로고 이미지 설정
+                logoContainer.innerHTML = `
+                    <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
+                    <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
+                `;
+
+                // 클릭 이벤트 처리 (한 번만 바인딩)
+                if (!logoContainer.hasAttribute('data-event-bound')) {
+                    logoContainer.addEventListener('click', () => {
+                        const versionParam = APP_VERSION ? `&v=${APP_VERSION}` : '';
+                        window.location.href = `${BASE_URL}/?lang=${currentLang}${versionParam}`;
+                    });
+                    logoContainer.setAttribute('data-event-bound', 'true');
+                }
+            }
+
+            // 모바일 브레드크럼 내 로고 초기화
+            const mobileBreadcrumbLogo = document.querySelector('.mobile-breadcrumb-logo');
+            if (mobileBreadcrumbLogo) {
+                // 로고 이미지 설정
+                mobileBreadcrumbLogo.innerHTML = `
+                    <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
+                    <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
+                `;
+
+                // 클릭 이벤트 처리 (한 번만 바인딩)
+                if (!mobileBreadcrumbLogo.hasAttribute('data-event-bound')) {
+                    mobileBreadcrumbLogo.addEventListener('click', () => {
+                        const versionParam = APP_VERSION ? `&v=${APP_VERSION}` : '';
+                        window.location.href = `${BASE_URL}/?lang=${currentLang}${versionParam}`;
+                    });
+                    mobileBreadcrumbLogo.setAttribute('data-event-bound', 'true');
+                }
+            }
+        },
+
         // 초기화
         init() {
+            this.initLogoContainer();
             this.initZoomControls();
             this.initFilterControls();
             this.translateUI();

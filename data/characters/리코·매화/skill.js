@@ -42,7 +42,7 @@ window.characterSkillsData["리코·매화"] = {
   }
 };
 window.enCharacterSkillsData["리코·매화"] = {
-  "name": "Riko Tanemura·Vast",
+  "name": "Riko·Vast",
   "skill1": {
     "name": "Wind of Vitality",
     "element": "질풍",

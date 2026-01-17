@@ -329,7 +329,7 @@ const enCharacterRitualData = {
     },
 
     "리코·매화": {
-        "name": "Riko Tanemura·Vast",
+        "name": "Riko·Vast",
         "r0": "Plums Bloom, Petals Rain",
         "r0_detail": "Increase Wind Vast's Max SP to 200 and her SP Recovery by 60%. SP Recovery will affect Persona skills SP restored amount. Consume all SP when using [Fragrance of Time], which gives different effects depending on the SP consumed.",
         "r1": "Piercing Winter, Not Awaited",

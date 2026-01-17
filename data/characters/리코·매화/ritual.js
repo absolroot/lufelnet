@@ -19,7 +19,7 @@ window.ritualData["리코·매화"] = {
   "r6_detail": "『매화의 잔향』은 자신을 제외한 모든 동료에게 적용된다. 스킬 메인 목표가 페르소나 스킬 사용 후, 자신이 즉시 적 목표에게 『휘날리는 매화꽃』을 1회 시전한다. 해당 효과는 『매화의 잔향』 지속 기간 동안 1회만 발동 가능하다. 『휘날리는 매화꽃』의 『낙화』 상태 지속 시간이 1턴 연장된다.\n타네무라 리코·매화가 필드에 있는 경우, 모든 괴도가 대미지를 줄 때 크리티컬 확률이 100%를 초과하면 초과한 1%마다 해당 대미지의 크리티컬 효과가 2% 추가 증가한다."
 };
 window.enCharacterRitualData["리코·매화"] = {
-  "name": "Riko Tanemura·Vast",
+  "name": "Riko·Vast",
   "r0": "Plums Bloom, Petals Rain",
   "r0_detail": "Increase Wind Vast's Max SP to 200 and her SP Recovery by 60%. SP Recovery will affect Persona skills SP restored amount. Consume all SP when using [Fragrance of Time], which gives different effects depending on the SP consumed.",
   "r1": "Piercing Winter, Not Awaited",

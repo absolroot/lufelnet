@@ -337,16 +337,19 @@
   position: relative;
 }
 
-/* 활성화된 메뉴의 빨간 폴리곤 레이어 - map-select-panel 안에 추가됨 (JavaScript) */
+/* 활성화된 메뉴의 빨간 폴리곤 레이어 - 패널에 추가되고 RAF로 위치 추적 */
 .red-polygon-layer {
   position: absolute;
-  background-color: rgba(128, 0, 0, 0.75);
+  background-color: rgba(255, 0, 0, 0.75);
   animation: subtle-liquid 2s infinite linear;
   z-index: 1001;
   pointer-events: none;
-  /* clip-path 없이 배경을 벗어날 수 있도록 함 */
-  /* 검정 폴리곤(맨 뒤, z-index: 1000) < 빨간 폴리곤(중간, z-index: 1001) < 글씨(맨 앞, z-index: 1002) 순서 */
-  /* map-select-panel 안에 추가되어 같은 stacking context에 있음 */
+  /* 검정 배경(1) < 빨간 폴리곤(1001) < 글씨(1002) */
+}
+
+/* 서브메뉴용 빨간 폴리곤 - 흰색 배경에서 더 진하게 */
+.red-polygon-layer--sub {
+  background-color: rgba(255, 0, 0, 0.85);
 }
 
 
@@ -411,7 +414,7 @@
   background: rgb(188 188 188);
   padding: 8px;
   border-radius: 0px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* 하위 맵 아이템 - 연한 회색 배경, 활성화 시 빨간 폴리곤 */

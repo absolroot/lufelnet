@@ -15,6 +15,9 @@ alternate_urls:
         <div id="loading-text">지도를 불러오는 중...</div>
     </div>
     
+    <!-- 좌측 상단: 로고 컨테이너 -->
+    <div class="maps-logo-container"></div>
+    
     <!-- 좌측: 오브젝트 필터 패널 -->
     <div id="object-filter-panel" class="side-panel">
         <h2 id="object-filter-title">오브젝트 필터</h2>
@@ -92,13 +95,16 @@ alternate_urls:
     
     <!-- 모바일용 상단 브레드크럼 네비게이션 -->
     <div id="mobile-breadcrumb" class="mobile-breadcrumb">
-        <span class="breadcrumb-item" data-level="tab">팰리스</span>
-        <span class="breadcrumb-separator">›</span>
-        <span class="breadcrumb-item" data-level="category">-</span>
-        <span class="breadcrumb-separator">›</span>
-        <span class="breadcrumb-item" data-level="map">-</span>
-        <span class="breadcrumb-separator breadcrumb-submap-sep" style="display:none;">›</span>
-        <span class="breadcrumb-item breadcrumb-submap" data-level="submap" style="display:none;">-</span>
+        <div class="mobile-breadcrumb-logo"></div>
+        <div class="mobile-breadcrumb-items">
+            <span class="breadcrumb-item" data-level="tab">팰리스</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-item" data-level="category">-</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-item" data-level="map">-</span>
+            <span class="breadcrumb-separator breadcrumb-submap-sep" style="display:none;">›</span>
+            <span class="breadcrumb-item breadcrumb-submap" data-level="submap" style="display:none;">-</span>
+        </div>
     </div>
 
     <!-- 모바일용 바텀시트 오버레이 -->
@@ -135,7 +141,7 @@ alternate_urls:
             <div id="category-select" class="custom-category-select">
                 <div class="selected-category-option">
                     <img src="" alt="" class="category-icon" id="selected-category-icon" style="display: none;">
-                    <span id="selected-category-text">카테고리를 선택하세요...</span>
+                    <span id="selected-category-text"></span>
                     <span class="dropdown-arrow"></span>
                 </div>
                 <div class="category-options-container" id="category-options-container" style="display: none;">
@@ -158,6 +164,7 @@ alternate_urls:
 <script src="{{ site.baseurl }}/apps/maps/maps-core.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/object-filter-panel.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/map-select-panel.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-seo.js?v={{ site.time | date: '%s' }}"></script>
 <script>
     // 초기화
     (async () => {
@@ -227,7 +234,17 @@ alternate_urls:
                 // 맵 선택 패널 UI 구축
                 if (window.MapSelectPanel) {
                     window.MapSelectPanel.buildMapUI();
-                    await window.MapSelectPanel.autoSelectFirstMap();
+
+                    // URL 파라미터에서 맵 로드 시도
+                    let loadedFromURL = false;
+                    if (window.MapsSEO) {
+                        loadedFromURL = await window.MapsSEO.loadMapFromURL();
+                    }
+
+                    // URL에서 로드하지 못한 경우 첫 번째 맵 자동 선택
+                    if (!loadedFromURL) {
+                        await window.MapSelectPanel.autoSelectFirstMap();
+                    }
                 }
             } catch (error) {
                 console.error('맵 목록 로드 실패:', error);

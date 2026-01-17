@@ -102,9 +102,9 @@
             }
             
             if (!mapsListData || !mapsListData.maps) {
-                // 기본 선택 텍스트 설정
+                // 빈 텍스트
                 if (selectedText) {
-                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                    selectedText.textContent = '';
                 }
                 if (selectedIcon) {
                     selectedIcon.style.display = 'none';
@@ -115,9 +115,9 @@
             
             const currentMap = mapsListData.maps.find(m => m.id === currentMapId);
             if (!currentMap || !currentMap.categories) {
-                // 기본 선택 텍스트 설정
+                // 빈 텍스트
                 if (selectedText) {
-                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                    selectedText.textContent = '';
                 }
                 if (selectedIcon) {
                     selectedIcon.style.display = 'none';
@@ -134,41 +134,42 @@
                     const iconPath = selectedCategory.icon ? `${ICON_PATH}${selectedCategory.icon}` : '';
                     this.updateSelectedOption(currentCategoryId, categoryName, iconPath);
                 } else {
-                    // 선택된 카테고리가 현재 맵에 없으면 기본 텍스트
+                    // 선택된 카테고리가 현재 맵에 없으면 첫 번째 카테고리 자동 선택
+                    if (currentMap.categories && currentMap.categories.length > 0) {
+                        const firstCategory = currentMap.categories[0];
+                        currentCategoryId = firstCategory.id;
+                        const categoryName = window.MapsI18n.getMapName(firstCategory, lang);
+                        const iconPath = firstCategory.icon ? `${ICON_PATH}${firstCategory.icon}` : '';
+                        this.updateSelectedOption(currentCategoryId, categoryName, iconPath);
+                    } else {
+                        // 빈 텍스트
+                        if (selectedText) {
+                            selectedText.textContent = '';
+                        }
+                        if (selectedIcon) {
+                            selectedIcon.style.display = 'none';
+                            selectedIcon.src = '';
+                        }
+                    }
+                }
+            } else {
+                // 카테고리가 선택되지 않았으면 첫 번째 카테고리 자동 선택
+                if (currentMap.categories && currentMap.categories.length > 0) {
+                    const firstCategory = currentMap.categories[0];
+                    currentCategoryId = firstCategory.id;
+                    const categoryName = window.MapsI18n.getMapName(firstCategory, lang);
+                    const iconPath = firstCategory.icon ? `${ICON_PATH}${firstCategory.icon}` : '';
+                    this.updateSelectedOption(currentCategoryId, categoryName, iconPath);
+                } else {
+                    // 카테고리가 없으면 빈 텍스트
                     if (selectedText) {
-                        selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                        selectedText.textContent = '';
                     }
                     if (selectedIcon) {
                         selectedIcon.style.display = 'none';
                         selectedIcon.src = '';
                     }
                 }
-            } else {
-                // 기본 선택 텍스트 설정
-                if (selectedText) {
-                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
-                }
-                if (selectedIcon) {
-                    selectedIcon.style.display = 'none';
-                    selectedIcon.src = '';
-                }
-            }
-            
-            // 기본 옵션 추가
-            const defaultOption = document.createElement('div');
-            defaultOption.className = 'category-option';
-            defaultOption.dataset.value = '';
-            defaultOption.innerHTML = `
-                <span>${window.MapsI18n.getText(lang, 'selectCategory')}</span>
-            `;
-            defaultOption.addEventListener('click', () => {
-                currentCategoryId = '';
-                this.updateSelectedOption('', window.MapsI18n.getText(lang, 'selectCategory'), '');
-                this.updateMapList();
-                this.closeCategoryDropdown();
-            });
-            if (optionsContainer) {
-                optionsContainer.appendChild(defaultOption);
             }
             
             // 카테고리 옵션 추가
@@ -272,7 +273,7 @@
             
             // 이미 설정되었는지 확인 (중복 방지)
             if (selectedOption.dataset.setup === 'true') {
-                console.log('카테고리 드롭다운은 이미 설정되었습니다.');
+                // console.log('카테고리 드롭다운은 이미 설정되었습니다.');
                 return;
             }
             selectedOption.dataset.setup = 'true';
@@ -280,7 +281,7 @@
             // 클릭 이벤트
             selectedOption.addEventListener('click', (e) => {
                 e.stopPropagation();
-                console.log('카테고리 드롭다운 클릭됨');
+                // console.log('카테고리 드롭다운 클릭됨');
                 this.toggleCategoryDropdown();
             });
             
@@ -301,10 +302,8 @@
             const container = document.getElementById('map-list');
             if (!container || !window.MapsCore || !window.MapsI18n) return;
 
-            // 빨간 폴리곤 레이어 제거
-            document.querySelectorAll('.red-polygon-layer').forEach(layer => {
-                layer.remove();
-            });
+            // 빨간 폴리곤 제거
+            this.hideRedPolygonLayer();
 
             // 모든 active 클래스 제거
             document.querySelectorAll('.map-item.active, .map-sub-item.active').forEach(activeItem => {
@@ -382,41 +381,35 @@
                 submap.submaps.forEach(nestedSubmap => {
                     this.renderSubMapItem(subList, nestedSubmap, lang);
                 });
-                
+
                 // 하위 맵이 있으면 클릭 시 무조건 토글만
                 item.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    const wasExpanded = item.classList.contains('expanded');
                     item.classList.toggle('expanded');
                     const isExpanded = item.classList.contains('expanded');
-                    
-                    // 서브메뉴가 닫히면 빨간 폴리곤 숨김
-                    if (!isExpanded) {
-                        // 서브메뉴 내부에 활성화된 항목이 있는지 확인
-                        const subList = item.nextElementSibling;
-                        if (subList && subList.classList.contains('map-sub-list')) {
-                            const activeInSub = subList.querySelector('.map-sub-item.active');
-                            if (activeInSub) {
+
+                    // 서브메뉴 토글 시 활성화된 항목의 빨간 폴리곤 처리
+                    const subList = item.nextElementSibling;
+                    if (subList && subList.classList.contains('map-sub-list')) {
+                        const activeInSub = subList.querySelector('.map-sub-item.active');
+                        if (activeInSub) {
+                            if (!isExpanded) {
+                                // 서브메뉴가 닫히면 빨간 폴리곤 숨김
                                 this.hideRedPolygonLayer();
+                            } else {
+                                // 서브메뉴가 열리면 빨간 폴리곤 다시 표시
+                                this.showRedPolygonLayer(activeInSub);
                             }
+                        } else {
+                            // 서브메뉴 외부에 활성화된 아이템이 있으면 위치 업데이트
+                            this.updateRedPolygonPosition();
                         }
                     } else {
-                        // 서브메뉴가 열리면 활성화된 항목이 있으면 빨간 폴리곤 표시
-                        setTimeout(() => {
-                            const subList = item.nextElementSibling;
-                            if (subList && subList.classList.contains('map-sub-list')) {
-                                const activeInSub = subList.querySelector('.map-sub-item.active');
-                                if (activeInSub) {
-                                    this.showRedPolygonLayer(activeInSub);
-                                }
-                            }
-                        }, 50); // 애니메이션 시작 후 약간의 지연
+                        // 서브메뉴 토글로 다른 아이템 위치가 변경될 수 있음
+                        this.updateRedPolygonPosition();
                     }
-                    
-                    // 서브메뉴 토글 시 빨간 폴리곤 위치 업데이트
-                    this.updateRedPolygonPosition();
                 });
-                
+
                 container.appendChild(item);
                 container.appendChild(subList);
             } else if (hasFile) {
@@ -468,41 +461,35 @@
                 submap.submaps.forEach(nestedSubmap => {
                     this.renderSubMapItem(subList, nestedSubmap, lang);
                 });
-                
+
                 // 하위 맵이 있으면 클릭 시 무조건 토글만
                 item.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    const wasExpanded = item.classList.contains('expanded');
                     item.classList.toggle('expanded');
                     const isExpanded = item.classList.contains('expanded');
-                    
-                    // 서브메뉴가 닫히면 빨간 폴리곤 숨김
-                    if (!isExpanded) {
-                        // 서브메뉴 내부에 활성화된 항목이 있는지 확인
-                        const subList = item.nextElementSibling;
-                        if (subList && subList.classList.contains('map-sub-list')) {
-                            const activeInSub = subList.querySelector('.map-sub-item.active');
-                            if (activeInSub) {
+
+                    // 서브메뉴 토글 시 활성화된 항목의 빨간 폴리곤 처리
+                    const subList = item.nextElementSibling;
+                    if (subList && subList.classList.contains('map-sub-list')) {
+                        const activeInSub = subList.querySelector('.map-sub-item.active');
+                        if (activeInSub) {
+                            if (!isExpanded) {
+                                // 서브메뉴가 닫히면 빨간 폴리곤 숨김
                                 this.hideRedPolygonLayer();
+                            } else {
+                                // 서브메뉴가 열리면 빨간 폴리곤 다시 표시
+                                this.showRedPolygonLayer(activeInSub);
                             }
+                        } else {
+                            // 서브메뉴 외부에 활성화된 아이템이 있으면 위치 업데이트
+                            this.updateRedPolygonPosition();
                         }
                     } else {
-                        // 서브메뉴가 열리면 활성화된 항목이 있으면 빨간 폴리곤 표시
-                        setTimeout(() => {
-                            const subList = item.nextElementSibling;
-                            if (subList && subList.classList.contains('map-sub-list')) {
-                                const activeInSub = subList.querySelector('.map-sub-item.active');
-                                if (activeInSub) {
-                                    this.showRedPolygonLayer(activeInSub);
-                                }
-                            }
-                        }, 50); // 애니메이션 시작 후 약간의 지연
+                        // 서브메뉴 토글로 다른 아이템 위치가 변경될 수 있음
+                        this.updateRedPolygonPosition();
                     }
-                    
-                    // 서브메뉴 토글 시 빨간 폴리곤 위치 업데이트
-                    this.updateRedPolygonPosition();
                 });
-                
+
                 container.appendChild(item);
                 container.appendChild(subList);
             } else if (hasFile) {
@@ -635,82 +622,110 @@
             }
         },
 
-        // 빨간 폴리곤 레이어 표시
+        // 빨간 폴리곤 레이어 표시 - 패널에 추가하고 위치 실시간 추적
         showRedPolygonLayer(item) {
             // 기존 빨간 폴리곤 레이어 모두 제거
-            document.querySelectorAll('.red-polygon-layer').forEach(layer => {
-                layer.remove();
-            });
-            
+            this.hideRedPolygonLayer();
+
             if (!item) return;
-            
-            const rect = item.getBoundingClientRect();
+
             const mapSelectPanel = document.getElementById('map-select-panel');
             if (!mapSelectPanel) return;
-            
-            const panelRect = mapSelectPanel.getBoundingClientRect();
+
+            // 패널에 빨간 폴리곤 추가
             const redLayer = document.createElement('div');
             redLayer.className = 'red-polygon-layer';
-            redLayer.style.width = `${rect.width + 8}px`;
-            redLayer.style.height = `${rect.height + 8}px`;
-            redLayer.style.top = `${rect.top - panelRect.top - 4}px`;
-            redLayer.style.left = `${rect.left - panelRect.left - 4}px`;
-            redLayer.dataset.itemId = item.dataset.submapId || item.dataset.file || 'unknown';
-            redLayer.dataset.targetItemId = item.dataset.submapId || item.dataset.file || 'unknown';
+            // 서브아이템이면 더 진한 색상 클래스 추가
+            if (item.classList.contains('map-sub-item')) {
+                redLayer.classList.add('red-polygon-layer--sub');
+            }
             mapSelectPanel.appendChild(redLayer);
-            
-            // 아이템 위치 변경 시 레이어 위치 업데이트
-            const updateLayerPosition = () => {
-                if (!item.parentElement) {
-                    // 아이템이 DOM에서 제거되었으면 레이어도 제거
-                    redLayer.remove();
+
+            // 위치 업데이트 함수
+            const updatePosition = () => {
+                if (!item.parentElement || !redLayer.parentElement) {
+                    this.stopPositionTracking();
                     return;
                 }
-                const newRect = item.getBoundingClientRect();
-                const newPanelRect = mapSelectPanel.getBoundingClientRect();
-                redLayer.style.top = `${newRect.top - newPanelRect.top - 4}px`;
-                redLayer.style.left = `${newRect.left - newPanelRect.left - 4}px`;
-                redLayer.style.width = `${newRect.width + 8}px`;
+                const rect = item.getBoundingClientRect();
+                const panelRect = mapSelectPanel.getBoundingClientRect();
+                redLayer.style.width = `${rect.width + 8}px`;
+                redLayer.style.height = `${rect.height + 8}px`;
+                redLayer.style.top = `${rect.top - panelRect.top - 4}px`;
+                redLayer.style.left = `${rect.left - panelRect.left - 4}px`;
             };
-            
-            // 전역으로 업데이트 함수 저장 (서브메뉴 토글 시 호출용)
-            this._updateRedPolygonPosition = updateLayerPosition;
+
+            // 즉시 위치 설정
+            updatePosition();
+
+            // 상태 저장
             this._redPolygonItem = item;
-            
-            // 스크롤 및 리사이즈 시 위치 업데이트
-            const scrollHandler = () => updateLayerPosition();
-            window.addEventListener('scroll', scrollHandler, true);
-            window.addEventListener('resize', updateLayerPosition);
-            
-            // 레이어 제거 시 이벤트 리스너도 제거
-            const originalRemove = redLayer.remove;
-            redLayer.remove = function() {
-                window.removeEventListener('scroll', scrollHandler, true);
-                window.removeEventListener('resize', updateLayerPosition);
-                originalRemove.call(this);
-            };
+            this._redPolygonLayer = redLayer;
+            this._updatePositionFn = updatePosition;
+
+            // 스크롤/리사이즈 이벤트
+            this._scrollHandler = () => updatePosition();
+            window.addEventListener('scroll', this._scrollHandler, true);
+            window.addEventListener('resize', this._scrollHandler);
+
+            // 서브메뉴 토글 애니메이션 중 실시간 추적 시작
+            this.startPositionTracking();
         },
-        
+
+        // RAF로 위치 실시간 추적 시작
+        startPositionTracking() {
+            if (this._trackingRAF) return;
+
+            const track = () => {
+                if (this._updatePositionFn) {
+                    this._updatePositionFn();
+                }
+                this._trackingRAF = requestAnimationFrame(track);
+            };
+            this._trackingRAF = requestAnimationFrame(track);
+
+            // 0.5초 후 추적 중지 (애니메이션 완료)
+            clearTimeout(this._trackingTimeout);
+            this._trackingTimeout = setTimeout(() => {
+                this.stopPositionTracking();
+            }, 500);
+        },
+
+        // 위치 추적 중지
+        stopPositionTracking() {
+            if (this._trackingRAF) {
+                cancelAnimationFrame(this._trackingRAF);
+                this._trackingRAF = null;
+            }
+        },
+
         // 빨간 폴리곤 위치 업데이트 (서브메뉴 토글 시 호출)
         updateRedPolygonPosition() {
-            if (this._updateRedPolygonPosition && this._redPolygonItem) {
-                // 애니메이션 완료 후 위치 업데이트
-                setTimeout(() => {
-                    if (this._updateRedPolygonPosition) {
-                        this._updateRedPolygonPosition();
-                    }
-                }, 300); // transition 시간과 맞춤 (0.3s)
+            if (this._updatePositionFn) {
+                this._updatePositionFn();
+                // 애니메이션 중 실시간 추적
+                this.startPositionTracking();
             }
         },
 
         // 빨간 폴리곤 레이어 제거
         hideRedPolygonLayer() {
+            this.stopPositionTracking();
+            clearTimeout(this._trackingTimeout);
+
+            if (this._scrollHandler) {
+                window.removeEventListener('scroll', this._scrollHandler, true);
+                window.removeEventListener('resize', this._scrollHandler);
+                this._scrollHandler = null;
+            }
+
             document.querySelectorAll('.red-polygon-layer').forEach(layer => {
                 layer.remove();
             });
-            // 업데이트 함수 초기화
-            this._updateRedPolygonPosition = null;
+
             this._redPolygonItem = null;
+            this._redPolygonLayer = null;
+            this._updatePositionFn = null;
         },
 
         // 맵 아이템 선택
@@ -732,6 +747,12 @@
 
             // 브레드크럼 업데이트
             this.updateBreadcrumb();
+
+            // SEO: URL 및 메타 태그 업데이트
+            const mapId = item.dataset.submapId;
+            if (window.MapsSEO && mapId) {
+                window.MapsSEO.onMapSelected(mapId, currentCategoryId);
+            }
 
             if (window.MapsCore) {
                 // file이 배열이면 배열 전체를 전달, 아니면 단일 파일명 전달

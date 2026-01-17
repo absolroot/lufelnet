@@ -393,18 +393,14 @@
 
             // 개수 세지 않는 아이콘인지 확인
             const isNonCountable = this.isNonCountableIcon(sprite.objectImage || '');
-            if (isNonCountable) {
-                console.log('개수 세지 않는 아이콘:', sprite.objectImage);
-                return; // 클릭 처리하지 않음
-            }
 
-            // enemy_data가 있는 경우 모달 표시
+            // enemy_data가 있는 경우 모달 표시 (non_countable이어도 모달은 표시)
             if (sprite.debugInfo && sprite.debugInfo.enemyData) {
                 this.showEnemyModal(sprite.debugInfo.enemyData);
                 return;
             }
 
-            // 기존 로직 (일반 오브젝트)
+            // 기존 로직 (일반 오브젝트 및 non_countable 아이콘)
             const isClicked = this.getObjectClickedState(sprite.objectSn);
             const newState = !isClicked;
 
@@ -416,8 +412,8 @@
                 this.removeClickedEffect(sprite);
             }
 
-            // 필터 패널 개수 업데이트
-            if (window.ObjectFilterPanel && sprite.objectType) {
+            // 필터 패널 개수 업데이트 (non_countable 아이콘은 개수 업데이트 제외)
+            if (!isNonCountable && window.ObjectFilterPanel && sprite.objectType) {
                 window.ObjectFilterPanel.updateTypeCount(sprite.objectType, sprite.objectSn, newState);
             }
         },

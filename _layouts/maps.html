@@ -16,8 +16,20 @@
   <link rel="manifest" href="{{ site.baseurl }}/assets/img/favicon/site.webmanifest" />
 
   {% assign lang = page.url | split: "?" | last | split: "&" | first | replace: "lang=", "" %}
-  <title>{% if page.title %}{{ page.title }}{% elsif lang == "en" %}P5X Maps - Lufelnet{% elsif lang == "jp" %}P5X マップス - ルフェルネット{% else %}P5X 맵스 - 루페르넷{% endif %}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif lang == "en" %}Explore all P5X Palaces and Mementos.{% elsif lang == "jp" %}P5X マップビューアー。パレスとメメントスの全マップを確認してください{% else %}P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.{% endif %}">
+  <title id="page-title">{% if page.title %}{{ page.title }}{% elsif lang == "en" %}P5X Maps - Lufelnet{% elsif lang == "jp" %}P5X マップス - ルフェルネット{% else %}P5X 맵스 - 루페르넷{% endif %}</title>
+  <meta id="meta-description" name="description" content="{% if page.description %}{{ page.description }}{% elsif lang == "en" %}Explore all P5X Palaces and Mementos.{% elsif lang == "jp" %}P5X マップビューアー。パレスとメメントスの全マップを確認してください{% else %}P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.{% endif %}">
+
+  <!-- Open Graph / SNS 공유용 -->
+  <meta id="og-title" property="og:title" content="{% if lang == 'en' %}P5X Maps - Lufelnet{% elsif lang == 'jp' %}P5X マップス - ルフェルネット{% else %}P5X 맵스 - 루페르넷{% endif %}">
+  <meta id="og-description" property="og:description" content="{% if lang == 'en' %}Explore all P5X Palaces and Mementos.{% elsif lang == 'jp' %}P5X マップビューアー{% else %}P5X 맵 뷰어{% endif %}">
+  <meta property="og:type" content="website">
+  <meta id="og-url" property="og:url" content="{{ site.url }}{{ site.baseurl }}/maps/">
+  <meta property="og:site_name" content="Lufelnet">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta id="twitter-title" name="twitter:title" content="{% if lang == 'en' %}P5X Maps - Lufelnet{% elsif lang == 'jp' %}P5X マップス - ルフェルネット{% else %}P5X 맵스 - 루페르넷{% endif %}">
+  <meta id="twitter-description" name="twitter:description" content="{% if lang == 'en' %}Explore all P5X Palaces and Mementos.{% elsif lang == 'jp' %}P5X マップビューアー{% else %}P5X 맵 뷰어{% endif %}">
 
   {% if page.alternate_urls %}
   <link rel="alternate" hreflang="ko" href="{{ site.url }}/maps/" />

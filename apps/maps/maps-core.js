@@ -532,6 +532,11 @@
                     const data = await response.json();
                     console.log('JSON 데이터:', data);
                     this.nonInteractiveIcons = data.non_interactive_icons || [];
+                    // 전역 변수에 non_countable_icons도 저장
+                    window.nonInteractiveIconsData = {
+                        non_interactive_icons: data.non_interactive_icons || [],
+                        non_countable_icons: data.non_countable_icons || []
+                    };
                     // console.log('비대화형 아이콘 목록 로드됨:', this.nonInteractiveIcons);
                 } else {
                     // console.warn('비대화형 아이콘 JSON 로드 실패:', response.status);
@@ -690,6 +695,9 @@
                     
                     // sn 정보 저장
                     sprite.objectSn = obj.sn || null;
+                    
+                    // 이미지 정보 저장 (non_countable_icons 확인용)
+                    sprite.objectImage = obj.image || null;
                     
                     // enemy_data 저장
                     if (obj.enemy_data) {

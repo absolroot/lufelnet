@@ -15,6 +15,15 @@
             return false;
         },
 
+        // 개수 세지 않을 아이콘인지 확인
+        isNonCountableIcon(imageName) {
+            // non-interactive-icons.json에서 non_countable_icons 배열 가져오기
+            if (window.nonInteractiveIconsData && window.nonInteractiveIconsData.non_countable_icons) {
+                return window.nonInteractiveIconsData.non_countable_icons.includes(imageName);
+            }
+            return false;
+        },
+
         // 필터 UI 업데이트
         updateFilterUI(objects) {
             const container = document.getElementById('filter-container');
@@ -31,6 +40,7 @@
 
                 // 비대화형 아이콘 여부 확인
                 const isNonInteractive = this.isNonInteractiveIcon(obj.image);
+                const isNonCountable = this.isNonCountableIcon(obj.image);
 
                 // 오브젝트 타입 추출
                 let type = obj.image;
@@ -48,8 +58,8 @@
                     if (!objectsByType[type]) {
                         objectsByType[type] = [];
                     }
-                    // sn이 있으면 저장 (비대화형은 sn 저장하지 않음)
-                    if (obj.sn && !isNonInteractive) {
+                    // sn이 있고 개수 세지 않는 아이콘이 아닌 경우에만 저장
+                    if (obj.sn && !isNonInteractive && !isNonCountable) {
                         objectsByType[type].push(obj.sn);
                     }
                     // 비대화형 타입 기록
@@ -69,9 +79,31 @@
                 const total = snList.length;
                 const isNonInteractive = nonInteractiveTypes.has(type);
 
-                // 비대화형이 아닌 경우에만 클릭 상태 계산
+                // 개수 세지 않는 아이콘인지 확인
+                let isNonCountable = false;
+                // 해당 타입의 첫 번째 오브젝트 이미지로 확인
+                const firstObj = objects.find(obj => {
+                    if (!obj || !obj.image) return false;
+                    let objType = obj.image;
+                    if (objType.startsWith('yishijie-icon-')) {
+                        objType = objType.replace('yishijie-icon-', '');
+                    }
+                    if (objType.startsWith('yishijie-')) {
+                        objType = objType.replace('yishijie-', '');
+                    }
+                    if (objType.endsWith('.png')) {
+                        objType = objType.replace('.png', '');
+                    }
+                    return objType === type;
+                });
+                
+                if (firstObj) {
+                    isNonCountable = this.isNonCountableIcon(firstObj.image);
+                }
+
+                // 비대화형이거나 개수 세지 않는 아이콘이 아닌 경우에만 클릭 상태 계산
                 let clicked = 0;
-                if (!isNonInteractive && window.ObjectClickHandler) {
+                if (!isNonInteractive && !isNonCountable && window.ObjectClickHandler) {
                     snList.forEach(sn => {
                         if (window.ObjectClickHandler.getObjectClickedState(sn)) {
                             clicked++;
@@ -83,7 +115,8 @@
                     total: total,
                     remaining: total - clicked,
                     snList: snList,
-                    isNonInteractive: isNonInteractive
+                    isNonInteractive: isNonInteractive,
+                    isNonCountable: isNonCountable
                 };
             });
 
@@ -97,9 +130,10 @@
 
                 const countInfo = objectCounts[type];
                 const isNonInteractive = countInfo.isNonInteractive;
+                const isNonCountable = countInfo.isNonCountable;
 
-                // 비대화형은 padding-bottom 없이
-                if (isNonInteractive) {
+                // 비대화형이거나 개수 세지 않는 아이콘은 padding-bottom 없이
+                if (isNonInteractive || isNonCountable) {
                     filterItem.style.paddingBottom = '8px';
                 }
 
@@ -140,8 +174,8 @@
                 filterItem.appendChild(icon);
                 filterItem.appendChild(checkMark);
 
-                // 개수 표시 (비대화형 아이콘은 개수 표시 안 함)
-                if (!isNonInteractive && countInfo.total > 0) {
+                // 개수 표시 (비대화형이거나 개수 세지 않는 아이콘은 개수 표시 안 함)
+                if (!isNonInteractive && !isNonCountable && countInfo.total > 0) {
                     const countDiv = document.createElement('div');
                     countDiv.className = 'filter-count';
                     countDiv.dataset.type = type;

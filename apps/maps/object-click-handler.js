@@ -15,6 +15,14 @@
     document.head.appendChild(style);
 
     window.ObjectClickHandler = {
+        // 개수 세지 않을 아이콘인지 확인
+        isNonCountableIcon(imageName) {
+            if (window.nonInteractiveIconsData && window.nonInteractiveIconsData.non_countable_icons) {
+                return window.nonInteractiveIconsData.non_countable_icons.includes(imageName);
+            }
+            return false;
+        },
+
         // 오브젝트 클릭 상태 저장/로드
         getObjectClickedState(sn) {
             try {
@@ -381,6 +389,13 @@
             if (!sprite || !sprite.objectSn) {
                 console.warn('스프라이트 또는 SN이 없음:', { sprite: !!sprite, sn: sprite?.objectSn });
                 return;
+            }
+
+            // 개수 세지 않는 아이콘인지 확인
+            const isNonCountable = this.isNonCountableIcon(sprite.objectImage || '');
+            if (isNonCountable) {
+                console.log('개수 세지 않는 아이콘:', sprite.objectImage);
+                return; // 클릭 처리하지 않음
             }
 
             // enemy_data가 있는 경우 모달 표시

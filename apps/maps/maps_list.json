@@ -15,6 +15,7 @@
           "name": "인지 야구장",
           "name_en": "",
           "name_jp": "",
+          "icon": "yishijie-icon-bangqiuguan-new.png",
           "submaps": [
             {
               "id": "baseball_gate",
@@ -155,6 +156,7 @@
           "name": "인지 세트장",
           "name_en": "",
           "name_jp": "",
+          "icon": "yishijie-icon-gongzebomeng-new.png",
           "submaps": [
             {
               "id": "forest_outside_city",
@@ -296,6 +298,7 @@
           "name": "인지 분노의 댐",
           "name_en": "",
           "name_jp": "",
+          "icon": "yishijie-icon-shuiba-new.png",
           "submaps": [
             {
               "id": "dam_entrance",
@@ -463,6 +466,7 @@
           "name": "인지 폭식의 댐",
           "name_en": "",
           "name_jp": "",
+          "icon": "yishijie-icon-shuiba-new.png",
           "submaps": [
             {
               "id": "control_center",
@@ -747,6 +751,7 @@
           "name": "인지 개미굴",
           "name_en": "",
           "name_jp": "",
+          "icon": "yishijie-icon-xiajin.png",
           "submaps": [
             {
               "id": "ant_cave_lower",
@@ -1043,6 +1048,7 @@
           "name": "사상을 잃은길",
           "name_en": "",
           "name_jp": "",
+          "icon": "yinxiangkongjian-ditu-1.png",
           "submaps": [
             {
               "id": "area1",
@@ -1087,6 +1093,7 @@
           "name": "조화를 잃은길",
           "name_en": "",
           "name_jp": "",
+          "icon": "yinxiangkongjian-ditu-2.png",
           "submaps": [
             {
               "id": "area1",
@@ -1143,6 +1150,7 @@
           "name": "절제를 잃은길",
           "name_en": "",
           "name_jp": "",
+          "icon": "yinxiangkongjian-ditu-3.png",
           "submaps": [
             {
               "id": "area1",
@@ -1223,6 +1231,7 @@
           "name": "미덕을 잃은길",
           "name_en": "",
           "name_jp": "",
+          "icon": "yinxiangkongjian-ditu-4.png",
           "submaps": [
             {
               "id": "area1",

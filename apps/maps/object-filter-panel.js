@@ -54,26 +54,24 @@
                     icon.style.display = 'none';
                 };
 
-                // 체크 표시 SVG (우측 상단)
+                // 체크 표시 SVG (우측 상단 라벨 형식)
                 const checkMark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                 checkMark.setAttribute('class', 'filter-checkmark');
                 checkMark.setAttribute('viewBox', '0 0 24 24');
-                checkMark.setAttribute('width', '20');
-                checkMark.setAttribute('height', '20');
-                checkMark.style.display = 'block'; // 초기에는 모두 체크된 상태
+                checkMark.setAttribute('width', '12');
+                checkMark.setAttribute('height', '12');
+                checkMark.style.display = 'flex'; // 초기에는 모두 체크된 상태
                 
                 const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 path.setAttribute('d', 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z');
-                path.setAttribute('fill', '#4CAF50');
-                path.setAttribute('stroke', '#fff');
-                path.setAttribute('stroke-width', '2');
+                path.setAttribute('fill', '#ffffff');
                 checkMark.appendChild(path);
 
                 // 클릭 이벤트
                 filterItem.addEventListener('click', () => {
                     const isChecked = filterItem.dataset.checked === 'true';
                     filterItem.dataset.checked = isChecked ? 'false' : 'true';
-                    checkMark.style.display = isChecked ? 'none' : 'block';
+                    checkMark.style.display = isChecked ? 'none' : 'flex';
                     objectFilters[type] = !isChecked;
                     this.updateObjectVisibility();
                 });
@@ -151,6 +149,16 @@
                 objectFilterTitle.textContent = window.MapsI18n.getText(lang, 'objectFilter');
             }
             
+            const selectAllText = document.getElementById('select-all-text');
+            if (selectAllText) {
+                selectAllText.textContent = window.MapsI18n.getText(lang, 'selectAll');
+            }
+            
+            const resetFilterText = document.getElementById('reset-filter-text');
+            if (resetFilterText) {
+                resetFilterText.textContent = window.MapsI18n.getText(lang, 'resetFilter');
+            }
+            
             const zoomLabel = document.querySelector('#object-filter-panel .control-group label');
             if (zoomLabel) {
                 zoomLabel.textContent = window.MapsI18n.getText(lang, 'zoom');
@@ -161,9 +169,14 @@
                 resetBtn.textContent = window.MapsI18n.getText(lang, 'reset');
             }
             
-            const infoText = document.querySelector('.info-text');
-            if (infoText) {
-                infoText.innerHTML = `${window.MapsI18n.getText(lang, 'dragMove')}<br>${window.MapsI18n.getText(lang, 'wheelZoom')}`;
+            const dragMoveText = document.getElementById('drag-move-text');
+            if (dragMoveText) {
+                dragMoveText.textContent = window.MapsI18n.getText(lang, 'dragMove');
+            }
+            
+            const wheelZoomText = document.getElementById('wheel-zoom-text');
+            if (wheelZoomText) {
+                wheelZoomText.textContent = window.MapsI18n.getText(lang, 'wheelZoom');
             }
         },
 
@@ -276,9 +289,58 @@
             window.location.href = newUrl;
         },
 
+        // 전체 선택
+        selectAll() {
+            const filterItems = document.querySelectorAll('.filter-item');
+            filterItems.forEach(item => {
+                item.dataset.checked = 'true';
+                const checkMark = item.querySelector('.filter-checkmark');
+                if (checkMark) {
+                    checkMark.style.display = 'flex';
+                }
+                const type = item.dataset.type;
+                objectFilters[type] = true;
+            });
+            this.updateObjectVisibility();
+        },
+
+        // 필터 초기화
+        resetFilters() {
+            const filterItems = document.querySelectorAll('.filter-item');
+            filterItems.forEach(item => {
+                item.dataset.checked = 'false';
+                const checkMark = item.querySelector('.filter-checkmark');
+                if (checkMark) {
+                    checkMark.style.display = 'none';
+                }
+                const type = item.dataset.type;
+                objectFilters[type] = false;
+            });
+            this.updateObjectVisibility();
+        },
+
+        // 필터 컨트롤 버튼 초기화
+        initFilterControls() {
+            const selectAllBtn = document.getElementById('select-all-btn');
+            const resetBtn = document.getElementById('reset-filter-btn');
+
+            if (selectAllBtn) {
+                selectAllBtn.addEventListener('click', () => {
+                    this.selectAll();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    this.resetFilters();
+                });
+            }
+        },
+
         // 초기화
         init() {
             this.initZoomControls();
+            this.initFilterControls();
             this.translateUI();
             this.initLanguageSelector();
         }

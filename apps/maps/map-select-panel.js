@@ -77,41 +77,223 @@
 
         // 카테고리 드롭다운 업데이트
         updateCategoryDropdown() {
-            const select = document.getElementById('category-select');
-            if (!select || !window.MapsI18n || !window.MapsCore) return;
+            const selectContainer = document.getElementById('category-select');
+            const optionsContainer = document.getElementById('category-options-container');
+            const selectedText = document.getElementById('selected-category-text');
+            const selectedIcon = document.getElementById('selected-category-icon');
+            
+            if (!selectContainer || !window.MapsI18n || !window.MapsCore) return;
             
             const lang = window.MapsI18n.getCurrentLanguage();
             const mapsListData = window.MapsCore.getMapsListData();
             
-            select.innerHTML = '';
+            // BASE_URL 가져오기
+            const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+            function normalizePath(base, path) {
+                const cleanBase = base.replace(/\/+$/, '');
+                const cleanPath = path.replace(/^\/+/, '');
+                return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
+            }
+            const ICON_PATH = normalizePath(BASE_URL, 'apps/maps/yishijie-icon/');
             
-            const defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.textContent = window.MapsI18n.getText(lang, 'selectCategory');
-            select.appendChild(defaultOption);
+            // 옵션 컨테이너 초기화
+            if (optionsContainer) {
+                optionsContainer.innerHTML = '';
+            }
             
-            if (!mapsListData || !mapsListData.maps) return;
+            if (!mapsListData || !mapsListData.maps) {
+                // 기본 선택 텍스트 설정
+                if (selectedText) {
+                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                }
+                if (selectedIcon) {
+                    selectedIcon.style.display = 'none';
+                    selectedIcon.src = '';
+                }
+                return;
+            }
             
             const currentMap = mapsListData.maps.find(m => m.id === currentMapId);
-            if (!currentMap || !currentMap.categories) return;
+            if (!currentMap || !currentMap.categories) {
+                // 기본 선택 텍스트 설정
+                if (selectedText) {
+                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                }
+                if (selectedIcon) {
+                    selectedIcon.style.display = 'none';
+                    selectedIcon.src = '';
+                }
+                return;
+            }
             
-            currentMap.categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category.id;
-                option.textContent = window.MapsI18n.getMapName(category, lang);
-                select.appendChild(option);
+            // 현재 선택된 카테고리가 있으면 표시
+            if (currentCategoryId) {
+                const selectedCategory = currentMap.categories.find(c => c.id === currentCategoryId);
+                if (selectedCategory) {
+                    const categoryName = window.MapsI18n.getMapName(selectedCategory, lang);
+                    const iconPath = selectedCategory.icon ? `${ICON_PATH}${selectedCategory.icon}` : '';
+                    this.updateSelectedOption(currentCategoryId, categoryName, iconPath);
+                } else {
+                    // 선택된 카테고리가 현재 맵에 없으면 기본 텍스트
+                    if (selectedText) {
+                        selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                    }
+                    if (selectedIcon) {
+                        selectedIcon.style.display = 'none';
+                        selectedIcon.src = '';
+                    }
+                }
+            } else {
+                // 기본 선택 텍스트 설정
+                if (selectedText) {
+                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                }
+                if (selectedIcon) {
+                    selectedIcon.style.display = 'none';
+                    selectedIcon.src = '';
+                }
+            }
+            
+            // 기본 옵션 추가
+            const defaultOption = document.createElement('div');
+            defaultOption.className = 'category-option';
+            defaultOption.dataset.value = '';
+            defaultOption.innerHTML = `
+                <span>${window.MapsI18n.getText(lang, 'selectCategory')}</span>
+            `;
+            defaultOption.addEventListener('click', () => {
+                currentCategoryId = '';
+                this.updateSelectedOption('', window.MapsI18n.getText(lang, 'selectCategory'), '');
+                this.updateMapList();
+                this.closeCategoryDropdown();
             });
+            if (optionsContainer) {
+                optionsContainer.appendChild(defaultOption);
+            }
+            
+            // 카테고리 옵션 추가
+            currentMap.categories.forEach(category => {
+                const option = document.createElement('div');
+                option.className = 'category-option';
+                option.dataset.value = category.id;
+                
+                const categoryName = window.MapsI18n.getMapName(category, lang);
+                const iconPath = category.icon ? `${ICON_PATH}${category.icon}` : '';
+                
+                if (iconPath) {
+                    option.innerHTML = `
+                        <img src="${iconPath}" alt="${categoryName}" class="category-icon">
+                        <span>${categoryName}</span>
+                    `;
+                } else {
+                    option.innerHTML = `<span>${categoryName}</span>`;
+                }
+                
+                option.addEventListener('click', () => {
+                    currentCategoryId = category.id;
+                    this.updateSelectedOption(category.id, categoryName, iconPath);
+                    this.updateMapList();
+                    this.closeCategoryDropdown();
+                });
+                
+                if (optionsContainer) {
+                    optionsContainer.appendChild(option);
+                }
+            });
+        },
+        
+        // 선택된 옵션 업데이트
+        updateSelectedOption(value, text, iconPath) {
+            const selectedText = document.getElementById('selected-category-text');
+            const selectedIcon = document.getElementById('selected-category-icon');
+            
+            if (selectedText) {
+                selectedText.textContent = text;
+            }
+            
+            if (selectedIcon) {
+                if (iconPath) {
+                    selectedIcon.src = iconPath;
+                    selectedIcon.style.display = 'inline-block';
+                } else {
+                    selectedIcon.style.display = 'none';
+                    selectedIcon.src = '';
+                }
+            }
+        },
+        
+        // 드롭다운 열기/닫기
+        toggleCategoryDropdown() {
+            const optionsContainer = document.getElementById('category-options-container');
+            if (!optionsContainer) {
+                console.warn('category-options-container를 찾을 수 없습니다.');
+                return;
+            }
+            
+            // 현재 상태 확인
+            const currentDisplay = optionsContainer.style.display;
+            const isOpen = currentDisplay === 'block';
+            
+            console.log('드롭다운 토글:', { currentDisplay, isOpen });
+            
+            if (isOpen) {
+                this.closeCategoryDropdown();
+            } else {
+                this.openCategoryDropdown();
+            }
+        },
+        
+        openCategoryDropdown() {
+            const optionsContainer = document.getElementById('category-options-container');
+            if (optionsContainer) {
+                console.log('드롭다운 열기');
+                optionsContainer.style.display = 'block';
+            } else {
+                console.warn('optionsContainer를 찾을 수 없습니다.');
+            }
+        },
+        
+        closeCategoryDropdown() {
+            const optionsContainer = document.getElementById('category-options-container');
+            if (optionsContainer) {
+                console.log('드롭다운 닫기');
+                optionsContainer.style.display = 'none';
+            }
         },
 
         // 카테고리 선택 설정
         setupCategorySelect() {
-            const select = document.getElementById('category-select');
-            if (!select) return;
+            const selectContainer = document.getElementById('category-select');
+            const selectedOption = document.querySelector('.selected-category-option');
+            if (!selectContainer || !selectedOption) {
+                console.warn('카테고리 드롭다운 요소를 찾을 수 없습니다.', { selectContainer, selectedOption });
+                return;
+            }
             
-            select.addEventListener('change', (e) => {
-                currentCategoryId = e.target.value;
-                this.updateMapList();
+            // 이미 설정되었는지 확인 (중복 방지)
+            if (selectedOption.dataset.setup === 'true') {
+                console.log('카테고리 드롭다운은 이미 설정되었습니다.');
+                return;
+            }
+            selectedOption.dataset.setup = 'true';
+            
+            // 클릭 이벤트
+            selectedOption.addEventListener('click', (e) => {
+                e.stopPropagation();
+                console.log('카테고리 드롭다운 클릭됨');
+                this.toggleCategoryDropdown();
             });
+            
+            // 외부 클릭 시 닫기 (한 번만 등록)
+            if (!this._categoryDropdownClickHandler) {
+                this._categoryDropdownClickHandler = (e) => {
+                    const container = document.getElementById('category-select');
+                    if (container && !container.contains(e.target)) {
+                        this.closeCategoryDropdown();
+                    }
+                };
+                document.addEventListener('click', this._categoryDropdownClickHandler);
+            }
         },
 
         // 맵 리스트 업데이트
@@ -227,6 +409,9 @@
                             }
                         }, 50); // 애니메이션 시작 후 약간의 지연
                     }
+                    
+                    // 서브메뉴 토글 시 빨간 폴리곤 위치 업데이트
+                    this.updateRedPolygonPosition();
                 });
                 
                 container.appendChild(item);
@@ -310,6 +495,9 @@
                             }
                         }, 50); // 애니메이션 시작 후 약간의 지연
                     }
+                    
+                    // 서브메뉴 토글 시 빨간 폴리곤 위치 업데이트
+                    this.updateRedPolygonPosition();
                 });
                 
                 container.appendChild(item);
@@ -365,10 +553,17 @@
                 if (savedCategory) {
                     // 카테고리 선택
                     currentCategoryId = saved.categoryId;
-                    const categorySelect = document.getElementById('category-select');
-                    if (categorySelect) {
-                        categorySelect.value = saved.categoryId;
+                    const lang = window.MapsI18n.getCurrentLanguage();
+                    const categoryName = window.MapsI18n.getMapName(savedCategory, lang);
+                    const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+                    function normalizePath(base, path) {
+                        const cleanBase = base.replace(/\/+$/, '');
+                        const cleanPath = path.replace(/^\/+/, '');
+                        return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
                     }
+                    const ICON_PATH = normalizePath(BASE_URL, 'apps/maps/yishijie-icon/');
+                    const iconPath = savedCategory.icon ? `${ICON_PATH}${savedCategory.icon}` : '';
+                    this.updateSelectedOption(savedCategory.id, categoryName, iconPath);
                     
                     // 맵 리스트 업데이트
                     this.updateMapList();
@@ -408,10 +603,17 @@
             const firstCategory = currentMap.categories[0];
             currentCategoryId = firstCategory.id;
             
-            const categorySelect = document.getElementById('category-select');
-            if (categorySelect) {
-                categorySelect.value = firstCategory.id;
+            const lang = window.MapsI18n.getCurrentLanguage();
+            const categoryName = window.MapsI18n.getMapName(firstCategory, lang);
+            const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+            function normalizePath(base, path) {
+                const cleanBase = base.replace(/\/+$/, '');
+                const cleanPath = path.replace(/^\/+/, '');
+                return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
             }
+            const ICON_PATH = normalizePath(BASE_URL, 'apps/maps/yishijie-icon/');
+            const iconPath = firstCategory.icon ? `${ICON_PATH}${firstCategory.icon}` : '';
+            this.updateSelectedOption(firstCategory.id, categoryName, iconPath);
             
             this.updateMapList();
             
@@ -451,6 +653,7 @@
             redLayer.style.top = `${rect.top - panelRect.top - 4}px`;
             redLayer.style.left = `${rect.left - panelRect.left - 4}px`;
             redLayer.dataset.itemId = item.dataset.submapId || item.dataset.file || 'unknown';
+            redLayer.dataset.targetItemId = item.dataset.submapId || item.dataset.file || 'unknown';
             mapSelectPanel.appendChild(redLayer);
             
             // 아이템 위치 변경 시 레이어 위치 업데이트
@@ -467,6 +670,10 @@
                 redLayer.style.width = `${newRect.width + 8}px`;
             };
             
+            // 전역으로 업데이트 함수 저장 (서브메뉴 토글 시 호출용)
+            this._updateRedPolygonPosition = updateLayerPosition;
+            this._redPolygonItem = item;
+            
             // 스크롤 및 리사이즈 시 위치 업데이트
             const scrollHandler = () => updateLayerPosition();
             window.addEventListener('scroll', scrollHandler, true);
@@ -480,12 +687,27 @@
                 originalRemove.call(this);
             };
         },
+        
+        // 빨간 폴리곤 위치 업데이트 (서브메뉴 토글 시 호출)
+        updateRedPolygonPosition() {
+            if (this._updateRedPolygonPosition && this._redPolygonItem) {
+                // 애니메이션 완료 후 위치 업데이트
+                setTimeout(() => {
+                    if (this._updateRedPolygonPosition) {
+                        this._updateRedPolygonPosition();
+                    }
+                }, 300); // transition 시간과 맞춤 (0.3s)
+            }
+        },
 
         // 빨간 폴리곤 레이어 제거
         hideRedPolygonLayer() {
             document.querySelectorAll('.red-polygon-layer').forEach(layer => {
                 layer.remove();
             });
+            // 업데이트 함수 초기화
+            this._updateRedPolygonPosition = null;
+            this._redPolygonItem = null;
         },
 
         // 맵 아이템 선택
@@ -535,10 +757,17 @@
                 const firstCategory = palaceMap.categories[0];
                 currentCategoryId = firstCategory.id;
                 
-                const categorySelect = document.getElementById('category-select');
-                if (categorySelect) {
-                    categorySelect.value = firstCategory.id;
+                const lang = window.MapsI18n.getCurrentLanguage();
+                const categoryName = window.MapsI18n.getMapName(firstCategory, lang);
+                const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+                function normalizePath(base, path) {
+                    const cleanBase = base.replace(/\/+$/, '');
+                    const cleanPath = path.replace(/^\/+/, '');
+                    return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
                 }
+                const ICON_PATH = normalizePath(BASE_URL, 'apps/maps/yishijie-icon/');
+                const iconPath = firstCategory.icon ? `${ICON_PATH}${firstCategory.icon}` : '';
+                this.updateSelectedOption(firstCategory.id, categoryName, iconPath);
                 
                 this.updateMapList();
                 
@@ -569,9 +798,15 @@
             if (!window.MapsI18n) return;
             const lang = window.MapsI18n.getCurrentLanguage();
             
-            const categorySelect = document.getElementById('category-select');
-            if (categorySelect && categorySelect.firstChild) {
-                categorySelect.firstChild.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+            // 선택된 카테고리가 없으면 기본 텍스트만 업데이트
+            if (!currentCategoryId) {
+                const selectedText = document.getElementById('selected-category-text');
+                if (selectedText) {
+                    selectedText.textContent = window.MapsI18n.getText(lang, 'selectCategory');
+                }
+            } else {
+                // 선택된 카테고리가 있으면 드롭다운 다시 업데이트
+                this.updateCategoryDropdown();
             }
             
             const tabs = document.querySelectorAll('.map-tab');

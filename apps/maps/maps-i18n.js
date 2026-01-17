@@ -15,7 +15,9 @@
             wheelZoom: '마우스 휠: 줌',
             selectCategory: '카테고리를 선택하세요...',
             palace: '팰리스',
-            mementoes: '메멘토스'
+            mementoes: '메멘토스',
+            selectAll: '전체 선택',
+            resetFilter: '초기화'
         },
         en: {
             loading: 'Loading map...',
@@ -28,7 +30,9 @@
             wheelZoom: 'Mouse wheel: Zoom',
             selectCategory: 'Select a category...',
             palace: 'Palace',
-            mementoes: 'Mementos'
+            mementoes: 'Mementos',
+            selectAll: 'Select All',
+            resetFilter: 'Reset'
         },
         jp: {
             loading: 'マップを読み込み中...',
@@ -41,7 +45,9 @@
             wheelZoom: 'マウスホイール: ズーム',
             selectCategory: 'カテゴリーを選択してください...',
             palace: 'パレス',
-            mementoes: 'メメントス'
+            mementoes: 'メメントス',
+            selectAll: 'すべて選択',
+            resetFilter: 'リセット'
         }
     };
 

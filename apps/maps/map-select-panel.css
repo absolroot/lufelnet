@@ -1,10 +1,13 @@
 /* Map Select Panel Styles */
 
+
+
+
 #map-select-panel {
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 320px;
+  width: 280px;
   max-height: calc(100vh - 40px);
   background: transparent;
   border-radius: 0;
@@ -15,6 +18,7 @@
   overflow: visible;
   gap: 10px;
 }
+
 
 /* 탭 */
 #map-tabs {
@@ -115,22 +119,118 @@
   border-bottom: 1px solid #333;
 }
 
-.category-select {
+/* 커스텀 카테고리 드롭다운 */
+.custom-category-select {
+  position: relative;
   width: 100%;
-  padding: 10px;
+  margin-top: 10px;
+  z-index: 2000;
+}
+
+.selected-category-option {
+  width: 100%;
+  padding: 10px 0px;
+  padding-right: 30px; /* 화살표 공간 확보 */
   background: #1a1a1a;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.2s ease;
+  position: relative;
 }
 
-.category-select:focus {
-  outline: none;
-  border-color: #800000;
+.selected-category-option:hover {
+  background: #2a2a2a;
+}
+
+.selected-category-option .category-icon {
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.selected-category-option span {
+  flex: 1;
+  min-width: 0; /* 텍스트 오버플로우 방지 */
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-arrow::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid currentColor;
+  transition: transform 0.2s ease;
+}
+
+.custom-category-select:has(.category-options-container[style*="block"]) .dropdown-arrow::before {
+  transform: rotate(180deg);
+}
+
+.category-options-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 2000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.category-option {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.category-option:hover {
+  background: #2a2a2a;
+}
+
+.category-option .category-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.category-option span {
+  flex: 1;
 }
 
 /* 맵 리스트 컨테이너 */
@@ -178,7 +278,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000000;
+  background-color: #000000cc;
   z-index: 1;
   pointer-events: none;
 }
@@ -294,29 +394,24 @@
 .map-sub-list {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, margin-top 0.3s ease-in-out, padding 0.3s ease-in-out, background 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out, padding 0.3s ease-in-out, background 0.3s ease-in-out;
   background: transparent;
   width: 93%;
   margin-left: 3%;
   margin-top: 0;
   padding: 0;
   display: block;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 0;
-  position: relative;
+  /* position을 제거하여 stacking context를 만들지 않음 */
 }
 
 .map-item.expanded + .map-sub-list,
 .map-sub-item.expanded + .map-sub-list {
   max-height: 2000px;
-  margin-top: -20px;
+  margin-top: -10px;
   background: rgb(188 188 188);
   padding: 8px;
   border-radius: 0px;
   overflow: hidden;
-  opacity: 1;
-  visibility: visible;
 }
 
 /* 하위 맵 아이템 - 연한 회색 배경, 활성화 시 빨간 폴리곤 */
@@ -337,7 +432,6 @@
   margin-bottom: 4px;
   border-radius: 2px;
   overflow: visible;
-  isolation: isolate;
 }
 
 .map-sub-item:last-child {
@@ -353,25 +447,26 @@
   color: #ffffff;
   position: relative;
   z-index: 1002;
+  /* 빨간 폴리곤(1001)보다 높게 설정 */
 }
 
 /* 활성화된 하위 메뉴의 빨간 폴리곤 레이어는 .red-polygon-layer 클래스로 공통 스타일 사용 */
 
 .map-sub-item.active span {
   position: relative;
-  z-index: 1002;
+  z-index: 1003;
   font-weight: 600;
-  /* 글씨가 빨간 폴리곤 위에 오도록 - stacking context를 벗어나기 위해 */
+  /* 글씨가 빨간 폴리곤 위에 오도록 */
   transform: translateZ(0);
-  isolation: isolate;
 }
 
 .map-sub-item span {
   position: relative;
-  z-index: 1002;
+  z-index: 1003;
   font-size: 13px;
   margin-left: 0;
   color: #111;
+  transform: translateZ(0);
 }
 
 .map-sub-item.has-submaps {

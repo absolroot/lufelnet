@@ -18,6 +18,24 @@ alternate_urls:
     <!-- 좌측: 오브젝트 필터 패널 -->
     <div id="object-filter-panel" class="side-panel">
         <h2 id="object-filter-title">오브젝트 필터</h2>
+        <div class="filter-controls">
+            <button class="filter-control-btn select-all" id="select-all-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11l3 3L22 4"></path>
+                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h7"></path>
+                </svg>
+                <span id="select-all-text">전체 선택</span>
+            </button>
+            <button class="filter-control-btn reset" id="reset-filter-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 019-9 9.75 9.75 0 016.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path>
+                    <path d="M21 12a9 9 0 01-9 9 9.75 9.75 0 01-6.74-2.74L3 16"></path>
+                    <path d="M3 21v-5h5"></path>
+                </svg>
+                <span id="reset-filter-text">초기화</span>
+            </button>
+        </div>
         <div id="filter-container"></div>
         <div class="control-group">
             <label>줌</label>
@@ -28,8 +46,24 @@ alternate_urls:
             </div>
         </div>
         <div class="info-text">
-            마우스 드래그: 이동<br>
-            마우스 휠: 줌
+            <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
+                </svg>
+                <span id="drag-move-text">마우스 드래그: 이동</span>
+            </div>
+            <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="8" y="4" width="8" height="16" rx="2"></rect>
+                    <path d="M12 6v12"></path>
+                    <path d="M10 8h4"></path>
+                    <path d="M10 10h4"></path>
+                    <path d="M10 12h4"></path>
+                    <path d="M10 14h4"></path>
+                    <path d="M10 16h4"></path>
+                </svg>
+                <span id="wheel-zoom-text">마우스 휠: 줌</span>
+            </div>
         </div>
         <!-- language selector -->
         <div class="language-selector-container">
@@ -66,9 +100,16 @@ alternate_urls:
         
         <!-- 카테고리 드롭다운 -->
         <div id="category-select-container">
-            <select id="category-select" class="category-select">
-                <option value="">카테고리를 선택하세요...</option>
-            </select>
+            <div id="category-select" class="custom-category-select">
+                <div class="selected-category-option">
+                    <img src="" alt="" class="category-icon" id="selected-category-icon" style="display: none;">
+                    <span id="selected-category-text">카테고리를 선택하세요...</span>
+                    <span class="dropdown-arrow"></span>
+                </div>
+                <div class="category-options-container" id="category-options-container" style="display: none;">
+                    <!-- 옵션들이 여기에 동적으로 추가됨 -->
+                </div>
+            </div>
         </div>
         
         <!-- 맵 리스트 -->
@@ -81,6 +122,7 @@ alternate_urls:
 <script src="https://pixijs.download/release/pixi.min.js"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-i18n.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-debug.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/object-click-handler.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-core.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/object-filter-panel.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/map-select-panel.js?v={{ site.time | date: '%s' }}"></script>

@@ -3,8 +3,8 @@
         {
             "image": "xiaoditu-yxkj-shangxing_N.png",
             "position": [
-                38,
-                3564
+                40,
+                3562
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -16,8 +16,8 @@
         {
             "image": "xiaoditu-yxkj-Tzi_ESW.png",
             "position": [
-                38,
-                2604
+                39,
+                2601
             ],
             "ratio": 2.5,
             "rotate": -270.0,
@@ -29,8 +29,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
-                118,
-                2924
+                120,
+                2922
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -42,8 +42,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
             "position": [
-                118,
-                2284
+                120,
+                2318
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -55,8 +55,8 @@
         {
             "image": "xiaoditu-yxkj-anquanxiaowu.png",
             "position": [
-                1318,
-                1964
+                1320,
+                1962
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -68,8 +68,8 @@
         {
             "image": "xiaoditu_yxkj02_zhilukuan_NS.png",
             "position": [
-                38,
-                3244
+                40,
+                3242
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -81,8 +81,8 @@
         {
             "image": "xiaoditu-yxkj-Tzi_ESW.png",
             "position": [
-                678,
-                2604
+                680,
+                2601
             ],
             "ratio": 2.5,
             "rotate": -180.0,
@@ -94,8 +94,8 @@
         {
             "image": "xiaoditu-yxkj-Tzi_ESW.png",
             "position": [
-                998,
-                2604
+                1000,
+                2682
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -107,8 +107,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
             "position": [
-                758,
-                2284
+                760,
+                2320
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -119,87 +119,87 @@
         },
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
+            "position": [
+                1080,
+                2921
+            ],
+            "ratio": 2.5,
+            "rotate": -180.0,
+            "rotate_pivot": [
+                0.49999997,
+                0.56675345
+            ]
+        },
+        {
+            "image": "xiaoditu-yxkj-zhixian_NS.png",
+            "position": [
+                1400,
+                2922
+            ],
+            "ratio": 2.5,
+            "rotate": -0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xiaoditu-yxkj-zhixian_NS.png",
+            "position": [
+                360,
+                2682
+            ],
+            "ratio": 2.5,
+            "rotate": -90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xiaoditu-yxkj-Tzi_ESW.png",
+            "position": [
+                1319,
+                1641
+            ],
+            "ratio": 2.5,
+            "rotate": -270.0,
+            "rotate_pivot": [
+                0.5,
+                0.6687069
+            ]
+        },
+        {
+            "image": "xiaoditu-yxkj-Tzi_ESW.png",
+            "position": [
+                1320,
+                1402
+            ],
+            "ratio": 2.5,
+            "rotate": -0.0,
+            "rotate_pivot": [
+                0.5,
+                0.6687069
+            ]
+        },
+        {
+            "image": "xiaoditu_yxkj02_huxian02_ES.png",
+            "position": [
+                1000,
+                1319
+            ],
+            "ratio": 2.5,
+            "rotate": -270.0,
+            "rotate_pivot": [
+                0.3328043,
+                0.6671957
+            ]
+        },
+        {
+            "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
                 1078,
-                2924
-            ],
-            "ratio": 2.5,
-            "rotate": -180.0,
-            "rotate_pivot": [
-                0.49999997,
-                0.56675345
-            ]
-        },
-        {
-            "image": "xiaoditu-yxkj-zhixian_NS.png",
-            "position": [
-                1398,
-                2924
-            ],
-            "ratio": 2.5,
-            "rotate": -0.0,
-            "rotate_pivot": [
-                0.5,
-                0.5
-            ]
-        },
-        {
-            "image": "xiaoditu-yxkj-zhixian_NS.png",
-            "position": [
-                358,
-                2684
-            ],
-            "ratio": 2.5,
-            "rotate": -90.0,
-            "rotate_pivot": [
-                0.5,
-                0.5
-            ]
-        },
-        {
-            "image": "xiaoditu-yxkj-Tzi_ESW.png",
-            "position": [
-                1318,
-                1644
-            ],
-            "ratio": 2.5,
-            "rotate": -270.0,
-            "rotate_pivot": [
-                0.5,
-                0.6687069
-            ]
-        },
-        {
-            "image": "xiaoditu-yxkj-Tzi_ESW.png",
-            "position": [
-                1318,
-                1324
-            ],
-            "ratio": 2.5,
-            "rotate": -0.0,
-            "rotate_pivot": [
-                0.5,
-                0.6687069
-            ]
-        },
-        {
-            "image": "xiaoditu_yxkj02_huxian02_ES.png",
-            "position": [
-                998,
-                1314
-            ],
-            "ratio": 2.5,
-            "rotate": -270.0,
-            "rotate_pivot": [
-                0.3328043,
-                0.6671957
-            ]
-        },
-        {
-            "image": "xiaoditu-yxkj-zhixian_NS.png",
-            "position": [
-                1078,
-                994
+                999
             ],
             "ratio": 2.5,
             "rotate": -180.0,
@@ -211,8 +211,8 @@
         {
             "image": "xiaoditu_yxkj02_huxian02_ES.png",
             "position": [
-                998,
-                674
+                1080,
+                759
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -224,8 +224,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
-                1318,
-                754
+                1320,
+                756
             ],
             "ratio": 2.5,
             "rotate": -270.0,
@@ -237,8 +237,8 @@
         {
             "image": "xiaoditu_yxkj02_huxian02_ES.png",
             "position": [
-                1638,
-                674
+                1640,
+                679
             ],
             "ratio": 2.5,
             "rotate": -90.0,
@@ -250,8 +250,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
-                1718,
-                994
+                1723,
+                999
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -263,8 +263,8 @@
         {
             "image": "xiaoditu_yxkj02_huxian02_ES.png",
             "position": [
-                1638,
-                1314
+                1640,
+                1319
             ],
             "ratio": 2.5,
             "rotate": -180.0,
@@ -276,8 +276,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
-                1638,
-                1724
+                1641,
+                1722
             ],
             "ratio": 2.5,
             "rotate": -90.0,
@@ -289,8 +289,8 @@
         {
             "image": "xiaoditu-yxkj-Tzi_ESW.png",
             "position": [
-                1958,
-                1644
+                1961,
+                1723
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -302,8 +302,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
             "position": [
-                2038,
-                1964
+                2040,
+                1961
             ],
             "ratio": 2.5,
             "rotate": -180.0,
@@ -315,8 +315,8 @@
         {
             "image": "xiaoditu_yxkj02_huxian02_ES.png",
             "position": [
-                2278,
-                1644
+                2280,
+                1639
             ],
             "ratio": 2.5,
             "rotate": -180.0,
@@ -328,8 +328,8 @@
         {
             "image": "xiaoditu-yxkj-Tzi_ESW.png",
             "position": [
-                2288,
-                1314
+                2282,
+                1319
             ],
             "ratio": 2.5,
             "rotate": -270.0,
@@ -341,8 +341,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
             "position": [
-                2608,
-                1404
+                2604,
+                1399
             ],
             "ratio": 2.5,
             "rotate": -90.0,
@@ -354,8 +354,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
-                2368,
-                994
+                2363,
+                999
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -367,8 +367,8 @@
         {
             "image": "xiaoditu-yxkj-anquanxiaowu.png",
             "position": [
-                2288,
-                674
+                2283,
+                679
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -380,8 +380,8 @@
         {
             "image": "xiaoditu_yxkj02_zhilukuan_NS.png",
             "position": [
-                2288,
-                354
+                2283,
+                359
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -393,8 +393,8 @@
         {
             "image": "xiaoditu-yxkj-xiaxing_S.png",
             "position": [
-                2288,
-                34
+                2283,
+                39
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -406,8 +406,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_NS.png",
             "position": [
-                1398,
-                2284
+                1400,
+                2282
             ],
             "ratio": 2.5,
             "rotate": -0.0,
@@ -419,8 +419,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
             "position": [
-                1398,
-                3244
+                1400,
+                3243
             ],
             "ratio": 2.5,
             "rotate": -180.0,
@@ -432,8 +432,8 @@
         {
             "image": "xiaoditu-yxkj-shizi.png",
             "position": [
-                1318,
-                2604
+                1320,
+                2601
             ],
             "ratio": 2.5,
             "rotate": -90.0,
@@ -445,8 +445,8 @@
         {
             "image": "xiaoditu-yxkj-zhixian_S.png",
             "position": [
-                1638,
-                2684
+                1641,
+                2681
             ],
             "ratio": 2.5,
             "rotate": -90.0,
@@ -464,12 +464,13 @@
                 166,
                 3226
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502002,
@@ -478,12 +479,13 @@
                 339,
                 2732
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502003,
@@ -492,12 +494,13 @@
                 2589,
                 1452
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502004,
@@ -506,12 +509,13 @@
                 1299,
                 2722
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502005,
@@ -520,12 +524,13 @@
                 1126,
                 2906
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502006,
@@ -534,12 +539,13 @@
                 1939,
                 1772
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502007,
@@ -548,12 +554,13 @@
                 2086,
                 1946
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502008,
@@ -562,12 +569,13 @@
                 1446,
                 2596
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502009,
@@ -576,12 +584,13 @@
                 1629,
                 1452
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502029,
@@ -590,12 +599,13 @@
                 1446,
                 2906
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502031,
@@ -604,12 +614,13 @@
                 2406,
                 1316
             ],
-            "ratio": 1,
+            "ratio": 1.3265306122448979,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502401,
@@ -618,12 +629,13 @@
                 1446,
                 2142
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502402,
@@ -632,12 +644,13 @@
                 1446,
                 1812
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502403,
@@ -646,12 +659,13 @@
                 1446,
                 1662
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502404,
@@ -660,12 +674,13 @@
                 1416,
                 1522
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502405,
@@ -674,12 +689,13 @@
                 1286,
                 1452
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502406,
@@ -688,12 +704,13 @@
                 1121,
                 1328
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -128.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502407,
@@ -702,12 +719,13 @@
                 1126,
                 1132
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502408,
@@ -716,12 +734,13 @@
                 1136,
                 912
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502409,
@@ -730,12 +749,13 @@
                 1646,
                 812
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -270.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502410,
@@ -744,12 +764,13 @@
                 1756,
                 892
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502411,
@@ -758,12 +779,13 @@
                 1776,
                 1032
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502412,
@@ -772,12 +794,13 @@
                 2096,
                 1902
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502413,
@@ -786,12 +809,13 @@
                 2086,
                 1892
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502414,
@@ -800,12 +824,13 @@
                 2061,
                 1888
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -132.336,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502415,
@@ -814,12 +839,13 @@
                 2416,
                 932
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502416,
@@ -828,12 +854,13 @@
                 2406,
                 1332
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502456,
@@ -842,12 +869,13 @@
                 1436,
                 2172
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502457,
@@ -856,12 +884,13 @@
                 1456,
                 2172
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502458,
@@ -870,12 +899,13 @@
                 1266,
                 802
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -270.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502459,
@@ -884,12 +914,13 @@
                 1486,
                 802
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -270.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502460,
@@ -898,12 +929,13 @@
                 2416,
                 1062
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502461,
@@ -912,12 +944,13 @@
                 2589,
                 1446
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -258.874,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502462,
@@ -926,12 +959,13 @@
                 2093,
                 2030
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -355.783,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502468,
@@ -940,12 +974,13 @@
                 2446,
                 822
             ],
-            "ratio": 1,
+            "ratio": 1.4772727272727273,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502701,
@@ -954,12 +989,13 @@
                 806,
                 2304
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -180.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502702,
@@ -968,12 +1004,13 @@
                 1126,
                 3154
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502703,
@@ -982,12 +1019,13 @@
                 2548,
                 472
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -270.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502706,
@@ -996,12 +1034,13 @@
                 2086,
                 2194
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -0.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502709,
@@ -1010,12 +1049,13 @@
                 2278,
                 482
             ],
-            "ratio": 1,
+            "ratio": 1.625,
             "rotate": -90.0,
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         }
     ],
     "enemies": [
@@ -1031,7 +1071,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502202,
@@ -1045,7 +1086,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502204,
@@ -1059,7 +1101,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502209,
@@ -1073,7 +1116,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502220,
@@ -1087,7 +1131,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502224,
@@ -1101,7 +1146,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502225,
@@ -1115,7 +1161,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502234,
@@ -1129,7 +1176,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502235,
@@ -1143,7 +1191,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502236,
@@ -1157,7 +1206,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502237,
@@ -1171,7 +1221,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5502350,
@@ -1185,7 +1236,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         },
         {
             "sn": 5504007,
@@ -1199,7 +1251,8 @@
             "rotate_pivot": [
                 0.5,
                 0.5
-            ]
+            ],
+            "enemy_data": null
         }
     ],
     "map_size": [

@@ -352,18 +352,18 @@
                     const ratio = tile.ratio || 1;
                     sprite.scale.set(ratio);
 
-                    // 디버그 정보 저장 (주석 처리)
-                    // const debugInfo = {
-                    //     index: tileIndex,
-                    //     image: tile.image,
-                    //     originalPosition: [...tile.position],
-                    //     rotate: tile.rotate || 0,
-                    //     rotate_pivot: tile.rotate_pivot || null,
-                    //     ratio: ratio,
-                    //     textureSize: [texture.width, texture.height],
-                    //     scaledSize: [Math.round(texture.width * ratio), Math.round(texture.height * ratio)],
-                    //     computed: {}
-                    // };
+                    // 디버그 정보 저장
+                    const debugInfo = {
+                        index: tileIndex,
+                        image: tile.image,
+                        originalPosition: [...tile.position],
+                        rotate: tile.rotate || 0,
+                        rotate_pivot: tile.rotate_pivot || null,
+                        ratio: ratio,
+                        textureSize: [texture.width, texture.height],
+                        scaledSize: [Math.round(texture.width * ratio), Math.round(texture.height * ratio)],
+                        computed: {}
+                    };
 
                     if (isMementosMap && tile.rotate_pivot && Array.isArray(tile.rotate_pivot) && tile.rotate_pivot.length >= 2) {
                         const ratio_xy = tile.rotate_pivot;
@@ -383,14 +383,14 @@
                         const paste_x = Math.round(new_w / 2 - px);
                         const paste_y = Math.round(new_h / 2 - py);
 
-                        // 디버그 정보 추가 (주석 처리)
-                        // debugInfo.computed = {
-                        //     px, py,
-                        //     rot_deg,
-                        //     new_w, new_h,
-                        //     paste_x, paste_y,
-                        //     pivotTexture: [texture.width * ratio_xy[0], texture.height * (1 - ratio_xy[1])]
-                        // };
+                        // 디버그 정보 추가
+                        debugInfo.computed = {
+                            px, py,
+                            rot_deg,
+                            new_w, new_h,
+                            paste_x, paste_y,
+                            pivotTexture: [texture.width * ratio_xy[0], texture.height * (1 - ratio_xy[1])]
+                        };
 
                         // PixiJS pivot 설정 (원본 텍스처 좌표)
                         sprite.pivot.set(
@@ -399,22 +399,17 @@
                         );
 
                         if (Math.abs(rot_deg) < 0.01) {
-                            // 회전 없음: Python 로직 분석
-                            // Python: final_x = (calc_x - new_w // 2) + paste_x  (확장 캔버스 기준)
-                            // 하지만 paste되는 것은 원본 이미지(w x h)!
-                            // 원본 이미지는 확장 캔버스(new_w x new_h) 내에서 (paste_x, paste_y)에 위치
-                            //
-                            // Python position = 확장 캔버스의 좌상단 (원본 이미지 좌상단 아님!)
-                            // 원본 이미지 좌상단 = position + (paste_x, paste_y)
-                            // pivot 화면 좌표 = 원본 이미지 좌상단 + (px, py)
-                            //                = position + paste_x + px, position + paste_y + py
-
+                            // 회전 없음: Python rotate_and_expand(expand=True) 로직 구현
+                            // Python position은 확장된 캔버스(new_w x new_h)의 좌상단 좌표
+                            // PixiJS sprite는 pivot을 중심으로 위치하므로 pivot을 기준으로 조정 필요
+                            
                             sprite.rotation = 0;
-                            sprite.x = tile.position[0] + paste_x + px;
-                            sprite.y = tile.position[1] + paste_y + py;
+                            // 확장된 캔버스의 좌상단에서 pivot까지의 거리를 계산
+                            sprite.x = tile.position[0] + px;
+                            sprite.y = tile.position[1] + py;
 
-                            // debugInfo.computed.branch = 'no-rotation';
-                            // debugInfo.computed.finalPos = [sprite.x, sprite.y];
+                            debugInfo.computed.branch = 'no-rotation';
+                            debugInfo.computed.finalPos = [sprite.x, sprite.y];
                         } else {
                             // 회전 있음
                             const pil_angle = -rot_deg;
@@ -454,46 +449,50 @@
                             sprite.x = tile.position[0] + expandedWidth / 2;
                             sprite.y = tile.position[1] + expandedHeight / 2;
 
-                            // debugInfo.computed.branch = 'with-rotation';
-                            // debugInfo.computed.pil_angle = pil_angle;
-                            // debugInfo.computed.center = [center_x, center_y];
-                            // debugInfo.computed.expandedSize = [expandedWidth, expandedHeight];
-                            // debugInfo.computed.finalPos = [sprite.x, sprite.y];
+                            debugInfo.computed.branch = 'with-rotation';
+                            debugInfo.computed.pil_angle = pil_angle;
+                            debugInfo.computed.center = [center_x, center_y];
+                            debugInfo.computed.expandedSize = [expandedWidth, expandedHeight];
+                            debugInfo.computed.finalPos = [sprite.x, sprite.y];
                         }
 
                     } else {
                         // 일반 맵 (팰리스) - 회전 없음
                         sprite.x = tile.position[0];
                         sprite.y = tile.position[1];
-                        // debugInfo.computed.branch = 'simple';
-                        // debugInfo.computed.finalPos = [sprite.x, sprite.y];
+                        debugInfo.computed.branch = 'simple';
+                        debugInfo.computed.finalPos = [sprite.x, sprite.y];
                     }
 
-                    // 디버그 정보를 sprite에 저장 (주석 처리)
-                    // sprite.debugInfo = debugInfo;
+                    // 디버그 정보를 sprite에 저장
+                    sprite.debugInfo = debugInfo;
 
-                    // 클릭 이벤트 활성화 (주석 처리)
-                    // sprite.eventMode = 'static';
-                    // sprite.cursor = 'pointer';
-                    // sprite.on('pointerdown', function() {
-                    //     console.log('=== TILE DEBUG INFO ===');
-                    //     console.log('Index:', this.debugInfo.index);
-                    //     console.log('Image:', this.debugInfo.image);
-                    //     console.log('Original Position (JSON):', this.debugInfo.originalPosition);
-                    //     console.log('Rotate:', this.debugInfo.rotate);
-                    //     console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
-                    //     console.log('Ratio:', this.debugInfo.ratio);
-                    //     console.log('Texture Size:', this.debugInfo.textureSize);
-                    //     console.log('Scaled Size:', this.debugInfo.scaledSize);
-                    //     console.log('Computed:', this.debugInfo.computed);
-                    //     console.log('Final Sprite Position:', [this.x, this.y]);
-                    //     console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
-                    //     console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
-                    //     console.log('=======================');
-                    //
-                    //     // 화면에 디버그 패널 표시
-                    //     self.showDebugPanel(this.debugInfo, this);
-                    // });
+                    // 클릭 이벤트 비활성화
+                    sprite.eventMode = 'none';
+                    sprite.cursor = 'default';
+                    /* 타일 디버그 모드 - 주석处理
+                    sprite.on('pointerdown', function() {
+                        console.log('=== TILE DEBUG INFO ===');
+                        console.log('Index:', this.debugInfo.index);
+                        console.log('Image:', this.debugInfo.image);
+                        console.log('Original Position (JSON):', this.debugInfo.originalPosition);
+                        console.log('Rotate:', this.debugInfo.rotate);
+                        console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
+                        console.log('Ratio:', this.debugInfo.ratio);
+                        console.log('Texture Size:', this.debugInfo.textureSize);
+                        console.log('Scaled Size:', this.debugInfo.scaledSize);
+                        console.log('Computed:', this.debugInfo.computed);
+                        console.log('Final Sprite Position:', [this.x, this.y]);
+                        console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
+                        console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
+                        console.log('=======================');
+                        
+                        // 화면에 디버그 패널 표시
+                        if (window.MapsDebug) {
+                            window.MapsDebug.showDebugPanel(this.debugInfo, this);
+                        }
+                    });
+                    */
 
                     tilesContainer.addChild(sprite);
                     
@@ -555,18 +554,7 @@
                         computed: {}
                     };
                     
-                    // Python _draw_entities 로직:
-                    // 1. entity_img.rotate(rot_deg, expand=True) - PIL rotate는 양수 방향이 시계 방향
-                    // 2. entity_img.resize((int(entity_img.width * image_scale), int(entity_img.height * image_scale)))
-                    // 3. final_x = calc_x - entity_img.width // 2
-                    // 4. final_y = minimap_size[1] - calc_y - entity_img.height // 2
-                    // 5. final_pos = [final_x, final_y] (좌상단 좌표)
-                    // 
-                    // JSON의 obj.rotate는 PIL 기준이므로, Unity로 변환하려면 부호 반대
-                    // 하지만 Python 코드를 보면 rot_deg를 그대로 사용하므로, JSON의 rotate도 그대로 사용
-                    // Python: rot_deg = float(entity.get("iconRot", 0)) or -float(vals[1])
-                    // 메멘토스는 faceToAngle을 사용하므로 -float(vals[1])이므로 이미 부호가 반대
-                    // JSON에 저장된 rotate는 이미 최종 값이므로 그대로 사용
+
                     const rot_deg = obj.rotate || 0;
                     const rot_deg_rad = rot_deg * (Math.PI / 180);
                     
@@ -641,14 +629,38 @@
                     
                     // 위치 계산 완료 후, JSON의 obj.ratio로 scale 재설정 (중앙 고정)
                     // anchor가 0.5, 0.5이므로 중앙이 고정되어 위치는 그대로 유지됨
-                    sprite.scale.set(finalRatio);
+                    
+                    // 특정 아이콘들의 ratio가 1.5보다 크면 1.5로 제한
+                    const limitedIcons = [
+                        'yishijie-icon-box-01-new.png',
+                        'yishijie-icon-chepiao01.png',
+                        'yishijie-icon-chepiao02.png',
+                        'yishijie-icon-chepiao03.png',
+                        'yishijie-icon-youtong-new.png'
+                    ];
+                    
+                    let adjustedRatio = finalRatio;
+                    if (limitedIcons.includes(obj.image) && adjustedRatio > 1.5) {
+                        adjustedRatio = 1.5;
+                    }
+                    
+                    sprite.scale.set(adjustedRatio);
                     
                     debugInfo.computed.finalPos = [sprite.x, sprite.y];
                     debugInfo.computed.positionRatio = positionRatio;
                     debugInfo.computed.finalRatio = finalRatio;
+                    debugInfo.computed.adjustedRatio = adjustedRatio;
                     
                     // 디버그 정보를 sprite에 저장
                     sprite.debugInfo = debugInfo;
+                    
+                    // sn 정보 저장
+                    sprite.objectSn = obj.sn || null;
+                    
+                    // enemy_data 저장
+                    if (obj.enemy_data) {
+                        sprite.debugInfo.enemyData = obj.enemy_data;
+                    }
                     
                     // 디버그 정보를 전역 저장소에 추가
                     if (window.MapsDebug) {
@@ -670,25 +682,39 @@
                         });
                     }
                     
+                    // 저장된 클릭 상태 확인 및 적용
+                    if (sprite.objectSn && window.ObjectClickHandler) {
+                        window.ObjectClickHandler.restoreClickedState(sprite);
+                    }
+                    
                     // 클릭 이벤트 활성화
                     sprite.eventMode = 'static';
                     sprite.cursor = 'pointer';
                     sprite.on('pointerdown', function() {
-                        console.log('=== OBJECT DEBUG INFO (CLICKED) ===');
-                        console.log('Index:', this.debugInfo.index);
-                        console.log('Image:', this.debugInfo.image);
-                        console.log('Original Position (JSON):', this.debugInfo.originalPosition);
-                        console.log('Rotate:', this.debugInfo.rotate);
-                        console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
-                        console.log('Ratio:', this.debugInfo.ratio);
-                        console.log('Texture Size:', this.debugInfo.textureSize);
-                        console.log('Scaled Size:', this.debugInfo.scaledSize);
-                        console.log('Computed:', this.debugInfo.computed);
-                        console.log('Final Sprite Position:', [this.x, this.y]);
-                        console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
-                        console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
-                        console.log('Sprite Anchor:', [this.anchor.x, this.anchor.y]);
-                        console.log('=======================');
+                        if (this.objectSn && window.ObjectClickHandler) {
+                            window.ObjectClickHandler.toggleObjectClicked(this);
+                        }
+                        
+                        // 디버그: 파일 이름만 출력
+                        console.log('Object clicked:', this.debugInfo.image);
+                        
+                        // 상세 디버그 정보 (주석처리)
+                        // console.log('=== OBJECT DEBUG INFO (CLICKED) ===');
+                        // console.log('Index:', this.debugInfo.index);
+                        // console.log('Image:', this.debugInfo.image);
+                        // console.log('SN:', this.objectSn);
+                        // console.log('Original Position (JSON):', this.debugInfo.originalPosition);
+                        // console.log('Rotate:', this.debugInfo.rotate);
+                        // console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
+                        // console.log('Ratio:', this.debugInfo.ratio);
+                        // console.log('Texture Size:', this.debugInfo.textureSize);
+                        // console.log('Scaled Size:', this.debugInfo.scaledSize);
+                        // console.log('Computed:', this.debugInfo.computed);
+                        // console.log('Final Sprite Position:', [this.x, this.y]);
+                        // console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
+                        // console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
+                        // console.log('Sprite Anchor:', [this.anchor.x, this.anchor.y]);
+                        // console.log('=======================');
                         
                         // 화면에 디버그 패널 표시 (주석처리)
                         // if (window.MapsDebug) {
@@ -793,6 +819,21 @@
                     // 해당 버전 파일을 첫 번째로 하여 배열 재정렬
                     const reorderedArray = [versionFile, ...currentFileArray.filter(f => f !== versionFile)];
                     currentMapVersion = version;
+                    
+                    // 버전 변경 시에는 강제로 스테이지 정리
+                    if (app && app.stage) {
+                        const tilesContainer = app.stage.getChildByName('tiles');
+                        const objectsContainer = app.stage.getChildByName('objects');
+                        
+                        if (tilesContainer) {
+                            tilesContainer.removeChildren();
+                        }
+                        if (objectsContainer) {
+                            objectsContainer.removeChildren();
+                        }
+                        objectSprites = [];
+                    }
+                    
                     await this.loadMap(reorderedArray);
                     
                     // 버전 선택 UI 업데이트

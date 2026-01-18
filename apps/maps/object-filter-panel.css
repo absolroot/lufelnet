@@ -3,7 +3,6 @@
 /* 언어 안내 메시지 */
 .localization-notice {
   background: rgba(0, 0, 0, 0.9);
-  border-left: 3px solid #333;
   color: rgba(255, 255, 255, 0.3);
   font-size: 10px;
   line-height: 1.3;

@@ -1290,6 +1290,1566 @@
     ],
     "objects": [
         {
+            "sn": 8532151,
+            "image": "breakable.png",
+            "position": [
+                686,
+                1130
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532152,
+            "image": "breakable.png",
+            "position": [
+                552,
+                931
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532153,
+            "image": "breakable.png",
+            "position": [
+                738,
+                1178
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532154,
+            "image": "breakable.png",
+            "position": [
+                686,
+                1041
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532155,
+            "image": "breakable.png",
+            "position": [
+                635,
+                979
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532156,
+            "image": "breakable.png",
+            "position": [
+                628,
+                949
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532157,
+            "image": "breakable.png",
+            "position": [
+                586,
+                1079
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532158,
+            "image": "breakable.png",
+            "position": [
+                507,
+                1120
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532159,
+            "image": "breakable.png",
+            "position": [
+                145,
+                959
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532160,
+            "image": "breakable.png",
+            "position": [
+                431,
+                1154
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532161,
+            "image": "breakable.png",
+            "position": [
+                369,
+                1154
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532162,
+            "image": "breakable.png",
+            "position": [
+                317,
+                1130
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532163,
+            "image": "breakable.png",
+            "position": [
+                334,
+                1188
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532164,
+            "image": "breakable.png",
+            "position": [
+                310,
+                1062
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532165,
+            "image": "breakable.png",
+            "position": [
+                362,
+                1034
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532166,
+            "image": "breakable.png",
+            "position": [
+                321,
+                993
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532167,
+            "image": "breakable.png",
+            "position": [
+                290,
+                1055
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532168,
+            "image": "breakable.png",
+            "position": [
+                179,
+                1072
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532169,
+            "image": "breakable.png",
+            "position": [
+                131,
+                1068
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532170,
+            "image": "breakable.png",
+            "position": [
+                72,
+                1051
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532171,
+            "image": "breakable.png",
+            "position": [
+                38,
+                1051
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532172,
+            "image": "breakable.png",
+            "position": [
+                55,
+                1024
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532173,
+            "image": "breakable.png",
+            "position": [
+                127,
+                914
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532174,
+            "image": "breakable.png",
+            "position": [
+                141,
+                832
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532175,
+            "image": "breakable.png",
+            "position": [
+                107,
+                880
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532176,
+            "image": "breakable.png",
+            "position": [
+                100,
+                870
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532177,
+            "image": "breakable.png",
+            "position": [
+                58,
+                877
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532178,
+            "image": "breakable.png",
+            "position": [
+                79,
+                767
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532179,
+            "image": "breakable.png",
+            "position": [
+                79,
+                705
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532180,
+            "image": "breakable.png",
+            "position": [
+                62,
+                746
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532181,
+            "image": "breakable.png",
+            "position": [
+                300,
+                959
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532182,
+            "image": "breakable.png",
+            "position": [
+                155,
+                664
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532183,
+            "image": "breakable.png",
+            "position": [
+                145,
+                760
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532184,
+            "image": "breakable.png",
+            "position": [
+                269,
+                942
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532185,
+            "image": "breakable.png",
+            "position": [
+                248,
+                935
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532186,
+            "image": "breakable.png",
+            "position": [
+                317,
+                873
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532187,
+            "image": "breakable.png",
+            "position": [
+                293,
+                890
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532188,
+            "image": "breakable.png",
+            "position": [
+                328,
+                829
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532189,
+            "image": "breakable.png",
+            "position": [
+                321,
+                726
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532190,
+            "image": "breakable.png",
+            "position": [
+                269,
+                740
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532191,
+            "image": "breakable.png",
+            "position": [
+                269,
+                695
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532192,
+            "image": "breakable.png",
+            "position": [
+                310,
+                668
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532193,
+            "image": "breakable.png",
+            "position": [
+                314,
+                603
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532194,
+            "image": "breakable.png",
+            "position": [
+                421,
+                606
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532195,
+            "image": "breakable.png",
+            "position": [
+                517,
+                757
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532196,
+            "image": "breakable.png",
+            "position": [
+                514,
+                770
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532197,
+            "image": "breakable.png",
+            "position": [
+                483,
+                788
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532198,
+            "image": "breakable.png",
+            "position": [
+                459,
+                781
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532199,
+            "image": "breakable.png",
+            "position": [
+                628,
+                815
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532200,
+            "image": "breakable.png",
+            "position": [
+                676,
+                702
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532201,
+            "image": "breakable.png",
+            "position": [
+                693,
+                609
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532202,
+            "image": "breakable.png",
+            "position": [
+                728,
+                657
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532203,
+            "image": "breakable.png",
+            "position": [
+                780,
+                640
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532204,
+            "image": "breakable.png",
+            "position": [
+                831,
+                702
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532205,
+            "image": "breakable.png",
+            "position": [
+                900,
+                791
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532206,
+            "image": "breakable.png",
+            "position": [
+                869,
+                729
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532207,
+            "image": "breakable.png",
+            "position": [
+                1070,
+                767
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532208,
+            "image": "breakable.png",
+            "position": [
+                983,
+                657
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532209,
+            "image": "breakable.png",
+            "position": [
+                1035,
+                750
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532210,
+            "image": "breakable.png",
+            "position": [
+                1166,
+                705
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532211,
+            "image": "breakable.png",
+            "position": [
+                1194,
+                654
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532212,
+            "image": "breakable.png",
+            "position": [
+                1277,
+                647
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532213,
+            "image": "breakable.png",
+            "position": [
+                1349,
+                678
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532214,
+            "image": "breakable.png",
+            "position": [
+                1173,
+                801
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532215,
+            "image": "breakable.png",
+            "position": [
+                1025,
+                836
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532216,
+            "image": "breakable.png",
+            "position": [
+                1125,
+                911
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532217,
+            "image": "breakable.png",
+            "position": [
+                1139,
+                935
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532218,
+            "image": "breakable.png",
+            "position": [
+                1090,
+                901
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532219,
+            "image": "breakable.png",
+            "position": [
+                1108,
+                1003
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532220,
+            "image": "breakable.png",
+            "position": [
+                1083,
+                1062
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532221,
+            "image": "breakable.png",
+            "position": [
+                1083,
+                1092
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532222,
+            "image": "breakable.png",
+            "position": [
+                1032,
+                993
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532223,
+            "image": "breakable.png",
+            "position": [
+                1059,
+                1106
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532224,
+            "image": "breakable.png",
+            "position": [
+                1070,
+                1171
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532225,
+            "image": "breakable.png",
+            "position": [
+                880,
+                997
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532226,
+            "image": "breakable.png",
+            "position": [
+                797,
+                990
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532227,
+            "image": "breakable.png",
+            "position": [
+                797,
+                1092
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532228,
+            "image": "breakable.png",
+            "position": [
+                735,
+                1003
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532229,
+            "image": "breakable.png",
+            "position": [
+                755,
+                945
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532230,
+            "image": "breakable.png",
+            "position": [
+                707,
+                993
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532231,
+            "image": "breakable.png",
+            "position": [
+                731,
+                1072
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532232,
+            "image": "breakable.png",
+            "position": [
+                649,
+                239
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532233,
+            "image": "breakable.png",
+            "position": [
+                514,
+                260
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532234,
+            "image": "breakable.png",
+            "position": [
+                476,
+                239
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532235,
+            "image": "breakable.png",
+            "position": [
+                504,
+                222
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532236,
+            "image": "breakable.png",
+            "position": [
+                362,
+                222
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532237,
+            "image": "breakable.png",
+            "position": [
+                279,
+                202
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532238,
+            "image": "breakable.png",
+            "position": [
+                248,
+                236
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532239,
+            "image": "breakable.png",
+            "position": [
+                296,
+                311
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532240,
+            "image": "breakable.png",
+            "position": [
+                421,
+                209
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532241,
+            "image": "breakable.png",
+            "position": [
+                472,
+                130
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532242,
+            "image": "breakable.png",
+            "position": [
+                490,
+                7
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532243,
+            "image": "breakable.png",
+            "position": [
+                783,
+                291
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532244,
+            "image": "breakable.png",
+            "position": [
+                859,
+                243
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532245,
+            "image": "breakable.png",
+            "position": [
+                914,
+                253
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532246,
+            "image": "breakable.png",
+            "position": [
+                949,
+                270
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532247,
+            "image": "breakable.png",
+            "position": [
+                928,
+                126
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532248,
+            "image": "breakable.png",
+            "position": [
+                959,
+                315
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532249,
+            "image": "breakable.png",
+            "position": [
+                900,
+                315
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532250,
+            "image": "breakable.png",
+            "position": [
+                1070,
+                243
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532251,
+            "image": "breakable.png",
+            "position": [
+                1039,
+                335
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532252,
+            "image": "breakable.png",
+            "position": [
+                1221,
+                1003
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532253,
+            "image": "breakable.png",
+            "position": [
+                1208,
+                1062
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8532254,
+            "image": "breakable.png",
+            "position": [
+                1111,
+                979
+            ],
+            "ratio": 0.775,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": 853200003,
             "image": "yishijie-icon-men-danxiang.png",
             "position": [
@@ -6064,6 +7624,7 @@
             "enemy_data": null
         }
     ],
+    "rotate": 0.0,
     "map_size": [
         1404,
         1236

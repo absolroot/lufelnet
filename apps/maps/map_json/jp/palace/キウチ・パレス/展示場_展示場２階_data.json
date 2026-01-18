@@ -83,6 +83,66 @@
                 0.5
             ],
             "enemy_data": null
+        },
+        {
+            "sn": 8304501,
+            "image": "breakable.png",
+            "position": [
+                1639,
+                709
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304502,
+            "image": "breakable.png",
+            "position": [
+                1630,
+                547
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304503,
+            "image": "breakable.png",
+            "position": [
+                1191,
+                737
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304504,
+            "image": "breakable.png",
+            "position": [
+                1191,
+                619
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
         }
     ],
     "enemies": [
@@ -295,6 +355,7 @@
             }
         }
     ],
+    "rotate": 180.0,
     "map_size": [
         2808,
         1000

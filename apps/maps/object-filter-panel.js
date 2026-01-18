@@ -539,8 +539,8 @@
                 }
             });
             
-            // 영어/일본어/중국어 사용자에게 안내 메시지 표시 (language-selector 뒤에 추가)
-            if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
+            // 영어/일본어 사용자에게 안내 메시지 표시 (language-selector 뒤에 추가)
+            if (currentLang === 'en' || currentLang === 'jp') {
                 const noticeText = window.MapsI18n ? window.MapsI18n.getText(currentLang, 'localizationNotice') : '';
                 if (noticeText) {
                     const notice = document.createElement('div');

@@ -1,0 +1,122 @@
+{
+    "tiles": [
+        {
+            "image": "yx_yyjjd_12.png",
+            "position": [
+                1886,
+                1200
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_yyjjd_13.png",
+            "position": [
+                1858,
+                933
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_yyjjd_14.png",
+            "position": [
+                1718,
+                932
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_yyjjd_15.png",
+            "position": [
+                1709,
+                1200
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_yx_yinyingjujidi_1F.png",
+            "position": [
+                570,
+                615
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 86111301,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                1946,
+                1014
+            ],
+            "ratio": 1.4583333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 86111403,
+            "image": "yishijie-zazhishe-gongyi.png",
+            "position": [
+                1815,
+                1014
+            ],
+            "ratio": 0.875,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 86119012,
+            "image": "breakable.png",
+            "position": [
+                1755,
+                1004
+            ],
+            "ratio": 1.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        3188,
+        3188
+    ]
+}

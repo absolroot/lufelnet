@@ -477,7 +477,7 @@
             "image": "yishijie-icon-men-03-new.png",
             "position": [
                 348,
-                2764
+                2765
             ],
             "ratio": 1.3265306122448979,
             "rotate": -90.0,
@@ -492,7 +492,7 @@
             "image": "yishijie-icon-men-03-new.png",
             "position": [
                 2598,
-                1484
+                1485
             ],
             "ratio": 1.3265306122448979,
             "rotate": -90.0,
@@ -507,7 +507,7 @@
             "image": "yishijie-icon-men-03-new.png",
             "position": [
                 1308,
-                2754
+                2755
             ],
             "ratio": 1.3265306122448979,
             "rotate": -90.0,
@@ -537,7 +537,7 @@
             "image": "yishijie-icon-men-03-new.png",
             "position": [
                 1948,
-                1804
+                1805
             ],
             "ratio": 1.3265306122448979,
             "rotate": -90.0,
@@ -582,7 +582,7 @@
             "image": "yishijie-icon-men-03-new.png",
             "position": [
                 1638,
-                1484
+                1485
             ],
             "ratio": 1.3265306122448979,
             "rotate": -90.0,
@@ -702,7 +702,7 @@
             "image": "yishijie-icon-chepiao01.png",
             "position": [
                 1168,
-                1375
+                1374
             ],
             "ratio": 1.625,
             "rotate": -128.0,
@@ -822,7 +822,7 @@
             "image": "yishijie-icon-chepiao01.png",
             "position": [
                 2108,
-                1935
+                1934
             ],
             "ratio": 1.625,
             "rotate": -132.336,
@@ -942,7 +942,7 @@
             "image": "yishijie-icon-chepiao02.png",
             "position": [
                 2628,
-                1485
+                1484
             ],
             "ratio": 1.625,
             "rotate": -258.874,
@@ -957,7 +957,7 @@
             "image": "yishijie-icon-chepiao02.png",
             "position": [
                 2128,
-                2065
+                2064
             ],
             "ratio": 1.625,
             "rotate": -355.783,
@@ -1258,5 +1258,6 @@
     "map_size": [
         2964,
         3922
-    ]
+    ],
+    "rotate": 0.0
 }

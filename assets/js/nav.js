@@ -47,6 +47,7 @@ class Navigation {
                 payCalc: '과금 계산기',
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
+                maps: '지도',
                 pullTracker: '계약 트래커',
                 pullTracker_individual: '개인 통계',
                 pullTracker_global: '전체 통계',
@@ -62,6 +63,7 @@ class Navigation {
                 revelations: 'Revelations',
                 synergy: 'Synergy',
                 wonderweapon: 'Wonder Daggers',
+                maps: 'Maps',
                 tactic: 'Tactics',
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
@@ -89,6 +91,7 @@ class Navigation {
                 revelations: '啓示',
                 synergy: 'シナジー',
                 wonderweapon: 'ワンダー武器',
+                maps: '地図',
                 tactic: 'タクティクス',
                 tacticMaker: 'タクティクスメーカー',
                 tacticForge: 'タクティック鍛冶場',
@@ -114,6 +117,7 @@ class Navigation {
                 character: '角色',
                 persona: '面具',
                 revelations: '觉醒',
+                maps: '地图',
                 tactic: '战术',
                 tacticMaker: '战术制作',
                 tacticForge: '战术锻造',
@@ -133,9 +137,9 @@ class Navigation {
 
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
-            en: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
-            jp: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
+            kr: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            en: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
+            jp: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -183,7 +187,12 @@ class Navigation {
                     <span data-text="${texts.wonderweapon}">${texts.wonderweapon}</span>
                 </a>
                 ` : ''}
-                
+                ${currentMenus.includes('maps') ? `
+                <a href="${BASE_URL}/maps?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="maps">
+                    <img src="${BASE_URL}/assets/img/nav/maps.png" alt="maps" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <span data-text="${texts.maps}">${texts.maps}</span>
+                </a>
+                ` : ''}
                 ${currentMenus.includes('pullTracker') ? `
                 <div class="nav-item has-submenu" data-nav="pullTracker">
                     <div class="nav-main-item">

@@ -1174,7 +1174,7 @@
             "sn": 5504105,
             "image": "yishijie-icon-chepiao01.png",
             "position": [
-                762,
+                763,
                 4999
             ],
             "ratio": 2.175,
@@ -1204,7 +1204,7 @@
             "sn": 5504107,
             "image": "yishijie-icon-chepiao01.png",
             "position": [
-                862,
+                863,
                 4779
             ],
             "ratio": 2.175,
@@ -1804,7 +1804,7 @@
             "sn": 5504147,
             "image": "yishijie-icon-chepiao01.png",
             "position": [
-                1802,
+                1803,
                 3069
             ],
             "ratio": 2.175,
@@ -1819,7 +1819,7 @@
             "sn": 5504148,
             "image": "yishijie-icon-chepiao01.png",
             "position": [
-                1802,
+                1803,
                 3089
             ],
             "ratio": 2.175,
@@ -1834,7 +1834,7 @@
             "sn": 5504149,
             "image": "yishijie-icon-chepiao01.png",
             "position": [
-                1792,
+                1793,
                 3079
             ],
             "ratio": 2.175,
@@ -2029,7 +2029,7 @@
             "sn": 5504311,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                2842,
+                2843,
                 2759
             ],
             "ratio": 2.175,
@@ -2059,7 +2059,7 @@
             "sn": 5504313,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                3662,
+                3663,
                 2119
             ],
             "ratio": 2.175,
@@ -2074,7 +2074,7 @@
             "sn": 5504314,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                1482,
+                1483,
                 2119
             ],
             "ratio": 2.175,
@@ -2089,7 +2089,7 @@
             "sn": 5504315,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                1502,
+                1503,
                 2119
             ],
             "ratio": 2.175,
@@ -2104,7 +2104,7 @@
             "sn": 5504316,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                1572,
+                1573,
                 2119
             ],
             "ratio": 2.175,
@@ -2134,7 +2134,7 @@
             "sn": 5504318,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                3402,
+                3403,
                 2339
             ],
             "ratio": 2.175,
@@ -2179,7 +2179,7 @@
             "sn": 5504321,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                1702,
+                1703,
                 4039
             ],
             "ratio": 2.175,
@@ -2269,7 +2269,7 @@
             "sn": 5504405,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                2322,
+                2323,
                 4029
             ],
             "ratio": 2.175,
@@ -2284,7 +2284,7 @@
             "sn": 5504406,
             "image": "yishijie-icon-chepiao02.png",
             "position": [
-                2322,
+                2323,
                 4049
             ],
             "ratio": 2.175,
@@ -2419,7 +2419,7 @@
             "sn": 5504501,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                3312,
+                3313,
                 2339
             ],
             "ratio": 2.175,
@@ -2449,7 +2449,7 @@
             "sn": 5504503,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                2002,
+                2003,
                 2959
             ],
             "ratio": 2.175,
@@ -2569,7 +2569,7 @@
             "sn": 5504580,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                402,
+                403,
                 3929
             ],
             "ratio": 2.175,
@@ -3303,5 +3303,6 @@
     "map_size": [
         3922,
         5517
-    ]
+    ],
+    "rotate": 0.0
 }

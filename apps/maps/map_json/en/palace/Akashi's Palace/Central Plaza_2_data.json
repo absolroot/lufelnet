@@ -12,6 +12,36 @@
     ],
     "objects": [
         {
+            "sn": 8535033,
+            "image": "breakable.png",
+            "position": [
+                194,
+                379
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535035,
+            "image": "breakable.png",
+            "position": [
+                529,
+                379
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": 8535042,
             "image": "yishijie-icon-robot02-kong-new.png",
             "position": [
@@ -58,6 +88,7 @@
         }
     ],
     "enemies": [],
+    "rotate": 0.0,
     "map_size": [
         712,
         1228

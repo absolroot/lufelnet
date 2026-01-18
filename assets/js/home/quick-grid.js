@@ -7,18 +7,19 @@
         const base = typeof BASE_URL !== 'undefined' ? BASE_URL : '';
         style.textContent = `
             .main-content { border-radius: 0px 0px 10px 10px; background-color: var(--card-background); border-bottom: 3px solid var(--border-red); }
-            .quick-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 16px; width: 100%; margin: 12px 0 24px 0; }
-            .quick-item { display: flex; align-items: center; justify-content: center; }
-            .quick-link { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: inherit; border: transparent; background: transparent; border-radius: 14px; padding: 12px 18px; transition: all .18s ease; position: relative; overflow: hidden; }
+            .quick-grid { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 16px; width: 100%; margin: 12px 0 24px 0; }
+            .quick-item { display: flex; align-items: center; }
+            .quick-link { width: 100%; display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit; border: transparent; background: transparent; border-radius: 14px; padding: 12px 18px; transition: all .18s ease; position: relative; overflow: hidden; }
             .quick-link:hover, .quick-link:focus-visible { background: transparent; box-shadow: none; transform: none; }
             .quick-icon-wrap { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; margin-bottom: 10px; transition: transform .18s ease; position: relative; }
             .quick-icon-wrap::after { content: ""; position: absolute; left: 50%; transform: translateX(-49%); bottom: 6px; width: 70px; height: 30px; background: url(${base}/assets/img/home/icon_under.png) no-repeat center / contain; pointer-events: none; z-index: 0; opacity: 0.95; }
             .quick-link:hover .quick-icon-wrap { transform: scale(1.1); }
             .quick-icon { width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 1px 1px rgba(0,0,0,.35)); position: relative; z-index: 1; }
             .quick-label { margin-top: 2px; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .2px; text-align: center; line-height: 1.25; white-space: normal; word-break: keep-all; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+            .quick-new-badge { position: absolute; top: 8px; left: 4px; width: 20px; height: 20px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: #000000; z-index: 10; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); font-family: 'Arial Black', 'Arial', 'Helvetica', sans-serif; }
             
             @media (max-width: 1024px) { .quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
-            @media (max-width: 768px) { .quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; } .quick-icon-wrap { width: 60px; height: 60px; } .quick-icon-wrap::after { width: 50px; height: 22px; bottom: 6px; } .quick-icon { width: 40px; height: 40px; } .quick-link { padding: 14px 8px; border-radius: 12px; } .quick-label { font-size: 12px; } }
+            @media (max-width: 768px) { .quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; } .quick-icon-wrap { width: 60px; height: 60px; } .quick-icon-wrap::after { width: 50px; height: 22px; bottom: 6px; } .quick-icon { width: 40px; height: 40px; } .quick-link { padding: 14px 8px; border-radius: 12px; } .quick-label { font-size: 12px; } .quick-new-badge { width: 20px; height: 20px; font-size: 11px; top: -1px; left: -1px; } }
         `;
         document.head.appendChild(style);
     };
@@ -47,21 +48,22 @@
             pullTracker: '계약 트래커', pullTracker_global: '계약 통계',
             materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
             tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',
-            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', support: '서포트'
+            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', support: '서포트', schedule: '스케줄',
+            maps: '지도'
         },
         en: {
             character: 'Character', persona: 'Persona', revelations: 'Revelations', wonderweapon: 'Wonder Daggers',
             pullTracker: 'Pull Tracker', pullTracker_global: 'Pull Global Stats',
             materialCalc: 'Progression Calc', defenseCalc: 'Defense Calc', criticalCalc: 'Critical Calc',
             tacticLibrary: 'Tactics Library', tacticMaker: 'Tactic Maker',
-            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', support: 'Support'
+            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', support: 'Support', maps: 'Maps'
         },
         jp: {
             character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
             materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート'
+            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート', maps: '地図'
         }
     };
 
@@ -70,6 +72,7 @@
         persona: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/persona.png`,
         revelations: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/qishi.png`,
         wonderweapon: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/wonder-weapon.png`,
+        maps: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/maps.png`,
         pullTracker: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull.png`,
         pullTracker_global: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull-stat.png`,
         materialCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/material.png`,
@@ -90,6 +93,7 @@
         persona: '/persona',
         revelations: '/revelations',
         wonderweapon: '/wonder-weapon',
+        maps: '/maps',
         pullTracker: '/pull-tracker',
         pullTracker_global: '/pull-tracker/global-stats',
         materialCalc: '/material-calc',
@@ -118,14 +122,17 @@
 
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character','persona','revelations','synergy','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','support'];
+            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','synergy','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','support'];
+            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','support'];
         }
         // default to KR set
-        return ['character','persona','revelations','synergy','wonderweapon','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','support'];
+        return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','support'];
     };
+
+    // New 배지를 표시할 아이템 목록
+    const newItems = ['maps','synergy','defenseCalc','criticalCalc','schedule'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');
@@ -154,6 +161,15 @@
                 img.style.transform = 'scale(0.9)';
             }
             iconWrap.appendChild(img);
+
+            // New 배지 추가
+            if (newItems.includes(key)) {
+                const badge = document.createElement('div');
+                badge.className = 'quick-new-badge';
+                badge.textContent = 'N';
+                badge.setAttribute('aria-label', 'New');
+                iconWrap.appendChild(badge);
+            }
 
             const label = document.createElement('div');
             label.className = 'quick-label';

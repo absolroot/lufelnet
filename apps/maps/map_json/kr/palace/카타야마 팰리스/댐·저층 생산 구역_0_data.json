@@ -984,6 +984,21 @@
             "enemy_data": null
         },
         {
+            "sn": 85111003,
+            "image": "breakable.png",
+            "position": [
+                2160,
+                2391
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": 85111004,
             "image": "breakable.png",
             "position": [

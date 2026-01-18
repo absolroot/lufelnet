@@ -372,8 +372,16 @@
                 mapContainer.scale.set(zoomLevel);
             }
 
-            mapContainer.x = centerX - (mapSize[0] / 2) * zoomLevel;
-            mapContainer.y = centerY - (mapSize[1] / 2) * zoomLevel;
+            // pivot이 설정된 경우 (회전된 맵)와 그렇지 않은 경우를 구분
+            if (mapContainer.pivot.x !== 0 || mapContainer.pivot.y !== 0) {
+                // pivot이 중앙에 설정된 경우, mapContainer의 위치는 pivot의 위치
+                mapContainer.x = centerX;
+                mapContainer.y = centerY;
+            } else {
+                // pivot이 없는 경우 (기존 로직)
+                mapContainer.x = centerX - (mapSize[0] / 2) * zoomLevel;
+                mapContainer.y = centerY - (mapSize[1] / 2) * zoomLevel;
+            }
         },
 
         // 현재 맵 ID 설정 (외부에서 호출)
@@ -800,7 +808,8 @@
         },
 
         // 오브젝트 로드 및 배치
-        async loadObjects(objects) {
+        // mapRotationDeg: 맵 회전 각도 (도 단위, 반시계 방향), 오브젝트는 역회전하여 원래 방향 유지
+        async loadObjects(objects, mapRotationDeg = 0) {
             const loadingText = document.getElementById('loading-text');
             const total = objects.length;
             let loaded = 0;
@@ -833,11 +842,16 @@
                     sprite.x = obj.position[0];
                     sprite.y = obj.position[1];
 
-                    // 회전 적용 (중앙 기준이므로 위치 변경 없음)
-                    sprite.rotation = -rot_deg * (Math.PI / 180);
+                    // 오브젝트 자체 회전 + 맵 회전의 역회전 적용
+                    // 맵이 반시계 방향으로 회전하면, 오브젝트는 시계 방향으로 회전하여 원래 방향 유지
+                    const objectRotation = -rot_deg * (Math.PI / 180);
+                    const mapRotationCompensation = mapRotationDeg * (Math.PI / 180); // 맵 회전의 역회전
+                    sprite.rotation = objectRotation + mapRotationCompensation;
 
                     debugInfo.computed = {
                         rot_deg,
+                        mapRotationCompensation: mapRotationDeg,
+                        finalRotation: (objectRotation + mapRotationCompensation) * 180 / Math.PI,
                         finalPos: [sprite.x, sprite.y]
                     };
 
@@ -870,7 +884,15 @@
                         // 기존 adjustedRatio와 requiredMinRatio 중 더 큰 값 사용
                         adjustedRatio = Math.max(adjustedRatio, requiredMinRatio);
                     }
-                    
+
+                    // breakable 아이콘은 ratio를 원래 그대로 설정
+                    if (obj.image === 'breakable.png' || obj.image === 'yishijie-icon-breakable.png') {
+                        adjustedRatio = finalRatio * 0.6;
+                        
+                        // breakable 아이콘은 자기 height/2 + height/10 만큼 위로 이동
+                        sprite.y -= texture.height * adjustedRatio / 2 + texture.height * adjustedRatio / 10;
+                    }
+
                     sprite.scale.set(adjustedRatio);
                     
                     debugInfo.computed.finalRatio = finalRatio;
@@ -1216,6 +1238,40 @@
                 objectsContainer.removeChildren();
                 objectSprites = [];
 
+                // 이전 맵의 회전 및 pivot 초기화
+                mapContainer.rotation = 0;
+                mapContainer.pivot.set(0, 0);
+
+                // 맵 전체 회전 처리
+                let mapRotation = 0;
+                let rotatedMapSize = data.map_size ? [...data.map_size] : null;
+                
+                if (data.rotate !== undefined && data.rotate !== null) {
+                    mapRotation = data.rotate;
+                    
+                    // 맵 크기를 기준으로 pivot 설정 (중앙 기준 회전)
+                    if (rotatedMapSize && rotatedMapSize.length >= 2) {
+                        const originalWidth = rotatedMapSize[0];
+                        const originalHeight = rotatedMapSize[1];
+                        
+                        // pivot을 맵 중앙으로 설정
+                        mapContainer.pivot.set(originalWidth / 2, originalHeight / 2);
+                        
+                        // 반시계 방향 회전 (PixiJS는 시계 방향이므로 음수로 변환)
+                        const rotationRad = -mapRotation * (Math.PI / 180);
+                        mapContainer.rotation = rotationRad;
+                        
+                        // 90도 또는 270도 회전 시 맵 크기 swap
+                        const normalizedRotation = ((mapRotation % 360) + 360) % 360;
+                        if (normalizedRotation === 90 || normalizedRotation === 270) {
+                            rotatedMapSize = [originalHeight, originalWidth];
+                        }
+                    }
+                } else {
+                    mapContainer.rotation = 0;
+                    mapContainer.pivot.set(0, 0);
+                }
+
                 if (window.MapsI18n) {
                     const lang = getCurrentLanguage();
                     loadingText.textContent = window.MapsI18n.getText(lang, 'loadingTiles');
@@ -1236,11 +1292,14 @@
                     allObjects.push(...data.enemies);
                 }
 
-                await this.loadObjects(allObjects);
+                // 맵 회전 정보를 오브젝트 로드에 전달 (오브젝트는 역회전하여 원래 방향 유지)
+                await this.loadObjects(allObjects, mapRotation);
 
                 // 저장된 위치가 있으면 복원, 없으면 중앙 정렬
+                // 회전된 맵 크기 사용
+                const finalMapSize = rotatedMapSize || data.map_size;
                 if (!currentMapId || !this.restoreMapPosition(currentMapId)) {
-                    this.centerMap(data.map_size);
+                    this.centerMap(finalMapSize);
                 }
 
                 if (window.ObjectFilterPanel) {
@@ -1277,8 +1336,15 @@
             } catch (error) {
                 console.error('맵 로드 실패:', error);
                 const loadingText = document.getElementById('loading-text');
-                if (loadingText) {
-                    loadingText.textContent = '맵 로드 실패: ' + error.message;
+                // lang en jp 인 경우 영어 또는 일본어로 표시
+                if (lang === 'en' || lang === 'jp') {
+                    if (loadingText) {
+                        loadingText.textContent = 'Map load failed: ' + error.message;
+                    }
+                } else {
+                    if (loadingText) {
+                        loadingText.textContent = '맵 로드 실패: ' + error.message;
+                    }
                 }
             }
         },

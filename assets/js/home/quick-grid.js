@@ -15,7 +15,7 @@
             .quick-icon-wrap::after { content: ""; position: absolute; left: 50%; transform: translateX(-49%); bottom: 6px; width: 70px; height: 30px; background: url(${base}/assets/img/home/icon_under.png) no-repeat center / contain; pointer-events: none; z-index: 0; opacity: 0.95; }
             .quick-link:hover .quick-icon-wrap { transform: scale(1.1); }
             .quick-icon { width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 1px 1px rgba(0,0,0,.35)); position: relative; z-index: 1; }
-            .quick-label { margin-top: 2px; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .2px; text-align: center; line-height: 1.25; white-space: normal; word-break: keep-all; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+            .quick-label { margin-top: 2px; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .2px; text-align: center; line-height: 1.25; white-space: normal; word-break: keep-all; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all;}
             .quick-new-badge { position: absolute; top: 8px; left: 4px; width: 20px; height: 20px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: #000000; z-index: 10; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); font-family: 'Arial Black', 'Arial', 'Helvetica', sans-serif; }
             
             @media (max-width: 1024px) { .quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
@@ -132,7 +132,7 @@
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['maps','synergy','defenseCalc','criticalCalc','schedule'];
+    const newItems = ['maps','synergy','defenseCalc','criticalCalc','schedule','wonderweapon'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

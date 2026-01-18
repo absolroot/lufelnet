@@ -1,0 +1,2247 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_zhongceng_zhu_LMa2_01_01.png",
+            "position": [
+                2208,
+                1379
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_LMa2_01_02.png",
+            "position": [
+                1927,
+                1308
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TC2_01.png",
+            "position": [
+                2366,
+                1364
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TD4_01.png",
+            "position": [
+                2484,
+                1486
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_LMb2_01.png",
+            "position": [
+                2936,
+                1481
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TR1_01.png",
+            "position": [
+                3051,
+                1736
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_LMb1_01_01.png",
+            "position": [
+                3141,
+                1383
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TD1_01.png",
+            "position": [
+                3566,
+                1555
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TT1_01.png",
+            "position": [
+                3764,
+                1454
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_LP3_01.png",
+            "position": [
+                3600,
+                1821
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TVa1_01.png",
+            "position": [
+                3318,
+                1937
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TC2_02.png",
+            "position": [
+                4098,
+                1535
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_LMb2_02.png",
+            "position": [
+                3991,
+                1091
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TD3_01.png",
+            "position": [
+                3659,
+                1139
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TVb1_01.png",
+            "position": [
+                3310,
+                909
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TC2_03.png",
+            "position": [
+                3347,
+                1215
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TD2_01.png",
+            "position": [
+                2947,
+                908
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_LMb1_01_02.png",
+            "position": [
+                3060,
+                1170
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TVb1_02.png",
+            "position": [
+                2580,
+                1033
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TC2_04.png",
+            "position": [
+                2618,
+                1338
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TD3_02.png",
+            "position": [
+                2251,
+                960
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TR1_02.png",
+            "position": [
+                2017,
+                1100
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TW2_01.png",
+            "position": [
+                2014,
+                825
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhu_TL1c_01.png",
+            "position": [
+                1801,
+                862
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TC2_01.png",
+            "position": [
+                2305,
+                812
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TR1_01.png",
+            "position": [
+                2406,
+                1732
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TD3_01.png",
+            "position": [
+                2082,
+                1794
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TC1_01.png",
+            "position": [
+                1961,
+                1890
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TVa1_01.png",
+            "position": [
+                1622,
+                1887
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TVb1_01.png",
+            "position": [
+                2568,
+                1883
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TC2_02.png",
+            "position": [
+                2606,
+                2195
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_zhongceng_zhi_TD1_01.png",
+            "position": [
+                3046,
+                1980
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8512081,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2276,
+                1403
+            ],
+            "ratio": 3.5925925925925926,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512095,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                2315,
+                1452
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512116,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2503,
+                1481
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512122,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2938,
+                1531
+            ],
+            "ratio": 2.8529411764705883,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512125,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2770,
+                1521
+            ],
+            "ratio": 3.5925925925925926,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512139,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2741,
+                1727
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512178,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                3255,
+                1471
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512179,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                3433,
+                1727
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512182,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3235,
+                1895
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512203,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3591,
+                1668
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512231,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                4076,
+                1688
+            ],
+            "ratio": 3.5925925925925926,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512232,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                4037,
+                1777
+            ],
+            "ratio": 3.5925925925925926,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512252,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3849,
+                1767
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512254,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3839,
+                1757
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512256,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                4066,
+                1747
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512261,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                4195,
+                1708
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512336,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3720,
+                1442
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512350,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                3453,
+                1216
+            ],
+            "ratio": 3.5925925925925926,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512379,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                3443,
+                1196
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512382,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3532,
+                1324
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512416,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3295,
+                1048
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512430,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2671,
+                1304
+            ],
+            "ratio": 3.5925925925925926,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512462,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                2652,
+                1432
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512496,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2553,
+                999
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512501,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                2038,
+                1196
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512529,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                2256,
+                979
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512581,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                3532,
+                1983
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512604,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2572,
+                1836
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512702,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2661,
+                2131
+            ],
+            "ratio": 2.425,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512759,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                3215,
+                2023
+            ],
+            "ratio": 2.0208333333333335,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8512061,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                4165,
+                1619
+            ],
+            "ratio": 1.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22604,
+                "enemies": [
+                    [
+                        {
+                            "sn": 226041,
+                            "name": "네코쇼군",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 81249.265,
+                                "HP 계산식": "(31614.5 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 3399.5202,
+                                "공격력 계산식": "(1322.77 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 2.0,
+                                "다운 수치 계산식": "(2.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 506,
+                                    "name": "마하사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 54.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 3494,
+                                    "name": "사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 염동 속성 대미지를 주고, 정신 이상 상태인 적에게 주는 대미지가 40% 증가한다."
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 226042,
+                            "name": "네코쇼군",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 81249.265,
+                                "HP 계산식": "(31614.5 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 3399.5202,
+                                "공격력 계산식": "(1322.77 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 2.0,
+                                "다운 수치 계산식": "(2.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 506,
+                                    "name": "마하사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 54.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 3494,
+                                    "name": "사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 염동 속성 대미지를 주고, 정신 이상 상태인 적에게 주는 대미지가 40% 증가한다."
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 10000,
+                    "title": "엘리트 섀도 능력",
+                    "content": "섀도의 능력은 전투 턴을 거듭할수록 강해지며,\n세 번째 턴부터 섀도는 턴마다 <color=#ff381d>「광폭」</color>을 1중첩 획득한다.\n다섯 번째 턴부터 섀도는 턴마다 <color=#ff381d>「광폭」</color>을 2중첩 획득한다.\n「광폭」: 대미지 보너스 10% 획득(20회 중첩 가능)."
+                }
+            }
+        },
+        {
+            "sn": 8512141,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                2424,
+                891
+            ],
+            "ratio": 1.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22804,
+                "enemies": [
+                    [
+                        {
+                            "sn": 228041,
+                            "name": "괴상한 하리티",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 162091.699,
+                                "HP 계산식": "(63070.7 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 6119.1356,
+                                "공격력 계산식": "(2380.99 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 1260.989,
+                                "방어력 계산식": "(1260.99 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 95.0,
+                                "속도 계산식": "(95.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1302,
+                                    "name": "암야의 섬광",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "12.2%의 기본 확률로 2턴 동안 모든 적을 현기증 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 302,
+                                    "name": "지온가",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 전격 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 307,
+                                    "name": "마하지오다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 45.6%의 전격 속성 대미지를 주고, 25.3%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 1506,
+                                    "name": "메디라마",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 동료가 공격력 13.4%+43의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": "2741",
+                                    "name": "하리티 기본 스킬",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2742,
+                                    "name": "어머니의 자애",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "자신을 제외한 아군 유닛의 생명 전부를 회복하고, 자신은 같은 양의 생명이 차감된다."
+                                    }
+                                },
+                                {
+                                    "sn": "2743",
+                                    "name": "하리티 기본 스킬",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2744,
+                                    "name": "대미지 감면",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "대미지 감면"
+                                    }
+                                },
+                                {
+                                    "sn": "2745",
+                                    "name": "시종 소환",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228042,
+                            "name": "아가시온",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 28640.337,
+                                "HP 계산식": "(11144.1 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1189.8319,
+                                "공격력 계산식": "(462.97 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 360.282,
+                                "방어력 계산식": "(360.28 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 80.0,
+                                "속도 계산식": "(80.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 301,
+                                    "name": "지오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 79.6%의 전격 속성 대미지를 주고, 44.2%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1001,
+                                    "name": "돌격",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 87.3%의 물리 속성 대미지를 준다."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": 1501,
+                                    "name": "디아",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "동료 1명이 공격력 24.8%+81의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 23"
+                                },
+                                {
+                                    "sn": "2753",
+                                    "name": "대미지 증가",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228042,
+                            "name": "아가시온",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 28640.337,
+                                "HP 계산식": "(11144.1 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1189.8319,
+                                "공격력 계산식": "(462.97 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 360.282,
+                                "방어력 계산식": "(360.28 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 80.0,
+                                "속도 계산식": "(80.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 301,
+                                    "name": "지오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 79.6%의 전격 속성 대미지를 주고, 44.2%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1001,
+                                    "name": "돌격",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 87.3%의 물리 속성 대미지를 준다."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": 1501,
+                                    "name": "디아",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "동료 1명이 공격력 24.8%+81의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 23"
+                                },
+                                {
+                                    "sn": "2753",
+                                    "name": "대미지 증가",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 228041,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1. 괴상한 하리티는 높은 대미지 감면을 보유하여 직접 공격 시 유효한 대미지를 주기 어렵습니다.\n2. 괴상한 하리티의 턴이 끝나면 자신 이외의 모든 아군 유닛의 HP를 완전히 치료하며, 자신은 같은 량의 HP가 차감됩니다.\n3. 괴상한 하리는 턴 시작 시 아가시온 1마리를 소환합니다. 필드에 아가시온이 1마리 있을 때마다 대미지가 30% 증가합니다."
+                }
+            }
+        },
+        {
+            "sn": 8512145,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                2028,
+                1963
+            ],
+            "ratio": 1.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22805,
+                "enemies": [
+                    [
+                        {
+                            "sn": 228051,
+                            "name": "괴상한 하리티",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 162091.699,
+                                "HP 계산식": "(63070.7 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 6119.1356,
+                                "공격력 계산식": "(2380.99 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 1260.989,
+                                "방어력 계산식": "(1260.99 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 95.0,
+                                "속도 계산식": "(95.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1302,
+                                    "name": "암야의 섬광",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "12.2%의 기본 확률로 2턴 동안 모든 적을 현기증 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 302,
+                                    "name": "지온가",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 전격 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 307,
+                                    "name": "마하지오다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 45.6%의 전격 속성 대미지를 주고, 25.3%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 1506,
+                                    "name": "메디라마",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 동료가 공격력 13.4%+43의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": "2741",
+                                    "name": "하리티 기본 스킬",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2742,
+                                    "name": "어머니의 자애",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "자신을 제외한 아군 유닛의 생명 전부를 회복하고, 자신은 같은 양의 생명이 차감된다."
+                                    }
+                                },
+                                {
+                                    "sn": "2743",
+                                    "name": "하리티 기본 스킬",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2744,
+                                    "name": "대미지 감면",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "대미지 감면"
+                                    }
+                                },
+                                {
+                                    "sn": "2746",
+                                    "name": "어머니의 분노",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228052,
+                            "name": "잭 오 랜턴",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 40624.6325,
+                                "HP 계산식": "(15807.25 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 502,
+                                    "name": "사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 97.5%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 503,
+                                    "name": "사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 101.0%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 504,
+                                    "name": "사이코키네시스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 103.9%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 506,
+                                    "name": "마하사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 54.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 507,
+                                    "name": "마하사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 57.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 508,
+                                    "name": "사이코 포스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 59.6%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228052,
+                            "name": "잭 오 랜턴",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 40624.6325,
+                                "HP 계산식": "(15807.25 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 502,
+                                    "name": "사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 97.5%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 503,
+                                    "name": "사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 101.0%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 504,
+                                    "name": "사이코키네시스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 103.9%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 506,
+                                    "name": "마하사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 54.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 507,
+                                    "name": "마하사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 57.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 508,
+                                    "name": "사이코 포스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 59.6%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228052,
+                            "name": "잭 오 랜턴",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 40624.6325,
+                                "HP 계산식": "(15807.25 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 502,
+                                    "name": "사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 97.5%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 503,
+                                    "name": "사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 101.0%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 504,
+                                    "name": "사이코키네시스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 103.9%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 506,
+                                    "name": "마하사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 54.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 507,
+                                    "name": "마하사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 57.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 508,
+                                    "name": "사이코 포스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 59.6%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228052,
+                            "name": "잭 오 랜턴",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 40624.6325,
+                                "HP 계산식": "(15807.25 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 502,
+                                    "name": "사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 97.5%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 503,
+                                    "name": "사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 101.0%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 504,
+                                    "name": "사이코키네시스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 103.9%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 506,
+                                    "name": "마하사이오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 54.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 507,
+                                    "name": "마하사이다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 57.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 508,
+                                    "name": "사이코 포스",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 59.6%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 228051,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1. 괴상한 하리티는 높은 대미지 감면을 보유하여 직접 공격 시 유효한 대미지를 주기 어렵습니다.\n2. 괴상한 하리티의 턴이 끝나면 자신 이외의 모든 아군 유닛의 HP를 완전히 치료하며, 자신은 같은 량의 HP가 차감됩니다.\n3. 잭 오 랜턴 사망 시 괴상한 하리티는 즉시 아군 전체에 대량의 대미지를 줍니다.\n4. 괴상한 하리티는 턴 시작 시 잭 오 랜턴을 소환하며, 이는 잭 오 랜턴이 4마리가 될 때까지 계속됩니다."
+                }
+            }
+        },
+        {
+            "sn": 8512151,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                2760,
+                2249
+            ],
+            "ratio": 1.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22806,
+                "enemies": [
+                    [
+                        {
+                            "sn": 228061,
+                            "name": "괴상한 하리티",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 150513.7205,
+                                "HP 계산식": "(58565.65 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 5099.2796,
+                                "공격력 계산식": "(1984.16 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 1260.989,
+                                "방어력 계산식": "(1260.99 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 95.0,
+                                "속도 계산식": "(95.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1302,
+                                    "name": "암야의 섬광",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "12.2%의 기본 확률로 2턴 동안 모든 적을 현기증 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 302,
+                                    "name": "지온가",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 전격 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 307,
+                                    "name": "마하지오다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 45.6%의 전격 속성 대미지를 주고, 25.3%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 1506,
+                                    "name": "메디라마",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 동료가 공격력 13.4%+43의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": "2741",
+                                    "name": "하리티 기본 스킬",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2742,
+                                    "name": "어머니의 자애",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "자신을 제외한 아군 유닛의 생명 전부를 회복하고, 자신은 같은 양의 생명이 차감된다."
+                                    }
+                                },
+                                {
+                                    "sn": "2743",
+                                    "name": "하리티 기본 스킬",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2744,
+                                    "name": "대미지 감면",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "대미지 감면"
+                                    }
+                                },
+                                {
+                                    "sn": "2747",
+                                    "name": "시종 소환",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": 2748,
+                                    "name": "어머니의 보살핌",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "임의의 아군 몬스터 1마리에게『어머니의 보살핌』을 부여한다. 『어머니의 보살핌』 효과를 받은 몬스터는 2턴 후 사악한 프로스트로 진화한다."
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228062,
+                            "name": "잭 프로스트",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 29249.7354,
+                                "HP 계산식": "(11381.22 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2379.6641,
+                                "공격력 계산식": "(925.94 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 201,
+                                    "name": "부흐",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 79.6%의 빙결 속성 대미지를 주고, 44.2%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 205,
+                                    "name": "마하부흐",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 빙결 속성 대미지를 주고, 22.1%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228062,
+                            "name": "잭 프로스트",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 29249.7354,
+                                "HP 계산식": "(11381.22 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2379.6641,
+                                "공격력 계산식": "(925.94 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 201,
+                                    "name": "부흐",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 79.6%의 빙결 속성 대미지를 주고, 44.2%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 205,
+                                    "name": "마하부흐",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 빙결 속성 대미지를 주고, 22.1%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 228061,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1. 괴상한 하리티는 대미지 감소 능력이 매우 높아 직접 공격으로는 유효한 대미지를 주기 어렵습니다.\n2. 괴상한 하리티의 턴이 끝나면 자신 이외의 모든 아군 유닛의 HP를 완전히 치료하며, 자신은 같은 양의 HP가 차감됩니다.\n3. 괴상한 하리티는 턴마다 잭 프로스트 1마리를 소환하고, 임의의 잭 프로스트 1마리에게 <color=#ff3b37>『어머니의 보살핌』</color>을 부여합니다.\n4. <color=#ff3b37>『어머니의 보살핌』</color> 효과를 보유한 잭 프로스트는 2턴 후에 사악한 프로스트로 성장하여, 공격력과 방어력이 더욱 강력해지고 치료 효과를 받지 못합니다."
+                }
+            }
+        },
+        {
+            "sn": 8512701,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2058,
+                1668
+            ],
+            "ratio": 1.0777777777777777,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512702,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2464,
+                1245
+            ],
+            "ratio": 1.0777777777777777,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512703,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                3077,
+                970
+            ],
+            "ratio": 1.0777777777777777,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512704,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                3720,
+                1806
+            ],
+            "ratio": 1.0777777777777777,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512705,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                4195,
+                1255
+            ],
+            "ratio": 1.0777777777777777,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8512706,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2216,
+                1865
+            ],
+            "ratio": 1.0777777777777777,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "map_size": [
+        4371,
+        2535
+    ]
+}

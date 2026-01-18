@@ -1,0 +1,104 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita03-dingceng.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8549114,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                161,
+                528
+            ],
+            "ratio": 0.7407407407407407,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8549117,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                445,
+                44
+            ],
+            "ratio": 0.7407407407407407,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8549152,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                281,
+                119
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8549154,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                460,
+                662
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8549156,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                729,
+                515
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8549162,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                550,
+                60
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        928,
+        840
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "tiles": [
+        {
+            "image": "map_ysc_damenqiaoxia.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8401004,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                235,
+                670
+            ],
+            "ratio": 0.3,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8401005,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                213,
+                393
+            ],
+            "ratio": 0.3,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        516,
+        864
+    ]
+}

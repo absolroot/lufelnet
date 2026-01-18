@@ -1,0 +1,38 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita01-diceng-01.png",
+            "position": [
+                7,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8541153,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                266,
+                150
+            ],
+            "ratio": 0.4166666666666667,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        928,
+        840
+    ]
+}

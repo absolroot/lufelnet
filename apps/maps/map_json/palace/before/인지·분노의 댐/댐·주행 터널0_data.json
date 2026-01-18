@@ -1,0 +1,158 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_shuichang_suidaonan01.png",
+            "position": [
+                400,
+                1617
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidaonan02.png",
+            "position": [
+                912,
+                1699
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidaozhong.png",
+            "position": [
+                77,
+                508
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidaobei.png",
+            "position": [
+                1031,
+                11
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL3b01.png",
+            "position": [
+                81,
+                1337
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL4b.png",
+            "position": [
+                1211,
+                1456
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL5b.png",
+            "position": [
+                181,
+                2205
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_shuichang_suidao_TL3b02.png",
+            "position": [
+                1449,
+                863
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8514109,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                357,
+                2316
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8514701,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                545,
+                1865
+            ],
+            "ratio": 0.4444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8514702,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1141,
+                236
+            ],
+            "ratio": 0.4444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "map_size": [
+        1800,
+        2500
+    ]
+}

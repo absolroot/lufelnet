@@ -1,0 +1,1728 @@
+{
+    "tiles": [
+        {
+            "image": "map_ysc-zhu-1-A802.png",
+            "position": [
+                307,
+                742
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-2-R1.png",
+            "position": [
+                388,
+                709
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-3-A1.png",
+            "position": [
+                346,
+                640
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-4-AN.png",
+            "position": [
+                462,
+                673
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-5-R2.png",
+            "position": [
+                390,
+                559
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-6-A2.png",
+            "position": [
+                354,
+                488
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-7-R1.png",
+            "position": [
+                384,
+                452
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-8-A3.png",
+            "position": [
+                346,
+                314
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-9-R1.png",
+            "position": [
+                310,
+                364
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-10-A1.png",
+            "position": [
+                242,
+                324
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-11-R1.png",
+            "position": [
+                466,
+                365
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-12-A1.png",
+            "position": [
+                504,
+                327
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-13-R1.png",
+            "position": [
+                386,
+                275
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-14-A4.png",
+            "position": [
+                372,
+                173
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-15-R1.png",
+            "position": [
+                442,
+                170
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-16-R3.png",
+            "position": [
+                482,
+                169
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-17-A7.png",
+            "position": [
+                448,
+                215
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-18-R1.png",
+            "position": [
+                330,
+                191
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-18-A5.png",
+            "position": [
+                236,
+                173
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-19-AN.png",
+            "position": [
+                214,
+                240
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-20-R1.png",
+            "position": [
+                276,
+                127
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-21-A6.png",
+            "position": [
+                196,
+                -1
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-22-R1-01.png",
+            "position": [
+                198,
+                127
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-23-A7.png",
+            "position": [
+                194,
+                157
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-24-R1.png",
+            "position": [
+                388,
+                137
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-zhu-25-A8.png",
+            "position": [
+                370,
+                5
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-1-R4.png",
+            "position": [
+                568,
+                317
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-2-R4.png",
+            "position": [
+                576,
+                276
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-3-A9-03.png",
+            "position": [
+                618,
+                261
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-4-AN.png",
+            "position": [
+                634,
+                325
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-5-R1.png",
+            "position": [
+                632,
+                222
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-6-A7.png",
+            "position": [
+                628,
+                173
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-7-R2.png",
+            "position": [
+                568,
+                367
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-8-A7.png",
+            "position": [
+                652,
+                362
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-9-R4.png",
+            "position": [
+                566,
+                408
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-10-A9.png",
+            "position": [
+                562,
+                449
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-11-R1.png",
+            "position": [
+                522,
+                463
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-1-12-A7.png",
+            "position": [
+                474,
+                460
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-1-R4.png",
+            "position": [
+                430,
+                596
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-2-A2.png",
+            "position": [
+                470,
+                564
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-3-R2.png",
+            "position": [
+                538,
+                596
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-4-A3.png",
+            "position": [
+                614,
+                546
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-5-R5.png",
+            "position": [
+                656,
+                491
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-6-A7.png",
+            "position": [
+                670,
+                439
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-7-R5.png",
+            "position": [
+                736,
+                596
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-8-A7.png",
+            "position": [
+                792,
+                610
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-9-R1.png",
+            "position": [
+                656,
+                681
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-10-A9-03.png",
+            "position": [
+                644,
+                725
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-11-AN.png",
+            "position": [
+                664,
+                788
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-12-R2.png",
+            "position": [
+                564,
+                735
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-2-13-A7.png",
+            "position": [
+                512,
+                731
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-1-R5.png",
+            "position": [
+                184,
+                302
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-2-R2.png",
+            "position": [
+                102,
+                303
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-3-A9-03.png",
+            "position": [
+                32,
+                292
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-4-AN.png",
+            "position": [
+                12,
+                309
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-5-R1.png",
+            "position": [
+                48,
+                252
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-6-A7.png",
+            "position": [
+                44,
+                204
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-7-R2.png",
+            "position": [
+                162,
+                367
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-8-A7.png",
+            "position": [
+                112,
+                360
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-9-R4.png",
+            "position": [
+                202,
+                408
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-10-R5.png",
+            "position": [
+                182,
+                452
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-11-A1-02.png",
+            "position": [
+                100,
+                507
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-12-R1.png",
+            "position": [
+                144,
+                471
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-13-A7.png",
+            "position": [
+                136,
+                421
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-14-R4.png",
+            "position": [
+                92,
+                467
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-15-R4.png",
+            "position": [
+                48,
+                466
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-16-R3.png",
+            "position": [
+                2,
+                514
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-3-17-A7.png",
+            "position": [
+                0,
+                495
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-1-R4.png",
+            "position": [
+                338,
+                595
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-2-A4.png",
+            "position": [
+                272,
+                600
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-3-R1.png",
+            "position": [
+                236,
+                611
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-4-A9-03.png",
+            "position": [
+                172,
+                597
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-5-AN.png",
+            "position": [
+                146,
+                617
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-6-R4.png",
+            "position": [
+                286,
+                695
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-7-R5.png",
+            "position": [
+                226,
+                688
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_ysc-4-8-A9.png",
+            "position": [
+                158,
+                672
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8410001,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                379,
+                646
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410008,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                427,
+                540
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410022,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                191,
+                690
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410024,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                286,
+                418
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410026,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                416,
+                249
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410028,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                273,
+                249
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410030,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                478,
+                228
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410059,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                512,
+                344
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410064,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                198,
+                42
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410068,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                225,
+                10
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410070,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                249,
+                7
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410082,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                215,
+                179
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410083,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                157,
+                434
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410116,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                598,
+                498
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410118,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                485,
+                474
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410121,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                652,
+                302
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410123,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                642,
+                184
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410125,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                669,
+                375
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410130,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                632,
+                574
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410132,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                666,
+                611
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410154,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                51,
+                330
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410165,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                68,
+                218
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410181,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                129,
+                375
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410202,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                683,
+                453
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410207,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                810,
+                628
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410210,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                526,
+                753
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410228,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                64,
+                474
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410235,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                23,
+                511
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410250,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                304,
+                597
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410253,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                283,
+                607
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410281,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                174,
+                707
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410284,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                184,
+                621
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410291,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                198,
+                597
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410292,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                191,
+                730
+            ],
+            "ratio": 0.45,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410367,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                382,
+                114
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8410006,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                502,
+                227
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410010,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                423,
+                52
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410011,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                451,
+                683
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410012,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                512,
+                427
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410013,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                239,
+                238
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410014,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                40,
+                318
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410015,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                669,
+                778
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410016,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                174,
+                627
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410017,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                642,
+                311
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410021,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                639,
+                209
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410022,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                642,
+                374
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410024,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                509,
+                473
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410034,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                68,
+                238
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410035,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                153,
+                374
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410040,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                23,
+                536
+            ],
+            "ratio": 0.29508196721311475,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410046,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                286,
+                322
+            ],
+            "ratio": 0.2,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8410048,
+            "image": "yishijie-icon-persona-new.png",
+            "position": [
+                157,
+                448
+            ],
+            "ratio": 0.25,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "map_size": [
+        849,
+        842
+    ]
+}

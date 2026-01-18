@@ -1,0 +1,108 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita02-dingceng-01.png",
+            "position": [
+                7,
+                -4
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_qushuita02-dingceng-02.png",
+            "position": [
+                41,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8546103,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                579,
+                425
+            ],
+            "ratio": 0.7407407407407407,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8546152,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                146,
+                517
+            ],
+            "ratio": 0.4166666666666667,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8546153,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                385,
+                106
+            ],
+            "ratio": 0.4166666666666667,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "sn": 8546162,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                445,
+                60
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8546101,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                445,
+                118
+            ],
+            "ratio": 0.32786885245901637,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "map_size": [
+        928,
+        840
+    ]
+}

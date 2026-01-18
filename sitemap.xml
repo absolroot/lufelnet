@@ -183,6 +183,18 @@ sitemap:
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tactic/tactics.html" />
   </url>
 
+  <!-- Maps -->
+  <url>
+    <loc>{{ site.url }}/maps/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/maps/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/maps/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/maps/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/maps/" />
+  </url>
+
   <!-- Tier List and Tier Maker specific URLs -->
   <!-- Tier List (default) -->
   <url>

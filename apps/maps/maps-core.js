@@ -109,8 +109,9 @@
                 }
 
                 document.getElementById('map-container').appendChild(app.view);
-                app.view.style.width = '100%';
-                app.view.style.height = '100%';
+                // 캔버스 크기를 명시적으로 설정 (모바일 뷰포트 문제 방지)
+                app.view.style.width = window.innerWidth + 'px';
+                app.view.style.height = window.innerHeight + 'px';
 
                 mapContainer = new PIXI.Container();
                 tilesContainer = new PIXI.Container();
@@ -125,6 +126,9 @@
                 window.addEventListener('resize', () => {
                     if (app && app.renderer) {
                         app.renderer.resize(window.innerWidth, window.innerHeight);
+                        // 캔버스 CSS 크기도 업데이트
+                        app.view.style.width = window.innerWidth + 'px';
+                        app.view.style.height = window.innerHeight + 'px';
                     }
                 });
 
@@ -942,11 +946,11 @@
                     if (!isNonInteractive) {
                         sprite.eventMode = 'static';
                         sprite.cursor = 'pointer';
-                        sprite.on('pointerdown', function() {
+                        sprite.on('pointerup', function() {
                             if (this.objectSn && window.ObjectClickHandler) {
                                 window.ObjectClickHandler.toggleObjectClicked(this);
                             }
-                            
+
                             // 디버그: 파일 이름만 출력
                             console.log('Object clicked:', this.debugInfo.image);
                             

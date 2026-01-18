@@ -92,6 +92,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .filter-item {
@@ -107,6 +109,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 0; /* 그리드 항목 축소 허용 */
+  box-sizing: border-box;
 }
 
 .filter-item:hover {
@@ -141,6 +145,8 @@
   object-fit: contain;
   max-width: 100%;
   max-height: 100%;
+  min-width: 0;
+  min-height: 0;
 }
 
 .filter-checkmark {
@@ -362,6 +368,9 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 8px;
     margin-bottom: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   #object-filter-panel.mobile-bottomsheet .filter-item {
@@ -477,6 +486,8 @@
   #object-filter-panel.mobile-bottomsheet .map-progress-container {
     margin-bottom: 16px;
     padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   #object-filter-panel.mobile-bottomsheet .progress-title {

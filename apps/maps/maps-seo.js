@@ -141,9 +141,17 @@
             if (mapInfo) {
                 const pathParts = this.getFullMapPath(mapInfo, lang);
                 if (pathParts && pathParts.length > 0) {
-                    // 마지막 요소(현재 맵)를 강조
+                    // 카테고리 + 맵 이름 형식 (예: "시모츠나 팰리스 > 개미굴·정문 앞")
+                    // pathParts: [parentMap, category, parentSubmap?, currentMap]
+                    // 카테고리(index 1)와 현재 맵(마지막)을 표시
                     const mapName = pathParts[pathParts.length - 1];
-                    title = `${mapName} - ${defaultTitle}`;
+                    const categoryName = pathParts.length > 1 ? pathParts[1] : null;
+
+                    if (categoryName && categoryName !== mapName) {
+                        title = `${categoryName} > ${mapName} - ${defaultTitle}`;
+                    } else {
+                        title = `${mapName} - ${defaultTitle}`;
+                    }
                 }
             }
 

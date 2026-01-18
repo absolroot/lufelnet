@@ -381,7 +381,7 @@
             if (hasSubmaps) {
                 const toggle = document.createElement('div');
                 toggle.className = 'map-item-toggle';
-                toggle.textContent = '▶';
+                // CSS ::before로 삼각형 표시 (이모지 대신)
                 item.appendChild(toggle);
                 
                 // 서브메뉴는 item 밖에 생성
@@ -462,7 +462,7 @@
             if (hasSubmaps) {
                 const toggle = document.createElement('div');
                 toggle.className = 'map-item-toggle';
-                toggle.textContent = '▶';
+                // CSS ::before로 삼각형 표시 (이모지 대신)
                 item.appendChild(toggle);
                 
                 // 서브메뉴는 item 밖에 생성
@@ -896,9 +896,12 @@
                 panel.appendChild(closeBtn);
             }
 
-            // 모바일 여부에 따라 클래스 토글
-            if (this.isMobile()) {
+            // 모바일 여부에 따라 클래스 토글 (뷰포트 크기만으로 판단)
+            const isMobileWidth = window.innerWidth <= 768;
+            if (isMobileWidth) {
                 panel.classList.add('mobile-bottomsheet');
+            } else {
+                panel.classList.remove('mobile-bottomsheet', 'open');
             }
 
             // 맵 버튼 클릭 이벤트
@@ -920,13 +923,14 @@
                 overlay.dataset.eventBound = 'true';
             }
 
-            // 리사이즈 이벤트
+            // 리사이즈 이벤트 (뷰포트 크기만 체크)
             if (!this._resizeHandler) {
                 this._resizeHandler = () => {
                     const panel = document.getElementById('map-select-panel');
                     if (!panel) return;
 
-                    if (this.isMobile()) {
+                    const isMobileWidth = window.innerWidth <= 768;
+                    if (isMobileWidth) {
                         panel.classList.add('mobile-bottomsheet');
                     } else {
                         panel.classList.remove('mobile-bottomsheet', 'open');

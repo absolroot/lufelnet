@@ -676,9 +676,12 @@
                 panel.appendChild(closeBtn);
             }
 
-            // 모바일 여부에 따라 클래스 토글
-            if (this.isMobile()) {
+            // 모바일 여부에 따라 클래스 토글 (뷰포트 크기만으로 판단 - iPad 등 태블릿 대응)
+            const isMobileWidth = window.innerWidth <= 768;
+            if (isMobileWidth) {
                 panel.classList.add('mobile-bottomsheet');
+            } else {
+                panel.classList.remove('mobile-bottomsheet', 'open');
             }
 
             // 필터 버튼 클릭 이벤트
@@ -689,13 +692,15 @@
                 filterBtn.dataset.eventBound = 'true';
             }
 
-            // 리사이즈 이벤트
+            // 리사이즈 이벤트 (뷰포트 크기만 체크 - user agent 무시)
             if (!this._resizeHandler) {
                 this._resizeHandler = () => {
                     const panel = document.getElementById('object-filter-panel');
                     if (!panel) return;
 
-                    if (this.isMobile()) {
+                    // 리사이즈 시에는 뷰포트 크기만으로 판단 (device mode에서도 정상 동작)
+                    const isMobileWidth = window.innerWidth <= 768;
+                    if (isMobileWidth) {
                         panel.classList.add('mobile-bottomsheet');
                     } else {
                         panel.classList.remove('mobile-bottomsheet', 'open');
